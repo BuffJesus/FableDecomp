@@ -16,5 +16,11 @@ function Init(quest)
 end
 
 function OnPersist(quest, context)
+    local testFinished = quest:GetStateBool("TestFinished") or false
+    testFinished = quest:PersistTransferBool(context, "TestFinished", testFinished)
+    quest:SetStateBool("TestFinished", testFinished)
+    local banditsDefeated = quest:GetStateBool("BanditsDefeated") or false
+    banditsDefeated = quest:PersistTransferBool(context, "BanditsDefeated", banditsDefeated)
+    quest:SetStateBool("BanditsDefeated", banditsDefeated)
 end
 

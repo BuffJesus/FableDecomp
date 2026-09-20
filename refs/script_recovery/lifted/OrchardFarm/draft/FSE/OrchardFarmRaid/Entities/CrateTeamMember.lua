@@ -142,8 +142,7 @@ function Main(quest, me)
                             __native_condition_1 = not cVar4
                         end
                         if __native_condition_1 then
-                            -- LAB_00dce594: (native jump target)
-                            bVar3 = false
+                            goto LAB_00dce594
                         else
                             bVar6 = true
                             native_arg_sequence_1 = false
@@ -160,13 +159,13 @@ function Main(quest, me)
                                     native_arg_sequence_1 = false
                                 end
                             end
-                            if native_arg_sequence_1 then
-                                bVar3 = false
-                                goto FLOW_after_lab_00dce594
-                            end
+                            if native_arg_sequence_1 then goto LAB_00dce594 end
                             bVar3 = true
                         end
-                        ::FLOW_after_lab_00dce594::
+                        goto FLOW_past_lab_00dce594
+                        ::LAB_00dce594::
+                        bVar3 = false
+                        ::FLOW_past_lab_00dce594::
                         if bVar6 then
                             bVar6 = false
                         end
@@ -374,9 +373,7 @@ function Main(quest, me)
                 quest:EntityStopFollowing(me)
                 r1 = quest:GetNearestWithScriptName(me, "TeamExitMarker")
                 xStack_10 = resources:NewResource()
-                bVar6 = false
-                if bVar6 ~= 0 then
-                end
+                resources:PrepareResource(xStack_10)
                 bVar6 = resources:TryAcquire(xStack_10, me, 4)
                 while not bVar6 do
                     alive = quest:NewScriptFrame(me)
@@ -397,6 +394,7 @@ function Main(quest, me)
                             bVar6 = not alive
                             if bVar6 then break end
                             if not (r1 ~= nil and not r1:IsNull()) then
+                                p0_00 = {x = 0, y = 0, z = 0}
                             else
                                 p0_00 = r1:GetPos()
                             end
@@ -434,18 +432,18 @@ function Init(quest, me)
     if piVar1 == nil then
         bVar6 = false
         if bVar6 then
-            -- LAB_00dce00a: (native jump target)
-            __native_entity_state:SetStateInt("TeamID", 1)
-            goto LAB_00dcdf96
+            goto LAB_00dce00a
         end
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
         c_stk_11 = not (iVar3 ~= 0)
-        if c_stk_11 then
-            __native_entity_state:SetStateInt("TeamID", 1)
-            goto LAB_00dcdf96
-        end
+        if c_stk_11 then goto LAB_00dce00a end
     end
+    goto FLOW_past_lab_00dce00a
+    ::LAB_00dce00a::
+    __native_entity_state:SetStateInt("TeamID", 1)
+    goto LAB_00dcdf96
+    ::FLOW_past_lab_00dce00a::
     __native_entity_state:SetStateInt("TeamID", 0)
     ::LAB_00dcdf96::
     if __native_entity_state:GetStateInt("TeamID") == 1 then
@@ -483,7 +481,7 @@ function Init(quest, me)
     CStack_10 = nil
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

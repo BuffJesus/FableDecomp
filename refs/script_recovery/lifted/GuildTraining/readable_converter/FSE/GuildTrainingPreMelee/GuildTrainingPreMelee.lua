@@ -5,7 +5,7 @@
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId
+    local movie, resource, actorMap, resource4, resource5, timerId
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster")
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy")
     quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper")
@@ -16,30 +16,55 @@ function Main(quest)
     local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
-    local resource = resources:NewResource()
-    while not resources:TryAcquire(resource, preMeleeMaze, 4) do
+    local resource6 = resources:NewResource()
+    resources:PrepareResource(resource6)
+    while not resources:TryAcquire(resource6, preMeleeMaze, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource6)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); goto LAB_00d51de2 end
-    if not preMeleeWhisper:AcquireControl(4) then goto LAB_00d51951 end
-    if not theRealGuildmaster:AcquireControl(4) then goto LAB_00d51948 end
-    if not hero:AcquireControl(4) then goto LAB_00d5193f end
-    quest:StartCutscene({HERO = hero, MAZE = preMeleeMaze, WHISPER = preMeleeWhisper, MASTER = theRealGuildmaster}, {}, true)
-    quest:RunCutscene("CS_GUILD_PREMELEE_INTRO", true, false)
-    quest:RunCutscene("CS_GUILD_PREMELEE_BOOHOO", true, false)
-    quest:RunCutscene("CS_GUILD_PREMELEE_WAKEUP", true, false)
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource6); goto LAB_00d51de2 end
+    resource5 = resources:NewResource()
+    resources:PrepareResource(resource5)
+    while not resources:TryAcquire(resource5, preMeleeWhisper, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d51951 end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d51951 end
+    resource4 = resources:NewResource()
+    resources:PrepareResource(resource4)
+    while not resources:TryAcquire(resource4, theRealGuildmaster, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d51948 end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d51948 end
+    resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d5193f end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d5193f end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    resources:SetActor(actorMap, "MAZE", resource6)
+    resources:SetActor(actorMap, "WHISPER", resource5)
+    resources:SetActor(actorMap, "MASTER", resource4)
+    movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_PREMELEE_INTRO", actorMap, false, true)
+    resources:RunMacro("CS_GUILD_PREMELEE_BOOHOO", actorMap, false, true)
+    resources:RunMacro("CS_GUILD_PREMELEE_WAKEUP", actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:ChangeHeroHealthBy(1000.0, true, false)
     quest:ResetPlayerCreatureCombatMultiplier()
-    quest:EndCutscene()
-    hero:ReleaseControl()
-    theRealGuildmaster:ReleaseControl()
-    preMeleeWhisper:ReleaseControl()
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
+    resources:ReleaseResource(resource4)
+    resources:ReleaseResource(resource5)
+    resources:ReleaseResource(resource6)
     quest:SetStateBool("WhisperCutsceneFinished", true)
     quest:SetStateBool("GuildmasterTeleport", true)
     quest:SetMasterGameState("GuildWarningOccuring", false)
@@ -63,12 +88,12 @@ function Main(quest)
     quest:DeregisterTimer(timerId)
     goto LAB_00d51de2
     ::LAB_00d5193f::
-    hero:ReleaseControl()
-    ::LAB_00d51948::
-    theRealGuildmaster:ReleaseControl()
-    ::LAB_00d51951::
-    preMeleeWhisper:ReleaseControl()
     resources:ReleaseResource(resource)
+    ::LAB_00d51948::
+    resources:ReleaseResource(resource4)
+    ::LAB_00d51951::
+    resources:ReleaseResource(resource5)
+    resources:ReleaseResource(resource6)
     ::LAB_00d51de2::
 end
 

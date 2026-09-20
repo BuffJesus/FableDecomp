@@ -122,12 +122,7 @@ function Main(quest, me)
                             i_stk_70 = i_stk_70 + 1
                         until not (i_stk_70 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
-                    ::LAB_00dcd9ed::
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar3 = not alive
-                    if bVar3 then
-                        return
-                    end
+                    goto LAB_00dcd9ed
                 end
             else
                 alive = not quest:IsActiveThreadTerminating()
@@ -235,15 +230,17 @@ function Main(quest, me)
                             iVar7 = iVar7 + 1
                         until not (iVar7 < __native_entity_state:GetStateInt("TeamMemberLimit") - iVar4)
                     end
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar3 = not alive
-                    if bVar3 then
-                        return
-                    end
-                    goto FLOW_after_lab_00dcd9ed
+                    goto LAB_00dcd9ed
                 end
             end
-            ::FLOW_after_lab_00dcd9ed::
+            goto FLOW_past_lab_00dcd9ed
+            ::LAB_00dcd9ed::
+            alive = not quest:IsActiveThreadTerminating()
+            bVar3 = not alive
+            if bVar3 then
+                return
+            end
+            ::FLOW_past_lab_00dcd9ed::
             cVar1 = quest:GetStateBool("WhisperSpawned")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -263,21 +260,19 @@ function Init(quest, me)
     if piVar4 == nil then
         bVar7 = false
         if bVar7 then
-            -- LAB_00dcd306: (native jump target)
-            __native_entity_state:SetStateInt("TeamID", 1)
-            __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
-            pcVar8 = "CREATURE_BANDIT_GRUNT"
-            goto LAB_00dcd2bb
+            goto LAB_00dcd306
         end
     else
         iVar5 = ((piVar4 == "BanditTeamSpawn") and 0 or 1)
-        if iVar5 == 0 then
-            __native_entity_state:SetStateInt("TeamID", 1)
-            __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
-            pcVar8 = "CREATURE_BANDIT_GRUNT"
-            goto LAB_00dcd2bb
-        end
+        if iVar5 == 0 then goto LAB_00dcd306 end
     end
+    goto FLOW_past_lab_00dcd306
+    ::LAB_00dcd306::
+    __native_entity_state:SetStateInt("TeamID", 1)
+    __native_entity_state:SetStateString("TeamMemberName", "BanditTeamMember")
+    pcVar8 = "CREATURE_BANDIT_GRUNT"
+    goto LAB_00dcd2bb
+    ::FLOW_past_lab_00dcd306::
     __native_entity_state:SetStateInt("TeamID", 0)
     __native_entity_state:SetStateString("TeamMemberName", "GuardTeamMember")
     pcVar8 = "CREATURE_ORCHARD_FARM_GUARD"
@@ -296,7 +291,7 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("TeamRespawnTime", uVar1)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

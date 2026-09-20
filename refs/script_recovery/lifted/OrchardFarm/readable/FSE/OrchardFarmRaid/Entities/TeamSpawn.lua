@@ -33,21 +33,24 @@ function Main(quest, me)
     while not quest:GetStateBool("WhisperSpawned") do
         if not quest:NewScriptFrame(me) then return end
         if teamID == 0 then
-            if not ((quest:GetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer")) == 0) and (quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") < teamMemberLimit)) then goto continue_1 end
-            quest:SetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer"), teamRespawnTime)
-            local getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
-            if quest:IsDistanceBetweenThingsOver(hero, me, 15.0) and not quest:IsCameraPosOnScreen(me:GetPos()) then
-                if quest:IsActiveThreadTerminating() then return end
-                i_stk_70_1 = 0
-                if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
-                    repeat
+            if quest:GetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer")) == 0 and quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") < teamMemberLimit then
+                quest:SetTimer(quest:GetStateInt("Teams_" .. teamID .. "_TeamReinforcementsTimer"), teamRespawnTime)
+                local getStateInt = quest:GetStateInt("Teams_" .. teamID .. "_MemberCount")
+                if quest:IsDistanceBetweenThingsOver(hero, me, 15.0) then
+                    if not quest:IsCameraPosOnScreen(me:GetPos()) then
                         if quest:IsActiveThreadTerminating() then return end
-                        quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
-                        quest:Pause(2.0)
-                        i_stk_70_1 = i_stk_70_1 + 1
-                    until not (i_stk_70_1 < teamMemberLimit - getStateInt)
+                        i_stk_70_1 = 0
+                        if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
+                            repeat
+                                if quest:IsActiveThreadTerminating() then return end
+                                quest:EntityAttachToScript(quest:CreateCreature(teamMemberDefName, me:GetPos(), teamMemberName), "Q_OrchardFarmRaid")
+                                quest:Pause(2.0)
+                                i_stk_70_1 = i_stk_70_1 + 1
+                            until not (i_stk_70_1 < teamMemberLimit - getStateInt)
+                        end
+                        goto LAB_00dcd9ed
+                    end
                 end
-            else
                 if quest:IsActiveThreadTerminating() then return end
                 i_stk_70_2 = 0
                 if teamMemberLimit ~= getStateInt and -1 < teamMemberLimit - getStateInt then
@@ -58,9 +61,9 @@ function Main(quest, me)
                         otherSpawnPoint = quest:GetRandomThingWithScriptName("EitherTeamSpawn")
                         i_stk_70_2 = i_stk_70_2 + 1
                     until not (i_stk_70_2 < teamMemberLimit - getStateInt)
+                end
+                goto LAB_00dcd9ed
             end
-            end
-            if quest:IsActiveThreadTerminating() then return end
         else
             if teamID == heroTeam then
                 quest:UpdateQuestInfoCounterList(banditsLeftID, (2 - quest:GetStateInt("BanditWavesSpawned")) * teamMemberLimit + quest:GetStateInt("Teams_" .. teamID .. "_MemberCount"), -1)
@@ -102,10 +105,13 @@ function Main(quest, me)
                         scratchValue = scratchValue + 1
                     until not (scratchValue < teamMemberLimit - getStateInt2)
                 end
-                if quest:IsActiveThreadTerminating() then return end
+                goto LAB_00dcd9ed
             end
         end
-        ::continue_1::
+        goto FLOW_past_lab_00dcd9ed
+        ::LAB_00dcd9ed::
+        if quest:IsActiveThreadTerminating() then return end
+        ::FLOW_past_lab_00dcd9ed::
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveQuestInfoElement(banditsLeftID)
@@ -137,7 +143,7 @@ function Init(quest, me)
 end
 
 -- TeamSpawn.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TeamSpawn.OnPredicateFail (retail 0x00cdebd0)

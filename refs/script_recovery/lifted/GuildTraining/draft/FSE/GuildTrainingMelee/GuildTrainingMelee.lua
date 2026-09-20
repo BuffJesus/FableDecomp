@@ -25,9 +25,7 @@ function Main(quest)
         r1:SetFriendsWithEverythingFlag(1)
     end
     xStack_20 = resources:NewResource()
-    bVar6 = false
-    if bVar6 ~= 0 then
-    end
+    resources:PrepareResource(xStack_20)
     bVar6 = resources:TryAcquire(xStack_20, r1, 4)
     while not bVar6 do
         alive = quest:NewScriptFrame()
@@ -45,9 +43,7 @@ function Main(quest)
     if not bVar6 then
         quest:EntitySetAllowBossPhaseChanges(r1, false)
         xStack_10 = resources:NewResource()
-        bVar6 = false
-        if bVar6 ~= 0 then
-        end
+        resources:PrepareResource(xStack_10)
         iVar8 = 4
         pppuVar7 = xStack_10
         pCVar4 = quest:GetHero()
@@ -69,7 +65,6 @@ function Main(quest)
             resources:SetActor(pCVar4, "HERO", xStack_10)
             resources:SetActor(pCVar4, "WHISPER", xStack_20)
             pThingToMove = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_MELEE_INTRO", pCVar4, false, true)

@@ -16,7 +16,7 @@ function Init(quest, me)
 end
 
 -- M_WhisperFarmRaidIntro.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- M_WhisperFarmRaidIntro.OnPredicateFail (retail 0x00cdebd0)

@@ -39,7 +39,7 @@ function Main(quest, me)
             pCVar3 = quest:GetNearestWithScriptName(me, "IsAGuard")
             quest:GiveThingBestEnemyTarget(me, pCVar3)
             cVar1 = quest:GetStateBool("PlayerEngaged")
-            CVar7 = 0x0
+            CVar7 = 0
             while not cVar1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -47,43 +47,38 @@ function Main(quest, me)
                 if bVar2 then
                     return
                 end
-                CVar6 = (CVar7 | 1)
-                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
+                CVar6 = CVar7 | 1
                 bVar2 = me:MsgIsHitBy("")
                 if bVar2 then
-                    CVar6 = (CVar7 | 3)
+                    CVar6 = CVar7 | 3
                     bVar2 = me:MsgIsHitByHero()
-                    if bVar2 then
-                        bVar2 = false
-                        goto FLOW_after_lab_00df8b83
-                    end
-                    CVar6 = (CVar7 | 7)
+                    if bVar2 then goto LAB_00df8b83 end
+                    CVar6 = CVar7 | 7
                     bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar2 then
-                        CVar6 = (CVar7 | 0xf)
+                        CVar6 = CVar7 | 0xf
                         bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
-                        if not bVar2 then
-                            bVar2 = false
-                            goto FLOW_after_lab_00df8b83
-                        end
+                        if not bVar2 then goto LAB_00df8b83 end
                     end
                     bVar2 = true
                 else
-                    -- LAB_00df8b83: (native jump target)
-                    bVar2 = false
+                    goto LAB_00df8b83
                 end
-                ::FLOW_after_lab_00df8b83::
+                goto FLOW_past_lab_00df8b83
+                ::LAB_00df8b83::
+                bVar2 = false
+                ::FLOW_past_lab_00df8b83::
                 if (CVar6 & 8) ~= 0 then
-                    CVar6 = (CVar6 & 0xfffffff7)
+                    CVar6 = CVar6 & 0xfffffff7
                 end
                 if (CVar6 & 4) ~= 0 then
-                    CVar6 = (CVar6 & 0xfffffffb)
+                    CVar6 = CVar6 & 0xfffffffb
                 end
                 if (CVar6 & 2) ~= 0 then
-                    CVar6 = (CVar6 & 0xfffffffd)
+                    CVar6 = CVar6 & 0xfffffffd
                 end
                 if (CVar6 & 1) ~= 0 then
-                    CVar6 = (CVar6 & 0xfffffffe)
+                    CVar6 = CVar6 & 0xfffffffe
                 end
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -93,36 +88,34 @@ function Main(quest, me)
                     end
                     quest:ModifyThingHealth(me, 100.0, false)
                 else
-                    CVar7 = (CVar6 | 0x10)
+                    CVar7 = CVar6 | 0x10
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then
-                        -- LAB_00df8c73: (native jump target)
-                        bVar2 = true
-                        CVar6 = CVar7
+                        goto LAB_00df8c73
                     else
-                        CVar7 = (CVar6 | 0x30)
+                        CVar7 = CVar6 | 0x30
                         bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar2 then
-                            CVar7 = (CVar6 | 0x70)
+                            CVar7 = CVar6 | 0x70
                             bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
-                            if not bVar2 then
-                                bVar2 = true
-                                CVar6 = CVar7
-                                goto FLOW_after_lab_00df8c73
-                            end
+                            if not bVar2 then goto LAB_00df8c73 end
                         end
                         bVar2 = false
                         CVar6 = CVar7
                     end
-                    ::FLOW_after_lab_00df8c73::
+                    goto FLOW_past_lab_00df8c73
+                    ::LAB_00df8c73::
+                    bVar2 = true
+                    CVar6 = CVar7
+                    ::FLOW_past_lab_00df8c73::
                     if (CVar6 & 0x40) ~= 0 then
-                        CVar6 = (CVar6 & 0xffffffbf)
+                        CVar6 = CVar6 & 0xffffffbf
                     end
                     if (CVar6 & 0x20) ~= 0 then
-                        CVar6 = (CVar6 & 0xffffffdf)
+                        CVar6 = CVar6 & 0xffffffdf
                     end
                     if (CVar6 & 0x10) ~= 0 then
-                        CVar6 = (CVar6 & 0xffffffef)
+                        CVar6 = CVar6 & 0xffffffef
                     end
                     if bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -158,38 +151,37 @@ function Main(quest, me)
                     if bVar2 then
                         return
                     end
-                    CVar6 = (CVar7 | 0x80)
+                    CVar6 = CVar7 | 0x80
                     xStack_2c = CVar6
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then
-                        -- LAB_00df8dcb: (native jump target)
-                        bVar2 = true
+                        goto LAB_00df8dcb
                     else
-                        CVar6 = (CVar7 | 0x180)
+                        CVar6 = CVar7 | 0x180
                         xStack_2c = CVar6
                         bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar2 then
-                            CVar6 = (CVar7 | 0x380)
+                            CVar6 = CVar7 | 0x380
                             xStack_2c = CVar6
                             bVar2 = me:MsgIsHitByHeroSpecialAbility(me)
-                            if not bVar2 then
-                                bVar2 = true
-                                goto FLOW_after_lab_00df8dcb
-                            end
+                            if not bVar2 then goto LAB_00df8dcb end
                         end
                         bVar2 = false
                     end
-                    ::FLOW_after_lab_00df8dcb::
+                    goto FLOW_past_lab_00df8dcb
+                    ::LAB_00df8dcb::
+                    bVar2 = true
+                    ::FLOW_past_lab_00df8dcb::
                     if (CVar6 & 0x200) ~= 0 then
-                        CVar6 = (CVar6 & 0xfffffdff)
+                        CVar6 = CVar6 & 0xfffffdff
                         xStack_2c = CVar6
                     end
                     if (CVar6 & 0x100) ~= 0 then
-                        CVar6 = (CVar6 & 0xfffffeff)
+                        CVar6 = CVar6 & 0xfffffeff
                         xStack_2c = CVar6
                     end
                     if CVar6_b0 < 0 then
-                        CVar6 = (CVar6 & 0xffffff7f)
+                        CVar6 = CVar6 & 0xffffff7f
                         xStack_2c = CVar6
                     end
                     if bVar2 then
@@ -292,7 +284,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("HitWarning", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

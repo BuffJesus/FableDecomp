@@ -26,7 +26,7 @@ function Main(quest, me)
         if not bVar4 then
             quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 0xf)
             cVar2 = quest:GetMasterGameState("WillTrainingStarted")
-            while cVar2 ~= 1 do
+            while not cVar2 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -40,39 +40,40 @@ function Main(quest, me)
             if not bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                -- LAB_00d434fc: (native jump target)
-                if not bVar4 then
-                    repeat
-                        bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
-                        if bVar4 then
-                            -- LAB_00d43568: (native jump target)
-                            bVar4 = false
-                        else
-                            bVar3 = true
-                            bVar5 = me:MsgIsHitByHero()
-                            bVar4 = true
-                            if bVar5 then
-                                bVar4 = false
-                                goto FLOW_after_lab_00d43568
-                            end
-                        end
-                        ::FLOW_after_lab_00d43568::
-                        if bVar3 then
-                            bVar3 = false
-                        end
-                        if not bVar4 then goto LAB_00d435c1 end
-                        alive = quest:NewScriptFrame(me)
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar4 = not alive
-                        if bVar4 then
-                            return
-                        end
-                    until false
-                end
+                goto LAB_00d434fc
             end
         end
     end
-    ::FLOW_after_lab_00d434fc::
+    goto FLOW_past_lab_00d434fc
+    ::LAB_00d434fc::
+    if not bVar4 then
+        repeat
+            bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
+            if bVar4 then
+                goto LAB_00d43568
+            else
+                bVar3 = true
+                bVar5 = me:MsgIsHitByHero()
+                bVar4 = true
+                if bVar5 then goto LAB_00d43568 end
+            end
+            goto FLOW_past_lab_00d43568
+            ::LAB_00d43568::
+            bVar4 = false
+            ::FLOW_past_lab_00d43568::
+            if bVar3 then
+                bVar3 = false
+            end
+            if not bVar4 then goto LAB_00d435c1 end
+            alive = quest:NewScriptFrame(me)
+            alive = not quest:IsActiveThreadTerminating()
+            bVar4 = not alive
+            if bVar4 then
+                return
+            end
+        until false
+    end
+    ::FLOW_past_lab_00d434fc::
     do return end
     ::LAB_00d435c1::
     alive = not quest:IsActiveThreadTerminating()
@@ -216,37 +217,13 @@ function Main(quest, me)
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
-    if not bVar4 then
-        repeat
-            bVar4 = me:MsgIsHitByHeroSpecialAbility(me)
-            if bVar4 then
-                -- LAB_00d43568_c2: (native jump target)
-                bVar4 = false
-            else
-                bVar3 = true
-                bVar5 = me:MsgIsHitByHero()
-                bVar4 = true
-                if bVar5 then return end  -- TODO(native): goto LAB_00d43568_c2
-            end
-            if bVar3 then
-                bVar3 = false
-            end
-            if not bVar4 then goto LAB_00d435c1 end
-            alive = quest:NewScriptFrame(me)
-            alive = not quest:IsActiveThreadTerminating()
-            bVar4 = not alive
-            if bVar4 then
-                return
-            end
-        until false
-    end
-    goto FLOW_after_lab_00d434fc
+    goto LAB_00d434fc
 end
 
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

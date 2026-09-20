@@ -28,7 +28,7 @@ function Init(quest, me)
     quest:EntitySetTargetable(me, false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

@@ -41,7 +41,7 @@ function Main(quest)
 end
 
 function Init(quest)
-    local pTargetThing = quest:GetThingWithScriptName(nil --[[missing]])
+    local pTargetThing = quest:GetThingWithScriptName("HeroDepartureStartMarker")
     local pThingToMove = quest:GetHero()
     quest:EntityTeleportToThing(pThingToMove, pTargetThing, false)
     pTargetThing = nil

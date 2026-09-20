@@ -3,8 +3,14 @@
 
 -- WillWhisper.Main (retail 0x00d68810)
 function Main(quest, me)
+    local resources = quest:RetailResources()
+    local predicateResult
     if not quest:NewScriptFrame(me) then return end
-    if not me:AcquireControl(4) then goto LAB_00d68acf end
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, me, 4) do
+        if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
     quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
@@ -12,7 +18,19 @@ function Main(quest, me)
     quest:EntitySetAllowBossPhaseChanges(me, false)
     while quest:GetStateBool("BanditsAlive") do
         if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
-        if me:MsgIsHitByHero() or me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me) then
+        if me:MsgIsHitByHero() then
+            goto LAB_00d689df
+        else
+            if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00d689df end
+            end
+            predicateResult = false
+        end
+        goto FLOW_past_lab_00d689df
+        ::LAB_00d689df::
+        predicateResult = true
+        ::FLOW_past_lab_00d689df::
+        if predicateResult then
             quest:EntitySetInFaction(me, "FACTION_HERO")
             me:SetFriendsWithEverythingFlag(me)
         end
@@ -23,7 +41,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d68acf::
-    me:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- WillWhisper.Init (retail 0x00d687d0)
@@ -31,7 +49,7 @@ function Init(quest, me)
 end
 
 -- WillWhisper.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- WillWhisper.OnPredicateFail (retail 0x00d687e0)

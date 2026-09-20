@@ -34,7 +34,7 @@ function Init(quest, me)
 end
 
 -- PreMeleeDummy.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- PreMeleeDummy.OnPredicateFail (retail 0x00cdebd0)

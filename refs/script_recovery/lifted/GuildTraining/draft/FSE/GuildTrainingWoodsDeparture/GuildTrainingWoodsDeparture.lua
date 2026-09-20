@@ -8,7 +8,7 @@ function Main(quest)
     quest:SetStateBool("MissionFailed", false)
     quest:SetStateBool("MissionOver", false)
     bVar2 = quest:IsLevelLoaded("GuildWoods")
-    CVar5 = 0x0
+    CVar5 = 0
     while true do
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
@@ -20,7 +20,7 @@ function Main(quest)
                 quest:FinalizeEntityBindings()
                 quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Departure_Init: lift it as function WatchForTermination(quest)
                 if (CVar5 & 8) ~= 0 then
-                    CVar5 = (CVar5 & 0xfffffff7)
+                    CVar5 = CVar5 & 0xfffffff7
                 end
                 quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
                 if (CVar5 & 0x10) ~= 0 then
@@ -86,7 +86,7 @@ function WatchForTermination(quest)
 end
 
 function DoMission(quest)
-    local CVar1, CVar5, bVar3, pQuestName
+    local CVar1, bVar3, pQuestName
     local alive = true
     quest:GiveHeroNewQuestObjective("first objective", 1)
     bVar3 = quest:IsLevelLoaded("GuildWoods")
@@ -103,13 +103,7 @@ function DoMission(quest)
     bVar3 = not alive
     if not bVar3 then
         quest:CreateThread("WatchForLeaving")  -- native thread body CGlobal_WatchForHeroDeathScript::WatchForHeroDeath: lift it as function WatchForLeaving(quest)
-        CVar5 = 0x0
-        if (0x0 & 1) ~= 0 then
-            CVar5 = (0x0 & 0xfffffffe)
-        end
         quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_First: lift it as function TeleportOutHero(quest)
-        if (CVar5 & 2) ~= 0 then
-        end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

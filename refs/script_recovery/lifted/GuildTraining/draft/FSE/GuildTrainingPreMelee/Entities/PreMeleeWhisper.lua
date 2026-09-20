@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar2, f_stk_28, fret_0, iVar10, iVar11, i_stk_8c, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c
+    local bVar3, cVar4, dist, fVar2, f_stk_28, f_stk_94, fret_0, iVar10, iVar11, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
@@ -30,9 +30,7 @@ function Main(quest, me)
     bVar3 = not alive
     if not bVar3 then
         xStack_a0 = resources:NewResource()
-        bVar3 = false
-        if bVar3 ~= 0 then
-        end
+        resources:PrepareResource(xStack_a0)
         bVar3 = resources:TryAcquire(xStack_a0, me, 4)
         while not bVar3 do
             alive = quest:NewScriptFrame(me)
@@ -73,7 +71,6 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d52e1b end
                 xStack_1c = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 me:ClearCommands()
                 x_stk_c = resources:ScriptThing(xStack_a0)
@@ -125,11 +122,12 @@ function Main(quest, me)
             r2 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
             pCVar5 = quest:GetHero()
             if not (r2 ~= nil and not r2:IsNull()) then
+                puVar8 = {x = 0, y = 0, z = 0}
             else
                 puVar8 = r2:GetPos()
             end
             pCVar6 = pCVar5:GetPos()
-            -- TODO(native): xStack_a0 = (float)puVar8[2] - *(float *)(pCVar6 + 0x8);
+            f_stk_94 = puVar8.z - pCVar6.z
             bVar3 = quest:IsDistanceBetweenThingsUnder(me, r2, 7.0)
             if bVar3 then
                 dist = 7.0
@@ -150,7 +148,7 @@ function Main(quest, me)
                     end
                 end
                 if not native_arg_sequence_1 then
-                    if ABS(xStack_a0) < 1.0 == (ABS(xStack_a0) == 1.0) then
+                    if 1.0 < math.abs(f_stk_94) then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -166,12 +164,10 @@ function Main(quest, me)
                     return
                 end
                 pvVar7 = r2:GetDataString()
-                -- TODO(native): xStack_a0 = (float)tonumber(pvVar7);
+                f_stk_94 = tonumber(pvVar7)
                 uVar9 = 0
-                i_stk_8c = 0
                 xStack_8c = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-                iVar10 = i_stk_8c - xStack_8c >> 0x1f
-                if (i_stk_8c - xStack_8c) / 0xc + iVar10 ~= iVar10 then
+                if #xStack_8c ~= 0 then
                     iVar10 = 0
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
@@ -184,7 +180,7 @@ function Main(quest, me)
                         -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
                         pvVar7 = nil --[[unresolved native value]]
                         f_stk_28 = tonumber(pvVar7)
-                        if f_stk_28 == xStack_a0 then
+                        if f_stk_28 == f_stk_94 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
@@ -196,7 +192,7 @@ function Main(quest, me)
                         end
                         uVar9 = uVar9 + 1
                         iVar10 = iVar10 + 0xc
-                    until not (uVar9 < ((i_stk_8c - xStack_8c) / 0xc))
+                    until not (uVar9 < (#xStack_8c))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -210,7 +206,7 @@ function Main(quest, me)
                 pCVar5 = quest:GetHero()
                 quest:AddPersonToConversation(iVar11, pCVar5)
                 quest:SetTimer(timerId, 10)
-                native_arg_switch_2 = xStack_a0
+                native_arg_switch_2 = f_stk_94
                 repeat
                     if native_arg_switch_2 == 2 then
                         pCVar5 = quest:GetHero()
@@ -325,7 +321,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

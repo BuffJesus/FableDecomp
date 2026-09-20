@@ -15,9 +15,7 @@ function Main(quest, me)
     local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar16, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_260, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_c
     local alive = true
     xStack_254 = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_254)
     bVar3 = resources:TryAcquire(xStack_254, me, 4)
     while not bVar3 do
         alive = quest:NewScriptFrame(me)
@@ -149,7 +147,7 @@ function Main(quest, me)
                     if not bVar3 then
                         pCVar8 = quest:GetHero()
                         quest:AddLineToConversation(iVar6, "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_COMMENT", me, pCVar8, false)
-                        goto LAB_00d4a71c
+                        goto LAB_00d4a717
                     end
                 else
                     if iVar5 == 7 then
@@ -158,7 +156,7 @@ function Main(quest, me)
                         if not bVar3 then
                             pCVar8 = quest:GetHero()
                             quest:AddLineToConversation(iVar6, "TEXT_QST_028_APPRENTICE_MELEE_APLUS_COMMENT", me, pCVar8, false)
-                            goto LAB_00d4a71c
+                            goto LAB_00d4a717
                         end
                     else
                         alive = not quest:IsActiveThreadTerminating()
@@ -166,11 +164,14 @@ function Main(quest, me)
                         if not bVar3 then
                             pCVar8 = quest:GetHero()
                             quest:AddLineToConversation(iVar6, "TEXT_QST_028_APPRENTICE_MELEE_NOT_APLUS_COMMENT", me, pCVar8, false)
-                            -- LAB_00d4a717: (native jump target)
-                            goto LAB_00d4a71c
+                            goto LAB_00d4a717
                         end
                     end
                 end
+                goto FLOW_past_lab_00d4a717
+                ::LAB_00d4a717::
+                goto LAB_00d4a71c
+                ::FLOW_past_lab_00d4a717::
             end
             quest:DeregisterTimer(xStack_260)
             resources:ReleaseResource(xStack_254)
@@ -185,23 +186,23 @@ function Main(quest, me)
             return
         end
         if not (r1 ~= nil and not r1:IsNull()) then
+            p0 = {x = 0, y = 0, z = 0}
         else
             p0 = r1:GetPos()
         end
         me:MoveToPosition(p0, 3.0, 1, false, true)
         ::LAB_00d4a71c::
         if not __native_entity_state:GetStateBool("WaitingForFight") then
-            -- LAB_00d4a758: (native jump target)
-            bVar3 = false
+            goto LAB_00d4a758
         else
             bVar3 = me:IsTalkedToByHero()
-            if not bVar3 then
-                bVar3 = false
-                goto FLOW_after_lab_00d4a758
-            end
+            if not bVar3 then goto LAB_00d4a758 end
             bVar3 = true
         end
-        ::FLOW_after_lab_00d4a758::
+        goto FLOW_past_lab_00d4a758
+        ::LAB_00d4a758::
+        bVar3 = false
+        ::FLOW_past_lab_00d4a758::
         if bVar3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -217,7 +218,6 @@ function Main(quest, me)
                 if bVar3 then goto LAB_00d4c6da end
                 me:ClearCommands()
                 xStack_ec = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 x_stk_60 = resources:ScriptThing(xStack_254)
                 pCVar7 = x_stk_60
@@ -260,12 +260,11 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if not bVar3 then
-                if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                if quest:GetMasterGameState("HeroTakingGuildTest") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
                         xStack_dc = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_30 = resources:ScriptThing(xStack_254)
                         pCVar7 = x_stk_30
@@ -317,7 +316,6 @@ function Main(quest, me)
                     bVar3 = not alive
                     if not bVar3 then
                         xStack_cc = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_90 = resources:ScriptThing(xStack_254)
                         pCVar7 = x_stk_90
@@ -355,15 +353,13 @@ function Main(quest, me)
                         end
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_cc)
-                        -- LAB_00d4c40d: (native jump target)
-                        goto LAB_00d4c416
+                        goto LAB_00d4c40d
                     end
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d4c6d1 end
                     xStack_20c = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     x_stk_214 = piVar12
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_78 = resources:ScriptThing(xStack_254)
@@ -570,9 +566,7 @@ function Main(quest, me)
                     ::LAB_00d4b11f::
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_20c)
-                    if iVar5 ~= 1 then
-                        goto LAB_00d4c416
-                    end
+                    if iVar5 ~= 1 then goto LAB_00d4c40d end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d4c6d1 end
@@ -610,7 +604,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d4c6c8 end
-                        if quest:GetMasterGameState("GuildWarningOccuring") == 1 then
+                        if quest:GetMasterGameState("GuildWarningOccuring") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d4c6c8 end
@@ -638,7 +632,6 @@ function Main(quest, me)
                                     r4:SetFriendsWithEverythingFlag(1)
                                 end
                                 xStack_bc = resources:StartMovie("")
-                                quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
                                 x_stk_c = resources:ScriptThing(xStack_254)
                                 pCVar7 = x_stk_c
@@ -678,8 +671,7 @@ function Main(quest, me)
                                 c_stk_259 = 1
                                 quest:PauseAllNonScriptedEntities(false)
                                 -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_bc;
-                                resources:DestroyMovie(this_00)
-                                goto FLOW_after_lab_00d4b6f6
+                                goto LAB_00d4b6f6
                             end
                         else
                             alive = not quest:IsActiveThreadTerminating()
@@ -690,7 +682,6 @@ function Main(quest, me)
                                 r4:SetFriendsWithEverythingFlag(1)
                             end
                             xStack_ac = resources:StartMovie("")
-                            quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             x_stk_24 = resources:ScriptThing(xStack_254)
                             pCVar7 = x_stk_24
@@ -730,10 +721,12 @@ function Main(quest, me)
                             c_stk_259 = 1
                             quest:PauseAllNonScriptedEntities(false)
                             -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_ac;
-                            -- LAB_00d4b6f6: (native jump target)
-                            resources:DestroyMovie(this_00)
+                            goto LAB_00d4b6f6
                         end
-                        ::FLOW_after_lab_00d4b6f6::
+                        goto FLOW_past_lab_00d4b6f6
+                        ::LAB_00d4b6f6::
+                        resources:DestroyMovie(this_00)
+                        ::FLOW_past_lab_00d4b6f6::
                         pCVar7 = quest:GetHero()
                         fret_10 = quest:GetHealth(pCVar7)
                         if quest:ReadGlobalGameDataFloat(0xed8) <= fret_10 then
@@ -759,18 +752,16 @@ function Main(quest, me)
                             bVar3 = quest:IsPlayerCreatureBlocking()
                             if bVar3 then
                                 pCVar7 = quest:GetHero()
-                                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                                 bVar3 = pCVar7:MsgIsHitBy("MeleeOpponent")
-                                if not bVar3 then
-                                    bVar3 = false
-                                    goto FLOW_after_lab_00d4b8c5
-                                end
+                                if not bVar3 then goto LAB_00d4b8c5 end
                                 bVar3 = true
                             else
-                                -- LAB_00d4b8c5: (native jump target)
-                                bVar3 = false
+                                goto LAB_00d4b8c5
                             end
-                            ::FLOW_after_lab_00d4b8c5::
+                            goto FLOW_past_lab_00d4b8c5
+                            ::LAB_00d4b8c5::
+                            bVar3 = false
+                            ::FLOW_past_lab_00d4b8c5::
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -785,14 +776,12 @@ function Main(quest, me)
                                         quest:AddPersonToConversation(iVar6, pCVar7)
                                         pCVar7 = quest:GetHero()
                                         quest:AddLineToConversation(iVar6, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", r4, pCVar7, false)
-                                        quest:SetTimer(xStack_258, 0xf)
-                                        goto FLOW_after_lab_00d4b857
+                                        goto LAB_00d4b857
                                     end
                                     goto LAB_00d4c6c8
                                 end
                             else
                                 pCVar7 = quest:GetHero()
-                                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                                 bVar3 = pCVar7:MsgIsHitBy("MeleeOpponent")
                                 if bVar3 then
                                     alive = not quest:IsActiveThreadTerminating()
@@ -826,11 +815,13 @@ function Main(quest, me)
                                 quest:AddPersonToConversation(iVar6, pCVar7)
                                 pCVar7 = quest:GetHero()
                                 quest:AddLineToConversation(iVar6, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", r4, pCVar7, false)
-                                -- LAB_00d4b857: (native jump target)
-                                quest:SetTimer(xStack_258, 0xf)
+                                goto LAB_00d4b857
                             end
                         end
-                        ::FLOW_after_lab_00d4b857::
+                        goto FLOW_past_lab_00d4b857
+                        ::LAB_00d4b857::
+                        quest:SetTimer(xStack_258, 0xf)
+                        ::FLOW_past_lab_00d4b857::
                         cVar4 = quest:GetStateBool("FightFinished")
                     end
                     alive = not quest:IsActiveThreadTerminating()
@@ -877,11 +868,7 @@ function Main(quest, me)
                             quest:EntitySetInFaction(r4, "FACTION_HERO")
                             quest:FadeScreenIn()
                             __native_entity_state:SetStateBool("WaitingForFight", true)
-                            -- LAB_00d4c3f3: (native jump target)
-                            quest:SetStateBool("StartedMeleeTesting", false)
-                            quest:SetMasterGameState("HeroTakingGuildTest", false)
-                            quest:DeregisterTimer(xStack_258)
-                            goto LAB_00d4c416
+                            goto LAB_00d4c3f3
                         end
                     else
                         alive = not quest:IsActiveThreadTerminating()
@@ -906,9 +893,7 @@ function Main(quest, me)
                             iVar5 = iVar6 + 1
                         until not (iVar6 + 1 < 7)
                         xStack_1fc = resources:NewResource()
-                        bVar3 = false
-                        if bVar3 ~= 0 then
-                        end
+                        resources:PrepareResource(xStack_1fc)
                         bVar3 = resources:TryAcquire(xStack_1fc, r4, 4)
                         while not bVar3 do
                             alive = quest:NewScriptFrame(me)
@@ -921,9 +906,7 @@ function Main(quest, me)
                         bVar3 = not alive
                         if not bVar3 then
                             xStack_1ec = resources:NewResource()
-                            bVar3 = false
-                            if bVar3 ~= 0 then
-                            end
+                            resources:PrepareResource(xStack_1ec)
                             iVar14 = 4
                             pCVar15 = xStack_1ec
                             pCVar7 = quest:GetHero()
@@ -946,7 +929,6 @@ function Main(quest, me)
                                 resources:SetActor(xStack_220, "HERO", xStack_1ec)
                                 resources:SetActor(xStack_220, "WHISPER", xStack_1fc)
                                 xStack_fc = resources:StartMovie("")
-                                quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
                                 quest:FixMovieSequenceCamera(true)
                                 resources:RunMacro("CS_GUILD_DEPARTURE_MELEE_TEST_END", xStack_220, false, true)
@@ -963,7 +945,7 @@ function Main(quest, me)
                                                 goto FLOW_native_label_1
                                             end
                                             quest:PauseAllNonScriptedEntities(false)
-                                            -- LAB_00d4c69e_c25: (native jump target)
+                                            -- LAB_00d4c69e_c17: (native jump target)
                                             resources:DestroyMovie(xStack_fc)
                                             resources:DestroyActorMap(xStack_220)
                                             goto LAB_00d4c6b3
@@ -1040,10 +1022,7 @@ function Main(quest, me)
                                 resources:DestroyActorMap(xStack_220)
                                 resources:ReleaseResource(xStack_1ec)
                                 resources:ReleaseResource(xStack_1fc)
-                                quest:SetStateBool("StartedMeleeTesting", false)
-                                quest:SetMasterGameState("HeroTakingGuildTest", false)
-                                quest:DeregisterTimer(xStack_258)
-                                goto LAB_00d4c416
+                                goto LAB_00d4c3f3
                             end
                             ::LAB_00d4c6b3::
                             resources:ReleaseResource(xStack_1ec)
@@ -1051,9 +1030,20 @@ function Main(quest, me)
                         ::LAB_00d4c6bf::
                         resources:ReleaseResource(xStack_1fc)
                     end
+                    goto FLOW_past_lab_00d4c3f3
+                    ::LAB_00d4c3f3::
+                    quest:SetStateBool("StartedMeleeTesting", false)
+                    quest:SetMasterGameState("HeroTakingGuildTest", false)
+                    quest:DeregisterTimer(xStack_258)
+                    goto LAB_00d4c40d
+                    ::FLOW_past_lab_00d4c3f3::
                     ::LAB_00d4c6c8::
                     quest:DeregisterTimer(xStack_258)
                 end
+                goto FLOW_past_lab_00d4c40d
+                ::LAB_00d4c40d::
+                goto LAB_00d4c416
+                ::FLOW_past_lab_00d4c40d::
                 ::LAB_00d4c6d1::
             end
             ::LAB_00d4c6da::
@@ -1072,7 +1062,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("WaitingForFight", true)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

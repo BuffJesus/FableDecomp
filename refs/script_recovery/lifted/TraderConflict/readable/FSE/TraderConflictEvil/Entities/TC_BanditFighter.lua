@@ -6,8 +6,8 @@ local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue5, predicateResult
-    local predicateResult4, predicateResult6, playerEngaged, scratchValue11
+    local scratchValue, scratchValue2, CVar6_b0, scratchValue3, scratchValue4, predicateResult
+    local predicateResult4, predicateResult6, playerEngaged, scratchValue10
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
@@ -24,26 +24,19 @@ function Main(quest, me)
     while not playerEngaged do
         if not quest:NewScriptFrame(me) then return end
         scratchValue = scratchValue3 | 1
-        -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-        if me:MsgIsHitBy("") then
-            scratchValue = scratchValue3 | 3
-            if me:MsgIsHitByHero() then
-                predicateResult = false
-                goto FLOW_after_lab_00df8b83
-            end
-            scratchValue = scratchValue3 | 7
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue3 | 15
-                if not me:MsgIsHitByHeroSpecialAbility(me) then
-                    predicateResult = false
-                    goto FLOW_after_lab_00df8b83
-                end
-            end
-            predicateResult = true
-        else
-            predicateResult = false
+        if not me:MsgIsHitBy("") then goto LAB_00df8b83 end
+        scratchValue = scratchValue3 | 3
+        if me:MsgIsHitByHero() then goto LAB_00df8b83 end
+        scratchValue = scratchValue3 | 7
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            scratchValue = scratchValue3 | 15
+            if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8b83 end
         end
-        ::FLOW_after_lab_00df8b83::
+        predicateResult = true
+        goto FLOW_past_lab_00df8b83
+        ::LAB_00df8b83::
+        predicateResult = false
+        ::FLOW_past_lab_00df8b83::
         if scratchValue & 8 ~= 0 then
             scratchValue = scratchValue & 0xfffffff7
         end
@@ -57,27 +50,25 @@ function Main(quest, me)
             scratchValue = scratchValue & 0xfffffffe
         end
         if predicateResult then
-            if quest:IsActiveThreadTerminating() then return end
             quest:ModifyThingHealth(me, 100.0, false)
         else
-            local scratchValue4 = scratchValue | 16
+            scratchValue4 = scratchValue | 16
             if me:MsgIsHitByHero() then
-                predicateResult4 = true
-                scratchValue = scratchValue4
+                goto LAB_00df8c73
             else
-                scratchValue5 = scratchValue | 48
+                scratchValue4 = scratchValue | 48
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue5 = scratchValue | 112
-                    if not me:MsgIsHitByHeroSpecialAbility(me) then
-                        predicateResult4 = true
-                        scratchValue = scratchValue5
-                        goto FLOW_after_lab_00df8c73
-                    end
+                    scratchValue4 = scratchValue | 112
+                    if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8c73 end
                 end
                 predicateResult4 = false
-                scratchValue = scratchValue5
+                scratchValue = scratchValue4
             end
-            ::FLOW_after_lab_00df8c73::
+            goto FLOW_past_lab_00df8c73
+            ::LAB_00df8c73::
+            predicateResult4 = true
+            scratchValue = scratchValue4
+            ::FLOW_past_lab_00df8c73::
             if scratchValue & 64 ~= 0 then
                 scratchValue = scratchValue & 0xffffffbf
             end
@@ -88,7 +79,6 @@ function Main(quest, me)
                 scratchValue = scratchValue & 0xffffffef
             end
             if predicateResult4 then
-                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("PlayerEngaged", true)
             end
         end
@@ -103,34 +93,34 @@ function Main(quest, me)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame(me) then return end
         scratchValue2 = scratchValue3 | 128
-        scratchValue11 = scratchValue2
+        scratchValue10 = scratchValue2
         if me:MsgIsHitByHero() then
-            predicateResult6 = true
+            goto LAB_00df8dcb
         else
             scratchValue2 = scratchValue3 | 384
-            scratchValue11 = scratchValue2
+            scratchValue10 = scratchValue2
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue2 = scratchValue3 | 896
-                scratchValue11 = scratchValue2
-                if not me:MsgIsHitByHeroSpecialAbility(me) then
-                    predicateResult6 = true
-                    goto FLOW_after_lab_00df8dcb
-                end
+                scratchValue10 = scratchValue2
+                if not me:MsgIsHitByHeroSpecialAbility(me) then goto LAB_00df8dcb end
             end
             predicateResult6 = false
         end
-        ::FLOW_after_lab_00df8dcb::
+        goto FLOW_past_lab_00df8dcb
+        ::LAB_00df8dcb::
+        predicateResult6 = true
+        ::FLOW_past_lab_00df8dcb::
         if scratchValue2 & 512 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffdff
-            scratchValue11 = scratchValue2
+            scratchValue10 = scratchValue2
         end
         if scratchValue2 & 256 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffeff
-            scratchValue11 = scratchValue2
+            scratchValue10 = scratchValue2
         end
         if CVar6_b0 < 0 then
             scratchValue2 = scratchValue2 & 0xffffff7f
-            scratchValue11 = scratchValue2
+            scratchValue10 = scratchValue2
         end
         if predicateResult6 then
             if not hitWarning then
@@ -138,13 +128,16 @@ function Main(quest, me)
                 quest:AddPersonToConversation(conversationID, hero)
                 quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, hero, false)
                 hitWarning = true
-                scratchValue2 = scratchValue11
+                scratchValue2 = scratchValue10
             elseif quest:IsDistanceBetweenThingsUnder(me, quest:GetNearestWithScriptName(me, "TC_BanditFighter"), 15.0) then
                 quest:SetStateBool("HeroAttackedBandit", true)
             end
         end
-        if not quest:GetStateBool("HeroAttackedBandit") then scratchValue3 = scratchValue2; goto continue_1 end
-        if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
+        if not quest:GetStateBool("HeroAttackedBandit") then
+            scratchValue3 = scratchValue2
+        elseif not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
+            scratchValue3 = scratchValue2
+        else
             if quest:IsActiveThreadTerminating() then return end
             if math.random(0, 32767) % 5 == 0 then
                 if quest:IsActiveThreadTerminating() then return end
@@ -159,9 +152,8 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then return end
             end
             if quest:IsActiveThreadTerminating() then return end
+            scratchValue3 = scratchValue2
         end
-        scratchValue3 = scratchValue2
-        ::continue_1::
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveThing(me, false, true)
@@ -173,7 +165,7 @@ function Init(quest, me)
 end
 
 -- TC_BanditFighter.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TC_BanditFighter.OnPredicateFail (retail 0x00cdebd0)

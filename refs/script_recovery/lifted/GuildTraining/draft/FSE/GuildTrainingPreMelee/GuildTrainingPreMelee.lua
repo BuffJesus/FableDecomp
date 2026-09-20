@@ -16,9 +16,7 @@ function Main(quest)
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
     xStack_5c = resources:NewResource()
-    bVar6 = false
-    if bVar6 ~= 0 then
-    end
+    resources:PrepareResource(xStack_5c)
     bVar6 = resources:TryAcquire(xStack_5c, r1, 4)
     while not bVar6 do
         alive = quest:NewScriptFrame()
@@ -37,9 +35,7 @@ function Main(quest)
     bVar6 = not alive
     if not bVar6 then
         xStack_4c = resources:NewResource()
-        bVar6 = false
-        if bVar6 ~= 0 then
-        end
+        resources:PrepareResource(xStack_4c)
         bVar6 = resources:TryAcquire(xStack_4c, r2, 4)
         while not bVar6 do
             alive = quest:NewScriptFrame()
@@ -52,9 +48,7 @@ function Main(quest)
         bVar6 = not alive
         if not bVar6 then
             xStack_3c = resources:NewResource()
-            bVar6 = false
-            if bVar6 ~= 0 then
-            end
+            resources:PrepareResource(xStack_3c)
             bVar6 = resources:TryAcquire(xStack_3c, r3, 4)
             while not bVar6 do
                 alive = quest:NewScriptFrame()
@@ -67,9 +61,7 @@ function Main(quest)
             bVar6 = not alive
             if not bVar6 then
                 xStack_20 = resources:NewResource()
-                bVar6 = false
-                if bVar6 ~= 0 then
-                end
+                resources:PrepareResource(xStack_20)
                 iVar8 = 4
                 pCVar7 = xStack_20
                 pCVar3 = quest:GetHero()
@@ -93,7 +85,6 @@ function Main(quest)
                     resources:SetActor(xStack_2c, "WHISPER", xStack_4c)
                     resources:SetActor(xStack_2c, "MASTER", xStack_3c)
                     xStack_10 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     resources:RunMacro("CS_GUILD_PREMELEE_INTRO", xStack_2c, false, true)

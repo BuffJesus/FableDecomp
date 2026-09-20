@@ -12,12 +12,8 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, r5, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_60, x_stk_68, x_stk_8, x_stk_c
     local alive = true
-    local function __region_LAB_00d4e853_c2()
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_78)
-    end
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_78)
@@ -26,9 +22,7 @@ function Main(quest, me)
     end
     uVar10 = 0
     xStack_8c = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_8c)
     bVar3 = resources:TryAcquire(xStack_8c, me, 4)
     while not bVar3 do
         alive = quest:NewScriptFrame(me)
@@ -53,8 +47,9 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d4ef90 end
-        x_stk_68 = quest:GetAllThingsWithScriptName("BirdMarker")
-        if #x_stk_68 ~= 0 then
+        iStack_68 = quest:GetAllThingsWithScriptName("BirdMarker")
+        iVar6 = x_stk_60 - iStack_68 >> 0x1f
+        if (x_stk_60 - iStack_68) / 0xc + iVar6 ~= iVar6 then
             ctr_90 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
@@ -64,13 +59,13 @@ function Main(quest, me)
                     return
                 end
                 bVar3 = false
-                elem_1 = x_stk_68[(ctr_90) / 0xc + 1]
+                elem_1 = iStack_68[(ctr_90) / 0xc + 1]
                 pPosition = elem_1:GetPos()
                 r1 = quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", pPosition, "KillBird")
                 quest:SetThingPersistent(r1, true)
                 ctr_90 = ctr_90 + 0xc
                 uVar10 = uVar10 + 1
-            until not (uVar10 < (#x_stk_68))
+            until not (uVar10 < ((x_stk_60 - iStack_68) / 0xc))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -116,7 +111,6 @@ function Main(quest, me)
             bVar3 = not alive
             if not bVar3 then
                 xStack_78 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 pCVar5 = 0x1
                 quest:PauseAllNonScriptedEntities(true)
                 if not __native_entity_state:GetStateBool("HaveChatted") then
@@ -129,6 +123,7 @@ function Main(quest, me)
                         fret_0 = quest:GetHealth(pCVar15)
                         fVar2 = 0.0
                         x_stk_68 = nil
+                        x_stk_68 = 0
                         if fVar2 < fret_0 then
                             iVar13 = 0
                             iVar12 = 1
@@ -152,228 +147,129 @@ function Main(quest, me)
                             if bVar3 then goto LAB_00d4e978 end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_BIRD_KILLER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while iVar6 < 0 do
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar3 = not alive
-                            if bVar3 then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_78)
-                                quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(xStack_8c)
-                                return
-                            end
-                            iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        end
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar3 = not alive
-                        if not bVar3 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar3 = not alive
-                            if iVar6 == 1 then
-                                if not bVar3 then
-                                    __native_entity_state:SetStateInt("BirdMode", 1)
-                                    xStack_38 = resources:NewResource()
-                                    bVar3 = false
-                                    if bVar3 ~= 0 then
-                                    end
-                                    iVar7 = 4
-                                    pCVar9 = xStack_38
-                                    pCVar5 = quest:GetHero()
-                                    bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
-                                    while not bVar3 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar3 = not alive
-                                        if bVar3 then
-                                            resources:ReleaseResource(xStack_38)
-                                            -- LAB_00d4e91f_c2: (native jump target)
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_78)
-                                            quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(xStack_8c)
-                                            return
-                                        end
-                                        iVar7 = 4
-                                        pCVar9 = xStack_38
-                                        pCVar5 = quest:GetHero()
-                                        bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar3 = not alive
-                                    if not bVar3 then
-                                        r1 = resources:NewActorMap()
-                                        resources:SetActor(r1, "HERO", xStack_38)
-                                        resources:SetActor(r1, "ME", xStack_8c)
-                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
-                                        resources:DestroyActorMap(r1)
-                                        resources:ReleaseResource(xStack_38)
-                                        __region_LAB_00d4e853_c2(); goto LAB_00d4e87a
-                                    end
-                                    resources:ReleaseResource(xStack_38)
-                                end
-                                goto LAB_00d4e978
-                            end
-                            if not bVar3 then
-                                x_stk_8 = resources:ScriptThing(xStack_8c)
-                                pCVar15 = x_stk_8
-                                fret_00 = quest:GetHealth(pCVar15)
-                                fVar2 = 0.0
-                                if fVar2 < fret_00 then
-                                    iVar13 = 0
-                                    iVar12 = 1
-                                    iVar7 = 0
-                                    iVar6 = 0
-                                    pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
-                                    pCVar5 = quest:GetHero()
-                                    r3 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                                    iVar6 = me:IsPerformingScriptTask()
-                                    cVar4 = iVar6
-                                    while cVar4 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar3 = not alive
-                                        if bVar3 then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_78)
-                                            quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(xStack_8c)
-                                            return
-                                        end
-                                        iVar6 = me:IsPerformingScriptTask()
-                                        cVar4 = iVar6
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar3 = not alive
-                                    if bVar3 then goto LAB_00d4e9e1_c2 end
-                                end
-                                __region_LAB_00d4e853_c2()
-                                goto LAB_00d4e87a
-                            end
-                        end
-                        ::LAB_00d4e9e1_c2::
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_7c)
-                        goto FLOW_after_lab_00d4e5e3
+                        goto LAB_00d4e5e3
                     end
-                    ::LAB_00d4e978::
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_78)
+                    goto LAB_00d4e978
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_BIRD_KILLER_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        -- LAB_00d4e5e3: (native jump target)
-                        iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while iVar6 < 0 do
-                            alive = quest:NewScriptFrame(me)
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar3 = not alive
-                            if bVar3 then
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_78)
-                                quest:DeregisterTimer(timerId)
-                                resources:ReleaseResource(xStack_8c)
-                                return
-                            end
-                            iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        end
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar3 = not alive
-                        if not bVar3 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar3 = not alive
-                            if iVar6 == 1 then
-                                if not bVar3 then
-                                    __native_entity_state:SetStateInt("BirdMode", 1)
-                                    xStack_38 = resources:NewResource()
-                                    bVar3 = false
-                                    if bVar3 ~= 0 then
-                                    end
-                                    iVar7 = 4
-                                    pCVar9 = xStack_38
-                                    pCVar5 = quest:GetHero()
-                                    bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
-                                    while not bVar3 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar3 = not alive
-                                        if bVar3 then
-                                            resources:ReleaseResource(xStack_38)
-                                            __cleanup_LAB_00d4e91f()
-                                            return
-                                        end
-                                        iVar7 = 4
-                                        pCVar9 = xStack_38
-                                        pCVar5 = quest:GetHero()
-                                        bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar3 = not alive
-                                    if not bVar3 then
-                                        r1 = resources:NewActorMap()
-                                        resources:SetActor(r1, "HERO", xStack_38)
-                                        resources:SetActor(r1, "ME", xStack_8c)
-                                        resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
-                                        resources:DestroyActorMap(r1)
-                                        resources:ReleaseResource(xStack_38)
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_78)
-                                        goto LAB_00d4e87a
-                                    end
-                                    resources:ReleaseResource(xStack_38)
-                                end
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_78)
-                                goto FLOW_after_lab_00d4e5e3
-                            end
-                            if not bVar3 then
-                                x_stk_8 = resources:ScriptThing(xStack_8c)
-                                pCVar15 = x_stk_8
-                                fret_00 = quest:GetHealth(pCVar15)
-                                fVar2 = 0.0
-                                if fVar2 < fret_00 then
-                                    iVar13 = 0
-                                    iVar12 = 1
-                                    iVar7 = 0
-                                    iVar6 = 0
-                                    pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
-                                    pCVar5 = quest:GetHero()
-                                    r4 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                                    iVar6 = me:IsPerformingScriptTask()
-                                    cVar4 = iVar6
-                                    while cVar4 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar3 = not alive
-                                        if bVar3 then
-                                            quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_78)
-                                            quest:DeregisterTimer(timerId)
-                                            resources:ReleaseResource(xStack_8c)
-                                            return
-                                        end
-                                        iVar6 = me:IsPerformingScriptTask()
-                                        cVar4 = iVar6
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar3 = not alive
-                                    if bVar3 then goto LAB_00d4e9e1 end
-                                end
-                                -- LAB_00d4e853: (native jump target)
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_78)
-                                goto LAB_00d4e87a
-                            end
-                        end
+                        goto LAB_00d4e5e3
                     end
-                    ::LAB_00d4e9e1::
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_7c)
+                    goto FLOW_hoist_lab_00d4e5e3_1
                 end
-                ::FLOW_after_lab_00d4e5e3::
+                goto FLOW_past_lab_00d4e978
+                ::LAB_00d4e978::
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_78)
+                ::FLOW_past_lab_00d4e978::
+                goto FLOW_past_lab_00d4e5e3
+                ::LAB_00d4e5e3::
+                iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                while iVar6 < 0 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_78)
+                        quest:DeregisterTimer(timerId)
+                        resources:ReleaseResource(xStack_8c)
+                        return
+                    end
+                    iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
+                end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if not bVar3 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if iVar6 == 1 then
+                        if not bVar3 then
+                            __native_entity_state:SetStateInt("BirdMode", 1)
+                            xStack_38 = resources:NewResource()
+                            resources:PrepareResource(xStack_38)
+                            iVar7 = 4
+                            pCVar9 = xStack_38
+                            pCVar5 = quest:GetHero()
+                            bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
+                            while not bVar3 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar3 = not alive
+                                if bVar3 then
+                                    resources:ReleaseResource(xStack_38)
+                                    __cleanup_LAB_00d4e91f()
+                                    return
+                                end
+                                iVar7 = 4
+                                pCVar9 = xStack_38
+                                pCVar5 = quest:GetHero()
+                                bVar3 = resources:TryAcquire(pCVar9, pCVar5, iVar7)
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if not bVar3 then
+                                r1 = resources:NewActorMap()
+                                resources:SetActor(r1, "HERO", xStack_38)
+                                resources:SetActor(r1, "ME", xStack_8c)
+                                resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
+                                resources:DestroyActorMap(r1)
+                                resources:ReleaseResource(xStack_38)
+                                goto LAB_00d4e853
+                            end
+                            resources:ReleaseResource(xStack_38)
+                        end
+                        goto LAB_00d4e978
+                    end
+                    if not bVar3 then
+                        x_stk_8 = resources:ScriptThing(xStack_8c)
+                        pCVar15 = x_stk_8
+                        fret_00 = quest:GetHealth(pCVar15)
+                        fVar2 = 0.0
+                        if fVar2 < fret_00 then
+                            iVar13 = 0
+                            iVar12 = 1
+                            iVar7 = 0
+                            iVar6 = 0
+                            pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
+                            pCVar5 = quest:GetHero()
+                            r3 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            iVar6 = me:IsPerformingScriptTask()
+                            cVar4 = iVar6
+                            while cVar4 do
+                                alive = quest:NewScriptFrame(me)
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar3 = not alive
+                                if bVar3 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_78)
+                                    quest:DeregisterTimer(timerId)
+                                    resources:ReleaseResource(xStack_8c)
+                                    return
+                                end
+                                iVar6 = me:IsPerformingScriptTask()
+                                cVar4 = iVar6
+                            end
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar3 = not alive
+                            if bVar3 then goto LAB_00d4e9e1 end
+                        end
+                        goto LAB_00d4e853
+                    end
+                    goto FLOW_past_lab_00d4e853
+                    ::LAB_00d4e853::
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_78)
+                    goto LAB_00d4e87a
+                    ::FLOW_past_lab_00d4e853::
+                end
+                ::FLOW_hoist_lab_00d4e5e3_1::
+                ::LAB_00d4e9e1::
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_7c)
+                ::FLOW_past_lab_00d4e5e3::
             end
             goto LAB_00d4ef87
         end
@@ -476,7 +372,6 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d4ef87 end
                         xStack_38 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         pCVar15 = 0x1
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_c = resources:ScriptThing(xStack_8c)
@@ -490,7 +385,7 @@ function Main(quest, me)
                             iVar6 = 0
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_DONE"
                             pCVar5 = quest:GetHero()
-                            r5 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            r4 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -577,7 +472,13 @@ function Init(quest, me)
     quest:SetThingPersistent(me, true)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
+    local birdMode = quest:GetStateInt("BirdMode") or 0
+    birdMode = quest:PersistTransferInt(context, "BirdMode", birdMode)
+    quest:SetStateInt("BirdMode", birdMode)
+    local currentBirds = quest:GetStateInt("CurrentBirds") or 0
+    currentBirds = quest:PersistTransferInt(context, "CurrentBirds", currentBirds)
+    quest:SetStateInt("CurrentBirds", currentBirds)
 end
 
 function OnPredicateFail(quest, me)

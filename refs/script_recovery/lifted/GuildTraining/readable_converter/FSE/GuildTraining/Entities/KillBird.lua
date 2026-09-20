@@ -3,14 +3,19 @@
 
 -- KillBird.Main (retail 0x00d43190)
 function Main(quest, me)
+    local resources = quest:RetailResources()
     if not quest:NewScriptFrame(me) then return end
-    if me:AcquireControl(4) then
-        while true do
-            if quest:IsActiveThreadTerminating() then break end
-            quest:NewScriptFrame(me)
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, me, 4) do
+        if not quest:NewScriptFrame(me) then goto LAB_00d43263 end
     end
+    while true do
+        if quest:IsActiveThreadTerminating() then break end
+        quest:NewScriptFrame(me)
     end
-    me:ReleaseControl()
+    ::LAB_00d43263::
+    resources:ReleaseResource(resource)
 end
 
 -- KillBird.Init (retail 0x00d430f0)
@@ -19,7 +24,7 @@ function Init(quest, me)
 end
 
 -- KillBird.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- KillBird.OnPredicateFail (retail 0x00d43120)

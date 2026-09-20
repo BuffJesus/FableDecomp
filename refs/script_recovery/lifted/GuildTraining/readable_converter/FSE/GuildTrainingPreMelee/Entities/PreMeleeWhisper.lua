@@ -7,7 +7,7 @@ local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue3, switch, p4, p5, hero4, hero5, scratchValue5
+    local scratchValue, switch, p4, p5, hero4, hero5, getPos, scratchValue4
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(1)
     while not quest:GetStateBool("WhisperCutsceneFinished") do
@@ -15,6 +15,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
+    resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -36,7 +37,6 @@ function Main(quest, me)
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d52e1b end
             local movie = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             me:ClearCommands()
             local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
@@ -68,23 +68,27 @@ function Main(quest, me)
         end
         local preMeleeChatMarker = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
         hero4 = hero
-        -- TODO(native): xStack_a0 = (float)puVar8[2] - *(float *)(pCVar6 + 0x8);
+        if not (preMeleeChatMarker ~= nil and not preMeleeChatMarker:IsNull()) then
+            getPos = {x = 0, y = 0, z = 0}
+        else
+            getPos = preMeleeChatMarker:GetPos()
+        end
+        local f_stk_94_1 = getPos.z - hero:GetPos().z
         if quest:IsDistanceBetweenThingsUnder(me, preMeleeChatMarker, 7.0) then
             hero5 = hero
             local isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)
-            local sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or ABS(resource) < 1.0 == (ABS(resource) == 1.0)
+            local sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or 1.0 < math.abs(f_stk_94_1)
             if sequence then goto LAB_00d52d56 end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource)
                 return
             end
-            -- TODO(native): xStack_a0 = (float)tonumber(pvVar7);
-            scratchValue5 = 0
+            local f_stk_94_2 = tonumber(preMeleeChatMarker:GetDataString())
+            scratchValue4 = 0
             local preMeleeChatMarker2 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-            local scratchValue = 0 - preMeleeChatMarker2 >> 31
-            if (0 - preMeleeChatMarker2) / 12 + scratchValue ~= scratchValue then
-                scratchValue3 = 0
+            if #preMeleeChatMarker2 ~= 0 then
+                scratchValue = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
@@ -93,17 +97,17 @@ function Main(quest, me)
                     end
                     -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
     --[[unresolved native value]]
-                    if tonumber(nil) ~= resource then scratchValue5 = scratchValue5 + 1; scratchValue3 = scratchValue3 + 12; goto continue_3 end
+                    if tonumber(nil) ~= f_stk_94_2 then scratchValue4 = scratchValue4 + 1; scratchValue = scratchValue + 12; goto continue_3 end
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    quest:RemoveThing(hero, preMeleeChatMarker2 + scratchValue3, false)
-                    scratchValue5 = scratchValue5 + 1
-                    scratchValue3 = scratchValue3 + 12
+                    quest:RemoveThing(hero, preMeleeChatMarker2 + scratchValue, false)
+                    scratchValue4 = scratchValue4 + 1
+                    scratchValue = scratchValue + 12
                     ::continue_3::
-                until scratchValue5 >= ((0 - preMeleeChatMarker2) / 12)
+                until scratchValue4 >= #preMeleeChatMarker2
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
@@ -113,51 +117,51 @@ function Main(quest, me)
             local conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             quest:SetTimer(timerId, 10)
-            switch = resource
+            switch = f_stk_94_2
             repeat
-                if resource == 2 then
+                if f_stk_94_2 == 2 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_LIBRARY", me, hero, false)
                     break
-                elseif resource == 4 then
+                elseif f_stk_94_2 == 4 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SHOP", me, hero, false)
                     break
-                elseif resource == 5 then
+                elseif f_stk_94_2 == 5 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CLOISTERS", me, hero, false)
                     break
-                elseif resource == 6 then
+                elseif f_stk_94_2 == 6 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE1", me, hero, false)
                     break
-                elseif resource == 7 then
+                elseif f_stk_94_2 == 7 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE2", me, hero, false)
                     break
-                elseif resource == 8 then
+                elseif f_stk_94_2 == 8 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE3", me, hero, false)
                     break
-                elseif resource == 9 then
+                elseif f_stk_94_2 == 9 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_GRAVE4", me, hero, false)
                     break
-                elseif resource == 10 then
+                elseif f_stk_94_2 == 10 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAZE", me, hero, false)
                     break
-                elseif resource == 11 then
+                elseif f_stk_94_2 == 11 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WILL", me, hero, false)
                     break
-                elseif resource == 13 then
+                elseif f_stk_94_2 == 13 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_WOODS", me, hero, false)
                     break
-                elseif resource == 14 then
+                elseif f_stk_94_2 == 14 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SKILL", me, hero, false)
                     break
-                elseif resource == 15 then
+                elseif f_stk_94_2 == 15 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_SERVANTS", me, hero, false)
                     break
-                elseif resource == 16 then
+                elseif f_stk_94_2 == 16 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_MAIN_DORM", me, hero, false)
                     break
-                elseif resource == 19 then
+                elseif f_stk_94_2 == 19 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DOOR", me, hero, false)
                     break
-                elseif resource == 20 then
+                elseif f_stk_94_2 == 20 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, hero, false)
                 else
                     goto FLOW_native_label_1
@@ -181,7 +185,7 @@ function Init(quest, me)
 end
 
 -- PreMeleeWhisper.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- PreMeleeWhisper.OnPredicateFail (retail 0x00cdebd0)

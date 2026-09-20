@@ -21,9 +21,7 @@ function Main(quest, me)
         return
     end
     xStack_20 = resources:NewResource()
-    bVar2 = false
-    if bVar2 ~= 0 then
-    end
+    resources:PrepareResource(xStack_20)
     bVar2 = resources:TryAcquire(xStack_20, me, 2)
     while not bVar2 do
         alive = quest:NewScriptFrame(me)
@@ -74,9 +72,7 @@ function Main(quest, me)
                     quest:SetStateInt("BanditSecurityLinesSaid", 0)
                 end
             end
-            bVar2 = false
-            if bVar2 ~= 0 then
-            end
+            resources:PrepareResource(xStack_20)
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -91,7 +87,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

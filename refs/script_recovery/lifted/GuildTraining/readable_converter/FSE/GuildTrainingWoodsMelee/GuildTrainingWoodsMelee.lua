@@ -3,7 +3,6 @@
 
 -- Q_GuildTrainingWoodsMelee.Main (retail 0x00d66620)
 function Main(quest)
-    local scratchValue
     quest:SetStateBool("ScorpionsAlive", true)
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -15,9 +14,6 @@ function Main(quest)
     quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome")
     quest:FinalizeEntityBindings()
     quest:CreateThread("WatchForTermination")  -- native thread body CQ_HobbeCaveScript::WatchForTermination: lift it as function WatchForTermination(quest)
-    if scratchValue & 2 ~= 0 then
-        scratchValue = scratchValue & 0xfffffffd
-    end
     quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
     while quest:GetStateBool("ScorpionsAlive") do
         if not quest:NewScriptFrame() then return end
@@ -72,7 +68,7 @@ function DoMission(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        isLevelLoaded = quest:IsLevelLoaded("")
+        isLevelLoaded = quest:IsLevelLoaded("GuildWoods")
     end
 end
 

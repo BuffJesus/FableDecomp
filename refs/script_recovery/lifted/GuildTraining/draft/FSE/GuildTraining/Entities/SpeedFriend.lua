@@ -19,9 +19,7 @@ function Main(quest, me)
     bVar3 = not alive
     if not bVar3 then
         xStack_20 = resources:NewResource()
-        bVar3 = false
-        if bVar3 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         bVar3 = resources:TryAcquire(xStack_20, me, 4)
         while not bVar3 do
             alive = quest:NewScriptFrame(me)
@@ -48,7 +46,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

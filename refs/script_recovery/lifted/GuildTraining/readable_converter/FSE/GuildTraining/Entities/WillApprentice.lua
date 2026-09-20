@@ -17,12 +17,13 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, scratchValue3, scratchValue4, scratchValue5, scratchValue, questionAnswer
-    local scratchValue29, index, p0, timerId, resource, timerId4, infoElement
+    local scratchValue30, index, p0, timerId, resource, timerId4, infoElement
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId4)
         resources:ReleaseResource(resource)
     end
     resource = resources:NewResource()
+    resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -74,18 +75,24 @@ function Main(quest, me)
                 quest:AddPersonToConversation(conversationId, hero)
                 local getMasterGameState = quest:GetMasterGameState("GlobalWillGrade")
                 if getMasterGameState == 0 then
-                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_EARLY_COMMENT", me, hero, false); goto LAB_00d4f49e end
+                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_EARLY_COMMENT", me, hero, false); goto LAB_00d4f499 end
                 elseif getMasterGameState == 7 then
-                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_APLUS_COMMENT", me, hero, false); goto LAB_00d4f49e end
+                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_APLUS_COMMENT", me, hero, false); goto LAB_00d4f499 end
                 elseif not quest:IsActiveThreadTerminating() then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_WILL_NOT_APLUS_COMMENT", me, hero, false)
-                    goto LAB_00d4f49e
+                    goto LAB_00d4f499
                 end
+                goto FLOW_past_lab_00d4f499
+                ::LAB_00d4f499::
+                goto LAB_00d4f49e
+                ::FLOW_past_lab_00d4f499::
             end
             ReleaseEverything(); return
         end
         if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-        if willApprenticeTargetMarker ~= nil and not willApprenticeTargetMarker:IsNull() then
+        if not (willApprenticeTargetMarker ~= nil and not willApprenticeTargetMarker:IsNull()) then
+            p0 = {x = 0, y = 0, z = 0}
+        else
             p0 = willApprenticeTargetMarker:GetPos()
         end
         me:MoveToPosition(p0, 3.0, ENTITY_MOVE_WALK, false, true)
@@ -93,10 +100,9 @@ function Main(quest, me)
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             if not me:IsPerformingScriptTask() then
-                if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                if quest:GetMasterGameState("HeroTakingGuildTest") then
                     if not quest:IsActiveThreadTerminating() then
                         local movie3 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE", GROUP_SELECT_FIRST, false, true, false)
@@ -121,7 +127,6 @@ function Main(quest, me)
                     ReleaseEverything(); return
                 end
                 local movie = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_WILL_HELLO", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -228,7 +233,7 @@ function Main(quest, me)
                         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                         quest:SetTimer(timerId, 2)
                     end
-                    if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                    if quest:GetMasterGameState("GuildWarningOccuring") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                         scratchValue3 = 1
                         scratchValue4 = 1
@@ -262,17 +267,18 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                     infoElement = quest:GetMasterGameState("WillScore")
                     index = 0
-                    scratchValue29 = 0
+                    scratchValue30 = 0
                     repeat
-                        scratchValue = scratchValue29
+                        scratchValue = scratchValue30
                         if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_WillGrades, index) <= infoElement then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                             break
                         end
                         index = index + 1
-                        scratchValue29 = scratchValue + 1
+                        scratchValue30 = scratchValue + 1
                     until not (scratchValue + 1 < 7)
                     local resource3 = resources:NewResource()
+                    resources:PrepareResource(resource3)
                     while not resources:TryAcquire(resource3, hero, 4) do
                         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); goto LAB_00d50594 end
                     end
@@ -281,7 +287,6 @@ function Main(quest, me)
                     resources:SetActor(actorMap, "ME", resource)
                     resources:SetActor(actorMap, "HERO", resource3)
                     local movie4 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_END", actorMap, false, true)
@@ -356,7 +361,6 @@ function Main(quest, me)
             else
                 me:ClearCommands()
                 local movie2 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                     me:Speak(hero, "TEXT_QST_028_APPRENTICE_WILL_EARLY", GROUP_SELECT_FIRST, false, true, false)
@@ -392,7 +396,7 @@ function Init(quest, me)
 end
 
 -- WillApprentice.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- WillApprentice.OnPredicateFail (retail 0x00cdebd0)

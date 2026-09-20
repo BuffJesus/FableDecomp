@@ -34,7 +34,7 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     quest:OpenDoor(quest:GetThingWithScriptName("Gate1"))
     quest:OpenDoor(quest:GetThingWithScriptName("Gate2Outer"))
-    PlayHeroCutscene(quest, "CS_TRADERCON_GOOD_INTRO")
+    helper_DFDED0(quest, "CS_TRADERCON_GOOD_INTRO")
     quest:SetStateBool("IntroDone", true)
     quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), true, false)
     quest:FadeScreenIn()
@@ -106,7 +106,7 @@ end
 function WatchTimeLimit(quest)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
-    while quest:GetMasterGameState("TCGTimeLimitBoastTaken") == 0 do
+    while not quest:GetMasterGameState("TCGTimeLimitBoastTaken") do
         if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); return end
         if quest:GetTimer(timerId) == 0 then
             quest:DeregisterTimer(timerId)
@@ -135,23 +135,23 @@ function WatchForRegionTransitions(quest)
     local allCreaturesIndex, scratchValue
     while not quest:GetStateBool("OutroDone") do
         if not quest:NewScriptFrame() then goto LAB_00dfca72 end
-        if not quest:MsgOnRegionLoaded() then goto continue_1 end
-        UpdateLiveEnemies(quest)
-        scratchValue = 0
-        if quest:GetStateListCount("AllCreatures") ~= 0 then
-            allCreaturesIndex = 0
-            repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
-                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", allCreaturesIndex), nil --[[operand lost by the decompiler]])
-                quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", allCreaturesIndex), false)
-                quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", allCreaturesIndex), "FACTION_BANDITS")
-                scratchValue = scratchValue + 1
-                allCreaturesIndex = allCreaturesIndex + 1
-            until scratchValue >= quest:GetStateListCount("AllCreatures")
+        if quest:MsgOnRegionLoaded() then
+            UpdateLiveEnemies(quest)
+            scratchValue = 0
+            if quest:GetStateListCount("AllCreatures") ~= 0 then
+                allCreaturesIndex = 0
+                repeat
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", allCreaturesIndex), nil --[[operand lost by the decompiler]])
+                    quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", allCreaturesIndex), false)
+                    quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", allCreaturesIndex), "FACTION_BANDITS")
+                    scratchValue = scratchValue + 1
+                    allCreaturesIndex = allCreaturesIndex + 1
+                until scratchValue >= quest:GetStateListCount("AllCreatures")
+            end
+            if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+            quest:SetStateBool("EnteredNewRegion", true)
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
-        quest:SetStateBool("EnteredNewRegion", true)
-        ::continue_1::
     end
     ::LAB_00dfca72::
 end
@@ -175,35 +175,31 @@ function WatchForHittingEnemies(quest)
         if quest:GetStateListCount("AllCreatures") ~= 0 then
             repeat
                 if quest:IsActiveThreadTerminating() then return end
-                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-                if not quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitBy("") then
-                    -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
-                    if quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitByAnySpecialAbilityFrom("") then
-                        if not quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitByHeroSpecialAbility(14) then
-                            predicateResult = true
-                            goto FLOW_after_lab_00dfc735
-                        end
-                    end
-                    predicateResult = false
-                else
-                    predicateResult = true
+                if quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitBy("") then goto LAB_00dfc735 end
+                if quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitByAnySpecialAbilityFrom("") then
+                    if not quest:GetStateListAt("AllCreatures", 0 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00dfc735 end
                 end
-                ::FLOW_after_lab_00dfc735::
+                predicateResult = false
+                goto FLOW_past_lab_00dfc735
+                ::LAB_00dfc735::
+                predicateResult = true
+                ::FLOW_past_lab_00dfc735::
                 if predicateResult then
-                    if quest:IsActiveThreadTerminating() then return end
                     scratchValue2 = 0
                     if quest:GetStateListCount("AllCreatures") ~= 0 then
                         allCreaturesIndex = 0
                         repeat
                             if quest:IsActiveThreadTerminating() then return end
                             if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", 0 / 12), quest:GetStateListAt("AllCreatures", allCreaturesIndex), 20.0) then
-                                quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
+                                goto LAB_00dfc811
                             else
                                 local isThingAwareOfOtherThingInAnyWay = quest:IsThingAwareOfOtherThingInAnyWay(hero, nil --[[missing]])
-                                if isThingAwareOfOtherThingInAnyWay then
-                                    quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
-                                end
+                                if isThingAwareOfOtherThingInAnyWay then goto LAB_00dfc811 end
                             end
+                            goto FLOW_past_lab_00dfc811
+                            ::LAB_00dfc811::
+                            quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
+                            ::FLOW_past_lab_00dfc811::
                             scratchValue2 = scratchValue2 + 1
                             allCreaturesIndex = allCreaturesIndex + 1
                         until scratchValue2 >= quest:GetStateListCount("AllCreatures")
@@ -308,8 +304,7 @@ end
 
 -- Q_TraderConflictGood.UpdateLiveEnemies (retail 0x00dfc320)
 function UpdateLiveEnemies(quest)
-    local isActiveThreadTerminating2, isActiveThreadTerminating3, isActiveThreadTerminating4
-    local isActiveThreadTerminating5, isActiveThreadTerminating6, scratchValue, p0
+    local isActiveThreadTerminating2, isActiveThreadTerminating3, scratchValue, p0
     local allCreaturesIndex, scratchValue8
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
@@ -319,60 +314,35 @@ function UpdateLiveEnemies(quest)
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() ~= "CREATURE_NEW_CHICKEN_04" then
-            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "TraderToRescue" then goto LAB_00dfc413 end
-            isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating2 then
-                return isActiveThreadTerminating2
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
-            goto FLOW_after_lab_00dfc3b5
-            ::LAB_00dfc413::
-            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "BodyGuard" then goto LAB_00dfc45c end
-            isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating3 then
-                return isActiveThreadTerminating3
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
-            goto FLOW_after_lab_00dfc3b5
-            ::LAB_00dfc45c::
-            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "RingFighter" then goto LAB_00dfc4a5 end
-            isActiveThreadTerminating4 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating4 then
-                return isActiveThreadTerminating4
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
-            goto FLOW_after_lab_00dfc3b5
-            ::LAB_00dfc4a5::
-            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "FisticuffsMember" then goto LAB_00dfc4ee end
-            isActiveThreadTerminating5 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating5 then
-                return isActiveThreadTerminating5
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
-            goto FLOW_after_lab_00dfc3b5
-            ::LAB_00dfc4ee::
-            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() ~= "Tyler" then goto LAB_00dfc537 end
-            isActiveThreadTerminating6 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating6 then
-                return isActiveThreadTerminating6
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
-            goto FLOW_after_lab_00dfc3b5
-            ::LAB_00dfc537::
-            local isActiveThreadTerminating7 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating7 then
-                return isActiveThreadTerminating7
-            end
-            allCreaturesIndex = allCreaturesIndex + 1
-        else
-            local isActiveThreadTerminating8 = quest:IsActiveThreadTerminating()
-            if isActiveThreadTerminating8 then
-                return isActiveThreadTerminating8
-            end
-            quest:StateListErase("AllCreatures", allCreaturesIndex)
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_NEW_CHICKEN_04" then goto LAB_00dfc3b5 end
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "TraderToRescue" then
+            goto LAB_00dfc3b5
         end
-        ::FLOW_after_lab_00dfc3b5::
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "BodyGuard" then
+            goto LAB_00dfc3b5
+        end
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "RingFighter" then
+            goto LAB_00dfc3b5
+        end
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "FisticuffsMember" then
+            goto LAB_00dfc3b5
+        end
+        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "Tyler" then
+            goto LAB_00dfc3b5
+        end
+        isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
+        if isActiveThreadTerminating2 then
+            return isActiveThreadTerminating2
+        end
+        allCreaturesIndex = allCreaturesIndex + 1
+        goto FLOW_past_lab_00dfc3b5
+        ::LAB_00dfc3b5::
+        isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
+        if isActiveThreadTerminating3 then
+            return isActiveThreadTerminating3
+        end
+        quest:StateListErase("AllCreatures", allCreaturesIndex)
+        ::FLOW_past_lab_00dfc3b5::
     end
     local predicateResult = quest:IsActiveThreadTerminating()
     scratchValue = predicateResult
@@ -406,7 +376,8 @@ end
 
 -- Q_TraderConflictGood.AttackPeople (retail 0x00dfd600)
 function AttackPeople(quest)
-    local scratchValue, scratchValue5, scratchValue7, scratchValue9, timerId
+    local scratchValue4, sequence, scratchValue5, scratchValue7, scratchValue8, scratchValue10
+    local scratchValue, timerId
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
@@ -415,65 +386,86 @@ function AttackPeople(quest)
     local allCreatures = quest:GetStateListCopy("AllCreatures")
     timerId = quest:RegisterTimer()
     if not quest:GetStateBool("EnteredNewRegion") then
-        -- LAB_00dfd643: (native jump target)
-        if #allCreatures ~= 0 and quest:GetStateInt("TradersReachedTeleporter") < quest:GetStateInt("TradersFollowing") then
-            if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
-            if #allCreatures ~= 0 then
-                scratchValue = 0
-                repeat
-                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
-                    local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue + 1], "TraderToRescue")
-                    if not quest:IsEntityFollowingHero(traderToRescue) then
-                        if traderToRescue ~= nil then
-                            -- TODO(native): *xStack_18 = *xStack_18 - 1;
-                            -- TODO(native): if *r1 == 0 then
-                        end
-                    end
-                    if quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue + 1], hero, 15.0) or quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue + 1], traderToRescue, 15.0) then
-                        -- LAB_00dfd841: (native jump target)
-                        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                        if quest:IsDistanceBetweenThingsUnder(allCreatures[0 + 1], traderToRescue, 15.0) or (quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[0 + 1], traderToRescue) and (traderToRescue ~= nil and not traderToRescue:IsNull()) and (traderToRescue ~= nil and traderToRescue:IsAlive())) then
-                            quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], traderToRescue)
-                            if quest:GetTimer(timerId) == 0 then
-                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
-                                local conversationId = quest:AddNewConversation(allCreatures[0 + 1], false, false)
-                                quest:AddPersonToConversation(conversationId, hero)
-                                quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", allCreatures[0 + 1], hero, false)
-                                quest:SetTimer(timerId, 4)
-                                goto FLOW_after_lab_00dfda32
-                            end
-                        else
-                            quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], hero)
-                            if quest:GetTimer(timerId) == 0 then
-                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
-                                local conversationId2 = quest:AddNewConversation(allCreatures[0 + 1], false, false)
-                                quest:AddPersonToConversation(conversationId2, hero)
-                                quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_HERO", allCreatures[0 + 1], hero, false)
-                                quest:SetTimer(timerId, 4)
-                            end
-                        end
-                        ::FLOW_after_lab_00dfda32::
-                        quest:MiniMapAddMarker(allCreatures[0 + 1], "HUD_ORB_RED_SMALL")
-                        if #allCreatures ~= 0 then
-                            if allCreatures[0 + 1]:IsEqualTo(allCreatures[0 + 1]) then
-                                table.remove(allCreatures, 0 + 1)
-                                break
-                            end
-                            goto FLOW_after_lab_00dfda90
-                        end
-                        goto LAB_00dfdabb
-                    end
-                    if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue + 1], hero) then return end  -- TODO(native): goto LAB_00dfd841
-                    if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue + 1], traderToRescue) then
-                        if allCreatures[scratchValue + 1]:GetName() ~= "TC_BanditGuard" then return end  -- TODO(native): goto LAB_00dfd841
-                    end
-                    -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
-                    scratchValue = scratchValue + 1
-                until scratchValue9 >= #allCreatures
-            end
-            goto LAB_00dfdaff
-        end
+        goto LAB_00dfd643
     end
+    goto FLOW_past_lab_00dfd643
+    ::LAB_00dfd643::
+    if #allCreatures ~= 0 and quest:GetStateInt("TradersReachedTeleporter") < quest:GetStateInt("TradersFollowing") then
+        if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
+        if #allCreatures ~= 0 then
+            scratchValue4 = 0
+            repeat
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
+                local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue4 + 1], "TraderToRescue")
+                if not quest:IsEntityFollowingHero(traderToRescue) then
+                    if scratchValue10 ~= nil then
+                        -- TODO(native): *xStack_10 = *xStack_10 - 1;
+                        -- TODO(native): if *xStack_10 == 0 then
+                    end
+                end
+                if quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], hero, 15.0) or quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], traderToRescue, 15.0) then
+                    goto LAB_00dfd841
+                end
+                goto FLOW_past_lab_00dfd841
+                ::LAB_00dfd841::
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                sequence = quest:IsDistanceBetweenThingsUnder(allCreatures[0 + 1], traderToRescue, 15.0)
+                if not sequence then
+                    sequence = quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[0 + 1], traderToRescue) and scratchValue7 ~= nil
+                    if sequence then
+                        -- TODO(native): cVar3 = (**(*piStack_14 + 0x12c))()
+                        local scratchValue2 = nil --[[unresolved native value]]
+                        sequence = scratchValue2 ~= 0
+                    end
+                end
+                if sequence then
+                    if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
+                    quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], traderToRescue)
+                    if quest:GetTimer(timerId) == 0 then
+                        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                        local conversationId = quest:AddNewConversation(allCreatures[0 + 1], false, false)
+                        quest:AddPersonToConversation(conversationId, hero)
+                        scratchValue = allCreatures[0 + 1]
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", scratchValue, hero, false)
+                        goto LAB_00dfda32
+                    end
+                else
+                    if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
+                    quest:GiveThingBestEnemyTarget(allCreatures[0 + 1], hero)
+                    if quest:GetTimer(timerId) == 0 then
+                        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                        local conversationId2 = quest:AddNewConversation(allCreatures[0 + 1], false, false)
+                        quest:AddPersonToConversation(conversationId2, hero)
+                        scratchValue = allCreatures[0 + 1]
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_HERO", scratchValue, hero, false)
+                        goto LAB_00dfda32
+                    end
+                end
+                goto FLOW_past_lab_00dfda32
+                ::LAB_00dfda32::
+                quest:SetTimer(timerId, 4)
+                ::FLOW_past_lab_00dfda32::
+                quest:MiniMapAddMarker(allCreatures[0 + 1], "HUD_ORB_RED_SMALL")
+                if #allCreatures ~= 0 then
+                    if allCreatures[0 + 1]:IsEqualTo(allCreatures[0 + 1]) then
+                        table.remove(allCreatures, 0 + 1)
+                        break
+                    end
+                    goto FLOW_after_lab_00dfda90
+                end
+                goto LAB_00dfdabb
+                ::FLOW_past_lab_00dfd841::
+                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue4 + 1], hero) then goto LAB_00dfd841 end
+                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue4 + 1], traderToRescue) then
+                    if allCreatures[scratchValue4 + 1]:GetName() ~= "TC_BanditGuard" then goto LAB_00dfd841 end
+                end
+                -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
+                scratchValue4 = scratchValue4 + 1
+            until scratchValue >= #allCreatures
+        end
+        goto LAB_00dfdaff
+    end
+    ::FLOW_past_lab_00dfd643::
     ::LAB_00dfdb8c::
     if quest:IsActiveThreadTerminating() then
         quest:DeregisterTimer(timerId)
@@ -487,10 +479,10 @@ function AttackPeople(quest)
     ::LAB_00dfde13::
     do return end
     while true do
-        scratchValue7 = scratchValue7 + 1
-        if scratchValue7 == #allCreatures then break end
-        if allCreatures[scratchValue5 + 1]:IsEqualTo(allCreatures[scratchValue7 + 1]) then
-            table.remove(allCreatures, scratchValue7 + 1)
+        scratchValue8 = scratchValue8 + 1
+        if scratchValue8 == #allCreatures then break end
+        if allCreatures[scratchValue5 + 1]:IsEqualTo(allCreatures[scratchValue8 + 1]) then
+            table.remove(allCreatures, scratchValue8 + 1)
             break
         end
     end
@@ -508,7 +500,7 @@ function AttackPeople(quest)
             quest:NewScriptFrame()
             if not quest:IsActiveThreadTerminating() then
                 if quest:GetStateBool("EnteredNewRegion") then goto LAB_00dfdb8c end
-                -- TODO(native): goto LAB_00dfd643
+                goto LAB_00dfd643
             end
             quest:DeregisterTimer(timerId)
             return
@@ -518,10 +510,21 @@ function AttackPeople(quest)
     goto LAB_00dfde13
 end
 
--- helper 0xDFDED0 (named after its shape)
-function PlayHeroCutscene(quest, strParam1)
-    quest:StartCutscene({HERO = quest:GetHero()}, {}, true)
-    quest:RunCutscene(strParam1, true, false)
-    quest:EndCutscene()
+-- Q_TraderConflictGood.helper_DFDED0 (retail 0x00dfded0)
+function helper_DFDED0(quest, strParam1)
+    local resources = quest:RetailResources()
+    local resource = resources:NewResource()
+    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    local movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro(strParam1, actorMap, false, true)
+    quest:FixMovieSequenceCamera(false)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    resources:ReleaseResource(resource)
 end
 

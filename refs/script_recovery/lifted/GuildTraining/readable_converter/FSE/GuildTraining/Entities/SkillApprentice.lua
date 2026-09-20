@@ -19,20 +19,21 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, scratchValue2, scratchValue3, scratchValue4, questionAnswer, scratchValue
-    local scratchValue23, index, p0, resource, timerId3, infoElement
+    local scratchValue27, index, p0, resource, actorMap, resource3, timerId3, movie4, infoElement
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId3)
-        resources:ReleaseResource(resource)
+        resources:ReleaseResource(resource3)
     end
-    resource = resources:NewResource()
-    while not resources:TryAcquire(resource, me, 4) do
+    resource3 = resources:NewResource()
+    resources:PrepareResource(resource3)
+    while not resources:TryAcquire(resource3, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource3)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     quest:SetIsPushableByHero(me, false)
     quest:SetThingHasInformation(me, false, true, false)
     quest:EntitySetAsKillable(me, false, true)
@@ -47,13 +48,13 @@ function Main(quest, me)
     repeat
         if predicateResult then
             quest:DeregisterTimer(timerId3)
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource3)
             return
         end
         if not quest:IsQuestActive("Q_GuildTrainingDeparture") then goto LAB_00d4c9a2 end
         if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
         if ((3 < quest:GetMasterGameState("GlobalMeleeGrade")) or (3 < quest:GetMasterGameState("GlobalSkillGrade"))) or 3 < quest:GetMasterGameState("GlobalWillGrade") then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId3); resources:ReleaseResource(resource); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId3); resources:ReleaseResource(resource3); return end
             if scratchValue4 ~= 0 then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:ClearThingHasInformation(me)
@@ -61,7 +62,7 @@ function Main(quest, me)
             end
             goto LAB_00d4c9a2
             quest:DeregisterTimer(timerId3)
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource3)
             return
         end
         if scratchValue4 == 0 then
@@ -79,18 +80,24 @@ function Main(quest, me)
                 quest:AddPersonToConversation(conversationId, hero)
                 local getMasterGameState = quest:GetMasterGameState("GlobalSkillGrade")
                 if getMasterGameState == 0 then
-                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", me, hero, false); goto LAB_00d4cbac end
+                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", me, hero, false); goto LAB_00d4cba7 end
                 elseif getMasterGameState == 7 then
-                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", me, hero, false); goto LAB_00d4cbac end
+                    if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", me, hero, false); goto LAB_00d4cba7 end
                 elseif not quest:IsActiveThreadTerminating() then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPRENTICE_SKILL_NOT_APLUS_COMMENT", me, hero, false)
-                    goto LAB_00d4cbac
+                    goto LAB_00d4cba7
                 end
+                goto FLOW_past_lab_00d4cba7
+                ::LAB_00d4cba7::
+                goto LAB_00d4cbac
+                ::FLOW_past_lab_00d4cba7::
             end
             ReleaseEverything(); return
         end
         if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-        if skillApprenticeTargetMarker ~= nil and not skillApprenticeTargetMarker:IsNull() then
+        if not (skillApprenticeTargetMarker ~= nil and not skillApprenticeTargetMarker:IsNull()) then
+            p0 = {x = 0, y = 0, z = 0}
+        else
             p0 = skillApprenticeTargetMarker:GetPos()
         end
         me:MoveToPosition(p0, 3.0, ENTITY_MOVE_WALK, false, true)
@@ -98,53 +105,51 @@ function Main(quest, me)
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId3)
-                resources:ReleaseResource(resource)
+                resources:ReleaseResource(resource3)
                 return
             end
             if not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                if quest:GetMasterGameState("HeroTakingGuildTest") then
                     if not quest:IsActiveThreadTerminating() then
                         local movie3 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                             me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY", GROUP_SELECT_FIRST, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
-                                    quest:EndCutscene()
+                                    quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie3)
                                     ReleaseEverything(); do return end
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
-                                quest:EndCutscene()
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
                                 ReleaseEverything(); return
                             end
                         end
-                        quest:EndCutscene()
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie3)
                         goto LAB_00d4dc36
                     end
                     ReleaseEverything(); return
                 end
                 local movie = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                     me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_HELLO", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
-                            quest:EndCutscene()
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                             ReleaseEverything(); do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
-                        quest:EndCutscene()
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         ReleaseEverything(); return
                     end
@@ -156,14 +161,14 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     else
-                        quest:EndCutscene()
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         ReleaseEverything(); do return end
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
-                    quest:EndCutscene()
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     ReleaseEverything(); return
                 end
@@ -172,23 +177,23 @@ function Main(quest, me)
                     if not isActiveThreadTerminating then
                         if quest:GetMasterGameState("GlobalSkillGrade") ~= 7 then
                             if quest:IsActiveThreadTerminating() then
-                                quest:EndCutscene()
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
                                 ReleaseEverything(); return
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                 if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d4dded end
                                 if quest:IsActiveThreadTerminating() then
-                                    quest:EndCutscene()
+                                    quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie)
                                     ReleaseEverything(); return
                                 end
                             end
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                             if not me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d4dded end
                             if quest:IsActiveThreadTerminating() then
-                                quest:EndCutscene()
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
                                 ReleaseEverything(); return
                             end
@@ -196,33 +201,33 @@ function Main(quest, me)
                         goto LAB_00d4d2bb
                     end
                     ::LAB_00d4dded::
-                    quest:EndCutscene()
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     ReleaseEverything(); return
                 end
                 if isActiveThreadTerminating then
-                    quest:EndCutscene()
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     ReleaseEverything(); return
                 end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                     me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_RETURN", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
-                            quest:EndCutscene()
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                             ReleaseEverything(); do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
-                        quest:EndCutscene()
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         ReleaseEverything(); return
                     end
                 end
                 ::LAB_00d4d2bb::
-                quest:EndCutscene()
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
                 if questionAnswer ~= 1 then goto LAB_00d4dc36 end
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
@@ -244,7 +249,7 @@ function Main(quest, me)
                 scratchValue2 = 0
                 while 0 < quest:GetTimer(timerId) and scratchValue3 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d4de3d end
-                    if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                    if quest:GetMasterGameState("GuildWarningOccuring") then
                         scratchValue3 = 1
                     end
                     if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
@@ -253,16 +258,16 @@ function Main(quest, me)
                         quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("HighestSkillScore"), -1)
                     end
                     quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("SkillScore"), -1)
-                    if not quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then goto continue_6 end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
-                    if playerNotWarned then
-                        playerNotWarned = false
-                        local conversationId2 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(conversationId2, hero)
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", me, hero, false)
+                    if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
+                        if playerNotWarned then
+                            playerNotWarned = false
+                            local conversationId2 = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId2, hero)
+                            quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPRENTICE_SKILL_RING_OUT", me, hero, false)
+                        end
+                        scratchValue3 = 1
                     end
-                    scratchValue3 = 1
-                    ::continue_6::
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                 while not quest:IsHeroControlledByPlayer() do
@@ -273,154 +278,129 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(infoCounter2)
                 quest:RemoveQuestInfoElement(infoElement)
                 if scratchValue3 ~= 0 then
-                    quest:SetMasterGameState("HeroTakingGuildTest", false)
-                    quest:SetPlayerUsingRangedDummies(false)
-                    quest:DeregisterTimer(timerId)
-                    goto LAB_00d4dc36
+                    goto LAB_00d4dc16
                 end
+                goto FLOW_past_lab_00d4dc16
+                ::LAB_00d4dc16::
+                quest:SetMasterGameState("HeroTakingGuildTest", false)
+                quest:SetPlayerUsingRangedDummies(false)
+                quest:DeregisterTimer(timerId)
+                goto LAB_00d4dc36
+                ::FLOW_past_lab_00d4dc16::
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                 infoElement = quest:GetMasterGameState("SkillScore")
                 index = 0
                 scratchValue = 0
                 repeat
-                    scratchValue23 = scratchValue
+                    scratchValue27 = scratchValue
                     if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) <= infoElement then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                         break
                     end
                     index = index + 1
-                    scratchValue = scratchValue23 + 1
-                until not (scratchValue23 + 1 < 7)
-                if not hero:AcquireControl(4) then goto LAB_00d4de34 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4de34 end
-                quest:StartCutscene({ME = me, HERO = hero, ME = me, ME = me, ME = me}, {}, true)
-                quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_END", true, false)
-                if scratchValue2 == 0 then
-                    repeat
-                        if scratchValue23 == 0 then
-                            if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
-                                if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
-                                quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", true, false)
-                                break
-                            end
-                            if not quest:IsActiveThreadTerminating() then
-                                quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", true, false)
-                                quest:ClearThingHasInformation(me)
-                                goto FLOW_native_label_1
-                            end
-                            goto LAB_00d4de05
-                        elseif scratchValue23 == 1 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_A", true, false)
-                            break
-                        elseif scratchValue23 == 2 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_B", true, false)
-                            break
-                        elseif scratchValue23 == 3 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_C", true, false)
-                            break
-                        elseif scratchValue23 == 4 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_D", true, false)
-                            break
-                        elseif scratchValue23 == 5 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_E", true, false)
-                            break
-                        elseif scratchValue23 == 6 then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_F", true, false)
-                            break
-                        else
-                            goto FLOW_native_label_1
-                        end
-                    until true
-                    ::FLOW_native_label_1::
-                    if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue23 then
-                        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
-                        quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue23)
-                    end
-                    quest:EndCutscene()
-                    hero:ReleaseControl()
-                    quest:SetMasterGameState("HeroTakingGuildTest", false)
-                    quest:SetPlayerUsingRangedDummies(false)
-                    quest:DeregisterTimer(timerId)
-                    goto LAB_00d4dc36
+                    scratchValue = scratchValue27 + 1
+                until not (scratchValue27 + 1 < 7)
+                resource = resources:NewResource()
+                resources:PrepareResource(resource)
+                while not resources:TryAcquire(resource, hero, 4) do
+                    if not quest:NewScriptFrame(me) then goto LAB_00d4de34 end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
-                quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", true, false)
+                if quest:IsActiveThreadTerminating() then goto LAB_00d4de34 end
+                actorMap = resources:NewActorMap()
+                resources:SetActor(actorMap, "ME", resource3)
+                resources:SetActor(actorMap, "HERO", resource)
+                movie4 = resources:StartMovie("")
+                quest:PauseAllNonScriptedEntities(true)
+                quest:FixMovieSequenceCamera(true)
+                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_END", actorMap, false, true)
+                if scratchValue2 == 0 then
+                    goto LAB_00d4d979
+                end
+                goto FLOW_past_lab_00d4d979
+                ::LAB_00d4d979::
+                resources:SetActor(actorMap, "ME", resource3)
                 repeat
-                    if scratchValue23 == 0 then
+                    if scratchValue27 == 0 then
                         if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", true, false)
+                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", actorMap, false, true)
                             break
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", true, false)
+                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", actorMap, false, true)
                             quest:ClearThingHasInformation(me)
-                            goto FLOW_native_label_1_c17
+                            goto FLOW_native_label_1
                         end
                         goto LAB_00d4de05
-                    elseif scratchValue23 == 1 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_A", true, false)
+                    elseif scratchValue27 == 1 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_A", actorMap, false, true)
                         break
-                    elseif scratchValue23 == 2 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_B", true, false)
+                    elseif scratchValue27 == 2 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", actorMap, false, true)
                         break
-                    elseif scratchValue23 == 3 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_C", true, false)
+                    elseif scratchValue27 == 3 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", actorMap, false, true)
                         break
-                    elseif scratchValue23 == 4 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_D", true, false)
+                    elseif scratchValue27 == 4 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", actorMap, false, true)
                         break
-                    elseif scratchValue23 == 5 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_E", true, false)
+                    elseif scratchValue27 == 5 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", actorMap, false, true)
                         break
-                    elseif scratchValue23 == 6 then
-                        quest:RunCutscene("CS_GUILD_DEPARTURE_SKILL_TEST_F", true, false)
+                    elseif scratchValue27 == 6 then
+                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", actorMap, false, true)
                         break
                     else
-                        goto FLOW_native_label_1_c17
+                        goto FLOW_native_label_1
                     end
                 until true
-                ::FLOW_native_label_1_c17::
-                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue23 then
+                ::FLOW_native_label_1::
+                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue27 then
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
-                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue23)
+                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue27)
                 end
-                quest:EndCutscene()
-                hero:ReleaseControl()
-                quest:SetMasterGameState("HeroTakingGuildTest", false)
-                quest:SetPlayerUsingRangedDummies(false)
-                quest:DeregisterTimer(timerId)
-                goto LAB_00d4dc36
+                quest:FixMovieSequenceCamera(false)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie4)
+                resources:DestroyActorMap(actorMap)
+                resources:ReleaseResource(resource)
+                goto LAB_00d4dc16
+                ::FLOW_past_lab_00d4d979::
+                if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
+                resources:SetActor(actorMap, "ME", resource3)
+                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", actorMap, false, true)
+                goto LAB_00d4d979
                 ::LAB_00d4de05::
+                quest:PauseAllNonScriptedEntities(false)
                 ::LAB_00d4de1f::
-                quest:EndCutscene()
+                resources:DestroyMovie(movie4)
+                resources:DestroyActorMap(actorMap)
                 ::LAB_00d4de34::
-                hero:ReleaseControl()
+                resources:ReleaseResource(resource)
                 ::LAB_00d4de3d::
                 quest:DeregisterTimer(timerId)
             else
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 me:ClearCommands()
                 local movie2 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                     me:Speak(hero, "TEXT_QST_028_APPRENTICE_SKILL_EARLY", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
-                            quest:EndCutscene()
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie2)
                             ReleaseEverything(); do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
-                        quest:EndCutscene()
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
                         ReleaseEverything(); return
                     end
                 end
-                quest:EndCutscene()
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie2)
                 goto LAB_00d4dc36
             end
@@ -438,7 +418,7 @@ function Init(quest, me)
 end
 
 -- SkillApprentice.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- SkillApprentice.OnPredicateFail (retail 0x00cdebd0)

@@ -21,9 +21,7 @@ function Main(quest, me)
         return
     end
     xStack_20 = resources:NewResource()
-    bVar5 = false
-    if bVar5 ~= 0 then
-    end
+    resources:PrepareResource(xStack_20)
     bVar5 = resources:TryAcquire(xStack_20, me, 2)
     while not bVar5 do
         alive = quest:NewScriptFrame(me)
@@ -63,10 +61,7 @@ function Main(quest, me)
         bVar5 = true
         pCVar10 = quest:GetHero()
         bVar6 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_SHIRT_BANDITCAMP")
-        if not bVar6 then
-            bVar6 = false
-            goto FLOW_after_lab_00dfb588
-        end
+        if not bVar6 then goto LAB_00dfb588 end
         bVar9 = true
         bVar4 = false
         bVar3 = false
@@ -74,10 +69,7 @@ function Main(quest, me)
         bVar5 = true
         pCVar10 = quest:GetHero()
         bVar6 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_TROUSERS_BANDITCAMP")
-        if not bVar6 then
-            bVar6 = false
-            goto FLOW_after_lab_00dfb588
-        end
+        if not bVar6 then goto LAB_00dfb588 end
         bVar9 = true
         bVar4 = true
         bVar3 = false
@@ -85,10 +77,7 @@ function Main(quest, me)
         bVar5 = true
         pCVar10 = quest:GetHero()
         bVar6 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_HAT_BANDITCAMP")
-        if not bVar6 then
-            bVar6 = false
-            goto FLOW_after_lab_00dfb588
-        end
+        if not bVar6 then goto LAB_00dfb588 end
         bVar9 = true
         bVar4 = true
         bVar3 = true
@@ -96,10 +85,7 @@ function Main(quest, me)
         bVar5 = true
         pCVar10 = quest:GetHero()
         bVar6 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_BOOTS_BANDITCAMP")
-        if not bVar6 then
-            bVar6 = false
-            goto FLOW_after_lab_00dfb588
-        end
+        if not bVar6 then goto LAB_00dfb588 end
         bVar9 = true
         bVar4 = true
         bVar3 = true
@@ -108,15 +94,14 @@ function Main(quest, me)
         pCVar10 = quest:GetHero()
         bVar7 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_GLOVES_BANDITCAMP")
         bVar6 = true
-        if not bVar7 then
-            bVar6 = false
-            goto FLOW_after_lab_00dfb588
-        end
+        if not bVar7 then goto LAB_00dfb588 end
     else
-        -- LAB_00dfb588: (native jump target)
-        bVar6 = false
+        goto LAB_00dfb588
     end
-    ::FLOW_after_lab_00dfb588::
+    goto FLOW_past_lab_00dfb588
+    ::LAB_00dfb588::
+    bVar6 = false
+    ::FLOW_past_lab_00dfb588::
     if bVar8 then
     end
     if bVar3 then
@@ -139,10 +124,7 @@ function Main(quest, me)
         pCVar10 = quest:GetHero()
         quest:AddPersonToConversation(iVar11, pCVar10)
         string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_BANDIT_COSTUME_10"
-        -- LAB_00dfb630: (native jump target)
-        pCVar10 = quest:GetHero()
-        quest:AddLineToConversation(iVar11, string, me, pCVar10, false)
-        quest:SetStateBool("CommentedOnBanditCostume", true)
+        goto LAB_00dfb630
     else
         if not quest:GetStateBool("CommentedOnBanditCostume") then
             bVar4 = false
@@ -174,10 +156,7 @@ function Main(quest, me)
                             bVar5 = true
                             pCVar10 = quest:GetHero()
                             bVar9 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_GLOVES_BANDITCAMP")
-                            if not bVar9 then
-                                bVar9 = false
-                                goto FLOW_after_lab_00dfb79f
-                            end
+                            if not bVar9 then goto LAB_00dfb79f end
                         end
                     end
                 end
@@ -185,10 +164,12 @@ function Main(quest, me)
             bVar8 = true
             bVar9 = true
         else
-            -- LAB_00dfb79f: (native jump target)
-            bVar9 = false
+            goto LAB_00dfb79f
         end
-        ::FLOW_after_lab_00dfb79f::
+        goto FLOW_past_lab_00dfb79f
+        ::LAB_00dfb79f::
+        bVar9 = false
+        ::FLOW_past_lab_00dfb79f::
         if bVar3 then
         end
         if bVar4 then
@@ -205,10 +186,7 @@ function Main(quest, me)
             pCVar10 = quest:GetHero()
             quest:AddPersonToConversation(iVar11, pCVar10)
             string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_PART_BANDIT_COSTUME_10"
-            pCVar10 = quest:GetHero()
-            quest:AddLineToConversation(iVar11, string, me, pCVar10, false)
-            quest:SetStateBool("CommentedOnBanditCostume", true)
-            goto FLOW_after_lab_00dfb630
+            goto LAB_00dfb630
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
@@ -232,10 +210,13 @@ function Main(quest, me)
             quest:SetStateInt("BanditSecurityLinesSaid", 0)
         end
     end
-    ::FLOW_after_lab_00dfb630::
-    bVar5 = false
-    if bVar5 ~= 0 then
-    end
+    goto FLOW_past_lab_00dfb630
+    ::LAB_00dfb630::
+    pCVar10 = quest:GetHero()
+    quest:AddLineToConversation(iVar11, string, me, pCVar10, false)
+    quest:SetStateBool("CommentedOnBanditCostume", true)
+    ::FLOW_past_lab_00dfb630::
+    resources:PrepareResource(xStack_20)
     repeat
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
@@ -248,7 +229,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

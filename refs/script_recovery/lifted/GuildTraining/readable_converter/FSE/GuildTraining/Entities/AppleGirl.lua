@@ -12,6 +12,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult6, predicateResult, ctr_64, questionAnswer, conversationId8, switch, movie
     local resource = resources:NewResource()
+    resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -37,68 +38,64 @@ function Main(quest, me)
             quest:AddLineToConversation(conversationId, "TEXT_QST_028_APPLEGIRL_HELP", me, hero, false)
             quest:SetTimer(timerId, 15)
         end
-        if not me:IsTalkedToByHero() then goto continue_2 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
-        movie = resources:StartMovie("")
-        quest:StartMovieSequence()
-        quest:PauseAllNonScriptedEntities(true)
-        if not haveChatted then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-            haveChatted = true
-            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-            if 0.0 < fret_0 then
-                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
+        if me:IsTalkedToByHero() then
+            if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
+            movie = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            if not haveChatted then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-            end
-            quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-        else
-            if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
-            quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION_AGAIN", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-        end
-        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-        while questionAnswer < 0 do
-            quest:NewScriptFrame(me)
-            if not quest:IsActiveThreadTerminating() then
-                questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                haveChatted = true
+                local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_0 then
+                    if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+                end
+                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             else
-                quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie)
-                quest:DeregisterTimer(timerId)
-                resources:ReleaseResource(resource)
-                do return end
-                questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
+                quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPLEGIRL_QUESTION_AGAIN", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             end
+            questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+            while questionAnswer < 0 do
+                quest:NewScriptFrame(me)
+                if not quest:IsActiveThreadTerminating() then
+                    questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                else
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    quest:DeregisterTimer(timerId)
+                    resources:ReleaseResource(resource)
+                    do return end
+                    questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                end
+            end
+            if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
+            if questionAnswer == 1 then
+                appleMode = 1
+                if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
+                    childAppleMode = true
+                end
+            else
+                local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_00 then
+                    if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
+                end
+            end
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(movie)
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
-        if questionAnswer == 1 then
-            appleMode = 1
-            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
-                childAppleMode = true
-            end
-        else
-            local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
-            if 0.0 < fret_00 then
-                if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_IMPLORE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3d948 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d3e06c end
-            end
-        end
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie)
-        ::continue_2::
     end
     if not quest:IsActiveThreadTerminating() then
         while appleMode == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
-            if childAppleMode then
-                if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
-                    predicateResult6 = false
-                    goto FLOW_after_lab_00d3d987
-                end
-                predicateResult6 = true
-            else
-                predicateResult6 = false
-            end
-            ::FLOW_after_lab_00d3d987::
+            if not childAppleMode then goto LAB_00d3d987 end
+            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then goto LAB_00d3d987 end
+            predicateResult6 = true
+            goto FLOW_past_lab_00d3d987
+            ::LAB_00d3d987::
+            predicateResult6 = false
+            ::FLOW_past_lab_00d3d987::
             if predicateResult6 then
                 quest:RemoveThing(me, false, true)
             end
@@ -129,7 +126,7 @@ function Main(quest, me)
                 local conversationId4 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId4, hero)
                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, hero, false)
-            elseif ctr_64 == nil then
+            elseif ctr_64 == 0 then
                 local conversationId5 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId5, hero)
                 quest:AddLineToConversation(conversationId5, "TEXT_QST_028_APPLEGIRL_NO_MORE_APPLES", me, hero, false)
@@ -140,7 +137,7 @@ function Main(quest, me)
             end
             quest:Pause(1.0)
             currentApples = currentApples + ctr_64
-            if ctr_64 == nil then goto FLOW_native_label_1 end
+            if ctr_64 == 0 then goto FLOW_native_label_1 end
             if quest:IsActiveThreadTerminating() then goto LAB_00d3e1b6 end
             conversationId8 = quest:AddNewConversation(me, false, false)
             switch = currentApples
@@ -159,7 +156,6 @@ function Main(quest, me)
                     break
                 elseif switch == 4 then
                     movie = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
                     if 0.0 < fret_01 then
@@ -180,16 +176,13 @@ function Main(quest, me)
             ::FLOW_native_label_1::
         end
         while not quest:IsActiveThreadTerminating() do
-            if childAppleMode then
-                if quest:IsQuestActive("Q_GuildTrainingPreMelee") then
-                    predicateResult = false
-                    goto FLOW_after_lab_00d3e0a0
-                end
-                predicateResult = true
-            else
-                predicateResult = false
-            end
-            ::FLOW_after_lab_00d3e0a0::
+            if not childAppleMode then goto LAB_00d3e0a0 end
+            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then goto LAB_00d3e0a0 end
+            predicateResult = true
+            goto FLOW_past_lab_00d3e0a0
+            ::LAB_00d3e0a0::
+            predicateResult = false
+            ::FLOW_past_lab_00d3e0a0::
             if predicateResult then
                 quest:RemoveThing(me, false, true)
             end
@@ -231,7 +224,9 @@ function Init(quest, me)
 end
 
 -- AppleGirl.OnPersist (retail 0x00d44650)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
+    quest:SetStateInt("AppleMode", quest:PersistTransferInt(context, "AppleMode", quest:GetStateInt("AppleMode") or 0))
+    quest:SetStateInt("CurrentApples", quest:PersistTransferInt(context, "CurrentApples", quest:GetStateInt("CurrentApples") or 0))
 end
 
 -- AppleGirl.OnPredicateFail (retail 0x00d3d120)

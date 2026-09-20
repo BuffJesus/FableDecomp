@@ -4,8 +4,13 @@
 -- TC_BanditHostageKeeper.Main (retail 0x00dfba60)
 function Main(quest, me)
     local hero = quest:GetHero()
+    local resources = quest:RetailResources()
     if not quest:NewScriptFrame(me) then return end
-    if not me:AcquireControl(2) then goto LAB_00dfbcd3 end
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, me, 2) do
+        if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
         if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
@@ -27,11 +32,12 @@ function Main(quest, me)
             quest:SetStateInt("BanditSecurityLinesSaid", 0)
         end
     end
+    resources:PrepareResource(resource)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
     ::LAB_00dfbcd3::
-    me:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- TC_BanditHostageKeeper.Init (retail 0x00cdebb0)
@@ -39,7 +45,7 @@ function Init(quest, me)
 end
 
 -- TC_BanditHostageKeeper.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TC_BanditHostageKeeper.OnPredicateFail (retail 0x00cdebd0)

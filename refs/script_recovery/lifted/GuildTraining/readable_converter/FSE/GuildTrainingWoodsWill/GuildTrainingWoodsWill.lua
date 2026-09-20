@@ -10,8 +10,8 @@ local SCRIPT_DEF = {
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, conversationId, scratchValue7
-    local scratchValue9, resource, resource2, willBandit
+    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, scratchValue7, scratchValue9
+    local resource, resource2, willBandit
     scratchValue2 = 0
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -32,7 +32,11 @@ function Main(quest)
     quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
     quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
     local willWhisper = quest:GetThingWithScriptName("WillWhisper")
-    if not willWhisper:AcquireControl(4) then goto LAB_00d685d5 end
+    local resource4 = resources:NewResource()
+    resources:PrepareResource(resource4)
+    while not resources:TryAcquire(resource4, willWhisper, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d685d5 end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00d685d5 end
     willBandit = quest:GetAllThingsWithScriptName("WillBandit")
     -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
@@ -50,26 +54,29 @@ function Main(quest)
     end
     scratchValue3 = 0
     resource2 = resources:NewResource()
+    resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, hero, 4) do
-        quest:NewScriptFrame()
-        if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource2)
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
-            goto FLOW_after_lab_00d67db1
-        end
+        if not quest:NewScriptFrame() then goto LAB_00d67db1 end
     end
     if quest:IsActiveThreadTerminating() then
-        resources:ReleaseResource(resource2)
-        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+        goto LAB_00d67db1
     else
+        local actorMap = resources:NewActorMap()
+        resources:SetActor(actorMap, "HERO", resource2)
         -- TODO(native): resources:SetActor(xStack_38, "BAN1", &0x0)
         -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
         -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
         -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
-        quest:StartCutscene({HERO = hero, WHISPER = willWhisper}, {}, true)
-        quest:RunCutscene("CS_GUILD_WILL_WOODS_INTRO", true, false)
-        quest:EndCutscene()
+        resources:SetActor(actorMap, "WHISPER", resource4)
+        local movie = resources:StartMovie("")
+        quest:PauseAllNonScriptedEntities(true)
+        quest:FixMovieSequenceCamera(true)
+        resources:RunMacro("CS_GUILD_WILL_WOODS_INTRO", actorMap, false, true)
+        quest:FixMovieSequenceCamera(false)
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap)
         resources:ReleaseResource(resource2)
         -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
         ctr_88 = 0
@@ -84,61 +91,88 @@ function Main(quest)
                 scratchValue3 = scratchValue3 + 1
             until ctr_88 >= #willBandit
         end
-        if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d67db1 end
-        while quest:GetStateBool("BanditsAlive") do
-            if not quest:NewScriptFrame() then goto LAB_00d685cc end
-            while not quest:IsLevelLoaded("GuildWoods") do
+        if not quest:IsActiveThreadTerminating() then
+            resources:PrepareResource(resource4)
+            while quest:GetStateBool("BanditsAlive") do
                 if not quest:NewScriptFrame() then goto LAB_00d685cc end
-            end
-            while willBandit ~= scratchValue7 do
-                -- TODO(native): puStack_78 = puStack_78 - 3;
-            end
-            willBandit = quest:GetAllThingsWithScriptName("WillBandit")
-            if #willBandit == 0 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                quest:SetStateBool("BanditsAlive", false)
-            end
-            if quest:GetHealth(hero) >= quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then goto continue_1 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-            conversationId = quest:AddNewConversation(willWhisper, false, false)
-            quest:AddPersonToConversation(conversationId, hero)
-            quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", willWhisper, hero, false)
-            if quest:IsXbox() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP")
-                while not quest:MsgIsGameInfoClickedPast() do
+                while not quest:IsLevelLoaded("GuildWoods") do
                     if not quest:NewScriptFrame() then goto LAB_00d685cc end
                 end
-            else
-                if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP_PC")
-                while not quest:MsgIsGameInfoClickedPast() do
-                    if not quest:NewScriptFrame() then goto LAB_00d685cc end
+                while willBandit ~= scratchValue7 do
+                    -- TODO(native): puStack_78 = puStack_78 - 3;
+                end
+                willBandit = quest:GetAllThingsWithScriptName("WillBandit")
+                if #willBandit == 0 then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
+                    quest:SetStateBool("BanditsAlive", false)
+                end
+                if quest:GetHealth(hero) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
+                    local conversationId = quest:AddNewConversation(willWhisper, false, false)
+                    quest:AddPersonToConversation(conversationId, hero)
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", willWhisper, hero, false)
+                    if quest:IsXbox() then
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
+                        quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP")
+                        while not quest:MsgIsGameInfoClickedPast() do
+                            if not quest:NewScriptFrame() then goto LAB_00d685cc end
+                        end
+                    else
+                        if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
+                        quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP_PC")
+                        while not quest:MsgIsGameInfoClickedPast() do
+                            if not quest:NewScriptFrame() then goto LAB_00d685cc end
+                        end
+                    end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
+                    quest:SetStateBool("WhisperAnimate", true)
+                    quest:ChangeHeroHealthBy(1000.0, true, false)
                 end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-            quest:SetStateBool("WhisperAnimate", true)
-            quest:ChangeHeroHealthBy(1000.0, true, false)
-            ::continue_1::
+            if not quest:IsActiveThreadTerminating() then
+                resources:PrepareResource(resource4)
+                while not resources:TryAcquire(resource4, willWhisper, 4) do
+                    if not quest:NewScriptFrame() then goto LAB_00d685cc end
+                end
+                if not quest:IsActiveThreadTerminating() then
+                    local resource3 = resources:NewResource()
+                    resources:PrepareResource(resource3)
+                    while not resources:TryAcquire(resource3, hero, 4) do
+                        if not quest:NewScriptFrame() then goto LAB_00d6849b end
+                    end
+                    if quest:IsActiveThreadTerminating() then
+                        goto LAB_00d6849b
+                    else
+                        local actorMap2 = resources:NewActorMap()
+                        resources:SetActor(actorMap2, "HERO", resource3)
+                        resources:SetActor(actorMap2, "WHISPER", resource4)
+                        local movie2 = resources:StartMovie("")
+                        quest:PauseAllNonScriptedEntities(true)
+                        quest:FixMovieSequenceCamera(true)
+                        resources:RunMacro("CS_GUILD_WILL_WOODS_OUTRO", actorMap2, false, true)
+                        quest:FixMovieSequenceCamera(false)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        resources:DestroyActorMap(actorMap2)
+                        resources:ReleaseResource(resource3)
+                        quest:SetStateBool("MissionSucceeded", true)
+                    end
+                    goto FLOW_past_lab_00d6849b
+                    ::LAB_00d6849b::
+                    resources:ReleaseResource(resource3)
+                    ::FLOW_past_lab_00d6849b::
+                end
+            end
         end
-        if quest:IsActiveThreadTerminating() then goto FLOW_after_lab_00d67db1 end
-        if not willWhisper:AcquireControl(4) then goto LAB_00d685cc end
-        if not hero:AcquireControl(4) then goto FLOW_after_lab_00d6849b end
-        if quest:IsActiveThreadTerminating() then
-            hero:ReleaseControl()
-        else
-            quest:StartCutscene({HERO = hero, WHISPER = willWhisper}, {}, true)
-            quest:RunCutscene("CS_GUILD_WILL_WOODS_OUTRO", true, false)
-            quest:EndCutscene()
-            hero:ReleaseControl()
-            quest:SetStateBool("MissionSucceeded", true)
-        end
-        ::FLOW_after_lab_00d6849b::
     end
-    ::FLOW_after_lab_00d67db1::
+    goto FLOW_past_lab_00d67db1
+    ::LAB_00d67db1::
+    resources:ReleaseResource(resource2)
+    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+    ::FLOW_past_lab_00d67db1::
     ::LAB_00d685cc::
     ::LAB_00d685d5::
-    willWhisper:ReleaseControl()
+    resources:ReleaseResource(resource4)
 end
 
 -- Q_GuildTrainingWoodsWill.WatchForTermination (retail 0x00d68600)

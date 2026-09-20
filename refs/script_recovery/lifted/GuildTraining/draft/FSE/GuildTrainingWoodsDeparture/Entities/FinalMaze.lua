@@ -22,9 +22,7 @@ function Main(quest, me)
         return
     end
     xStack_70 = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_70)
     bVar3 = resources:TryAcquire(xStack_70, me, 4)
     while not bVar3 do
         alive = quest:NewScriptFrame(me)
@@ -43,9 +41,7 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAllowBossPhaseChanges(me, false)
     xStack_38 = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_38)
     iVar19 = 4
     pppuVar16 = xStack_38
     pCVar6 = quest:GetHero()
@@ -76,7 +72,6 @@ function Main(quest, me)
     resources:SetActor(xStack_1c, "HERO", xStack_38)
     resources:SetActor(xStack_1c, "MAZE", xStack_70)
     xStack_10 = resources:StartMovie("")
-    quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro("CS_GUILD_DEPARTURE_MAZE_START", xStack_1c, false, true)
@@ -88,9 +83,7 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_MONSTERS")
     xStack_5c = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
     quest:DisplayQuestInfo(true)
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_70)
     quest:EntitySetBossPhase(me, 0)
     bVar3 = false
     pCVar6 = quest:GetHero()
@@ -113,18 +106,17 @@ function Main(quest, me)
         uVar13 = uVar12 | 3
         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
         if bVar3 then
-            -- LAB_00d64cba: (native jump target)
-            bVar3 = true
+            goto LAB_00d64cba
         else
             uVar13 = uVar12 | 0xf
             bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
             bVar3 = false
-            if bVar4 then
-                bVar3 = true
-                goto FLOW_after_lab_00d64cba
-            end
+            if bVar4 then goto LAB_00d64cba end
         end
-        ::FLOW_after_lab_00d64cba::
+        goto FLOW_past_lab_00d64cba
+        ::LAB_00d64cba::
+        bVar3 = true
+        ::FLOW_past_lab_00d64cba::
         if (uVar13 & 8) ~= 0 then
             uVar13 = uVar13 & 0xfffffff7
         end
@@ -152,6 +144,7 @@ function Main(quest, me)
             end
             quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
             iVar19 = quest:GetTimer(xStack_80)
+            uVar12 = uVar13
             __native_condition_1 = iVar19 < 1
             if __native_condition_1 then
                 bVar3 = quest:IsConversationActive(iVar14)
@@ -189,28 +182,26 @@ function Main(quest, me)
                 quest:SetTimer(xStack_80, 5)
             end
         else
+            uVar12 = uVar13 | 0x30
             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
             if bVar3 then
-                -- LAB_00d64f41: (native jump target)
-                bVar4 = quest:IsConversationActive(iVar14)
-                bVar3 = true
-                if bVar4 then
-                    bVar3 = false
-                    goto FLOW_after_lab_00d64f56
-                end
+                goto LAB_00d64f41
             else
                 uVar12 = uVar13 | 0xf0
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
-                if bVar3 then
-                    bVar4 = quest:IsConversationActive(iVar14)
-                    bVar3 = true
-                    if bVar4 then goto LAB_00d64f56 end
-                    goto FLOW_after_lab_00d64f56
-                end
-                ::LAB_00d64f56::
-                bVar3 = false
+                if bVar3 then goto LAB_00d64f41 end
+                goto LAB_00d64f56
             end
-            ::FLOW_after_lab_00d64f56::
+            goto FLOW_past_lab_00d64f41
+            ::LAB_00d64f41::
+            bVar4 = quest:IsConversationActive(iVar14)
+            bVar3 = true
+            if bVar4 then goto LAB_00d64f56 end
+            ::FLOW_past_lab_00d64f41::
+            goto FLOW_past_lab_00d64f56
+            ::LAB_00d64f56::
+            bVar3 = false
+            ::FLOW_past_lab_00d64f56::
             if uVar12 < 0 then
                 uVar12 = uVar12 & 0xffffff7f
             end
@@ -263,9 +254,7 @@ function Main(quest, me)
         quest:DisplayQuestInfo(false)
         __native_entity_state:SetStateInt("BeenHit", 0)
         __native_entity_state:SetStateBool("NotBeaten", true)
-        bVar3 = false
-        if bVar3 ~= 0 then
-        end
+        resources:PrepareResource(xStack_70)
         bVar3 = resources:TryAcquire(xStack_70, me, 4)
         while not bVar3 do
             alive = quest:NewScriptFrame(me)
@@ -278,7 +267,6 @@ function Main(quest, me)
         bVar3 = not alive
         if not bVar3 then
             xStack_38 = resources:StartMovie("")
-            quest:StartMovieSequence()
             -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
             -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
             quest:FixMovieSequenceCamera(true)
@@ -309,22 +297,21 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    if bVar3 then
-                        -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
-                        resources:DestroyMovie(xStack_38)
-                        goto LAB_00d664b0
-                    end
+                    if bVar3 then goto LAB_00d65b9f end
                     iVar19 = me:IsPerformingScriptTask()
                     cVar5 = iVar19
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    -- LAB_00d65b9f: (native jump target)
-                    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
-                    resources:DestroyMovie(xStack_38)
-                    goto LAB_00d664b0
+                    goto LAB_00d65b9f
                 end
+                goto FLOW_past_lab_00d65b9f
+                ::LAB_00d65b9f::
+                -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                resources:DestroyMovie(xStack_38)
+                goto LAB_00d664b0
+                ::FLOW_past_lab_00d65b9f::
             end
             bVar3 = true
             pCVar6 = quest:GetHero()
@@ -332,9 +319,7 @@ function Main(quest, me)
             quest:FixMovieSequenceCamera(false)
             -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
             resources:DestroyMovie(xStack_38)
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_70)
             quest:EntitySetBossPhase(me, 1)
             iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
             xStack_5c = iVar19
@@ -353,26 +338,23 @@ function Main(quest, me)
                 uVar13 = uVar12 | 0x300
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                 if bVar3 then
-                    -- LAB_00d654d1: (native jump target)
-                    bVar4 = quest:IsConversationActive(iVar14)
-                    bVar3 = true
-                    if bVar4 then
-                        bVar3 = false
-                        goto FLOW_after_lab_00d654e6
-                    end
+                    goto LAB_00d654d1
                 else
                     uVar13 = uVar12 | 0xf00
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
-                    if bVar3 then
-                        bVar4 = quest:IsConversationActive(iVar14)
-                        bVar3 = true
-                        if bVar4 then goto LAB_00d654e6 end
-                        goto FLOW_after_lab_00d654e6
-                    end
-                    ::LAB_00d654e6::
-                    bVar3 = false
+                    if bVar3 then goto LAB_00d654d1 end
+                    goto LAB_00d654e6
                 end
-                ::FLOW_after_lab_00d654e6::
+                goto FLOW_past_lab_00d654d1
+                ::LAB_00d654d1::
+                bVar4 = quest:IsConversationActive(iVar14)
+                bVar3 = true
+                if bVar4 then goto LAB_00d654e6 end
+                ::FLOW_past_lab_00d654d1::
+                goto FLOW_past_lab_00d654e6
+                ::LAB_00d654e6::
+                bVar3 = false
+                ::FLOW_past_lab_00d654e6::
                 if (uVar13 & 0x800) ~= 0 then
                     uVar13 = uVar13 & 0xfffff7ff
                 end
@@ -396,20 +378,20 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_MELEE", me, pCVar6, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
                 else
+                    uVar12 = uVar13 | 0x3000
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                     if bVar3 then
-                        -- LAB_00d65670: (native jump target)
-                        bVar3 = true
+                        goto LAB_00d65670
                     else
                         uVar12 = uVar13 | 0xf000
                         bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                         bVar3 = false
-                        if bVar4 then
-                            bVar3 = true
-                            goto FLOW_after_lab_00d65670
-                        end
+                        if bVar4 then goto LAB_00d65670 end
                     end
-                    ::FLOW_after_lab_00d65670::
+                    goto FLOW_past_lab_00d65670
+                    ::LAB_00d65670::
+                    bVar3 = true
+                    ::FLOW_past_lab_00d65670::
                     if (uVar12 >> 8) < 0 then
                         uVar12 = uVar12 & 0xffff7fff
                     end
@@ -504,9 +486,7 @@ function Main(quest, me)
                 quest:DisplayQuestInfo(false)
                 __native_entity_state:SetStateInt("BeenHit", 0)
                 __native_entity_state:SetStateBool("NotBeaten", true)
-                bVar3 = false
-                if bVar3 ~= 0 then
-                end
+                resources:PrepareResource(xStack_70)
                 bVar3 = resources:TryAcquire(xStack_70, me, 4)
                 while not bVar3 do
                     alive = quest:NewScriptFrame(me)
@@ -519,7 +499,6 @@ function Main(quest, me)
                 bVar3 = not alive
                 if not bVar3 then
                     xStack_38 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
                     -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
                     quest:FixMovieSequenceCamera(true)
@@ -573,9 +552,7 @@ function Main(quest, me)
                     quest:FixMovieSequenceCamera(false)
                     -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
                     resources:DestroyMovie(xStack_38)
-                    bVar3 = false
-                    if bVar3 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_70)
                     quest:EntitySetBossPhase(me, 2)
                     iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
                     xStack_5c = iVar19
@@ -594,26 +571,23 @@ function Main(quest, me)
                         uVar13 = uVar12 | 0x30000
                         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                         if bVar3 then
-                            -- LAB_00d65d51: (native jump target)
-                            bVar4 = quest:IsConversationActive(iVar14)
-                            bVar3 = true
-                            if bVar4 then
-                                bVar3 = false
-                                goto FLOW_after_lab_00d65d66
-                            end
+                            goto LAB_00d65d51
                         else
                             uVar13 = uVar12 | 0xf0000
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
-                            if bVar3 then
-                                bVar4 = quest:IsConversationActive(iVar14)
-                                bVar3 = true
-                                if bVar4 then goto LAB_00d65d66 end
-                                goto FLOW_after_lab_00d65d66
-                            end
-                            ::LAB_00d65d66::
-                            bVar3 = false
+                            if bVar3 then goto LAB_00d65d51 end
+                            goto LAB_00d65d66
                         end
-                        ::FLOW_after_lab_00d65d66::
+                        goto FLOW_past_lab_00d65d51
+                        ::LAB_00d65d51::
+                        bVar4 = quest:IsConversationActive(iVar14)
+                        bVar3 = true
+                        if bVar4 then goto LAB_00d65d66 end
+                        ::FLOW_past_lab_00d65d51::
+                        goto FLOW_past_lab_00d65d66
+                        ::LAB_00d65d66::
+                        bVar3 = false
+                        ::FLOW_past_lab_00d65d66::
                         if (uVar13 & 0x80000) ~= 0 then
                             uVar13 = uVar13 & 0xfff7ffff
                         end
@@ -635,31 +609,28 @@ function Main(quest, me)
                             quest:AddPersonToConversation(iVar14, pCVar6)
                             pCVar6 = quest:GetHero()
                             quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_MELEE", me, pCVar6, false)
-                            -- LAB_00d65e4c: (native jump target)
-                            quest:ModifyThingHealth(me, 1000.0, false)
+                            goto LAB_00d65e4c
                         else
+                            uVar12 = uVar13 | 0x300000
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                             if bVar3 then
-                                -- LAB_00d65ef7: (native jump target)
-                                bVar4 = quest:IsConversationActive(iVar14)
-                                bVar3 = true
-                                if bVar4 then
-                                    bVar3 = false
-                                    goto FLOW_after_lab_00d65f0c
-                                end
+                                goto LAB_00d65ef7
                             else
                                 uVar12 = uVar13 | 0xf00000
                                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
-                                if bVar3 then
-                                    bVar4 = quest:IsConversationActive(iVar14)
-                                    bVar3 = true
-                                    if bVar4 then goto LAB_00d65f0c end
-                                    goto FLOW_after_lab_00d65f0c
-                                end
-                                ::LAB_00d65f0c::
-                                bVar3 = false
+                                if bVar3 then goto LAB_00d65ef7 end
+                                goto LAB_00d65f0c
                             end
-                            ::FLOW_after_lab_00d65f0c::
+                            goto FLOW_past_lab_00d65ef7
+                            ::LAB_00d65ef7::
+                            bVar4 = quest:IsConversationActive(iVar14)
+                            bVar3 = true
+                            if bVar4 then goto LAB_00d65f0c end
+                            ::FLOW_past_lab_00d65ef7::
+                            goto FLOW_past_lab_00d65f0c
+                            ::LAB_00d65f0c::
+                            bVar3 = false
+                            ::FLOW_past_lab_00d65f0c::
                             if (uVar12 & 0x800000) ~= 0 then
                                 uVar12 = uVar12 & 0xff7fffff
                             end
@@ -681,8 +652,7 @@ function Main(quest, me)
                                     quest:AddPersonToConversation(iVar14, pCVar6)
                                     pCVar6 = quest:GetHero()
                                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_BOW", me, pCVar6, false)
-                                    quest:ModifyThingHealth(me, 1000.0, false)
-                                    goto FLOW_after_lab_00d65e4c
+                                    goto LAB_00d65e4c
                                 end
                                 goto LAB_00d664b0
                             end
@@ -740,7 +710,10 @@ function Main(quest, me)
                                 end
                             end
                         end
-                        ::FLOW_after_lab_00d65e4c::
+                        goto FLOW_past_lab_00d65e4c
+                        ::LAB_00d65e4c::
+                        quest:ModifyThingHealth(me, 1000.0, false)
+                        ::FLOW_past_lab_00d65e4c::
                         iVar19 = xStack_5c
                         cVar5 = __native_entity_state:GetStateBool("NotBeaten")
                     end
@@ -749,9 +722,7 @@ function Main(quest, me)
                     if not bVar3 then
                         quest:RemoveQuestInfoElement(iVar19)
                         quest:DisplayQuestInfo(false)
-                        bVar3 = false
-                        if bVar3 ~= 0 then
-                        end
+                        resources:PrepareResource(xStack_70)
                         bVar3 = resources:TryAcquire(xStack_70, me, 4)
                         while not bVar3 do
                             alive = quest:NewScriptFrame(me)
@@ -766,9 +737,7 @@ function Main(quest, me)
                             me:ClearCommands()
                             quest:EntitySetInFaction(me, "FACTION_HERO")
                             xStack_38 = resources:NewResource()
-                            bVar3 = false
-                            if bVar3 ~= 0 then
-                            end
+                            resources:PrepareResource(xStack_38)
                             iVar19 = 4
                             pppuVar16 = xStack_38
                             pCVar6 = quest:GetHero()
@@ -777,10 +746,7 @@ function Main(quest, me)
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                if bVar3 then
-                                    resources:ReleaseResource(xStack_38)
-                                    goto FLOW_after_lab_00d6632b
-                                end
+                                if bVar3 then goto LAB_00d6632b end
                                 iVar19 = 4
                                 pppuVar16 = xStack_38
                                 pCVar6 = quest:GetHero()
@@ -789,14 +755,12 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                -- LAB_00d6632b: (native jump target)
-                                resources:ReleaseResource(xStack_38)
+                                goto LAB_00d6632b
                             else
                                 pCVar9 = resources:NewActorMap()
                                 resources:SetActor(pCVar9, "HERO", xStack_38)
                                 resources:SetActor(pCVar9, "MAZE", xStack_70)
                                 xStack_10 = resources:StartMovie("")
-                                quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
                                 quest:FixMovieSequenceCamera(true)
                                 resources:RunMacro("CS_GUILD_DEPARTURE_MAZE_WIN", pCVar9, false, true)
@@ -812,7 +776,10 @@ function Main(quest, me)
                                 pCVar10 = quest:GetHero()
                                 quest:EntitySetAsDamageable(pCVar10, bVar3)
                             end
-                            ::FLOW_after_lab_00d6632b::
+                            goto FLOW_past_lab_00d6632b
+                            ::LAB_00d6632b::
+                            resources:ReleaseResource(xStack_38)
+                            ::FLOW_past_lab_00d6632b::
                         end
                     end
                 end
@@ -828,7 +795,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

@@ -11,7 +11,7 @@ function Init(quest, me)
 end
 
 -- BCMTrader.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- BCMTrader.OnPredicateFail (retail 0x00cdebd0)

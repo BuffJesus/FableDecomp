@@ -29,9 +29,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_10)
         bVar2 = resources:TryAcquire(xStack_10, me, 4)
         while not bVar2 do
             alive = quest:NewScriptFrame(me)
@@ -54,9 +52,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                bVar2 = false
-                if bVar2 ~= 0 then
-                end
+                resources:PrepareResource(xStack_10)
                 iVar1 = quest:GetStateInt("TutorialState")
                 while iVar1 ~= 6 do
                     alive = quest:NewScriptFrame(me)
@@ -68,9 +64,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if not bVar2 then
-                    bVar2 = false
-                    if bVar2 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_10)
                     bVar2 = resources:TryAcquire(xStack_10, me, 4)
                     while not bVar2 do
                         alive = quest:NewScriptFrame(me)
@@ -93,9 +87,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if not bVar2 then
-                            bVar2 = false
-                            if bVar2 ~= 0 then
-                            end
+                            resources:PrepareResource(xStack_10)
                             repeat
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
@@ -117,7 +109,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

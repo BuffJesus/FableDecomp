@@ -10,20 +10,21 @@ local teamID, myTeam, memberState, currentAIState, previousAIState, thingToPatro
 
 -- CrateTeamMember.Main (retail 0x00dce230)
 function Main(quest, me)
-    local predicateResult, predicateResult5, isDistanceBetweenThingsUnder, p0_00
+    local resources = quest:RetailResources()
+    local predicateResult, predicateResult5, predicateResult6, isDistanceBetweenThingsUnder, p0_00
     local heroTeam = quest:GetStateInt("HeroTeam")
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("DoneIntroduction") do
         if not quest:NewScriptFrame(me) then return end
-        if not quest:GetStateBool("HeroAtWrongEntrance") then goto continue_1 end
-        quest:RemoveThing(me, false, false)
-        if 0 < quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") then
-            if quest:IsActiveThreadTerminating() then return end
-            quest:SetStateInt("Teams_" .. teamID .. "_MemberCount", quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") - 1)
+        if quest:GetStateBool("HeroAtWrongEntrance") then
+            quest:RemoveThing(me, false, false)
+            if 0 < quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") then
+                if quest:IsActiveThreadTerminating() then return end
+                quest:SetStateInt("Teams_" .. teamID .. "_MemberCount", quest:GetStateInt("Teams_" .. teamID .. "_MemberCount") - 1)
+            end
+            quest:SetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState, quest:GetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState) - 1)
+            do return end
         end
-        quest:SetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState, quest:GetStateInt("Teams_" .. teamID .. "_StateCounter_" .. memberState) - 1)
-        do return end
-        ::continue_1::
     end
     if teamID == 1 and heroTeam == 1 then
         while quest:IsInCutscene() do
@@ -54,7 +55,17 @@ function Main(quest, me)
             if quest:GetStateThing("Teams_" .. myTeam .. "_TeamCrateCarrier"):IsDead() and quest:GetStateInt("Teams_" .. myTeam .. "_StateCounter_2") == 0 then
                 if quest:IsActiveThreadTerminating() then return end
                 local thing_38 = GetNearestCrateToMe(quest, me)
-                if (thing_38 ~= nil and not thing_38:IsNull()) and (thing_38 ~= nil and thing_38:IsAlive()) and not ((thing_38 ~= nil and not thing_38:IsNull()) and thing_38:IsBeingCarriedBy("")) then
+                if not (thing_38 ~= nil and not thing_38:IsNull()) or not (thing_38 ~= nil and thing_38:IsAlive()) then
+                    goto LAB_00dce594
+                else
+                    if (thing_38 ~= nil and not thing_38:IsNull()) and thing_38:IsBeingCarriedBy("") then goto LAB_00dce594 end
+                    predicateResult6 = true
+                end
+                goto FLOW_past_lab_00dce594
+                ::LAB_00dce594::
+                predicateResult6 = false
+                ::FLOW_past_lab_00dce594::
+                if predicateResult6 then
                     isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, thing_38, 10.0)
                     if heroTeam == 0 and teamID == 1 then
                         isDistanceBetweenThingsUnder = true
@@ -123,28 +134,36 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     quest:EntityStopFollowing(me)
     local teamExitMarker = quest:GetNearestWithScriptName(me, "TeamExitMarker")
-    if not me:AcquireControl(4) then goto LAB_00dcec33 end
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, me, 4) do
+        if not quest:NewScriptFrame(me) then goto LAB_00dcec33 end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00dcec33 end
     while not quest:IsActiveThreadTerminating() do
         if not me:IsPerformingScriptTask() then
-            if teamExitMarker ~= nil and not teamExitMarker:IsNull() then
+            if not (teamExitMarker ~= nil and not teamExitMarker:IsNull()) then
+                p0_00 = {x = 0, y = 0, z = 0}
+            else
                 p0_00 = teamExitMarker:GetPos()
             end
             me:MoveToPosition(p0_00, 0.5, ENTITY_MOVE_RUN, false, true)
         end
-        if not quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then quest:NewScriptFrame(me); goto continue_3 end
-        if not quest:IsActiveThreadTerminating() then
-            quest:FadeOutAndKillEntity(me, true, 3.0, true)
-            repeat
-                quest:NewScriptFrame(me)
-            until quest:IsActiveThreadTerminating()
+        if not quest:IsDistanceBetweenThingsUnder(me, teamExitMarker, 2.0) then
+            quest:NewScriptFrame(me)
+        else
+            if not quest:IsActiveThreadTerminating() then
+                quest:FadeOutAndKillEntity(me, true, 3.0, true)
+                repeat
+                    quest:NewScriptFrame(me)
+                until quest:IsActiveThreadTerminating()
+            end
+            break
+            quest:NewScriptFrame(me)
         end
-        break
-        quest:NewScriptFrame(me)
-        ::continue_3::
     end
     ::LAB_00dcec33::
-    me:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- CrateTeamMember.Init (retail 0x00dcdf60)
@@ -187,7 +206,7 @@ function Init(quest, me)
 end
 
 -- CrateTeamMember.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- CrateTeamMember.OnPredicateFail (retail 0x00dcded0)

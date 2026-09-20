@@ -2,7 +2,6 @@
 -- Registration remains disabled until the package is verified.
 
 local HERO_ABILITY_LIGHTNING_SPELL = 11  -- EHeroAbility (Ego_r.pdb)
-local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local TUTORIAL_CATEGORY_TAKING_QUESTS = 30  -- ETutorialCategory (Ego_r.pdb)
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
@@ -83,14 +82,16 @@ end
 
 -- Q_GuildTraining.OnPersist (retail 0x00d3bc10)
 function OnPersist(quest, context)
+    quest:SetStateInt("GameState", quest:PersistTransferInt(context, "GameState", quest:GetStateInt("GameState") or 0))
+    quest:SetStateInt("CurrentBirdsKilled", quest:PersistTransferInt(context, "CurrentBirdsKilled", quest:GetStateInt("CurrentBirdsKilled") or 0))
 end
 
 -- Q_GuildTraining.RunTutorials (retail 0x00d45dd0)
 function RunTutorials(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue4, scratchValue5, meleeOpponent, meleeApprentice9, skillApprentice9
-    local willApprentice9, actorMap, theRealGuildmaster, scratchValue6, scratchValue9, scratchValue
+    local scratchValue3, scratchValue4, meleeOpponent, meleeApprentice9, skillApprentice9
+    local willApprentice9, actorMap, theRealGuildmaster, scratchValue8, scratchValue9, scratchValue
     local movie, resource, resource4, appleMarker, timerId
     local secretBookcase = quest:GetThingWithScriptName("SecretBookcase")
     local getNearestWithDefName = quest:GetNearestWithDefName(secretBookcase, "REGION_EXIT_POINT")
@@ -153,7 +154,8 @@ function RunTutorials(quest)
         quest:SetMasterGameState("SkillTrainingStarted", false)
         local preMeleeDummy = quest:GetThingWithScriptName("PreMeleeDummy")
         if not (preMeleeDummy ~= nil and preMeleeDummy:IsAlive()) then
-            scratchValue6 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "PreMeleeDummyMarker")
+            quest:CreateObject("PreMeleeDummy", quest:GetThingWithScriptName("OBJECT_STRAW_DUMMY_01"):GetPos(), "PreMeleeDummyMarker")
+            scratchValue8 = 1
             quest:EntitySetFacingAngle(quest:GetThingWithScriptName("PreMeleeDummyMarker"), quest:GetThingWithScriptName("PreMeleeDummy"):GetAngleXY(), true)
         end
         local meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
@@ -191,24 +193,24 @@ function RunTutorials(quest)
             quest:ActivateQuest("Q_GuildTrainingPreMelee")
             quest:SetQuestAsPersistent("Q_GuildTrainingPreMelee", false)
             if not quest:NewScriptFrame() then goto LAB_00d496bc end
-            -- TODO(native): xStack_54._0_4_ = (int *)0x0;
             appleMarker = quest:GetAllThingsWithScriptName("AppleMarker")
-            local scratchValue3 = (appleMarker._4_4_ - appleMarker._0_4_) >> 31
-            if (appleMarker._4_4_ - appleMarker._0_4_) / 12 + scratchValue3 ~= scratchValue3 then
-                scratchValue4 = 0
+            if #appleMarker ~= 0 then
+                scratchValue3 = 0
                 scratchValue9 = 0
                 repeat
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
-                    -- TODO(native): pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
-    --[[unresolved native value]]
-                    quest:SetThingPersistent(quest:CreateObject(nil, scratchValue9, ""), true)
-                    quest:SetThingPersistent(scratchValue6, appleMarker._0_4_ + scratchValue4)
-                    quest:RemoveThing(nil --[[missing]], appleMarker._0_4_ + scratchValue4, false)
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d46c49 end
+                    quest:SetThingPersistent(quest:CreateObject("OBJECT_APPLE_RED_01", appleMarker[scratchValue3 + 1]:GetPos(), ""), true)
+                    quest:SetThingPersistent(appleMarker[scratchValue3 + 1], true)
+                    quest:RemoveThing(appleMarker[scratchValue3 + 1], false, true)
                     scratchValue9 = scratchValue9 + 1
-                    scratchValue4 = scratchValue4 + 12
-                until scratchValue9 >= ((appleMarker._4_4_ - appleMarker._0_4_) / 12)
+                    scratchValue3 = scratchValue3 + 1
+                until scratchValue9 >= #appleMarker
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
+            if quest:IsActiveThreadTerminating() then goto LAB_00d46c49 end
+            goto FLOW_past_lab_00d46c49
+            ::LAB_00d46c49::
+            goto LAB_00d496bc
+            ::FLOW_past_lab_00d46c49::
         end
         while quest:IsQuestActive("Q_GuildTrainingPreMelee") do
             if not quest:NewScriptFrame() then goto LAB_00d496bc end
@@ -284,8 +286,7 @@ function RunTutorials(quest)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_LEGS_CUSTOM_01", -1)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_FACE_CUSTOM_01", -1)
         end
-        -- TODO(native): EntitySetAsOpinionSource is not a ForgeFSE binding
-        quest:EntitySetAsOpinionSource(hero, "OPINION_SOURCE_HERO_AS_APPRENTICE")
+        quest:EntitySetAsOpinionSource(hero, scratchValue8)
         quest:SetHeroAsTeenager(true)
         quest:SetHeroAsApprentice(true)
         quest:GiveHeroAbility(HERO_ABILITY_LIGHTNING_SPELL, false)
@@ -416,18 +417,21 @@ function RunTutorials(quest)
     if quest:IsActiveThreadTerminating() then goto LAB_00d496bc end
     theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     resource4 = resources:NewResource()
+    resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, appleMarker[0 + 1], 4) do
         if not quest:NewScriptFrame() then goto LAB_00d48800 end
     end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d48800 end
     resource = resources:NewResource()
+    resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, hero, 4) do
         if not quest:NewScriptFrame() then goto LAB_00d487f4 end
     end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d487f4 end
     actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "GM", resource4)
     movie = resources:StartMovie("")
-    quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", actorMap, false, true)
@@ -528,12 +532,12 @@ function RunTutorials(quest)
                                     local appleRed01 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
                                     scratchValue = 0
                                     if #appleRed01 ~= 0 then
-                                        scratchValue5 = 0
+                                        scratchValue4 = 0
                                         repeat
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
-                                            quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue5, false)
+                                            quest:RemoveThing(theRealGuildmaster, appleRed01 + scratchValue4, false)
                                             scratchValue = scratchValue + 1
-                                            scratchValue5 = scratchValue5 + 12
+                                            scratchValue4 = scratchValue4 + 12
                                         until scratchValue >= #appleRed01
                                     end
                                     if not quest:IsActiveThreadTerminating() then
@@ -549,17 +553,17 @@ function RunTutorials(quest)
                                                         quest:NewScriptFrame()
                                                         if not quest:IsActiveThreadTerminating() then
                                                             quest:AddLogbookTutorialEntry("TEXT_QST_LOG_GUILD_THEGUILD")
-                                                            if quest:DisplayTutorial(TUTORIAL_CATEGORY_TAKING_QUESTS) then
-                                                                if not quest:IsActiveThreadTerminating() then
-                                                                    while not quest:MsgIsTutorialClickedPast() do
-                                                                        if not quest:NewScriptFrame() then goto LAB_00d496a1 end
-                                                                    end
-                                                                    if not quest:IsActiveThreadTerminating() then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); goto FLOW_after_lab_00d4967d end
+                                                            if not quest:DisplayTutorial(TUTORIAL_CATEGORY_TAKING_QUESTS) then goto LAB_00d4967d end
+                                                            if not quest:IsActiveThreadTerminating() then
+                                                                while not quest:MsgIsTutorialClickedPast() do
+                                                                    if not quest:NewScriptFrame() then goto LAB_00d496a1 end
                                                                 end
-                                                            else
-                                                                quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+                                                                if not quest:IsActiveThreadTerminating() then goto LAB_00d4967d end
                                                             end
-                                                            ::FLOW_after_lab_00d4967d::
+                                                            goto FLOW_past_lab_00d4967d
+                                                            ::LAB_00d4967d::
+                                                            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+                                                            ::FLOW_past_lab_00d4967d::
                                                         end
                                                     end
                                                 end
@@ -590,51 +594,44 @@ end
 function CheckFriendlyAttacks(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie, scratchValue4, predicateResult5, predicateResult6, predicateResult, scratchValue
-    local conversationId, scratchValue17, heroWarnings, scratchValue23, scratchValue24, actorMap
-    local conversationId2, thing, scratchValue25
-    local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
+    local movie, actorMap, predicateResult5, predicateResult6, predicateResult, scratchValue8
+    local conversationId, scratchValue9, heroWarnings, sequence, sequence22, sequence32
+    local scratchValue15, scratchValue16, scratchValue17, resource, conversationId2, thing
+    local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
     local creatures = quest:GetAllCreaturesExcludingHero()
-    local scratchValue16 = getThingWithScriptName - creatures >> 31
-    scratchValue23 = 0
-    if (getThingWithScriptName - creatures) / 12 + scratchValue16 ~= scratchValue16 then
-        scratchValue17 = 0
+    scratchValue16 = 0
+    if #creatures ~= 0 then
+        scratchValue9 = 0
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00d452d1 end
             -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_70)
     --[[unresolved native value]]
             if nil == "CREATURE_BIRD_GUILD_SPARROW" then
-                predicateResult = false
+                goto LAB_00d45184
             else
                 -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_74)
     --[[unresolved native value]]
-                if nil == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then
-                    predicateResult = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if nil == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then goto LAB_00d45184 end
                 -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_68)
     --[[unresolved native value]]
-                if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then
-                    predicateResult = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d45184 end
                 -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_6c)
     --[[unresolved native value]]
                 predicateResult = true
-                if nil == "CREATURE_RIVAL_HERO_MAZE" then
-                    predicateResult = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if nil == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d45184 end
             end
-            ::FLOW_after_lab_00d45184::
+            goto FLOW_past_lab_00d45184
+            ::LAB_00d45184::
+            predicateResult = false
+            ::FLOW_past_lab_00d45184::
             if predicateResult then
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar18) / 0xc + 1] + 0x10c))(1);
-                quest:EntitySetAsKillable(creatures[scratchValue17 + 1], false, true)
+                quest:EntitySetAsKillable(creatures[scratchValue9 + 1], false, true)
             end
-            scratchValue23 = scratchValue23 + 1
-            scratchValue17 = scratchValue17 + 1
-        until scratchValue23 >= ((getThingWithScriptName - creatures) / 12)
+            scratchValue16 = scratchValue16 + 1
+            scratchValue9 = scratchValue9 + 1
+        until scratchValue16 >= #creatures
     end
     if not quest:IsActiveThreadTerminating() then
         repeat
@@ -643,122 +640,119 @@ function CheckFriendlyAttacks(quest)
                 while not quest:IsLevelLoaded("HeroGuildComplex") do
                     if not quest:NewScriptFrame() then goto LAB_00d45322 end
                 end
-                scratchValue = 0
+                scratchValue8 = 0
                 local creatures2 = quest:GetAllCreaturesExcludingHero()
-                local scratchValue18 = getThingWithScriptName - creatures2 >> 31
-                scratchValue24 = 0
-                if (getThingWithScriptName - creatures2) / 12 + scratchValue18 ~= scratchValue18 then
+                local scratchValue = preMeleeMaze - creatures2 >> 31
+                scratchValue17 = 0
+                if (preMeleeMaze - creatures2) / 12 + scratchValue ~= scratchValue then
                     repeat
                         if quest:IsActiveThreadTerminating() then return end
-                        if creatures2[scratchValue + 1]:GetDefName() == "CREATURE_BIRD_GUILD_SPARROW" then
-                            predicateResult5 = false
+                        if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_BIRD_GUILD_SPARROW" then
+                            goto LAB_00d4557d
                         else
-                            if creatures2[scratchValue + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then
-                                predicateResult5 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if creatures2[scratchValue8 + 1]:GetDefName() == "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE" then goto LAB_00d4557d end
                             -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(aCStack_10)
     --[[unresolved native value]]
-                            if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then
-                                predicateResult5 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if nil == "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE" then goto LAB_00d4557d end
                             -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(xStack_30)
     --[[unresolved native value]]
                             predicateResult5 = true
-                            if nil == "CREATURE_RIVAL_HERO_MAZE" then
-                                predicateResult5 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if nil == "CREATURE_RIVAL_HERO_MAZE" then goto LAB_00d4557d end
                         end
-                        ::FLOW_after_lab_00d4557d::
+                        goto FLOW_past_lab_00d4557d
+                        ::LAB_00d4557d::
+                        predicateResult5 = false
+                        ::FLOW_past_lab_00d4557d::
                         if predicateResult5 then
                             if quest:IsActiveThreadTerminating() then return end
                             -- TODO(native): (**(code **)(*(int *)xStack_84[(iVar13) / 0xc + 1] + 0x10c))(1);
-                            quest:EntitySetAsKillable(creatures2[scratchValue + 1], false, true)
+                            quest:EntitySetAsKillable(creatures2[scratchValue8 + 1], false, true)
                         end
-                        scratchValue24 = scratchValue24 + 1
-                        scratchValue = scratchValue + 1
-                    until scratchValue24 >= ((getThingWithScriptName - creatures2) / 12)
+                        scratchValue17 = scratchValue17 + 1
+                        scratchValue8 = scratchValue8 + 1
+                    until scratchValue17 >= ((preMeleeMaze - creatures2) / 12)
                 end
                 if quest:IsActiveThreadTerminating() then return end
             end
-            -- TODO(native): MsgHitFriendWithBareHands is not a ForgeFSE binding
             if hero:MsgHitFriendWithBareHands() then
-                if not quest:IsLevelLoaded("HeroGuildComplex") then
-                    predicateResult6 = false
-                    goto FLOW_after_lab_00d45782
-                end
-                if scratchValue25 ~= nil and scratchValue25:MsgIsHitByHero() then
-                    predicateResult6 = false
-                    goto FLOW_after_lab_00d45782
-                end
-                if scratchValue25 ~= nil and scratchValue25:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if scratchValue25 == nil or not scratchValue25:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then
-                        predicateResult6 = false
-                        goto FLOW_after_lab_00d45782
-                    end
-                end
-                predicateResult6 = true
+                goto LAB_00d456af
             else
-                -- TODO(native): MsgHitFriendWithMeleeWeapon is not a ForgeFSE binding
-                if hero:MsgHitFriendWithMeleeWeapon() then
-                    if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue25 ~= nil and scratchValue25:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue25 ~= nil and scratchValue25:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue25 == nil or not scratchValue25:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d45782 end
-                    end
-                    predicateResult6 = true
-                    goto FLOW_after_lab_00d45782
-                end
-                -- TODO(native): MsgHitFriendWithRangedWeapon is not a ForgeFSE binding
-                if hero:MsgHitFriendWithRangedWeapon() then
-                    if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
-                    if scratchValue25 ~= nil and scratchValue25:MsgIsHitByHero() then goto LAB_00d45782 end
-                    if scratchValue25 ~= nil and scratchValue25:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if scratchValue25 == nil or not scratchValue25:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d45782 end
-                    end
-                    predicateResult6 = true
-                    goto FLOW_after_lab_00d45782
-                end
-                ::LAB_00d45782::
-                predicateResult6 = false
+                if hero:MsgHitFriendWithMeleeWeapon() then goto LAB_00d456af end
+                if hero:MsgHitFriendWithRangedWeapon() then goto LAB_00d456af end
+                goto LAB_00d45782
             end
-            ::FLOW_after_lab_00d45782::
+            goto FLOW_past_lab_00d456af
+            ::LAB_00d456af::
+            if not quest:IsLevelLoaded("HeroGuildComplex") then goto LAB_00d45782 end
+            sequence = scratchValue15 ~= nil
+            if sequence then
+                -- TODO(native): cVar11 = (**(*uStack_9c + 0x54))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                sequence = nil ~= 0
+            end
+            if sequence then goto LAB_00d45782 end
+            sequence22 = scratchValue15 ~= nil
+            if sequence22 then
+                -- TODO(native): cVar11 = (**(*uStack_9c + 0xa8))("SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                sequence22 = nil ~= 0
+            end
+            if sequence22 then
+                sequence32 = scratchValue15 == nil
+                if not sequence32 then
+                    -- TODO(native): cVar11 = (**(*uStack_9c + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+    --[[unresolved native value]]
+                    sequence32 = nil == 0
+                end
+                if sequence32 then goto LAB_00d45782 end
+            end
+            predicateResult6 = true
+            ::FLOW_past_lab_00d456af::
+            goto FLOW_past_lab_00d45782
+            ::LAB_00d45782::
+            predicateResult6 = false
+            ::FLOW_past_lab_00d45782::
             if not predicateResult6 then goto LAB_00d45cae end
             if quest:IsActiveThreadTerminating() then return end
             if 2 < quest:GetStateInt("HeroWarnings") then
                 quest:SetMasterGameState("GuildWarningOccuring", true)
-                if quest:GetMasterGameState("SkillTestOccuring") == 0 and quest:GetMasterGameState("WillTestOccuring") == 0 then
-                    local resource = resources:NewResource()
-                    while not resources:TryAcquire(resource, thing, 4) do
+                if not quest:GetMasterGameState("SkillTestOccuring") and not quest:GetMasterGameState("WillTestOccuring") then
+                    local resource4 = resources:NewResource()
+                    resources:PrepareResource(resource4)
+                    while not resources:TryAcquire(resource4, thing, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
-                    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d45db2 end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d45db2 end
+                    resource = resources:NewResource()
+                    resources:PrepareResource(resource)
+                    while not resources:TryAcquire(resource, hero, 4) do
+                        if not quest:NewScriptFrame() then goto LAB_00d45da9 end
+                    end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00d45da9 end
                     actorMap = resources:NewActorMap()
                     -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                    resources:SetActor(scratchValue4, "MAZE", resource)
+                    resources:SetActor(actorMap, "MAZE", resource4)
                     movie = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     conversationId2 = quest:AddNewConversation(hero, false, false)
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
                     quest:Pause(2.0)
                     quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_GUILD_BADHERO", scratchValue4, false, true)
+                    resources:RunMacro("CS_GUILD_BADHERO", actorMap, false, true)
                     quest:FixMovieSequenceCamera(false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     resources:DestroyActorMap(actorMap)
-                    resources:ReleaseResource(scratchValue4)
+                    resources:ReleaseResource(actorMap)
                     resources:ReleaseResource(conversationId2)
                     goto LAB_00d45c9d
-                    hero:ReleaseControl()
-                    ::LAB_00d45db2::
+                    ::LAB_00d45da9::
                     resources:ReleaseResource(resource)
+                    ::LAB_00d45db2::
+                    resources:ReleaseResource(resource4)
                     return
                 end
-                while quest:GetMasterGameState("SkillTestOccuring") ~= 0 or quest:GetMasterGameState("WillTestOccuring") ~= 0 do
+                while quest:GetMasterGameState("SkillTestOccuring") or quest:GetMasterGameState("WillTestOccuring") do
                     if not quest:NewScriptFrame() then return end
                 end
                 ::LAB_00d45c9d::
@@ -770,16 +764,19 @@ function CheckFriendlyAttacks(quest)
             heroWarnings = quest:GetStateInt("HeroWarnings")
             if heroWarnings == 0 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILD_SEAL_FIRST_WARNING", hero, hero, false)
-                quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
+                goto LAB_00d45930
             elseif heroWarnings == 1 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILD_SEAL_SECOND_WARNING", hero, hero, false)
                 quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
-            elseif heroWarnings ~= 2 then
-                quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
             else
+                if heroWarnings ~= 2 then goto LAB_00d45930 end
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILD_SEAL_THIRD_WARNING", hero, hero, false)
                 quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
             end
+            goto FLOW_past_lab_00d45930
+            ::LAB_00d45930::
+            quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
+            ::FLOW_past_lab_00d45930::
             ::LAB_00d45cae::
             quest:NewScriptFrame()
         until false
@@ -798,18 +795,15 @@ function KeepTabsOnWhisper(quest)
     repeat
         scratchValue2 = scratchValue | 1
         scratchValue4 = scratchValue2
-        if quest:IsLevelLoaded("GuildWoods") then
-            scratchValue2 = scratchValue | 3
-            scratchValue4 = scratchValue2
-            predicateResult = true
-            if not quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
-                predicateResult = false
-                goto FLOW_after_lab_00d3cc48
-            end
-        else
-            predicateResult = false
-        end
-        ::FLOW_after_lab_00d3cc48::
+        if not quest:IsLevelLoaded("GuildWoods") then goto LAB_00d3cc48 end
+        scratchValue2 = scratchValue | 3
+        scratchValue4 = scratchValue2
+        predicateResult = true
+        if not quest:IsQuestActive("Q_GuildTrainingWoodsWill") then goto LAB_00d3cc48 end
+        goto FLOW_past_lab_00d3cc48
+        ::LAB_00d3cc48::
+        predicateResult = false
+        ::FLOW_past_lab_00d3cc48::
         if scratchValue2 & 2 ~= 0 then
             scratchValue2 = scratchValue2 & 0xfffffffd
             scratchValue4 = scratchValue2
@@ -864,42 +858,61 @@ end
 function KeepBookcaseExitRemoved(quest)
     local getNearestWithDefName = quest:GetNearestWithDefName(quest:GetThingWithScriptName("SecretBookcase"), "REGION_EXIT_POINT")
     while quest:GetStateInt("GameState") ~= 9 do
-        if not quest:NewScriptFrame() then goto LAB_00d3cac6 end
-        while quest:IsLevelLoaded("HeroGuildComplex") do
-            if not quest:NewScriptFrame() then return end
+        if quest:NewScriptFrame() then
+            while quest:IsLevelLoaded("HeroGuildComplex") do
+                if not quest:NewScriptFrame() then return end
+            end
+            while not quest:IsLevelLoaded("HeroGuildComplex") do
+                if not quest:NewScriptFrame() then return end
+            end
+            if quest:GetStateInt("GameState") == 9 then break end
+            quest:SetRegionExitAsActive(getNearestWithDefName, false)
         end
-        while not quest:IsLevelLoaded("HeroGuildComplex") do
-            if not quest:NewScriptFrame() then return end
-        end
-        if quest:GetStateInt("GameState") == 9 then break end
-        quest:SetRegionExitAsActive(getNearestWithDefName, false)
     end
-    ::LAB_00d3cac6::
 end
 
 -- Q_GuildTraining.RunArrivalCutscene (retail 0x00d44cb0)
 function RunArrivalCutscene(quest)
     local hero = quest:GetHero()
+    local resources = quest:RetailResources()
+    local actorMap, movie, resource
     quest:SetTimeOfDay(19.0)
     if not quest:NewScriptFrame() then return end
     local rivalHeroMazeCutscene = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", quest:GetThingWithScriptName("MK_GTA_MAZE1"):GetPos(), "CutsceneMaze")
-    if not rivalHeroMazeCutscene:AcquireControl(4) then goto LAB_00d44ec4 end
+    local resource2 = resources:NewResource()
+    resources:PrepareResource(resource2)
+    while not resources:TryAcquire(resource2, rivalHeroMazeCutscene, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d44ec4 end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00d44ec4 end
-    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d44ec4 end
-    quest:StartCutscene({MAZE = rivalHeroMazeCutscene, HERO = hero}, {}, true)
-    quest:RunCutscene("CS_GUILD_ARRIVE", true, false)
+    resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d44ebb end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d44ebb end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "MAZE", resource2)
+    resources:SetActor(actorMap, "HERO", resource)
+    movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_ARRIVE", actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetAllowScreenFadingOnNextRegionChange(false)
     quest:SetRegionTextDisplayAsActive(false)
-    quest:EndCutscene()
-    hero:ReleaseControl()
-    rivalHeroMazeCutscene:ReleaseControl()
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    resources:ReleaseResource(resource)
+    resources:ReleaseResource(resource2)
     quest:RemoveThing(rivalHeroMazeCutscene, false, true)
     do return end
-    hero:ReleaseControl()
+    ::LAB_00d44ebb::
+    resources:ReleaseResource(resource)
     ::LAB_00d44ec4::
-    rivalHeroMazeCutscene:ReleaseControl()
+    resources:ReleaseResource(resource2)
 end
 
 -- Q_GuildTraining.GossipSetup (retail 0x00d3b410)
@@ -937,74 +950,128 @@ end
 -- Q_GuildTraining.RunCeremonyCutscene (retail 0x00d49d50)
 function RunCeremonyCutscene(quest)
     local hero = quest:GetHero()
+    local resources = quest:RetailResources()
+    local movie, resource, resource4, actorMap
     while not quest:IsLevelLoaded("FrescoDome") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     local rivalHeroWhisperApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", quest:GetThingWithScriptName("MK_GTC_WHISSTART"):GetPos(), "Whisper")
     local guildkeeper = quest:CreateCreature("CREATURE_GUILDKEEPER", quest:GetThingWithScriptName("MK_GTC_GMSTART"):GetPos(), "GM")
-    if not rivalHeroWhisperApprentice:AcquireControl(4) then goto LAB_00d4a246 end
+    local resource5 = resources:NewResource()
+    resources:PrepareResource(resource5)
+    while not resources:TryAcquire(resource5, rivalHeroWhisperApprentice, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d4a246 end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00d4a246 end
     quest:EntitySetInFaction(rivalHeroWhisperApprentice, "FACTION_HERO")
-    if not guildkeeper:AcquireControl(4) then goto LAB_00d4a23d end
+    resource4 = resources:NewResource()
+    resources:PrepareResource(resource4)
+    while not resources:TryAcquire(resource4, guildkeeper, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d4a23d end
+    end
     if quest:IsActiveThreadTerminating() then goto LAB_00d4a23d end
-    if not hero:AcquireControl(4) then hero:ReleaseControl(); goto LAB_00d4a23d end
-    quest:StartCutscene({HERO = hero, WHIS = rivalHeroWhisperApprentice, GM = guildkeeper}, {}, true)
-    quest:RunCutscene("CS_GUILD_CEREMONY", true, false)
+    resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d4a234 end
+    end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4a234 end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    resources:SetActor(actorMap, "WHIS", resource5)
+    resources:SetActor(actorMap, "GM", resource4)
+    movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_CEREMONY", actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:RemoveThing(guildkeeper, false, true)
     quest:RemoveThing(rivalHeroWhisperApprentice, false, true)
-    quest:EndCutscene()
-    hero:ReleaseControl()
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    ::LAB_00d4a234::
+    resources:ReleaseResource(resource)
     ::LAB_00d4a23d::
-    guildkeeper:ReleaseControl()
+    resources:ReleaseResource(resource4)
     ::LAB_00d4a246::
-    rivalHeroWhisperApprentice:ReleaseControl()
+    resources:ReleaseResource(resource5)
 end
 
 -- Q_GuildTraining.RunSaveXPCutscene (retail 0x00d496f0)
 function RunSaveXPCutscene(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
+    local movie, actorMap
     local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-    local resource = resources:NewResource()
-    while not resources:TryAcquire(resource, theRealGuildmaster, 4) do
+    local resource2 = resources:NewResource()
+    resources:PrepareResource(resource2)
+    while not resources:TryAcquire(resource2, theRealGuildmaster, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource2)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    if hero:AcquireControl(4) then
-        quest:StartCutscene({GM = theRealGuildmaster, HERO = hero}, {}, true)
-        quest:RunCutscene("CS_GUILD_SAVEXP", true, false)
-        quest:EndCutscene()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d4997a end
     end
-    hero:ReleaseControl()
+    if quest:IsActiveThreadTerminating() then goto LAB_00d4997a end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "GM", resource2)
+    resources:SetActor(actorMap, "HERO", resource)
+    movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_SAVEXP", actorMap, false, true)
+    quest:FixMovieSequenceCamera(false)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    ::LAB_00d4997a::
     resources:ReleaseResource(resource)
+    resources:ReleaseResource(resource2)
 end
 
 -- Q_GuildTraining.RunSaveXPCutscene2 (retail 0x00d49a20)
 function RunSaveXPCutscene2(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
+    local movie, actorMap
     local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
-    local resource = resources:NewResource()
-    while not resources:TryAcquire(resource, theRealGuildmaster, 4) do
+    local resource2 = resources:NewResource()
+    resources:PrepareResource(resource2)
+    while not resources:TryAcquire(resource2, theRealGuildmaster, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource2)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    if hero:AcquireControl(4) then
-        quest:StartCutscene({GM = theRealGuildmaster, HERO = hero}, {}, true)
-        quest:RunCutscene("CS_GUILD_SAVEXP2", true, false)
-        quest:EndCutscene()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then goto LAB_00d49caa end
     end
-    hero:ReleaseControl()
+    if quest:IsActiveThreadTerminating() then goto LAB_00d49caa end
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "GM", resource2)
+    resources:SetActor(actorMap, "HERO", resource)
+    movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
+    resources:RunMacro("CS_GUILD_SAVEXP2", actorMap, false, true)
+    quest:FixMovieSequenceCamera(false)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:DestroyActorMap(actorMap)
+    ::LAB_00d49caa::
     resources:ReleaseResource(resource)
+    resources:ReleaseResource(resource2)
 end
 

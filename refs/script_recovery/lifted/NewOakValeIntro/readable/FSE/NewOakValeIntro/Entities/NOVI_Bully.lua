@@ -67,7 +67,9 @@ function BullyMainDialogue(quest, resources, control, state)
         end
         return not quest:IsActiveThreadTerminating()
     end
-    if not state:GetStateBool("DoneIntro") then
+    -- DEVIATION (2026-09-19, see the teddy gate in Main): a bully who watched the hero beat the victim
+    -- skips the "get lost" intro and reacts to the attack directly.
+    if not state:GetStateBool("DoneIntro") and not quest:GetStateBool("HeroAttackedVictim") then
         if quest:IsActiveThreadTerminating() then return false end
         if not speak("TEXT_QST_048_BULLY_GET_LOST") then return false end
         state:SetStateBool("DoneIntro", true)
@@ -341,7 +343,10 @@ local function resourceBody(quest, me, resources)
         while not quest:IsActiveThreadTerminating() do
             resources:PrepareResource(bully_control)
             if not acquire_self() then return end
-            if __native_entity_state:GetStateBool("DoneIntro") then
+            -- DEVIATION (user decision 2026-09-19): retail gates the teddy dialogue on DoneIntro alone
+            -- (0x00DBB310 line 332), so a hero who beat the victim first gets "get lost" once before the
+            -- bully will take the bear. He watched it happen: treat HeroAttackedVictim as the intro done.
+            if __native_entity_state:GetStateBool("DoneIntro") or quest:GetStateBool("HeroAttackedVictim") then
                 if not handle_bully_item() then return end
             end
             release_presented()

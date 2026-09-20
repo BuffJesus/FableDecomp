@@ -19,9 +19,7 @@ function Main(quest, me)
     bVar2 = not alive
     if not bVar2 then
         xStack_20 = resources:NewResource()
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         bVar2 = resources:TryAcquire(xStack_20, me, 4)
         while not bVar2 do
             alive = quest:NewScriptFrame(me)
@@ -47,23 +45,22 @@ function Main(quest, me)
                 if bVar3 then goto LAB_00d68acf end
                 bVar3 = me:MsgIsHitByHero()
                 if bVar3 then
-                    -- LAB_00d689df: (native jump target)
-                    bVar3 = true
+                    goto LAB_00d689df
                 else
                     bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar4 then
                         bVar4 = true
                         bVar2 = true
                         bVar3 = me:MsgIsHitByHeroSpecialAbility(me)
-                        if not bVar3 then
-                            bVar3 = true
-                            goto FLOW_after_lab_00d689df
-                        end
+                        if not bVar3 then goto LAB_00d689df end
                     end
                     bVar4 = true
                     bVar3 = false
                 end
-                ::FLOW_after_lab_00d689df::
+                goto FLOW_past_lab_00d689df
+                ::LAB_00d689df::
+                bVar3 = true
+                ::FLOW_past_lab_00d689df::
                 if bVar2 then
                     bVar2 = false
                 end
@@ -96,7 +93,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

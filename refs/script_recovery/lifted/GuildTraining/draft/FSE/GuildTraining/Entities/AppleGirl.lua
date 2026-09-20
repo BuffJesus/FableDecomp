@@ -15,9 +15,7 @@ function Main(quest, me)
     local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_18, x_stk_c
     local alive = true
     xStack_84 = resources:NewResource()
-    bVar2 = false
-    if bVar2 ~= 0 then
-    end
+    resources:PrepareResource(xStack_84)
     bVar2 = resources:TryAcquire(xStack_84, me, 4)
     while not bVar2 do
         alive = quest:NewScriptFrame(me)
@@ -77,7 +75,6 @@ function Main(quest, me)
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
             xStack_60 = resources:StartMovie("")
-            quest:StartMovieSequence()
             pCVar6 = 0x1
             quest:PauseAllNonScriptedEntities(true)
             if not __native_entity_state:GetStateBool("HaveChatted") then
@@ -195,16 +192,15 @@ function Main(quest, me)
             if bVar2 then goto LAB_00d3e1b6 end
             if __native_entity_state:GetStateBool("ChildAppleMode") then
                 bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
-                if bVar2 then
-                    bVar2 = false
-                    goto FLOW_after_lab_00d3d987
-                end
+                if bVar2 then goto LAB_00d3d987 end
                 bVar2 = true
             else
-                -- LAB_00d3d987: (native jump target)
-                bVar2 = false
+                goto LAB_00d3d987
             end
-            ::FLOW_after_lab_00d3d987::
+            goto FLOW_past_lab_00d3d987
+            ::LAB_00d3d987::
+            bVar2 = false
+            ::FLOW_past_lab_00d3d987::
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -269,7 +265,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
-            if ctr_64 == 0x1 then
+            if ctr_64 == 1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d3e1b6 end
@@ -279,7 +275,7 @@ function Main(quest, me)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar4, "TEXT_QST_028_APPLEGIRL_ONE_MORE_APPLE", me, pCVar6, false)
             else
-                if ctr_64 == nil then
+                if ctr_64 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d3e1b6 end
@@ -301,7 +297,7 @@ function Main(quest, me)
             end
             quest:Pause(1.0)
             __native_entity_state:SetStateInt("CurrentApples", __native_entity_state:GetStateInt("CurrentApples") + ctr_64)
-            if ctr_64 == nil then goto FLOW_native_label_1 end
+            if ctr_64 == 0 then goto FLOW_native_label_1 end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d3e1b6 end
@@ -331,7 +327,6 @@ function Main(quest, me)
                         else
                             if native_arg_switch_2 == 4 then
                                 xStack_60 = resources:StartMovie("")
-                                quest:StartMovieSequence()
                                 pCVar5 = 0x1
                                 quest:PauseAllNonScriptedEntities(true)
                                 x_stk_c = resources:ScriptThing(xStack_84)
@@ -385,16 +380,15 @@ function Main(quest, me)
             while not bVar2 do
                 if __native_entity_state:GetStateBool("ChildAppleMode") then
                     bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
-                    if bVar2 then
-                        bVar2 = false
-                        goto FLOW_after_lab_00d3e0a0
-                    end
+                    if bVar2 then goto LAB_00d3e0a0 end
                     bVar2 = true
                 else
-                    -- LAB_00d3e0a0: (native jump target)
-                    bVar2 = false
+                    goto LAB_00d3e0a0
                 end
-                ::FLOW_after_lab_00d3e0a0::
+                goto FLOW_past_lab_00d3e0a0
+                ::LAB_00d3e0a0::
+                bVar2 = false
+                ::FLOW_past_lab_00d3e0a0::
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -450,7 +444,13 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("HaveChatted", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
+    local appleMode = quest:GetStateInt("AppleMode") or 0
+    appleMode = quest:PersistTransferInt(context, "AppleMode", appleMode)
+    quest:SetStateInt("AppleMode", appleMode)
+    local currentApples = quest:GetStateInt("CurrentApples") or 0
+    currentApples = quest:PersistTransferInt(context, "CurrentApples", currentApples)
+    quest:SetStateInt("CurrentApples", currentApples)
 end
 
 function OnPredicateFail(quest, me)

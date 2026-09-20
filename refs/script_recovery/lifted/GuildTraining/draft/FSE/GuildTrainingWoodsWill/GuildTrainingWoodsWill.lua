@@ -29,7 +29,7 @@ function Main(quest)
         quest:SetQuestCardObjective("Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_02", "", "")
         quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Will_Init: lift it as function WatchForTermination(quest)
         if (CVar10 & 2) ~= 0 then
-            CVar10 = (CVar10 & 0xfffffffd)
+            CVar10 = CVar10 & 0xfffffffd
         end
         quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
         if (CVar10 & 4) ~= 0 then
@@ -37,9 +37,7 @@ function Main(quest)
         quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
         r1 = quest:GetThingWithScriptName("WillWhisper")
         xStack_60 = resources:NewResource()
-        bVar3 = false
-        if bVar3 ~= 0 then
-        end
+        resources:PrepareResource(xStack_60)
         bVar3 = resources:TryAcquire(xStack_60, r1, 4)
         while not bVar3 do
             alive = quest:NewScriptFrame()
@@ -68,9 +66,7 @@ function Main(quest)
             end
             iVar12 = 0
             xStack_48 = resources:NewResource()
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_48)
             iVar8 = 4
             pppuVar13 = xStack_48
             pCVar6 = quest:GetHero()
@@ -79,11 +75,7 @@ function Main(quest)
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then
-                    resources:ReleaseResource(xStack_48)
-                    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
-                    goto FLOW_after_lab_00d67db1
-                end
+                if bVar3 then goto LAB_00d67db1 end
                 iVar8 = 4
                 pppuVar13 = xStack_48
                 pCVar6 = quest:GetHero()
@@ -92,9 +84,7 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                -- LAB_00d67db1: (native jump target)
-                resources:ReleaseResource(xStack_48)
-                -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+                goto LAB_00d67db1
             else
                 xStack_38 = resources:NewActorMap()
                 resources:SetActor(xStack_38, "HERO", xStack_48)
@@ -107,7 +97,6 @@ function Main(quest)
                 -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
                 resources:SetActor(xStack_38, "WHISPER", xStack_60)
                 xStack_20 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 resources:RunMacro("CS_GUILD_WILL_WOODS_INTRO", xStack_38, false, true)
@@ -138,9 +127,7 @@ function Main(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if not bVar3 then
-                    bVar3 = false
-                    if bVar3 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_60)
                     cVar1 = quest:GetStateBool("BanditsAlive")
                     while cVar1 do
                         alive = quest:NewScriptFrame()
@@ -226,9 +213,7 @@ function Main(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
-                        bVar3 = false
-                        if bVar3 ~= 0 then
-                        end
+                        resources:PrepareResource(xStack_60)
                         bVar3 = resources:TryAcquire(xStack_60, r1, 4)
                         while not bVar3 do
                             alive = quest:NewScriptFrame()
@@ -241,9 +226,7 @@ function Main(quest)
                         bVar3 = not alive
                         if not bVar3 then
                             xStack_48 = resources:NewResource()
-                            bVar3 = false
-                            if bVar3 ~= 0 then
-                            end
+                            resources:PrepareResource(xStack_48)
                             iVar5 = 4
                             pppuVar13 = xStack_48
                             pCVar6 = quest:GetHero()
@@ -252,10 +235,7 @@ function Main(quest)
                                 alive = quest:NewScriptFrame()
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
-                                if bVar3 then
-                                    resources:ReleaseResource(xStack_48)
-                                    goto FLOW_after_lab_00d6849b
-                                end
+                                if bVar3 then goto LAB_00d6849b end
                                 iVar5 = 4
                                 pppuVar13 = xStack_48
                                 pCVar6 = quest:GetHero()
@@ -264,14 +244,12 @@ function Main(quest)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                -- LAB_00d6849b: (native jump target)
-                                resources:ReleaseResource(xStack_48)
+                                goto LAB_00d6849b
                             else
                                 xStack_38 = resources:NewActorMap()
                                 resources:SetActor(xStack_38, "HERO", xStack_48)
                                 resources:SetActor(xStack_38, "WHISPER", xStack_60)
                                 xStack_20 = resources:StartMovie("")
-                                quest:StartMovieSequence()
                                 quest:PauseAllNonScriptedEntities(true)
                                 quest:FixMovieSequenceCamera(true)
                                 resources:RunMacro("CS_GUILD_WILL_WOODS_OUTRO", xStack_38, false, true)
@@ -282,12 +260,19 @@ function Main(quest)
                                 resources:ReleaseResource(xStack_48)
                                 quest:SetStateBool("MissionSucceeded", true)
                             end
-                            ::FLOW_after_lab_00d6849b::
+                            goto FLOW_past_lab_00d6849b
+                            ::LAB_00d6849b::
+                            resources:ReleaseResource(xStack_48)
+                            ::FLOW_past_lab_00d6849b::
                         end
                     end
                 end
             end
-            ::FLOW_after_lab_00d67db1::
+            goto FLOW_past_lab_00d67db1
+            ::LAB_00d67db1::
+            resources:ReleaseResource(xStack_48)
+            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+            ::FLOW_past_lab_00d67db1::
             ::LAB_00d685cc::
         end
         ::LAB_00d685d5::

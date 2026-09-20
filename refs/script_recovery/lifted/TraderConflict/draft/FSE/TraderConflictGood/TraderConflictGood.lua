@@ -166,7 +166,7 @@ function WatchTimeLimit(quest)
     xStack_8 = quest:RegisterTimer()
     quest:SetTimer(xStack_8, 5)
     cVar1 = quest:GetMasterGameState("TCGTimeLimitBoastTaken")
-    while cVar1 == 0 do
+    while not cVar1 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -292,27 +292,24 @@ function WatchForHittingEnemies(quest)
                 if bVar4 then
                     return
                 end
-                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                 cVar5 = quest:GetStateListAt("AllCreatures", (0) / 0xc):MsgIsHitBy("")
                 if not cVar5 then
-                    -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
                     cVar5 = quest:GetStateListAt("AllCreatures", (0) / 0xc):MsgIsHitByAnySpecialAbilityFrom("")
                     if cVar5 then
                         bVar3 = true
                         bVar6 = true
                         cVar5 = quest:GetStateListAt("AllCreatures", (0) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
-                        if not cVar5 then
-                            bVar4 = true
-                            goto FLOW_after_lab_00dfc735
-                        end
+                        if not cVar5 then goto LAB_00dfc735 end
                     end
                     bVar3 = true
                     bVar4 = false
                 else
-                    -- LAB_00dfc735: (native jump target)
-                    bVar4 = true
+                    goto LAB_00dfc735
                 end
-                ::FLOW_after_lab_00dfc735::
+                goto FLOW_past_lab_00dfc735
+                ::LAB_00dfc735::
+                bVar4 = true
+                ::FLOW_past_lab_00dfc735::
                 if bVar6 then
                     bVar6 = false
                 end
@@ -336,32 +333,24 @@ function WatchForHittingEnemies(quest)
                             end
                             bVar4 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (0) / 0xc)), (quest:GetStateListAt("AllCreatures", (iVar9) / 0xc)), 20.0)
                             if bVar4 then
-                                -- LAB_00dfc811: (native jump target)
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar4 = not alive
-                                if bVar4 then
-                                    return
-                                end
-                                i_stk_4 = quest:GetStateListRef("AllCreatures")
-                                pCVar7 = quest:GetHero()
-                                quest:GiveThingBestEnemyTarget(pCVar7, nil --[[missing]])
+                                goto LAB_00dfc811
                             else
                                 pCVar7 = quest:GetStateListAt("AllCreatures", (iVar9) / 0xc)
                                 pThing1 = quest:GetHero()
                                 bVar4 = quest:IsThingAwareOfOtherThingInAnyWay(pThing1, nil --[[missing]])
-                                if bVar4 then
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar4 = not alive
-                                    if bVar4 then
-                                        return
-                                    end
-                                    i_stk_4 = quest:GetStateListRef("AllCreatures")
-                                    pCVar7 = quest:GetHero()
-                                    quest:GiveThingBestEnemyTarget(pCVar7, nil --[[missing]])
-                                    goto FLOW_after_lab_00dfc811
-                                end
+                                if bVar4 then goto LAB_00dfc811 end
                             end
-                            ::FLOW_after_lab_00dfc811::
+                            goto FLOW_past_lab_00dfc811
+                            ::LAB_00dfc811::
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then
+                                return
+                            end
+                            i_stk_4 = quest:GetStateListRef("AllCreatures")
+                            pCVar7 = quest:GetHero()
+                            quest:GiveThingBestEnemyTarget(pCVar7, nil --[[missing]])
+                            ::FLOW_past_lab_00dfc811::
                             uVar8 = uVar8 + 1
                             iVar9 = iVar9 + 0xc
                         until not (uVar8 < quest:GetStateListCount("AllCreatures"))
@@ -534,7 +523,6 @@ function WatchForTradersFreed(quest)
                             quest:SetQuestCardObjective(pCVar5, "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_03A_SINGLE", "BanditCampEntrance", "BanditCampEntrance")
                         end
                     end
-                    -- LAB_00dfd5bd: (native jump target)
                 else
                     bVar3 = quest:IsRegionLoaded("BanditCampCentre")
                     if bVar3 then
@@ -572,10 +560,10 @@ function WatchForTradersFreed(quest)
                             pCVar5 = quest:GetActiveQuestName()
                             quest:SetQuestCardObjective(pCVar5, "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_03B_PLURAL", "BanditCampCentre", "BanditCampEntrance")
                         end
-                        goto FLOW_after_lab_00dfd5bd
+                        goto LAB_00dfd5bd
                     end
                 end
-                ::FLOW_after_lab_00dfd5bd::
+                ::LAB_00dfd5bd::
                 ::LAB_00dfd5c2::
                 bVar3 = true
             end
@@ -634,57 +622,27 @@ function UpdateLiveEnemies(quest)
                 piVar2 = quest:GetStateListAt("AllCreatures", (piVar4) / 0xc):GetName()
                 iVar3 = ((piVar2 == "TraderToRescue") and 0 or 1)
                 if iVar3 ~= 0 then goto LAB_00dfc413 end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
-                goto FLOW_after_lab_00dfc3b5
+                goto LAB_00dfc3b5
                 ::LAB_00dfc413::
                 piVar2 = quest:GetStateListAt("AllCreatures", (piVar4) / 0xc):GetName()
                 iVar3 = ((piVar2 == "BodyGuard") and 0 or 1)
                 if iVar3 ~= 0 then goto LAB_00dfc45c end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
-                goto FLOW_after_lab_00dfc3b5
+                goto LAB_00dfc3b5
                 ::LAB_00dfc45c::
                 piVar2 = quest:GetStateListAt("AllCreatures", (piVar4) / 0xc):GetName()
                 iVar3 = ((piVar2 == "RingFighter") and 0 or 1)
                 if iVar3 ~= 0 then goto LAB_00dfc4a5 end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
-                goto FLOW_after_lab_00dfc3b5
+                goto LAB_00dfc3b5
                 ::LAB_00dfc4a5::
                 piVar2 = quest:GetStateListAt("AllCreatures", (piVar4) / 0xc):GetName()
                 iVar3 = ((piVar2 == "FisticuffsMember") and 0 or 1)
                 if iVar3 ~= 0 then goto LAB_00dfc4ee end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
-                goto FLOW_after_lab_00dfc3b5
+                goto LAB_00dfc3b5
                 ::LAB_00dfc4ee::
                 piVar2 = quest:GetStateListAt("AllCreatures", (piVar4) / 0xc):GetName()
                 iVar3 = ((piVar2 == "Tyler") and 0 or 1)
                 if iVar3 ~= 0 then goto LAB_00dfc537 end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
-                goto FLOW_after_lab_00dfc3b5
+                goto LAB_00dfc3b5
                 ::LAB_00dfc537::
                 alive = not quest:IsActiveThreadTerminating()
                 bVar1 = not alive
@@ -693,15 +651,17 @@ function UpdateLiveEnemies(quest)
                 end
                 piVar4 = piVar4 + 0xc
             else
-                -- LAB_00dfc3b5: (native jump target)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar1 = not alive
-                if bVar1 then
-                    return bVar1
-                end
-                quest:StateListErase("AllCreatures", (piVar4) / 0xc)
+                goto LAB_00dfc3b5
             end
-            ::FLOW_after_lab_00dfc3b5::
+            goto FLOW_past_lab_00dfc3b5
+            ::LAB_00dfc3b5::
+            alive = not quest:IsActiveThreadTerminating()
+            bVar1 = not alive
+            if bVar1 then
+                return bVar1
+            end
+            quest:StateListErase("AllCreatures", (piVar4) / 0xc)
+            ::FLOW_past_lab_00dfc3b5::
         until not (piVar4 ~= (quest:GetStateListCount("AllCreatures") * 0xc))
     end
     alive = not quest:IsActiveThreadTerminating()
@@ -740,11 +700,8 @@ function UpdateLiveEnemies(quest)
 end
 
 function AttackPeople(quest)
-    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, xStack_3c, x_stk_c
+    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_10, xStack_24, xStack_38, xStack_3c, x_stk_c
     local alive = true
-    local function __cleanup_LAB_00dfdc8a()
-        quest:DeregisterTimer(xStack_3c)
-    end
     local function __cleanup_LAB_00dfdd34()
         quest:DeregisterTimer(xStack_3c)
     end
@@ -753,172 +710,184 @@ function AttackPeople(quest)
     iVar4 = quest:RegisterTimer()
     xStack_3c = iVar4
     if not quest:GetStateBool("EnteredNewRegion") then
-        -- LAB_00dfd643: (native jump target)
-        if (#xStack_24 ~= 0) and (quest:GetStateInt("TradersReachedTeleporter") < quest:GetStateInt("TradersFollowing")) then
-            alive = quest:NewScriptFrame()
-            alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then
-                quest:DeregisterTimer(xStack_3c)
-                goto LAB_00dfde13
-            end
-            if #xStack_24 ~= 0 then
-                iVar7 = 0
-                repeat
+        goto LAB_00dfd643
+    end
+    goto FLOW_past_lab_00dfd643
+    ::LAB_00dfd643::
+    if (#xStack_24 ~= 0) and (quest:GetStateInt("TradersReachedTeleporter") < quest:GetStateInt("TradersFollowing")) then
+        alive = quest:NewScriptFrame()
+        alive = not quest:IsActiveThreadTerminating()
+        bVar2 = not alive
+        if bVar2 then
+            quest:DeregisterTimer(xStack_3c)
+            goto LAB_00dfde13
+        end
+        if #xStack_24 ~= 0 then
+            iVar7 = 0
+            repeat
+                alive = not quest:IsActiveThreadTerminating()
+                bVar2 = not alive
+                if bVar2 then
+                    quest:DeregisterTimer(xStack_3c)
+                    goto LAB_00dfde13
+                end
+                r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], "TraderToRescue")
+                bVar2 = quest:IsEntityFollowingHero(r1)
+                if not bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
-                    if bVar2 then
-                        quest:DeregisterTimer(xStack_3c)
-                        goto LAB_00dfde13
-                    end
-                    r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], "TraderToRescue")
-                    bVar2 = quest:IsEntityFollowingHero(r1)
-                    if not bVar2 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then __cleanup_LAB_00dfdd34(); return end
-                        x_stk_c = nil
-                        if r1 ~= nil then
-                            -- TODO(native): *xStack_18 = *xStack_18 + -1;
-                            -- TODO(native): if *r1 == 0 then
-                            if false then
-                            end
+                    if bVar2 then __cleanup_LAB_00dfdd34(); return end
+                    x_stk_c = nil
+                    if xStack_10 ~= nil then
+                        -- TODO(native): *xStack_10 = *xStack_10 + -1;
+                        -- TODO(native): if *xStack_10 == 0 then
+                        if false then
                         end
                     end
-                    dist = 15.0
-                    pCVar1 = xStack_24[(iVar7) / 0xc + 1]
-                    pCVar5 = quest:GetHero()
-                    bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar1, pCVar5, dist)
+                end
+                dist = 15.0
+                pCVar1 = xStack_24[(iVar7) / 0xc + 1]
+                pCVar5 = quest:GetHero()
+                bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar1, pCVar5, dist)
+                native_arg_sequence_1 = false
+                if bVar2 then
+                    native_arg_sequence_1 = true
+                else
                     native_arg_sequence_1 = false
+                end
+                if not native_arg_sequence_1 then
+                    bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[(iVar7) / 0xc + 1], r1, 15.0)
                     if bVar2 then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
                     end
-                    if not native_arg_sequence_1 then
-                        bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[(iVar7) / 0xc + 1], r1, 15.0)
-                        if bVar2 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then
-                        -- LAB_00dfd841: (native jump target)
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        pCVar1 = 0x0
-                        if bVar2 then
-                            -- LAB_00dfdc54: (native jump target)
-                            quest:DeregisterTimer(xStack_3c)
-                            return
-                        end
-                        bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[0x0 + 1], r1, 15.0)
+                end
+                if native_arg_sequence_1 then
+                    goto LAB_00dfd841
+                end
+                goto FLOW_past_lab_00dfd841
+                ::LAB_00dfd841::
+                alive = not quest:IsActiveThreadTerminating()
+                bVar2 = not alive
+                pCVar1 = 0x0
+                if bVar2 then
+                    -- LAB_00dfdc54: (native jump target)
+                    quest:DeregisterTimer(xStack_3c)
+                    return
+                end
+                bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[0x0 + 1], r1, 15.0)
+                native_arg_sequence_2 = false
+                if bVar2 then
+                    native_arg_sequence_2 = true
+                else
+                    native_arg_sequence_2 = false
+                end
+                if not native_arg_sequence_2 then
+                    bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(xStack_24[pCVar1 + 1], r1)
+                    if bVar2 then
+                        native_arg_sequence_2 = true
+                    else
                         native_arg_sequence_2 = false
-                        if bVar2 then
+                    end
+                    if native_arg_sequence_2 then
+                        if piStack_14 ~= nil then
                             native_arg_sequence_2 = true
                         else
                             native_arg_sequence_2 = false
                         end
-                        if not native_arg_sequence_2 then
-                            bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(xStack_24[pCVar1 + 1], r1)
-                            if bVar2 then
-                                native_arg_sequence_2 = true
-                            else
-                                native_arg_sequence_2 = false
-                            end
-                            if native_arg_sequence_2 then
-                                if (r1 ~= nil and not r1:IsNull()) then
-                                    native_arg_sequence_2 = true
-                                else
-                                    native_arg_sequence_2 = false
-                                end
-                            end
-                            if native_arg_sequence_2 then
-                                cVar3 = (r1 ~= nil and r1:IsAlive())
-                                if cVar3 then
-                                    native_arg_sequence_2 = true
-                                else
-                                    native_arg_sequence_2 = false
-                                end
-                            end
-                        end
-                        if native_arg_sequence_2 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then __cleanup_LAB_00dfdd34(); return end
-                            quest:GiveThingBestEnemyTarget(xStack_24[pCVar1 + 1], r1)
-                            iVar4 = quest:GetTimer(xStack_3c)
-                            if iVar4 == 0 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then __cleanup_LAB_00dfdc8a(); return end
-                                iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
-                                pCVar5 = quest:GetHero()
-                                quest:AddPersonToConversation(iVar7, pCVar5)
-                                xStack_38 = xStack_24[pCVar1 + 1]
-                                pCVar5 = quest:GetHero()
-                                quest:AddLineToConversation(iVar7, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", xStack_38, pCVar5, false)
-                                quest:SetTimer(xStack_3c, 4)
-                                goto FLOW_after_lab_00dfda32
-                            end
+                    end
+                    if native_arg_sequence_2 then
+                        -- TODO(native): cVar3 = (**(*piStack_14 + 0x12c))()
+                        cVar3 = nil --[[unresolved native value]]
+                        if cVar3 ~= 0 then
+                            native_arg_sequence_2 = true
                         else
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then __cleanup_LAB_00dfdd34(); return end
-                            pCVar5 = xStack_24[pCVar1 + 1]
-                            pTarget = quest:GetHero()
-                            quest:GiveThingBestEnemyTarget(pCVar5, pTarget)
-                            iVar4 = quest:GetTimer(xStack_3c)
-                            if iVar4 == 0 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then
-                                    __cleanup_LAB_00dfdc8a()
-                                    return
-                                end
-                                iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
-                                pCVar5 = quest:GetHero()
-                                quest:AddPersonToConversation(iVar7, pCVar5)
-                                xStack_38 = xStack_24[pCVar1 + 1]
-                                pCVar5 = quest:GetHero()
-                                quest:AddLineToConversation(iVar7, "TEXT_QST_B11_BANDIT_ATTACK_HERO", xStack_38, pCVar5, false)
-                                -- LAB_00dfda32: (native jump target)
-                                quest:SetTimer(xStack_3c, 4)
-                            end
+                            native_arg_sequence_2 = false
                         end
-                        ::FLOW_after_lab_00dfda32::
-                        quest:MiniMapAddMarker(xStack_24[pCVar1 + 1], "HUD_ORB_RED_SMALL")
-                        puVar6 = 0
-                        if #xStack_24 ~= 0 then
-                            bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
-                            if bVar2 then
-                                table.remove(xStack_24, puVar6 + 1)
-                                break
-                            end
-                            goto FLOW_after_lab_00dfda90
-                        end
-                        goto LAB_00dfdabb
                     end
-                    pCVar1 = xStack_24[(iVar7) / 0xc + 1]
-                    pCVar5 = quest:GetHero()
-                    bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(pCVar1, pCVar5)
-                    if bVar2 then return end  -- TODO(native): goto LAB_00dfd841
-                    bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(xStack_24[(iVar7) / 0xc + 1], r1)
+                end
+                if native_arg_sequence_2 then
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar2 = not alive
+                    if bVar2 then __cleanup_LAB_00dfdd34(); return end
+                    quest:GiveThingBestEnemyTarget(xStack_24[pCVar1 + 1], r1)
+                    iVar4 = quest:GetTimer(xStack_3c)
+                    if iVar4 == 0 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar2 = not alive
+                        if bVar2 then
+                            quest:DeregisterTimer(xStack_3c)
+                            return
+                        end
+                        iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
+                        pCVar5 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar7, pCVar5)
+                        xStack_38 = xStack_24[pCVar1 + 1]
+                        pCVar5 = quest:GetHero()
+                        quest:AddLineToConversation(iVar7, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", xStack_38, pCVar5, false)
+                        goto LAB_00dfda32
+                    end
+                else
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar2 = not alive
+                    if bVar2 then __cleanup_LAB_00dfdd34(); return end
+                    pCVar5 = xStack_24[pCVar1 + 1]
+                    pTarget = quest:GetHero()
+                    quest:GiveThingBestEnemyTarget(pCVar5, pTarget)
+                    iVar4 = quest:GetTimer(xStack_3c)
+                    if iVar4 == 0 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar2 = not alive
+                        if bVar2 then
+                            -- LAB_00dfdc8a: (native jump target)
+                            quest:DeregisterTimer(xStack_3c)
+                            return
+                        end
+                        iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
+                        pCVar5 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar7, pCVar5)
+                        xStack_38 = xStack_24[pCVar1 + 1]
+                        pCVar5 = quest:GetHero()
+                        quest:AddLineToConversation(iVar7, "TEXT_QST_B11_BANDIT_ATTACK_HERO", xStack_38, pCVar5, false)
+                        goto LAB_00dfda32
+                    end
+                end
+                goto FLOW_past_lab_00dfda32
+                ::LAB_00dfda32::
+                quest:SetTimer(xStack_3c, 4)
+                ::FLOW_past_lab_00dfda32::
+                quest:MiniMapAddMarker(xStack_24[pCVar1 + 1], "HUD_ORB_RED_SMALL")
+                puVar6 = 0
+                if #xStack_24 ~= 0 then
+                    bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
                     if bVar2 then
-                        p0 = "TC_BanditGuard"
-                        elem_1 = xStack_24[(iVar7) / 0xc + 1]
-                        this_00 = elem_1:GetName()
-                        iVar4 = ((this_00 ~= p0) and 1 or 0)
-                        if iVar4 ~= 0 then return end  -- TODO(native): goto LAB_00dfd841
+                        table.remove(xStack_24, puVar6 + 1)
+                        break
                     end
-                    -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
-                    iVar7 = iVar7 + 0xc
-                until not (xStack_38 < (#xStack_24))
-            end
-            goto LAB_00dfdaff
+                    goto FLOW_after_lab_00dfda90
+                end
+                goto LAB_00dfdabb
+                ::FLOW_past_lab_00dfd841::
+                pCVar1 = xStack_24[(iVar7) / 0xc + 1]
+                pCVar5 = quest:GetHero()
+                bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(pCVar1, pCVar5)
+                if bVar2 then goto LAB_00dfd841 end
+                bVar2 = quest:IsThingAwareOfOtherThingInAnyWay(xStack_24[(iVar7) / 0xc + 1], r1)
+                if bVar2 then
+                    p0 = "TC_BanditGuard"
+                    elem_1 = xStack_24[(iVar7) / 0xc + 1]
+                    this_00 = elem_1:GetName()
+                    iVar4 = ((this_00 ~= p0) and 1 or 0)
+                    if iVar4 ~= 0 then goto LAB_00dfd841 end
+                end
+                -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
+                iVar7 = iVar7 + 0xc
+            until not (xStack_38 < (#xStack_24))
         end
+        goto LAB_00dfdaff
     end
+    ::FLOW_past_lab_00dfd643::
     ::LAB_00dfdb8c::
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -984,7 +953,7 @@ function AttackPeople(quest)
                 bVar2 = not alive
                 if not bVar2 then
                     if quest:GetStateBool("EnteredNewRegion") then goto LAB_00dfdb8c end
-                    -- TODO(native): goto LAB_00dfd643
+                    goto LAB_00dfd643
                 end
             end
             quest:DeregisterTimer(xStack_3c)
@@ -1004,7 +973,6 @@ function helper_DFDED0(quest, native_arg_strParam_1)
     local xStack_2c = resources:NewActorMap()
     resources:SetActor(xStack_2c, "HERO", xStack_20)
     local xStack_10 = resources:StartMovie("")
-    quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro(native_arg_strParam_1, xStack_2c, false, true)

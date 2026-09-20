@@ -16,6 +16,9 @@ function Main(quest, me)
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(xStack_190)
     end
+    local function __cleanup_LAB_00d42efe()
+        quest:DeregisterTimer(xStack_190)
+    end
     local function __cleanup_LAB_00d42f02()
         quest:DeregisterTimer(xStack_190)
     end
@@ -64,7 +67,7 @@ function Main(quest, me)
         if not bVar3 then
             cVar2 = quest:GetMasterGameState("SkillTrainingStarted")
             i_stk_16c = 0
-            while cVar2 ~= 1 do
+            while not cVar2 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -156,7 +159,7 @@ function Main(quest, me)
                     if native_arg_sequence_1 then
                         return
                     end
-                    if quest:GetMasterGameState("MovingDummiesNeeded") == 0 then
+                    if not quest:GetMasterGameState("MovingDummiesNeeded") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
@@ -245,7 +248,7 @@ function Main(quest, me)
                             return
                         end
                         cVar2 = quest:GetMasterGameState("MovingDummiesNeeded")
-                        while cVar2 ~= 1 do
+                        while not cVar2 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -301,7 +304,7 @@ function Main(quest, me)
                                 quest:DeregisterTimer(xStack_190)
                                 return
                             end
-                            if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
+                            if quest:GetMasterGameState("MovingDummiesNeeded") then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
@@ -473,15 +476,15 @@ function Main(quest, me)
                                                         if 0.0 <= xStack_18c then
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
-                                                            if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
+                                                            if bVar3 then __cleanup_LAB_00d42efe(); return end
                                                             pCVar6 = quest:GetHero()
                                                             quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", r7, pCVar6, false)
                                                         else
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if bVar3 then
-                                                                -- LAB_00d42efe: (native jump target)
-                                                                __cleanup_LAB_00d42f02(); return
+                                                                __cleanup_LAB_00d42efe()
+                                                                return
                                                             end
                                                             pCVar6 = quest:GetHero()
                                                             quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", r7, pCVar6, false)
@@ -489,14 +492,14 @@ function Main(quest, me)
                                                     else
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar3 = not alive
-                                                        if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
+                                                        if bVar3 then __cleanup_LAB_00d42efe(); return end
                                                         pCVar6 = quest:GetHero()
                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", r7, pCVar6, false)
                                                     end
                                                 else
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
-                                                    if bVar3 then return end  -- TODO(native): goto LAB_00d42efe
+                                                    if bVar3 then __cleanup_LAB_00d42efe(); return end
                                                     pCVar6 = quest:GetHero()
                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", r7, pCVar6, false)
                                                 end
@@ -542,14 +545,14 @@ function Main(quest, me)
                             c_stk_16d = c_stk_16d == 0
                             i_stk_16c = 0
                         end
-                        if quest:GetMasterGameState("SkillRepeatKnown") ~= 0 then
+                        if quest:GetMasterGameState("SkillRepeatKnown") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
                                 quest:DeregisterTimer(xStack_190)
                                 return
                             end
-                            if quest:GetMasterGameState("SkillRepeating") == 1 then
+                            if quest:GetMasterGameState("SkillRepeating") then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
@@ -567,7 +570,7 @@ function Main(quest, me)
                             end
                             quest:SetMasterGameState("SkillDummyReset", true)
                             cVar2 = quest:GetMasterGameState("SkillRepeatKnown")
-                            while cVar2 ~= 0 do
+                            while cVar2 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -610,7 +613,7 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("DummyNumber", iVar1)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

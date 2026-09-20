@@ -176,8 +176,15 @@
             "bsimVoid": false
           },
           "todo": [],
-          "calls": [],
-          "lines": 0,
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool",
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 6,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -234,7 +241,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -287,7 +293,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
@@ -318,7 +323,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 211,
+          "lines": 209,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -390,7 +395,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -444,7 +448,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "RESOURCE_RunMacro",
             "PauseAllNonScriptedEntities",
@@ -479,7 +482,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 256,
+          "lines": 254,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -551,7 +554,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacro",
@@ -575,7 +577,6 @@
             "ACTORMAP_New",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacro",
@@ -612,7 +613,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 180,
+          "lines": 178,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -635,9 +636,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "label LAB_00dccfa3"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "IsQuestActive",
@@ -649,7 +648,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 44,
+          "lines": 43,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -659,10 +658,13 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00dccfa3;"
+            "goto FLOW_past_lab_00dccfa3;",
+            "goto LAB_00dccfa3;",
+            "if (bVar3) goto LAB_00dccfa3;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00dccfa3"
+            "FLOW_past_lab_00dccfa3",
+            "LAB_00dccfa3"
           ]
         },
         {
@@ -731,8 +733,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00dd1d98_c1",
-            "label LAB_00dd1d15",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53"
           ],
@@ -743,50 +743,25 @@
             "ACTORMAP_New",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
-            "RESOURCE_RunMacro",
-            "FixMovieSequenceCamera",
-            "IsActiveThreadTerminating",
-            "DisplayTutorial",
-            "IsActiveThreadTerminating",
-            "MsgIsTutorialClickedPast",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "MsgIsTutorialClickedPast",
-            "IsActiveThreadTerminating",
-            "SetStateBool",
-            "PauseAllNonScriptedEntities",
-            "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "GetHero",
             "GetThingWithScriptName",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_RunMacro",
-            "FixMovieSequenceCamera",
-            "IsActiveThreadTerminating",
-            "DisplayTutorial",
-            "IsActiveThreadTerminating",
-            "MsgIsTutorialClickedPast",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "MsgIsTutorialClickedPast",
-            "IsActiveThreadTerminating",
-            "SetStateBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_RunMacro",
             "FixMovieSequenceCamera",
             "IsActiveThreadTerminating",
@@ -803,7 +778,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 198,
+          "lines": 129,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -813,21 +788,23 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00dd1d98;",
-            "goto FLOW_after_lab_00dd1d98_109;",
+            "goto FLOW_hoist_lab_00dd1d98_2;",
+            "goto FLOW_past_lab_00dd1d15;",
+            "goto FLOW_past_lab_00dd1d98;",
+            "goto LAB_00dd1d15;",
             "goto LAB_00dd1d98;",
             "goto LAB_00dd1e95;",
+            "if (bVar4) goto LAB_00dd1d15;",
             "if (bVar4) goto LAB_00dd1e70;",
-            "if (bVar4) goto LAB_00dd1e70_c1;",
-            "if (native_arg_sequence_1) goto LAB_00dd1e70;",
-            "if (native_arg_sequence_1) goto LAB_00dd1e70_c1;"
+            "if (native_arg_sequence_1) goto LAB_00dd1e70;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00dd1d98",
-            "FLOW_after_lab_00dd1d98_109",
+            "FLOW_hoist_lab_00dd1d98_2",
+            "FLOW_past_lab_00dd1d15",
+            "FLOW_past_lab_00dd1d98",
+            "LAB_00dd1d15",
             "LAB_00dd1d98",
             "LAB_00dd1e70",
-            "LAB_00dd1e70_c1",
             "LAB_00dd1e95"
           ]
         },
@@ -913,7 +890,6 @@
             "ENTITYTHING_Set",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
             "UpdateQuestInfoCounterList",
             "IsActiveThreadTerminating",
             "Pause",
@@ -946,7 +922,7 @@
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement"
           ],
-          "lines": 241,
+          "lines": 238,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -956,11 +932,11 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00dcd9ed;",
+            "goto FLOW_past_lab_00dcd9ed;",
             "goto LAB_00dcd9ed;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00dcd9ed",
+            "FLOW_past_lab_00dcd9ed",
             "LAB_00dcd9ed"
           ]
         },
@@ -975,16 +951,12 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "label LAB_00dcd306"
-          ],
+          "todo": [],
           "calls": [
             "GetRandomThingWithScriptName",
             "ENTITYTHING_Set",
             "QUESTTHING_Empty",
             "GetName",
-            "SetStateInt",
-            "ENTITYSTATE_SetString",
             "ENGINE_StrCmp",
             "SetStateInt",
             "ENTITYSTATE_SetString",
@@ -1000,7 +972,7 @@
             "SetStateInt",
             "SetStateInt"
           ],
-          "lines": 39,
+          "lines": 37,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1010,10 +982,15 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto LAB_00dcd2bb;"
+            "goto FLOW_past_lab_00dcd306;",
+            "goto LAB_00dcd2bb;",
+            "goto LAB_00dcd306;",
+            "if (iVar5 == 0) goto LAB_00dcd306;"
           ],
           "nativeLabels": [
-            "LAB_00dcd2bb"
+            "FLOW_past_lab_00dcd306",
+            "LAB_00dcd2bb",
+            "LAB_00dcd306"
           ]
         },
         {
@@ -1341,7 +1318,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00dce594",
             "label LAB_00dcebab"
           ],
           "calls": [
@@ -1417,7 +1393,7 @@
             "EntityStopFollowing",
             "GetNearestWithScriptName",
             "RESOURCE_NewResource",
-            "RESOURCE_IsAcquired",
+            "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1426,6 +1402,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "ENGINE_ZeroVector",
             "GetPos",
             "MoveToPosition",
             "ENGINE_IsDistanceBetweenThingsUnder",
@@ -1437,7 +1414,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 414,
+          "lines": 412,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1447,13 +1424,16 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00dce594;",
+            "goto FLOW_past_lab_00dce594;",
+            "goto LAB_00dce594;",
             "if (*(int *)(this + 0x1c) != 1) goto LAB_00dce500;",
-            "if (bVar6) goto LAB_00dcec33;"
+            "if (bVar6) goto LAB_00dcec33;",
+            "if (native_arg_sequence_1) goto LAB_00dce594;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00dce594",
+            "FLOW_past_lab_00dce594",
             "LAB_00dce500",
+            "LAB_00dce594",
             "LAB_00dcec33"
           ]
         },
@@ -1468,12 +1448,9 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "label LAB_00dce00a"
-          ],
+          "todo": [],
           "calls": [
             "GetName",
-            "SetStateInt",
             "ENGINE_StrCmp",
             "SetStateInt",
             "SetStateInt",
@@ -1512,10 +1489,15 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto LAB_00dcdf96;"
+            "goto FLOW_past_lab_00dce00a;",
+            "goto LAB_00dcdf96;",
+            "goto LAB_00dce00a;",
+            "if (c_stk_11 != '\\0') goto LAB_00dce00a;"
           ],
           "nativeLabels": [
-            "LAB_00dcdf96"
+            "FLOW_past_lab_00dce00a",
+            "LAB_00dcdf96",
+            "LAB_00dce00a"
           ]
         },
         {
@@ -2074,8 +2056,6 @@
         ],
         "todo": {
           "DoMultiplierCutscene": [
-            "label LAB_00dd1d98_c1",
-            "label LAB_00dd1d15",
             "label LAB_00dd1e3d",
             "label LAB_00dd1e53"
           ],
@@ -2096,7 +2076,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 29
+        "todo": 23
       }
     },
     {
@@ -2301,6 +2281,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 29
+    "todo": 23
   }
 }

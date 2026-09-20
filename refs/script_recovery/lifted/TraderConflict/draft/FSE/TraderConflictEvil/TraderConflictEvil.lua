@@ -2,12 +2,9 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, r5, r6, r7, uVar17, xStack_18, xStack_34, xStack_38, xStack_74
+    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, uVar17, xStack_18, xStack_34, xStack_38, xStack_74
     local alive = true
-    local function __region_LAB_00df74f2_c16()
-        bVar13 = xStack_18 == nil
-    end
-    local function __region_LAB_00df77e2_c16()
+    local function __region_LAB_00df77e2()
         bVar13 = xStack_18 == nil
     end
     iVar8 = 0
@@ -37,8 +34,7 @@ function Main(quest)
     quest:RepopulateVillage(pCVar4)
     pCVar6 = "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL"
     pCVar4 = quest:GetHero()
-    -- TODO(native): EntitySetAsOpinionSource is not a ForgeFSE binding
-    quest:EntitySetAsOpinionSource(pCVar4, pCVar6)
+    quest:EntitySetAsOpinionSource(pCVar4, iVar8)
     quest:SetGuardsIgnoreCrimes(true)
     CVar15 = 0x0
     pCVar4 = quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS")
@@ -76,447 +72,402 @@ function Main(quest)
         bVar13 = not alive
         if not bVar13 then
             pcVar14 = "CS_TRADERCON_EVIL_INTRO_NORTH"
-            -- TODO(native): goto LAB_00df656e
+            goto LAB_00df656e
         end
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar13 = not alive
         if not bVar13 then
             pcVar14 = "CS_TRADERCON_EVIL_INTRO_SOUTH"
-            -- LAB_00df656e: (native jump target)
-            helper_DF9E00(quest, pcVar14)
-            if not quest:GetStateBool("QuestStartScreened") then
+            goto LAB_00df656e
+        end
+    end
+    goto FLOW_past_lab_00df656e
+    ::LAB_00df656e::
+    helper_DF9E00(quest, pcVar14)
+    if not quest:GetStateBool("QuestStartScreened") then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar13 = not alive
+        if bVar13 then goto LAB_00df75ec end
+        CVar15 = 0x0
+        bVar13 = true
+        pCVar6 = quest:GetActiveQuestName()
+        quest:KickOffQuestStartScreen(pCVar6, bVar13, (CVar15 ~= 0))
+        quest:SetStateBool("QuestStartScreened", true)
+    end
+    quest:FadeScreenIn()
+    quest:OverrideMusic(0x17, false, false)
+    quest:CreateThread("WatchTimeLimit")  -- native thread body NScript::CQ_TraderConflictEvilScript::WatchTimeLimit: lift it as function WatchTimeLimit(quest)
+    ctr_74 = 0
+    ctr_40 = 0
+    if quest:GetStateListCount("AllCreatures") ~= 0 then
+        ctr_78 = 0
+        repeat
+            CVar5 = ctr_78
+            alive = not quest:IsActiveThreadTerminating()
+            bVar13 = not alive
+            if bVar13 then goto LAB_00df75ec end
+            quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), nil --[[operand lost by the decompiler]])
+            quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "FACTION_MONSTERS")
+            quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "HUD_ORB_RED_SMALL")
+            quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), false)
+            piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetName()
+            if piVar7 == nil then
+                bVar13 = false
+                CVar5 = ctr_78
+                if not bVar13 then
+                    goto LAB_00df6794
+                end
+            else
+                iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
+                if iVar8 ~= 0 then goto LAB_00df6794 end
+            end
+            goto FLOW_past_lab_00df6794
+            ::LAB_00df6794::
+            alive = not quest:IsActiveThreadTerminating()
+            bVar13 = not alive
+            if bVar13 then goto LAB_00df75ec end
+            piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
+            if piVar7 == nil then
+                CVar5 = ctr_78
+                c_stk_7d = false
+            else
+                iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
+                c_stk_7d = not (iVar8 ~= 0)
+            end
+            if c_stk_7d then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar13 = not alive
                 if bVar13 then goto LAB_00df75ec end
                 CVar15 = 0x0
-                bVar13 = true
-                pCVar6 = quest:GetActiveQuestName()
-                quest:KickOffQuestStartScreen(pCVar6, bVar13, (CVar15 ~= 0))
-                quest:SetStateBool("QuestStartScreened", true)
+                pCVar6 = "TC_Villager"
+                pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
+                pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
+                r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
+                fVar16 = 10.0
+                ctr_74 = ctr_74 + 1
+                quest:SetCombatNearbyBreakOffRange(r2, fVar16)
+                quest:EntitySetInFaction(r2, "FACTION_MONSTERS")
+                quest:MiniMapAddMarker(r2, "HUD_ORB_RED_SMALL")
+                quest:EntitySetSleepEnabled(r2, false)
+                quest:EntitySetStategroupEnabled(r2, "SG_MINION_SLEEP", false)
             end
-            quest:FadeScreenIn()
-            quest:OverrideMusic(0x17, false, false)
-            quest:CreateThread("WatchTimeLimit")  -- native thread body NScript::CQ_TraderConflictEvilScript::WatchTimeLimit: lift it as function WatchTimeLimit(quest)
-            ctr_74 = 0
-            ctr_40 = 0
-            if quest:GetStateListCount("AllCreatures") ~= 0 then
-                ctr_78 = 0
-                repeat
-                    CVar5 = ctr_78
+            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_HAWKING_FROM_STALL", false)
+            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SELL_TO_BUYER", false)
+            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_OPEN_AND_CLOSE_SHOP", false)
+            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SETUP_WARES", false)
+            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_SLEEP", false)
+            ::FLOW_past_lab_00df6794::
+            ctr_40 = ctr_40 + 1
+            ctr_78 = ctr_78 + 0xc
+        until not (ctr_40 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
+    end
+    alive = not quest:IsActiveThreadTerminating()
+    bVar13 = not alive
+    if not bVar13 then
+        ctr_44 = 0
+        if 0 < ctr_74 then
+            goto LAB_00df6aa2
+        end
+        goto FLOW_hoist_lab_00df6aa2_1
+    end
+    goto FLOW_past_lab_00df6aa2
+    ::LAB_00df6aa2::
+    CVar5 = 0x0
+    alive = not quest:IsActiveThreadTerminating()
+    bVar13 = not alive
+    if not bVar13 then
+        ctr_40 = 0
+        if quest:GetStateListCount("AllCreatures") ~= 0 then
+            repeat
+                alive = not quest:IsActiveThreadTerminating()
+                bVar13 = not alive
+                if bVar13 then goto LAB_00df75ec end
+                piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
+                iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
+                c_stk_7d = not (iVar8 ~= 0)
+                if c_stk_7d then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar13 = not alive
                     if bVar13 then goto LAB_00df75ec end
-                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), nil --[[operand lost by the decompiler]])
-                    quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "FACTION_MONSTERS")
-                    quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "HUD_ORB_RED_SMALL")
-                    quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), false)
-                    piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetName()
-                    if piVar7 == nil then
-                        bVar13 = false
-                        CVar5 = ctr_78
-                        if not bVar13 then
-                            -- LAB_00df6794: (native jump target)
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar13 = not alive
-                            if bVar13 then goto LAB_00df75ec end
-                            piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
-                            if piVar7 == nil then
-                                CVar5 = ctr_78
-                                c_stk_7d = false
-                            else
-                                iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
-                                c_stk_7d = not (iVar8 ~= 0)
-                            end
-                            if c_stk_7d then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar13 = not alive
-                                if bVar13 then goto LAB_00df75ec end
-                                CVar15 = 0x0
-                                pCVar6 = "TC_Villager"
-                                pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
-                                pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
-                                r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
-                                fVar16 = 10.0
-                                ctr_74 = ctr_74 + 1
-                                quest:SetCombatNearbyBreakOffRange(r2, fVar16)
-                                quest:EntitySetInFaction(r2, "FACTION_MONSTERS")
-                                quest:MiniMapAddMarker(r2, "HUD_ORB_RED_SMALL")
-                                quest:EntitySetSleepEnabled(r2, false)
-                                quest:EntitySetStategroupEnabled(r2, "SG_MINION_SLEEP", false)
-                            end
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_HAWKING_FROM_STALL", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SELL_TO_BUYER", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_OPEN_AND_CLOSE_SHOP", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SETUP_WARES", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_SLEEP", false)
+                    iVar8 = 0
+                    if iVar8 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
+                        piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)
+                        bVar13 = piVar7:IsEqualTo(quest:GetStateListAt("AllCreatures", (iVar8) / 0xc))
+                        if bVar13 then
+                            quest:StateListErase("AllCreatures", (iVar8) / 0xc)
+                            break
                         end
-                    else
-                        iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
-                        if iVar8 ~= 0 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar13 = not alive
-                            if bVar13 then goto LAB_00df75ec end
-                            piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
-                            if piVar7 == nil then
-                                CVar5 = ctr_78
-                                c_stk_7d = false
-                            end
-                            if c_stk_7d then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar13 = not alive
-                                if bVar13 then goto LAB_00df75ec end
-                                CVar15 = 0x0
-                                pCVar6 = "TC_Villager"
-                                pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
-                                pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
-                                r3 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
-                                fVar16 = 10.0
-                                ctr_74 = ctr_74 + 1
-                                quest:SetCombatNearbyBreakOffRange(r3, fVar16)
-                                quest:EntitySetInFaction(r3, "FACTION_MONSTERS")
-                                quest:MiniMapAddMarker(r3, "HUD_ORB_RED_SMALL")
-                                quest:EntitySetSleepEnabled(r3, false)
-                                quest:EntitySetStategroupEnabled(r3, "SG_MINION_SLEEP", false)
-                            end
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_HAWKING_FROM_STALL", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SELL_TO_BUYER", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_OPEN_AND_CLOSE_SHOP", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_SETUP_WARES", false)
-                            quest:EntitySetStategroupEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "SG_MINION_SLEEP", false)
-                            goto FLOW_after_lab_00df6794
-                        end
+                        goto FLOW_after_lab_00df6b83
                     end
-                    ::FLOW_after_lab_00df6794::
-                    ctr_40 = ctr_40 + 1
-                    ctr_78 = ctr_78 + 0xc
-                until not (ctr_40 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar13 = not alive
-            if not bVar13 then
-                ctr_44 = 0
-                if 0 < ctr_74 then
-                    -- LAB_00df6aa2: (native jump target)
-                    CVar5 = 0x0
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if not bVar13 then
-                        ctr_40 = 0
-                        if quest:GetStateListCount("AllCreatures") ~= 0 then
-                            repeat
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar13 = not alive
-                                if bVar13 then goto LAB_00df75ec end
-                                piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
-                                iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
-                                c_stk_7d = not (iVar8 ~= 0)
-                                if c_stk_7d then
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar13 = not alive
-                                    if bVar13 then goto LAB_00df75ec end
-                                    iVar8 = 0
-                                    if iVar8 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
-                                        piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)
-                                        bVar13 = piVar7:IsEqualTo(quest:GetStateListAt("AllCreatures", (iVar8) / 0xc))
-                                        if bVar13 then
-                                            quest:StateListErase("AllCreatures", (iVar8) / 0xc)
-                                            break
-                                        end
-                                        goto FLOW_after_lab_00df6b83
-                                    end
-                                    break
-                                end
-                                ctr_40 = ctr_40 + 1
-                            until not (ctr_40 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                        end
-                        goto LAB_00df6bae
-                    end
-                    goto LAB_00df75ec
+                    break
                 end
-                -- LAB_00df6bdb: (native jump target)
+                ctr_40 = ctr_40 + 1
+            until not (ctr_40 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
+        end
+        goto LAB_00df6bae
+    end
+    goto LAB_00df75ec
+    ::FLOW_hoist_lab_00df6aa2_1::
+    goto LAB_00df6bdb
+    ::FLOW_past_lab_00df6aa2::
+    goto FLOW_past_lab_00df6bdb
+    ::LAB_00df6bdb::
+    alive = not quest:IsActiveThreadTerminating()
+    bVar13 = not alive
+    if not bVar13 then
+        UpdateLiveEnemies(quest)
+        quest:SetStateInt("InitialNumberInRegion", ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc)
+        quest:DisplayQuestInfo(true)
+        iVar8 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_GUARD", 0x19, 1.0)
+        quest:SetStateInt("CounterID", iVar8)
+        quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
+        r3 = quest:GetThingWithScriptName("TC_BanditFollower")
+        iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
+        if iVar8 ~= -0x19 and -1 < iVar8 + 0x19 then
+            repeat
+                alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar13 = not alive
-                if not bVar13 then
-                    UpdateLiveEnemies(quest)
-                    quest:SetStateInt("InitialNumberInRegion", ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc)
-                    quest:DisplayQuestInfo(true)
-                    iVar8 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_GUARD", 0x19, 1.0)
-                    quest:SetStateInt("CounterID", iVar8)
-                    quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
-                    r4 = quest:GetThingWithScriptName("TC_BanditFollower")
-                    iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
-                    if iVar8 ~= -0x19 and -1 < iVar8 + 0x19 then
-                        repeat
-                            alive = quest:NewScriptFrame()
+                if bVar13 then
+                    r3 = nil
+                    r1 = nil
+                    if #xStack_18 == 0 then
+                        -- LAB_00df74f2: (native jump target)
+                        bVar13 = xStack_18 == nil
+                    else
+                        bVar13 = xStack_18 == nil
+                    end
+                    goto LAB_00df7957
+                end
+                ctr_5c = 0
+                if quest:GetStateListCount("AllCreatures") ~= 0 then
+                    ctr_78 = 0
+                    repeat
+                        CVar5 = ctr_78
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar13 = not alive
+                        if bVar13 then
+                            r3 = nil
+                            r1 = nil
+                            bVar13 = xStack_18 == nil
+                            goto LAB_00df7957
+                        end
+                        cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
+                        if not cVar1 then
+                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFromHero()
+                            if cVar1 then
+                                cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
+                                if not cVar1 then goto LAB_00df6e53 end
+                            end
+                            bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), r3, 10.0)
+                            bVar13 = false
+                            if bVar2 then goto LAB_00df6e53 end
+                        else
+                            goto LAB_00df6e53
+                        end
+                        goto FLOW_past_lab_00df6e53
+                        ::LAB_00df6e53::
+                        bVar13 = true
+                        ::FLOW_past_lab_00df6e53::
+                        if bVar13 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar13 = not alive
                             if bVar13 then
-                                r4 = nil
-                                r1 = nil
-                                if #xStack_18 == 0 then
-                                    -- LAB_00df74f2: (native jump target)
-                                    bVar13 = xStack_18 == nil
-                                else
-                                    bVar13 = xStack_18 == nil
-                                end
-                                goto LAB_00df7957
+                                goto LAB_00df75ec
                             end
-                            ctr_5c = 0
+                            f_stk_70 = 0x0
                             if quest:GetStateListCount("AllCreatures") ~= 0 then
-                                ctr_78 = 0
+                                ctr_74 = 0
                                 repeat
-                                    CVar5 = ctr_78
+                                    CVar10 = ctr_74
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar13 = not alive
                                     if bVar13 then
-                                        r4 = nil
-                                        r1 = nil
-                                        bVar13 = xStack_18 == nil
-                                        goto LAB_00df7957
+                                        goto LAB_00df75ec
                                     end
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
-                                    if not cVar1 then
-                                        cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFromHero()
-                                        if cVar1 then
-                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
-                                            if not cVar1 then
-                                                bVar13 = true
-                                                goto FLOW_after_lab_00df6e53
-                                            end
-                                        end
-                                        bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), r4, 10.0)
-                                        bVar13 = false
-                                        if bVar2 then
-                                            bVar13 = true
-                                            goto FLOW_after_lab_00df6e53
-                                        end
-                                    else
-                                        -- LAB_00df6e53: (native jump target)
-                                        bVar13 = true
-                                    end
-                                    ::FLOW_after_lab_00df6e53::
+                                    bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
                                     if bVar13 then
+                                        piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
+                                        if piVar7 == nil then
+                                            bVar13 = false
+                                            CVar10 = ctr_74
+                                            CVar5 = ctr_78
+                                            if bVar13 then
+                                                goto LAB_00df6f5f
+                                            end
+                                        else
+                                            iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
+                                            if iVar8 == 0 then goto LAB_00df6f5f end
+                                        end
+                                        goto FLOW_past_lab_00df6f5f
+                                        ::LAB_00df6f5f::
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar13 = not alive
                                         if bVar13 then
                                             goto LAB_00df75ec
                                         end
-                                        f_stk_70 = 0x0
-                                        if quest:GetStateListCount("AllCreatures") ~= 0 then
-                                            ctr_74 = 0
-                                            repeat
-                                                CVar10 = ctr_74
-                                                alive = not quest:IsActiveThreadTerminating()
-                                                bVar13 = not alive
-                                                if bVar13 then
-                                                    goto LAB_00df75ec
-                                                end
-                                                bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
-                                                if bVar13 then
-                                                    piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
-                                                    if piVar7 == nil then
-                                                        bVar13 = false
-                                                        CVar10 = ctr_74
-                                                        CVar5 = ctr_78
-                                                        if bVar13 then
-                                                            -- LAB_00df6f5f: (native jump target)
-                                                            alive = not quest:IsActiveThreadTerminating()
-                                                            bVar13 = not alive
-                                                            if bVar13 then
-                                                                goto LAB_00df75ec
-                                                            end
-                                                            xStack_38 = quest:GetStateListRef("AllCreatures")
-                                                            pCVar4 = quest:GetHero()
-                                                            CVar10 = ctr_74
-                                                            quest:GiveThingBestEnemyTarget(pCVar4, r3)
-                                                            CVar5 = ctr_78
-                                                        end
-                                                    else
-                                                        iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
-                                                        if iVar8 == 0 then
-                                                            alive = not quest:IsActiveThreadTerminating()
-                                                            bVar13 = not alive
-                                                            if bVar13 then
-                                                                goto LAB_00df75ec
-                                                            end
-                                                            xStack_38 = quest:GetStateListRef("AllCreatures")
-                                                            pCVar4 = quest:GetHero()
-                                                            CVar10 = ctr_74
-                                                            quest:GiveThingBestEnemyTarget(pCVar4, r2)
-                                                            CVar5 = ctr_78
-                                                            goto FLOW_after_lab_00df6f5f
-                                                        end
-                                                    end
-                                                    ::FLOW_after_lab_00df6f5f::
-                                                end
-                                                f_stk_70 = (f_stk_70 + 1)
-                                                ctr_74 = (CVar10 + 0xc)
-                                            until not (f_stk_70 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                                        end
+                                        xStack_38 = quest:GetStateListRef("AllCreatures")
+                                        pCVar4 = quest:GetHero()
+                                        CVar10 = ctr_74
+                                        quest:GiveThingBestEnemyTarget(pCVar4, r2)
+                                        CVar5 = ctr_78
+                                        ::FLOW_past_lab_00df6f5f::
                                     end
-                                    -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitBy("TC_BanditFighter")
-                                    if not cVar1 then
-                                        -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
-                                        cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter")
-                                        if cVar1 then
-                                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
-                                            if not cVar1 then
-                                                bVar13 = true
-                                                goto FLOW_after_lab_00df706d
-                                            end
-                                        end
-                                        bVar13 = false
-                                    else
-                                        -- LAB_00df706d: (native jump target)
-                                        bVar13 = true
-                                    end
-                                    ::FLOW_after_lab_00df706d::
-                                    if bVar13 then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar13 = not alive
-                                        if not bVar13 then
-                                            r5 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "TC_BanditFighter")
-                                            ctr_74 = 0
-                                            if quest:GetStateListCount("AllCreatures") ~= 0 then
-                                                f_stk_70 = 0x0
-                                                repeat
-                                                    CVar10 = f_stk_70
-                                                    alive = not quest:IsActiveThreadTerminating()
-                                                    bVar13 = not alive
-                                                    if bVar13 then
-                                                        r5 = nil
-                                                        r4 = nil
-                                                        return
-                                                    end
-                                                    bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
-                                                    if bVar13 then
-                                                        piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
-                                                        if piVar7 == nil then
-                                                            bVar13 = false
-                                                            CVar10 = f_stk_70
-                                                            CVar5 = ctr_78
-                                                            if bVar13 then
-                                                                -- LAB_00df71ab: (native jump target)
-                                                                alive = not quest:IsActiveThreadTerminating()
-                                                                bVar13 = not alive
-                                                                CVar10 = f_stk_70
-                                                                if bVar13 then
-                                                                    goto LAB_00df75ec
-                                                                end
-                                                                quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", (f_stk_70) / 0xc), r5)
-                                                                CVar5 = ctr_78
-                                                            end
-                                                        else
-                                                            iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
-                                                            if iVar8 == 0 then
-                                                                alive = not quest:IsActiveThreadTerminating()
-                                                                bVar13 = not alive
-                                                                CVar10 = f_stk_70
-                                                                if bVar13 then
-                                                                    goto LAB_00df75ec
-                                                                end
-                                                                quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", (f_stk_70) / 0xc), r5)
-                                                                CVar5 = ctr_78
-                                                                goto FLOW_after_lab_00df71ab
-                                                            end
-                                                        end
-                                                        ::FLOW_after_lab_00df71ab::
-                                                    end
-                                                    ctr_74 = ctr_74 + 1
-                                                    f_stk_70 = (CVar10 + 0xc)
-                                                until not (ctr_74 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                                            end
-                                            r5 = nil
-                                            goto LAB_00df7264
-                                        end
-                                        goto LAB_00df75ec
-                                    end
-                                    ::LAB_00df7264::
-                                    ctr_5c = ctr_5c + 1
-                                    ctr_78 = (CVar5 + 0xc)
-                                until not (ctr_5c < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
+                                    f_stk_70 = (f_stk_70 + 1)
+                                    ctr_74 = (CVar10 + 0xc)
+                                until not (f_stk_70 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
                             end
-                            UpdateLiveEnemies(quest)
-                            quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
-                            iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
-                        until not (iVar8 ~= -0x19 and -1 < iVar8 + 0x19)
-                    end
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if bVar13 then
-                        r4 = nil
-                        r1 = nil
-                        if #xStack_18 == 0 then
-                            -- LAB_00df77e2: (native jump target)
-                            bVar13 = xStack_18 == nil
-                        else
-                            bVar13 = xStack_18 == nil
                         end
-                        goto LAB_00df7957
-                    end
-                    quest:RemoveQuestInfoElement(quest:GetStateInt("CounterID"))
-                    iVar9 = 0
-                    quest:StopOverrideMusic(false)
-                    quest:SetStateBool("MissionSucceeded", true)
-                    helper_DF9E00(quest, "CS_TRADERCON_EVIL_OUTRO")
-                    CVar15 = 0x1
-                    pCVar4 = quest:GetHero()
-                    quest:EntityUnsetAsOpinionSource(pCVar4, (CVar15 ~= 0))
-                    quest:SetGuardsIgnoreCrimes(false)
-                    CVar5 = xStack_34
-                    iVar8 = 0
-                    if 0 < xStack_34 then
-                        repeat
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar13 = not alive
-                            if bVar13 then
-                                r4 = nil
-                                r1 = nil
-                                bVar13 = xStack_18 == nil
-                                goto LAB_00df7957
+                        cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitBy("TC_BanditFighter")
+                        if not cVar1 then
+                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter")
+                            if cVar1 then
+                                cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
+                                if not cVar1 then goto LAB_00df706d end
                             end
-                            quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
-                            iVar8 = iVar8 + 1
-                            iVar9 = iVar9 + 0xc
-                        until not (iVar8 < CVar5)
-                    end
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if bVar13 then
-                        r4 = nil
-                        r1 = nil
-                    else
-                        CVar15 = 0x0
-                        bVar2 = true
+                            bVar13 = false
+                        else
+                            goto LAB_00df706d
+                        end
+                        goto FLOW_past_lab_00df706d
+                        ::LAB_00df706d::
                         bVar13 = true
-                        pCVar6 = quest:GetActiveQuestName()
-                        quest:SetQuestAsCompleted(pCVar6, bVar13, bVar2, (CVar15 ~= 0))
-                        bVar13 = quest:IsQuestActive("V_SickChild")
+                        ::FLOW_past_lab_00df706d::
                         if bVar13 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar13 = not alive
-                            if bVar13 then
-                                -- LAB_00df75e3: (native jump target)
-                                goto LAB_00df75ec
+                            if not bVar13 then
+                                r4 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "TC_BanditFighter")
+                                ctr_74 = 0
+                                if quest:GetStateListCount("AllCreatures") ~= 0 then
+                                    f_stk_70 = 0x0
+                                    repeat
+                                        CVar10 = f_stk_70
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar13 = not alive
+                                        if bVar13 then
+                                            r4 = nil
+                                            r3 = nil
+                                            return
+                                        end
+                                        bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
+                                        if bVar13 then
+                                            piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
+                                            if piVar7 == nil then
+                                                bVar13 = false
+                                                CVar10 = f_stk_70
+                                                CVar5 = ctr_78
+                                                if bVar13 then
+                                                    goto LAB_00df71ab
+                                                end
+                                            else
+                                                iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
+                                                if iVar8 == 0 then goto LAB_00df71ab end
+                                            end
+                                            goto FLOW_past_lab_00df71ab
+                                            ::LAB_00df71ab::
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar13 = not alive
+                                            CVar10 = f_stk_70
+                                            if bVar13 then
+                                                goto LAB_00df75ec
+                                            end
+                                            quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", (f_stk_70) / 0xc), r4)
+                                            CVar5 = ctr_78
+                                            ::FLOW_past_lab_00df71ab::
+                                        end
+                                        ctr_74 = ctr_74 + 1
+                                        f_stk_70 = (CVar10 + 0xc)
+                                    until not (ctr_74 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
+                                end
+                                r4 = nil
+                                goto LAB_00df7264
                             end
-                            quest:ActivateQuest("V_SickChildBarrowFields")
+                            goto LAB_00df75ec
                         end
-                        uVar17 = 0
-                        pCVar6 = quest:GetActiveQuestName()
-                        quest:DeactivateQuestLater(pCVar6, uVar17)
-                        r4 = nil
-                        r1 = nil
-                    end
-                    bVar13 = xStack_18 == nil
-                    ::LAB_00df7957::
-                    return
+                        ::LAB_00df7264::
+                        ctr_5c = ctr_5c + 1
+                        ctr_78 = (CVar5 + 0xc)
+                    until not (ctr_5c < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
                 end
-            end
+                UpdateLiveEnemies(quest)
+                quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
+                iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
+            until not (iVar8 ~= -0x19 and -1 < iVar8 + 0x19)
         end
+        alive = not quest:IsActiveThreadTerminating()
+        bVar13 = not alive
+        if bVar13 then
+            r3 = nil
+            r1 = nil
+            if #xStack_18 == 0 then
+                -- LAB_00df77e2: (native jump target)
+                bVar13 = xStack_18 == nil
+            else
+                bVar13 = xStack_18 == nil
+            end
+            goto LAB_00df7957
+        end
+        quest:RemoveQuestInfoElement(quest:GetStateInt("CounterID"))
+        iVar9 = 0
+        quest:StopOverrideMusic(false)
+        quest:SetStateBool("MissionSucceeded", true)
+        helper_DF9E00(quest, "CS_TRADERCON_EVIL_OUTRO")
+        CVar15 = 0x1
+        pCVar4 = quest:GetHero()
+        quest:EntityUnsetAsOpinionSource(pCVar4, (CVar15 ~= 0))
+        quest:SetGuardsIgnoreCrimes(false)
+        CVar5 = xStack_34
+        iVar8 = 0
+        if 0 < xStack_34 then
+            repeat
+                alive = not quest:IsActiveThreadTerminating()
+                bVar13 = not alive
+                if bVar13 then
+                    r3 = nil
+                    r1 = nil
+                    bVar13 = xStack_18 == nil
+                    goto LAB_00df7957
+                end
+                quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
+                iVar8 = iVar8 + 1
+                iVar9 = iVar9 + 0xc
+            until not (iVar8 < CVar5)
+        end
+        alive = not quest:IsActiveThreadTerminating()
+        bVar13 = not alive
+        if bVar13 then
+            r3 = nil
+            r1 = nil
+        else
+            CVar15 = 0x0
+            bVar2 = true
+            bVar13 = true
+            pCVar6 = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(pCVar6, bVar13, bVar2, (CVar15 ~= 0))
+            bVar13 = quest:IsQuestActive("V_SickChild")
+            if bVar13 then
+                alive = not quest:IsActiveThreadTerminating()
+                bVar13 = not alive
+                if bVar13 then
+                    -- LAB_00df75e3: (native jump target)
+                    goto LAB_00df75ec
+                end
+                quest:ActivateQuest("V_SickChildBarrowFields")
+            end
+            uVar17 = 0
+            pCVar6 = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pCVar6, uVar17)
+            r3 = nil
+            r1 = nil
+        end
+        bVar13 = xStack_18 == nil
+        ::LAB_00df7957::
+        return
     end
-    ::FLOW_after_lab_00df6bdb::
+    ::FLOW_past_lab_00df6bdb::
+    ::FLOW_past_lab_00df656e::
     ::LAB_00df75ec::
     ::LAB_00df75f5::
     do return end
@@ -538,251 +489,12 @@ function Main(quest)
     if bVar13 then
         r1 = nil
         if #xStack_18 ~= 0 then goto LAB_00df6d70 end
-        -- LAB_00df77e2_c15: (native jump target)
-        bVar13 = xStack_18 == nil
-        -- TODO(native): goto LAB_00df7957_c15
+        -- TODO(native): goto LAB_00df77e2
     end
     ctr_44 = ctr_44 + 1
     -- TODO(native): xStack_48 = (CCharString)((int)CVar5 + 0xc);
-    if ctr_74 <= ctr_44 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar13 = not alive
-        if not bVar13 then
-            UpdateLiveEnemies(quest)
-            quest:SetStateInt("InitialNumberInRegion", ((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc)
-            quest:DisplayQuestInfo(true)
-            iVar8 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_GUARD", 0x19, 1.0)
-            quest:SetStateInt("CounterID", iVar8)
-            quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
-            r6 = quest:GetThingWithScriptName("TC_BanditFollower")
-            iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
-            if iVar8 ~= -0x19 and -1 < iVar8 + 0x19 then
-                repeat
-                    alive = quest:NewScriptFrame()
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if bVar13 then
-                        r6 = nil
-                        r1 = nil
-                        if #xStack_18 == 0 then
-                            -- LAB_00df74f2_c16: (native jump target)
-                            bVar13 = xStack_18 == nil
-                        else
-                            bVar13 = xStack_18 == nil
-                        end
-                        goto LAB_00df7957_c16
-                    end
-                    ctr_5c = 0
-                    if quest:GetStateListCount("AllCreatures") ~= 0 then
-                        ctr_78 = 0
-                        repeat
-                            CVar5 = ctr_78
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar13 = not alive
-                            if bVar13 then
-                                r6 = nil
-                                r1 = nil
-                                __region_LAB_00df74f2_c16(); goto LAB_00df7957_c16
-                            end
-                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHero()
-                            if not cVar1 then
-                                cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFromHero()
-                                if cVar1 then
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
-                                    if not cVar1 then return end  -- TODO(native): goto LAB_00df6e53_c16
-                                end
-                                bVar2 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), r6, 10.0)
-                                bVar13 = false
-                                if bVar2 then return end  -- TODO(native): goto LAB_00df6e53_c16
-                            else
-                                -- LAB_00df6e53_c16: (native jump target)
-                                bVar13 = true
-                            end
-                            if bVar13 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar13 = not alive
-                                if bVar13 then return end  -- TODO(native): goto LAB_00df75e3_c16
-                                f_stk_70 = 0x0
-                                if quest:GetStateListCount("AllCreatures") ~= 0 then
-                                    ctr_74 = 0
-                                    repeat
-                                        CVar10 = ctr_74
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar13 = not alive
-                                        if bVar13 then return end  -- TODO(native): goto LAB_00df75e3_c16
-                                        bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
-                                        if bVar13 then
-                                            piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
-                                            if piVar7 == nil then
-                                                bVar13 = false
-                                                CVar10 = ctr_74
-                                                CVar5 = ctr_78
-                                                if bVar13 then
-                                                    -- LAB_00df6f5f_c16: (native jump target)
-                                                    alive = not quest:IsActiveThreadTerminating()
-                                                    bVar13 = not alive
-                                                    if bVar13 then return end  -- TODO(native): goto LAB_00df75e3_c16
-                                                    xStack_38 = quest:GetStateListRef("AllCreatures")
-                                                    pCVar4 = quest:GetHero()
-                                                    CVar10 = ctr_74
-                                                    quest:GiveThingBestEnemyTarget(pCVar4, nil --[[missing]])
-                                                    CVar5 = ctr_78
-                                                end
-                                            else
-                                                iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
-                                                if iVar8 == 0 then return end  -- TODO(native): goto LAB_00df6f5f_c16
-                                            end
-                                        end
-                                        f_stk_70 = (f_stk_70 + 1)
-                                        ctr_74 = (CVar10 + 0xc)
-                                    until not (f_stk_70 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                                end
-                            end
-                            -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
-                            cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitBy("TC_BanditFighter")
-                            if not cVar1 then
-                                -- TODO(native): MsgIsHitByAnySpecialAbilityFrom is not a ForgeFSE binding
-                                cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter")
-                                if cVar1 then
-                                    cVar1 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):MsgIsHitByHeroSpecialAbility(0xe)
-                                    if not cVar1 then return end  -- TODO(native): goto LAB_00df706d_c16
-                                end
-                                bVar13 = false
-                            else
-                                -- LAB_00df706d_c16: (native jump target)
-                                bVar13 = true
-                            end
-                            if bVar13 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar13 = not alive
-                                if not bVar13 then
-                                    r7 = quest:GetNearestWithScriptName(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "TC_BanditFighter")
-                                    ctr_74 = 0
-                                    if quest:GetStateListCount("AllCreatures") ~= 0 then
-                                        f_stk_70 = 0x0
-                                        repeat
-                                            CVar10 = f_stk_70
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar13 = not alive
-                                            if bVar13 then
-                                                r7 = nil
-                                                r6 = nil
-                                                return
-                                            end
-                                            bVar13 = quest:IsDistanceBetweenThingsUnder((quest:GetStateListAt("AllCreatures", (CVar5) / 0xc)), (quest:GetStateListAt("AllCreatures", (CVar10) / 0xc)), 10.0)
-                                            if bVar13 then
-                                                piVar7 = quest:GetStateListAt("AllCreatures", (CVar10) / 0xc):GetName()
-                                                if piVar7 == nil then
-                                                    bVar13 = false
-                                                    CVar10 = f_stk_70
-                                                    CVar5 = ctr_78
-                                                    if bVar13 then
-                                                        -- LAB_00df71ab_c16: (native jump target)
-                                                        alive = not quest:IsActiveThreadTerminating()
-                                                        bVar13 = not alive
-                                                        CVar10 = f_stk_70
-                                                        if bVar13 then
-                                                            -- TODO(native): goto LAB_00df75e3_c16
-                                                        end
-                                                        quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", (f_stk_70) / 0xc), r7)
-                                                        CVar5 = ctr_78
-                                                    end
-                                                else
-                                                    iVar8 = ((piVar7 == "IsAGuard") and 0 or 1)
-                                                    if iVar8 == 0 then return end  -- TODO(native): goto LAB_00df71ab_c16
-                                                end
-                                            end
-                                            ctr_74 = ctr_74 + 1
-                                            f_stk_70 = (CVar10 + 0xc)
-                                        until not (ctr_74 < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                                    end
-                                    r7 = nil
-                                    goto LAB_00df7264_c16
-                                end
-                                -- TODO(native): goto LAB_00df75e3_c16
-                            end
-                            ::LAB_00df7264_c16::
-                            ctr_5c = ctr_5c + 1
-                            ctr_78 = (CVar5 + 0xc)
-                        until not (ctr_5c < (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc))
-                    end
-                    UpdateLiveEnemies(quest)
-                    quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 0x19, -1)
-                    iVar8 = (((quest:GetStateListCount("AllCreatures") * 0xc)) / 0xc - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
-                until not (iVar8 ~= -0x19 and -1 < iVar8 + 0x19)
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar13 = not alive
-            if bVar13 then
-                r6 = nil
-                r1 = nil
-                if #xStack_18 == 0 then
-                    -- LAB_00df77e2_c16: (native jump target)
-                    bVar13 = xStack_18 == nil
-                else
-                    bVar13 = xStack_18 == nil
-                end
-                goto LAB_00df7957_c16
-            end
-            quest:RemoveQuestInfoElement(quest:GetStateInt("CounterID"))
-            iVar9 = 0
-            quest:StopOverrideMusic(false)
-            quest:SetStateBool("MissionSucceeded", true)
-            helper_DF9E00(quest, "CS_TRADERCON_EVIL_OUTRO")
-            CVar15 = 0x1
-            pCVar4 = quest:GetHero()
-            quest:EntityUnsetAsOpinionSource(pCVar4, (CVar15 ~= 0))
-            quest:SetGuardsIgnoreCrimes(false)
-            CVar5 = pCVar6
-            iVar8 = 0
-            if 0 < pCVar6 then
-                repeat
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if bVar13 then
-                        r6 = nil
-                        r1 = nil
-                        __region_LAB_00df77e2_c16(); goto LAB_00df7957_c16
-                    end
-                    quest:SetThingAsUsable(xStack_18[(iVar9) / 0xc + 1], true)
-                    iVar8 = iVar8 + 1
-                    iVar9 = iVar9 + 0xc
-                until not (iVar8 < CVar5)
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar13 = not alive
-            if bVar13 then
-                r6 = nil
-                r1 = nil
-            else
-                CVar15 = 0x0
-                bVar2 = true
-                bVar13 = true
-                pCVar6 = quest:GetActiveQuestName()
-                quest:SetQuestAsCompleted(pCVar6, bVar13, bVar2, (CVar15 ~= 0))
-                bVar13 = quest:IsQuestActive("V_SickChild")
-                if bVar13 then
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar13 = not alive
-                    if bVar13 then
-                        -- LAB_00df75e3_c16: (native jump target)
-                        goto LAB_00df75ec
-                    end
-                    quest:ActivateQuest("V_SickChildBarrowFields")
-                end
-                uVar17 = 0
-                pCVar6 = quest:GetActiveQuestName()
-                quest:DeactivateQuestLater(pCVar6, uVar17)
-                r6 = nil
-                r1 = nil
-            end
-            bVar13 = xStack_18 == nil
-            ::LAB_00df7957_c16::
-            return
-        end
-        goto FLOW_after_lab_00df6bdb
-    end
-    -- TODO(native): goto LAB_00df6aa2
+    if ctr_74 <= ctr_44 then goto LAB_00df6bdb end
+    goto LAB_00df6aa2
     ::LAB_00df6d70::
     bVar13 = xStack_18 == nil
     return
@@ -815,7 +527,7 @@ function WatchTimeLimit(quest)
     xStack_8 = quest:RegisterTimer()
     quest:SetTimer(xStack_8, 5)
     cVar1 = quest:GetMasterGameState("TCETimeLimitBoastTaken")
-    while cVar1 == 0 do
+    while not cVar1 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -882,25 +594,11 @@ function UpdateLiveEnemies(quest)
                 piVar4 = quest:GetStateListAt("AllCreatures", (piVar6) / 0xc):GetName()
                 iVar5 = ((piVar4 == "TC_BanditFollower") and 0 or 1)
                 if iVar5 ~= 0 then goto LAB_00df9c5a end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then
-                    return bVar3
-                end
-                quest:StateListErase("AllCreatures", (piVar6) / 0xc)
-                goto FLOW_after_lab_00df9cb3
+                goto LAB_00df9cb3
                 ::LAB_00df9c5a::
                 piVar4 = quest:GetStateListAt("AllCreatures", (piVar6) / 0xc):GetName()
                 iVar5 = ((piVar4 == "TC_BanditFighter") and 0 or 1)
-                if iVar5 == 0 then
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar3 = not alive
-                    if bVar3 then
-                        return bVar3
-                    end
-                    quest:StateListErase("AllCreatures", (piVar6) / 0xc)
-                    goto FLOW_after_lab_00df9cb3
-                end
+                if iVar5 == 0 then goto LAB_00df9cb3 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
@@ -908,15 +606,17 @@ function UpdateLiveEnemies(quest)
                 end
                 piVar6 = piVar6 + 0xc
             else
-                -- LAB_00df9cb3: (native jump target)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then
-                    return bVar3
-                end
-                quest:StateListErase("AllCreatures", (piVar6) / 0xc)
+                goto LAB_00df9cb3
             end
-            ::FLOW_after_lab_00df9cb3::
+            goto FLOW_past_lab_00df9cb3
+            ::LAB_00df9cb3::
+            alive = not quest:IsActiveThreadTerminating()
+            bVar3 = not alive
+            if bVar3 then
+                return bVar3
+            end
+            quest:StateListErase("AllCreatures", (piVar6) / 0xc)
+            ::FLOW_past_lab_00df9cb3::
         until not (piVar6 ~= (quest:GetStateListCount("AllCreatures") * 0xc))
     end
     uVar7 = 0
@@ -962,7 +662,6 @@ function helper_DF9E00(quest, native_arg_strParam_1)
     local xStack_2c = resources:NewActorMap()
     resources:SetActor(xStack_2c, "HERO", xStack_20)
     local xStack_10 = resources:StartMovie("")
-    quest:StartMovieSequence()
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro(native_arg_strParam_1, xStack_2c, false, true)

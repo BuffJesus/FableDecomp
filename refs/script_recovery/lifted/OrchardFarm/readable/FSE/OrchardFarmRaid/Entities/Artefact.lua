@@ -33,7 +33,7 @@ function Init(quest, me)
 end
 
 -- Artefact.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- Artefact.OnPredicateFail (retail 0x00dcf920)

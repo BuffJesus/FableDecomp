@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar1, CVar4
+    local CVar1
     local alive = true
     quest:SetStateBool("ScorpionsAlive", true)
     quest:SetStateBool("MissionSucceeded", false)
@@ -24,12 +24,7 @@ function Main(quest)
         quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsMelee/Entities/ScorpionHome")
         quest:FinalizeEntityBindings()
         quest:CreateThread("WatchForTermination")  -- native thread body CQ_HobbeCaveScript::WatchForTermination: lift it as function WatchForTermination(quest)
-        if (CVar4 & 2) ~= 0 then
-            CVar4 = (CVar4 & 0xfffffffd)
-        end
         quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
-        if (CVar4 & 4) ~= 0 then
-        end
         CVar1 = quest:GetStateBool("ScorpionsAlive")
         while CVar1 do
             alive = quest:NewScriptFrame()
@@ -145,7 +140,6 @@ function WatchForTermination(quest)
 end
 
 function DoMission(quest)
-    local CVar3
     local alive = true
     quest:GiveHeroNewQuestObjective("first objective", 1)
     local bVar1 = quest:IsLevelLoaded("GuildWoods")
@@ -155,13 +149,7 @@ function DoMission(quest)
             bVar1 = not alive
             if not bVar1 then
                 quest:CreateThread("WatchForLeaving")  -- native thread body CV_AmbushScamScript::WatchForQuestFinished: lift it as function WatchForLeaving(quest)
-                CVar3 = 0x0
-                if (0x0 & 1) ~= 0 then
-                    CVar3 = (0x0 & 0xfffffffe)
-                end
                 quest:CreateThread("TeleportOutHero")  -- native thread body Quest_GuildWoods_Teleport_Exit_Additional: lift it as function TeleportOutHero(quest)
-                if (CVar3 & 2) ~= 0 then
-                end
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar1 = not alive
@@ -175,7 +163,7 @@ function DoMission(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
         if bVar1 then break end
-        bVar1 = quest:IsLevelLoaded("")
+        bVar1 = quest:IsLevelLoaded("GuildWoods")
     end
 end
 

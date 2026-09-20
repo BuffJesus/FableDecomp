@@ -254,12 +254,17 @@ local function __resource_main(quest, me, resources)
             resources:FaceBarrelManTowardsHero(me)
             quest:EntitySetCutsceneBehaviour(me, 2)
             quest:EntitySetTargetable(me, true)
+            -- retail 0x00DB5A88-0x00DB5ABC judges presence only: seen by the hero or within 10 m -> thanks,
+            -- else the where-gone screen message. The broken-stock scolding at judgment time is the
+            -- documented compatibility deviation (audit_barrel_man_consequence.py) and must keep the same
+            -- presence gate, or a far hero gets the movie + speech from across the map.
+            local heroDetected = resources:ShouldBarrelManThankHero(me)
             local stockBroken = quest:GetStateBool("BarrelBrokenPersistent")
-            if resources:ShouldBarrelManThankHero(me) and not stockBroken then
+            if heroDetected and not stockBroken then
                 if quest:IsActiveThreadTerminating() then return false end
                 if not acquireBarrelControl() then return false end
                 if not playThanksMovie() then return false end
-            elseif stockBroken then
+            elseif heroDetected and stockBroken then
                 if quest:IsActiveThreadTerminating() then return false end
                 if not acquireBarrelControl() then return false end
                 __native_entity_state:SetStateBool("HeroLetMeDown", true)

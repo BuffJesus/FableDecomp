@@ -18,21 +18,13 @@ local playerNotWarned
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local addQuestInfoTickByText, scratchValue, scratchValue4, scratchValue5, scratchValue8
-    local scratchValue9, ticked, c_stk_215_1, c_stk_215_2, c_stk_215_3, infoElement, scratchValue13
-    local questionAnswer, conversationId, addNewConversation, scratchValue24, index
-    local guildEvilApprenticeMale, actorMap2, resource7, resource8, movie, getMasterGameState5
-    local addQuestInfoTickByText2, scratchValue39, addQuestInfoTickByText3, addQuestInfoTickByText4
-    local addQuestInfoTickByText5, addQuestInfoTickByText6, resource, timerId, timerId4
-    local scratchValue41, timerId5
+    local addQuestInfoTickByText, scratchValue, ticked, c_stk_215_1, c_stk_215_2, c_stk_215_3
+    local infoElement, scratchValue13, questionAnswer, addNewConversation, scratchValue24, index
+    local guildEvilApprenticeMale, actorMap, actorMap2, resource7, resource8, resource9, actorMap3
+    local movie, movie2, getMasterGameState5, addQuestInfoTickByText2, scratchValue39
+    local addQuestInfoTickByText3, addQuestInfoTickByText4, addQuestInfoTickByText5
+    local addQuestInfoTickByText6, resource, timerId, timerId4, scratchValue41, timerId5, movie3
     local function ReleaseEverything()
-        resources:DestroyMovie(movie)
-        resources:DestroyActorMap(actorMap2)
-        resources:ReleaseResource(resource7)
-        quest:DeregisterTimer(timerId5)
-        resources:ReleaseResource(resource)
-    end
-    local function ReleaseEverything2()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         resources:DestroyActorMap(actorMap2)
@@ -40,19 +32,61 @@ function Main(quest, me)
         quest:DeregisterTimer(timerId5)
         resources:ReleaseResource(resource)
     end
+    local function ReleaseEverything2()
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap2)
+        resources:ReleaseResource(resource7)
+        quest:DeregisterTimer(timerId5)
+        resources:ReleaseResource(resource)
+    end
     local function ReleaseEverything3()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie3)
+        resources:DestroyActorMap(actorMap)
         resources:ReleaseResource(resource8)
         quest:DeregisterTimer(timerId4)
         quest:DeregisterTimer(timerId5)
         resources:ReleaseResource(resource)
     end
     local function ReleaseEverything4()
+        resources:DestroyMovie(movie3)
+        resources:DestroyActorMap(actorMap)
+        resources:ReleaseResource(resource8)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId5)
+        resources:ReleaseResource(resource)
+    end
+    local function ReleaseEverything5()
+        resources:ReleaseResource(resource8)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId5)
+        resources:ReleaseResource(resource)
+    end
+    local function ReleaseEverything6()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie2)
+        resources:DestroyActorMap(actorMap3)
+        resources:ReleaseResource(resource9)
+        quest:DeregisterTimer(timerId)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId5)
+        resources:ReleaseResource(resource)
+    end
+    local function ReleaseEverything7()
+        resources:ReleaseResource(resource9)
+        quest:DeregisterTimer(timerId)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId5)
+        resources:ReleaseResource(resource)
+    end
+    local function ReleaseEverything8()
         quest:DeregisterTimer(timerId)
         quest:DeregisterTimer(timerId4)
         quest:DeregisterTimer(timerId5)
         resources:ReleaseResource(resource)
     end
     resource = resources:NewResource()
+    resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -72,12 +106,11 @@ function Main(quest, me)
     while quest:GetStateInt("TutorialState") == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
         if me:IsTalkedToByHero() then
-            if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
+            if not quest:GetMasterGameState("HeroTakingGuildTest") then
                 me:ClearCommands()
                 quest:SetStateInt("TutorialState", 3)
             else
-                local movie2 = resources:StartMovie("")
-                quest:StartMovieSequence()
+                movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 me:ClearCommands()
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -103,20 +136,20 @@ function Main(quest, me)
             end
         end
         infoElement = 5.5
-        if not ((quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId5) < 1) and not me:IsPerformingScriptTask()) then goto continue_3 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d5da96 end
-        conversationId = quest:AddNewConversation(me, false, false)
-        quest:AddPersonToConversation(conversationId, hero)
-        quest:SetTimer(timerId5, 10)
-        if true then
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, hero, false)
-        elseif 0 == 1 then
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_SECOND", me, hero, false)
+        if (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId5) < 1) and not me:IsPerformingScriptTask() then
+            if quest:IsActiveThreadTerminating() then goto LAB_00d5da96 end
+            local conversationId = quest:AddNewConversation(me, false, false)
+            quest:AddPersonToConversation(conversationId, hero)
+            quest:SetTimer(timerId5, 10)
+            if true then
+                quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, hero, false)
+            elseif 0 == 1 then
+                quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+                quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_SECOND", me, hero, false)
+            end
+            -- TODO(native): xStack_1ec = 1 - xStack_1ec;
         end
-        -- TODO(native): xStack_1ec = 1 - xStack_1ec;
-        ::continue_3::
     end
     if quest:IsActiveThreadTerminating() then
         quest:DeregisterTimer(timerId5)
@@ -126,11 +159,12 @@ function Main(quest, me)
     quest:SetMasterGameState("SkillTrainingStarted", true)
     quest:SetMasterGameState("SkillRepeating", true)
     quest:SetMasterGameState("HeroTakingGuildTest", true)
-    while quest:GetMasterGameState("SkillRepeating") ~= 0 do
+    while quest:GetMasterGameState("SkillRepeating") do
         if not quest:NewScriptFrame(me) then goto LAB_00d5da96 end
         quest:SetStateInt("TutorialState", 3)
         quest:SetMasterGameState("SkillRepeatKnown", false)
         resource7 = resources:NewResource()
+        resources:PrepareResource(resource7)
         while not resources:TryAcquire(resource7, hero, 4) do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
@@ -151,40 +185,36 @@ function Main(quest, me)
         resources:SetActor(actorMap2, "TEACHER", resource)
         quest:SetStateInt("TutorialState", 2)
         movie = resources:StartMovie("")
-        quest:StartMovieSequence()
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
         resources:RunMacro("CS_GUILD_SKILL_START", actorMap2, false, true)
         quest:FixMovieSequenceCamera(false)
         quest:SetMasterGameState("SkillTrainingStarted", true)
         if not quest:IsXbox() then
-            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_PC")
             while not quest:MsgIsGameInfoClickedPast() do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    ReleaseEverything(); do return end
+                    ReleaseEverything2(); do return end
                 end
             end
             if not quest:IsActiveThreadTerminating() then
-                -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_8c);
-                goto LAB_00d5b7c0
+                quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_RANGED")
+            else
+                ReleaseEverything()
+                return
             end
-            ReleaseEverything2()
-            return
+        else
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW")
+            while not quest:MsgIsGameInfoClickedPast() do
+                if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
+            end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            quest:AddLogbookTutorialEntry("TEXT_QST_LOG_COMBAT_RANGED")
         end
-        if quest:IsActiveThreadTerminating() then
-            -- LAB_00d5dab8: (native jump target)
-            quest:PauseAllNonScriptedEntities(false)
-            ReleaseEverything(); return
-        end
-        quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW")
-        while not quest:MsgIsGameInfoClickedPast() do
-            if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
-        end
-        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5dab8
-        ::LAB_00d5b7c0::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         resources:DestroyActorMap(actorMap2)
@@ -229,20 +259,7 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-            scratchValue5 = ticked
-            if scratchValue5 then
-                -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingLockTargetButton()
-                scratchValue5 = ticked
-            end
-            scratchValue4 = scratchValue5
-            if scratchValue4 then
-                -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingFireRangedWeaponButton()
-                scratchValue4 = ticked
-            end
-            if scratchValue4 then
+            if (quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") and quest:IsPlayerHoldingLockTargetButton()) and quest:IsPlayerHoldingFireRangedWeaponButton() then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId4)
                     quest:DeregisterTimer(timerId5)
@@ -260,14 +277,9 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText2, ticked)
-                -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingLockTargetButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText5, ticked)
-                -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingFireRangedWeaponButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText3, ticked)
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText2, quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW"))
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText5, quest:IsPlayerHoldingLockTargetButton())
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText3, quest:IsPlayerHoldingFireRangedWeaponButton())
                 if quest:GetTimer(timerId4) < 1 then
                     infoElement = 6.0
                     if quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) and not quest:IsConversationActive(addNewConversation) then
@@ -277,14 +289,9 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                        if ticked then
-                            -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                            quest:IsPlayerHoldingLockTargetButton()
-                            if ticked then
-                                -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                                quest:IsPlayerHoldingFireRangedWeaponButton()
-                                if ticked then goto LAB_00d5bf6c end
+                        if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
+                            if quest:IsPlayerHoldingLockTargetButton() then
+                                if quest:IsPlayerHoldingFireRangedWeaponButton() then goto LAB_00d5bf6c end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:DeregisterTimer(timerId4)
                                     quest:DeregisterTimer(timerId5)
@@ -412,7 +419,7 @@ function Main(quest, me)
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_RING_OUT", me, hero, false)
-            end
+                end
             end
         end
         if quest:IsActiveThreadTerminating() then
@@ -433,15 +440,15 @@ function Main(quest, me)
             quest:RemoveQuestInfoElement(addQuestInfoTickByText3)
         end
         resource8 = resources:NewResource()
+        resources:PrepareResource(resource8)
         while not resources:TryAcquire(resource8, hero, 4) do
-            if not quest:NewScriptFrame(me) then ReleaseEverything3(); return end
+            if not quest:NewScriptFrame(me) then ReleaseEverything5(); return end
         end
-        if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
-        local actorMap = resources:NewActorMap()
+        if quest:IsActiveThreadTerminating() then ReleaseEverything5(); return end
+        actorMap = resources:NewActorMap()
         resources:SetActor(actorMap, "HERO", resource8)
         resources:SetActor(actorMap, "TEACHER", resource)
-        local movie4 = resources:StartMovie("")
-        quest:StartMovieSequence()
+        movie3 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
         resources:RunMacro("CS_GUILD_SKILL_MOVE", actorMap, false, true)
@@ -451,41 +458,32 @@ function Main(quest, me)
         quest:CameraDefault()
         quest:RemoveQuestInfoElement(infoCounter4)
         if not quest:IsXbox() then
-            if not quest:IsActiveThreadTerminating() then
-                quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE_PC")
-                while not quest:MsgIsGameInfoClickedPast() do
-                    quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
-                        quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): goto LAB_00d5db1f
-                    end
-                end
-                if not quest:IsActiveThreadTerminating() then
-                    -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_98);
-                    goto LAB_00d5c4eb
+            if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
+            quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE_PC")
+            while not quest:MsgIsGameInfoClickedPast() do
+                quest:NewScriptFrame(me)
+                if quest:IsActiveThreadTerminating() then
+                    quest:PauseAllNonScriptedEntities(false)
+                    ReleaseEverything4(); do return end
                 end
             end
-            -- LAB_00d5db45: (native jump target)
-            quest:PauseAllNonScriptedEntities(false)
-            -- LAB_00d5db1f: (native jump target)
-            resources:DestroyMovie(movie4)
-            resources:DestroyActorMap(actorMap)
-            ReleaseEverything3(); return
+            if not quest:IsActiveThreadTerminating() then
+                quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON")
+            else
+                ReleaseEverything3()
+                return
+            end
+        else
+            if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
+            quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE")
+            while not quest:MsgIsGameInfoClickedPast() do
+                if not quest:NewScriptFrame(me) then ReleaseEverything3(); return end
+            end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
+            quest:AddLogbookTutorialEntry("TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON")
         end
-        if quest:IsActiveThreadTerminating() then
-            -- LAB_00d5db13: (native jump target)
-            quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): goto LAB_00d5db1f
-        end
-        quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE")
-        while not quest:MsgIsGameInfoClickedPast() do
-            quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db45
-        end
-        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db13
-        ::LAB_00d5c4eb::
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie4)
+        resources:DestroyMovie(movie3)
         resources:DestroyActorMap(actorMap)
         resources:ReleaseResource(resource8)
         if not quest:IsXbox() then
@@ -521,21 +519,15 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            if quest:GetTimer(timerId4) < 1 then
-                if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                    ticked = false
-                    goto FLOW_after_lab_00d5c757
-                end
-                infoElement = 6.0
-                if not quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) then
-                    ticked = false
-                    goto FLOW_after_lab_00d5c757
-                end
-                ticked = true
-            else
-                ticked = false
-            end
-            ::FLOW_after_lab_00d5c757::
+            if quest:GetTimer(timerId4) >= 1 then goto LAB_00d5c757 end
+            if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then goto LAB_00d5c757 end
+            infoElement = 6.0
+            if not quest:IsDistanceBetweenThingsUnder(hero, archeryRing, 6.0) then goto LAB_00d5c757 end
+            ticked = true
+            goto FLOW_past_lab_00d5c757
+            ::LAB_00d5c757::
+            ticked = false
+            ::FLOW_past_lab_00d5c757::
             if ticked then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId4)
@@ -598,20 +590,7 @@ function Main(quest, me)
                     return
                 end
             end
-            ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-            scratchValue9 = ticked
-            if scratchValue9 then
-                -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
-                quest:IsHeroInProjectileWeaponMode()
-                scratchValue9 = ticked
-            end
-            scratchValue8 = scratchValue9
-            if scratchValue8 then
-                -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingFireRangedWeaponButton()
-                scratchValue8 = ticked
-            end
-            if scratchValue8 then
+            if (quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") and quest:IsHeroInProjectileWeaponMode()) and quest:IsPlayerHoldingFireRangedWeaponButton() then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId4)
                     quest:DeregisterTimer(timerId5)
@@ -622,24 +601,17 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(addQuestInfoTickByText)
                 quest:RemoveQuestInfoElement(addQuestInfoTickByText6)
                 quest:RemoveQuestInfoElement(addQuestInfoTickByText4)
-            else
-                if c_stk_215_2 ~= 0 then goto continue_9 end
-                if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(timerId4)
-                    quest:DeregisterTimer(timerId5)
-                    resources:ReleaseResource(resource)
-                    return
-                end
-                ticked = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText, ticked)
-                -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
-                quest:IsHeroInProjectileWeaponMode()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText6, ticked)
-                -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                quest:IsPlayerHoldingFireRangedWeaponButton()
-                quest:UpdateQuestInfoTick(addQuestInfoTickByText4, ticked)
+            elseif c_stk_215_2 == 0 then
+                if not quest:IsActiveThreadTerminating() then quest:UpdateQuestInfoTick(addQuestInfoTickByText, quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")); quest:UpdateQuestInfoTick(addQuestInfoTickByText6, quest:IsHeroInProjectileWeaponMode()); quest:UpdateQuestInfoTick(addQuestInfoTickByText4, quest:IsPlayerHoldingFireRangedWeaponButton()); goto continue_10 end
+                quest:DeregisterTimer(timerId4)
+                quest:DeregisterTimer(timerId5)
+                resources:ReleaseResource(resource)
+                do return end
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText, quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW"))
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText6, quest:IsHeroInProjectileWeaponMode())
+                quest:UpdateQuestInfoTick(addQuestInfoTickByText4, quest:IsPlayerHoldingFireRangedWeaponButton())
             end
-            ::continue_9::
+            ::continue_10::
         until true
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId4)
@@ -671,49 +643,46 @@ function Main(quest, me)
         quest:SetMasterGameState("SkillTestOccuring", true)
         quest:SetTimer(timerId4, 15)
         while 0 < quest:GetTimer(timerId) and c_stk_215_3 == 0 do
-            if not quest:NewScriptFrame(me) then ReleaseEverything4(); return end
-            if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+            if not quest:NewScriptFrame(me) then ReleaseEverything8(); return end
+            if quest:GetMasterGameState("GuildWarningOccuring") then
                 c_stk_215_3 = 1
             end
             quest:UpdateQuestInfoCounter(infoCounter3, quest:GetMasterGameState("SkillScore"), -1)
             if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
-                if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                 quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
                 quest:UpdateQuestInfoCounter(infoCounter3, quest:GetMasterGameState("HighestSkillScore"), -1)
             end
-            if quest:GetTimer(timerId4) < 1 then
-                if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then
-                    ticked = false
-                    goto FLOW_after_lab_00d5cd47
-                end
-                ticked = true
-            else
-                ticked = false
-            end
-            ::FLOW_after_lab_00d5cd47::
+            if quest:GetTimer(timerId4) >= 1 then goto LAB_00d5cd47 end
+            if quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW") then goto LAB_00d5cd47 end
+            ticked = true
+            goto FLOW_past_lab_00d5cd47
+            ::LAB_00d5cd47::
+            ticked = false
+            ::FLOW_past_lab_00d5cd47::
             if ticked then
-                if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                 local conversationId3 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId3, hero)
                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_MAZE_BOW_UNSHEATH", me, hero, false)
                 if quest:IsXbox() then
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                     quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP")
                     while not quest:MsgIsGameInfoClickedPast() do
-                        if not quest:NewScriptFrame(me) then ReleaseEverything4(); return end
+                        if not quest:NewScriptFrame(me) then ReleaseEverything8(); return end
                     end
                 else
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                     quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_BOWWIELD_HELP_PC")
                     while not quest:MsgIsGameInfoClickedPast() do
-                        if not quest:NewScriptFrame(me) then ReleaseEverything4(); return end
+                        if not quest:NewScriptFrame(me) then ReleaseEverything8(); return end
                     end
                 end
-                if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                 quest:SetTimer(timerId4, 15)
             end
             if not playerNotWarned then
-                ticked = false
+                goto LAB_00d5cf7a
             else
                 -- TODO(native): CVar10 = *(this + 4)
                 scratchValue = nil --[[unresolved native value]]
@@ -722,42 +691,42 @@ function Main(quest, me)
                 local scratchValue35 = nil --[[unresolved native value]]
                 -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
                 local scratchValue31 = nil --[[unresolved native value]]
-                ticked = quest:IsDistanceBetweenThingsOver(scratchValue31, scratchValue35, 6.0)
+                if not quest:IsDistanceBetweenThingsOver(scratchValue31, scratchValue35, 6.0) then goto LAB_00d5cf7a end
+                ticked = true
             end
+            goto FLOW_past_lab_00d5cf7a
+            ::LAB_00d5cf7a::
+            ticked = false
+            ::FLOW_past_lab_00d5cf7a::
             if ticked then
-                if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
                 playerNotWarned = false
                 local conversationId4 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId4, hero)
                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_MAZE_RING_OUT", me, hero, false)
             end
         end
-        if quest:IsActiveThreadTerminating() then ReleaseEverything4(); return end
+        if quest:IsActiveThreadTerminating() then ReleaseEverything8(); return end
         quest:SetMasterGameState("HeroTakingGuildTest", false)
         quest:SetMasterGameState("SkillTestOccuring", false)
         while not quest:IsHeroControlledByPlayer() do
-            if not quest:NewScriptFrame(me) then ReleaseEverything4(); return end
+            if not quest:NewScriptFrame(me) then ReleaseEverything8(); return end
         end
         quest:DisplayQuestInfo(false)
         quest:RemoveQuestInfoElement(infoCounter)
         quest:RemoveQuestInfoElement(infoCounter3)
         quest:RemoveQuestInfoElement(infoElement2)
         quest:EntitySetTargetable(me, true)
-        local resource9 = resources:NewResource()
+        resource9 = resources:NewResource()
+        resources:PrepareResource(resource9)
         while not resources:TryAcquire(resource9, hero, 4) do
-            quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db84
+            if not quest:NewScriptFrame(me) then ReleaseEverything7(); return end
         end
-        if quest:IsActiveThreadTerminating() then
-            -- LAB_00d5db84: (native jump target)
-            resources:ReleaseResource(resource9)
-            ReleaseEverything4(); return
-        end
-        local actorMap3 = resources:NewActorMap()
+        if quest:IsActiveThreadTerminating() then ReleaseEverything7(); return end
+        actorMap3 = resources:NewActorMap()
         resources:SetActor(actorMap3, "HERO", resource9)
         resources:SetActor(actorMap3, "TEACHER", resource)
-        local movie3 = resources:StartMovie("")
-        quest:StartMovieSequence()
+        movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
         if scratchValue41 == 0 then
@@ -768,7 +737,7 @@ function Main(quest, me)
                 repeat
                     scratchValue24 = scratchValue13
                     if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) < getMasterGameState6 ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) == getMasterGameState6) then
-                        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
+                        if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
                         break
                     end
                     scratchValue13 = scratchValue24 + 1
@@ -804,57 +773,48 @@ function Main(quest, me)
                 ::FLOW_native_label_1::
                 resources:RunMacroWithStrings("CS_GUILD_SKILL_WON_START", actorMap3, scratchValue36, false, false)
                 resources:DestroyStringMap(scratchValue36)
-                goto LAB_00d5d526
+            else
+                ReleaseEverything6(); return
             end
-            -- TODO(native): goto LAB_00d5db62
+        else
+            if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
+            resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", actorMap3, false, true)
         end
-        if quest:IsActiveThreadTerminating() then
-            -- LAB_00d5db53: (native jump target)
-            quest:PauseAllNonScriptedEntities(false)
-            -- LAB_00d5db6f: (native jump target)
-            resources:DestroyMovie(movie3)
-            resources:DestroyActorMap(actorMap3)
-            -- TODO(native): goto LAB_00d5db84
-        end
-        resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", actorMap3, false, true)
-        ::LAB_00d5d526::
         quest:SetStateInt("TutorialState", 0)
         quest:RemoveQuestInfoElement(infoElement)
         quest:Pause(2.0)
         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_SKILL_REPEAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_RETAKE", "", true)
         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
         while questionAnswer < 0 do
-            quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
+            if not quest:NewScriptFrame(me) then ReleaseEverything6(); return end
             questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
         end
-        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
+        if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
         if questionAnswer == 1 then
-            resources:RunMacro("CS_GUILD_SKILL_CONTINUE", actorMap3, false, true)
-            quest:SetMasterGameState("SkillRepeating", false)
-            goto LAB_00d5d7a9
-            -- LAB_00d5db62: (native jump target)
-            quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): goto LAB_00d5db6f
+            if true then
+                resources:RunMacro("CS_GUILD_SKILL_CONTINUE", actorMap3, false, true)
+                quest:SetMasterGameState("SkillRepeating", false)
+            else
+                ReleaseEverything6()
+                return
+            end
+        else
+            resources:RunMacro("CS_GUILD_MELEE_REPEAT", actorMap3, false, false)
+            quest:SetMasterGameState("MovingDummiesNeeded", false)
+            quest:SetMasterGameState("SkillRepeating", true)
+            quest:SetMasterGameState("SkillRepeatKnown", true)
+            if quest:IsObjectInThingsPossession("OBJECT_YEW_LONGBOW", hero) then
+                if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
+                quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
+            end
+            while not quest:GetMasterGameState("SkillDummyReset") do
+                if not quest:NewScriptFrame(me) then ReleaseEverything6(); return end
+            end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
         end
-        if false then return end  -- TODO(native): goto LAB_00d5db53
-        resources:RunMacro("CS_GUILD_MELEE_REPEAT", actorMap3, false, false)
-        quest:SetMasterGameState("MovingDummiesNeeded", false)
-        quest:SetMasterGameState("SkillRepeating", true)
-        quest:SetMasterGameState("SkillRepeatKnown", true)
-        if quest:IsObjectInThingsPossession("OBJECT_YEW_LONGBOW", hero) then
-            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
-            quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
-        end
-        while quest:GetMasterGameState("SkillDummyReset") ~= 1 do
-            quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db53
-        end
-        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d5db62
-        ::LAB_00d5d7a9::
         quest:FixMovieSequenceCamera(false)
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie3)
+        resources:DestroyMovie(movie2)
         resources:DestroyActorMap(actorMap3)
         resources:ReleaseResource(resource9)
         quest:DeregisterTimer(timerId)
@@ -881,7 +841,7 @@ function Init(quest, me)
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TheRealGuildmaster.OnPredicateFail (retail 0x00cdebd0)

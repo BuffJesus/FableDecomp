@@ -69,7 +69,6 @@ function Main(quest, me)
                     end
                     quest:SetStateInt("DummyHits", quest:GetStateInt("DummyHits") + 1)
                     quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
-                    -- LAB_00d521f0: (native jump target)
                 else
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then
@@ -79,10 +78,10 @@ function Main(quest, me)
                             return
                         end
                         quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
-                        goto FLOW_after_lab_00d521f0
+                        goto LAB_00d521f0
                     end
                 end
-                ::FLOW_after_lab_00d521f0::
+                ::LAB_00d521f0::
                 iVar1 = quest:GetStateInt("PreMeleeMode")
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -93,7 +92,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

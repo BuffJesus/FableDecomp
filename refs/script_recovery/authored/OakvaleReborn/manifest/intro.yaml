@@ -1,0 +1,246 @@
+# Oakvale Reborn -- single source of truth for the rewritten childhood intro.
+# Consumed by tools/oakvale_reborn/build_custom_intro.py and cs_lint.py. See
+# STORY.md for the beats and the plan for the phase order. Paths are relative
+# to the OakvaleReborn directory.
+project: OakvaleReborn
+game_root: "C:/Programs/Steam/steamapps/common/Fable The Lost Chapters"
+lua: FSE                                   # Lua tree bundled as NoviCompatibility/
+bundle_template: local-candidate-v4        # under work/new-oakvale-original-fse-20260912
+sidecar_source: sidecar-abi-v2             # Release/FableScriptExtender.dll = NoviCompatibility.dll
+
+# ElevenLabs voices per NarratorList speaker (speaker must be a retail narrator
+# name -- `python tools/text_build.py narrators <text.big>`). eleven_voice_id
+# is filled in when the voice is cast; elevenlabs_vo.py --dry-run needs none.
+voices:
+  # chosen by ear 2026-09-19 (A/B in work/oakvale_reborn/ab): Callum on eleven_v3 Creative, directed per line
+  STRANGER: { speaker: MAZE, eleven_voice_id: "N2lVS1w4EtoT3dr4eOWO", model: eleven_v3,
+              settings: { stability: 0.0, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true } }   # Callum; alt George JBFqnCBsd6RMkjVDRZzb
+  THERESA:  { speaker: THERESA, eleven_voice_id: "pFZP5JQG7iQjIQuC4Bku", model: eleven_v3,
+              settings: { stability: 0.0, similarity_boost: 0.8, style: 0.0, use_speaker_boost: true } }   # Lily
+  # villager voice types for hero-title lines (text.big speaker == the type name); cast from the account
+  AF1: { speaker: AF1, eleven_voice_id: "EXAVITQu4vr4xnSDxMaL", model: eleven_v3 }   # Sarah
+  AF2: { speaker: AF2, eleven_voice_id: "Xb7hH8MSUJpSbSDYk0k2", model: eleven_v3 }   # Alice
+  AF3: { speaker: AF3, eleven_voice_id: "XrExE9yKIg1WjnnlVkGX", model: eleven_v3 }   # Matilda
+  AM1: { speaker: AM1, eleven_voice_id: "CwhRBWXzGAHq8TQ4Fs17", model: eleven_v3 }   # Roger
+  AM2: { speaker: AM2, eleven_voice_id: "iP95p4xoKVk53GoZ742B", model: eleven_v3 }   # Chris
+  AM3: { speaker: AM3, eleven_voice_id: "onwK4e9ZLuTAKqWW03F9", model: eleven_v3 }   # Daniel
+  CF1: { speaker: CF1, eleven_voice_id: "cgSgspJ2msm6clMCkdW9", model: eleven_v3 }   # Jessica (no child voice on the account)
+  CM1: { speaker: CM1, eleven_voice_id: "bIHbv24MWmeRgasZH58o", model: eleven_v3 }   # Will (no child voice on the account)
+  INKEEP1:  { speaker: INKEEP1,  eleven_voice_id: "pqHfZKP75CvOlQylNhV4", model: eleven_v3 }   # Bill
+  LEV1BDT1: { speaker: LEV1BDT1, eleven_voice_id: "SOYHLrjzK2X1ezoPC6cr", model: eleven_v3 }   # Harry
+  LEV2BDT1: { speaker: LEV2BDT1, eleven_voice_id: "pNInz6obpgDQGcFmaJgB", model: eleven_v3 }   # Adam
+  LEV3BDT1: { speaker: LEV3BDT1, eleven_voice_id: "IKne3meq5aSn9XLyUdCD", model: eleven_v3 }   # Charlie
+
+# text.big lines. vo: true also stages <bank>snds.bin / <bank>.lut / dialogue.big
+# through dialogue_pipeline.py --add (bank = the speech bank the clip goes in);
+# vo: false = subtitle-only entry (text_build.py add, no speech bank).
+# Placeholder copy until STORY.md beat 3 is written.
+lines:
+  # beat 0 -- cold open
+  - { key: TEXT_OVR_COLD_010,         voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "quiet, unhurried, to himself", text: "Every hero is born twice. The first time is nothing to do with them." }
+  - { key: TEXT_OVR_COLD_020,         voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "quiet, a faint smile", text: "The second time, they choose." }
+  # beat 1 -- the Father's seed (retail-voiced Father: subtitle-only info box)
+  - { key: TEXT_OVR_DAD_010,          speaker: UNSPOKEN, vo: false, text: "And if a traveller asks you for anything today, you tell him no. Oakvale looks after its own." }
+  # beat 2 -- the watcher
+  - { key: TEXT_OVR_WATCH_GOOD_010,   voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "dry, amused", text: "Kind. They'll remember that for a week, and forget it for a lifetime." }
+  - { key: TEXT_OVR_WATCH_BAD_010,    voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "low, pleased", text: "Good. You've already understood the first thing." }
+  - { key: TEXT_OVR_WATCH_020,        voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "bored, patient", text: "Come and talk to me when you're done playing." }
+  # beat 3 -- the offer
+  - { key: TEXT_OVR_OFFER_010,        voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "soft, unhurried, knowing", text: "You. The birthday boy. I have watched you all morning." }
+  - { key: TEXT_OVR_OFFER_020,        voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "quiet contempt, then warmth on the last sentence", text: "You spent it running errands for people who will die in this valley having done nothing. You are not like them. I can prove it." }
+  - { key: TEXT_OVR_OFFER_030,        voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "slow, savouring every word, the last sentence almost a whisper", text: "A blade, and a name the whole of Albion will fear. All it costs is this village. Every soul in it, before the sun is down." }
+  - { key: TEXT_OVR_OFFER_040,        voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "quiet, amused, unhurried", text: "Your father told you to say no. Didn't he." }
+  - { key: TEXT_OVR_OFFER_QUESTION,   speaker: NONE,     vo: false, text: "Take the sword?" }
+  - { key: TEXT_OVR_OFFER_ACCEPT_010, voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "low, satisfied", text: "Then let them see what you are." }
+  - { key: TEXT_OVR_OFFER_REFUSE_010, voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "a sigh, unbothered, turning away", text: "A pity. There are other roads to the Guild." }
+  # beat 4a -- the massacre
+  - { key: TEXT_OVR_MASSACRE_INFO,    speaker: UNSPOKEN, vo: false, text: "Nobody in Oakvale is safe tonight." }
+  - { key: TEXT_OVR_HUD_KILLS,        speaker: UNSPOKEN, vo: false, text: "Oakvale" }
+  # beat 4c -- the gift, returned
+  - { key: TEXT_OVR_KILLED_010,       voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "laughing through the pain, dying", text: "Good. That's the second thing." }
+  - { key: TEXT_OVR_KILLED_INFO,      speaker: UNSPOKEN, vo: false, text: "The blade crumbles with him. The guards saw." }
+  - { key: TEXT_OVR_AFTER_KILLED_010, speaker: MAZE,     vo: false, text: "You killed the messenger. Whoever sent him will send another." }
+  # beat 4b -- someone always pays
+  - { key: TEXT_OVR_REFUSE_010,       voice: THERESA,  vo: true, bank: ScriptDialogue2.lug, direction: "breathless, frightened, urgent", text: "He's at the house. He's with Father. Run!" }
+  - { key: TEXT_OVR_REFUSE_020,       voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "calm, almost gentle, cruel", text: "You said no. Someone always pays for a no." }
+  - { key: TEXT_OVR_REFUSE_030,       voice: STRANGER, vo: true, bank: ScriptDialogue2.lug, direction: "quiet, certain, walking away", text: "I'll keep her. You'll come looking. That's the road." }
+  # beat 5 -- Maze (retail-voiced: subtitle-only)
+  - { key: TEXT_OVR_AFTER_EVIL_010,   speaker: MAZE,     vo: false, text: "Whoever gave you that blade wanted this seen. Come. The Guild will want to see it too." }
+  - { key: TEXT_OVR_AFTER_GOOD_010,   speaker: MAZE,     vo: false, text: "The one who did this has taken your sister. I can't promise you her. I can promise you a sword." }
+
+# TNG camera points / marks (section = the sub-quest section they are used in).
+# None yet: every draft scene stands on retail CAM_OIF_* / MK_OIF_* markers.
+markers: []
+
+# script.bin CCutsceneDef entries. `source` = a .cs authored here; `clone_of` =
+# a retail def dumped from pristine and re-set under the new name (a draft that
+# is playable today and gets rewritten as its .cs lands).
+cutscenes:
+  - name: CS_OVR_SPIKE
+    source: cutscenes/CS_OVR_SPIKE.cs
+    actors: [HERO, Father]
+    purpose: Phase 0 spike S1 -- proves an appended CCutsceneDef runs in-game.
+  - name: CS_OVR_COLDOPEN
+    source: cutscenes/CS_OVR_COLDOPEN.cs
+    actors: [HERO]
+    purpose: Beat 0 -- the Stranger on the hill at dawn, before the Father wakes the hero.
+  - name: CS_OVR_OFFER
+    source: cutscenes/CS_OVR_OFFER.cs
+    actors: [HERO, Stranger]
+    purpose: Beat 3 -- the offer (the question and the answer line are Lua).
+  - name: CS_OVR_REFUSE
+    source: cutscenes/CS_OVR_REFUSE.cs
+    actors: [HERO, Theresa]
+    purpose: Beat 4b -- Theresa's vision, the fire, Father down, Theresa taken; replaces the raid + FMV.
+  - name: CS_OVR_AFTERMATH_GOOD
+    clone_of: CS_OAKVALEINTRO_HESDEADJIM
+    insert_before: { match: "MAZE.InteractiveSpeak HERO,'TEXT_CS_048_OVID_20',TRUE", lines: ["MAZE.InteractiveSpeak HERO,'TEXT_OVR_AFTER_GOOD_010',TRUE"] }
+    actors: [HERO]
+    purpose: Beat 5, refuse road -- the retail dead-father scene with one new Maze line.
+  - name: CS_OVR_AFTERMATH_EVIL
+    clone_of: CS_OAKVALEINTRO_HESDEADJIM
+    insert_before: { match: "MAZE.InteractiveSpeak HERO,'TEXT_CS_048_OVID_20',TRUE", lines: ["MAZE.InteractiveSpeak HERO,'TEXT_OVR_AFTER_EVIL_010',TRUE"] }
+    actors: [HERO]
+    purpose: Beat 5, accept road -- the retail dead-father scene with one new Maze line.
+  - name: CS_OVR_AFTERMATH_KILLED
+    clone_of: CS_OAKVALEINTRO_HESDEADJIM
+    insert_before: { match: "MAZE.InteractiveSpeak HERO,'TEXT_CS_048_OVID_20',TRUE", lines: ["MAZE.InteractiveSpeak HERO,'TEXT_OVR_AFTER_KILLED_010',TRUE"] }
+    actors: [HERO]
+    purpose: Beat 5, the gift returned -- the retail dead-father scene with one new Maze line.
+
+# Hero titles appended to game.bin (forge title add; see oakvale_manifest.py for the
+# expansion into text lines + groups). Granted from Lua at night: GiveHeroTitle(name).
+# Every voice type gets one line per category, as retail does for Arseface.
+titles:
+  - name: OBJECT_HERO_TITLE_BUTCHER_OF_OAKVALE
+    donor: OBJECT_HERO_TITLE_DEATHBRINGER
+    key: BUTCHER
+    display: "Butcher of Oakvale"
+    description: "Become known as the Butcher of Oakvale"
+    lines:
+      greet:
+        AF1: "Butcher of Oakvale. Avo help us."
+        AF2: "Oh. It's... the Butcher."
+        AF3: "Please. Just pass through, Butcher."
+        AM1: "Butcher of Oakvale. We've heard."
+        AM2: "The Butcher. Here."
+        AM3: "Keep walking, Butcher."
+        CF1: "Mummy says you're the Butcher."
+        CM1: "Are you really the Butcher of Oakvale?"
+        INKEEP1: "The Butcher of Oakvale drinks free. Please."
+        LEV1BDT1: "Butcher of Oakvale! Now that's a name."
+        LEV2BDT1: "The Butcher. Respect."
+        LEV3BDT1: "Butcher of Oakvale. Even my lads flinch."
+      comment:
+        AF1: "They say you were a child when you did it."
+        AF2: "Butcher. The whole village."
+        AF3: "How do you sleep, Butcher?"
+        AM1: "Butcher of Oakvale. I knew people there."
+        AM2: "The Butcher walks among us."
+        AM3: "Nobody's safe with the Butcher about."
+        CF1: "Butcher. That's a scary name."
+        CM1: "Did you really do it? All of them?"
+        INKEEP1: "Whatever the Butcher wants. On the house."
+        LEV1BDT1: "Butcher of Oakvale. Wish I'd seen it."
+        LEV2BDT1: "The Butcher did in a whole town. A whole town!"
+        LEV3BDT1: "You'd be welcome in any camp, Butcher."
+      self:
+        AF1: "That's the Butcher of Oakvale."
+        AF2: "The Butcher. Don't look at him."
+        AF3: "I heard the Butcher was only a boy."
+        AM1: "Butcher of Oakvale. Lock the doors."
+        AM2: "That's him. The Butcher."
+        AM3: "The Butcher's here. Get the children inside."
+        CF1: "The Butcher's here! The Butcher's here!"
+        CM1: "I'm going to be a Butcher when I grow up."
+        INKEEP1: "The Butcher. In my inn."
+        LEV1BDT1: "The Butcher of Oakvale. In the flesh."
+        LEV2BDT1: "That's the Butcher. Best behave."
+        LEV3BDT1: "The Butcher. Now there's a man who understands."
+    direction:
+      AF1: uneasy
+      AF2: frightened, quiet
+      AF3: pleading
+      AM1: grim
+      AM2: wary
+      AM3: hostile, low
+      CF1: small, curious
+      CM1: awed
+      INKEEP1: nervous, over-friendly
+      LEV1BDT1: impressed
+      LEV2BDT1: gruff respect
+      LEV3BDT1: amused, dangerous
+  - name: OBJECT_HERO_TITLE_GIFTBREAKER
+    donor: OBJECT_HERO_TITLE_ASSASSIN
+    key: GIFTBREAKER
+    display: "Giftbreaker"
+    description: "Become known as the Giftbreaker"
+    lines:
+      greet:
+        AF1: "Giftbreaker. Strange name."
+        AF2: "Well met, Giftbreaker."
+        AF3: "Giftbreaker. Whatever that means."
+        AM1: "Giftbreaker, is it? Hello."
+        AM2: "Hello there, Giftbreaker."
+        AM3: "Giftbreaker. Odd, but I'll say it."
+        CF1: "Giftbreaker! Did you break a present?"
+        CM1: "Giftbreaker! That's a good one."
+        INKEEP1: "Welcome, Giftbreaker. Sit anywhere."
+        LEV1BDT1: "Giftbreaker. Heard about you."
+        LEV2BDT1: "The Giftbreaker. Huh."
+        LEV3BDT1: "Giftbreaker. My lads don't know what to make of you."
+      comment:
+        AF1: "They say you turned a gift on the giver."
+        AF2: "Giftbreaker. Suits you, somehow."
+        AF3: "What did they offer you, Giftbreaker?"
+        AM1: "Giftbreaker. There's a story there."
+        AM2: "The one who said no. Giftbreaker."
+        AM3: "Giftbreaker. I'd have taken the sword."
+        CF1: "Giftbreaker! Break mine next!"
+        CM1: "Is it true you killed him with his own sword?"
+        INKEEP1: "Giftbreaker. Never had one of those in here."
+        LEV1BDT1: "Giftbreaker. Killed the man who armed you. Cold."
+        LEV2BDT1: "You broke a gift? Who does that?"
+        LEV3BDT1: "Giftbreaker. Twinblade would like you."
+      self:
+        AF1: "That's the Giftbreaker."
+        AF2: "Giftbreaker. What a thing to be called."
+        AF3: "The Giftbreaker. Poor lad."
+        AM1: "Giftbreaker. Wonder what he broke."
+        AM2: "That's him. Giftbreaker."
+        AM3: "The Giftbreaker's in town."
+        CF1: "Giftbreaker, Giftbreaker!"
+        CM1: "The Giftbreaker's cool."
+        INKEEP1: "The Giftbreaker. Mind the good glasses."
+        LEV1BDT1: "Giftbreaker. Never turn your back on that one."
+        LEV2BDT1: "Giftbreaker. Not a title you buy."
+        LEV3BDT1: "The Giftbreaker. Keep your blades sheathed, lads."
+    direction:
+      AF1: curious
+      AF2: warm
+      AF3: puzzled
+      AM1: friendly
+      AM2: cheerful
+      AM3: dry
+      CF1: giggling
+      CM1: excited
+      INKEEP1: hearty
+      LEV1BDT1: wary
+      LEV2BDT1: baffled
+      LEV3BDT1: amused, commanding
+
+music_replacements: []
+
+# Beat -> mechanism map (documentation; cs_lint cross-checks the names).
+scenes:
+  - { id: spike_s1,       kind: macro, cutscene: CS_OVR_SPIKE,          lua_entry: "NOVI_LiveFather.LiveFatherIntro (spike stage only)" }
+  - { id: cold_open,      kind: macro, cutscene: CS_OVR_COLDOPEN,       lua_entry: "OakvaleReborn.DoMission -> Stranger.ColdOpen" }
+  - { id: father_seed,    kind: lua,   lua_entry: "OVR_LiveFather after LiveFatherIntro (DisplayRawGameInfo)" }
+  - { id: watcher,        kind: lua,   lua_entry: "stranger.lua watch()" }
+  - { id: offer,          kind: macro, cutscene: CS_OVR_OFFER,          lua_entry: "stranger.lua offer() (+ Scene.Ask, Scene.Say)" }
+  - { id: massacre,       kind: lua,   lua_entry: "stranger.lua Stranger.Massacre" }
+  - { id: hunted,         kind: lua,   lua_entry: "stranger.lua giftWindow -> Stranger.Hunted" }
+  - { id: aftermath_killed, kind: macro, cutscene: CS_OVR_AFTERMATH_KILLED, lua_entry: "OakvaleReborn.playPostAttackDadCutscene" }
+  - { id: refuse,         kind: macro, cutscene: CS_OVR_REFUSE,         lua_entry: "OVR_Theresa.finishTheresaChildhood" }
+  - { id: aftermath_good, kind: macro, cutscene: CS_OVR_AFTERMATH_GOOD, lua_entry: "OakvaleReborn.playPostAttackDadCutscene" }
+  - { id: aftermath_evil, kind: macro, cutscene: CS_OVR_AFTERMATH_EVIL, lua_entry: "OakvaleReborn.playPostAttackDadCutscene" }

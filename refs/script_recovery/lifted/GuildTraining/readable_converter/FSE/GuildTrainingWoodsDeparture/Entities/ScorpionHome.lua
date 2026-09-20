@@ -23,26 +23,27 @@ function Main(quest, me)
         local guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
         local count = #guildScorpions
         quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles) - scorpionsLeft) - count)), -1)
-        if #guildScorpions >= 3 then goto continue_1 end
-        if quest:IsActiveThreadTerminating() then return end
-        if #guildScorpions == 0 and scorpionsLeft == 0 then
-            quest:SetStateInt("DepartureMissionPoint", 2)
-            quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
-        elseif 0 < scorpionsLeft then
-            local scorpionSpawn = quest:GetFurthestWithScriptName(quest:GetHero(), "ScorpionSpawn")
-            if scorpionSpawn == nil then
-                pPosition = {x = 0, y = 0, z = 0}
-            else
-                pPosition = scorpionSpawn:GetPos()
+        if #guildScorpions < 3 then
+            if quest:IsActiveThreadTerminating() then return end
+            if #guildScorpions == 0 and scorpionsLeft == 0 then
+                quest:SetStateInt("DepartureMissionPoint", 2)
+                quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
+            elseif 0 < scorpionsLeft then
+                local scorpionSpawn = quest:GetFurthestWithScriptName(quest:GetHero(), "ScorpionSpawn")
+                if scorpionSpawn == nil then
+                    pPosition = {x = 0, y = 0, z = 0}
+                else
+                    pPosition = scorpionSpawn:GetPos()
+                end
+                local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                if guildStagBeetle ~= nil then
+                    guildStagBeetle:SetToKillOnLevelUnload(0)
+                end
+                quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsDeparture")
+                scorpionsLeft = scorpionsLeft - 1
+                -- TODO(native): xStack_18._4_4_ = (int *)0x0;
             end
-            local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-            if guildStagBeetle ~= nil then
-                guildStagBeetle:SetToKillOnLevelUnload(0)
-            end
-            quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsDeparture")
-            scorpionsLeft = scorpionsLeft - 1
         end
-        ::continue_1::
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:RemoveQuestInfoElement(infoCounter)
@@ -56,7 +57,7 @@ function Init(quest, me)
 end
 
 -- ScorpionHome.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- ScorpionHome.OnPredicateFail (retail 0x00d63d70)

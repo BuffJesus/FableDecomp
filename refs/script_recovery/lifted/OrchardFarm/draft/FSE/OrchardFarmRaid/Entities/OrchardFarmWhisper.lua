@@ -90,7 +90,7 @@ function Init(quest, me)
     quest:EntitySetAllowBossPhaseChanges(me, false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

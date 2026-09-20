@@ -1,0 +1,2880 @@
+{
+ "schema": "readable-unit/1",
+ "unit": "gameflow",
+ "draft": "refs\\script_recovery\\lifted\\Gameflow\\draft",
+ "files": {
+  "FSE/Gameflow/Gameflow.lua": {
+   "functions": [
+    {
+     "function": "Main",
+     "rewrites": {
+      "flags": 0,
+      "termination": 124,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 2,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 95,
+      "declarations": 102,
+      "decimalLiterals": 102
+     }
+    },
+    {
+     "function": "Init",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "OnPersist",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "CoreQuestReminder",
+     "rewrites": {
+      "flags": 0,
+      "termination": 4,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 2,
+      "decimalLiterals": 1
+     }
+    },
+    {
+     "function": "CheckBarrowFieldsGuards",
+     "rewrites": {
+      "flags": 0,
+      "termination": 8,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 1,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 8,
+      "declarations": 10,
+      "decimalLiterals": 0
+     }
+    }
+   ],
+   "locals": [
+    {
+     "function": "Main",
+     "sourceLine": 4,
+     "locals": {
+      "bVar2_1": {
+       "name": "isXbox",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isXbox"
+       ]
+      },
+      "bVar2_2": {
+       "name": "msgOnQuestCompleted",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_3": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_4": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_5": {
+       "name": "msgOnQuestCompleted2",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_6": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_7": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_8": {
+       "name": "isLevelLoaded",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isLevelLoaded",
+        "isLevelLoaded"
+       ]
+      },
+      "bVar2_9": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_10": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_11": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "bVar2_12": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_13": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_15": {
+       "name": "isQuestActive",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar2_16": {
+       "name": "isActiveThreadTerminating9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_17": {
+       "name": "isActiveThreadTerminating10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_18": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "bVar2_19": {
+       "name": "isActiveThreadTerminating11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_20": {
+       "name": "msgIsTutorialClickedPast",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_21": {
+       "name": "isActiveThreadTerminating12",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_22": {
+       "name": "isActiveThreadTerminating13",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_23": {
+       "name": "msgOnQuestCompleted3",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_24": {
+       "name": "isActiveThreadTerminating14",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_25": {
+       "name": "isActiveThreadTerminating15",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_26": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "bVar2_27": {
+       "name": "isActiveThreadTerminating16",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_28": {
+       "name": "msgIsTutorialClickedPast2",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_29": {
+       "name": "isActiveThreadTerminating17",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_30": {
+       "name": "isActiveThreadTerminating18",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_31": {
+       "name": "isActiveThreadTerminating19",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_32": {
+       "name": "isActiveThreadTerminating20",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_33": {
+       "name": "msgOnQuestCompleted4",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar2_34": {
+       "name": "isActiveThreadTerminating21",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_35": {
+       "name": "isActiveThreadTerminating22",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_36": {
+       "name": "isActiveThreadTerminating23",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_37": {
+       "name": "isQuestActive2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar2_38": {
+       "name": "isQuestActive3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar2_39": {
+       "name": "isActiveThreadTerminating24",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_40": {
+       "name": "isActiveThreadTerminating25",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_41": {
+       "name": "isActiveThreadTerminating26",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_42": {
+       "name": "isActiveThreadTerminating27",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_43": {
+       "name": "isActiveThreadTerminating28",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_44": {
+       "name": "isActiveThreadTerminating29",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_45": {
+       "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "bVar2_46": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "bVar2_47": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar2_48": {
+       "name": "isActiveThreadTerminating30",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_49": {
+       "name": "isQuestActive4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar2_50": {
+       "name": "isActiveThreadTerminating31",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_51": {
+       "name": "isRegionLoaded",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar2_52": {
+       "name": "isQuestActive5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar2_53": {
+       "name": "isActiveThreadTerminating32",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_54": {
+       "name": "isRegionLoaded2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar3_1": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar3_2": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar9_1": {
+       "name": "isActiveThreadTerminating33",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_2": {
+       "name": "isQuestActive6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar9_3": {
+       "name": "isActiveThreadTerminating34",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_4": {
+       "name": "msgOnQuestCompleted5",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_5": {
+       "name": "isActiveThreadTerminating35",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_6": {
+       "name": "isActiveThreadTerminating36",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_7": {
+       "name": "msgOnQuestCompleted6",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_8": {
+       "name": "isActiveThreadTerminating37",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_9": {
+       "name": "msgOnQuestCompleted7",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_10": {
+       "name": "isActiveThreadTerminating38",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_11": {
+       "name": "msgOnQuestCompleted8",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_12": {
+       "name": "isActiveThreadTerminating39",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_13": {
+       "name": "msgOnQuestCompleted9",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_14": {
+       "name": "isActiveThreadTerminating40",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_15": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar9_16": {
+       "name": "isActiveThreadTerminating41",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_17": {
+       "name": "msgOnQuestCompleted10",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_18": {
+       "name": "isActiveThreadTerminating42",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_19": {
+       "name": "isQuestActive7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar9_20": {
+       "name": "isActiveThreadTerminating43",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_21": {
+       "name": "msgOnQuestCompleted11",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_22": {
+       "name": "isActiveThreadTerminating44",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_23": {
+       "name": "isActiveThreadTerminating45",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_24": {
+       "name": "msgOnQuestCompleted12",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_25": {
+       "name": "isActiveThreadTerminating46",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_26": {
+       "name": "isActiveThreadTerminating47",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_27": {
+       "name": "isActiveThreadTerminating48",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_28": {
+       "name": "isQuestActive8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive",
+        "isQuestActive"
+       ]
+      },
+      "bVar9_29": {
+       "name": "isActiveThreadTerminating49",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_30": {
+       "name": "msgOnQuestCompleted13",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_31": {
+       "name": "isActiveThreadTerminating50",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_32": {
+       "name": "isActiveThreadTerminating51",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_33": {
+       "name": "isActiveThreadTerminating52",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_34": {
+       "name": "isActiveThreadTerminating53",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_35": {
+       "name": "isActiveThreadTerminating54",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_36": {
+       "name": "msgOnQuestCompleted14",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_37": {
+       "name": "isActiveThreadTerminating55",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_38": {
+       "name": "msgOnQuestCompleted15",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_39": {
+       "name": "isActiveThreadTerminating56",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_40": {
+       "name": "isActiveThreadTerminating57",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_41": {
+       "name": "isActiveThreadTerminating58",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_42": {
+       "name": "isActiveThreadTerminating59",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_43": {
+       "name": "msgOnQuestCompleted16",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_44": {
+       "name": "isActiveThreadTerminating60",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_45": {
+       "name": "predicateResult5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar9_46": {
+       "name": "isActiveThreadTerminating61",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_47": {
+       "name": "msgOnQuestCompleted17",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_48": {
+       "name": "isActiveThreadTerminating62",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_49": {
+       "name": "isRegionLoaded3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar9_50": {
+       "name": "isActiveThreadTerminating63",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_51": {
+       "name": "msgOnQuestCompleted18",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_52": {
+       "name": "isActiveThreadTerminating64",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_53": {
+       "name": "isActiveThreadTerminating65",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_54": {
+       "name": "isActiveThreadTerminating66",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_55": {
+       "name": "msgOnQuestCompleted19",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_56": {
+       "name": "isActiveThreadTerminating67",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_57": {
+       "name": "isActiveThreadTerminating68",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_58": {
+       "name": "isQuestActive9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar9_59": {
+       "name": "isActiveThreadTerminating69",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_60": {
+       "name": "isQuestActive10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar9_61": {
+       "name": "isActiveThreadTerminating70",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_62": {
+       "name": "isRegionLoaded4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar9_63": {
+       "name": "isActiveThreadTerminating71",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_64": {
+       "name": "msgOnQuestCompleted20",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_65": {
+       "name": "isActiveThreadTerminating72",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_66": {
+       "name": "isActiveThreadTerminating73",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_67": {
+       "name": "isActiveThreadTerminating74",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_68": {
+       "name": "msgOnQuestCompleted21",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_69": {
+       "name": "isActiveThreadTerminating75",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_70": {
+       "name": "isActiveThreadTerminating76",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_71": {
+       "name": "isRegionLoaded5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar9_72": {
+       "name": "isActiveThreadTerminating77",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_73": {
+       "name": "isActiveThreadTerminating78",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_74": {
+       "name": "isActiveThreadTerminating79",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_75": {
+       "name": "msgOnQuestCompleted22",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_76": {
+       "name": "isActiveThreadTerminating80",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_77": {
+       "name": "isActiveThreadTerminating81",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_78": {
+       "name": "isActiveThreadTerminating82",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_79": {
+       "name": "msgOnQuestCompleted23",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_80": {
+       "name": "isActiveThreadTerminating83",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_81": {
+       "name": "isActiveThreadTerminating84",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_82": {
+       "name": "isActiveThreadTerminating85",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_83": {
+       "name": "msgOnQuestCompleted24",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_84": {
+       "name": "isActiveThreadTerminating86",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_85": {
+       "name": "isActiveThreadTerminating87",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_86": {
+       "name": "isActiveThreadTerminating88",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_87": {
+       "name": "msgOnQuestCompleted25",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar9_88": {
+       "name": "isActiveThreadTerminating89",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_89": {
+       "name": "isActiveThreadTerminating90",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_90": {
+       "name": "isQuestActive11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar9_91": {
+       "name": "isActiveThreadTerminating91",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_92": {
+       "name": "isQuestActive12",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar9_93": {
+       "name": "isActiveThreadTerminating92",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_94": {
+       "name": "isActiveThreadTerminating93",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_95": {
+       "name": "isLevelLoaded2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isLevelLoaded",
+        "isLevelLoaded"
+       ]
+      },
+      "bVar9_96": {
+       "name": "isActiveThreadTerminating94",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_97": {
+       "name": "isActiveThreadTerminating95",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_98": {
+       "name": "controlAcquired",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "controlAcquired",
+        "controlAcquired"
+       ]
+      },
+      "bVar9_99": {
+       "name": "predicateResult6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar9_100": {
+       "name": "predicateResult7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar9_101": {
+       "name": "isRegionLoaded6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar9_102": {
+       "name": "isActiveThreadTerminating96",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar9_103": {
+       "name": "predicateResult8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar9_104": {
+       "name": "predicateResult9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "iVar12": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar8": {
+       "name": "getMasterGameState",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        "getMasterGameState",
+        null,
+        null,
+        null,
+        "getMasterGameState"
+       ]
+      },
+      "native_arg_switch_2": {
+       "name": "switch2",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ]
+      },
+      "pCVar10": {
+       "name": "resource",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource",
+        "resource"
+       ]
+      },
+      "pCVar5_1": {
+       "name": "theRealGuildmaster",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "theRealGuildmaster"
+       ]
+      },
+      "pCVar5_2": {
+       "name": "guildmasterMarker",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "guildmasterMarker"
+       ]
+      },
+      "pCVar5_3": {
+       "name": "witchwoodTeleporter",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "witchwoodTeleporter"
+       ]
+      },
+      "pCVar5_4": {
+       "name": "frescoDomeHSP",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "frescoDomeHSP"
+       ]
+      },
+      "pCVar5_5": {
+       "name": "hero",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_6": {
+       "name": "hero2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hero"
+       ]
+      },
+      "pCVar5_7": {
+       "name": "nw3BronzeDoorHsp",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "nw3BronzeDoorHsp"
+       ]
+      },
+      "pCVar6": {
+       "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        "theRealGuildmaster",
+        "hero",
+        "hero"
+       ]
+      },
+      "r1": {
+       "name": "actorMap",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        "guildDoors",
+        "actorMap"
+       ]
+      },
+      "uVar11": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null,
+        null
+       ]
+      },
+      "xStack_58": {
+       "name": "movie",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "movie"
+       ]
+      },
+      "xStack_68": {
+       "name": "resource2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_81c": {
+       "name": "scratchValue9",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      }
+     },
+     "splitLocals": {
+      "bVar9": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, bVar3, bVar9, iVar12, iVar8, native_arg_switch_2, pCVar10, pCVar5, pCVar6, r1, uVar11, xStack_58, xStack_68, xStack_81c\n",
+       "versions": {
+        "bVar9_1": [
+         7,
+         347,
+         357,
+         360,
+         403,
+         428,
+         457,
+         485,
+         518,
+         541,
+         590,
+         617,
+         648,
+         682,
+         723,
+         751,
+         787,
+         821,
+         870,
+         888,
+         929,
+         958,
+         982,
+         1025,
+         1115,
+         1146,
+         1152,
+         1208,
+         1237,
+         1271,
+         1301,
+         1414
+        ],
+        "bVar9_2": [
+         394,
+         401
+        ],
+        "bVar9_3": [
+         397
+        ],
+        "bVar9_4": [
+         413,
+         420
+        ],
+        "bVar9_5": [
+         416
+        ],
+        "bVar9_6": [
+         422
+        ],
+        "bVar9_7": [
+         448,
+         455
+        ],
+        "bVar9_8": [
+         451
+        ],
+        "bVar9_9": [
+         476,
+         483
+        ],
+        "bVar9_10": [
+         479
+        ],
+        "bVar9_11": [
+         509,
+         516
+        ],
+        "bVar9_12": [
+         512
+        ],
+        "bVar9_13": [
+         532,
+         539
+        ],
+        "bVar9_14": [
+         535
+        ],
+        "bVar9_15": [
+         559,
+         580,
+         586
+        ],
+        "bVar9_16": [
+         575
+        ],
+        "bVar9_17": [
+         608,
+         615
+        ],
+        "bVar9_18": [
+         611
+        ],
+        "bVar9_19": [
+         639,
+         646
+        ],
+        "bVar9_20": [
+         642
+        ],
+        "bVar9_21": [
+         658,
+         665
+        ],
+        "bVar9_22": [
+         661
+        ],
+        "bVar9_23": [
+         667
+        ],
+        "bVar9_24": [
+         703,
+         710
+        ],
+        "bVar9_25": [
+         706
+        ],
+        "bVar9_26": [
+         712
+        ],
+        "bVar9_27": [
+         718
+        ],
+        "bVar9_28": [
+         742,
+         749
+        ],
+        "bVar9_29": [
+         745
+        ],
+        "bVar9_30": [
+         765,
+         772
+        ],
+        "bVar9_31": [
+         768
+        ],
+        "bVar9_32": [
+         774
+        ],
+        "bVar9_33": [
+         782
+        ],
+        "bVar9_34": [
+         803
+        ],
+        "bVar9_35": [
+         808
+        ],
+        "bVar9_36": [
+         812,
+         819
+        ],
+        "bVar9_37": [
+         815
+        ],
+        "bVar9_38": [
+         834,
+         841
+        ],
+        "bVar9_39": [
+         837
+        ],
+        "bVar9_40": [
+         843
+        ],
+        "bVar9_41": [
+         859
+        ],
+        "bVar9_42": [
+         864
+        ],
+        "bVar9_43": [
+         879,
+         886
+        ],
+        "bVar9_44": [
+         882
+        ],
+        "bVar9_45": [
+         897,
+         919,
+         925
+        ],
+        "bVar9_46": [
+         913
+        ],
+        "bVar9_47": [
+         949,
+         956
+        ],
+        "bVar9_48": [
+         952
+        ],
+        "bVar9_49": [
+         973,
+         980
+        ],
+        "bVar9_50": [
+         976
+        ],
+        "bVar9_51": [
+         1005,
+         1012
+        ],
+        "bVar9_52": [
+         1008
+        ],
+        "bVar9_53": [
+         1014
+        ],
+        "bVar9_54": [
+         1020
+        ],
+        "bVar9_55": [
+         1043,
+         1050
+        ],
+        "bVar9_56": [
+         1046
+        ],
+        "bVar9_57": [
+         1052
+        ],
+        "bVar9_58": [
+         1056
+        ],
+        "bVar9_59": [
+         1060
+        ],
+        "bVar9_60": [
+         1064
+        ],
+        "bVar9_61": [
+         1067
+        ],
+        "bVar9_62": [
+         1106,
+         1113
+        ],
+        "bVar9_63": [
+         1109
+        ],
+        "bVar9_64": [
+         1125,
+         1132
+        ],
+        "bVar9_65": [
+         1128
+        ],
+        "bVar9_66": [
+         1134
+        ],
+        "bVar9_67": [
+         1141
+        ],
+        "bVar9_68": [
+         1167,
+         1174
+        ],
+        "bVar9_69": [
+         1170
+        ],
+        "bVar9_70": [
+         1176
+        ],
+        "bVar9_71": [
+         1180,
+         1187
+        ],
+        "bVar9_72": [
+         1183
+        ],
+        "bVar9_73": [
+         1189
+        ],
+        "bVar9_74": [
+         1203
+        ],
+        "bVar9_75": [
+         1217,
+         1224
+        ],
+        "bVar9_76": [
+         1220
+        ],
+        "bVar9_77": [
+         1226
+        ],
+        "bVar9_78": [
+         1232
+        ],
+        "bVar9_79": [
+         1246,
+         1253
+        ],
+        "bVar9_80": [
+         1249
+        ],
+        "bVar9_81": [
+         1255
+        ],
+        "bVar9_82": [
+         1266
+        ],
+        "bVar9_83": [
+         1280,
+         1287
+        ],
+        "bVar9_84": [
+         1283
+        ],
+        "bVar9_85": [
+         1289
+        ],
+        "bVar9_86": [
+         1296
+        ],
+        "bVar9_87": [
+         1312,
+         1319
+        ],
+        "bVar9_88": [
+         1315
+        ],
+        "bVar9_89": [
+         1321
+        ],
+        "bVar9_90": [
+         1325
+        ],
+        "bVar9_91": [
+         1329
+        ],
+        "bVar9_92": [
+         1333
+        ],
+        "bVar9_93": [
+         1336
+        ],
+        "bVar9_94": [
+         1345
+        ],
+        "bVar9_95": [
+         1353,
+         1360
+        ],
+        "bVar9_96": [
+         1356
+        ],
+        "bVar9_97": [
+         1362
+        ],
+        "bVar9_98": [
+         1371,
+         1383
+        ],
+        "bVar9_99": [
+         1375
+        ],
+        "bVar9_100": [
+         1386
+        ],
+        "bVar9_101": [
+         1405,
+         1412
+        ],
+        "bVar9_102": [
+         1408
+        ],
+        "bVar9_103": [
+         1453
+        ],
+        "bVar9_104": [
+         1454
+        ]
+       }
+      },
+      "bVar2": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, bVar3, bVar9, iVar12, iVar8, native_arg_switch_2, pCVar10, pCVar5, pCVar6, r1, uVar11, xStack_58, xStack_68, xStack_81c\n",
+       "versions": {
+        "bVar2_1": [
+         17
+        ],
+        "bVar2_2": [
+         28,
+         35
+        ],
+        "bVar2_3": [
+         31
+        ],
+        "bVar2_4": [
+         37
+        ],
+        "bVar2_5": [
+         78,
+         85
+        ],
+        "bVar2_6": [
+         81
+        ],
+        "bVar2_7": [
+         87
+        ],
+        "bVar2_8": [
+         93,
+         100
+        ],
+        "bVar2_9": [
+         96
+        ],
+        "bVar2_10": [
+         102
+        ],
+        "bVar2_11": [
+         114
+        ],
+        "bVar2_12": [
+         116
+        ],
+        "bVar2_13": [
+         129
+        ],
+        "bVar2_14": [
+         149
+        ],
+        "bVar2_15": [
+         160,
+         167
+        ],
+        "bVar2_16": [
+         163
+        ],
+        "bVar2_17": [
+         169
+        ],
+        "bVar2_18": [
+         174
+        ],
+        "bVar2_19": [
+         176
+        ],
+        "bVar2_20": [
+         180,
+         187
+        ],
+        "bVar2_21": [
+         183
+        ],
+        "bVar2_22": [
+         189
+        ],
+        "bVar2_23": [
+         201,
+         208
+        ],
+        "bVar2_24": [
+         204
+        ],
+        "bVar2_25": [
+         210
+        ],
+        "bVar2_26": [
+         214
+        ],
+        "bVar2_27": [
+         216
+        ],
+        "bVar2_28": [
+         220,
+         227
+        ],
+        "bVar2_29": [
+         223
+        ],
+        "bVar2_30": [
+         229
+        ],
+        "bVar2_31": [
+         235
+        ],
+        "bVar2_32": [
+         240
+        ],
+        "bVar2_33": [
+         259,
+         266
+        ],
+        "bVar2_34": [
+         262
+        ],
+        "bVar2_35": [
+         268
+        ],
+        "bVar2_36": [
+         290
+        ],
+        "bVar2_37": [
+         295
+        ],
+        "bVar2_38": [
+         297
+        ],
+        "bVar2_39": [
+         299
+        ],
+        "bVar2_40": [
+         304
+        ],
+        "bVar2_41": [
+         312
+        ],
+        "bVar2_42": [
+         317
+        ],
+        "bVar2_43": [
+         322
+        ],
+        "bVar2_44": [
+         328
+        ],
+        "bVar2_45": [
+         343
+        ],
+        "bVar2_46": [
+         348
+        ],
+        "bVar2_47": [
+         350,
+         354
+        ],
+        "bVar2_48": [
+         382
+        ],
+        "bVar2_49": [
+         560,
+         588
+        ],
+        "bVar2_50": [
+         563
+        ],
+        "bVar2_51": [
+         567
+        ],
+        "bVar2_52": [
+         898,
+         927
+        ],
+        "bVar2_53": [
+         901
+        ],
+        "bVar2_54": [
+         905
+        ]
+       }
+      },
+      "pCVar5": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, bVar3, bVar9, iVar12, iVar8, native_arg_switch_2, pCVar10, pCVar5, pCVar6, r1, uVar11, xStack_58, xStack_68, xStack_81c\n",
+       "versions": {
+        "pCVar5_1": [
+         113
+        ],
+        "pCVar5_2": [
+         121
+        ],
+        "pCVar5_3": [
+         150
+        ],
+        "pCVar5_4": [
+         1350
+        ],
+        "pCVar5_5": [
+         1370
+        ],
+        "pCVar5_6": [
+         1382
+        ],
+        "pCVar5_7": [
+         1402
+        ]
+       }
+      },
+      "bVar3": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar2, bVar3, bVar9, iVar12, iVar8, native_arg_switch_2, pCVar10, pCVar5, pCVar6, r1, uVar11, xStack_58, xStack_68, xStack_81c\n",
+       "versions": {
+        "bVar3_1": [
+         569
+        ],
+        "bVar3_2": [
+         907
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {
+      "bVar2_14": {
+       "literal": "false",
+       "definitionLine": 149,
+       "readLines": [
+        151
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar3_1, bVar3_2, bVar9_1, bVar9_2, bVar9_3, bVar9_4, bVar9_5, bVar9_6, bVar9_7, bVar9_8, bVar9_9, bVar9_10, bVar9_11, bVar9_12, bVar9_13, bVar9_14, bVar9_15, bVar9_16, bVar9_17, bVar9_18, bVar9_19, bVar9_20, bVar9_21, bVar9_22, bVar9_23, bVar9_24, bVar9_25, bVar9_26, bVar9_27, bVar9_28, bVar9_29, bVar9_30, bVar9_31, bVar9_32, bVar9_33, bVar9_34, bVar9_35, bVar9_36, bVar9_37, bVar9_38, bVar9_39, bVar9_40, bVar9_41, bVar9_42, bVar9_43, bVar9_44, bVar9_45, bVar9_46, bVar9_47, bVar9_48, bVar9_49, bVar9_50, bVar9_51, bVar9_52, bVar9_53, bVar9_54, bVar9_55, bVar9_56, bVar9_57, bVar9_58, bVar9_59, bVar9_60, bVar9_61, bVar9_62, bVar9_63, bVar9_64, bVar9_65, bVar9_66, bVar9_67, bVar9_68, bVar9_69, bVar9_70, bVar9_71, bVar9_72, bVar9_73, bVar9_74, bVar9_75, bVar9_76, bVar9_77, bVar9_78, bVar9_79, bVar9_80, bVar9_81, bVar9_82, bVar9_83, bVar9_84, bVar9_85, bVar9_86, bVar9_87, bVar9_88, bVar9_89, bVar9_90, bVar9_91, bVar9_92, bVar9_93, bVar9_94, bVar9_95, bVar9_96, bVar9_97, bVar9_98, bVar9_99, bVar9_100, bVar9_101, bVar9_102, bVar9_103, bVar9_104, iVar12, iVar8, native_arg_switch_2, pCVar10, pCVar5_1, pCVar5_2, pCVar5_3, pCVar5_4, pCVar5_5, pCVar5_6, pCVar5_7, pCVar6, r1, uVar11, xStack_58, xStack_68, xStack_81c\n",
+        "149": "            bVar2_14 = false\n",
+        "151": "            quest:SetTeleporterAsActive(pCVar5_3, bVar2_14)\n"
+       }
+      }
+     },
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 1467,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 1526,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "CoreQuestReminder",
+     "sourceLine": 1537,
+     "locals": {
+      "iVar2_1": {
+       "name": "coreQuestWaiting",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "coreQuestWaiting",
+        "coreQuestWaiting"
+       ]
+      },
+      "iVar2_2": {
+       "name": "timerId",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timerId"
+       ]
+      },
+      "iVar3": {
+       "name": "timeRemaining",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timeRemaining",
+        "timeRemaining"
+       ]
+      },
+      "xStack_4": {
+       "name": "timerId2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "timerId"
+       ]
+      },
+      "bVar1": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        "predicateResult",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "predicateResult",
+        "isActiveThreadTerminating",
+        "isHeroOnQuest",
+        "predicateResult",
+        "isActiveThreadTerminating"
+       ]
+      },
+      "__native_condition_1": {
+       "name": "getStateInt",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        "getStateInt",
+        "predicateResult"
+       ]
+      }
+     },
+     "splitLocals": {
+      "iVar2": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local iVar2, iVar3, xStack_4\n",
+       "versions": {
+        "iVar2_1": [
+         10,
+         17
+        ],
+        "iVar2_2": [
+         23
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "CheckBarrowFieldsGuards",
+     "sourceLine": 1599,
+     "locals": {
+      "bVar2_1": {
+       "name": "isQuestCompleted",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestCompleted"
+       ]
+      },
+      "bVar2_2": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar2_3": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar2_4": {
+       "name": "isQuestActive",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar2_5": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar2_6": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar3_1": {
+       "name": "isQuestCompleted2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestCompleted"
+       ]
+      },
+      "bVar3_2": {
+       "name": "isQuestActive2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar4_2": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "bVar4_3": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_4": {
+       "name": "isQuestActive3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isQuestActive"
+       ]
+      },
+      "bVar4_5": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_6": {
+       "name": "msgOnQuestCompleted",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar4_7": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_8": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_9": {
+       "name": "isRegionLoaded",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar4_10": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_11": {
+       "name": "isRegionLoaded2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded"
+       ]
+      },
+      "bVar4_12": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_13": {
+       "name": "isRegionLoaded3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isRegionLoaded",
+        "isRegionLoaded"
+       ]
+      },
+      "bVar4_14": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar4_15": {
+       "name": "predicateResult5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "native_arg_sequence_1_2": {
+       "name": "sequence12",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      }
+     },
+     "splitLocals": {
+      "bVar4": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, bVar3, bVar4, native_arg_sequence_1, pVillage\n",
+       "versions": {
+        "bVar4_1": [
+         4,
+         7
+        ],
+        "bVar4_2": [
+         14,
+         38,
+         48
+        ],
+        "bVar4_3": [
+         51
+        ],
+        "bVar4_4": [
+         55
+        ],
+        "bVar4_5": [
+         59
+        ],
+        "bVar4_6": [
+         63,
+         70
+        ],
+        "bVar4_7": [
+         66
+        ],
+        "bVar4_8": [
+         72
+        ],
+        "bVar4_9": [
+         76
+        ],
+        "bVar4_10": [
+         80
+        ],
+        "bVar4_11": [
+         84
+        ],
+        "bVar4_12": [
+         87
+        ],
+        "bVar4_13": [
+         91,
+         98
+        ],
+        "bVar4_14": [
+         94
+        ],
+        "bVar4_15": [
+         101
+        ],
+        "bVar4_16": [
+         103
+        ]
+       }
+      },
+      "bVar2": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, bVar3, bVar4, native_arg_sequence_1, pVillage\n",
+       "versions": {
+        "bVar2_1": [
+         5
+        ],
+        "bVar2_2": [
+         9,
+         12
+        ],
+        "bVar2_3": [
+         23
+        ],
+        "bVar2_4": [
+         34
+        ],
+        "bVar2_5": [
+         40,
+         45
+        ],
+        "bVar2_6": [
+         111
+        ]
+       }
+      },
+      "bVar3": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, bVar3, bVar4, native_arg_sequence_1, pVillage\n",
+       "versions": {
+        "bVar3_1": [
+         8
+        ],
+        "bVar3_2": [
+         39
+        ]
+       }
+      },
+      "native_arg_sequence_1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, bVar3, bVar4, native_arg_sequence_1, pVillage\n",
+       "versions": {
+        "native_arg_sequence_1_1": [
+         15
+        ],
+        "native_arg_sequence_1_2": [
+         17,
+         19,
+         25,
+         27
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {
+      "bVar4_1": {
+       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, native_arg_sequence_1_1, native_arg_sequence_1_2, pVillage\n",
+       "4": "    bVar4_1 = false\n",
+       "7": "        bVar4_1 = true\n"
+      },
+      "native_arg_sequence_1_1": {
+       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar3_1, bVar3_2, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, native_arg_sequence_1_1, native_arg_sequence_1_2, pVillage\n",
+       "15": "    native_arg_sequence_1_1 = false\n"
+      }
+     },
+     "inlinedLiteralLocals": {
+      "bVar4_16": {
+       "literal": "true",
+       "definitionLine": 103,
+       "readLines": [
+        105
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar3_1, bVar3_2, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, native_arg_sequence_1_2, pVillage\n",
+        "103": "                bVar4_16 = true\n",
+        "105": "                quest:EnableGuards(pVillage, bVar4_16)\n"
+       }
+      }
+     },
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 12,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Init",
+     "sourceLine": 968,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OnPersist",
+     "sourceLine": 1027,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "CoreQuestReminder",
+     "sourceLine": 1034,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "CheckBarrowFieldsGuards",
+     "sourceLine": 1061,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    }
+   ],
+   "wrappedDeclarations": 1,
+   "style": {
+    "functions": {
+     "Main": {
+      "rewrites": {
+       "splitLocals": 5,
+       "closures": 0,
+       "hero": 1,
+       "cutscenes": 0,
+       "staleLabelComments": 1,
+       "aliveStaging": 79,
+       "exitChecksInlined": 96,
+       "frameChecks": 60,
+       "inlinedTemporaries": 35,
+       "deadDefinitions": 2,
+       "guardWrappers": 0,
+       "retryLoops": 42,
+       "booleanMaterialisation": 1,
+       "booleanCompares": 0,
+       "conditions": 1,
+       "literals": 5,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 62,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 9,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 61,
+       "booleanBranches": 0,
+       "elseif": 1,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 12,
+       "controlAcquires": 0,
+       "sunkLocals": 7,
+       "cleanupClosureNames": 0,
+       "parentheses": 8,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 4,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 1366,
+       "temporaries": 81,
+       "labels": 5,
+       "gotos": 6,
+       "terminationChecks": 129,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 955,
+       "temporaries": 8,
+       "labels": 6,
+       "gotos": 7,
+       "terminationChecks": 57,
+       "frameChecks": 60,
+       "requires": 0
+      }
+     },
+     "Init": {
+      "rewrites": {
+       "splitLocals": 0,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 58,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 58,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "OnPersist": {
+      "rewrites": {
+       "splitLocals": 6,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 4,
+       "deadDefinitions": 0,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
+       "parentheses": 2,
+       "cosmetics": 0,
+       "firstAssignments": 4,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 10,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 6,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "CoreQuestReminder": {
+      "rewrites": {
+       "splitLocals": 4,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 0,
+       "exitChecksInlined": 5,
+       "frameChecks": 2,
+       "inlinedTemporaries": 12,
+       "deadDefinitions": 4,
+       "guardWrappers": 0,
+       "retryLoops": 2,
+       "booleanMaterialisation": 2,
+       "booleanCompares": 0,
+       "conditions": 3,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 60,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 60,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 2,
+       "controlAcquires": 0,
+       "sunkLocals": 2,
+       "cleanupClosureNames": 0,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 1,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 61,
+       "temporaries": 4,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 7,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 26,
+       "temporaries": 1,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 3,
+       "frameChecks": 2,
+       "requires": 0
+      }
+     },
+     "CheckBarrowFieldsGuards": {
+      "rewrites": {
+       "splitLocals": 1,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 7,
+       "exitChecksInlined": 9,
+       "frameChecks": 4,
+       "inlinedTemporaries": 11,
+       "deadDefinitions": 2,
+       "guardWrappers": 1,
+       "retryLoops": 3,
+       "booleanMaterialisation": 5,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 4,
+       "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
+       "parentheses": 2,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 104,
+       "temporaries": 16,
+       "labels": 3,
+       "gotos": 4,
+       "terminationChecks": 10,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 41,
+       "temporaries": 2,
+       "labels": 3,
+       "gotos": 4,
+       "terminationChecks": 2,
+       "frameChecks": 4,
+       "requires": 0
+      }
+     }
+    },
+    "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
+    "pureLocalFunctions": []
+   }
+  },
+  "FSE/quests.lua": {
+   "functions": [],
+   "locals": [],
+   "wrappedDeclarations": 0,
+   "style": {
+    "functions": {},
+    "hoistedRequires": 0,
+    "entityStateAliased": 0,
+    "namedHelpers": 0,
+    "pureLocalFunctions": []
+   }
+  }
+ },
+ "bsimHelperNames": {},
+ "syntax": {
+  "runtime": "Lua 5.4",
+  "ok": true,
+  "checked": 2,
+  "passed": 2,
+  "errors": []
+ }
+}

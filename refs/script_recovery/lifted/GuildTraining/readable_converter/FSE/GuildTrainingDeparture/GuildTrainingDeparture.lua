@@ -17,8 +17,7 @@ end
 
 -- Q_GuildTrainingDeparture.Init (retail 0x00d506b0)
 function Init(quest)
-    local pTargetThing = quest:GetThingWithScriptName(nil --[[missing]])
-    quest:EntityTeleportToThing(quest:GetHero(), pTargetThing, false)
+    quest:EntityTeleportToThing(quest:GetHero(), quest:GetThingWithScriptName("HeroDepartureStartMarker"), false)
     quest:FadeScreenIn()
     quest:SetStateBool("Finished", false)
     quest:SetStateInt("MeleeGrade", 0)

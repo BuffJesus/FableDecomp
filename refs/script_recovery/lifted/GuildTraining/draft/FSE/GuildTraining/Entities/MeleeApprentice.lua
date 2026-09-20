@@ -24,9 +24,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_f8)
     end
     xStack_f8 = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_f8)
     bVar3 = resources:TryAcquire(xStack_f8, me, 4)
     while not bVar3 do
         alive = quest:NewScriptFrame(me)
@@ -62,18 +60,16 @@ function Main(quest, me)
             resources:ReleaseResource(xStack_f8)
             return
         end
-        if quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") ~= 0 then
+        if quest:GetMasterGameState("MeleeApprenticeNeededForCutscene") then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
                 resources:ReleaseResource(xStack_f8)
                 return
             end
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_f8)
             cVar5 = quest:GetMasterGameState("MeleeApprenticeNeededForCutscene")
-            while cVar5 ~= 0 do
+            while cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -89,9 +85,7 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_f8)
                 return
             end
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_f8)
             bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
@@ -117,9 +111,7 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_f8)
                 return
             end
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_f8)
             cVar5 = quest:GetStateBool("StartedMeleeTesting")
             while cVar5 do
                 alive = quest:NewScriptFrame(me)
@@ -137,9 +129,7 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_f8)
                 return
             end
-            bVar3 = false
-            if bVar3 ~= 0 then
-            end
+            resources:PrepareResource(xStack_f8)
             bVar3 = resources:TryAcquire(xStack_f8, me, 4)
             while not bVar3 do
                 alive = quest:NewScriptFrame(me)
@@ -194,7 +184,6 @@ function Main(quest, me)
                     end
                     me:ClearCommands()
                     xStack_74 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_18 = resources:ScriptThing(xStack_f8)
                     pCVar6 = x_stk_18
@@ -217,9 +206,7 @@ function Main(quest, me)
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 pCVar9 = xStack_74
-                                -- LAB_00d41a02_c14: (native jump target)
-                                resources:DestroyMovie(pCVar9)
-                                -- TODO(native): goto LAB_00d41a07_c14
+                                __cleanup_LAB_00d41a02(); return
                             end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar5 = iVar11
@@ -229,9 +216,7 @@ function Main(quest, me)
                         if bVar3 then
                             quest:PauseAllNonScriptedEntities(false)
                             pCVar9 = xStack_74
-                            -- LAB_00d41a02_c15: (native jump target)
-                            resources:DestroyMovie(pCVar9)
-                            -- TODO(native): goto LAB_00d41a07_c15
+                            __cleanup_LAB_00d41a02(); return
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
@@ -268,7 +253,6 @@ function Main(quest, me)
                         return
                     end
                     xStack_94 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_48 = resources:ScriptThing(xStack_f8)
                     pCVar6 = x_stk_48
@@ -306,8 +290,7 @@ function Main(quest, me)
                     end
                     quest:PauseAllNonScriptedEntities(false)
                     pCVar9 = xStack_94
-                    -- LAB_00d41813: (native jump target)
-                    resources:DestroyMovie(pCVar9)
+                    goto LAB_00d41813
                 else
                     bVar3 = quest:IsQuestActive("Q_GuildTrainingWill")
                     if bVar3 then
@@ -318,7 +301,6 @@ function Main(quest, me)
                             return
                         end
                         xStack_84 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_3c = resources:ScriptThing(xStack_f8)
                         pCVar6 = x_stk_3c
@@ -356,8 +338,7 @@ function Main(quest, me)
                         end
                         quest:PauseAllNonScriptedEntities(false)
                         pCVar9 = xStack_84
-                        resources:DestroyMovie(pCVar9)
-                        goto FLOW_after_lab_00d41813
+                        goto LAB_00d41813
                     end
                     bVar3 = quest:IsQuestActive("Q_GuildTrainingDeparture")
                     if bVar3 then
@@ -376,7 +357,6 @@ function Main(quest, me)
                                 return
                             end
                             xStack_64 = resources:StartMovie("")
-                            quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             x_stk_24 = resources:ScriptThing(xStack_f8)
                             pCVar6 = x_stk_24
@@ -423,7 +403,6 @@ function Main(quest, me)
                                 return
                             end
                             xStack_a4 = resources:StartMovie("")
-                            quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             x_stk_c = resources:ScriptThing(xStack_f8)
                             pCVar6 = x_stk_c
@@ -461,12 +440,15 @@ function Main(quest, me)
                             quest:PauseAllNonScriptedEntities(false)
                             pCVar9 = xStack_a4
                         end
-                        resources:DestroyMovie(pCVar9)
-                        goto FLOW_after_lab_00d41813
+                        goto LAB_00d41813
                     end
                 end
-                ::FLOW_after_lab_00d41813::
+                goto FLOW_past_lab_00d41813
+                ::LAB_00d41813::
+                resources:DestroyMovie(pCVar9)
+                ::FLOW_past_lab_00d41813::
                 if not (r1 ~= nil and not r1:IsNull()) then
+                    puVar8 = {x = 0, y = 0, z = 0}
                 else
                     puVar8 = r1:GetPos()
                 end
@@ -487,6 +469,7 @@ function Main(quest, me)
                     return
                 end
                 if not (r1 ~= nil and not r1:IsNull()) then
+                    puVar8 = {x = 0, y = 0, z = 0}
                 else
                     puVar8 = r1:GetPos()
                 end
@@ -504,7 +487,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("WillWoodsChatDone", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

@@ -24,9 +24,7 @@ function Main(quest, me)
     quest:EntityTeleportToThing(me, pCVar6, bVar4)
     pCVar6 = nil
     xStack_30 = resources:NewResource()
-    bVar4 = false
-    if bVar4 ~= 0 then
-    end
+    resources:PrepareResource(xStack_30)
     bVar4 = resources:TryAcquire(xStack_30, me, 4)
     while not bVar4 do
         alive = quest:NewScriptFrame(me)
@@ -47,9 +45,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then goto LAB_00d5134c end
             xStack_20 = resources:NewResource()
-            bVar4 = false
-            if bVar4 ~= 0 then
-            end
+            resources:PrepareResource(xStack_20)
             iVar10 = 4
             pppuVar9 = xStack_20
             pCVar6 = quest:GetHero()
@@ -80,7 +76,6 @@ function Main(quest, me)
             resources:SetActor(pCVar6, "GM", xStack_30)
             resources:SetActor(pCVar6, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", pCVar6, false, true)
@@ -107,7 +102,6 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d5134c end
                     xStack_20 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     pCVar6 = resources:ScriptThing(xStack_30)
                     pCVar6 = pCVar6
@@ -167,7 +161,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("TeleportToWoods", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

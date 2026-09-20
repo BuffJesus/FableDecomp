@@ -39,7 +39,7 @@ function Main(quest, me)
     dummyWorth = math.tointeger(math.modf(readGlobalGameDataFloat))
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
-    while quest:GetMasterGameState("SkillTrainingStarted") ~= 1 do
+    while not quest:GetMasterGameState("SkillTrainingStarted") do
         if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     end
     predicateResult4 = false
@@ -57,7 +57,7 @@ function Main(quest, me)
             getTimer = getTimer + 1
         until getTimer == speed
         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
-        if quest:GetMasterGameState("MovingDummiesNeeded") == 0 then
+        if not quest:GetMasterGameState("MovingDummiesNeeded") then
             if quest:IsActiveThreadTerminating() then return end
             while true do
                 repeat
@@ -77,7 +77,7 @@ function Main(quest, me)
                 getTimer = getTimer + 1
             until getTimer == speed
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
-            while quest:GetMasterGameState("MovingDummiesNeeded") ~= 1 do
+            while not quest:GetMasterGameState("MovingDummiesNeeded") do
                 if not quest:NewScriptFrame(me) then return end
             end
             if quest:IsActiveThreadTerminating() then return end
@@ -95,7 +95,7 @@ function Main(quest, me)
             quest:EntityTeleportToPosition(me, pPos, getAngleXY, false, false)
             if me:MsgIsHitByHeroWithProjectileWeapon() then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                if quest:GetMasterGameState("MovingDummiesNeeded") == 1 then
+                if quest:GetMasterGameState("MovingDummiesNeeded") then
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
                         if quest:IsQuestActive("Q_GuildTrainingSkill") then
                             local theGuildmaster = quest:GetThingWithScriptName("TheGuildmaster")
@@ -176,21 +176,18 @@ function Main(quest, me)
                                     if 0.0 <= scratchValue44 then
                                         if 0.0 <= scratchValue44 then
                                             if 0.0 <= scratchValue44 then
-                                                if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
+                                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, hero, false)
                                             else
-                                                if quest:IsActiveThreadTerminating() then
-                                                    -- LAB_00d42efe: (native jump target)
-                                                    DeregisterTimers(); return
-                                                end
+                                                if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_GOOD_HIT", skillApprentice2, hero, false)
                                             end
                                         else
-                                            if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
+                                            if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                             quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_MEDIUM_HIT", skillApprentice2, hero, false)
                                         end
                                     else
-                                        if quest:IsActiveThreadTerminating() then return end  -- TODO(native): goto LAB_00d42efe
+                                        if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                         quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", skillApprentice2, hero, false)
                                     end
                                 end
@@ -211,24 +208,24 @@ function Main(quest, me)
                 scratchValue5 = scratchValue5 == 0
                 i_stk_16c_1 = 0
             end
-            if quest:GetMasterGameState("SkillRepeatKnown") == 0 then goto continue_1 end
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            if quest:GetMasterGameState("SkillRepeating") == 1 then
-                scratchValue4 = 1
-            elseif quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(timerId)
-                return
-            end
-            quest:SetMasterGameState("SkillDummyReset", true)
-            while quest:GetMasterGameState("SkillRepeatKnown") ~= 0 do
-                quest:NewScriptFrame(me)
-                if quest:IsActiveThreadTerminating() then
+            if quest:GetMasterGameState("SkillRepeatKnown") then
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                if quest:GetMasterGameState("SkillRepeating") then
+                    scratchValue4 = 1
+                elseif quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId)
-                    do return end
+                    return
                 end
+                quest:SetMasterGameState("SkillDummyReset", true)
+                while quest:GetMasterGameState("SkillRepeatKnown") do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:DeregisterTimer(timerId)
+                        do return end
+                    end
+                end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
             end
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            ::continue_1::
         until scratchValue4 ~= 0
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
         quest:DeregisterTimer(timerId)
@@ -244,7 +241,7 @@ function Init(quest, me)
 end
 
 -- SkillTarget.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- SkillTarget.OnPredicateFail (retail 0x00d41cd0)

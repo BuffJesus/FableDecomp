@@ -101,15 +101,22 @@ end
 
 -- Q_OrchardFarmRaid.OnPersist (retail 0x00dcc720)
 function OnPersist(quest, context)
+    quest:SetStateBool("ShownCombatMultiplierTutorial", quest:PersistTransferBool(context, "ShownCombatMultiplierTutorial", quest:GetStateBool("ShownCombatMultiplierTutorial")))
+    quest:SetStateBool("HeroMetWhisperBeforeFarm", quest:PersistTransferBool(context, "HeroMetWhisperBeforeFarm", quest:GetStateBool("HeroMetWhisperBeforeFarm")))
 end
 
 -- Q_OrchardFarmRaid.ProcessGameRulesEvil (retail 0x00dd03d0)
 function ProcessGameRulesEvil(quest)
     local hero = quest:GetHero()
-    local addQuestInfoCounter, thing
+    local resources = quest:RetailResources()
+    local addQuestInfoCounter, thing, actorMap2, movie, resource, resource2
     local function ReleaseEverything()
         local thing = 0
-        quest:EndCutscene()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap2)
+        resources:ReleaseResource(resource)
+        resources:ReleaseResource(resource2)
     end
     while not quest:GetStateBool("DoneIntroduction") do
         if not quest:NewScriptFrame() then return end
@@ -131,28 +138,50 @@ function ProcessGameRulesEvil(quest)
             quest:EntityAttachToScript(rivalHeroWhisperOrchardFarm, "Q_OrchardFarmRaid")
             local mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
             local mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
-            quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
+            resource2 = resources:NewResource()
+            resource = resources:NewResource()
+            resources:TryAcquire(resource, rivalHeroWhisperOrchardFarm, 4)
+            resources:TryAcquire(resource2, hero, 4)
+            actorMap2 = resources:NewActorMap()
+            resources:SetActor(actorMap2, "HERO", resource2)
+            resources:SetActor(actorMap2, "WHISPER", resource)
+            movie = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            quest:FixMovieSequenceCamera(true)
             local f_stk_14_2 = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
             if f_stk_14_2 <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                quest:RunCutscene("CS_ORCHARD_EVIL_WHISPER_BACK", true, false)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", actorMap2, false, true)
             else
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                quest:RunCutscene("CS_ORCHARD_EVIL_WHISPER_FRONT", true, false)
+                resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_FRONT", actorMap2, false, true)
             end
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 if quest:DisplayTutorial(TUTORIAL_CATEGORY_FLOURISHING_MOVE) then
-                    if quest:IsActiveThreadTerminating() then quest:EndCutscene(); return end
-                    while not quest:MsgIsTutorialClickedPast() do
-                        if not quest:NewScriptFrame() then ReleaseEverything(); return end
+                    if not quest:IsActiveThreadTerminating() then
+                        while not quest:MsgIsTutorialClickedPast() do
+                            if not quest:NewScriptFrame() then ReleaseEverything(); return end
+                        end
+                        if not quest:IsActiveThreadTerminating() then goto LAB_00dd0977 end
                     end
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:DestroyActorMap(actorMap2)
+                    resources:ReleaseResource(resource)
+                    resources:ReleaseResource(resource2)
+                    return
                 end
+                ::LAB_00dd0977::
                 quest:SetStateBool("ShownCombatFlourishTutorial", true)
             end
             quest:SetStateBool("WhisperInCutscene", false)
-            quest:EndCutscene()
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(movie)
+            resources:DestroyActorMap(actorMap2)
+            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource2)
             addQuestInfoCounter = f_stk_14_2
         end
         if hero:MsgIsKilledBy("") then
@@ -162,9 +191,20 @@ function ProcessGameRulesEvil(quest)
         if quest:GetStateBool("MissionSucceeded") then
             if quest:IsActiveThreadTerminating() then return end
             quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.ExperienceForDefeatingWhisperInOrchardFarm))
-            quest:StartCutscene({HERO = hero, WHISPER = quest:GetThingWithScriptName("OrchardFarmWhisper")}, {}, false)
-            quest:RunCutscene("CS_ORCHARD_EVIL_OUTRO", true, false)
-            quest:EndCutscene()
+            local orchardFarmWhisper = quest:GetThingWithScriptName("OrchardFarmWhisper")
+            resource = resources:NewResource()
+            resource2 = resources:NewResource()
+            resources:TryAcquire(resource, hero, 4)
+            resources:TryAcquire(resource2, orchardFarmWhisper, 4)
+            local actorMap = resources:NewActorMap()
+            resources:SetActor(actorMap, "HERO", resource)
+            resources:SetActor(actorMap, "WHISPER", resource2)
+            movie = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            resources:RunMacro("CS_ORCHARD_EVIL_OUTRO", actorMap, false, true)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(movie)
+            resources:DestroyActorMap(actorMap)
             quest:AddLogbookStoryEntry(85)
             quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.OFEvilCompletionMorality))
             quest:SetMasterGameState("OrchardFarmRaidLastCompleted", 1)
@@ -177,7 +217,8 @@ function ProcessGameRulesEvil(quest)
             repeat
                 quest:NewScriptFrame()
             until quest:IsActiveThreadTerminating()
-            quest:EndCutscene()
+            resources:ReleaseResource(resource2)
+            resources:ReleaseResource(resource)
             return
         end
         if quest:GetStateInt("MissionFailed") ~= 0 then
@@ -195,10 +236,15 @@ end
 -- Q_OrchardFarmRaid.ProcessGameRulesGood (retail 0x00dd0f60)
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
-    local ePriority, thing
+    local resources = quest:RetailResources()
+    local ePriority, thing, resource, actorMap2, resource2, resource3
     local function ReleaseEverything()
         local thing = 0
-        quest:EndCutscene()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(resource2)
+        resources:DestroyActorMap(actorMap2)
+        resources:ReleaseResource(resource)
+        resources:ReleaseResource(resource3)
     end
     while not quest:GetStateBool("DoneIntroduction") do
         if not quest:NewScriptFrame() then return end
@@ -228,27 +274,49 @@ function ProcessGameRulesGood(quest)
             quest:MiniMapAddMarker(rivalHeroWhisperOrchardFarm, "HUD_ORB_RED_SMALL")
             local mkOfwbWhisper = quest:GetThingWithScriptName("MK_OFWB_WHISPER")
             local mkOfwfWhisper = quest:GetThingWithScriptName("MK_OFWF_WHISPER")
-            quest:StartCutscene({HERO = hero, WHISPER = rivalHeroWhisperOrchardFarm}, {}, true)
+            resource3 = resources:NewResource()
+            resource = resources:NewResource()
+            resources:TryAcquire(resource, rivalHeroWhisperOrchardFarm, 4)
+            resources:TryAcquire(resource3, hero, 4)
+            actorMap2 = resources:NewActorMap()
+            resources:SetActor(actorMap2, "HERO", resource3)
+            resources:SetActor(actorMap2, "WHISPER", resource)
+            resource2 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            quest:FixMovieSequenceCamera(true)
             if (quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2) <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                quest:RunCutscene("CS_ORCHARD_GOOD_WHISPER_BACK", true, false)
+                resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_BACK", actorMap2, false, true)
             else
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                quest:RunCutscene("CS_ORCHARD_GOOD_WHISPER_FRONT", true, false)
+                resources:RunMacro("CS_ORCHARD_GOOD_WHISPER_FRONT", actorMap2, false, true)
             end
             quest:FixMovieSequenceCamera(false)
             if not quest:GetStateBool("ShownCombatFlourishTutorial") then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 if quest:DisplayTutorial(TUTORIAL_CATEGORY_FLOURISHING_MOVE) then
-                    if quest:IsActiveThreadTerminating() then quest:EndCutscene(); return end
-                    while not quest:MsgIsTutorialClickedPast() do
-                        if not quest:NewScriptFrame() then ReleaseEverything(); return end
+                    if not quest:IsActiveThreadTerminating() then
+                        while not quest:MsgIsTutorialClickedPast() do
+                            if not quest:NewScriptFrame() then ReleaseEverything(); return end
+                        end
+                        if not quest:IsActiveThreadTerminating() then goto LAB_00dd157a end
                     end
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(resource2)
+                    resources:DestroyActorMap(actorMap2)
+                    resources:ReleaseResource(resource)
+                    resources:ReleaseResource(resource3)
+                    return
                 end
+                ::LAB_00dd157a::
                 quest:SetStateBool("ShownCombatFlourishTutorial", true)
             end
             quest:SetStateBool("WhisperInCutscene", false)
-            quest:EndCutscene()
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(resource2)
+            resources:DestroyActorMap(actorMap2)
+            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource3)
         end
         if quest:GetStateInt("CrateCount") == 0 and quest:IsActiveThreadTerminating() then return end
         if hero:MsgIsKilledBy("") then
@@ -258,12 +326,23 @@ function ProcessGameRulesGood(quest)
         if quest:GetStateBool("MissionSucceeded") then
             if quest:IsActiveThreadTerminating() then return end
             quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.ExperienceForDefeatingWhisperInOrchardFarm))
-            quest:StartCutscene({HERO = hero, WHISPER = quest:GetThingWithScriptName("OrchardFarmWhisper")}, {}, false)
-            quest:RunCutscene("CS_ORCHARD_GOOD_OUTRO", true, false)
-            quest:EndCutscene()
+            local orchardFarmWhisper = quest:GetThingWithScriptName("OrchardFarmWhisper")
+            resource3 = resources:NewResource()
+            resource2 = resources:NewResource()
+            resources:TryAcquire(resource3, hero, 4)
+            resources:TryAcquire(resource2, orchardFarmWhisper, 4)
+            local actorMap = resources:NewActorMap()
+            resources:SetActor(actorMap, "HERO", resource3)
+            resources:SetActor(actorMap, "WHISPER", resource2)
+            resource = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            resources:RunMacro("CS_ORCHARD_GOOD_OUTRO", actorMap, false, true)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(resource)
+            resources:DestroyActorMap(actorMap)
             quest:AddLogbookStoryEntry(80)
             quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.OFGoodCompletionMorality))
-            if quest:GetMasterGameState("OFBRCratesStolen") == 0 then
+            if not quest:GetMasterGameState("OFBRCratesStolen") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00dd1a93 end
                 quest:SetMasterGameState("OFBR_NoCratesWereStolen", true)
                 if not quest:NewScriptFrame() then goto LAB_00dd1a93 end
@@ -279,7 +358,8 @@ function ProcessGameRulesGood(quest)
                 quest:NewScriptFrame()
             until quest:IsActiveThreadTerminating()
             ::LAB_00dd1a93::
-            quest:EndCutscene()
+            resources:ReleaseResource(resource2)
+            resources:ReleaseResource(resource3)
             return
         end
         if quest:GetStateInt("MissionFailed") ~= 0 then
@@ -331,7 +411,6 @@ function DoCutsceneIfRequired(quest)
                 resources:SetActor(actorMap, "BAN2", resource5)
                 resources:SetActor(actorMap, "GUARD", resource)
                 local movie = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 resources:RunMacro("CS_ORCHARD_EVIL_INTRO", actorMap, false, true)
@@ -352,7 +431,6 @@ function DoCutsceneIfRequired(quest)
                 local actorMap2 = resources:NewActorMap()
                 resources:SetActor(actorMap2[0 + 1], "HERO", resource7)
                 local movie2 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 resources:RunMacro("CS_ORCHARD_GOOD_INTRO", actorMap2[0 + 1], false, true)
@@ -388,9 +466,20 @@ end
 
 -- Q_OrchardFarmRaid.WatchForExternalScriptDeactivation (retail 0x00dccf30)
 function WatchForExternalScriptDeactivation(quest)
+    local predicateResult
     if quest:IsActiveThreadTerminating() then return end
     repeat
-        if not quest:IsQuestActive("Q_OrchardFarmRaidGood") and not quest:IsQuestActive("Q_OrchardFarmRaidEvil") then
+        if quest:IsQuestActive("Q_OrchardFarmRaidGood") then
+            goto LAB_00dccfa3
+        else
+            predicateResult = true
+            if quest:IsQuestActive("Q_OrchardFarmRaidEvil") then goto LAB_00dccfa3 end
+        end
+        goto FLOW_past_lab_00dccfa3
+        ::LAB_00dccfa3::
+        predicateResult = false
+        ::FLOW_past_lab_00dccfa3::
+        if predicateResult then
             quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM", "Q_OrchardFarmRaidGood", false, false)
             quest:AddQuestCard("OBJECT_QUEST_CARD_PROTECT_FARM_EVIL", "Q_OrchardFarmRaidEvil", false, false)
             quest:DeactivateQuestLater("Q_OrchardFarmRaid", 0)
@@ -418,71 +507,71 @@ end
 function DoMultiplierCutscene(quest)
     local heroTeam = quest:GetStateInt("HeroTeam")
     local hero = quest:GetHero()
+    local resources = quest:RetailResources()
     local string
-    quest:StartCutscene({HERO = hero}, {}, true)
+    local resource = resources:NewResource()
+    resources:TryAcquire(resource, hero, 4)
+    local actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    local movie = resources:StartMovie("")
+    quest:PauseAllNonScriptedEntities(true)
+    quest:FixMovieSequenceCamera(true)
     if quest:IsRegionLoaded("GreatwoodLake") and heroTeam == 0 then
-        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00dd1d98 end
-        quest:RunCutscene("CS_ORCHARD_GOOD_WHISPERINTRO_GWLL", true, false)
-        quest:FixMovieSequenceCamera(false)
-        if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-        if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
-            if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70_c1 end
-            while not quest:MsgIsTutorialClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00dd1e70_c1 end
-            end
-        end
-        quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-        ::LAB_00dd1e70_c1::
-        quest:EndCutscene()
-        goto FLOW_after_lab_00dd1d98
-        quest:EndCutscene()
+        if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWLL"; goto LAB_00dd1d98 end
+        goto LAB_00dd1d15
     else
-        if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-        if quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("MK_OFI_GWL"), hero, 20.0) then
-            if heroTeam ~= 1 then
-                if not quest:IsActiveThreadTerminating() then
-                    string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"
-                else
-                    quest:EndCutscene()
+        if not quest:IsActiveThreadTerminating() then
+            if quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("MK_OFI_GWL"), hero, 20.0) then
+                if quest:IsActiveThreadTerminating() then goto LAB_00dd1d15 end
+                if heroTeam ~= 1 then
+                    if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"; goto LAB_00dd1d98 end
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
                     goto LAB_00dd1e95
                 end
-            else
-                string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
-            end
-            quest:RunCutscene(string, true, false)
-            quest:FixMovieSequenceCamera(false)
-            if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if not quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_after_lab_00dd1d98_109 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            while not quest:MsgIsTutorialClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
-            end
-            quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-        else
-            if heroTeam == 1 then
-                string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
-            else
-                string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
-            end
-            quest:RunCutscene(string, true, false)
-            quest:FixMovieSequenceCamera(false)
-            if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-            if quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then
-                if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
-                while not quest:MsgIsTutorialClickedPast() do
-                    if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
+                if quest:IsActiveThreadTerminating() then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    goto LAB_00dd1e95
                 end
+                string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
+                goto LAB_00dd1d98
+            elseif not quest:IsActiveThreadTerminating() then
+                if heroTeam == 1 then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_EVIL_WHISPERINTRO_LOP"
+                else
+                    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+                    string = "CS_ORCHARD_GOOD_WHISPERINTRO_LOP"
+                end
+                goto LAB_00dd1d98
             end
-            quest:SetStateBool("ShownCombatMultiplierTutorial", true)
-            goto FLOW_after_lab_00dd1d98_109
         end
-        ::FLOW_after_lab_00dd1d98_109::
-        ::LAB_00dd1e70::
-        quest:EndCutscene()
+        goto FLOW_hoist_lab_00dd1d98_2
     end
-    ::FLOW_after_lab_00dd1d98::
+    goto FLOW_past_lab_00dd1d15
+    ::LAB_00dd1d15::
+    quest:PauseAllNonScriptedEntities(false)
+    ::FLOW_past_lab_00dd1d15::
+    goto FLOW_past_lab_00dd1d98
+    ::LAB_00dd1d98::
+    resources:RunMacro(string, actorMap, false, true)
+    quest:FixMovieSequenceCamera(false)
+    if quest:GetStateBool("ShownCombatMultiplierTutorial") or quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+    if not quest:DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER) then quest:SetStateBool("ShownCombatMultiplierTutorial", true); goto FLOW_hoist_lab_00dd1d98_2 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00dd1e70 end
+    while not quest:MsgIsTutorialClickedPast() do
+        if not quest:NewScriptFrame() then goto LAB_00dd1e70 end
+    end
+    quest:SetStateBool("ShownCombatMultiplierTutorial", true)
+    ::FLOW_hoist_lab_00dd1d98_2::
+    ::LAB_00dd1e70::
+    quest:PauseAllNonScriptedEntities(false)
+    ::FLOW_past_lab_00dd1d98::
+    resources:DestroyMovie(movie)
     ::LAB_00dd1e95::
-    quest:EndCutscene()
+    resources:DestroyActorMap(actorMap)
+    resources:ReleaseResource(resource)
 end
 
 -- Q_OrchardFarmRaid.ReplaceQuestCards (retail 0x00dd0eb0)

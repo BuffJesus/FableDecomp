@@ -1,0 +1,52 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	CSpawnedFunc<NScript::CGameflowScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::Main	9239504	41917
+0	7			0	0	2	1	0	0	9281220
+0	7			0	0	2	1	0	0	9281200
+0	7			0	0	2	1	0	0	9280996
+0	7			0	0	2	1	0	0	9280964
+0	7			0	0	2	1	0	0	9280812
+0	7			0	0	2	1	0	0	9280792
+0	7			0	0	2	1	0	0	9280588
+0	7			0	0	2	1	0	0	9280568
+0	7	this		0	4	4	5	18	0	0
+0	7	script_batch2	CArray<CCharString>	0	16	1	3	30006	-156	0
+0	7	script_batch	CArray<CCharString>	0	16	1	3	30006	-2156	0
+0	7	FrontDoors	CScriptThing	0	12	1	3	30006	-128	0
+0	7	gave_message		10	1	1	3	30006	-2161	0
+0	7	gave_message		10	1	1	3	30006	-2161	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-172	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-2160	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-116	0
+FUNCTION	CSpawnedFunc<NScript::CGameflowScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::`scalar deleting destructor'	9281760	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::~CGameflowScript	9281424	181
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::DeclareGossipCategories	9234288	2964
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::CheckBarrowFieldsGuards	9237792	1121
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::Init	9237296	16
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::RegisterMain	9239088	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGameflowScript::CoreQuestReminder	9237312	472
+0	7	this		0	4	4	5	18	0	0
+0	7	reminder_timer	CTimer	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CGameflowScript::OnPersist	9239392	108
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CSpawnedFunc<NScript::CGameflowScript>::CSpawnedFunc<NScript::CGameflowScript>	9238928	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CGameflowScript::Alloc	9281616	138
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+MATCHES	13

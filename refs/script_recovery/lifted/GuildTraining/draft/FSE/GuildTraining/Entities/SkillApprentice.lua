@@ -23,9 +23,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_170)
     end
     xStack_170 = resources:NewResource()
-    bVar4 = false
-    if bVar4 ~= 0 then
-    end
+    resources:PrepareResource(xStack_170)
     bVar4 = resources:TryAcquire(xStack_170, me, 4)
     while not bVar4 do
         alive = quest:NewScriptFrame(me)
@@ -147,7 +145,7 @@ function Main(quest, me)
                     if not bVar4 then
                         pCVar9 = quest:GetHero()
                         quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_EARLY_COMMENT", me, pCVar9, false)
-                        goto LAB_00d4cbac
+                        goto LAB_00d4cba7
                     end
                 else
                     if iVar6 == 7 then
@@ -156,7 +154,7 @@ function Main(quest, me)
                         if not bVar4 then
                             pCVar9 = quest:GetHero()
                             quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_APLUS_COMMENT", me, pCVar9, false)
-                            goto LAB_00d4cbac
+                            goto LAB_00d4cba7
                         end
                     else
                         alive = not quest:IsActiveThreadTerminating()
@@ -164,11 +162,14 @@ function Main(quest, me)
                         if not bVar4 then
                             pCVar9 = quest:GetHero()
                             quest:AddLineToConversation(iVar7, "TEXT_QST_028_APPRENTICE_SKILL_NOT_APLUS_COMMENT", me, pCVar9, false)
-                            -- LAB_00d4cba7: (native jump target)
-                            goto LAB_00d4cbac
+                            goto LAB_00d4cba7
                         end
                     end
                 end
+                goto FLOW_past_lab_00d4cba7
+                ::LAB_00d4cba7::
+                goto LAB_00d4cbac
+                ::FLOW_past_lab_00d4cba7::
             end
             __cleanup_LAB_00d4de46(); return
         end
@@ -176,6 +177,7 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then __cleanup_LAB_00d4dd41(); return end
         if not (r2 ~= nil and not r2:IsNull()) then
+            p0 = {x = 0, y = 0, z = 0}
         else
             p0 = r2:GetPos()
         end
@@ -195,12 +197,11 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d4de46(); return end
-                if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                if quest:GetMasterGameState("HeroTakingGuildTest") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
                         xStack_74 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_30 = resources:ScriptThing(xStack_170)
                         pCVar8 = x_stk_30
@@ -246,7 +247,6 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d4de46(); return end
                 xStack_128 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 pCVar8 = 0x1
                 quest:PauseAllNonScriptedEntities(true)
                 x_stk_48 = resources:ScriptThing(xStack_170)
@@ -461,7 +461,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d4de3d end
-                    if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                    if quest:GetMasterGameState("GuildWarningOccuring") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d4de3d end
@@ -518,12 +518,15 @@ function Main(quest, me)
                     quest:RemoveQuestInfoElement(xStack_13c)
                     quest:RemoveQuestInfoElement(x_stk_12c)
                     if c_stk_14d ~= 0 then
-                        -- LAB_00d4dc16: (native jump target)
-                        quest:SetMasterGameState("HeroTakingGuildTest", false)
-                        quest:SetPlayerUsingRangedDummies(false)
-                        quest:DeregisterTimer(xStack_160)
-                        goto LAB_00d4dc36
+                        goto LAB_00d4dc16
                     end
+                    goto FLOW_past_lab_00d4dc16
+                    ::LAB_00d4dc16::
+                    quest:SetMasterGameState("HeroTakingGuildTest", false)
+                    quest:SetPlayerUsingRangedDummies(false)
+                    quest:DeregisterTimer(xStack_160)
+                    goto LAB_00d4dc36
+                    ::FLOW_past_lab_00d4dc16::
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d4de3d end
@@ -542,9 +545,7 @@ function Main(quest, me)
                         iVar6 = iVar7 + 1
                     until not (iVar7 + 1 < 7)
                     xStack_118 = resources:NewResource()
-                    bVar4 = false
-                    if bVar4 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_118)
                     iVar14 = 4
                     pCVar16 = xStack_118
                     pCVar8 = quest:GetHero()
@@ -566,164 +567,91 @@ function Main(quest, me)
                         resources:SetActor(xStack_138, "ME", xStack_170)
                         resources:SetActor(xStack_138, "HERO", xStack_118)
                         xStack_84 = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_END", xStack_138, false, true)
                         if c_stk_13d == 0 then
-                            -- LAB_00d4d979: (native jump target)
-                            resources:SetActor(xStack_138, "ME", xStack_170)
-                            native_arg_switch_2 = iVar7
-                            repeat
-                                if native_arg_switch_2 == 0 then
-                                    if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar4 = not alive
-                                        if bVar4 then goto LAB_00d4de05 end
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", xStack_138, false, true)
-                                        break
-                                    end
+                            goto LAB_00d4d979
+                        end
+                        goto FLOW_past_lab_00d4d979
+                        ::LAB_00d4d979::
+                        resources:SetActor(xStack_138, "ME", xStack_170)
+                        native_arg_switch_2 = iVar7
+                        repeat
+                            if native_arg_switch_2 == 0 then
+                                if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive
-                                    if not bVar4 then
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
-                                        quest:ClearThingHasInformation(me)
-                                        goto FLOW_native_label_1
-                                    end
-                                    goto LAB_00d4de05
+                                    if bVar4 then goto LAB_00d4de05 end
+                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", xStack_138, false, true)
+                                    break
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar4 = not alive
+                                if not bVar4 then
+                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
+                                    quest:ClearThingHasInformation(me)
+                                    goto FLOW_native_label_1
+                                end
+                                goto LAB_00d4de05
+                            else
+                                if native_arg_switch_2 == 1 then
+                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_A", xStack_138, false, true)
+                                    break
                                 else
-                                    if native_arg_switch_2 == 1 then
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_A", xStack_138, false, true)
+                                    if native_arg_switch_2 == 2 then
+                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", xStack_138, false, true)
                                         break
                                     else
-                                        if native_arg_switch_2 == 2 then
-                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", xStack_138, false, true)
+                                        if native_arg_switch_2 == 3 then
+                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", xStack_138, false, true)
                                             break
                                         else
-                                            if native_arg_switch_2 == 3 then
-                                                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", xStack_138, false, true)
+                                            if native_arg_switch_2 == 4 then
+                                                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", xStack_138, false, true)
                                                 break
                                             else
-                                                if native_arg_switch_2 == 4 then
-                                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", xStack_138, false, true)
+                                                if native_arg_switch_2 == 5 then
+                                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", xStack_138, false, true)
                                                     break
                                                 else
-                                                    if native_arg_switch_2 == 5 then
-                                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", xStack_138, false, true)
+                                                    if native_arg_switch_2 == 6 then
+                                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
                                                         break
                                                     else
-                                                        if native_arg_switch_2 == 6 then
-                                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
-                                                            break
-                                                        else
-                                                            goto FLOW_native_label_1
-                                                        end
+                                                        goto FLOW_native_label_1
                                                     end
                                                 end
                                             end
                                         end
                                     end
                                 end
-                            until not (false)
-                            ::FLOW_native_label_1::
-                            if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar4 = not alive
-                                if bVar4 then
-                                    -- LAB_00d4de13: (native jump target)
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    goto LAB_00d4de1f
-                                end
-                                quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
                             end
-                            quest:FixMovieSequenceCamera(false)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_84)
-                            resources:DestroyActorMap(xStack_138)
-                            resources:ReleaseResource(xStack_118)
-                            quest:SetMasterGameState("HeroTakingGuildTest", false)
-                            quest:SetPlayerUsingRangedDummies(false)
-                            quest:DeregisterTimer(xStack_160)
-                            goto LAB_00d4dc36
+                        until not (false)
+                        ::FLOW_native_label_1::
+                        if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar4 = not alive
+                            if bVar4 then
+                                -- LAB_00d4de13: (native jump target)
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d4de1f
+                            end
+                            quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
                         end
+                        quest:FixMovieSequenceCamera(false)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_84)
+                        resources:DestroyActorMap(xStack_138)
+                        resources:ReleaseResource(xStack_118)
+                        goto LAB_00d4dc16
+                        ::FLOW_past_lab_00d4d979::
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if not bVar4 then
                             resources:SetActor(xStack_138, "ME", xStack_170)
                             resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_HIGH", xStack_138, false, true)
-                            resources:SetActor(xStack_138, "ME", xStack_170)
-                            native_arg_switch_2 = iVar7
-                            repeat
-                                if native_arg_switch_2 == 0 then
-                                    if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar4 = not alive
-                                        if bVar4 then goto LAB_00d4de05 end
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", xStack_138, false, true)
-                                        break
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar4 = not alive
-                                    if not bVar4 then
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", xStack_138, false, true)
-                                        quest:ClearThingHasInformation(me)
-                                        goto FLOW_native_label_1_c17
-                                    end
-                                    goto LAB_00d4de05
-                                else
-                                    if native_arg_switch_2 == 1 then
-                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_A", xStack_138, false, true)
-                                        break
-                                    else
-                                        if native_arg_switch_2 == 2 then
-                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", xStack_138, false, true)
-                                            break
-                                        else
-                                            if native_arg_switch_2 == 3 then
-                                                resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", xStack_138, false, true)
-                                                break
-                                            else
-                                                if native_arg_switch_2 == 4 then
-                                                    resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", xStack_138, false, true)
-                                                    break
-                                                else
-                                                    if native_arg_switch_2 == 5 then
-                                                        resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", xStack_138, false, true)
-                                                        break
-                                                    else
-                                                        if native_arg_switch_2 == 6 then
-                                                            resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", xStack_138, false, true)
-                                                            break
-                                                        else
-                                                            goto FLOW_native_label_1_c17
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            until not (false)
-                            ::FLOW_native_label_1_c17::
-                            if quest:GetMasterGameState("GlobalSkillGrade") < 7 - iVar7 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar4 = not alive
-                                if bVar4 then
-                                    -- LAB_00d4de13_c17: (native jump target)
-                                    quest:PauseAllNonScriptedEntities(false)
-                                    goto LAB_00d4de1f
-                                end
-                                quest:SetMasterGameState("GlobalSkillGrade", 7 - iVar7)
-                            end
-                            quest:FixMovieSequenceCamera(false)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_84)
-                            resources:DestroyActorMap(xStack_138)
-                            resources:ReleaseResource(xStack_118)
-                            quest:SetMasterGameState("HeroTakingGuildTest", false)
-                            quest:SetPlayerUsingRangedDummies(false)
-                            quest:DeregisterTimer(xStack_160)
-                            goto LAB_00d4dc36
+                            goto LAB_00d4d979
                         end
                         ::LAB_00d4de05::
                         quest:PauseAllNonScriptedEntities(false)
@@ -742,7 +670,6 @@ function Main(quest, me)
                 if not bVar4 then
                     me:ClearCommands()
                     xStack_64 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_54 = resources:ScriptThing(xStack_170)
                     pCVar8 = x_stk_54
@@ -796,7 +723,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

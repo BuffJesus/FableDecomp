@@ -33,34 +33,29 @@ function Main(quest, me)
                 if bVar5 then
                     return
                 end
-                -- TODO(native): MsgIsHitBy is not a ForgeFSE binding
                 bVar5 = me:MsgIsHitBy("")
                 if bVar5 then
                     bVar3 = true
                     bVar5 = me:MsgIsHitByHero()
-                    if bVar5 then
-                        bVar5 = false
-                        goto FLOW_after_lab_00df983a
-                    end
+                    if bVar5 then goto LAB_00df983a end
                     bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar6 then
                         bVar3 = true
                         bVar6 = true
                         bVar2 = true
                         bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
-                        if not bVar5 then
-                            bVar5 = false
-                            goto FLOW_after_lab_00df983a
-                        end
+                        if not bVar5 then goto LAB_00df983a end
                     end
                     bVar3 = true
                     bVar6 = true
                     bVar5 = true
                 else
-                    -- LAB_00df983a: (native jump target)
-                    bVar5 = false
+                    goto LAB_00df983a
                 end
-                ::FLOW_after_lab_00df983a::
+                goto FLOW_past_lab_00df983a
+                ::LAB_00df983a::
+                bVar5 = false
+                ::FLOW_past_lab_00df983a::
                 if bVar2 then
                     bVar2 = false
                 end
@@ -80,23 +75,22 @@ function Main(quest, me)
                 else
                     bVar5 = me:MsgIsHitByHero()
                     if bVar5 then
-                        -- LAB_00df992a: (native jump target)
-                        bVar5 = true
+                        goto LAB_00df992a
                     else
                         bVar7 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar7 then
                             bVar7 = true
                             bVar4 = true
                             bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
-                            if not bVar5 then
-                                bVar5 = true
-                                goto FLOW_after_lab_00df992a
-                            end
+                            if not bVar5 then goto LAB_00df992a end
                         end
                         bVar7 = true
                         bVar5 = false
                     end
-                    ::FLOW_after_lab_00df992a::
+                    goto FLOW_past_lab_00df992a
+                    ::LAB_00df992a::
+                    bVar5 = true
+                    ::FLOW_past_lab_00df992a::
                     if bVar4 then
                         bVar4 = false
                     end
@@ -140,7 +134,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

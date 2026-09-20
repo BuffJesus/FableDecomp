@@ -1,0 +1,36 @@
+{
+  "schema": "gameflow-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "7fc96d9607170c22f521f429ab4fc9c6c95d1ceba3a6d843a214a2e99a923dd2",
+  "exportedFunctions": 11,
+  "quests": [
+    {
+      "script": "Gameflow",
+      "allocator": "0x00CEF950",
+      "vtable": "0x012C3FA4",
+      "entities": [],
+      "vtableWriters": [
+        "0x00CE6CB0",
+        "0x00CEF950"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00CE7670",
+      "store": "0x00CE76BD",
+      "body": "0x00CEF3B0",
+      "name": "CoreQuestReminder",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00CE7670",
+      "store": "0x00CE7740",
+      "body": "0x00CEF550",
+      "name": "CheckBarrowFieldsGuards",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

@@ -14,6 +14,14 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214, xStack_21c, xStack_21c_b3, xStack_220, xStack_2c
     local alive = true
+    local function __cleanup_LAB_00d5dab8()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_1c)
+        resources:DestroyActorMap(xStack_170)
+        resources:ReleaseResource(xStack_180)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
     local function __cleanup_LAB_00d5dac4()
         resources:DestroyMovie(xStack_1c)
         resources:DestroyActorMap(xStack_170)
@@ -29,8 +37,70 @@ function Main(quest, me)
         quest:DeregisterTimer(xStack_220)
         resources:ReleaseResource(xStack_210)
     end
+    local function __cleanup_LAB_00d5db13()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_2c)
+        resources:DestroyActorMap(xStack_164)
+        resources:ReleaseResource(xStack_190)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db1f()
+        resources:DestroyMovie(xStack_2c)
+        resources:DestroyActorMap(xStack_164)
+        resources:ReleaseResource(xStack_190)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
     local function __cleanup_LAB_00d5db37()
         resources:ReleaseResource(xStack_190)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db45()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_2c)
+        resources:DestroyActorMap(xStack_164)
+        resources:ReleaseResource(xStack_190)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db53()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_1c0)
+        resources:DestroyActorMap(xStack_1ac)
+        resources:ReleaseResource(xStack_1a0)
+        quest:DeregisterTimer(xStack_214)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db62()
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(xStack_1c0)
+        resources:DestroyActorMap(xStack_1ac)
+        resources:ReleaseResource(xStack_1a0)
+        quest:DeregisterTimer(xStack_214)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db6f()
+        resources:DestroyMovie(xStack_1c0)
+        resources:DestroyActorMap(xStack_1ac)
+        resources:ReleaseResource(xStack_1a0)
+        quest:DeregisterTimer(xStack_214)
+        quest:DeregisterTimer(xStack_21c)
+        quest:DeregisterTimer(xStack_220)
+        resources:ReleaseResource(xStack_210)
+    end
+    local function __cleanup_LAB_00d5db84()
+        resources:ReleaseResource(xStack_1a0)
+        quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
         quest:DeregisterTimer(xStack_220)
         resources:ReleaseResource(xStack_210)
@@ -42,9 +112,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_210)
     end
     xStack_210 = resources:NewResource()
-    bVar4 = false
-    if bVar4 ~= 0 then
-    end
+    resources:PrepareResource(xStack_210)
     bVar4 = resources:TryAcquire(xStack_210, me, 4)
     while not bVar4 do
         alive = quest:NewScriptFrame(me)
@@ -87,7 +155,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then goto LAB_00d5da96 end
-                if quest:GetMasterGameState("HeroTakingGuildTest") == 0 then
+                if not quest:GetMasterGameState("HeroTakingGuildTest") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d5da96 end
@@ -98,7 +166,6 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d5da96 end
                     xStack_1c0 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     me:ClearCommands()
                     pCVar7 = resources:ScriptThing(xStack_210)
@@ -169,7 +236,6 @@ function Main(quest, me)
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar4)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, pCVar6, false)
-                    -- LAB_00d5b380: (native jump target)
                 else
                     if 0 == 1 then
                         bVar4 = false
@@ -177,10 +243,10 @@ function Main(quest, me)
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar4)
                         pCVar6 = quest:GetHero()
                         quest:AddLineToConversation(iVar16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_SECOND", me, pCVar6, false)
-                        goto FLOW_after_lab_00d5b380
+                        goto LAB_00d5b380
                     end
                 end
-                ::FLOW_after_lab_00d5b380::
+                ::LAB_00d5b380::
                 -- TODO(native): xStack_1ec = 1 - xStack_1ec;
             end
             iVar15 = quest:GetStateInt("TutorialState")
@@ -197,7 +263,7 @@ function Main(quest, me)
         quest:SetMasterGameState("SkillRepeating", true)
         quest:SetMasterGameState("HeroTakingGuildTest", true)
         cVar5 = quest:GetMasterGameState("SkillRepeating")
-        while cVar5 ~= 0 do
+        while cVar5 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
@@ -205,9 +271,7 @@ function Main(quest, me)
             quest:SetStateInt("TutorialState", 3)
             quest:SetMasterGameState("SkillRepeatKnown", false)
             xStack_180 = resources:NewResource()
-            bVar4 = false
-            if bVar4 ~= 0 then
-            end
+            resources:PrepareResource(xStack_180)
             iVar16 = 4
             pCVar18 = xStack_180
             pCVar7 = quest:GetHero()
@@ -240,7 +304,6 @@ function Main(quest, me)
             resources:SetActor(xStack_170, "TEACHER", xStack_210)
             quest:SetStateInt("TutorialState", 2)
             xStack_1c = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_SKILL_START", xStack_170, false, true)
@@ -266,7 +329,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_8c);
+                        quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_RANGED")
                         goto LAB_00d5b7c0
                     end
                 end
@@ -276,9 +339,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                -- LAB_00d5dab8: (native jump target)
-                quest:PauseAllNonScriptedEntities(false)
-                __cleanup_LAB_00d5dac4(); return
+                __cleanup_LAB_00d5dab8()
+                return
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW")
             bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -291,7 +353,8 @@ function Main(quest, me)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
-            if bVar4 then return end  -- TODO(native): goto LAB_00d5dab8
+            if bVar4 then __cleanup_LAB_00d5dab8(); return end
+            quest:AddLogbookTutorialEntry("TEXT_QST_LOG_COMBAT_RANGED")
             ::LAB_00d5b7c0::
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_1c)
@@ -351,14 +414,12 @@ function Main(quest, me)
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                 __native_condition_4 = bVar4
                 if __native_condition_4 then
-                    -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                    quest:IsPlayerHoldingLockTargetButton()
+                    bVar4 = quest:IsPlayerHoldingLockTargetButton()
                     __native_condition_4 = bVar4
                 end
                 __native_condition_3 = __native_condition_4
                 if __native_condition_3 then
-                    -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                    quest:IsPlayerHoldingFireRangedWeaponButton()
+                    bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                     __native_condition_3 = bVar4
                 end
                 if __native_condition_3 then
@@ -391,11 +452,9 @@ function Main(quest, me)
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                         quest:UpdateQuestInfoTick(xStack_1e4, bVar4)
-                        -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                        quest:IsPlayerHoldingLockTargetButton()
+                        bVar4 = quest:IsPlayerHoldingLockTargetButton()
                         quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
-                        -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                        quest:IsPlayerHoldingFireRangedWeaponButton()
+                        bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                         quest:UpdateQuestInfoTick(xStack_1e8, bVar4)
                         iVar15 = quest:GetTimer(xStack_21c)
                         if iVar15 < 1 then
@@ -418,11 +477,9 @@ function Main(quest, me)
                                 end
                                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                                 if bVar4 then
-                                    -- TODO(native): IsPlayerHoldingLockTargetButton is not a ForgeFSE binding
-                                    quest:IsPlayerHoldingLockTargetButton()
+                                    bVar4 = quest:IsPlayerHoldingLockTargetButton()
                                     if bVar4 then
-                                        -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                                        quest:IsPlayerHoldingFireRangedWeaponButton()
+                                        bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                                         if bVar4 then goto LAB_00d5bf6c end
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
@@ -631,9 +688,7 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end
             xStack_190 = resources:NewResource()
-            bVar4 = false
-            if bVar4 ~= 0 then
-            end
+            resources:PrepareResource(xStack_190)
             iVar16 = 4
             pCVar18 = xStack_190
             pCVar7 = quest:GetHero()
@@ -658,7 +713,6 @@ function Main(quest, me)
             resources:SetActor(xStack_164, "HERO", xStack_190)
             resources:SetActor(xStack_164, "TEACHER", xStack_210)
             xStack_2c = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_SKILL_MOVE", xStack_164, false, true)
@@ -680,30 +734,25 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): goto LAB_00d5db1f
+                            __cleanup_LAB_00d5db1f(); return
                         end
                         bVar4 = quest:MsgIsGameInfoClickedPast()
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
-                        -- TODO(native): CSubtitleRenderer::SetText__atcbea81((CSubtitleRenderer *)xStack_98);
+                        quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON")
                         goto LAB_00d5c4eb
                     end
                 end
-                -- LAB_00d5db45: (native jump target)
-                quest:PauseAllNonScriptedEntities(false)
-                -- LAB_00d5db1f: (native jump target)
-                resources:DestroyMovie(xStack_2c)
-                resources:DestroyActorMap(xStack_164)
-                __cleanup_LAB_00d5db37(); return
+                __cleanup_LAB_00d5db45()
+                return
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                -- LAB_00d5db13: (native jump target)
-                quest:PauseAllNonScriptedEntities(false)
-                -- TODO(native): goto LAB_00d5db1f
+                __cleanup_LAB_00d5db13()
+                return
             end
             quest:DisplayGameInfo("TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_SNIPE")
             bVar4 = quest:MsgIsGameInfoClickedPast()
@@ -711,12 +760,13 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00d5db45
+                if bVar4 then __cleanup_LAB_00d5db45(); return end
                 bVar4 = quest:MsgIsGameInfoClickedPast()
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
-            if bVar4 then return end  -- TODO(native): goto LAB_00d5db13
+            if bVar4 then __cleanup_LAB_00d5db13(); return end
+            quest:AddLogbookTutorialEntry("TEXT_QST_LOG_COMBAT_RANGED_FIRSTPERSON")
             ::LAB_00d5c4eb::
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_2c)
@@ -766,23 +816,19 @@ function Main(quest, me)
                 iVar15 = quest:GetTimer(xStack_21c)
                 if iVar15 < 1 then
                     bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    if bVar4 then
-                        bVar4 = false
-                        goto FLOW_after_lab_00d5c757
-                    end
+                    if bVar4 then goto LAB_00d5c757 end
                     fVar20 = 6.0
                     pCVar7 = quest:GetHero()
                     bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar7, r2, fVar20)
-                    if not bVar4 then
-                        bVar4 = false
-                        goto FLOW_after_lab_00d5c757
-                    end
+                    if not bVar4 then goto LAB_00d5c757 end
                     bVar4 = true
                 else
-                    -- LAB_00d5c757: (native jump target)
-                    bVar4 = false
+                    goto LAB_00d5c757
                 end
-                ::FLOW_after_lab_00d5c757::
+                goto FLOW_past_lab_00d5c757
+                ::LAB_00d5c757::
+                bVar4 = false
+                ::FLOW_past_lab_00d5c757::
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -870,14 +916,12 @@ function Main(quest, me)
                 bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                 __native_condition_8 = bVar4
                 if __native_condition_8 then
-                    -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
-                    quest:IsHeroInProjectileWeaponMode()
+                    bVar4 = quest:IsHeroInProjectileWeaponMode()
                     __native_condition_8 = bVar4
                 end
                 __native_condition_7 = __native_condition_8
                 if __native_condition_7 then
-                    -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                    quest:IsPlayerHoldingFireRangedWeaponButton()
+                    bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                     __native_condition_7 = bVar4
                 end
                 if __native_condition_7 then
@@ -910,11 +954,9 @@ function Main(quest, me)
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                         quest:UpdateQuestInfoTick(CVar10, bVar4)
-                        -- TODO(native): IsHeroInProjectileWeaponMode is not a ForgeFSE binding
-                        quest:IsHeroInProjectileWeaponMode()
+                        bVar4 = quest:IsHeroInProjectileWeaponMode()
                         quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
-                        -- TODO(native): IsPlayerHoldingFireRangedWeaponButton is not a ForgeFSE binding
-                        quest:IsPlayerHoldingFireRangedWeaponButton()
+                        bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                         quest:UpdateQuestInfoTick(xStack_1e8, bVar4)
                     end
                 end
@@ -960,7 +1002,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d5db90(); return end
-                if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                if quest:GetMasterGameState("GuildWarningOccuring") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then __cleanup_LAB_00d5db90(); return end
@@ -978,16 +1020,15 @@ function Main(quest, me)
                 iVar15 = quest:GetTimer(xStack_21c)
                 if iVar15 < 1 then
                     bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
-                    if bVar4 then
-                        bVar4 = false
-                        goto FLOW_after_lab_00d5cd47
-                    end
+                    if bVar4 then goto LAB_00d5cd47 end
                     bVar4 = true
                 else
-                    -- LAB_00d5cd47: (native jump target)
-                    bVar4 = false
+                    goto LAB_00d5cd47
                 end
-                ::FLOW_after_lab_00d5cd47::
+                goto FLOW_past_lab_00d5cd47
+                ::LAB_00d5cd47::
+                bVar4 = false
+                ::FLOW_past_lab_00d5cd47::
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -1031,8 +1072,7 @@ function Main(quest, me)
                     quest:SetTimer(xStack_21c, 0xf)
                 end
                 if not __native_entity_state:GetStateBool("PlayerNotWarned") then
-                    -- LAB_00d5cf7a: (native jump target)
-                    bVar4 = false
+                    goto LAB_00d5cf7a
                 else
                     -- TODO(native): CVar10 = *(this + 4)
                     CVar10 = nil --[[unresolved native value]]
@@ -1043,13 +1083,13 @@ function Main(quest, me)
                     -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
                     pCVar6 = nil --[[unresolved native value]]
                     bVar4 = quest:IsDistanceBetweenThingsOver(pCVar6, pCVar7, fVar20)
-                    if not bVar4 then
-                        bVar4 = false
-                        goto FLOW_after_lab_00d5cf7a
-                    end
+                    if not bVar4 then goto LAB_00d5cf7a end
                     bVar4 = true
                 end
-                ::FLOW_after_lab_00d5cf7a::
+                goto FLOW_past_lab_00d5cf7a
+                ::LAB_00d5cf7a::
+                bVar4 = false
+                ::FLOW_past_lab_00d5cf7a::
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -1088,9 +1128,7 @@ function Main(quest, me)
             quest:RemoveQuestInfoElement(xStack_1e4)
             quest:EntitySetTargetable(me, true)
             xStack_1a0 = resources:NewResource()
-            bVar4 = false
-            if bVar4 ~= 0 then
-            end
+            resources:PrepareResource(xStack_1a0)
             iVar16 = 4
             pCVar18 = xStack_1a0
             pCVar7 = quest:GetHero()
@@ -1099,7 +1137,7 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00d5db84
+                if bVar4 then __cleanup_LAB_00d5db84(); return end
                 iVar16 = 4
                 pCVar18 = xStack_1a0
                 pCVar7 = quest:GetHero()
@@ -1108,15 +1146,13 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                -- LAB_00d5db84: (native jump target)
-                resources:ReleaseResource(xStack_1a0)
-                __cleanup_LAB_00d5db90(); return
+                __cleanup_LAB_00d5db84()
+                return
             end
             xStack_1ac = resources:NewActorMap()
             resources:SetActor(xStack_1ac, "HERO", xStack_1a0)
             resources:SetActor(xStack_1ac, "TEACHER", xStack_210)
             xStack_1c0 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             if xStack_21c_b3 == 0 then
@@ -1131,7 +1167,7 @@ function Main(quest, me)
                         if quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) < xStack_1d4 ~= (quest:ReadGlobalGameDataFloatAt(0xec0, ixVar13) == xStack_1d4) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
-                            if bVar4 then return end  -- TODO(native): goto LAB_00d5db53
+                            if bVar4 then __cleanup_LAB_00d5db53(); return end
                             break
                         end
                         iVar15 = iVar16 + 1
@@ -1189,17 +1225,13 @@ function Main(quest, me)
                     resources:DestroyStringMap(pCVar7)
                     goto LAB_00d5d526
                 end
-                -- TODO(native): goto LAB_00d5db62
+                __cleanup_LAB_00d5db62(); return
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                -- LAB_00d5db53: (native jump target)
-                quest:PauseAllNonScriptedEntities(false)
-                -- LAB_00d5db6f: (native jump target)
-                resources:DestroyMovie(xStack_1c0)
-                resources:DestroyActorMap(xStack_1ac)
-                -- TODO(native): goto LAB_00d5db84
+                __cleanup_LAB_00d5db53()
+                return
             end
             resources:RunMacro("CS_GUILD_SKILL_DISQUALIFIED", xStack_1ac, false, true)
             ::LAB_00d5d526::
@@ -1212,12 +1244,12 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00d5db62
+                if bVar4 then __cleanup_LAB_00d5db62(); return end
                 iVar15 = quest:MsgIsQuestionAnsweredYesOrNo()
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
-            if bVar4 then return end  -- TODO(native): goto LAB_00d5db53
+            if bVar4 then __cleanup_LAB_00d5db53(); return end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if iVar15 == 1 then
@@ -1226,11 +1258,10 @@ function Main(quest, me)
                     quest:SetMasterGameState("SkillRepeating", false)
                     goto LAB_00d5d7a9
                 end
-                -- LAB_00d5db62: (native jump target)
-                quest:PauseAllNonScriptedEntities(false)
-                -- TODO(native): goto LAB_00d5db6f
+                __cleanup_LAB_00d5db62()
+                return
             end
-            if bVar4 then return end  -- TODO(native): goto LAB_00d5db53
+            if bVar4 then __cleanup_LAB_00d5db53(); return end
             resources:RunMacro("CS_GUILD_MELEE_REPEAT", xStack_1ac, false, false)
             quest:SetMasterGameState("MovingDummiesNeeded", false)
             quest:SetMasterGameState("SkillRepeating", true)
@@ -1240,20 +1271,20 @@ function Main(quest, me)
             if bVar4 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00d5db62
+                if bVar4 then __cleanup_LAB_00d5db62(); return end
                 quest:TakeObjectFromHero("OBJECT_YEW_LONGBOW")
             end
             cVar5 = quest:GetMasterGameState("SkillDummyReset")
-            while cVar5 ~= 1 do
+            while not cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then return end  -- TODO(native): goto LAB_00d5db53
+                if bVar4 then __cleanup_LAB_00d5db53(); return end
                 cVar5 = quest:GetMasterGameState("SkillDummyReset")
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
-            if bVar4 then return end  -- TODO(native): goto LAB_00d5db62
+            if bVar4 then __cleanup_LAB_00d5db62(); return end
             ::LAB_00d5d7a9::
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
@@ -1301,7 +1332,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("PlayerNotWarned", true)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

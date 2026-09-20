@@ -118,6 +118,7 @@ function Main(quest, me)
                     quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsMelee")
                     __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
                     r1 = nil
+                    -- TODO(native): xStack_18._4_4_ = (int *)0x0;
                 end
             end
         end
@@ -132,7 +133,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("FlourishHint", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

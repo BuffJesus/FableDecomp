@@ -16,7 +16,7 @@ function Init(quest, me)
 end
 
 -- MK_OFI_GWLL_WHIS2.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- MK_OFI_GWLL_WHIS2.OnPredicateFail (retail 0x00cdebd0)

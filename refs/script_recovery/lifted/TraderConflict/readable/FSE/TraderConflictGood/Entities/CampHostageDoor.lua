@@ -18,7 +18,7 @@ function Init(quest, me)
 end
 
 -- CampHostageDoor.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- CampHostageDoor.OnPredicateFail (retail 0x00cdebd0)

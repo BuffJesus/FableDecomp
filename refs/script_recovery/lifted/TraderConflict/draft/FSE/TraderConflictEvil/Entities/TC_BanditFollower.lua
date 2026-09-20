@@ -57,16 +57,15 @@ function Main(quest, me)
                 if not __native_entity_state:GetStateBool("SetAgainstHero") then
                     bVar8 = true
                     bVar5 = me:IsTalkedToByHero()
-                    if not bVar5 then
-                        bVar5 = false
-                        goto FLOW_after_lab_00df82d0
-                    end
+                    if not bVar5 then goto LAB_00df82d0 end
                     bVar5 = true
                 else
-                    -- LAB_00df82d0: (native jump target)
-                    bVar5 = false
+                    goto LAB_00df82d0
                 end
-                ::FLOW_after_lab_00df82d0::
+                goto FLOW_past_lab_00df82d0
+                ::LAB_00df82d0::
+                bVar5 = false
+                ::FLOW_past_lab_00df82d0::
                 if bVar8 then
                     bVar8 = false
                 end
@@ -74,9 +73,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00df87fe end
-                    bVar5 = false
-                    if bVar5 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_20)
                     bVar5 = resources:TryAcquire(xStack_20, me, 4)
                     while not bVar5 do
                         alive = quest:NewScriptFrame(me)
@@ -89,7 +86,6 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then goto LAB_00df87fe end
                     xStack_10 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     pCVar10 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_30 = resources:ScriptThing(xStack_20)
@@ -144,17 +140,18 @@ function Main(quest, me)
                             bVar5 = me:MsgIsHitByHeroSpecialAbility(me)
                             if not bVar5 then goto LAB_00df8518 end
                         end
-                        bVar5 = false
-                        goto FLOW_after_lab_00df851c
+                        goto LAB_00df851c
                     end
                     ::LAB_00df8518::
                     bVar7 = true
                     bVar5 = true
                 else
-                    -- LAB_00df851c: (native jump target)
-                    bVar5 = false
+                    goto LAB_00df851c
                 end
-                ::FLOW_after_lab_00df851c::
+                goto FLOW_past_lab_00df851c
+                ::LAB_00df851c::
+                bVar5 = false
+                ::FLOW_past_lab_00df851c::
                 if bVar3 then
                     bVar3 = false
                 end
@@ -244,7 +241,7 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("SetAgainstHero", false)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

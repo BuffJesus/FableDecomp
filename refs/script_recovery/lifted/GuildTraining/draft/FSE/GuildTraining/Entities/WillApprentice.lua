@@ -23,9 +23,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_148)
     end
     xStack_148 = resources:NewResource()
-    bVar4 = false
-    if bVar4 ~= 0 then
-    end
+    resources:PrepareResource(xStack_148)
     bVar4 = resources:TryAcquire(xStack_148, me, 4)
     while not bVar4 do
         alive = quest:NewScriptFrame(me)
@@ -143,7 +141,7 @@ function Main(quest, me)
                     if not bVar4 then
                         pCVar7 = quest:GetHero()
                         quest:AddLineToConversation(iVar13, "TEXT_QST_028_APPRENTICE_WILL_EARLY_COMMENT", me, pCVar7, false)
-                        goto LAB_00d4f49e
+                        goto LAB_00d4f499
                     end
                 else
                     if iVar6 == 7 then
@@ -152,7 +150,7 @@ function Main(quest, me)
                         if not bVar4 then
                             pCVar7 = quest:GetHero()
                             quest:AddLineToConversation(iVar13, "TEXT_QST_028_APPRENTICE_WILL_APLUS_COMMENT", me, pCVar7, false)
-                            goto LAB_00d4f49e
+                            goto LAB_00d4f499
                         end
                     else
                         alive = not quest:IsActiveThreadTerminating()
@@ -160,11 +158,14 @@ function Main(quest, me)
                         if not bVar4 then
                             pCVar7 = quest:GetHero()
                             quest:AddLineToConversation(iVar13, "TEXT_QST_028_APPRENTICE_WILL_NOT_APLUS_COMMENT", me, pCVar7, false)
-                            -- LAB_00d4f499: (native jump target)
-                            goto LAB_00d4f49e
+                            goto LAB_00d4f499
                         end
                     end
                 end
+                goto FLOW_past_lab_00d4f499
+                ::LAB_00d4f499::
+                goto LAB_00d4f49e
+                ::FLOW_past_lab_00d4f499::
             end
             __cleanup_LAB_00d505a6(); return
         end
@@ -172,6 +173,7 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then __cleanup_LAB_00d504b9(); return end
         if not (r2 ~= nil and not r2:IsNull()) then
+            p0 = {x = 0, y = 0, z = 0}
         else
             p0 = r2:GetPos()
         end
@@ -187,12 +189,11 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d505a6(); return end
-                if quest:GetMasterGameState("HeroTakingGuildTest") ~= 0 then
+                if quest:GetMasterGameState("HeroTakingGuildTest") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if not bVar4 then
                         xStack_5c = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         x_stk_18 = resources:ScriptThing(xStack_148)
                         pCVar8 = x_stk_18
@@ -238,7 +239,6 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d505a6(); return end
                 xStack_104 = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_WILL_HELLO", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                 iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -430,7 +430,7 @@ function Main(quest, me)
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar8, bVar4)
                         quest:SetTimer(timerId, 2)
                     end
-                    if quest:GetMasterGameState("GuildWarningOccuring") ~= 0 then
+                    if quest:GetMasterGameState("GuildWarningOccuring") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
@@ -506,9 +506,7 @@ function Main(quest, me)
                             iVar6 = iVar13 + 1
                         until not (iVar13 + 1 < 7)
                         xStack_d8 = resources:NewResource()
-                        bVar4 = false
-                        if bVar4 ~= 0 then
-                        end
+                        resources:PrepareResource(xStack_d8)
                         iVar14 = 4
                         pCVar15 = xStack_d8
                         pCVar8 = quest:GetHero()
@@ -537,7 +535,6 @@ function Main(quest, me)
                         resources:SetActor(xStack_114, "ME", xStack_148)
                         resources:SetActor(xStack_114, "HERO", xStack_d8)
                         xStack_6c = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_END", xStack_114, false, true)
@@ -554,7 +551,7 @@ function Main(quest, me)
                                         goto FLOW_native_label_1
                                     end
                                     quest:PauseAllNonScriptedEntities(false)
-                                    -- LAB_00d50573_c13: (native jump target)
+                                    -- LAB_00d50573_c11: (native jump target)
                                     resources:DestroyMovie(xStack_6c)
                                     resources:DestroyActorMap(xStack_114)
                                     resources:ReleaseResource(xStack_d8)
@@ -641,7 +638,6 @@ function Main(quest, me)
                 if not bVar4 then
                     me:ClearCommands()
                     xStack_4c = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     x_stk_3c = resources:ScriptThing(xStack_148)
                     pCVar8 = x_stk_3c
@@ -695,7 +691,7 @@ end
 function Init(quest, me)
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

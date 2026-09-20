@@ -75,7 +75,7 @@ function Init(quest, me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
 end
 
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)

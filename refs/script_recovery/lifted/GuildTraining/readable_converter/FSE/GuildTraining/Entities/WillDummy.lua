@@ -8,7 +8,7 @@ local SCRIPT_DEF = {
 
 -- WillDummy.Main (retail 0x00d43450)
 function Main(quest, me)
-    local predicateResult, predicateResult8, scratchValue7
+    local predicateResult, predicateResult6, scratchValue6
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
     local hero = quest:GetHero()
     local angle = me:GetAngleXY()
@@ -17,33 +17,38 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         if not quest:IsActiveThreadTerminating() then
             quest:SetTimer(willHelpTimer, 15)
-            while quest:GetMasterGameState("WillTrainingStarted") ~= 1 do
+            while not quest:GetMasterGameState("WillTrainingStarted") do
                 if not quest:NewScriptFrame(me) then return end
             end
-            if not quest:IsActiveThreadTerminating() then
-                if not quest:IsActiveThreadTerminating() then
-                    repeat
-                        if me:MsgIsHitByHeroSpecialAbility(me) then
-                            -- LAB_00d43568: (native jump target)
-                            predicateResult = false
-                        else
-                            predicateResult = not me:MsgIsHitByHero()
-                        end
-                        if not predicateResult then goto LAB_00d435c1 end
-                        if not quest:NewScriptFrame(me) then return end
-                    until false
-                end
-            end
+            if not quest:IsActiveThreadTerminating() then predicateResult = quest:IsActiveThreadTerminating(); goto LAB_00d434fc end
         end
     end
-    ::FLOW_after_lab_00d434fc::
+    goto FLOW_past_lab_00d434fc
+    ::LAB_00d434fc::
+    if not predicateResult then
+        repeat
+            if me:MsgIsHitByHeroSpecialAbility(me) then
+                goto LAB_00d43568
+            else
+                predicateResult6 = true
+                if me:MsgIsHitByHero() then goto LAB_00d43568 end
+            end
+            goto FLOW_past_lab_00d43568
+            ::LAB_00d43568::
+            predicateResult6 = false
+            ::FLOW_past_lab_00d43568::
+            if not predicateResult6 then goto LAB_00d435c1 end
+            if not quest:NewScriptFrame(me) then return end
+        until false
+    end
+    ::FLOW_past_lab_00d434fc::
     do return end
     ::LAB_00d435c1::
     if quest:IsActiveThreadTerminating() then return end
     if me:MsgIsHitByHeroSpecialAbility(me) then
         quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
         -- TODO(native): xStack_94 = angle + (float)0.0;
-        quest:EntitySetFacingAngle(me, scratchValue7, true)
+        quest:EntitySetFacingAngle(me, scratchValue6, true)
         if not quest:NewScriptFrame(me) then return end
         if not quest:NewScriptFrame(me) then return end
         quest:EntitySetFacingAngle(me, angle + 0.0, true)
@@ -64,7 +69,7 @@ function Main(quest, me)
         end
         quest:EntitySetTargetable(me, false)
         quest:Pause(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillDummySpinTimer))
-        quest:EntitySetFacingAngle(me, scratchValue7, true)
+        quest:EntitySetFacingAngle(me, scratchValue6, true)
         if not quest:NewScriptFrame(me) then return end
         if not quest:NewScriptFrame(me) then return end
         quest:EntitySetFacingAngle(me, angle, true)
@@ -87,20 +92,8 @@ function Main(quest, me)
         end
     end
     quest:NewScriptFrame(me)
-    if not quest:IsActiveThreadTerminating() then
-        repeat
-            if me:MsgIsHitByHeroSpecialAbility(me) then
-                -- LAB_00d43568_c2: (native jump target)
-                predicateResult8 = false
-            else
-                predicateResult8 = true
-                if me:MsgIsHitByHero() then return end  -- TODO(native): goto LAB_00d43568_c2
-            end
-            if not predicateResult8 then goto LAB_00d435c1 end
-            if not quest:NewScriptFrame(me) then return end
-        until false
-    end
-    goto FLOW_after_lab_00d434fc
+    predicateResult = quest:IsActiveThreadTerminating()
+    goto LAB_00d434fc
 end
 
 -- WillDummy.Init (retail 0x00d43410)
@@ -108,7 +101,7 @@ function Init(quest, me)
 end
 
 -- WillDummy.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- WillDummy.OnPredicateFail (retail 0x00d43420)

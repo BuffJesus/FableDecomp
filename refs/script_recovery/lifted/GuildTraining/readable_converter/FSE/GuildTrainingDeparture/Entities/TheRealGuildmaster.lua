@@ -10,7 +10,6 @@ local heroSpokenToMe, teleportToWoods
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
@@ -18,6 +17,7 @@ function Main(quest, me)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
     quest:EntityTeleportToThing(me, quest:GetThingWithScriptName("M_DepartureTeacherStand"), false)
     local resource2 = resources:NewResource()
+    resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
@@ -28,6 +28,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then goto LAB_00d5134c end
     if not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
         local resource = resources:NewResource()
+        resources:PrepareResource(resource)
         while not resources:TryAcquire(resource, hero, 4) do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
@@ -41,9 +42,17 @@ function Main(quest, me)
             resources:ReleaseResource(resource2)
             return
         end
-        quest:StartCutscene({GM = me, HERO = hero}, {}, true)
-        quest:RunCutscene("CS_GUILD_DEPARTURE_GM_DONE", true, false)
-        quest:EndCutscene()
+        local actorMap = resources:NewActorMap()
+        resources:SetActor(actorMap, "GM", resource2)
+        resources:SetActor(actorMap, "HERO", resource)
+        local movie = resources:StartMovie("")
+        quest:PauseAllNonScriptedEntities(true)
+        quest:FixMovieSequenceCamera(true)
+        resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", actorMap, false, true)
+        quest:FixMovieSequenceCamera(false)
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        resources:DestroyActorMap(actorMap)
         resources:ReleaseResource(resource)
         quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_09", "GuildWoods", "")
         quest:ActivateQuest("Q_GuildTrainingWoodsDeparture")
@@ -52,31 +61,31 @@ function Main(quest, me)
     end
     while quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") do
         if not quest:NewScriptFrame(me) then goto LAB_00d5134c end
-        if not me:IsTalkedToByHero() then goto continue_2 end
-        movie = resources:StartMovie("")
-        quest:StartMovieSequence()
-        quest:PauseAllNonScriptedEntities(true)
-        if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
-            me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", GROUP_SELECT_FIRST, false, true, false)
-            while me:IsPerformingScriptTask() do
-                quest:NewScriptFrame(me)
+        if me:IsTalkedToByHero() then
+            local movie2 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            local fret_0 = quest:GetHealth(resources:ScriptThing(resource2))
+            if 0.0 < fret_0 then
+                me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                while me:IsPerformingScriptTask() do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(resource2)
+                        do return end
+                    end
+                end
                 if quest:IsActiveThreadTerminating() then
-                    quest:EndCutscene()
-                    resources:DestroyMovie(movie)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie2)
                     resources:ReleaseResource(resource2)
-                    do return end
+                    return
                 end
             end
-            if quest:IsActiveThreadTerminating() then
-                quest:EndCutscene()
-                resources:DestroyMovie(movie)
-                resources:ReleaseResource(resource2)
-                return
-            end
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(movie2)
         end
-        quest:EndCutscene()
-        resources:DestroyMovie(movie)
-        ::continue_2::
     end
     if not quest:IsActiveThreadTerminating() then
         quest:ClearThingHasInformation(me)
@@ -92,7 +101,7 @@ function Init(quest, me)
 end
 
 -- TheRealGuildmaster.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TheRealGuildmaster.OnPredicateFail (retail 0x00cdebd0)

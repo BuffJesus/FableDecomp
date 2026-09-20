@@ -121,11 +121,17 @@ function Init(quest)
 end
 
 function OnPersist(quest, context)
+    local gameState = quest:GetStateInt("GameState") or 0
+    gameState = quest:PersistTransferInt(context, "GameState", gameState)
+    quest:SetStateInt("GameState", gameState)
+    local currentBirdsKilled = quest:GetStateInt("CurrentBirdsKilled") or 0
+    currentBirdsKilled = quest:PersistTransferInt(context, "CurrentBirdsKilled", currentBirdsKilled)
+    quest:SetStateInt("CurrentBirdsKilled", currentBirdsKilled)
 end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, fret_0, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
+    local angle, b3, bVar14, bVar2, elem_1, fret_0, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -247,7 +253,7 @@ function RunTutorials(quest)
             if bVar2 then goto LAB_00d496bc end
             pCVar3 = quest:GetThingWithScriptName("OBJECT_STRAW_DUMMY_01")
             pCVar4 = pCVar3:GetPos()
-            r4 = quest:CreateObject("PreMeleeDummy", nil --[[missing]], "PreMeleeDummyMarker")
+            r4 = quest:CreateObject("PreMeleeDummy", pCVar4, "PreMeleeDummyMarker")
             pCVar3 = quest:GetThingWithScriptName("PreMeleeDummy")
             uVar15 = 1
             fret_0 = pCVar3:GetAngleXY()
@@ -330,34 +336,33 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d496bc end
-            -- TODO(native): xStack_54._0_4_ = (int *)0x0;
             xStack_54 = quest:GetAllThingsWithScriptName("AppleMarker")
-            iVar9 = (xStack_54._4_4_ - xStack_54._0_4_) >> 0x1f
-            if (xStack_54._4_4_ - xStack_54._0_4_) / 0xc + iVar9 ~= iVar9 then
+            if #xStack_54 ~= 0 then
                 iVar9 = 0
                 uVar8 = 0
                 repeat
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
-                    if bVar2 then
-                        goto LAB_00d496bc
-                    end
-                    -- TODO(native): pCVar4 = (**(*(xStack_54._0_4_ + iVar9) + 0x18))()
-                    pCVar4 = nil --[[unresolved native value]]
-                    r5 = quest:CreateObject(pCVar4, uVar8, "")
+                    if bVar2 then goto LAB_00d46c49 end
+                    elem_1 = xStack_54[(iVar9) / 0xc + 1]
+                    pCVar4 = elem_1:GetPos()
+                    r5 = quest:CreateObject("OBJECT_APPLE_RED_01", pCVar4, "")
                     quest:SetThingPersistent(r5, true)
-                    quest:SetThingPersistent(r4, (xStack_54._0_4_ + iVar9))
-                    quest:RemoveThing(nil --[[missing]], (xStack_54._0_4_ + iVar9), false)
+                    quest:SetThingPersistent(xStack_54[(iVar9) / 0xc + 1], true)
+                    quest:RemoveThing(xStack_54[(iVar9) / 0xc + 1], false, true)
                     uVar8 = uVar8 + 1
                     iVar9 = iVar9 + 0xc
-                until not (uVar8 < ((xStack_54._4_4_ - xStack_54._0_4_) / 0xc))
+                until not (uVar8 < (#xStack_54))
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                -- LAB_00d46c49: (native jump target)
-                goto LAB_00d496bc
+                goto LAB_00d46c49
             end
+            goto FLOW_past_lab_00d46c49
+            ::LAB_00d46c49::
+            goto LAB_00d496bc
+            ::FLOW_past_lab_00d46c49::
         end
         bVar2 = quest:IsQuestActive("Q_GuildTrainingPreMelee")
         if bVar2 then
@@ -507,8 +512,7 @@ function RunTutorials(quest)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_FACE_CUSTOM_01", -1)
         end
         pCVar3 = quest:GetHero()
-        -- TODO(native): EntitySetAsOpinionSource is not a ForgeFSE binding
-        quest:EntitySetAsOpinionSource(pCVar3, "OPINION_SOURCE_HERO_AS_APPRENTICE")
+        quest:EntitySetAsOpinionSource(pCVar3, uVar15)
         quest:SetHeroAsTeenager(true)
         quest:SetHeroAsApprentice(true)
         quest:GiveHeroAbility(0xb, false)
@@ -804,9 +808,7 @@ function RunTutorials(quest)
     if bVar2 then goto LAB_00d496bc end
     r14 = quest:GetThingWithScriptName("TheRealGuildmaster")
     xStack_30 = resources:NewResource()
-    bVar2 = false
-    if bVar2 ~= 0 then
-    end
+    resources:PrepareResource(xStack_30)
     bVar2 = resources:TryAcquire(xStack_30, xStack_54[0 + 1], 4)
     while not bVar2 do
         alive = quest:NewScriptFrame()
@@ -819,9 +821,7 @@ function RunTutorials(quest)
     bVar2 = not alive
     if not bVar2 then
         xStack_20 = resources:NewResource()
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         iVar16 = 4
         pCVar12 = xStack_20
         pCVar3 = quest:GetHero()
@@ -843,7 +843,6 @@ function RunTutorials(quest)
             resources:SetActor(r13, "HERO", xStack_20)
             resources:SetActor(r13, "GM", xStack_30)
             xStack_10 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r13, false, true)
@@ -1096,20 +1095,17 @@ function RunTutorials(quest)
                                                                             end
                                                                             alive = not quest:IsActiveThreadTerminating()
                                                                             bVar2 = not alive
-                                                                            if not bVar2 then
-                                                                                uVar8 = 0
-                                                                                pCVar7 = quest:GetActiveQuestName()
-                                                                                quest:DeactivateQuestLater(pCVar7, uVar8)
-                                                                                goto FLOW_after_lab_00d4967d
-                                                                            end
+                                                                            if not bVar2 then goto LAB_00d4967d end
                                                                         end
                                                                     else
-                                                                        -- LAB_00d4967d: (native jump target)
-                                                                        uVar8 = 0
-                                                                        pCVar7 = quest:GetActiveQuestName()
-                                                                        quest:DeactivateQuestLater(pCVar7, uVar8)
+                                                                        goto LAB_00d4967d
                                                                     end
-                                                                    ::FLOW_after_lab_00d4967d::
+                                                                    goto FLOW_past_lab_00d4967d
+                                                                    ::LAB_00d4967d::
+                                                                    uVar8 = 0
+                                                                    pCVar7 = quest:GetActiveQuestName()
+                                                                    quest:DeactivateQuestLater(pCVar7, uVar8)
+                                                                    ::FLOW_past_lab_00d4967d::
                                                                 end
                                                             end
                                                         end
@@ -1140,16 +1136,15 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, xStack_a0
+    local aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, x_stk_a0
     local alive = true
     bVar4 = false
     bVar3 = false
     bVar2 = false
-    r1 = quest:GetThingWithScriptName(nil --[[missing]])
+    r1 = quest:GetThingWithScriptName("PreMeleeMaze")
     xStack_84 = quest:GetAllCreaturesExcludingHero()
-    iVar18 = r1 - xStack_84 >> 0x1f
     uVar17 = 0
-    if (r1 - xStack_84) / 0xc + iVar18 ~= iVar18 then
+    if #xStack_84 ~= 0 then
         iVar18 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
@@ -1160,28 +1155,21 @@ function CheckFriendlyAttacks(quest)
             pvVar12 = nil --[[unresolved native value]]
             iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
             if iVar13 == 0 then
-                -- LAB_00d45184: (native jump target)
-                bVar9 = false
+                goto LAB_00d45184
             else
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                 bVar4 = true
                 -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_74)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
-                if iVar13 == 0 then
-                    bVar9 = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if iVar13 == 0 then goto LAB_00d45184 end
                 pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                 bVar4 = true
                 bVar3 = true
                 -- TODO(native): pvVar12 = (**(*xStack_84[(iVar18) / 0xc + 1] + 8))(&xStack_68)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
-                if iVar13 == 0 then
-                    bVar9 = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if iVar13 == 0 then goto LAB_00d45184 end
                 pcVar21 = "CREATURE_RIVAL_HERO_MAZE"
                 bVar4 = true
                 bVar3 = true
@@ -1190,12 +1178,12 @@ function CheckFriendlyAttacks(quest)
                 pvVar12 = nil --[[unresolved native value]]
                 iVar13 = ((pvVar12 ~= pcVar21) and 1 or 0)
                 bVar9 = true
-                if iVar13 == 0 then
-                    bVar9 = false
-                    goto FLOW_after_lab_00d45184
-                end
+                if iVar13 == 0 then goto LAB_00d45184 end
             end
-            ::FLOW_after_lab_00d45184::
+            goto FLOW_past_lab_00d45184
+            ::LAB_00d45184::
+            bVar9 = false
+            ::FLOW_past_lab_00d45184::
             if bVar2 then
                 bVar2 = false
             end
@@ -1214,7 +1202,7 @@ function CheckFriendlyAttacks(quest)
             end
             uVar17 = uVar17 + 1
             iVar18 = iVar18 + 0xc
-        until not (uVar17 < ((r1 - xStack_84) / 0xc))
+        until not (uVar17 < (#xStack_84))
     end
     bVar6 = false
     bVar5 = false
@@ -1271,28 +1259,21 @@ function CheckFriendlyAttacks(quest)
                         pvVar12 = elem_1:GetDefName()
                         iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                         if iVar18 == 0 then
-                            -- LAB_00d4557d: (native jump target)
-                            bVar10 = false
+                            goto LAB_00d4557d
                         else
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_APPRENTICE"
                             bVar3 = true
                             elem_2 = xStack_84[(iVar13) / 0xc + 1]
                             pvVar12 = elem_2:GetDefName()
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
-                            if iVar18 == 0 then
-                                bVar10 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if iVar18 == 0 then goto LAB_00d4557d end
                             pcVar21 = "CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE"
                             bVar3 = true
                             bVar2 = true
                             -- TODO(native): pvVar12 = (**(*xStack_84[(iVar13) / 0xc + 1] + 8))(aCStack_10)
                             pvVar12 = nil --[[unresolved native value]]
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
-                            if iVar18 == 0 then
-                                bVar10 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if iVar18 == 0 then goto LAB_00d4557d end
                             pcVar21 = "CREATURE_RIVAL_HERO_MAZE"
                             bVar3 = true
                             bVar2 = true
@@ -1300,12 +1281,12 @@ function CheckFriendlyAttacks(quest)
                             pvVar12 = nil --[[unresolved native value]]
                             iVar18 = ((pvVar12 ~= pcVar21) and 1 or 0)
                             bVar10 = true
-                            if iVar18 == 0 then
-                                bVar10 = false
-                                goto FLOW_after_lab_00d4557d
-                            end
+                            if iVar18 == 0 then goto LAB_00d4557d end
                         end
-                        ::FLOW_after_lab_00d4557d::
+                        goto FLOW_past_lab_00d4557d
+                        ::LAB_00d4557d::
+                        bVar10 = false
+                        ::FLOW_past_lab_00d4557d::
                         if bVar2 then
                             bVar2 = false
                         end
@@ -1332,182 +1313,87 @@ function CheckFriendlyAttacks(quest)
                 end
             end
             pCVar14 = quest:GetHero()
-            -- TODO(native): MsgHitFriendWithBareHands is not a ForgeFSE binding
             bVar10 = pCVar14:MsgHitFriendWithBareHands()
             if bVar10 then
-                -- LAB_00d456af: (native jump target)
-                bVar6 = true
-                bVar10 = quest:IsLevelLoaded("HeroGuildComplex")
-                if not bVar10 then
-                    bVar10 = false
-                    goto FLOW_after_lab_00d45782
-                end
-                bVar6 = true
-                bVar5 = true
+                goto LAB_00d456af
+            else
+                pCVar14 = quest:GetHero()
+                bVar10 = pCVar14:MsgHitFriendWithMeleeWeapon()
+                if bVar10 then goto LAB_00d456af end
+                pCVar14 = quest:GetHero()
+                bVar10 = pCVar14:MsgHitFriendWithRangedWeapon()
+                if bVar10 then goto LAB_00d456af end
+                goto LAB_00d45782
+            end
+            goto FLOW_past_lab_00d456af
+            ::LAB_00d456af::
+            bVar6 = true
+            bVar10 = quest:IsLevelLoaded("HeroGuildComplex")
+            if not bVar10 then goto LAB_00d45782 end
+            bVar6 = true
+            bVar5 = true
+            native_arg_sequence_1 = false
+            if uStack_9c ~= nil then
+                native_arg_sequence_1 = true
+            else
                 native_arg_sequence_1 = false
-                if xStack_a0 ~= nil then
+            end
+            if native_arg_sequence_1 then
+                -- TODO(native): cVar11 = (**(*uStack_9c + 0x54))("SCRIPT_NAME_HERO")
+                cVar11 = nil --[[unresolved native value]]
+                if cVar11 ~= 0 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
                 end
-                if native_arg_sequence_1 then
-                    cVar11 = xStack_a0:MsgIsHitByHero()
-                    if cVar11 then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
-                end
-                if native_arg_sequence_1 then
-                    bVar10 = false
-                    goto FLOW_after_lab_00d45782
-                end
-                __native_condition_1 = xStack_a0 ~= nil
-                if __native_condition_1 then
-                    cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
-                    __native_condition_1 = cVar11
-                end
-                if __native_condition_1 then
-                    bVar6 = true
-                    bVar5 = true
-                    bVar9 = true
-                    bVar4 = true
+            end
+            if native_arg_sequence_1 then goto LAB_00d45782 end
+            native_arg_sequence_2 = false
+            if uStack_9c ~= nil then
+                native_arg_sequence_2 = true
+            else
+                native_arg_sequence_2 = false
+            end
+            if native_arg_sequence_2 then
+                -- TODO(native): cVar11 = (**(*uStack_9c + 0xa8))("SCRIPT_NAME_HERO")
+                cVar11 = nil --[[unresolved native value]]
+                if cVar11 ~= 0 then
+                    native_arg_sequence_2 = true
+                else
                     native_arg_sequence_2 = false
-                    if xStack_a0 == nil then
-                        native_arg_sequence_2 = true
-                    else
-                        native_arg_sequence_2 = false
-                    end
-                    if not native_arg_sequence_2 then
-                        cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
-                        if not cVar11 then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                    end
-                    if native_arg_sequence_2 then
-                        bVar10 = false
-                        goto FLOW_after_lab_00d45782
-                    end
                 end
+            end
+            if native_arg_sequence_2 then
                 bVar6 = true
                 bVar5 = true
                 bVar9 = true
-                bVar10 = true
-            else
-                pCVar14 = quest:GetHero()
-                -- TODO(native): MsgHitFriendWithMeleeWeapon is not a ForgeFSE binding
-                bVar10 = pCVar14:MsgHitFriendWithMeleeWeapon()
-                if bVar10 then
-                    bVar6 = true
-                    bVar10 = quest:IsLevelLoaded("HeroGuildComplex")
-                    if not bVar10 then goto LAB_00d45782 end
-                    bVar6 = true
-                    bVar5 = true
-                    native_arg_sequence_1 = false
-                    if xStack_a0 ~= nil then
-                        native_arg_sequence_1 = true
-                    end
-                    if native_arg_sequence_1 then
-                        cVar11 = xStack_a0:MsgIsHitByHero()
-                        if cVar11 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then goto LAB_00d45782 end
-                    __native_condition_2 = xStack_a0 ~= nil
-                    if __native_condition_2 then
-                        cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
-                        __native_condition_2 = cVar11
-                    end
-                    if __native_condition_2 then
-                        bVar6 = true
-                        bVar5 = true
-                        bVar9 = true
-                        bVar4 = true
-                        native_arg_sequence_2 = false
-                        if xStack_a0 == nil then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                        if not native_arg_sequence_2 then
-                            cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not cVar11 then
-                                native_arg_sequence_2 = true
-                            else
-                                native_arg_sequence_2 = false
-                            end
-                        end
-                        if native_arg_sequence_2 then goto LAB_00d45782 end
-                    end
-                    bVar6 = true
-                    bVar5 = true
-                    bVar9 = true
-                    bVar10 = true
-                    goto FLOW_after_lab_00d45782
+                bVar4 = true
+                native_arg_sequence_3 = false
+                if uStack_9c == nil then
+                    native_arg_sequence_3 = true
+                else
+                    native_arg_sequence_3 = false
                 end
-                pCVar14 = quest:GetHero()
-                -- TODO(native): MsgHitFriendWithRangedWeapon is not a ForgeFSE binding
-                bVar10 = pCVar14:MsgHitFriendWithRangedWeapon()
-                if bVar10 then
-                    bVar6 = true
-                    bVar10 = quest:IsLevelLoaded("HeroGuildComplex")
-                    if not bVar10 then goto LAB_00d45782 end
-                    bVar6 = true
-                    bVar5 = true
-                    native_arg_sequence_1 = false
-                    if xStack_a0 ~= nil then
-                        native_arg_sequence_1 = true
+                if not native_arg_sequence_3 then
+                    -- TODO(native): cVar11 = (**(*uStack_9c + 0xa4))(0xe,"SCRIPT_NAME_HERO")
+                    cVar11 = nil --[[unresolved native value]]
+                    if cVar11 == 0 then
+                        native_arg_sequence_3 = true
+                    else
+                        native_arg_sequence_3 = false
                     end
-                    if native_arg_sequence_1 then
-                        cVar11 = xStack_a0:MsgIsHitByHero()
-                        if cVar11 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then goto LAB_00d45782 end
-                    __native_condition_3 = xStack_a0 ~= nil
-                    if __native_condition_3 then
-                        cVar11 = xStack_a0:MsgIsHitByAnySpecialAbilityFromHero()
-                        __native_condition_3 = cVar11
-                    end
-                    if __native_condition_3 then
-                        bVar6 = true
-                        bVar5 = true
-                        bVar9 = true
-                        bVar4 = true
-                        native_arg_sequence_2 = false
-                        if xStack_a0 == nil then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                        if not native_arg_sequence_2 then
-                            cVar11 = xStack_a0:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not cVar11 then
-                                native_arg_sequence_2 = true
-                            else
-                                native_arg_sequence_2 = false
-                            end
-                        end
-                        if native_arg_sequence_2 then goto LAB_00d45782 end
-                    end
-                    bVar6 = true
-                    bVar5 = true
-                    bVar9 = true
-                    bVar10 = true
-                    goto FLOW_after_lab_00d45782
                 end
-                ::LAB_00d45782::
-                bVar10 = false
+                if native_arg_sequence_3 then goto LAB_00d45782 end
             end
-            ::FLOW_after_lab_00d45782::
+            bVar6 = true
+            bVar5 = true
+            bVar9 = true
+            bVar10 = true
+            ::FLOW_past_lab_00d456af::
+            goto FLOW_past_lab_00d45782
+            ::LAB_00d45782::
+            bVar10 = false
+            ::FLOW_past_lab_00d45782::
             if bVar4 then
                 bVar4 = false
             end
@@ -1532,14 +1418,12 @@ function CheckFriendlyAttacks(quest)
                 bVar10 = not alive
                 if bVar10 then goto LAB_00d45322 end
                 quest:SetMasterGameState("GuildWarningOccuring", true)
-                if (quest:GetMasterGameState("SkillTestOccuring") == 0) and (quest:GetMasterGameState("WillTestOccuring") == 0) then
+                if (not quest:GetMasterGameState("SkillTestOccuring")) and (not quest:GetMasterGameState("WillTestOccuring")) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar10 = not alive
                     if bVar10 then goto LAB_00d45322 end
                     xStack_30 = resources:NewResource()
-                    bVar10 = false
-                    if bVar10 ~= 0 then
-                    end
+                    resources:PrepareResource(xStack_30)
                     bVar10 = resources:TryAcquire(xStack_30, xStack_80, 4)
                     while not bVar10 do
                         alive = quest:NewScriptFrame()
@@ -1552,9 +1436,7 @@ function CheckFriendlyAttacks(quest)
                     bVar10 = not alive
                     if not bVar10 then
                         xStack_20 = resources:NewResource()
-                        bVar10 = false
-                        if bVar10 ~= 0 then
-                        end
+                        resources:PrepareResource(xStack_20)
                         iVar13 = 4
                         pCVar19 = xStack_20
                         pCVar14 = quest:GetHero()
@@ -1572,11 +1454,10 @@ function CheckFriendlyAttacks(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
                         if not bVar10 then
-                            xStack_20 = resources:NewActorMap()
+                            amStack_1c = resources:NewActorMap()
                             -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
                             resources:SetActor(amStack_1c, "MAZE", xStack_30)
                             aCStack_10 = resources:StartMovie("")
-                            quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             bVar20 = false
                             bVar10 = false
@@ -1591,7 +1472,7 @@ function CheckFriendlyAttacks(quest)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(aCStack_10)
-                            resources:DestroyActorMap(xStack_20)
+                            resources:DestroyActorMap(amStack_1c)
                             resources:ReleaseResource(amStack_1c)
                             resources:ReleaseResource(xStack_30)
                             goto LAB_00d45c9d
@@ -1607,7 +1488,7 @@ function CheckFriendlyAttacks(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar10 = not alive
                 if bVar10 then goto LAB_00d45322 end
-                while (quest:GetMasterGameState("SkillTestOccuring") ~= 0 or (quest:GetMasterGameState("WillTestOccuring") ~= 0)) do
+                while (quest:GetMasterGameState("SkillTestOccuring") or (quest:GetMasterGameState("WillTestOccuring"))) do
                     alive = quest:NewScriptFrame()
                     alive = not quest:IsActiveThreadTerminating()
                     bVar10 = not alive
@@ -1635,24 +1516,23 @@ function CheckFriendlyAttacks(quest)
                 pCVar14 = quest:GetHero()
                 pCVar15 = quest:GetHero()
                 quest:AddLineToConversation(iVar13, "TEXT_QST_028_GUILD_SEAL_FIRST_WARNING", pCVar15, pCVar14, false)
-                -- LAB_00d45930: (native jump target)
-                quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
+                goto LAB_00d45930
             elseif iVar18 == 1 then
                 pCVar14 = quest:GetHero()
                 pCVar15 = quest:GetHero()
                 quest:AddLineToConversation(iVar13, "TEXT_QST_028_GUILD_SEAL_SECOND_WARNING", pCVar15, pCVar14, false)
                 quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
             else
-                if iVar18 ~= 2 then
-                    quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
-                    goto FLOW_after_lab_00d45930
-                end
+                if iVar18 ~= 2 then goto LAB_00d45930 end
                 pCVar14 = quest:GetHero()
                 pCVar15 = quest:GetHero()
                 quest:AddLineToConversation(iVar13, "TEXT_QST_028_GUILD_SEAL_THIRD_WARNING", pCVar15, pCVar14, false)
                 quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
             end
-            ::FLOW_after_lab_00d45930::
+            goto FLOW_past_lab_00d45930
+            ::LAB_00d45930::
+            quest:SetStateInt("HeroWarnings", quest:GetStateInt("HeroWarnings") + 1)
+            ::FLOW_past_lab_00d45930::
             ::LAB_00d45cae::
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
@@ -1663,7 +1543,7 @@ function CheckFriendlyAttacks(quest)
     ::LAB_00d45322::
     do return end
     ::LAB_00d452d1::
-    xStack_a0 = nil
+    x_stk_a0 = nil
     goto LAB_00d45322
 end
 
@@ -1675,31 +1555,30 @@ function KeepTabsOnWhisper(quest)
     if bVar2 then
         return
     end
-    CVar5 = 0x0
+    CVar5 = 0
     repeat
-        CVar6 = (CVar5 | 1)
+        CVar6 = CVar5 | 1
         xStack_2c = CVar6
         bVar2 = quest:IsLevelLoaded("GuildWoods")
         if bVar2 then
-            CVar6 = (CVar5 | 3)
+            CVar6 = CVar5 | 3
             xStack_2c = CVar6
             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
             bVar2 = true
-            if not bVar3 then
-                bVar2 = false
-                goto FLOW_after_lab_00d3cc48
-            end
+            if not bVar3 then goto LAB_00d3cc48 end
         else
-            -- LAB_00d3cc48: (native jump target)
-            bVar2 = false
+            goto LAB_00d3cc48
         end
-        ::FLOW_after_lab_00d3cc48::
+        goto FLOW_past_lab_00d3cc48
+        ::LAB_00d3cc48::
+        bVar2 = false
+        ::FLOW_past_lab_00d3cc48::
         if (CVar6 & 2) ~= 0 then
-            CVar6 = (CVar6 & 0xfffffffd)
+            CVar6 = CVar6 & 0xfffffffd
             xStack_2c = CVar6
         end
         if (CVar6 & 1) ~= 0 then
-            CVar6 = (CVar6 & 0xfffffffe)
+            CVar6 = CVar6 & 0xfffffffe
             xStack_2c = CVar6
         end
         CVar5 = CVar6
@@ -1914,9 +1793,7 @@ function RunArrivalCutscene(quest)
     r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", pPosition, "CutsceneMaze")
     pCVar4 = nil
     xStack_30 = resources:NewResource()
-    bVar3 = false
-    if bVar3 ~= 0 then
-    end
+    resources:PrepareResource(xStack_30)
     bVar3 = resources:TryAcquire(xStack_30, r1, 4)
     while not bVar3 do
         alive = quest:NewScriptFrame()
@@ -1929,9 +1806,7 @@ function RunArrivalCutscene(quest)
     bVar3 = not alive
     if not bVar3 then
         xStack_20 = resources:NewResource()
-        bVar3 = false
-        if bVar3 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         iVar7 = 4
         pppuVar6 = xStack_20
         pCVar4 = quest:GetHero()
@@ -1953,7 +1828,6 @@ function RunArrivalCutscene(quest)
             resources:SetActor(pCVar4, "MAZE", xStack_30)
             resources:SetActor(pCVar4, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_ARRIVE", pCVar4, false, true)
@@ -2033,9 +1907,7 @@ function RunCeremonyCutscene(quest)
         pCVar5 = pCVar4:GetPos()
         r2 = quest:CreateCreature("CREATURE_GUILDKEEPER", pCVar5, "GM")
         xStack_40 = resources:NewResource()
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_40)
         bVar2 = resources:TryAcquire(xStack_40, r1, 4)
         while not bVar2 do
             alive = quest:NewScriptFrame()
@@ -2049,9 +1921,7 @@ function RunCeremonyCutscene(quest)
         if not bVar2 then
             quest:EntitySetInFaction(r1, "FACTION_HERO")
             xStack_30 = resources:NewResource()
-            bVar2 = false
-            if bVar2 ~= 0 then
-            end
+            resources:PrepareResource(xStack_30)
             bVar2 = resources:TryAcquire(xStack_30, r2, 4)
             while not bVar2 do
                 alive = quest:NewScriptFrame()
@@ -2064,9 +1934,7 @@ function RunCeremonyCutscene(quest)
             bVar2 = not alive
             if not bVar2 then
                 xStack_20 = resources:NewResource()
-                bVar2 = false
-                if bVar2 ~= 0 then
-                end
+                resources:PrepareResource(xStack_20)
                 iVar9 = 4
                 pCVar8 = xStack_20
                 pCVar4 = quest:GetHero()
@@ -2089,7 +1957,6 @@ function RunCeremonyCutscene(quest)
                     resources:SetActor(xStack_58, "WHIS", xStack_40)
                     resources:SetActor(xStack_58, "GM", xStack_30)
                     xStack_10 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     resources:RunMacro("CS_GUILD_CEREMONY", xStack_58, false, true)
@@ -2117,9 +1984,7 @@ function RunSaveXPCutscene(quest)
     local alive = true
     r1 = quest:GetThingWithScriptName("TheRealGuildmaster")
     xStack_30 = resources:NewResource()
-    bVar2 = false
-    if bVar2 ~= 0 then
-    end
+    resources:PrepareResource(xStack_30)
     bVar2 = resources:TryAcquire(xStack_30, r1, 4)
     while not bVar2 do
         alive = quest:NewScriptFrame()
@@ -2136,9 +2001,7 @@ function RunSaveXPCutscene(quest)
     bVar2 = not alive
     if not bVar2 then
         xStack_20 = resources:NewResource()
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         iVar7 = 4
         pppuVar6 = xStack_20
         pCVar3 = quest:GetHero()
@@ -2160,7 +2023,6 @@ function RunSaveXPCutscene(quest)
             resources:SetActor(xStack_3c, "GM", xStack_30)
             resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_SAVEXP", xStack_3c, false, true)
@@ -2181,9 +2043,7 @@ function RunSaveXPCutscene2(quest)
     local alive = true
     r1 = quest:GetThingWithScriptName("TheRealGuildmaster")
     xStack_30 = resources:NewResource()
-    bVar2 = false
-    if bVar2 ~= 0 then
-    end
+    resources:PrepareResource(xStack_30)
     bVar2 = resources:TryAcquire(xStack_30, r1, 4)
     while not bVar2 do
         alive = quest:NewScriptFrame()
@@ -2200,9 +2060,7 @@ function RunSaveXPCutscene2(quest)
     bVar2 = not alive
     if not bVar2 then
         xStack_20 = resources:NewResource()
-        bVar2 = false
-        if bVar2 ~= 0 then
-        end
+        resources:PrepareResource(xStack_20)
         iVar7 = 4
         pppuVar6 = xStack_20
         pCVar3 = quest:GetHero()
@@ -2224,7 +2082,6 @@ function RunSaveXPCutscene2(quest)
             resources:SetActor(xStack_3c, "GM", xStack_30)
             resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             resources:RunMacro("CS_GUILD_SAVEXP2", xStack_3c, false, true)

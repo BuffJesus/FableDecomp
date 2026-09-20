@@ -12,6 +12,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult, predicateResult8
     if not quest:NewScriptFrame(me) then return end
+    local resource = resources:NewResource()
     quest:EntityAttachToScript(me, quest:GetActiveQuestName())
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
     quest:MiniMapAddMarker(me, "HUD_ORB_GREEN_SMALL")
@@ -26,23 +27,22 @@ function Main(quest, me)
     quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_BANDIT", 1.0)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
-        if not setAgainstHero then
-            if not me:IsTalkedToByHero() then
-                predicateResult = false
-                goto FLOW_after_lab_00df82d0
-            end
-            predicateResult = true
-        else
-            predicateResult = false
-        end
-        ::FLOW_after_lab_00df82d0::
+        if setAgainstHero then goto LAB_00df82d0 end
+        if not me:IsTalkedToByHero() then goto LAB_00df82d0 end
+        predicateResult = true
+        goto FLOW_past_lab_00df82d0
+        ::LAB_00df82d0::
+        predicateResult = false
+        ::FLOW_past_lab_00df82d0::
         if predicateResult then
-            if not me:AcquireControl(4) then goto LAB_00df87fe end
+            resources:PrepareResource(resource)
+            while not resources:TryAcquire(resource, me, 4) do
+                if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
+            end
             if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
             local movie = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
-            local fret_0 = quest:GetHealth(me)
+            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
             if 0.0 < fret_0 then
                 me:Speak(hero, "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
                 while me:IsPerformingScriptTask() do
@@ -50,32 +50,31 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        me:ReleaseControl()
+                        resources:ReleaseResource(resource)
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    me:ReleaseControl()
+                    resources:ReleaseResource(resource)
                     return
                 end
             end
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        if not setAgainstHero then
-            if not me:MsgIsHitByHero() then
-                if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me)) then
-                    predicateResult8 = false
-                    goto FLOW_after_lab_00df851c
-                end
+        if setAgainstHero then goto LAB_00df851c end
+        if not me:MsgIsHitByHero() then
+            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(me)) then
+                goto LAB_00df851c
             end
-            predicateResult8 = true
-        else
-            predicateResult8 = false
         end
-        ::FLOW_after_lab_00df851c::
+        predicateResult8 = true
+        goto FLOW_past_lab_00df851c
+        ::LAB_00df851c::
+        predicateResult8 = false
+        ::FLOW_past_lab_00df851c::
         if predicateResult8 then
             if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
             if not hitWarning then
@@ -105,14 +104,14 @@ function Main(quest, me)
                 quest:EntityUnsetThingAsAllyOfThing(me, hero)
                 quest:EntityUnsetThingAsAllyOfThing(hero, me)
                 setAgainstHero = true
-        end
+            end
         end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:RemoveThing(me, false, true)
     end
     ::LAB_00df87fe::
-    me:ReleaseControl()
+    resources:ReleaseResource(resource)
 end
 
 -- TC_BanditFollower.Init (retail 0x00df8040)
@@ -122,7 +121,7 @@ function Init(quest, me)
 end
 
 -- TC_BanditFollower.OnPersist (retail 0x00cdebc0)
-function OnPersist(quest, context)
+function OnPersist(quest, me, context)
 end
 
 -- TC_BanditFollower.OnPredicateFail (retail 0x00df8050)
