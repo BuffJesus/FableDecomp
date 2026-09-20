@@ -1,4 +1,134 @@
-# RESUME HERE (after night 7, 2026-09-18)
+# RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
+
+**2026-09-19 (FableForge night):** in `D:\Code\FableForge` (resume from its `docs/ROADMAP_1.0.md`
+"Resume here"): the foliage lattice bug (75% of baked foliage was never read; Oakvale's square oak),
+the frame-walker memset fix (boot + open Oakvale 3.65 s -> 0.79 s), fishing spots, STB bank
+compaction; planned only: 0.18 Water (`docs/engine/WATER_RE.md` here -- water = depth-theme paint,
+STB-baked `CWaterPatchMesh` retail only loads; FableWin decompiles in `ghidra_out/decomp_water_fablewin.c`),
+0.19 World in 3D, 0.20 Mod packs. The user's next steps are unchanged: public repo + tag, in-game probes.
+
+**2026-09-19 (midday): the childhood -> Guild transition is fixed; the guild scripts die one thread later.** The
+morning's four v5 crashes were the sidecar freeing retail-owned `GetAllThings*` vector storage
+(`sidecar-abi-v2` `7ea4377`, never journaled). `local-candidate-v6` (units + that DLL + **Aeon's `LUAGameflow`
+as the `Gameflow` override**) handed off cleanly at 11:35: `Q_GuildTraining.Main` ran, `CS_GUILD_ARRIVE` played,
+then `RunTutorials` -- the thread that drives every guild tutorial -- died on its first loop
+(`GuildTraining.lua:197`, split-array vector `._4_4_`), which is the whole "no quests at the guild" report.
+Three generic converter fixes (split-array vectors, `_align` on truncated vtable push records, `CreateObject`
+position tagging), Oakvale gate identical, targeted tests 16/16, Guild regenerated, **v6 rebuilt + preflighted**
+on it and on a DLL whose `GiveHeroObject` now passes retail's third bool (the visible custom-tattoo pickups at
+New Game are our deviation; retail passes `true`, the binding hard-coded `false`). Journal:
+`docs/journal/2026-09/GUILD_ARRIVAL_PLAYTEST_2026-09-19.md`. **Next run (user):**
+
+    python work/new-oakvale-original-fse-20260912/local-candidate-v6/local_test.py --game-dir "C:\Programs\Steam\steamapps\common\Fable The Lost Chapters" --launch --save-dir "C:\Users\Cornelio\Documents\My Games\Fable\Saves"
+
+**Afternoon (runs 3-5, then offline):** tattoos confirmed fixed; barrel man fixed (the readable restructuring had
+dropped retail's presence gate, `readable_barrel_phase.py`); Bully **deviation by user decision** (`HeroAttackedVictim`
+counts as the intro done -- teddy on the first talk). The Guildmaster stall was root-caused **from the bytes**:
+retail `StartScriptingEntity` (0x89B5B0) yields the script fiber while the holder's `CTCScriptedControl+0x18 Locked`
+is set (only a lower priority is refused), so a binding that calls it against a held actor parks the Lua coroutine
+silently. The converter had folded retail's release-before-wait pair (`0xCD23B9`/`0xCD2770` = `PrepareResource`) to
+`false`; now lowered generically (Maze releases before `GuildWarningOccuring`, PreMelee `Main` acquires all four
+actors the retail way). Sidecar `c421e65`: `TryAcquire` prepares on first use and registers held handles so
+`StartCutscene` copies them (it would otherwise re-acquire and deadlock on the quest's own lock). Gameflow agent:
+35/35 resume stages via a generic switch-tree flattener (`native_switch_tree.py`), Gameflow goto residue 5 -> 0,
+Orchard `Artefact` regression bisected + fixed. Gates: Oakvale identical, smoke Gameflow 0/0, Guild 1/1, Orchard
+0/0, Trader 2/2, 8 test modules OK. **v6 rebuilt + preflighted, NOT yet run** -- next launch is the same command.
+Look for: `[RetailResources] TryAcquire enter ... locked=0` before PreMelee's cutscenes, `CS_GUILD_PREMELEE_INTRO`
+entering, the Guildmaster walking. `CheckFriendlyAttacks` misfire fixed by the agent's `member_copy` exemption
+(verify in-game). Open: sidecar `PersistTransferStringList` binding; full 29-min suite not run.
+
+**Run 6-7 (13:54, 14:0x) + agents:** Guildmaster works; apple quest works. Race apprentice parked in a second
+`StartMovieSequence` (retail 0x89B110 yields while a sequence is active; 98 duplicate ctor+GSI starts folded to one).
+Race timers were crossed (`_align` lead-0 receiver-less calls; `&timer` by-reference operands dropped) -- fixed,
+match the export's three slots. Melee dummy (agent, from bytes + log): two Lua errors unwound the PreMelee
+Guildmaster before `PreMeleeMode=1` (bsim-shared movie/resource dtor label + Ghidra `::` line wraps defeating
+`disambiguate_call_labels`; `ABS(`/x87 compare/float-into-resource folds) -- fixed generically, plus
+`AddLogbookTutorialEntryPC` binding (sidecar `9ebaa27`). Full suite 1598 OK. **v6 rebuilt + preflighted on all of
+it, NOT yet run.** Expect: race timer + HUD clock, Guildmaster punch cutscene, "?/7" tally, dummy targetable.
+
+**Evening (runs 8-10 + agent):** race, apples, punches all work. The stick stage's missing counter was NOT the quest
+thread (per-command `[QuestThreadFlag]` dumps: never terminating) -- it was a **dropped cross-branch `goto`**
+(`-- TODO(native): goto LAB_00d53c7e`): retail's PC path jumps into the counter block nested in the Xbox branch;
+the converter emitted a comment and `Main` fell off the end. Agent: `native_goto_scopes.hoist_shared_tails` (move
+the shared tail after the if/else chain, `goto` to it) + cleanup-region delegation -- **120 dropped gotos -> 1**
+(TraderConflictEvil, untyped), PreMelee Guildmaster 2,195 -> 649 lines, new `test_cross_branch_goto.py`, full
+suite 1602 OK. Sidecar `b2b4697`: `PersistTransferStringList` (0x49B8D0) + lifecycle/cutscene-command diagnostics.
+**Two bundles built + preflighted, NOT yet run:** `local-candidate-v6` (Aeon's LUAGameflow, control) and
+`local-candidate-v7` (OUR converted Gameflow as the override) -- A/B the same save through both. Expected: "?/7"
+after the stick, then the rest of PreMelee; on v7 watch `Transferring string list` in OnPersist and every stage
+handoff. Note: `skipQueryTrue` fires on every cutscene's first Speak (retail skip flag 0x143E8F4) -- the key used
+to advance dialogue also skips; not a bug, but lines get cut short.
+
+**2026-09-19 (evening): Oakvale Reborn started — the rewritten childhood intro.** Plan approved
+(`C:\Users\Cornelio\.claude\plans\prancy-hopping-possum.md`; story seed = a Stranger offers the child a
+sword to wipe out Oakvale, accept = the child fights / refuse = raid averted). Authored tree
+`refs/script_recovery/authored/OakvaleReborn/` (STORY.md, CHECKLIST.md, manifest, `cutscenes/CS_OVR_SPIKE.cs`),
+tools `tools/oakvale_reborn/{build_custom_intro.py,spike_s1.py}`. FableForge (UNCOMMITTED) gained
+`forge-tools script cutscene-dump|cutscene-set|cutscene-roundtrip` over a whole-def `CCutsceneDef` codec —
+595/595 retail round-trip byte-identical, `CS_OVR_SPIKE` appended offline as entry 611 with a correct crc0.
+**Spike S1+S3 bundle is built and preflighted** (`work/oakvale_reborn/bundle-spike-s1`). **User steps:**
+`python tools/oakvale_reborn/build_custom_intro.py install` (game closed) → launch per CHECKLIST.md → read the
+`OVR_SPIKE_S1/S3` log lines → `… restore`. Journal: `docs/journal/2026-09/OAKVALE_REBORN_KICKOFF_2026-09-19.md`.
+Next after the verdict: S2 (camera marker in TNG), S4 (ElevenLabs line via `dialogue_pipeline`), S6 (child combat).
+
+**2026-09-19 (titles): two hero titles APPENDED to game.bin.** Static evidence (PDB: `CTCHero::GetHeroTitleDefIndex`, `PeekHeroTitleSubDef`; four retail titles share enum 0) says the enum is not a table key, so appending is safe. New `forge title add` (FableForge, built) clones a donor's OBJECT + CInventoryItemDef/CStockItemDef/CHeroTitleDef, patches by field tag, relinks the six link words at 21/25/33/37/45/49, verifies on reload. Manifest `titles:` = Butcher of Oakvale (donor DEATHBRINGER) + Giftbreaker (donor ASSASSIN), 36 lines each over the 12 villager voice types, `oakvale_manifest.py` expands them; build has `defs` stage + `--placeholder-vo` (silent clips until the 72-line VO pass, ~2.4k chars next month). Grants in stranger.lua (massacre/hunted nights). bundle-v1: 9-file overlay, 602/602, lint 0, check 0, preflight passed; CHECKLIST v1-10.
+
+**2026-09-19 (voice recast): the Stranger is Callum on `eleven_v3` Creative with a `direction:` tag per line** (A/B in `work/oakvale_reborn/ab`, user chose B); Theresa = Lily on v3. `elevenlabs_vo.py` takes per-voice `model`/`settings` and per-line `direction`. All 15 lines regenerated (v3 bills the tags: 9,387/10,000 used, ~600 left), v1 rebuilt ALL CHECKS PASSED, table_read.wav refreshed.
+
+**2026-09-19 (latest+): edge-case pass + tooling.** Nine gaps fixed (Theresa gated on the offer + forced offer after the chocolates; stand-close/pass-by triggers; comments only when the hero is free; reload resumes massacre/hunt, no duplicate Stranger; 180 s massacre fallback; sword removed at night (`SWORD_SURVIVES_NIGHT`); offer returns extras; question in a paused movie; spawn beside NOVI_BookTrader). Bully rush at 3 kills in. New: `grade_run.py` (grades the FSE log against CHECKLIST rows, detects the road), `table_read.py` (76 s WAV of all 15 lines in beat order). bundle-v1 rebuilt, check 0, preflight passed.
+
+**2026-09-19 (latest): hood + sword prop + road 4c built.** Stranger = `CREATURE_PROPHET_01` (hooded; alt ASSASSIN); the offer puts `OBJECT_HERO_SWORD_FIRST` in his hand (`HoldInHand`+`CS_HOLD_SWORD`); **road 4c** (user: gift dies with the giver, guards react) = 8 s window after accept in which a sword hit (`MsgIsHitByHeroWithWeapon`) makes him say his line and `SetThingAsKilled`, `RemoveAllHeroWeapons`, guards hostile 40 s, night, `CS_OVR_AFTERMATH_KILLED` (7th def; 602/602); `StrangerKilled` persisted. 15 voiced lines (7,7xx/10,000 chars). bundle-v1 rebuilt, check 0, preflight passed; CHECKLIST v1-7.
+
+**2026-09-19 (late night): Oakvale Reborn beats LOCKED and built into bundle-v1.** User's calls: Stranger never
+named, Father dies on both roads, Father/Theresa protected on the accept road, 6 kills, cold open stays;
+consequence taken = on refuse the Stranger burns Oakvale himself (both roads share the retail section swap).
+`STORY.md` "Beats — LOCKED"; `CS_OVR_COLDOPEN/OFFER/REFUSE.cs` authored on retail cameras/markers,
+`CS_OVR_AFTERMATH_*` = HESDEADJIM clones with one spliced Maze line (`insert_before`); `stranger.lua`
+now ColdOpen / watch (deed-keyed comments, cooldown) / offer (macro + Ask + answer) / Massacre (protected
+set); Father waits for `ColdOpenDone` (persisted) and shows the seed box. 14 lines voiced with ElevenLabs
+(George/Lily; 7,665/10,000 chars used this month), 601/601 cutscene round-trip, lint 0, smoke gate 0,
+preflight passed. CHECKLIST.md v1 table rewritten (v1-0 … v1-6).
+
+**2026-09-19 (night, offline): Oakvale Reborn v1 scaffold built, nothing run in-game yet.** The authored
+FSE tree is seeded from the v4 stage (`tools/oakvale_reborn/scaffold_from_stage.py`; paths renamed, every
+`NOVI_*` TNG name kept) plus `scenes.lua` (macro/Lua-beat runners, Say, Ask) and `stranger.lua` (the Stranger
+spawns after the first deed, the offer, accept = `Stranger.Massacre` child-combat road, refuse = Theresa's
+trigger runs `CS_OVR_REFUSE`, no FMV); `OnPersist` carries `StrangerAccepted/OfferMade`. Tooling:
+`cs_lint.py` (manifest/.cs/Lua cross-checks, 24/24 negative findings), `build_custom_intro.py` now
+`pristine text cutscenes overlay bundle check` (text = subtitle-only + `dialogue_pipeline --add` VO chain,
+proven offline ALL CHECKS PASSED; `clone_of` cutscenes; install/restore are a `.ovrbak` layer over the
+FableForge stage), `elevenlabs_vo.py` (LIVE: the 4 Stranger lines synthesised with George, staged into ScriptDialogue2 + lipsync, ALL CHECKS PASSED; ~2.8k chars left on the plan this month), `smoke_run_unit.py --package-dir`
+(0 unknown methods / 0 load errors on the authored tree), `spike_s6.py` (child combat probe, `--grown`
+fallback). Staged script.bin 599/599 round-trip. **Bundles waiting on the game:** `bundle-spike-s1`,
+`bundle-spike-s6` (Lua only), `bundle-v1` (needs `install`) — commands + pass tables in
+`refs/script_recovery/authored/OakvaleReborn/CHECKLIST.md`. Journal:
+`docs/journal/2026-09/OAKVALE_REBORN_OFFLINE_2026-09-19.md`. Next offline: STORY.md beats (user) →
+`CS_OVR_OFFER.cs`, real Stranger creature, `eleven_voice_id`s.
+
+**2026-09-19 (later, agent): Gameflow is a converter unit.** `script_units.py` `gameflow` (0xCE6CB0 ctor ..
+0xCEF9D0 = GameflowAssistance ctor; the cluster's 0xCB8110 is the shared base ctor), evidence in
+`refs/script_recovery/gameflow/`, output `refs/script_recovery/lifted/Gameflow/{draft,readable}`: 5/5 fns,
+readable syntax 2/2, smoke 0/0, **all 35 `PostSavePosition` stages written, OnPersist carries all four
+fields** (the two `vector<CCharString>` ones as TODOs: no `PersistTransferStringList` binding). The
+fall-through switch now lowers to a straight guarded chain, so resume works for 32/35 stages and the chain
+runs 450 -> 2800; broken = resume at 700 / 1050 / 2800 and the 450 -> 500 handoff from earlier stages, all
+cross-switch `goto` residue. Journal: `docs/journal/2026-09/GAMEFLOW_UNIT_2026-09-19.md` (commands, the
+resume probe, every generic change). Oakvale gate identical; not committed; bundle/zip not rebuilt.
+
+**2026-09-19 (offline, user away):** the converter's `Q_GuildTrainingWoodsMelee` — the file in the Aeon zip
+and the v5 bundle — died on entering Guild Woods: `Main` lifted VC7.1's exception-state flag as
+`local scratchValue ... scratchValue & 2` (= `nil & 2`, a Lua 5.4 runtime error) right after
+`FinalizeEntityBindings`, so `DoMission` never started; and `DoMission` re-polled `IsLevelLoaded("")` (the
+callOrder pairing fell back to address order over a namespace-stripped `CQ_CinemaTestScript::EndMission(`).
+Both fixed generically in `native_evidence_lowering.py` / `convert_quest_unit.py`, plus: the EH-flag copy fold
+no longer half-applies (TC_BanditFighter nil read), and int counters in string-typed slots are lifted
+(MeleeOpponent's `if nil == nil` block-help alternation is now a real `(ctr + 1) % 5`). Journal:
+`docs/journal/2026-09/WOODS_MELEE_ENTRY_CRASH_2026-09-19.md`. Gates: Oakvale draft identical, smoke
+0 / 1 / 8 unchanged, readable errors none, new `test_guild_woods_melee_converter.py`. **NOT yet done:**
+rebuild `work/AeonShare-*.zip` + the v5 bundle on the regenerated units, and the in-game run — enter Guild
+Woods, kill the beetles, and quit mid-quest there.
+
+# After night 7 (2026-09-18)
 
 Nine commits, all generic converter work, suite **1593 passed / 0 failed** with the four stale fixture files
 ignored. Across the three units:
