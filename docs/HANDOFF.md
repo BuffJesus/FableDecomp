@@ -14,13 +14,17 @@ vertex read); Water brush (Terrain tab, retail's exact slot mix), foreground + b
 (expected: surface near and far, no foam); then sea bodies / foam / growing background frames.
 The user's other agent shares the game install: never launch Fable or write the install unasked.
 
-**0.20 Mod packs first cut is on FableForge branch `modpacks` (offline, suite 19/19):** `forge-tools mods
+**0.20 Mod packs is on FableForge branch `modpacks` (offline, suite 18/18, head 80b37da):** `forge-tools mods
 list/add/remove/move/enable/disable/build/conflicts/deploy/undeploy` over `<root>/forge_mods.json`;
-pack shapes: ChocolateBox + Fable Explorer `.fmp`, bsdiff (pristine bytes: this install's game.bin /
-names.bin / text.big are RE-SAVES, the `.retail-bak` copies are pristine -- restoring them is the user's
-call), game-root trees (records + TNG/QST merged, whole-file layers), EgoCore `Mods/<Name>/` (Mods.ini
-line + `.def` text via `defc`, `FORGE_DEFC` / `FORGE_DEFS_TEXT`). `python tools/test_mods.py`. Memory:
-`modpacks-branch`. Watch: `stage.hpp` vs `ENGINE_RULES.md` contradict on loose-TNG precedence.
+pack shapes: ChocolateBox + Fable Explorer `.fmp`, bsdiff (pristine bytes), game-root trees (records +
+TNG/QST merged, text.big union, whole-file layers, WAD repack), EgoCore `Mods/<Name>/` (Mods.ini line +
+`.def` text via `defc`, `FORGE_DEFC` / `FORGE_DEFS_TEXT`); `mods conflicts --json` = ONE report over every
+stage, picks in `<root>/forge_mods_picks.txt` (namespaced keys, mod name or `vanilla`); the GUI Mods tab
+(load order, Conflicts card = the picker, deploy/undeploy). 2026-09-20: the install's `game.bin`/`names.bin`
+were restored to the pristine `.retail-bak` bytes (text.big + the big banks left as they are: staged /
+added content). `python tools/test_mods.py`. Memory: `modpacks-branch`. Open: `.resource` banks,
+backup-suffix unification, mod provenance in the editor, GB-pack STB/bank layers, merge to main.
+Watch: `stage.hpp` vs `ENGINE_RULES.md` contradict on loose-TNG precedence.
 
 # RESUME HERE — 2026-09-19 late evening (Guild path playtest day; read this block only, then GUILD_ARRIVAL_PLAYTEST journal)
 
