@@ -1,3 +1,19 @@
+# RESUME HERE -- 2026-09-20 (FableForge day; the Guild-path block below is the FableTLC resume)
+
+**FableForge 1.0 is one human step from tagging.** Public repo https://github.com/BuffJesus/FableForge
+(`main`, CI green, suite 18/18), the in-game release probes ALL PASS (red barrel, exact positions,
+compacted bank, own-region load, restore 0 differ; two shipping bugs found+fixed), README screenshots
+fresh. Left for v0.16.0 (the user's): stranger's test on another machine (`python tools/package.py`),
+`git tag v0.16.0`, Discord. Resume from `D:\Code\FableForge\docs\ROADMAP_1.0.md` "Resume here".
+
+**0.18 Water is built offline on FableForge branch `water` (NOT seen in-game):** `forge water-audit`
+pinned every record formula against the 3,374 retail patches (`docs/engine/WATER_RE.md` corrected:
+wave exact, z floor, depth from the 1/128-quantised ground, distToShore 0, the 0x38 background
+vertex read); Water brush (Terrain tab, retail's exact slot mix), foreground + background writers,
+`tools/test_water.py` in check_all. Next: the user paints a pond, writes terrain, looks in-game
+(expected: surface near and far, no foam); then sea bodies / foam / growing background frames.
+The user's other agent shares the game install: never launch Fable or write the install unasked.
+
 # RESUME HERE — 2026-09-19 late evening (Guild path playtest day; read this block only, then GUILD_ARRIVAL_PLAYTEST journal)
 
 **State of play (in-game, v6 bundle = converter units + Aeon's LUAGameflow + sidecar DLL):** childhood -> Guild
