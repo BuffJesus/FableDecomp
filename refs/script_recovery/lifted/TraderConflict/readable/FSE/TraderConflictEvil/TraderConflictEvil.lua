@@ -36,7 +36,7 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuest("V_SickChildBarrowFields", 0)
     quest:RepopulateVillage(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"))
-    quest:EntitySetAsOpinionSource(hero, 0)
+    quest:EntitySetAsOpinionSource(hero, "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL")
     quest:SetGuardsIgnoreCrimes(true)
     quest:EnableGuards(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"), false)
     local bsSlumBedBrown01 = quest:GetAllThingsWithDefName("OBJECT_BS_SLUM_BED_BROWN_01")

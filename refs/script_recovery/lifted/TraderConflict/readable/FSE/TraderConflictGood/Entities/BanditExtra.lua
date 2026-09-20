@@ -5,7 +5,7 @@ local helpers = require("TraderConflictGood.native_quest_helpers")
 
 -- BanditExtra.Main (retail 0x00dfca90)
 function Main(quest, me)
-    local scratchValue, scratchValue4
+    local scratchValue, ctr_8
     local hero = quest:GetHero()
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
@@ -17,11 +17,12 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     local banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", me:GetPos(), "")
     local getDistanceBetweenThings = quest:GetDistanceBetweenThings(banditGruntLevel, hero) ^ 2
-    -- TODO(native): xStack_8 = (CCharString)(int)ROUND(fVar5 * _DAT_0126b7dc + 0.5);
-    if getDistanceBetweenThings * 0.06666667014360428 == scratchValue4 - 1.0 then
-        -- TODO(native): xStack_8 = (CCharString)((int)xStack_8 - 1);
+    ctr_8 = math.floor((getDistanceBetweenThings * 0.06666667014360428 + 0.5) + 0.5)
+    if getDistanceBetweenThings * 0.06666667014360428 == ctr_8 - 1.0 then
+        ctr_8 = ctr_8 - 1
     end
-    if 3 < scratchValue4 then
+    scratchValue = ctr_8
+    if 3 < ctr_8 then
         if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
         scratchValue = 3
     end

@@ -14,10 +14,10 @@ function Main(quest, me)
     local scratchValue, __push11, __push3, __push5, __push7, __push9, predicateResult2
     local predicateResult3, predicateResult4, predicateResult5, predicateResult, predicateResult14
     local scratchValue10, predicateResult18, predicateResult19, predicateResult23, scratchValue11
-    local isRegionLoaded, dist, timerId, sequence1, sequence, getDataString, scratchValue20, line
+    local isRegionLoaded, dist, timerId, sequence1, sequence, getDataString, scratchValue20
     local banditHostageKeeper, teleporterMarker, scratchValue24, scratchValue25, conversationId
     local scratchValue26, scratchValue27, scratchValue28, scratchValue29, scratchValue30, timerId2
-    local timerId3, scratchValue31, scratchValue32, timerId4, scratchValue33, movie3, timerId6
+    local timerId3, scratchValue31, line, timerId4, scratchValue33, movie3, timerId6
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("IntroDone") do
         if not quest:NewScriptFrame(me) then return end
@@ -78,8 +78,7 @@ function Main(quest, me)
                 scratchValue29 = resources:ScriptThing(scratchValue30)
                 if quest:GetHealth(scratchValue29) <= 0.0 then goto LAB_00dfebc5 end
                 timerId = 0
-                line = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_INTRO"
-                me:Speak(hero, line, 0, false, true, false)
+                me:Speak(hero, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_INTRO", 0, false, true, false)
                 scratchValue11 = me:IsPerformingScriptTask()
                 goto LAB_00dfeb57
             end
@@ -260,9 +259,9 @@ function Main(quest, me)
                     if me:IsTalkedToByHero() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         scratchValue31 = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONTALK_"
-                        scratchValue32 = scratchValue31 .. tostring(scratchValue)
-                        if not quest:TextEntryExists() then
-                            scratchValue32 = scratchValue31 .. tostring(10)
+                        line = scratchValue31 .. tostring(scratchValue)
+                        if not quest:TextEntryExists(line) then
+                            line = scratchValue31 .. tostring(10)
                         end
                         -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
                         resources:PrepareResource(scratchValue29)
@@ -444,7 +443,7 @@ function Main(quest, me)
                     local sequence4 = predicateResult19 and quest:IsActiveThreadTerminating()
                     if sequence4 then goto LAB_00e005b1 end
                     if not me:MsgExpressionPerformedTo() then isRegionLoaded = not quest:IsRegionLoaded("BanditCampEntrance"); scratchValue = 10; goto continue_3 end
-                    if scratchValue32 ~= nil and scratchValue32 == "EXPRESSION_WAIT" then
+                    if line ~= nil and line == "EXPRESSION_WAIT" then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") - 1)
                     end
@@ -460,9 +459,9 @@ function Main(quest, me)
                     if me:IsTalkedToByHero() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                         scratchValue31 = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONTALK_"
-                        scratchValue32 = scratchValue31 .. tostring(scratchValue)
-                        if not quest:TextEntryExists() then
-                            scratchValue32 = scratchValue31 .. tostring(10)
+                        line = scratchValue31 .. tostring(scratchValue)
+                        if not quest:TextEntryExists(line) then
+                            line = scratchValue31 .. tostring(10)
                         end
                         -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
                         resources:PrepareResource(scratchValue29)

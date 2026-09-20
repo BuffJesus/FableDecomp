@@ -512,7 +512,7 @@ function RunTutorials(quest)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_FACE_CUSTOM_01", -1)
         end
         pCVar3 = quest:GetHero()
-        quest:EntitySetAsOpinionSource(pCVar3, uVar15)
+        quest:EntitySetAsOpinionSource(pCVar3, "OPINION_SOURCE_HERO_AS_APPRENTICE")
         quest:SetHeroAsTeenager(true)
         quest:SetHeroAsApprentice(true)
         quest:GiveHeroAbility(0xb, false)

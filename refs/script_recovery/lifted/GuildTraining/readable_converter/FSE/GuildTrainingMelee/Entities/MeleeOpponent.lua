@@ -61,7 +61,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
-                resources:ReleaseResource("")
+                resources:ReleaseResource(resource)
                 return
             end
             local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
@@ -79,7 +79,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
-                resources:ReleaseResource("")
+                resources:ReleaseResource(resource)
                 return
             end
             resources:PrepareResource(resource)

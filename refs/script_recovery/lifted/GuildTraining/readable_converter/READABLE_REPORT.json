@@ -22284,15 +22284,8 @@
         "guildEvilApprenticeMale"
        ]
       },
-      "uVar15_1": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
       "uVar8_1": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -22300,7 +22293,7 @@
        ]
       },
       "uVar8_2": {
-       "name": "scratchValue10",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -23266,6 +23259,19 @@
         "627": "            bVar2 = resources:TryAcquire(pCVar12_2, pCVar3_69, iVar16_2)\n"
        }
       },
+      "uVar15_1": {
+       "literal": "1",
+       "definitionLine": 110,
+       "readLines": [
+        114
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_1, uVar15_2, uVar15_3, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
+        "110": "            uVar15_1 = 1\n",
+        "114": "            quest:EntitySetFacingAngle(pCVar3_10, angle, (uVar15_1 ~= 0))\n"
+       }
+      },
       "uVar15_2": {
        "literal": "0",
        "definitionLine": 645,
@@ -23274,7 +23280,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_1, uVar15_2, uVar15_3, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
+        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_2, uVar15_3, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
         "645": "            uVar15_2 = 0\n",
         "648": "            quest:EntityTeleportToThing(pCVar6_1, pCVar3_70, (uVar15_2 ~= 0))\n"
        }
@@ -23287,7 +23293,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_1, uVar15_3, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
+        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_3, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
         "653": "            uVar15_3 = 0\n",
         "656": "            quest:EntityTeleportToThing(pCVar6_2, pCVar3_71, (uVar15_3 ~= 0))\n"
        }
@@ -23300,7 +23306,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_1, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
+        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_4, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
         "749": "                uVar15_4 = 0\n",
         "752": "                quest:EntityTeleportToThing(pCVar6_4, pCVar3_82, (uVar15_4 ~= 0))\n"
        }
@@ -23313,7 +23319,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15_1, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
+        "3": "    local angle, b3, bVar2, elem_1, fret_0, iVar16_3, iVar16_4, iVar9_1, iVar9_2, iVar9_3, pCVar12_1, pCVar12_2, pCVar3_1, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar3_11, pCVar3_12, pCVar3_13, pCVar3_14, pCVar3_15, pCVar3_16, pCVar3_17, pCVar3_18, pCVar3_19, pCVar3_20, pCVar3_21, pCVar3_22, pCVar3_23, pCVar3_24, pCVar3_25, pCVar3_26, pCVar3_27, pCVar3_28, pCVar3_29, pCVar3_30, pCVar3_31, pCVar3_32, pCVar3_33, pCVar3_34, pCVar3_35, pCVar3_36, pCVar3_37, pCVar3_38, pCVar3_39, pCVar3_40, pCVar3_41, pCVar3_42, pCVar3_43, pCVar3_44, pCVar3_45, pCVar3_46, pCVar3_47, pCVar3_48, pCVar3_49, pCVar3_50, pCVar3_51, pCVar3_52, pCVar3_53, pCVar3_54, pCVar3_55, pCVar3_56, pCVar3_57, pCVar3_58, pCVar3_59, pCVar3_60, pCVar3_61, pCVar3_62, pCVar3_63, pCVar3_64, pCVar3_65, pCVar3_66, pCVar3_67, pCVar3_68, pCVar3_69, pCVar3_70, pCVar3_71, pCVar3_72, pCVar3_73, pCVar3_74, pCVar3_75, pCVar3_76, pCVar3_77, pCVar3_78, pCVar3_79, pCVar3_80, pCVar3_81, pCVar3_82, pCVar3_83, pCVar3_84, pCVar3_85, pCVar3_86, pCVar3_87, pCVar3_88, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar7_1, pCVar7_2, r1, r10, r11, r12, r13_1, r13_2, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar8_1, uVar8_2, uVar8_3, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88\n",
         "884": "                                                                    uVar8_3 = 0\n",
         "886": "                                                                    quest:DeactivateQuestLater(pCVar7_2, uVar8_3)\n"
        }
@@ -26319,7 +26325,7 @@
     },
     {
      "function": "CheckFriendlyAttacks",
-     "sourceLine": 586,
+     "sourceLine": 585,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26328,7 +26334,7 @@
     },
     {
      "function": "KeepTabsOnWhisper",
-     "sourceLine": 764,
+     "sourceLine": 763,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26337,7 +26343,7 @@
     },
     {
      "function": "WatchForSparrowKilled",
-     "sourceLine": 818,
+     "sourceLine": 817,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26346,7 +26352,7 @@
     },
     {
      "function": "KeepBookcaseExitRemoved",
-     "sourceLine": 829,
+     "sourceLine": 828,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26355,7 +26361,7 @@
     },
     {
      "function": "RunArrivalCutscene",
-     "sourceLine": 845,
+     "sourceLine": 844,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26364,7 +26370,7 @@
     },
     {
      "function": "GossipSetup",
-     "sourceLine": 888,
+     "sourceLine": 887,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26373,7 +26379,7 @@
     },
     {
      "function": "RunCeremonyCutscene",
-     "sourceLine": 919,
+     "sourceLine": 918,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26382,7 +26388,7 @@
     },
     {
      "function": "RunSaveXPCutscene",
-     "sourceLine": 970,
+     "sourceLine": 969,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26391,7 +26397,7 @@
     },
     {
      "function": "RunSaveXPCutscene2",
-     "sourceLine": 1007,
+     "sourceLine": 1006,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -26593,7 +26599,7 @@
      },
      "RunTutorials": {
       "rewrites": {
-       "splitLocals": 30,
+       "splitLocals": 31,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -26608,7 +26614,7 @@
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 2,
-       "literals": 2,
+       "literals": 1,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
@@ -26616,7 +26622,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 60,
@@ -26627,17 +26633,17 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 13,
        "controlAcquires": 0,
-       "sunkLocals": 57,
+       "sunkLocals": 58,
        "cleanupClosureNames": 0,
-       "parentheses": 60,
+       "parentheses": 61,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 4,
+       "freeSuffixes": 5,
        "hoistedState": 0
       },
       "before": {
-       "lines": 879,
-       "temporaries": 140,
+       "lines": 878,
+       "temporaries": 139,
        "labels": 10,
        "gotos": 96,
        "terminationChecks": 108,
@@ -26645,8 +26651,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 499,
-       "temporaries": 15,
+       "lines": 498,
+       "temporaries": 14,
        "labels": 10,
        "gotos": 85,
        "terminationChecks": 70,

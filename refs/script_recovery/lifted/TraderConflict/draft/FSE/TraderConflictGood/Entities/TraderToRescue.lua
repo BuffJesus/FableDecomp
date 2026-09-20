@@ -452,7 +452,7 @@ function Main(quest, me)
                         pCVar4 = tostring(CVar13)
                         pCVar4 = (xStack_158 .. pCVar4)
                         xStack_15c = pCVar4
-                        cVar3 = quest:TextEntryExists()
+                        cVar3 = quest:TextEntryExists(xStack_15c)
                         if not cVar3 then
                             CVar13 = 0xa
                             pCVar4 = tostring(10)
@@ -483,6 +483,7 @@ function Main(quest, me)
                             iVar19 = 1
                             iVar18 = 0
                             iVar11 = 0
+                            pvVar8 = xStack_15c
                             iVar21 = quest:GetHero()
                             r3 = me:Speak(iVar21, pvVar8, iVar11, (iVar18 ~= 0), (iVar19 ~= 0), (iVar20 ~= 0))
                             iVar21 = me:IsPerformingScriptTask()
@@ -792,7 +793,7 @@ function Main(quest, me)
                         pCVar4 = tostring(CVar13)
                         pCVar4 = (xStack_158 .. pCVar4)
                         xStack_15c = pCVar4
-                        cVar3 = quest:TextEntryExists()
+                        cVar3 = quest:TextEntryExists(xStack_15c)
                         if not cVar3 then
                             CVar13 = 0xa
                             pCVar4 = tostring(10)
@@ -823,6 +824,7 @@ function Main(quest, me)
                             iVar19 = 1
                             iVar18 = 0
                             iVar11 = 0
+                            pvVar8 = xStack_15c
                             iVar21 = quest:GetHero()
                             r8 = me:Speak(iVar21, pvVar8, iVar11, (iVar18 ~= 0), (iVar19 ~= 0), (iVar20 ~= 0))
                             iVar21 = me:IsPerformingScriptTask()

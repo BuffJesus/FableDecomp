@@ -1,6 +1,14 @@
 -- Generated native draft: Q_TraderConflictGood. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local function __native_all_dead(list)
+    local down = 0
+    for _, thing in ipairs(list) do
+        if (not thing:IsAlive()) or thing:IsUnconscious() then down = down + 1 end
+    end
+    return down == #list
+end
+
 function Main(quest)
     local CVar1, CVar11, bVar10, iVar9, pCVar4, pCVar5, pQuestName, uVar8
     local alive = true
@@ -253,7 +261,7 @@ function WatchForRegionTransitions(quest)
 end
 
 function WatchForHittingEnemies(quest)
-    local bVar3, bVar4, bVar6, cVar5, iVar9, i_stk_4, pCVar7, pThing1, uVar8, u_stk_8
+    local bVar3, bVar4, bVar6, cVar5, iVar9, pCVar7, pThing1, uVar8, u_stk_8
     local alive = true
     iVar9 = quest:GetStateInt("TradersFollowing")
     bVar3 = false
@@ -347,9 +355,8 @@ function WatchForHittingEnemies(quest)
                             if bVar4 then
                                 return
                             end
-                            i_stk_4 = quest:GetStateListRef("AllCreatures")
                             pCVar7 = quest:GetHero()
-                            quest:GiveThingBestEnemyTarget(pCVar7, nil --[[missing]])
+                            quest:GiveThingBestEnemyTarget(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), pCVar7)
                             ::FLOW_past_lab_00dfc811::
                             uVar8 = uVar8 + 1
                             iVar9 = iVar9 + 0xc
@@ -413,8 +420,8 @@ function WatchForTradersFreed(quest)
                 quest:SetQuestCardObjective(pCVar5, "TEXT_QUEST_TRADER_CONFLICT_GOOD_OBJECTIVE_02", "BanditCampEntrance", "BanditCampEntrance")
                 bVar3 = false
                 AttackPeople(quest)
-                iVar6 = AreAllThingsInVectorDead((this + 0x48))
-                if iVar6 ~= 0 then
+                iVar6 = __native_all_dead(quest:GetStateListCopy("AllCreatures"))
+                if iVar6 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
@@ -700,7 +707,7 @@ function UpdateLiveEnemies(quest)
 end
 
 function AttackPeople(quest)
-    local bVar2, cVar3, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_10, xStack_24, xStack_38, xStack_3c, x_stk_c
+    local bVar2, cVar3, ctr_38, dist, elem_1, iVar4, iVar7, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_10, xStack_24, xStack_38, xStack_3c, x_stk_c
     local alive = true
     local function __cleanup_LAB_00dfdd34()
         quest:DeregisterTimer(xStack_3c)
@@ -722,6 +729,7 @@ function AttackPeople(quest)
             quest:DeregisterTimer(xStack_3c)
             goto LAB_00dfde13
         end
+        ctr_38 = 0
         if #xStack_24 ~= 0 then
             iVar7 = 0
             repeat
@@ -770,13 +778,13 @@ function AttackPeople(quest)
                 ::LAB_00dfd841::
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
-                pCVar1 = 0x0
+                pCVar1 = ctr_38
                 if bVar2 then
                     -- LAB_00dfdc54: (native jump target)
                     quest:DeregisterTimer(xStack_3c)
                     return
                 end
-                bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[0x0 + 1], r1, 15.0)
+                bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[ctr_38 + 1], r1, 15.0)
                 native_arg_sequence_2 = false
                 if bVar2 then
                     native_arg_sequence_2 = true
@@ -881,9 +889,9 @@ function AttackPeople(quest)
                     iVar4 = ((this_00 ~= p0) and 1 or 0)
                     if iVar4 ~= 0 then goto LAB_00dfd841 end
                 end
-                -- TODO(native): xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);
+                ctr_38 = ctr_38 + 1
                 iVar7 = iVar7 + 0xc
-            until not (xStack_38 < (#xStack_24))
+            until not (ctr_38 < (#xStack_24))
         end
         goto LAB_00dfdaff
     end

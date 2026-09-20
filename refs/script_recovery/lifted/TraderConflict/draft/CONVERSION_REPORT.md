@@ -33,11 +33,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | Q_TraderConflictGood | Init | 0x00dfa0e0 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchTimeLimit | 0x00dfaeb0 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchForRegionTransitions | 0x00dfc920 | True | 0 |
-| Q_TraderConflictGood | Q_TraderConflictGood | WatchForHittingEnemies | 0x00dfc630 | True | 3 |
+| Q_TraderConflictGood | Q_TraderConflictGood | WatchForHittingEnemies | 0x00dfc630 | True | 2 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchForTradersFreed | 0x00dfcc10 | True | 7 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchForKilledPeople | 0x00dfc290 | True | 3 |
 | Q_TraderConflictGood | Q_TraderConflictGood | UpdateLiveEnemies | 0x00dfc320 | True | 1 |
-| Q_TraderConflictGood | Q_TraderConflictGood | AttackPeople | 0x00dfd600 | True | 11 |
+| Q_TraderConflictGood | Q_TraderConflictGood | AttackPeople | 0x00dfd600 | True | 10 |
 | Q_TraderConflictGood | Q_TraderConflictGood | helper_DFDED0 | 0x00dfded0 | True | 0 |
 | Q_TraderConflictGood | TraderToRescue | Main | 0x00dfe0f0 | True | 15 |
 | Q_TraderConflictGood | TraderToRescue | Init | 0x00dfb1b0 | True | 0 |
@@ -59,7 +59,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | BCGameMaster | Init | 0x00cdebb0 | True | 0 |
 | Q_TraderConflictGood | BCGameMaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | BCGameMaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_TraderConflictGood | BanditExtra | Main | 0x00dfca90 | True | 2 |
+| Q_TraderConflictGood | BanditExtra | Main | 0x00dfca90 | True | 0 |
 | Q_TraderConflictGood | BanditExtra | Init | 0x00cdebb0 | True | 0 |
 | Q_TraderConflictGood | BanditExtra | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | BanditExtra | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -68,4 +68,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | CampHostageDoor | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | CampHostageDoor | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 14, "functions": 63, "missing": 2, "functionSyntaxPassed": 63, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 49}`
+Summary: `{"owners": 14, "functions": 63, "missing": 2, "functionSyntaxPassed": 63, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 45}`

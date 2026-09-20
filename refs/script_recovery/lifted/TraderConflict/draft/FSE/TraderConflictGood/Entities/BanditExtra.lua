@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar4, bVar1, fVar5, iVar3, pCVar2, pPosition, r1, thing2, xStack_8
+    local CVar4, bVar1, ctr_8, fVar5, iVar3, pCVar2, pPosition, r1, thing2
     local alive = true
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
@@ -33,11 +33,12 @@ function Main(quest, me)
     r1 = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", pPosition, "")
     pCVar2 = quest:GetHero()
     fVar5 = (quest:GetDistanceBetweenThings(r1, pCVar2) ^ 2)
-    -- TODO(native): xStack_8 = (CCharString)(int)ROUND(fVar5 * _DAT_0126b7dc + 0.5);
-    if fVar5 * 0.06666667014360428 == xStack_8 - 1.0 then
-        -- TODO(native): xStack_8 = (CCharString)((int)xStack_8 + -1);
+    ctr_8 = math.floor((fVar5 * 0.06666667014360428 + 0.5) + 0.5)
+    if fVar5 * 0.06666667014360428 == ctr_8 - 1.0 then
+        ctr_8 = ctr_8 - 1
     end
-    if 3 < xStack_8 then
+    CVar4 = ctr_8
+    if 3 < ctr_8 then
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
         if bVar1 then goto LAB_00dfcbf7 end

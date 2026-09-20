@@ -34,7 +34,7 @@ function Main(quest)
     quest:RepopulateVillage(pCVar4)
     pCVar6 = "OPINION_SOURCE_VILLAGER_TRADER_CONFLICT_EVIL"
     pCVar4 = quest:GetHero()
-    quest:EntitySetAsOpinionSource(pCVar4, iVar8)
+    quest:EntitySetAsOpinionSource(pCVar4, pCVar6)
     quest:SetGuardsIgnoreCrimes(true)
     CVar15 = 0x0
     pCVar4 = quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS")

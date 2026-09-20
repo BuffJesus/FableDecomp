@@ -90,9 +90,9 @@ end
 function RunTutorials(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue3, scratchValue4, meleeOpponent, meleeApprentice9, skillApprentice9
-    local willApprentice9, actorMap, theRealGuildmaster, scratchValue8, scratchValue9, scratchValue
-    local movie, resource, resource4, timerId
+    local scratchValue, scratchValue4, meleeOpponent, meleeApprentice9, skillApprentice9
+    local willApprentice9, actorMap, theRealGuildmaster, scratchValue8, scratchValue9, movie
+    local resource, resource4, timerId
     local secretBookcase = quest:GetThingWithScriptName("SecretBookcase")
     local getNearestWithDefName = quest:GetNearestWithDefName(secretBookcase, "REGION_EXIT_POINT")
     quest:SetRegionExitAsActive(getNearestWithDefName, false)
@@ -154,7 +154,6 @@ function RunTutorials(quest)
         local preMeleeDummy = quest:GetThingWithScriptName("PreMeleeDummy")
         if not (preMeleeDummy ~= nil and preMeleeDummy:IsAlive()) then
             quest:CreateObject("OBJECT_STRAW_DUMMY_01", quest:GetThingWithScriptName("PreMeleeDummyMarker"):GetPos(), "PreMeleeDummy")
-            scratchValue8 = 1
             quest:EntitySetFacingAngle(quest:GetThingWithScriptName("PreMeleeDummy"), quest:GetThingWithScriptName("PreMeleeDummyMarker"):GetAngleXY(), true)
         end
         local meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
@@ -194,16 +193,16 @@ function RunTutorials(quest)
             if not quest:NewScriptFrame() then goto LAB_00d496bc end
             local appleMarker = quest:GetAllThingsWithScriptName("AppleMarker")
             if #appleMarker ~= 0 then
-                scratchValue3 = 0
-                scratchValue9 = 0
+                scratchValue = 0
+                scratchValue8 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then goto LAB_00d46c49 end
-                    quest:SetThingPersistent(quest:CreateObject("OBJECT_APPLE_RED_01", appleMarker[scratchValue3 + 1]:GetPos(), ""), true)
-                    quest:SetThingPersistent(appleMarker[scratchValue3 + 1], true)
-                    quest:RemoveThing(appleMarker[scratchValue3 + 1], false, true)
-                    scratchValue9 = scratchValue9 + 1
-                    scratchValue3 = scratchValue3 + 1
-                until scratchValue9 >= #appleMarker
+                    quest:SetThingPersistent(quest:CreateObject("OBJECT_APPLE_RED_01", appleMarker[scratchValue + 1]:GetPos(), ""), true)
+                    quest:SetThingPersistent(appleMarker[scratchValue + 1], true)
+                    quest:RemoveThing(appleMarker[scratchValue + 1], false, true)
+                    scratchValue8 = scratchValue8 + 1
+                    scratchValue = scratchValue + 1
+                until scratchValue8 >= #appleMarker
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d46c49 end
             goto FLOW_past_lab_00d46c49
@@ -285,7 +284,7 @@ function RunTutorials(quest)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_LEGS_CUSTOM_01", -1)
             quest:GiveHeroObject("OBJECT_TATTOO_CARD_FACE_CUSTOM_01", -1)
         end
-        quest:EntitySetAsOpinionSource(hero, scratchValue8)
+        quest:EntitySetAsOpinionSource(hero, "OPINION_SOURCE_HERO_AS_APPRENTICE")
         quest:SetHeroAsTeenager(true)
         quest:SetHeroAsApprentice(true)
         quest:GiveHeroAbility(HERO_ABILITY_LIGHTNING_SPELL, false)
@@ -529,15 +528,15 @@ function RunTutorials(quest)
                                 end
                                 if not quest:IsActiveThreadTerminating() then
                                     local appleRed01 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
-                                    scratchValue = 0
+                                    scratchValue9 = 0
                                     if #appleRed01 ~= 0 then
                                         scratchValue4 = 0
                                         repeat
                                             if quest:IsActiveThreadTerminating() then goto LAB_00d496a1 end
                                             quest:RemoveThing(appleRed01[scratchValue4 + 1], false, true)
-                                            scratchValue = scratchValue + 1
+                                            scratchValue9 = scratchValue9 + 1
                                             scratchValue4 = scratchValue4 + 1
-                                        until scratchValue >= #appleRed01
+                                        until scratchValue9 >= #appleRed01
                                     end
                                     if not quest:IsActiveThreadTerminating() then
                                         quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)

@@ -100,7 +100,7 @@ function Main(quest, me)
                             -- LAB_00d56eb7: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_bc)
-                            resources:ReleaseResource("")
+                            resources:ReleaseResource(xStack_d8)
                             return
                         end
                         pCVar6 = resources:ScriptThing(xStack_d8)
@@ -135,7 +135,7 @@ function Main(quest, me)
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_bc)
-                                resources:ReleaseResource("")
+                                resources:ReleaseResource(xStack_d8)
                                 return
                             end
                         end

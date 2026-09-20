@@ -1603,7 +1603,6 @@
           },
           "todo": [
             "IsThingAwareOfOtherThingInAnyWay: missing spThing2 (1 args for 2 params)",
-            "GiveThingBestEnemyTarget: missing spTarget (1 args for 2 params)",
             "unlifted: iStack_18 = iStack_18 + 0xc;"
           ],
           "calls": [
@@ -1624,13 +1623,12 @@
             "GetHero",
             "IsThingAwareOfOtherThingInAnyWay",
             "IsActiveThreadTerminating",
-            "QUESTLIST_BeginValue",
             "GetHero",
             "GiveThingBestEnemyTarget",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 120,
+          "lines": 119,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1686,6 +1684,7 @@
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
             "SetQuestCardObjective",
+            "ENGINE_IsAllDead",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1883,7 +1882,6 @@
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "label LAB_00dfdc8a",
-            "unlifted: xStack_38 = (CScriptThing *)&*(int *)(xStack_38 + 0x1);",
             "label LAB_00dfda90",
             "label LAB_00dfdd34",
             "unlifted: if *xStack_10 == 0 then",
@@ -1970,7 +1968,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 260,
+          "lines": 261,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2452,7 +2450,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1052,
+          "lines": 1054,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3183,10 +3181,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_8 = (CCharString)(int)ROUND(fVar5 * _DAT_0126b7dc + 0.5);",
-            "unlifted: xStack_8 = (CCharString)((int)xStack_8 + -1);"
-          ],
+          "todo": [],
           "calls": [
             "Pause",
             "GetHero",
@@ -3196,13 +3191,14 @@
             "CreateCreature",
             "GetHero",
             "ENGINE_SquaredDistance",
+            "ENGINE_Round",
             "IsActiveThreadTerminating",
             "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget"
           ],
-          "lines": 42,
+          "lines": 43,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3445,11 +3441,6 @@
             "xStack_14c_2",
             "x_stk_170"
           ]
-        },
-        "FSE/TraderConflictGood/Entities/BanditExtra.lua": {
-          "Main": [
-            "xStack_8"
-          ]
         }
       },
       "sharedHelpers": {
@@ -3479,7 +3470,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 42
+        "todo": 38
       }
     }
   ],
@@ -3490,6 +3481,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 49
+    "todo": 45
   }
 }
