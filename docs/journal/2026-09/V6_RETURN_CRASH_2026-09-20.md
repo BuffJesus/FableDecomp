@@ -230,3 +230,25 @@ temporary's dtor lifted as `ReleaseResource(resource)` on a never-constructed lo
 scratchValue2, ...)` byte offsets, `SetActor(map, "BAN1", &0x0)`), the `vector::clear()` ladder (`while willBandit ~=
 scratchValue7`); SkillTarget 0x00D4xxxx — a damage out-parameter of a message call (`if 0.0 < scratchValue6`), the
 teleport angle operand. 36 residue + 15 operand candidates were found for Guild; only 5 verified (the per-unit cap).
+
+## 8. Third v6 run (13:45): the woods return is right; two Melee-stage bugs
+
+`work/ab_runs/v6-20260920-134524`: WOODSWON fired at the woods door, the AVI played, PreMelee ended, the Melee
+stage ran (attack tutorial counted 7/7) — then two things the user saw:
+
+* **Tattoo cards as visible pickups at the teen transition.** Not Gameflow: `RunTutorials` gives the five
+  `OBJECT_TATTOO_CARD_*_CUSTOM_01` right after `TurnCreatureInto(hero, CREATURE_HERO)` with retail's third
+  argument `true` (slot 0x1e4 `GiveHeroObject(&name, -1, true)`); the SDK manifest lists two parameters, so the
+  converter dropped it and the sidecar's `sol::optional<bool>` defaulted to false — the same deviation Aeon's port
+  fixed at Gameflow stage 0. The unit converter now extends `GiveHeroObject` with the optional third bool (10 Guild
+  sites; `OBJECT_HAND_LAMP` gets retail's explicit `false`; our Gameflow unit now matches Aeon's). Unit mode only —
+  the Oakvale gate stays identical.
+* **Blocks stuck at 0/5.** `MeleeOpponent.Main` (0x00D56790) died on the first block: `movie & 1` on nil — the
+  VC7.1 EH flag in a slot Ghidra typed `undefined **`, which the movie handle had borrowed earlier in the function.
+  `drop_eh_state_flags` now accepts that spelling, and a slot with flag shapes AND a handle life (inline vtable
+  stores / a folded object constructor / thing-cast reads) has its flag-shaped lines renamed wherever they are,
+  not only in a contiguous phase. The same change removed WoodsWill's `scratchValue & 2` (a round-3 backlog item;
+  the `CCharString_bv` declaration and the slot's own set/clear were the last missing shapes of the register
+  migration rule). MeleeOpponent: 0 TODOs.
+
+Gates: Oakvale identical, smoke baseline, targeted 60 OK. v6 / v7 rebuilt + preflighted; zip rebuilt.
