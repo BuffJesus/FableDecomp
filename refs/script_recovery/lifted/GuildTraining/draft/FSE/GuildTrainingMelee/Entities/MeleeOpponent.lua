@@ -357,7 +357,6 @@ function Main(quest, me)
                             end
                             bVar4 = quest:IsPlayerCreatureBlocking()
                             if bVar4 then
-                                -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 1);
                                 pCVar6 = quest:GetHero()
                                 bVar4 = pCVar6:MsgIsHitBy("MeleeOpponent")
                                 if not bVar4 then goto LAB_00d57276 end
@@ -369,9 +368,6 @@ function Main(quest, me)
                             ::LAB_00d57276::
                             bVar4 = false
                             ::FLOW_past_lab_00d57276::
-                            if (xStack_bc & 1) ~= 0 then
-                                -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffe);
-                            end
                             if bVar4 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
@@ -656,7 +652,6 @@ function Main(quest, me)
                             else
                                 bVar4 = quest:IsPlayerCreatureBlocking()
                                 if bVar4 then
-                                    -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 2);
                                     pCVar6 = quest:GetHero()
                                     bVar4 = pCVar6:MsgIsHitBy("MeleeOpponent")
                                     if not bVar4 then goto LAB_00d57af8 end
@@ -668,9 +663,6 @@ function Main(quest, me)
                                 ::LAB_00d57af8::
                                 bVar4 = false
                                 ::FLOW_past_lab_00d57af8::
-                                if (xStack_bc & 2) ~= 0 then
-                                    -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffd);
-                                end
                                 if bVar4 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive

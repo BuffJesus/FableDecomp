@@ -10,9 +10,9 @@ local SCRIPT_DEF = {
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, ctr_84, ctr_88, scratchValue2, scratchValue3, scratchValue7, scratchValue9
-    local resource, resource2, willBandit
-    scratchValue2 = 0
+    local ctr_84, ctr_88, scratchValue, scratchValue2, scratchValue6, scratchValue8, resource
+    local resource2, willBandit
+    scratchValue = 0
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
     quest:SetStateBool("MissionOver", false)
@@ -26,9 +26,6 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_02", "", "")
     quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Will_Init: lift it as function WatchForTermination(quest)
-    if scratchValue & 2 ~= 0 then
-        scratchValue = scratchValue & 0xfffffffd
-    end
     quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
     quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
     local willWhisper = quest:GetThingWithScriptName("WillWhisper")
@@ -42,17 +39,17 @@ function Main(quest)
     -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
     -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8 / 0xc,iVar5);
     resources:ReleaseResource(resource)
-    scratchValue9 = 0
+    scratchValue8 = 0
     if #willBandit ~= 0 then
         ctr_84 = 0
         repeat
-            resources:TryAcquire(0 + scratchValue2, willBandit[ctr_84 + 1], 4)
+            resources:TryAcquire(0 + scratchValue, willBandit[ctr_84 + 1], 4)
             ctr_84 = ctr_84 + 1
-            scratchValue9 = scratchValue9 + 1
-            scratchValue2 = scratchValue2 + 16
-        until scratchValue9 >= #willBandit
+            scratchValue8 = scratchValue8 + 1
+            scratchValue = scratchValue + 16
+        until scratchValue8 >= #willBandit
     end
-    scratchValue3 = 0
+    scratchValue2 = 0
     resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, hero, 4) do
@@ -83,12 +80,12 @@ function Main(quest)
         if #willBandit ~= 0 then
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00d685cc end
-                quest:GiveThingBestEnemyTarget(willBandit[scratchValue3 + 1], hero)
-                local scratchValue6 = willBandit[scratchValue3 + 1]
-                quest:ModifyThingHealth(scratchValue6, 15.0 - quest:GetHealth(scratchValue6), false)
-                willBandit[scratchValue3 + 1]:SetToKillOnLevelUnload(0)
+                quest:GiveThingBestEnemyTarget(willBandit[scratchValue2 + 1], hero)
+                local scratchValue5 = willBandit[scratchValue2 + 1]
+                quest:ModifyThingHealth(scratchValue5, 15.0 - quest:GetHealth(scratchValue5), false)
+                willBandit[scratchValue2 + 1]:SetToKillOnLevelUnload(0)
                 ctr_88 = ctr_88 + 1
-                scratchValue3 = scratchValue3 + 1
+                scratchValue2 = scratchValue2 + 1
             until ctr_88 >= #willBandit
         end
         if not quest:IsActiveThreadTerminating() then
@@ -98,7 +95,7 @@ function Main(quest)
                 while not quest:IsLevelLoaded("GuildWoods") do
                     if not quest:NewScriptFrame() then goto LAB_00d685cc end
                 end
-                while willBandit ~= scratchValue7 do
+                while willBandit ~= scratchValue6 do
                     -- TODO(native): puStack_78 = puStack_78 - 3;
                 end
                 willBandit = quest:GetAllThingsWithScriptName("WillBandit")

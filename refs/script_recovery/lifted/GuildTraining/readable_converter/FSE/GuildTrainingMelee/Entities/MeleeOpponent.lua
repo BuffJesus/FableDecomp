@@ -18,7 +18,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local timerId, predicateResult, predicateResult47, ctr_c, tutorialState, addNewConversation
-    local scratchValue8, movie
+    local scratchValue8
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -46,7 +46,7 @@ function Main(quest, me)
     while quest:GetStateInt("TutorialState") == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d57f5d end
         if me:IsTalkedToByHero() then
-            movie = resources:StartMovie("")
+            local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             resources:PrepareResource(resource)
             while not resources:TryAcquire(resource, me, 4) do
@@ -230,16 +230,12 @@ function Main(quest, me)
                     return
                 end
                 if not quest:IsPlayerCreatureBlocking() then goto LAB_00d57276 end
-                -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 1);
                 if not hero:MsgIsHitBy("MeleeOpponent") then goto LAB_00d57276 end
                 predicateResult = true
                 goto FLOW_past_lab_00d57276
                 ::LAB_00d57276::
                 predicateResult = false
                 ::FLOW_past_lab_00d57276::
-                if movie & 1 ~= 0 then
-                    -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffe);
-                end
                 if predicateResult then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
@@ -430,16 +426,12 @@ function Main(quest, me)
                     end
                 else
                     if not quest:IsPlayerCreatureBlocking() then goto LAB_00d57af8 end
-                    -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc | 2);
                     if not hero:MsgIsHitBy("MeleeOpponent") then goto LAB_00d57af8 end
                     predicateResult47 = true
                     goto FLOW_past_lab_00d57af8
                     ::LAB_00d57af8::
                     predicateResult47 = false
                     ::FLOW_past_lab_00d57af8::
-                    if movie & 2 ~= 0 then
-                        -- TODO(native): xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffd);
-                    end
                     if predicateResult47 then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)

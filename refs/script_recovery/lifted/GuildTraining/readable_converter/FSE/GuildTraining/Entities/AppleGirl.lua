@@ -162,7 +162,7 @@ function Main(quest, me)
                         if not me:Speak(hero, "TEXT_QST_028_APPLEGIRL_THANKS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d3e06c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d3e087 end
                     end
-                    quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1)
+                    quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1, false)
                     appleMode = 2
                     quest:ClearThingHasInformation(me)
                     quest:PauseAllNonScriptedEntities(false)

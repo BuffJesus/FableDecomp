@@ -6971,11 +6971,7 @@
           },
           "todo": [
             "label LAB_00d56eb7",
-            "label LAB_00d57f7a",
-            "unlifted: xStack_bc = (undefined **)((uint)xStack_bc | 1);",
-            "unlifted: xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffe);",
-            "unlifted: xStack_bc = (undefined **)((uint)xStack_bc | 2);",
-            "unlifted: xStack_bc = (undefined **)((uint)xStack_bc & 0xfffffffd);"
+            "label LAB_00d57f7a"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -7345,7 +7341,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 848,
+          "lines": 840,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -7756,7 +7752,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 65
+        "todo": 61
       }
     },
     {
@@ -12950,7 +12946,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 275,
+          "lines": 270,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13301,6 +13297,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 354
+    "todo": 350
   }
 }

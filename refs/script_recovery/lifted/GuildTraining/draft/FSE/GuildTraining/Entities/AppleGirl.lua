@@ -355,7 +355,7 @@ function Main(quest, me)
                                     bVar2 = not alive
                                     if bVar2 then goto LAB_00d3e087 end
                                 end
-                                quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1)
+                                quest:GiveHeroObject("OBJECT_PIE_BLUEBERRY_01", -1, false)
                                 __native_entity_state:SetStateInt("AppleMode", 2)
                                 quest:ClearThingHasInformation(me)
                                 quest:PauseAllNonScriptedEntities(false)

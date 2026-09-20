@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local CVar10, bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, puStack_78, pvVar9, r1, uVar11, xStack_10, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
+    local bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, puStack_78, pvVar9, r1, uVar11, xStack_10, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
     local alive = true
     iVar12 = 0
     quest:SetStateBool("MissionSucceeded", false)
@@ -28,12 +28,7 @@ function Main(quest)
     if not bVar3 then
         quest:SetQuestCardObjective("Q_GuildTrainingWoodsWill", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_06_OPTION_02", "", "")
         quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Will_Init: lift it as function WatchForTermination(quest)
-        if (CVar10 & 2) ~= 0 then
-            CVar10 = CVar10 & 0xfffffffd
-        end
         quest:CreateThread("DoMission")  -- native thread body 0x00D68AE0: lift it as function DoMission(quest)
-        if (CVar10 & 4) ~= 0 then
-        end
         quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_TRAINING_KILL_BANDITS", "Q_GuildTrainingWoodsWill", false)
         r1 = quest:GetThingWithScriptName("WillWhisper")
         xStack_60 = resources:NewResource()

@@ -175,7 +175,7 @@ function Main(quest, me)
                             goto LAB_00d63c96
                         end
                     end
-                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
+                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_138;
@@ -219,7 +219,7 @@ function Main(quest, me)
                             goto LAB_00d63c96
                         end
                     end
-                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
+                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
                     -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_bc;
@@ -364,7 +364,7 @@ function Main(quest, me)
                                         bVar2 = not alive
                                         if bVar2 then goto LAB_00d63a7c end
                                     end
-                                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
+                                    quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                                     iVar6 = math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(0xf14)))
                                     quest:GiveHeroGold(iVar6)
@@ -575,7 +575,7 @@ function Main(quest, me)
                             bVar2 = not alive
                             if bVar2 then goto LAB_00d63ad2 end
                         end
-                        quest:GiveHeroObject("OBJECT_HAND_LAMP", -1)
+                        quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                         quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                         iVar6 = math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(0xf14)))
                         quest:GiveHeroGold(iVar6)
