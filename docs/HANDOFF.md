@@ -63,6 +63,14 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
+**2026-09-20 (evening): AUTOPILOT exec channel built, not yet used in-game.** Sidecar `a02ba57` (`Autopilot.h`: the
+DLL polls `<bundle>/NoviCompatibility/autopilot/commands.txt` from NewScriptFrame and runs each line in the named
+quest's VM; `[Autopilot]` log replies), driver `tools/script_recovery/autopilot.py` (send / run / tail; checklist
+steps with expect / forbid / repeat), first checklist `checklists/guild_woods_return.json`, protocol tested against a
+fake sidecar. Design + status: `docs/scripts/AUTOPILOT_DESIGN.md`. **First live use (user, game free, a punch-stage
+save loaded):** `autopilot.py send v6 list`, then `autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json`.
+Bundles v6 / v7 carry the channel DLL (preflight passed).
+
 **2026-09-20 (third v6 run 13:45): the woods return is RIGHT (WOODSWON at the door, AVI, PreMelee ends, Melee stage
 runs; attack tutorial 7/7).** Two bugs seen and fixed at the converter: tattoo cards as visible pickups at the teen
 transition (`GiveHeroObject`'s retail third bool, dropped by the two-parameter SDK manifest) and blocks stuck at 0/5
