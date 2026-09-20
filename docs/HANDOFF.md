@@ -57,7 +57,7 @@ Orchard MK_OFI_GWLL_WHIS2 + Trader = 0; Oakvale gate untouched). Second + third 
 (EH flag in an `int *` slot, colour address-before-stores, float in a CCharString slot), Will's byte-split resource,
 apple cleanup index, Trader special-ability enum (+24 `SetFriendsWithEverythingFlag(true)`), Orchard branch literals
 + counter handle, Trader `_SUFFIX` appends + conversation operands + `IsRegionLoaded("")` + byte-slice sign test.
-Journal `docs/journal/2026-09/V6_RETURN_CRASH_2026-09-20.md` §4-6. **v6 / v7 rebuilt + preflighted; zip rebuilt.
+Third round (29 agents): Trader's BanditExtra / AttackPeople / WatchForTradersFreed (`__native_all_dead`) / on-talk key / opinion source, MeleeOpponent's `ReleaseResource("")` (dtor on the derived head). **Backlog (verified, later stages, unfixed): WoodsWill's per-bandit RESOURCE ARRAY idiom + `CCharString_bv` EH flag, SkillTarget's damage out-param** (§7). Journal `docs/journal/2026-09/V6_RETURN_CRASH_2026-09-20.md` §4-7. **v6 / v7 rebuilt + preflighted; zip rebuilt.
 Next run (user, game free): `ab_playtest.py launch v6` from the post-beetles save → expect WOODSWON at the woods
 door with no talk, YES → AVI; then the Melee stage (Whisper fight, grades) as new ground; then v7 + compare.**
 
