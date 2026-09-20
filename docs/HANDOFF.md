@@ -63,6 +63,13 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
+**2026-09-20 (third v6 run 13:45): the woods return is RIGHT (WOODSWON at the door, AVI, PreMelee ends, Melee stage
+runs; attack tutorial 7/7).** Two bugs seen and fixed at the converter: tattoo cards as visible pickups at the teen
+transition (`GiveHeroObject`'s retail third bool, dropped by the two-parameter SDK manifest) and blocks stuck at 0/5
+(`MeleeOpponent.Main` died on the first block — the EH flag in a slot the movie handle had borrowed, `movie & 1`).
+Journal §8. **v6 / v7 rebuilt + preflighted; zip rebuilt. Next run: from the Melee stage (or the post-woods save):
+block 5/5, the Whisper fight, the grade + repeat question, then Skill training as new ground; then v7 + compare.**
+
 **2026-09-20 (second v6 run 09:22 + afternoon): NO crash, no Lua error; the PUNCH replay is root-caused from the
 bytes and fixed at the converter.** Retail (walkthrough 26:34-26:58): WOODSWON fires the moment the hero leaves the
 woods — a SURVIVING woods-loop thread. Retail keeps the Guildmaster's script alive across the unload because its
