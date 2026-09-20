@@ -101,3 +101,13 @@ faking engine messages (that is what we test), retail RE (none needed — every 
   Open questions the first run answers: does `EntityTeleportToThing` across the Guild/woods boundary stream the region
   (retail cutscenes teleport across regions, so expected yes); does `SetThingAsKilled` on a spawned beetle count for
   ScorpionHome's `GetAllThingsWithScriptName("GuildScorpions")` accounting (it removes the thing, so expected yes).
+
+## Status 2026-09-20 (night): LIVE, Guild path 18/18 hands-free
+
+`autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json --launch --save f645456fds` does the
+whole Guild childhood path (launch -> frontend -> arrival -> ... -> WOODSWON -> YES -> Melee stage) with nobody at the
+keyboard: ~25 minutes, no crash. `input:` steps are real input through `tools/script_recovery/gamewin.ps1`
+(scancode keys, `hold`, `lmb`, `click`, `move`, `focus`, `capture`), frontend screens are classified from captures,
+region crossings use `GoToMapSlotRetailTransition` (sidecar 22affe1). Findings + root causes:
+`docs/journal/2026-09/AUTOPILOT_FIRST_LIVE_2026-09-20.md`. Next: grader (step table + error scan is in the report
+JSON already), the Melee-stage checklist (blocks 5/5, Whisper, grade), v7 through the same checklist + `compare`.

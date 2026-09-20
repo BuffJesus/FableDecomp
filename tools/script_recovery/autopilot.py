@@ -13,13 +13,16 @@ waits for the batch's `processed` marker, and runs checklists of steps against t
 A checklist is a JSON list of steps:
     {"id": "punch", "do": ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"],
      "expect": "TEXT_CS_028_PREMELEE_STICK", "forbid": "LUA RUNTIME ERROR", "timeout": 30}
-`do` lines go to the channel (`input: <keys>` lines are reserved for the FableForge frontend driver and are
-reported as SKIPPED here); `expect` is a regex the log must show after the step's batch marker within `timeout`
+`do` lines go to the channel; `input: key <KEYS>` / `input: click <X> <Y>` / `input: capture <file>` lines drive the
+game window through the FableForge frontend driver (gamewin.ps1: real keyboard/mouse input); `expect` is a regex the log must show after the step's batch marker within `timeout`
 seconds; `forbid` is a regex that fails the step if it appears in the same window. The run stops at the first
 failure, dumps every live quest, and archives the log through ab_playtest.collect.
 
-The game is launched and the save loaded by the user or by ab_playtest/local_test (`--launch`); this driver only
-talks to a running game. It never launches Fable itself.
+`run --launch --save <profile>` does the front half hands-free: stages that profile's AutoSave into the folder the
+`0atlas` frontend row loads (1234234; originals backed up and restored afterwards), launches the bundle through
+ab_playtest (which archives the log when the game exits), clicks title -> Change Profile -> 0atlas -> Continue ->
+AutoSave, and waits for the first quest host before the checklist starts. Without `--launch` the driver only talks
+to a game that is already running with the bundle. Never launch Fable while another session needs the game.
 """
 from __future__ import annotations
 
@@ -32,6 +35,196 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 WORK = ROOT / 'work' / 'new-oakvale-original-fse-20260912'
+GAMEWIN = Path(__file__).with_name('gamewin.ps1')   # window driver (real input); copy of FableForge tools/ingame/gamewin.ps1 + lmb/hold/scancodes
+
+
+def game_input(spec: str, timeout: float = 60.0) -> str:
+    """`key ENTER ESC` / `click 660 398` / `capture <png>` through gamewin.ps1; returns its stdout."""
+    import subprocess
+    parts = spec.split()
+    if not parts:
+        return ''
+    if parts[0] == 'key':
+        args = ['-Action', 'key', '-Keys', ' '.join(parts[1:])]
+    elif parts[0] in ('click', 'move') and len(parts) == 3:
+        args = ['-Action', parts[0], '-X', parts[1], '-Y', parts[2]]
+    elif parts[0] == 'capture' and len(parts) == 2:
+        args = ['-Action', 'capture', '-Output', parts[1]]
+    elif parts[0] == 'hold' and len(parts) == 3:       # `hold W 3000`: hold a key for N ms (walk)
+        args = ['-Action', 'hold', '-Keys', parts[1], '-X', parts[2]]
+    elif parts[0] == 'focus':                     # bring the game window to the foreground (Fable freezes cutscene
+        args = ['-Action', 'info']                #   timers while it is not the foreground window)
+    elif parts[0] == 'lmb':                       # `lmb [count]`: attack / confirm clicks where the cursor is
+        args = ['-Action', 'lmb', '-X', parts[1] if len(parts) > 1 else '1']
+    else:
+        raise ValueError(f'bad input spec {spec!r} (key <KEYS> | hold <KEY> <ms> | click <X> <Y> | move <X> <Y> | lmb [count] | focus | capture <file>)')
+    r = subprocess.run(['powershell', '-NoProfile', '-File', str(GAMEWIN)] + args, capture_output=True, text=True, timeout=timeout)
+    if r.returncode != 0:
+        raise RuntimeError(f'gamewin {spec!r} failed: {r.stderr.strip()[-300:]}')
+    return r.stdout
+
+
+SAVES = Path.home() / 'Documents' / 'My Games' / 'Fable' / 'Saves'
+FRONTEND_PROFILE_DIR = '1234234'        # what the frontend's '0atlas' row actually loads (its Profile.bin names this folder)
+
+
+def stage_save(profile: str) -> Path | None:
+    """copy <profile>/AutoSave* over the 0atlas-loaded folder; returns the backup dir (restore with restore_save)"""
+    import shutil
+    src, dst = SAVES / profile, SAVES / FRONTEND_PROFILE_DIR
+    if not (src / 'AutoSave').is_file():
+        sys.exit(f'no AutoSave in profile {src}')
+    backup = ROOT / 'scratchpad' / f'save_backup_{FRONTEND_PROFILE_DIR}'
+    backup.mkdir(parents=True, exist_ok=True)
+    for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
+        if (dst / f).is_file():
+            shutil.copy2(dst / f, backup / f)
+        shutil.copy2(src / f, dst / f)
+    print(f'staged {profile}/AutoSave -> {dst} (backup {backup})')
+    return backup
+
+
+def restore_save(backup: Path | None) -> None:
+    import shutil
+    if not backup:
+        return
+    dst = SAVES / FRONTEND_PROFILE_DIR
+    for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
+        if (backup / f).is_file():
+            shutil.copy2(backup / f, dst / f)
+    print(f'restored {dst} from {backup}')
+
+
+def screen_kind(png: Path) -> str:
+    """classify a frontend capture by region brightness/colour (measured on 2026-09-20 captures, 1024x768):
+    title / menu / profiles / load / other (in-game, quest screens, boxes)"""
+    from PIL import Image
+    import numpy as np
+    im = np.asarray(Image.open(png).convert('RGB')).astype(float)
+
+    def region(x0, y0, x1, y1):
+        return im[y0:y1, x0:x1].reshape(-1, 3)
+    grey = lambda a: a.mean(1)  # noqa: E731
+    bright = lambda a: (grey(a) > 200).mean()  # noqa: E731
+    header = bright(region(100, 76, 270, 98))                  # "Select Profile" / "<profile> - Load Game" header text
+    if header > 0.10 and bright(region(440, 198, 580, 220)) > 0.15:
+        return 'profiles'                                      # "New Profile" row
+    if header > 0.10 and bright(region(150, 150, 270, 172)) > 0.15:
+        return 'load'                                          # "AutoSave" row
+    if grey(region(20, 680, 400, 715)).mean() < 30:            # no Back/Delete bar: title or main menu
+        if bright(region(380, 325, 650, 350)) > 0.15:
+            return 'menu'                                      # row 1 "<profile> - Continue Game"
+        if bright(region(280, 388, 740, 412)) > 0.10:
+            return 'title'                                     # "Press Left Mouse Button To Continue"
+    return 'other'
+
+
+def load_header_is(png: Path, reference: Path) -> bool:
+    """the '<profile> - Load Game' header text region matches the reference capture (pixel diff)"""
+    from PIL import Image
+    import numpy as np
+    a = np.asarray(Image.open(png).convert('L')).astype(float)[75:100, 30:310]
+    b = np.asarray(Image.open(reference).convert('L')).astype(float)[75:100, 30:310]
+    return float(np.abs(a - b).mean()) < 12.0
+
+
+PROFILE_ROWS = [209, 254, 298, 343, 388, 433, 478, 523, 567]     # y of the nine visible Select Profile rows
+
+
+def highlighted_profile_row(png: Path) -> int:
+    """y of the row the light-blue hover bar is on (blue tint of the bar left/right of the text column)"""
+    from PIL import Image
+    import numpy as np
+    im = np.asarray(Image.open(png).convert('RGB')).astype(float)
+
+    def score(y):
+        a = np.concatenate([im[y - 10:y + 10, 300:420].reshape(-1, 3), im[y - 10:y + 10, 600:720].reshape(-1, 3)])
+        return float(((a[:, 2] - a[:, 0]) * (a.mean(1) > 140)).mean())
+    return PROFILE_ROWS[int(np.argmax([score(y) for y in PROFILE_ROWS]))]
+
+
+def hover_profile_row(target_y: int, shots: Path, tag: str) -> bool:
+    """move the cursor until the hover bar sits on the wanted row (the DirectInput cursor walk lands ~1 row off)"""
+    y = target_y
+    for attempt in range(4):
+        game_input(f'move 512 {y}')
+        time.sleep(1.0)
+        png = shots / f'{tag}_hover{attempt}.png'
+        game_input(f'capture {png}')
+        got = highlighted_profile_row(png)
+        if got == target_y:
+            return True
+        y += target_y - got
+    return False
+
+
+def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
+    """title -> (menu -> Change Profile) -> 0atlas -> Continue Game -> AutoSave, verifying every screen by capture;
+    the main menu opens on the last profile, or on the profile list when the game has none (after a crash)"""
+    shots.mkdir(parents=True, exist_ok=True)
+    profile_selected = False
+    deadline = time.time() + timeout
+    step = 0
+    while time.time() < deadline:
+        step += 1
+        png = shots / f'fe_{step:02d}.png'
+        game_input(f'capture {png}')
+        kind = screen_kind(png)
+        print(f'frontend: {kind}')
+        if kind == 'title':
+            game_input('click 512 400')
+        elif kind == 'menu':
+            game_input('click 512 337' if profile_selected else 'click 512 385')   # Continue Game / Change Profile
+        elif kind == 'profiles':
+            # the list ignores the arrow keys and the DirectInput cursor walk lands about one row (44 px) off:
+            # hover, verify the highlight bar by capture, correct, then click. Rows: New Profile, 0aa, 0atlas.
+            if hover_profile_row(298, shots, f'fe_{step:02d}'):
+                game_input('lmb 1')
+                profile_selected = True
+            else:
+                print('frontend: could not put the hover bar on 0atlas')
+        elif kind == 'load':
+            if not load_header_is(png, Path(__file__).parent / 'testdata' / 'frontend' / 'load_1234234.png'):
+                print('frontend: Load Game screen for the wrong profile; back to the profile list')
+                game_input('key ESC')
+                profile_selected = False
+                time.sleep(4)
+                continue
+            game_input('click 207 161')                                            # AutoSave
+            return
+        else:
+            time.sleep(3)
+            continue
+        time.sleep(4)
+    sys.exit('frontend: could not reach the Load Game screen')
+
+
+def launch_and_load(bundle: str, timeout: float = 240.0) -> None:
+    """launch the bundle (ab_playtest, background), then drive the frontend to the 0atlas AutoSave and wait for a host"""
+    import subprocess
+    log = log_path(bundle)
+    if log.is_file():
+        log.unlink()                                 # a fresh log: the launcher appends, and stale markers would satisfy waits
+    proc = subprocess.Popen([sys.executable, str(ROOT / 'tools' / 'script_recovery' / 'ab_playtest.py'), 'launch', bundle],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)   # archives the log when Fable exits
+    r = subprocess.run(['powershell', '-NoProfile', '-File', str(GAMEWIN), '-Action', 'wait', '-Seconds', '120'], capture_output=True, text=True)
+    if r.returncode != 0:
+        proc.poll()
+        sys.exit(f'no Fable window: {r.stdout.strip()}')
+    deadline = time.time() + timeout
+    while time.time() < deadline and not (log.is_file() and 'hosts enabled' in log.read_text(encoding='utf-8', errors='replace')):
+        time.sleep(2)
+    time.sleep(14)                                   # title screen
+    tail = LogTail(log)
+    drive_frontend_to_autosave(ROOT / 'scratchpad' / 'autopilot_frontend')
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        if any('LuaQuestHost for ' in l and 'created' in l for l in tail.new_lines()):
+            print('save loaded: first quest host is up')
+            time.sleep(10)                           # the loading screen / opening cutscene: script frames start soon after
+            return
+        time.sleep(2)
+    sys.exit('the save did not load (no quest host within the timeout)')
 
 
 def bundle_dir(name: str) -> Path:
@@ -50,20 +243,34 @@ def commands_path(name: str) -> Path:
 
 
 class LogTail:
-    """Read new lines of the FSE log since the last call (the log is append-only while the game runs)."""
+    """Read new COMPLETE lines of the FSE log since the last call (the log is append-only while the game runs).
+
+    Binary reads at a byte offset; a trailing partial line (the DLL writes line then endl, we may read in between)
+    is held back until its newline arrives, so a marker is never split across two calls.
+    """
 
     def __init__(self, path: Path):
         self.path = path
         self.pos = path.stat().st_size if path.is_file() else 0
+        self.partial = b''
 
     def new_lines(self) -> list[str]:
         if not self.path.is_file():
             return []
-        with self.path.open('r', encoding='utf-8', errors='replace') as f:
+        with self.path.open('rb') as f:
             f.seek(self.pos)
             data = f.read()
             self.pos = f.tell()
-        return data.splitlines()
+        data = self.partial + data
+        if not data:
+            return []
+        if data.endswith(b'\n'):
+            self.partial = b''
+        else:
+            data, _, self.partial = data.rpartition(b'\n')
+            if not data and not self.partial:
+                return []
+        return data.decode('utf-8', errors='replace').splitlines()
 
 
 class Channel:
@@ -97,43 +304,89 @@ class Channel:
 def run_checklist(bundle: str, steps: list[dict], default_timeout: float = 30.0) -> list[dict]:
     ch = Channel(bundle)
     results = []
+    # one tail for the whole checklist: a marker logged between two steps (PASSED_20 three seconds after PASSED_10,
+    # while the driver was still finishing the previous step) must count for the next step
+    tail = LogTail(ch.log)
+    carry = ''          # log text read past the previous step's marker (the same read chunk), owed to the next step
     for step in steps:
         sid = step.get('id', f'step{len(results) + 1}')
         do = step.get('do', [])
         expect = step.get('expect')
         forbid = step.get('forbid')
         timeout = float(step.get('timeout', default_timeout))
-        inputs = [d for d in do if isinstance(d, str) and d.startswith('input:')]
+        inputs = [d[6:].strip() for d in do if isinstance(d, str) and d.startswith('input:')]
         commands = [d for d in do if isinstance(d, str) and not d.startswith('input:')]
-        tail = LogTail(ch.log)
         outcome = {'id': sid, 'status': 'PASS', 'detail': ''}
-        if inputs:
-            outcome.update(status='SKIPPED', detail='input steps need the FableForge frontend driver: ' + '; '.join(inputs))
+        if inputs and not GAMEWIN.is_file():
+            outcome.update(status='SKIPPED', detail=f'input steps need {GAMEWIN}: ' + '; '.join(inputs))
             results.append(outcome)
             print(f'{sid}: SKIPPED ({outcome["detail"]})')
             continue
-        # `repeat`: re-send the commands every `interval` seconds until the marker shows (a respawning spawner)
+
         repeats = int(step.get('repeat', 1))
         interval = float(step.get('interval', 2.0))
-        replies = ch.send(commands, timeout=min(timeout, 15.0)) if commands else []
+
+        def act() -> list[str]:
+            """one round of the step's actions, in `do` order: runs of channel lines go as one batch, `input:`
+            lines drive the window in between (a game-info box pauses script frames, so its click must come first)"""
+            got: list[str] = []
+            pending: list[str] = []
+
+            def flush() -> None:
+                if pending:
+                    got.extend(ch.send(pending, timeout=min(timeout, 15.0 if repeats == 1 else 5.0)))
+                    pending.clear()
+            for d in do:
+                if not isinstance(d, str):
+                    continue
+                if d.startswith('input:'):
+                    flush()
+                    try:
+                        game_input(d[6:].strip())
+                    except Exception as e:  # noqa: BLE001 - reported as a step failure
+                        got.append(f'[Autopilot] error input {d[6:].strip()}: {e}')
+                else:
+                    pending.append(d)
+            flush()
+            return got
+        # `repeat`: re-send the commands every `interval` seconds until the marker shows (a respawning spawner)
+        if GAMEWIN.is_file():
+            try:
+                game_input('focus')          # a background Fable window stalls cutscene waits (5-minute BOOHOO hang, 2026-09-20)
+            except Exception as e:  # noqa: BLE001
+                print(f'{sid}: focus failed: {e}')
+        replies = act()
         errors = [r for r in replies if 'error' in r or 'exception' in r or 'TIMEOUT' in r]
+        # a channel TIMEOUT on a repeated step is not final: a game-info box pauses script frames until the
+        # step's own click clears it, so keep re-sending until the repeat budget is spent
+        if errors and repeats > 1 and all('TIMEOUT' in e for e in errors):
+            errors = []
         if errors:
             outcome.update(status='FAIL', detail='channel: ' + ' | '.join(errors))
         elif expect:
             deadline = time.time() + timeout
-            seen = ''
+            seen, carry = carry, ''
             sent, next_send = 1, time.time() + interval
+            next_focus = time.time() + 15.0
             while time.time() < deadline and outcome['status'] == 'PASS':
+                if GAMEWIN.is_file() and time.time() >= next_focus:
+                    try:
+                        game_input('focus')
+                    except Exception:  # noqa: BLE001
+                        pass
+                    next_focus = time.time() + 15.0
                 chunk = tail.new_lines()
                 seen += '\n'.join(chunk) + '\n'
                 if forbid and re.search(forbid, seen):
                     outcome.update(status='FAIL', detail=f'forbidden marker /{forbid}/ appeared')
                     break
-                if re.search(expect, seen):
+                m = re.search(expect, seen)
+                if m:
                     outcome['detail'] = f'expected /{expect}/ seen' + (f' after {sent} send(s)' if repeats > 1 else '')
+                    carry = seen[m.end():]
                     break
-                if commands and sent < repeats and time.time() >= next_send:
-                    ch.send(commands, timeout=min(timeout, 15.0))
+                if (commands or inputs) and sent < repeats and time.time() >= next_send:
+                    act()
                     sent += 1
                     next_send = time.time() + interval
                 time.sleep(0.2)
@@ -155,6 +408,8 @@ def main() -> None:
     sub = ap.add_subparsers(dest='cmd', required=True)
     s = sub.add_parser('send'); s.add_argument('bundle'); s.add_argument('lines', nargs='+'); s.add_argument('--timeout', type=float, default=10)
     r = sub.add_parser('run'); r.add_argument('bundle'); r.add_argument('checklist'); r.add_argument('--report')
+    r.add_argument('--launch', action='store_true', help='launch the bundle and load the 0atlas AutoSave first')
+    r.add_argument('--save', help='profile whose AutoSave to stage into the 0atlas-loaded folder before launching (restored afterwards)')
     t = sub.add_parser('tail'); t.add_argument('bundle')
     a = ap.parse_args()
     if a.cmd == 'send':
@@ -162,7 +417,13 @@ def main() -> None:
             print(line)
     elif a.cmd == 'run':
         steps = json.loads(Path(a.checklist).read_text(encoding='utf-8'))
-        results = run_checklist(a.bundle, steps)
+        backup = stage_save(a.save) if a.save else None
+        try:
+            if a.launch:
+                launch_and_load(a.bundle)
+            results = run_checklist(a.bundle, steps)
+        finally:
+            restore_save(backup)
         if a.report:
             Path(a.report).write_text(json.dumps(results, indent=2), encoding='utf-8')
         failed = [x for x in results if x['status'] == 'FAIL']

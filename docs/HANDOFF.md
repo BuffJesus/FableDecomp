@@ -75,13 +75,15 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
-**2026-09-20 (evening): AUTOPILOT exec channel built, not yet used in-game.** Sidecar `a02ba57` (`Autopilot.h`: the
-DLL polls `<bundle>/NoviCompatibility/autopilot/commands.txt` from NewScriptFrame and runs each line in the named
-quest's VM; `[Autopilot]` log replies), driver `tools/script_recovery/autopilot.py` (send / run / tail; checklist
-steps with expect / forbid / repeat), first checklist `checklists/guild_woods_return.json`, protocol tested against a
-fake sidecar. Design + status: `docs/scripts/AUTOPILOT_DESIGN.md`. **First live use (user, game free, a punch-stage
-save loaded):** `autopilot.py send v6 list`, then `autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json`.
-Bundles v6 / v7 carry the channel DLL (preflight passed).
+**2026-09-20 (night): AUTOPILOT IS LIVE -- the whole Guild childhood path runs hands-free, 18/18, no crash.**
+`python tools/script_recovery/autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json --launch --save f645456fds`
+(stages the save, launches, drives the frontend by capture+classify, then arrival -> talk -> real punches/stick hits ->
+ALARM -> retail transition into GuildWoods -> 10 real beetle kills -> back -> WOODSWON -> YES -> Melee stage; ~25 min).
+Sidecar `22affe1` (autopilot GC per chunk + the retail region-transition update hook -- the bare `GoToMapSlot` entry
+crashed every return at 0x821878, crash-caught). Findings/root causes: `docs/journal/2026-09/AUTOPILOT_FIRST_LIVE_2026-09-20.md`;
+rules: GOTCHAS "Autopilot". Open: converter defect in the Guildmaster's XP-orb wait (CCountedPointer copy via
+`(auStack_160 + 4)` not folded -> `while nil ~= nil`), Melee-stage checklist (blocks 5/5, Whisper, grade), v7 through
+the same checklist + `ab_playtest.py compare v6 v7`, grader.
 
 **2026-09-20 (third v6 run 13:45): the woods return is RIGHT (WOODSWON at the door, AVI, PreMelee ends, Melee stage
 runs; attack tutorial 7/7).** Two bugs seen and fixed at the converter: tattoo cards as visible pickups at the teen

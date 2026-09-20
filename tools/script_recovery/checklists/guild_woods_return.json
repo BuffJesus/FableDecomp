@@ -1,21 +1,226 @@
 [
-  {"id": "channel", "do": ["list"], "expect": "\\[Autopilot\\] list: \\d+ hosts", "timeout": 10},
-  {"id": "punch_7", "do": ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"],
-   "expect": "TEXT_CS_028_PREMELEE_STICK", "forbid": "LUA RUNTIME ERROR", "timeout": 60,
-   "note": "retail: the Guildmaster's DummyHits loop (0x00D52E90) ends at 7 and the STICK cutscene follows"},
-  {"id": "stick_7", "do": ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"],
-   "expect": "CS_GUILD_PREMELEE_(PASSED|ALARM)|PREMELEE_ALARM", "forbid": "LUA RUNTIME ERROR", "timeout": 90,
-   "note": "second DummyHits loop, then the XP orb + ALARM stages (the orb pickup is a message; give it time)"},
-  {"id": "to_the_woods", "do": ["hero teleport ScorpionSpawn"],
-   "expect": "EntityAllocator<\\d+>\\] Script: GuildTrainingWoodsMelee/Entities/ScorpionHome", "forbid": "LUA RUNTIME ERROR", "timeout": 60,
-   "note": "GuildWoods is the adjacent region; ScorpionHome binds when the WoodsMelee Main passes IsLevelLoaded('GuildWoods')"},
-  {"id": "beetles", "repeat": 15, "interval": 2.0,
-   "do": ["Q_GuildTrainingWoodsMelee: for _, t in ipairs(quest:GetAllThingsWithScriptName('GuildScorpions')) do quest:SetThingAsKilled(t) end"],
-   "expect": "SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsMelee'", "forbid": "LUA RUNTIME ERROR", "timeout": 90,
-   "note": "ScorpionHome respawns until GUI_MeleeBeetles (10) are down; kill whatever is alive every 2 s"},
-  {"id": "woods_return", "do": ["hero teleport MK_GTM_WD_GUARD"],
-   "expect": "CS_GUILD_MELEE_WOODSWON", "forbid": "PREMELEE_PUNCH_10|LUA RUNTIME ERROR", "timeout": 60,
-   "note": "retail walkthrough 26:34-26:40: WOODSWON fires as the hero comes through the gate, no talk"},
-  {"id": "split_yes", "do": ["input: Enter"], "expect": "PlayAVIMovie", "timeout": 30,
-   "note": "the YES/NO answer is an engine message: real input through the FableForge frontend driver (not wired yet)"}
+ {
+  "id": "channel",
+  "do": [
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list: \\d+ hosts",
+  "timeout": 10,
+  "note": "save: Guild arrival (GuildTraining GameState 0); PreMelee activates by itself after the arrival cutscene"
+ },
+ {
+  "id": "premelee_host",
+  "do": [
+   "input: key ESC",
+   "input: lmb 1"
+  ],
+  "expect": "GetThingWithScriptName START: 'M_MeleeTeacherStand'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "arrival cutscene (Maze) then BOOHOO/WAKEUP: ESC skips each scene; do NOT teleport the hero before the Guildmaster's teleport to M_MeleeTeacherStand (that lookup is the marker) -- a mid-scene teleport stalls the Maze walk; the click clears an item/tutorial box that pops mid-scene (the Stick hand-over), which ESC does not",
+  "repeat": 60,
+  "interval": 5.0
+ },
+ {
+  "id": "talk_guildmaster",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "hero teleport M_MeleeTeacherStand",
+   "input: key TAB"
+  ],
+  "expect": "TEXT_CS_028_PREMELEE_PUNCH_10",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "IsTalkedToByHero is an engine message: real TAB next to the Guildmaster (retail: after BOOHOO he waits at M_MeleeTeacherStand)"
+ },
+ {
+  "id": "punch_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: key ESC",
+   "input: lmb 1"
+  ],
+  "expect": "GetThingWithScriptName START: 'PreMeleeWhisper'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "PUNCH cutscene; its end = the RemoveThing(PreMeleeWhisper) lookup (ESC skips the scene; ESC outside a scene opens the pause menu, so skip steps are separate from action steps); the click clears an item/tutorial box that pops mid-scene (the Stick hand-over), which ESC does not"
+ },
+ {
+  "id": "punch_boxes",
+  "repeat": 10,
+  "interval": 3.0,
+  "do": [
+   "input: lmb 1"
+  ],
+  "expect": "Registered game timer with ID",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "two tutorial boxes (SPACE to target / LMB to attack) pause script frames; any click clears one; the DummyHits loop registers its timer"
+ },
+ {
+  "id": "punch_real",
+  "repeat": 16,
+  "interval": 2.5,
+  "do": [
+   "hero teleport PreMeleeDummyMarker",
+   "input: lmb 1",
+   "input: key SPACE",
+   "input: lmb 3"
+  ],
+  "expect": "TEXT_CS_028_PREMELEE_STICK",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "real punches on the locked dummy (MsgIsHitBy is what we test); STICK cutscene at DummyHits 7"
+ },
+ {
+  "id": "stick_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: key ESC",
+   "input: lmb 1"
+  ],
+  "expect": "GiveHero OBJECT_HERO_STICK",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "STICK cutscene up to the stick hand-over (ESC skips the scene; ESC outside a scene opens the pause menu, so skip steps are separate from action steps); the click clears an item/tutorial box that pops mid-scene (the Stick hand-over), which ESC does not"
+ },
+ {
+  "id": "stick_real",
+  "repeat": 16,
+  "interval": 2.5,
+  "do": [
+   "input: lmb 1",
+   "input: key Q",
+   "input: key SPACE",
+   "input: lmb 3"
+  ],
+  "expect": "TEXT_CS_028_PREMELEE_PASSED_10",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "Stick item box + equip tutorial box (clicks), Q equips, SPACE locks, strike; second DummyHits loop to 7 then PASSED"
+ },
+ {
+  "id": "passed_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: key ESC",
+   "input: lmb 1"
+  ],
+  "expect": "TEXT_CS_028_PREMELEE_PASSED_20",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "PASSED cutscene (two Speaks) (ESC skips the scene; ESC outside a scene opens the pause menu, so skip steps are separate from action steps); the click clears an item/tutorial box that pops mid-scene (the Stick hand-over), which ESC does not"
+ },
+ {
+  "id": "xp_to_alarm",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: lmb 1"
+  ],
+  "expect": "TEXT_CS_028_PREMELEE_ALARM_10",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "XP tutorial box; the Guildmaster then runs the ALARM cutscene and gives the beetles quest card"
+ },
+ {
+  "id": "quest_start_screen",
+  "repeat": 10,
+  "interval": 3.0,
+  "do": [
+   "input: key ENTER"
+  ],
+  "expect": "LuaQuestHost for 'GuildTrainingWoodsMelee/GuildTrainingWoodsMelee' created",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "KickOffQuestStartScreen (Quest Start: Continue = ENTER; clicks do not work on menu screens)"
+ },
+ {
+  "id": "quest_card_box",
+  "do": [
+   "input: key ENTER",
+   "input: lmb 1",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list",
+  "timeout": 60,
+  "note": "the Quest Start screen may still be up (the WoodsMelee host is created before it shows): ENTER, then click the 'You have started a new Quest' / 'Use the markers' boxes until the channel answers",
+  "repeat": 8,
+  "interval": 3.0
+ },
+ {
+  "id": "boxes_cleared",
+  "repeat": 8,
+  "interval": 3.0,
+  "do": [
+   "input: lmb 1",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list",
+  "timeout": 60,
+  "note": "the second tutorial box ('Use the markers on your Map') pauses frames: click until the channel answers"
+ },
+ {
+  "id": "to_the_woods",
+  "do": [
+   "GuildTraining: quest:GoToMapSlotRetailTransition(84, 4839.04, 3689.16, 26.0)"
+  ],
+  "expect": "Binding entity 'ScorpionHome' to script 'GuildTrainingWoodsMelee/Entities/ScorpionHome'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "ONE retail CWorld::SetAsLoadingRegion transition into GuildWoods (map 84 origin 4832,3648 + GuildWoodsHSP local 7.04,41.16); never repeat it: a second arming while already in the woods ended LUAGameflow's Main loop and tore its host down (frozen unkillable beetle, 0/10, 2026-09-20 17:2x run). Needs the sidecar's update hook (22affe1); the bare GoToMapSlot entry worked but the later return crashed 3/3 at 0x821878 (null per-map slot in the 0x6c2170 loader loop)"
+ },
+ {
+  "id": "beetles_real",
+  "repeat": 80,
+  "interval": 1.0,
+  "do": [
+   "GuildTraining: local t = quest:GetAllThingsWithScriptName('GuildScorpions'); if t[1] ~= nil then quest:EntityTeleportToThing(quest:GetHero(), t[1], false) end",
+   "input: key SPACE",
+   "input: lmb 4"
+  ],
+  "expect": "SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsMelee'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 400,
+  "note": "stand on the nearest beetle, lock on, four stick strikes; SetThingAsKilled / ModifyThingHealth do NOT kill a beetle (IsAlive stays true) so the kills are real; ScorpionHome respawns until GUI_MeleeBeetles (10) are down; the chunk runs in the long-lived GuildTraining VM, not WoodsMelee's (thing handles parked in a VM that is torn down after its region unloads crashed the teardown twice)"
+ },
+ {
+  "id": "quest_complete_screen",
+  "do": [
+   "input: key ENTER",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list",
+  "timeout": 60,
+  "note": "Quest Completed screen: ENTER",
+  "repeat": 8,
+  "interval": 3.0
+ },
+ {
+  "id": "woods_return",
+  "repeat": 1,
+  "do": [
+   "GuildTraining: quest:GoToMapSlotRetailTransition(70, 4787.62, 3680.52, 38.0)"
+  ],
+  "expect": "CS_GUILD_MELEE_WOODSWON|GUARD.Teleport MK_GTM_WD_GUARD",
+  "forbid": "PREMELEE_PUNCH_10|LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "retail transition back to the Guild at MK_GTM_WD_GUARD (map 70 origin 4576,3552 + local 211.6,128.5); retail walkthrough 26:34-26:40: WOODSWON fires at the gate, no talk"
+ },
+ {
+  "id": "split_yes",
+  "repeat": 6,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1"
+  ],
+  "expect": "GuildTrainingMelee/GuildTrainingMelee' created|PlayAVIMovie|PlayMovie",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "GiveHeroYesNoQuestion END_QUESTION: YES = left mouse button (the on-screen icons), NO = right; then the AVI and the Melee stage"
+ }
 ]

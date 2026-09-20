@@ -31,8 +31,12 @@ class FakeSidecar(threading.Thread):
     def run(self) -> None:
         while not self.stop.is_set():
             if self.commands.is_file():
-                lines = self.commands.read_text(encoding='utf-8').splitlines()
-                self.commands.unlink()
+                try:
+                    lines = self.commands.read_text(encoding='utf-8').splitlines()
+                    self.commands.unlink()
+                except OSError:          # the driver's atomic replace is mid-flight (the DLL's ifstream open fails the same way and retries next poll)
+                    time.sleep(0.02)
+                    continue
                 n = 0
                 for line in lines:
                     line = line.strip()
@@ -65,11 +69,12 @@ class AutopilotDriverTests(unittest.TestCase):
         self.bundle = Path(self.tmp.name) / 'local-candidate-fake'
         (self.bundle / 'NoviCompatibility' / 'autopilot').mkdir(parents=True)
         (self.bundle / 'NoviCompatibility' / 'FableScriptExtender.log').write_text('--- boot ---\n', encoding='utf-8')
-        self._orig_work = autopilot.WORK
+        self._orig_work, self._orig_gamewin = autopilot.WORK, autopilot.GAMEWIN
         autopilot.WORK = Path(self.tmp.name)
+        autopilot.GAMEWIN = Path(self.tmp.name) / 'no-gamewin.ps1'     # no frontend driver: input steps are SKIPPED
 
     def tearDown(self):
-        autopilot.WORK = self._orig_work
+        autopilot.WORK, autopilot.GAMEWIN = self._orig_work, self._orig_gamewin
         self.tmp.cleanup()
 
     def test_send_waits_for_the_processed_marker(self):
@@ -95,7 +100,7 @@ class AutopilotDriverTests(unittest.TestCase):
             {'id': 'punch_7', 'do': ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"], 'expect': 'PREMELEE_STICK', 'forbid': 'LUA RUNTIME ERROR', 'timeout': 5},
             {'id': 'beetles', 'repeat': 5, 'interval': 0.2, 'do': ["Q_GuildTrainingWoodsMelee: for _, t in ipairs(quest:GetAllThingsWithScriptName('GuildScorpions')) do quest:SetThingAsKilled(t) end"],
              'expect': "SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsMelee'", 'timeout': 5},
-            {'id': 'split_yes', 'do': ['input: Enter'], 'expect': 'PlayAVIMovie', 'timeout': 1},
+            {'id': 'split_yes', 'do': ['input: key ENTER'], 'expect': 'PlayAVIMovie', 'timeout': 1},
             {'id': 'woods_return', 'do': ['hero teleport MK_GTM_WD_GUARD'], 'expect': 'CS_GUILD_MELEE_WOODSWON', 'forbid': 'PREMELEE_PUNCH_10', 'timeout': 5},
             {'id': 'never', 'do': ['list'], 'expect': 'nope', 'timeout': 1},
         ]
@@ -110,6 +115,35 @@ class AutopilotDriverTests(unittest.TestCase):
         # the failure dumped every live host before stopping; the step after the failure never ran
         self.assertIn('dump GuildTrainingPreMelee/GuildTrainingPreMelee', side.seen)
         self.assertNotIn('never', status)
+
+    def test_input_steps_drive_the_window_and_repeat(self):
+        """with a frontend driver present, `input:` lines run after the step's channel batch, once per repeat"""
+        side = FakeSidecar(self.bundle, {}); side.start()
+        pressed: list[str] = []
+        autopilot.GAMEWIN = Path(__file__)          # exists; game_input itself is faked below
+
+        def fake_input(spec, timeout=60.0):
+            if spec.split()[0] not in ('key', 'hold', 'click', 'lmb', 'capture'):
+                raise ValueError(f'bad input spec {spec!r}')
+            pressed.append(spec)
+            if len(pressed) == 3:
+                side.emit("[CutsceneCommandDiag] command=TEACHER.Speak TEACHER,'TEXT_CS_028_PREMELEE_PUNCH_10'")
+            return ''
+        orig = autopilot.game_input
+        autopilot.game_input = fake_input
+        try:
+            results = autopilot.run_checklist('fake', [
+                {'id': 'talk', 'repeat': 6, 'interval': 0.1, 'do': ['hero teleport M_MeleeTeacherStand', 'input: key TAB'],
+                 'expect': 'PREMELEE_PUNCH_10', 'timeout': 5},
+                {'id': 'badspec', 'do': ['input: dance'], 'expect': 'x', 'timeout': 1},
+            ])
+        finally:
+            autopilot.game_input = orig
+            side.stop.set()
+        self.assertEqual(results[0]['status'], 'PASS', results[0])
+        self.assertEqual(pressed[:3], ['key TAB'] * 3)
+        self.assertEqual(results[1]['status'], 'FAIL')
+        self.assertIn('error input dance', results[1]['detail'])
 
     def test_channel_error_fails_the_step(self):
         side = FakeSidecar(self.bundle, {}); side.start()
@@ -130,3 +164,12 @@ class AutopilotDriverTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ScreenKindTests(unittest.TestCase):
+    def test_reference_captures(self):
+        """the frontend classifier on the 2026-09-20 reference captures (1024x768)"""
+        d = Path(__file__).parent / 'testdata' / 'frontend'
+        for name in ('title', 'menu', 'profiles', 'load'):
+            self.assertEqual(autopilot.screen_kind(d / f'{name}.png'), name)
+        self.assertEqual(autopilot.screen_kind(d / 'other_itembox.png'), 'other')
