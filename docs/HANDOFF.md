@@ -47,6 +47,29 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
+**2026-09-20 (morning): the crash on the return from Guild Woods is fixed (sidecar) + one converter bug; v6/v7
+rebuilt, NOT yet re-run.** v6 run `work/ab_runs/v6-20260920-080006`: beetles done, back in the Guild, talk to the
+Guildmaster → Fable.exe died at the first PUNCH cutscene command. Cause (from the log, both days compared):
+`LogQuestThreadFlags` walked ScorpionHome's entity-host entry whose `m_pParentHost` was the freed WoodsMelee quest
+host — `~LuaQuestHost` only detached entity hosts for the NewOakValeIntro lifetime. Sidecar `e1ed740` detaches for
+every lifetime; DLL rebuilt; `novi-unit-bindings.patch` regenerated. Converter: `CheckFriendlyAttacks` (0xD45060)
+died on every return to the Guild (`preMeleeMaze - creatures2`: `canonicalise_stack_objects` folded the vector end
+onto the thing) and its four `GetDefName` compares were `nil == "CREATURE_..."` (`at_vcall_local` index spelling) —
+both fixed generically, `test_check_friendly_attacks_converter.py` added, Oakvale gate identical, smoke baseline
+(Guild 1/1, Orchard 0/0, Trader 2/2, Gameflow 0/0), only Guild Lua changed. `work/AeonShare-2026-09-20.zip` built
+for Aeon (he offered to test Orchard: all three quests are in it). **Then an ultracode residue audit (15 agents,
+verify-against-C) found a SILENT class the smoke gate and the in-game runs had both passed:** every Guild
+`CreateCreature` / the PreMeleeDummy `CreateObject`, two `AddLineToConversation`, an `EntityTeleportToThing`, the
+Guildmaster `TryAcquire`, and Orchard-Good's actor map had rotated / nil operands — one cause (a vector's slot
+reused as hidden-result slot, folded to `LOCALLIST_At(V, 0)` outside the vector's live range → the lifter's LIFO
+literal pool), plus `slot_results` surviving a redefinition and a cast/CRLF-blind `_receiver_printed`. All generic;
+Oakvale identical, smoke baseline, targeted 41 OK, full suite `work/converter_suite_20260920b.log`. Do NOT pad
+truncated push records (the export charges vcalls phantom purges; bytes-proven at 0x00D46A73). Journal:
+`docs/journal/2026-09/V6_RETURN_CRASH_2026-09-20.md`. **Next (user):** `ab_playtest.py launch v6` from the
+post-beetles / woods-entry save, then `launch v7` on the same save, `compare v6 v7`. Watch: the return talk
+(no crash at `TEACHER.LookAtNothing`, no CheckFriendlyAttacks error), PUNCH replay vs WOODSWON/YES-NO.
+
+
 **2026-09-19 (FableForge night, 19 commits, tree clean at `b14aefc`):** resume FableForge from
 `D:\Code\FableForge\docs\ROADMAP_1.0.md` "Resume here" -- everything code-side for 1.0 is done; what
 is left is the user's (in-game probes, public repo, package + stranger's test, tag; `docs/RELEASE.md`).
