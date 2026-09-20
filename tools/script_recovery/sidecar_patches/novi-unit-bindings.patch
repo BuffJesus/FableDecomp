@@ -1,3 +1,171 @@
+diff --git a/FableScriptExtender/Autopilot.h b/FableScriptExtender/Autopilot.h
+new file mode 100644
+index 0000000..bb2203b
+--- /dev/null
++++ b/FableScriptExtender/Autopilot.h
+@@ -0,0 +1,162 @@
++#pragma once
++// NoviCompatibility autopilot: a file-driven exec channel for hands-free script testing
++// (docs/scripts/AUTOPILOT_DESIGN.md, 2026-09-20).
++//
++// The game thread polls <FSE base>/autopilot/commands.txt (throttled, once per ~200 ms, from NewScriptFrame)
++// and runs each line, then removes the file. Every result goes to the FSE log with an `[Autopilot]` prefix so
++// a driver can await it. Lines:
++//
++//   # comment / blank            ignored
++//   batch <id>                   logs `[Autopilot] batch <id>` (the driver's sync marker)
++//   list                         logs every live quest host by script name
++//   dump <quest>                 logs every state entry of that quest (the global state map, namespaced)
++//   <quest>: <lua chunk>         runs the chunk in THAT quest's VM: `quest` = its LuaQuestState, `hero` = quest:GetHero()
++//   eval <quest>: <expr>         runs `return (<expr>)` there and logs tostring(result)
++//   hero teleport <marker>       the hero to a script-named thing (through any live quest)
++//   hero kill <scriptname>       SetThingAsKilled on a script-named thing
++//
++// <quest> matches the host's script name ('GuildTrainingPreMelee/GuildTrainingPreMelee'), its last path component,
++// or the native name with a `Q_` prefix. A chunk runs on the quest's MAIN Lua state while its coroutines are
++// suspended at their yields (single game thread; Poll is reentrancy-guarded), and never resumes them itself.
++#include <string>
++#include <vector>
++#include <fstream>
++#include <sstream>
++#include <algorithm>
++#include <windows.h>
++#include "FableAPI.h"
++#include "LuaQuestHost.h"
++#include "LuaQuestState.h"
++#include "LuaManager.h"
++
++namespace Autopilot {
++
++inline std::vector<LuaQuestHost*>& Hosts() { static std::vector<LuaQuestHost*> hosts; return hosts; }
++inline void RegisterHost(LuaQuestHost* host) { Hosts().push_back(host); }
++inline void UnregisterHost(LuaQuestHost* host) {
++    auto& h = Hosts();
++    h.erase(std::remove(h.begin(), h.end(), host), h.end());
++}
++
++inline void Log(const std::string& line) { LogToFile("[Autopilot] " + line); }
++
++inline std::string Trim(const std::string& s) {
++    size_t a = s.find_first_not_of(" \t\r\n"), b = s.find_last_not_of(" \t\r\n");
++    return a == std::string::npos ? std::string() : s.substr(a, b - a + 1);
++}
++
++inline LuaQuestHost* FindHost(const std::string& name) {
++    std::string want = Trim(name);
++    std::string bare = want.rfind("Q_", 0) == 0 ? want.substr(2) : want;
++    for (LuaQuestHost* h : Hosts()) {
++        const std::string& s = h->GetScriptName();
++        std::string last = s.substr(s.find_last_of('/') == std::string::npos ? 0 : s.find_last_of('/') + 1);
++        if (s == want || last == want || last == bare || last == "Q_" + bare) return h;
++    }
++    return nullptr;
++}
++
++// run a chunk in the quest's VM with `quest` and `hero` bound; returns the protected result
++inline bool RunIn(LuaQuestHost* host, const std::string& chunk, const std::string& tag, bool evaluate) {
++    sol::state* L = host->GetLuaState();
++    if (!L) { Log("error " + tag + ": host has no Lua state"); return false; }
++    try {
++        sol::environment env(*L, sol::create, host->GetEnvironment());
++        env["quest"] = host->GetQuestState();
++        std::string code = "local ok, h = pcall(function() return quest:GetHero() end); hero = ok and h or nil\n";
++        code += evaluate ? ("return tostring((" + chunk + "))") : chunk;
++        sol::protected_function_result r = L->safe_script(code, env, sol::script_pass_on_error);
++        if (!r.valid()) {
++            sol::error err = r;
++            Log("error " + tag + ": " + std::string(err.what()));
++            return false;
++        }
++        if (evaluate) {
++            sol::object v = r;
++            Log("eval " + tag + " = " + (v.is<std::string>() ? v.as<std::string>() : std::string("<non-string>")));
++        } else {
++            Log("ok " + tag);
++        }
++        return true;
++    } catch (const std::exception& e) {
++        Log("exception " + tag + ": " + e.what());
++        return false;
++    }
++}
++
++inline void Dump(LuaQuestHost* host) {
++    const std::string prefix = host->GetScriptName() + ":";
++    int n = 0;
++    for (const auto& kv : LuaManager::GetInstance().GlobalState()) {
++        if (kv.first.rfind(prefix, 0) != 0) continue;
++        std::string value;
++        if (std::holds_alternative<bool>(kv.second)) value = std::get<bool>(kv.second) ? "true" : "false";
++        else if (std::holds_alternative<int>(kv.second)) value = std::to_string(std::get<int>(kv.second));
++        else value = "\"" + std::get<std::string>(kv.second) + "\"";
++        Log("state " + kv.first + " = " + value);
++        ++n;
++    }
++    Log("dump " + host->GetScriptName() + ": " + std::to_string(n) + " entries");
++}
++
++inline void Execute(const std::string& rawLine) {
++    std::string line = Trim(rawLine);
++    if (line.empty() || line[0] == '#') return;
++    if (line.rfind("batch ", 0) == 0) { Log("batch " + Trim(line.substr(6))); return; }
++    if (line == "list") {
++        for (LuaQuestHost* h : Hosts()) Log("host " + h->GetScriptName());
++        Log("list: " + std::to_string(Hosts().size()) + " hosts");
++        return;
++    }
++    if (line.rfind("dump ", 0) == 0) {
++        LuaQuestHost* h = FindHost(line.substr(5));
++        if (!h) { Log("error dump: no live quest '" + Trim(line.substr(5)) + "'"); return; }
++        Dump(h);
++        return;
++    }
++    if (line.rfind("hero teleport ", 0) == 0 || line.rfind("hero kill ", 0) == 0) {
++        bool teleport = line.rfind("hero teleport ", 0) == 0;
++        std::string thing = Trim(line.substr(teleport ? 14 : 10));
++        if (Hosts().empty()) { Log("error hero: no live quest"); return; }
++        std::string chunk = teleport
++            ? "local t = quest:GetThingWithScriptName(\"" + thing + "\"); if t == nil then error(\"no thing '" + thing + "'\") end; quest:EntityTeleportToThing(quest:GetHero(), t, false)"
++            : "local t = quest:GetThingWithScriptName(\"" + thing + "\"); if t == nil then error(\"no thing '" + thing + "'\") end; quest:SetThingAsKilled(t)";
++        RunIn(Hosts().front(), chunk, line, false);
++        return;
++    }
++    bool evaluate = line.rfind("eval ", 0) == 0;
++    std::string rest = evaluate ? line.substr(5) : line;
++    size_t colon = rest.find(':');
++    if (colon == std::string::npos || rest.find(' ') < colon) { Log("error: unrecognised line '" + line + "'"); return; }
++    LuaQuestHost* h = FindHost(rest.substr(0, colon));
++    if (!h) { Log("error: no live quest '" + Trim(rest.substr(0, colon)) + "' for '" + line + "'"); return; }
++    RunIn(h, Trim(rest.substr(colon + 1)), line, evaluate);
++}
++
++inline void Poll() {
++    static bool inPoll = false;
++    static ULONGLONG last = 0;
++    if (inPoll) return;
++    ULONGLONG now = GetTickCount64();
++    if (now - last < 200) return;
++    last = now;
++    const std::string path = g_fseBasePath + "/autopilot/commands.txt";
++    DWORD attrs = GetFileAttributesA(path.c_str());
++    if (attrs == INVALID_FILE_ATTRIBUTES) return;
++    std::ifstream in(path);
++    if (!in) return;
++    std::stringstream buf;
++    buf << in.rdbuf();
++    in.close();
++    // consume before executing: a command that itself takes a while must not be re-read by the next poll
++    DeleteFileA(path.c_str());
++    inPoll = true;
++    std::string line;
++    std::istringstream lines(buf.str());
++    int n = 0;
++    while (std::getline(lines, line)) { Execute(line); ++n; }
++    Log("processed " + std::to_string(n) + " line(s)");
++    inPoll = false;
++}
++
++}  // namespace Autopilot
 diff --git a/FableScriptExtender/FableAPI.cpp b/FableScriptExtender/FableAPI.cpp
 index 1d8c320..e352387 100644
 --- a/FableScriptExtender/FableAPI.cpp
@@ -265,23 +433,49 @@ index 8c1e959..10baa94 100644
 +    }
 +}
 diff --git a/FableScriptExtender/LuaManager.h b/FableScriptExtender/LuaManager.h
-index 7fbb477..11cdcaa 100644
+index 7fbb477..f6d2555 100644
 --- a/FableScriptExtender/LuaManager.h
 +++ b/FableScriptExtender/LuaManager.h
-@@ -98,6 +98,8 @@ struct EntityScriptData {
+@@ -98,6 +98,10 @@ struct EntityScriptData {
  class LuaManager {
  public:
      static LuaManager& GetInstance();
 +    // diagnostic: log each entity-owning quest's script-thread terminating byte ([base+0x2c] -> +5) when it changes
 +    void LogQuestThreadFlags(const char* context);
++    bool HasGlobalState(const std::string& key) const { return m_globalState.find(key) != m_globalState.end(); }
++    const std::map<std::string, std::variant<bool, int, std::string>>& GlobalState() const { return m_globalState; }   // autopilot `dump`
      void Initialize();
      void Shutdown();
      void Reinitialize();
 diff --git a/FableScriptExtender/LuaQuestHost.cpp b/FableScriptExtender/LuaQuestHost.cpp
-index 59d5297..3611815 100644
+index 59d5297..d59ae90 100644
 --- a/FableScriptExtender/LuaQuestHost.cpp
 +++ b/FableScriptExtender/LuaQuestHost.cpp
-@@ -89,8 +89,13 @@ LuaQuestHost::~LuaQuestHost() {
+@@ -1,6 +1,7 @@
+ #include "LuaQuestHost.h"
+ #include "LuaQuestState.h"
+ #include "LuaManager.h"
++#include "Autopilot.h"
+ #include "GameInterface.h"
+ 
+ constexpr int MAX_QUEST_THREADS = 20;
+@@ -60,6 +61,7 @@ LuaQuestHost::LuaQuestHost(CScriptDataBase* data, CGameScriptInterfaceBase* inte
+         throw;
+     }
+     LogToFile("    (Quest) LuaQuestHost for '" + scriptName + "' created, owning its state AND isolated Lua VM (Fiber-to-Lua-Thread enabled).");
++    Autopilot::RegisterHost(this);
+ }
+ 
+ // Ported from upstream FSE @ 2026-09-02.
+@@ -81,6 +83,7 @@ void LuaQuestHost::CleanupThreads() {
+ }
+ 
+ LuaQuestHost::~LuaQuestHost() {
++    Autopilot::UnregisterHost(this);
+     if(m_nativeLifetime==NativeQuestLifetime::NewOakValeIntro) {
+         m_closing=true;
+         // Native process destruction can resume suspended callbacks. Drain them
+@@ -89,8 +92,13 @@ LuaQuestHost::~LuaQuestHost() {
          ASLR<TerminateProcesses>(0x00CB7F60)(&this->base);
      }
      CleanupThreads();
@@ -296,7 +490,7 @@ index 59d5297..3611815 100644
          // VM finalizers may borrow quest state: release the VM while it is live.
          m_env=sol::environment();
          m_pLuaState.reset();
-@@ -156,6 +161,7 @@ void LuaQuestHost::Main() {
+@@ -156,6 +164,7 @@ void LuaQuestHost::Main() {
                  sol::error err = result;
                  LogToFile("!!! LUA RUNTIME ERROR in Main() of '" + m_scriptName + "': " + std::string(err.what()));
              }

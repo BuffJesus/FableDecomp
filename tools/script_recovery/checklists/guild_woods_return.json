@@ -1,0 +1,21 @@
+[
+  {"id": "channel", "do": ["list"], "expect": "\\[Autopilot\\] list: \\d+ hosts", "timeout": 10},
+  {"id": "punch_7", "do": ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"],
+   "expect": "TEXT_CS_028_PREMELEE_STICK", "forbid": "LUA RUNTIME ERROR", "timeout": 60,
+   "note": "retail: the Guildmaster's DummyHits loop (0x00D52E90) ends at 7 and the STICK cutscene follows"},
+  {"id": "stick_7", "do": ["Q_GuildTrainingPreMelee: quest:SetStateInt('DummyHits', 7)"],
+   "expect": "CS_GUILD_PREMELEE_(PASSED|ALARM)|PREMELEE_ALARM", "forbid": "LUA RUNTIME ERROR", "timeout": 90,
+   "note": "second DummyHits loop, then the XP orb + ALARM stages (the orb pickup is a message; give it time)"},
+  {"id": "to_the_woods", "do": ["hero teleport ScorpionSpawn"],
+   "expect": "EntityAllocator<\\d+>\\] Script: GuildTrainingWoodsMelee/Entities/ScorpionHome", "forbid": "LUA RUNTIME ERROR", "timeout": 60,
+   "note": "GuildWoods is the adjacent region; ScorpionHome binds when the WoodsMelee Main passes IsLevelLoaded('GuildWoods')"},
+  {"id": "beetles", "repeat": 15, "interval": 2.0,
+   "do": ["Q_GuildTrainingWoodsMelee: for _, t in ipairs(quest:GetAllThingsWithScriptName('GuildScorpions')) do quest:SetThingAsKilled(t) end"],
+   "expect": "SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsMelee'", "forbid": "LUA RUNTIME ERROR", "timeout": 90,
+   "note": "ScorpionHome respawns until GUI_MeleeBeetles (10) are down; kill whatever is alive every 2 s"},
+  {"id": "woods_return", "do": ["hero teleport MK_GTM_WD_GUARD"],
+   "expect": "CS_GUILD_MELEE_WOODSWON", "forbid": "PREMELEE_PUNCH_10|LUA RUNTIME ERROR", "timeout": 60,
+   "note": "retail walkthrough 26:34-26:40: WOODSWON fires as the hero comes through the gate, no talk"},
+  {"id": "split_yes", "do": ["input: Enter"], "expect": "PlayAVIMovie", "timeout": 30,
+   "note": "the YES/NO answer is an engine message: real input through the FableForge frontend driver (not wired yet)"}
+]
