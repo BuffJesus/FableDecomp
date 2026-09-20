@@ -187,6 +187,27 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     # a slot filled by a thing-valued pseudo-call anywhere in the function is a thing receiver even before
     # that statement in text order (loop-carried values: the store sits at the loop tail)
     pseudo_things = {m.group("var") for m in RE_PSEUDO_THING.finditer(text)}
+    # a stack slot that keeps such a value across loop iterations (`piStack_14 = pCVar8;` after
+    # `pCVar8 = GSI->CreateCreature(..)`, read at the loop head: ScorpionHome 0x00D643A0's spawn position)
+    # is a thing receiver before its store in text order too; registers are left to the streaming aliases
+    thing_defs: dict[str, int] = {}
+    for m in RE_PSEUDO_THING.finditer(text):
+        thing_defs[m.group("var")] = thing_defs.get(m.group("var"), 0) + 1
+    for m in RE_THING_ALIAS.finditer(text):
+        if not m.group("via") and int(m.group("off"), 0) in thing_returning:
+            thing_defs[m.group("var")] = thing_defs.get(m.group("var"), 0) + 1
+    # only a source whose EVERY definition is thing-valued (a register Ghidra also reuses for `me` or a
+    # scalar -- NOVI_Bully's pCVar6 -- proves nothing about a slot copied from it)
+    sources = {var for var, n in thing_defs.items()
+               if n == len(re.findall(r'^[ \t]*' + re.escape(var) + r' = ', text, re.M))}
+    while True:
+        carried = {m.group("var") for m in RE_COPY_ALIAS.finditer(text)
+                   if m.group("src") in sources and "Stack_" in m.group("var") and m.group("var") not in sources
+                   and len(re.findall(r'^[ \t]*' + re.escape(m.group("var")) + r' = ', text, re.M)) == 1}
+        sources |= carried
+        if not carried:
+            break
+        pseudo_things |= carried
     edits: list[tuple[int, int, str]] = []
     for _pos, _rank, kind, m in events:
         if kind == "any":

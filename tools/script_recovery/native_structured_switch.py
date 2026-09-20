@@ -48,21 +48,69 @@ def lower_nonfallthrough_switches(statements, allow_fallthrough=False):
                 all_labels = [label for labels, _ in groups for label in labels]
                 if len(set(all_labels)) != len(all_labels):
                     raise ValueError('duplicate switch case')
+                def falls_through(body):
+                    return not body or not (body[-1].kind in ('break', 'goto') or
+                                            body[-1].kind == 'atom' and re.match(r'return(?:\s|;)', body[-1].text))
                 for index, (labels, body) in enumerate(groups):
                     if any(label and not re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|\d+|[A-Z_]\w*)', label) for label in labels):
                         raise ValueError('unreviewed switch case expression')
-                    if not body or not (body[-1].kind in ('break', 'goto') or
-                            body[-1].kind == 'atom' and re.match(r'return(?:\s|;)', body[-1].text)):
-                        # fall-through into the textually next group: an explicit jump to a label at the start of
-                        # that group's body (a sibling block; the goto-scope pass copies the tail at the jump)
-                        if not allow_fallthrough:
-                            raise ValueError('switch has fall-through or a conditional exit')
-                        if index + 1 >= len(groups):
-                            continue                # the last group simply leaves the switch
-                        target = f'FLOW_case_{len(names.native_labels)}_{index + 1}'
-                        names.native_labels[target] = target
-                        body.append(Node('goto', target, [], []))
-                        groups[index + 1] = (groups[index + 1][0], [Node('label', target, [], [])] + groups[index + 1][1])
+                    if falls_through(body) and not allow_fallthrough:
+                        raise ValueError('switch has fall-through or a conditional exit')
+                if any(falls_through(body) for _, body in groups[:-1]):
+                    # A switch whose cases fall through (the campaign stage chain: `case 0: ...; case 100: ...`)
+                    # is one straight line of guarded blocks on the selector, in case order. A group that falls
+                    # through ends by moving the selector to the next group's label, so the next guard opens;
+                    # `break` leaves the single-iteration loop around the chain, `return` / `goto` leave as they
+                    # did. Each block is a sibling of the others, so nothing jumps into a block.
+                    value = names.new_name('native_arg_switch_')
+                    named = [label for labels, _ in groups for label in labels if label]
+                    sentinel = '0x7ffffffe'
+                    if sentinel in named:
+                        raise ValueError('switch uses the default sentinel value')
+                    head = [Node('atom', f'{value} = {node.text};')]
+                    if any('' in labels for labels, _ in groups):
+                        head.append(Node('if', '!(' + ' || '.join(f'{value} == {label}' for label in named) + ')',
+                                         [Node('atom', f'{value} = {sentinel};')], []))
+                    # a jump from inside one block to the label heading a later block is a forward hop along
+                    # the chain: move the selector to that block's value and leave the current block, so the
+                    # guards in between stay closed and the target guard opens (no tail copy needed)
+                    heads = {body[0].text: index for index, (labels, body) in enumerate(groups)
+                             if body and body[0].kind == 'label' and labels[0]}
+
+                    def redirect(items, index, leave):
+                        out = []
+                        for child in items:
+                            if child.kind == 'goto' and heads.get(child.text, -1) > index:
+                                target = groups[heads[child.text]][0][0]
+                                out.extend([Node('atom', f'{value} = {target};'), Node('atom', f'goto {leave()};')])
+                                continue
+                            if child.kind in ('switch',):
+                                out.append(child)
+                                continue
+                            out.append(Node(child.kind, child.text, redirect(child.body, index, leave),
+                                            redirect(child.other, index, leave)))
+                        return out
+
+                    chain = []
+                    for index, (labels, body) in enumerate(groups):
+                        condition = ' || '.join(f'{value} == {label or sentinel}' for label in labels)
+                        leave_label = []
+
+                        def leave(leave_label=leave_label):
+                            if not leave_label:
+                                leave_label.append(names.new_name('FLOW_chain_next_'))
+                            return leave_label[0]
+                        lowered = redirect(transform(body), index, leave)
+                        if falls_through(body) and index + 1 < len(groups):
+                            nxt = groups[index + 1][0][0]
+                            lowered.append(Node('atom', f'{value} = {nxt or sentinel};'))
+                        chain.append(Node('if', condition, lowered, []))
+                        if leave_label:
+                            chain.append(Node('atom', leave_label[0] + ':'))
+                    result.extend(head + [Node('do', 'false', chain)])
+                    evidence.append({'status': 'lowered', 'selector': node.text, 'local': value, 'cases': all_labels,
+                                     'policy': 'fall-through chain: guarded blocks in case order, the selector moved to the next label at a fall-through'})
+                    continue
                 value = names.new_name('native_arg_switch_')
                 alternate = []
                 defaults = [(labels, body) for labels, body in groups if '' in labels]

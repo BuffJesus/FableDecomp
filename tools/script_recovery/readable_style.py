@@ -732,6 +732,9 @@ def fold_guard_wrappers(lines):
                     pass                     # a comment an earlier fold orphaned at the guard's own indent
                 elif lines[j].strip():
                     raise ValueError('guard body indentation')
+            follows = next((lines[j] for j in range(end + 1, len(lines)) if lines[j].strip()), '')
+            if lines[end - 1] == indent + 'return\n' and follows and _indent(follows) >= len(indent) and not follows.startswith(indent + 'end'):
+                lines[end - 1] = indent + 'do return end\n'     # (a return is only legal last in its block)
             lines[end] = ''
             count += 1
             done = True
@@ -952,6 +955,9 @@ def prune_dead_defs(lines):
     return lines, count
 
 
+NESTED_OPENER = re.compile(r'(?:if .+ then|while .+ do|for .+ do|repeat|do)')   # a multi-line block head
+
+
 def fold_goto_else(lines):
     """`if C then X; goto L end; Y; ::L::` -> `if C then X else Y end` (the goto skips the rest of the
     enclosing branch); `if X then goto L end; Y; ::L::` -> `if not X then Y end`; an enclosing if whose
@@ -1006,6 +1012,7 @@ def fold_goto_else(lines):
             # the rest of the branch (same block level) up to where the block closes or the label sits
             j = end + 1
             rest_end = None
+            depth = 0                 # blocks opened at this indent inside the rest: their `end` is not ours
             while j < len(lines):
                 l = lines[j]
                 if not l.strip() or l.startswith(indent + ' '):
@@ -1015,9 +1022,18 @@ def fold_goto_else(lines):
                     rest_end = j
                     break
                 st = l.strip()
+                if depth:
+                    if st == 'end' or st.startswith('until '):
+                        depth -= 1
+                    elif NESTED_OPENER.fullmatch(st):
+                        depth += 1
+                    j += 1
+                    continue
                 if st in ('end', 'else') or st.startswith(('elseif ', 'until ')) or st == f'::{label}::':
                     rest_end = j
                     break
+                if NESTED_OPENER.fullmatch(st):
+                    depth += 1
                 j += 1
             if rest_end is None:
                 continue
@@ -1049,6 +1065,7 @@ def fold_goto_else(lines):
                     continue
                 j2 = rest_end + 1
                 d_end = None
+                depth = 0
                 while j2 < len(lines):
                     l = lines[j2]
                     if not l.strip() or l.startswith(outer_indent + ' '):
@@ -1058,9 +1075,18 @@ def fold_goto_else(lines):
                         d_end = j2
                         break
                     st = l.strip()
+                    if depth:
+                        if st == 'end' or st.startswith('until '):
+                            depth -= 1
+                        elif NESTED_OPENER.fullmatch(st):
+                            depth += 1
+                        j2 += 1
+                        continue
                     if st in ('end', 'else') or st.startswith(('elseif ', 'until ')) or st == f'::{label}::':
                         d_end = j2
                         break
+                    if NESTED_OPENER.fullmatch(st):
+                        depth += 1
                     j2 += 1
                 if d_end is None:
                     continue
@@ -1559,7 +1585,11 @@ def _strip_parens_once(lines, i, COMPARE):
         elif prev in ('if', 'elseif', 'while', 'until', '=', 'return') and nxt in ('then', 'do', ''):
             drop.add(open_n)                                            # a whole condition / rhs
         elif not ops:
-            drop.add(open_n)                                            # atomic operand
+            # an atomic operand -- unless it is a literal in prefix position: `(nil):IsAlive()` is legal Lua,
+            # `nil:IsAlive()` is not (the literal comes from an inlined `x = nil` staging)
+            if nxt in (':', '.', '[', '(') and (not re.match(r'[A-Za-z_]', content) or content in ('nil', 'true', 'false')):
+                continue
+            drop.add(open_n)
         elif ops <= COMPARE and prev in ('and', 'or', 'if', 'elseif', 'while', 'until', 'return', '=')                     and nxt in ('and', 'or', 'then', 'do', ''):
             drop.add(open_n)                                            # and/or operand
     if drop:

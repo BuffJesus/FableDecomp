@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 LIFTED = ROOT / 'refs' / 'script_recovery' / 'lifted'
 
 # the readable stage of each converter unit (NewOakValeIntro has its own hand-built pipeline)
-UNITS = (('GuildTraining', 'readable_converter'), ('TraderConflict', 'readable'), ('OrchardFarm', 'readable'))
+UNITS = (('GuildTraining', 'readable_converter'), ('TraderConflict', 'readable'), ('OrchardFarm', 'readable'), ('Gameflow', 'readable'))
 
 PATTERNS = (
     ('goto / ::label::',      r'\bgoto \w+|::\w+::'),

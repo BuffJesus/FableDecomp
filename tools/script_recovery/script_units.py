@@ -40,6 +40,20 @@ UNITS = {
         'schema': 'trader-conflict-native-inventory/0.1',
         'package': 'TraderConflict',
     },
+    'gameflow': {
+        # The master campaign-stage script (not a Q_ quest; no entity bindings, two spawned threads).
+        # CGameflowScript ctor 0x00CE6CB0 (stores vtable 0x012C3FA4; disassembly-verified) .. Alloc
+        # 0x00CEF950 / dtor 0x00CEF9A0; 0x00CEF9D0 is the CGameflowAssistanceScript ctor (vtable
+        # 0x012C5DE0) = the next family. Vtable 0x012C3FA4 = dtor CEF9A0, RegisterMain CE75B0,
+        # Main CE7670, Init CE6CF0, OnPersist CEF8E0 (native_clusters/Gameflow.json agrees).
+        'evidence': ROOT / 'refs/script_recovery/gameflow',
+        'lo': 0xCE6CB0, 'hi': 0xCEF9D0,
+        'ir_glob': 'Gameflow.json',
+        'scripts': ['Gameflow'],
+        'pdb_pattern': '*CGameflowScript*',
+        'schema': 'gameflow-native-inventory/0.1',
+        'package': 'Gameflow',
+    },
 }
 
 

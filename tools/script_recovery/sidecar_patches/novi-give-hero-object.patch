@@ -1,0 +1,114 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 95bc89d..1256cbd 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -1,4 +1,5 @@
+ #include "LuaQuestState.h"
++#include <unordered_set>
+ #include "LuaQuestHost.h"
+ #include "GameInterface.h"
+ #include "LuaEntityHost.h"
+@@ -378,6 +379,7 @@ void LuaQuestState::ShowMessageWithButtons(const std::string& message, const std
+ }
+ 
+ void LuaQuestState::DeactivateQuest(const std::string& questName, unsigned int delay) {
++    Log("    [QuestLifetime] DeactivateQuest('" + questName + "', " + std::to_string(delay) + ")");
+     if (m_pGameInterface && DeactivateQuest_API) {
+         FableString fq(questName.c_str());
+         DeactivateQuest_API(m_pGameInterface, fq, delay);
+@@ -1024,6 +1026,7 @@ void LuaQuestState::SetQuestAsCompleted(const std::string& questName, bool showS
+ }
+ 
+ void LuaQuestState::DeactivateQuestLater(const std::string& questName, unsigned int delayFrames) {
++    Log("    [QuestLifetime] DeactivateQuestLater('" + questName + "', " + std::to_string(delayFrames) + ")");
+     if (m_pGameInterface && DeactivateQuestLater_API) {
+         FableString fsQuest(questName.c_str());
+         DeactivateQuestLater_API(m_pGameInterface, fsQuest.get(), delayFrames); // C++ called with 0 delay
+@@ -2272,10 +2275,11 @@ void LuaQuestState::EntitySetAsDrawable(CScriptThing* pThing, bool isDrawable) {
+     }
+ }
+ 
+-void LuaQuestState::GiveHeroObject(const std::string& objectDefName, int amount) {
++void LuaQuestState::GiveHeroObject(const std::string& objectDefName, int amount, sol::optional<bool> bUnknown) {
+     if (m_pGameInterface && GiveHeroObject_API) {
+         FableString fsObject(objectDefName.c_str());
+-        GiveHeroObject_API(m_pGameInterface, fsObject, amount, false);
++        // the third native operand was hard-coded false; retail scripts pass both (Gameflow stage 0: true)
++        GiveHeroObject_API(m_pGameInterface, fsObject, amount, bUnknown.value_or(false));
+     }
+ }
+ 
+@@ -2685,7 +2689,17 @@ bool LuaQuestState::NewScriptFrame(CScriptThing* pMe) {
+     if (IsActiveThreadTerminating_Entity_API) {
+         LuaEntityHost* pEntityHost = (LuaEntityHost*)((char*)pMe - offsetof(LuaEntityHost, m_Me));
+ 
+-        return !IsActiveThreadTerminating_Entity_API(pEntityHost);
++        const bool terminating = IsActiveThreadTerminating_Entity_API(pEntityHost) != 0;
++        if (terminating) {
++            // diagnostic: the entity's check reads its PARENT quest thread's flag (0xF35B30 -> slot 3 GetParentScript,
++            // [+0x2c] thread, byte +5); name the moment it flips (PreMelee Guildmaster exit after the stick, 2026-09-19)
++            static std::unordered_set<void*> reported;
++            if (reported.insert(pEntityHost).second)
++                Log("    [Terminating] NewScriptFrame(me): parent quest thread of entity host " +
++                    std::to_string(reinterpret_cast<uintptr_t>(pEntityHost)) + " (" +
++                    (m_pParentHost ? m_pParentHost->GetScriptName() : std::string("?")) + ") is terminating");
++        }
++        return !terminating;
+     }
+     return true;
+ }
+@@ -13490,3 +13504,33 @@ void LuaQuestState::FaceThingByScriptName(CScriptThing* actor,const std::string&
+     }
+ }
+ 
++
++// Gameflow OnPersist: `SavedScriptNames` / `SavedCardDefNames` are std::vector<CCharString> members transferred
++// through CPersistContext::Transfer<std::vector<CCharString>> (0x49B8D0). The Lua side passes a sequence of
++// strings; the loaded sequence comes back.
++sol::table LuaQuestState::PersistTransferStringList(void* pContext, const std::string& name, sol::table values, sol::this_state s) {
++    sol::state_view lua(s);
++    LogToFile("    [PERSIST] Transferring string list '" + name + "'...");
++    sol::table result = lua.create_table();
++    if (!CPersistContext_Transfer_stringvector_API || !StringVector_PushBack_API || !StringVector_Destroy_API ||
++        !CCharString_ToConstChar_API) {
++        LogToFile("!!! ERROR: PersistTransferStringList - API not available!");
++        return values;
++    }
++    RetailStringVector vec{nullptr, nullptr, nullptr};
++    for (std::size_t i = 1; ; ++i) {
++        sol::optional<std::string> item = values[i];
++        if (!item) break;
++        FableString fs(item->c_str());
++        StringVector_PushBack_API(&vec, fs.get());
++    }
++    CPersistContext_Transfer_stringvector_API(static_cast<CPersistContext*>(pContext), name.c_str(), &vec);
++    int n = 0;
++    for (CCharString* p = vec.first; p && vec.last && p < vec.last; ++p) {
++        const char* text = CCharString_ToConstChar_API(p);
++        result[++n] = std::string(text ? text : "");
++    }
++    StringVector_Destroy_API(&vec);
++    LogToFile("    [PERSIST] ...List now has " + std::to_string(n) + " entries.");
++    return result;
++}
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index 7b86869..2faae6e 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -142,7 +142,7 @@ public:
+     void EntitySetTargetable(CScriptThing* pThing, bool isTargetable);
+     void EntityTeleportToThing(CScriptThing* pThingToMove, CScriptThing* pTargetThing, sol::optional<bool> b3);
+     void EntitySetAsDrawable(CScriptThing* pThing, bool isDrawable);
+-    void GiveHeroObject(const std::string& objectDefName, int amount);
++    void GiveHeroObject(const std::string& objectDefName, int amount, sol::optional<bool> bUnknown = sol::nullopt);   // retail Gameflow stage 0 passes true for the custom tattoo cards (GSI slot 0x1E4, 3rd operand)
+     void RemoveThing(sol::object thing, sol::optional<bool> immediate = sol::nullopt,
+         sol::optional<bool> removeFromWorld = sol::nullopt);
+     void FadeOutAndKillEntity(CScriptThing* pThing, bool bKillAfterFade, float fOverThisManySeconds, bool bKillPersistent);
+@@ -1062,6 +1062,7 @@ public:
+     std::string GetGossip(const std::string& category, int index);
+     std::string GetGlobalString(const std::string& key);
+     std::string PersistTransferString(void* pContext, const std::string& name, const std::string& value);
++    sol::table PersistTransferStringList(void* pContext, const std::string& name, sol::table values, sol::this_state s);
+     std::string GetRegionName();
+     // ForgeFSE diagnostics for the region-142 blocker (log-only, read-only).
+     int ProbeRegionVectorSize();          // (CWorldMap+0x30 - +0x2c)/0x58, or -1

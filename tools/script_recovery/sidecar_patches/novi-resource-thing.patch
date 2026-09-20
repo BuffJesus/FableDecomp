@@ -1,8 +1,89 @@
 diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
-index b7e3a91..7498910 100644
+index b7e3a91..91627ec 100644
 --- a/FableScriptExtender/LuaRetailResources.h
 +++ b/FableScriptExtender/LuaRetailResources.h
-@@ -1755,6 +1755,25 @@ void InitializeVictimActor(CScriptThing* actor) {
+@@ -13,6 +13,10 @@
+ #include <memory>
+ #include <stdexcept>
+ #include <map>
++#include <unordered_map>
++#include <unordered_set>
++extern std::unordered_map<void*, CScriptGameResourceObjectScriptedThingBase*> g_controlHandlesByEntityData;
++extern std::unordered_set<CScriptGameResourceObjectScriptedThingBase*> g_retailResourceHandles;
+ #include <limits>
+ 
+ // Explicit native locals for reviewed ports. No cached actor control, acquisition
+@@ -67,12 +71,68 @@ public:
+     }
+     void PrepareResource(unsigned id) {
+         auto& e = Get(id, Kind::Resource);
++        Unregister(e);
+         if (InitScriptObjectHelper1_API(&e.resource)) InitScriptObjectHelper2_API(&e.resource);
++        e.prepared = true;
+     }
+     bool TryAcquire(unsigned id, CScriptThing* actor, int priority) {
+         auto& e = Get(id, Kind::Resource);
+         if (!actor) throw std::runtime_error("Retail TryAcquire requires an actor");
+-        return StartScriptingEntity_API(m_game, actor, &e.resource, static_cast<EScriptAIPriority>(priority));
++        // Retail runs the two init helpers on the resource object before its first StartScriptingEntity at
++        // every acquire site (BarrelMan 0x00DB5C28: HasPhysicsMesh/Clear labels, then slot 0x20); the converter
++        // units call NewResource -> TryAcquire without PrepareResource, and StartScriptingEntity on the
++        // unprepared object never returned (PreMelee Main, 2026-09-19). Prepare on first use.
++        if (!e.prepared) PrepareResource(id);
++        LogToFile("    [RetailResources] TryAcquire enter: resource " + std::to_string(id) + " priority " + std::to_string(priority) + " " + DescribeScriptedControl(actor));
++        const bool ok = StartScriptingEntity_API(m_game, actor, &e.resource, static_cast<EScriptAIPriority>(priority));
++        // diagnostic: one line on the first refusal and on the acquisition that ends a refused run
++        // (a retry loop that never ends is otherwise silent -- PreMelee's TryAcquire(PreMeleeMaze), 2026-09-19)
++        auto& refused = m_tryAcquireRefused[id];
++        if (!ok && !refused) {
++            refused = true;
++            LogToFile("    [RetailResources] TryAcquire refused: resource " + std::to_string(id) + " actor data=" +
++                      std::to_string(reinterpret_cast<uintptr_t>(actor->pImp.Data)) + " priority " + std::to_string(priority) + " (retrying silently)");
++        } else if (ok && refused) {
++            refused = false;
++            LogToFile("    [RetailResources] TryAcquire granted after refusals: resource " + std::to_string(id));
++        }
++        if (ok) Register(e, actor);
++        return ok;
++    }
++    std::map<unsigned, bool> m_tryAcquireRefused;
++    // Diagnostic: the thing's CTCScriptedControl (component 0x1f) as retail StartScriptingEntity 0x89B5B0 reads it:
++    // CThing+0x20 sign bit = has the component; Components vector map begin/end at CThing+0x44/+0x48 (pairs of
++    // int type, CTCBase*); on the component: +0x0c PScriptHandleImp, +0x14 PActionList head, +0x18 its size
++    // (the byte the acquire loop yields on while non-zero), +0x20 Locked, +0x24 ScriptAIPriority.
++    static int DescribeScriptedControlRaw(CScriptThing* actor, char* buf, size_t n) {
++        __try {
++            if (!actor || !actor->pVTable) { sprintf_s(buf, n, "actor=null"); return 0; }
++            auto* vt = reinterpret_cast<CScriptThingVTable*>(actor->pVTable);
++            if (!vt->GetPThing) { sprintf_s(buf, n, "no GetPThing"); return 0; }
++            auto* thing = reinterpret_cast<const unsigned char*>(vt->GetPThing(actor));
++            if (!thing) { sprintf_s(buf, n, "thing=null"); return 0; }
++            const int using0 = *reinterpret_cast<const int*>(thing + 0x20);
++            auto* begin = *reinterpret_cast<const int* const*>(thing + 0x44);
++            auto* end = *reinterpret_cast<const int* const*>(thing + 0x48);
++            const unsigned char* tc = nullptr;
++            int count = 0;
++            for (auto* it = begin; it && end && it < end && count < 512; it += 2, ++count)
++                if (it[0] == 0x1f) { tc = reinterpret_cast<const unsigned char*>(it[1]); break; }
++            if (!tc) { sprintf_s(buf, n, "thing=%p using0=%08x components=%d no-0x1f", (const void*)thing, using0, count); return 0; }
++            sprintf_s(buf, n, "thing=%p using0=%08x tc1f=%p handleImp=%p actions=%d locked=%d prio=%d",
++                      (const void*)thing, using0, (const void*)tc,
++                      *reinterpret_cast<void* const*>(tc + 0x0c), *reinterpret_cast<const int*>(tc + 0x18),
++                      (int)*reinterpret_cast<const unsigned char*>(tc + 0x20), *reinterpret_cast<const int*>(tc + 0x24));
++            return 0;
++        } __except (EXCEPTION_EXECUTE_HANDLER) {
++            sprintf_s(buf, n, "describe: access violation");
++            return 1;
++        }
++    }
++    static std::string DescribeScriptedControl(CScriptThing* actor) {
++        char buf[256];
++        DescribeScriptedControlRaw(actor, buf, sizeof buf);
++        return buf;
+     }
+     void ReleaseResource(unsigned id) { Release(id, Kind::Resource); }
+     void Frame() { CheckOpen(); NewScriptFrame_API(m_game); }
+@@ -1755,6 +1815,25 @@ void InitializeVictimActor(CScriptThing* actor) {
          }
      }
  
@@ -28,7 +109,43 @@ index b7e3a91..7498910 100644
      unsigned NewThingFromResource(unsigned id) {
          auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
          if (!RetailThing_Destroy_API || !g_pCScriptThingVTable)
-@@ -2080,6 +2099,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+@@ -1872,6 +1951,8 @@ private:
+         Kind kind;
+         unsigned id = 0;
+         bool live = false;
++        bool prepared = false;   // InitScriptObjectHelper1/2 run on `resource` (retail runs them at every acquire site)
++        void* controlledData = nullptr;   // entity data the resource holds control of (registry key), or null
+         CScriptGameResourceObjectScriptedThingBase resource{};
+         CScriptGameResourceObjectMovieBase movie{};
+         CScriptThing thing{};
+@@ -1905,10 +1986,25 @@ private:
+         Destroy(entry);
+         m_entries.erase(id);
+     }
++    static void Register(Entry& e, CScriptThing* actor) {
++        if (!actor || !actor->pImp.Data) return;
++        e.controlledData = actor->pImp.Data;
++        g_controlHandlesByEntityData[e.controlledData] = &e.resource;
++        g_retailResourceHandles.insert(&e.resource);
++    }
++    static void Unregister(Entry& e) noexcept {
++        if (e.kind != Kind::Resource) return;
++        if (e.controlledData) {
++            auto it = g_controlHandlesByEntityData.find(e.controlledData);
++            if (it != g_controlHandlesByEntityData.end() && it->second == &e.resource) g_controlHandlesByEntityData.erase(it);
++            e.controlledData = nullptr;
++        }
++        g_retailResourceHandles.erase(&e.resource);
++    }
+     static void Destroy(Entry& e) noexcept {
+         if (!e.live) return;
+         switch (e.kind) {
+-        case Kind::Resource: CSGROSTB_Destroy_API(&e.resource); break;
++        case Kind::Resource: Unregister(e); CSGROSTB_Destroy_API(&e.resource); break;
+         case Kind::ActorMap: StdMap_Destroy_API(e.map); Game_free(e.map); e.map = nullptr; break;
+         case Kind::Movie: MovieResource_Destroy_API(&e.movie); break;
+         case Kind::Thing: RetailThing_Destroy_API(&e.thing); break;
+@@ -2080,6 +2176,7 @@ inline void RegisterRetailResources(sol::state& lua) {
      type["ShouldBarrelOverhear"] = &LuaRetailResources::ShouldBarrelOverhear;
      type["ResetBarrelWatchTimer"] = &LuaRetailResources::ResetBarrelWatchTimer;
      type["NewThingFromResource"] = &LuaRetailResources::NewThingFromResource;

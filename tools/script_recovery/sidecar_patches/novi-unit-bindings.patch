@@ -1,8 +1,197 @@
+diff --git a/FableScriptExtender/FableAPI.cpp b/FableScriptExtender/FableAPI.cpp
+index 1d8c320..e352387 100644
+--- a/FableScriptExtender/FableAPI.cpp
++++ b/FableScriptExtender/FableAPI.cpp
+@@ -6,6 +6,7 @@
+ #include <cfloat>
+ #include <intrin.h>
+ #include "EntityScriptingAPI.h"
++#include "LuaManager.h"
+ #pragma comment(lib, "shlwapi.lib")
+ 
+ // =====================================================================================
+@@ -423,6 +424,9 @@ tCPersistContext_Transfer_int           CPersistContext_Transfer_int_API = nullp
+ tCPersistContext_Transfer_string        CPersistContext_Transfer_string_API = nullptr;
+ tCPersistContext_Transfer_float         CPersistContext_Transfer_float_API = nullptr;
+ tCPersistContext_Transfer_uint          CPersistContext_Transfer_uint_API = nullptr;
++tCPersistContext_Transfer_stringvector  CPersistContext_Transfer_stringvector_API = nullptr;
++tStringVector_PushBack                  StringVector_PushBack_API = nullptr;
++tStringVector_Destroy                   StringVector_Destroy_API = nullptr;
+ tCSGROSTB_Destructor                    CSGROSTB_Destroy_API = nullptr;
+ tRetailThingCopy RetailThing_Copy_API = nullptr;
+ tRetailThingDestroy RetailThing_Destroy_API = nullptr;
+@@ -529,6 +533,9 @@ void InitializeFableAPI() {
+     CPersistContext_Transfer_string_API = ASLR<tCPersistContext_Transfer_string>(0x4109A0);
+     CPersistContext_Transfer_float_API = ASLR<tCPersistContext_Transfer_float>(0x410620);   
+     CPersistContext_Transfer_uint_API = ASLR<tCPersistContext_Transfer_uint>(0x4106F0); 
++    CPersistContext_Transfer_stringvector_API = ASLR<tCPersistContext_Transfer_stringvector>(0x49B8D0);
++    StringVector_PushBack_API = ASLR<tStringVector_PushBack>(0x44BFF0);
++    StringVector_Destroy_API = ASLR<tStringVector_Destroy>(0x414EA0);
+     CSGROSTB_Destroy_API = ASLR<tCSGROSTB_Destructor>(0x7E74D0);
+     RetailThing_Copy_API = ASLR<tRetailThingCopy>(0x4ABE90);
+     RetailThing_Destroy_API = ASLR<tRetailThingDestroy>(0x4AA840);
+@@ -553,6 +560,9 @@ void InitializeFableAPI() {
+     InterfaceMap_LowerBound_API = ASLR<tInterfaceMap_LowerBound>(0x40F020);  // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
+ 
+     LogToFile("--- Fable API Pointers Initialized ---");
++    // diagnostic (2026-09-19): passive per-cutscene-command hook + quest thread flag dump, to name the STICK
++    // macro command after which the PreMelee quest thread reads terminating
++    InstallCutsceneSkipDiagnosticHooks();
+ }
+ 
+ bool QueueRetailRegionTransition(void* pWorld, const float pos[3], int mapSlot) {
+@@ -774,7 +784,7 @@ static int __fastcall DiagFindCharPos_Detour(const CCharString* command, void*,
+            << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
+            << " tick=" << GetTickCount() << " command=" << (text ? text : "<null>");
+         LogToFile(ss.str());
+-        LogCutsceneFadeSnapshot(text);
++        LuaManager::GetInstance().LogQuestThreadFlags(text ? text : "<command>");
+     }
+     return DiagFindCharPos_Original(command, needle);
+ }
+diff --git a/FableScriptExtender/FableAPI.h b/FableScriptExtender/FableAPI.h
+index 386dd7b..3247ada 100644
+--- a/FableScriptExtender/FableAPI.h
++++ b/FableScriptExtender/FableAPI.h
+@@ -334,6 +334,15 @@ extern tCPersistContext_Transfer_int    CPersistContext_Transfer_int_API;
+ extern tCPersistContext_Transfer_string CPersistContext_Transfer_string_API;
+ extern tCPersistContext_Transfer_float  CPersistContext_Transfer_float_API;
+ extern tCPersistContext_Transfer_uint   CPersistContext_Transfer_uint_API;
++// CPersistContext::Transfer<std::vector<CCharString>> 0x49B8D0: __thiscall(ctx, name, vector*), ret 8 (Gameflow OnPersist
++// SavedScriptNames / SavedCardDefNames). The vector is retail's {first,last,end} of 4-byte CCharString elements.
++struct RetailStringVector { CCharString* first; CCharString* last; CCharString* end; };
++typedef void(__thiscall* tCPersistContext_Transfer_stringvector)(CPersistContext* This, const char* name, RetailStringVector* value);
++extern tCPersistContext_Transfer_stringvector CPersistContext_Transfer_stringvector_API;
++typedef void(__thiscall* tStringVector_PushBack)(RetailStringVector* This, const CCharString* value);   // 0x44BFF0
++extern tStringVector_PushBack StringVector_PushBack_API;
++typedef void(__thiscall* tStringVector_Destroy)(RetailStringVector* This);                            // 0x414EA0
++extern tStringVector_Destroy StringVector_Destroy_API;
+ extern tCSGROSTB_Destructor CSGROSTB_Destroy_API;
+ // Native owned Thing locals and entity-thread condition registration.
+ typedef CScriptThing* (__thiscall* tRetailThingCopy)(CScriptThing*, const CScriptThing*);
+diff --git a/FableScriptExtender/LuaEntityAPI.cpp b/FableScriptExtender/LuaEntityAPI.cpp
+index 71c5b65..fa0a407 100644
+--- a/FableScriptExtender/LuaEntityAPI.cpp
++++ b/FableScriptExtender/LuaEntityAPI.cpp
+@@ -6,11 +6,15 @@
+ #include "LuaQuestHost.h"
+ #include <windows.h>
+ #include <sstream>
++#include <unordered_set>
+ #include <unordered_map>
+ 
+-namespace {
++// (external linkage: LuaRetailResources registers / unregisters its acquired handles here)
+ std::unordered_map<void*, CScriptGameResourceObjectScriptedThingBase*> g_controlHandlesByEntityData;
+-}
++// handles owned by a script's LuaRetailResources (resources:TryAcquire): registered so cutscene assembly copies
++// the held resource (retail's actor map copies the resource; re-acquiring would wait on its own lock, 0x89B5B0)
++// and so the same script's `me:` commands drive it (retail: methods on that resource object)
++std::unordered_set<CScriptGameResourceObjectScriptedThingBase*> g_retailResourceHandles;
+ 
+ CScriptGameResourceObjectScriptedThingBase* LuaEntityAPI::FindControlHandle(CScriptThing* pThing) {
+     if (!pThing || !pThing->pImp.Data) return nullptr;
+@@ -35,8 +39,16 @@ void LuaEntityAPI::SelectControlHandle(CScriptThing* pThing) {
+         return;
+     }
+     auto borrowed = m_borrowedControlHandles.find(pThing->pImp.Data);
+-    if (borrowed == m_borrowedControlHandles.end()) return;
+-    m_pControlHandle = borrowed->second;
++    if (borrowed != m_borrowedControlHandles.end()) {
++        m_pControlHandle = borrowed->second;
++        m_pControlledEntityData = pThing->pImp.Data;
++        return;
++    }
++    // a resource this thing is held through by a script's RetailResources (never another VM's entity handle)
++    auto live = g_controlHandlesByEntityData.find(pThing->pImp.Data);
++    if (live == g_controlHandlesByEntityData.end() || !live->second || !live->second->pImp.Data) return;
++    if (g_retailResourceHandles.count(live->second) == 0) return;
++    m_pControlHandle = live->second;
+     m_pControlledEntityData = pThing->pImp.Data;
+ }
+ 
+diff --git a/FableScriptExtender/LuaEntityHost.cpp b/FableScriptExtender/LuaEntityHost.cpp
+index e48e3f0..b3e54e8 100644
+--- a/FableScriptExtender/LuaEntityHost.cpp
++++ b/FableScriptExtender/LuaEntityHost.cpp
+@@ -5,6 +5,16 @@
+ #include "GameInterface.h"
+ #include "EntityScriptingAPI.h"
+ #include <sstream> 
++#include <memory>
++
++// `me` reaches Lua as a NON-OWNING shared_ptr to the host's CScriptThing (the object at this+8, exactly
++// where the native entity script keeps it). sol2 hands a shared_ptr userdata to bindings typed
++// CScriptThing*, CScriptThing& or std::shared_ptr<CScriptThing> alike; a raw CScriptThing* userdata is
++// reinterpreted as garbage by the 35 quest bindings typed shared_ptr (GetNearestWithDefName(me, ...) in
++// AppleGirl: access violation in the engine on entering the Guild, 2026-09-19).
++static std::shared_ptr<CScriptThing> MeHandle(CScriptThing* me) {
++    return std::shared_ptr<CScriptThing>(me, [](CScriptThing*) {});
++}
+ 
+ void* LuaEntityHost::Destructor(unsigned flags) {
+     const bool bDelete=(flags&1u)!=0;
+@@ -40,7 +50,7 @@ void LuaEntityHost::Main() {
+         scriptNameForLog = pData->scriptName;
+         LogToFile("    [LuaEntityHost::Main] >>>>> ENTERING LUA CALL for '" + scriptNameForLog + "' <<<<<");
+ 
+-        sol::protected_function_result result = pData->luaMain(pData->pQuestState, &this->m_Me);
++        sol::protected_function_result result = pData->luaMain(pData->pQuestState, MeHandle(&this->m_Me));
+ 
+         LogToFile("    [LuaEntityHost::Main] >>>>> EXITED LUA CALL for '" + scriptNameForLog + "' <<<<<");
+ 
+@@ -93,7 +103,7 @@ void LuaEntityHost::Init() {
+ 
+         if (luaInit.valid()) {
+             LogToFile("    [LuaEntityHost::Init] >>>>> ENTERING LUA INIT for '" + pScriptData->scriptName + "' <<<<<");
+-            sol::protected_function_result result = luaInit(pScriptData->pQuestState, &this->m_Me);
++            sol::protected_function_result result = luaInit(pScriptData->pQuestState, MeHandle(&this->m_Me));
+             LogToFile("    [LuaEntityHost::Init] >>>>> EXITED LUA INIT for '" + pScriptData->scriptName + "' <<<<<");
+             if (!result.valid()) {
+                 sol::error err = result;
+@@ -125,7 +135,7 @@ void LuaEntityHost::OnPersist(void* pCtx) {
+     try {
+         sol::protected_function luaOnPersist = pData->env["OnPersist"];
+         if (luaOnPersist.valid()) {
+-            sol::protected_function_result result = luaOnPersist(pData->pQuestState, &this->m_Me, pCtx);
++            sol::protected_function_result result = luaOnPersist(pData->pQuestState, MeHandle(&this->m_Me), pCtx);
+             if (!result.valid()) {
+                 sol::error err = result;
+                 LogToFile("!!! LUA RUNTIME ERROR in OnPersist() of entity '" + pData->scriptName + "': " + std::string(err.what()));
+@@ -188,7 +198,7 @@ void LuaEntityHost::DispatchPredicateFail() {
+         if (!callback.valid()) return;
+         m_predicateFailDispatched = true;
+         LogToFile("    [LuaEntityHost::OnPredicateFail] Dispatching Lua callback for '" + script->scriptName + "'.");
+-        sol::protected_function_result result = callback(script->pQuestState, &m_Me);
++        sol::protected_function_result result = callback(script->pQuestState, MeHandle(&m_Me));
+         if (!result.valid()) {
+             sol::error error = result;
+             LogToFile("!!! LUA RUNTIME ERROR in OnPredicateFail() of entity '" + script->scriptName + "': " + std::string(error.what()));
+@@ -204,11 +214,12 @@ void LuaEntityHost::DispatchPredicateFail() {
+ 
+ void LuaEntityHost::OnInterrupted_Stub() {
+     EntityScriptData* script = LuaManager::GetInstance().GetEntityScriptData(this);
++    LogToFile("    [Interrupted] engine OnInterrupted for entity '" + (script ? script->scriptName : std::string("?")) + "'");
+     if (!script) return;
+     try {
+         sol::protected_function callback = script->env["OnInterrupted"];
+         if (!callback.valid()) return;
+-        sol::protected_function_result result = callback(script->pQuestState, &m_Me);
++        sol::protected_function_result result = callback(script->pQuestState, MeHandle(&m_Me));
+         if (!result.valid()) {
+             sol::error error = result;
+             LogToFile("!!! LUA RUNTIME ERROR in OnInterrupted() of entity '" + script->scriptName + "': " + std::string(error.what()));
 diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
-index 8c1e959..bf57644 100644
+index 8c1e959..10baa94 100644
 --- a/FableScriptExtender/LuaManager.cpp
 +++ b/FableScriptExtender/LuaManager.cpp
-@@ -8,6 +8,7 @@
+@@ -1,4 +1,5 @@
+ #include "LuaManager.h"
++#include <set>
+ #include "LuaQuestHost.h"
+ #include "LuaQuestState.h" 
+ #include "FableAPI.h" 
+@@ -8,6 +9,7 @@
  #include "LuaRetailResources.h"
  #include "LuaRetailCondition.h"
  #include "LuaRetailConsciousCondition.h"
@@ -10,7 +199,7 @@ index 8c1e959..bf57644 100644
  #include <sstream>
  
  void ReleaseScriptThing(CScriptThing* thing) {
-@@ -201,6 +202,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+@@ -201,6 +203,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
  
      auto questState_type = lua.new_usertype<LuaQuestState>("Quest", sol::no_constructor);
      RegisterRetailResources(lua);
@@ -18,12 +207,94 @@ index 8c1e959..bf57644 100644
      questState_type["GetVillagerSpeechLists"] = &LuaQuestState::GetVillagerSpeechLists;
      questState_type["RetailFlags"] = &LuaQuestState::RetailFlags;
      questState_type["RetainRetailThing"] = &LuaQuestState::RetainRetailThing;
+@@ -224,8 +227,17 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     // This query does not advance a frame or treat cutscene skip as termination.
+     questState_type["IsActiveThreadTerminating"] = [pEntityHost](LuaQuestState& self) {
+         if (pEntityHost) {
+-            return IsActiveThreadTerminating_Entity_API &&
++            const bool t = IsActiveThreadTerminating_Entity_API &&
+                 IsActiveThreadTerminating_Entity_API(pEntityHost);
++            if (t) {
++                static std::set<void*> reported;
++                if (reported.insert(pEntityHost).second) {
++                    EntityScriptData* d = LuaManager::GetInstance().GetEntityScriptData(pEntityHost);
++                    LogToFile("    [Terminating] IsActiveThreadTerminating() true for entity '" + (d ? d->scriptName : std::string("?")) + "'");
++                    LuaManager::GetInstance().LogQuestThreadFlags("IsActiveThreadTerminating");
++                }
++            }
++            return t;
+         }
+         return self.IsActiveThreadTerminating();
+     };
+@@ -381,6 +393,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["PersistTransferBool"] = &LuaQuestState::PersistTransferBool;
+     questState_type["PersistTransferInt"] = &LuaQuestState::PersistTransferInt;
+     questState_type["PersistTransferString"] = &LuaQuestState::PersistTransferString;
++    questState_type["PersistTransferStringList"] = &LuaQuestState::PersistTransferStringList;
+     questState_type["PersistTransferFloat"] = &LuaQuestState::PersistTransferFloat;
+     questState_type["PersistTransferUInt"] = &LuaQuestState::PersistTransferUInt;
+ 
+@@ -1243,6 +1256,8 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["IsInMovieSequence"] = &LuaQuestState::IsInMovieSequence;
+     questState_type["SetCreatureBrain"] = &LuaQuestState::SetCreatureBrain;
+ 
++    RegisterNoviUnitOverrides(questState_type);   // GetAll* fills owned by the retail allocator (must follow the upstream binds)
++
+     lua.new_usertype<CPersistContext>("CPersistContext", sol::no_constructor);
+ 
+     LogToFile("    'Quest','CScriptThing' and 'CPersistContext' usertypes created and bound in Lua.");
+@@ -1428,3 +1443,20 @@ std::string LuaManager::GetGlobalStateString(const std::string& key) {
+     }
+     return "";
+ }
++
++void LuaManager::LogQuestThreadFlags(const char* context) {
++    static std::map<void*, int> last;
++    for (auto& kv : m_entityScriptDataMap) {
++        LuaEntityHost* host = kv.first;
++        if (!host || !host->m_pParentHost) continue;
++        void* base = &host->m_pParentHost->base;
++        void* thread = *reinterpret_cast<void**>(reinterpret_cast<char*>(base) + 0x2c);
++        int flag = thread ? *(reinterpret_cast<unsigned char*>(thread) + 5) : -1;
++        auto it = last.find(base);
++        if (it != last.end() && it->second == flag) continue;
++        last[base] = flag;
++        LogToFile(std::string("    [QuestThreadFlag] ") + host->m_pParentHost->GetScriptName() + " thread=" +
++                  std::to_string(reinterpret_cast<uintptr_t>(thread)) + " terminating=" + std::to_string(flag) +
++                  " at " + (context ? context : "?"));
++    }
++}
+diff --git a/FableScriptExtender/LuaManager.h b/FableScriptExtender/LuaManager.h
+index 7fbb477..11cdcaa 100644
+--- a/FableScriptExtender/LuaManager.h
++++ b/FableScriptExtender/LuaManager.h
+@@ -98,6 +98,8 @@ struct EntityScriptData {
+ class LuaManager {
+ public:
+     static LuaManager& GetInstance();
++    // diagnostic: log each entity-owning quest's script-thread terminating byte ([base+0x2c] -> +5) when it changes
++    void LogQuestThreadFlags(const char* context);
+     void Initialize();
+     void Shutdown();
+     void Reinitialize();
+diff --git a/FableScriptExtender/LuaQuestHost.cpp b/FableScriptExtender/LuaQuestHost.cpp
+index 59d5297..38d8e6f 100644
+--- a/FableScriptExtender/LuaQuestHost.cpp
++++ b/FableScriptExtender/LuaQuestHost.cpp
+@@ -156,6 +156,7 @@ void LuaQuestHost::Main() {
+                 sol::error err = result;
+                 LogToFile("!!! LUA RUNTIME ERROR in Main() of '" + m_scriptName + "': " + std::string(err.what()));
+             }
++            LogToFile("--- Quest '" + m_scriptName + "': Lua Main() returned ---");
+         }
+         else {
+             LogToFile("--- Quest '" + m_scriptName + "': No Lua Main() function found. ---");
 diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
 new file mode 100644
-index 0000000..d49e930
+index 0000000..6625887
 --- /dev/null
 +++ b/FableScriptExtender/NoviUnitBindings.h
-@@ -0,0 +1,209 @@
+@@ -0,0 +1,420 @@
 +#pragma once
 +// Bindings the converter-generated quest units (Orchard Farm, ...) need beyond the New Oakvale set.
 +// Evidence: docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md and refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md
@@ -32,11 +303,22 @@ index 0000000..d49e930
 +//   quest:GetStateThing / SetStateThing        CScriptThing quest members (Teams[i].TeamCrateCarrier, ...)
 +//   quest:GetStateListCount / GetStateListAt   std::vector<CScriptThing> members (CrateList), stride-12 iteration
 +//   quest:StateListPush / StateListErase       Vector_PushBack_ScriptThing 0x8ADF90 / vector::erase 0xCD3152
-+//   quest:StateListClear / StateListSet        erase(begin,end) / a GSI out-argument fill; GetStateListCopy = the copy ctor
 +//   quest:RetailResources()                    one long-lived LuaRetailResources per quest state
 +//   quest:ReadGlobalGameData(offset)           *(int *)(*(DAT_0143e90c) + offset)
 +//   thing:GetName / SetDataString / IsBeingCarriedBy / GetCurrentStateGroupType / IsEqualTo
 +//                                              CScriptThing vtable slots 0x04 / 0x10 / 0xFC / 0x34 / 0x138
++//   quest:StateListClear / StateListSet        erase(begin,end) / a GSI out-argument fill; GetStateListCopy = the copy ctor
++//   quest:IsPlayerHoldingLockTargetButton / IsPlayerHoldingFireRangedWeaponButton / IsHeroInProjectileWeaponMode
++//                                              GSI slots 0x108 / 0x10C / 0x114 (GuildTraining skill tutorial, TraderConflict intro)
++//   quest:TextEntryExists(key)                 GSI slot 0x598 (TraderToRescue probes TEXT_QST_B11_<name>_ONTALK_<n>)
++//   quest:AddLogbookTutorialEntryPC(key)       retail 0x00CBEA81 (<key>_TITLE / <key>_PC, category 2): the !IsXbox sibling of 0x00CBE9EE
++//   quest:EntitySetAsOpinionSource(thing, x)   GSI slot 0x9B8 (CCharString) / 0x9B4 (long): the native overload pair
++//   quest:CreateEffect(result, name, ...)      GSI slot 0x190 (at position) / 0x194 (on thing): the native overload pair,
++//                                              hidden-result first, as the units call it
++//   thing:MsgIsHitBy(name) / MsgIsHitByAnySpecialAbilityFrom(name)
++//                                              CScriptThing vtable slots 0x54 / 0xA8 (the ...Hero forms bind "SCRIPT_NAME_HERO")
++//   thing:MsgHitFriendWithMeleeWeapon / MsgHitFriendWithRangedWeapon / MsgHitFriendWithBareHands
++//                                              CScriptThing vtable slots 0xBC / 0xC4 / 0xCC
 +#include "sol/sol.hpp"
 +#include "FableAPI.h"
 +#include "EntityScriptingAPI.h"
@@ -87,6 +369,28 @@ index 0000000..d49e930
 +    memset(buffer, 0, sizeof(CScriptThing));
 +    buffer->pVTable = g_pCScriptThingVTable;
 +    return std::shared_ptr<CScriptThing>(buffer, [](CScriptThing* p) { if (p) Game_free(p); });
++}
++
++// VC7.1 std::vector<CScriptThing>: {_Myfirst, _Mylast, _Myend}, 12-byte elements (the retail script code reads
++// the count as (last - first) / 0xc). Null-initialised, the engine allocates it; we never touch its capacity.
++struct NoviRetailThingVector { CScriptThing* first; CScriptThing* last; CScriptThing* end; };
++static_assert(sizeof(CScriptThing) == 12, "CScriptThing must be the retail 12-byte layout");
++
++template <typename Fill>
++inline sol::table NoviFillThingVector(LuaQuestState& self, sol::this_state ts, Fill fill) {
++    sol::state_view lua(ts);
++    sol::table out = lua.create_table();
++    if (!Game_free || !RetailThing_Destroy_API) return out;
++    NoviRetailThingVector vec = { nullptr, nullptr, nullptr };
++    fill(&vec);
++    int index = 1;
++    for (CScriptThing* p = vec.first; p && p != vec.last; ++p) {
++        auto copy = NoviCopyThing(p);
++        if (copy) out[index++] = copy;
++    }
++    for (CScriptThing* p = vec.first; p && p != vec.last; ++p) RetailThing_Destroy_API(p);
++    if (vec.first) Game_free(vec.first);
++    return out;
 +}
 +
 +inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::usertype<CScriptThing>& thing) {
@@ -160,6 +464,111 @@ index 0000000..d49e930
 +        }
 +        return out;
 +    };
++    // ---- player input predicates (GSI slots 0x108 / 0x10C / 0x114; FableString-free bool() const) ---
++    quest["IsPlayerHoldingLockTargetButton"] = [](LuaQuestState& self) -> bool {
++        auto* gsi = self.GetGameInterface();
++        return (gsi && IsPlayerHoldingLockTargetButton_API) ? IsPlayerHoldingLockTargetButton_API(gsi) : false;
++    };
++    quest["IsPlayerHoldingFireRangedWeaponButton"] = [](LuaQuestState& self) -> bool {
++        auto* gsi = self.GetGameInterface();
++        return (gsi && IsPlayerHoldingFireRangedWeaponButton_API) ? IsPlayerHoldingFireRangedWeaponButton_API(gsi) : false;
++    };
++    quest["IsHeroInProjectileWeaponMode"] = [](LuaQuestState& self) -> bool {
++        auto* gsi = self.GetGameInterface();
++        return (gsi && IsHeroInProjectileWeaponMode_API) ? IsHeroInProjectileWeaponMode_API(gsi) : false;
++    };
++    // ---- text table probe (GSI slot 0x598, bool(const CCharString&) const) ----------------------
++    // The key is required natively; a call without one is a converter gap (the operand was dropped), logged and false.
++    quest["TextEntryExists"] = [](LuaQuestState& self, sol::optional<std::string> key) -> bool {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi || !TextEntryExists_API) return false;
++        if (!key) { LogToFile("!!! WARNING: TextEntryExists called without a key (converter gap); returning false."); return false; }
++        FableString text(key->c_str());
++        return TextEntryExists_API(gsi, text.get());
++    };
++    // ---- PC tutorial logbook entry (retail 0x00CBEA81, the sibling of 0x00CBE9EE = AddLogbookTutorialEntry) ----
++    // `__thiscall(const CCharString* key)`: title <key>_TITLE, body <key>_PC (0x122e248), category 2 through GSI
++    // +0x4D0, then the helper's own one-frame yield (disassembly 2026-09-19). Retail scripts call it on the
++    // !IsXbox() path (PreMelee Guildmaster: TEXT_QST_LOG_COMBAT_LOCKINGON / _PUNCHING after the PC instructions).
++    quest["AddLogbookTutorialEntryPC"] = [](LuaQuestState& self, const std::string& key) {
++        (void)self;
++        auto fn = ASLR<tAddLogbookTutorialEntry>(0x00CBEA81);
++        if (!fn) { LogToFile("!!! ERROR: AddLogbookTutorialEntryPC - API not available!"); return; }
++        FableString text(key.c_str());
++        fn(text.get());
++    };
++    // ---- opinion source (the native overload pair: 0x9B8 CCharString / 0x9B4 long) --------------
++    quest["EntitySetAsOpinionSource"] = [](LuaQuestState& self, sol::object thing, sol::object source) {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi) return;
++        CScriptThing* target = nullptr;
++        if (thing.is<std::shared_ptr<CScriptThing>>()) target = thing.as<std::shared_ptr<CScriptThing>>().get();
++        else if (thing.is<CScriptThing*>()) target = thing.as<CScriptThing*>();
++        if (!target) { LogToFile("!!! ERROR: EntitySetAsOpinionSource - thing is null!"); return; }
++        if (source.is<std::string>()) {
++            if (!EntitySetAsOpinionSourceByString_API) return;
++            FableString name(source.as<std::string>().c_str());
++            EntitySetAsOpinionSourceByString_API(gsi, target, name.get());
++        } else if (source.is<int>()) {
++            if (!EntitySetAsOpinionSourceByInt_API) return;
++            EntitySetAsOpinionSourceByInt_API(gsi, target, source.as<int>());
++        } else {
++            LogToFile("!!! ERROR: EntitySetAsOpinionSource - source must be a string (0x9B8) or an integer (0x9B4).");
++        }
++    };
++    // ---- CreateEffect, native overload pair with the hidden result first -----------------------
++    //   CreateEffect(result, effectName, {x,y,z}, scriptName, angle, independent, alwaysUpdate)   slot 0x190
++    //   CreateEffect(result, effectName, onThing, boneName, scriptName, independent, alwaysUpdate) slot 0x194
++    // `result` is the CScriptThing the native constructs into: when the unit passes a thing handle it is assigned
++    // (destroy + copy-construct, the retail hidden-return idiom); the handle is also returned.
++    quest["CreateEffect"] = [](LuaQuestState& self, sol::object result, const std::string& effectName, sol::object where,
++                               sol::object arg4, sol::object arg5, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate)
++        -> std::shared_ptr<CScriptThing> {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi || !Game_malloc) return nullptr;
++        auto* buffer = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++        if (!buffer) return nullptr;
++        memset(buffer, 0, sizeof(CScriptThing));
++        FableString fsEffect(effectName.c_str());
++        const bool finalIndependent = independent.value_or(false);
++        const bool finalAlwaysUpdate = alwaysUpdate.value_or(false);
++        bool called = false;
++        CScriptThing* onThing = nullptr;
++        if (where.is<std::shared_ptr<CScriptThing>>()) onThing = where.as<std::shared_ptr<CScriptThing>>().get();
++        else if (where.is<CScriptThing*>()) onThing = where.as<CScriptThing*>();
++        if (onThing && arg5.is<std::string>()) {
++            // on-thing overload: (result, effect, thing, bone, scriptName, bool, bool)
++            if (CreateEffect_OnThing_API) {
++                FableString fsBone(arg4.is<std::string>() ? arg4.as<std::string>().c_str() : "");
++                FableString fsScript(arg5.as<std::string>().c_str());
++                CreateEffect_OnThing_API(gsi, buffer, fsEffect, onThing, fsBone, fsScript, finalIndependent, finalAlwaysUpdate);
++                called = true;
++            }
++        } else if (where.is<sol::table>()) {
++            // at-position overload: (result, effect, {x,y,z}, scriptName, angle, bool, bool)
++            if (CreateEffect_AtPosition_API) {
++                sol::table position = where.as<sol::table>();
++                const C3DVector pos = { position["x"].get_or(0.0f), position["y"].get_or(0.0f), position["z"].get_or(0.0f) };
++                FableString fsScript(arg4.is<std::string>() ? arg4.as<std::string>().c_str() : "");
++                const float angle = arg5.is<float>() ? arg5.as<float>() : 0.0f;
++                CreateEffect_AtPosition_API(gsi, buffer, fsEffect, &pos, fsScript, angle, finalIndependent, finalAlwaysUpdate);
++                called = true;
++            }
++        } else {
++            LogToFile("!!! ERROR: CreateEffect(" + effectName + ") - third operand is neither a position table nor a thing (converter gap); no effect created.");
++        }
++        if (!called) { Game_free(buffer); return nullptr; }
++        auto handle = WrapScriptThingOutput(buffer);
++        CScriptThing* out = nullptr;
++        if (result.is<std::shared_ptr<CScriptThing>>()) out = result.as<std::shared_ptr<CScriptThing>>().get();
++        else if (result.is<CScriptThing*>()) out = result.as<CScriptThing*>();
++        if (out && handle && out != handle.get() && RetailThing_Copy_API && RetailThing_Destroy_API) {
++            RetailThing_Destroy_API(out);
++            memset(out, 0, sizeof(CScriptThing));
++            RetailThing_Copy_API(out, handle.get());
++        }
++        return handle;
++    };
 +    // ---- long-lived retail resources ------------------------------------------------------------
 +    quest["RetailResources"] = [](LuaQuestState& self) {
 +        auto& data = NoviUnitData(self);
@@ -219,6 +628,44 @@ index 0000000..d49e930
 +        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
 +        return vt->GetCurrentStateGroupType ? static_cast<int>(vt->GetCurrentStateGroupType(me)) : 0;
 +    };
++    // ---- hit-event queries by attacker script name (CScriptThing slots 0x54 / 0xA8) --------------
++    // Same bodies as LuaEntityAPI::MsgIsHitByHero / MsgIsHitByAnySpecialAbilityFromHero, which pass "SCRIPT_NAME_HERO";
++    // retail CGameScriptThing::MsgIsHitBy (0x8D0FB0) treats an empty name as "hit by anything this frame"
++    // (the CIsHitEventHitByThingWithScriptName filter is only added for a non-empty name).
++    thing["MsgIsHitBy"] = [](CScriptThing* me, const std::string& hitterName) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        if (!vt->MsgIsHitBy) return false;
++        FableString name(hitterName.c_str());
++        const bool hit = vt->MsgIsHitBy(me, name.get());
++        if (hit) LogToFile("    [HitEvidence] MsgIsHitBy(" + hitterName + ") returned true.");
++        return hit;
++    };
++    thing["MsgIsHitByAnySpecialAbilityFrom"] = [](CScriptThing* me, const std::string& sourceName) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        if (!vt->MsgIsHitByAnySpecialAbilityFrom) return false;
++        FableString name(sourceName.c_str());
++        const bool hit = vt->MsgIsHitByAnySpecialAbilityFrom(me, name.get());
++        if (hit) LogToFile("    [HitEvidence] MsgIsHitByAnySpecialAbilityFrom(" + sourceName + ") returned true.");
++        return hit;
++    };
++    // ---- friendly-fire messages, no operand (CScriptThing slots 0xBC / 0xC4 / 0xCC) --------------
++    thing["MsgHitFriendWithMeleeWeapon"] = [](CScriptThing* me) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->MsgHitFriendWithMeleeWeapon ? vt->MsgHitFriendWithMeleeWeapon(me) : false;
++    };
++    thing["MsgHitFriendWithRangedWeapon"] = [](CScriptThing* me) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->MsgHitFriendWithRangedWeapon ? vt->MsgHitFriendWithRangedWeapon(me) : false;
++    };
++    thing["MsgHitFriendWithBareHands"] = [](CScriptThing* me) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->MsgHitFriendWithBareHands ? vt->MsgHitFriendWithBareHands(me) : false;
++    };
 +    // CScriptThing::operator== goes through the implementation object's vtable (CGameScriptThing slot 0x138),
 +    // exactly as the native scripts call it (`(**(**(int **)(thing + 4) + 0x138))(data, other.Data)`).
 +    thing["IsEqualTo"] = [](CScriptThing* me, sol::object other) -> bool {
@@ -231,5 +678,40 @@ index 0000000..d49e930
 +        if (!imp || !imp->pVTable) return me->pImp.Data == rhs->pImp.Data;
 +        auto* vt = reinterpret_cast<CGameScriptThingVTable*>(imp->pVTable);
 +        return vt->IsEqualTo ? vt->IsEqualTo(imp, rhs) : me->pImp.Data == rhs->pImp.Data;
++    };
++}
++
++// Registered AFTER the upstream bindings (LuaManager.cpp binds its own GetAll* later than
++// RegisterNoviUnitBindings, and the last registration of a name wins).
++inline void RegisterNoviUnitOverrides(sol::usertype<LuaQuestState>& quest) {
++    // ---- GetAll* fills: the engine must own the vector buffer ------------------------------------
++    // Upstream hands these GSI slots a DLL-side std::vector with reserve(10/20). Retail fills it with the
++    // VC7.1 CRT: once the count exceeds the reserve (the Guild complex has more than 20 creatures) its
++    // push_back reallocates and frees the DLL buffer with the retail allocator -- a cross-heap free, crash
++    // on entering the Guild (CheckFriendlyAttacks' GetAllCreaturesExcludingHero, 2026-09-19). A null
++    // retail-layout vector {first, last, end} lets retail allocate; the elements are copied out with the
++    // retail copy constructor, destroyed, and the buffer released with retail's free.
++    quest["GetAllCreaturesExcludingHero"] = [](LuaQuestState& self, sol::this_state ts) -> sol::table {
++        return NoviFillThingVector(self, ts, [&](NoviRetailThingVector* vec) {
++            auto* gsi = self.GetGameInterface();
++            if (gsi && GetAllCreaturesExcludingHero_API)
++                GetAllCreaturesExcludingHero_API(gsi, reinterpret_cast<std::vector<CScriptThing>*>(vec));
++        });
++    };
++    quest["GetAllThingsWithScriptName"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
++        return NoviFillThingVector(self, ts, [&](NoviRetailThingVector* vec) {
++            auto* gsi = self.GetGameInterface();
++            if (!gsi || !GetAllThingsWithScriptName_API) return;
++            FableString text(name.c_str());
++            GetAllThingsWithScriptName_API(gsi, text.get(), reinterpret_cast<std::vector<CScriptThing>*>(vec));
++        });
++    };
++    quest["GetAllThingsWithDefName"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
++        return NoviFillThingVector(self, ts, [&](NoviRetailThingVector* vec) {
++            auto* gsi = self.GetGameInterface();
++            if (!gsi || !GetAllThingsWithDefName_API) return;
++            FableString text(name.c_str());
++            GetAllThingsWithDefName_API(gsi, text.get(), reinterpret_cast<std::vector<CScriptThing>*>(vec));
++        });
 +    };
 +}

@@ -3,6 +3,244 @@ import re
 
 LABEL_TOKEN = r'(?:LAB_[0-9a-f]+(?:_c\d+)?|FLOW_[a-z0-9_]+)'   # `_cN`: a label inside a copied sibling tail
 
+RE_LABEL_LINE = re.compile(r'^(' + LABEL_TOKEN + r'):\s*(.*)$')
+RE_GOTO_TAIL = re.compile(r'\bgoto (' + LABEL_TOKEN + r');\s*$')
+
+
+def _block_kind(opener):
+    """'if' for an if/else block, 'loop' for while/for/do, 'other' for anything else Ghidra opens."""
+    line = opener.lstrip('}').strip()
+    if line.startswith(('if (', 'if(', 'else')):
+        return 'if'
+    if line.startswith(('while', 'for', 'do')):
+        return 'loop'
+    return 'other'
+
+
+def _parse(statements):
+    """Block structure of a statement list: (blocks, scope_at, labels, uses, open_at) or None when unbalanced.
+
+    blocks: id -> {'open', 'close', 'kind'}; scope_at[i]: block ids enclosing line i; labels: name -> index;
+    uses: [(index, target)]; open_at: open index -> id.
+    """
+    scopes, blocks, labels, uses, open_at, scope_at = [], {}, {}, [], {}, []
+    serial = 0
+    for index, statement in enumerate(statements):
+        line = statement.strip()
+        if line.startswith('}'):
+            if not scopes:
+                return None
+            blocks[scopes.pop()]['close'] = index
+        scope_at.append(tuple(scopes))
+        label = RE_LABEL_LINE.match(line)
+        if label:
+            if label[1] in labels:
+                return None
+            labels[label[1]] = index
+            line = label[2]
+        jump = RE_GOTO_TAIL.search(line)
+        if jump:
+            uses.append((index, jump[1]))
+        if line.endswith('{'):
+            serial += 1
+            blocks[serial] = {'open': index, 'close': None, 'kind': _block_kind(statement.strip())}
+            open_at[index] = serial
+            scopes.append(serial)
+    if scopes:
+        return None
+    return blocks, scope_at, labels, uses, open_at
+
+
+def _unexpressible(parsed):
+    """[(index, target)] of the jumps whose label is not in an enclosing scope of the jump."""
+    blocks, scope_at, labels, uses, _ = parsed
+    out = []
+    for index, target in uses:
+        if target not in labels:
+            continue
+        label_scope = scope_at[labels[target]]
+        if scope_at[index][:len(label_scope)] != label_scope:
+            out.append((index, target))
+    return out
+
+
+def _chain_end(statements, parsed, close):
+    """Index of the `}` that ends the if/else chain a block's closing brace at `close` belongs to."""
+    blocks, _, _, _, open_at = parsed
+    while True:
+        if close in open_at:                      # `} else {` on one line
+            close = blocks[open_at[close]]['close']
+            continue
+        nxt = close + 1
+        while nxt < len(statements) and not statements[nxt].strip():
+            nxt += 1
+        if nxt < len(statements) and nxt in open_at and statements[nxt].strip().startswith('else'):
+            close = blocks[open_at[nxt]]['close']
+            continue
+        return close
+
+
+def _is_epilogue(statements, parsed, name, seen=()):
+    """True when the label's region is a straight-line cleanup that ends in `return;` (or jumps to another
+    such region): `native_cleanup_regions` hoists those on the Lua side."""
+    blocks, scope_at, labels, _, open_at = parsed
+    if name in seen or name not in labels:
+        return False
+    index = labels[name]
+    head = RE_LABEL_LINE.match(statements[index].strip())
+    pending = [head[2]] if head and head[2] else []
+    j = index + 1
+    while True:
+        if pending:
+            t = pending.pop(0)
+        else:
+            if j >= len(statements):
+                return False                      # falls off the function: no terminal, not a cleanup region
+            t = statements[j].strip()
+            j += 1
+        if not t:
+            continue
+        if t.startswith('}'):
+            if t.endswith('{'):                   # `} else {`: skip the chain
+                j = blocks[open_at[j - 1]]['close'] + 1
+                continue
+            closed = next(b for b in blocks.values() if b['close'] == j - 1)
+            if closed['kind'] == 'loop':
+                return False
+            # a plain `}` followed by an else chain: skip it
+            nxt = j
+            while nxt < len(statements) and not statements[nxt].strip():
+                nxt += 1
+            if nxt < len(statements) and nxt in open_at and statements[nxt].strip().startswith('else'):
+                j = blocks[open_at[nxt]]['close'] + 1
+            continue
+        if t == 'return;' or re.match(r'^return\b', t):
+            return True
+        g = re.fullmatch(r'goto (' + LABEL_TOKEN + r');', t)
+        if g:
+            return _is_epilogue(statements, parsed, g[1], seen + (name,))
+        if RE_LABEL_LINE.match(t):
+            other = RE_LABEL_LINE.match(t)
+            return _is_epilogue(statements, parsed, other[1], seen + (name,))
+        if t.endswith('{') or re.match(r'^(?:if|else|while|for|do|switch)\b', t) or t in ('break;', 'continue;'):
+            return False
+
+
+def _indent_of(statement):
+    return statement[:len(statement) - len(statement.lstrip())]
+
+
+def hoist_shared_tails(statements, max_rounds=200):
+    """Move a shared continuation out of the if/else nest that hides it, so every jump to it is a Lua goto.
+
+    VC7.1 places a continuation shared by two branches (the Xbox and PC halves of a tutorial, the
+    then/else halves of a check) inside ONE of them and jumps into it from the other; Ghidra prints the
+    label inside that branch's nested ifs, where Lua cannot jump. For a jump whose label sits under a chain
+    of if/else blocks (never a loop) that the jump site is outside of, the label's tail -- from the label to
+    the end of each enclosing if block on the way out, skipping the else chains that fall-through skips --
+    is moved right after the outermost of those blocks' if/else chain:
+
+        if (X) { pre; if (Y) { L: tail } } else { pc; goto L; } after
+    becomes
+        if (X) { pre; if (Y) { goto L; } } else { pc; goto L; } goto FLOW_past_l; L: tail FLOW_past_l: after
+
+    A move, not a copy: the labels inside the tail keep their names and every jump keeps its meaning (the
+    tail stays inside the same loops). A region that is a plain cleanup epilogue (straight line to `return`)
+    is left alone for `native_cleanup_regions`. Each hoist must strictly reduce the number of unexpressible
+    jumps, else it is undone; the pass repeats until no candidate is left.
+    """
+    failed = set()
+    for _ in range(max_rounds):
+        parsed = _parse(statements)
+        if parsed is None:
+            return statements
+        pending = _unexpressible(parsed)
+        if not pending:
+            return statements
+        blocks, scope_at, labels, uses, open_at = parsed
+        progressed = False
+        for index, target in pending:
+            if target in failed:
+                continue
+            label_index = labels[target]
+            label_scope, jump_scope = scope_at[label_index], scope_at[index]
+            common = 0
+            while common < min(len(label_scope), len(jump_scope)) and label_scope[common] == jump_scope[common]:
+                common += 1
+            path = label_scope[common:]
+            if not path or any(blocks[b]['kind'] != 'if' for b in path):
+                failed.add(target)
+                continue
+            if _is_epilogue(statements, parsed, target):
+                failed.add(target)
+                continue
+            rewritten = _hoist(statements, parsed, target, path)
+            if rewritten is None:
+                failed.add(target)
+                continue
+            reparsed = _parse(rewritten)
+            if reparsed is None or len(_unexpressible(reparsed)) >= len(pending):
+                failed.add(target)
+                continue
+            statements = rewritten
+            progressed = True
+            break
+        if not progressed:
+            return statements
+    return statements
+
+
+def _hoist(statements, parsed, target, path):
+    blocks, scope_at, labels, uses, open_at = parsed
+    label_index = labels[target]
+    outer = path[0]
+    exit_index = _chain_end(statements, parsed, blocks[outer]['close'])
+    # the tail: one segment per block on the path, innermost first; each runs from the label (or from the
+    # end of the previous block's else chain) to that block's closing brace
+    segments, start = [], label_index
+    for block in reversed(path):
+        close = blocks[block]['close']
+        segments.append((start, close))
+        start = _chain_end(statements, parsed, close) + 1
+    stem = target.lower()
+    head = RE_LABEL_LINE.match(statements[label_index].strip())
+    indent = _indent_of(statements[exit_index])
+    base_depth = len(scope_at[label_index])
+    region, in_place = [indent + f'{target}:'], {}        # in_place: segment start index -> replacement lines
+    for k, (seg_start, seg_end) in enumerate(segments):
+        body = []
+        for i in range(seg_start, seg_end):
+            t = statements[i].strip()
+            if i == label_index:
+                t = head[2] if head and head[2] else ''
+            if not t:
+                continue
+            depth = max(0, len(scope_at[i]) - (base_depth - k))
+            body.append(indent + '  ' * depth + t)
+        if not body:
+            continue            # an empty segment: falling out of the block reaches the next one anyway
+        name = target if k == 0 else f'FLOW_hoist_{stem}_{k}'
+        if k:
+            region.append(indent + f'{name}:')
+        region.extend(body)
+        in_place[seg_start] = [_indent_of(statements[seg_start]) + f'goto {name};']
+    if len(region) == 1:
+        block = region        # nothing to run: the label just marks the way out of the chain
+    else:
+        past = f'FLOW_past_{stem}'
+        block = [indent + f'goto {past};'] + region + [indent + f'{past}:']
+    removed = {i for seg_start, seg_end in segments for i in range(seg_start, seg_end)}
+    out = []
+    for i, statement in enumerate(statements):
+        if i in in_place:
+            out.extend(in_place[i])
+        if i in removed:
+            continue
+        out.append(statement)
+        if i == exit_index:
+            out.extend(block)
+    return out
+
 
 def supported_jumps(statements):
     scopes, labels, uses = [], {}, []
@@ -292,6 +530,19 @@ def duplicate_sibling_tails(statements):
                         break
             if ok and internal and region and region[-1] == 'return;':
                 ok = False
+            if ok:
+                # a renamed jump whose renamed label the copy never reached (the copy terminated before
+                # it): the original label must be visible from the copy site, else the copy is broken
+                defined = {m[1] for r in region for m in [re.match(r'^(' + LABEL_TOKEN + r'):', r.strip())] if m}
+                for n, r in enumerate(region):
+                    g = re.search(r'\bgoto (' + LABEL_TOKEN + r');', r)
+                    if g and g[1].endswith(suffix) and g[1] not in defined:
+                        original = g[1][:-len(suffix)]
+                        if visible(original):
+                            region[n] = r[:g.start(1)] + original + r[g.end(1):]
+                        else:
+                            ok = False
+                            break
             if ok and depth == 0:
                 chosen = (exit_index, region, terminated)
             break

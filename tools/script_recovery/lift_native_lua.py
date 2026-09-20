@@ -35,7 +35,7 @@ from native_thing_predicates import recover_reviewed_thing_predicates  # noqa: E
 from native_call_operands import recover_reviewed_call_operands  # noqa: E402
 from native_self_wrapper import fold_self_wrapper_arguments  # noqa: E402
 from native_deeds import recover_deed_operands  # noqa: E402
-from native_goto_scopes import supported_jumps, duplicate_sibling_tails, merge_equivalent_regions  # noqa: E402
+from native_goto_scopes import supported_jumps, duplicate_sibling_tails, merge_equivalent_regions, hoist_shared_tails  # noqa: E402
 from native_subregisters import fold_literal_slices, fold_unsigned_three_byte_casts  # noqa: E402
 from native_constant_conditions import fold_decisive_condition  # noqa: E402
 from native_conditions import conditional_call_assignment  # noqa: E402
@@ -54,6 +54,7 @@ from native_dispatch_scaffolding import prune_dispatch_loads, recover_barrel_dis
 from native_affair_woman_position import recover_affair_woman_position
 from native_flat_control import flatten_control
 from native_structured_switch import lower_nonfallthrough_switches
+from native_switch_tree import flatten_switch_tree
 from native_goto_scopes import LABEL_TOKEN
 from native_barrel_position import recover_first_barrel_vector, recover_barrel_teleport_choice, recover_barrel_return_position
 from native_barrel_departure import recover_barrel_departure
@@ -130,7 +131,7 @@ ENTITY_INVENTORIES = ROOT / "refs" / "script_recovery" / "new_oakvale_intro" / "
 CALLEE_ALIASES = {
     0x005BC746: "IsActiveThreadTerminating", 0x006A8BE0: "IsActiveThreadTerminating",
     0x00F35B30: "IsActiveThreadTerminating",
-    0x00CBE9EE: "AddLogbookTutorialEntry",
+    0x00CBE9EE: "AddLogbookTutorialEntry", 0x00CBEA81: "AddLogbookTutorialEntryPC",
 }
 TERMINATING_NAMES = ("IsActiveThreadTerminating",)
 
@@ -460,17 +461,17 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
         'parameters': [{'name': 'pMe', 'type': 'CScriptThing*'},
                        {'name': 'position', 'type': 'sol::table', 'nativeKind': 'vector'},
                        {'name': 'distance', 'type': 'float'}]})
-    centre = result.get('SetWanderCentrePoint', {})
-    for parameter in centre.get('parameters', []):
-        if parameter.get('name') == 'pos' and parameter.get('type') == 'sol::table':
-            parameter['nativeKind'] = 'vector'
-    creature = result.get('CreateCreature', {})
-    for parameter in creature.get('parameters', []):
-        if parameter.get('name') == 'position' and parameter.get('type') == 'sol::table':
-            parameter['nativeKind'] = 'vector'
-    for parameter in result.get('IsCameraPosOnScreen', {}).get('parameters', []):
-        if parameter.get('name') == 'pos' and parameter.get('type') == 'sol::table':
-            parameter['nativeKind'] = 'vector'
+    # the `position` table of every Create* spawner and the three position-taking calls below take a native
+    # C3DVector (CreateObject's was untagged, so place_args filled it from the numeric pool -- the loop
+    # counter -- in RunTutorials' apple loop 0x00D45DD0; CreateCreature was tagged by name and worked).
+    # Not every position table: tagging EntityTeleportToPosition's let an unresolved stack vector
+    # (`&xStack_40`, SkillTarget) leak into an emitted call where a TODO comment stood.
+    for name, spec in result.items():
+        if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen')):
+            continue
+        for parameter in spec.get('parameters', []):
+            if parameter.get('type') == 'sol::table' and parameter.get('name') in ('position', 'pos'):
+                parameter['nativeKind'] = 'vector'
     result.setdefault('RetailRandModulo', {'scope': 'Quest', 'returnType': 'int',
                       'parameters': [{'name': 'modulus', 'type': 'int'}]})
     # LuaManager exposes the existing-handle, nonblocking action clear. This is
@@ -726,6 +727,25 @@ def parse_thing_signature(mangled: str) -> tuple[str | None, list[str], bool] | 
             else:
                 kinds.append("scalar")
     return result, kinds, by_value
+
+
+_MASTER_BOOL_FLAGS: set[str] | None = None
+
+
+def master_bool_flags() -> set[str]:
+    """`CQ_SunnyvaleMasterData` members the PDB types `bool` (ghidra_out/struct_layouts_egor.tsv), i.e. the flags
+    `quest:GetMasterGameState` returns as Lua booleans."""
+    global _MASTER_BOOL_FLAGS
+    if _MASTER_BOOL_FLAGS is None:
+        flags = set()
+        layout = ROOT / 'ghidra_out' / 'struct_layouts_egor.tsv'
+        if layout.is_file():
+            for line in layout.read_text(encoding='utf-8', errors='replace').splitlines():
+                cols = line.split('\t')
+                if len(cols) >= 5 and cols[0] == 'CQ_SunnyvaleMasterData' and cols[3] == 'bool':
+                    flags.add(cols[4].strip())
+        _MASTER_BOOL_FLAGS = flags
+    return _MASTER_BOOL_FLAGS
 
 
 class Lifter:
@@ -1060,6 +1080,11 @@ class Lifter:
         bool_atoms = [var for var, kind in self.kinds.items() if kind == "bool"]
         bool_atoms += array_bools
         bool_atoms += re.findall(r'\b\w+:GetStateBool\("\w+"\)', text)
+        # master-data flags the PDB types `bool` come back from the binding as Lua booleans: a native byte
+        # test (`== 0` / `!= 0`) must become a truth test (`false == 0` is false in Lua: the PreMelee Guildmaster
+        # ran CS_GUILD_MELEE_WOODSWON before the beetles because `ScorpionsDestroyedCutscenePlayed == 0` never held)
+        bool_atoms += [m for m in re.findall(r'(?:\b\w+:|GSI->)GetMasterGameState\("\w+"\)', text)
+                       if re.search(r'"(\w+)"', m).group(1) in master_bool_flags()]
         for var in bool_atoms:
             pattern = re.escape(var)
             text = re.sub(rf'\b{pattern}\s*==\s*(?:0|0x0)\b', f"not {var}", text)
@@ -1167,7 +1192,8 @@ class Lifter:
         # Do not classify its integer literal as a missing string and then
         # substitute a stale string temporary from an earlier native call.
         if (len(params) == 1 and params[0].get('type') == 'int|string' and len(parsed) == 1
-                and re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|[0-9]+)', parsed[0])):
+                and (re.fullmatch(r'-?(?:0x[0-9a-fA-F]+|[0-9]+)', parsed[0])
+                     or self.kind_of(parsed[0]) == 'number')):     # (a story id chosen by a branch: `iVar8 = 0xaf / 0xaa`)
             value = parsed[0]
             if re.fullmatch(r'0x[0-9a-fA-F]{8}', value) and int(value, 16) >= 0x80000000:
                 value = str(int(value, 16) - 0x100000000)
@@ -1387,6 +1413,10 @@ class Lifter:
             operands = [a[1:] if a.startswith("&") and a[1:] in self.temps else a for a in operands]
             # a hidden-result slot passed by address again is that result (`&xStack_ac` after GetThingWithScriptName)
             operands = [self.slot_results[a[1:]] if a.startswith("&") and a[1:] in self.slot_results else a for a in operands]
+            # a numeric local passed by reference (`AddQuestInfoTimer(&timer, ...)`: retail takes the CTimer&) is the
+            # local itself; dropping the `&` operand let place_args back-fill the slot from an unrelated result
+            # (ApprenticeSpeedTest showed the +20 timer on the HUD clock, 2026-09-19)
+            operands = [a[1:] if a.startswith("&") and self.kind_of(a[1:]) == 'number' else a for a in operands]
         raw_args = [a for a in operands if not a.startswith("&") and a not in ("this", "param_1")]
         params = None
         if spec:
@@ -1422,6 +1452,8 @@ class Lifter:
             if target:
                 self.emit(f"{self.declare(target)} = {call}")
                 kind = self.result_kind(spec.get("returnType", "void"))
+                if name == 'GetMasterGameState' and args and args[0].strip('"') in master_bool_flags():
+                    kind = 'bool'      # a PDB-typed bool master flag: the binding returns a Lua boolean
                 if kind:
                     self.kinds[target] = kind
                 if return_slot:
@@ -1845,6 +1877,16 @@ class Lifter:
             self.todo.extend('unresolved flat control condition: ' + item['expression'][:120]
                              for item in self.flat_control_evidence['unresolvedConditions'])
         else:
+            import os as _os
+            if _os.environ.get('SWITCH_DUMP') and _os.environ['SWITCH_DUMP'] in (role or ''):
+                Path(_os.environ['SWITCH_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
+            self.switch_tree_evidence = None
+            if self.accessor_kinds and not _os.environ.get('NO_SWITCH_TREE'):
+                # unit converter: a binary-search dispatch tree over one selector (several `switch (sel)` plus
+                # `if (sel < K)` ladders, the bodies scattered and linked by gotos) is one fall-through switch
+                statements, self.switch_tree_evidence = flatten_switch_tree(statements)
+                if self.switch_tree_evidence.get('status') == 'rejected':
+                    self.todo.append('switch tree flattening rejected: ' + self.switch_tree_evidence['reason'])
             statements, self.structured_switch_evidence = lower_nonfallthrough_switches(statements, allow_fallthrough=self.accessor_kinds)
             self.todo.extend('switch lowering rejected: ' + item['reason']
                              for item in self.structured_switch_evidence if item['status'] == 'rejected')
@@ -1852,13 +1894,22 @@ class Lifter:
         self.mutable_scalars.update(sequence_assignments)
         if self.native_gotos:
             if self.accessor_kinds:
-                # unit converter: jumps into sibling blocks become tail copies + a jump past the block
-                statements = duplicate_sibling_tails(merge_equivalent_regions(statements))
+                # unit converter: a continuation shared by two branches is moved out of the branch that hides
+                # it (hoist_shared_tails); what is left (jumps into loop bodies, small epilogues) becomes tail
+                # copies + a jump past the block
+                statements = duplicate_sibling_tails(hoist_shared_tails(merge_equivalent_regions(statements)))
+                statements = hoist_shared_tails(statements)      # a copy can carry the same shape inside it
                 import os as _os
                 if _os.environ.get('GOTO_DUMP') and _os.environ['GOTO_DUMP'] in (role or ''):
                     Path(_os.environ['GOTO_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
         definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
+        # a fall-through switch chain re-assigns its selector local (`native_structured_switch`): a real variable,
+        # never a constant to propagate into the guards that follow
+        for name, count in Counter(re.findall(r'\b(native_arg_switch_\w+)\s*=(?!=)', '\n'.join(statements))).items():
+            if count > 1:
+                definitions[name] = max(definitions[name], count)
+                self.mutable_scalars.add(name)
         self.literal_assigned_slots = set(re.findall(r'CCharString::operator=\s*\(\s*(?:\(CCharString \*\)\s*)?&?(\w+)\s*,\s*"', text))
         if self.accessor_kinds:
             # typed exports name staged locals after callee parameters (`string`, `pMessage`): a value staged
@@ -1999,6 +2050,7 @@ class Lifter:
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
+                                      else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector')
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:

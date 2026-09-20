@@ -119,6 +119,14 @@ def _walk(lines, start, emitted, blocks, seen=()):
             if inner is None:
                 return None
             return body + [('label', m.group('label'))], inner[1], inner[2], crossed or inner[3]
+        cm = COMMENT_GOTO.match(lines[j])
+        if cm:
+            # the region ends with a jump the lifter could not make: it delegates to that label's region
+            # (a cleanup ladder: release A, then the region that releases B and returns). Resolved below;
+            # a region whose delegate never reaches a return is dropped.
+            if cm.group('label') in seen:
+                return None
+            return body + [('label', cm.group('label'))], j, ('todo', cm.group('label')), crossed
         if not s or s.startswith('--'):
             if s and not (s.startswith('-- TODO(native)') or s.startswith('-- LAB_')):
                 return None
@@ -146,7 +154,7 @@ def _regions(lines):
         if walked is None:
             continue
         body, j, terminal, crossed = walked
-        if body or terminal == 'return':
+        if body or terminal == 'return' or terminal[0] == 'goto':
             regions[m.group('label')] = (i, j, body, terminal, crossed)
     # a region that ends by jumping to an emitted label whose own block runs straight to `return` really ends
     # in that return: take the tail into the region so the call sites reproduce the whole epilogue. A region
@@ -166,7 +174,7 @@ def _regions(lines):
             inner = delegate(body)
             if terminal != 'return' and inner in regions and regions[inner][3] == 'return':
                 regions[label] = (start, end, body, 'return', crossed)
-    return regions
+    return {label: region for label, region in regions.items() if region[3] == 'return' or region[3][0] != 'todo'}
 
 
 def _emitted_tail(lines, name):
@@ -190,6 +198,21 @@ def _emitted_tail(lines, name):
         out.append(s)
         j += 1
     return None
+
+
+def _scopes(lines):
+    """index -> tuple of the open-block indices enclosing that line (a `::label::` is visible from every line
+    whose scope extends its own)."""
+    blocks = _blocks(lines)
+    out, stack = [], []
+    for i in range(len(lines)):
+        kind = blocks.get(i)
+        if kind and kind[0] == 'close':
+            stack.pop()
+        out.append(tuple(stack))
+        if kind and kind[0] == 'open':
+            stack.append(i)
+    return out
 
 
 def _call(label, regions):
@@ -247,6 +270,16 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
                     stmts.extend(expand(value, seen + (label,)))
             return stmts
 
+        scopes = _scopes(lines)
+
+        def reachable(label, site):
+            # a region that ends in `goto Y` can only be reproduced where Y is visible: an enclosing block
+            terminal = regions[label][3]
+            if terminal == 'return' or terminal[0] != 'goto':
+                return True
+            target = next((k for k, line in enumerate(lines) if re.fullmatch(r'\s*::' + re.escape(terminal[1]) + r'::\s*', line)), None)
+            return target is not None and scopes[site][:len(scopes[target])] == scopes[target]
+
         # replace the in-place regions with a call + return, and the jumps with call + return
         new_lines, i = [], 0
         while i < len(lines):
@@ -260,13 +293,13 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
                 i = regions[label][1] + 1          # skip through the terminal
                 continue
             m = EARLY_RETURN.match(line)
-            if m and m.group('label') in wanted:
+            if m and m.group('label') in wanted and reachable(m.group('label'), i):
                 cond = m.group('cond') or ''; label = m.group('label')
                 new_lines.append(f"{m.group('ind')}{cond}{_call(label, regions)}{_exit(label, regions)}"
                                  f"{' end' if cond else ''}{_gap(label, regions)}")
                 i += 1; continue
             m = INLINE_GOTO.match(line) or COMMENT_GOTO.match(line)
-            if m and m.group('label') in wanted:
+            if m and m.group('label') in wanted and reachable(m.group('label'), i):
                 label = m.group('label')
                 new_lines.append(f"{m.group('ind')}{_call(label, regions)}{_exit(label, regions)}{_gap(label, regions)}")
                 i += 1; continue

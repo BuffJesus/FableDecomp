@@ -30,7 +30,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 LAYOUTS = ROOT / 'ghidra_out/struct_layouts_egor.tsv'
 EGO_R = ROOT / 'debug_build/ego_r.exe'
-KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'unsigned int': 'Int',
+KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'ulong': 'Int', 'unsigned int': 'Int',
         'short': 'Int', 'unsigned short': 'Int', 'char': 'Int', 'unsigned char': 'Int', 'float': 'Float',
         'CTimer': 'Int', 'CCharString': 'String', 'CWideString': 'String'}
 LIFECYCLE = {'RegisterMain', 'Main', 'Init', 'OnPersist', 'destructor'}
@@ -402,7 +402,8 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
                                'helpers': entity_helpers.get(klass, {}),
                                'fields': ent_fields, 'thingFields': ent_things, 'unmappedFields': ent_skipped, 'timers': ent_timers,
                                'arrays': array_descriptors(layouts, klass, parent_class=class_name)}
-    return {'schema': 'quest-unit-evidence/1', 'script': script, 'package': package or script[2:],
+    return {'schema': 'quest-unit-evidence/1', 'script': script,
+            'package': package or (script[2:] if script.startswith('Q_') else script),   # `Gameflow` has no Q_ prefix
             'nativeClass': qualified, 'allocator': quest_inv['allocator'], 'vtable': quest_inv['vtable'],
             'master': dict(zip(('fields', 'unmapped', 'things'), master_fields)),
             'quest': {'functions': functions, 'fields': fields, 'thingFields': things, 'unmappedFields': skipped, 'timers': quest_timers,

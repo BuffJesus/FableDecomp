@@ -52,8 +52,113 @@ def state_map(fields):
     return {offset.lower(): (name, kind) for offset, (name, kind) in fields.items()}
 
 
+# CPersistContext::Transfer<T> instantiations FSE proved by address (FableAPI.cpp ASLR<tCPersistContext_Transfer_*>);
+# the typing spec carries them as `CPersistContext_Transfer_<k>_API`. The bsim label on every other
+# instantiation is `Transfer<signed_char>` (propagated), so the label's template argument is not evidence.
+PERSIST_KIND_BY_TYPEDEF = {'bool': 'Bool', 'int': 'Int', 'uint': 'UInt', 'float': 'Float', 'string': 'String'}
+PERSIST_STATE_KIND = {'Bool': 'Bool', 'Int': 'Int', 'UInt': 'Int', 'Float': 'Float', 'String': 'String'}
+PERSIST_DEFAULT = {'Bool': 'false', 'Int': '0', 'UInt': '0', 'Float': '0.0', 'String': '""'}
+RE_TRANSFER_CALL = re.compile(r'^[ \t]*(?:\w+ = )?(?:\([\w :<>*]+\))?\s*CPersistContext::Transfer<([^>]+)>(?:__at([0-9a-f]+))?\s*\((.*)\);[ \t]*$', re.M)
+
+
+def persist_kinds_from_spec(tu_path):
+    """address -> kind for the Transfer<T> helpers the unit's typing spec (FSE typedefs) names."""
+    spec = Path(tu_path).parent / 'typing_spec.json'
+    kinds = {}
+    if spec.is_file():
+        for address, helper in json.loads(spec.read_text(encoding='utf-8-sig')).get('helpers', {}).items():
+            m = re.fullmatch(r'CPersistContext_Transfer_(\w+)_API', str(helper.get('name', '')))
+            if m and m.group(1) in PERSIST_KIND_BY_TYPEDEF:
+                kinds[int(address, 16)] = PERSIST_KIND_BY_TYPEDEF[m.group(1)]
+    return kinds
+
+
+def lift_persist_evidence(source, unit, spec_l, persist_kinds):
+    """OnPersist from the lowered decompile: every `CPersistContext::Transfer<T>(ctx, name, &field[, &default])`
+    becomes get / PersistTransfer / set on the field the address evidence names (a quest member, a master-data
+    member, or a member vector). The transfer kind comes from the callee address (FSE-proven), else from the
+    template argument. Returns (lines, calls, todo)."""
+    from tools.script_recovery.lift_native_lua import TYPE_MAP
+    quest_fields = state_map(unit['quest'].get('fields', {}))
+    master_fields = state_map(unit.get('master', {}).get('fields', {}))
+    unmapped = {x['offset'].lower(): x for x in unit['quest'].get('unmappedFields', [])}
+    out, calls, todo = [], [], []
+    for m in RE_TRANSFER_CALL.finditer(source):
+        template, at, arg_text = m.group(1), m.group(2), m.group(3)
+        args = [a.strip() for a in _split_top(arg_text)]
+        if len(args) < 3:
+            todo.append(f'unlifted persist transfer: {m.group(0).strip()[:90]}')
+            out.append(f'    -- TODO(native): {m.group(0).strip()}')
+            continue
+        target = int(at, 16) if at else spec_l.call_labels.get(f'CPersistContext::Transfer<{template}>')
+        name_arg = args[1]
+        if re.fullmatch(r'"(?:[^"\\]|\\.)*"', name_arg):
+            name = name_arg[1:-1]
+        else:
+            literal = re.fullmatch(r'(?:\([\w *]+\))?(0x[0-9a-f]+)', name_arg)
+            name = spec_l.resolve_string(int(literal.group(1), 16)) if literal and spec_l.resolve_string else None
+        field = args[2]
+        member = re.fullmatch(r'(?:\([\w *]+\))?\(?this \+ (0x[0-9a-f]+|\d+)\)?', field)
+        master = re.fullmatch(r'(?:\([\w *]+\))?\(?\*\(int \*\)\(this \+ 0x44\) \+ (0x[0-9a-f]+|\d+)\)?', field)
+        kind = persist_kinds.get(target) if target else None
+        if not name:
+            todo.append(f'persist transfer: unresolved name operand {name_arg} ({m.group(0).strip()[:60]})')
+            out.append(f'    -- TODO(native): {m.group(0).strip()}')
+            continue
+        if member and unmapped.get(hex(int(member.group(1), 0))) and 'vector<' in unmapped[hex(int(member.group(1), 0))]['type']:
+            row = unmapped[hex(int(member.group(1), 0))]
+            if row['type'].startswith('vector<CCharString'):
+                # `CPersistContext::Transfer<std::vector<CCharString>>` (0x49B8D0): the string-list transfer is
+                # `quest:PersistTransferStringList(context, name, table)` returning the table (the sidecar binding
+                # is a documented requirement, docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md). Nothing in the script
+                # writes the member, so an empty table goes out and the loaded list comes back.
+                var = name[0].lower() + name[1:]
+                out.append(f'    local {var} = quest:PersistTransferStringList(context, "{name}", {{}})'
+                           f'  -- {row["type"].split(",")[0]}> member `{row["name"]}` (this + {row["offset"]})')
+                calls.append('PersistTransferStringList')
+                continue
+            todo.append(f'persist transfer: `{name}` is a `{row["type"]}` member ({row["name"]}, this + {row["offset"]}); '
+                        f'no PersistTransfer list binding (callee {target:#x} is Transfer<vector>, {len(args)} operands)')
+            out.append(f'    -- TODO(native): quest:PersistTransfer(context, "{name}", ...)  -- {row["type"]} member `{row["name"]}` (callee {target:#x}); binding missing')
+            continue
+        if kind is None:
+            # not an FSE-typed instantiation: the member's PDB kind is the evidence (an enum member is a 4-byte
+            # transfer; the retail body is the Transfer<int> shape), the bsim template argument the last resort
+            evidence = (master_fields.get(hex(int(master.group(1), 0))) if master
+                        else quest_fields.get(hex(int(member.group(1), 0))) if member else None)
+            kind = evidence[1] if evidence else TYPE_MAP.get(template.replace(' ', '_'), 'Int')
+            if not evidence and target:
+                todo.append(f'persist transfer: kind of `{name}` from the bsim template argument `{template}` (callee {target:#x} not FSE-typed)')
+        var = name[0].lower() + name[1:]
+        state = PERSIST_STATE_KIND[kind]
+        if master:
+            f = master_fields.get(hex(int(master.group(1), 0)))
+            label = f[0] if f else name
+            out.append(f'    local {var} = quest:GetMasterGameState("{label}") or {PERSIST_DEFAULT[kind]}')
+            out.append(f'    {var} = quest:PersistTransfer{kind}(context, "{name}", {var})')
+            out.append(f'    quest:SetMasterGameState("{label}", {var})')
+            calls += ['GetMasterGameState', f'PersistTransfer{kind}', 'SetMasterGameState']
+            if not f:
+                todo.append(f'persist transfer: master-data member at +{master.group(1)} has no PDB name; keyed by the transfer name `{name}`')
+        else:
+            f = quest_fields.get(hex(int(member.group(1), 0))) if member else None
+            label = f[0] if f else name
+            if member and not f:
+                todo.append(f'persist transfer: quest member at this + {member.group(1)} has no PDB name; keyed by the transfer name `{name}`')
+            elif not member:
+                todo.append(f'persist transfer: field operand `{field}` not a member; keyed by the transfer name `{name}`')
+            out.append(f'    local {var} = quest:GetState{state}("{label}") or {PERSIST_DEFAULT[kind]}')
+            out.append(f'    {var} = quest:PersistTransfer{kind}(context, "{name}", {var})')
+            out.append(f'    quest:SetState{state}("{label}", {var})')
+            calls += [f'GetState{state}', f'PersistTransfer{kind}', f'SetState{state}']
+    return out, calls, todo
+
+
 SIDECAR_PATCHES = ROOT / 'tools' / 'script_recovery' / 'sidecar_patches'
-RE_SIDECAR_BINDING = re.compile(r'^\+\s*(quest|thing)\["(\w+)"\]\s*=\s*\[\]\(([^)]*)\)\s*(?:->\s*([^{]+?))?\s*\{', re.M)
+RE_SIDECAR_BINDING = re.compile(r'^\s*(quest|thing)\["(\w+)"\]\s*=\s*\[\]\(([^)]*)\)\s*(?:->\s*([^{]+?))?\s*\{', re.M)
+
+
+THING_OBJECT_NAMES = {'thing', 'value', 'result', 'other', 'me', 'pMe', 'target'}
 
 
 def sidecar_bindings():
@@ -61,7 +166,11 @@ def sidecar_bindings():
     (evidence: the added `quest["X"]` / `thing["X"]` lines of tools/script_recovery/sidecar_patches/*.patch)."""
     entries = {}
     for patch in sorted(SIDECAR_PATCHES.glob('*.patch')) if SIDECAR_PATCHES.is_dir() else []:
-        for scope, name, params, ret in RE_SIDECAR_BINDING.findall(patch.read_text(encoding='utf-8', errors='replace')):
+        # only the added lines, with their `+` stripped: a lambda head wrapped over several lines (CreateEffect's
+        # seven parameters, `-> std::shared_ptr<CScriptThing> {` on its own line) is one statement again
+        added = '\n'.join(line[1:] for line in patch.read_text(encoding='utf-8', errors='replace').splitlines()
+                          if line.startswith('+') and not line.startswith('+++'))
+        for scope, name, params, ret in RE_SIDECAR_BINDING.findall(added):
             parameters = []
             for param in [x.strip() for x in params.split(',') if x.strip()]:
                 if 'LuaQuestState' in param or 'sol::this_state' in param:
@@ -71,10 +180,18 @@ def sidecar_bindings():
                 if kind == 'CScriptThing*' and pname == 'me':
                     parameters.append({'name': 'pMe', 'type': 'CScriptThing*', 'optional': False})
                 else:
-                    parameters.append({'name': pname or f'arg{len(parameters)}', 'type': 'CScriptThing*' if kind == 'sol::object' else kind, 'optional': False})
+                    # a `sol::object` is a thing handle when the binding names it so; an overload-dispatching operand
+                    # (CreateEffect's `where` = position table or thing, `arg4`/`arg5`) stays untyped and positional
+                    parameters.append({'name': pname or f'arg{len(parameters)}',
+                                       'type': 'CScriptThing*' if kind == 'sol::object' and pname in THING_OBJECT_NAMES else kind, 'optional': False})
             # lambdas without a trailing return type: reviewed against the patch bodies
             ret = (ret or {'GetStateThing': 'CScriptThing*', 'GetStateListCount': 'int'}.get(name, 'void')).strip()
             ret = {'std::string': 'const std::string&', 'std::shared_ptr<CScriptThing>': 'CScriptThing*'}.get(ret, ret)
+            if parameters and parameters[0]['name'] == 'result':
+                # a binding that takes the native hidden-result slot as its first Lua operand (CreateEffect): the
+                # lifter's manifest placement models a hidden result as the return value and would drop or shuffle
+                # the operands; left out, the call is emitted positionally from the typed export's operand list
+                continue
             entries[name] = {'name': name, 'scope': 'Entity' if scope == 'thing' else 'Quest', 'returnType': ret,
                              'parameters': parameters, 'blocking': False, 'category': 'NoviCompatibility sidecar'}
     return entries
@@ -188,20 +305,49 @@ def _call_spans(text, label):
     return spans
 
 
-def _align(site, args):
+def _align(site, args, vtable=False, receiver_printed=False):
     '''Entry-relative slots aligned with the printed arguments of one call, or None when the printed count
     cannot be reconciled with the recorded register/push operands (a by-value slot, a hidden return pointer
-    push the decompiler folded away, ...). Printed order is (ecx, edx, pushes right-to-left).'''
+    push the decompiler folded away, ...). Printed order is (ecx, edx, pushes right-to-left). A vtable call
+    is `__thiscall`: exactly one register operand, so a shorter push record (the export's backward scan
+    stopped at a call between the pushes -- `CreateObject(&r, &name, GetPos(elem), &script)` in
+    RunTutorials 0x00D45DD0) cannot be aligned at all, rather than shifting every operand one to the left.'''
     pushed = list(reversed(site.get('pushedStack', [])))
     values = list(reversed(site.get('pushedValue') or [None] * len(pushed)))
     ecx, edx = site.get('ecxStack'), site.get('edxStack')
+    if vtable and receiver_printed and len(pushed) == len(args) and len(pushed) > 0:
+        # the record is one push too long and the receiver is printed: the EARLIEST push (the head of the
+        # export's push-order list, the tail after the reversal) belongs to a later call -- VC7.1 pushes a
+        # literal operand of the NEXT call before making the calls whose results it also pushes
+        # (`push ebx` = EntityTeleportToThing's bool before GetThingWithScriptName / GetHero, Departure Init
+        # 0x00D506B0: record [0, -16, -12] for two real pushes). ~190 GSI sites across the four units.
+        pushed, values = pushed[:-1], values[:-1]
     lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
     if lead < 0 or lead > 2 or (ecx is not None and lead < 1) or (edx is not None and lead < 2):
         return None                         # a stack-loaded register that is not printed: an unprinted push is hiding
+    if vtable and lead > 1:       # (lead 0: Ghidra printed the call without its receiver -- SetTimer(iStack_258, iVar7))
+        return None
     # (address slot, value slot) per printed argument: `&X` / pointer casts name the object at the address,
     # a bare `X` names the slot whose value was loaded
     return list(zip([ecx, edx][:lead] + pushed, [site.get('ecxValue'), site.get('edxValue')][:lead] + values))
 
+
+def _receiver_printed(text, args_start, args):
+    '''True when the first printed argument of the vtable call whose argument list starts at `args_start` is
+    its receiver: the head's base expression (`(**(code **)(*X + SLOT))(X, ..)`, `(**(code **)(**(int **)(this
+    + 4) + SLOT))(*(int **)(this + 4), ..)`) or a loaded-vtable register alias of it (`iVar1 = *this_00;` then
+    `(**(code **)(iVar1 + SLOT))(this_00, ..)`).'''
+    if not args:
+        return False
+    head = re.search(r'\(\*\*\(code \*\*\)\((.*?) \+ (?:0x[0-9a-f]+|\d+)\)\)\s*\($', text[max(0, args_start - 200):args_start])
+    if head is None:
+        return False
+    base, first = head.group(1).strip(), args[0].strip()
+    if base in (first, '*' + first) or (first.startswith('*') and base == '*' + first):
+        return True
+    if re.fullmatch(r'iVar\d+', base):
+        return re.search(r'^[ \t]*' + re.escape(base) + r' = \*' + re.escape(first) + r';', text, re.M) is not None
+    return False
 
 CTOR_LABELS = {'StdMap_Construct_API'}
 RE_THING_SLOT_CAST = re.compile(r'^\((?:CScriptThing(?:_bv)?|C3DVector(?:_bv)?|CCharString(?:_bv)?) \*\)')
@@ -255,6 +401,11 @@ def _text_order_sites(text, fn):
             spans = _call_spans(text, label.replace('::', '__'))           # `CCharString__AppendCString`
         if not spans and re.match(r'\w+\.DLL::', label):
             spans = _call_spans(text, label.split('::', 1)[1]) + _call_spans(text, '::' + label.split('::', 1)[1])   # imports print bare (`operator_new(` / `::operator_new(`)
+        parts = label.split('::')
+        for k in range(1, len(parts) - 1):
+            if spans:
+                break
+            spans = _call_spans(text, '::'.join(parts[k:]))      # Ghidra drops the enclosing namespace(s) (`NScript::CQ_X::Fn` prints `CQ_X::Fn(`)
         if not spans and '::' in label:
             spans = _call_spans(text, label.rsplit('::', 1)[1])    # a retyped member prints without its class (`MakeTeamMemberComment(`)
         for i, a, e in spans:
@@ -288,7 +439,70 @@ def _text_order_sites(text, fn):
     return out
 
 
-def restore_stack_operands(decompile, fn):
+RE_BYTE_DECL = re.compile(r'^[ \t]+(?:char|bool|byte|undefined1)[ \t]+(?P<name>[A-Za-z]+Stack_(?P<slot>[0-9a-f]+));[ \t]*\r?$', re.M)
+_SN = r'[A-Za-z]+Stack_[0-9a-f]+'
+RE_BYTE_SLICE = re.compile(
+    r'^(?P<ind>[ \t]*)(?:'
+    r'(?P<clr>' + _SN + r') = (?P=clr) & 0xffffff;'                                                        # top byte cleared
+    r'|(?P<cat>' + _SN + r') = CONCAT13\((?P<catv>0x[0-9a-f]+|\d+),\s*(?:\(undefined3\))?(?P=cat)\);'      # top byte set
+    r'|(?P<sl>' + _SN + r')\._(?P<n>\d)_1_ = (?P<slv>0x[0-9a-f]+|\d+);'                                  # byte N stored
+    r'|(?P<cpy>' + _SN + r') = (?:\([\w :]+\))?\(\(uint\)(?P<via>\w+) & 0xffffff\);'                       # cleared through a copy (`via = X;` above)
+    r')[ \t]*\r?$'
+    r'|(?P<rd>' + _SN + r')\._(?P<rn>\d)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)'                                  # byte N read
+    r'|\(char\)\(\(?(?:uint\))?(?P<top>' + _SN + r') >> 0x18\)',                                            # top byte read
+    re.M)
+
+
+def _drifted_byte_slices(text, uses):
+    """(start, end, replacement) for the byte slices Ghidra mis-slotted after its stack model drifted.
+
+    A `mov byte ptr [esp+N], imm` made where the decompiler's ESP model is off (it lost the purge of a vtable
+    call it could not type: `(**(code **)(*piVar1 + 0x5ec))()` printed without its `push 1`) is named by the
+    wrong slot: retail 0x00D52E90 clears its woods-loop flag `cStack_169` on the YES answer, printed as
+    `uStack_170 = uStack_170 & 0xffffff;` (-0x16d), and the walk-back flag `cStack_161` as
+    `CStack_168._3_1_ = 0;` (-0x165) -- both 4 bytes below the declared char, neither ever read, so the
+    lifter dropped the writes and the loop became `until false` (the 2026-09-19 evening playtest). The
+    temporaries constructed beside such a slice carry the same drift (their true slot is known from the
+    export: `uses`), so the slice's true byte is `named + N + drift`; when a declared one-byte local sits
+    exactly there (`mov byte ptr [esp+0x27], 1` at 0x00D5FD05 = -596 + 0x27 = `cStack_22d`, printed
+    `CStack_234._3_1_ = 1`), every spelling of the slice -- store, read, clear through a register copy -- is
+    that local's."""
+    decls = {-int(m.group('slot'), 16): m.group('name') for m in RE_BYTE_DECL.finditer(text)}
+    if not decls:
+        return
+    ctor_drift = sorted((pos, off + int(name.rsplit('_', 1)[1], 16))
+                        for pos, k, name, off, plus, ctor in uses
+                        if ctor and name and re.fullmatch(_SN, name))
+    if not ctor_drift:
+        return
+    for m in RE_BYTE_SLICE.finditer(text):
+        name = m.group('clr') or m.group('cat') or m.group('sl') or m.group('cpy') or m.group('rd') or m.group('top')
+        byte = int(m.group('n') or m.group('rn') or 3)
+        if name in decls.values():
+            continue                      # already a byte local: not a merged slice
+        before = [d for p, d in ctor_drift if p <= m.start()]
+        after = [d for p, d in ctor_drift if p > m.start()]
+        drift = before[-1] if before else after[0]
+        target = -int(name.rsplit('_', 1)[1], 16) + byte + drift
+        if target not in decls:
+            continue
+        local = decls[target]
+        if m.group('rd') or m.group('top'):
+            yield m.start(), m.end(), local
+            continue
+        if m.group('cpy'):
+            # `via = X;` a few statements up feeds the masked store: the copy is the slice's old value
+            head = text[max(0, m.start() - 600):m.start()]
+            copy = re.search(r'^([ \t]*)' + re.escape(m.group('via')) + r' = ' + re.escape(name) + r';[ \t]*\r?\n(?![\s\S]*^[ \t]*' + re.escape(m.group('via')) + r' = )', head, re.M)
+            if not copy:
+                continue
+            if len(re.findall(r'\b' + re.escape(m.group('via')) + r'\b', text)) == 2:
+                yield m.start() - len(head) + copy.start(), m.start() - len(head) + copy.end(), ''
+        value = '0' if (m.group('clr') or m.group('cpy')) else (m.group('catv') or m.group('slv'))
+        yield m.start(), m.end(), f"{m.group('ind')}{local} = {value};"
+
+
+def restore_stack_operands(decompile, fn, _byte_slices=True):
     """Ghidra's stack-variable naming drifts after callee-cleaned vtable calls (it lost the argument pops),
     so one slot appears under several names (`auStack_a8`, `&uStack_b8`, `auStack_b0 + 4`). The typed export
     records, per call site, the entry-relative slot each `lea`-loaded ECX/EDX/pushed argument points at
@@ -325,7 +539,7 @@ def restore_stack_operands(decompile, fn):
     if ordered is not None:
         # exact pairing through the decompiler's token stream (callOrder): printed calls in text order
         for pos, end, args, site, key, vtable in ordered:
-            collect(pos, end, args, _align(site, args), key, vtable)
+            collect(pos, end, args, _align(site, args, vtable, vtable and _receiver_printed(text, pos, args)), key, vtable)
     by_slot = {}
     for c in fn.get('indirectCalls', []) if ordered is None else []:
         if c.get('slot'):
@@ -341,7 +555,7 @@ def restore_stack_operands(decompile, fn):
                 depth += {'(': 1, ')': -1}.get(text[j], 0)
                 j += 1
             args = _split_top(text[he:j - 1])
-            collect(he, j - 1, args, _align(site, args), slot, True)
+            collect(he, j - 1, args, _align(site, args, True, _receiver_printed(text, he, args)), slot, True)
     by_label = {}
     for c in fn.get('calls', []) if ordered is None else []:
         if c.get('currentName') and ('pushedStack' in c or 'ecxStack' in c or 'edxStack' in c):
@@ -359,6 +573,13 @@ def restore_stack_operands(decompile, fn):
             collect(a, e - 1, args, _align(site, args), label, False)
     if not uses:
         return text
+    if _byte_slices:
+        slices = sorted(_drifted_byte_slices(text, uses), reverse=True)
+        if slices:
+            for start, end, repl in slices:
+                text = text[:start] + repl + text[end:]
+            return restore_stack_operands(text, fn, _byte_slices=False)   # re-pair on the corrected text
+    edits = []
 
     # objects: constructed names per true slot, in order of first construction
     ctor_names = {}   # slot -> [(first pos, ghidra name or None for an offset spelling)]
@@ -383,7 +604,6 @@ def restore_stack_operands(decompile, fn):
     for pos, k, name, off, plus, ctor in uses:
         if name:
             by_name.setdefault(name, []).append((pos, off))
-    edits = []
     for start, end, args, slots, label in sites:
         out = list(args)
         for k, arg in enumerate(args):
@@ -435,10 +655,13 @@ def unwrap_statements(text):
         else:
             tail = line.lstrip()
             head = buf.rstrip()
-            buf = head + (tail if tail[:1] in ',)' or (tail[:1] == '(' and head.endswith(')')) else ' ' + tail)
+            buf = head + (tail if tail[:1] in ',)' or head.endswith('::') or (tail[:1] == '(' and head.endswith(')')) else ' ' + tail)
         masked = _MASK.sub(lambda m: ' ' * len(m[0]), buf)
         depth = masked.count('(') - masked.count(')')
-        if depth > 0 and not masked.rstrip().endswith('{'):
+        # a qualified name Ghidra wrapped at its `::` (`CScriptGameResourceObjectMovieBase::` newline
+        # `~CScriptGameResourceObjectMovieBase(...)`, deep indentation) is one token: every pass keyed on
+        # the printed label (`disambiguate_call_labels`, the resource folds) must see it on one line
+        if (depth > 0 and not masked.rstrip().endswith('{')) or masked.rstrip().endswith('::'):
             continue
         out.append(buf)
         buf = None
@@ -477,6 +700,7 @@ class UnitConverter:
                                      if re.search(r'\*in_stack_\w+ = &PTR_\w*_01238c8c;', f.get('decompile') or '')}
         self.checker = LuaSyntaxChecker()
         self.flat_control = flat_control
+        self.persist_kinds = persist_kinds_from_spec(tu_path)
 
     def vector_copy_targets(self):
         """Addresses of `std::vector<CScriptThing>` copy constructors in the unit (bsim mislabels them: a body that
@@ -524,6 +748,79 @@ class UnitConverter:
                 decompile, n = pat.subn(lambda m: f'{m.group(1)}Vector_CopyFrom((void *)&{m.group(2)},(void *)(this + {pushed:#x}));', decompile, count=1)
                 if n:
                     break
+        return decompile
+
+    CCHARSTRING_CTOR = 0x99EBF0     # CCharString::CCharString(const char*, int)
+
+    def repair_literal_receiver_labels(self, decompile, renamed, fn):
+        """`disambiguate_call_labels` falls back to address order when the token pairing fails (a 31 KB
+        restructured Main), and then a label shared by a `__fastcall(int)` helper and two `__thiscall(CCharString*)`
+        helpers (the three logbook entry helpers under bsim's `CSubtitleRenderer::SetText`) gets its `__at`
+        suffixes crossed. A print whose receiver is a stack string constructed from a literal on the line
+        before is re-paired with the site whose machine code constructs that same literal into ECX
+        (`push LIT; ...; call CCharString ctor; lea ecx,[slot]; call target`): the literal is the evidence.
+        Prints with no string receiver are handed the remaining (non-ECX-stack) targets when that is unique."""
+        by_base = {}
+        for new, target in renamed.items():
+            base = new.rsplit('__at', 1)[0]
+            by_base.setdefault(base, {})[new] = target
+        try:
+            from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+            from capstone.x86 import X86_OP_IMM
+        except ImportError:
+            return decompile
+        cs = Cs(CS_ARCH_X86, CS_MODE_32)
+        cs.detail = True
+
+        def site_literal(site):
+            raw = self.rdata.bytes_at(site - 48, 48) or b''
+            literal, ctor_seen = None, False
+            for ins in cs.disasm(raw, site - 48):
+                if ins.mnemonic == 'push' and ins.operands and ins.operands[0].type == X86_OP_IMM:
+                    s = self.rdata.string_at(ins.operands[0].imm)
+                    if s is not None:
+                        literal, ctor_seen = s, False
+                elif ins.mnemonic == 'call' and ins.operands and ins.operands[0].type == X86_OP_IMM:
+                    if ins.operands[0].imm == self.CCHARSTRING_CTOR:
+                        ctor_seen = True
+                    elif ins.address != site:
+                        literal, ctor_seen = None, False
+            return literal if ctor_seen else None
+
+        for base, variants in by_base.items():
+            targets = set(variants.values())
+            sites = [c for c in fn.get('calls', []) if c.get('currentName') == base and int(c['target'], 16) in targets]
+            if not sites or len(targets) < 2:
+                continue
+            literal_sites = {}
+            for c in sites:
+                if 'ecxStack' not in c:
+                    continue
+                lit = site_literal(int(c['site'], 16))
+                if lit is not None:
+                    literal_sites.setdefault(lit, set()).add(int(c['target'], 16))
+            if not literal_sites or any(len(v) > 1 for v in literal_sites.values()):
+                continue
+            head = re.compile(r'^([ \t]*)CCharString::CCharString\((?:\(CCharString \*\))?&?(\w+),("(?:[^"\\]|\\.)*"),-1\);[ \t]*\r?\n'
+                              r'([ \t]*(?:\w+ = )?(?:\([\w :*]+\))?)(' + re.escape(base) + r')__at[0-9a-f]+\((?:\([\w :*]+\))?&?\2\b', re.M)
+            plain = {int(c['target'], 16) for c in sites if 'ecxStack' not in c}
+
+            def fix(m):
+                lit = m.group(3)[1:-1]
+                target = literal_sites.get(lit)
+                if not target:
+                    return m.group(0)
+                target = next(iter(target))
+                new = f'{base}__at{target:x}'
+                renamed[new] = target
+                return f'{m.group(1)}CCharString::CCharString(&{m.group(2)},{m.group(3)},-1);\n{m.group(4)}{new}(&{m.group(2)}'
+            decompile = head.sub(fix, decompile)
+            if len(plain) == 1:
+                other = next(iter(plain))
+                new = f'{base}__at{other:x}'
+                renamed[new] = other
+                # a print with an immediate / register operand and no string receiver: the fastcall target
+                decompile = re.sub(r'(?<![\w:])' + re.escape(base) + r'__at[0-9a-f]+(?=\((?:0x[0-9a-f]+|\d+|\w+)\);)', new, decompile)
         return decompile
 
     def name_by_value_string_parameters(self):
@@ -946,6 +1243,7 @@ class UnitConverter:
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
                 decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(unwrap_statements(fn['decompile']), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`
@@ -960,8 +1258,14 @@ class UnitConverter:
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
                     print(f'===== LOWERED {owner}.{name}', source, sep='\n', file=sys.stderr)
                 if name == 'OnPersist':
-                    body, _, calls = lift_persist(source, 'quest')
-                    todo, params = [], 'quest, context'
+                    body, calls, todo = lift_persist_evidence(source, unit, spec_l, self.persist_kinds)
+                    if not body:
+                        body, _, calls = lift_persist(source, 'quest')
+                        todo = []
+                    # the host calls an ENTITY's OnPersist(quest, me, ctx) (LuaEntityHost::OnPersist), a quest's
+                    # OnPersist(quest, ctx): with `quest, context` an entity's `context` was the `me` handle and
+                    # Transfer<int> ran on a CScriptThing (ApprenticeSpeedTest RaceMode: crash on every save, 2026-09-19)
+                    params = 'quest, me, context' if entity else 'quest, context'
                 else:
                     parameter_kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES
                                        else 'bool' if p['type'] == 'bool'
