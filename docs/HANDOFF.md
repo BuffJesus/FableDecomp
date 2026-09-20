@@ -14,6 +14,14 @@ vertex read); Water brush (Terrain tab, retail's exact slot mix), foreground + b
 (expected: surface near and far, no foam); then sea bodies / foam / growing background frames.
 The user's other agent shares the game install: never launch Fable or write the install unasked.
 
+**0.20 Mod packs first cut is on FableForge branch `modpacks` (offline, suite 19/19):** `forge-tools mods
+list/add/remove/move/enable/disable/build/conflicts/deploy/undeploy` over `<root>/forge_mods.json`;
+pack shapes: ChocolateBox + Fable Explorer `.fmp`, bsdiff (pristine bytes: this install's game.bin /
+names.bin / text.big are RE-SAVES, the `.retail-bak` copies are pristine -- restoring them is the user's
+call), game-root trees (records + TNG/QST merged, whole-file layers), EgoCore `Mods/<Name>/` (Mods.ini
+line + `.def` text via `defc`, `FORGE_DEFC` / `FORGE_DEFS_TEXT`). `python tools/test_mods.py`. Memory:
+`modpacks-branch`. Watch: `stage.hpp` vs `ENGINE_RULES.md` contradict on loose-TNG precedence.
+
 # RESUME HERE — 2026-09-19 late evening (Guild path playtest day; read this block only, then GUILD_ARRIVAL_PLAYTEST journal)
 
 **State of play (in-game, v6 bundle = converter units + Aeon's LUAGameflow + sidecar DLL):** childhood -> Guild
