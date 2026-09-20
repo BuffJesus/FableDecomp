@@ -94,8 +94,17 @@ i32 vertexStride     // 0x38 for types 1/2/6/8 (CTVertexWaterBackground), 0x0c f
 i32 len, u8 vb[len]  // range-compressed vertexCount x stride
 [i32 len, u8 ib[len]]// only if polyCount: range-compressed u16 x 3 x polyCount
 ```
-`Load` 0x02e052b0 takes (stream, w, h, mapX, mapY, minZ, maxZ) from the patch header. The
-0x38 vertex layout and the bridge (edge strip) buffers are **not yet read** — next RE step.
+`Load` 0x02e052b0 takes (stream, w, h, mapX, mapY, minZ, maxZ) from the patch header.
+**Read 2026-09-20** (`CWaterGenerator::BuildStaticMapBackgroundBuffers` 0x02e067c0 + the retail
+data): the 0x38 `CTVertexWaterBackground` is `u16 x, u16 y, f32 z, f32 shore[12]` (no
+distToShore); the sea vertex is `f32 x, y, z`. The generator walks the background patch's own
+landscape triangle list; a triangle is kept when any vertex has `PeekInterpolatedHasWaterFast(c, 1)`
+(painted water within one cell); its vertices are emitted in first-touch order with
+`z = PeekInterpolatedWaterHeight(c, window 2)` (unquantised; a dry vertex takes a triangle mate's
+level, two retries), the index buffer is the remapped triangle list, and `WaterType` is the most
+frequent `PeekInterpolatedWaterType(c, 1)` over the touched vertices (0 excluded). Retail lake
+patches carry shore data here too (zero for the sea). The bridge (edge strip) water arrays are
+still unread; FableForge writes the sub-patch with none.
 
 ## What FableForge has today, and the gap
 
