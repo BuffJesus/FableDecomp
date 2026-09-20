@@ -1,11 +1,15 @@
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
-**2026-09-19 (FableForge night):** in `D:\Code\FableForge` (resume from its `docs/ROADMAP_1.0.md`
-"Resume here"): the foliage lattice bug (75% of baked foliage was never read; Oakvale's square oak),
-the frame-walker memset fix (boot + open Oakvale 3.65 s -> 0.79 s), fishing spots, STB bank
-compaction; planned only: 0.18 Water (`docs/engine/WATER_RE.md` here -- water = depth-theme paint,
-STB-baked `CWaterPatchMesh` retail only loads; FableWin decompiles in `ghidra_out/decomp_water_fablewin.c`),
-0.19 World in 3D, 0.20 Mod packs. The user's next steps are unchanged: public repo + tag, in-game probes.
+**2026-09-19 (FableForge night, 19 commits, tree clean at `b14aefc`):** resume FableForge from
+`D:\Code\FableForge\docs\ROADMAP_1.0.md` "Resume here" -- everything code-side for 1.0 is done; what
+is left is the user's (in-game probes, public repo, package + stranger's test, tag; `docs/RELEASE.md`).
+Landed: the foliage lattice bug (75% of baked foliage never read; Oakvale's square oak), the frame-walker
+memset fix (boot + open Oakvale 3.65 s -> 0.79 s), fishing spots, STB bank compaction, one running-game
+guard for every writer matched to the target install, RELEASE.md, a zip dry run. Planned only: 0.18 Water
+(`docs/engine/WATER_RE.md` here; FableWin decompiles `ghidra_out/decomp_water_fablewin.c`), 0.19 World in
+3D, 0.20 Mod packs (EgoCore + every older mod shape in one load order; corpus in
+`D:\Code\FableForge\work
+exus_mods\CATALOGUE.md` + GB packs in `D:\Downloads`).
 
 **2026-09-19 (midday): the childhood -> Guild transition is fixed; the guild scripts die one thread later.** The
 morning's four v5 crashes were the sidecar freeing retail-owned `GetAllThings*` vector storage
