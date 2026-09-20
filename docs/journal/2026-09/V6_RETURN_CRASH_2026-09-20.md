@@ -169,3 +169,24 @@ Gates: Oakvale identical; smoke baseline; `test_binding_flags_and_melee_stage.py
 `work/converter_suite_20260920c.log` = 1616 run, green except the four known stale-fixture modules (322+78+44+1).
 v6 / v7 rebuilt + preflighted; zip rebuilt. **Next run:** same command; expect WOODSWON at the woods door on
 return, the YES/NO, the AVI — then the Melee stage (Whisper fight, grades) as new ground.
+
+## 6. Late afternoon (user out running): the rest of the second audit, generically
+
+* Orchard: per-branch literals consumed by a `CCharString(&slot, var, -1)` constructor are now real locals
+  (`string = "GreatwoodEntrance"` / `"GreatwoodLake"` in `Init`, `FACTION_GUARDS_ENEMY` / `FACTION_BANDITS` in
+  OrchardFarmWhisper — both were hard-coded to the Good variant). `ProcessGameRulesGood`'s
+  `RemoveQuestInfoElement(ePriority)`: `isolate_gsi_vtable_temps` no longer leaves a vtable load under the
+  register's name when the same name has other uses in scope (Ghidra merged two lifetimes: the counter handle
+  reload and the vtable on the Whisper branch); the vcalls take the alias, the other uses keep the register.
+* Trader: the early-pushed `"_SUFFIX"` literal of `AppendCString` (`name_append_literals` now accepts the
+  `(int *)pCVar4` operand spelling — a case bug, `p[ci]Var` vs `pCVar`); the push-rebuild charges the two
+  `__fastcall` string helpers (0x99F600 / 0x99F690) their one stack operand when the export recorded none, so
+  `AddLineToConversation` no longer swallows the suffix push (`(id, text, "_THREATEN", 0, me)` → `(id, text, me,
+  hero, false)` at all five push-[mem] sites); a doubled `((this + 8))` from the register trace is unwrapped
+  (which also fixed three `AddNewConversation(nil, ((me)), false)`); `fold_stack_colours` treats the array-spelled
+  constructor `CCharString(aCStack_14c, ...)` as the slot's redefinition (`IsRegionLoaded("")`); the sign test of
+  a byte slice (`CVar6._0_1_ < '\0'`) is the flag's bit 0x80, not a fresh scalar.
+* BirdKiller's dropped text key turned out to be already fixed by the vtable-alias change.
+
+Gates: Oakvale identical; smoke baseline; targeted 51 OK. Third audit round launched on the regenerated tree.
+Not chased: Orchard `ProcessGameRulesEvil`'s counter slot (a Ghidra ESP mis-track at the export level).

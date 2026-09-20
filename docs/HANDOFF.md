@@ -47,6 +47,20 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
+**2026-09-20 (second v6 run 09:22 + afternoon): NO crash, no Lua error; the PUNCH replay is root-caused from the
+bytes and fixed at the converter.** Retail (walkthrough 26:34-26:58): WOODSWON fires the moment the hero leaves the
+woods — a SURVIVING woods-loop thread. Retail keeps the Guildmaster's script alive across the unload because its
+binding carries flags=1 (`binding+0x18` → `CActiveEntityScriptBase::Flags`, bit 0 = early-out in
+`OnScriptedEntityDeactivated` 0xCB88B0); the converter never emitted the flag, so the sidecar unwound `Main` and the
+fresh `Main` replayed PUNCH. Now `AddEntityBinding(name, path, 1)` on every retail-1 binding (survey: all Guild = 1,
+Orchard MK_OFI_GWLL_WHIS2 + Trader = 0; Oakvale gate untouched). Second + third audit rounds: Melee Guildmaster
+(EH flag in an `int *` slot, colour address-before-stores, float in a CCharString slot), Will's byte-split resource,
+apple cleanup index, Trader special-ability enum (+24 `SetFriendsWithEverythingFlag(true)`), Orchard branch literals
++ counter handle, Trader `_SUFFIX` appends + conversation operands + `IsRegionLoaded("")` + byte-slice sign test.
+Journal `docs/journal/2026-09/V6_RETURN_CRASH_2026-09-20.md` §4-6. **v6 / v7 rebuilt + preflighted; zip rebuilt.
+Next run (user, game free): `ab_playtest.py launch v6` from the post-beetles save → expect WOODSWON at the woods
+door with no talk, YES → AVI; then the Melee stage (Whisper fight, grades) as new ground; then v7 + compare.**
+
 **2026-09-20 (morning): the crash on the return from Guild Woods is fixed (sidecar) + one converter bug; v6/v7
 rebuilt, NOT yet re-run.** v6 run `work/ab_runs/v6-20260920-080006`: beetles done, back in the Guild, talk to the
 Guildmaster → Fable.exe died at the first PUNCH cutscene command. Cause (from the log, both days compared):
