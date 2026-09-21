@@ -97,9 +97,10 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 (~45 min, nobody at the keyboard). Sidecar `3a522f2` (GC per chunk, retail transition hook, `[RegionDiag]`).
 Converter: two in-game Lua errors fixed (SkillTarget projectile damage out-param; CheckFriendlyAttacks TryAcquire actor)
 + GSI-result / actor-map-resource folds; broader identity rules tried and reverted after two audit rounds (journal).
-**Resume:** (1) `guild_skill_stage.json` archery step (E draws the bow? verify the PC key; the target scripts were
-dead in the last run because ALL quest threads got terminated after the third friendly-attack warning -- read the
-`[RegionDiag]` lines of the next run to name the trigger, then decide how the host should survive a thread restart);
+**Resume:** (1) ARCHERY: the targets do not score even while alive (user shot them by hand before the third warning;
+3 min of live SkillTarget Mains, SkillScore 0, no Lua error -- see the journal's Correction). Add a log line to the
+projectile-hit binding, run cleanly to the Skill stage, shoot, read the log; candidates in the journal. Separately,
+the third-warning thread termination (`[RegionDiag]` names the trigger next run; the host must survive a restart);
 (2) v7 through the same checklists + `ab_playtest.py compare v6 v7`; (3) BADHERO hero-resource release residual;
 (4) Guildmaster XP-orb CCountedPointer copy. Findings: `docs/journal/2026-09/AUTOPILOT_FIRST_LIVE_2026-09-20.md`.
 

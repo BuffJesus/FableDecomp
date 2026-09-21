@@ -111,3 +111,21 @@ Root causes closed on the way (all from the log, a capture, or the crash catcher
   returned -> the archery targets were dead). The same happened when the retail transition was armed twice. The
   sidecar tears a host down when its Main returns instead of restarting the thread as retail does. A passive
   `CWorld::SetAsLoadingRegion` diagnostic hook (`[RegionDiag]`, sidecar 3a522f2) now logs the trigger + caller.
+
+### Correction (user, late night): the archery targets do NOT score even while alive
+
+The user shot the dummies by hand in the same round BEFORE the third warning. The log confirms it: SKILL_START ends at
+tick 40111437, the first warning is at 40139906 (+28 s), the third at 40303296; through that ~3-minute window all
+three `SkillTarget` Mains were running (`ENTERING LUA CALL` x3 at log 485-487, no `[Terminating]` yet), `SkillScore`
+stayed 0 on every eval, and there was NO Lua runtime error. So the earlier "targets were dead because of the
+termination" explanation is wrong for the scoring: the nil-compare fix removed the crash, but hits still never count.
+
+Checked so far (offline): the polled thing is `me` (`pCVar6 = this + 8` in 0x00D41D00), the DLL's vtable entry
+`MsgIsHitByWithProjectileWeapon` is at 0x64 = retail's slot, and the binding returns damage-or-nil. NOT yet checked:
+(a) whether the Lua loop is actually parked in the `until me:MsgIsHitByHeroWithProjectileWeapon()` wait (the segment
+loop before it: `until getTimer == speed`, `speed = tointeger(modf(ReadGlobalGameDataFloat(GUI_*DummySegements)))`;
+the per-segment `EntityTeleportToPosition` is still a TODO so the dummies never move), (b) whether the retail
+message fires for arrows on a straw dummy (`MsgIsHitByWithProjectileWeapon` may need the hitter's weapon def
+check or the `MsgIsHitBy` family flag on the thing), (c) `IsDistanceBetweenThingsOver(hero, ArcheryRing, 6.0)`
+after the hit (out-of-ring shots are refused by design). Next session: add a `[HitEvidence]`-style log line to the
+projectile binding (the existing one logs MsgIsHitBy only), run to the Skill stage cleanly, shoot, read the log.
