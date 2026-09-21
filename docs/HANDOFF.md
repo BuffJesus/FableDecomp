@@ -28,7 +28,13 @@ rules (Project Seasons under the UFP builds in 24 s: parked `_FinalAlbion.wad` +
 794 loose levels repacked), FSE `quests.lua` key union (`fse:<key>` picks, id clashes), EgoCore partial
 TNG mods (`[Settings]` / DeleteUIDs). 2026-09-20: the install's `game.bin`/`names.bin` were restored to
 the pristine `.retail-bak` bytes (text.big + the big banks left as they are: staged / added content).
-`python tools/test_mods.py` (+ `test_backups.py`, `test_gbpack.py`). Memory: `modpacks-branch`. Open: a
+`python tools/test_mods.py` (+ `test_backups.py`, `test_gbpack.py`). **0.17 custom static meshes (same
+branch, f617fd1):** `forge mesh-import <glb|gltf|obj> <NAME> [--texture png]` + the Edit > Objects *Import
+model* card = `forge::meshcompose` (the compose_mesh static grammar in C++) + a `3DMF` collision hull
+(EgoCore's writer; retail pairs `MESH_X[PHYSICS]` via Info PhysicsIndex) + textures.big diffuse +
+OBJECT_<NAME> def; mesh space is CENTIMETRES (metres x100); decode-checked, NOT seen in-game
+(`tools/test_meshimport.py`, `forge-tools mesh-info`). Memory: `modpacks-branch`, `custom-npc-pipeline`.
+Open: an in-game look at an imported prop (retail hulls carry SMTH/UNIV chunks EgoCore omits), a
 shipped text Data/Defs tree, semantic thing signatures (a CB re-save badges every thing), merging
 `modpacks`/`water` to main (user's call). Watch: `stage.hpp` vs `ENGINE_RULES.md` contradict on
 loose-TNG precedence (in-game check).
