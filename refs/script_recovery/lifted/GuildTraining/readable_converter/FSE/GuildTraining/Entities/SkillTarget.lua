@@ -17,7 +17,7 @@ local dummyNumber, speed, dummyWorth
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
     local predicateResult4, scratchValue, scratchValue4, scratchValue5, scratchValue6
-    local readGlobalGameDataFloat, getTimer, i_stk_16c_1, pPos, scratchValue44, timerId
+    local readGlobalGameDataFloat, getTimer, i_stk_16c_1, pPos, timerId
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
@@ -62,7 +62,8 @@ function Main(quest, me)
             while true do
                 repeat
                     if not quest:NewScriptFrame(me) then return end
-                until me:MsgIsHitByHeroWithProjectileWeapon()
+                    scratchValue6 = me:MsgIsHitByHeroWithProjectileWeapon()
+                until scratchValue6 ~= nil
                 if 0.0 < scratchValue6 then break end
                 -- TODO(native): *piVar1 = *piVar1 - 1;
             end
@@ -93,7 +94,8 @@ function Main(quest, me)
                 -- TODO(native): fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;
             end
             quest:EntityTeleportToPosition(me, pPos, getAngleXY, false, false)
-            if me:MsgIsHitByHeroWithProjectileWeapon() then
+            local scratchValue44 = me:MsgIsHitByHeroWithProjectileWeapon()
+            if scratchValue44 ~= nil then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                 if quest:GetMasterGameState("MovingDummiesNeeded") then
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then

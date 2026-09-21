@@ -173,7 +173,8 @@ function Main(quest, me)
                                 if bVar3 then
                                     return
                                 end
-                                bVar3 = me:MsgIsHitByHeroWithProjectileWeapon()
+                                fStack_b0 = me:MsgIsHitByHeroWithProjectileWeapon()
+                                bVar3 = fStack_b0 ~= nil
                             until not (not bVar3)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -296,7 +297,8 @@ function Main(quest, me)
                             -- TODO(native): fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;
                         end
                         quest:EntityTeleportToPosition(me, pPos, xStack_158, false, false)
-                        bVar3 = me:MsgIsHitByHeroWithProjectileWeapon()
+                        xStack_18c = me:MsgIsHitByHeroWithProjectileWeapon()
+                        bVar3 = xStack_18c ~= nil
                         if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive

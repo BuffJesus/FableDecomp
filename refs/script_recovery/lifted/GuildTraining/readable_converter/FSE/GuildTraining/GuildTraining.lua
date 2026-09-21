@@ -592,9 +592,10 @@ end
 function CheckFriendlyAttacks(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie, actorMap, predicateResult5, predicateResult6, predicateResult, scratchValue8
-    local conversationId, scratchValue9, heroWarnings, sequence, sequence22, sequence32
-    local scratchValue20, scratchValue, scratchValue22, resource, conversationId2, thing
+    local predicateResult5, predicateResult6, predicateResult, scratchValue8, conversationId
+    local scratchValue9, heroWarnings, sequence, sequence22, sequence32, scratchValue20
+    local scratchValue, scratchValue22, resource, conversationId2
+    local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
     local creatures = quest:GetAllCreaturesExcludingHero()
     scratchValue = 0
     if #creatures ~= 0 then
@@ -701,7 +702,7 @@ function CheckFriendlyAttacks(quest)
                 if not quest:GetMasterGameState("SkillTestOccuring") and not quest:GetMasterGameState("WillTestOccuring") then
                     local resource4 = resources:NewResource()
                     resources:PrepareResource(resource4)
-                    while not resources:TryAcquire(resource4, thing, 4) do
+                    while not resources:TryAcquire(resource4, preMeleeMaze, 4) do
                         if not quest:NewScriptFrame() then goto LAB_00d45db2 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d45db2 end
@@ -711,21 +712,14 @@ function CheckFriendlyAttacks(quest)
                         if not quest:NewScriptFrame() then goto LAB_00d45da9 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d45da9 end
-                    actorMap = resources:NewActorMap()
                     -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                    resources:SetActor(actorMap, "MAZE", resource4)
-                    movie = resources:StartMovie("")
-                    quest:PauseAllNonScriptedEntities(true)
+                    quest:StartCutscene({MAZE = preMeleeMaze}, {}, false)
                     conversationId2 = quest:AddNewConversation(hero, false, false)
                     quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
                     quest:Pause(2.0)
                     quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_GUILD_BADHERO", actorMap, false, true)
-                    quest:FixMovieSequenceCamera(false)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    resources:DestroyActorMap(actorMap)
-                    resources:ReleaseResource(actorMap)
+                    quest:RunCutscene("CS_GUILD_BADHERO", true, false)
+                    quest:EndCutscene()
                     resources:ReleaseResource(conversationId2)
                     goto LAB_00d45c9d
                     ::LAB_00d45da9::

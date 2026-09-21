@@ -873,6 +873,7 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
+            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "GetHero",
             "AddNewConversation",
@@ -916,7 +917,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 403,
+          "lines": 404,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1667,7 +1668,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 426,
+          "lines": 425,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3407,7 +3408,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1044,
+          "lines": 1045,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4801,7 +4802,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 587,
+          "lines": 589,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5835,9 +5836,7 @@
         },
         "FSE/GuildTraining/Entities/SkillTarget.lua": {
           "Main": [
-            "fStack_b0",
-            "pPos",
-            "xStack_18c"
+            "pPos"
           ]
         },
         "FSE/GuildTraining/Entities/WillDummy.lua": {

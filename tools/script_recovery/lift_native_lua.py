@@ -241,7 +241,9 @@ RE_SIG_TOKEN = re.compile(r'W4\w+?@@|A[AB]V\w+?@@|P[AB]V\w+?@@|A[AB]V\d@|A[AB][A
 # CScriptThing out-parameter messages whose Forge binding returns the out string (or nil when the message
 # did not fire) instead of the native bool (LuaEntityAPI.cpp; MsgIsPresentedWithItem keeps the bool and
 # publishes g_PresentedItemName instead)
-OUT_AS_RESULT = {'MsgExpressionPerformedTo'}
+# MsgIsHitByHeroWithProjectileWeapon(float& damage): LuaEntityAPI returns the damage (number) or nil -- the
+# SkillTarget archery loop reads the out float after the wait (`0.0 < damage`), 2026-09-20 in-game nil compare
+OUT_AS_RESULT = {'MsgExpressionPerformedTo': 'string', 'MsgIsHitByHeroWithProjectileWeapon': 'number'}
 # The hidden return-slot operand Ghidra shows for by-value class returns (`&stack0x..`, `&pos`, `auStack_48`).
 RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|pos|\w*Stack_\w+)$')
 # C syntax that survived lowering (a pointer dereference / address-of operand, a vtable head, a Ghidra
@@ -1598,7 +1600,7 @@ class Lifter:
             # the string is the result and the native bool is its presence
             out = out_slots[0]
             self.emit(f"{self.declare(out)} = {call}")
-            self.kinds[out] = 'string'
+            self.kinds[out] = OUT_AS_RESULT[name]
             if target:
                 self.emit(f"{self.declare(target)} = {out} ~= nil")
                 self.kinds[target] = 'bool'

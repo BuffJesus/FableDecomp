@@ -72,11 +72,19 @@ switch ($Action) {
     # hold one key (Keys) down for X milliseconds: movement (W/A/S/D) and charged actions; scan code for DirectInput
     $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23 }
     $k = $Keys.Trim()
-    $vk = if ($map.ContainsKey($k)) { $map[$k] } else { [int][char]$k.ToUpper() }
-    $sc = [AtlasQaNative]::MapVirtualKey([uint32]$vk, 0)
-    [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x0008,[UIntPtr]::Zero)
-    Start-Sleep -Milliseconds ([Math]::Max(50, $X))
-    [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x000A,[UIntPtr]::Zero)
+    # mouse buttons too: LMB / RMB / MMB (block = hold the right button, docs/engine/INPUT.md)
+    $mb = @{ LMB=@(0x0002,0x0004); RMB=@(0x0008,0x0010); MMB=@(0x0020,0x0040) }
+    if ($mb.ContainsKey($k)) {
+      [AtlasQaNative]::mouse_event($mb[$k][0],0,0,0,[UIntPtr]::Zero)
+      Start-Sleep -Milliseconds ([Math]::Max(50, $X))
+      [AtlasQaNative]::mouse_event($mb[$k][1],0,0,0,[UIntPtr]::Zero)
+    } else {
+      $vk = if ($map.ContainsKey($k)) { $map[$k] } else { [int][char]$k.ToUpper() }
+      $sc = [AtlasQaNative]::MapVirtualKey([uint32]$vk, 0)
+      [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x0008,[UIntPtr]::Zero)
+      Start-Sleep -Milliseconds ([Math]::Max(50, $X))
+      [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x000A,[UIntPtr]::Zero)
+    }
   }
   'lmb' {
     # left-button press/release where the in-game cursor already is (attack / confirm), X = repeat count

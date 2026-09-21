@@ -1136,7 +1136,7 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_80, xStack_84, x_stk_a0
+    local aC_stk_100, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_84
     local alive = true
     bVar4 = false
     bVar3 = false
@@ -1403,7 +1403,7 @@ function CheckFriendlyAttacks(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar10 = not alive
             if bVar10 then
-                xStack_80 = nil
+                r1 = nil
                 return
             end
             if 2 < quest:GetStateInt("HeroWarnings") then
@@ -1417,13 +1417,13 @@ function CheckFriendlyAttacks(quest)
                     if bVar10 then goto LAB_00d45322 end
                     xStack_30 = resources:NewResource()
                     resources:PrepareResource(xStack_30)
-                    bVar10 = resources:TryAcquire(xStack_30, xStack_80, 4)
+                    bVar10 = resources:TryAcquire(xStack_30, r1, 4)
                     while not bVar10 do
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
                         if bVar10 then goto LAB_00d45db2 end
-                        bVar10 = resources:TryAcquire(xStack_30, xStack_80, 4)
+                        bVar10 = resources:TryAcquire(xStack_30, r1, 4)
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar10 = not alive
@@ -1450,7 +1450,8 @@ function CheckFriendlyAttacks(quest)
                             amStack_1c = resources:NewActorMap()
                             -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
                             resources:SetActor(amStack_1c, "MAZE", xStack_30)
-                            aCStack_10 = resources:StartMovie("")
+                            aC_stk_100 = resources:StartMovie("")
+                            quest:StartMovieSequence()
                             quest:PauseAllNonScriptedEntities(true)
                             bVar20 = false
                             bVar10 = false
@@ -1464,7 +1465,7 @@ function CheckFriendlyAttacks(quest)
                             resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(aCStack_10)
+                            resources:DestroyMovie(aC_stk_100)
                             resources:DestroyActorMap(amStack_1c)
                             resources:ReleaseResource(amStack_1c)
                             resources:ReleaseResource(xStack_30)
@@ -1536,7 +1537,7 @@ function CheckFriendlyAttacks(quest)
     ::LAB_00d45322::
     do return end
     ::LAB_00d452d1::
-    x_stk_a0 = nil
+    r1 = nil
     goto LAB_00d45322
 end
 

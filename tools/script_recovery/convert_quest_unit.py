@@ -575,7 +575,9 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
             off = (value if value is not None else addr) if by_value else addr   # a bare array name is still passed by address
             if off is not None and off < 0:
                 plus = int(m.group('plus'), 0) if m.group('plus') else 0
-                ctor = not by_value and ((not vtable and k == 0 and _is_ctor_label(label)) or (vtable and k >= 1 and bool(RE_THING_SLOT_CAST.match(arg.strip()))))
+                # 2 = a constructor label on the receiver, 1 = a thing-slot cast on a vtable call (hidden return OR
+                # a thing passed back in: TryAcquire's actor), 0 = plain use
+                ctor = 2 if (not by_value and not vtable and k == 0 and _is_ctor_label(label)) else                     1 if (not by_value and vtable and k >= 1 and bool(RE_THING_SLOT_CAST.match(arg.strip()))) else 0
                 # the argument's address is the object; the bare name only stands for it when no offset is added
                 uses.append((pos, k, m.group('name') if not plus else None, off, plus, ctor))
 
@@ -630,6 +632,25 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     for pos, k, name, off, plus, ctor in sorted(uses, key=lambda u: u[0]):
         if ctor and (name is None or all(n != name for _, n in ctor_names.get(off, []))):
             ctor_names.setdefault(off, []).append((pos, name))
+    # One Ghidra thing name whose thing-cast / thing ctor-dtor sites the export spreads over several slots at
+    # which NO other name is ever constructed is one object seen through a mis-tracked call depth
+    # (CheckFriendlyAttacks 0x00D45060: GetThingWithScriptName("PreMeleeMaze") into auStack_a0, exported at
+    # -0x90 / -0x80 / -0xa0 across its reset, destructor and TryAcquire-actor sites -> two xStack objects,
+    # `thing` never assigned, "TryAcquire requires an actor" in-game 2026-09-20). Ghidra's single name is the
+    # evidence: the object lives at its earliest constructed slot. A slot shared with another constructed
+    # name is a genuine re-use and is left to the drift logic.
+    canonical = {}
+    for name in {u[2] for u in uses if u[2] and u[5]}:
+        ctorish = sorted((u[0], u[3]) for u in uses if u[2] == name and u[5])
+        slots_ = {off for _, off in ctorish}
+        if len(slots_) > 1 and all(all(n == name for _, n in ctor_names.get(off, [])) for off in slots_):
+            canonical[name] = ctorish[0][1]
+    if canonical:
+        uses = [(pos, k, name, canonical[name] if name in canonical and not plus else off, plus, ctor) for pos, k, name, off, plus, ctor in uses]
+        ctor_names = {}
+        for pos, k, name, off, plus, ctor in sorted(uses, key=lambda u: u[0]):
+            if ctor and (name is None or all(n != name for _, n in ctor_names.get(off, []))):
+                ctor_names.setdefault(off, []).append((pos, name))
     object_name = {}  # (slot, ghidra name) -> xStack name
     for off, lst in ctor_names.items():
         for n, (pos, name) in enumerate(lst):
@@ -659,6 +680,8 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
             by_value = not m.group('amp') and not (m.group('cast') and '*' in m.group('cast')) and not m.group('plus')
             slot = ((slots[k][1] if slots[k][1] is not None else slots[k][0]) if by_value else slots[k][0]) if slots is not None and k < len(slots) else None
             addr = slot if slot is not None and slot < 0 else None
+            if addr is not None and not plus and name in canonical:
+                addr = canonical[name]
             if addr is None:
                 near = sorted((abs(p - start), p, o) for p, o in by_name.get(name, []))
                 if not near:
