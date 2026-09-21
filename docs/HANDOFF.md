@@ -32,10 +32,14 @@ the pristine `.retail-bak` bytes (text.big + the big banks left as they are: sta
 branch, f617fd1):** `forge mesh-import <glb|gltf|obj> <NAME> [--texture png]` + the Edit > Objects *Import
 model* card = `forge::meshcompose` (the compose_mesh static grammar in C++) + a `3DMF` collision hull
 (EgoCore's writer; retail pairs `MESH_X[PHYSICS]` via Info PhysicsIndex) + textures.big diffuse +
-OBJECT_<NAME> def; mesh space is CENTIMETRES (metres x100); decode-checked, NOT seen in-game
-(`tools/test_meshimport.py`, `forge-tools mesh-info`). Memory: `modpacks-branch`, `custom-npc-pipeline`.
-Open: an in-game look at an imported prop (retail hulls carry SMTH/UNIV chunks EgoCore omits), a
-shipped text Data/Defs tree, semantic thing signatures (a CB re-save badges every thing), merging
+OBJECT_<NAME> def; mesh space is CENTIMETRES (metres x100); **IN-GAME VERIFIED 2026-09-20 evening**
+(head ca7ced0): the cube renders lit + textured where placed and is SOLID once the hull's triangles are in
+the engine's winding (straight order = inside-out hull that held the hero at the centre; the retail
+barrel control was solid; user-confirmed cube 4). The install still carries the probe leftovers: 4 cubes +
+a barrel in StartOakValeWest, MESH_FORGE_PROBE_CUBE*/OBJECT_* entries -- `python tools/ingame/release_probes.py
+--stage mesh_undo` puts the touched files back (the other agent's staged bundle stays).
+(`tools/test_meshimport.py`, `forge-tools mesh-info`, `tools/ingame/walk_probe.ps1`). Memory:
+`modpacks-branch`, `custom-npc-pipeline`. Open: a shipped text Data/Defs tree, semantic thing signatures (a CB re-save badges every thing), merging
 `modpacks`/`water` to main (user's call). Watch: `stage.hpp` vs `ENGINE_RULES.md` contradict on
 loose-TNG precedence (in-game check).
 
