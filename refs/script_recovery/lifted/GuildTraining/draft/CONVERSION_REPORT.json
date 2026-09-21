@@ -795,8 +795,7 @@
             "label LAB_00d45dbb",
             "unlifted: cVar11 = (**(*uStack_9c + 0x54))(\"SCRIPT_NAME_HERO\")",
             "unlifted: cVar11 = (**(*uStack_9c + 0xa8))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*uStack_9c + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")",
-            "unlifted: ACTORMAP_Set(amStack_1c, \"HERO\", &xStack_20)"
+            "unlifted: cVar11 = (**(*uStack_9c + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -873,7 +872,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "GetHero",
             "AddNewConversation",
@@ -917,7 +915,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 404,
+          "lines": 403,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1668,7 +1666,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 425,
+          "lines": 426,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5927,7 +5925,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 169
+        "todo": 168
       }
     },
     {
@@ -13296,6 +13294,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 350
+    "todo": 349
   }
 }

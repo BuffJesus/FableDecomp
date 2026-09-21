@@ -640,7 +640,7 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     # evidence: the object lives at its earliest constructed slot. A slot shared with another constructed
     # name is a genuine re-use and is left to the drift logic.
     canonical = {}
-    for name in {u[2] for u in uses if u[2] and u[5]}:
+    for name in {u[2] for u in uses if u[2] and u[5] == 1}:
         ctorish = sorted((u[0], u[3]) for u in uses if u[2] == name and u[5])
         slots_ = {off for _, off in ctorish}
         if len(slots_) > 1 and all(all(n == name for _, n in ctor_names.get(off, [])) for off in slots_):

@@ -169,6 +169,128 @@ index 0000000..66f1825
 +}
 +
 +}  // namespace Autopilot
+diff --git a/FableScriptExtender/FableAPI.cpp b/FableScriptExtender/FableAPI.cpp
+index 1d8c320..50916fd 100644
+--- a/FableScriptExtender/FableAPI.cpp
++++ b/FableScriptExtender/FableAPI.cpp
+@@ -6,6 +6,7 @@
+ #include <cfloat>
+ #include <intrin.h>
+ #include "EntityScriptingAPI.h"
++#include "LuaManager.h"
+ #pragma comment(lib, "shlwapi.lib")
+ 
+ // =====================================================================================
+@@ -423,6 +424,9 @@ tCPersistContext_Transfer_int           CPersistContext_Transfer_int_API = nullp
+ tCPersistContext_Transfer_string        CPersistContext_Transfer_string_API = nullptr;
+ tCPersistContext_Transfer_float         CPersistContext_Transfer_float_API = nullptr;
+ tCPersistContext_Transfer_uint          CPersistContext_Transfer_uint_API = nullptr;
++tCPersistContext_Transfer_stringvector  CPersistContext_Transfer_stringvector_API = nullptr;
++tStringVector_PushBack                  StringVector_PushBack_API = nullptr;
++tStringVector_Destroy                   StringVector_Destroy_API = nullptr;
+ tCSGROSTB_Destructor                    CSGROSTB_Destroy_API = nullptr;
+ tRetailThingCopy RetailThing_Copy_API = nullptr;
+ tRetailThingDestroy RetailThing_Destroy_API = nullptr;
+@@ -529,6 +533,9 @@ void InitializeFableAPI() {
+     CPersistContext_Transfer_string_API = ASLR<tCPersistContext_Transfer_string>(0x4109A0);
+     CPersistContext_Transfer_float_API = ASLR<tCPersistContext_Transfer_float>(0x410620);   
+     CPersistContext_Transfer_uint_API = ASLR<tCPersistContext_Transfer_uint>(0x4106F0); 
++    CPersistContext_Transfer_stringvector_API = ASLR<tCPersistContext_Transfer_stringvector>(0x49B8D0);
++    StringVector_PushBack_API = ASLR<tStringVector_PushBack>(0x44BFF0);
++    StringVector_Destroy_API = ASLR<tStringVector_Destroy>(0x414EA0);
+     CSGROSTB_Destroy_API = ASLR<tCSGROSTB_Destructor>(0x7E74D0);
+     RetailThing_Copy_API = ASLR<tRetailThingCopy>(0x4ABE90);
+     RetailThing_Destroy_API = ASLR<tRetailThingDestroy>(0x4AA840);
+@@ -553,6 +560,10 @@ void InitializeFableAPI() {
+     InterfaceMap_LowerBound_API = ASLR<tInterfaceMap_LowerBound>(0x40F020);  // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
+ 
+     LogToFile("--- Fable API Pointers Initialized ---");
++    // diagnostic (2026-09-19): passive per-cutscene-command hook + quest thread flag dump, to name the STICK
++    // macro command after which the PreMelee quest thread reads terminating
++    InstallCutsceneSkipDiagnosticHooks();
++    InstallRegionDiagnosticHooks();
+ }
+ 
+ bool QueueRetailRegionTransition(void* pWorld, const float pos[3], int mapSlot) {
+@@ -774,7 +785,7 @@ static int __fastcall DiagFindCharPos_Detour(const CCharString* command, void*,
+            << (g_cutsceneSkipDiagMacro ? g_cutsceneSkipDiagMacro : "<none>")
+            << " tick=" << GetTickCount() << " command=" << (text ? text : "<null>");
+         LogToFile(ss.str());
+-        LogCutsceneFadeSnapshot(text);
++        LuaManager::GetInstance().LogQuestThreadFlags(text ? text : "<command>");
+     }
+     return DiagFindCharPos_Original(command, needle);
+ }
+@@ -959,6 +970,41 @@ static __declspec(naked) void DiagScriptedThingIsPerformingScriptTask_NakedStub(
+     __asm { jmp DiagScriptedThingIsPerformingScriptTask_Detour }
+ }
+ 
++// ---- region-load diagnostics (2026-09-20) -------------------------------------------------------------------
++// An engine-initiated CWorld::SetAsLoadingRegion terminates every quest thread; sidecar-hosted Mains then return
++// and their hosts are torn down for good (LUAGameflow "Main loop exited" + GuildTraining entities gone after the
++// Guild's third friendly-attack warning). Log every call with its return address so the trigger is named.
++typedef void(__thiscall* tRegionDiag_SetAsLoadingRegion)(void* pWorld, const float* pos, float radius, bool p3, bool p4, bool p5);
++static tRegionDiag_SetAsLoadingRegion RegionDiag_SetAsLoadingRegion_Original = nullptr;
++static void __fastcall RegionDiag_SetAsLoadingRegion_Detour(void* pWorld, void*, const float* pos, float radius, bool p3, bool p4, bool p5) {
++    void* caller = _ReturnAddress();
++    {
++        std::stringstream ss;
++        ss << "[RegionDiag] CWorld::SetAsLoadingRegion pos=(" << (pos ? pos[0] : 0.f) << "," << (pos ? pos[1] : 0.f) << "," << (pos ? pos[2] : 0.f)
++           << ") radius=" << radius << " flags=" << (p3 ? 1 : 0) << (p4 ? 1 : 0) << (p5 ? 1 : 0)
++           << " caller=0x" << std::hex << reinterpret_cast<uintptr_t>(caller) - g_fableBase + 0x400000;
++        LogToFile(ss.str());
++    }
++    RegionDiag_SetAsLoadingRegion_Original(pWorld, pos, radius, p3, p4, p5);
++    LogToFile("[RegionDiag] CWorld::SetAsLoadingRegion returned.");
++}
++static __declspec(naked) void RegionDiag_SetAsLoadingRegion_NakedStub() { __asm { jmp RegionDiag_SetAsLoadingRegion_Detour } }
++
++bool InstallRegionDiagnosticHooks() {
++    static bool installed = false;
++    if (installed) return true;
++    const DWORD target = ASLR<DWORD>(0x0049E2C0);
++    const BYTE expected[6] = {0x8a, 0x44, 0x24, 0x10, 0x84, 0xc0};   // mov al,[esp+10h]; test al,al
++    if (memcmp(reinterpret_cast<const void*>(target), expected, sizeof(expected)) != 0) {
++        LogToFile("!!! [RegionDiag] SetAsLoadingRegion prologue mismatch; hook not installed.");
++        return false;
++    }
++    installed = InstallInlineHook(target, &RegionDiag_SetAsLoadingRegion_NakedStub, 6,
++        reinterpret_cast<void**>(&RegionDiag_SetAsLoadingRegion_Original), "RegionDiag.SetAsLoadingRegion");
++    LogToFile(installed ? "[RegionDiag] passive CWorld::SetAsLoadingRegion hook installed." : "!!! [RegionDiag] hook install failed.");
++    return installed;
++}
++
+ bool InstallCutsceneSkipDiagnosticHooks() {
+     if (g_cutsceneSkipDiagHooksInstalled) return true;
+     InstallCutsceneCommandDiagnostics();
+diff --git a/FableScriptExtender/FableAPI.h b/FableScriptExtender/FableAPI.h
+index 386dd7b..cbf3b50 100644
+--- a/FableScriptExtender/FableAPI.h
++++ b/FableScriptExtender/FableAPI.h
+@@ -334,6 +334,15 @@ extern tCPersistContext_Transfer_int    CPersistContext_Transfer_int_API;
+ extern tCPersistContext_Transfer_string CPersistContext_Transfer_string_API;
+ extern tCPersistContext_Transfer_float  CPersistContext_Transfer_float_API;
+ extern tCPersistContext_Transfer_uint   CPersistContext_Transfer_uint_API;
++// CPersistContext::Transfer<std::vector<CCharString>> 0x49B8D0: __thiscall(ctx, name, vector*), ret 8 (Gameflow OnPersist
++// SavedScriptNames / SavedCardDefNames). The vector is retail's {first,last,end} of 4-byte CCharString elements.
++struct RetailStringVector { CCharString* first; CCharString* last; CCharString* end; };
++typedef void(__thiscall* tCPersistContext_Transfer_stringvector)(CPersistContext* This, const char* name, RetailStringVector* value);
++extern tCPersistContext_Transfer_stringvector CPersistContext_Transfer_stringvector_API;
++typedef void(__thiscall* tStringVector_PushBack)(RetailStringVector* This, const CCharString* value);   // 0x44BFF0
++extern tStringVector_PushBack StringVector_PushBack_API;
++typedef void(__thiscall* tStringVector_Destroy)(RetailStringVector* This);                            // 0x414EA0
++extern tStringVector_Destroy StringVector_Destroy_API;
+ extern tCSGROSTB_Destructor CSGROSTB_Destroy_API;
+ // Native owned Thing locals and entity-thread condition registration.
+ typedef CScriptThing* (__thiscall* tRetailThingCopy)(CScriptThing*, const CScriptThing*);
+@@ -484,6 +493,7 @@ extern tCWorld_SetAsLoadingRegion CWorld_SetAsLoadingRegion_API;
+ bool QueueRetailRegionTransition(void* pWorld, const float pos[3], int mapSlot);
+ void ProcessQueuedRetailRegionTransition();
+ bool InstallRetailUpdateTransitionHook();
++bool InstallRegionDiagnosticHooks();
+ bool InstallCardRTClearHook();
+ // Passive unless BeginCutsceneSkipDiagnostics() brackets a Lua-driven macro.
+ // Records the retail SetCutsceneMode boundary without hooking renderer/input internals.
 diff --git a/FableScriptExtender/LuaManager.h b/FableScriptExtender/LuaManager.h
 index 7fbb477..f6d2555 100644
 --- a/FableScriptExtender/LuaManager.h

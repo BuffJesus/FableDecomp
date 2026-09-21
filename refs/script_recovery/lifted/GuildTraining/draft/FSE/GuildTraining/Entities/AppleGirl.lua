@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, xStack_18, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, ctr_64, fVar1, fVar13, fret_0, fret_00, fret_01, iVar11, iVar12, iVar4, iVar7, native_arg_switch_2, pCVar5, pCVar6, pThing, pcVar10, r1, r2, r3, r4, xStack_60, xStack_70_2, xStack_84, xStack_88, x_stk_18, x_stk_c
     local alive = true
     xStack_84 = resources:NewResource()
     resources:PrepareResource(xStack_84)
@@ -82,11 +82,12 @@ function Main(quest, me)
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d3e06c end
                 __native_entity_state:SetStateBool("HaveChatted", true)
-                xStack_18 = resources:ScriptThing(xStack_84)
-                pCVar5 = xStack_18
+                x_stk_18 = resources:ScriptThing(xStack_84)
+                pCVar5 = x_stk_18
                 fret_0 = quest:GetHealth(pCVar5)
                 fVar1 = 0.0
-                xStack_18 = nil
+                x_stk_18 = nil
+                x_stk_18 = 0
                 if fVar1 < fret_0 then
                     iVar12 = 0
                     iVar11 = 1

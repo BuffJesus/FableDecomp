@@ -1,0 +1,76 @@
+[
+ {
+  "id": "skill_host",
+  "repeat": 30,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host GuildTrainingSkill/GuildTrainingSkill",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "after the Melee CONTINUE: GuildTraining GameState 5 activates the Skill quest"
+ },
+ {
+  "id": "talk_skill_master",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('TheRealGuildmaster'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "CS_GUILD_SKILL_START|TEXT_CS_028_SKILL_START",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "the Guildmaster WALKS to M_SkillTeacherStand (MoveToPosition) -- teleport onto him wherever he is, then TAB; IsTalkedToByHero -> the SKILL_START cutscene (bow hand-over)"
+ },
+ {
+  "id": "skill_start_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "eval GuildTrainingSkill: quest:GetStateInt('TutorialState')"
+  ],
+  "expect": "eval.*TutorialState.* = 2",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "skip the scene, clear the bow item box + TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_PC box; state 2 = shoot 3 targets"
+ },
+ {
+  "id": "archery_first_target",
+  "repeat": 40,
+  "interval": 2.0,
+  "do": [
+   "GuildTraining: local t = quest:GetThingWithScriptName('ArcheryRing'); if t ~= nil then quest:EntityTeleportToThing(quest:GetHero(), t, false) end",
+   "input: clear",
+   "input: key E",
+   "input: key SPACE",
+   "input: hold LMB 900",
+   "input: clear",
+   "eval GuildTraining: quest:GetMasterGameState('SkillScore')"
+  ],
+  "expect": "eval.*SkillScore.* = [1-9]",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 200,
+  "note": "stand in the ArcheryRing, E draws the bow (GAME_ACTION_UNSHEATHE_RANGED_WEAPON), SPACE locks the target dummy, hold LMB to draw and release; the FIRST scoring hit is the archery fix (SkillTarget's MsgIsHitByHeroWithProjectileWeapon damage out-param -- nil compare killed the target script on 2026-09-20)"
+ },
+ {
+  "id": "archery_three_targets",
+  "repeat": 60,
+  "interval": 2.0,
+  "do": [
+   "input: key SPACE",
+   "input: hold LMB 900",
+   "input: clear"
+  ],
+  "expect": "CS_GUILD_SKILL_MOVE|TEXT_CS_028_SKILL_MOVE",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "SkillScore >= 3 -> the SKILL_MOVE cutscene (moving dummies)"
+ }
+]

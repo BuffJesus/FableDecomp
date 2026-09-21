@@ -84,3 +84,30 @@ Root causes closed on the way (all from the log, a capture, or the crash catcher
 * Game-info boxes pause script frames; menu screens take ENTER, boxes take a click, the YES/NO question takes LMB/RMB.
 * Markers logged between two steps were lost (PASSED_20 three seconds after PASSED_10): one log tail per checklist
   with the unconsumed remainder carried into the next step.
+
+## Night: Melee stage hands-free, Skill stage reached, two in-game Lua errors fixed at the converter
+
+* **Melee checklist** (`checklists/guild_melee_stage.json`) runs the whole teen melee stage: INTRO -> talk -> 7 sword
+  hits (Q once per stage: Q TOGGLES the weapon) -> BLOCK (hold MMB standing still, click the re-popping box) 5/5 ->
+  BATTLE -> grade -> Continue -> Skill quest activated. Chained after the childhood checklist from launch:
+  `autopilot.py run v6 checklists/guild_woods_return.json checklists/guild_melee_stage.json --launch --save f645456fds`.
+  New driver verbs: `skip` (ESC only when the pause menu is not up), `clear` (click only when a game-info box /
+  question is detected by its green mouse icon -- a click with a weapon drawn and no box is an ATTACK: three of them on
+  the SkillApprentice were the Guild's third friendly-attack warning), `hold LMB|RMB|MMB <ms>`, `focus`.
+* **Two converter defects behind the user's teen play-through reports** (archery target dead; Whisper fight
+  unfinishable after the "secret trainer"): `SkillTarget.lua:66 attempt to compare number with nil` = the projectile
+  damage out-param (`MsgIsHitByHeroWithProjectileWeapon(float&)`; the binding returns damage-or-nil, now
+  `OUT_AS_RESULT`), and `CheckFriendlyAttacks: TryAcquire requires an actor` = the PreMeleeMaze thing (one Ghidra
+  slot the export spread over -0x90/-0x80/-0xa0; `restore_stack_operands` now keeps a vtable thing-cast name at
+  its first slot). Also: a GSI result (`AddNewConversation`) is never a resource member (`canonicalise_stack_objects`),
+  and a resource stored in an actor map keeps its own name (the BADHERO HERO actor). Units regenerated; the Oakvale
+  gate identical; `test_skill_target_and_friendly_actor.py`.
+* **Broader identity rules were tried and REVERTED** (destructor receivers / bare-array ctor receivers / Ghidra-name
+  type families): two audit workflow rounds (37 agents each, adversarially verified) found 9 regressed scripts
+  (nil actor maps, `DestroyMovie(0)`, unassigned locals). Residual: the BADHERO hero-resource release is still spelled
+  by the actor map's slot.
+* **Open (evidence from the last run's log)**: after the third friendly-attack warning EVERY quest thread was
+  terminated at once (`LUAGameflow: Main loop exited` -> host torn down for good; all GuildTraining entity Mains
+  returned -> the archery targets were dead). The same happened when the retail transition was armed twice. The
+  sidecar tears a host down when its Main returns instead of restarting the thread as retail does. A passive
+  `CWorld::SetAsLoadingRegion` diagnostic hook (`[RegionDiag]`, sidecar 3a522f2) now logs the trigger + caller.

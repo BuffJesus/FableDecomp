@@ -123,7 +123,7 @@ class AutopilotDriverTests(unittest.TestCase):
         autopilot.GAMEWIN = Path(__file__)          # exists; game_input itself is faked below
 
         def fake_input(spec, timeout=60.0):
-            if spec.split()[0] not in ('key', 'hold', 'click', 'lmb', 'capture'):
+            if spec.split()[0] not in ('key', 'hold', 'click', 'lmb', 'clear', 'skip', 'capture'):
                 raise ValueError(f'bad input spec {spec!r}')
             pressed.append(spec)
             if len(pressed) == 3:
@@ -173,3 +173,6 @@ class ScreenKindTests(unittest.TestCase):
         for name in ('title', 'menu', 'profiles', 'load'):
             self.assertEqual(autopilot.screen_kind(d / f'{name}.png'), name)
         self.assertEqual(autopilot.screen_kind(d / 'other_itembox.png'), 'other')
+        self.assertEqual(autopilot.screen_kind(d / 'pausemenu.png'), 'pausemenu')
+        for name, up in (('box_stick_q', True), ('box_yesno', True), ('other_itembox', True), ('ingame_archery', False), ('menu', False), ('load', False)):
+            self.assertEqual(autopilot.game_info_box_up(d / f'{name}.png'), up, name)

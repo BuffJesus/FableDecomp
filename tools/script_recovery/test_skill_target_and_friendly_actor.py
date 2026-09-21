@@ -47,3 +47,27 @@ class FriendlyAttackActorTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class FriendlyAttackPunishmentTests(unittest.TestCase):
+    """the third-warning punishment block (retail 0x00D45060 after GUILD_SEAL_FOURTH_WARNING): the conversation id
+    is its own local (not folded onto the Maze resource), the BADHERO actor map carries HERO and MAZE, and the two
+    resources released afterwards are the hero's and the Maze's (retail: ~Movie(aCStack_40), ~Movie(aCStack_50))"""
+
+    def test_draft_block(self):
+        src = read('draft/FSE/GuildTraining/GuildTraining.lua')
+        body = re.search(r'^function CheckFriendlyAttacks\(quest\)\n.*?^end$', src, re.M | re.S).group(0)
+        i = body.index('"CS_GUILD_BADHERO"')
+        block = body[i - 1500:i + 700]
+        conv = re.search(r'(\w+) = quest:AddNewConversation\(', block).group(1)
+        hero_res = re.search(r'resources:SetActor\(\w+, "HERO", (\w+)\)', block)
+        maze_res = re.search(r'resources:SetActor\(\w+, "MAZE", (\w+)\)', block)
+        self.assertIsNotNone(hero_res, 'HERO actor lost')
+        self.assertIsNotNone(maze_res, 'MAZE actor lost')
+        self.assertNotIn(conv, (hero_res.group(1), maze_res.group(1)), 'conversation id folded onto a resource')
+        released = re.findall(r'resources:ReleaseResource\((\w+)\)', block[block.index('"CS_GUILD_BADHERO"'):])
+        self.assertIn(maze_res.group(1), released[:2], released)
+        self.assertNotIn(conv, released)
+        # KNOWN RESIDUAL: the hero resource's release is still spelled by the actor map's slot (the export puts its
+        # destructor at -0x1c); a broader destructor-identity rule fixed it but regressed nine other scripts (audit
+        # 2026-09-20 night), so it is left for a per-function fix

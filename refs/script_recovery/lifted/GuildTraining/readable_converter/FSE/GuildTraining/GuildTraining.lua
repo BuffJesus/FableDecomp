@@ -592,9 +592,9 @@ end
 function CheckFriendlyAttacks(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult5, predicateResult6, predicateResult, scratchValue8, conversationId
-    local scratchValue9, heroWarnings, sequence, sequence22, sequence32, scratchValue20
-    local scratchValue, scratchValue22, resource, conversationId2
+    local movie, actorMap, predicateResult5, predicateResult6, predicateResult, scratchValue8
+    local conversationId, scratchValue9, heroWarnings, sequence, sequence22, sequence32
+    local scratchValue20, scratchValue, scratchValue22, resource
     local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
     local creatures = quest:GetAllCreaturesExcludingHero()
     scratchValue = 0
@@ -712,15 +712,21 @@ function CheckFriendlyAttacks(quest)
                         if not quest:NewScriptFrame() then goto LAB_00d45da9 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00d45da9 end
-                    -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
-                    quest:StartCutscene({MAZE = preMeleeMaze}, {}, false)
-                    conversationId2 = quest:AddNewConversation(hero, false, false)
-                    quest:AddLineToConversation(conversationId2, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
+                    actorMap = resources:NewActorMap()
+                    resources:SetActor(actorMap, "HERO", resource)
+                    resources:SetActor(actorMap, "MAZE", resource4)
+                    movie = resources:StartMovie("")
+                    quest:PauseAllNonScriptedEntities(true)
+                    quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", hero, hero, false)
                     quest:Pause(2.0)
                     quest:FixMovieSequenceCamera(true)
-                    quest:RunCutscene("CS_GUILD_BADHERO", true, false)
-                    quest:EndCutscene()
-                    resources:ReleaseResource(conversationId2)
+                    resources:RunMacro("CS_GUILD_BADHERO", actorMap, false, true)
+                    quest:FixMovieSequenceCamera(false)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(actorMap)
+                    resources:ReleaseResource(resource4)
                     goto LAB_00d45c9d
                     ::LAB_00d45da9::
                     resources:ReleaseResource(resource)

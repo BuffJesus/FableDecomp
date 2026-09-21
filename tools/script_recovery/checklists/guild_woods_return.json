@@ -11,8 +11,8 @@
  {
   "id": "premelee_host",
   "do": [
-   "input: key ESC",
-   "input: lmb 1"
+   "input: skip",
+   "input: clear"
   ],
   "expect": "GetThingWithScriptName START: 'M_MeleeTeacherStand'",
   "forbid": "LUA RUNTIME ERROR",
@@ -39,8 +39,8 @@
   "repeat": 20,
   "interval": 3.0,
   "do": [
-   "input: key ESC",
-   "input: lmb 1"
+   "input: skip",
+   "input: clear"
   ],
   "expect": "GetThingWithScriptName START: 'PreMeleeWhisper'",
   "forbid": "LUA RUNTIME ERROR",
@@ -52,7 +52,7 @@
   "repeat": 10,
   "interval": 3.0,
   "do": [
-   "input: lmb 1"
+   "input: clear"
   ],
   "expect": "Registered game timer with ID",
   "forbid": "LUA RUNTIME ERROR",
@@ -65,7 +65,7 @@
   "interval": 2.5,
   "do": [
    "hero teleport PreMeleeDummyMarker",
-   "input: lmb 1",
+   "input: clear",
    "input: key SPACE",
    "input: lmb 3"
   ],
@@ -79,8 +79,8 @@
   "repeat": 20,
   "interval": 3.0,
   "do": [
-   "input: key ESC",
-   "input: lmb 1"
+   "input: skip",
+   "input: clear"
   ],
   "expect": "GiveHero OBJECT_HERO_STICK",
   "forbid": "LUA RUNTIME ERROR",
@@ -92,7 +92,7 @@
   "repeat": 16,
   "interval": 2.5,
   "do": [
-   "input: lmb 1",
+   "input: clear",
    "input: key Q",
    "input: key SPACE",
    "input: lmb 3"
@@ -107,8 +107,8 @@
   "repeat": 20,
   "interval": 3.0,
   "do": [
-   "input: key ESC",
-   "input: lmb 1"
+   "input: skip",
+   "input: clear"
   ],
   "expect": "TEXT_CS_028_PREMELEE_PASSED_20",
   "forbid": "LUA RUNTIME ERROR",
@@ -120,7 +120,7 @@
   "repeat": 20,
   "interval": 3.0,
   "do": [
-   "input: lmb 1"
+   "input: clear"
   ],
   "expect": "TEXT_CS_028_PREMELEE_ALARM_10",
   "forbid": "LUA RUNTIME ERROR",
@@ -143,7 +143,7 @@
   "id": "quest_card_box",
   "do": [
    "input: key ENTER",
-   "input: lmb 1",
+   "input: clear",
    "list"
   ],
   "expect": "\\[Autopilot\\] list",
@@ -157,7 +157,7 @@
   "repeat": 8,
   "interval": 3.0,
   "do": [
-   "input: lmb 1",
+   "input: clear",
    "list"
   ],
   "expect": "\\[Autopilot\\] list",
@@ -216,7 +216,7 @@
   "repeat": 6,
   "interval": 4.0,
   "do": [
-   "input: lmb 1"
+   "input: clear"
   ],
   "expect": "GuildTrainingMelee/GuildTrainingMelee' created|PlayAVIMovie|PlayMovie",
   "forbid": "LUA RUNTIME ERROR",

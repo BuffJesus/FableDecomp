@@ -92,15 +92,16 @@ right. Nothing committed today (branch feat/novi-script-recovery) -- commit the 
 
 # RESUME HERE (after the 2026-09-19 WoodsMelee fix; night-7 block follows)
 
-**2026-09-20 (night): AUTOPILOT IS LIVE -- the whole Guild childhood path runs hands-free, 18/18, no crash.**
-`python tools/script_recovery/autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json --launch --save f645456fds`
-(stages the save, launches, drives the frontend by capture+classify, then arrival -> talk -> real punches/stick hits ->
-ALARM -> retail transition into GuildWoods -> 10 real beetle kills -> back -> WOODSWON -> YES -> Melee stage; ~25 min).
-Sidecar `22affe1` (autopilot GC per chunk + the retail region-transition update hook -- the bare `GoToMapSlot` entry
-crashed every return at 0x821878, crash-caught). Findings/root causes: `docs/journal/2026-09/AUTOPILOT_FIRST_LIVE_2026-09-20.md`;
-rules: GOTCHAS "Autopilot". Open: converter defect in the Guildmaster's XP-orb wait (CCountedPointer copy via
-`(auStack_160 + 4)` not folded -> `while nil ~= nil`), Melee-stage checklist (blocks 5/5, Whisper, grade), v7 through
-the same checklist + `ab_playtest.py compare v6 v7`, grader.
+**2026-09-20 (night): AUTOPILOT IS LIVE -- childhood 18/18 AND the teen Melee stage hands-free; Skill stage reached.**
+`python tools/script_recovery/autopilot.py run v6 tools/script_recovery/checklists/guild_woods_return.json tools/script_recovery/checklists/guild_melee_stage.json --launch --save f645456fds`
+(~45 min, nobody at the keyboard). Sidecar `3a522f2` (GC per chunk, retail transition hook, `[RegionDiag]`).
+Converter: two in-game Lua errors fixed (SkillTarget projectile damage out-param; CheckFriendlyAttacks TryAcquire actor)
++ GSI-result / actor-map-resource folds; broader identity rules tried and reverted after two audit rounds (journal).
+**Resume:** (1) `guild_skill_stage.json` archery step (E draws the bow? verify the PC key; the target scripts were
+dead in the last run because ALL quest threads got terminated after the third friendly-attack warning -- read the
+`[RegionDiag]` lines of the next run to name the trigger, then decide how the host should survive a thread restart);
+(2) v7 through the same checklists + `ab_playtest.py compare v6 v7`; (3) BADHERO hero-resource release residual;
+(4) Guildmaster XP-orb CCountedPointer copy. Findings: `docs/journal/2026-09/AUTOPILOT_FIRST_LIVE_2026-09-20.md`.
 
 **2026-09-20 (third v6 run 13:45): the woods return is RIGHT (WOODSWON at the door, AVI, PreMelee ends, Melee stage
 runs; attack tutorial 7/7).** Two bugs seen and fixed at the converter: tattoo cards as visible pickups at the teen

@@ -1346,7 +1346,13 @@ def canonicalise_stack_objects(text: str) -> str:
                     return True
             return False
         own_post = {m.group(0) for m in RE_STACK_NAME.finditer(post) if inside(m, boff, size) and m.group(0) != name}
-        own_post = {n for n in own_post if re.search(r'^[ \t]*(?:\(\w+ \*+\))?' + re.escape(n) + r'(?:_p[48c])? = ', post, re.M) and outside_partner(n)}
+        # ... or assigned the RESULT of a script-interface call (`iStack_24 = GSI->AddNewConversation(...)`): no
+        # member of a resource / thing / map is ever written from a GSI result, so that slot is a live scalar of
+        # its own even when the restored base numbering puts it inside the extent (CheckFriendlyAttacks: the
+        # conversation id folded onto the Maze resource `xStack_30`, then released as a resource, 2026-09-20)
+        def gsi_result(n):
+            return bool(re.search(r'^[ \t]*' + re.escape(n) + r' = (?:GSI->|\(\*\*\(code \*\*\))', post, re.M))
+        own_post = {n for n in own_post if re.search(r'^[ \t]*(?:\(\w+ \*+\))?' + re.escape(n) + r'(?:_p[48c])? = ', post, re.M) and (outside_partner(n) or gsi_result(n))}
         post = RE_STACK_NAME.sub(lambda m: name if inside(m, boff, size) and m.group(0) != name and m.group(0) not in own_post else m.group(0), post)
         segment = pre + post
         segment = re.sub(r'\(' + re.escape(name) + r' \+ (?:4|8|0xc|12)\)', name, segment)
@@ -1901,6 +1907,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_byte_literal_words(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
     text = fold_resource_objects(text, getattr(spec, 'call_labels', {}))
+    # an actor-map store spelled by address whose object is a resource (`pCVar19 = xStack_20` after the ctor) is
+    # the resource itself, not a CScriptThing address (CheckFriendlyAttacks' "HERO" actor lifted as a TODO
+    # `&xStack_20` and the BADHERO cutscene ran without the hero, 2026-09-20)
+    for res in set(re.findall(r'\b(\w+) = RESOURCE_(?:NewResource|StartMovie)\(', text)):
+        text = re.sub(r'(ACTORMAP_Set\(\w+, (?:"[^"]*"|\w+), )&' + re.escape(res) + r'\)', r'\1' + res + ')', text)
     text = drop_trivial_base_calls(text, getattr(spec, 'call_labels', {}), getattr(spec, 'byte_at', None))
     text = hoist_object_aliases(fold_inline_constructors(text))
     text = drop_noop_comma_assignments(text)

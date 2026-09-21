@@ -1136,7 +1136,7 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local aC_stk_100, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_84
+    local aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iStack_24, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_84
     local alive = true
     bVar4 = false
     bVar3 = false
@@ -1448,24 +1448,23 @@ function CheckFriendlyAttacks(quest)
                         bVar10 = not alive
                         if not bVar10 then
                             amStack_1c = resources:NewActorMap()
-                            -- TODO(native): resources:SetActor(amStack_1c, "HERO", &xStack_20)
+                            resources:SetActor(amStack_1c, "HERO", xStack_20)
                             resources:SetActor(amStack_1c, "MAZE", xStack_30)
-                            aC_stk_100 = resources:StartMovie("")
-                            quest:StartMovieSequence()
+                            aCStack_10 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
                             bVar20 = false
                             bVar10 = false
                             pCVar14 = quest:GetHero()
-                            xStack_30 = quest:AddNewConversation(pCVar14, bVar10, bVar20)
+                            iStack_24 = quest:AddNewConversation(pCVar14, bVar10, bVar20)
                             pCVar14 = quest:GetHero()
                             pCVar15 = quest:GetHero()
-                            quest:AddLineToConversation(xStack_30, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", pCVar15, pCVar14, false)
+                            quest:AddLineToConversation(iStack_24, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", pCVar15, pCVar14, false)
                             quest:Pause(2.0)
                             quest:FixMovieSequenceCamera(true)
                             resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
                             quest:FixMovieSequenceCamera(false)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(aC_stk_100)
+                            resources:DestroyMovie(aCStack_10)
                             resources:DestroyActorMap(amStack_1c)
                             resources:ReleaseResource(amStack_1c)
                             resources:ReleaseResource(xStack_30)

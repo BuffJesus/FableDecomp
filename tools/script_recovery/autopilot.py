@@ -52,12 +52,21 @@ def game_input(spec: str, timeout: float = 60.0) -> str:
         args = ['-Action', 'capture', '-Output', parts[1]]
     elif parts[0] == 'hold' and len(parts) == 3:       # `hold W 3000`: hold a key for N ms (walk)
         args = ['-Action', 'hold', '-Keys', parts[1], '-X', parts[2]]
+    elif parts[0] == 'clear':                     # click ONLY when a game-info box / question is up: a click with a weapon
+        png = ROOT / 'scratchpad' / 'autopilot_clear.png'   #   drawn and no box is an attack (three friendly hits = the
+        game_input(f'capture {png}', timeout)                #   Guild's third warning, which ended the Skill stage, 2026-09-20)
+        return game_input('lmb 1', timeout) if game_info_box_up(png) else '(no box)'
+    elif parts[0] == 'skip':                      # ESC only when the pause menu is NOT up (ESC outside a scene opens it);
+        png = ROOT / 'scratchpad' / 'autopilot_skip.png'   #   with the menu up, ESC closes it instead
+        game_input(f'capture {png}', timeout)
+        kind = screen_kind(png)
+        return game_input('key ESC', timeout) if kind != 'pausemenu' else game_input('key ESC', timeout) + ' (closed the pause menu)'
     elif parts[0] == 'focus':                     # bring the game window to the foreground (Fable freezes cutscene
         args = ['-Action', 'info']                #   timers while it is not the foreground window)
     elif parts[0] == 'lmb':                       # `lmb [count]`: attack / confirm clicks where the cursor is
         args = ['-Action', 'lmb', '-X', parts[1] if len(parts) > 1 else '1']
     else:
-        raise ValueError(f'bad input spec {spec!r} (key <KEYS> | hold <KEY> <ms> | click <X> <Y> | move <X> <Y> | lmb [count] | focus | capture <file>)')
+        raise ValueError(f'bad input spec {spec!r} (key <KEYS> | hold <KEY> <ms> | click <X> <Y> | move <X> <Y> | lmb [count] | clear | skip | focus | capture <file>)')
     r = subprocess.run(['powershell', '-NoProfile', '-File', str(GAMEWIN)] + args, capture_output=True, text=True, timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError(f'gamewin {spec!r} failed: {r.stderr.strip()[-300:]}')
@@ -106,6 +115,9 @@ def screen_kind(png: Path) -> str:
         return im[y0:y1, x0:x1].reshape(-1, 3)
     grey = lambda a: a.mean(1)  # noqa: E731
     bright = lambda a: (grey(a) > 200).mean()  # noqa: E731
+    pills = region(12, 128, 190, 292)                          # the in-game pause menu's grey button column (top-left)
+    if float(((grey(pills) > 150) & (np.abs(pills[:, 0] - pills[:, 2]) < 18)).mean()) > 0.05:
+        return 'pausemenu'
     header = bright(region(100, 76, 270, 98))                  # "Select Profile" / "<profile> - Load Game" header text
     if header > 0.10 and bright(region(440, 198, 580, 220)) > 0.15:
         return 'profiles'                                      # "New Profile" row
@@ -156,6 +168,17 @@ def hover_profile_row(target_y: int, shots: Path, tag: str) -> bool:
             return True
         y += target_y - got
     return False
+
+
+def game_info_box_up(png: Path) -> bool:
+    """a game-info / tutorial / item box or a YES-NO question is on screen: the bright saturated-green mouse
+    icon next to its 'Next' / answer labels (measured on the 2026-09-20 captures: >=20 such pixels in the
+    lower-right quarter, in-world scenes 0-4)"""
+    from PIL import Image
+    import numpy as np
+    im = np.asarray(Image.open(png).convert('RGB')).astype(float)
+    a = im[370:680, 560:940].reshape(-1, 3)
+    return int(((a[:, 1] > 170) & (a[:, 1] - a[:, 0] > 60) & (a[:, 1] - a[:, 2] > 60)).sum()) >= 20
 
 
 def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
@@ -407,7 +430,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='cmd', required=True)
     s = sub.add_parser('send'); s.add_argument('bundle'); s.add_argument('lines', nargs='+'); s.add_argument('--timeout', type=float, default=10)
-    r = sub.add_parser('run'); r.add_argument('bundle'); r.add_argument('checklist'); r.add_argument('--report')
+    r = sub.add_parser('run'); r.add_argument('bundle'); r.add_argument('checklist', nargs='+', help='one or more checklist JSON files, run in order'); r.add_argument('--report')
     r.add_argument('--launch', action='store_true', help='launch the bundle and load the 0atlas AutoSave first')
     r.add_argument('--save', help='profile whose AutoSave to stage into the 0atlas-loaded folder before launching (restored afterwards)')
     t = sub.add_parser('tail'); t.add_argument('bundle')
@@ -416,7 +439,7 @@ def main() -> None:
         for line in Channel(a.bundle).send(a.lines, timeout=a.timeout):
             print(line)
     elif a.cmd == 'run':
-        steps = json.loads(Path(a.checklist).read_text(encoding='utf-8'))
+        steps = [st for path in a.checklist for st in json.loads(Path(path).read_text(encoding='utf-8'))]
         backup = stage_save(a.save) if a.save else None
         try:
             if a.launch:
