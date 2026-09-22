@@ -55,6 +55,29 @@ UNITS = {
         'schema': 'tour-guide-native-inventory/0.1',
         'package': 'TourGuide',
     },
+    'gameflow_assistance': {
+        # Gameflow stage 100 activates GameflowAssistance (priority 0 in the conversion queue; Aeon has a
+        # hand port as LUAGameflowAssistance, which makes it an oracle for ours).
+        # Cluster lifecycle 0x00CEFA00 .. allocator 0x00CF0640; next family Q_ArenaHoldingScript 0x00CF8860.
+        'evidence': ROOT / 'refs/script_recovery/gameflow_assistance',
+        'lo': 0xCEFA00, 'hi': 0xCF8860,
+        'ir_glob': 'GameflowAssistance*.json',
+        'scripts': ['GameflowAssistance'],
+        'pdb_pattern': '*CGameflowAssistance*',
+        'schema': 'gameflow-assistance-native-inventory/0.1',
+        'package': 'GameflowAssistance',
+    },
+    'guild_master_village': {
+        # Gameflow stage 100 activates V_GuildMaster -- the Guildmaster outside the training quests.
+        # Cluster lifecycle (own block) 0x00E90780 .. allocator 0x00E92900; next family V_HiddenBooty 0x00E93CF0.
+        'evidence': ROOT / 'refs/script_recovery/guild_master_village',
+        'lo': 0xE90780, 'hi': 0xE93CF0,
+        'ir_glob': 'V_GuildMaster*.json',
+        'scripts': ['V_GuildMaster'],
+        'pdb_pattern': '*CV_GuildMaster*',
+        'schema': 'guild-master-village-native-inventory/0.1',
+        'package': 'GuildMasterVillage',
+    },
     'orchard_farm': {
         # Q_OrchardFarmRaid ctor 0x00DCC040 .. Q_OrchardFarmRaidGood dtor 0x00DD26C0 (+ tail)
         # Q_OrchardFarm_Barricade has no script class: it is a resource section quest activated by the raid.

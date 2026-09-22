@@ -1,0 +1,40 @@
+{
+  "schema": "guild-master-village-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "f145cbab0a05ffb532baeec798346181abc9c57e2483bcec2f44cb8931f54d77",
+  "exportedFunctions": 34,
+  "quests": [
+    {
+      "script": "V_GuildMaster",
+      "allocator": "0x00E92900",
+      "vtable": "0x012EC138",
+      "entities": [
+        {
+          "name": "GuildMasterGameFlow",
+          "registrationFunction": "0x00E90830",
+          "namePush": "0x00E9084E",
+          "addBindingCall": "0x00E9088B",
+          "factoryStore": "0x00E90877",
+          "factory": "0x00E908D0",
+          "vtable": "0x012EC184",
+          "functions": {
+            "destructor": "0x00E90980",
+            "Main": "0x00E90BE0",
+            "Init": "0x00E909A0",
+            "GetParentScript": "0x00E90970",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00E92900"
+      ]
+    }
+  ],
+  "threads": [],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

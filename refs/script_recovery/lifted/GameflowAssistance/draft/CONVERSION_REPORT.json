@@ -1,0 +1,349 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "GameflowAssistance",
+      "package": "GameflowAssistance",
+      "packages": [
+        {
+          "owner": "GameflowAssistance",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "GameflowAssistance",
+          "function": "Main",
+          "address": "0x00cefac0",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "CreateThread",
+            "CreateThread",
+            "CreateThread",
+            "CreateThread"
+          ],
+          "lines": 12,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "Init",
+          "address": "0x00cefa00",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt"
+          ],
+          "lines": 8,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "OnPersist",
+          "address": "0x00cf0560",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CPersistContext *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt"
+          ],
+          "lines": 24,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "Tutorial_CombatMultiplier",
+          "address": "0x00cefcc0",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsPlayerWieldingWeapon",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "GetPlayerCreatureCombatMultiplier",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "SetStateInt",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 96,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "Tutorial_LowHealth",
+          "address": "0x00ceffb0",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "GetHeroHealth",
+            "GetHeroHealth",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "ENGINE_GlobalGameData",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "ENGINE_GlobalGameData",
+            "SetStateInt",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 67,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00cf0155;",
+            "goto LAB_00cf0155;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00cf0155",
+            "LAB_00cf0155"
+          ]
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "Tutorial_LowMagic",
+          "address": "0x00cf0180",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "GetHeroWillEnergyLevel",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "ENGINE_GlobalGameData",
+            "SetStateInt",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 39,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GameflowAssistance",
+          "function": "Tutorial_RenownLevelIncrease",
+          "address": "0x00cf02a0",
+          "path": "FSE/GameflowAssistance/GameflowAssistance.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);",
+            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);",
+            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);"
+          ],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "GetHeroRenownLevel",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "RemoveQuestCardFromGuild",
+            "RemoveQuestCardFromGuild",
+            "RemoveQuestCardFromGuild",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 75,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/GameflowAssistance/GameflowAssistance.lua": {
+          "Main": [
+            "bVar2"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 7,
+        "missing": 0,
+        "functionSyntaxPassed": 7,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 3
+      }
+    }
+  ],
+  "summary": {
+    "owners": 1,
+    "functions": 7,
+    "missing": 0,
+    "functionSyntaxPassed": 7,
+    "fileSyntaxPassed": 1,
+    "fileSyntaxChecked": 1,
+    "todo": 3
+  }
+}

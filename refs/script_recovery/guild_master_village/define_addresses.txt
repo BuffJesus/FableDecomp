@@ -1,0 +1,7 @@
+# Native factory, vtable, callee and thread anchors.
+0x00CDEBC0
+0x00CDEBD0
+0x00CDEBE0
+0x00E90970
+0x00E909A0
+0x00E90BE0

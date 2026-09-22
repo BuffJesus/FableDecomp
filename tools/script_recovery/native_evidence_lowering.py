@@ -377,6 +377,10 @@ def bind_st0_results(text: str) -> str:
             continue
         lines = [re.sub(r'\b' + re.escape(name) + r'\b', fret, l) for l in lines]
         lines = [l for l in lines if not re.match(r'^\s*float10 ' + re.escape(fret) + r';', l)]
+        # the call may sit INSIDE an expression (a comma form), where there is no statement to bind:
+        # `(CALL(args), fret_N <op> X)` -> `(fret_N = CALL(args), fret_N <op> X)`
+        lines = [re.sub(r'\((?P<call>(?:GSI->|\(\*\*\(code \*\*\))[^;\n]*?\)), (?=' + re.escape(fret) + r'\b)',
+                        lambda m: '(' + fret + ' = ' + m.group('call') + ', ', l) for l in lines]
     return '\n'.join(lines)
 
 

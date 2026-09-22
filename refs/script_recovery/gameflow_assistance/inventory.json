@@ -1,0 +1,49 @@
+{
+  "schema": "gameflow-assistance-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "63cc46883abc5d836b57c49ce9cfb28af09121914885a2b3c7dca1dc5a85b4ec",
+  "exportedFunctions": 34,
+  "quests": [
+    {
+      "script": "GameflowAssistance",
+      "allocator": "0x00CF0640",
+      "vtable": "0x012C5DE0",
+      "entities": [],
+      "vtableWriters": [
+        "0x00CF0640"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00CEFAC0",
+      "store": "0x00CEFB07",
+      "body": "0x00CEFCC0",
+      "name": "Tutorial_CombatMultiplier",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00CEFAC0",
+      "store": "0x00CEFB7F",
+      "body": "0x00CEFFB0",
+      "name": "Tutorial_LowHealth",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00CEFAC0",
+      "store": "0x00CEFBF7",
+      "body": "0x00CF0180",
+      "name": "Tutorial_LowMagic",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00CEFAC0",
+      "store": "0x00CEFC6F",
+      "body": "0x00CF02A0",
+      "name": "Tutorial_RenownLevelIncrease",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}
