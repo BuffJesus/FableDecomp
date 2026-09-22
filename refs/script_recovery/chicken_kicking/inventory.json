@@ -1,0 +1,180 @@
+{
+  "schema": "chicken-kicking-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "e64ac518430383cb0446c4aba1f592cefa37dfa02f2d8cc0b701e251450aedf3",
+  "exportedFunctions": 78,
+  "quests": [
+    {
+      "script": "V_ChickenKicking",
+      "allocator": "0x00E68E60",
+      "vtable": "0x012E7318",
+      "entities": [
+        {
+          "name": "ChickenMaster",
+          "registrationFunction": "0x00E62A00",
+          "namePush": "0x00E62AB5",
+          "addBindingCall": "0x00E62AFE",
+          "factoryStore": "0x00E62AE2",
+          "factory": "0x00E634B0",
+          "vtable": "0x012E747C",
+          "functions": {
+            "destructor": "0x00E63570",
+            "Main": "0x00E64FB0",
+            "Init": "0x00E63560",
+            "GetParentScript": "0x00E63550",
+            "OnPersist": "0x00E641B0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "ChickenSign",
+          "registrationFunction": "0x00E62A00",
+          "namePush": "0x00E62B26",
+          "addBindingCall": "0x00E62B62",
+          "factoryStore": "0x00E62B4D",
+          "factory": "0x00E64D10",
+          "vtable": "0x012E7648",
+          "functions": {
+            "destructor": "0x00E64F80",
+            "Main": "0x00E64DF0",
+            "Init": "0x00E68DC0",
+            "GetParentScript": "0x00E64DE0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "KickedChicken",
+          "registrationFunction": "0x00E62A00",
+          "namePush": "0x00E62B8A",
+          "addBindingCall": "0x00E62BC6",
+          "factoryStore": "0x00E62BB1",
+          "factory": "0x00E63590",
+          "vtable": "0x012E7498",
+          "functions": {
+            "destructor": "0x00E63640",
+            "Main": "0x00E64210",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00E63630",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Spectator",
+          "registrationFunction": "0x00E62A00",
+          "namePush": "0x00E62BEE",
+          "addBindingCall": "0x00E62C2A",
+          "factoryStore": "0x00E62C15",
+          "factory": "0x00E63660",
+          "vtable": "0x012E74B4",
+          "functions": {
+            "destructor": "0x00E63710",
+            "Main": "0x00E63890",
+            "Init": "0x00E63730",
+            "GetParentScript": "0x00E63700",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E62A00",
+      "store": "0x00E62C89",
+      "body": "0x00E62D60",
+      "name": "CreateSpectators",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E62A00",
+      "store": "0x00E62D01",
+      "body": "0x00E631F0",
+      "name": "LookAfterOrganiser",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E69676",
+      "body": "0x00E6B750",
+      "name": "WatchForRegionEntry",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E696ED",
+      "body": "0x00E69F00",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E69764",
+      "body": "0x00E6A340",
+      "name": "WatchForWeaponUnsheathed",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E697DB",
+      "body": "0x00E69F90",
+      "name": "WatchForQuestInfoDisplayConditions",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E69855",
+      "body": "0x00E6A7F0",
+      "name": "DoMission",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E69A23",
+      "body": "0x00E6A0B0",
+      "name": "WatchForInsideChapel",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E693F0",
+      "store": "0x00E69AA0",
+      "body": "0x00E6A000",
+      "name": "WatchForExpressions",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E6A7F0",
+      "store": "0x00E6A8C7",
+      "body": "0x00E6A940",
+      "name": "WatchForLeaving",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E6AAC0",
+      "store": "0x00E6AB4B",
+      "body": "0x00E6AF20",
+      "name": null,
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E6AAC0",
+      "store": "0x00E6AC37",
+      "body": "0x00E6AD20",
+      "name": null,
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

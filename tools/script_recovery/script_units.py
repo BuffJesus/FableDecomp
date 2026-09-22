@@ -78,6 +78,83 @@ UNITS = {
         'schema': 'guild-master-village-native-inventory/0.1',
         'package': 'GuildMasterVillage',
     },
+    'beggar_and_child': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xe57c00 .. next family's allocator (V_BodyGuard) 0xe62730.
+        'evidence': ROOT / 'refs/script_recovery/beggar_and_child',
+        'lo': 0xe57c00, 'hi': 0xe62730,
+        'ir_glob': 'V_BeggarAndChild*.json',
+        'scripts': ['V_BeggarAndChild'],
+        'pdb_pattern': '*CV_BeggarAndChild*',
+        'schema': 'beggar-and-child-native-inventory/0.1',
+        'package': 'BeggarAndChild',
+    },
+    'book_collecting': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xe543b0 .. next family's allocator (V_BeggarAndChild) 0xe5d0b0.
+        'evidence': ROOT / 'refs/script_recovery/book_collecting',
+        'lo': 0xe543b0, 'hi': 0xe5d0b0,
+        'ir_glob': 'V_BookCollecting*.json',
+        'scripts': ['V_BookCollecting'],
+        'pdb_pattern': '*CV_BookCollecting*',
+        'schema': 'book-collecting-native-inventory/0.1',
+        'package': 'BookCollecting',
+    },
+    'chicken_kicking': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xe628b0 .. next family's allocator (V_ChapelOfEvil) 0xe6e230.
+        'evidence': ROOT / 'refs/script_recovery/chicken_kicking',
+        'lo': 0xe628b0, 'hi': 0xe6e230,
+        'ir_glob': 'V_ChickenKicking*.json',
+        'scripts': ['V_ChickenKicking'],
+        'pdb_pattern': '*CV_ChickenKicking*',
+        'schema': 'chicken-kicking-native-inventory/0.1',
+        'package': 'ChickenKicking',
+    },
+    'bordello': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xe399d0 .. next family's allocator (V_BanditCampPath) 0xe477a0.
+        'evidence': ROOT / 'refs/script_recovery/bordello',
+        'lo': 0xe399d0, 'hi': 0xe477a0,
+        'ir_glob': 'V_Bordello*.json',
+        'scripts': ['V_Bordello'],
+        'pdb_pattern': '*CV_Bordello*',
+        'schema': 'bordello-native-inventory/0.1',
+        'package': 'Bordello',
+    },
+    'sick_child': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xec5420 .. next family's allocator (V_SingingStones) 0xed39a0.
+        'evidence': ROOT / 'refs/script_recovery/sick_child',
+        'lo': 0xec5420, 'hi': 0xed39a0,
+        'ir_glob': 'V_SickChild*.json',
+        'scripts': ['V_SickChild'],
+        'pdb_pattern': '*CV_SickChild*',
+        'schema': 'sick-child-native-inventory/0.1',
+        'package': 'SickChild',
+    },
+    'picnic_after_wasp': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xec1240 .. next family's allocator (V_RandomPopulationSim) 0xec3bc0.
+        'evidence': ROOT / 'refs/script_recovery/picnic_after_wasp',
+        'lo': 0xec1240, 'hi': 0xec3bc0,
+        'ir_glob': 'V_PicnicAreaAfterWaspBoss*.json',
+        'scripts': ['V_PicnicAreaAfterWaspBoss'],
+        'pdb_pattern': '*CV_PicnicAreaAfterWaspBoss*',
+        'schema': 'picnic-after-wasp-native-inventory/0.1',
+        'package': 'PicnicAreaAfterWaspBoss',
+    },
+    'oakvale_revisited': {
+        # Gameflow switches this on before Orchard Farm. Cluster vtable lifecycle (own block only):
+        # 0xee8210 .. next family's allocator (Global_WatchForHeroDeath) 0xee90a0.
+        'evidence': ROOT / 'refs/script_recovery/oakvale_revisited',
+        'lo': 0xee8210, 'hi': 0xee90a0,
+        'ir_glob': 'CS_OakValeRevisited*.json',
+        'scripts': ['CS_OakValeRevisited'],
+        'pdb_pattern': '*CCS_OakValeRevisited*',
+        'schema': 'oakvale-revisited-native-inventory/0.1',
+        'package': 'OakValeRevisited',
+    },
     'orchard_farm': {
         # Q_OrchardFarmRaid ctor 0x00DCC040 .. Q_OrchardFarmRaidGood dtor 0x00DD26C0 (+ tail)
         # Q_OrchardFarm_Barricade has no script class: it is a resource section quest activated by the raid.

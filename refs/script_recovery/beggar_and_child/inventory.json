@@ -1,0 +1,88 @@
+{
+  "schema": "beggar-and-child-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "e3dd461b82964b7190a9802a92f52e3baaae08f24d0c4647ecd354f98080cacf",
+  "exportedFunctions": 57,
+  "quests": [
+    {
+      "script": "V_BeggarAndChild",
+      "allocator": "0x00E5D0B0",
+      "vtable": "0x012E65E0",
+      "entities": [
+        {
+          "name": "LookoutPointBeggar",
+          "registrationFunction": "0x00E57E60",
+          "namePush": "0x00E57E83",
+          "addBindingCall": "0x00E57EC0",
+          "factoryStore": "0x00E57EAC",
+          "factory": "0x00E58C60",
+          "vtable": "0x012E68C4",
+          "functions": {
+            "destructor": "0x00E58D20",
+            "Main": "0x00E58D40",
+            "Init": "0x00E58D10",
+            "GetParentScript": "0x00E58D00",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BeggarBully",
+          "registrationFunction": "0x00E57E60",
+          "namePush": "0x00E57EE8",
+          "addBindingCall": "0x00E57F28",
+          "factoryStore": "0x00E57F0F",
+          "factory": "0x00E5B2D0",
+          "vtable": "0x012E6C1C",
+          "functions": {
+            "destructor": "0x00E5B390",
+            "Main": "0x00E5B3B0",
+            "Init": "0x00E5B380",
+            "GetParentScript": "0x00E5B370",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00E5D0B0"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E5D4F0",
+      "store": "0x00E5D73E",
+      "body": "0x00E5D9A0",
+      "name": "HenchmanDeductWages",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E5D4F0",
+      "store": "0x00E5D7B5",
+      "body": "0x00E5E350",
+      "name": "HenchmanCommentary",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E5D4F0",
+      "store": "0x00E5D82F",
+      "body": "0x00E5DB30",
+      "name": "FisticuffsWatch",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E5D4F0",
+      "store": "0x00E5D8AB",
+      "body": "0x00E5D900",
+      "name": "CheckForHenchmanFiredOverride",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

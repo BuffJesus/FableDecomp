@@ -1,0 +1,46 @@
+{
+  "schema": "book-collecting-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "ac11c40f4a9ede6f404fdbb9b6c252ef42a435a455a6bc0629c813d4921569d0",
+  "exportedFunctions": 49,
+  "quests": [
+    {
+      "script": "V_BookCollecting",
+      "allocator": "0x00E57A50",
+      "vtable": "0x012E5EFC",
+      "entities": [
+        {
+          "name": "BS_Teacher",
+          "registrationFunction": "0x00E54450",
+          "namePush": "0x00E544FD",
+          "addBindingCall": "0x00E5453D",
+          "factoryStore": "0x00E54525",
+          "factory": "0x00E54580",
+          "vtable": "0x012E5F40",
+          "functions": {
+            "destructor": "0x00E546A0",
+            "Main": "0x00E54E90",
+            "Init": "0x00E54630",
+            "GetParentScript": "0x00E54620",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E55CE0",
+      "store": "0x00E564B8",
+      "body": "0x00E566F0",
+      "name": null,
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

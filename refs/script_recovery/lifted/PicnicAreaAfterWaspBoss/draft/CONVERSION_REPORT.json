@@ -1,0 +1,294 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "V_PicnicAreaAfterWaspBoss",
+      "package": "V_PicnicAreaAfterWaspBoss",
+      "packages": [
+        {
+          "owner": "V_PicnicAreaAfterWaspBoss",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/V_PicnicAreaAfterWaspBoss.lua"
+        },
+        {
+          "owner": "PAAWB_Villager",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager.lua"
+        },
+        {
+          "owner": "PAAWB_Guard",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "V_PicnicAreaAfterWaspBoss",
+          "function": "Main",
+          "address": "0x00ec12e0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/V_PicnicAreaAfterWaspBoss.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Villager",
+          "function": "Main",
+          "address": "0x00ec14b0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Villager",
+          "function": "Init",
+          "address": "0x00ec14a0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Villager",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "PAAWB_Villager",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Guard",
+          "function": "Main",
+          "address": "0x00ec15a0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Guard",
+          "function": "Init",
+          "address": "0x00ec1590",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "PAAWB_Guard",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "PAAWB_Guard",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [
+        {
+          "owner": "V_PicnicAreaAfterWaspBoss",
+          "function": "Init",
+          "address": "0x00cbd4d0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/V_PicnicAreaAfterWaspBoss.lua",
+          "evidence": "cluster lifecycle slot"
+        },
+        {
+          "owner": "V_PicnicAreaAfterWaspBoss",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/V_PicnicAreaAfterWaspBoss/V_PicnicAreaAfterWaspBoss.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 3,
+        "passed": 3,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "PAAWB_Villager": "V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Villager",
+        "PAAWB_Guard": "V_PicnicAreaAfterWaspBoss/Entities/PAAWB_Guard"
+      },
+      "summary": {
+        "owners": 3,
+        "functions": 9,
+        "missing": 2,
+        "functionSyntaxPassed": 9,
+        "fileSyntaxPassed": 3,
+        "fileSyntaxChecked": 3,
+        "todo": 0
+      }
+    }
+  ],
+  "summary": {
+    "owners": 3,
+    "functions": 9,
+    "missing": 2,
+    "functionSyntaxPassed": 9,
+    "fileSyntaxPassed": 3,
+    "fileSyntaxChecked": 3,
+    "todo": 0
+  }
+}

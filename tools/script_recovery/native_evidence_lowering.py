@@ -680,7 +680,7 @@ def normalise_typed_decompile(text: str) -> str:
             continue
         if not re.search(r'^[ \t]*' + v + r' = \([\w: ]+\*+\)\(\w+ \+ ', text, re.M):
             continue        # no second life as an element pointer: the plain counter rules handle it
-        ctr = 'ctr_' + var.split('_', 1)[1]
+        ctr = 'ctr_' + (var.split('_', 1)[1] if '_' in var else var)
         text = re.sub(r'^([ \t]*)' + v + r' = ((?:\([\w: ]+\*+\))?0(?:x0)?);', r'\1' + ctr + r' = 0;', text, flags=re.M)
         text = re.sub(r'^([ \t]*)' + v + r' = ' + v + r' \+ (\d+);', r'\1' + ctr + r' = ' + ctr + r' + \2;', text, flags=re.M)
         text = re.sub(r'\b' + v + r' < ', ctr + ' < ', text)
@@ -710,10 +710,12 @@ def normalise_typed_decompile(text: str) -> str:
         # (when the slot is also read as a string buffer — `*(void **)X` — its typed null tests `X == (CCharString)0x0`
         # belong to the string, not the counter; `X == (CCharString)0x1` is always the counter)
         keep = r'(?! (?:==|!=) \(CCharString(?:_bv)?\)0x0)' if re.search(r'\*\(void \*\*\)' + v + r'\b', text) else ''
-        text = re.sub(r'(?<![&\w])(?<!\*)(?<!\*\))' + v + r'\b' + keep, 'ctr_' + var.split('_', 1)[1], text)
+        text = re.sub(r'(?<![&\w])(?<!\*)(?<!\*\))' + v + r'\b' + keep,
+                      'ctr_' + (var.split('_', 1)[1] if '_' in var else var), text)
         # the counter's own typed compares (`ctr == (CCharString)0x0` lifted to `== nil`): an int compare when the
         # slot's nearest preceding event is a counter assignment, the string's null test when it is a string fill
-        ctr, slot = 'ctr_' + var.split('_', 1)[1], var.split('_', 1)[1]
+        slot = var.split('_', 1)[1] if '_' in var else var      # no `_<slot>` suffix: a plain local
+        ctr = 'ctr_' + slot
         events = re.compile(r'^[ \t]*(?P<name>\w+_' + slot + r') = (?P<rhs>[^;]+);|&(?P<sname>\w+_' + slot + r')\b', re.M)
 
         def counter_compare(m, ctr=ctr, events=events):

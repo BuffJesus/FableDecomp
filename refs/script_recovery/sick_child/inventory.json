@@ -1,0 +1,250 @@
+{
+  "schema": "sick-child-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "c252e8326f73f223c9e1df6314e0b71fed0dafe90bdbb267620a9c53159b8a2a",
+  "exportedFunctions": 98,
+  "quests": [
+    {
+      "script": "V_SickChild",
+      "allocator": "0x00ED0E00",
+      "vtable": "0x012F17DC",
+      "entities": [
+        {
+          "name": "SickChildsMother",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC5501",
+          "addBindingCall": "0x00EC553E",
+          "factoryStore": "0x00EC552A",
+          "factory": "0x00EC5BC0",
+          "vtable": "0x012F18C0",
+          "functions": {
+            "destructor": "0x00EC5C70",
+            "Main": "0x00ECD9E0",
+            "Init": "0x00EC5C90",
+            "GetParentScript": "0x00EC5C60",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SickChild",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC5566",
+          "addBindingCall": "0x00EC55A2",
+          "factoryStore": "0x00EC558D",
+          "factory": "0x00EC5CD0",
+          "vtable": "0x012F18DC",
+          "functions": {
+            "destructor": "0x00EC5D80",
+            "Main": "0x00EC5DE0",
+            "Init": "0x00EC5DA0",
+            "GetParentScript": "0x00EC5D70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SickChildsSister",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC55CA",
+          "addBindingCall": "0x00EC5606",
+          "factoryStore": "0x00EC55F1",
+          "factory": "0x00EC67B0",
+          "vtable": "0x012F1964",
+          "functions": {
+            "destructor": "0x00EC6880",
+            "Main": "0x00EC68A0",
+            "Init": "0x00EC6860",
+            "GetParentScript": "0x00EC6850",
+            "OnPersist": "0x00ECD860",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Witch",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC562E",
+          "addBindingCall": "0x00EC566A",
+          "factoryStore": "0x00EC5655",
+          "factory": "0x00EC7FF0",
+          "vtable": "0x012F1A78",
+          "functions": {
+            "destructor": "0x00EC80A0",
+            "Main": "0x00ECE7F0",
+            "Init": "0x00EC80C0",
+            "GetParentScript": "0x00EC8090",
+            "OnPersist": "0x00ECD890",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "ManInLove",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC5692",
+          "addBindingCall": "0x00EC56CE",
+          "factoryStore": "0x00EC56B9",
+          "factory": "0x00EC8160",
+          "vtable": "0x012F1A94",
+          "functions": {
+            "destructor": "0x00EC82E0",
+            "Main": "0x00EC8300",
+            "Init": "0x00EC8210",
+            "GetParentScript": "0x00EC8200",
+            "OnPersist": "0x00ECD8E0",
+            "OnPredicateFail": "0x00EC8230",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MansLover",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC56F6",
+          "addBindingCall": "0x00EC5732",
+          "factoryStore": "0x00EC571D",
+          "factory": "0x00EC9C00",
+          "vtable": "0x012F1D74",
+          "functions": {
+            "destructor": "0x00EC9D10",
+            "Main": "0x00EC9D30",
+            "Init": "0x00EC9CB0",
+            "GetParentScript": "0x00EC9CA0",
+            "OnPersist": "0x00ECD930",
+            "OnPredicateFail": "0x00EC9CD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "IngredientOwner",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC575A",
+          "addBindingCall": "0x00EC5796",
+          "factoryStore": "0x00EC5781",
+          "factory": "0x00ECAFA0",
+          "vtable": "0x012F2000",
+          "functions": {
+            "destructor": "0x00ECB0C0",
+            "Main": "0x00ECB0E0",
+            "Init": "0x00ECB050",
+            "GetParentScript": "0x00ECB040",
+            "OnPersist": "0x00ECD960",
+            "OnPredicateFail": "0x00ECB080",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "TalkingTrader1",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC57BE",
+          "addBindingCall": "0x00EC57FD",
+          "factoryStore": "0x00EC57E8",
+          "factory": "0x00ECBC80",
+          "vtable": "0x012F216C",
+          "functions": {
+            "destructor": "0x00ECBD30",
+            "Main": "0x00ECBDF0",
+            "Init": "0x00ECBD50",
+            "GetParentScript": "0x00ECBD20",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "TalkingTrader2",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC5827",
+          "addBindingCall": "0x00EC5866",
+          "factoryStore": "0x00EC5851",
+          "factory": "0x00ECC960",
+          "vtable": "0x012F2348",
+          "functions": {
+            "destructor": "0x00ECCA10",
+            "Main": "0x00ECCAD0",
+            "Init": "0x00ECCA30",
+            "GetParentScript": "0x00ECCA00",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WomanToAttract",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC5891",
+          "addBindingCall": "0x00EC58D0",
+          "factoryStore": "0x00EC58BB",
+          "factory": "0x00ECD2D0",
+          "vtable": "0x012F2404",
+          "functions": {
+            "destructor": "0x00ECD5D0",
+            "Main": "0x00ECF7F0",
+            "Init": "0x00ECD380",
+            "GetParentScript": "0x00ECD370",
+            "OnPersist": "0x00ECD9B0",
+            "OnPredicateFail": "0x00ECD390",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SickChildFishingSpot",
+          "registrationFunction": "0x00EC54E0",
+          "namePush": "0x00EC58FB",
+          "addBindingCall": "0x00EC593A",
+          "factoryStore": "0x00EC5925",
+          "factory": "0x00ECD450",
+          "vtable": "0x012F2420",
+          "functions": {
+            "destructor": "0x00ECD510",
+            "Main": "0x00ECD530",
+            "Init": "0x00ECD500",
+            "GetParentScript": "0x00ECD4F0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00ED10A0",
+      "store": "0x00ED1264",
+      "body": "0x00ED2BB0",
+      "name": "WatchForCompleteTune",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00ED10A0",
+      "store": "0x00ED12DC",
+      "body": "0x00ED13B0",
+      "name": "WatchForSpokenToDemonDoors",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00ED10A0",
+      "store": "0x00ED1354",
+      "body": "0x00ED2A50",
+      "name": "WatchForRegionLeaving",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

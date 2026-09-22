@@ -1,0 +1,279 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "CS_OakValeRevisited",
+      "package": "CS_OakValeRevisited",
+      "packages": [
+        {
+          "owner": "CS_OakValeRevisited",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "CS_OakValeRevisited",
+          "function": "Main",
+          "address": "0x00ee82d0",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "ulong"
+              },
+              {
+                "native": "param_3",
+                "lua": "native_arg_param_3",
+                "type": "float"
+              },
+              {
+                "native": "param_4",
+                "lua": "native_arg_param_4",
+                "type": "bool"
+              },
+              {
+                "native": "param_5",
+                "lua": "native_arg_param_5",
+                "type": "bool"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: CSubtitleRenderer::SetText((CSubtitleRenderer *)0x64,(CFontBank *)ppVar3,unaff_ESI,unaff_E"
+          ],
+          "calls": [
+            "FinalizeEntityBindings",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded"
+          ],
+          "lines": 20,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "CS_OakValeRevisited",
+          "function": "OakValeFire",
+          "address": "0x00ee8870",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
+            "unlifted: pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
+            "unlifted: this_00 = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairC",
+            "unlifted: std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompare",
+            "CreateEffect: not in FSE manifest",
+            "unlifted: *piVar6 = *piVar6 + -1;",
+            "unlifted: (*(code *)((int *)*piVar2)[1])();",
+            "unlifted: *(undefined4 *)(iVar14 + 4 + iVar4) = u_stk_18;",
+            "unlifted: *piVar2 = (int)piVar5;",
+            "unlifted: *piVar5 = *piVar5 + 1;",
+            "unlifted: pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
+            "unlifted: (**(code **)(*(int *)(pCVar11 + 0x3c) + 0x1c))();",
+            "unlifted: pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
+            "unlifted: std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompare",
+            "unlifted: (**(code **)(*(int *)(pCVar11 + 0x3c) + 0x1b0))(*(int *)this_00 + iVar14,0,1);",
+            "unlifted: local CVar3 = *pCVar8",
+            "unlifted: CVar3 = *pCVar8",
+            "unlifted: iVar14 = *pCVar1",
+            "unlifted: iVar4 = *this_00",
+            "unlifted: uVar9 = (**(*(*pCVar1 + iVar14) + 0x18))(\"FirePoints\",0,0,0)",
+            "unlifted: piVar5 = *(iVar10 + 8)",
+            "unlifted: u_stk_18 = *(iVar10 + 4)",
+            "unlifted: piVar6 = *piVar2",
+            "unlifted: CVar3 = *pCVar8",
+            "unlifted: CVar3 = *pCVar8",
+            "unlifted: iVar14 = *pCVar1"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetAllThingsWithScriptName",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "CreateEffect",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 113,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": false,
+            "checked": 1,
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:OakValeFire",
+                "line": 28,
+                "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:OakValeFire:28: unexpected symbol near '*'"
+              }
+            ]
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "CS_OakValeRevisited",
+          "function": "helper_EE8390",
+          "address": "0x00ee8390",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: local_44 = (int *)(uint)bVar9;",
+            "StartScriptingEntity: unresolved entity receiver/resource in quest context",
+            "unlifted: this_01 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
+            "unlifted: *ppuVar2 = *ppuVar2 + -1;",
+            "unlifted: (*(code *)(*(int **)(this_01 + 0xc))[1])();",
+            "unlifted: *(pair<EHeroMorphType,CParticleMorphs::CEntry> **)(this_01 + 8) = ppVar13;",
+            "unlifted: *(undefined ***)(this_01 + 0xc) = ppuVar14;",
+            "unlifted: *ppuVar14 = *ppuVar14 + 1;",
+            "unlifted: RunCutsceneMacro_Func();",
+            "unlifted: StdMap_DestroyNode(*(undefined4 *)LOCALLIST_At(pvStack_74, (4) / 0xc));",
+            "unlifted: *(void **)LOCALLIST_At(pvStack_74, (8) / 0xc) = pvStack_74;",
+            "unlifted: *(undefined4 *)LOCALLIST_At(pvStack_74, (4) / 0xc) = 0;",
+            "unlifted: *(void **)LOCALLIST_At(pvStack_74, (0xc) / 0xc) = pvStack_74;",
+            "unlifted: this = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairComp",
+            "unlifted: std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompare",
+            "RemoveThing: missing pThing (2 args for 3 params)",
+            "unlifted: for (; pppuVar4 != pppuVar12; pppuVar4 = pppuVar4 + 3) {",
+            "unlifted: (*(code *)**pppuVar4)(0);",
+            "unlifted: local ppuVar2 = *(this_01 + 0xc)",
+            "unlifted: quest:RemoveThing(ppVar6, *this + iVar8, false)",
+            "unlifted: cVar5 = (**(*(\"CS_OakValeRevisited\" + iVar8) + 300))()"
+          ],
+          "calls": [
+            "CreateThread",
+            "GetThingWithScriptName",
+            "GetHero",
+            "EntityTeleportToThing",
+            "RESOURCE_StartMovie",
+            "StartMovieSequence",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_NewResource",
+            "ACTORMAP_New",
+            "GetHero",
+            "PauseAllNonScriptedEntities",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "RemoveThing",
+            "IsActiveThreadTerminating",
+            "DeactivateQuestLater",
+            "GetAllThingsWithScriptName",
+            "RemoveThing"
+          ],
+          "lines": 88,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": false,
+            "checked": 1,
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:helper_EE8390",
+                "line": 27,
+                "message": "...S_OakValeRevisited/CS_OakValeRevisited.lua:helper_EE8390:27: unexpected symbol near '*'"
+              }
+            ]
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [
+        {
+          "owner": "CS_OakValeRevisited",
+          "function": "Init",
+          "address": "0x00cbd4d0",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+          "evidence": "cluster lifecycle slot"
+        },
+        {
+          "owner": "CS_OakValeRevisited",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
+            "line": 54,
+            "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:54: unexpected symbol near '*'"
+          }
+        ]
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua": {
+          "OakValeFire": [
+            "CVar3",
+            "pC_stk_1c",
+            "this_00"
+          ],
+          "helper_EE8390": [
+            "pppuVar12",
+            "ppuVar2",
+            "this_01"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 2,
+        "functionSyntaxPassed": 1,
+        "fileSyntaxPassed": 0,
+        "fileSyntaxChecked": 1,
+        "todo": 48
+      }
+    }
+  ],
+  "summary": {
+    "owners": 1,
+    "functions": 3,
+    "missing": 2,
+    "functionSyntaxPassed": 1,
+    "fileSyntaxPassed": 0,
+    "fileSyntaxChecked": 1,
+    "todo": 48
+  }
+}

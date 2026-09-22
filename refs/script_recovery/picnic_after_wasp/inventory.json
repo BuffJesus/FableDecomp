@@ -1,0 +1,74 @@
+{
+  "schema": "picnic-after-wasp-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "4b67bcfe68961eb3f576f7b611335139e451c8481c0a83cd2ce0568e4391fc9c",
+  "exportedFunctions": 43,
+  "quests": [
+    {
+      "script": "V_PicnicAreaAfterWaspBoss",
+      "allocator": "0x00EC1780",
+      "vtable": "0x012F1230",
+      "entities": [
+        {
+          "name": "PAAWB_Villager",
+          "registrationFunction": "0x00EC12E0",
+          "namePush": "0x00EC12FE",
+          "addBindingCall": "0x00EC133F",
+          "factoryStore": "0x00EC1327",
+          "factory": "0x00EC13F0",
+          "vtable": "0x012F1284",
+          "functions": {
+            "destructor": "0x00EC14C0",
+            "Main": "0x00EC14B0",
+            "Init": "0x00EC14A0",
+            "GetParentScript": "0x00EC1490",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "PAAWB_Guard",
+          "registrationFunction": "0x00EC12E0",
+          "namePush": "0x00EC1367",
+          "addBindingCall": "0x00EC13A7",
+          "factoryStore": "0x00EC138E",
+          "factory": "0x00EC14E0",
+          "vtable": "0x012F12A0",
+          "functions": {
+            "destructor": "0x00EC15B0",
+            "Main": "0x00EC15A0",
+            "Init": "0x00EC1590",
+            "GetParentScript": "0x00EC1580",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00EC1780"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00EC1910",
+      "store": "0x00EC1AA0",
+      "body": "0x00EC2240",
+      "name": "ProcessAlbionPopulationSim",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EC1910",
+      "store": "0x00EC1B18",
+      "body": "0x00EC29F0",
+      "name": "HighDetailPopulationSim",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

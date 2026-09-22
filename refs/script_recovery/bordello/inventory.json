@@ -1,0 +1,195 @@
+{
+  "schema": "bordello-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "28f1bc9bc449a37ffaa78a6e7f6c01710a49c9db3000063a8f054cf0923d3130",
+  "exportedFunctions": 76,
+  "quests": [
+    {
+      "script": "V_Bordello",
+      "allocator": "0x00E46A00",
+      "vtable": "0x012E38B0",
+      "entities": [
+        {
+          "name": "Madame",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39B61",
+          "addBindingCall": "0x00E39BA6",
+          "factoryStore": "0x00E39B8C",
+          "factory": "0x00E3AAB0",
+          "vtable": "0x012E3AAC",
+          "functions": {
+            "destructor": "0x00E3AB70",
+            "Main": "0x00E3BB70",
+            "Init": "0x00E3AB60",
+            "GetParentScript": "0x00E3AB50",
+            "OnPersist": "0x00E3BA50",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BordelloLady",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39BCE",
+          "addBindingCall": "0x00E39C0A",
+          "factoryStore": "0x00E39BF5",
+          "factory": "0x00E3AB90",
+          "vtable": "0x012E3AC8",
+          "functions": {
+            "destructor": "0x00E3AC40",
+            "Main": "0x00E3EB10",
+            "Init": "0x00E3AC70",
+            "GetParentScript": "0x00E3AC30",
+            "OnPersist": "0x00E3BA80",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BordelloGuard",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39C32",
+          "addBindingCall": "0x00E39C6E",
+          "factoryStore": "0x00E39C59",
+          "factory": "0x00E3AE60",
+          "vtable": "0x012E3B10",
+          "functions": {
+            "destructor": "0x00E3AF10",
+            "Main": "0x00E40420",
+            "Init": "0x00E3AF30",
+            "GetParentScript": "0x00E3AF00",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Magicman",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39C96",
+          "addBindingCall": "0x00E39CD2",
+          "factoryStore": "0x00E39CBD",
+          "factory": "0x00E3AF90",
+          "vtable": "0x012E3B2C",
+          "functions": {
+            "destructor": "0x00E3B040",
+            "Main": "0x00E40E80",
+            "Init": "0x00E3B060",
+            "GetParentScript": "0x00E3B030",
+            "OnPersist": "0x00E3BAD0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BordelloClient",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39CFA",
+          "addBindingCall": "0x00E39D36",
+          "factoryStore": "0x00E39D21",
+          "factory": "0x00E3B0F0",
+          "vtable": "0x012E3B48",
+          "functions": {
+            "destructor": "0x00E3B250",
+            "Main": "0x00E44EA0",
+            "Init": "0x00E3B1A0",
+            "GetParentScript": "0x00E3B190",
+            "OnPersist": "0x00E3BB00",
+            "OnPredicateFail": "0x00E3B230",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "M_HeroDownstairs",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39D5E",
+          "addBindingCall": "0x00E39D9A",
+          "factoryStore": "0x00E39D85",
+          "factory": "0x00E3B270",
+          "vtable": "0x012E3B64",
+          "functions": {
+            "destructor": "0x00E3B3B0",
+            "Main": "0x00E3B320",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00E3B310",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BordelloEntrance",
+          "registrationFunction": "0x00E39B40",
+          "namePush": "0x00E39DC2",
+          "addBindingCall": "0x00E39E02",
+          "factoryStore": "0x00E39DE9",
+          "factory": "0x00E3B3D0",
+          "vtable": "0x012E3B80",
+          "functions": {
+            "destructor": "0x00E3B480",
+            "Main": "0x00E3B4A0",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00E3B470",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E39B40",
+      "store": "0x00E39E64",
+      "body": "0x00E3A030",
+      "name": "WatchForBordelloStatus",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E39B40",
+      "store": "0x00E39EE1",
+      "body": "0x00E3A150",
+      "name": "WatchForDeedStatus",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E39B40",
+      "store": "0x00E39F5F",
+      "body": "0x00E3A350",
+      "name": "CreateCustomers",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E39B40",
+      "store": "0x00E39FDD",
+      "body": "0x00E3A6B0",
+      "name": "AdjustTavernPrices",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E40E80",
+      "store": "0x00E411E2",
+      "body": "0x00E44980",
+      "name": null,
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E40E80",
+      "store": "0x00E42B1D",
+      "body": "0x00E44980",
+      "name": null,
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

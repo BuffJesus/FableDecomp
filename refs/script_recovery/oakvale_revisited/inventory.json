@@ -1,0 +1,33 @@
+{
+  "schema": "oakvale-revisited-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "7458755fce205bdb8656ef4485833a889f78e575e22240abe0644ce05a4d4ade",
+  "exportedFunctions": 16,
+  "quests": [
+    {
+      "script": "CS_OakValeRevisited",
+      "allocator": "0x00EE8BE0",
+      "vtable": "0x012F53C0",
+      "entities": [],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00EE8390",
+      "store": "0x00EE83DA",
+      "body": "0x00EE8870",
+      "name": "OakValeFire",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EE8F50",
+      "store": "0x00EE8F97",
+      "body": "0x00EE8FE0",
+      "name": "WatchForHeroDeath",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}
