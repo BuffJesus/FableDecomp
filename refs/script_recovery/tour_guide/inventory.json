@@ -1,0 +1,86 @@
+{
+  "schema": "tour-guide-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "4da49b6239f97fb04c883cb473c6a186106561789a8e0b47d35b4966aaf6583e",
+  "exportedFunctions": 46,
+  "quests": [
+    {
+      "script": "V_TourGuide",
+      "allocator": "0x00EE6C00",
+      "vtable": "0x012F46B8",
+      "entities": [
+        {
+          "name": "TourGuideGuide",
+          "registrationFunction": "0x00EE47B0",
+          "namePush": "0x00EE47D0",
+          "addBindingCall": "0x00EE4811",
+          "factoryStore": "0x00EE47F9",
+          "factory": "0x00EE4BB0",
+          "vtable": "0x012F511C",
+          "functions": {
+            "destructor": "0x00EE4CD0",
+            "Main": "0x00EE57B0",
+            "Init": "0x00EE4C60",
+            "GetParentScript": "0x00EE4C50",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00EE4CC0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "TourGuideFollower",
+          "registrationFunction": "0x00EE47B0",
+          "namePush": "0x00EE4839",
+          "addBindingCall": "0x00EE4879",
+          "factoryStore": "0x00EE4860",
+          "factory": "0x00EE4CF0",
+          "vtable": "0x012F5160",
+          "functions": {
+            "destructor": "0x00EE4DB0",
+            "Main": "0x00EE4DD0",
+            "Init": "0x00EE4DA0",
+            "GetParentScript": "0x00EE4D90",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00EE47B0",
+      "store": "0x00EE48D8",
+      "body": "0x00EE4A70",
+      "name": "WatchForGuideKilled",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EE47B0",
+      "store": "0x00EE4950",
+      "body": "0x00EE4A00",
+      "name": "WatchForClosingTime",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EE57B0",
+      "store": "0x00EE5BCB",
+      "body": "0x00EE6A40",
+      "name": null,
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EE6E90",
+      "store": "0x00EE700B",
+      "body": "0x00EE71A0",
+      "name": "HilightGuildTeleporter",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

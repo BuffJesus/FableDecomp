@@ -1,0 +1,2135 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Q_WaspBoss",
+      "package": "WaspBoss",
+      "packages": [
+        {
+          "owner": "Q_WaspBoss",
+          "path": "FSE/WaspBoss/WaspBoss.lua"
+        },
+        {
+          "owner": "GratefulVillagerSpawn",
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua"
+        },
+        {
+          "owner": "WaspChaser",
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua"
+        },
+        {
+          "owner": "WaspChaseWoman",
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua"
+        },
+        {
+          "owner": "WaspAttacker",
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua"
+        },
+        {
+          "owner": "WaspVictim",
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua"
+        },
+        {
+          "owner": "FleeingWoman",
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua"
+        },
+        {
+          "owner": "WaspHelper",
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua"
+        },
+        {
+          "owner": "QueenHornet",
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua"
+        },
+        {
+          "owner": "HornetDrone",
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Q_WaspBoss",
+          "function": "Main",
+          "address": "0x00e0ea40",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: bVar2 = pCVar4 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;",
+            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
+            "unlifted: *(code **)(pCVar4 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCu",
+            "unlifted: *(CQ_GuildTrainingScript **)(pCVar4 + 0x38) = this;"
+          ],
+          "calls": [
+            "SetTimer",
+            "IsRegionLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "GiveHeroTutorial",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsLevelLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsLevelLoaded",
+            "IsActiveThreadTerminating",
+            "OverrideMusic",
+            "CreateThread",
+            "CreateThread"
+          ],
+          "lines": 63,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "Init",
+          "address": "0x00e0e820",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "SetQuestWorldMapOffset: missing y (2 args for 3 params)"
+          ],
+          "calls": [
+            "AddQuestRegion",
+            "SetQuestWorldMapOffset",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateInt",
+            "SetTimer"
+          ],
+          "lines": 14,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "OnPersist",
+          "address": "0x00e0e9a0",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CPersistContext *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool",
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt"
+          ],
+          "lines": 6,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "WatchForTermination",
+          "address": "0x00e0f1d0",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "ResetPlayerCreatureCombatMultiplier",
+            "GiveHeroExperience",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "StopOverrideMusic",
+            "FadeScreenIn",
+            "IsLevelLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsLevelLoaded",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsFailed",
+            "StopOverrideMusic",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 63,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "DoMission",
+          "address": "0x00e12580",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe3c),(int)&xStack_4",
+            "unlifted: xStack_40 = *this_00;",
+            "unlifted: *piVar2 = *piVar2 + 1;",
+            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe40),(int)&xStack_4",
+            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
+            "unlifted: *(code **)(this_01 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetD",
+            "unlifted: *(CQ_WaspBossScript **)(this_01 + 0x38) = this;",
+            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,this_01,sectionName);",
+            "unlifted: this_00 = *(this + 0x40)",
+            "unlifted: pCVar10 = (**(*pCVar9 + 0x18))(pCVar9)",
+            "unlifted: pCVar9 = (**(xStack_40 + 0x16c))(this_00,xStack_18,&xStack_44,pCVar10,\"HornetDrone\",bVar6)",
+            "unlifted: piVar2 = *(pCVar9 + 0x8)",
+            "unlifted: uVar3 = *(pCVar9 + 0x4)"
+          ],
+          "calls": [
+            "AddRumourCategory",
+            "AddNewRumourToCategory",
+            "AddGossipFactionToCategory",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "GetThingWithScriptName",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "GetAllThingsWithScriptName",
+            "GetAllThingsWithScriptName",
+            "GetAllThingsWithScriptName",
+            "ENGINE_IsAllDead",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "GetThingWithScriptName",
+            "GetPos",
+            "CreateCreature",
+            "SetStateBool",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "ENGINE_IsAllDead",
+            "QUESTTHING_Empty"
+          ],
+          "lines": 98,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto LAB_00e12a9c;"
+          ],
+          "nativeLabels": [
+            "LAB_00e12a9c"
+          ]
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "WatchForCutscene",
+          "address": "0x00e12330",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)"
+          ],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "EntitySetCutsceneBehaviour",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "CameraDefault",
+            "SetStateBool",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 37,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "GuildmasterHelp",
+          "address": "0x00e12b30",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "HeroReceiveMessageFromGuildMaster",
+            "EntityGetBossPhase",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "EntityGetBossPhase",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "HeroReceiveMessageFromGuildMaster",
+            "EntityGetBossPhase",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "EntityGetBossPhase",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "HeroReceiveMessageFromGuildMaster",
+            "EntityGetBossPhase",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "EntityGetBossPhase",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "HeroReceiveMessageFromGuildMaster",
+            "GetHealth",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "HeroReceiveMessageFromGuildMaster"
+          ],
+          "lines": 82,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00e12f02;"
+          ],
+          "nativeLabels": [
+            "LAB_00e12f02"
+          ]
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "helper_E12F20",
+          "address": "0x00e12f20",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool",
+            "GetThingWithScriptName",
+            "RESOURCE_NewResource",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "GetActiveQuestName",
+            "KickOffQuestStartScreen",
+            "SetStateBool",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "QUESTTHING_Empty"
+          ],
+          "lines": 38,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "helper_E13310",
+          "address": "0x00e13310",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: *piVar1 = *piVar1 + 1;",
+            "label LAB_00e13769",
+            "unlifted: *piVar1 = *piVar1 + 1;",
+            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
+            "unlifted: piVar1 = *(pCVar5 + 0x8)",
+            "unlifted: piVar2 = *(pCVar5 + 0x4)",
+            "unlifted: piVar1 = *(pCVar5 + 0x8)",
+            "unlifted: piVar2 = *(pCVar5 + 0x4)"
+          ],
+          "calls": [
+            "QUESTTHING_Empty",
+            "GetThingWithScriptName",
+            "QUESTTHING_Empty",
+            "DisplayQuestInfo",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "AddQuestInfoBarHealth",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsLevelLoaded",
+            "IsActiveThreadTerminating",
+            "MsgIsKilledBy",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "DisplayQuestInfo",
+            "RemoveQuestInfoElement",
+            "SetStateBool",
+            "IsLevelLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "IsLevelLoaded",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "QUESTTHING_Empty",
+            "DisplayQuestInfo",
+            "AddQuestInfoBarHealth"
+          ],
+          "lines": 97,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto LAB_00e135bd;",
+            "if (bVar3) goto LAB_00e135bd;",
+            "if (bVar4) goto LAB_00e135bd;"
+          ],
+          "nativeLabels": [
+            "LAB_00e135bd"
+          ]
+        },
+        {
+          "owner": "Q_WaspBoss",
+          "function": "helper_E137B0",
+          "address": "0x00e137b0",
+          "path": "FSE/WaspBoss/WaspBoss.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "Pause",
+            "FadeScreenOut",
+            "Pause",
+            "GetThingWithScriptName",
+            "GetNearestWithDefName",
+            "QUESTTHING_Empty",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "RemoveThing",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "RESOURCE_RunMacro",
+            "ACTORMAP_Destroy",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "GetThingWithScriptName",
+            "EntitySetInFaction",
+            "GetThingWithScriptName",
+            "EntitySetInFaction",
+            "GetThingWithScriptName",
+            "EntitySetInFaction"
+          ],
+          "lines": 47,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GratefulVillagerSpawn",
+          "function": "Main",
+          "address": "0x00e10a90",
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "SetCategoryActivity",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 18,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GratefulVillagerSpawn",
+          "function": "Init",
+          "address": "0x00e10a80",
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GratefulVillagerSpawn",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "GratefulVillagerSpawn",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/GratefulVillagerSpawn.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspChaser",
+          "function": "Main",
+          "address": "0x00e10bf0",
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "FollowThing",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "RESOURCE_IsAcquired",
+            "RESOURCE_PrepareResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 55,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00e10d61;"
+          ],
+          "nativeLabels": [
+            "LAB_00e10d61"
+          ]
+        },
+        {
+          "owner": "WaspChaser",
+          "function": "Init",
+          "address": "0x00cdebb0",
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspChaser",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "WaspChaser",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/WaspChaser.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspChaseWoman",
+          "function": "Main",
+          "address": "0x00e10e60",
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RemoveThing",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "GetThingWithScriptName",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "GetThingWithScriptName",
+            "FollowPreCalculatedRoute",
+            "RegisterTimer",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "GetThingWithScriptName",
+            "ClearCommands",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "GetThingWithScriptName",
+            "FollowPreCalculatedRoute",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "EntitySetAsScared",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "GetThingWithScriptName",
+            "IsActiveThreadTerminating",
+            "GiveHeroMorality",
+            "SetStateInt",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "MoveToThing",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "IsActiveThreadTerminating",
+            "FadeOutAndKillEntity",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 143,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto LAB_00e112c4;",
+            "goto LAB_00e11357;",
+            "if (!bVar2) goto LAB_00e11322;",
+            "if (bVar2) goto LAB_00e11345;",
+            "if (bVar2) goto LAB_00e1134e;",
+            "if (bVar2) goto LAB_00e11369;"
+          ],
+          "nativeLabels": [
+            "LAB_00e112c4",
+            "LAB_00e11322",
+            "LAB_00e11345",
+            "LAB_00e1134e",
+            "LAB_00e11357",
+            "LAB_00e11369"
+          ]
+        },
+        {
+          "owner": "WaspChaseWoman",
+          "function": "Init",
+          "address": "0x00e10e20",
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "EntitySetAsScared"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspChaseWoman",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "WaspChaseWoman",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/WaspChaseWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspAttacker",
+          "function": "Main",
+          "address": "0x00e11450",
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetThingWithScriptName",
+            "GiveThingBestEnemyTarget",
+            "IsAlive",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GiveThingBestEnemyTarget",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 26,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00e1155e;"
+          ],
+          "nativeLabels": [
+            "LAB_00e1155e"
+          ]
+        },
+        {
+          "owner": "WaspAttacker",
+          "function": "Init",
+          "address": "0x00cdebb0",
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspAttacker",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "WaspAttacker",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/WaspAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspVictim",
+          "function": "Main",
+          "address": "0x00e11670",
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00e11772"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "GetHealth",
+            "ModifyThingHealth",
+            "IsActiveThreadTerminating",
+            "RemoveThing",
+            "GetThingWithScriptName",
+            "RegisterTimer",
+            "IsAlive",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "SetTimer",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "IsActiveThreadTerminating",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "EntitySetAsScared",
+            "GetThingWithScriptName",
+            "IsActiveThreadTerminating",
+            "GiveHeroMorality",
+            "SetStateInt",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "MoveToThing",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "IsActiveThreadTerminating",
+            "FadeOutAndKillEntity",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 140,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e11a0a;",
+            "goto LAB_00e11a0a;",
+            "if (bVar2) goto LAB_00e11a9f;",
+            "if (bVar2) goto LAB_00e11aa8;",
+            "if (bVar2) goto LAB_00e11aba;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e11a0a",
+            "LAB_00e11a0a",
+            "LAB_00e11a9f",
+            "LAB_00e11aa8",
+            "LAB_00e11aba"
+          ]
+        },
+        {
+          "owner": "WaspVictim",
+          "function": "Init",
+          "address": "0x00e11630",
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "EntitySetAsScared"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspVictim",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "WaspVictim",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/WaspVictim.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FleeingWoman",
+          "function": "Main",
+          "address": "0x00e0f4e0",
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00e0f799"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "SetStateBool",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "MoveToPosition",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "FadeOutAndKillEntity",
+            "RESOURCE_ReleaseResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 97,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00e0f616;"
+          ],
+          "nativeLabels": [
+            "LAB_00e0f616"
+          ]
+        },
+        {
+          "owner": "FleeingWoman",
+          "function": "Init",
+          "address": "0x00e0f4b0",
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FleeingWoman",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "FleeingWoman",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/FleeingWoman.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspHelper",
+          "function": "Main",
+          "address": "0x00e0f8a0",
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetThingWithScriptName",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "FollowThing",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameData",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RemoveThing",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "SetStateBool",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RegisterTimer",
+            "ClearCommands",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "MoveToPosition",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "ENGINE_SquaredDistance",
+            "GetHero",
+            "ENGINE_SquaredDistance",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "MoveToPosition",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "MoveToPosition",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "ClearAllActions",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "Pause",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "SetTimer",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "DeregisterTimer",
+            "ClearCommands",
+            "SetIsPushableByHero",
+            "IsActiveThreadTerminating",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "EntitySetFacingAngleTowardsThing",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "RegisterTimer",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "AddLineToConversation",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "AddLineToConversation",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "SetTimer",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "AddLineToConversation",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "AddLineToConversation",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "EntitySetFacingAngleTowardsThing",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie"
+          ],
+          "lines": 548,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e0fbf4;",
+            "goto FLOW_past_lab_00e10323;",
+            "goto FLOW_past_lab_00e1036a;",
+            "goto LAB_00e0fbf4;",
+            "goto LAB_00e10323;",
+            "goto LAB_00e1036a;",
+            "goto LAB_00e109a6;",
+            "goto LAB_00e109ab;",
+            "if (bVar4) goto LAB_00e0fd75;",
+            "if (bVar4) goto LAB_00e109a6;",
+            "if (bVar4) goto LAB_00e109ab;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e0fbf4",
+            "FLOW_past_lab_00e10323",
+            "FLOW_past_lab_00e1036a",
+            "LAB_00e0fbf4",
+            "LAB_00e0fd75",
+            "LAB_00e10323",
+            "LAB_00e1036a",
+            "LAB_00e109a6",
+            "LAB_00e109ab"
+          ]
+        },
+        {
+          "owner": "WaspHelper",
+          "function": "Init",
+          "address": "0x00e0f870",
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "WaspHelper",
+          "function": "OnPersist",
+          "address": "0x00e12300",
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CPersistContext *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `PleadedToHero`"
+          ],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "WaspHelper",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/WaspHelper.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QueenHornet",
+          "function": "Main",
+          "address": "0x00e11bb0",
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "Pause",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 30,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00e11cb7;"
+          ],
+          "nativeLabels": [
+            "LAB_00e11cb7"
+          ]
+        },
+        {
+          "owner": "QueenHornet",
+          "function": "Init",
+          "address": "0x00e11b80",
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QueenHornet",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "QueenHornet",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/QueenHornet.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "HornetDrone",
+          "function": "Main",
+          "address": "0x00e11dc0",
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "GetNearestWithScriptName",
+            "MoveToThing",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "PlayLoopingAnimation",
+            "IsActiveThreadTerminating",
+            "IsAwareOfHero",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "ClearAllActionsIncludingLoopingAnimations",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GiveThingBestEnemyTarget",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 117,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e1203a;",
+            "goto FLOW_past_lab_00e12130;",
+            "goto LAB_00e1203a;",
+            "goto LAB_00e12130;",
+            "if (!bVar2) goto LAB_00e1203a;",
+            "if (bVar1) goto LAB_00e12162;",
+            "if (bVar2) goto LAB_00e12130;",
+            "if (bVar2) goto LAB_00e12162;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e1203a",
+            "FLOW_past_lab_00e12130",
+            "LAB_00e1203a",
+            "LAB_00e12130",
+            "LAB_00e12162"
+          ]
+        },
+        {
+          "owner": "HornetDrone",
+          "function": "Init",
+          "address": "0x00e11d80",
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "ENGINE_Rand",
+            "SetStateInt"
+          ],
+          "lines": 2,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "HornetDrone",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "HornetDrone",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/WaspBoss/Entities/HornetDrone.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 10,
+        "passed": 10,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "GratefulVillagerSpawn": "WaspBoss/Entities/GratefulVillagerSpawn",
+        "WaspChaser": "WaspBoss/Entities/WaspChaser",
+        "WaspChaseWoman": "WaspBoss/Entities/WaspChaseWoman",
+        "WaspAttacker": "WaspBoss/Entities/WaspAttacker",
+        "WaspVictim": "WaspBoss/Entities/WaspVictim",
+        "FleeingWoman": "WaspBoss/Entities/FleeingWoman",
+        "WaspHelper": "WaspBoss/Entities/WaspHelper",
+        "QueenHornet": "WaspBoss/Entities/QueenHornet",
+        "HornetDrone": "WaspBoss/Entities/HornetDrone"
+      },
+      "summary": {
+        "owners": 10,
+        "functions": 46,
+        "missing": 0,
+        "functionSyntaxPassed": 46,
+        "fileSyntaxPassed": 10,
+        "fileSyntaxChecked": 10,
+        "todo": 30
+      }
+    }
+  ],
+  "summary": {
+    "owners": 10,
+    "functions": 46,
+    "missing": 0,
+    "functionSyntaxPassed": 46,
+    "fileSyntaxPassed": 10,
+    "fileSyntaxChecked": 10,
+    "todo": 30
+  }
+}

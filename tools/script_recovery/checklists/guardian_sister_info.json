@@ -1,0 +1,78 @@
+[
+ {
+  "id": "sister_channel",
+  "do": [
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list: \\d+ hosts",
+  "timeout": 10,
+  "note": "PREREQUISITE: an ADULT save, after the wasp boss. Gameflow stage 200 hands this one directly (GiveHeroQuestCardDirectly 'OBJECT_QUEST_CARD_GUARDIAN_SISTER_INFO_FIRST') and stage 300 waits on its completion before the Orchard Farm cards"
+ },
+ {
+  "id": "sister_activate",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "Gameflow: quest:ActivateQuest('QS_GuardianSisterInfo')",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host QS_GuardianSisterInfo|QS_GuardianSisterInfo",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "Main sets the card objective (TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01, region BowerstoneSlums) and then waits for that region to load"
+ },
+ {
+  "id": "sister_region",
+  "repeat": 12,
+  "interval": 5.0,
+  "do": [
+   "QS_GuardianSisterInfo: quest:GoToMapSlotRetailTransition(339, 3808.0, 4288.0, 29.2)"
+  ],
+  "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 180,
+  "note": "the region BowerstoneSlums is owned by map BowerstoneSlums_v2 = slot 339 (forge world --regions: origin 3744,4224, 256x160), z 29.25 at map-local 64,64. Main's wait is IsRegionLoaded('BowerstoneSlums'), and once it is true the quest sets time of day 10.0"
+ },
+ {
+  "id": "sister_time_of_day",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "Binding entity 'MazeAtTavern'|SetTimeOfDay",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 180,
+  "note": "the region being loaded is the whole of Main: SetTimeOfDay(10.0) then return. Everything else is the MazeAtTavern entity"
+ },
+ {
+  "id": "sister_maze",
+  "repeat": 14,
+  "interval": 5.0,
+  "do": [
+   "QS_GuardianSisterInfo: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('MazeAtTavern'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
+   "input: key TAB",
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "CS_GUARDIANSISTER_BOWERSTONE|TEXT_QST_027_MAZE_(CALL_HERO_OVER|ON_HIT)_10",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 240,
+  "note": "Maze calls the hero over at the tavern; stand BESIDE him and face him (GOTCHAS: a hero teleported into an NPC leaves him unhighlighted). GuardianSpokeToHero is the quest's only persisted state"
+ },
+ {
+  "id": "sister_spoke",
+  "repeat": 12,
+  "interval": 5.0,
+  "do": [
+   "eval QS_GuardianSisterInfo: quest:GetStateBool('GuardianSpokeToHero')",
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "eval.*GuardianSpokeToHero.* = true|SetQuestAsCompleted: ENTER name='QS_GuardianSisterInfo'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 240,
+  "note": "Gameflow stage 300 waits on MsgOnQuestCompleted('QS_GuardianSisterInfo') and only then adds OBJECT_QUEST_CARD_PROTECT_FARM -- this is the gate in front of Orchard Farm"
+ }
+]

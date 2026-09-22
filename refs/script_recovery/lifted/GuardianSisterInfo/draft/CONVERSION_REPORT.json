@@ -1,0 +1,755 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "QS_GuardianSisterInfo",
+      "package": "QS_GuardianSisterInfo",
+      "packages": [
+        {
+          "owner": "QS_GuardianSisterInfo",
+          "path": "FSE/QS_GuardianSisterInfo/QS_GuardianSisterInfo.lua"
+        },
+        {
+          "owner": "MazeAtTavern",
+          "path": "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "QS_GuardianSisterInfo",
+          "function": "Main",
+          "address": "0x00e25ab0",
+          "path": "FSE/QS_GuardianSisterInfo/QS_GuardianSisterInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "SetTimeOfDay",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded"
+          ],
+          "lines": 21,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QS_GuardianSisterInfo",
+          "function": "Init",
+          "address": "0x00e25a00",
+          "path": "FSE/QS_GuardianSisterInfo/QS_GuardianSisterInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QS_GuardianSisterInfo",
+          "function": "OnPersist",
+          "address": "0x00e25f40",
+          "path": "FSE/QS_GuardianSisterInfo/QS_GuardianSisterInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CPersistContext *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "Main",
+          "address": "0x00e25f70",
+          "path": "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: xStack_8c = uVar10 & 0xfffffffe;"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "EntitySetAsOpinionSource",
+            "GetThingWithScriptName",
+            "GetPos",
+            "MiniMapAddMarker",
+            "SetThingHasInformation",
+            "SetIsPushableByHero",
+            "ENGINE_GlobalGameData",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "SetStateBool",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "SetStateInt",
+            "SetFriendsWithEverythingFlag",
+            "ClearThingBestEnemyTarget",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "SetStateBool",
+            "ClearThingHasInformation",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RemoveThing",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 209,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e262d9;",
+            "goto FLOW_past_lab_00e26754;",
+            "goto LAB_00e262d9;",
+            "goto LAB_00e26754;",
+            "if (!bVar4) goto LAB_00e262d9;",
+            "if (bVar4) goto LAB_00e26761;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e262d9",
+            "FLOW_past_lab_00e26754",
+            "LAB_00e262d9",
+            "LAB_00e26754",
+            "LAB_00e26761"
+          ]
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "Init",
+          "address": "0x00e25d20",
+          "path": "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "SetStateBool",
+            "SetStateInt"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "OnPredicateFail",
+          "address": "0x00e25d30",
+          "path": "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 5,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 2,
+        "passed": 2,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "MazeAtTavern": "QS_GuardianSisterInfo/Entities/MazeAtTavern"
+      },
+      "summary": {
+        "owners": 2,
+        "functions": 7,
+        "missing": 0,
+        "functionSyntaxPassed": 7,
+        "fileSyntaxPassed": 2,
+        "fileSyntaxChecked": 2,
+        "todo": 1
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "package": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+      "packages": [
+        {
+          "owner": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua"
+        },
+        {
+          "owner": "MazeAtTavern",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+          "function": "Main",
+          "address": "0x00e268c0",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "IsAlive",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 42,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar5) goto LAB_00e26aca;"
+          ],
+          "nativeLabels": [
+            "LAB_00e26aca"
+          ]
+        },
+        {
+          "owner": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+          "function": "Init",
+          "address": "0x00e26810",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+          "function": "OnPersist",
+          "address": "0x00e26e00",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CPersistContext *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "Main",
+          "address": "0x00e26e30",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "label LAB_00e26ef7",
+            "label LAB_00e27648",
+            "CreateEffect: not in FSE manifest",
+            "label LAB_00e277c0"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "SetThingHasInformation",
+            "RegisterTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "GetTimer",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "AddNewConversation",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "PlayAnimation",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "SetStateInt",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "ForceShipsVisible",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "SetStateBool",
+            "AddQuestCard",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "ClearThingHasInformation",
+            "IsActiveThreadTerminating",
+            "ClearCommands",
+            "PlayAnimation",
+            "GetPos",
+            "CreateEffect",
+            "FadeOutAndKillEntity",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "DeregisterTimer",
+            "RESOURCE_ReleaseResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 307,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e270f6;",
+            "goto LAB_00e270f6;",
+            "if (!bVar3) goto LAB_00e270f6;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e270f6",
+            "LAB_00e270f6"
+          ]
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "Init",
+          "address": "0x00e26bd0",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "SetStateBool",
+            "SetStateInt",
+            "MiniMapAddMarker",
+            "SetIsPushableByHero"
+          ],
+          "lines": 5,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "MazeAtTavern",
+          "function": "OnPredicateFail",
+          "address": "0x00e26ba0",
+          "path": "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 2,
+        "passed": 2,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "MazeAtTavern": "QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern"
+      },
+      "summary": {
+        "owners": 2,
+        "functions": 7,
+        "missing": 0,
+        "functionSyntaxPassed": 7,
+        "fileSyntaxPassed": 2,
+        "fileSyntaxChecked": 2,
+        "todo": 4
+      }
+    }
+  ],
+  "summary": {
+    "owners": 4,
+    "functions": 14,
+    "missing": 0,
+    "functionSyntaxPassed": 14,
+    "fileSyntaxPassed": 4,
+    "fileSyntaxChecked": 4,
+    "todo": 5
+  }
+}

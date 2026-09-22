@@ -166,6 +166,7 @@ RE_LOCAL_ASSIGN = re.compile(
     r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+'
     r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
+RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')
 RE_ADDR_OF = re.compile(r'^(?:\([^)]*\))?\s*&(\w+|stack0x[0-9a-f]+)$')
 RE_STRING_PARAM = re.compile(r'string|CCharString|char', re.I)
 RE_TRANSFER = re.compile(
@@ -814,6 +815,11 @@ class Lifter:
         self.entities: list[str] = []
         self.calls: list[str] = []
         self.temps: dict[str, str] = {}      # name -> Lua expression
+        # name -> literal, kept after a block boundary drops the staged temporary; consulted only
+        # for a name that would otherwise be emitted undeclared (WaspBoss helper_E12F20 0x00E12F20:
+        # `isGold = false` was staged, the `if .. return end` between dropped it, and the call site
+        # printed a free global -- the binding would have been handed nil instead of false)
+        self.literal_constants: dict[str, str] = {}
         self.order: list[str] = []
         self.results = 0
         self.conditions = 0
@@ -985,6 +991,7 @@ class Lifter:
         self.kinds.pop(name, None)
         self.slot_alias.pop(name, None)
         self.staged_scalars.discard(name)
+        self.literal_constants.pop(name, None)
         if name in self.temps:
             self.temps.pop(name)
             self.order.remove(name)
@@ -1200,6 +1207,11 @@ class Lifter:
             self.order.remove(name)
         self.temps[name] = value
         self.order.append(name)
+        # bool/number only: a staged STRING is usually the name a thing is looked up by, and the slot then
+        # receives that thing through an out-param (which never reaches forget_value), so substituting the
+        # string would rewrite `PrepareResource(slot)` into `PrepareResource("BanditCampEntrance")`
+        if value in ('true', 'false') or RE_NUMBER_LITERAL.fullmatch(value):
+            self.literal_constants[name] = value
 
     def place_args(self, params: list[dict], parsed: list[str], *, explicit_things: tuple[str, ...] = (),
                    call_name: str | None = None) -> list[str]:
@@ -2011,6 +2023,21 @@ class Lifter:
         self.out, self.dispatch_scaffolding_evidence = prune_dispatch_loads(self.out, entity=self.entity)
         self.out = self.guard_c_residue(self.out)
         self.hoisted_scalars.difference_update(e['local'] for e in self.dispatch_scaffolding_evidence)
+        if self.literal_constants:
+            # a staged literal whose name escaped undeclared (a block boundary dropped the temporary):
+            # substitute the literal rather than emit a free global (WaspBoss helper_E12F20 `isGold`)
+            body = '\n'.join(self.out)
+            bound = set(self.locals) | set(self.hoisted_scalars) | {self.receiver, "me", "alive", "quest", "resources"}
+            for name, literal in self.literal_constants.items():
+                if name in bound or not re.search(r"\b" + re.escape(name) + r"\b", body):
+                    continue
+                if re.search(r"\b" + re.escape(name) + r"\s*=(?!=)", body):
+                    continue        # it is assigned in the emitted body after all
+                # a `-- TODO(native)` line quotes the native statement verbatim: leave it alone (the
+                # Oakvale candidate generators are SHA-pinned to those drafts)
+                self.out = [l if l.lstrip().startswith('--') else
+                            re.sub(r"\b" + re.escape(name) + r"\b", literal.replace("\\", "\\\\"), l)
+                            for l in self.out]
         if self.used_alive:
             self.out.insert(0, "    local alive = true")
         if self.hoisted_scalars:

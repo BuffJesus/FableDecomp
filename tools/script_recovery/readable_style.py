@@ -1727,8 +1727,11 @@ def drop_free_suffixes(lines):
         m = re.fullmatch(r'([A-Za-z]\w*?[A-Za-z])(\d+)', name)   # `thing_38` keeps its slot suffix
         if not m or int(m.group(2)) < 2 or m.group(1) in idents or m.group(1) in renames.values():
             continue
-        if not any(re.match(r'\s*(?:local )?' + re.escape(name) + r'\b', l) for l in lines):
-            continue                                   # not a local of this function
+        if re.search(r'(?m)^\s*(?:local )?function\s+' + re.escape(name) + r'\b', text):
+            continue                                   # a function definition, not a local
+        if not any(re.match(r'\s*(?:local )?' + re.escape(name) + r'\s*(?:,[\w\s,]*)?=(?!=)', l) for l in lines):
+            continue                                   # not assigned here: a bare call statement starts
+                                                       # with its name too (`helper_E12F20(quest)`)
         renames[name] = m.group(1)
     if renames:
         for i, l in enumerate(lines):

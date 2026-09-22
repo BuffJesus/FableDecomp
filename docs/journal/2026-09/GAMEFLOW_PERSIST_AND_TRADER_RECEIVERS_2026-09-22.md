@@ -184,3 +184,52 @@ in every one of these runs.
 so it is unambiguously the nearest thing when TAB goes in; the will trainer's steps have not been reached yet,
 and the gulls and race steps sit behind them in the same file.
 
+## The two quests between Guild Training and Orchard Farm, converted
+
+The order came from our own converted Gameflow rather than memory: stage 100 puts the WASP_MENACE card on the
+guild table, stage 200 waits on `Q_WaspBoss` and hands `QS_GuardianSisterInfo` directly, stage 300 waits on
+that and adds the two Orchard Farm cards, stage 400 polls `IsQuestActive` on either. So the main path is two
+quests, and `Q_OrchardFarm_Barricade` needs nothing (no script class).
+
+| unit | owners / functions | missing | smoke draft / readable | `TODO(native)` |
+|---|---|---|---|---|
+| `wasp_boss` 0x00E0E820..0x00E183B0 | 10 / 46 | 0 | 0 / 0 | 23 |
+| `guardian_sister_info` 0x00E25A00..0x00E277E0 | 4 / 14 | 0 | 0 / 0 | 2 |
+
+Ranges came from the vtables read against retail, and the inventory step earned its keep: allocator order
+would have mis-bounded the sister quest (its `Init` 0x00E25A00 sits below its own allocator 0x00E26780 AND
+below the previous family's), and even the vtable-derived `hi` was too small -- `recover()` failed on
+0x00E268C0, an entity binding ABOVE the destructor. Widening to the next family allocator also brought in
+`QS_GuardianSisterInfo2_SisterInBanditCamp`, which stage 550 needs later.
+
+Five generic converter fixes fell out, each caught by a gate:
+
+1. thing vcalls spelled through the object's first dword (`X._0_4_ + 0x12c`), which is the vtable;
+2. the RAW hidden-return out-param as a thing alias -- `annotate` runs on the raw decompile (it *produces*
+   the `GSI->` names) and the hidden return is the SECOND argument, after the repeated receiver; two earlier
+   attempts missed on exactly those two points;
+3. `drop_free_suffixes` was renaming a CALL: its "is this a local?" test matched any line starting with the
+   name, so `helper_E12F20(quest)` became `helper_E12F(quest)` and `DoMission` called a nil global.
+   Pre-existing, surfaced here because this is the first unit with a `helper_` call at statement level;
+4. `AreAllThingsInVectorDead` on a local vector, plus stripping the element index the list rewrite put on
+   that argument (the helper takes the vector, by the native's own signature);
+5. a staged bool/number literal survives a block boundary instead of escaping as a free global --
+   helper_E12F20 stages `isGold = false` between a termination check and its test, and the `if .. return end`
+   in between dropped it.
+
+## Two regressions I caused and caught
+
+**Strings must not substitute.** Extending (5) to string literals rewrote `PrepareResource(slot)` into
+`PrepareResource("BanditCampEntrance")` in TraderConflict: a staged string is usually the name a thing is
+looked up BY, and the slot then receives that thing through an out-param, which never reaches
+`forget_value`. Narrowed to bool/number; the trader draft went back to byte-identical.
+
+**Comment text is load-bearing.** Even after narrowing, the substitution rewrote residual `TODO(native)`
+comments in the Oakvale draft. No executable line moved -- and the suite still went from 403/45 to **404/93**,
+because the Oakvale candidate generators are SHA-pinned to those drafts (`generate_theresa_resource_candidate.py`
+and friends), so ~48 modules failed on a comment. The substitution now skips comment lines and Oakvale is
+byte-identical again. Both are in GOTCHAS.
+
+The lesson worth keeping: "no executable lines changed" is NOT the same as "no drift". The gate that caught
+this was the full suite, not the per-unit diff I had already declared clean.
+

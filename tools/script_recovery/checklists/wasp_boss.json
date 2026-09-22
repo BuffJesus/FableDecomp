@@ -1,0 +1,105 @@
+[
+ {
+  "id": "wasp_channel",
+  "do": [
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list: \\d+ hosts",
+  "timeout": 10,
+  "note": "PREREQUISITE: an ADULT save. Gameflow stage 100 puts OBJECT_QUEST_CARD_WASP_MENACE -> Q_WaspBoss on the guild table right after Q_GuildTraining completes, and stage 200 waits on it before handing QS_GuardianSisterInfo. Accepting the card IS ActivateQuest"
+ },
+ {
+  "id": "wasp_activate",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "Gameflow: quest:ActivateQuest('Q_WaspBoss')",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host WaspBoss/|Q_WaspBoss",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "on the v6 bundle the Gameflow host is LUAGameflow/LUAGameflow and on v7 Gameflow/Gameflow -- send to whichever `list` reports"
+ },
+ {
+  "id": "wasp_region",
+  "repeat": 12,
+  "interval": 5.0,
+  "do": [
+   "WaspBoss: quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)"
+  ],
+  "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 180,
+  "note": "the quest declares its own region: AddQuestRegion('Q_WaspBoss', 'PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520, 128x96), z 33.78 at map-local 64,48 (forge heights). Arm the transition ONCE per crossing (GOTCHAS)"
+ },
+ {
+  "id": "wasp_entities",
+  "repeat": 14,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "Binding entity '(WaspHelper|QueenHornet|HornetDrone|WaspChaser|WaspChaseWoman|WaspAttacker|WaspVictim|FleeingWoman|GratefulVillagerSpawn)'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 180,
+  "note": "nine entity classes, all named in the PDB as CQ_WaspBossScript members"
+ },
+ {
+  "id": "wasp_intro",
+  "repeat": 16,
+  "interval": 4.0,
+  "do": [
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "CS_WASPBOSS_INTRO|TEXT_QST_072_(HELPER|VILLAGER_MALE)_",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 240,
+  "note": "the intro macro, then the helper's guidance lines (FOLLOW_ME / THIS_WAY / OVER_HERE) and the panicking villagers"
+ },
+ {
+  "id": "wasp_helper",
+  "repeat": 12,
+  "interval": 5.0,
+  "do": [
+   "WaspBoss: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('WaspHelper'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
+   "input: key TAB",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_072_HELPER_",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 180,
+  "note": "stand BESIDE him and face him -- teleporting into an NPC leaves him unhighlighted and IsTalkedToByHero never fires (GOTCHAS)"
+ },
+ {
+  "id": "wasp_queen",
+  "repeat": 16,
+  "interval": 5.0,
+  "do": [
+   "WaspBoss: quest:SetStateBool('StartChase', true)",
+   "WaspBoss: quest:SetStateBool('QueenHornetAttacks', true)",
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "CS_WASPBOSS_QUEEN|Binding entity 'QueenHornet'|TEXT_QST_072_HELPER_NOT_KILLED_WASP_QUEEN_10",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 240,
+  "note": "the queen fight; DronesCreated arms the HornetDrone spawns. Staged the way the melee checklist stages DummyHits"
+ },
+ {
+  "id": "wasp_outcome",
+  "repeat": 20,
+  "interval": 6.0,
+  "do": [
+   "WaspBoss: quest:SetStateBool('MissionSucceeded', true)",
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "CS_WASPBOSS_OUTRO|SetQuestAsCompleted: ENTER name='Q_WaspBoss'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "MissionSucceeded -> the outro macro and completion; MissionFailed is the other exit. Gameflow stage 200 is what waits on this completion before the sister-info card"
+ }
+]

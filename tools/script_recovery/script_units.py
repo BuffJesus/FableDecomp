@@ -36,12 +36,24 @@ UNITS = {
         # the Orchard Farm cards. Q_ vtable 0x012E1DAC: Init 0x00E25A00 .. dtor 0x00E267C0 -- its Init is
         # BELOW its own allocator 0x00E26780, so the vtable bounds it, not the allocator order.
         'evidence': ROOT / 'refs/script_recovery/guardian_sister_info',
-        'lo': 0xE25A00, 'hi': 0xE267D0,
+        'lo': 0xE25A00, 'hi': 0xE277E0,
         'ir_glob': 'QS_GuardianSisterInfo*.json',
-        'scripts': ['QS_GuardianSisterInfo'],
+        'scripts': ['QS_GuardianSisterInfo', 'QS_GuardianSisterInfo2_SisterInBanditCamp'],
         'pdb_pattern': '*CQS_GuardianSisterInfo*',
         'schema': 'guardian-sister-info-native-inventory/0.1',
         'package': 'GuardianSisterInfo',
+    },
+    'tour_guide': {
+        # Gameflow stage 200 activates V_TourGuide beside the QS_GuardianSisterInfo card.
+        # Cluster vtable lifecycle (own block only): 0x00EE42A0 .. allocator 0x00EE6C00; the next family's
+        # allocator is V_TrophyDealer 0x00EE80A0.
+        'evidence': ROOT / 'refs/script_recovery/tour_guide',
+        'lo': 0xEE42A0, 'hi': 0xEE80A0,
+        'ir_glob': 'V_TourGuide*.json',
+        'scripts': ['V_TourGuide'],
+        'pdb_pattern': '*CV_TourGuide*',
+        'schema': 'tour-guide-native-inventory/0.1',
+        'package': 'TourGuide',
     },
     'orchard_farm': {
         # Q_OrchardFarmRaid ctor 0x00DCC040 .. Q_OrchardFarmRaidGood dtor 0x00DD26C0 (+ tail)

@@ -2204,6 +2204,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             lists = getattr(spec, 'parent_lists', {})
             text = re.sub(re.escape(label) + r'\s*\(\s*(?:\(void \*\))?\(\s*(?:\(int\))?this \+ (0x[0-9a-f]+|\d+)\s*\)\s*\)',
                           lambda m: f'ENGINE_IsAllDead(QUESTLIST_Copy("{lists[int(m.group(1), 0)]}"))' if int(m.group(1), 0) in lists else m.group(0), text)
+            # the same predicate on a LOCAL vector: the lifted local is already a Lua list
+            # (WaspBoss Main 0x00E0EA40 polls its HornetDrone / WaspChaser / WaspAttacker lookups)
+            text = re.sub(re.escape(label) + r'\s*\(\s*&((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\s*\)',
+                          lambda m: f'ENGINE_IsAllDead({m.group(1)})', text)
     text = fold_byte_split_pointers(text)
     text = fold_byte_literal_words(text)
     text = fold_actor_maps(text, getattr(spec, 'resolve_string', None))
@@ -3198,6 +3202,8 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_Round', lambda a: f'math.floor(({a[0]}) + 0.5)' if len(a) == 1 else 'ENGINE_Round(' + ', '.join(a) + ')')
     text = text.replace('ENGINE_IsAllDead(', '__native_all_dead(')     # the helper is defined per file by convert_quest_unit
+    # its parameter is the vector itself: an element index here is the list rewrite overreaching
+    text = re.sub(r'__native_all_dead\((\w+)\[[^\]]*\]\)', r'__native_all_dead(\1)', text)
     text = re.sub(r'(QUEST|ENTITY)LIST_At_(\w+)\(', lambda m: ('quest:GetStateListAt(' if m.group(1) == 'QUEST' else '__native_entity_state:GetStateListAt(') + '"' + m.group(2) + '", ', text)
     for pattern, repl in LUA_PSEUDO:
         text = pattern.sub(repl, text)

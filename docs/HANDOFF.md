@@ -1,5 +1,40 @@
 # RESUME HERE -- 2026-09-22: v7's Gameflow is faithful, and the side quests / secret trainers now have coverage
 
+**PRE-ORCHARD LANE (2026-09-22 afternoon).** The order is what our converted Gameflow does, not memory:
+stage 100 puts the WASP_MENACE card up, 200 waits on `Q_WaspBoss` then hands `QS_GuardianSisterInfo`, 300
+waits on that and adds the two farm cards, 400 polls `IsQuestActive`. Converted today, each `0 missing`,
+smoke 0/0: **`wasp_boss`** 0x00E0E820..0x00E183B0 (46 fns, 23 TODO(native), all nine PDB-named entity classes)
+and **`guardian_sister_info`** 0x00E25A00..0x00E277E0 (14 fns, 2 TODO(native); the widened range also covers
+`QS_GuardianSisterInfo2_SisterInBanditCamp`, which stage 550 needs). Also **`tour_guide`**
+0x00EE42A0..0x00EE80A0 (15 fns, 0 missing) -- but honestly rough: **79 TODO(native), 4 smoke problems**, of
+which two are MISSING FORGEFSE BINDINGS (`MsgIsRegionUnloaded`, `EntitySetPersonalityOverride` -- sidecar
+work) and two are real converter gaps (nil arithmetic at TourGuideGuide:276, a helper parameter kind).
+About 48 of its 79 are ONE shape: `CCharString::operator=` into a quest-state string-list element.
+Checklists ready for all three quests (each needs an ADULT save): map entries derived offline from
+`forge world` / `forge heights` -- wasp `PicnicArea` slot 2 (3168,3568,33.8), sister `BowerstoneSlums_v2`
+slot 339 (3808,4288,29.2), orchard `OrchardFarm` slot 9 (3248,3232,42.5).
+Plan + remaining ambient ranges: `docs/scripts/PRE_ORCHARD_CONVERSION_PLAN.md`.
+
+**Bootstrapping a NEW unit** (the documented pipeline assumes an existing export): run
+`ExportScriptTranslationUnit.java` over the range ONCE by hand with an anchor file holding just a comment
+line, then `export_guild_training.py --unit` works. Its KeyError address is evidence in itself -- if it lies
+outside your range, the range is too small (that is how the sister quest was found to extend past its own
+destructor). Take a family's `lo` from the vtable lifecycle FILTERED to its own block: three ambient scripts
+have vtable slots pointing at shared base code near 0x00CBD4D0.
+
+**Converter fixes today (all generic, all gated):** thing vcalls through the object's first dword; the RAW
+hidden-return out-param as a thing alias (annotate runs on the raw decompile, and the hidden return is the
+SECOND argument); `drop_free_suffixes` no longer renaming bare call statements (it was truncating
+`helper_E12F20(quest)` and leaving a nil-global call); `AreAllThingsInVectorDead` on a local vector; a staged
+bool/number literal surviving a block boundary. **Two self-inflicted regressions, both caught by gates and
+both in GOTCHAS:** substituting staged STRINGS rewrote `PrepareResource(slot)` into
+`PrepareResource("BanditCampEntrance")`, and substituting inside `TODO(native)` COMMENTS moved the Oakvale
+draft's bytes, which broke the SHA-pinned Oakvale candidate generators (403/45 -> 404/93 on comment text
+alone). "No executable lines changed" is not "no drift".
+
+**A background agent is working the NewOakValeIntro backlog** (752 TODO(native), the largest remaining) in an
+isolated git worktree, so it owns converter edits there; keep main-tree converter hunks small until it lands.
+
 **Committed today (branch `feat/novi-script-recovery`):** 856cbf4 (the whole 2026-09-20/21 Guild lane),
 1edbec8 (the Gameflow persist finding + TraderConflict receivers/operands), de135e6 (side-quest and trainer
 checklists + `test_checklists.py` + the last counted-release spelling), f26be42, 16dfe2a, 052cb05 (the

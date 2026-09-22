@@ -157,6 +157,9 @@ THING_PATTERNS = [
     # a thing handle whose Data field the lowering folded back onto the handle itself: `*(int *)(recv + 0x0)`
     # is the object (TraderConflictGood TraderToRescue 0x00DFE0F0: `GetHeroTargetedThing()->IsEqualTo(me)`)
     re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)\((?P<recv>[A-Za-z_]\w*) \+ 0x0\) \+ (?P<off>" + OFFSET + r")\)\)\("),
+    # the same receiver spelled through the object's first dword, which is its vtable (WaspAttacker
+    # 0x00E11480: `while (**(code **)(r1._0_4_ + 0x12c))()` = while the WaspVictim is alive)
+    re.compile(r"\(\*\*\(code \*\*\)\((?P<recv>[A-Za-z_]\w*)\._0_4_ \+ (?P<off>" + OFFSET + r")\)\)\("),
 ]
 ME_RECEIVER = "(CScriptThing *)(this + 8)"
 # lowering pseudo-calls / interface calls whose value is a CScriptThing (a stack slot filled by one is a thing receiver)
@@ -175,6 +178,22 @@ def _pseudo_thing_re(extra=()):
 
 
 RE_PSEUDO_THING = _pseudo_thing_re()
+
+
+def _thing_out_param_re(extra=()):
+    """`GSI->Name(&VAR, ..)` where Name returns a CScriptThing: VAR is the hidden return, so it is a thing."""
+    names = "|".join(sorted({*PSEUDO_GSI_THING, *extra}, key=len, reverse=True))
+    return re.compile(r"^[ \t]*GSI->(?:" + names + r")\(\s*&(?P<var>[A-Za-z_]\w*)\s*[,)]", re.M)
+
+
+# the same hidden return before the slots are named: an interface call with no assignment whose first
+# argument is the out slot (`(**(code **)(**(int **)(this + 4) + 0x120))(&xStack_2c,&xStack_30);`)
+RE_THING_OUT_RAW = re.compile(
+    r"^[ \t]*\(\*\*\(code \*\*\)\((?:\*\*\(int \*\*\)\((?:this|param_\d+) \+ (?:4|0x40)\)"
+    r"|iVar\d+|\*DAT_0143e8f8) \+ (?P<off>" + OFFSET + r")\)\)\("
+    r"(?:\s*\*\(int \*\*\)\((?:\(int\))?(?:this|param_\d+) \+ (?:4|0x40)\)\s*,)?"
+    r"\s*&(?P<var>[A-Za-z_]\w*)\s*[,)]", re.M)
+
 RE_THING_RETURN = re.compile(r"@CScriptThing@@[UM][AB]E\?AV1@")
 
 
@@ -191,7 +210,9 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     events: list[tuple[int, int, str, re.Match[str]]] = []
     pseudo = _pseudo_thing_re(pseudo_names)
     for kind, pattern in (("gsi", RE_GSI_ALIAS), ("me", RE_ME_ALIAS), ("copy", RE_COPY_ALIAS),
-                          ("thing", RE_THING_ALIAS), ("pseudo", pseudo), ("any", RE_ANY_DEF)):
+                          ("thing", RE_THING_ALIAS), ("pseudo", pseudo),
+                          ("pseudo", _thing_out_param_re(pseudo_names)),
+                          ("outraw", RE_THING_OUT_RAW), ("any", RE_ANY_DEF)):
         for m in pattern.finditer(text):
             # a definition takes effect after its statement (its own rhs sees the old aliases);
             # the generic reset runs before the specific classification of the same statement
@@ -251,6 +272,10 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
             continue
         if kind == "pseudo":
             things.add(m.group("var"))
+            continue
+        if kind == "outraw":
+            if int(m.group("off"), 0) in thing_returning:
+                things.add(m.group("var"))
             continue
         if kind == "thing":
             var, off, via = m.group("var"), int(m.group("off"), 0), m.group("via")

@@ -1,0 +1,1119 @@
+{
+  "schema": "quest-unit-evidence/1",
+  "script": "V_TourGuide",
+  "package": "V_TourGuide",
+  "nativeClass": "NScript::CV_TourGuideScript",
+  "allocator": "0x00EE6C00",
+  "vtable": "0x012F46B8",
+  "master": {
+    "fields": {
+      "0x4": [
+        "PostSavePosition",
+        "Int"
+      ],
+      "0x8": [
+        "HenchmanCommentaryState",
+        "Int"
+      ],
+      "0xc": [
+        "HenchmanOverrideState",
+        "Int"
+      ],
+      "0x10": [
+        "HenchmanSacrificedBodge",
+        "Bool"
+      ],
+      "0x11": [
+        "HauntedBarrowFieldsCompleted",
+        "Bool"
+      ],
+      "0x14": [
+        "RandomEntityVillagerMax",
+        "Int"
+      ],
+      "0x18": [
+        "RandomEntityGuardMax",
+        "Int"
+      ],
+      "0x1c": [
+        "RandomEntityBanditMax",
+        "Int"
+      ],
+      "0x20": [
+        "RandomEntityVillagerCount",
+        "Int"
+      ],
+      "0x24": [
+        "RandomEntityGuardCount",
+        "Int"
+      ],
+      "0x28": [
+        "RandomEntityBanditCount",
+        "Int"
+      ],
+      "0x2c": [
+        "RandomEntityVillagerPercentage",
+        "Float"
+      ],
+      "0x30": [
+        "RandomEntityGuardPercentage",
+        "Float"
+      ],
+      "0x34": [
+        "RandomEntityBanditPercentage",
+        "Float"
+      ],
+      "0x38": [
+        "RandomEntitySheriffAlive",
+        "Bool"
+      ],
+      "0x39": [
+        "RandomEntityLieutenantAlive",
+        "Bool"
+      ],
+      "0x3a": [
+        "BanditCampTwinbladeKilled",
+        "Bool"
+      ],
+      "0x44": [
+        "ArcheryHighScore",
+        "Int"
+      ],
+      "0x48": [
+        "FriendOfForeman",
+        "Bool"
+      ],
+      "0x49": [
+        "BridgeOpened",
+        "Bool"
+      ],
+      "0x4a": [
+        "GrannyMemoryReturned",
+        "Bool"
+      ],
+      "0x4b": [
+        "IsLunaHuman",
+        "Bool"
+      ],
+      "0x4c": [
+        "CondemnedManDead",
+        "Bool"
+      ],
+      "0x4d": [
+        "CondemnedManForgiven",
+        "Bool"
+      ],
+      "0x4e": [
+        "CondemnedManMeetsBodyGuard",
+        "Bool"
+      ],
+      "0x4f": [
+        "CondemnedManMeetsBodyGuardCutSceneStart",
+        "Bool"
+      ],
+      "0x50": [
+        "CondemnedManMeetsBodyGuardCutSceneFinished",
+        "Bool"
+      ],
+      "0x54": [
+        "TeddySolution",
+        "String"
+      ],
+      "0x58": [
+        "OrchardFarmRaidLastCompleted",
+        "Int"
+      ],
+      "0x5c": [
+        "OrchardFarmTraderEscortCounter",
+        "Int"
+      ],
+      "0x60": [
+        "SeenAbbeyMotherAtGuild",
+        "Bool"
+      ],
+      "0x61": [
+        "DefeatedThunder",
+        "Bool"
+      ],
+      "0x62": [
+        "LostToThunder",
+        "Bool"
+      ],
+      "0x63": [
+        "KilledThunder",
+        "Bool"
+      ],
+      "0x64": [
+        "CollectedSoulFromArena",
+        "Bool"
+      ],
+      "0x65": [
+        "KilledBriar",
+        "Bool"
+      ],
+      "0x66": [
+        "CollectedSoulFromMother",
+        "Bool"
+      ],
+      "0x67": [
+        "KilledGM",
+        "Bool"
+      ],
+      "0x68": [
+        "CollectedSoulFromNostro",
+        "Bool"
+      ],
+      "0x6c": [
+        "DeliveredSoul",
+        "Int"
+      ],
+      "0x70": [
+        "CurrentHeroSoulsPosition",
+        "Int"
+      ],
+      "0x74": [
+        "WhisperKilledByHero",
+        "Bool"
+      ],
+      "0x75": [
+        "ArenaFinished",
+        "Bool"
+      ],
+      "0x76": [
+        "GatesRequireClosing",
+        "Bool"
+      ],
+      "0x77": [
+        "GatesRequireOpening",
+        "Bool"
+      ],
+      "0x78": [
+        "HeroDrunkness",
+        "Int"
+      ],
+      "0x7c": [
+        "TrophyDealerHeroSpokenToDemonDoors",
+        "Bool"
+      ],
+      "0x80": [
+        "VillagerAngryRating",
+        "Float"
+      ],
+      "0x84": [
+        "MotherDodgingKraken",
+        "Bool"
+      ],
+      "0x88": [
+        "JackBossBattleResult",
+        "Int"
+      ],
+      "0x8c": [
+        "JackBossBattleHeroGoodAtEnd",
+        "Bool"
+      ],
+      "0x8d": [
+        "WifeLeavingYou",
+        "Bool"
+      ],
+      "0x8e": [
+        "WifeLeftYou",
+        "Bool"
+      ],
+      "0x90": [
+        "CurrentScene",
+        "Int"
+      ],
+      "0x94": [
+        "StartNextScene",
+        "Bool"
+      ],
+      "0x98": [
+        "CurrentChapter",
+        "Int"
+      ],
+      "0x9c": [
+        "ScorpionsDestroyed",
+        "Bool"
+      ],
+      "0x9d": [
+        "ScorpionsDestroyedCutscenePlayed",
+        "Bool"
+      ],
+      "0x9e": [
+        "SkillTrainingStarted",
+        "Bool"
+      ],
+      "0x9f": [
+        "WillTrainingStarted",
+        "Bool"
+      ],
+      "0xa0": [
+        "MovingDummiesNeeded",
+        "Bool"
+      ],
+      "0xa4": [
+        "SkillScore",
+        "Int"
+      ],
+      "0xa8": [
+        "HighestSkillScore",
+        "Int"
+      ],
+      "0xac": [
+        "WillScore",
+        "Int"
+      ],
+      "0xb0": [
+        "MeleeApprenticeNeededForCutscene",
+        "Bool"
+      ],
+      "0xb4": [
+        "GlobalMeleeGrade",
+        "Int"
+      ],
+      "0xb8": [
+        "GlobalSkillGrade",
+        "Int"
+      ],
+      "0xbc": [
+        "GlobalWillGrade",
+        "Int"
+      ],
+      "0xc0": [
+        "GuildWarningOccuring",
+        "Bool"
+      ],
+      "0xc1": [
+        "SkillTestOccuring",
+        "Bool"
+      ],
+      "0xc2": [
+        "WillTestOccuring",
+        "Bool"
+      ],
+      "0xc3": [
+        "SkillRepeating",
+        "Bool"
+      ],
+      "0xc4": [
+        "SkillRepeatKnown",
+        "Bool"
+      ],
+      "0xc5": [
+        "SkillDummyReset",
+        "Bool"
+      ],
+      "0xc6": [
+        "HeroTakingGuildTest",
+        "Bool"
+      ],
+      "0xc7": [
+        "SwordInTheStoneComplete",
+        "Bool"
+      ],
+      "0xc8": [
+        "AmbushTradersAllGuardsDead",
+        "Bool"
+      ],
+      "0xc9": [
+        "AmbushTradersAllTradersDead",
+        "Bool"
+      ],
+      "0xcc": [
+        "AmbushTradersKillCount",
+        "Int"
+      ],
+      "0xd0": [
+        "AmbushTradersBanditHireCount",
+        "Int"
+      ],
+      "0xd4": [
+        "AmbushTradersSpyDead",
+        "Bool"
+      ],
+      "0xd5": [
+        "StruckDealWithLadyGrey",
+        "Bool"
+      ],
+      "0xd6": [
+        "HeroExposedLadyGrey",
+        "Bool"
+      ],
+      "0xd7": [
+        "HeroMarriedLadyGrey",
+        "Bool"
+      ],
+      "0xd8": [
+        "BountyHuntWithinTimeLimit",
+        "Bool"
+      ],
+      "0xd9": [
+        "BountyHuntDecapitation",
+        "Bool"
+      ],
+      "0xda": [
+        "BountyHuntTimeLimitExceeded",
+        "Bool"
+      ],
+      "0xdc": [
+        "AchievementsWorthyOfSong",
+        "Int"
+      ],
+      "0xe0": [
+        "BreakSiegeFinished",
+        "Bool"
+      ],
+      "0xe1": [
+        "WhiteBalverineFinished",
+        "Bool"
+      ],
+      "0xe2": [
+        "MadBomberFinished",
+        "Bool"
+      ],
+      "0xe3": [
+        "BodyGuardsMustStandAndWait",
+        "Bool"
+      ],
+      "0xe4": [
+        "BodyGuardsInLimbo",
+        "Bool"
+      ],
+      "0xe5": [
+        "WifeHeroFlirting",
+        "Bool"
+      ],
+      "0xe8": [
+        "PrisonRaceNumber",
+        "Int"
+      ],
+      "0xec": [
+        "PrisonRaceWonByHero",
+        "Bool"
+      ],
+      "0xed": [
+        "WasPrisonRaceEverWonByHero",
+        "Bool"
+      ],
+      "0xee": [
+        "PrisonKeyStolenByHero",
+        "Bool"
+      ],
+      "0xef": [
+        "BooksPreviouslyOpened_0",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
+        "Bool"
+      ],
+      "0xf7": [
+        "BooksPreviouslyOpened_2",
+        "Bool"
+      ],
+      "0xf2": [
+        "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf4": [
+        "HeroDollsScriptUsingTeacher",
+        "Bool"
+      ],
+      "0xf8": [
+        "MaxChickenKickingScore",
+        "Int"
+      ],
+      "0xfc": [
+        "StoryTellerSpecialStories",
+        "Int"
+      ],
+      "0x100": [
+        "StoryTellerToldSpecialStories",
+        "Int"
+      ],
+      "0x104": [
+        "GHeroName",
+        "Int"
+      ],
+      "0x108": [
+        "TimeAdvancePointTriggered",
+        "Bool"
+      ],
+      "0x109": [
+        "OFBRCratesStolen",
+        "Bool"
+      ],
+      "0x10a": [
+        "OFBR_NoCratesWereStolen",
+        "Bool"
+      ],
+      "0x10b": [
+        "DarkwoodAllTradersAlive",
+        "Bool"
+      ],
+      "0x10c": [
+        "MadBomberNoBombsExplode",
+        "Bool"
+      ],
+      "0x10d": [
+        "HobbeCavePerpertratorKilled",
+        "Bool"
+      ],
+      "0x110": [
+        "HobbeCaveInnocentSacrificed",
+        "Int"
+      ],
+      "0x114": [
+        "HobbeCaveBoyUnharmed",
+        "Bool"
+      ],
+      "0x115": [
+        "BanditCampKillNoBandits",
+        "Bool"
+      ],
+      "0x116": [
+        "BreakSiegeNoAssistance",
+        "Bool"
+      ],
+      "0x117": [
+        "BreakSiegeKilledLeader",
+        "Bool"
+      ],
+      "0x118": [
+        "OrchardFarmBanditKilled",
+        "Bool"
+      ],
+      "0x119": [
+        "OrchardFarmGuardKilled",
+        "Bool"
+      ],
+      "0x11a": [
+        "BanditCampKillManyBandits",
+        "Bool"
+      ],
+      "0x11b": [
+        "HobbeContestKillMoreHobbes",
+        "Bool"
+      ],
+      "0x11c": [
+        "GraveyardKillAllInnocents",
+        "Bool"
+      ],
+      "0x120": [
+        "DarkwoodPickpocketedAllTraders",
+        "Int"
+      ],
+      "0x124": [
+        "HangingTreeBanditKilled",
+        "Bool"
+      ],
+      "0x125": [
+        "HangingTreeGuardKilled",
+        "Bool"
+      ],
+      "0x126": [
+        "TCGKillNoBandits",
+        "Bool"
+      ],
+      "0x127": [
+        "TCGMadeTimeLimit",
+        "Bool"
+      ],
+      "0x128": [
+        "TCEKeepBanditFollowerAlive",
+        "Bool"
+      ],
+      "0x129": [
+        "TCEMadeTimeLimit",
+        "Bool"
+      ],
+      "0x12a": [
+        "RansomVictimVictimNoDamage",
+        "Bool"
+      ],
+      "0x12b": [
+        "RansomVictimKidnappersKilled",
+        "Bool"
+      ],
+      "0x12c": [
+        "RansomVictimSaveVictim",
+        "Bool"
+      ],
+      "0x12d": [
+        "RansomVictimHaveVictimKilled",
+        "Bool"
+      ],
+      "0x12e": [
+        "MinionCampBriarNoDamage",
+        "Bool"
+      ],
+      "0x12f": [
+        "FireHeartFreeAllPrisoners",
+        "Bool"
+      ],
+      "0x130": [
+        "FireHeartKillAllPrisoners",
+        "Bool"
+      ],
+      "0x131": [
+        "TCETimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x132": [
+        "TCGTimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x133": [
+        "HeroWoreMask",
+        "Bool"
+      ],
+      "0x140": [
+        "SingingStonesInSync",
+        "Bool"
+      ]
+    },
+    "unmapped": [
+      {
+        "offset": "0x3c",
+        "pdbOffset": "0x3c",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateCurrent"
+      },
+      {
+        "offset": "0x40",
+        "pdbOffset": "0x40",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateRequired"
+      },
+      {
+        "offset": "0x134",
+        "pdbOffset": "0x134",
+        "type": "vector<CCharString,std::allocator<CCharString>_>",
+        "name": "BoastRegions"
+      }
+    ],
+    "things": {}
+  },
+  "quest": {
+    "functions": {
+      "destructor": {
+        "address": "0x00ee6c30",
+        "evidence": "cluster lifecycle slot"
+      },
+      "RegisterMain": {
+        "address": "0x00ee4710",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Main": {
+        "address": "0x00ee47b0",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Init": {
+        "address": "0x00ee42a0",
+        "evidence": "cluster lifecycle slot"
+      },
+      "OnPersist": {
+        "address": "0x00ee5720",
+        "evidence": "cluster lifecycle slot"
+      },
+      "WatchForGuideKilled": {
+        "address": "0x00ee4a70",
+        "spawnedAs": "WatchForGuideKilled",
+        "evidence": "inventory thread registration"
+      },
+      "WatchForClosingTime": {
+        "address": "0x00ee4a00",
+        "spawnedAs": "WatchForClosingTime",
+        "evidence": "inventory thread registration"
+      },
+      "null": {
+        "address": "0x00ee6a40",
+        "spawnedAs": null,
+        "evidence": "inventory thread registration"
+      }
+    },
+    "fields": {
+      "0x48": [
+        "WaypointInfo_0_locMarker",
+        "String"
+      ],
+      "0x4c": [
+        "WaypointInfo_0_locTextOverheard",
+        "String"
+      ],
+      "0x50": [
+        "WaypointInfo_0_locTextRequested",
+        "String"
+      ],
+      "0x54": [
+        "WaypointInfo_1_locMarker",
+        "String"
+      ],
+      "0x58": [
+        "WaypointInfo_1_locTextOverheard",
+        "String"
+      ],
+      "0x5c": [
+        "WaypointInfo_1_locTextRequested",
+        "String"
+      ],
+      "0x60": [
+        "WaypointInfo_2_locMarker",
+        "String"
+      ],
+      "0x64": [
+        "WaypointInfo_2_locTextOverheard",
+        "String"
+      ],
+      "0x68": [
+        "WaypointInfo_2_locTextRequested",
+        "String"
+      ],
+      "0x6c": [
+        "WaypointInfo_3_locMarker",
+        "String"
+      ],
+      "0x70": [
+        "WaypointInfo_3_locTextOverheard",
+        "String"
+      ],
+      "0x74": [
+        "WaypointInfo_3_locTextRequested",
+        "String"
+      ],
+      "0x78": [
+        "WaypointInfo_4_locMarker",
+        "String"
+      ],
+      "0x7c": [
+        "WaypointInfo_4_locTextOverheard",
+        "String"
+      ],
+      "0x80": [
+        "WaypointInfo_4_locTextRequested",
+        "String"
+      ],
+      "0x84": [
+        "WaypointInfo_5_locMarker",
+        "String"
+      ],
+      "0x88": [
+        "WaypointInfo_5_locTextOverheard",
+        "String"
+      ],
+      "0x8c": [
+        "WaypointInfo_5_locTextRequested",
+        "String"
+      ],
+      "0x90": [
+        "WaypointInfo_6_locMarker",
+        "String"
+      ],
+      "0x94": [
+        "WaypointInfo_6_locTextOverheard",
+        "String"
+      ],
+      "0x98": [
+        "WaypointInfo_6_locTextRequested",
+        "String"
+      ],
+      "0x9c": [
+        "WaypointInfo_7_locMarker",
+        "String"
+      ],
+      "0xa0": [
+        "WaypointInfo_7_locTextOverheard",
+        "String"
+      ],
+      "0xa4": [
+        "WaypointInfo_7_locTextRequested",
+        "String"
+      ],
+      "0xa8": [
+        "WaypointInfo_8_locMarker",
+        "String"
+      ],
+      "0xac": [
+        "WaypointInfo_8_locTextOverheard",
+        "String"
+      ],
+      "0xb0": [
+        "WaypointInfo_8_locTextRequested",
+        "String"
+      ],
+      "0xb4": [
+        "WaypointInfo_9_locMarker",
+        "String"
+      ],
+      "0xb8": [
+        "WaypointInfo_9_locTextOverheard",
+        "String"
+      ],
+      "0xbc": [
+        "WaypointInfo_9_locTextRequested",
+        "String"
+      ],
+      "0xc0": [
+        "WaypointInfo_10_locMarker",
+        "String"
+      ],
+      "0xc4": [
+        "WaypointInfo_10_locTextOverheard",
+        "String"
+      ],
+      "0xc8": [
+        "WaypointInfo_10_locTextRequested",
+        "String"
+      ],
+      "0xcc": [
+        "WaypointInfo_11_locMarker",
+        "String"
+      ],
+      "0xd0": [
+        "WaypointInfo_11_locTextOverheard",
+        "String"
+      ],
+      "0xd4": [
+        "WaypointInfo_11_locTextRequested",
+        "String"
+      ],
+      "0xd8": [
+        "WaypointInfo_12_locMarker",
+        "String"
+      ],
+      "0xdc": [
+        "WaypointInfo_12_locTextOverheard",
+        "String"
+      ],
+      "0xe0": [
+        "WaypointInfo_12_locTextRequested",
+        "String"
+      ],
+      "0xe4": [
+        "WaypointInfo_13_locMarker",
+        "String"
+      ],
+      "0xe8": [
+        "WaypointInfo_13_locTextOverheard",
+        "String"
+      ],
+      "0xec": [
+        "WaypointInfo_13_locTextRequested",
+        "String"
+      ],
+      "0xf0": [
+        "WaypointInfo_14_locMarker",
+        "String"
+      ],
+      "0xf4": [
+        "WaypointInfo_14_locTextOverheard",
+        "String"
+      ],
+      "0xf8": [
+        "WaypointInfo_14_locTextRequested",
+        "String"
+      ],
+      "0xfc": [
+        "WaypointInfo_15_locMarker",
+        "String"
+      ],
+      "0x100": [
+        "WaypointInfo_15_locTextOverheard",
+        "String"
+      ],
+      "0x104": [
+        "WaypointInfo_15_locTextRequested",
+        "String"
+      ],
+      "0x108": [
+        "WaypointInfo_16_locMarker",
+        "String"
+      ],
+      "0x10c": [
+        "WaypointInfo_16_locTextOverheard",
+        "String"
+      ],
+      "0x110": [
+        "WaypointInfo_16_locTextRequested",
+        "String"
+      ],
+      "0x114": [
+        "WaypointInfo_17_locMarker",
+        "String"
+      ],
+      "0x118": [
+        "WaypointInfo_17_locTextOverheard",
+        "String"
+      ],
+      "0x11c": [
+        "WaypointInfo_17_locTextRequested",
+        "String"
+      ],
+      "0x120": [
+        "TourGuideKilled",
+        "Bool"
+      ],
+      "0x121": [
+        "AllFollowersDead",
+        "Bool"
+      ],
+      "0x122": [
+        "QuestFinished",
+        "Bool"
+      ],
+      "0x123": [
+        "TourFinished",
+        "Bool"
+      ],
+      "0x124": [
+        "QuestActivated",
+        "Bool"
+      ],
+      "0x125": [
+        "Initialise",
+        "Bool"
+      ],
+      "0x126": [
+        "SpawnedQuestFinishThread",
+        "Bool"
+      ],
+      "0x128": [
+        "RandomGuideResponse_0",
+        "String"
+      ],
+      "0x12c": [
+        "RandomGuideResponse_1",
+        "String"
+      ],
+      "0x130": [
+        "RandomGuideResponse_2",
+        "String"
+      ],
+      "0x134": [
+        "RandomGuideResponse_3",
+        "String"
+      ],
+      "0x138": [
+        "RandomGuideResponse_4",
+        "String"
+      ],
+      "0x13c": [
+        "RandomFollowerResponseM_0",
+        "String"
+      ],
+      "0x140": [
+        "RandomFollowerResponseM_1",
+        "String"
+      ],
+      "0x144": [
+        "RandomFollowerResponseM_2",
+        "String"
+      ],
+      "0x148": [
+        "RandomFollowerResponseM_3",
+        "String"
+      ],
+      "0x14c": [
+        "RandomFollowerResponseM_4",
+        "String"
+      ],
+      "0x150": [
+        "RandomFollowerResponseF_0",
+        "String"
+      ],
+      "0x154": [
+        "RandomFollowerResponseF_1",
+        "String"
+      ],
+      "0x158": [
+        "RandomFollowerResponseF_2",
+        "String"
+      ],
+      "0x15c": [
+        "RandomFollowerResponseF_3",
+        "String"
+      ],
+      "0x160": [
+        "RandomFollowerResponseF_4",
+        "String"
+      ],
+      "0x164": [
+        "WaypointCounter",
+        "Int"
+      ],
+      "0x174": [
+        "GuideSpokenToHeroThisWaypoint",
+        "Bool"
+      ],
+      "0x175": [
+        "OverheardTourGuideThisWaypoint",
+        "Bool"
+      ]
+    },
+    "thingFields": {
+      "0x168": "NextTourWaypoint"
+    },
+    "unmappedFields": [],
+    "timers": [],
+    "arrays": [
+      {
+        "name": "WaypointInfo",
+        "element": "WaypointData",
+        "base": "0x48",
+        "stride": 12,
+        "count": 18,
+        "members": {
+          "0x0": [
+            "locMarker",
+            "String"
+          ],
+          "0x4": [
+            "locTextOverheard",
+            "String"
+          ],
+          "0x8": [
+            "locTextRequested",
+            "String"
+          ]
+        },
+        "things": {},
+        "pointers": {}
+      },
+      {
+        "name": "RandomGuideResponse",
+        "element": "CCharString",
+        "base": "0x128",
+        "stride": 4,
+        "count": 5,
+        "members": {
+          "0x0": [
+            "",
+            "String"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "RandomFollowerResponseM",
+        "element": "CCharString",
+        "base": "0x13c",
+        "stride": 4,
+        "count": 5,
+        "members": {
+          "0x0": [
+            "",
+            "String"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "RandomFollowerResponseF",
+        "element": "CCharString",
+        "base": "0x150",
+        "stride": 4,
+        "count": 5,
+        "members": {
+          "0x0": [
+            "",
+            "String"
+          ]
+        },
+        "things": {}
+      }
+    ],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
+  },
+  "entities": {
+    "TourGuideGuide": {
+      "nativeClass": "NScript::CV_TourGuideScript::CTourGuideGuide",
+      "classEvidence": "unresolved",
+      "vtable": "0x012F511C",
+      "functions": {
+        "destructor": {
+          "address": "0x00ee4cd0"
+        },
+        "Main": {
+          "address": "0x00ee57b0"
+        },
+        "Init": {
+          "address": "0x00ee4c60"
+        },
+        "GetParentScript": {
+          "address": "0x00ee4c50"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00ee4cc0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {
+        "helper_EE6850": {
+          "address": "0x00ee6850",
+          "evidence": "unnamed entity helper",
+          "size": 484
+        }
+      },
+      "fields": {
+        "0x1c": [
+          "saveWaypointIdx",
+          "Int"
+        ],
+        "0x20": [
+          "lastRandomSpeechIdx",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "TourGuideFollower": {
+      "nativeClass": "NScript::CV_TourGuideScript::CTourGuideFollower",
+      "classEvidence": "unresolved",
+      "vtable": "0x012F5160",
+      "functions": {
+        "destructor": {
+          "address": "0x00ee4db0"
+        },
+        "Main": {
+          "address": "0x00ee4dd0"
+        },
+        "Init": {
+          "address": "0x00ee4da0"
+        },
+        "GetParentScript": {
+          "address": "0x00ee4d90"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "FollowerSpokenToHeroThisWaypoint",
+          "Bool"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    }
+  }
+}

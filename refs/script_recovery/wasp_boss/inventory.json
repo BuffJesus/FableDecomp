@@ -1,0 +1,228 @@
+{
+  "schema": "wasp-boss-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "0d7f9b0099bf69666406d3ef880b1f9b439aadf2175f21994b1686f465a9eecb",
+  "exportedFunctions": 94,
+  "quests": [
+    {
+      "script": "Q_WaspBoss",
+      "allocator": "0x00E0E9F0",
+      "vtable": "0x012E00E4",
+      "entities": [
+        {
+          "name": "GratefulVillagerSpawn",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EB2F",
+          "addBindingCall": "0x00E0EB74",
+          "factoryStore": "0x00E0EB5A",
+          "factory": "0x00E109D0",
+          "vtable": "0x012E03B8",
+          "functions": {
+            "destructor": "0x00E10B00",
+            "Main": "0x00E10A90",
+            "Init": "0x00E10A80",
+            "GetParentScript": "0x00E10A70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WaspChaser",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EB9C",
+          "addBindingCall": "0x00E0EBD8",
+          "factoryStore": "0x00E0EBC3",
+          "factory": "0x00E10B20",
+          "vtable": "0x012E03EC",
+          "functions": {
+            "destructor": "0x00E10BD0",
+            "Main": "0x00E10BF0",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00E10BC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WaspChaseWoman",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EC00",
+          "addBindingCall": "0x00E0EC3C",
+          "factoryStore": "0x00E0EC27",
+          "factory": "0x00E10D70",
+          "vtable": "0x012E0408",
+          "functions": {
+            "destructor": "0x00E10E40",
+            "Main": "0x00E10E60",
+            "Init": "0x00E10E20",
+            "GetParentScript": "0x00E10E10",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WaspAttacker",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EC64",
+          "addBindingCall": "0x00E0ECA0",
+          "factoryStore": "0x00E0EC8B",
+          "factory": "0x00E11380",
+          "vtable": "0x012E0474",
+          "functions": {
+            "destructor": "0x00E11430",
+            "Main": "0x00E11450",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00E11420",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WaspVictim",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0ECC8",
+          "addBindingCall": "0x00E0ED04",
+          "factoryStore": "0x00E0ECEF",
+          "factory": "0x00E11580",
+          "vtable": "0x012E0490",
+          "functions": {
+            "destructor": "0x00E11650",
+            "Main": "0x00E11670",
+            "Init": "0x00E11630",
+            "GetParentScript": "0x00E11620",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FleeingWoman",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0ED2C",
+          "addBindingCall": "0x00E0ED68",
+          "factoryStore": "0x00E0ED53",
+          "factory": "0x00E0F400",
+          "vtable": "0x012E0234",
+          "functions": {
+            "destructor": "0x00E0F4C0",
+            "Main": "0x00E0F4E0",
+            "Init": "0x00E0F4B0",
+            "GetParentScript": "0x00E0F4A0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "WaspHelper",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0ED90",
+          "addBindingCall": "0x00E0EDCC",
+          "factoryStore": "0x00E0EDB7",
+          "factory": "0x00E0F7C0",
+          "vtable": "0x012E0284",
+          "functions": {
+            "destructor": "0x00E0F880",
+            "Main": "0x00E0F8A0",
+            "Init": "0x00E0F870",
+            "GetParentScript": "0x00E0F860",
+            "OnPersist": "0x00E12300",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "QueenHornet",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EDF4",
+          "addBindingCall": "0x00E0EE33",
+          "factoryStore": "0x00E0EE1E",
+          "factory": "0x00E11AD0",
+          "vtable": "0x012E04FC",
+          "functions": {
+            "destructor": "0x00E11B90",
+            "Main": "0x00E11BB0",
+            "Init": "0x00E11B80",
+            "GetParentScript": "0x00E11B70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "HornetDrone",
+          "registrationFunction": "0x00E0EA40",
+          "namePush": "0x00E0EE5D",
+          "addBindingCall": "0x00E0EE9C",
+          "factoryStore": "0x00E0EE87",
+          "factory": "0x00E11CD0",
+          "vtable": "0x012E0518",
+          "functions": {
+            "destructor": "0x00E11DA0",
+            "Main": "0x00E11DC0",
+            "Init": "0x00E11D80",
+            "GetParentScript": "0x00E11D70",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00E0E9F0"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E0EA40",
+      "store": "0x00E0F079",
+      "body": "0x00E0F1D0",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E0EA40",
+      "store": "0x00E0F107",
+      "body": "0x00E12580",
+      "name": "DoMission",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E0EA40",
+      "store": "0x00E0F179",
+      "body": "0x00E12330",
+      "name": "WatchForCutscene",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E12580",
+      "store": "0x00E12A37",
+      "body": "0x00E12B30",
+      "name": "GuildmasterHelp",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E13F10",
+      "store": "0x00E1448B",
+      "body": "0x00E15500",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}
