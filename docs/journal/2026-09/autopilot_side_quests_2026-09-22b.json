@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sidequest_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen"
+  },
+  {
+    "id": "sidequest_control",
+    "status": "PASS",
+    "detail": "expected /GetThingWithScriptName START: 'M_MeleeTeacherStand'/ seen after 4 send(s)"
+  },
+  {
+    "id": "applegirl_talk",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_APPLEGIRL_(CHAT|HELP|QUESTION)/ seen after 2 send(s)"
+  },
+  {
+    "id": "applegirl_accept",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_APPLEGIRL_(IMPLORE|ANY_APPLES|THREE_NEEDED|MORE_APPLES)/ seen after 3 send(s)"
+  },
+  {
+    "id": "applegirl_apples",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_APPLEGIRL_(ONE_MORE_APPLE|NO_MORE_APPLES|MANY_MORE_APPLES|ONE_NEEDED|TWO_NEEDED|THREE_NEEDED)/ seen after 2 send(s)"
+  },
+  {
+    "id": "birdkiller_talk",
+    "status": "FAIL",
+    "detail": "expected /TEXT_QST_028_BIRD_KILLER_(GREET|HELP|QUESTION)/ not seen within 120.0s"
+  }
+]

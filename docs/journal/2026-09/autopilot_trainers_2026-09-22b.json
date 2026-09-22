@@ -1,0 +1,262 @@
+[
+  {
+    "id": "channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen"
+  },
+  {
+    "id": "premelee_host",
+    "status": "PASS",
+    "detail": "expected /GetThingWithScriptName START: 'M_MeleeTeacherStand'/ seen after 4 send(s)"
+  },
+  {
+    "id": "talk_guildmaster",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_PREMELEE_PUNCH_10/ seen after 1 send(s)"
+  },
+  {
+    "id": "punch_scene",
+    "status": "PASS",
+    "detail": "expected /GetThingWithScriptName START: 'PreMeleeWhisper'/ seen after 1 send(s)"
+  },
+  {
+    "id": "punch_boxes",
+    "status": "PASS",
+    "detail": "expected /Registered game timer with ID/ seen after 1 send(s)"
+  },
+  {
+    "id": "punch_real",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_PREMELEE_STICK/ seen after 4 send(s)"
+  },
+  {
+    "id": "stick_scene",
+    "status": "PASS",
+    "detail": "expected /GiveHero OBJECT_HERO_STICK/ seen after 1 send(s)"
+  },
+  {
+    "id": "stick_real",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_PREMELEE_PASSED_10/ seen after 5 send(s)"
+  },
+  {
+    "id": "passed_scene",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_PREMELEE_PASSED_20/ seen after 1 send(s)"
+  },
+  {
+    "id": "xp_to_alarm",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_PREMELEE_ALARM_10/ seen after 1 send(s)"
+  },
+  {
+    "id": "quest_start_screen",
+    "status": "PASS",
+    "detail": "expected /LuaQuestHost for 'GuildTrainingWoodsMelee/GuildTrainingWoodsMelee' created/ seen after 2 send(s)"
+  },
+  {
+    "id": "quest_card_box",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list/ seen after 2 send(s)"
+  },
+  {
+    "id": "boxes_cleared",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list/ seen after 1 send(s)"
+  },
+  {
+    "id": "to_the_woods",
+    "status": "PASS",
+    "detail": "expected /Binding entity 'ScorpionHome' to script 'GuildTrainingWoodsMelee/Entities/ScorpionHome'/ seen"
+  },
+  {
+    "id": "beetles_real",
+    "status": "PASS",
+    "detail": "expected /SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsMelee'/ seen after 12 send(s)"
+  },
+  {
+    "id": "quest_complete_screen",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list/ seen after 1 send(s)"
+  },
+  {
+    "id": "woods_return",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_MELEE_WOODSWON|GUARD.Teleport MK_GTM_WD_GUARD/ seen"
+  },
+  {
+    "id": "split_yes",
+    "status": "PASS",
+    "detail": "expected /GuildTrainingMelee/GuildTrainingMelee' created|PlayAVIMovie|PlayMovie/ seen after 6 send(s)"
+  },
+  {
+    "id": "melee_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingMelee/GuildTrainingMelee/ seen after 1 send(s)"
+  },
+  {
+    "id": "melee_intro",
+    "status": "PASS",
+    "detail": "expected /eval.*TalkedToWhisper.* = true/ seen after 2 send(s)"
+  },
+  {
+    "id": "talk_guildmaster",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_MELEE_ATTACK_10|CS_GUILD_MELEE_ATTACK/ seen after 2 send(s)"
+  },
+  {
+    "id": "attack_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 3/ seen after 3 send(s)"
+  },
+  {
+    "id": "attack_draw_sword",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list/ seen"
+  },
+  {
+    "id": "attack_real",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_MELEE_BLOCK_10/ seen after 9 send(s)"
+  },
+  {
+    "id": "block_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 4/ seen after 2 send(s)"
+  },
+  {
+    "id": "block_real",
+    "status": "PASS",
+    "detail": "expected /TEXT_CS_028_MELEE_BATTLE_10/ seen after 3 send(s)"
+  },
+  {
+    "id": "battle_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 6/ seen after 1 send(s)"
+  },
+  {
+    "id": "battle_draw_sword",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list/ seen"
+  },
+  {
+    "id": "battle_real",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_MAZE_FIGHT_OVER/ seen after 6 send(s)"
+  },
+  {
+    "id": "grade_scene",
+    "status": "PASS",
+    "detail": "expected /GiveHeroYesNoQuestion START/ seen after 1 send(s)"
+  },
+  {
+    "id": "continue_answer",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_MELEE_CONTINUE|MELEE_CONTINUE|GuildTrainingSkill/GuildTrainingSkill' created/ seen after 1 send(s)"
+  },
+  {
+    "id": "skill_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingSkill/GuildTrainingSkill/ seen after 2 send(s)"
+  },
+  {
+    "id": "talk_skill_master",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_START|TEXT_CS_028_SKILL_START/ seen after 1 send(s)"
+  },
+  {
+    "id": "skill_start_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 2/ seen after 1 send(s)"
+  },
+  {
+    "id": "archery_static",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_MOVE|TEXT_CS_028_SKILL_MOVE/ seen after 8 send(s)"
+  },
+  {
+    "id": "skill_move_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 4|MovingDummiesNeeded.* = true/ seen after 8 send(s)"
+  },
+  {
+    "id": "skill_move_state",
+    "status": "PASS",
+    "detail": "expected /eval.*MovingDummiesNeeded.* = true/ seen"
+  },
+  {
+    "id": "archery_moving",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_WON|SKILL_WON|DISQUALIFIED|GiveHeroYesNoQuestion START/ seen after 7 send(s)"
+  },
+  {
+    "id": "skill_continue",
+    "status": "PASS",
+    "detail": "expected /SKILL_CONTINUE|GuildTrainingWill/GuildTrainingWill' created/ seen after 1 send(s)"
+  },
+  {
+    "id": "will_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingWill/GuildTrainingWill/ seen after 2 send(s)"
+  },
+  {
+    "id": "talk_will_master",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_WILL_LIGHTNING|TEXT_CS_028_WILL_LIGHTNING|eval.*TutorialState.* = 2/ seen after 2 send(s)"
+  },
+  {
+    "id": "will_lightning_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 2/ seen after 2 send(s)"
+  },
+  {
+    "id": "will_first_bolt",
+    "status": "PASS",
+    "detail": "expected /eval.*WillScore.* = [1-9]|CS_GUILD_WILL_TEST|eval.*TutorialState.* = 3/ seen after 1 send(s)"
+  },
+  {
+    "id": "will_test_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 3/ seen after 1 send(s)"
+  },
+  {
+    "id": "will_round",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_WILL_WON|WILL_WON|WILL_DISQUALIFIED|GiveHeroYesNoQuestion START/ seen after 7 send(s)"
+  },
+  {
+    "id": "will_repeat_answer",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_WILL_CONTINUE|WILL_CONTINUE|TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION/ seen after 2 send(s)"
+  },
+  {
+    "id": "will_adult_answer",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_(NO|YES)|TEXT_QST_028_GUILDMASTER_DEPARTURE_CHAT_10|GuildTrainingDeparture/GuildTrainingDeparture' created/ seen after 1 send(s)"
+  },
+  {
+    "id": "departure_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingDeparture/GuildTrainingDeparture|GuildTrainingDeparture/GuildTrainingDeparture' created/ seen after 4 send(s)"
+  },
+  {
+    "id": "trainer_hosts",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTraining(Departure)?// seen after 1 send(s)"
+  },
+  {
+    "id": "melee_trainer_talk",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_APPRENTICE_MELEE_(DEPARTURE_HELLO|EARLY|RETURN|OTHER_MELEE_GRADE|NO_WHISPER)/ seen after 3 send(s)"
+  },
+  {
+    "id": "melee_trainer_test",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_APPRENTICE_MELEE_(START|START_APLUS|NO_BOW|NO_LIGHTNING)|CS_GUILD_DEPARTURE_MELEE_TEST_/ seen after 4 send(s)"
+  },
+  {
+    "id": "skill_trainer_talk",
+    "status": "FAIL",
+    "detail": "expected /TEXT_QST_028_APPRENTICE_SKILL_(HELLO|QUESTION|RETURN|TEST_ALREADY)/ not seen within 120.0s"
+  }
+]

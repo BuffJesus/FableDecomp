@@ -145,3 +145,42 @@ earlier passes have dropped the cast entirely (`if ((xStack_e8 != 0x0) && (...))
 **The whole GuildTraining unit is down to two structural TODOs**: a `*xStack_23c` read in the Melee
 Guildmaster, and `CreateEffect` -- which is a missing ForgeFSE binding, not a converter gap.
 
+## Driving the side quests and the secret trainers (runs 21-26)
+
+**Run 21 (side quests, from the Guild-arrival save): the apple girl plays through** --
+`applegirl_talk` -> `applegirl_accept` -> `applegirl_apples` all PASS, zero Lua errors. That whole script had
+never been executed before today. `birdkiller_talk` then failed with the reason in the log:
+`GetThingWithScriptName 'BirdKiller'` returns `pImp.Data = 0x0`, an empty thing -- its region is not loaded at
+arrival. The same name resolves to a live thing (`WrapperPos = (4708.36,3674.84,19.8)`) only at line 13132 of
+the full-chain log, in the adulthood transition where `SkillApprentice` is allocated, so the gulls and the race
+moved into the departure-window checklist.
+
+**Runs 22-26 (the chain with `guild_secret_trainers` inserted between the Will stage and Departure).** Each run
+went one step further, and every stop had its reason in the script rather than a guess:
+
+* run 22, **50/51 PASS**: all three trainers' conversations driven for the first time. The melee one answered
+  `TEXT_QST_028_APPRENTICE_MELEE_OTHER_MELEE_GRADE` -- CombatApprentice, SkillApprentice and WillApprentice all
+  refuse their own test while `GetMasterGameState("HeroTakingGuildTest")` is true, which is exactly what the
+  Guildmaster's departure test sets. Each test step now clears the flag and re-talks.
+* run 23, **51/52**: `melee_trainer_test` PASSES -- the melee secret trainer's own test ran. The skill failure
+  was the checklist, not the game: the apprentice was speaking `..._SKILL_EARLY_COMMENT`, a line the expect list
+  did not name. All three talk steps now take every key their script can speak.
+* run 24, **52/53**: `skill_trainer_talk` PASSES. The test is gated on
+  `GetMasterGameState("GlobalSkillGrade")` -- 0 is the `EARLY_COMMENT` branch, no test on offer -- so each test
+  step stages its own grade (`GlobalMeleeGrade` / `GlobalSkillGrade` / `GlobalWillGrade`).
+* run 25: the grade landed (the apprentice moved from `EARLY_COMMENT` to `NOT_APLUS_COMMENT`) but still no
+  offer. The offer sits behind `IsTalkedToByHero() and not me:IsPerformingScriptTask()`, and this apprentice
+  walks to `SkillApprenticeTargetMarker` in its idle loop, so the hero now waits on that marker.
+* run 26, **52/53**, unchanged: still no offer.
+
+**Where it stands.** In run 26's log the only trainer question issued anywhere is the melee one
+(`TEXT_QST_028_APPRENTICE_MELEE_DEPARTURE_QUESTION`); the skill apprentice never calls
+`GiveHeroYesNoQuestion` and only ever speaks its ambient `NOT_APLUS_COMMENT` (eight times). So its state is
+right and `IsTalkedToByHero()` simply never fires for **that** entity -- TAB talks to the nearest NPC and the
+archery area is crowded, while the melee trainer stands alone, which is why it worked. Zero Lua runtime errors
+in every one of these runs.
+
+**Next (one change, one run):** teleport the *apprentice* to the hero rather than the hero to the apprentice,
+so it is unambiguously the nearest thing when TAB goes in; the will trainer's steps have not been reached yet,
+and the gulls and race steps sit behind them in the same file.
+
