@@ -1663,7 +1663,7 @@ function OnPersist(quest, context)
 end
 
 function CoreQuestReminder(quest)
-    local iVar2, iVar3, xStack_4
+    local iVar2, iVar3, i_stk_4
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
     local bVar1 = not alive
@@ -1687,18 +1687,18 @@ function CoreQuestReminder(quest)
             return
         end
         iVar2 = quest:RegisterTimer()
-        xStack_4 = iVar2
-        quest:SetTimer(xStack_4, quest:ReadGlobalGameData(0xfc8))
-        iVar3 = quest:GetTimer(xStack_4)
+        i_stk_4 = iVar2
+        quest:SetTimer(i_stk_4, quest:ReadGlobalGameData(0xfc8))
+        iVar3 = quest:GetTimer(i_stk_4)
         while iVar3 ~= 0 do
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if bVar1 then
-                quest:DeregisterTimer(xStack_4)
+                quest:DeregisterTimer(i_stk_4)
                 return
             end
-            iVar3 = quest:GetTimer(xStack_4)
+            iVar3 = quest:GetTimer(i_stk_4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
@@ -1712,12 +1712,12 @@ function CoreQuestReminder(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if bVar1 then
-                quest:DeregisterTimer(xStack_4)
+                quest:DeregisterTimer(i_stk_4)
                 return
             end
             quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_078_GM_MSG_NEW_QUEST_AT_GUILD", "", true, false)
         end
-        quest:DeregisterTimer(xStack_4)
+        quest:DeregisterTimer(i_stk_4)
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
@@ -1725,7 +1725,7 @@ function CoreQuestReminder(quest)
             return
         end
     end
-    quest:DeregisterTimer(xStack_4)
+    quest:DeregisterTimer(i_stk_4)
 end
 
 function CheckBarrowFieldsGuards(quest)

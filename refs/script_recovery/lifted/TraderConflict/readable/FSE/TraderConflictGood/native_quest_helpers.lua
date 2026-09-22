@@ -2,7 +2,7 @@
 local UpdateLiveEnemies, helper_DFDED0
 function UpdateLiveEnemies(quest, me)
     local isActiveThreadTerminating2, isActiveThreadTerminating3, scratchValue, p0
-    local allCreaturesIndex, scratchValue8
+    local allCreaturesIndex, scratchValue9
     quest:StateListClear("AllCreatures")
     quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
     allCreaturesIndex = 0
@@ -44,7 +44,7 @@ function UpdateLiveEnemies(quest, me)
     local predicateResult = quest:IsActiveThreadTerminating()
     scratchValue = predicateResult
     if not predicateResult then
-        scratchValue8 = 0
+        scratchValue9 = 0
         local followers = quest:GetFollowingEntityList(quest:GetHero())
         if #followers ~= 0 then
             scratchValue = 4
@@ -52,9 +52,7 @@ function UpdateLiveEnemies(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00dfc618 end
                 p0 = 0
                 while p0 ~= quest:GetStateListCount("AllCreatures") do
-                    -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", p0))
-    --[[unresolved native value]]
-                    if nil == 0 then
+                    if not followers[(scratchValue - 4) / 12 + 1]:IsEqualTo(quest:GetStateListAt("AllCreatures", p0)) then
                         p0 = p0 + 1
                     else
                         quest:StateListErase("AllCreatures", p0)
@@ -62,9 +60,9 @@ function UpdateLiveEnemies(quest, me)
                         p0 = p0 + 1
                     end
                 end
-                scratchValue8 = scratchValue8 + 1
+                scratchValue9 = scratchValue9 + 1
                 scratchValue = scratchValue + 12
-            until scratchValue8 >= #followers
+            until scratchValue9 >= #followers
         end
         ::LAB_00dfc618::
     end

@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_20, f_stk_2c, f_stk_38, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_158, xStack_18c, xStack_190, x_stk_188
+    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_164, f_stk_20, f_stk_2c, f_stk_38, f_stk_44, f_stk_48, f_stk_4c, f_stk_50, f_stk_54, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_98, f_stk_9c, f_stk_a0, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_18c, xStack_190, x_stk_188
     local alive = true
     local function __cleanup_LAB_00d42ef8()
         quest:DeregisterTimer(xStack_190)
@@ -23,7 +23,7 @@ function Main(quest, me)
         quest:DeregisterTimer(xStack_190)
     end
     fVar11 = me:GetAngleXY()
-    xStack_158 = fVar11
+    f_stk_164 = fVar11
     r1 = quest:GetNearestWithScriptName(me, "DummyEndMarker")
     r2 = quest:GetNearestWithScriptName(me, "DummyStartMarker")
     x_stk_188 = nil
@@ -42,7 +42,7 @@ function Main(quest, me)
         if bVar3 then goto LAB_00d41f6f end
         iVar5 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xee8)))
         __native_entity_state:SetStateInt("Speed", iVar5)
-        pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker2")
+        pCVar6 = quest:GetNearestWithScriptName(me, "StaticDummyMarker2")
         piStack_190 = pCVar6
         fVar11 = quest:ReadGlobalGameDataFloat(0xef4)
     else
@@ -51,7 +51,7 @@ function Main(quest, me)
         if bVar3 then goto LAB_00d41f6f end
         iVar5 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xee4)))
         __native_entity_state:SetStateInt("Speed", iVar5)
-        pCVar6 = quest:GetNearestWithScriptName(pCVar6, "StaticDummyMarker1")
+        pCVar6 = quest:GetNearestWithScriptName(me, "StaticDummyMarker1")
         piStack_190 = pCVar6
         fVar11 = quest:ReadGlobalGameDataFloat(0xef0)
     end
@@ -80,9 +80,9 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 iVar5 = 0
-                fVar12 = xStack_158
+                fVar12 = f_stk_164
                 repeat
-                    xStack_158 = fVar12
+                    f_stk_164 = fVar12
                     if bVar3 then
                         -- LAB_00d42f10: (native jump target)
                         return
@@ -133,9 +133,11 @@ function Main(quest, me)
                         if bVar3 then
                             return
                         end
+                        f_stk_5c = f_stk_b4
                         f_stk_2c = f_stk_78 * i_stk_16c
-                        -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
-                        -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
+                        f_stk_64 = f_stk_7c * i_stk_16c + f_stk_bc
+                        f_stk_60 = f_stk_2c + f_stk_b8
+                        quest:EntityTeleportToPosition(me, {x = f_stk_64, y = f_stk_60, z = f_stk_5c}, fVar12, false, false)
                         iVar5 = iVar5 + 1
                         i_stk_16c = iVar5
                     until not (iVar5 ~= __native_entity_state:GetStateInt("Speed"))
@@ -181,14 +183,13 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            if 0.0 < fStack_b0 then break end
+                            if 0.5 < fStack_b0 then break end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
                                 return
                             end
-                            piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
-                            -- TODO(native): *piVar1 = *piVar1 + -1;
+                            quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + -1)
                         end
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -210,8 +211,7 @@ function Main(quest, me)
                         if native_arg_sequence_2 then
                             return
                         end
-                        piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
+                        quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + 1)
                         iVar5 = 0
                         i_stk_16c = 0
                         quest:EntitySetTargetable(me, false)
@@ -222,9 +222,11 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
+                            f_stk_44 = f_stk_134
                             f_stk_14 = f_stk_84 * i_stk_16c
-                            -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
-                            -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
+                            f_stk_4c = f_stk_88 * i_stk_16c + f_stk_13c
+                            f_stk_48 = f_stk_14 + f_stk_138
+                            quest:EntityTeleportToPosition(me, {x = f_stk_4c, y = f_stk_48, z = f_stk_44}, fVar12, false, false)
                             iVar5 = iVar5 + 1
                             i_stk_16c = iVar5
                         until not (iVar5 ~= __native_entity_state:GetStateInt("Speed"))
@@ -285,7 +287,10 @@ function Main(quest, me)
                                 return
                             end
                             f_stk_20 = f_stk_a8 * i_stk_16c
-                            -- TODO(native): fStack_a0 = f_stk_ac * (float)i_stk_16c + f_stk_160;
+                            f_stk_98 = f_stk_158
+                            f_stk_a0 = f_stk_ac * i_stk_16c + f_stk_160
+                            f_stk_9c = f_stk_20 + f_stk_15c
+                            pPos = {x = f_stk_a0, y = f_stk_9c, z = f_stk_98}
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -294,9 +299,12 @@ function Main(quest, me)
                                 return
                             end
                             f_stk_38 = f_stk_6c * i_stk_16c
-                            -- TODO(native): fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;
+                            f_stk_50 = f_stk_11c
+                            f_stk_58 = f_stk_70 * i_stk_16c + f_stk_124
+                            f_stk_54 = f_stk_38 + f_stk_120
+                            pPos = {x = f_stk_58, y = f_stk_54, z = f_stk_50}
                         end
-                        quest:EntityTeleportToPosition(me, pPos, xStack_158, false, false)
+                        quest:EntityTeleportToPosition(me, pPos, f_stk_164, false, false)
                         xStack_18c = me:MsgIsHitByHeroWithProjectileWeapon()
                         bVar3 = xStack_18c ~= nil
                         if bVar3 then
@@ -357,9 +365,9 @@ function Main(quest, me)
                                     end
                                     pCVar6 = quest:GetHero()
                                     r5 = quest:PlaySoundOnThing(pCVar6, "SND_ARROWIMPACT_02")
-                                    if 0.0 <= xStack_18c then
-                                        if 0.0 <= xStack_18c then
-                                            if xStack_18c < 0.0 then
+                                    if 0.25 <= xStack_18c then
+                                        if 0.5 <= xStack_18c then
+                                            if xStack_18c < 0.75 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar3 = not alive
                                                 if not bVar3 then
@@ -385,8 +393,7 @@ function Main(quest, me)
                                             end
                                             iVar5 = __native_entity_state:GetStateInt("DummyWorth") << 1
                                         end
-                                        piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
-                                        -- TODO(native): *piVar1 = *piVar1 + iVar5;
+                                        quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + iVar5)
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
@@ -394,8 +401,7 @@ function Main(quest, me)
                                             quest:DeregisterTimer(xStack_190)
                                             return
                                         end
-                                        piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
-                                        -- TODO(native): *piVar1 = *piVar1 + *(int *)(this + 0x24);
+                                        quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + __native_entity_state:GetStateInt("DummyWorth"))
                                     end
                                     ::LAB_00d42874::
                                     iVar5 = quest:GetTimer(xStack_190)
@@ -432,9 +438,9 @@ function Main(quest, me)
                                                 iVar8 = quest:AddNewConversation(r6, false, false)
                                                 pCVar6 = quest:GetHero()
                                                 quest:AddPersonToConversation(iVar8, pCVar6)
-                                                if 0.0 <= xStack_18c then
-                                                    if 0.0 <= xStack_18c then
-                                                        if 0.0 <= xStack_18c then
+                                                if 0.25 <= xStack_18c then
+                                                    if 0.5 <= xStack_18c then
+                                                        if 0.75 <= xStack_18c then
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if bVar3 then __cleanup_LAB_00d42ef8(); return end
@@ -473,9 +479,9 @@ function Main(quest, me)
                                                 iVar8 = quest:AddNewConversation(r7, false, false)
                                                 pCVar6 = quest:GetHero()
                                                 quest:AddPersonToConversation(iVar8, pCVar6)
-                                                if 0.0 <= xStack_18c then
-                                                    if 0.0 <= xStack_18c then
-                                                        if 0.0 <= xStack_18c then
+                                                if 0.25 <= xStack_18c then
+                                                    if 0.5 <= xStack_18c then
+                                                        if 0.75 <= xStack_18c then
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
                                                             if bVar3 then __cleanup_LAB_00d42efe(); return end
@@ -601,7 +607,7 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
-                    fVar12 = xStack_158
+                    fVar12 = f_stk_164
                 until false
             end
         end

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "skill_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingSkill/GuildTrainingSkill/ seen after 2 send(s)"
+  },
+  {
+    "id": "talk_skill_master",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_START|TEXT_CS_028_SKILL_START/ seen after 1 send(s)"
+  },
+  {
+    "id": "skill_start_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 2/ seen after 1 send(s)"
+  },
+  {
+    "id": "archery_first_target",
+    "status": "FAIL",
+    "detail": "forbidden marker /LUA RUNTIME ERROR/ appeared"
+  }
+]

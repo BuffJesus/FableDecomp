@@ -14,8 +14,8 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult3, scratchValue5, predicateResult4, predicateResult7, predicateResult8
     local scratchValue, predicateResult, predicateResult14, scratchValue19, addNewConversation
-    local infoCounter, infoCounter2, scratchValue32, scratchValue33, movie, actorMap2, resource
-    local infoCounter3, timerId
+    local infoCounter, infoCounter2, infoCounter3, scratchValue32, scratchValue33, movie, actorMap2
+    local resource, timerId
     scratchValue32 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
@@ -182,8 +182,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
     resource = resources:StartMovie("")
-    -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
-    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
+    quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     quest:Pause(0.5)
     quest:EntitySetAsDrawable(hero, false)
@@ -193,14 +192,14 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then goto LAB_00d65b9f end
         goto FLOW_past_lab_00d65b9f
         ::LAB_00d65b9f::
-        -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(resource)
         goto LAB_00d664b0
         ::FLOW_past_lab_00d65b9f::
     end
     quest:EntitySetAsDrawable(hero, true)
     quest:FixMovieSequenceCamera(false)
-    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(resource)
     resources:PrepareResource(resource2)
     quest:EntitySetBossPhase(me, 1)
@@ -321,8 +320,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
     resource = resources:StartMovie("")
-    -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
-    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
+    quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     quest:Pause(0.5)
     quest:EntitySetAsDrawable(hero, false)
@@ -332,20 +330,20 @@ function Main(quest, me)
         while me:IsPerformingScriptTask() do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
-                -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(resource)
                 goto LAB_00d664b0
             end
         end
         if quest:IsActiveThreadTerminating() then
-            -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(resource)
             goto LAB_00d664b0
         end
     end
     quest:EntitySetAsDrawable(hero, true)
     quest:FixMovieSequenceCamera(false)
-    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(resource)
     resources:PrepareResource(resource2)
     quest:EntitySetBossPhase(me, 2)

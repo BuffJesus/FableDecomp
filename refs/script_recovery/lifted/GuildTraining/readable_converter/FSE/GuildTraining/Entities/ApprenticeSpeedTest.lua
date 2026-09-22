@@ -16,10 +16,10 @@ local raceMode_
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isActiveThreadTerminating, questionAnswer, raceMode, questionAnswer2, questionAnswer3
-    local questionAnswer4, conversationId2, i_stk_210_1, i_stk_210_2, i_stk_210_3, switch, switch7
-    local switch8, movie, speedFriend, scratchValue43, scratchValue44, movie4, addQuestInfoTimer
-    local timerId, timerId3, timerId4, movie7
+    local isActiveThreadTerminating, timerId, questionAnswer, raceMode, questionAnswer2
+    local questionAnswer3, questionAnswer4, conversationId2, i_stk_210_1, i_stk_210_2, i_stk_210_3
+    local timerId3, timerId4, switch, switch7, switch8, movie, speedFriend, scratchValue43
+    local scratchValue44, movie4, addQuestInfoTimer, movie7
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         local movie = movie7
@@ -42,13 +42,13 @@ function Main(quest, me)
         quest:SetThingHasInformation(me, false, true, false)
         me:SetFriendsWithEverythingFlag(true)
         if speedFriend ~= nil and not speedFriend:IsNull() then
-            speedFriend:SetFriendsWithEverythingFlag(1)
+            speedFriend:SetFriendsWithEverythingFlag(true)
         end
         raceMode_ = 0
         scratchValue44 = 0
-        timerId3 = quest:RegisterTimer()
-        timerId4 = quest:RegisterTimer()
         timerId = quest:RegisterTimer()
+        timerId4 = quest:RegisterTimer()
+        timerId3 = quest:RegisterTimer()
         quest:SetTimer(timerId4, 1)
         isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         while not isActiveThreadTerminating do
@@ -119,9 +119,9 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie4)
-                                    quest:DeregisterTimer(timerId)
-                                    quest:DeregisterTimer(timerId4)
                                     quest:DeregisterTimer(timerId3)
+                                    quest:DeregisterTimer(timerId4)
+                                    quest:DeregisterTimer(timerId)
                                     goto LAB_00d40749
                                 end
                             end
@@ -140,9 +140,9 @@ function Main(quest, me)
                             else
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
-                                quest:DeregisterTimer(timerId)
-                                quest:DeregisterTimer(timerId4)
                                 quest:DeregisterTimer(timerId3)
+                                quest:DeregisterTimer(timerId4)
+                                quest:DeregisterTimer(timerId)
                                 resources:ReleaseResource(resource)
                                 do return end
                                 questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -171,9 +171,9 @@ function Main(quest, me)
                             raceMode_ = 1
                             quest:SetStateBool("ReachedPlatform", false)
                             quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
-                            quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
-                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
-                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId3, "HUD_CLOCK_ICON", 1.0)
+                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                            quest:SetTimer(timerId4, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
+                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
                             quest:DisplayQuestInfo(true)
                         else
                             if isActiveThreadTerminating then
@@ -196,9 +196,9 @@ function Main(quest, me)
                 until raceMode_ ~= 0
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(timerId)
-                quest:DeregisterTimer(timerId4)
                 quest:DeregisterTimer(timerId3)
+                quest:DeregisterTimer(timerId4)
+                quest:DeregisterTimer(timerId)
                 goto LAB_00d40749
             end
             raceMode = raceMode_
@@ -280,7 +280,7 @@ function Main(quest, me)
                         raceMode_ = 2
                         quest:PauseAllNonScriptedEntities(false)
                         movie = movie5
-                    elseif quest:GetTimer(timerId3) < 1 then
+                    elseif quest:GetTimer(timerId) < 1 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                         local movie2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
@@ -339,7 +339,7 @@ function Main(quest, me)
                     end
                     resources:DestroyMovie(movie)
                 end
-                if quest:GetTimer(timerId) >= 1 then scratchValue43 = scratchValue44; raceMode = raceMode_; goto continue_7 end
+                if quest:GetTimer(timerId3) >= 1 then scratchValue43 = scratchValue44; raceMode = raceMode_; goto continue_7 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
                 quest:RemoveQuestInfoElement(addQuestInfoTimer)
                 quest:DisplayQuestInfo(false)
@@ -468,9 +468,9 @@ function Main(quest, me)
                             end
                             raceMode_ = 1
                             quest:SetStateBool("ReachedPlatform", false)
-                            quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
-                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
-                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId3, "HUD_CLOCK_ICON", 1.0)
+                            quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime))))
+                            quest:SetTimer(timerId4, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RaceTime) + 20.0)))
+                            addQuestInfoTimer = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
                             quest:MiniMapAddMarker(quest:GetThingWithScriptName("RaceMarker"), "HUD_ORB_QUEST_VIGNETTE")
                         else
                             if isActiveThreadTerminating then
@@ -615,9 +615,9 @@ function Main(quest, me)
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end
         ::LAB_00d405fc::
-        quest:DeregisterTimer(timerId)
-        quest:DeregisterTimer(timerId4)
         quest:DeregisterTimer(timerId3)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId)
         ::LAB_00d40749::
     end
     ::FLOW_after_lab_00d405fc::
@@ -627,18 +627,18 @@ function Main(quest, me)
     ::LAB_00d405d6::
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie4)
-    quest:DeregisterTimer(timerId)
-    quest:DeregisterTimer(timerId4)
     quest:DeregisterTimer(timerId3)
+    quest:DeregisterTimer(timerId4)
+    quest:DeregisterTimer(timerId)
     goto FLOW_after_lab_00d405fc
     ::LAB_00d403e1::
     if raceMode_ ~= 3 then
         if not quest:IsActiveThreadTerminating() then
             quest:NewScriptFrame(me)
         end
-        quest:DeregisterTimer(timerId)
-        quest:DeregisterTimer(timerId4)
         quest:DeregisterTimer(timerId3)
+        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId)
         goto FLOW_after_lab_00d405fc
     end
     local scratchValue26 = i_stk_210_3
@@ -744,9 +744,9 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then goto LAB_00d405fc_c31 end
     quest:NewScriptFrame(me)
     ::LAB_00d405fc_c31::
-    quest:DeregisterTimer(timerId)
-    quest:DeregisterTimer(timerId4)
     quest:DeregisterTimer(timerId3)
+    quest:DeregisterTimer(timerId4)
+    quest:DeregisterTimer(timerId)
     goto FLOW_after_lab_00d405fc
 end
 

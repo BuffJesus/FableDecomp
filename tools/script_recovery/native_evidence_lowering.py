@@ -144,7 +144,7 @@ RE_LOCAL_COUNTED_RELEASE2 = re.compile(
 RE_LOCAL_COUNTED_RELEASE3 = re.compile(
     r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \((?:int \*|\w+)\)0x0\) && \(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
     r'[ \t]*\(\*\*\(code \*\*\)\(\(int\)\1 \+ 4\)\)\(\);\s*\r?\n[ \t]*operator_delete\(\(void \*\)\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
-RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = \(int \*\)0x0;)[ \t]*\r?\n', re.M)
+RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+(?:\._\d+_4_|\[0\])? = \(int \*\)0x0;)[ \t]*\r?\n', re.M)   # (`X._4_4_ = (int *)0x0` / `X[0] = (int *)0x0`: a stack thing's Data nulled beside its `= nil`, 2026-09-21)
 
 
 RE_TANGLED_RELEASE_A = re.compile(
@@ -394,6 +394,10 @@ def drop_eh_state_flags(text: str) -> str:
     # the sign test of a byte slice is a bit test (`CVar6._0_1_ < '\0'` = bit 0x80, `._1_1_` = 0x8000): Ghidra's
     # rendering of `test byte, 0x80` on the flag word (TraderConflictEvil CTC_BanditFighter 0x00DF8970 -- the slice
     # became a fresh nil scalar `CVar6_b0` under the byte-store rename, 2026-09-20 audit)
+    # CRT `rand()` printed with the stale registers as operands (`rand((int)unaff_EDI,unaff_ESI,unaff_EBP,unaff_EBX)`,
+    # TraderToRescue 0x00DFE0F0) is not a use of the flag register: fold it here as `lower` does later, or the flag's
+    # line check fails and `unaff_EBP | 1` / `& 0x20` survive into Lua as a free global
+    text = re.sub(r'(?<![\w:])rand\((?:[^()]|\([^()]*\))*\)', 'ENGINE_Rand()', text)
     bitwise_early = {m.group(1) for m in re.finditer(r'\(uint\)(\w+) [|&] (?:0x[0-9a-f]+|\d+)', text)}
     text = re.sub(r"\b(\w+)\._([01])_1_ (<|>=|>) (?:'\\0'|-1)(?![\w'])",
                   lambda m: (f"(((uint){m.group(1)} & {'0x80' if m.group(2) == '0' else '0x8000'}) {'!=' if m.group(3) == '<' else '=='} 0)"
@@ -486,7 +490,48 @@ def drop_eh_state_flags(text: str) -> str:
         head = re.sub(r'^([ \t]*)' + re.escape(slot) + r' = ' + re.escape(slot) + r' ([|&] (?:0x[0-9a-f]+|\d+));', lambda mm: f'{mm.group(1)}{reg} = {reg} {mm.group(2)};', head, flags=re.M)
         head = head.replace('(' + slot + ' & ', '(' + reg + ' & ')
         text = head + tail
-    seeds = {m.group(1) for m in re.finditer(r'^[ \t]*(\w+) = !(\w+) && \2;', text, re.M)}
+    # the flag word threaded through several registers (`uVar12 = unaff_EBP | 1; .. unaff_EBP = uVar12 | 8; ..
+    # uVar14 = uVar12 | 0x40; uVar12 = uVar14;`, TraderToRescue 0x00DFE0F0): a closed set of names whose every line is
+    # a flag shape or a copy (with or without a set) between members is ONE flag; spell it under one name so the
+    # single-register rules below see it (left alone, `unaff_EBP | 1` / `& 0x20` reached Lua as a free global)
+    text = re.sub(r'\(char\)SUB41\((\w+),0\)', r'(char)\1', text)          # the low byte's sign test spelled through SUB41
+    cross = re.compile(r'^[ \t]*(\w+) = (\w+)(?: [|&] (?:0x[0-9a-f]+|\d+))?;[ \t]*$')
+    edges = [(m.group(1), m.group(2)) for line in text.splitlines() for m in [cross.match(line)] if m and m.group(1) != m.group(2)]
+    groups = []
+    for a, b in edges:
+        ga = next((g for g in groups if a in g), None)
+        gb = next((g for g in groups if b in g), None)
+        if ga and gb and ga is not gb:
+            ga |= gb
+            groups.remove(gb)
+        elif ga:
+            ga.add(b)
+        elif gb:
+            gb.add(a)
+        else:
+            groups.append({a, b})
+    for group in groups:
+        if len(group) < 2 or not any(re.match(r'(?:unaff_E[A-Z]{2}|uVar\d+|bVar\d+)$', n) for n in group):
+            continue
+        names = '|'.join(re.escape(n) for n in group)
+        pure = True
+        for line in text.splitlines():
+            if not re.search(r'\b(?:' + names + r')\b', line):
+                continue
+            m = cross.match(line)
+            if m and m.group(1) in group and m.group(2) in group:
+                continue
+            m = next((sh.match(line) for sh in EH_FLAG_SHAPES if sh.match(line)), None)
+            if not m or m.group('f') not in group:
+                pure = False
+                break
+        if not pure:
+            continue
+        one = sorted(group)[0]
+        text = re.sub(r'^([ \t]*)(?:' + names + r') = (?:' + names + r')( [|&] (?:0x[0-9a-f]+|\d+))?;[ \t]*$',
+                      lambda m: f'{m.group(1)}{one} = {one}{m.group(2)};' if m.group(2) else '', text, flags=re.M)
+        text = re.sub(r'\b(?:' + names + r')\b', one, text)
+    seeds ={m.group(1) for m in re.finditer(r'^[ \t]*(\w+) = !(\w+) && \2;', text, re.M)}
     seeds |= {m.group(1) for m in re.finditer(r'^[ \t]*(\w+) = \1 \| (?:0x[0-9a-f]+|\d+);', text, re.M)}
     seeds |= {m.group(2) for m in re.finditer(r'^[ \t]*(\w+) = (\w+) \| (?:0x[0-9a-f]+|\d+);', text, re.M)}
     for flag in sorted(seeds):
@@ -549,6 +594,24 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\*\((\w+ \*+)\)&(\w+)->field_0x([0-9a-f]+)', r'*(\1)(\2 + 0x\3)', text)
     text = re.sub(r'\*&(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
     text = re.sub(r'(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
+    # a parent-quest int field read through the export's by-value-string cast (`CStack_180 = *(CCharString_bv *)
+    # (*(int *)((int)this + 0x14) + 0x50)`: PreMelee Guildmaster 0x00D52E90's "last DummyHits" local, compared with
+    # the field to re-arm the nag timer only when the count changes; with the cast the store stayed a TODO and the
+    # `(CCharString_bv)0x0` init was inlined as `0x0 ~= DummyHits`, 2026-09-21): the field is the int, the local an int
+    PARENT_INT_FIELD = r'\(\*\(int \*\)\(\(?(?:int\))?this \+ 0x14\) \+ (?:0x[0-9a-f]+|\d+)\)'
+    typed_as_int = set(re.findall(r'^[ \t]*(\w+) = \*\(CCharString(?:_bv)? \*\)' + PARENT_INT_FIELD + r';', text, re.M))
+    if typed_as_int:
+        text = re.sub(r'\*\(CCharString(?:_bv)? \*\)(' + PARENT_INT_FIELD + r')', r'*(int *)\1', text)
+        for name in typed_as_int:
+            text = re.sub(r'^([ \t]*)' + re.escape(name) + r' = \(CCharString(?:_bv)?\)(0x[0-9a-f]+|\d+);',
+                          lambda m: f'{m.group(1)}{name} = {int(m.group(2), 0)};', text, flags=re.M)
+            text = re.sub(r'^([ \t]*)CCharString(?:_bv)? ' + re.escape(name) + r';', r'\1int ' + name + ';', text, flags=re.M)
+    # the GSI pointer cached in a register the export mistyped as a by-value string (`CVar10 = *(CCharString_bv *)(this + 4);`
+    # then `(**(code **)(*(int *)CVar10 + 0x120))((void *)CVar10, ..)`, the Skill Guildmaster's out-of-ring check
+    # 0x00D5AE70): the plain interface-alias spelling, so the vcalls read `GSI->` and the alias is stripped
+    for reg in set(re.findall(r'^[ \t]*(\w+) = \*\(CCharString_bv \*\)\(this \+ (?:4|0x4)\);', text, re.M)):
+        text = re.sub(r'^([ \t]*)' + re.escape(reg) + r' = \*\(CCharString_bv \*\)\(this \+ (?:4|0x4)\);', r'\1' + reg + ' = *(int **)(this + 4);', text, flags=re.M)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + re.escape(reg) + r' \+ (0x[0-9a-f]+)\)\)\(\(void \*\)' + re.escape(reg) + r'\b', r'(**(code **)(*' + reg + r' + \1))(' + reg, text)
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
     text = fold_outgoing_stack_slots(text)
     text = re.sub(r'\*\) \(', '*)(', text)
@@ -725,7 +788,7 @@ RE_MAP_NEW2 = re.compile(r'^([ \t]*)StdMap_Construct_API\(&?(\w+)\);', re.M)
 # controlled-entity resource handle assigned with the resource operator=.
 RE_MAP_SET2 = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
-    r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+);\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
+    r'(?:(?P<alias>\w+) = (?P<thing>&?[\w.]+|RESLIST_At\((?:[^;()]|\([^;()]*\))*\));\s*)?(?:\w+ = 0x[0-9a-f]{6,7};\s*)?'
     r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(\s*map<[^;]*?\*\))?\(?&?(?P<map>\w+)(?: \+ 4)?\)?,(?:\(CCharString \*\))?&?(?P=key)\);\s*'
     r'CScriptGameResourceObjectScriptedThingBase::operator=\s*\((?P=node),(?P<src>&?\w+)\);\s*'
     r'(?:std::\s*_Cons_val<[^;(]*?\s*\(&(?P=key)\);[ \t]*\r?\n)?', re.M)
@@ -867,6 +930,25 @@ def reconcile_destructor_kinds(text):
 
 
 def fold_actor_maps(text, resolve_string=None):
+    # a map key whose ctor and operator[] use the slot restoration named 4 bytes apart (the export's per-site drift:
+    # `CCharString((CCharString *)xStack_19c, "WHISPER")` .. `operator[](&map, (CCharString *)xStack_1a0)` .. dtor
+    # `(xStack_19c)`, the Will Guildmaster 0x00D5E0C0): the nearest literal string built above, with no other string
+    # ctor between, is the key -- spell the use by the ctor's name so the store folds pair them
+    def rekey(m):
+        head = text[max(0, m.start() - 1200):m.start()]
+        ctors = list(re.finditer(r'^[ \t]*CCharString::CCharString\(\(CCharString \*\)&?(\w*Stack_[0-9a-f]+)(?:_\d+)?,"[^"]*",-1\);', head, re.M))
+        if not ctors:
+            return m.group(0)
+        ctor, use = ctors[-1].group(1), m.group(2)
+        try:
+            delta = abs(int(ctor.rsplit('_', 1)[1], 16) - int(use.rsplit('_', 1)[1], 16))
+        except ValueError:
+            return m.group(0)
+        if ctor != use and delta == 4 and not re.search(r'(?<![\w])' + re.escape(use) + r'\b', head[ctors[-1].end():]):
+            return m.group(1) + m.group(0)[len(m.group(1)):].replace(use, ctor)
+        return m.group(0)
+    text = re.sub(r'(^[ \t]*\w+ = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\([^;]*?,)(?:\(CCharString \*\))?&?(\w*Stack_[0-9a-f]+)\);', rekey, text, flags=re.M)
+
     def keyval(v):
         if v.startswith('&DAT_') and resolve_string:
             literal = resolve_string(int(v[5:], 16))
@@ -886,7 +968,7 @@ def fold_actor_maps(text, resolve_string=None):
     def set2_repl(m):
         src = m.group('src')
         if m.group('alias') and src == m.group('alias'):
-            src = m.group('thing') if m.group('thing').startswith('&') else '&' + m.group('thing')
+            src = m.group('thing') if m.group('thing').startswith(('&', 'RESLIST_At(')) else '&' + m.group('thing')
         return f'{m.group("ind")}ACTORMAP_Set({m.group("map")}, {keyval(m.group("keyval"))}, {src});\n'
     text = RE_MAP_SET2.sub(set2_repl, text)
     text = RE_MAP_SET3.sub(lambda m: f'{m.group("ind")}ACTORMAP_Set({m.group("map")}, {keyval(m.group("keyval"))}, &{m.group("src")});\n', text)
@@ -1120,7 +1202,8 @@ def fold_resource_objects(text, call_labels):
             text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}STRINGMAP_Destroy({_strip_addr(m.group(2))});', text, flags=re.M)
         elif target in STRINGMAP_INDEX:
             # `N = map::operator[](M,&key); CCharString::operator=((CCharString *)N,value);` -> STRINGMAP_Set(M, key, value)
-            pat = re.compile(r'^([ \t]*)(\w+) = ' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(&?(\w+),\s*(?:\(CCharString \*\))?&?(\w+)\);[ \t]*\r?\n'
+            # (the map operand may carry its own cast: `((map<..> *)&iStack_1d0, aCStack_118)`, the Skill grade text 0x00D5AE70)
+            pat = re.compile(r'^([ \t]*)(\w+) = ' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\((?:\([^()]*\*\))?&?(\w+),\s*(?:\(CCharString \*\))?&?(\w+)\);[ \t]*\r?\n'
                              r'[ \t]*CCharString::operator=\(\(CCharString \*\)\2,\s*([^;]+?)(?:,\s*-1)?\);', re.M)
             text = pat.sub(lambda m: f'{m.group(1)}STRINGMAP_Set({m.group(3)}, {m.group(4)}, {m.group(5).strip()});', text)
         elif target in RESOURCE_ACQUIRED:
@@ -1409,7 +1492,13 @@ def rename_scalar_stack_locals(text):
     # any stack object passed as a call argument (bare array name, `&name` or `(CScriptThing *)name`) is an
     # address the lifter resolves through its slot table
     # (`switch(fStack_94)` / `ABS(fStack_94)` -- a keyword or Ghidra's fabs macro on a by-value float -- is not a call taking the slot's address)
-    hidden = set(re.findall(r'[(,]\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]', re.sub(r'\b(switch|if|while|ABS)\s*\(', r'\1[', text)))
+    # (`ENGINE_Vector3(fStack_64, fStack_60, fStack_5c)` -- a stack vector's three float components, `fold_stack_vector_builds` -- are scalars by construction)
+    hidden = set(re.findall(r'[(,]\s*(?:\(CScriptThing \*\))?&?' + STK + r'\s*[,)]',
+                            re.sub(r'ENGINE_Vector3\([^)]*\)', 'ENGINE_Vector3[]', re.sub(r'\b(switch|if|while|ABS)\s*\(', r'\1[', text))))
+    # a FLOAT slot passed by value (`SetFacingAngle(me, fStack_94, true)`, never `&fStack_94`) is a scalar operand, not a
+    # hidden-result address (WillDummy 0x00D43450's spin angle stayed an object name and its store a TODO, 2026-09-21)
+    hidden -= {h for h in hidden if h.startswith(('fStack_', 'iStack_')) and not re.search(r'&' + re.escape(h) + r'\b', text)
+               and not re.search(r'\(CScriptThing \*\)' + re.escape(h) + r'\b', text)}      # (an INT by value too: a tick handle / a toggle)
     # a slot that receives a lowered value by plain assignment is a handle, not a hidden result
     # (unless it is also an explicitly cast hidden-return argument: a thing object later overwritten by a copy)
     cast_args = set(re.findall(r'[(,]\s*\(CScriptThing \*\)' + STK + r'\s*[,)]', text))
@@ -1424,6 +1513,98 @@ def rename_scalar_stack_locals(text):
             continue
         m = re.fullmatch(r'([A-Za-z]*)(?:Stack_|local_)([0-9a-f]+)', name)
         text = re.sub(r'\b' + re.escape(name) + r'\b', f'{m.group(1) or "v"}_stk_{m.group(2)}', text)
+    return text
+
+
+def fold_stack_vector_builds(text):
+    """A C3DVector assembled from three adjacent float slots and passed by address (`fStack_64 = X; fStack_60 = Y;
+    fStack_5c = Z; F(.., (C3DVector_bv *)&fStack_64, ..)`, SkillTarget 0x00D41D00's moving-dummy segments), or
+    aliased first (`pPos = (C3DVector_bv *)&fStack_a0;` then the three stores, the call after the if/else join):
+    the operand becomes `ENGINE_Vector3(x, y, z)` over the three float locals (the stores stay as they are, in
+    their order), and an alias is re-issued after the last component store of its block. Runs on Ghidra's
+    slot names, before `restore_stack_operands` renames the address-taken slot (it drifted `fStack_64` to
+    `xStack_58` and the components no longer lined up); the stores are then plain float locals."""
+    def components(slot):
+        prefix, num = re.match(r'(\w*Stack_)([0-9a-f]+)$', slot).groups()
+        n = int(num, 16)
+        return slot, f'{prefix}{n - 4:x}', f'{prefix}{n - 8:x}'
+    lines = text.split('\n')
+    def stored_near(idx, names):
+        """the line indices of `name = ..;` float stores within the 12 lines before (and, for an alias, after) idx"""
+        found = {}
+        for j in range(max(0, idx - 12), min(len(lines), idx + 8)):
+            m = re.match(r'[ \t]*(\w+) = (?!=)[^;]+;[ \t]*$', lines[j].rstrip('\r'))
+            if m and m.group(1) in names and m.group(1) not in found:
+                found[m.group(1)] = j
+        return found
+    # direct operand (a call line; the alias assignments are handled below, after their stores)
+    for i, line in enumerate(lines):
+        if re.match(r'[ \t]*\w+ = \(C3DVector_bv \*\)&', line):
+            continue
+        for m in re.finditer(r'\(C3DVector_bv \*\)&(f\w*Stack_[0-9a-f]+)\b', line):
+            x, y, z = components(m.group(1))
+            if set(stored_near(i, {x, y, z})) == {x, y, z}:
+                lines[i] = lines[i].replace(m.group(0), f'ENGINE_Vector3({x}, {y}, {z})')
+    # alias
+    i = 0
+    while i < len(lines):
+        m = re.match(r'([ \t]*)(\w+) = \(C3DVector_bv \*\)&(f\w*Stack_[0-9a-f]+);[ \t]*$', lines[i].rstrip('\r'))
+        if m:
+            x, y, z = components(m.group(3))
+            found = stored_near(i, {x, y, z})
+            if set(found) == {x, y, z}:
+                last = max(found.values())
+                alias = f'{m.group(1)}{m.group(2)} = ENGINE_Vector3({x}, {y}, {z});'
+                if last > i:
+                    del lines[i]
+                    lines.insert(last, alias)
+                else:
+                    lines[i] = alias
+        i += 1
+    return '\n'.join(lines)
+
+
+def resolve_me_register_uses(text: str) -> str:
+    """The compiler keeps `edi = this + 8` (the entity's own thing) for a whole function; Ghidra names that register
+    `pCVarN` and, on paths where a SIBLING branch reassigned `pCVarN`, prints the operand as the bare register with
+    no definition in force (`GetNearestWithScriptName(.., pCVar6, "StaticDummyMarker2")` in SkillTarget's dummy-2/3
+    branches: `push edi` in the bytes, `me` in branch 1; lifted as nil it crashed the game at frame 0, 2026-09-21).
+    A use of such a register with no assignment in an ENCLOSING block before it (block structure by braces) is
+    `(CScriptThing *)(this + 8)`; only registers assigned `(this + 8)` somewhere in the function qualify."""
+    regs = set(re.findall(r'^[ \t]*(p?[A-Za-z]{1,3}Var\d+) = \(CScriptThing(?:_bv)? \*\)\((?:\(int\))?this \+ 8\);', text, re.M))
+    if not regs:
+        return text
+    # the chain of open blocks (ids) at every character: a definition dominates a later use when its chain is a
+    # prefix of the use's (same block or an enclosing one); a sibling branch's chain is not
+    chains, stack, block_id, cur = [], [], 0, ()
+    for ch in text:
+        if ch == '{':
+            block_id += 1
+            stack.append(block_id)
+            cur = tuple(stack)
+        elif ch == '}':
+            if stack:
+                stack.pop()
+            cur = tuple(stack)
+        chains.append(cur)
+    def chain(pos):
+        return chains[pos] if pos < len(chains) else ()
+    for reg in regs:
+        r = re.escape(reg)
+        defs = [(m.start(), m.end(), chain(m.start()), bool(re.match(r'\(CScriptThing(?:_bv)? \*\)\((?:\(int\))?this \+ 8\)', m.group(1))))
+                for m in re.finditer(r'^[ 	]*' + r + r' = ([^;]+);', text, re.M)]
+        def use(m):
+            pos, c = m.start(1), chain(m.start(1))
+            # the explicit receiver operand of a vcall through the same register (`(*(int *)pCVar7 + 0x10c))(pCVar7, true)`)
+            # is the annotator's to fold (CombatApprentice's SetFriendsWithEverythingFlag): leave it
+            if m.group(0).startswith('(') and re.search(r'\*\(int \*\)' + r + r' \+ (?:0x[0-9a-f]+|\d+)\)\)$', text[max(0, m.start() - 80):m.start()]):
+                return m.group(0)
+            # (a definition whose own statement contains the use -- `pCVar6 = F(.., pCVar6, ..)` -- is not in force yet)
+            dominating = [(dpos, is_me) for dpos, dend, dchain, is_me in defs if dend <= pos and dchain == c[:len(dchain)]]
+            if dominating and not dominating[-1][1]:
+                return m.group(0)                   # the nearest dominating definition is something else
+            return m.group(0)[:m.start(1) - m.start()] + '(CScriptThing *)(this + 8)' + m.group(0)[m.end(1) - m.start():]
+        text = re.sub(r'[(,]\s*(' + r + r')\s*(?=[,)])', use, text)
     return text
 
 
@@ -1468,6 +1649,15 @@ def lower_after_annotate(text, thing_slots=None):
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
+    # `MsgGetThingsKilled(thing, &uidVector)` (retail vtable 0xDC: bool + a std::vector<ulong> the script frees):
+    # the sidecar binding (2026-09-21) owns that vector and returns the count, so the out operand, its zeroing
+    # and its `if (v != 0) free(v)` guard are the binding's business (TraderConflictGood::WatchForKilledPeople)
+    for vec in set(re.findall(r'CScriptThing::MsgGetThingsKilled\([^,;]+,\s*&(\w+)\)', text)):
+        v = re.escape(vec)
+        text = re.sub(r'(CScriptThing::MsgGetThingsKilled\([^,;]+),\s*&' + v + r'\)', r'\1)', text)
+        text = re.sub(r'^[ \t]*' + v + r' = \(void \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*if \(' + v + r' != \(void \*\)0x0\) \{[ \t]*\r?\n[ \t]*free\(' + v + r'\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*void \*' + v + r';[ \t]*\r?\n', '', text, flags=re.M)
     """Rewrites that need the GSI names: quest-side entity acquisition through a resource object."""
     # `M = RESOURCE_StartMovie("")` (the inlined movie object ctor) followed by `GSI->StartMovieSequence(&name, M)`:
     # retail makes ONE call, the object is its out-parameter. Emitting both started two sequences, and retail
@@ -1479,8 +1669,12 @@ def lower_after_annotate(text, thing_slots=None):
     # `(**(code **)(.. + 0x5c8))();`) right after the movie ctor (only the name's CCharString ctor between them)
     text = re.sub(r'^([ \t]*\w+ = RESOURCE_StartMovie\([^\n]*\n(?:[ \t]*CCharString::CCharString\([^\n]*\n)?)[ \t]*GSI->StartMovieSequence\(\);[ \t]*\r?\n',
                   r'\1', text, flags=re.M)
-    text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^,;]+),([^,;]+),([^,;]+)\);',
-                  lambda m: f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(m.group(4))}, {m.group(3).strip()}, {m.group(5).strip()});', text, flags=re.M)
+    def try_acquire(m):
+        args = _split_top(m.group(3))          # (an operand may carry its own commas: `RESLIST_At(arr, i / 0x10)`)
+        if len(args) != 3:
+            return m.group(0)
+        return f'{m.group(1)}{(m.group(2) + " = ") if m.group(2) else ""}RESOURCE_TryAcquire({_strip_addr(args[1])}, {args[0].strip()}, {args[2].strip()});'
+    text = re.sub(r'^([ \t]*)(?:(\w+) = )?GSI->StartScriptingEntity\(([^;]+)\);', try_acquire, text, flags=re.M)
     # a thing returned straight into an outgoing by-value slot (`F((CScriptThing *)&stack0xNN, ...)` with no
     # result) that the decompiler then "reassembles" from unrelated registers: the temporary is the result
     text = RE_BV_THING_RESULT.sub(lambda m: f'{m.group(1)}{m.group(4)} = {m.group(2)}({m.group(3)});\n', text)
@@ -1488,6 +1682,16 @@ def lower_after_annotate(text, thing_slots=None):
     # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
     # function registers exactly one timer that is the id
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
+    # several timers, one of them held in a register Ghidra lost (`unaff_EBX` in every Get/Set/DeregisterTimer that
+    # names it) while exactly one registered id is never named by any timer call: they are the same timer
+    # (TraderToRescue 0x00DFE0F0, four timers; `unaff_EBX` reached Lua as a free global)
+    for reg in set(re.findall(r'GSI->\w*Timer\w*\((?:[^;()]*?,\s*)?(unaff_E[A-Z]{2})\b', text)):
+        if any(re.search(r'\b' + reg + r'\b', line) and 'Timer' not in line and not re.match(r'[ \t]*\w+ ' + reg + r';', line)
+               for line in text.splitlines()):
+            continue        # the register carries something else too (its declaration does not count)
+        unnamed = [t for t in dict.fromkeys(timers) if not re.search(r'GSI->\w*Timer\w*\((?:[^;()]*?,\s*)?(?:\(int\))?&?' + re.escape(t) + r'\b', text)]
+        if len(unnamed) == 1:
+            text = re.sub(r'(GSI->\w*Timer\w*\((?:[^;()]*?,\s*)?)' + reg + r'\b', r'\g<1>' + unnamed[0], text)
     if len(set(timers)) == 1:
         text = re.sub(r'GSI->DeregisterTimer\(unaff_E[A-Z]{2}\)', f'GSI->DeregisterTimer({timers[0]})', text)
         # the register holding the id is reused for the (meaningless) DeregisterTimer result and later values
@@ -1521,6 +1725,29 @@ def lower_after_annotate(text, thing_slots=None):
                 line = re.sub(r'GSI->(\w*Timer\w*)\(' + re.escape(X) + r'(?=[,)])', lambda m: f'GSI->{m.group(1)}({C}', line)
             out.append(line)
         text = ''.join(out)
+    # several timers, a deregister whose operand is never assigned (a drifted slot name: `xStack_160` / `xStack_168` for
+    # the timers at -0x164 / -0x16c, the export's per-site drift on TraderToRescue 0x00DFE0F0's epilogue): the still-open
+    # timer whose slot number is nearest (within 8 bytes), when that choice is unique
+    # (every registered timer is a candidate: another path may deregister the same timers under their true names)
+    open_timers = list(dict.fromkeys(timers))
+    def slot_of(name):
+        m = re.fullmatch(r'\w*(?:Stack_|_stk_)([0-9a-f]+)(?:_\d+)?', name)
+        return int(m.group(1), 16) if m else None
+    def drifted_dereg(m):
+        name = m.group(2)
+        if name in timers or re.search(r'^[ \t]*' + re.escape(name) + r' = ', text, re.M):
+            return m.group(0)
+        s = slot_of(name)
+        if s is None:
+            return m.group(0)
+        near = sorted((abs(slot_of(t) - s), t) for t in open_timers if t not in used and slot_of(t) is not None and abs(slot_of(t) - s) <= 8)
+        if len(near) == 1 or (len(near) > 1 and near[0][0] < near[1][0]):
+            used.add(near[0][1])             # (a destructor run names each timer once: the epilogue's second drifted name is the other timer)
+            return f'{m.group(1)}GSI->DeregisterTimer({near[0][1]});'
+        return m.group(0)
+    used = set()
+    if len(set(timers)) > 1:
+        text = re.sub(r'^([ \t]*)GSI->DeregisterTimer\((?:\(int\))?&?(\w+)\);', drifted_dereg, text, flags=re.M)
     # the same for every create/destroy pair: a destroy operand that is never assigned in the function
     # (a drifted slot name) when the function creates exactly one object of that kind
     for creator, destroyer in (('GSI->RegisterTimer', 'GSI->DeregisterTimer'), ('RESOURCE_StartMovie', 'RESOURCE_DestroyMovie'),
@@ -1551,6 +1778,7 @@ def lower_after_annotate(text, thing_slots=None):
     text = drop_dead_local_stores(text)
     # position members through a pointer the annotation pass has only now named (`X = GetPos(Y)`)
     text = fold_position_reads(text)
+    text = fold_actor_map_releases(text)
     return text
 
 
@@ -1590,6 +1818,52 @@ def canonicalise_split_array_vectors(text):
         text = re.sub(r'\*\(int \*\)\(' + a + r'\._0_4_ \+ (\w+)\)', lambda m, arr=arr: f'*(int *)({arr} + {m.group(1)})', text)
         text = re.sub(r'\(' + a + r'\._0_4_ \+ (\w+)\)', lambda m, arr=arr: f'((int){arr} + {m.group(1)})', text)
         text = re.sub(r'\b' + a + r'\._0_4_\b', arr, text)
+    return text
+
+
+RESLIST_RESIZE = {0xCD3CCB}    # CArray<resource>::push_back(n, template): n copies of an unacquired resource (WoodsWill's bandits)
+RESLIST_DTOR = {0xCD319B}      # the array's destructor: every element released, the buffer freed
+
+
+def fold_local_resource_arrays(text, call_labels):
+    """A local dynamic array of resource objects (16 bytes each; `pvStack_2c = 0; uStack_28 = 0; uStack_24 = 0;`
+    then `tmpl = resource ctor(&stackTmpl); push_back(&arr, COUNT, tmpl);` -- GuildTrainingWoodsWill 0x00D67890 holds
+    one resource per WillBandit): the Lua list `arr = RESLIST_New(COUNT)`; an element at a byte offset
+    (`(void *)((int)pvStack_2c + iVar12)` / `pvStack_2c + 0x10` / the bare begin pointer) is `RESLIST_At(arr, off / 0x10)`,
+    the destructor releases every element. Runs before constant propagation turns the zeroed begin pointer into
+    `(0x0 + iVar12)`. The stack template's own ctor/release stay (an unacquired resource, harmless)."""
+    resize = [l for l, t in call_labels.items() if t in RESLIST_RESIZE]
+    dtor = [l for l, t in call_labels.items() if t in RESLIST_DTOR]
+    if not resize:
+        return text
+    arrays = []
+    ctors = [l for l, t in call_labels.items() if t in RESOURCE_CTOR]
+    for label in resize:
+        pat = re.compile(r'^([ \t]*)(?:\w+ = )?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(\([^()]*\*\)&(\w+),\s*([^,;]+),\s*(\w+)\);[ \t]*\r?\n', re.M)
+        def new(m):
+            arrays.append(m.group(2))
+            return f'{m.group(1)}{m.group(2)} = RESLIST_New({m.group(3).strip()});\n'
+        for m in list(pat.finditer(text))[::-1]:
+            # the template: `iVar5 = <resource ctor>(aCStack_10);` right above -- a stack resource of its own
+            # (constructed, never acquired, released later with the rest), spelled as one
+            head = text[:m.start()]
+            for ctor in ctors:
+                head = re.sub(r'^([ \t]*)' + re.escape(m.group(4)) + r' = ' + re.escape(ctor).replace('::', r'\s*::\s*') + r'\s*\(&?(\w+)\);[ \t]*\r?\n\Z',
+                              lambda mm: f'{mm.group(1)}{mm.group(2)} = RESOURCE_NewResource();\n', head, flags=re.M)
+            text = head + new(m) + text[m.end():]
+    for arr in arrays:
+        a = re.escape(arr)
+        # the zeroed begin / end / capacity slots are the array's own construction
+        slot = int(arr.rsplit('_', 1)[1], 16)
+        text = re.sub(r'^[ \t]*' + a + r' = \(void \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
+        for k in (4, 8):
+            text = re.sub(r'^[ \t]*\w+Stack_%x = 0;[ \t]*\r?\n' % (slot - k), '', text, flags=re.M)
+        text = re.sub(r'\(void \*\)\(\(int\)' + a + r' \+ (0x[0-9a-f]+|\d+)\)', lambda m: f'RESLIST_At({arr}, {int(m.group(1), 0) // 16})', text)
+        text = re.sub(r'\(void \*\)\(\(int\)' + a + r' \+ (\w+)\)', lambda m: f'RESLIST_At({arr}, ({m.group(1)}) / 0x10)', text)
+        text = re.sub(r'^([ \t]*)(\w+) = ' + a + r';', lambda m: f'{m.group(1)}{m.group(2)} = RESLIST_At({arr}, 0);', text, flags=re.M)
+        for label in dtor:
+            text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(\([^()]*\*\)&' + a + r'\);', lambda m: f'{m.group(1)}RESLIST_Destroy({arr});', text, flags=re.M)
+        text = re.sub(r'^[ \t]*void \*' + a + r';[ \t]*\r?\n', '', text, flags=re.M)
     return text
 
 
@@ -1699,12 +1973,14 @@ def fold_local_thing_vectors(text, thing_slots=None):
         # the uncast spelling with the end under a drifted number that is NOT begin-4 (`i_stk_8c - xStack_8c`,
         # PreMeleeWhisper 0x00D524A0: Ghidra gave the end the begin's own number): a stack name whose only
         # assignments are zero (the vector's construction) and that is otherwise read only in `E - V` is the end
-        for e in set(re.findall(r'(?<![\w)])(\w+_(?:stk_)?[0-9a-f]+) - ' + v + r'\b', text)):
+        # (either side may carry an `(int)` cast: `(int)x_stk_60 - iStack_68`, BirdKiller 0x00D4DEA0's marker list)
+        for e in set(re.findall(r'(?<![\w)])(?:\(int\))?(\w+_(?:stk_)?[0-9a-f]+) - (?:\(int\))?' + v + r'\b', text)):
             if e == vec:
                 continue
             assigned = re.findall(r'^[ \t]*(?:\([\w ]+\*+\))?' + re.escape(e) + r' = ([^;]+);', text, re.M)
-            if assigned and all(re.fullmatch(r'(?:\([\w ]+\*?\))?0(?:x0)?', a.strip()) for a in assigned) and not re.search(r'&' + re.escape(e) + r'\b', text):
-                text = re.sub(r'(?<![\w)])' + re.escape(e) + r' - ' + v + r'\b', f'(int){vec} - {vec}', text)
+            # (never assigned at all -- its zeroing already folded away under the drifted name -- counts too)
+            if all(re.fullmatch(r'(?:\([\w ]+\*?\))?0(?:x0)?', a.strip()) for a in assigned) and not re.search(r'&' + re.escape(e) + r'\b', text):
+                text = re.sub(r'(?<![\w)])(?:\(int\))?' + re.escape(e) + r' - (?:\(int\))?' + v + r'\b', f'(int){vec} - {vec}', text)
                 text = re.sub(r'^[ \t]*' + re.escape(e) + r' = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n', '', text, flags=re.M)
         if slot:
             end_slot = int(slot.group(1), 16) - 4
@@ -1746,9 +2022,14 @@ def fold_local_thing_vectors(text, thing_slots=None):
         def data_vcall(m, vec=vec):
             out = thing_call_local(f'LOCALLIST_At({vec}, ({m.group(1)} - 4) / 0xc)', m.group(2), text[m.end():m.end() + 1])
             return out or m.group(0)
-        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\((\w+) \+ \(int\)' + v + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', data_vcall, text)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\((\w+) \+ (?:\(int\))?' + v + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', data_vcall, text)   # (`(int)` absent on an int-typed begin slot: TraderConflictGood's follower loop)
+        # ... the same printed without its casts (`(**(**(iVar3 + iStack_c) + 0x138))(`: TraderConflictGood's
+        # follower-vs-AllCreatures IsEqualTo loop 0x00DFC0xx, an untyped `int` begin slot)
+        text = re.sub(r'\(\*\*\(\*\*\((\w+) \+ ' + v + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', data_vcall, text)
         # a thing vcall on an element addressed by byte offset: name the element first
-        text = re.sub(r'\*\(int \*\)\((\w+) \+ \(int\)' + v + r'\)', lambda m, vec=vec: f'*(int *)({vec} + {m.group(1)})', text)   # `(i + (int)V)` -> `(V + i)`
+        # (the cast is absent on an int-typed begin slot: PreMeleeWhisper 0x00D524A0's `GetDataString` on each
+        # PreMeleeChatMarker, `(**(code **)(*(int *)(iVar10 + iStack_90) + 0xc))(`, 2026-09-21)
+        text = re.sub(r'\*\(int \*\)\((\w+) \+ (?:\(int\))?' + v + r'\)', lambda m, vec=vec: f'*(int *)({vec} + {m.group(1)})', text)   # `(i + (int)V)` -> `(V + i)`
         pat = re.compile(r'^([ \t]*)([^\n]*?)\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + v + r' \+ (?:\(int\))?(\w+)\) \+ (0x[0-9a-f]+|\d+)\)\)\(', re.M)
         def elem(m):
             nonlocal elems
@@ -1772,7 +2053,7 @@ def fold_local_thing_vectors(text, thing_slots=None):
     # storage-pointer bookkeeping around the frees (`puVar6 = pu_stk_20;` / `pu_stk_14 = puVar6;`)
     text = re.sub(r'^[ \t]*(?:\w+ = pu_stk_\w+|pu_stk_\w+ = \w+);[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*\w+ = \(undefined4 \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
-    junk = r'(?:[ \t]*\w+ = (?:\w+|\w+ \+ \d+|\(undefined4 \*\)0x0);[ \t]*\r?\n)*'
+    junk = r'(?:[ \t]*\w+ = (?:\w+|\w+ \+ -?\d+|\(undefined4 \*\)0x0);[ \t]*\r?\n)*'   # (`end = end + -3`: VC7.1's clear() walks back from the end, WoodsWill 0x00D67890)
     for _ in range(3):
         text = re.sub(r'^[ \t]*for \((?:;|\w+ = \w+;)[^\n]*\) \{[ \t]*\r?\n' + junk + r'[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'^[ \t]*do \{[ \t]*\r?\n' + junk + r'[ \t]*\} while \(\w+ != \w+\);[ \t]*\r?\n', '', text, flags=re.M)
@@ -1848,10 +2129,13 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = normalise_typed_decompile(text)
+    text = fold_local_resource_arrays(text, getattr(spec, 'call_labels', None) or {})
     text = resolve_stack_offset_names(text)
     for m in set(re.findall(r'^[ \t]*(\w+) = \*\(int \*\*\)\(this \+ (4|0x40)\);', text, re.M)):
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))
+    if spec.entity:
+        text = resolve_me_register_uses(text)
     text = isolate_gsi_vtable_temps(text)
     text = fold_tangled_thing_assign(text)
     text = fold_stack_colours(text)
@@ -1885,6 +2169,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 return f'{m.group(1)}CScriptThing::operator=((CScriptThing *)&{obj.group(1)},(int){m.group(3)});'
         handles.add(m.group(2))
         return f'{m.group(1)}{m.group(2)} = {m.group(3)};'
+    # the same copy spelled on an array-typed stack thing's Data field (`(auStack_160 + 4)`, the Guildmaster's XP orb
+    # 0x00D52E90: the orb comes back through a hidden-result slot and is copied into the thing the wait loop polls)
+    text = re.sub(r'^([ \t]*)CCountedPointer<\w+>::operator=\s*\(\(CCountedPointer<\w+> \*\)\((\w*Stack_[0-9a-f]+) \+ (?:4|0x4)\),\s*\(int\)&\*\(int \*\)\((\w+) \+ (?:4|0x4)\)\);',
+                  lambda m: f'{m.group(1)}CScriptThing::operator=((CScriptThing *){m.group(2)},(int){m.group(3)});', text, flags=re.M)
     text = re.sub(r'^([ \t]*)CCountedPointer<\w+>::operator=\s*\(\(CCountedPointer<\w+> \*\)&(\w+),\s*\(int\)&\*\(int \*\)\((\w+) \+ (?:4|0x4)\)\);', handle, text, flags=re.M)
     for field, obj in data_fields.items():
         text = re.sub(r'^[ \t]*int \*' + re.escape(field) + r';[ \t]*\r?\n', '', text, flags=re.M)
@@ -1981,6 +2269,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'&DAT_([0-9a-f]{8})\b', dat_literal, text)
     # reads from the global game-data table (runtime pointer at DAT_0143e90c): keep the offset; a local
     # holding the pointer (`iVar14 = DAT_0143e90c;`) stands for it until the register is reused
+    table_registers = set(re.findall(r'^[ \t]*(\w+) = (?:\(\w+ \*+\))?DAT_0143e90c;', text, re.M))   # (before the scoped pass removes the alias lines)
     pos = 0
     while (m := re.search(r'^[ \t]*(\w+) = (?:\(\w+ \*+\))?DAT_0143e90c;[ \t]*\r?\n', text[pos:], re.M)):
         var = m.group(1)
@@ -2007,7 +2296,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         pos = len(head)
     # a register that held the table pointer on another path and is dereferenced with a table offset
     # after an intervening reuse (`iVar6 = ENGINE_Trunc(..)` in a sibling branch): the deref is a table read
-    for var in set(re.findall(r'^[ \t]*(\w+) = (?:\(\w+ \*+\))?DAT_0143e90c;', text, re.M)):
+    # (the alias lines are gone by now -- `table_registers` was collected first; ArtifactThief 0x00D62480's second
+    # `iVar6 = DAT_0143e90c` scope ended at a reload before its `*(float *)(iVar6 + 0xf14)` read)
+    for var in table_registers:
         text = re.sub(r'\*\((float|int|undefined4|uint) \*\)\(' + re.escape(var) + r' \+ (0x[0-9a-f]{3,}|\d{3,})\)',
                       r'*(\1 *)(DAT_0143e90c + \2)', text)
     text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
@@ -2057,6 +2348,27 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     master_bases = [r'\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)', r'\(\*\(int \*\)\(this \+ ' + off_re(spec.master_off) + r'\)\)']
     if spec.entity:
         master_bases += [r'\*\(int \*\)\(' + parent + r' \+ 0x44\)', r'\(\*\(int \*\)\(' + parent + r' \+ 0x44\)\)']
+    # 2a. a register holding the ADDRESS of a master field (`piVar1 = (int *)(MASTER + 0xa4);` then
+    # `*piVar1 = *piVar1 + iVar5;` -- VC7.1's read-modify-write of one field, SkillTarget's SkillScore
+    # 0x00D41D00): every `*piVar1` up to the register's next assignment is that field's dereference,
+    # so the store/load folds below see the plain form (the TODO(native) residue was the archery score)
+    def inline_field_pointer(text, base_pattern):
+        alias_re = re.compile(r'^[ \t]*(\w+) = \((' + TYPE + r') \*\)\(' + base_pattern + r' \+ (0x[0-9a-f]+|\d)\);[ \t]*\r?\n', re.M)
+        pos = 0
+        while (m := alias_re.search(text, pos)):
+            var, kind, off = m.group(1), m.group(2), m.group(3)
+            base_text = m.group(0).split('= ', 1)[1].strip().rstrip(';')
+            base_text = base_text[base_text.index(')(') + 2:].rsplit(' + ', 1)[0]      # the base as printed
+            value = f'*({kind} *)({base_text} + {off})'
+            head, tail = text[:m.start()], text[m.end():]
+            nxt = re.search(r'(?<![\w.>*])' + re.escape(var) + r' = (?!=)', tail)     # `*piVar1 = ..` is a store, not a reuse
+            scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+            scope = re.sub(r'\*' + re.escape(var) + r'\b', lambda _: value, scope)
+            text = head + scope + rest
+            pos = m.start()
+        return text
+    for base in master_bases:
+        text = inline_field_pointer(text, base)
     # (a single-digit member offset prints in decimal: `+ 4` is PostSavePosition, the Gameflow campaign stage)
     for base in master_bases:
         def master_store(m):
@@ -2410,6 +2722,16 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     stack_things = set(re.findall(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', text))
     for name in stack_things:
         n = re.escape(name)
+        # the Data field printed as the object's FIRST dword (`X._0_4_`) where the decompiler's stack model sits 4
+        # bytes off for that site (Will Guildmaster 0x00D5E0C0: three byte-identical `mov ecx,[esp+0xa4]; test;
+        # call [edx+0x118]` sequences, the first printed `auStack_1b4._4_4_`, the other two `auStack_1b4._0_4_`):
+        # a null test or a vcall through `*(int *)X._0_4_ + SLOT` is never the vtable word (that vcall would read
+        # `X._0_4_ + SLOT`), so on a stack thing it is the Data idiom, 2026-09-21
+        # (not the counted-pointer release `(X._0_4_ != 0) && (*X._0_4_ = *X._0_4_ + -1, ..)`: the release rules)
+        text = re.sub(r'(?:\(int \*\))?' + n + r'\._0_4_ == \(int \*\)0x0(?!\) \|\| \(\*(?:\(int \*\))?' + n + r'\._0_4_ = )', f'!__thing_valid({name})', text)
+        text = re.sub(r'(?:\(int \*\))?' + n + r'\._0_4_ != \(int \*\)0x0(?!\) &&\s*\(\*(?:\(int \*\))?' + n + r'\._0_4_ = |\) \{[ \t]*\r?\n[ \t]*\*(?:\(int \*\))?' + n + r'\._0_4_ = )', f'__thing_valid({name})', text)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?' + n + r'\._0_4_ \+ (0x[0-9a-f]+|\d+)\)\)\s*\(',
+                      lambda h, name=name: thing_call(name, h.group(1), h.end(), text[h.end():h.end() + 1]) or h.group(0), text)
         # the counted-pointer release idiom on the same name (`(X != 0) && (*X = *X + -1, ...)`) belongs to the release rules
         text = re.sub(r'\b' + n + r' == \(int \*\)0x0(?!\) \|\| \(\*' + n + r' = )', f'!__thing_valid({name})', text)
         text = re.sub(r'\b' + n + r' != \(int \*\)0x0(?!\) && \(\*' + n + r' = |\) \{[ \t]*\r?\n[ \t]*\*' + n + r' = )', f'__thing_valid({name})', text)
@@ -2538,7 +2860,48 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = rename_scalar_stack_locals(text)
     text = fold_local_string_vectors(text, getattr(spec, 'call_labels', None) or {})
     text = fold_counted_map_stores(text, getattr(spec, 'call_labels', None) or {})
+    text = fold_drifted_actor_values(text)
     return text, diag
+
+
+def fold_actor_map_releases(text: str) -> str:
+    """`RESOURCE_ReleaseResource(map)` on an ACTOR MAP is impossible (a map is destroyed, never released): the export put
+    the hero resource's destructor at the map's slot (CheckFriendlyAttacks 0x00D45060's BADHERO block: `ReleaseResource
+    (actorMap)` raised "Invalid or released retail resource" in-game, 2026-09-21). The operand is the nearest resource
+    acquired above that has no release between its acquire and this line."""
+    maps = set(re.findall(r'^[ \t]*(\w+) = ACTORMAP_New\(\)', text, re.M))
+    if not maps:
+        return text
+    def fix(m):
+        if m.group(2) not in maps:
+            return m.group(0)
+        head = text[:m.start()]
+        # (the acquire is still `GSI->StartScriptingEntity(thing, &res, n)` here; lower_after_annotate respells it)
+        for acq in reversed(list(re.finditer(r'RESOURCE_TryAcquire\((\w+),|GSI->StartScriptingEntity\([^,;]+,\s*&?(\w+),', head))):
+            res = acq.group(1) or acq.group(2)
+            if not re.search(r'RESOURCE_ReleaseResource\(' + re.escape(res) + r'\)', head[acq.end():]):
+                return f'{m.group(1)}RESOURCE_ReleaseResource({res});'
+        return m.group(0)
+    return re.sub(r'^([ \t]*)RESOURCE_ReleaseResource\((\w+)\);', fix, text, flags=re.M)
+
+
+def fold_drifted_actor_values(text: str) -> str:
+    """An actor-map value is a resource object. `ACTORMAP_Set(map, "HERO", &xStack_204_2)` names a slot at which no
+    resource was ever constructed while one WAS acquired 4 bytes below (`xStack_200`, the hero's TryAcquire): the
+    decompiler's 4-byte ESP drift (see `_drifted_byte_slices`) on a byte-split address operand -- the Will
+    Guildmaster 0x00D5E0C0, where the bytes push the same `[esp+0x21c]` to TryAcquire and to the map store. The
+    operand is that resource; any other unknown value is left as it is."""
+    resources = set(re.findall(r'^[ \t]*(\w+) = RESOURCE_NewResource\(\)', text, re.M)) | set(re.findall(r'RESOURCE_TryAcquire\((\w+),', text))
+    def fix(m):
+        name = m.group(3)
+        if name in resources:
+            return m.group(0)
+        slot = re.fullmatch(r'(\w*Stack_)([0-9a-f]+)(?:_\d+)?', name)
+        if not slot:
+            return m.group(0)
+        below = f'{slot.group(1)}{int(slot.group(2), 16) - 4:x}'
+        return f'{m.group(1)}ACTORMAP_Set({m.group(2)}, {below})' if below in resources else m.group(0)   # (resources are spelled bare by now)
+    return re.sub(r'^([ \t]*)ACTORMAP_Set\(([^;]*?, "[^"]*"), &(\w+)\)', fix, text, flags=re.M)
 
 
 def fold_counted_map_stores(text: str, call_labels: dict) -> str:
@@ -2671,7 +3034,29 @@ def strip_receiver_arguments(text: str) -> str:
     aliases |= {m.group(1) for m in re.finditer(r'^[ \t]*(\w*Stack_[0-9a-f]+) = (\w+);', text, re.M) if m.group(2) in aliases}
     for alias in aliases:
         text = re.sub(r'(GSI->\w+\()' + re.escape(alias) + r'(?:,\s*|(?=\)))', r'\1', text)
-        text = re.sub(r'^[ \t]*' + re.escape(alias) + r' = \w+;[ \t]*\r?\n', '', text, flags=re.M) if 'Stack_' in alias else text
+        text = re.sub(r'^[ \t]*' + re.escape(alias) + r' = (?:\w+|\*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\));[ \t]*\r?\n', '', text, flags=re.M) if 'Stack_' in alias else text
+    # a REGISTER alias (`CVar10 = *(int **)(this + 4);`, a string temporary elsewhere in the function -- the Skill
+    # Guildmaster's out-of-ring check 0x00D5AE70) and the compiler's spill of it (`CStack_1e8 = CVar10;`) are dead
+    # once the `GSI->` calls no longer read it before the register's next assignment
+    lines = text.split('\n')
+    i = 0
+    while i < len(lines):
+        m = re.match(r'[ \t]*(\w+) = \*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\);', lines[i])
+        if m and m.group(1) in aliases and 'Stack_' not in m.group(1):
+            alias = re.escape(m.group(1))
+            j, spills, other = i + 1, [], False
+            while j < len(lines) and not re.match(r'[ \t]*' + alias + r' = ', lines[j]):
+                if re.match(r'[ \t]*\w*Stack_[0-9a-f]+ = ' + alias + r';', lines[j]):
+                    spills.append(j)
+                elif re.search(r'(?<![\w.>])' + alias + r'\b', lines[j]):
+                    other = True
+                j += 1
+            if not other:
+                for k in sorted(spills + [i], reverse=True):
+                    del lines[k]
+                continue
+        i += 1
+    text = '\n'.join(lines)
     text = re.sub(r'(CScriptThing::\w+\(me, ?)' + ME_RECEIVER + r'(?:,\s*|(?=\)))', r'\1', text)
     # a pointer alias of the entity's own thing (`p0 = (CScriptThing *)(this + 8);`) as the explicit receiver
     # next to the annotated one: `MsgIsHitBySpecialAbilityFrom((CScriptThing *)(this + 8), p0, 0xe, &name)` --
@@ -2719,6 +3104,7 @@ LUA_PSEUDO = [
     (re.compile(r'ENGINE_EmptyString\(\)'), '""'),
     (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
     (re.compile(r'ENGINE_VectorCopy\((\w+)\)'), r'{x = \1.x, y = \1.y, z = \1.z}'),
+    (re.compile(r'ENGINE_Vector3\(([^,()]+), ([^,()]+), ([^,()]+)\)'), r'{x = \1, y = \2, z = \3}'),
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
@@ -2786,6 +3172,10 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_StrNotEqual', lambda a: f'(({a[0]} ~= {a[1]}) and 1 or 0)')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
+    # a local array of resource objects (fold_local_resource_arrays): a Lua list of fresh resources
+    text = _expand_calls(text, 'RESLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
+    text = _expand_calls(text, 'RESLIST_New', lambda a: f'(function(n) local t = {{}} for i = 1, n do t[i] = resources:NewResource() end return t end)({a[0]})')
+    text = re.sub(r'^([ \t]*)RESLIST_Destroy\((\w+)\)', r'\1for _, r in ipairs(\2) do resources:ReleaseResource(r) end', text, flags=re.M)
     text = _expand_calls(text, 'LOCALLIST_Erase', lambda a: f'table.remove({a[0]}, {a[1]} + 1)')
     text = _expand_calls(text, 'LOCALLIST_PushString', lambda a: f'table.insert({a[0]}, {a[1]})')
     text = re.sub(r'LOCALLIST_NewStrings\(\)', '{}', text)

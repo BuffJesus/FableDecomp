@@ -1,0 +1,42 @@
+[
+  {
+    "id": "skill_move_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 4|MovingDummiesNeeded.* = true/ seen after 1 send(s)"
+  },
+  {
+    "id": "skill_move_state",
+    "status": "PASS",
+    "detail": "expected /eval.*MovingDummiesNeeded.* = true/ seen"
+  },
+  {
+    "id": "archery_moving",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_WON|SKILL_WON|DISQUALIFIED|GiveHeroYesNoQuestion START/ seen after 2 send(s)"
+  },
+  {
+    "id": "skill_continue",
+    "status": "PASS",
+    "detail": "expected /SKILL_CONTINUE|GuildTrainingWill/GuildTrainingWill' created/ seen after 1 send(s)"
+  },
+  {
+    "id": "will_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingWill/GuildTrainingWill/ seen after 1 send(s)"
+  },
+  {
+    "id": "talk_will_master",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_WILL_LIGHTNING|TEXT_CS_028_WILL_LIGHTNING|eval.*TutorialState.* = 2/ seen after 3 send(s)"
+  },
+  {
+    "id": "will_lightning_scene",
+    "status": "PASS",
+    "detail": "expected /eval.*TutorialState.* = 2/ seen after 2 send(s)"
+  },
+  {
+    "id": "will_first_bolt",
+    "status": "FAIL",
+    "detail": "expected /eval.*WillScore.* = [1-9]|CS_GUILD_WILL_TEST|eval.*TutorialState.* = 3/ not seen within 150.0s"
+  }
+]

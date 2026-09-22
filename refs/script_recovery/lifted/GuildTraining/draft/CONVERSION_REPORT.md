@@ -7,8 +7,8 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | Q_GuildTraining | Main | 0x00d3bc60 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | Init | 0x00d3b3d0 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | OnPersist | 0x00d3bc10 | True | 0 |
-| Q_GuildTraining | Q_GuildTraining | RunTutorials | 0x00d45dd0 | True | 2 |
-| Q_GuildTraining | Q_GuildTraining | CheckFriendlyAttacks | 0x00d45060 | True | 7 |
+| Q_GuildTraining | Q_GuildTraining | RunTutorials | 0x00d45dd0 | True | 0 |
+| Q_GuildTraining | Q_GuildTraining | CheckFriendlyAttacks | 0x00d45060 | True | 4 |
 | Q_GuildTraining | Q_GuildTraining | KeepTabsOnWhisper | 0x00d3cbd0 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | WatchForSparrowKilled | 0x00d3c840 | True | 0 |
 | Q_GuildTraining | Q_GuildTraining | KeepBookcaseExitRemoved | 0x00d3c8f0 | True | 1 |
@@ -37,7 +37,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | MeleeApprentice | Init | 0x00d40cc0 | True | 0 |
 | Q_GuildTraining | MeleeApprentice | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | MeleeApprentice | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTraining | CombatApprentice | Main | 0x00d4a270 | True | 9 |
+| Q_GuildTraining | CombatApprentice | Main | 0x00d4a270 | True | 7 |
 | Q_GuildTraining | CombatApprentice | Init | 0x00d41ae0 | True | 0 |
 | Q_GuildTraining | CombatApprentice | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | CombatApprentice | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -53,11 +53,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | HeroBed | Init | 0x00d40be0 | True | 0 |
 | Q_GuildTraining | HeroBed | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | HeroBed | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTraining | SkillTarget | Main | 0x00d41d00 | True | 26 |
+| Q_GuildTraining | SkillTarget | Main | 0x00d41d00 | True | 12 |
 | Q_GuildTraining | SkillTarget | Init | 0x00d41ca0 | True | 0 |
 | Q_GuildTraining | SkillTarget | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | SkillTarget | OnPredicateFail | 0x00d41cd0 | True | 0 |
-| Q_GuildTraining | WillDummy | Main | 0x00d43450 | True | 3 |
+| Q_GuildTraining | WillDummy | Main | 0x00d43450 | True | 0 |
 | Q_GuildTraining | WillDummy | Init | 0x00d43410 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | WillDummy | OnPredicateFail | 0x00d43420 | True | 0 |
@@ -69,7 +69,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | KillBird | Init | 0x00d430f0 | True | 0 |
 | Q_GuildTraining | KillBird | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | KillBird | OnPredicateFail | 0x00d43120 | True | 0 |
-| Q_GuildTraining | PreMeleeMaze | Main | 0x00d43db0 | True | 7 |
+| Q_GuildTraining | PreMeleeMaze | Main | 0x00d43db0 | True | 1 |
 | Q_GuildTraining | PreMeleeMaze | Init | 0x00d43d80 | True | 0 |
 | Q_GuildTraining | PreMeleeMaze | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTraining | PreMeleeMaze | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -81,7 +81,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingDeparture | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingMelee | Q_GuildTrainingMelee | Main | 0x00d55e90 | True | 0 |
 | Q_GuildTrainingMelee | Q_GuildTrainingMelee | Init | 0x00d55da0 | True | 0 |
-| Q_GuildTrainingMelee | TheRealGuildmaster | Main | 0x00d58490 | True | 59 |
+| Q_GuildTrainingMelee | TheRealGuildmaster | Main | 0x00d58490 | True | 57 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | Init | 0x00d56670 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -95,7 +95,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingMelee | MeleeThunder | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingPreMelee | Q_GuildTrainingPreMelee | Main | 0x00d51520 | True | 0 |
 | Q_GuildTrainingPreMelee | Q_GuildTrainingPreMelee | Init | 0x00d51450 | True | 0 |
-| Q_GuildTrainingPreMelee | TheRealGuildmaster | Main | 0x00d52e90 | True | 6 |
+| Q_GuildTrainingPreMelee | TheRealGuildmaster | Main | 0x00d52e90 | True | 3 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | Init | 0x00d51ed0 | True | 0 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -103,20 +103,20 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingPreMelee | PreMeleeDummy | Init | 0x00d51fb0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeDummy | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeDummy | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_GuildTrainingPreMelee | PreMeleeWhisper | Main | 0x00d524a0 | True | 6 |
+| Q_GuildTrainingPreMelee | PreMeleeWhisper | Main | 0x00d524a0 | True | 5 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | Init | 0x00d522e0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingPreMelee | PreMeleeWhisper | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingSkill | Q_GuildTrainingSkill | Main | 0x00d5ab40 | True | 0 |
 | Q_GuildTrainingSkill | Q_GuildTrainingSkill | Init | 0x00d5aa80 | True | 0 |
-| Q_GuildTrainingSkill | TheRealGuildmaster | Main | 0x00d5ae70 | True | 63 |
+| Q_GuildTrainingSkill | TheRealGuildmaster | Main | 0x00d5ae70 | True | 49 |
 | Q_GuildTrainingSkill | TheRealGuildmaster | Init | 0x00d5ac90 | True | 0 |
 | Q_GuildTrainingSkill | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingSkill | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingWill | Q_GuildTrainingWill | Main | 0x00d5dd40 | True | 0 |
 | Q_GuildTrainingWill | Q_GuildTrainingWill | Init | 0x00d5dc80 | True | 0 |
 | Q_GuildTrainingWill | Q_GuildTrainingWill | OnPersist | 0x00d5e070 | True | 0 |
-| Q_GuildTrainingWill | TheRealGuildmaster | Main | 0x00d5e0c0 | True | 9 |
+| Q_GuildTrainingWill | TheRealGuildmaster | Main | 0x00d5e0c0 | True | 2 |
 | Q_GuildTrainingWill | TheRealGuildmaster | Init | 0x00d5de90 | True | 0 |
 | Q_GuildTrainingWill | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWill | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -125,15 +125,15 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsDeparture | Q_GuildTrainingWoodsDeparture | DoMission | 0x00d63dc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | Q_GuildTrainingWoodsDeparture | WatchForLeaving | 0x00d64000 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | Q_GuildTrainingWoodsDeparture | TeleportOutHero | 0x00d64080 | True | 0 |
-| Q_GuildTrainingWoodsDeparture | ArtifactThief | Main | 0x00d62480 | True | 9 |
+| Q_GuildTrainingWoodsDeparture | ArtifactThief | Main | 0x00d62480 | True | 6 |
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | Init | 0x00d62410 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ArtifactThief | OnPredicateFail | 0x00d62450 | True | 0 |
-| Q_GuildTrainingWoodsDeparture | FinalMaze | Main | 0x00d647f0 | True | 11 |
+| Q_GuildTrainingWoodsDeparture | FinalMaze | Main | 0x00d647f0 | True | 2 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | Init | 0x00d62320 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | FinalMaze | OnPredicateFail | 0x00d62330 | True | 0 |
-| Q_GuildTrainingWoodsDeparture | ScorpionHome | Main | 0x00d643a0 | True | 2 |
+| Q_GuildTrainingWoodsDeparture | ScorpionHome | Main | 0x00d643a0 | True | 1 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | Init | 0x00d63d80 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsDeparture | ScorpionHome | OnPredicateFail | 0x00d63d70 | True | 0 |
@@ -143,11 +143,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | WatchForLeaving | 0x00d66e90 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | TeleportOutHero | 0x00d66f50 | True | 0 |
 | Q_GuildTrainingWoodsMelee | Q_GuildTrainingWoodsMelee | helper_D66EE0 | 0x00d66ee0 | True | 0 |
-| Q_GuildTrainingWoodsMelee | ScorpionHome | Main | 0x00d67270 | True | 3 |
+| Q_GuildTrainingWoodsMelee | ScorpionHome | Main | 0x00d67270 | True | 2 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | Init | 0x00d66c60 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsMelee | ScorpionHome | OnPredicateFail | 0x00d66c50 | True | 0 |
-| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | True | 10 |
+| Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | Main | 0x00d67890 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForTermination | 0x00d68600 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | DoMission | 0x00d68ae0 | True | 0 |
 | Q_GuildTrainingWoodsWill | Q_GuildTrainingWoodsWill | WatchForLeaving | 0x00d68c50 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 349}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 268}`

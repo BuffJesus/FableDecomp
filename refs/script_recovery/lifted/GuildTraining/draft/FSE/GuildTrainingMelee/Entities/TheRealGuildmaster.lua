@@ -12,34 +12,36 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_1d4, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, this_01, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_264, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
+    local __native_condition_1, __native_condition_2, bVar18, bVar3, cVar4, delay, fVar19, fVar2, f_stk_1d4, f_stk_70, f_stk_74, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar17, iVar20, iVar6, iVar7, i_stk_264, ixVar13, native_arg_switch_2, p4, pCVar10, pCVar11, pCVar16, pCVar5, pCVar9, pcVar14, pppuVar15, r1, r2, r3, r4, r5, r6, this_01, xStack_1c0, xStack_1d0, xStack_1e0, xStack_204, xStack_214, xStack_220, xStack_23c, xStack_250, xStack_260, xStack_28, xStack_38, xStack_48, xStack_54, xStack_6c, xStack_84, xStack_94, xStack_a4, xStack_b0, xStack_c0, xStack_d0, xStack_e0, x_stk_1ec
     local alive = true
     local function __cleanup_LAB_00d5a916()
         resources:ReleaseResource(xStack_84)
         resources:ReleaseResource(xStack_d0)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a922()
         resources:ReleaseResource(xStack_d0)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a933()
         resources:ReleaseResource(xStack_a4)
+        this_01 = xStack_e0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a93f()
+        this_01 = xStack_e0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a948()
@@ -48,10 +50,11 @@ function Main(quest, me)
         resources:DestroyStringMap(xStack_1e0)
         resources:DestroyActorMap(xStack_220)
         resources:ReleaseResource(xStack_1c0)
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a956()
@@ -60,10 +63,11 @@ function Main(quest, me)
         resources:DestroyStringMap(xStack_1e0)
         resources:DestroyActorMap(xStack_220)
         resources:ReleaseResource(xStack_1c0)
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a962()
@@ -72,10 +76,11 @@ function Main(quest, me)
         resources:DestroyStringMap(xStack_1e0)
         resources:DestroyActorMap(xStack_220)
         resources:ReleaseResource(xStack_1c0)
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a96a()
@@ -83,43 +88,46 @@ function Main(quest, me)
         resources:DestroyStringMap(xStack_1e0)
         resources:DestroyActorMap(xStack_220)
         resources:ReleaseResource(xStack_1c0)
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a98b()
         resources:ReleaseResource(xStack_1c0)
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a997()
+        this_01 = xStack_1d0
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a99e()
         resources:ReleaseResource(this_01)
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a9a7()
         resources:ReleaseResource(xStack_214)
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     local function __cleanup_LAB_00d5a9b5()
         quest:DeregisterTimer(xStack_260)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
         resources:ReleaseResource(xStack_250)
     end
     xStack_250 = resources:NewResource()
@@ -146,8 +154,8 @@ function Main(quest, me)
     r1 = quest:GetThingWithScriptName("MeleeOpponent")
     quest:SetThingHasInformation(me, false, false, false)
     iVar6 = quest:RegisterTimer()
-    xStack_264 = iVar6
-    quest:SetTimer(xStack_264, 0)
+    i_stk_264 = iVar6
+    quest:SetTimer(i_stk_264, 0)
     iVar7 = quest:GetStateInt("TutorialState")
     x_stk_1ec = 0x0
     while iVar7 == 1 do
@@ -224,7 +232,7 @@ function Main(quest, me)
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar19)
         __native_condition_2 = bVar3
         if __native_condition_2 then
-            iVar7 = quest:GetTimer(xStack_264)
+            iVar7 = quest:GetTimer(i_stk_264)
             __native_condition_2 = iVar7 < 1
         end
         __native_condition_1 = __native_condition_2
@@ -239,7 +247,7 @@ function Main(quest, me)
             iVar6 = quest:AddNewConversation(me, false, false)
             pCVar5 = quest:GetHero()
             quest:AddPersonToConversation(iVar6, pCVar5)
-            quest:SetTimer(xStack_264, 10)
+            quest:SetTimer(i_stk_264, 10)
             if x_stk_1ec == nil then
                 bVar3 = false
                 pCVar5 = quest:GetHero()
@@ -263,7 +271,7 @@ function Main(quest, me)
     bVar3 = not alive
     if bVar3 then
         -- LAB_00d5a9be: (native jump target)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
     else
         quest:SetMasterGameState("HeroTakingGuildTest", true)
         quest:SetStateBool("WhisperStopWalking", true)
@@ -288,7 +296,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     resources:ReleaseResource(xStack_204)
-                    quest:DeregisterTimer(xStack_264)
+                    quest:DeregisterTimer(i_stk_264)
                     goto LAB_00d5a8d9
                 end
                 iVar6 = 4
@@ -301,7 +309,7 @@ function Main(quest, me)
             if bVar3 then
                 -- LAB_00d5a902: (native jump target)
                 resources:ReleaseResource(xStack_204)
-                quest:DeregisterTimer(xStack_264)
+                quest:DeregisterTimer(i_stk_264)
                 goto LAB_00d5a8d9
             end
             xStack_94 = resources:NewResource()
@@ -314,7 +322,7 @@ function Main(quest, me)
                 if bVar3 then
                     resources:ReleaseResource(xStack_94)
                     resources:ReleaseResource(xStack_204)
-                    quest:DeregisterTimer(xStack_264)
+                    quest:DeregisterTimer(i_stk_264)
                     goto LAB_00d5a8d9
                 end
                 bVar3 = resources:TryAcquire(xStack_94, r1, 4)
@@ -325,7 +333,7 @@ function Main(quest, me)
                 -- LAB_00d5a8f6: (native jump target)
                 resources:ReleaseResource(xStack_94)
                 resources:ReleaseResource(xStack_204)
-                quest:DeregisterTimer(xStack_264)
+                quest:DeregisterTimer(i_stk_264)
                 goto LAB_00d5a8d9
             end
             xStack_54 = resources:NewActorMap()
@@ -781,7 +789,7 @@ function Main(quest, me)
             ::LAB_00d5a28a::
             quest:ChangeHeroHealthBy(1000.0, true, false)
             quest:EntitySetInFaction(r1, "FACTION_HERO")
-            me:SetFriendsWithEverythingFlag(1)
+            me:SetFriendsWithEverythingFlag(true)
             bVar18 = true
             bVar3 = false
             pCVar5 = quest:GetThingWithScriptName("MeleeThunder")
@@ -844,6 +852,7 @@ function Main(quest, me)
             if bVar3 then __cleanup_LAB_00d5a9a7(); return end
             resources:ReleaseResource(xStack_214)
             quest:DeregisterTimer(xStack_260)
+            iVar6 = i_stk_264
             cVar4 = quest:GetStateBool("MeleeRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -875,7 +884,7 @@ function Main(quest, me)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_04", "", "")
         end
         -- LAB_00d5a8cb: (native jump target)
-        quest:DeregisterTimer(xStack_264)
+        quest:DeregisterTimer(i_stk_264)
     end
     ::FLOW_after_lab_00d5a9be::
     ::LAB_00d5a8d9::
@@ -883,7 +892,7 @@ function Main(quest, me)
     resources:ReleaseResource(xStack_250)
     do return end
     ::LAB_00d5933c::
-    quest:DeregisterTimer(xStack_264)
+    quest:DeregisterTimer(i_stk_264)
     goto LAB_00d5a8d9
 end
 

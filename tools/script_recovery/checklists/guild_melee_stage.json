@@ -163,11 +163,12 @@
   "repeat": 8,
   "interval": 4.0,
   "do": [
+   "input: lmb 1",
    "input: clear"
   ],
   "expect": "CS_GUILD_MELEE_CONTINUE|MELEE_CONTINUE|GuildTrainingSkill/GuildTrainingSkill' created",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 120,
-  "note": "Continue -> the CONTINUE cutscene, the Melee quest ends, GuildTraining moves to GameState 5 and activates the Skill quest"
+  "note": "Continue = LEFT click on the yes/no UI (a real `lmb`: `clear` only clicks when it detects a game-info box and the question is not one -- 2026-09-21 resume 2 sat on the question 120 s); then the CONTINUE cutscene, the Melee quest ends, GuildTraining moves to GameState 5 and activates the Skill quest"
  }
 ]

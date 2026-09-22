@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local angle, bVar3, bVar4, bVar5, cVar2, fVar11, iVar6, iVar8, pCVar7, pCVar9, pThing, piVar1, xStack_94
+    local angle, bVar3, bVar4, bVar5, cVar2, fVar11, f_stk_a0, iVar6, iVar8, pCVar7, pCVar9, pThing
     local alive = true
     bVar3 = false
     fVar11 = me:GetAngleXY()
@@ -89,8 +89,8 @@ function Main(quest, me)
             return
         end
         quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
-        -- TODO(native): xStack_94 = angle + (float)0.0;
-        quest:EntitySetFacingAngle(me, xStack_94, true)
+        f_stk_a0 = angle + 0.25
+        quest:EntitySetFacingAngle(me, f_stk_a0, true)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
@@ -103,9 +103,8 @@ function Main(quest, me)
         if bVar4 then
             return
         end
-        quest:EntitySetFacingAngle(me, angle + 0.0, true)
-        piVar1 = (__native_entity_state:GetStateInt("self_0x18") + 0xac)
-        -- TODO(native): *piVar1 = *piVar1 + 1;
+        quest:EntitySetFacingAngle(me, angle + 0.5, true)
+        quest:SetMasterGameState("WillScore", quest:GetMasterGameState("WillScore") + 1)
         iVar6 = quest:GetTimer(quest:GetStateInt("WillHelpTimer"))
         if iVar6 < 1 then
             alive = not quest:IsActiveThreadTerminating()
@@ -148,7 +147,7 @@ function Main(quest, me)
         end
         quest:EntitySetTargetable(me, false)
         quest:Pause(quest:ReadGlobalGameDataFloat(0xf18))
-        quest:EntitySetFacingAngle(me, xStack_94, true)
+        quest:EntitySetFacingAngle(me, f_stk_a0, true)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive

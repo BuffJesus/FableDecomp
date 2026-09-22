@@ -38,7 +38,7 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAllowBossPhaseChanges(me, false)
-    me:SetFriendsWithEverythingFlag(1)
+    me:SetFriendsWithEverythingFlag(true)
     local meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     predicateResult = quest:IsActiveThreadTerminating()
     repeat

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, xStack_10, xStack_1c, xStack_38, xStack_5c, xStack_70, xStack_80
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, i_stk_5c, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, xStack_10, xStack_1c, xStack_38, xStack_70, xStack_80
     local alive = true
     uVar12 = 0
     alive = quest:NewScriptFrame(me)
@@ -81,14 +81,14 @@ function Main(quest, me)
     resources:DestroyActorMap(xStack_1c)
     resources:ReleaseResource(xStack_38)
     quest:EntitySetInFaction(me, "FACTION_MONSTERS")
-    xStack_5c = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+    i_stk_5c = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
     quest:DisplayQuestInfo(true)
     resources:PrepareResource(xStack_70)
     quest:EntitySetBossPhase(me, 0)
     bVar3 = false
     pCVar6 = quest:GetHero()
     quest:EntitySetAsDamageable(pCVar6, bVar3)
-    quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
+    quest:UpdateQuestInfoCounter(i_stk_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
     xStack_80 = quest:RegisterTimer()
     quest:SetTimer(xStack_80, 0)
     fVar20 = 20.0
@@ -142,7 +142,7 @@ function Main(quest, me)
                 __native_entity_state:SetStateBool("NotBeaten", false)
                 quest:ModifyThingHealth(me, 1000.0, false)
             end
-            quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
+            quest:UpdateQuestInfoCounter(i_stk_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
             iVar19 = quest:GetTimer(xStack_80)
             uVar12 = uVar13
             __native_condition_1 = iVar19 < 1
@@ -250,7 +250,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if not bVar3 then
-        quest:RemoveQuestInfoElement(xStack_5c)
+        quest:RemoveQuestInfoElement(i_stk_5c)
         quest:DisplayQuestInfo(false)
         __native_entity_state:SetStateInt("BeenHit", 0)
         __native_entity_state:SetStateBool("NotBeaten", true)
@@ -267,8 +267,7 @@ function Main(quest, me)
         bVar3 = not alive
         if not bVar3 then
             xStack_38 = resources:StartMovie("")
-            -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
-            -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
+            quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             quest:Pause(0.5)
             bVar3 = false
@@ -308,7 +307,7 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00d65b9f
                 ::LAB_00d65b9f::
-                -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_38)
                 goto LAB_00d664b0
                 ::FLOW_past_lab_00d65b9f::
@@ -317,12 +316,12 @@ function Main(quest, me)
             pCVar6 = quest:GetHero()
             quest:EntitySetAsDrawable(pCVar6, bVar3)
             quest:FixMovieSequenceCamera(false)
-            -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_38)
             resources:PrepareResource(xStack_70)
             quest:EntitySetBossPhase(me, 1)
             iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
-            xStack_5c = iVar19
+            i_stk_5c = iVar19
             quest:DisplayQuestInfo(true)
             quest:UpdateQuestInfoCounter(iVar19, __native_entity_state:GetStateInt("BeenHit"), -1)
             fVar20 = 20.0
@@ -417,7 +416,7 @@ function Main(quest, me)
                             __native_entity_state:SetStateBool("NotBeaten", false)
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
-                        quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
+                        quest:UpdateQuestInfoCounter(i_stk_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
                         iVar19 = quest:GetTimer(xStack_80)
                         __native_condition_2 = iVar19 < 1
                         if __native_condition_2 then
@@ -476,7 +475,7 @@ function Main(quest, me)
                         end
                     end
                 end
-                iVar19 = xStack_5c
+                iVar19 = i_stk_5c
                 cVar5 = __native_entity_state:GetStateBool("NotBeaten")
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -499,8 +498,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if not bVar3 then
                     xStack_38 = resources:StartMovie("")
-                    -- TODO(native): xStack_7c = *(CCharString *)(this + 4);
-                    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);
+                    quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     quest:Pause(0.5)
                     bVar3 = false
@@ -530,7 +528,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_38)
                                 goto LAB_00d664b0
                             end
@@ -541,7 +539,7 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then
                             -- LAB_00d65b83: (native jump target)
-                            -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_38)
                             goto LAB_00d664b0
                         end
@@ -550,12 +548,12 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:EntitySetAsDrawable(pCVar6, bVar3)
                     quest:FixMovieSequenceCamera(false)
-                    -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_38)
                     resources:PrepareResource(xStack_70)
                     quest:EntitySetBossPhase(me, 2)
                     iVar19 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
-                    xStack_5c = iVar19
+                    i_stk_5c = iVar19
                     quest:DisplayQuestInfo(true)
                     quest:UpdateQuestInfoCounter(iVar19, __native_entity_state:GetStateInt("BeenHit"), -1)
                     fVar20 = 20.0
@@ -670,7 +668,7 @@ function Main(quest, me)
                                     __native_entity_state:SetStateBool("NotBeaten", false)
                                     quest:ModifyThingHealth(me, 1000.0, false)
                                 end
-                                quest:UpdateQuestInfoCounter(xStack_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
+                                quest:UpdateQuestInfoCounter(i_stk_5c, __native_entity_state:GetStateInt("BeenHit"), -1)
                                 iVar19 = quest:GetTimer(xStack_80)
                                 __native_condition_3 = iVar19 < 1
                                 if __native_condition_3 then
@@ -714,7 +712,7 @@ function Main(quest, me)
                         ::LAB_00d65e4c::
                         quest:ModifyThingHealth(me, 1000.0, false)
                         ::FLOW_past_lab_00d65e4c::
-                        iVar19 = xStack_5c
+                        iVar19 = i_stk_5c
                         cVar5 = __native_entity_state:GetStateBool("NotBeaten")
                     end
                     alive = not quest:IsActiveThreadTerminating()

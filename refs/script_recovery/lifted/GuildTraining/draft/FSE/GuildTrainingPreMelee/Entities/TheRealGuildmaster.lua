@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, b2, bVar3, cVar4, c_stk_161, c_stk_169, ctr_154, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r2, r3, r4, r5, r6, r7, timerId, uVar14, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_188, xStack_dc, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, b2, bVar3, cVar4, c_stk_161, c_stk_169, ctr_154, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, i_stk_188, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r2, r3, r4, r5, r6, r7, timerId, uVar14, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_dc, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
     local alive = true
     cVar4 = quest:GetStateBool("GuildmasterTeleport")
     uVar14 = 0
@@ -51,8 +51,8 @@ function Main(quest, me)
     bVar3 = false
     pCVar5 = quest:GetThingWithScriptName("M_MeleeTeacherStand")
     quest:EntityTeleportToThing(me, pCVar5, bVar3)
-    xStack_188 = quest:RegisterTimer()
-    quest:SetTimer(xStack_188, 0)
+    i_stk_188 = quest:RegisterTimer()
+    quest:SetTimer(i_stk_188, 0)
     c_stk_169 = 1
     repeat
         alive = quest:NewScriptFrame(me)
@@ -71,7 +71,7 @@ function Main(quest, me)
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
         __native_condition_1 = not bVar3
         if not __native_condition_1 then
-            iVar7 = quest:GetTimer(xStack_188)
+            iVar7 = quest:GetTimer(i_stk_188)
             __native_condition_1 = 0 < iVar7
         end
         if __native_condition_1 then goto FLOW_native_label_1 end
@@ -81,7 +81,7 @@ function Main(quest, me)
         iVar8 = quest:AddNewConversation(me, false, false)
         pCVar6 = quest:GetHero()
         quest:AddPersonToConversation(iVar8, pCVar6)
-        quest:SetTimer(xStack_188, 5)
+        quest:SetTimer(i_stk_188, 5)
         native_arg_switch_2 = uVar14
         repeat
             if native_arg_switch_2 == 0 then
@@ -223,17 +223,18 @@ function Main(quest, me)
             xStack_130 = CVar10
             quest:DisplayQuestInfo(true)
             iVar7 = quest:GetStateInt("DummyHits")
+            xStack_180 = 0
             while iVar7 < 7 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d55c3d end
                 quest:UpdateQuestInfoCounter(CVar10, quest:GetStateInt("DummyHits"), -1)
-                if 0x0 ~= quest:GetStateInt("DummyHits") then
+                if xStack_180 ~= quest:GetStateInt("DummyHits") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d55c3d end
-                    -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
+                    xStack_180 = quest:GetStateInt("DummyHits")
                     quest:SetTimer(timerId, 10)
                 end
                 iVar7 = quest:GetTimer(timerId)
@@ -370,17 +371,18 @@ function Main(quest, me)
                     xStack_130 = CVar10
                     quest:DisplayQuestInfo(true)
                     iVar7 = quest:GetStateInt("DummyHits")
+                    xStack_180 = 0
                     while iVar7 < 7 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d55c3d end
                         quest:UpdateQuestInfoCounter(CVar10, quest:GetStateInt("DummyHits"), -1)
-                        if 0x0 ~= quest:GetStateInt("DummyHits") then
+                        if xStack_180 ~= quest:GetStateInt("DummyHits") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d55c3d end
-                            -- TODO(native): xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);
+                            xStack_180 = quest:GetStateInt("DummyHits")
                             quest:SetTimer(timerId, 10)
                         end
                         iVar7 = quest:GetTimer(timerId)
@@ -473,7 +475,7 @@ function Main(quest, me)
                             resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", xStack_13c, false, false)
                             quest:PauseAllNonScriptedEntities(true)
                             pCVar6 = quest:CreateExperienceOrb(xStack_114_3, 1)
-                            -- TODO(native): CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160, (int)&*(int *)(pCVar6 + 0x4));
+                            xStack_160 = pCVar6
                             quest:EntitySetCutsceneBehaviour(xStack_160, 2)
                             resources:RunMacro("CS_GUILD_PREMELEE_PASSED", xStack_13c, false, true)
                             quest:FixMovieSequenceCamera(false)
@@ -1065,7 +1067,7 @@ function Main(quest, me)
                                                                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar20)
                                                                 __native_condition_3 = bVar3
                                                                 if __native_condition_3 then
-                                                                    iVar7 = quest:GetTimer(xStack_188)
+                                                                    iVar7 = quest:GetTimer(i_stk_188)
                                                                     __native_condition_3 = iVar7 < 1
                                                                 end
                                                                 __native_condition_2 = __native_condition_3
@@ -1080,7 +1082,7 @@ function Main(quest, me)
                                                                     iVar8 = quest:AddNewConversation(me, false, false)
                                                                     pCVar5 = quest:GetHero()
                                                                     quest:AddPersonToConversation(iVar8, pCVar5)
-                                                                    quest:SetTimer(xStack_188, 10)
+                                                                    quest:SetTimer(i_stk_188, 10)
                                                                     if not quest:GetMasterGameState("ScorpionsDestroyedCutscenePlayed") then
                                                                         alive = not quest:IsActiveThreadTerminating()
                                                                         bVar3 = not alive
@@ -1180,7 +1182,7 @@ function Main(quest, me)
         ::FLOW_past_lab_00d533bb::
     end
     ::LAB_00d55c46::
-    quest:DeregisterTimer(xStack_188)
+    quest:DeregisterTimer(i_stk_188)
     ::LAB_00d55c4f::
     resources:ReleaseResource(xStack_17c)
 end

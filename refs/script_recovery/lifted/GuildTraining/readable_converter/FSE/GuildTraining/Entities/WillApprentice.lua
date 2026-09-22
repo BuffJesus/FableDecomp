@@ -16,10 +16,10 @@ function Main(quest, me)
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue3, scratchValue4, scratchValue5, scratchValue, questionAnswer
-    local scratchValue30, index, p0, timerId, resource, timerId4, infoElement
+    local predicateResult, scratchValue3, scratchValue4, scratchValue5, infoElement, scratchValue
+    local questionAnswer, scratchValue30, timerId2, index, p0, timerId, resource
     local function ReleaseEverything()
-        quest:DeregisterTimer(timerId4)
+        quest:DeregisterTimer(timerId2)
         resources:ReleaseResource(resource)
     end
     resource = resources:NewResource()
@@ -39,12 +39,12 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(true)
     scratchValue5 = 0
     local willApprenticeTargetMarker = quest:GetThingWithScriptName("WillApprenticeTargetMarker")
-    timerId4 = quest:RegisterTimer()
-    quest:SetTimer(timerId4, 10)
+    timerId2 = quest:RegisterTimer()
+    quest:SetTimer(timerId2, 10)
     predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
-            quest:DeregisterTimer(timerId4)
+            quest:DeregisterTimer(timerId2)
             resources:ReleaseResource(resource)
             return
         end
@@ -67,10 +67,10 @@ function Main(quest, me)
         ::LAB_00d4f285::
         if not quest:IsDistanceBetweenThingsOver(me, willApprenticeTargetMarker, 4.0) or me:IsPerformingScriptTask() then
             if me:IsPerformingScriptTask() then goto LAB_00d4f49e end
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId4) then goto LAB_00d4f49e end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId2) then goto LAB_00d4f49e end
             if not quest:IsActiveThreadTerminating() then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                quest:SetTimer(timerId4, 20)
+                quest:SetTimer(timerId2, 20)
                 local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 local getMasterGameState = quest:GetMasterGameState("GlobalWillGrade")
@@ -215,19 +215,19 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                 end
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                local timerId2 = quest:RegisterTimer()
-                quest:SetTimer(timerId2, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
+                local timerId3 = quest:RegisterTimer()
+                quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillTimer))))
                 quest:SetMasterGameState("WillScore", 0)
                 quest:SetTimer(willHelpTimer, 0)
                 local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                infoElement = quest:AddQuestInfoTimer(timerId2, "HUD_CLOCK_ICON", 1.0)
+                infoElement = quest:AddQuestInfoTimer(timerId3, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 scratchValue3 = 0
                 scratchValue4 = 0
-                local timerId3 = quest:RegisterTimer()
-                timerId = timerId3
-                quest:SetTimer(timerId3, 0)
-                while 0 < quest:GetTimer(timerId2) and scratchValue3 == 0 do
+                local timerId4 = quest:RegisterTimer()
+                timerId = timerId4
+                quest:SetTimer(timerId4, 0)
+                while 0 < quest:GetTimer(timerId3) and scratchValue3 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d50594 end
                     if quest:GetTimer(timerId) < 1 then
                         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
@@ -244,7 +244,7 @@ function Main(quest, me)
                         quest:AddPersonToConversation(conversationId2, hero)
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_028_APPRENTICE_WILL_NO_WILL", me, hero, false)
                         quest:SetTimer(willHelpTimer, 8)
-                        timerId = timerId3
+                        timerId = timerId4
                         scratchValue3 = scratchValue4
                     end
                     if not quest:IsDistanceBetweenThingsOver(hero, me, 30.0) then
@@ -352,12 +352,12 @@ function Main(quest, me)
                 end
                 quest:SetMasterGameState("HeroTakingGuildTest", false)
                 quest:SetPlayerUsingWillDummies(false)
+                quest:DeregisterTimer(timerId4)
                 quest:DeregisterTimer(timerId3)
-                quest:DeregisterTimer(timerId2)
                 goto LAB_00d503cb
                 ::LAB_00d50594::
+                quest:DeregisterTimer(timerId4)
                 quest:DeregisterTimer(timerId3)
-                quest:DeregisterTimer(timerId2)
             else
                 me:ClearCommands()
                 local movie2 = resources:StartMovie("")

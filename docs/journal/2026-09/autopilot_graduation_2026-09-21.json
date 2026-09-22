@@ -1,0 +1,7 @@
+[
+  {
+    "id": "departure_return",
+    "status": "FAIL",
+    "detail": "channel: [Autopilot] TIMEOUT after 15.0s (is the game running with this bundle? is a script advancing frames?)"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "maze_sword",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST/ seen after 8 send(s)"
+  },
+  {
+    "id": "maze_bow",
+    "status": "PASS",
+    "detail": "expected /TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST/ seen after 14 send(s)"
+  },
+  {
+    "id": "maze_lightning",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_DEPARTURE_MAZE_WIN|MissionSucceeded|SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsDeparture'/ seen after 10 send(s)"
+  }
+]

@@ -120,12 +120,18 @@
   "repeat": 20,
   "interval": 3.0,
   "do": [
+   "input: clear",
+   "hero teleport PreMeleeDummyMarker",
+   "input: hold LSHIFT 2500",
+   "input: hold W 600",
+   "input: hold S 600",
+   "input: hold LSHIFT 2500",
    "input: clear"
   ],
   "expect": "TEXT_CS_028_PREMELEE_ALARM_10",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 120,
-  "note": "XP tutorial box; the Guildmaster then runs the ALARM cutscene and gives the beetles quest card"
+  "timeout": 180,
+  "note": "XP tutorial box; then the hero must COLLECT the XP orb (retail 0x00D52E90 waits `while orb:IsAlive()` with a nag every 10 s): a teleport onto the marker alone never collected it (run 2); holding LEFT SHIFT attracts XP orbs to the hero (user, 2026-09-21), a short walk is the fallback; the Guildmaster then runs the ALARM cutscene and gives the beetles quest card"
  },
  {
   "id": "quest_start_screen",

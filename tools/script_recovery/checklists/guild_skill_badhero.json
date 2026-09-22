@@ -1,0 +1,108 @@
+[
+ {
+  "id": "skill_host",
+  "repeat": 30,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host GuildTrainingSkill/GuildTrainingSkill",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "after the Melee CONTINUE: GuildTraining GameState 5 activates the Skill quest"
+ },
+ {
+  "id": "talk_skill_master",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('TheRealGuildmaster'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "CS_GUILD_SKILL_START|TEXT_CS_028_SKILL_START",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "the Guildmaster WALKS to M_SkillTeacherStand (MoveToPosition) -- teleport onto him wherever he is, then TAB; IsTalkedToByHero -> the SKILL_START cutscene (bow hand-over)"
+ },
+ {
+  "id": "skill_start_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "eval GuildTrainingSkill: quest:GetStateInt('TutorialState')"
+  ],
+  "expect": "eval.*TutorialState.* = 2",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "skip the scene, clear the bow item box + TEXT_QST_028_SKILL_INSTRUCTIONS_BOW_PC box; state 2 = shoot 3 targets"
+ },
+ {
+  "id": "badhero_warnings",
+  "repeat": 16,
+  "interval": 3.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local r = quest:GetThingWithScriptName('ArcheryRing'); local g = quest:GetThingWithScriptName('TheRealGuildmaster'); if r ~= nil and quest:IsDistanceBetweenThingsOver(h, r, 3.0) then quest:EntityTeleportToThing(h, r, false) end; if not quest:IsEntityWieldingRangedWeapon(h) then quest:EntityUnsheatheRangedWeapon(h) end; local ts = quest:GetAllThingsWithScriptName('SkillTarget'); table.sort(ts, function(a, b) return quest:GetDistanceBetweenThings(h, a) < quest:GetDistanceBetweenThings(h, b) end); if g ~= nil and ts[1] ~= nil and quest:IsDistanceBetweenThingsOver(g, ts[1], 1.5) then quest:EntityTeleportToThing(g, ts[1], false) end; if g ~= nil then quest:EntitySetFacingAngleTowardsThing(h, g) end",
+   "input: key SPACE",
+   "input: hold LMB 1500",
+   "eval GuildTraining: quest:GetStateInt('HeroWarnings')"
+  ],
+  "expect": "GUILD_SEAL_THIRD_WARNING|GUILD_SEAL_FOURTH_WARNING|CS_GUILD_BADHERO",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "friendly fire on purpose: the bow AUTO-AIMS at the nearest targetable thing in front (point blank, a facing angle and a lock all ended on a dummy, runs 8-9d), so the Guildmaster is teleported ONTO the nearest SkillTarget and the hero shoots from the ring as in archery_static; hero:MsgHitFriendWithRangedWeapon -> HeroWarnings 1/2/3 (FIRST..THIRD_WARNING), the FOURTH is BADHERO"
+ },
+ {
+  "id": "badhero_scene",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local r = quest:GetThingWithScriptName('ArcheryRing'); local g = quest:GetThingWithScriptName('TheRealGuildmaster'); if r ~= nil and quest:IsDistanceBetweenThingsOver(h, r, 3.0) then quest:EntityTeleportToThing(h, r, false) end; if not quest:IsEntityWieldingRangedWeapon(h) then quest:EntityUnsheatheRangedWeapon(h) end; local ts = quest:GetAllThingsWithScriptName('SkillTarget'); table.sort(ts, function(a, b) return quest:GetDistanceBetweenThings(h, a) < quest:GetDistanceBetweenThings(h, b) end); if g ~= nil and ts[1] ~= nil and quest:IsDistanceBetweenThingsOver(g, ts[1], 1.5) then quest:EntityTeleportToThing(g, ts[1], false) end; if g ~= nil then quest:EntitySetFacingAngleTowardsThing(h, g) end",
+   "input: key SPACE",
+   "input: hold LMB 1500",
+   "eval GuildTraining: quest:GetStateInt('HeroWarnings')"
+  ],
+  "expect": "CS_GUILD_BADHERO",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "keep shooting until the fourth warning: FOURTH_WARNING line, CS_GUILD_BADHERO macro (hero + MAZE actor map), both resources released, HeroWarnings reset"
+ },
+ {
+  "id": "badhero_recovery",
+  "repeat": 20,
+  "interval": 4.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "list",
+   "eval GuildTraining: quest:GetStateInt('HeroWarnings')",
+   "eval GuildTraining: quest:GetMasterGameState('GuildWarningOccuring')"
+  ],
+  "expect": "eval.*HeroWarnings.* = 0",
+  "forbid": "LUA RUNTIME ERROR|host GuildTraining/GuildTraining.*(dead|gone|terminated)",
+  "timeout": 150,
+  "note": "the third-warning thread must NOT terminate the GuildTraining host (user report 2026-09-20: Whisper fight unfinishable); warnings reset to 0 and GuildWarningOccuring false when the punishment block returns"
+ },
+ {
+  "id": "skill_still_scores",
+  "repeat": 24,
+  "interval": 2.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local r = quest:GetThingWithScriptName('ArcheryRing'); if r ~= nil and quest:IsDistanceBetweenThingsOver(h, r, 3.0) then quest:EntityTeleportToThing(h, r, false) end; if not quest:IsEntityWieldingRangedWeapon(h) then quest:EntityUnsheatheRangedWeapon(h) end; local ts = quest:GetAllThingsWithScriptName('SkillTarget'); table.sort(ts, function(a, b) return quest:GetDistanceBetweenThings(h, a) < quest:GetDistanceBetweenThings(h, b) end); local n = quest:GetMasterGameState('SkillScore'); local t = ts[(n % 3) + 1] or ts[1]; if t ~= nil then quest:EntitySetFacingAngleTowardsThing(h, t) end",
+   "input: key SPACE",
+   "input: hold LMB 1500",
+   "eval GuildTraining: quest:GetMasterGameState('SkillScore')"
+  ],
+  "expect": "eval.*SkillScore.* = [1-9]|CS_GUILD_SKILL_MOVE",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "after the punishment the static round must still score (SkillTarget Mains alive)"
+ }
+]

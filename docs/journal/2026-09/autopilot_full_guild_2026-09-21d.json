@@ -1,0 +1,17 @@
+[
+  {
+    "id": "departure_return",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SEAL_GIVE|CS_GUILD_SEAL_RECEIVE|CS_GUILD_DEPARTURE_EXIT_WOODS|CS_GUILD_CEREMONY/ seen"
+  },
+  {
+    "id": "ceremony",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SEAL_RECEIVE|OBJECT_GUILD_SEAL_1|DomeCutsceneStart.* = (true|false)/ seen after 1 send(s)"
+  },
+  {
+    "id": "graduation",
+    "status": "PASS",
+    "detail": "expected /SetQuestAsCompleted: ENTER name='Q_GuildTraining'/ seen after 3 send(s)"
+  }
+]

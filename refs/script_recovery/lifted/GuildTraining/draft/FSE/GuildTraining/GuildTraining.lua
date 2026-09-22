@@ -131,7 +131,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, elem_1, fret_0, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_48, xStack_54, xStack_88
+    local angle, b3, bVar14, bVar2, elem_1, fret_0, iStack_48, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_54, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -927,7 +927,7 @@ function RunTutorials(quest)
             bVar2 = false
             pCVar3 = quest:GetThingWithScriptName("BirdKiller")
             quest:RemoveThing(pCVar3, bVar2, bVar14)
-            -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);
+            RunSaveXPCutscene(quest)
             bVar2 = false
             thing = quest:GetThingWithScriptName("TheRealGuildmaster")
             quest:SetIsPushableByHero(thing, bVar2)
@@ -961,7 +961,7 @@ function RunTutorials(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                -- TODO(native): NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);
+                RunSaveXPCutscene2(quest)
                 quest:FadeScreenOut(0.0, 0.5)
                 uVar15 = 0
                 pCVar3 = quest:GetThingWithScriptName("M_GuildmasterMarker")
@@ -1038,18 +1038,18 @@ function RunTutorials(quest)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar2 = not alive
                                         if not bVar2 then
-                                            xStack_48 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
+                                            iStack_48 = quest:GetAllThingsWithDefName("OBJECT_APPLE_RED_01")
                                             uVar8 = 0
-                                            if #xStack_48 ~= 0 then
+                                            if #iStack_48 ~= 0 then
                                                 iVar9 = 0
                                                 repeat
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar2 = not alive
                                                     if bVar2 then goto LAB_00d496a1 end
-                                                    quest:RemoveThing(xStack_48[(iVar9) / 0xc + 1], false, true)
+                                                    quest:RemoveThing(iStack_48[(iVar9) / 0xc + 1], false, true)
                                                     uVar8 = uVar8 + 1
                                                     iVar9 = iVar9 + 0xc
-                                                until not (uVar8 < (#xStack_48))
+                                                until not (uVar8 < (#iStack_48))
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar2 = not alive
@@ -1136,7 +1136,7 @@ end
 
 function CheckFriendlyAttacks(quest)
     local resources = quest:RetailResources()
-    local aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iStack_24, iVar13, iVar18, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uStack_9c, uVar17, xStack_20, xStack_30, xStack_84
+    local __native_condition_1, aCStack_10, amStack_1c, bVar10, bVar2, bVar20, bVar3, bVar4, bVar5, bVar6, bVar9, cVar11, elem_1, elem_2, iVar13, iVar18, i_stk_24, native_arg_sequence_1, native_arg_sequence_2, pCVar14, pCVar15, pCVar19, pcVar21, pvVar12, r1, uVar17, xStack_20, xStack_30, xStack_84
     local alive = true
     bVar4 = false
     bVar3 = false
@@ -1193,7 +1193,7 @@ function CheckFriendlyAttacks(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar9 = not alive
                 if bVar9 then return end
-                xStack_84[(iVar18) / 0xc + 1]:SetFriendsWithEverythingFlag(1)
+                xStack_84[(iVar18) / 0xc + 1]:SetFriendsWithEverythingFlag(true)
                 quest:EntitySetAsKillable(xStack_84[(iVar18) / 0xc + 1], false, true)
             end
             uVar17 = uVar17 + 1
@@ -1292,7 +1292,7 @@ function CheckFriendlyAttacks(quest)
                             if bVar10 then
                                 return
                             end
-                            xStack_84[(iVar13) / 0xc + 1]:SetFriendsWithEverythingFlag(1)
+                            xStack_84[(iVar13) / 0xc + 1]:SetFriendsWithEverythingFlag(true)
                             quest:EntitySetAsKillable(xStack_84[(iVar13) / 0xc + 1], false, true)
                         end
                         uVar17 = uVar17 + 1
@@ -1326,57 +1326,45 @@ function CheckFriendlyAttacks(quest)
             bVar6 = true
             bVar5 = true
             native_arg_sequence_1 = false
-            if uStack_9c ~= nil then
+            if (r1 ~= nil and not r1:IsNull()) then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
             end
             if native_arg_sequence_1 then
-                -- TODO(native): cVar11 = (**(*uStack_9c + 0x54))("SCRIPT_NAME_HERO")
-                cVar11 = nil --[[unresolved native value]]
-                if cVar11 ~= 0 then
+                cVar11 = r1:MsgIsHitByHero()
+                if cVar11 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
                 end
             end
             if native_arg_sequence_1 then goto LAB_00d45782 end
-            native_arg_sequence_2 = false
-            if uStack_9c ~= nil then
-                native_arg_sequence_2 = true
-            else
-                native_arg_sequence_2 = false
+            __native_condition_1 = (r1 ~= nil and not r1:IsNull())
+            if __native_condition_1 then
+                cVar11 = r1:MsgIsHitByAnySpecialAbilityFromHero()
+                __native_condition_1 = cVar11
             end
-            if native_arg_sequence_2 then
-                -- TODO(native): cVar11 = (**(*uStack_9c + 0xa8))("SCRIPT_NAME_HERO")
-                cVar11 = nil --[[unresolved native value]]
-                if cVar11 ~= 0 then
-                    native_arg_sequence_2 = true
-                else
-                    native_arg_sequence_2 = false
-                end
-            end
-            if native_arg_sequence_2 then
+            if __native_condition_1 then
                 bVar6 = true
                 bVar5 = true
                 bVar9 = true
                 bVar4 = true
-                native_arg_sequence_3 = false
-                if uStack_9c == nil then
-                    native_arg_sequence_3 = true
+                native_arg_sequence_2 = false
+                if not (r1 ~= nil and not r1:IsNull()) then
+                    native_arg_sequence_2 = true
                 else
-                    native_arg_sequence_3 = false
+                    native_arg_sequence_2 = false
                 end
-                if not native_arg_sequence_3 then
-                    -- TODO(native): cVar11 = (**(*uStack_9c + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-                    cVar11 = nil --[[unresolved native value]]
-                    if cVar11 == 0 then
-                        native_arg_sequence_3 = true
+                if not native_arg_sequence_2 then
+                    cVar11 = r1:MsgIsHitByHeroSpecialAbility(0xe)
+                    if not cVar11 then
+                        native_arg_sequence_2 = true
                     else
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                     end
                 end
-                if native_arg_sequence_3 then goto LAB_00d45782 end
+                if native_arg_sequence_2 then goto LAB_00d45782 end
             end
             bVar6 = true
             bVar5 = true
@@ -1455,10 +1443,10 @@ function CheckFriendlyAttacks(quest)
                             bVar20 = false
                             bVar10 = false
                             pCVar14 = quest:GetHero()
-                            iStack_24 = quest:AddNewConversation(pCVar14, bVar10, bVar20)
+                            i_stk_24 = quest:AddNewConversation(pCVar14, bVar10, bVar20)
                             pCVar14 = quest:GetHero()
                             pCVar15 = quest:GetHero()
-                            quest:AddLineToConversation(iStack_24, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", pCVar15, pCVar14, false)
+                            quest:AddLineToConversation(i_stk_24, "TEXT_QST_028_GUILD_SEAL_FOURTH_WARNING", pCVar15, pCVar14, false)
                             quest:Pause(2.0)
                             quest:FixMovieSequenceCamera(true)
                             resources:RunMacro("CS_GUILD_BADHERO", amStack_1c, false, true)
@@ -1466,7 +1454,7 @@ function CheckFriendlyAttacks(quest)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(aCStack_10)
                             resources:DestroyActorMap(amStack_1c)
-                            resources:ReleaseResource(amStack_1c)
+                            resources:ReleaseResource(pCVar19)
                             resources:ReleaseResource(xStack_30)
                             goto LAB_00d45c9d
                         end

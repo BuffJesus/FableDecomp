@@ -1,0 +1,128 @@
+[
+ {
+  "id": "will_host",
+  "repeat": 30,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host GuildTrainingWill/GuildTrainingWill",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "after SKILL_CONTINUE: GuildTraining GameState 6 activates the Will quest; the Guildmaster walks to M_WillTeacherStand nagging WILL_COMMENT_FIRST/SECOND"
+ },
+ {
+  "id": "talk_will_master",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('TheRealGuildmaster'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "CS_GUILD_WILL_LIGHTNING|TEXT_CS_028_WILL_LIGHTNING|eval.*TutorialState.* = 2",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "IsTalkedToByHero -> TutorialState 2 -> GiveHeroAbility(LIGHTNING) + the WILL_LIGHTNING cutscene (the Guildmaster demonstrates on the WillDummy)"
+ },
+ {
+  "id": "will_lightning_scene",
+  "repeat": 16,
+  "interval": 3.0,
+  "do": [
+   "input: skip",
+   "input: clear",
+   "eval GuildTrainingWill: quest:GetStateInt('TutorialState')"
+  ],
+  "expect": "eval.*TutorialState.* = 2",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "skip the scene and the spell tutorial boxes; state 2 = cast lightning at the WillDummy until WillScore > 0"
+ },
+ {
+  "id": "will_first_bolt",
+  "repeat": 20,
+  "interval": 3.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local d = quest:GetNearestWithScriptName(h, 'WillDummy'); if d ~= nil then quest:EntitySetFacingAngleTowardsThing(h, d) end",
+   "input: key SPACE",
+   "input: chord LSHIFT 1200",
+   "eval GuildTraining: quest:GetMasterGameState('WillScore')"
+  ],
+  "expect": "eval.*WillScore.* = [1-9]|CS_GUILD_WILL_TEST|eval.*TutorialState.* = 3",
+  "forbid": "LUA RUNTIME ERROR|GUILD_SEAL_FIRST_WARNING",
+  "timeout": 150,
+  "note": "PC casts the selected spell with LEFT SHIFT (action 86 'Activate Spell Mode') held + the attack button: `chord LSHIFT 1200` (verified by hand 2026-09-21: mana drops; RMB and the slot key 7 do nothing); face + SPACE-lock the WillDummy; WillDummy.lua counts MsgIsHitByHeroSpecialAbility(LIGHTNING) into WillScore (+1) -> TutorialState 3 -> WILL_TEST. The first bolt of run 4 raised a sol error in WillDummy's spin (nil angle: the float slot renamed as an object) -- fixed at the converter"
+ },
+ {
+  "id": "will_test_scene",
+  "repeat": 16,
+  "interval": 3.0,
+  "do": [
+   "input: clear",
+   "eval GuildTrainingWill: quest:GetStateInt('TutorialState')"
+  ],
+  "expect": "eval.*TutorialState.* = 3",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "the WILL_TEST cutscene (no `skip`); state 3 = the timed Will round on the WillDummies"
+ },
+ {
+  "id": "will_round",
+  "repeat": 24,
+  "interval": 2.5,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local d = quest:GetNearestWithScriptName(h, 'WillDummy'); if d ~= nil then quest:EntitySetFacingAngleTowardsThing(h, d) end",
+   "input: key SPACE",
+   "input: chord LSHIFT 1200",
+   "eval GuildTraining: quest:GetMasterGameState('WillScore')"
+  ],
+  "expect": "CS_GUILD_WILL_WON|WILL_WON|WILL_DISQUALIFIED|GiveHeroYesNoQuestion START",
+  "forbid": "LUA RUNTIME ERROR|GUILD_SEAL_FIRST_WARNING",
+  "timeout": 200,
+  "note": "cast at the WillDummies until the round ends (WON / DISQUALIFIED, then the repeat question) -- WillScore 1->3->6->9, WILL_WON, runs 6+7 2026-09-21"
+ },
+ {
+  "id": "will_repeat_answer",
+  "repeat": 8,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1",
+   "input: clear"
+  ],
+  "expect": "CS_GUILD_WILL_CONTINUE|WILL_CONTINUE|TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "Continue (LEFT click) on the repeat question -> WILL_CONTINUE cutscene (HERO/TEACHER/WHISPER) and the continue-to-adulthood-or-play-with-Whisper question"
+ },
+ {
+  "id": "will_adult_answer",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_(NO|YES)|TEXT_QST_028_GUILDMASTER_DEPARTURE_CHAT_10|GuildTrainingDeparture/GuildTrainingDeparture' created",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "Continue (LEFT click) = adulthood: retail's answer-1 branch speaks PLAY_WHISPER_QUESTION_NO (no, you won't play first -- the key the converter used to lose to a stale temporary), then fade / the 2_guild_split_2 AVI / ConfiscateAllHeroWeapons / SetHeroAsTeenager(false) (none of them log) and GuildTraining GameState 9 -> the Departure quest (run 11, 2026-09-21)"
+ },
+ {
+  "id": "departure_host",
+  "repeat": 30,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host GuildTrainingDeparture/GuildTrainingDeparture|GuildTrainingDeparture/GuildTrainingDeparture' created",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 200,
+  "note": "GuildTraining GameState 9 -> Q_GuildTrainingDeparture (the adult stage: MeleeApprentice recreated as the adult Whisper); run 11 reached it; `clear` only (a Speak subtitle box with Next at y~687 gates the adulthood block -- run 12 sat on it for 200 s with the detector's old row window)"
+ }
+]

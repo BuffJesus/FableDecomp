@@ -12,21 +12,21 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, f_stk_1d4, fret_0, iVar15, iVar16, iVar17, iVar19, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, piVar2, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1ec, xStack_210, xStack_214, xStack_21c, xStack_21c_b3, xStack_220, xStack_2c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, __native_condition_8, bVar4, cVar5, c_stk_215, delay, fVar20, fVar3, f_stk_1d4, fret_0, iVar15, iVar16, iVar17, iVar19, i_stk_1d0, i_stk_1ec, i_stk_220, ixVar13, native_arg_switch_2, p4, pCVar11, pCVar18, pCVar6, pCVar7, pCVar8, pcVar14, r1, r2, r3, r4, xStack_164, xStack_170, xStack_180, xStack_190, xStack_1a0, xStack_1ac, xStack_1c, xStack_1c0, xStack_1d4, xStack_1e4, xStack_1e8, xStack_210, xStack_214, xStack_21c, xStack_2c
     local alive = true
     local function __cleanup_LAB_00d5dab8()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_1c)
         resources:DestroyActorMap(xStack_170)
         resources:ReleaseResource(xStack_180)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5dac4()
         resources:DestroyMovie(xStack_1c)
         resources:DestroyActorMap(xStack_170)
         resources:ReleaseResource(xStack_180)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db05()
@@ -34,7 +34,7 @@ function Main(quest, me)
         resources:DestroyMovie(xStack_1c)
         resources:DestroyActorMap(xStack_170)
         resources:ReleaseResource(xStack_180)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db13()
@@ -43,7 +43,7 @@ function Main(quest, me)
         resources:DestroyActorMap(xStack_164)
         resources:ReleaseResource(xStack_190)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db1f()
@@ -51,13 +51,13 @@ function Main(quest, me)
         resources:DestroyActorMap(xStack_164)
         resources:ReleaseResource(xStack_190)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db37()
         resources:ReleaseResource(xStack_190)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db45()
@@ -66,7 +66,7 @@ function Main(quest, me)
         resources:DestroyActorMap(xStack_164)
         resources:ReleaseResource(xStack_190)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db53()
@@ -76,7 +76,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_1a0)
         quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db62()
@@ -86,7 +86,7 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_1a0)
         quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db6f()
@@ -95,20 +95,20 @@ function Main(quest, me)
         resources:ReleaseResource(xStack_1a0)
         quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db84()
         resources:ReleaseResource(xStack_1a0)
         quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     local function __cleanup_LAB_00d5db90()
         quest:DeregisterTimer(xStack_214)
         quest:DeregisterTimer(xStack_21c)
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
         resources:ReleaseResource(xStack_210)
     end
     xStack_210 = resources:NewResource()
@@ -142,9 +142,10 @@ function Main(quest, me)
         me:MoveToPosition(pCVar8, iVar15, iVar16, (iVar17 ~= 0), (iVar19 ~= 0))
         quest:SetPlayerUsingRangedDummies(true)
         iVar16 = quest:RegisterTimer()
-        xStack_220 = iVar16
-        quest:SetTimer(xStack_220, 0)
+        i_stk_220 = iVar16
+        quest:SetTimer(i_stk_220, 0)
         iVar15 = quest:GetStateInt("TutorialState")
+        i_stk_1ec = 0
         while iVar15 == 1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -190,7 +191,7 @@ function Main(quest, me)
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_1c0)
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(i_stk_220)
                                 resources:ReleaseResource(xStack_210)
                                 return
                             end
@@ -214,7 +215,7 @@ function Main(quest, me)
             bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
             __native_condition_2 = bVar4
             if __native_condition_2 then
-                iVar15 = quest:GetTimer(xStack_220)
+                iVar15 = quest:GetTimer(i_stk_220)
                 __native_condition_2 = iVar15 < 1
             end
             __native_condition_1 = __native_condition_2
@@ -229,15 +230,15 @@ function Main(quest, me)
                 iVar16 = quest:AddNewConversation(me, false, false)
                 pCVar6 = quest:GetHero()
                 quest:AddPersonToConversation(iVar16, pCVar6)
-                quest:SetTimer(xStack_220, 10)
-                if 0 == 0 then
+                quest:SetTimer(i_stk_220, 10)
+                if i_stk_1ec == 0 then
                     bVar4 = false
                     pCVar6 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar4)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar16, "TEXT_QST_028_GUILDMASTER_SKILL_COMMENT_FIRST", me, pCVar6, false)
                 else
-                    if 0 == 1 then
+                    if i_stk_1ec == 1 then
                         bVar4 = false
                         pCVar6 = quest:GetHero()
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar4)
@@ -247,7 +248,7 @@ function Main(quest, me)
                     end
                 end
                 ::LAB_00d5b380::
-                -- TODO(native): xStack_1ec = 1 - xStack_1ec;
+                i_stk_1ec = 1 - i_stk_1ec
             end
             iVar15 = quest:GetStateInt("TutorialState")
         end
@@ -255,7 +256,7 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then
             -- LAB_00d5dbab: (native jump target)
-            quest:DeregisterTimer(xStack_220)
+            quest:DeregisterTimer(i_stk_220)
             resources:ReleaseResource(xStack_210)
             return
         end
@@ -282,7 +283,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     resources:ReleaseResource(xStack_180)
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(i_stk_220)
                     resources:ReleaseResource(xStack_210)
                     return
                 end
@@ -295,7 +296,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 resources:ReleaseResource(xStack_180)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
@@ -366,7 +367,7 @@ function Main(quest, me)
             quest:SetTimer(xStack_21c, 0xf)
             quest:SetMasterGameState("SkillScore", 0)
             r2 = quest:GetThingWithScriptName("ArcheryRing")
-            xStack_1d0 = quest:GetMasterGameState("SkillScore")
+            i_stk_1d0 = quest:GetMasterGameState("SkillScore")
             quest:EntitySetTargetable(me, false)
             bVar4 = quest:IsXbox()
             if not bVar4 then
@@ -374,13 +375,13 @@ function Main(quest, me)
                 bVar4 = not alive
                 if not bVar4 then
                     xStack_1e4 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    xStack_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
+                    i_stk_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_LOCK_TARGET", false, 1.0)
                     xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5ba3e
                 end
                 -- LAB_00d5db99: (native jump target)
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
@@ -388,12 +389,12 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
             xStack_1e4 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-            xStack_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
+            i_stk_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_TRIGGER_LEFT", false, 1.0)
             xStack_1e8 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5ba3e::
             c_stk_215 = 0
@@ -407,7 +408,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     quest:DeregisterTimer(xStack_21c)
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(i_stk_220)
                     resources:ReleaseResource(xStack_210)
                     return
                 end
@@ -432,13 +433,13 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
                     c_stk_215 = 1
                     quest:RemoveQuestInfoElement(xStack_1e4)
-                    quest:RemoveQuestInfoElement(xStack_1ec)
+                    quest:RemoveQuestInfoElement(i_stk_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
                 else
                     if c_stk_215 == 0 then
@@ -446,14 +447,14 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                         quest:UpdateQuestInfoTick(xStack_1e4, bVar4)
                         bVar4 = quest:IsPlayerHoldingLockTargetButton()
-                        quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
+                        quest:UpdateQuestInfoTick(i_stk_1ec, bVar4)
                         bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                         quest:UpdateQuestInfoTick(xStack_1e8, bVar4)
                         iVar15 = quest:GetTimer(xStack_21c)
@@ -471,7 +472,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:DeregisterTimer(xStack_21c)
-                                    quest:DeregisterTimer(xStack_220)
+                                    quest:DeregisterTimer(i_stk_220)
                                     resources:ReleaseResource(xStack_210)
                                     return
                                 end
@@ -485,7 +486,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_21c)
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(i_stk_220)
                                             resources:ReleaseResource(xStack_210)
                                             return
                                         end
@@ -498,7 +499,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_21c)
-                                                quest:DeregisterTimer(xStack_220)
+                                                quest:DeregisterTimer(i_stk_220)
                                                 resources:ReleaseResource(xStack_210)
                                                 return
                                             end
@@ -509,7 +510,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_21c)
-                                                quest:DeregisterTimer(xStack_220)
+                                                quest:DeregisterTimer(i_stk_220)
                                                 resources:ReleaseResource(xStack_210)
                                                 return
                                             end
@@ -521,7 +522,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_21c)
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(i_stk_220)
                                             resources:ReleaseResource(xStack_210)
                                             return
                                         end
@@ -534,7 +535,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_21c)
-                                                quest:DeregisterTimer(xStack_220)
+                                                quest:DeregisterTimer(i_stk_220)
                                                 resources:ReleaseResource(xStack_210)
                                                 return
                                             end
@@ -545,7 +546,7 @@ function Main(quest, me)
                                             bVar4 = not alive
                                             if bVar4 then
                                                 quest:DeregisterTimer(xStack_21c)
-                                                quest:DeregisterTimer(xStack_220)
+                                                quest:DeregisterTimer(i_stk_220)
                                                 resources:ReleaseResource(xStack_210)
                                                 return
                                             end
@@ -558,7 +559,7 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:DeregisterTimer(xStack_21c)
-                                        quest:DeregisterTimer(xStack_220)
+                                        quest:DeregisterTimer(i_stk_220)
                                         resources:ReleaseResource(xStack_210)
                                         return
                                     end
@@ -571,7 +572,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_21c)
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(i_stk_220)
                                             resources:ReleaseResource(xStack_210)
                                             return
                                         end
@@ -582,7 +583,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:DeregisterTimer(xStack_21c)
-                                            quest:DeregisterTimer(xStack_220)
+                                            quest:DeregisterTimer(i_stk_220)
                                             resources:ReleaseResource(xStack_210)
                                             return
                                         end
@@ -597,35 +598,34 @@ function Main(quest, me)
                 end
                 ::LAB_00d5bf6c::
                 iVar15 = quest:GetMasterGameState("SkillScore")
-                if xStack_1d0 < iVar15 then
+                if i_stk_1d0 < iVar15 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
-                    xStack_1d0 = quest:GetMasterGameState("SkillScore")
+                    i_stk_1d0 = quest:GetMasterGameState("SkillScore")
                 else
-                    if iVar15 < xStack_1d0 then
+                    if iVar15 < i_stk_1d0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
-                        piVar2 = (__native_entity_state:GetStateInt("self_0x18") + 0xa4)
-                        -- TODO(native): *piVar2 = *piVar2 + 1;
+                        quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + 1)
                         bVar4 = quest:IsConversationActive(iVar16)
                         if not bVar4 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_21c)
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(i_stk_220)
                                 resources:ReleaseResource(xStack_210)
                                 return
                             end
@@ -652,7 +652,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
@@ -670,7 +670,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
@@ -679,12 +679,12 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     quest:DeregisterTimer(xStack_21c)
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(i_stk_220)
                     resources:ReleaseResource(xStack_210)
                     return
                 end
                 quest:RemoveQuestInfoElement(xStack_1e4)
-                quest:RemoveQuestInfoElement(xStack_1ec)
+                quest:RemoveQuestInfoElement(i_stk_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end
             xStack_190 = resources:NewResource()
@@ -778,13 +778,12 @@ function Main(quest, me)
                 bVar4 = not alive
                 if not bVar4 then
                     CVar10 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
-                    xStack_1e4 = CVar10
-                    xStack_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
+                    i_stk_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
                     xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
                 end
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
@@ -792,13 +791,12 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
             CVar10 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
-            xStack_1e4 = CVar10
-            xStack_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
+            i_stk_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
             xStack_1e8 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
             c_stk_215 = 0
@@ -809,7 +807,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     quest:DeregisterTimer(xStack_21c)
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(i_stk_220)
                     resources:ReleaseResource(xStack_210)
                     return
                 end
@@ -834,7 +832,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
@@ -849,7 +847,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
@@ -861,7 +859,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_21c)
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(i_stk_220)
                                 resources:ReleaseResource(xStack_210)
                                 return
                             end
@@ -872,7 +870,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
@@ -884,7 +882,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:DeregisterTimer(xStack_21c)
-                                quest:DeregisterTimer(xStack_220)
+                                quest:DeregisterTimer(i_stk_220)
                                 resources:ReleaseResource(xStack_210)
                                 return
                             end
@@ -895,7 +893,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
@@ -908,7 +906,7 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
@@ -934,13 +932,13 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then
                         quest:DeregisterTimer(xStack_21c)
-                        quest:DeregisterTimer(xStack_220)
+                        quest:DeregisterTimer(i_stk_220)
                         resources:ReleaseResource(xStack_210)
                         return
                     end
                     c_stk_215 = 1
                     quest:RemoveQuestInfoElement(CVar10)
-                    quest:RemoveQuestInfoElement(xStack_1ec)
+                    quest:RemoveQuestInfoElement(i_stk_1ec)
                     quest:RemoveQuestInfoElement(xStack_1e8)
                 else
                     if c_stk_215 == 0 then
@@ -948,14 +946,14 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:DeregisterTimer(xStack_21c)
-                            quest:DeregisterTimer(xStack_220)
+                            quest:DeregisterTimer(i_stk_220)
                             resources:ReleaseResource(xStack_210)
                             return
                         end
                         bVar4 = quest:IsPlayerCarryingItemOfType("OBJECT_YEW_LONGBOW")
                         quest:UpdateQuestInfoTick(CVar10, bVar4)
                         bVar4 = quest:IsHeroInProjectileWeaponMode()
-                        quest:UpdateQuestInfoTick(xStack_1ec, bVar4)
+                        quest:UpdateQuestInfoTick(i_stk_1ec, bVar4)
                         bVar4 = quest:IsPlayerHoldingFireRangedWeaponButton()
                         quest:UpdateQuestInfoTick(xStack_1e8, bVar4)
                     end
@@ -965,7 +963,7 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then
                 quest:DeregisterTimer(xStack_21c)
-                quest:DeregisterTimer(xStack_220)
+                quest:DeregisterTimer(i_stk_220)
                 resources:ReleaseResource(xStack_210)
                 return
             end
@@ -974,23 +972,22 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then
                     quest:DeregisterTimer(xStack_21c)
-                    quest:DeregisterTimer(xStack_220)
+                    quest:DeregisterTimer(i_stk_220)
                     resources:ReleaseResource(xStack_210)
                     return
                 end
                 quest:RemoveQuestInfoElement(CVar10)
-                quest:RemoveQuestInfoElement(xStack_1ec)
+                quest:RemoveQuestInfoElement(i_stk_1ec)
                 quest:RemoveQuestInfoElement(xStack_1e8)
             end
             xStack_214 = quest:RegisterTimer()
-            -- TODO(native): piVar2 = DAT_0143e8f8;
             iVar16 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf04)))
             quest:SetTimer(xStack_214, iVar16)
             quest:SetMasterGameState("SkillScore", 0)
             c_stk_215 = 0
             iVar15 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
-            xStack_1ec = iVar15
-            xStack_1d0 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+            i_stk_1ec = iVar15
+            i_stk_1d0 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
             xStack_1e4 = quest:AddQuestInfoTimer(xStack_214, "HUD_CLOCK_ICON", 1.0)
             quest:DisplayQuestInfo(true)
             quest:UpdateQuestInfoCounter(iVar15, quest:GetMasterGameState("HighestSkillScore"), -1)
@@ -1008,8 +1005,8 @@ function Main(quest, me)
                     if bVar4 then __cleanup_LAB_00d5db90(); return end
                     c_stk_215 = 1
                 end
-                iVar15 = xStack_1d0
-                quest:UpdateQuestInfoCounter(xStack_1d0, quest:GetMasterGameState("SkillScore"), -1)
+                iVar15 = i_stk_1d0
+                quest:UpdateQuestInfoCounter(i_stk_1d0, quest:GetMasterGameState("SkillScore"), -1)
                 if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -1074,14 +1071,9 @@ function Main(quest, me)
                 if not __native_entity_state:GetStateBool("PlayerNotWarned") then
                     goto LAB_00d5cf7a
                 else
-                    -- TODO(native): CVar10 = *(this + 4)
-                    CVar10 = nil --[[unresolved native value]]
                     fVar20 = 6.0
-                    xStack_1e8 = CVar10
-                    -- TODO(native): pCVar7 = (**(*CVar10 + 0x120))(CVar10,"ArcheryRing","ArcheryRing")
-                    pCVar7 = nil --[[unresolved native value]]
-                    -- TODO(native): pCVar6 = (**(*CVar10 + 0x118))(CVar10)
-                    pCVar6 = nil --[[unresolved native value]]
+                    pCVar7 = quest:GetThingWithScriptName("ArcheryRing")
+                    pCVar6 = quest:GetHero()
                     bVar4 = quest:IsDistanceBetweenThingsOver(pCVar6, pCVar7, fVar20)
                     if not bVar4 then goto LAB_00d5cf7a end
                     bVar4 = true
@@ -1123,8 +1115,8 @@ function Main(quest, me)
             bVar4 = not alive
             if bVar4 then __cleanup_LAB_00d5db90(); return end
             quest:DisplayQuestInfo(false)
-            quest:RemoveQuestInfoElement(xStack_1ec)
-            quest:RemoveQuestInfoElement(xStack_1d0)
+            quest:RemoveQuestInfoElement(i_stk_1ec)
+            quest:RemoveQuestInfoElement(i_stk_1d0)
             quest:RemoveQuestInfoElement(xStack_1e4)
             quest:EntitySetTargetable(me, true)
             xStack_1a0 = resources:NewResource()
@@ -1155,7 +1147,7 @@ function Main(quest, me)
             xStack_1c0 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            if xStack_21c_b3 == 0 then
+            if c_stk_215 == 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if not bVar4 then
@@ -1178,37 +1170,37 @@ function Main(quest, me)
                     repeat
                         if native_arg_switch_2 == 0 then
                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_APLUS"
-                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_114);
+                            resources:SetString(pCVar7, "$GRADE", pcVar14)
                             break
                         else
                             if native_arg_switch_2 == 1 then
                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_A"
-                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_10c);
+                                resources:SetString(pCVar7, "$GRADE", pcVar14)
                                 break
                             else
                                 if native_arg_switch_2 == 2 then
                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_B"
-                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_104);
+                                    resources:SetString(pCVar7, "$GRADE", pcVar14)
                                     break
                                 else
                                     if native_arg_switch_2 == 3 then
                                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_C"
-                                        -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_fc);
+                                        resources:SetString(pCVar7, "$GRADE", pcVar14)
                                         break
                                     else
                                         if native_arg_switch_2 == 4 then
                                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_D"
-                                            -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_f4);
+                                            resources:SetString(pCVar7, "$GRADE", pcVar14)
                                             break
                                         else
                                             if native_arg_switch_2 == 5 then
                                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_E"
-                                                -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_ec);
+                                                resources:SetString(pCVar7, "$GRADE", pcVar14)
                                                 break
                                             else
                                                 if native_arg_switch_2 == 6 then
                                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_F"
-                                                    -- TODO(native): pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)xStack_1cc,xStack_e4);
+                                                    resources:SetString(pCVar7, "$GRADE", pcVar14)
                                                     break
                                                 else
                                                     goto FLOW_native_label_1
@@ -1293,6 +1285,7 @@ function Main(quest, me)
             resources:ReleaseResource(xStack_1a0)
             quest:DeregisterTimer(xStack_214)
             quest:DeregisterTimer(xStack_21c)
+            iVar16 = i_stk_220
             cVar5 = quest:GetMasterGameState("SkillRepeating")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -1310,7 +1303,7 @@ function Main(quest, me)
             pCVar8 = pCVar7:GetPos()
             r3 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "SkillApprentice")
             if (r3 ~= nil and not r3:IsNull()) then
-                r3:SetToKillOnLevelUnload(0)
+                r3:SetToKillOnLevelUnload(false)
             end
             pCVar7 = quest:GetThingWithScriptName("BirdKillerMarker")
             bVar4 = false
@@ -1323,7 +1316,7 @@ function Main(quest, me)
             quest:SetPlayerUsingRangedDummies(false)
         end
         ::LAB_00d5da96::
-        quest:DeregisterTimer(xStack_220)
+        quest:DeregisterTimer(i_stk_220)
     end
     resources:ReleaseResource(xStack_210)
 end

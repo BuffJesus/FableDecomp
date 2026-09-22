@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, iVar14, iVar16, iVar5, iVar7, i_stk_210, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_250, xStack_254, xStack_258, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, iStack_254, iVar14, iVar16, iVar5, iVar7, i_stk_210, i_stk_250, i_stk_258, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
     local alive = true
     local function __region_LAB_00d402b3_c31()
         quest:PauseAllNonScriptedEntities(false)
@@ -53,15 +53,15 @@ function Main(quest, me)
         quest:SetThingHasInformation(me, false, true, false)
         me:SetFriendsWithEverythingFlag(true)
         if (r1 ~= nil and not r1:IsNull()) then
-            r1:SetFriendsWithEverythingFlag(1)
+            r1:SetFriendsWithEverythingFlag(true)
         end
         __native_entity_state:SetStateInt("RaceMode", 0)
         u_stk_21c = 0
-        xStack_254 = quest:RegisterTimer()
+        iStack_254 = quest:RegisterTimer()
         iVar5 = quest:RegisterTimer()
-        xStack_258 = iVar5
-        xStack_250 = quest:RegisterTimer()
-        quest:SetTimer(xStack_258, 1)
+        i_stk_258 = iVar5
+        i_stk_250 = quest:RegisterTimer()
+        quest:SetTimer(i_stk_258, 1)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         while not bVar3 do
@@ -84,7 +84,7 @@ function Main(quest, me)
                     bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
                     __native_condition_1 = bVar3
                     if __native_condition_1 then
-                        iVar7 = quest:GetTimer(xStack_258)
+                        iVar7 = quest:GetTimer(i_stk_258)
                         __native_condition_1 = iVar7 < 1
                     end
                     if __native_condition_1 then
@@ -148,7 +148,7 @@ function Main(quest, me)
                         end
                         ::LAB_00d3e7f7::
                         ::FLOW_native_label_1::
-                        quest:SetTimer(xStack_258, 3)
+                        quest:SetTimer(i_stk_258, 3)
                         u_stk_21c = u_stk_21c + 1
                         i_stk_210 = iVar5 + 1
                     end
@@ -181,9 +181,9 @@ function Main(quest, me)
                                 if bVar3 then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(xStack_20c)
-                                    quest:DeregisterTimer(xStack_250)
-                                    quest:DeregisterTimer(xStack_258)
-                                    quest:DeregisterTimer(xStack_254)
+                                    quest:DeregisterTimer(i_stk_250)
+                                    quest:DeregisterTimer(i_stk_258)
+                                    quest:DeregisterTimer(iStack_254)
                                     goto LAB_00d40749
                                 end
                                 iVar5 = me:IsPerformingScriptTask()
@@ -207,9 +207,9 @@ function Main(quest, me)
                             if bVar3 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_20c)
-                                quest:DeregisterTimer(xStack_250)
-                                quest:DeregisterTimer(xStack_258)
-                                quest:DeregisterTimer(xStack_254)
+                                quest:DeregisterTimer(i_stk_250)
+                                quest:DeregisterTimer(i_stk_258)
+                                quest:DeregisterTimer(iStack_254)
                                 r2 = nil
                                 r1 = nil
                                 resources:ReleaseResource(xStack_23c)
@@ -271,10 +271,10 @@ function Main(quest, me)
                             pCVar6 = quest:GetThingWithScriptName("RaceMarker")
                             quest:MiniMapAddMarker(pCVar6, "HUD_ORB_QUEST_VIGNETTE")
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc)))
-                            quest:SetTimer(xStack_254, iVar7)
+                            quest:SetTimer(iStack_254, iVar7)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc) + 20.0))
-                            quest:SetTimer(xStack_250, iVar7)
-                            xStack_214 = quest:AddQuestInfoTimer(xStack_254, "HUD_CLOCK_ICON", 1.0)
+                            quest:SetTimer(i_stk_258, iVar7)
+                            xStack_214 = quest:AddQuestInfoTimer(iStack_254, "HUD_CLOCK_ICON", 1.0)
                             quest:DisplayQuestInfo(true)
                             if 1 == 0 then
                                 alive = not quest:IsActiveThreadTerminating()
@@ -337,9 +337,9 @@ function Main(quest, me)
             bVar3 = not alive
             if bVar3 then
                 -- LAB_00d4072e: (native jump target)
-                quest:DeregisterTimer(xStack_250)
-                quest:DeregisterTimer(xStack_258)
-                quest:DeregisterTimer(xStack_254)
+                quest:DeregisterTimer(i_stk_250)
+                quest:DeregisterTimer(i_stk_258)
+                quest:DeregisterTimer(iStack_254)
                 goto LAB_00d40749
             end
             iVar5 = __native_entity_state:GetStateInt("RaceMode")
@@ -356,7 +356,7 @@ function Main(quest, me)
                 bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
                 __native_condition_2 = bVar3
                 if __native_condition_2 then
-                    iVar5 = quest:GetTimer(xStack_258)
+                    iVar5 = quest:GetTimer(i_stk_258)
                     __native_condition_2 = iVar5 < 1
                 end
                 if __native_condition_2 then
@@ -420,7 +420,7 @@ function Main(quest, me)
                     end
                     ::LAB_00d3f069::
                     ::FLOW_native_label_2::
-                    quest:SetTimer(xStack_258, 3)
+                    quest:SetTimer(i_stk_258, 3)
                     u_stk_21c = uVar9 + 1
                 end
                 bVar3 = me:IsTalkedToByHero()
@@ -476,7 +476,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         pCVar11 = xStack_c4
                     else
-                        iVar5 = quest:GetTimer(xStack_254)
+                        iVar5 = quest:GetTimer(iStack_254)
                         if iVar5 < 1 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -587,7 +587,7 @@ function Main(quest, me)
                     end
                     resources:DestroyMovie(pCVar11)
                 end
-                iVar5 = quest:GetTimer(xStack_250)
+                iVar5 = quest:GetTimer(i_stk_250)
                 if iVar5 < 1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -621,7 +621,7 @@ function Main(quest, me)
                     bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
                     __native_condition_3 = bVar3
                     if __native_condition_3 then
-                        iVar5 = quest:GetTimer(xStack_258)
+                        iVar5 = quest:GetTimer(i_stk_258)
                         __native_condition_3 = iVar5 < 1
                     end
                     if __native_condition_3 then
@@ -686,7 +686,7 @@ function Main(quest, me)
                         end
                         ::LAB_00d3f894::
                         ::FLOW_native_label_3::
-                        quest:SetTimer(xStack_258, 3)
+                        quest:SetTimer(i_stk_258, 3)
                         u_stk_21c = u_stk_21c + 1
                         i_stk_210 = iVar5 + 1
                     end
@@ -805,10 +805,10 @@ function Main(quest, me)
                             __native_entity_state:SetStateInt("RaceMode", 1)
                             quest:SetStateBool("ReachedPlatform", false)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc)))
-                            quest:SetTimer(xStack_254, iVar7)
+                            quest:SetTimer(iStack_254, iVar7)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc) + 20.0))
-                            quest:SetTimer(xStack_250, iVar7)
-                            xStack_214 = quest:AddQuestInfoTimer(xStack_254, "HUD_CLOCK_ICON", 1.0)
+                            quest:SetTimer(i_stk_258, iVar7)
+                            xStack_214 = quest:AddQuestInfoTimer(iStack_254, "HUD_CLOCK_ICON", 1.0)
                             pCVar6 = quest:GetThingWithScriptName("RaceMarker")
                             quest:MiniMapAddMarker(pCVar6, "HUD_ORB_QUEST_VIGNETTE")
                         else
@@ -876,7 +876,7 @@ function Main(quest, me)
                     bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
                     __native_condition_4 = bVar3
                     if __native_condition_4 then
-                        iVar7 = quest:GetTimer(xStack_258)
+                        iVar7 = quest:GetTimer(i_stk_258)
                         __native_condition_4 = iVar7 < 1
                     end
                     if __native_condition_4 then
@@ -940,7 +940,7 @@ function Main(quest, me)
                         end
                         ::LAB_00d40030::
                         ::FLOW_native_label_4::
-                        quest:SetTimer(xStack_258, 7)
+                        quest:SetTimer(i_stk_258, 7)
                         u_stk_21c = u_stk_21c + 1
                         i_stk_210 = iVar5 + 1
                     end
@@ -1067,9 +1067,9 @@ function Main(quest, me)
             bVar3 = not alive
         end
         ::LAB_00d405fc::
-        quest:DeregisterTimer(xStack_250)
-        quest:DeregisterTimer(xStack_258)
-        quest:DeregisterTimer(xStack_254)
+        quest:DeregisterTimer(i_stk_250)
+        quest:DeregisterTimer(i_stk_258)
+        quest:DeregisterTimer(iStack_254)
         ::LAB_00d40749::
     end
     ::FLOW_after_lab_00d405fc::
@@ -1079,9 +1079,9 @@ function Main(quest, me)
     ::LAB_00d405d6::
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(xStack_20c)
-    quest:DeregisterTimer(xStack_250)
-    quest:DeregisterTimer(xStack_258)
-    quest:DeregisterTimer(xStack_254)
+    quest:DeregisterTimer(i_stk_250)
+    quest:DeregisterTimer(i_stk_258)
+    quest:DeregisterTimer(iStack_254)
     -- LAB_00d40749_c29: (native jump target)
     goto FLOW_after_lab_00d405fc
     ::LAB_00d403e1::
@@ -1093,9 +1093,9 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         ::LAB_00d405fc_c30::
-        quest:DeregisterTimer(xStack_250)
-        quest:DeregisterTimer(xStack_258)
-        quest:DeregisterTimer(xStack_254)
+        quest:DeregisterTimer(i_stk_250)
+        quest:DeregisterTimer(i_stk_258)
+        quest:DeregisterTimer(iStack_254)
         -- LAB_00d40749_c30: (native jump target)
         goto FLOW_after_lab_00d405fc
     end
@@ -1109,7 +1109,7 @@ function Main(quest, me)
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar15)
         __native_condition_5 = bVar3
         if __native_condition_5 then
-            iVar7 = quest:GetTimer(xStack_258)
+            iVar7 = quest:GetTimer(i_stk_258)
             __native_condition_5 = iVar7 < 1
         end
         if __native_condition_5 then
@@ -1173,7 +1173,7 @@ function Main(quest, me)
             end
             ::LAB_00d40030_c31::
             ::FLOW_native_label_4_c31::
-            quest:SetTimer(xStack_258, 7)
+            quest:SetTimer(i_stk_258, 7)
             u_stk_21c = u_stk_21c + 1
             i_stk_210 = iVar5 + 1
         end
@@ -1287,9 +1287,9 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     ::LAB_00d405fc_c31::
-    quest:DeregisterTimer(xStack_250)
-    quest:DeregisterTimer(xStack_258)
-    quest:DeregisterTimer(xStack_254)
+    quest:DeregisterTimer(i_stk_250)
+    quest:DeregisterTimer(i_stk_258)
+    quest:DeregisterTimer(iStack_254)
     -- LAB_00d40749_c31: (native jump target)
     goto FLOW_after_lab_00d405fc
 end

@@ -111,13 +111,15 @@ def run_main(stage, mock=None):
 WOODS_MOCK = r'''
 local answers = {%s}
 local events, state = {}, {GuildmasterTeleport = true}
-local terminating, frames, asked, talked = false, 0, 0, true
+local terminating, frames, asked, talked, orbPolls = false, 0, 0, true, 0
 local function record(...) events[#events + 1] = {...} end
 local function thing(name)
     return setmetatable({name = name}, {__index = function(_, method)
         if method == 'IsTalkedToByHero' then return function() local t = talked; talked = false; return t end end
         if method == 'IsPerformingScriptTask' then return function() return false end end
-        if method == 'IsAlive' then return function() return true end end
+        -- the XP orb is alive for one poll, then collected (retail waits `while orb:IsAlive()`; live since the
+        -- 2026-09-21 counted-pointer fold landed the orb copy -- before, the polled thing was nil)
+        if method == 'IsAlive' then return function() if name == 'orb' then orbPolls = orbPolls + 1; return orbPolls <= 1 end return true end end
         if method == 'GetPos' then return function() return {x = 1, y = 2, z = 3} end end
         if method == 'Speak' then return function(_, _, key) record(name .. ':Speak', key); return true end end
         return function(_, ...) record(name .. ':' .. method, ...) end

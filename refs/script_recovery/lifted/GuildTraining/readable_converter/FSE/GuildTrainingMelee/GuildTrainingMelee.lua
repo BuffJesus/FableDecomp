@@ -16,7 +16,7 @@ function Main(quest)
     local rivalHeroWhisperTeenApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MK_GTWU_WHISPER"):GetPos(), "MeleeOpponent")
     quest:EntitySetInFaction(rivalHeroWhisperTeenApprentice, "FACTION_HERO")
     if rivalHeroWhisperTeenApprentice ~= nil and not rivalHeroWhisperTeenApprentice:IsNull() then
-        rivalHeroWhisperTeenApprentice:SetFriendsWithEverythingFlag(1)
+        rivalHeroWhisperTeenApprentice:SetFriendsWithEverythingFlag(true)
     end
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)

@@ -1,6 +1,6 @@
 # Drive the retail Fable.exe window: capture / click / key / info.
 param(
-    [ValidateSet('capture','click','move','key','info','wait','lmb','hold')] [string]$Action = 'capture',
+    [ValidateSet('capture','click','move','key','info','wait','lmb','hold','chord')] [string]$Action = 'capture',
     [string]$Output = 'capture.png',
     [int]$X = 0, [int]$Y = 0,
     [string]$Keys = '',
@@ -70,7 +70,7 @@ switch ($Action) {
   }
   'hold' {
     # hold one key (Keys) down for X milliseconds: movement (W/A/S/D) and charged actions; scan code for DirectInput
-    $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23 }
+    $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23; LSHIFT=0xA0; RSHIFT=0xA1 }
     $k = $Keys.Trim()
     # mouse buttons too: LMB / RMB / MMB (block = hold the right button, docs/engine/INPUT.md)
     $mb = @{ LMB=@(0x0002,0x0004); RMB=@(0x0008,0x0010); MMB=@(0x0020,0x0040) }
@@ -85,6 +85,21 @@ switch ($Action) {
       Start-Sleep -Milliseconds ([Math]::Max(50, $X))
       [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x000A,[UIntPtr]::Zero)
     }
+  }
+  'chord' {
+    # hold a modifier KEY (Keys, e.g. LSHIFT = spell mode) and, while it is down, hold the LEFT mouse button for X ms
+    # (Fable PC casts the selected spell with Shift + attack; docs/engine/INPUT.md action 86 = Activate Spell Mode)
+    $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; TAB=0x09; LSHIFT=0xA0; RSHIFT=0xA1; LCTRL=0xA2 }
+    $k = $Keys.Trim()
+    $vk = if ($map.ContainsKey($k)) { $map[$k] } else { [int][char]$k.ToUpper() }
+    $sc = [AtlasQaNative]::MapVirtualKey([uint32]$vk, 0)
+    [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x0008,[UIntPtr]::Zero)
+    Start-Sleep -Milliseconds 300
+    [AtlasQaNative]::mouse_event(0x0002,0,0,0,[UIntPtr]::Zero)
+    Start-Sleep -Milliseconds ([Math]::Max(50, $X))
+    [AtlasQaNative]::mouse_event(0x0004,0,0,0,[UIntPtr]::Zero)
+    Start-Sleep -Milliseconds 200
+    [AtlasQaNative]::keybd_event([byte]$vk,[byte]$sc,0x000A,[UIntPtr]::Zero)
   }
   'lmb' {
     # left-button press/release where the in-game cursor already is (attack / confirm), X = repeat count
@@ -107,7 +122,7 @@ switch ($Action) {
   }
   'key' {
     # Keys: names separated by spaces, e.g. "ENTER ESC DOWN"
-    $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23 }
+    $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23; LSHIFT=0xA0; RSHIFT=0xA1 }
     foreach ($k in $Keys.Split(' ')) {
       if ($k -eq '') { continue }
       $vk = if ($map.ContainsKey($k)) { $map[$k] } else { [int][char]$k.ToUpper() }

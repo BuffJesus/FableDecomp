@@ -1,0 +1,136 @@
+[
+ {
+  "id": "departure_scene",
+  "repeat": 24,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "CS_GUILD_DEPARTURE_GM_DONE|GuildTrainingWoodsDeparture/GuildTrainingWoodsDeparture' created",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "UNTESTED: the Departure Guildmaster acquires himself + the hero, GM_DONE cutscene, then activates Q_GuildTrainingWoodsDeparture (HeroTakingGuildTest); `clear` only -- an ESC landing after GM_DONE opened the pause menu (run 12b)"
+ },
+ {
+  "id": "woods_departure_host",
+  "repeat": 20,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] host GuildTrainingWoodsDeparture/GuildTrainingWoodsDeparture",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "UNTESTED: the final woods test host is up (ArtifactThief, ScorpionHome, FinalMaze entities)"
+ },
+ {
+  "id": "departure_to_woods",
+  "do": [
+   "GuildTraining: quest:GoToMapSlotRetailTransition(84, 4839.04, 3689.16, 26.0)"
+  ],
+  "expect": "Binding entity '(ArtifactThief|FinalMaze|ScorpionHome)' to script 'GuildTrainingWoodsDeparture/Entities",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "one retail transition into GuildWoods for the final test (run 11 probe: WoodsDeparture binds ArtifactThief / FinalMaze / ScorpionHome; Maze meets the hero, MAZE_START, 0/7 counter)"
+ },
+ {
+  "id": "maze_meeting",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "TEXT_QST_028_MAZE_WOODS_DEPARTURE_MEETING_30|CS_GUILD_DEPARTURE_MAZE_START",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90
+ },
+ {
+  "id": "maze_sword",
+  "repeat": 40,
+  "interval": 2.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local m = quest:GetThingWithScriptName('FinalMaze'); if m ~= nil then quest:EntityTeleportToThing(h, m, false) end; if not quest:IsEntityWieldingMeleeWeapon(h) then quest:EntityUnsheatheMeleeWeapon(h) end",
+   "input: key SPACE",
+   "input: lmb 3"
+  ],
+  "expect": "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "UNTESTED: phase 0 = seven OBJECT_IRON_LONGSWORD hits on Maze (FACTION_MONSTERS, hero undamageable), as the Melee stage's attack_real; then Maze asks for the bow"
+ },
+ {
+  "id": "maze_bow",
+  "repeat": 40,
+  "interval": 2.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local m = quest:GetThingWithScriptName('FinalMaze'); if m ~= nil and quest:IsDistanceBetweenThingsOver(h, m, 6.0) then quest:EntityTeleportToThing(h, m, false) end; if not quest:IsEntityWieldingRangedWeapon(h) then quest:EntityUnsheatheRangedWeapon(h) end; if m ~= nil then quest:EntitySetFacingAngleTowardsThing(h, m) end",
+   "input: key SPACE",
+   "input: hold LMB 1500"
+  ],
+  "expect": "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "UNTESTED: phase 1 = seven OBJECT_YEW_LONGBOW hits (Maze is a monster: the bow auto-aims at him); then Maze asks for lightning"
+ },
+ {
+  "id": "maze_lightning",
+  "repeat": 40,
+  "interval": 2.5,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local m = quest:GetThingWithScriptName('FinalMaze'); if m ~= nil and quest:IsDistanceBetweenThingsOver(h, m, 6.0) then quest:EntityTeleportToThing(h, m, false) end; if m ~= nil then quest:EntitySetFacingAngleTowardsThing(h, m) end",
+   "input: key SPACE",
+   "input: chord LSHIFT 1200"
+  ],
+  "expect": "CS_GUILD_DEPARTURE_MAZE_WIN|MissionSucceeded|SetQuestAsCompleted: ENTER name='Q_GuildTrainingWoodsDeparture'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "UNTESTED: phase 2 = seven lightning hits (LSHIFT+LMB as the Will stage); MAZE_WIN cutscene, MissionSucceeded, the quest completes"
+ },
+ {
+  "id": "departure_return",
+  "repeat": 1,
+  "do": [
+   "input: clear",
+   "GuildTraining: quest:GoToMapSlotRetailTransition(70, 4787.62, 3680.52, 38.0)"
+  ],
+  "expect": "CS_GUILD_SEAL_GIVE|CS_GUILD_SEAL_RECEIVE|CS_GUILD_DEPARTURE_EXIT_WOODS|CS_GUILD_CEREMONY",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "retail transition back to the Guild gate after VICTORY_10..30; GuildTraining waits for HeroGuildComplex, EXIT_WOODS, the FrescoDome teleport + ceremony (SEAL_GIVE / SEAL_RECEIVE) and the HeroGuildComplexInsideHSP teleport all follow WITHOUT a further input (run 11b: the hero came out adult, in the hero outfit, at the Cullis room); no `skip` here (ESC with no scene up opened the pause menu)"
+ },
+ {
+  "id": "ceremony",
+  "repeat": 40,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list",
+   "eval GuildTraining: quest:GetStateBool('DomeCutsceneStart')"
+  ],
+  "expect": "CS_GUILD_SEAL_RECEIVE|OBJECT_GUILD_SEAL_1|DomeCutsceneStart.* = (true|false)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "the ceremony already ran inside departure_return; this step only confirms the SEAL_RECEIVE / DomeCutsceneStart state"
+ },
+ {
+  "id": "graduation",
+  "repeat": 40,
+  "interval": 6.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local h = quest:GetHero(); local x = quest:GetNearestWithDefName(h, 'OBJECT_EXPERIENCE_SPENDING_POINT'); if x ~= nil and quest:IsDistanceBetweenThingsOver(h, x, 2.0) then quest:EntityTeleportToThing(h, x, false) end",
+   "input: hold W 2500",
+   "input: key ESC"
+  ],
+  "expect": "SetQuestAsCompleted: ENTER name='Q_GuildTraining'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "'Step into the light and I'll show you how to do this' (LEAVING_TOUR_45 nag every 10 s): the hero must WALK into the OBJECT_EXPERIENCE_SPENDING_POINT light (a teleport onto it does not trigger the volume) -> the Experience Spending screen; ESC leaves it (a click on its X missed) -> MsgOnLeavingExperienceSpendingScreen -> SAVEXP2, GM removed, Q_GuildTraining COMPLETED (run 11b, 2026-09-21: 'You have successfully completed your training and graduated as a Hero')"
+ }
+]

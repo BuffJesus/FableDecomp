@@ -79,9 +79,8 @@ function UpdateLiveEnemies(quest, me)
                 p0 = 0
                 if p0 ~= (quest:GetStateListCount("AllCreatures") * 0xc) then
                     repeat
-                        -- TODO(native): cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
-                        cVar8 = nil --[[unresolved native value]]
-                        if cVar8 ~= 0 then
+                        cVar8 = iStack_c[(iVar3 - 4) / 0xc + 1]:IsEqualTo(quest:GetStateListAt("AllCreatures", (p0) / 0xc))
+                        if cVar8 then
                             quest:StateListErase("AllCreatures", (p0) / 0xc)
                             break
                         end

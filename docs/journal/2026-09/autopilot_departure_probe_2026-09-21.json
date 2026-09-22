@@ -1,0 +1,12 @@
+[
+  {
+    "id": "departure_to_woods",
+    "status": "PASS",
+    "detail": "expected /Binding entity '(ArtifactThief|FinalMaze|ScorpionHome)' to script 'GuildTrainingWoodsDeparture/Entities/ seen"
+  },
+  {
+    "id": "departure_woods_probe",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_DEPARTURE_MAZE_START|MAZE_WOODS|TEXT_QST_028_MAZE_[A-Z_0-9]*/ seen after 1 send(s)"
+  }
+]

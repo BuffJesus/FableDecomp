@@ -9,7 +9,7 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local scratchValue, switch, p4, p5, hero4, getPos, scratchValue4
     quest:EntitySetAsKillable(me, false, true)
-    me:SetFriendsWithEverythingFlag(1)
+    me:SetFriendsWithEverythingFlag(true)
     while not quest:GetStateBool("WhisperCutsceneFinished") do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -66,15 +66,15 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        local preMeleeChatMarker = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
+        local preMeleeChatMarker2 = quest:GetNearestWithScriptName(me, "PreMeleeChatMarker")
         hero4 = hero
-        if not (preMeleeChatMarker ~= nil and not preMeleeChatMarker:IsNull()) then
+        if not (preMeleeChatMarker2 ~= nil and not preMeleeChatMarker2:IsNull()) then
             getPos = {x = 0, y = 0, z = 0}
         else
-            getPos = preMeleeChatMarker:GetPos()
+            getPos = preMeleeChatMarker2:GetPos()
         end
         local f_stk_94_1 = getPos.z - hero:GetPos().z
-        if quest:IsDistanceBetweenThingsUnder(me, preMeleeChatMarker, 7.0) then
+        if quest:IsDistanceBetweenThingsUnder(me, preMeleeChatMarker2, 7.0) then
             local isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)
             local sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or 1.0 < math.abs(f_stk_94_1)
             if sequence then goto LAB_00d52d56 end
@@ -83,10 +83,10 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            local f_stk_94_2 = tonumber(preMeleeChatMarker:GetDataString())
+            local f_stk_94_2 = tonumber(preMeleeChatMarker2:GetDataString())
             scratchValue4 = 0
-            local preMeleeChatMarker2 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-            if #preMeleeChatMarker2 ~= 0 then
+            local preMeleeChatMarker = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
+            if #preMeleeChatMarker ~= 0 then
                 scratchValue = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then
@@ -94,19 +94,17 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
-    --[[unresolved native value]]
-                    if tonumber(nil) ~= f_stk_94_2 then scratchValue4 = scratchValue4 + 1; scratchValue = scratchValue + 1; goto continue_3 end
+                    if tonumber(preMeleeChatMarker[scratchValue + 1]:GetDataString()) ~= f_stk_94_2 then scratchValue4 = scratchValue4 + 1; scratchValue = scratchValue + 1; goto continue_3 end
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    quest:RemoveThing(preMeleeChatMarker2[scratchValue + 1], false, true)
+                    quest:RemoveThing(preMeleeChatMarker[scratchValue + 1], false, true)
                     scratchValue4 = scratchValue4 + 1
                     scratchValue = scratchValue + 1
                     ::continue_3::
-                until scratchValue4 >= #preMeleeChatMarker2
+                until scratchValue4 >= #preMeleeChatMarker
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)

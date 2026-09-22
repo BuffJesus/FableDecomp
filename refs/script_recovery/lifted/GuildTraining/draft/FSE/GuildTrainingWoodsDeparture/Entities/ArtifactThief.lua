@@ -12,15 +12,15 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar2, cVar3, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, iVar13, iVar14, iVar5, iVar6, p0, pCVar4, pCVar7, pCVar8, pcVar12, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar9, u_stk_174, xStack_128, xStack_138, xStack_148, xStack_158, xStack_170, xStack_184, xStack_188, xStack_94, xStack_a0, xStack_bc, x_stk_18, x_stk_24, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_c
+    local __native_condition_1, bVar2, cVar3, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, iVar13, iVar14, iVar5, iVar6, i_stk_188, p0, pCVar4, pCVar7, pCVar8, pcVar12, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, this_01, uVar10, uVar9, u_stk_174, xStack_128, xStack_138, xStack_148, xStack_158, xStack_170, xStack_184, xStack_94, xStack_a0, xStack_bc, x_stk_18, x_stk_24, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d63aa6()
         resources:DestroyMovie(pCVar8)
-        quest:DeregisterTimer(xStack_188)
+        quest:DeregisterTimer(i_stk_188)
         resources:ReleaseResource(xStack_184)
     end
     local function __cleanup_LAB_00d63aab()
-        quest:DeregisterTimer(xStack_188)
+        quest:DeregisterTimer(i_stk_188)
         resources:ReleaseResource(xStack_184)
     end
     uVar9 = 0
@@ -49,8 +49,8 @@ function Main(quest, me)
         __native_entity_state:SetStateBool("HoldingArtifact", true)
         __native_entity_state:SetStateBool("AlreadyTalkedTo", false)
         __native_entity_state:SetStateBool("NotAttacked", true)
-        xStack_188 = quest:RegisterTimer()
-        quest:SetTimer(xStack_188, 0)
+        i_stk_188 = quest:RegisterTimer()
+        quest:SetTimer(i_stk_188, 0)
         cVar3 = __native_entity_state:GetStateBool("HoldingArtifact")
         repeat
             if (not cVar3) or (not __native_entity_state:GetStateBool("NotAttacked")) then goto LAB_00d638ec end
@@ -63,7 +63,7 @@ function Main(quest, me)
             bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar4, me, dist)
             __native_condition_1 = bVar2
             if __native_condition_1 then
-                iVar5 = quest:GetTimer(xStack_188)
+                iVar5 = quest:GetTimer(i_stk_188)
                 __native_condition_1 = iVar5 < 1
             end
             if __native_condition_1 then
@@ -93,7 +93,7 @@ function Main(quest, me)
                     pCVar4 = quest:GetHero()
                     quest:AddLineToConversation(iVar6, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_COMMENT_SECOND", me, pCVar4, false)
                 end
-                quest:SetTimer(xStack_188, 10)
+                quest:SetTimer(i_stk_188, 10)
                 uVar9 = u_stk_174
             end
             uVar10 = uVar9 | 1
@@ -178,7 +178,7 @@ function Main(quest, me)
                     quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_138;
+                    this_01 = xStack_138
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -222,7 +222,7 @@ function Main(quest, me)
                     quest:GiveHeroObject("OBJECT_HAND_LAMP", -1, false)
                     quest:RemoveItemFromContainer(me, "OBJECT_HAND_LAMP")
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): this_01 = (CPhysicsMeshInfo *)xStack_bc;
+                    this_01 = xStack_bc
                 end
                 quest:EntitySetAsKillable(me, true, true)
                 pCVar4 = quest:GetThingWithScriptName("ArtifactThiefRunMarker")
@@ -544,8 +544,7 @@ function Main(quest, me)
                 goto LAB_00d63c96
                 ::FLOW_past_lab_00d63ad2::
                 xStack_128 = quest:GetHeroGold()
-                -- TODO(native): if *(iVar6 + 0xf14) <= xStack_128 then
-                if false then
+                if quest:ReadGlobalGameDataFloat(0xf14) <= xStack_128 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if not bVar2 then
@@ -713,7 +712,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d63c96::
-    quest:DeregisterTimer(xStack_188)
+    quest:DeregisterTimer(i_stk_188)
     ::LAB_00d63c9f::
     resources:ReleaseResource(xStack_184)
 end

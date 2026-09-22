@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, puStack_78, pvVar9, r1, uVar11, xStack_10, xStack_20, xStack_38, xStack_48, xStack_60, xStack_7c
+    local bVar3, cVar1, ctr_84, ctr_88, fret_0, fret_00, iVar12, iVar5, iVar8, pCVar6, pTarget, pppuVar13, r1, uVar11, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_60, xStack_7c
     local alive = true
     iVar12 = 0
     quest:SetStateBool("MissionSucceeded", false)
@@ -46,14 +46,14 @@ function Main(quest)
         if not bVar3 then
             xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
             iVar8 = #xStack_7c * 0xc
-            -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);
-            -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8 / 0xc,iVar5);
+            xStack_10 = resources:NewResource()
+            xStack_2c = (function(n) local t = {} for i = 1, n do t[i] = resources:NewResource() end return t end)(iVar8 / 0xc)
             resources:ReleaseResource(xStack_10)
             uVar11 = 0
             if #xStack_7c ~= 0 then
                 ctr_84 = 0
                 repeat
-                    resources:TryAcquire((0x0 + iVar12), xStack_7c[(ctr_84) / 0xc + 1], 4)
+                    resources:TryAcquire(xStack_2c[(iVar12) / 0x10 + 1], xStack_7c[(ctr_84) / 0xc + 1], 4)
                     ctr_84 = ctr_84 + 0xc
                     uVar11 = uVar11 + 1
                     iVar12 = iVar12 + 0x10
@@ -83,13 +83,9 @@ function Main(quest)
             else
                 xStack_38 = resources:NewActorMap()
                 resources:SetActor(xStack_38, "HERO", xStack_48)
-                -- TODO(native): resources:SetActor(xStack_38, "BAN1", &0x0)
-                pvVar9 = (0x0 + 0x10)
-                -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
-                pvVar9 = (0x0 + 0x20)
-                -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[](xStack_38,&xStack_88);
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);
+                resources:SetActor(xStack_38, "BAN1", xStack_2c[0 + 1])
+                resources:SetActor(xStack_38, "BAN2", xStack_2c[1 + 1])
+                resources:SetActor(xStack_38, "BAN3", xStack_2c[2 + 1])
                 resources:SetActor(xStack_38, "WHISPER", xStack_60)
                 xStack_20 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
@@ -100,7 +96,7 @@ function Main(quest)
                 resources:DestroyMovie(xStack_20)
                 resources:DestroyActorMap(xStack_38)
                 resources:ReleaseResource(xStack_48)
-                -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+                for _, r in ipairs(xStack_2c) do resources:ReleaseResource(r) end
                 ctr_88 = 0
                 if #xStack_7c ~= 0 then
                     repeat
@@ -114,7 +110,7 @@ function Main(quest)
                         bVar3 = false
                         fret_0 = quest:GetHealth(pCVar6)
                         quest:ModifyThingHealth(pCVar6, (15.0 - fret_0), bVar3)
-                        xStack_7c[(iVar12) / 0xc + 1]:SetToKillOnLevelUnload(0)
+                        xStack_7c[(iVar12) / 0xc + 1]:SetToKillOnLevelUnload(false)
                         ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc
                     until not (ctr_88 < (#xStack_7c))
@@ -145,11 +141,6 @@ function Main(quest)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d685cc end
-                        end
-                        if xStack_7c ~= puStack_78 then
-                            repeat
-                                -- TODO(native): puStack_78 = puStack_78 + -3;
-                            until not (xStack_7c ~= puStack_78)
                         end
                         xStack_7c = quest:GetAllThingsWithScriptName("WillBandit")
                         if #xStack_7c == 0 then
@@ -266,7 +257,7 @@ function Main(quest)
             goto FLOW_past_lab_00d67db1
             ::LAB_00d67db1::
             resources:ReleaseResource(xStack_48)
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);
+            for _, r in ipairs(xStack_2c) do resources:ReleaseResource(r) end
             ::FLOW_past_lab_00d67db1::
             ::LAB_00d685cc::
         end

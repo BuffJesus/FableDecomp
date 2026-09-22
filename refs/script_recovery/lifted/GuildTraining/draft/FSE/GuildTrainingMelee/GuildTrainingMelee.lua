@@ -22,7 +22,7 @@ function Main(quest)
     pCVar4 = nil
     quest:EntitySetInFaction(r1, "FACTION_HERO")
     if (r1 ~= nil and not r1:IsNull()) then
-        r1:SetFriendsWithEverythingFlag(1)
+        r1:SetFriendsWithEverythingFlag(true)
     end
     xStack_20 = resources:NewResource()
     resources:PrepareResource(xStack_20)

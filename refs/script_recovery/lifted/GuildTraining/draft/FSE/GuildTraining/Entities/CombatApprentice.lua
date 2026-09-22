@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar16, xStack_104, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_260, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_c
+    local __native_condition_1, bVar3, cVar4, c_stk_229, c_stk_22a, c_stk_259, dist, fVar2, f_stk_100, f_stk_210, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, iVar14, iVar17, iVar18, iVar5, iVar6, i_stk_260, ixVar11, native_arg_sequence_1, native_arg_switch_2, p0, pCVar15, pCVar7, pCVar8, pcVar13, piVar12, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar16, xStack_104, xStack_1ec, xStack_1fc, xStack_20c, xStack_220, xStack_254, xStack_258, xStack_ac, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_fc, x_stk_18, x_stk_214, x_stk_24, x_stk_30, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_c
     local alive = true
     xStack_254 = resources:NewResource()
     resources:PrepareResource(xStack_254)
@@ -40,8 +40,8 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(true)
     iVar5 = quest:RegisterTimer()
-    xStack_260 = iVar5
-    quest:SetTimer(xStack_260, 10)
+    i_stk_260 = iVar5
+    quest:SetTimer(i_stk_260, 10)
     r1 = quest:GetThingWithScriptName("CombatApprenticeTargetMarker")
     c_stk_22a = 0
     alive = not quest:IsActiveThreadTerminating()
@@ -49,7 +49,7 @@ function Main(quest, me)
     repeat
         if bVar3 then
             r1 = nil
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             -- LAB_00d4c4a5: (native jump target)
             resources:ReleaseResource(xStack_254)
             return
@@ -59,7 +59,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end
@@ -71,7 +71,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        quest:DeregisterTimer(xStack_260)
+                        quest:DeregisterTimer(i_stk_260)
                         resources:ReleaseResource(xStack_254)
                         return
                     end
@@ -80,14 +80,14 @@ function Main(quest, me)
                 end
                 goto LAB_00d4a512
             end
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end
@@ -95,7 +95,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                quest:DeregisterTimer(xStack_260)
+                quest:DeregisterTimer(i_stk_260)
                 resources:ReleaseResource(xStack_254)
                 return
             end
@@ -122,7 +122,7 @@ function Main(quest, me)
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                iVar5 = quest:GetTimer(xStack_260)
+                iVar5 = quest:GetTimer(i_stk_260)
                 if 0 < iVar5 then
                     native_arg_sequence_1 = true
                 else
@@ -136,7 +136,7 @@ function Main(quest, me)
                 bVar3 = false
                 pCVar8 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, pCVar8, bVar3)
-                quest:SetTimer(xStack_260, 0x14)
+                quest:SetTimer(i_stk_260, 0x14)
                 iVar6 = quest:AddNewConversation(me, false, false)
                 pCVar8 = quest:GetHero()
                 quest:AddPersonToConversation(iVar6, pCVar8)
@@ -173,7 +173,7 @@ function Main(quest, me)
                 goto LAB_00d4a71c
                 ::FLOW_past_lab_00d4a717::
             end
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end
@@ -181,7 +181,7 @@ function Main(quest, me)
         bVar3 = not alive
         if bVar3 then
             -- LAB_00d4c4f5: (native jump target)
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end
@@ -207,7 +207,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                quest:DeregisterTimer(xStack_260)
+                quest:DeregisterTimer(i_stk_260)
                 resources:ReleaseResource(xStack_254)
                 return
             end
@@ -581,7 +581,7 @@ function Main(quest, me)
                     quest:EntitySetCombatType(r4, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE")
                     quest:EntitySetInFaction(r4, "FACTION_BANDITS")
                     if (r4 ~= nil and not r4:IsNull()) then
-                        r4:SetFriendsWithEverythingFlag(0)
+                        r4:SetFriendsWithEverythingFlag(false)
                     end
                     pCVar7 = quest:GetHero()
                     quest:GiveThingBestEnemyTarget(r4, pCVar7)
@@ -630,7 +630,7 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00d4c6c8 end
                                 quest:EntitySetInFaction(r4, "FACTION_HERO")
                                 if (r4 ~= nil and not r4:IsNull()) then
-                                    r4:SetFriendsWithEverythingFlag(1)
+                                    r4:SetFriendsWithEverythingFlag(true)
                                 end
                                 xStack_bc = resources:StartMovie("")
                                 quest:PauseAllNonScriptedEntities(true)
@@ -671,7 +671,7 @@ function Main(quest, me)
                                 quest:SetStateBool("FightFinished", true)
                                 c_stk_259 = 1
                                 quest:PauseAllNonScriptedEntities(false)
-                                -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_bc;
+                                this_00 = xStack_bc
                                 goto LAB_00d4b6f6
                             end
                         else
@@ -680,7 +680,7 @@ function Main(quest, me)
                             if bVar3 then goto LAB_00d4c6c8 end
                             quest:EntitySetInFaction(r4, "FACTION_HERO")
                             if (r4 ~= nil and not r4:IsNull()) then
-                                r4:SetFriendsWithEverythingFlag(1)
+                                r4:SetFriendsWithEverythingFlag(true)
                             end
                             xStack_ac = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
@@ -721,7 +721,7 @@ function Main(quest, me)
                             quest:SetStateBool("FightFinished", true)
                             c_stk_259 = 1
                             quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_ac;
+                            this_00 = xStack_ac
                             goto LAB_00d4b6f6
                         end
                         goto FLOW_past_lab_00d4b6f6
@@ -832,7 +832,7 @@ function Main(quest, me)
                     quest:RemoveQuestInfoElement(x_stk_214)
                     quest:EntitySetInFaction(r4, "FACTION_HERO")
                     if (r4 ~= nil and not r4:IsNull()) then
-                        r4:SetFriendsWithEverythingFlag(1)
+                        r4:SetFriendsWithEverythingFlag(true)
                     end
                     quest:DisplayQuestInfo(false)
                     if c_stk_259 == 1 then
@@ -1048,7 +1048,7 @@ function Main(quest, me)
                 ::LAB_00d4c6d1::
             end
             ::LAB_00d4c6da::
-            quest:DeregisterTimer(xStack_260)
+            quest:DeregisterTimer(i_stk_260)
             resources:ReleaseResource(xStack_254)
             return
         end

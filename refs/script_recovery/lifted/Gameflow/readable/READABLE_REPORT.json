@@ -2119,7 +2119,7 @@
         "timeRemaining"
        ]
       },
-      "xStack_4": {
+      "i_stk_4": {
        "name": "timerId2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -2152,7 +2152,7 @@
      "splitLocals": {
       "iVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local iVar2, iVar3, xStack_4\n",
+       "originalDeclaration": "    local iVar2, iVar3, i_stk_4\n",
        "versions": {
         "iVar2_1": [
          10,

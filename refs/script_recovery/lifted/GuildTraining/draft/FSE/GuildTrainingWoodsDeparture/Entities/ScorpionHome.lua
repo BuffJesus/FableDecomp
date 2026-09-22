@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar6, count, fVar9, iVar7, i_stk_28, pCVar8, pPosition, r1, xStack_24, xStack_2c
+    local bVar6, count, fVar9, iVar7, i_stk_28, i_stk_2c, pCVar8, pPosition, r1, xStack_24
     local alive = true
     local iVar1 = quest:GetStateInt("DepartureMissionPoint")
     while iVar1 ~= 1 do
@@ -27,7 +27,7 @@ function Main(quest, me)
     bVar6 = not alive
     if not bVar6 then
         iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf0c)))
-        xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
+        i_stk_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
         quest:DisplayQuestInfo(true)
         iVar1 = quest:GetStateInt("DepartureMissionPoint")
         while iVar1 == 1 do
@@ -45,7 +45,7 @@ function Main(quest, me)
                 fVar9 = fVar9 + 4294967296.0
             end
             count = math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(0xf0c) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar9))
-            quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
+            quest:UpdateQuestInfoCounter(i_stk_2c, count, iVar7)
             if (#xStack_24) < 3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -79,12 +79,11 @@ function Main(quest, me)
                         r1 = pCVar8
                         pCVar8 = nil
                         if (r1 ~= nil and not r1:IsNull()) then
-                            r1:SetToKillOnLevelUnload(0)
+                            r1:SetToKillOnLevelUnload(false)
                         end
                         quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsDeparture")
                         __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
                         r1 = nil
-                        -- TODO(native): xStack_18._4_4_ = (int *)0x0;
                     end
                 end
             end
@@ -93,7 +92,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if not bVar6 then
-            quest:RemoveQuestInfoElement(xStack_2c)
+            quest:RemoveQuestInfoElement(i_stk_2c)
             quest:DisplayQuestInfo(false)
         end
     end

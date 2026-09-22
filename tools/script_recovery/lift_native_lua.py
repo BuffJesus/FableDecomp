@@ -164,7 +164,7 @@ RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local
 # (`pThing`, `thing1`, `string`). Any identifier that is not a keyword/global is a local assignment.
 RE_LOCAL_ASSIGN = re.compile(
     r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+'
-    r'|(?!(?:this|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
+    r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_ADDR_OF = re.compile(r'^(?:\([^)]*\))?\s*&(\w+|stack0x[0-9a-f]+)$')
 RE_STRING_PARAM = re.compile(r'string|CCharString|char', re.I)
@@ -179,7 +179,7 @@ RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
 # Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
-RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|STRINGMAP_\w+)\s*\((.*)\);\s*$')
+RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|RESLIST_\w+|STRINGMAP_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 def _balanced(depth):
@@ -467,10 +467,11 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
     # the `position` table of every Create* spawner and the three position-taking calls below take a native
     # C3DVector (CreateObject's was untagged, so place_args filled it from the numeric pool -- the loop
     # counter -- in RunTutorials' apple loop 0x00D45DD0; CreateCreature was tagged by name and worked).
-    # Not every position table: tagging EntityTeleportToPosition's let an unresolved stack vector
-    # (`&xStack_40`, SkillTarget) leak into an emitted call where a TODO comment stood.
+    # EntityTeleportToPosition joined the list on 2026-09-21 once `fold_stack_vector_builds` resolved SkillTarget's
+    # three-float stack vectors (`&fStack_64` -> `ENGINE_Vector3(x, y, z)`): untagged, the resolved vector had no
+    # slot to land in and the segment teleports were emitted WITHOUT their position.
     for name, spec in result.items():
-        if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen')):
+        if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen', 'EntityTeleportToPosition')):
             continue
         for parameter in spec.get('parameters', []):
             if parameter.get('type') == 'sol::table' and parameter.get('name') in ('position', 'pos'):
@@ -732,6 +733,25 @@ def parse_thing_signature(mangled: str) -> tuple[str | None, list[str], bool] | 
     return result, kinds, by_value
 
 
+def thing_bool_slots(mangled: str) -> set[int]:
+    """Operand indices a decorated CScriptThing slot name types `bool` (`_N`)."""
+    m = RE_THING_SIG.match(mangled or "")
+    if not m or m.group("params") == "X":
+        return set()
+    tokens = RE_SIG_TOKEN.findall(m.group("params"))
+    if "".join(tokens) != m.group("params"):
+        return set()
+    kinds: list[str] = []
+    for tok in tokens:
+        if tok.isdigit():
+            if int(tok) >= len(kinds):
+                return set()
+            kinds.append(kinds[int(tok)])
+        else:
+            kinds.append(tok)
+    return {i for i, tok in enumerate(kinds) if tok == "_N"}
+
+
 _MASTER_BOOL_FLAGS: set[str] | None = None
 
 
@@ -800,6 +820,7 @@ class Lifter:
         self.sequence_temporaries = set()
         self.source_names: set[str] = set()
         self.mutable_scalars: set[str] = set()
+        self.state_stored_slots: set[str] = set()     # stack slots that later keep a state getter's value (unit mode)
         self.literal_assigned_slots: set[str] = set()   # string slots a later `operator=(slot, "LIT")` overwrites
         self.hoisted_scalars: set[str] = set()
         self.staged_scalars: set[str] = set()
@@ -1131,6 +1152,8 @@ class Lifter:
             return "thing"
         if arg.startswith('"'):
             return "string"
+        if re.match(r'ENGINE_(?:Vector3|VectorCopy|ZeroVector)\(|\{x = ', arg.strip()):    # an inline C3DVector (a stack vector built from three float slots)
+            return 'vector'
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
         accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*)|RESOURCE_ScriptThing|resources:ScriptThing|LOCALLIST_At)\(', arg.strip())
         if accessor and not _balanced_call(arg.strip(), accessor.end() - 1):
@@ -1190,6 +1213,12 @@ class Lifter:
         """
         if not params:
             return []
+        # A bare `.rdata` address the decompiler left unresolved at a string position is that literal
+        # (Will Guildmaster 0x00D61088: `Speak(me, 0x12d1148, 0,0,1,0)` = the PLAY_WHISPER_QUESTION_NO
+        # key; unresolved, the string slot took the stale "CS_GUILD_WILL_WON" temporary and the
+        # subtitle printed the macro name in-game, 2026-09-21)
+        if any(RE_STRING_PARAM.search(p.get("type", "")) for p in params):
+            parsed = [self.literal(a) if RE_ADDR_LITERAL.match(a) and self.literal(a) else a for a in parsed]
 
         # The numeric/string overload has one explicit positional operand.
         # Do not classify its integer literal as a missing string and then
@@ -1578,6 +1607,16 @@ class Lifter:
                             out_slots.append(out_slot)
                 else:
                     args.append(self.expr(others.pop(0)) if others else None)
+                    # a `bool` slot operand (`_N` in the decorated name) takes a Lua boolean: `0` is TRUTHY in
+                    # Lua, so `r3:SetToKillOnLevelUnload(0)` would have set the flag (Skill / Will Guildmasters'
+                    # apprentices, ScorpionHome's beetles, 2026-09-21)
+                    if args[-1] is not None and thing_bool_slots(self.thing_sigs.get(name, "")) and                             len(args) - 1 in thing_bool_slots(self.thing_sigs.get(name, "")):
+                        if args[-1] in ("0", "0x0", "'\0'"):
+                            args[-1] = "false"
+                        elif args[-1] in ("1", "0x1", "'\x01'"):
+                            args[-1] = "true"
+                        elif self.kinds.get(args[-1]) == "number":
+                            args[-1] = f"({args[-1]} ~= 0)"
             if name in HERO_FORMS and "string" in kinds and args[kinds.index("string")] == HERO_NAME:
                 del args[kinds.index("string")]
                 name = HERO_FORMS[name]
@@ -1939,6 +1978,10 @@ class Lifter:
                                - Counter({k: v for k, v in definitions.items()}))
         if self.lua_labels:
             self.mutable_scalars.update(definitions)
+        if self.accessor_kinds:
+            self.state_stored_slots = {m.group(1) for m in re.finditer(
+                r'^\s*([a-zA-Z]*Stack_\w+|\w+_stk_\w+) = \*\(\w+ \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x14\) \+ (?:0x[0-9a-fA-F]+|\d+)\);',
+                '\n'.join(statements), re.M)}
         for line in statements:
             assignment = RE_LOCAL_ASSIGN.match(line)
             if assignment and definitions[assignment[1]] > 1:
@@ -2072,7 +2115,7 @@ class Lifter:
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
-                                      else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector')
+                                      else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
             else:
@@ -2593,6 +2636,13 @@ class Lifter:
             value = m.group(2).strip()
             lit = self.literal(value)
             if lit is not None:
+                if m.group(1) in self.state_stored_slots and not lit.startswith('"'):
+                    # the slot's init (`xStack_180 = 0`) when the slot later stores a state getter: a real local
+                    # (inlined as a temporary, the compare read `0 ~= DummyHits` forever)
+                    self.forget_value(m.group(1))
+                    self.emit(f"{self.declare(m.group(1))} = {lit}")
+                    self.kinds[m.group(1)] = "bool" if lit in ("true", "false") else "number"
+                    return
                 self.push_temp(m.group(1), lit)
                 return
             if RE_ADDR_LITERAL.match(value):
@@ -2615,6 +2665,18 @@ class Lifter:
                     return
                 self.push_temp(m.group(1), self.temps.get(value, value))
                 return
+            if self.accessor_kinds and re.match(r'(?:[a-zA-Z]*Stack_|\w+_stk_)', m.group(1)):
+                # (unit mode) a stack slot keeping a STATE value across frames (PreMelee Guildmaster 0x00D52E90's
+                # "last DummyHits" `xStack_180 = *(int *)(parent + 0x50)`, compared with the field each frame to
+                # re-arm the nag timer only when the count changes): a real store of the getter, 2026-09-21
+                lifted = self.expr(value)
+                state_getter = re.fullmatch(r'\w+:GetState(Bool|Int|Float)\("\w+"\)', lifted)
+                if state_getter:
+                    lhs = self.slot_results.get(m.group(1), m.group(1))
+                    self.forget_value(m.group(1))
+                    self.emit(f"{self.declare(lhs)} = {lifted}")
+                    self.kinds[lhs] = "bool" if state_getter[1] == "Bool" else "number"
+                    return
         m = (RE_LOCAL_ASSIGN_DEEP if self.accessor_kinds else RE_LOCAL_ASSIGN).match(line)
         if m:
             value = m.group(2).strip()
@@ -2671,6 +2733,8 @@ class Lifter:
                 self.slot_alias[var] = lifted
                 return
             kind = self.kinds.get(lifted) or ("number" if RE_NUMERIC_EXPR.fullmatch(lifted) else None)
+            if kind is None and self.accessor_kinds and re.fullmatch(r'[\w\s()]+[+\-*/][\w\s().+\-*/]*\d\.\d+[\w\s().+\-*/]*', lifted):
+                kind = 'number'                 # unit mode: arithmetic with a float literal (`angle + 0.25`, WillDummy's spin) is a number
             if re.fullmatch(r'__native_vectors\[0x[0-9a-f]+\]', lifted):
                 kind = 'string_vector'
             state_getter = re.fullmatch(r'\w+:GetState(Bool|Int|Float)\("\w+"\)', lifted)

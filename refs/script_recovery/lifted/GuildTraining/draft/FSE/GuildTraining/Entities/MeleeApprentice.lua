@@ -50,7 +50,7 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAllowBossPhaseChanges(me, false)
     p0 = 0x1
-    me:SetFriendsWithEverythingFlag(1)
+    me:SetFriendsWithEverythingFlag(true)
     r1 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive

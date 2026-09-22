@@ -12,12 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_60, x_stk_68, x_stk_8, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_78)
-        quest:DeregisterTimer(timerId)
+        quest:DeregisterTimer(xStack_8c)
         resources:ReleaseResource(xStack_8c)
     end
     uVar10 = 0
@@ -48,8 +48,7 @@ function Main(quest, me)
         bVar3 = not alive
         if bVar3 then goto LAB_00d4ef90 end
         iStack_68 = quest:GetAllThingsWithScriptName("BirdMarker")
-        iVar6 = x_stk_60 - iStack_68 >> 0x1f
-        if (x_stk_60 - iStack_68) / 0xc + iVar6 ~= iVar6 then
+        if #iStack_68 ~= 0 then
             ctr_90 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
@@ -65,7 +64,7 @@ function Main(quest, me)
                 quest:SetThingPersistent(r1, true)
                 ctr_90 = ctr_90 + 0xc
                 uVar10 = uVar10 + 1
-            until not (uVar10 < ((x_stk_60 - iStack_68) / 0xc))
+            until not (uVar10 < (#iStack_68))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -174,7 +173,7 @@ function Main(quest, me)
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_78)
-                        quest:DeregisterTimer(timerId)
+                        quest:DeregisterTimer(xStack_8c)
                         resources:ReleaseResource(xStack_8c)
                         return
                     end
@@ -245,7 +244,7 @@ function Main(quest, me)
                                 if bVar3 then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(xStack_78)
-                                    quest:DeregisterTimer(timerId)
+                                    quest:DeregisterTimer(xStack_8c)
                                     resources:ReleaseResource(xStack_8c)
                                     return
                                 end

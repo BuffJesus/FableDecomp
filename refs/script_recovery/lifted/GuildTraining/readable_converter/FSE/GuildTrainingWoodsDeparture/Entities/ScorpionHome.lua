@@ -37,11 +37,10 @@ function Main(quest, me)
                 end
                 local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
                 if guildStagBeetle ~= nil then
-                    guildStagBeetle:SetToKillOnLevelUnload(0)
+                    guildStagBeetle:SetToKillOnLevelUnload(false)
                 end
                 quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsDeparture")
                 scorpionsLeft = scorpionsLeft - 1
-                -- TODO(native): xStack_18._4_4_ = (int *)0x0;
             end
         end
     end

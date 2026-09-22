@@ -14,7 +14,7 @@ function Main(quest, me)
     local bVar6, count, fVar10, iVar7, iVar8, i_stk_28, pCVar9, pPosition, pSpeaker, r1, xStack_24
     local alive = true
     iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xf10)))
-    local xStack_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
+    local i_stk_2c = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", iVar7, 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
     local xStack_50 = timerId
@@ -25,7 +25,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if not bVar6 then
-                quest:RemoveQuestInfoElement(xStack_2c)
+                quest:RemoveQuestInfoElement(i_stk_2c)
                 quest:DisplayQuestInfo(false)
             end
             -- LAB_00d676fb: (native jump target)
@@ -73,7 +73,7 @@ function Main(quest, me)
             fVar10 = fVar10 + 4294967296.0
         end
         count = math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(0xf10) - __native_entity_state:GetStateInt("ScorpionsLeft")) - fVar10))
-        quest:UpdateQuestInfoCounter(xStack_2c, count, iVar7)
+        quest:UpdateQuestInfoCounter(i_stk_2c, count, iVar7)
         if (#xStack_24) < 3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
@@ -113,12 +113,11 @@ function Main(quest, me)
                     r1 = pCVar9
                     pCVar9 = nil
                     if (r1 ~= nil and not r1:IsNull()) then
-                        r1:SetToKillOnLevelUnload(0)
+                        r1:SetToKillOnLevelUnload(false)
                     end
                     quest:EntityAttachToScript(r1, "Q_GuildTrainingWoodsMelee")
                     __native_entity_state:SetStateInt("ScorpionsLeft", __native_entity_state:GetStateInt("ScorpionsLeft") + -1)
                     r1 = nil
-                    -- TODO(native): xStack_18._4_4_ = (int *)0x0;
                 end
             end
         end

@@ -18,10 +18,10 @@ local playerNotWarned
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue2, scratchValue3, scratchValue4, questionAnswer, scratchValue
-    local scratchValue27, index, p0, resource, actorMap, resource3, timerId3, movie4, infoElement
+    local predicateResult, scratchValue2, scratchValue3, scratchValue4, infoElement, questionAnswer
+    local scratchValue, scratchValue27, timerId, index, p0, resource, actorMap, resource3, movie4
     local function ReleaseEverything()
-        quest:DeregisterTimer(timerId3)
+        quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource3)
     end
     resource3 = resources:NewResource()
@@ -41,27 +41,27 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(true)
     playerNotWarned = true
     scratchValue4 = 0
-    timerId3 = quest:RegisterTimer()
-    quest:SetTimer(timerId3, 10)
+    timerId = quest:RegisterTimer()
+    quest:SetTimer(timerId, 10)
     local skillApprenticeTargetMarker = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
-            quest:DeregisterTimer(timerId3)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource3)
             return
         end
         if not quest:IsQuestActive("Q_GuildTrainingDeparture") then goto LAB_00d4c9a2 end
         if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
         if ((3 < quest:GetMasterGameState("GlobalMeleeGrade")) or (3 < quest:GetMasterGameState("GlobalSkillGrade"))) or 3 < quest:GetMasterGameState("GlobalWillGrade") then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId3); resources:ReleaseResource(resource3); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource3); return end
             if scratchValue4 ~= 0 then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 quest:ClearThingHasInformation(me)
                 scratchValue4 = 0
             end
             goto LAB_00d4c9a2
-            quest:DeregisterTimer(timerId3)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource3)
             return
         end
@@ -72,10 +72,10 @@ function Main(quest, me)
         ::LAB_00d4c9a2::
         if not quest:IsDistanceBetweenThingsOver(me, skillApprenticeTargetMarker, 4.0) or me:IsPerformingScriptTask() then
             if me:IsPerformingScriptTask() then goto LAB_00d4cbac end
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId3) then goto LAB_00d4cbac end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId) then goto LAB_00d4cbac end
             if not quest:IsActiveThreadTerminating() then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                quest:SetTimer(timerId3, 20)
+                quest:SetTimer(timerId, 20)
                 local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 local getMasterGameState = quest:GetMasterGameState("GlobalSkillGrade")
@@ -104,7 +104,7 @@ function Main(quest, me)
         ::LAB_00d4cbac::
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(timerId3)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
@@ -237,17 +237,17 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                 end
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                local timerId = quest:RegisterTimer()
-                quest:SetTimer(timerId, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_SkillTimer))))
+                local timerId3 = quest:RegisterTimer()
+                quest:SetTimer(timerId3, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_SkillTimer))))
                 quest:SetMasterGameState("SkillScore", 0)
                 scratchValue3 = 0
                 local infoCounter = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
-                local infoCounter2 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                infoElement = quest:AddQuestInfoTimer(timerId, "HUD_CLOCK_ICON", 1.0)
+                local infoCounter3 = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
+                infoElement = quest:AddQuestInfoTimer(timerId3, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 quest:UpdateQuestInfoCounter(infoCounter, quest:GetMasterGameState("HighestSkillScore"), -1)
                 scratchValue2 = 0
-                while 0 < quest:GetTimer(timerId) and scratchValue3 == 0 do
+                while 0 < quest:GetTimer(timerId3) and scratchValue3 == 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d4de3d end
                     if quest:GetMasterGameState("GuildWarningOccuring") then
                         scratchValue3 = 1
@@ -255,9 +255,9 @@ function Main(quest, me)
                     if quest:GetMasterGameState("HighestSkillScore") < quest:GetMasterGameState("SkillScore") then
                         quest:SetMasterGameState("HighestSkillScore", quest:GetMasterGameState("SkillScore"))
                         scratchValue2 = 1
-                        quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("HighestSkillScore"), -1)
+                        quest:UpdateQuestInfoCounter(infoCounter3, quest:GetMasterGameState("HighestSkillScore"), -1)
                     end
-                    quest:UpdateQuestInfoCounter(infoCounter2, quest:GetMasterGameState("SkillScore"), -1)
+                    quest:UpdateQuestInfoCounter(infoCounter3, quest:GetMasterGameState("SkillScore"), -1)
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                         if playerNotWarned then
@@ -275,7 +275,7 @@ function Main(quest, me)
                 end
                 quest:DisplayQuestInfo(false)
                 quest:RemoveQuestInfoElement(infoCounter)
-                quest:RemoveQuestInfoElement(infoCounter2)
+                quest:RemoveQuestInfoElement(infoCounter3)
                 quest:RemoveQuestInfoElement(infoElement)
                 if scratchValue3 ~= 0 then
                     goto LAB_00d4dc16
@@ -284,7 +284,7 @@ function Main(quest, me)
                 ::LAB_00d4dc16::
                 quest:SetMasterGameState("HeroTakingGuildTest", false)
                 quest:SetPlayerUsingRangedDummies(false)
-                quest:DeregisterTimer(timerId)
+                quest:DeregisterTimer(timerId3)
                 goto LAB_00d4dc36
                 ::FLOW_past_lab_00d4dc16::
                 if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
@@ -378,7 +378,7 @@ function Main(quest, me)
                 ::LAB_00d4de34::
                 resources:ReleaseResource(resource)
                 ::LAB_00d4de3d::
-                quest:DeregisterTimer(timerId)
+                quest:DeregisterTimer(timerId3)
             else
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 me:ClearCommands()

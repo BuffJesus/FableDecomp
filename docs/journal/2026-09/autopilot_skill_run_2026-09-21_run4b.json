@@ -1,0 +1,12 @@
+[
+  {
+    "id": "archery_static",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_SKILL_MOVE|TEXT_CS_028_SKILL_MOVE/ seen after 11 send(s)"
+  },
+  {
+    "id": "skill_move_scene",
+    "status": "FAIL",
+    "detail": "expected /eval.*TutorialState.* = 4|MovingDummiesNeeded.* = true/ not seen within 90.0s"
+  }
+]

@@ -37,28 +37,28 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(true)
-    local timerId2 = quest:RegisterTimer()
-    quest:SetTimer(timerId2, 10)
+    local timerId = quest:RegisterTimer()
+    quest:SetTimer(timerId, 10)
     local combatApprenticeTargetMarker = quest:GetThingWithScriptName("CombatApprenticeTargetMarker")
     scratchValue6 = 0
     predicateResult3 = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult3 then
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
         if not quest:IsQuestActive("Q_GuildTrainingDeparture") then goto LAB_00d4a512 end
         if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
         if ((quest:GetMasterGameState("GlobalMeleeGrade") < 4) and (quest:GetMasterGameState("GlobalSkillGrade") < 4)) and quest:GetMasterGameState("GlobalWillGrade") < 4 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource4); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource4); return end
             if scratchValue6 == 0 then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(timerId2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource4)
                     return
                 end
@@ -66,18 +66,18 @@ function Main(quest, me)
                 scratchValue6 = 1
             end
             goto LAB_00d4a512
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
         if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
         if scratchValue6 ~= 0 then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(timerId2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource4)
                 return
             end
@@ -87,10 +87,10 @@ function Main(quest, me)
         ::LAB_00d4a512::
         if not quest:IsDistanceBetweenThingsOver(me, combatApprenticeTargetMarker, 4.0) or me:IsPerformingScriptTask() then
             if me:IsPerformingScriptTask() then goto LAB_00d4a71c end
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId2) then goto LAB_00d4a71c end
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource4); return end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId) then goto LAB_00d4a71c end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource4); return end
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-            quest:SetTimer(timerId2, 20)
+            quest:SetTimer(timerId, 20)
             local conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             scratchValue14 = quest:GetMasterGameState("GlobalMeleeGrade")
@@ -106,12 +106,12 @@ function Main(quest, me)
             ::LAB_00d4a717::
             goto LAB_00d4a71c
             ::FLOW_past_lab_00d4a717::
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
         if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
@@ -134,7 +134,7 @@ function Main(quest, me)
         ::FLOW_past_lab_00d4a758::
         if predicateResult then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(timerId2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource4)
                 return
             end
@@ -336,13 +336,13 @@ function Main(quest, me)
                 quest:EntitySetCombatType(meleeApprentice, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE")
                 quest:EntitySetInFaction(meleeApprentice, "FACTION_BANDITS")
                 if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
-                    meleeApprentice:SetFriendsWithEverythingFlag(0)
+                    meleeApprentice:SetFriendsWithEverythingFlag(false)
                 end
                 quest:GiveThingBestEnemyTarget(meleeApprentice, hero)
                 quest:SetStateBool("FightFinished", false)
-                local timerId = quest:RegisterTimer()
-                addNewConversation = timerId
-                quest:SetTimer(timerId, 15)
+                local timerId2 = quest:RegisterTimer()
+                addNewConversation = timerId2
+                quest:SetTimer(timerId2, 15)
                 quest:DisplayQuestInfo(true)
                 local addQuestInfoBarHealth = quest:AddQuestInfoBarHealth(meleeApprentice, {R = 255, G = 255, B = 255, A = 255}, "HUD_WHISPER_ICON", 1.0)
                 getHealth = quest:GetHealth(hero)
@@ -371,7 +371,7 @@ function Main(quest, me)
                         if scratchValue4 then
                             quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                             if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
-                                meleeApprentice:SetFriendsWithEverythingFlag(1)
+                                meleeApprentice:SetFriendsWithEverythingFlag(true)
                             end
                             local movie3 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
@@ -394,13 +394,13 @@ function Main(quest, me)
                             quest:SetStateBool("FightFinished", true)
                             scratchValue7 = 1
                             quest:PauseAllNonScriptedEntities(false)
-                            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_bc;
+                            this_00 = movie3
                             goto LAB_00d4b6f6
                         end
                     else
                         quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                         if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
-                            meleeApprentice:SetFriendsWithEverythingFlag(1)
+                            meleeApprentice:SetFriendsWithEverythingFlag(true)
                         end
                         local movie2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
@@ -423,7 +423,7 @@ function Main(quest, me)
                         quest:SetStateBool("FightFinished", true)
                         scratchValue7 = 1
                         quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_ac;
+                        this_00 = movie2
                         goto LAB_00d4b6f6
                     end
                     goto FLOW_past_lab_00d4b6f6
@@ -466,11 +466,11 @@ function Main(quest, me)
                             end
                         elseif hero:MsgIsHitBy("MeleeOpponent") then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
-                            if quest:GetTimer(timerId) < 1 then
+                            if quest:GetTimer(timerId2) < 1 then
                                 addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)
                                 quest:AddPersonToConversation(addNewConversation, hero)
                                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", meleeApprentice, hero, false)
-                                quest:SetTimer(timerId, 15)
+                                quest:SetTimer(timerId2, 15)
                             end
                         end
                     else
@@ -484,7 +484,7 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00d4b857
                     ::LAB_00d4b857::
-                    quest:SetTimer(timerId, 15)
+                    quest:SetTimer(timerId2, 15)
                     ::FLOW_past_lab_00d4b857::
                     scratchValue4 = quest:GetStateBool("FightFinished")
                 end
@@ -493,7 +493,7 @@ function Main(quest, me)
                 quest:RemoveQuestInfoElement(addQuestInfoBarHealth)
                 quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                 if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
-                    meleeApprentice:SetFriendsWithEverythingFlag(1)
+                    meleeApprentice:SetFriendsWithEverythingFlag(true)
                 end
                 quest:DisplayQuestInfo(false)
                 if scratchValue7 == 1 then
@@ -629,11 +629,11 @@ function Main(quest, me)
                 ::LAB_00d4c3f3::
                 quest:SetStateBool("StartedMeleeTesting", false)
                 quest:SetMasterGameState("HeroTakingGuildTest", false)
-                quest:DeregisterTimer(timerId)
+                quest:DeregisterTimer(timerId2)
                 goto LAB_00d4c40d
                 ::FLOW_past_lab_00d4c3f3::
                 ::LAB_00d4c6c8::
-                quest:DeregisterTimer(timerId)
+                quest:DeregisterTimer(timerId2)
             end
             goto FLOW_past_lab_00d4c40d
             ::LAB_00d4c40d::
@@ -641,7 +641,7 @@ function Main(quest, me)
             ::FLOW_past_lab_00d4c40d::
             ::LAB_00d4c6d1::
             ::LAB_00d4c6da::
-            quest:DeregisterTimer(timerId2)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end

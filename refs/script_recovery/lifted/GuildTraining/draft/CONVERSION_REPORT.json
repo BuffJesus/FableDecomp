@@ -228,10 +228,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd496f0(this);",
-            "unlifted: NScript::CQ_GuildTrainingScript::RunSaveXPCutscene2__atd49a20(this);"
-          ],
+          "todo": [],
           "calls": [
             "GetThingWithScriptName",
             "GetNearestWithDefName",
@@ -792,10 +789,7 @@
             "verify cleanup at LAB_00d45346 (lifted as early return)",
             "label LAB_00d45d42",
             "label LAB_00d45346",
-            "label LAB_00d45dbb",
-            "unlifted: cVar11 = (**(*uStack_9c + 0x54))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*uStack_9c + 0xa8))(\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar11 = (**(*uStack_9c + 0xa4))(0xe,\"SCRIPT_NAME_HERO\")"
+            "label LAB_00d45dbb"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -847,6 +841,9 @@
             "GetHero",
             "MsgHitFriendWithRangedWeapon",
             "IsLevelLoaded",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
@@ -915,7 +912,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 403,
+          "lines": 391,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -949,7 +946,7 @@
             "if (bVar9) goto LAB_00d452d1;",
             "if (iVar18 != 2) goto LAB_00d45930;",
             "if (native_arg_sequence_1) goto LAB_00d45782;",
-            "if (native_arg_sequence_3) goto LAB_00d45782;"
+            "if (native_arg_sequence_2) goto LAB_00d45782;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00d45184",
@@ -2971,8 +2968,6 @@
             "label LAB_00d4c4a5",
             "label LAB_00d4c4f5",
             "label LAB_00d4ae53",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_bc;",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_ac;",
             "label LAB_00d4c69e_c17",
             "label LAB_00d4c692",
             "label LAB_00d4c69e"
@@ -4583,18 +4578,6 @@
           },
           "todo": [
             "label LAB_00d42f10",
-            "unlifted: xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;",
-            "unnamed field 0x18",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "unnamed field 0x18",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;",
-            "unlifted: fStack_a0 = f_stk_ac * (float)i_stk_16c + f_stk_160;",
-            "unlifted: fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;",
-            "unnamed field 0x18",
-            "unlifted: *piVar1 = *piVar1 + iVar5;",
-            "unnamed field 0x18",
-            "unlifted: *piVar1 = *piVar1 + *(int *)(this + 0x24);",
             "verify cleanup at LAB_00d42ef8 (lifted as early return)",
             "label LAB_00d42ef8",
             "label LAB_00d42f02",
@@ -4605,9 +4588,7 @@
             "goto LAB_00d42f02",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
             "verify cleanup at LAB_00d42efe (lifted as early return)",
-            "label LAB_00d42f0b",
-            "unlifted: quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)",
-            "unlifted: quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)"
+            "label LAB_00d42f0b"
           ],
           "calls": [
             "GetAngleXY",
@@ -4660,8 +4641,10 @@
             "MsgIsHitByHeroWithProjectileWeapon",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "SetMasterGameState",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "SetMasterGameState",
             "EntitySetTargetable",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -4681,8 +4664,10 @@
             "DeregisterTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "ENGINE_Vector3",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "ENGINE_Vector3",
             "EntityTeleportToPosition",
             "MsgIsHitByHeroWithProjectileWeapon",
             "IsActiveThreadTerminating",
@@ -4720,8 +4705,10 @@
             "DeregisterTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "SetMasterGameState",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "SetMasterGameState",
             "GetTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
@@ -4800,7 +4787,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 589,
+          "lines": 595,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4904,11 +4891,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: xStack_94 = angle + (float)0.0;",
-            "unnamed field 0x18",
-            "unlifted: *piVar1 = *piVar1 + 1;"
-          ],
+          "todo": [],
           "calls": [
             "GetAngleXY",
             "NewScriptFrame",
@@ -4936,6 +4919,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "EntitySetFacingAngle",
+            "SetMasterGameState",
             "GetTimer",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
@@ -4991,7 +4975,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 207,
+          "lines": 206,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5309,7 +5293,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 449,
+          "lines": 448,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5572,13 +5556,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: xStack_48[0] = (int *)0x0;",
-            "unlifted: xStack_48[0] = (int *)0x0;",
-            "label LAB_00d441bb",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;",
-            "unlifted: this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;"
+            "label LAB_00d441bb"
           ],
           "calls": [
             "EntitySetAsKillable",
@@ -5681,7 +5659,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 277,
+          "lines": 275,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5821,39 +5799,6 @@
         "KillBird": "GuildTraining/Entities/KillBird",
         "PreMeleeMaze": "GuildTraining/Entities/PreMeleeMaze"
       },
-      "declaredFreeLocals": {
-        "FSE/GuildTraining/GuildTraining.lua": {
-          "CheckFriendlyAttacks": [
-            "uStack_9c"
-          ]
-        },
-        "FSE/GuildTraining/Entities/CombatApprentice.lua": {
-          "Main": [
-            "this_00"
-          ]
-        },
-        "FSE/GuildTraining/Entities/SkillTarget.lua": {
-          "Main": [
-            "pPos"
-          ]
-        },
-        "FSE/GuildTraining/Entities/WillDummy.lua": {
-          "Main": [
-            "xStack_94"
-          ]
-        },
-        "FSE/GuildTraining/Entities/BirdKiller.lua": {
-          "Main": [
-            "xStack_7c",
-            "x_stk_60"
-          ]
-        },
-        "FSE/GuildTraining/Entities/PreMeleeMaze.lua": {
-          "Main": [
-            "this_00"
-          ]
-        }
-      },
       "cleanupRegions": {
         "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua": {
           "LAB_00d402b3_c31": [
@@ -5880,21 +5825,21 @@
         },
         "FSE/GuildTraining/Entities/SkillApprentice.lua": {
           "LAB_00d4dd41": [
-            "quest:DeregisterTimer(xStack_174)",
+            "quest:DeregisterTimer(i_stk_174)",
             "resources:ReleaseResource(xStack_170)"
           ],
           "LAB_00d4de46": [
-            "quest:DeregisterTimer(xStack_174)",
+            "quest:DeregisterTimer(i_stk_174)",
             "resources:ReleaseResource(xStack_170)"
           ]
         },
         "FSE/GuildTraining/Entities/WillApprentice.lua": {
           "LAB_00d504b9": [
-            "quest:DeregisterTimer(xStack_150)",
+            "quest:DeregisterTimer(i_stk_150)",
             "resources:ReleaseResource(xStack_148)"
           ],
           "LAB_00d505a6": [
-            "quest:DeregisterTimer(xStack_150)",
+            "quest:DeregisterTimer(i_stk_150)",
             "resources:ReleaseResource(xStack_148)"
           ]
         },
@@ -5913,8 +5858,15 @@
           "LAB_00d4e91f": [
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_78)",
-            "quest:DeregisterTimer(timerId)",
+            "quest:DeregisterTimer(xStack_8c)",
             "resources:ReleaseResource(xStack_8c)"
+          ]
+        }
+      },
+      "declaredFreeLocals": {
+        "FSE/GuildTraining/Entities/BirdKiller.lua": {
+          "Main": [
+            "xStack_7c"
           ]
         }
       },
@@ -5925,7 +5877,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 168
+        "todo": 138
       }
     },
     {
@@ -6415,7 +6367,6 @@
             "goto LAB_00d5a9b5",
             "verify cleanup at LAB_00d5a93f (lifted as early return)",
             "label LAB_00d5a93f",
-            "unlifted: this_01 = (CScriptGameResourceObjectMovieBase *)xStack_e0;",
             "label LAB_00d5a99e",
             "goto LAB_00d5a9a7",
             "verify cleanup at LAB_00d5a933 (lifted as early return)",
@@ -6428,7 +6379,6 @@
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a997 (lifted as early return)",
             "label LAB_00d5a997",
-            "unlifted: this_01 = (CScriptGameResourceObjectMovieBase *)xStack_1d0;",
             "goto LAB_00d5a99e",
             "verify cleanup at LAB_00d5a98b (lifted as early return)",
             "label LAB_00d5a98b",
@@ -6844,7 +6794,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 784,
+          "lines": 785,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -7629,28 +7579,30 @@
             "resources:ReleaseResource(xStack_84)",
             "resources:ReleaseResource(xStack_d0)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a922": [
             "resources:ReleaseResource(xStack_d0)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a933": [
             "resources:ReleaseResource(xStack_a4)",
+            "this_01 = xStack_e0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a93f": [
+            "this_01 = xStack_e0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a948": [
@@ -7659,10 +7611,11 @@
             "resources:DestroyStringMap(xStack_1e0)",
             "resources:DestroyActorMap(xStack_220)",
             "resources:ReleaseResource(xStack_1c0)",
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a956": [
@@ -7671,10 +7624,11 @@
             "resources:DestroyStringMap(xStack_1e0)",
             "resources:DestroyActorMap(xStack_220)",
             "resources:ReleaseResource(xStack_1c0)",
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a962": [
@@ -7683,10 +7637,11 @@
             "resources:DestroyStringMap(xStack_1e0)",
             "resources:DestroyActorMap(xStack_220)",
             "resources:ReleaseResource(xStack_1c0)",
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a96a": [
@@ -7694,51 +7649,47 @@
             "resources:DestroyStringMap(xStack_1e0)",
             "resources:DestroyActorMap(xStack_220)",
             "resources:ReleaseResource(xStack_1c0)",
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a98b": [
             "resources:ReleaseResource(xStack_1c0)",
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a997": [
+            "this_01 = xStack_1d0",
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a99e": [
             "resources:ReleaseResource(this_01)",
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a9a7": [
             "resources:ReleaseResource(xStack_214)",
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
           ],
           "LAB_00d5a9b5": [
             "quest:DeregisterTimer(xStack_260)",
-            "quest:DeregisterTimer(xStack_264)",
+            "quest:DeregisterTimer(i_stk_264)",
             "resources:ReleaseResource(xStack_250)"
-          ]
-        }
-      },
-      "declaredFreeLocals": {
-        "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua": {
-          "Main": [
-            "this_01"
           ]
         }
       },
@@ -7749,7 +7700,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 61
+        "todo": 59
       }
     },
     {
@@ -7943,10 +7894,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);",
-            "unlifted: xStack_180 = *(CCharString *)(*(int *)(this + 0x14) + 0x50);",
             "CreateEffect: not in FSE manifest",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator= ((CCountedPointer<CDiskFileWin32> *)xStack_160,",
             "label LAB_00d55c63",
             "label LAB_00d55c9f"
           ],
@@ -8470,7 +8418,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1171,
+          "lines": 1173,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -8519,7 +8467,7 @@
             "if (!bVar3) goto LAB_00d54846;",
             "if (!bVar3) goto LAB_00d54f9c;",
             "if (!bVar3) goto LAB_00d551d4;",
-            "if ((!bVar3) || (iVar7 = GSI->GetTimer(xStack_188), 0 < iVar7)) goto FLOW_native_label_1;",
+            "if ((!bVar3) || (iVar7 = GSI->GetTimer(i_stk_188), 0 < iVar7)) goto FLOW_native_label_1;",
             "if (GSI->GetMasterGameState(\"ScorpionsDestroyedCutscenePlayed\") == '\\0') goto LAB_00d54f9c;",
             "if (bVar3) goto LAB_00d533bb;",
             "if (bVar3) goto LAB_00d53a0b;",
@@ -8797,8 +8745,7 @@
             "label LAB_00d52dc0",
             "label LAB_00d52df2",
             "label LAB_00d52de9",
-            "label LAB_00d52d83",
-            "unlifted: pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)"
+            "label LAB_00d52d83"
           ],
           "calls": [
             "EntitySetAsKillable",
@@ -8866,6 +8813,8 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
+            "LOCALLIST_At",
+            "GetDataString",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
@@ -9042,7 +8991,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 12
+        "todo": 8
       }
     },
     {
@@ -9130,7 +9079,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_1ec = 1 - xStack_1ec;",
             "label LAB_00d5dbab",
             "goto LAB_00d5dac4",
             "label LAB_00d5db05",
@@ -9141,8 +9089,6 @@
             "verify cleanup at LAB_00d5db05 (lifted as early return)",
             "verify cleanup at LAB_00d5dab8 (lifted as early return)",
             "label LAB_00d5db99",
-            "unnamed field 0x18",
-            "unlifted: *piVar2 = *piVar2 + 1;",
             "verify cleanup at LAB_00d5db37 (lifted as early return)",
             "label LAB_00d5db37",
             "goto LAB_00d5db1f",
@@ -9153,7 +9099,6 @@
             "goto LAB_00d5db1f",
             "verify cleanup at LAB_00d5db45 (lifted as early return)",
             "verify cleanup at LAB_00d5db13 (lifted as early return)",
-            "unlifted: piVar2 = DAT_0143e8f8;",
             "verify cleanup at LAB_00d5db90 (lifted as early return)",
             "verify cleanup at LAB_00d5db90 (lifted as early return)",
             "verify cleanup at LAB_00d5db90 (lifted as early return)",
@@ -9171,13 +9116,6 @@
             "label LAB_00d5db84",
             "goto LAB_00d5db90",
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar11 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "goto LAB_00d5db62",
             "label LAB_00d5db53",
             "label LAB_00d5db6f",
@@ -9189,10 +9127,7 @@
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
             "verify cleanup at LAB_00d5db62 (lifted as early return)",
             "verify cleanup at LAB_00d5db53 (lifted as early return)",
-            "verify cleanup at LAB_00d5db62 (lifted as early return)",
-            "unlifted: CVar10 = *(this + 4)",
-            "unlifted: pCVar7 = (**(*CVar10 + 0x120))(CVar10,&\"ArcheryRing\",&\"ArcheryRing\")",
-            "unlifted: pCVar6 = (**(*CVar10 + 0x118))(CVar10)"
+            "verify cleanup at LAB_00d5db62 (lifted as early return)"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -9457,6 +9392,7 @@
             "DeregisterTimer",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
+            "SetMasterGameState",
             "IsConversationActive",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
@@ -9686,6 +9622,8 @@
             "MsgIsGameInfoClickedPast",
             "IsActiveThreadTerminating",
             "SetTimer",
+            "GetThingWithScriptName",
+            "GetHero",
             "ENGINE_IsDistanceBetweenThingsOver",
             "IsActiveThreadTerminating",
             "SetStateBool",
@@ -9732,6 +9670,13 @@
             "GetMasterGameState",
             "IsActiveThreadTerminating",
             "STRINGMAP_New",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
             "RESOURCE_RunMacroWithStrings",
             "STRINGMAP_Destroy",
             "IsActiveThreadTerminating",
@@ -9791,7 +9736,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1245,
+          "lines": 1238,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9944,14 +9889,14 @@
             "resources:DestroyMovie(xStack_1c)",
             "resources:DestroyActorMap(xStack_170)",
             "resources:ReleaseResource(xStack_180)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5dac4": [
             "resources:DestroyMovie(xStack_1c)",
             "resources:DestroyActorMap(xStack_170)",
             "resources:ReleaseResource(xStack_180)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db05": [
@@ -9959,7 +9904,7 @@
             "resources:DestroyMovie(xStack_1c)",
             "resources:DestroyActorMap(xStack_170)",
             "resources:ReleaseResource(xStack_180)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db13": [
@@ -9968,7 +9913,7 @@
             "resources:DestroyActorMap(xStack_164)",
             "resources:ReleaseResource(xStack_190)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db1f": [
@@ -9976,13 +9921,13 @@
             "resources:DestroyActorMap(xStack_164)",
             "resources:ReleaseResource(xStack_190)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db37": [
             "resources:ReleaseResource(xStack_190)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db45": [
@@ -9991,7 +9936,7 @@
             "resources:DestroyActorMap(xStack_164)",
             "resources:ReleaseResource(xStack_190)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db53": [
@@ -10001,7 +9946,7 @@
             "resources:ReleaseResource(xStack_1a0)",
             "quest:DeregisterTimer(xStack_214)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db62": [
@@ -10011,7 +9956,7 @@
             "resources:ReleaseResource(xStack_1a0)",
             "quest:DeregisterTimer(xStack_214)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db6f": [
@@ -10020,28 +9965,21 @@
             "resources:ReleaseResource(xStack_1a0)",
             "quest:DeregisterTimer(xStack_214)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db84": [
             "resources:ReleaseResource(xStack_1a0)",
             "quest:DeregisterTimer(xStack_214)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
           ],
           "LAB_00d5db90": [
             "quest:DeregisterTimer(xStack_214)",
             "quest:DeregisterTimer(xStack_21c)",
-            "quest:DeregisterTimer(xStack_220)",
+            "quest:DeregisterTimer(i_stk_220)",
             "resources:ReleaseResource(xStack_210)"
-          ]
-        }
-      },
-      "declaredFreeLocals": {
-        "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua": {
-          "Main": [
-            "xStack_21c_b3"
           ]
         }
       },
@@ -10052,7 +9990,7 @@
         "functionSyntaxPassed": 6,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 63
+        "todo": 49
       }
     },
     {
@@ -10177,15 +10115,8 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharStrin",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_1f0);",
             "label LAB_00d61b0a",
-            "unlifted: (**(code **)(*xStack_1b4._0_4_ + 0x118))(0);",
-            "unlifted: (**(code **)(*xStack_1b4._0_4_ + 0x118))(0);",
-            "label LAB_00d60b31",
-            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)",
-            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)",
-            "unlifted: ACTORMAP_Set(xStack_210, \"HERO\", &xStack_204_2)"
+            "label LAB_00d60b31"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -10501,6 +10432,7 @@
             "IsActiveThreadTerminating",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_RunMacro",
             "GiveHeroYesNoQuestion",
             "MsgIsQuestionAnsweredYesOrNo",
@@ -10707,6 +10639,7 @@
             "GetThingWithScriptName",
             "GetPos",
             "CreateCreature",
+            "SetToKillOnLevelUnload",
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
@@ -10740,6 +10673,7 @@
             "GetThingWithScriptName",
             "GetPos",
             "CreateCreature",
+            "SetToKillOnLevelUnload",
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
             "SetQuestCardObjective",
@@ -10764,7 +10698,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1274,
+          "lines": 1273,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11000,7 +10934,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 9
+        "todo": 2
       }
     },
     {
@@ -11240,14 +11174,11 @@
           },
           "todo": [
             "goto LAB_00d63aab",
-            "unlifted: this_01 = (CPhysicsMeshInfo *)xStack_138;",
             "goto LAB_00d63aab",
-            "unlifted: this_01 = (CPhysicsMeshInfo *)xStack_bc;",
             "label LAB_00d63aa6",
             "label LAB_00d63aab",
             "label LAB_00d63a62",
-            "goto LAB_00d63aa6",
-            "unlifted: if *(iVar6 + 0xf14) <= xStack_128 then"
+            "goto LAB_00d63aa6"
           ],
           "calls": [
             "NewScriptFrame",
@@ -11506,7 +11437,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 699,
+          "lines": 698,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11663,16 +11594,7 @@
           },
           "todo": [
             "label LAB_00d649a2",
-            "unlifted: xStack_7c = *(CCharString *)(this + 4);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
-            "unlifted: xStack_7c = *(CCharString *)(this + 4);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,true);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
-            "label LAB_00d65b83",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))((void *)xStack_7c,false);"
+            "label LAB_00d65b83"
           ],
           "calls": [
             "NewScriptFrame",
@@ -11787,6 +11709,7 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "Pause",
             "GetHero",
@@ -11802,10 +11725,12 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "GetHero",
             "EntitySetAsDrawable",
             "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "RESOURCE_PrepareResource",
             "EntitySetBossPhase",
@@ -11873,6 +11798,7 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "Pause",
             "GetHero",
@@ -11886,13 +11812,16 @@
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "GetHero",
             "EntitySetAsDrawable",
             "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "RESOURCE_PrepareResource",
             "EntitySetBossPhase",
@@ -11987,7 +11916,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 778,
+          "lines": 776,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12154,8 +12083,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00d647d1",
-            "unlifted: xStack_18._4_4_ = (int *)0x0;"
+            "label LAB_00d647d1"
           ],
           "calls": [
             "NewScriptFrame",
@@ -12189,7 +12117,7 @@
             "RemoveQuestInfoElement",
             "DisplayQuestInfo"
           ],
-          "lines": 86,
+          "lines": 85,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12311,11 +12239,11 @@
         "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua": {
           "LAB_00d63aa6": [
             "resources:DestroyMovie(pCVar8)",
-            "quest:DeregisterTimer(xStack_188)",
+            "quest:DeregisterTimer(i_stk_188)",
             "resources:ReleaseResource(xStack_184)"
           ],
           "LAB_00d63aab": [
-            "quest:DeregisterTimer(xStack_188)",
+            "quest:DeregisterTimer(i_stk_188)",
             "resources:ReleaseResource(xStack_184)"
           ]
         }
@@ -12327,7 +12255,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 22
+        "todo": 9
       }
     },
     {
@@ -12601,8 +12529,7 @@
           },
           "todo": [
             "label LAB_00d676fb",
-            "label LAB_00d67728",
-            "unlifted: xStack_18._4_4_ = (int *)0x0;"
+            "label LAB_00d67728"
           ],
           "calls": [
             "ENGINE_Trunc",
@@ -12650,7 +12577,7 @@
             "SetStateInt",
             "QUESTTHING_Empty"
           ],
-          "lines": 114,
+          "lines": 113,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12773,7 +12700,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 3
+        "todo": 2
       }
     },
     {
@@ -12802,18 +12729,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: iVar5 = CCarriedReadableDef::CCarriedReadableDef__at7e72a0(xStack_10);",
-            "unlifted: CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)&xStack_2c,iVar8",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator=(pCVar7,pvVar9);",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);",
-            "unlifted: puStack_78 = puStack_78 + -3;",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_2c);",
-            "unlifted: ACTORMAP_Set(xStack_38, \"BAN1\", &0x0)"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -12840,6 +12756,8 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "GetAllThingsWithScriptName",
+            "RESOURCE_NewResource",
+            "RESLIST_New",
             "RESOURCE_ReleaseResource",
             "RESOURCE_TryAcquire",
             "RESOURCE_NewResource",
@@ -12855,6 +12773,8 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
@@ -12864,6 +12784,7 @@
             "RESOURCE_DestroyMovie",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
+            "RESLIST_Destroy",
             "IsActiveThreadTerminating",
             "LOCALLIST_At",
             "GetHero",
@@ -12941,9 +12862,10 @@
             "SetStateBool",
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource",
+            "RESLIST_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 270,
+          "lines": 261,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -13268,14 +13190,6 @@
       "bindingFiles": {
         "WillWhisper": "GuildTrainingWoodsWill/Entities/WillWhisper"
       },
-      "declaredFreeLocals": {
-        "FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua": {
-          "Main": [
-            "puStack_78",
-            "xStack_10"
-          ]
-        }
-      },
       "summary": {
         "owners": 2,
         "functions": 9,
@@ -13283,7 +13197,7 @@
         "functionSyntaxPassed": 9,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 10
+        "todo": 0
       }
     }
   ],
@@ -13294,6 +13208,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 349
+    "todo": 268
   }
 }

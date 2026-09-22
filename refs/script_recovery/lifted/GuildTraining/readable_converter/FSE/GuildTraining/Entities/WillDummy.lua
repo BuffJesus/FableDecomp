@@ -10,7 +10,7 @@ local SCRIPT_DEF = {
 
 -- WillDummy.Main (retail 0x00d43450)
 function Main(quest, me)
-    local predicateResult, predicateResult6, scratchValue6
+    local predicateResult, predicateResult6
     local willHelpTimer = quest:GetStateInt("WillHelpTimer")
     local hero = quest:GetHero()
     local angle = me:GetAngleXY()
@@ -49,12 +49,12 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then return end
     if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
         quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
-        -- TODO(native): xStack_94 = angle + (float)0.0;
-        quest:EntitySetFacingAngle(me, scratchValue6, true)
+        local scratchValue = angle + 0.25
+        quest:EntitySetFacingAngle(me, scratchValue, true)
         if not quest:NewScriptFrame(me) then return end
         if not quest:NewScriptFrame(me) then return end
-        quest:EntitySetFacingAngle(me, angle + 0.0, true)
-        -- TODO(native): *piVar1 = *piVar1 + 1;
+        quest:EntitySetFacingAngle(me, angle + 0.5, true)
+        quest:SetMasterGameState("WillScore", quest:GetMasterGameState("WillScore") + 1)
         if quest:GetTimer(willHelpTimer) < 1 then
             if quest:IsActiveThreadTerminating() then return end
             local willApprentice = quest:GetThingWithScriptName("WillApprentice")
@@ -71,7 +71,7 @@ function Main(quest, me)
         end
         quest:EntitySetTargetable(me, false)
         quest:Pause(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_WillDummySpinTimer))
-        quest:EntitySetFacingAngle(me, scratchValue6, true)
+        quest:EntitySetFacingAngle(me, scratchValue, true)
         if not quest:NewScriptFrame(me) then return end
         if not quest:NewScriptFrame(me) then return end
         quest:EntitySetFacingAngle(me, angle, true)

@@ -1,0 +1,7 @@
+[
+  {
+    "id": "badhero_warnings",
+    "status": "FAIL",
+    "detail": "expected /GUILD_SEAL_THIRD_WARNING|GUILD_SEAL_FOURTH_WARNING|CS_GUILD_BADHERO/ not seen within 150.0s"
+  }
+]

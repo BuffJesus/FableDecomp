@@ -12,10 +12,10 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar2, f_stk_28, f_stk_94, fret_0, iVar10, iVar11, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_8c, xStack_a0, x_stk_c
+    local bVar3, cVar4, dist, elem_1, fVar2, f_stk_28, f_stk_94, fret_0, iStack_90, iVar10, iVar11, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_a0, x_stk_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
-    me:SetFriendsWithEverythingFlag(1)
+    me:SetFriendsWithEverythingFlag(true)
     cVar4 = quest:GetStateBool("WhisperCutsceneFinished")
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
@@ -166,8 +166,8 @@ function Main(quest, me)
                 pvVar7 = r2:GetDataString()
                 f_stk_94 = tonumber(pvVar7)
                 uVar9 = 0
-                xStack_8c = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
-                if #xStack_8c ~= 0 then
+                iStack_90 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
+                if #iStack_90 ~= 0 then
                     iVar10 = 0
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
@@ -177,8 +177,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_a0)
                             return
                         end
-                        -- TODO(native): pvVar7 = (**(*(iVar10 + xStack_8c) + 0xc))(xStack_20)
-                        pvVar7 = nil --[[unresolved native value]]
+                        elem_1 = iStack_90[(iVar10) / 0xc + 1]
+                        pvVar7 = elem_1:GetDataString()
                         f_stk_28 = tonumber(pvVar7)
                         if f_stk_28 == f_stk_94 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -188,11 +188,11 @@ function Main(quest, me)
                                 resources:ReleaseResource(xStack_a0)
                                 return
                             end
-                            quest:RemoveThing(xStack_8c[(iVar10) / 0xc + 1], false, true)
+                            quest:RemoveThing(iStack_90[(iVar10) / 0xc + 1], false, true)
                         end
                         uVar9 = uVar9 + 1
                         iVar10 = iVar10 + 0xc
-                    until not (uVar9 < (#xStack_8c))
+                    until not (uVar9 < (#iStack_90))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive

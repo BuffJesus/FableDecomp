@@ -2,7 +2,7 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, uVar17, xStack_18, xStack_34, xStack_38, xStack_74
+    local CVar10, CVar15, CVar5, bVar13, bVar2, cVar1, c_stk_7d, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, fVar16, f_stk_70, iStack_38, iVar8, iVar9, pCVar4, pCVar6, pPosition, pcVar14, piVar7, r1, r2, r3, r4, uVar17, xStack_18, xStack_34, xStack_74
     local alive = true
     local function __region_LAB_00df77e2()
         bVar13 = xStack_18 == nil
@@ -307,7 +307,7 @@ function Main(quest)
                                         if bVar13 then
                                             goto LAB_00df75ec
                                         end
-                                        xStack_38 = quest:GetStateListRef("AllCreatures")
+                                        iStack_38 = quest:GetStateListRef("AllCreatures")
                                         pCVar4 = quest:GetHero()
                                         CVar10 = ctr_74
                                         quest:GiveThingBestEnemyTarget(pCVar4, r2)
@@ -522,29 +522,29 @@ function Init(quest)
 end
 
 function WatchTimeLimit(quest)
-    local CVar2, bVar3, cVar1, iVar4, xStack_8
+    local CVar2, bVar3, cVar1, iStack_8, iVar4
     local alive = true
-    xStack_8 = quest:RegisterTimer()
-    quest:SetTimer(xStack_8, 5)
+    iStack_8 = quest:RegisterTimer()
+    quest:SetTimer(iStack_8, 5)
     cVar1 = quest:GetMasterGameState("TCETimeLimitBoastTaken")
     while not cVar1 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            quest:DeregisterTimer(xStack_8)
+            quest:DeregisterTimer(iStack_8)
             return
         end
-        iVar4 = quest:GetTimer(xStack_8)
+        iVar4 = quest:GetTimer(iStack_8)
         if iVar4 == 0 then
             alive = not quest:IsActiveThreadTerminating()
-            quest:DeregisterTimer(xStack_8)
+            quest:DeregisterTimer(iStack_8)
             return
         end
         cVar1 = quest:GetMasterGameState("TCETimeLimitBoastTaken")
     end
-    quest:SetTimer(xStack_8, quest:ReadGlobalGameData(0xf80))
-    iVar4 = quest:AddQuestInfoTimer(xStack_8, "HUD_CLOCK_ICON", 1.0)
+    quest:SetTimer(iStack_8, quest:ReadGlobalGameData(0xf80))
+    iVar4 = quest:AddQuestInfoTimer(iStack_8, "HUD_CLOCK_ICON", 1.0)
     quest:DisplayQuestInfo(true)
     CVar2 = quest:GetStateBool("MissionSucceeded")
     while not CVar2 do
@@ -558,19 +558,19 @@ function WatchTimeLimit(quest)
     bVar3 = not alive
     if not bVar3 then
         quest:RemoveQuestInfoElement(iVar4)
-        iVar4 = quest:GetTimer(xStack_8)
+        iVar4 = quest:GetTimer(iStack_8)
         if 0 < iVar4 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
-                quest:DeregisterTimer(xStack_8)
+                quest:DeregisterTimer(iStack_8)
                 return
             end
             quest:SetMasterGameState("TCEMadeTimeLimit", true)
         end
     end
     ::LAB_00df7b03::
-    quest:DeregisterTimer(xStack_8)
+    quest:DeregisterTimer(iStack_8)
 end
 
 function UpdateLiveEnemies(quest)

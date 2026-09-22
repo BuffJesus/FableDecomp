@@ -16,14 +16,14 @@ local birdMode, haveChatted, currentBirds
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local ctr_90, questionAnswer, timerId, scratchValue33, movie2, movie3, resource4, scratchValue34
+    local ctr_90, questionAnswer, timerId, scratchValue, movie2, movie3, resource4
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
-        quest:DeregisterTimer(timerId)
+        quest:DeregisterTimer(resource4)
         resources:ReleaseResource(resource4)
     end
-    scratchValue33 = 0
+    scratchValue = 0
     resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -40,15 +40,14 @@ function Main(quest, me)
     if birdMode == 0 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d4ef90 end
         local birdMarker = quest:GetAllThingsWithScriptName("BirdMarker")
-        local scratchValue = scratchValue34 - birdMarker >> 31
-        if (scratchValue34 - birdMarker) / 12 + scratchValue ~= scratchValue then
+        if #birdMarker ~= 0 then
             ctr_90 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
                 quest:SetThingPersistent(quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", birdMarker[ctr_90 / 12 + 1]:GetPos(), "KillBird"), true)
                 ctr_90 = ctr_90 + 12
-                scratchValue33 = scratchValue33 + 1
-            until scratchValue33 >= ((scratchValue34 - birdMarker) / 12)
+                scratchValue = scratchValue + 1
+            until scratchValue >= #birdMarker
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
         quest:SetStateInt("CurrentBirdsKilled", 0)
@@ -101,7 +100,7 @@ function Main(quest, me)
                     else
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
-                        quest:DeregisterTimer(timerId)
+                        quest:DeregisterTimer(resource4)
                         resources:ReleaseResource(resource4)
                         do return end
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -143,7 +142,7 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie2)
-                                    quest:DeregisterTimer(timerId)
+                                    quest:DeregisterTimer(resource4)
                                     resources:ReleaseResource(resource4)
                                     do return end
                                 end

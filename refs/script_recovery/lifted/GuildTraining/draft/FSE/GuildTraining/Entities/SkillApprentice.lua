@@ -12,14 +12,14 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_174, xStack_64, xStack_74, xStack_84, xStack_88, x_stk_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
+    local __native_condition_1, bVar4, cVar5, c_stk_13d, c_stk_14d, c_stk_14e, fVar18, fVar3, f_stk_12c, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar14, iVar15, iVar17, iVar6, iVar7, i_stk_174, i_stk_88, ixVar12, native_arg_sequence_1, native_arg_switch_2, p0, pCVar16, pCVar8, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, xStack_118, xStack_128, xStack_138, xStack_13c, xStack_160, xStack_170, xStack_64, xStack_74, xStack_84, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54
     local alive = true
     local function __cleanup_LAB_00d4dd41()
-        quest:DeregisterTimer(xStack_174)
+        quest:DeregisterTimer(i_stk_174)
         resources:ReleaseResource(xStack_170)
     end
     local function __cleanup_LAB_00d4de46()
-        quest:DeregisterTimer(xStack_174)
+        quest:DeregisterTimer(i_stk_174)
         resources:ReleaseResource(xStack_170)
     end
     xStack_170 = resources:NewResource()
@@ -51,15 +51,15 @@ function Main(quest, me)
     __native_entity_state:SetStateBool("PlayerNotWarned", true)
     c_stk_14e = 0
     iVar6 = quest:RegisterTimer()
-    xStack_174 = iVar6
-    quest:SetTimer(xStack_174, 10)
+    i_stk_174 = iVar6
+    quest:SetTimer(i_stk_174, 10)
     r2 = quest:GetThingWithScriptName("SkillApprenticeTargetMarker")
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     repeat
         if bVar4 then
             r2 = nil
-            quest:DeregisterTimer(xStack_174)
+            quest:DeregisterTimer(i_stk_174)
             r1 = nil
             -- LAB_00d4dcdb: (native jump target)
             resources:ReleaseResource(xStack_170)
@@ -86,7 +86,7 @@ function Main(quest, me)
                 end
                 goto LAB_00d4c9a2
             end
-            quest:DeregisterTimer(xStack_174)
+            quest:DeregisterTimer(i_stk_174)
             resources:ReleaseResource(xStack_170)
             return
         end
@@ -120,7 +120,7 @@ function Main(quest, me)
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                iVar6 = quest:GetTimer(xStack_174)
+                iVar6 = quest:GetTimer(i_stk_174)
                 if 0 < iVar6 then
                     native_arg_sequence_1 = true
                 else
@@ -134,7 +134,7 @@ function Main(quest, me)
                 bVar4 = false
                 pCVar9 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, pCVar9, bVar4)
-                quest:SetTimer(xStack_174, 0x14)
+                quest:SetTimer(i_stk_174, 0x14)
                 iVar7 = quest:AddNewConversation(me, false, false)
                 pCVar9 = quest:GetHero()
                 quest:AddPersonToConversation(iVar7, pCVar9)
@@ -188,7 +188,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                quest:DeregisterTimer(xStack_174)
+                quest:DeregisterTimer(i_stk_174)
                 resources:ReleaseResource(xStack_170)
                 return
             end
@@ -449,9 +449,9 @@ function Main(quest, me)
                 quest:SetMasterGameState("SkillScore", 0)
                 c_stk_14d = 0
                 iVar6 = quest:AddQuestInfoCounter("HUD_ICON_MULTI_ARROW", 0, 1.0)
-                xStack_88 = iVar6
+                i_stk_88 = iVar6
                 xStack_13c = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
-                x_stk_12c = quest:AddQuestInfoTimer(xStack_160, "HUD_CLOCK_ICON", 1.0)
+                f_stk_12c = quest:AddQuestInfoTimer(xStack_160, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
                 quest:UpdateQuestInfoCounter(iVar6, quest:GetMasterGameState("HighestSkillScore"), -1)
                 c_stk_13d = 0
@@ -514,9 +514,9 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d4de3d end
                     quest:DisplayQuestInfo(false)
-                    quest:RemoveQuestInfoElement(xStack_88)
+                    quest:RemoveQuestInfoElement(i_stk_88)
                     quest:RemoveQuestInfoElement(xStack_13c)
-                    quest:RemoveQuestInfoElement(x_stk_12c)
+                    quest:RemoveQuestInfoElement(f_stk_12c)
                     if c_stk_14d ~= 0 then
                         goto LAB_00d4dc16
                     end
@@ -530,12 +530,12 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d4de3d end
-                    x_stk_12c = quest:GetMasterGameState("SkillScore")
+                    f_stk_12c = quest:GetMasterGameState("SkillScore")
                     ixVar12 = 0
                     iVar6 = 0
                     repeat
                         iVar7 = iVar6
-                        if quest:ReadGlobalGameDataFloatAt(0xec0, ixVar12) <= x_stk_12c then
+                        if quest:ReadGlobalGameDataFloatAt(0xec0, ixVar12) <= f_stk_12c then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then goto LAB_00d4de3d end

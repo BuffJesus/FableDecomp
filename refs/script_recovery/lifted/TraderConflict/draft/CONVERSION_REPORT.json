@@ -1602,8 +1602,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "IsThingAwareOfOtherThingInAnyWay: missing spThing2 (1 args for 2 params)",
-            "unlifted: iStack_18 = iStack_18 + 0xc;"
+            "IsThingAwareOfOtherThingInAnyWay: missing spThing2 (1 args for 2 params)"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -1628,7 +1627,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 119,
+          "lines": 120,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1763,11 +1762,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "MsgGetThingsKilled: CScriptThing method not in FSE manifest",
-            "unlifted: free(xStack_c);",
-            "unlifted: bVar2 = this_00:MsgGetThingsKilled(&0x0)"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1777,7 +1772,7 @@
             "SetMasterGameState",
             "IsActiveThreadTerminating"
           ],
-          "lines": 25,
+          "lines": 20,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1804,9 +1799,7 @@
             "returnKind": "number",
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
-          ],
+          "todo": [],
           "calls": [
             "QUESTLIST_Clear",
             "GetAllCreaturesExcludingHero",
@@ -1831,10 +1824,11 @@
             "GetHero",
             "GetFollowingEntityList",
             "IsActiveThreadTerminating",
+            "IsEqualTo",
             "QUESTLIST_Erase",
             "IsActiveThreadTerminating"
           ],
-          "lines": 95,
+          "lines": 94,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2065,19 +2059,13 @@
           },
           "todo": [
             "unlifted: xStack_148[0] = 0;",
-            "unlifted: unaff_EBP = uVar12 | 8;",
-            "unlifted: unaff_EBP = uVar12 | 0x18;",
-            "unlifted: unaff_EBP = uVar12 | 0x38;",
-            "unlifted: unaff_EBP = unaff_EBP & 0xffffffdf;",
-            "unlifted: unaff_EBP = unaff_EBP & 0xffffffef;",
-            "unlifted: unaff_EBP = unaff_EBP & 0xfffffff7;",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
             "unlifted: xStack_148 = (CCharString)((int)CVar13 + 1);",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
             "Main_InitializeFourierAnalysis_4: unproven parent helper receiver or arity",
-            "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
-            "unlifted: cVar3 = (**(xStack_124 + 0x12c))()",
+            "unlifted: cVar3 = (**(xStack_148 + 0x12c))()",
+            "unlifted: cVar3 = (**(xStack_148 + 0x12c))()",
             "unlifted: bVar2 = (**(*(iVar11 + 0x0) + 0x138))((me))"
           ],
           "calls": [
@@ -2450,7 +2438,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1054,
+          "lines": 965,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3422,7 +3410,7 @@
       "cleanupRegions": {
         "FSE/TraderConflictGood/TraderConflictGood.lua": {
           "LAB_00dfdd34": [
-            "quest:DeregisterTimer(xStack_3c)"
+            "quest:DeregisterTimer(i_stk_3c)"
           ]
         }
       },
@@ -3435,6 +3423,7 @@
         },
         "FSE/TraderConflictGood/Entities/TraderToRescue.lua": {
           "Main": [
+            "i_stk_15c",
             "xStack_110",
             "xStack_114",
             "xStack_138",
@@ -3450,9 +3439,7 @@
           "helper_DFDED0"
         ],
         "todo": {
-          "UpdateLiveEnemies": [
-            "unlifted: cVar8 = (**(**(iVar3 + iStack_c) + 0x138))(QUESTLIST_At_AllCreatures((p0) / 0xc))"
-          ],
+          "UpdateLiveEnemies": [],
           "helper_DFDED0": []
         },
         "syntax": {
@@ -3470,7 +3457,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 38
+        "todo": 27
       }
     }
   ],
@@ -3481,6 +3468,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 45
+    "todo": 34
   }
 }

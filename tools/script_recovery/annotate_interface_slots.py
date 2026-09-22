@@ -310,6 +310,15 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
     # interface-pointer / vtable aliases under any local name (typed exports name them `this_00`, ...)
     aliases = {m.group("var") for m in RE_GSI_ALIAS.finditer(text)
                if not re.match(r"(?:[a-z]{1,3}Var\d+|\w*Stack_[0-9a-f]+|this)$", m.group("var"))}
+    # a stack slot holding the interface pointer itself (`xStack_7c = *(int **)(this + 4);` then
+    # `(**(code **)(*xStack_7c + 0x5ec))(xStack_7c, true)`: FinalMaze 0x00D6xxxx's PauseAllNonScriptedEntities,
+    # the export mistyped the slot as a by-value string) is the receiver when it is only ever assigned that way
+    # (the object pointer only -- `= *(int **)`; a cached VTABLE in a stack slot, `= **(int **)`, is left alone:
+    # NOVI_Guard's `(**(code **)(iStack_12c + 0x76c))(uVar11)` prints without its receiver and would mis-place)
+    object_alias = re.compile(r"^[ \t]*(?P<var>\w*Stack_[0-9a-f]+) = \*\(int \*\*\)\((?:this|param_\d+|\w+) \+ (?:4|0x40)\);", re.M)
+    for var in {m.group("var") for m in object_alias.finditer(text)}:
+        if all(object_alias.match(text, m.start()) for m in RE_ANY_DEF.finditer(text) if m.group("var") == var):
+            aliases.add(var)
     # a copy of an interface alias into a stack slot (`piStack_218 = piVar12;`, the pointer kept across a
     # loop) is the same receiver
     sources = aliases | {m.group("var") for m in RE_GSI_ALIAS.finditer(text)}

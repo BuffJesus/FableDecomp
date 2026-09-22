@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar7, p0, pCVar8, pThing, pcVar9, r1, r2, r3, r4, this_00, xStack_10, xStack_20, xStack_30, xStack_48, x_stk_3c
+    local __native_condition_1, bVar3, bVar4, bVar6, cVar5, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar7, p0, pCVar8, pThing, pcVar9, r1, r2, r3, r4, this_00, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
     local alive = true
     bVar6 = false
     bVar3 = false
@@ -29,7 +29,6 @@ function Main(quest, me)
         if bVar4 then
             resources:ReleaseResource(xStack_30)
             r1 = nil
-            -- TODO(native): xStack_48[0] = (int *)0x0;
             return
         end
         bVar4 = resources:TryAcquire(xStack_30, me, 4)
@@ -46,7 +45,6 @@ function Main(quest, me)
         if bVar4 then
             resources:ReleaseResource(xStack_30)
             r1 = nil
-            -- TODO(native): xStack_48[0] = (int *)0x0;
             return
         end
         if quest:GetMasterGameState("GuildWarningOccuring") then
@@ -162,7 +160,7 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00d44494
                 ::LAB_00d44494::
-                -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+                this_00 = xStack_10
                 goto LAB_00d44498
                 ::FLOW_past_lab_00d44494::
             end
@@ -181,8 +179,8 @@ function Main(quest, me)
     me:ClearCommands()
     xStack_20 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
-    xStack_48 = resources:ScriptThing(xStack_30)
-    pCVar8 = xStack_48
+    x_stk_48 = resources:ScriptThing(xStack_30)
+    pCVar8 = x_stk_48
     fret_0 = quest:GetHealth(pCVar8)
     fVar2 = 0.0
     if fret_0 <= fVar2 then
@@ -246,7 +244,7 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00d44494_c1
             ::LAB_00d44494_c1::
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+            this_00 = xStack_10
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494_c1::
         end
@@ -274,7 +272,7 @@ function Main(quest, me)
         bVar4 = not alive
         if bVar4 then
             quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+            this_00 = xStack_20
             goto LAB_00d44498
         end
         iVar7 = me:IsPerformingScriptTask()
@@ -284,7 +282,7 @@ function Main(quest, me)
     bVar4 = not alive
     if not bVar4 then goto LAB_00d441a3 end
     quest:PauseAllNonScriptedEntities(false)
-    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+    this_00 = xStack_20
     ::LAB_00d44498::
     resources:DestroyMovie(this_00)
     ::LAB_00d444a1::

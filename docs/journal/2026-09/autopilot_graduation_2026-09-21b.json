@@ -1,0 +1,7 @@
+[
+  {
+    "id": "departure_return",
+    "status": "FAIL",
+    "detail": "expected /CS_GUILD_DEPARTURE_EXIT_WOODS|IsLevelLoaded.*HeroGuildComplex.*true/ not seen within 150.0s"
+  }
+]

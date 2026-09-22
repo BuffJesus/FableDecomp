@@ -16,31 +16,40 @@ local dummyNumber, speed, dummyWorth
 
 -- SkillTarget.Main (retail 0x00d41d00)
 function Main(quest, me)
-    local predicateResult4, scratchValue, scratchValue4, scratchValue5, scratchValue6
-    local readGlobalGameDataFloat, getTimer, i_stk_16c_1, pPos, timerId
+    local predicateResult4, scratchValue3, getMasterGameState, scratchValue4, scratchValue5
+    local scratchValue6, readGlobalGameDataFloat, getTimer, getStateInt, i_stk_16c_1, i_stk_16c_2
+    local pPos, getPos, getPos2, getPos3, nearest, timerId
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
     end
-    local getAngleXY = me:GetAngleXY()
+    local f_stk_164_1 = me:GetAngleXY()
+    local dummyEndMarker = quest:GetNearestWithScriptName(me, "DummyEndMarker")
+    local dummyStartMarker = quest:GetNearestWithScriptName(me, "DummyStartMarker")
     if dummyNumber == 1 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements)))
+        nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker3")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
     elseif dummyNumber == 2 then
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements)))
+        nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker2")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
     else
         if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements)))
+        nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker1")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
     end
     dummyWorth = math.tointeger(math.modf(readGlobalGameDataFloat))
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
     if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
-    while not quest:GetMasterGameState("SkillTrainingStarted") do
+    getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
+    i_stk_16c_1 = 0
+    while not getMasterGameState do
         if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
+        getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
     end
     predicateResult4 = false
     getTimer = 0
@@ -48,13 +57,50 @@ function Main(quest, me)
         if predicateResult4 then
             return
         end
+        local position = me:GetPos()
+        local scratchValue43 = position.x
+        local scratchValue42 = position.y
+        local scratchValue41 = position.z
+        if not (dummyStartMarker ~= nil and not dummyStartMarker:IsNull()) then
+            getPos = {x = 0, y = 0, z = 0}
+        else
+            getPos = dummyStartMarker:GetPos()
+        end
+        local scratchValue18 = getPos.x
+        local scratchValue17 = getPos.y
+        local scratchValue16 = getPos.z
+        if not (dummyEndMarker ~= nil and not dummyEndMarker:IsNull()) then
+            getPos2 = {x = 0, y = 0, z = 0}
+        else
+            getPos2 = dummyEndMarker:GetPos()
+        end
+        local scratchValue11 = getPos2.x
+        local scratchValue = getPos2.y
+        local scratchValue9 = getPos2.z
+        if not (nearest ~= nil and not nearest:IsNull()) then
+            getPos3 = {x = 0, y = 0, z = 0}
+        else
+            getPos3 = nearest:GetPos()
+        end
+        local f_stk_84_1 = speed
+        local scratchValue14 = getPos3.x
+        local scratchValue13 = getPos3.y
+        local scratchValue12 = getPos3.z
+        local scratchValue40 = (scratchValue11 - scratchValue18) / f_stk_84_1
         scratchValue5 = 0
         quest:SetMasterGameState("SkillDummyReset", false)
+        local scratchValue39 = (scratchValue - scratchValue17) / f_stk_84_1
+        local scratchValue32 = (scratchValue18 - scratchValue11) / f_stk_84_1
+        local scratchValue31 = (scratchValue17 - scratchValue) / f_stk_84_1
+        local scratchValue34 = (scratchValue14 - scratchValue43) / f_stk_84_1
+        local scratchValue33 = (scratchValue13 - scratchValue42) / f_stk_84_1
+        local scratchValue35 = (scratchValue18 - scratchValue14) / f_stk_84_1
+        local f_stk_84_2 = (scratchValue17 - scratchValue13) / f_stk_84_1
         repeat
             if not quest:NewScriptFrame(me) then return end
-            -- TODO(native): xStack_58 = f_stk_7c * (float)i_stk_16c + f_stk_bc;
-            -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_58, fVar12, false, false)
+            quest:EntityTeleportToPosition(me, {x = (scratchValue34 * i_stk_16c_1 + scratchValue43), y = ((scratchValue33 * i_stk_16c_1) + scratchValue42), z = scratchValue41}, f_stk_164_1, false, false)
             getTimer = getTimer + 1
+            i_stk_16c_1 = getTimer
         until getTimer == speed
         if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
         if not quest:GetMasterGameState("MovingDummiesNeeded") then
@@ -64,18 +110,19 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then return end
                     scratchValue6 = me:MsgIsHitByHeroWithProjectileWeapon()
                 until scratchValue6 ~= nil
-                if 0.0 < scratchValue6 then break end
-                -- TODO(native): *piVar1 = *piVar1 - 1;
+                if 0.5 < scratchValue6 then break end
+                quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") - 1)
             end
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
-            -- TODO(native): *piVar1 = *piVar1 + 1;
+            quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + 1)
             getTimer = 0
+            i_stk_16c_2 = 0
             quest:EntitySetTargetable(me, false)
             repeat
                 if not quest:NewScriptFrame(me) then return end
-                -- TODO(native): xStack_40 = f_stk_88 * (float)i_stk_16c + f_stk_13c;
-                -- TODO(native): quest:EntityTeleportToPosition(me, &xStack_40, fVar12, false, false)
+                quest:EntityTeleportToPosition(me, {x = (scratchValue35 * i_stk_16c_2 + scratchValue14), y = ((f_stk_84_2 * i_stk_16c_2) + scratchValue13), z = scratchValue12}, f_stk_164_1, false, false)
                 getTimer = getTimer + 1
+                i_stk_16c_2 = getTimer
             until getTimer == speed
             if quest:IsActiveThreadTerminating() or quest:IsActiveThreadTerminating() then return end
             while not quest:GetMasterGameState("MovingDummiesNeeded") do
@@ -90,12 +137,14 @@ function Main(quest, me)
         scratchValue4 = 0
         repeat
             if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
-            if scratchValue5 ~= 0 then
-                -- TODO(native): fStack_58 = f_stk_70 * (float)i_stk_16c + f_stk_124;
+            if scratchValue5 == 0 then
+                pPos = {x = (scratchValue40 * i_stk_16c_1 + scratchValue18), y = ((scratchValue39 * i_stk_16c_1) + scratchValue17), z = scratchValue16}
+            else
+                pPos = {x = (scratchValue32 * i_stk_16c_1 + scratchValue11), y = ((scratchValue31 * i_stk_16c_1) + scratchValue), z = scratchValue9}
             end
-            quest:EntityTeleportToPosition(me, pPos, getAngleXY, false, false)
-            local scratchValue44 = me:MsgIsHitByHeroWithProjectileWeapon()
-            if scratchValue44 ~= nil then
+            quest:EntityTeleportToPosition(me, pPos, f_stk_164_1, false, false)
+            local scratchValue53 = me:MsgIsHitByHeroWithProjectileWeapon()
+            if scratchValue53 ~= nil then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                 if quest:GetMasterGameState("MovingDummiesNeeded") then
                     if quest:IsDistanceBetweenThingsOver(hero, quest:GetThingWithScriptName("ArcheryRing"), 6.0) then
@@ -112,33 +161,34 @@ function Main(quest, me)
                         end
                     else
                         quest:PlaySoundOnThing(hero, "SND_ARROWIMPACT_02")
-                        if 0.0 <= scratchValue44 then
-                            if 0.0 <= scratchValue44 then
-                                if scratchValue44 < 0.0 then
+                        if 0.25 <= scratchValue53 then
+                            if 0.5 <= scratchValue53 then
+                                if scratchValue53 < 0.75 then
                                     if not quest:IsActiveThreadTerminating() then quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + dummyWorth * 3); goto LAB_00d42874 end
                                     quest:DeregisterTimer(timerId)
                                     return
                                 end
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            elseif quest:IsActiveThreadTerminating() then
-                                quest:DeregisterTimer(timerId)
-                                return
+                                getStateInt = dummyWorth << 2
+                            else
+                                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                                getStateInt = dummyWorth << 1
                             end
-                            -- TODO(native): *piVar1 = *piVar1 + iVar5;
+                            quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + getStateInt)
                         else
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            -- TODO(native): *piVar1 = *piVar1 + *(int *)(this + 0x24);
+                            quest:SetMasterGameState("SkillScore", quest:GetMasterGameState("SkillScore") + dummyWorth)
                         end
                         ::LAB_00d42874::
                         getTimer = quest:GetTimer(timerId)
                         if getTimer < 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                            local scratchValue42 = math.random(0, 32767) & 0x80000003
-                            scratchValue = scratchValue42 == 0
-                            if scratchValue42 < 0 then
-                                scratchValue = (scratchValue42 - 1 | 0xfffffffc) == 0xffffffff
+                            local scratchValue52 = math.random(0, 32767) & 0x80000003
+                            scratchValue3 = scratchValue52 == 0
+                            if scratchValue52 < 0 then
+                                scratchValue3 = (scratchValue52 - 1 | 0xfffffffc) == 0xffffffff
                             end
-                            if scratchValue then
+                            if scratchValue3 then
                                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                                 quest:SetTimer(timerId, 8)
                                 local predicateResult = quest:IsActiveThreadTerminating()
@@ -150,9 +200,9 @@ function Main(quest, me)
                                     local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
                                     local conversationId3 = quest:AddNewConversation(theRealGuildmaster, false, false)
                                     quest:AddPersonToConversation(conversationId3, hero)
-                                    if 0.0 <= scratchValue44 then
-                                        if 0.0 <= scratchValue44 then
-                                            if 0.0 <= scratchValue44 then
+                                    if 0.25 <= scratchValue53 then
+                                        if 0.5 <= scratchValue53 then
+                                            if 0.75 <= scratchValue53 then
                                                 if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId3, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", theRealGuildmaster, hero, false)
                                             else
@@ -175,9 +225,9 @@ function Main(quest, me)
                                     local skillApprentice2 = quest:GetThingWithScriptName("SkillApprentice")
                                     local conversationId4 = quest:AddNewConversation(skillApprentice2, false, false)
                                     quest:AddPersonToConversation(conversationId4, hero)
-                                    if 0.0 <= scratchValue44 then
-                                        if 0.0 <= scratchValue44 then
-                                            if 0.0 <= scratchValue44 then
+                                    if 0.25 <= scratchValue53 then
+                                        if 0.5 <= scratchValue53 then
+                                            if 0.75 <= scratchValue53 then
                                                 if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
                                                 quest:AddLineToConversation(conversationId4, "TEXT_QST_028_APPRENTICE_SKILL_EXCELLENT_HIT", skillApprentice2, hero, false)
                                             else

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, ctr_22c, delay, dist, fVar4, f_stk_1d4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_240, xStack_244, xStack_38, xStack_48, xStack_54, xStack_64
+    local CVar5, __native_condition_1, __native_condition_2, __native_condition_3, bVar6, bVar8, cVar7, c_stk_22d, ctr_22c, delay, dist, fVar4, f_stk_1d4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar22, i_stk_24, i_stk_240, i_stk_244, ixVar16, native_arg_switch_2, pCVar12, pCVar13, pCVar15, pCVar9, pcVar17, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10, xStack_158, xStack_1c0, xStack_1d0, xStack_1d4, xStack_1e0, xStack_1f0, xStack_20, xStack_200, xStack_210, xStack_228, xStack_22c, xStack_234, xStack_23c, xStack_38, xStack_48, xStack_54, xStack_64
     local alive = true
     xStack_228 = resources:NewResource()
     resources:PrepareResource(xStack_228)
@@ -38,18 +38,18 @@ function Main(quest, me)
     quest:SetPlayerUsingWillDummies(true)
     quest:SetIsPushableByHero(me, false)
     iVar10 = quest:RegisterTimer()
-    xStack_240 = iVar10
+    i_stk_240 = iVar10
     iVar11 = quest:RegisterTimer()
-    xStack_244 = iVar11
-    quest:SetTimer(xStack_244, 0)
+    i_stk_244 = iVar11
+    quest:SetTimer(i_stk_244, 0)
     ctr_22c = 0
     quest:EntitySetTargetingType(me, 0x1a)
     if not quest:GetStateBool("TestFinished") then
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then
-            quest:DeregisterTimer(xStack_244)
-            quest:DeregisterTimer(xStack_240)
+            quest:DeregisterTimer(i_stk_244)
+            quest:DeregisterTimer(i_stk_240)
             resources:ReleaseResource(xStack_228)
             return
         end
@@ -102,8 +102,8 @@ function Main(quest, me)
                             if bVar6 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_1f0)
-                                quest:DeregisterTimer(xStack_244)
-                                quest:DeregisterTimer(xStack_240)
+                                quest:DeregisterTimer(i_stk_244)
+                                quest:DeregisterTimer(i_stk_240)
                                 resources:ReleaseResource(xStack_228)
                                 return
                             end
@@ -125,7 +125,7 @@ function Main(quest, me)
             bVar6 = quest:IsDistanceBetweenThingsUnder(pCVar9, me, dist)
             __native_condition_2 = bVar6
             if __native_condition_2 then
-                iVar10 = quest:GetTimer(xStack_244)
+                iVar10 = quest:GetTimer(i_stk_244)
                 __native_condition_2 = iVar10 < 1
             end
             __native_condition_1 = __native_condition_2
@@ -140,7 +140,7 @@ function Main(quest, me)
                 iVar11 = quest:AddNewConversation(me, false, false)
                 pCVar9 = quest:GetHero()
                 quest:AddPersonToConversation(iVar11, pCVar9)
-                quest:SetTimer(xStack_244, 10)
+                quest:SetTimer(i_stk_244, 10)
                 if ctr_22c == 0 then
                     bVar6 = false
                     pCVar9 = quest:GetHero()
@@ -487,7 +487,7 @@ function Main(quest, me)
                     iVar22 = quest:GetHeroWillEnergy()
                     __native_condition_3 = iVar22 == 0
                     if __native_condition_3 then
-                        iVar22 = quest:GetTimer(xStack_244)
+                        iVar22 = quest:GetTimer(i_stk_244)
                         __native_condition_3 = iVar22 < 1
                     end
                     if __native_condition_3 then
@@ -688,10 +688,9 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d61563 end
-                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_204_2)
+                        resources:SetActor(xStack_210, "HERO", xStack_200)
                         resources:SetActor(xStack_210, "TEACHER", xStack_228)
-                        -- TODO(native): pCVar14 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_210,(CCharString *)xStack_1a0);
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (pCVar14,xStack_1f0);
+                        resources:SetActor(xStack_210, "WHISPER", xStack_1f0)
                         resources:RunMacro("CS_GUILD_WILL_CONTINUE", xStack_210, false, true)
                         bVar6 = false
                         quest:GiveHeroYesNoQuestion("TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_CONTINUE", "TEXT_OBJECT_HERO_ANSWER_PLAY", "", true)
@@ -715,7 +714,7 @@ function Main(quest, me)
                             fret_03 = quest:GetHealth(pCVar9)
                             fVar4 = 0.0
                             if fret_03 <= fVar4 then goto LAB_00d610d3 end
-                            r3 = me:Speak(me, "WHISPER", 0x12d1148, false, false, true)
+                            r3 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_NO", 0, false, true, false)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             goto LAB_00d61098
@@ -730,7 +729,7 @@ function Main(quest, me)
                             c_stk_22d = 0
                         end
                         if c_stk_22d ~= 0 then
-                            r4 = me:Speak(me, "CS_GUILD_WILL_WON", 0x12d1368, false, false, true)
+                            r4 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0, false, true, false)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -762,7 +761,7 @@ function Main(quest, me)
                     if bVar6 then goto LAB_00d6135b end
                     pCVar12 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_204_2)
+                    resources:SetActor(xStack_210, "HERO", xStack_200)
                     resources:SetActor(xStack_210, "TEACHER", xStack_228)
                     resources:RunMacro("CS_GUILD_WILL_DISQUALIFIED", xStack_210, false, true)
                     quest:Pause(2.0)
@@ -797,7 +796,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d61004 end
-                        -- TODO(native): resources:SetActor(xStack_210, "HERO", &xStack_204_2)
+                        resources:SetActor(xStack_210, "HERO", xStack_200)
                         resources:SetActor(xStack_210, "TEACHER", xStack_228)
                         resources:SetActor(xStack_210, "WHISPER", xStack_158)
                         resources:RunMacro("CS_GUILD_WILL_CONTINUE", xStack_210, false, true)
@@ -823,7 +822,7 @@ function Main(quest, me)
                             fret_02 = quest:GetHealth(pCVar9)
                             fVar4 = 0.0
                             if fret_02 <= fVar4 then goto LAB_00d60be3 end
-                            r6 = me:Speak(me, pcVar17, 0x12d1148, false, false, true)
+                            r6 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_NO", 0, false, true, false)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             goto LAB_00d60bad
@@ -838,7 +837,7 @@ function Main(quest, me)
                             c_stk_22d = 0
                         end
                         if c_stk_22d ~= 0 then
-                            r7 = me:Speak(me, "$GRADE", 0x12d1368, false, false, true)
+                            r7 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0, false, true, false)
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -900,8 +899,8 @@ function Main(quest, me)
         bVar6 = not alive
         if bVar6 then
             -- LAB_00d61b0a: (native jump target)
-            quest:DeregisterTimer(xStack_244)
-            quest:DeregisterTimer(xStack_240)
+            quest:DeregisterTimer(i_stk_244)
+            quest:DeregisterTimer(i_stk_240)
             resources:ReleaseResource(xStack_228)
             return
         end
@@ -910,7 +909,7 @@ function Main(quest, me)
         pCVar13 = pCVar12:GetPos()
         r8 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
         if (r8 ~= nil and not r8:IsNull()) then
-            r8:SetToKillOnLevelUnload(0)
+            r8:SetToKillOnLevelUnload(false)
         end
     end
     if quest:GetStateBool("BanditsDefeated") then
@@ -940,8 +939,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if bVar6 then
-                quest:DeregisterTimer(xStack_244)
-                quest:DeregisterTimer(xStack_240)
+                quest:DeregisterTimer(i_stk_244)
+                quest:DeregisterTimer(i_stk_240)
                 resources:ReleaseResource(xStack_228)
                 return
             end
@@ -1067,8 +1066,8 @@ function Main(quest, me)
     resources:DestroyMovie(xStack_1f0)
     goto LAB_00d61b69
     ::FLOW_hoist_lab_00d61b5a_3::
-    quest:DeregisterTimer(xStack_244)
-    quest:DeregisterTimer(xStack_240)
+    quest:DeregisterTimer(i_stk_244)
+    quest:DeregisterTimer(i_stk_240)
     resources:ReleaseResource(xStack_228)
     do return end
     ::FLOW_hoist_lab_00d61b5a_4::
@@ -1154,8 +1153,8 @@ function Main(quest, me)
         bVar6 = false
         pCVar13 = pCVar9:GetPos()
         r12 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
-        if r12._0_4_ ~= nil then
-            -- TODO(native): (**(code **)(*xStack_1b4._0_4_ + 0x118))(0);
+        if (r12 ~= nil and not r12:IsNull()) then
+            r12:SetToKillOnLevelUnload(false)
         end
         goto LAB_00d6144d
     end
@@ -1236,8 +1235,8 @@ function Main(quest, me)
             bVar6 = false
             pCVar13 = pCVar9:GetPos()
             r14 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
-            if r14._0_4_ ~= nil then
-                -- TODO(native): (**(code **)(*xStack_1b4._0_4_ + 0x118))(0);
+            if (r14 ~= nil and not r14:IsNull()) then
+                r14:SetToKillOnLevelUnload(false)
             end
             goto LAB_00d60ef5
         end
@@ -1282,8 +1281,8 @@ function Main(quest, me)
     ::LAB_00d6138b::
     quest:DeregisterTimer(xStack_23c)
     ::LAB_00d61b69::
-    quest:DeregisterTimer(xStack_244)
-    quest:DeregisterTimer(xStack_240)
+    quest:DeregisterTimer(i_stk_244)
+    quest:DeregisterTimer(i_stk_240)
     ::LAB_00d61b7b::
     resources:ReleaseResource(xStack_228)
 end

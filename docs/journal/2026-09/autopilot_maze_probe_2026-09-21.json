@@ -1,0 +1,7 @@
+[
+  {
+    "id": "maze_meeting",
+    "status": "FAIL",
+    "detail": "expected /TEXT_QST_028_MAZE_WOODS_DEPARTURE_MEETING_30|CS_GUILD_DEPARTURE_MAZE_START/ not seen within 90.0s"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "departure_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingDeparture/GuildTrainingDeparture|GuildTrainingDeparture/GuildTrainingDeparture' created/ seen after 4 send(s)"
+  },
+  {
+    "id": "departure_scene",
+    "status": "PASS",
+    "detail": "expected /CS_GUILD_DEPARTURE_GM_DONE|GuildTrainingWoodsDeparture/GuildTrainingWoodsDeparture' created/ seen after 1 send(s)"
+  },
+  {
+    "id": "woods_departure_host",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host GuildTrainingWoodsDeparture/GuildTrainingWoodsDeparture/ seen after 1 send(s)"
+  },
+  {
+    "id": "departure_to_woods",
+    "status": "FAIL",
+    "detail": "channel: [Autopilot] TIMEOUT after 15.0s (is the game running with this bundle? is a script advancing frames?)"
+  }
+]

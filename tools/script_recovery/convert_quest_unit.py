@@ -30,7 +30,7 @@ from tools.script_recovery.lift_native_lua import (  # noqa: E402
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
-from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate, _split_top  # noqa: E402
+from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate, _split_top, fold_stack_vector_builds  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
 from tools.script_recovery.declare_free_locals import declare_free_locals  # noqa: E402
@@ -529,7 +529,15 @@ def _drifted_byte_slices(text, uses):
         drift = before[-1] if before else after[0]
         target = -int(name.rsplit('_', 1)[1], 16) + byte + drift
         if target not in decls:
-            continue
+            # one push outstanding at the access (`mov al, [esp+0x1b]` inside an argument sequence, the flag at
+            # [esp+0x1f]): the byte 4 above -- the Skill Guildmaster 0x00D5AE70's disqualified flag `cStack_215`,
+            # printed `uStack_21c._3_1_` (a TIMER id's top byte) and lifted as an unassigned local, so `nil == 0`
+            # sent every moving round to DISQUALIFIED (run 4, 2026-09-21)
+            # (only when the sliced slot is a whole object whose bytes cannot be a flag: a constructor took its address)
+            if target + 4 in decls and re.search(r'\w+::\w+\(\([\w ]+\*\)&' + re.escape(name) + r'\)', text):
+                target += 4
+            else:
+                continue
         local = decls[target]
         if m.group('rd') or m.group('top'):
             yield m.start(), m.end(), local
@@ -544,6 +552,90 @@ def _drifted_byte_slices(text, uses):
                 yield m.start() - len(head) + copy.start(), m.start() - len(head) + copy.end(), ''
         value = '0' if (m.group('clr') or m.group('cpy')) else (m.group('catv') or m.group('slv'))
         yield m.start(), m.end(), f"{m.group('ind')}{local} = {value};"
+
+
+def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True):
+    """The Ghidra stack slot (negative, entry-ESP relative) a register pushed at `site` was loaded from, read from the
+    bytes: the prologue's `sub esp, N` plus its register pushes give the frame base; walking back from the call, the
+    register's last definition `mov REG, [esp+X]` with m pushes already outstanding sits at
+    `-(N + 4*pushed_regs + 4*m - X)`. None when the definition is not that shape."""
+    if site is None:
+        return None
+    try:
+        from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+        from capstone.x86 import X86_OP_MEM, X86_OP_REG, X86_OP_IMM
+    except ImportError:
+        return None
+    try:
+        start, size = int(fn['address'], 16), int(fn.get('size') or 0)
+    except (TypeError, ValueError):
+        return None
+    if not size or not (start <= site < start + size):
+        return None
+    from tools.script_recovery.lift_native_lua import RData
+    raw = _register_operand_slot.rdata.bytes_at(start, size) if hasattr(_register_operand_slot, 'rdata') else None
+    if raw is None:
+        _register_operand_slot.rdata = RData()
+        raw = _register_operand_slot.rdata.bytes_at(start, size)
+    if not raw:
+        return None
+    cs = Cs(CS_ARCH_X86, CS_MODE_32)
+    cs.detail = True
+    insns = list(cs.disasm(raw, start))
+    if not insns or insns[0].mnemonic != 'sub' or insns[0].operands[0].type != X86_OP_REG or insns[0].reg_name(insns[0].operands[0].reg) != 'esp':
+        return None
+    frame = insns[0].operands[1].imm
+    for ins in insns[1:8]:
+        # the callee-saved pushes may be interleaved with register moves (`push esi | mov ebp, ecx | push edi`)
+        if ins.mnemonic == 'push' and ins.operands[0].type == X86_OP_REG:
+            frame += 4
+        elif ins.mnemonic == 'mov' and all(o.type == X86_OP_REG for o in ins.operands):
+            continue
+        else:
+            break
+    idx = next((i for i, ins in enumerate(insns) if ins.address == site), None)
+    if idx is None:
+        return None
+    # the printed register name is Ghidra's guess (`unaff_EBX` for a `push esi`): when the operand's position is
+    # known, the register is whatever the matching push (arguments are pushed right to left: the first pushed
+    # argument is the one nearest the call) actually pushes
+    if arg_index is not None:
+        want = arg_index - (1 if receiver_printed else 0) + 1     # 1 = the push nearest the call
+        seen = 0
+        for ins in reversed(insns[:idx]):
+            if ins.mnemonic == 'push':
+                seen += 1
+                if seen == want:
+                    if ins.operands[0].type != X86_OP_REG:
+                        return None
+                    reg = ins.reg_name(ins.operands[0].reg)
+                    break
+            elif ins.mnemonic in ('call', 'ret') or ins.mnemonic.startswith('j'):
+                return None
+        else:
+            return None
+    # walk back: count the pushes between the register's definition and the call
+    pushes_after = 0
+    for ins in reversed(insns[:idx]):
+        if ins.mnemonic == 'push':
+            pushes_after += 1
+            continue
+        if ins.mnemonic == 'mov' and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg:
+            op = ins.operands[1]
+            if op.type == X86_OP_MEM and ins.reg_name(op.mem.base) == 'esp' and op.mem.index == 0:
+                # the pushes outstanding AT the mov = those made before it in this argument sequence: none of the
+                # ones counted after it; the sequence starts after the previous call/cleanup, so m = 0 here
+                return -(frame - op.mem.disp)
+            return None
+        if ins.mnemonic == 'call':
+            if reg in ('ebx', 'esi', 'edi', 'ebp'):
+                continue            # callee-saved: the value survives the call (its arguments were consumed)
+            return None
+        if ins.mnemonic == 'ret' or ins.mnemonic.startswith('j'):
+            return None
+        if any(o.type == X86_OP_REG and ins.reg_name(o.reg) == reg for o in ins.operands[:1]) and ins.mnemonic not in ('cmp', 'test', 'push'):
+            return None     # redefined by something else
+    return None
 
 
 def restore_stack_operands(decompile, fn, _byte_slices=True):
@@ -562,6 +654,7 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     text = decompile
     uses = []       # (text position, arg index within site, ghidra name, true slot of the name, plus, constructed?)
     sites = []      # (start, end, args, slots or None, label)
+    site_addr = {}  # start -> the machine-code call site (when the pairing knows it)
 
     def collect(pos, end, args, slots, label, vtable):
         sites.append((pos, end, args, slots, label))
@@ -585,6 +678,10 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     if ordered is not None:
         # exact pairing through the decompiler's token stream (callOrder): printed calls in text order
         for pos, end, args, site, key, vtable in ordered:
+            try:
+                site_addr[pos] = int(site.get('site', ''), 16)
+            except (TypeError, ValueError, AttributeError):
+                pass
             collect(pos, end, args, _align(site, args, vtable, vtable and _receiver_printed(text, pos, args)), key, vtable)
     by_slot = {}
     for c in fn.get('indirectCalls', []) if ordered is None else []:
@@ -663,17 +760,47 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
         before = [(p, n) for p, n in lst if p <= pos]
         if before:
             return object_name[(off, before[-1][1])]
-        return object_name[(off, lst[0][1])] if lst else f'xStack_{-off:x}'
+        if lst:
+            return object_name[(off, lst[0][1])]
+        # no object was ever constructed at the slot: a Ghidra FLOAT local keeps GHIDRA'S OWN name (self-consistent
+        # between its store and its by-value use: `fStack_a0 = angle + 0.25; SetFacingAngle(me, fStack_a0, true)`).
+        # The object spelling made the lifter refuse the float store (WillDummy's spin passed nil: in-game sol error
+        # on the first lightning hit, 2026-09-21); respelling by the export's per-site number collided with another
+        # Ghidra float (SkillTarget's angle copy `fStack_164` -> `fStack_158`, the marker's z: the teleport lost its angle)
+        # (the same for an INT local used by value: Skill Guildmaster's talk-comment toggle `iStack_1ec = 1 - iStack_1ec`, later
+        # a quest-info tick handle in the same slot -- as `xStack_1ec` the toggle was a TODO and the second comment never played)
+        if (name or '').startswith(('fStack_', 'iStack_')):
+            return name
+        return f'xStack_{-off:x}'
 
     by_name = {}
     for pos, k, name, off, plus, ctor in uses:
         if name:
             by_name.setdefault(name, []).append((pos, off))
+    # a by-value operand Ghidra spelled as a stale register (`GSI->GetTimer(unaff_EBX)`, TraderToRescue 0x00DFE0F0)
+    # while the bytes load it from a stack slot at every site (`mov esi, [esp+0x18]; push esi`): the export's pushed
+    # VALUE names the slot and an object constructed there is the operand -- accepted only when every site of that
+    # register resolves to the SAME object (the export's per-site slots drift, and one drifted site named the other
+    # timer); otherwise the register is left as printed
+    register_objects = {}
+    for start, end, args, slots, label in sites:
+        for k, arg in enumerate(args):
+            if re.fullmatch(r'unaff_E[A-Z]{2}', arg.strip()) and slots is not None and k < len(slots):
+                # the bytes first: `mov REG, [esp+X]` before the push, with the pushes outstanding at that point
+                # (TraderToRescue: 0x174 + 16 - 0x18 = 0x16c at every site, where the export's values drifted)
+                value = _register_operand_slot(fn, site_addr.get(start), arg.strip()[-3:].lower(), k, bool(args) and _receiver_printed(text, start, args))
+                if value is None:
+                    value = slots[k][1]
+                resolved = name_at(value, None, start) if value is not None and value < 0 and ctor_names.get(value) else None
+                register_objects.setdefault(arg.strip(), set()).add(resolved)
+    register_objects = {r: next(iter(objs)) for r, objs in register_objects.items() if len(objs) == 1 and None not in objs}
     for start, end, args, slots, label in sites:
         out = list(args)
         for k, arg in enumerate(args):
             m = RE_STACK_OPERAND.match(arg.strip())
             if not m:
+                if arg.strip() in register_objects:
+                    out[k] = register_objects[arg.strip()]
                 continue
             name = m.group('name')
             plus = int(m.group('plus'), 0) if m.group('plus') else 0
@@ -706,6 +833,27 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
                 pos, off = min(lst, key=lambda u: abs(u[0] - m.start()))
                 return name_at(off, name, pos)
             text = re.sub(r'\b' + re.escape(name) + r'\b', nearest, text)
+    # a thing object's Info field under its own Ghidra name (`uStack_9c` = `auStack_a0 + 4`: only ever nulled,
+    # null-tested and the receiver of thing vcalls -- CheckFriendlyAttacks 0x00D45060's "did the hero hit the Maze"
+    # checks) follows the object the thing-cast renamed (`auStack_a0` -> `xStack_90`), as `xStack_90._4_4_`: slot
+    # arithmetic on the new name cannot find it once the canonical slot moved
+    for name, lst in by_name.items():
+        g = re.fullmatch(r'a[uc]Stack_([0-9a-f]+)', name)
+        if not g or not any(c for _, _, n, _, _, c in uses if n == name and c == 1):
+            continue
+        field = f'uStack_{int(g.group(1), 16) - 4:x}'
+        if not re.search(r'\(\*\*\(code \*\*\)\(\*' + field + r' \+ (?:0x[0-9a-f]+|\d+)\)\)\(', text):
+            continue
+        stores = set(re.findall(r'^[ \t]*' + field + r' = ([^;]+);', text, re.M))
+        if not stores or not stores <= {'(int *)0x0', '0', '0x0'}:
+            continue
+        offs = {o for _, o in lst}
+        obj = name_at(next(iter(offs)), name, min(p for p, _ in lst)) if len(offs) == 1 else None
+        if obj is None:
+            continue
+        text = re.sub(r'^[ \t]*(?:undefined4|int \*) ' + field + r';[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*' + field + r' = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'(?<![\w.])' + field + r'\b', f'{obj}._4_4_', text)
     return text
 
 
@@ -743,11 +891,46 @@ def unwrap_statements(text):
 
 class UnitConverter:
     def float_at(self, va):
+        # Ghidra prints a double constant exactly like a float one (`(float)_DAT_01238010`); the retail
+        # instruction is the width evidence (`fcomp qword ptr [0x1238010]` = 0.25, SkillTarget's scoring rings
+        # 0.25/0.5/0.75 -- read as 4-byte floats they were all 0.0 and the archery score never moved)
+        if va in self.double_constants():
+            raw = self.rdata.bytes_at(va, 8)
+            if raw and len(raw) == 8:
+                value = struct.unpack('<d', raw)[0]
+                return value if value == value and abs(value) < 1e12 else None
         raw = self.rdata.bytes_at(va, 4)
         if not raw or len(raw) != 4:
             return None
         value = struct.unpack('<f', raw)[0]
         return value if value == value and abs(value) < 1e12 else None   # NaN / absurd = not a float constant
+
+    def double_constants(self):
+        """Absolute addresses every x87 instruction of the unit reads as `qword ptr` (8-byte constants)."""
+        if not hasattr(self, '_double_constants'):
+            self._double_constants = set()
+            try:
+                from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+                from capstone.x86 import X86_OP_MEM
+            except ImportError:
+                return self._double_constants
+            cs = Cs(CS_ARCH_X86, CS_MODE_32)
+            cs.detail = True
+            for fn in self.by_address.values():
+                try:
+                    start, size = int(fn['address'], 16), int(fn.get('size') or 0)
+                except (TypeError, ValueError):
+                    continue
+                raw = self.rdata.bytes_at(start, size) if size else None
+                if not raw:
+                    continue
+                for ins in cs.disasm(raw, start):
+                    if not ins.mnemonic.startswith('f'):
+                        continue
+                    for op in ins.operands:
+                        if op.type == X86_OP_MEM and op.size == 8 and op.mem.base == 0 and op.mem.index == 0:
+                            self._double_constants.add(op.mem.disp & 0xffffffff)
+        return self._double_constants
 
     def __init__(self, tu_path, *, flat_control=False):
         self.manifest, self.slots, self.rdata = load_manifest(), load_slots(), RData()
@@ -825,6 +1008,7 @@ class UnitConverter:
         return decompile
 
     CCHARSTRING_CTOR = 0x99EBF0     # CCharString::CCharString(const char*, int)
+    THING_COPY_CTOR = 0x4ABE90      # CScriptThing::CScriptThing(const CScriptThing&): vtable 0x1238c8c, Data/Info copied, Info refcount++ (disasm 2026-09-21)
 
     def repair_literal_receiver_labels(self, decompile, renamed, fn):
         """`disambiguate_call_labels` falls back to address order when the token pairing fails (a 31 KB
@@ -1121,6 +1305,19 @@ class UnitConverter:
             out = []
             while need > 0 and i >= 0:
                 ins = insns[i]
+                if ins.mnemonic == 'call' and ins.operands and ins.operands[0].type == X86_OP_IMM and ins.operands[0].imm == self.THING_COPY_CTOR:
+                    # a CScriptThing passed BY VALUE: `sub esp, 0xc | mov ecx, esp | push SRC | call CScriptThing::CScriptThing(const&)`
+                    # is one 12-byte operand, the copy of SRC (TraderToRescue 0x00DFEC55: SetIsPushableByHero(hero, 1) printed
+                    # with no operands; the walker used to stop at this call and the thing came back as `__unknown_push`)
+                    if (i >= 3 and insns[i - 1].mnemonic == 'push' and insns[i - 1].operands[0].type == X86_OP_REG
+                            and insns[i - 2].mnemonic == 'mov' and insns[i - 2].op_str == 'ecx, esp'
+                            and insns[i - 3].mnemonic == 'sub' and insns[i - 3].op_str.startswith('esp, ')):
+                        traced = register_value(insns, i - 2, insns[i - 1].op_str, 0)
+                        out.append(traced if isinstance(traced, tuple) else ('expr', traced))
+                        need -= 1
+                        i -= 4
+                        continue
+                    return None
                 if ins.mnemonic == 'call':
                     n = pushes_at.get(ins.address)
                     if n is None:
@@ -1334,9 +1531,14 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(unwrap_statements(fn['decompile']), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(fold_stack_vector_builds(unwrap_statements(fn['decompile'])), fn), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
+                # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in
+                # Q_GuildTraining's Main) is ambiguous above; once disambiguated per site (`__at<addr>`) each
+                # spelling names exactly one converted function
+                lifter.callee_names.update({label: local_names[f'0x{target:08x}'] for label, target in renamed.items()
+                                            if f'0x{target:08x}' in local_names and label not in lifter.callee_names})
                 # Ghidra prints some namespaced labels with `__` in C output, and mangled names
                 # (`Ns::?Fn@Cls@@UBE?AV...@@XZ`) with every non-identifier character as `_`
                 spec_l.call_labels.update({k.replace('::', '__'): v for k, v in list(spec_l.call_labels.items()) if '::' in k})

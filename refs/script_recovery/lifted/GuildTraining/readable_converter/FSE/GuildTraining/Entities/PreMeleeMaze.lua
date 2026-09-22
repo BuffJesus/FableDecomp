@@ -23,7 +23,6 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
-            -- TODO(native): xStack_48[0] = (int *)0x0;
             do return end
         end
     end
@@ -32,7 +31,6 @@ function Main(quest, me)
     while true do
         if predicateResult4 then
             resources:ReleaseResource(resource)
-            -- TODO(native): xStack_48[0] = (int *)0x0;
             return
         end
         if quest:GetMasterGameState("GuildWarningOccuring") then
@@ -90,7 +88,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494 end
             goto FLOW_past_lab_00d44494
             ::LAB_00d44494::
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+            this_00 = movie
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494::
         end
@@ -131,7 +129,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494_c1 end
             goto FLOW_past_lab_00d44494_c1
             ::LAB_00d44494_c1::
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_10;
+            this_00 = movie2
             goto LAB_00d44498
             ::FLOW_past_lab_00d44494_c1::
         end
@@ -147,13 +145,13 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
             quest:PauseAllNonScriptedEntities(false)
-            -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+            this_00 = movie3
             goto LAB_00d44498
         end
     end
     if not quest:IsActiveThreadTerminating() then goto LAB_00d441a3 end
     quest:PauseAllNonScriptedEntities(false)
-    -- TODO(native): this_00 = (CScriptGameResourceObjectMovieBase *)xStack_20;
+    this_00 = movie3
     ::LAB_00d44498::
     resources:DestroyMovie(this_00)
     ::LAB_00d444a1::
