@@ -31,9 +31,6 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
-            if false then
-                -- TODO(native): (**(code **)((int)xStack_e8 + 4))();
-            end
             resources:ReleaseResource(xStack_f8)
             return
         end

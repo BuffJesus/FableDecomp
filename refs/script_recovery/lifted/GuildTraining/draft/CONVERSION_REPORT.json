@@ -2667,7 +2667,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: (**(code **)((int)xStack_e8 + 4))();",
             "goto LAB_00d41a02",
             "goto LAB_00d41a02",
             "goto LAB_00d41a02",
@@ -2859,7 +2858,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 464,
+          "lines": 461,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5877,7 +5876,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 138
+        "todo": 137
       }
     },
     {
@@ -13208,6 +13207,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 268
+    "todo": 267
   }
 }

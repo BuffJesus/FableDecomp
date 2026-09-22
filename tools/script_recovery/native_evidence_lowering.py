@@ -142,7 +142,7 @@ RE_LOCAL_COUNTED_RELEASE2 = re.compile(
     r'[ \t]*(?:\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)|\(\*\*\(code \*\*\)\(\1 \+ 4\)\))\(\);\s*\r?\n[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 # the same release on a slot Ghidra typed as something else (`(CCharString)0x0`, `*(int *)X`, `(int)X + 4`)
 RE_LOCAL_COUNTED_RELEASE3 = re.compile(
-    r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \((?:int \*|\w+)\)0x0\) && \(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
+    r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != (?:\((?:int \*|undefined\d?\s*\[\d\]|\w+)\))?0x0\)\s*&&\s*\(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
     r'[ \t]*\(\*\*\(code \*\*\)\(\(int\)\1 \+ 4\)\)\(\);\s*\r?\n[ \t]*operator_delete\(\(void \*\)\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 # the same release whose outer `if` also nulls the handle's slots (AttackPeople 0x00DFD600: `piStack_14 = 0;
 # piStack_10 = 0;` before the closing brace) -- the release goes, the nulls stay and leave the `if`: when the

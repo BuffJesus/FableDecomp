@@ -1,0 +1,151 @@
+[
+ {
+  "id": "sidequest_channel",
+  "do": [
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list: \\d+ hosts",
+  "timeout": 10,
+  "note": "save: Guild arrival (GuildTraining GameState 0). The side quests run HERE, in the guild, before guild_woods_return takes the hero through the retail transition into the woods"
+ },
+ {
+  "id": "sidequest_control",
+  "repeat": 60,
+  "interval": 5.0,
+  "do": [
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "GetThingWithScriptName START: 'M_MeleeTeacherStand'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 300,
+  "note": "the arrival cutscene (Maze) then BOOHOO/WAKEUP; the Guildmaster's marker lookup is the signal that the hero has control again (same preamble as guild_woods_return)"
+ },
+ {
+  "id": "applegirl_talk",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "TEXT_QST_028_APPLEGIRL_(CHAT|HELP|QUESTION)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "AppleGirl 0x00D3D6E0: the HELP line goes into the conversation, then IsTalkedToByHero -> APPLEGIRL_CHAT and the yes/no APPLEGIRL_QUESTION"
+ },
+ {
+  "id": "applegirl_accept",
+  "repeat": 8,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_APPLEGIRL_(IMPLORE|ANY_APPLES|THREE_NEEDED|MORE_APPLES)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "answer 1 (yes) -> she implores and starts counting; retail wants three apples (CurrentApples)"
+ },
+ {
+  "id": "applegirl_apples",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "GuildTraining: quest:SetStateInt('CurrentApples', 3)",
+   "GuildTraining: local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_APPLEGIRL_(ONE_MORE_APPLE|NO_MORE_APPLES|MANY_MORE_APPLES|ONE_NEEDED|TWO_NEEDED|THREE_NEEDED)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "the apples themselves are ordinary world objects, so the count is staged the way the melee checklist stages DummyHits; what is under test is the counting conversation and the reward branch"
+ },
+ {
+  "id": "birdkiller_talk",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('BirdKiller'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "TEXT_QST_028_BIRD_KILLER_(GREET|HELP|QUESTION)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "BirdKiller 0x00D4DE30: GREET then the yes/no BIRD_KILLER_QUESTION"
+ },
+ {
+  "id": "birdkiller_accept",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1",
+   "input: skip",
+   "input: clear"
+  ],
+  "expect": "CS_GUILD_GULLS_INTRO|TEXT_QST_028_BIRD_KILLER_(ANY|ANY_MORE)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "yes -> the GULLS_INTRO cutscene macro arms the sparrows (KillBird entities); skip advances it"
+ },
+ {
+  "id": "birdkiller_reward",
+  "repeat": 10,
+  "interval": 4.0,
+  "do": [
+   "GuildTraining: quest:SetStateInt('CurrentBirdsKilled', 3)",
+   "GuildTraining: local g = quest:GetThingWithScriptName('BirdKiller'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_BIRD_KILLER_(ONE|NONE)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "the payout is CurrentBirdsKilled * GUI_GoldPerBird and the counter resets; killing the gulls by hand is a separate check (the bow auto-aims, GOTCHAS)"
+ },
+ {
+  "id": "race_talk",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "GuildTraining: local g = quest:GetThingWithScriptName('ApprenticeSpeedTest'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB"
+  ],
+  "expect": "TEXT_QST_028_FAST_APPRENTICE_(BOAST|BOAST_QUESTION)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "ApprenticeSpeedTest 0x00D3FE60: the boast, then the yes/no race question"
+ },
+ {
+  "id": "race_accept",
+  "repeat": 8,
+  "interval": 4.0,
+  "do": [
+   "input: lmb 1",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_FAST_APPRENTICE_(RUN|REFUSE)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 120,
+  "note": "yes -> FAST_APPRENTICE_RUN and the race timer; ReachedPlatform goes false at the start"
+ },
+ {
+  "id": "race_finish",
+  "repeat": 12,
+  "interval": 4.0,
+  "do": [
+   "GuildTraining: quest:SetStateBool('ReachedPlatform', true)",
+   "GuildTraining: local g = quest:GetThingWithScriptName('ApprenticeSpeedTest'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "input: key TAB",
+   "input: clear"
+  ],
+  "expect": "TEXT_QST_028_FAST_APPRENTICE_(SUCCEED|TOO_SLOW|NO_PLATFORM|RETURN_FAIL)",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "the platform flag is what RaceMarker sets when the hero gets there; every outcome branch is acceptable here -- the check is that one of them runs and the payout path (GUI_RaceGold) does not error"
+ }
+]

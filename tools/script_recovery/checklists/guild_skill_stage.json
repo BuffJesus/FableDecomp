@@ -78,6 +78,7 @@
    "eval GuildTraining: quest:GetMasterGameState('MovingDummiesNeeded')"
   ],
   "expect": "eval.*MovingDummiesNeeded.* = true",
+  "forbid": "LUA RUNTIME ERROR",
   "timeout": 30
  },
  {

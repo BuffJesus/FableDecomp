@@ -109,3 +109,39 @@ Ghidra printed the receiver and dropped the by-value string, so the good-ending 
 the Lua. `name_by_value_string_parameters` now matches the wrapped constructor line, a stack temp deeper than
 `&stack0xffffff..`, and a receiver reached through a field. Unit todo 34 -> 29.
 
+## Nothing was testing the side quests or the secret trainers
+
+The user asked whether the apple girl, the gulls, the race and the three apprentice trainers had been
+covered. They had not. In the v7probe chain log every one of those entities binds, its script loads and
+some enter `Main` (`KillBird.lua` is allocated seven times, `RaceMarker` runs its loop, `MeleeApprentice`
+even speaks `TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_COMMENT`), but no checklist ever *talks* to them, so
+every conversation, question, grading and reward branch was unexercised.
+
+Two new checklists:
+
+* `checklists/guild_side_quests.json` (childhood, after `guild_woods_return`) -- AppleGirl
+  (`APPLEGIRL_CHAT` -> question -> the counting conversation, `CurrentApples` staged the way the melee
+  checklist stages `DummyHits`), BirdKiller (`BIRD_KILLER_GREET` -> question -> the `CS_GUILD_GULLS_INTRO`
+  macro -> the `CurrentBirdsKilled * GUI_GoldPerBird` payout) and ApprenticeSpeedTest
+  (`FAST_APPRENTICE_BOAST` -> question -> `FAST_APPRENTICE_RUN` -> the `ReachedPlatform` outcome branches).
+* `checklists/guild_secret_trainers.json` (adult, after `guild_departure_stage`) -- CombatApprentice,
+  SkillApprentice and WillApprentice: the hello/question lines and the `CS_GUILD_DEPARTURE_*_TEST_*`
+  grade macros (END / A / APLUS / APLUS_PRIZE).
+
+`test_checklists.py` now validates all of them statically -- regexes compile, every `input:` verb is one
+`send_input` implements with its arity, channel lines are `<Quest>: <lua>` or a console command, ids are
+unique, and any step that drives Lua forbids `LUA RUNTIME ERROR`. That last check found a real gap:
+`guild_skill_stage.json`'s `skill_move_state` had no `forbid`, so a runtime error during the moving-dummy
+read-back would have passed silently.
+
+## The last Guild TODO: a fourth counted-release spelling
+
+`MeleeApprentice` 0x00D40CF0's termination path kept `TODO(native): (**(code **)((int)xStack_e8 + 4))();`
+inside a dead `if false then`. It is the same inlined counted-pointer release as the other three variants,
+but Ghidra typed the slot `undefined1 [4]`, the `&&` wrapped across lines, and by the time the fold runs the
+earlier passes have dropped the cast entirely (`if ((xStack_e8 != 0x0) && (...))`). The null test in
+`RE_LOCAL_COUNTED_RELEASE3` now takes an optional cast and whitespace around `&&`.
+
+**The whole GuildTraining unit is down to two structural TODOs**: a `*xStack_23c` read in the Melee
+Guildmaster, and `CreateEffect` -- which is a missing ForgeFSE binding, not a converter gap.
+
