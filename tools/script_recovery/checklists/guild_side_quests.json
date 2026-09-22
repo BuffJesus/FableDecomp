@@ -27,13 +27,13 @@
   "interval": 4.0,
   "do": [
    "input: clear",
-   "GuildTraining: local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "GuildTraining: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
    "input: key TAB"
   ],
   "expect": "TEXT_QST_028_APPLEGIRL_(CHAT|HELP|QUESTION)",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 120,
-  "note": "AppleGirl 0x00D3D6E0: the HELP line goes into the conversation, then IsTalkedToByHero -> APPLEGIRL_CHAT and the yes/no APPLEGIRL_QUESTION"
+  "note": "AppleGirl 0x00D3D6E0: the HELP line goes into the conversation, then IsTalkedToByHero -> APPLEGIRL_CHAT and the yes/no APPLEGIRL_QUESTION -- user report 2026-09-22: teleporting the hero INTO the NPC leaves him unhighlighted, so there is no talk target and IsTalkedToByHero never fires; stand beside him (+1.2 on x) and face him instead"
  },
  {
   "id": "applegirl_accept",
@@ -54,13 +54,13 @@
   "interval": 4.0,
   "do": [
    "GuildTraining: quest:SetStateInt('CurrentApples', 3)",
-   "GuildTraining: local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then quest:EntityTeleportToThing(quest:GetHero(), g, false) end",
+   "GuildTraining: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('AppleGirl'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
    "input: key TAB",
    "input: clear"
   ],
   "expect": "TEXT_QST_028_APPLEGIRL_(ONE_MORE_APPLE|NO_MORE_APPLES|MANY_MORE_APPLES|ONE_NEEDED|TWO_NEEDED|THREE_NEEDED)",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 150,
-  "note": "the apples themselves are ordinary world objects, so the count is staged the way the melee checklist stages DummyHits; what is under test is the counting conversation and the reward branch"
+  "note": "the apples themselves are ordinary world objects, so the count is staged the way the melee checklist stages DummyHits; what is under test is the counting conversation and the reward branch -- user report 2026-09-22: teleporting the hero INTO the NPC leaves him unhighlighted, so there is no talk target and IsTalkedToByHero never fires; stand beside him (+1.2 on x) and face him instead"
  }
 ]
