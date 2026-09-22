@@ -19,6 +19,30 @@ UNITS = {
         'schema': 'guild-training-native-inventory/0.1',
         'package': 'GuildTraining',
     },
+    'wasp_boss': {
+        # Gameflow stage 100 -> 200: the WASP_MENACE card, then stage 200 waits on Q_WaspBoss.
+        # Q_WaspBoss vtable 0x012E00E4: Init 0x00E0E820 .. dtor 0x00E13BF0; next family's allocator
+        # (Q_WhiteBalverineKnotholeGlade) is 0x00E183B0, and the wasp entity classes sit in between.
+        'evidence': ROOT / 'refs/script_recovery/wasp_boss',
+        'lo': 0xE0E820, 'hi': 0xE183B0,
+        'ir_glob': 'Q_WaspBoss*.json',
+        'scripts': ['Q_WaspBoss'],
+        'pdb_pattern': '*CQ_WaspBoss*',
+        'schema': 'wasp-boss-native-inventory/0.1',
+        'package': 'WaspBoss',
+    },
+    'guardian_sister_info': {
+        # Gameflow stage 200 -> 300: handed directly after the wasp boss, and stage 300 waits on it before
+        # the Orchard Farm cards. Q_ vtable 0x012E1DAC: Init 0x00E25A00 .. dtor 0x00E267C0 -- its Init is
+        # BELOW its own allocator 0x00E26780, so the vtable bounds it, not the allocator order.
+        'evidence': ROOT / 'refs/script_recovery/guardian_sister_info',
+        'lo': 0xE25A00, 'hi': 0xE267D0,
+        'ir_glob': 'QS_GuardianSisterInfo*.json',
+        'scripts': ['QS_GuardianSisterInfo'],
+        'pdb_pattern': '*CQS_GuardianSisterInfo*',
+        'schema': 'guardian-sister-info-native-inventory/0.1',
+        'package': 'GuardianSisterInfo',
+    },
     'orchard_farm': {
         # Q_OrchardFarmRaid ctor 0x00DCC040 .. Q_OrchardFarmRaidGood dtor 0x00DD26C0 (+ tail)
         # Q_OrchardFarm_Barricade has no script class: it is a resource section quest activated by the raid.
