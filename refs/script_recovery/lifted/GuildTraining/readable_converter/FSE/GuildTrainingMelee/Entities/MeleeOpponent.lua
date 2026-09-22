@@ -230,7 +230,7 @@ function Main(quest, me)
                     return
                 end
                 if not quest:IsPlayerCreatureBlocking() then goto LAB_00d57276 end
-                if not hero:MsgIsHitBy("MeleeOpponent") then goto LAB_00d57276 end
+                if not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")) then goto LAB_00d57276 end
                 predicateResult = true
                 goto FLOW_past_lab_00d57276
                 ::LAB_00d57276::
@@ -254,7 +254,7 @@ function Main(quest, me)
                         quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", me, hero, false)
                         goto LAB_00d57742
                     end
-                elseif hero:MsgIsHitBy("MeleeOpponent") then
+                elseif hero ~= nil and hero:MsgIsHitBy("MeleeOpponent") then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId2)
                         resources:ReleaseResource(resource)
@@ -426,7 +426,7 @@ function Main(quest, me)
                     end
                 else
                     if not quest:IsPlayerCreatureBlocking() then goto LAB_00d57af8 end
-                    if not hero:MsgIsHitBy("MeleeOpponent") then goto LAB_00d57af8 end
+                    if not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")) then goto LAB_00d57af8 end
                     predicateResult47 = true
                     goto FLOW_past_lab_00d57af8
                     ::LAB_00d57af8::
@@ -462,7 +462,7 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                    elseif hero:MsgIsHitBy("MeleeOpponent") then
+                    elseif hero ~= nil and hero:MsgIsHitBy("MeleeOpponent") then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
                             resources:ReleaseResource(resource)

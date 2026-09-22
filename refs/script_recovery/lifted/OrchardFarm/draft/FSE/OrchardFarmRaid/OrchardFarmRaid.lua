@@ -254,7 +254,7 @@ function ProcessGameRulesEvil(quest)
                     fVar5 = f_stk_14
                 end
                 pCVar6 = quest:GetHero()
-                c_stk_c1 = pCVar6:MsgIsKilledBy("")
+                c_stk_c1 = (pCVar6 ~= nil and pCVar6:MsgIsKilledBy(""))
                 if c_stk_c1 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -380,7 +380,7 @@ function ProcessGameRulesGood(quest)
                     quest:SetStateInt("MissionFailed", 2)
                 end
                 pCVar5 = quest:GetHero()
-                c_stk_c5 = pCVar5:MsgIsKilledBy("")
+                c_stk_c5 = (pCVar5 ~= nil and pCVar5:MsgIsKilledBy(""))
                 if c_stk_c5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -502,7 +502,7 @@ function ProcessGameRulesGood(quest)
                     return
                 end
                 pCVar5 = quest:GetHero()
-                c_stk_c5 = pCVar5:MsgIsKilledBy("")
+                c_stk_c5 = (pCVar5 ~= nil and pCVar5:MsgIsKilledBy(""))
                 if c_stk_c5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive

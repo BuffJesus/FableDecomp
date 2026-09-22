@@ -1871,14 +1871,12 @@
           },
           "todo": [
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
-            "unlifted: *xStack_10 = *xStack_10 + -1;",
             "label LAB_00dfdc54",
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "label LAB_00dfdc8a",
             "label LAB_00dfda90",
             "label LAB_00dfdd34",
-            "unlifted: if *xStack_10 == 0 then",
             "unlifted: cVar3 = (**(*piStack_14 + 0x12c))()"
           ],
           "calls": [
@@ -1962,7 +1960,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 261,
+          "lines": 255,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2058,15 +2056,10 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_148[0] = 0;",
             "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
             "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
             "unlifted: xStack_148 = (CCharString)((int)CVar13 + 1);",
-            "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "Main_InitializeFourierAnalysis_4: unproven parent helper receiver or arity",
-            "unlifted: cVar3 = (**(xStack_148 + 0x12c))()",
-            "unlifted: cVar3 = (**(xStack_148 + 0x12c))()",
-            "unlifted: bVar2 = (**(*(iVar11 + 0x0) + 0x138))((me))"
+            "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2105,11 +2098,13 @@
             "Speak",
             "IsPerformingScriptTask",
             "GetTimer",
+            "IsAlive",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2134,6 +2129,7 @@
             "SetTimer",
             "GetTimer",
             "GetHeroTargetedThing",
+            "IsEqualTo",
             "IsPlayerHoldingLockTargetButton",
             "IsActiveThreadTerminating",
             "ENGINE_Rand",
@@ -2438,7 +2434,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 965,
+          "lines": 952,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2513,7 +2509,7 @@
             "if (iVar11 == 0) goto LAB_00dfe2e9;",
             "if (iVar21 == 0) goto LAB_00dffb06;",
             "if (iVar21 == 0) goto LAB_00e001c0;",
-            "if (native_arg_sequence_4) goto LAB_00e005b1;"
+            "if (native_arg_sequence_3) goto LAB_00e005b1;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00dfe2e9",
@@ -3417,8 +3413,7 @@
       "declaredFreeLocals": {
         "FSE/TraderConflictGood/TraderConflictGood.lua": {
           "AttackPeople": [
-            "piStack_14",
-            "xStack_10"
+            "piStack_14"
           ]
         },
         "FSE/TraderConflictGood/Entities/TraderToRescue.lua": {
@@ -3457,7 +3452,7 @@
         "functionSyntaxPassed": 38,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 27
+        "todo": 20
       }
     }
   ],
@@ -3468,6 +3463,6 @@
     "functionSyntaxPassed": 63,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 34
+    "todo": 27
   }
 }

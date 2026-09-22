@@ -1306,15 +1306,15 @@ function CheckFriendlyAttacks(quest)
                 end
             end
             pCVar14 = quest:GetHero()
-            bVar10 = pCVar14:MsgHitFriendWithBareHands()
+            bVar10 = (pCVar14 ~= nil and pCVar14:MsgHitFriendWithBareHands())
             if bVar10 then
                 goto LAB_00d456af
             else
                 pCVar14 = quest:GetHero()
-                bVar10 = pCVar14:MsgHitFriendWithMeleeWeapon()
+                bVar10 = (pCVar14 ~= nil and pCVar14:MsgHitFriendWithMeleeWeapon())
                 if bVar10 then goto LAB_00d456af end
                 pCVar14 = quest:GetHero()
-                bVar10 = pCVar14:MsgHitFriendWithRangedWeapon()
+                bVar10 = (pCVar14 ~= nil and pCVar14:MsgHitFriendWithRangedWeapon())
                 if bVar10 then goto LAB_00d456af end
                 goto LAB_00d45782
             end

@@ -154,10 +154,27 @@ THING_PATTERNS = [
     re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)\((?P<recv>(?:this|param_\d+) \+ 8)\) \+ (?P<off>" + OFFSET + r")\)\)\("),
     re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)(?P<recv>[A-Za-z_]\w*) \+ (?P<off>" + OFFSET + r")\)\)\("),
     re.compile(r"\(\*\*\(code \*\*\)\(\*(?P<recv>[A-Za-z_]\w*) \+ (?P<off>" + OFFSET + r")\)\)\("),
+    # a thing handle whose Data field the lowering folded back onto the handle itself: `*(int *)(recv + 0x0)`
+    # is the object (TraderConflictGood TraderToRescue 0x00DFE0F0: `GetHeroTargetedThing()->IsEqualTo(me)`)
+    re.compile(r"\(\*\*\(code \*\*\)\(\*\(int \*\)\((?P<recv>[A-Za-z_]\w*) \+ 0x0\) \+ (?P<off>" + OFFSET + r")\)\)\("),
 ]
 ME_RECEIVER = "(CScriptThing *)(this + 8)"
 # lowering pseudo-calls / interface calls whose value is a CScriptThing (a stack slot filled by one is a thing receiver)
-RE_PSEUDO_THING = re.compile(r"^[ 	]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*(?:QUESTTHING_Empty|ENTITYTHING_Empty|QUESTTHING_Get|ENTITYTHING_Get|LOCALLIST_At|(?:QUEST|ENTITY)LIST_At_\w+|RESOURCE_ScriptThing|GSI->(?:GetHero|GetThingWithScriptName|GetNearestWithScriptName|CreateCreature|GetRandomThingWithScriptName|GetNearestWithDefName))\(", re.M)
+PSEUDO_GSI_THING = ("GetHero", "GetThingWithScriptName", "GetNearestWithScriptName", "CreateCreature",
+                    "GetRandomThingWithScriptName", "GetNearestWithDefName")
+
+
+def _pseudo_thing_re(extra=()):
+    """Interface calls whose value is a CScriptThing. The manifest already says which interface slots return
+    one (`thing_returning`); naming them here keeps the alias table from depending on a hand-kept list
+    (`GetHeroTargetedThing` was missing, so TraderToRescue's `IsEqualTo` had no receiver and stayed native)."""
+    names = "|".join(sorted({*PSEUDO_GSI_THING, *extra}, key=len, reverse=True))
+    return re.compile(r"^[ 	]*(?P<var>[A-Za-z_]\w*) = (?:\((?:int|CScriptThing) \*\))?\s*"
+                      r"(?:QUESTTHING_Empty|ENTITYTHING_Empty|QUESTTHING_Get|ENTITYTHING_Get|LOCALLIST_At"
+                      r"|(?:QUEST|ENTITY)LIST_At_\w+|RESOURCE_ScriptThing|GSI->(?:" + names + r"))\(", re.M)
+
+
+RE_PSEUDO_THING = _pseudo_thing_re()
 RE_THING_RETURN = re.compile(r"@CScriptThing@@[UM][AB]E\?AV1@")
 
 
@@ -167,12 +184,14 @@ def _statement_end(text: str, start: int) -> int:
 
 
 def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
-                     thing_returning: frozenset[int] | set[int], entity: bool) -> str:
+                     thing_returning: frozenset[int] | set[int], entity: bool,
+                     pseudo_names: tuple[str, ...] = ()) -> str:
     """One streaming pass: alias definitions and call heads in text order; a call's receiver is
     classified by the aliases in force at that point (a redefinition ends the previous alias)."""
     events: list[tuple[int, int, str, re.Match[str]]] = []
+    pseudo = _pseudo_thing_re(pseudo_names)
     for kind, pattern in (("gsi", RE_GSI_ALIAS), ("me", RE_ME_ALIAS), ("copy", RE_COPY_ALIAS),
-                          ("thing", RE_THING_ALIAS), ("pseudo", RE_PSEUDO_THING), ("any", RE_ANY_DEF)):
+                          ("thing", RE_THING_ALIAS), ("pseudo", pseudo), ("any", RE_ANY_DEF)):
         for m in pattern.finditer(text):
             # a definition takes effect after its statement (its own rhs sees the old aliases);
             # the generic reset runs before the specific classification of the same statement
@@ -186,12 +205,12 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     gsi: set[str] = set()
     # a slot filled by a thing-valued pseudo-call anywhere in the function is a thing receiver even before
     # that statement in text order (loop-carried values: the store sits at the loop tail)
-    pseudo_things = {m.group("var") for m in RE_PSEUDO_THING.finditer(text)}
+    pseudo_things = {m.group("var") for m in pseudo.finditer(text)}
     # a stack slot that keeps such a value across loop iterations (`piStack_14 = pCVar8;` after
     # `pCVar8 = GSI->CreateCreature(..)`, read at the loop head: ScorpionHome 0x00D643A0's spawn position)
     # is a thing receiver before its store in text order too; registers are left to the streaming aliases
     thing_defs: dict[str, int] = {}
-    for m in RE_PSEUDO_THING.finditer(text):
+    for m in pseudo.finditer(text):
         thing_defs[m.group("var")] = thing_defs.get(m.group("var"), 0) + 1
     for m in RE_THING_ALIAS.finditer(text):
         if not m.group("via") and int(m.group("off"), 0) in thing_returning:
@@ -292,7 +311,10 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
     CScriptThing (so `piVarN = (int *)GSI->GetHero()` makes piVarN a thing receiver); `entity` enables
     the `this + 8` receiver (entity scripts keep their CScriptThing at +8)."""
     if thing_slots:
-        text = _annotate_things(text, thing_slots, thing_returning, entity)
+        # the interface slots the manifest marks as returning a CScriptThing, by name: their results are
+        # thing receivers exactly like GetHero's
+        text = _annotate_things(text, thing_slots, thing_returning, entity,
+                                tuple(slots[off] for off in thing_returning if off in slots))
 
     def sub(match: re.Match[str]) -> str:
         offset = int(match.group(1), 0)

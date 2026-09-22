@@ -187,7 +187,7 @@ function ProcessGameRulesEvil(quest)
             resources:ReleaseResource(resource2)
             addQuestInfoCounter = f_stk_14_2
         end
-        if hero:MsgIsKilledBy("") then
+        if hero ~= nil and hero:MsgIsKilledBy("") then
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("MissionFailed", 1)
         end
@@ -262,7 +262,7 @@ function ProcessGameRulesGood(quest)
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("MissionFailed", 2)
         end
-        if hero:MsgIsKilledBy("") then
+        if hero ~= nil and hero:MsgIsKilledBy("") then
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("MissionFailed", 1)
         end
@@ -322,7 +322,7 @@ function ProcessGameRulesGood(quest)
             resources:ReleaseResource(resource3)
         end
         if quest:GetStateInt("CrateCount") == 0 and quest:IsActiveThreadTerminating() then return end
-        if hero:MsgIsKilledBy("") then
+        if hero ~= nil and hero:MsgIsKilledBy("") then
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("MissionFailed", 1)
         end

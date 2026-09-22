@@ -58,7 +58,7 @@ function Main(quest, me)
                 if not (thing_38 ~= nil and not thing_38:IsNull()) or not (thing_38 ~= nil and thing_38:IsAlive()) then
                     goto LAB_00dce594
                 else
-                    if (thing_38 ~= nil and not thing_38:IsNull()) and thing_38:IsBeingCarriedBy("") then goto LAB_00dce594 end
+                    if (thing_38 ~= nil and not thing_38:IsNull()) and (thing_38 ~= nil and thing_38:IsBeingCarriedBy("")) then goto LAB_00dce594 end
                     predicateResult6 = true
                 end
                 goto FLOW_past_lab_00dce594

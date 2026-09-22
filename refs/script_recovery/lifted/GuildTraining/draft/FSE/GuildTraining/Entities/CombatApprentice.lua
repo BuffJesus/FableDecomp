@@ -753,7 +753,7 @@ function Main(quest, me)
                             bVar3 = quest:IsPlayerCreatureBlocking()
                             if bVar3 then
                                 pCVar7 = quest:GetHero()
-                                bVar3 = pCVar7:MsgIsHitBy("MeleeOpponent")
+                                bVar3 = (pCVar7 ~= nil and pCVar7:MsgIsHitBy("MeleeOpponent"))
                                 if not bVar3 then goto LAB_00d4b8c5 end
                                 bVar3 = true
                             else
@@ -783,7 +783,7 @@ function Main(quest, me)
                                 end
                             else
                                 pCVar7 = quest:GetHero()
-                                bVar3 = pCVar7:MsgIsHitBy("MeleeOpponent")
+                                bVar3 = (pCVar7 ~= nil and pCVar7:MsgIsHitBy("MeleeOpponent"))
                                 if bVar3 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive

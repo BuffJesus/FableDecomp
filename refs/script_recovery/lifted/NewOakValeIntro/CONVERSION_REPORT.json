@@ -26354,14 +26354,11 @@
         "bsimVoid": true
       },
       "todo": [
-        "unlifted: CCharString::CCharString((CCharString *)(pCVar2 + 4),local_10);",
-        "unlifted: *(CPersonalScript_GlobalThingsScript **)(pCVar2 + 8) = this;",
-        "unlifted: pCVar2[0x14] = (CEntityScriptBindingBase)0x1;",
-        "unlifted: *(undefined4 *)(pCVar2 + 0x18) = 0;",
-        "unlifted: CScriptBase::AddEntityScriptBinding((CScriptBase *)this,pCVar2);",
+        "DeactivateQuest: missing delay (1 args for 2 params)",
         "unlifted: p_Var6 = (_func_void *)&local_4;"
       ],
       "calls": [
+        "AddEntityBinding",
         "AddEntityBinding",
         "AddEntityBinding",
         "AddEntityBinding",
@@ -26384,7 +26381,7 @@
         "SetQuestCardObjective",
         "CreateThread"
       ],
-      "lines": 43,
+      "lines": 35,
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": true,
@@ -31513,6 +31510,6 @@
     "functionSyntaxPassed": 51,
     "fileSyntaxPassed": 18,
     "fileSyntaxChecked": 18,
-    "todo": 1203
+    "todo": 1199
   }
 }

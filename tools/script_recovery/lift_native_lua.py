@@ -1624,11 +1624,15 @@ class Lifter:
                 self.todo.append(f"{name}: {len([a for a in args if a])} operands for {len(kinds)} params")
         call = f"{thing}:{name}({', '.join(a if a is not None else 'nil --[[missing]]' for a in args)})"
         # Retail CScriptThing::IsAlive (0x004AB130) returns false for an empty
-        # implementation pointer. Forge lookups represent that wrapper as nil,
-        # on which Lua cannot dispatch a method. Guard a typed local receiver;
+        # implementation pointer, and so does every other const bool query on one
+        # (`@@[UM]BE_N` in the decorated name). Forge lookups represent that wrapper
+        # as nil, on which Lua cannot dispatch a method. Guard a typed local receiver;
         # bare locals are side-effect-free and the entity-thread `me` is bound.
-        if (target and name == 'IsAlive' and result == 'bool' and not args
-                and thing != 'me' and re.fullmatch(r'[A-Za-z_]\w*', thing)
+        # (TraderToRescue 0x00DFE0F0: `GetHeroTargetedThing():IsEqualTo(me)` is nil
+        # on every frame the hero targets nothing.)
+        if (target and result == 'bool' and thing != 'me'
+                and re.search(r'@@[UM]BE_N', self.thing_sigs.get(name, ''))
+                and re.fullmatch(r'[A-Za-z_]\w*', thing)
                 and self.kind_of(thing) == 'thing'):
             call = f"({thing} ~= nil and {call})"
         if name not in self.manifest:

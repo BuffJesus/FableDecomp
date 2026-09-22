@@ -1073,10 +1073,10 @@
        ]
       },
       "cVar4_5": {
-       "name": "isBeingCarriedBy",
-       "basis": "consistent call/state result",
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "isBeingCarriedBy"
+        null
        ]
       },
       "cVar4_6": {
@@ -1122,28 +1122,28 @@
        ]
       },
       "iVar7_3": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar7_4": {
        "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_5": {
+      "iVar7_4": {
        "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar7_6": {
+      "iVar7_5": {
        "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar7_6": {
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -8574,15 +8574,15 @@
        "aliveStaging": 12,
        "exitChecksInlined": 7,
        "frameChecks": 3,
-       "inlinedTemporaries": 32,
-       "deadDefinitions": 3,
+       "inlinedTemporaries": 31,
+       "deadDefinitions": 4,
        "guardWrappers": 2,
        "retryLoops": 2,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 1,
        "literals": 0,
-       "copies": 0,
+       "copies": 1,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 0,
@@ -8602,7 +8602,7 @@
        "controlAcquires": 0,
        "sunkLocals": 13,
        "cleanupClosureNames": 1,
-       "parentheses": 4,
+       "parentheses": 5,
        "cosmetics": 0,
        "firstAssignments": 1,
        "freeSuffixes": 0,
@@ -8637,15 +8637,15 @@
        "aliveStaging": 14,
        "exitChecksInlined": 10,
        "frameChecks": 4,
-       "inlinedTemporaries": 36,
-       "deadDefinitions": 3,
+       "inlinedTemporaries": 34,
+       "deadDefinitions": 5,
        "guardWrappers": 2,
        "retryLoops": 2,
        "booleanMaterialisation": 4,
        "booleanCompares": 0,
        "conditions": 1,
        "literals": 0,
-       "copies": 1,
+       "copies": 3,
        "selfAssignments": 1,
        "flagClears": 0,
        "tailGuards": 0,
@@ -8665,7 +8665,7 @@
        "controlAcquires": 0,
        "sunkLocals": 13,
        "cleanupClosureNames": 1,
-       "parentheses": 6,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 1,
        "freeSuffixes": 0,

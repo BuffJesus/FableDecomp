@@ -152,7 +152,7 @@ function Main(quest, me)
                                 native_arg_sequence_1 = false
                             end
                             if native_arg_sequence_1 then
-                                cVar4 = thing_38:IsBeingCarriedBy("")
+                                cVar4 = (thing_38 ~= nil and thing_38:IsBeingCarriedBy(""))
                                 if cVar4 then
                                     native_arg_sequence_1 = true
                                 else

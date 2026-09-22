@@ -42,7 +42,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | OVI_DeadFather | Main | 0x00DB8300 | True | 3 |
 | OVI_DeadFather | OnPredicateFail | 0x00DB8260 | True | 0 |
 | Q_NewOakValeIntro | RegisterMain | 0x00DAACE0 | True | 0 |
-| Q_NewOakValeIntro | Main | 0x00DABAC0 | True | 6 |
+| Q_NewOakValeIntro | Main | 0x00DABAC0 | True | 2 |
 | Q_NewOakValeIntro | Init | 0x00DAADD0 | True | 0 |
 | Q_NewOakValeIntro | OnPersist | 0x00DAADA0 | True | 0 |
 | Q_NewOakValeIntro | DoMission | 0x00DBDE40 | True | 0 |
@@ -58,4 +58,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 
 Shared native helper module: `FSE/NewOakValeIntro/native_quest_helpers.lua`; functions: AddBadDeed, AddGoodDeed. Its diagnostics are included in file syntax totals.
 
-Summary: `{"owners": 17, "functions": 51, "missing": 0, "functionSyntaxPassed": 51, "fileSyntaxPassed": 18, "fileSyntaxChecked": 18, "todo": 1203}`
+Summary: `{"owners": 17, "functions": 51, "missing": 0, "functionSyntaxPassed": 51, "fileSyntaxPassed": 18, "fileSyntaxChecked": 18, "todo": 1199}`

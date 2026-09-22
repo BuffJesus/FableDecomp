@@ -1,3 +1,42 @@
+# RESUME HERE -- 2026-09-22: v7 cannot load a v6 save (Aeon's Gameflow persists the wrong type); TraderConflict receivers
+
+**The blocker for run 14, root-caused and proven (journal `GAMEFLOW_PERSIST_AND_TRADER_RECEIVERS_2026-09-22.md`):**
+`autopilot.py run v7 --save f645456fds` loads the save and the game is GONE inside Gameflow's OnPersist, twice,
+at `[PERSIST] Transferring uint 'CoreQuestWaiting'`. Retail's own OnPersist 0x00CEF8E0 calls **0x004106F0** for
+that key = FSE's `Transfer_uint`, and the PDB types `CGameflowScript::CoreQuestWaiting` as a **ulong**: the
+converter is faithful and Aeon's `PersistTransferBool` (v6's LUAGameflow) is the deviation. Two probes settle it:
+`local-candidate-v7probe` (v7 with only that line switched to bool) loads the v6 save and plays the woods
+checklist **18/18, 0 Lua errors with `host Gameflow/Gameflow` live**; unmodified v7 loading a **retail-born save**
+(profile `25`) transfers the uint and both string lists cleanly. **So v6 and v7 cannot share a save** -- do NOT
+"fix" the converter to bool. **Next:** run the five-checklist chain on **v7probe** against run 13's v6 archive
+(`work/ab_runs/v6-20260921-212900`, `ab_playtest.py compare`), which A/Bs everything except the one persist line;
+a true v7 A/B needs a v7-born save (play the chain once from a new game on v7).
+
+**A/B DONE on v7probe: 58/58 steps, 0 failed, 0 Lua errors, `SetQuestAsCompleted Q_GuildTraining`**
+(`work/ab_runs/v7probe-20260922-100933`). `ab_playtest.py compare v6 v7probe`: the only substantive one-side
+events are the two Gameflow quests themselves and the converter's two extra (faithful) persist transfers; the
+rest is thread-pointer / tick noise. The missing `override Q_TraderConflict*` on the v7probe side is a one-off
+of that bundle build (a rebuild registers them), not behaviour.
+
+**The Will test's arrow HUD icon is RETAIL's** (user report 2026-09-22): the Will Guildmaster 0x00D5E0C0 pushes
+`"HUD_ICON_ARROW"` at 0x00D5F275 itself. Faithful; GOTCHAS says not to "fix" it silently.
+
+**Converter (all generic, gates below):** (1) `restore_stack_operands` now restores the receiver of a vtable call
+that prints no receiver -- the export's `ecxStack` is the true slot, respelled `*(int *)<object>`, with the
+covering-extent and one-name-many-slots rules the argument pass already uses (TraderToRescue 0x00DFE0F0's two
+liveness tests were calls on the *resource*; they are `(r1 ~= nil and r1:IsAlive())` on the hostage keeper).
+(2) thing-returning interface slots are named from the manifest instead of a hand-kept list, plus the folded-Data
+call head `*(int *)(recv + 0x0)` -- `GetHeroTargetedThing():IsEqualTo(me)` lifts. (3) the resource ctor's member
+zero-store spelled `X[0] = 0` (plain `0`) is part of the constructor. (4) the IsAlive nil guard generalised to any
+**const bool** thing query (`@@[UM]BE_N`): those return false on an empty thing in retail but are nil in Forge.
+TraderConflict draft TODO 34 -> 30; Oakvale Q_NewOakValeIntro Main 6 -> 2 (the entity-binding block lifts);
+guild_training / orchard_farm / gameflow otherwise unchanged apart from the new guards; smoke 0/0/0/0
+(trader was 1); targeted tests 25/25. Remaining TraderToRescue TODOs (5): an `(int)CVar13 + 0xa` store into a
+string temp declared four ways (looks dead -- needs the disassembly), and one operand-less helper call.
+
+**Committed today:** 856cbf4 (the whole 2026-09-20/21 Guild lane: converter work, the five checklists, the
+autopilot chain that graduated the hero, journals).
+
 # RESUME HERE -- 2026-09-21 night: GUILD TRAINING COMPLETED on the converter's Lua (childhood -> graduation, hands-free)
 
 **In-game (v6; journal `ARCHERY_SCORING_2026-09-21.md`, sections Run 6 .. Run 11b):** from the post-woods save the

@@ -447,7 +447,7 @@ function Main(quest, me)
                     end
                     if not scratchValue4 then
                         if not quest:IsPlayerCreatureBlocking() then goto LAB_00d4b8c5 end
-                        if not hero:MsgIsHitBy("MeleeOpponent") then goto LAB_00d4b8c5 end
+                        if not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")) then goto LAB_00d4b8c5 end
                         predicateResult41 = true
                         goto FLOW_past_lab_00d4b8c5
                         ::LAB_00d4b8c5::
@@ -464,7 +464,7 @@ function Main(quest, me)
                                 end
                                 goto LAB_00d4c6c8
                             end
-                        elseif hero:MsgIsHitBy("MeleeOpponent") then
+                        elseif hero ~= nil and hero:MsgIsHitBy("MeleeOpponent") then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
                             if quest:GetTimer(timerId2) < 1 then
                                 addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)

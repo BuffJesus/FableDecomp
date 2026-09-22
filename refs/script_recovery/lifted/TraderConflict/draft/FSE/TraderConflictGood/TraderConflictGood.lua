@@ -702,7 +702,7 @@ function UpdateLiveEnemies(quest)
 end
 
 function AttackPeople(quest)
-    local bVar2, cVar3, ctr_38, dist, elem_1, iVar4, iVar7, i_stk_3c, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_10, xStack_24, xStack_38, x_stk_c
+    local bVar2, cVar3, ctr_38, dist, elem_1, iVar4, iVar7, i_stk_3c, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_24, xStack_38, x_stk_c
     local alive = true
     local function __cleanup_LAB_00dfdd34()
         quest:DeregisterTimer(i_stk_3c)
@@ -741,12 +741,6 @@ function AttackPeople(quest)
                     bVar2 = not alive
                     if bVar2 then __cleanup_LAB_00dfdd34(); return end
                     x_stk_c = nil
-                    if xStack_10 ~= nil then
-                        -- TODO(native): *xStack_10 = *xStack_10 + -1;
-                        -- TODO(native): if *xStack_10 == 0 then
-                        if false then
-                        end
-                    end
                 end
                 dist = 15.0
                 pCVar1 = xStack_24[(iVar7) / 0xc + 1]

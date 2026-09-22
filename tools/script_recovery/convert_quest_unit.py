@@ -638,6 +638,10 @@ def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True)
     return None
 
 
+RE_BARE_VTABLE_HEAD = re.compile(r'\(\*\*\(code \*\*\)\((?P<base>[A-Za-z_]\w*) \+ (?:0x[0-9a-f]+|\d+)\)\)\s*\($')
+RE_STACK_NAME_ONLY = re.compile(r'(?:[A-Za-z]+Stack_|local_)[0-9a-f]+')
+
+
 def restore_stack_operands(decompile, fn, _byte_slices=True):
     """Ghidra's stack-variable naming drifts after callee-cleaned vtable calls (it lost the argument pops),
     so one slot appears under several names (`auStack_a8`, `&uStack_b8`, `auStack_b0 + 4`). The typed export
@@ -654,10 +658,22 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     text = decompile
     uses = []       # (text position, arg index within site, ghidra name, true slot of the name, plus, constructed?)
     sites = []      # (start, end, args, slots or None, label)
+    receivers = []  # (start, end, ghidra name, true slot, site position) of unprinted vtable receivers
     site_addr = {}  # start -> the machine-code call site (when the pairing knows it)
 
-    def collect(pos, end, args, slots, label, vtable):
+    def collect(pos, end, args, slots, label, vtable, ecx=None):
         sites.append((pos, end, args, slots, label))
+        # A vtable call whose receiver is NOT printed anywhere (`(**(code **)(NAME + 0x12c))()`, no arguments)
+        # hides the object inside the code-pointer expression, where no operand pass can reach it -- and Ghidra's
+        # NAME there is its own drifted spelling of a nearby slot (TraderToRescue 0x00DFE0F0 spelled the hostage
+        # keeper's `IsAlive()` receiver as the resource member `iStack_140`, four slots down, so the fold read the
+        # two liveness tests as calls on the resource and the lifter left them TODO). The export's ecxStack is the
+        # receiver's true slot: respell the head as a thing receiver on the object that lives there.
+        if vtable and ecx is not None and ecx < 0 and not _receiver_printed(text, pos, args):
+            head = RE_BARE_VTABLE_HEAD.search(text[max(0, pos - 200):pos])
+            if head is not None and RE_STACK_NAME_ONLY.fullmatch(head.group('base')):
+                base_start = max(0, pos - 200) + head.start('base')
+                receivers.append((base_start, base_start + len(head.group('base')), head.group('base'), ecx, pos))
         if slots is None:
             return
         for k, (arg, (addr, value)) in enumerate(zip(args, slots)):
@@ -682,7 +698,7 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
                 site_addr[pos] = int(site.get('site', ''), 16)
             except (TypeError, ValueError, AttributeError):
                 pass
-            collect(pos, end, args, _align(site, args, vtable, vtable and _receiver_printed(text, pos, args)), key, vtable)
+            collect(pos, end, args, _align(site, args, vtable, vtable and _receiver_printed(text, pos, args)), key, vtable, site.get('ecxStack'))
     by_slot = {}
     for c in fn.get('indirectCalls', []) if ordered is None else []:
         if c.get('slot'):
@@ -698,7 +714,7 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
                 depth += {'(': 1, ')': -1}.get(text[j], 0)
                 j += 1
             args = _split_top(text[he:j - 1])
-            collect(he, j - 1, args, _align(site, args, True, _receiver_printed(text, he, args)), slot, True)
+            collect(he, j - 1, args, _align(site, args, True, _receiver_printed(text, he, args)), slot, True, site.get('ecxStack'))
     by_label = {}
     for c in fn.get('calls', []) if ordered is None else []:
         if c.get('currentName') and ('pushedStack' in c or 'ecxStack' in c or 'edxStack' in c):
@@ -818,6 +834,27 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
             out[k] = (m.group('cast') or '') + m.group('amp') + new
         if out != args:
             edits.append((start, end, ','.join(out)))
+    # one Ghidra head name whose sites the export spreads over several slots, none of which ever holds a
+    # constructed object, is ONE object seen through a mis-tracked depth (the same rule the argument pass
+    # applies to thing names): it lives at the slot of its earliest site
+    receiver_slot = {}
+    for _, _, name, off, pos in sorted(receivers, key=lambda r: r[4]):
+        receiver_slot.setdefault(name, []).append((pos, off))
+    unified = {name: min(lst)[1] for name, lst in receiver_slot.items()
+               if len({o for _, o in lst}) > 1 and not any(ctor_names.get(o) for _, o in lst)}
+    for start, end, name, off, pos in receivers:
+        off = unified.get(name, off)
+        # the object that lives at the receiver's true slot, never Ghidra's own spelling of the head (an
+        # `iStack_` name there is the drifted one the export contradicts, and name_at would keep it). The
+        # export's own slot drifts by a member too (TraderToRescue's second liveness test came out at the
+        # keeper thing's +4), so a slot at which nothing is constructed takes the object whose extent covers
+        # it -- the nearest construction below it, within one object (a CScriptThing is 8 bytes, a resource 16)
+        known = {u[3] for u in uses} | set(ctor_names)
+        if off not in known:
+            inner = [b for b in known if 0 < off - b <= 12]
+            off = max(inner) if inner else off
+        new = name_at(off, None, pos)
+        edits.append((start, end, f'*(int *){new}'))
     for start, end, repl in sorted(edits, reverse=True):
         text = text[:start] + repl + text[end:]
     # remaining (non-call) spellings: a name with one true slot follows that object; a name Ghidra spread
@@ -1100,10 +1137,17 @@ class UnitConverter:
                 labels = {c['currentName'] for c in caller.get('calls', []) if c.get('currentName') and int(c.get('target', '0'), 16) == target}
                 for label in labels:
                     for spelling in (label, label.removeprefix('NScript::'), label.split('::')[-1]):
-                        pat = re.compile(r'^([ \t]*CCharString::CCharString\(\(CCharString \*\)&stack0xffffff[0-9a-f]{2},("[^"]*"|\w+),-1\);[ \t]*\r?\n)'
-                                         r'([ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*') + r'\s*\(this\);', re.M)
+                        # the receiver is `this` or, in an entity binding that reaches its script through a field,
+                        # that field (TraderToRescue 0x00DFE0F0's outro: `Helper(*(undefined4 *)(this + 0x14))`,
+                        # the same slot its neighbours write -- the call kept its receiver and lost the string,
+                        # so "CS_TRADERCON_GOOD_OUTRO" never reached the Lua, 2026-09-22)
+                        pat = re.compile(r'^(?P<ctor>[ \t]*CCharString::CCharString\s*\(\(CCharString \*\)&stack0x[0-9a-f]{8},(?P<lit>"[^"]*"|\w+),-1\);[ \t]*\r?\n)'
+                                         r'(?P<ind>[ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*')
+                                         + r'\s*\((?P<recv>this|\*\(undefined4 \*\)\((?:\(int\))?this \+ (?:0x[0-9a-f]+|\d+)\))\);', re.M)
                         # the temporary's constructor stays: every printed call keeps its place in the callOrder pairing
-                        caller['decompile'], n = pat.subn(lambda m: f'{m.group(1)}{m.group(3)}{spelling}(this,{m.group(2)});', caller.get('decompile') or '')
+                        caller['decompile'], n = pat.subn(
+                            lambda m: f'{m.group("ctor")}{m.group("ind")}{spelling}({m.group("recv")},{m.group("lit")});',
+                            caller.get('decompile') or '')
                         if n:
                             break
 

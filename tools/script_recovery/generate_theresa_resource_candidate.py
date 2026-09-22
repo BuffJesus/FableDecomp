@@ -14,7 +14,7 @@ from tools.script_recovery.native_theresa_actor_maps import verify as actors
 from tools.script_recovery.native_theresa_guard_vectors import verify as guards
 
 DRAFT=ROOT/'refs/script_recovery/lifted/NewOakValeIntro/FSE/NewOakValeIntro/Entities/NOVI_Theresa.lua'
-DRAFT_SHA='136e52216a775c1ef4ca8f83963d3bda0c3db52bc87221e423513e732e9e05e6'
+DRAFT_SHA='de70fb7e04dd331e33cf76bbebae5707163067a4c4df38ce05231346fcda5119'   # 2026-09-22: the const-bool nil guard reached MsgIsPresentedWithItem
 PARTS=('theresa_init_body.lua','theresa_approach_body.lua','theresa_cutscene_actors.lua',
        'theresa_chocolate_question.lua','theresa_gift_commit.lua','theresa_accept_chocolates.lua',
        'theresa_meeting_body.lua','theresa_offer_choice.lua','theresa_speech_body.lua',

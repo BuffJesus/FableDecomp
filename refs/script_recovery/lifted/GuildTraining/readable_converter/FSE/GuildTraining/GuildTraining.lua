@@ -658,11 +658,11 @@ function CheckFriendlyAttacks(quest)
                 end
                 if quest:IsActiveThreadTerminating() then return end
             end
-            if hero:MsgHitFriendWithBareHands() then
+            if hero ~= nil and hero:MsgHitFriendWithBareHands() then
                 goto LAB_00d456af
             else
-                if hero:MsgHitFriendWithMeleeWeapon() then goto LAB_00d456af end
-                if hero:MsgHitFriendWithRangedWeapon() then goto LAB_00d456af end
+                if hero ~= nil and hero:MsgHitFriendWithMeleeWeapon() then goto LAB_00d456af end
+                if hero ~= nil and hero:MsgHitFriendWithRangedWeapon() then goto LAB_00d456af end
                 goto LAB_00d45782
             end
             goto FLOW_past_lab_00d456af
@@ -825,17 +825,17 @@ end
 function KeepBookcaseExitRemoved(quest)
     local getNearestWithDefName = quest:GetNearestWithDefName(quest:GetThingWithScriptName("SecretBookcase"), "REGION_EXIT_POINT")
     while quest:GetStateInt("GameState") ~= 9 do
-        if quest:NewScriptFrame() then
-            while quest:IsLevelLoaded("HeroGuildComplex") do
-                if not quest:NewScriptFrame() then return end
-            end
-            while not quest:IsLevelLoaded("HeroGuildComplex") do
-                if not quest:NewScriptFrame() then return end
-            end
-            if quest:GetStateInt("GameState") == 9 then break end
-            quest:SetRegionExitAsActive(getNearestWithDefName, false)
+        if not quest:NewScriptFrame() then goto LAB_00d3cac6 end
+        while quest:IsLevelLoaded("HeroGuildComplex") do
+            if not quest:NewScriptFrame() then return end
         end
+        while not quest:IsLevelLoaded("HeroGuildComplex") do
+            if not quest:NewScriptFrame() then return end
+        end
+        if quest:GetStateInt("GameState") == 9 then break end
+        quest:SetRegionExitAsActive(getNearestWithDefName, false)
     end
+    ::LAB_00d3cac6::
 end
 
 -- Q_GuildTraining.RunArrivalCutscene (retail 0x00d44cb0)

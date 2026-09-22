@@ -144,6 +144,18 @@ RE_LOCAL_COUNTED_RELEASE2 = re.compile(
 RE_LOCAL_COUNTED_RELEASE3 = re.compile(
     r'^[ \t]*if \(\((\w+(?:\._\d_4_|\[\d\])?) != \((?:int \*|\w+)\)0x0\) && \(\*\(int \*\)\1 = \*\(int \*\)\1 \+ -1, \*\(int \*\)\1 == 0\)\) \{\s*\r?\n'
     r'[ \t]*\(\*\*\(code \*\*\)\(\(int\)\1 \+ 4\)\)\(\);\s*\r?\n[ \t]*operator_delete\(\(void \*\)\1\);\s*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+# the same release whose outer `if` also nulls the handle's slots (AttackPeople 0x00DFD600: `piStack_14 = 0;
+# piStack_10 = 0;` before the closing brace) -- the release goes, the nulls stay and leave the `if`: when the
+# counted pointer is null the handle is already empty, so the stores are what the Lua `= nil` is lifted from
+RE_LOCAL_COUNTED_RELEASE4 = re.compile(
+    r'^[ \t]*if \((\w+(?:\._\d_4_|\[\d\])?) != \(int \*\)0x0\) \{\s*\r?\n[ \t]*\*\1 = \*\1 \+ -1;\s*\r?\n'
+    r'[ \t]*if \(\*\1 == 0\) \{\s*\r?\n'
+    r'[ \t]*(?:\(\*\(code \*\)(?:\1\[1\]|\(\1 \+ 4\))\)|\(\*\*\(code \*\*\)\(\1 \+ 4\)\))\(\);\s*\r?\n'
+    r'[ \t]*operator_delete\((?:\(void \*\))?\1\);\s*\r?\n[ \t]*\}\s*\r?\n'
+    r'(?P<tail>(?:[ \t]*\w+ = \((?:int|undefined4|void) \*\)0x0;[ \t]*\r?\n){1,3})'
+    r'(?P<ind>[ \t]*)\}[ \t]*\r?\n', re.M)
+
+
 RE_SLOT_ZERO = re.compile(r'^[ \t]*(?:\w+\._\d+_4_ = 0;|(?:[A-Za-z]+Stack_|local_)[0-9a-f]+(?:\._\d+_4_|\[0\])? = \(int \*\)0x0;)[ \t]*\r?\n', re.M)   # (`X._4_4_ = (int *)0x0` / `X[0] = (int *)0x0`: a stack thing's Data nulled beside its `= nil`, 2026-09-21)
 
 
@@ -280,6 +292,7 @@ def drop_local_counted_releases(text):
     text = RE_LOCAL_COUNTED_RELEASE.sub('', text)
     text = RE_LOCAL_COUNTED_RELEASE2.sub('', text)
     text = RE_LOCAL_COUNTED_RELEASE3.sub('', text)
+    text = RE_LOCAL_COUNTED_RELEASE4.sub(lambda m: ''.join(l.lstrip() and m.group('ind') + l.lstrip() for l in m.group('tail').splitlines(keepends=True)), text)
     return RE_SLOT_ZERO.sub('', text)
 
 
@@ -1029,7 +1042,7 @@ def _strip_addr(arg):
 # g_pMovieObjectVTable, g_pCScriptThingVTable)
 RE_INLINE_CTOR = re.compile(
     r'^(?P<ind>[ \t]*)(?:\*\(undefined \*\*\*\))?(?P<obj>&?\w+)(?:\[0\]|\._0_4_)? = &PTR_[A-Za-z_]*_(?P<vt>0127094c|01260ef4|01238c8c);[ \t]*\r?\n'
-    r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+\[\d\] = (?:\(\w+ \*\))?0x0;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
+    r'(?:[ \t]*(?:\w+ = 0;|\w+ = \(\w+ \*\)0x0;|\w+(?:\[\d\]|\._\d+_4_) = (?:\(\w+ \*\))?0(?:x0)?;|\*\(\w+ \*\)\(\w+ \+ (?:4|8|0x8)\) = 0;)[ \t]*\r?\n){0,3}', re.M)
 
 
 # the member zero-stores in front of the vtable reset may be spelled under a sibling slot's name (Ghidra splits

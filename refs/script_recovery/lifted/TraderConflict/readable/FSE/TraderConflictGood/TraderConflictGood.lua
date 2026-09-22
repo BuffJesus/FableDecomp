@@ -298,12 +298,12 @@ end
 -- Q_TraderConflictGood.WatchForKilledPeople (retail 0x00dfc290)
 function WatchForKilledPeople(quest)
     while quest:GetStateInt("TradersReachedTeleporter") < 3 do
-        if quest:NewScriptFrame() then
-            if quest:GetHero():MsgGetThingsKilled() then
-                quest:SetMasterGameState("TCGKillNoBandits", false)
-            end
+        if not quest:NewScriptFrame() then goto LAB_00dfc302 end
+        if quest:GetHero():MsgGetThingsKilled() then
+            quest:SetMasterGameState("TCGKillNoBandits", false)
         end
     end
+    ::LAB_00dfc302::
 end
 
 -- Q_TraderConflictGood.UpdateLiveEnemies (retail 0x00dfc320)
@@ -379,7 +379,6 @@ end
 -- Q_TraderConflictGood.AttackPeople (retail 0x00dfd600)
 function AttackPeople(quest)
     local ctr_38, scratchValue4, timerId, sequence, scratchValue5, scratchValue7, scratchValue8
-    local scratchValue10
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
@@ -398,21 +397,13 @@ function AttackPeople(quest)
         if #allCreatures ~= 0 then
             scratchValue4 = 0
             repeat
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
                 local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue4 + 1], "TraderToRescue")
-                if not quest:IsEntityFollowingHero(traderToRescue) then
-                    if scratchValue10 ~= nil then
-                        -- TODO(native): *xStack_10 = *xStack_10 - 1;
-                        -- TODO(native): if *xStack_10 == 0 then
-                    end
-                end
                 if quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], hero, 15.0) or quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], traderToRescue, 15.0) then
                     goto LAB_00dfd841
                 end
                 goto FLOW_past_lab_00dfd841
                 ::LAB_00dfd841::
                 scratchValue5 = ctr_38
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
                 sequence = quest:IsDistanceBetweenThingsUnder(allCreatures[ctr_38 + 1], traderToRescue, 15.0)
                 if not sequence then
                     sequence = quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], traderToRescue) and scratchValue7 ~= nil

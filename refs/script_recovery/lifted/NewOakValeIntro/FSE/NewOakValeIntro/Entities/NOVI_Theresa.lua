@@ -276,7 +276,7 @@ function Main(quest, me)
                     -- TODO(native): goto LAB_00dba3e3
                 end
                 ::LAB_00dba4c8::
-                cVar5 = pCVar13:MsgIsPresentedWithItem()
+                cVar5 = (pCVar13 ~= nil and pCVar13:MsgIsPresentedWithItem())
                 __native_condition_2 = not cVar5
                 if not __native_condition_2 then
                     cVar5 = g_PresentedItemName ~= "OBJECT_CHOCOLATE_BOX_UNGIVEABLE"

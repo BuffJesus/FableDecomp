@@ -958,6 +958,28 @@ def prune_dead_defs(lines):
 NESTED_OPENER = re.compile(r'(?:if .+ then|while .+ do|for .+ do|repeat|do)')   # a multi-line block head
 
 
+def _block_openers(lines):
+    """`end` line -> the head it closes. A `goto` out of a LOOP is not the same as a `goto` to the end of an
+    enclosing `if`: folding that jump away leaves the loop spinning where the script returned
+    (TraderConflictGood WatchForKilledPeople: `if not NewScriptFrame() then goto <function end> end` became
+    `if NewScriptFrame() then .. end` INSIDE the while, a frame-less loop once the thread terminates, and the
+    smoke harness reported `call trace overflow (loop without frames?)`, 2026-09-22)."""
+    openers, stack = {}, []
+    for i, line in enumerate(lines):
+        st = line.strip()
+        if not st:
+            continue
+        if st.startswith(('function ', 'local function ')) or re.fullmatch(r'(?:local )?[\w.:]+ = function\(.*\)', st):
+            stack.append(st)
+        elif NESTED_OPENER.fullmatch(st):
+            stack.append(st)
+        elif st == 'end' and stack:
+            openers[i] = stack.pop()
+        elif st.startswith('until ') and stack:
+            stack.pop()
+    return openers
+
+
 def fold_goto_else(lines):
     """`if C then X; goto L end; Y; ::L::` -> `if C then X else Y end` (the goto skips the rest of the
     enclosing branch); `if X then goto L end; Y; ::L::` -> `if not X then Y end`; an enclosing if whose
@@ -1048,7 +1070,10 @@ def fold_goto_else(lines):
                         out.append(b[-delta:] if b.startswith(' ' * -delta) else b.lstrip())
                 return out
             k = rest_end
+            openers = _block_openers(lines)
             while k < len(lines) and lines[k].strip() == 'end':
+                if openers.get(k, '').startswith(('while ', 'for ', 'repeat')):
+                    break               # the jump leaves a LOOP: the label is not this block's tail
                 k += 1
             body2 = lines[end + 1:rest_end]
             outer_else = None
