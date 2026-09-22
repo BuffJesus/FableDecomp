@@ -620,16 +620,14 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "EntitySetPersonalityOverride: not in FSE manifest"
-          ],
+          "todo": [],
           "calls": [
             "SetThingHasInformation",
-            "EntitySetPersonalityOverride",
+            "EntitySetPersonalityOverrideByString",
             "SetStateInt",
             "SetStateInt"
           ],
-          "lines": 5,
+          "lines": 4,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -993,7 +991,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 100
+        "todo": 99
       }
     }
   ],
@@ -1004,6 +1002,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 100
+    "todo": 99
   }
 }

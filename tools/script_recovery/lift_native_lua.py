@@ -1377,6 +1377,22 @@ class Lifter:
             return "number"
         return None
 
+    def typed_variant(self, name, operands):
+        """ForgeFSE binds retail's overloads under typed names (`...ByString` / `...ByInt`) because Lua
+        cannot overload, so a retail name can be absent while its variants exist. The operand's kind names
+        the variant (the `AddQuestInfoTickByText` / `ByAction` choice above is the hand-written precedent).
+        Returns the variant only when it exists, so an unrelated suffix can never be guessed into place."""
+        raw = operands[-1].strip() if operands else ''
+        lifted = self.expr(raw) if raw else ''
+        # the AddQuestInfoTickByText / ByAction test: a literal, a CCharString slot, or a string-kinded value
+        text_arg = (raw.startswith('"')
+                    or bool(re.match(r'(?:\(CCharString[\w ]*\*\))?&?\(?\w*(?:Stack_|_stk_)', raw))
+                    or self.kind_of(lifted) == 'string')
+        suffix = ('ByString' if text_arg
+                  else 'ByInt' if (self.kinds.get(lifted) == 'number'
+                                   or bool(re.fullmatch(r'-?\d+', lifted.strip()))) else None)
+        return name + suffix if suffix and name + suffix in self.manifest else None
+
     def interface_call(self, target: str | None, name: str, argtext: str) -> bool:
         if name == 'RetailThingPosition':
             operands = self.arguments(argtext)
@@ -1396,6 +1412,10 @@ class Lifter:
             text_arg = raw.startswith('"') or bool(re.match(r'(?:\(CCharString[\w ]*\*\))?&?\(?\w*(?:Stack_|_stk_)', raw)) or self.kind_of(self.expr(raw)) == 'string'
             name = 'AddQuestInfoTickByText' if text_arg else 'AddQuestInfoTickByAction'
         spec = self.manifest.get(name)
+        if spec is None:
+            variant = self.typed_variant(name, self.arguments(argtext))
+            if variant:
+                name, spec = variant, self.manifest[variant]
         if (not self.execution_entity
                 and (name == 'StartScriptingEntity' or spec and spec.get('scope') == 'Entity')):
             # A quest owns no implicit entity receiver. Its native resource must
@@ -1448,6 +1468,10 @@ class Lifter:
                 self.todo.append("collapse the StartScriptingEntity retry loop around AcquireControl")
             return True
         spec = self.manifest.get(name)
+        if spec is None:
+            variant = self.typed_variant(name, self.arguments(argtext))
+            if variant:
+                name, spec = variant, self.manifest[variant]
         operands = self.arguments(argtext)
         return_slot = None
         if spec and operands and self.result_kind(spec.get("returnType", "void")) in ("thing", "string"):

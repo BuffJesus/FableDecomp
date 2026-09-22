@@ -544,8 +544,7 @@ end
 
 function Init(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
-    -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
-    quest:EntitySetPersonalityOverride(me, "OPINION_PERSONALITY_PERMANENT_FRIEND")
+    quest:EntitySetPersonalityOverrideByString(me, "OPINION_PERSONALITY_PERMANENT_FRIEND")
     __native_entity_state:SetStateInt("saveWaypointIdx", 0xffffffff)
     __native_entity_state:SetStateInt("lastRandomSpeechIdx", 0xffffffff)
 end
