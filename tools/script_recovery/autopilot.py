@@ -98,6 +98,23 @@ def stage_save(profile: str) -> Path | None:
     return backup
 
 
+    """Copy the live AutoSave (what the run left behind) into SAVES/<profile>, creating it."""
+    import shutil
+    live, dst = SAVES / FRONTEND_PROFILE_DIR, SAVES / profile
+    if not (live / 'AutoSave').is_file():
+        print(f'harvest: no AutoSave in {live}; nothing to keep')
+        return
+    dst.mkdir(parents=True, exist_ok=True)
+    for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
+        if (live / f).is_file():
+            shutil.copy2(live / f, dst / f)
+    if not (dst / 'Profile.bin').is_file():
+        src_profile = SAVES / source if source else None
+        if src_profile and (src_profile / 'Profile.bin').is_file():
+            shutil.copy2(src_profile / 'Profile.bin', dst / 'Profile.bin')
+    print(f'harvested the run\'s AutoSave -> {dst}')
+
+
 def restore_save(backup: Path | None) -> None:
     import shutil
     if not backup:
@@ -466,6 +483,7 @@ def main() -> None:
     r.add_argument('--tail-back', type=int, default=0, help='attached runs: start the log tail N lines before the end (a marker logged just before the attach)')
     r.add_argument('--launch', action='store_true', help='launch the bundle and load the 0atlas AutoSave first')
     r.add_argument('--save', help='profile whose AutoSave to stage into the 0atlas-loaded folder before launching (restored afterwards)')
+    r.add_argument('--harvest-save', metavar='PROFILE', help='after the run, copy the AutoSave it left behind into this profile (the graduation autosave is the adult save the post-Guild checklists need)')
     t = sub.add_parser('tail'); t.add_argument('bundle')
     a = ap.parse_args()
     if a.cmd == 'send':
@@ -479,6 +497,8 @@ def main() -> None:
                 launch_and_load(a.bundle)
             results = run_checklist(a.bundle, steps, tail_back=0 if a.launch else a.tail_back)
         finally:
+            if a.harvest_save:
+                harvest_save(a.harvest_save, a.save)
             restore_save(backup)
         if a.report:
             Path(a.report).write_text(json.dumps(results, indent=2), encoding='utf-8')
