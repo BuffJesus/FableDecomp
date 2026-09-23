@@ -28,7 +28,7 @@ UNITS = [
      'Played through childhood in-game on the local-candidate bundle (v4/v5), zero Lua errors. Readable stage = the '
      'hand-structured 2026-09-16 stage that ships in the bundle (Bully intimidation line fix included). The draft is the '
      'older untyped-pipeline output (its todo notes are mostly informational label/cleanup bookkeeping); the readable is the reviewed one.'),
-    ('OrchardFarm', LIFTED / 'OrchardFarm/readable/FSE/OrchardFarmRaid', LIFTED / 'OrchardFarm/draft/FSE/OrchardFarmRaid',
+    ('OrchardFarm', LIFTED / 'OrchardFarm/readable/FSE', LIFTED / 'OrchardFarm/draft/FSE',
      LIFTED / 'OrchardFarm/draft/CONVERSION_REPORT.json',
      'Q_OrchardFarmRaid + Q_OrchardFarmRaidEvil + Q_OrchardFarmRaidGood (all three), 46/46 functions, 0 TODO(native) in the '
      'draft; smoke harness clean on draft + readable; byte-identical across every generic converter change since 2026-09-16 '
