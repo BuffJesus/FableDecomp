@@ -88,8 +88,13 @@ def stage_save(profile: str) -> Path | None:
     src, dst = SAVES / profile, SAVES / FRONTEND_PROFILE_DIR
     if not (src / 'AutoSave').is_file():
         sys.exit(f'no AutoSave in profile {src}')
-    backup = ROOT / 'scratchpad' / f'save_backup_{FRONTEND_PROFILE_DIR}'
+    import datetime
+    # timestamped: a later run must never destroy what an earlier run left in the live slot
+    backup = ROOT / 'scratchpad' / f'save_backup_{FRONTEND_PROFILE_DIR}_{datetime.datetime.now():%Y%m%d-%H%M%S}'
     backup.mkdir(parents=True, exist_ok=True)
+    old = sorted((ROOT / 'scratchpad').glob(f'save_backup_{FRONTEND_PROFILE_DIR}_*'))
+    for stale in old[:-12]:
+        shutil.rmtree(stale, ignore_errors=True)
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (dst / f).is_file():
             shutil.copy2(dst / f, backup / f)
@@ -98,12 +103,22 @@ def stage_save(profile: str) -> Path | None:
     return backup
 
 
-def harvest_save(profile: str, source: str | None) -> None:
+def harvest_save(profile: str, source: str | None, baseline: float = 0.0, wait: float = 240.0) -> None:
     """Copy the live AutoSave (what the run left behind) into SAVES/<profile>, creating it."""
     import shutil
+    import time
     live, dst = SAVES / FRONTEND_PROFILE_DIR, SAVES / profile
     if not (live / 'AutoSave').is_file():
         print(f'harvest: no AutoSave in {live}; nothing to keep')
+        return
+    # the game is still running: wait for IT to write a save newer than the one we staged, because the
+    # checklist's last expect fires before the Gameflow stage advance that calls AutoSave()
+    deadline = time.time() + wait
+    while (live / 'AutoSave').stat().st_mtime <= baseline + 1 and time.time() < deadline:
+        time.sleep(2.0)
+    if (live / 'AutoSave').stat().st_mtime <= baseline + 1:
+        print(f'harvest: no NEW AutoSave after {wait:.0f}s (the run never triggered one); keeping nothing '
+              f'rather than copying the staged save under {profile!r}')
         return
     dst.mkdir(parents=True, exist_ok=True)
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
@@ -492,6 +507,8 @@ def main() -> None:
             print(line)
     elif a.cmd == 'run':
         steps = [st for path in a.checklist for st in json.loads(Path(path).read_text(encoding='utf-8'))]
+        live_autosave = SAVES / FRONTEND_PROFILE_DIR / 'AutoSave'
+        baseline = live_autosave.stat().st_mtime if live_autosave.is_file() else 0.0
         backup = stage_save(a.save) if a.save else None
         try:
             if a.launch:
@@ -499,7 +516,7 @@ def main() -> None:
             results = run_checklist(a.bundle, steps, tail_back=0 if a.launch else a.tail_back)
         finally:
             if a.harvest_save:
-                harvest_save(a.harvest_save, a.save)
+                harvest_save(a.harvest_save, a.save, baseline)
             restore_save(backup)
         if a.report:
             Path(a.report).write_text(json.dumps(results, indent=2), encoding='utf-8')

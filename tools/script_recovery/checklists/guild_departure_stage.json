@@ -132,5 +132,31 @@
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 300,
   "note": "'Step into the light and I'll show you how to do this' (LEAVING_TOUR_45 nag every 10 s): the hero must WALK into the OBJECT_EXPERIENCE_SPENDING_POINT light (a teleport onto it does not trigger the volume) -> the Experience Spending screen; ESC leaves it (a click on its X missed) -> MsgOnLeavingExperienceSpendingScreen -> SAVEXP2, GM removed, Q_GuildTraining COMPLETED (run 11b, 2026-09-21: 'You have successfully completed your training and graduated as a Hero')"
+ },
+ {
+  "id": "graduation_card",
+  "repeat": 12,
+  "interval": 3.0,
+  "do": [
+   "input: key ENTER",
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list",
+  "timeout": 120,
+  "note": "the Quest Completed card is still up after SetQuestAsCompleted Q_GuildTraining -- ENTER dismisses it (same shape as quest_complete_screen). The game only writes its autosave once this is cleared, which is what --harvest-save waits for"
+ },
+ {
+  "id": "graduation_autosave",
+  "repeat": 20,
+  "interval": 4.0,
+  "do": [
+   "input: clear",
+   "list"
+  ],
+  "expect": "\\[Autopilot\\] list",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "let LUAGameflow leave stage 100 (it deactivates the training quests, puts the WASP_MENACE card up and the ambient V_* scripts on, then calls quest:AutoSave()). Nothing in the FSE log marks an autosave, so the harvest watches the save file's mtime"
  }
 ]
