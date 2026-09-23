@@ -24,7 +24,9 @@ no movie tracing, which is exactly why the two could not be separated. One line 
 
 **Also open:** the `wasp_lookout` transition fires while the Lookout Point arrival cutscene is playing and
 the hero ends up stuck (user, watching run 37). The step must wait for the cutscene rather than crossing
-mid-scene. Remember a transition is armed ONCE per crossing -- do not "fix" it with repeats.
+mid-scene. Remember a transition is armed ONCE per crossing -- do not "fix" it with repeats. The user also
+pointed out that **pop-ups need a left click before AND after a teleport** -- an undismissed box gates
+script frames, so the crossing never runs; both transition steps now clear twice, cross once, clear again.
 
 **Fixed and committed tonight (6489a52):** a stack resource's member zero-init was clobbering the handle it
 shares a canonical name with, shipping `TryAcquire(0, ...)` / `ReleaseResource(0)`. Two shapes, both in

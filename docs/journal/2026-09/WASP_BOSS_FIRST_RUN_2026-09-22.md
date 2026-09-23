@@ -82,6 +82,15 @@ The user watched run 37 and reported the hero stuck: the `wasp_lookout` transiti
 Point arrival cutscene was playing. The step needs to wait for the cutscene to finish (or be armed before
 it starts) rather than crossing mid-scene. Not yet addressed.
 
+The user added a second half to this: **pop-ups have to be cleared with a left click both BEFORE and AFTER
+a teleport.** An undismissed box gates script frames, so the transition never runs and the hero stands
+still -- the same symptom as the LookoutPoint park, from a different cause, which is why run 37 looked
+stuck at the crossing rather than at a script wait. Both transition steps now do
+`input: clear` twice, then the single `GoToMapSlotRetailTransition`, then `input: clear` again; the entity
+confirmation clears too. `input: clear` (never a bare `lmb`) because it screenshots first and clicks the
+box's own icon, and a bare click with a weapon drawn is an attack. The crossing is still armed exactly
+once -- the clears live inside the step's `do`, not behind repeats.
+
 ## Closed: Maze's lightning phase is retail behaviour
 
 `FinalMaze` 0x00D647F0: each damage tick of a channelled `HERO_ABILITY_LIGHTNING_SPELL` counts as its own

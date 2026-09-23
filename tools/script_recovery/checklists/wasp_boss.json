@@ -26,12 +26,15 @@
  {
   "id": "wasp_lookout",
   "do": [
-   "WaspBoss: quest:GoToMapSlotRetailTransition(1, 3296.0, 3552.0, 39.0)"
+   "input: clear",
+   "input: clear",
+   "WaspBoss: quest:GoToMapSlotRetailTransition(1, 3296.0, 3552.0, 39.0)",
+   "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 150,
-  "note": "Q_WaspBoss::Main WAITS on IsRegionLoaded('LookoutPoint') BEFORE it binds anything -- retail's route from the guild is Lookout Point and only then the Picnic Area. Run 35 teleported straight to PicnicArea (slot 2) and the quest parked on that first wait forever: quest host alive, zero entity binds, hero standing still. Map slot 1 = LookoutPoint (forge world: origin 3232,3488, 128x128), ground z 39.04 at map-local 64,64 (forge heights). Armed ONCE -- no repeats (GOTCHAS)"
+  "note": "Q_WaspBoss::Main WAITS on IsRegionLoaded('LookoutPoint') BEFORE it binds anything -- retail's route from the guild is Lookout Point and only then the Picnic Area. Run 35 teleported straight to PicnicArea (slot 2) and the quest parked on that first wait forever: quest host alive, zero entity binds, hero standing still. Map slot 1 = LookoutPoint (forge world: origin 3232,3488, 128x128), ground z 39.04 at map-local 64,64 (forge heights). Armed ONCE -- no repeats (GOTCHAS) -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS)"
  },
  {
   "id": "wasp_camera_tutorial",
@@ -48,18 +51,22 @@
  {
   "id": "wasp_region",
   "do": [
-   "WaspBoss: quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)"
+   "input: clear",
+   "input: clear",
+   "WaspBoss: quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)",
+   "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "the SECOND crossing: Main then waits on IsLevelLoaded('PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520), z 33.78 at map-local 64,48. Armed ONCE per crossing"
+  "note": "the SECOND crossing: Main then waits on IsLevelLoaded('PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520), z 33.78 at map-local 64,48. Armed ONCE per crossing -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS)"
  },
  {
   "id": "wasp_entities",
   "repeat": 6,
   "interval": 4.0,
   "do": [
+   "input: clear",
    "list"
   ],
   "expect": "Binding entity '(WaspHelper|QueenHornet|HornetDrone|WaspChaser|WaspChaseWoman|WaspAttacker|WaspVictim|FleeingWoman|GratefulVillagerSpawn)'",
