@@ -76,16 +76,17 @@ The log carries no StartMovie/DestroyMovie tracing, which is why neither could b
 to do next session: add movie create/destroy logging to the sidecar scope (or a Lua-side wrapper) and
 re-run** -- that single line of evidence picks between the two.
 
-## Also open: the teleport lands during the Lookout Point cutscene
+## OPEN, AND THE ONE THAT BROKE RUN 37: the teleport lands during the Lookout Point cutscene
 
 The user watched run 37 and reported the hero stuck: the `wasp_lookout` transition fired while the Lookout
-Point arrival cutscene was playing. The step needs to wait for the cutscene to finish (or be armed before
-it starts) rather than crossing mid-scene. Not yet addressed.
+Point arrival cutscene was playing. **This is the breakage** -- the step must wait for the cutscene to
+finish (or be armed before it starts) rather than crossing mid-scene. Not yet addressed, and it is the
+second thing to fix next session, after the movie logging.
 
-The user added a second half to this: **pop-ups have to be cleared with a left click both BEFORE and AFTER
-a teleport.** An undismissed box gates script frames, so the transition never runs and the hero stands
-still -- the same symptom as the LookoutPoint park, from a different cause, which is why run 37 looked
-stuck at the crossing rather than at a script wait. Both transition steps now do
+Separately, the harness was not clearing pop-ups around the teleport at all -- **the user was clicking them
+away by hand while the run went**, which is why they mentioned it. So the missing clears did NOT cause run
+37's stall (do not read them as the cause; the mid-cutscene crossing is). They still have to be in the
+checklist for an unattended run: an undismissed box gates script frames. Both transition steps now do
 `input: clear` twice, then the single `GoToMapSlotRetailTransition`, then `input: clear` again; the entity
 confirmation clears too. `input: clear` (never a bare `lmb`) because it screenshots first and clicks the
 box's own icon, and a bare click with a weapon drawn is an attack. The crossing is still armed exactly
