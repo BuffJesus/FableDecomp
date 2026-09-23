@@ -2797,6 +2797,12 @@ class Lifter:
                 kind = "bool" if state_getter[1] == "Bool" else "number"
             elif kind is None and is_boolean_expression(lifted):
                 kind = "bool"                    # `c_stk_11 = !(iVar3 != 0)` is a Lua boolean
+            # C's `flag = flag == 0` toggle is numeric: the slot is a char/int the function goes on to
+            # compare against a NUMBER, and Lua does not coerce, so a boolean here freezes the flag
+            # (SkillTarget 0x00D41D00's moving dummies stopped bouncing and wrapped instead)
+            if (kind == "bool" and self.kinds.get(var) == "number"
+                    and re.fullmatch(r'.+ [=~]= .+', lifted) and not lifted.startswith('(')):
+                lifted, kind = f"({lifted}) and 1 or 0", "number"
             self.emit(f"{self.declare(var)} = {lifted}")
             if kind:
                 self.kinds[var] = kind           # `a = b;` copies b's kind; `uVar15 = uVar4 | 1;` is a number

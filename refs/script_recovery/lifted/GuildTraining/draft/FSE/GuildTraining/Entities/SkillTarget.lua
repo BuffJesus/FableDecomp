@@ -550,7 +550,7 @@ function Main(quest, me)
                                 quest:DeregisterTimer(xStack_190)
                                 return
                             end
-                            c_stk_16d = c_stk_16d == 0
+                            c_stk_16d = (c_stk_16d == 0) and 1 or 0
                             i_stk_16c = 0
                         end
                         if quest:GetMasterGameState("SkillRepeatKnown") then
