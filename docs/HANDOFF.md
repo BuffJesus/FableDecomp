@@ -1,4 +1,45 @@
-# RESUME HERE -- 2026-09-22: v7's Gameflow is faithful, and the side quests / secret trainers now have coverage
+# RESUME HERE -- 2026-09-22 night: the wasp quest runs from an adult save, blocked on one live movie
+
+**START HERE TOMORROW.** Full story: `docs/journal/2026-09/WASP_BOSS_FIRST_RUN_2026-09-22.md`.
+
+**The adult save exists.** The user played the guild by hand and pressed Continue at the graduation card:
+`Saves/adult_graduated` (source profile for `--save`) and `Saves/adult_graduated_2026-09-22_2023` (backup).
+LUAGameflow persisted `PostSavePosition = 150` (`EGP_WAITING_FOR_WASP_BOSS`), adult hero at the guild map
+table. It loads on v8 and v9 with no persist crash.
+
+**Bundle:** `work/new-oakvale-original-fse-20260912/local-candidate-v9` (guild_training, wasp_boss,
+guardian_sister_info, orchard_farm, trader_conflict + Aeon's LUAGameflow), built after the converter fix.
+
+**Run 37 reached step 6 of 10** (channel, activate `Q_WaspBoss`, Lookout Point, camera tutorial + all nine
+entity binds, Picnic Area crossing) and then:
+
+    !!! LUA RUNTIME ERROR in thread 'DoMission': Retail resource scope already owns a movie
+        [C]: in method 'StartMovie'   WaspBoss.lua:252: in global 'WaspIntro'
+
+**NEXT ACTION: add movie create/destroy logging to the sidecar's resource scope (or a Lua wrapper) and
+re-run.** The package has three `StartMovie` sites (181 `WatchForCutscene`, 252 `WaspIntro`, 343 outro),
+each with a matching `DestroyMovie`, so a live movie means one path left its scope without its epilogue --
+either another thread holds one while `DoMission` reaches the intro, or `WaspIntro` ran twice. The log has
+no movie tracing, which is exactly why the two could not be separated. One line of evidence decides it.
+
+**Also open:** the `wasp_lookout` transition fires while the Lookout Point arrival cutscene is playing and
+the hero ends up stuck (user, watching run 37). The step must wait for the cutscene rather than crossing
+mid-scene. Remember a transition is armed ONCE per crossing -- do not "fix" it with repeats.
+
+**Fixed and committed tonight (6489a52):** a stack resource's member zero-init was clobbering the handle it
+shares a canonical name with, shipping `TryAcquire(0, ...)` / `ReleaseResource(0)`. Two shapes, both in
+`drop_member_zero_inits`; guarded by `test_resource_member_zero_init.py`; regenerating all 16 units moves
+only WaspBoss and SickChild, and SickChild's change is the more faithful read (checked against the native).
+**The full suite had not finished when that was committed** -- re-run
+`python -m unittest discover -s tools/script_recovery -t . -p "test_*.py"` and confirm 403 failures /
+45 errors before building on it.
+
+**Closed:** Maze's lightning phase blitzing past is retail behaviour, confirmed by the user against a
+recording. Do not "fix" the hit binding. (GOTCHAS.)
+
+---
+
+# 2026-09-22 afternoon: v7's Gameflow is faithful, and the side quests / secret trainers now have coverage
 
 **PRE-ORCHARD LANE (2026-09-22 afternoon).** The order is what our converted Gameflow does, not memory:
 stage 100 puts the WASP_MENACE card up, 200 waits on `Q_WaspBoss` then hands `QS_GuardianSisterInfo`, 300

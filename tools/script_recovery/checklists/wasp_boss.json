@@ -5,8 +5,10 @@
    "list"
   ],
   "expect": "\\[Autopilot\\] list: \\d+ hosts",
-  "timeout": 10,
-  "note": "PREREQUISITE: an ADULT save. Gameflow stage 100 puts OBJECT_QUEST_CARD_WASP_MENACE -> Q_WaspBoss on the guild table right after Q_GuildTraining completes, and stage 200 waits on it before handing QS_GuardianSisterInfo. Accepting the card IS ActivateQuest"
+  "timeout": 90,
+  "note": "PREREQUISITE: an ADULT save. Gameflow stage 100 puts OBJECT_QUEST_CARD_WASP_MENACE -> Q_WaspBoss on the guild table right after Q_GuildTraining completes, and stage 200 waits on it before handing QS_GuardianSisterInfo. Accepting the card IS ActivateQuest -- the handshake gets repeats: right after a load the sidecar can take longer than one short shot to answer (run 31)",
+  "repeat": 10,
+  "interval": 5.0
  },
  {
   "id": "wasp_activate",
