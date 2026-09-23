@@ -5,8 +5,10 @@
    "list"
   ],
   "expect": "\\[Autopilot\\] list: \\d+ hosts",
-  "timeout": 10,
-  "note": "save: Guild arrival (GuildTraining GameState 0); PreMelee activates by itself after the arrival cutscene"
+  "timeout": 90,
+  "note": "save: Guild arrival (GuildTraining GameState 0); PreMelee activates by itself after the arrival cutscene -- run 31 timed out here on a single 10s shot right after the load; the sidecar can take longer than that to answer the first command",
+  "repeat": 10,
+  "interval": 5.0
  },
  {
   "id": "premelee_host",

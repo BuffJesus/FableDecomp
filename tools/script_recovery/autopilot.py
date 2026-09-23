@@ -514,9 +514,15 @@ def main() -> None:
             if a.launch:
                 launch_and_load(a.bundle)
             results = run_checklist(a.bundle, steps, tail_back=0 if a.launch else a.tail_back)
-        finally:
+            # only a run that reached the end of its checklist produced a save worth keeping: a failed
+            # run's newest autosave is whatever the game happened to write (often the load-time one)
             if a.harvest_save:
-                harvest_save(a.harvest_save, a.save, baseline)
+                if any(x['status'] == 'FAIL' for x in results):
+                    print(f'harvest: {a.harvest_save!r} skipped -- the run failed, so its autosave is not '
+                          'the state the checklist was driving toward')
+                else:
+                    harvest_save(a.harvest_save, a.save, baseline)
+        finally:
             restore_save(backup)
         if a.report:
             Path(a.report).write_text(json.dumps(results, indent=2), encoding='utf-8')
