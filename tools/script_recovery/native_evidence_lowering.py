@@ -1375,6 +1375,25 @@ def resolve_stack_offset_names(text: str) -> str:
     return re.sub(r'(?P<cast>\((?:[\w :]+\*+|int|uint|undefined4)\))?&stack0x(?P<off>[0-9a-f]{8})\b', repl, text)
 
 
+CTOR_KINDS = 'RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty'
+RE_MEMBER_ZERO_INIT = re.compile(
+    r'^(?P<ctor>(?P<ind>[ \t]*)(?P<obj>\w+) = (?:' + CTOR_KINDS + r')\([^;\n]*\);[ \t]*\r?\n)'
+    # an alias copy of the object may sit between the construction and its member zeroes (Ghidra hoists
+    # the call's register set-up above the inlined constructor and hoist_object_aliases moves it back down)
+    r'(?P<aliases>(?:[ \t]*\w+ = (?P=obj);[ \t]*\r?\n)*)'
+    r'(?P<zeroes>(?:[ \t]*(?P=obj) = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n)+)', re.M)
+
+
+def drop_member_zero_inits(text: str) -> str:
+    """`X = RESOURCE_NewResource(); X = 0;` -- the zero is the object's own member store, not the handle.
+
+    Ghidra spells an inlined constructor as a vtable store plus one zero per member; the vtable store is
+    what folds to the construction, and canonicalise_stack_objects then folds the member slots onto the
+    same name. Keeping the zeroes would kill the handle (WaspIntro 0x00E12F20 lifted
+    `resources:TryAcquire(0, ...)`, which the sidecar rejects as a released resource)."""
+    return RE_MEMBER_ZERO_INIT.sub(lambda m: m.group('ctor') + m.group('aliases'), text)
+
+
 def canonicalise_stack_objects(text: str) -> str:
     """Ghidra names each stack slot separately (`appuStack_ac` … `uStack_a4`), so members of one
     stack object (a 16-byte resource/movie/map) appear under several names. Objects created by the
@@ -2228,6 +2247,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = drop_noop_comma_assignments(text)
     text = fold_inline_destructors(text)
     text = canonicalise_stack_objects(text)
+    text = drop_member_zero_inits(text)  # the object's member zeroes now share its name
     text = fold_inline_destructors(text)    # again: the canonical names may only now agree across the three lines
     text = reconcile_destructor_kinds(text)
     # A resource (CScriptGameResourceObjectScriptedThingBase) is modelled on the base sub-object its acquire /

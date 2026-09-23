@@ -805,11 +805,11 @@ function helper_ED0B10(quest, me)
     local resources = quest:RetailResources()
     local CVar3, i_stk_18, pCVar6, pOther, xStack_1c, xStack_2c
     local xStack_10 = resources:NewResource()
-    local pScriptObject = 0x0
+    local pScriptObject = xStack_10
     local pThing = quest:GetHero()
     resources:TryAcquire(pScriptObject, pThing, 4)
     local xStack_28 = resources:NewActorMap()
-    resources:SetActor(xStack_28, "HERO", 0x0)
+    resources:SetActor(xStack_28, "HERO", xStack_10)
     -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_28,&xStack_30);
     -- TODO(native): xStack_2c = *(CCharString *)(this + 0x30);
     -- TODO(native): local CVar3 = *(pCVar6 + 0xc)
@@ -849,6 +849,6 @@ function helper_ED0B10(quest, me)
         -- TODO(native): free(xStack_1c);
     end
     resources:DestroyActorMap(xStack_28)
-    resources:ReleaseResource(0x0)
+    resources:ReleaseResource(xStack_10)
 end
 

@@ -13,32 +13,51 @@
   "repeat": 10,
   "interval": 4.0,
   "do": [
-   "Gameflow: quest:ActivateQuest('Q_WaspBoss')",
+   "LUAGameflow: quest:ActivateQuest('Q_WaspBoss')",
    "list"
   ],
   "expect": "\\[Autopilot\\] host WaspBoss/|Q_WaspBoss",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 120,
-  "note": "on the v6 bundle the Gameflow host is LUAGameflow/LUAGameflow and on v7 Gameflow/Gameflow -- send to whichever `list` reports"
+  "note": "the v8 bundle's gameflow host is LUAGameflow/LUAGameflow (Aeon's port), which is what `list` reports -- run 34 failed here sending to 'Gameflow'"
+ },
+ {
+  "id": "wasp_lookout",
+  "do": [
+   "WaspBoss: quest:GoToMapSlotRetailTransition(1, 3296.0, 3552.0, 39.0)"
+  ],
+  "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 150,
+  "note": "Q_WaspBoss::Main WAITS on IsRegionLoaded('LookoutPoint') BEFORE it binds anything -- retail's route from the guild is Lookout Point and only then the Picnic Area. Run 35 teleported straight to PicnicArea (slot 2) and the quest parked on that first wait forever: quest host alive, zero entity binds, hero standing still. Map slot 1 = LookoutPoint (forge world: origin 3232,3488, 128x128), ground z 39.04 at map-local 64,64 (forge heights). Armed ONCE -- no repeats (GOTCHAS)"
+ },
+ {
+  "id": "wasp_camera_tutorial",
+  "repeat": 6,
+  "interval": 3.0,
+  "do": [
+   "input: clear"
+  ],
+  "expect": "Binding entity '(WaspHelper|QueenHornet|HornetDrone)'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 90,
+  "note": "past the LookoutPoint wait Main calls GiveHeroTutorial(TUTORIAL_CATEGORY_CAMERA); the tutorial box gates script frames, so the channel times out until it is dismissed -- then the nine AddEntityBinding calls land"
  },
  {
   "id": "wasp_region",
-  "repeat": 12,
-  "interval": 5.0,
   "do": [
    "WaspBoss: quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "the quest declares its own region: AddQuestRegion('Q_WaspBoss', 'PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520, 128x96), z 33.78 at map-local 64,48 (forge heights). Arm the transition ONCE per crossing (GOTCHAS)"
+  "note": "the SECOND crossing: Main then waits on IsLevelLoaded('PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520), z 33.78 at map-local 64,48. Armed ONCE per crossing"
  },
  {
   "id": "wasp_entities",
-  "repeat": 14,
+  "repeat": 6,
   "interval": 4.0,
   "do": [
-   "input: clear",
    "list"
   ],
   "expect": "Binding entity '(WaspHelper|QueenHornet|HornetDrone|WaspChaser|WaspChaseWoman|WaspAttacker|WaspVictim|FleeingWoman|GratefulVillagerSpawn)'",

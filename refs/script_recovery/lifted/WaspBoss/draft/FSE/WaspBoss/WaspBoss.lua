@@ -401,14 +401,14 @@ function helper_E12F20(quest)
     quest:SetStateBool("StartChase", true)
     local r1 = quest:GetThingWithScriptName("WaspVictim")
     local xStack_20 = resources:NewResource()
-    local pScriptObject = 0x0
+    local pScriptObject = xStack_20
     local xStack_30 = resources:NewResource()
     local pThing = quest:GetHero()
     resources:TryAcquire(pScriptObject, pThing, 4)
-    resources:TryAcquire(0x0, r1, 4)
+    resources:TryAcquire(xStack_30, r1, 4)
     local xStack_48 = resources:NewActorMap()
-    resources:SetActor(xStack_48, "HERO", 0x0)
-    resources:SetActor(xStack_48, "VICTIM", 0x0)
+    resources:SetActor(xStack_48, "HERO", xStack_20)
+    resources:SetActor(xStack_48, "VICTIM", xStack_30)
     local xStack_10 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     resources:RunMacro("CS_WASPBOSS_INTRO", xStack_48, false, true)
@@ -419,8 +419,8 @@ function helper_E12F20(quest)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
             resources:DestroyActorMap(xStack_48)
-            resources:ReleaseResource(0x0)
-            resources:ReleaseResource(0x0)
+            resources:ReleaseResource(xStack_30)
+            resources:ReleaseResource(xStack_20)
             return
         end
         bVar4 = true
@@ -431,8 +431,8 @@ function helper_E12F20(quest)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(xStack_10)
     resources:DestroyActorMap(xStack_48)
-    resources:ReleaseResource(0x0)
-    resources:ReleaseResource(0x0)
+    resources:ReleaseResource(xStack_30)
+    resources:ReleaseResource(xStack_20)
     r1 = nil
 end
 
@@ -565,19 +565,19 @@ function helper_E137B0(quest)
                 if bVar3 then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_20)
-                    resources:ReleaseResource(0x0)
+                    resources:ReleaseResource(xStack_10)
                     return
                 end
                 quest:RemoveThing(r1, false, true)
             end
         end
         xStack_44 = resources:NewActorMap()
-        resources:SetActor(xStack_44, "HERO", 0x0)
+        resources:SetActor(xStack_44, "HERO", xStack_10)
         resources:RunMacro("CS_WASPBOSS_OUTRO", xStack_44, false, true)
         resources:DestroyActorMap(xStack_44)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_20)
-        resources:ReleaseResource(0x0)
+        resources:ReleaseResource(xStack_10)
         pCVar5 = quest:GetThingWithScriptName("VILL1")
         quest:EntitySetInFaction(pCVar5, "FACTION_PICNIC_AREA")
         pCVar5 = quest:GetThingWithScriptName("VILL2")

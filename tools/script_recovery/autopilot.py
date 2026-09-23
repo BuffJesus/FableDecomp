@@ -422,7 +422,10 @@ def run_checklist(bundle: str, steps: list[dict], default_timeout: float = 30.0,
 
             def flush() -> None:
                 if pending:
-                    got.extend(ch.send(pending, timeout=min(timeout, 15.0 if repeats == 1 else 5.0)))
+                    # a non-repeating step cannot retry, so it gets its full declared timeout (a region
+                    # load can take far longer than 15s and must not be re-armed); repeating steps keep
+                    # the short per-attempt window because the next attempt comes round anyway
+                    got.extend(ch.send(pending, timeout=timeout if repeats == 1 else min(timeout, 5.0)))
                     pending.clear()
             for d in do:
                 if not isinstance(d, str):

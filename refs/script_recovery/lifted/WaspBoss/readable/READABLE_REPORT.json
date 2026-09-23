@@ -7592,8 +7592,8 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 3,
-      "decimalLiterals": 8
+      "declarations": 1,
+      "decimalLiterals": 0
      }
     },
     {
@@ -7627,7 +7627,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 2,
-      "decimalLiterals": 3
+      "decimalLiterals": 0
      }
     }
    ],
@@ -9575,7 +9575,7 @@
      },
      "helper_E12F20": {
       "rewrites": {
-       "splitLocals": 11,
+       "splitLocals": 13,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -9584,7 +9584,7 @@
        "exitChecksInlined": 0,
        "frameChecks": 0,
        "inlinedTemporaries": 4,
-       "deadDefinitions": 2,
+       "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
        "booleanMaterialisation": 0,
@@ -9608,8 +9608,8 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
-       "controlAcquires": 1,
-       "sunkLocals": 6,
+       "controlAcquires": 0,
+       "sunkLocals": 10,
        "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
@@ -9701,7 +9701,7 @@
      },
      "helper_E137B0": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -9709,7 +9709,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 1,
-       "inlinedTemporaries": 12,
+       "inlinedTemporaries": 11,
        "deadDefinitions": 2,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -9735,7 +9735,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 6,
+       "sunkLocals": 8,
        "cleanupClosureNames": 0,
        "parentheses": 3,
        "cosmetics": 0,
@@ -9753,7 +9753,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 33,
+       "lines": 34,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
