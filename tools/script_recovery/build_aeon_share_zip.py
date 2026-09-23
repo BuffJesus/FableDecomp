@@ -52,9 +52,20 @@ UNITS = [
      'The retail Gameflow script (0xCE6CB0..) as a converter unit: all 35 PostSavePosition stages, OnPersist carries all '
      'four fields, resume works for 32/35 stages (700 / 1050 / 2800 still broken -- goto residue). Smoke 0/0. This is what '
      'our v7 bundle runs INSTEAD of your LUAGameflow; v6 (this zip) runs yours. Not yet A/B tested in-game.'),
+    ('WaspBoss', LIFTED / 'WaspBoss/readable/FSE', LIFTED / 'WaspBoss/draft/FSE',
+     LIFTED / 'WaspBoss/draft/CONVERSION_REPORT.json',
+     'Q_WaspBoss and its nine entity classes. Aeon hand-ported this quest, so the two are worth diffing:\n'
+     'a disagreement is evidence about one side or the other (that is how the LUAGameflow CoreQuestWaiting\n'
+     'bool-vs-ulong deviation surfaced). 46 functions, 0 missing bodies, smoke clean.'),
+    ('GuardianSisterInfo', LIFTED / 'GuardianSisterInfo/readable/FSE', LIFTED / 'GuardianSisterInfo/draft/FSE',
+     LIFTED / 'GuardianSisterInfo/draft/CONVERSION_REPORT.json',
+     'QS_GuardianSisterInfo and QS_GuardianSisterInfo2_SisterInBanditCamp. Gameflow stage 200 hands the\n'
+     'first directly after the wasp boss and stage 300 waits on it before the Orchard Farm cards.\n'
+     '14 functions, 0 missing, smoke clean; all the content is the MazeAtTavern entity.'),
 ]
 
 DOCS = [
+    ('docs/scripts/AEON_FINDINGS_2026-09-22.md', 'READ_ME_FIRST_FINDINGS_2026-09-22.md'),
     ('docs/scripts/AEON_SPLIT_PROPOSAL.md', 'AEON_SPLIT_PROPOSAL.md'),
     ('docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md', 'FSE_UPSTREAM_REQUIREMENTS.md'),
     ('docs/scripts/READABLE_STYLE_PLAN.md', 'READABLE_STYLE_PLAN.md'),
