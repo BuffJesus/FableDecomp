@@ -98,6 +98,7 @@ def stage_save(profile: str) -> Path | None:
     return backup
 
 
+def harvest_save(profile: str, source: str | None) -> None:
     """Copy the live AutoSave (what the run left behind) into SAVES/<profile>, creating it."""
     import shutil
     live, dst = SAVES / FRONTEND_PROFILE_DIR, SAVES / profile
