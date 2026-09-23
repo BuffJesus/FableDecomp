@@ -10,6 +10,14 @@ local SCRIPT_DEF = {
     WB_ExperienceReward = 3672,  -- 800
 }
 
+local function __native_all_dead(list)
+    local down = 0
+    for _, thing in ipairs(list) do
+        if not thing:IsAlive() or thing:IsUnconscious() then down = down + 1 end
+    end
+    return down == #list
+end
+
 -- Q_WaspBoss.Main (retail 0x00e0ea40)
 function Main(quest)
     quest:SetTimer(quest:GetStateInt("ReachedWaspHelper"), 120)
@@ -131,11 +139,9 @@ function DoMission(quest)
     if quest:IsActiveThreadTerminating() then return end
     waspAttacker = quest:GetAllThingsWithScriptName("WaspAttacker")
     WaspIntro(quest)
-    -- TODO(native): iVar12 = AreAllThingsInVectorDead(&xStack_24)
-    --[[unresolved native value]]
-    scratchValue = nil
+    scratchValue = __native_all_dead(waspAttacker)
     while true do
-        if scratchValue ~= 0 then
+        if scratchValue then
             if quest:IsActiveThreadTerminating() then return end
             quest:Pause(4.0)
             -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe40),(int)&xStack_44);
@@ -154,9 +160,7 @@ function DoMission(quest)
             return
         end
         if not quest:NewScriptFrame() then break end
-        -- TODO(native): iVar12 = AreAllThingsInVectorDead(&xStack_24)
-    --[[unresolved native value]]
-        scratchValue = nil
+        scratchValue = __native_all_dead(waspAttacker)
     end
     ::LAB_00e12a9c::
 end

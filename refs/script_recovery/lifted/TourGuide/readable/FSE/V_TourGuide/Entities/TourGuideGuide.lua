@@ -326,8 +326,7 @@ end
 -- TourGuideGuide.Init (retail 0x00ee4c60)
 function Init(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
-    -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
-    quest:EntitySetPersonalityOverride(me, "OPINION_PERSONALITY_PERMANENT_FRIEND")
+    quest:EntitySetPersonalityOverrideByString(me, "OPINION_PERSONALITY_PERMANENT_FRIEND")
     saveWaypointIdx = 0xffffffff
     lastRandomSpeechIdx = 0xffffffff
 end
