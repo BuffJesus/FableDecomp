@@ -12084,7 +12084,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 7,
-      "declarations": 9,
+      "declarations": 8,
       "decimalLiterals": 0
      }
     },
@@ -12314,7 +12314,10 @@
       "cVar6": {
        "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "assignmentRoles": [
+        null,
+        null
+       ]
       },
       "iVar9_1": {
        "name": "scratchValue2",
@@ -12338,6 +12341,13 @@
         null
        ]
       },
+      "pCVar7_2": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
       "pCVar8_1": {
        "name": "hero",
        "basis": "consistent call/state result",
@@ -12346,14 +12356,20 @@
        ]
       },
       "pCVar8_2": {
-       "name": "count",
+       "name": "darkwoodTrader",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "count",
-        "count"
+        "darkwoodTrader"
        ]
       },
       "pCVar8_3": {
+       "name": "darkwoodTrader2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "darkwoodTrader"
+       ]
+      },
+      "pCVar8_4": {
        "name": "hero2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -12361,10 +12377,10 @@
        ]
       },
       "r1": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
+       "name": "balverineEasy",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null
+        "balverineEasy"
        ]
       },
       "uVar10": {
@@ -12375,22 +12391,8 @@
         null
        ]
       },
-      "xStack_2c": {
-       "name": "darkwoodTrader",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "darkwoodTrader"
-       ]
-      },
-      "xStack_30_1": {
+      "xStack_30": {
        "name": "balverineSurprise",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "balverineSurprise"
-       ]
-      },
-      "xStack_30_2": {
-       "name": "balverineSurprise2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "balverineSurprise"
@@ -12400,7 +12402,7 @@
      "splitLocals": {
       "bVar5": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30\n",
+       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_30\n",
        "versions": {
         "bVar5_1": [
          5
@@ -12421,120 +12423,106 @@
          35
         ],
         "bVar5_7": [
-         40
+         39
         ],
         "bVar5_8": [
-         50
+         48
         ],
         "bVar5_9": [
-         56
+         53
         ],
         "bVar5_10": [
-         80
+         76
         ],
         "bVar5_11": [
-         87
+         82
         ],
         "bVar5_12": [
-         94
+         89
         ],
         "bVar5_13": [
-         98
-        ]
-       }
-      },
-      "iVar9": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30\n",
-       "versions": {
-        "iVar9_1": [
-         23,
-         67
-        ],
-        "iVar9_2": [
-         44
-        ],
-        "iVar9_3": [
-         48
+         93
         ]
        }
       },
       "pCVar8": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30\n",
+       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_30\n",
        "versions": {
         "pCVar8_1": [
-         41
+         40
         ],
         "pCVar8_2": [
-         46,
-         53
+         44
         ],
         "pCVar8_3": [
-         58
+         50
+        ],
+        "pCVar8_4": [
+         55
+        ]
+       }
+      },
+      "iVar9": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_30\n",
+       "versions": {
+        "iVar9_1": [
+         23,
+         63
+        ],
+        "iVar9_2": [
+         43
+        ],
+        "iVar9_3": [
+         46
         ]
        }
       },
       "pCVar7": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30\n",
+       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_30\n",
        "versions": {
         "pCVar7_1": [
          28
         ],
         "pCVar7_2": [
-         37
-        ]
-       }
-      },
-      "xStack_30": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30\n",
-       "versions": {
-        "xStack_30_1": [
-         20
-        ],
-        "xStack_30_2": [
-         45
+         36
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "bVar5_6": {
-       "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_2, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, r1, uVar10, xStack_2c, xStack_30_1, xStack_30_2\n",
+       "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_2, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, uVar10, xStack_30\n",
        "35": "                        bVar5_6 = true\n"
-      },
-      "iVar9_2": {
-       "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_2, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, r1, uVar10, xStack_2c, xStack_30_1, xStack_30_2\n",
-       "44": "                        iVar9_2 = 0\n"
       }
      },
      "inlinedLiteralLocals": {
       "bVar5_7": {
        "literal": "false",
-       "definitionLine": 40,
+       "definitionLine": 39,
        "readLines": [
-        42
+        41
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, r1, uVar10, xStack_2c, xStack_30_1, xStack_30_2\n",
-        "40": "                        bVar5_7 = false\n",
-        "42": "                        quest:EntitySetFacingAngleTowardsThing(r1, pCVar8_1, bVar5_7)\n"
+        "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_2, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, uVar10, xStack_30\n",
+        "39": "                        bVar5_7 = false\n",
+        "41": "                        quest:EntitySetFacingAngleTowardsThing(r1, pCVar8_1, bVar5_7)\n"
        }
       },
-      "pCVar7_2": {
-       "literal": "nil",
-       "definitionLine": 37,
+      "iVar9_2": {
+       "literal": "0",
+       "definitionLine": 43,
        "readLines": [
-        38
+        45
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, r1, uVar10, xStack_2c, xStack_30_1, xStack_30_2\n",
-        "37": "                        pCVar7_2 = nil --[[unresolved native value]]\n",
-        "38": "                        r1 = quest:CreateCreature(pCVar7_2, nil --[[missing]], \"SurpriseBalverine\")\n"
+        "2": "    local bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_8, bVar5_9, bVar5_10, bVar5_11, bVar5_12, bVar5_13, cVar6, iVar9_1, iVar9_2, iVar9_3, pCVar7_1, pCVar7_2, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, r1, uVar10, xStack_30\n",
+        "43": "                        iVar9_2 = 0\n",
+        "45": "                        MakeTraderComment(quest, \"BALVERINE_SURPRISE\", pCVar8_2, iVar9_2)\n"
        }
       }
      },
@@ -12542,7 +12530,7 @@
     },
     {
      "function": "WatchForMissionRules",
-     "sourceLine": 228,
+     "sourceLine": 223,
      "locals": {
       "__native_condition_1": {
        "name": "scratchValue",
@@ -13733,7 +13721,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 624,
+     "sourceLine": 619,
      "locals": {
       "native_arg_Me": {
        "name": "me",
@@ -13928,7 +13916,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 704,
+     "sourceLine": 699,
      "locals": {
       "native_arg_Trader": {
        "name": "trader",
@@ -14113,7 +14101,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 787,
+     "sourceLine": 782,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -15660,7 +15648,7 @@
     },
     {
      "function": "WatchForMissionRules",
-     "sourceLine": 182,
+     "sourceLine": 177,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15669,7 +15657,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 398,
+     "sourceLine": 393,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15678,7 +15666,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 454,
+     "sourceLine": 449,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15687,7 +15675,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 480,
+     "sourceLine": 475,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15889,7 +15877,7 @@
      },
      "WatchForSurprisingBalverines": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 3,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -15897,8 +15885,8 @@
        "aliveStaging": 6,
        "exitChecksInlined": 4,
        "frameChecks": 2,
-       "inlinedTemporaries": 8,
-       "deadDefinitions": 2,
+       "inlinedTemporaries": 10,
+       "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
        "booleanMaterialisation": 1,
@@ -15923,16 +15911,16 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 7,
+       "sunkLocals": 3,
        "cleanupClosureNames": 0,
-       "parentheses": 3,
+       "parentheses": 5,
        "cosmetics": 1,
        "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 95,
+       "lines": 90,
        "temporaries": 16,
        "labels": 10,
        "gotos": 13,
@@ -15941,8 +15929,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 68,
-       "temporaries": 3,
+       "lines": 63,
+       "temporaries": 4,
        "labels": 10,
        "gotos": 13,
        "terminationChecks": 8,

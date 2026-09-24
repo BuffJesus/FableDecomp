@@ -183,6 +183,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
 
     // register/stack provenance tags
     private static final String THIS = "THIS", GSI = "GSI", GSIVT = "GSIVT", PARENT = "PARENT", ME = "ME", MEVT = "MEVT";
+    private static final String TIMES3 = "TIMES3";   // a vector index scaled by 3 (CScriptThing = three dwords)
     private static final String MEMPTR = "MEMPTR", MEMPTRVT = "MEMPTRVT";
     private int dataSites = 0, paramThings = 0;
 
@@ -454,6 +455,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     target = ((Address) i.getOpObjects(0)[0]).getOffset();
                 long purge = -1;   // bytes the callee pops (exact when known; -1 = fall back to the push heuristic)
                 boolean siteReturnsThing = false;
+                boolean noStackParams = false;   // a resolved slot with no stack parameters: pending pushes belong to the next call
                 if (target >= 0 && cdeclTargets.contains(target)) purge = 0;          // the caller's `add esp, N` follows
                 if (target >= 0 && !cdeclTargets.contains(target)) {
                     // the callee's own `ret N` is the ground truth (Ghidra's purge size can be 0 when two bodies were merged)
@@ -494,6 +496,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                                 bytes += (pt instanceof Pointer || pt.getLength() <= 0) ? 4 : ((pt.getLength() + 3) / 4) * 4;
                             }
                             purge = bytes;
+                            noStackParams = bytes == 0;
                             DataType rt = def.getReturnType();
                             siteReturnsThing = (rt instanceof Pointer && ((Pointer) rt).getDataType().getName().startsWith("CScriptThing"))
                                 || rt.getName().startsWith("CScriptThing");
@@ -518,7 +521,9 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         sb.append("],");
                     }
                     if (sb.length() > 0) siteStackOperands.put(i.getAddress().getOffset(), sb.toString());
-                    pushedStack.clear(); pushedValue.clear();
+                    // `push 1; push &name; call [thing_vt+0x18] (GetPos); push eax; push &def; ...; call CreateCreature`:
+                    // a callee with no stack parameters consumes none of the pushes before it (WatchForSurprisingBalverines 0x00E061A6)
+                    if (!noStackParams) { pushedStack.clear(); pushedValue.clear(); }
                 }
                 regStack.remove("EAX"); regStack.remove("ECX"); regStack.remove("EDX");
                 regValue.remove("EAX"); regValue.remove("ECX"); regValue.remove("EDX");
@@ -571,6 +576,21 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         else if (MEMPTR.equals(st) && !hasDisp) tag = MEMPTRVT;
                         else if (st == null && hasDisp && disp >= 4 && !frameReg(sName)) tag = MEMPTR;
                     } else if (mn.equals("LEA") && sName != null && THIS.equals(tags.get(sName)) && disp == 8) tag = ME;
+                    else if (mn.equals("LEA")) {
+                        // element i of a std::vector<CScriptThing> (three dwords): `lea r,[i + i*2]` then
+                        // `lea r,[begin + r*4]`. Its vtable calls resolve through thingDefs; unresolved, the push
+                        // fallback charged `call [edx+0x18]` (GetPos, no stack operands) the pending arguments of
+                        // the CreateCreature around it and drifted its operands by 8 (WatchForSurprisingBalverines 0x00E0619F)
+                        List<String> regs = new ArrayList<>();
+                        List<Long> scales = new ArrayList<>();
+                        for (Object o : src) {
+                            if (o instanceof Register) regs.add(((Register) o).getName());
+                            else if (o instanceof Scalar) scales.add(((Scalar) o).getSignedValue());
+                        }
+                        if (regs.size() == 2 && scales.size() == 1 && scales.get(0) == 2 && regs.get(0).equals(regs.get(1))) tag = TIMES3;
+                        else if (regs.size() == 2 && scales.size() == 1 && scales.get(0) == 4
+                                && (TIMES3.equals(tags.get(regs.get(0))) || TIMES3.equals(tags.get(regs.get(1))))) tag = ME;
+                    }
                     if (tag != null) tags.put(d, tag); else tags.remove(d);
                     int srcRegs = 0;
                     for (Object o : src) if (o instanceof Register) srcRegs++;

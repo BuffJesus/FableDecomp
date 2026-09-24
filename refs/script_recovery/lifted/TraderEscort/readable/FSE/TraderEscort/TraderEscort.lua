@@ -115,7 +115,7 @@ end
 
 -- Q_TraderEscort.WatchForSurprisingBalverines (retail 0x00e06050)
 function WatchForSurprisingBalverines(quest)
-    local scratchValue, scratchValue2, scratchValue6
+    local scratchValue, scratchValue2, balverineEasy, scratchValue6
     local hero = quest:GetHero()
     if not quest:IsActiveThreadTerminating() then goto LAB_00e06074 end
     ::FLOW_after_lab_00e06394::
@@ -124,7 +124,7 @@ function WatchForSurprisingBalverines(quest)
     if quest:GetStateInt("BalverinesToSurpriseHeroNeeded") < 1 then goto LAB_00e06373 end
     if not quest:IsActiveThreadTerminating() then
         quest:Pause(2.0)
-        -- TODO(native): Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)xStack_2c);
+        -- TODO(native): Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)x_stk_2c);
         local balverineSurprise = quest:GetAllThingsWithScriptName("M_BalverineSurprise")
         scratchValue6 = 0
         if #balverineSurprise ~= 0 then
@@ -134,23 +134,19 @@ function WatchForSurprisingBalverines(quest)
                 if 0 >= quest:GetStateInt("BalverinesToSurpriseHeroNeeded") then scratchValue6 = scratchValue6 + 1; scratchValue2 = scratchValue2 + 1; goto continue_1 end
                 if not quest:IsCameraPosOnScreen(balverineSurprise[scratchValue2 + 1]:GetPos()) then
                     if quest:IsActiveThreadTerminating() then return end
-                    -- TODO(native): pCVar7 = (**(xStack_30[uVar10 * 3] + 0x18))()
-    --[[unresolved native value]]
-                    local scratchValue5 = quest:CreateCreature(nil, nil --[[missing]], "SurpriseBalverine")
-                    quest:EntitySetCutsceneBehaviour(scratchValue5, CUTSCENE_BEHAVIOUR_PAUSED)
-                    quest:EntitySetFacingAngleTowardsThing(scratchValue5, hero, false)
+                    balverineEasy = quest:CreateCreature("CREATURE_BALVERINE_EASY", balverineSurprise[scratchValue6 + 1]:GetPos(), "SurpriseBalverine")
+                    quest:EntitySetCutsceneBehaviour(balverineEasy, CUTSCENE_BEHAVIOUR_PAUSED)
+                    quest:EntitySetFacingAngleTowardsThing(balverineEasy, hero, false)
                     quest:SetTimer(quest:GetStateInt("CommentTimer"), 0)
-                    -- TODO(native): MakeTraderComment(quest, &xStack_34, pCVar8, iVar9)
+                    MakeTraderComment(quest, "BALVERINE_SURPRISE", quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"), 0)
                     if math.random(0, 32767) % 5 == 0 then
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end
-                        local darkwoodTrader = quest:GetNearestWithScriptName(scratchValue5, "DarkwoodTrader")
-                        quest:GiveThingBestEnemyTarget(scratchValue5, darkwoodTrader)
+                        quest:GiveThingBestEnemyTarget(balverineEasy, quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"))
                     else
                         if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end
-                        quest:GiveThingBestEnemyTarget(scratchValue5, hero)
+                        quest:GiveThingBestEnemyTarget(balverineEasy, hero)
                     end
-                    -- TODO(native): cVar6 = (**(r1._0_4_ + 0x12c))()
-                    scratchValue = nil --[[unresolved native value]]
+                    scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
                     goto LAB_00e06319
                 end
                 scratchValue6 = scratchValue6 + 1
@@ -168,8 +164,7 @@ function WatchForSurprisingBalverines(quest)
     ::LAB_00e06319::
     if scratchValue then
         if not quest:NewScriptFrame() then __cleanup_LAB_00e063f5(); return end
-        -- TODO(native): cVar6 = (**(r1._0_4_ + 0x12c))()
-        scratchValue = nil --[[unresolved native value]]
+        scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
         goto LAB_00e06319
     end
     if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end

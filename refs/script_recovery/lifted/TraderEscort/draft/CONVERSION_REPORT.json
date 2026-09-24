@@ -256,17 +256,12 @@
           },
           "todo": [
             "label LAB_00e06394",
-            "unlifted: Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)xStack_2c);",
-            "CreateCreature: missing position (2 args for 3 params)",
+            "unlifted: Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)x_stk_2c);",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
             "label LAB_00e063f5",
-            "label LAB_00e063fa",
-            "unlifted: pCVar7 = (**(xStack_30[uVar10 * 3] + 0x18))()",
-            "unlifted: MakeTraderComment(quest, &xStack_34, pCVar8, iVar9)",
-            "unlifted: cVar6 = (**(r1._0_4_ + 0x12c))()",
-            "unlifted: cVar6 = (**(r1._0_4_ + 0x12c))()"
+            "label LAB_00e063fa"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -277,30 +272,31 @@
             "GetPos",
             "IsCameraPosOnScreen",
             "IsActiveThreadTerminating",
+            "GetPos",
             "CreateCreature",
             "EntitySetCutsceneBehaviour",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
             "SetTimer",
             "GetNearestWithScriptName",
-            "LOCALLIST_Count",
             "ENGINE_Rand",
             "IsActiveThreadTerminating",
             "GetNearestWithScriptName",
-            "LOCALLIST_Count",
             "GiveThingBestEnemyTarget",
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget",
+            "IsAlive",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "SetStateInt",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 111,
+          "lines": 106,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3728,7 +3724,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 79
+        "todo": 74
       }
     }
   ],
@@ -3739,6 +3735,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 79
+    "todo": 74
   }
 }

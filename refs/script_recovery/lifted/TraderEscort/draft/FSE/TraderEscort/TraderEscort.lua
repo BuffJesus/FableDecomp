@@ -127,7 +127,7 @@ function OnPersist(quest, context)
 end
 
 function WatchForSurprisingBalverines(quest)
-    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_2c, xStack_30
+    local bVar5, cVar6, iVar9, pCVar7, pCVar8, r1, uVar10, xStack_30
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -144,7 +144,7 @@ function WatchForSurprisingBalverines(quest)
     bVar5 = not alive
     if not bVar5 then
         quest:Pause(2.0)
-        -- TODO(native): Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)xStack_2c);
+        -- TODO(native): Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)x_stk_2c);
         xStack_30 = quest:GetAllThingsWithScriptName("M_BalverineSurprise")
         uVar10 = 0
         if #xStack_30 ~= 0 then
@@ -163,26 +163,23 @@ function WatchForSurprisingBalverines(quest)
                             return
                         end
                         bVar5 = true
-                        -- TODO(native): pCVar7 = (**(xStack_30[uVar10 * 3] + 0x18))()
-                        pCVar7 = nil --[[unresolved native value]]
-                        r1 = quest:CreateCreature(pCVar7, nil --[[missing]], "SurpriseBalverine")
+                        pCVar7 = xStack_30[uVar10 + 1]:GetPos()
+                        r1 = quest:CreateCreature("CREATURE_BALVERINE_EASY", pCVar7, "SurpriseBalverine")
                         quest:EntitySetCutsceneBehaviour(r1, 1)
                         bVar5 = false
                         pCVar8 = quest:GetHero()
                         quest:EntitySetFacingAngleTowardsThing(r1, pCVar8, bVar5)
                         quest:SetTimer(quest:GetStateInt("CommentTimer"), 0)
                         iVar9 = 0
-                        xStack_30 = quest:GetNearestWithScriptName(r1, "BALVERINE_SURPRISE")
-                        pCVar8 = #xStack_30
-                        -- TODO(native): MakeTraderComment(quest, &xStack_34, pCVar8, iVar9)
+                        pCVar8 = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
+                        MakeTraderComment(quest, "BALVERINE_SURPRISE", pCVar8, iVar9)
                         iVar9 = math.random(0, 32767)
                         if iVar9 % 5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if bVar5 then __cleanup_LAB_00e063f5(); return end
-                            xStack_2c = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
-                            pCVar8 = #xStack_2c
-                            quest:GiveThingBestEnemyTarget(r1, xStack_2c)
+                            pCVar8 = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
+                            quest:GiveThingBestEnemyTarget(r1, pCVar8)
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -190,8 +187,7 @@ function WatchForSurprisingBalverines(quest)
                             pCVar8 = quest:GetHero()
                             quest:GiveThingBestEnemyTarget(r1, pCVar8)
                         end
-                        -- TODO(native): cVar6 = (**(r1._0_4_ + 0x12c))()
-                        cVar6 = nil --[[unresolved native value]]
+                        cVar6 = (r1 ~= nil and r1:IsAlive())
                         goto LAB_00e06319
                     end
                 end
@@ -212,8 +208,7 @@ function WatchForSurprisingBalverines(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
     if bVar5 then __cleanup_LAB_00e063f5(); return end
-    -- TODO(native): cVar6 = (**(r1._0_4_ + 0x12c))()
-    cVar6 = nil --[[unresolved native value]]
+    cVar6 = (r1 ~= nil and r1:IsAlive())
     goto LAB_00e06319
     ::LAB_00e06349::
     alive = not quest:IsActiveThreadTerminating()

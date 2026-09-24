@@ -7,7 +7,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | Q_TraderEscort | Main | 0x00e00db0 | True | 0 |
 | Q_TraderEscort | Q_TraderEscort | Init | 0x00e006d0 | True | 0 |
 | Q_TraderEscort | Q_TraderEscort | OnPersist | 0x00e00ce0 | True | 0 |
-| Q_TraderEscort | Q_TraderEscort | WatchForSurprisingBalverines | 0x00e06050 | True | 12 |
+| Q_TraderEscort | Q_TraderEscort | WatchForSurprisingBalverines | 0x00e06050 | True | 7 |
 | Q_TraderEscort | Q_TraderEscort | WatchForMissionRules | 0x00e06440 | True | 0 |
 | Q_TraderEscort | Q_TraderEscort | TurnToBalv | 0x00e0a820 | True | 2 |
 | Q_TraderEscort | Q_TraderEscort | WatchForPickpocketing | 0x00e04f10 | True | 3 |
@@ -70,4 +70,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | EndTrader | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | EndTrader | OnPredicateFail | 0x00e04ae0 | True | 0 |
 
-Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 79}`
+Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 74}`

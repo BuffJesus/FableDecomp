@@ -164,6 +164,21 @@ class FlagRelay(unittest.TestCase):
         self.assertIn('CCharString::CCharString((CCharString *)&CStack_170', out)
 
 
+class StackThingOwnVtable(unittest.TestCase):
+    SLOTS = {0x12c: ('IsAlive', '?IsAlive@CScriptThing@@UBE_NXZ')}
+
+    def test_filled_stack_thing_resolves(self):
+        from tools.script_recovery.native_evidence_lowering import lower_after_annotate
+        text = ('  CScriptThing xStack_24;\n  GSI->CreateCreature(&xStack_24,&xStack_44,pCVar7,pScriptName,bVar5);\n'
+                '  cVar6 = (**(code **)(xStack_24._0_4_ + 0x12c))();\n  if (cVar6 == 0) { f(); }\n')
+        self.assertIn('cVar6 = CScriptThing::IsAlive(xStack_24);', lower_after_annotate(text, self.SLOTS))
+
+    def test_never_filled_stack_thing_stays(self):
+        from tools.script_recovery.native_evidence_lowering import lower_after_annotate
+        text = '  CScriptThing CStack_d8;\n  cVar4 = (**(code **)(CStack_d8._0_4_ + 0x12c))();\n  if (cVar4 == 0) { f(); }\n'
+        self.assertIn('(**(code **)(CStack_d8._0_4_ + 0x12c))()', lower_after_annotate(text, self.SLOTS))
+
+
 class MovieStartsOnce(unittest.TestCase):
     # WatchForMissionRules 0x00E06440: the movie object operand is printed with a pointer cast
     def test_cast_movie_operand_drops_the_second_start(self):

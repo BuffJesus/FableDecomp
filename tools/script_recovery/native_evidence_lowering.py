@@ -1901,7 +1901,12 @@ def lower_after_annotate(text, thing_slots=None):
     # = X.IsAlive()) on a slot the function uses as a CScriptThing (MagicBarrier's force-field handles, 2026-09-24)
     if thing_slots:
         things = (set(re.findall(r'\(CScriptThing \*\)(\w+)\b', text)) | set(re.findall(r'^[ \t]*undefined1 (\w+) \[12\];', text, re.M))
-                  | set(re.findall(r'^[ \t]*(\w+) = QUESTTHING_\w+\(', text, re.M)))
+                  | set(re.findall(r'^[ \t]*(\w+) = QUESTTHING_\w+\(', text, re.M))
+                  # a stack thing the export typed as such and some call fills (`&X` operand: a CreateCreature
+                  # result -- WatchForSurprisingBalverines waits on `(**(code **)(xStack_24._0_4_ + 0x12c))()`, the
+                  # surprise balverine's IsAlive). Never filled, the name has no Lua value (SickChild IngredientOwner's
+                  # CStack_d8 is only ever read): that call stays unresolved rather than indexing a nil global
+                  | {x for x in re.findall(r'^[ \t]*CScriptThing (\w+);', text, re.M) if re.search(r'&' + re.escape(x) + r'\b', text)})
         def own_vtable_call(m, scale=1):
             entry = thing_slots.get(int(m.group(2), 0) * scale)
             name = entry[0] if isinstance(entry, tuple) else entry
@@ -2321,6 +2326,14 @@ def fold_local_thing_vectors(text, thing_slots=None):
         # CheckFriendlyAttacks 0x00D45060: four `GetDefName` vcalls on `((int)V + i)` elements stayed
         # native and the def-name compares lifted to `nil == "CREATURE_..."`, 2026-09-20)
         text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?LOCALLIST_At\(' + v + r', (\w+|\(\w+\) / 0xc)\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', at_vcall_local, text)
+        # ... the element's vtable read straight off the begin pointer by index (`V[i * 3]`, three dwords per
+        # thing), with or without the explicit `this` operand `V + i * 3` (WatchForSurprisingBalverines 0x00E0619F:
+        # `(**(code **)(V[uVar10 * 3] + 0x18))(V + uVar10 * 3)` = GetPos of element i, the CreateCreature position)
+        def at_index_vcall(m, vec=vec):
+            out = thing_call_local(f'LOCALLIST_At({vec}, {m.group(1)})', m.group(2), ')')
+            return out or m.group(0)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(' + v + r'\[(?:\(int\))?(\w+) \* 3\] \+ (0x[0-9a-f]+|\d+)\)\)\s*\((?:' + v + r' \+ (?:\(int\))?\1 \* 3(?=\s*[,)]))?',
+                      at_index_vcall, text)
         # element count from the begin/end slots (both canonicalised to the vector's name):
         # `iVar = (int)V - V >> 0x1f;` (sign fix) then `((int)V - V) / 0xc + iVar != iVar` (count != 0)
         text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
