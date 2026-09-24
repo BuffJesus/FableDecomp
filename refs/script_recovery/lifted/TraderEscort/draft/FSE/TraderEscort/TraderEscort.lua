@@ -428,8 +428,7 @@ function WatchForMissionRules(quest)
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
-                cVar3 = nil --[[unresolved native value]]
+                cVar3 = (xStack_dc ~= nil and xStack_dc:IsAlive())
                 if cVar3 then
                     native_arg_sequence_1 = true
                 else
@@ -453,8 +452,7 @@ function WatchForMissionRules(quest)
                 xStack_dc = pCVar4
                 pCVar4 = quest:GetThingWithScriptName("M_EndTheQuestHere")
                 x_stk_d0 = pCVar4
-                -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
-                cVar3 = nil --[[unresolved native value]]
+                cVar3 = (xStack_dc ~= nil and xStack_dc:IsAlive())
                 if cVar3 then goto LAB_00e06fb5 end
                 if not quest:GetStateBool("EndStarted") then
                     alive = not quest:IsActiveThreadTerminating()
@@ -549,8 +547,7 @@ function WatchForMissionRules(quest)
             bVar2 = quest:IsRegionLoaded("Darkwood1")
             __native_condition_1 = bVar2
             if __native_condition_1 then
-                -- TODO(native): iVar8 = &xStack_c0:IsAlive()
-                iVar8 = nil --[[unresolved native value]]
+                iVar8 = xStack_c0:IsAlive()
                 __native_condition_1 = iVar8
             end
             if __native_condition_1 then

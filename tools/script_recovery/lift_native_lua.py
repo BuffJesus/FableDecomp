@@ -1644,6 +1644,9 @@ class Lifter:
         flattened = re.fullmatch(r'_?(\w+)_CScriptThing__.+', name)
         if flattened:
             name = flattened.group(1)
+        # a stack thing passed by address as the receiver (`IsAlive((CScriptThing *)&xStack_c0)`, WatchForMissionRules
+        # 0x00E06440): the object itself, not `&xStack_c0:IsAlive()`
+        thing_text = re.sub(r'^\s*\(CScriptThing \*\)\s*&(\w+)\s*$', r'\1', thing_text)
         thing = self.expr(thing_text)
         operands = self.arguments(rest)
         sig = parse_thing_signature(self.thing_sigs.get(name, ""))

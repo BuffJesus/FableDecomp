@@ -187,8 +187,8 @@ end
 function WatchForMissionRules(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isRegionLoaded2, predicateResult, predicateResult3, predicateResult4, predicateResult7
-    local isRegionLoaded6, sequence, darkwoodTrader4
+    local predicateResult, predicateResult3, predicateResult4, predicateResult7, isRegionLoaded
+    local darkwoodTrader4, endTrader
     if not quest:GetStateBool("IntroFinished") then
         if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
         quest:SetStateBool("SavedInMiddle", false)
@@ -248,6 +248,7 @@ function WatchForMissionRules(quest)
         if not quest:NewScriptFrame() then goto LAB_00e07620 end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+    endTrader = nil
     if quest:GetStateBool("SavedInMiddle") then
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
     end
@@ -284,29 +285,18 @@ function WatchForMissionRules(quest)
             resources:DestroyMovie(movie2)
             resources:DestroyActorMap(actorMap)
         end
-        if not quest:GetStateBool("EndStarted") then
-            local isRegionLoaded = quest:IsRegionLoaded("BarrowFields")
-            sequence = not isRegionLoaded
-            if not sequence then
-                -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
-    --[[unresolved native value]]
-                sequence = nil
-            end
-            if sequence then goto LAB_00e06d6c end
-            predicateResult4 = true
-        else
-            goto LAB_00e06d6c
-        end
+        if quest:GetStateBool("EndStarted") then goto LAB_00e06d6c end
+        if not quest:IsRegionLoaded("BarrowFields") or (endTrader ~= nil and endTrader:IsAlive()) then goto LAB_00e06d6c end
+        predicateResult4 = true
         goto FLOW_past_lab_00e06d6c
         ::LAB_00e06d6c::
         predicateResult4 = false
         ::FLOW_past_lab_00e06d6c::
         if predicateResult4 then
             if not quest:IsActiveThreadTerminating() then
+                endTrader = quest:GetThingWithScriptName("EndTrader")
                 local x_stk_d0_2 = quest:GetThingWithScriptName("M_EndTheQuestHere")
-                -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
-    --[[unresolved native value]]
-                if nil then goto LAB_00e06fb5 end
+                if endTrader ~= nil and endTrader:IsAlive() then goto LAB_00e06fb5 end
                 if not quest:GetStateBool("EndStarted") then
                     if not quest:IsActiveThreadTerminating() then
                         ::LAB_00e06e73::
@@ -346,7 +336,7 @@ function WatchForMissionRules(quest)
             quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
-            isRegionLoaded6 = quest:IsRegionLoaded("BarrowFields")
+            isRegionLoaded = quest:IsRegionLoaded("BarrowFields")
             goto LAB_00e07574
         end
         ::FLOW_hoist_lab_00e073cf_2::
@@ -363,13 +353,7 @@ function WatchForMissionRules(quest)
             quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
             quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "TEXT_QST_067_QUEST_FAILED_TRADERS_DIED", true)
             quest:SetStateBool("MissionFailed", true)
-            isRegionLoaded2 = quest:IsRegionLoaded("Darkwood1")
-            if isRegionLoaded2 then
-                -- TODO(native): iVar8 = &xStack_c0:IsAlive()
-    --[[unresolved native value]]
-                isRegionLoaded2 = nil
-            end
-            if isRegionLoaded2 then
+            if quest:IsRegionLoaded("Darkwood1") and darkwoodTrader4:IsAlive() then
                 if not quest:IsActiveThreadTerminating() then
                     while darkwoodTrader4[0 + 1]:IsAlive() do
                         if not quest:NewScriptFrame() then goto LAB_00e07609 end
@@ -390,20 +374,22 @@ function WatchForMissionRules(quest)
                 quest:AutoSaveCheckPoint()
             end
         end
-        if not quest:GetStateBool("SavedNearEnd") and quest:MsgOnRegionLoaded() then
-            if "" ~= nil and "" == "Darkwood6" then
-                if quest:IsActiveThreadTerminating() then break end
-                quest:SetStateBool("SavedNearEnd", true)
-                quest:AutoSaveCheckPoint()
-            end
+        if not (not quest:GetStateBool("SavedNearEnd") and quest:MsgOnRegionLoaded()) then
+            quest:NewScriptFrame()
+        elseif not ("" ~= nil and "" == "Darkwood6") then
+            quest:NewScriptFrame()
+        else
+            if quest:IsActiveThreadTerminating() then break end
+            quest:SetStateBool("SavedNearEnd", true)
+            quest:AutoSaveCheckPoint()
+            quest:NewScriptFrame()
         end
-        quest:NewScriptFrame()
     end
     goto LAB_00e0760e
     ::LAB_00e07574::
-    if isRegionLoaded6 then
+    if isRegionLoaded then
         if not quest:NewScriptFrame() then goto LAB_00e075fa end
-        isRegionLoaded6 = quest:IsRegionLoaded("BarrowFields")
+        isRegionLoaded = quest:IsRegionLoaded("BarrowFields")
         goto LAB_00e07574
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e075fa end

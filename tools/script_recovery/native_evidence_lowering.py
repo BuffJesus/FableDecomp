@@ -1849,14 +1849,18 @@ def lower_after_annotate(text, thing_slots=None):
     # a no-operand thing method called through the stack thing's own vtable word (`(**(code **)(X._0_4_ + 0x12c))()`
     # = X.IsAlive()) on a slot the function uses as a CScriptThing (MagicBarrier's force-field handles, 2026-09-24)
     if thing_slots:
-        things = set(re.findall(r'\(CScriptThing \*\)(\w+)\b', text)) | set(re.findall(r'^[ \t]*undefined1 (\w+) \[12\];', text, re.M))
-        def own_vtable_call(m):
-            entry = thing_slots.get(int(m.group(2), 0))
+        things = (set(re.findall(r'\(CScriptThing \*\)(\w+)\b', text)) | set(re.findall(r'^[ \t]*undefined1 (\w+) \[12\];', text, re.M))
+                  | set(re.findall(r'^[ \t]*(\w+) = QUESTTHING_\w+\(', text, re.M)))
+        def own_vtable_call(m, scale=1):
+            entry = thing_slots.get(int(m.group(2), 0) * scale)
             name = entry[0] if isinstance(entry, tuple) else entry
             if m.group(1) not in things or not name or not str(entry[1] if isinstance(entry, tuple) else '').endswith('XZ'):
                 return m.group(0)
             return f'CScriptThing::{name}({m.group(1)})'
         text = re.sub(r'\(\*\*\(code \*\*\)\((\w+)\._0_4_ \+ (0x[0-9a-f]+)\)\)\(\)', own_vtable_call, text)
+        # the vtable word indexed as an array of code pointers (`(*(code *)X[0x4b])()` = slot 0x12c, IsAlive: the
+        # M_EndTheQuestHere / trader liveness checks in Trader Escort's WatchForMissionRules, 2026-09-24)
+        text = re.sub(r'\(\*\(code \*\)(\w+)\[(0x[0-9a-f]+|\d+)\]\)\(\)', lambda m: own_vtable_call(m, 4), text)
     text = fold_char_flags(text)
     # `MsgGetThingsKilled(thing, &uidVector)` (retail vtable 0xDC: bool + a std::vector<ulong> the script frees):
     # the sidecar binding (2026-09-21) owns that vector and returns the count, so the out operand, its zeroing

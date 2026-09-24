@@ -345,11 +345,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: cVar3 = (*xStack_dc[0x4b])()",
-            "unlifted: cVar3 = (*xStack_dc[0x4b])()",
-            "unlifted: iVar8 = &xStack_c0:IsAlive()"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "SetStateBool",
@@ -437,9 +433,11 @@
             "RESOURCE_DestroyMovie",
             "ACTORMAP_Destroy",
             "IsRegionLoaded",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
             "GetThingWithScriptName",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "IsRegionLoaded",
             "NewScriptFrame",
@@ -505,7 +503,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 422,
+          "lines": 419,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3750,7 +3748,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 100
+        "todo": 97
       }
     }
   ],
@@ -3761,6 +3759,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 100
+    "todo": 97
   }
 }
