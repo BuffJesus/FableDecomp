@@ -37,7 +37,7 @@ function Main(quest, me)
             end
             if endingCanStart then
                 movie3 = resources:StartMovie("")
-                -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,true);
+                quest:PauseAllNonScriptedEntities(true)
                 quest:SheatheHeroWeapons()
                 quest:Pause(0.2)
                 if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00e05c45 end
@@ -46,43 +46,47 @@ function Main(quest, me)
                 goto LAB_00e05be8
             end
             local movie2 = resources:StartMovie("")
-            -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,true);
+            quest:PauseAllNonScriptedEntities(true)
             quest:Pause(0.5)
             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                 me:Speak(hero, "TEXT_QST_067_ENDTRADER_NOT_ALL_PRESENT", GROUP_SELECT_FIRST, false, true, false)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
-                        -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
                         goto FLOW_after_lab_00e0602a
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
-                    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie2)
                     goto FLOW_after_lab_00e0602a
                 end
             end
-            -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie2)
             while quest:IsRegionLoaded("BarrowFields") do
                 if not quest:NewScriptFrame(me) then goto FLOW_after_lab_00e0602a end
                 if me:IsTalkedToByHero() then
                     movie = resources:StartMovie("")
-                    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,true);
+                    quest:PauseAllNonScriptedEntities(true)
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_067_ENDTRADER_NOT_ALL_PRESENT", GROUP_SELECT_FIRST, false, true, false) then
-                            -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
-                            ReleaseEverything(); return  -- TODO(native): goto FLOW_after_lab_00e0602a
+                        me:Speak(hero, "TEXT_QST_067_ENDTRADER_NOT_ALL_PRESENT", GROUP_SELECT_FIRST, false, true, false)
+                        while me:IsPerformingScriptTask() do
+                            quest:NewScriptFrame(me)
+                            if quest:IsActiveThreadTerminating() then
+                                quest:PauseAllNonScriptedEntities(false)
+                                ReleaseEverything(); return  -- TODO(native): goto FLOW_after_lab_00e0602a
+                            end
                         end
                         if quest:IsActiveThreadTerminating() then
-                            -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                            quest:PauseAllNonScriptedEntities(false)
                             ReleaseEverything()
                             goto FLOW_after_lab_00e0602a
                         end
                     end
-                    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                 end
             end
@@ -104,7 +108,7 @@ function Main(quest, me)
     if taskRunning then
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
-            -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie3)
             goto FLOW_after_lab_00e0602a
         end
@@ -112,12 +116,12 @@ function Main(quest, me)
         goto LAB_00e05be8
     end
     if not quest:IsActiveThreadTerminating() then goto LAB_00e05c45 end
-    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie3)
     ::FLOW_after_lab_00e0602a::
     goto FLOW_past_lab_00e05c45
     ::LAB_00e05c45::
-    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie3)
     quest:SetStateBool("EndStarted", true)
     if not quest:IsActiveThreadTerminating() then
@@ -152,24 +156,24 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e05fd1 end
                         local movie4 = resources:StartMovie("")
-                        -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,true);
+                        quest:PauseAllNonScriptedEntities(true)
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, "TEXT_QST_067_ENDTRADER_THANKS", GROUP_SELECT_RANDOM, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
-                                    -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                                    quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie4)
                                     goto LAB_00e05fd1
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
-                                -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
                                 goto LAB_00e05fd1
                             end
                         end
-                        -- TODO(native): (**(code **)(piVar5.x + 0x5ec))(piVar5,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie4)
                         resources:PrepareResource(resource)
                         quest:NewScriptFrame(me)

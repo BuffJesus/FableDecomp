@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar10, bVar4, cVar5, fVar8, fVar9, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, native_arg_sequence_1, native_arg_sequence_2, pCVar6, pCVar7, piVar1, r1, r2, r3, r4, r5, r6, uVar2
+    local __native_condition_1, __native_condition_2, bVar10, bVar4, cVar5, fVar8, fVar9, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, pCVar6, pCVar7, r1, r2, r3, r4, r5, r6
     local alive = true
     r1 = quest:GetThingWithScriptName("BarrierFX")
     if not (r1 ~= nil and not r1:IsNull()) then
@@ -44,24 +44,13 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e046bf end
-        -- TODO(native): cVar5 = (**(r2._0_4_ + 0x12c))()
-        cVar5 = nil --[[unresolved native value]]
-        native_arg_sequence_1 = false
-        if not cVar5 then
-            native_arg_sequence_1 = true
-        else
-            native_arg_sequence_1 = false
+        cVar5 = (r2 ~= nil and r2:IsAlive())
+        __native_condition_1 = not cVar5
+        if __native_condition_1 then
+            cVar5 = (r3 ~= nil and r3:IsAlive())
+            __native_condition_1 = not cVar5
         end
-        if native_arg_sequence_1 then
-            -- TODO(native): cVar5 = (**(r3._0_4_ + 0x12c))()
-            cVar5 = nil --[[unresolved native value]]
-            if not cVar5 then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-        end
-        if native_arg_sequence_1 then
+        if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00e046bf end
@@ -77,17 +66,7 @@ function Main(quest, me)
                 end
             end
             pCVar7 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_01", pCVar6, f_stk_58, false)
-            -- TODO(native): piVar1 = *(pCVar7 + 0x8)
-            piVar1 = nil --[[unresolved native value]]
-            -- TODO(native): uVar2 = *(pCVar7 + 0x4)
-            uVar2 = nil --[[unresolved native value]]
-            if r2._8_4_ ~= piVar1 then
-                -- TODO(native): xStack_30._4_4_ = uVar2;
-                -- TODO(native): xStack_30._8_4_ = piVar1;
-                if piVar1 ~= nil then
-                    -- TODO(native): *piVar1 = *piVar1 + 1;
-                end
-            end
+            r2 = pCVar7
             pCVar7 = nil
             if not (r1 ~= nil and not r1:IsNull()) then
                 pCVar6 = {x = 0, y = 0, z = 0}
@@ -101,17 +80,7 @@ function Main(quest, me)
                 end
             end
             pCVar7 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02", pCVar6, f_stk_54, false)
-            -- TODO(native): piVar1 = *(pCVar7 + 0x8)
-            piVar1 = nil --[[unresolved native value]]
-            -- TODO(native): uVar2 = *(pCVar7 + 0x4)
-            uVar2 = nil --[[unresolved native value]]
-            if r3._8_4_ ~= piVar1 then
-                -- TODO(native): xStack_3c._4_4_ = uVar2;
-                -- TODO(native): xStack_3c._8_4_ = piVar1;
-                if piVar1 ~= nil then
-                    -- TODO(native): *piVar1 = *piVar1 + 1;
-                end
-            end
+            r3 = pCVar7
             pCVar7 = nil
         end
         cVar5 = quest:GetStateBool("TradersShouldBeScared")
@@ -126,24 +95,13 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00e046b6 end
-            -- TODO(native): cVar5 = (**(r2._0_4_ + 0x12c))()
-            cVar5 = nil --[[unresolved native value]]
-            native_arg_sequence_2 = false
-            if not cVar5 then
-                native_arg_sequence_2 = true
-            else
-                native_arg_sequence_2 = false
+            cVar5 = (r2 ~= nil and r2:IsAlive())
+            __native_condition_2 = not cVar5
+            if __native_condition_2 then
+                cVar5 = (r3 ~= nil and r3:IsAlive())
+                __native_condition_2 = not cVar5
             end
-            if native_arg_sequence_2 then
-                -- TODO(native): cVar5 = (**(r3._0_4_ + 0x12c))()
-                cVar5 = nil --[[unresolved native value]]
-                if not cVar5 then
-                    native_arg_sequence_2 = true
-                else
-                    native_arg_sequence_2 = false
-                end
-            end
-            if native_arg_sequence_2 then
+            if __native_condition_2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then goto LAB_00e046b6 end
@@ -159,17 +117,7 @@ function Main(quest, me)
                     end
                 end
                 pCVar7 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_01", pCVar6, f_stk_4c, false)
-                -- TODO(native): piVar1 = *(pCVar7 + 0x8)
-                piVar1 = nil --[[unresolved native value]]
-                -- TODO(native): uVar2 = *(pCVar7 + 0x4)
-                uVar2 = nil --[[unresolved native value]]
-                if r2._8_4_ ~= piVar1 then
-                    -- TODO(native): xStack_30._4_4_ = uVar2;
-                    -- TODO(native): xStack_30._8_4_ = piVar1;
-                    if piVar1 ~= nil then
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
-                    end
-                end
+                r2 = pCVar7
                 if not (r1 ~= nil and not r1:IsNull()) then
                     pCVar6 = {x = 0, y = 0, z = 0}
                 else
@@ -182,17 +130,7 @@ function Main(quest, me)
                     end
                 end
                 pCVar7 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02", pCVar6, f_stk_58, false)
-                -- TODO(native): piVar1 = *(pCVar7 + 0x8)
-                piVar1 = nil --[[unresolved native value]]
-                -- TODO(native): uVar2 = *(pCVar7 + 0x4)
-                uVar2 = nil --[[unresolved native value]]
-                if r3._8_4_ ~= piVar1 then
-                    -- TODO(native): xStack_3c._4_4_ = uVar2;
-                    -- TODO(native): xStack_3c._8_4_ = piVar1;
-                    if piVar1 ~= nil then
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
-                    end
-                end
+                r3 = pCVar7
             end
             cVar5 = quest:GetStateBool("TradersShouldBeScared")
         end

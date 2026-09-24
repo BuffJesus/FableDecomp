@@ -45,7 +45,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | DarkwoodRockTroll | Init | 0x00e03bf0 | True | 0 |
 | Q_TraderEscort | DarkwoodRockTroll | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | DarkwoodRockTroll | OnPredicateFail | 0x00e03b00 | True | 0 |
-| Q_TraderEscort | MagicBarrier | Main | 0x00e03f70 | True | 24 |
+| Q_TraderEscort | MagicBarrier | Main | 0x00e03f70 | True | 0 |
 | Q_TraderEscort | MagicBarrier | Init | 0x00e03f30 | True | 0 |
 | Q_TraderEscort | MagicBarrier | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | MagicBarrier | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -65,9 +65,9 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | DW5_Bandit | Init | 0x00e047a0 | True | 0 |
 | Q_TraderEscort | DW5_Bandit | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | DW5_Bandit | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_TraderEscort | EndTrader | Main | 0x00e055b0 | True | 27 |
+| Q_TraderEscort | EndTrader | Main | 0x00e055b0 | True | 11 |
 | Q_TraderEscort | EndTrader | Init | 0x00e04b50 | True | 0 |
 | Q_TraderEscort | EndTrader | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | EndTrader | OnPredicateFail | 0x00e04ae0 | True | 0 |
 
-Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 153}`
+Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 113}`

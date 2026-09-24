@@ -1727,7 +1727,10 @@ def fold_position_reads(text):
         text = re.sub(r'\*\(float \*\)\(' + re.escape(v) + r' \+ (?:4|0x4)\)', v + '.y', text)
         text = re.sub(r'\*\(float \*\)\(' + re.escape(v) + r' \+ (?:8|0x8)\)', v + '.z', text)
         text = re.sub(r'\*\(float \*\)' + re.escape(v) + r'\b', v + '.x', text)
-        text = re.sub(r'\*' + re.escape(v) + r'\b', v + '.x', text)
+        # (not a vtable-call head: the register is reused, and `(**(code **)(*piVar5 + 0x5ec))(piVar5,..)` is the
+        # interface's PauseAllNonScriptedEntities while piVar5 = *(int **)(this + 4) -- EndTrader Main had twelve
+        # such calls turned into `piVar5.x + 0x5ec` TODOs, so its movies never paused the world, 2026-09-24)
+        text = re.sub(r'(?<!\(\*\*\(code \*\*\)\()\*' + re.escape(v) + r'\b', v + '.x', text)
         text = re.sub(r'\b' + re.escape(v) + r'\[1\]', v + '.y', text)
         text = re.sub(r'\b' + re.escape(v) + r'\[2\]', v + '.z', text)
         text = re.sub(r'\(float\)' + re.escape(v) + r'\.([xyz])\b', v + r'.\1', text)
@@ -1772,6 +1775,25 @@ def fold_by_value_thing_release(text):
     return text
 
 
+RE_THING_COPY_FROM_POINTER = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<info>\w+) = \*\(int \*\*\)\((?P<src>\w+) \+ 0x8\);[ \t]*\r?\n'
+    r'[ \t]*(?P<data>\w+) = \*\(undefined4 \*\)\((?P=src) \+ 0x4\);[ \t]*\r?\n'
+    r'[ \t]*if \((?P<dst>\w+)\._8_4_ != (?P=info)\) \{[ \t]*\r?\n'
+    r'[ \t]*(?P=dst)\._4_4_ = (?P=data);[ \t]*\r?\n'
+    r'[ \t]*(?P=dst)\._8_4_ = (?P=info);[ \t]*\r?\n'
+    r'[ \t]*if \((?P=info) != \(int \*\)0x0\) \{[ \t]*\r?\n'
+    r'[ \t]*\*(?P=info) = \*(?P=info) \+ 1;[ \t]*\r?\n'
+    r'[ \t]*\}[ \t]*\r?\n'
+    r'[ \t]*\}[ \t]*\r?\n', re.M)
+
+
+def fold_thing_copy_from_pointer(text):
+    """`CScriptThing::operator=` inlined from a returned thing pointer (read Info/Data, compare, store, retain):
+    `dst = src` (MagicBarrier Main 0x00E03F70 keeps each CreateEffectAtPos result in a stack thing it later
+    removes; lifted raw the copy was four TODOs and the effect handle was lost, 2026-09-24)."""
+    return RE_THING_COPY_FROM_POINTER.sub(lambda m: f"{m.group('ind')}{m.group('dst')} = (CScriptThing *){m.group('src')};\n", text)
+
+
 def fold_char_flags(text):
     """A byte flag (`cVar = '\\0'` / `'\\x01'`, tested `cVar != '\\0'`) mixes numeric literals with boolean tests once
     lifted: `cVar = 0 ... if cVar then` is always taken (0 is truthy in Lua) and `if not cVar then` never is. When a
@@ -1811,6 +1833,18 @@ def lower_after_annotate(text, thing_slots=None):
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
     text = fold_by_value_thing_release(text)
+    text = fold_thing_copy_from_pointer(text)
+    # a no-operand thing method called through the stack thing's own vtable word (`(**(code **)(X._0_4_ + 0x12c))()`
+    # = X.IsAlive()) on a slot the function uses as a CScriptThing (MagicBarrier's force-field handles, 2026-09-24)
+    if thing_slots:
+        things = set(re.findall(r'\(CScriptThing \*\)(\w+)\b', text)) | set(re.findall(r'^[ \t]*undefined1 (\w+) \[12\];', text, re.M))
+        def own_vtable_call(m):
+            entry = thing_slots.get(int(m.group(2), 0))
+            name = entry[0] if isinstance(entry, tuple) else entry
+            if m.group(1) not in things or not name or not str(entry[1] if isinstance(entry, tuple) else '').endswith('XZ'):
+                return m.group(0)
+            return f'CScriptThing::{name}({m.group(1)})'
+        text = re.sub(r'\(\*\*\(code \*\*\)\((\w+)\._0_4_ \+ (0x[0-9a-f]+)\)\)\(\)', own_vtable_call, text)
     text = fold_char_flags(text)
     # `MsgGetThingsKilled(thing, &uidVector)` (retail vtable 0xDC: bool + a std::vector<ulong> the script frees):
     # the sidecar binding (2026-09-21) owns that vector and returns the count, so the out operand, its zeroing
