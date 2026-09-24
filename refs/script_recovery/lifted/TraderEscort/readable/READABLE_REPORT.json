@@ -13207,179 +13207,179 @@
          16
         ],
         "bVar2_5": [
-         50
+         49
         ],
         "bVar2_6": [
-         53
+         52
         ],
         "bVar2_7": [
-         60
+         59
         ],
         "bVar2_8": [
-         62
+         61
         ],
         "bVar2_9": [
-         64
+         63
         ],
         "bVar2_10": [
-         67,
-         72
+         66,
+         71
         ],
         "bVar2_11": [
-         70
+         69
         ],
         "bVar2_12": [
-         74
+         73
         ],
         "bVar2_13": [
-         79
+         78
         ],
         "bVar2_14": [
-         82,
-         87
+         81,
+         86
         ],
         "bVar2_15": [
-         85
+         84
         ],
         "bVar2_16": [
-         89
+         88
         ],
         "bVar2_17": [
-         97
+         96
         ],
         "bVar2_18": [
-         101
+         100
         ],
         "bVar2_19": [
-         106
+         105
         ],
         "bVar2_20": [
-         112,
-         370
+         111,
+         369
         ],
         "bVar2_21": [
-         115
+         114
         ],
         "bVar2_22": [
-         117,
-         123
+         116,
+         122
         ],
         "bVar2_23": [
-         126
+         125
         ],
         "bVar2_24": [
-         129,
-         134
+         128,
+         133
         ],
         "bVar2_25": [
-         132
+         131
         ],
         "bVar2_26": [
-         136
+         135
         ],
         "bVar2_27": [
-         141
+         140
         ],
         "bVar2_28": [
-         143,
-         149
+         142,
+         148
         ],
         "bVar2_29": [
-         152
+         151
         ],
         "bVar2_30": [
-         164
+         163
         ],
         "bVar2_31": [
-         180,
-         186
+         179,
+         185
         ],
         "bVar2_32": [
-         190
+         189
         ],
         "bVar2_33": [
-         200
+         199
         ],
         "bVar2_34": [
-         204
+         203
         ],
         "bVar2_35": [
-         206,
-         212
+         205,
+         211
         ],
         "bVar2_36": [
-         216
+         215
         ],
         "bVar2_37": [
-         220
+         219
         ],
         "bVar2_38": [
-         222
+         221
         ],
         "bVar2_39": [
-         226
+         225
         ],
         "bVar2_40": [
-         236
+         235
         ],
         "bVar2_41": [
-         248
+         247
         ],
         "bVar2_42": [
-         254
+         253
         ],
         "bVar2_43": [
-         262,
-         378
+         261,
+         377
         ],
         "bVar2_44": [
-         271
+         270
         ],
         "bVar2_45": [
-         279
+         278
         ],
         "bVar2_46": [
-         284
+         283
         ],
         "bVar2_47": [
-         291,
-         293
+         290,
+         292
         ],
         "bVar2_48": [
-         297
+         296
         ],
         "bVar2_49": [
-         302
+         301
         ],
         "bVar2_50": [
-         307
+         306
         ],
         "bVar2_51": [
-         320
+         319
         ],
         "bVar2_52": [
-         325
+         324
         ],
         "bVar2_53": [
-         336
+         335
         ],
         "bVar2_54": [
-         346
+         345
         ],
         "bVar2_55": [
-         351
+         350
         ],
         "bVar2_56": [
-         362
+         361
         ],
         "bVar2_57": [
-         376
+         375
         ],
         "bVar2_58": [
-         382
+         381
         ],
         "bVar2_59": [
-         390
+         389
         ]
        }
       },
@@ -13394,13 +13394,13 @@
          26
         ],
         "pCVar4_3": [
-         192
+         191
         ],
         "pCVar4_4": [
-         194
+         193
         ],
         "pCVar4_5": [
-         219
+         218
         ]
        }
       },
@@ -13409,19 +13409,19 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "pCVar7_1": [
-         55
+         54
         ],
         "pCVar7_2": [
-         255
+         254
         ],
         "pCVar7_3": [
-         280
+         279
         ],
         "pCVar7_4": [
-         315
+         314
         ],
         "pCVar7_5": [
-         385
+         384
         ]
        }
       },
@@ -13430,17 +13430,17 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "iVar8_1": [
-         94,
-         99
+         93,
+         98
         ],
         "iVar8_2": [
-         287
+         286
         ],
         "iVar8_3": [
-         330
+         329
         ],
         "iVar8_4": [
-         356
+         355
         ]
        }
       },
@@ -13449,13 +13449,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "bVar14_1": [
-         52
+         51
         ],
         "bVar14_2": [
-         253
+         252
         ],
         "bVar14_3": [
-         278
+         277
         ]
        }
       },
@@ -13464,14 +13464,14 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "cVar3_1": [
-         172
+         171
         ],
         "cVar3_2": [
-         196
+         195
         ],
         "cVar3_3": [
-         299,
-         304
+         298,
+         303
         ]
        }
       },
@@ -13480,13 +13480,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "pCVar6_1": [
-         47
+         46
         ],
         "pCVar6_2": [
-         108
+         107
         ],
         "pCVar6_3": [
-         339
+         338
         ]
        }
       },
@@ -13495,10 +13495,10 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "c_stk_c1_1": [
-         331
+         330
         ],
         "c_stk_c1_2": [
-         357
+         356
         ]
        }
       },
@@ -13507,13 +13507,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         165
+         164
         ],
         "native_arg_sequence_1_2": [
-         167,
-         169,
-         174,
-         176
+         166,
+         168,
+         173,
+         175
         ]
        }
       },
@@ -13525,7 +13525,7 @@
          20
         ],
         "r2_2": [
-         154
+         153
         ]
        }
       },
@@ -13534,10 +13534,10 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "uVar15_1": [
-         314
+         313
         ],
         "uVar15_2": [
-         384
+         383
         ]
        }
       },
@@ -13549,7 +13549,7 @@
          21
         ],
         "xStack_60_2": [
-         155
+         154
         ]
        }
       },
@@ -13561,7 +13561,7 @@
          30
         ],
         "xStack_b0_2": [
-         224
+         223
         ]
        }
       },
@@ -13570,10 +13570,10 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "x_stk_d0_1": [
-         103
+         102
         ],
         "x_stk_d0_2": [
-         195
+         194
         ]
        }
       }
@@ -13581,138 +13581,138 @@
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-       "165": "            native_arg_sequence_1_1 = false\n"
+       "164": "            native_arg_sequence_1_1 = false\n"
       }
      },
      "inlinedLiteralLocals": {
       "bVar14_1": {
        "literal": "false",
-       "definitionLine": 52,
+       "definitionLine": 51,
        "readLines": [
-        56
+        55
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "52": "        bVar14_1 = false\n",
-        "56": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, bVar14_1)\n"
+        "51": "        bVar14_1 = false\n",
+        "55": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, bVar14_1)\n"
        }
       },
       "bVar14_2": {
        "literal": "false",
-       "definitionLine": 253,
+       "definitionLine": 252,
        "readLines": [
-        256
+        255
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "253": "            bVar14_2 = false\n",
-        "256": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, bVar14_2, b3)\n"
+        "252": "            bVar14_2 = false\n",
+        "255": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, bVar14_2, b3)\n"
        }
       },
       "bVar14_3": {
        "literal": "true",
-       "definitionLine": 278,
+       "definitionLine": 277,
        "readLines": [
-        281
+        280
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "278": "            bVar14_3 = true\n",
-        "281": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", bVar14_3)\n"
+        "277": "            bVar14_3 = true\n",
+        "280": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", bVar14_3)\n"
        }
       },
       "bVar2_6": {
        "literal": "true",
-       "definitionLine": 53,
+       "definitionLine": 52,
        "readLines": [
-        56
+        55
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "53": "        bVar2_6 = true\n",
-        "56": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, (false))\n"
+        "52": "        bVar2_6 = true\n",
+        "55": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, (false))\n"
        }
       },
       "bVar2_42": {
        "literal": "true",
-       "definitionLine": 254,
+       "definitionLine": 253,
        "readLines": [
-        256
+        255
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "254": "            bVar2_42 = true\n",
-        "256": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, (false), b3)\n"
+        "253": "            bVar2_42 = true\n",
+        "255": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, (false), b3)\n"
        }
       },
       "bVar2_45": {
        "literal": "true",
-       "definitionLine": 279,
+       "definitionLine": 278,
        "readLines": [
-        281
+        280
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "279": "            bVar2_45 = true\n",
-        "281": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", (true))\n"
+        "278": "            bVar2_45 = true\n",
+        "280": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", (true))\n"
        }
       },
       "bVar2_52": {
        "literal": "false",
-       "definitionLine": 325,
+       "definitionLine": 324,
        "readLines": [
-        326
+        325
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "325": "                bVar2_52 = false\n",
-        "326": "                if bVar2_52 then\n"
+        "324": "                bVar2_52 = false\n",
+        "325": "                if bVar2_52 then\n"
        }
       },
       "bVar2_55": {
        "literal": "false",
-       "definitionLine": 351,
+       "definitionLine": 350,
        "readLines": [
-        352
+        351
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "351": "                bVar2_55 = false\n",
-        "352": "                if bVar2_55 then\n"
+        "350": "                bVar2_55 = false\n",
+        "351": "                if bVar2_55 then\n"
        }
       },
       "uVar15_1": {
        "literal": "0",
-       "definitionLine": 314,
+       "definitionLine": 313,
        "readLines": [
-        316
+        315
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "314": "            uVar15_1 = 0\n",
-        "316": "            quest:DeactivateQuestLater(pCVar7_4, uVar15_1)\n"
+        "313": "            uVar15_1 = 0\n",
+        "315": "            quest:DeactivateQuestLater(pCVar7_4, uVar15_1)\n"
        }
       },
       "uVar15_2": {
        "literal": "0",
-       "definitionLine": 384,
+       "definitionLine": 383,
        "readLines": [
-        386
+        385
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
-        "384": "        uVar15_2 = 0\n",
-        "386": "        quest:DeactivateQuestLater(pCVar7_5, uVar15_2)\n"
+        "383": "        uVar15_2 = 0\n",
+        "385": "        quest:DeactivateQuestLater(pCVar7_5, uVar15_2)\n"
        }
       }
      },
@@ -13720,7 +13720,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 625,
+     "sourceLine": 624,
      "locals": {
       "native_arg_Me": {
        "name": "me",
@@ -13915,7 +13915,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 705,
+     "sourceLine": 704,
      "locals": {
       "native_arg_Trader": {
        "name": "trader",
@@ -14100,7 +14100,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 788,
+     "sourceLine": 787,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -15656,7 +15656,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 399,
+     "sourceLine": 398,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15665,7 +15665,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 455,
+     "sourceLine": 454,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15674,7 +15674,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 481,
+     "sourceLine": 480,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15982,7 +15982,7 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 358,
+       "lines": 357,
        "temporaries": 72,
        "labels": 24,
        "gotos": 46,
@@ -15991,7 +15991,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 216,
+       "lines": 215,
        "temporaries": 7,
        "labels": 19,
        "gotos": 36,

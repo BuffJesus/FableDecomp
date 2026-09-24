@@ -1876,8 +1876,9 @@ def lower_after_annotate(text, thing_slots=None):
     # retail makes ONE call, the object is its out-parameter. Emitting both started two sequences, and retail
     # StartMovieSequence (0x89B110) yields every frame while `GSI+0x2c` (a sequence is active) is set -- the second
     # call parked the coroutine for good (ApprenticeSpeedTest's boast, 2026-09-19). Drop the GSI call.
+    # (the object operand may carry a pointer cast: Trader Escort's intro prints `(CScriptThing *)xStack_50`)
     for movie in set(re.findall(r'^[ \t]*(\w+) = RESOURCE_StartMovie\(', text, re.M)):
-        text = re.sub(r'^[ \t]*GSI->StartMovieSequence\([^;,]+,\s*&?' + re.escape(movie) + r'\);[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*GSI->StartMovieSequence\([^;,]+,\s*(?:\(\w+ \*\))?&?' + re.escape(movie) + r'\);[ \t]*\r?\n', '', text, flags=re.M)
     # the same call printed without its operands (an untyped decompile: TraderToRescue 0x00DFE0F0 prints
     # `(**(code **)(.. + 0x5c8))();`) right after the movie ctor (only the name's CCharString ctor between them)
     text = re.sub(r'^([ \t]*\w+ = RESOURCE_StartMovie\([^\n]*\n(?:[ \t]*CCharString::CCharString\([^\n]*\n)?)[ \t]*GSI->StartMovieSequence\(\);[ \t]*\r?\n',

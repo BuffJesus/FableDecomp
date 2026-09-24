@@ -369,7 +369,6 @@
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacro",
@@ -503,7 +502,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 419,
+          "lines": 418,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -120,5 +120,18 @@ class OutThingMessages(unittest.TestCase):
             self.assertEqual(out_thing_messages(path, manifest), frozenset({'MsgOnHeroPickedPocket'}))
 
 
+class MovieStartsOnce(unittest.TestCase):
+    # WatchForMissionRules 0x00E06440: the movie object operand is printed with a pointer cast
+    def test_cast_movie_operand_drops_the_second_start(self):
+        from tools.script_recovery.native_evidence_lowering import lower_after_annotate
+        text = ('    xStack_50 = RESOURCE_StartMovie("");\n'
+                '    CCharString::CCharString(&xStack_f0,"");\n'
+                '    GSI->StartMovieSequence(&xStack_f0,(CScriptThing *)xStack_50);\n'
+                '    GSI->PauseAllNonScriptedEntities(true);\n')
+        out = lower_after_annotate(text)
+        self.assertIn('RESOURCE_StartMovie', out)
+        self.assertNotIn('StartMovieSequence', out)
+
+
 if __name__ == '__main__':
     unittest.main()
