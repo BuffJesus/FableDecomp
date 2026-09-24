@@ -1,0 +1,59 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 2dc3e38..b639cc8 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -226,10 +226,40 @@ sol::table LuaQuestState::GetFSEInfo(sol::this_state s) {
+     return result;
+ }
+ 
++// A thread argument belongs to the state that called CreateThread -- an entity script's own sol::state
++// when an entity starts a parent-quest worker (`quest:CreateThread("WatchForPickpocketing", {args = {me}})`).
++// A sol::object is a registry reference into THAT state; resumed in the quest's state it names whatever
++// sits at the same index there (Trader Escort, 2026-09-24: `trader` arrived as un-indexable userdata).
++// Rebuild each argument in the quest's state: primitives by value, a thing as an OWNING copy (retail
++// passes the CScriptThing by value; `me` is a non-owning handle to the entity host, which can die first).
++static sol::object MarshalThreadArg(const sol::object& arg, lua_State* targetL) {
++    switch (arg.get_type()) {
++    case sol::type::lua_nil: case sol::type::none: return sol::make_object(targetL, sol::lua_nil);
++    case sol::type::boolean: return sol::make_object(targetL, arg.as<bool>());
++    case sol::type::number: {   // Lua 5.4: keep the integer/float subtype
++        arg.push(); const bool isInteger = lua_isinteger(arg.lua_state(), -1) != 0; lua_pop(arg.lua_state(), 1);
++        return isInteger ? sol::make_object(targetL, arg.as<lua_Integer>()) : sol::make_object(targetL, arg.as<lua_Number>());
++    }
++    case sol::type::string: return sol::make_object(targetL, arg.as<std::string>());
++    default: break;
++    }
++    if (arg.is<std::shared_ptr<CScriptThing>>()) {
++        std::shared_ptr<CScriptThing> source = arg.as<std::shared_ptr<CScriptThing>>();
++        if (!source || !Game_malloc) return sol::make_object(targetL, sol::lua_nil);
++        CScriptThing* copy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++        if (!copy) throw std::runtime_error("CreateThread: out of memory copying a thing argument");
++        memcpy(copy, source.get(), sizeof(CScriptThing));
++        return sol::make_object(targetL, WrapScriptThingOutput(copy, true));
++    }
++    throw std::runtime_error("CreateThread: thread arguments must be nil, bool, number, string or a thing (got "
++        + std::string(sol::type_name(arg.lua_state(), arg.get_type())) + ")");
++}
++
+ void LuaQuestState::CreateThread(const std::string& luaFunctionName, sol::table args) {
+     if (!m_pParentHost) {
+         return;
+     }
++    lua_State* questL = m_pParentHost->GetLuaState()->lua_state();
+ 
+     std::string regionName = m_pParentHost->DefaultThreadRegion(); 
+     std::vector<sol::object> threadArgsVec;
+@@ -243,11 +273,11 @@ void LuaQuestState::CreateThread(const std::string& luaFunctionName, sol::table
+             if (argsForThreadObj.is<sol::table>()) {
+                 sol::table threadArgsTable = argsForThreadObj.as<sol::table>();
+                 for (size_t i = 1; i <= threadArgsTable.size(); ++i) {
+-                    threadArgsVec.push_back(threadArgsTable[i]);
++                    threadArgsVec.push_back(MarshalThreadArg(threadArgsTable[i], questL));
+                 }
+             }
+             else {
+-                threadArgsVec.push_back(argsForThreadObj);
++                threadArgsVec.push_back(MarshalThreadArg(argsForThreadObj, questL));
+             }
+         }
+     }

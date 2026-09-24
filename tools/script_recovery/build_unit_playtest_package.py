@@ -139,7 +139,7 @@ def main():
     a.add_argument('--stage', type=Path, default=ROOT / 'work' / 'unit_playtest_stage')
     a.add_argument('--dll', type=Path, default=WORK / 'sidecar-abi-v2' / 'Release' / 'FableScriptExtender.dll')
     a.add_argument('--template', type=Path, default=WORK / 'local-candidate-v2')
-    a.add_argument('--bundle', type=Path, default=WORK / 'local-candidate-v5')
+    a.add_argument('--bundle', type=Path, required=True)   # no default: a default once overwrote an old bundle
     args = a.parse_args()
     staged = stage(args.unit, args.oakvale, args.stage, args.gameflow)
     print('staged', staged)
