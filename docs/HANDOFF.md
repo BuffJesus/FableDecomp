@@ -1,30 +1,31 @@
-# Lua recovery handoff - 2026-09-23
+# Lua recovery handoff - 2026-09-24
 
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
-Branch: `feat/novi-script-recovery`. This is the bedtime checkpoint; resume
-implementation next session. Task priorities live in [ROADMAP.md](ROADMAP.md).
+Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
-Trader Escort is an unfinished, disabled draft: 98 native bodies, 14 entity
-bindings, all four quest workers preserved, and 65 generated functions.
-Current result: **298 TODOs; draft 14/16 files compile; readable 15/17;
-5 smoke problems**. It has not been packaged or tested in game.
+Trader Escort is an unfinished, disabled draft (98 native bodies, 14 entity
+bindings, 4 quest workers, 65 generated functions). As of 2026-09-24:
+**175 TODOs; 65/65 functions and 16/16 files compile; smoke 1 problem**
+(draft and readable). Not packaged or tested in game.
 
-**2026-09-24 update:** converter uses RET-proven callee purges, pairs
-code-pointer calls, folds vector register aliases; the peer session's
-depth-fixed export is promoted for Trader Escort. Trader Escort: **186 -> 175 TODOs,
-16/16 files, smoke 1 problem** after parent-worker spawns lowered to
-`CreateThread(name, {args = {me}})` (175 TODOs). Open: dead byte-merge
-`extraout_EAX` noise in DarkwoodTrader (liveness), inlined CScriptThing copy of
-`speaker` in MakeTraderComment, `AddQuestInfoBarHealth` colour operand. New exports for
-the other 15 units wait in `work/ebp_fix/` (promote after diff review; the
-exporter fix is committed as fa56828). See the
-journal's 2026-09-24 sections.
+Done 2026-09-24 (see the journal's 2026-09-24 sections): RET-proven callee
+purges, code-pointer call pairing, vector register aliases, parent-worker
+spawns as `CreateThread(name, {args = {me}})`, the depth-fixed export
+(fa56828) promoted for Trader Escort and Orchard (diff-reviewed), and the
+SCRIPT_DEF table corrected (leading block is PDB - 4; the middle zone
+0x258..0xd60 is unproven and stays numeric in readables).
 
-Resume with [the conversion journal](journal/2026-09/TRADER_ESCORT_CONVERSION_2026-09-23.md)
-and native/PDB evidence in `refs/script_recovery/trader_escort/`.
-Repair MakeTraderComment operand/type recovery first (numeric receiver for
-GetDataString), then DarkwoodTrader resource/vector operands, TraderComment
-local-vector iteration, and captured thing arguments in parent worker spawns.
+Next, in order:
+1. DarkwoodTrader's remaining smoke problem: dead byte-merge noise
+   (`CONCAT31((int3)(extraout_EAX >> 8), ...)`) needs a liveness pass.
+2. MakeTraderComment: inlined CScriptThing copy/assign of `speaker`
+   (vtable store + refcount), then `AddQuestInfoBarHealth`'s colour operand.
+3. Promote `work/ebp_fix/<unit>_typed.json` for the other 13 units, one at a
+   time: regenerate into work/, review the diff, then promote. Playtested
+   units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
+4. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object
+   settles it).
+
 Change generators and evidence, never generated Lua by hand.
 
 From the repository root:
@@ -36,8 +37,9 @@ python -m tools.script_recovery.smoke_run_unit --unit trader_escort --stage draf
 ```
 
 Read the smoke JSON: the command can exit successfully with reported problems.
-Final checkpoint: **137 focused offline tests passed**; exact command is in the
-conversion journal. Established-unit regeneration checks are recorded there.
+Focused offline tests: **168 passed** (2026-09-24); the base command is in the
+conversion journal, plus the `test_callee_purge_pairing`, `test_vector_register_aliases`,
+`test_spawn_capture`, `test_script_def_offsets` and `test_readable_*` modules. Established-unit regeneration checks are recorded there.
 The broad suite was cancelled; no new full-suite pass is claimed.
 
 Live baseline: **v13** (= v12 + `SetQuestAsFailed` binding fix + regenerated Orchard,
