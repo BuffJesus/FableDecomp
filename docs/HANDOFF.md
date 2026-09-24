@@ -9,6 +9,13 @@ bindings, all four quest workers preserved, and 65 generated functions.
 Current result: **298 TODOs; draft 14/16 files compile; readable 15/17;
 5 smoke problems**. It has not been packaged or tested in game.
 
+**2026-09-24 update:** converter now uses RET-proven callee purges and pairs
+code-pointer calls; with the peer session's EBP exporter fix (uncommitted
+re-export) Trader Escort is at **185 TODOs, 16/16 files, 3 smoke problems**.
+Open: exporter depth bug at 0xE019F2 (reported to the exporter owner),
+inlined CScriptThing copy of `speaker`, DarkwoodTrader Init `auVar5`,
+TraderComment vector loop. See the journal's 2026-09-24 section.
+
 Resume with [the conversion journal](journal/2026-09/TRADER_ESCORT_CONVERSION_2026-09-23.md)
 and native/PDB evidence in `refs/script_recovery/trader_escort/`.
 Repair MakeTraderComment operand/type recovery first (numeric receiver for

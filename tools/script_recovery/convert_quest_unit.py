@@ -325,6 +325,62 @@ def _balanced(text):
             return False
     return depth == 0
 
+_CALLEE_WORDS = {}
+
+
+def callee_stack_words(target):
+    """Stack words a direct callee purges, read from its RETs in the retail bytes (read-only): every `ret N`
+    reached by a linear sweep up to the first int3 padding must agree. None when the bytes are unavailable,
+    the sweep finds no RET (a jump thunk) or the RETs disagree. A `ret` (N = 0) is 0: a caller-cleaned
+    callee's `add esp` is the caller's business (see `caller_cleanup_words`).
+    (GetDataString 0x004AA900: `ret 4` on both paths = its hidden CCharString result; AppendData 0x0099F570,
+    AppendCString 0x0099F600, operator+ 0x0099F690: `ret 4`.)"""
+    if target is None:
+        return None
+    if target in _CALLEE_WORDS:
+        return _CALLEE_WORDS[target]
+    words = None
+    try:
+        from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+        from tools.script_recovery.lift_native_lua import RData
+        if not hasattr(callee_stack_words, 'rdata'):
+            callee_stack_words.rdata = RData()
+        raw = callee_stack_words.rdata.bytes_at(target, 0x800)
+        if raw:
+            rets = set()
+            for ins in Cs(CS_ARCH_X86, CS_MODE_32).disasm(raw, target):
+                if ins.mnemonic == 'ret':
+                    rets.add(int(ins.op_str, 0) if ins.op_str else 0)
+                elif ins.mnemonic == 'int3':
+                    break
+            if len(rets) == 1:
+                n = rets.pop()
+                words = n // 4 if n % 4 == 0 else None
+    except ImportError:
+        words = None
+    _CALLEE_WORDS[target] = words
+    return words
+
+
+def caller_cleanup_words(insns, i):
+    """Stack words the caller pops right after the call at insns[i] (`add esp, N`, a __cdecl callee)."""
+    nxt = insns[i + 1] if i + 1 < len(insns) else None
+    if nxt is not None and nxt.mnemonic == 'add' and nxt.op_str.startswith('esp, '):
+        try:
+            n = int(nxt.op_str.split(', ', 1)[1], 0)
+        except ValueError:
+            return None
+        return n // 4 if n % 4 == 0 else None
+    return 0
+
+
+def _site_target(site):
+    try:
+        return int(site.get('target', ''), 16)
+    except (TypeError, ValueError):
+        return None
+
+
 def _align(site, args, vtable=False, receiver_printed=False):
     '''Entry-relative slots aligned with the printed arguments of one call, or None when the printed count
     cannot be reconciled with the recorded register/push operands (a by-value slot, a hidden return pointer
@@ -353,6 +409,15 @@ def _align(site, args, vtable=False, receiver_printed=False):
         # the derived object one word below the base the acquire calls name -- aligning those split the resource
         # identity and broke every ACTORMAP_Set fold in CombatApprentice)
         pushed, values = [], []
+    words = callee_stack_words(_site_target(site)) if not vtable and ecx is not None and len(pushed) > len(args) - 1 else None
+    if words is not None and len(args) == 1 + words:
+        # a direct `__thiscall` whose stack purge is proven from its RET: only its nearest `words` pushes are
+        # its own, the earlier ones are the NEXT call's operands VC7.1 pushed first (MakeTraderComment
+        # 0x00E022DF: GetDataString's record holds AddLineToConversation's hero / thing / flag and the concat
+        # literals before its hidden result; unaligned, the receiver stayed Ghidra's drifted `auStack_24 + 4`
+        # and lowered as the EH state constant 31). A __thiscall takes no EDX operand: a recorded edx is the
+        # `lea edx` that fed one of the pushes.
+        pushed, values, edx = pushed[:words], values[:words], None
     lead = len(args) - len(pushed)          # printed register arguments (this / __fastcall ecx, edx)
     # (a truncated record on a `__thiscall` site -- the export's backward scan stopped at a call between the
     # pushes, `CreateObject(&r, &def, GetPos(marker), &script)` -- is NOT padded into an alignment: when the
@@ -413,6 +478,53 @@ RE_VCALL_HEAD_ANY = re.compile(
     r'|\(\*\*\(code \*\*\)\*\w+\)\s*\(')
 
 
+RE_PTR_CALL_HEAD = re.compile(r'\(\*\(code \*\)PTR_\w*?_(?P<addr>[0-9a-f]{8})\)\s*\(')
+RE_PTR_INDEX_CALL_HEAD = re.compile(r'\(\*\(code \*\)(?P<base>[A-Za-z_]\w*)\[(?P<index>0x[0-9a-f]+)\]\)\s*\(')
+
+
+def _code_pointer(va):
+    """The dword stored at `va` in the retail image (a code pointer in .rdata), or None."""
+    try:
+        from tools.script_recovery.lift_native_lua import RData
+    except ImportError:
+        return None
+    if not hasattr(callee_stack_words, 'rdata'):
+        callee_stack_words.rdata = RData()
+    raw = callee_stack_words.rdata.bytes_at(va, 4)
+    return struct.unpack('<I', raw)[0] if raw else None
+
+
+def respell_code_pointer_calls(text, fn):
+    """A direct call made through a .rdata code pointer, printed without its receiver
+    (`(*(code *)PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)()` / `(*(code *)local_30[0x4b])()`), is respelled
+    as the labelled call the export records at that site, `CScriptThing::_IsAlive_CScriptThing__UBE_NXZ(
+    (CScriptThing *)&xStack_30)`, with the receiver slot the site's `lea ecx` names. Only receiver-only
+    calls (no printed operands, a callee whose RET purges no stack operand -- the export's push record may hold the
+    NEXT call's early pushes, 0x00E01938) whose pointer holds the site's target are respelled."""
+    ordered = _text_order_sites(text, fn)
+    if not ordered:
+        return text
+    edits = []
+    for a, e, args, site, key, vtable in ordered:
+        ecx = site.get('ecxStack')
+        if vtable or any(x.strip() for x in args) or ecx is None or ecx >= 0 or callee_stack_words(_site_target(site)) != 0:
+            continue
+        head = None
+        for rx in (RE_PTR_CALL_HEAD, RE_PTR_INDEX_CALL_HEAD, RE_VCALL_HEAD):     # (a vtable head paired to a direct site: its pointer was checked)
+            for m in rx.finditer(text, max(0, a - 120), a):
+                if m.end() == a:
+                    head = m
+        if head is None:
+            continue
+        label = re.sub(r'[^\w:]', '_', site.get('currentName') or '')
+        if not label.startswith('CScriptThing::'):
+            continue
+        edits.append((head.start(), e, f'{label}((CScriptThing *)&xStack_{-ecx:x}'))
+    for start, end, repl in sorted(edits, reverse=True):
+        text = text[:start] + repl + text[end:]
+    return text
+
+
 def _text_order_sites(text, fn):
     '''Printed calls paired with export sites through `callOrder` (the call ops in the order the decompiler's
     token stream prints them). Every printed call head (vtable head or labelled direct call) is located in
@@ -436,6 +548,26 @@ def _text_order_sites(text, fn):
             j += 1
         slot = int(m.group('slot'), 0) if m.group('slot') else 4 * int(m.group('index')) if m.group('index') else 0
         heads.append((m.start(), m.end(), j - 1, hex(slot), True))
+    # a direct call made through a code pointer in .rdata (`call [0x01238DB8]`, a CScriptThing vtable entry VC7.1
+    # called non-virtually: MakeTraderComment 0x00E01938 IsAlive) prints as `(*(code *)PTR_<name>_<addr>)(`; the
+    # export records it as a direct call to the pointer's target. Keyed by that target, checked in the pairing.
+    for m in RE_PTR_CALL_HEAD.finditer(text):
+        j, depth = m.end(), 1
+        while j < len(text) and depth:
+            depth += {'(': 1, ')': -1}.get(text[j], 0)
+            j += 1
+        heads.append((m.start(), m.end(), j - 1, ('ptr', int(m.group('addr'), 16)), False))
+    # ... or through a local Ghidra saw loaded with that vtable's address (`local_30 = &PTR_..._01238c8c;` then
+    # `(*(code *)local_30[0x4b])()`, MakeTraderComment 0x00E019F2): the entry is base + 4 * index
+    for m in RE_PTR_INDEX_CALL_HEAD.finditer(text):
+        bases = set(re.findall(r'(?<![\w.>])' + re.escape(m.group('base')) + r' = &PTR_\w*?_([0-9a-f]{8});', text))
+        if len(bases) != 1:
+            continue
+        j, depth = m.end(), 1
+        while j < len(text) and depth:
+            depth += {'(': 1, ')': -1}.get(text[j], 0)
+            j += 1
+        heads.append((m.start(), m.end(), j - 1, ('ptr', int(bases.pop(), 16) + 4 * int(m.group('index'), 16)), False))
     labels = {c['currentName'] for c in fn.get('calls', []) if c.get('currentName')}
     for label in labels:
         spans = _call_spans(text, label)
@@ -471,11 +603,28 @@ def _text_order_sites(text, fn):
         if entry is None:
             return None
         site, is_vtable = entry
-        if is_vtable != vtable:
+        if vtable and not is_vtable:
+            # a direct call through a local Ghidra saw loaded with a vtable's address, printed as a vtable head
+            # (`local_30._0_4_ = &PTR_..._01238c8c;` then `(**(code **)(local_30._0_4_ + 300))()`, MakeTraderComment
+            # 0x00E019F2 in the EBP-fixed export): the site when base + slot holds its target
+            head = re.match(r'\(\*\*\(code \*\*\)\((?P<base>[A-Za-z_][\w.]*) \+ (?:0x[0-9a-f]+|\d+)\)\)', text[start:a])
+            ptr = None
+            if head:
+                bases = set(re.findall(r'(?<![\w.>])' + re.escape(head.group('base')) + r' = &PTR_\w*?_([0-9a-f]{8});', text))
+                if len(bases) == 1:
+                    ptr = _code_pointer(int(bases.pop(), 16) + int(key, 16))
+            if ptr is None or ptr != _site_target(site):
+                return None
+            vtable, key = False, site.get('currentName')
+        elif is_vtable != vtable:
             return None
         if vtable:
             if site.get('slot') is not None and hex(int(site['slot'], 16)) != key:
                 return None
+        elif isinstance(key, tuple):
+            if _code_pointer(key[1]) != _site_target(site):
+                return None
+            key = site.get('currentName')
         elif site.get('currentName') != key:
             return None
         if vtable or 'pushedStack' in site or 'ecxStack' in site or 'edxStack' in site:
@@ -1274,6 +1423,7 @@ class UnitConverter:
             return len(found) == len(kinds) and match(0, list(kinds))
 
         pushes_at = {}
+        callee_words = {}   # direct call site -> stack words proven by the callee's RET (caller cleanup added in the walk)
         for c in list(fn.get('calls', [])) + list(fn.get('indirectCalls', [])):
             try:
                 addr = int(c['site'], 16)
@@ -1291,6 +1441,15 @@ class UnitConverter:
                 target = 0
             if target in (0x99F600, 0x99F690):        # CCharString::AppendCString(ecx dest, edx src, [const char*]); operator+(ecx dest, edx lit, [const CCharString&])
                 pushes_at[addr] = 1
+            elif target and c.get('kind') != 'vtable':
+                # a direct callee's own stack operands are what its RET purges, not the export's push record: that
+                # record also swallows the NEXT call's early pushes (MakeTraderComment 0x00E022DF: GetDataString
+                # recorded 7 pushes for its one hidden result; AppendData 0x0099F570 recorded none for its one) and
+                # the walk handed AddLineToConversation the concat literals as operands
+                words = callee_stack_words(target)
+                if words is not None:
+                    callee_words[addr] = words
+                    pushes_at[addr] = words
         by_site = {int(site['site'], 16): (a, e, args) for a, e, args, site, key, vtable in entries}
         entry = int(fn['address'], 16)
         body = None
@@ -1366,6 +1525,10 @@ class UnitConverter:
                     n = pushes_at.get(ins.address)
                     if n is None:
                         return None
+                    if ins.address in callee_words and n == 0:
+                        n = caller_cleanup_words(insns, i)     # a __cdecl callee: the caller's `add esp, N`
+                        if n is None:
+                            return None
                     skipped = collect(insns, i - 1, n, 0)
                     if skipped is None:
                         return None
@@ -1575,7 +1738,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(fold_stack_vector_builds(unwrap_statements(fn['decompile'])), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(unwrap_statements(fn['decompile'])), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in

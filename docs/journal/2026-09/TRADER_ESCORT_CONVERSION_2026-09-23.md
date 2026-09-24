@@ -157,3 +157,48 @@ Staged whitespace review found only generator-emitted blank EOF lines / empty
 TODO argument suffixes in Trader Escort output, plus required blank context
 lines in sidecar patch files. These were preserved to retain reproducibility
 and patch applicability; handwritten source and documentation checks pass.
+
+
+## 2026-09-24: callee purges, code-pointer pairing (offline)
+
+No game launched; no saves or bundles touched. Converter-only changes in
+`convert_quest_unit.py`, tests in `test_callee_purge_pairing.py`.
+
+- **RET-proven callee purges.** `callee_stack_words` reads a direct callee's
+  `ret N` from the retail exe (all RETs must agree). `_align` keeps only the
+  nearest N pushes of an over-long record for a direct `__thiscall`; the
+  record also holds the NEXT call's early pushes. For example, GetDataString
+  0x4AA900 (`ret 4` on both paths) at 0xE022DF recorded 7 pushes, so the
+  receiver stayed `auStack_24 + 4` and lowered as the EH-state constant 31.
+  `recover_dropped_operands` uses the same purges for direct calls, plus the
+  caller's `add esp,N` for cdecl. AppendData 0x99F570 (`ret 4`) was
+  previously counted as 0.
+- **Code-pointer call pairing.** MakeTraderComment's IsAlive is
+  `call [edx+0x12c]` on a local whose vtable Ghidra constant-folded. It
+  prints as `(*(code *)PTR_..._01238db8)()`, `(*(code *)local_30[0x4b])()` or
+  (EBP-fixed export) `(**(code **)(local_30._0_4_ + 300))()`. None matched a
+  head, so `_text_order_sites` gave up on all 174 calls and every
+  pairing-based pass skipped the function. Heads now resolve through the
+  retail pointer and must equal the site's recorded target.
+  `respell_code_pointer_calls` rewrites receiver-only ones as the labelled
+  call on the ECX slot.
+
+Results. With the old export: TODO 298 -> 275, functions 65/65, files 16/16.
+With the peer session's EBP-as-`this` exporter fix (fabletlc-9e, working-tree
+re-export of `translation_unit_typed.json`, not committed by this session):
+**TODO 185, smoke 3 problems**. The remaining problems: DarkwoodTrader Init
+`auVar5` nil bitwise plus free globals, TraderComment `puVar1`
+(local-vector iteration), and one MakeTraderComment object split. That
+split is an exporter depth bug: 0xE019F2 is recorded at depth 64 / -36, but
+the bytes show depth 76 / slot -48, the same speaker copy as 0xE01938. It
+was reported to the peer. The helper's conversation ids and
+AddLine/AddPerson operands are now consistent (`iVar6`, typed pairs).
+MakeTraderComment still has an inlined CScriptThing copy/assign of the
+`speaker` param (vtable store + refcount) that the lifter does not fold.
+
+Validation: 146 focused tests OK (the 137 listed above +
+`test_callee_purge_pairing`). Orchard, Wasp, Guardian Sister and Trader
+Conflict regenerate identical to their saved drafts. Guild differs only in
+the two known empty-guard removals. Trader Escort generated Lua is
+regenerated in the working tree but not committed until the re-exported
+evidence it depends on is committed.
