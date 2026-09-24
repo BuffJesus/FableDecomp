@@ -6,18 +6,25 @@ then `docs/BUILDING.md`. This page covers how work is accepted.
 
 ## What counts as done
 
-Every reconstructed function is graded. Only the last two grades are reported as coverage.
+Every reconstructed function is graded. Functional and matching results are
+reported separately; assembly bakes are not reconstruction credit.
 
 | Grade | Meaning |
 |---|---|
 | `candidate` | Generated or hand-written source exists; nothing verified |
 | `checker-pass` | Structural checker accepts it; still not compiled |
 | `compiled` | Compiles under VC7.1 to an object file |
-| `functional` | Behaviour test passes; `.text` differs from retail only in relocation slots (`RELOCATION_MATCH`) |
-| `matching` | Behaviour test passes and `.text` is byte-identical to retail (`MATCH`) |
+| `functional` | Behaviour tests pass; a documented instruction difference remains (`DIFFER`); useful for integration, not byte-match credit |
+| `matching` | Behaviour tests pass and `.text` matches retail exactly (`MATCH`) or after expected COFF relocations (`RELOCATION_MATCH`) |
 | `asm_bake` | Hand-written `__asm` / `_emit` body. Byte-exact oracle, **not** reconstruction. Lives in `rebuild/src/asm_bake/` and is excluded from the C++ coverage numbers |
 
 "Compiles" is never coverage. "Looks right" is never coverage.
+
+For runnable-engine integration, readable, behavior-verified C++ may proceed with
+a bounded and explained byte difference (project direction, 2026-09-22). Keep the
+retail oracle, record the exact remaining difference, and gate against additional
+drift. Do not spend unbounded time on an equivalent temporary-register choice.
+This does not relax behavior checks or permit counting functional code as matching.
 
 ## Authoring one function
 

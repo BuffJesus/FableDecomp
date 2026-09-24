@@ -1,0 +1,1523 @@
+{
+  "source": "retail frontend.bin UI_SWAPPING_COASTAL (686), UI_SWAPPING_COASTAL_SUNBEAM (687), recursively including frame/tile definitions",
+  "frontend_sha256": "91e51fe10e93f418ad23810489f7d949e84e7619ee6655ac543c63a5e9c6f7bd",
+  "roots": [
+    686,
+    687
+  ],
+  "combined_root": 685,
+  "definitions": {
+    "685": {
+      "name": "UI_BLENDING_BACKGROUNDS_COASTAL",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        687,
+        686
+      ],
+      "states": []
+    },
+    "687": {
+      "name": "UI_SWAPPING_COASTAL_SUNBEAM",
+      "type": 18,
+      "layer": 7,
+      "children": [
+        692,
+        693,
+        694
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "692": {
+      "name": "BLENDING_BG_COASTAL_SUNBEAM_1",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        719,
+        720,
+        721,
+        722,
+        723,
+        724
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "719": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "720": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "721": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "722": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "723": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "724": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_1_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "693": {
+      "name": "BLENDING_BG_COASTAL_SUNBEAM_2",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        725,
+        726,
+        727,
+        728,
+        729,
+        730
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "725": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "726": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "727": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "728": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "729": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "730": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_2_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "694": {
+      "name": "BLENDING_BG_COASTAL_SUNBEAM_3",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        731,
+        732,
+        733,
+        734,
+        735,
+        736
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "731": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "732": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "733": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "734": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "735": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "736": {
+      "name": "UI_FRONTEND_BG_COASTAL_SUNBEAM_3_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "686": {
+      "name": "UI_SWAPPING_COASTAL",
+      "type": 18,
+      "layer": 7,
+      "children": [
+        688,
+        689,
+        690,
+        691
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "688": {
+      "name": "BLENDING_BG_COASTAL_1",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        695,
+        696,
+        697,
+        698,
+        699,
+        700
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "695": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "696": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "697": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "698": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "699": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "700": {
+      "name": "UI_FRONTEND_BG_COASTAL_1_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "689": {
+      "name": "BLENDING_BG_COASTAL_2",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        701,
+        702,
+        703,
+        704,
+        705,
+        706
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "701": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "702": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "703": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "704": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "705": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "706": {
+      "name": "UI_FRONTEND_BG_COASTAL_2_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "690": {
+      "name": "BLENDING_BG_COASTAL_3",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        707,
+        708,
+        709,
+        710,
+        711,
+        712
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 8.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "707": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "708": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "709": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "710": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "711": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "712": {
+      "name": "UI_FRONTEND_BG_COASTAL_3_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "691": {
+      "name": "BLENDING_BG_COASTAL_4",
+      "type": 5,
+      "layer": 0,
+      "children": [
+        713,
+        714,
+        715,
+        716,
+        717,
+        718
+      ],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 0.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        },
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": 2.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "713": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_1",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "714": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_2",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "715": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_3",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 0.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "716": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_4",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 0.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "717": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_5",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 256.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    },
+    "718": {
+      "name": "UI_FRONTEND_BG_COASTAL_4_6",
+      "type": 0,
+      "layer": 0,
+      "children": [],
+      "states": [
+        {
+          "StateChangeFlag": 7,
+          "StateChangeType": 0,
+          "PositionX": 512.0,
+          "PositionY": 256.0,
+          "ZoomX": 1.0,
+          "ZoomY": 1.0,
+          "ColourR": 1.0,
+          "ColourG": 1.0,
+          "ColourB": 1.0,
+          "ColourA": 1.0,
+          "UpdateTime": -1.0,
+          "LinearChange": false
+        }
+      ]
+    }
+  }
+}

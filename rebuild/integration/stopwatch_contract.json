@@ -1,0 +1,143 @@
+{
+  "schema": 1,
+  "compiler_options": [
+    "/nologo",
+    "/c",
+    "/W3",
+    "/MT",
+    "/GS",
+    "/O2",
+    "/Oy"
+  ],
+  "functions": [
+    {
+      "address": "0062f740",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_CStopWatch_0062f740.cpp",
+      "symbol": "??0CStopWatch@@",
+      "compiled_bytes": 74,
+      "retail_bytes": 70,
+      "retail_sha256": "e8040ecb2ec7763135cea4f4d889c275c05dd0b34fcc4e6fa5b297660a4c79d5",
+      "masked_sha256": "16a7be7c20e585068cf99900f325f0c94479d28622a5d2f0651fe60d9ccae7d6",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          32,
+          "dir32",
+          "__imp__QueryPerformanceFrequency@4"
+        ],
+        [
+          48,
+          "dir32",
+          "__real@3ff0000000000000"
+        ],
+        [
+          61,
+          "dir32",
+          "__real@3f800000"
+        ]
+      ]
+    },
+    {
+      "address": "0062f790",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_GetTicks_0062f790.cpp",
+      "symbol": "?GetTicks@CStopWatch@@",
+      "compiled_bytes": 36,
+      "retail_bytes": 36,
+      "retail_sha256": "df09d1c6107c26de3e81b01bca3da2f4b958d5fe11d263150474b88ba64c5745",
+      "masked_sha256": "9ce170806c9a6a8c65f8237413219699f7053018ac8bf643b6b464c63f9e7252",
+      "grade": "matching",
+      "relocation_symbols": [
+        [
+          9,
+          "dir32",
+          "__imp__QueryPerformanceCounter@4"
+        ]
+      ]
+    },
+    {
+      "address": "0062f7c0",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_Start_0062f7c0.cpp",
+      "symbol": "?Start@CStopWatch@@",
+      "compiled_bytes": 20,
+      "retail_bytes": 63,
+      "retail_sha256": "ef0792c3f48dd97e210b935ac7d722fc267709c62953f68083b8367a5d3c30f4",
+      "masked_sha256": "34d9cc9f02722b950e91d273c345a1e65f48a1e20a5de1076be23dc0ebcaa015",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          4,
+          "DISP32",
+          "?GetTicks@CStopWatch@@QBE_JXZ"
+        ]
+      ]
+    },
+    {
+      "address": "0062f800",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_StartZero_0062f800.cpp",
+      "symbol": "?StartZero@CStopWatch@@",
+      "compiled_bytes": 28,
+      "retail_bytes": 77,
+      "retail_sha256": "ec2db7e4edfb6d90b9c4a8733fad60ed6052847f8409f762052b2c0426923619",
+      "masked_sha256": "346471a738c485d53858d587a1b45b185ba7d946abdf77fbc47898333c1cb5d9",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          12,
+          "DISP32",
+          "?GetTicks@CStopWatch@@QBE_JXZ"
+        ]
+      ]
+    },
+    {
+      "address": "0062f850",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_Stop_0062f850.cpp",
+      "symbol": "?Stop@CStopWatch@@",
+      "compiled_bytes": 57,
+      "retail_bytes": 87,
+      "retail_sha256": "141c486d479cb9db2e92470a9a4d9d2e86bde3b2a1acd6a23c488c7853d500af",
+      "masked_sha256": "3f1ae9405a38a654be2aa6878976e1446088b7739ae4d88fde8f671699a1f2da",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          11,
+          "DISP32",
+          "?GetTicks@CStopWatch@@QBE_JXZ"
+        ]
+      ]
+    },
+    {
+      "address": "0062f8b0",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_Reset_0062f8b0.cpp",
+      "symbol": "?Reset@CStopWatch@@",
+      "compiled_bytes": 33,
+      "retail_bytes": 76,
+      "retail_sha256": "85b4c94b110b0ee96e8737e31eed75ea721bd3cdd951ddec58203ffbd44d6a57",
+      "masked_sha256": "9dc213ab3586d0c3dfc5c51fc9977d2e068fefca319165f06f09c4300c257f83",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          21,
+          "DISP32",
+          "?GetTicks@CStopWatch@@QBE_JXZ"
+        ]
+      ]
+    },
+    {
+      "address": "0062f900",
+      "source": "rebuild/src/compiled/00/62/CStopWatch_GetElapsedSeconds_0062f900.cpp",
+      "symbol": "?GetElapsedSeconds@CStopWatch@@",
+      "compiled_bytes": 72,
+      "retail_bytes": 93,
+      "retail_sha256": "74def939158c1b5762fa357a38262af432781a42fe274615e98f69ca6311984b",
+      "masked_sha256": "6a2294836dc1fbb17b27ee4805a0e7e1ccbf248b0184caca8f4b3e3a8ea88a22",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          30,
+          "DISP32",
+          "?GetTicks@CStopWatch@@QBE_JXZ"
+        ]
+      ]
+    }
+  ]
+}

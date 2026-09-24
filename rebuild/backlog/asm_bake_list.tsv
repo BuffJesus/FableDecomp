@@ -77,13 +77,11 @@ address	module	name	kind	retail_parity	file
 0041d1c8	CTCBoastingCrowdControl	OnKillCrowd	emit_bake	MATCH	CTCBoastingCrowdControl_OnKillCrowd_0041d1c8.cpp
 0041d8a8	CTCBoastingCrowdControl	OnKillCrowd	emit_bake	MATCH	CTCBoastingCrowdControl_OnKillCrowd_0041d8a8.cpp
 0041e16e	CManager	IsKeyHeld	emit_bake	MATCH	CManager_IsKeyHeld_0041e16e.cpp
-0041e5f2	_global	GetInstance	emit_bake	RELOCATION_MATCH	CFrontEndManager_GetInstance_0041e5f2.cpp
 0041e61b	CSpellContainerList	AddChild	emit_bake	MATCH	CSpellContainerList_AddChild_0041e61b.cpp
 00429418	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem::CComponent*>	emit_bake	MATCH	FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_00429418.cpp
 004294ac	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem::CComponent*>	emit_bake	MATCH	FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp
 0042951b	CMemoryAllocatorVariableSize	RotateLeft	emit_bake	MATCH	CMemoryAllocatorVariableSize_RotateLeft_0042951b.cpp
 00429950	CBasicString<char>	operator<	emit_bake	DIFFER	CBasicStringchar_operator_00429950.cpp
-004299a8	_global	SetIsUsingRelativeCoords	emit_bake	MATCH	global_SetIsUsingRelativeCoords_004299a8.cpp
 00429a2f	CAnimFilterNoGroup	CAnimFilterNoGroup::Clone	emit_bake	MATCH	CAnimFilterNoGroup_Clone_00429a2f.cpp
 00429a85	list<NUISystem::CList*	begin	emit_bake	MATCH	listNUISystemCList_begin_00429a85.cpp
 00429c6f	CCountedPointer<std::vector<CCharString	Reset	emit_bake	MATCH	CCountedPointerstdvectorCCharString_Reset_00429c6f.cpp
@@ -291,9 +289,6 @@ address	module	name	kind	retail_parity	file
 004fb2a0	CWorldMap	CWorldMap::DrawFindLastUnblockedThemePositionAndReportCollision	naked_asm	RELOCATION_MATCH	CWorldMap_DrawFindLastUnblockedThemePositionAndReportColli_004fb2a0.cpp
 004fb2f0	CWorldMap	CWorldMap::IsPosChangeable	naked_asm	MATCH	CWorldMap_IsPosChangeable_004fb2f0.cpp
 0052ae10	CCompressorZlib	CCompressorZlib::CompressAsImage	naked_asm	MATCH	CCompressorZlib_CompressAsImage_0052ae10.cpp
-0052d9e0	CFrontEndManager	CFrontEndManager::Initialize	naked_asm	RELOCATION_MATCH	CFrontEndManager_Initialize_0052d9e0.cpp
-0052da20	CObserver	ObserveEvent	naked_asm	RELOCATION_MATCH	CObserver_ObserveEvent_0052da20.cpp
-00530720	CComponent	Die	naked_asm	RELOCATION_MATCH	CComponent_Die_00530720.cpp
 005360b1	CList	SetSelectedChild	emit_bake	RELOCATION_MATCH	CList_SetSelectedChild_005360b1.cpp
 0053673b	CList	ProcessEvent	emit_bake	RELOCATION_MATCH	CList_ProcessEvent_0053673b.cpp
 00536b4f	CList	InitialiseOffsets	emit_bake	RELOCATION_MATCH	CList_InitialiseOffsets_00536b4f.cpp

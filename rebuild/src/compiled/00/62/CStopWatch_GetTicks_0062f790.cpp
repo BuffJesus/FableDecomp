@@ -1,13 +1,8 @@
-union CPerformanceCounterValue {
-    struct { unsigned long LowPart; long HighPart; };
-    __int64 QuadPart;
-};
-__declspec(dllimport) int __stdcall QueryPerformanceCounter(CPerformanceCounterValue* value);
-struct CStopWatch { __int64 GetTicks() const; };
+#include "fable_frontend_component_types.h"
+#include "fable_performance_counter.h"
+
 __int64 CStopWatch::GetTicks() const
 {
-    CPerformanceCounterValue ticks;
-    if (QueryPerformanceCounter(&ticks))
-        return ticks.QuadPart;
-    return 0;
+    FablePerformanceCounterValue ticks;
+    return QueryPerformanceCounter(&ticks) ? ticks.QuadPart : 0;
 }

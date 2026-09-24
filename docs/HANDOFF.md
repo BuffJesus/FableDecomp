@@ -1,3 +1,311 @@
+# NATIVE ENGINE RESUME -- 2026-09-23
+
+**Bedtime checkpoint saved. Start next session with the
+[standalone resume checklist](journal/2026-09/NATIVE_PLAY_SESSION_RESUME_2026-09-23.md).**
+Use `D:\Documents\FableTLC-native-play` / `wip/native-cgame-play`, not the default
+quest-recovery checkout. Next concrete target: **009CE050 entry index registration**.
+User requested commit/push after the bedtime save. The standalone checkpoint is
+recorded on this branch; use `git log -1` and upstream status for its revision.
+[Checkpoint review](journal/2026-09/NATIVE_PLAY_CHECKPOINT_REVIEW_2026-09-23.md).
+Uncommitted-state notes in older blocks describe their historical checkpoints.
+
+Latest marathon continuation: **eight more bodies recovered**, including the full
+**009CFBC0 entry-reader orchestration**, all bank storage helpers and filename
+alias-list ownership. **3,328 helper + 3,072 alias + 512 entry comparisons PASS**.
+Setup now uses real resizing/tree cleanup. Corrected symbol resize (not reserve)
+and entry-reader bool ABI. Twenty-one saved families total **26,793 cases**.
+Actual indexing **009CE050**, CRC sort/compaction, runtime packing and bank virtual
+callbacks remain explicit boundaries. Opening still has a sample decoder double;
+connect the new real decoder after recovering those services. No playable game,
+full bootstrap, GUI launch or commit. Saved uncommitted in native-play.
+[Evidence and next steps](journal/2026-09/FRONTEND_BANK_ENTRIES_2026-09-23.md).
+This supersedes the four storage-boundary and unrecovered-entry-loop items below.
+
+Latest continuation: **six bank storage bodies** recovered: preparation 009CEAE0,
+string-range destroy/erase, symbol/runtime clears and runtime resize 009D4010.
+**1,024 setup/erase + 1,024 resize comparisons pass**. Setup links actual narrow
+lifetime and runtime resizing; symbol reserve, checksum/update resize and subtree
+deletion remain controlled. All six functional DIFFER; resize inlines behavior
+from additional retail helpers, so its 407/87 wrapper-size ratio is not equivalent
+whole-function coverage. Eighteen saved gate families total **19,881 cases**.
+Next: **0049B760 / 00464931 / 009D3DF0 / 00579435**, then integrate the complete
+**009CFBC0** entry loop. Not yet connected into that unrecovered loop. No full
+bootstrap/GUI/commit; saved uncommitted in native-play. Standalone play unfinished.
+[Evidence and precise boundaries](journal/2026-09/FRONTEND_BANK_STORAGE_2026-09-23.md).
+This supersedes runtime resize/clear and bank-setup-body open items below.
+
+Latest continuation: **three archive decoder dependencies recovered**: byte-vector
+00411910, word-pair vector 009D2AF0 and length-prefixed string reader 00996390.
+**1,536 new cases pass**; **2,048 opening cases** now consume a serialized string
+through the actual reader and string lifetime code. All three functional DIFFER.
+Sixteen saved gate families total **17,833 cases**. Full entry parsing and actual
+OS disk reads remain external; malformed/crashing-input behavior is not verified.
+Next: **bank storage initialization 009CEAE0**, its runtime/symbol/checksum/update
+vector dependencies, then full **009CFBC0** entry loop, finalization and threaded
+Open **0098E1E0**. No GUI/full bootstrap/commit; saved in native-play.
+[Evidence and precise next dependencies](journal/2026-09/FRONTEND_ARCHIVE_STRINGS_2026-09-23.md).
+This completes the pair-table and string-reader open items below.
+
+Latest continuation: **four complete archive stream-read routines** recovered:
+00993CA0 slow read, 00994360 refill, 009943B0 buffer choice, 009943D0 direct read.
+**2,048 new reader cases pass**, and the **2,048 opening cases** now consume sample
+bytes through the real reader/refill chain. Stream lifecycle 1,024 also passes.
+One 19-byte relocation match; three functional DIFFER. Fifteen saved families
+now total **16,297 cases**. File seek/read remains controlled; entry decoding is
+still external. No game launch or full bootstrap; saved uncommitted in native-play.
+Next: entry decoder **009CFBC0**, starting with **009CEAE0 / 009D2AF0** and string
+reader **00996390**, then finalization and threaded file Open **0098E1E0**.
+[Evidence and dependency map](journal/2026-09/FRONTEND_BANK_STREAM_READS_2026-09-23.md).
+This adds verified stream byte consumption to the path checkpoint below.
+
+Latest continuation: **18 readable path/string implementations** recovered or
+upgraded. Real registry path resolution and wide lifetime now connect to bank
+opening and manager startup. **720 wide + 384 path cases pass**; expanded narrow
+324, opening 2,048 and manager 324 also pass. Fourteen saved families total
+**14,249 cases**. All eighteen new bodies functional DIFFER, no new byte matches.
+
+Missing names build the actual diagnostic then request CGenericException; runtime
+throw/unwinding is an explicit boundary. Wide storage uses three pointers, not
+narrow-string length/capacity fields. Both allocation families remain distinct.
+Next: **archive entry decode 009CFBC0**, finalization and threaded file Open
+**0098E1E0**, followed by frontend Run/actions and persistent rendering. Production
+exception/length-error bindings and the registry +0x14 mode alias remain required.
+Actual disk loading and playable standalone integration are still unfinished.
+Saved uncommitted in native-play; no GUI launch or full bootstrap in this increment.
+[Evidence and exact limits](journal/2026-09/FRONTEND_BANK_PATHS_2026-09-23.md).
+This supersedes the path/wide/narrow-string recovery open items below.
+
+Latest continuation: **five complete archive-lookup recoveries**: signed string
+comparison 00429950, map searches 009AB4F0/009AB560/009AB5D0 and registry lookup
+009A7F80. **1,657 new cases pass**; **2,048 opening** and **324 manager** cases now
+link real registry lookup. Twelve saved families total **13,145 cases**.
+Null storage ordering, aliases, first-match ownership and callback cleanup are
+verified. All functional DIFFER; 17-byte map wrappers share a 121-byte body.
+
+Next: **path resolution 009A7CA0**, wide concatenation **0099BE70** and its
+storage/lifetime dependencies, missing-path exception handling; then entry decode
+009CFBC0 and threaded Win32 open 0098E1E0. Open-mode global 013CA7B0 aliases the
+registry's +0x14 byte; preserve that identity in production global bindings.
+Actual archive loading and full game/rendering integration remain unfinished.
+Saved uncommitted in native-play; no game/GUI/live-device launch or full bootstrap.
+[Evidence, fixture correction and next dependencies](journal/2026-09/FRONTEND_BANK_REGISTRY_2026-09-23.md).
+This supersedes the registry/map/comparator open items below.
+
+Latest continuation: complete readable **CBankFile / CBankFileAsync OpenReadOnly**
+and their ownership/path helpers; buffered-stream assembly dependency replaced by
+readable construction, seeking, cleanup and destruction. **2,048 opening + 1,024
+stream cases pass**. Opening tests link the real stream routines. The **324-case
+manager chain** now calls real OpenReadOnly with explicit unavailable-backend
+outcomes; it does not claim to load assets successfully. Factory 576 and bank
+runtime 1,088 regressions also pass. Eleven saved gate families total **11,488**.
+
+Sixteen recovered/upgraded bodies plus the existing threaded constructor reconnected.
+One four-byte getter relocation-match; other bodies functional DIFFER. Bootstrap
+gates and identity overrides updated. All changes saved uncommitted in native-play;
+no game or live-device launch in this increment, full bootstrap not run.
+
+Next: **registry lookup 009A7F80**, its map helpers **009AB4F0 / 009AB560 / 009AB5D0**
+and comparator **00429950**, then path lookup **009A7CA0**, entry decoding **009CFBC0**
+and threaded OS file opening **0098E1E0**. Missing path lookup raises an exception;
+do not confuse that with a path-backed Open returning false. GPU DEVICELOST and
+full frontend/game-loop/rendering integration remain open.
+[Commands, evidence, compiler margins and dependency map](journal/2026-09/FRONTEND_BANK_OPEN_AND_STREAMS_2026-09-23.md).
+This supersedes the OpenReadOnly/stream open items in earlier checkpoints below.
+
+Latest continuation: **14 more readable routines** for texture creation, surface
+ownership/locking/clear, bank-file/async/cache and packed-array construction.
+**1,168 texture/surface + 1,024 bank-file cases pass**, with the **324-case full
+manager gate** now linking all of these implementations. Previous isolated bank
+runtime still passes 1,088 cases. Four new relocation matches; ten functional DIFFER.
+The prior CWideString constructor is also restored, not counted as new recovery.
+
+Corrected identities/layouts: 009D5F80 is CBankFileAsync (retail 0x164), based on
+CBankFile 009CD480 (0x110). Do not substitute donor CBankFile 0x174. Texture creation
+uses an unsigned D3D pool value, not bool. All constructor service doubles are
+now gone except allocators, D3D COM, Win32 critical section and virtual bank Open.
+
+Next: **CBankFileAsync::OpenReadOnly 009D56C0 / CBankFile::OpenReadOnly 009D06F0**, archive registry,
+threaded/buffered file services. Frontend Run/actions and persistent rendering remain
+open. Explicit live D3D test could not create a device: **0x88760868 DEVICELOST**;
+its report is failed/unverified, not a pass. Its hidden window was closed. No game
+or presenter launched. Bootstrap gates and function-identity overrides updated;
+full bootstrap not run. All work saved uncommitted in the native-play worktree.
+[Evidence, commands, compiler sizes and next addresses](journal/2026-09/FRONTEND_BANK_FILES_AND_TEXTURES_2026-09-23.md).
+This supersedes the bank-file and texture open items in the earlier checkpoint below.
+
+Marathon checkpoint: **31 complete readable functions** recovered: strings,
+display/global services, graphics-bank factory/construction/initialization,
+resource lists, texture-manager construction and ownership/dispatch helpers.
+**5,250 retail differential comparisons pass**, plus the previous **974** ownership
+cases. The connected manager gate links all these recoveries and compares complete
+manager/bank/texture-manager memory and service traces. Three small relocation
+matches; the other 28 are functional DIFFER, as requested.
+
+Corrected an ABI mistake hidden by paired doubles: 0099EBF0 consumes text AND
+length (ret 8); 009F83D0 has five stack words including hidden result (ret 20),
+no index argument. Retail bank and texture-manager layouts are 0x30C and 0x5D4;
+quarantined donor layouts must not be substituted.
+
+Next: bank-file base 009D5F80 / 009CD480, texture/surface operations and virtual
+bank Open. D3D and allocators remain controlled boundaries. Frontend actions,
+persistent rendering and visual fidelity remain open. Sources, tests, bootstrap
+gates and work/*_check reports are saved and uncommitted; no GUI launched.
+This supersedes the service/constructor open items in earlier entries below.
+Resume in `D:\Documents\FableTLC-native-play`, branch `wip/native-cgame-play`.
+[Full evidence, sizes and commands](journal/2026-09/FRONTEND_CONSTRUCTION_SERVICES_2026-09-23.md).
+
+Latest: recovered SetGraphicsBank 0042A9B7 and counted-reference share/release
+00419134/00419108. All 974 direct retail comparisons and 324 connected manager
+construction comparisons pass. The constructor gate now uses real ownership
+instead of its pointer-copy double. All three are functional DIFFER, with
+reviewed compiler residues pinned; no new byte-parity claim. Bootstrap includes
+the ownership gate. No GUI launched or presenter changed.
+
+Resume in `D:\Documents\FableTLC-native-play`, branch `wip/native-cgame-play`.
+Next: string services 0099EBF0/0099EAE0, graphics-bank factory 009F83D0 and display
+services, then native creation/actions/rendering. Changes remain uncommitted.
+[Commands, evidence and limits](journal/2026-09/FRONTEND_BANK_OWNERSHIP_2026-09-23.md).
+This supersedes the bank-ownership open item in yesterday's handoff below.
+
+Post-handoff visual check (user requested): isolated 17:42 partial preview passed
+title/main/Options/Audio navigation and return, then closed normally. Main-menu
+illumination visibly changes; hard bands in the light shafts remain a concern.
+No retail A/B; newer engine recoveries are not integrated into this preview.
+Screenshots and launch details are in the journal linked below. Nothing from this
+visual check remains running. This supersedes the no-GUI note for the session.
+
+Night handoff: 34 complete readable recoveries/upgrades spanning observable
+lifetime/dispatch, observer event sets, registration/removal and tree balancing,
+manager maps/coordinates, and the complete CManager constructor. Connected retail
+gates pass: 17,844 cases across nine modes, plus repaired candidate checks.
+Acceptance is functional DIFFER, not a new byte-parity claim. RTTI identifies the
+singleton owner as NUISystem::CManager; historical FrontEnd link names remain.
+
+Resume in `D:\Documents\FableTLC-native-play`, branch `wip/native-cgame-play`.
+Changes are saved and uncommitted. Native-engine checks have finished; no GUI or
+game was launched. Separate script-recovery test processes were left untouched.
+Next: recover SetGraphicsBank 0042A9B7 and counted-reference assignment/release
+00419134/00419108, then external string/factory/display services and frontend
+creation/actions/rendering. Constructor tests still double those external
+services; visual uncanniness is unresolved and the presenter is unchanged.
+[Evidence, gate commands and remaining boundaries](journal/2026-09/FRONTEND_EVENTS_AND_MANAGER_2026-09-22.md).
+
+Earlier checkpoint entries below retain their historical open items; the night
+handoff above supersedes them.
+
+Latest continuation: readable frontend-manager singleton plus eight observable
+services (normal/concurrent registration/removal, exclusivity, bulk clearing).
+1,056 direct retail comparisons and 512 connected Die -> recursive cleanup ->
+real manager lookup -> real unregister comparisons pass. Existing 80-case
+mutation gate and singleton candidate pass. All nine are functional DIFFER;
+singleton replaces emitted assembly. No screen use or presenter changes.
+Next: observable construction 0042BE7B/list ownership, then concrete manager
+constructor 0041E3F6 and frontend actions. [Evidence and addresses](journal/2026-09/FRONTEND_OBSERVER_SERVICES_2026-09-22.md).
+
+Latest milestone: complete readable CComponent::Update (00531EC0), deletion-list
+ownership, RemoveChildAt/count-vector operations, Die and recursive observer
+cleanup. Full-frame retail comparison passes 9,504 cases; deletion 4,500,
+ownership 4,040 and observer cleanup 80. Both 480-frame state lifecycle gates now
+link the real rebuilt base Update. GetDeletion matches 7 bytes; other additions
+are functional recoveries. This supersedes the partial-base status below.
+No GUI or game launched: screen reserved for another agent. Presenter unchanged.
+Next: concrete manager lookup/unregistration, construction/actions and persistent
+renderer integration. [Evidence and limits](journal/2026-09/FRONTEND_BASE_UPDATE_2026-09-22.md).
+
+Earlier checkpoints below retain their original scope and open items:
+
+Newest: base Update child passes are now readable, tested extractions: position
+tree propagation, live/retiring child preparation, and retiring-child ownership.
+11,432 new comparisons pass, including complete counted-entry find/move helpers.
+The full base Update remains open: recover live-child deletion-request processing
+005325AB..00532789 and RemoveChildAt/list ownership next. Do not mark partial
+helpers as full-function recovery. No presenter change or GUI launch this round.
+[Child-update evidence and resume addresses](journal/2026-09/FRONTEND_CHILD_UPDATE_2026-09-22.md).
+
+Newest continuation: recovered the position/zoom update and target/delta chain,
+both coordinate conversions, manager scaling/dimension getters and state-based
+inheritance queries (15 routines, including two renamed existing getters).
+New gates pass 2,137 transform, 1,210 scale, 2,219 vector-change and 6,144
+independence cases. Connected movement/zoom/fade lifecycle passes 480 frames;
+original colour-only lifecycle also passes. Dimension getters relocation-match
+23 bytes each; other additions are functionally accepted. No GUI launched.
+These are engine recoveries, not yet wired into the flat presenter. Next:
+general base Update parent/child propagation and ownership, then persistent
+renderer integration. [Transform evidence and limits](journal/2026-09/FRONTEND_TRANSFORMS_2026-09-22.md).
+
+Newest: presenter animation now defers queued fade startup until the next
+update, matching native ChangeState -> UpdateStateChange timing. The prior
+bridge failed 1,024/1,034 hierarchy samples; the corrected bridge passes all
+1,034 with exact state, seed, swap time and alpha. Oracle executes actual base,
+state, colour and swapping methods through definition-derived coastal 29-node
+and sunbeam 22-node trees, with lookup/allocator doubles and controlled setup.
+Combined animation gate includes this regression. Native construction, general
+base Update recovery and rendering order remain open; this is not full fidelity.
+The oracle now advances both swapping groups through their common coastal root
+(52 nodes total). Lifetime/order probe also passes 160 updates / 6,720 tile visits:
+native list histories interleave background and sunbeam frames under both empty
+and pre-anchored conditions. This is conditional collection evidence; factories,
+handles, sorting and surrounding page primitives remain excluded. Presenter
+compositing is unchanged pending those dependencies. See the lifetime journal.
+
+Latest continuation: recovered sprite visibility, exact primitive removal,
+component draw traversal, state completion queries and queued state dispatch.
+All offline differential gates pass; removal is 116/116 MATCH and completion
+query 37/37 MATCH. Other recovered methods are functional C++. Native state
+processing is not yet wired into the flat presenter. ChangeState, ProcessChangeState,
+and changing-component Update/completion methods now pass their retail gates too.
+Connected eight-method state/colour lifecycle also passes 480 frames across 15
+scenarios with exact histories. Its oracle now executes base Update with empty
+collections; compiled base dependency is colour-only. General base Update,
+construction/actions/ownership and persistent renderer integration remain open.
+[Lifetime/state evidence](journal/2026-09/FRONTEND_LIFETIME_STATE_2026-09-22.md).
+No GUI launched in this increment.
+
+Latest: native primitive-list insertion is readable C++, using named generated
+engine fields. All 1,221 retail differential cases pass; compiled/retail sizes
+106/106, functional DIFFER. Bootstrap runs `check_primitive_list.py`.
+The normal 2D list defaults to STABLE sorting (constructor + PDB evidence),
+confirmed by 18 native sort probes. Earlier unstable-path results do not prove
+frontend shuffling. Persistent collection is traced and probed: creation inserts
+sprites, same-type updates preserve all list links. Next: sprite creation/culling
+and release history, plus layer mapping. [Draw-order checkpoint](journal/2026-09/FRONTEND_DRAW_ORDER_2026-09-22.md).
+No GUI launch in this increment; presenter order remains unchanged.
+
+Previous: recovered colour and swapping decisions now drive a small frontend
+animation controller. Combined gate: `python tools/decomp_pipeline/check_frontend_animation.py`.
+1,296 full colour cases (maximum channel error 1), 1,520 swap-decision cases,
+4,480 random cases and 260 fade samples pass, plus controller lifecycle checks.
+Presenter compiled and the partially rebuilt preview was inspected and closed.
+This remains a scaffold bridge, not recovered native Run/component ownership.
+Next: resolve engine layer/cache ordering before changing compositing.
+
+Earlier: investigated the user's overall visual-fidelity concern. Corrected the
+scaffold's opaque outgoing background and linear fades using retail's colour
+curve and independent child durations. 260 emulated-retail comparisons match;
+the updated presenter compiled and a partially rebuilt preview ran and closed.
+Random selection now also matches retail over 4,480 chained cases, with separate
+seed-13 streams for background/sunbeam; stalled frames no longer consume unseen
+transitions. This is not full frontend fidelity. Next: native component state
+lifecycle, inherited colour and draw ordering. Evidence: [fade recovery](journal/2026-09/FRONTEND_FADE_RECOVERY_2026-09-22.md).
+
+This worktree is `D:\Documents\FableTLC-native-play`, branch `wip/native-cgame-play`.
+Readable `CGame::Play` replaces the assembly body; seven offline behavior scenarios
+pass, with a documented two-byte ECX/EDX residue accepted as functional, not matching.
+The next increment is complete too: the base constructor relocation-matches,
+frontend construction and Init are readable functional C++, and the offline
+Play -> constructor -> Init -> test Run chain passes. Run
+`python tools/decomp_pipeline/check_frontend_startup.py`. No GUI/game launches while
+the user is using the screen. Update: the user subsequently allowed visual QA;
+the saved checkpoint passed menu navigation and was closed cleanly. All seven
+CStopWatch methods are now readable and offline-tested (six functional,
+GetTicks relocation-matching); startup links the real timer constructor.
+Next: recover Run `0x0042EC7C` startup/frame-loop
+dependencies and shutdown ownership. Full evidence, commands, and limitations:
+[NATIVE_PLAY_RESUME_2026-09-22.md](journal/2026-09/NATIVE_PLAY_RESUME_2026-09-22.md).
+
+The script-recovery handoff below is inherited history; its active worktree remains
+`D:\Documents\FableTLC` on `feat/novi-script-recovery`.
+
 # RESUME HERE -- 2026-09-22: v7's Gameflow is faithful, and the side quests / secret trainers now have coverage
 
 **Committed today (branch `feat/novi-script-recovery`):** 856cbf4 (the whole 2026-09-20/21 Guild lane),

@@ -384,7 +384,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00412db0	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00412e80	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 00412f60	Uninitialise	CInitBaseClass	__thiscall	void	1	CInitBaseClass *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CInitBaseClass_Uninitialise_00412f60.cpp
-00412f90	Play	CGame	__thiscall	void	1	CGame *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGame_Play_00412f90.cpp
+00412f90	Play	CGame	__thiscall	void	1	CGame *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGame_Play_00412f90.cpp
 00413120	GFInitialise_SetupProgressDisplay	_global	__fastcall	bool	1	GFInitialiseState *	1	yes	accepted									
 004131a0	CMainGameComponentInit	CMainGameComponentInit	__thiscall	undefined	1	CMainGameComponentInit *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponentInit_CMainGameComponentInit_004131a0.cpp
 004131d0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\Destvalstd_allocatorCMacroCMacro_004131d0.cpp
@@ -434,7 +434,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00415a10	sub_00415a10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00415a60	CInterpolationInfo	CInterpolationInfo	__thiscall	undefined	1	CInterpolationInfo *	0	yes	accepted									
 00415ae0	sub_00415ae0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00415b80	CNavigationLayer	CNavigationLayer	__thiscall	undefined	1	CNavigationLayer *	0	yes	accepted									
+00415b80	CGraphicDataBankInit	CGraphicDataBankInit	__thiscall	CGraphicDataBankInit *	1	CGraphicDataBankInit *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CGraphicDataBankInit_CGraphicDataBankInit_00415b80.cpp
 00415bd0	GetWidth	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSurface_GetWidth_00415bd0.cpp
 00415bf0	GetHeight	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSurface_GetHeight_00415bf0.cpp
 00415c10	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
@@ -638,7 +638,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041c590	NUISystem::CSprite::vfunc_7	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5a0	NUISystem::CSprite::vfunc_47	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c5c0	NUISystem::CSprite::vfunc_44	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041c5e0	ChangedStateLastUpdate	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
+0041c5e0	ChangedStateLastUpdate	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CChangingStateComponent_ChangedStateLastUpdate_0041c5e0.cpp
 0041c610	NUISystem::CSprite::vfunc_86	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c620	NUISystem::CSprite::vfunc_87	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041c630	NUISystem::CSprite::vfunc_54	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -683,8 +683,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041cbd7	NUISystem::COk::vfunc_142	NUISystem::COk	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0041cbe4	CControllerDisconnect	CControllerDisconnect	__thiscall	undefined	2	CControllerDisconnect *,long	0	yes	accepted									
 0041cc11	NUISystem::CControllerDisconnect::vfunc_1	NUISystem::CControllerDisconnect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041cc14	GetHeadAngularVelocityMaxXY	CTCLook	__thiscall	float	1	CTCLook *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCLook_GetHeadAngularVelocityMaxXY_0041cc14.cpp
-0041cc2b	GetHeadAngularVelocityMaxXY	CTCLook	__thiscall	float	1	CTCLook *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b.cpp
+0041cc14	GetCoordinateWidth	_global	__cdecl	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\global_GetCoordinateWidth_0041cc14.cpp
+0041cc2b	GetCoordinateHeight	_global	__cdecl	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\global_GetCoordinateHeight_0041cc2b.cpp
 0041cc50	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041cc50.cpp
 0041cc70	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_0041cc70.cpp
 0041cce4	CAnimFilterBase::vfunc_2	CAnimFilterBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -698,7 +698,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041cf2c	GetCanItemBeQuickAssigned	CTCInventoryBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CTCInventoryBase_GetCanItemBeQuickAssigned_0041cf2c.cpp
 0041cf33	AddExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CObservable_AddExclusiveObserver_0041cf33.cpp
 0041cf40	DrawGetSeaLevel	CMap	__thiscall	float	2	CMap *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMap_DrawGetSeaLevel_0041cf40.cpp
-0041cf47	GetUIScale	CManager	__thiscall	C2DVector	1	CManager *	1	yes	accepted									
+0041cf47	GetUIScale	CManager	__thiscall	C2DVector	1	CManager *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_GetUIScale_0041cf47.cpp
 0041cfb2	GetTextBySymbol	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x0041CFB2_global_GetTextBySymbol.cpp				
 0041d03c	RenderErrorMessage	CManager	__thiscall	void	2	CManager *,CIEngine *	1	yes	accepted									
 0041d0a8	CASound_PlayMessage	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\41\0x0041D0A8_global_CASound_PlayMessage.cpp				
@@ -719,13 +719,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0041db84	ShowErrorMessage	CManager	__thiscall	void	2	CManager *,ERRORMESSAGE_TYPE	1	yes	accepted									
 0041dc9d	AddActionsListenIgnoreOnList	CManager	__thiscall	void	5	CManager *,CComponent *,CComponent *,CComponent *,EEvent	1	yes	accepted									
 0041ded2	NUISystem::CManager::vfunc_37	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0041df10	SetInput	CManager	__thiscall	void	2	CManager *,EInputType	1	yes	accepted									
+0041df10	SetInput	CManager	__thiscall	void	2	CManager *,EInputType	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_SetInput_0041df10.cpp
 0041e10d	IsKeyHeld	CManager	__thiscall	bool	2	CManager *,EUsedKeys	1	yes	accepted									
 0041e16e	IsKeyHeld	CManager	__thiscall	bool	2	CManager *,EUsedKeys	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_IsKeyHeld_0041e16e.cpp
-0041e1cd	SetMetaLayer	CManager	__thiscall	void	2	CManager *,long	1	yes	accepted									
+0041e1cd	SetMetaLayer	CManager	__thiscall	void	2	CManager *,long	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_SetMetaLayer_0041e1cd.cpp
 0041e3b2	GetLayer	CManager	__thiscall	EEngine2DLayer	2	CManager *,long	1	yes	accepted									
-0041e3f6	CManager	CManager	__thiscall	undefined	1	CManager *	0	yes	accepted									
-0041e5f2	GetInstance	_global	__fastcall	CFrontEndManager *	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CFrontEndManager_GetInstance_0041e5f2.cpp
+0041e3f6	CManager	CManager	__thiscall	CManager *	1	CManager *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CManager_CManager_0041e3f6.cpp
+0041e5f2	GetInstance	CManager	__cdecl	void *	0		1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CFrontEndManager_GetInstance_0041e5f2.cpp
 0041e61b	AddChild	CSpellContainerList	__thiscall	void	2	CSpellContainerList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CSpellContainerList_AddChild_0041e61b.cpp
 0041e641	~CManager	CManager	__thiscall	void	1	CManager *	1	yes	accepted									
 0041e6d3	NUISystem::CManager::vfunc_14	NUISystem::CManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -772,10 +772,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004294ac	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem::CComponent*>	_Find<std::_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>,NUISystem	__fastcall	_List_unchecked_iterator<std::_List_val<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>_>	3	_List_unchecked_iterator<class_std::_List_val<class_NUISystem::CComponent*,class_std::allocator<class_NUISystem::CComponent*>_>_>,_List_unchecked_iterator<class_std::_List_val<class_NUISystem::CComponent*,class_std::allocator<class_NUISystem::CComponent*>_>_>,CComponent * *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\FindstdListuncheckediteratorstdListvalNUISystemCComponentstdallocatorNUISystemCComponentNUISystem_CComponent_004294ac.cpp
 004294d1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	list<CMessageEvent_const*,std	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 004294e2	RBTree::GetMaxNode	RBTree	unknown	undefined	0		0	yes	accepted									
-0042951b	RotateLeft	CMemoryAllocatorVariableSize	__thiscall	void	2	CMemoryAllocatorVariableSize *,CMemoryArea *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CMemoryAllocatorVariableSize_RotateLeft_0042951b.cpp
-0042955b	RotateLeft	CMemoryAllocatorVariableSize	__thiscall	void	2	CMemoryAllocatorVariableSize *,CMemoryArea *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CMemoryAllocatorVariableSize_RotateLeft_0042955b.cpp
+0042951b	RotateEventTreeLeft	_global	__cdecl	void	2	EventTreeNode *,EventTreeNode **	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_RotateEventTreeLeft_0042951b.cpp
+0042955b	RotateEventTreeRight	_global	__cdecl	void	2	EventTreeNode *,EventTreeNode **	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_RotateEventTreeRight_0042955b.cpp
 004295fa	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CRegion_SetMiniMapRegionExitTextOffsetX_004295fa.cpp
-0042971d	CMemoryAllocatorVariableSize::BalanceTree	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
+0042971d	BalanceEventTree	_global	__cdecl	void	2	EventTreeNode *,EventTreeNode **	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_BalanceEventTree_0042971d.cpp
 004297db	CComboMultiplierData	CComboMultiplierData	__thiscall	undefined	2	CComboMultiplierData *,CComboMultiplierData *	0	yes	accepted									
 0042982f	NUISystem::CControllerDisconnect::vfunc_0	NUISystem::CControllerDisconnect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00429837	NUISystem::CControllerDisconnect::vfunc_0	NUISystem::CControllerDisconnect	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -788,7 +788,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042990f	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CLandscapeBackgroundPatch_vectordeletingdestructor_0042990f.cpp
 0042992b	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CLandscapeBackgroundPatch_vectordeletingdestructor_0042992b.cpp
 00429950	operator<	CBasicString<char>	__thiscall	bool	2	CBasicString<char> *,CBasicString<char> *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CBasicStringchar_operator_00429950.cpp
-004299a8	SetIsUsingRelativeCoords	_global	__fastcall	void	1	bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_SetIsUsingRelativeCoords_004299a8.cpp
+004299a8	SetIsUsingRelativeCoords	_global	__fastcall	void	1	bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_SetRelativeCoordinates_004299a8.cpp
 004299f0	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004299f0.cpp
 00429a10	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00429a10.cpp
 00429a2f	CAnimFilterNoGroup::Clone	CAnimFilterNoGroup	__thiscall	CAnimFilterBase *	1	CAnimFilterNoGroup *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CAnimFilterNoGroup_Clone_00429a2f.cpp
@@ -830,7 +830,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042a168	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CGuiControlTreePane_SortTreeRecursively_0042a168.cpp
 0042a18f	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CGuiControlTreePane_SortTreeRecursively_0042a18f.cpp
 0042a1b6	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\LTextTreeWalkThrough_BuildTreeArray_0042a1b6.cpp
-0042a1e3	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CGuiControlTreePane_SortTreeRecursively_0042a1e3.cpp
+0042a1e3	ClearObserverList	_global	__thiscall	void	1	ObserverList *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_ClearObserverList_0042a1e3.cpp
 0042a20a	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\LTextTreeWalkThrough_BuildTreeArray_0042a20a.cpp
 0042a237	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\LTextTreeWalkThrough_BuildTreeArray_0042a237.cpp
 0042a264	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\LTextTreeWalkThrough_BuildTreeArray_0042a264.cpp
@@ -840,7 +840,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042a2db	SetStaticCast<NUISystem::CComponent>	SetStaticCast<NUISystem	__thiscall	void	2	CCountedPointer<NUISystem::CList> *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\SetStaticCastNUISystem_CComponent_0042a2db.cpp
 0042a2ec	GetLookDirection	CTCCameraPointScripted	__thiscall	C3DVector	2	CTCCameraPointScripted *,CRightHandedSet *	1	yes	accepted									
 0042a33f	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	list<CMessageEvent_const*,std	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
-0042a34e	CMemoryAllocatorVariableSize::Erase	CMemoryAllocatorVariableSize	unknown	undefined	0		0	yes	accepted									
+0042a34e	EraseEventTreeNode	_global	__cdecl	EventTreeNode *	4	EventTreeNode *,EventTreeNode **,EventTreeNode **,EventTreeNode **	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_EraseEventTreeNode_0042a34e.cpp
 0042a58d	RBTreeIterator_MoveToMax_A	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042A58D_global_RBTreeIterator_MoveToMax_A.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_RBTreeIteratorMoveToMaxA_0042a58d.cpp
 0042a59e	RBTreeIterator_MoveToMax_B	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042A59E_global_RBTreeIterator_MoveToMax_B.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_RBTreeIteratorMoveToMaxB_0042a59e.cpp
 0042a5af	RBTreeIterator_MoveToMax_C	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042A5AF_global_RBTreeIterator_MoveToMax_C.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_RBTreeIteratorMoveToMaxC_0042a5af.cpp
@@ -876,10 +876,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042ab73	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042ab73.cpp
 0042ab8a	Std_List_Insert	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AB8A_global_Std_List_Insert.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_StdListInsert_0042ab8a.cpp
 0042abaf	std::list::list	std::list	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\stdlist_list_0042abaf.cpp
-0042abca	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042abca.cpp
+0042abca	DestroyDeletionParents	_global	__thiscall	void	1	DeletionParentList *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_DestroyDeletionParents_0042abca.cpp
 0042abe1	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCCarryable_OnKill_0042abe1.cpp
-0042ac0a	DoublyLinkedList_InitializeEmpty	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AC0A_global_DoublyLinkedList_InitializeEmpty.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_DoublyLinkedListInitializeEmpty_0042ac0a.cpp
-0042ac25	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CActiveFile_OnReadFinished_0042ac25.cpp
+0042ac0a	ConstructObserverList	_global	__thiscall	ObserverList *	2	ObserverList *,void *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AC0A_global_DoublyLinkedList_InitializeEmpty.cpp	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_ConstructObserverList_0042ac0a.cpp
+0042ac25	DestroyObserverList	_global	__thiscall	void	1	ObserverList *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_DestroyObserverList_0042ac25.cpp
 0042ac52	Allocator_Alloc_56bytes	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AC52_global_Allocator_Alloc_56bytes.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_AllocatorAlloc56bytes_0042ac52.cpp
 0042ac76	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCCarryable_OnKill_0042ac76.cpp
 0042ac9f	Allocator_Alloc_24bytes	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042AC9F_global_Allocator_Alloc_24bytes.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_AllocatorAlloc24bytes_0042ac9f.cpp
@@ -946,16 +946,16 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042be11	GetHeight	CSurface	__thiscall	ulong	1	CSurface *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CSurface_GetHeight_0042be11.cpp
 0042be2f	Alloc	_global	__fastcall	CScriptDataBase *	0		1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_Alloc_0042be2f.cpp
 0042be50	CRumbleDef	CRumbleDef	__thiscall	undefined	1	CRumbleDef *	0	yes	accepted									
-0042be7b	CConsoleCommandParameters	CConsoleCommandParameters	__thiscall	undefined	3	CConsoleCommandParameters *,EGenericVarType,EGenericVarType	0	yes	accepted									
-0042bea9	NUISystem::CObservable::vfunc_7	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0042be7b	CObservable	CObservable	__thiscall	CObservable *	1	CObservable *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CObservable_CObservable_0042be7b.cpp
+0042bea9	GetExclusiveObserver	CObservable	__thiscall	CObserver *	1	CObservable *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CObservable_GetExclusiveObserver_0042bea9.cpp
 0042bead	AddLearnedExpression	CTCInventoryAbilities	__thiscall	void	2	CTCInventoryAbilities *,long	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCInventoryAbilities_AddLearnedExpression_0042bead.cpp
-0042bec0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp
+0042bec0	Destroy	CObservable	__thiscall	void	1	CObservable *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CObservable_Destroy_0042bec0.cpp
 0042bed4	GetBankHandle	CBankFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CBankFile_GetBankHandle_0042bed4.cpp
 0042bef2	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CRegion_SetMiniMapRegionExitTextOffsetX_0042bef2.cpp
 0042bf06	CEngineSceneGrid_Initialize	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042BF06_global_CEngineSceneGrid_Initialize.cpp				
 0042bf35	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CDisplayManager_CopyBackBufferToTexture_0042bf35.cpp
-0042bf67	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CDisplayManager_CopyBackBufferToTexture_0042bf67.cpp
-0042bf85	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CDisplayManager_CopyBackBufferToTexture_0042bf85.cpp
+0042bf67	ConstructInputMap	_global	__thiscall	IntegerMap *	1	IntegerMap *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_ConstructInputMap_0042bf67.cpp
+0042bf85	ConstructLayerMap	_global	__thiscall	IntegerMap *	1	IntegerMap *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_ConstructLayerMap_0042bf85.cpp
 0042c02f	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCCarryable_OnKill_0042c02f.cpp
 0042c058	operator()	CompareDataOffset	__thiscall	bool	3	CompareDataOffset *,ulong,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CompareDataOffset_operator_0042c058.cpp
 0042c082	CMemoryAllocatorVariableSize_FindInsertPoint	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042C082_global_CMemoryAllocatorVariableSize_FindInsertPoint.cpp				
@@ -985,7 +985,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042cc98	RBTree_InsertStringKey	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042CC98_global_RBTree_InsertStringKey.cpp				
 0042cd3e	FID_conflict:max_size	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042CD3E_global_FID_conflict_max_size.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_FIDconflictmaxsize_0042cd3e.cpp
 0042cd61	FID_conflict:max_size	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042CD61_global_FID_conflict_max_size.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_FIDconflictmaxsize_0042cd61.cpp
-0042cd84	pair<unsigned_long,CAnimationEntry>	pair<unsigned_long	__thiscall	undefined	2	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	0	yes	accepted									
+0042cd84	CopyDeletion	_global	__thiscall	CDeletion *	2	CDeletion *,CDeletion const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_CopyDeletion_0042cd84.cpp
 0042cda6	TransferIn	CPersistTraits<C2DVector>	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
 0042cdc3	TransferIn	CPersistTraits<C2DVector>	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
 0042cde0	CompareAndCountAllocations	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042CDE0_global_CompareAndCountAllocations.cpp				
@@ -999,9 +999,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042d191	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\NScript_operatorandCPredicateAnd_0042d191.cpp
 0042d1a3	GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript	__fastcall	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	2	CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> *,CIsThingAlive *	1	yes	accepted									
 0042d1b7	operator[]	map<NUISystem::CComponent*	__thiscall	long *	2	map<NUISystem::CComponent*,long,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,long>_>_> *,CComponent * *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\mapNUISystemCComponent_operator_0042d1b7.cpp
-0042d201	operator[]	map<NUISystem::CManager::EUsedKeys	__thiscall	long *	2	map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_> *,EUsedKeys *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\mapNUISystemCManagerEUsedKeys_operator_0042d201.cpp
-0042d246	operator[]	map<NUISystem::CManager::EUsedKeys	__thiscall	long *	2	map<NUISystem::CManager::EUsedKeys,long,std::less<NUISystem::CManager::EUsedKeys>,std::allocator<std::pair<NUISystem::CManager::EUsedKeys_const_,long>_>_> *,EUsedKeys *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\mapNUISystemCManagerEUsedKeys_operator_0042d246.cpp
-0042d28b	CopyBackBufferToTexture	CDisplayManager	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CDisplayManager_CopyBackBufferToTexture_0042d28b.cpp
+0042d201	LookupInputKey	_global	__thiscall	int *	2	IntegerMap *,int const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_LookupInputKey_0042d201.cpp
+0042d246	LookupLayer	_global	__thiscall	int *	2	IntegerMap *,int const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_LookupLayer_0042d246.cpp
+0042d28b	ConstructComponentMap	_global	__thiscall	ComponentMap *	1	ComponentMap *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_ConstructComponentMap_0042d28b.cpp
 0042d2a9	TransferIn	CPersistTraits<C2DVector>	__thiscall	C2DVector	3	CPersistTraits<C2DVector> *,CPersistContext *,CStringParser *	1	yes	accepted									
 0042d2c6	CMemoryAllocatorVariableSize_FindAllocationNode	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042D2C6_global_CMemoryAllocatorVariableSize_FindAllocationNode.cpp				
 0042d405	SetClothingMappingToMenuEntry	CTCInventoryClothing	__thiscall	void	3	CTCInventoryClothing *,CComponent *,long	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CTCInventoryClothing_SetClothingMappingToMenuEntry_0042d405.cpp
@@ -1079,14 +1079,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042e3ce	FrontEnd_CheckQuickAssignInventory	_global	unknown	undefined	0		0	unmeasured	accepted									
 0042e3ee	Input	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
 0042e98f	Init2	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_Init2_0042e98f.cpp
-0042ea8f	CNewFrontendGameComponent	CNewFrontendGameComponent	__thiscall	undefined	3	CNewFrontendGameComponent *,CGame *,CNewFrontendGameComponentInit *	0	yes	accepted									
+0042ea8f	CNewFrontendGameComponent	CNewFrontendGameComponent	__thiscall	undefined	3	CNewFrontendGameComponent *,CGame *,CNewFrontendGameComponentInit *	0	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp
 0042ebb6	Shutdown	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
 0042ec7c	CNewFrontendGameComponent::Run	CNewFrontendGameComponent	__thiscall	bool	2	CNewFrontendGameComponent *,CGameComponent * *	1	yes	accepted									
 0042f50b	~CNewFrontendGameComponent	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
 0042f5a9	CompileDefsPlatformSpecific	_global	__fastcall	void	1	bool	1	yes	accepted									
 0042f70b	CompileDefs	_global	__fastcall	void	0		1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\global_CompileDefs_0042f70b.cpp
 0042f722	InitialiseDefs	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_InitialiseDefs_0042f722.cpp
-0042f75e	CNewFrontendGameComponent::Init	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted									
+0042f75e	CNewFrontendGameComponent::Init	CNewFrontendGameComponent	__thiscall	void	1	CNewFrontendGameComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CNewFrontendGameComponent_Init_0042f75e.cpp
 0042f7c1	~CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow	__thiscall	void	1	CAIStateGroup_CarryCrateAndFollow *	1	yes	accepted									
 0042f804	sub_0042f804	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0042f864	sub_0042f864	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -3110,7 +3110,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00464841	FrameUpdate	CCreatureAction_FireMissileWeapon	__thiscall	void	1	CCreatureAction_FireMissileWeapon *	1	yes	accepted									
 0046486f	GFSerialiseVectorBinaryOut<float>	_global	__fastcall	void	2	CDataOutputStream *,vector<float,std::allocator<float>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\global_GFSerialiseVectorBinaryOutfloat_0046486f.cpp
 004648a1	GFSerialiseVectorBinaryIn<CRGBColour>	_global	__fastcall	void	2	CMemoryDataInputStream *,vector<CRGBColour,std::allocator<CRGBColour>_> *	1	yes	accepted									
-00464931	push_back	CArray<std::pair<long	__thiscall	void	2	CArray<std::pair<long,long>_> *,pair<long,long> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\46\CArraystdpairlong_pushback_00464931.cpp
+00464931	ResizeBankChecksums	_shared	__thiscall	void	3	UIntVector *,unsigned long,unsigned long const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\46\UIntVector_ResizeBankChecksums_00464931.cpp
 0046496f	std_vector_push_copy_element	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x0046496F_global_std_vector_push_copy_element.cpp				
 004649a3	std::vector_insert_range_undefined4	std	unknown	undefined	0		0	yes	accepted									
 00464aab	Vector_CopyRangeForward	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\46\0x00464AAB_global_Vector_CopyRangeForward.cpp				
@@ -4232,7 +4232,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0049b480	VectorInsert_ExpandCTexture	_global	unknown	undefined	0		0	yes	accepted									
 0049b5a0	Std_Vector_Insert_Range_CTexture	_global	unknown	undefined	0		0	yes	accepted									
 0049b6b0	Std_Vector_PushBack_CTexture	_global	unknown	undefined	0		0	yes	accepted									
-0049b760	Vector_InsertElement	_global	unknown	undefined	0		0	yes	accepted									
+0049b760	ResizeBankSymbols	_shared	__thiscall	void	2	StringVector *,unsigned long	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\49\StringVector_ResizeBankSymbols_0049b760.cpp
 0049b7d0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\49\CLandscapeBackgroundPatch_vectordeletingdestructor_0049b7d0.cpp
 0049b7f0	resize	vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>	__thiscall	void	2	vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> *,uint	1	yes	accepted									
 0049b860	CPersistContext_TransferableVector::vfunc_1	CPersistContext_TransferableVector	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -8743,7 +8743,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0051d630	std::vector_InsertRange_WithRealloc_Pairs	std	unknown	undefined	0		0	yes	accepted									
 0051d800	resize	vector<CTCInventoryMap::CUIMiniMapMarker	__thiscall	void	3	vector<CTCInventoryMap::CUIMiniMapMarker,std::allocator<CTCInventoryMap::CUIMiniMapMarker>_> *,uint,CUIMiniMapMarker	1	yes	accepted									
 0051d870	~CLODDynamicBuildInfo	CLODDynamicBuildInfo	__thiscall	void	1	CLODDynamicBuildInfo *	1	yes	accepted									
-0051d8e0	CAIStateGroup_GazeAtHome	CAIStateGroup_GazeAtHome	__thiscall	undefined	1	CAIStateGroup_GazeAtHome *	0	yes	accepted									
+0051d8e0	CGameComponent	CGameComponent	__thiscall	CGameComponent *	2	CGameComponent *,CGame *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CGameComponent_CGameComponent_0051d8e0.cpp
 0051d990	Multiply64Bit	_global	unknown	undefined	0		0	yes	accepted									
 0051da20	CClassFactory::OnCreateClass	CClassFactory	__thiscall	void	2	CClassFactory *,CClass &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CClassFactory_OnCreateClass_0051da20.cpp
 0051da30	CClassFactory::OnDeleteClass	CClassFactory	__thiscall	void	2	CClassFactory *,CClass &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CClassFactory_OnDeleteClass_0051da30.cpp
@@ -9045,23 +9045,23 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052c630	resize	vector<CTCInventoryMap::CUIMiniMapMarker	__thiscall	void	3	vector<CTCInventoryMap::CUIMiniMapMarker,std::allocator<CTCInventoryMap::CUIMiniMapMarker>_> *,uint,CUIMiniMapMarker	1	yes	accepted									
 0052c6a0	WorldUpdateBulletTime	CThingDeadCreature	__thiscall	void	1	CThingDeadCreature *	1	yes	accepted									
 0052c730	Initialise	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
-0052c780	InternalChanged	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
-0052c7e0	Update	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,float	1	yes	accepted									
-0052c870	IsPositionIndependent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
-0052c8b0	IsPositionIndependent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted									
-0052c8f0	NUISystem::CSprite::vfunc_49	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052c920	ProcessChangeState	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
+0052c780	InternalChanged	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_InternalChanged_0052c780.cpp
+0052c7e0	Update	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,float	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_Update_0052c7e0.cpp
+0052c870	IsPositionIndependent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_IsPositionIndependent_0052c870.cpp
+0052c8b0	IsZoomIndependent	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_IsZoomIndependent_0052c8b0.cpp
+0052c8f0	HasCompletedStateChange	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_HasCompletedStateChange_0052c8f0.cpp
+0052c920	ProcessChangeState	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_ProcessChangeState_0052c920.cpp
 0052cab0	AddChildDynamically	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 0052caf0	ForceState	CChangingStateComponent	__thiscall	void	3	CChangingStateComponent *,ulong,bool	1	yes	accepted									
-0052cbf0	AllScrollingChildrenDeleting	CList	__thiscall	bool	1	CList *	1	yes	accepted									
+0052cbf0	ChildrenChanged	CChangingStateComponent	__thiscall	bool	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_ChildrenChanged_0052cbf0.cpp
 0052cc50	CDraggableInto	CDraggableInto	__thiscall	undefined	2	CDraggableInto *,long	0	yes	accepted									
 0052cca0	sub_0052cca0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0052ccf0	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
-0052cd20	UpdateStateChange	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted									
+0052cd20	UpdateStateChange	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_UpdateStateChange_0052cd20.cpp
 0052ceb0	NUISystem::CSprite::vfunc_135	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052cee0	NUISystem::CSprite::vfunc_134	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052cf10	NUISystem::CSprite::vfunc_50	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052cf40	ChangeState	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,ulong	1	yes	accepted									
+0052cf40	ChangeState	CChangingStateComponent	__thiscall	void	2	CChangingStateComponent *,ulong	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CChangingStateComponent_ChangeState_0052cf40.cpp
 0052d520	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CGuiControlTreePane_SortTreeRecursively_0052d520.cpp
 0052d5a0	StdList_Initialize	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_StdListInitialize_0052d5a0.cpp
 0052d5c0	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CGuiControlTreePane_SortTreeRecursively_0052d5c0.cpp
@@ -9071,34 +9071,34 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052d710	NUISystem::CChangingStateComponent::vfunc_0	NUISystem::CChangingStateComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052d740	LinkedList_InsertNode	_global	unknown	undefined	0		0	yes	accepted									
 0052d770	`vector_deleting_destructor'	CThingTrackNode	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
-0052d7b0	ObserveAllEvents	CObserver	__thiscall	void	1	CObserver *	1	yes	accepted									
-0052d900	NUISystem::CSprite::vfunc_2	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052d940	NUISystem::CSprite::vfunc_4	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052d9a0	NUISystem::CSprite::vfunc_5	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052d9e0	CFrontEndManager::Initialize	CFrontEndManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CFrontEndManager_Initialize_0052d9e0.cpp
-0052da20	ObserveEvent	CObserver	__thiscall	void	2	CObserver *,EEvent	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_ObserveEvent_0052da20.cpp
-0052dca0	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+0052d7b0	ObserveAllEvents	CObserver	__thiscall	void	1	CObserver *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_ObserveAllEvents_0052d7b0.cpp
+0052d900	AcceptsEvent	CObserver	__thiscall	bool	2	CObserver *,EEvent	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_AcceptsEvent_0052d900.cpp
+0052d940	RemoveObservedEvent	CObserver	__thiscall	void	2	CObserver *,EEvent	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_RemoveObservedEvent_0052d940.cpp
+0052d9a0	ClearObservedEvents	CObserver	__thiscall	void	1	CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_ClearObservedEvents_0052d9a0.cpp
+0052d9e0	CObserver	CObserver	__thiscall	CObserver *	1	CObserver *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_CObserver_0052d9e0.cpp
+0052da20	ObserveEvent	CObserver	__thiscall	void	2	CObserver *,EEvent	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CObserver_ObserveEvent_0052da20.cpp
+0052dca0	FreeEventTree	_global	__thiscall	void	2	EventSet *,EventTreeNode *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_FreeEventTree_0052dca0.cpp
 0052dd10	BinaryTree_SuccessorNode_Dup3	_global	unknown	undefined	0		0	yes	accepted									
 0052de10	Container_EraseAndFree	_global	unknown	undefined	0		0	yes	accepted									
 0052de50	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CTCCarryable_OnKill_0052de50.cpp
 0052de90	StdList_AllocNode	_global	unknown	undefined	0		0	yes	accepted									
-0052dec0	BSTIterator_FindNextNodeWithValue	_global	unknown	undefined	0		0	yes	accepted									
-0052df20	BinaryTree_LowerBound_Int	_global	unknown	undefined	0		0	yes	accepted									
+0052dec0	FindEventInRange	_global	__fastcall	EventTreeNode **	5	EventTreeNode **,int const *,EventTreeNode *,EventTreeNode *,void *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_FindEventInRange_0052dec0.cpp
+0052df20	FindObservedEvent	_global	__thiscall	EventTreeNode **	3	EventSet *,EventTreeNode **,int const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_FindObservedEvent_0052df20.cpp
 0052df90	Container_EraseAndFree	_global	unknown	undefined	0		0	yes	accepted									
 0052dfd0	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CTCCarryable_OnKill_0052dfd0.cpp
 0052e010	LTextBinTree_Constructor	_global	unknown	undefined	0		0	yes	accepted									
 0052e050	LTextTreeWalkThrough::Destroy	LTextTreeWalkThrough	unknown	undefined	0		0	yes	accepted									
 0052e0a0	GetLookDirection	CTCCameraPointScripted	__thiscall	C3DVector	2	CTCCameraPointScripted *,CRightHandedSet *	1	yes	accepted									
-0052e0e0	CRedBlackTree_Insert_Int	_global	unknown	undefined	0		0	yes	accepted									
+0052e0e0	LinkEventNode	_global	__thiscall	EventTreeNode **	6	EventSet *,EventTreeNode **,EventTreeNode *,EventTreeNode *,int const *,bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_LinkEventNode_0052e0e0.cpp
 0052e1a0	LTextBinTree_Constructor	_global	unknown	undefined	0		0	yes	accepted									
 0052e1e0	LTextTreeWalkThrough::Dtor	LTextTreeWalkThrough	unknown	undefined	0		0	yes	accepted									
-0052e230	CRedBlackTree::Insert	CRedBlackTree	unknown	undefined	0		0	yes	accepted									
+0052e230	InsertObservedEvent	_global	__thiscall	EventInsertResult *	3	EventSet *,EventInsertResult *,int const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_InsertObservedEvent_0052e230.cpp
 0052e2f0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 0052e360	NUISystem::CUIInterface::vfunc_0	NUISystem::CUIInterface	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e470	Physics_ScaleFloatByGameSpeed	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_PhysicsScaleFloatByGameSpeed_0052e470.cpp
 0052e4d0	LengthScaleConversion	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_LengthScaleConversion_0052e4d0.cpp
-0052e530	ConvertX	_global	__fastcall	float	1	float	1	yes	accepted									
-0052e580	ConvertX	_global	__fastcall	float	1	float	1	yes	accepted									
+0052e530	ConvertCoordinatesInverse	_global	__fastcall	C2DVector	1	C2DVector	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_ConvertCoordinatesInverse_0052e530.cpp
+0052e580	ConvertX	_global	__fastcall	C2DVector	1	C2DVector	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\global_ConvertCoordinates_0052e580.cpp
 0052e5d0	CUIState	CUIState	__thiscall	undefined	1	CUIState *	0	yes	accepted									
 0052e6b0	ResetState	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ResetState_0052e6b0.cpp
 0052e700	NUISystem::CComponent::vfunc_42	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9116,7 +9116,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e810	NUISystem::CSprite::vfunc_57	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e830	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\E2_E2_0052e830.cpp
 0052e840	NUISystem::CComponent::vfunc_58	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e850	NUISystem::CSprite::vfunc_63	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0052e850	GetDeletion	CComponent	__thiscall	CDeletion *	1	CComponent *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_GetDeletion_0052e850.cpp
 0052e860	NUISystem::CSprite::vfunc_15	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e890	CMessageEventFilter_IsOriginatedByThing	CMessageEventFilter_IsOriginatedByThing	__thiscall	undefined	2	CMessageEventFilter_IsOriginatedByThing *,CThing *	0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CMessageEventFilterIsOriginatedByThing_IsOriginatedByThing_0052e890.cpp
 0052e8b0	NUISystem::CSprite::vfunc_17	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -9130,11 +9130,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052e970	NUISystem::CSprite::vfunc_28	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e990	NUISystem::CSprite::vfunc_29	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052e9b0	NUISystem::CSprite::vfunc_30	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052e9c0	ChangePosition	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
-0052ea30	ChangePositionDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
+0052e9c0	ChangePosition	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ChangePosition_0052e9c0.cpp
+0052ea30	ChangePositionDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ChangePositionDelta_0052ea30.cpp
 0052eaf0	ChangePositionDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
-0052ebb0	NUISystem::CSprite::vfunc_35	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052ec20	ChangeZoomDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted									
+0052ebb0	ChangeZoom	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ChangeZoom_0052ebb0.cpp
+0052ec20	ChangeZoomDelta	CComponent	__thiscall	void	4	CComponent *,C2DVector *,float,bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_ChangeZoomDelta_0052ec20.cpp
 0052ec60	NUISystem::CSprite::vfunc_38	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052ecc0	NUISystem::CSprite::vfunc_123	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052ee00	GetTargetRenderPosition	CComponent	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
@@ -9166,26 +9166,26 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052f170	NUISystem::CSprite::vfunc_99	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f180	NUISystem::CSprite::vfunc_100	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f190	NUISystem::CSprite::vfunc_101	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f1a0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
-0052f1b0	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+0052f1a0	IsPositionIndependent	CComponent	__thiscall	bool	1	CComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_IsPositionIndependent_0052f1a0.cpp
+0052f1b0	IsZoomIndependent	CComponent	__thiscall	bool	1	CComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_IsZoomIndependent_0052f1b0.cpp
 0052f3e0	GetRenderLayer	CComponent	__thiscall	long	1	CComponent *	1	yes	accepted									
 0052f430	NUISystem::CSprite::vfunc_133	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f440	CUIState	CUIState	__thiscall	undefined	2	CUIState *,CUIStateDef *	0	yes	accepted									
 0052f500	NUISystem::CSprite::vfunc_14	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f540	NUISystem::CSprite::vfunc_56	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0052f580	NUISystem::CSprite::vfunc_21	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0052f5c0	UpdateZoom	CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted									
+0052f5c0	UpdateZoom	CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_UpdateZoom_0052f5c0.cpp
 0052f900	GameAnimation_UpdatePosition	_global	unknown	undefined	0		0	yes	accepted									
-0052ffd0	UpdatePosition	CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted									
-00530260	Draw	CComponent	__thiscall	void	6	CComponent *,CIEngine *,CEnginePrimitiveHandle *,long,long *,CComponent *	1	yes	accepted									
-005303f0	RemoveObserverRecursive	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted									
+0052ffd0	UpdatePosition	CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\52\CComponent_UpdatePosition_0052ffd0.cpp
+00530260	Draw	CComponent	__thiscall	void	6	CComponent *,CIEngine *,CEnginePrimitiveHandle *,long,long *,CComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_Draw_00530260.cpp
+005303f0	RemoveObserverRecursive	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_RemoveObserverRecursive_005303f0.cpp
 00530460	FindFirstChildOfType	CComponent	__thiscall	CComponent *	2	CComponent *,EType	1	yes	accepted									
 005304c0	FindComponent	CComponent	__thiscall	CComponent *	2	CComponent *,CComponent *	1	yes	accepted									
 00530530	HasStateInChildren	CComponent	__thiscall	bool	2	CComponent *,ulong	1	yes	accepted									
 005305a0	NUISystem::CSprite::vfunc_39	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00530610	FindFirstChildOfTypeNonRecursive	CComponent	__thiscall	CComponent *	2	CComponent *,EType	1	yes	accepted									
 00530690	NUISystem::CSprite::vfunc_88	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00530720	Die	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_Die_00530720.cpp
+00530720	Die	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_Die_00530720.cpp
 00530740	NUISystem::CSprite::vfunc_113	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00530780	FindChild	CComponent	__thiscall	CComponent *	2	CComponent *,CCharString	1	yes	accepted									
 00530830	FindChildForward	CComponent	__thiscall	CComponent *	2	CComponent *,CCharString	1	yes	accepted									
@@ -9204,8 +9204,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00531b40	NUISystem::CSprite::vfunc_127	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00531ba0	AddPositionChild	CComponent	__thiscall	void	2	CComponent *,CComponent *	1	yes	accepted									
 00531e50	NUISystem::CSprite::vfunc_96	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00531e90	NUISystem::CSprite::vfunc_62	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00531ec0	CGuiComponent::Update	CGuiComponent	unknown	undefined	0		0	yes	accepted									
+00531e90	SetDeletion	CComponent	__thiscall	void	2	CComponent *,CDeletion	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_SetDeletion_00531e90.cpp
+00531ec0	Update	CComponent	__thiscall	void	2	CComponent *,float	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_Update_00531ec0.cpp
 00532d00	NUISystem::CSprite::vfunc_130	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00532d90	~CComponent	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted									
 005331a0	GetDataFromDef	CComponent	__thiscall	void	1	CComponent *	1	yes	accepted									
@@ -9215,7 +9215,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00533b30	NUISystem::CComponent::vfunc_50	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00533b50	Container_PushElement	_global	unknown	undefined	0		0	yes	accepted									
 00533ba0	NUISystem::CSprite::vfunc_61	NUISystem::CSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00533bc0	CScriptBase_RemoveChildAt	_global	unknown	undefined	0		0	yes	accepted									
+00533bc0	RemoveChildAt	CComponent	__thiscall	void	2	CComponent *,unsigned int	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CComponent_RemoveChildAt_00533bc0.cpp
 00533cc0	Vector_PushBack_Or_Reallocate	_global	unknown	undefined	0		0	yes	accepted									
 00533d30	GetSize	CComponent	__thiscall	C2DVector	1	CComponent *	1	yes	accepted									
 00534430	sub_00534430	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -9227,10 +9227,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00534d30	std::list_node::splice	std::list_node	unknown	undefined	0		0	yes	accepted									
 00534da0	RBTreeNode::FindSuccessor	RBTreeNode	unknown	undefined	0		0	yes	accepted									
 00534df0	CRedBlackTree_Insert_UInt	_global	unknown	undefined	0		0	yes	accepted									
-00534eb0	std::__find_in_uint_array	std	unknown	undefined	0		0	yes	accepted									
+00534eb0	FindCountedChild	_global	__fastcall	CCountedPointer<CComponent> *	4	CCountedPointer<CComponent> *,CCountedPointer<CComponent> *,CCountedPointer<CComponent> const *,void *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\global_FindCountedChild_00534eb0.cpp
 00534f20	std::__find_in_tree_by_key	std	unknown	undefined	0		0	yes	accepted									
 00534f80	_Copy_backward<CCountedPointer<C3DGroup2>*,CCountedPointer<class_C3DGroup2>*>	_global	__fastcall	CCountedPointer<C3DGroup2> *	4	CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,CCountedPointer<class_C3DGroup2> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-00535000	_Move<CCountedPointer<CGuiVarTransferBase>*,CCountedPointer<class_CGuiVarTransferBase>*>	_global	__fastcall	CCountedPointer<CGuiVarTransferBase> *	4	CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
+00535000	MoveCountedChildren	_global	__fastcall	CCountedPointer<CComponent> *	5	CCountedPointer<CComponent> *,CCountedPointer<CComponent> *,CCountedPointer<CComponent> *,void *,unsigned int	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\global_MoveCountedChildren_00535000.cpp
 00535080	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00535080.cpp
 00535140	List_Sentinel_Init	_global	unknown	undefined	0		0	yes	accepted									
 00535160	Container_EraseAndFree	_global	unknown	undefined	0		0	yes	accepted									
@@ -9242,7 +9242,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005353e0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_005353e0.cpp
 00535420	_Destroy_range<std::allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_>_>	_Destroy_range<std::allocator<std	__fastcall	void	4	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,allocator<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00535470	Std_Vector_Construct_Copy	_global	unknown	undefined	0		0	yes	accepted									
-005354e0	RemovePredicate	CScriptBase	__thiscall	void	1	CScriptBase *	1	yes	accepted									
+005354e0	EraseCountedChild	_global	__thiscall	CCountedPointer<CComponent> *	2	CountedChildVector *,CCountedPointer<CComponent> *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\global_EraseCountedChild_005354e0.cpp
 00535580	Container_EraseAndFree	_global	unknown	undefined	0		0	yes	accepted									
 005355c0	_Buynode<CCountedPointer<CSpawnedFuncBase>_>	_List_val<CCountedPointer<CSpawnedFuncBase>	__thiscall	_Node *	4	_List_val<CCountedPointer<CSpawnedFuncBase>,std::allocator<CCountedPointer<CSpawnedFuncBase>_>_> *,_Node *,_Node *,CCountedPointer<CSpawnedFuncBase> *	1	yes	accepted									
 00535610	LTextBinTree_Constructor	_global	unknown	undefined	0		0	yes	accepted									
@@ -9252,12 +9252,12 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00535750	LTextBinTree_Constructor	_global	unknown	undefined	0		0	yes	accepted									
 00535790	LTextTreeWalkThrough_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 005357e0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CActiveFile_OnReadFinished_005357e0.cpp
-00535800	std::list::splice	std::list	unknown	undefined	0		0	yes	accepted									
+00535800	AssignDeletionParents	_global	__thiscall	DeletionParentList *	2	DeletionParentList *,DeletionParentList const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\global_AssignDeletionParents_00535800.cpp
 00535900	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00535930	StdList_Initialize	_global	unknown	undefined	0		0	yes	accepted									
 00535950	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CActiveFile_OnReadFinished_00535950.cpp
 005359a0	EventList_RemoveAndCleanup	_global	unknown	undefined	0		0	yes	accepted									
-005359d0	std::vector::_Reallocate	std::vector	unknown	undefined	0		0	yes	accepted									
+005359d0	ReallocateCountedChildren	_global	__thiscall	void	6	CountedChildVector *,CCountedPointer<CComponent> *,CCountedPointer<CComponent> const *,void *,unsigned int,bool	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\53\global_ReallocateCountedChildren_005359d0.cpp
 00535ab0	NUISystem::CComponent::vfunc_0	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00535ac0	NUISystem::CComponent::vfunc_0	NUISystem::CComponent	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00535ad0	std::vector::push_back	std::vector	unknown	undefined	0		0	yes	accepted									
@@ -10026,18 +10026,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055c8b0	NUISystem::CMouseCursor::vfunc_0	NUISystem::CMouseCursor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c8c0	NUISystem::CMouseCursor::vfunc_0	NUISystem::CMouseCursor	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055c8d0	`scalar_deleting_destructor'	CMouseCursor	__thiscall	void *	2	CMouseCursor *,uint	1	yes	accepted									
-0055c930	NUISystem::CObservable::vfunc_3	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055c940	NUISystem::CObservable::vfunc_4	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055c950	ProcessLoading	CGraphicBankManager	__thiscall	void	3	CGraphicBankManager *,bool,double	1	yes	accepted									
-0055c9c0	NUISystem::CObservable::vfunc_5	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055ca00	NUISystem::CObservable::vfunc_10	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055ca40	NUISystem::CObservable::vfunc_2	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055ca90	NUISystem::CObservable::vfunc_9	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055cae0	NUISystem::CObservable::vfunc_8	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0055cb10	NUISystem::CObservable::vfunc_0	NUISystem::CObservable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0055c930	SetExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_SetExclusiveObserver_0055c930.cpp
+0055c940	ClearExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_ClearExclusiveObserver_0055c940.cpp
+0055c950	ClearObservers	CObservable	__thiscall	void	1	CObservable *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_ClearObservers_0055c950.cpp
+0055c9c0	RemoveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_RemoveObserver_0055c9c0.cpp
+0055ca00	RemoveConcurrentExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_RemoveConcurrentExclusiveObserver_0055ca00.cpp
+0055ca40	AddObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_AddObserver_0055ca40.cpp
+0055ca90	AddConcurrentExclusiveObserver	CObservable	__thiscall	void	2	CObservable *,CObserver *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_AddConcurrentExclusiveObserver_0055ca90.cpp
+0055cae0	HasExclusiveObservers	CObservable	__thiscall	bool	1	CObservable *	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_HasExclusiveObservers_0055cae0.cpp
+0055cb10	DispatchEvent	CObservable	__thiscall	void	2	CObservable *,EEvent	1	yes	accepted	discovered	gapscan			rtti-vtables.tsv	PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CObservable_DispatchEvent_0055cb10.cpp
 0055cbe0	LinkedList_FilterByPredicate	_global	unknown	undefined	0		0	yes	accepted									
-0055ce90	LinkedList_CopyElements	_global	unknown	undefined	0		0	yes	accepted									
-0055cf50	LinkedList_Init_Copy	_global	unknown	undefined	0		0	yes	accepted									
+0055ce90	InsertObserverRange	_global	__thiscall	void	5	ObserverList *,ObserverListNode *,ObserverListNode *,ObserverListNode *,void *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_InsertObserverRange_0055ce90.cpp
+0055cf50	CopyObserverList	_global	__thiscall	ObserverList *	2	ObserverList *,ObserverList const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_CopyObserverList_0055cf50.cpp
 0055cfa0	CTCPhotojournalCapture::vfunc_4	CTCPhotojournalCapture	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055cfb0	AddDescription	_global	__fastcall	void	2	CWideString *,CWideString *	1	yes	accepted									
 0055d070	NHeroInformationScreens_LoadTextFromFile	_global	unknown	undefined	0		0	yes	accepted									
@@ -10503,7 +10503,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005793c4	Alloc_72ByteStruct_2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\global_Alloc72ByteStruct2_005793c4.cpp
 005793e8	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\CTCCarryable_OnKill_005793e8.cpp
 00579411	Alloc_24ByteStruct_18	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\global_Alloc24ByteStruct18_00579411.cpp
-00579435	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\LTextTreeWalkThrough_BuildTreeArray_00579435.cpp
+00579435	DestroyBankStringSubtree	_shared	__thiscall	void	2	StringTree *,StringTreeNode *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\57\StringTree_DestroyBankSubtree_00579435.cpp
 005794a1	AllocPair_Generic	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\57\global_AllocPairGeneric_005794a1.cpp
 005794c3	_Insert<std::_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>_>	_Insert<std::_List_const_iterator<std::_List_val<CClass*,std	__thiscall	void	5	list<CClass*,std::allocator<CClass*>_> *,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,forward_iterator_tag	1	yes	accepted									
 0057953e	_Construct_n	list<C2DCoordI	__thiscall	void	3	list<C2DCoordI,std::allocator<C2DCoordI>_> *,uint,C2DCoordI *	1	yes	accepted									
@@ -13299,13 +13299,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0062f6d0	_Cons_val<std::allocator<CCountedPointer<C3DSkeletalMorphParameter>_>,CCountedPointer<C3DSkeletalMorphParameter>,CCountedPointer<class_C3DSkeletalMorphParameter>_const&>	_Cons_val<std	__fastcall	void	3	allocator<CCountedPointer<C3DSkeletalMorphParameter>_> *,CCountedPointer<C3DSkeletalMorphParameter> *,CCountedPointer<class_C3DSkeletalMorphParameter> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\Consvalstd_allocatorCCountedPointerC3DSkeletalMorphParamete_0062f6d0.cpp
 0062f6f0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CLandscapeBackgroundPatch_vectordeletingdestructor_0062f6f0.cpp
 0062f710	CCombatActionBase::Clone	CCombatActionBase	__thiscall	CCreatureActionBase *	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CCombatActionBase_Clone_0062f710.cpp
-0062f740	CStopWatch	CStopWatch	__thiscall	undefined	1	CStopWatch *	0	yes	accepted									
+0062f740	CStopWatch	CStopWatch	__thiscall	undefined	1	CStopWatch *	0	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_CStopWatch_0062f740.cpp
 0062f790	GetTicks	CStopWatch	__thiscall	__int64	1	CStopWatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_GetTicks_0062f790.cpp
-0062f7c0	Start	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted									
-0062f800	StartZero	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted									
-0062f850	Stop	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted									
-0062f8b0	Reset	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted									
-0062f900	GetElapsedSeconds	CStopWatch	__thiscall	float	1	CStopWatch *	1	yes	accepted									
+0062f7c0	Start	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_Start_0062f7c0.cpp
+0062f800	StartZero	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_StartZero_0062f800.cpp
+0062f850	Stop	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_Stop_0062f850.cpp
+0062f8b0	Reset	CStopWatch	__thiscall	void	1	CStopWatch *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_Reset_0062f8b0.cpp
+0062f900	GetElapsedSeconds	CStopWatch	__thiscall	float	1	CStopWatch *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\62\CStopWatch_GetElapsedSeconds_0062f900.cpp
 0062f9c0	PackARGBColor	_global	unknown	undefined	0		0	yes	accepted									
 0062fc20	sub_0062fc20	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0062fe60	CParticleMorphs_ctor	_global	unknown	undefined	0		0	yes	accepted									
@@ -34356,7 +34356,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cf2f4	Catch@009cf2f4	_global	unknown	undefined	0		0	yes	accepted									
 009cf3a0	CBankFile_WriteSymbolFile	_global	unknown	undefined	0		0	yes	accepted									
 009cfb70	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted									
-009cfbc0	ReadEntryList	CBankFile	__thiscall	bool	4	CBankFile *,CFileDataInputStream *,ulong,ulong	1	yes	accepted									
+009cfbc0	ReadBankEntries	_shared	__thiscall	bool	4	CBankFile *,CFileDataInputStream *,unsigned long,unsigned long	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\9c\CBankFile_ReadEntries_009cfbc0.cpp
 009d0380	ReadRecoveryFile	CBankFile	__thiscall	bool	2	CBankFile *,ulong	1	yes	accepted									
 009d0630	CPackedBlockAllocator::RebuildFreeList	CPackedBlockAllocator	unknown	undefined	0		0	yes	accepted									
 009d06f0	?OpenReadOnly@CBankFile@@UAE_NABVCCharString@@K@Z	CBankFile	__thiscall	bool	3	CBankFile *,CCharString *,ulong	1	yes	accepted									
@@ -34379,9 +34379,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d1f90	RBTree_Next	_global	unknown	undefined	0		0	yes	accepted									
 009d1fe0	sub_009d1fe0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 009d20d0	LowerBound	CVectorMap<unsigned_long	__thiscall	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned_long,CDefString>,std::allocator<std::pair<unsigned_long,CDefString>_>_>_>	2	CVectorMap<unsigned_long,CDefString,CKeyPairCompareLess<unsigned_long,CDefString>_> *,ulong *	1	yes	accepted									
-009d2110	Clear	CSmallVector<CCharString	__thiscall	void	1	CSmallVector<CCharString,8> *	1	yes	accepted									
-009d2160	CSmallVector_AllocateHeap	_global	unknown	undefined	0		0	yes	accepted									
-009d21d0	Copy	CSmallVector<CThingComponentSet::CEntry	__thiscall	void	2	CSmallVector<CThingComponentSet::CEntry,8> *,CSmallVector<class_CThingComponentSet::CEntry,8> *	1	yes	accepted									
+009d2110	ClearBankAliases	_shared	__thiscall	void	1	BankAliases *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\9d\CSmallVector_ClearBankAliases_009d2110.cpp
+009d2160	ResizeBankAliases	_shared	__thiscall	void	2	BankAliases *,unsigned long	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\9d\CSmallVector_ResizeBankAliases_009d2160.cpp
+009d21d0	CopyBankAliases	_shared	__thiscall	void	2	BankAliases *,BankAliases const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\9d\CSmallVector_CopyBankAliases_009d21d0.cpp
 009d23a0	RBTree_Predecessor	_global	unknown	undefined	0		0	yes	accepted									
 009d23f0	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>	_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 009d2450	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
@@ -34417,7 +34417,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d3ca0	_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std	__fastcall	void	3	allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_> *,pair<CCharString_const_,CArray<unsigned_long>_> *,pair<class_CCharString_const_,class_CArray<unsigned_long>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9d\ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_009d3ca0.cpp
 009d3cf0	std::make_heap	std	unknown	undefined	0		0	yes	accepted									
 009d3d90	DeallocateMemory	CArray<std::pair<unsigned_long	__thiscall	void	1	CArray<std::pair<unsigned_long,CDefClassBase::CSubDefInfo>_> *	1	yes	accepted									
-009d3df0	resize	vector<unsigned_int	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
+009d3df0	ResizeBankUpdates	_shared	__thiscall	void	3	UIntVector *,unsigned long,unsigned long const *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC-native-play\rebuild\src\compiled\00\9d\UIntVector_ResizeBankUpdates_009d3df0.cpp
 009d3e80	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009d3ed0	CBankFile_IntroSort	_global	unknown	undefined	0		0	yes	accepted									
 009d3fb0	~CArray<CCharString>	CArray<CCharString>	__thiscall	void	1	CArray<CCharString> *	1	yes	accepted									
@@ -41769,7 +41769,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b84320	RenderListTwoPass	CEngineSubPrimitiveRenderer	__thiscall	void	4	CEngineSubPrimitiveRenderer *,CArray<CEngineSubPrimitiveRenderer::CSortElement> *,ERenderPassType,ERenderPassType	1	yes	accepted									
 00b84390	~CEngineWaterBackgroundSubPatch	CEngineWaterBackgroundSubPatch	__thiscall	void	1	CEngineWaterBackgroundSubPatch *	1	yes	accepted									
 00b84400	DeleteList	CEngineSubPrimitiveRenderer	__thiscall	void	2	CEngineSubPrimitiveRenderer *,CArray<CEngineSubPrimitiveRenderer::CSortElement> *	1	yes	accepted									
-00b84470	NHeroInformationScreens::CBase::CBase	NHeroInformationScreens::CBase	unknown	undefined	0		0	yes	accepted									
+00b84470	CEngineSubPrimitiveRenderer	CEngineSubPrimitiveRenderer	__thiscall	CEngineSubPrimitiveRenderer *	1	CEngineSubPrimitiveRenderer *	1	yes	accepted									
 00b84580	AddSubPrimitive	CEngineSubPrimitiveRenderer	__thiscall	void	7	CEngineSubPrimitiveRenderer *,CEngineSubPrimitiveBase *,float,uchar,ulong,CEnginePrimitiveManager *,CEngineSubPrimitiveChain *	1	yes	accepted									
 00b846e0	AddSubPrimitive	CEngineSubPrimitiveRenderer	__thiscall	void	6	CEngineSubPrimitiveRenderer *,CEngineSubPrimitiveBase *,float,uchar,ulong,CEnginePrimitiveManager *	1	yes	accepted									
 00b84720	Engine_AddClockVertex	_global	unknown	undefined	0		0	yes	accepted									
@@ -41920,8 +41920,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b8fdc0	CEngineInternalPrimitiveBase::GetChildPrimitiveHandle	CEngineInternalPrimitiveBase	__thiscall	void	3	CEngineInternalPrimitiveBase *,ulong,CEnginePrimitiveHandle &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineInternalPrimitiveBase_GetChildPrimitiveHandle_00b8fdc0.cpp
 00b8fdd0	CEngineInternalPrimitiveBase::ClearChildPrimitive	CEngineInternalPrimitiveBase	__thiscall	void	2	CEngineInternalPrimitiveBase *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineInternalPrimitiveBase_ClearChildPrimitive_00b8fdd0.cpp
 00b8fde0	CEngineInternalPrimitiveBase::ClearAllChildPrimitives	CEngineInternalPrimitiveBase	__thiscall	void	1	CEngineInternalPrimitiveBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineInternalPrimitiveBase_ClearAllChildPrimitivesCEngineIntern_00b8fde0.cpp
-00b8fdf0	AddToList	CEngineInternalPrimitiveBase	__thiscall	void	2	CEngineInternalPrimitiveBase *,CEngineInternalPrimitiveBase * *	1	yes	accepted									
-00b8fe60	RemoveFromList	CEngineInternalPrimitiveBase	__thiscall	void	1	CEngineInternalPrimitiveBase *	1	yes	accepted									
+00b8fdf0	AddToList	CEngineInternalPrimitiveBase	__thiscall	void	2	CEngineInternalPrimitiveBase *,CEngineInternalPrimitiveBase * *	1	yes	accepted						PASS	PASS	DIFFER	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineInternalPrimitiveBase_AddToList_00b8fdf0.cpp
+00b8fe60	RemoveFromList	CEngineInternalPrimitiveBase	__thiscall	void	1	CEngineInternalPrimitiveBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CEngineInternalPrimitiveBase_RemoveFromList_00b8fe60.cpp
 00b8fee0	ClearPrimitiveList	_global	__fastcall	void	1	CEngineInternalPrimitiveBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\global_ClearPrimitiveList_00b8fee0.cpp
 00b8ff00	CEngineInternalPrimitiveBase	CEngineInternalPrimitiveBase	__thiscall	undefined	3	CEngineInternalPrimitiveBase *,long,ulong	0	yes	accepted									
 00b8ff70	?NotifyReleased@CEngineInternalPrimitiveBase@@MAEXABVCEnginePrimitiveHandle@@@Z	CEngineInternalPrimitiveBase	__thiscall	void	2	CEngineInternalPrimitiveBase *,CEnginePrimitiveHandle *	1	yes	accepted									

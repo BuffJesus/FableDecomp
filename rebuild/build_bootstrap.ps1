@@ -1505,7 +1505,8 @@ try {
             [string]$BehaviorSource,
             [string]$OutputStem,
             [string]$PassPattern,
-            [string]$AllowMove
+            [string]$AllowMove,
+            [switch]$AllowCGamePlayRegisterResidue
         )
 
         $object = Join-Path $outDir "$OutputStem.obj"
@@ -1529,6 +1530,9 @@ try {
         )
         if ($AllowMove) {
             $checkArguments += @('--allow-move', $AllowMove)
+        }
+        if ($AllowCGamePlayRegisterResidue) {
+            $checkArguments += '--allow-cgame-play-register-residue'
         }
         & python @checkArguments
         if ($LASTEXITCODE -ne 0) {
@@ -1618,7 +1622,227 @@ try {
         -Source $gamePlaySource `
         -BehaviorSource $gamePlayBehaviorSource `
         -OutputStem 'cgame-play' `
-        -PassPattern $gamePlayPassPattern
+        -PassPattern $gamePlayPassPattern `
+        -AllowCGamePlayRegisterResidue
+
+    # Offline linkage proof: real Play, base/frontend construction and Init.
+    # External services and the unfinished frontend Run remain fixture doubles.
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_frontend_startup.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Reconstructed frontend startup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_frontend_animation.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Frontend colour, swapping and animation contracts failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_primitive_list.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native primitive-list insertion contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_primitive_removal.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native primitive-list removal contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_component_draw.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component draw traversal contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_progress.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component state progress contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_tasks.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component state task dispatch contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_request.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component state request contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_process.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component state transition setup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_update.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native component frame update contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_lifecycle.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native state lifecycle contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_transform.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI position, zoom and coordinate conversion contracts failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_scale.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI manager scale and dimension getter contracts failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_vector_change.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI vector target and delta contracts failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_lifecycle.py') --motion
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native state motion lifecycle contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_state_independence.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI target-state independence contracts failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_position_children.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI position-child propagation contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_position_children.py') --live
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI live-child update contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_position_children.py') --retiring
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI retiring-child update contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_retiring_children.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI retiring-child ownership contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_deletion.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI deletion-request and list ownership contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_position_children.py') --frame
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Complete native base component Update contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI Die and recursive observer cleanup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_manager_services.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI singleton and observer-list services contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer_chain.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native UI observer cleanup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer_lifetime.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native observable construction, event dispatch and lifetime contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_manager_configuration.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native UI manager input and meta-layer configuration contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer_events.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native observer event filtering and lifetime contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer_lifetime.py') --filter
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native observable dispatch and observer filtering contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_event_registration.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native observer registration and event-tree insertion contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_observer_chain.py') --events
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native component and observer event cleanup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_manager_configuration.py') --maps
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native manager configuration and integer-map contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_coordinate_setup.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native relative-coordinate initialization and scale contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_ownership.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native graphics-bank ownership contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_strings.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native frontend string lifetime contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_display_formats.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native frontend display-format selection contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_factory.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native frontend graphics-bank factory contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_runtime.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native graphics-bank construction and initialization contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_texture_manager.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native texture-manager pool construction contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_texture_surfaces.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native texture and surface device contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_file.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native bank-file construction contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_stream.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native bank stream lifetime and seeking contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_stream_read.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native buffered and direct bank stream reads failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_runtime_vector.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive runtime-entry vector resizing failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_storage_helpers.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive storage helpers failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_aliases.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive filename-list ownership failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_entries.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive entry decoder failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_storage.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive bank storage initialization failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_decode.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive temporary storage and string decoding failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_registry.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive registry lookup contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_wide_strings.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native wide-string storage and concatenation contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_path.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native archive path resolution contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_bank_open.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Native bank read-only opening contract failed.'
+    }
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\check_ui_manager_construction.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Connected native UI manager construction contract failed.'
+    }
 
     Invoke-VerifiedLeaf `
         -Address '00413c50' `

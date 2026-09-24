@@ -74,7 +74,6 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0041e5f2'; Module = 'CFrontEndManager'; Source = '00/41/CFrontEndManager_GetInstance_0041e5f2.cpp'
         TestSource = '00/41/CFrontEndManager_GetInstance_0041e5f2_test.cpp'; PassPattern = 'CFrontEndManager_GetInstance_0041e5f2_test PASS'
-        Grade = 'asm_bake'
     },
     [pscustomobject]@{
         Address = '00597b20'; Module = 'CFrontEndManager'; Source = '00/59/CFrontEndManager_GotoProfileMenu_00597b20.cpp'
@@ -865,10 +864,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041cc14'
-        Module = 'CTCLook'
-        Source = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc14.cpp'
-        TestSource = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc14_test.cpp'
-        PassPattern = 'CTCLOOK_0041cc14_TEST PASS'
+        Module = '_global'
+        Source = '00/41/global_GetCoordinateWidth_0041cc14.cpp'
+        TestSource = '00/41/global_GetCoordinateWidth_0041cc14_test.cpp'
+        PassPattern = 'UI_DIMENSION_WIDTH PASS'
     }
     [pscustomobject]@{
         Address = '00658604'
@@ -3478,10 +3477,9 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004299a8'
         Module = '_global'
-        Source = '00/42/global_SetIsUsingRelativeCoords_004299a8.cpp'
-        TestSource = '00/42/global_SetIsUsingRelativeCoords_004299a8_test.cpp'
-        PassPattern = 'PASS_004299a8'
-        Grade = 'asm_bake'
+        Source = '00/42/global_SetRelativeCoordinates_004299a8.cpp'
+        TestSource = '00/42/global_SetRelativeCoordinates_004299a8_test.cpp'
+        PassPattern = 'UI_COORDINATE_SETUP_CANDIDATE PASS'
     }
     [pscustomobject]@{
         Address = '0041d8a8'
@@ -3493,11 +3491,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042951b'
-        Module = 'CMemoryAllocatorVariableSize'
-        Source = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b.cpp'
-        TestSource = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042951b_test.cpp'
+        Module = '_global'
+        Source = '00/42/global_RotateEventTreeLeft_0042951b.cpp'
+        TestSource = '00/42/global_RotateEventTreeLeft_0042951b_test.cpp'
         PassPattern = 'PASS_0042951b'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00429c6f'
@@ -8592,11 +8589,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052d9e0'
-        Module = 'CFrontEndManager'
-        Source = '00/52/CFrontEndManager_Initialize_0052d9e0.cpp'
-        TestSource = '00/52/CFrontEndManager_Initialize_0052d9e0_test.cpp'
+        Module = 'CObserver'
+        Source = '00/52/CObserver_CObserver_0052d9e0.cpp'
+        TestSource = '00/52/CObserver_CObserver_0052d9e0_test.cpp'
         PassPattern = 'FRONTEND_0052d9e0_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '0052da20'
@@ -8604,7 +8600,6 @@ $catalog = @(
         Source = '00/52/CObserver_ObserveEvent_0052da20.cpp'
         TestSource = '00/52/CObserver_ObserveEvent_0052da20_test.cpp'
         PassPattern = 'OBSERVER_0052da20_TEST PASS'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00661d20'
@@ -34234,7 +34229,6 @@ $catalog = @(
         Source = '00/53/CComponent_Die_00530720.cpp'
         TestSource = '00/53/CComponent_Die_00530720_test.cpp'
         PassPattern = 'OK_0x00530720'
-        Grade = 'asm_bake'
     }
     [pscustomobject]@{
         Address = '00547b90'
@@ -35819,10 +35813,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042955b'
-        Module = 'CMemoryAllocatorVariableSize'
-        Source = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b.cpp'
-        TestSource = '00/42/CMemoryAllocatorVariableSize_RotateLeft_0042955b_test.cpp'
-        PassPattern = 'ROTATE_LEFT_OK'
+        Module = '_global'
+        Source = '00/42/global_RotateEventTreeRight_0042955b.cpp'
+        TestSource = '00/42/global_RotateEventTreeRight_0042955b_test.cpp'
+        PassPattern = 'PASS_0042955b'
     }
     [pscustomobject]@{
         Address = '0099e9b0'
@@ -73345,10 +73339,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042abca'
-        Module = 'CActiveFile'
-        Source = '00/42/CActiveFile_OnReadFinished_0042abca.cpp'
-        TestSource = '00/42/CActiveFile_OnReadFinished_0042abca_test.cpp'
-        PassPattern = 'PASS_0042abca'
+        Module = '_global'
+        Source = '00/42/global_DestroyDeletionParents_0042abca.cpp'
+        TestSource = '00/42/global_DestroyDeletionParents_0042abca_test.cpp'
+        PassPattern = 'UI_DELETION_DESTROY PASS'
     }
     [pscustomobject]@{
         Address = '0042b755'
@@ -77853,9 +77847,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042a1e3'
-        Module = 'CGuiControlTreePane'
-        Source = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3.cpp'
-        TestSource = '00/42/CGuiControlTreePane_SortTreeRecursively_0042a1e3_test.cpp'
+        Module = '_global'
+        Source = '00/42/global_ClearObserverList_0042a1e3.cpp'
+        TestSource = '00/42/global_ClearObserverList_0042a1e3_test.cpp'
         PassPattern = 'PASS_0042a1e3'
     }
     [pscustomobject]@{
@@ -80492,9 +80486,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042bec0'
-        Module = '_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager'
-        Source = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0.cpp'
-        TestSource = '00/42/DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_0042bec0_test.cpp'
+        Module = 'CObservable'
+        Source = '00/42/CObservable_Destroy_0042bec0.cpp'
+        TestSource = '00/42/CObservable_Destroy_0042bec0_test.cpp'
         PassPattern = 'PASS_0042bec0'
     }
     [pscustomobject]@{
@@ -87779,9 +87773,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042ac25'
-        Module = 'CActiveFile'
-        Source = '00/42/CActiveFile_OnReadFinished_0042ac25.cpp'
-        TestSource = '00/42/CActiveFile_OnReadFinished_0042ac25_test.cpp'
+        Module = '_global'
+        Source = '00/42/global_DestroyObserverList_0042ac25.cpp'
+        TestSource = '00/42/global_DestroyObserverList_0042ac25_test.cpp'
         PassPattern = 'PASS_0042ac25'
     }
     [pscustomobject]@{
@@ -97343,24 +97337,24 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0042bf67'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf67_test.cpp'
-        PassPattern = 'PASS_0042bf67'
+        Module = '_global'
+        Source = '00/42/global_ConstructInputMap_0042bf67.cpp'
+        TestSource = '00/42/global_ConstructInputMap_0042bf67_test.cpp'
+        PassPattern = 'UI_MANAGER_MAP_CTOR PASS'
     }
     [pscustomobject]@{
         Address = '0042bf85'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf85.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042bf85_test.cpp'
-        PassPattern = 'PASS_0042bf85'
+        Module = '_global'
+        Source = '00/42/global_ConstructLayerMap_0042bf85.cpp'
+        TestSource = '00/42/global_ConstructLayerMap_0042bf85_test.cpp'
+        PassPattern = 'UI_MANAGER_MAP_CTOR PASS'
     }
     [pscustomobject]@{
         Address = '0042d28b'
-        Module = 'CDisplayManager'
-        Source = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b.cpp'
-        TestSource = '00/42/CDisplayManager_CopyBackBufferToTexture_0042d28b_test.cpp'
-        PassPattern = 'PASS_0042d28b'
+        Module = '_global'
+        Source = '00/42/global_ConstructComponentMap_0042d28b.cpp'
+        TestSource = '00/42/global_ConstructComponentMap_0042d28b_test.cpp'
+        PassPattern = 'UI_MANAGER_MAP_CTOR PASS'
     }
     [pscustomobject]@{
         Address = '0043024e'
@@ -98316,10 +98310,10 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041cc2b'
-        Module = 'CTCLook'
-        Source = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b.cpp'
-        TestSource = '00/41/CTCLook_GetHeadAngularVelocityMaxXY_0041cc2b_test.cpp'
-        PassPattern = 'PASS_0041cc2b'
+        Module = '_global'
+        Source = '00/41/global_GetCoordinateHeight_0041cc2b.cpp'
+        TestSource = '00/41/global_GetCoordinateHeight_0041cc2b_test.cpp'
+        PassPattern = 'UI_DIMENSION_HEIGHT PASS'
     }
     [pscustomobject]@{
         Address = '00429bf9'
@@ -127318,8 +127312,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0042ac0a'
         Module = '_global'
-        Source = '00/42/global_DoublyLinkedListInitializeEmpty_0042ac0a.cpp'
-        TestSource = '00/42/global_DoublyLinkedListInitializeEmpty_0042ac0a_test.cpp'
+        Source = '00/42/global_ConstructObserverList_0042ac0a.cpp'
+        TestSource = '00/42/global_ConstructObserverList_0042ac0a_test.cpp'
         PassPattern = 'DLIST_INITIALIZE_EMPTY_PASS'
     }
     [pscustomobject]@{

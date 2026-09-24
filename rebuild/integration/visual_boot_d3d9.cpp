@@ -12,6 +12,7 @@
 #include "render2d_draw_list_adapter.h"
 #include "frontend_glyph_metrics.h"
 #include "frontend_profile_glyph_metrics.h"
+#include "fable_frontend_animation.h"
 
 #include <string.h>
 
@@ -343,13 +344,9 @@ namespace
     fable_i32 g_TitleSegmentWidth = 0;
     fable_i32 g_TitleSegmentHeight = 0;
     FableD3DDword g_AnimationStartTick = 0;
-    FableD3DDword g_ForestTransitionStart = 0;
-    FableD3DDword g_SunbeamTransitionStart = 0;
+    FableFrontendAnimation g_BackgroundAnimation;
+    FableFrontendAnimation g_SunbeamAnimation;
     fable_u32 g_ForestFrame = 0;
-    fable_u32 g_NextForestFrame = 1;
-    fable_u32 g_SunbeamFrame = 0;
-    fable_u32 g_NextSunbeamFrame = 1;
-    fable_u32 g_AnimationRandomState = 0x4C494F4Eu;
     fable_u32 g_MainMenuSelection = 0;
     fable_u32 g_OptionsSelection = 0;
     fable_u32 g_SaveSelection = 0;
@@ -1464,19 +1461,6 @@ namespace
                 : 120.0f;
         return viewportTop +
             ProfileListItemY(item) - ProfileListItemY(firstRow);
-    }
-
-    fable_u32 ChooseNextAnimationFrame(
-        fable_u32 currentFrame,
-        fable_u32 frameCount)
-    {
-        g_AnimationRandomState =
-            g_AnimationRandomState * 1664525u + 1013904223u;
-        fable_u32 selected =
-            g_AnimationRandomState % (frameCount - 1);
-        if (selected >= currentFrame)
-            ++selected;
-        return selected;
     }
 
     fable_u32 DetailControlAtlasIndex(
@@ -3259,92 +3243,41 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         }
         else
         {
-        if (g_AnimationStartTick == 0)
-        {
-            g_AnimationStartTick = GetTickCount();
-            g_ForestTransitionStart = 0;
-            g_SunbeamTransitionStart = 0;
-            g_ForestFrame = 0;
-            g_SunbeamFrame = 0;
-            g_AnimationRandomState = 0x4C494F4Eu;
-            g_NextForestFrame =
-                ChooseNextAnimationFrame(g_ForestFrame, 4);
-            g_NextSunbeamFrame =
-                ChooseNextAnimationFrame(g_SunbeamFrame, 3);
-        }
-        const FableD3DDword elapsed =
-            GetTickCount() - g_AnimationStartTick;
+            if (g_AnimationStartTick == 0)
+            {
+                g_AnimationStartTick = GetTickCount();
+                const float backgroundDurations[] = {8.0f, 8.0f, 8.0f, 2.0f};
+                const float sunbeamDurations[] = {2.0f, 2.0f, 2.0f};
+                g_BackgroundAnimation.Initialise(4, backgroundDurations);
+                g_SunbeamAnimation.Initialise(3, sunbeamDurations);
+            }
+            const float elapsed = static_cast<float>(GetTickCount() - g_AnimationStartTick) / 1000.0f;
+            g_BackgroundAnimation.Update(elapsed);
+            g_SunbeamAnimation.Update(elapsed);
+            g_ForestFrame = g_BackgroundAnimation.Swap.CurrentState;
 
-        const FableD3DDword forestDurations[4] = {
-            8000, 8000, 8000, 2000
-        };
-        while (
-            elapsed - g_ForestTransitionStart >=
-            forestDurations[g_ForestFrame])
-        {
-            g_ForestTransitionStart +=
-                forestDurations[g_ForestFrame];
-            g_ForestFrame = g_NextForestFrame;
-            g_NextForestFrame =
-                ChooseNextAnimationFrame(g_ForestFrame, 4);
-        }
-        const FableD3DDword forestPhase =
-            elapsed - g_ForestTransitionStart;
-        const fable_u32 forestAlpha =
-            forestPhase * 255 /
-            forestDurations[g_ForestFrame];
-        const float forestV0 =
-            static_cast<float>(g_ForestFrame) / 4.0f;
-        const float forestV1 =
-            static_cast<float>(g_ForestFrame + 1) / 4.0f;
-        const float nextForestV0 =
-            static_cast<float>(g_NextForestFrame) / 4.0f;
-        const float nextForestV1 =
-            static_cast<float>(g_NextForestFrame + 1) / 4.0f;
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            backgroundTexture,
-            left, top, right, bottom,
-            0.0f, forestV0, 1.0f, forestV1,
-            0xFFFFFFFFu);
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            backgroundTexture,
-            left, top, right, bottom,
-            0.0f, nextForestV0, 1.0f, nextForestV1,
-            (forestAlpha << 24) | 0x00FFFFFFu);
-
-        while (elapsed - g_SunbeamTransitionStart >= 2000)
-        {
-            g_SunbeamTransitionStart += 2000;
-            g_SunbeamFrame = g_NextSunbeamFrame;
-            g_NextSunbeamFrame =
-                ChooseNextAnimationFrame(g_SunbeamFrame, 3);
-        }
-        const FableD3DDword sunbeamPhase =
-            elapsed - g_SunbeamTransitionStart;
-        const fable_u32 sunbeamAlpha =
-            sunbeamPhase * 255 / 2000;
-        const float sunbeamV0 =
-            static_cast<float>(g_SunbeamFrame) / 3.0f;
-        const float sunbeamV1 =
-            static_cast<float>(g_SunbeamFrame + 1) / 3.0f;
-        const float nextSunbeamV0 =
-            static_cast<float>(g_NextSunbeamFrame) / 3.0f;
-        const float nextSunbeamV1 =
-            static_cast<float>(g_NextSunbeamFrame + 1) / 3.0f;
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            sunbeamTexture,
-            left, top, right, bottom,
-            0.0f, sunbeamV0, 1.0f, sunbeamV1,
-            ((255 - sunbeamAlpha) << 24) | 0x00FFFFFFu);
-        AppendVisualQuad(
-            vertices, vertexCount, records, recordCount,
-            sunbeamTexture,
-            left, top, right, bottom,
-            0.0f, nextSunbeamV0, 1.0f, nextSunbeamV1,
-            (sunbeamAlpha << 24) | 0x00FFFFFFu);
+            // Keep the existing presentation order until native layer sorting
+            // is recovered. The animation state no longer assumes that the
+            // outgoing image is opaque or that completion starts another fade.
+            for (unsigned group = 0; group != 2; ++group)
+            {
+                const FableFrontendAnimation& animation = group == 0
+                    ? g_BackgroundAnimation : g_SunbeamAnimation;
+                FableD3DTexture9* texture = group == 0 ? backgroundTexture : sunbeamTexture;
+                const fable_u32 frames[] = {animation.Swap.CurrentState, animation.Swap.TargetState};
+                for (unsigned slot = 0; slot != 2; ++slot)
+                {
+                    if (slot == 1 && frames[0] == frames[1]) continue;
+                    const fable_u32 frame = frames[slot];
+                    const fable_u32 alpha = animation.Children[frame].RenderColour.alpha;
+                    AppendVisualQuad(
+                        vertices, vertexCount, records, recordCount, texture,
+                        left, top, right, bottom,
+                        0.0f, static_cast<float>(frame) / animation.Count,
+                        1.0f, static_cast<float>(frame + 1) / animation.Count,
+                        (alpha << 24) | 0x00FFFFFFu);
+                }
+            }
         }
     }
     else if (!g_QuitPromptActive)
@@ -4878,8 +4811,6 @@ void FABLE_FASTCALL FableShutdownVisualD3D9()
     g_TitleSegmentWidth = 0;
     g_TitleSegmentHeight = 0;
     g_AnimationStartTick = 0;
-    g_ForestTransitionStart = 0;
-    g_SunbeamTransitionStart = 0;
     g_MainMenuSelection = 0;
     memset(
         g_MainMenuRowChildren,

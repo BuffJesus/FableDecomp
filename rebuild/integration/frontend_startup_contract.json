@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "compiler_options": [
+    "/nologo",
+    "/c",
+    "/W3",
+    "/MT",
+    "/GS",
+    "/O2",
+    "/Oy"
+  ],
+  "functions": [
+    {
+      "address": "0051d8e0",
+      "compiled_bytes": 49,
+      "retail_bytes": 49,
+      "masked_sha256": "e9f2a82f2dd9dbc6cf91b0fb2fc4fc76f3530a61c8f412a6a98593d333048101",
+      "relocations": [
+        4,
+        11,
+        32,
+        39
+      ],
+      "status": "RELOCATION_MATCH",
+      "source": "rebuild/src/compiled/00/51/CGameComponent_CGameComponent_0051d8e0.cpp",
+      "symbol": "??0CGameComponent@@",
+      "retail_sha256": "9611db82f664c0918a08fb74edf1f8619cdae679bd14b3919110a9a75c71fb42",
+      "grade": "matching",
+      "relocation_symbols": [
+        [
+          4,
+          "DISP32",
+          "??0CBaseClass@@QAE@XZ"
+        ],
+        [
+          11,
+          "dir32",
+          "??_7CDeviceResetCallback@@6B@"
+        ],
+        [
+          32,
+          "dir32",
+          "??_7CGameComponent@@6BCBaseClassNonCopyable@@@"
+        ],
+        [
+          39,
+          "dir32",
+          "??_7CGameComponent@@6BCDeviceResetCallback@@@"
+        ]
+      ]
+    },
+    {
+      "address": "0042ea8f",
+      "compiled_bytes": 324,
+      "retail_bytes": 295,
+      "masked_sha256": "35d137c67af08fdccdb1cf231ba1c30fd13ffd186fa33c5b16b88a632d7aa298",
+      "relocations": [
+        11,
+        19,
+        26,
+        43,
+        63,
+        71,
+        79,
+        87,
+        134,
+        157,
+        192,
+        227,
+        254,
+        265,
+        270,
+        290,
+        295,
+        303
+      ],
+      "status": "DIFFER",
+      "source": "rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp",
+      "symbol": "??0CNewFrontendGameComponent@@",
+      "retail_sha256": "f5d712dd9fa9d4f04bfcfa4cd7447b4ff5412a19d215037a03c76915919fd58d",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          11,
+          "DISP32",
+          "??0CGameComponent@@QAE@AAVCGame@@@Z"
+        ],
+        [
+          19,
+          "dir32",
+          "??_7CNewFrontendGameComponent@@6BCBaseClassNonCopyable@@@"
+        ],
+        [
+          26,
+          "dir32",
+          "??_7CNewFrontendGameComponent@@6BCDeviceResetCallback@@@"
+        ],
+        [
+          43,
+          "DISP32",
+          "?GFGetTime@@YANXZ"
+        ],
+        [
+          63,
+          "DISP32",
+          "??0CWideString@@QAE@XZ"
+        ],
+        [
+          71,
+          "DISP32",
+          "??0CWideString@@QAE@XZ"
+        ],
+        [
+          79,
+          "DISP32",
+          "??0CCharString@@QAE@XZ"
+        ],
+        [
+          87,
+          "DISP32",
+          "??0CWideString@@QAE@XZ"
+        ],
+        [
+          134,
+          "dir32",
+          "??_C@_11LOCGONAA@?$AA?$AA@"
+        ],
+        [
+          157,
+          "DISP32",
+          "??0CWideString@@QAE@PBG@Z"
+        ],
+        [
+          192,
+          "DISP32",
+          "?GFGetTime@@YANXZ"
+        ],
+        [
+          227,
+          "DISP32",
+          "??0CStopWatch@@QAE@XZ"
+        ],
+        [
+          254,
+          "DISP32",
+          "??0CStopWatch@@QAE@XZ"
+        ],
+        [
+          265,
+          "DISP32",
+          "??0CStopWatch@@QAE@XZ"
+        ],
+        [
+          270,
+          "dir32",
+          "??_C@_11LOCGONAA@?$AA?$AA@"
+        ],
+        [
+          290,
+          "DISP32",
+          "??4CWideString@@QAEABV0@PBG@Z"
+        ],
+        [
+          295,
+          "dir32",
+          "??_C@_11LOCGONAA@?$AA?$AA@"
+        ],
+        [
+          303,
+          "DISP32",
+          "??4CWideString@@QAEABV0@PBG@Z"
+        ]
+      ]
+    },
+    {
+      "address": "0042f75e",
+      "compiled_bytes": 48,
+      "retail_bytes": 47,
+      "masked_sha256": "d34a5cb25ef4558dffa14a01e20bcea8ad909b24caa15464572e4fc82252f762",
+      "relocations": [
+        5,
+        10,
+        15,
+        35,
+        42
+      ],
+      "status": "DIFFER",
+      "source": "rebuild/src/compiled/00/42/CNewFrontendGameComponent_Init_0042f75e.cpp",
+      "symbol": "?Init@CNewFrontendGameComponent@@",
+      "retail_sha256": "f7105cbf32239e82acbaf46bd64d25bffe5154e20b126694bc3f9a112dd4a446",
+      "grade": "functional",
+      "relocation_symbols": [
+        [
+          5,
+          "dir32",
+          "?g_FableNewFrontend_013B871C@@3PAVCNewFrontendGameComponent@@A"
+        ],
+        [
+          10,
+          "DISP32",
+          "?InitialiseDefs@CNewFrontendGameComponent@@QAEXXZ"
+        ],
+        [
+          15,
+          "DISP32",
+          "?StaticLoadXMVCode@@YAXXZ"
+        ],
+        [
+          35,
+          "DISP32",
+          "?FableGetConsole_00414C90@@YAPAVCConsole@@XZ"
+        ],
+        [
+          42,
+          "DISP32",
+          "?Initialise@CConsole@@QAEXDHPAVCFontBank@@@Z"
+        ]
+      ]
+    }
+  ]
+}

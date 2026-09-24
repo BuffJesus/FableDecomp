@@ -2,6 +2,7 @@
 
 #include "rebuild_abi.h"
 #include "fable_string.h"
+#include "fable_reference_count.h"
 
 struct HINSTANCE__;
 typedef HINSTANCE__* FableInstanceHandle;
@@ -119,15 +120,6 @@ extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
 extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);
 void FABLE_FASTCALL FableConstructCharString(CCharString* value);
-
-typedef void (FABLE_FASTCALL *FableDestroyReferencedObject)(void* object);
-
-struct FableReferenceCount
-{
-    fable_i32 owners;
-    FableDestroyReferencedObject destroy;
-    void* object;
-};
 
 struct CCountedProgressDisplay
 {

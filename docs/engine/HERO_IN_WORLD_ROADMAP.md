@@ -2,6 +2,26 @@
 mappers + lead-architect synthesis). Grounded in the reconstruction as of this date.
 Resume/authoritative plan for the "controllable hero in Oakvale" north star. -->
 
+> **2026-09-22 update:** `CGame::Play` is now readable functional C++, not an
+> assembly bake. Its full body is **394 bytes**, not the 203 cited below. Seven
+> offline behavior scenarios pass; only the initializer-address temporary at
+> +0xEC/+0xEF differs (`ecx` versus `edx`). The bootstrap explicitly accepts this
+> bounded functional residue; exact matching remains open. The original assembly
+> is archived under `rebuild/src/asm_bake/00/41/`. The Phase-10 boundary still only
+> counts calls and the real constructor/engine dependencies remain unconnected.
+> User direction: prioritize readable, working reconstruction over harmless
+> register-allocation perfection; no GUI/game launches for now. See
+> [native resume](../journal/2026-09/NATIVE_PLAY_RESUME_2026-09-22.md).
+
+> **Follow-up the same day:** the real base constructor, typed new-frontend
+> constructor and Init now link behind Play in an offline fixture. The base
+> constructor is 49/49-byte relocation-matching; frontend construction and Init
+> are behavior-verified functional C++ with pinned compiler-output differences.
+> Device-reset multiple inheritance and retail vector-size differences are
+> checked. The fixture's Run and external services remain doubles; the visual
+> checkpoint and Phase-10 counter boundary are unchanged. Run/shutdown dependency
+> closure is the next integration step.
+
 # FableTLC — Roadmap to a Controllable Hero in the Oakvale Prologue
 
 *Decision-grade. Byte-purity and retail-parity are the hard constraints. No softening.*
