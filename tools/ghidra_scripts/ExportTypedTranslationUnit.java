@@ -227,6 +227,38 @@ public class ExportTypedTranslationUnit extends GhidraScript {
 
     private java.util.Set<Long> cdeclTargets = new java.util.HashSet<>();
 
+    // EBP is a frame base only in a function that sets up `mov ebp, esp`; elsewhere VC7.1 uses it as an ordinary
+    // callee-saved register (MakeTraderComment 0x00E01900: `mov ebp, ecx` keeps `this` there, and reading every
+    // `[ebp+0x40]` as a stack slot lost the script-interface tag, so 38 of its 44 vtable calls got no prototype
+    // override and printed without arguments -- AddLineToConversation's five operands came out as nil/rotated)
+    private boolean ebpFrame = false;
+
+    private final Long traceFn = System.getenv("EXPORT_TRACE_FN") == null ? null : Long.decode(System.getenv("EXPORT_TRACE_FN"));
+
+    private static final java.util.Set<String> CALLEE_SAVED = java.util.Set.of("EBX", "ESI", "EDI", "EBP");
+    private final java.util.Set<Long> prologueSaves = new java.util.HashSet<>();   // PUSH sites that save a callee-saved register
+    private static final long THING_VTABLE = 0x1238C8CL;   // CScriptThing's vtable (slot 0x12c = CScriptThing::IsAlive 0x004AB130)
+
+    private boolean writesEsp(Instruction x) {
+        if (x.getNumOperands() < 1 || !isRegOperand(x, 0)) return false;
+        Object[] d = x.getOpObjects(0);
+        return d.length >= 1 && "ESP".equals(regName(d[0]));
+    }
+
+    private boolean frameReg(String r) { return "ESP".equals(r) || ("EBP".equals(r) && ebpFrame); }
+
+    private static boolean setsUpEbpFrame(Function f, ghidra.program.model.listing.Listing listing) {
+        InstructionIterator scan = listing.getInstructions(f.getBody(), true);
+        while (scan.hasNext()) {
+            Instruction x = scan.next();
+            if (x.getMnemonicString().equalsIgnoreCase("MOV") && x.getNumOperands() == 2 && x.getOpObjects(0).length == 1 && x.getOpObjects(1).length == 1
+                    && x.getOpObjects(0)[0] instanceof Register && x.getOpObjects(1)[0] instanceof Register
+                    && ((Register) x.getOpObjects(0)[0]).getName().equals("EBP") && ((Register) x.getOpObjects(1)[0]).getName().equals("ESP"))
+                return true;
+        }
+        return false;
+    }
+
     private String stackKey(String base, long disp, long espDelta) {
         // ESP-relative displacements move with pushes; key slots by their frame offset instead.
         return base.equals("ESP") ? ("STK:" + (disp - espDelta)) : ("BP:" + disp);   // entry-relative: esp_now = esp_entry - espDelta
@@ -252,7 +284,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 depthAt.put(off, depth);
                 String mn = x.getMnemonicString().toUpperCase();
                 int n = x.getNumOperands();
-                if (mn.equals("PUSH")) { if (!pushing) { before = depth; pushing = true; } depth += 4; }
+                if (mn.equals("PUSH") && prologueSaves.contains(off)) depth += 4;   // a callee-saved register, not an argument
+                else if (mn.equals("PUSH")) { if (!pushing) { before = depth; pushing = true; } depth += 4; }
                 else if (mn.equals("POP")) depth -= 4;
                 else if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2 && x.getOpObjects(0).length >= 1 && "ESP".equals(regName(x.getOpObjects(0)[0])) && x.getOpObjects(1).length >= 1 && x.getOpObjects(1)[0] instanceof Scalar) {
                     long v = ((Scalar) x.getOpObjects(1)[0]).getSignedValue();
@@ -289,6 +322,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
     private void overrideCalls(Function f, Map<Long, Long> depthAt) {
         Map<String, String> tags = new HashMap<>();
         tags.put("ECX", THIS);
+        ebpFrame = setsUpEbpFrame(f, currentProgram.getListing());
         // CScriptThing parameters (typed from the PDB / ego_r signature) live at entry-relative stack slots
         for (Parameter prm : f.getParameters()) {
             DataType t = prm.getDataType();
@@ -312,8 +346,12 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 Instruction x = scan.next();
                 String xm = x.getMnemonicString().toUpperCase();
                 if (xm.equals("POP") && x.getNumOperands() == 1 && x.getOpObjects(0).length >= 1 && regName(x.getOpObjects(0)[0]) != null) { run.add(regName(x.getOpObjects(0)[0])); continue; }
-                if (xm.equals("RET")) { savedRegs.addAll(run); run.clear(); continue; }
+                if (xm.equals("RET")) { for (String r : run) if (CALLEE_SAVED.contains(r)) savedRegs.add(r); run.clear(); continue; }
                 if (xm.equals("ADD") && x.getNumOperands() == 2 && x.getOpObjects(0).length >= 1 && "ESP".equals(regName(x.getOpObjects(0)[0]))) continue;
+                // the return value is set between the pops (MakeTraderComment 0x00E0195A: `pop edi; pop esi; xor al,al;
+                // pop ebp; add esp,0x40; ret 0xc`): an instruction that neither moves ESP nor transfers control keeps
+                // the run, so ESI/EDI are known saves and their prologue pushes are not charged to the first call
+                if (!xm.equals("PUSH") && !xm.equals("CALL") && !xm.startsWith("J") && !writesEsp(x)) continue;
                 run.clear();
             }
         }
@@ -332,6 +370,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             Instruction i = ins.next();
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
+            if (traceFn != null && f.getEntryPoint().getOffset() == traceFn)   // EXPORT_TRACE_FN=0x00E01900: depth per instruction
+                println("TRACE " + (depthAt == null ? "p1 " : "p2 ") + i.getAddress() + " depth=" + espDelta + (depthAt != null && depthAt.containsKey(i.getAddress().getOffset()) ? " flow=" + depthAt.get(i.getAddress().getOffset()) : "") + " " + i);
             if (depthAt != null) {
                 Long flow = depthAt.get(i.getAddress().getOffset());
                 if (flow != null && flow != espDelta) { espDelta = flow; if (!pushing) { argStart = -1; } }
@@ -371,7 +411,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 Object[] pops = i.getOpObjects(0);
                 String pr = pops.length >= 1 && isRegOperand(i, 0) ? regName(pops[0]) : null;
                 boolean prologueSave = pr != null && savedRegs.contains(pr) && !savedSeen.contains(pr) && !written.contains(pr);
-                if (prologueSave) { savedSeen.add(pr); espDelta += 4; prev = i; continue; }   // callee-saved register, not an argument
+                if (prologueSave) { savedSeen.add(pr); prologueSaves.add(i.getAddress().getOffset()); espDelta += 4; prev = i; continue; }   // callee-saved register, not an argument
                 if (!pushing) { espBeforePushes = espDelta; pushing = true; pushedStack.clear(); pushedValue.clear(); }
                 pushedStack.add(pr != null && regStack.containsKey(pr) ? regStack.get(pr) : null);
                 // `push dword ptr [esp+X]` / `push reg` loaded from a slot: the slot's value travels
@@ -521,7 +561,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     else if (mn.equals("MOV") && srcReg && sName != null) tag = tags.get(sName);
                     else if (mn.equals("MOV") && sName != null) {
                         String st = tags.get(sName);
-                        if (sName.equals("ESP") || sName.equals("EBP")) tag = tags.get(stackKey(sName, disp, espDelta));
+                        if (frameReg(sName)) tag = tags.get(stackKey(sName, disp, espDelta));
                         else if (THIS.equals(st) && !hasDisp) tag = null;
                         else if (THIS.equals(st) && (disp == 4 || disp == 0x40)) tag = GSI;
                         else if (THIS.equals(st) && disp == 0x14) tag = PARENT;
@@ -529,22 +569,30 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         else if (GSI.equals(st) && !hasDisp) tag = GSIVT;
                         else if (ME.equals(st) && !hasDisp) tag = MEVT;
                         else if (MEMPTR.equals(st) && !hasDisp) tag = MEMPTRVT;
-                        else if (st == null && hasDisp && disp >= 4 && !sName.equals("ESP") && !sName.equals("EBP")) tag = MEMPTR;
+                        else if (st == null && hasDisp && disp >= 4 && !frameReg(sName)) tag = MEMPTR;
                     } else if (mn.equals("LEA") && sName != null && THIS.equals(tags.get(sName)) && disp == 8) tag = ME;
                     if (tag != null) tags.put(d, tag); else tags.remove(d);
                     int srcRegs = 0;
                     for (Object o : src) if (o instanceof Register) srcRegs++;
-                    if (mn.equals("LEA") && sName != null && (sName.equals("ESP") || sName.equals("EBP")) && srcRegs == 1)
+                    if (mn.equals("LEA") && sName != null && frameReg(sName) && srcRegs == 1)
                         regStack.put(d, sName.equals("ESP") ? disp - espDelta : disp);
                     else if (mn.equals("MOV") && srcReg && sName != null && regStack.containsKey(sName)) regStack.put(d, regStack.get(sName));
                     else regStack.remove(d);
-                    if (mn.equals("MOV") && !srcReg && sName != null && (sName.equals("ESP") || sName.equals("EBP")) && srcRegs == 1)
+                    if (mn.equals("MOV") && !srcReg && sName != null && frameReg(sName) && srcRegs == 1)
                         regValue.put(d, sName.equals("ESP") ? disp - espDelta : disp);
                     else if (mn.equals("MOV") && srcReg && sName != null && regValue.containsKey(sName)) regValue.put(d, regValue.get(sName));
                     else regValue.remove(d);
                     if (d.equals("ESP") && mn.equals("LEA") && "ESP".equals(sName)) espDelta -= disp;   // `lea esp,[esp+N]` (N = 0 is padding)
                     else if (d.equals("ESP")) { espDelta = 0; pushing = false; argStart = -1; }
-                } else if (mn.equals("MOV") && d != null && (d.equals("ESP") || d.equals("EBP")) && srcReg && sName != null) {
+                } else if (mn.equals("MOV") && d != null && frameReg(d) && !srcReg && src.length == 1 && src[0] instanceof Scalar) {
+                    // an in-place CScriptThing (MakeTraderComment 0x00E0191C): the slot now holds a thing vtable, so a
+                    // later `mov edx,[esp+X]; call [edx+0x12c]` is IsAlive with no stack operands -- unresolved, the
+                    // push fallback charged it the prologue's saved registers and drifted every later slot by 12
+                    long ddisp = 0;
+                    for (Object o : dst) if (o instanceof Scalar) ddisp = ((Scalar) o).getSignedValue();
+                    String key = stackKey(d, ddisp, espDelta);
+                    if (((Scalar) src[0]).getUnsignedValue() == THING_VTABLE) tags.put(key, MEVT); else tags.remove(key);
+                } else if (mn.equals("MOV") && d != null && frameReg(d) && srcReg && sName != null) {
                     long ddisp = 0;
                     for (Object o : dst) if (o instanceof Scalar) ddisp = ((Scalar) o).getSignedValue();
                     String tag = tags.get(sName);
