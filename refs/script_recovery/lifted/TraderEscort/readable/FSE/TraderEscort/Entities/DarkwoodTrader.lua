@@ -1,6 +1,7 @@
 -- Readable native conversion: DarkwoodTrader. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 
@@ -8,35 +9,31 @@ local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 local SCRIPT_DEF = {
     TE_TraderToBalverineDelay = 3572,  -- 140
     TE_TraderLowInfectionTime = 3576,  -- 80
+    TraderEscortLeaveTraderMorality = 3628,  -- -0.019999999552965164
 }
 
 local helpers = require("TraderEscort.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
 local regulateBanterComment, incubationTime, regulateFollowStateComment, brainState_, leadToCamp
-local inSafeZone, greetedBuddy, self0X14, infected, currentAIState, previousAIState, traderHealthID
+local traderHealthID, inSafeZone, greetedBuddy, self0X14, infected, currentAIState, previousAIState
 
 -- DarkwoodTrader.Main (retail 0x00e07640)
 function Main(quest, me)
     local commentTimer = quest:GetStateInt("CommentTimer")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, CVar24_b3, b, scratchValue4, controlAcquired, scratchValue7, scratchValue8
-    local c_stk_171_2, c_stk_171_4, c_stk_171_5, c_stk_171_6, c_stk_171_8, c_stk_171_9, c_stk_171_10
-    local c_stk_171_12, c_stk_171_13, c_stk_171_14, scratchValue10, scratchValue12, scratchValue13
-    local questionAnswer, sequence, sequence3, p0, hero2, getHero, scratchValue30, scratchValue31
-    local getDataString, scratchValue32, traderEndPos, runOffPos, campTraderA, this_00
-    local scratchValue34, addNewConversation, scratchValue36, scratchValue37, scratchValue38
-    local scratchValue39, actorMap, scratchValue40, scratchValue41, scratchValue42
+    local scratchValue, scratchValue3, scratchValue12, scratchValue13, scratchValue16
+    local scratchValue18, scratchValue20, questionAnswer, sequence, sequence3, hero9, actorMap
+    local getDataString, getPos, runOffPos, actorMap2, mkDtbeCutscenetrigger, furthest, this_01
+    local getCurrentStateGroupType, resource, scratchValue39, scratchValue40, scriptThing, resource3
+    local scratchValue41
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
     while not quest:GetStateBool("IntroFinished") do
         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-        -- TODO(native): c_stk_171 = (**(*me + 0x6c))("SCRIPT_NAME_HERO")
-        local c_stk_171_1 = nil --[[unresolved native value]]
-        if c_stk_171_1 ~= 0 and quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
+        if me:IsTalkedToByHero() and quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
     if brainState_ ~= 1 then
         goto LAB_00e083cd
     end
@@ -48,17 +45,13 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         repeat
             if leadToCamp then goto LAB_00e0843a end
-            -- TODO(native): xStack_168 = xStack_168 | 2;
-            c_stk_171_2 = 1
+            scratchValue3 = true
             if not quest:IsRegionLoaded("BarrowFields") then goto LAB_00e0843a end
             goto FLOW_past_lab_00e0843a
             ::LAB_00e0843a::
-            c_stk_171_2 = 0
+            scratchValue3 = false
             ::FLOW_past_lab_00e0843a::
-            if resource2 & 2 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xfffffffd;
-            end
-            if c_stk_171_2 ~= 0 then
+            if scratchValue3 then
                 if quest:IsActiveThreadTerminating() then break end
                 quest:EntityStopFollowing(me)
                 quest:SetEntityAsRegionFollowing(hero, me, false)
@@ -66,88 +59,77 @@ function Main(quest, me)
                 quest:SetTimer(commentTimer, 0)
                 helpers.MakeTraderComment(quest, me, "IN_BARROW_FIELD", me, 0)
                 resources:PrepareResource(resource2)
-                while not me:AcquireControl(4) do
+                while not resources:TryAcquire(resource2, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
                 if quest:IsActiveThreadTerminating() then break end
                 local tradersStopHere = quest:GetThingWithScriptName("M_TradersStopHere")
-                -- TODO(native): unaff_EBP_b3 = 0;
-                scratchValue10 = 0
+                scratchValue3 = false
+                scratchValue16 = 0
                 me:ClearCommands()
-                if scratchValue37 == nil then
-                    scratchValue32 = {x = 0, y = 0, z = 0}
+                if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
+                    getPos = {x = 0, y = 0, z = 0}
                 else
-                    -- TODO(native): puVar5 = (**(*xStack_120 + 0x18))()
-                    scratchValue32 = nil --[[unresolved native value]]
+                    getPos = tradersStopHere:GetPos()
                 end
-                me:MoveToPosition(scratchValue32, 1.0, ENTITY_MOVE_RUN, false, true)
-                scratchValue4 = quest:IsDistanceBetweenThingsUnder(me, tradersStopHere, 2.0)
-                while not scratchValue4 do
+                me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
+                while not quest:IsDistanceBetweenThingsUnder(me, tradersStopHere, 2.0) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                    -- TODO(native): xStack_20[0] = (quest:GetDistanceBetweenThings(p0, xStack_12c) ^ 2);
-                    local c_stk_171_3 = scratchValue41[0] < (quest:GetDistanceBetweenThings(hero, tradersStopHere) ^ 2)
-                    hero2 = hero
-                    if quest:IsDistanceBetweenThingsUnder(me, hero, 1091567616) or not c_stk_171_3 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                        hero2 = hero
-                        if quest:IsDistanceBetweenThingsUnder(me, hero, 1084227584) or not c_stk_171_3 then
-                            if scratchValue10 ~= 0 then
-                                me:ClearCommands()
-                                if scratchValue37 == nil then
-                                    scratchValue32 = {x = 0, y = 0, z = 0}
-                                else
-                                    -- TODO(native): puVar5 = (**(*xStack_120 + 0x18))()
-                                    scratchValue32 = nil --[[unresolved native value]]
-                                end
-                                me:MoveToPosition(scratchValue32, 1.0, ENTITY_MOVE_RUN, false, true)
-                                scratchValue10 = 0
-                            end
-                        elseif scratchValue10 ~= 1 then
+                    scratchValue12 = (quest:GetDistanceBetweenThings(me, tradersStopHere) ^ 2) < (quest:GetDistanceBetweenThings(hero, tradersStopHere) ^ 2)
+                    if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or scratchValue12 == 0 then
+                        if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) or scratchValue12 == 0 then
+                            if scratchValue16 == 0 then scratchValue3 = false; goto continue_1 end
                             me:ClearCommands()
-                            if scratchValue37 == nil then
-                                scratchValue32 = {x = 0, y = 0, z = 0}
+                            if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
+                                getPos = {x = 0, y = 0, z = 0}
                             else
-                                -- TODO(native): puVar5 = (**(*xStack_120 + 0x18))()
-                                scratchValue32 = nil --[[unresolved native value]]
+                                getPos = tradersStopHere:GetPos()
                             end
-                            me:MoveToPosition(scratchValue32, 1.0, ENTITY_MOVE_WALK, false, true)
-                            scratchValue10 = 1
+                            me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
+                            scratchValue16 = 0
+                        elseif scratchValue16 ~= 1 then
+                            me:ClearCommands()
+                            if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
+                                getPos = {x = 0, y = 0, z = 0}
+                            else
+                                getPos = tradersStopHere:GetPos()
+                            end
+                            me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_WALK, false, true)
+                            scratchValue16 = 1
                         end
-                        -- TODO(native): unaff_EBP_b3 = 0;
+                        scratchValue3 = false
                     else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
                         me:ClearCommands()
                         me:ClearAllActions()
-                        if unaff_EBP_b3 then scratchValue4 = quest:IsDistanceBetweenThingsUnder(me, scratchValue38, 2.0); goto continue_1 end
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                        quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                        addNewConversation = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(addNewConversation, hero)
-                        -- TODO(native): pCVar11 = (**(*me + 0xc))(&xStack_14)
-    --[[unresolved native value]]
-                        quest:AddLineToConversation(addNewConversation, ("TEXT_QST_067_" .. nil) .. "_FOLLOW_ME", me, hero, false)
-                        quest:Pause(1.0)
-                        -- TODO(native): unaff_EBP = (int *)CONCAT13(1,(int3)unaff_EBP);
-                        scratchValue10 = 2
+                        if not scratchValue3 then
+                            if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
+                            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+                            local conversationId = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId, hero)
+                            quest:AddLineToConversation(conversationId, ("TEXT_QST_067_" .. me:GetDataString()) .. "_FOLLOW_ME", me, hero, false)
+                            quest:Pause(1.0)
+                            scratchValue3 = true
+                            scratchValue16 = 2
+                        end
                     end
-                    scratchValue4 = quest:IsDistanceBetweenThingsUnder(me, scratchValue38, 2.0)
                     ::continue_1::
                 end
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+                hero9 = hero
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 helpers.MakeTraderComment(quest, me, "THANKS_10", me, 0)
                 leadToCamp = true
             end
             if quest:GetStateBool("EndStarted") then
                 if quest:IsActiveThreadTerminating() then break end
-                -- TODO(native): quest:RemoveQuestInfoElement(*(*(this + 4) + 0x30))
+                quest:RemoveQuestInfoElement(traderHealthID)
                 quest:MiniMapRemoveMarker(me)
                 quest:EntityStopFollowing(me)
                 quest:SetEntityAsRegionFollowing(hero, me, false)
                 quest:EntitySetAsScared(me, false)
-                quest:ModifyThingHealth(me, __unknown_push, false)
+                quest:ModifyThingHealth(me, 30.0 - quest:GetHealth(me), false)
                 resources:PrepareResource(resource2)
-                controlAcquired = resources:TryAcquire(resource2, me, 4)
+                scratchValue3 = resources:TryAcquire(resource2, me, 4)
                 goto LAB_00e09fd9
             end
             if quest:GetStateBool("TradersShouldBeScared") then
@@ -157,29 +139,23 @@ function Main(quest, me)
                 quest:SetEntityAsRegionFollowing(hero, me, false)
                 quest:EntitySetAsScared(me, true)
                 resources:PrepareResource(resource2)
-                while not me:AcquireControl(4) do
+                while not resources:TryAcquire(resource2, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
-                if scratchValue40 ~= nil then
-                    -- TODO(native): puVar5 = (**(*xStack_158 + 0x18))()
-                    scratchValue32 = nil --[[unresolved native value]]
-                end
-                -- TODO(native): xStack_e8 = (int *)puVar5.x;
-                -- TODO(native): CStack_110 = *(CCharString *)(puVar5 + 1);
-                -- TODO(native): xStack_cc = puVar5.z;
-                resources:ScriptThing(resource2)
-                -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,&xStack_e8,iVar23);
+                -- TODO(native): xStack_e8 = puVar7.x;
+                scratchValue41 = resources:ScriptThing(resource2)
+                -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_e8,iVar20);
     --[[unresolved native result]]
                 while nil ~= 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                    me:MoveToPosition(scratchValue42, 1.0, ENTITY_MOVE_RUN, false, true)
+                    me:MoveToPosition(resource3, 1.0, ENTITY_MOVE_RUN, false, true)
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                    resources:ScriptThing(resource2)
-                    -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,&xStack_e8,iVar23);
+                    scratchValue41 = resources:ScriptThing(resource2)
+                    -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_e8,iVar20);
     --[[unresolved native result]]
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
@@ -187,119 +163,101 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
                 resources:PrepareResource(resource2)
-                quest:EntityFollowThing(me, hero, nil --[[missing]], nil --[[missing]])
+                quest:EntityFollowThing(me, hero, 3.0, true)
                 quest:SetEntityAsRegionFollowing(hero, me, true)
-                getHero = hero
-                scratchValue4 = quest:IsDistanceBetweenThingsUnder(me, hero, 1.4013e-45)
-                while not scratchValue4 do
+                while not quest:IsDistanceBetweenThingsUnder(me, hero, 20.0) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                    getHero = hero
-                    scratchValue4 = quest:IsDistanceBetweenThingsUnder(me, hero, 20.0)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                addNewConversation = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(addNewConversation, hero)
-                -- TODO(native): pCVar11 = (**(*me + 0xc))(pCVar12,"_KILLED_EARTH_TROLL",0,me,uVar13)
-    --[[unresolved native value]]
-                quest:AddLineToConversation(addNewConversation, ("TEXT_QST_067_" .. nil) .. "_KILLED_EARTH_TROLL", me, hero, false)
+                local conversationId2 = quest:AddNewConversation(me, false, false)
+                hero9 = hero
+                quest:AddPersonToConversation(conversationId2, hero)
+                quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. me:GetDataString()) .. "_KILLED_EARTH_TROLL", me, hero, false)
             end
             if inSafeZone then goto LAB_00e08d39 end
-            -- TODO(native): xStack_168 = xStack_168 | 4;
-            c_stk_171_4 = 1
+            scratchValue3 = true
             if not quest:IsRegionLoaded("Darkwood4") then goto LAB_00e08d39 end
             goto FLOW_past_lab_00e08d39
             ::LAB_00e08d39::
-            c_stk_171_4 = 0
+            scratchValue3 = false
             ::FLOW_past_lab_00e08d39::
-            if c_stk_171_4 == 0 then
+            if scratchValue3 then
+                if quest:IsActiveThreadTerminating() then break end
+                quest:EntitySetAsScared(me, false)
+                inSafeZone = true
+            else
                 if not inSafeZone then
                     goto LAB_00e08dc8
                 else
-                    -- TODO(native): xStack_168 = xStack_168 | 8;
-                    c_stk_171_5 = 1
+                    scratchValue3 = true
                     if quest:IsRegionLoaded("Darkwood4") then goto LAB_00e08dc8 end
                 end
                 goto FLOW_past_lab_00e08dc8
                 ::LAB_00e08dc8::
-                c_stk_171_5 = 0
+                scratchValue3 = false
                 ::FLOW_past_lab_00e08dc8::
-                if c_stk_171_5 ~= 0 then
+                if scratchValue3 then
                     if quest:IsActiveThreadTerminating() then break end
                     quest:EntitySetAsScared(me, true)
                     inSafeZone = false
                 end
-            else
-                if quest:IsActiveThreadTerminating() then break end
-                quest:EntitySetAsScared(me, false)
-                inSafeZone = true
             end
             if greetedBuddy then goto LAB_00e08e52 end
-            -- TODO(native): xStack_168 = xStack_168 | 0x10;
-            c_stk_171_6 = 1
+            scratchValue3 = true
             if not quest:IsRegionLoaded("Darkwood4") then goto LAB_00e08e52 end
             goto FLOW_past_lab_00e08e52
             ::LAB_00e08e52::
-            c_stk_171_6 = 0
+            scratchValue3 = false
             ::FLOW_past_lab_00e08e52::
-            if resource2 & 16 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xffffffef;
-            end
-            if c_stk_171_6 ~= 0 then
+            if scratchValue3 then
                 if quest:IsActiveThreadTerminating() then break end
-                local darkwoodTrader2 = quest:GetNearestWithScriptName(hero, "DarkwoodTrader")
-                quest:SetStateString("TraderToTalk", actorMap:GetDataString())
-                campTraderA = quest:GetThingWithScriptName("TE_CampTrader_A")
-                if campTraderA ~= nil and campTraderA:IsAlive() then
+                hero9 = hero
+                local darkwoodTrader = quest:GetNearestWithScriptName(hero, "DarkwoodTrader")
+                quest:SetStateString("TraderToTalk", darkwoodTrader:GetDataString())
+                actorMap2 = quest:GetThingWithScriptName("TE_CampTrader_A")
+                if actorMap2 ~= nil and actorMap2:IsAlive() then
                     quest:EntityStopFollowing(me)
                     quest:SetEntityAsRegionFollowing(hero, me, false)
                     resources:PrepareResource(resource2)
-                    while not me:AcquireControl(4) do
+                    while not resources:TryAcquire(resource2, me, 4) do
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                    if actorMap ~= nil then
-                        -- TODO(native): puVar5 = (**(*xStack_14c + 0x18))()
-                        scratchValue32 = nil --[[unresolved native value]]
-                    end
-                    -- TODO(native): xStack_118 = puVar5.x;
-                    -- TODO(native): xStack_e8 = (int *)puVar5.y;
-                    -- TODO(native): CStack_110 = *(CCharString *)(puVar5 + 2);
+                    -- TODO(native): xStack_118 = puVar7.x;
                     resources:ScriptThing(resource2)
-                    -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,&xStack_118,iVar23);
-                    scratchValue12 = nil --[[unresolved native result]]
-                    while scratchValue12 ~= 0 do
+                    -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_118,iVar20);
+                    scratchValue18 = nil --[[unresolved native result]]
+                    while scratchValue18 ~= 0 do
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                        me:MoveToPosition(scratchValue36, 3.0, ENTITY_MOVE_WALK, false, true)
+                        me:MoveToPosition(resource, 3.0, ENTITY_MOVE_WALK, false, true)
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
                         resources:ScriptThing(resource2)
-                        -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,&xStack_118,iVar23);
-                        scratchValue12 = nil --[[unresolved native result]]
+                        -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_118,iVar20);
+                        scratchValue18 = nil --[[unresolved native result]]
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                    -- TODO(native): (**(code **)(*(int *)p0 + 0x18))();
+                    local pPosition = me:GetPos()
                     -- TODO(native): CreateEffect is not a ForgeFSE binding
-                    quest:CreateEffect()
+                    quest:CreateEffect(scratchValue41, pPosition, "", 0.0, false, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
-                    -- TODO(native): piVar14 = (**(*me + 0xc))(&xStack_34)
-                    scratchValue31 = nil --[[unresolved native value]]
-                    -- TODO(native): puVar5 = *piVar14
-                    scratchValue32 = nil --[[unresolved native value]]
+                    -- TODO(native): puVar7 = *piVar12
+                    getPos = nil --[[unresolved native value]]
                     -- TODO(native): puVar1 = *(self0X14 + 0x78)
     --[[unresolved native value]]
-                    if nil == scratchValue32 then
-                        c_stk_171_8 = 1
-                    elseif nil == nil or scratchValue32 == nil then
-                        c_stk_171_8 = 0
-                    elseif (nil)[1] == scratchValue32.y then
-                        -- TODO(native): iVar23 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar5.x);
-                        c_stk_171_8 = scratchValue12 == 0 and 1 or 0
+                    if nil == getPos then
+                        scratchValue13 = 1
+                    elseif nil == nil or getPos == nil then
+                        scratchValue13 = 0
+                    elseif (nil)[1] == getPos.y then
+                        -- TODO(native): iVar20 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);
+                        scratchValue13 = scratchValue18 == 0 and 1 or 0
                     else
-                        c_stk_171_8 = 0
+                        scratchValue13 = 0
                     end
-                    if c_stk_171_8 == 0 then
+                    if scratchValue13 == 0 then
                         if not quest:IsActiveThreadTerminating() then
                             me:PlayAnimation("STANDARD_WAVE", false, false, false, true, true, false, false)
                             while me:IsPerformingScriptTask() do
@@ -309,20 +267,17 @@ function Main(quest, me)
                         end
                     else
                         if not quest:IsActiveThreadTerminating() then
-                            addNewConversation = quest:AddNewConversation(me, false, false)
-                            quest:AddPersonToConversation(addNewConversation, campTraderA)
-                            -- TODO(native): pCVar11 = (**(*me + 0xc))(&xStack_1c)
-    --[[unresolved native value]]
-                            quest:AddLineToConversation(addNewConversation, ("TEXT_QST_067_" .. nil) .. "_GREET_ALLY_10", me, darkwoodTrader2, false)
-                            -- TODO(native): pCVar12 = (**(*me + 0xc))(piVar14,"_GREET_ALLY_RESPONSE")
-    --[[unresolved native value]]
-                            quest:AddLineToConversation(addNewConversation, ("TEXT_QST_067_" .. nil) .. "_GREET_ALLY_RESPONSE", me, getHero, false)
-                            -- TODO(native): pCVar12 = (**(*me + 0xc))(b,"_GREET_ALLY_20",0,me,xStack_168)
-    --[[unresolved native value]]
-                            quest:AddLineToConversation(addNewConversation, ("TEXT_QST_067_" .. nil) .. b, me, runOffPos, false)
+                            local conversationId3 = quest:AddNewConversation(me, false, false)
+                            quest:AddPersonToConversation(conversationId3, actorMap2)
+                            local scratchValue37 = actorMap2
+                            quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_10", me, actorMap2, true)
+                            quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_RESPONSE", darkwoodTrader, runOffPos, true)
+                            -- TODO(native): uVar17 = SUB41(&xStack_158,0)
+--[[unresolved native value]]
+                            quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_20", me, scratchValue37)
                             quest:Pause(2.0)
-                            quest:RemoveThing(traderEndPos, false, true)
-                            while quest:IsConversationActive(addNewConversation) do
+                            quest:RemoveThing(scratchValue41, false, true)
+                            while quest:IsConversationActive(conversationId3) do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e0a380 end
                             end
                             if not quest:IsActiveThreadTerminating() then goto LAB_00e09493 end
@@ -331,11 +286,12 @@ function Main(quest, me)
                     goto FLOW_past_lab_00e09493
                     ::LAB_00e09493::
                     greetedBuddy = true
-                    if xStack_108:IsAlive() then
+                    if scratchValue41 ~= nil and scratchValue41:IsAlive() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e0a380 end
-                        quest:RemoveThing(hero2, false, true)
+                        quest:RemoveThing(scratchValue41, false, true)
                     end
-                    resources:PrepareResource(resource2)
+                    resources:PrepareResource(scratchValue39)
+                    hero9 = hero
                     quest:EntityFollowThing(me, hero, 3.0, true)
                     quest:SetEntityAsRegionFollowing(hero, me, true)
                     goto LAB_00e09511
@@ -354,21 +310,14 @@ function Main(quest, me)
                 goto LAB_00e095cf
             else
                 if quest:IsRegionLoaded("Darkwood4") then goto LAB_00e095cf end
-                -- TODO(native): xStack_168 = xStack_168 | 0x40;
-                c_stk_171_9 = 0
+                scratchValue3 = false
                 if quest:IsRegionLoaded("BarrowFields") then goto LAB_00e095cf end
             end
             goto FLOW_past_lab_00e095cf
             ::LAB_00e095cf::
-            c_stk_171_9 = 1
+            scratchValue3 = true
             ::FLOW_past_lab_00e095cf::
-            if resource2 & 64 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xffffffbf;
-            end
-            if resource2 & 32 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xffffffdf;
-            end
-            if c_stk_171_9 ~= 0 then
+            if scratchValue3 then
                 if quest:IsActiveThreadTerminating() then break end
                 quest:SetTimer(incubationTime, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderToBalverineDelay))
             end
@@ -376,18 +325,17 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     quest:SetStateInt("TradersStillAliveCounter", quest:GetStateInt("TradersStillAliveCounter") - 1)
                     resources:PrepareResource(resource2)
-                    if this_00 ~= nil then
-                        -- TODO(native): xStack_168 = xStack_168 | 0x380;
-                        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_00,pCVar12,0);
-                        -- TODO(native): *(code **)(this_00 + 0x34) = Script_Darkwood_Balverine_Trader;
-                        -- TODO(native): *(undefined4 *)(this_00 + 0x38) = uVar7;
+                    if this_01 ~= nil then
+                        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,pCVar11,0);
+                        -- TODO(native): *(code **)(this_01 + 0x34) = Script_Darkwood_Balverine_Trader;
+                        -- TODO(native): *(undefined4 *)(this_01 + 0x38) = uVar15;
                     end
-                    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
-                    if resource2 & 512 ~= 0 then
-                        scratchValue34 = resource2 & 0xfffffdff
+                    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);
+                    if scratchValue40 & 512 ~= 0 then
+                        scratchValue = scratchValue40 & 0xfffffdff
                     end
-                    if scratchValue34 & 256 ~= 0 then
-                        scratchValue34 = scratchValue34 & 0xfffffeff
+                    if scratchValue & 256 ~= 0 then
+                        scratchValue = scratchValue & 0xfffffeff
                     end
                     repeat
                         quest:NewScriptFrame(me)
@@ -397,21 +345,21 @@ function Main(quest, me)
             end
             sequence = quest:GetTimer(incubationTime) < quest:GetStateInt("IncubationTimeHigh")
             if sequence then
-                addNewConversation = 4
+                getCurrentStateGroupType = 4
                 sequence = infected < 4
             end
             if sequence then
                 if quest:IsActiveThreadTerminating() then break end
-                c_stk_171_10 = helpers.MakeTraderComment(quest, me, "INFECTED_HIGH", me, 0)
+                scratchValue3 = helpers.MakeTraderComment(quest, me, "INFECTED_HIGH", me, 0)
                 goto LAB_00e096c7
             else
                 sequence3 = quest:GetTimer(incubationTime) < quest:GetStateInt("IncubationTimeMedium")
                 if sequence3 then
-                    addNewConversation = 3
+                    getCurrentStateGroupType = 3
                     sequence3 = infected < 3
                 end
                 if sequence3 then
-                    if not quest:IsActiveThreadTerminating() then c_stk_171_10 = helpers.MakeTraderComment(quest, me, "INFECTED_MEDIUM", me, 0); goto LAB_00e096c7 end
+                    if not quest:IsActiveThreadTerminating() then scratchValue3 = helpers.MakeTraderComment(quest, me, "INFECTED_MEDIUM", me, 0); goto LAB_00e096c7 end
                     break
                 end
                 if quest:GetTimer(incubationTime) < quest:GetStateInt("IncubationTimeLow") and infected < 2 then
@@ -424,156 +372,137 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00e096c7
             ::LAB_00e096c7::
-            if c_stk_171_10 then
+            if scratchValue3 ~= false then
                 if quest:IsActiveThreadTerminating() then break end
-                infected = addNewConversation
+                infected = getCurrentStateGroupType
             end
             ::FLOW_past_lab_00e096c7::
-            -- TODO(native): cVar3 = (**(*me + 0x54))("")
-    --[[unresolved native value]]
-            if nil == 0 then
-                -- TODO(native): cVar3 = (**(*me + 0xa8))("")
-    --[[unresolved native value]]
-                if nil ~= 0 then goto LAB_00e09848 end
-                goto LAB_00e09886
-            else
-                goto LAB_00e09848
-            end
+            -- TODO(native): xStack_170 = xStack_170 | 0x400;
+            if me:MsgIsHitBy("") then goto LAB_00e09848 end
+            -- TODO(native): xStack_170 = xStack_170 | 0x800;
+            if me:MsgIsHitByAnySpecialAbilityFrom("") then goto LAB_00e09848 end
+            goto LAB_00e09886
             goto FLOW_past_lab_00e09886
             ::LAB_00e09886::
-            c_stk_171_12 = 0
+            scratchValue3 = false
             ::FLOW_past_lab_00e09886::
             goto FLOW_past_lab_00e09848
             ::LAB_00e09848::
-            -- TODO(native): xStack_168 = xStack_168 | 0x1000;
-            -- TODO(native): cVar3 = (**(*me + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-            c_stk_171_12 = 1
-            if nil ~= 0 then goto LAB_00e09886 end
+            -- TODO(native): xStack_170 = xStack_170 | 0x1000;
+            scratchValue3 = true
+            if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e09886 end
             ::FLOW_past_lab_00e09848::
-            if resource2 & 4096 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xffffefff;
+            if scratchValue40 & 4096 ~= 0 then
+                -- TODO(native): xStack_170 = xStack_170 & 0xffffefff;
             end
-            if resource2 & 2048 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xfffff7ff;
+            if scratchValue40 & 2048 ~= 0 then
+                -- TODO(native): xStack_170 = xStack_170 & 0xfffff7ff;
             end
-            if resource2 & 1024 ~= 0 then
-                -- TODO(native): xStack_168 = xStack_168 & 0xfffffbff;
+            if scratchValue40 & 1024 ~= 0 then
+                -- TODO(native): xStack_170 = xStack_170 & 0xfffffbff;
             end
-            if c_stk_171_12 ~= 0 then
+            if scratchValue3 then
                 if quest:IsActiveThreadTerminating() then break end
                 quest:SetTimer(regulateFollowStateComment, 5)
                 if quest:GetHealth(me) <= 5.0 then
                     goto LAB_00e099dc
                 else
-                    scratchValue34 = resource2
-                    -- TODO(native): cVar3 = (**(*me + 0x54))("SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                    if nil ~= 0 then goto LAB_00e099dc end
-                    -- TODO(native): xStack_168 = uVar16 | 0x6000;
-                    -- TODO(native): cVar3 = (**(*me + 0xa8))("SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                    if nil ~= 0 then
-                        -- TODO(native): xStack_168 = xStack_168 | 0x8000;
-                        -- TODO(native): cVar3 = (**(*me + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                        if nil == 0 then goto LAB_00e099dc end
+                    -- TODO(native): xStack_170 = xStack_170 | 0x2000;
+                    if me:MsgIsHitByHero() then goto LAB_00e099dc end
+                    -- TODO(native): xStack_170 = CVar14 | 0x6000;
+                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                        -- TODO(native): xStack_170 = xStack_170 | 0x8000;
+                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e099dc end
                     end
-                    c_stk_171_13 = 1
+                    scratchValue3 = true
                 end
                 goto FLOW_past_lab_00e099dc
                 ::LAB_00e099dc::
-                c_stk_171_13 = 0
+                scratchValue3 = false
                 ::FLOW_past_lab_00e099dc::
-                if resource2 >> 8 < 0 then
-                    -- TODO(native): xStack_168 = xStack_168 & 0xffff7fff;
+                if scratchValue40 & 0x8000 ~= 0 then
+                    -- TODO(native): xStack_170 = xStack_170 & 0xffff7fff;
                 end
-                if resource2 & 0x4000 ~= 0 then
-                    -- TODO(native): xStack_168 = xStack_168 & 0xffffbfff;
+                if scratchValue40 & 0x4000 ~= 0 then
+                    -- TODO(native): xStack_170 = xStack_170 & 0xffffbfff;
                 end
-                if resource2 & 0x2000 ~= 0 then
-                    -- TODO(native): xStack_168 = xStack_168 & 0xffffdfff;
+                if scratchValue40 & 0x2000 ~= 0 then
+                    -- TODO(native): xStack_170 = xStack_170 & 0xffffdfff;
                 end
-                if c_stk_171_13 == 0 then
+                if scratchValue3 then
+                    if quest:IsActiveThreadTerminating() then break end
+                    helpers.MakeTraderComment(quest, me, "UNDER_ATTACK", me, 0)
+                    scratchValue20 = 3
+                else
                     if quest:GetHealth(me) <= 5.0 then
                         goto LAB_00e09b4f
                     else
-                        scratchValue34 = resource2
-                        -- TODO(native): cVar3 = (**(*me + 0x54))("SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                        if nil == 0 then
-                            -- TODO(native): xStack_168 = uVar16 | 0x30000;
-                            -- TODO(native): cVar3 = (**(*me + 0xa8))("SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                            if nil ~= 0 then
-                                -- TODO(native): xStack_168 = xStack_168 | 0x40000;
-                                -- TODO(native): cVar3 = (**(*me + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                                if nil == 0 then goto LAB_00e09b48 end
+                        -- TODO(native): xStack_170 = xStack_170 | 0x10000;
+                        if not me:MsgIsHitByHero() then
+                            -- TODO(native): xStack_170 = CVar14 | 0x30000;
+                            if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                                -- TODO(native): xStack_170 = xStack_170 | 0x40000;
+                                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e09b48 end
                             end
                             goto LAB_00e09b4f
                         end
                         ::LAB_00e09b48::
-                        c_stk_171_14 = 1
+                        scratchValue3 = true
                     end
                     goto FLOW_past_lab_00e09b4f
                     ::LAB_00e09b4f::
-                    c_stk_171_14 = 0
+                    scratchValue3 = false
                     ::FLOW_past_lab_00e09b4f::
-                    if resource2 & 0x40000 ~= 0 then
-                        -- TODO(native): xStack_168 = xStack_168 & 0xfffbffff;
+                    if scratchValue40 & 0x40000 ~= 0 then
+                        -- TODO(native): xStack_170 = xStack_170 & 0xfffbffff;
                     end
-                    if resource2 & 0x20000 ~= 0 then
-                        -- TODO(native): xStack_168 = xStack_168 & 0xfffdffff;
+                    if scratchValue40 & 0x20000 ~= 0 then
+                        -- TODO(native): xStack_170 = xStack_170 & 0xfffdffff;
                     end
-                    if resource2 & 0x10000 ~= 0 then
-                        -- TODO(native): xStack_168 = xStack_168 & 0xfffeffff;
+                    if scratchValue40 & 0x10000 ~= 0 then
+                        -- TODO(native): xStack_170 = xStack_170 & 0xfffeffff;
                     end
-                    if c_stk_171_14 == 0 then goto LAB_00e09c13 end
+                    if not scratchValue3 then goto LAB_00e09c13 end
                     if quest:IsActiveThreadTerminating() then break end
                     helpers.MakeTraderComment(quest, me, "HERO_HIT_ME", me, 0)
-                    scratchValue13 = 2
-                else
-                    if quest:IsActiveThreadTerminating() then break end
-                    helpers.MakeTraderComment(quest, me, "UNDER_ATTACK", me, 0)
-                    scratchValue13 = 3
+                    scratchValue20 = 2
                 end
-                quest:SetTimer(commentTimer, scratchValue13)
+                quest:SetTimer(commentTimer, scratchValue20)
             end
             ::LAB_00e09c13::
             if currentAIState == previousAIState then
                 if quest:GetTimer(regulateBanterComment) == 0 and not leadToCamp then
                     if quest:IsActiveThreadTerminating() then break end
                     if quest:GetStateInt("TradersStillAliveCounter") == 1 then
-                        scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER_SOLO", me, 0)
+                        scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER_SOLO", me, 0)
                     else
                         local switch1 = quest:GetStateInt("TimesBantered")
                         repeat
                             if switch1 == 0 then
-                                scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER_FIRST", me, 1)
+                                scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER_FIRST", me, 1)
                                 break
                             elseif switch1 == 1 then
-                                scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER_SECOND", me, 1)
+                                scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER_SECOND", me, 1)
                                 break
                             elseif switch1 == 2 then
-                                scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER_THIRD", me, 1)
+                                scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER_THIRD", me, 1)
                                 break
                             elseif switch1 == 3 then
-                                scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER_FOURTH", me, 1)
+                                scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER_FOURTH", me, 1)
                                 break
                             else
-                                scratchValue8 = helpers.MakeTraderComment(quest, me, "BANTER", me, 0)
+                                scratchValue12 = helpers.MakeTraderComment(quest, me, "BANTER", me, 0)
                             end
                         until true
                     end
-                    if not scratchValue8 then
+                    if not scratchValue12 then
                         if quest:IsActiveThreadTerminating() then break end
-                        local scratchValue14 = math.random(0, 32767)
-                        quest:SetTimer(regulateBanterComment, scratchValue14 % 15 + 25)
+                        local scratchValue21 = math.random(0, 32767)
+                        quest:SetTimer(regulateBanterComment, scratchValue21 % 15 + 25)
                     else
                         if quest:IsActiveThreadTerminating() then break end
-                        local scratchValue15 = math.random(0, 32767)
-                        quest:SetTimer(regulateBanterComment, scratchValue15 % 20 + 30)
+                        local scratchValue22 = math.random(0, 32767)
+                        quest:SetTimer(regulateBanterComment, scratchValue22 % 20 + 30)
                         quest:SetStateInt("TimesBantered", quest:GetStateInt("TimesBantered") + 1)
                     end
                 end
@@ -585,9 +514,8 @@ function Main(quest, me)
                 end
             end
             previousAIState = currentAIState
-            -- TODO(native): uVar7 = (**(*me + 0x34))()
-            addNewConversation = nil --[[unresolved native value]]
-            currentAIState = addNewConversation
+            getCurrentStateGroupType = me:GetCurrentStateGroupType()
+            currentAIState = getCurrentStateGroupType
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource2)
@@ -599,7 +527,7 @@ function Main(quest, me)
     do return end
     ::FLOW_past_lab_00e083cd::
     resources:PrepareResource(resource2)
-    while not me:AcquireControl(4) do
+    while not resources:TryAcquire(resource2, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
@@ -613,177 +541,174 @@ function Main(quest, me)
     quest:EntitySetAsDamageable(me, true)
     quest:EntitySetTargetable(me, true)
     quest:SetThingAsConscious(me, true, "")
-    if quest:IsDistanceBetweenThingsOver(actorMap, hero, 1.4013e-45) then
-        repeat
-            if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
-            if not quest:GetStateBool("MissionFailed") then goto continue_3 end
-            if scratchValue ~= nil then
-                -- TODO(native): puVar5 = (**(*CStack_110 + 0x18))()
-                scratchValue32 = nil --[[unresolved native value]]
-            end
-            -- TODO(native): xStack_14c = puVar5.x;
-            -- TODO(native): xStack_158 = *(CCharString *)(puVar5 + 1);
-            -- TODO(native): xStack_114 = *(CCharString *)(puVar5 + 2);
+    mkDtbeCutscenetrigger = quest:GetThingWithScriptName("MK_DTBE_CUTSCENETRIGGER")
+    while quest:IsDistanceBetweenThingsOver(mkDtbeCutscenetrigger, hero, 5.0) do
+        if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
+        if quest:GetStateBool("MissionFailed") then
+            -- TODO(native): xStack_150._0_4_ = puVar7.x;
+            -- TODO(native): xStack_150._4_4_ = puVar7.y;
+            -- TODO(native): xStack_150._8_4_ = puVar7.z;
             resources:ScriptThing(resource2)
-            -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,xStack_14c,iVar23);
---[[unresolved native result]]
-            -- TODO(native): unaff_EBX = CONCAT13((char)iVar23,(int3)unaff_EBX);
-            while unaff_EBX >> 24 ~= 0 do
+            -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_150,iVar20);
+    --[[unresolved native result]]
+            while nil ~= 0 do
                 if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
-                me:MoveToPosition(actorMap, 0, ENTITY_MOVE_RUN, false, true)
+                me:MoveToPosition(actorMap2, 0, ENTITY_MOVE_RUN, false, true)
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e085f8 end
                 resources:ScriptThing(resource2)
-                -- TODO(native): iVar23 = IsDistanceFromThingToPositionOver(pvVar6,xStack_14c,iVar23);
---[[unresolved native result]]
-                -- TODO(native): unaff_EBX = CONCAT13((char)iVar23,(int3)unaff_EBX);
+                -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_150,iVar20);
+    --[[unresolved native result]]
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00e085f8 end
             quest:FadeOutAndKillEntity(me, true, 2.0, true)
-            ::continue_3::
-        until not quest:IsDistanceBetweenThingsOver(scratchValue39, hero, 5.0)
+        end
     end
-    if not quest:IsActiveThreadTerminating() then
-        -- TODO(native): unaff_EBX = CONCAT13(bVar2,(int3)unaff_EBX);
-        -- TODO(native): cVar3 = (**(*me + 0x130))()
-    --[[unresolved native value]]
-        if nil == 0 and 0.0 < quest:GetHealth(me) then
+    scratchValue3 = quest:IsActiveThreadTerminating()
+    if not scratchValue3 then
+        scratchValue12 = scratchValue3
+        if not me:IsDead() and 0.0 < quest:GetHealth(me) then
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local darkwoodTrader3 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
-            local darkwoodTrader = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
-            local resource3 = resources:NewResource()
-            local resource = resources:NewResource()
-            local resource4 = resources:NewResource()
+            local darkwoodTrader2 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
+            furthest = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
+            resource3 = resources:NewResource()
+            resource = resources:NewResource()
+            scratchValue41 = resources:NewResource()
             resources:PrepareResource(resource3)
-            while not me:AcquireControl(4) do
+            hero9 = hero
+            while not resources:TryAcquire(resource3, hero9, 4) do
                 quest:NewScriptFrame(me)
                 if not quest:IsActiveThreadTerminating() then
-                    addNewConversation = hero
+                    hero9 = hero
                 else
-                    resources:ReleaseResource(resource4)
+                    resources:ReleaseResource(scratchValue41)
                     resources:ReleaseResource(resource)
                     resources:ReleaseResource(resource3)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     goto LAB_00e085f8
-                    addNewConversation = hero
+                    hero9 = hero
                 end
             end
             if not quest:IsActiveThreadTerminating() then
-                -- TODO(native): cVar3 = (**(*unaff_EBP + 0x138))(xStack_124)
-    --[[unresolved native value]]
-                if nil ~= 0 then
+                if darkwoodTrader2 ~= nil and darkwoodTrader2:IsEqualTo(furthest._4_4_) then
                     if quest:IsActiveThreadTerminating() then
-                        resources:ReleaseResource(resource4)
+                        resources:ReleaseResource(scratchValue41)
                         resources:ReleaseResource(resource)
-                        resources:ReleaseResource(addNewConversation)
+                        resources:ReleaseResource(resource3)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         goto LAB_00e085f8
                     end
                 end
-                if darkwoodTrader3:GetDataString() == "SCARED" then
+                if darkwoodTrader2:GetDataString() == "SCARED" then
                     goto LAB_00e07cac
                 else
-                    scratchValue7 = 1
-                    if not (darkwoodTrader ~= nil and darkwoodTrader:IsAlive()) then goto LAB_00e07cac end
+                    scratchValue3 = true
+                    if not (furthest ~= nil and furthest:IsAlive()) then goto LAB_00e07cac end
                 end
                 goto FLOW_past_lab_00e07cac
                 ::LAB_00e07cac::
-                scratchValue7 = 0
+                scratchValue3 = false
                 ::FLOW_past_lab_00e07cac::
-                if scratchValue7 ~= 0 then
+                if scratchValue3 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e07db9 end
-                    -- TODO(native): CScriptThing::operator=((CScriptThing *)&xStack_140,(int)&xStack_128);
-                    -- TODO(native): xStack_128 = xStack_bc_2;
+                    -- TODO(native): xStack_144 = xStack_12c;
+                    furthest = scriptThing
                 end
                 quest:FixMovieSequenceCamera(true)
-                actorMap = resources:NewActorMap()
-                resources:SetActor(actorMap, "HERO", addNewConversation)
-                resources:SetActor(actorMap, "TRADERI", campTraderA)
-                if not (darkwoodTrader3 ~= nil and darkwoodTrader3:IsAlive()) then
+                actorMap2 = resources:NewActorMap()
+                resources:SetActor(actorMap2, "HERO", resource3)
+                resources:SetActor(actorMap2, "TRADERI", resource2)
+                if not (darkwoodTrader2 ~= nil and darkwoodTrader2:IsAlive()) then
                     goto LAB_00e081e9
                 elseif not quest:IsActiveThreadTerminating() then
-                    if darkwoodTrader ~= nil and darkwoodTrader:IsAlive() then
+                    if furthest ~= nil and furthest:IsAlive() then
                         if not quest:IsActiveThreadTerminating() then
                             resources:PrepareResource(resource)
-                            while resources:TryAcquire(resource, darkwoodTrader3, 4) == 0 do
+                            while not resources:TryAcquire(resource, darkwoodTrader2, 4) do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e07e30 end
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e07db0 end
-                            resources:PrepareResource(resource4)
-                            while resources:TryAcquire(resource4, darkwoodTrader, 4) == 0 do
+                            resources:PrepareResource(scratchValue41)
+                            while not resources:TryAcquire(scratchValue41, furthest, 4) do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e07db0 end
                             end
                             if not quest:IsActiveThreadTerminating() then
-                                resources:SetActor(actorMap, "TRADERS", resource)
-                                resources:SetActor(actorMap, "TRADERN", resource4)
-                                scratchValue30 = "CS_DARKWOOD_TRADER_INFECTED_BOTH"
+                                resources:SetActor(actorMap2, "TRADERS", resource)
+                                resources:SetActor(actorMap2, "TRADERN", scratchValue41)
+                                actorMap = "CS_DARKWOOD_TRADER_INFECTED_BOTH"
                                 goto LAB_00e081c2
                             end
                         end
                         ::LAB_00e07e30::
-                        resources:DestroyActorMap(actorMap)
-                        resources:ReleaseResource(resource4)
+                        resources:DestroyActorMap(actorMap2)
+                        resources:ReleaseResource(scratchValue41)
                         resources:ReleaseResource(resource)
-                        resources:ReleaseResource(addNewConversation)
+                        resources:ReleaseResource(resource3)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         goto LAB_00e085f8
                     end
-                    getDataString = darkwoodTrader3:GetDataString()
-                    if not (getDataString ~= nil and getDataString == "SCARED") then
+                    getDataString = darkwoodTrader2:GetDataString()
+                    if getDataString == nil then
+                        scratchValue = "BANTER_FOURTH"
+                        scratchValue13 = false
+                    else
+                        scratchValue13 = getDataString == "SCARED"
+                    end
+                    if not scratchValue13 then
                         if quest:IsActiveThreadTerminating() then
-                            resources:DestroyActorMap(actorMap)
-                            resources:ReleaseResource(resource4)
+                            resources:DestroyActorMap(actorMap2)
+                            resources:ReleaseResource(scratchValue41)
                             resources:ReleaseResource(resource)
-                            resources:ReleaseResource(addNewConversation)
+                            resources:ReleaseResource(resource3)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                             goto LAB_00e085f8
                         end
-                        resources:PrepareResource(resource4)
-                        while resources:TryAcquire(resource4, darkwoodTrader3, 4) == 0 do
+                        resources:PrepareResource(scratchValue41)
+                        while not resources:TryAcquire(scratchValue41, darkwoodTrader2, 4) do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
-                                resources:DestroyActorMap(actorMap)
-                                resources:ReleaseResource(resource4)
+                                resources:DestroyActorMap(actorMap2)
+                                resources:ReleaseResource(scratchValue41)
                                 resources:ReleaseResource(resource)
-                                resources:ReleaseResource(addNewConversation)
+                                resources:ReleaseResource(resource3)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
                                 goto LAB_00e085f8
                             end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:SetActor(actorMap, "TRADERN", resource4)
-                            scratchValue30 = "CS_DARKWOOD_TRADER_INFECTED_NORMAL"
+                            resources:SetActor(actorMap2, "TRADERN", scratchValue41)
+                            actorMap = "CS_DARKWOOD_TRADER_INFECTED_NORMAL"
                             goto LAB_00e081c2
                         end
                     elseif not quest:IsActiveThreadTerminating() then
                         resources:PrepareResource(resource)
-                        while resources:TryAcquire(resource, darkwoodTrader3, 4) == 0 do
+                        while not resources:TryAcquire(resource, darkwoodTrader2, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00e07db0 end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:SetActor(actorMap, "TRADERS", resource)
-                            scratchValue30 = "CS_DARKWOOD_TRADER_INFECTED_SCARED"
+                            resources:SetActor(actorMap2, "TRADERS", resource)
+                            actorMap = "CS_DARKWOOD_TRADER_INFECTED_SCARED"
                             goto LAB_00e081c2
                         end
                         goto FLOW_hoist_lab_00e081c2_1
                     end
                     goto FLOW_past_lab_00e081c2
                     ::LAB_00e081c2::
-                    resources:RunMacro(scratchValue30, actorMap, false, true)
+                    resources:RunMacro(actorMap, actorMap2, false, true)
                     goto LAB_00e081e9
                     ::FLOW_hoist_lab_00e081c2_1::
-                    resources:DestroyActorMap(actorMap)
-                    resources:ReleaseResource(resource4)
+                    resources:DestroyActorMap(actorMap2)
+                    resources:ReleaseResource(scratchValue41)
                     resources:ReleaseResource(resource)
-                    resources:ReleaseResource(addNewConversation)
+                    resources:ReleaseResource(resource3)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     goto LAB_00e085f8
@@ -798,10 +723,10 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     else
-                        resources:DestroyActorMap(actorMap)
-                        resources:ReleaseResource(resource4)
+                        resources:DestroyActorMap(actorMap2)
+                        resources:ReleaseResource(scratchValue41)
                         resources:ReleaseResource(resource)
-                        resources:ReleaseResource(addNewConversation)
+                        resources:ReleaseResource(resource3)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         goto LAB_00e085f8
@@ -809,34 +734,34 @@ function Main(quest, me)
                     end
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue4 = quest:IsActiveThreadTerminating()
+                    scratchValue3 = quest:IsActiveThreadTerminating()
                     if questionAnswer == 1 then
-                        if scratchValue4 then
-                            resources:DestroyActorMap(actorMap)
-                            resources:ReleaseResource(resource4)
+                        if scratchValue3 then
+                            resources:DestroyActorMap(actorMap2)
+                            resources:ReleaseResource(scratchValue41)
                             resources:ReleaseResource(resource)
-                            resources:ReleaseResource(addNewConversation)
+                            resources:ReleaseResource(resource3)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                             goto LAB_00e085f8
                         end
-                        scratchValue30 = "CS_DARKWOOD_TRADER_INFECTED_JOINS"
+                        scratchValue12 = 1
+                        actorMap = "CS_DARKWOOD_TRADER_INFECTED_JOINS"
                     else
-                        if scratchValue4 then goto LAB_00e07db0 end
-                        scratchValue30 = "CS_DARKWOOD_TRADER_INFECTED_LEAVES"
+                        if scratchValue3 then goto LAB_00e07db0 end
+                        actorMap = "CS_DARKWOOD_TRADER_INFECTED_LEAVES"
                     end
-                    resources:RunMacro(scratchValue30, actorMap, false, true)
-                    getHero = 0
+                    resources:RunMacro(actorMap, actorMap2, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    resources:DestroyActorMap(actorMap)
-                    resources:ReleaseResource(resource4)
+                    resources:DestroyActorMap(actorMap2)
+                    resources:ReleaseResource(scratchValue41)
                     resources:ReleaseResource(resource)
-                    resources:ReleaseResource(addNewConversation)
+                    resources:ReleaseResource(resource3)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    if not unaff_EBX_b3 then
+                    if scratchValue12 == 0 then
                         if not quest:IsActiveThreadTerminating() then
-                            quest:GiveHeroMorality(__unknown_push)
+                            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.TraderEscortLeaveTraderMorality))
                             quest:RemoveThing(me, false, true)
                         end
                     elseif not quest:IsActiveThreadTerminating() then
@@ -848,13 +773,13 @@ function Main(quest, me)
                 end
                 ::FLOW_past_lab_00e081e9::
                 ::LAB_00e07db0::
-                resources:DestroyActorMap(actorMap)
+                resources:DestroyActorMap(actorMap2)
             end
             ::LAB_00e07db9::
-            resources:ReleaseResource(resource4)
+            resources:ReleaseResource(scratchValue41)
             resources:ReleaseResource(resource)
-            resources:ReleaseResource(addNewConversation)
-            -- TODO(native): (**(code **)(*piVar14 + 0x5ec))(0);
+            resources:ReleaseResource(resource3)
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         else
             while true do
@@ -868,57 +793,53 @@ function Main(quest, me)
     resources:ReleaseResource(resource2)
     do return end
     ::LAB_00e09fd9::
-    if controlAcquired == 0 then
+    if not scratchValue3 then
         if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
-        controlAcquired = resources:TryAcquire(resource2, me, 4)
+        scratchValue3 = resources:TryAcquire(resource2, me, 4)
         goto LAB_00e09fd9
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
-    while quest:IsDistanceBetweenThingsOver(me, campTraderA, 7.0) do
+    while quest:IsDistanceBetweenThingsOver(me, actorMap2, 7.0) do
         if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
         if not me:IsPerformingScriptTask() then
-            me:MoveToThing(addNewConversation, 4.0, ENTITY_MOVE_WALK)
+            me:MoveToThing(hero9, 4.0, ENTITY_MOVE_WALK)
         end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
     resources:PrepareResource(resource2)
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
     repeat
-        -- TODO(native): cVar3 = (**(*me + 0x6c))("SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-        if nil ~= 0 then
+        if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then break end
             resources:PrepareResource(resource2)
-            while resources:TryAcquire(resource2, me, 4) == 0 do
+            while not resources:TryAcquire(resource2, me, 4) do
                 if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
             end
             if quest:IsActiveThreadTerminating() then break end
             resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
-            local health = quest:GetHealth(resources:ScriptThing(stack0xfffffe48))
-            -- TODO(native): CVar19._0_3_ = CVar24._0_3_;
-            -- TODO(native): CVar19._3_1_ = 1;
-            if CVar24_b3 ~= 0 then
-                scratchValue30 = "_THANKS"
-                -- TODO(native): pCVar11 = (**(*me + 0xc))(&xStack_c8)
-    --[[unresolved native value]]
-                me:Speak(hero, scratchValue30, 0, false, true, false)
+            local fret_03 = quest:GetHealth(resources:ScriptThing(resource2))
+            if 0.0 < fret_03 then
+                me:Speak(hero, ("TEXT_QST_067_" .. me:GetDataString()) .. "_THANKS", 0, false, true, false)
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e0a33a end
                 end
                 if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e0a33a end
                 goto FLOW_past_lab_00e0a33a
                 ::LAB_00e0a33a::
-                resources:ReleaseResource(addNewConversation)
+                resources:ReleaseResource(resource3)
                 break
                 ::FLOW_past_lab_00e0a33a::
             end
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(addNewConversation)
-            resources:PrepareResource(campTraderA)
+            resources:ReleaseResource(resource3)
+            resources:PrepareResource("TEXT_QST_067_INFECTED_ASK_TO_FOLLOW")
         end
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(campTraderA); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource("TEXT_QST_067_INFECTED_ASK_TO_FOLLOW")
+            do return end
+        end
     until false
     ::LAB_00e0a346::
     resources:ReleaseResource(resource2)
@@ -929,7 +850,7 @@ function Init(quest, me)
     incubationTime = quest:RegisterTimer()  -- native constructor: CTimer member
     regulateFollowStateComment = quest:RegisterTimer()  -- native constructor: CTimer member
     regulateBanterComment = quest:RegisterTimer()  -- native constructor: CTimer member
-    local scratchValue5, scratchValue, this_01
+    local scratchValue, scratchValue8, this_00, scratchValue9
     brainState_ = 0
     currentAIState = 0
     previousAIState = 0
@@ -949,26 +870,32 @@ function Init(quest, me)
     if me:GetDataString() ~= "INFECTED" then
         if me:GetDataString() ~= "SCARED" then
             if me:GetDataString() ~= "FRIENDLY" then goto LAB_00e04e13 end
-            scratchValue = "FRIENDLY_TRADER"
+            scratchValue8 = "FRIENDLY_TRADER"
         else
-            scratchValue = "SCARED_TRADER"
+            scratchValue8 = "SCARED_TRADER"
         end
     else
-        scratchValue = "INFECTED_TRADER"
+        scratchValue8 = "INFECTED_TRADER"
     end
-    quest:EntitySetWillBeUsingNarrator(me, scratchValue)
+    quest:EntitySetWillBeUsingNarrator(me, scratchValue8)
     ::LAB_00e04e13::
-    if this_01 ~= nil then
-        -- TODO(native): xStack_10 = *(CCharString (*) [4])(this + 0xc);
-        -- TODO(native): local_20 = *(int **)(this + 0x10);
-        if scratchValue5 ~= nil then
-            -- TODO(native): *local_20 = *local_20 + 1;
+    if this_00 == nil then
+        scratchValue = scratchValue9
+    else
+        -- TODO(native): xStack_c._4_4_ = *(undefined4 *)(this + 0xc);
+        -- TODO(native): xStack_c._8_4_ = *(undefined4 *)(this + 0x10);
+        if (nil)._8_4_ ~= nil then
+            -- TODO(native): *xStack_c._8_4_ = *xStack_c._8_4_ + 1;
         end
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_01,pCVar6,0);
-        -- TODO(native): *(code **)(this_01 + 0x34) = NScript::CQ_TraderEscortScript::WatchForPickpocketing;
-        -- TODO(native): *(undefined4 *)(this_01 + 0x38) = uVar1;
+        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar3,0);
+        -- TODO(native): *(code **)(this_00 + 0x34) = NScript::CQ_TraderEscortScript::WatchForPickpocketing;
+        -- TODO(native): *(undefined4 *)(this_00 + 0x38) = uVar1;
+        scratchValue = 7
     end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);
+    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
+    if scratchValue & 4 ~= 0 then
+        scratchValue = scratchValue & 0xfffffffb
+    end
 end
 
 -- DarkwoodTrader.OnPersist (retail 0x00e05330)
@@ -1001,71 +928,76 @@ end
 
 -- DarkwoodTrader.SetBrainState (retail 0x00e0a510)
 function SetBrainState(quest, me, brainState)
-    local scratchValue, scratchValue9
     local hero = quest:GetHero()
     brainState_ = brainState
+    local scratchValue = brainState
     if brainState == 2 then
         local predicateResult = quest:IsActiveThreadTerminating()
-        brainState = predicateResult
+        scratchValue = predicateResult
         if not predicateResult then
             quest:EntityFollowThing(me, hero, 3.0, true)
             quest:SetEntityAsRegionFollowing(hero, me, true)
             quest:DisplayQuestInfo(true)
-            -- TODO(native): pCVar2 = (**(*me + 0xc))(me,&CStack_24)
-    --[[unresolved native value]]
-            if nil ~= nil then
-                -- TODO(native): uStack_1c_b0 = !(iVar4 != 0);
+            local getDataString = me:GetDataString()
+            if getDataString == nil then
+                brainState = CONCAT31(brainState._1_3_,false)
+            else
+                brainState = CONCAT31(brainState._1_3_,getDataString == "INFECTED")
             end
-            if 3.0 == 0 then
-                -- TODO(native): pCVar2 = (**(*me + 0xc))(me,&CStack_24)
-    --[[unresolved native value]]
-                if nil == nil then
-                    scratchValue = 7
-                    repeat
-                        if scratchValue == 0 then break end
-                        scratchValue = scratchValue - 1
-                        -- TODO(native): uStack_1c_b0 = *pcVar5 == *pcVar6;
-                    until not 3.0
+            if brainState == 0 then
+                local getDataString2 = me:GetDataString()
+                if getDataString2 == nil then
+                    brainState = CONCAT31(brainState._1_3_,false)
                 else
-                    -- TODO(native): uStack_1c_b0 = !(iVar4 != 0);
+                    brainState = CONCAT31(brainState._1_3_,getDataString2 == "SCARED")
                 end
-                if 3.0 == 0 then
-                    -- TODO(native): pCVar2 = (**(*me + 0xc))(me,&CStack_24)
-    --[[unresolved native value]]
-                    if nil ~= nil then
-                        -- TODO(native): uStack_1c = CONCAT31(uStack_1c._1_3_,!(iVar4 != 0));
+                if brainState == 0 then
+                    local getDataString3 = me:GetDataString()
+                    if getDataString3 == nil then
+                        brainState = CONCAT31(brainState._1_3_,false)
+                    else
+                        brainState = CONCAT31(brainState._1_3_,getDataString3 == "FRIENDLY")
                     end
-                    brainState = CONCAT31(int3(extraout_EAX >> 8),scratchValue9)
-                    if scratchValue9 ~= 0 then
+                    scratchValue = CONCAT31(int3(extraout_EAX >> 8),brainState)
+                    if brainState ~= 0 then
                         local predicateResult2 = quest:IsActiveThreadTerminating()
-                        brainState = predicateResult2
+                        scratchValue = predicateResult2
                         if not predicateResult2 then
-                            traderHealthID = quest:AddQuestInfoBarHealth(me, 0xffff0000, "HUD_QUEST_ICON_TRADER_HAT_02", 1.0)
+                            brainState = -0x10000
+                            -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER_HAT_02", 1.0)
+                            scratchValue = nil --[[unresolved native value]]
+                            traderHealthID = scratchValue
                         end
                     end
                 else
                     local predicateResult3 = quest:IsActiveThreadTerminating()
-                    brainState = predicateResult3
+                    scratchValue = predicateResult3
                     if not predicateResult3 then
-                        traderHealthID = quest:AddQuestInfoBarHealth(me, 0xffff0000, "HUD_QUEST_ICON_TRADER_HAT_01", 1.0)
+                        brainState = -0x10000
+                        -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER_HAT_01", 1.0)
+                        scratchValue = nil --[[unresolved native value]]
+                        traderHealthID = scratchValue
                         return quest:EntitySetAsScared(me, true)
                     end
                 end
             else
                 local predicateResult4 = quest:IsActiveThreadTerminating()
-                brainState = predicateResult4
+                scratchValue = predicateResult4
                 if not predicateResult4 then
-                    traderHealthID = quest:AddQuestInfoBarHealth(me, 0xffff0000, "HUD_QUEST_ICON_TRADER", 1.0)
+                    brainState = -0x10000
+                    -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER", 1.0)
+                    scratchValue = nil --[[unresolved native value]]
+                    traderHealthID = scratchValue
                     infected = 1
                     if not quest:GetStateBool("SavedNearEnd") then
                         local predicateResult5 = quest:IsActiveThreadTerminating()
-                        brainState = predicateResult5
+                        scratchValue = predicateResult5
                         if not predicateResult5 then
                             return quest:SetTimer(incubationTime, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderToBalverineDelay))
                         end
                     else
                         local predicateResult6 = quest:IsActiveThreadTerminating()
-                        brainState = predicateResult6
+                        scratchValue = predicateResult6
                         if not predicateResult6 then
                             return quest:SetTimer(incubationTime, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderLowInfectionTime))
                         end
@@ -1074,6 +1006,6 @@ function SetBrainState(quest, me, brainState)
             end
         end
     end
-    return brainState
+    return scratchValue
 end
 

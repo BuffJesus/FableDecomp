@@ -26,7 +26,7 @@ function Main(quest, me)
     timerId = quest:RegisterTimer()
     i_stk_2c = timerId
     quest:SetTimer(i_stk_2c, 2)
-    -- TODO(native): xStack_18 = *(CCharString *)(DAT_0143e90c + 0xe14);
+    -- TODO(native): xStack_20 = *(CCharString *)(DAT_0143e90c + 0xe14);
     iVar8 = quest:ReadGlobalGameData(0x3b0)
     iVar1 = quest:ReadGlobalGameData(0x3ac)
     uVar5 = math.random(0, 32767)
@@ -35,14 +35,14 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
-        -- TODO(native): f_CVar3 = (int)xStack_18;
-        -- TODO(native): xStack_18 = CVar3;
+        -- TODO(native): f_CVar3 = (int)xStack_20;
+        -- TODO(native): xStack_20 = CVar3;
         repeat
             dist = CVar3
             pCVar6 = quest:GetHero()
             bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, dist)
             if bVar4 then
-                -- TODO(native): pCVar7 = (**(*me + 0x18))()
+                -- TODO(native): pCVar7 = (**(*me + 0x18))(me)
                 pCVar7 = nil --[[unresolved native value]]
                 bVar4 = quest:IsCameraPosOnScreen(nil --[[missing]])
                 p0 = xStack_24
@@ -71,7 +71,7 @@ function Main(quest, me)
                 end
                 xStack_24 = quest:ReadGlobalGameDataString(0xe18)
                 bVar4 = true
-                -- TODO(native): pCVar7 = (**(*p0 + 0x18))()
+                -- TODO(native): pCVar7 = (**(*p0 + 0x18))(p0)
                 pCVar7 = nil --[[unresolved native value]]
                 r1 = quest:CreateCreature(xStack_24, nil --[[missing]], "DarkwoodAssassin")
                 quest:SetThingPersistent(r1, true)

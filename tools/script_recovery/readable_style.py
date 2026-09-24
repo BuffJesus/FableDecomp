@@ -2629,7 +2629,11 @@ def fold_goto_return(lines):
         for j, l in enumerate(lines):
             g = re.fullmatch(r'(\s*)goto ' + label + r'\n', l)
             if g:
-                lines[j] = f'{g.group(1)}{ret}\n'
+                # (a return is only legal last in its block: a goto followed by more of its block -- a label,
+                # TraderEscort MakeTraderComment's `goto FLOW_past_lab_00e01afb` before `::LAB_00e01afb::` -- keeps it)
+                follows = next((x.strip() for x in lines[j + 1:] if x.strip()), 'end')
+                last = re.match(r'(?:end|else|elseif |until )', follows) or follows == 'else'
+                lines[j] = f'{g.group(1)}{ret}\n' if last else f'{g.group(1)}do {ret} end\n'
                 count += 1
             else:
                 new = re.sub(r'\bthen goto ' + label + r' end$', f'then {ret} end', l.rstrip('\n'))

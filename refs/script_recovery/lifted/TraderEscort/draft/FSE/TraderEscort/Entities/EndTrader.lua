@@ -156,8 +156,8 @@ function Main(quest, me)
                     if bVar2 then
                         goto FLOW_after_lab_00e0602a
                     end
-                    cVar3 = me:IsTalkedToByHero()
-                    if cVar3 then
+                    bVar2 = me:IsTalkedToByHero()
+                    if bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then
@@ -313,8 +313,8 @@ function Main(quest, me)
             bVar2 = not alive
             if not bVar2 then
                 repeat
-                    cVar3 = me:IsTalkedToByHero()
-                    if cVar3 then
+                    bVar2 = me:IsTalkedToByHero()
+                    if bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then goto LAB_00e05fd1 end

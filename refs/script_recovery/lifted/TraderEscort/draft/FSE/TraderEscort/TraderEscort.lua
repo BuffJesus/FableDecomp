@@ -241,39 +241,42 @@ end
 
 function WatchForMissionRules(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar2, cVar3, dist, iVar5, native_arg_sequence_1, pCVar6, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_2, xStack_b0, xStack_d0, xStack_dc, x_stk_60
+    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0
     local alive = true
     if not quest:GetStateBool("IntroFinished") then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e07620 end
         quest:SetStateBool("SavedInMiddle", false)
-        cVar3 = quest:IsRegionLoaded("Darkwood1")
-        while not cVar3 do
+        bVar2 = quest:IsRegionLoaded("Darkwood1")
+        while not bVar2 do
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00e07620 end
-            cVar3 = quest:IsRegionLoaded("Darkwood1")
+            bVar2 = quest:IsRegionLoaded("Darkwood1")
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e07620 end
-        r1 = quest:GetThingWithScriptName("MK_DTE_INTRO_TRADER1")
+        pCVar4 = quest:GetThingWithScriptName("MK_DTE_INTRO_TRADER1")
+        r1 = quest:GetNearestWithScriptName(pCVar4, "DarkwoodTrader")
         r2 = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
-        r3 = quest:GetNearestWithScriptName(r2, "DarkwoodTrader")
-        x_stk_60 = resources:NewResource()
+        xStack_60 = resources:NewResource()
         xStack_1c = resources:NewResource()
+        ePriority = 4
         xStack_2c = resources:NewResource()
-        r4 = quest:GetHero()
-        -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-        -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: 
-        -- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments: &uStack_74
+        pppuVar12 = xStack_2c
+        pCVar4 = quest:GetHero()
+        resources:TryAcquire(pppuVar12, pCVar4, ePriority)
+        resources:TryAcquire(xStack_60, r1, 4)
+        resources:TryAcquire(xStack_1c, r2, 4)
         xStack_b0 = resources:NewActorMap()
-        -- TODO(native): resources:SetActor(xStack_b0, "HERO", &auStack_70)
-        -- TODO(native): resources:SetActor(xStack_b0, "TRADER1", &auStack_a4)
-        resources:SetActor(xStack_b0, "TRADER2", xStack_60_2)
+        resources:SetActor(xStack_b0, "HERO", xStack_2c)
+        resources:SetActor(xStack_b0, "TRADER1", xStack_60)
+        resources:SetActor(xStack_b0, "TRADER2", xStack_1c)
         xStack_50 = resources:StartMovie("")
+        quest:StartMovieSequence()
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
         resources:RunMacro("CS_DARKWOOD_TRADER_INTRO", xStack_b0, false, true)
@@ -283,87 +286,89 @@ function WatchForMissionRules(quest)
         resources:DestroyActorMap(xStack_b0)
         resources:ReleaseResource(xStack_2c)
         resources:ReleaseResource(xStack_1c)
-        resources:DestroyMovie(xStack_60_2)
+        resources:ReleaseResource(xStack_60)
     end
-    r5 = quest:GetActiveQuestName()
-    quest:SetQuestCardObjective(r5, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_02", "Darkwood4", "Greatwood")
+    pCVar6 = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pCVar6, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_02", "Darkwood4", "Greatwood")
     if not quest:GetStateBool("QuestStartScreened") then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e07620 end
+        bVar14 = false
+        bVar2 = true
         quest:SetStateBool("IntroFinished", true)
-        r6 = quest:GetActiveQuestName()
-        quest:KickOffQuestStartScreen(r6, nil --[[missing]], nil --[[missing]])
+        pCVar7 = quest:GetActiveQuestName()
+        quest:KickOffQuestStartScreen(pCVar7, bVar2, bVar14)
         quest:SetStateBool("QuestStartScreened", true)
     end
     if not quest:GetStateBool("FollowInfoGiven") then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e07620 end
-        cVar3 = quest:IsXbox()
-        if not cVar3 then
-            alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then goto LAB_00e07620 end
-            quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT_PC")
-            cVar3 = quest:MsgIsGameInfoClickedPast()
-            while not cVar3 do
-                alive = quest:NewScriptFrame()
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e07620 end
-                cVar3 = quest:MsgIsGameInfoClickedPast()
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then goto LAB_00e07620 end
-        else
+        bVar2 = quest:IsXbox()
+        if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00e07620 end
             quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT")
-            cVar3 = quest:MsgIsGameInfoClickedPast()
-            while not cVar3 do
+            bVar2 = quest:MsgIsGameInfoClickedPast()
+            while not bVar2 do
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00e07620 end
-                cVar3 = quest:MsgIsGameInfoClickedPast()
+                bVar2 = quest:MsgIsGameInfoClickedPast()
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
                 return
             end
+        else
+            alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
+            if bVar2 then goto LAB_00e07620 end
+            quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT_PC")
+            bVar2 = quest:MsgIsGameInfoClickedPast()
+            while not bVar2 do
+                alive = quest:NewScriptFrame()
+                alive = not quest:IsActiveThreadTerminating()
+                bVar2 = not alive
+                if bVar2 then goto LAB_00e07620 end
+                bVar2 = quest:MsgIsGameInfoClickedPast()
+            end
+            alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
+            if bVar2 then goto LAB_00e07620 end
         end
         quest:SetStateBool("FollowInfoGiven", true)
     end
-    iVar5 = quest:GetStateInt("TradersStillAliveCounter")
-    while iVar5 < 1 do
+    iVar8 = quest:GetStateInt("TradersStillAliveCounter")
+    while iVar8 < 1 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e07620 end
-        iVar5 = quest:GetStateInt("TradersStillAliveCounter")
+        iVar8 = quest:GetStateInt("TradersStillAliveCounter")
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00e07620 end
-    xStack_d0 = nil
+    x_stk_d0 = nil
     xStack_dc = nil
     if quest:GetStateBool("SavedInMiddle") then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e0760e end
-        r7 = quest:GetActiveQuestName()
-        quest:SetQuestCardObjective(r7, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
+        pCVar6 = quest:GetActiveQuestName()
+        quest:SetQuestCardObjective(pCVar6, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     while not bVar2 do
         if not quest:GetStateBool("GoneWrongWay") then
-            cVar3 = quest:IsRegionLoaded("GreatwoodCaves")
-            if not cVar3 then goto LAB_00e06b57 end
+            bVar2 = quest:IsRegionLoaded("GreatwoodCaves")
+            if not bVar2 then goto LAB_00e06b57 end
             bVar2 = true
         else
             goto LAB_00e06b57
@@ -377,13 +382,13 @@ function WatchForMissionRules(quest)
             bVar2 = not alive
             if bVar2 then break end
             quest:DisplayGameInfo("TEXT_QST_067_INFO_GONE_WRONG_WAY")
-            cVar3 = quest:MsgIsGameInfoClickedPast()
-            while not cVar3 do
+            bVar2 = quest:MsgIsGameInfoClickedPast()
+            while not bVar2 do
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00e0760e end
-                cVar3 = quest:MsgIsGameInfoClickedPast()
+                bVar2 = quest:MsgIsGameInfoClickedPast()
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -391,8 +396,8 @@ function WatchForMissionRules(quest)
             quest:SetStateBool("GoneWrongWay", true)
         end
         if not quest:GetStateBool("ShownBalverine") then
-            cVar3 = quest:IsRegionLoaded("Darkwood2")
-            if not cVar3 then goto LAB_00e06c33 end
+            bVar2 = quest:IsRegionLoaded("Darkwood2")
+            if not bVar2 then goto LAB_00e06c33 end
             bVar2 = true
         else
             goto LAB_00e06c33
@@ -405,19 +410,19 @@ function WatchForMissionRules(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then break end
-            xStack_3c = resources:NewActorMap()
-            xStack_60_2 = resources:StartMovie("")
-            quest:PauseAllNonScriptedEntities(nil --[[missing]])
-            resources:RunMacro("CS_DARKWOOD_TRADER_BALVERINE", xStack_3c, false, true)
+            r2 = resources:NewActorMap()
+            xStack_60 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            resources:RunMacro("CS_DARKWOOD_TRADER_BALVERINE", r2, false, true)
             quest:SetStateBool("ShownBalverine", true)
-            quest:PauseAllNonScriptedEntities(nil --[[missing]])
-            resources:DestroyMovie(xStack_60_2)
-            resources:DestroyActorMap(xStack_3c)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_60)
+            resources:DestroyActorMap(r2)
         end
         if not quest:GetStateBool("EndStarted") then
-            cVar3 = quest:IsRegionLoaded("BarrowFields")
+            bVar2 = quest:IsRegionLoaded("BarrowFields")
             native_arg_sequence_1 = false
-            if not cVar3 then
+            if not bVar2 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
@@ -444,11 +449,11 @@ function WatchForMissionRules(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                iVar5 = quest:GetThingWithScriptName("EndTrader")
-                -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_dc,iVar5);
-                iVar5 = quest:GetThingWithScriptName("M_EndTheQuestHere")
-                -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_d0,iVar5);
-                -- TODO(native): cVar3 = (**(xStack_8c + 0x12c))()
+                pCVar4 = quest:GetThingWithScriptName("EndTrader")
+                xStack_dc = pCVar4
+                pCVar4 = quest:GetThingWithScriptName("M_EndTheQuestHere")
+                x_stk_d0 = pCVar4
+                -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
                 cVar3 = nil --[[unresolved native value]]
                 if cVar3 ~= 0 then goto LAB_00e06fb5 end
                 if not quest:GetStateBool("EndStarted") then
@@ -457,8 +462,8 @@ function WatchForMissionRules(quest)
                     if not bVar2 then
                         ::LAB_00e06e73::
                         if not quest:GetStateBool("EndStarted") then
-                            cVar3 = quest:IsRegionLoaded("BarrowFields")
-                            if not cVar3 then goto LAB_00e06eb0 end
+                            bVar2 = quest:IsRegionLoaded("BarrowFields")
+                            if not bVar2 then goto LAB_00e06eb0 end
                             bVar2 = true
                         else
                             goto LAB_00e06eb0
@@ -473,14 +478,14 @@ function WatchForMissionRules(quest)
                             bVar2 = not alive
                             if bVar2 then break end
                             dist = 4.0
-                            pCVar6 = quest:GetHero()
-                            bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar6, xStack_d0, dist)
+                            pCVar4 = quest:GetHero()
+                            bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar4, x_stk_d0, dist)
                             if bVar2 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then break end
-                                r8 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
-                                if (0 - 0) / 0xc == quest:GetStateInt("TradersStillAliveCounter") then
+                                xStack_b0 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
+                                if (xStack_b0 - xStack_b0) / 0xc == quest:GetStateInt("TradersStillAliveCounter") then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then
@@ -506,16 +511,19 @@ function WatchForMissionRules(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            r9 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
-            quest:GiveHeroGold(0)
-            r10 = quest:GetActiveQuestName()
-            quest:SetQuestAsCompleted(r10, false, false, false)
-            quest:SetCreatureGeneratorsEnabled("Darkwood1", (dist ~= 0))
-            quest:SetCreatureGeneratorsEnabled("Darkwood2", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood3", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood5", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
-            cVar3 = quest:IsRegionLoaded("BarrowFields")
+            xStack_c0 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
+            quest:GiveHeroGold((#xStack_c0) * quest:ReadGlobalGameData(0xe24))
+            b3 = false
+            bVar14 = false
+            bVar2 = true
+            pCVar7 = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(pCVar7, bVar2, bVar14, b3)
+            quest:SetCreatureGeneratorsEnabled("Darkwood1", true)
+            quest:SetCreatureGeneratorsEnabled(pCVar7, true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
+            bVar2 = quest:IsRegionLoaded("BarrowFields")
             goto LAB_00e07574
         end
         ::FLOW_hoist_lab_00e073cf_2::
@@ -527,41 +535,40 @@ function WatchForMissionRules(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then break end
-            quest:SetCreatureGeneratorsEnabled("Darkwood1", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood2", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood3", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood5", nil --[[missing]])
-            quest:SetCreatureGeneratorsEnabled("Darkwood6", nil --[[missing]])
-            -- TODO(native): CCharString__AssignFromWide(xStack_d0 + 4,0x12df8d8);
-            r11 = quest:GetActiveQuestName()
-            quest:SetQuestAsFailed(r11, nil --[[missing]], r9, nil --[[missing]])
+            quest:SetCreatureGeneratorsEnabled("Darkwood1", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
+            bVar14 = true
+            bVar2 = true
+            pCVar7 = quest:GetActiveQuestName()
+            quest:SetQuestAsFailed(pCVar7, bVar2, "TEXT_QST_067_QUEST_FAILED_TRADERS_DIED", bVar14)
             quest:SetStateBool("MissionFailed", true)
-            r12 = quest:GetThingWithScriptName("DarkwoodTrader")
-            cVar3 = quest:IsRegionLoaded("Darkwood1")
-            __native_condition_1 = not cVar3
-            if not __native_condition_1 then
-                -- TODO(native): iVar5 = &iStack_c0:IsAlive()
-                iVar5 = nil --[[unresolved native value]]
-                __native_condition_1 = not iVar5
+            r3 = quest:GetThingWithScriptName(xStack_c0)
+            bVar2 = quest:IsRegionLoaded("Darkwood1")
+            __native_condition_1 = bVar2
+            if __native_condition_1 then
+                -- TODO(native): iVar8 = &xStack_c0:IsAlive()
+                iVar8 = nil --[[unresolved native value]]
+                __native_condition_1 = iVar8
             end
             if __native_condition_1 then
-                bVar2 = false
-            else
                 bVar2 = true
+            else
+                bVar2 = false
             end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if not bVar2 then
-                    -- TODO(native): cVar3 = (**(iStack_c0 + 0x12c))()
-                    cVar3 = nil --[[unresolved native value]]
-                    while cVar3 ~= 0 do
+                    cVar3 = xStack_c0[0 + 1]:IsAlive()
+                    while cVar3 do
                         alive = quest:NewScriptFrame()
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then goto LAB_00e07609 end
-                        -- TODO(native): cVar3 = (**(iStack_c0 + 0x12c))()
-                        cVar3 = nil --[[unresolved native value]]
+                        cVar3 = xStack_c0[0 + 1]:IsAlive()
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -571,13 +578,14 @@ function WatchForMissionRules(quest)
                 break
             end
             ::LAB_00e07208::
-            r13 = quest:GetActiveQuestName()
-            quest:DeactivateQuestLater(r13, nil --[[missing]])
+            uVar15 = 0
+            pCVar7 = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pCVar7, uVar15)
         end
         __native_condition_2 = not quest:GetStateBool("SavedInMiddle")
         if __native_condition_2 then
-            cVar3 = quest:MsgOnRegionLoaded()
-            __native_condition_2 = cVar3 ~= 0
+            bVar2 = quest:MsgOnRegionLoaded()
+            __native_condition_2 = bVar2
         end
         if __native_condition_2 then
             if "" == nil then
@@ -586,10 +594,9 @@ function WatchForMissionRules(quest)
                     goto LAB_00e07299
                 end
             else
-                -- TODO(native): iVar5 = CBasicString<char>::Compare((void *)*xStack_f4,"Darkwood4");
-                cVar3 = not (iVar5 ~= 0)
-                -- TODO(native): xStack_e4 = CONCAT13(cVar3,(undefined3)xStack_e4);
-                if cVar3 then goto LAB_00e07299 end
+                iVar8 = (("" == "Darkwood4") and 0 or 1)
+                c_stk_c1 = not (iVar8 ~= 0)
+                if c_stk_c1 then goto LAB_00e07299 end
             end
             goto FLOW_past_lab_00e07299
             ::LAB_00e07299::
@@ -597,15 +604,15 @@ function WatchForMissionRules(quest)
             bVar2 = not alive
             if bVar2 then break end
             quest:SetStateBool("SavedInMiddle", true)
-            r14 = quest:GetActiveQuestName()
-            quest:SetQuestCardObjective(r14, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", r8)
+            pCVar6 = quest:GetActiveQuestName()
+            quest:SetQuestCardObjective(pCVar6, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
             quest:AutoSaveCheckPoint()
             ::FLOW_past_lab_00e07299::
         end
         __native_condition_3 = not quest:GetStateBool("SavedNearEnd")
         if __native_condition_3 then
-            cVar3 = quest:MsgOnRegionLoaded()
-            __native_condition_3 = cVar3 ~= 0
+            bVar2 = quest:MsgOnRegionLoaded()
+            __native_condition_3 = bVar2
         end
         if __native_condition_3 then
             if "" == nil then
@@ -614,10 +621,9 @@ function WatchForMissionRules(quest)
                     goto LAB_00e07385
                 end
             else
-                -- TODO(native): iVar5 = CBasicString<char>::Compare((void *)*xStack_f4,"Darkwood6");
-                cVar3 = not (iVar5 ~= 0)
-                -- TODO(native): xStack_e4 = CONCAT13(cVar3,(undefined3)xStack_e4);
-                if cVar3 then goto LAB_00e07385 end
+                iVar8 = (("" == "Darkwood6") and 0 or 1)
+                c_stk_c1 = not (iVar8 ~= 0)
+                if c_stk_c1 then goto LAB_00e07385 end
             end
             goto FLOW_past_lab_00e07385
             ::LAB_00e07385::
@@ -634,19 +640,20 @@ function WatchForMissionRules(quest)
     end
     goto LAB_00e0760e
     ::LAB_00e07574::
-    if not cVar3 then goto LAB_00e075b8 end
+    if not bVar2 then goto LAB_00e075b8 end
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00e075fa end
-    cVar3 = quest:IsRegionLoaded("BarrowFields")
+    bVar2 = quest:IsRegionLoaded("BarrowFields")
     goto LAB_00e07574
     ::LAB_00e075b8::
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        r15 = quest:GetActiveQuestName()
-        quest:DeactivateQuestLater(r15, nil --[[missing]])
+        uVar15 = 0
+        pCVar7 = quest:GetActiveQuestName()
+        quest:DeactivateQuestLater(pCVar7, uVar15)
         repeat
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
@@ -839,119 +846,125 @@ function WatchForPickpocketing(quest, native_arg_Trader)
 end
 
 function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)
-    local CVar1, CVar8, __native_condition_1, bVar3, cVar2, iVar4, local_28, p0, pCVar6, pCVar7, pcVar14, piVar13, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar10, uVar12, uVar5, u_stk_84, xStack_18, xStack_24, xStack_34, xStack_3c
+    local __native_condition_1, bVar2, cVar3, iVar5, iVar6, pCVar10, pCVar4, pCVar7, pCVar8, pCVar9, pcVar15, piVar1, piVar13, r1, r2, r3, r4, this_00, uVar11, uVar14, xStack_30
     local alive = true
-    -- TODO(native): local_2c = *(CCharString *)(native_arg_speaker + 0x4);
-    -- TODO(native): local_28 = *(CCharString *)(native_arg_speaker + 0x8);
-    xStack_24 = nil
-    if local_28 ~= nil then
-        -- TODO(native): *(int *)local_28 = *(int *)local_28 + 1;
+    -- TODO(native): xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);
+    -- TODO(native): xStack_30 = *(int **)(native_arg_speaker + 0x8);
+    xStack_30 = nil
+    if xStack_30 ~= nil then
+        -- TODO(native): *xStack_30 = *xStack_30 + 1;
     end
-    -- TODO(native): cVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)()
-    cVar2 = nil --[[unresolved native value]]
-    if cVar2 == 0 then
+    -- TODO(native): bVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)(xStack_30)
+    bVar2 = nil --[[unresolved native value]]
+    if not bVar2 then
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then
+        bVar2 = not alive
+        if bVar2 then
             return false
         end
-        r1 = quest:GetHero()
-        iVar4 = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
-        -- TODO(native): CVar8 = *(iVar4 + 8)
-        CVar8 = nil --[[unresolved native value]]
-        -- TODO(native): CVar1 = *(iVar4 + 4)
-        CVar1 = nil --[[unresolved native value]]
-        if local_28 ~= CVar8 then
-            if CVar8 ~= nil then
-                -- TODO(native): *(int *)CVar8 = *(int *)CVar8 + 1;
+        pCVar4 = quest:GetHero()
+        pCVar4 = quest:GetNearestWithScriptName(pCVar4, "DarkwoodTrader")
+        -- TODO(native): piVar13 = *(pCVar4 + 0x8)
+        piVar13 = nil --[[unresolved native value]]
+        -- TODO(native): piVar1 = *(pCVar4 + 0x4)
+        piVar1 = nil --[[unresolved native value]]
+        if xStack_30 ~= piVar13 then
+            -- TODO(native): xStack_30._4_4_ = piVar1;
+            if piVar13 ~= nil then
+                -- TODO(native): *piVar13 = *piVar13 + 1;
             end
         end
     end
-    -- TODO(native): cVar2 = (*xStack_24[0x4b])()
-    cVar2 = nil --[[unresolved native value]]
-    if cVar2 == 0 then
+    -- TODO(native): bVar2 = (**(xStack_30._0_4_ + 0x12c))(xStack_30)
+    bVar2 = nil --[[unresolved native value]]
+    if not bVar2 then
         alive = not quest:IsActiveThreadTerminating()
         return false
     end
     if native_arg_comment_type ~= 2 then
-        iVar4 = quest:GetTimer(quest:GetStateInt("CommentTimer"))
-        if 0 < iVar4 then
+        iVar5 = quest:GetTimer(quest:GetStateInt("CommentTimer"))
+        if 0 < iVar5 then
             alive = not quest:IsActiveThreadTerminating()
             return false
         end
-        r2 = quest:AddNewConversation(nil --[[missing]], false, nil --[[missing]])
-        r3 = quest:GetHero()
-        quest:AddPersonToConversation(nil --[[missing]], r3)
-        if xStack_34 == nil then
-            -- TODO(native): CCharString::CCharString((CCharString *)xStack_24,(CCharString *)&DAT_0143e8ec);
+        iVar6 = quest:AddNewConversation(xStack_30, false, false)
+        pCVar4 = quest:GetHero()
+        quest:AddPersonToConversation(iVar6, pCVar4)
+        if not (xStack_30 ~= nil and not xStack_30:IsNull()) then
+            native_arg_speaker = ""
         else
-            -- TODO(native): (**(code **)(*(int *)xStack_34 + 0xc))();
+            xStack_30:GetDataString()
         end
-        r4 = quest:GetHero()
+        pCVar7 = quest:GetHero()
+        pCVar9 = native_arg_comment_to_make
+        pCVar4 = xStack_30
+        uVar14 = 0
         piVar13 = "_"
-        pCVar7 = ("TEXT_QST_067_" .. xStack_24)
-        pCVar7 = (pCVar7 .. piVar13)
-        (pCVar7 .. CVar8)
-        quest:AddLineToConversation(nil --[[missing]], piVar13, r4, nil --[[missing]])
+        pCVar8 = native_arg_comment_to_make
+        pCVar10 = ("TEXT_QST_067_" .. native_arg_speaker)
+        pCVar10 = (pCVar10 .. "_")
+        pCVar8 = (pCVar10 .. pCVar8)
+        quest:AddLineToConversation(iVar6, pCVar8, pCVar4, pCVar7, (uVar14 ~= 0))
         if native_arg_comment_type ~= 1 then goto LAB_00e02355 end
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then goto LAB_00e01aca end
-        r5 = quest:GetNearestWithScriptName(nil --[[missing]], "DarkwoodTrader")
-        -- TODO(native): iVar4 = &xStack_18:IsAlive()
-        iVar4 = nil --[[unresolved native value]]
-        __native_condition_1 = not iVar4
+        bVar2 = not alive
+        if bVar2 then goto LAB_00e01aca end
+        r1 = quest:GetNearestWithScriptName(xStack_30, "DarkwoodTrader")
+        iVar5 = (r1 ~= nil and r1:IsAlive())
+        __native_condition_1 = not iVar5
         if not __native_condition_1 then
-            cVar2 = xStack_c:IsEqualTo(nil --[[missing]])
-            __native_condition_1 = cVar2
+            cVar3 = (r1 ~= nil and r1:IsEqualTo(xStack_30._4_4_))
+            __native_condition_1 = cVar3
         end
         if __native_condition_1 then
             goto LAB_00e02213
         else
-            pcVar14 = "_RESPONSE"
+            pcVar15 = "_RESPONSE"
             piVar13 = "_"
-            -- TODO(native): pCVar7 = &xStack_18:GetDataString()
-            pCVar7 = nil --[[unresolved native value]]
-            pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-            pCVar7 = (pCVar7 .. piVar13)
-            pCVar7 = (pCVar7 .. CVar8)
-            (pCVar7 .. pcVar14)
-            cVar2 = quest:TextEntryExists()
+            pCVar8 = pCVar9
+            pCVar10 = r1:GetDataString()
+            pCVar10 = ("TEXT_QST_067_" .. pCVar10)
+            pCVar10 = (pCVar10 .. "_")
+            pCVar8 = (pCVar10 .. pCVar8)
+            pCVar8 = (pCVar8 .. pcVar15)
+            bVar2 = quest:TextEntryExists(pCVar8)
             native_arg_speaker = CONCAT31(native_arg_speaker._1_3_,1)
-            if not cVar2 then goto LAB_00e02213 end
+            if not bVar2 then goto LAB_00e02213 end
         end
         goto FLOW_past_lab_00e02213
         ::LAB_00e02213::
         ::FLOW_past_lab_00e02213::
-        CVar8 = 31
-        if (31 & 0x10) ~= 0 then
-            CVar8 = 31 & 0xffffffef
+        uVar11 = 0x1f
+        if (0x1f & 0x10) ~= 0 then
+            uVar11 = 0x1f & 0xffffffef
         end
-        if (CVar8 & 8) ~= 0 then
-            CVar8 = CVar8 & 0xfffffff7
+        if (uVar11 & 8) ~= 0 then
+            uVar11 = uVar11 & 0xfffffff7
         end
-        if (CVar8 & 4) ~= 0 then
-            CVar8 = CVar8 & 0xfffffffb
+        if (uVar11 & 4) ~= 0 then
+            uVar11 = uVar11 & 0xfffffffb
         end
-        if (CVar8 & 2) ~= 0 then
-            CVar8 = CVar8 & 0xfffffffd
+        if (uVar11 & 2) ~= 0 then
+            uVar11 = uVar11 & 0xfffffffd
         end
         if native_arg_speaker ~= 0 then
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
+            bVar2 = not alive
+            if bVar2 then
                 return false
             end
-            quest:AddPersonToConversation(31, r5)
-            r6 = quest:GetHero()
-            pcVar14 = "_RESPONSE"
+            quest:AddPersonToConversation(iVar6, r1)
+            pCVar7 = quest:GetHero()
+            pCVar4 = r1
+            uVar14 = 0
+            pcVar15 = "_RESPONSE"
             piVar13 = "_"
-            pCVar7 = 31:GetDataString()
-            pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-            pCVar7 = (pCVar7 .. piVar13)
-            pCVar7 = (pCVar7 .. xStack_3c)
-            (pCVar7 .. pcVar14)
-            quest:AddLineToConversation(nil --[[missing]], piVar13, r6, nil --[[missing]])
+            pCVar8 = r1:GetDataString()
+            pCVar8 = ("TEXT_QST_067_" .. pCVar8)
+            pCVar8 = (pCVar8 .. "_")
+            pCVar9 = (pCVar8 .. pCVar9)
+            pCVar9 = (pCVar9 .. pcVar15)
+            quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
         end
         ::LAB_00e02355::
         quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
@@ -959,95 +972,98 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
     end
     ::FLOW_after_lab_00e02355::
     alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    if bVar3 then goto LAB_00e01aca end
-    r7 = quest:GetNearestWithScriptName(nil --[[missing]], "DarkwoodTrader")
-    r8 = quest:GetFurthestWithScriptName(r7, "DarkwoodTrader")
-    cVar2 = xStack_c:IsEqualTo(nil --[[missing]])
-    if not cVar2 then
+    bVar2 = not alive
+    if bVar2 then goto LAB_00e01aca end
+    r2 = quest:GetNearestWithScriptName(xStack_30, "DarkwoodTrader")
+    r3 = quest:GetFurthestWithScriptName(xStack_30, "DarkwoodTrader")
+    cVar3 = (r2 ~= nil and r2:IsEqualTo(r3._4_4_))
+    if not cVar3 then
         goto LAB_00e01afb
     else
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if not bVar3 then
-            -- TODO(native): iVar4 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_18);
-            -- TODO(native): CScriptThing::operator=((CScriptThing *)&xStack_c,iVar4);
+        bVar2 = not alive
+        if not bVar2 then
+            -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_c);
+            -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,iVar5);
             goto LAB_00e01afb
         end
     end
     goto FLOW_past_lab_00e01afb
     ::LAB_00e01afb::
-    pcVar14 = "SCARED"
-    this_00 = xStack_c:GetDataString()
-    iVar4 = ((this_00 ~= pcVar14) and 1 or 0)
-    if iVar4 ~= 0 then
+    pcVar15 = "SCARED"
+    this_00 = r2:GetDataString()
+    iVar5 = ((this_00 ~= pcVar15) and 1 or 0)
+    if iVar5 ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then goto LAB_00e01ab8 end
-        -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_c,(int)&xStack_18);
-        xStack_18 = xStack_24
+        bVar2 = not alive
+        if bVar2 then goto LAB_00e01ab8 end
+        -- TODO(native): xStack_24 = xStack_18;
+        -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);
     end
-    pCVar7 = native_arg_comment_to_make
+    pCVar9 = native_arg_comment_to_make
     if native_arg_comment_to_make == nil then
-        bVar3 = false
-        if bVar3 then
+        bVar2 = false
+        if bVar2 then
             goto LAB_00e01ba2
         end
     else
-        iVar4 = ((native_arg_comment_to_make == "ROCK_TROLL_CLOSE") and 0 or 1)
-        cVar2 = not (iVar4 ~= 0)
-        native_arg_comment_to_make = CONCAT31(native_arg_comment_to_make._1_3_,cVar2)
-        if cVar2 then goto LAB_00e01ba2 end
+        iVar5 = ((native_arg_comment_to_make == "ROCK_TROLL_CLOSE") and 0 or 1)
+        cVar3 = not (iVar5 ~= 0)
+        native_arg_comment_to_make = CONCAT31(native_arg_comment_to_make._1_3_,cVar3)
+        if cVar3 then goto LAB_00e01ba2 end
     end
     goto FLOW_past_lab_00e01ba2
     ::LAB_00e01ba2::
     alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    if bVar3 then goto LAB_00e01ab8 end
-    p0 = quest:GetThingWithScriptName("RockTrollTrigger")
-    r9 = quest:PlayCriteriaSoundOnThing(p0, "EARTH_TROLL_OFFSCREEN_ROAR")
-    quest:Pause(nil --[[missing]])
+    bVar2 = not alive
+    if bVar2 then goto LAB_00e01ab8 end
+    pCVar4 = quest:GetThingWithScriptName("EARTH_TROLL_OFFSCREEN_ROAR")
+    r4 = quest:PlayCriteriaSoundOnThing(pCVar4, pCVar8)
+    quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
-    uVar5 = quest:AddNewConversation(r8, nil --[[missing]], nil --[[missing]])
-    r10 = quest:GetHero()
-    quest:AddPersonToConversation(nil --[[missing]], r10)
-    iVar4 = xStack_c:IsAlive()
-    if not iVar4 then
+    iVar6 = quest:AddNewConversation(r3, false, false)
+    pCVar4 = quest:GetHero()
+    quest:AddPersonToConversation(iVar6, pCVar4)
+    iVar5 = (r2 ~= nil and r2:IsAlive())
+    if not iVar5 then
         quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
         do return true end
         goto FLOW_after_lab_00e02355
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    if not bVar3 then
-        quest:AddPersonToConversation(nil --[[missing]], nil --[[missing]])
-        -- TODO(native): iVar4 = &xStack_40:IsAlive()
-        iVar4 = nil --[[unresolved native value]]
-        if not iVar4 then
+    bVar2 = not alive
+    if not bVar2 then
+        quest:AddPersonToConversation(iVar6, r2)
+        iVar5 = (r3 ~= nil and r3:IsAlive())
+        if not iVar5 then
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if not bVar3 then
-                r11 = quest:GetHero()
+            bVar2 = not alive
+            if not bVar2 then
+                pCVar7 = quest:GetHero()
+                pCVar4 = xStack_30
+                uVar14 = 0
                 piVar13 = "_"
-                pCVar6 = xStack_24:GetDataString()
-                pCVar6 = ("TEXT_QST_067_" .. pCVar6)
-                pCVar6 = (pCVar6 .. piVar13)
-                (pCVar6 .. pCVar7)
-                quest:AddLineToConversation(nil --[[missing]], piVar13, r11, nil --[[missing]])
-                r12 = quest:GetHero()
-                pcVar14 = "_INTRO_RESPONSE_NO"
-                -- TODO(native): pCVar7 = &xStack_38:GetDataString()
-                pCVar7 = nil --[[unresolved native value]]
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(nil --[[missing]], pcVar14, r12, nil --[[missing]])
-                uVar12 = quest:GetHero()
-                uVar10 = 0
-                pcVar14 = "_INTRO_RESPONSE_REWARD"
-                pCVar7 = this_01:GetDataString()
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                pCVar7 = (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(uVar5, pCVar7, uVar12, nil --[[missing]], (uVar10 ~= 0))
+                pCVar8 = xStack_30:GetDataString()
+                pCVar8 = ("TEXT_QST_067_" .. pCVar8)
+                pCVar8 = (pCVar8 .. "_")
+                pCVar9 = (pCVar8 .. pCVar9)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar7 = quest:GetHero()
+                pCVar4 = r2
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_NO"
+                pCVar9 = r2:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar4 = quest:GetHero()
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_REWARD"
+                pCVar7 = xStack_30
+                pCVar9 = pCVar7:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
                 -- LAB_00e01ff9_c2: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 do return true end
@@ -1055,48 +1071,51 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
             end
         else
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if not bVar3 then
-                quest:AddPersonToConversation(nil --[[missing]], nil --[[missing]])
-                r13 = quest:GetHero()
+            bVar2 = not alive
+            if not bVar2 then
+                quest:AddPersonToConversation(iVar6, r3)
+                pCVar7 = quest:GetHero()
+                pCVar4 = xStack_30
+                uVar14 = 0
                 piVar13 = "_"
-                -- TODO(native): pCVar6 = &xStack_38:GetDataString()
-                pCVar6 = nil --[[unresolved native value]]
-                pCVar6 = ("TEXT_QST_067_" .. pCVar6)
-                pCVar6 = (pCVar6 .. piVar13)
-                (pCVar6 .. pCVar7)
-                quest:AddLineToConversation(nil --[[missing]], piVar13, r13, nil --[[missing]])
-                r14 = quest:GetHero()
-                pcVar14 = "_INTRO_RESPONSE_NO"
-                -- TODO(native): pCVar7 = &xStack_34:GetDataString()
-                pCVar7 = nil --[[unresolved native value]]
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(nil --[[missing]], pcVar14, r14, nil --[[missing]])
-                u_stk_84 = quest:GetHero()
-                uVar12 = 0
-                pcVar14 = "_INTRO_RESPONSE_OATH"
-                -- TODO(native): pCVar7 = &stack0xffffffb8:GetDataString()
-                pCVar7 = nil --[[unresolved native value]]
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                pCVar7 = (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(uVar5, pCVar7, u_stk_84, nil --[[missing]], (uVar12 ~= 0))
-                uVar12 = quest:GetHero()
-                uVar10 = 0
-                pcVar14 = "_INTRO_RESPONSE_BAD_NEWS"
-                -- TODO(native): pCVar7 = &stack0xffffff98:GetDataString()
-                pCVar7 = nil --[[unresolved native value]]
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                pCVar7 = (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(uVar5, pCVar7, uVar12, nil --[[missing]], (uVar10 ~= 0))
-                uVar12 = quest:GetHero()
+                pCVar8 = xStack_30:GetDataString()
+                pCVar8 = ("TEXT_QST_067_" .. pCVar8)
+                pCVar8 = (pCVar8 .. "_")
+                pCVar9 = (pCVar8 .. pCVar9)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar7 = quest:GetHero()
+                pCVar4 = r2
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_NO"
+                pCVar9 = r2:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar7 = quest:GetHero()
+                pCVar4 = r3
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_OATH"
+                pCVar9 = r3:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar7 = quest:GetHero()
+                pCVar4 = r2
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_BAD_NEWS"
+                pCVar9 = r2:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                pCVar4 = quest:GetHero()
                 -- LAB_00e01fb0: (native jump target)
-                uVar10 = 0
-                pcVar14 = "_INTRO_RESPONSE_REWARD"
-                pCVar7 = this_01:GetDataString()
-                pCVar7 = ("TEXT_QST_067_" .. pCVar7)
-                pCVar7 = (pCVar7 .. pcVar14)
-                quest:AddLineToConversation(uVar5, pCVar7, uVar12, nil --[[missing]], (uVar10 ~= 0))
+                uVar14 = 0
+                pcVar15 = "_INTRO_RESPONSE_REWARD"
+                pCVar7 = xStack_30
+                pCVar9 = pCVar7:GetDataString()
+                pCVar9 = ("TEXT_QST_067_" .. pCVar9)
+                pCVar9 = (pCVar9 .. pcVar15)
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
                 -- LAB_00e01ff9: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 return true

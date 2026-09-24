@@ -8,15 +8,15 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | Q_TraderEscort | Init | 0x00e006d0 | True | 0 |
 | Q_TraderEscort | Q_TraderEscort | OnPersist | 0x00e00ce0 | True | 0 |
 | Q_TraderEscort | Q_TraderEscort | WatchForSurprisingBalverines | 0x00e06050 | True | 12 |
-| Q_TraderEscort | Q_TraderEscort | WatchForMissionRules | 0x00e06440 | True | 31 |
+| Q_TraderEscort | Q_TraderEscort | WatchForMissionRules | 0x00e06440 | True | 3 |
 | Q_TraderEscort | Q_TraderEscort | TurnToBalv | 0x00e0a820 | True | 4 |
 | Q_TraderEscort | Q_TraderEscort | WatchForPickpocketing | 0x00e04f10 | True | 7 |
-| Q_TraderEscort | Q_TraderEscort | MakeTraderComment | 0x00e01900 | False | 45 |
-| Q_TraderEscort | DarkwoodTrader | Main | 0x00e07640 | True | 102 |
+| Q_TraderEscort | Q_TraderEscort | MakeTraderComment | 0x00e01900 | True | 16 |
+| Q_TraderEscort | DarkwoodTrader | Main | 0x00e07640 | True | 52 |
 | Q_TraderEscort | DarkwoodTrader | Init | 0x00e04bd0 | True | 7 |
 | Q_TraderEscort | DarkwoodTrader | OnPersist | 0x00e05330 | True | 1 |
 | Q_TraderEscort | DarkwoodTrader | OnPredicateFail | 0x00e01760 | True | 0 |
-| Q_TraderEscort | DarkwoodTrader | SetBrainState | 0x00e0a510 | True | 8 |
+| Q_TraderEscort | DarkwoodTrader | SetBrainState | 0x00e0a510 | True | 3 |
 | Q_TraderEscort | FleshEatingBalverine | Main | 0x00e02470 | True | 0 |
 | Q_TraderEscort | FleshEatingBalverine | Init | 0x00e02440 | True | 0 |
 | Q_TraderEscort | FleshEatingBalverine | OnPersist | 0x00cdebc0 | True | 0 |
@@ -70,4 +70,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | EndTrader | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | EndTrader | OnPredicateFail | 0x00e04ae0 | True | 0 |
 
-Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 64, "fileSyntaxPassed": 14, "fileSyntaxChecked": 16, "todo": 298}`
+Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 186}`

@@ -10,35 +10,32 @@ local helpers = require("TraderEscort.native_quest_helpers")
 
 -- TraderComment.Main (retail 0x00e05360)
 function Main(quest, me)
-    local predicateResult, ctr_28, scratchValue4, scratchValue6
+    local predicateResult, ctr_28, scratchValue3
     if not quest:NewScriptFrame(me) then return end
     local darkwoodTrader = quest:GetAllThingsWithScriptName("DarkwoodTrader")
-    local scratchValue5 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDistance)
+    local scratchValue4 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDistance)
     predicateResult = quest:IsActiveThreadTerminating()
     while true do
         if predicateResult then break end
-        local scratchValue3 = scratchValue6 - darkwoodTrader >> 31
         ctr_28 = 0
-        if (scratchValue6 - darkwoodTrader) / 12 + scratchValue3 ~= scratchValue3 then
-            scratchValue4 = 0
+        if #darkwoodTrader ~= 0 then
+            scratchValue3 = 0
             repeat
-                local predicateResult2 = quest:IsActiveThreadTerminating()
-                if predicateResult2 then goto LAB_00e05536 end
-                local scratchValue = darkwoodTrader[scratchValue4 / 12 + 1]:IsAlive()
-                local sequence = scratchValue and quest:IsDistanceBetweenThingsUnder(me, scratchValue4 + darkwoodTrader, scratchValue5)
-                if not sequence then ctr_28 = ctr_28 + 1; scratchValue4 = scratchValue4 + 12; goto continue_1 end
+                if quest:IsActiveThreadTerminating() then goto LAB_00e05536 end
+                local scratchValue = darkwoodTrader[scratchValue3 + 1]:IsAlive()
+                local sequence = scratchValue and quest:IsDistanceBetweenThingsUnder(me, darkwoodTrader[scratchValue3 + 1], scratchValue4)
+                if not sequence then ctr_28 = ctr_28 + 1; scratchValue3 = scratchValue3 + 1; goto continue_1 end
                 if quest:IsActiveThreadTerminating() then return end
-                if helpers.MakeTraderComment(quest, me, me:GetDataString(), darkwoodTrader[scratchValue4 / 12 + 1], 1) then
+                if helpers.MakeTraderComment(quest, me, me:GetDataString(), darkwoodTrader[scratchValue3 + 1], 1) then
                     if quest:IsActiveThreadTerminating() then return end
                     quest:RemoveThing(me, false, true)
                     return
                 end
                 ctr_28 = ctr_28 + 1
-                scratchValue4 = scratchValue4 + 12
+                scratchValue3 = scratchValue3 + 1
                 ::continue_1::
             until ctr_28 >= #darkwoodTrader
         end
-        scratchValue6 = 0
         if quest:IsActiveThreadTerminating() then goto LAB_00e0557f end
         quest:NewScriptFrame(me)
         predicateResult = quest:IsActiveThreadTerminating()

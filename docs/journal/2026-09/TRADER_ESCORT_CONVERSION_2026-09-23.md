@@ -202,3 +202,44 @@ Conflict regenerate identical to their saved drafts. Guild differs only in
 the two known empty-guard removals. Trader Escort generated Lua is
 regenerated in the working tree but not committed until the re-exported
 evidence it depends on is committed.
+
+### 2026-09-24 (later): vector aliases, final export promoted
+
+- **Final export promoted.** The peer session's depth-fixed export
+  (`work/ebp_fix/trader_escort_typed.json`) is copied into
+  `refs/.../trader_escort/translation_unit_typed.json`. MakeTraderComment
+  0xE01938 and 0xE019F2 both record depth 76 / slot -48 (retail bytes
+  agree). It was produced by the peer's uncommitted
+  `ExportTypedTranslationUnit.java` (EBP-as-register, prologue saves,
+  in-place thing vtable); that Java change is the peer's to commit.
+- **TraderComment vector loop.** Ghidra's loop-carried register copies of
+  the vector end (`puVar1 = E; while (E = puVar1, ...)`) made the size read
+  a nil register. Retail re-reads begin/end from the stack at 0xE05410 and
+  0xE054B4. `fold_vector_register_aliases` (native_evidence_lowering) reads
+  the end slot when a register is sourced only from begin/end and the end
+  is written only from such registers. The size now lowers to `#vec`.
+  The mirrored element operand `(i + (int)V)` is now `LOCALLIST_At` too, in
+  bare call-operand position only. Under a dereference it is an element's
+  Data pointer (+4 field): a first unrestricted version broke
+  TraderConflictEvil's IsEqualTo, and the regen check caught it.
+- **Readable `goto` -> `return` fold** (`readable_style.fold_goto_return`)
+  now emits `do return X end` when the goto is not last in its block (a
+  label followed), which fixes a readable-only syntax error.
+
+Totals (final export): **draft 186 TODOs, 65/65 functions, 16/16 files;
+smoke draft 2 / readable 2 problems, both DarkwoodTrader** (`Init` nil
+bitwise on `auVar5`/`scratchValue`, free globals `a`, `extraout_EAX*`,
+`int3`). TraderComment and MakeTraderComment now load and run in the mock.
+
+Validation: 153 focused tests OK (adds `test_vector_register_aliases`).
+Draft regen of Orchard, Wasp, Guardian Sister and Trader Conflict is
+identical to the saved drafts; Guild shows only the two known empty-guard
+removals. Readable: the first four match refs. Guild's refs readable is
+stale versus its draft (many files missing), so it was compared against a
+control build with HEAD's `readable_style.py`: identical.
+
+Other units: the peer's new exports for the 15 other units are in
+`work/ebp_fix/` and NOT promoted. Argument-less vcalls drop sharply
+(bordello 617->38, beggar_and_child 148->9, trader_conflict 177->55,
+guild 78->45). Promoting a playtested unit changes its converter output
+and needs a diff review first.

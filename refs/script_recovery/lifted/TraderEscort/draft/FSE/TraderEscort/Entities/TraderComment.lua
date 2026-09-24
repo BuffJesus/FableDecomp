@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, cVar4, comment_to_make, comment_type, ctr_28, iVar5, i_stk_24, native_arg_sequence_1, p0, puStack_1c, puVar1, puVar2, pu_stk_18, speaker
+    local bVar3, cVar4, comment_to_make, comment_type, ctr_28, iVar5, i_stk_24, native_arg_sequence_1, p0, puVar2, speaker, xStack_1c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -19,24 +19,21 @@ function Main(quest, me)
     if bVar3 then
         return
     end
-    puStack_1c = quest:GetAllThingsWithScriptName("DarkwoodTrader")
+    xStack_1c = quest:GetAllThingsWithScriptName("DarkwoodTrader")
     i_stk_24 = quest:ReadGlobalGameData(0xe10)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     while true do
-        pu_stk_18 = puVar1
-        puVar2 = puStack_1c
+        puVar2 = xStack_1c
         if not (not bVar3) then break end
-        iVar5 = puVar1 - puStack_1c >> 0x1f
         ctr_28 = 0
-        if (puVar1 - puStack_1c) / 0xc + iVar5 ~= iVar5 then
+        if #xStack_1c ~= 0 then
             iVar5 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                puVar1 = 0
                 if bVar3 then goto LAB_00e05536 end
-                cVar4 = puStack_1c[(iVar5) / 0xc + 1]:IsAlive()
+                cVar4 = xStack_1c[(iVar5) / 0xc + 1]:IsAlive()
                 native_arg_sequence_1 = false
                 if cVar4 then
                     native_arg_sequence_1 = true
@@ -44,7 +41,7 @@ function Main(quest, me)
                     native_arg_sequence_1 = false
                 end
                 if native_arg_sequence_1 then
-                    bVar3 = quest:IsDistanceBetweenThingsUnder(me, (iVar5 + puStack_1c), i_stk_24)
+                    bVar3 = quest:IsDistanceBetweenThingsUnder(me, xStack_1c[(iVar5) / 0xc + 1], i_stk_24)
                     if bVar3 then
                         native_arg_sequence_1 = true
                     else
@@ -58,7 +55,7 @@ function Main(quest, me)
                         -- LAB_00e05564: (native jump target)
                         return
                     end
-                    speaker = puStack_1c[(iVar5) / 0xc + 1]
+                    speaker = xStack_1c[(iVar5) / 0xc + 1]
                     comment_type = 1
                     comment_to_make = me:GetDataString()
                     bVar3 = require("TraderEscort.native_quest_helpers").MakeTraderComment(quest, me, comment_to_make, speaker, comment_type)
@@ -73,11 +70,10 @@ function Main(quest, me)
                 end
                 ctr_28 = ctr_28 + 1
                 iVar5 = iVar5 + 0xc
-            until not (ctr_28 < (#puStack_1c))
+            until not (ctr_28 < (#xStack_1c))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        puVar1 = 0
         if bVar3 then goto LAB_00e0557f end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()

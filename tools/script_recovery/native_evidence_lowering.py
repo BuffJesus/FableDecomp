@@ -1928,6 +1928,44 @@ def fold_local_resource_arrays(text, call_labels):
     return text
 
 
+VECTOR_SLOT_NAME = r'(?:\w*[Ss]tack_[0-9a-f]+|\w+_stk_[0-9a-f]+)'
+
+
+def fold_vector_register_aliases(text, vec):
+    """Ghidra's loop-carried register copies of a local vector's end pointer: `puVar1 = E; while (E = puVar1,
+    puVar2 = V, !done) { ... (int)puVar1 - (int)V ... puVar2 = E; puVar1 = V; ... }`. Retail re-reads both slots
+    from the stack at every size computation (TraderComment Main 0x00E05410 / 0x00E054B4: `mov edx,[esp+0x1c]`
+    begin, `mov ecx,[esp+0x20]` end); the registers only feed the vector's destructor. Taken literally the copy
+    back `E = puVar1` would set end = begin after the first pass and the size would read a nil register. When a
+    register R is assigned only from E and V, and E is assigned only from such registers (or zero), E never
+    changes: the size reads E and the write-backs vanish."""
+    v = re.escape(vec)
+    def sources(name):
+        # statement and comma-expression assignments (`X = Y;`, `(X = Y, ...`, `, X = Y,`)
+        return [s.strip() for s in re.findall(r'(?<![\w.>*])' + re.escape(name) + r' = ((?:\([\w ]+\*?\))?\w+)\s*[;,)]', text)]
+    def bare(s):
+        return re.sub(r'^\([\w ]+\*?\)', '', s)
+    for reg in sorted(set(re.findall(r'\(int\)(\w*Var\d+) - \(int\)' + v + r'\b', text))):
+        srcs = {bare(s) for s in sources(reg)}
+        ends = srcs - {vec}
+        if len(ends) != 1:
+            continue
+        end = ends.pop()
+        if not re.fullmatch(VECTOR_SLOT_NAME, end) or re.search(r'&' + re.escape(end) + r'\b', text):
+            continue
+        aliases = [r for r in set(re.findall(r'(?<![\w.>*])(\w*Var\d+) = (?:\([\w ]+\*?\))?' + re.escape(end) + r'\b', text))]
+        if not all({bare(s) for s in sources(a)} <= {end, vec} for a in aliases):
+            continue
+        written = {bare(s) for s in sources(end)}
+        if not written <= set(aliases) | {'0', '0x0'}:
+            continue
+        text = re.sub(r'\(int\)' + re.escape(reg) + r' - \(int\)' + v + r'\b', f'(int){end} - (int){vec}', text)
+        for a in aliases:
+            text = re.sub(r'^[ \t]*' + re.escape(end) + r' = (?:\([\w ]+\*?\))?' + re.escape(a) + r';[ \t]*\r?\n', '', text, flags=re.M)
+            text = re.sub(r'(?<![\w.>*])' + re.escape(end) + r' = (?:\([\w ]+\*?\))?' + re.escape(a) + r',\s*', '', text)
+    return text
+
+
 def fold_local_thing_vectors(text, thing_slots=None):
     '''A local std::vector<CScriptThing> filled by a GSI `GetAllThings*` slot: the Lua binding returns a table.
     `n = GSI->GetAllThingsWithDefName(&name,&vec);` -> `vec = GSI->...(&name); n = LOCALLIST_Count(vec);`,
@@ -1992,6 +2030,12 @@ def fold_local_thing_vectors(text, thing_slots=None):
         text = re.sub(r'\(' + v + r' \+ \(int\)(\w+) \* 3\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, {m.group(1)})', text)
         text = re.sub(r'\(\(int\)' + v + r' \+ (\w+)\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
         text = re.sub(r'\(CScriptThing(?:_bv)? \*\)\((\w+) \+ \(int\)' + v + r'\)', lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
+        # ... the same with the thing cast already stripped (TraderComment Main 0x00E05469: the distance test's
+        # operand `(iVar5 + (int)xStack_1c)`, `lea edx, [esi + eax]` = begin + byte offset)
+        # (a bare call operand only: under a dereference the same sum is an element's Data pointer counted from
+        # the +4 field -- TraderConflictEvil's `(**(**(int **)(iVar5 + (int)xStack_c) + 0x138))(` IsEqualTo)
+        text = re.sub(r'(?:(?<=\()|(?<=, )|(?<=,))\((\w+) \+ \(int\)' + v + r'\)(?=\s*[,)])',
+                      lambda m, vec=vec: f'LOCALLIST_At({vec}, ({m.group(1)}) / 0xc)', text)
         # the begin slot typed `int` by Ghidra: `(CScriptThing *)(V + i)` with a NAMED byte counter (`iVar9 += 0xc`)
         # is the element at i / 0xc (RunTutorials 0x00D45DD0's leftover-apple RemoveThing loop lifted to
         # `appleRed01 + scratchValue4`, arithmetic on a table, 2026-09-20 audit); a literal `V + k` stays element k
@@ -2022,6 +2066,7 @@ def fold_local_thing_vectors(text, thing_slots=None):
                 return m.group(0)
             return f'{m.group(1)}LOCALLIST_At({vec}, {m.group(2) or 0})'
         text = re.sub(r'([(,]\s*)' + v + r'(?: \+ (\d+))?(?=\s*[,)])', element, text)
+        text = fold_vector_register_aliases(text, vec)
         # the end-pointer slot 4 bytes above the begin slot under its own Ghidra name (`pu_stk_20` for `xStack_24`)
         slot = re.search(r'_(?:stk_)?([0-9a-f]+)$', vec)
         # (restore_stack_operands may have respelled the begin by its true slot -- `xStack_84` for Ghidra's
