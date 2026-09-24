@@ -370,7 +370,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         if native_arg_sequence_1 then
             -- TODO(native): cVar3 = (**(*pCVar5 + 0x68))()
             cVar3 = nil --[[unresolved native value]]
-            if cVar3 == 0 then
+            if not cVar3 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false

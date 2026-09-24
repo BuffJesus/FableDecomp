@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, piVar1, pvVar11, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_70, xStack_70_2, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
+    local CVar5, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, piVar1, pvVar11, stack0xffffff3c, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         resources:DestroyMovie(xStack_8c)
@@ -80,9 +80,9 @@ function Main(quest, me)
                             resources:DestroyMovie(xStack_8c)
                             return
                         end
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_58);
+                        xStack_58 = quest:ReadGlobalGameDataString(0x738)
                         pCVar12 = quest:GetHero()
-                        bVar6 = quest:IsObjectInThingsPossession("TEXT_QUEST_SICK_CHILD_OBJECTIVE_02", pCVar12)
+                        bVar6 = quest:IsObjectInThingsPossession(xStack_58, pCVar12)
                         if (bVar6) and (__native_entity_state:GetStateInt("ThingsForPotionGot") < 4) then
                             bVar6 = true
                         else
@@ -123,9 +123,9 @@ function Main(quest, me)
                                     return
                                 end
                                 while true do
-                                    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_74);
+                                    xStack_74 = quest:ReadGlobalGameDataString(0x738)
                                     pCVar12 = quest:GetHero()
-                                    bVar6 = quest:IsObjectInThingsPossession("", pCVar12)
+                                    bVar6 = quest:IsObjectInThingsPossession(xStack_74, pCVar12)
                                     if not bVar6 then break end
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
@@ -135,8 +135,8 @@ function Main(quest, me)
                                         resources:DestroyMovie(xStack_8c)
                                         return
                                     end
-                                    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_7c);
-                                    quest:TakeObjectFromHero("CS_SICK_WITCH")
+                                    xStack_7c = quest:ReadGlobalGameDataString(0x738)
+                                    quest:TakeObjectFromHero(xStack_7c)
                                     __native_entity_state:SetStateInt("ThingsForPotionGot", __native_entity_state:GetStateInt("ThingsForPotionGot") + 1)
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
@@ -154,7 +154,7 @@ function Main(quest, me)
                                         resources:DestroyMovie(xStack_8c)
                                         return
                                     end
-                                    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)&stack0xffffff3c);
+                                    stack0xffffff3c = quest:ReadGlobalGameDataString(0x744)
                                     require("V_SickChild.native_quest_helpers").helper_ECE460(quest, me)
                                     pCVar9 = quest:GetActiveQuestName()
                                     quest:SetQuestCardObjective(pCVar9, "TEXT_QUEST_SICK_CHILD_OBJECTIVE_03", "", "")
@@ -184,7 +184,7 @@ function Main(quest, me)
                                     -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                                     -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                                     cVar7 = nil --[[unresolved native value]]
-                                    while cVar7 ~= 0 do
+                                    while cVar7 do
                                         alive = quest:NewScriptFrame(me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
@@ -224,7 +224,7 @@ function Main(quest, me)
                                     -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                                     -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                                     cVar7 = nil --[[unresolved native value]]
-                                    while cVar7 ~= 0 do
+                                    while cVar7 do
                                         alive = quest:NewScriptFrame(me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
@@ -257,7 +257,7 @@ function Main(quest, me)
                                 -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                                 -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                                 cVar7 = nil --[[unresolved native value]]
-                                while cVar7 ~= 0 do
+                                while cVar7 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
@@ -297,8 +297,6 @@ function Main(quest, me)
                 end
                 if (uVar13 & 4) ~= 0 then
                     uVar13 = uVar13 & 0xfffffffb
-                end
-                if (uVar13 & 2) ~= 0 then
                 end
                 if 1 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -342,7 +340,7 @@ function Main(quest, me)
                         -- TODO(native): (**(code **)((int)xStack_58 + 0x34))(pCVar20,pvVar11);
                         -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                         cVar7 = nil --[[unresolved native value]]
-                        while cVar7 ~= 0 do
+                        while cVar7 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -351,7 +349,7 @@ function Main(quest, me)
                                 resources:DestroyMovie(xStack_8c)
                                 return
                             end
-                            -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(&xStack_9c)
+                            -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))()
                             cVar7 = nil --[[unresolved native value]]
                         end
                         alive = not quest:IsActiveThreadTerminating()
@@ -409,7 +407,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16);
                             -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -457,8 +455,6 @@ function Main(quest, me)
                     if (uVar13 & 0x20) ~= 0 then
                         uVar13 = uVar13 & 0xffffffdf
                     end
-                    if (uVar13 & 0x10) ~= 0 then
-                    end
                     if 1 ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
@@ -503,7 +499,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pvVar11,uVar16,uVar17);
                             -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(pCVar20)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -511,7 +507,7 @@ function Main(quest, me)
                                     quest:PauseAllNonScriptedEntities(false)
                                     __cleanup_LAB_00ecf7c9(); return
                                 end
-                                -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))(xStack_8c)
+                                -- TODO(native): cVar7 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x68))()
                                 cVar7 = nil --[[unresolved native value]]
                             end
                             alive = not quest:IsActiveThreadTerminating()

@@ -444,7 +444,7 @@ function helper_E13310(quest)
                 if not bVar3 then break end
                 if bVar4 then goto LAB_00e135bd end
                 if not (xStack_18 ~= nil and not xStack_18:IsNull()) then
-                    cVar8 = 0
+                    cVar8 = false
                 else
                     cVar8 = (xStack_18 ~= nil and xStack_18:MsgIsKilledBy(""))
                 end

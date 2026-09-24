@@ -278,7 +278,7 @@ function Main(quest, me)
         -- TODO(native): iVar8 = IsDistanceFromThingToPositionOver(pvVar6,&iStack_68,iVar8);
         iVar8 = nil --[[unresolved native result]]
         cVar3 = iVar8
-        while cVar3 ~= 0 do
+        while cVar3 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive

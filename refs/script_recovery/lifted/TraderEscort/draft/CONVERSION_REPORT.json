@@ -316,10 +316,10 @@
             "goto LAB_00e06319;",
             "goto LAB_00e06364;",
             "goto LAB_00e0642a;",
+            "if (!cVar6) goto LAB_00e06349;",
             "if (*(int *)(this + 0x4c) < 1) goto LAB_00e06373;",
             "if (bVar5) goto LAB_00e063db;",
-            "if (bVar5) goto LAB_00e06415;",
-            "if (cVar6 == '\\0') goto LAB_00e06349;"
+            "if (bVar5) goto LAB_00e06415;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00e06394",
@@ -544,7 +544,7 @@
             "if (bVar2) goto LAB_00e07609;",
             "if (bVar2) goto LAB_00e0760e;",
             "if (bVar2) goto LAB_00e07620;",
-            "if (cVar3 != '\\0') goto LAB_00e06fb5;",
+            "if (cVar3) goto LAB_00e06fb5;",
             "if (c_stk_c1 != '\\0') goto LAB_00e07299;",
             "if (c_stk_c1 != '\\0') goto LAB_00e07385;",
             "if (native_arg_sequence_1) goto LAB_00e06d6c;"
@@ -594,8 +594,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: (**(code **)(native_arg_Me._8_4_ + 4))();",
-            "unlifted: if (native_arg_Me._8_4_ ~= 0) and (*native_arg_Me._8_4_ = *native_arg_Me._8_4_ + -1, *nati",
             "unlifted: bVar3 = RESOURCE_TryAcquire(xStack_30, &native_arg_Me, 4)",
             "unlifted: bVar3 = RESOURCE_TryAcquire(xStack_30, &native_arg_Me, 4)"
           ],
@@ -646,7 +644,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 82,
+          "lines": 78,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -680,13 +678,9 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: (**(code **)(native_arg_Trader._8_4_ + 4))();",
             "label LAB_00e05100",
             "label LAB_00e05108",
-            "unlifted: (**(code **)(native_arg_Trader._8_4_ + 4))();",
-            "goto LAB_00e05100",
-            "unlifted: if (native_arg_Trader._8_4_ ~= 0) and (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_",
-            "unlifted: if (native_arg_Trader._8_4_ == 0) or (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ "
+            "label LAB_00e050a5"
           ],
           "calls": [
             "QUESTTHING_Empty",
@@ -706,10 +700,12 @@
             "MsgIsKilledBy",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 91,
+          "lines": 82,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -719,14 +715,10 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_past_lab_00e050a5;",
-            "goto LAB_00e04f80;",
-            "goto LAB_00e050a5;"
+            "goto LAB_00e04f80;"
           ],
           "nativeLabels": [
-            "FLOW_past_lab_00e050a5",
-            "LAB_00e04f80",
-            "LAB_00e050a5"
+            "LAB_00e04f80"
           ]
         },
         {
@@ -902,7 +894,7 @@
             "if (!bVar2) goto LAB_00e02213;",
             "if (bVar2) goto LAB_00e01ab8;",
             "if (bVar2) goto LAB_00e01aca;",
-            "if (cVar3 != '\\0') goto LAB_00e01ba2;",
+            "if (cVar3) goto LAB_00e01ba2;",
             "if (native_arg_comment_type != 1) goto LAB_00e02355;"
           ],
           "nativeLabels": [
@@ -1537,6 +1529,8 @@
             "if (!bVar5) goto LAB_00e0843a;",
             "if (!bVar5) goto LAB_00e08d39;",
             "if (!bVar5) goto LAB_00e08e52;",
+            "if (!cVar4) goto LAB_00e099dc;",
+            "if (!cVar4) goto LAB_00e09b48;",
             "if ((char)iVar20 == '\\0') goto LAB_00e07cac;",
             "if (bVar3) goto LAB_00e07db0;",
             "if (bVar3) goto LAB_00e07db9;",
@@ -1550,11 +1544,9 @@
             "if (bVar5) goto LAB_00e08601;",
             "if (bVar5) goto LAB_00e08dc8;",
             "if (bVar5) goto LAB_00e095cf;",
-            "if (cVar4 != '\\0') goto LAB_00e09848;",
-            "if (cVar4 != '\\0') goto LAB_00e09886;",
-            "if (cVar4 != '\\0') goto LAB_00e099dc;",
-            "if (cVar4 == '\\0') goto LAB_00e099dc;",
-            "if (cVar4 == '\\0') goto LAB_00e09b48;",
+            "if (cVar4) goto LAB_00e09848;",
+            "if (cVar4) goto LAB_00e09886;",
+            "if (cVar4) goto LAB_00e099dc;",
             "if (native_arg_sequence_1) goto LAB_00e08601;"
           ],
           "nativeLabels": [
@@ -1654,7 +1646,7 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "if (cVar7 == '\\0') goto LAB_00e04e13;"
+            "if (!cVar7) goto LAB_00e04e13;"
           ],
           "nativeLabels": [
             "LAB_00e04e13"
@@ -3601,10 +3593,10 @@
             "goto LAB_00e05c45;",
             "goto LAB_00e05fd1;",
             "goto LAB_00e0602f;",
+            "if (!cVar3) goto LAB_00e05c10;",
             "if (bVar2) goto LAB_00e05fd1;",
             "if (bVar2) goto LAB_00e0602f;",
             "if (bVar2) goto LAB_00e06038;",
-            "if (cVar3 == '\\0') goto LAB_00e05c10;",
             "if (fret_01 <= fVar1) goto LAB_00e05c45;"
           ],
           "nativeLabels": [
@@ -3805,7 +3797,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 175
+        "todo": 169
       }
     }
   ],
@@ -3816,6 +3808,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 175
+    "todo": 169
   }
 }

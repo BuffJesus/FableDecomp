@@ -1159,11 +1159,11 @@
             "goto LAB_00e3e2ea;",
             "goto LAB_00e3e2ef;",
             "if (!bVar3) goto LAB_00e3cb3c;",
+            "if (!cVar4) goto LAB_00e3e06a;",
             "if (bVar3) goto LAB_00e3d063;",
             "if (bVar3) goto LAB_00e3d473;",
             "if (bVar3) goto LAB_00e3e2ef;",
             "if (bVar3) goto LAB_00e3e301;",
-            "if (cVar4 == '\\0') goto LAB_00e3e06a;",
             "if (xStack_124_b3 != '\\0') goto LAB_00e3bf28;"
           ],
           "nativeLabels": [
@@ -2068,10 +2068,10 @@
             "goto LAB_00e40e5a;",
             "goto LAB_00e40e5a_c1;",
             "goto LAB_00e40e5e;",
+            "if (!cVar6) goto LAB_00e40afa;",
+            "if (!cVar6) goto LAB_00e40afa_c1;",
             "if (bVar5) goto LAB_00e40673;",
-            "if (bVar5) goto LAB_00e40e63;",
-            "if (cVar6 == '\\0') goto LAB_00e40afa;",
-            "if (cVar6 == '\\0') goto LAB_00e40afa_c1;"
+            "if (bVar5) goto LAB_00e40e63;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00e40a6c",
@@ -2185,11 +2185,9 @@
             "unlifted: xStack_308 = (undefined **)**(int **)(this + 4);",
             "unlifted: xStack_344 = (int *)(*(code *)xStack_308[0x46])();",
             "unlifted: (*(code *)xStack_308[0x16e])();",
-            "FixMovieSequenceCamera: missing isFixed (0 args for 1 params)",
             "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
-            "Pause: missing duration (0 args for 1 params)",
             "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
-            "CameraUseCameraPoint: missing spCamPoint, spTarget, duration, i1, i2 (0 args for 5 params)",
+            "CameraUseCameraPoint: missing spCamPoint, spTarget, i1, i2 (1 args for 5 params)",
             "unlifted: bVar5 = NScript::CV_BordelloScript::IsHeroWearingBeard__ate3e320(*(CV_BordelloScript **)(t",
             "GetHealth: missing pThing (0 args for 1 params)",
             "goto LAB_00e446ea",
@@ -2203,7 +2201,6 @@
             "unlifted: xStack_350 = (CScriptThing *)((uint)xStack_350 | 0x20);",
             "unlifted: xStack_350 = (CScriptThing *)((uint)xStack_350 & 0xffffffdf);",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "unlifted: xStack_364 = xStack_364 + 1;",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "GetHealth: missing pThing (0 args for 1 params)",
@@ -2260,12 +2257,9 @@
             "GiveHeroObject: missing amount (1 args for 3 params)",
             "FixMovieSequenceCamera: missing isFixed (0 args for 1 params)",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "SetPreferredQuickAccessItem: missing dPadDirection, slot (1 args for 3 params)",
-            "AddPersonToConversation: missing conversationID (1 args for 2 params)",
             "unlifted: xStack_194 = (undefined **)**(int **)(this + 4);",
             "unlifted: xStack_344 = (int *)(*(code *)xStack_194[0x46])();",
             "unlifted: (*(code *)xStack_194[0x16e])();",
-            "FixMovieSequenceCamera: missing isFixed (0 args for 1 params)",
             "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
             "Pause: missing duration (0 args for 1 params)",
             "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
@@ -3049,6 +3043,9 @@
             "if (!bVar5) goto LAB_00e42003;",
             "if (!bVar7) goto LAB_00e410ba;",
             "if (!bVar7) goto LAB_00e42a3a;",
+            "if (!cVar6) goto LAB_00e418e3;",
+            "if (!cVar6) goto LAB_00e41c4b;",
+            "if (!cVar6) goto LAB_00e43893;",
             "if (bVar5) goto LAB_00e4450d;",
             "if (bVar5) goto LAB_00e44528;",
             "if (bVar5) goto LAB_00e445a0;",
@@ -3059,9 +3056,6 @@
             "if (bVar5) goto LAB_00e44903;",
             "if (bVar7) goto LAB_00e412bc;",
             "if (bVar7) goto LAB_00e42bf9;",
-            "if (cVar6 == '\\0') goto LAB_00e418e3;",
-            "if (cVar6 == '\\0') goto LAB_00e41c4b;",
-            "if (cVar6 == '\\0') goto LAB_00e43893;",
             "if (iVar21 == 0) goto LAB_00e42094;",
             "if (iVar21 == 0) goto LAB_00e43c54;"
           ],
@@ -3227,7 +3221,7 @@
             "GetHero",
             "IsWearingHairstyle"
           ],
-          "lines": 65,
+          "lines": 63,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3306,7 +3300,6 @@
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "unlifted: (**(code **)(*unaff_EBX + 0x5ec))();",
             "unnamed field 0x14",
-            "MoveToPosition: missing position (4 args for 5 params)",
             "unlifted: xStack_e0_b3 = '\\x01';",
             "unlifted: xStack_c4_b3 = '\\0';",
             "unlifted: xStack_c4_b3 = '\\x01';",
@@ -4209,7 +4202,7 @@
         "functionSyntaxPassed": 39,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 9,
-        "todo": 377
+        "todo": 370
       }
     }
   ],
@@ -4220,6 +4213,6 @@
     "functionSyntaxPassed": 39,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 9,
-    "todo": 377
+    "todo": 370
   }
 }

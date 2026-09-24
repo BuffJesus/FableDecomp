@@ -35,11 +35,11 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00e046bf end
         -- TODO(native): cVar5 = (**(xStack_30._0_4_ + 0x12c))()
     --[[unresolved native value]]
-        sequence = nil == 0
+        sequence = not nil
         if sequence then
             -- TODO(native): cVar5 = (**(xStack_3c._0_4_ + 0x12c))()
     --[[unresolved native value]]
-            sequence = nil == 0
+            sequence = not nil
         end
         if sequence then
             if quest:IsActiveThreadTerminating() then goto LAB_00e046bf end
@@ -99,11 +99,11 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00e046b6 end
         -- TODO(native): cVar5 = (**(xStack_30._0_4_ + 0x12c))()
     --[[unresolved native value]]
-        sequence22 = nil == 0
+        sequence22 = not nil
         if sequence22 then
             -- TODO(native): cVar5 = (**(xStack_3c._0_4_ + 0x12c))()
     --[[unresolved native value]]
-            sequence22 = nil == 0
+            sequence22 = not nil
         end
         if sequence22 then
             if quest:IsActiveThreadTerminating() then goto LAB_00e046b6 end

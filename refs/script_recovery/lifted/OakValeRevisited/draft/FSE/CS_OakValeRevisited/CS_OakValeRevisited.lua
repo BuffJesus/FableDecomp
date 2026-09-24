@@ -218,7 +218,7 @@ function helper_EE8390(quest)
             repeat
                 -- TODO(native): cVar5 = (**(*("CS_OakValeRevisited" + iVar8) + 300))()
                 cVar5 = nil --[[unresolved native value]]
-                if cVar5 ~= 0 then
+                if cVar5 then
                     quest:RemoveThing(nil --[[missing]], ("CS_OakValeRevisited" + iVar8), false)
                 end
                 uVar11 = uVar11 + 1

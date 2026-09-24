@@ -10755,6 +10755,9 @@
             "goto LAB_00d61b5a;",
             "goto LAB_00d61b69;",
             "if (!bVar6) goto LAB_00d6070e;",
+            "if (!cVar7) goto LAB_00d60bd4;",
+            "if (!cVar7) goto LAB_00d610c4;",
+            "if (!cVar7) goto LAB_00d61af3;",
             "if (bVar6) goto LAB_00d60aee;",
             "if (bVar6) goto LAB_00d60aff;",
             "if (bVar6) goto LAB_00d60b19;",
@@ -10777,9 +10780,6 @@
             "if (bVar8) goto LAB_00d61004;",
             "if (bVar8) goto LAB_00d6132d;",
             "if (bVar8) goto LAB_00d61563;",
-            "if (cVar7 == '\\0') goto LAB_00d60bd4;",
-            "if (cVar7 == '\\0') goto LAB_00d610c4;",
-            "if (cVar7 == '\\0') goto LAB_00d61af3;",
             "if (fret_02 <= fVar4) goto LAB_00d60be3;",
             "if (fret_03 <= fVar4) goto LAB_00d610d3;"
           ],
@@ -10992,7 +10992,7 @@
             "IsActiveThreadTerminating",
             "IsLevelLoaded"
           ],
-          "lines": 39,
+          "lines": 37,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11471,7 +11471,7 @@
             "if (!bVar2) goto LAB_00d62e38;",
             "if (!bVar2) goto LAB_00d633f7;",
             "if (!bVar2) goto LAB_00d63b21;",
-            "if ((cVar3 == '\\0') || (*(char *)(this + 0x1e) == '\\0')) goto LAB_00d638ec;",
+            "if ((!cVar3) || (*(char *)(this + 0x1e) == '\\0')) goto LAB_00d638ec;",
             "if (*(char *)(this + 0x1c) == '\\0') goto LAB_00d638ec;",
             "if (bVar2) goto LAB_00d635e3;",
             "if (bVar2) goto LAB_00d63a7c;",
@@ -12951,7 +12951,7 @@
             "IsActiveThreadTerminating",
             "IsLevelLoaded"
           ],
-          "lines": 26,
+          "lines": 24,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

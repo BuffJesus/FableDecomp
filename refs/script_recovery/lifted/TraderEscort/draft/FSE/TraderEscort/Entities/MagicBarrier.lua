@@ -49,7 +49,7 @@ function Main(quest, me)
         -- TODO(native): cVar5 = (**(xStack_30._0_4_ + 0x12c))()
         cVar5 = nil --[[unresolved native value]]
         native_arg_sequence_1 = false
-        if cVar5 == 0 then
+        if not cVar5 then
             native_arg_sequence_1 = true
         else
             native_arg_sequence_1 = false
@@ -57,7 +57,7 @@ function Main(quest, me)
         if native_arg_sequence_1 then
             -- TODO(native): cVar5 = (**(xStack_3c._0_4_ + 0x12c))()
             cVar5 = nil --[[unresolved native value]]
-            if cVar5 == 0 then
+            if not cVar5 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
@@ -133,7 +133,7 @@ function Main(quest, me)
             -- TODO(native): cVar5 = (**(xStack_30._0_4_ + 0x12c))()
             cVar5 = nil --[[unresolved native value]]
             native_arg_sequence_2 = false
-            if cVar5 == 0 then
+            if not cVar5 then
                 native_arg_sequence_2 = true
             else
                 native_arg_sequence_2 = false
@@ -141,7 +141,7 @@ function Main(quest, me)
             if native_arg_sequence_2 then
                 -- TODO(native): cVar5 = (**(xStack_3c._0_4_ + 0x12c))()
                 cVar5 = nil --[[unresolved native value]]
-                if cVar5 == 0 then
+                if not cVar5 then
                     native_arg_sequence_2 = true
                 else
                     native_arg_sequence_2 = false

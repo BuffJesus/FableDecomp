@@ -896,6 +896,7 @@
             "if (!bVar5) goto LAB_00e5a5c1;",
             "if (!bVar5) goto LAB_00e5a8ab;",
             "if (!bVar5) goto LAB_00e5addd;",
+            "if (!cVar4) goto LAB_00e5b163;",
             "if (bVar3) goto FLOW_native_label_2;",
             "if (bVar3) goto LAB_00e5b19b;",
             "if (bVar3) goto LAB_00e5b1a4;",
@@ -911,7 +912,6 @@
             "if (bVar5) goto LAB_00e5b24b;",
             "if (bVar5) goto LAB_00e5b276;",
             "if (bVar5) goto LAB_00e5b293;",
-            "if (cVar4 == '\\0') goto LAB_00e5b163;",
             "if (fVar15 <= fVar2) goto LAB_00e5a683;",
             "if (iVar9 != 0) goto FLOW_native_label_2;",
             "if (iVar9 == 0) goto LAB_00e5aedc;",
@@ -1560,17 +1560,12 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 3,
-        "passed": 1,
+        "passed": 2,
         "errors": [
           {
             "path": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua",
             "line": 238,
             "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:238: ')' expected near 'p1'"
-          },
-          {
-            "path": "FSE/V_BeggarAndChild/V_BeggarAndChild.lua",
-            "line": 461,
-            "message": "FSE/V_BeggarAndChild/V_BeggarAndChild.lua:461: unexpected symbol near '::'"
           }
         ]
       },
@@ -1681,7 +1676,7 @@
         "functions": 11,
         "missing": 0,
         "functionSyntaxPassed": 10,
-        "fileSyntaxPassed": 1,
+        "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 3,
         "todo": 58
       }
@@ -1692,7 +1687,7 @@
     "functions": 11,
     "missing": 0,
     "functionSyntaxPassed": 10,
-    "fileSyntaxPassed": 1,
+    "fileSyntaxPassed": 2,
     "fileSyntaxChecked": 3,
     "todo": 58
   }

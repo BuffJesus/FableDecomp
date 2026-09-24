@@ -131,10 +131,10 @@ function Main(quest)
                 if bVar2 then
                     return
                 end
-                uVar11 = 0
+                uVar11 = false
                 pCVar5 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                quest:EntityTeleportToThing(pCVar6, pCVar5, (uVar11 ~= 0))
+                quest:EntityTeleportToThing(pCVar6, pCVar5, uVar11)
             end
             quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
             r1 = quest:GetThingWithScriptName("GuildDoors")
@@ -1473,10 +1473,10 @@ function Main(quest)
             if bVar9 then
                 return
             end
-            uVar11 = 0
+            uVar11 = false
             pCVar5 = quest:GetThingWithScriptName("FrescoDomeHSP")
             pCVar6 = quest:GetHero()
-            quest:EntityTeleportToThing(pCVar6, pCVar5, (uVar11 ~= 0))
+            quest:EntityTeleportToThing(pCVar6, pCVar5, uVar11)
             bVar9 = quest:IsLevelLoaded("FrescoDome")
             while not bVar9 do
                 alive = quest:NewScriptFrame()
@@ -1527,10 +1527,10 @@ function Main(quest)
             resources:DestroyMovie(xStack_58)
             resources:DestroyActorMap(r1)
             resources:ReleaseResource(xStack_68)
-            uVar11 = 0
+            uVar11 = false
             pCVar5 = quest:GetThingWithScriptName("NW3BronzeDoorHSP")
             pCVar6 = quest:GetHero()
-            quest:EntityTeleportToThing(pCVar6, pCVar5, (uVar11 ~= 0))
+            quest:EntityTeleportToThing(pCVar6, pCVar5, uVar11)
             bVar9 = quest:IsRegionLoaded("NorthernWastes3")
             while not bVar9 do
                 alive = quest:NewScriptFrame()

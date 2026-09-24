@@ -198,7 +198,7 @@ function helper_E3E720(quest, me, native_arg_param_2, native_arg_param_3)
     end
     quest:FixMovieSequenceCamera(true)
     local cVar5 = native_arg_param_3
-    if native_arg_param_3 ~= 0 then
+    if native_arg_param_3 then
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then
@@ -210,7 +210,7 @@ function helper_E3E720(quest, me, native_arg_param_2, native_arg_param_3)
         quest:SetCutsceneSkippableWhilePaused(true)
     end
     -- TODO(native): RunCutsceneMacro_Func((CCharString *)&native_arg_param_2,xStack_1c,(void *)0x0,(CTCCarryable *)(this + 0xb4),false,true);
-    if cVar5 ~= 0 then
+    if cVar5 then
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if bVar6 then

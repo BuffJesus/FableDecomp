@@ -188,7 +188,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -224,7 +224,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -273,7 +273,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)((int)xStack_7c + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -308,7 +308,7 @@ function Main(quest, me)
                                 -- TODO(native): (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);
                                 -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                                 cVar7 = nil --[[unresolved native value]]
-                                while cVar7 ~= 0 do
+                                while cVar7 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
@@ -344,7 +344,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -412,7 +412,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -495,7 +495,7 @@ function Main(quest, me)
                             -- TODO(native): (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);
                             -- TODO(native): cVar7 = (**(*this_00 + 0x68))(pCVar9)
                             cVar7 = nil --[[unresolved native value]]
-                            while cVar7 ~= 0 do
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
@@ -630,7 +630,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             -- TODO(native): (**(code **)(iVar6 + 0x34))(uVar12);
             -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(uVar12)
             cVar4 = nil --[[unresolved native value]]
-            while cVar4 ~= 0 do
+            while cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -665,7 +665,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
             -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
             cVar4 = nil --[[unresolved native value]]
-            while cVar4 ~= 0 do
+            while cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -718,7 +718,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
             -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
             cVar4 = nil --[[unresolved native value]]
-            while cVar4 ~= 0 do
+            while cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -762,7 +762,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
             -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
             cVar4 = nil --[[unresolved native value]]
-            while cVar4 ~= 0 do
+            while cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -934,8 +934,6 @@ function helper_E55CE0(quest, me, native_arg_param_1)
     if (uVar10 & 2) ~= 0 then
         uVar10 = uVar10 & 0xfffffffd
     end
-    if (uVar10 & 1) ~= 0 then
-    end
     ::LAB_00e566a1::
     return
 end
@@ -952,7 +950,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
     while uStack_14 ~= nil do
         -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
         cVar3 = nil --[[unresolved native value]]
-        if cVar3 == 0 then break end
+        if not cVar3 then break end
         pCVar6 = r1
         iVar9 = native_arg_param_2
         pCVar4 = quest:GetHero()
@@ -996,7 +994,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
         if uStack_14 == nil then break end
         -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
         cVar3 = nil --[[unresolved native value]]
-        if cVar3 == 0 then break end
+        if not cVar3 then break end
         pCVar6 = r1
         iVar9 = native_arg_param_2
         pCVar4 = quest:GetHero()
@@ -1324,7 +1322,7 @@ function helper_E57530(quest, me)
                         end
                         -- TODO(native): cVar6 = (**(*pCVar12 + 0x68))()
                         cVar6 = nil --[[unresolved native value]]
-                    until not (cVar6 ~= 0)
+                    until not (cVar6)
                     alive = not quest:IsActiveThreadTerminating()
                     return
                 end
@@ -1353,7 +1351,7 @@ function helper_E57530(quest, me)
                 -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);
                 -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
                 cVar6 = nil --[[unresolved native value]]
-                while cVar6 ~= 0 do
+                while cVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
@@ -1403,7 +1401,7 @@ function helper_E57530(quest, me)
                 end
                 -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
                 cVar6 = nil --[[unresolved native value]]
-            until not (cVar6 ~= 0)
+            until not (cVar6)
             alive = not quest:IsActiveThreadTerminating()
             return
         end
@@ -1433,7 +1431,7 @@ function helper_E57530(quest, me)
     -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
     -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
     cVar6 = nil --[[unresolved native value]]
-    while cVar6 ~= 0 do
+    while cVar6 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive

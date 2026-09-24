@@ -296,13 +296,10 @@
             "unnamed field 0x14",
             "unnamed field 0x14",
             "unnamed field 0x14",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)&xStack_9",
-            "IsObjectInThingsPossession: missing objectDefName (1 args for 2 params)",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)xStack_70",
             "label LAB_00ece3f7",
             "unnamed field 0x14",
             "label LAB_00ece3b6",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)&xStack_9",
             "unnamed field 0x14",
             "label LAB_00ecdf97",
             "unnamed field 0x14",
@@ -347,6 +344,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
@@ -385,6 +383,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "TakeObjectFromHero",
             "ClearThingHasInformation",
             "SetStateBool",
@@ -454,8 +453,8 @@
             "goto FLOW_past_lab_00ece11a;",
             "goto LAB_00ecdd11;",
             "goto LAB_00ece11a;",
-            "if (cVar9 == '\\0') goto LAB_00ecdd11;",
-            "if (cVar9 == '\\0') goto LAB_00ece11a;"
+            "if (!cVar9) goto LAB_00ecdd11;",
+            "if (!cVar9) goto LAB_00ece11a;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00ecdd11",
@@ -553,7 +552,6 @@
             "label LAB_00ec5ea7",
             "unlifted: xStack_8c = (CCharString)(f_stk_8c + 1.0);",
             "EntityTeleportToPosition: missing pos (3 args for 5 params)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x748),(int)&xStack_8",
             "unlifted: xStack_80 = (CCharString)((int)CVar10 + 0xa);",
             "label LAB_00ec64df"
           ],
@@ -573,6 +571,7 @@
             "GetThingWithScriptName",
             "GetSleepingPositionAndOrientationFromBed",
             "EntityTeleportToPosition",
+            "ENGINE_GlobalGameDataString",
             "PlayLoopingAnimation",
             "GetThingWithScriptName",
             "SetBedAvailability",
@@ -1335,12 +1334,8 @@
             "unnamed field 0x14",
             "unnamed field 0x14",
             "verify cleanup at LAB_00ecf292 (lifted as early return)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_5",
             "label LAB_00ecf292",
             "label LAB_00ecf3e5",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_7",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_7",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)&stack0xf",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
@@ -1411,7 +1406,7 @@
             "unlifted: bVar6 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
             "unlifted: pCVar20 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))(pCVar20)",
-            "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))(&xStack_9c)",
+            "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))()",
             "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
             "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))(pCVar20)",
@@ -1421,7 +1416,7 @@
             "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
             "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))(pCVar20)",
-            "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))(xStack_8c)"
+            "unlifted: cVar7 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x68))()"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1445,6 +1440,7 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
@@ -1463,12 +1459,14 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "ENGINE_GlobalGameDataString",
             "TakeObjectFromHero",
             "SetStateInt",
             "IsActiveThreadTerminating",
@@ -1477,6 +1475,7 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "ENGINE_GlobalGameDataString",
             "GetActiveQuestName",
             "SetQuestCardObjective",
             "ClearThingHasInformation",
@@ -1560,7 +1559,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 519,
+          "lines": 515,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1700,10 +1699,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_1",
-            "IsObjectInThingsPossession: missing objectDefName (1 args for 2 params)",
             "label LAB_00ec9bea",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_1",
             "label LAB_00ec9b00",
             "label LAB_00ec9b2c",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)xStack_13",
@@ -1711,17 +1707,13 @@
             "unlifted: xStack_158 = uVar11 & 0xfffffffb;",
             "label LAB_00ec95d3",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_14",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_1",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_e",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_1",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_dc",
-            "RemoveItemFromContainer: missing itemDefName (1 args for 2 params)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
@@ -1733,15 +1725,10 @@
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_10",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_e",
-            "RemoveItemFromContainer: missing itemDefName (1 args for 2 params)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_f",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_1",
-            "RemoveItemFromContainer: missing itemDefName (1 args for 2 params)",
             "verify cleanup at LAB_00ec95d3 (lifted as early return)",
             "label LAB_00ec9b58",
             "label LAB_00ec9bda"
@@ -1750,6 +1737,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "GetHero",
@@ -1811,6 +1799,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "RESOURCE_ScriptThing",
             "GetHealth",
@@ -1881,6 +1870,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource",
             "GiveHeroObject",
+            "ENGINE_GlobalGameDataString",
             "RemoveItemFromContainer",
             "SetStateBool",
             "IsActiveThreadTerminating",
@@ -1964,6 +1954,7 @@
             "MsgIsQuestionAnsweredYesOrNo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "TakeObjectFromHero",
             "TakeObjectFromHero",
             "RESOURCE_ScriptThing",
@@ -1975,6 +1966,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "RemoveItemFromContainer",
             "IsActiveThreadTerminating",
@@ -2011,6 +2003,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "GiveHeroObject",
+            "ENGINE_GlobalGameDataString",
             "RemoveItemFromContainer",
             "SetStateBool",
             "SetStateBool",
@@ -2025,7 +2018,9 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
+            "ENGINE_GlobalGameDataString",
             "RemoveItemFromContainer",
             "SetStateBool",
             "IsActiveThreadTerminating",
@@ -2215,12 +2210,10 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_4",
-            "GiveHeroObject: missing objectDefName (2 args for 3 params)"
-          ],
+          "todo": [],
           "calls": [
             "MsgIsKilledBy",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "GiveHeroMorality"
           ],
@@ -2234,7 +2227,7 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "if (cVar2 != '\\0') goto LAB_00ec8274;"
+            "if (cVar2) goto LAB_00ec8274;"
           ],
           "nativeLabels": [
             "LAB_00ec8274"
@@ -2253,14 +2246,9 @@
           },
           "todo": [
             "label LAB_00ec9e0a",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_1",
-            "unlifted: CCharString::operator=(&xStack_128,&xStack_124);",
             "unlifted: iVar5 = CBasicString<char>::Compare((void *)*xStack_128,(void *)*xStack_12c);",
             "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_b",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_d",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_c",
             "unlifted: (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);",
             "unlifted: (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);",
             "unlifted: (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);"
@@ -2280,6 +2268,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "SetThingHasInformation",
+            "ENGINE_GlobalGameDataString",
             "IsActiveThreadTerminating",
             "MsgIsPresentedWithItem",
             "IsActiveThreadTerminating",
@@ -2309,6 +2298,7 @@
             "EntitySetFacingAngleTowardsThing",
             "NewScriptFrame",
             "CameraUseCameraPoint",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
@@ -2343,6 +2333,7 @@
             "IsActiveThreadTerminating",
             "CameraUseCameraPoint",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "TakeObjectFromHero",
             "RESOURCE_ScriptThing",
             "GetHealth",
@@ -2379,6 +2370,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "GiveHeroMorality",
             "SetStateInt",
@@ -2479,16 +2471,10 @@
           "lines": 650,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_SickChild/Entities/MansLover.lua:Main",
-                "line": 71,
-                "message": "FSE/V_SickChild/Entities/MansLover.lua:Main:71: 'then' expected near '['"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -2635,7 +2621,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_a",
             "AddCrimeCommitted: missing spCriminal, spVictim (4 args for 6 params)",
             "unlifted: cVar4 = (**(CStack_d8._0_4_ + 0x12c))()"
           ],
@@ -2691,6 +2676,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "RemoveThing",
             "GiveHeroGold",
@@ -3136,10 +3122,10 @@
             "goto LAB_00ecc923;",
             "goto LAB_00ecc928;",
             "goto LAB_00ecc931;",
+            "if (!cVar7) goto LAB_00ecc5ce;",
             "if (2 < (int)CVar4) goto LAB_00ecc1f4;",
             "if (bVar6) goto LAB_00ecc8f3;",
             "if (bVar6) goto LAB_00ecc928;",
-            "if (cVar7 == '\\0') goto LAB_00ecc5ce;",
             "if (fret_01 <= (float10)0.0) goto LAB_00ecc5ec;",
             "if (native_arg_sequence_1) goto LAB_00ecc220;"
           ],
@@ -3594,7 +3580,7 @@
             "unlifted: iVar5 = *this_00",
             "unlifted: uVar7 = (**(*pCVar19 + 0x118))(pvVar11,uVar7,uVar8,uVar15,uVar16)",
             "unlifted: cVar4 = (**(*this_00 + 0x68))(uVar7)",
-            "unlifted: cVar4 = (**(*this_00 + 0x68))(&xStack_60)",
+            "unlifted: cVar4 = (**(*this_00 + 0x68))()",
             "unlifted: pvVar11 = *pCVar19",
             "unlifted: pCVar9 = *(this + 4)",
             "unlifted: pCVar10 = (**(*this_00 + 0x30))(auStack_4c)",
@@ -3810,24 +3796,24 @@
             "if (!bVar3) goto LAB_00ed00e0;",
             "if (!bVar3) goto LAB_00ed02ff;",
             "if (!bVar3) goto LAB_00ed0666;",
+            "if (!cVar4) goto LAB_00ecff84;",
+            "if (!cVar4) goto LAB_00ed0666;",
             "if (*(char *)(this + 0x1c) != '\\0') goto LAB_00ed06d4;",
             "if (bVar3) goto LAB_00ed0411;",
             "if (bVar3) goto LAB_00ed0a36;",
             "if (bVar3) goto LAB_00ed0a6f;",
             "if (bVar3) goto LAB_00ed0a79;",
             "if (bVar3) goto LAB_00ed0ae8;",
-            "if (cVar4 != '\\0') goto LAB_00ed002a;",
-            "if (cVar4 != '\\0') goto LAB_00ed005f;",
-            "if (cVar4 != '\\0') goto LAB_00ed0091;",
-            "if (cVar4 != '\\0') goto LAB_00ed00c3;",
-            "if (cVar4 != '\\0') goto LAB_00ed0210;",
-            "if (cVar4 != '\\0') goto LAB_00ed0245;",
-            "if (cVar4 != '\\0') goto LAB_00ed027a;",
-            "if (cVar4 != '\\0') goto LAB_00ed02ac;",
-            "if (cVar4 != '\\0') goto LAB_00ed02e2;",
-            "if (cVar4 != '\\0') goto LAB_00ed04c2;",
-            "if (cVar4 == '\\0') goto LAB_00ecff84;",
-            "if (cVar4 == '\\0') goto LAB_00ed0666;"
+            "if (cVar4) goto LAB_00ed002a;",
+            "if (cVar4) goto LAB_00ed005f;",
+            "if (cVar4) goto LAB_00ed0091;",
+            "if (cVar4) goto LAB_00ed00c3;",
+            "if (cVar4) goto LAB_00ed0210;",
+            "if (cVar4) goto LAB_00ed0245;",
+            "if (cVar4) goto LAB_00ed027a;",
+            "if (cVar4) goto LAB_00ed02ac;",
+            "if (cVar4) goto LAB_00ed02e2;",
+            "if (cVar4) goto LAB_00ed04c2;"
           ],
           "nativeLabels": [
             "FLOW_hoist_lab_00ed002a_1",
@@ -3962,12 +3948,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_4",
-            "GiveHeroObject: missing objectDefName (2 args for 3 params)"
-          ],
+          "todo": [],
           "calls": [
             "MsgIsKilledBy",
+            "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "GiveHeroMorality",
             "SetStateBool"
@@ -3982,7 +3966,7 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "if (cVar2 != '\\0') goto LAB_00ecd3d4;"
+            "if (cVar2) goto LAB_00ecd3d4;"
           ],
           "nativeLabels": [
             "LAB_00ecd3d4"
@@ -4014,7 +3998,6 @@
             "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
             "unlifted: *(undefined1 **)(xStack_1c + 8) = xStack_1c;",
             "unlifted: *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_2",
             "unlifted: LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray((LTextTreeWalkThrough *)&x",
             "unlifted: *(undefined1 **)(xStack_1c + 8) = xStack_1c;",
             "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
@@ -4028,6 +4011,7 @@
             "RESOURCE_TryAcquire",
             "ACTORMAP_New",
             "ACTORMAP_Set",
+            "ENGINE_GlobalGameDataString",
             "STRINGMAP_Set",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacroWithStrings",
@@ -4165,13 +4149,8 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 13,
-        "passed": 8,
+        "passed": 9,
         "errors": [
-          {
-            "path": "FSE/V_SickChild/Entities/MansLover.lua",
-            "line": 83,
-            "message": "FSE/V_SickChild/Entities/MansLover.lua:83: 'then' expected near '['"
-          },
           {
             "path": "FSE/V_SickChild/Entities/TalkingTrader1.lua",
             "line": 372,
@@ -4211,7 +4190,6 @@
       "declaredFreeLocals": {
         "FSE/V_SickChild/V_SickChild.lua": {
           "helper_ECE460": [
-            "amStack_28",
             "i_stk_14",
             "pCVar7",
             "piVar1",
@@ -4263,8 +4241,7 @@
             "CVar3",
             "pCVar6",
             "pOther",
-            "xStack_1c",
-            "xStack_2c"
+            "xStack_1c"
           ]
         }
       },
@@ -4385,10 +4362,10 @@
         "owners": 12,
         "functions": 49,
         "missing": 0,
-        "functionSyntaxPassed": 45,
-        "fileSyntaxPassed": 8,
+        "functionSyntaxPassed": 46,
+        "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 13,
-        "todo": 468
+        "todo": 437
       }
     }
   ],
@@ -4396,9 +4373,9 @@
     "owners": 12,
     "functions": 49,
     "missing": 0,
-    "functionSyntaxPassed": 45,
-    "fileSyntaxPassed": 8,
+    "functionSyntaxPassed": 46,
+    "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 13,
-    "todo": 468
+    "todo": 437
   }
 }

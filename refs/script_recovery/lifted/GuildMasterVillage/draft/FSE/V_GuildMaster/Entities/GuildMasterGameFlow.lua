@@ -122,10 +122,10 @@ function Main(quest, me)
                                     resources:ReleaseResource(xStack_1b0)
                                     return
                                 end
-                                bUnknown = 0
+                                bUnknown = false
                                 pCVar7 = quest:GetThingWithScriptName("FocalSitesHSP")
                                 pCVar10 = quest:GetHero()
-                                quest:EntityTeleportToThing(pCVar10, pCVar7, (bUnknown ~= 0))
+                                quest:EntityTeleportToThing(pCVar10, pCVar7, bUnknown)
                             end
                             cVar6 = me:IsTalkedToByHero()
                             if cVar6 then

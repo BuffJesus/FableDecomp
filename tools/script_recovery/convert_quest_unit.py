@@ -72,6 +72,22 @@ PERSIST_DEFAULT = {'Bool': 'false', 'Int': '0', 'UInt': '0', 'Float': '0.0', 'St
 RE_TRANSFER_CALL = re.compile(r'^[ \t]*(?:\w+ = )?(?:\([\w :<>*]+\))?\s*CPersistContext::Transfer<([^>]+)>(?:__at([0-9a-f]+))?\s*\((.*)\);[ \t]*$', re.M)
 
 
+def out_thing_messages(spec_path, manifest):
+    """Interface slots whose retail signature is `bool Msg(CScriptThing *out)` and whose Forge binding returns
+    `sol::object` with no script operands: the binding hands back the out thing (nil when the message did not fire)."""
+    names = set()
+    if not Path(spec_path).is_file():
+        return frozenset()
+    for slot in json.loads(Path(spec_path).read_text(encoding='utf-8')).get('slots', {}).values():
+        params = slot.get('params', [])
+        spec = manifest.get(slot.get('name'))
+        if (slot.get('ret') == 'bool' and len(params) == 1 and params[0].get('type', '').replace(' ', '') == 'CScriptThing*'
+                and spec and spec.get('returnType') == 'sol::object'
+                and all(p.get('type') == 'sol::this_state' for p in spec.get('parameters', []))):
+            names.add(slot['name'])
+    return frozenset(names)
+
+
 def persist_kinds_from_spec(tu_path):
     """address -> kind for the Transfer<T> helpers the unit's typing spec (FSE typedefs) names."""
     spec = Path(tu_path).parent / 'typing_spec.json'
@@ -1150,6 +1166,7 @@ class UnitConverter:
             slot_params = {int(k, 16): len(v.get('params', []))
                            for k, v in json.loads(spec_path.read_text(encoding='utf-8')).get('slots', {}).items()}
         self.slot_words = slot_params.get   # an interface vcall's stack operands (constructor emulation)
+        self.out_thing_msgs = out_thing_messages(spec_path, self.manifest)
 
     def constructor_defaults(self, vtable, fields, exclude):
         """Constant scalar members the retail constructor leaves (ctor_defaults: emulated, read-only); {} when the
@@ -1690,6 +1707,7 @@ class UnitConverter:
             local_names = {f['address'].lower(): n for n, f in functions.items()
                            if re.fullmatch(r'[A-Za-z_]\w*', n) and n not in ('Main', 'Init', 'OnPersist', 'OnPredicateFail')}
             lifter.accessor_kinds = True
+            lifter.out_thing_msgs = self.out_thing_msgs
             lifter.helper_names = set(local_names.values())
             lifter.binding_files = binding_files
             signatures = {}
@@ -1881,6 +1899,7 @@ class UnitConverter:
                                        live_termination=True, execution_entity=True, native_gotos=True,
                                        readable_locals=True, flat_control=self.flat_control)
                 shared_lifter.accessor_kinds = True
+                shared_lifter.out_thing_msgs = self.out_thing_msgs
                 shared_lifter.helper_names = set(helpers.values())
                 for address, helper in helpers.items():
                     helper_fn = self.native(address)

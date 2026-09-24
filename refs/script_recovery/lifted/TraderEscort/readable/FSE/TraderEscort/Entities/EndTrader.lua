@@ -125,7 +125,7 @@ function Main(quest, me)
         -- TODO(native): iVar8 = IsDistanceFromThingToPositionOver(pvVar6,&iStack_68,iVar8);
         local scratchValue20 = nil --[[unresolved native result]]
         scratchValue = scratchValue20
-        while scratchValue ~= 0 do
+        while scratchValue do
             if not quest:NewScriptFrame(me) then goto LAB_00e05fd1 end
             me:MoveToPosition(darkwoodTrader, 3.0, ENTITY_MOVE_WALK, false, true)
             while me:IsPerformingScriptTask() do

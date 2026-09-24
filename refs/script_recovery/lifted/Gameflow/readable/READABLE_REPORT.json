@@ -1422,12 +1422,12 @@
        ]
       },
       "uVar11": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+       "name": "predicateResult10",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
-        null
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
        ]
       },
       "xStack_58": {
@@ -1445,7 +1445,7 @@
        ]
       },
       "xStack_81c": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -2559,7 +2559,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 9,
+       "constantConditions": 6,
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 61,
@@ -2572,7 +2572,7 @@
        "controlAcquires": 0,
        "sunkLocals": 7,
        "cleanupClosureNames": 0,
-       "parentheses": 8,
+       "parentheses": 5,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 4,

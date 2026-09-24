@@ -893,6 +893,10 @@
             "goto LAB_00e68ae2;",
             "goto LAB_00e68af4;",
             "if (!bVar6) goto LAB_00e665da;",
+            "if (!cVar7) goto LAB_00e654e0;",
+            "if (!cVar7) goto LAB_00e65617;",
+            "if (!cVar7) goto LAB_00e661fd;",
+            "if (!cVar7) goto LAB_00e6634f;",
             "if ((c_stk_381 != '\\0') || (c_stk_399 = '\\0', *(char *)(*(int *)(this + 0x14) + 0x58) != '\\0')) goto LAB_00e6634f;",
             "if (*(char *)(this + 0x1e) == '\\0') goto LAB_00e68a20;",
             "if (bVar6) goto LAB_00e66150;",
@@ -910,10 +914,6 @@
             "if (bVar6) goto LAB_00e68ae2;",
             "if (bVar6) goto LAB_00e68aeb;",
             "if (bVar6) goto LAB_00e68af4;",
-            "if (cVar7 == '\\0') goto LAB_00e654e0;",
-            "if (cVar7 == '\\0') goto LAB_00e65617;",
-            "if (cVar7 == '\\0') goto LAB_00e661fd;",
-            "if (cVar7 == '\\0') goto LAB_00e6634f;",
             "if (c_stk_381 != '\\0') goto LAB_00e65617;"
           ],
           "nativeLabels": [

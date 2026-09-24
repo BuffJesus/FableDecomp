@@ -590,7 +590,7 @@ function Main(quest, me)
                 iVar9 = 1.0
                 -- TODO(native): p0 = (**(*me + 0x1c))(me,xStack_30)
                 p0 = nil --[[unresolved native value]]
-                me:MoveToPosition(pvVar8, iVar9, iVar19, (iVar21 ~= 0), (iVar24 ~= 0))
+                me:MoveToPosition(p0, iVar9, iVar19, (iVar21 ~= 0), (iVar24 ~= 0))
             end
             goto FLOW_past_lab_00e40044
             ::LAB_00e40044::

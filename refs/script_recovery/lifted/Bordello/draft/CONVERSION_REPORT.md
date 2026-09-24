@@ -28,13 +28,13 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_Bordello | BordelloGuard | Init | 0x00e3af30 | True | 0 |
 | V_Bordello | BordelloGuard | OnPersist | 0x00cdebc0 | True | 0 |
 | V_Bordello | BordelloGuard | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| V_Bordello | Magicman | Main | 0x00e40e80 | True | 180 |
+| V_Bordello | Magicman | Main | 0x00e40e80 | True | 174 |
 | V_Bordello | Magicman | Init | 0x00e3b060 | True | 0 |
 | V_Bordello | Magicman | OnPersist | 0x00e3bad0 | True | 1 |
 | V_Bordello | Magicman | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | V_Bordello | Magicman | helper_E44A40 | 0x00e44a40 | True | 0 |
 | V_Bordello | Magicman | helper_E44CC0 | 0x00e44cc0 | True | 0 |
-| V_Bordello | BordelloClient | Main | 0x00e44ea0 | True | 17 |
+| V_Bordello | BordelloClient | Main | 0x00e44ea0 | True | 16 |
 | V_Bordello | BordelloClient | Init | 0x00e3b1a0 | True | 2 |
 | V_Bordello | BordelloClient | OnPersist | 0x00e3bb00 | True | 3 |
 | V_Bordello | BordelloClient | OnPredicateFail | 0x00e3b230 | True | 1 |
@@ -47,4 +47,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_Bordello | BordelloEntrance | OnPersist | 0x00cdebc0 | True | 0 |
 | V_Bordello | BordelloEntrance | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 8, "functions": 42, "missing": 0, "functionSyntaxPassed": 39, "fileSyntaxPassed": 6, "fileSyntaxChecked": 9, "todo": 377}`
+Summary: `{"owners": 8, "functions": 42, "missing": 0, "functionSyntaxPassed": 39, "fileSyntaxPassed": 6, "fileSyntaxChecked": 9, "todo": 370}`

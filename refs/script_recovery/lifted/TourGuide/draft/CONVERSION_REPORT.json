@@ -227,7 +227,7 @@
             "IsActiveThreadTerminating",
             "SetStateBool"
           ],
-          "lines": 43,
+          "lines": 42,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -357,9 +357,7 @@
             "unlifted: xStack_64._0_4_ = puVar10.x;",
             "unlifted: xStack_64._4_4_ = puVar10.y;",
             "unlifted: xStack_64._8_4_ = puVar10.z;",
-            "unlifted: pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameR",
             "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "unlifted: pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameR",
             "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
             "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)",
             "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)"
@@ -554,6 +552,7 @@
             "IsActiveThreadTerminating",
             "ENGINE_ZeroVector",
             "GetPos",
+            "RESOURCE_ScriptThing",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "MoveToPosition",
@@ -562,6 +561,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "IsActiveThreadTerminating",
             "FadeOutAndKillEntity",
             "IsActiveThreadTerminating",
@@ -572,7 +572,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 528,
+          "lines": 530,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -719,10 +719,7 @@
             "unnamed field 0x164 written in helper_EE6850",
             "unnamed field 0x164",
             "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "unlifted: *piVar2 = *piVar2 + 1;",
-            "unlifted: iVar1 = *native_arg_param_2",
-            "unlifted: piVar2 = *(pCVar7 + 0x8)",
-            "unlifted: piVar3 = *(pCVar7 + 0x4)"
+            "unlifted: iVar1 = *native_arg_param_2"
           ],
           "calls": [
             "IsAlive",
@@ -744,7 +741,7 @@
             "GetPos",
             "SetDataString"
           ],
-          "lines": 94,
+          "lines": 84,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -779,11 +776,8 @@
             "unnamed field 0x14",
             "FollowThing: missing spTargetThing (2 args for 3 params)",
             "unlifted: xStack_28 = puVar7.x;",
-            "unlifted: pvVar8 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameRe",
             "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "unlifted: pvVar8 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameRe",
-            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "unlifted: me:MoveToPosition(puVar7, &xStack_28, 0x3f800000, false, false)"
+            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands"
           ],
           "calls": [
             "RegisterTimer",
@@ -857,6 +851,7 @@
             "IsActiveThreadTerminating",
             "ENGINE_ZeroVector",
             "GetPos",
+            "RESOURCE_ScriptThing",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "MoveToPosition",
@@ -865,6 +860,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "IsActiveThreadTerminating",
             "FadeOutAndKillEntity",
             "IsActiveThreadTerminating",
@@ -876,7 +872,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 225,
+          "lines": 227,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -984,6 +980,13 @@
         "TourGuideGuide": "V_TourGuide/Entities/TourGuideGuide",
         "TourGuideFollower": "V_TourGuide/Entities/TourGuideFollower"
       },
+      "declaredFreeLocals": {
+        "FSE/V_TourGuide/Entities/TourGuideFollower.lua": {
+          "Main": [
+            "xStack_28"
+          ]
+        }
+      },
       "summary": {
         "owners": 3,
         "functions": 15,
@@ -991,7 +994,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 99
+        "todo": 91
       }
     }
   ],
@@ -1002,6 +1005,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 99
+    "todo": 91
   }
 }

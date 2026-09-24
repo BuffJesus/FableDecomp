@@ -5567,21 +5567,21 @@
        ]
       },
       "uVar2": {
-       "name": "scratchValue12",
-       "basis": "reused or unresolved native temporary",
+       "name": "predicateResult5",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
-        null
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
        ]
       },
       "uVar3": {
-       "name": "scratchValue13",
-       "basis": "reused or unresolved native temporary",
+       "name": "predicateResult6",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
-        null
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
        ]
       },
       "xStack_10": {
@@ -5600,7 +5600,7 @@
        ]
       },
       "xStack_40": {
-       "name": "scratchValue14",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -6340,7 +6340,7 @@
      "function": "Main",
      "sourceLine": 17,
      "locals": {
-      "scratchValue2": {
+      "scratchValue": {
        "name": "getDistanceBetweenThings",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -6432,7 +6432,7 @@
        "parentheses": 25,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 2,
+       "freeSuffixes": 3,
        "hoistedState": 0
       },
       "before": {
@@ -8458,7 +8458,7 @@
        "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
+        "predicateResult",
         null
        ]
       },
@@ -8793,7 +8793,7 @@
     },
     {
      "function": "helper_E137B0",
-     "sourceLine": 313,
+     "sourceLine": 308,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -9381,7 +9381,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 1,
        "frameChecks": 3,
-       "inlinedTemporaries": 11,
+       "inlinedTemporaries": 12,
        "deadDefinitions": 5,
        "guardWrappers": 0,
        "retryLoops": 2,
@@ -9400,7 +9400,7 @@
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 60,
-       "booleanBranches": 0,
+       "booleanBranches": 1,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
@@ -9409,7 +9409,7 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 3,
+       "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,
@@ -9425,8 +9425,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 41,
-       "temporaries": 4,
+       "lines": 36,
+       "temporaries": 3,
        "labels": 1,
        "gotos": 3,
        "terminationChecks": 3,

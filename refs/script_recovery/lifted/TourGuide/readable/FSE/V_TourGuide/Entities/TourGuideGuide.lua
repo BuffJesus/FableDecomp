@@ -10,9 +10,9 @@ local saveWaypointIdx, lastRandomSpeechIdx, self0X14, self0X164
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, addNewConversation, getTimer, getPos, scratchValue, scratchValue12
-    local closingTimeExit
-    scratchValue12 = 0
+    local predicateResult, addNewConversation, getTimer, getRandomThingWithScriptName2, scratchValue
+    local scratchValue15, closingTimeExit
+    scratchValue15 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -71,16 +71,16 @@ function Main(quest, me)
             if not quest:GetStateBool("SpawnedQuestFinishThread") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
                 quest:CreateThread("WatchForNoFollowers")  -- native thread body NScript::CV_TourGuideScript::WatchForNoFollowers: lift it as function WatchForNoFollowers(quest)
-                if scratchValue12 & 4 ~= 0 then
-                    scratchValue = scratchValue12 & 0xfffffffb
-                    scratchValue12 = scratchValue
+                if scratchValue15 & 4 ~= 0 then
+                    scratchValue = scratchValue15 & 0xfffffffb
+                    scratchValue15 = scratchValue
                 end
                 if scratchValue & 2 ~= 0 then
                     scratchValue = scratchValue & 0xfffffffd
-                    scratchValue12 = scratchValue
+                    scratchValue15 = scratchValue
                 end
                 if scratchValue & 1 ~= 0 then
-                    scratchValue12 = scratchValue & 0xfffffffe
+                    scratchValue15 = scratchValue & 0xfffffffe
                 end
                 quest:SetStateBool("SpawnedQuestFinishThread", true)
             end
@@ -102,7 +102,7 @@ function Main(quest, me)
             -- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
             if not quest:GetStateBool("TourGuideKilled") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
-                local getRandomThingWithScriptName2 = quest:GetRandomThingWithScriptName("TourGuideFollower")
+                getRandomThingWithScriptName2 = quest:GetRandomThingWithScriptName("TourGuideFollower")
                 addNewConversation = getRandomThingWithScriptName2 ~= nil and getRandomThingWithScriptName2:IsAlive()
                 if addNewConversation then
                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -278,25 +278,20 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
     closingTimeExit = quest:GetThingWithScriptName("M_TG_ClosingTimeExit")
     if false and (closingTimeExit ~= nil and closingTimeExit:IsAlive()) then
-        if not (closingTimeExit ~= nil and not closingTimeExit:IsNull()) then
-            getPos = {x = 0, y = 0, z = 0}
-        else
-            getPos = closingTimeExit:GetPos()
-        end
         -- TODO(native): xStack_64._0_4_ = puVar10.x;
         -- TODO(native): xStack_64._4_4_ = puVar10.y;
         -- TODO(native): xStack_64._8_4_ = puVar10.z;
-        -- TODO(native): pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_9c,(int)&xStack_40);
+        resources:ScriptThing(resource)
         -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
     --[[unresolved native result]]
-        while nil ~= 0 do
+        while nil do
             if not quest:NewScriptFrame(me) then goto LAB_00ee6817 end
-            me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_WALK, false, true)
+            me:MoveToPosition(getRandomThingWithScriptName2, 1.0, ENTITY_MOVE_WALK, false, true)
             while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then goto LAB_00ee6817 end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
-            -- TODO(native): pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_9c,(int)&xStack_40);
+            resources:ScriptThing(resource)
             -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
     --[[unresolved native result]]
         end
@@ -334,7 +329,7 @@ end
 -- TourGuideGuide.MoveToNextWaypoint (retail 0x00ee6850)
 -- EE6850: bsim names this body NScript::CV_TourGuideScript::MoveToNextWaypoint (a homologous script member); no PDB name
 function MoveToNextWaypoint(quest, me, param1, param2)
-    local getThingWithScriptName, getPos, scratchValue
+    local getPos, getThingWithScriptName2
     if param1 ~= nil and param1:IsAlive() then
         if quest:IsActiveThreadTerminating() then return end
         -- TODO(native): iVar1 = *native_arg_param_2
@@ -345,13 +340,13 @@ function MoveToNextWaypoint(quest, me, param1, param2)
         if quest:IsActiveThreadTerminating() then return end
         -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
         -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
-        scratchValue = nil
+        getThingWithScriptName2 = nil
         if nil ~= nil then
             -- TODO(native): *xStack_18 = *xStack_18 + 1;
         end
         local self0X = self0X164
         while true do
-            if not (scratchValue == nil or not (scratchValue ~= nil and scratchValue:IsAlive())) then break end
+            if not (getThingWithScriptName2 == nil or not (getThingWithScriptName2 ~= nil and getThingWithScriptName2:IsAlive())) then break end
             if not quest:NewScriptFrame(me) then goto LAB_00ee6a24 end
             local getStateInt = self0X164 + 1
             -- TODO(native): name field 0x164 (int)
@@ -363,23 +358,14 @@ function MoveToNextWaypoint(quest, me, param1, param2)
                 -- TODO(native): name field 0x164 (undefined4)
                 self0X164 = 0
             end
-            getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-            -- TODO(native): piVar2 = *(pCVar7 + 0x8)
-    --[[unresolved native value]]
-            -- TODO(native): piVar3 = *(pCVar7 + 0x4)
-    --[[unresolved native value]]
-            if scratchValue ~= nil then
-                scratchValue = nil
-                if nil ~= nil then
-                    -- TODO(native): *piVar2 = *piVar2 + 1;
-                end
-            end
+            local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
+            getThingWithScriptName2 = getThingWithScriptName
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00ee6a24 end
-        if scratchValue == nil then
+        if getThingWithScriptName2 == nil then
             getPos = {x = 0, y = 0, z = 0}
         else
-            getPos = scratchValue:GetPos()
+            getPos = getThingWithScriptName2:GetPos()
         end
         param2:SetDataString(getPos)
         ::LAB_00ee6a24::

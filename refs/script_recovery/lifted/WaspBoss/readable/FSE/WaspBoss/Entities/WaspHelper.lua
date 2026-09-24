@@ -18,8 +18,8 @@ local pleadedToHero, leadToRegion, wavedOver
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isDistanceBetweenThingsUnder, scratchValue8, addNewConversation, getPos, scratchValue
-    local scratchValue13, movie, timerId
+    local isDistanceBetweenThingsUnder, scratchValue8, addNewConversation, getPos, predicateResult
+    local predicateResult6, movie, timerId
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     local waspGuardMoveToPos = quest:GetThingWithScriptName("WaspGuardMoveToPos")
@@ -93,15 +93,15 @@ function Main(quest, me)
         end
         me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
         isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, waspGuardMoveToPos, 2.0)
-        scratchValue = 0
-        scratchValue13 = 0
+        predicateResult = false
+        predicateResult6 = false
         while not isDistanceBetweenThingsUnder do
             if not quest:NewScriptFrame(me) then goto LAB_00e109a6 end
             local getDistanceBetweenThings = quest:GetDistanceBetweenThings(hero, waspGuardMoveToPos) ^ 2
             local getDistanceBetweenThings2 = quest:GetDistanceBetweenThings(me, waspGuardMoveToPos) ^ 2
             if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or getDistanceBetweenThings <= getDistanceBetweenThings2 then
                 if quest:IsDistanceBetweenThingsUnder(me, hero, 6.5) or getDistanceBetweenThings <= getDistanceBetweenThings2 then
-                    if not scratchValue then
+                    if not predicateResult then
                         me:ClearCommands()
                         if not (waspGuardMoveToPos ~= nil and not waspGuardMoveToPos:IsNull()) then
                             getPos = {x = 0, y = 0, z = 0}
@@ -109,10 +109,10 @@ function Main(quest, me)
                             getPos = waspGuardMoveToPos:GetPos()
                         end
                         me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
-                        scratchValue = 1
+                        predicateResult = true
                     end
                 elseif quest:IsDistanceBetweenThingsUnder(me, hero, 8.0) then
-                    if scratchValue ~= 0 then
+                    if predicateResult then
                         me:ClearCommands()
                         if not (waspGuardMoveToPos ~= nil and not waspGuardMoveToPos:IsNull()) then
                             getPos = {x = 0, y = 0, z = 0}
@@ -120,10 +120,10 @@ function Main(quest, me)
                             getPos = waspGuardMoveToPos:GetPos()
                         end
                         me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_WALK, false, true)
-                        scratchValue = 0
+                        predicateResult = false
                     end
                 end
-                scratchValue13 = 0
+                predicateResult6 = false
                 if quest:GetTimer(timerId) == 0 then
                     if not quest:IsActiveThreadTerminating() then
                         addNewConversation = quest:AddNewConversation(me, false, false)
@@ -137,14 +137,14 @@ function Main(quest, me)
             else
                 me:ClearCommands()
                 me:ClearAllActions()
-                if not scratchValue13 then
+                if not predicateResult6 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e109a6 end
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_072_HELPER_OVER_HERE", me, hero, false)
                     quest:Pause(1.0)
-                    scratchValue13 = 1
+                    predicateResult6 = true
                 end
                 if quest:GetTimer(timerId) == 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e109a6 end

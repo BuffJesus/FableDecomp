@@ -9579,7 +9579,7 @@
        "previousLines": {
         "2": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, cVar5_1, cVar5_2, cVar5_3, cVar5_4, cVar5_5, cVar5_6, fVar8_1, fVar8_2, fVar8_3, fVar8_4, fVar9_1, fVar9_2, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, native_arg_sequence_1_2, native_arg_sequence_2_2, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, piVar1_1, piVar1_2, piVar1_3, piVar1_4, r1, r2, xStack_18, xStack_24, xStack_30, xStack_3c\n",
         "37": "        cVar5_2 = nil --[[unresolved native value]]\n",
-        "39": "        if cVar5_2 == 0 then\n"
+        "39": "        if not cVar5_2 then\n"
        }
       },
       "cVar5_3": {
@@ -9592,7 +9592,7 @@
        "previousLines": {
         "2": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, cVar5_1, cVar5_3, cVar5_4, cVar5_5, cVar5_6, fVar8_1, fVar8_2, fVar8_3, fVar8_4, fVar9_1, fVar9_2, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, native_arg_sequence_1_2, native_arg_sequence_2_2, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, piVar1_1, piVar1_2, piVar1_3, piVar1_4, r1, r2, xStack_18, xStack_24, xStack_30, xStack_3c\n",
         "46": "            cVar5_3 = nil --[[unresolved native value]]\n",
-        "47": "            if cVar5_3 == 0 then\n"
+        "47": "            if not cVar5_3 then\n"
        }
       },
       "cVar5_5": {
@@ -9605,7 +9605,7 @@
        "previousLines": {
         "2": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, cVar5_1, cVar5_4, cVar5_5, cVar5_6, fVar8_1, fVar8_2, fVar8_3, fVar8_4, fVar9_1, fVar9_2, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, native_arg_sequence_1_2, native_arg_sequence_2_2, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, piVar1_1, piVar1_2, piVar1_3, piVar1_4, r1, r2, xStack_18, xStack_24, xStack_30, xStack_3c\n",
         "119": "            cVar5_5 = nil --[[unresolved native value]]\n",
-        "121": "            if cVar5_5 == 0 then\n"
+        "121": "            if not cVar5_5 then\n"
        }
       },
       "cVar5_6": {
@@ -9618,7 +9618,7 @@
        "previousLines": {
         "2": "    local bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, cVar5_1, cVar5_4, cVar5_6, fVar8_1, fVar8_2, fVar8_3, fVar8_4, fVar9_1, fVar9_2, f_stk_4c, f_stk_54, f_stk_58, f_stk_60, native_arg_sequence_1_2, native_arg_sequence_2_2, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, piVar1_1, piVar1_2, piVar1_3, piVar1_4, r1, r2, xStack_18, xStack_24, xStack_30, xStack_3c\n",
         "128": "                cVar5_6 = nil --[[unresolved native value]]\n",
-        "129": "                if cVar5_6 == 0 then\n"
+        "129": "                if not cVar5_6 then\n"
        }
       },
       "piVar1_1": {
@@ -11889,23 +11889,23 @@
        ]
       },
       "uVar14": {
-       "name": "scratchValue10",
-       "basis": "reused or unresolved native temporary",
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
        ]
       },
       "xStack_30": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       }
@@ -11966,7 +11966,7 @@
        "controlAcquires": 0,
        "sunkLocals": 4,
        "cleanupClosureNames": 0,
-       "parentheses": 52,
+       "parentheses": 42,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -12093,7 +12093,7 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 0,
+      "nilReleases": 1,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
@@ -12110,12 +12110,12 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 0,
+      "nilReleases": 3,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 1,
+      "declarations": 2,
       "decimalLiterals": 0
      }
     },
@@ -13671,7 +13671,7 @@
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "173": "                cVar3_1 = nil --[[unresolved native value]]\n",
-        "174": "                if cVar3_1 ~= 0 then\n"
+        "174": "                if cVar3_1 then\n"
        }
       },
       "cVar3_2": {
@@ -13684,7 +13684,7 @@
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "198": "                cVar3_2 = nil --[[unresolved native value]]\n",
-        "199": "                if cVar3_2 ~= 0 then goto LAB_00e06fb5 end\n"
+        "199": "                if cVar3_2 then goto LAB_00e06fb5 end\n"
        }
       },
       "iVar8_2": {
@@ -13843,29 +13843,29 @@
        "versions": {
         "bVar3_1": [
          15,
-         31
+         26
         ],
         "bVar3_2": [
          19
         ],
         "bVar3_3": [
-         34
+         29
         ],
         "bVar3_4": [
-         38,
-         44
+         33,
+         39
         ],
         "bVar3_5": [
-         41
+         36
         ],
         "bVar3_6": [
-         47
+         42
         ],
         "bVar3_7": [
-         69
+         64
         ],
         "bVar3_8": [
-         77
+         72
         ]
        }
       },
@@ -13874,13 +13874,13 @@
        "originalDeclaration": "    local bVar3, ePriority, pPosition, pThing, pppuVar5, r1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_4c\n",
        "versions": {
         "xStack_4c_1": [
-         54
+         49
         ],
         "xStack_4c_2": [
-         68
+         63
         ],
         "xStack_4c_3": [
-         70
+         65
         ]
        }
       },
@@ -13904,21 +13904,21 @@
       },
       "xStack_4c_3": {
        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, ePriority, pPosition, pThing, pppuVar5, r1_1, r1_2, xStack_10, xStack_20, xStack_30, xStack_40, xStack_4c_1, xStack_4c_2, xStack_4c_3\n",
-       "70": "                xStack_4c_3 = nil\n"
+       "65": "                xStack_4c_3 = nil\n"
       }
      },
      "inlinedLiteralLocals": {
       "xStack_4c_2": {
        "literal": "nil",
-       "definitionLine": 68,
+       "definitionLine": 63,
        "readLines": [
-        69
+        64
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, ePriority, pPosition, pThing, pppuVar5, r1_1, xStack_10, xStack_20, xStack_30, xStack_40, xStack_4c_1, xStack_4c_2\n",
-        "68": "                xStack_4c_2 = nil\n",
-        "69": "                bVar3_7 = MakeTraderComment(quest, \"TRANSFORMED\", xStack_4c_2, 1)\n"
+        "63": "                xStack_4c_2 = nil\n",
+        "64": "                bVar3_7 = MakeTraderComment(quest, \"TRANSFORMED\", xStack_4c_2, 1)\n"
        }
       }
      },
@@ -13926,7 +13926,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 713,
+     "sourceLine": 708,
      "locals": {
       "native_arg_Trader": {
        "name": "trader",
@@ -13994,7 +13994,7 @@
        "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
+        "predicateResult",
         null
        ]
       },
@@ -14010,10 +14010,12 @@
         "predicateResult"
        ]
       },
-      "xStack_c_1": {
+      "xStack_c_2": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "assignmentRoles": [
+        null
+       ]
       }
      },
      "splitLocals": {
@@ -14023,25 +14025,25 @@
        "versions": {
         "bVar1_1": [
          6,
-         91
+         80
         ],
         "bVar1_2": [
-         19
+         16
         ],
         "bVar1_3": [
-         22
+         19
         ],
         "bVar1_4": [
-         27
+         24
         ],
         "bVar1_5": [
-         31
+         28
         ],
         "bVar1_6": [
-         47
+         44
         ],
         "bVar1_7": [
-         83
+         71
         ]
        }
       },
@@ -14050,11 +14052,11 @@
        "originalDeclaration": "    local bVar1, cVar2, native_arg_sequence_1, xStack_c\n",
        "versions": {
         "cVar2_1": [
-         24
+         21
         ],
         "cVar2_2": [
-         77,
-         79
+         65,
+         67
         ]
        }
       },
@@ -14063,15 +14065,15 @@
        "originalDeclaration": "    local bVar1, cVar2, native_arg_sequence_1, xStack_c\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         32
+         29
         ],
         "native_arg_sequence_1_2": [
-         34,
-         36,
-         40,
-         42,
-         49,
-         51
+         31,
+         33,
+         37,
+         39,
+         46,
+         48
         ]
        }
       },
@@ -14081,10 +14083,12 @@
        "versions": {
         "xStack_c_1": [
          4,
-         66
+         9,
+         60,
+         75
         ],
         "xStack_c_2": [
-         9
+         15
         ]
        }
       }
@@ -14092,11 +14096,14 @@
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
        "2": "    local bVar1_1, bVar1_2, bVar1_3, bVar1_4, bVar1_5, bVar1_6, bVar1_7, cVar2_1, cVar2_2, native_arg_sequence_1_1, native_arg_sequence_1_2, xStack_c_1, xStack_c_2\n",
-       "32": "                        native_arg_sequence_1_1 = false\n"
+       "29": "                        native_arg_sequence_1_1 = false\n"
       },
-      "xStack_c_2": {
+      "xStack_c_1": {
        "2": "    local bVar1_1, bVar1_2, bVar1_3, bVar1_4, bVar1_5, bVar1_6, bVar1_7, cVar2_1, cVar2_2, native_arg_sequence_1_1, native_arg_sequence_1_2, xStack_c_1, xStack_c_2\n",
-       "9": "            xStack_c_2 = nil\n"
+       "4": "    xStack_c_1 = nil\n",
+       "9": "            xStack_c_1 = nil\n",
+       "60": "            xStack_c_1 = nil\n",
+       "75": "            xStack_c_1 = nil\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -14104,7 +14111,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 807,
+     "sourceLine": 791,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -15438,7 +15445,7 @@
        }
       },
       "uVar14_1": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 53,
        "readLines": [
         59
@@ -15446,12 +15453,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_1, uVar14_2, uVar14_3, uVar14_4, uVar14_5, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "53": "        uVar14_1 = 0\n",
-        "59": "        quest:AddLineToConversation(iVar6_1, pCVar8_3, pCVar4_4, pCVar7_1, (uVar14_1 ~= 0))\n"
+        "53": "        uVar14_1 = false\n",
+        "59": "        quest:AddLineToConversation(iVar6_1, pCVar8_3, pCVar4_4, pCVar7_1, uVar14_1)\n"
        }
       },
       "uVar14_2": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 109,
        "readLines": [
         117
@@ -15459,12 +15466,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_2, uVar14_3, uVar14_4, uVar14_5, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "109": "            uVar14_2 = 0\n",
-        "117": "            quest:AddLineToConversation(iVar6_1, pCVar9_3, pCVar4_5, pCVar7_2, (uVar14_2 ~= 0))\n"
+        "109": "            uVar14_2 = false\n",
+        "117": "            quest:AddLineToConversation(iVar6_1, pCVar9_3, pCVar4_5, pCVar7_2, uVar14_2)\n"
        }
       },
       "uVar14_3": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 191,
        "readLines": [
         197
@@ -15472,12 +15479,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_3, uVar14_4, uVar14_5, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "191": "                uVar14_3 = 0\n",
-        "197": "                quest:AddLineToConversation(iVar6_2, pCVar9_5, pCVar4_8, pCVar7_3, (uVar14_3 ~= 0))\n"
+        "191": "                uVar14_3 = false\n",
+        "197": "                quest:AddLineToConversation(iVar6_2, pCVar9_5, pCVar4_8, pCVar7_3, uVar14_3)\n"
        }
       },
       "uVar14_4": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 200,
        "readLines": [
         205
@@ -15485,12 +15492,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_4, uVar14_5, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "200": "                uVar14_4 = 0\n",
-        "205": "                quest:AddLineToConversation(iVar6_2, pCVar9_8, pCVar4_9, pCVar7_4, (uVar14_4 ~= 0))\n"
+        "200": "                uVar14_4 = false\n",
+        "205": "                quest:AddLineToConversation(iVar6_2, pCVar9_8, pCVar4_9, pCVar7_4, uVar14_4)\n"
        }
       },
       "uVar14_5": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 207,
        "readLines": [
         213
@@ -15498,12 +15505,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_5, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "207": "                uVar14_5 = 0\n",
-        "213": "                quest:AddLineToConversation(iVar6_2, pCVar9_11, pCVar7_5, pCVar4_10, (uVar14_5 ~= 0))\n"
+        "207": "                uVar14_5 = false\n",
+        "213": "                quest:AddLineToConversation(iVar6_2, pCVar9_11, pCVar7_5, pCVar4_10, uVar14_5)\n"
        }
       },
       "uVar14_6": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 226,
        "readLines": [
         232
@@ -15511,12 +15518,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_6, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "226": "                uVar14_6 = 0\n",
-        "232": "                quest:AddLineToConversation(iVar6_2, pCVar9_12, pCVar4_11, pCVar7_6, (uVar14_6 ~= 0))\n"
+        "226": "                uVar14_6 = false\n",
+        "232": "                quest:AddLineToConversation(iVar6_2, pCVar9_12, pCVar4_11, pCVar7_6, uVar14_6)\n"
        }
       },
       "uVar14_7": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 235,
        "readLines": [
         240
@@ -15524,12 +15531,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_7, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "235": "                uVar14_7 = 0\n",
-        "240": "                quest:AddLineToConversation(iVar6_2, pCVar9_15, pCVar4_12, pCVar7_7, (uVar14_7 ~= 0))\n"
+        "235": "                uVar14_7 = false\n",
+        "240": "                quest:AddLineToConversation(iVar6_2, pCVar9_15, pCVar4_12, pCVar7_7, uVar14_7)\n"
        }
       },
       "uVar14_8": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 243,
        "readLines": [
         248
@@ -15537,12 +15544,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_8, uVar14_9, uVar14_10, xStack_30\n",
-        "243": "                uVar14_8 = 0\n",
-        "248": "                quest:AddLineToConversation(iVar6_2, pCVar9_18, pCVar4_13, pCVar7_8, (uVar14_8 ~= 0))\n"
+        "243": "                uVar14_8 = false\n",
+        "248": "                quest:AddLineToConversation(iVar6_2, pCVar9_18, pCVar4_13, pCVar7_8, uVar14_8)\n"
        }
       },
       "uVar14_9": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 251,
        "readLines": [
         256
@@ -15550,12 +15557,12 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_9, uVar14_10, xStack_30\n",
-        "251": "                uVar14_9 = 0\n",
-        "256": "                quest:AddLineToConversation(iVar6_2, pCVar9_21, pCVar4_14, pCVar7_9, (uVar14_9 ~= 0))\n"
+        "251": "                uVar14_9 = false\n",
+        "256": "                quest:AddLineToConversation(iVar6_2, pCVar9_21, pCVar4_14, pCVar7_9, uVar14_9)\n"
        }
       },
       "uVar14_10": {
-       "literal": "0",
+       "literal": "false",
        "definitionLine": 259,
        "readLines": [
         265
@@ -15563,8 +15570,8 @@
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "2": "    local __native_condition_1, bVar2_2, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, cVar3_1, cVar3_2, cVar3_3, iVar5_1, iVar5_2, iVar5_3, iVar5_4, iVar5_5, iVar5_6, iVar6_1, iVar6_2, pCVar10_1, pCVar10_2, pCVar10_3, pCVar10_4, pCVar10_5, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar4_6, pCVar4_7, pCVar4_8, pCVar4_9, pCVar4_10, pCVar4_11, pCVar4_12, pCVar4_13, pCVar4_14, pCVar4_15, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar7_6, pCVar7_7, pCVar7_8, pCVar7_9, pCVar7_10, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, pCVar8_9, pCVar8_10, pCVar8_11, pCVar8_12, pCVar8_13, pCVar8_14, pCVar8_15, pCVar9_1, pCVar9_2, pCVar9_3, pCVar9_4, pCVar9_5, pCVar9_6, pCVar9_7, pCVar9_8, pCVar9_9, pCVar9_10, pCVar9_11, pCVar9_12, pCVar9_13, pCVar9_14, pCVar9_15, pCVar9_16, pCVar9_17, pCVar9_18, pCVar9_19, pCVar9_20, pCVar9_21, pCVar9_22, pCVar9_23, pCVar9_24, r1, r2, r3, r4, this_00, uVar11_1, uVar11_2, uVar14_10, xStack_30\n",
-        "259": "                uVar14_10 = 0\n",
-        "265": "                quest:AddLineToConversation(iVar6_2, pCVar9_24, pCVar7_10, pCVar4_15, (uVar14_10 ~= 0))\n"
+        "259": "                uVar14_10 = false\n",
+        "265": "                quest:AddLineToConversation(iVar6_2, pCVar9_24, pCVar7_10, pCVar4_15, uVar14_10)\n"
        }
       },
       "xStack_30": {
@@ -15677,7 +15684,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 471,
+     "sourceLine": 469,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15686,7 +15693,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 521,
+     "sourceLine": 495,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -16037,7 +16044,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 40,
@@ -16051,13 +16058,13 @@
        "sunkLocals": 8,
        "cleanupClosureNames": 0,
        "parentheses": 1,
-       "cosmetics": 1,
+       "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 1,
        "hoistedState": 0
       },
       "before": {
-       "lines": 80,
+       "lines": 75,
        "temporaries": 17,
        "labels": 1,
        "gotos": 1,
@@ -16066,7 +16073,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 57,
+       "lines": 55,
        "temporaries": 4,
        "labels": 1,
        "gotos": 3,
@@ -16077,22 +16084,22 @@
      },
      "WatchForPickpocketing": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
-       "staleLabelComments": 2,
+       "staleLabelComments": 3,
        "aliveStaging": 9,
-       "exitChecksInlined": 0,
+       "exitChecksInlined": 1,
        "frameChecks": 0,
-       "inlinedTemporaries": 6,
+       "inlinedTemporaries": 8,
        "deadDefinitions": 1,
-       "guardWrappers": 1,
-       "retryLoops": 0,
+       "guardWrappers": 3,
+       "retryLoops": 1,
        "booleanMaterialisation": 7,
        "booleanCompares": 0,
        "conditions": 0,
-       "literals": 0,
+       "literals": 1,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
@@ -16100,40 +16107,40 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 2,
+       "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 0,
-       "booleanBranches": 0,
+       "gotoElse": 1,
+       "booleanBranches": 1,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 0,
+       "deadTerminationChecks": 4,
        "controlAcquires": 0,
-       "sunkLocals": 6,
+       "sunkLocals": 2,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
-       "cosmetics": 2,
+       "parentheses": 4,
+       "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,
        "hoistedState": 0
       },
       "before": {
-       "lines": 91,
+       "lines": 77,
        "temporaries": 11,
-       "labels": 3,
-       "gotos": 4,
+       "labels": 1,
+       "gotos": 1,
        "terminationChecks": 7,
        "frameChecks": 0,
        "requires": 0
       },
       "after": {
-       "lines": 49,
-       "temporaries": 2,
-       "labels": 4,
-       "gotos": 5,
-       "terminationChecks": 8,
+       "lines": 25,
+       "temporaries": 0,
+       "labels": 1,
+       "gotos": 1,
+       "terminationChecks": 2,
        "frameChecks": 0,
        "requires": 0
       }
@@ -16176,7 +16183,7 @@
        "controlAcquires": 0,
        "sunkLocals": 25,
        "cleanupClosureNames": 0,
-       "parentheses": 64,
+       "parentheses": 54,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 4,

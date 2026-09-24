@@ -53,13 +53,13 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
         pCVar7 = quest:GetHero()
         pCVar9 = native_arg_comment_to_make
         pCVar4 = xStack_30
-        uVar14 = 0
+        uVar14 = false
         piVar13 = "_"
         pCVar8 = native_arg_comment_to_make
         pCVar10 = ("TEXT_QST_067_" .. native_arg_speaker)
         pCVar10 = (pCVar10 .. "_")
         pCVar8 = (pCVar10 .. pCVar8)
-        quest:AddLineToConversation(iVar6, pCVar8, pCVar4, pCVar7, (uVar14 ~= 0))
+        quest:AddLineToConversation(iVar6, pCVar8, pCVar4, pCVar7, uVar14)
         if native_arg_comment_type ~= 1 then goto LAB_00e02355 end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -111,7 +111,7 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
             quest:AddPersonToConversation(iVar6, r1)
             pCVar7 = quest:GetHero()
             pCVar4 = r1
-            uVar14 = 0
+            uVar14 = false
             pcVar15 = "_RESPONSE"
             piVar13 = "_"
             pCVar8 = r1:GetDataString()
@@ -119,7 +119,7 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
             pCVar8 = (pCVar8 .. "_")
             pCVar9 = (pCVar8 .. pCVar9)
             pCVar9 = (pCVar9 .. pcVar15)
-            quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+            quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
         end
         ::LAB_00e02355::
         quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
@@ -196,29 +196,29 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
             if not bVar2 then
                 pCVar7 = quest:GetHero()
                 pCVar4 = xStack_30
-                uVar14 = 0
+                uVar14 = false
                 piVar13 = "_"
                 pCVar8 = xStack_30:GetDataString()
                 pCVar8 = ("TEXT_QST_067_" .. pCVar8)
                 pCVar8 = (pCVar8 .. "_")
                 pCVar9 = (pCVar8 .. pCVar9)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_NO"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar4 = quest:GetHero()
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_REWARD"
                 pCVar7 = xStack_30
                 pCVar9 = pCVar7:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, uVar14)
                 -- LAB_00e01ff9_c2: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 do return true end
@@ -231,46 +231,46 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
                 quest:AddPersonToConversation(iVar6, r3)
                 pCVar7 = quest:GetHero()
                 pCVar4 = xStack_30
-                uVar14 = 0
+                uVar14 = false
                 piVar13 = "_"
                 pCVar8 = xStack_30:GetDataString()
                 pCVar8 = ("TEXT_QST_067_" .. pCVar8)
                 pCVar8 = (pCVar8 .. "_")
                 pCVar9 = (pCVar8 .. pCVar9)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_NO"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r3
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_OATH"
                 pCVar9 = r3:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_BAD_NEWS"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar4 = quest:GetHero()
                 -- LAB_00e01fb0: (native jump target)
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_REWARD"
                 pCVar7 = xStack_30
                 pCVar9 = pCVar7:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, uVar14)
                 -- LAB_00e01ff9: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 return true

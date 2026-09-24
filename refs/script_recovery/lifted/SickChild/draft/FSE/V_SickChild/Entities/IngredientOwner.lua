@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bUnknown, bVar3, cVar4, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar10, iVar11, iVar13, iVar8, native_arg_sequence_1, pCVar14, pCVar5, pCVar6, pCVar9, pcVar7, r1, r2, r3, r4, r5, r6, r7, r8, xStack_70, xStack_80, xStack_90, xStack_cc, xStack_e8, xStack_ec, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
+    local bUnknown, bVar3, cVar4, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar10, iVar11, iVar13, iVar8, native_arg_sequence_1, pCVar14, pCVar5, pCVar6, pCVar9, pcVar7, r1, r2, r3, r4, r5, r6, r7, r8, xStack_70, xStack_80, xStack_90, xStack_ac, xStack_cc, xStack_e8, xStack_ec, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -152,8 +152,8 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00ecbbc9 end
-                                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_ac);
-                                quest:GiveHeroObject(pcVar7, -1, false)
+                                xStack_ac = quest:ReadGlobalGameDataString(0x738)
+                                quest:GiveHeroObject(xStack_ac, -1, false)
                                 quest:RemoveThing(pCVar14, false, false)
                                 quest:GiveHeroGold(-0x5dc)
                                 quest:EntityGiveGold(me, 0x5dc)
@@ -370,7 +370,7 @@ function Main(quest, me)
         if native_arg_sequence_1 then
             -- TODO(native): cVar4 = (**(CStack_d8._0_4_ + 0x12c))()
             cVar4 = nil --[[unresolved native value]]
-            if cVar4 == 0 then
+            if not cVar4 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false

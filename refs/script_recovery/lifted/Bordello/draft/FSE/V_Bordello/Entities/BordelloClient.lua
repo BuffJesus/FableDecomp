@@ -276,7 +276,7 @@ function Main(quest, me)
                             pCVar7 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                             pCVar7 = ("TEXT_QST_B13_CLIENT" .. pCVar7)
                             __push3 = (pCVar7 .. pcVar20)
-                            quest:GiveHeroYesNoQuestion(__push3, pvVar11, pcVar20, "TEXT_OBJECT_HERO_ANSWER_YES", (xStack_dc ~= 0))
+                            quest:GiveHeroYesNoQuestion(__push3, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                             iVar12 = quest:MsgIsQuestionAnsweredYesOrNo()
                             while iVar12 < 0 do
                                 alive = quest:NewScriptFrame(me)
@@ -508,7 +508,7 @@ function Main(quest, me)
                                 -- TODO(native): puVar8 = (**(*xStack_e4 + 0x18))()
                                 puVar8 = nil --[[unresolved native value]]
                             end
-                            me:MoveToPosition(nil --[[missing]], puVar8, 0x3f800000, false, false)
+                            me:MoveToPosition(puVar8, 1.0, 0, false, true)
                         end
                         bVar4 = quest:IsDistanceBetweenThingsUnder(r2, me, 5.0)
                         if bVar4 then

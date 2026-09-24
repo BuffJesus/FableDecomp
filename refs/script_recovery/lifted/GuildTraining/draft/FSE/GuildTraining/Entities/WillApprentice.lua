@@ -409,13 +409,13 @@ function Main(quest, me)
                 i_stk_70 = iVar6
                 f_stk_108 = quest:AddQuestInfoTimer(xStack_138, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
-                cVar5 = 0
+                cVar5 = false
                 c_stk_115 = 0
                 xStack_14c = quest:RegisterTimer()
                 timerId = xStack_14c
                 quest:SetTimer(xStack_14c, 0)
                 iVar13 = quest:GetTimer(xStack_138)
-                while (0 < iVar13 and (cVar5 == 0)) do
+                while (0 < iVar13 and (not cVar5)) do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -434,7 +434,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
-                        cVar5 = 1
+                        cVar5 = true
                         c_stk_115 = 1
                     end
                     iVar6 = quest:GetHeroWillEnergy()
@@ -463,7 +463,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end
-                        cVar5 = 1
+                        cVar5 = true
                         c_stk_115 = 1
                     end
                     iVar6 = i_stk_70
@@ -487,7 +487,7 @@ function Main(quest, me)
                     quest:DisplayQuestInfo(false)
                     quest:RemoveQuestInfoElement(iVar6)
                     quest:RemoveQuestInfoElement(f_stk_108)
-                    if cVar5 == 0 then
+                    if not cVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00d50594 end

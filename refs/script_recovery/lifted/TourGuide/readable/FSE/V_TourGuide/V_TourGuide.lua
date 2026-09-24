@@ -122,7 +122,6 @@ end
 -- V_TourGuide.WatchForGuideKilled (retail 0x00ee4a70)
 function WatchForGuideKilled(quest)
     local tourGuideGuide = quest:GetThingWithScriptName("TourGuideGuide")
-    local scratchValue
     while true do
         local predicateResult = not (tourGuideGuide ~= nil and not tourGuideGuide:IsNull()) or not (tourGuideGuide ~= nil and tourGuideGuide:IsAlive())
         if not predicateResult then break end
@@ -130,12 +129,7 @@ function WatchForGuideKilled(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     while true do
-        if not (tourGuideGuide ~= nil and not tourGuideGuide:IsNull()) then
-            scratchValue = 0
-        else
-            scratchValue = tourGuideGuide ~= nil and tourGuideGuide:MsgIsKilledBy("")
-        end
-        if scratchValue then break end
+        if (tourGuideGuide ~= nil and not tourGuideGuide:IsNull()) and tourGuideGuide ~= nil and tourGuideGuide:MsgIsKilledBy("") then break end
         if not quest:NewScriptFrame() then return end
     end
     quest:SetStateBool("TourGuideKilled", true)

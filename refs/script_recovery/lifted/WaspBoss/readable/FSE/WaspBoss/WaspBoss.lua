@@ -281,7 +281,7 @@ end
 
 -- Q_WaspBoss.helper_E13310 (retail 0x00e13310)
 function helper_E13310(quest)
-    local predicateResult, scratchValue, healthBar, queenHornet
+    local predicateResult, healthBar, queenHornet
     queenHornet = quest:GetThingWithScriptName("QueenHornet")
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("QueenHornetAttacks") do
@@ -295,12 +295,7 @@ function helper_E13310(quest)
             if not quest:NewScriptFrame() then goto LAB_00e135bd end
             predicateResult = false
             if not quest:IsLevelLoaded("PicnicArea") then break end
-            if not (queenHornet ~= nil and not queenHornet:IsNull()) then
-                scratchValue = 0
-            else
-                scratchValue = queenHornet ~= nil and queenHornet:MsgIsKilledBy("")
-            end
-            if scratchValue then
+            if (queenHornet ~= nil and not queenHornet:IsNull()) and queenHornet ~= nil and queenHornet:MsgIsKilledBy("") then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayQuestInfo(false)
                     quest:RemoveQuestInfoElement(healthBar)

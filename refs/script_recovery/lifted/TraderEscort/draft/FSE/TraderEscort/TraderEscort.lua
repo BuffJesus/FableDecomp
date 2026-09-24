@@ -207,7 +207,7 @@ function WatchForSurprisingBalverines(quest)
     ::LAB_00e063db::
     goto LAB_00e0642a
     ::LAB_00e06319::
-    if cVar6 == 0 then goto LAB_00e06349 end
+    if not cVar6 then goto LAB_00e06349 end
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -430,7 +430,7 @@ function WatchForMissionRules(quest)
             if not native_arg_sequence_1 then
                 -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
                 cVar3 = nil --[[unresolved native value]]
-                if cVar3 ~= 0 then
+                if cVar3 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
@@ -455,7 +455,7 @@ function WatchForMissionRules(quest)
                 x_stk_d0 = pCVar4
                 -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
                 cVar3 = nil --[[unresolved native value]]
-                if cVar3 ~= 0 then goto LAB_00e06fb5 end
+                if cVar3 then goto LAB_00e06fb5 end
                 if not quest:GetStateBool("EndStarted") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -671,7 +671,7 @@ function TurnToBalv(quest, native_arg_Me)
     local alive = true
     xStack_30 = resources:NewResource()
     xStack_40 = resources:NewResource()
-    if native_arg_Me._4_4_ == 0 then
+    if not (native_arg_Me ~= nil and not native_arg_Me:IsNull()) then
         pPosition = {x = 0, y = 0, z = 0}
     else
         pPosition = native_arg_Me:GetPos()
@@ -689,10 +689,6 @@ function TurnToBalv(quest, native_arg_Me)
             resources:ReleaseResource(xStack_40)
             resources:ReleaseResource(xStack_30)
             native_arg_Me = nil
-            -- TODO(native): if (native_arg_Me._8_4_ ~= 0) and (*native_arg_Me._8_4_ = *native_arg_Me._8_4_ + -1, *native_arg_Me._8_4_ == 0) then
-            if false then
-                -- TODO(native): (**(code **)(native_arg_Me._8_4_ + 4))();
-            end
             return
         end
         bVar3 = resources:TryAcquire(xStack_40, r1, 4)
@@ -761,20 +757,17 @@ function WatchForPickpocketing(quest, native_arg_Trader)
         if bVar1 then
             xStack_c = nil
             native_arg_Trader = nil
-            -- TODO(native): if (native_arg_Trader._8_4_ ~= 0) and (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ + -1, *native_arg_Trader._8_4_ == 0) then
-            if false then
-                -- TODO(native): (**(code **)(native_arg_Trader._8_4_ + 4))();
-                -- LAB_00e05100: (native jump target)
-            end
+            -- LAB_00e05100: (native jump target)
             -- LAB_00e05108: (native jump target)
             return
         end
-        bVar1 = quest:MsgOnHeroPickedPocket()
+        xStack_c = quest:MsgOnHeroPickedPocket()
+        bVar1 = (xStack_c ~= nil)
         if bVar1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if not bVar1 then
-                cVar2 = (xStack_c ~= nil and xStack_c:IsEqualTo(native_arg_Trader._4_4_))
+                cVar2 = (xStack_c ~= nil and xStack_c:IsEqualTo(native_arg_Trader))
                 if cVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
@@ -812,22 +805,14 @@ function WatchForPickpocketing(quest, native_arg_Trader)
                 end
                 goto LAB_00e04f80
             end
-            goto LAB_00e050a5
-        end
-        goto FLOW_past_lab_00e050a5
-        ::LAB_00e050a5::
-        xStack_c = nil
-        native_arg_Trader = nil
-        -- TODO(native): if (native_arg_Trader._8_4_ == 0) or (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ + -1, *native_arg_Trader._8_4_ ~= 0) then
-        if false then
+            -- LAB_00e050a5: (native jump target)
+            xStack_c = nil
+            native_arg_Trader = nil
             return
         end
-        -- TODO(native): (**(code **)(native_arg_Trader._8_4_ + 4))();
-        do __cleanup_LAB_00e05100(); return end
-        ::FLOW_past_lab_00e050a5::
         ::LAB_00e04f80::
-        if native_arg_Trader._4_4_ == 0 then
-            cVar2 = 0
+        if not (native_arg_Trader ~= nil and not native_arg_Trader:IsNull()) then
+            cVar2 = false
         else
             cVar2 = (native_arg_Trader ~= nil and native_arg_Trader:MsgIsKilledBy(""))
         end
@@ -837,7 +822,9 @@ function WatchForPickpocketing(quest, native_arg_Trader)
             if not bVar1 then
                 quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 0)
             end
-            goto LAB_00e050a5
+            xStack_c = nil
+            native_arg_Trader = nil
+            return
         end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -898,13 +885,13 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
         pCVar7 = quest:GetHero()
         pCVar9 = native_arg_comment_to_make
         pCVar4 = xStack_30
-        uVar14 = 0
+        uVar14 = false
         piVar13 = "_"
         pCVar8 = native_arg_comment_to_make
         pCVar10 = ("TEXT_QST_067_" .. native_arg_speaker)
         pCVar10 = (pCVar10 .. "_")
         pCVar8 = (pCVar10 .. pCVar8)
-        quest:AddLineToConversation(iVar6, pCVar8, pCVar4, pCVar7, (uVar14 ~= 0))
+        quest:AddLineToConversation(iVar6, pCVar8, pCVar4, pCVar7, uVar14)
         if native_arg_comment_type ~= 1 then goto LAB_00e02355 end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -956,7 +943,7 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
             quest:AddPersonToConversation(iVar6, r1)
             pCVar7 = quest:GetHero()
             pCVar4 = r1
-            uVar14 = 0
+            uVar14 = false
             pcVar15 = "_RESPONSE"
             piVar13 = "_"
             pCVar8 = r1:GetDataString()
@@ -964,7 +951,7 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
             pCVar8 = (pCVar8 .. "_")
             pCVar9 = (pCVar8 .. pCVar9)
             pCVar9 = (pCVar9 .. pcVar15)
-            quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+            quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
         end
         ::LAB_00e02355::
         quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
@@ -1041,29 +1028,29 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
             if not bVar2 then
                 pCVar7 = quest:GetHero()
                 pCVar4 = xStack_30
-                uVar14 = 0
+                uVar14 = false
                 piVar13 = "_"
                 pCVar8 = xStack_30:GetDataString()
                 pCVar8 = ("TEXT_QST_067_" .. pCVar8)
                 pCVar8 = (pCVar8 .. "_")
                 pCVar9 = (pCVar8 .. pCVar9)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_NO"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar4 = quest:GetHero()
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_REWARD"
                 pCVar7 = xStack_30
                 pCVar9 = pCVar7:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, uVar14)
                 -- LAB_00e01ff9_c2: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 do return true end
@@ -1076,46 +1063,46 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
                 quest:AddPersonToConversation(iVar6, r3)
                 pCVar7 = quest:GetHero()
                 pCVar4 = xStack_30
-                uVar14 = 0
+                uVar14 = false
                 piVar13 = "_"
                 pCVar8 = xStack_30:GetDataString()
                 pCVar8 = ("TEXT_QST_067_" .. pCVar8)
                 pCVar8 = (pCVar8 .. "_")
                 pCVar9 = (pCVar8 .. pCVar9)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_NO"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r3
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_OATH"
                 pCVar9 = r3:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar7 = quest:GetHero()
                 pCVar4 = r2
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_BAD_NEWS"
                 pCVar9 = r2:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar4, pCVar7, uVar14)
                 pCVar4 = quest:GetHero()
                 -- LAB_00e01fb0: (native jump target)
-                uVar14 = 0
+                uVar14 = false
                 pcVar15 = "_INTRO_RESPONSE_REWARD"
                 pCVar7 = xStack_30
                 pCVar9 = pCVar7:GetDataString()
                 pCVar9 = ("TEXT_QST_067_" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar15)
-                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, (uVar14 ~= 0))
+                quest:AddLineToConversation(iVar6, pCVar9, pCVar7, pCVar4, uVar14)
                 -- LAB_00e01ff9: (native jump target)
                 quest:SetTimer(quest:GetStateInt("CommentTimer"), quest:ReadGlobalGameData(0xdf0))
                 return true

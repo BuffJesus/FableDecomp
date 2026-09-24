@@ -52,7 +52,7 @@ function Main(quest, me)
             end
         end
         quest:EntityTeleportToPosition(me, nil --[[missing]], false, false)
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x748),(int)&xStack_8c);
+        xStack_8c = quest:ReadGlobalGameDataString(0x748)
         me:PlayLoopingAnimation(r1, -1, false, false, false)
         bVar4 = false
         pCVar7 = quest:GetThingWithScriptName("SickChildBed")

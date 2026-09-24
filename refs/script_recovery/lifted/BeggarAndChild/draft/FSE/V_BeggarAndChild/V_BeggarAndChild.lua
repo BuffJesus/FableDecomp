@@ -457,7 +457,7 @@ function Main(quest)
             ::LAB_00e5862f::
             if bVar6 then goto LAB_00e58565 end
             quest:SetStateBool("ExpressionTutorialShown", true)
-            __cleanup_LAB_00e58639(); return
+            do __cleanup_LAB_00e58639(); return end
             ::FLOW_past_lab_00e5862f::
         end
         ::FLOW_past_lab_00e58486::

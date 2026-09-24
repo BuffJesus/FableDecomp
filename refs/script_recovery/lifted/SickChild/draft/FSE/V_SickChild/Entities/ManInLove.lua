@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar5, cVar6, center, fVar10, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, iVar13, iVar14, iVar15, iVar16, pCVar7, pCVar8, pCVar9, pcVar12, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar4, u_stk_15c, xStack_104, xStack_140, xStack_158, xStack_170, xStack_b8, xStack_d4, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_c
+    local __native_condition_1, bVar5, cVar6, center, fVar10, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, iVar13, iVar14, iVar15, iVar16, pCVar7, pCVar8, pCVar9, pcVar12, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar4, u_stk_15c, xStack_104, xStack_110, xStack_118, xStack_120, xStack_124, xStack_140, xStack_148, xStack_158, xStack_170, xStack_b8, xStack_d4, xStack_e8, xStack_ec, xStack_fc, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_c
     local alive = true
     local function __cleanup_LAB_00ec95d3()
         quest:PauseAllNonScriptedEntities(false)
@@ -27,10 +27,10 @@ function Main(quest, me)
         return
     end
     xStack_170 = resources:NewResource()
-    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_148);
+    xStack_148 = quest:ReadGlobalGameDataString(0x740)
     u_stk_15c = 1
     pCVar7 = quest:GetHero()
-    bVar5 = quest:IsObjectInThingsPossession(nil --[[missing]], pCVar7)
+    bVar5 = quest:IsObjectInThingsPossession(xStack_148, pCVar7)
     if not bVar5 then
         u_stk_15c = 3
         pCVar7 = quest:GetHero()
@@ -180,8 +180,8 @@ function Main(quest, me)
                         return
                     end
                 end
-                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_118);
-                quest:GiveHeroObject(pcVar12, -1, false)
+                xStack_118 = quest:ReadGlobalGameDataString(0x73c)
+                quest:GiveHeroObject(xStack_118, -1, false)
                 x_stk_24 = resources:ScriptThing(xStack_170)
                 pCVar9 = x_stk_24
                 fret_01 = quest:GetHealth(pCVar9)
@@ -362,8 +362,8 @@ function Main(quest, me)
                             end
                             -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_140);
                             quest:GiveHeroObject(pcVar12, xStack_140, -1)
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_110);
-                            quest:RemoveItemFromContainer(me, "")
+                            xStack_110 = quest:ReadGlobalGameDataString(0x738)
+                            quest:RemoveItemFromContainer(me, xStack_110)
                             __native_entity_state:SetStateBool("GotReward", true)
                         else
                             alive = not quest:IsActiveThreadTerminating()
@@ -570,8 +570,8 @@ function Main(quest, me)
                     bVar5 = not alive
                     if iVar13 == 1 then
                         if bVar5 then __cleanup_LAB_00ec95d3(); return end
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_e8);
-                        quest:TakeObjectFromHero(pcVar12)
+                        xStack_e8 = quest:ReadGlobalGameDataString(0x740)
+                        quest:TakeObjectFromHero(xStack_e8)
                         quest:TakeObjectFromHero("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER")
                         x_stk_c = resources:ScriptThing(xStack_170)
                         pCVar7 = x_stk_c
@@ -599,10 +599,10 @@ function Main(quest, me)
                             bVar5 = not alive
                             if bVar5 then __cleanup_LAB_00ec95d3(); return end
                         end
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_120);
-                        quest:GiveHeroObject(pcVar12, -1, false)
+                        xStack_120 = quest:ReadGlobalGameDataString(0x738)
+                        quest:GiveHeroObject(xStack_120, -1, false)
                         -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_dc);
-                        quest:RemoveItemFromContainer(me, nil --[[missing]])
+                        quest:RemoveItemFromContainer(me, pcVar12)
                         if quest:GetStateInt("MansLoverState") == 2 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -690,8 +690,8 @@ function Main(quest, me)
                             end
                             -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_104);
                             quest:GiveHeroObject(pcVar12, xStack_104, -1)
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_ec);
-                            quest:RemoveItemFromContainer(me, nil --[[missing]])
+                            xStack_ec = quest:ReadGlobalGameDataString(0x738)
+                            quest:RemoveItemFromContainer(me, xStack_ec)
                             __native_entity_state:SetStateBool("GotReward", true)
                             __native_entity_state:SetStateBool("HelpedGuyOut", true)
                             if quest:GetStateInt("MansLoverState") == 2 then
@@ -730,10 +730,10 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then __cleanup_LAB_00ec95d3(); return end
                             end
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_fc);
-                            quest:GiveHeroObject(pcVar12, -1, false)
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_124);
-                            quest:RemoveItemFromContainer(me, nil --[[missing]])
+                            xStack_fc = quest:ReadGlobalGameDataString(0x738)
+                            quest:GiveHeroObject(xStack_fc, -1, false)
+                            xStack_124 = quest:ReadGlobalGameDataString(0x738)
+                            quest:RemoveItemFromContainer(me, xStack_124)
                             __native_entity_state:SetStateBool("GotReward", true)
                             if quest:GetStateInt("MansLoverState") ~= 2 then goto LAB_00ec91ef end
                             alive = not quest:IsActiveThreadTerminating()
@@ -936,7 +936,7 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-    local bVar1, bVar3, cVar2
+    local bVar1, bVar3, cVar2, xStack_4
     bVar3 = false
     if not __native_entity_state:GetStateBool("GotReward") then
         bVar3 = true
@@ -949,8 +949,8 @@ function OnPredicateFail(quest, me)
     if bVar3 then
     end
     if bVar1 then
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_4);
-        quest:GiveHeroObject(nil --[[missing]], -1, false)
+        xStack_4 = quest:ReadGlobalGameDataString(0x738)
+        quest:GiveHeroObject(xStack_4, -1, false)
         quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0x768))
     end
 end

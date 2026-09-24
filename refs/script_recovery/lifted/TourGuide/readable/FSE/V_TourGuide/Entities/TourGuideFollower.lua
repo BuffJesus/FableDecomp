@@ -1,6 +1,8 @@
 -- Readable native conversion: TourGuideFollower. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local self0X14, followerSpokenToHeroThisWaypoint
 
@@ -10,7 +12,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult6, scratchValue4, scratchValue6, conversationId, pOther
-    local scratchValue7
+    local scratchValue10, scratchValue11
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     local resource = resources:NewResource()
@@ -77,11 +79,11 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00ee50ab
         ::LAB_00ee50ab::
-        scratchValue7 = pOther
+        scratchValue11 = pOther
         ::FLOW_past_lab_00ee50ab::
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
-        quest:AddLineToConversation(conversationId, scratchValue7, me, hero, false)
+        quest:AddLineToConversation(conversationId, scratchValue11, me, hero, false)
         quest:SetTimer(timerId, quest:ReadGlobalGameData(2276))
         me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(2256), true)
         quest:NewScriptFrame(me)
@@ -109,17 +111,17 @@ function Main(quest, me)
         if scratchValue2 then
             if not quest:IsActiveThreadTerminating() then
                 -- TODO(native): xStack_28 = puVar7.x;
-                -- TODO(native): pvVar8 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_10,(int)&xStack_1c);
+                resources:ScriptThing(resource)
                 -- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);
     --[[unresolved native result]]
-                while nil ~= 0 do
+                while nil do
                     if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
-                    -- TODO(native): me:MoveToPosition(puVar7, &xStack_28, 0x3f800000, false, false)
+                    me:MoveToPosition(scratchValue10, 1.0, ENTITY_MOVE_WALK, false, true)
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00ee5535 end
-                    -- TODO(native): pvVar8 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *) xStack_10,(int)&xStack_1c);
+                    resources:ScriptThing(resource)
                     -- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);
     --[[unresolved native result]]
                 end

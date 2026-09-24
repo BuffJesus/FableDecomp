@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar2, bVar4, cVar3, c_stk_10d, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, iVar10, iVar11, iVar5, iVar9, native_arg_sequence_1, p0, pCVar6, pcVar8, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, uVar7, xStack_10c, xStack_120, xStack_12c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_c
+    local __native_condition_1, bVar2, bVar4, cVar3, c_stk_10d, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, iVar10, iVar11, iVar5, iVar9, native_arg_sequence_1, p0, pCVar6, pcVar8, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, uVar7, xStack_10c, xStack_120, xStack_124, xStack_128, xStack_12c, xStack_bc, xStack_cc, xStack_d0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -48,8 +48,8 @@ function Main(quest, me)
             quest:SetThingHasInformation(me, true, true, false)
         end
         c_stk_10d = 0
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_124);
-        -- TODO(native): CCharString::operator=(&xStack_128,&xStack_124);
+        xStack_124 = quest:ReadGlobalGameDataString(0x73c)
+        xStack_128 = xStack_124
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         while not bVar2 do
@@ -61,13 +61,13 @@ function Main(quest, me)
                 native_arg_sequence_1 = false
             end
             if native_arg_sequence_1 then
-                if "" == xStack_12c then
+                if xStack_128 == xStack_12c then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
                 end
                 if not native_arg_sequence_1 then
-                    if "" ~= nil then
+                    if xStack_128 ~= nil then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -80,7 +80,7 @@ function Main(quest, me)
                         end
                     end
                     if native_arg_sequence_1 then
-                        if ""[1] == xStack_12c[1] then
+                        if xStack_128[1] == xStack_12c[1] then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false
@@ -151,9 +151,9 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
                 end
-                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_bc);
+                xStack_bc = quest:ReadGlobalGameDataString(0x73c)
                 pCVar6 = quest:GetHero()
-                bVar2 = quest:IsObjectInThingsPossession("", pCVar6)
+                bVar2 = quest:IsObjectInThingsPossession(xStack_bc, pCVar6)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar2 then
@@ -255,8 +255,8 @@ function Main(quest, me)
                             if bVar2 then goto LAB_00ecaf49 end
                             c_stk_10d = 0
                         end
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x73c),(int)&xStack_d0);
-                        quest:TakeObjectFromHero(pcVar8)
+                        xStack_d0 = quest:ReadGlobalGameDataString(0x73c)
+                        quest:TakeObjectFromHero(xStack_d0)
                         x_stk_90 = resources:ScriptThing(xStack_120)
                         pCVar6 = x_stk_90
                         fret_01 = quest:GetHealth(pCVar6)
@@ -352,8 +352,8 @@ function Main(quest, me)
                                     bVar2 = not alive
                                     if bVar2 then goto LAB_00ecaf49 end
                                 end
-                                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)&xStack_cc);
-                                quest:GiveHeroObject(pcVar8, -1, false)
+                                xStack_cc = quest:ReadGlobalGameDataString(0x740)
+                                quest:GiveHeroObject(xStack_cc, -1, false)
                                 quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0x758))
                                 quest:SetStateInt("MansLoverState", 2)
                             else

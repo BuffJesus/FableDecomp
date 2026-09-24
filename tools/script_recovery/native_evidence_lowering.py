@@ -1706,10 +1706,70 @@ def fold_position_reads(text):
     return text
 
 
+def fold_by_value_thing_release(text):
+    """A by-value CScriptThing (a parameter the callee owns) is destroyed inline through its Info word `T._8_4_`:
+    `if ((T._8_4_ != 0) && (*T._8_4_ = *T._8_4_ + -1, *T._8_4_ == 0)) { destroy; [DEL:] operator_delete; }`, and on
+    another exit the same test inverted, `if ((T._8_4_ == 0) || (..., *T._8_4_ != 0)) goto L; destroy; goto DEL;`
+    (DEL falls through to L). Both are refcount bookkeeping the Lua GC owns: the forward block keeps only its label,
+    the inverted one becomes `goto L;`. A name released this way is a counted thing, so its Data word `T._4_4_`
+    tested against zero is validity, and as IsEqualTo's operand (retail slot 0x138 takes other.Data) it is the thing
+    (WatchForPickpocketing 0x00E04F10 -- the dropped label left an exit falling back into the loop, 2026-09-24)."""
+    names = set(re.findall(r'\((\w+)\._8_4_ [!=]= 0\) (?:&&|\|\|) \(\*\1\._8_4_ = \*\1\._8_4_ \+ -1,', text))
+    for name in names:
+        n = re.escape(name)
+        test = r'\*' + n + r'\._8_4_ = \*' + n + r'\._8_4_ \+ -1, \*' + n + r'\._8_4_'
+        destroy = r'[ \t]*\(\*\*\(code \*\*\)\(' + n + r'\._8_4_ \+ 4\)\)\(\);[ \t]*\r?\n'
+        text = re.sub(r'^[ \t]*if \(\(' + n + r'\._8_4_ != 0\) && \(' + test + r' == 0\)\) \{[ \t]*\r?\n' + destroy
+                      + r'(?:(?P<label>\w+):[ \t]*\r?\n)?[ \t]*operator_delete\(\(void \*\)' + n + r'\._8_4_\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n',
+                      lambda m: f'{m.group("label")}:\n' if m.group('label') else '', text, flags=re.M)
+        text = re.sub(r'^([ \t]*)if \(\(' + n + r'\._8_4_ == 0\) \|\| \(' + test + r' != 0\)\)[ \t]*\r?\n[ \t]*goto (\w+);[ \t]*\r?\n'
+                      + destroy + r'[ \t]*goto \w+;[ \t]*\r?\n', r'\1goto \2;\n', text, flags=re.M)
+        text = re.sub(r'\b' + n + r'\._4_4_ == 0\b(?!x)', f'!__thing_valid({name})', text)
+        text = re.sub(r'\b' + n + r'\._4_4_ != 0\b(?!x)', f'__thing_valid({name})', text)
+        text = re.sub(r'(CScriptThing::IsEqualTo\([^,;()]+,\s*)' + n + r'\._4_4_\)', r'\1' + name + ')', text)
+    return text
+
+
+def fold_char_flags(text):
+    """A byte flag (`cVar = '\\0'` / `'\\x01'`, tested `cVar != '\\0'`) mixes numeric literals with boolean tests once
+    lifted: `cVar = 0 ... if cVar then` is always taken (0 is truthy in Lua) and `if not cVar then` never is. When a
+    plain local is only ever tested against '\\0' and never used in arithmetic, its literals are the booleans
+    (WatchForPickpocketing: a null trader took the "killed" branch; WaspHelper's one-shot lines never played;
+    WaspBoss treated a null queen as killed; V_TourGuide left its watch loop, 2026-09-24)."""
+    candidates = set(re.findall(r"\b([A-Za-z_]\w*) [!=]= '\\0'", text)) | set(re.findall(r'\(bool\)([A-Za-z_]\w*)\b', text))
+    for var in candidates:
+        v = re.escape(var)
+        if re.search(r'Stack_|_stk_|_b\d$', var):
+            continue        # a stack slot / merged byte: the lifter keeps literal slot stores as temporaries, and a
+                            # `= false` there would vanish where the `= '\0'` it replaces stays a visible TODO
+        if re.search(r'(?:[\w.]\.|->|\*|&)' + v + r'\b', text):
+            continue        # a field, a dereference or an address, not a plain local
+        if re.search(r'\b' + v + r'\s*(?:[-+*/%&|^<>]|<<|>>)(?!=)|(?:[-+*/%&|^]|<<|>>)\s*(?:\(\w+\))?' + v + r'\b', text):
+            continue        # used arithmetically: keep the numbers
+        if re.search(r'\b' + v + r' [!=]= (?!\'\\0\')', text):
+            continue        # compared against something else
+        # a byte local (`undefined1 uVar2;` / char / bool) takes 0 / 1 stores too: WaspHelper Main's one-shot flags
+        # (its 0 / 1 stores are the flag's literals only when every other store is a literal or a truth value: a call
+        # result such as `cVar2 = MsgIsKilledBy(..)` is a bool, a stored count is not)
+        byte = re.search(r'^[ \t]*(?:undefined1|char|bool|byte)\s+' + v + r';', text, re.M)
+        numeric_ok = byte and not re.search(r'\b' + v + r' = (?!0;|1;|\'\\0\';|\'\\x01\';|\(bool\)|!|\(?\w+\s*[!=<>]=?|[\w:]*(?:Is|Msg|Has|Get\w*Bool)\w*\()', text)
+        if numeric_ok:
+            text = re.sub(r'\b' + v + r' = 0;', var + ' = false;', text)
+            text = re.sub(r'\b' + v + r' = 1;', var + ' = true;', text)
+        text = re.sub(r'\b' + v + r" = '\\0';", var + ' = false;', text)
+        text = re.sub(r'\b' + v + r" = '\\x01';", var + ' = true;', text)
+        text = re.sub(r'\b' + v + r" != '\\0'", var, text)
+        text = re.sub(r'\b' + v + r" == '\\0'", '!' + var, text)
+        text = re.sub(r'\(bool\)' + v + r'\b', var, text)
+    return text
+
+
 def lower_after_annotate(text, thing_slots=None):
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
+    text = fold_by_value_thing_release(text)
+    text = fold_char_flags(text)
     # `MsgGetThingsKilled(thing, &uidVector)` (retail vtable 0xDC: bool + a std::vector<ulong> the script frees):
     # the sidecar binding (2026-09-21) owns that vector and returns the count, so the out operand, its zeroing
     # and its `if (v != 0) free(v)` guard are the binding's business (TraderConflictGood::WatchForKilledPeople)

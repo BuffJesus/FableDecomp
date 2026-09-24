@@ -317,8 +317,6 @@ function DoMission(quest)
             bVar1 = not alive
             if not bVar1 then
                 quest:CreateThread("WatchForLeaving")  -- native thread body NScript::CGlobal_WatchForHeroDeathScript::WatchForHeroDeath: lift it as function WatchForLeaving(quest)
-                if (0 & 1) ~= 0 then
-                end
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar1 = not alive

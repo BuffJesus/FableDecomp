@@ -11,10 +11,10 @@ function Main(quest)
             return
         end
         quest:RemoveAllHeroWeapons()
-        uVar10 = 0
+        uVar10 = false
         pCVar4 = quest:GetThingWithScriptName("GuildArrivalHSP")
         pCVar5 = quest:GetHero()
-        quest:EntityTeleportToThing(pCVar5, pCVar4, (uVar10 ~= 0))
+        quest:EntityTeleportToThing(pCVar5, pCVar4, uVar10)
         bVar3 = quest:IsLevelLoaded("LookoutPoint")
         while not bVar3 do
             alive = quest:NewScriptFrame()
@@ -49,10 +49,10 @@ function Main(quest)
             return
         end
     end
-    uVar10 = 0
+    uVar10 = false
     pCVar4 = quest:GetThingWithScriptName("GuildTrainingHSP")
     pCVar5 = quest:GetHero()
-    quest:EntityTeleportToThing(pCVar5, pCVar4, (uVar10 ~= 0))
+    quest:EntityTeleportToThing(pCVar5, pCVar4, uVar10)
     pCVar4 = nil
     bVar3 = quest:IsLevelLoaded("HeroGuildComplex")
     while true do
@@ -255,11 +255,11 @@ function RunTutorials(quest)
             pCVar4 = pCVar3:GetPos()
             r4 = quest:CreateObject("OBJECT_STRAW_DUMMY_01", pCVar4, "PreMeleeDummy")
             pCVar3 = quest:GetThingWithScriptName("PreMeleeDummyMarker")
-            uVar15 = 1
+            uVar15 = true
             fret_0 = pCVar3:GetAngleXY()
             angle = fret_0
             pCVar3 = quest:GetThingWithScriptName("PreMeleeDummy")
-            quest:EntitySetFacingAngle(pCVar3, angle, (uVar15 ~= 0))
+            quest:EntitySetFacingAngle(pCVar3, angle, uVar15)
         end
         pCVar3 = quest:GetThingWithScriptName("MeleeApprentice")
         bVar2 = (pCVar3 ~= nil and pCVar3:IsAlive())
@@ -852,18 +852,18 @@ function RunTutorials(quest)
             resources:DestroyActorMap(r13)
             resources:ReleaseResource(xStack_20)
             resources:ReleaseResource(xStack_30)
-            uVar15 = 0
+            uVar15 = false
             pCVar3 = quest:GetThingWithScriptName("FrescoDomeHSP")
             pCVar6 = quest:GetHero()
-            quest:EntityTeleportToThing(pCVar6, pCVar3, (uVar15 ~= 0))
+            quest:EntityTeleportToThing(pCVar6, pCVar3, uVar15)
             quest:SetStateBool("DomeCutsceneStart", true)
             RunCeremonyCutscene(quest)
             quest:GiveHeroObject("OBJECT_GUILD_SEAL_1", -1, true)
             quest:SetStateBool("DomeCutsceneStart", false)
-            uVar15 = 0
+            uVar15 = false
             pCVar3 = quest:GetThingWithScriptName("HeroGuildComplexInsideHSP")
             pCVar6 = quest:GetHero()
-            quest:EntityTeleportToThing(pCVar6, pCVar3, (uVar15 ~= 0))
+            quest:EntityTeleportToThing(pCVar6, pCVar3, uVar15)
             bVar2 = quest:IsLevelLoaded("HeroGuildComplex")
             while not bVar2 do
                 alive = quest:NewScriptFrame()
@@ -963,10 +963,10 @@ function RunTutorials(quest)
             if not bVar2 then
                 RunSaveXPCutscene2(quest)
                 quest:FadeScreenOut(0.0, 0.5)
-                uVar15 = 0
+                uVar15 = false
                 pCVar3 = quest:GetThingWithScriptName("M_GuildmasterMarker")
                 pCVar6 = quest:GetThingWithScriptName("TheRealGuildmaster")
-                quest:EntityTeleportToThing(pCVar6, pCVar3, (uVar15 ~= 0))
+                quest:EntityTeleportToThing(pCVar6, pCVar3, uVar15)
                 bVar2 = quest:IsHeroControlledByPlayer()
                 while not bVar2 do
                     alive = quest:NewScriptFrame()

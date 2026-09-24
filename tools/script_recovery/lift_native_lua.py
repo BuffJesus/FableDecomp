@@ -844,6 +844,10 @@ class Lifter:
         self.helper_return_kinds: dict[str, str] = {}
         self.parent_helpers: dict[str, dict] = {}
         self.thing_sigs = thing_sigs or {}   # CScriptThing method name -> decorated name (operand shape)
+        # interface messages whose retail slot returns bool with a CScriptThing* out-parameter while the Forge binding
+        # returns that thing (or nil when the message did not fire): `bVar = Msg(gsi, &thing)` lifts to
+        # `thing = quest:Msg(); bVar = thing ~= nil` (the converter fills this from the typing spec + manifest)
+        self.out_thing_msgs: frozenset[str] = frozenset()
         self.reset()
 
     def reset(self) -> None:
@@ -1431,6 +1435,21 @@ class Lifter:
         return name + suffix if suffix and name + suffix in self.manifest else None
 
     def interface_call(self, target: str | None, name: str, argtext: str) -> bool:
+        if name in self.out_thing_msgs:
+            # WatchForPickpocketing 0x00E04F10: `MsgOnHeroPickedPocket(gsi, local_c)` then `local_c.IsEqualTo(trader)`;
+            # dropping the out slot left the victim nil and the pickpocket count could never rise (2026-09-24)
+            outs = [self.slot_name(a) for a in self.arguments(argtext)]
+            outs = [o for o in outs if o and o not in ('this', 'param_1')]
+            if len(outs) == 1:
+                slot = outs[0]
+                self.emit(f"{self.declare(slot)} = {self.receiver}:{name}()")
+                self.kinds[slot] = 'thing'
+                self.slot_results.pop(slot, None)
+                if target:
+                    self.emit(f"{self.declare(target)} = ({slot} ~= nil)")
+                    self.kinds[target] = 'bool'
+                self.calls.append(name)
+                return True
         if name == 'RetailThingPosition':
             operands = self.arguments(argtext)
             if not target or len(operands) != 1:

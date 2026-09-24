@@ -550,10 +550,10 @@ function Main(quest, me)
                         end
                         quest:FadeScreenOut(0.5, 0.5)
                         quest:Pause(1.0)
-                        uVar16 = 0
+                        uVar16 = false
                         pCVar7 = quest:GetThingWithScriptName("HeroMeleeStart")
                         pCVar8 = quest:GetHero()
-                        quest:EntityTeleportToThing(pCVar8, pCVar7, (uVar16 ~= 0))
+                        quest:EntityTeleportToThing(pCVar8, pCVar7, uVar16)
                         bVar3 = false
                         pCVar7 = quest:GetThingWithScriptName("WhisperMeleeStart")
                         quest:EntityTeleportToThing(r4, pCVar7, bVar3)
@@ -613,14 +613,14 @@ function Main(quest, me)
                             quest:SetStateBool("FightFinished", true)
                         end
                         if not (r4 ~= nil and not r4:IsNull()) then
-                            cVar4 = 0
+                            cVar4 = false
                         else
                             xStack_104 = r4:MsgIsHitByHeroWithProjectileWeapon()
                             cVar4 = xStack_104 ~= nil
                         end
                         if not cVar4 then
                             if not (r4 ~= nil and not r4:IsNull()) then
-                                cVar4 = 0
+                                cVar4 = false
                             else
                                 cVar4 = r4:MsgIsHitByHeroSpecialAbility(0xb)
                             end
@@ -745,7 +745,7 @@ function Main(quest, me)
                             quest:SetStateBool("FightFinished", true)
                         end
                         if not (r4 ~= nil and not r4:IsNull()) then
-                            cVar4 = 0
+                            cVar4 = false
                         else
                             cVar4 = r4:MsgIsHitByHero()
                         end
@@ -859,10 +859,10 @@ function Main(quest, me)
                             ::LAB_00d4bbeb::
                             quest:ChangeHeroHealthBy(1000.0, true, false)
                             quest:ModifyThingHealth(r4, 1000.0, false)
-                            uVar16 = 0
+                            uVar16 = false
                             pCVar7 = quest:GetThingWithScriptName("M_MeleeHeroStand")
                             pCVar8 = quest:GetHero()
-                            quest:EntityTeleportToThing(pCVar8, pCVar7, (uVar16 ~= 0))
+                            quest:EntityTeleportToThing(pCVar8, pCVar7, uVar16)
                             bVar3 = false
                             pCVar7 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
                             quest:EntityTeleportToThing(r4, pCVar7, bVar3)

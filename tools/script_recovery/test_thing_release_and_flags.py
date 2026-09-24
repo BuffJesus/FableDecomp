@@ -1,0 +1,102 @@
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from tools.script_recovery.convert_quest_unit import out_thing_messages
+from tools.script_recovery.native_evidence_lowering import fold_by_value_thing_release, fold_char_flags
+
+# WatchForPickpocketing 0x00E04F10 after annotate: a by-value CScriptThing parameter destroyed inline on two exits
+RELEASE = '''    if (bVar1) {
+      native_arg_Trader = QUESTTHING_Empty();
+      if ((native_arg_Trader._8_4_ != 0) && (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ + -1, *native_arg_Trader._8_4_ == 0)) {
+        (**(code **)(native_arg_Trader._8_4_ + 4))();
+LAB_00e05100:
+        operator_delete((void *)native_arg_Trader._8_4_);
+      }
+LAB_00e05108:
+      return;
+    }
+    cVar2 = CScriptThing::IsEqualTo(xStack_c, native_arg_Trader._4_4_);
+LAB_00e050a5:
+      native_arg_Trader = QUESTTHING_Empty();
+      if ((native_arg_Trader._8_4_ == 0) || (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ + -1, *native_arg_Trader._8_4_ != 0))
+      goto LAB_00e05108;
+      (**(code **)(native_arg_Trader._8_4_ + 4))();
+      goto LAB_00e05100;
+    if (native_arg_Trader._4_4_ == 0) {
+'''
+
+
+class ByValueThingRelease(unittest.TestCase):
+    def setUp(self):
+        self.out = fold_by_value_thing_release(RELEASE)
+
+    def test_forward_release_keeps_only_its_label(self):
+        self.assertNotIn('operator_delete', self.out)
+        self.assertIn('LAB_00e05100:\nLAB_00e05108:', self.out)
+
+    def test_inverted_release_becomes_the_goto(self):
+        self.assertIn('native_arg_Trader = QUESTTHING_Empty();\n      goto LAB_00e05108;\n    if (', self.out)
+        self.assertNotIn('+ 4))();', self.out)
+
+    def test_data_word_is_validity_and_is_equal_to_takes_the_thing(self):
+        self.assertIn('if (!__thing_valid(native_arg_Trader)) {', self.out)
+        self.assertIn('CScriptThing::IsEqualTo(xStack_c, native_arg_Trader);', self.out)
+
+    def test_untouched_without_the_release_idiom(self):
+        text = 'if (other._4_4_ == 0) {\n'
+        self.assertEqual(fold_by_value_thing_release(text), text)
+
+
+class CharFlags(unittest.TestCase):
+    def test_flag_literals_become_booleans(self):
+        text = ("    if (x) { cVar2 = '\\0'; } else { cVar2 = MsgIsKilledBy(t); }\n"
+                "    if (cVar2 != '\\0') { f(); }\n    if (cVar2 == '\\0') { g(); }\n    cVar2 = '\\x01';\n")
+        out = fold_char_flags(text)
+        self.assertIn('cVar2 = false;', out)
+        self.assertIn('if (cVar2) { f(); }', out)
+        self.assertIn('if (!cVar2) { g(); }', out)
+        self.assertIn('cVar2 = true;', out)
+
+    def test_byte_local_with_numeric_stores(self):
+        # WaspHelper Main: `undefined1 uVar2;` stored 0/1 and tested `(bool)uVar2`
+        text = ("  undefined1 uVar2;\n    uVar2 = 0;\n    if (!(bool)uVar2) {\n      say();\n      uVar2 = 1;\n    }\n"
+                "    if ((bool)uVar2) { uVar2 = 0; }\n")
+        out = fold_char_flags(text)
+        self.assertIn('uVar2 = false;', out)
+        self.assertIn('if (!uVar2) {', out)
+        self.assertIn('uVar2 = true;', out)
+        self.assertIn('if (uVar2) { uVar2 = false; }', out)
+
+    def test_byte_local_storing_a_value_is_left_alone(self):
+        text = "  undefined1 uVar4;\n    uVar4 = GetCount();\n    if ((bool)uVar4) { f(); }\n    uVar4 = 0;\n"
+        self.assertIn('uVar4 = 0;', fold_char_flags(text))
+
+    def test_arithmetic_use_keeps_numbers(self):
+        text = "    cVar3 = '\\0';\n    if (cVar3 != '\\0') { n = cVar3 + 1; }\n"
+        self.assertEqual(fold_char_flags(text), text)
+
+    def test_field_is_not_a_local_flag(self):
+        text = "    if (this->done != '\\0') { f(); }\n"
+        self.assertEqual(fold_char_flags(text), text)
+
+
+class OutThingMessages(unittest.TestCase):
+    def test_bool_slot_with_thing_out_and_object_binding(self):
+        spec = {'slots': {
+            '0xd4': {'name': 'MsgOnHeroPickedPocket', 'ret': 'bool', 'params': [{'name': 'p', 'type': 'CScriptThing *'}]},
+            '0x10': {'name': 'MsgIsSomething', 'ret': 'bool', 'params': [{'name': 'p', 'type': 'CScriptThing *'}]},
+            '0x20': {'name': 'GetThing', 'ret': 'CScriptThing *', 'params': [{'name': 'p', 'type': 'CScriptThing *'}]}}}
+        manifest = {
+            'MsgOnHeroPickedPocket': {'returnType': 'sol::object', 'parameters': [{'name': 's', 'type': 'sol::this_state'}]},
+            'MsgIsSomething': {'returnType': 'bool', 'parameters': [{'name': 't', 'type': 'CScriptThing*'}]},
+            'GetThing': {'returnType': 'sol::object', 'parameters': [{'name': 's', 'type': 'sol::this_state'}]}}
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / 'typing_spec.json'
+            path.write_text(json.dumps(spec), encoding='utf-8')
+            self.assertEqual(out_thing_messages(path, manifest), frozenset({'MsgOnHeroPickedPocket'}))
+
+
+if __name__ == '__main__':
+    unittest.main()

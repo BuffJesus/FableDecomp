@@ -103,7 +103,7 @@ end
 
 function helper_ECE460(quest)
     local resources = quest:RetailResources()
-    local amStack_28, i_stk_14, p0, p1, pCVar7, pOther, piVar1, piVar2, ppuVar4, xStack_28
+    local i_stk_14, p0, p1, pCVar7, pOther, piVar1, piVar2, ppuVar4, xStack_28
     -- TODO(native): local_1c = malloc(0x18);
     -- TODO(native): *local_1c = 0;
     -- TODO(native): *(undefined4 *)(local_1c + 4) = 0;
@@ -126,7 +126,7 @@ function helper_ECE460(quest)
     local iVar6 = _stricmp(p0,p1,p2,p3)
     if iVar6 ~= 0 then
         pOther = xStack_10
-        resources:SetString(amStack_28, "$ARG1", pOther)
+        resources:SetString(0x0, "$ARG1", pOther)
     end
     -- TODO(native): puStack_34 = malloc(0x24);
     -- TODO(native): *puStack_34 = 0;

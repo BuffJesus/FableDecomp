@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124, xStack_124_b3, xStack_12c, xStack_134, xStack_148, xStack_148_2, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_178, xStack_17c, xStack_90, xStack_a0, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80, x_stk_a4
+    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124, xStack_124_b3, xStack_12c, xStack_134, xStack_148, xStack_148_2, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_178, xStack_17c, xStack_90, xStack_a0, xStack_a4, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80
     local alive = true
     x_stk_80 = 0
     alive = quest:NewScriptFrame(me)
@@ -990,8 +990,8 @@ function Main(quest, me)
                                     quest:GiveHeroMorality(0.20000000298023224)
                                 else
                                     if bVar3 then goto LAB_00e3d063 end
-                                    x_stk_a4 = resources:ScriptThing(xStack_134)
-                                    iVar7 = x_stk_a4
+                                    xStack_a4 = resources:ScriptThing(xStack_134)
+                                    iVar7 = xStack_a4
                                     fVar14 = quest:GetHealth(iVar7)
                                     cVar4 = 0.0 < fVar14
                                     if cVar4 then
@@ -1121,15 +1121,15 @@ function Main(quest, me)
             uVar11 = uVar20 | 8
             -- TODO(native): cVar4 = (**(*me + 0x54))("SCRIPT_NAME_HERO")
             cVar4 = nil --[[unresolved native value]]
-            if cVar4 == 0 then
+            if not cVar4 then
                 uVar11 = uVar20 | 0x18
                 -- TODO(native): cVar4 = (**(*me + 0xa8))("SCRIPT_NAME_HERO")
                 cVar4 = nil --[[unresolved native value]]
-                if cVar4 ~= 0 then
+                if cVar4 then
                     uVar11 = uVar20 | 0x38
                     -- TODO(native): cVar4 = (**(*me + 0xa4))(0xe,"SCRIPT_NAME_HERO")
                     cVar4 = nil --[[unresolved native value]]
-                    if cVar4 == 0 then goto LAB_00e3e06a end
+                    if not cVar4 then goto LAB_00e3e06a end
                 end
                 -- TODO(native): xStack_f8_b3 = '\0';
             else

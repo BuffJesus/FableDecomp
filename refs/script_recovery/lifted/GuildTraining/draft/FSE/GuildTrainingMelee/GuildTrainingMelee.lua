@@ -9,10 +9,10 @@ function Main(quest)
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent", 1)
     quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder", 1)
     quest:FinalizeEntityBindings()
-    bUnknown = 0
+    bUnknown = false
     pCVar4 = quest:GetThingWithScriptName("M_MeleeTeacherStand")
     pThingToMove = quest:GetThingWithScriptName("TheRealGuildmaster")
-    quest:EntityTeleportToThing(pThingToMove, pCVar4, (bUnknown ~= 0))
+    quest:EntityTeleportToThing(pThingToMove, pCVar4, bUnknown)
     pThingToMove = nil
     pCVar4 = nil
     pCVar4 = quest:GetThingWithScriptName("MK_GTWU_WHISPER")

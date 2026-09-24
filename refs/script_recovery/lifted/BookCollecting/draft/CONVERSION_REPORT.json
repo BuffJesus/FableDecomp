@@ -1098,7 +1098,7 @@
             "SetStateBool",
             "ENGINE_Concat"
           ],
-          "lines": 364,
+          "lines": 362,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1259,7 +1259,7 @@
             "goto LAB_00e573aa;",
             "if (!bVar1) goto LAB_00e57345;",
             "if (bVar1) goto LAB_00e57381;",
-            "if (cVar2 != '\\0') goto LAB_00e573aa;"
+            "if (cVar2) goto LAB_00e573aa;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00e57345",

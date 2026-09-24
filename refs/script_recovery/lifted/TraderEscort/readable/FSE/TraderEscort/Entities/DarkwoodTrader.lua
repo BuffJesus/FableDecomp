@@ -147,7 +147,7 @@ function Main(quest, me)
                 scratchValue43 = resources:ScriptThing(resource2)
                 -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_e8,iVar20);
     --[[unresolved native result]]
-                while nil ~= 0 do
+                while nil do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                     me:MoveToPosition(resource3, 1.0, ENTITY_MOVE_RUN, false, true)
                     while me:IsPerformingScriptTask() do
@@ -227,7 +227,7 @@ function Main(quest, me)
                     resources:ScriptThing(resource2)
                     -- TODO(native): iVar20 = IsDistanceFromThingToPositionOver(pvVar8,xStack_118,iVar20);
                     scratchValue17 = nil --[[unresolved native result]]
-                    while scratchValue17 ~= 0 do
+                    while scratchValue17 do
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                         me:MoveToPosition(resource, 3.0, ENTITY_MOVE_WALK, false, true)
                         while me:IsPerformingScriptTask() do

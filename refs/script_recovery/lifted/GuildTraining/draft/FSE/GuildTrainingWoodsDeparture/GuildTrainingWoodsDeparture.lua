@@ -23,8 +23,6 @@ function Main(quest)
                     CVar5 = CVar5 & 0xfffffff7
                 end
                 quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
-                if (CVar5 & 0x10) ~= 0 then
-                end
                 quest:SetStateInt("DepartureMissionPoint", 0)
                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
                 this_00 = quest:GetThingWithScriptName("MazeCreationMarker")

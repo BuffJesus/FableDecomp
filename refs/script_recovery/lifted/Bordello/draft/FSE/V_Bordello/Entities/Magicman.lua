@@ -91,7 +91,7 @@ function Main(quest, me)
                 bVar5 = not alive
                 if bVar5 then goto LAB_00e448a1 end
                 quest:SetStateBool("BeerSetToDPad", true)
-                quest:SetPreferredQuickAccessItem("OBJECT_BEER_TANKARD", i_stk_350, 0)
+                quest:SetPreferredQuickAccessItem("OBJECT_BEER_TANKARD", iVar18, iVar19)
                 quest:CreateThread("WatchForHeroLeavingRegionWithBeer")  -- native thread body 0x00E44980: lift it as function WatchForHeroLeavingRegionWithBeer(quest)
                 if (u_stk_374 & 8) ~= 0 then
                     u_stk_374 = u_stk_374 & 0xfffffff7
@@ -174,12 +174,12 @@ function Main(quest, me)
                     end
                     r2 = quest:AddNewConversation(pCVar11, (i_stk_350 ~= 0), (fVar23 ~= 0))
                     r3 = quest:GetHero()
-                    quest:AddPersonToConversation(0, r3)
+                    quest:AddPersonToConversation(iVar20, r3)
                     -- TODO(native): xStack_308 = (undefined **)**(int **)(this + 4);
                     -- TODO(native): xStack_344 = (int *)(*(code *)xStack_308[0x46])();
-                    ppuVar4 = xStack_364
+                    ppuVar4 = 0
                     xStack_350 = p0
-                    pCVar10 = tostring(xStack_364)
+                    pCVar10 = tostring(0)
                     ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
                     -- TODO(native): (*(code *)xStack_308[0x16e])();
                     i_stk_350 = ppuVar4 + 1
@@ -193,16 +193,16 @@ function Main(quest, me)
                 if bVar5 then goto LAB_00e448a1 end
                 me:ClearCommands()
                 xStack_340 = resources:StartMovie("")
-                quest:PauseAllNonScriptedEntities(false)
-                quest:FixMovieSequenceCamera(nil --[[missing]])
+                quest:PauseAllNonScriptedEntities((iVar22 ~= 0))
+                quest:FixMovieSequenceCamera(false)
                 xStack_344 = quest:GetHero()
                 xStack_350 = p0
                 quest:EntitySetFacingAngleTowardsThing(xStack_344, nil --[[missing]])
-                quest:Pause(nil --[[missing]])
+                quest:Pause(0)
                 iVar18 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(iVar18, nil --[[missing]])
                 alive = quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]])
+                quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], 0x0, nil --[[missing]], nil --[[missing]])
                 -- TODO(native): bVar5 = NScript::CV_BordelloScript::IsHeroWearingBeard__ate3e320(*(CV_BordelloScript **)(this + 0x14));
                 if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -302,19 +302,19 @@ function Main(quest, me)
                     -- TODO(native): xStack_350 = (CScriptThing *)((uint)xStack_350 | 0x20);
                     r6 = quest:GetHero()
                     cVar6 = quest:IsWearingClothingItem(r6, "OBJECT_HERO_HAT_PIMP")
-                    cVar16 = 1
+                    cVar16 = true
                     if not cVar6 then goto LAB_00e418e3 end
                 else
                     goto LAB_00e418e3
                 end
                 goto FLOW_past_lab_00e418e3
                 ::LAB_00e418e3::
-                cVar16 = 0
+                cVar16 = false
                 ::FLOW_past_lab_00e418e3::
                 if (xStack_350 & 0x20) ~= 0 then
                     -- TODO(native): xStack_350 = (CScriptThing *)((uint)xStack_350 & 0xffffffdf);
                 end
-                if cVar16 == 0 then
+                if not cVar16 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if not bVar5 then
@@ -350,7 +350,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if bVar5 then
-                                quest:PauseAllNonScriptedEntities(nil --[[missing]])
+                                quest:PauseAllNonScriptedEntities(cVar16)
                                 this_01 = xStack_340
                                 resources:DestroyMovie(this_01)
                                 goto LAB_00e448a1
@@ -909,7 +909,7 @@ function Main(quest, me)
                 bVar5 = not alive
                 if bVar5 then goto LAB_00e4450d end
                 quest:SetStateBool("BeerSetToDPad", true)
-                quest:SetPreferredQuickAccessItem("OBJECT_BEER_TANKARD", nil --[[missing]], nil --[[missing]])
+                quest:SetPreferredQuickAccessItem("OBJECT_BEER_TANKARD", iVar18, iVar19)
                 quest:CreateThread("WatchForHeroLeavingRegionWithBeer")  -- native thread body 0x00E44980: lift it as function WatchForHeroLeavingRegionWithBeer(quest)
                 if (u_stk_374 & 0x1000) ~= 0 then
                     u_stk_374 = u_stk_374 & 0xffffefff
@@ -979,7 +979,7 @@ function Main(quest, me)
                     end
                     r20 = quest:AddNewConversation(pCVar11, (i_stk_350 ~= 0), (fVar23 ~= 0))
                     r21 = quest:GetHero()
-                    quest:AddPersonToConversation(nil --[[missing]], r21)
+                    quest:AddPersonToConversation(iVar20, r21)
                     -- TODO(native): xStack_194 = (undefined **)**(int **)(this + 4);
                     -- TODO(native): xStack_344 = (int *)(*(code *)xStack_194[0x46])();
                     ppuVar4 = xStack_364
@@ -999,7 +999,7 @@ function Main(quest, me)
                 me:ClearCommands()
                 xStack_344 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(false)
-                quest:FixMovieSequenceCamera(nil --[[missing]])
+                quest:FixMovieSequenceCamera((iVar22 ~= 0))
                 xStack_344 = quest:GetHero()
                 xStack_364 = p0
                 quest:EntitySetFacingAngleTowardsThing(xStack_344, nil --[[missing]])
@@ -1885,8 +1885,6 @@ function helper_E44A40(quest, me)
     end
     if (bVar5 & 2) ~= 0 then
         bVar5 = bVar5 & 0xfd
-    end
-    if (bVar5 & 1) ~= 0 then
     end
     return
 end

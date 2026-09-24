@@ -195,8 +195,8 @@ function Main(quest, me)
         pCVar16 = 0x1
         me:MoveToPosition(puVar7, 1.0, 1, false, true)
         bVar4 = quest:IsDistanceBetweenThingsUnder(me, r1, 2.0)
-        uVar2 = 0
-        uVar3 = 0
+        uVar2 = false
+        uVar3 = false
         while not bVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -232,7 +232,7 @@ function Main(quest, me)
                         end
                         pCVar16 = 0x1
                         me:MoveToPosition(puVar7, 1.0, 1, false, true)
-                        uVar2 = 1
+                        uVar2 = true
                     end
                 else
                     fVar18 = 8.0
@@ -242,7 +242,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00e109a6 end
-                        if uVar2 ~= 0 then
+                        if uVar2 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then goto LAB_00e109a6 end
@@ -254,11 +254,11 @@ function Main(quest, me)
                             end
                             pCVar16 = 0x0
                             me:MoveToPosition(puVar7, 1.0, 0, false, true)
-                            uVar2 = 0
+                            uVar2 = false
                         end
                     end
                 end
-                uVar3 = 0
+                uVar3 = false
                 iVar13 = quest:GetTimer(xStack_5c)
                 if iVar13 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -296,7 +296,7 @@ function Main(quest, me)
                     pCVar6 = "TEXT_QST_072_HELPER_OVER_HERE"
                     quest:AddLineToConversation(iVar15, pCVar6, me, pCVar8, false)
                     quest:Pause(1.0)
-                    uVar3 = 1
+                    uVar3 = true
                 end
                 iVar13 = quest:GetTimer(xStack_5c)
                 if iVar13 == 0 then

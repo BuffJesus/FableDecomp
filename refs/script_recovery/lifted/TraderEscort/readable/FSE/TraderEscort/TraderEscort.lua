@@ -166,7 +166,7 @@ function WatchForSurprisingBalverines(quest)
     ::LAB_00e063db::
     goto LAB_00e0642a
     ::LAB_00e06319::
-    if scratchValue ~= 0 then
+    if scratchValue then
         if not quest:NewScriptFrame() then __cleanup_LAB_00e063f5(); return end
         -- TODO(native): cVar6 = (**(r1._0_4_ + 0x12c))()
         scratchValue = nil --[[unresolved native value]]
@@ -290,7 +290,7 @@ function WatchForMissionRules(quest)
             if not sequence then
                 -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
     --[[unresolved native value]]
-                sequence = nil ~= 0
+                sequence = nil
             end
             if sequence then goto LAB_00e06d6c end
             predicateResult4 = true
@@ -306,7 +306,7 @@ function WatchForMissionRules(quest)
                 local x_stk_d0_2 = quest:GetThingWithScriptName("M_EndTheQuestHere")
                 -- TODO(native): cVar3 = (*xStack_dc[0x4b])()
     --[[unresolved native value]]
-                if nil ~= 0 then goto LAB_00e06fb5 end
+                if nil then goto LAB_00e06fb5 end
                 if not quest:GetStateBool("EndStarted") then
                     if not quest:IsActiveThreadTerminating() then
                         ::LAB_00e06e73::
@@ -422,7 +422,7 @@ function TurnToBalv(quest, me)
     local pPosition, resource, movie, actorMap
     local resource2 = resources:NewResource()
     local resource3 = resources:NewResource()
-    if me._4_4_ == 0 then
+    if not (me ~= nil and not me:IsNull()) then
         pPosition = {x = 0, y = 0, z = 0}
     else
         pPosition = me:GetPos()
@@ -435,8 +435,6 @@ function TurnToBalv(quest, me)
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource3)
             resources:ReleaseResource(resource2)
-            me = nil
-            -- TODO(native): if (native_arg_Me._8_4_ ~= 0) and (*native_arg_Me._8_4_ = *native_arg_Me._8_4_ - 1, *native_arg_Me._8_4_ == 0) then
             do return end
         end
     end
@@ -477,52 +475,28 @@ end
 
 -- Q_TraderEscort.WatchForPickpocketing (retail 0x00e04f10)
 function WatchForPickpocketing(quest, trader)
-    local predicateResult, scratchValue
-    local scratchValue4 = nil
-    predicateResult = quest:IsActiveThreadTerminating()
     repeat
-        if predicateResult then
-            trader = nil
-            -- TODO(native): if (native_arg_Trader._8_4_ ~= 0) and (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ - 1, *native_arg_Trader._8_4_ == 0) then
+        if quest:IsActiveThreadTerminating() then return end
+        local scratchValue = quest:MsgOnHeroPickedPocket()
+        if scratchValue ~= nil then
+            if scratchValue ~= nil and scratchValue:IsEqualTo(trader) then
+                quest:SetStateInt("TraderPickpocketedCount", quest:GetStateInt("TraderPickpocketedCount") + 1)
+                if 2 < quest:GetStateInt("TraderPickpocketedCount") and not quest:IsActiveThreadTerminating() then
+                    quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 2)
+                end
+                return
+            end
+            goto LAB_00e04f80
             return
         end
-        if quest:MsgOnHeroPickedPocket() then
-            if not quest:IsActiveThreadTerminating() then
-                if scratchValue4 ~= nil and scratchValue4:IsEqualTo(trader._4_4_) then
-                    if quest:IsActiveThreadTerminating() then return end
-                    quest:SetStateInt("TraderPickpocketedCount", quest:GetStateInt("TraderPickpocketedCount") + 1)
-                    local predicateResult4 = quest:IsActiveThreadTerminating()
-                    local sequence = not predicateResult4 and 2 < quest:GetStateInt("TraderPickpocketedCount") and not quest:IsActiveThreadTerminating()
-                    if sequence then
-                        quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 2)
-                    end
-                    return
-                end
-                goto LAB_00e04f80
-            end
-            goto LAB_00e050a5
-        end
-        goto FLOW_past_lab_00e050a5
-        ::LAB_00e050a5::
-        trader = nil
-        -- TODO(native): if (native_arg_Trader._8_4_ == 0) or (*native_arg_Trader._8_4_ = *native_arg_Trader._8_4_ - 1, *native_arg_Trader._8_4_ ~= 0) then
-        -- TODO(native): (**(code **)(native_arg_Trader._8_4_ + 4))();
-        do __cleanup_LAB_00e05100(); return end
-        ::FLOW_past_lab_00e050a5::
         ::LAB_00e04f80::
-        if trader._4_4_ == 0 then
-            scratchValue = 0
+        if not ((trader ~= nil and not trader:IsNull()) and trader ~= nil and trader:MsgIsKilledBy("")) then
+            quest:NewScriptFrame()
         else
-            scratchValue = trader ~= nil and trader:MsgIsKilledBy("")
-        end
-        if not scratchValue then quest:NewScriptFrame(); predicateResult = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if not quest:IsActiveThreadTerminating() then
             quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 0)
+            do return end
+            quest:NewScriptFrame()
         end
-        goto LAB_00e050a5
-        quest:NewScriptFrame()
-        predicateResult = quest:IsActiveThreadTerminating()
-        ::continue_1::
     until false
 end
 

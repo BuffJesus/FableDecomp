@@ -25,7 +25,7 @@ function helper_ECE460(quest, me)
     local iVar6 = _stricmp(p0,p1,p2,p3)
     if iVar6 ~= 0 then
         pOther = xStack_10
-        resources:SetString(amStack_28, "$ARG1", pOther)
+        resources:SetString(0x0, "$ARG1", pOther)
     end
     -- TODO(native): puStack_34 = malloc(0x24);
     -- TODO(native): *puStack_34 = 0;

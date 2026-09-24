@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, r1, r2, r3, uVar12, u_stk_7c, xStack_8c, xStack_9c
+    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, pvVar11, r1, r2, r3, uVar12, u_stk_7c, xStack_8c, xStack_9c
     local alive = true
     u_stk_7c = 0
     xStack_9c = resources:NewResource()
@@ -488,16 +488,17 @@ function Main(quest, me)
                 -- TODO(native): xStack_64._4_4_ = puVar10.y;
                 iVar6 = 3.0
                 -- TODO(native): xStack_64._8_4_ = puVar10.z;
-                -- TODO(native): pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_9c,(int)&xStack_40);
+                r1 = resources:ScriptThing(xStack_9c)
+                pvVar11 = r1
                 -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
                 iVar6 = nil --[[unresolved native result]]
                 cVar5 = iVar6
-                while cVar5 ~= 0 do
+                while cVar5 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00ee6817 end
-                    me:MoveToPosition(puVar10, 1.0, 0, false, true)
+                    me:MoveToPosition(r2, 1.0, 0, false, true)
                     iVar6 = me:IsPerformingScriptTask()
                     cVar5 = iVar6
                     while cVar5 do
@@ -512,7 +513,8 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00ee6817 end
                     iVar6 = 3.0
-                    -- TODO(native): pvVar11 = (void *)CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_9c,(int)&xStack_40);
+                    r1 = resources:ScriptThing(xStack_9c)
+                    pvVar11 = r1
                     -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
                     iVar6 = nil --[[unresolved native result]]
                     cVar5 = iVar6
@@ -556,7 +558,7 @@ function OnPredicateFail(quest, me)
 end
 
 function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
-    local __native_condition_1, bVar4, cVar5, iVar1, iVar9, native_arg_sequence_1, pCVar6, pCVar7, piVar2, piVar3, puVar8, uVar10, uVar11, uVar12, uVar13, xStack_18
+    local __native_condition_1, bVar4, cVar5, iVar1, iVar9, native_arg_sequence_1, pCVar6, pCVar7, puVar8, uVar10, uVar11, uVar12, uVar13, xStack_18
     local alive = true
     bVar4 = (native_arg_param_1 ~= nil and native_arg_param_1:IsAlive())
     if bVar4 then
@@ -623,17 +625,7 @@ function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
                     __native_entity_state:SetStateInt("self_0x164", 0)
                 end
                 pCVar7 = quest:GetThingWithScriptName(nil --[[missing]])
-                -- TODO(native): piVar2 = *(pCVar7 + 0x8)
-                piVar2 = nil --[[unresolved native value]]
-                -- TODO(native): piVar3 = *(pCVar7 + 0x4)
-                piVar3 = nil --[[unresolved native value]]
-                if xStack_18 ~= piVar2 then
-                    xStack_18 = piVar3
-                    xStack_18 = piVar2
-                    if piVar2 ~= nil then
-                        -- TODO(native): *piVar2 = *piVar2 + 1;
-                    end
-                end
+                xStack_18 = pCVar7
                 pCVar7 = nil
             end
             alive = not quest:IsActiveThreadTerminating()

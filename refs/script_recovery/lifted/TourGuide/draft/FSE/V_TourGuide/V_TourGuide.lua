@@ -138,10 +138,9 @@ function OnPersist(quest, context)
 end
 
 function WatchForGuideKilled(quest)
-    local bVar2
+    local bVar2, cVar1
     local alive = true
     local r1 = quest:GetThingWithScriptName("TourGuideGuide")
-    local cVar1
     while true do
         local __native_condition_1 = not (r1 ~= nil and not r1:IsNull())
         if not __native_condition_1 then
@@ -164,7 +163,7 @@ function WatchForGuideKilled(quest)
     end
     while true do
         if not (r1 ~= nil and not r1:IsNull()) then
-            cVar1 = 0
+            cVar1 = false
         else
             cVar1 = (r1 ~= nil and r1:MsgIsKilledBy(""))
         end

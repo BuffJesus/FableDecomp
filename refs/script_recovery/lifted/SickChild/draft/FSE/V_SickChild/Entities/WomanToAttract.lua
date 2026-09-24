@@ -117,7 +117,7 @@ function Main(quest, me)
         end
         -- TODO(native): cVar4 = (**(*pCVar9 + 0x74))("")
         cVar4 = nil --[[unresolved native value]]
-        if (cVar4 ~= 0) and (not __native_entity_state:GetStateBool("GivenObject")) then
+        if (cVar4) and (not __native_entity_state:GetStateBool("GivenObject")) then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00ed0ae8 end
@@ -250,7 +250,7 @@ function Main(quest, me)
                 -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                 -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                 cVar4 = nil --[[unresolved native value]]
-                while cVar4 ~= 0 do
+                while cVar4 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -259,7 +259,7 @@ function Main(quest, me)
                         resources:DestroyMovie("TEXT_QST_B10_LAUGHING_WOMAN_NEARLY_HYSTERICAL")
                         goto LAB_00ed0ae8
                     end
-                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))(&xStack_60)
+                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                     cVar4 = nil --[[unresolved native value]]
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -282,47 +282,47 @@ function Main(quest, me)
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_PELVIC_THRUST");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 == 0 then
+            if not cVar4 then
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COCK_A_DOODLE_DO");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 == 0 then
+                if not cVar4 then
                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_CROTCH_GRAB");
                     cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                    if cVar4 == 0 then
+                    if not cVar4 then
                         -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_KISS_MY_ASS");
                         cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                         -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                        if cVar4 == 0 then
+                        if not cVar4 then
                             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_FLAMENCO");
                             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                            if cVar4 == 0 then
+                            if not cVar4 then
                                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COSSACK");
                                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                if cVar4 == 0 then
+                                if not cVar4 then
                                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_AIR_GUITAR");
                                     cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                    if cVar4 == 0 then
+                                    if not cVar4 then
                                         -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_BALLET");
                                         cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                         -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                        if cVar4 == 0 then
+                                        if not cVar4 then
                                             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_SATURDAY_NIGHT_FEVER");
                                             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                            if cVar4 == 0 then
+                                            if not cVar4 then
                                                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_TAP");
                                                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                                if cVar4 == 0 then
+                                                if not cVar4 then
                                                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_GIGGLE");
                                                     cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                                                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                                    if cVar4 == 0 then goto LAB_00ecff84 end
+                                                    if not cVar4 then goto LAB_00ecff84 end
                                                 end
                                             end
                                         end
@@ -464,7 +464,7 @@ function Main(quest, me)
                         -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                         -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                         cVar4 = nil --[[unresolved native value]]
-                        while cVar4 ~= 0 do
+                        while cVar4 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -494,7 +494,7 @@ function Main(quest, me)
                         -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                         -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                         cVar4 = nil --[[unresolved native value]]
-                        while cVar4 ~= 0 do
+                        while cVar4 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
@@ -539,7 +539,7 @@ function Main(quest, me)
             -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
             cVar4 = nil --[[unresolved native value]]
             pCVar6 = pCVar19
-            while cVar4 ~= 0 do
+            while cVar4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -565,47 +565,47 @@ function Main(quest, me)
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_PELVIC_THRUST");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 ~= 0 then goto LAB_00ed0210 end
+            if cVar4 then goto LAB_00ed0210 end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COCK_A_DOODLE_DO");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 ~= 0 then goto LAB_00ed0245 end
+            if cVar4 then goto LAB_00ed0245 end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_CROTCH_GRAB");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 ~= 0 then goto LAB_00ed027a end
+            if cVar4 then goto LAB_00ed027a end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_KISS_MY_ASS");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 ~= 0 then goto LAB_00ed02ac end
+            if cVar4 then goto LAB_00ed02ac end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_FLAMENCO");
             cVar4 = (not (iVar5 ~= 0)) and 1 or 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if cVar4 == 0 then
+            if not cVar4 then
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COSSACK");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed02e2 end
+                if cVar4 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_AIR_GUITAR");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed02e2 end
+                if cVar4 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_BALLET");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed02e2 end
+                if cVar4 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_SATURDAY_NIGHT_FEVER");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed02e2 end
+                if cVar4 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_TAP");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed02e2 end
+                if cVar4 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_GIGGLE");
                 cVar4 = (not (iVar5 ~= 0)) and 1 or 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if cVar4 ~= 0 then goto LAB_00ed04c2 end
+                if cVar4 then goto LAB_00ed04c2 end
                 goto LAB_00ed02ff
             end
             ::LAB_00ed02e2::
@@ -620,7 +620,7 @@ function Main(quest, me)
         ::LAB_00ed069d::
         -- TODO(native): cVar4 = (**(*pCVar9 + 0x6c))("SCRIPT_NAME_HERO")
         cVar4 = nil --[[unresolved native value]]
-        if cVar4 == 0 then
+        if not cVar4 then
             goto LAB_00ed06d4
         else
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(1,(undefined3)xStack_9c);
@@ -656,7 +656,7 @@ function Main(quest, me)
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                     -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                     cVar4 = nil --[[unresolved native value]]
-                    while cVar4 ~= 0 do
+                    while cVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -684,7 +684,7 @@ function Main(quest, me)
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                     -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                     cVar4 = nil --[[unresolved native value]]
-                    while cVar4 ~= 0 do
+                    while cVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -712,7 +712,7 @@ function Main(quest, me)
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
                     -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
                     cVar4 = nil --[[unresolved native value]]
-                    while cVar4 ~= 0 do
+                    while cVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -781,7 +781,7 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-    local bVar1, bVar3, cVar2
+    local bVar1, bVar3, cVar2, xStack_4
     bVar3 = false
     if not __native_entity_state:GetStateBool("GivenObject") then
         bVar3 = true
@@ -794,8 +794,8 @@ function OnPredicateFail(quest, me)
     if bVar3 then
     end
     if bVar1 then
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_4);
-        quest:GiveHeroObject(nil --[[missing]], -1, false)
+        xStack_4 = quest:ReadGlobalGameDataString(0x738)
+        quest:GiveHeroObject(xStack_4, -1, false)
         quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0x768))
         quest:SetStateBool("LaughingWomanKilled", true)
     end
@@ -803,7 +803,7 @@ end
 
 function helper_ED0B10(quest, me)
     local resources = quest:RetailResources()
-    local CVar3, i_stk_18, pCVar6, pOther, xStack_1c, xStack_2c
+    local CVar3, i_stk_18, pCVar6, pOther, xStack_1c
     local xStack_10 = resources:NewResource()
     local pScriptObject = xStack_10
     local pThing = quest:GetHero()
@@ -833,7 +833,7 @@ function helper_ED0B10(quest, me)
     -- TODO(native): *(undefined4 *)(xStack_1c + 4) = 0;
     -- TODO(native): *(undefined1 **)(xStack_1c + 8) = xStack_1c;
     -- TODO(native): *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;
-    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)&xStack_2c);
+    local xStack_2c = quest:ReadGlobalGameDataString(0x738)
     resources:SetString(xStack_1c, "$ITEM", pOther)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacroWithStrings("CS_SICK_LAUGHING_WOMAN_LEAVES", xStack_28, xStack_1c, false, true)
