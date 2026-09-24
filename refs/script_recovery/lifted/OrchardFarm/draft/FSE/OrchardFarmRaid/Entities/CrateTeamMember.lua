@@ -427,7 +427,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local CStack_10, bVar6, c_stk_11, iVar3, pCVar2, pThing, piVar1
+    local bVar6, iVar3, pCVar2, pThing, piVar1, x_stk_c
     piVar1 = me:GetName()
     if piVar1 == nil then
         bVar6 = false
@@ -436,8 +436,7 @@ function Init(quest, me)
         end
     else
         iVar3 = ((piVar1 == "BanditTeamMember") and 0 or 1)
-        c_stk_11 = not (iVar3 ~= 0)
-        if c_stk_11 then goto LAB_00dce00a end
+        if iVar3 == 0 then goto LAB_00dce00a end
     end
     goto FLOW_past_lab_00dce00a
     ::LAB_00dce00a::
@@ -476,9 +475,10 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("PreviousAIState", 2)
     __native_entity_state:SetStateInt("MemberState", 0)
     quest:SetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0"), quest:GetStateInt(("Teams_" .. __native_entity_state:GetStateInt("MyTeam") .. "_StateCounter_0")) + 1)
-    CStack_10 = nil
+    x_stk_c = nil
     __native_entity_state:SetStateThing("ThingToPatrolTo", nil)
-    CStack_10 = nil
+    x_stk_c = nil
+    x_stk_c = 0
 end
 
 function OnPersist(quest, me, context)

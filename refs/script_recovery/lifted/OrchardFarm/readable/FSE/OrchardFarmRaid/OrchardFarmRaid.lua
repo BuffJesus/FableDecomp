@@ -112,9 +112,8 @@ end
 function ProcessGameRulesEvil(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local addQuestInfoCounter, thing, actorMap2, movie, resource, resource2
+    local actorMap2, movie, resource, resource2
     local function ReleaseEverything()
-        local thing = 0
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         resources:DestroyActorMap(actorMap2)
@@ -126,7 +125,7 @@ function ProcessGameRulesEvil(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:DisplayQuestInfo(true)
-    addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
+    local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_SMALL_CRATE", 3, 1.0)
     if quest:IsActiveThreadTerminating() then return end
     repeat
         quest:UpdateQuestInfoCounter(addQuestInfoCounter, 3 - quest:GetStateInt("CrateCount"), -1)
@@ -151,8 +150,7 @@ function ProcessGameRulesEvil(quest)
             movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            local f_stk_14_2 = quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2
-            if f_stk_14_2 <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
+            if (quest:GetDistanceBetweenThings(mkOfwfWhisper, hero) ^ 2) <= (quest:GetDistanceBetweenThings(mkOfwbWhisper, hero) ^ 2) then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 resources:RunMacro("CS_ORCHARD_EVIL_WHISPER_BACK", actorMap2, false, true)
             else
@@ -185,7 +183,6 @@ function ProcessGameRulesEvil(quest)
             resources:DestroyActorMap(actorMap2)
             resources:ReleaseResource(resource)
             resources:ReleaseResource(resource2)
-            addQuestInfoCounter = f_stk_14_2
         end
         if hero ~= nil and hero:MsgIsKilledBy("") then
             if quest:IsActiveThreadTerminating() then return end
@@ -240,9 +237,8 @@ end
 function ProcessGameRulesGood(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local thing, resource, actorMap2, resource2, resource3
+    local resource, actorMap2, resource2, resource3
     local function ReleaseEverything()
-        local thing = 0
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(resource2)
         resources:DestroyActorMap(actorMap2)

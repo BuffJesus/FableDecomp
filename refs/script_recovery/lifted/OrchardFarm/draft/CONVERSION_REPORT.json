@@ -323,7 +323,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 209,
+          "lines": 205,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -334,7 +334,7 @@
           "readableLocalNames": {},
           "nativeJumps": [
             "goto LAB_00dd08eb;",
-            "if (!bVar4) goto LAB_00dd0977;"
+            "if (!bVar3) goto LAB_00dd0977;"
           ],
           "nativeLabels": [
             "LAB_00dd08eb",
@@ -482,7 +482,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 254,
+          "lines": 252,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1492,7 +1492,7 @@
             "goto FLOW_past_lab_00dce00a;",
             "goto LAB_00dcdf96;",
             "goto LAB_00dce00a;",
-            "if (c_stk_11 != '\\0') goto LAB_00dce00a;"
+            "if (iVar3 == 0) goto LAB_00dce00a;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00dce00a",
@@ -2026,7 +2026,6 @@
       "cleanupRegions": {
         "FSE/OrchardFarmRaid/OrchardFarmRaid.lua": {
           "LAB_00dd0b11": [
-            "pCVar6 = 0x0",
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_9c)",
             "resources:DestroyActorMap(xStack_80)",
@@ -2034,7 +2033,6 @@
             "resources:ReleaseResource(xStack_bc)"
           ],
           "LAB_00dd1728": [
-            "pCVar5 = 0x0",
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_98)",
             "resources:DestroyActorMap(xStack_88)",
