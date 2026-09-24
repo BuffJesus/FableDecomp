@@ -136,3 +136,25 @@ range, heal at a higher threshold) or a hand-played Whisper fight.
 
 Sidecar alternative (clear a quest's namespace on host creation) is NOT done: the persisted `.qs` restore
 order relative to host creation must be checked first, or clearing would wipe restored state for every quest.
+
+## v14: IsEqualTo crash fixed, Good route completed end to end
+
+**v14** = v13 + converter ctor defaults for Orchard (b270c0f: Init zeroes Teams_{0,1}_MemberCount and
+StateCounter_{0..5}) + a second sidecar fix. First v14 attempt crashed the game (no main window, no WER record)
+during the probe that first called `IsEqualTo` on a crate carrier. Retail `CGameScriptThing::IsEqualTo`
+(0x008D46A0) compares `this+0xC` with `other+0xC` — the intelligent pointer inside the IMPLEMENTATION object —
+so its operand is `other.Data`; the sidecar passed the 12-byte `CScriptThing` wrapper, reading past its end
+(garbage equality or a crash in 0x00A01B50). The converted Orchard CrateTeamMember (`TeamCrateCarrier:IsEqualTo(me)`)
+and Trader Escort MakeTraderComment call it. Fix: `sidecar_patches/novi-zzzzz-isequalto-implementation.patch`.
+It was the only CGameScriptThing slot taking a thing operand.
+
+Second v14 attempt (`adult_maze_completed_2026-09-23` -> Protect with boasts 17 + 19): waves 1 -> 2 -> 3 advanced
+with no intervention, crate carriers handled without a crash, Whisper's entrance + flourish tutorial, Whisper
+defeated with real sword/flourish/lightning input (60 -> 5), farmer outro, **Quest Completed**: 760 gold (750 +
+10 extra), 400 renown, 500 experience, Whisper's Brooch; no boast lines (both lost in play: a crate stolen and a
+guard killed in wave 1). `orchard_farm_handoff.json` **3/3** (native completion, stage 500, CoreQuestWaiting).
+Archive `work/ab_runs/v14-20260924-114524`: 0 Lua runtime errors, 0 C++ exceptions. Checkpoint
+`adult_orchard_completed_v14_2026-09-24` (native AutoSave only: the sidecar left the 12:00 `.qs` beside the
+12:18 completion save, so the stale companion was dropped).
+
+Still unseen: a WON boast's payout line on a completion screen; the Evil success path.

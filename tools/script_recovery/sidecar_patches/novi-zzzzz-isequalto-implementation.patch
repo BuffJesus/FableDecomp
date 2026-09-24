@@ -1,0 +1,21 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 0dc9a0e..f1ad3cf 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -392,9 +392,14 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         else if (other.is<CScriptThing*>()) rhs = other.as<CScriptThing*>();
+         if (!rhs) return false;
+         auto* imp = reinterpret_cast<CGameScriptThing*>(me->pImp.Data);
+-        if (!imp || !imp->pVTable) return me->pImp.Data == rhs->pImp.Data;
++        if (!imp || !imp->pVTable || !rhs->pImp.Data) return me->pImp.Data == rhs->pImp.Data;
+         auto* vt = reinterpret_cast<CGameScriptThingVTable*>(imp->pVTable);
+-        return vt->IsEqualTo ? vt->IsEqualTo(imp, rhs) : me->pImp.Data == rhs->pImp.Data;
++        // Retail CGameScriptThing::IsEqualTo (0x008D46A0) is symmetric: it compares this+0xC with other+0xC, the
++        // intelligent pointer inside the IMPLEMENTATION object, so the operand is other.Data -- not the 12-byte
++        // CScriptThing wrapper, whose +0xC is past its end (garbage equality, or a crash in 0x00A01B50 when that
++        // heap word is not a pointer: Orchard Farm Good route, 2026-09-24).
++        return vt->IsEqualTo ? vt->IsEqualTo(imp, reinterpret_cast<const CScriptThing*>(rhs->pImp.Data))
++                             : me->pImp.Data == rhs->pImp.Data;
+     };
+ }
+ 

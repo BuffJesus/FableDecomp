@@ -46,14 +46,12 @@ conversion journal, plus the `test_callee_purge_pairing`, `test_vector_register_
 `test_spawn_capture`, `test_script_def_offsets` and `test_readable_*` modules. Established-unit regeneration checks are recorded there.
 The broad suite was cancelled; no new full-suite pass is claimed.
 
-Live baseline: **v13** (= v12 + `SetQuestAsFailed` binding fix + regenerated Orchard,
-`work/new-oakvale-original-fse-20260912/local-candidate-v13`). Stage-500 save
-**adult_orchard_completed_2026-09-23** (Good route, Trader Escort waiting) still stands.
-2026-09-24: boasts verified live (podium UI, `AddBoast` list, `IsBoastTaken`, Quest Start
-lines, live "Boast Failed" notice); Orchard **Evil** route played three times to its
-team-killed failure (intro, crate theft 3->1, waves, failure screen + Reload fixed in v13;
-0 Lua errors). Evil success/Whisper/outro and boast payouts still unseen. Checkpoint
-`adult_orchard_evil_accepted_2026-09-24`. See [Evil + boasts](journal/2026-09/ORCHARD_EVIL_AND_BOASTS_2026-09-24.md).
+Live baseline: **v14** (`work/new-oakvale-original-fse-20260912/local-candidate-v14`) = v12 +
+`novi-zzzz` (SetQuestAsFailed message) + `novi-zzzzz` (IsEqualTo operand) sidecar patches + Orchard Lua with
+ctor defaults (b270c0f). Orchard **Good** completed end to end on v14 (handoff 3/3, 0 Lua errors; checkpoint
+`adult_orchard_completed_v14_2026-09-24`); **Evil** played to its failure path only. Boasts verified live
+(podium UI, AddBoast, IsBoastTaken, Quest Start lines, "Boast Failed" notice); a WON boast's payout line is
+still unseen. See [Evil + boasts](journal/2026-09/ORCHARD_EVIL_AND_BOASTS_2026-09-24.md).
 
 Unrelated reconstruction outputs and root scratch remain outside this Lua
 checkpoint. Preserve them. Earlier handoff history is retained in
