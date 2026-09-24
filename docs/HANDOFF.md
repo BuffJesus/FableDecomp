@@ -1,6 +1,6 @@
 # Lua recovery handoff - 2026-09-23
 
-**Continue offline. No playtesting until the user changes that instruction.**
+**Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. This is the bedtime checkpoint; resume
 implementation next session. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
@@ -40,11 +40,14 @@ Final checkpoint: **137 focused offline tests passed**; exact command is in the
 conversion journal. Established-unit regeneration checks are recorded there.
 The broad suite was cancelled; no new full-suite pass is claimed.
 
-The last verified live baseline remains **v12**, save
-**adult_orchard_completed_2026-09-23**, stage **500** (Trader Escort waiting).
-Wasp, Maze, and Orchard progression/reloads were checked before the offline-only
-instruction. Original profile saves were restored; the offline work did not
-launch Fable or touch saves. See [Orchard evidence](journal/2026-09/ORCHARD_GUARDED_REPLAY_2026-09-23.md).
+Live baseline: **v13** (= v12 + `SetQuestAsFailed` binding fix + regenerated Orchard,
+`work/new-oakvale-original-fse-20260912/local-candidate-v13`). Stage-500 save
+**adult_orchard_completed_2026-09-23** (Good route, Trader Escort waiting) still stands.
+2026-09-24: boasts verified live (podium UI, `AddBoast` list, `IsBoastTaken`, Quest Start
+lines, live "Boast Failed" notice); Orchard **Evil** route played three times to its
+team-killed failure (intro, crate theft 3->1, waves, failure screen + Reload fixed in v13;
+0 Lua errors). Evil success/Whisper/outro and boast payouts still unseen. Checkpoint
+`adult_orchard_evil_accepted_2026-09-24`. See [Evil + boasts](journal/2026-09/ORCHARD_EVIL_AND_BOASTS_2026-09-24.md).
 
 Unrelated reconstruction outputs and root scratch remain outside this Lua
 checkpoint. Preserve them. Earlier handoff history is retained in

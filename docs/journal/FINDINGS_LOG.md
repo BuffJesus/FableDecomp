@@ -310,3 +310,17 @@ report and explicitly speculative restoration design:
 ## 2026-08-28 — Hit-local weapon augmentation inspection
 
 Re-homed to docs/engine/STATUE_WEAPON_AUGMENTATION_RE.md#verified-facts-from-findings-log on 2026-09-07.
+
+## 2026-09-24 — SCRIPT_DEF offset table is 0x3C low in the boast block
+
+`refs/script_recovery/script_def_offsets.json` (built by `tools/script_recovery/script_def_offsets.py`)
+mislabels the retail `CScriptDef` fields between the start of the struct and the `AmbushScamRenown` anchor
+(0x270). Retail Orchard Good Init (0x00DD23A0) reads the Naked boast from `[DAT_0143e90c+0x180/0x184]`,
+and the live Evil boast UI (2026-09-24, v12) shows 80/160, 100/400, 100/300 for the offsets 0x168..0x17c
+that Q_OrchardFarmRaidEvil passes to AddBoast. The table places that exact value run at 0x12c
+(`OFEvilNakedBoastCost`..`OFEvilNoWeaponsBoastReward`), i.e. 0x3C lower, and labels 0x168 as
+`PrisonNoDamageBoastReward`. 0xd78.. (`OFE_NoHealthPotionBoastCost` 80/160) and the 0x270 / 0xd64 / 0xf10
+anchors agree with retail, so the fault is a local layout error (a member counted too small before 0x12c and
+compensated before 0x270), not a global shift. Effect: every readable `SCRIPT_DEF.*` name below 0x270 can be
+wrong; draft output uses raw offsets and the game reads the right values. Fixed the same day (0b55994):
+the leading block is PDB - 4 up to +0x254; the zone to 0xd64 stays `verified: false`.

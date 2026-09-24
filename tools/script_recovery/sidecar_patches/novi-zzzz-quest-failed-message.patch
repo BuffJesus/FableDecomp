@@ -1,0 +1,38 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 2dc3e38..309beda 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -597,20 +597,22 @@ void LuaQuestState::Pause(float duration) {
+ }
+ 
+ void LuaQuestState::SetQuestAsFailed(const std::string& questName, bool showScreen, const std::string& wideMessage, bool useWideMessage) {
+-    // wideMessage parameter is ignored for now as the C++ code used an empty string.
+     if (m_pGameInterface && SetQuestAsFailed_API) {
+         FableString fsQuest(questName.c_str());
+ 
+-        // Create a CWideString on the stack representing an empty string.
+-        // Initialize its pointer to nullptr, mimicking an empty default state.
+-        CWideString cwsEmptyMessage = { nullptr };
+-
+-        // The C++ called SetQuestAsFailed(..., &v23, 1). v23 was empty string, 1 means use it.
+-        // We pass the address of our empty CWideString and the useWideMessage flag (true).
+-        SetQuestAsFailed_API(m_pGameInterface, fsQuest.get(), showScreen, &cwsEmptyMessage, true);
+-
+-        // No explicit destruction needed for cwsEmptyMessage as it's stack-allocated
+-        // and doesn't manage heap memory directly in this simple case.
++        // Retail hands slot 0x484 a constructed CWideString holding the fail-reason text key: Q_OrchardFarmRaid Init
++        // (0x00DCC39D) builds FailReasons[] from ASCII keys with 0x0099B800, and ProcessGameRulesEvil passes
++        // this+0x68+4*MissionFailed with the caller's flag. The previous `{ nullptr }` message (and hard-coded true)
++        // left the Quest Failed screen blank with a dead Reload button (Orchard Farm Evil, 2026-09-24).
++        std::wstring converted;
++        if (!Utf8ToWide(wideMessage, converted)) converted.clear();
++        RetailWideString retailMessage;
++        if (!retailMessage.Construct(converted, ASLR<tRetailWideStringCtor>(0x0099B6B0),
++                                     ASLR<tRetailWideStringDtor>(0x0099B510))) {
++            Log("!!! ERROR: SetQuestAsFailed - retail CWideString constructor unavailable!");
++            return;
++        }
++        SetQuestAsFailed_API(m_pGameInterface, fsQuest.get(), showScreen, retailMessage.Get(), useWideMessage);
+     }
+     else {
+         Log("!!! ERROR: SetQuestAsFailed - API function not available!");
