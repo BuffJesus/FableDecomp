@@ -1579,6 +1579,11 @@ class Lifter:
                 args.append("me" if value in self.me_aliases else value)
             else:
                 args.append(self.expr(a))
+        # retail CreateEffect takes a script-name string (after the position / after the bone) that the Forge bindings
+        # fix to ""; drop it only when it is that empty literal (MagicBarrier's force fields, 2026-09-24)
+        drop = {'CreateEffectAtPos': 2, 'CreateEffectOnThing': 3}.get(name)
+        if drop is not None and len(args) > drop and args[drop] == '""':
+            del args[drop]
         if spec:
             args = self.place_args(params, args, explicit_things=tuple(explicit_things), call_name=name)
             required = len([p for p in params if "optional" not in p.get("type", "")])

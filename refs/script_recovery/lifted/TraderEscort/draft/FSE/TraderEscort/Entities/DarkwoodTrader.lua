@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar14, __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar19, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar10, pCVar11, pCVar13, pCVar18, pCVar6, pPosition, pSpeaker, pcVar22, piVar12, puVar1, puVar7, pvVar8, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar17, xStack_118, xStack_158, xStack_168, xStack_170, xStack_c0, xStack_e8, xStack_f8
+    local CVar14, __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar19, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar10, pCVar11, pCVar13, pCVar18, pCVar6, pPosition, pSpeaker, pcVar22, piVar12, puVar1, puVar7, pvVar8, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar17, xStack_118, xStack_158, xStack_168, xStack_170, xStack_c0, xStack_e8, xStack_f8
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -54,7 +54,7 @@ function Main(quest, me)
     end
     goto FLOW_past_lab_00e083cd
     ::LAB_00e083cd::
-    -- TODO(native): CCreatureAction_TrollWhackGroundBase__HandleTrader(this,2);
+    SetBrainState(quest, me, 2)
     quest:SetStateInt("TradersStillAliveCounter", quest:GetStateInt("TradersStillAliveCounter") + 1)
     quest:SetTimer(__native_entity_state:GetStateInt("RegulateBanterComment"), 0x1e)
     alive = not quest:IsActiveThreadTerminating()
@@ -458,8 +458,7 @@ function Main(quest, me)
                     bVar3 = false
                     fVar19 = 0.0
                     pPosition = me:GetPos()
-                    -- TODO(native): CreateEffect is not a ForgeFSE binding
-                    quest:CreateEffect(xStack_f8, pPosition, "", fVar19, bVar3, bVar5)
+                    r6 = quest:CreateEffectAtPos("", pPosition, fVar19, bVar3, bVar5)
                     quest:ModifyThingHealth(me, 1000.0, false)
                     piVar12 = me:GetDataString()
                     -- TODO(native): puVar7 = *piVar12
@@ -514,14 +513,14 @@ function Main(quest, me)
                             pCVar13 = me:GetDataString()
                             pCVar13 = ("TEXT_QST_067_" .. pCVar13)
                             pCVar11 = (pCVar13 .. "_GREET_ALLY_10")
-                            quest:AddLineToConversation(iVar21, pCVar11, me, r5, (uVar17 ~= 0))
+                            quest:AddLineToConversation(iVar21, pCVar11, me, r6, (uVar17 ~= 0))
                             pCVar10 = "THANKS_10"
                             pSpeaker = 0x0
                             uVar17 = 0xf0
                             pCVar11 = me:GetDataString()
                             pCVar11 = ("TEXT_QST_067_" .. pCVar11)
                             pCVar11 = (pCVar11 .. "_GREET_ALLY_RESPONSE")
-                            quest:AddLineToConversation(iVar21, pCVar11, r4, r3, (uVar17 ~= 0))
+                            quest:AddLineToConversation(iVar21, pCVar11, r5, r4, (uVar17 ~= 0))
                             -- TODO(native): uVar17 = SUB41(&xStack_158,0)
                             uVar17 = nil --[[unresolved native value]]
                             pCVar11 = me:GetDataString()
@@ -529,7 +528,7 @@ function Main(quest, me)
                             pCVar11 = (pCVar11 .. "_GREET_ALLY_20")
                             quest:AddLineToConversation(iVar21, pCVar11, me, pCVar6)
                             quest:Pause(2.0)
-                            quest:RemoveThing(xStack_f8, false, true)
+                            quest:RemoveThing(r6, false, true)
                             bVar3 = quest:IsConversationActive(iVar21)
                             if bVar3 then
                                 repeat
@@ -550,12 +549,12 @@ function Main(quest, me)
                     goto FLOW_past_lab_00e09493
                     ::LAB_00e09493::
                     __native_entity_state:SetStateBool("GreetedBuddy", true)
-                    iVar20 = (xStack_f8 ~= nil and xStack_f8:IsAlive())
+                    iVar20 = (r6 ~= nil and r6:IsAlive())
                     if iVar20 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00e0a380 end
-                        quest:RemoveThing(xStack_f8, false, true)
+                        quest:RemoveThing(r6, false, true)
                     end
                     resources:PrepareResource(xStack_158)
                     bVar3 = true
@@ -924,10 +923,10 @@ function Main(quest, me)
     quest:EntitySetAsDamageable(me, true)
     quest:EntitySetTargetable(me, true)
     quest:SetThingAsConscious(me, true, "")
-    r6 = quest:GetThingWithScriptName("MK_DTBE_CUTSCENETRIGGER")
+    r7 = quest:GetThingWithScriptName("MK_DTBE_CUTSCENETRIGGER")
     fVar19 = 5.0
     pCVar6 = quest:GetHero()
-    bVar3 = quest:IsDistanceBetweenThingsOver(r6, pCVar6, fVar19)
+    bVar3 = quest:IsDistanceBetweenThingsOver(r7, pCVar6, fVar19)
     if bVar3 then
         repeat
             alive = quest:NewScriptFrame(me)
@@ -938,11 +937,11 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00e085f8 end
-                r7 = quest:GetThingWithScriptName("MK_DTEB_INFEXIT")
-                if not (r7 ~= nil and not r7:IsNull()) then
+                r8 = quest:GetThingWithScriptName("MK_DTEB_INFEXIT")
+                if not (r8 ~= nil and not r8:IsNull()) then
                     puVar7 = {x = 0, y = 0, z = 0}
                 else
-                    puVar7 = r7:GetPos()
+                    puVar7 = r8:GetPos()
                 end
                 -- TODO(native): xStack_150._0_4_ = puVar7.x;
                 -- TODO(native): xStack_150._4_4_ = puVar7.y;
@@ -995,7 +994,7 @@ function Main(quest, me)
             end
             fVar19 = 5.0
             pCVar6 = quest:GetHero()
-            bVar3 = quest:IsDistanceBetweenThingsOver(r6, pCVar6, fVar19)
+            bVar3 = quest:IsDistanceBetweenThingsOver(r7, pCVar6, fVar19)
         until not (bVar3)
     end
     alive = not quest:IsActiveThreadTerminating()
@@ -1009,13 +1008,13 @@ function Main(quest, me)
             __native_condition_1 = 0.0 < fret_0
         end
         if __native_condition_1 then
-            r7 = resources:StartMovie("")
+            r8 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            r8 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
-            r9 = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
+            r9 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
+            r10 = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
             xStack_e8 = resources:NewResource()
             xStack_118 = resources:NewResource()
-            xStack_f8 = resources:NewResource()
+            r6 = resources:NewResource()
             resources:PrepareResource(xStack_e8)
             iVar21 = 4
             puVar7 = xStack_e8
@@ -1027,11 +1026,11 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     -- LAB_00e07e39_c4: (native jump target)
-                    resources:ReleaseResource(xStack_f8)
+                    resources:ReleaseResource(r6)
                     resources:ReleaseResource(xStack_118)
                     resources:ReleaseResource(xStack_e8)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(r7)
+                    resources:DestroyMovie(r8)
                     goto LAB_00e085f8
                 end
                 iVar21 = 4
@@ -1042,7 +1041,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if not bVar3 then
-                cVar4 = (r8 ~= nil and r8:IsEqualTo(r9._4_4_))
+                cVar4 = (r9 ~= nil and r9:IsEqualTo(r10._4_4_))
                 if cVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -1052,21 +1051,21 @@ function Main(quest, me)
                         goto LAB_00e07c7c
                     end
                     -- LAB_00e07e39: (native jump target)
-                    resources:ReleaseResource(xStack_f8)
+                    resources:ReleaseResource(r6)
                     resources:ReleaseResource(xStack_118)
                     resources:ReleaseResource(xStack_e8)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(r7)
+                    resources:DestroyMovie(r8)
                     goto LAB_00e085f8
                 end
                 ::LAB_00e07c7c::
                 pcVar22 = "SCARED"
-                pvVar8 = r8:GetDataString()
+                pvVar8 = r9:GetDataString()
                 iVar20 = ((pvVar8 ~= pcVar22) and 1 or 0)
                 if iVar20 == 0 then
                     goto LAB_00e07cac
                 else
-                    iVar20 = (r9 ~= nil and r9:IsAlive())
+                    iVar20 = (r10 ~= nil and r10:IsAlive())
                     bVar3 = true
                     if not iVar20 then goto LAB_00e07cac end
                 end
@@ -1079,64 +1078,64 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then goto LAB_00e07db9 end
                     -- TODO(native): xStack_144 = xStack_12c;
-                    r9 = xStack_c0
+                    r10 = xStack_c0
                 end
                 quest:FixMovieSequenceCamera(true)
                 r5 = resources:NewActorMap()
                 resources:SetActor(r5, "HERO", xStack_e8)
                 resources:SetActor(r5, "TRADERI", xStack_168)
-                iVar20 = (r8 ~= nil and r8:IsAlive())
+                iVar20 = (r9 ~= nil and r9:IsAlive())
                 if not iVar20 then
                     goto LAB_00e081e9
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if not bVar3 then
-                        iVar20 = (r9 ~= nil and r9:IsAlive())
+                        iVar20 = (r10 ~= nil and r10:IsAlive())
                         if iVar20 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if not bVar3 then
                                 resources:PrepareResource(xStack_118)
-                                bVar3 = resources:TryAcquire(xStack_118, r8, 4)
+                                bVar3 = resources:TryAcquire(xStack_118, r9, 4)
                                 while not bVar3 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00e07e30 end
-                                    bVar3 = resources:TryAcquire(xStack_118, r8, 4)
+                                    bVar3 = resources:TryAcquire(xStack_118, r9, 4)
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00e07db0 end
-                                resources:PrepareResource(xStack_f8)
-                                bVar3 = resources:TryAcquire(xStack_f8, r9, 4)
+                                resources:PrepareResource(r6)
+                                bVar3 = resources:TryAcquire(r6, r10, 4)
                                 while not bVar3 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00e07db0 end
-                                    bVar3 = resources:TryAcquire(xStack_f8, r9, 4)
+                                    bVar3 = resources:TryAcquire(r6, r10, 4)
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if not bVar3 then
                                     resources:SetActor(r5, "TRADERS", xStack_118)
-                                    resources:SetActor(r5, "TRADERN", xStack_f8)
+                                    resources:SetActor(r5, "TRADERN", r6)
                                     pcVar22 = "CS_DARKWOOD_TRADER_INFECTED_BOTH"
                                     goto LAB_00e081c2
                                 end
                             end
                             ::LAB_00e07e30::
                             resources:DestroyActorMap(r5)
-                            resources:ReleaseResource(xStack_f8)
+                            resources:ReleaseResource(r6)
                             resources:ReleaseResource(xStack_118)
                             resources:ReleaseResource(xStack_e8)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(r7)
+                            resources:DestroyMovie(r8)
                             goto LAB_00e085f8
                         end
-                        piVar12 = r8:GetDataString()
+                        piVar12 = r9:GetDataString()
                         if piVar12 == nil then
                             CVar14 = "BANTER_FOURTH"
                             c_stk_171 = false
@@ -1149,34 +1148,34 @@ function Main(quest, me)
                             bVar3 = not alive
                             if bVar3 then
                                 resources:DestroyActorMap(r5)
-                                resources:ReleaseResource(xStack_f8)
+                                resources:ReleaseResource(r6)
                                 resources:ReleaseResource(xStack_118)
                                 resources:ReleaseResource(xStack_e8)
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(r7)
+                                resources:DestroyMovie(r8)
                                 goto LAB_00e085f8
                             end
-                            resources:PrepareResource(xStack_f8)
-                            bVar3 = resources:TryAcquire(xStack_f8, r8, 4)
+                            resources:PrepareResource(r6)
+                            bVar3 = resources:TryAcquire(r6, r9, 4)
                             while not bVar3 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
                                     resources:DestroyActorMap(r5)
-                                    resources:ReleaseResource(xStack_f8)
+                                    resources:ReleaseResource(r6)
                                     resources:ReleaseResource(xStack_118)
                                     resources:ReleaseResource(xStack_e8)
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(r7)
+                                    resources:DestroyMovie(r8)
                                     goto LAB_00e085f8
                                 end
-                                bVar3 = resources:TryAcquire(xStack_f8, r8, 4)
+                                bVar3 = resources:TryAcquire(r6, r9, 4)
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if not bVar3 then
-                                resources:SetActor(r5, "TRADERN", xStack_f8)
+                                resources:SetActor(r5, "TRADERN", r6)
                                 pcVar22 = "CS_DARKWOOD_TRADER_INFECTED_NORMAL"
                                 goto LAB_00e081c2
                             end
@@ -1185,13 +1184,13 @@ function Main(quest, me)
                             bVar3 = not alive
                             if not bVar3 then
                                 resources:PrepareResource(xStack_118)
-                                bVar3 = resources:TryAcquire(xStack_118, r8, 4)
+                                bVar3 = resources:TryAcquire(xStack_118, r9, 4)
                                 while not bVar3 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00e07db0 end
-                                    bVar3 = resources:TryAcquire(xStack_118, r8, 4)
+                                    bVar3 = resources:TryAcquire(xStack_118, r9, 4)
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
@@ -1209,11 +1208,11 @@ function Main(quest, me)
                         goto LAB_00e081e9
                         ::FLOW_hoist_lab_00e081c2_1::
                         resources:DestroyActorMap(r5)
-                        resources:ReleaseResource(xStack_f8)
+                        resources:ReleaseResource(r6)
                         resources:ReleaseResource(xStack_118)
                         resources:ReleaseResource(xStack_e8)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(r7)
+                        resources:DestroyMovie(r8)
                         goto LAB_00e085f8
                         ::FLOW_past_lab_00e081c2::
                     end
@@ -1229,11 +1228,11 @@ function Main(quest, me)
                     if bVar3 then
                         -- LAB_00e07e30_c9: (native jump target)
                         resources:DestroyActorMap(r5)
-                        resources:ReleaseResource(xStack_f8)
+                        resources:ReleaseResource(r6)
                         resources:ReleaseResource(xStack_118)
                         resources:ReleaseResource(xStack_e8)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(r7)
+                        resources:DestroyMovie(r8)
                         goto LAB_00e085f8
                     end
                     iVar20 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -1247,11 +1246,11 @@ function Main(quest, me)
                         if bVar3 then
                             -- LAB_00e07e30_c10: (native jump target)
                             resources:DestroyActorMap(r5)
-                            resources:ReleaseResource(xStack_f8)
+                            resources:ReleaseResource(r6)
                             resources:ReleaseResource(xStack_118)
                             resources:ReleaseResource(xStack_e8)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(r7)
+                            resources:DestroyMovie(r8)
                             goto LAB_00e085f8
                         end
                         c_stk_169 = 1
@@ -1263,11 +1262,11 @@ function Main(quest, me)
                     resources:RunMacro(pcVar22, r5, false, true)
                     quest:FixMovieSequenceCamera(false)
                     resources:DestroyActorMap(r5)
-                    resources:ReleaseResource(xStack_f8)
+                    resources:ReleaseResource(r6)
                     resources:ReleaseResource(xStack_118)
                     resources:ReleaseResource(xStack_e8)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(r7)
+                    resources:DestroyMovie(r8)
                     if c_stk_169 == 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -1291,11 +1290,11 @@ function Main(quest, me)
                 resources:DestroyActorMap(r5)
             end
             ::LAB_00e07db9::
-            resources:ReleaseResource(xStack_f8)
+            resources:ReleaseResource(r6)
             resources:ReleaseResource(xStack_118)
             resources:ReleaseResource(xStack_e8)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(r7)
+            resources:DestroyMovie(r8)
         else
             while true do
                 alive = not quest:IsActiveThreadTerminating()
@@ -1363,7 +1362,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then break end
-                        xStack_f8 = resources:StartMovie("")
+                        r6 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
                         xStack_c0 = resources:ScriptThing(xStack_168)
                         pCVar6 = xStack_c0
@@ -1380,7 +1379,7 @@ function Main(quest, me)
                             pCVar11 = (pCVar11 .. pcVar22)
                             pvVar8 = pCVar11
                             pCVar6 = quest:GetHero()
-                            r10 = me:Speak(pCVar6, pvVar8, iVar20, (iVar21 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                            r11 = me:Speak(pCVar6, pvVar8, iVar20, (iVar21 ~= 0), (p4 ~= 0), (p5 ~= 0))
                             iVar20 = me:IsPerformingScriptTask()
                             cVar4 = iVar20
                             while cVar4 do
@@ -1510,7 +1509,7 @@ function OnPredicateFail(quest, me)
 end
 
 function SetBrainState(quest, me, native_arg_brain_state)
-    local bVar1, pCVar2, pCVar3, pFollower, pFollower_00
+    local bVar1, native_arg_brain_state_flag, pCVar2, pCVar3, pFollower, pFollower_00
     local alive = true
     __native_entity_state:SetStateInt("BrainState", native_arg_brain_state)
     local iVar4 = native_arg_brain_state
@@ -1529,38 +1528,36 @@ function SetBrainState(quest, me, native_arg_brain_state)
             pCVar3 = me:GetDataString()
             if pCVar3 == nil then
                 bVar1 = false
-                native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,bVar1)
+                native_arg_brain_state_flag = bVar1
             else
                 iVar4 = ((pCVar3 == "INFECTED") and 0 or 1)
-                native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,not (iVar4 ~= 0))
+                native_arg_brain_state_flag = not (iVar4 ~= 0)
             end
-            if native_arg_brain_state == 0 then
+            if not native_arg_brain_state_flag then
                 pCVar3 = me:GetDataString()
                 if pCVar3 == nil then
                     bVar1 = false
-                    native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,bVar1)
+                    native_arg_brain_state_flag = bVar1
                 else
                     iVar4 = ((pCVar3 == "SCARED") and 0 or 1)
-                    native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,not (iVar4 ~= 0))
+                    native_arg_brain_state_flag = not (iVar4 ~= 0)
                 end
-                if native_arg_brain_state == 0 then
+                if not native_arg_brain_state_flag then
                     pCVar3 = me:GetDataString()
                     if pCVar3 == nil then
                         bVar1 = false
-                        native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,bVar1)
+                        native_arg_brain_state_flag = bVar1
                     else
                         iVar4 = ((pCVar3 == "FRIENDLY") and 0 or 1)
-                        native_arg_brain_state = CONCAT31(native_arg_brain_state._1_3_,not (iVar4 ~= 0))
+                        native_arg_brain_state_flag = not (iVar4 ~= 0)
                     end
-                    iVar4 = CONCAT31((int3)(extraout_EAX >> 8),native_arg_brain_state)
-                    if native_arg_brain_state ~= 0 then
+                    iVar4 = native_arg_brain_state_flag
+                    if native_arg_brain_state_flag then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar1 = not alive
                         iVar4 = bVar1
                         if not bVar1 then
-                            native_arg_brain_state = -0x10000
-                            -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER_HAT_02", 1.0)
-                            iVar4 = nil --[[unresolved native value]]
+                            iVar4 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TRADER_HAT_02", 1.0)
                             __native_entity_state:SetStateInt("TraderHealthID", iVar4)
                             iVar4 = extraout_EAX_00
                         end
@@ -1570,9 +1567,7 @@ function SetBrainState(quest, me, native_arg_brain_state)
                     bVar1 = not alive
                     iVar4 = bVar1
                     if not bVar1 then
-                        native_arg_brain_state = -0x10000
-                        -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER_HAT_01", 1.0)
-                        iVar4 = nil --[[unresolved native value]]
+                        iVar4 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TRADER_HAT_01", 1.0)
                         __native_entity_state:SetStateInt("TraderHealthID", iVar4)
                         iVar4 = quest:EntitySetAsScared(me, true)
                         return iVar4
@@ -1583,9 +1578,7 @@ function SetBrainState(quest, me, native_arg_brain_state)
                 bVar1 = not alive
                 iVar4 = bVar1
                 if not bVar1 then
-                    native_arg_brain_state = -0x10000
-                    -- TODO(native): iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, "HUD_QUEST_ICON_TRADER", 1.0)
-                    iVar4 = nil --[[unresolved native value]]
+                    iVar4 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TRADER", 1.0)
                     __native_entity_state:SetStateInt("TraderHealthID", iVar4)
                     __native_entity_state:SetStateInt("Infected", 1)
                     if not quest:GetStateBool("SavedNearEnd") then

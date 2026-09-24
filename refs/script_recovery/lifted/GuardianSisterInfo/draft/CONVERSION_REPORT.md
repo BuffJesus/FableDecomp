@@ -14,9 +14,9 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | QS_GuardianSisterInfo2_SisterInBanditCamp | QS_GuardianSisterInfo2_SisterInBanditCamp | Main | 0x00e268c0 | True | 0 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | QS_GuardianSisterInfo2_SisterInBanditCamp | Init | 0x00e26810 | True | 0 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | QS_GuardianSisterInfo2_SisterInBanditCamp | OnPersist | 0x00e26e00 | True | 0 |
-| QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | Main | 0x00e26e30 | True | 4 |
+| QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | Main | 0x00e26e30 | True | 3 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | Init | 0x00e26bd0 | True | 0 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | OnPersist | 0x00cdebc0 | True | 0 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | OnPredicateFail | 0x00e26ba0 | True | 0 |
 
-Summary: `{"owners": 4, "functions": 14, "missing": 0, "functionSyntaxPassed": 14, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 5}`
+Summary: `{"owners": 4, "functions": 14, "missing": 0, "functionSyntaxPassed": 14, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 4}`

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local always_update, angle, bUnknown, bVar5, cVar6, c_stk_1b1, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar17, iVar18, iVar19, iVar20, pCVar10, pCVar11, pCVar7, pCVar9, pcVar14, piVar1, pppuVar16, pvVar12, r1, r2, r3, r4, r5, r6, r7, this_00, uVar13, uVar4, u_stk_1a0, xStack_198, xStack_1b0, xStack_94, xStack_a0, xStack_b8, xStack_c8, xStack_d8, xStack_ec, x_stk_18, x_stk_30, x_stk_48, x_stk_64, x_stk_78, x_stk_84, x_stk_c
+    local always_update, angle, bUnknown, bVar5, cVar6, c_stk_1b1, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar17, iVar18, iVar19, iVar20, pCVar10, pCVar11, pCVar7, pCVar9, pcVar14, piVar1, pppuVar16, pvVar12, r1, r2, r3, r4, r5, r6, r7, r8, this_00, uVar13, uVar4, u_stk_1a0, xStack_198, xStack_1b0, xStack_94, xStack_a0, xStack_b8, xStack_c8, xStack_d8, xStack_ec, x_stk_18, x_stk_30, x_stk_48, x_stk_64, x_stk_78, x_stk_84, x_stk_c
     local alive = true
     u_stk_1a0 = 0
     alive = quest:NewScriptFrame(me)
@@ -96,8 +96,7 @@ function Main(quest, me)
                     bVar5 = false
                     angle = 0.0
                     pCVar9 = pCVar7:GetPos()
-                    -- TODO(native): CreateEffect is not a ForgeFSE binding
-                    quest:CreateEffect("NEWTELEPORTER2", pCVar9, "", angle, bVar5, always_update)
+                    r1 = quest:CreateEffectAtPos("NEWTELEPORTER2", pCVar9, angle, bVar5)
                     pCVar7 = quest:GetThingWithScriptName("TeleporterResidue")
                     quest:MiniMapAddMarker(pCVar7, "HUD_ORB_QUEST_CORE")
                     bVar5 = quest:IsQuestActive("Q_EndGameFocalSites")
@@ -150,7 +149,7 @@ function Main(quest, me)
                                     pCVar11 = nil --[[unresolved native value]]
                                     pvVar12 = pCVar11
                                     pCVar7 = quest:GetHero()
-                                    r1 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    r2 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -232,7 +231,7 @@ function Main(quest, me)
                                     iVar19 = 0
                                     pcVar14 = "TEXT_QST_081_ATTACKED"
                                     pCVar7 = quest:GetHero()
-                                    r2 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    r3 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -331,7 +330,7 @@ function Main(quest, me)
                         iVar19 = 0
                         pcVar14 = "TEXT_QST_081_ATTACKED"
                         pCVar7 = quest:GetHero()
-                        r3 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                        r4 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                         iVar19 = me:IsPerformingScriptTask()
                         cVar6 = iVar19
                         while cVar6 do
@@ -387,7 +386,7 @@ function Main(quest, me)
                                     pCVar11 = nil --[[unresolved native value]]
                                     pvVar12 = pCVar11
                                     pCVar7 = quest:GetHero()
-                                    r4 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    r5 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -422,7 +421,7 @@ function Main(quest, me)
                                 iVar19 = 0
                                 pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE"
                                 pCVar10 = quest:GetHero()
-                                r5 = me:Speak(pCVar10, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                r6 = me:Speak(pCVar10, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                 iVar19 = me:IsPerformingScriptTask()
                                 cVar6 = iVar19
                                 while cVar6 do
@@ -464,7 +463,7 @@ function Main(quest, me)
                                         iVar19 = 0
                                         pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_NO"
                                         pCVar7 = quest:GetHero()
-                                        r6 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                        r7 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                         iVar19 = me:IsPerformingScriptTask()
                                         cVar6 = iVar19
                                         while cVar6 do
@@ -505,7 +504,7 @@ function Main(quest, me)
                                 iVar19 = 0
                                 pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_YES"
                                 pCVar7 = quest:GetHero()
-                                r7 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                r8 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
                                 iVar19 = me:IsPerformingScriptTask()
                                 cVar6 = iVar19
                                 while cVar6 do

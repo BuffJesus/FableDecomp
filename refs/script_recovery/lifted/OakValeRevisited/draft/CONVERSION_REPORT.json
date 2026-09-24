@@ -82,7 +82,7 @@
             "unlifted: pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CC",
             "unlifted: this_00 = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairC",
             "unlifted: std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompare",
-            "CreateEffect: not in FSE manifest",
+            "CreateEffectAtPos: missing position (1 args for 5 params)",
             "unlifted: *piVar6 = *piVar6 + -1;",
             "unlifted: (*(code *)((int *)*piVar2)[1])();",
             "unlifted: *(undefined4 *)(iVar14 + 4 + iVar4) = u_stk_18;",
@@ -112,7 +112,7 @@
             "GetAllThingsWithScriptName",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -120,7 +120,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 113,
+          "lines": 112,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,

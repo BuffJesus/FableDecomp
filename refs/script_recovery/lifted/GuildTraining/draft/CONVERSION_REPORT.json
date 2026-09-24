@@ -7893,7 +7893,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "CreateEffect: not in FSE manifest",
             "label LAB_00d55c63",
             "label LAB_00d55c9f"
           ],
@@ -8113,7 +8112,7 @@
             "ENGINE_ZeroVector",
             "GetPos",
             "ENGINE_VectorCopy",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "FadeOutAndKillEntity",
             "ACTORMAP_New",
             "ACTORMAP_Set",
@@ -8417,7 +8416,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1173,
+          "lines": 1172,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -8976,13 +8975,6 @@
         "PreMeleeDummy": "GuildTrainingPreMelee/Entities/PreMeleeDummy",
         "PreMeleeWhisper": "GuildTrainingPreMelee/Entities/PreMeleeWhisper"
       },
-      "declaredFreeLocals": {
-        "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua": {
-          "Main": [
-            "xStack_dc"
-          ]
-        }
-      },
       "summary": {
         "owners": 4,
         "functions": 14,
@@ -8990,7 +8982,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 8
+        "todo": 7
       }
     },
     {
@@ -13207,6 +13199,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 267
+    "todo": 266
   }
 }

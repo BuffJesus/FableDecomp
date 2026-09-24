@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local b3, bVar13, bVar3, cVar4, c_stk_8d, fVar14, fVar2, fret_0, iVar11, iVar5, i_stk_98, p0, p1, p4, p5, pCVar12, pCVar6, pCVar7, pCVar9, pPosition, r1, uVar10, uVar15, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c
+    local b3, bVar13, bVar3, cVar4, c_stk_8d, fVar14, fVar2, fret_0, iVar11, iVar5, i_stk_98, p0, p1, p4, p5, pCVar12, pCVar6, pCVar7, pCVar9, pPosition, r1, r2, uVar10, uVar15, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c
     local alive = true
     u_stk_7c = 0
     alive = quest:NewScriptFrame(me)
@@ -297,8 +297,7 @@ function Main(quest, me)
                 bVar3 = false
                 fVar14 = 0.0
                 pPosition = me:GetPos()
-                -- TODO(native): CreateEffect is not a ForgeFSE binding
-                quest:CreateEffect("MAZE_TELEPORT_OUT_01", pPosition, "", fVar14, bVar3, bVar13)
+                r2 = quest:CreateEffectAtPos("MAZE_TELEPORT_OUT_01", pPosition, fVar14, bVar3)
                 quest:FadeOutAndKillEntity(me, true, 1.0, true)
                 b3 = false
                 bVar13 = false

@@ -923,7 +923,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CCreatureAction_TrollWhackGroundBase__HandleTrader(this,2);",
             "label LAB_00e09ee8",
             "label LAB_00e0a363",
             "unlifted: xStack_e8 = puVar7.x;",
@@ -932,7 +931,6 @@
             "unlifted: xStack_118 = puVar7.x;",
             "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
             "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "CreateEffect: not in FSE manifest",
             "unnamed field 0x14",
             "unlifted: iVar20 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);",
             "label LAB_00e0a389",
@@ -1147,7 +1145,7 @@
             "RESOURCE_ScriptThing",
             "IsActiveThreadTerminating",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "ModifyThingHealth",
             "GetDataString",
             "IsActiveThreadTerminating",
@@ -1478,7 +1476,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1411,
+          "lines": 1410,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1741,11 +1739,7 @@
             "returnKind": "number",
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, \"HUD_QUEST_ICON_TRADER_HA",
-            "unlifted: iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, \"HUD_QUEST_ICON_TRADER_HA",
-            "unlifted: iVar4 = quest:AddQuestInfoBarHealth(me, &native_arg_brain_state, \"HUD_QUEST_ICON_TRADER\", "
-          ],
+          "todo": [],
           "calls": [
             "SetStateInt",
             "IsActiveThreadTerminating",
@@ -1776,7 +1770,7 @@
             "IsActiveThreadTerminating",
             "SetTimer"
           ],
-          "lines": 100,
+          "lines": 94,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2777,37 +2771,26 @@
             "bsimVoid": true
           },
           "todo": [
-            "CreateEffect: not in FSE manifest",
-            "unlifted: xStack_58 = (CCharString)(float)fVar8;",
-            "CreateEffect: not in FSE manifest",
-            "CreateEffect: not in FSE manifest",
             "unlifted: xStack_30._4_4_ = uVar2;",
             "unlifted: xStack_30._8_4_ = piVar1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: xStack_54 = (CCharString)(float)fVar8;",
-            "CreateEffect: not in FSE manifest",
             "unlifted: xStack_3c._4_4_ = uVar2;",
             "unlifted: xStack_3c._8_4_ = piVar1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: xStack_4c = (CCharString)(float)fVar8;",
-            "CreateEffect: not in FSE manifest",
             "unlifted: xStack_30._4_4_ = uVar2;",
             "unlifted: xStack_30._8_4_ = piVar1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "CreateEffect: not in FSE manifest",
             "unlifted: xStack_3c._4_4_ = uVar2;",
             "unlifted: xStack_3c._8_4_ = piVar1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
-            "CreateEffect: not in FSE manifest",
-            "CreateEffect: not in FSE manifest",
-            "unlifted: cVar5 = (**(xStack_30._0_4_ + 0x12c))()",
-            "unlifted: cVar5 = (**(xStack_3c._0_4_ + 0x12c))()",
+            "unlifted: cVar5 = (**(r2._0_4_ + 0x12c))()",
+            "unlifted: cVar5 = (**(r3._0_4_ + 0x12c))()",
             "unlifted: piVar1 = *(pCVar7 + 0x8)",
             "unlifted: uVar2 = *(pCVar7 + 0x4)",
             "unlifted: piVar1 = *(pCVar7 + 0x8)",
             "unlifted: uVar2 = *(pCVar7 + 0x4)",
-            "unlifted: cVar5 = (**(xStack_30._0_4_ + 0x12c))()",
-            "unlifted: cVar5 = (**(xStack_3c._0_4_ + 0x12c))()",
+            "unlifted: cVar5 = (**(r2._0_4_ + 0x12c))()",
+            "unlifted: cVar5 = (**(r3._0_4_ + 0x12c))()",
             "unlifted: piVar1 = *(pCVar7 + 0x8)",
             "unlifted: uVar2 = *(pCVar7 + 0x4)",
             "unlifted: piVar1 = *(pCVar7 + 0x8)",
@@ -2819,12 +2802,12 @@
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "ENGINE_ZeroVector",
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -2832,13 +2815,13 @@
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "QUESTTHING_Empty",
             "ENGINE_ZeroVector",
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
@@ -2849,26 +2832,26 @@
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "ENGINE_ZeroVector",
             "GetAngleXY",
             "ENGINE_ZeroVector",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "IsActiveThreadTerminating",
             "RemoveThing",
             "RemoveThing",
             "ENGINE_ZeroVector",
             "GetPos",
             "GetAngleXY",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "ENGINE_ZeroVector",
             "GetPos",
             "GetAngleXY",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "RemoveThing"
           ],
-          "lines": 221,
+          "lines": 213,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3734,14 +3717,6 @@
           "Main": [
             "CVar2"
           ]
-        },
-        "FSE/TraderEscort/Entities/MagicBarrier.lua": {
-          "Main": [
-            "f_stk_4c",
-            "f_stk_54",
-            "xStack_30",
-            "xStack_3c"
-          ]
         }
       },
       "cleanupRegions": {
@@ -3797,7 +3772,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 169
+        "todo": 153
       }
     }
   ],
@@ -3808,6 +3783,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 169
+    "todo": 153
   }
 }

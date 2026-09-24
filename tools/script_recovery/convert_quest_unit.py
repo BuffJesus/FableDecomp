@@ -1740,7 +1740,11 @@ class UnitConverter:
                 for call in fn.get('calls', []):
                     address = str(call.get('target', '')).lower()
                     if call.get('currentName') and address in local_names:
-                        for label in (call['currentName'], call['currentName'].removeprefix('NScript::'), call['currentName'].split('::')[-1]):
+                        # (and Ghidra's `__` spelling of the namespaced label in C output: DarkwoodTrader Init printed
+                        # `CCreatureAction_TrollWhackGroundBase__HandleTrader(this,2)` for its SetBrainState helper, which
+                        # stayed a TODO, so the trader's state, health bar and follow setup never ran, 2026-09-24)
+                        for label in (call['currentName'], call['currentName'].removeprefix('NScript::'), call['currentName'].split('::')[-1],
+                                      call['currentName'].replace('::', '__')):
                             by_target.setdefault(label, set()).add(local_names[address])
                 lifter.callee_names.update({label: next(iter(names)) for label, names in by_target.items()
                                             if len(names) == 1 and label not in lifter.callee_names})

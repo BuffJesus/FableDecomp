@@ -1,0 +1,15 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 290acdd..188c030 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -246,8 +246,8 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["GetFSEInfo"] = &LuaQuestState::GetFSEInfo;
+     questState_type["CreateThread"] = sol::overload([](LuaQuestState& self, const std::string& func) {self.CreateThread(func, sol::lua_nil); }, [](LuaQuestState& self, const std::string& func, sol::table args) {self.CreateThread(func, args); });
+     questState_type["GetHero"] = &LuaQuestState::GetHero;
+-    questState_type["CreateEffectAtPos"] = [](LuaQuestState& self, const std::string& effectName, sol::table position, sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) {self.CreateEffectAtPos(effectName, position, angle, independent, alwaysUpdate); };
+-    questState_type["CreateEffectOnThing"] = [](LuaQuestState& self, const std::string& effectName, CScriptThing* pTarget, const std::string& boneName, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) {self.CreateEffectOnThing(effectName, pTarget, boneName, independent, alwaysUpdate); };
++    questState_type["CreateEffectAtPos"] = [](LuaQuestState& self, const std::string& effectName, sol::table position, sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) { return self.CreateEffectAtPos(effectName, position, angle, independent, alwaysUpdate); };
++    questState_type["CreateEffectOnThing"] = [](LuaQuestState& self, const std::string& effectName, CScriptThing* pTarget, const std::string& boneName, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) { return self.CreateEffectOnThing(effectName, pTarget, boneName, independent, alwaysUpdate); };
+     questState_type["ShowMessage"] = &LuaQuestState::ShowMessage;
+     questState_type["ShowMessageWithButtons"] = &LuaQuestState::ShowMessageWithButtons;
+     questState_type["AddQuestRegion"] = &LuaQuestState::AddQuestRegion;

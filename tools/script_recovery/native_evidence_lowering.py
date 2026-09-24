@@ -199,6 +199,43 @@ def fold_tangled_thing_assign(text: str) -> str:
 RE_COLOUR_BYTE = re.compile(r'^[ \t]*(\w+)\._([0-3])_1_ = (0x[0-9a-f]+|\d+);[ \t]*\r?\n', re.M)
 
 
+def fold_low_byte_flags(text: str) -> str:
+    """A dword slot whose LOW byte carries a flag (`X = CONCAT31(X._1_3_, flag); if ((char)X == '\\0')`, the upper
+    bytes are stale): the byte is its own local `X_flag`, and `CONCAT31((int3)(junk >> 8), (char)X)` -- the dword
+    rebuilt from a dead register -- is that byte (DarkwoodTrader HandleTrader 0x00E0A510's `brain_state`, reused for
+    the INFECTED / SCARED / FRIENDLY tests and then as a colour; lifted raw it left `extraout_EAX` free, 2026-09-24)."""
+    for var in set(re.findall(r'\b(\w+) = CONCAT31\(\1\._1_3_,', text)):
+        v = re.escape(var)
+        flag = var + '_flag'
+        text = re.sub(r'\b' + v + r' = CONCAT31\(' + v + r'\._1_3_,\s*([^;]+)\);', flag + r' = \1;', text)
+        text = re.sub(r'CONCAT31\(\(int3\)\([^;]*?\),\s*\(char\)' + v + r'\)', flag, text)
+        text = re.sub(r'\(char\)' + v + r'\b', flag, text)
+    return text
+
+
+def fold_dword_colours(text: str) -> str:
+    """A CRGBColour stored as one dword literal (`X = -0x10000;` = 0xFFFF0000, BGRA bytes B=0 G=0 R=0xff A=0xff) and
+    passed as `(CRGBColour_bv *)&X` becomes an FSE colour table (DarkwoodTrader HandleTrader's trader health bar:
+    left as a raw slot the AddQuestInfoBarHealth call stayed a TODO and TraderHealthID was nil, 2026-09-24)."""
+    pos = 0
+    store = re.compile(r'^[ \t]*(\w+) = (-?0x[0-9a-f]+|-?\d+);[ \t]*\r?\n', re.M)
+    while (m := store.search(text, pos)):
+        var = m.group(1)
+        scope = text[m.end():]
+        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', scope, re.M)
+        use = scope[:nxt.start()] if nxt else scope
+        cast = r'\(CRGBColour(?:_bv)? \*\)&' + re.escape(var) + r'\b'
+        if not re.search(cast, use) or re.search(r'(?<!\(CRGBColour_bv \*\)&)(?<!\(CRGBColour \*\)&)\b' + re.escape(var) + r'\b', re.sub(cast, '', use)):
+            pos = m.end()
+            continue        # not (only) a colour operand before the slot's next definition
+        value = int(m.group(2), 0) & 0xffffffff
+        b, g, r, a = value & 0xff, (value >> 8) & 0xff, (value >> 16) & 0xff, (value >> 24) & 0xff
+        use = re.sub(cast, f'ENGINE_Colour({r}, {g}, {b}, {a})', use)
+        text = text[:m.start()] + use + (scope[nxt.start():] if nxt else '')
+        pos = m.start()
+    return text
+
+
 def fold_stack_colours(text: str) -> str:
     """A CRGBColour built on the stack byte by byte (`c._0_1_ = B; c._1_1_ = G; c._2_1_ = R; c._3_1_ = A`,
     retail ABI is BGRA) and passed by address becomes an FSE colour table."""
@@ -766,8 +803,13 @@ def normalise_typed_decompile(text: str) -> str:
     # (float)xStack_1d4 ...)`, GuildTrainingMelee TheRealGuildmaster 0x00D58490's melee grade). The float phase
     # runs from the first such assignment to the slot's next string use (`&xStack_1d4`); the x87 `(float10)`
     # widenings are Lua numbers. Left alone both assignments were `TODO(native)` and the grade compare read nil.
-    for m in list(re.finditer(r'^[ \t]*(\w+) = \(CCharString(?:_bv)?\)\(float\)', text, re.M)):
+    # (re-searched after each rewrite: offsets collected up front went stale once the first phase was rewritten,
+    # and MagicBarrier Main's second force-field angle stayed a TODO and reached CreateEffectAtPos as nil, 2026-09-24)
+    float_store = re.compile(r'^[ \t]*(\w+) = \(CCharString(?:_bv)?\)\(float\)', re.M)
+    pos = 0
+    while (m := float_store.search(text, pos)):
         var = m.group(1)
+        pos = m.start() + 1
         scalar = 'f_stk_' + var.split('_', 1)[1] if '_' in var else 'f_' + var
         nxt = re.search(r'&' + re.escape(var) + r'\b', text[m.start():])
         end = m.start() + nxt.start() if nxt else len(text)
@@ -2348,6 +2390,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = resolve_me_register_uses(text)
     text = isolate_gsi_vtable_temps(text)
     text = fold_tangled_thing_assign(text)
+    text = fold_low_byte_flags(text)
+    text = fold_dword_colours(text)
     text = fold_stack_colours(text)
     # a literal byte store left after the colour folding is an ordinary flag byte of a merged slot
     text = re.sub(r'\b([A-Za-z]+Stack_[0-9a-f]+(?:_\d+)?)\._(\d+)_1_(?= = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)

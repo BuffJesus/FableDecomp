@@ -479,7 +479,6 @@
           "todo": [
             "label LAB_00e26ef7",
             "label LAB_00e27648",
-            "CreateEffect: not in FSE manifest",
             "label LAB_00e277c0"
           ],
           "calls": [
@@ -611,7 +610,7 @@
             "ClearCommands",
             "PlayAnimation",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "FadeOutAndKillEntity",
             "GetActiveQuestName",
             "SetQuestAsCompleted",
@@ -622,7 +621,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 307,
+          "lines": 306,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -739,7 +738,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 4
+        "todo": 3
       }
     }
   ],
@@ -750,6 +749,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 4,
-    "todo": 5
+    "todo": 4
   }
 }

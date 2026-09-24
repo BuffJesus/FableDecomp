@@ -82,6 +82,28 @@ class CharFlags(unittest.TestCase):
         self.assertEqual(fold_char_flags(text), text)
 
 
+class LowByteFlagsAndDwordColours(unittest.TestCase):
+    def test_low_byte_flag_gets_its_own_local(self):
+        from tools.script_recovery.native_evidence_lowering import fold_low_byte_flags
+        text = ("  brain_state = CONCAT31(brain_state._1_3_,bVar1);\n  if ((char)brain_state == '\\0') {\n"
+                "  iVar4 = CONCAT31((int3)((uint)extraout_EAX >> 8),(char)brain_state);\n")
+        out = fold_low_byte_flags(text)
+        self.assertIn('brain_state_flag = bVar1;', out)
+        self.assertIn("if (brain_state_flag == '\\0') {", out)
+        self.assertIn('iVar4 = brain_state_flag;', out)
+        self.assertNotIn('extraout_EAX', out)
+
+    def test_dword_colour_literal_used_as_colour(self):
+        from tools.script_recovery.native_evidence_lowering import fold_dword_colours
+        text = "  brain_state = -0x10000;\n  iVar4 = GSI->AddQuestInfoBarHealth(pFollower,(CRGBColour_bv *)&brain_state,&s,1.0);\n"
+        self.assertIn('ENGINE_Colour(255, 0, 0, 255)', fold_dword_colours(text))
+
+    def test_dword_used_otherwise_is_left_alone(self):
+        from tools.script_recovery.native_evidence_lowering import fold_dword_colours
+        text = "  x = -0x10000;\n  f((CRGBColour_bv *)&x);\n  g(x + 1);\n"
+        self.assertEqual(fold_dword_colours(text), text)
+
+
 class OutThingMessages(unittest.TestCase):
     def test_bool_slot_with_thing_out_and_object_binding(self):
         spec = {'slots': {

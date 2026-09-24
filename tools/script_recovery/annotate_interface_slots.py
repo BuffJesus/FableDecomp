@@ -86,7 +86,14 @@ def load_slots(path: Path = SLOTS, engine_api: Path = ENGINE_API, exe: Path = RE
             target = read(VTABLE_BASE + offset)
             if target in names:
                 table[offset] = names[target]
+    table.update(SLOT_BINDING_NAMES)
     return table
+
+
+# Retail overloads that share one decorated name but sit in two slots; ForgeFSE binds each under its own name
+# (typing spec: 0x190 CreateEffect_AtPosition, 0x194 CreateEffect_OnThing). Unsplit, both lifted as a
+# non-binding `CreateEffect` and MagicBarrier's force fields were never created (2026-09-24).
+SLOT_BINDING_NAMES = {0x190: 'CreateEffectAtPos', 0x194: 'CreateEffectOnThing'}
 
 
 def load_thing_slots(path: Path = THING_SLOTS) -> dict[int, tuple[str, str]]:

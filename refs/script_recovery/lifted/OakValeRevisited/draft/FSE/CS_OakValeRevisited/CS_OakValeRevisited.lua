@@ -67,8 +67,7 @@ function OakValeFire(quest)
                 iVar4 = nil --[[unresolved native value]]
                 -- TODO(native): uVar9 = (**(*(*pCVar1 + iVar14) + 0x18))("FirePoints",0,0,0)
                 uVar9 = nil --[[unresolved native value]]
-                -- TODO(native): CreateEffect is not a ForgeFSE binding
-                quest:CreateEffect(local_14, "OAKVALE_BURNING_PATCH", uVar9)
+                iVar10 = quest:CreateEffectAtPos("OAKVALE_BURNING_PATCH", nil --[[missing]])
                 -- TODO(native): piVar5 = *(iVar10 + 8)
                 piVar5 = nil --[[unresolved native value]]
                 -- TODO(native): u_stk_18 = *(iVar10 + 4)
@@ -117,7 +116,7 @@ function OakValeFire(quest)
                 -- TODO(native): iVar14 = *pCVar1
                 iVar14 = nil --[[unresolved native value]]
                 iVar10 = (quest:GetStateListCount("FirePoint") * 0xc)
-                local_14 = nil
+                iVar10 = nil
                 -- TODO(native): std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> ::resize(this_00,(iVar10 - iVar14) / 0xc);
                 iVar14 = (quest:GetStateListCount("Fires") * 0xc) - *this_00 >> 0x1f
                 uVar12 = 0

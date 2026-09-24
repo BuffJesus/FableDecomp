@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, b2, bVar3, cVar4, c_stk_161, c_stk_169, ctr_154, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, i_stk_188, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r2, r3, r4, r5, r6, r7, timerId, uVar14, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_dc, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
+    local CVar10, __native_condition_1, __native_condition_2, __native_condition_3, b2, bVar3, cVar4, c_stk_161, c_stk_169, ctr_154, fVar2, fVar20, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar23, iVar7, iVar8, i_stk_188, native_arg_switch_2, pCVar12, pCVar5, pCVar6, pcVar15, puVar11, r1, r2, r3, r4, r5, r6, r7, r8, timerId, uVar14, xStack_108, xStack_114_3, xStack_124, xStack_130, xStack_13c, xStack_14c, xStack_160, xStack_17c, xStack_180, xStack_184, xStack_f8, x_stk_24, x_stk_30, x_stk_48, x_stk_58, x_stk_c
     local alive = true
     cVar4 = quest:GetStateBool("GuildmasterTeleport")
     uVar14 = 0
@@ -465,8 +465,7 @@ function Main(quest, me)
                                 puVar11 = r1:GetPos()
                             end
                             xStack_114_3 = {x = puVar11.x, y = puVar11.y, z = puVar11.z}
-                            -- TODO(native): CreateEffect is not a ForgeFSE binding
-                            quest:CreateEffect(xStack_dc, "SMASH_DUMMY_01", xStack_114_3, "", 0.0, false, false)
+                            r2 = quest:CreateEffectAtPos("SMASH_DUMMY_01", xStack_114_3, 0.0, false)
                             quest:FadeOutAndKillEntity(r1, true, 1.0, true)
                             xStack_13c = resources:NewActorMap()
                             resources:SetActor(xStack_13c, "HERO", xStack_14c)
@@ -738,7 +737,7 @@ function Main(quest, me)
                                                                         iVar7 = 0
                                                                         pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                         pCVar5 = quest:GetHero()
-                                                                        r2 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                        r3 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                         iVar7 = me:IsPerformingScriptTask()
                                                                         cVar4 = iVar7
                                                                         while cVar4 do
@@ -825,7 +824,7 @@ function Main(quest, me)
                                                                     iVar7 = 0
                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                     pCVar5 = quest:GetHero()
-                                                                    r3 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                    r4 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                     cVar4 = iVar7
                                                                     while cVar4 do
@@ -879,7 +878,7 @@ function Main(quest, me)
                                                                             iVar7 = 0
                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                             pCVar5 = quest:GetHero()
-                                                                            r4 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                            r5 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                             cVar4 = iVar7
                                                                             while cVar4 do
@@ -937,7 +936,7 @@ function Main(quest, me)
                                                                             iVar7 = 0
                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                             pCVar5 = quest:GetHero()
-                                                                            r5 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                            r6 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                             cVar4 = iVar7
                                                                             while cVar4 do
@@ -987,7 +986,7 @@ function Main(quest, me)
                                                                                     iVar7 = 0
                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                     pCVar5 = quest:GetHero()
-                                                                                    r6 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                                    r7 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                     cVar4 = iVar7
                                                                                     while cVar4 do
@@ -1042,7 +1041,7 @@ function Main(quest, me)
                                                                     iVar7 = 0
                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                     pCVar6 = quest:GetHero()
-                                                                    r7 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                    r8 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                     cVar4 = iVar7
                                                                     while cVar4 do

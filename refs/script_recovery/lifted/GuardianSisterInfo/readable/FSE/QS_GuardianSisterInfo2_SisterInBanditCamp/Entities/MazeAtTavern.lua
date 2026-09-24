@@ -12,9 +12,9 @@ local hitCount, talkCounter, wavedOver
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local b3, predicateResult, scratchValue, isPerformingScriptTask, p4, p5, scratchValue4
-    local scratchValue5, scratchValue6
-    scratchValue6 = 0
+    local b3, predicateResult, scratchValue, isPerformingScriptTask, p4, p5, scratchValue5
+    local scratchValue6, scratchValue7
+    scratchValue7 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource3 = resources:NewResource()
     resources:PrepareResource(resource3)
@@ -28,7 +28,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     quest:SetThingHasInformation(me, false, true, false)
     predicateResult = quest:IsActiveThreadTerminating()
-    scratchValue5 = 0
+    scratchValue6 = 0
     isPerformingScriptTask = quest:RegisterTimer()
     repeat
         local i_stk_98_2 = isPerformingScriptTask
@@ -49,7 +49,7 @@ function Main(quest, me)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, hero, false)
                 me:PlayAnimation("ST_HELLO", false, false, false, true, true, false, false)
                 quest:SetTimer(i_stk_98_2, 5)
-                scratchValue5 = scratchValue6
+                scratchValue6 = scratchValue7
             end
         end
         if not quest:GetStateBool("GuardianSpokeToHero") then
@@ -60,16 +60,16 @@ function Main(quest, me)
             end
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
         end
-        scratchValue4 = scratchValue5 | 1
-        scratchValue6 = scratchValue4
+        scratchValue5 = scratchValue6 | 1
+        scratchValue7 = scratchValue5
         if me:MsgIsHitByHero() then
             goto LAB_00e270f6
         else
-            scratchValue4 = scratchValue5 | 3
-            scratchValue6 = scratchValue4
+            scratchValue5 = scratchValue6 | 3
+            scratchValue7 = scratchValue5
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue4 = scratchValue5 | 7
-                scratchValue6 = scratchValue4
+                scratchValue5 = scratchValue6 | 7
+                scratchValue7 = scratchValue5
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e270f6 end
             end
             scratchValue = 0
@@ -78,16 +78,16 @@ function Main(quest, me)
         ::LAB_00e270f6::
         scratchValue = 1
         ::FLOW_past_lab_00e270f6::
-        if scratchValue4 & 4 ~= 0 then
-            scratchValue4 = scratchValue4 & 0xfffffffb
-            scratchValue6 = scratchValue4
+        if scratchValue5 & 4 ~= 0 then
+            scratchValue5 = scratchValue5 & 0xfffffffb
+            scratchValue7 = scratchValue5
         end
-        if scratchValue4 & 2 ~= 0 then
-            scratchValue4 = scratchValue4 & 0xfffffffd
-            scratchValue6 = scratchValue4
+        if scratchValue5 & 2 ~= 0 then
+            scratchValue5 = scratchValue5 & 0xfffffffd
+            scratchValue7 = scratchValue5
         end
-        if scratchValue4 & 1 ~= 0 then
-            scratchValue6 = scratchValue4 & 0xfffffffe
+        if scratchValue5 & 1 ~= 0 then
+            scratchValue7 = scratchValue5 & 0xfffffffe
         end
         if scratchValue ~= 0 then
             if quest:IsActiveThreadTerminating() then
@@ -210,13 +210,11 @@ function Main(quest, me)
             end
             quest:ClearThingHasInformation(me)
         end
-        if not quest:GetStateBool("GuardianSpokeToHero") then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); scratchValue5 = scratchValue6; goto continue_6 end
+        if not quest:GetStateBool("GuardianSpokeToHero") then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); scratchValue6 = scratchValue7; goto continue_6 end
         if not quest:IsActiveThreadTerminating() then
             me:ClearCommands()
             me:PlayAnimation("ST_TELEPORT_OUT", false, false, false, true, true, false, false)
-            local pPosition = me:GetPos()
-            -- TODO(native): CreateEffect is not a ForgeFSE binding
-            quest:CreateEffect("MAZE_TELEPORT_OUT_01", pPosition, "", 0.0, false, false)
+            quest:CreateEffectAtPos("MAZE_TELEPORT_OUT_01", me:GetPos(), 0.0, false)
             quest:FadeOutAndKillEntity(me, true, 1.0, true)
             b3 = false
             quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
@@ -227,7 +225,7 @@ function Main(quest, me)
         do return end
         quest:NewScriptFrame(me)
         predicateResult = quest:IsActiveThreadTerminating()
-        scratchValue5 = scratchValue6
+        scratchValue6 = scratchValue7
         ::continue_6::
     until false
 end

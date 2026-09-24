@@ -85,7 +85,6 @@
           "todo": [
             "label LAB_00e90cb3",
             "label LAB_00e91df7",
-            "CreateEffect: not in FSE manifest",
             "helper_E91F20: 1 helper operands for 0 parameters",
             "label LAB_00e91e97",
             "label LAB_00e91ea7",
@@ -142,7 +141,7 @@
             "SetQuestCardObjective",
             "GetThingWithScriptName",
             "GetPos",
-            "CreateEffect",
+            "CreateEffectAtPos",
             "GetThingWithScriptName",
             "MiniMapAddMarker",
             "IsQuestActive",
@@ -282,7 +281,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 539,
+          "lines": 538,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -582,7 +581,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 73
+        "todo": 72
       }
     }
   ],
@@ -593,6 +592,6 @@
     "functionSyntaxPassed": 7,
     "fileSyntaxPassed": 2,
     "fileSyntaxChecked": 2,
-    "todo": 73
+    "todo": 72
   }
 }
