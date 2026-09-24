@@ -944,10 +944,6 @@
             "unnamed field 0x14",
             "unlifted: iVar20 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);",
             "label LAB_00e0a389",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(this_01 + 0x34) = Script_Darkwood_Balverine_Trader;",
-            "unlifted: *(undefined4 *)(this_01 + 0x38) = uVar15;",
-            "unlifted: CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);",
             "unlifted: xStack_170 = xStack_170 | 0x400;",
             "unlifted: xStack_170 = xStack_170 | 0x800;",
             "unlifted: xStack_170 = xStack_170 | 0x1000;",
@@ -1212,7 +1208,7 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "RESOURCE_PrepareResource",
-            "ENGINE_Concat",
+            "CreateThread",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetTimer",
@@ -1490,7 +1486,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1420,
+          "lines": 1411,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1621,15 +1617,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: xStack_c._4_4_ = *(undefined4 *)(this + 0xc);",
-            "unlifted: xStack_c._8_4_ = *(undefined4 *)(this + 0x10);",
-            "unlifted: *xStack_c._8_4_ = *xStack_c._8_4_ + 1;",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(this_00 + 0x34) = NScript::CQ_TraderEscortScript::WatchForPickpocketing;",
-            "unlifted: *(undefined4 *)(this_00 + 0x38) = uVar1;",
-            "unlifted: CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);"
-          ],
+          "todo": [],
           "calls": [
             "SetStateInt",
             "SetStateInt",
@@ -1654,10 +1642,9 @@
             "GetDataString",
             "ENGINE_StrCmp",
             "EntitySetWillBeUsingNarrator",
-            "QUESTTHING_Empty",
-            "ENGINE_Concat"
+            "CreateThread"
           ],
-          "lines": 69,
+          "lines": 46,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3818,7 +3805,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 186
+        "todo": 175
       }
     }
   ],
@@ -3829,6 +3816,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 186
+    "todo": 175
   }
 }

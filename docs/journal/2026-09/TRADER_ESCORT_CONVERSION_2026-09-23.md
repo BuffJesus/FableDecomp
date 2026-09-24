@@ -243,3 +243,30 @@ Other units: the peer's new exports for the 15 other units are in
 (bordello 617->38, beggar_and_child 148->9, trader_conflict 177->55,
 guild 78->45). Promoting a playtested unit changes its converter output
 and needs a diff review first.
+
+### 2026-09-24 (late): parent-worker spawns with captured things
+
+DarkwoodTrader spawns two parent-quest workers: WatchForPickpocketing in
+Init 0xE04BD0, and TurnToBalv in FUN_00e07640 (bsim mislabels its pointer
+as Script_Darkwood_Balverine_Trader; the CSpawnedFunc name literal is the
+evidence). Each spawn is `operator new(0x48)` with +0x34 = the quest member
+function, +0x38 = the parent quest, +0x3c = a copy of the entity's own
+CScriptThing (this+8; field-wise in Init, copy-ctor from `p0 = this + 8` in
+the other), and is registered under the empty section. The lifter now emits
+`quest:CreateThread("<name>", {args = {me}})`. ForgeFSE's
+`LuaQuestState::CreateThread` forwards `args` to `ThreadRunner`, which calls
+`fn(questState, args...)`: that is the lifted `WatchForPickpocketing(quest,
+native_arg_Trader)` shape. An entity's `quest` is its parent's
+`GetQuestState()` (LuaEntityHost.cpp:144). Trailing unwind-flag guards are
+consumed only for a flag the spawn block itself set: Init's `auVar5 = 7`,
+whose null-allocation path read an uninitialised word, caused the nil
+bitwise error. The TurnToBalv block's shared `xStack_170`/`CVar14` guards
+are kept.
+
+Totals: **draft 175 TODOs, 16/16 files; smoke draft 1 / readable 1
+problem**. The remaining problem is free `extraout_EAX*`/`int3` in
+DarkwoodTrader, which is Ghidra byte-merge noise
+(`CONCAT31((int3)(extraout_EAX >> 8), brain_state)`) into registers that
+are overwritten before use. It needs a liveness pass. 156 focused tests OK
+(adds `test_spawn_capture`). Established-unit drafts are unchanged (Guild:
+the two known removals). Not in-game tested; registration stays disabled.

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar14, __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar19, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar10, pCVar11, pCVar13, pCVar18, pCVar6, pPosition, pSpeaker, pcVar22, piVar12, puVar1, puVar7, pvVar8, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, this_01, uVar15, uVar17, xStack_118, xStack_158, xStack_168, xStack_170, xStack_c0, xStack_e8, xStack_f8
+    local CVar14, __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar19, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar21, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar10, pCVar11, pCVar13, pCVar18, pCVar6, pPosition, pSpeaker, pcVar22, piVar12, puVar1, puVar7, pvVar8, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uVar15, uVar17, xStack_118, xStack_158, xStack_168, xStack_170, xStack_c0, xStack_e8, xStack_f8
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -606,16 +606,7 @@ function Main(quest, me)
                 if not bVar3 then
                     quest:SetStateInt("TradersStillAliveCounter", quest:GetStateInt("TradersStillAliveCounter") + -1)
                     resources:PrepareResource(xStack_168)
-                    if this_01 == nil then
-                        this_01 = 0x0
-                    else
-                        pCVar11 = extraout_EAX
-                        pCVar11 = (a .. pCVar11)
-                        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,pCVar11,0);
-                        -- TODO(native): *(code **)(this_01 + 0x34) = Script_Darkwood_Balverine_Trader;
-                        -- TODO(native): *(undefined4 *)(this_01 + 0x38) = uVar15;
-                    end
-                    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);
+                    quest:CreateThread("TurnToBalv", {args = {me}})  -- native parent-quest worker TurnToBalv, the entity's own thing captured
                     if (xStack_170 & 0x200) ~= 0 then
                         CVar14 = xStack_170 & 0xfffffdff
                     end
@@ -1438,7 +1429,7 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("IncubationTime", quest:RegisterTimer())  -- native constructor: CTimer member
     __native_entity_state:SetStateInt("RegulateFollowStateComment", quest:RegisterTimer())  -- native constructor: CTimer member
     __native_entity_state:SetStateInt("RegulateBanterComment", quest:RegisterTimer())  -- native constructor: CTimer member
-    local auVar5, cVar7, iVar4, p1, pCVar3, pThing, pcVar8, piVar2, this_00, uVar1, v_stk_20, xStack_c
+    local cVar7, iVar4, p1, pCVar3, pThing, pcVar8, piVar2, v_stk_20
     p1 = v_stk_20
     __native_entity_state:SetStateInt("BrainState", 0)
     __native_entity_state:SetStateInt("CurrentAIState", 0)
@@ -1480,30 +1471,7 @@ function Init(quest, me)
     end
     quest:EntitySetWillBeUsingNarrator(me, pcVar8)
     ::LAB_00e04e13::
-    if this_00 == nil then
-        this_00 = 0x0
-        auVar5 = v_stk_20
-    else
-        -- TODO(native): xStack_c._4_4_ = *(undefined4 *)(this + 0xc);
-        -- TODO(native): xStack_c._8_4_ = *(undefined4 *)(this + 0x10);
-        xStack_c = nil
-        if xStack_c._8_4_ ~= nil then
-            -- TODO(native): *xStack_c._8_4_ = *xStack_c._8_4_ + 1;
-        end
-        pCVar3 = extraout_EAX
-        pCVar3 = (a .. pCVar3)
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar3,0);
-        -- TODO(native): *(code **)(this_00 + 0x34) = NScript::CQ_TraderEscortScript::WatchForPickpocketing;
-        -- TODO(native): *(undefined4 *)(this_00 + 0x38) = uVar1;
-        auVar5 = 7
-    end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
-    if (auVar5 & 4) ~= 0 then
-        auVar5 = (auVar5 & 0xfffffffb)
-    end
-    if (auVar5 & 2) ~= 0 then
-        auVar5 = (auVar5 & 0xfffffffd)
-    end
+    quest:CreateThread("WatchForPickpocketing", {args = {me}})  -- native parent-quest worker WatchForPickpocketing, the entity's own thing captured
 end
 
 function OnPersist(quest, me, context)

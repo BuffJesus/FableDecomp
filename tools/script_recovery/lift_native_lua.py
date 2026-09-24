@@ -198,6 +198,43 @@ RE_THREAD = re.compile(
     r'.*?CSpawnedFunc<[^>]*>::\s*CSpawnedFunc<[^>]*>\s*\([^;]*;.*?\+ 0x34\) =\s*&?([\w:]+);.*?\}'
     r'(?:\s*CCharString::CCharString\(\(CCharString \*\)&\w+,&DAT_[0-9a-f]+,-1\);)?'
     r'(?:\s*CGuiVarTransferStruct::Add\([^;]*;)?', re.S)
+# A parent-quest worker spawned by an ENTITY with the entity's own thing captured (DarkwoodTrader Init 0x00E04BD0:
+# `operator new(0x48)`, CSpawnedFunc named "ParentClass." + member, +0x34 = the quest member function, +0x38 = the
+# parent quest, +0x3c = a copy of the entity's CScriptThing at this+8 whose Info/Data words are copied field by
+# field from this+0xc / this+0x10), registered with the parent under the empty section, followed by the
+# unwind-flag guarded temp-string destructors. ForgeFSE's `CreateThread(name, {args = {...}})` calls the quest
+# function as fn(quest, args...), which is the lifted worker's `(quest, native_arg_Trader)` shape.
+RE_THREAD_CAPTURE = re.compile(
+    r'(?P<obj>\w+) = (?:::)?operator_new\(0x48\);\s*'
+    r'if \((?P=obj) == [^;{]*?0x0\) \{[^{}]*\}\s*else \{'
+    r'(?P<body>[^{}]*?(?:\{[^{}]*\}[^{}]*?)*?)'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>\w+)",-1\);'
+    r'(?P<body2>[^{}]*?)'
+    r'\*\(code \*\*\)\((?P=obj) \+ 0x34\) =\s*&?(?P<fn>[\w:]+);\s*'
+    r'\*\(undefined4 \*\)\((?P=obj) \+ 0x38\) = \w+;\s*'
+    r'CScriptThing::CScriptThing\(\(CScriptThing \*\)\((?P=obj) \+ 0x3c\),\s*\((?:CScriptThing(?:_bv)?) \*\)&?(?P<src>\w+)[^;]*\);'
+    r'[^{}]*?\}\s*'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,(?:""|&DAT_[0-9a-f]+),-1\);\s*'
+    r'CGuiVarTransferStruct::Add\([^;]*?,\s*(?P=obj),\s*\w+\);[ \t]*\n'
+    r'(?:[ \t]*std::\s*_Cons_val<[^;]*?;[ \t]*\n)*', re.S)
+# the unwind-flag guards after it (`if ((F & 4) != 0) { F = F & ~4; <temp dtor> }`): consumed only for a flag the
+# spawn block itself set (`auVar5 = 7` / `= local_20`), never one shared with the function's other cleanup
+RE_FLAG_GUARD = re.compile(r'[ \t]*if \(\(\(?(?:uint\))?(?P<flag>\w+) & (?:0x[0-9a-f]+|\d+)\)? != 0\) \{[^{}]*\}[ \t]*\n')
+
+
+def _captured_entity_self(body, src, text=''):
+    """True when `src` is the entity's own thing (this+8: vtable, Info, Data): copied field by field from
+    this+0xc / this+0x10 (DarkwoodTrader Init), or copy-constructed from `p0` where the function set
+    `p0 = this + 8` (FUN_00e07640's TurnToBalv spawn: `CScriptThing::CScriptThing(xStack_c0, p0, ..)`)."""
+    field = r'\s*=\s*\*\(undefined4 \*\)\((?:\(int\))?this \+ 0x%s\);'
+    if (re.search(re.escape(src) + r'\._4_4_' + field % 'c', body)
+            and re.search(re.escape(src) + r'\._8_4_' + field % '10', body)):
+        return True
+    ctor = re.search(r'CScriptThing::CScriptThing\(\((?:CScriptThing(?:_bv)?) \*\)&?' + re.escape(src) + r',\s*(\w+)[,)]', body)
+    return bool(ctor and re.search(r'^[ \t]*' + re.escape(ctor.group(1))
+                                   + r' = (?:\(CScriptThing(?:_bv)? \*\))?\((?:\(int\))?this \+ 8\);', text, re.M))
+
+
 RE_GUI_TRANSFER_ADD = re.compile(
     r'CGuiVarTransferStruct::Add\([^,]+,\s*(?:\(CGuiVarTransferBase \*\))?(\w+)\s*(?:,\s*\w+)?\);')
 RE_STORE = re.compile(r'^\s*\*\((\w+) \*\)\((?:this|param_1) \+ (0x[0-9a-fA-F]+)\) = ([^;]+);\s*$')
@@ -1948,6 +1985,27 @@ class Lifter:
             thread_objects.add(match.group(1))
             return f'    @@THREAD {match.group(2)} {match.group(3)}\n'
 
+        spawn_flags: list[set[str]] = []
+
+        def thread_capture(match: re.Match) -> str:
+            if not _captured_entity_self(match.group('body'), match.group('src'), text):
+                return match.group(0)
+            thread_objects.add(match.group('obj'))
+            # the flag words this block assigns (`auVar5 = 7;`, `auVar5 = v_stk_20;`)
+            spawn_flags.append(set(re.findall(r'(?m)^[ \t]*(\w+) = (?:\([^()]*\)\s*)?(?:\d+|\w+);', match.group(0)))
+                               - {match.group('obj')})
+            return f'    @@THREADARGS#{len(spawn_flags) - 1} {match.group("name")} {match.group("fn")} me\n'
+
+        text = RE_THREAD_CAPTURE.sub(thread_capture, text)
+        for k, flags in enumerate(spawn_flags):
+            marker = re.search(r'@@THREADARGS#%d [^\n]*\n' % k, text)
+            end = marker.end()
+            while True:
+                guard = RE_FLAG_GUARD.match(text, end)
+                if not guard or guard.group('flag') not in flags:
+                    break
+                end = guard.end()
+            text = text[:marker.start()] + marker.group(0).replace('#%d' % k, '', 1) + text[end:]
         text = RE_THREAD.sub(thread, text)
         # CreateThread is the Lua-side operation represented by the native spawned object. Remove
         # the ownership-container insertion only when its exact object variable was captured from
@@ -2247,6 +2305,15 @@ class Lifter:
             else:
                 self.emit(f'{self.receiver}:AddEntityBinding("{name}", "{target}")')
             self.calls.append("AddEntityBinding")
+            return
+        if stripped.startswith("@@THREADARGS "):
+            _, name, body, arg = stripped.split(" ", 3)
+            self.threads.append({"name": name, "body": body, "args": [arg]})
+            # (the comment names the thread, not the member label: bsim mislabels TurnToBalv's pointer as
+            # Script_Darkwood_Balverine_Trader; the CSpawnedFunc name literal is the evidence)
+            self.emit(f'{self.receiver}:CreateThread("{name}", {{args = {{{arg}}}}})'
+                      f'  -- native parent-quest worker {name}, the entity\'s own thing captured')
+            self.calls.append("CreateThread")
             return
         if stripped.startswith("@@THREAD "):
             _, name, body = stripped.split(" ", 2)

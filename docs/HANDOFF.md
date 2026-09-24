@@ -11,10 +11,11 @@ Current result: **298 TODOs; draft 14/16 files compile; readable 15/17;
 
 **2026-09-24 update:** converter uses RET-proven callee purges, pairs
 code-pointer calls, folds vector register aliases; the peer session's
-depth-fixed export is promoted for Trader Escort. Trader Escort: **186 TODOs,
-16/16 files, smoke 2 problems (both DarkwoodTrader Init/free globals)**.
-Open: DarkwoodTrader `auVar5` + globals, inlined CScriptThing copy of
-`speaker` in MakeTraderComment, parent worker spawn captures. New exports for
+depth-fixed export is promoted for Trader Escort. Trader Escort: **186 -> 175 TODOs,
+16/16 files, smoke 1 problem** after parent-worker spawns lowered to
+`CreateThread(name, {args = {me}})` (175 TODOs). Open: dead byte-merge
+`extraout_EAX` noise in DarkwoodTrader (liveness), inlined CScriptThing copy of
+`speaker` in MakeTraderComment, `AddQuestInfoBarHealth` colour operand. New exports for
 the other 15 units wait in `work/ebp_fix/` (promote after diff review; the
 exporter Java change is uncommitted, owned by the peer session). See the
 journal's 2026-09-24 sections.
