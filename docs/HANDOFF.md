@@ -26,6 +26,10 @@ Next, in order:
 4. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object
    settles it).
 
+Next bundle (v14, not built): v13 + `novi-zzzz-quest-failed-message.patch` in the sidecar + the
+Orchard output from b270c0f (constructor zero-inits in Init). Sidecar-side namespace clearing on host creation
+is deliberately NOT done: check first whether persisted state is loaded into the global map before a host exists.
+
 Change generators and evidence, never generated Lua by hand.
 
 From the repository root:
