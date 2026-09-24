@@ -1,0 +1,22 @@
+[
+  {
+    "id": "channel",
+    "status": "PASS",
+    "detail": "expected /host LUAGameflow/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_persistent_completion",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = WASP_CARD_COMPLETED/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_gameflow_handoff",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = MAZE_MEETING_STAGE/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_guardian_quest_active",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = GUARDIAN_QUEST_ACTIVE/ seen"
+  }
+]

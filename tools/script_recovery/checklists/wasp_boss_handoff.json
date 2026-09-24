@@ -1,0 +1,38 @@
+[
+ {
+  "id": "wasp_persistent_completion",
+  "do": [
+   "input: clear",
+   "eval LUAGameflow: quest:IsQuestCompleted('Q_WaspBoss') and 'WASP_CARD_COMPLETED' or 'WASP_CARD_PENDING'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = WASP_CARD_COMPLETED",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 30,
+  "interval": 2,
+  "timeout": 180,
+  "note": "Read the native completed-card list after real queen combat and acknowledgement of the completion screen. A SetQuestAsCompleted log entry alone does not satisfy this gate."
+ },
+ {
+  "id": "wasp_gameflow_handoff",
+  "do": [
+   "input: clear",
+   "eval LUAGameflow: quest:GetMasterGameState('PostSavePosition') == 300 and 'MAZE_MEETING_STAGE' or 'WASP_HANDOFF_PENDING'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = MAZE_MEETING_STAGE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 30,
+  "interval": 2,
+  "timeout": 180,
+  "note": "Stage 300 follows native completion delivery, the renown tutorial and handing over the first Guardian Sister Info card. Never set PostSavePosition to pass this test."
+ },
+ {
+  "id": "wasp_guardian_quest_active",
+  "do": [
+   "eval LUAGameflow: quest:IsQuestActive('QS_GuardianSisterInfo') and 'GUARDIAN_QUEST_ACTIVE' or 'GUARDIAN_QUEST_INACTIVE'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = GUARDIAN_QUEST_ACTIVE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "timeout": 30,
+  "note": "Verify the next quest is active after the natural gameflow handoff. Accepted cards can be in limbo and absent from world-thing enumeration."
+ }
+]

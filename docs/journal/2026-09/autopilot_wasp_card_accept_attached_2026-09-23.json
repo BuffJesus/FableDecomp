@@ -1,0 +1,12 @@
+[
+  {
+    "id": "wasp_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen after 4 send(s)"
+  },
+  {
+    "id": "wasp_accept_card",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host WaspBoss// seen"
+  }
+]

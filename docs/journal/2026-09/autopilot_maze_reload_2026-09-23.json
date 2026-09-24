@@ -1,0 +1,22 @@
+[
+  {
+    "id": "wasp_still_completed",
+    "status": "PASS",
+    "detail": "expected /= WASP_COMPLETED/ seen"
+  },
+  {
+    "id": "sister_completed",
+    "status": "PASS",
+    "detail": "expected /= MAZE_COMPLETED/ seen after 1 send(s)"
+  },
+  {
+    "id": "orchard_stage",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_STAGE/ seen after 1 send(s)"
+  },
+  {
+    "id": "orchard_waiting",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_WAITING/ seen after 1 send(s)"
+  }
+]

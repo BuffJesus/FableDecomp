@@ -1,0 +1,11 @@
+{
+  "baseline_log": "work\\converter_suite_20260922f.log.err",
+  "current_log": "work\\converter_suite_20260923b.err",
+  "tests": 1677,
+  "failures": 403,
+  "errors": 45,
+  "failure_error_records": 448,
+  "failure_error_identities_match": true,
+  "comparison_normalization": "Ignore PowerShell line wrapping/whitespace and tools.script_recovery module prefix from -t .",
+  "additional_launch_tests_passed": 2
+}

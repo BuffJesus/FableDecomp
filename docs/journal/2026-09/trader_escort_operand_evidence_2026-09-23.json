@@ -1,0 +1,73 @@
+{
+  "mode": "offline only; user requested no playtesting",
+  "draft": {
+    "owners": 15,
+    "functions": 65,
+    "missing": 0,
+    "functionSyntaxPassed": 64,
+    "fileSyntaxPassed": 14,
+    "fileSyntaxChecked": 16,
+    "todo": 298
+  },
+  "readableSyntax": {
+    "runtime": "Lua 5.4",
+    "ok": false,
+    "checked": 17,
+    "passed": 15,
+    "errors": [
+      {
+        "path": "FSE/TraderEscort/TraderEscort.lua",
+        "line": 588,
+        "message": "FSE/TraderEscort/TraderEscort.lua:588: syntax error near 'quest'"
+      },
+      {
+        "path": "FSE/TraderEscort/native_quest_helpers.lua",
+        "line": 112,
+        "message": "FSE/TraderEscort/native_quest_helpers.lua:112: unexpected symbol near ':'"
+      }
+    ]
+  },
+  "offlineSmokeProblems": 5,
+  "focusedTestsPassed": 96,
+  "compatibility": {
+    "orchard_farm": {
+      "files": 11,
+      "changed": []
+    },
+    "wasp_boss": {
+      "files": 10,
+      "changed": []
+    },
+    "guardian_sister_info": {
+      "files": 4,
+      "changed": []
+    },
+    "trader_conflict": {
+      "files": 15,
+      "changed": []
+    },
+    "guild_training": {
+      "files": 37,
+      "changed": [
+        "FSE\\GuildTrainingWoodsDeparture\\GuildTrainingWoodsDeparture.lua",
+        "FSE\\GuildTrainingWoodsWill\\GuildTrainingWoodsWill.lua"
+      ]
+    }
+  },
+  "guildPreexistingDifferenceControl": {
+    "GuildTrainingWoodsDeparture": true,
+    "GuildTrainingWoodsWill": true
+  },
+  "bundleChanged": false,
+  "saveFilesTouched": false,
+  "fullSuiteRun": false,
+  "reportHashes": {
+    "refs\\script_recovery\\lifted\\TraderEscort\\draft\\CONVERSION_REPORT.json": "d6f2383dc10e096e73d950d627e87f5f337fa4f4d690d4d6ba3f78d6164a54e6",
+    "refs\\script_recovery\\lifted\\TraderEscort\\readable\\READABLE_REPORT.json": "f1a74aa513267d9b6eb3d33295e9a882afcb1a7f7fd31ccc6ddda734d2422b87"
+  },
+  "remaining": [
+    "MakeTraderComment invalid numeric receiver and unrecovered dialogue operands",
+    "TraderComment local-vector iteration",
+    "DarkwoodTrader unrecovered native globals and captured thread arguments"
+  ]
+}

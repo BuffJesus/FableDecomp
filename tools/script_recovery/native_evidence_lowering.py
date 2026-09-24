@@ -296,6 +296,24 @@ def drop_local_counted_releases(text):
     return RE_SLOT_ZERO.sub('', text)
 
 
+def fold_local_thing_copies(text: str) -> str:
+    """Copy a canonicalised stack thing after its native release was removed.
+
+    Both destination member stores must refer to the same proven thing object;
+    the source's Data/Info loads and retain must agree exactly.
+    """
+    things = set(re.findall(r'\b(\w+) = QUESTTHING_Empty\(', text))
+    pattern = re.compile(
+        r'^(?P<ind>[ \t]*)(?P<info>\w+) = \*\(int \*\*\)\((?P<src>\w+) \+ (?:8|0x8)\);\s*'
+        r'(?P<data>\w+) = \*\((?:int \*\*|undefined4 \*)\)\((?P=src) \+ (?:4|0x4)\);\s*'
+        r'if \((?P<dst>\w+) != (?P=info)\) \{\s*'
+        r'(?P=dst) = (?P=data);\s*(?P=dst) = (?P=info);\s*'
+        r'if \((?P=info) != \(int \*\)0x0\) \{\s*'
+        r'\*(?P=info) = \*(?P=info) \+ 1;\s*\}\s*\}', re.M)
+    return pattern.sub(lambda m: f'{m["ind"]}{m["dst"]} = {m["src"]};'
+                       if m['dst'] in things else m[0], text)
+
+
 RE_BV_THING_CTOR = re.compile(
     r'^[ \t]*CScriptThing::CScriptThing\s*\(\s*\(CScriptThing \*\)&(stack0x[0-9a-f]+|xStack_[0-9a-f]+(?:_\d+)?),\s*(?:\(CScriptThing \*\))?(\w+)(?:,[^;]*)?\);[ \t]*\r?\n', re.M)
 
@@ -607,6 +625,11 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'^([ \t]*\w+ = \([\w *]+\))[ \t]*\r?\n[ \t]+(?=\()', r'\1', text, flags=re.M)   # a cast alone before a wrapped vcall
     text = re.sub(r'\)\)[ \t]*\r?\n[ \t]+\(', '))(', text)                   # call head wrapped before its argument list
     text = join_wrapped_statements(text)
+    # The known script interface field can inherit a CCharString pointer type
+    # from a reused register (WaspBoss DoMission 0x00E12580). Its pointee is
+    # still the interface, allowing the existing vtable-alias pass to work.
+    text = re.sub(r'\*\(CCharString(?:_bv)? \*\*\)\(this \+ (4|0x40)\)',
+                  r'*(int **)(this + \1)', text)
     text = re.sub(r'&("(?:[^"\\]|\\.)*")', r'\1', text)                      # &"literal" (propagated CCharString temp)
     text = re.sub(r'\*\((\w+ \*+)\)&(\w+)->field_0x([0-9a-f]+)', r'*(\1)(\2 + 0x\3)', text)
     text = re.sub(r'\*&(\w+)->field_0x([0-9a-f]+)', r'*(int *)(\1 + 0x\2)', text)
@@ -1209,7 +1232,7 @@ def fold_resource_objects(text, call_labels):
                 if m.group(2):
                     out += f'\n{m.group(1)}{m.group(2)} = {hidden};'
                 return out
-            text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\(CScriptThing \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
+            text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\((?:CScriptThing|void) \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
                           script_thing, text, flags=re.M)
         elif target in TIMER_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = GSI->RegisterTimer();', text, flags=re.M)
@@ -2104,6 +2127,33 @@ def fold_local_thing_vectors(text, thing_slots=None):
             var = m.group(1)
             if not re.search(r'\b' + re.escape(var) + r'\b', re.sub(r'^[ \t]*[\w ]+ \**' + re.escape(var) + r';[ \t]*\r?\n|^[ \t]*' + re.escape(var) + r' = ' + re.escape(vec) + r';[ \t]*\r?\n', '', text, flags=re.M)):
                 text = re.sub(r'^[ \t]*' + re.escape(var) + r' = ' + re.escape(vec) + r';[ \t]*\r?\n', '', text, flags=re.M)
+    return preserve_repeated_script_name_fills(text)
+
+
+def preserve_repeated_script_name_fills(text: str) -> str:
+    """Consecutive native script-name queries append to their output vector.
+
+    Retail 0x008A8570 pushes at [out+4], advances it by 12, and never clears
+    the destination; 0x008ACD30 reserves capacity while preserving its size.
+    Only combine fills in one straight-line block with no intervening use of
+    the vector (other than reading its count). Other lifetimes stay untouched.
+    """
+    pattern = re.compile(r'^([ \t]*)(\w+) = GSI->GetAllThingsWithScriptName\(([^;\n]*)\);', re.M)
+    previous, edits = {}, []
+    for m in pattern.finditer(text):
+        vec = m[2]
+        prev = previous.get(vec)
+        if prev is not None:
+            between = text[prev.end():m.start()]
+            between = re.sub(r'LOCALLIST_Count\(' + re.escape(vec) + r'\)', '', between)
+            if not re.search(r'[{}]|\b(?:goto|return)\b|LAB_\w+:|\b' + re.escape(vec) + r'\b', between):
+                added = f'append_{vec}_{len(edits)}'
+                edits.append((m.start(), m.end(),
+                    f'{m[1]}{added} = GSI->GetAllThingsWithScriptName({m[3]});\n'
+                    f'{m[1]}LOCALLIST_Append({vec}, {added});'))
+        previous[vec] = m
+    for start, end, replacement in reversed(edits):
+        text = text[:start] + replacement + text[end:]
     return text
 
 
@@ -2157,6 +2207,23 @@ def _next_use_is_redefinition(text, pos, var):
         return True
     at_line_start = text[pos:pos + nxt.start()].rsplit('\n', 1)[-1].strip() == ''
     return bool(at_line_start and re.match(r'\s*=(?!=)', text[pos + nxt.end():]))
+
+
+def lower_global_definition_strings(text, call_labels):
+    """Retail 415D70 constructs a CString in its hidden result from a CDefString token.
+
+    Keep a runtime table read: decoded script.bin values are evidence, not constants.
+    Only the exact callee and a global-definition field with a named output slot qualify.
+    """
+    for label, target in call_labels.items():
+        if target != 0x415D70:
+            continue
+        head = re.escape(label).replace('::', r'\s*::\s*')
+        pattern = re.compile(
+            r'(?<![\w:])' + head + r'\s*\(\s*\(CDefString \*\)\(DAT_0143e90c \+ '
+            r'(0x[0-9a-f]+|\d+)\),\s*(?:\(int\)|\(CCharString \*\))?&(\w+)\s*\)\s*;')
+        text = pattern.sub(lambda m: f'{m[2]} = ENGINE_GlobalGameDataString({m[1]});', text)
+    return text
 
 
 def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
@@ -2344,6 +2411,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     for var in table_registers:
         text = re.sub(r'\*\((float|int|undefined4|uint) \*\)\(' + re.escape(var) + r' \+ (0x[0-9a-f]{3,}|\d{3,})\)',
                       r'*(\1 *)(DAT_0143e90c + \2)', text)
+    text = lower_global_definition_strings(text, getattr(spec, 'call_labels', {}))
     text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
     text = re.sub(r'\*\((?:int|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
     text = fold_position_reads(text)
@@ -2897,6 +2965,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     # a remaining CScriptThing::operator= on a plain local is a handle copy (members were lowered above)
     text = re.sub(r'^([ \t]*)CScriptThing::operator=\(\(CScriptThing \*\)&?(\w+),\s*\((?:int|CScriptThing \*)\)(\w+)\);', r'\1\2 = \3;', text, flags=re.M)
     text = drop_local_counted_releases(text)
+    text = fold_local_thing_copies(text)
     text = re.sub(r'^[ \t]*(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = (?:\(\w+\))?this;[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*(\w+) = \((?:\w+ \*+)\)\w+;[ \t]*\r?\n(?=[ \t]*\1 = )', '', text, flags=re.M)
     text = drop_dead_local_stores(text)
@@ -3150,11 +3219,14 @@ LUA_PSEUDO = [
     (re.compile(r'ENGINE_Vector3\(([^,()]+), ([^,()]+), ([^,()]+)\)'), r'{x = \1, y = \2, z = \3}'),
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),
+    (re.compile(r'ENGINE_GlobalGameDataString\('), 'quest:ReadGlobalGameDataString('),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
     (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
     (re.compile(r'LOCALLIST_Count\((\w+)(?:\[0 \+ 1\])?\)'), r'#\1'),   # `vec[0 + 1]` is the vector's begin field, not an element
+    (re.compile(r'LOCALLIST_Append\((\w+), (\w+)\)'),
+     r'for _, appendedThing in ipairs(\2) do \1[#\1 + 1] = appendedThing end'),
     (re.compile(r'\bGFCharStringToInt\('), 'tonumber('),               # ?GFCharStringToInt@@YIJABVCCharString@@@Z (0x99E7F0)
     (re.compile(r'STRINGMAP_New\('), 'resources:NewStringMap('),
     (re.compile(r'STRINGMAP_Set\('), 'resources:SetString('),

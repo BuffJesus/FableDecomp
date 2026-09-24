@@ -58,12 +58,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: bVar2 = pCVar4 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(pCVar4 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCu",
-            "unlifted: *(CQ_GuildTrainingScript **)(pCVar4 + 0x38) = this;"
-          ],
+          "todo": [],
           "calls": [
             "SetTimer",
             "IsRegionLoaded",
@@ -93,9 +88,10 @@
             "IsActiveThreadTerminating",
             "OverrideMusic",
             "CreateThread",
+            "CreateThread",
             "CreateThread"
           ],
-          "lines": 63,
+          "lines": 56,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -242,21 +238,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe3c),(int)&xStack_4",
-            "unlifted: xStack_40 = *this_00;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe40),(int)&xStack_4",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(this_01 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetD",
-            "unlifted: *(CQ_WaspBossScript **)(this_01 + 0x38) = this;",
-            "unlifted: CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,this_01,sectionName);",
-            "unlifted: this_00 = *(this + 0x40)",
-            "unlifted: pCVar10 = (**(*pCVar9 + 0x18))(pCVar9)",
-            "unlifted: pCVar9 = (**(xStack_40 + 0x16c))(this_00,xStack_18,&xStack_44,pCVar10,\"HornetDrone\",bVar6)",
-            "unlifted: piVar2 = *(pCVar9 + 0x8)",
-            "unlifted: uVar3 = *(pCVar9 + 0x4)"
-          ],
+          "todo": [],
           "calls": [
             "AddRumourCategory",
             "AddNewRumourToCategory",
@@ -264,23 +246,30 @@
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
+            "ENGINE_GlobalGameDataString",
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "GetThingWithScriptName",
+            "GetPos",
+            "CreateCreature",
             "QUESTTHING_Empty",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "GetAllThingsWithScriptName",
             "GetAllThingsWithScriptName",
+            "LOCALLIST_Append",
             "GetAllThingsWithScriptName",
+            "LOCALLIST_Append",
             "ENGINE_IsAllDead",
             "IsActiveThreadTerminating",
             "Pause",
+            "ENGINE_GlobalGameDataString",
             "GetThingWithScriptName",
             "GetPos",
             "CreateCreature",
             "SetStateBool",
+            "CreateThread",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
@@ -288,7 +277,7 @@
             "ENGINE_IsAllDead",
             "QUESTTHING_Empty"
           ],
-          "lines": 98,
+          "lines": 74,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -315,9 +304,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
@@ -341,7 +328,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 37,
+          "lines": 38,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -484,14 +471,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "label LAB_00e13769",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "AddQuestInfoBarHealth: missing spThing (3 args for 4 params)",
-            "unlifted: piVar1 = *(pCVar5 + 0x8)",
-            "unlifted: piVar2 = *(pCVar5 + 0x4)",
-            "unlifted: piVar1 = *(pCVar5 + 0x8)",
-            "unlifted: piVar2 = *(pCVar5 + 0x4)"
+            "label LAB_00e13769"
           ],
           "calls": [
             "QUESTTHING_Empty",
@@ -526,7 +506,7 @@
             "DisplayQuestInfo",
             "AddQuestInfoBarHealth"
           ],
-          "lines": 97,
+          "lines": 77,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2119,7 +2099,7 @@
         "functionSyntaxPassed": 46,
         "fileSyntaxPassed": 10,
         "fileSyntaxChecked": 10,
-        "todo": 30
+        "todo": 5
       }
     }
   ],
@@ -2130,6 +2110,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 10,
     "fileSyntaxChecked": 10,
-    "todo": 30
+    "todo": 5
   }
 }

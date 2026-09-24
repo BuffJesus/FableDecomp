@@ -195,7 +195,7 @@ def _balanced(depth):
 RE_THING_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?CScriptThing::(\w+)\s*\(\s*((?:[^,()]|' + _balanced(4) + r')+?)\s*(?:,(.*))?\);\s*$')
 RE_THREAD = re.compile(
     r'(\w+) = (?:::)?operator_new\(0x3c\);.*?CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"([^"]+)",-1\);'
-    r'.*?CSpawnedFunc<[^>]*>::\s*CSpawnedFunc<[^>]*>\s*\([^;]*;.*?\+ 0x34\) = &?([\w:]+);.*?\}'
+    r'.*?CSpawnedFunc<[^>]*>::\s*CSpawnedFunc<[^>]*>\s*\([^;]*;.*?\+ 0x34\) =\s*&?([\w:]+);.*?\}'
     r'(?:\s*CCharString::CCharString\(\(CCharString \*\)&\w+,&DAT_[0-9a-f]+,-1\);)?'
     r'(?:\s*CGuiVarTransferStruct::Add\([^;]*;)?', re.S)
 RE_GUI_TRANSFER_ADD = re.compile(
@@ -2043,6 +2043,14 @@ class Lifter:
                 continue
             self.statement(role, line)
         self.collapse_acquire_loops()
+        # Native EH guards can outlive the destructor statements stripped from
+        # their bodies (including a recovered spawned-thread allocation).
+        # An empty bitmask guard has no script effect or call to preserve.
+        emitted = '\n'.join(self.out)
+        pruned = re.sub(r'^[ \t]*if \(\w+ & (?:0x[0-9a-f]+|\d+)\) ~= 0 then\n[ \t]*end\n?',
+                        '', emitted, flags=re.M)
+        if pruned != emitted:
+            self.out = pruned.splitlines()
         self.legalize_nonterminal_returns()
         self.out, self.dispatch_scaffolding_evidence = prune_dispatch_loads(self.out, entity=self.entity)
         self.out = self.guard_c_residue(self.out)
@@ -2172,7 +2180,7 @@ class Lifter:
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
                                       else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
-                                      else 'string' if name in ('ENGINE_Concat',) or name.endswith('STATE_GetString') else 'number')
+                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)
@@ -2658,6 +2666,18 @@ class Lifter:
                 # its position/radius/type/two flags (0x7E72F0, RET 0x14).
                 drop = 1 if mangled.group(1) in ("Speak", "MoveToPosition") else 2
                 operands = operands[drop:]
+                if (mangled.group(1) == 'MoveToPosition' and self.execution_entity
+                        and self.accessor_kinds and len(operands) == 5):
+                    # This reviewed ABI already gives all five operands in order.
+                    # Type-based pooling must not shift an untyped vector pointer
+                    # into radius and discard the final flag (RET 0x14 at 0x7E72F0).
+                    from tools.script_recovery.native_evidence_lowering import _strip_addr
+                    params = [{'type': t} for t in ('sol::table', 'float', 'int', 'bool', 'bool')]
+                    args = [self.expr(_strip_addr(operands[0]))] + [self.expr(a) for a in operands[1:]]
+                    args = self._coerce_args(params, args)
+                    self.emit(f'me:MoveToPosition({", ".join(args)})')
+                    self.calls.append('MoveToPosition')
+                    return
                 if mangled.group(1) == "Speak":
                     # The retail typedef has target, key, method and three bools. Ghidra sometimes
                     # appends one phantom operand; trim by the reviewed ABI before generic temp
@@ -2761,8 +2781,14 @@ class Lifter:
             ref = RE_ADDR_OF.match(value)
             if ref:
                 referent = self.temps.get(ref[1])
+                result = self.slot_results.get(ref[1], ref[1])
                 self.forget_value(m[1])
-                if referent is not None:
+                if self.kinds.get(result) == 'thing' and result in self.locals:
+                    # Address of a filled CScriptThing return slot: keep the
+                    # handle when the register previously held another thing.
+                    self.emit(f'{self.declare(m[1])} = {result}')
+                    self.kinds[m[1]] = 'thing'
+                elif referent is not None:
                     # `local = &temporary`: an alias of a string operand, not a statement.
                     self.push_temp(m.group(1), referent)
                 return

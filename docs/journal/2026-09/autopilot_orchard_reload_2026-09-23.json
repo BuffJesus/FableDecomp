@@ -1,0 +1,22 @@
+[
+  {
+    "id": "orchard_completed",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_COMPLETED/ seen after 1 send(s)"
+  },
+  {
+    "id": "trader_stage",
+    "status": "PASS",
+    "detail": "expected /= TRADER_STAGE/ seen after 1 send(s)"
+  },
+  {
+    "id": "trader_waiting",
+    "status": "PASS",
+    "detail": "expected /= TRADER_WAITING/ seen after 1 send(s)"
+  },
+  {
+    "id": "orchard_crates_preserved",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_CRATES_PRESERVED/ seen"
+  }
+]

@@ -1,0 +1,237 @@
+{
+  "function": "MakeTraderComment",
+  "address": "0x00E01900",
+  "returnTails": [
+    [
+      "00e0195a: pop edi",
+      "00e0195b: pop esi",
+      "00e0195c: xor al, al",
+      "00e0195e: pop ebp",
+      "00e0195f: add esp, 0x40",
+      "00e01962: ret 0xc"
+    ],
+    [
+      "00e01a0c: pop edi",
+      "00e01a0d: pop esi",
+      "00e01a0e: xor al, al",
+      "00e01a10: pop ebp",
+      "00e01a11: add esp, 0x40",
+      "00e01a14: ret 0xc"
+    ],
+    [
+      "00e01ad4: pop edi",
+      "00e01ad5: pop esi",
+      "00e01ad6: xor al, al",
+      "00e01ad8: pop ebp",
+      "00e01ad9: add esp, 0x40",
+      "00e01adc: ret 0xc"
+    ],
+    [
+      "00e02033: pop edi",
+      "00e02034: pop esi",
+      "00e02035: mov al, 1",
+      "00e02037: pop ebp",
+      "00e02038: add esp, 0x40",
+      "00e0203b: ret 0xc"
+    ],
+    [
+      "00e02065: pop edi",
+      "00e02066: pop esi",
+      "00e02067: xor al, al",
+      "00e02069: pop ebp",
+      "00e0206a: add esp, 0x40",
+      "00e0206d: ret 0xc"
+    ],
+    [
+      "00e02298: pop edi",
+      "00e02299: pop esi",
+      "00e0229a: xor al, al",
+      "00e0229c: pop ebp",
+      "00e0229d: add esp, 0x40",
+      "00e022a0: ret 0xc"
+    ],
+    [
+      "00e0237e: pop edi",
+      "00e0237f: pop esi",
+      "00e02380: mov al, 1",
+      "00e02382: pop ebp",
+      "00e02383: add esp, 0x40",
+      "00e02386: ret 0xc"
+    ]
+  ],
+  "prototypeDeltas": {
+    "trader_escort": {
+      "0x00e01900": {
+        "before": {
+          "name": "CQ_TraderEscortScript__MakeTraderComment",
+          "cc": "__thiscall",
+          "ret": "int",
+          "params": [
+            {
+              "name": "comment_to_make",
+              "type": "int",
+              "ctype": "pdb size 4"
+            },
+            {
+              "name": "speaker",
+              "type": "CScriptThing *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "comment_type",
+              "type": "int",
+              "ctype": "pdb size 4"
+            }
+          ],
+          "source": "PDB stack parameters"
+        },
+        "after": {
+          "name": "CQ_TraderEscortScript__MakeTraderComment",
+          "cc": "__thiscall",
+          "ret": "bool",
+          "params": [
+            {
+              "name": "comment_to_make",
+              "type": "CCharString *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "speaker",
+              "type": "CScriptThing *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "comment_type",
+              "type": "int",
+              "ctype": "pdb size 4"
+            }
+          ],
+          "source": "PDB stack parameters"
+        }
+      }
+    },
+    "orchard_farm": {
+      "0x00dcda80": {
+        "before": {
+          "name": "CQ_OrchardFarmRaidScript__MakeTeamMemberComment",
+          "cc": "__thiscall",
+          "ret": "int",
+          "params": [
+            {
+              "name": "comment_to_make",
+              "type": "CCharString *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "speaker",
+              "type": "CScriptThing *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "comment_type",
+              "type": "int",
+              "ctype": "pdb size 4"
+            }
+          ],
+          "source": "PDB stack parameters"
+        },
+        "after": {
+          "name": "CQ_OrchardFarmRaidScript__MakeTeamMemberComment",
+          "cc": "__thiscall",
+          "ret": "bool",
+          "params": [
+            {
+              "name": "comment_to_make",
+              "type": "CCharString *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "speaker",
+              "type": "CScriptThing *",
+              "ctype": "ego_r signature"
+            },
+            {
+              "name": "comment_type",
+              "type": "int",
+              "ctype": "pdb size 4"
+            }
+          ],
+          "source": "PDB stack parameters"
+        }
+      },
+      "0x00dced10": {
+        "before": {
+          "name": "CQ_OrchardFarmRaidScript__CCrateTeamMember__IsThingCarryingCrate",
+          "cc": "__thiscall",
+          "ret": "int",
+          "params": [
+            {
+              "name": "thing",
+              "type": "int",
+              "ctype": "pdb size 4"
+            }
+          ],
+          "source": "PDB stack parameters"
+        },
+        "after": {
+          "name": "CQ_OrchardFarmRaidScript__CCrateTeamMember__IsThingCarryingCrate",
+          "cc": "__thiscall",
+          "ret": "int",
+          "params": [
+            {
+              "name": "thing",
+              "type": "CScriptThing *",
+              "ctype": "ego_r signature"
+            }
+          ],
+          "source": "PDB stack parameters"
+        }
+      }
+    },
+    "wasp_boss": {},
+    "guardian_sister_info": {},
+    "trader_conflict": {},
+    "guild_training": {}
+  },
+  "draft": {
+    "owners": 15,
+    "functions": 65,
+    "missing": 0,
+    "functionSyntaxPassed": 63,
+    "fileSyntaxPassed": 13,
+    "fileSyntaxChecked": 16,
+    "todo": 313
+  },
+  "readableSyntax": {
+    "runtime": "Lua 5.4",
+    "ok": false,
+    "checked": 17,
+    "passed": 14,
+    "errors": [
+      {
+        "path": "FSE/TraderEscort/Entities/DarkwoodTrader.lua",
+        "line": 175,
+        "message": "FSE/TraderEscort/Entities/DarkwoodTrader.lua:175: unexpected symbol near '&'"
+      },
+      {
+        "path": "FSE/TraderEscort/TraderEscort.lua",
+        "line": 588,
+        "message": "FSE/TraderEscort/TraderEscort.lua:588: syntax error near 'quest'"
+      },
+      {
+        "path": "FSE/TraderEscort/native_quest_helpers.lua",
+        "line": 112,
+        "message": "FSE/TraderEscort/native_quest_helpers.lua:112: unexpected symbol near ':'"
+      }
+    ]
+  },
+  "smokeProblems": 6,
+  "focusedTests": 23,
+  "liveBundleModified": false,
+  "saveFilesTouched": false,
+  "fullSuiteRun": false,
+  "hashes": {
+    "refs\\script_recovery\\trader_escort\\typing_spec.json": "3a968a29390b0ee080124c107cdc54c7f9cf1bbc200d15462945c62e01afca51",
+    "refs\\script_recovery\\trader_escort\\translation_unit_typed.json": "b1df45ec6fded85ee4ff3ae27c0796ffa0e34cdde3b88cfe8a11f3d38f5fb6cf"
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "schema": "trader-escort-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "f9f7d3cd346e2f190afdaa4733bc670922cd1fa1bd161f3667c7343f6792494a",
+  "exportedFunctions": 98,
+  "quests": [
+    {
+      "script": "Q_TraderEscort",
+      "allocator": "0x00E0AF60",
+      "vtable": "0x012DF16C",
+      "entities": [
+        {
+          "name": "DarkwoodTrader",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00DD1",
+          "addBindingCall": "0x00E00E16",
+          "factoryStore": "0x00E00DFC",
+          "factory": "0x00E015F0",
+          "vtable": "0x012DF424",
+          "functions": {
+            "destructor": "0x00E016F0",
+            "Main": "0x00E07640",
+            "Init": "0x00E04BD0",
+            "GetParentScript": "0x00E016E0",
+            "OnPersist": "0x00E05330",
+            "OnPredicateFail": "0x00E01760",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FleshEatingBalverine",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00E3E",
+          "addBindingCall": "0x00E00E7A",
+          "factoryStore": "0x00E00E65",
+          "factory": "0x00E02390",
+          "vtable": "0x012DF4FC",
+          "functions": {
+            "destructor": "0x00E02450",
+            "Main": "0x00E02470",
+            "Init": "0x00E02440",
+            "GetParentScript": "0x00E02430",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "InfectedBalverine",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00EA2",
+          "addBindingCall": "0x00E00EDE",
+          "factoryStore": "0x00E00EC9",
+          "factory": "0x00E02870",
+          "vtable": "0x012DF55C",
+          "functions": {
+            "destructor": "0x00E02930",
+            "Main": "0x00E02950",
+            "Init": "0x00E02920",
+            "GetParentScript": "0x00E02910",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "TraderComment",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00F06",
+          "addBindingCall": "0x00E00F42",
+          "factoryStore": "0x00E00F2D",
+          "factory": "0x00E02C90",
+          "vtable": "0x012DF578",
+          "functions": {
+            "destructor": "0x00E02D50",
+            "Main": "0x00E05360",
+            "Init": "0x00E02D40",
+            "GetParentScript": "0x00E02D30",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "DarkwoodAssassinSpawn",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00F6A",
+          "addBindingCall": "0x00E00FA6",
+          "factoryStore": "0x00E00F91",
+          "factory": "0x00E02D70",
+          "vtable": "0x012DF594",
+          "functions": {
+            "destructor": "0x00E02E30",
+            "Main": "0x00E02E50",
+            "Init": "0x00E02E20",
+            "GetParentScript": "0x00E02E10",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "DarkwoodBalverineTrader",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E00FCE",
+          "addBindingCall": "0x00E0100A",
+          "factoryStore": "0x00E00FF5",
+          "factory": "0x00E033A0",
+          "vtable": "0x012DF5C4",
+          "functions": {
+            "destructor": "0x00E03460",
+            "Main": "0x00E03480",
+            "Init": "0x00E03450",
+            "GetParentScript": "0x00E03440",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "RockTrollTrigger",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E01032",
+          "addBindingCall": "0x00E0106E",
+          "factoryStore": "0x00E01059",
+          "factory": "0x00E03970",
+          "vtable": "0x012DF634",
+          "functions": {
+            "destructor": "0x00E03A30",
+            "Main": "0x00E0AD40",
+            "Init": "0x00E03A20",
+            "GetParentScript": "0x00E03A10",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "DarkwoodRockTroll",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E01096",
+          "addBindingCall": "0x00E010D5",
+          "factoryStore": "0x00E010C0",
+          "factory": "0x00E03A50",
+          "vtable": "0x012DF650",
+          "functions": {
+            "destructor": "0x00E03D10",
+            "Main": "0x00E03D30",
+            "Init": "0x00E03BF0",
+            "GetParentScript": "0x00E03AF0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00E03B00",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "MagicBarrier",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E010FF",
+          "addBindingCall": "0x00E0113E",
+          "factoryStore": "0x00E01129",
+          "factory": "0x00E03E80",
+          "vtable": "0x012DF6E8",
+          "functions": {
+            "destructor": "0x00E03F50",
+            "Main": "0x00E03F70",
+            "Init": "0x00E03F30",
+            "GetParentScript": "0x00E03F20",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "TE_BanditLeader",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E01169",
+          "addBindingCall": "0x00E011A8",
+          "factoryStore": "0x00E01193",
+          "factory": "0x00E03500",
+          "vtable": "0x012DF5E0",
+          "functions": {
+            "destructor": "0x00E035C0",
+            "Main": "0x00E035E0",
+            "Init": "0x00E035B0",
+            "GetParentScript": "0x00E035A0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BanditCronies",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E011D3",
+          "addBindingCall": "0x00E01212",
+          "factoryStore": "0x00E011FD",
+          "factory": "0x00E03730",
+          "vtable": "0x012DF618",
+          "functions": {
+            "destructor": "0x00E037F0",
+            "Main": "0x00E03810",
+            "Init": "0x00E037E0",
+            "GetParentScript": "0x00E037D0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "DW5_Balv",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E0123D",
+          "addBindingCall": "0x00E0127C",
+          "factoryStore": "0x00E01267",
+          "factory": "0x00E04890",
+          "vtable": "0x012DF72C",
+          "functions": {
+            "destructor": "0x00E04950",
+            "Main": "0x00E04970",
+            "Init": "0x00E04940",
+            "GetParentScript": "0x00E04930",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "DW5_Bandit",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E012A7",
+          "addBindingCall": "0x00E012E6",
+          "factoryStore": "0x00E012D1",
+          "factory": "0x00E046F0",
+          "vtable": "0x012DF710",
+          "functions": {
+            "destructor": "0x00E047B0",
+            "Main": "0x00E047D0",
+            "Init": "0x00E047A0",
+            "GetParentScript": "0x00E04790",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "EndTrader",
+          "registrationFunction": "0x00E00DB0",
+          "namePush": "0x00E01311",
+          "addBindingCall": "0x00E01354",
+          "factoryStore": "0x00E0133B",
+          "factory": "0x00E04A30",
+          "vtable": "0x012DF748",
+          "functions": {
+            "destructor": "0x00E04B30",
+            "Main": "0x00E055B0",
+            "Init": "0x00E04B50",
+            "GetParentScript": "0x00E04AD0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00E04AE0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00E0AF60"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E00DB0",
+      "store": "0x00E0143A",
+      "body": "0x00E06050",
+      "name": "WatchForSurprisingBalverines",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E00DB0",
+      "store": "0x00E014B8",
+      "body": "0x00E06440",
+      "name": "WatchForMissionRules",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E04BD0",
+      "store": "0x00E04E8F",
+      "body": "0x00E04F10",
+      "name": "WatchForPickpocketing",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E07640",
+      "store": "0x00E0A44E",
+      "body": "0x00E0A820",
+      "name": "TurnToBalv",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

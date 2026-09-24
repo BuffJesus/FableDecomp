@@ -1,0 +1,73 @@
+diff --git a/FableScriptExtender/GameInterface.h b/FableScriptExtender/GameInterface.h
+--- a/FableScriptExtender/GameInterface.h
++++ b/FableScriptExtender/GameInterface.h
+@@ -1613,13 +1613,14 @@
+ typedef void(__thiscall* tSetCombatNearbyEnemyFleeingBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing, float range);
+ typedef float(__thiscall* tGetCombatNearbyEnemyFleeingBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+ typedef void(__thiscall* tResetCombatNearbyEnemyFleeingBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+-typedef void(__thiscall* tSetCombatNearbyBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing, float range);
++// Retail 0x008A54E0/56C0/57B0/5A70 consume retained 12-byte CScriptThing values.
++typedef void(__thiscall* tSetCombatNearbyBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing thing, float range);
+ typedef float(__thiscall* tGetCombatNearbyBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+-typedef void(__thiscall* tResetCombatNearbyBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+-typedef void(__thiscall* tSetStealStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing, bool bSteal);
++typedef void(__thiscall* tResetCombatNearbyBreakOffRange)(CGameScriptInterfaceBase* This, CScriptThing thing);
++typedef void(__thiscall* tSetStealStealableItems)(CGameScriptInterfaceBase* This, CScriptThing thing, bool bSteal);
+ typedef bool(__thiscall* tGetStealStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+ typedef void(__thiscall* tResetStealStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+-typedef void(__thiscall* tSetRecoverStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing, bool bRecover);
++typedef void(__thiscall* tSetRecoverStealableItems)(CGameScriptInterfaceBase* This, CScriptThing thing, bool bRecover);
+ typedef bool(__thiscall* tGetRecoverStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+ typedef void(__thiscall* tResetRecoverStealableItems)(CGameScriptInterfaceBase* This, CScriptThing* pThing);
+ typedef void(__thiscall* tSetTakeStealableItemToRandomDestination)(CGameScriptInterfaceBase* This, CScriptThing* pThing, bool bRandom);
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -11493,7 +11493,10 @@
+         Log("!!! ERROR: SetCombatNearbyBreakOffRange - pThing is null!");
+         return;
+     }
+-    SetCombatNearbyBreakOffRange_API(m_pGameInterface, pThing, range);
++    // Retail destroys the consumed copy; preserve the Lua-owned reference.
++    CScriptThing retainedCopy = *pThing;
++    if (retainedCopy.pImp.Info) retainedCopy.pImp.Info->RefCount++;
++    SetCombatNearbyBreakOffRange_API(m_pGameInterface, retainedCopy, range);
+ }
+ 
+ float LuaQuestState::GetCombatNearbyBreakOffRange(const std::shared_ptr<CScriptThing>& spThing) {
+@@ -11519,7 +11522,10 @@
+         Log("!!! ERROR: ResetCombatNearbyBreakOffRange - pThing is null!");
+         return;
+     }
+-    ResetCombatNearbyBreakOffRange_API(m_pGameInterface, pThing);
++    // Retail destroys the consumed copy; preserve the Lua-owned reference.
++    CScriptThing retainedCopy = *pThing;
++    if (retainedCopy.pImp.Info) retainedCopy.pImp.Info->RefCount++;
++    ResetCombatNearbyBreakOffRange_API(m_pGameInterface, retainedCopy);
+ }
+ 
+ void LuaQuestState::SetStealStealableItems(const std::shared_ptr<CScriptThing>& spThing, bool bSteal) {
+@@ -11532,7 +11538,10 @@
+         Log("!!! ERROR: SetStealStealableItems - pThing is null!");
+         return;
+     }
+-    SetStealStealableItems_API(m_pGameInterface, pThing, bSteal);
++    // Retail destroys the consumed copy; preserve the Lua-owned reference.
++    CScriptThing retainedCopy = *pThing;
++    if (retainedCopy.pImp.Info) retainedCopy.pImp.Info->RefCount++;
++    SetStealStealableItems_API(m_pGameInterface, retainedCopy, bSteal);
+ }
+ 
+ bool LuaQuestState::GetStealStealableItems(const std::shared_ptr<CScriptThing>& spThing) {
+@@ -11571,7 +11580,10 @@
+         Log("!!! ERROR: SetRecoverStealableItems - pThing is null!");
+         return;
+     }
+-    SetRecoverStealableItems_API(m_pGameInterface, pThing, bRecover);
++    // Retail destroys the consumed copy; preserve the Lua-owned reference.
++    CScriptThing retainedCopy = *pThing;
++    if (retainedCopy.pImp.Info) retainedCopy.pImp.Info->RefCount++;
++    SetRecoverStealableItems_API(m_pGameInterface, retainedCopy, bRecover);
+ }
+ 
+ bool LuaQuestState::GetRecoverStealableItems(const std::shared_ptr<CScriptThing>& spThing) {

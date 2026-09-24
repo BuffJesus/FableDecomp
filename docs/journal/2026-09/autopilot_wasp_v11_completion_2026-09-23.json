@@ -1,0 +1,7 @@
+[
+  {
+    "id": "wasp_native_completion",
+    "status": "PASS",
+    "detail": "expected /SetQuestAsCompleted: ENTER name='Q_WaspBoss'/ seen after 1 send(s)"
+  }
+]

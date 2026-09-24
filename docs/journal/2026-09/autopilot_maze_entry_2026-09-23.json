@@ -1,0 +1,27 @@
+[
+  {
+    "id": "sister_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen"
+  },
+  {
+    "id": "sister_prerequisite",
+    "status": "PASS",
+    "detail": "expected /= MAZE_READY/ seen"
+  },
+  {
+    "id": "sister_scene_idle",
+    "status": "PASS",
+    "detail": "expected /= SCENE_IDLE/ seen after 1 send(s)"
+  },
+  {
+    "id": "sister_region",
+    "status": "PASS",
+    "detail": "expected /\\[RegionDiag\\]|SetAsLoadingRegion/ seen"
+  },
+  {
+    "id": "sister_time_of_day",
+    "status": "PASS",
+    "detail": "expected /= SLUMS_LOADED/ seen after 1 send(s)"
+  }
+]

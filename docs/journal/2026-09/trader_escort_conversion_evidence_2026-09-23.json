@@ -1,0 +1,86 @@
+{
+  "unit": "trader_escort",
+  "range": [
+    "0x00E006D0",
+    "0x00E0B020"
+  ],
+  "evidenceHashes": {
+    "refs\\script_recovery\\trader_escort\\inventory.json": "a6c891871562c63e44772c69a6375617f14412f5d10e78f71c368757e802ccfd",
+    "refs\\script_recovery\\trader_escort\\translation_unit.json": "f9f7d3cd346e2f190afdaa4733bc670922cd1fa1bd161f3667c7343f6792494a",
+    "refs\\script_recovery\\trader_escort\\translation_unit_typed.json": "20df0aed80bcac64e7d9a43f410931040f249437bbd539c44417b56744387da6",
+    "refs\\script_recovery\\trader_escort\\typing_spec.json": "c72d391a39b794a9987851ee8cfdd561dab64f81a6b267613e613637cccc0873",
+    "refs\\script_recovery\\trader_escort\\units\\Q_TraderEscort.json": "6c9c5c29e1f3bcde178499db460a456173d694840aeda3ff1465ec036620c3f5",
+    "refs\\script_recovery\\trader_escort\\pdb\\Ego_r-pdb-locals.tsv": "1443089353dd7ad03b8ef66af2ea114a5d532bc67566f21b147dd3f9a425e00e"
+  },
+  "draft": {
+    "owners": 15,
+    "functions": 65,
+    "missing": 0,
+    "functionSyntaxPassed": 63,
+    "fileSyntaxPassed": 13,
+    "fileSyntaxChecked": 16,
+    "todo": 319
+  },
+  "readableSyntax": {
+    "runtime": "Lua 5.4",
+    "ok": false,
+    "checked": 17,
+    "passed": 14,
+    "errors": [
+      {
+        "path": "FSE/TraderEscort/Entities/DarkwoodTrader.lua",
+        "line": 176,
+        "message": "FSE/TraderEscort/Entities/DarkwoodTrader.lua:176: unexpected symbol near '&'"
+      },
+      {
+        "path": "FSE/TraderEscort/TraderEscort.lua",
+        "line": 561,
+        "message": "FSE/TraderEscort/TraderEscort.lua:561: unexpected symbol near '&'"
+      },
+      {
+        "path": "FSE/TraderEscort/native_quest_helpers.lua",
+        "line": 26,
+        "message": "FSE/TraderEscort/native_quest_helpers.lua:26: unexpected symbol near '&'"
+      }
+    ]
+  },
+  "focusedTests": 13,
+  "registration": "disabled",
+  "livePlaytest": false,
+  "bundleChanged": false,
+  "saveFilesTouched": false,
+  "fullSuite": {
+    "status": "cancelled",
+    "reason": "Replaced broad pre-existing-failure suite with focused inventory/cleanup tests and byte-for-byte regeneration comparison of five established units. No full-suite result claimed."
+  },
+  "compatibility": {
+    "orchard_farm": {
+      "files": 11,
+      "changed": []
+    },
+    "wasp_boss": {
+      "files": 10,
+      "changed": []
+    },
+    "guardian_sister_info": {
+      "files": 4,
+      "changed": []
+    },
+    "trader_conflict": {
+      "files": 15,
+      "changed": []
+    },
+    "guild_training": {
+      "files": 37,
+      "changed": [
+        "FSE\\GuildTrainingWoodsDeparture\\GuildTrainingWoodsDeparture.lua",
+        "FSE\\GuildTrainingWoodsWill\\GuildTrainingWoodsWill.lua"
+      ]
+    }
+  },
+  "guildControl": {
+    "comparedFiles": 6,
+    "changedWithOldCleanup": []
+  },
+  "compatibilityNote": "75/77 generated Lua files match saved drafts. Two Guild files omit empty guards from a pre-existing generator change; both reproduce identically with HEAD cleanup implementation. No new compatibility output differences attributed to this pass."
+}

@@ -10,7 +10,7 @@ local function __native_all_dead(list)
 end
 
 function Main(quest)
-    local pCVar4, pQuestName, r1
+    local pQuestName, r1
     local alive = true
     quest:SetTimer(quest:GetStateInt("ReachedWaspHelper"), 0x78)
     local bVar2 = quest:IsRegionLoaded("LookoutPoint")
@@ -61,14 +61,7 @@ function Main(quest)
             quest:CreateThread("DoMission")  -- native thread body CQ_WaspBossScript::DoMission: lift it as function DoMission(quest)
             if not bVar2 then
             end
-            -- TODO(native): bVar2 = pCVar4 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;
-            if bVar2 then
-                pCVar4 = 0x0
-            else
-                -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(pCVar4,&xStack_8,0);
-                -- TODO(native): *(code **)(pCVar4 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCutscene;
-                -- TODO(native): *(CQ_GuildTrainingScript **)(pCVar4 + 0x38) = this;
-            end
+            quest:CreateThread("WatchForCutscene")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCutscene: lift it as function WatchForCutscene(quest)
             if not bVar2 then
             end
         end
@@ -168,7 +161,7 @@ function WatchForTermination(quest)
 end
 
 function DoMission(quest)
-    local bVar11, bVar6, cVar7, iVar12, pCVar10, pCVar8, pCVar9, piVar2, r1, this_00, this_01, uVar3, v_stk_34, xStack_18, xStack_24, x_stk_30
+    local append_xStack_24_0, append_xStack_24_1, bVar6, cVar7, iVar12, pCVar10, pCVar8, pCVar9, r1, v_stk_34, xStack_24, xStack_44, x_stk_30
     local alive = true
     v_stk_34 = 0
     quest:AddRumourCategory("Post waspboss killed")
@@ -183,30 +176,15 @@ function DoMission(quest)
             x_stk_30 = nil
             goto LAB_00e12a9c
         end
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe3c),(int)&xStack_44);
+        xStack_44 = quest:ReadGlobalGameDataString(0xe3c)
         pCVar8 = tostring(iVar12)
         pCVar8 = ("QueenDepositPos" .. pCVar8)
         pCVar9 = quest:GetThingWithScriptName(pCVar8)
-        -- TODO(native): this_00 = *(this + 0x40)
-        this_00 = nil --[[unresolved native value]]
-        -- TODO(native): xStack_40 = *this_00;
         bVar6 = false
-        -- TODO(native): pCVar10 = (**(*pCVar9 + 0x18))(pCVar9)
-        pCVar10 = nil --[[unresolved native value]]
-        -- TODO(native): pCVar9 = (**(xStack_40 + 0x16c))(this_00,xStack_18,&xStack_44,pCVar10,"HornetDrone",bVar6)
-        pCVar9 = nil --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar9 + 0x8)
-        piVar2 = nil --[[unresolved native value]]
-        -- TODO(native): uVar3 = *(pCVar9 + 0x4)
-        uVar3 = nil --[[unresolved native value]]
-        if x_stk_30 ~= piVar2 then
-            x_stk_30 = uVar3
-            x_stk_30 = piVar2
-            if piVar2 ~= nil then
-                -- TODO(native): *piVar2 = *piVar2 + 1;
-            end
-        end
-        xStack_18 = nil
+        pCVar10 = pCVar9:GetPos()
+        pCVar9 = quest:CreateCreature(xStack_44, pCVar10, "HornetDrone")
+        x_stk_30 = pCVar9
+        pCVar9 = nil
         pCVar9 = nil
         iVar12 = iVar12 + 1
     until not (iVar12 < 6)
@@ -218,8 +196,10 @@ function DoMission(quest)
         return
     end
     xStack_24 = quest:GetAllThingsWithScriptName("HornetDrone")
-    xStack_24 = quest:GetAllThingsWithScriptName("WaspChaser")
-    xStack_24 = quest:GetAllThingsWithScriptName("WaspAttacker")
+    append_xStack_24_0 = quest:GetAllThingsWithScriptName("WaspChaser")
+    for _, appendedThing in ipairs(append_xStack_24_0) do xStack_24[#xStack_24 + 1] = appendedThing end
+    append_xStack_24_1 = quest:GetAllThingsWithScriptName("WaspAttacker")
+    for _, appendedThing in ipairs(append_xStack_24_1) do xStack_24[#xStack_24 + 1] = appendedThing end
     helper_E12F20(quest)
     iVar12 = __native_all_dead(xStack_24)
     cVar7 = iVar12
@@ -229,24 +209,13 @@ function DoMission(quest)
             bVar6 = not alive
             if not bVar6 then
                 quest:Pause(4.0)
-                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe40),(int)&xStack_44);
+                xStack_44 = quest:ReadGlobalGameDataString(0xe40)
                 pCVar9 = quest:GetThingWithScriptName("MK_WQ_STARTING")
                 bVar6 = false
                 pCVar10 = pCVar9:GetPos()
-                r1 = quest:CreateCreature("QueenHornet", pCVar10, xStack_24)
+                r1 = quest:CreateCreature(xStack_44, pCVar10, "QueenHornet")
                 quest:SetStateBool("QueenHornetAttacks", true)
-                if this_01 == nil then
-                    this_01 = 0x0
-                    bVar11 = v_stk_34
-                else
-                    -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,&xStack_40,0);
-                    -- TODO(native): *(code **)(this_01 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue;
-                    -- TODO(native): *(CQ_WaspBossScript **)(this_01 + 0x38) = this;
-                    bVar11 = 1
-                end
-                -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,this_01,sectionName);
-                if (bVar11 & 1) ~= 0 then
-                end
+                quest:CreateThread("GuildmasterHelp")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue: lift it as function GuildmasterHelp(quest)
                 alive = quest:NewScriptFrame()
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -290,8 +259,9 @@ function WatchForCutscene(quest)
                 quest:PauseAllNonScriptedEntities(true)
                 resources:RunMacro("CS_WASPBOSS_QUEEN", xStack_38, false, true)
                 bVar5 = true
+                pCVar6 = r1
                 pThing = quest:GetHero()
-                quest:EntitySetFacingAngleTowardsThing(pThing, nil --[[missing]], bVar5)
+                quest:EntitySetFacingAngleTowardsThing(pThing, pCVar6, bVar5)
                 quest:CameraDefault()
                 quest:SetStateBool("CutsceneFinished", true)
                 quest:PauseAllNonScriptedEntities(false)
@@ -437,21 +407,11 @@ function helper_E12F20(quest)
 end
 
 function helper_E13310(quest)
-    local bVar3, bVar4, cVar8, iVar6, pCVar5, pQuestName, piVar1, piVar2, xStack_18
+    local bVar3, bVar4, cVar8, iVar6, pCVar5, pQuestName, xStack_18
     local alive = true
     xStack_18 = nil
     pCVar5 = quest:GetThingWithScriptName("QueenHornet")
-    -- TODO(native): piVar1 = *(pCVar5 + 0x8)
-    piVar1 = nil --[[unresolved native value]]
-    -- TODO(native): piVar2 = *(pCVar5 + 0x4)
-    piVar2 = nil --[[unresolved native value]]
-    if xStack_18 ~= piVar1 then
-        xStack_18 = piVar2
-        xStack_18 = piVar1
-        if piVar1 ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + 1;
-        end
-    end
+    xStack_18 = pCVar5
     pCVar5 = nil
     quest:DisplayQuestInfo(true)
     cVar8 = quest:GetStateBool("QueenHornetAttacks")
@@ -517,20 +477,10 @@ function helper_E13310(quest)
             bVar3 = not alive
             if bVar3 then break end
             pCVar5 = quest:GetThingWithScriptName("QueenHornet")
-            -- TODO(native): piVar1 = *(pCVar5 + 0x8)
-            piVar1 = nil --[[unresolved native value]]
-            -- TODO(native): piVar2 = *(pCVar5 + 0x4)
-            piVar2 = nil --[[unresolved native value]]
-            if xStack_18 ~= piVar1 then
-                xStack_18 = piVar2
-                xStack_18 = piVar1
-                if piVar1 ~= nil then
-                    -- TODO(native): *piVar1 = *piVar1 + 1;
-                end
-            end
+            xStack_18 = pCVar5
             pCVar5 = nil
             quest:DisplayQuestInfo(true)
-            iVar6 = quest:AddQuestInfoBarHealth(nil --[[missing]], {R = 255, G = 255, B = 0, A = 255}, xStack_18, 1.0)
+            iVar6 = quest:AddQuestInfoBarHealth(xStack_18, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
         end
     end
     ::LAB_00e135bd::

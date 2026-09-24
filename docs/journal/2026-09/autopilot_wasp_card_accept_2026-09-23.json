@@ -1,0 +1,17 @@
+[
+  {
+    "id": "wasp_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_card_position",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = WASP_CARD_REACHED/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_accept_card",
+    "status": "FAIL",
+    "detail": "channel: [Autopilot] TIMEOUT after 120.0s (is the game running with this bundle? is a script advancing frames?)"
+  }
+]

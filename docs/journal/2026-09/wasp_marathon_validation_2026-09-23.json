@@ -1,0 +1,388 @@
+{
+  "focusedTests": {
+    "tests": 96,
+    "passed": true
+  },
+  "isolatedUnitCount": 16,
+  "smokeComparisons": {
+    "guild_training": {
+      "draft": {
+        "before": {
+          "files": 37,
+          "problems": 0
+        },
+        "after": {
+          "files": 37,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 37,
+          "problems": 0
+        },
+        "after": {
+          "files": 37,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "wasp_boss": {
+      "draft": {
+        "before": {
+          "files": 10,
+          "problems": 0
+        },
+        "after": {
+          "files": 10,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 10,
+          "problems": 0
+        },
+        "after": {
+          "files": 10,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "guardian_sister_info": {
+      "draft": {
+        "before": {
+          "files": 4,
+          "problems": 0
+        },
+        "after": {
+          "files": 4,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 4,
+          "problems": 0
+        },
+        "after": {
+          "files": 4,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "tour_guide": {
+      "draft": {
+        "before": {
+          "files": 3,
+          "problems": 3
+        },
+        "after": {
+          "files": 3,
+          "problems": 3
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 3,
+          "problems": 3
+        },
+        "after": {
+          "files": 3,
+          "problems": 3
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "gameflow_assistance": {
+      "draft": {
+        "before": {
+          "files": 1,
+          "problems": 1
+        },
+        "after": {
+          "files": 1,
+          "problems": 1
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "guild_master_village": {
+      "draft": {
+        "before": {
+          "files": 2,
+          "problems": 3
+        },
+        "after": {
+          "files": 2,
+          "problems": 3
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "beggar_and_child": {
+      "draft": {
+        "before": {
+          "files": 3,
+          "problems": 3
+        },
+        "after": {
+          "files": 3,
+          "problems": 3
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "book_collecting": {
+      "draft": {
+        "before": {
+          "files": 2,
+          "problems": 6
+        },
+        "after": {
+          "files": 2,
+          "problems": 6
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "chicken_kicking": {
+      "draft": {
+        "before": {
+          "files": 5,
+          "problems": 7
+        },
+        "after": {
+          "files": 5,
+          "problems": 7
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "bordello": {
+      "draft": {
+        "before": {
+          "files": 9,
+          "problems": 14
+        },
+        "after": {
+          "files": 9,
+          "problems": 14
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "sick_child": {
+      "draft": {
+        "before": {
+          "files": 13,
+          "problems": 11
+        },
+        "after": {
+          "files": 13,
+          "problems": 10
+        },
+        "newErrors": [],
+        "removedErrors": [
+          [
+            "V_SickChild/Entities/MansLover.lua",
+            "load_error",
+            "MansLover.lua:LINE: 'then' expected near '['"
+          ]
+        ]
+      }
+    },
+    "picnic_after_wasp": {
+      "draft": {
+        "before": {
+          "files": 3,
+          "problems": 0
+        },
+        "after": {
+          "files": 3,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "oakvale_revisited": {
+      "draft": {
+        "before": {
+          "files": 1,
+          "problems": 2
+        },
+        "after": {
+          "files": 1,
+          "problems": 2
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "orchard_farm": {
+      "draft": {
+        "before": {
+          "files": 11,
+          "problems": 0
+        },
+        "after": {
+          "files": 11,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 11,
+          "problems": 0
+        },
+        "after": {
+          "files": 11,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "trader_conflict": {
+      "draft": {
+        "before": {
+          "files": 15,
+          "problems": 0
+        },
+        "after": {
+          "files": 15,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 15,
+          "problems": 0
+        },
+        "after": {
+          "files": 15,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    },
+    "gameflow": {
+      "draft": {
+        "before": {
+          "files": 1,
+          "problems": 0
+        },
+        "after": {
+          "files": 1,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      },
+      "readable": {
+        "before": {
+          "files": 1,
+          "problems": 0
+        },
+        "after": {
+          "files": 1,
+          "problems": 0
+        },
+        "newErrors": [],
+        "removedErrors": []
+      }
+    }
+  },
+  "live": {
+    "archive": "work\\ab_runs\\v11-20260923-123820\\FableScriptExtender.log",
+    "assistance": [
+      "hero teleport",
+      "hero health replenishment",
+      "real melee/bow inputs"
+    ],
+    "forcedQuestOutcomes": false,
+    "combatObservations": [
+      "MINION ranged=false phase=5 health=24.0 hero=1.0",
+      "MINION ranged=false phase=5 health=24.0 hero=0.94999998807907",
+      "MINION ranged=false phase=5 health=24.0 hero=0.89999997615814",
+      "MINION ranged=false phase=5 health=24.0 hero=0.89999997615814",
+      "MINION ranged=false phase=5 health=24.0 hero=0.80000001192093",
+      "MINION ranged=false phase=5 health=24.0 hero=0.80000001192093",
+      "QUEEN ranged=false phase=6 health=24.0 hero=1.0",
+      "QUEEN ranged=true phase=6 health=13.0 hero=0.94999998807907",
+      "QUEEN ranged=true phase=6 health=2.0 hero=0.89999997615814",
+      "QUEEN ranged=true phase=6 health=0.0 hero=0.89999997615814",
+      "DONE"
+    ],
+    "events": [
+      "[WaspBoss/WaspBoss]     [State] SetStateBool 'WaspBoss/WaspBoss:MissionSucceeded' = false",
+      "[RetailMovie] start scope=561337764 id=3 name=",
+      "[RetailMovie] destroy scope=561337764 id=3",
+      "[RetailMovie] start scope=561337764 id=7 name=",
+      "[RetailMovie] destroy scope=561337764 id=7",
+      "[RetailMovie] start scope=561337764 id=19 name=",
+      "[RetailMovie] destroy scope=561337764 id=19",
+      "[RetailMovie] start scope=561337764 id=22 name=",
+      "[RetailMovie] destroy scope=561337764 id=22",
+      "[WaspBoss/WaspBoss]     [State] SetStateBool 'WaspBoss/WaspBoss:MissionSucceeded' = true",
+      "    [C++] SetQuestAsCompleted: ENTER name='Q_WaspBoss' flags=1,0,0. PActiveThread: 0x00000000",
+      "    [C++] SetQuestAsCompleted: EXIT. PActiveThread: 0x00000000"
+    ],
+    "runtimeErrors": 0,
+    "handoff": {
+      "PostSavePosition": 200,
+      "IsQuestCompleted_Q_WaspBoss": false,
+      "nextQuestVerified": false
+    }
+  },
+  "restoredSaveHashes": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "fullSuite": {
+    "baseline": {
+      "tests": 1677,
+      "seconds": 1821.176,
+      "failures": 403,
+      "errors": 45
+    },
+    "current": {
+      "tests": 1689,
+      "seconds": 2266.572,
+      "failures": 403,
+      "errors": 45
+    },
+    "newFailures": [],
+    "removedFailures": [],
+    "sameFailureIdentities": true,
+    "scopeNote": "Full suite started before final empty-guard cleanup; final focused checks and 16-unit isolated generation include it."
+  }
+}

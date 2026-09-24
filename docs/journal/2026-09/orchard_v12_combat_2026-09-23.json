@@ -1,0 +1,234 @@
+[
+  {
+    "step": 0,
+    "reply": [
+      "[Autopilot] batch 1",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 1,
+    "reply": [
+      "[Autopilot] batch 2",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 2,
+    "reply": [
+      "[Autopilot] batch 3",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 3,
+    "reply": [
+      "[Autopilot] batch 4",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 4,
+    "reply": [
+      "[Autopilot] batch 5",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 5,
+    "reply": [
+      "[Autopilot] batch 6",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=17.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 6,
+    "reply": [
+      "[Autopilot] batch 7",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=3 health=4.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 7,
+    "reply": [
+      "[Autopilot] batch 8",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=2 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 8,
+    "reply": [
+      "[Autopilot] batch 9",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=2 health=16.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 9,
+    "reply": [
+      "[Autopilot] batch 10",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=2 health=10.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 10,
+    "reply": [
+      "[Autopilot] batch 11",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=1 health=10.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 11,
+    "reply": [
+      "[Autopilot] batch 12",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=1 health=10.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 12,
+    "reply": [
+      "[Autopilot] batch 13",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=0 crates=3 members=1 health=2.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 13,
+    "reply": [
+      "[Autopilot] batch 14",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = WAIT waves=0 crates=3 members=0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 14,
+    "reply": [
+      "[Autopilot] batch 15",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = WAIT waves=0 crates=3 members=0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 15,
+    "reply": [
+      "[Autopilot] batch 16",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=2 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 16,
+    "reply": [
+      "[Autopilot] batch 17",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 17,
+    "reply": [
+      "[Autopilot] batch 18",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=16.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 18,
+    "reply": [
+      "[Autopilot] batch 19",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=10.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 19,
+    "reply": [
+      "[Autopilot] batch 20",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=6.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 20,
+    "reply": [
+      "[Autopilot] batch 21",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=6.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 21,
+    "reply": [
+      "[Autopilot] batch 22",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=3 health=6.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 22,
+    "reply": [
+      "[Autopilot] batch 23",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=2 health=3.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 23,
+    "reply": [
+      "[Autopilot] batch 24",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=1 health=8.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 24,
+    "reply": [
+      "[Autopilot] batch 25",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=1 crates=3 members=1 health=8.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 25,
+    "reply": [
+      "[Autopilot] batch 26",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = WAIT waves=1 crates=3 members=0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 26,
+    "reply": [
+      "[Autopilot] batch 27",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = WAIT waves=1 crates=3 members=0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 27,
+    "reply": [
+      "[Autopilot] batch 28",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = BANDIT waves=2 crates=3 members=1 health=20.0 ranged=false",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 28,
+    "reply": [
+      "[Autopilot] batch 29",
+      "[Autopilot] eval eval OrchardFarmRaid: (function() if quest:GetStateInt('MissionFailed')~=0 then return 'FAILED' end if quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end if quest:GetStateBool('WhisperSpawned') then return 'WHISPER' end if not quest:GetStateBool('DoneIntroduction') then return 'INTRO' end local h=quest:GetHero(); if quest:GetHeroHealthPercentage()<0.7 then quest:ChangeHeroHealthBy(1000,false,false) end local target=nil; for _,b in ipairs(quest:GetAllThingsWithScriptName('BanditTeamMember')) do if b:IsAlive() then target=b; break end end local status='waves='..quest:GetStateInt('BanditWavesSpawned')..' crates='..quest:GetStateInt('CrateCount')..' members='..quest:GetStateInt('Teams_1_MemberCount'); if not target then return 'WAIT '..status end if quest:GetDistanceBetweenThings(h,target)>3 then local p=target:GetPos(); p.x=p.x+1; p.z=p.z+0.5; quest:EntityTeleportToPosition(h,p,0,true,true) end quest:EntitySetFacingAngleTowardsThing(h,target,true); return 'BANDIT '..status..' health='..quest:GetHealth(target)..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h)) end)() = INTRO",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  }
+]

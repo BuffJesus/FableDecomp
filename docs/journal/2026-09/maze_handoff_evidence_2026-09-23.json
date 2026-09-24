@@ -1,0 +1,57 @@
+{
+  "bundle": "v11",
+  "questLuaOrDllChanged": false,
+  "forcedQuestOutcomes": false,
+  "validation": {
+    "entrySteps": 5,
+    "handoffSteps": 3,
+    "reloadSteps": 4,
+    "harnessTests": 17
+  },
+  "protectedSaveRestored": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "checkpoint": {
+    "profile": "adult_maze_completed_2026-09-23",
+    "hashes": {
+      "AutoSave": "f028b8512aea78eb7905b2fea46c2674b072caa226defcf5bc2eda62911c0f44",
+      "AutoSave.qs": "075ed756a6d9c70ca421cfb2afcc4bdf3cbcd8dd09906115bcfdf4707adc537f"
+    }
+  },
+  "archives": {
+    "conversation": {
+      "path": "work/ab_runs/v11-20260923-170540/FableScriptExtender.log",
+      "sha256": "48367e3e3097b3c208d59fd67423d3ef230888bc660194d6df679aa8e3c8a4f4",
+      "luaRuntimeErrors": 0,
+      "events": [
+        "    [C++] SetQuestAsCompleted: ENTER name='QS_GuardianSisterInfo' flags=0,0,0. PActiveThread: 0x00000000",
+        "[LUAGameflow/LUAGameflow] LUAGameflow: Transitioning into stage 400",
+        "[Autopilot] eval eval LUAGameflow: (quest:IsQuestCompleted('QS_GuardianSisterInfo')) and 'MAZE_COMPLETED' or 'HANDOFF_PENDING' = MAZE_COMPLETED",
+        "[Autopilot] eval eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 400) and 'ORCHARD_STAGE' or 'HANDOFF_PENDING' = ORCHARD_STAGE",
+        "[Autopilot] eval eval LUAGameflow: (quest:IsQuestCompleted('QS_GuardianSisterInfo')) and 'MAZE_COMPLETED' or 'HANDOFF_PENDING' = MAZE_COMPLETED",
+        "[Autopilot] eval eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 400) and 'ORCHARD_STAGE' or 'HANDOFF_PENDING' = ORCHARD_STAGE",
+        "[Autopilot] eval eval LUAGameflow: quest:GetStateBool('CoreQuestWaiting') and 'ORCHARD_WAITING' or 'HANDOFF_PENDING' = ORCHARD_WAITING"
+      ]
+    },
+    "reload": {
+      "path": "work/ab_runs/v11-20260923-170724/FableScriptExtender.log",
+      "sha256": "5e4f5fe85adcc93fdd5209bce93dc205740abff5d53bb3d9e8adc55e753414db",
+      "luaRuntimeErrors": 0,
+      "events": [
+        "[LUAGameflow/LUAGameflow] LUAGameflow: Transitioning into stage 400",
+        "[Autopilot] eval eval LUAGameflow: (quest:IsQuestCompleted('QS_GuardianSisterInfo')) and 'MAZE_COMPLETED' or 'HANDOFF_PENDING' = MAZE_COMPLETED",
+        "[Autopilot] eval eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 400) and 'ORCHARD_STAGE' or 'HANDOFF_PENDING' = ORCHARD_STAGE",
+        "[Autopilot] eval eval LUAGameflow: quest:GetStateBool('CoreQuestWaiting') and 'ORCHARD_WAITING' or 'HANDOFF_PENDING' = ORCHARD_WAITING"
+      ]
+    }
+  },
+  "limits": [
+    "Assisted travel and manual interaction recovery",
+    "Combined revised entry checklist not replayed end to end",
+    "Orchard cards inferred from verified stage-400 transition and gameflow source; no direct card UI check",
+    "Arrival-movie rendering was incomplete",
+    "Hit-reaction and resource-alias paths remain unaudited"
+  ]
+}

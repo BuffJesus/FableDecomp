@@ -1,0 +1,47 @@
+{
+  "archive": "work\\ab_runs\\v10-20260923-082058",
+  "lua_runtime_errors": 0,
+  "channel_diagnostics": [
+    {
+      "line": 91,
+      "text": "[Autopilot] error: no live quest 'WaspBoss' for 'eval WaspBoss: quest:GetStateBool('QuestStartScreened') and 'WASP_INTRO_FINISHED' or 'WASP_INTRO_PENDING''"
+    }
+  ],
+  "events": [
+    {
+      "line": 120,
+      "text": "[WaspBoss/WaspBoss] GoToMapSlotRetailTransition: slot 1 target (3296,3552,39) flags=(p3=true, force=true, p5=true)."
+    },
+    {
+      "line": 207,
+      "text": "[RetailMovie] start scope=562111468 id=3 name=",
+      "caller": [
+        "...e-v10/NoviCompatibility/WaspBoss/Entities/WaspHelper.lua:62: in function <...e-v10/NoviCompatibility/WaspBoss/Entities/WaspHelper.lua:18>"
+      ]
+    },
+    {
+      "line": 223,
+      "text": "[RetailMovie] destroy scope=562111468 id=3"
+    },
+    {
+      "line": 232,
+      "text": "[WaspBoss/WaspBoss] GoToMapSlotRetailTransition: slot 2 target (3168,3568,33.8) flags=(p3=true, force=true, p5=true)."
+    },
+    {
+      "line": 343,
+      "text": "[RetailMovie] start scope=562111468 id=7 name=",
+      "caller": [
+        "...al-candidate-v10/NoviCompatibility/WaspBoss/WaspBoss.lua:252: in global 'WaspIntro'",
+        "...al-candidate-v10/NoviCompatibility/WaspBoss/WaspBoss.lua:141: in function <...al-candidate-v10/NoviCompatibility/WaspBoss/WaspBoss.lua:108>"
+      ]
+    },
+    {
+      "line": 746,
+      "text": "[RetailMovie] destroy scope=562111468 id=7"
+    },
+    {
+      "line": 756,
+      "text": "[Autopilot] eval eval WaspBoss: quest:GetStateBool('QuestStartScreened') and 'WASP_INTRO_FINISHED' or 'WASP_INTRO_PENDING' = WASP_INTRO_FINISHED"
+    }
+  ]
+}

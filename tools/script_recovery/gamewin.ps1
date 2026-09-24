@@ -71,6 +71,7 @@ switch ($Action) {
   'hold' {
     # hold one key (Keys) down for X milliseconds: movement (W/A/S/D) and charged actions; scan code for DirectInput
     $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23; LSHIFT=0xA0; RSHIFT=0xA1 }
+    for ($functionKey = 1; $functionKey -le 12; $functionKey++) { $map["F$functionKey"] = 0x6F + $functionKey }
     $k = $Keys.Trim()
     # mouse buttons too: LMB / RMB / MMB (block = hold the right button, docs/engine/INPUT.md)
     $mb = @{ LMB=@(0x0002,0x0004); RMB=@(0x0008,0x0010); MMB=@(0x0020,0x0040) }
@@ -123,6 +124,7 @@ switch ($Action) {
   'key' {
     # Keys: names separated by spaces, e.g. "ENTER ESC DOWN"
     $map = @{ ENTER=0x0D; ESC=0x1B; SPACE=0x20; UP=0x26; DOWN=0x28; LEFT=0x25; RIGHT=0x27; TAB=0x09; BACK=0x08; DEL=0x2E; END=0x23; LSHIFT=0xA0; RSHIFT=0xA1 }
+    for ($functionKey = 1; $functionKey -le 12; $functionKey++) { $map["F$functionKey"] = 0x6F + $functionKey }
     foreach ($k in $Keys.Split(' ')) {
       if ($k -eq '') { continue }
       $vk = if ($map.ContainsKey($k)) { $map[$k] } else { [int][char]$k.ToUpper() }

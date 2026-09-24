@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CHECKLISTS = sorted((ROOT / 'tools/script_recovery/checklists').glob('*.json'))
 
 # send_input's verbs (autopilot.py) and how many words each takes after the verb
-INPUT_VERBS = {'key': None, 'capture': 1, 'hold': 2, 'chord': 2, 'clear': 0, 'skip': 0, 'focus': 0, 'lmb': (0, 1)}
+INPUT_VERBS = {'key': None, 'capture': 1, 'wait': 1, 'hold': 2, 'chord': 2, 'click': 2, 'move': 2, 'clear': 0, 'clear_all': 0, 'skip': 0, 'focus': 0, 'lmb': (0, 1)}
 # console commands the sidecar's exec channel takes without a quest prefix (docs/scripts/AUTOPILOT_DESIGN.md)
 BARE_COMMANDS = {'list'}
 BARE_PREFIXES = ('hero ', 'dump ')
@@ -30,6 +30,65 @@ def _is_console_line(line):
 
 
 class ChecklistTests(unittest.TestCase):
+    def test_sister_replay_preserves_natural_progression(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/guardian_sister_info.json').read_text())
+        for step in steps:
+            for line in step.get('do', []):
+                self.assertNotRegex(line, r'ActivateQuest\(|SetQuestAsCompleted\(|SetMasterGameState\(|SetStateBool\(')
+                if 'GoToMapSlotRetailTransition(' in line:
+                    self.assertEqual(step.get('repeat', 1), 1)
+                    self.assertIn('assert(not quest:IsInCutscene() and not quest:IsInMovieSequence()', line)
+
+    def test_sister_handoff_is_read_only(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/guardian_sister_handoff.json').read_text())
+        for step in steps:
+            for line in step['do']:
+                self.assertTrue(line.startswith('eval LUAGameflow: '))
+                self.assertNotRegex(line, r'MsgOnQuestCompleted|quest:Set|quest:Activate')
+
+    def test_orchard_replay_does_not_force_success_or_activation(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/orchard_farm_raid.json').read_text())
+        for step in steps:
+            for line in step.get('do', []):
+                self.assertNotRegex(line, r'ActivateQuest\(|SetQuestAsCompleted\(|SetStateBool\(')
+                if 'GoToMapSlotRetailTransition(' in line:
+                    self.assertEqual(step.get('repeat', 1), 1)
+                    self.assertIn('assert(not quest:IsInCutscene() and not quest:IsInMovieSequence()', line)
+
+    def test_orchard_state_queries_use_shared_quest(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/orchard_farm_raid.json').read_text())
+        queries = [line for step in steps for line in step.get('do', []) if ':GetState' in line]
+        self.assertTrue(queries)
+        for line in queries:
+            self.assertTrue(line.startswith('eval OrchardFarmRaid: '), line)
+
+    def test_orchard_handoff_cannot_force_or_consume_completion(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/orchard_farm_handoff.json').read_text())
+        for step in steps:
+            for line in step['do']:
+                self.assertTrue(line.startswith('eval LUAGameflow: '))
+                self.assertNotRegex(line, r'MsgOnQuestCompleted|quest:Set|quest:Activate')
+
+    def test_orchard_combat_checks_do_not_click_unexpected_ui(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/orchard_farm_raid.json').read_text())
+        for step in steps:
+            if step['id'] in ('orchard_crates', 'orchard_outcome'):
+                self.assertFalse(any(line.startswith('input:') for line in step['do']))
+
+    def test_wasp_entry_requires_the_card_instead_of_activating_the_script(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/wasp_boss.json').read_text())
+        actions = [line for step in steps for line in step.get('do', [])]
+        self.assertFalse(any('ActivateQuest(' in line for line in actions))
+        self.assertIn('wasp_card_prerequisite', [step['id'] for step in steps])
+        self.assertTrue(any("IsQuestActive('Q_WaspBoss')" in line for line in actions))
+        self.assertIn('manually', steps[0]['note'])
+
+    def test_wasp_checklist_does_not_force_combat_outcomes(self):
+        steps = json.loads((ROOT / 'tools/script_recovery/checklists/wasp_boss.json').read_text())
+        for step in steps:
+            for line in step.get('do', []):
+                self.assertNotRegex(line, r"SetStateBool\(['\"](?:QueenHornetAttacks|MissionSucceeded)['\"]")
+
     def test_there_are_checklists(self):
         self.assertTrue(CHECKLISTS, 'no checklists found')
 
@@ -64,6 +123,12 @@ class ChecklistTests(unittest.TestCase):
                         else:
                             self.assertTrue(_is_console_line(line) or CHANNEL_LINE.match(line),
                                             f'{path.name}/{step["id"]}: not a channel line: {line!r}')
+                            if line.startswith('eval '):
+                                # Autopilot::RunIn wraps this in return tostring((...)).
+                                # Supplying a return statement fails before a scene gate can run.
+                                expression = line.split(':', 1)[1].strip()
+                                self.assertFalse(re.match(r'return\b', expression),
+                                                 f'{path.name}/{step["id"]}: eval takes an expression')
 
     def test_runtime_errors_are_forbidden_where_lua_runs(self):
         """A step that drives script code and does not forbid `LUA RUNTIME ERROR` can pass through a broken

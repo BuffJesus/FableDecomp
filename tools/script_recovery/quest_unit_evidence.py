@@ -36,6 +36,20 @@ KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'ul
 LIFECYCLE = {'RegisterMain', 'Main', 'Init', 'OnPersist', 'destructor'}
 
 
+def thread_names(rows):
+    """Unknown names still need distinct keys so no native worker is discarded."""
+    names = {}
+    for row in rows:
+        address = row['body'].lower()
+        name = row.get('name') or 'NativeThread_' + address.removeprefix('0x')
+        if name in names.values() and names.get(address) != name:
+            raise ValueError(f'ambiguous native thread name {name}: {address}')
+        if address in names and names[address] != name:
+            raise ValueError(f'conflicting native thread names at {address}')
+        names[address] = name
+    return names
+
+
 def load_layouts(path=LAYOUTS):
     """class name -> list of {offset, type, name} (duplicate class names keep every copy, in order).
     load_layouts.sizes holds the PDB size of every class (first copy wins)."""
@@ -242,7 +256,7 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
         if role in LIFECYCLE:
             functions[role] = {'address': slot['address'].lower(), 'evidence': 'cluster lifecycle slot'}
     lo, hi = int(tu_range[0], 16), int(tu_range[1], 16)
-    threads = {t['body'].lower(): t['name'] for t in inventory['threads']}
+    threads = thread_names(inventory['threads'])
     thread_registration = {t['body'].lower(): t['registrationFunction'].lower() for t in inventory['threads']}
     # Every lifecycle address of every entity in the whole unit (never a "helper").
     entity_addrs = set()

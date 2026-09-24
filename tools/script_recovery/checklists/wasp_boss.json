@@ -6,35 +6,45 @@
   ],
   "expect": "\\[Autopilot\\] list: \\d+ hosts",
   "timeout": 90,
-  "note": "PREREQUISITE: an ADULT save. Gameflow stage 100 puts OBJECT_QUEST_CARD_WASP_MENACE -> Q_WaspBoss on the guild table right after Q_GuildTraining completes, and stage 200 waits on it before handing QS_GuardianSisterInfo. Accepting the card IS ActivateQuest -- the handshake gets repeats: right after a load the sidecar can take longer than one short shot to answer (run 31)",
+  "note": "PREREQUISITE: accept Wasp Menace manually through the actual guild quest-card UI, then close its menus before attaching this checklist. Do not substitute ActivateQuest: it bypasses accepted-card bookkeeping. Fresh-load automatic table targeting remains unreliable; see WASP_CARD_HANDOFF_2026-09-23.md.",
   "repeat": 10,
   "interval": 5.0
  },
  {
-  "id": "wasp_activate",
-  "repeat": 10,
-  "interval": 4.0,
+  "id": "wasp_card_prerequisite",
   "do": [
-   "LUAGameflow: quest:ActivateQuest('Q_WaspBoss')",
-   "list"
+   "eval LUAGameflow: quest:IsQuestActive('Q_WaspBoss') and 'WASP_ACTIVE' or 'ACCEPT_WASP_CARD_MANUALLY_FIRST'"
   ],
-  "expect": "\\[Autopilot\\] host WaspBoss/|Q_WaspBoss",
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = WASP_ACTIVE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "timeout": 30,
+  "note": "Read-only prerequisite check. Active state alone cannot prove the card was accepted; the operator must follow the UI prerequisite. Completion bookkeeping is verified separately by wasp_boss_handoff.json."
+ },
+ {
+  "id": "wasp_lookout_scene_finished",
+  "do": [
+   "input: clear",
+   "eval WaspBoss: (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = SCENE_IDLE",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 120,
-  "note": "the v8 bundle's gameflow host is LUAGameflow/LUAGameflow (Aeon's port), which is what `list` reports -- run 34 failed here sending to 'Gameflow'"
+  "repeat": 60,
+  "interval": 2.0,
+  "timeout": 240,
+  "note": "Wait for the current scene to finish before arming the next crossing. Query only; never yield or resume a coroutine from the exec channel."
  },
  {
   "id": "wasp_lookout",
   "do": [
    "input: clear",
    "input: clear",
-   "WaspBoss: quest:GoToMapSlotRetailTransition(1, 3296.0, 3552.0, 39.0)",
+   "WaspBoss: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'crossing refused: scene active'); quest:GoToMapSlotRetailTransition(1, 3296.0, 3552.0, 39.0)",
    "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 150,
-  "note": "Q_WaspBoss::Main WAITS on IsRegionLoaded('LookoutPoint') BEFORE it binds anything -- retail's route from the guild is Lookout Point and only then the Picnic Area. Run 35 teleported straight to PicnicArea (slot 2) and the quest parked on that first wait forever: quest host alive, zero entity binds, hero standing still. Map slot 1 = LookoutPoint (forge world: origin 3232,3488, 128x128), ground z 39.04 at map-local 64,64 (forge heights). Armed ONCE -- no repeats (GOTCHAS) -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS)"
+  "note": "Q_WaspBoss::Main WAITS on IsRegionLoaded('LookoutPoint') BEFORE it binds anything -- retail's route from the guild is Lookout Point and only then the Picnic Area. Run 35 teleported straight to PicnicArea (slot 2) and the quest parked on that first wait forever: quest host alive, zero entity binds, hero standing still. Map slot 1 = LookoutPoint (forge world: origin 3232,3488, 128x128), ground z 39.04 at map-local 64,64 (forge heights). Armed ONCE -- no repeats (GOTCHAS) -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS) The preceding step waits for both scene queries to clear; the crossing checks them again atomically and fails safely if a scene started in between."
  },
  {
   "id": "wasp_camera_tutorial",
@@ -49,17 +59,30 @@
   "note": "past the LookoutPoint wait Main calls GiveHeroTutorial(TUTORIAL_CATEGORY_CAMERA); the tutorial box gates script frames, so the channel times out until it is dismissed -- then the nine AddEntityBinding calls land"
  },
  {
+  "id": "wasp_region_scene_finished",
+  "do": [
+   "input: clear",
+   "eval WaspBoss: (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = SCENE_IDLE",
+  "forbid": "LUA RUNTIME ERROR",
+  "repeat": 60,
+  "interval": 2.0,
+  "timeout": 240,
+  "note": "Wait for the current scene to finish before arming the next crossing. Query only; never yield or resume a coroutine from the exec channel."
+ },
+ {
   "id": "wasp_region",
   "do": [
    "input: clear",
    "input: clear",
-   "WaspBoss: quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)",
+   "WaspBoss: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'crossing refused: scene active'); quest:GoToMapSlotRetailTransition(2, 3168.0, 3568.0, 33.8)",
    "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "the SECOND crossing: Main then waits on IsLevelLoaded('PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520), z 33.78 at map-local 64,48. Armed ONCE per crossing -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS)"
+  "note": "the SECOND crossing: Main then waits on IsLevelLoaded('PicnicArea'). Map slot 2 = PicnicArea (forge world: origin 3104,3520), z 33.78 at map-local 64,48. Armed ONCE per crossing -- pop-ups must be cleared with a left click BEFORE and AFTER the crossing (user, 2026-09-22): an undismissed box gates script frames, so the transition never runs and the hero ends up stuck. Use `input: clear`, never a bare `lmb`: clear screenshots first and clicks the box's icon, and returns '(no box)' when there is none -- a bare click with a weapon drawn is an attack (GOTCHAS) The preceding step waits for both scene queries to clear; the crossing checks them again atomically and fails safely if a scene started in between."
  },
  {
   "id": "wasp_entities",
@@ -69,65 +92,64 @@
    "input: clear",
    "list"
   ],
-  "expect": "Binding entity '(WaspHelper|QueenHornet|HornetDrone|WaspChaser|WaspChaseWoman|WaspAttacker|WaspVictim|FleeingWoman|GratefulVillagerSpawn)'",
+  "expect": "ENTERING LUA CALL for 'WaspBoss/Entities/(WaspVictim|WaspChaseWoman|WaspAttacker|WaspChaser)'",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "nine entity classes, all named in the PDB as CQ_WaspBossScript members"
+  "note": "Bindings register in Lookout Point; after the Picnic Area crossing, wait for an entity Main to actually enter. Registration is not repeated on this crossing."
  },
  {
   "id": "wasp_intro",
   "repeat": 16,
   "interval": 4.0,
   "do": [
-   "input: skip",
-   "input: clear"
+   "input: key ENTER",
+   "input: clear",
+   "eval WaspBoss: quest:GetStateBool('QuestStartScreened') and 'WASP_INTRO_FINISHED' or 'WASP_INTRO_PENDING'"
   ],
-  "expect": "CS_WASPBOSS_INTRO|TEXT_QST_072_(HELPER|VILLAGER_MALE)_",
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = WASP_INTRO_FINISHED",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 240,
-  "note": "the intro macro, then the helper's guidance lines (FOLLOW_ME / THIS_WAY / OVER_HERE) and the panicking villagers"
+  "note": "After the intro, confirm the Quest Start card with ENTER (as in guild_woods_return). QuestStartScreened is set after the macro. Query it instead of accepting a dialogue marker; no unconditional ESC."
  },
  {
-  "id": "wasp_helper",
-  "repeat": 12,
-  "interval": 5.0,
+  "id": "wasp_draw_melee",
   "do": [
-   "WaspBoss: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('WaspHelper'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
-   "input: key TAB",
-   "input: clear"
+   "input: clear",
+   "input: key Q",
+   "list"
   ],
-  "expect": "TEXT_QST_072_HELPER_",
+  "expect": "\\[Autopilot\\] list:",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 180,
-  "note": "stand BESIDE him and face him -- teleporting into an NPC leaves him unhighlighted and IsTalkedToByHero never fires (GOTCHAS)"
+  "timeout": 30,
+  "note": "Q draws melee; E draws the bow. Verified from the adult-save entry with weapons sheathed."
  },
  {
-  "id": "wasp_queen",
-  "repeat": 16,
-  "interval": 5.0,
+  "id": "wasp_initial_wave",
+  "repeat": 30,
+  "interval": 1.0,
   "do": [
-   "WaspBoss: quest:SetStateBool('StartChase', true)",
-   "WaspBoss: quest:SetStateBool('QueenHornetAttacks', true)",
-   "input: skip",
-   "input: clear"
+   "input: clear",
+   "WaspBoss: if not quest:IsInCutscene() and not quest:IsInMovieSequence() and not quest:GetStateBool('QueenHornetAttacks') then local target=nil for _,name in ipairs({'HornetDrone','WaspChaser','WaspAttacker'}) do for _,t in ipairs(quest:GetAllThingsWithScriptName(name)) do if t:IsAlive() then target=t; break end end if target then break end end if target then local p=target:GetPos(); p.x=p.x+1.0; quest:EntityTeleportToPosition(quest:GetHero(),p,0,true,true); quest:EntitySetFacingAngleTowardsThing(quest:GetHero(),target,true) end end",
+   "input: key SPACE",
+   "input: lmb 4",
+   "eval WaspBoss: quest:GetStateBool('QueenHornetAttacks') and 'QUEEN_SPAWNED' or 'INITIAL_WAVE'"
   ],
-  "expect": "CS_WASPBOSS_QUEEN|Binding entity 'QueenHornet'|TEXT_QST_072_HELPER_NOT_KILLED_WASP_QUEEN_10",
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = QUEEN_SPAWNED",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 480,
+  "note": "Teleport-assisted real sword attacks. All three initial enemy groups must die before DoMission spawns the queen. Never set QueenHornetAttacks or MissionSucceeded from the harness. Verified on v11 in six sends."
+ },
+ {
+  "id": "wasp_queen_scene_finished",
+  "repeat": 60,
+  "interval": 2.0,
+  "do": [
+   "input: clear",
+   "eval WaspBoss: (quest:GetStateBool('CutsceneFinished') and not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'QUEEN_SCENE_FINISHED' or 'QUEEN_SCENE_PENDING'"
+  ],
+  "expect": "\\[Autopilot\\] eval [^\\r\\n]+ = QUEEN_SCENE_FINISHED",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 240,
-  "note": "the queen fight; DronesCreated arms the HornetDrone spawns. Staged the way the melee checklist stages DummyHits"
- },
- {
-  "id": "wasp_outcome",
-  "repeat": 20,
-  "interval": 6.0,
-  "do": [
-   "WaspBoss: quest:SetStateBool('MissionSucceeded', true)",
-   "input: skip",
-   "input: clear"
-  ],
-  "expect": "CS_WASPBOSS_OUTRO|SetQuestAsCompleted: ENTER name='Q_WaspBoss'",
-  "forbid": "LUA RUNTIME ERROR",
-  "timeout": 300,
-  "note": "MissionSucceeded -> the outro macro and completion; MissionFailed is the other exit. Gameflow stage 200 is what waits on this completion before the sister-info card"
+  "note": "This checklist proves entry, the initial wave and the queen cutscene. The queen fight and quest completion require their own combat evidence; the previous forced-success step was removed."
  }
 ]

@@ -224,6 +224,7 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     me: set[str] = set()
     things: set[str] = set()
     gsi: set[str] = set()
+    defined: set[str] = set()
     # a slot filled by a thing-valued pseudo-call anywhere in the function is a thing receiver even before
     # that statement in text order (loop-carried values: the store sits at the loop tail)
     pseudo_things = {m.group("var") for m in pseudo.finditer(text)}
@@ -252,6 +253,7 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
     for _pos, _rank, kind, m in events:
         if kind == "any":
             var = m.group("var")
+            defined.add(var)
             me.discard(var); things.discard(var); gsi.discard(var)
             continue
         if kind == "gsi":
@@ -294,7 +296,7 @@ def _annotate_things(text: str, thing_slots: dict[int, tuple[str, str]],
             receiver = ME_RECEIVER
         elif recv in me:
             receiver = ME_RECEIVER
-        elif recv in things or recv in pseudo_things:
+        elif recv in things or (recv in pseudo_things and recv not in defined):
             receiver = recv
         else:
             continue          # unknown receiver: leave the dispatch as it is (the GSI pass may name it)
@@ -374,6 +376,11 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
     if aliases:
         names = "|".join(sorted(re.escape(a) for a in aliases))
         text = re.sub(r"\(\*\*\(code \*\*\)\(\*?(?:" + names + r") \+ (" + OFFSET + r")\)\)", sub, text)
+    if thing_slots:
+        # Cached interface vtables receive names above. Their returned things
+        # can now prove receivers of subsequent calls (for example GetPos).
+        text = _annotate_things(text, thing_slots, thing_returning, entity,
+                                tuple(slots[off] for off in thing_returning if off in slots))
     return text
 
 

@@ -1,0 +1,16 @@
+[
+ {
+  "id": "wasp_native_completion_call",
+  "repeat": 40,
+  "interval": 3,
+  "do": [
+   "input: clear",
+   "input: key ENTER",
+   "list"
+  ],
+  "expect": "SetQuestAsCompleted: ENTER name='Q_WaspBoss'",
+  "forbid": "LUA RUNTIME ERROR",
+  "timeout": 240,
+  "note": "Attach after real queen combat (use --tail-back if her defeat just occurred). This acknowledges cards and observes the native completion CALL; it does not prove persistent completion or the next gameflow stage. It does not damage enemies or set quest outcome flags."
+ }
+]

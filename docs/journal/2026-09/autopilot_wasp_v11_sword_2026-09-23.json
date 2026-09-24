@@ -1,0 +1,12 @@
+[
+  {
+    "id": "draw_sword",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list:/ seen"
+  },
+  {
+    "id": "initial_wave_real_attacks",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = QUEEN_SPAWNED/ seen after 6 send(s)"
+  }
+]

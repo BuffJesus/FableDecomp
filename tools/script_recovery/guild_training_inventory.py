@@ -22,6 +22,31 @@ EVIDENCE = ROOT / 'refs/script_recovery/guild_training'
 ROLES = ('destructor', 'Main', 'Init', 'GetParentScript', 'OnPersist', 'OnPredicateFail', 'OnInterrupted')
 
 
+def spawned_thread_name(code, index, cstring):
+    """Read literal names, including the native ParentClass. + member form."""
+    recent = code[max(0, index-32):index]
+    parent_prefix = False
+    for pos in range(len(recent)-1, -1, -1):
+        call = recent[pos]
+        if not (call.mnemonic == 'call' and call.operands[0].type == X86_OP_IMM
+                and call.operands[0].imm == 0x99EBF0):
+            continue
+        pushes = [p for p in recent[:pos] if p.mnemonic == 'push'
+                  and p.operands[0].type == X86_OP_IMM]
+        value = cstring(pushes[-1].operands[0].imm) if pushes else None
+        if value and re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', value):
+            return value
+        # Entity methods start quest threads through ParentClass.<name>.
+        # Require the actual string concatenation call, not arbitrary nearby text.
+        if value == 'ParentClass.' and not parent_prefix and any(
+                i.mnemonic == 'call' and i.operands[0].type == X86_OP_IMM
+                and i.operands[0].imm == 0x99F570 for i in recent[pos+1:]):
+            parent_prefix = True
+            continue
+        return None
+    return None
+
+
 def recover(exe=RETAIL_EXE, evidence=EVIDENCE, unit_name='guild_training'):
     spec = script_unit(unit_name)
     evidence = spec['evidence'] if evidence is EVIDENCE else evidence
@@ -82,18 +107,7 @@ def recover(exe=RETAIL_EXE, evidence=EVIDENCE, unit_name='guild_training'):
                 continue
             # Keep the source site even when a name cannot be established. A
             # stored function pointer is evidence; a propagated symbol is not.
-            name = None
-            recent = code[max(0, index-20):index]
-            for pos in range(len(recent)-1, -1, -1):
-                call = recent[pos]
-                if (call.mnemonic == 'call' and call.operands[0].type == X86_OP_IMM
-                        and call.operands[0].imm == 0x99EBF0):
-                    pushes = [p for p in recent[:pos] if p.mnemonic == 'push'
-                              and p.operands[0].type == X86_OP_IMM]
-                    value = cstring(pushes[-1].operands[0].imm) if pushes else None
-                    if value and re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', value):
-                        name = value
-                    break
+            name = spawned_thread_name(code, index, cstring)
             target = ins.operands[1].imm
             threads.append({'registrationFunction': f'0x{address:08X}', 'store': f'0x{ins.address:08X}',
                             'body': f'0x{target:08X}', 'name': name,

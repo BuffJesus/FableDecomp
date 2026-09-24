@@ -1,0 +1,27 @@
+[
+  {
+    "id": "orchard_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen"
+  },
+  {
+    "id": "orchard_accepted_prerequisite",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_ACCEPTED_PREREQUISITE/ seen"
+  },
+  {
+    "id": "orchard_scene_idle",
+    "status": "PASS",
+    "detail": "expected /= SCENE_IDLE/ seen after 1 send(s)"
+  },
+  {
+    "id": "orchard_region",
+    "status": "PASS",
+    "detail": "expected /\\[RegionDiag\\]|SetAsLoadingRegion/ seen"
+  },
+  {
+    "id": "orchard_entities",
+    "status": "PASS",
+    "detail": "expected /= ORCHARD_LOADED/ seen after 1 send(s)"
+  }
+]

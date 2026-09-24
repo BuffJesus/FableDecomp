@@ -1,0 +1,47 @@
+[
+  {
+    "id": "wasp_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_activate",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host WaspBoss/|Q_WaspBoss/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_lookout_scene_finished",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = SCENE_IDLE/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_lookout",
+    "status": "PASS",
+    "detail": "expected /\\[RegionDiag\\]|SetAsLoadingRegion/ seen"
+  },
+  {
+    "id": "wasp_camera_tutorial",
+    "status": "PASS",
+    "detail": "expected /Binding entity '(WaspHelper|QueenHornet|HornetDrone)'/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_region_scene_finished",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = SCENE_IDLE/ seen after 4 send(s)"
+  },
+  {
+    "id": "wasp_region",
+    "status": "PASS",
+    "detail": "expected /\\[RegionDiag\\]|SetAsLoadingRegion/ seen"
+  },
+  {
+    "id": "wasp_entities",
+    "status": "PASS",
+    "detail": "expected /ENTERING LUA CALL for 'WaspBoss/Entities/(WaspVictim|WaspChaseWoman|WaspAttacker|WaspChaser)'/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_intro",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = WASP_INTRO_FINISHED/ seen after 3 send(s)"
+  }
+]

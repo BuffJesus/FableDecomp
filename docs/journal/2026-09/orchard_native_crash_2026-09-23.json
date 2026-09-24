@@ -1,0 +1,49 @@
+{
+  "pid": 9820,
+  "exception": {
+    "status": 6,
+    "event": "None",
+    "eip": "0x8a54ec",
+    "regs": {
+      "eax": "0x1bc56128",
+      "ebx": "0x1afa18",
+      "ecx": "0x40800000",
+      "edx": "0x8a54e0",
+      "esi": "0x120b3fe8",
+      "edi": "0x0",
+      "ebp": "0x1af938",
+      "esp": "0x1af8f8",
+      "eip": "0x8a54ec"
+    },
+    "frames": [
+      "0x8a54ec",
+      "0x6f25dde5",
+      "0x6f25dcfe",
+      "0x6f23ba43",
+      "0x6f147f9c",
+      "0x6f230e51",
+      "0x6efadd8f",
+      "0x6efae07d",
+      "0x6efcf18a",
+      "0x6efae1f0",
+      "0x6efa247b",
+      "0x6efad452",
+      "0x6efae859",
+      "0x6efa2569",
+      "0x6f14b57c",
+      "0x6f14afa3"
+    ],
+    "code": "8b01ff502c3bc7752f8b4424143bc7c7",
+    "stack_returns": [
+      {
+        "esp+594": "0xe7ee7f"
+      },
+      {
+        "esp+59c": "0xa446f2"
+      },
+      {
+        "esp+5d8": "0x4011ec"
+      }
+    ]
+  }
+}

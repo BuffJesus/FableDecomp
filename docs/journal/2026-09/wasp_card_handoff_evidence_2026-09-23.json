@@ -1,0 +1,67 @@
+{
+  "bundle": "v11",
+  "questLuaOrDllChangedForHandoff": false,
+  "assistance": [
+    "hero teleport",
+    "hero health replenishment",
+    "real sword and lightning inputs"
+  ],
+  "forcedQuestOutcomes": false,
+  "combat": {
+    "archive": "work\\ab_runs\\v11-20260923-144311\\FableScriptExtender.log",
+    "sha256": "79da00b08a9cfd49c64e330ff339a198db819b8b1bf23c6efa6193b566cae4d0",
+    "luaRuntimeErrors": 0,
+    "events": [
+      "    [C++] SetQuestAsCompleted: ENTER name='Q_WaspBoss' flags=1,0,0. PActiveThread: 0x16CFF108",
+      "[LUAGameflow/LUAGameflow] LUAGameflow: Transitioning into stage 300",
+      "--- Quest 'QS_GuardianSisterInfo/QS_GuardianSisterInfo': C++ Main() phase ---",
+      "    [C++] SetQuestAsCompleted: EXIT. PActiveThread: 0x16CFF108",
+      "[Autopilot] eval eval LUAGameflow: quest:IsQuestCompleted('Q_WaspBoss') and 'WASP_CARD_COMPLETED' or 'WASP_CARD_PENDING' = WASP_CARD_COMPLETED",
+      "[Autopilot] eval eval LUAGameflow: quest:GetMasterGameState('PostSavePosition') == 300 and 'MAZE_MEETING_STAGE' or 'WASP_HANDOFF_PENDING' = MAZE_MEETING_STAGE",
+      "[Autopilot] eval eval LUAGameflow: quest:IsQuestCompleted('Q_WaspBoss') and 'WASP_CARD_COMPLETED' or 'WASP_CARD_PENDING' = WASP_CARD_COMPLETED",
+      "[Autopilot] eval eval LUAGameflow: quest:GetMasterGameState('PostSavePosition') == 300 and 'MAZE_MEETING_STAGE' or 'WASP_HANDOFF_PENDING' = MAZE_MEETING_STAGE",
+      "[Autopilot] eval eval LUAGameflow: quest:IsQuestActive('QS_GuardianSisterInfo') and 'GUARDIAN_QUEST_ACTIVE' or 'GUARDIAN_QUEST_INACTIVE' = GUARDIAN_QUEST_ACTIVE"
+    ]
+  },
+  "checkpointReload": {
+    "archive": "work\\ab_runs\\v11-20260923-144506\\FableScriptExtender.log",
+    "sha256": "9fdbc1fcb83c3bf1f77e3f166ab4a452e06cb408a45c4eed049e81db1a55efb0",
+    "luaRuntimeErrors": 0,
+    "events": [
+      "[LUAGameflow/LUAGameflow] LUAGameflow: Transitioning into stage 300",
+      "--- Quest 'QS_GuardianSisterInfo/QS_GuardianSisterInfo': C++ Main() phase ---",
+      "[Autopilot] eval eval LUAGameflow: quest:IsQuestCompleted('Q_WaspBoss') and 'WASP_CARD_COMPLETED' or 'WASP_CARD_PENDING' = WASP_CARD_COMPLETED",
+      "[Autopilot] eval eval LUAGameflow: quest:GetMasterGameState('PostSavePosition') == 300 and 'MAZE_MEETING_STAGE' or 'WASP_HANDOFF_PENDING' = MAZE_MEETING_STAGE",
+      "[Autopilot] eval eval LUAGameflow: quest:IsQuestActive('QS_GuardianSisterInfo') and 'GUARDIAN_QUEST_ACTIVE' or 'GUARDIAN_QUEST_INACTIVE' = GUARDIAN_QUEST_ACTIVE"
+    ]
+  },
+  "checkpoint": {
+    "profile": "adult_wasp_completed_2026-09-23",
+    "hashes": {
+      "AutoSave": "c8cb41ddf739fb9ef408bf70042dfac49deb49892c31d2527c7e94bc19095ab5",
+      "AutoSave.qs": "075ed756a6d9c70ca421cfb2afcc4bdf3cbcd8dd09906115bcfdf4707adc537f"
+    }
+  },
+  "validation": {
+    "harnessTests": 14,
+    "handoffSteps": 3,
+    "reloadSteps": 4
+  },
+  "remainingLimits": [
+    "assisted combat, not unassisted difficulty testing",
+    "one helper-dialogue Next click was manual",
+    "five existing converter TODOs remain",
+    "Fresh automatic quest-table targeting unreliable; real card accepted with manual recovery in successful combat run"
+  ],
+  "protectedSaveRestored": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "freshAcceptance": {
+    "status": "unresolved",
+    "archive": "work/ab_runs/v11-20260923-151810",
+    "report": "autopilot_wasp_card_accept_2026-09-23.json",
+    "canonicalChecklist": "manual card acceptance prerequisite"
+  }
+}

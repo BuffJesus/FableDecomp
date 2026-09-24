@@ -6,32 +6,40 @@
   ],
   "expect": "\\[Autopilot\\] list: \\d+ hosts",
   "timeout": 10,
-  "note": "PREREQUISITE: an ADULT save, after the wasp boss. Gameflow stage 200 hands this one directly (GiveHeroQuestCardDirectly 'OBJECT_QUEST_CARD_GUARDIAN_SISTER_INFO_FIRST') and stage 300 waits on its completion before the Orchard Farm cards"
+  "note": "PREREQUISITE: verified adult_wasp_completed_2026-09-23 checkpoint, stage 300, with Guardian Sister Info naturally granted by gameflow. Never activate this quest directly."
  },
  {
-  "id": "sister_activate",
-  "repeat": 10,
-  "interval": 4.0,
+  "id": "sister_prerequisite",
   "do": [
-   "Gameflow: quest:ActivateQuest('QS_GuardianSisterInfo')",
-   "list"
+   "eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 300 and quest:IsQuestCompleted('Q_WaspBoss') and quest:IsQuestActive('QS_GuardianSisterInfo')) and 'MAZE_READY' or 'MAZE_PREREQUISITE_MISSING'"
   ],
-  "expect": "\\[Autopilot\\] host QS_GuardianSisterInfo|QS_GuardianSisterInfo",
+  "expect": "= MAZE_READY",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "timeout": 30
+ },
+ {
+  "id": "sister_scene_idle",
+  "do": [
+   "input: clear",
+   "eval LUAGameflow: (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY'"
+  ],
+  "expect": "= SCENE_IDLE",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 120,
-  "note": "Main sets the card objective (TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01, region BowerstoneSlums) and then waits for that region to load"
+  "repeat": 20,
+  "interval": 2,
+  "timeout": 90
  },
  {
   "id": "sister_region",
-  "repeat": 12,
-  "interval": 5.0,
   "do": [
-   "QS_GuardianSisterInfo: quest:GoToMapSlotRetailTransition(339, 3808.0, 4288.0, 29.2)"
+   "input: clear",
+   "QS_GuardianSisterInfo: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'crossing refused: scene active'); quest:GoToMapSlotRetailTransition(339, 3808.0, 4288.0, 29.2)",
+   "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "the region BowerstoneSlums is owned by map BowerstoneSlums_v2 = slot 339 (forge world --regions: origin 3744,4224, 256x160), z 29.25 at map-local 64,64. Main's wait is IsRegionLoaded('BowerstoneSlums'), and once it is true the quest sets time of day 10.0"
+  "note": "the region BowerstoneSlums is owned by map BowerstoneSlums_v2 = slot 339 (forge world --regions: origin 3744,4224, 256x160), z 29.25 at map-local 64,64. Main's wait is IsRegionLoaded('BowerstoneSlums'), and once it is true the quest sets time of day 10.0 Cross once, only while both scene queries are idle."
  },
  {
   "id": "sister_time_of_day",
@@ -39,40 +47,53 @@
   "interval": 4.0,
   "do": [
    "input: clear",
-   "list"
+   "eval QS_GuardianSisterInfo: quest:IsRegionLoaded('BowerstoneSlums') and 'SLUMS_LOADED' or 'SLUMS_PENDING'"
   ],
-  "expect": "Binding entity 'MazeAtTavern'|SetTimeOfDay",
+  "expect": "= SLUMS_LOADED",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
   "note": "the region being loaded is the whole of Main: SetTimeOfDay(10.0) then return. Everything else is the MazeAtTavern entity"
  },
  {
-  "id": "sister_maze",
-  "repeat": 14,
-  "interval": 5.0,
+  "id": "sister_intro_finished",
   "do": [
-   "QS_GuardianSisterInfo: local h = quest:GetHero(); local g = quest:GetThingWithScriptName('MazeAtTavern'); if g ~= nil then local p = g:GetPos(); p.x = p.x + 1.2; quest:EntityTeleportToPosition(h, p, 0.0, false, false); quest:EntitySetFacingAngleTowardsThing(h, g) end",
-   "input: key TAB",
-   "input: skip",
-   "input: clear"
+   "input: clear",
+   "eval QS_GuardianSisterInfo: (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY'"
   ],
-  "expect": "CS_GUARDIANSISTER_BOWERSTONE|TEXT_QST_027_MAZE_(CALL_HERO_OVER|ON_HIT)_10",
+  "expect": "= SCENE_IDLE",
   "forbid": "LUA RUNTIME ERROR",
+  "repeat": 60,
+  "interval": 3,
   "timeout": 240,
-  "note": "Maze calls the hero over at the tavern; stand BESIDE him and face him (GOTCHAS: a hero teleported into an NPC leaves him unhighlighted). GuardianSpokeToHero is the quest's only persisted state"
+  "note": "Allow the Bowerstone arrival movie to end before moving to Maze. No blind ESC presses."
  },
  {
-  "id": "sister_spoke",
-  "repeat": 12,
-  "interval": 5.0,
+  "id": "sister_approach",
   "do": [
-   "eval QS_GuardianSisterInfo: quest:GetStateBool('GuardianSpokeToHero')",
-   "input: skip",
-   "input: clear"
+   "QS_GuardianSisterInfo: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence()); local g=quest:GetThingWithScriptName('MazeAtTavern'); assert(g, 'Maze missing'); local p=g:GetPos(); p.x=p.x+2; p.z=p.z+1; quest:EntityTeleportToPosition(quest:GetHero(),p,0,true,true)",
+   "input: wait 2",
+   "eval QS_GuardianSisterInfo: (function() local g=quest:GetThingWithScriptName('MazeAtTavern'); return quest:IsDistanceBetweenThingsUnder(quest:GetHero(),g,4) and 'MAZE_NEAR' or 'MAZE_APPROACH_PENDING' end)()"
   ],
-  "expect": "eval.*GuardianSpokeToHero.* = true|SetQuestAsCompleted: ENTER name='QS_GuardianSisterInfo'",
+  "expect": "= MAZE_NEAR",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "timeout": 30,
+  "note": "One queued teleport to stand beside Maze; no repeated moves during the conversation."
+ },
+ {
+  "id": "sister_conversation",
+  "do": [
+   "QS_GuardianSisterInfo: local g=quest:GetThingWithScriptName('MazeAtTavern'); quest:EntitySetFacingAngleTowardsThing(quest:GetHero(),g,true); quest:CameraResetToViewBehindHero(0.1)",
+   "input: wait 1",
+   "input: key TAB",
+   "input: clear_all",
+   "QS_GuardianSisterInfo: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'conversation already started: run handoff checks')",
+   "input: hold A 150",
+   "input: key TAB",
+   "input: clear_all"
+  ],
+  "expect": "TEXT_CS_027_BOWERSTONE_",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 240,
-  "note": "Gameflow stage 300 waits on MsgOnQuestCompleted('QS_GuardianSisterInfo') and only then adds OBJECT_QUEST_CARD_PROTECT_FARM -- this is the gate in front of Orchard Farm"
+  "timeout": 60,
+  "note": "1024x768 input sequence reproduced from the attached live run. Clear interaction tutorials and turn toward Maze. This combined checklist still needs a fresh end-to-end replay; do not repeat inputs if a movie is already playing."
  }
 ]

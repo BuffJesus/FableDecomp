@@ -1,0 +1,17 @@
+[
+  {
+    "id": "wasp_channel",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] list: \\d+ hosts/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_activate",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] host WaspBoss/|Q_WaspBoss/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_lookout_scene_finished",
+    "status": "FAIL",
+    "detail": "channel: [Autopilot] error eval WaspBoss: return (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY': [string \"local ok, h = pcall(function() return quest:G...\"]:2: unexpected symbol near 'return'"
+  }
+]

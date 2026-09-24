@@ -1,0 +1,352 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Balv::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CInfectedBalverine::Main	10767888	1078
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	TimeToGo		10	1	1	3	30006	-70	0
+0	7	HeroDistanceBeforeGo		13	4	1	3	30006	-48	0
+FUNCTION	NScript::CQ_TraderEscortScript::WatchForPickpocketing	10763936	513
+0	7	this		0	4	4	5	18	0	0
+0	7	Trader	CScriptThing	0	12	3	3	30006	4	0
+0	7	PickedPerson	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::Main	9429968	286
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::`scalar deleting destructor'	10763904	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::Init	10773184	395
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTE_BanditLeader::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Balv::Main	10777184	344
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::TurnToBalv	10792368	1454
+0	7	this		0	4	4	5	18	0	0
+0	7	Me	CScriptThing	0	12	3	3	30006	4	0
+0	7	seh_trader	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	Balv	CScriptThing	0	12	1	3	30006	-88	0
+0	7	seh_balv	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-104	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Bandit::Alloc	10777008	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Alloc	10769152	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Alloc	10764464	208
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CBanditCronies::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Balv::Alloc	10777536	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::Init	10758352	1725
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CBanditCronies::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTE_BanditLeader::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Balv::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Bandit::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::CDarkwoodTrader	10763568	185
+0	7	this		0	4	4	5	18	0	0
+0	7	parent_class		0	4	3	3	30006	4	0
+0	7	pmaster_data		0	4	3	3	30006	8	0
+0	7	thing		0	4	3	3	30006	12	0
+FUNCTION	NScript::CQ_TraderEscortScript::CInfectedBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState	10764672	965
+0	7	this		0	4	4	5	18	0	0
+0	7	brain_state		13	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Balv::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::~CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>	9548272	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::~CDarkwoodTrader	10763760	138
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CInfectedBalverine::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::Main	10773760	523
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTraderComment::Alloc	10768976	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderEscortScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTE_BanditLeader::Main	10771440	520
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::Main	10809584	3009
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::OnPersist	11234480	35
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::OnPredicateFail	10777712	119
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::WatchForMissionRules	10786304	6053
+0	7	this		0	4	4	5	18	0	0
+0	7	EndPos	CScriptThing	0	12	1	3	30006	-224	0
+0	7	TraderAtTheEnd	CScriptThing	0	12	1	3	30006	-236	0
+0	7	RegionName	CCharString	0	4	1	3	30006	-268	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-192	0
+0	7	Trader2	CScriptThing	0	12	1	3	30006	-28	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-80	0
+0	7	seh_trader2	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-156	0
+0	7	seh_trader1	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-96	0
+0	7	Trader1	CScriptThing	0	12	1	3	30006	-204	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-96	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-16	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-80	0
+0	7	DarkwoodTraderList	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-192	0
+0	7	DarkwoodTraderList	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-176	0
+0	7	LastTrader	CScriptThing	0	12	1	3	30006	-204	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTraderComment::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines	10785168	1129
+0	7	this		0	4	4	5	18	0	0
+0	7	BalverineSurpriseMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+0	7	Balverine	CScriptThing	0	12	1	3	30006	-64	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::Alloc	10777840	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CBanditCronies::Main	10772160	528
+0	7	this		0	4	4	5	18	0	0
+0	7	soundIdx	CCharString	0	4	1	3	30006	-32	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderEscortScript>::CActiveEntityScript<NScript::CQ_TraderEscortScript>	10778464	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	CActiveEntityScript<NScript::CQ_TraderEscortScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CBanditCronies::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTE_BanditLeader::Alloc	10771264	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTE_BanditLeader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CMagicBarrier::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::OnPersist	10780576	203
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderEscortScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CMagicBarrier::Alloc	10774288	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::OnPredicateFail	10772864	320
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderEscortScript>::CreateActiveEntityScript	10780080	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_TraderEscortScript::CFleshEatingBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CRockTrollTrigger::Alloc	10772688	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_TraderEscortScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::`scalar deleting destructor'	10812752	124
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::SuspendableProcess	11993296	58
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTraderComment::Main	10780784	832
+0	7	this		0	4	4	5	18	0	0
+0	7	TriggerDistance		13	4	1	3	30006	-52	0
+0	7	TraderList	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-44	0
+0	7	i		6	4	1	3	30006	-56	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Bandit::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CFleshEatingBalverine::Alloc	10766240	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CRockTrollTrigger::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::Alloc	10773584	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Main	10793840	14932
+0	7			0	0	2	1	0	0	10808756
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-392	0
+0	7	Expression	CCharString	0	4	1	3	30006	-376	0
+0	7	AnsweredYes		10	1	1	3	30006	-398	0
+0	7	DistanceTrigger	CScriptThing	0	12	1	3	30006	-344	0
+0	7	RunOffPos	CScriptThing	0	12	1	3	30006	-320	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-292	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-320	0
+0	7	seh_traders	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-276	0
+0	7	TraderB	CScriptThing	0	12	1	3	30006	-368	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-292	0
+0	7	seh_tradern	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-260	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	TraderA	CScriptThing	0	12	1	3	30006	-356	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-240	0
+0	7	temp	CScriptThing	0	12	1	3	30006	-220	0
+0	7	EndStart	CScriptThing	0	12	1	3	30006	-356	0
+0	7	LS_STOPPED	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Main::__l261::ELeaderState	6	4	9	10	0	0	0
+0	7	LS_RUNNING	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Main::__l261::ELeaderState	6	4	9	10	0	0	0
+0	7	LS_WALKING	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Main::__l261::ELeaderState	6	4	9	10	0	0	0
+0	7	MeIsNearerThanThingToPoint		10	1	1	3	30006	-397	0
+0	7	EndPos	CScriptThing	0	12	1	3	30006	-304	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-260	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-164	0
+0	7	RunOffPos	CScriptThing	0	12	1	3	30006	-292	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-240	0
+0	7	NearestTrader	CScriptThing	0	12	1	3	30006	-304	0
+0	7	Buddy	CScriptThing	0	12	1	3	30006	-368	0
+0	7	HealEffect	CScriptThing	0	12	1	3	30006	-320	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-276	0
+FUNCTION	NScript::CQ_TraderEscortScript::CRockTrollTrigger::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CFleshEatingBalverine::Main	10766416	1291
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	Dinner	CScriptThing	0	12	1	3	30006	-56	0
+0	7	SpottedHero		10	1	1	3	30006	-86	0
+0	7	TimeToGo		10	1	1	3	30006	-85	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Bandit::Main	10777184	344
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CFleshEatingBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CRockTrollTrigger::Main	10808784	792
+0	7	this		0	4	4	5	18	0	0
+0	7	TriggerDistance		13	4	1	3	30006	-84	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+FUNCTION	NScript::CQ_TraderEscortScript::Alloc	10812608	137
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CMagicBarrier::Main	10774464	2540
+0	7	this		0	4	4	5	18	0	0
+0	7	BarrierLocation	CScriptThing	0	12	1	3	30006	-84	0
+0	7	ForceField1	CScriptThing	0	12	1	3	30006	-60	0
+0	7	RockTroll	CScriptThing	0	12	1	3	30006	-24	0
+0	7	ForceField2	CScriptThing	0	12	1	3	30006	-72	0
+FUNCTION	NScript::CQ_TraderEscortScript::CMagicBarrier::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CBanditCronies::Alloc	10771968	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::Main	10781616	3540
+0	7	this		0	4	4	5	18	0	0
+0	7	EndPos	CScriptThing	0	12	1	3	30006	-112	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-172	0
+0	7	StartTheEnd	CScriptThing	0	12	1	3	30006	-156	0
+0	7	DarkwoodTraderList	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-140	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-84	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-100	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-100	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-100	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-84	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-60	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-100	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Init	10778960	1114
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::RegisterMain	10778656	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTraderComment::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CInfectedBalverine::Alloc	10767712	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>	10778192	268
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+0	7	par1	CScriptThing	0	12	3	3	30006	20	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodTrader::OnPredicateFail	10765648	580
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>::`scalar deleting destructor'	9551888	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_TraderEscortScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::MakeTraderComment	10760080	3482
+0	7	this		0	4	4	5	18	0	0
+0	7	comment_to_make		0	4	3	3	30006	4	0
+0	7	speaker		0	4	3	3	30006	8	0
+0	7	comment_type	NScript::CQ_TraderEscortScript::ETraderComment	6	4	3	3	30006	12	0
+0	7	Trader	CScriptThing	0	12	1	3	30006	-60	0
+0	7	TraderB	CScriptThing	0	12	1	3	30006	-36	0
+0	7	TraderA	CScriptThing	0	12	1	3	30006	-48	0
+0	7	temp	CScriptThing	0	12	1	3	30006	-24	0
+0	7	near_trader	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::Alloc	10771088	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_TraderEscortScript::CTraderComment::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CFleshEatingBalverine::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CRockTrollTrigger::Init	10710528	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::Init	10778016	171
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::Main	10769328	1745
+0	7	this		0	4	4	5	18	0	0
+0	7	TriggerDistance		13	4	1	3	30006	-60	0
+0	7	OffScreenTimer	CTimer	0	4	1	3	30006	-56	0
+0	7	soundIdx	CCharString	0	4	1	3	30006	-76	0
+0	7	Assassin	CScriptThing	0	12	1	3	30006	-52	0
+FUNCTION	NScript::CQ_TraderEscortScript::CMagicBarrier::Init	10296304	22
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CInfectedBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CDW5_Bandit::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_TraderEscortScript::CEndTrader::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+MATCHES	99

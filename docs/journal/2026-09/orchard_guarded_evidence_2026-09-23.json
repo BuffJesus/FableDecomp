@@ -1,0 +1,41 @@
+{
+  "bundle": "v12",
+  "archive": "work\\ab_runs\\v12-20260923-181526\\FableScriptExtender.log",
+  "archive_sha256": "24842cbc294bd6234639cf1bc183cb4495a5153708dfb5cbb6a484031ee759a2",
+  "lua_runtime_errors": 0,
+  "checkpoint": "adult_orchard_completed_2026-09-23",
+  "checkpoint_files": {
+    "AutoSave": "ff63485ad4620739fc85a627f8d5ac21ca6532065c8577947343d99a90fc8a8a",
+    "AutoSave.qs": "9f2e304ced722d3ee2c434edbf51fb2db36272bc2b32eb13a871e6a37f91f3a3"
+  },
+  "original_backup": "D:\\Documents\\FableTLC\\scratchpad\\save_backup_1234234_20260923-182939",
+  "original_files": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "entry_pass": 5,
+  "handoff_pass": 3,
+  "targeted_tests_pass": 20,
+  "reload": "passed",
+  "assistance": [
+    "hero teleport within combat area",
+    "hero health replenishment",
+    "real melee and right-mouse flourish inputs"
+  ],
+  "limitations": [
+    "earlier unbounded replay reset cause not proved",
+    "corrupt Quest Start artwork",
+    "Good path only; no unassisted or Evil-path completion claim"
+  ],
+  "restored_original_files": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "reload_pass": 4,
+  "reload_archive": "work\\ab_runs\\v12-20260923-182940\\FableScriptExtender.log",
+  "reload_archive_sha256": "5255838d6234662b8f74bce92bc5432a11ffc0c3f4f5bf91d4f5799e118c86f2",
+  "reload_lua_runtime_errors": 0,
+  "test_game_closed": true
+}

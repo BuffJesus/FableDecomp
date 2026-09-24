@@ -4,15 +4,15 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 
 | Script | Owner | Function | Address | Compiles | TODO |
 |---|---|---|---|---|---:|
-| Q_WaspBoss | Q_WaspBoss | Main | 0x00e0ea40 | True | 4 |
+| Q_WaspBoss | Q_WaspBoss | Main | 0x00e0ea40 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | Init | 0x00e0e820 | True | 1 |
 | Q_WaspBoss | Q_WaspBoss | OnPersist | 0x00e0e9a0 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | WatchForTermination | 0x00e0f1d0 | True | 0 |
-| Q_WaspBoss | Q_WaspBoss | DoMission | 0x00e12580 | True | 13 |
-| Q_WaspBoss | Q_WaspBoss | WatchForCutscene | 0x00e12330 | True | 1 |
+| Q_WaspBoss | Q_WaspBoss | DoMission | 0x00e12580 | True | 0 |
+| Q_WaspBoss | Q_WaspBoss | WatchForCutscene | 0x00e12330 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | GuildmasterHelp | 0x00e12b30 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | helper_E12F20 | 0x00e12f20 | True | 0 |
-| Q_WaspBoss | Q_WaspBoss | helper_E13310 | 0x00e13310 | True | 8 |
+| Q_WaspBoss | Q_WaspBoss | helper_E13310 | 0x00e13310 | True | 1 |
 | Q_WaspBoss | Q_WaspBoss | helper_E137B0 | 0x00e137b0 | True | 0 |
 | Q_WaspBoss | GratefulVillagerSpawn | Main | 0x00e10a90 | True | 0 |
 | Q_WaspBoss | GratefulVillagerSpawn | Init | 0x00e10a80 | True | 0 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WaspBoss | HornetDrone | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_WaspBoss | HornetDrone | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 30}`
+Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 5}`

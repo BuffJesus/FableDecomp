@@ -798,6 +798,19 @@ class QuestLiftTests(unittest.TestCase):
         self.assertTrue(any('native thread body 0x00D26BA0' in line for line in out))
         self.assertEqual(lifter.threads, [{"name": "Worker", "body": "0x00D26BA0"}])
 
+    def test_wrapped_thread_body_store_keeps_worker_and_ownership(self):
+        # Wasp Main/DoMission wrap their long queen-handler label after '='.
+        native = ('{\npCVar8 = operator_new(0x3c);\n'
+                  'CCharString::CCharString(&local_10,"Worker",-1);\n'
+                  'CSpawnedFunc<X>::CSpawnedFunc<X>(pCVar8,&local_10,0,this,this);\n'
+                  '*(code **)(pCVar8 + 0x34) =\n    LongQueenHandler;\n}\n'
+                  'CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,pCVar8,section);\n')
+        lifter = make()
+        out = lifter.lift("Main", native)
+        self.assertEqual(lifter.threads, [{"name": "Worker", "body": "LongQueenHandler"}])
+        self.assertEqual(sum('CreateThread("Worker")' in line for line in out), 1)
+        self.assertFalse(any('CGuiVarTransferStruct::Add' in line for line in out))
+
 
 class EntityLiftTests(unittest.TestCase):
     NATIVE = ('{\n  GSI->NewScriptFrame();\n'
@@ -979,6 +992,16 @@ class ThingSlotAnnotationTests(unittest.TestCase):
     def annotate(self, text: str, entity: bool = True) -> str:
         from tools.script_recovery.annotate_interface_slots import annotate
         return annotate(text, GSI_SLOTS, THING_SLOTS, THING_RETURNING, entity=entity)
+
+    def test_cached_interface_result_proves_receiver_and_stops_at_reassignment(self):
+        native = ('  gsivt1 = **(int **)(this + 0x40);\n'
+                  '  pCVar9 = (**(code **)(gsivt1 + 0x120))(&thing,&name);\n'
+                  '  fVar1 = (**(code **)(*(int *)pCVar9 + 0x28))();\n'
+                  '  pCVar9 = unknown;\n'
+                  '  fVar2 = (**(code **)(*(int *)pCVar9 + 0x28))();\n')
+        output = self.annotate(native, entity=False)
+        self.assertIn('fVar1 = CScriptThing::GetAngleXY(pCVar9);', output)
+        self.assertIn('fVar2 = (**(code **)(*(int *)pCVar9 + 0x28))();', output)
 
     def test_me_alias_and_direct_this_plus_8(self):
         out = self.annotate("  pCVar1 = (CScriptThing *)(this + 8);\n"

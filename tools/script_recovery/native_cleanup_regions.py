@@ -318,5 +318,13 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             defs.extend('        ' + s for s in body)
             defs.append('    end')
             report[label] = body
-        out.append('\n'.join(new_lines[:head_end] + defs + new_lines[head_end:]))
+        joined = '\n'.join(new_lines[:head_end] + defs + new_lines[head_end:])
+        # A hoisted cleanup can replace a goto immediately before another branch's
+        # label. Lua requires return to end its block; a do block keeps that exit
+        # while leaving the following label reachable by the other branch.
+        joined = re.sub(
+            r'(?m)^(?P<ind>[ \t]*)(?P<exit>(?:__cleanup_\w+\(\); )?return)'
+            r'(?P<comment>[ \t]*(?:--[^\n]*)?)\n(?=(?P=ind)::)',
+            lambda m: f'{m["ind"]}do {m["exit"]} end{m["comment"]}\n', joined)
+        out.append(joined)
     return ''.join(out), report

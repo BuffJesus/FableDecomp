@@ -1,0 +1,82 @@
+{
+  "fault": {
+    "address": "0x008A54EC",
+    "register": "ECX",
+    "value": "0x40800000",
+    "meaning": "float 4.0 misread as CScriptThing implementation pointer"
+  },
+  "apis": [
+    {
+      "name": "SetCombatNearbyBreakOffRange",
+      "entry": "008a54e0",
+      "return": [
+        "008a55b7: ret 0x10"
+      ],
+      "calleeReleasesCopy": true,
+      "argument": "12-byte CScriptThing by value; caller retains Info before transfer"
+    },
+    {
+      "name": "ResetCombatNearbyBreakOffRange",
+      "entry": "008a56c0",
+      "return": [
+        "008a57a2: ret 0xc"
+      ],
+      "calleeReleasesCopy": true,
+      "argument": "12-byte CScriptThing by value; caller retains Info before transfer"
+    },
+    {
+      "name": "SetStealStealableItems",
+      "entry": "008a57b0",
+      "return": [
+        "008a5887: ret 0x10"
+      ],
+      "calleeReleasesCopy": true,
+      "argument": "12-byte CScriptThing by value; caller retains Info before transfer"
+    },
+    {
+      "name": "SetRecoverStealableItems",
+      "entry": "008a5a70",
+      "return": [
+        "008a5b47: ret 0x10"
+      ],
+      "calleeReleasesCopy": true,
+      "argument": "12-byte CScriptThing by value; caller retains Info before transfer"
+    }
+  ],
+  "patch": "tools/script_recovery/sidecar_patches/novi-zzz-combat-range-value.patch",
+  "build": "Release/x86 succeeded",
+  "bundle": "v12",
+  "dllSha256": "4570a54e555488048530562366e2d3c585ba3188457d8bbab4e62a347baec564",
+  "unchangedLuaFiles": 98,
+  "protectedSaveRestored": {
+    "AutoSave": "87414c4b277aaa7ca316997cb10cbadf1071aa46b54a9d6af173f64e0ec8159c",
+    "AutoSave.qs": "fc68b46f36dd5ed832bcef32766eb6e4058305e7f7908c61ada30e15e34c5306",
+    "AutoSave.qs.hs": "47a667d9afd068e41b6ca03a0b84f96d9575df5d90b6a41a2e2c2b91ac3aacd4"
+  },
+  "harnessTests": 18,
+  "checkpoint": {
+    "profile": "adult_orchard_accepted_2026-09-23",
+    "hashes": {
+      "AutoSave": "4e1f2780a91be4c9736f28a6ed0dddef77e24f9067827ecc13a5141b681ae0e9",
+      "AutoSave.qs": "4e1f2780a91be4c9736f28a6ed0dddef77e24f9067827ecc13a5141b681ae0e9"
+    }
+  },
+  "archives": {
+    "v11_exit": {
+      "path": "work/ab_runs/v11-20260923-172044/FableScriptExtender.log",
+      "sha256": "f93c53cf65bb9ab2289e3c5917f2b525a06cb8973fd7d91d467e9941b4f06bc5",
+      "luaRuntimeErrors": 0
+    },
+    "v11_debugger_repro": {
+      "path": "work/ab_runs/v11-20260923-173011/FableScriptExtender.log",
+      "sha256": "2b507b091e06e6ecb2e41778e0bd322339438686ecd82919b22430d0d78450c9",
+      "luaRuntimeErrors": 0
+    },
+    "v12_combat": {
+      "path": "work/ab_runs/v12-20260923-173829/FableScriptExtender.log",
+      "sha256": "c2c3bf652d353040aa8648c3309ebd412a1698e67c635e942c25c9c79e29e7bf",
+      "luaRuntimeErrors": 0
+    }
+  },
+  "outcome": "Native ABI fault fixed; two bandit groups defeated with 3 crates; reset to guild at third-group spawn unresolved; quest not completed."
+}

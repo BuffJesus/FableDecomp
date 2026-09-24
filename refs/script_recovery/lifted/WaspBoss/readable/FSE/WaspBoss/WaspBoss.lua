@@ -7,6 +7,8 @@ local TUTORIAL_CATEGORY_CAMERA = 6  -- ETutorialCategory (Ego_r.pdb)
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     WB_LowHealth = 3636,  -- 4
+    WB_CreaturesSpawned = 3644,  -- 'CREATURE_HORNET_PICNIC'
+    WB_WaspBossName = 3648,  -- 'CREATURE_HORNET_QUEEN_01'
     WB_ExperienceReward = 3672,  -- 800
 }
 
@@ -42,17 +44,11 @@ function Main(quest)
     while not quest:IsLevelLoaded("PicnicArea") do
         if not quest:NewScriptFrame() then return end
     end
-    local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
-    if isActiveThreadTerminating then return end
+    if quest:IsActiveThreadTerminating() then return end
     quest:OverrideMusic(23, false, false)
     quest:CreateThread("WatchForTermination")  -- native thread body CV_ChapelOfEvilScript::EndMission: lift it as function WatchForTermination(quest)
     quest:CreateThread("DoMission")  -- native thread body CQ_WaspBossScript::DoMission: lift it as function DoMission(quest)
-    -- TODO(native): bVar2 = pCVar4 == (CSpawnedFunc<NScript::CExpression_FollowScript> *)0x0;
-    if not isActiveThreadTerminating then
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(pCVar4,&xStack_8,0);
-        -- TODO(native): *(code **)(pCVar4 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCutscene;
-        -- TODO(native): *(CQ_GuildTrainingScript **)(pCVar4 + 0x38) = this;
-    end
+    quest:CreateThread("WatchForCutscene")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCutscene: lift it as function WatchForCutscene(quest)
 end
 
 -- Q_WaspBoss.Init (retail 0x00e0e820)
@@ -106,63 +102,74 @@ end
 
 -- Q_WaspBoss.DoMission (retail 0x00e12580)
 function DoMission(quest)
-    local scratchValue, scratchValue2, getThingWithScriptName, this_00, this_01, waspAttacker
-    local x_stk_30_1
+    local append_xStack_24_0, append_xStack_24_1, isActiveThreadTerminating, scratchValue
+    local scratchValue2, position, scratchValue3, scratchValue4, scratchValue5, hornetDrone
+    local readGlobalGameDataString, scratchValue6
     quest:AddRumourCategory("Post waspboss killed")
     quest:AddNewRumourToCategory("Post waspboss killed", "TEXT_AI_GOSSIP_WASPBOSS_KILLED")
     quest:AddGossipFactionToCategory("Post waspboss killed", "FACTION_PICNIC_AREA")
-    x_stk_30_1 = nil
+    scratchValue6 = nil
     scratchValue2 = 1
     repeat
-        if quest:IsActiveThreadTerminating() then goto LAB_00e12a9c end
-        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe3c),(int)&xStack_44);
-        quest:GetThingWithScriptName("QueenDepositPos" .. tostring(scratchValue2))
-        -- TODO(native): this_00 = *(this + 0x40)
-        this_00 = nil --[[unresolved native value]]
-        -- TODO(native): xStack_40 = *this_00;
-        -- TODO(native): pCVar10 = (**(*pCVar9 + 0x18))(pCVar9)
---[[unresolved native value]]
-        -- TODO(native): pCVar9 = (**(xStack_40 + 0x16c))(this_00,xStack_18,&xStack_44,pCVar10,"HornetDrone",bVar6)
-        getThingWithScriptName = nil --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar9 + 0x8)
-    --[[unresolved native value]]
-        -- TODO(native): uVar3 = *(pCVar9 + 0x4)
-    --[[unresolved native value]]
-        if x_stk_30_1 ~= nil then
-            x_stk_30_1 = nil
-            if nil ~= nil then
-                -- TODO(native): *piVar2 = *piVar2 + 1;
-            end
+        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        if isActiveThreadTerminating then
+            scratchValue6 = nil
+            goto LAB_00e12a9c
         end
+        readGlobalGameDataString = quest:ReadGlobalGameDataString(SCRIPT_DEF.WB_CreaturesSpawned)
+        scratchValue3 = tostring(scratchValue2)
+        scratchValue3 = "QueenDepositPos" .. scratchValue3
+        scratchValue4 = quest:GetThingWithScriptName(scratchValue3)
+        isActiveThreadTerminating = false
+        position = scratchValue4:GetPos()
+        scratchValue4 = quest:CreateCreature(readGlobalGameDataString, position, "HornetDrone")
+        scratchValue6 = scratchValue4
+        scratchValue4 = nil
+        scratchValue4 = nil
         scratchValue2 = scratchValue2 + 1
     until scratchValue2 >= 6
-    if quest:IsActiveThreadTerminating() then return end
-    waspAttacker = quest:GetAllThingsWithScriptName("WaspAttacker")
+    isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+    if isActiveThreadTerminating then
+        scratchValue6 = nil
+        scratchValue6 = 0
+        return
+    end
+    hornetDrone = quest:GetAllThingsWithScriptName("HornetDrone")
+    append_xStack_24_0 = quest:GetAllThingsWithScriptName("WaspChaser")
+    for _, appendedThing in ipairs(append_xStack_24_0) do hornetDrone[#hornetDrone + 1] = appendedThing end
+    append_xStack_24_1 = quest:GetAllThingsWithScriptName("WaspAttacker")
+    for _, appendedThing in ipairs(append_xStack_24_1) do hornetDrone[#hornetDrone + 1] = appendedThing end
     WaspIntro(quest)
-    scratchValue = __native_all_dead(waspAttacker)
+    scratchValue2 = __native_all_dead(hornetDrone)
+    scratchValue = scratchValue2
     while true do
         if scratchValue then
-            if quest:IsActiveThreadTerminating() then return end
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+            if isActiveThreadTerminating then return end
             quest:Pause(4.0)
-            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0xe40),(int)&xStack_44);
-            quest:CreateCreature("QueenHornet", quest:GetThingWithScriptName("MK_WQ_STARTING"):GetPos(), waspAttacker)
+            readGlobalGameDataString = quest:ReadGlobalGameDataString(SCRIPT_DEF.WB_WaspBossName)
+            scratchValue4 = quest:GetThingWithScriptName("MK_WQ_STARTING")
+            isActiveThreadTerminating = false
+            position = scratchValue4:GetPos()
+            scratchValue5 = quest:CreateCreature(readGlobalGameDataString, position, "QueenHornet")
             quest:SetStateBool("QueenHornetAttacks", true)
-            if this_01 ~= nil then
-                -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,&xStack_40,0);
-                -- TODO(native): *(code **)(this_01 + 0x34) = CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue;
-                -- TODO(native): *(CQ_WaspBossScript **)(this_01 + 0x38) = this;
-            end
-            -- TODO(native): CGuiVarTransferStruct::Add((CGuiVarTransferStruct *)this,this_01,sectionName);
+            quest:CreateThread("GuildmasterHelp")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue: lift it as function GuildmasterHelp(quest)
             quest:NewScriptFrame()
-            if not quest:IsActiveThreadTerminating() and not quest:GetStateBool("MissionFailed") then
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+            if not isActiveThreadTerminating and not quest:GetStateBool("MissionFailed") then
                 helper_E13310(quest)
             end
             return
         end
-        if not quest:NewScriptFrame() then break end
-        scratchValue = __native_all_dead(waspAttacker)
+        quest:NewScriptFrame()
+        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        if isActiveThreadTerminating then break end
+        scratchValue2 = __native_all_dead(hornetDrone)
+        scratchValue = scratchValue2
     end
+    scratchValue6 = nil
     ::LAB_00e12a9c::
+    scratchValue6 = 0
 end
 
 -- Q_WaspBoss.WatchForCutscene (retail 0x00e12330)
@@ -173,7 +180,8 @@ function WatchForCutscene(quest)
     while true do
         if queenHornetAttacks then
             if quest:IsActiveThreadTerminating() then return end
-            quest:EntitySetCutsceneBehaviour(quest:GetThingWithScriptName("QueenHornet"), CUTSCENE_BEHAVIOUR_NOT_PAUSED)
+            local queenHornet = quest:GetThingWithScriptName("QueenHornet")
+            quest:EntitySetCutsceneBehaviour(queenHornet, CUTSCENE_BEHAVIOUR_NOT_PAUSED)
             local resource = resources:NewResource()
             resources:TryAcquire(resource, hero, 4)
             local actorMap = resources:NewActorMap()
@@ -181,7 +189,7 @@ function WatchForCutscene(quest)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             resources:RunMacro("CS_WASPBOSS_QUEEN", actorMap, false, true)
-            quest:EntitySetFacingAngleTowardsThing(hero, nil --[[missing]], true)
+            quest:EntitySetFacingAngleTowardsThing(hero, queenHornet, true)
             quest:CameraDefault()
             quest:SetStateBool("CutsceneFinished", true)
             quest:PauseAllNonScriptedEntities(false)
@@ -273,34 +281,24 @@ end
 
 -- Q_WaspBoss.helper_E13310 (retail 0x00e13310)
 function helper_E13310(quest)
-    local predicateResult, scratchValue, healthBar, scratchValue2
-    scratchValue2 = nil
-    -- TODO(native): piVar1 = *(pCVar5 + 0x8)
-    --[[unresolved native value]]
-    -- TODO(native): piVar2 = *(pCVar5 + 0x4)
-    --[[unresolved native value]]
-    if nil ~= nil then
-        scratchValue2 = nil
-        if nil ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + 1;
-        end
-    end
+    local predicateResult, scratchValue, healthBar, queenHornet
+    queenHornet = quest:GetThingWithScriptName("QueenHornet")
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("QueenHornetAttacks") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e135bd end
     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WASP_MENACE_OBJECTIVE_02", "", "HeroGuildComplexInside")
-    healthBar = quest:AddQuestInfoBarHealth(scratchValue2, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
+    healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     while true do
         while true do
             if not quest:NewScriptFrame() then goto LAB_00e135bd end
             predicateResult = false
             if not quest:IsLevelLoaded("PicnicArea") then break end
-            if not (scratchValue2 ~= nil and not scratchValue2:IsNull()) then
+            if not (queenHornet ~= nil and not queenHornet:IsNull()) then
                 scratchValue = 0
             else
-                scratchValue = scratchValue2 ~= nil and scratchValue2:MsgIsKilledBy("")
+                scratchValue = queenHornet ~= nil and queenHornet:MsgIsKilledBy("")
             end
             if scratchValue then
                 if not quest:IsActiveThreadTerminating() then
@@ -317,18 +315,9 @@ function helper_E13310(quest)
             if not quest:NewScriptFrame() then return end
         end
         if quest:IsActiveThreadTerminating() then break end
-        -- TODO(native): piVar1 = *(pCVar5 + 0x8)
-    --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar5 + 0x4)
-    --[[unresolved native value]]
-        if scratchValue2 ~= nil then
-            scratchValue2 = nil
-            if nil ~= nil then
-                -- TODO(native): *piVar1 = *piVar1 + 1;
-            end
-        end
+        queenHornet = quest:GetThingWithScriptName("QueenHornet")
         quest:DisplayQuestInfo(true)
-        healthBar = quest:AddQuestInfoBarHealth(nil --[[missing]], {R = 255, G = 255, B = 0, A = 255}, scratchValue2, 1.0)
+        healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     end
     ::LAB_00e135bd::
 end

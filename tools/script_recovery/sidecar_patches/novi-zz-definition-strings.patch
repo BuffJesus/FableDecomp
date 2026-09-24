@@ -1,0 +1,25 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 6625887..0dc9a0e 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -293,6 +293,20 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (!definitions || offset < 0) return 0.0f;
+         return *reinterpret_cast<const volatile float*>(definitions + offset);
+     };
++    quest["ReadGlobalGameDataString"] = [](LuaQuestState&, int offset) -> std::string {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0 || !CCharString_Destroy || !CCharString_ToConstChar_API)
++            throw std::runtime_error("Global definition-string APIs unavailable");
++        // CDefString token -> constructed hidden-output CString (retail 415D70).
++        // Copy into Lua-owned storage before releasing the native counted string.
++        using Convert = CCharString* (__thiscall*)(const void*, CCharString*);
++        struct Converted {
++            CCharString value{};
++            ~Converted() { CCharString_Destroy(&value); }
++        } result;
++        ASLR<Convert>(0x00415D70)(definitions + offset, &result.value);
++        return NoviCCharStringToStd(&result.value);
++    };
+     // a float array the table points at (`*(float **)(table + offset)`, e.g. the guild grade thresholds
+     // at +0xeb4): element `index` of it
+     quest["ReadGlobalGameDataFloatAt"] = [](LuaQuestState&, int offset, int index) -> float {

@@ -132,7 +132,9 @@ def signature_types(unit_dir):
             continue
         types = []
         for raw in [t.strip() for t in m.group(1).split(',') if t.strip()] if m.group(1).strip() != 'void' else []:
-            base = re.sub(r'\b(class|struct|enum|const)\b', '', raw).strip()
+            # Ghidra wraps long prototype comments before the reference marker.
+            # Normalize that whitespace before trimming '&'/'*' and class names.
+            base = ' '.join(re.sub(r'\b(class|struct|enum|const)\b', '', raw).split())
             ref = base.endswith('&') or base.endswith('*')
             base = base.rstrip('&* ').split('::')[-1]
             if base in ('CScriptThing', 'CCharString', 'CWideString', 'C3DVector', 'CRGBColour'):
@@ -149,6 +151,7 @@ def unit_functions(unit_dir):
     """Prototypes for a unit's own functions (quest members, entity members, helpers) from the PDB."""
     params = pdb_parameters(Path(unit_dir) / 'pdb' / 'Ego_r-pdb-locals.tsv')
     signatures = signature_types(unit_dir)
+    bool_returns = proven_bool_returns(unit_dir)
     out = {}
     for path in sorted((Path(unit_dir) / 'units').glob('*.json')):
         unit = json.loads(path.read_text(encoding='utf-8'))
@@ -173,9 +176,52 @@ def unit_functions(unit_dir):
                     if stype and (entry['type'] == 'int' and stype.endswith('*') or entry['type'] == 'CScriptThing' and stype == 'CScriptThing'):
                         entry['type'], entry['ctype'] = stype, 'ego_r signature'
             out.setdefault(address.lower(), {'name': qname.split('::', 1)[1].replace('::', '__'), 'cc': '__thiscall',
-                                             'ret': 'void' if qname.split('::')[-1] in void_names else 'int',
+                                             'ret': ('void' if qname.split('::')[-1] in void_names else
+                                                     'bool' if bool_returns.get(address.lower()) == qname else 'int'),
                                              'params': plist, 'source': 'PDB stack parameters'})
     return out
+
+
+def proven_bool_returns(unit_dir, image=None):
+    """Accept bool signatures only when every native return tail sets AL to 0/1."""
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from tools.script_recovery.lift_native_lua import RData
+    path = Path(unit_dir) / 'translation_unit.json'
+    if not path.exists():
+        return {}
+    image = image or RData()
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    result = {}
+    for fn in json.loads(path.read_text(encoding='utf-8-sig'))['functions']:
+        match = re.search(r'(?:public|private|protected):\s*(?:virtual\s+)?bool\s+__thiscall\s+([\w:]+)\(',
+                          fn.get('decompile') or '')
+        if not match:
+            continue
+        returns, valid = 0, True
+        for span in fn.get('bodyRanges', []):
+            start, end = int(span['start'], 16), int(span['endExclusive'], 16)
+            raw = image.bytes_at(start, end-start)
+            if not raw:
+                valid = False
+                break
+            instructions = list(decoder.disasm(raw, start))
+            for index, ins in enumerate(instructions):
+                if ins.mnemonic != 'ret':
+                    continue
+                returns += 1
+                found = False
+                for previous in reversed(instructions[:index]):
+                    if previous.mnemonic == 'pop' and previous.op_str in ('ebp', 'ebx', 'esi', 'edi'):
+                        continue
+                    if previous.mnemonic == 'add' and previous.op_str.startswith('esp, '):
+                        continue
+                    found = (previous.mnemonic, previous.op_str) in (
+                        ('xor', 'al, al'), ('mov', 'al, 0'), ('mov', 'al, 1'))
+                    break
+                valid &= found
+        if valid and returns:
+            result[fn['address'].lower()] = match[1]
+    return result
 
 
 # Engine helpers proven by disassembly (not FSE-exposed): CCharString operator+ returning through a

@@ -1,0 +1,38 @@
+[
+ {
+  "id": "orchard_completed",
+  "do": [
+   "eval LUAGameflow: (quest:IsQuestCompleted('Q_OrchardFarmRaidGood')) and 'ORCHARD_COMPLETED' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= ORCHARD_COMPLETED",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Read-only check after real Orchard combat and reward acknowledgement; does not consume completion messages or write quest state."
+ },
+ {
+  "id": "trader_stage",
+  "do": [
+   "eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 500) and 'TRADER_STAGE' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= TRADER_STAGE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Read-only check after real Orchard combat and reward acknowledgement; does not consume completion messages or write quest state."
+ },
+ {
+  "id": "trader_waiting",
+  "do": [
+   "eval LUAGameflow: (quest:GetStateBool('CoreQuestWaiting')) and 'TRADER_WAITING' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= TRADER_WAITING",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Read-only check after real Orchard combat and reward acknowledgement; does not consume completion messages or write quest state."
+ }
+]

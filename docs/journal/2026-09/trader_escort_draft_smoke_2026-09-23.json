@@ -1,0 +1,708 @@
+{
+ "TraderEscort/Entities/BanditCronies.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 802,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/DarkwoodAssassinSpawn.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 1,
+   "calls": 29,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:RegisterTimer",
+    "quest:SetTimer",
+    "quest:ReadGlobalGameData",
+    "quest:ReadGlobalGameData",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:IsActiveThreadTerminating",
+    "quest:SetTimer",
+    "quest:GetTimer"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/DarkwoodBalverineTrader.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 404,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:GiveThingBestEnemyTarget",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/DarkwoodRockTroll.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 1,
+   "calls": 9,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:GiveThingBestEnemyTarget",
+    "quest:GetHealth",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetActiveQuestName",
+    "quest:SetQuestCardObjective",
+    "quest:SetStateBool"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 6,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:SetStateBool",
+    "quest:GetActiveQuestName",
+    "quest:SetQuestCardObjective",
+    "quest:DisplayQuestInfo",
+    "quest:AddQuestInfoBarHealth",
+    "quest:MiniMapAddMarker"
+   ]
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 1,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "me:MsgIsKilledBy"
+   ]
+  }
+ },
+ "TraderEscort/Entities/DarkwoodTrader.lua": {
+  "freeGlobals": [
+   "__unknown_push",
+   "a",
+   "extraout_EAX",
+   "extraout_EAX_00",
+   "int3",
+   "stack0xfffffe48",
+   "unaff_EBP_b3",
+   "unaff_EBX",
+   "unaff_EBX_b3"
+  ],
+  "load_error": "DarkwoodTrader.lua:272: unexpected symbol near '&'"
+ },
+ "TraderEscort/Entities/DW5_Balv.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 602,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/DW5_Bandit.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 602,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsAwareOfHero"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/EndTrader.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 413,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:RetailResources",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "resources:NewResource",
+    "resources:PrepareResource",
+    "resources:TryAcquire",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetThingWithScriptName",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetStateBool",
+    "quest:IsActiveThreadTerminating",
+    "resources:PrepareResource"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 2,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:SetIsPushableByHero",
+    "quest:GetStateBool"
+   ]
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 1,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "me:MsgIsKilledBy"
+   ]
+  }
+ },
+ "TraderEscort/Entities/FleshEatingBalverine.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 603,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:RetailResources",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetStateBool",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetStateBool",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetStateBool",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/InfectedBalverine.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 2001,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:RetailResources",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "resources:NewResource",
+    "resources:PrepareResource",
+    "resources:TryAcquire",
+    "quest:IsActiveThreadTerminating",
+    "quest:ReadGlobalGameData",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "me:IsPerformingScriptTask",
+    "quest:IsActiveThreadTerminating"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/MagicBarrier.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 614,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:GetThingWithScriptName",
+    "GetThingWithScriptName:IsNull",
+    "GetThingWithScriptName:GetAngleXY",
+    "GetThingWithScriptName:IsNull",
+    "GetThingWithScriptName:GetPos",
+    "quest:CreateEffect",
+    "GetThingWithScriptName:IsNull",
+    "GetThingWithScriptName:GetAngleXY",
+    "GetThingWithScriptName:IsNull",
+    "GetThingWithScriptName:GetPos",
+    "quest:CreateEffect",
+    "quest:GetStateBool"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 1,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:EntitySetAsDrawable"
+   ]
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/RockTrollTrigger.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 804,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:RetailResources",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:ReadGlobalGameData",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/TE_BanditLeader.lua": {
+  "Main": {
+   "ok": true,
+   "error": null,
+   "frames": 201,
+   "calls": 802,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder",
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetHero",
+    "quest:IsDistanceBetweenThingsUnder"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/Entities/TraderComment.lua": {
+  "Main": {
+   "ok": false,
+   "error": "TraderComment.lua:30: attempt to perform arithmetic on a nil value (local 'puVar1')",
+   "frames": 1,
+   "calls": 5,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": [
+    "quest:NewScriptFrame",
+    "quest:IsActiveThreadTerminating",
+    "quest:GetAllThingsWithScriptName",
+    "quest:ReadGlobalGameData",
+    "quest:IsActiveThreadTerminating"
+   ]
+  },
+  "Init": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPersist": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  },
+  "OnPredicateFail": {
+   "ok": true,
+   "error": null,
+   "frames": 0,
+   "calls": 0,
+   "unknownMethods": [],
+   "pendingMethods": [],
+   "trace": []
+  }
+ },
+ "TraderEscort/native_quest_helpers.lua": {
+  "freeGlobals": [
+   "extraout_EAX",
+   "extraout_EAX_00",
+   "extraout_EAX_01",
+   "extraout_EAX_03",
+   "extraout_EAX_04",
+   "local_28",
+   "xStack_34",
+   "xStack_3c"
+  ],
+  "load_error": "native_quest_helpers.lua:111: unexpected symbol near ':'"
+ },
+ "TraderEscort/TraderEscort.lua": {
+  "freeGlobals": [
+   "extraout_EAX",
+   "extraout_EAX_00",
+   "extraout_EAX_01",
+   "extraout_EAX_03",
+   "extraout_EAX_04"
+  ],
+  "load_error": "TraderEscort.lua:949: unexpected symbol near ':'"
+ }
+}

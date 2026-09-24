@@ -1,0 +1,90 @@
+[
+  {
+    "step": 0,
+    "response": [
+      "[Autopilot] batch 2",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=true phase=3 health=34.0 hero=1.0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 1,
+    "response": [
+      "[Autopilot] batch 5",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=true phase=3 health=29.0 hero=1.0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 2,
+    "response": [
+      "[Autopilot] batch 8",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = MINION ranged=true phase=5 health=27.0 hero=0.94999998807907",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 3,
+    "response": [
+      "[Autopilot] batch 10",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = MINION ranged=false phase=5 health=27.0 hero=0.94999998807907",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 4,
+    "response": [
+      "[Autopilot] batch 12",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=false phase=6 health=27.0 hero=0.94999998807907",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 5,
+    "response": [
+      "[Autopilot] batch 15",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=false phase=6 health=21.0 hero=0.80000001192093",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 6,
+    "response": [
+      "[Autopilot] batch 18",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=false phase=6 health=15.0 hero=0.69999998807907",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 7,
+    "response": [
+      "[Autopilot] batch 21",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=false phase=6 health=7.0 hero=1.0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 8,
+    "response": [
+      "[Autopilot] batch 24",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=true phase=6 health=1.0 hero=1.0",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 9,
+    "response": [
+      "[Autopilot] batch 27",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = QUEEN ranged=true phase=6 health=0.0 hero=0.85000002384186",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  },
+  {
+    "step": 10,
+    "response": [
+      "[Autopilot] batch 30",
+      "[Autopilot] eval eval WaspBoss: (function() local q=quest:GetThingWithScriptName('QueenHornet'); local h=quest:GetHero(); local t=q; local kind='QUEEN'; for _,c in ipairs(quest:GetAllCreaturesExcludingHero()) do if c:IsAlive() and c:GetDefName()=='CREATURE_HORNET_PICNIC' then t=c; kind='MINION'; break end end if not q or not q:IsAlive() or quest:GetStateBool('MissionSucceeded') then return 'DONE' end if quest:IsInCutscene() or quest:IsInMovieSequence() then return 'SCENE' end local p=t:GetPos(); p.x=p.x+(kind=='MINION' and 1 or 5); p.z=30; if quest:GetDistanceBetweenThings(h,t)>(kind=='MINION' and 3 or 12) then quest:EntityTeleportToPosition(h,p,0,true,true) end; quest:EntitySetFacingAngleTowardsThing(h,t,true); return kind..' ranged='..tostring(quest:IsEntityWieldingRangedWeapon(h))..' phase='..quest:EntityGetBossPhase(q)..' health='..quest:GetHealth(q)..' hero='..quest:GetHeroHealthPercentage() end)() = DONE",
+      "[Autopilot] processed 2 line(s)"
+    ]
+  }
+]

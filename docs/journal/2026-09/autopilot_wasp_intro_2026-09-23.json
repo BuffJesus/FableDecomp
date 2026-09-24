@@ -1,0 +1,7 @@
+[
+  {
+    "id": "wasp_intro",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = WASP_INTRO_FINISHED/ seen after 6 send(s)"
+  }
+]

@@ -1,0 +1,52 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 91627ec..5243110 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1911,11 +1911,18 @@ void InitializeVictimActor(CScriptThing* actor) {
+         RunCutsceneMacro_Func(key, e.map, flags->NativeMap(), nullptr, setup, skippable);
+     }
+ 
+-    unsigned StartMovie(const std::string& name) {
++    unsigned StartMovie(const std::string& name, sol::this_state state) {
+         CheckOpen();
++        lua_State* lua = state;
++        luaL_traceback(lua, lua, nullptr, 1);
++        std::string caller = lua_tostring(lua, -1);
++        lua_pop(lua, 1);
+         for (const auto& e : m_entries)
+-            if (e.second->live && e.second->kind == Kind::Movie)
++            if (e.second->live && e.second->kind == Kind::Movie) {
++                LogToFile("[RetailMovie] refused scope=" + std::to_string(reinterpret_cast<uintptr_t>(this)) +
++                    " live=" + std::to_string(e.first) + "\n" + caller);
+                 throw std::runtime_error("Retail resource scope already owns a movie");
++            }
+         auto& e = Add(Kind::Movie);
+         CBaseObject_Construct_API(&e.movie);
+         e.movie.pVTable = g_pMovieObjectVTable;
+@@ -1923,6 +1930,8 @@ void InitializeVictimActor(CScriptThing* actor) {
+         e.movie.pImp.Info = nullptr;
+         e.live = true;
+         FableString key(name.c_str());
++        LogToFile("[RetailMovie] start scope=" + std::to_string(reinterpret_cast<uintptr_t>(this)) +
++            " id=" + std::to_string(e.id) + " name=" + name + "\n" + caller);
+         StartMovieSequence_API(m_game, key, &e.movie);
+         return e.id;
+     }
+@@ -2001,12 +2010,15 @@ private:
+         }
+         g_retailResourceHandles.erase(&e.resource);
+     }
+-    static void Destroy(Entry& e) noexcept {
++    void Destroy(Entry& e) noexcept {
+         if (!e.live) return;
+         switch (e.kind) {
+         case Kind::Resource: Unregister(e); CSGROSTB_Destroy_API(&e.resource); break;
+         case Kind::ActorMap: StdMap_Destroy_API(e.map); Game_free(e.map); e.map = nullptr; break;
+-        case Kind::Movie: MovieResource_Destroy_API(&e.movie); break;
++        case Kind::Movie:
++            LogToFile("[RetailMovie] destroy scope=" + std::to_string(reinterpret_cast<uintptr_t>(this)) +
++                " id=" + std::to_string(e.id));
++            MovieResource_Destroy_API(&e.movie); break;
+         case Kind::Thing: RetailThing_Destroy_API(&e.thing); break;
+         case Kind::Text: CCharString_Destroy(&e.text); break;
+         case Kind::StringMap: StdMap_String_Destroy_API(e.map); Game_free(e.map); e.map=nullptr; break;

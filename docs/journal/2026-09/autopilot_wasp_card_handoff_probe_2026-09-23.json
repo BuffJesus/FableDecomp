@@ -1,0 +1,17 @@
+[
+  {
+    "id": "wasp_persistent_completion",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = WASP_CARD_COMPLETED/ seen after 2 send(s)"
+  },
+  {
+    "id": "wasp_gameflow_handoff",
+    "status": "PASS",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = MAZE_MEETING_STAGE/ seen after 1 send(s)"
+  },
+  {
+    "id": "wasp_guardian_card_present",
+    "status": "FAIL",
+    "detail": "expected /\\[Autopilot\\] eval [^\\r\\n]+ = GUARDIAN_CARD_PRESENT/ not seen within 30.0s"
+  }
+]

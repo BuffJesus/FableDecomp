@@ -2265,7 +2265,7 @@ def name_script_def_reads(source):
             return m.group(0)
         used[field['name']] = (off, field.get('value'))
         return f'{m.group(1)}(SCRIPT_DEF.{field["name"]}'
-    new = re.sub(r'(quest:ReadGlobalGameData(?:Float|FloatAt)?)\((0x[0-9a-f]+|\d+)', repl, source)
+    new = re.sub(r'(quest:ReadGlobalGameData(?:Float|FloatAt|String)?)\((0x[0-9a-f]+|\d+)', repl, source)
     if not used:
         return source, 0
     rows = ''.join(f'    {name} = {off},{"  -- " + repr(value) if value is not None else ""}\n' for name, (off, value) in sorted(used.items(), key=lambda kv: kv[1][0]))

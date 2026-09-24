@@ -44,6 +44,17 @@ def game_input(spec: str, timeout: float = 60.0) -> str:
     parts = spec.split()
     if not parts:
         return ''
+    if parts[0] == 'wait' and len(parts) == 2:
+        seconds = float(parts[1])
+        if not 0 <= seconds <= min(timeout, 30):
+            raise ValueError('input wait must be between 0 and 30 seconds and within timeout')
+        time.sleep(seconds)
+        return ''
+    if parts[0] == 'clear_all' and len(parts) == 1:
+        for pages in range(8):
+            if game_input('clear', timeout).strip() == '(no box)':
+                return f'cleared {pages} tutorial page(s)'
+        raise RuntimeError('tutorial still present after eight dismissals')
     if parts[0] == 'key':
         args = ['-Action', 'key', '-Keys', ' '.join(parts[1:])]
     elif parts[0] in ('click', 'move') and len(parts) == 3:
@@ -71,7 +82,7 @@ def game_input(spec: str, timeout: float = 60.0) -> str:
     elif parts[0] == 'lmb':                       # `lmb [count]`: attack / confirm clicks where the cursor is
         args = ['-Action', 'lmb', '-X', parts[1] if len(parts) > 1 else '1']
     else:
-        raise ValueError(f'bad input spec {spec!r} (key <KEYS> | hold <KEY> <ms> | chord <KEY> <ms> | click <X> <Y> | move <X> <Y> | lmb [count] | clear | skip | focus | capture <file>)')
+        raise ValueError(f'bad input spec {spec!r} (key <KEYS> | wait <seconds> | hold <KEY> <ms> | chord <KEY> <ms> | click <X> <Y> | move <X> <Y> | lmb [count] | clear | clear_all | skip | focus | capture <file>)')
     r = subprocess.run(['powershell', '-NoProfile', '-File', str(GAMEWIN)] + args, capture_output=True, text=True, timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError(f'gamewin {spec!r} failed: {r.stderr.strip()[-300:]}')
@@ -98,7 +109,12 @@ def stage_save(profile: str) -> Path | None:
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (dst / f).is_file():
             shutil.copy2(dst / f, backup / f)
-        shutil.copy2(src / f, dst / f)
+        if (src / f).is_file():
+            shutil.copy2(src / f, dst / f)
+        else:
+            # Quest/hero snapshots are optional. Do not mix an older profile's
+            # companion with a fresh native AutoSave that has none.
+            (dst / f).unlink(missing_ok=True)
     print(f'staged {profile}/AutoSave -> {dst} (backup {backup})')
     return backup
 
@@ -135,10 +151,14 @@ def restore_save(backup: Path | None) -> None:
     import shutil
     if not backup:
         return
+    if not backup.is_dir():
+        raise FileNotFoundError(f'save backup directory is missing: {backup}')
     dst = SAVES / FRONTEND_PROFILE_DIR
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (backup / f).is_file():
             shutil.copy2(backup / f, dst / f)
+        else:
+            (dst / f).unlink(missing_ok=True)
     print(f'restored {dst} from {backup}')
 
 
@@ -278,6 +298,15 @@ def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
 def launch_and_load(bundle: str, timeout: float = 240.0) -> None:
     """launch the bundle (ab_playtest, background), then drive the frontend to the 0atlas AutoSave and wait for a host"""
     import subprocess
+    if __package__:
+        from .ab_playtest import fable_running
+    else:
+        from ab_playtest import fable_running
+    if fable_running():
+        sys.exit('Fable.exe is already running; close it before launching a replay')
+    # A timed-out/repeated query can still be queued after its step passes.
+    # Never let a new game consume commands left by the previous session.
+    commands_path(bundle).unlink(missing_ok=True)
     log = log_path(bundle)
     if log.is_file():
         log.unlink()                                 # a fresh log: the launcher appends, and stale markers would satisfy waits
@@ -436,6 +465,7 @@ def run_checklist(bundle: str, steps: list[dict], default_timeout: float = 30.0,
                         game_input(d[6:].strip())
                     except Exception as e:  # noqa: BLE001 - reported as a step failure
                         got.append(f'[Autopilot] error input {d[6:].strip()}: {e}')
+                        break
                 else:
                     pending.append(d)
             flush()

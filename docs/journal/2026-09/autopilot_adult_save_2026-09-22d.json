@@ -1,0 +1,7 @@
+[
+  {
+    "id": "channel",
+    "status": "FAIL",
+    "detail": "channel: [Autopilot] TIMEOUT after 10.0s (is the game running with this bundle? is a script advancing frames?)"
+  }
+]

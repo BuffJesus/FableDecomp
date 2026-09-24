@@ -1,0 +1,38 @@
+[
+ {
+  "id": "sister_completed",
+  "do": [
+   "eval LUAGameflow: (quest:IsQuestCompleted('QS_GuardianSisterInfo')) and 'MAZE_COMPLETED' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= MAZE_COMPLETED",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Read-only progression check; never consumes MsgOnQuestCompleted or writes outcome state."
+ },
+ {
+  "id": "orchard_stage",
+  "do": [
+   "eval LUAGameflow: (quest:GetMasterGameState('PostSavePosition') == 400) and 'ORCHARD_STAGE' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= ORCHARD_STAGE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Read-only progression check; never consumes MsgOnQuestCompleted or writes outcome state."
+ },
+ {
+  "id": "orchard_waiting",
+  "do": [
+   "eval LUAGameflow: quest:GetStateBool('CoreQuestWaiting') and 'ORCHARD_WAITING' or 'HANDOFF_PENDING'"
+  ],
+  "expect": "= ORCHARD_WAITING",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "repeat": 40,
+  "interval": 3,
+  "timeout": 180,
+  "note": "Persistent gameflow state after adding both Orchard cards. World-entity enumeration is not a card-manager query and returns no guild cards while in Bowerstone."
+ }
+]

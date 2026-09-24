@@ -6,32 +6,41 @@
   ],
   "expect": "\\[Autopilot\\] list: \\d+ hosts",
   "timeout": 10,
-  "note": "PREREQUISITE: an ADULT save (the chain's graduation autosave). Retail offers the two farm cards at Gameflow stage 300 -> 400: stage 300 waits on MsgOnQuestCompleted('QS_GuardianSisterInfo') -- after the wasp boss -- then AddQuestCard('OBJECT_QUEST_CARD_PROTECT_FARM', 'Q_OrchardFarmRaidGood') and the evil twin, and stage 400 polls IsQuestActive on either. Accepting a card IS ActivateQuest, so this checklist starts the quest the same way the board would"
+  "note": "PREREQUISITE: start from adult_maze_completed_2026-09-23 (stage 400), manually accept Protect Orchard Farm through the real guild card UI, and close menus. ActivateQuest is not equivalent to card acceptance. The first five entry steps passed on v12; combat and reward UI require supervised real input."
  },
  {
-  "id": "orchard_activate",
-  "repeat": 10,
-  "interval": 4.0,
+  "id": "orchard_accepted_prerequisite",
   "do": [
-   "Gameflow: quest:ActivateQuest('Q_OrchardFarmRaidGood')",
-   "list"
+   "eval LUAGameflow: (quest:IsQuestCompleted('QS_GuardianSisterInfo') and quest:IsQuestActive('Q_OrchardFarmRaidGood')) and 'ORCHARD_ACCEPTED_PREREQUISITE' or 'ACCEPT_ORCHARD_CARD_MANUALLY_FIRST'"
   ],
-  "expect": "\\[Autopilot\\] host OrchardFarmRaid(Good)?/",
+  "expect": "= ORCHARD_ACCEPTED_PREREQUISITE",
+  "forbid": "LUA RUNTIME ERROR|Autopilot.*error",
+  "timeout": 30,
+  "note": "Active state does not prove accepted-card bookkeeping; follow the manual UI prerequisite."
+ },
+ {
+  "id": "orchard_scene_idle",
+  "do": [
+   "input: clear",
+   "eval LUAGameflow: (not quest:IsInCutscene() and not quest:IsInMovieSequence()) and 'SCENE_IDLE' or 'SCENE_BUSY'"
+  ],
+  "expect": "= SCENE_IDLE",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 120,
-  "note": "on the v6 bundle the Gameflow host is LUAGameflow/LUAGameflow and on v7 it is Gameflow/Gameflow -- send the line to whichever `list` reports. Q_OrchardFarmRaid itself is the shared script; Good/Evil are the two wrappers"
+  "repeat": 30,
+  "interval": 3,
+  "timeout": 120
  },
  {
   "id": "orchard_region",
-  "repeat": 12,
-  "interval": 5.0,
   "do": [
-   "OrchardFarmRaidGood: quest:GoToMapSlotRetailTransition(9, 3248.0, 3232.0, 42.5)"
+   "input: clear",
+   "OrchardFarmRaid: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'crossing refused: scene active'); quest:GoToMapSlotRetailTransition(9, 3203.57, 3206.19, 41.02)",
+   "input: clear"
   ],
   "expect": "\\[RegionDiag\\]|SetAsLoadingRegion",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "map slot 9 = OrchardFarm (forge world: origin 3200,3168, 96x128, region OrchardFarm; slot 10 is OrchardFarmEast). z from `forge heights OrchardFarm 48,64` = 42.49. Arm the transition ONCE per crossing (GOTCHAS)"
+  "note": "Good-side arrival must be within 10m of GuardTeamSpawn (3200.57,3206.19,40.02). Center-of-map arrival triggers HeroAtWrongEntrance, which requires unloading OrchardFarm before retry. Confirmed by live rejection, source gate, and successful guard-side intro. One guarded crossing."
  },
  {
   "id": "orchard_entities",
@@ -39,34 +48,34 @@
   "interval": 4.0,
   "do": [
    "input: clear",
+   "eval OrchardFarmRaid: quest:IsRegionLoaded('OrchardFarm') and 'ORCHARD_LOADED' or 'ORCHARD_LOADING'",
    "list"
   ],
-  "expect": "Binding entity '(GuardTeamSpawn|BanditTeamSpawn|Artefact|OrchardFarmWhisper|GuardTeamMember|BanditTeamMember|FarmRearEntrance)'",
+  "expect": "= ORCHARD_LOADED",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 180,
-  "note": "Q_OrchardFarmRaid.Main binds nine entities (TeamSpawn x2, Artefact, OrchardFarmWhisper, CrateTeamMember x2, FarmRearEntrance and the two intro markers) before it starts its threads"
+  "note": "Shared OrchardFarmRaid host owns state and entity bindings; the Good wrapper only activates it. Bindings may be logged before crossing."
  },
  {
   "id": "orchard_intro",
   "repeat": 16,
   "interval": 4.0,
   "do": [
-   "input: skip",
-   "input: clear"
+   "input: clear",
+   "eval OrchardFarmRaid: quest:GetStateBool('DoneIntroduction') and 'ORCHARD_INTRO_DONE' or 'ORCHARD_INTRO_PENDING'"
   ],
-  "expect": "CS_ORCHARD_GOOD_(INTRO|WHISPERINTRO_GWL|WHISPERINTRO_GWLL|WHISPERINTRO_LOP)|TEXT_QST_051_",
+  "expect": "= ORCHARD_INTRO_DONE",
   "forbid": "LUA RUNTIME ERROR",
   "timeout": 240,
-  "note": "DoCutsceneIfRequired picks the Whisper intro by where the hero came from (GWL / GWLL / LOP); the crate counter is AddQuestInfoCounter('HUD_QUEST_ICON_SMALL_CRATE', 3, 1.0)"
+  "note": "Wait for the actual introduction to finish. No blind ESC presses, which open pause menus outside a movie. Quest Start screen requires Enter; acknowledge it visually before attaching this wait."
  },
  {
   "id": "orchard_crates",
   "repeat": 16,
   "interval": 5.0,
   "do": [
-   "eval OrchardFarmRaidGood: quest:GetStateInt('HeroTeam')",
-   "eval OrchardFarmRaidGood: quest:GetStateBool('MissionSucceeded')",
-   "input: clear"
+   "eval OrchardFarmRaid: quest:GetStateInt('HeroTeam')",
+   "eval OrchardFarmRaid: quest:GetStateBool('MissionSucceeded')"
   ],
   "expect": "eval.*HeroTeam.* = [01]",
   "forbid": "LUA RUNTIME ERROR",
@@ -75,16 +84,14 @@
  },
  {
   "id": "orchard_outcome",
-  "repeat": 20,
-  "interval": 6.0,
   "do": [
-   "OrchardFarmRaidGood: quest:SetStateBool('MissionSucceeded', true)",
-   "input: skip",
-   "input: clear"
+   "eval LUAGameflow: quest:IsQuestCompleted('Q_OrchardFarmRaidGood') and 'ORCHARD_COMPLETED' or 'ORCHARD_PLAY_REQUIRED'"
   ],
-  "expect": "CS_ORCHARD_GOOD_OUTRO|SetQuestAsCompleted: ENTER name='Q_OrchardFarmRaid(Good)?'",
+  "expect": "= ORCHARD_COMPLETED",
   "forbid": "LUA RUNTIME ERROR",
-  "timeout": 300,
-  "note": "the rules thread ends on MissionSucceeded (outro macro + SetQuestAsCompleted on the active quest and its Good/Evil twin) or MissionFailed 1/2/3 (FailReasons_N: TEXT_QST_051_FAILED_CRATES_STOLEN / _HERO_KILLED / _TEAM_KILLED). Staged here the way the melee checklist stages DummyHits"
+  "repeat": 20,
+  "interval": 5,
+  "timeout": 120,
+  "note": "Requires real gameplay to defend the crates and complete the quest. This checklist does not implement combat and must never set MissionSucceeded or treat script startup as completion."
  }
 ]

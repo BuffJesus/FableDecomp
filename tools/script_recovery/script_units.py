@@ -8,6 +8,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 UNITS = {
+    'trader_escort': {
+        # Quest vtable 0x012DF16C: Init 0xE006D0 through destructor 0xE0AFB0.
+        # Q_UndeadRising starts at Init 0xE0B020; inventory checks entity slots.
+        'evidence': ROOT / 'refs/script_recovery/trader_escort',
+        'lo': 0xE006D0, 'hi': 0xE0B020,
+        'ir_glob': 'Q_TraderEscort.json',
+        'scripts': ['Q_TraderEscort'],
+        'pdb_pattern': '*CQ_TraderEscort*',
+        'schema': 'trader-escort-native-inventory/0.1',
+        'package': 'TraderEscort',
+    },
     'guild_training': {
         'evidence': ROOT / 'refs/script_recovery/guild_training',
         'lo': 0xD3B390, 'hi': 0xD68F00,
