@@ -6295,7 +6295,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 105,
+     "sourceLine": 119,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6304,7 +6304,7 @@
     },
     {
      "function": "ProcessGameRulesEvil",
-     "sourceLine": 114,
+     "sourceLine": 128,
      "locals": {
       "bVar10_1": {
        "name": "predicateResult",
@@ -6790,7 +6790,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 316,
+     "sourceLine": 330,
      "locals": {
       "bVar10_1": {
        "name": "predicateResult",
@@ -7373,7 +7373,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 561,
+     "sourceLine": 575,
      "locals": {
       "bVar2_1": {
        "name": "predicateResult",
@@ -7900,7 +7900,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 732,
+     "sourceLine": 746,
      "locals": {
       "bVar1_1": {
        "name": "isActiveThreadTerminating",
@@ -7996,7 +7996,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 774,
+     "sourceLine": 788,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -8053,7 +8053,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 793,
+     "sourceLine": 807,
      "locals": {
       "bVar4_1": {
        "name": "isRegionLoaded",
@@ -8318,7 +8318,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 920,
+     "sourceLine": 934,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8354,7 +8354,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 103,
+     "sourceLine": 117,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8363,7 +8363,7 @@
     },
     {
      "function": "ProcessGameRulesEvil",
-     "sourceLine": 108,
+     "sourceLine": 122,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8372,7 +8372,7 @@
     },
     {
      "function": "ProcessGameRulesGood",
-     "sourceLine": 232,
+     "sourceLine": 246,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8381,7 +8381,7 @@
     },
     {
      "function": "DoCutsceneIfRequired",
-     "sourceLine": 371,
+     "sourceLine": 385,
      "locals": {
       "scratchValue": {
        "name": "thing",
@@ -8399,7 +8399,7 @@
     },
     {
      "function": "WatchForExternalScriptDeactivation",
-     "sourceLine": 460,
+     "sourceLine": 474,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8408,7 +8408,7 @@
     },
     {
      "function": "MakeTeamMemberComment",
-     "sourceLine": 484,
+     "sourceLine": 498,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8417,7 +8417,7 @@
     },
     {
      "function": "DoMultiplierCutscene",
-     "sourceLine": 497,
+     "sourceLine": 511,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8426,7 +8426,7 @@
     },
     {
      "function": "ReplaceQuestCards",
-     "sourceLine": 567,
+     "sourceLine": 581,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8545,7 +8545,7 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 56,
+       "lines": 70,
        "temporaries": 1,
        "labels": 0,
        "gotos": 0,
@@ -8554,7 +8554,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 53,
+       "lines": 67,
        "temporaries": 1,
        "labels": 0,
        "gotos": 0,

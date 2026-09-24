@@ -53,6 +53,20 @@ function Main(quest)
 end
 
 function Init(quest)
+    quest:SetStateInt("Teams_0_MemberCount", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_0", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_1", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_2", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_3", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_4", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_0_StateCounter_5", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_MemberCount", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_0", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_1", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_2", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_3", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_4", 0)  -- native constructor: initial value
+    quest:SetStateInt("Teams_1_StateCounter_5", 0)  -- native constructor: initial value
     quest:SetStateInt("CommentTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("RemindHeroOfObjectivesTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:SetStateInt("Teams_0_TeamReinforcementsTimer", quest:RegisterTimer())  -- native constructor: CTimer member

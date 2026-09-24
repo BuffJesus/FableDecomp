@@ -2023,6 +2023,9 @@
         "M_WhisperFarmRaidIntro": "OrchardFarmRaid/Entities/M_WhisperFarmRaidIntro",
         "MK_OFI_GWLL_WHIS2": "OrchardFarmRaid/Entities/MK_OFI_GWLL_WHIS2"
       },
+      "constructorDefaults": {
+        "Q_OrchardFarmRaid": 14
+      },
       "cleanupRegions": {
         "FSE/OrchardFarmRaid/OrchardFarmRaid.lua": {
           "LAB_00dd0b11": [

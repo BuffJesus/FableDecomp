@@ -1144,6 +1144,22 @@ class UnitConverter:
         self.checker = LuaSyntaxChecker()
         self.flat_control = flat_control
         self.persist_kinds = persist_kinds_from_spec(tu_path)
+        spec_path = Path(tu_path).parent / 'typing_spec.json'
+        slot_params = {}
+        if spec_path.is_file():
+            slot_params = {int(k, 16): len(v.get('params', []))
+                           for k, v in json.loads(spec_path.read_text(encoding='utf-8')).get('slots', {}).items()}
+        self.slot_words = slot_params.get   # an interface vcall's stack operands (constructor emulation)
+
+    def constructor_defaults(self, vtable, fields, exclude):
+        """Constant scalar members the retail constructor leaves (ctor_defaults: emulated, read-only); {} when the
+        constructor is not identified or not provably emulated."""
+        from tools.script_recovery.ctor_defaults import constructor_constants
+        try:
+            return constructor_constants(list(self.by_address.values()), int(vtable, 16), exclude, fields,
+                                         self.slot_words, rdata=self.rdata if getattr(self.rdata, 'ok', False) else None)
+        except (TypeError, ValueError):
+            return {}
 
     def vector_copy_targets(self):
         """Addresses of `std::vector<CScriptThing>` copy constructors in the unit (bsim mislabels them: a body that
@@ -1637,6 +1653,10 @@ class UnitConverter:
         shared_module = f'{package}.native_quest_helpers'
         owners = [('quest', unit['script'], quest_functions, quest_state, {})]
         timers = {unit['script']: unit['quest'].get('timers', [])}
+        def lifecycle(fns):
+            return {int(f['address'], 16) for n, f in fns.items() if n == 'destructor' and f.get('address')}
+        ctor_constants = {unit['script']: self.constructor_defaults(unit.get('vtable'), unit['quest']['fields'],
+                                                                   lifecycle(unit['quest']['functions']))}
         # Several bindings can share one native class (GuardTeamMember/BanditTeamMember -> CCrateTeamMember):
         # emit that class once and register every binding name against the shared file.
         by_class = {}
@@ -1658,6 +1678,8 @@ class UnitConverter:
             ent_functions.update(ent.get('helpers', {}))   # entity-class members, lifted into the same file
             owners.append(('entity', class_owner[name], ent_functions, state_map(ent['fields']), quest_state))
             timers[class_owner[name]] = ent.get('timers', [])
+            ctor_constants[class_owner[name]] = self.constructor_defaults(ent.get('vtable'), ent['fields'],
+                                                                          lifecycle(ent['functions']))
         for kind, owner, functions, state, parent_state in owners:
             entity = kind == 'entity'
             lifter = Lifter(self.manifest, state, 'quest', entity, package, self.rdata,
@@ -1800,6 +1822,27 @@ class UnitConverter:
                     row['nativeLabels'] = sorted(lifter.lua_labels)
                 report['functions'].append(row)
                 chunks.append(function_source)
+            # The constructor's constant scalar members (emulated from the retail ctor): Init stands in for the
+            # constructor, as for the CTimer registrations. A field OnPersist transfers is left alone -- the
+            # save restores it, and resetting it here could overwrite a loaded value.
+            defaults = ctor_constants.get(owner) or {}
+            init_at = next((i for i, c in enumerate(chunks) if c.startswith('function Init(')), None)
+            if defaults and init_at is not None:
+                persisted = set()
+                for c in chunks:
+                    if c.startswith('function OnPersist('):
+                        persisted |= set(re.findall(r'Persist\w*\(context, "(\w+)"', c))
+                receiver = '__native_entity_state' if entity else 'quest'
+                lines = []
+                for field, (kind, value) in sorted(defaults.items()):
+                    if field in persisted or field in timers.get(owner, []):
+                        continue
+                    lua = ('true' if value else 'false') if kind == 'Bool' else repr(value) if kind == 'Float' else str(value)
+                    lines.append(f'    {receiver}:Set{"State" + kind}("{field}", {lua})  -- native constructor: initial value')
+                if lines:
+                    head, _, rest = chunks[init_at].partition('\n')
+                    chunks[init_at] = head + '\n' + '\n'.join(lines) + '\n' + rest
+                    report.setdefault('constructorDefaults', {})[owner] = len(lines)
             if any('__native_all_dead(' in c for c in chunks):
                 chunks.insert(3, ALL_DEAD_HELPER)
             source, hoisted = hoist_cleanup_regions('\n'.join(chunks))
