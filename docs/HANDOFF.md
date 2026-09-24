@@ -17,7 +17,7 @@ depth-fixed export is promoted for Trader Escort. Trader Escort: **186 -> 175 TO
 `extraout_EAX` noise in DarkwoodTrader (liveness), inlined CScriptThing copy of
 `speaker` in MakeTraderComment, `AddQuestInfoBarHealth` colour operand. New exports for
 the other 15 units wait in `work/ebp_fix/` (promote after diff review; the
-exporter Java change is uncommitted, owned by the peer session). See the
+exporter fix is committed as fa56828). See the
 journal's 2026-09-24 sections.
 
 Resume with [the conversion journal](journal/2026-09/TRADER_ESCORT_CONVERSION_2026-09-23.md)
