@@ -270,3 +270,31 @@ DarkwoodTrader, which is Ghidra byte-merge noise
 are overwritten before use. It needs a liveness pass. 156 focused tests OK
 (adds `test_spawn_capture`). Established-unit drafts are unchanged (Guild:
 the two known removals). Not in-game tested; registration stays disabled.
+
+## 2026-09-24 (afternoon): three converter rules, all units regenerated (5b410fe)
+
+Picked up after fabletlc-89 moved to the decomp. From WatchForPickpocketing 0x00E04F10:
+
+1. **Out-thing messages.** Retail `bool MsgOnHeroPickedPocket(CScriptThing *out)` (slot 0xD4) is bound as
+   `sol::object` returning the thing or nil; the lifter dropped the out slot and read the bool, so the victim was
+   always nil and the pickpocket count never rose. `out_thing_messages()` derives the set from the typing spec +
+   manifest (MsgOnHeroPickedPocket/PickedLock/FishingGameFinished/TavernGameFinished, all verified to return the thing).
+2. **By-value thing destructor.** `T._8_4_` refcount release (forward block + inverted `||`-goto form) folds away in
+   `fold_by_value_thing_release`, keeping the label; the lifter-side attempt had swallowed `LAB_00e05100` and turned
+   an exit into a loop (caught in review, reverted). `T._4_4_ == 0` is validity; `IsEqualTo(x, T._4_4_)` takes `T`
+   (retail passes other.Data -- consistent with the IsEqualTo sidecar fix e61249e).
+3. **Byte flags.** `cVar = '\0' ... if (cVar != '\0')` lifted to `cVar = 0 ... if cVar then` (always true in Lua).
+   `fold_char_flags` gives such locals boolean literals (also `undefined1` locals stored 0/1 and tested `(bool)x`).
+   Shipped effects: WaspBoss helper_E13310 treated a null queen as killed; WaspHelper Main's one-shot lines never
+   played; V_TourGuide WatchForGuideKilled left its loop on a null guide. Stack-slot / merged-byte flags are excluded
+   (a literal slot store would vanish silently where the '\0' form stays a TODO); ChickenMaster Main keeps one such
+   mixed flag (not on a tested path).
+
+Method: regenerated every unit with the HEAD converter as a baseline, then with the rules, and reviewed the
+baseline->rules diff (renumbered readable names aside, every semantic hunk is one of the three rules; unresolved
+`nil ~= 0` values flip to `nil` -- both wrong, pre-existing TODOs). The HEAD baseline also showed 21 committed files
+stale against the HEAD converter (TourGuide readable, SickChild, Bordello, ...); refreshed in the same commit.
+Smoke: Wasp/Orchard/TraderConflict/Guardian/Gameflow clean; TourGuide's two errors are pre-existing; Trader Escort
+readable 2 problems (DarkwoodTrader `extraout_EAX`, MagicBarrier now reaching its unlowered thing copy). The smoke
+mock now returns nil (not false) for the out-thing messages. Trader Escort TODOs 175 -> 169.
+GuildTraining's `readable_converter` stage was not regenerated (the batch used `readable/`).

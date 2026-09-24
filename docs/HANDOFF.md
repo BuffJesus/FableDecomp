@@ -5,7 +5,7 @@ Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMA
 
 Trader Escort is an unfinished, disabled draft (98 native bodies, 14 entity
 bindings, 4 quest workers, 65 generated functions). As of 2026-09-24:
-**175 TODOs; 65/65 functions and 16/16 files compile; smoke 1 problem**
+**169 TODOs; 65/65 functions and 16/16 files compile; readable smoke 2 problems**
 (draft and readable). Not packaged or tested in game.
 
 Done 2026-09-24 (see the journal's 2026-09-24 sections): RET-proven callee
@@ -26,9 +26,10 @@ Next, in order:
 4. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object
    settles it).
 
-Next bundle (v14, not built): v13 + `novi-zzzz-quest-failed-message.patch` in the sidecar + the
-Orchard output from b270c0f (constructor zero-inits in Init). Sidecar-side namespace clearing on host creation
-is deliberately NOT done: check first whether persisted state is loaded into the global map before a host exists.
+v15 (not built): v14 + the regenerated shipped readables from 5b410fe (WaspBoss helper + WaspHelper flag fixes,
+TourGuide refresh). Converter rules added 5b410fe: out-thing messages, by-value thing release, byte flags (see the
+conversion journal's 2026-09-24 afternoon section). Sidecar-side namespace clearing on host creation is still NOT
+done: check first whether persisted state is loaded into the global map before a host exists.
 
 Change generators and evidence, never generated Lua by hand.
 
