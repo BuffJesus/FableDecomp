@@ -11,8 +11,8 @@ function Main(quest, me)
     local self_0x = self0X14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult6, scratchValue4, scratchValue6, conversationId, pOther
-    local scratchValue10, scratchValue11
+    local predicateResult, predicateResult6, scratchValue5, scratchValue7, conversationId, pOther
+    local scratchValue11, scratchValue12
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     local resource = resources:NewResource()
@@ -58,32 +58,32 @@ function Main(quest, me)
         end
         me:ClearCommands()
         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-        scratchValue4 = math.random(0, 32767)
-        scratchValue6 = quest:EntityGetSex(me)
-        if scratchValue6 == 1 then
+        scratchValue5 = math.random(0, 32767)
+        scratchValue7 = quest:EntityGetSex(me)
+        if scratchValue7 == 1 then
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
                 quest:DeregisterTimer(timerId)
                 return
             end
-            pOther = self_0x + 316 + (scratchValue4 % 5) * 4
+            pOther = self_0x + 316 + (scratchValue5 % 5) * 4
             goto LAB_00ee50ab
-        elseif scratchValue6 == 2 then
+        elseif scratchValue7 == 2 then
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
                 quest:DeregisterTimer(timerId)
                 return
             end
-            pOther = self_0x + 336 + (scratchValue4 % 5) * 4
+            pOther = self_0x + 336 + (scratchValue5 % 5) * 4
             goto LAB_00ee50ab
         end
         goto FLOW_past_lab_00ee50ab
         ::LAB_00ee50ab::
-        scratchValue11 = pOther
+        scratchValue12 = pOther
         ::FLOW_past_lab_00ee50ab::
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
-        quest:AddLineToConversation(conversationId, scratchValue11, me, hero, false)
+        quest:AddLineToConversation(conversationId, scratchValue12, me, hero, false)
         quest:SetTimer(timerId, quest:ReadGlobalGameData(2276))
         me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(2256), true)
         quest:NewScriptFrame(me)
@@ -107,8 +107,8 @@ function Main(quest, me)
     end
     if not quest:IsActiveThreadTerminating() then
         local closingTimeExit = quest:GetThingWithScriptName("M_TG_ClosingTimeExit")
-        local scratchValue2 = false and (closingTimeExit ~= nil and closingTimeExit:IsAlive())
-        if scratchValue2 then
+        local predicateResult2 = not resources:ScriptThing(resource):IsNull() and (closingTimeExit ~= nil and closingTimeExit:IsAlive())
+        if predicateResult2 then
             if not quest:IsActiveThreadTerminating() then
                 -- TODO(native): xStack_28 = puVar7.x;
                 resources:ScriptThing(resource)
@@ -116,7 +116,7 @@ function Main(quest, me)
     --[[unresolved native result]]
                 while nil do
                     if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
-                    me:MoveToPosition(scratchValue10, 1.0, ENTITY_MOVE_WALK, false, true)
+                    me:MoveToPosition(scratchValue11, 1.0, ENTITY_MOVE_WALK, false, true)
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
                     end

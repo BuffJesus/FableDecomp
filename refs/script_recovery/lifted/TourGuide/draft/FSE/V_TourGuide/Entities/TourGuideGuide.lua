@@ -469,7 +469,7 @@ function Main(quest, me)
     if not bVar4 then
         pCVar8 = quest:GetThingWithScriptName("M_TG_ClosingTimeExit")
         xStack_8c = pCVar8
-        bVar4 = false
+        bVar4 = (not resources:ScriptThing(xStack_9c):IsNull())
         __native_condition_1 = bVar4
         if __native_condition_1 then
             iVar6 = (xStack_8c ~= nil and xStack_8c:IsAlive())
@@ -484,14 +484,11 @@ function Main(quest, me)
                 else
                     puVar10 = xStack_8c:GetPos()
                 end
-                -- TODO(native): xStack_64._0_4_ = puVar10.x;
-                -- TODO(native): xStack_64._4_4_ = puVar10.y;
+                r2 = {x = puVar10.x, y = puVar10.y, z = puVar10.z}
                 iVar6 = 3.0
-                -- TODO(native): xStack_64._8_4_ = puVar10.z;
                 r1 = resources:ScriptThing(xStack_9c)
                 pvVar11 = r1
-                -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
-                iVar6 = nil --[[unresolved native result]]
+                iVar6 = (pvVar11 ~= nil and pvVar11:IsDistanceFromPositionOver(r2, iVar6))
                 cVar5 = iVar6
                 while cVar5 do
                     alive = quest:NewScriptFrame(me)
@@ -515,8 +512,7 @@ function Main(quest, me)
                     iVar6 = 3.0
                     r1 = resources:ScriptThing(xStack_9c)
                     pvVar11 = r1
-                    -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
-                    iVar6 = nil --[[unresolved native result]]
+                    iVar6 = (pvVar11 ~= nil and pvVar11:IsDistanceFromPositionOver(r2, iVar6))
                     cVar5 = iVar6
                 end
                 alive = not quest:IsActiveThreadTerminating()

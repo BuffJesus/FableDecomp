@@ -47,8 +47,8 @@ function Main(quest, me)
                         native_arg_sequence_1 = false
                     end
                     if native_arg_sequence_1 then
-                        bVar1 = false
-                        if bVar1 ~= 0 then
+                        bVar1 = (not resources:ScriptThing(xStack_20):IsNull())
+                        if bVar1 then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false

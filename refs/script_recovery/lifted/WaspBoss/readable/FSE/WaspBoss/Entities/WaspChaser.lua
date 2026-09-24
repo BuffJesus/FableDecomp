@@ -18,7 +18,7 @@ function Main(quest, me)
         if waspChaseWoman ~= nil and waspChaseWoman:IsAlive() then
             quest:NewScriptFrame(me)
         else
-            if false ~= 0 then
+            if not resources:ScriptThing(resource):IsNull() then
                 resources:PrepareResource(resource)
             end
             break

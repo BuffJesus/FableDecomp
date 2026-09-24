@@ -163,7 +163,7 @@ function Main(quest, me)
                 if not bVar2 then
                     pCVar6 = quest:GetThingWithScriptName("M_TG_ClosingTimeExit")
                     xStack_40 = pCVar6
-                    bVar2 = false
+                    bVar2 = (not resources:ScriptThing(xStack_10):IsNull())
                     __native_condition_2 = bVar2
                     if __native_condition_2 then
                         iVar4 = (xStack_40 ~= nil and xStack_40:IsAlive())

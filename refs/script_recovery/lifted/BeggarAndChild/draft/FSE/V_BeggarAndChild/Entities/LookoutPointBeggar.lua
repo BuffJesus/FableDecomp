@@ -1249,8 +1249,8 @@ function Main(quest, me)
                 native_arg_sequence_2 = false
             end
             if native_arg_sequence_2 then
-                bVar3 = false
-                if bVar3 ~= 0 then
+                bVar3 = (not resources:ScriptThing(r1):IsNull())
+                if bVar3 then
                     native_arg_sequence_2 = true
                 else
                     native_arg_sequence_2 = false

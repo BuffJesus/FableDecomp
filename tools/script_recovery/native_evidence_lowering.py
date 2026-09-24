@@ -1748,6 +1748,18 @@ def fold_position_reads(text):
     text = re.sub(r'^(?P<ind>[ \t]*)(?P<obj>\w*Stack_(?P<slot>[0-9a-f]+))(?:\._0_4_|\[0\]) = (?P<v>\w+)\.x;[ \t]*\r?\n'
                   r'[ \t]*(?P=obj)(?:\._4_4_|\[1\]) = (?P=v)\.y;[ \t]*\r?\n'
                   r'[ \t]*(?P=obj)(?:\._8_4_|\[2\]) = (?P=v)\.z;[ \t]*\r?\n', vector_copy, text, flags=re.M)
+    # the same copy with the compiler's unrelated scalar stores scheduled between the member stores (DarkwoodTrader
+    # Main: `._4_4_ = V.y; fVar21 = 3.0; ._8_4_ = V.z;` -- the waypoint position of every IsDistanceFromPositionOver
+    # test, 2026-09-24); the interleaved stores are kept, after the copy
+    def vector_copy_interleaved(m):
+        between = [l for l in (m.group('a') or '', m.group('b') or '') if l]
+        if any(re.search(r'\b(?:' + re.escape(m.group('obj')) + '|' + re.escape(m.group('v')) + r')\b', l) for l in between):
+            return m.group(0)
+        return vector_copy(m) + ''.join(between)
+    other = r'(?:[ \t]*\w+ = [^;\n]*;[ \t]*\r?\n)?'
+    text = re.sub(r'^(?P<ind>[ \t]*)(?P<obj>\w*Stack_(?P<slot>[0-9a-f]+))(?:\._0_4_|\[0\]) = (?P<v>\w+)\.x;[ \t]*\r?\n'
+                  r'(?P<a>' + other + r')[ \t]*(?P=obj)(?:\._4_4_|\[1\]) = (?P=v)\.y;[ \t]*\r?\n'
+                  r'(?P<b>' + other + r')[ \t]*(?P=obj)(?:\._8_4_|\[2\]) = (?P=v)\.z;[ \t]*\r?\n', vector_copy_interleaved, text, flags=re.M)
     return text
 
 
@@ -3406,7 +3418,10 @@ LUA_PSEUDO = [
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),
     (re.compile(r'ACTORMAP_Destroy\('), 'resources:DestroyActorMap('),
-    (re.compile(r'RESOURCE_IsAcquired\(\w+\)'), 'false'),   # a freshly constructed stack resource has no handle yet ([this+8] == 0)
+    # retail 0xCD23B9 tests the resource's counted handle ([this+8] != 0). A constant `false` held only for a freshly
+    # constructed resource: V_TourGuide's guide acquires first, and its closing-time walk to M_TG_ClosingTimeExit sat
+    # behind `if false and ...` (2026-09-24). An unacquired resource yields an empty thing, so this is false there too.
+    (re.compile(r'RESOURCE_IsAcquired\((\w+)\)'), r'(not resources:ScriptThing(\1):IsNull())'),
     (re.compile(r'LOCALLIST_Count\((\w+)(?:\[0 \+ 1\])?\)'), r'#\1'),   # `vec[0 + 1]` is the vector's begin field, not an element
     (re.compile(r'LOCALLIST_Append\((\w+), (\w+)\)'),
      r'for _, appendedThing in ipairs(\2) do \1[#\1 + 1] = appendedThing end'),

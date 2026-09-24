@@ -2261,7 +2261,7 @@ class Lifter:
                 self.emit(f'{self.declare(target)} = {call}')
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
-                                      else 'bool' if name.startswith('ENGINE_Is') or name.endswith('STATE_GetBool')
+                                      else 'bool' if name.startswith(('ENGINE_Is', 'RESOURCE_Is')) or name.endswith('STATE_GetBool')
                                       else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
@@ -2705,7 +2705,8 @@ class Lifter:
             target, name, argtext = m.group(1), m.group(2), m.group(3)
             resolved = self.callee_names.get(name, name.split("::")[-1])
             if resolved == 'IsDistanceFromThingToPositionOver':
-                operands = [self.expr(a) for a in self.arguments(argtext)]
+                # (the position is passed by address -- `&xStack_68`, EndTrader Main -- or through a C3DVector cast)
+                operands = [self.expr(re.sub(r'^(?:\(C3DVector \*\)\s*)?&(?=\w+$)', '', a.strip())) for a in self.arguments(argtext)]
                 proven = False
                 if len(operands) == 3:
                     actor, position, distance = operands

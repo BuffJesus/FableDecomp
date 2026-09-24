@@ -42,6 +42,20 @@ def purge(image, address, limit=0x600):
     return None, uses['ecx'], uses['edx'], last_fpu
 
 
+# Prototypes proven from the retail disassembly; they replace the purge-only inference (which types every stack
+# word `int`, so an immediate float operand printed as a stale register).
+REVIEWED = {
+    # IsDistanceFromThingToPositionOver: ecx = the thing (IsAlive through its vtable +0x12c, GetPos +0x18),
+    # edx = the C3DVector (fld [esi] / [esi+4] / [esi+8]), one float on the stack (`fld [esp+0xc]; fmul`), AL result,
+    # `ret 4`. As `int` the pushed 2.0 printed as `iVar20` and every Trader Escort waypoint test stayed a TODO.
+    0x00CBE45C: {'name': 'IsDistanceFromThingToPositionOver', 'cc': '__fastcall', 'ret': 'bool',
+                 'params': [{'name': 'thing', 'type': 'CScriptThing *', 'ctype': 'ecx'},
+                            {'name': 'position', 'type': 'C3DVector *', 'ctype': 'edx'},
+                            {'name': 'distance', 'type': 'float', 'ctype': 'float'}],
+                 'source': 'reviewed disassembly 0x00CBE45C (2026-09-24)', 'bsimLabel': 'IsDistanceFromThingToPositionOver'},
+}
+
+
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--unit', required=True)
@@ -80,6 +94,11 @@ def main():
                         'source': f'inferred ret {n} (ecx={uses_ecx}, edx={uses_edx}, fpu={fpu})', 'bsimLabel': call['currentName']}
     for t, row in added.items():
         spec['helpers'][hex(t)] = row
+    called = {int(c['target'], 16) for f in tu['functions'] for c in f['calls']}
+    for t, row in REVIEWED.items():
+        if t in called and spec['helpers'].get(hex(t)) != row:
+            spec['helpers'][hex(t)] = row
+            added[t] = row
     spec_path.write_text(json.dumps(spec, indent=1) + '\n', encoding='utf-8')
     print(json.dumps({'inferred': len(added), 'total helpers': len(spec['helpers'])}, indent=2))
     for t, row in sorted(added.items()):

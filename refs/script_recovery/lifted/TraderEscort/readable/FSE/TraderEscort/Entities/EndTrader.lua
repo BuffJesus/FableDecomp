@@ -12,7 +12,7 @@ local endingCanStart
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local taskRunning, scratchValue, darkwoodTrader, endTheQuestHere, this_00, movie, movie3
+    local taskRunning, scratchValue29, getPos, endTheQuestHere, this_00, movie, movie3
     local function ReleaseEverything()
         local this_00 = movie
         resources:DestroyMovie(this_00)
@@ -30,9 +30,8 @@ function Main(quest, me)
             while not quest:IsDistanceBetweenThingsUnder(endTheQuestHere, hero, 3.0) do
                 if not quest:NewScriptFrame(me) then goto LAB_00e0602f end
             end
-            darkwoodTrader = quest:GetAllThingsWithScriptName("DarkwoodTrader")
             local tradersStillAliveCounter = quest:GetStateInt("TradersStillAliveCounter")
-            if #darkwoodTrader == tradersStillAliveCounter and 0 < tradersStillAliveCounter then
+            if #quest:GetAllThingsWithScriptName("DarkwoodTrader") == tradersStillAliveCounter and 0 < tradersStillAliveCounter then
                 endingCanStart = true
             end
             if endingCanStart then
@@ -125,21 +124,24 @@ function Main(quest, me)
     resources:DestroyMovie(movie3)
     quest:SetStateBool("EndStarted", true)
     if not quest:IsActiveThreadTerminating() then
-        resources:ScriptThing(resource)
-        -- TODO(native): iVar8 = IsDistanceFromThingToPositionOver(pvVar6,&iStack_68,iVar8);
-        local scratchValue20 = nil --[[unresolved native result]]
-        scratchValue = scratchValue20
-        while scratchValue do
-            if not quest:NewScriptFrame(me) then goto LAB_00e05fd1 end
-            me:MoveToPosition(darkwoodTrader, 3.0, ENTITY_MOVE_WALK, false, true)
-            while me:IsPerformingScriptTask() do
+        local traderEndPos = quest:GetThingWithScriptName("TraderEndPos")
+        if traderEndPos == nil then
+            getPos = {x = 0, y = 0, z = 0}
+        else
+            getPos = traderEndPos:GetPos()
+        end
+        local scratchValue37 = {x = getPos.x, y = getPos.y, z = getPos.z}
+        local scratchValue = resources:ScriptThing(resource)
+        if scratchValue ~= nil and scratchValue:IsDistanceFromPositionOver(scratchValue37, 5.0) then
+            repeat
                 if not quest:NewScriptFrame(me) then goto LAB_00e05fd1 end
-            end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e05fd1 end
-            resources:ScriptThing(resource)
-            -- TODO(native): iVar8 = IsDistanceFromThingToPositionOver(pvVar6,&iStack_68,iVar8);
-            local scratchValue21 = nil --[[unresolved native result]]
-            scratchValue = scratchValue21
+                me:MoveToPosition(scratchValue37, 3.0, ENTITY_MOVE_WALK, false, true)
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then goto LAB_00e05fd1 end
+                end
+                if quest:IsActiveThreadTerminating() then goto LAB_00e05fd1 end
+                scratchValue29 = resources:ScriptThing(resource)
+            until not (scratchValue29 ~= nil and scratchValue29:IsDistanceFromPositionOver(scratchValue37, 5.0))
         end
         if not quest:IsActiveThreadTerminating() then
             quest:MiniMapRemoveMarker(me)

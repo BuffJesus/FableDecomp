@@ -354,11 +354,6 @@
             "unlifted: CCharString::CCharString(&xStack_58,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 ",
             "AddLineToConversation: missing textKey (4 args for 5 params)",
             "label LAB_00ee65d9",
-            "unlifted: xStack_64._0_4_ = puVar10.x;",
-            "unlifted: xStack_64._4_4_ = puVar10.y;",
-            "unlifted: xStack_64._8_4_ = puVar10.z;",
-            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
             "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)",
             "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)"
           ],
@@ -552,7 +547,9 @@
             "IsActiveThreadTerminating",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_VectorCopy",
             "RESOURCE_ScriptThing",
+            "IsDistanceFromPositionOver",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "MoveToPosition",
@@ -562,6 +559,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_ScriptThing",
+            "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
             "FadeOutAndKillEntity",
             "IsActiveThreadTerminating",
@@ -572,7 +570,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 530,
+          "lines": 526,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -994,7 +992,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 91
+        "todo": 86
       }
     }
   ],
@@ -1005,6 +1003,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 91
+    "todo": 86
   }
 }

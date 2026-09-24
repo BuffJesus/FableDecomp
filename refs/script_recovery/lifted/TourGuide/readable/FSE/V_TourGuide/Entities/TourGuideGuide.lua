@@ -10,9 +10,9 @@ local saveWaypointIdx, lastRandomSpeechIdx, self0X14, self0X164
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, addNewConversation, getTimer, getRandomThingWithScriptName2, scratchValue
-    local scratchValue15, closingTimeExit
-    scratchValue15 = 0
+    local predicateResult, outsideDistance, addNewConversation, getTimer, getPos, scratchValue16
+    local scratchValue17, closingTimeExit
+    scratchValue17 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -71,16 +71,16 @@ function Main(quest, me)
             if not quest:GetStateBool("SpawnedQuestFinishThread") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
                 quest:CreateThread("WatchForNoFollowers")  -- native thread body NScript::CV_TourGuideScript::WatchForNoFollowers: lift it as function WatchForNoFollowers(quest)
-                if scratchValue15 & 4 ~= 0 then
-                    scratchValue = scratchValue15 & 0xfffffffb
-                    scratchValue15 = scratchValue
+                if scratchValue17 & 4 ~= 0 then
+                    scratchValue16 = scratchValue17 & 0xfffffffb
+                    scratchValue17 = scratchValue16
                 end
-                if scratchValue & 2 ~= 0 then
-                    scratchValue = scratchValue & 0xfffffffd
-                    scratchValue15 = scratchValue
+                if scratchValue16 & 2 ~= 0 then
+                    scratchValue16 = scratchValue16 & 0xfffffffd
+                    scratchValue17 = scratchValue16
                 end
-                if scratchValue & 1 ~= 0 then
-                    scratchValue15 = scratchValue & 0xfffffffe
+                if scratchValue16 & 1 ~= 0 then
+                    scratchValue17 = scratchValue16 & 0xfffffffe
                 end
                 quest:SetStateBool("SpawnedQuestFinishThread", true)
             end
@@ -102,7 +102,7 @@ function Main(quest, me)
             -- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
             if not quest:GetStateBool("TourGuideKilled") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
-                getRandomThingWithScriptName2 = quest:GetRandomThingWithScriptName("TourGuideFollower")
+                local getRandomThingWithScriptName2 = quest:GetRandomThingWithScriptName("TourGuideFollower")
                 addNewConversation = getRandomThingWithScriptName2 ~= nil and getRandomThingWithScriptName2:IsAlive()
                 if addNewConversation then
                     addNewConversation = quest:AddNewConversation(me, false, false)
@@ -277,28 +277,31 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
     closingTimeExit = quest:GetThingWithScriptName("M_TG_ClosingTimeExit")
-    if false and (closingTimeExit ~= nil and closingTimeExit:IsAlive()) then
-        -- TODO(native): xStack_64._0_4_ = puVar10.x;
-        -- TODO(native): xStack_64._4_4_ = puVar10.y;
-        -- TODO(native): xStack_64._8_4_ = puVar10.z;
-        resources:ScriptThing(resource)
-        -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
-    --[[unresolved native result]]
-        while nil do
+    if not resources:ScriptThing(resource):IsNull() and (closingTimeExit ~= nil and closingTimeExit:IsAlive()) then
+        if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
+        if not (closingTimeExit ~= nil and not closingTimeExit:IsNull()) then
+            getPos = {x = 0, y = 0, z = 0}
+        else
+            getPos = closingTimeExit:GetPos()
+        end
+        local scratchValue15 = {x = getPos.x, y = getPos.y, z = getPos.z}
+        local scratchValue = resources:ScriptThing(resource)
+        outsideDistance = scratchValue ~= nil and scratchValue:IsDistanceFromPositionOver(scratchValue15, 3.0)
+        while outsideDistance do
             if not quest:NewScriptFrame(me) then goto LAB_00ee6817 end
-            me:MoveToPosition(getRandomThingWithScriptName2, 1.0, ENTITY_MOVE_WALK, false, true)
+            me:MoveToPosition(scratchValue15, 1.0, ENTITY_MOVE_WALK, false, true)
             while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then goto LAB_00ee6817 end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
-            resources:ScriptThing(resource)
-            -- TODO(native): iVar6 = IsDistanceFromThingToPositionOver(pvVar11,&xStack_64,iVar6);
-    --[[unresolved native result]]
+            local scratchValue12 = resources:ScriptThing(resource)
+            outsideDistance = scratchValue12 ~= nil and scratchValue12:IsDistanceFromPositionOver(scratchValue15, 3.0)
         end
         if not quest:IsActiveThreadTerminating() then
             quest:FadeOutAndKillEntity(me, true, 1.0, true)
         end
     else
+        if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
         resources:PrepareResource(resource)
         repeat
             quest:NewScriptFrame(me)

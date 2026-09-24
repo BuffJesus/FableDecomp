@@ -14922,25 +14922,25 @@
   "0xcbe45c": {
    "name": "IsDistanceFromThingToPositionOver",
    "cc": "__fastcall",
-   "ret": "int",
+   "ret": "bool",
    "params": [
     {
-     "name": "p0",
-     "type": "void *",
+     "name": "thing",
+     "type": "CScriptThing *",
      "ctype": "ecx"
     },
     {
-     "name": "p1",
-     "type": "void *",
+     "name": "position",
+     "type": "C3DVector *",
      "ctype": "edx"
     },
     {
-     "name": "p2",
-     "type": "int",
-     "ctype": "inferred"
+     "name": "distance",
+     "type": "float",
+     "ctype": "float"
     }
    ],
-   "source": "inferred ret 4 (ecx=True, edx=True, fpu=False)",
+   "source": "reviewed disassembly 0x00CBE45C (2026-09-24)",
    "bsimLabel": "IsDistanceFromThingToPositionOver"
   },
   "0x7e72f0": {

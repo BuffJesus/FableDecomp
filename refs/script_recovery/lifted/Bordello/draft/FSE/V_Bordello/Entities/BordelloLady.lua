@@ -598,8 +598,8 @@ function Main(quest, me)
             bVar5 = not alive
             if bVar5 then goto LAB_00e3f729 end
             __native_entity_state:SetStateBool("WalkingDownstairs", false)
-            bVar5 = false
-            if bVar5 ~= 0 then
+            bVar5 = (not resources:ScriptThing(xStack_1a0):IsNull())
+            if bVar5 then
                 resources:PrepareResource(xStack_1a8)
             end
             ::FLOW_past_lab_00e40044::

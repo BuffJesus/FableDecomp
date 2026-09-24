@@ -2850,7 +2850,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 1,
-      "declarations": 5,
+      "declarations": 4,
       "decimalLiterals": 0
      }
     },
@@ -2955,8 +2955,15 @@
         "predicateResult"
        ]
       },
-      "cVar2": {
+      "bVar1_7": {
        "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "cVar2": {
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3039,21 +3046,7 @@
        "30": "                    native_arg_sequence_1_1 = false\n"
       }
      },
-     "inlinedLiteralLocals": {
-      "bVar1_7": {
-       "literal": "false",
-       "definitionLine": 37,
-       "readLines": [
-        38
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "3": "    local bVar1_1, bVar1_2, bVar1_3, bVar1_4, bVar1_5, bVar1_6, bVar1_7, cVar2, native_arg_sequence_1_2, r1, xStack_20\n",
-        "37": "                        bVar1_7 = false\n",
-        "38": "                        if bVar1_7 ~= 0 then\n"
-       }
-      }
-     },
+     "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     },
     {
@@ -3133,14 +3126,14 @@
        "aliveStaging": 9,
        "exitChecksInlined": 0,
        "frameChecks": 2,
-       "inlinedTemporaries": 4,
-       "deadDefinitions": 2,
+       "inlinedTemporaries": 5,
+       "deadDefinitions": 1,
        "guardWrappers": 1,
        "retryLoops": 2,
-       "booleanMaterialisation": 2,
+       "booleanMaterialisation": 4,
        "booleanCompares": 0,
        "conditions": 0,
-       "literals": 2,
+       "literals": 1,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
@@ -3148,7 +3141,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 2,
+       "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 1,
@@ -3168,8 +3161,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 54,
-       "temporaries": 9,
+       "lines": 55,
+       "temporaries": 10,
        "labels": 1,
        "gotos": 1,
        "terminationChecks": 6,
