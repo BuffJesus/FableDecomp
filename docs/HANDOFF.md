@@ -3,10 +3,12 @@
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
-Trader Escort is an unfinished, disabled draft (98 native bodies, 14 entity
-bindings, 4 quest workers, 65 generated functions). As of 2026-09-24:
-**169 TODOs; 65/65 functions and 16/16 files compile; readable smoke 2 problems**
-(draft and readable). Not packaged or tested in game.
+Trader Escort (98 native bodies, 14 entity bindings, 4 quest workers) is now PACKAGED and partly
+played: bundle **v15** runs accept -> boast podium -> Darkwood intro -> Quest Start -> follow tutorial ->
+Darkwood2's balverine scene with **0 Lua errors** (2026-09-24 evening). Draft `TODO(native)` lines: 47;
+readable smoke 16 files / 0 problems. Details, route and checkpoints:
+[Trader Escort playtest](journal/2026-09/TRADER_ESCORT_PLAYTEST_2026-09-24.md).
+Next for it: a walking driver (map-slot teleports leave followers behind), then the escort route.
 
 Done 2026-09-24 (see the journal's 2026-09-24 sections): RET-proven callee
 purges, code-pointer call pairing, vector register aliases, parent-worker
@@ -16,20 +18,16 @@ SCRIPT_DEF table corrected (leading block is PDB - 4; the middle zone
 0x258..0xd60 is unproven and stays numeric in readables).
 
 Next, in order:
-1. DarkwoodTrader's remaining smoke problem: dead byte-merge noise
-   (`CONCAT31((int3)(extraout_EAX >> 8), ...)`) needs a liveness pass.
-2. MakeTraderComment: inlined CScriptThing copy/assign of `speaker`
-   (vtable store + refcount), then `AddQuestInfoBarHealth`'s colour operand.
-3. Promote `work/ebp_fix/<unit>_typed.json` for the other 13 units, one at a
-   time: regenerate into work/, review the diff, then promote. Playtested
-   units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
-4. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object
-   settles it).
+1. Trader Escort escort route: walking driver, then Darkwood2 -> BarrowFields (playtest journal above).
+2. Re-export the other units with the fixed exporter (9507b0d: thing-vector elements, pushes kept across
+   zero-parameter calls) and with `work/ebp_fix/<unit>_typed.json`, one at a time: regenerate into work/,
+   review the diff, then promote. Playtested units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
+3. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object settles it).
+4. Still open: an Orchard boast payout line, Orchard Evil success, the WatchForMissionRules "DarkwoodTrader"
+   name-slot pairing.
 
-v15 (not built): v14 + the regenerated shipped readables from 5b410fe (WaspBoss helper + WaspHelper flag fixes,
-TourGuide refresh). Converter rules added 5b410fe: out-thing messages, by-value thing release, byte flags (see the
-conversion journal's 2026-09-24 afternoon section). Sidecar-side namespace clearing on host creation is still NOT
-done: check first whether persisted state is loaded into the global map before a host exists.
+Sidecar-side namespace clearing on host creation is still NOT done: check first whether persisted state is
+loaded into the global map before a host exists.
 
 Change generators and evidence, never generated Lua by hand.
 
@@ -47,7 +45,10 @@ conversion journal, plus the `test_callee_purge_pairing`, `test_vector_register_
 `test_spawn_capture`, `test_script_def_offsets` and `test_readable_*` modules. Established-unit regeneration checks are recorded there.
 The broad suite was cancelled; no new full-suite pass is claimed.
 
-Live baseline: **v14** (`work/new-oakvale-original-fse-20260912/local-candidate-v14`) = v12 +
+Live baseline: **v15** (`local-candidate-v15`) = v14's units + Trader Escort + sidecar patches up to
+`novi-zzzzzzz` (thread arguments across Lua states). Build it with `build_unit_playtest_package.py` (`--bundle` is
+now required; its old default overwrote local-candidate-v5). v14, for the Orchard history below:
+**v14** (`work/new-oakvale-original-fse-20260912/local-candidate-v14`) = v12 +
 `novi-zzzz` (SetQuestAsFailed message) + `novi-zzzzz` (IsEqualTo operand) sidecar patches + Orchard Lua with
 ctor defaults (b270c0f). Orchard **Good** completed end to end on v14 (handoff 3/3, 0 Lua errors; checkpoint
 `adult_orchard_completed_v14_2026-09-24`); **Evil** played to its failure path only. Boasts verified live
