@@ -473,7 +473,7 @@ function Main(quest, me)
                                 CVar17 = CVar17 & 0xfffffeff
                                 C_stk_370 = CVar17
                             end
-                            if ((CVar17 & 0x80) ~= 0) then
+                            if (CVar17 & 0x80) ~= 0 then
                                 C_stk_370 = CVar17 & 0xffffff7f
                             end
                             if c_stk_399 ~= 0 then

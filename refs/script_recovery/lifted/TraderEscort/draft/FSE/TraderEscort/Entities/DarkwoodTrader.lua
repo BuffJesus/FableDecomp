@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar16, __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar2, fVar21, fret_0, fret_00, fret_01, fret_02, fret_03, iVar22, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar11, pCVar12, pCVar13, pCVar15, pCVar20, pCVar6, pSpeaker, pcVar23, piVar14, puVar1, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar17, uVar19, xStack_118, xStack_158, xStack_168, xStack_170, xStack_c0, xStack_e8, xStack_f8
+    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar2, fVar21, fret_0, fret_00, fret_01, fret_02, fret_03, iVar22, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar11, pCVar12, pCVar13, pCVar15, pCVar20, pCVar6, pSpeaker, pcVar23, piVar14, puVar1, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar17, uVar19, xStack_118, xStack_158, xStack_168, xStack_c0, xStack_e8, xStack_f8
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -602,14 +602,6 @@ function Main(quest, me)
                     quest:SetStateInt("TradersStillAliveCounter", quest:GetStateInt("TradersStillAliveCounter") + -1)
                     resources:PrepareResource(xStack_168)
                     quest:CreateThread("TurnToBalv", {args = {me}})  -- native parent-quest worker TurnToBalv, the entity's own thing captured
-                    if (xStack_170 & 0x200) ~= 0 then
-                        CVar16 = xStack_170 & 0xfffffdff
-                    end
-                    if (CVar16 & 0x100) ~= 0 then
-                        CVar16 = CVar16 & 0xfffffeff
-                    end
-                    if ((CVar16 & 0x80) ~= 0) then
-                    end
                     repeat
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
@@ -690,10 +682,8 @@ function Main(quest, me)
                 __native_entity_state:SetStateInt("Infected", uVar17)
             end
             ::FLOW_past_lab_00e096c7::
-            -- TODO(native): xStack_170 = xStack_170 | 0x400;
             cVar4 = me:MsgIsHitBy("")
             if not cVar4 then
-                -- TODO(native): xStack_170 = xStack_170 | 0x800;
                 cVar4 = me:MsgIsHitByAnySpecialAbilityFrom("")
                 if cVar4 then goto LAB_00e09848 end
                 goto LAB_00e09886
@@ -706,20 +696,10 @@ function Main(quest, me)
             ::FLOW_past_lab_00e09886::
             goto FLOW_past_lab_00e09848
             ::LAB_00e09848::
-            -- TODO(native): xStack_170 = xStack_170 | 0x1000;
             cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
             bVar3 = true
             if cVar4 then goto LAB_00e09886 end
             ::FLOW_past_lab_00e09848::
-            if (xStack_170 & 0x1000) ~= 0 then
-                -- TODO(native): xStack_170 = xStack_170 & 0xffffefff;
-            end
-            if (xStack_170 & 0x800) ~= 0 then
-                -- TODO(native): xStack_170 = xStack_170 & 0xfffff7ff;
-            end
-            if (xStack_170 & 0x400) ~= 0 then
-                -- TODO(native): xStack_170 = xStack_170 & 0xfffffbff;
-            end
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -729,13 +709,10 @@ function Main(quest, me)
                 if fret_00 <= 5.0 then
                     goto LAB_00e099dc
                 else
-                    -- TODO(native): xStack_170 = xStack_170 | 0x2000;
                     cVar4 = me:MsgIsHitByHero()
                     if cVar4 then goto LAB_00e099dc end
-                    -- TODO(native): xStack_170 = CVar16 | 0x6000;
                     cVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if cVar4 then
-                        -- TODO(native): xStack_170 = xStack_170 | 0x8000;
                         cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not cVar4 then goto LAB_00e099dc end
                     end
@@ -745,15 +722,6 @@ function Main(quest, me)
                 ::LAB_00e099dc::
                 bVar3 = false
                 ::FLOW_past_lab_00e099dc::
-                if ((xStack_170 & 0x8000) ~= 0) then
-                    -- TODO(native): xStack_170 = xStack_170 & 0xffff7fff;
-                end
-                if (xStack_170 & 0x4000) ~= 0 then
-                    -- TODO(native): xStack_170 = xStack_170 & 0xffffbfff;
-                end
-                if (xStack_170 & 0x2000) ~= 0 then
-                    -- TODO(native): xStack_170 = xStack_170 & 0xffffdfff;
-                end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -765,13 +733,10 @@ function Main(quest, me)
                     if fret_01 <= 5.0 then
                         goto LAB_00e09b4f
                     else
-                        -- TODO(native): xStack_170 = xStack_170 | 0x10000;
                         cVar4 = me:MsgIsHitByHero()
                         if not cVar4 then
-                            -- TODO(native): xStack_170 = CVar16 | 0x30000;
                             cVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                             if cVar4 then
-                                -- TODO(native): xStack_170 = xStack_170 | 0x40000;
                                 cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                                 if not cVar4 then goto LAB_00e09b48 end
                             end
@@ -784,15 +749,6 @@ function Main(quest, me)
                     ::LAB_00e09b4f::
                     bVar3 = false
                     ::FLOW_past_lab_00e09b4f::
-                    if (xStack_170 & 0x40000) ~= 0 then
-                        -- TODO(native): xStack_170 = xStack_170 & 0xfffbffff;
-                    end
-                    if (xStack_170 & 0x20000) ~= 0 then
-                        -- TODO(native): xStack_170 = xStack_170 & 0xfffdffff;
-                    end
-                    if (xStack_170 & 0x10000) ~= 0 then
-                        -- TODO(native): xStack_170 = xStack_170 & 0xfffeffff;
-                    end
                     if not bVar3 then goto LAB_00e09c13 end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -1127,7 +1083,6 @@ function Main(quest, me)
                         end
                         piVar14 = r9:GetDataString()
                         if piVar14 == nil then
-                            CVar16 = "BANTER_FOURTH"
                             c_stk_171 = false
                         else
                             iVar8 = ((piVar14 == "SCARED") and 0 or 1)

@@ -120,6 +120,50 @@ class OutThingMessages(unittest.TestCase):
             self.assertEqual(out_thing_messages(path, manifest), frozenset({'MsgOnHeroPickedPocket'}))
 
 
+class FlagRelay(unittest.TestCase):
+    # DarkwoodTrader Main 0x00E07640: the slot-shared destruction flags reloaded through a register
+    TEXT = '''  CStack_170 = 0;
+  CStack_170 = CStack_170 | 2;
+  if ((CStack_170 & 2) != 0) {
+    CStack_170 = CStack_170 & 0xfffffffd;
+  }
+  CVar16 = CStack_170;
+  if ((CStack_170 & 0x200) != 0) {
+    CVar16 = CStack_170 & 0xfffffdff;
+  }
+  if (((CVar16 & 0x80) != 0)) {
+  }
+  CVar16 = CStack_170;
+  CStack_170 = CStack_170 | 0x2000;
+  CStack_170 = CVar16 | 0x6000;
+  if ((CStack_170 & 0x4000) != 0) {
+    CStack_170 = CStack_170 & 0xffffbfff;
+  }
+  CVar16 = *(int **)(this + 4);
+  CCharString::CCharString((CCharString *)&CStack_170,"DarkwoodTrader",-1);
+'''
+
+    def test_relay_lines_move_onto_the_slot(self):
+        from tools.script_recovery.native_evidence_lowering import fold_flag_relays
+        out = fold_flag_relays(self.TEXT, {'CStack_170'})
+        self.assertNotIn('CVar16 = CStack_170', out)
+        self.assertIn('CStack_170 = CStack_170 | 0x6000;', out)
+        self.assertIn('if ((CStack_170 & 0x80) != 0) {', out)
+        self.assertIn('CVar16 = *(int **)(this + 4);', out)     # the register's own later life is untouched
+
+    def test_register_used_otherwise_keeps_the_copy(self):
+        from tools.script_recovery.native_evidence_lowering import fold_flag_relays
+        text = self.TEXT.replace('  CStack_170 = CVar16 | 0x6000;\n', '  f(CVar16);\n')
+        self.assertIn('  CVar16 = CStack_170;\n  CStack_170 = CStack_170 | 0x2000;', fold_flag_relays(text, {'CStack_170'}))
+
+    def test_whole_flag_word_is_dropped(self):
+        from tools.script_recovery.native_evidence_lowering import drop_eh_state_flags
+        text = self.TEXT.replace('CStack_170 = CStack_170 | 2;', 'CStack_170 = (CCharString)((uint)CStack_170 | 2);')
+        out = drop_eh_state_flags(text)
+        self.assertNotRegex(out, r'CStack_170 [|&]|ehflag_')
+        self.assertIn('CCharString::CCharString((CCharString *)&CStack_170', out)
+
+
 class MovieStartsOnce(unittest.TestCase):
     # WatchForMissionRules 0x00E06440: the movie object operand is printed with a pointer cast
     def test_cast_movie_operand_drops_the_second_start(self):

@@ -450,6 +450,56 @@ EH_FLAG_SHAPES = [
 ]
 
 
+def fold_flag_relays(text: str, slots) -> str:
+    """MSVC reloads a slot-shared temp-destruction flag word through a register: `R = S; S = S | 0x2000; ...
+    S = R | 0x6000;`, or `R = S; if ((S & 0x200) != 0) { R = S & 0xfffffdff; ~T } if ((R & 0x100) != 0) ...`
+    (Trader Escort DarkwoodTrader Main 0x00E07640). R holds S's bits there, so spell those lines on S and drop the
+    copy: the slot's flag phase then runs unbroken to its first string constructor and is dropped whole. Left alone,
+    the phase ended at the copy and the rest reached Lua as bit tests on a nil local (v15, 2026-09-24).
+    A register line that is not a flag operation leaves the copy untouched."""
+    # the top-bit test spelled with an extra pair of parentheses: `if (((S & 0x80) != 0)) {`
+    text = re.sub(r'^([ \t]*(?:\} else )?)if \(\(\((\w+) & (0x[0-9a-f]+|\d+)\) ([!=]= 0)\)\) \{', r'\1if ((\2 & \3) \4) {', text, flags=re.M)
+    num = r'(?:0x[0-9a-f]+|\d+)'
+    for slot in sorted(slots):
+        s = re.escape(slot)
+        if not re.search(r'^[ \t]*' + s + r' = ' + s + r' \| ' + num + r';', text, re.M):
+            continue
+        while True:
+            lines = text.split('\n')
+            copies = [i for i, l in enumerate(lines) if re.match(r'^[ \t]*(\w+) = ' + s + r';[ \t]*$', l) and not l.strip().startswith(slot + ' ')]
+            done = True
+            for c in copies:
+                reg = re.match(r'^[ \t]*(\w+) = ', lines[c]).group(1)
+                r = re.escape(reg)
+                use = re.compile(r'\b' + r + r'\b')
+                flagged = [re.compile(r'^[ \t]*(?:' + r + '|' + s + r') = (?:' + r + '|' + s + r') [|&] ' + num + r';[ \t]*$'),
+                           re.compile(r'^[ \t]*(?:\} else )?if \(\(' + r + r' & ' + num + r'\) [!=]= 0\) \{[ \t]*$')]
+                run = []
+                for i in range(c + 1, len(lines)):
+                    if not use.search(lines[i]):
+                        continue
+                    if re.match(r'^[ \t]*' + r + r' = ' + s + r';[ \t]*$', lines[i]):
+                        break                              # the next relay starts here
+                    if any(f.match(lines[i]) for f in flagged):
+                        run.append(i)
+                        continue
+                    if re.match(r'^[ \t]*' + r + r' = ', lines[i]) and not re.search(r'\b' + r + r'\b', lines[i].split('=', 1)[1]):
+                        break                              # the register takes an unrelated value: the relay is over
+                    run = None                             # the register carries the flag somewhere else
+                    break
+                if not run:
+                    continue
+                for i in run:
+                    lines[i] = use.sub(slot, lines[i])
+                del lines[c]
+                text = '\n'.join(lines)
+                done = False
+                break
+            if done:
+                break
+    return text
+
+
 def drop_eh_state_flags(text: str) -> str:
     """The compiler's exception-state byte (`bVar7 = !b && b; bVar7 |= 2; ... if ((bVar7 & 2) != 0) { bVar7 &= 0xfd;
     ~CCharString(...) }`) only guards destructor calls on the unwinding path. When every line that names a
@@ -485,6 +535,7 @@ def drop_eh_state_flags(text: str) -> str:
     # non-flag definition / address-taking; when those lines are all flag shapes they move onto a fresh register,
     # which the wholesale drop below then removes. Left alone, the `& 1` test survived under the slot's later
     # name (`if infoCounter & 1 ~= 0`, nil on the first frame of Main, 2026-09-20 audit).
+    text = fold_flag_relays(text, bitwise)
     phase_shapes = [re.compile(r'^[ \t]*(\w+) = \d+;[ \t]*$'),
                     re.compile(r'^[ \t]*(\w+) = \1 [|&] (?:0x[0-9a-f]+|\d+);[ \t]*$'),
                     re.compile(r'^[ \t]*(?:\} else )?if \(\((\w+) & (?:0x[0-9a-f]+|\d+)\) [!=]= 0\) \{[ \t]*$'),

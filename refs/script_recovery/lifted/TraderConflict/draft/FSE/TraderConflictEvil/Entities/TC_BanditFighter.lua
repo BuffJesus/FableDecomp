@@ -180,7 +180,7 @@ function Main(quest, me)
                         CVar6 = CVar6 & 0xfffffeff
                         xStack_2c = CVar6
                     end
-                    if ((CVar6 & 0x80) ~= 0) then
+                    if (CVar6 & 0x80) ~= 0 then
                         CVar6 = CVar6 & 0xffffff7f
                         xStack_2c = CVar6
                     end

@@ -925,24 +925,6 @@
             "unnamed field 0x14",
             "unlifted: iVar8 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);",
             "label LAB_00e0a389",
-            "unlifted: xStack_170 = xStack_170 | 0x400;",
-            "unlifted: xStack_170 = xStack_170 | 0x800;",
-            "unlifted: xStack_170 = xStack_170 | 0x1000;",
-            "unlifted: xStack_170 = xStack_170 & 0xffffefff;",
-            "unlifted: xStack_170 = xStack_170 & 0xfffff7ff;",
-            "unlifted: xStack_170 = xStack_170 & 0xfffffbff;",
-            "unlifted: xStack_170 = xStack_170 | 0x2000;",
-            "unlifted: xStack_170 = CVar16 | 0x6000;",
-            "unlifted: xStack_170 = xStack_170 | 0x8000;",
-            "unlifted: xStack_170 = xStack_170 & 0xffff7fff;",
-            "unlifted: xStack_170 = xStack_170 & 0xffffbfff;",
-            "unlifted: xStack_170 = xStack_170 & 0xffffdfff;",
-            "unlifted: xStack_170 = xStack_170 | 0x10000;",
-            "unlifted: xStack_170 = CVar16 | 0x30000;",
-            "unlifted: xStack_170 = xStack_170 | 0x40000;",
-            "unlifted: xStack_170 = xStack_170 & 0xfffbffff;",
-            "unlifted: xStack_170 = xStack_170 & 0xfffdffff;",
-            "unlifted: xStack_170 = xStack_170 & 0xfffeffff;",
             "label LAB_00e0a4ef",
             "label LAB_00e07e06",
             "label LAB_00e07e39_c4",
@@ -1471,7 +1453,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1400,
+          "lines": 1355,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3676,8 +3658,7 @@
       "declaredFreeLocals": {
         "FSE/TraderEscort/Entities/DarkwoodTrader.lua": {
           "Main": [
-            "xStack_158",
-            "xStack_170"
+            "xStack_158"
           ],
           "Init": [
             "v_stk_20"
@@ -3747,7 +3728,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 97
+        "todo": 79
       }
     }
   ],
@@ -3758,6 +3739,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 97
+    "todo": 79
   }
 }
