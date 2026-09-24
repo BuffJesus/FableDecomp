@@ -5,11 +5,6 @@ local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
--- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
-local SCRIPT_DEF = {
-    GSI_MazeCallsOverDistance = 3176,  -- 10
-}
-
 -- per-entity fields (native class members; one Lua state per entity instance)
 local wavedOver, hitCount, talkCounter
 
@@ -30,7 +25,7 @@ function Main(quest, me)
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
     quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
-    scratchValue = quest:ReadGlobalGameData(SCRIPT_DEF.GSI_MazeCallsOverDistance)
+    scratchValue = quest:ReadGlobalGameData(3176)
     scratchValue5 = 0
     if quest:IsActiveThreadTerminating() then goto LAB_00e26761 end
     repeat

@@ -5,10 +5,10 @@ local CUTSCENE_BEHAVIOUR_PAUSED = 1  -- ECutsceneBehaviour (Ego_r.pdb)
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
-    SummoningShipNoDamageBoastReward = 504,  -- 2500
-    TCGKillNoBanditsCost = 508,  -- 400
-    TCGKillNoBanditsReward = 512,  -- 1000
-    TCGMadeTimeLimitCost = 516,  -- 400
+    TraderEscortNakedBoastCost = 504,  -- 200
+    TraderEscortNakedBoastReward = 508,  -- 400
+    TraderEscortNoDamageBoastCost = 512,  -- 200
+    TraderEscortNoDamageBoastReward = 516,  -- 1000
     TE_TraderCommentDelay = 3568,  -- 5
     TE_TraderLowInfectionTime = 3576,  -- 80
     TE_TraderMediumInfectionTime = 3580,  -- 40
@@ -97,8 +97,8 @@ function Init(quest)
     quest:SetStateString("TraderToTalk", "")
     quest:SetMasterGameState("DarkwoodAllTradersAlive", true)
     quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 1)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.SummoningShipNoDamageBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.TCGKillNoBanditsCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.TCGKillNoBanditsReward), quest:ReadGlobalGameData(SCRIPT_DEF.TCGMadeTimeLimitCost), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNakedBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNakedBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNoDamageBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNoDamageBoastReward), false, "", 0)
     quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_ALLTRADERSALIVE", 9, quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastReward), false, "", 0)
 end
 

@@ -1,12 +1,6 @@
 -- Readable native conversion: V_TourGuide. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
--- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
-local SCRIPT_DEF = {
-    TBRMoralityGoodSmall = 2280,  -- 0.0024999999441206455
-    TBRMoralityGoodMedium = 2284,  -- 0.004999999888241291
-}
-
 local function __native_all_dead(list)
     local down = 0
     for _, thing in ipairs(list) do
@@ -152,15 +146,15 @@ function WatchForClosingTime(quest)
     repeat
         if quest:IsActiveThreadTerminating() then return end
         local getTimeOfDay = quest:GetTimeOfDay()
-        if getTimeOfDay < quest:ReadGlobalGameData(SCRIPT_DEF.TBRMoralityGoodMedium) then
+        if getTimeOfDay < quest:ReadGlobalGameData(2284) then
             goto LAB_00ee4a39
         else
             if not quest:GetStateBool("TourFinished") then goto LAB_00ee4a4b end
-            if getTimeOfDay <= quest:ReadGlobalGameData(SCRIPT_DEF.TBRMoralityGoodMedium) then goto LAB_00ee4a39 end
+            if getTimeOfDay <= quest:ReadGlobalGameData(2284) then goto LAB_00ee4a39 end
         end
         goto FLOW_past_lab_00ee4a39
         ::LAB_00ee4a39::
-        if quest:ReadGlobalGameData(SCRIPT_DEF.TBRMoralityGoodSmall) < getTimeOfDay and quest:GetStateBool("TourFinished") then
+        if quest:ReadGlobalGameData(2280) < getTimeOfDay and quest:GetStateBool("TourFinished") then
             goto LAB_00ee4a4b
         end
         ::FLOW_past_lab_00ee4a39::

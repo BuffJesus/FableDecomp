@@ -3,14 +3,6 @@
 
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
--- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
-local SCRIPT_DEF = {
-    TourGuideClosingTime = 2260,  -- 2000
-    SlumsBeggarGoldAmount = 2264,  -- 5
-    OakValeBeggarGoldAmount = 2268,  -- 15
-    PickUpLitterTimeInSeconds = 2272,  -- 90
-}
-
 -- per-entity fields (native class members; one Lua state per entity instance)
 local saveWaypointIdx, lastRandomSpeechIdx, self0X14, self0X164
 
@@ -105,7 +97,7 @@ function Main(quest, me)
                 quest:EntityForceToLookAtThing(me, getRandomThingWithScriptName)
             end
         end
-        if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.TourGuideClosingTime)) and not quest:GetStateBool("OverheardTourGuideThisWaypoint") then
+        if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameDataFloat(2260)) and not quest:GetStateBool("OverheardTourGuideThisWaypoint") then
             if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
             -- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
             if not quest:GetStateBool("TourGuideKilled") then
@@ -120,7 +112,7 @@ function Main(quest, me)
             end
             quest:SetStateBool("OverheardTourGuideThisWaypoint", true)
         end
-        if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.SlumsBeggarGoldAmount)) then
+        if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameDataFloat(2264)) then
             if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
             if me:IsTalkedToByHero() then
                 if not quest:IsActiveThreadTerminating() then
@@ -159,7 +151,7 @@ function Main(quest, me)
                             local conversationId = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(conversationId, hero)
                             quest:AddLineToConversation(conversationId, "", me, hero, false)
-                            quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.PickUpLitterTimeInSeconds))
+                            quest:SetTimer(timerId, quest:ReadGlobalGameData(2272))
                         end
                         resources:PrepareResource(resource)
                         while not resources:TryAcquire(resource, me, 4) do
@@ -204,7 +196,7 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00ee6232
                 ::LAB_00ee6232::
-                quest:SetTimer(timerId4, quest:ReadGlobalGameData(SCRIPT_DEF.OakValeBeggarGoldAmount))
+                quest:SetTimer(timerId4, quest:ReadGlobalGameData(2268))
                 while true do
                     if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                     getTimer = quest:GetTimer(timerId4)

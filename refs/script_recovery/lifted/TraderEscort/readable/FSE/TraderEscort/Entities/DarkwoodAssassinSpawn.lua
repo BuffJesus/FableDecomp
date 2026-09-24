@@ -3,7 +3,6 @@
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
-    AssassinExperience = 944,  -- 100
     TE_AssassinName = 3608,  -- 'CREATURE_BANDIT_GRUNT_LEVEL1_A'
 }
 
@@ -19,7 +18,7 @@ function Main(quest, me)
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 2)
     -- TODO(native): xStack_20 = *(CCharString *)(DAT_0143e90c + 0xe14);
-    quest:ReadGlobalGameData(SCRIPT_DEF.AssassinExperience)
+    quest:ReadGlobalGameData(944)
     quest:ReadGlobalGameData(940)
     math.random(0, 32767)
     -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x3ac) + (uVar5 % (uint)(iVar8 - iVar1 >> 2)) * 4),(int)&xStack_28);

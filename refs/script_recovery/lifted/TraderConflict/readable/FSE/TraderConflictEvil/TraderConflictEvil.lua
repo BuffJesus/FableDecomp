@@ -3,16 +3,16 @@
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
-    TraderEscortNoDamageBoastReward = 456,  -- 1000
-    TraderEscortNoWeaponsBoastCost = 460,  -- 200
-    TraderEscortNoWeaponsBoastReward = 464,  -- 600
-    WhiteBalvNakedBoastCost = 468,  -- 800
-    WhiteBalvNakedBoastReward = 472,  -- 1800
-    WhiteBalvNoDamageBoastCost = 476,  -- 500
-    AmbushScamTricksterApproachProximityHigh = 584,  -- 7.0
-    AmbushScamTricksterHeroProximity = 588,  -- 5.0
-    AmbushScamTricksterRunAwayProximity = 592,  -- 2.0
-    AmbushScamAmbushTriggerProximity = 596,  -- 4.0
+    TraderConflictEvilNakedBoastCost = 456,  -- 100
+    TraderConflictEvilNakedBoastReward = 460,  -- 400
+    TraderConflictEvilNoDamageBoastCost = 464,  -- 1000
+    TraderConflictEvilNoDamageBoastReward = 468,  -- 6000
+    TraderConflictEvilNoWeaponsBoastCost = 472,  -- 800
+    TraderConflictEvilNoWeaponsBoastReward = 476,  -- 5000
+    TCEKeepBanditFollowerAliveCost = 584,  -- 400
+    TCEKeepBanditFollowerAliveReward = 588,  -- 1000
+    TCEMadeTimeLimitCost = 592,  -- 400
+    TCEMadeTimeLimitReward = 596,  -- 1000
     TCE_TimeLimit = 3968,  -- 240
 }
 
@@ -339,11 +339,11 @@ function Init(quest)
     quest:SetTimer(quest:GetStateInt("ScreamOutTimer"), 15)
     quest:SetStateBool("PlayerEngaged", false)
     quest:AddQuestRegion("Q_TraderConflictEvil", "BarrowFields")
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNoDamageBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNoWeaponsBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.TraderEscortNoWeaponsBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNakedBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNakedBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNoDamageBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCEBANDITALIVE", 36, quest:ReadGlobalGameData(SCRIPT_DEF.AmbushScamTricksterApproachProximityHigh), quest:ReadGlobalGameData(SCRIPT_DEF.AmbushScamTricksterHeroProximity), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCETIMELIMIT", 37, quest:ReadGlobalGameData(SCRIPT_DEF.AmbushScamTricksterRunAwayProximity), quest:ReadGlobalGameData(SCRIPT_DEF.AmbushScamAmbushTriggerProximity), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNakedBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNakedBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNoDamageBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNoDamageBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNoWeaponsBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNoWeaponsBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCEBANDITALIVE", 36, quest:ReadGlobalGameData(SCRIPT_DEF.TCEKeepBanditFollowerAliveCost), quest:ReadGlobalGameData(SCRIPT_DEF.TCEKeepBanditFollowerAliveReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCETIMELIMIT", 37, quest:ReadGlobalGameData(SCRIPT_DEF.TCEMadeTimeLimitCost), quest:ReadGlobalGameData(SCRIPT_DEF.TCEMadeTimeLimitReward), false, "", 0)
     quest:SetMasterGameState("TCEKeepBanditFollowerAlive", true)
     quest:SetMasterGameState("TCEMadeTimeLimit", false)
 end

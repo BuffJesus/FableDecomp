@@ -1,11 +1,6 @@
 -- Readable native conversion: BanditCronies. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
--- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
-local SCRIPT_DEF = {
-    AssassinExperience = 944,  -- 100
-}
-
 -- BanditCronies.Main (retail 0x00e03810)
 function Main(quest, me)
     local scratchValue
@@ -14,7 +9,7 @@ function Main(quest, me)
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 13.0) do
         if not quest:NewScriptFrame(me) then return end
     end
-    quest:ReadGlobalGameData(SCRIPT_DEF.AssassinExperience)
+    quest:ReadGlobalGameData(944)
     quest:ReadGlobalGameData(940)
     math.random(0, 32767)
     -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x3ac) + (uVar5 % (uint)(iVar1 - iVar2 >> 2)) * 4),(int)&xStack_18);

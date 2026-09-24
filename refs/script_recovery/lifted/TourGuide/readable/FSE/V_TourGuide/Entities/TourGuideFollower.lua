@@ -1,12 +1,6 @@
 -- Readable native conversion: TourGuideFollower. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
--- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
-local SCRIPT_DEF = {
-    TourGuideOpeningTime = 2256,  -- 800
-    NumPiecesOfLitter = 2276,  -- 7
-}
-
 -- per-entity fields (native class members; one Lua state per entity instance)
 local self0X14, followerSpokenToHeroThisWaypoint
 
@@ -37,7 +31,7 @@ function Main(quest, me)
             quest:DeregisterTimer(timerId)
             return
         end
-        me:FollowThing(tourGuideGuide, quest:ReadGlobalGameData(SCRIPT_DEF.TourGuideOpeningTime), true)
+        me:FollowThing(tourGuideGuide, quest:ReadGlobalGameData(2256), true)
     end
     predicateResult = quest:IsActiveThreadTerminating()
     while true do
@@ -88,8 +82,8 @@ function Main(quest, me)
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         quest:AddLineToConversation(conversationId, scratchValue7, me, hero, false)
-        quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.NumPiecesOfLitter))
-        me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(SCRIPT_DEF.TourGuideOpeningTime), true)
+        quest:SetTimer(timerId, quest:ReadGlobalGameData(2276))
+        me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(2256), true)
         quest:NewScriptFrame(me)
         predicateResult = quest:IsActiveThreadTerminating()
         ::continue_2::

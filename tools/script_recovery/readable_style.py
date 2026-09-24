@@ -2261,7 +2261,7 @@ def name_script_def_reads(source):
     def repl(m):
         off = int(m.group(2), 0)
         field = table.get(f'{off:#x}')
-        if not field:
+        if not field or field.get('verified') is False:     # (an offset in the unproven middle of the layout keeps its number)
             return m.group(0)
         used[field['name']] = (off, field.get('value'))
         return f'{m.group(1)}(SCRIPT_DEF.{field["name"]}'

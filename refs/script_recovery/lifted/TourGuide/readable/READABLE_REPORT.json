@@ -749,7 +749,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 13,
+     "sourceLine": 7,
      "locals": {
       "scratchValue": {
        "name": "talkedToByHero",
@@ -766,7 +766,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 149,
+     "sourceLine": 143,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -775,7 +775,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 153,
+     "sourceLine": 147,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -784,7 +784,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 156,
+     "sourceLine": 150,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2776,7 +2776,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 17,
+     "sourceLine": 9,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2785,7 +2785,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 324,
+     "sourceLine": 316,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2794,7 +2794,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 331,
+     "sourceLine": 323,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2803,7 +2803,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 334,
+     "sourceLine": 326,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2812,7 +2812,7 @@
     },
     {
      "function": "helper_EE6850",
-     "sourceLine": 337,
+     "sourceLine": 329,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3564,7 +3564,7 @@
     },
     {
      "function": "__native_all_dead",
-     "sourceLine": 10,
+     "sourceLine": 4,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3573,7 +3573,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 18,
+     "sourceLine": 12,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3582,7 +3582,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 36,
+     "sourceLine": 30,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3591,7 +3591,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 118,
+     "sourceLine": 112,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3600,7 +3600,7 @@
     },
     {
      "function": "WatchForGuideKilled",
-     "sourceLine": 125,
+     "sourceLine": 119,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3609,7 +3609,7 @@
     },
     {
      "function": "WatchForClosingTime",
-     "sourceLine": 146,
+     "sourceLine": 140,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3618,7 +3618,7 @@
     },
     {
      "function": "null",
-     "sourceLine": 169,
+     "sourceLine": 163,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

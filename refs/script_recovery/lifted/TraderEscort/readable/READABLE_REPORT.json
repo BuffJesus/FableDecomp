@@ -242,7 +242,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 9,
+     "sourceLine": 4,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -251,7 +251,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 28,
+     "sourceLine": 23,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -260,7 +260,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 31,
+     "sourceLine": 26,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -269,7 +269,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 34,
+     "sourceLine": 29,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -852,7 +852,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 10,
+     "sourceLine": 9,
      "locals": {
       "scratchValue2": {
        "name": "isCameraPosOnScreen",
@@ -869,7 +869,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 98,
+     "sourceLine": 97,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -878,7 +878,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 101,
+     "sourceLine": 100,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -887,7 +887,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 104,
+     "sourceLine": 103,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},

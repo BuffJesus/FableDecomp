@@ -1,4539 +1,5055 @@
 {
- "0x0": {
+ "0x3c": {
   "name": "EXPERIENCE_GRANT_SMALL",
   "type": "long",
   "defType": "int32",
   "value": 10
  },
- "0x4": {
+ "0x40": {
   "name": "EXPERIENCE_GRANT_MEDIUM",
   "type": "long",
   "defType": "int32",
   "value": 50
  },
- "0x8": {
+ "0x44": {
   "name": "EXPERIENCE_GRANT_LARGE",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0xc": {
+ "0x48": {
   "name": "EXPERIENCE_GRANT_XLARGE",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x10": {
+ "0x4c": {
   "name": "EXPERIENCE_GRANT_HEROIC",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x14": {
+ "0x50": {
   "name": "NPC_COMMENT_FREQUENCY",
   "type": "long",
   "defType": "int32",
   "value": 5
  },
- "0x18": {
+ "0x54": {
   "name": "NPC_COMMENT_DISTANCE",
   "type": "long",
   "defType": "int32",
   "value": 8
  },
- "0x1c": {
+ "0x58": {
   "name": "AmbushTradersNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x20": {
+ "0x5c": {
   "name": "AmbushTradersNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x24": {
+ "0x60": {
   "name": "AmbushTradersNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x28": {
+ "0x64": {
   "name": "AmbushTradersNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1600
  },
- "0x2c": {
+ "0x68": {
   "name": "AmbushTradersNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x30": {
+ "0x6c": {
   "name": "AmbushTradersNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1100
  },
- "0x34": {
+ "0x70": {
   "name": "ArenaNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x38": {
+ "0x74": {
   "name": "ArenaNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 4000
  },
- "0x3c": {
+ "0x78": {
   "name": "ArenaNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x40": {
+ "0x7c": {
   "name": "ArenaNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 10000
  },
- "0x44": {
+ "0x80": {
   "name": "ArenaNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x48": {
+ "0x84": {
   "name": "ArenaNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 5000
  },
- "0x4c": {
+ "0x88": {
   "name": "BanditCampNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x50": {
+ "0x8c": {
   "name": "BanditCampNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 3000
  },
- "0x54": {
+ "0x90": {
   "name": "BanditCampNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x58": {
+ "0x94": {
   "name": "BanditCampNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2000
  },
- "0x5c": {
+ "0x98": {
   "name": "BountyHuntNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 600
  },
- "0x60": {
+ "0x9c": {
   "name": "BountyHuntNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1500
  },
- "0x64": {
+ "0xa0": {
   "name": "BountyHuntNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x68": {
+ "0xa4": {
   "name": "BountyHuntNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2500
  },
- "0x6c": {
+ "0xa8": {
   "name": "BreakSiegeNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x70": {
+ "0xac": {
   "name": "BreakSiegeNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1300
  },
- "0x74": {
+ "0xb0": {
   "name": "BreakSiegeNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x78": {
+ "0xb4": {
   "name": "BreakSiegeNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1800
  },
- "0x7c": {
+ "0xb8": {
   "name": "BreakSiegeNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x80": {
+ "0xbc": {
   "name": "BreakSiegeNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1900
  },
- "0x84": {
+ "0xc0": {
   "name": "GraveyardNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x88": {
+ "0xc4": {
   "name": "GraveyardNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1300
  },
- "0x8c": {
+ "0xc8": {
   "name": "GraveyardNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x90": {
+ "0xcc": {
   "name": "GraveyardNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2500
  },
- "0x94": {
+ "0xd0": {
   "name": "GraveyardNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x98": {
+ "0xd4": {
   "name": "GraveyardNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2200
  },
- "0x9c": {
+ "0xd8": {
   "name": "HobbeCaveNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0xa0": {
+ "0xdc": {
   "name": "HobbeCaveNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0xa4": {
+ "0xe0": {
   "name": "HobbeCaveNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0xa8": {
+ "0xe4": {
   "name": "HobbeCaveNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1800
  },
- "0xac": {
+ "0xe8": {
   "name": "HobbeCaveNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0xb0": {
+ "0xec": {
   "name": "HobbeCaveNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1400
  },
- "0xb4": {
+ "0xf0": {
   "name": "HTContestNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0xb8": {
+ "0xf4": {
   "name": "HTContestNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0xbc": {
+ "0xf8": {
   "name": "HTContestNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0xc0": {
+ "0xfc": {
   "name": "HTContestNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 600
  },
- "0xc4": {
+ "0x100": {
   "name": "HTContestNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0xc8": {
+ "0x104": {
   "name": "HTContestNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0xcc": {
+ "0x108": {
   "name": "HTEvilNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0xd0": {
+ "0x10c": {
   "name": "HTEvilNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0xd4": {
+ "0x110": {
   "name": "HTEvilNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0xd8": {
+ "0x114": {
   "name": "HTEvilNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1500
  },
- "0xdc": {
+ "0x118": {
   "name": "HTEvilNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0xe0": {
+ "0x11c": {
   "name": "HTEvilNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1500
  },
- "0xe4": {
+ "0x120": {
   "name": "HTGoodNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0xe8": {
+ "0x124": {
   "name": "HTGoodNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0xec": {
+ "0x128": {
   "name": "HTGoodNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0xf0": {
+ "0x12c": {
   "name": "HTGoodNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1500
  },
- "0xf4": {
+ "0x130": {
   "name": "HTGoodNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0xf8": {
+ "0x134": {
   "name": "HTGoodNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1500
  },
- "0xfc": {
+ "0x138": {
   "name": "MCCNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x100": {
+ "0x13c": {
   "name": "MCCNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2000
  },
- "0x104": {
+ "0x140": {
   "name": "MCCNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x108": {
+ "0x144": {
   "name": "MCCNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 8000
  },
- "0x10c": {
+ "0x148": {
   "name": "MCCNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x110": {
+ "0x14c": {
   "name": "MCCNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 7000
  },
- "0x114": {
+ "0x150": {
   "name": "MinionCampNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x118": {
+ "0x154": {
   "name": "MinionCampNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x11c": {
+ "0x158": {
   "name": "MinionCampNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0x120": {
+ "0x15c": {
   "name": "MinionCampNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 4000
  },
- "0x124": {
+ "0x160": {
   "name": "MinionCampNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x128": {
+ "0x164": {
   "name": "MinionCampNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 6000
  },
- "0x12c": {
+ "0x168": {
   "name": "OFEvilNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 80
  },
- "0x130": {
+ "0x16c": {
   "name": "OFEvilNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 160
  },
- "0x134": {
+ "0x170": {
   "name": "OFEvilNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x138": {
+ "0x174": {
   "name": "OFEvilNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x13c": {
+ "0x178": {
   "name": "OFEvilNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x140": {
+ "0x17c": {
   "name": "OFEvilNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x144": {
+ "0x180": {
   "name": "OFGoodNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 80
  },
- "0x148": {
+ "0x184": {
   "name": "OFGoodNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 160
  },
- "0x14c": {
+ "0x188": {
   "name": "OFGoodNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x150": {
+ "0x18c": {
   "name": "OFGoodNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x154": {
+ "0x190": {
   "name": "OFGoodNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x158": {
+ "0x194": {
   "name": "OFGoodNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x15c": {
+ "0x198": {
   "name": "PrisonNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x160": {
+ "0x19c": {
   "name": "PrisonNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x164": {
+ "0x1a0": {
   "name": "PrisonNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x168": {
+ "0x1a4": {
   "name": "PrisonNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x16c": {
+ "0x1a8": {
   "name": "PrisonNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x170": {
+ "0x1ac": {
   "name": "PrisonNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 0
  },
- "0x174": {
+ "0x1b0": {
   "name": "RansomVictimNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x178": {
+ "0x1b4": {
   "name": "RansomVictimNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x17c": {
+ "0x1b8": {
   "name": "RansomVictimNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x180": {
+ "0x1bc": {
   "name": "RansomVictimNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 900
  },
- "0x184": {
+ "0x1c0": {
   "name": "RansomVictimNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x188": {
+ "0x1c4": {
   "name": "RansomVictimNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 600
  },
- "0x18c": {
+ "0x1c8": {
   "name": "TraderConflictEvilNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x190": {
+ "0x1cc": {
   "name": "TraderConflictEvilNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x194": {
+ "0x1d0": {
   "name": "TraderConflictEvilNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x198": {
+ "0x1d4": {
   "name": "TraderConflictEvilNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 6000
  },
- "0x19c": {
+ "0x1d8": {
   "name": "TraderConflictEvilNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0x1a0": {
+ "0x1dc": {
   "name": "TraderConflictEvilNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 5000
  },
- "0x1a4": {
+ "0x1e0": {
   "name": "TraderConflictGoodNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 100
  },
- "0x1a8": {
+ "0x1e4": {
   "name": "TraderConflictGoodNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x1ac": {
+ "0x1e8": {
   "name": "TraderConflictGoodNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x1b0": {
+ "0x1ec": {
   "name": "TraderConflictGoodNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x1b4": {
+ "0x1f0": {
   "name": "TraderConflictGoodNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 300
  },
- "0x1b8": {
+ "0x1f4": {
   "name": "TraderConflictGoodNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x1bc": {
+ "0x1f8": {
   "name": "TraderEscortNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x1c0": {
+ "0x1fc": {
   "name": "TraderEscortNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x1c4": {
+ "0x200": {
   "name": "TraderEscortNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x1c8": {
+ "0x204": {
   "name": "TraderEscortNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x1cc": {
+ "0x208": {
   "name": "TraderEscortNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 200
  },
- "0x1d0": {
+ "0x20c": {
   "name": "TraderEscortNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 600
  },
- "0x1d4": {
+ "0x210": {
   "name": "WhiteBalvNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0x1d8": {
+ "0x214": {
   "name": "WhiteBalvNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1800
  },
- "0x1dc": {
+ "0x218": {
   "name": "WhiteBalvNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x1e0": {
+ "0x21c": {
   "name": "WhiteBalvNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2500
  },
- "0x1e4": {
+ "0x220": {
   "name": "WhiteBalvNoWeaponsBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x1e8": {
+ "0x224": {
   "name": "WhiteBalvNoWeaponsBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 4000
  },
- "0x1ec": {
+ "0x228": {
   "name": "SummoningShipNakedBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 800
  },
- "0x1f0": {
+ "0x22c": {
   "name": "SummoningShipNakedBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 1800
  },
- "0x1f4": {
+ "0x230": {
   "name": "SummoningShipNoDamageBoastCost",
   "type": "long",
   "defType": "int32",
   "value": 500
  },
- "0x1f8": {
+ "0x234": {
   "name": "SummoningShipNoDamageBoastReward",
   "type": "long",
   "defType": "int32",
   "value": 2500
  },
- "0x1fc": {
+ "0x238": {
   "name": "TCGKillNoBanditsCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x200": {
+ "0x23c": {
   "name": "TCGKillNoBanditsReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x204": {
+ "0x240": {
   "name": "TCGMadeTimeLimitCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x208": {
+ "0x244": {
   "name": "TCGMadeTimeLimitReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x20c": {
+ "0x248": {
   "name": "TCEKeepBanditFollowerAliveCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x210": {
+ "0x24c": {
   "name": "TCEKeepBanditFollowerAliveReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x214": {
+ "0x250": {
   "name": "TCEMadeTimeLimitCost",
   "type": "long",
   "defType": "int32",
   "value": 400
  },
- "0x218": {
+ "0x254": {
   "name": "TCEMadeTimeLimitReward",
   "type": "long",
   "defType": "int32",
   "value": 1000
  },
- "0x21c": {
-  "name": "RansomVictimVictimNoDamageCost",
-  "type": "long",
-  "defType": "int32",
-  "value": 400
- },
- "0x220": {
-  "name": "RansomVictimVictimNoDamageReward",
-  "type": "long",
-  "defType": "int32",
-  "value": 1000
- },
- "0x224": {
-  "name": "RansomVictimKillKidnapperCost",
-  "type": "long",
-  "defType": "int32",
-  "value": 400
- },
- "0x228": {
-  "name": "RansomVictimKillKidnapperReward",
-  "type": "long",
-  "defType": "int32",
-  "value": 1000
- },
- "0x22c": {
-  "name": "RansomVictimSaveVictimCost",
-  "type": "long",
-  "defType": "int32",
-  "value": 400
- },
- "0x230": {
-  "name": "RansomVictimSaveVictimReward",
-  "type": "long",
-  "defType": "int32",
-  "value": 1000
- },
- "0x234": {
-  "name": "RansomVictimHaveVictimKilledCost",
-  "type": "long",
-  "defType": "int32",
-  "value": 400
- },
- "0x238": {
-  "name": "RansomVictimHaveVictimKilledReward",
-  "type": "long",
-  "defType": "int32",
-  "value": 1000
- },
- "0x23c": {
-  "name": "MinionCampBriarNoDamageCost",
-  "type": "long",
-  "defType": "int32",
-  "value": 400
- },
- "0x240": {
-  "name": "MinionCampBriarNoDamageReward",
-  "type": "long",
-  "defType": "int32",
-  "value": 2000
- },
- "0x244": {
-  "name": "AmbushScamTricksterApproachProximityLow",
-  "type": "float",
-  "defType": "float",
-  "value": 5.0
- },
- "0x248": {
-  "name": "AmbushScamTricksterApproachProximityHigh",
-  "type": "float",
-  "defType": "float",
-  "value": 7.0
- },
- "0x24c": {
-  "name": "AmbushScamTricksterHeroProximity",
-  "type": "float",
-  "defType": "float",
-  "value": 5.0
- },
- "0x250": {
-  "name": "AmbushScamTricksterRunAwayProximity",
-  "type": "float",
-  "defType": "float",
-  "value": 2.0
- },
- "0x254": {
-  "name": "AmbushScamAmbushTriggerProximity",
-  "type": "float",
-  "defType": "float",
-  "value": 4.0
- },
  "0x258": {
   "name": "AmbushScamApproachTriggerProximity",
   "type": "float",
   "defType": "float",
-  "value": 4.0
+  "value": 4.0,
+  "verified": false
  },
  "0x25c": {
   "name": "AmbushScamBuddyWanderMax",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x260": {
   "name": "AmbushScamTricksterWanderMax",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x264": {
   "name": "AmbushScamGoldReward",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x268": {
   "name": "AmbushScamBonusObject",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_RESURRECTION_PHIAL"
+  "value": "OBJECT_RESURRECTION_PHIAL",
+  "verified": false
  },
  "0x26c": {
   "name": "AmbushScamExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x270": {
   "name": "AmbushScamRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x274": {
   "name": "AmbushScamMoralityEvil",
   "type": "float",
   "defType": "float",
-  "value": -0.029999999329447746
+  "value": -0.029999999329447746,
+  "verified": false
  },
  "0x278": {
   "name": "AmbushScamMoralityGood",
   "type": "float",
   "defType": "float",
-  "value": 0.029999999329447746
+  "value": 0.029999999329447746,
+  "verified": false
  },
  "0x27c": {
   "name": "AmbushScamRandomSpeechTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x280": {
   "name": "AmbushScamRandomSpeechTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x284": {
   "name": "AmbushScamScreamSoundIds",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "04000000cd0b0600f30b0600190c06003f0c0600"
+  "value": "04000000cd0b0600f30b0600190c06003f0c0600",
+  "verified": false
  },
  "0x290": {
   "name": "AmbushScamScreamProximity",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x294": {
   "name": "ArcheryCompetitionCost",
   "type": "long",
   "defType": "int32",
-  "value": -10
+  "value": -10,
+  "verified": false
  },
  "0x298": {
   "name": "ArcheryGameTimeLimit",
   "type": "long",
   "defType": "int32",
-  "value": 60
+  "value": 60,
+  "verified": false
  },
  "0x29c": {
   "name": "ArcheryTimesUpDuration",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x2a0": {
   "name": "ArcheryInitialHighScoreMax",
   "type": "long",
   "defType": "int32",
-  "value": 223
+  "value": 223,
+  "verified": false
  },
  "0x2a4": {
   "name": "ArcheryInitialHighScoreVar",
   "type": "long",
   "defType": "int32",
-  "value": 57
+  "value": 57,
+  "verified": false
  },
  "0x2a8": {
   "name": "ArcheryScoreForPrize",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x2ac": {
   "name": "ArcheryScoreForPrizeHigh",
   "type": "float",
   "defType": "float",
-  "value": 0.8999999761581421
+  "value": 0.8999999761581421,
+  "verified": false
  },
  "0x2b0": {
   "name": "ArcheryScoreForPrizeMedium",
   "type": "float",
   "defType": "float",
-  "value": 0.800000011920929
+  "value": 0.800000011920929,
+  "verified": false
  },
  "0x2b4": {
   "name": "ArcheryScoreForPrizeLow",
   "type": "float",
   "defType": "float",
-  "value": 0.699999988079071
+  "value": 0.699999988079071,
+  "verified": false
  },
  "0x2b8": {
   "name": "ArcheryMaxOutsideRing",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x2bc": {
   "name": "ArcheryDummySpeedFast",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x2c0": {
   "name": "ArcheryDummySpeedMedium",
   "type": "long",
   "defType": "int32",
-  "value": 60
+  "value": 60,
+  "verified": false
  },
  "0x2c4": {
   "name": "ArcheryDummySpeedSlow",
   "type": "long",
   "defType": "int32",
-  "value": 80
+  "value": 80,
+  "verified": false
  },
  "0x2c8": {
   "name": "ArcheryNumberOfMoves",
   "type": "long",
   "defType": "int32",
-  "value": 60
+  "value": 60,
+  "verified": false
  },
  "0x2cc": {
   "name": "ArcheryRewardObject",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TREASURE_CLUE_4"
+  "value": "OBJECT_TREASURE_CLUE_4",
+  "verified": false
  },
  "0x2d0": {
   "name": "ArcheryNormalPrizes",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "00000000"
+  "value": "00000000",
+  "verified": false
  },
  "0x2dc": {
   "name": "ArcheryNormalPrizesHigh",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "03000000dc880200c8880200b28b0200"
+  "value": "03000000dc880200c8880200b28b0200",
+  "verified": false
  },
  "0x2e8": {
   "name": "ArcheryNormalPrizesMedium",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "06000000648902007d890200008c0200c58b0200f588020005890200"
+  "value": "06000000648902007d890200008c0200c58b0200f588020005890200",
+  "verified": false
  },
  "0x2f4": {
   "name": "ArcheryNormalPrizesLow",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "03000000bb870200888802009a880200"
+  "value": "03000000bb870200888802009a880200",
+  "verified": false
  },
  "0x300": {
   "name": "ArcheryMatchHighScorePrizes",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "03000000028a0200d0890200e7890200"
+  "value": "03000000028a0200d0890200e7890200",
+  "verified": false
  },
  "0x30c": {
   "name": "ArcheryNewHighScorePrizes",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "05000000989b02007f9b0200639b0200479b0200b59b0200"
+  "value": "05000000989b02007f9b0200639b0200479b0200b59b0200",
+  "verified": false
  },
  "0x318": {
   "name": "ArcheryScorePowerLevels",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "030000000000003f6666263f6666663f"
+  "value": "030000000000003f6666263f6666663f",
+  "verified": false
  },
  "0x324": {
   "name": "ArcheryReallyHighScorePrize",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TROPHY_SILVER_ARROW_01"
+  "value": "OBJECT_TROPHY_SILVER_ARROW_01",
+  "verified": false
  },
  "0x328": {
   "name": "ArcheryReallyHighScore",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x32c": {
   "name": "ArcheryExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x330": {
   "name": "ArcheryRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x334": {
   "name": "ArcheryMoralityCheatUsedMagic",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x338": {
   "name": "ArcheryMoralityCheatSteppedOut",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x33c": {
   "name": "ArcheryMoralityShotOwner",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x340": {
   "name": "ArcheryScoreDummyStatic",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0x344": {
   "name": "ArcheryScoreDummyFront",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x348": {
   "name": "ArcheryScoreDummyCentre",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0x34c": {
   "name": "ArcheryScoreDummyLeft",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x350": {
   "name": "ArcheryScoreDummyRight",
   "type": "long",
   "defType": "int32",
-  "value": 7
+  "value": 7,
+  "verified": false
  },
  "0x354": {
   "name": "ArcheryRandomSpeechTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x358": {
   "name": "ArcheryRandomSpeechTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x35c": {
   "name": "AssassinActivateRenownLevel",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x360": {
   "name": "AssassinTriggerProximity",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x364": {
   "name": "AssassinScreamProximity",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x368": {
   "name": "AssassinChestProximity",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x36c": {
   "name": "AssassinCameraOffScreenTime",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x370": {
   "name": "AssassinScreamSoundIds",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "04000000cd0b0600f30b0600190c06003f0c0600"
+  "value": "04000000cd0b0600f30b0600190c06003f0c0600",
+  "verified": false
  },
  "0x37c": {
   "name": "AssassinReward",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0x380": {
   "name": "AssassinRewardDelay",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x384": {
   "name": "AssassinObjects",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "050000004f424a4543545f444f4c4c5f4845524f5f3031004f424a4543545f44594e414d49435f504f54494f4e5f44554d4d59004f424a4543545f424f4f4b5f52414953455f53434152494e455353004f424a4543545f474f4c445f313030004f424a4543545f47454d53544f4e455f4a455400"
+  "value": "050000004f424a4543545f444f4c4c5f4845524f5f3031004f424a4543545f44594e414d49435f504f54494f4e5f44554d4d59004f424a4543545f424f4f4b5f52414953455f53434152494e455353004f424a4543545f474f4c445f313030004f424a4543545f47454d53544f4e455f4a455400",
+  "verified": false
  },
  "0x394": {
   "name": "AssassinLocationName",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "05000000486f6f6b436f6173740044657365727465644661726d005769746368776f6f6431004b6e6f74686f6c65476c61646500507269736f6e5061746800"
+  "value": "05000000486f6f6b436f6173740044657365727465644661726d005769746368776f6f6431004b6e6f74686f6c65476c61646500507269736f6e5061746800",
+  "verified": false
  },
  "0x3a4": {
   "name": "AssassinRegionKillCount",
   "type": "vector<long,std::allocator<long>_>",
   "defType": "Vector_J",
-  "value": "050000000100000001000000010000000100000001000000"
+  "value": "050000000100000001000000010000000100000001000000",
+  "verified": false
  },
  "0x3b0": {
   "name": "AssassinExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x3b4": {
   "name": "AssassinRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x3b8": {
   "name": "AssassinMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x3bc": {
   "name": "BanditCampPathEavesDropProximity",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x3c0": {
   "name": "BanditCampKillNoBanditsBoastCost",
   "type": "long",
   "defType": "int32",
-  "value": 400
+  "value": 400,
+  "verified": false
  },
  "0x3c4": {
   "name": "BanditCampKillNoBanditsBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 1200
+  "value": 1200,
+  "verified": false
  },
  "0x3c8": {
   "name": "BanditCampKillManyBanditsBoastCost",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x3cc": {
   "name": "BanditCampKillManyBanditsBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 400
+  "value": 400,
+  "verified": false
  },
  "0x3d0": {
   "name": "KillTraderTriggerDistance",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x3d4": {
   "name": "TollBanditCallHeroDistance",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x3d8": {
   "name": "TollBanditWarningOverDistance",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x3dc": {
   "name": "TollBanditHeroLeftDistance",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x3e0": {
   "name": "TollBanditPayDistance",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x3e4": {
   "name": "TollBanditCallHeroTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x3e8": {
   "name": "TollBanditWarnHeroTimer",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x3ec": {
   "name": "TollBanditTauntTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x3f0": {
   "name": "BanditTollSneakDistance",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x3f4": {
   "name": "BanditTollBanditWanderDistance",
   "type": "long",
   "defType": "int32",
-  "value": 25
+  "value": 25,
+  "verified": false
  },
  "0x3f8": {
   "name": "BanditTollTraderWarnDistance",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x3fc": {
   "name": "TollBanditFee",
   "type": "long",
   "defType": "int32",
-  "value": 400
+  "value": 400,
+  "verified": false
  },
  "0x400": {
   "name": "TollBanditFeeWithFollower",
   "type": "long",
   "defType": "int32",
-  "value": 700
+  "value": 700,
+  "verified": false
  },
  "0x404": {
   "name": "TollBanditCreatureType",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "CREATURE_BANDIT_GRUNT_LEVEL1_D"
+  "value": "CREATURE_BANDIT_GRUNT_LEVEL1_D",
+  "verified": false
  },
  "0x408": {
   "name": "TollBanditCloseToExit",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x40c": {
   "name": "TollBanditTimeToFade",
   "type": "float",
   "defType": "float",
-  "value": 1.5
+  "value": 1.5,
+  "verified": false
  },
  "0x410": {
   "name": "BanditCountForToll",
   "type": "long",
   "defType": "int32",
-  "value": 9
+  "value": 9,
+  "verified": false
  },
  "0x414": {
   "name": "BeardyBaldyWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x418": {
   "name": "BeardyBaldyWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 50.0
+  "value": 50.0,
+  "verified": false
  },
  "0x41c": {
   "name": "BeardyBaldyHaircutStyle1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_HAIR_BASIN_01"
+  "value": "OBJECT_HERO_HAIR_BASIN_01",
+  "verified": false
  },
  "0x420": {
   "name": "BeardyBaldyHaircutCard1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HAIRCUT_CARD_MOP"
+  "value": "OBJECT_HAIRCUT_CARD_MOP",
+  "verified": false
  },
  "0x424": {
   "name": "BeardyBaldyHaircutStyle2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_HAIR_MOHAWK_01"
+  "value": "OBJECT_HERO_HAIR_MOHAWK_01",
+  "verified": false
  },
  "0x428": {
   "name": "BeardyBaldyHaircutCard2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HAIRCUT_CARD_07"
+  "value": "OBJECT_HAIRCUT_CARD_07",
+  "verified": false
  },
  "0x42c": {
   "name": "BeardyBaldyBeardStyle1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_BEARD_MUTTON_01"
+  "value": "OBJECT_HERO_BEARD_MUTTON_01",
+  "verified": false
  },
  "0x430": {
   "name": "BeardyBaldyBeardCard1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_BEARD_CARD_04"
+  "value": "OBJECT_BEARD_CARD_04",
+  "verified": false
  },
  "0x434": {
   "name": "BeardyBaldyBeardStyle2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_BEARD_LONG_01"
+  "value": "OBJECT_HERO_BEARD_LONG_01",
+  "verified": false
  },
  "0x438": {
   "name": "BeardyBaldyBeardCard2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_BEARD_CARD_05"
+  "value": "OBJECT_BEARD_CARD_05",
+  "verified": false
  },
  "0x43c": {
   "name": "BeardyBaldyTashStyle1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_TASHTRADER_01"
+  "value": "OBJECT_HERO_TASHTRADER_01",
+  "verified": false
  },
  "0x440": {
   "name": "BeardyBaldyTashCard1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TASH_CARD_02"
+  "value": "OBJECT_TASH_CARD_02",
+  "verified": false
  },
  "0x444": {
   "name": "BeardyBaldyTashStyle2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_HERO_TASHSHERIFF_01"
+  "value": "OBJECT_HERO_TASHSHERIFF_01",
+  "verified": false
  },
  "0x448": {
   "name": "BeardyBaldyTashCard2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TASH_CARD_04"
+  "value": "OBJECT_TASH_CARD_04",
+  "verified": false
  },
  "0x44c": {
   "name": "BeardyBaldyRewardObjectFullComplete",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TATTOO_CARD_BS_BACK_01"
+  "value": "OBJECT_TATTOO_CARD_BS_BACK_01",
+  "verified": false
  },
  "0x450": {
   "name": "BeardyBaldyRewardObjectHalfComplete",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_BEARD_CARD_08"
+  "value": "OBJECT_BEARD_CARD_08",
+  "verified": false
  },
  "0x454": {
   "name": "BeardyBaldyExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x458": {
   "name": "BeardyBaldyRenown",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0x45c": {
   "name": "BeardyBaldyMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x460": {
   "name": "BeardyBaldyRandomSpeechTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x464": {
   "name": "BeardyBaldyRandomSpeechTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x468": {
   "name": "HenchmanHealthLow",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x46c": {
   "name": "HenchmanHealthCritical",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x470": {
   "name": "HenchmanPayTimeDelayInSeconds",
   "type": "long",
   "defType": "int32",
-  "value": 60
+  "value": 60,
+  "verified": false
  },
  "0x474": {
   "name": "HenchmanCheapGoldCost",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x478": {
   "name": "HenchmanExpensiveGoldCost",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x47c": {
   "name": "BookBoyMarker",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "190000004e554c4c004e554c4c004d4b5f425341535f424f59004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f59004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f59004e554c4c004e554c4c004d4b5f4253414c5f424f59004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f5900"
+  "value": "190000004e554c4c004e554c4c004d4b5f425341535f424f59004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f59004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f59004e554c4c004e554c4c004d4b5f4253414c5f424f59004e554c4c004e554c4c004e554c4c004d4b5f425341465f424f5900",
+  "verified": false
  },
  "0x48c": {
   "name": "BookGirlMarker",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "190000004e554c4c004e554c4c004d4b5f425341535f4749524c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c004e554c4c004e554c4c004d4b5f4253414c5f4749524c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c00"
+  "value": "190000004e554c4c004e554c4c004d4b5f425341535f4749524c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c004e554c4c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c004e554c4c004e554c4c004d4b5f4253414c5f4749524c004e554c4c004e554c4c004e554c4c004d4b5f425341465f4749524c00",
+  "verified": false
  },
  "0x49c": {
   "name": "BookReactions",
   "type": "vector<CConversation,std::allocator<CConversation>_>",
   "defType": "vector<CConversation>",
-  "value": "190000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24807000000833d542907000000626f7930006769726c3000626f7930006769726c3000626f7930006769726c3000626f79300006a1de6d070000004e554c4c00544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f363000d112aae90700000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f48415050595f4252310043535f434f4e565f4841505059325f4252320043535f434f4e565f48415050595f4252340043535f434f4e565f4841505059325f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f414e4752595f425231006975ce500700000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24809000000833d5429090000006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c300006a1de6d090000004e554c4c00544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f363000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f373000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f383000d112aae90900000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f414e4752595f4252310043535f434f4e565f4841505059325f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f4841505059325f4252320043535f434f4e565f5354524f5050595f494e544f0043535f434f4e565f4841505059325f4f55544f460043535f434f4e565f5354524f5050595f4252320043535f434f4e565f48415050595f425231006975ce500900000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f48415050595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24806000000833d5429060000006769726c3000626f7930006769726c3000626f7930006769726c3000626f79300006a1de6d060000004e554c4c00544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f353000d112aae90600000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f48415050595f4252310043535f434f4e565f4841505059325f4f55544f460043535f434f4e565f48415050595f42523100424f595f424f5245445f5348494d4d595f30310043535f434f4e565f48415050595f425233006975ce500600000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500053545f49444c455f535542544c450043535f434f4e565f48415050595f4c4f4f500053545f49444c455f535542544c450043535f434f4e565f48415050595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e2480a000000833d54290a000000626f7930006769726c3000626f7930006769726c3000626f7930006769726c30006769726c3000626f7930006769726c3000626f79300006a1de6d0a0000004e554c4c00544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f363000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f373000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f383000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f393000d112aae90a000000424f595f50554c4c494e475f46414345535f30310043535f434f4e565f414e4752595f4252340043535f434f4e565f414e4752595f4252330043535f434f4e565f414e4752595f42523100424f595f4b49434b494e475f4f424a4543545f4f4e5f47524f554e445f30310043535f434f4e565f5354524f5050595f494e544f0043535f434f4e565f5354524f5050595f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f5354524f5050595f4252320043535f434f4e565f414e4752595f425234006975ce500a0000004e554c4c0043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24807000000833d5429070000006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c300006a1de6d070000004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c00544558545f5153545f4231365f424f4f4b32345f5245414354494f4e5f313000d112aae9070000005354414e444152445f5941574e0043535f4348494c445f464152540053545f4f50494e494f4e5f5249444943554c455f534e49474745520043535f4348494c445f425552500053545f4f50494e494f4e5f5249444943554c455f42454c4c595f4c4155474800424f595f5049434b494e475f4e4f53455f30310053545f504f494e545f415741595f4745545f4f5554006975ce50070000004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c00"
+  "value": "190000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24807000000833d542907000000626f7930006769726c3000626f7930006769726c3000626f7930006769726c3000626f79300006a1de6d070000004e554c4c00544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b30325f5245414354494f4e5f363000d112aae90700000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f48415050595f4252310043535f434f4e565f4841505059325f4252320043535f434f4e565f48415050595f4252340043535f434f4e565f4841505059325f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f414e4752595f425231006975ce500700000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24809000000833d5429090000006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c300006a1de6d090000004e554c4c00544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f363000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f373000544558545f5153545f4231365f424f4f4b31325f5245414354494f4e5f383000d112aae90900000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f414e4752595f4252310043535f434f4e565f4841505059325f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f4841505059325f4252320043535f434f4e565f5354524f5050595f494e544f0043535f434f4e565f4841505059325f4f55544f460043535f434f4e565f5354524f5050595f4252320043535f434f4e565f48415050595f425231006975ce500900000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f48415050595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f48415050595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24806000000833d5429060000006769726c3000626f7930006769726c3000626f7930006769726c3000626f79300006a1de6d060000004e554c4c00544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b31375f5245414354494f4e5f353000d112aae90600000043535f434f4e565f4841505059325f494e544f0043535f434f4e565f48415050595f4252310043535f434f4e565f4841505059325f4f55544f460043535f434f4e565f48415050595f42523100424f595f424f5245445f5348494d4d595f30310043535f434f4e565f48415050595f425233006975ce500600000043535f434f4e565f4841505059325f4c4f4f500043535f434f4e565f48415050595f4c4f4f500053545f49444c455f535542544c450043535f434f4e565f48415050595f4c4f4f500053545f49444c455f535542544c450043535f434f4e565f48415050595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e2480a000000833d54290a000000626f7930006769726c3000626f7930006769726c3000626f7930006769726c30006769726c3000626f7930006769726c3000626f79300006a1de6d0a0000004e554c4c00544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f313000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f323000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f333000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f343000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f353000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f363000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f373000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f383000544558545f5153545f4231365f424f4f4b32305f5245414354494f4e5f393000d112aae90a000000424f595f50554c4c494e475f46414345535f30310043535f434f4e565f414e4752595f4252340043535f434f4e565f414e4752595f4252330043535f434f4e565f414e4752595f42523100424f595f4b49434b494e475f4f424a4543545f4f4e5f47524f554e445f30310043535f434f4e565f5354524f5050595f494e544f0043535f434f4e565f5354524f5050595f4252310043535f434f4e565f414e4752595f4252320043535f434f4e565f5354524f5050595f4252320043535f434f4e565f414e4752595f425234006975ce500a0000004e554c4c0043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f500043535f434f4e565f5354524f5050595f4c4f4f500043535f434f4e565f414e4752595f4c4f4f50008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24800000000833d54290000000006a1de6d00000000d112aae9000000006975ce50000000008f54e24807000000833d5429070000006769726c3000626f7930006769726c3000626f7930006769726c3000626f7930006769726c300006a1de6d070000004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c00544558545f5153545f4231365f424f4f4b32345f5245414354494f4e5f313000d112aae9070000005354414e444152445f5941574e0043535f4348494c445f464152540053545f4f50494e494f4e5f5249444943554c455f534e49474745520043535f4348494c445f425552500053545f4f50494e494f4e5f5249444943554c455f42454c4c595f4c4155474800424f595f5049434b494e475f4e4f53455f30310053545f504f494e545f415741595f4745545f4f5554006975ce50070000004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c004e554c4c00",
+  "verified": false
  },
  "0x4ac": {
   "name": "BookDefNames",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "280000004f424a4543545f424f4f4b5f52414953455f41475245454142494c495459004f424a4543545f424f4f4b5f53544f52595f3038004f424a4543545f424f4f4b5f53544f52595f3133004f424a4543545f424f4f4b5f4755494c445f435245415455524553004f424a4543545f424f4f4b5f53544f52595f3134004f424a4543545f424f4f4b5f4755494c445f4e4f52544845524e5f5741535445004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3032004f424a4543545f424f4f4b5f4755494c445f4d41584c4559004f424a4543545f424f4f4b5f4755494c445f57484954455f42414c564552494e45004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3033004f424a4543545f424f4f4b5f4755494c445f4f4b31004f424a4543545f424f4f4b5f4755494c445f4c4f56455f53544f5259004f424a4543545f424f4f4b5f4755494c445f4152454e41004f424a4543545f424f4f4b5f4755494c445f445241474f4e53004f424a4543545f424f4f4b5f4755494c445f4f544845525f4c414e44004f424a4543545f424f4f4b5f4755494c445f4a41434b31004f424a4543545f424f4f4b5f53544f52595f3032004f424a4543545f424f4f4b5f52414953455f534558494e455353004f424a4543545f424f4f4b5f53544f52595f3132004f424a4543545f424f4f4b5f4755494c445f5457494e424c414445004f424a4543545f424f4f4b5f52414953455f53434152494e455353004f424a4543545f424f4f4b5f53544f52595f3037004f424a4543545f424f4f4b5f5245445543455f53434152494e455353004f424a4543545f424f4f4b5f5245445543455f534558494e455353004f424a4543545f424f4f4b5f5245445543455f41475245454142494c495459004f424a4543545f424f4f4b5f53544f52595f3135004f424a4543545f424f4f4b5f53544f52595f3033004f424a4543545f424f4f4b5f53544f52595f3130004f424a4543545f424f4f4b5f53544f52595f3034004f424a4543545f424f4f4b5f53544f52595f3036004f424a4543545f424f4f4b5f53544f52595f3136004f424a4543545f4841554e5445445f44494152595f3031004f424a4543545f424f4f4b5f424c4f4f444c494e45004f424a4543545f424f4f4b5f4755494c445f574541504f4e53004f424a4543545f424f4f4b5f4755494c445f5350454c4c53004f424a4543545f424f4f4b5f4755494c445f5345455253004f424a4543545f424f4f4b5f53544f52595f3035004f424a4543545f424f4f4b5f53544f52595f3031004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3034004f424a4543545f424f4f4b5f4755494c445f484953544f525900"
+  "value": "280000004f424a4543545f424f4f4b5f52414953455f41475245454142494c495459004f424a4543545f424f4f4b5f53544f52595f3038004f424a4543545f424f4f4b5f53544f52595f3133004f424a4543545f424f4f4b5f4755494c445f435245415455524553004f424a4543545f424f4f4b5f53544f52595f3134004f424a4543545f424f4f4b5f4755494c445f4e4f52544845524e5f5741535445004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3032004f424a4543545f424f4f4b5f4755494c445f4d41584c4559004f424a4543545f424f4f4b5f4755494c445f57484954455f42414c564552494e45004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3033004f424a4543545f424f4f4b5f4755494c445f4f4b31004f424a4543545f424f4f4b5f4755494c445f4c4f56455f53544f5259004f424a4543545f424f4f4b5f4755494c445f4152454e41004f424a4543545f424f4f4b5f4755494c445f445241474f4e53004f424a4543545f424f4f4b5f4755494c445f4f544845525f4c414e44004f424a4543545f424f4f4b5f4755494c445f4a41434b31004f424a4543545f424f4f4b5f53544f52595f3032004f424a4543545f424f4f4b5f52414953455f534558494e455353004f424a4543545f424f4f4b5f53544f52595f3132004f424a4543545f424f4f4b5f4755494c445f5457494e424c414445004f424a4543545f424f4f4b5f52414953455f53434152494e455353004f424a4543545f424f4f4b5f53544f52595f3037004f424a4543545f424f4f4b5f5245445543455f53434152494e455353004f424a4543545f424f4f4b5f5245445543455f534558494e455353004f424a4543545f424f4f4b5f5245445543455f41475245454142494c495459004f424a4543545f424f4f4b5f53544f52595f3135004f424a4543545f424f4f4b5f53544f52595f3033004f424a4543545f424f4f4b5f53544f52595f3130004f424a4543545f424f4f4b5f53544f52595f3034004f424a4543545f424f4f4b5f53544f52595f3036004f424a4543545f424f4f4b5f53544f52595f3136004f424a4543545f4841554e5445445f44494152595f3031004f424a4543545f424f4f4b5f424c4f4f444c494e45004f424a4543545f424f4f4b5f4755494c445f574541504f4e53004f424a4543545f424f4f4b5f4755494c445f5350454c4c53004f424a4543545f424f4f4b5f4755494c445f5345455253004f424a4543545f424f4f4b5f53544f52595f3035004f424a4543545f424f4f4b5f53544f52595f3031004f424a4543545f424f4f4b5f4755494c445f4352454154555245535f3034004f424a4543545f424f4f4b5f4755494c445f484953544f525900",
+  "verified": false
  },
  "0x4bc": {
   "name": "BooksNumberWanted",
   "type": "long",
   "defType": "int32",
-  "value": 16
+  "value": 16,
+  "verified": false
  },
  "0x4c0": {
   "name": "BooksNumberAccepted",
   "type": "long",
   "defType": "int32",
-  "value": 25
+  "value": 25,
+  "verified": false
  },
  "0x4c4": {
   "name": "BooksNumberComment",
   "type": "long",
   "defType": "int32",
-  "value": 35
+  "value": 35,
+  "verified": false
  },
  "0x4c8": {
   "name": "BooksNumberTotal",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x4cc": {
   "name": "BadBooksForHat",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x4d0": {
   "name": "GoodBooksForHat",
   "type": "long",
   "defType": "int32",
-  "value": 9
+  "value": 9,
+  "verified": false
  },
  "0x4d4": {
   "name": "BooksMoralityReward",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x4d8": {
   "name": "BordelloHeroTavernPriceMultiplier",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0x4dc": {
   "name": "ChapelActivationAge",
   "type": "long",
   "defType": "int32",
-  "value": 35
+  "value": 35,
+  "verified": false
  },
  "0x4e0": {
   "name": "ChapelAltarProximity",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x4e4": {
   "name": "ChapelAcolyteWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x4e8": {
   "name": "ChapelAcolytePrayerTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x4ec": {
   "name": "ChapelAcolytePrayerTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x4f0": {
   "name": "ChapelDonationLevel",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000000000803f0000f042000020430000484300007a4300009b43"
+  "value": "060000000000803f0000f042000020430000484300007a4300009b43",
+  "verified": false
  },
  "0x4fc": {
   "name": "ChapelMoralityRewardFraction",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000008fc2f5bc8fc275bdec51b8bd9a9919be9a9999be000000bf"
+  "value": "060000008fc2f5bc8fc275bdec51b8bd9a9919be9a9999be000000bf",
+  "verified": false
  },
  "0x508": {
   "name": "ChapelDonationRewardObject",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "OBJECT_LEGENDARY_LONGBOW"
+  "value": "OBJECT_LEGENDARY_LONGBOW",
+  "verified": false
  },
  "0x50c": {
   "name": "ChapelWeaponBrandishProximity",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0x510": {
   "name": "ChapelDonationLevelCoolThing1",
   "type": "float",
   "defType": "float",
-  "value": 5000.0
+  "value": 5000.0,
+  "verified": false
  },
  "0x514": {
   "name": "ChapelDonationLevelCoolThing2",
   "type": "float",
   "defType": "float",
-  "value": 10000.0
+  "value": 10000.0,
+  "verified": false
  },
  "0x518": {
   "name": "ChapelMoralityChangeCoolThing1",
   "type": "float",
   "defType": "float",
-  "value": -0.3499999940395355
+  "value": -0.3499999940395355,
+  "verified": false
  },
  "0x51c": {
   "name": "ChapelMoralityChangeCoolThing2",
   "type": "float",
   "defType": "float",
-  "value": -0.44999998807907104
+  "value": -0.44999998807907104,
+  "verified": false
  },
  "0x520": {
   "name": "ChapelDonationRewardAgeMin",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x524": {
   "name": "ChapelDonationRewardAgeVar",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x528": {
   "name": "ChapelDonationRewardTitle",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "OBJECT_HERO_TITLE_NECROMANCER"
+  "value": "OBJECT_HERO_TITLE_NECROMANCER",
+  "verified": false
  },
  "0x52c": {
   "name": "ChapelDonationLevelFiddleSuper",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0x530": {
   "name": "ChapelDonationLevelFiddleVery",
   "type": "float",
   "defType": "float",
-  "value": 0.699999988079071
+  "value": 0.699999988079071,
+  "verified": false
  },
  "0x534": {
   "name": "ChapelDonationLevelFiddle",
   "type": "float",
   "defType": "float",
-  "value": 0.800000011920929
+  "value": 0.800000011920929,
+  "verified": false
  },
  "0x538": {
   "name": "ChapelExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x53c": {
   "name": "ChapelRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x540": {
   "name": "ChapelMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x544": {
   "name": "DealerAttentionDistance",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x548": {
   "name": "DealerAttentionTimer",
   "type": "long",
   "defType": "int32",
-  "value": 7
+  "value": 7,
+  "verified": false
  },
  "0x54c": {
   "name": "TraderLeavingDelay",
   "type": "long",
   "defType": "int32",
-  "value": 45
+  "value": 45,
+  "verified": false
  },
  "0x550": {
   "name": "TraderAttentionDistance",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x554": {
   "name": "TraderConversationDelay",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x558": {
   "name": "TraderStopWalkingTimer",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x55c": {
   "name": "TraderStandStillTimer",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x560": {
   "name": "EasyPickingsReward",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x564": {
   "name": "ExposeMayorEvidenceDef",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "OBJECT_GREY_SISTER_DYING_LETTER"
+  "value": "OBJECT_GREY_SISTER_DYING_LETTER",
+  "verified": false
  },
  "0x568": {
   "name": "EMMaxFlashDistFromStables",
   "type": "float",
   "defType": "float",
-  "value": 7.5
+  "value": 7.5,
+  "verified": false
  },
  "0x56c": {
   "name": "F_FishermanHelpDelay",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x570": {
   "name": "F_FishermanIdleChatDelay",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x574": {
   "name": "F_WaspType",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "CREATURE_HORNET_01"
+  "value": "CREATURE_HORNET_01",
+  "verified": false
  },
  "0x578": {
   "name": "FishermanSaveHimMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0x57c": {
   "name": "FishTypesInGame",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x580": {
   "name": "FishingRodsInGame",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0x584": {
   "name": "FishingPrizes",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x588": {
   "name": "FishPrizeDefNames",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "040000004e4f4e45004f424a4543545f46495348494e475f524f445f5550475241444544004f424a4543545f53494c5645525f4b4559004f424a4543545f4845524f5f4841545f4649534845524d414e00"
+  "value": "040000004e4f4e45004f424a4543545f46495348494e475f524f445f5550475241444544004f424a4543545f53494c5645525f4b4559004f424a4543545f4845524f5f4841545f4649534845524d414e00",
+  "verified": false
  },
  "0x598": {
   "name": "FishRodDefNames",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "020000004f424a4543545f46495348494e475f524f44004f424a4543545f46495348494e475f524f445f555047524144454400"
+  "value": "020000004f424a4543545f46495348494e475f524f44004f424a4543545f46495348494e475f524f445f555047524144454400",
+  "verified": false
  },
  "0x5a8": {
   "name": "FishDefNames",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "030000004f424a4543545f464953485f434152505f4d454449554d5f3031004f424a4543545f464953485f434152505f4d454449554d5f3032004f424a4543545f4d4f4f4e4649534800"
+  "value": "030000004f424a4543545f464953485f434152505f4d454449554d5f3031004f424a4543545f464953485f434152505f4d454449554d5f3032004f424a4543545f4d4f4f4e4649534800",
+  "verified": false
  },
  "0x5b8": {
   "name": "FishPrizeWeights",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "0400000000000000000070410000f04100004842"
+  "value": "0400000000000000000070410000f04100004842",
+  "verified": false
  },
  "0x5c4": {
   "name": "FC_FighterDelay",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x5c8": {
   "name": "FC_MinimumFighterHealth",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x5cc": {
   "name": "FC_OutsideRingRange",
   "type": "float",
   "defType": "float",
-  "value": 12.5
+  "value": 12.5,
+  "verified": false
  },
  "0x5d0": {
   "name": "FC_RingTimeOut",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x5d4": {
   "name": "FC_BowerstoneAllowedHits",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x5d8": {
   "name": "FC_OakvaleAllowedHits",
   "type": "long",
   "defType": "int32",
-  "value": 7
+  "value": 7,
+  "verified": false
  },
  "0x5dc": {
   "name": "FC_BanditCampAllowedHits",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x5e0": {
   "name": "FC_KnotholeGladeAllowedHits",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x5e4": {
   "name": "FC_HitsDepletionOverSession",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x5e8": {
   "name": "FC_BowerstoneFightCount",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x5ec": {
   "name": "FC_OakvaleFightCount",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0x5f0": {
   "name": "FC_BanditCampFightCount",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x5f4": {
   "name": "FC_KnotholeGladeFightCount",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x5f8": {
   "name": "FC_StartTimeOfDay",
   "type": "long",
   "defType": "int32",
-  "value": 2200
+  "value": 2200,
+  "verified": false
  },
  "0x5fc": {
   "name": "FC_EndTimeOfDay",
   "type": "long",
   "defType": "int32",
-  "value": 400
+  "value": 400,
+  "verified": false
  },
  "0x600": {
   "name": "FC_MoneyAddedPerFight",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x604": {
   "name": "FC_RingRadius",
   "type": "float",
   "defType": "float",
-  "value": 5.5
+  "value": 5.5,
+  "verified": false
  },
  "0x608": {
   "name": "FC_InsideRingMessageDelay",
   "type": "long",
   "defType": "int32",
-  "value": 12
+  "value": 12,
+  "verified": false
  },
  "0x60c": {
   "name": "FC_AttackWarnings",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x610": {
   "name": "FC_BowerstoneRewardItem",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L1"
+  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L1",
+  "verified": false
  },
  "0x614": {
   "name": "FC_OakvaleRewardItem",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L2"
+  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L2",
+  "verified": false
  },
  "0x618": {
   "name": "FC_BanditCampRewardItem",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L3"
+  "value": "OBJECT_PUNCH_CLUB_MEMBERSHIP_L3",
+  "verified": false
  },
  "0x61c": {
   "name": "FC_KnotholeGladeRewardItem",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_PUNCHCLUB_TROPHY_KNOTHOLE"
+  "value": "OBJECT_PUNCHCLUB_TROPHY_KNOTHOLE",
+  "verified": false
  },
  "0x620": {
   "name": "FC_DistanceAwayToTriggerFC",
   "type": "float",
   "defType": "float",
-  "value": 25.0
+  "value": 25.0,
+  "verified": false
  },
  "0x624": {
   "name": "FC_MinimumFee",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x628": {
   "name": "FC_ShoutOutDistance",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0x62c": {
   "name": "FC_LostRenownLoss",
   "type": "long",
   "defType": "int32",
-  "value": -50
+  "value": -50,
+  "verified": false
  },
  "0x630": {
   "name": "FC_WinRenownGain",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x634": {
   "name": "FC_WinExperienceGain",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x638": {
   "name": "GGN_GhostSpawnNearby",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x63c": {
   "name": "GGN_GhostSpawnDistance",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x640": {
   "name": "GGN_ReturnNecklaceReward",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x644": {
   "name": "GGN_GhostClueTime",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x648": {
   "name": "GGN_GhostTalkDistance",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x64c": {
   "name": "GGN_ReturnNecklaceMoralityGain",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x650": {
   "name": "GGN_ReturnNecklaceExperienceGain",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x654": {
   "name": "HH_UpperBarLimit",
   "type": "float",
   "defType": "float",
-  "value": 320.0
+  "value": 320.0,
+  "verified": false
  },
  "0x658": {
   "name": "HH_BarDecrementAmount",
   "type": "float",
   "defType": "float",
-  "value": 1.0
+  "value": 1.0,
+  "verified": false
  },
  "0x65c": {
   "name": "HH_BarDecrementInterval",
   "type": "float",
   "defType": "float",
-  "value": 1.0
+  "value": 1.0,
+  "verified": false
  },
  "0x660": {
   "name": "HH_ClearedHHRenown",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x664": {
   "name": "HeroDuelDefeatThunderMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x668": {
   "name": "HeroDuelDefeatThunderXP",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0x66c": {
   "name": "HiddenBootyTreasureFake",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_FAKE_FRYING_PAN"
+  "value": "OBJECT_FAKE_FRYING_PAN",
+  "verified": false
  },
  "0x670": {
   "name": "HiddenBootyTreasureReal",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_FRYING_PAN"
+  "value": "OBJECT_FRYING_PAN",
+  "verified": false
  },
  "0x674": {
   "name": "HiddenBootyExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x678": {
   "name": "HiddenBootyRenownReal",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x67c": {
   "name": "HiddenBootyRenownFake",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x680": {
   "name": "HiddenBootyMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x684": {
   "name": "TrophiesOpinionDeedTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x688": {
   "name": "TrophiesBriarRoseTrophyLeft",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TROPHY_LOBSTER_CLAW"
+  "value": "OBJECT_TROPHY_LOBSTER_CLAW",
+  "verified": false
  },
  "0x68c": {
   "name": "TrophiesBriarRoseTrophyRight",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TROPHY_BALVERINE_HEAD"
+  "value": "OBJECT_TROPHY_BALVERINE_HEAD",
+  "verified": false
  },
  "0x690": {
   "name": "TrophiesBriarRoseProximityNear",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x694": {
   "name": "TrophiesBriarRoseProximityFar",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x698": {
   "name": "TrophiesStandStillTimer",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x69c": {
   "name": "TrophiesFacingWatcherTimer",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x6a0": {
   "name": "TrophiesBriarRoseWalkingSpeed",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0x6a4": {
   "name": "TrophiesCrowdWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x6a8": {
   "name": "TrophiesCrowdWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 8.0
+  "value": 8.0,
+  "verified": false
  },
  "0x6ac": {
   "name": "TrophiesBriarRoseAnimTime",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x6b0": {
   "name": "TrophiesBriarRoseAnimTimeVar",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x6b4": {
   "name": "TrophiesInsideTavernTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x6b8": {
   "name": "TrophiesOutsideTavernTimer",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x6bc": {
   "name": "TrophiesHitCountForBriarAttack",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0x6c0": {
   "name": "OuterTraderDistance",
   "type": "float",
   "defType": "float",
-  "value": 110.0
+  "value": 110.0,
+  "verified": false
  },
  "0x6c4": {
   "name": "MiddleTraderDistance",
   "type": "float",
   "defType": "float",
-  "value": 50.0
+  "value": 50.0,
+  "verified": false
  },
  "0x6c8": {
   "name": "InnerTraderDistance",
   "type": "float",
   "defType": "float",
-  "value": 12.0
+  "value": 12.0,
+  "verified": false
  },
  "0x6cc": {
   "name": "TraderYellForHelpRandomValue",
   "type": "long",
   "defType": "int32",
-  "value": 125
+  "value": 125,
+  "verified": false
  },
  "0x6d0": {
   "name": "TraderYellAtHeroRandomValue",
   "type": "long",
   "defType": "int32",
-  "value": 125
+  "value": 125,
+  "verified": false
  },
  "0x6d4": {
   "name": "TraderCommentRandomValue",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x6d8": {
   "name": "BrotherStartDistance",
   "type": "float",
   "defType": "float",
-  "value": 38.0
+  "value": 38.0,
+  "verified": false
  },
  "0x6dc": {
   "name": "BrotherScreamForHelpRandomValue",
   "type": "long",
   "defType": "int32",
-  "value": 125
+  "value": 125,
+  "verified": false
  },
  "0x6e0": {
   "name": "BrotherWaitCommentRandomValue",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x6e4": {
   "name": "HeroEvilMoralityValue",
   "type": "float",
   "defType": "float",
-  "value": -0.009999999776482582
+  "value": -0.009999999776482582,
+  "verified": false
  },
  "0x6e8": {
   "name": "HeroGoodMoralityValue",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0x6ec": {
   "name": "HeroKillsAssassinMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x6f0": {
   "name": "HeroKillsSheriffMorality",
   "type": "float",
   "defType": "float",
-  "value": -0.029999999329447746
+  "value": -0.029999999329447746,
+  "verified": false
  },
  "0x6f4": {
   "name": "HeroTakesAssassinGoldMorality",
   "type": "float",
   "defType": "float",
-  "value": -0.009999999776482582
+  "value": -0.009999999776482582,
+  "verified": false
  },
  "0x6f8": {
   "name": "HeroTakesAssassinGoldMoralityKillsAssassin",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x6fc": {
   "name": "HeroKillsAssassinRenown",
   "type": "long",
   "defType": "int32",
-  "value": 150
+  "value": 150,
+  "verified": false
  },
  "0x700": {
   "name": "HeroKillsAssassinProofOfKill",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_ASSASSINS_DIPLOMA"
+  "value": "OBJECT_ASSASSINS_DIPLOMA",
+  "verified": false
  },
  "0x704": {
   "name": "HeroKillsSheriffRenown",
   "type": "long",
   "defType": "int32",
-  "value": 150
+  "value": 150,
+  "verified": false
  },
  "0x708": {
   "name": "AssassinThreatDistSq",
   "type": "float",
   "defType": "float",
-  "value": 9.0
+  "value": 9.0,
+  "verified": false
  },
  "0x70c": {
   "name": "RandomPopulationTraderGoldMinimum",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x710": {
   "name": "RandomPopulationTraderGoldVariation",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x714": {
   "name": "RockTrollTriggerProximity",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x718": {
   "name": "RockTrollReward1",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_GEMSTONE_RUBY"
+  "value": "OBJECT_GEMSTONE_RUBY",
+  "verified": false
  },
  "0x71c": {
   "name": "RockTrollReward2",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_GEMSTONE_SAPPHIRE"
+  "value": "OBJECT_GEMSTONE_SAPPHIRE",
+  "verified": false
  },
  "0x720": {
   "name": "IngredientObject",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_MUSHROOM_BLUE_01"
+  "value": "OBJECT_MUSHROOM_BLUE_01",
+  "verified": false
  },
  "0x724": {
   "name": "ObjectToGiveToMansLover",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_SICK_CHILD_MANS_LETTER"
+  "value": "OBJECT_SICK_CHILD_MANS_LETTER",
+  "verified": false
  },
  "0x728": {
   "name": "ObjectFromMansLover",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_SICK_CHILD_WOMANS_LETTER"
+  "value": "OBJECT_SICK_CHILD_WOMANS_LETTER",
+  "verified": false
  },
  "0x72c": {
   "name": "EndPotion",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_MUSHROOM_POTION_01"
+  "value": "OBJECT_MUSHROOM_POTION_01",
+  "verified": false
  },
  "0x730": {
   "name": "SickChildSleepingAnim",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "CS_SICK_CHILD_SHIVER"
+  "value": "CS_SICK_CHILD_SHIVER",
+  "verified": false
  },
  "0x734": {
   "name": "SickChildsSisterAttentionAnims",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "0300000088e70400af9e04009d9e0400"
+  "value": "0300000088e70400af9e04009d9e0400",
+  "verified": false
  },
  "0x740": {
   "name": "TellingTheTruth",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0x744": {
   "name": "LyingToWomanMorality",
   "type": "float",
   "defType": "float",
-  "value": -0.009999999776482582
+  "value": -0.009999999776482582,
+  "verified": false
  },
  "0x748": {
   "name": "LyingToManAboutWomanNotLikingHer",
   "type": "float",
   "defType": "float",
-  "value": -0.019999999552965164
+  "value": -0.019999999552965164,
+  "verified": false
  },
  "0x74c": {
   "name": "LyingToManAboutWomanLikingHer",
   "type": "float",
   "defType": "float",
-  "value": -0.019999999552965164
+  "value": -0.019999999552965164,
+  "verified": false
  },
  "0x750": {
   "name": "KilledSomeoneForMushroom",
   "type": "float",
   "defType": "float",
-  "value": -0.029999999329447746
+  "value": -0.029999999329447746,
+  "verified": false
  },
  "0x754": {
   "name": "StoleMushroomInBarrowFields",
   "type": "float",
   "defType": "float",
-  "value": -0.019999999552965164
+  "value": -0.019999999552965164,
+  "verified": false
  },
  "0x758": {
   "name": "BoughtMushroomInBarrowFields",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x75c": {
   "name": "MadeWomanLaugh",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0x760": {
   "name": "SingingStonesDoorManWanderMax",
   "type": "float",
   "defType": "float",
-  "value": 25.0
+  "value": 25.0,
+  "verified": false
  },
  "0x764": {
   "name": "SwordInTheStoneWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x768": {
   "name": "SwordInTheStoneWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 20.0
+  "value": 20.0,
+  "verified": false
  },
  "0x76c": {
   "name": "SwordInTheStoneSuccessExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x770": {
   "name": "SwordInTheStoneSuccessRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x774": {
   "name": "SwordInTheStoneSuccessMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x778": {
   "name": "SwordInTheStonePhysiqueChange",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x77c": {
   "name": "SwordInTheStoneToughnessChange",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x780": {
   "name": "SwordInTheStoneHealthChange",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0x784": {
   "name": "BardSingingFee",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x788": {
   "name": "BardNumVersesPerVisit",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x78c": {
   "name": "BardConsiderEvil",
   "type": "float",
   "defType": "float",
-  "value": 0.25
+  "value": 0.25,
+  "verified": false
  },
  "0x790": {
   "name": "BardConsiderGood",
   "type": "float",
   "defType": "float",
-  "value": 0.75
+  "value": 0.75,
+  "verified": false
  },
  "0x794": {
   "name": "BardConsiderRich",
   "type": "long",
   "defType": "int32",
-  "value": 50000
+  "value": 50000,
+  "verified": false
  },
  "0x798": {
   "name": "BardConsiderBoaster",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x79c": {
   "name": "BardConsiderFailure",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x7a0": {
   "name": "BardSpecial",
   "type": "long",
   "defType": "int32",
-  "value": 27
+  "value": 27,
+  "verified": false
  },
  "0x7a4": {
   "name": "BardGoAwayCost",
   "type": "long",
   "defType": "int32",
-  "value": -10
+  "value": -10,
+  "verified": false
  },
  "0x7a8": {
   "name": "BardWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x7ac": {
   "name": "BardWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x7b0": {
   "name": "BardWanderResetTime",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x7b4": {
   "name": "BardFollowDistance",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x7b8": {
   "name": "BardRandomSpeechTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x7bc": {
   "name": "BardRandomSpeechTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x7c0": {
   "name": "BardHeroAgeHigh",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x7c4": {
   "name": "BardHeroAgeMedium",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x7c8": {
   "name": "BardHeroHealthHigh",
   "type": "float",
   "defType": "float",
-  "value": 0.8999999761581421
+  "value": 0.8999999761581421,
+  "verified": false
  },
  "0x7cc": {
   "name": "BardHeroHealthLow",
   "type": "float",
   "defType": "float",
-  "value": 0.20000000298023224
+  "value": 0.20000000298023224,
+  "verified": false
  },
  "0x7d0": {
   "name": "BardHeroWillHigh",
   "type": "float",
   "defType": "float",
-  "value": 0.75
+  "value": 0.75,
+  "verified": false
  },
  "0x7d4": {
   "name": "BardHeroWillLow",
   "type": "float",
   "defType": "float",
-  "value": 0.4000000059604645
+  "value": 0.4000000059604645,
+  "verified": false
  },
  "0x7d8": {
   "name": "TempleActivationAge",
   "type": "long",
   "defType": "int32",
-  "value": 35
+  "value": 35,
+  "verified": false
  },
  "0x7dc": {
   "name": "TempleAltarProximity",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x7e0": {
   "name": "TempleAcolyteWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x7e4": {
   "name": "TempleAcolytePrayerTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x7e8": {
   "name": "TempleAcolytePrayerTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0x7ec": {
   "name": "TempleDonationLevel",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000000000803f000048430000c843000048440000c8440000fa46"
+  "value": "060000000000803f000048430000c843000048440000c8440000fa46",
+  "verified": false
  },
  "0x7f8": {
   "name": "TempleMoralityRewardFraction",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000000ad7a33c0ad7233d0ad7a33d9a99193e9a99993e0000003f"
+  "value": "060000000ad7a33c0ad7233d0ad7a33d9a99193e9a99993e0000003f",
+  "verified": false
  },
  "0x804": {
   "name": "TempleDonationRewardObject",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "OBJECT_LEGENDARY_BATTLEMACE"
+  "value": "OBJECT_LEGENDARY_BATTLEMACE",
+  "verified": false
  },
  "0x808": {
   "name": "TempleDonationLevelCoolThing1",
   "type": "float",
   "defType": "float",
-  "value": 48000.0
+  "value": 48000.0,
+  "verified": false
  },
  "0x80c": {
   "name": "TempleDonationLevelCoolThing2",
   "type": "float",
   "defType": "float",
-  "value": 64000.0
+  "value": 64000.0,
+  "verified": false
  },
  "0x810": {
   "name": "TempleMoralityChangeCoolThing1",
   "type": "float",
   "defType": "float",
-  "value": 0.3499999940395355
+  "value": 0.3499999940395355,
+  "verified": false
  },
  "0x814": {
   "name": "TempleMoralityChangeCoolThing2",
   "type": "float",
   "defType": "float",
-  "value": 0.44999998807907104
+  "value": 0.44999998807907104,
+  "verified": false
  },
  "0x818": {
   "name": "TempleDonationRewardAgeMin",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x81c": {
   "name": "TempleDonationRewardAgeVar",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0x820": {
   "name": "TempleDonationRewardTitle",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "OBJECT_HERO_TITLE_PALADIN"
+  "value": "OBJECT_HERO_TITLE_PALADIN",
+  "verified": false
  },
  "0x824": {
   "name": "TempleDonationLevelFiddleSuper",
   "type": "float",
   "defType": "float",
-  "value": 0.10000000149011612
+  "value": 0.10000000149011612,
+  "verified": false
  },
  "0x828": {
   "name": "TempleDonationLevelFiddleVery",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0x82c": {
   "name": "TempleDonationLevelFiddle",
   "type": "float",
   "defType": "float",
-  "value": 0.800000011920929
+  "value": 0.800000011920929,
+  "verified": false
  },
  "0x830": {
   "name": "TempleExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x834": {
   "name": "TempleRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x838": {
   "name": "TempleMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x83c": {
   "name": "TemplePeasantWalkSpeed",
   "type": "float",
   "defType": "float",
-  "value": 0.10000000149011612
+  "value": 0.10000000149011612,
+  "verified": false
  },
  "0x840": {
   "name": "TemplePrayerCounterActivation",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x844": {
   "name": "TempleDonationBoxRequirement",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0x848": {
   "name": "TempleWeaponBrandishProximity",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0x84c": {
   "name": "TempleTeleportEnableProximity",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0x850": {
   "name": "TemplePrayerFactorLowest",
   "type": "long",
   "defType": "int32",
-  "value": 5000
+  "value": 5000,
+  "verified": false
  },
  "0x854": {
   "name": "TemplePrayerFactorLow",
   "type": "long",
   "defType": "int32",
-  "value": 10000
+  "value": 10000,
+  "verified": false
  },
  "0x858": {
   "name": "TemplePrayerFactorMiddle",
   "type": "long",
   "defType": "int32",
-  "value": 25000
+  "value": 25000,
+  "verified": false
  },
  "0x85c": {
   "name": "TemplePrayerFactorHigh",
   "type": "long",
   "defType": "int32",
-  "value": 100000
+  "value": 100000,
+  "verified": false
  },
  "0x860": {
   "name": "TemplePrayerFactorHighest",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0x864": {
   "name": "TemplePrayerFactorBurnChance",
   "type": "vector<long,std::allocator<long>_>",
   "defType": "Vector_J",
-  "value": "060000000100000002000000050000000a0000001900000032000000"
+  "value": "060000000100000002000000050000000a0000001900000032000000",
+  "verified": false
  },
  "0x870": {
   "name": "TemplePrayerWorshipRewardHealth",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000000ad7233c0ad7a33ccdcc4c3dcdcccc3d0000803e0000003f"
+  "value": "060000000ad7233c0ad7a33ccdcc4c3dcdcccc3d0000803e0000003f",
+  "verified": false
  },
  "0x87c": {
   "name": "TemplePrayerWorshipRewardMorality",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000006f12833a6f12033b0ad7a33b0ad7233ccdcccc3ccdcc4c3d"
+  "value": "060000006f12833a6f12033b0ad7a33b0ad7233ccdcccc3ccdcc4c3d",
+  "verified": false
  },
  "0x888": {
   "name": "TemplePrayerWorshipRewardGold",
   "type": "vector<long,std::allocator<long>_>",
   "defType": "Vector_J",
-  "value": "06000000050000000a0000003200000064000000fa000000f4010000"
+  "value": "06000000050000000a0000003200000064000000fa000000f4010000",
+  "verified": false
  },
  "0x894": {
   "name": "TemplePrayerWorshipRewardDonationModifier",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "06000000cdcccc3d0000803e9a99993e0000003f0000403f6666663f"
+  "value": "06000000cdcccc3d0000803e9a99993e0000003f0000403f6666663f",
+  "verified": false
  },
  "0x8a0": {
   "name": "TemplePrayerWorshipBurnHealth",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "060000000ad723bc0ad7a3bccdcc4cbdcdccccbd000080be000000bf"
+  "value": "060000000ad723bc0ad7a3bccdcc4cbdcdccccbd000080be000000bf",
+  "verified": false
  },
  "0x8ac": {
   "name": "TemplePrayerWorshipBurnGold",
   "type": "vector<long,std::allocator<long>_>",
   "defType": "Vector_J",
-  "value": "060000000a000000140000003200000064000000fa000000f4010000"
+  "value": "060000000a000000140000003200000064000000fa000000f4010000",
+  "verified": false
  },
  "0x8b8": {
   "name": "TourGuideFollowerDistance",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0x8bc": {
   "name": "TourGuideOverhearDistance",
   "type": "float",
   "defType": "float",
-  "value": 6.0
+  "value": 6.0,
+  "verified": false
  },
  "0x8c0": {
   "name": "TourGuideTalkDistance",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x8c4": {
   "name": "TourGuideStandStillTimer",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0x8c8": {
   "name": "TourGuideTalkToHeroTimer",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x8cc": {
   "name": "TourGuideFollowerStandStillTimer",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x8d0": {
   "name": "TourGuideOpeningTime",
   "type": "long",
   "defType": "int32",
-  "value": 800
+  "value": 800,
+  "verified": false
  },
  "0x8d4": {
   "name": "TourGuideClosingTime",
   "type": "long",
   "defType": "int32",
-  "value": 2000
+  "value": 2000,
+  "verified": false
  },
  "0x8d8": {
   "name": "SlumsBeggarGoldAmount",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0x8dc": {
   "name": "OakValeBeggarGoldAmount",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x8e0": {
   "name": "PickUpLitterTimeInSeconds",
   "type": "long",
   "defType": "int32",
-  "value": 90
+  "value": 90,
+  "verified": false
  },
  "0x8e4": {
   "name": "NumPiecesOfLitter",
   "type": "long",
   "defType": "int32",
-  "value": 7
+  "value": 7,
+  "verified": false
  },
  "0x8e8": {
   "name": "TBRMoralityGoodSmall",
   "type": "float",
   "defType": "float",
-  "value": 0.0024999999441206455
+  "value": 0.0024999999441206455,
+  "verified": false
  },
  "0x8ec": {
   "name": "TBRMoralityGoodMedium",
   "type": "float",
   "defType": "float",
-  "value": 0.004999999888241291
+  "value": 0.004999999888241291,
+  "verified": false
  },
  "0x8f0": {
   "name": "TBRMoralityGoodLarge",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0x8f4": {
   "name": "TBYMoralityBadSmall",
   "type": "float",
   "defType": "float",
-  "value": -0.0024999999441206455
+  "value": -0.0024999999441206455,
+  "verified": false
  },
  "0x8f8": {
   "name": "TBYMoralityBadMedium",
   "type": "float",
   "defType": "float",
-  "value": -0.004999999888241291
+  "value": -0.004999999888241291,
+  "verified": false
  },
  "0x8fc": {
   "name": "TBYMoralityBadLarge",
   "type": "float",
   "defType": "float",
-  "value": -0.009999999776482582
+  "value": -0.009999999776482582,
+  "verified": false
  },
  "0x900": {
   "name": "OakShopKeepGoldAmount",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x904": {
   "name": "ArsonGoldAmount",
   "type": "long",
   "defType": "int32",
-  "value": 300
+  "value": 300,
+  "verified": false
  },
  "0x908": {
   "name": "KGExtortAmount",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0x90c": {
   "name": "BULLY_WEAPON",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_GEMSTONE_JET"
+  "value": "OBJECT_GEMSTONE_JET",
+  "verified": false
  },
  "0x910": {
   "name": "TH_ThunderConv_Length",
   "type": "long",
   "defType": "int32",
-  "value": 18
+  "value": 18,
+  "verified": false
  },
  "0x914": {
   "name": "TH_ThunderConv_Speaker",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "1200000054485f5468756e6465724769726c0054485f5468756e646572426f790054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f7900"
+  "value": "1200000054485f5468756e6465724769726c0054485f5468756e646572426f790054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465720054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f790054485f5468756e6465724769726c0054485f5468756e6465720054485f5468756e646572426f7900",
+  "verified": false
  },
  "0x924": {
   "name": "TH_ThunderConv_Dialogue",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "12000000544558545f5153545f4231345f5448554e4445525f4b4944434841545f313000544558545f5153545f4231345f5448554e4445525f4b4944434841545f323000544558545f5153545f4231345f5448554e4445525f4b4944434841545f333000544558545f5153545f4231345f5448554e4445525f4b4944434841545f343000544558545f5153545f4231345f5448554e4445525f4b4944434841545f353000544558545f5153545f4231345f5448554e4445525f4b4944434841545f363000544558545f5153545f4231345f5448554e4445525f4b4944434841545f373000544558545f5153545f4231345f5448554e4445525f4b4944434841545f383000544558545f5153545f4231345f5448554e4445525f4b4944434841545f393000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31303000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31313000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31323000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31333000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31343000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31353000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31363000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31373000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31383000"
+  "value": "12000000544558545f5153545f4231345f5448554e4445525f4b4944434841545f313000544558545f5153545f4231345f5448554e4445525f4b4944434841545f323000544558545f5153545f4231345f5448554e4445525f4b4944434841545f333000544558545f5153545f4231345f5448554e4445525f4b4944434841545f343000544558545f5153545f4231345f5448554e4445525f4b4944434841545f353000544558545f5153545f4231345f5448554e4445525f4b4944434841545f363000544558545f5153545f4231345f5448554e4445525f4b4944434841545f373000544558545f5153545f4231345f5448554e4445525f4b4944434841545f383000544558545f5153545f4231345f5448554e4445525f4b4944434841545f393000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31303000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31313000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31323000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31333000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31343000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31353000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31363000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31373000544558545f5153545f4231345f5448554e4445525f4b4944434841545f31383000",
+  "verified": false
  },
  "0x934": {
   "name": "TH_ThunderConv_Actor",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "120000004769726c005468756e64657200426f79005468756e646572004769726c004769726c00426f79004769726c00426f79005468756e64657200424f59005468756e646572004749524c005468756e64657200424f59004749524c005468756e64657200424f5900"
+  "value": "120000004769726c005468756e64657200426f79005468756e646572004769726c004769726c00426f79004769726c00426f79005468756e64657200424f59005468756e646572004749524c005468756e64657200424f59004749524c005468756e64657200424f5900",
+  "verified": false
  },
  "0x944": {
   "name": "TH_ThunderConv_Animation",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "1200000043535f4a554d505f43484545520043535f464c45585f4d5553434c4553005343524950545f43484545525f310043535f5341445f3034005354414e444152445f504f494e540053545f4c495354454e494e470053545f4f50494e494f4e5f4e45555452414c5f504f494e545f415400424f595f424f5245445f5348494d4d595f303100424f595f4b49434b494e475f4f424a4543545f4f4e5f47524f554e445f30310043535f5357414747455200484156455f484149525f525546464c45440043535f4e4f440053545f4f50494e494f4e5f444953415050524f56414c5f504f494e54494e475f415741595f4745545f4f55540043535f48414e44535f424548494e445f4241434b0053545f4f50494e494f4e5f4e45555452414c5f504f494e545f41540053545f4f50494e494f4e5f5249444943554c455f534e49474745520043535f434f4e565f5448554e4445525f42523200424f595f47415a494e475f41545f534b595f303100"
+  "value": "1200000043535f4a554d505f43484545520043535f464c45585f4d5553434c4553005343524950545f43484545525f310043535f5341445f3034005354414e444152445f504f494e540053545f4c495354454e494e470053545f4f50494e494f4e5f4e45555452414c5f504f494e545f415400424f595f424f5245445f5348494d4d595f303100424f595f4b49434b494e475f4f424a4543545f4f4e5f47524f554e445f30310043535f5357414747455200484156455f484149525f525546464c45440043535f4e4f440053545f4f50494e494f4e5f444953415050524f56414c5f504f494e54494e475f415741595f4745545f4f55540043535f48414e44535f424548494e445f4241434b0053545f4f50494e494f4e5f4e45555452414c5f504f494e545f41540053545f4f50494e494f4e5f5249444943554c455f534e49474745520043535f434f4e565f5448554e4445525f42523200424f595f47415a494e475f41545f534b595f303100",
+  "verified": false
  },
  "0x954": {
   "name": "TH_ThunderConv_AnimDelay",
   "type": "vector<float,std::allocator<float>_>",
   "defType": "Vector_M",
-  "value": "12000000000000000000803f0000000000000040000000000000803f0000c03f0000803f00000000000000000000000000000000000000000000000000004040000000000000000000000000"
+  "value": "12000000000000000000803f0000000000000040000000000000803f0000c03f0000803f00000000000000000000000000000000000000000000000000004040000000000000000000000000",
+  "verified": false
  },
  "0x960": {
   "name": "EscortTraderRewardDownpayment",
   "type": "long",
   "defType": "int32",
-  "value": 125
+  "value": 125,
+  "verified": false
  },
  "0x964": {
   "name": "EscortTraderAttackComplaintTime",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x968": {
   "name": "EscortTraderRewardObjectPerfect",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "060000007d890200b59b02007f9b0200639b0200479b020089d40100"
+  "value": "060000007d890200b59b02007f9b0200639b0200479b020089d40100",
+  "verified": false
  },
  "0x974": {
   "name": "EscortTraderRegionExitWait",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x978": {
   "name": "EscortTraderRegionExitStop",
   "type": "float",
   "defType": "float",
-  "value": 2.5
+  "value": 2.5,
+  "verified": false
  },
  "0x97c": {
   "name": "EscortTraderRegionExitDist",
   "type": "float",
   "defType": "float",
-  "value": 12.5
+  "value": 12.5,
+  "verified": false
  },
  "0x980": {
   "name": "EscortTraderHitCountHigh",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x984": {
   "name": "EscortTraderHitCountMedium",
   "type": "long",
   "defType": "int32",
-  "value": 7
+  "value": 7,
+  "verified": false
  },
  "0x988": {
   "name": "EscortTraderHealthHigh",
   "type": "float",
   "defType": "float",
-  "value": 0.8999999761581421
+  "value": 0.8999999761581421,
+  "verified": false
  },
  "0x98c": {
   "name": "EscortTraderHealthMedium",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0x990": {
   "name": "EscortTraderFollowProximity1",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0x994": {
   "name": "EscortTraderFollowProximity2",
   "type": "float",
   "defType": "float",
-  "value": 30.0
+  "value": 30.0,
+  "verified": false
  },
  "0x998": {
   "name": "EscortTraderProximityTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x99c": {
   "name": "EscortTraderExpressionDetectTimer",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0x9a0": {
   "name": "EscortTraderHitDetectTimer",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0x9a4": {
   "name": "EscortTraderSpawnedBanditType",
   "type": "vector<CCharString,std::allocator<CCharString>_>",
   "defType": "Vector_VCCharString__",
-  "value": "0400000043524541545552455f42414e4449545f4752554e540043524541545552455f42414e4449545f4c49455554454e414e540043524541545552455f42414e4449545f4152434845520043524541545552455f42414e4449545f464952455f41524348455200"
+  "value": "0400000043524541545552455f42414e4449545f4752554e540043524541545552455f42414e4449545f4c49455554454e414e540043524541545552455f42414e4449545f4152434845520043524541545552455f42414e4449545f464952455f41524348455200",
+  "verified": false
  },
  "0x9b4": {
   "name": "EscortTraderExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x9b8": {
   "name": "EscortTraderRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0x9bc": {
   "name": "EscortTraderMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0x9c0": {
   "name": "EscortTraderFailureRenown",
   "type": "long",
   "defType": "int32",
-  "value": -100
+  "value": -100,
+  "verified": false
  },
  "0x9c4": {
   "name": "TraderRandomSpeechTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 40
+  "value": 40,
+  "verified": false
  },
  "0x9c8": {
   "name": "TraderRandomSpeechTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0x9cc": {
   "name": "EscortTraderWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 20.0
+  "value": 20.0,
+  "verified": false
  },
  "0x9d0": {
   "name": "EscortTraderQuestDayInterval",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0x9d4": {
   "name": "EscortTraderQuestStartTime",
   "type": "long",
   "defType": "int32",
-  "value": 945
+  "value": 945,
+  "verified": false
  },
  "0x9d8": {
   "name": "AmbushTradersBanditHireCost",
   "type": "long",
   "defType": "int32",
-  "value": -100
+  "value": -100,
+  "verified": false
  },
  "0x9dc": {
   "name": "AmbushTradersConvoyExitProximity",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x9e0": {
   "name": "AmbushTradersPhase1GuardWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x9e4": {
   "name": "AmbushTradersContactWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0x9e8": {
   "name": "AmbushTradersConvoyTriggerProximity",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0x9ec": {
   "name": "AmbushTradersSentryWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x9f0": {
   "name": "AmbushTradersSpySentryProximity",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x9f4": {
   "name": "AmbushTradersSpyHeroProximity",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0x9f8": {
   "name": "AmbushTradersQuestSuccessReward",
   "type": "float",
   "defType": "float",
-  "value": 500.0
+  "value": 500.0,
+  "verified": false
  },
  "0x9fc": {
   "name": "AmbushTradersQuestSuccessBonus",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_SHARPENING_AUGMENTATION"
+  "value": "OBJECT_SHARPENING_AUGMENTATION",
+  "verified": false
  },
  "0xa00": {
   "name": "AmbushTradersBanditWanderMax",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xa04": {
   "name": "AmbushTradersExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xa08": {
   "name": "AmbushTradersRenown",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xa0c": {
   "name": "AmbushTradersMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0xa10": {
   "name": "AmbushTradersBoastCostKillAllGuards",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xa14": {
   "name": "AmbushTradersBoastRewardKillAllGuards",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0xa18": {
   "name": "AmbushTradersBoastCostKillAllTraders",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xa1c": {
   "name": "AmbushTradersBoastRewardKillAllTraders",
   "type": "long",
   "defType": "int32",
-  "value": 1200
+  "value": 1200,
+  "verified": false
  },
  "0xa20": {
   "name": "AmbushTradersBoastCostKillNone",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xa24": {
   "name": "AmbushTradersBoastRewardKillNone",
   "type": "long",
   "defType": "int32",
-  "value": 1400
+  "value": 1400,
+  "verified": false
  },
  "0xa28": {
   "name": "AmbushTradersBoastCostUnassisted",
   "type": "long",
   "defType": "int32",
-  "value": 400
+  "value": 400,
+  "verified": false
  },
  "0xa2c": {
   "name": "AmbushTradersBoastRewardUnassisted",
   "type": "long",
   "defType": "int32",
-  "value": 800
+  "value": 800,
+  "verified": false
  },
  "0xa30": {
   "name": "AmbushTradersBanditFollowDistance",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0xa34": {
   "name": "AmbushTradersPhase2GuardWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0xa38": {
   "name": "AmbushTradersSpeechBanditProximity",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0xa3c": {
   "name": "AmbushTradersSpeechSpyProximity",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0xa40": {
   "name": "AmbushTradersBanditSpeechTimerLong",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xa44": {
   "name": "AmbushTradersBanditSpeechTimerShort",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xa48": {
   "name": "AmbushTradersSpySpeechTimerProximity",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xa4c": {
   "name": "AmbushTradersSpySpeechTimerLong",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0xa50": {
   "name": "AmbushTradersSpySpeechTimerShort",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xa54": {
   "name": "AmbushTradersSpySpeechTimerSentry",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xa58": {
   "name": "AmbushTradersInvalidRegionTimerMax",
   "type": "long",
   "defType": "int32",
-  "value": 30
+  "value": 30,
+  "verified": false
  },
  "0xa5c": {
   "name": "AmbushTradersInvalidRegionTimerVar",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0xa60": {
   "name": "ArenaCrowdShoutDelay",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xa64": {
   "name": "ArenaCrowdShoutDelayRandom",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xa68": {
   "name": "RewardObjects",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "060000008ab102009db10200b0b1020077b1020077b10200c58b0200"
+  "value": "060000008ab102009db10200b0b1020077b1020077b10200c58b0200",
+  "verified": false
  },
  "0xa74": {
   "name": "ArenaCountdownDuration",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xa78": {
   "name": "ArenaCreatureRound1",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_HORNET_01"
+  "value": "CREATURE_HORNET_01",
+  "verified": false
  },
  "0xa7c": {
   "name": "ArenaNumberOrCreaturesRound1",
   "type": "long",
   "defType": "int32",
-  "value": 32
+  "value": 32,
+  "verified": false
  },
  "0xa80": {
   "name": "ArenaNumberOfWavesRound1",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xa84": {
   "name": "ArenaCreatureRound2",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_HOBBE_GRUNT"
+  "value": "CREATURE_HOBBE_GRUNT",
+  "verified": false
  },
  "0xa88": {
   "name": "ArenaNumberOrCreaturesRound2",
   "type": "long",
   "defType": "int32",
-  "value": 16
+  "value": 16,
+  "verified": false
  },
  "0xa8c": {
   "name": "ArenaNumberOfWavesRound2",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xa90": {
   "name": "ArenaCreatureRound3",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_BALVERINE_01"
+  "value": "CREATURE_BALVERINE_01",
+  "verified": false
  },
  "0xa94": {
   "name": "ArenaNumberOrCreaturesRound3",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xa98": {
   "name": "ArenaNumberOfWavesRound3",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xa9c": {
   "name": "ArenaCreatureRound4",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_OK_UNDEAD_SOLDIER_SWORD"
+  "value": "CREATURE_OK_UNDEAD_SOLDIER_SWORD",
+  "verified": false
  },
  "0xaa0": {
   "name": "ArenaNumberOrCreaturesRound4",
   "type": "long",
   "defType": "int32",
-  "value": 16
+  "value": 16,
+  "verified": false
  },
  "0xaa4": {
   "name": "ArenaNumberOfWavesRound4",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xaa8": {
   "name": "ArenaCreatureRound5",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_BANDIT_GRUNT"
+  "value": "CREATURE_BANDIT_GRUNT",
+  "verified": false
  },
  "0xaac": {
   "name": "ArenaNumberOrCreaturesRound5",
   "type": "long",
   "defType": "int32",
-  "value": 16
+  "value": 16,
+  "verified": false
  },
  "0xab0": {
   "name": "ArenaNumberOfWavesRound5",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xab4": {
   "name": "ArenaCreatureRound6",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_EARTH_TROLL"
+  "value": "CREATURE_EARTH_TROLL",
+  "verified": false
  },
  "0xab8": {
   "name": "ArenaNumberOrCreaturesRound6",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xabc": {
   "name": "ArenaNumberOfWavesRound6",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xac0": {
   "name": "ArenaCreatureRound7",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_ROCK_TROLL_START_STANDING"
+  "value": "CREATURE_ROCK_TROLL_START_STANDING",
+  "verified": false
  },
  "0xac4": {
   "name": "ArenaNumberOrCreaturesRound7",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xac8": {
   "name": "ArenaNumberOfWavesRound7",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xacc": {
   "name": "ArenaCreatureRound8",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "CREATURE_SCORPION_KING"
+  "value": "CREATURE_SCORPION_KING",
+  "verified": false
  },
  "0xad0": {
   "name": "ArenaNumberOrCreaturesRound8",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xad4": {
   "name": "ArenaNumberOfWavesRound8",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xad8": {
   "name": "ArenaShowNoMercyBoastAmount",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0xadc": {
   "name": "ArenaShowMercyBoastAmount",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0xae0": {
   "name": "ArenaShowNoMercyBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 2000
+  "value": 2000,
+  "verified": false
  },
  "0xae4": {
   "name": "ArenaShowMercyBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 2000
+  "value": 2000,
+  "verified": false
  },
  "0xae8": {
   "name": "ArenaSpareWhisperMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.07999999821186066
+  "value": 0.07999999821186066,
+  "verified": false
  },
  "0xaec": {
   "name": "ArenaKillWhisperMorality",
   "type": "float",
   "defType": "float",
-  "value": -0.07999999821186066
+  "value": -0.07999999821186066,
+  "verified": false
  },
  "0xaf0": {
   "name": "ATO_DiggingRewards",
   "type": "vector<CDefString,std::allocator<CDefString>_>",
   "defType": "Vector_VCDefString__",
-  "value": "0900000018b102006489020018b102007d89020018b10200648902007d89020018b1020064890200"
+  "value": "0900000018b102006489020018b102007d89020018b10200648902007d89020018b1020064890200",
+  "verified": false
  },
  "0xafc": {
   "name": "ATO_MaxSpawnedCreatures",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xb00": {
   "name": "BountyHuntGoldReward",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xb04": {
   "name": "BountyHuntVillagerIntroProximity",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0xb08": {
   "name": "BountyHuntVillagerWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0xb0c": {
   "name": "BountyHuntVillagerWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xb10": {
   "name": "BountyHuntVillagerHeroProximity",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0xb14": {
   "name": "BountyHuntVillagerHeroStartConversation",
   "type": "float",
   "defType": "float",
-  "value": 8.0
+  "value": 8.0,
+  "verified": false
  },
  "0xb18": {
   "name": "BountyHuntCutsceneTriggerProximity",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0xb1c": {
   "name": "BountyHuntBanditGruntWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xb20": {
   "name": "BountyHuntBanditLeaderWanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0xb24": {
   "name": "BountyHuntHostage2WanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0xb28": {
   "name": "BountyHuntBanditDeputy1WanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 6.0
+  "value": 6.0,
+  "verified": false
  },
  "0xb2c": {
   "name": "BountyHuntBanditDeputy1AttackProximity",
   "type": "float",
   "defType": "float",
-  "value": 15.0
+  "value": 15.0,
+  "verified": false
  },
  "0xb30": {
   "name": "BountyHuntBanditDeputy2WanderDistance",
   "type": "float",
   "defType": "float",
-  "value": 8.0
+  "value": 8.0,
+  "verified": false
  },
  "0xb34": {
   "name": "BountyHuntBanditDeputy2AttackProximity",
   "type": "float",
   "defType": "float",
-  "value": 7.0
+  "value": 7.0,
+  "verified": false
  },
  "0xb38": {
   "name": "BountyHuntLeaderHealthDiffStage1",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0xb3c": {
   "name": "BountyHuntLeaderHealthDiffStage2",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0xb40": {
   "name": "BountyHuntLeaderHealthDiffStage3",
   "type": "float",
   "defType": "float",
-  "value": 12.0
+  "value": 12.0,
+  "verified": false
  },
  "0xb44": {
   "name": "BountyHuntLeaderHealthDiffStage4",
   "type": "float",
   "defType": "float",
-  "value": 20.0
+  "value": 20.0,
+  "verified": false
  },
  "0xb48": {
   "name": "BountyHuntExperience",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xb4c": {
   "name": "BountyHuntRenownHostage1",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xb50": {
   "name": "BountyHuntRenownHostage2",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xb54": {
   "name": "BountyHuntMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.0
+  "value": 0.0,
+  "verified": false
  },
  "0xb58": {
   "name": "BountyHuntCompletionMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0xb5c": {
   "name": "BountyHuntBoastTimeLimit",
   "type": "long",
   "defType": "int32",
-  "value": 300
+  "value": 300,
+  "verified": false
  },
  "0xb60": {
   "name": "BountyHuntBoastCostTimeLimit",
   "type": "long",
   "defType": "int32",
-  "value": 1000
+  "value": 1000,
+  "verified": false
  },
  "0xb64": {
   "name": "BountyHuntBoastRewardTimeLimit",
   "type": "long",
   "defType": "int32",
-  "value": 2200
+  "value": 2200,
+  "verified": false
  },
  "0xb68": {
   "name": "BountyHuntBoastCostDecapitation",
   "type": "long",
   "defType": "int32",
-  "value": 600
+  "value": 600,
+  "verified": false
  },
  "0xb6c": {
   "name": "BountyHuntBoastRewardDecapitation",
   "type": "long",
   "defType": "int32",
-  "value": 2000
+  "value": 2000,
+  "verified": false
  },
  "0xb70": {
   "name": "BountyHuntRansomGold",
   "type": "long",
   "defType": "int32",
-  "value": -1000
+  "value": -1000,
+  "verified": false
  },
  "0xb74": {
   "name": "BountyHuntRewardObject",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "OBJECT_TREASURE_CLUE_1"
+  "value": "OBJECT_TREASURE_CLUE_1",
+  "verified": false
  },
  "0xb78": {
   "name": "BowerstoneIntroGuardProximity",
   "type": "float",
   "defType": "float",
-  "value": 25.0
+  "value": 25.0,
+  "verified": false
  },
  "0xb7c": {
   "name": "BowerstoneIntroPoshGuardProximity",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0xb80": {
   "name": "BowerstoneIntroCrowdWanderDistanceMin",
   "type": "float",
   "defType": "float",
-  "value": 2.0
+  "value": 2.0,
+  "verified": false
  },
  "0xb84": {
   "name": "BowerstoneIntroCrowdWanderDistanceMax",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xb88": {
   "name": "BS_BanditAwarenessRange",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0xb8c": {
   "name": "BS_RewardGold",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0xb90": {
   "name": "BS_NoAssistanceBoastAmount",
   "type": "long",
   "defType": "int32",
-  "value": 800
+  "value": 800,
+  "verified": false
  },
  "0xb94": {
   "name": "BS_KilledLeaderBoastAmount",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xb98": {
   "name": "BS_NoAssistanceBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 1600
+  "value": 1600,
+  "verified": false
  },
  "0xb9c": {
   "name": "BS_KilledLeaderBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 1200
+  "value": 1200,
+  "verified": false
  },
  "0xba0": {
   "name": "BS_NoOfWavesInFirstAttack",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xba4": {
   "name": "BS_NoOfBanditsInWave",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xba8": {
   "name": "BS_BanditTypeInFirstAttack",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "CREATURE_BANDIT_GRUNT_LEVEL3_A"
+  "value": "CREATURE_BANDIT_GRUNT_LEVEL3_A",
+  "verified": false
  },
  "0xbac": {
   "name": "BS_EnvTheme",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "ENVIRONMENT_HAUNTED"
+  "value": "ENVIRONMENT_HAUNTED",
+  "verified": false
  },
  "0xbb0": {
   "name": "DBDragonMediumHealth",
   "type": "float",
   "defType": "float",
-  "value": 1400.0
+  "value": 1400.0,
+  "verified": false
  },
  "0xbb4": {
   "name": "DBDragonLowHealth",
   "type": "float",
   "defType": "float",
-  "value": 900.0
+  "value": 900.0,
+  "verified": false
  },
  "0xbb8": {
   "name": "DBDragonVeryLowHealth",
   "type": "float",
   "defType": "float",
-  "value": 500.0
+  "value": 500.0,
+  "verified": false
  },
  "0xbbc": {
   "name": "DBNumMinionsHighHealth",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0xbc0": {
   "name": "DBNumMinionsMediumHealth",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0xbc4": {
   "name": "DBNumMinionsLowHealth",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0xbc8": {
   "name": "DBNumMinionsVeryLowHealth",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xbcc": {
   "name": "DBNumSummonersHighHealth",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0xbd0": {
   "name": "DBNumSummonersMediumHealth",
   "type": "long",
   "defType": "int32",
-  "value": 0
+  "value": 0,
+  "verified": false
  },
  "0xbd4": {
   "name": "DBNumSummonersLowHealth",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xbd8": {
   "name": "DBNumSummonersVeryLowHealth",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xbdc": {
   "name": "DBNumFlyBysBetweenSummonerSpawns",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0xbe0": {
   "name": "EndGame_UpperBarLimit",
   "type": "float",
   "defType": "float",
-  "value": 750.0
+  "value": 750.0,
+  "verified": false
  },
  "0xbe4": {
   "name": "EndGame_BarDecrementAmount",
   "type": "float",
   "defType": "float",
-  "value": 3.0
+  "value": 3.0,
+  "verified": false
  },
  "0xbe8": {
   "name": "EndGame_BarDecrementInterval",
   "type": "float",
   "defType": "float",
-  "value": 1.0
+  "value": 1.0,
+  "verified": false
  },
  "0xbec": {
   "name": "EndGame_TeleportEffect",
   "type": "CDefString",
   "defType": "CDefString",
-  "value": "NEWTELEPORTER"
+  "value": "NEWTELEPORTER",
+  "verified": false
  },
  "0xbf0": {
   "name": "EndGame_TeleportHeroDistance",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xbf4": {
   "name": "EndGame_Stage1FX",
   "type": "float",
   "defType": "float",
-  "value": 200.0
+  "value": 200.0,
+  "verified": false
  },
  "0xbf8": {
   "name": "EndGame_Stage2FX",
   "type": "float",
   "defType": "float",
-  "value": 400.0
+  "value": 400.0,
+  "verified": false
  },
  "0xbfc": {
   "name": "EndGame_Stage3FX",
   "type": "float",
   "defType": "float",
-  "value": 600.0
+  "value": 600.0,
+  "verified": false
  },
  "0xc00": {
   "name": "FHSunPadFX",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "TILE_FRAME_ORANGE"
+  "value": "TILE_FRAME_ORANGE",
+  "verified": false
  },
  "0xc04": {
   "name": "FHMoonPadFX",
   "type": "CCharString",
   "defType": "CCharString",
-  "value": "TILE_FRAME_BLUE"
+  "value": "TILE_FRAME_BLUE",
+  "verified": false
  },
  "0xc08": {
   "name": "FHPadFXHeight",
   "type": "float",
   "defType": "float",
-  "value": 0.5
+  "value": 0.5,
+  "verified": false
  },
  "0xc0c": {
   "name": "FHPadRadius",
   "type": "float",
   "defType": "float",
-  "value": 0.800000011920929
+  "value": 0.800000011920929,
+  "verified": false
  },
  "0xc10": {
   "name": "FHNumberOfPads",
   "type": "long",
   "defType": "int32",
-  "value": 16
+  "value": 16,
+  "verified": false
  },
  "0xc14": {
   "name": "FHNumberOfProphets",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xc18": {
   "name": "FHNumberOfPatterns",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xc1c": {
   "name": "FHNumberOfRounds",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xc20": {
   "name": "FHNumberOfSunsEvil",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xc24": {
   "name": "FHNumberOfSunsGood",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xc28": {
   "name": "FHPatterns",
   "type": "vector<CFireHeartPatternDef,std::allocator<CFireHeartPatternDef>_>",
   "defType": "vector<CFireHeartPatternDef>",
-  "value": "1500000032d19aec100000000000000000000101000101010001010132d19aec100000000101010101000000010101000100000032d19aec100000000001010001000001010000010101010132d19aec100000000001010100010101000101010100000132d19aec100000000101010101000100010001000101010132d19aec100000000000000000010101000000010101010132d19aec100000000001010001010001010001010001010032d19aec100000000100000100010000000001010100000132d19aec100000000100000100010001000101000100000132d19aec100000000100000100010000000001010100000132d19aec100000000100000100010100000101000000000032d19aec100000000100010100000100010001010101000132d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000100000001000000010000000001010032d19aec100000000100010000010101010101000001000132d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec1000000000000000000100010001000100000000"
+  "value": "1500000032d19aec100000000000000000000101000101010001010132d19aec100000000101010101000000010101000100000032d19aec100000000001010001000001010000010101010132d19aec100000000001010100010101000101010100000132d19aec100000000101010101000100010001000101010132d19aec100000000000000000010101000000010101010132d19aec100000000001010001010001010001010001010032d19aec100000000100000100010000000001010100000132d19aec100000000100000100010001000101000100000132d19aec100000000100000100010000000001010100000132d19aec100000000100000100010100000101000000000032d19aec100000000100010100000100010001010101000132d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000100000001000000010000000001010032d19aec100000000100010000010101010101000001000132d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec100000000001010000000100010001010000010032d19aec1000000000000000000100010001000100000000",
+  "verified": false
  },
  "0xc38": {
   "name": "FHTimeLimit",
   "type": "vector<long,std::allocator<long>_>",
   "defType": "Vector_J",
-  "value": "050000002c0000002800000024000000200000001c000000"
+  "value": "050000002c0000002800000024000000200000001c000000",
+  "verified": false
  },
  "0xc44": {
   "name": "FHWarnTime",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xc48": {
   "name": "FHNumberOfVillagers",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xc4c": {
   "name": "FHHealthChangeWhenZapped",
   "type": "float",
   "defType": "float",
-  "value": -50.0
+  "value": -50.0,
+  "verified": false
  },
  "0xc50": {
   "name": "FHMoralityChangeOnKilled",
   "type": "float",
   "defType": "float",
-  "value": -0.029999999329447746
+  "value": -0.029999999329447746,
+  "verified": false
  },
  "0xc54": {
   "name": "FHMoralityChangeOnFreed",
   "type": "float",
   "defType": "float",
-  "value": 0.029999999329447746
+  "value": 0.029999999329447746,
+  "verified": false
  },
  "0xc58": {
   "name": "FHFreeAllPrisonersMoralityChange",
   "type": "float",
   "defType": "float",
-  "value": 0.15000000596046448
+  "value": 0.15000000596046448,
+  "verified": false
  },
  "0xc5c": {
   "name": "FHFreeAllPrisonersRenownBoost",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xc60": {
   "name": "FHKillAllPrisonersMoralityChange",
   "type": "float",
   "defType": "float",
-  "value": -0.15000000596046448
+  "value": -0.15000000596046448,
+  "verified": false
  },
  "0xc64": {
   "name": "FHKillAllPrisonersRenownBoost",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xc68": {
   "name": "GSI_MazeCallsOverDistance",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xc6c": {
   "name": "GSI_MazeRegionExitDistance",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0xc70": {
   "name": "HS_ScreamerCount",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xc74": {
   "name": "HS_ScreamersAtOnce",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xc78": {
   "name": "HS_ScreamerInc",
   "type": "float",
   "defType": "float",
-  "value": 0.30000001192092896
+  "value": 0.30000001192092896,
+  "verified": false
  },
  "0xc7c": {
   "name": "HS_SecondsBeforeSuperScreamerDamage",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xc80": {
   "name": "HS_SuperScreamerDamagePerSecond",
   "type": "float",
   "defType": "float",
-  "value": -7.5
+  "value": -7.5,
+  "verified": false
  },
  "0xc84": {
   "name": "HS_SecondsBeforeNewSuperScreamer",
   "type": "long",
   "defType": "int32",
-  "value": 6
+  "value": 6,
+  "verified": false
  },
  "0xc88": {
   "name": "HS_TimePerUndeadKilled",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xc8c": {
   "name": "HS_MaxTimeNostroExposed",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xc90": {
   "name": "HS_GMShortDistance",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0xc94": {
   "name": "HS_GMLongDistance",
   "type": "long",
   "defType": "int32",
-  "value": 32
+  "value": 32,
+  "verified": false
  },
  "0xc98": {
   "name": "HS_GMGuardDistance",
   "type": "long",
   "defType": "int32",
-  "value": 22
+  "value": 22,
+  "verified": false
  },
  "0xc9c": {
   "name": "HS_GoodSoulTaken",
   "type": "float",
   "defType": "float",
-  "value": -0.09000000357627869
+  "value": -0.09000000357627869,
+  "verified": false
  },
  "0xca0": {
   "name": "HC_SpawnCountPostReleaseGSon",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xca4": {
   "name": "HC_ReduceCountPostSideRoom",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xca8": {
   "name": "HC_SpawnGenerationRadius",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0xcac": {
   "name": "HC_BanditTimeBeforeComment",
   "type": "long",
   "defType": "int32",
-  "value": 2
+  "value": 2,
+  "verified": false
  },
  "0xcb0": {
   "name": "HC_BanditCallsForHelpDelay",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xcb4": {
   "name": "HC_BanditGoldDemand",
   "type": "long",
   "defType": "int32",
-  "value": 300
+  "value": 300,
+  "verified": false
  },
  "0xcb8": {
   "name": "HC_BanditFadeOut",
   "type": "float",
   "defType": "float",
-  "value": 1.5
+  "value": 1.5,
+  "verified": false
  },
  "0xcbc": {
   "name": "HC_HobbeSpawnDelay",
   "type": "long",
   "defType": "int32",
-  "value": 12
+  "value": 12,
+  "verified": false
  },
  "0xcc0": {
   "name": "HC_BanditCommentTime",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xcc4": {
   "name": "HC_BanditCloseToMarkerDistance",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xcc8": {
   "name": "HC_HobbeGruntDelay",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xccc": {
   "name": "HC_HobbeSpawnCount",
   "type": "long",
   "defType": "int32",
-  "value": 4
+  "value": 4,
+  "verified": false
  },
  "0xcd0": {
   "name": "HC_RescueBanditMoralityGain",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0xcd4": {
   "name": "HC_RescueBanditExperienceGain",
   "type": "long",
   "defType": "int32",
-  "value": 100
+  "value": 100,
+  "verified": false
  },
  "0xcd8": {
   "name": "HC_SacrificeToNymphExperienceGain",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0xcdc": {
   "name": "HC_SacrificeBanditMoralityLoss",
   "type": "float",
   "defType": "float",
-  "value": -0.029999999329447746
+  "value": -0.029999999329447746,
+  "verified": false
  },
  "0xce0": {
   "name": "HC_SacrificeToNymphMoralityLoss",
   "type": "float",
   "defType": "float",
-  "value": -0.03999999910593033
+  "value": -0.03999999910593033,
+  "verified": false
  },
  "0xce4": {
   "name": "HC_LetBanditGoAndPayMoralityGain",
   "type": "float",
   "defType": "float",
-  "value": 0.019999999552965164
+  "value": 0.019999999552965164,
+  "verified": false
  },
  "0xce8": {
   "name": "HC_LetBanditGoRenown",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xcec": {
   "name": "HC_DontPayBanditMoralityLoss",
   "type": "float",
   "defType": "float",
-  "value": -0.019999999552965164
+  "value": -0.019999999552965164,
+  "verified": false
  },
  "0xcf0": {
   "name": "HC_KillNymphBoastCost",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0xcf4": {
   "name": "HC_KillNymphBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xcf8": {
   "name": "HC_SacrificeBoastCost",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0xcfc": {
   "name": "HC_SacrificeBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 500
+  "value": 500,
+  "verified": false
  },
  "0xd00": {
   "name": "HC_BoyNoHarmBoastCost",
   "type": "long",
   "defType": "int32",
-  "value": 200
+  "value": 200,
+  "verified": false
  },
  "0xd04": {
   "name": "HC_BoyNoHarmBoastReward",
   "type": "long",
   "defType": "int32",
-  "value": 900
+  "value": 900,
+  "verified": false
  },
  "0xd08": {
   "name": "HC_HobbeMaxNumberInRegion",
   "type": "long",
   "defType": "int32",
-  "value": 10
+  "value": 10,
+  "verified": false
  },
  "0xd0c": {
   "name": "JackFightDefeatJackXP",
   "type": "long",
   "defType": "int32",
-  "value": 5000
+  "value": 5000,
+  "verified": false
  },
  "0xd10": {
   "name": "MB_MadBomberStartDistance",
   "type": "long",
   "defType": "int32",
-  "value": 35
+  "value": 35,
+  "verified": false
  },
  "0xd14": {
   "name": "MB_MadBomberProximityToBomb",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xd18": {
   "name": "MB_MadBomberHeroCloseDelay",
   "type": "long",
   "defType": "int32",
-  "value": 20
+  "value": 20,
+  "verified": false
  },
  "0xd1c": {
   "name": "MB_MadBomberRunToWalkDistance",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0xd20": {
   "name": "MB_BlacksmithCallHeroDistance",
   "type": "long",
   "defType": "int32",
-  "value": 15
+  "value": 15,
+  "verified": false
  },
  "0xd24": {
   "name": "MB_BombInitialTimeToBoom",
   "type": "long",
   "defType": "int32",
-  "value": 25
+  "value": 25,
+  "verified": false
  },
  "0xd28": {
   "name": "MB_FailMissionBombCount",
   "type": "long",
   "defType": "int32",
-  "value": 1
+  "value": 1,
+  "verified": false
  },
  "0xd2c": {
   "name": "MB_BombGoesOffRenownLoss",
   "type": "long",
   "defType": "int32",
-  "value": -50
+  "value": -50,
+  "verified": false
  },
  "0xd30": {
   "name": "MB_BombDefusedExperience",
   "type": "long",
   "defType": "int32",
-  "value": 50
+  "value": 50,
+  "verified": false
  },
  "0xd34": {
   "name": "MB_BombDefusedMorality",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0xd38": {
   "name": "MCNumHitsBetweenForcePushes",
   "type": "long",
   "defType": "int32",
-  "value": 3
+  "value": 3,
+  "verified": false
  },
  "0xd3c": {
   "name": "MCMinMinionSpawnPeriod",
   "type": "float",
   "defType": "float",
-  "value": 8.0
+  "value": 8.0,
+  "verified": false
  },
  "0xd40": {
   "name": "MCMaxMinionSpawnPeriod",
   "type": "float",
   "defType": "float",
-  "value": 10.0
+  "value": 10.0,
+  "verified": false
  },
  "0xd44": {
   "name": "MCC_GuardTalkingDistance",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xd48": {
   "name": "MCC_MinionRunDistance",
   "type": "long",
   "defType": "int32",
-  "value": 5
+  "value": 5,
+  "verified": false
  },
  "0xd4c": {
   "name": "MCC_MinionBreakoffDistance",
   "type": "float",
   "defType": "float",
-  "value": 5.0
+  "value": 5.0,
+  "verified": false
  },
  "0xd50": {
   "name": "MCC_SavedGuardMoralityGain",
   "type": "float",
   "defType": "float",
-  "value": 0.009999999776482582
+  "value": 0.009999999776482582,
+  "verified": false
  },
  "0xd54": {
   "name": "MCC_Timer",
   "type": "long",
   "defType": "int32",
-  "value": 300
+  "value": 300,
+  "verified": false
  },
  "0xd58": {
   "name": "MCC_MinionCounter",
   "type": "long",
   "defType": "int32",
-  "value": 8
+  "value": 8,
+  "verified": false
  },
  "0xd5c": {
   "name": "OVBRBanditSightRadius",
   "type": "float",
   "defType": "float",
-  "value": 6.0
+  "value": 6.0,
+  "verified": false
  },
  "0xd60": {
   "name": "OVBRBanditSoundRadius",
   "type": "float",
   "defType": "float",
-  "value": 7.0
+  "value": 7.0,
+  "verified": false
  },
  "0xd64": {
   "name": "OVI_MoralityChangePerDeed",

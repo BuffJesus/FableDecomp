@@ -3,12 +3,12 @@
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
-    RansomVictimNoDamageBoastReward = 384,  -- 900
-    RansomVictimNoWeaponsBoastCost = 388,  -- 200
-    RansomVictimNoWeaponsBoastReward = 392,  -- 600
-    TraderConflictEvilNakedBoastCost = 396,  -- 100
-    TraderConflictEvilNakedBoastReward = 400,  -- 400
-    TraderConflictEvilNoDamageBoastCost = 404,  -- 1000
+    OFGoodNakedBoastCost = 384,  -- 80
+    OFGoodNakedBoastReward = 388,  -- 160
+    OFGoodNoDamageBoastCost = 392,  -- 100
+    OFGoodNoDamageBoastReward = 396,  -- 400
+    OFGoodNoWeaponsBoastCost = 400,  -- 100
+    OFGoodNoWeaponsBoastReward = 404,  -- 300
     OFG_NoCratesStolenBoastCost = 3464,  -- 80
     OFG_NoCratesStolenBoastReward = 3468,  -- 180
     OFG_NoGuardsDieBoastCost = 3472,  -- 100
@@ -21,9 +21,9 @@ end
 
 -- Q_OrchardFarmRaidGood.Init (retail 0x00dd23a0)
 function Init(quest)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.RansomVictimNoDamageBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.RansomVictimNoWeaponsBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.RansomVictimNoWeaponsBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNakedBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNakedBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictEvilNoDamageBoastCost), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNakedBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNakedBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNoDamageBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNoDamageBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNoWeaponsBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.OFGoodNoWeaponsBoastReward), false, "", 0)
     quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOCRATESSTOLEN", 17, quest:ReadGlobalGameData(SCRIPT_DEF.OFG_NoCratesStolenBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.OFG_NoCratesStolenBoastReward), false, "", 0)
     quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_PROTECTGUARDS", 19, quest:ReadGlobalGameData(SCRIPT_DEF.OFG_NoGuardsDieBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.OFG_NoGuardsDieBoastReward), false, "", 0)
     quest:ActivateQuest("Q_OrchardFarmRaid")

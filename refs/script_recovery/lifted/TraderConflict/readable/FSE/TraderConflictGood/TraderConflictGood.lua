@@ -3,16 +3,16 @@
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
-    WhiteBalvNoDamageBoastReward = 480,  -- 2500
-    WhiteBalvNoWeaponsBoastCost = 484,  -- 500
-    WhiteBalvNoWeaponsBoastReward = 488,  -- 4000
-    SummoningShipNakedBoastCost = 492,  -- 800
-    SummoningShipNakedBoastReward = 496,  -- 1800
-    SummoningShipNoDamageBoastCost = 500,  -- 500
-    RansomVictimHaveVictimKilledReward = 568,  -- 1000
-    MinionCampBriarNoDamageCost = 572,  -- 400
-    MinionCampBriarNoDamageReward = 576,  -- 2000
-    AmbushScamTricksterApproachProximityLow = 580,  -- 5.0
+    TraderConflictGoodNakedBoastCost = 480,  -- 100
+    TraderConflictGoodNakedBoastReward = 484,  -- 400
+    TraderConflictGoodNoDamageBoastCost = 488,  -- 300
+    TraderConflictGoodNoDamageBoastReward = 492,  -- 1000
+    TraderConflictGoodNoWeaponsBoastCost = 496,  -- 300
+    TraderConflictGoodNoWeaponsBoastReward = 500,  -- 1000
+    TCGKillNoBanditsCost = 568,  -- 400
+    TCGKillNoBanditsReward = 572,  -- 1000
+    TCGMadeTimeLimitCost = 576,  -- 400
+    TCGMadeTimeLimitReward = 580,  -- 1000
     TCG_TimeLimit = 3972,  -- 480
 }
 
@@ -101,11 +101,11 @@ function Init(quest)
     quest:SetStateBool("MissionSucceeded", false)
     quest:AddQuestRegion("Q_TraderConflictGood", "BanditCampEntrance")
     quest:AddQuestRegion("Q_TraderConflictGood", "BanditCampCentre")
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNoDamageBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNoWeaponsBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.WhiteBalvNoWeaponsBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.SummoningShipNakedBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.SummoningShipNakedBoastReward), quest:ReadGlobalGameData(SCRIPT_DEF.SummoningShipNoDamageBoastCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGKILLNOONE", 34, quest:ReadGlobalGameData(SCRIPT_DEF.RansomVictimHaveVictimKilledReward), quest:ReadGlobalGameData(SCRIPT_DEF.MinionCampBriarNoDamageCost), false, "", 0)
-    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGTIMELIMIT", 35, quest:ReadGlobalGameData(SCRIPT_DEF.MinionCampBriarNoDamageReward), quest:ReadGlobalGameData(SCRIPT_DEF.AmbushScamTricksterApproachProximityLow), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNakedBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNakedBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NODAMAGE", 3, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNoDamageBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNoDamageBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_NOWEAPONS", 6, quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNoWeaponsBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TraderConflictGoodNoWeaponsBoastReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGKILLNOONE", 34, quest:ReadGlobalGameData(SCRIPT_DEF.TCGKillNoBanditsCost), quest:ReadGlobalGameData(SCRIPT_DEF.TCGKillNoBanditsReward), false, "", 0)
+    quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_TCGTIMELIMIT", 35, quest:ReadGlobalGameData(SCRIPT_DEF.TCGMadeTimeLimitCost), quest:ReadGlobalGameData(SCRIPT_DEF.TCGMadeTimeLimitReward), false, "", 0)
     quest:SetMasterGameState("TCGKillNoBandits", true)
     quest:SetMasterGameState("TCGMadeTimeLimit", false)
 end
