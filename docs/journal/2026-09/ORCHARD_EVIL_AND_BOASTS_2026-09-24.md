@@ -102,3 +102,37 @@ script fault. Archives (0 Lua runtime errors each): `work/ab_runs/v12-20260924-0
   with `OFBR_NoCratesWereStolen = true`, so the payout line should appear on its completion screen.
 - The Quest Failed title bar stays empty (retail passes `Q_OrchardFarmRaid`, which owns no card) —
   unverified against retail; low priority.
+
+## Good route with quest-specific boasts (v13, afternoon)
+
+From `adult_maze_completed_2026-09-23`: Protect Orchard Farm -> Take Quest and Boast. Good boast list: No
+Protection, Without A Scratch, Fist Fighter, **Protect Property** (id 17, "no boxes or artifacts stolen",
+80/180), **Protect Guards** (id 19, "no Guards will die", 100/250). Took 17 and 19; `IsBoastTaken` true for
+exactly those; Quest Start lists both (+180, +250). Driver `work/orchard_evil/good_combat.py`.
+
+**The 09-23 "reset" explained.** The driver teleported onto a freshly spawned bandit at the bandit spawn
+(3302, 3292); that point is inside the region-exit volume. Next event: `SetAsLoadingRegion` from caller
+0x49EBDC = `HandleMoveHeroToRegionGameEvent` (0x49EAF0), every host torn down, the stage-450 autosave reloaded.
+Driver artifact, not a script fault. Bandit targets are again limited to the farm rectangle
+(x 3202..3293, y 3170..3293), as the 09-23 driver had.
+
+**Stale quest state across a load (fixed in the converter, b270c0f by fabletlc-89).** After that reload
+wave 2 never spawned: `Teams_1_MemberCount = 1`, `StateCounter_0 = 1`, no bandit in the world (all five
+member hosts of the new session ran Init + Main; three got OnPredicateFail). The member counted at reload time
+had run Init but not Main. Retail's ctor 0xDCC040 zeroes both `CCrateTeamManager` StateCounter[6] and
+MemberCount; the Lua Init did not, and the sidecar keeps quest state in a process-wide map
+(`LuaManager` global state, namespaced keys) that an in-process load does not clear. Diagnostic intervention
+(documented, not an outcome flag): set Teams_1_MemberCount / StateCounter_0 to 0 — the retail ctor values.
+Waves then advanced 1 -> 2 -> 3, Whisper's entrance scene and the flourish tutorial played.
+
+Outcome: one crate was stolen during the first tutorial box (Protect Property lost) and a guard died in wave 2
+(Protect Guards lost). The hero, out of phials, died fighting Whisper (60 -> 35 HP); retail death screen
+(Reload / Quit). Fable killed, saves re-restored (hash-checked). Archive `work/ab_runs/v13-20260924-102448`,
+0 Lua runtime errors.
+
+Still unseen after both routes: a Whisper defeat on this build, the boast payout lines on a completion
+screen. Next attempt should be a v14 bundle (b270c0f ctor defaults) and either a stronger fighter (spells from
+range, heal at a higher threshold) or a hand-played Whisper fight.
+
+Sidecar alternative (clear a quest's namespace on host creation) is NOT done: the persisted `.qs` restore
+order relative to host creation must be checked first, or clearing would wipe restored state for every quest.
