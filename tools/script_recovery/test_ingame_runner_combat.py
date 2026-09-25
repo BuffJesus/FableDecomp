@@ -55,6 +55,12 @@ class CombatTests(unittest.TestCase):
         self.lua.eval('Runner.fightStep(quest)')
         self.assertLess(self.lua.globals().landing.x, 3293)
 
+    def test_knocked_back_bandit_is_attacked_from_inside_boundary(self):
+        self.lua.execute('Runner.fightDrain=false; targets={actor(3295,3277.2,5)}')
+        self.assertNotEqual(self.lua.eval('Runner.fightStep(quest)'), 'none')
+        self.assertLess(self.lua.globals().landing.x, 3293)
+        self.assertEqual(self.lua.globals().drains, 0)
+
     def test_real_damage_mode_never_drains_in_fight_or_area_clear(self):
         self.lua.execute('Runner.fightDrain=false; targets={actor(3250,3200,20)}')
         self.lua.eval('Runner.fightStep(quest)')

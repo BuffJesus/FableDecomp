@@ -53,8 +53,9 @@ stage before harvesting a checkpoint.
 
 Quest files define card titles, region crossings, completion predicates,
 and combat targets. `fightDrain: false` preserves real damage throughout
-combat. `fightBounds` restricts eligible targets and teleport landings;
-Orchard excludes the bandit spawn's region-exit volume. `fightInputs`
+combat. `fightBounds` restricts teleport landings; targets up to three units
+outside remain eligible if reachable from inside. This handles knockback
+while excluding Orchard's deeper region-exit spawn. `fightInputs`
 selects actual key/mouse actions by target name, including Whisper's RMB
 flourish. `fightWhen` and `stateStatus` read conditions/diagnostics in
 `stateHost`; they do not assign quest state.

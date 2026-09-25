@@ -59,17 +59,11 @@ local function isParty(quest, e, fl)
     return false
 end
 
--- Killing without the hero's sword, all checked live 2026-09-25:
---   * ModifyThingHealth(e, -N, true) drains health to 0 ("can kill"; false stops at 1) but the creature does NOT
---     die: it stands at 0 health with IsAlive() true (Wasp drones, wb3). Scripts that wait on GetHealth see it
---     (the Darkwood rock troll's Main: without it the traders stayed scared, te6).
---   * SetThingAsKilled does nothing; FadeOutAndKillEntity does kill (IsAlive false), so a creature left standing
---     at 0 is faded a few frames later -- scripts testing IsAlive (Wasp's all-dead gate) see the death.
---   * neither sends a killed-by message: enemies in R.fightNames (a script waits on MsgIsKilledBy, the Wasp
---     queen) are only drained to 1 health here, and the Python side lands the last blow with a real attack.
---   * a boss AI does not see a fade either: the queen summons CREATURE_HORNET_PICNIC minions at each phase and
---     stays invulnerable until they die; faded ones never count (wb4 stuck at health 29, phase 2). Those
---     definitions go in R.fightDefs and are killed for real too.
+-- Ordinary clearing drains health before fading so health-based script waits (the Darkwood troll) can finish.
+-- A zero-health creature can still report IsAlive: later Wasp debugging found the engine's all-entities pause
+-- set during a stalled wave. Earlier runs did not isolate pause state from damage/fade behavior.
+-- Named fight targets and boss minions use real attacks to preserve kill messages and boss phase handling.
+-- They may be softened to 1 health; fightDrain=false leaves all damage to the actual combat inputs.
 local function isFight(e)
     local def = e:GetDefName()
     for _, d in ipairs(R.fightDefs) do if def == d then return true end end
@@ -89,7 +83,16 @@ function R.fightStep(quest)
         for _, e in ipairs(list or {}) do
             if e:IsAlive() and not e:IsUnconscious() and quest:GetHealth(e) > 0 then
                 local p, b = e:GetPos(), R.fightBounds
-                if not b or (p.x > b[1] and p.y > b[2] and p.x < b[3] and p.y < b[4]) then
+                -- A bandit can be knocked just outside the landing boundary.
+                -- Still attack if reachable from inside it; never chase an
+                -- enemy parked deeper in the region-exit volume.
+                local reachable = true
+                if b then
+                    local x = math.max(b[1] + 0.5, math.min(b[3] - 0.5, p.x))
+                    local y = math.max(b[2] + 0.5, math.min(b[4] - 0.5, p.y))
+                    reachable = (p.x - x)^2 + (p.y - y)^2 <= 9
+                end
+                if reachable then
                     local d = quest:GetDistanceBetweenThings(hero, e)
                     if not bd or d < bd then best, bd, bn = e, d, n end
                 end
