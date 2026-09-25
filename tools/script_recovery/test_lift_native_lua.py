@@ -1105,12 +1105,14 @@ class ThingSlotLiftTests(unittest.TestCase):
                                "    quest:EntitySetFacingAngle(me, fVar7)"])   # optional bUnknown absent, not guessed
         self.assertEqual(lifter.todo, [])
 
-    def test_hidden_return_slot_and_out_parameter_are_dropped(self):
+    def test_hidden_return_slot_is_dropped_and_presented_item_output_is_captured(self):
         native = ('{\n  pCVar12 = (C3DVector *)CScriptThing::GetHomePos((CScriptThing *)(this + 8), auStack_48);\n'
                   '  bVar2 = CScriptThing::MsgIsPresentedWithItem((CScriptThing *)(this + 8), &aCStack_30);\n'
                   '  return;\n}\n')
         out = make_thing().lift("Main", native)
-        self.assertEqual(out, ["    local pCVar12 = me:GetHomePos()", "    local bVar2 = me:MsgIsPresentedWithItem()"])
+        self.assertEqual(out, ["    local pCVar12 = me:GetHomePos()", "    local aCStack_30",
+                               "    local bVar2 = me:MsgIsPresentedWithItem()",
+                               "    if bVar2 then aCStack_30 = _G.g_PresentedItemName end"])
 
     def test_refcount_release_and_interface_alias_lines_are_noise(self):
         native = ('{\n  if ((ppuStack_14 != (undefined **)0x0) &&\n'

@@ -53,7 +53,9 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         while not bVar2 do
+            xStack_12c = ""
             cVar3 = me:MsgIsPresentedWithItem()
+            if cVar3 then xStack_12c = _G.g_PresentedItemName end
             native_arg_sequence_1 = false
             if cVar3 then
                 native_arg_sequence_1 = true

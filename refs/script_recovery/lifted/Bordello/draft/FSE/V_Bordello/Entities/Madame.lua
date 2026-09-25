@@ -131,6 +131,7 @@ function Main(quest, me)
             end
         end
         bVar3 = me:MsgIsPresentedWithItem()
+        if bVar3 then xStack_178 = _G.g_PresentedItemName end
         if bVar3 then
             if xStack_178 == nil then
                 bVar3 = false

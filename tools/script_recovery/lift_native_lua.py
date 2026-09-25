@@ -1703,6 +1703,12 @@ class Lifter:
                         by_ref = next(k for k, a in enumerate(pool) if a.startswith("&"))
                         out_slot = self.slot_name(pool.pop(by_ref))
                         if out_slot:
+                            if name == 'MsgIsPresentedWithItem' and out_slot in self.temps:
+                                # A false message leaves the native out string
+                                # unchanged; retain a staged constructor value.
+                                initial = self.temps[out_slot]
+                                if initial != out_slot:
+                                    self.emit(f'{self.declare(out_slot)} = {initial}')
                             self.forget_value(out_slot)
                             self.kinds[out_slot] = 'string'
                             out_slots.append(out_slot)
@@ -1739,7 +1745,21 @@ class Lifter:
         if name not in self.manifest:
             self.todo.append(f"{name}: CScriptThing method not in FSE manifest")
             self.emit(f"-- TODO(native): {name} is not a ForgeFSE binding")
-        if out_slots and name in OUT_AS_RESULT:
+        if out_slots and name == 'MsgIsPresentedWithItem':
+            # LuaEntityAPI publishes the successful CCharString out value in
+            # the VM global g_PresentedItemName and returns the native bool.
+            # Copy it immediately; a false message must not read a stale gift.
+            out = out_slots[0]
+            declaration = self.declare(out)
+            if declaration.startswith('local '):
+                self.emit(declaration)
+            self.kinds[out] = 'string'
+            condition = call
+            if target:
+                self.emit(f'{self.declare(target)} = {call}')
+                condition = target
+            self.emit(f'if {condition} then {out} = _G.g_PresentedItemName end')
+        elif out_slots and name in OUT_AS_RESULT:
             # `bool F(CCharString& out)` bound as `F() -> out or nil` (LuaEntityAPI::MsgExpressionPerformedTo):
             # the string is the result and the native bool is its presence
             out = out_slots[0]

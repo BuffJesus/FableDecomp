@@ -2468,7 +2468,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 650,
+          "lines": 652,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4220,11 +4220,6 @@
           "Main": [
             "xStack_104",
             "xStack_140"
-          ]
-        },
-        "FSE/V_SickChild/Entities/MansLover.lua": {
-          "Main": [
-            "xStack_12c"
           ]
         },
         "FSE/V_SickChild/Entities/TalkingTrader2.lua": {
