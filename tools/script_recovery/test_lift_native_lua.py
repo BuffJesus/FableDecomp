@@ -42,6 +42,40 @@ class NoRData(RData):
         self.ok = False
 
 
+class BooleanComplementTests(unittest.TestCase):
+    def test_native_boolean_subtraction_keeps_numeric_result(self):
+        from lupa.lua54 import LuaRuntime
+        for value, expected in ((False, 1), (True, 0)):
+            lifter = make()
+            lifter.manifest = {**lifter.manifest, 'IsLevelLoaded': {
+                'scope': 'Quest', 'returnType': 'bool',
+                'parameters': [{'name': 'name', 'type': 'const std::string&'}]}}
+            body = '\n'.join(lifter.lift('Main', r'''{
+bVar1 = GSI->IsLevelLoaded("BanditCampBoss");
+c_stk_99 = '\x01' - bVar1;
+if (c_stk_99 != '\0') {
+  GSI->SetTimer(7, c_stk_99 + 2);
+}
+return c_stk_99;
+}'''))
+            lua, calls = LuaRuntime(), []
+            quest = lua.table_from({'IsLevelLoaded': lambda _, name: value,
+                                    'SetTimer': lambda _, timer, amount: calls.append((timer, amount))})
+            run = lua.execute('return function(Quest)\n' + body + '\nend')
+            result = run(quest)
+            self.assertIs(type(result), int)
+            self.assertEqual(result, expected)
+            self.assertEqual(calls, [(7, 3)] if not value else [])
+
+    def test_numeric_subtraction_remains_arithmetic(self):
+        from lupa.lua54 import LuaRuntime
+        lifter = make()
+        body = '\n'.join(lifter.lift('Main', '{\niVar1 = GSI->GetTimer(1);\nreturn 1 - iVar1;\n}'))
+        lua = LuaRuntime()
+        quest = lua.table_from({'GetTimer': lambda _, timer: 4})
+        self.assertEqual(lua.execute('return function(Quest)\n' + body + '\nend')(quest), -3)
+
+
 def make(entity: bool = False, state=None) -> Lifter:
     return Lifter(MANIFEST, state or {}, "quest" if entity else "Quest", entity, "Pkg", NoRData())
 

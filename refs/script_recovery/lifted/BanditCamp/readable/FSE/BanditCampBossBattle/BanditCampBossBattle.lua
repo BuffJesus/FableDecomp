@@ -87,7 +87,7 @@ function BanditKingMissionProcess(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local readGlobalGameDataFloat, fret_00, timerId, scratchValue, scratchValue6, resource7
-    while (1 - quest:IsLevelLoaded("BanditCampBoss")) ~= 0 do
+    while (1 - (quest:IsLevelLoaded("BanditCampBoss") and 1 or 0)) ~= 0 do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
@@ -222,7 +222,7 @@ function BanditKingMissionProcess(quest)
         quest:OpenDoor(quest:GetThingWithScriptName("Gate3Inner"))
         quest:SetAbilityAvailability(15, true)
         quest:SetAbilityAvailability(10, true)
-        while (1 - quest:IsLevelLoaded("BanditCampResidential")) ~= 0 do
+        while (1 - (quest:IsLevelLoaded("BanditCampResidential") and 1 or 0)) ~= 0 do
             if not quest:NewScriptFrame() then goto LAB_00d11905 end
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end

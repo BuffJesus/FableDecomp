@@ -70,3 +70,14 @@ the unit total from 180 to 137. Syntax remains 81/85 functions and 15/19
 files: its nested conditional stack assignment still needs lowering.
 Evidence: `work/bandit_camp_fixup/export.log` and the before/after typed
 exports. No other helper receives the opt-in flag.
+
+## Boolean complement arithmetic
+
+BanditKingMissionProcess used a native `1 - bool` expression for its level
+wait. Lua rejects arithmetic on booleans. The lifter now converts a known
+boolean to 0/1 before the subtraction, preserving a numeric result for
+both comparisons and later arithmetic. The runtime regression covers both
+boolean values and a numeric subtraction that must remain unchanged.
+Focused tests: 98 passed, 35 subtests. The before/after comparison over all
+18 units changes only BanditCampBossBattle.lua; all other units are identical.
+Evidence: `work/boolean_complement_ab/summary.json` (baseline fab3fbf).

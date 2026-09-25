@@ -84,7 +84,7 @@ function BanditKingMissionProcess(quest)
     local C_stk_4c, bVar2, c_stk_99, fVar13, fVar8, f_stk_a4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iStack_78, iVar12, iVar6, pCVar3, pCVar4, pScriptObject, pThing, r1, uVar10, uVar11, uVar7, xStack_10, xStack_20, xStack_48, xStack_5c, xStack_6c, xStack_84, xStack_90
     local alive = true
     bVar2 = quest:IsLevelLoaded("BanditCampBoss")
-    c_stk_99 = 1 - bVar2
+    c_stk_99 = (1 - (bVar2 and 1 or 0))
     while c_stk_99 ~= 0 do
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -93,7 +93,7 @@ function BanditKingMissionProcess(quest)
             return
         end
         bVar2 = quest:IsLevelLoaded("BanditCampBoss")
-        c_stk_99 = 1 - bVar2
+        c_stk_99 = (1 - (bVar2 and 1 or 0))
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -292,14 +292,14 @@ function BanditKingMissionProcess(quest)
                 quest:SetAbilityAvailability(0xf, true)
                 quest:SetAbilityAvailability(10, true)
                 bVar2 = quest:IsLevelLoaded("BanditCampResidential")
-                c_stk_99 = 1 - bVar2
+                c_stk_99 = (1 - (bVar2 and 1 or 0))
                 while c_stk_99 ~= 0 do
                     alive = quest:NewScriptFrame()
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d11905 end
                     bVar2 = quest:IsLevelLoaded("BanditCampResidential")
-                    c_stk_99 = 1 - bVar2
+                    c_stk_99 = (1 - (bVar2 and 1 or 0))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive

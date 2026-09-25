@@ -1160,6 +1160,11 @@ class Lifter:
                        if re.search(r'"(\w+)"', m).group(1) in master_bool_flags()]
         for var in bool_atoms:
             pattern = re.escape(var)
+            # A native bool participates in integer arithmetic as 0/1. Keep
+            # the complement numeric: consumers may compare it with zero or
+            # add to it (BanditKingMissionProcess's level-load wait).
+            if re.fullmatch(r'(?:1|0x1)\s*-\s*' + pattern, text):
+                text = f'(1 - ({var} and 1 or 0))'
             text = re.sub(rf'\b{pattern}\s*==\s*(?:0|0x0)\b', f"not {var}", text)
             text = re.sub(rf'\b{pattern}\s*~=\s*(?:0|0x0)\b', lambda _m: var, text)
             text = re.sub(rf'\b{pattern}\s*==\s*(?:1|0x1)\b', lambda _m: var, text)
