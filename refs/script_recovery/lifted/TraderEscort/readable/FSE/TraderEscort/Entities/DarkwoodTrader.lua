@@ -75,8 +75,8 @@ function Main(quest, me)
                 while not quest:IsDistanceBetweenThingsUnder(me, tradersStopHere, 2.0) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                     scratchValue5 = (quest:GetDistanceBetweenThings(me, tradersStopHere) ^ 2) < (quest:GetDistanceBetweenThings(hero, tradersStopHere) ^ 2)
-                    if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or scratchValue5 == 0 then
-                        if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) or scratchValue5 == 0 then
+                    if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or not scratchValue5 then
+                        if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) or not scratchValue5 then
                             if scratchValue9 == 0 then scratchValue2 = false; goto continue_1 end
                             me:ClearCommands()
                             if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then

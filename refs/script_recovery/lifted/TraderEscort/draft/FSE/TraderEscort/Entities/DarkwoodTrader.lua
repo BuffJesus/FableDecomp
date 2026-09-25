@@ -118,14 +118,14 @@ function Main(quest, me)
                     fVar19 = 9.0
                     pCVar6 = quest:GetHero()
                     bVar5 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, fVar19)
-                    if (bVar5) or (c_stk_169 == 0) then
+                    if (bVar5) or (not c_stk_169) then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00e08601 end
                         fVar19 = 5.0
                         pCVar6 = quest:GetHero()
                         bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, fVar19)
-                        if (bVar3) or (c_stk_169 == 0) then
+                        if (bVar3) or (not c_stk_169) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00e08601 end

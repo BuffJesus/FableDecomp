@@ -1161,3 +1161,22 @@ class ThingSlotLiftTests(unittest.TestCase):
         self.assertEqual(strip_declarations(body),
                          ["  bVar5 = CScriptThing::_IsPerformingScriptTask_CScriptGameResourceObjectScriptedThingBase"
                           "__UBE_NXZ ((CScriptThing *)aCStack_34);"])
+
+
+class ComparisonFlagTests(unittest.TestCase):
+    # DarkwoodTrader Main 0x00E07640: `cStack_169 = fStack_20 < fVar19;` then `if (... || cStack_169 == '\0')`.
+    # A `<` compare looked numeric (RE_NUMERIC_EXPR also admits shifts), so the byte test stayed `== 0`, which a
+    # Lua boolean never equals: the Barrow Fields traders asked the hero to follow even with the hero ahead.
+    def test_less_than_flag_is_a_boolean(self):
+        lifter = make()
+        body = '\n'.join(lifter.lift('Main', '{\nf_stk_20 = GSI->GetTimer(1);\nfVar3 = GSI->GetTimer(2);\n'
+                                     'c_stk_169 = f_stk_20 < fVar3;\n'
+                                     "if (c_stk_169 == '\\0') {\nGSI->SetTimer(42,1);\n}\n}"))
+        self.assertEqual(lifter.kinds.get('c_stk_169'), 'bool', body)
+        self.assertIn('if not c_stk_169 then', body)
+
+    def test_shift_stays_numeric(self):
+        lifter = make()
+        body = '\n'.join(lifter.lift('Main', '{\nuVar2 = 1;\nuVar3 = uVar2 << 2;\n'
+                                     'if (uVar3 == 0) {\nGSI->SetTimer(42,1);\n}\n}'))
+        self.assertIn('== 0', body)

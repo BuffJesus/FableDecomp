@@ -2908,7 +2908,11 @@ class Lifter:
                 self.declare(var)
                 self.slot_alias[var] = lifted
                 return
-            kind = self.kinds.get(lifted) or ("number" if RE_NUMERIC_EXPR.fullmatch(lifted) else None)
+            # RE_NUMERIC_EXPR admits `<`/`>` for shifts, so a top-level compare (`c_stk_169 = f_stk_20 < fVar19`,
+            # DarkwoodTrader Main's "trader nearer the stop than the hero") is a boolean first: typed a number,
+            # its later `== '\0'` test stayed `== 0`, which a Lua boolean never equals
+            kind = self.kinds.get(lifted) or ("number" if RE_NUMERIC_EXPR.fullmatch(lifted)
+                                              and not is_boolean_expression(lifted) else None)
             if kind is None and self.accessor_kinds and re.fullmatch(r'[\w\s()]+[+\-*/][\w\s().+\-*/]*\d\.\d+[\w\s().+\-*/]*', lifted):
                 kind = 'number'                 # unit mode: arithmetic with a float literal (`angle + 0.25`, WillDummy's spin) is a number
             if re.fullmatch(r'__native_vectors\[0x[0-9a-f]+\]', lifted):
