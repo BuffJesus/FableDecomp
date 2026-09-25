@@ -18,7 +18,11 @@ SCRIPT_DEF table corrected (leading block is PDB - 4; the middle zone
 0x258..0xd60 is unproven and stays numeric in readables).
 
 Next, in order:
-1. Trader Escort escort route: walking driver, then Darkwood2 -> BarrowFields (playtest journal above).
+1. Trader Escort: fix DarkwoodTrader's post-greeting `resources:PrepareResource(<unresolved handle>)` (converter),
+   rebuild v15, then `sh work/trader_escort/to_post_intro.sh` + `python tools/script_recovery/ingame_runner.py
+   tools/script_recovery/runner_quests/trader_escort.json --bundle v15 --tag <tag>` (hands-free; reached
+   Darkwood4 with all traders in about a minute). Grow the runner into every quest (one JSON each), aiming at a
+   run from New Game. Do NOT hand-drive the game: fix the runner instead.
 2. Re-export the other units with the fixed exporter (9507b0d: thing-vector elements, pushes kept across
    zero-parameter calls) and with `work/ebp_fix/<unit>_typed.json`, one at a time: regenerate into work/,
    review the diff, then promote. Playtested units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
