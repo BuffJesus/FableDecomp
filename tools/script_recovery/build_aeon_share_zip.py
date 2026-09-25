@@ -32,8 +32,8 @@ UNITS = [
      LIFTED / 'OrchardFarm/draft/CONVERSION_REPORT.json',
      'Q_OrchardFarmRaid + Q_OrchardFarmRaidEvil + Q_OrchardFarmRaidGood (all three), 46/46 functions, 0 TODO(native) in the '
      'draft; smoke harness clean on draft + readable; byte-identical across every generic converter change since 2026-09-16 '
-     '(it is one of the standing regression gates). Ships as retail overrides in the bundle below; NOT yet played in-game -- '
-     'our playtests so far stopped at the Guild path. Readable stage = readable_style.py (quest-script style).'),
+     '(it is one of the standing regression gates). Ships as retail overrides in the bundle below. '
+     'PLAYED 2026-09-23/24: Good route completed end to end, Evil played to its failure path, boasts verified on the podium. Readable stage = readable_style.py (quest-script style).'),
     ('GuildTraining', LIFTED / 'GuildTraining/readable_converter/FSE', LIFTED / 'GuildTraining/draft/FSE',
      LIFTED / 'GuildTraining/draft/CONVERSION_REPORT.json',
      'Converter output through the typed pipeline: 152 functions, 37/37 files compile. PLAYED IN-GAME on the bundle below '
@@ -57,6 +57,11 @@ UNITS = [
      'Q_WaspBoss and its nine entity classes. Aeon hand-ported this quest, so the two are worth diffing:\n'
      'a disagreement is evidence about one side or the other (that is how the LUAGameflow CoreQuestWaiting\n'
      'bool-vs-ulong deviation surfaced). 46 functions, 0 missing bodies, smoke clean.'),
+    ('TraderEscort', LIFTED / 'TraderEscort/readable/FSE', LIFTED / 'TraderEscort/draft/FSE',
+     LIFTED / 'TraderEscort/draft/CONVERSION_REPORT.json',
+     'Q_TraderEscort and its 14 entity classes (new in this zip). PLAYED 2026-09-24: card, boasts, Darkwood intro, Quest\n'
+     'Start, Darkwood1-4 with all traders following, 0 Lua errors; stopped at the Darkwood4 camp-trader greeting (fixed\n'
+     'here, not yet replayed). Rock troll onward untested. Readable smoke: 16 files, 1 free-global note (AssassinSpawn).'),
     ('GuardianSisterInfo', LIFTED / 'GuardianSisterInfo/readable/FSE', LIFTED / 'GuardianSisterInfo/draft/FSE',
      LIFTED / 'GuardianSisterInfo/draft/CONVERSION_REPORT.json',
      'QS_GuardianSisterInfo and QS_GuardianSisterInfo2_SisterInBanditCamp. Gameflow stage 200 hands the\n'
@@ -65,7 +70,12 @@ UNITS = [
 ]
 
 DOCS = [
-    ('docs/scripts/AEON_FINDINGS_2026-09-22.md', 'READ_ME_FIRST_FINDINGS_2026-09-22.md'),
+    ('docs/scripts/AEON_FINDINGS_2026-09-24.md', 'READ_ME_FIRST_FINDINGS_2026-09-24.md'),
+    ('docs/scripts/AEON_FINDINGS_2026-09-22.md', 'FINDINGS_2026-09-22.md'),
+    ('tools/script_recovery/sidecar_patches/novi-zzzzzzz-thread-args-cross-state.patch', 'sidecar_patches/novi-zzzzzzz-thread-args-cross-state.patch'),
+    ('tools/script_recovery/sidecar_patches/novi-zzzz-quest-failed-message.patch', 'sidecar_patches/novi-zzzz-quest-failed-message.patch'),
+    ('tools/script_recovery/sidecar_patches/novi-zzzzz-isequalto-implementation.patch', 'sidecar_patches/novi-zzzzz-isequalto-implementation.patch'),
+    ('tools/script_recovery/sidecar_patches/novi-zzzzzz-create-effect-result.patch', 'sidecar_patches/novi-zzzzzz-create-effect-result.patch'),
     ('docs/scripts/AEON_SPLIT_PROPOSAL.md', 'AEON_SPLIT_PROPOSAL.md'),
     ('docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md', 'FSE_UPSTREAM_REQUIREMENTS.md'),
     ('docs/scripts/READABLE_STYLE_PLAN.md', 'READABLE_STYLE_PLAN.md'),
@@ -111,9 +121,10 @@ def build(out_zip, bundle):
     docs.mkdir()
     for src, name in DOCS:
         if (ROOT / src).exists():
+            (docs / name).parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(ROOT / src, docs / name)
     if bundle and bundle.exists():
-        shutil.copytree(bundle, stage / 'playtest-bundle', ignore=shutil.ignore_patterns('runs', '*.log', '__pycache__'))
+        shutil.copytree(bundle, stage / 'playtest-bundle', ignore=shutil.ignore_patterns('runs', 'autopilot', '*.log', '__pycache__'))
     (stage / 'README.md').write_text(readme(stamp, summaries, bundle), encoding='utf-8')
     out_zip = out_zip or WORK / f'AeonShare-{stamp}.zip'
     with zipfile.ZipFile(out_zip, 'w', zipfile.ZIP_DEFLATED) as z:
@@ -199,12 +210,12 @@ def readme(stamp, summaries, bundle):
               '  could not be typed.', '']
     if bundle:
         lines += ['## playtest-bundle/', '',
-                  'The local-candidate bundle (`local-candidate-v6`): original FSE + our compatibility add-on, New Oakvale intro +',
-                  'Orchard Farm (Raid / Evil / Good) + Guild Training (all 9 quests) + Trader Conflict (Evil / Good) as retail',
-                  'overrides, and YOUR LUAGameflow.lua registered as the override of the retail Gameflow script. Not a public',
-                  'release; see its README.md — preflight with `python local_test.py --game-dir <Fable dir>`, add `--launch` for a',
-                  'real run on a disposable profile. New Oakvale plays through childhood; Guild Training plays through the beetles;',
-                  'Orchard Farm and Trader Conflict have not had their first in-game run yet. The add-on DLL still logs verbose',
+                  f'The local-candidate bundle (`{bundle.name}`): original FSE + our compatibility add-on, New Oakvale intro +',
+                  'Guild Training (all 9 quests) + Wasp Boss + Guardian Sister Info + Orchard Farm (Raid / Evil / Good) + Trader',
+                  'Conflict (Evil / Good) + Trader Escort as retail overrides, and YOUR LUAGameflow.lua registered as the override',
+                  'of the retail Gameflow script. Not a public release; see its README.md — preflight with `python local_test.py',
+                  '--game-dir <Fable dir>`, add `--launch` for a real run on a disposable profile. Played in-game: childhood, Guild',
+                  'Training to graduation, Orchard Good to completion, Trader Escort to Darkwood4. The add-on DLL still logs verbose',
                   'lifecycle diagnostics to FableScriptExtender.log -- if something dies, that log is what we want back.', '']
     lines += ['## Reproduce', '', '```', 'python tools/script_recovery/convert_quest_unit.py --unit orchard_farm',
               'python tools/script_recovery/build_readable_unit.py --unit orchard_farm',
@@ -217,7 +228,7 @@ def readme(stamp, summaries, bundle):
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--out', type=Path)
-    a.add_argument('--bundle', type=Path, default=WORK / 'new-oakvale-original-fse-20260912/local-candidate-v6')
+    a.add_argument('--bundle', type=Path, default=WORK / 'new-oakvale-original-fse-20260912/local-candidate-v15')
     a.add_argument('--no-bundle', action='store_true')
     args = a.parse_args()
     build(args.out, None if args.no_bundle else args.bundle)
