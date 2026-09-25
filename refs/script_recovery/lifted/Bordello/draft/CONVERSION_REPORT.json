@@ -1122,19 +1122,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1208,
+          "lines": 1210,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_Bordello/Entities/Madame.lua:Main",
-                "line": 568,
-                "message": "FSE/V_Bordello/Entities/Madame.lua:Main:568: 'do' expected near '='"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -4043,13 +4037,8 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 9,
-        "passed": 6,
+        "passed": 7,
         "errors": [
-          {
-            "path": "FSE/V_Bordello/Entities/Madame.lua",
-            "line": 580,
-            "message": "FSE/V_Bordello/Entities/Madame.lua:580: 'do' expected near '='"
-          },
           {
             "path": "FSE/V_Bordello/V_Bordello.lua",
             "line": 81,
@@ -4091,7 +4080,6 @@
             "xStack_124",
             "xStack_134",
             "xStack_148",
-            "xStack_148_2",
             "xStack_f8_b3"
           ]
         },
@@ -4198,8 +4186,8 @@
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 39,
-        "fileSyntaxPassed": 6,
+        "functionSyntaxPassed": 40,
+        "fileSyntaxPassed": 7,
         "fileSyntaxChecked": 9,
         "todo": 361
       }
@@ -4209,8 +4197,8 @@
     "owners": 8,
     "functions": 42,
     "missing": 0,
-    "functionSyntaxPassed": 39,
-    "fileSyntaxPassed": 6,
+    "functionSyntaxPassed": 40,
+    "fileSyntaxPassed": 7,
     "fileSyntaxChecked": 9,
     "todo": 361
   }

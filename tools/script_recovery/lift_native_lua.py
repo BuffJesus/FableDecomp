@@ -2652,11 +2652,27 @@ class Lifter:
             except ValueError:
                 sequence = []
             assignments = [RE_LOCAL_ASSIGN.fullmatch(part + ';') for part in sequence[:-1]]
+            stack_copies = []
+            for index, part in enumerate(sequence[:-1]):
+                if assignments[index]:
+                    continue
+                copy = RE_SLOT_ASSIGN.fullmatch(part + ';')
+                if copy and (copy[2] in self.locals or copy[2] in self.temps):
+                    assignments[index] = copy
+                    stack_copies.append(copy)
             if len(sequence) > 1 and all(assignments):
                 # C's comma operator evaluates every prefix before the final predicate,
                 # including on the check that exits. Keep assignments inside the loop.
                 for assignment in assignments:
                     self.mutable_scalars.add(assignment[1])
+                # A stack copy is a runtime snapshot, not a temporary alias of
+                # the source register. Declare it outside the loop so its last
+                # value also survives the final, false predicate (Madame Main).
+                for copy in stack_copies:
+                    declaration = self.declare(copy[1])
+                    if declaration.startswith('local '):
+                        self.emit(declaration)
+                    self.forget_value(copy[1])
                 self.emit('while true do')
                 self.indent += 1
                 for part in sequence[:-1]:

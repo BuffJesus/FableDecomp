@@ -83,6 +83,30 @@ return iVar1;
         body = '\n'.join(lifter.lift('Main', '{\nwhile (*piVar1 = 7, false) {\nbreak;\n}\n}'))
         self.assertIn('*piVar1', body)
 
+    def test_stack_copy_runs_on_every_check_including_exit(self):
+        # Madame's Main copies a live register into xStack_148_2 at the
+        # loop head. The register may change in the body; this is a snapshot.
+        source = '''{
+iVar5 = GSI->GetTimer(17);
+while (xStack_148_2 = iVar5, iVar5 < 3) {
+iVar5 = iVar5 + 1;
+GSI->SetTimer(18,xStack_148_2);
+}
+return xStack_148_2;
+}'''
+        for initial, expected in ((1, [1, 2]), (4, [])):
+            with self.subTest(initial=initial):
+                lifter = make()
+                body = '\n'.join(lifter.lift('Main', source))
+                lua, events = LuaRuntime(), []
+                q = lua.table_from({'GetTimer': lambda *_: initial,
+                                    'SetTimer': lambda _q, _id, value: events.append(value)})
+                result = lua.execute('return function(Quest)\n' + body + '\nend')(q)
+                self.assertEqual(result, max(initial, 3))
+                self.assertEqual(events, expected)
+                self.assertEqual(lifter.todo, [])
+                self.assertIsNone(lua.globals().xStack_148_2)
+
 
 if __name__ == '__main__':
     unittest.main()

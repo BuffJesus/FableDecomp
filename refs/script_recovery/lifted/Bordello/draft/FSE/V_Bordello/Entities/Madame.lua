@@ -577,7 +577,9 @@ function Main(quest, me)
     if not bVar3 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        while xStack_148_2 = iVar5, not bVar3 do
+        while true do
+            xStack_148_2 = iVar5
+            if not (not bVar3) then break end
             iVar7 = quest:GetTimer(4)
             if iVar7 == 0 then
                 fVar19 = 8.0
