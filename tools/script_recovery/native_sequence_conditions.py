@@ -9,7 +9,9 @@ def _tree(text):
     text = _unwrap(text)
     parts = split_arguments(text)
     if len(parts) > 1:
-        if not all(re.match(r'^(?:[A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+)\s*=(?!=)', part) for part in parts[:-1]):
+        if not all(re.match(r'^(?:[A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|'
+                            r'[A-Za-z]*Stack_\w+|\w+_stk_\w+|local_\w+)\s*=(?!=)', part)
+                   for part in parts[:-1]):
             raise ValueError('unsupported sequence effect')
         return ('sequence', parts[:-1], _tree(parts[-1]))
     masked = _LITERALS.sub(lambda m: ' ' * len(m[0]), text)

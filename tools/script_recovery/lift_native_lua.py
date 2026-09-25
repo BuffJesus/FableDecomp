@@ -2133,6 +2133,9 @@ class Lifter:
             self.state_stored_slots = {m.group(1) for m in re.finditer(
                 r'^\s*([a-zA-Z]*Stack_\w+|\w+_stk_\w+) = \*\(\w+ \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x14\) \+ (?:0x[0-9a-fA-F]+|\d+)\);',
                 '\n'.join(statements), re.M)}
+        # Conditional stack writes need a stored initial value when their
+        # branch is skipped; propagating the initial literal loses that value.
+        self.state_stored_slots.update(sequence_assignments)
         for line in statements:
             assignment = RE_LOCAL_ASSIGN.match(line)
             if assignment and definitions[assignment[1]] > 1:
@@ -2846,6 +2849,9 @@ class Lifter:
         m = RE_SLOT_ASSIGN.match(line)
         if m:
             value = m.group(2).strip()
+            uncast = RE_CAST.sub('', value).strip()
+            if m[1] in self.state_stored_slots and self.kinds.get(uncast) == 'number':
+                value = uncast  # a reused stack slot can retain a stale CCharString cast
             lit = self.literal(value)
             if lit is not None:
                 if m.group(1) in self.state_stored_slots and not lit.startswith('"'):
@@ -2871,6 +2877,8 @@ class Lifter:
                     # the register later loses (`xStack_88 = iVar4` = the timer id, iVar4 reused): a real
                     # store, not a per-branch alias that the join forgets
                     lhs = self.slot_results.get(m.group(1), m.group(1))   # a hidden-result slot stores into its result var
+                    if m[1] in self.state_stored_slots:
+                        self.forget_value(m[1])
                     self.emit(f"{self.declare(lhs)} = {self.temps.get(value, value)}")
                     if value in self.kinds:
                         self.kinds[lhs] = self.kinds[value]

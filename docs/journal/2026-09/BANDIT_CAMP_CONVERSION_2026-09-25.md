@@ -81,3 +81,32 @@ boolean values and a numeric subtraction that must remain unchanged.
 Focused tests: 98 passed, 35 subtests. The before/after comparison over all
 18 units changes only BanditCampBossBattle.lua; all other units are identical.
 Evidence: `work/boolean_complement_ab/summary.json` (baseline fab3fbf).
+
+## Conditional stack snapshots
+
+The remaining CheckAnyBanditsKilled syntax error came from a stack-slot
+assignment nested in an AND condition. The slot previously held
+HUD_QUEST_ICON_BANDIT, so inlining also substituted that string into a
+numeric comparison. The sequence-condition pass now accepts direct named
+stack assignments, retains the initial numeric value on skipped branches,
+and copies known numeric locals through stale casts. The runtime regression
+checks skipped and taken branches, both comparison outcomes, and source
+mutation after the copy. Pointer-write sequences remain rejected.
+
+After regeneration, syntax is 82/85 functions and 16/19 files, with 137
+TODOs. This fixes condition evaluation and slot lifetime; the worker's
+killed-thing list and counter argument recovery remain unresolved.
+
+The final 18-unit comparison changes BanditCamp.lua, BS_Teacher.lua and
+ChickenMaster.lua only. The latter two have the same conditional stack-write
+pattern; their committed sources matched the comparison baseline before
+regeneration. Their existing unresolved operations and compile counts are
+unchanged. Focused runtime suites: 100 passed, 35 subtests; related Guild,
+branch-join and gift regression suites: 28 passed, 32 subtests (Unicorn printed
+its existing Windows exception diagnostics but the tests exited successfully).
+Evidence: `work/stack_sequence_v2_ab/summary.json`. The earlier incomplete
+`work/stack_sequence_ab` run was superseded and stopped.
+
+Readable Bandit Camp smoke is now 19 files / 6 problems: three remaining
+load errors, two free-global reports and Gate1GuardOuter's nil bitwise
+operand. Evidence: `work/bandit_camp_stack_sequence_smoke.json`.

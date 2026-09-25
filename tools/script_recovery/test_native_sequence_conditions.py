@@ -6,6 +6,47 @@ from tools.script_recovery.native_sequence_conditions import expand_sequence_con
 
 
 class SequenceConditionTests(unittest.TestCase):
+    def test_stack_assignment_is_short_circuited_and_keeps_its_snapshot(self):
+        source = '''{
+xStack_14 = 7;
+iVar1 = GSI->GetTimer(1);
+if (enabled && (xStack_14 = (CCharString)(float)iVar1, xStack_14 > 3)) {
+GSI->SetTimer(2, 20);
+}
+iVar1 = GSI->GetTimer(3);
+return xStack_14;
+}'''
+        for enabled, first, expected, written in ((False, 9, 7, []), (True, 9, 9, [20]), (True, 2, 2, [])):
+            lifter = fixtures.make()
+            lifter.accessor_kinds = True
+            body = '\n'.join(lifter.lift('Main', source, parameters={'enabled': 'bool'}))
+            lua, writes = LuaRuntime(), []
+            quest = lua.table_from({'GetTimer': lambda _, timer: first if timer == 1 else 99,
+                                   'SetTimer': lambda _, timer, value: writes.append(value)})
+            run = lua.execute('return function(Quest,enabled)\n' + body + '\nend')
+            self.assertEqual(run(quest, enabled), expected, body)
+            self.assertEqual(writes, written)
+            self.assertEqual(lifter.todo, [])
+
+    def test_or_branch_resets_stack_flag_only_when_evaluated(self):
+        source = '''{
+c_stk_399 = 1;
+if (early || (c_stk_399 = 0, enabled)) {
+GSI->SetTimer(2, c_stk_399);
+}
+return c_stk_399;
+}'''
+        for early, enabled, expected, writes in ((True, False, 1, [1]), (False, True, 0, [0]),
+                                                 (False, False, 0, [])):
+            lifter = fixtures.make()
+            body = '\n'.join(lifter.lift('Main', source, parameters={'early': 'bool', 'enabled': 'bool'}))
+            lua, calls = LuaRuntime(), []
+            quest = lua.table_from({'SetTimer': lambda _, timer, value: calls.append(value)})
+            run = lua.execute('return function(Quest,early,enabled)\n' + body + '\nend')
+            self.assertEqual(run(quest, early, enabled), expected, body)
+            self.assertEqual(calls, writes)
+            self.assertEqual(lifter.todo, [])
+
     def test_ordinary_if_else_preserves_nested_short_circuit_and_result_scope(self):
         source = '''{
 iVar1 = 7;

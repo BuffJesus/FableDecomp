@@ -1214,7 +1214,7 @@ function helper_E57020(quest, me)
 end
 
 function helper_E57530(quest, me)
-    local __native_condition_1, bVar5, cVar6, fVar4, fret_0, fret_00, fret_01, fret_02, iVar7, pCVar1, pCVar10, pCVar12, pCVar8, pCVar9, pcVar14, pvVar11, uVar15, uVar16, uVar17, value, xStack_28, x_stk_14, x_stk_18
+    local bVar5, cVar6, fVar4, fret_0, fret_00, fret_01, fret_02, iVar7, native_arg_sequence_1, pCVar1, pCVar10, pCVar12, pCVar8, pCVar9, pcVar14, pvVar11, uVar15, uVar16, uVar17, value, xStack_28, x_stk_14, x_stk_18
     local alive = true
     value = 0xffffffff
     -- TODO(native): ctr_CVar13 = 0;
@@ -1249,6 +1249,7 @@ function helper_E57530(quest, me)
                         if bVar5 then
                             return
                         end
+                        xStack_28 = 0xfffffffe
                         value = 0xfffffffe
                     end
                 else
@@ -1257,16 +1258,26 @@ function helper_E57530(quest, me)
                     if bVar5 then
                         return
                     end
-                    __native_condition_1 = 0 == 0
-                    if __native_condition_1 then
+                    native_arg_sequence_1 = false
+                    if 0 == 0 then
+                        native_arg_sequence_1 = true
+                    else
+                        native_arg_sequence_1 = false
+                    end
+                    if native_arg_sequence_1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         -- TODO(native): xStack_28 = ctr_CVar13;
-                        __native_condition_1 = bVar5
+                        if bVar5 then
+                            native_arg_sequence_1 = true
+                        else
+                            native_arg_sequence_1 = false
+                        end
                     end
-                    if __native_condition_1 then
+                    if native_arg_sequence_1 then
                         return
                     end
+                    value = xStack_28
                     -- TODO(native): if *(ctr_CVar13 + *(__native_entity_state:GetStateInt("self_0x14") + 0xac)) == 0 then
                     if false then
                         alive = not quest:IsActiveThreadTerminating()

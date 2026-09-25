@@ -294,19 +294,13 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 119,
+          "lines": 145,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/BanditCamp/BanditCamp.lua:CheckAnyBanditsKilled",
-                "line": 56,
-                "message": "FSE/BanditCamp/BanditCamp.lua:CheckAnyBanditsKilled:56: ')' expected near '='"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -937,16 +931,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 3,
-        "passed": 2,
-        "errors": [
-          {
-            "path": "FSE/BanditCamp/BanditCamp.lua",
-            "line": 303,
-            "message": "FSE/BanditCamp/BanditCamp.lua:303: ')' expected near '='"
-          }
-        ]
+        "passed": 3,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -957,8 +945,8 @@
         "owners": 3,
         "functions": 15,
         "missing": 0,
-        "functionSyntaxPassed": 14,
-        "fileSyntaxPassed": 2,
+        "functionSyntaxPassed": 15,
+        "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
         "todo": 20
       }
@@ -5892,8 +5880,8 @@
     "owners": 19,
     "functions": 85,
     "missing": 0,
-    "functionSyntaxPassed": 81,
-    "fileSyntaxPassed": 15,
+    "functionSyntaxPassed": 82,
+    "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 19,
     "todo": 137
   }

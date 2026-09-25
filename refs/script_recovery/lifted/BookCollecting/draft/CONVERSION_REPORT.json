@@ -1355,7 +1355,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 229,
+          "lines": 240,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1415,7 +1415,6 @@
             "pCVar6"
           ],
           "helper_E57530": [
-            "xStack_28",
             "x_stk_18"
           ]
         }

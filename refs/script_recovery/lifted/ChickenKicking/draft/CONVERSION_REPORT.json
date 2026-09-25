@@ -811,7 +811,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1475,
+          "lines": 1517,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -897,7 +897,6 @@
             "if (!cVar7) goto LAB_00e65617;",
             "if (!cVar7) goto LAB_00e661fd;",
             "if (!cVar7) goto LAB_00e6634f;",
-            "if ((c_stk_381 != '\\0') || (c_stk_399 = '\\0', *(char *)(*(int *)(this + 0x14) + 0x58) != '\\0')) goto LAB_00e6634f;",
             "if (*(char *)(this + 0x1e) == '\\0') goto LAB_00e68a20;",
             "if (bVar6) goto LAB_00e66150;",
             "if (bVar6) goto LAB_00e661e4;",
@@ -914,7 +913,8 @@
             "if (bVar6) goto LAB_00e68ae2;",
             "if (bVar6) goto LAB_00e68aeb;",
             "if (bVar6) goto LAB_00e68af4;",
-            "if (c_stk_381 != '\\0') goto LAB_00e65617;"
+            "if (c_stk_381 != '\\0') goto LAB_00e65617;",
+            "if (native_arg_sequence_2) goto LAB_00e6634f;"
           ],
           "nativeLabels": [
             "FLOW_hoist_lab_00e6743e_1",

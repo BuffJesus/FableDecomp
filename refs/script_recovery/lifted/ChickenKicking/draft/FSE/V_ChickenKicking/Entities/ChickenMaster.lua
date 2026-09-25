@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, piVar2, piVar5, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, this_00, uVar18, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
+    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, piVar2, piVar5, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, this_00, uVar18, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
     local alive = true
     C_stk_370 = 0
     xStack_394 = resources:NewResource()
@@ -241,7 +241,21 @@ function Main(quest, me)
             end
             C_stk_370 = (uVar18 | 0x40)
             cVar7 = me:IsTalkedToByHero()
-            if (cVar7) or (c_stk_399 = 0, quest:GetStateBool("TalkedTo")) then
+            native_arg_sequence_1 = false
+            if cVar7 then
+                native_arg_sequence_1 = true
+            else
+                native_arg_sequence_1 = false
+            end
+            if not native_arg_sequence_1 then
+                c_stk_399 = 0
+                if quest:GetStateBool("TalkedTo") then
+                    native_arg_sequence_1 = true
+                else
+                    native_arg_sequence_1 = false
+                end
+            end
+            if native_arg_sequence_1 then
                 c_stk_399 = 1
             end
             C_stk_370 = (uVar18 & 0xffffffbf)
@@ -500,7 +514,21 @@ function Main(quest, me)
                             cVar7 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not cVar7 then goto LAB_00e6634f end
                         end
-                        if (c_stk_381 ~= 0) or (c_stk_399 = 0, quest:GetStateBool("SpectatorsUnderAttack")) then goto LAB_00e6634f end
+                        native_arg_sequence_2 = false
+                        if c_stk_381 ~= 0 then
+                            native_arg_sequence_2 = true
+                        else
+                            native_arg_sequence_2 = false
+                        end
+                        if not native_arg_sequence_2 then
+                            c_stk_399 = 0
+                            if quest:GetStateBool("SpectatorsUnderAttack") then
+                                native_arg_sequence_2 = true
+                            else
+                                native_arg_sequence_2 = false
+                            end
+                        end
+                        if native_arg_sequence_2 then goto LAB_00e6634f end
                     else
                         goto LAB_00e6634f
                     end
@@ -532,7 +560,21 @@ function Main(quest, me)
                     end
                     C_stk_370 = (uVar18 | 0x2000)
                     cVar7 = me:IsTalkedToByHero()
-                    if (cVar7) or (c_stk_399 = 0, quest:GetStateBool("TalkedTo")) then
+                    native_arg_sequence_3 = false
+                    if cVar7 then
+                        native_arg_sequence_3 = true
+                    else
+                        native_arg_sequence_3 = false
+                    end
+                    if not native_arg_sequence_3 then
+                        c_stk_399 = 0
+                        if quest:GetStateBool("TalkedTo") then
+                            native_arg_sequence_3 = true
+                        else
+                            native_arg_sequence_3 = false
+                        end
+                    end
+                    if native_arg_sequence_3 then
                         c_stk_399 = 1
                     end
                     C_stk_370 = (uVar18 & 0xffffdfff)
@@ -777,21 +819,21 @@ function Main(quest, me)
                         -- TODO(native): (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);
                         __native_entity_state:SetStateBool("HaveTalked", true)
                         iVar10 = me:IsPerformingScriptTask()
-                        native_arg_sequence_1 = false
+                        native_arg_sequence_4 = false
                         if not iVar10 then
-                            native_arg_sequence_1 = true
+                            native_arg_sequence_4 = true
                         else
-                            native_arg_sequence_1 = false
+                            native_arg_sequence_4 = false
                         end
-                        if not native_arg_sequence_1 then
+                        if not native_arg_sequence_4 then
                             bVar6 = quest:IsDistanceBetweenThingsOver(r3, me, 6.0)
                             if not bVar6 then
-                                native_arg_sequence_1 = true
+                                native_arg_sequence_4 = true
                             else
-                                native_arg_sequence_1 = false
+                                native_arg_sequence_4 = false
                             end
                         end
-                        if native_arg_sequence_1 then
+                        if native_arg_sequence_4 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if not bVar6 then

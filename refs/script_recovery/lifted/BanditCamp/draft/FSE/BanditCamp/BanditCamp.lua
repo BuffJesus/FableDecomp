@@ -246,7 +246,7 @@ function WatchForCostume(quest)
 end
 
 function CheckAnyBanditsKilled(quest)
-    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10
+    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14
     local alive = true
     v_stk_10 = 0
     if not quest:GetStateBool("BoastBegun") then
@@ -300,13 +300,27 @@ function CheckAnyBanditsKilled(quest)
                 if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillNoBandits", false)
             end
-            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and ("HUD_QUEST_ICON_BANDIT" = v_stk_10, quest:ReadGlobalGameDataFloat(0xe88) <= "HUD_QUEST_ICON_BANDIT") then
+            native_arg_sequence_1 = false
+            if not quest:GetMasterGameState("BanditCampKillManyBandits") then
+                native_arg_sequence_1 = true
+            else
+                native_arg_sequence_1 = false
+            end
+            if native_arg_sequence_1 then
+                xStack_14 = v_stk_10
+                if quest:ReadGlobalGameDataFloat(0xe88) <= xStack_14 then
+                    native_arg_sequence_1 = true
+                else
+                    native_arg_sequence_1 = false
+                end
+            end
+            if native_arg_sequence_1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
                 max = -1
-                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - "HUD_QUEST_ICON_BANDIT"))
+                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
                 quest:UpdateQuestInfoCounter(iVar4, max, i_stk_8)
             end
             -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
@@ -344,13 +358,25 @@ function CheckAnyBanditsKilled(quest)
                 if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillNoBandits", false)
             end
-            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and ("HUD_QUEST_ICON_BANDIT" = v_stk_10, quest:ReadGlobalGameDataFloat(0xe88) <= "HUD_QUEST_ICON_BANDIT") then
+            native_arg_sequence_1 = false
+            if not quest:GetMasterGameState("BanditCampKillManyBandits") then
+                native_arg_sequence_1 = true
+            end
+            if native_arg_sequence_1 then
+                xStack_14 = v_stk_10
+                if quest:ReadGlobalGameDataFloat(0xe88) <= xStack_14 then
+                    native_arg_sequence_1 = true
+                else
+                    native_arg_sequence_1 = false
+                end
+            end
+            if native_arg_sequence_1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
                 max = -1
-                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - "HUD_QUEST_ICON_BANDIT"))
+                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
                 quest:UpdateQuestInfoCounter(iVar4, max, 0)
             end
             -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);

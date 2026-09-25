@@ -679,6 +679,26 @@
         null
        ]
       },
+      "native_arg_sequence_1_2": {
+       "name": "sequence12",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
+      "native_arg_sequence_1_3": {
+       "name": "sequence13",
+       "basis": "native argument role",
+       "assignmentRoles": [
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult"
+       ]
+      },
       "uVar6": {
        "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
@@ -694,12 +714,20 @@
         null,
         null
        ]
+      },
+      "xStack_14": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
       }
      },
      "splitLocals": {
       "bVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
+       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14\n",
        "versions": {
         "bVar2_1": [
          6
@@ -727,47 +755,72 @@
          47
         ],
         "bVar2_9": [
-         52
+         66
         ],
         "bVar2_10": [
-         61
+         75
         ],
         "bVar2_11": [
-         68
+         82
         ],
         "bVar2_12": [
-         76
+         90
         ],
         "bVar2_13": [
-         87
+         101
         ],
         "bVar2_14": [
-         92
+         118
         ],
         "bVar2_15": [
-         101
+         127
+        ]
+       }
+      },
+      "native_arg_sequence_1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14\n",
+       "versions": {
+        "native_arg_sequence_1_1": [
+         51
+        ],
+        "native_arg_sequence_1_2": [
+         53,
+         55,
+         60,
+         62
+        ],
+        "native_arg_sequence_1_3": [
+         105,
+         107,
+         112,
+         114
         ]
        }
       },
       "iVar3": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
+       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14\n",
        "versions": {
         "iVar3_1": [
          32
         ],
         "iVar3_2": [
-         71,
-         79
+         85,
+         93
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "iVar5": {
-       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, iVar3_1, iVar3_2, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
+       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, iVar3_1, iVar3_2, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, scale, this_00, uVar6, v_stk_10, xStack_14\n",
        "25": "    iVar5 = -1\n",
        "34": "        iVar5 = nil --[[unresolved native value]]\n"
+      },
+      "native_arg_sequence_1_1": {
+       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, iVar3_1, iVar3_2, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1_1, native_arg_sequence_1_2, native_arg_sequence_1_3, scale, this_00, uVar6, v_stk_10, xStack_14\n",
+       "51": "            native_arg_sequence_1_1 = false\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -775,7 +828,7 @@
     },
     {
      "function": "WatchForEndOfScript",
-     "sourceLine": 336,
+     "sourceLine": 362,
      "locals": {
       "bVar1": {
        "name": "scratchValue",
@@ -852,7 +905,7 @@
     },
     {
      "function": "WatchForEndOfScript",
-     "sourceLine": 186,
+     "sourceLine": 196,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -860,7 +913,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0,
+   "wrappedDeclarations": 1,
    "style": {
     "functions": {
      "Main": {
@@ -1192,10 +1245,10 @@
        "deadDefinitions": 2,
        "guardWrappers": 1,
        "retryLoops": 1,
-       "booleanMaterialisation": 0,
+       "booleanMaterialisation": 4,
        "booleanCompares": 0,
        "conditions": 1,
-       "literals": 3,
+       "literals": 4,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
@@ -1216,15 +1269,15 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 10,
+       "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 1,
+       "freeSuffixes": 2,
        "hoistedState": 0
       },
       "before": {
-       "lines": 98,
-       "temporaries": 13,
+       "lines": 123,
+       "temporaries": 16,
        "labels": 2,
        "gotos": 6,
        "terminationChecks": 13,
@@ -1232,8 +1285,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 68,
-       "temporaries": 6,
+       "lines": 78,
+       "temporaries": 9,
        "labels": 3,
        "gotos": 7,
        "terminationChecks": 9,
@@ -27635,13 +27688,8 @@
   "runtime": "Lua 5.4",
   "ok": false,
   "checked": 20,
-  "passed": 16,
+  "passed": 17,
   "errors": [
-   {
-    "path": "FSE/BanditCamp/BanditCamp.lua",
-    "line": 148,
-    "message": "FSE/BanditCamp/BanditCamp.lua:148: 'then' expected near '='"
-   },
    {
     "path": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua",
     "line": 95,
