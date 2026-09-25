@@ -48,3 +48,29 @@ the balverine attacks. **0 Lua errors** on the final run.
   the next harness piece.
 - Combat in Darkwood2 needs driving (the idle hero lost a resurrection phial to the balverine).
 - The other units' exports predate the exporter fix; re-export and diff them one at a time.
+
+## Evening: the in-game runner (generic hands-free playtests)
+
+User feedback: model-in-the-loop driving was far too slow (missed swings, wall-bumping hops, slow clicks).
+Replaced by `tools/script_recovery/ingame_runner.lua` + `ingame_runner.py` + `walkgrid.py`:
+
+* The Lua runner is a per-frame thread injected into the always-alive LUAGameflow host through the autopilot
+  channel (`loadfile` with the host env as `_ENV`, then `quest:CreateThread("RunnerMain")`; re-running the
+  install hot-reloads it). It heals, clears hostiles with `FadeOutAndKillEntity` (ModifyThingHealth with a
+  negative amount and SetThingAsKilled do NOT kill), never touches the party, hops along a planned route facing
+  the direction of travel, pulls the followers after every hop (`TeleportAllFollowersToHeroPosition`), pulls
+  them again before an exit, never hops while the party is short, drops a route the moment the region changes
+  (an earlier exit retry teleported the hero back across the border), and retries an exit that did not fire.
+* `walkgrid.py`: LEV walkability + heights and TNG things straight out of the install WAD (cached in
+  work/runner_cache), A* with a clearance penalty; hazards (`OBJECT_EXPLODING_SPORE_*`, which are
+  `NewThing Object;` blocks) are expensive, not impassable (a hard block closed Darkwood2's chokepoint).
+* `ingame_runner.py` + `runner_quests/<quest>.json` (legs per region, party expression, answers, done/failed
+  expressions): plans each leg, answers questions / clears boxes / presses ENTER when frames pause, clicks a
+  conversation's Next (`clear` only clicks when the icon is on screen), logs to work/runner/<tag>.jsonl.
+
+Run te4/te5 (same checkpoint): Darkwood1 -> 2 -> 3 -> 4 in about a minute of game time with all three traders
+following, 1 pause (the infected trader's question), little damage. Stopped in Darkwood4: after the camp-trader
+greeting, DarkwoodTrader Main dies on `resources:PrepareResource(scratchValue43)` ("Invalid or released
+retail resource", readable line ~280): an unresolved resource handle, so no trader resumes following. The game
+process then closed (orderly host teardown; cause unknown). Next: fix that handle in the converter, rerun
+the runner from `adult_trader_escort_accepted_v15_2026-09-24` via work/trader_escort/to_post_intro.sh.

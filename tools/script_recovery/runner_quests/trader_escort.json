@@ -1,0 +1,60 @@
+{
+  "quest": "Q_TraderEscort",
+  "host": "LUAGameflow",
+  "maps": "^(?:Darkwood|BarrowFields$)",
+  "legs": {
+    "Darkwood1": [
+      3099.94,
+      2705.34,
+      61.76
+    ],
+    "Darkwood2": [
+      3042.39,
+      2604.53,
+      57.27
+    ],
+    "Darkwood3": [
+      2971.01,
+      2482.49,
+      43.4
+    ],
+    "Darkwood4": [
+      3054.62,
+      2436.58,
+      45.09
+    ],
+    "Darkwood5": [
+      2856.24,
+      2384.19,
+      38.18
+    ],
+    "Darkwood6": [
+      2698.77,
+      2344.96,
+      45.17
+    ],
+    "BarrowFields": [
+      2690.0,
+      2190.0
+    ]
+  },
+  "enemyNames": [
+    "SurpriseBalverine",
+    "DarkwoodBalverineTrader",
+    "InfectedBalverine",
+    "DW5_Balv",
+    "DW5_Bandit",
+    "TE_BanditLeader",
+    "BanditCronies",
+    "DarkwoodRockTroll"
+  ],
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('Q_TraderEscort')",
+  "failed": "(not quest:IsQuestActive('Q_TraderEscort')) and not quest:IsQuestCompleted('Q_TraderEscort')",
+  "partyNames": [
+    "DarkwoodTrader",
+    "EndTrader"
+  ],
+  "party": "quest:GetStateInt('TradersStillAliveCounter')",
+  "partyHost": "TraderEscort"
+}
