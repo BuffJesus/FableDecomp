@@ -17,20 +17,37 @@ spawns as `CreateThread(name, {args = {me}})`, the depth-fixed export
 SCRIPT_DEF table corrected (leading block is PDB - 4; the middle zone
 0x258..0xd60 is unproven and stays numeric in readables).
 
+Runner continuation (2026-09-25): the adult campaign reached Wasp -> Maze ->
+Orchard Good -> Trader Escort. Final checkpoint
+`adult_chain_20260925d_trader_escort` passed a fresh-process reload: all four
+quests complete, Gameflow stage 600, and the next story quest active. This
+was a resumed c/d run: Wasp needed a corrected handoff predicate, and Orchard
+received a live runner targeting fix. No quest outcome or pause flag was
+set by hand. The final escort needed no intervention and brought all three
+traders to the end marker on the bridge. The three d stages and final reload
+have zero Lua runtime/resource errors; the original AutoSave files are restored.
+Runner fixes cover Maze OCR, save ownership/restoration, arrival UI settling,
+combat near boundaries, and synchronous log preservation. Converter fixes
+recover isolated float locals, entity receivers hidden by casts, and presented
+item outputs (8f4faae, d9fbbc1, 031fa58); the live bundles are unchanged.
+Details and limits: [runner continuation](journal/2026-09/RUNNER_CONTINUATION_2026-09-25.md).
+
 Next, in order:
-1. Grow the runner into every quest (one `runner_quests/<quest>.json` each; Trader Escort's is the model:
-   legs per region, `party` expression, done/failed), aiming at a run from New Game. Replay Trader Escort with
-   `sh work/trader_escort/to_post_intro.sh` + `python tools/script_recovery/ingame_runner.py
-   tools/script_recovery/runner_quests/trader_escort.json --bundle v15 --tag <tag> --minutes 35` (about 10
-   minutes). Do NOT hand-drive the game: fix the runner instead. The launch stages a save into profile 1234234;
-   restore it from that launch's `scratchpad/save_backup_1234234_<timestamp>`, NOT `_orig` (it sorts last).
+1. Run the adult campaign from graduation with a new tag:
+   `python tools/script_recovery/run_campaign.py tools/script_recovery/runner_campaigns/adult_good.json --bundle v16 --tag <tag>`.
+   A clean uninterrupted four-stage replay is still open; then extend the runner
+   toward New Game/Guild training and subsequent quests. Do NOT hand-drive the
+   game: fix the runner instead. The driver closes staged games before restoring
+   the protected profile and archives each stage's log. See
+   [runner usage](scripts/INGAME_RUNNER.md) for checkpoint reload verification.
 2. Re-export the other units with the fixed exporter (9507b0d: thing-vector elements, pushes kept across
    zero-parameter calls; 3811caa: `push reg` / `lea reg,[reg]` keep a register's thing tag) and with `work/ebp_fix/<unit>_typed.json`, one at a time: regenerate into work/,
    review the diff, then promote. Playtested units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
 3. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object settles it).
-4. Still open: a won boast's payout line (Orchard, and Trader Escort's boast 9), Orchard Evil success, the
-   WatchForMissionRules "DarkwoodTrader" name-slot pairing, and DarkwoodAssassinSpawn's trigger distance
-   (`f_CVar3 = xStack_20` stays TODO: the readable smoke's one free global).
+4. Still open: a won boast's payout line (Orchard, and Trader Escort's boast 9), Orchard Evil success,
+   WatchForMissionRules "DarkwoodTrader" name-slot pairing, and live DarkwoodAssassinSpawn coverage.
+   Its trigger distance and entity-position receivers are fixed in generated source (8f4faae, d9fbbc1),
+   with readable smoke 16 files / 0 problems. These fixes are not deployed to v15/v16.
 
 Sidecar-side namespace clearing on host creation is still NOT done: check first whether persisted state is
 loaded into the global map before a host exists.

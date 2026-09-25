@@ -45,6 +45,14 @@ logs are copied synchronously to `work/runner/<tag>_FableScriptExtender.log`
 before the next stage starts. The background launcher's `work/ab_runs/`
 collection is supplementary and can miss a rapid restart.
 
+After completing the campaign, verify its final checkpoint in another fresh
+game. This checks all four completed quests, stage 600, and the next story
+quest's activation:
+
+```powershell
+python tools/script_recovery/ingame_runner.py tools/script_recovery/runner_checkpoints/adult_good_completed.json --bundle v15 --tag adult_chain_01_reload --launch --save adult_chain_01_trader_escort --minutes 2
+```
+
 Travel waits for arrival tutorials to clear and observes two consecutive
 scene-ready checks before the next crossing. A loaded-region flag alone
 does not mean that arrival UI and dialogue have finished. Failed travel
