@@ -36,13 +36,13 @@ KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'ul
 LIFECYCLE = {'RegisterMain', 'Main', 'Init', 'OnPersist', 'destructor'}
 
 
-def thread_names(rows):
+def thread_names(rows, *, unique_names=True):
     """Unknown names still need distinct keys so no native worker is discarded."""
     names = {}
     for row in rows:
         address = row['body'].lower()
         name = row.get('name') or 'NativeThread_' + address.removeprefix('0x')
-        if name in names.values() and names.get(address) != name:
+        if unique_names and name in names.values() and names.get(address) != name:
             raise ValueError(f'ambiguous native thread name {name}: {address}')
         if address in names and names[address] != name:
             raise ValueError(f'conflicting native thread names at {address}')
@@ -256,7 +256,9 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
         if role in LIFECYCLE:
             functions[role] = {'address': slot['address'].lower(), 'evidence': 'cluster lifecycle slot'}
     lo, hi = int(tu_range[0], 16), int(tu_range[1], 16)
-    threads = thread_names(inventory['threads'])
+    # Sibling quests can register identically named workers at different addresses.
+    # Validate name uniqueness only after finding this quest's reachable bodies.
+    threads = thread_names(inventory['threads'], unique_names=False)
     thread_registration = {t['body'].lower(): t['registrationFunction'].lower() for t in inventory['threads']}
     # Every lifecycle address of every entity in the whole unit (never a "helper").
     entity_addrs = set()
@@ -301,6 +303,7 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
                 functions[threads[body]] = {'address': body, 'spawnedAs': threads[body],
                                             'evidence': 'inventory thread registration'}
                 pending.append((body, 'quest'))
+    threads = thread_names([t for t in inventory['threads'] if t['body'].lower() in seen])
     # PDB members: quest-level (not nested, not lifecycle/threads/compiler) and per nested class.
     members, nested_members = {}, {}
     for qname, (rva, size) in pdb.items():
