@@ -8,6 +8,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 UNITS = {
+    'bandit_camp': {
+        # Q_BanditCamp Init through the next family's Q_BountyHunt Init.
+        # Includes BossBattle and HoldingScript; shared lifecycle slots are explicit anchors.
+        'evidence': ROOT / 'refs/script_recovery/bandit_camp',
+        'lo': 0xD006D0, 'hi': 0xD12D00,
+        'ir_glob': 'Q_BanditCamp*.json',
+        'scripts': ['Q_BanditCamp', 'Q_BanditCampBossBattle', 'Q_BanditCampHoldingScript'],
+        'pdb_pattern': '*CQ_BanditCamp*',
+        'schema': 'bandit-camp-native-inventory/0.1',
+        'package': 'BanditCamp',
+    },
     'trader_escort': {
         # Quest vtable 0x012DF16C: Init 0xE006D0 through destructor 0xE0AFB0.
         # Q_UndeadRising starts at Init 0xE0B020; inventory checks entity slots.

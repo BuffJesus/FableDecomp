@@ -37,6 +37,18 @@ class GuildInventoryTests(unittest.TestCase):
         self.assertEqual(len(threads), 4)
         self.assertTrue(all(t['bodyExported'] for t in inventory['threads']))
 
+    def test_bandit_camp_family_has_complete_entity_and_worker_exports(self):
+        inventory = recover(unit_name='bandit_camp')
+        self.assertEqual([q['script'] for q in inventory['quests']],
+                         ['Q_BanditCamp', 'Q_BanditCampBossBattle', 'Q_BanditCampHoldingScript'])
+        entities = [e for q in inventory['quests'] for e in q['entities']]
+        self.assertEqual(len(entities), 16)
+        self.assertTrue(all(not e['missingExports'] for e in entities))
+        self.assertEqual(len(inventory['threads']), 12)
+        self.assertTrue(all(t['bodyExported'] for t in inventory['threads']))
+        self.assertEqual({t['body'] for t in inventory['threads'] if t['name'] == 'WatchForTermination'},
+                         {'0x00D01290', '0x00D04260'})
+
     def test_native_ownership_and_all_lifecycle_exports(self):
         inventory = recover()
         self.assertEqual(inventory, json.loads((EVIDENCE / 'inventory.json').read_text()))

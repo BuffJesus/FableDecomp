@@ -1,0 +1,529 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardInner::Main	9456192	1869
+0	7	this		0	4	4	5	18	0	0
+0	7	Gate1GuardOuter	CScriptThing	0	12	1	3	30006	-84	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate3Guard::Alloc	9477024	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardOuter::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::OnPersist	9516176	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>	9509536	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	CSpawnedFunc2<NScript::CQ_BanditCampBossBattleScript,float,CCharString>::CSpawnedFunc2<NScript::CQ_BanditCampBossBattleScript,float,CCharString>	9509280	206
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+0	7	par1		8	4	3	3	30006	20	0
+0	7	par2	CCharString	0	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin1::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::ProcessHostageCutscenes	9520928	3645
+0	7	this		0	4	4	5	18	0	0
+0	7	Hostage2	CScriptThing	0	12	1	3	30006	-172	0
+0	7	Hostage1	CScriptThing	0	12	1	3	30006	-184	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-112	0
+0	7	seh_hostage2	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-52	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-80	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-188	0
+0	7	seh_hostage1	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-96	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-132	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-52	0
+0	7	seh_hostage2	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-112	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-80	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-188	0
+0	7	seh_hostage1	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-96	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-132	0
+0	7	AllBandits	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-148	0
+0	7	NewLeader	CScriptThing	0	12	1	3	30006	-36	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-112	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-96	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-152	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-80	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Main	9510032	5648
+0	7			0	0	2	1	0	0	9515664
+0	7	this		0	4	4	5	18	0	0
+0	7	MoanTimer	CTimer	0	4	1	3	30006	-288	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-276	0
+0	7	TalkedTo		10	1	1	3	30006	-277	0
+0	7	HitNumber		13	4	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-164	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-256	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-108	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-256	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-256	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-92	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::Main	9502912	6362
+0	7	this		0	4	4	5	18	0	0
+0	7	NotAttacked		10	1	1	3	30006	-141	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-164	0
+0	7	PsstAmount		10	1	1	3	30006	-133	0
+0	7	HasPass		10	1	1	3	30006	-134	0
+0	7	ForgeTimer	CTimer	0	4	1	3	30006	-148	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-112	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-68	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-92	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-40	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin1::Init	9465072	182
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::Init	9462048	643
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::BanditKingMissionProcess	9524576	5068
+0	7	this		0	4	4	5	18	0	0
+0	7	ScaredHealth		13	4	1	3	30006	-204	0
+0	7	AllWalls	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-164	0
+0	7	BanditKing	CScriptThing	0	12	1	3	30006	-200	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-180	0
+0	7	seh_king	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-120	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-184	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-148	0
+0	7	DelayBanditKingTimer	CTimer	0	4	1	3	30006	-184	0
+0	7	seh_king	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-180	0
+0	7	Sister	CScriptThing	0	12	1	3	30006	-132	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	seh_king	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	seh_sister	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-88	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-180	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::Alloc	9502544	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate3Guard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::Main	9484400	1015
+0	7	this		0	4	4	5	18	0	0
+0	7	HostageGuard	CScriptThing	0	12	1	3	30006	-40	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::Init	11550816	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin3::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin2::Init	9465072	182
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::RegisterMain	9458256	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::WatchForEndOfScript	9447856	373
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Init	9482944	124
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardOuter::Alloc	9449248	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin3::Init	9465072	182
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage::Init	9480128	144
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaMassacre	9518608	2312
+0	7	this		0	4	4	5	18	0	0
+0	7	SecondAreaDeaths		13	4	1	3	30006	-156	0
+0	7	followers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-152	0
+0	7	KilledCreatures	std::vector<unsigned long,std::allocator<unsigned long> >	0	16	1	3	30006	-136	0
+0	7	AllBandits	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-112	0
+0	7	NewLeader	CScriptThing	0	12	1	3	30006	-36	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-80	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-64	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-96	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardInner::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Alloc	9483072	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Init	9476832	189
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Main	9529648	4628
+0	7			0	0	2	1	0	0	9534252
+0	7	this		0	4	4	5	18	0	0
+0	7	AssassinsGoneMental		10	1	1	3	30006	-273	0
+0	7	SecondAssassin	CScriptThing	0	12	1	3	30006	-252	0
+0	7	seh_ThirdAssassin	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-192	0
+0	7	AngryTimer	CTimer	0	4	1	3	30006	-268	0
+0	7	seh_SecondAssassin	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+0	7	ThirdAssassin	CScriptThing	0	12	1	3	30006	-176	0
+0	7	seh_FirstAssassin	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-224	0
+0	7	FirstAssassin	CScriptThing	0	12	1	3	30006	-264	0
+0	7	AssassinsAngerLevel		13	4	1	3	30006	-164	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-240	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	seh_assassin3	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-100	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	seh_assassin1	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	seh_assassin2	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-160	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin1::Main	9465264	4190
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-248	0
+0	7	TalkedTo		10	1	1	3	30006	-229	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-124	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-208	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-228	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-204	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-128	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::Main	9534288	3912
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardInner::Init	9455904	111
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampHoldingScriptScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditKing::Alloc	9493792	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampScript::Alloc	9461952	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::Alloc	9473200	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::Init	9502720	186
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_BanditCampScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage::Main	9480448	2496
+0	7			0	0	2	1	0	0	9482928
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	HelpTimer	CTimer	0	4	1	3	30006	-132	0
+0	7	HelpLevel		13	4	1	3	30006	-128	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::OnPersist	9459056	93
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::Main	9473376	3068
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin3::Main	9471504	1681
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	TalkedTo		10	1	1	3	30006	-121	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditKing::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CheckAnyBanditsKilled	9459152	817
+0	7	this		0	4	4	5	18	0	0
+0	7	BanditsKilled		13	4	1	3	30006	-36	0
+0	7	BanditBoastID		13	4	1	3	30006	-32	0
+0	7	KilledCreatures	std::vector<unsigned long,std::allocator<unsigned long> >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditForger::OnPersist	9516224	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage2::Main	9483248	974
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	HelpTimer	CTimer	0	4	1	3	30006	-48	0
+0	7	HelpLevel		13	4	1	3	30006	-64	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampHoldingScriptScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin2::Main	9469632	1681
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	TalkedTo		10	1	1	3	30006	-121	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin1::Alloc	9464896	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CheckForSecondAreaDoorHelp	9463120	1148
+0	7			0	0	2	1	0	0	9464248
+0	7	this		0	4	4	5	18	0	0
+0	7	GateHelpTimer	CTimer	0	4	1	3	30006	-64	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::Alloc	9538208	97
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate3Guard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Main	9485984	7636
+0	7			0	0	2	1	0	0	9493596
+0	7			0	0	2	1	0	0	9493568
+0	7	this		0	4	4	5	18	0	0
+0	7	GoadLevel		13	4	1	3	30006	-208	0
+0	7	MarkerAt		13	4	1	3	30006	-124	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-236	0
+0	7	GoadingTimer	CTimer	0	4	1	3	30006	-252	0
+0	7	Hostage	CScriptThing	0	12	1	3	30006	-220	0
+0	7	Turning		10	1	1	3	30006	-238	0
+0	7	SpokenTo		10	1	1	3	30006	-237	0
+0	7	TurnTimer	CTimer	0	4	1	3	30006	-248	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-144	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-144	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-144	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-144	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-144	0
+FUNCTION	NScript::CQ_BanditCampScript::Main	9459984	1955
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::WatchForTermination	9462704	411
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc2<NScript::CQ_BanditCampBossBattleScript,float,CCharString>::SuspendableProcess	9509488	42
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::OnPredicateFail	9497328	112
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin3::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::RegisterMain	9538848	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::Main	9538320	514
+0	7	this		0	4	4	5	18	0	0
+0	7	BanditDoor	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditKing::OnPredicateFail	9493632	152
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::Alloc	9539200	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin3::Alloc	9471328	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardOuter::Init	9449424	206
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::OpenGate	9476448	206
+0	7	this		0	4	4	5	18	0	0
+0	7	time_delay		8	4	3	3	30006	4	0
+0	7	door_name	CCharString	0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::WatchForBanditCampGates	9464272	441
+0	7	this		0	4	4	5	18	0	0
+0	7	Gate2Inner	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardOuter::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Alloc	9485808	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin2::Alloc	9469456	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate3Guard::Main	9477392	2735
+0	7	this		0	4	4	5	18	0	0
+0	7	MoanTimer	CTimer	0	4	1	3	30006	-136	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-124	0
+0	7	TalkedTo		10	1	1	3	30006	-125	0
+0	7	SpokenToMe		10	1	1	3	30006	-126	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-56	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-60	0
+FUNCTION	CSpawnedFunc2<NScript::CQ_BanditCampBossBattleScript,float,CCharString>::`scalar deleting destructor'	9233232	96
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassin1::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage::Alloc	9480272	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostage::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::WatchForTermination	9447488	364
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::OnPredicateFail	9485696	110
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::CreateActiveEntityScript	9515680	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_BanditCampBossBattleScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::Alloc	9476656	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardInner::Alloc	9456016	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::Init	9485424	264
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditKing::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::Init	9448240	994
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::Init	10947504	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Main	9497616	4881
+0	7	this		0	4	4	5	18	0	0
+0	7	King	CScriptThing	0	12	1	3	30006	-112	0
+0	7	village	CScriptThing	0	12	1	3	30006	-124	0
+0	7	KingHealthLast		6	4	1	3	30006	-32	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-140	0
+0	7	ActionTimer	CTimer	0	4	1	3	30006	-148	0
+0	7	SetPausedForCutscene		10	1	1	3	30006	-141	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::Alloc	9497440	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CGate3Guard::Init	9477200	182
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CBanditKing::Main	9493968	3360
+0	7			0	0	2	1	0	0	9497308
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-108	0
+0	7	InitialHealth		13	4	1	3	30006	-120	0
+0	7	QuarterMoan		10	1	1	3	30006	-129	0
+0	7	HalfMoan		10	1	1	3	30006	-141	0
+0	7	KingDieTimer	CTimer	0	4	1	3	30006	-140	0
+0	7	PleadTimer	CTimer	0	4	1	3	30006	-136	0
+0	7	PleadNumber		13	4	1	3	30006	-124	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-32	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::RegisterMain	9509728	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCROWDBANDITS::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_BanditCampScript>::CreateActiveEntityScript	9458560	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_BanditCampHoldingScriptScript::OnPersist	9539152	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::Alloc	9464720	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::Alloc	9484224	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardInner::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_BanditCampScript::CGate1GuardOuter::Main	9449632	6258
+0	7	this		0	4	4	5	18	0	0
+0	7	MoanTimer	CTimer	0	4	1	3	30006	-356	0
+0	7	Gate1GuardInner	CScriptThing	0	12	1	3	30006	-324	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-344	0
+0	7	FailedOnce		10	1	1	3	30006	-349	0
+0	7	TalkedTo		10	1	1	3	30006	-309	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-308	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	village	CScriptThing	0	12	1	3	30006	-188	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+FUNCTION	NScript::CQ_BanditCampScript::WatchForCostume	9446608	880
+0	7	this		0	4	4	5	18	0	0
+0	7	ClothingInfoID		13	4	1	3	30006	-16	0
+0	7	TotalClothing		13	4	1	3	30006	-40	0
+FUNCTION	NScript::CQ_BanditCampBossBattleScript::CheckForFirstAreaMassacre	9516272	2323
+0	7	this		0	4	4	5	18	0	0
+0	7	FirstAreaDeaths		13	4	1	3	30006	-152	0
+0	7	followers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-132	0
+0	7	KilledCreatures	std::vector<unsigned long,std::allocator<unsigned long> >	0	16	1	3	30006	-148	0
+0	7	AllBandits	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-88	0
+0	7	NewLeader	CScriptThing	0	12	1	3	30006	-24	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-72	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-56	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-40	0
+FUNCTION	CActiveEntityScript<NScript::CQ_BanditCampScript>::CActiveEntityScript<NScript::CQ_BanditCampScript>	9458064	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+MATCHES	130

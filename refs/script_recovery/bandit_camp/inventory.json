@@ -1,0 +1,431 @@
+{
+  "schema": "bandit-camp-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "2d593628d743474c0d854583aeec2ff3e68f3fda2cc7fe83ad5a394104c09336",
+  "exportedFunctions": 131,
+  "quests": [
+    {
+      "script": "Q_BanditCamp",
+      "allocator": "0x00D03580",
+      "vtable": "0x012C8300",
+      "entities": [
+        {
+          "name": "Gate1GuardOuter",
+          "registrationFunction": "0x00D00AF0",
+          "namePush": "0x00D00B10",
+          "addBindingCall": "0x00D00B51",
+          "factoryStore": "0x00D00B39",
+          "factory": "0x00D014C0",
+          "vtable": "0x012C8604",
+          "functions": {
+            "destructor": "0x00D01570",
+            "Main": "0x00D01630",
+            "Init": "0x00D01590",
+            "GetParentScript": "0x00D01560",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Gate1GuardInner",
+          "registrationFunction": "0x00D00AF0",
+          "namePush": "0x00D00B79",
+          "addBindingCall": "0x00D00BB9",
+          "factoryStore": "0x00D00BA0",
+          "factory": "0x00D02A70",
+          "vtable": "0x012C8850",
+          "functions": {
+            "destructor": "0x00D02B60",
+            "Main": "0x00D02B80",
+            "Init": "0x00D02B20",
+            "GetParentScript": "0x00D02B10",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D03580"
+      ]
+    },
+    {
+      "script": "Q_BanditCampBossBattle",
+      "allocator": "0x00D12920",
+      "vtable": "0x012C88E0",
+      "entities": [
+        {
+          "name": "Gate2Guard1",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03906",
+          "addBindingCall": "0x00D03941",
+          "factoryStore": "0x00D0392C",
+          "factory": "0x00D071F0",
+          "vtable": "0x012C8E80",
+          "functions": {
+            "destructor": "0x00D072A0",
+            "Main": "0x00D0D910",
+            "Init": "0x00D072C0",
+            "GetParentScript": "0x00D07290",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BCGameMaster",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03969",
+          "addBindingCall": "0x00D039A9",
+          "factoryStore": "0x00D03990",
+          "factory": "0x00D066B0",
+          "vtable": "0x012C8DE0",
+          "functions": {
+            "destructor": "0x00D06780",
+            "Main": "0x00D067A0",
+            "Init": "0x00D06760",
+            "GetParentScript": "0x00D06750",
+            "OnPersist": "0x00D0EE10",
+            "OnPredicateFail": "0x00D06770",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "AssassinMarker",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D039D1",
+          "addBindingCall": "0x00D03A0D",
+          "factoryStore": "0x00D039F8",
+          "factory": "0x00D048C0",
+          "vtable": "0x012C8B80",
+          "functions": {
+            "destructor": "0x00D04970",
+            "Main": "0x00D11930",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00D04960",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Assassin1",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03A35",
+          "addBindingCall": "0x00D03A71",
+          "factoryStore": "0x00D03A5C",
+          "factory": "0x00D04990",
+          "vtable": "0x012C8B9C",
+          "functions": {
+            "destructor": "0x00D04A40",
+            "Main": "0x00D04AE0",
+            "Init": "0x00D04A60",
+            "GetParentScript": "0x00D04A30",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Assassin2",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03A99",
+          "addBindingCall": "0x00D03AD5",
+          "factoryStore": "0x00D03AC0",
+          "factory": "0x00D05910",
+          "vtable": "0x012C8D28",
+          "functions": {
+            "destructor": "0x00D059C0",
+            "Main": "0x00D05A60",
+            "Init": "0x00D059E0",
+            "GetParentScript": "0x00D059B0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Assassin3",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03AFD",
+          "addBindingCall": "0x00D03B39",
+          "factoryStore": "0x00D03B24",
+          "factory": "0x00D05FE0",
+          "vtable": "0x012C8D84",
+          "functions": {
+            "destructor": "0x00D06090",
+            "Main": "0x00D06130",
+            "Init": "0x00D060B0",
+            "GetParentScript": "0x00D06080",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "Gate3Guard",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03B61",
+          "addBindingCall": "0x00D03B9D",
+          "factoryStore": "0x00D03B88",
+          "factory": "0x00D07340",
+          "vtable": "0x012C8E9C",
+          "functions": {
+            "destructor": "0x00D073F0",
+            "Main": "0x00D07490",
+            "Init": "0x00D07410",
+            "GetParentScript": "0x00D073E0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CampHostage",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03BC5",
+          "addBindingCall": "0x00D03C04",
+          "factoryStore": "0x00D03BEF",
+          "factory": "0x00D07D20",
+          "vtable": "0x012C8F88",
+          "functions": {
+            "destructor": "0x00D07E30",
+            "Main": "0x00D07E50",
+            "Init": "0x00D07DD0",
+            "GetParentScript": "0x00D07DC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CampHostage2",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03C2E",
+          "addBindingCall": "0x00D03C6D",
+          "factoryStore": "0x00D03C58",
+          "factory": "0x00D08670",
+          "vtable": "0x012C9080",
+          "functions": {
+            "destructor": "0x00D08770",
+            "Main": "0x00D08790",
+            "Init": "0x00D08720",
+            "GetParentScript": "0x00D08710",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CampHostageDoor",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03C98",
+          "addBindingCall": "0x00D03CD7",
+          "factoryStore": "0x00D03CC2",
+          "factory": "0x00D08A70",
+          "vtable": "0x012C90FC",
+          "functions": {
+            "destructor": "0x00D08B20",
+            "Main": "0x00D08B40",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00D08B10",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CampHostageGuard",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03D02",
+          "addBindingCall": "0x00D03D41",
+          "factoryStore": "0x00D03D2C",
+          "factory": "0x00D08E50",
+          "vtable": "0x012C9130",
+          "functions": {
+            "destructor": "0x00D08FF0",
+            "Main": "0x00D09010",
+            "Init": "0x00D08F00",
+            "GetParentScript": "0x00D08EF0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D08FB0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BanditForger",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03D6C",
+          "addBindingCall": "0x00D03DAB",
+          "factoryStore": "0x00D03D96",
+          "factory": "0x00D0C2C0",
+          "vtable": "0x012C9700",
+          "functions": {
+            "destructor": "0x00D0C370",
+            "Main": "0x00D0C410",
+            "Init": "0x00D0C390",
+            "GetParentScript": "0x00D0C360",
+            "OnPersist": "0x00D0EE40",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "BanditKing",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03DD6",
+          "addBindingCall": "0x00D03E15",
+          "factoryStore": "0x00D03E00",
+          "factory": "0x00D0A700",
+          "vtable": "0x012C9474",
+          "functions": {
+            "destructor": "0x00D0A810",
+            "Main": "0x00D0A830",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00D0A7A0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D0A7B0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "CROWDBANDITS",
+          "registrationFunction": "0x00D038E0",
+          "namePush": "0x00D03E40",
+          "addBindingCall": "0x00D03E7F",
+          "factoryStore": "0x00D03E6A",
+          "factory": "0x00D0B2D0",
+          "vtable": "0x012C95F0",
+          "functions": {
+            "destructor": "0x00D0B3C0",
+            "Main": "0x00D0B3E0",
+            "Init": "0x00CDEBB0",
+            "GetParentScript": "0x00D0B370",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00D0B380",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00D035E0",
+        "0x00D12920"
+      ]
+    },
+    {
+      "script": "Q_BanditCampHoldingScript",
+      "allocator": "0x00D12C50",
+      "vtable": "0x012C9E14",
+      "entities": [],
+      "vtableWriters": [
+        "0x00D12980",
+        "0x00D12C50"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00D00AF0",
+      "store": "0x00D00CE2",
+      "body": "0x00D01290",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D00AF0",
+      "store": "0x00D00D5A",
+      "body": "0x00D00FD0",
+      "name": "WatchForCostume",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D00AF0",
+      "store": "0x00D00DD2",
+      "body": "0x00D032F0",
+      "name": "CheckAnyBanditsKilled",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D00AF0",
+      "store": "0x00D00E4A",
+      "body": "0x00D013A0",
+      "name": "WatchForEndOfScript",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D03EE4",
+      "body": "0x00D109F0",
+      "name": "BanditKingMissionProcess",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D03F62",
+      "body": "0x00D04770",
+      "name": "WatchForBanditCampGates",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D03FDF",
+      "body": "0x00D0FE80",
+      "name": "ProcessHostageCutscenes",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D04060",
+      "body": "0x00D04260",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D040E1",
+      "body": "0x00D0EE70",
+      "name": "CheckForFirstAreaMassacre",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D04162",
+      "body": "0x00D0F640",
+      "name": "CheckForSecondAreaMassacre",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D038E0",
+      "store": "0x00D041E3",
+      "body": "0x00D043A0",
+      "name": "CheckForSecondAreaDoorHelp",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00D0D910",
+      "store": "0x00D0E495",
+      "body": "0x00D0EBC0",
+      "name": "OpenGate",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

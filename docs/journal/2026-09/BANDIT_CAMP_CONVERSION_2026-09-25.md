@@ -29,3 +29,27 @@ identical results wherever the old builder succeeded. Previously blocked
 Guild Training (nine scripts), Wasp and Trader Conflict (two scripts) now
 build successfully. Evidence: `work/thread_scope_ab.json`. No existing
 unit evidence was rewritten by this comparison.
+
+## Registered draft
+
+Registered `bandit_camp` and promoted the recovery evidence to
+`refs/script_recovery/bandit_camp`. The typed export explicitly includes
+shared empty OnPersist at 0x00CBD4E0 (132 bodies including this anchor).
+The first tracked draft has 19 owners, 85 converted functions, no missing
+bodies, 81/85 function syntax passes, 15/19 file syntax passes and 180 TODOs.
+All 16 entity bindings and 12 worker bodies are covered by the inventory;
+10 inventory/thread-name tests pass.
+
+Remaining syntax failures are CheckAnyBanditsKilled (nested sequence
+expressions), BCGameMaster Main (a comma expression in a while condition),
+AssassinMarker Main (switch cases cast to CCharString), and BanditKing Main
+(unsigned literals). BanditKing also has unresolved x87 truncation operands
+(`value`/`value_00`) and needs arithmetic/shift semantics reviewed, not just
+syntax repair. Registration remains disabled in the generated package.
+The existing live v16 bundle is unchanged.
+
+Generated readable output retains the four syntax failures. Readable smoke:
+19 files, 8 problems (four load errors, two free-global reports, plus
+Gate1GuardOuter bitwise nil and BanditKingMissionProcess boolean arithmetic).
+Evidence: `work/bandit_camp_readable_smoke.json`. This is a recovery baseline,
+not a playable package.
