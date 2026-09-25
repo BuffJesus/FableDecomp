@@ -37,7 +37,7 @@
     "WaspAttacker"
   ],
   "answer": "no",
-  "done": "quest:IsQuestCompleted('Q_WaspBoss')",
+  "done": "quest:IsQuestCompleted('Q_WaspBoss') and quest:GetMasterGameState('PostSavePosition') == 300 and quest:IsQuestActive('QS_GuardianSisterInfo')",
   "failed": "(not quest:IsQuestActive('Q_WaspBoss')) and not quest:IsQuestCompleted('Q_WaspBoss')",
   "fightNames": [
     "QueenHornet"

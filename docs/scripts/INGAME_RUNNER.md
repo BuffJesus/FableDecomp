@@ -43,6 +43,12 @@ and a failed stage or missing checkpoint stops the chain. Evidence lives in
 `work/runner/<tag>_campaign.json` and each stage's JSONL/screenshots. Game
 logs are archived under `work/ab_runs/` after the process closes.
 
+Travel waits for arrival tutorials to clear and observes two consecutive
+scene-ready checks before the next crossing. A loaded-region flag alone
+does not mean that arrival UI and dialogue have finished. Failed travel
+waits stop the stage. Completion predicates also wait for the next Gameflow
+stage before harvesting a checkpoint.
+
 Quest files define card titles, region crossings, completion predicates,
 and combat targets. `fightDrain: false` preserves real damage throughout
 combat. `fightBounds` restricts eligible targets and teleport landings;

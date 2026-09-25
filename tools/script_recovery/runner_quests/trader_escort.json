@@ -68,7 +68,7 @@
     "DarkwoodRockTroll"
   ],
   "answer": "no",
-  "done": "quest:IsQuestCompleted('Q_TraderEscort')",
+  "done": "quest:IsQuestCompleted('Q_TraderEscort') and quest:GetMasterGameState('PostSavePosition') == 600 and quest:IsQuestActive('QS_GuardianSisterInfo2_SisterInBanditCamp')",
   "failed": "(not quest:IsQuestActive('Q_TraderEscort')) and not quest:IsQuestCompleted('Q_TraderEscort')",
   "partyNames": [
     "DarkwoodTrader",

@@ -124,6 +124,24 @@ def parse_status(s):
     return out
 
 
+def settle_world(scene_ready, *, timeout=180, report=lambda **_: None):
+    """Drain arrival tutorials and observe two clear, unpaused scene checks.
+
+    A loaded region alone is insufficient: another crossing can otherwise
+    arrive while a first-time tutorial is still being queued.
+    """
+    deadline, quiet = time.monotonic() + timeout, 0
+    while time.monotonic() < deadline:
+        cleared = game_input('clear').strip() != '(no box)'
+        ready = scene_ready()
+        quiet = quiet + 1 if ready and not cleared else 0
+        report(cleared=cleared, ready=ready, quiet=quiet)
+        if quiet >= 2:
+            return True
+        time.sleep(2)
+    return False
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('quest', type=Path)
@@ -229,7 +247,10 @@ def play(a, q) -> str:
         for its region (Q_WaspBoss waits on Lookout Point BEFORE it binds anything, then on the Picnic Area)"""
         for hop in (dest if isinstance(dest[0], list) else [dest]):
             slot, x, y, z = hop[:4]
-            wait_for("tostring(not quest:IsInCutscene() and not quest:IsInMovieSequence())", 'true', 120)
+            ready = lambda: ev("tostring(not quest:IsInCutscene() and not quest:IsInMovieSequence())", 6)[0] == 'true'
+            if not settle_world(ready, report=lambda **state: log('travel_ready', **state)):
+                log('travel_not_ready', dest=hop)
+                return False
             send(f"{host}: assert(not quest:IsInCutscene() and not quest:IsInMovieSequence(), 'crossing refused: scene active'); "
                  f"quest:GoToMapSlotRetailTransition({slot}, {x}, {y}, {z})", 30)
             log('crossing', dest=hop)
@@ -239,14 +260,18 @@ def play(a, q) -> str:
                     f"return tostring(math.abs(p.x - {x}) < 40 and math.abs(p.y - {y}) < 40) end)()")
             if not wait_for(near, 'true', 240):
                 log('crossing_not_arrived', dest=hop)
+                return False
             if len(hop) > 4 and not wait_for(f"tostring(quest:IsRegionLoaded('{hop[4]}'))", 'true', 240):
                 log('region_not_loaded', region=hop[4])
+                return False
+        return True
 
     def take_card(s):
         """the real card table: TAB beside a card, find the quest's row by the summary title, Take Quest"""
         card = s['card']
         if not wait_for(f"tostring(#quest:GetAllThingsWithDefName('{card}') > 0)", 'true', 5):
-            travel(s['guild'])
+            if not travel(s['guild']):
+                return False
             if not wait_for(f"tostring(#quest:GetAllThingsWithDefName('{card}') > 0)", 'true', 200):
                 log('card_table_missing', card=card)
                 return False
@@ -335,7 +360,9 @@ def play(a, q) -> str:
         last = (dest[-1] if dest and isinstance(dest[0], list) else dest) or []
         arrived = active == 'true' and len(last) > 4 and ev(f"tostring(quest:IsRegionLoaded('{last[4]}'))", 10)[0] == 'true'
         if dest and not arrived:            # (attached to a game already there: no second crossing)
-            travel(dest)
+            if not travel(dest):
+                log('start_failed', quest=s['quest'], reason='travel failed')
+                return 'failed'
         if s.get('talk') and not talk(s['talk'], s.get('talkLabel', '')):
             log('start_failed', quest=s['quest'], talk=s['talk'])
             return 'failed'

@@ -13,6 +13,6 @@
   "legs": {},
   "enemyNames": [],
   "answer": "no",
-  "done": "quest:IsQuestCompleted('QS_GuardianSisterInfo')",
+  "done": "quest:IsQuestCompleted('QS_GuardianSisterInfo') and quest:GetMasterGameState('PostSavePosition') == 400 and quest:GetStateBool('CoreQuestWaiting')",
   "failed": "(not quest:IsQuestActive('QS_GuardianSisterInfo')) and not quest:IsQuestCompleted('QS_GuardianSisterInfo')"
 }
