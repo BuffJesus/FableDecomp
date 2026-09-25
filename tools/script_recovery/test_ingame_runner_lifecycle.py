@@ -39,7 +39,10 @@ class RunnerLifecycleTests(unittest.TestCase):
     def test_missing_harvest_fails_and_still_restores(self):
         self.check_staged_run(False, fail_harvest=True)
 
-    def check_staged_run(self, fail_launch, fail_harvest=False):
+    def test_archive_failure_still_restores_the_save(self):
+        self.check_staged_run(False, fail_archive=True)
+
+    def check_staged_run(self, fail_launch, fail_harvest=False, fail_archive=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             live = root / 'target' / 'AutoSave'
@@ -55,6 +58,11 @@ class RunnerLifecycleTests(unittest.TestCase):
                 os.utime(live, (500, 500))
                 return root / 'backup'
 
+            def archive(*_):
+                events.append('archive')
+                if fail_archive:
+                    raise OSError('archive failed')
+
             args = ['runner', str(config), '--launch', '--save', 'source', '--harvest', 'result']
             with patch('sys.argv', args), patch.object(runner, 'SAVES', root), \
                     patch.object(runner, 'FRONTEND_PROFILE_DIR', 'target'), \
@@ -63,6 +71,7 @@ class RunnerLifecycleTests(unittest.TestCase):
                     patch.object(runner, 'launch_and_load', side_effect=RuntimeError('load failed') if fail_launch else None), \
                     patch.object(runner, 'play', return_value='done'), \
                     patch.object(runner, 'harvest_save', return_value=not fail_harvest) as harvest, \
+                    patch.object(runner, 'archive_run_log', side_effect=archive), \
                     patch.object(runner, 'restore_save', side_effect=lambda _: events.append('restore')), \
                     patch('subprocess.run', side_effect=lambda *a, **k: events.append('close')), \
                     patch.object(runner.time, 'sleep'):
@@ -70,6 +79,9 @@ class RunnerLifecycleTests(unittest.TestCase):
                     with self.assertRaisesRegex(RuntimeError, 'load failed'):
                         runner.main()
                     harvest.assert_not_called()
+                elif fail_archive:
+                    with self.assertRaisesRegex(OSError, 'archive failed'):
+                        runner.main()
                 elif fail_harvest:
                     with self.assertRaisesRegex(RuntimeError, 'no new autosave'):
                         runner.main()
@@ -78,7 +90,16 @@ class RunnerLifecycleTests(unittest.TestCase):
                         runner.main()
                     self.assertEqual(error.exception.code, 0)
                     harvest.assert_called_once_with('result', 'source', 500)
-            self.assertEqual(events, ['close', 'restore'])
+            self.assertEqual(events, ['close', 'archive', 'restore'])
+
+    def test_log_archive_keeps_the_current_runs_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'live.log'
+            source.write_bytes(b'completed quest\r\n')
+            with patch.object(runner, 'ROOT', root), patch.object(runner, 'log_path', return_value=source):
+                runner.archive_run_log('v16', 'trial')
+            self.assertEqual((root / 'work/runner/trial_FableScriptExtender.log').read_bytes(), source.read_bytes())
 
 
 if __name__ == '__main__':

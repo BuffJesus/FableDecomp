@@ -41,7 +41,9 @@ python tools/script_recovery/run_campaign.py tools/script_recovery/runner_campai
 Use a new tag for each campaign. Existing reports/checkpoints are rejected,
 and a failed stage or missing checkpoint stops the chain. Evidence lives in
 `work/runner/<tag>_campaign.json` and each stage's JSONL/screenshots. Game
-logs are archived under `work/ab_runs/` after the process closes.
+logs are copied synchronously to `work/runner/<tag>_FableScriptExtender.log`
+before the next stage starts. The background launcher's `work/ab_runs/`
+collection is supplementary and can miss a rapid restart.
 
 Travel waits for arrival tutorials to clear and observes two consecutive
 scene-ready checks before the next crossing. A loaded-region flag alone

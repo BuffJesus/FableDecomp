@@ -52,7 +52,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.script_recovery.autopilot import (Channel, game_input, stage_save, restore_save, harvest_save,  # noqa: E402
-                                             launch_and_load, SAVES, FRONTEND_PROFILE_DIR)
+                                             launch_and_load, log_path, SAVES, FRONTEND_PROFILE_DIR)
 from tools.script_recovery.walkgrid import Grid  # noqa: E402
 from tools.script_recovery.ab_playtest import fable_running  # noqa: E402
 
@@ -142,6 +142,16 @@ def settle_world(scene_ready, *, timeout=180, report=lambda **_: None):
     return False
 
 
+def archive_run_log(bundle, tag):
+    import shutil
+    source = log_path(bundle)
+    if source.is_file():
+        destination = ROOT / 'work/runner' / f'{tag}_FableScriptExtender.log'
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+        print(f'archived game log -> {destination}', flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('quest', type=Path)
@@ -176,7 +186,10 @@ def main():
             subprocess.run(['taskkill', '/IM', 'Fable.exe', '/F'], capture_output=True)
             time.sleep(3)
         # restored only now: the game autosaves into the staged-over profile for as long as it plays
-        restore_save(backup)
+        try:
+            archive_run_log(a.bundle, a.tag)
+        finally:
+            restore_save(backup)
     sys.exit(0 if result == 'done' else 1)
 
 
