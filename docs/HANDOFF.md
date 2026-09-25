@@ -1,14 +1,14 @@
-# Lua recovery handoff - 2026-09-24
+# Lua recovery handoff - 2026-09-25
 
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
-Trader Escort (98 native bodies, 14 entity bindings, 4 quest workers) is now PACKAGED and partly
-played: bundle **v15** runs accept -> boast podium -> Darkwood intro -> Quest Start -> follow tutorial ->
-Darkwood2's balverine scene with **0 Lua errors** (2026-09-24 evening). Draft `TODO(native)` lines: 47;
-readable smoke 16 files / 0 problems. Details, route and checkpoints:
-[Trader Escort playtest](journal/2026-09/TRADER_ESCORT_PLAYTEST_2026-09-24.md).
-Next for it: a walking driver (map-slot teleports leave followers behind), then the escort route.
+**Trader Escort is COMPLETE in-game (2026-09-25)**: v15 + the in-game runner played it hands-free from
+`adult_trader_escort_accepted_v15_2026-09-24` to `SetQuestAsCompleted` (all three traders, troll, end trader),
+0 Lua errors, no quest state set by hand. Three converter fixes landed on the way (exporter tag loss, comparison
+flags, merged vector begin/end), each A/B-checked against every other unit. Checkpoint
+`adult_trader_escort_completed_v15_2026-09-25`. Details:
+[2026-09-25](journal/2026-09/TRADER_ESCORT_PLAYTEST_2026-09-25.md), [2026-09-24](journal/2026-09/TRADER_ESCORT_PLAYTEST_2026-09-24.md).
 
 Done 2026-09-24 (see the journal's 2026-09-24 sections): RET-proven callee
 purges, code-pointer call pairing, vector register aliases, parent-worker
@@ -18,22 +18,29 @@ SCRIPT_DEF table corrected (leading block is PDB - 4; the middle zone
 0x258..0xd60 is unproven and stays numeric in readables).
 
 Next, in order:
-1. Trader Escort: fix DarkwoodTrader's post-greeting `resources:PrepareResource(<unresolved handle>)` (converter),
-   rebuild v15, then `sh work/trader_escort/to_post_intro.sh` + `python tools/script_recovery/ingame_runner.py
-   tools/script_recovery/runner_quests/trader_escort.json --bundle v15 --tag <tag>` (hands-free; reached
-   Darkwood4 with all traders in about a minute). Grow the runner into every quest (one JSON each), aiming at a
-   run from New Game. Do NOT hand-drive the game: fix the runner instead.
+1. Grow the runner into every quest (one `runner_quests/<quest>.json` each; Trader Escort's is the model:
+   legs per region, `party` expression, done/failed), aiming at a run from New Game. Replay Trader Escort with
+   `sh work/trader_escort/to_post_intro.sh` + `python tools/script_recovery/ingame_runner.py
+   tools/script_recovery/runner_quests/trader_escort.json --bundle v15 --tag <tag> --minutes 35` (about 10
+   minutes). Do NOT hand-drive the game: fix the runner instead. The launch stages a save into profile 1234234;
+   restore it from that launch's `scratchpad/save_backup_1234234_<timestamp>`, NOT `_orig` (it sorts last).
 2. Re-export the other units with the fixed exporter (9507b0d: thing-vector elements, pushes kept across
-   zero-parameter calls) and with `work/ebp_fix/<unit>_typed.json`, one at a time: regenerate into work/,
+   zero-parameter calls; 3811caa: `push reg` / `lea reg,[reg]` keep a register's thing tag) and with `work/ebp_fix/<unit>_typed.json`, one at a time: regenerate into work/,
    review the diff, then promote. Playtested units (Wasp, Guild, Guardian, Trader Conflict) need extra care.
 3. Pin the SCRIPT_DEF middle zone (a live dump of the CScriptDef object settles it).
-4. Still open: an Orchard boast payout line, Orchard Evil success, the WatchForMissionRules "DarkwoodTrader"
-   name-slot pairing.
+4. Still open: a won boast's payout line (Orchard, and Trader Escort's boast 9), Orchard Evil success, the
+   WatchForMissionRules "DarkwoodTrader" name-slot pairing, and DarkwoodAssassinSpawn's trigger distance
+   (`f_CVar3 = xStack_20` stays TODO: the readable smoke's one free global).
 
 Sidecar-side namespace clearing on host creation is still NOT done: check first whether persisted state is
 loaded into the global map before a host exists.
 
 Change generators and evidence, never generated Lua by hand.
+
+**Reconstruction lane (2026-09-25):** boot-path de-bake, 40 -> 25 asm leaves of 118, `CGame::Play` now genuine,
+full bootstrap green except the WinMain fixture (needs Fable closed). Gates: `python tools/decomp_pipeline/gate_boot_leaves.py`
+and `gate_header_dependents.py`. Next steps are in ROADMAP (c); details in
+[BOOT_DEBAKE_2026-09-25](journal/2026-09/BOOT_DEBAKE_2026-09-25.md).
 
 From the repository root:
 
@@ -44,7 +51,7 @@ python -m tools.script_recovery.smoke_run_unit --unit trader_escort --stage draf
 ```
 
 Read the smoke JSON: the command can exit successfully with reported problems.
-Focused offline tests: **168 passed** (2026-09-24); the base command is in the
+Focused offline tests: **168 passed** (2026-09-24; plus the 2026-09-25 cases in `test_lift_native_lua`, `test_vector_register_aliases`, `test_thing_release_and_flags`); the base command is in the
 conversion journal, plus the `test_callee_purge_pairing`, `test_vector_register_aliases`,
 `test_spawn_capture`, `test_script_def_offsets` and `test_readable_*` modules. Established-unit regeneration checks are recorded there.
 The broad suite was cancelled; no new full-suite pass is claimed.
