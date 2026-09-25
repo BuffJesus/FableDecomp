@@ -23,12 +23,12 @@ function Main(quest, me)
     local commentTimer = quest:GetStateInt("CommentTimer")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue9, scratchValue, scratchValue15, questionAnswer, sequence
-    local sequence3, hero9, scratchValue35, scratchValue37, actorMap, getDataString, getPos
-    local furthest, actorMap2, resource, mkDtbeCutscenetrigger, movie, getCurrentStateGroupType
-    local scratchValue42, resource2, scratchValue43, scriptThing, newResource
+    local scratchValue2, scratchValue5, scratchValue9, scratchValue, questionAnswer, sequence
+    local sequence3, hero9, scratchValue35, scratchValue37, actorMap, actorMap2, getDataString
+    local getPos, furthest, actorMap3, mkDtbeCutscenetrigger, movie, scratchValue45, resource
+    local scriptThing, newResource, resource3
     if not quest:NewScriptFrame(me) then return end
-    local resource3 = resources:NewResource()
+    local resource2 = resources:NewResource()
     while not quest:GetStateBool("IntroFinished") do
         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
         if me:IsTalkedToByHero() and quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
@@ -57,14 +57,14 @@ function Main(quest, me)
                 quest:EntitySetAsScared(me, false)
                 quest:SetTimer(commentTimer, 0)
                 helpers.MakeTraderComment(quest, me, "IN_BARROW_FIELD", me, 0)
-                resources:PrepareResource(resource3)
-                while not resources:TryAcquire(resource3, me, 4) do
+                resources:PrepareResource(resource2)
+                while not resources:TryAcquire(resource2, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
                 if quest:IsActiveThreadTerminating() then break end
                 local tradersStopHere = quest:GetThingWithScriptName("M_TradersStopHere")
                 scratchValue2 = false
-                scratchValue = 0
+                scratchValue9 = 0
                 me:ClearCommands()
                 if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
                     getPos = {x = 0, y = 0, z = 0}
@@ -74,10 +74,10 @@ function Main(quest, me)
                 me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
                 while not quest:IsDistanceBetweenThingsUnder(me, tradersStopHere, 2.0) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                    scratchValue9 = (quest:GetDistanceBetweenThings(me, tradersStopHere) ^ 2) < (quest:GetDistanceBetweenThings(hero, tradersStopHere) ^ 2)
-                    if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or scratchValue9 == 0 then
-                        if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) or scratchValue9 == 0 then
-                            if scratchValue == 0 then scratchValue2 = false; goto continue_1 end
+                    scratchValue5 = (quest:GetDistanceBetweenThings(me, tradersStopHere) ^ 2) < (quest:GetDistanceBetweenThings(hero, tradersStopHere) ^ 2)
+                    if quest:IsDistanceBetweenThingsUnder(me, hero, 9.0) or scratchValue5 == 0 then
+                        if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) or scratchValue5 == 0 then
+                            if scratchValue9 == 0 then scratchValue2 = false; goto continue_1 end
                             me:ClearCommands()
                             if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
                                 getPos = {x = 0, y = 0, z = 0}
@@ -85,8 +85,8 @@ function Main(quest, me)
                                 getPos = tradersStopHere:GetPos()
                             end
                             me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_RUN, false, true)
-                            scratchValue = 0
-                        elseif scratchValue ~= 1 then
+                            scratchValue9 = 0
+                        elseif scratchValue9 ~= 1 then
                             me:ClearCommands()
                             if not (tradersStopHere ~= nil and not tradersStopHere:IsNull()) then
                                 getPos = {x = 0, y = 0, z = 0}
@@ -94,7 +94,7 @@ function Main(quest, me)
                                 getPos = tradersStopHere:GetPos()
                             end
                             me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_WALK, false, true)
-                            scratchValue = 1
+                            scratchValue9 = 1
                         end
                         scratchValue2 = false
                     else
@@ -108,12 +108,12 @@ function Main(quest, me)
                             quest:AddLineToConversation(conversationId, ("TEXT_QST_067_" .. me:GetDataString()) .. "_FOLLOW_ME", me, hero, false)
                             quest:Pause(1.0)
                             scratchValue2 = true
-                            scratchValue = 2
+                            scratchValue9 = 2
                         end
                     end
                     ::continue_1::
                 end
-                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
                 hero9 = hero
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 helpers.MakeTraderComment(quest, me, "THANKS_10", me, 0)
@@ -127,8 +127,8 @@ function Main(quest, me)
                 quest:SetEntityAsRegionFollowing(hero, me, false)
                 quest:EntitySetAsScared(me, false)
                 quest:ModifyThingHealth(me, 30.0 - quest:GetHealth(me), false)
-                resources:PrepareResource(resource3)
-                scratchValue2 = resources:TryAcquire(resource3, me, 4)
+                resources:PrepareResource(resource2)
+                scratchValue2 = resources:TryAcquire(resource2, me, 4)
                 goto LAB_00e09fd9
             end
             if quest:GetStateBool("TradersShouldBeScared") then
@@ -137,18 +137,18 @@ function Main(quest, me)
                 quest:EntityStopFollowing(me)
                 quest:SetEntityAsRegionFollowing(hero, me, false)
                 quest:EntitySetAsScared(me, true)
-                resources:PrepareResource(resource3)
-                while not resources:TryAcquire(resource3, me, 4) do
+                resources:PrepareResource(resource2)
+                while not resources:TryAcquire(resource2, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
-                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
                 if not (runOffPos ~= nil and not runOffPos:IsNull()) then
                     getPos = {x = 0, y = 0, z = 0}
                 else
                     getPos = runOffPos:GetPos()
                 end
                 newResource = {x = getPos.x, y = getPos.y, z = getPos.z}
-                local scratchValue34 = resources:ScriptThing(resource3)
+                local scratchValue34 = resources:ScriptThing(resource2)
                 if scratchValue34 ~= nil and scratchValue34:IsDistanceFromPositionOver(newResource, 3.0) then
                     repeat
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
@@ -157,14 +157,14 @@ function Main(quest, me)
                             if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                        scratchValue35 = resources:ScriptThing(resource3)
+                        scratchValue35 = resources:ScriptThing(resource2)
                     until not (scratchValue35 ~= nil and scratchValue35:IsDistanceFromPositionOver(newResource, 3.0))
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
                 while quest:GetStateBool("TradersShouldBeScared") do
                     if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                 end
-                resources:PrepareResource(resource3)
+                resources:PrepareResource(resource2)
                 quest:EntityFollowThing(me, hero, 3.0, true)
                 quest:SetEntityAsRegionFollowing(hero, me, true)
                 while not quest:IsDistanceBetweenThingsUnder(me, hero, 20.0) do
@@ -214,37 +214,36 @@ function Main(quest, me)
             if scratchValue2 then
                 if quest:IsActiveThreadTerminating() then break end
                 hero9 = hero
-                local darkwoodTrader = quest:GetNearestWithScriptName(hero, "DarkwoodTrader")
-                quest:SetStateString("TraderToTalk", darkwoodTrader:GetDataString())
-                actorMap2 = quest:GetThingWithScriptName("TE_CampTrader_A")
-                if actorMap2 ~= nil and actorMap2:IsAlive() then
+                quest:SetStateString("TraderToTalk", quest:GetNearestWithScriptName(hero, "DarkwoodTrader"):GetDataString())
+                actorMap3 = quest:GetThingWithScriptName("TE_CampTrader_A")
+                if actorMap3 ~= nil and actorMap3:IsAlive() then
                     quest:EntityStopFollowing(me)
                     quest:SetEntityAsRegionFollowing(hero, me, false)
-                    resources:PrepareResource(resource3)
-                    while not resources:TryAcquire(resource3, me, 4) do
+                    resources:PrepareResource(resource2)
+                    while not resources:TryAcquire(resource2, me, 4) do
                         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                    if not (actorMap2 ~= nil and not actorMap2:IsNull()) then
+                    if not (actorMap3 ~= nil and not actorMap3:IsNull()) then
                         getPos = {x = 0, y = 0, z = 0}
                     else
-                        getPos = actorMap2:GetPos()
+                        getPos = actorMap3:GetPos()
                     end
-                    resource2 = {x = getPos.x, y = getPos.y, z = getPos.z}
-                    local scratchValue36 = resources:ScriptThing(resource3)
-                    if scratchValue36 ~= nil and scratchValue36:IsDistanceFromPositionOver(resource2, 5.0) then
+                    resource = {x = getPos.x, y = getPos.y, z = getPos.z}
+                    local scratchValue36 = resources:ScriptThing(resource2)
+                    if scratchValue36 ~= nil and scratchValue36:IsDistanceFromPositionOver(resource, 5.0) then
                         repeat
                             if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
-                            me:MoveToPosition(resource2, 3.0, ENTITY_MOVE_WALK, false, true)
+                            me:MoveToPosition(resource, 3.0, ENTITY_MOVE_WALK, false, true)
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                            scratchValue37 = resources:ScriptThing(resource3)
-                        until not (scratchValue37 ~= nil and scratchValue37:IsDistanceFromPositionOver(resource2, 5.0))
+                            scratchValue37 = resources:ScriptThing(resource2)
+                        until not (scratchValue37 ~= nil and scratchValue37:IsDistanceFromPositionOver(resource, 5.0))
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
-                    resource = quest:CreateEffectAtPos("", me:GetPos(), 0.0, false, false)
+                    local scratchValue44 = quest:CreateEffectAtPos("HEAL_LEVEL2", me:GetPos(), 0.0, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
                     if me:GetDataString() ~= quest:GetStateString("TraderToTalk") then
                         if not quest:IsActiveThreadTerminating() then
@@ -256,15 +255,15 @@ function Main(quest, me)
                         end
                     elseif not quest:IsActiveThreadTerminating() then
                         local conversationId3 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(conversationId3, actorMap2)
-                        local scratchValue38 = actorMap2
-                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_10", me, resource, true)
-                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_RESPONSE", actorMap2, darkwoodTrader, true)
-                        -- TODO(native): uVar19 = SUB41(&xStack_158,0)
-                        scratchValue42 = nil --[[unresolved native value]]
-                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_20", me, scratchValue38)
+                        quest:AddPersonToConversation(conversationId3, actorMap3)
+                        local scratchValue38 = actorMap3
+                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_10", me, scratchValue38, false)
+                        local scratchValue39 = actorMap3
+                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_RESPONSE", scratchValue39, me, false)
+                        local scratchValue40 = actorMap3
+                        quest:AddLineToConversation(conversationId3, ("TEXT_QST_067_" .. me:GetDataString()) .. "_GREET_ALLY_20", me, scratchValue40, false)
                         quest:Pause(2.0)
-                        quest:RemoveThing(resource, false, true)
+                        quest:RemoveThing(scratchValue44, false, true)
                         while quest:IsConversationActive(conversationId3) do
                             if not quest:NewScriptFrame(me) then goto LAB_00e0a380 end
                         end
@@ -273,18 +272,18 @@ function Main(quest, me)
                     goto FLOW_past_lab_00e09493
                     ::LAB_00e09493::
                     greetedBuddy = true
-                    if resource ~= nil and resource:IsAlive() then
+                    if scratchValue44 ~= nil and scratchValue44:IsAlive() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e0a380 end
-                        quest:RemoveThing(resource, false, true)
+                        quest:RemoveThing(scratchValue44, false, true)
                     end
-                    resources:PrepareResource(scratchValue43)
+                    resources:PrepareResource(resource2)
                     hero9 = hero
                     quest:EntityFollowThing(me, hero, 3.0, true)
                     quest:SetEntityAsRegionFollowing(hero, me, true)
                     goto LAB_00e09511
                     ::FLOW_past_lab_00e09493::
                     ::LAB_00e0a380::
-                    resources:ReleaseResource(resource3)
+                    resources:ReleaseResource(resource2)
                     return
                 end
                 ::LAB_00e09511::
@@ -311,7 +310,7 @@ function Main(quest, me)
             if quest:GetTimer(incubationTime) == 0 then
                 if not quest:IsActiveThreadTerminating() then
                     quest:SetStateInt("TradersStillAliveCounter", quest:GetStateInt("TradersStillAliveCounter") - 1)
-                    resources:PrepareResource(resource3)
+                    resources:PrepareResource(resource2)
                     quest:CreateThread("TurnToBalv", {args = {me}})  -- native parent-quest worker TurnToBalv, the entity's own thing captured
                     repeat
                         quest:NewScriptFrame(me)
@@ -321,7 +320,7 @@ function Main(quest, me)
             end
             sequence = quest:GetTimer(incubationTime) < quest:GetStateInt("IncubationTimeHigh")
             if sequence then
-                getCurrentStateGroupType = 4
+                scratchValue45 = 4
                 sequence = infected < 4
             end
             if sequence then
@@ -331,7 +330,7 @@ function Main(quest, me)
             else
                 sequence3 = quest:GetTimer(incubationTime) < quest:GetStateInt("IncubationTimeMedium")
                 if sequence3 then
-                    getCurrentStateGroupType = 3
+                    scratchValue45 = 3
                     sequence3 = infected < 3
                 end
                 if sequence3 then
@@ -350,21 +349,24 @@ function Main(quest, me)
             ::LAB_00e096c7::
             if scratchValue2 ~= false then
                 if quest:IsActiveThreadTerminating() then break end
-                infected = getCurrentStateGroupType
+                infected = scratchValue45
             end
             ::FLOW_past_lab_00e096c7::
-            if me:MsgIsHitBy("") then goto LAB_00e09848 end
-            if me:MsgIsHitByAnySpecialAbilityFrom("") then goto LAB_00e09848 end
-            goto LAB_00e09886
-            goto FLOW_past_lab_00e09886
-            ::LAB_00e09886::
-            scratchValue2 = false
-            ::FLOW_past_lab_00e09886::
+            if me:MsgIsHitBy("") then
+                goto LAB_00e09848
+            else
+                if me:MsgIsHitByAnySpecialAbilityFrom("") then goto LAB_00e09848 end
+                goto LAB_00e09886
+            end
             goto FLOW_past_lab_00e09848
             ::LAB_00e09848::
             scratchValue2 = true
             if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e09886 end
             ::FLOW_past_lab_00e09848::
+            goto FLOW_past_lab_00e09886
+            ::LAB_00e09886::
+            scratchValue2 = false
+            ::FLOW_past_lab_00e09886::
             if scratchValue2 then
                 if quest:IsActiveThreadTerminating() then break end
                 quest:SetTimer(regulateFollowStateComment, 5)
@@ -384,7 +386,7 @@ function Main(quest, me)
                 if scratchValue2 then
                     if quest:IsActiveThreadTerminating() then break end
                     helpers.MakeTraderComment(quest, me, "UNDER_ATTACK", me, 0)
-                    scratchValue15 = 3
+                    scratchValue = 3
                 else
                     if quest:GetHealth(me) <= 5.0 then
                         goto LAB_00e09b4f
@@ -403,44 +405,44 @@ function Main(quest, me)
                     if not scratchValue2 then goto LAB_00e09c13 end
                     if quest:IsActiveThreadTerminating() then break end
                     helpers.MakeTraderComment(quest, me, "HERO_HIT_ME", me, 0)
-                    scratchValue15 = 2
+                    scratchValue = 2
                 end
-                quest:SetTimer(commentTimer, scratchValue15)
+                quest:SetTimer(commentTimer, scratchValue)
             end
             ::LAB_00e09c13::
             if currentAIState == previousAIState then
                 if quest:GetTimer(regulateBanterComment) == 0 and not leadToCamp then
                     if quest:IsActiveThreadTerminating() then break end
                     if quest:GetStateInt("TradersStillAliveCounter") == 1 then
-                        scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER_SOLO", me, 0)
+                        scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER_SOLO", me, 0)
                     else
                         local switch1 = quest:GetStateInt("TimesBantered")
                         repeat
                             if switch1 == 0 then
-                                scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER_FIRST", me, 1)
+                                scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER_FIRST", me, 1)
                                 break
                             elseif switch1 == 1 then
-                                scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER_SECOND", me, 1)
+                                scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER_SECOND", me, 1)
                                 break
                             elseif switch1 == 2 then
-                                scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER_THIRD", me, 1)
+                                scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER_THIRD", me, 1)
                                 break
                             elseif switch1 == 3 then
-                                scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER_FOURTH", me, 1)
+                                scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER_FOURTH", me, 1)
                                 break
                             else
-                                scratchValue9 = helpers.MakeTraderComment(quest, me, "BANTER", me, 0)
+                                scratchValue5 = helpers.MakeTraderComment(quest, me, "BANTER", me, 0)
                             end
                         until true
                     end
-                    if not scratchValue9 then
+                    if not scratchValue5 then
                         if quest:IsActiveThreadTerminating() then break end
-                        local scratchValue16 = math.random(0, 32767)
-                        quest:SetTimer(regulateBanterComment, scratchValue16 % 15 + 25)
+                        local scratchValue13 = math.random(0, 32767)
+                        quest:SetTimer(regulateBanterComment, scratchValue13 % 15 + 25)
                     else
                         if quest:IsActiveThreadTerminating() then break end
-                        local scratchValue17 = math.random(0, 32767)
-                        quest:SetTimer(regulateBanterComment, scratchValue17 % 20 + 30)
+                        local scratchValue14 = math.random(0, 32767)
+                        quest:SetTimer(regulateBanterComment, scratchValue14 % 20 + 30)
                         quest:SetStateInt("TimesBantered", quest:GetStateInt("TimesBantered") + 1)
                     end
                 end
@@ -452,20 +454,19 @@ function Main(quest, me)
                 end
             end
             previousAIState = currentAIState
-            getCurrentStateGroupType = me:GetCurrentStateGroupType()
-            currentAIState = getCurrentStateGroupType
+            currentAIState = me:GetCurrentStateGroupType()
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
-                resources:ReleaseResource(resource3)
+                resources:ReleaseResource(resource2)
                 do return end
             end
         until false
     end
-    resources:ReleaseResource(resource3)
+    resources:ReleaseResource(resource2)
     do return end
     ::FLOW_past_lab_00e083cd::
-    resources:PrepareResource(resource3)
-    while not resources:TryAcquire(resource3, me, 4) do
+    resources:PrepareResource(resource2)
+    while not resources:TryAcquire(resource2, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00e08601 end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e08601 end
@@ -489,18 +490,18 @@ function Main(quest, me)
             else
                 getPos = movie:GetPos()
             end
-            actorMap2 = {x = getPos.x, y = getPos.y, z = getPos.z}
-            local scratchValue39 = resources:ScriptThing(resource3)
-            scratchValue9 = scratchValue39 ~= nil and scratchValue39:IsDistanceFromPositionOver(actorMap2, 2.0)
-            while scratchValue9 do
+            actorMap3 = {x = getPos.x, y = getPos.y, z = getPos.z}
+            local scratchValue41 = resources:ScriptThing(resource2)
+            scratchValue5 = scratchValue41 ~= nil and scratchValue41:IsDistanceFromPositionOver(actorMap3, 2.0)
+            while scratchValue5 do
                 if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
-                me:MoveToPosition(actorMap2, 0, ENTITY_MOVE_RUN, false, true)
+                me:MoveToPosition(actorMap3, 0, ENTITY_MOVE_RUN, false, true)
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then goto LAB_00e085f8 end
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e085f8 end
-                local scratchValue40 = resources:ScriptThing(resource3)
-                scratchValue9 = scratchValue40 ~= nil and scratchValue40:IsDistanceFromPositionOver(actorMap2, 2.0)
+                local scratchValue42 = resources:ScriptThing(resource2)
+                scratchValue5 = scratchValue42 ~= nil and scratchValue42:IsDistanceFromPositionOver(actorMap3, 2.0)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00e085f8 end
             quest:FadeOutAndKillEntity(me, true, 2.0, true)
@@ -508,43 +509,38 @@ function Main(quest, me)
     end
     scratchValue2 = quest:IsActiveThreadTerminating()
     if not scratchValue2 then
-        scratchValue9 = scratchValue2
-        if not me:IsDead() and 0.0 < quest:GetHealth(me) then
+        scratchValue5 = scratchValue2
+        if me:IsDead() or quest:GetHealth(me) <= 0.0 then
+            while true do
+                if quest:IsActiveThreadTerminating() then break end
+                quest:NewScriptFrame(me)
+            end
+        else
             movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local darkwoodTrader2 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
+            local darkwoodTrader = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
             furthest = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
             newResource = resources:NewResource()
-            resource2 = resources:NewResource()
             resource = resources:NewResource()
+            resource3 = resources:NewResource()
             resources:PrepareResource(newResource)
             hero9 = hero
             while not resources:TryAcquire(newResource, hero9, 4) do
-                quest:NewScriptFrame(me)
-                if not quest:IsActiveThreadTerminating() then
-                    hero9 = hero
-                else
-                    resources:ReleaseResource(resource)
-                    resources:ReleaseResource(resource2)
-                    resources:ReleaseResource(newResource)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    goto LAB_00e085f8
-                    hero9 = hero
-                end
+                if not quest:NewScriptFrame(me) then goto LAB_00e07db9 end
+                hero9 = hero
             end
             if not quest:IsActiveThreadTerminating() then
-                if darkwoodTrader2 ~= nil and darkwoodTrader2:IsEqualTo(furthest._4_4_) then
+                if darkwoodTrader ~= nil and darkwoodTrader:IsEqualTo(furthest._4_4_) then
                     if quest:IsActiveThreadTerminating() then
+                        resources:ReleaseResource(resource3)
                         resources:ReleaseResource(resource)
-                        resources:ReleaseResource(resource2)
                         resources:ReleaseResource(newResource)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         goto LAB_00e085f8
                     end
                 end
-                if darkwoodTrader2:GetDataString() == "SCARED" then
+                if darkwoodTrader:GetDataString() == "SCARED" then
                     goto LAB_00e07cac
                 else
                     scratchValue2 = true
@@ -560,75 +556,53 @@ function Main(quest, me)
                     furthest = scriptThing
                 end
                 quest:FixMovieSequenceCamera(true)
-                actorMap2 = resources:NewActorMap()
-                resources:SetActor(actorMap2, "HERO", newResource)
-                resources:SetActor(actorMap2, "TRADERI", resource3)
-                if not (darkwoodTrader2 ~= nil and darkwoodTrader2:IsAlive()) then
+                actorMap3 = resources:NewActorMap()
+                resources:SetActor(actorMap3, "HERO", newResource)
+                resources:SetActor(actorMap3, "TRADERI", resource2)
+                if not (darkwoodTrader ~= nil and darkwoodTrader:IsAlive()) then
                     goto LAB_00e081e9
                 elseif not quest:IsActiveThreadTerminating() then
                     if furthest ~= nil and furthest:IsAlive() then
                         if not quest:IsActiveThreadTerminating() then
-                            resources:PrepareResource(resource2)
-                            while not resources:TryAcquire(resource2, darkwoodTrader2, 4) do
+                            resources:PrepareResource(resource)
+                            while not resources:TryAcquire(resource, darkwoodTrader, 4) do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e07e30 end
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e07db0 end
-                            resources:PrepareResource(resource)
-                            while not resources:TryAcquire(resource, furthest, 4) do
+                            resources:PrepareResource(resource3)
+                            while not resources:TryAcquire(resource3, furthest, 4) do
                                 if not quest:NewScriptFrame(me) then goto LAB_00e07db0 end
                             end
                             if not quest:IsActiveThreadTerminating() then
-                                resources:SetActor(actorMap2, "TRADERS", resource2)
-                                resources:SetActor(actorMap2, "TRADERN", resource)
+                                resources:SetActor(actorMap3, "TRADERS", resource)
+                                resources:SetActor(actorMap3, "TRADERN", resource3)
                                 actorMap = "CS_DARKWOOD_TRADER_INFECTED_BOTH"
                                 goto LAB_00e081c2
                             end
                         end
                         ::LAB_00e07e30::
-                        resources:DestroyActorMap(actorMap2)
-                        resources:ReleaseResource(resource)
-                        resources:ReleaseResource(resource2)
-                        resources:ReleaseResource(newResource)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
-                        goto LAB_00e085f8
+                        resources:DestroyActorMap(actorMap3)
+                        goto LAB_00e07db9
                     end
-                    getDataString = darkwoodTrader2:GetDataString()
+                    getDataString = darkwoodTrader:GetDataString()
                     if not (getDataString ~= nil and getDataString == "SCARED") then
-                        if quest:IsActiveThreadTerminating() then
-                            resources:DestroyActorMap(actorMap2)
-                            resources:ReleaseResource(resource)
-                            resources:ReleaseResource(resource2)
-                            resources:ReleaseResource(newResource)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            goto LAB_00e085f8
-                        end
-                        resources:PrepareResource(resource)
-                        while not resources:TryAcquire(resource, darkwoodTrader2, 4) do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                resources:DestroyActorMap(actorMap2)
-                                resources:ReleaseResource(resource)
-                                resources:ReleaseResource(resource2)
-                                resources:ReleaseResource(newResource)
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie)
-                                goto LAB_00e085f8
-                            end
+                        if quest:IsActiveThreadTerminating() then resources:DestroyActorMap(actorMap3); goto LAB_00e07db9 end
+                        resources:PrepareResource(resource3)
+                        while not resources:TryAcquire(resource3, darkwoodTrader, 4) do
+                            if not quest:NewScriptFrame(me) then resources:DestroyActorMap(actorMap3); goto LAB_00e07db9 end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:SetActor(actorMap2, "TRADERN", resource)
+                            resources:SetActor(actorMap3, "TRADERN", resource3)
                             actorMap = "CS_DARKWOOD_TRADER_INFECTED_NORMAL"
                             goto LAB_00e081c2
                         end
                     elseif not quest:IsActiveThreadTerminating() then
-                        resources:PrepareResource(resource2)
-                        while not resources:TryAcquire(resource2, darkwoodTrader2, 4) do
+                        resources:PrepareResource(resource)
+                        while not resources:TryAcquire(resource, darkwoodTrader, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00e07db0 end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:SetActor(actorMap2, "TRADERS", resource2)
+                            resources:SetActor(actorMap3, "TRADERS", resource)
                             actorMap = "CS_DARKWOOD_TRADER_INFECTED_SCARED"
                             goto LAB_00e081c2
                         end
@@ -636,16 +610,11 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00e081c2
                     ::LAB_00e081c2::
-                    resources:RunMacro(actorMap, actorMap2, false, true)
+                    resources:RunMacro(actorMap, actorMap3, false, true)
                     goto LAB_00e081e9
                     ::FLOW_hoist_lab_00e081c2_1::
-                    resources:DestroyActorMap(actorMap2)
-                    resources:ReleaseResource(resource)
-                    resources:ReleaseResource(resource2)
-                    resources:ReleaseResource(newResource)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie)
-                    goto LAB_00e085f8
+                    resources:DestroyActorMap(actorMap3)
+                    goto LAB_00e07db9
                     ::FLOW_past_lab_00e081c2::
                 end
                 goto FLOW_past_lab_00e081e9
@@ -657,13 +626,8 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     else
-                        resources:DestroyActorMap(actorMap2)
-                        resources:ReleaseResource(resource)
-                        resources:ReleaseResource(resource2)
-                        resources:ReleaseResource(newResource)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
-                        goto LAB_00e085f8
+                        resources:DestroyActorMap(actorMap3)
+                        goto LAB_00e07db9
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                 end
@@ -671,35 +635,30 @@ function Main(quest, me)
                     scratchValue2 = quest:IsActiveThreadTerminating()
                     if questionAnswer == 1 then
                         if scratchValue2 then
-                            resources:DestroyActorMap(actorMap2)
-                            resources:ReleaseResource(resource)
-                            resources:ReleaseResource(resource2)
-                            resources:ReleaseResource(newResource)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie)
-                            goto LAB_00e085f8
+                            resources:DestroyActorMap(actorMap3)
+                            goto LAB_00e07db9
                         end
-                        scratchValue9 = 1
-                        actorMap = "CS_DARKWOOD_TRADER_INFECTED_JOINS"
+                        scratchValue5 = 1
+                        actorMap2 = "CS_DARKWOOD_TRADER_INFECTED_JOINS"
                     else
                         if scratchValue2 then goto LAB_00e07db0 end
-                        actorMap = "CS_DARKWOOD_TRADER_INFECTED_LEAVES"
+                        actorMap2 = "CS_DARKWOOD_TRADER_INFECTED_LEAVES"
                     end
-                    resources:RunMacro(actorMap, actorMap2, false, true)
+                    resources:RunMacro(actorMap2, actorMap3, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    resources:DestroyActorMap(actorMap2)
+                    resources:DestroyActorMap(actorMap3)
+                    resources:ReleaseResource(resource3)
                     resources:ReleaseResource(resource)
-                    resources:ReleaseResource(resource2)
                     resources:ReleaseResource(newResource)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    if scratchValue9 == 0 then
+                    if scratchValue5 == 0 then
                         if not quest:IsActiveThreadTerminating() then
                             quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.TraderEscortLeaveTraderMorality))
                             quest:RemoveThing(me, false, true)
                         end
                     elseif not quest:IsActiveThreadTerminating() then
-                        resources:PrepareResource(resource3)
+                        resources:PrepareResource(resource2)
                         quest:ClearThingHasInformation(me)
                         goto LAB_00e083cd
                     end
@@ -707,52 +666,47 @@ function Main(quest, me)
                 end
                 ::FLOW_past_lab_00e081e9::
                 ::LAB_00e07db0::
-                resources:DestroyActorMap(actorMap2)
+                resources:DestroyActorMap(actorMap3)
             end
             ::LAB_00e07db9::
+            resources:ReleaseResource(resource3)
             resources:ReleaseResource(resource)
-            resources:ReleaseResource(resource2)
             resources:ReleaseResource(newResource)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
-        else
-            while true do
-                if quest:IsActiveThreadTerminating() then break end
-                quest:NewScriptFrame(me)
-            end
         end
     end
     ::LAB_00e085f8::
     ::LAB_00e08601::
-    resources:ReleaseResource(resource3)
+    resources:ReleaseResource(resource2)
     do return end
     ::LAB_00e09fd9::
     if not scratchValue2 then
         if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
-        scratchValue2 = resources:TryAcquire(resource3, me, 4)
+        scratchValue2 = resources:TryAcquire(resource2, me, 4)
         goto LAB_00e09fd9
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
-    while quest:IsDistanceBetweenThingsOver(me, actorMap2, 7.0) do
+    while quest:IsDistanceBetweenThingsOver(me, actorMap3, 7.0) do
         if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
         if not me:IsPerformingScriptTask() then
             me:MoveToThing(hero9, 4.0, ENTITY_MOVE_WALK)
         end
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
-    resources:PrepareResource(resource3)
+    resources:PrepareResource(resource2)
     if quest:IsActiveThreadTerminating() then goto LAB_00e0a346 end
     repeat
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then break end
-            resources:PrepareResource(resource3)
-            while not resources:TryAcquire(resource3, me, 4) do
+            resources:PrepareResource(resource2)
+            while not resources:TryAcquire(resource2, me, 4) do
                 if not quest:NewScriptFrame(me) then goto LAB_00e0a346 end
             end
             if quest:IsActiveThreadTerminating() then break end
-            resources:StartMovie("")
+            resource3 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local fret_03 = quest:GetHealth(resources:ScriptThing(resource3))
+            local fret_03 = quest:GetHealth(resources:ScriptThing(resource2))
             if 0.0 < fret_03 then
                 me:Speak(hero, ("TEXT_QST_067_" .. me:GetDataString()) .. "_THANKS", 0, false, true, false)
                 while me:IsPerformingScriptTask() do
@@ -761,22 +715,22 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e0a33a end
                 goto FLOW_past_lab_00e0a33a
                 ::LAB_00e0a33a::
-                resources:ReleaseResource(newResource)
+                resources:DestroyMovie(resource3)
                 break
                 ::FLOW_past_lab_00e0a33a::
             end
             quest:PauseAllNonScriptedEntities(false)
-            resources:ReleaseResource(newResource)
-            resources:PrepareResource("TEXT_QST_067_INFECTED_ASK_TO_FOLLOW")
+            resources:DestroyMovie(resource3)
+            resources:PrepareResource(resource2)
         end
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource("TEXT_QST_067_INFECTED_ASK_TO_FOLLOW")
+            resources:ReleaseResource(resource2)
             do return end
         end
     until false
     ::LAB_00e0a346::
-    resources:ReleaseResource(resource3)
+    resources:ReleaseResource(resource2)
 end
 
 -- DarkwoodTrader.Init (retail 0x00e04bd0)

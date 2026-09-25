@@ -372,7 +372,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             String mn = i.getMnemonicString().toUpperCase();
             int n = i.getNumOperands();
             if (traceFn != null && f.getEntryPoint().getOffset() == traceFn)   // EXPORT_TRACE_FN=0x00E01900: depth per instruction
-                println("TRACE " + (depthAt == null ? "p1 " : "p2 ") + i.getAddress() + " depth=" + espDelta + (depthAt != null && depthAt.containsKey(i.getAddress().getOffset()) ? " flow=" + depthAt.get(i.getAddress().getOffset()) : "") + " " + i);
+                println("TRACE " + (depthAt == null ? "p1 " : "p2 ") + i.getAddress() + " depth=" + espDelta + (depthAt != null && depthAt.containsKey(i.getAddress().getOffset()) ? " flow=" + depthAt.get(i.getAddress().getOffset()) : "") + " " + i + (System.getenv("EXPORT_TRACE_TAGS") != null ? " tags=" + tags : ""));
             if (depthAt != null) {
                 Long flow = depthAt.get(i.getAddress().getOffset());
                 if (flow != null && flow != espDelta) { espDelta = flow; if (!pushing) { argStart = -1; } }
@@ -480,6 +480,9 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                         // a vtable fetched through an untagged pointer loaded from an object member: the Data
                         // pointer of a CScriptThing (same slot layout); only the large thing-only slot numbers
                         else if (MEMPTRVT.equals(tag) && disp >= 0x40 && thingDefs.containsKey(key)) { def = thingDefs.get(key); dataSites++; }
+                        if (def == null && traceFn != null && f.getEntryPoint().getOffset() == traceFn)
+                            println("UNRESOLVED " + i.getAddress() + " base=" + base + " tag=" + tag + " slot=" + key
+                                + " tags=" + tags);
                         if (def != null && byValuePending > 0) {
                             FunctionDefinitionDataType bv = withByValueThings(def, byValuePending);
                             if (bv != null) { def = bv; byValueSites++; }
@@ -557,6 +560,14 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 if (sName == null) for (Object o : src) if (o instanceof Register) { sName = ((Register) o).getName(); break; }   // operand objects are not always base-first
                 long disp = 0; boolean hasDisp = false;
                 for (Object o : src) if (o instanceof Scalar) { disp = ((Scalar) o).getSignedValue(); hasDisp = true; }
+                // `lea ebx,[ebx]` (a 6-byte NOP the compiler pads loop heads with) changes nothing: treated as a new
+                // value it erased EBX's thing tag in DarkwoodTrader Main (0x00E076CA) and every later
+                // `call [vt+0xc]` on the trader took the push fallback (16 bytes of drift by the camp-trader greeting)
+                if (mn.equals("LEA") && dstReg && d != null && d.equals(sName) && disp == 0) {
+                    int nregs = 0;
+                    for (Object o : src) if (o instanceof Register) nregs++;
+                    if (nregs == 1) continue;
+                }
                 if (dstReg && d != null) {
                     written.add(d);
                     String tag = null;
@@ -623,7 +634,11 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             }
             for (int k = 0; k < n; k++) {
                 if (isRegOperand(i, k) && k == 0
-                        && !mn.equals("CMP") && !mn.equals("TEST")) {
+                        && !mn.equals("CMP") && !mn.equals("TEST")
+                        // a PUSH only reads its register: treated as a write it erased `lea ebx,[this+8]`'s thing tag
+                        // at DarkwoodTrader Main's first `push ebx`, and every `call [vt+0xc]` (GetDataString) on the
+                        // trader after it took the push fallback -- 16 bytes of drift by the camp-trader greeting
+                        && !mn.equals("PUSH")) {
                     Object[] ops = i.getOpObjects(k);
                     if (ops.length >= 1 && regName(ops[0]) != null) { tags.remove(regName(ops[0])); regStack.remove(regName(ops[0])); regValue.remove(regName(ops[0])); written.add(regName(ops[0])); }
                 }

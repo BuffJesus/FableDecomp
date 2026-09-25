@@ -1447,15 +1447,19 @@ def fold_name_compare(text):
     return text
 
 
+# (two spellings: the untyped one -- `(undefined4 *)` reps, `b[1] == a.y` -- and the one the typed export prints once
+# GetDataString is a typed thing call -- CCharString reps, `(CCharString)0x0`, `*(int *)((int)b + 4)`, `*(void **)b`)
+_NULL = r'(?:\(undefined4 \*\)|\(CCharString\))0x0'
 RE_INLINE_STRING_EQUALITY = re.compile(
-    r'^(?P<ind>[ \t]*)(?P<p>\w+) = \(int \*\)(?P<call>[^;\n]+);[ \t]*\r?\n'
-    r'[ \t]*(?P<a>\w+) = \(undefined4 \*\)\*(?P=p);[ \t]*\r?\n'
+    r'^(?P<ind>[ \t]*)(?P<p>\w+) = (?:\(int \*\))?(?P<call>[^;\n]+);[ \t]*\r?\n'
+    r'[ \t]*(?P<a>\w+) = (?:\(undefined4 \*\))?\*(?P=p);[ \t]*\r?\n'
     r'[ \t]*(?P<b>\w+) = (?P<other>[^;\n]+);[ \t]*\r?\n'
     r'[ \t]*if \((?P=b) == (?P=a)\) \{[ \t]*\r?\n[ \t]*(?P<c>\w+) = \'\\x01\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
-    r'[ \t]*else if \(\((?P=b) == \(undefined4 \*\)0x0\) \|\| \((?P=a) == \(undefined4 \*\)0x0\)\) \{[ \t]*\r?\n'
+    r'[ \t]*else if \(\((?P=b) == ' + _NULL + r'\) \|\| \((?P=a) == ' + _NULL + r'\)\) \{[ \t]*\r?\n'
     r'[ \t]*(?P=c) = \'\\0\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
-    r'[ \t]*else if \((?P=b)\[1\] == (?P=a)(?:\.y|\[1\])\) \{[ \t]*\r?\n'
-    r'[ \t]*(?P<cmp>\w+) = CBasicString<char>::Compare\(\(void \*\)\*(?P=b),\(void \*\)(?:\*(?P=a)|(?P=a)\.x)\);[ \t]*\r?\n'
+    r'[ \t]*else if \((?:(?P=b)\[1\] == (?P=a)(?:\.y|\[1\])|\*\(int \*\)\(\(int\)(?P=b) \+ 4\) == \*\(int \*\)\(\(int\)(?P=a) \+ 4\))\) \{[ \t]*\r?\n'
+    r'[ \t]*(?P<cmp>\w+) = CBasicString<char>::Compare\((?:\(void \*\)\*(?P=b)|\*\(void \*\*\)(?P=b)),'
+    r'(?:\(void \*\)(?:\*(?P=a)|(?P=a)\.x)|\*\(void \*\*\)(?P=a))\);[ \t]*\r?\n'
     r'[ \t]*(?P=c) = [^;\n]*(?P=cmp)[^;\n]*;[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
     r'[ \t]*else \{[ \t]*\r?\n[ \t]*(?P=c) = \'\\0\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
 
@@ -3134,7 +3138,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(member, f'{tag}STATE_GetString("{name}")', text)
             # the member's string rep read raw for an inlined `==` (`puVar1 = *(undefined4 **)(parent + 0x78)`,
             # DarkwoodTrader Main's TraderToTalk test; fold_inline_string_equality finishes it)
-            text = re.sub(r'\*\(undefined4 \*\*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}STATE_GetString("{name}")', text)
+            text = re.sub(r'\*\((?:undefined4 \*\*|int \*)\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}STATE_GetString("{name}")', text)
     # 3c'. helpers returning a CScriptThing through a hidden pointer: Ghidra drops the pointer push, so the
     # call reads `Helper(this);` and the result is the stack object whose Data (`X._4_4_`) is used next.
     hidden = {label for label, target in getattr(spec, 'call_labels', {}).items() if target in getattr(spec, 'hidden_thing_returns', set())}

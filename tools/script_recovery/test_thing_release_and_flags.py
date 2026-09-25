@@ -179,6 +179,36 @@ class StackThingOwnVtable(unittest.TestCase):
         self.assertIn('(**(code **)(CStack_d8._0_4_ + 0x12c))()', lower_after_annotate(text, self.SLOTS))
 
 
+class InlineStringEquality(unittest.TestCase):
+    # DarkwoodTrader Main's TraderToTalk test, in the spelling the typed export prints (CCharString reps)
+    TYPED = '''            pCVar13 = CScriptThing::GetDataString((CScriptThing *)(this + 8), &xStack_34);
+            CVar15 = *pCVar13;
+            CVar1 = QUESTSTATE_GetString("TraderToTalk");
+            if (CVar1 == CVar15) {
+              c_stk_171 = '\\x01';
+            }
+            else if ((CVar1 == (CCharString)0x0) || (CVar15 == (CCharString)0x0)) {
+              c_stk_171 = '\\0';
+            }
+            else if (*(int *)((int)CVar1 + 4) == *(int *)((int)CVar15 + 4)) {
+              iVar8 = CBasicString<char>::Compare(*(void **)CVar1,*(void **)CVar15);
+              c_stk_171 = !(iVar8 != 0);
+            }
+            else {
+              c_stk_171 = '\\0';
+            }
+            f();
+            if (c_stk_171 == '\\0') {
+'''
+
+    def test_typed_spelling_folds(self):
+        from tools.script_recovery.native_evidence_lowering import fold_inline_string_equality
+        out = fold_inline_string_equality(self.TYPED)
+        self.assertIn('c_stk_171 = ENGINE_StrEq(pCVar13, QUESTSTATE_GetString("TraderToTalk"));', out)
+        self.assertIn('if (!c_stk_171) {', out)
+        self.assertNotIn('CBasicString<char>::Compare', out)
+
+
 class MovieStartsOnce(unittest.TestCase):
     # WatchForMissionRules 0x00E06440: the movie object operand is printed with a pointer cast
     def test_cast_movie_operand_drops_the_second_start(self):
