@@ -2392,6 +2392,10 @@ def fold_local_thing_vectors(text, thing_slots=None):
         text = re.sub(r'^[ \t]*(\w+) = \(int\)' + v + r' - ' + v + r' >> 0x1f;[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'\(\(int\)' + v + r' - ' + v + r'\) / 0xc \+ (\w+) (!=|==) \1\b', lambda m, vec=vec: f'LOCALLIST_Count({vec}) {m.group(2)} 0', text)
         text = re.sub(r'\(int\)' + v + r' - ' + v + r'\b', f'LOCALLIST_Count({vec}) * 0xc', text)
+        # the uncast self-difference: the end slot reached the fold already under the vector's own name
+        # (WatchForMissionRules 0x00E06440: iStack_b0/iStack_ac/uStack_a8 all respelled `xStack_b0`, the slot's
+        # earlier actor map); a vector minus itself can only be its end minus its begin
+        text = re.sub(r'\(' + v + r' - ' + v + r'\) / 0xc', f'LOCALLIST_Count({vec})', text)
         text = re.sub(r'\(LOCALLIST_Count\(' + v + r'\) \* 0xc\) / 0xc', f'LOCALLIST_Count({vec})', text)
         # a thing vcall through an element's Data pointer (byte index counted from the +4 field:
         # `iVar5 = 4; ... (**(code **)(**(int **)(iVar5 + (int)V) + OFF))(`)

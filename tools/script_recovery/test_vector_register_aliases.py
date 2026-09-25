@@ -46,5 +46,27 @@ class MirroredElementOperandTests(unittest.TestCase):
         self.assertIn('CScriptThing::IsEqualTo(LOCALLIST_At(xStack_1c, (iVar6 - 4) / 0xc), p0)', out)
 
 
+class MergedBeginEndCountTests(unittest.TestCase):
+    # WatchForMissionRules 0x00E06440 (Trader Escort's end without the end trader): the begin/end/capacity slots
+    # iStack_b0 / iStack_ac / uStack_a8 all reach the fold as the slot's earlier actor-map name `xStack_b0`, so
+    # `(end - begin) / 0xc` reads `(xStack_b0 - xStack_b0) / 0xc` -- lifted, a table minus itself
+    TEXT = ('                xStack_b0 = 0;\n'
+            '                xStack_b0 = 0;\n'
+            '                xStack_b0 = 0;\n'
+            '                GSI->GetAllThingsWithScriptName(&xStack_64,xStack_b0);\n'
+            '                if ((xStack_b0 - xStack_b0) / 0xc == *(int *)(this + 0x50)) {\n'
+            '                  GSI->SetStateBool("EndStarted", true);\n'
+            '                }\n')
+
+    def test_self_difference_of_a_vector_is_its_count(self):
+        out = fold_local_thing_vectors(self.TEXT)
+        self.assertIn('xStack_b0 = GSI->GetAllThingsWithScriptName(&xStack_64);', out)
+        self.assertIn('if (LOCALLIST_Count(xStack_b0) == *(int *)(this + 0x50)) {', out)
+
+    def test_self_difference_of_a_non_vector_is_left_alone(self):
+        text = '  if ((iVar3 - iVar3) / 0xc == 1) {\n    f();\n  }\n'
+        self.assertEqual(fold_local_thing_vectors(text), text)
+
+
 if __name__ == '__main__':
     unittest.main()

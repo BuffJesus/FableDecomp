@@ -12155,7 +12155,7 @@
       "unusedAlive": 0,
       "flagTests": 26,
       "declarations": 30,
-      "decimalLiterals": 2
+      "decimalLiterals": 1
      }
     },
     {
@@ -15710,7 +15710,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 393,
+     "sourceLine": 392,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15719,7 +15719,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 449,
+     "sourceLine": 448,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15728,7 +15728,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 475,
+     "sourceLine": 474,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -15993,7 +15993,7 @@
      },
      "WatchForMissionRules": {
       "rewrites": {
-       "splitLocals": 14,
+       "splitLocals": 13,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -16001,7 +16001,7 @@
        "aliveStaging": 21,
        "exitChecksInlined": 2,
        "frameChecks": 8,
-       "inlinedTemporaries": 43,
+       "inlinedTemporaries": 44,
        "deadDefinitions": 3,
        "guardWrappers": 0,
        "retryLoops": 7,
@@ -16027,7 +16027,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
        "controlAcquires": 0,
-       "sunkLocals": 25,
+       "sunkLocals": 23,
        "cleanupClosureNames": 0,
        "parentheses": 20,
        "cosmetics": 0,
@@ -16045,7 +16045,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 215,
+       "lines": 214,
        "temporaries": 7,
        "labels": 19,
        "gotos": 36,

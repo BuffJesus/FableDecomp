@@ -477,7 +477,7 @@ function WatchForMissionRules(quest)
                                 bVar2 = not alive
                                 if bVar2 then break end
                                 xStack_b0 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
-                                if (xStack_b0 - xStack_b0) / 0xc == quest:GetStateInt("TradersStillAliveCounter") then
+                                if #xStack_b0 == quest:GetStateInt("TradersStillAliveCounter") then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar2 = not alive
                                     if bVar2 then

@@ -304,8 +304,7 @@ function WatchForMissionRules(quest)
                         if predicateResult7 then
                             if not quest:NewScriptFrame() then break end
                             if quest:IsDistanceBetweenThingsUnder(hero, x_stk_d0_2, 4.0) then
-                                local darkwoodTrader3 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
-                                if (darkwoodTrader3 - darkwoodTrader3) / 12 == quest:GetStateInt("TradersStillAliveCounter") then
+                                if #quest:GetAllThingsWithScriptName("DarkwoodTrader") == quest:GetStateInt("TradersStillAliveCounter") then
                                     quest:SetStateBool("EndStarted", true)
                                 end
                             end
