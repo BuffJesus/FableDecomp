@@ -723,10 +723,19 @@
         "hero"
        ]
       },
-      "pCVar7": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+      "pCVar7_1": {
+       "name": "position",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
+      },
+      "pCVar7_2": {
+       "name": "position2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "position"
+       ]
       },
       "pCVar9": {
        "name": "getActiveQuestName",
@@ -743,49 +752,49 @@
        ]
       },
       "r2": {
-       "name": "scratchValue8",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r3": {
-       "name": "scratchValue9",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "r4": {
-       "name": "scratchValue10",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "uVar5": {
-       "name": "scratchValue11",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_20": {
-       "name": "scratchValue12",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_24_1": {
-       "name": "scratchValue13",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_24_2": {
-       "name": "scratchValue14",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -801,10 +810,22 @@
          17
         ],
         "iVar8_2": [
-         50
+         49
         ],
         "iVar8_3": [
-         66
+         64
+        ]
+       }
+      },
+      "pCVar7": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar4, dist, fVar10, f_CVar3, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24\n",
+       "versions": {
+        "pCVar7_1": [
+         32
+        ],
+        "pCVar7_2": [
+         59
         ]
        }
       },
@@ -816,7 +837,7 @@
          7
         ],
         "xStack_24_2": [
-         58
+         57
         ]
        }
       }
@@ -827,7 +848,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 183,
+     "sourceLine": 181,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -836,7 +857,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 186,
+     "sourceLine": 184,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -845,7 +866,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 189,
+     "sourceLine": 187,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -855,15 +876,7 @@
     {
      "function": "Main",
      "sourceLine": 10,
-     "locals": {
-      "scratchValue": {
-       "name": "isCameraPosOnScreen",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isCameraPosOnScreen"
-       ]
-      }
-     },
+     "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -871,7 +884,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 97,
+     "sourceLine": 91,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -880,7 +893,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 100,
+     "sourceLine": 94,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -889,7 +902,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 103,
+     "sourceLine": 97,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -897,7 +910,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -910,7 +923,7 @@
        "aliveStaging": 11,
        "exitChecksInlined": 3,
        "frameChecks": 5,
-       "inlinedTemporaries": 50,
+       "inlinedTemporaries": 54,
        "deadDefinitions": 7,
        "guardWrappers": 0,
        "retryLoops": 2,
@@ -941,12 +954,12 @@
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 1,
+       "freeSuffixes": 2,
        "hoistedState": 0
       },
       "before": {
-       "lines": 169,
-       "temporaries": 22,
+       "lines": 167,
+       "temporaries": 23,
        "labels": 9,
        "gotos": 20,
        "terminationChecks": 18,
@@ -954,8 +967,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 86,
-       "temporaries": 8,
+       "lines": 80,
+       "temporaries": 5,
        "labels": 10,
        "gotos": 19,
        "terminationChecks": 10,

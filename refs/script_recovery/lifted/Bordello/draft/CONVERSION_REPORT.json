@@ -667,7 +667,6 @@
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "unlifted: xStack_124_b3 = !(iVar5 != 0);",
             "unlifted: xStack_164 = CVar2 & 0xffffff;",
-            "unlifted: xStack_124_b3 = (**(code **)(*(int *)p0 + 0x6c))((void *)p0,xStack_110);",
             "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
@@ -675,20 +674,12 @@
             "unlifted: xStack_124_b3 = '\\0';",
             "unlifted: xStack_124_b3 = '\\x01';",
             "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "unlifted: xStack_124_b3 = (**(code **)(*(int *)p0 + 0x6c))((void *)p0,&xStack_118_2);",
             "CameraUseCameraPoint: missing i2 (4 args for 5 params)",
             "unlifted: xStack_f8_b3 = '\\0';",
             "unlifted: xStack_f8_b3 = '\\x01';",
             "CameraUseCameraPoint: missing spTarget, i2 (3 args for 5 params)",
-            "unlifted: bVar3 = (**(*me + 0x8c))(me,&xStack_178)",
             "unlifted: if (*(this + 0x14))[0x49] == nil then",
-            "unlifted: if (*(this + 0x14))[0x49] == nil then",
-            "unlifted: bVar3 = (**(*me + 0x54))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar3 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar3 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar4 = (**(*me + 0x54))(&\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar4 = (**(*me + 0xa8))(&\"SCRIPT_NAME_HERO\")",
-            "unlifted: cVar4 = (**(*me + 0xa4))(0xe,&\"SCRIPT_NAME_HERO\")"
+            "unlifted: if (*(this + 0x14))[0x49] == nil then"
           ],
           "calls": [
             "NewScriptFrame",
@@ -728,6 +719,7 @@
             "SetTimer",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
+            "MsgIsPresentedWithItem",
             "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
@@ -750,6 +742,7 @@
             "GiveHeroObject",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "IsTalkedToByHero",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "StartMovieSequence",
@@ -864,6 +857,9 @@
             "FixMovieSequenceCamera",
             "PauseAllNonScriptedEntities",
             "RESOURCE_ReleaseResource",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -903,6 +899,7 @@
             "SetTimer",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
+            "IsTalkedToByHero",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -1088,6 +1085,9 @@
             "FixMovieSequenceCamera",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
@@ -1122,7 +1122,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1214,
+          "lines": 1207,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1131,8 +1131,8 @@
             "errors": [
               {
                 "path": "FSE/V_Bordello/Entities/Madame.lua:Main",
-                "line": 571,
-                "message": "FSE/V_Bordello/Entities/Madame.lua:Main:571: 'do' expected near '='"
+                "line": 567,
+                "message": "FSE/V_Bordello/Entities/Madame.lua:Main:567: 'do' expected near '='"
               }
             ]
           },
@@ -4047,8 +4047,8 @@
         "errors": [
           {
             "path": "FSE/V_Bordello/Entities/Madame.lua",
-            "line": 583,
-            "message": "FSE/V_Bordello/Entities/Madame.lua:583: 'do' expected near '='"
+            "line": 579,
+            "message": "FSE/V_Bordello/Entities/Madame.lua:579: 'do' expected near '='"
           },
           {
             "path": "FSE/V_Bordello/V_Bordello.lua",
@@ -4202,7 +4202,7 @@
         "functionSyntaxPassed": 39,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 9,
-        "todo": 370
+        "todo": 361
       }
     }
   ],
@@ -4213,6 +4213,6 @@
     "functionSyntaxPassed": 39,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 9,
-    "todo": 370
+    "todo": 361
   }
 }

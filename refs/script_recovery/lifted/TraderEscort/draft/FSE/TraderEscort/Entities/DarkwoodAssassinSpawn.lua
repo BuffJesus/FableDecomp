@@ -42,9 +42,8 @@ function Main(quest, me)
             pCVar6 = quest:GetHero()
             bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, dist)
             if bVar4 then
-                -- TODO(native): pCVar7 = (**(*me + 0x18))(me)
-                pCVar7 = nil --[[unresolved native value]]
-                bVar4 = quest:IsCameraPosOnScreen(nil --[[missing]])
+                pCVar7 = me:GetPos()
+                bVar4 = quest:IsCameraPosOnScreen(pCVar7)
                 p0 = xStack_24
                 if bVar4 then goto LAB_00e02f91 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -71,9 +70,8 @@ function Main(quest, me)
                 end
                 xStack_24 = quest:ReadGlobalGameDataString(0xe18)
                 bVar4 = true
-                -- TODO(native): pCVar7 = (**(*p0 + 0x18))(p0)
-                pCVar7 = nil --[[unresolved native value]]
-                r1 = quest:CreateCreature(xStack_24, nil --[[missing]], "DarkwoodAssassin")
+                pCVar7 = me:GetPos()
+                r1 = quest:CreateCreature(xStack_24, pCVar7, "DarkwoodAssassin")
                 quest:SetThingPersistent(r1, true)
                 pCVar9 = quest:GetActiveQuestName()
                 quest:EntityAttachToScript(r1, pCVar9)

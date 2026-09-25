@@ -130,8 +130,7 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(me, __push1, false)
             end
         end
-        -- TODO(native): bVar3 = (**(*me + 0x8c))(me,&xStack_178)
-        bVar3 = nil --[[unresolved native value]]
+        bVar3 = me:MsgIsPresentedWithItem()
         if bVar3 then
             if xStack_178 == nil then
                 bVar3 = false
@@ -194,8 +193,8 @@ function Main(quest, me)
             resources:DestroyMovie(xStack_cc)
             ::FLOW_past_lab_00e3bf28::
         end
-        -- TODO(native): xStack_124_b3 = (**(code **)(*(int *)p0 + 0x6c))((void *)p0,xStack_110);
-        if xStack_124_b3 ~= 0 then
+        xStack_124_b3 = me:IsTalkedToByHero()
+        if xStack_124_b3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00e3e2ef end
@@ -484,18 +483,15 @@ function Main(quest, me)
         end
         ::LAB_00e3cab0::
         uVar11 = uVar20 | 1
-        -- TODO(native): bVar3 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
-        bVar3 = nil --[[unresolved native value]]
+        bVar3 = me:MsgIsHitByHero()
         if bVar3 then
             goto LAB_00e3cb3c
         else
             uVar11 = uVar20 | 3
-            -- TODO(native): bVar3 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-            bVar3 = nil --[[unresolved native value]]
+            bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar3 then
                 uVar11 = uVar20 | 7
-                -- TODO(native): bVar3 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                bVar3 = nil --[[unresolved native value]]
+                bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar3 then goto LAB_00e3cb3c end
             end
             -- TODO(native): xStack_124_b3 = '\0';
@@ -596,8 +592,8 @@ function Main(quest, me)
                     quest:EntitySetFacingAngleTowardsThing(me, __push11, false)
                 end
             end
-            -- TODO(native): xStack_124_b3 = (**(code **)(*(int *)p0 + 0x6c))((void *)p0,&xStack_118_2);
-            if xStack_124_b3 ~= 0 then
+            xStack_124_b3 = me:IsTalkedToByHero()
+            if xStack_124_b3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then break end
@@ -1119,16 +1115,13 @@ function Main(quest, me)
                 resources:DestroyMovie(xStack_15c)
             end
             uVar11 = uVar20 | 8
-            -- TODO(native): cVar4 = (**(*me + 0x54))("SCRIPT_NAME_HERO")
-            cVar4 = nil --[[unresolved native value]]
+            cVar4 = me:MsgIsHitByHero()
             if not cVar4 then
                 uVar11 = uVar20 | 0x18
-                -- TODO(native): cVar4 = (**(*me + 0xa8))("SCRIPT_NAME_HERO")
-                cVar4 = nil --[[unresolved native value]]
+                cVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if cVar4 then
                     uVar11 = uVar20 | 0x38
-                    -- TODO(native): cVar4 = (**(*me + 0xa4))(0xe,"SCRIPT_NAME_HERO")
-                    cVar4 = nil --[[unresolved native value]]
+                    cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not cVar4 then goto LAB_00e3e06a end
                 end
                 -- TODO(native): xStack_f8_b3 = '\0';

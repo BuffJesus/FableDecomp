@@ -2559,6 +2559,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         text = re.sub(r'^([ \t]*)(\w+) = \*' + re.escape(m[0]) + r';', lambda mm, off=m[1]: f'{mm.group(1)}{mm.group(2)} = **(int **)(this + {off});', text, flags=re.M)
     text = fold_by_value_things(text, getattr(spec, 'code_range', None))
     if spec.entity:
+        # DarkwoodAssassinSpawn 0xE02E50 keeps its own thing address in a
+        # register typed CCharString by a later lifetime. The entity layout,
+        # not that register type, identifies the explicit this+8 address.
+        text = re.sub(r'\(CCharString\)\(this \+ 8\)',
+                      '(CScriptThing *)(this + 8)', text)
         text = resolve_me_register_uses(text)
     text = isolate_gsi_vtable_temps(text)
     text = fold_tangled_thing_assign(text)
@@ -3512,8 +3517,9 @@ def strip_receiver_arguments(text: str) -> str:
     # the int slot took `p0` (-> `me`) and the ability enum fell off (TraderConflict bandits/villager/guard,
     # 2026-09-20 audit)
     for alias in set(re.findall(r'^[ \t]*(\w+) = ' + ME_RECEIVER + r';', text, re.M)):
-        text = re.sub(r'(CScriptThing::\w+\(' + ME_RECEIVER + r', ?)' + re.escape(alias) + r'(?:,\s*|(?=\)))', r'\1', text)
-        text = re.sub(r'(CScriptThing::\w+\(me, ?)' + re.escape(alias) + r'(?:,\s*|(?=\)))', r'\1', text)
+        receiver = r'(?:\(void \*\))?' + re.escape(alias)
+        text = re.sub(r'(CScriptThing::\w+\(' + ME_RECEIVER + r', ?)' + receiver + r'(?:,\s*|(?=\)))', r'\1', text)
+        text = re.sub(r'(CScriptThing::\w+\(me, ?)' + receiver + r'(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\((\w+), ?)\2(?:,\s*|(?=\)))', r'\1', text)
     text = re.sub(r'(CScriptThing::\w+\((LOCALLIST_At\([^()]*\)), ?)(?:\(int \*\))?\2(?:,\s*|(?=\)))', r'\1', text)   # an element receiver repeated as the explicit `this`
     # typed by-value placeholders read as their real classes

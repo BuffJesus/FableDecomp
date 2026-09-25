@@ -2148,15 +2148,11 @@
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0x3ac) + (uVar",
             "unlifted: CCharString::CCharString(&xStack_30,&xStack_28);",
             "unlifted: xStack_20 = CVar3;",
-            "IsCameraPosOnScreen: missing pos (0 args for 1 params)",
             "verify cleanup at LAB_00e02ff7 (lifted as early return)",
             "label LAB_00e02ff7",
-            "CreateCreature: missing position (2 args for 3 params)",
             "label LAB_00e031b3",
             "PlaySoundOnThing: missing soundName (1 args for 2 params)",
-            "PlaySoundOnThing: missing soundName (1 args for 2 params)",
-            "unlifted: pCVar7 = (**(*me + 0x18))(me)",
-            "unlifted: pCVar7 = (**(*p0 + 0x18))(p0)"
+            "PlaySoundOnThing: missing soundName (1 args for 2 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2170,6 +2166,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "GetPos",
             "IsCameraPosOnScreen",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -2178,6 +2175,7 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "ENGINE_GlobalGameDataString",
+            "GetPos",
             "CreateCreature",
             "SetThingPersistent",
             "GetActiveQuestName",
@@ -2230,7 +2228,7 @@
             "RemoveThing",
             "DeregisterTimer"
           ],
-          "lines": 179,
+          "lines": 177,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3671,7 +3669,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 66
+        "todo": 62
       }
     }
   ],
@@ -3682,6 +3680,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 66
+    "todo": 62
   }
 }

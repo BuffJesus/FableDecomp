@@ -15,7 +15,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_Bordello | V_Bordello | helper_E3E320 | 0x00e3e320 | True | 0 |
 | V_Bordello | V_Bordello | helper_E3E720 | 0x00e3e720 | False | 41 |
 | V_Bordello | V_Bordello | helper_E3E6B0 | 0x00e3e6b0 | True | 0 |
-| V_Bordello | Madame | Main | 0x00e3bb70 | False | 32 |
+| V_Bordello | Madame | Main | 0x00e3bb70 | False | 23 |
 | V_Bordello | Madame | Init | 0x00e3ab60 | True | 0 |
 | V_Bordello | Madame | OnPersist | 0x00e3ba50 | True | 1 |
 | V_Bordello | Madame | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -47,4 +47,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_Bordello | BordelloEntrance | OnPersist | 0x00cdebc0 | True | 0 |
 | V_Bordello | BordelloEntrance | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 8, "functions": 42, "missing": 0, "functionSyntaxPassed": 39, "fileSyntaxPassed": 6, "fileSyntaxChecked": 9, "todo": 370}`
+Summary: `{"owners": 8, "functions": 42, "missing": 0, "functionSyntaxPassed": 39, "fileSyntaxPassed": 6, "fileSyntaxChecked": 9, "todo": 361}`
