@@ -15,6 +15,11 @@ Quest file (JSON):
              then a real attack (sword clicks, every 4th a spell) lands the last blow
   fightDefs  definitions killed the same way, before fightNames (a boss's summoned minions: its AI counts
              their deaths, and a fade is not one)
+  fightDrain false to use real damage throughout the fight (default true)
+  fightBounds [minX, minY, maxX, maxY]: keep combat targets and landing spots inside this rectangle
+  fightInputs {scriptName: [input, ...], "default": [input, ...]}: override attack inputs for a target
+  fightWhen  optional Lua condition in stateHost (default host), checked before combat input
+  stateStatus optional Lua expression in stateHost, logged every third poll for quest-specific diagnostics
   hunt       true: with no route, walk to the nearest living enemyNames enemy
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
   done       Lua expression, evaluated in `host`, true when the test succeeded
@@ -30,9 +35,9 @@ Quest file (JSON):
 Log: work/runner/<tag>.jsonl (one status per poll) + screenshots at stalls and pauses.
 
     --launch --save PROFILE   stage PROFILE's AutoSave, launch the bundle and load it (autopilot's launcher);
-                              the staged-over profile is restored when the runner ends
+                              the game closes before the staged-over profile is restored when the runner ends
     --harvest PROFILE         after a `done` finish, keep the game's newest AutoSave as PROFILE
-    --close                   close Fable at the end (otherwise it stays open and autosaves into the restored profile)
+    --close                   close Fable at the end (automatic with --save)
 """
 from __future__ import annotations
 
@@ -49,6 +54,7 @@ sys.path.insert(0, str(ROOT))
 from tools.script_recovery.autopilot import (Channel, game_input, stage_save, restore_save, harvest_save,  # noqa: E402
                                              launch_and_load, SAVES, FRONTEND_PROFILE_DIR)
 from tools.script_recovery.walkgrid import Grid  # noqa: E402
+from tools.script_recovery.ab_playtest import fable_running  # noqa: E402
 
 RUNNER_LUA = Path(__file__).with_name('ingame_runner.lua')
 # things the planner routes around everywhere (TNG definitions): Darkwood's exploding spores
@@ -87,6 +93,28 @@ def norm(s: str) -> str:
     return re.sub(r'[^a-z0-9]', '', s.lower())
 
 
+def target_labels(png: Path, expected: str) -> list[str]:
+    """Read the small outlined target name against a moving scene background."""
+    labels = [t for x, y, t in ocr_lines(png) if 350 <= x <= 675 and y < 45]
+    if any(norm(t) == norm(expected) for t in labels):
+        return labels
+    from PIL import Image
+    with Image.open(png) as screenshot:
+        crop = screenshot.crop((350, 0, 675, 48)).resize((1300, 192)).convert('L')
+    # Keep a full-sized canvas: Windows OCR missed the same isolated word on
+    # a short strip. Extract the white glyphs to remove sky and outline noise.
+    for threshold in (220, 210, 200):
+        glyphs = crop.point(lambda p: 0 if p > threshold else 255).resize((650, 96))
+        canvas = Image.new('RGB', (1024, 768), 'white')
+        canvas.paste(glyphs, (300, 300))
+        processed = png.with_name(png.stem + f'_target_{threshold}.png')
+        canvas.save(processed)
+        labels.extend(t for _, _, t in ocr_lines(processed))
+        if any(norm(t) == norm(expected) for t in labels):
+            break
+    return labels
+
+
 def parse_status(s):
     out = {}
     for k, v in re.findall(r'(\w+)=(\S+)', s or ''):
@@ -107,18 +135,25 @@ def main():
     ap.add_argument('--harvest', metavar='PROFILE', help='after a done finish, keep the newest AutoSave as PROFILE')
     ap.add_argument('--close', action='store_true', help='close Fable when the run ends (for chained runs)')
     a = ap.parse_args()
+    if a.save and not a.launch:
+        ap.error('--save requires --launch')
+    # Refuse before staging or entering cleanup: a rejected launch must neither
+    # overwrite a live session's save nor close its game through --close.
+    if a.launch and fable_running():
+        ap.error('Fable.exe is already running; close it before launching a replay')
     q = json.loads(a.quest.read_text(encoding='utf-8'))
     live = SAVES / FRONTEND_PROFILE_DIR / 'AutoSave'
-    baseline = live.stat().st_mtime if live.is_file() else 0.0
     backup = stage_save(a.save) if a.save else None
     try:
+        baseline = live.stat().st_mtime if live.is_file() else 0.0
         if a.launch:
             launch_and_load(a.bundle)
         result = play(a, q)
         if a.harvest and result == 'done':
-            harvest_save(a.harvest, a.save, baseline)
+            if not harvest_save(a.harvest, a.save, baseline):
+                raise RuntimeError('quest completed but no new autosave was harvested')
     finally:
-        if a.close:
+        if a.close or backup:
             import subprocess
             subprocess.run(['taskkill', '/IM', 'Fable.exe', '/F'], capture_output=True)
             time.sleep(3)
@@ -145,6 +180,10 @@ def play(a, q) -> str:
         err = next((r for r in reply if 'error' in r.lower() and '[Autopilot]' in r), None)
         return val, err
 
+    def state_eval(expr, timeout=10):
+        reply = send(f"eval {q.get('stateHost', host)}: {expr}", timeout)
+        return next((r.rsplit(' = ', 1)[-1] for r in reply if '[Autopilot] eval ' in r), None)
+
     def log(kind, **kw):
         logf.write(json.dumps({'t': round(time.time(), 1), 'kind': kind, **kw}) + '\n')
         logf.flush()
@@ -157,6 +196,8 @@ def play(a, q) -> str:
                f"E.Runner.partyNames = {{{', '.join(repr(n) for n in q.get('partyNames', []))}}}; "
                f"E.Runner.fightNames = {{{', '.join(repr(n) for n in q.get('fightNames', []))}}}; "
                f"E.Runner.fightDefs = {{{', '.join(repr(n) for n in q.get('fightDefs', []))}}}; "
+               f"E.Runner.fightDrain = {'true' if q.get('fightDrain', True) else 'false'}; "
+               f"E.Runner.fightBounds = " + ('{' + ','.join(str(float(v)) for v in q['fightBounds']) + '}' if q.get('fightBounds') else 'nil') + '; ' +
                f"if not E.Runner.thread then E.Runner.thread = true; quest:CreateThread('RunnerMain') end")
     regions = ', '.join(f'["{m}"]="{r}"' for m, r in world.items() if m in grid.maps and re.search(q['maps'], m + ' ' + r))
     # the game reads a batch only while script frames run, and the next send replaces an unread one: a lost
@@ -264,14 +305,19 @@ def play(a, q) -> str:
         for dx, dy in CARD_SIDES:
             send(f"{host}: local g = quest:GetThingWithScriptName('{name}'); local p = g:GetPos(); "
                  f"p.x = p.x + {dx}; p.y = p.y + {dy}; p.z = p.z + 0.5; local h = quest:GetHero(); "
-                 f"quest:EntityTeleportToPosition(h, p, 0, true, true); quest:EntitySetFacingAngleTowardsThing(h, g, true); "
+                 f"quest:EntityTeleportToPosition(h, p, 0, true, true)", 20)
+            # Teleport is applied at an engine boundary and can overwrite facing
+            # set in the same batch. Turn only after the hero has landed.
+            time.sleep(1.0)
+            send(f"{host}: local g = quest:GetThingWithScriptName('{name}'); "
+                 f"quest:EntitySetFacingAngleTowardsThing(quest:GetHero(), g, true); "
                  f"quest:CameraResetToViewBehindHero(0.1)", 20)
             time.sleep(1.5)
-            png = out / f'{a.tag}_talk.png'
+            png = out / f'{a.tag}_talk_{dx}_{dy}.png'
             game_input(f'capture {png}')
-            target = [t for _, y, t in ocr_lines(png) if y < 45]
+            target = target_labels(png, label)
             log('talk_side', side=[dx, dy], target=target)
-            if any(norm(label) in norm(t) for t in target):
+            if label and any(norm(label) == norm(t) for t in target):
                 game_input('key TAB')
                 time.sleep(1.0)
                 return True
@@ -336,6 +382,8 @@ def play(a, q) -> str:
         # conversations keep frames running and wait for 'Next' (the Darkwood4 camp-trader greeting held the
         # party for minutes): `clear` clicks only when a box / subtitle icon is actually on screen
         polls += 1
+        if q.get('stateStatus') and polls % 3 == 1:
+            log('quest_status', status=state_eval(q['stateStatus'], 6))
         if st.get('party') == 'short' or polls % 3 == 0:
             r = game_input('clear').strip()
             if r != '(no box)':
@@ -346,12 +394,16 @@ def play(a, q) -> str:
         if q.get('fightNames') or q.get('fightDefs'):
             # a death a script must see as a kill BY the hero (MsgIsKilledBy): the runner drains the target to 1
             # health and places the hero beside it; the last blow is a real attack (sword, then a spell)
-            fight, _ = ev('Runner.fightStep(quest)', 6)
+            ready = not q.get('fightWhen') or state_eval(f"tostring({q['fightWhen']})", 6) == 'true'
+            fight, _ = ev('Runner.fightStep(quest)', 6) if ready else (None, None)
             if fight and fight != 'none' and not fight.startswith('ERROR'):
                 fights += 1
                 if fights == 1 or fights % 10 == 0:
                     game_input('key Q')             # draw the melee weapon
-                game_input('chord LSHIFT 1200' if fights % 4 == 0 else 'lmb 4')
+                inputs = q.get('fightInputs', {})
+                sequence = inputs.get(fight.split()[0], inputs.get('default'))
+                for step in sequence or ['chord LSHIFT 1200' if fights % 4 == 0 else 'lmb 4']:
+                    game_input(step)
                 if fights % 5 == 1:
                     log('fight', target=fight, step=fights)
                 continue

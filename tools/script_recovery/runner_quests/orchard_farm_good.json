@@ -1,0 +1,27 @@
+{
+  "quest": "Q_OrchardFarmRaidGood",
+  "host": "LUAGameflow",
+  "stateHost": "OrchardFarmRaid",
+  "start": {
+    "quest": "Q_OrchardFarmRaidGood",
+    "title": "Protect Orchard Farm",
+    "guild": [70, 4787.62, 3680.52, 38.0],
+    "card": "OBJECT_QUEST_CARD_PROTECT_FARM",
+    "travel": [[9, 3203.57, 3206.19, 41.02, "OrchardFarm"]]
+  },
+  "maps": "OrchardFarm$",
+  "legs": {},
+  "enemyNames": [],
+  "fightNames": ["BanditTeamMember", "OrchardFarmWhisper"],
+  "fightDrain": false,
+  "fightBounds": [3202, 3170, 3293, 3293],
+  "fightWhen": "quest:GetStateBool('DoneIntroduction') and not quest:GetStateBool('WhisperInCutscene') and not quest:GetStateBool('MissionSucceeded') and quest:GetStateInt('MissionFailed') == 0",
+  "stateStatus": "string.format('wave=%d bandits=%d crates=%d whisper=%s succeeded=%s failed=%d', quest:GetStateInt('BanditWavesSpawned'), quest:GetStateInt('Teams_1_MemberCount'), quest:GetStateInt('CrateCount'), tostring(quest:GetStateBool('WhisperSpawned')), tostring(quest:GetStateBool('MissionSucceeded')), quest:GetStateInt('MissionFailed'))",
+  "fightInputs": {
+    "default": ["lmb 6"],
+    "OrchardFarmWhisper": ["lmb 4", "hold RMB 200"]
+  },
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('Q_OrchardFarmRaidGood') and quest:GetMasterGameState('PostSavePosition') == 500 and quest:GetStateBool('CoreQuestWaiting')",
+  "failed": "not quest:IsQuestActive('Q_OrchardFarmRaidGood') and not quest:IsQuestCompleted('Q_OrchardFarmRaidGood')"
+}

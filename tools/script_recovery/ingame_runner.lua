@@ -27,6 +27,7 @@ R.fading = R.fading or {}
 R.faded = R.faded or {}
 R.fightNames = R.fightNames or {}   -- enemies a script needs killed BY the hero (the Python side attacks)
 R.fightDefs = R.fightDefs or {}     -- ... and definitions whose deaths an engine AI counts (a boss's summoned minions)
+R.fightDrain = R.fightDrain ~= false
 local quest_cache = {fight = {}}
 R.minParty = R.minParty or 0     -- followers the quest expects (the planner keeps this current)
 R.regionOf = R.regionOf or {}    -- map name -> region (from the planner): a route belongs to one region
@@ -79,7 +80,7 @@ local function isFight(e)
 end
 
 -- one step of a real fight (called by the Python side, which then attacks with the mouse / a spell): the nearest
--- living R.fightNames enemy, drained to 1 health, with the hero placed 2.5 units off it and facing it.
+-- living R.fightNames enemy, optionally drained to 1 health, with the hero placed 2.5 units off it and facing it.
 -- Returns "name hp distance" or "none".
 function R.fightStep(quest)
     local hero = quest:GetHero()
@@ -87,8 +88,11 @@ function R.fightStep(quest)
     local function pick(list, n)
         for _, e in ipairs(list or {}) do
             if e:IsAlive() and not e:IsUnconscious() and quest:GetHealth(e) > 0 then
-                local d = quest:GetDistanceBetweenThings(hero, e)
-                if not bd or d < bd then best, bd, bn = e, d, n end
+                local p, b = e:GetPos(), R.fightBounds
+                if not b or (p.x > b[1] and p.y > b[2] and p.x < b[3] and p.y < b[4]) then
+                    local d = quest:GetDistanceBetweenThings(hero, e)
+                    if not bd or d < bd then best, bd, bn = e, d, n end
+                end
             end
         end
     end
@@ -101,11 +105,18 @@ function R.fightStep(quest)
         for _, n in ipairs(R.fightNames) do pick(quest:GetAllThingsWithScriptName(n), n) end
     end
     if not best then return 'none' end
-    if quest:GetHealth(best) > 1 then quest:ModifyThingHealth(best, -100000, false) end
+    if R.fightDrain and quest:GetHealth(best) > 1 then quest:ModifyThingHealth(best, -100000, false) end
     if bd > 4 then
         local p, h = best:GetPos(), hero:GetPos()
         local a = math.atan(h.y - p.y, h.x - p.x)
-        quest:EntityTeleportToPosition(hero, {x = p.x + 2.5 * math.cos(a), y = p.y + 2.5 * math.sin(a), z = p.z}, 0, true, true)
+        local landing = {x = p.x + 2.5 * math.cos(a), y = p.y + 2.5 * math.sin(a), z = p.z}
+        if R.fightBounds then
+            local b = R.fightBounds
+            landing.x = math.max(b[1] + 0.5, math.min(b[3] - 0.5, landing.x))
+            landing.y = math.max(b[2] + 0.5, math.min(b[4] - 0.5, landing.y))
+            landing.z = landing.z + 0.5
+        end
+        quest:EntityTeleportToPosition(hero, landing, 0, true, true)
     end
     quest:EntitySetFacingAngleTowardsThing(hero, best, true)
     return string.format('%s %.1f %.1f', bn, quest:GetHealth(best), bd)
@@ -122,7 +133,7 @@ local function clearAround(quest, hero, fl, positions)
         local p = e:GetPos()
         local key = string.format('%.0f,%.0f', p.x, p.y)
         if isFight(e) then
-            if hp > 1 then quest:ModifyThingHealth(e, -100000, false) end
+            if R.fightDrain and hp > 1 then quest:ModifyThingHealth(e, -100000, false) end
         elseif hp > 0 and not R.fading[key] then
             R.fading[key] = R.frame
             quest:ModifyThingHealth(e, -100000, true)

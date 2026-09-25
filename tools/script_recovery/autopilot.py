@@ -119,14 +119,14 @@ def stage_save(profile: str) -> Path | None:
     return backup
 
 
-def harvest_save(profile: str, source: str | None, baseline: float = 0.0, wait: float = 240.0) -> None:
+def harvest_save(profile: str, source: str | None, baseline: float = 0.0, wait: float = 240.0) -> bool:
     """Copy the live AutoSave (what the run left behind) into SAVES/<profile>, creating it."""
     import shutil
     import time
     live, dst = SAVES / FRONTEND_PROFILE_DIR, SAVES / profile
     if not (live / 'AutoSave').is_file():
         print(f'harvest: no AutoSave in {live}; nothing to keep')
-        return
+        return False
     # the game is still running: wait for IT to write a save newer than the one we staged, because the
     # checklist's last expect fires before the Gameflow stage advance that calls AutoSave()
     deadline = time.time() + wait
@@ -135,16 +135,19 @@ def harvest_save(profile: str, source: str | None, baseline: float = 0.0, wait: 
     if (live / 'AutoSave').stat().st_mtime <= baseline + 1:
         print(f'harvest: no NEW AutoSave after {wait:.0f}s (the run never triggered one); keeping nothing '
               f'rather than copying the staged save under {profile!r}')
-        return
+        return False
     dst.mkdir(parents=True, exist_ok=True)
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (live / f).is_file():
             shutil.copy2(live / f, dst / f)
+        else:
+            (dst / f).unlink(missing_ok=True)
     if not (dst / 'Profile.bin').is_file():
         src_profile = SAVES / source if source else None
         if src_profile and (src_profile / 'Profile.bin').is_file():
             shutil.copy2(src_profile / 'Profile.bin', dst / 'Profile.bin')
     print(f'harvested the run\'s AutoSave -> {dst}')
+    return True
 
 
 def restore_save(backup: Path | None) -> None:

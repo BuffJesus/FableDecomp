@@ -1,0 +1,9 @@
+{
+  "save": "adult_graduated",
+  "stages": [
+    {"quest": "wasp_boss", "minutes": 20},
+    {"quest": "guardian_sister_info", "minutes": 8},
+    {"quest": "orchard_farm_good", "minutes": 20},
+    {"quest": "trader_escort", "minutes": 25}
+  ]
+}
