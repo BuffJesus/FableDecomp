@@ -18,17 +18,16 @@ function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 2)
-    quest:ReadGlobalGameData(SCRIPT_DEF.TE_AssassinSpawnDistance)
+    local scratchValue12 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_AssassinSpawnDistance)
     quest:ReadGlobalGameData(944)
     quest:ReadGlobalGameData(940)
     math.random(0, 32767)
     -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x3ac) + (uVar5 % (uint)(iVar8 - iVar1 >> 2)) * 4),(int)&xStack_28);
     -- TODO(native): CCharString::CCharString(&xStack_30,&xStack_28);
     if not quest:IsActiveThreadTerminating() then
-        -- TODO(native): f_CVar3 = xStack_20;
         -- TODO(native): xStack_20 = CVar3;
         repeat
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, f_CVar3) then goto LAB_00e02f91 end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, scratchValue12) then goto LAB_00e02f91 end
             -- TODO(native): pCVar7 = (**(*me + 0x18))(me)
             scratchValue7 = nil --[[unresolved native value]]
             isCameraPosOnScreen = quest:IsCameraPosOnScreen(nil --[[missing]])

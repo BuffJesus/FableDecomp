@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar4, dist, fVar10, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24
+    local bVar4, dist, fVar10, f_CVar3, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24
     local alive = true
     local function __cleanup_LAB_00e02ff7()
         quest:DeregisterTimer(i_stk_2c)
@@ -35,7 +35,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
-        -- TODO(native): f_CVar3 = xStack_20;
+        f_CVar3 = xStack_20
         -- TODO(native): xStack_20 = CVar3;
         repeat
             dist = f_CVar3

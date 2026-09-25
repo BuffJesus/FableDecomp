@@ -2147,7 +2147,6 @@
           "todo": [
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0x3ac) + (uVar",
             "unlifted: CCharString::CCharString(&xStack_30,&xStack_28);",
-            "unlifted: f_CVar3 = xStack_20;",
             "unlifted: xStack_20 = CVar3;",
             "IsCameraPosOnScreen: missing pos (0 args for 1 params)",
             "verify cleanup at LAB_00e02ff7 (lifted as early return)",
@@ -3672,7 +3671,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 67
+        "todo": 66
       }
     }
   ],
@@ -3683,6 +3682,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 67
+    "todo": 66
   }
 }

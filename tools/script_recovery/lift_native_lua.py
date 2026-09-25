@@ -162,8 +162,9 @@ RE_CSTR_MASTER_ASSIGN = re.compile(
 RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local_\w+) = (?:\([^)]*\))?(.+);\s*$')
 # Ghidra names locals `xVarN`; typed exports (prototype overrides) name them after callee parameters
 # (`pThing`, `thing1`, `string`). Any identifier that is not a keyword/global is a local assignment.
+# Float lifetimes split from string registers use `f_CVarN`; keep their assignments too.
 RE_LOCAL_ASSIGN = re.compile(
-    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+'
+    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|f_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
     r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')

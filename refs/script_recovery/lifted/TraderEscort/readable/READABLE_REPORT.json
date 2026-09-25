@@ -795,7 +795,7 @@
      "splitLocals": {
       "iVar8": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar4, dist, fVar10, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24\n",
+       "originalDeclaration": "    local bVar4, dist, fVar10, f_CVar3, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24\n",
        "versions": {
         "iVar8_1": [
          17
@@ -810,7 +810,7 @@
       },
       "xStack_24": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar4, dist, fVar10, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24\n",
+       "originalDeclaration": "    local bVar4, dist, fVar10, f_CVar3, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24\n",
        "versions": {
         "xStack_24_1": [
          7
@@ -871,7 +871,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 98,
+     "sourceLine": 97,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -880,7 +880,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 101,
+     "sourceLine": 100,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -889,7 +889,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 104,
+     "sourceLine": 103,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -902,7 +902,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -918,7 +918,7 @@
        "booleanCompares": 0,
        "conditions": 1,
        "literals": 0,
-       "copies": 2,
+       "copies": 3,
        "selfAssignments": 2,
        "flagClears": 0,
        "tailGuards": 2,
@@ -936,7 +936,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "controlAcquires": 0,
-       "sunkLocals": 1,
+       "sunkLocals": 3,
        "cleanupClosureNames": 1,
        "parentheses": 0,
        "cosmetics": 0,
@@ -946,7 +946,7 @@
       },
       "before": {
        "lines": 169,
-       "temporaries": 21,
+       "temporaries": 22,
        "labels": 9,
        "gotos": 20,
        "terminationChecks": 18,
@@ -954,7 +954,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 87,
+       "lines": 86,
        "temporaries": 8,
        "labels": 10,
        "gotos": 19,

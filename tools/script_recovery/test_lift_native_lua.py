@@ -1163,6 +1163,26 @@ class ThingSlotLiftTests(unittest.TestCase):
                           "__UBE_NXZ ((CScriptThing *)aCStack_34);"])
 
 
+class IsolatedFloatRegisterTests(unittest.TestCase):
+    def test_lowered_float_register_preserves_numeric_slot_value(self):
+        lifter = make()
+        body = '\n'.join(lifter.lift('Main', '''{
+          xStack_20 = ENGINE_GlobalGameData(0xe14);
+          f_CVar3 = xStack_20;
+          dist = f_CVar3;
+          GSI->SetTimer(42,dist);
+        }'''))
+        self.assertNotIn('TODO(native): f_CVar3', body)
+        self.assertIn('local f_CVar3 = xStack_20', body)
+        self.assertEqual(lifter.kinds.get('f_CVar3'), 'number')
+        from lupa.lua54 import LuaRuntime
+        lua = LuaRuntime()
+        lua.execute('ENGINE_GlobalGameData = function(offset) assert(offset == 0xe14); return 30 end; '
+                    'Quest = {SetTimer = function(_, id, value) assert(id == 42); captured = value end}')
+        lua.execute(body)
+        self.assertEqual(lua.globals().captured, 30)
+
+
 class ComparisonFlagTests(unittest.TestCase):
     # DarkwoodTrader Main 0x00E07640: `cStack_169 = fStack_20 < fVar19;` then `if (... || cStack_169 == '\0')`.
     # A `<` compare looked numeric (RE_NUMERIC_EXPR also admits shifts), so the byte test stayed `== 0`, which a
