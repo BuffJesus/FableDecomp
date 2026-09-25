@@ -14721,7 +14721,7 @@
    "bsimLabel": "CCountedPointer<CFileInstaller::CFileInfo_const_>::CCountedPointer<CFileInstaller::CFileInfo_const_>"
   },
   "0x4502eb": {
-   "name": "__EH_epilog3",
+   "name": "FUN_004502eb",
    "cc": "__thiscall",
    "ret": "int",
    "params": [
@@ -14736,7 +14736,8 @@
      "ctype": "inferred"
     }
    ],
-   "source": "inferred ret 8 (ecx=True, edx=False, fpu=False)",
+   "clearCallFixup": true,
+   "source": "reviewed disassembly 0x004502EB (2026-09-25): stores second stack word, ret 8",
    "bsimLabel": "__EH_epilog3"
   },
   "0x46496f": {

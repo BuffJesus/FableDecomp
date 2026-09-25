@@ -253,57 +253,14 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: *piVar7 = 0xd03439;",
-            "unlifted: *piVar7 = (int)(piVar7 + 8);",
-            "unlifted: piVar7[-1] = 0xd03448;",
+            "unlifted: ::__EH_epilog3(auStack_4,(int)&uStack_15,0);",
             "label LAB_00d034ad",
-            "unlifted: *piVar7 = 0xd034c7;",
-            "unlifted: *piVar7 = 0xd03506;",
-            "unlifted: *piVar7 = -1;",
-            "unlifted: piVar7[-1] = 0xd03530;",
-            "unlifted: piVar7[-1] = iVar5;",
-            "unlifted: piVar7[-2] = iVar6;",
-            "unlifted: pcVar2 = *(code **)(DAT_0143e90c + 0x53c);",
-            "unlifted: piVar7[-3] = 0xd0353a;",
-            "unlifted: (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);",
-            "unlifted: *piVar7 = 0xd03545;",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));",
-            "unlifted: *piVar7 = 0xd0354d;",
-            "unlifted: (*pcVar2)(piVar1);",
-            "unlifted: *piVar7 = 0xd03554;",
-            "unlifted: *piVar7 = 0xd03453;",
-            "unlifted: *piVar7 = 0xd0347d;",
-            "unlifted: piVar7[7] = piVar7[7] + 1;",
-            "unlifted: *piVar7 = iVar4;",
-            "unlifted: piVar7[-1] = iVar5;",
-            "unlifted: piVar7[-2] = 0xd034ad;",
-            "unlifted: std_vector_push_copy_element(piVar7 + 8,piVar7[-1],*piVar7);",
-            "unlifted: *piVar7 = 0xd034c7;",
-            "unlifted: *piVar7 = 0xd03506;",
-            "unlifted: *piVar7 = -1;",
-            "unlifted: piVar7[-1] = 0xd03530;",
-            "unlifted: piVar7[-1] = iVar5;",
-            "unlifted: piVar7[-2] = iVar6;",
-            "unlifted: pcVar2 = *(code **)(DAT_0143e90c + 0x53c);",
-            "unlifted: piVar7[-3] = 0xd0353a;",
-            "unlifted: (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);",
-            "unlifted: *piVar7 = 0xd03545;",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));",
-            "unlifted: *piVar7 = 0xd0354d;",
-            "unlifted: (*pcVar2)(piVar1);",
-            "unlifted: *piVar7 = 0xd03554;",
-            "unlifted: *piVar7 = 0xd0356d;",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));",
-            "unlifted: iVar6 = (**(iVar6 + 0x51c))(piVar7,&\"HUD_QUEST_ICON_BANDIT\",iVar4,fVar10)",
-            "unlifted: piVar8 = *piVar7",
-            "unlifted: pcVar2 = *(*piVar1 + 0x118)",
-            "unlifted: this_00 = (*pcVar2)(piVar1)",
-            "unlifted: iVar4 = *this_00",
-            "unlifted: pcVar2 = *(iVar4 + 0xdc)",
-            "unlifted: bVar3 = (*pcVar2)(this_00,*piVar7)",
-            "unlifted: pcVar2 = *(*piVar1 + 0x1c)",
-            "unlifted: if (*(iVar5 + uVar9 * 4) & 4) ~= 0 then",
-            "unlifted: pcVar2 = *(*piVar1 + 0x1c)"
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
+            "unlifted: std_vector_push_copy_element(&iStack_c,iVar3,iVar4);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
+            "unlifted: iVar5 = (**(iVar5 + 0x51c))(piVar1,&\"HUD_QUEST_ICON_BANDIT\",iVar3,scale)",
+            "unlifted: if (*(iVar3 + uVar6 * 4) & 4) ~= 0 then"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -316,12 +273,15 @@
             "IsActiveThreadTerminating",
             "ENGINE_Trunc",
             "IsActiveThreadTerminating",
+            "GetHero",
+            "MsgGetThingsKilled",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
-            "ENGINE_GlobalGameDataFloat",
             "ENGINE_Trunc",
+            "UpdateQuestInfoCounter",
+            "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -329,11 +289,12 @@
             "SetMasterGameState",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
-            "ENGINE_GlobalGameDataFloat",
             "ENGINE_Trunc",
+            "UpdateQuestInfoCounter",
+            "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 167,
+          "lines": 119,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -342,15 +303,15 @@
             "errors": [
               {
                 "path": "FSE/BanditCamp/BanditCamp.lua:CheckAnyBanditsKilled",
-                "line": 68,
-                "message": "FSE/BanditCamp/BanditCamp.lua:CheckAnyBanditsKilled:68: ')' expected near '='"
+                "line": 56,
+                "message": "FSE/BanditCamp/BanditCamp.lua:CheckAnyBanditsKilled:56: ')' expected near '='"
               }
             ]
           },
           "readableLocalNames": {},
           "nativeJumps": [
             "goto FLOW_after_lab_00d034ad;",
-            "if (bVar3) goto LAB_00d03564;"
+            "if (bVar2) goto LAB_00d03564;"
           ],
           "nativeLabels": [
             "FLOW_after_lab_00d034ad",
@@ -982,8 +943,8 @@
         "errors": [
           {
             "path": "FSE/BanditCamp/BanditCamp.lua",
-            "line": 315,
-            "message": "FSE/BanditCamp/BanditCamp.lua:315: ')' expected near '='"
+            "line": 303,
+            "message": "FSE/BanditCamp/BanditCamp.lua:303: ')' expected near '='"
           }
         ]
       },
@@ -999,7 +960,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 3,
-        "todo": 63
+        "todo": 20
       }
     },
     {
@@ -5934,6 +5895,6 @@
     "functionSyntaxPassed": 81,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 19,
-    "todo": 180
+    "todo": 137
   }
 }

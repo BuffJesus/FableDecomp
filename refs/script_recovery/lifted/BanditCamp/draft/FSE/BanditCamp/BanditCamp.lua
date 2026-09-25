@@ -246,172 +246,124 @@ function WatchForCostume(quest)
 end
 
 function CheckAnyBanditsKilled(quest)
-    local bVar3, fVar10, iVar4, iVar5, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9
+    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10
     local alive = true
+    v_stk_10 = 0
     if not quest:GetStateBool("BoastBegun") then
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        bVar3 = quest:IsRegionLoaded("BanditCampPathEntrance")
-        while not bVar3 do
+        bVar2 = quest:IsRegionLoaded("BanditCampPathEntrance")
+        while not bVar2 do
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
+            bVar2 = not alive
+            if bVar2 then
                 return
             end
-            bVar3 = quest:IsRegionLoaded("BanditCampPathEntrance")
+            bVar2 = quest:IsRegionLoaded("BanditCampPathEntrance")
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
     end
     quest:SetStateBool("BoastBegun", true)
-    iVar6 = -1
+    iVar5 = -1
     if quest:GetMasterGameState("BanditCampKillManyBandits") then
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then
+        bVar2 = not alive
+        if bVar2 then
             return
         end
-        fVar10 = 1.0
-        iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88)))
-        -- TODO(native): iVar6 = (**(iVar6 + 0x51c))(piVar7,"HUD_QUEST_ICON_BANDIT",iVar4,fVar10)
-        iVar6 = nil --[[unresolved native value]]
+        scale = 1.0
+        iVar3 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88)))
+        -- TODO(native): iVar5 = (**(iVar5 + 0x51c))(piVar1,"HUD_QUEST_ICON_BANDIT",iVar3,scale)
+        iVar5 = nil --[[unresolved native value]]
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar3 = not alive
-    piVar7 = 0x0
-    if not bVar3 then
+    bVar2 = not alive
+    if not bVar2 then
         while true do
-            -- TODO(native): piVar8 = *piVar7
-            piVar8 = nil --[[unresolved native value]]
-            -- TODO(native): pcVar2 = *(*piVar1 + 0x118)
-            pcVar2 = nil --[[unresolved native value]]
-            -- TODO(native): *piVar7 = 0xd03439;
-            -- TODO(native): this_00 = (*pcVar2)(piVar1)
-            this_00 = nil --[[unresolved native value]]
-            -- TODO(native): iVar4 = *this_00
-            iVar4 = nil --[[unresolved native value]]
-            -- TODO(native): *piVar7 = (int)(piVar7 + 8);
-            -- TODO(native): pcVar2 = *(iVar4 + 0xdc)
-            pcVar2 = nil --[[unresolved native value]]
-            -- TODO(native): piVar7[-1] = 0xd03448;
-            -- TODO(native): bVar3 = (*pcVar2)(this_00,*piVar7)
-            bVar3 = nil --[[unresolved native value]]
-            if bVar3 then break end
+            i_stk_8 = 0
+            -- TODO(native): ::__EH_epilog3(auStack_4,(int)&uStack_15,0);
+            this_00 = quest:GetHero()
+            bVar2 = this_00:MsgGetThingsKilled()
+            if bVar2 then break end
             -- LAB_00d034ad: (native jump target)
-            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (piVar7[7] ~= piVar8) then
-                -- TODO(native): *piVar7 = 0xd034c7;
+            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then goto LAB_00d03564 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillNoBandits", false)
             end
-            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and (piVar7[6] = piVar7[7], quest:ReadGlobalGameDataFloat(0xe88) <= piVar7[7]) then
-                -- TODO(native): *piVar7 = 0xd03506;
+            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and ("HUD_QUEST_ICON_BANDIT" = v_stk_10, quest:ReadGlobalGameDataFloat(0xe88) <= "HUD_QUEST_ICON_BANDIT") then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then goto LAB_00d03564 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
-                fVar10 = quest:ReadGlobalGameDataFloat(0xe88)
-                -- TODO(native): *piVar7 = -1;
-                -- TODO(native): piVar7[-1] = 0xd03530;
-                iVar5 = math.tointeger(math.modf(fVar10 - piVar7[6]))
-                -- TODO(native): piVar7[-1] = iVar5;
-                -- TODO(native): piVar7[-2] = iVar6;
-                -- TODO(native): pcVar2 = *(code **)(DAT_0143e90c + 0x53c);
-                -- TODO(native): piVar7[-3] = 0xd0353a;
-                -- TODO(native): (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);
-                piVar8 = 0x0
+                max = -1
+                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - "HUD_QUEST_ICON_BANDIT"))
+                quest:UpdateQuestInfoCounter(iVar4, max, i_stk_8)
             end
-            -- TODO(native): *piVar7 = 0xd03545;
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
-            -- TODO(native): pcVar2 = *(*piVar1 + 0x1c)
-            pcVar2 = nil --[[unresolved native value]]
-            -- TODO(native): *piVar7 = 0xd0354d;
-            -- TODO(native): (*pcVar2)(piVar1);
-            -- TODO(native): *piVar7 = 0xd03554;
+            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
+            alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            piVar7 = piVar8
-            if bVar3 then
+            bVar2 = not alive
+            if bVar2 then
                 return
             end
         end
         ::FLOW_after_lab_00d034ad::
-        -- TODO(native): *piVar7 = 0xd03453;
         alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if not bVar3 then
-            iVar4 = piVar7[9]
-            iVar5 = piVar7[8]
-            uVar9 = 0
-            if iVar4 - iVar5 >> 2 ~= 0 then
+        bVar2 = not alive
+        if not bVar2 then
+            uVar6 = 0
+            iVar3 = 0
+            if i_stk_8 - 0 >> 2 ~= 0 then
                 repeat
-                    -- TODO(native): if (*(iVar5 + uVar9 * 4) & 4) ~= 0 then
+                    -- TODO(native): if (*(iVar3 + uVar6 * 4) & 4) ~= 0 then
                     if false then
-                        -- TODO(native): *piVar7 = 0xd0347d;
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar3 = not alive
-                        if bVar3 then goto LAB_00d03564 end
-                        iVar4 = piVar7[9]
-                        -- TODO(native): piVar7[7] = piVar7[7] + 1;
-                        iVar5 = piVar7[8]
+                        bVar2 = not alive
+                        if bVar2 then goto LAB_00d03564 end
+                        v_stk_10 = v_stk_10 + 1
+                        iVar3 = 0
+                        iVar4 = i_stk_8
                     end
-                    uVar9 = uVar9 + 1
-                until not (uVar9 < (iVar4 - iVar5 >> 2))
+                    uVar6 = uVar6 + 1
+                until not (uVar6 < (iVar4 - iVar3 >> 2))
             end
-            -- TODO(native): *piVar7 = iVar4;
-            -- TODO(native): piVar7[-1] = iVar5;
-            -- TODO(native): piVar7[-2] = 0xd034ad;
-            -- TODO(native): std_vector_push_copy_element(piVar7 + 8,piVar7[-1],*piVar7);
-            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (piVar7[7] ~= piVar8) then
-                -- TODO(native): *piVar7 = 0xd034c7;
+            -- TODO(native): std_vector_push_copy_element(&iStack_c,iVar3,iVar4);
+            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then goto LAB_00d03564 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillNoBandits", false)
             end
-            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and (piVar7[6] = piVar7[7], quest:ReadGlobalGameDataFloat(0xe88) <= piVar7[7]) then
-                -- TODO(native): *piVar7 = 0xd03506;
+            if (not quest:GetMasterGameState("BanditCampKillManyBandits")) and ("HUD_QUEST_ICON_BANDIT" = v_stk_10, quest:ReadGlobalGameDataFloat(0xe88) <= "HUD_QUEST_ICON_BANDIT") then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then goto LAB_00d03564 end
+                bVar2 = not alive
+                if bVar2 then goto LAB_00d03564 end
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
-                fVar10 = quest:ReadGlobalGameDataFloat(0xe88)
-                -- TODO(native): *piVar7 = -1;
-                -- TODO(native): piVar7[-1] = 0xd03530;
-                iVar5 = math.tointeger(math.modf(fVar10 - piVar7[6]))
-                -- TODO(native): piVar7[-1] = iVar5;
-                -- TODO(native): piVar7[-2] = iVar6;
-                -- TODO(native): pcVar2 = *(code **)(DAT_0143e90c + 0x53c);
-                -- TODO(native): piVar7[-3] = 0xd0353a;
-                -- TODO(native): (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);
-                piVar8 = 0x0
+                max = -1
+                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - "HUD_QUEST_ICON_BANDIT"))
+                quest:UpdateQuestInfoCounter(iVar4, max, 0)
             end
-            -- TODO(native): *piVar7 = 0xd03545;
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
-            -- TODO(native): pcVar2 = *(*piVar1 + 0x1c)
-            pcVar2 = nil --[[unresolved native value]]
-            -- TODO(native): *piVar7 = 0xd0354d;
-            -- TODO(native): (*pcVar2)(piVar1);
-            -- TODO(native): *piVar7 = 0xd03554;
+            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
+            alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            piVar7 = piVar8
-            if bVar3 then
+            bVar2 = not alive
+            if bVar2 then
                 return
             end
             goto FLOW_after_lab_00d034ad
         end
         ::LAB_00d03564::
-        -- TODO(native): *piVar7 = 0xd0356d;
-        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
+        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
     end
 end
 

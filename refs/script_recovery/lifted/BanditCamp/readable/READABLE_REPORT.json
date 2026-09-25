@@ -94,7 +94,7 @@
      "function": "CheckAnyBanditsKilled",
      "rewrites": {
       "flags": 0,
-      "termination": 9,
+      "termination": 11,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -102,9 +102,9 @@
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 9,
-      "declarations": 11,
-      "decimalLiterals": 8
+      "flagTests": 11,
+      "declarations": 14,
+      "decimalLiterals": 5
      }
     },
     {
@@ -542,14 +542,14 @@
      "function": "CheckAnyBanditsKilled",
      "sourceLine": 225,
      "locals": {
-      "bVar3_1": {
+      "bVar2_1": {
        "name": "isActiveThreadTerminating",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar3_2": {
+      "bVar2_2": {
        "name": "isRegionLoaded",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -557,128 +557,129 @@
         "isRegionLoaded"
        ]
       },
-      "bVar3_3": {
+      "bVar2_3": {
        "name": "isActiveThreadTerminating2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar3_4": {
+      "bVar2_4": {
        "name": "isActiveThreadTerminating3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar3_5": {
+      "bVar2_5": {
        "name": "isActiveThreadTerminating4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar3_6": {
+      "bVar2_6": {
        "name": "predicateResult",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
-      "bVar3_8": {
-       "name": "isActiveThreadTerminating5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar3_9": {
-       "name": "isActiveThreadTerminating6",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar3_10": {
-       "name": "predicateResult2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar3_11": {
-       "name": "predicateResult3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar3_12": {
-       "name": "isActiveThreadTerminating7",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar3_13": {
-       "name": "isActiveThreadTerminating8",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar3_14": {
-       "name": "isActiveThreadTerminating9",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar3_15": {
-       "name": "predicateResult4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "fVar10_2": {
+      "bVar2_7": {
        "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "fVar10_3": {
+      "bVar2_8": {
+       "name": "isActiveThreadTerminating5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_9": {
+       "name": "isActiveThreadTerminating6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_10": {
+       "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_11": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar2_12": {
+       "name": "isActiveThreadTerminating8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_13": {
+       "name": "isActiveThreadTerminating9",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_14": {
+       "name": "isActiveThreadTerminating10",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar2_15": {
+       "name": "isActiveThreadTerminating11",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "iVar3_1": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar4_1": {
+      "iVar3_2": {
        "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
         null
        ]
       },
-      "iVar4_2": {
+      "iVar4": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        null
-       ]
-      },
-      "iVar5_1": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
         null,
         null
        ]
       },
-      "iVar5_2": {
+      "i_stk_8": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "uVar6": {
        "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -686,25 +687,8 @@
         null
        ]
       },
-      "piVar7": {
+      "v_stk_10": {
        "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null
-       ]
-      },
-      "piVar8": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "uVar9": {
-       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -713,140 +697,85 @@
       }
      },
      "splitLocals": {
-      "bVar3": {
+      "bVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, fVar10, iVar4, iVar5, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
+       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
        "versions": {
-        "bVar3_1": [
-         5
+        "bVar2_1": [
+         6
         ],
-        "bVar3_2": [
-         9,
-         16
+        "bVar2_2": [
+         10,
+         17
         ],
-        "bVar3_3": [
-         12
+        "bVar2_3": [
+         13
         ],
-        "bVar3_4": [
-         18
+        "bVar2_4": [
+         19
         ],
-        "bVar3_5": [
-         26
+        "bVar2_5": [
+         27
         ],
-        "bVar3_6": [
-         36
+        "bVar2_6": [
+         37
         ],
-        "bVar3_7": [
-         54
+        "bVar2_7": [
+         43
         ],
-        "bVar3_8": [
-         59
+        "bVar2_8": [
+         47
         ],
-        "bVar3_9": [
-         65
+        "bVar2_9": [
+         52
         ],
-        "bVar3_10": [
-         87
+        "bVar2_10": [
+         61
         ],
-        "bVar3_11": [
-         96
-        ],
-        "bVar3_12": [
-         106
-        ],
-        "bVar3_13": [
-         121
-        ],
-        "bVar3_14": [
-         127
-        ],
-        "bVar3_15": [
-         149
-        ]
-       }
-      },
-      "fVar10": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, fVar10, iVar4, iVar5, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
-       "versions": {
-        "fVar10_1": [
-         30
-        ],
-        "fVar10_2": [
+        "bVar2_11": [
          68
         ],
-        "fVar10_3": [
-         130
-        ]
-       }
-      },
-      "iVar4": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, fVar10, iVar4, iVar5, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
-       "versions": {
-        "iVar4_1": [
-         31,
-         48
+        "bVar2_12": [
+         76
         ],
-        "iVar4_2": [
-         98,
-         108
+        "bVar2_13": [
+         87
+        ],
+        "bVar2_14": [
+         92
+        ],
+        "bVar2_15": [
+         101
         ]
        }
       },
-      "iVar5": {
+      "iVar3": {
        "declarationLine": 2,
-       "originalDeclaration": "    local bVar3, fVar10, iVar4, iVar5, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
+       "originalDeclaration": "    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
        "versions": {
-        "iVar5_1": [
+        "iVar3_1": [
+         32
+        ],
+        "iVar3_2": [
          71,
-         133
-        ],
-        "iVar5_2": [
-         99,
-         110
+         79
         ]
        }
       }
      },
      "removedLiteralLocals": {
-      "fVar10_1": {
-       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, fVar10_1, fVar10_2, fVar10_3, iVar4_1, iVar4_2, iVar5_1, iVar5_2, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
-       "30": "        fVar10_1 = 1.0\n"
-      },
-      "iVar6": {
-       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, fVar10_1, fVar10_2, fVar10_3, iVar4_1, iVar4_2, iVar5_1, iVar5_2, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
-       "24": "    iVar6 = -1\n",
-       "33": "        iVar6 = nil --[[unresolved native value]]\n"
-      },
-      "pcVar2": {
-       "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, fVar10_1, fVar10_2, fVar10_3, iVar4_1, iVar4_2, iVar5_1, iVar5_2, iVar6, pcVar2, piVar7, piVar8, this_00, uVar9\n",
-       "43": "            pcVar2 = nil --[[unresolved native value]]\n",
-       "51": "            pcVar2 = nil --[[unresolved native value]]\n",
-       "82": "            pcVar2 = nil --[[unresolved native value]]\n",
-       "144": "            pcVar2 = nil --[[unresolved native value]]\n"
+      "iVar5": {
+       "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, iVar3_1, iVar3_2, iVar4, iVar5, i_stk_8, max, scale, this_00, uVar6, v_stk_10\n",
+       "25": "    iVar5 = -1\n",
+       "34": "        iVar5 = nil --[[unresolved native value]]\n"
       }
      },
-     "inlinedLiteralLocals": {
-      "bVar3_7": {
-       "literal": "nil",
-       "definitionLine": 54,
-       "readLines": [
-        55
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, fVar10_2, fVar10_3, iVar4_1, iVar4_2, iVar5_1, iVar5_2, piVar7, piVar8, this_00, uVar9\n",
-        "54": "            bVar3_7 = nil --[[unresolved native value]]\n",
-        "55": "            if bVar3_7 then break end\n"
-       }
-      }
-     },
+     "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
     },
     {
      "function": "WatchForEndOfScript",
-     "sourceLine": 386,
+     "sourceLine": 336,
      "locals": {
       "bVar1": {
        "name": "scratchValue",
@@ -923,7 +852,7 @@
     },
     {
      "function": "WatchForEndOfScript",
-     "sourceLine": 240,
+     "sourceLine": 186,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -931,7 +860,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -1251,22 +1180,22 @@
      },
      "CheckAnyBanditsKilled": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 1,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 1,
        "aliveStaging": 6,
        "exitChecksInlined": 6,
-       "frameChecks": 1,
-       "inlinedTemporaries": 4,
-       "deadDefinitions": 3,
+       "frameChecks": 3,
+       "inlinedTemporaries": 6,
+       "deadDefinitions": 2,
        "guardWrappers": 1,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 1,
-       "literals": 0,
+       "literals": 3,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
@@ -1274,7 +1203,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 2,
+       "constantConditions": 3,
        "emptyElse": 0,
        "unusedClosures": 0,
        "gotoElse": 0,
@@ -1285,17 +1214,17 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 4,
+       "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 9,
+       "parentheses": 10,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 0,
+       "freeSuffixes": 1,
        "hoistedState": 0
       },
       "before": {
-       "lines": 149,
-       "temporaries": 15,
+       "lines": 98,
+       "temporaries": 13,
        "labels": 2,
        "gotos": 6,
        "terminationChecks": 13,
@@ -1303,12 +1232,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 122,
-       "temporaries": 7,
+       "lines": 68,
+       "temporaries": 6,
        "labels": 3,
        "gotos": 7,
-       "terminationChecks": 11,
-       "frameChecks": 1,
+       "terminationChecks": 9,
+       "frameChecks": 3,
        "requires": 0
       }
      },
@@ -27710,8 +27639,8 @@
   "errors": [
    {
     "path": "FSE/BanditCamp/BanditCamp.lua",
-    "line": 163,
-    "message": "FSE/BanditCamp/BanditCamp.lua:163: 'then' expected near '='"
+    "line": 148,
+    "message": "FSE/BanditCamp/BanditCamp.lua:148: 'then' expected near '='"
    },
    {
     "path": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua",

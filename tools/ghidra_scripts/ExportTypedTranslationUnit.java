@@ -174,6 +174,8 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                     : new ReturnParameterImpl(def.getReturnType(), currentProgram);
                 f.updateFunction(cc, ret, params,
                     custom ? Function.FunctionUpdateType.CUSTOM_STORAGE : Function.FunctionUpdateType.DYNAMIC_STORAGE_ALL_PARAMS, true, SourceType.USER_DEFINED);
+                if (ho.has("clearCallFixup") && ho.get("clearCallFixup").getAsBoolean())
+                    f.setCallFixup(null); // reviewed native bytes contradict an inherited library injection
                 helpersTyped++;
             } catch (Exception ex) { println("HELPER " + a + " signature rejected: " + ex); }
         }

@@ -53,3 +53,20 @@ Generated readable output retains the four syntax failures. Readable smoke:
 Gate1GuardOuter bitwise nil and BanditKingMissionProcess boolean arithmetic).
 Evidence: `work/bandit_camp_readable_smoke.json`. This is a recovery baseline,
 not a playable package.
+
+## False exception-handler injection
+
+CheckAnyBanditsKilled's typed decompile introduced a stack-space warning
+that the untyped export did not have. At 0x004502EB the retail bytes are
+`mov eax,ecx; mov ecx,[esp+8]; mov [eax],ecx; ret 8`, but the inherited name
+was __EH_epilog3. Ghidra injected exception-stack teardown at its call.
+A reviewed helper specification now explicitly clears that call fixup;
+the exporter honors this only for helpers carrying `clearCallFixup: true`.
+
+A full read-only typed re-export changed exactly one decompiled body,
+CheckAnyBanditsKilled. Both the injected-epilogue and stack-space warnings
+disappeared. Regeneration reduces this function's TODOs from 51 to 8, and
+the unit total from 180 to 137. Syntax remains 81/85 functions and 15/19
+files: its nested conditional stack assignment still needs lowering.
+Evidence: `work/bandit_camp_fixup/export.log` and the before/after typed
+exports. No other helper receives the opt-in flag.

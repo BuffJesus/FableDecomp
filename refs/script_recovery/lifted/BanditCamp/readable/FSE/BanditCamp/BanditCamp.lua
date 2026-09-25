@@ -121,8 +121,8 @@ end
 
 -- Q_BanditCamp.CheckAnyBanditsKilled (retail 0x00d032f0)
 function CheckAnyBanditsKilled(quest)
-    local scratchValue3, scratchValue4, scratchValue6, scratchValue7, scratchValue8, this_00
-    local scratchValue9
+    local scratchValue, scratchValue4, scratchValue5, scale, scratchValue6, scratchValue7
+    scratchValue7 = 0
     if not quest:GetStateBool("BoastBegun") then
         if quest:IsActiveThreadTerminating() then return end
         while not quest:IsRegionLoaded("BanditCampPathEntrance") do
@@ -133,115 +133,60 @@ function CheckAnyBanditsKilled(quest)
     if quest:GetMasterGameState("BanditCampKillManyBandits") then
         if quest:IsActiveThreadTerminating() then return end
         math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill)))
-        -- TODO(native): iVar6 = (**(iVar6 + 0x51c))(piVar7,"HUD_QUEST_ICON_BANDIT",iVar4,fVar10)
+        -- TODO(native): iVar5 = (**(iVar5 + 0x51c))(piVar1,"HUD_QUEST_ICON_BANDIT",iVar3,scale)
 --[[unresolved native value]]
     end
-    scratchValue7 = 0
     if quest:IsActiveThreadTerminating() then return end
     while true do
-        -- TODO(native): piVar8 = *piVar7
-        scratchValue8 = nil --[[unresolved native value]]
-        -- TODO(native): pcVar2 = *(*piVar1 + 0x118)
---[[unresolved native value]]
-        -- TODO(native): *piVar7 = 0xd03439;
-        -- TODO(native): this_00 = (*pcVar2)(piVar1)
-        this_00 = nil --[[unresolved native value]]
-        -- TODO(native): iVar4 = *this_00
-        scratchValue3 = nil --[[unresolved native value]]
-        -- TODO(native): *piVar7 = (int)(piVar7 + 8);
-        -- TODO(native): pcVar2 = *(iVar4 + 0xdc)
---[[unresolved native value]]
-        -- TODO(native): piVar7[-1] = 0xd03448;
-        -- TODO(native): bVar3 = (*pcVar2)(this_00,*piVar7)
-    --[[unresolved native value]]
-        if nil then break end
-        if quest:GetMasterGameState("BanditCampKillNoBandits") and scratchValue7[7] ~= scratchValue8 then
-            -- TODO(native): *piVar7 = 0xd034c7;
+        scratchValue5 = 0
+        -- TODO(native): ::__EH_epilog3(auStack_4,(int)&uStack_15,0);
+        if quest:GetHero():MsgGetThingsKilled() then break end
+        if quest:GetMasterGameState("BanditCampKillNoBandits") and false then
             if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
             quest:SetMasterGameState("BanditCampKillNoBandits", false)
         end
-        if not quest:GetMasterGameState("BanditCampKillManyBandits") and scratchValue7[6] = scratchValue7[7], quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= scratchValue7[7] then
-            -- TODO(native): *piVar7 = 0xd03506;
+        if not quest:GetMasterGameState("BanditCampKillManyBandits") and "HUD_QUEST_ICON_BANDIT" = 0, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= "HUD_QUEST_ICON_BANDIT" then
             if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
             quest:SetMasterGameState("BanditCampKillManyBandits", true)
-            local scratchValue = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill)
-            -- TODO(native): *piVar7 = -1;
-            -- TODO(native): piVar7[-1] = 0xd03530;
-            math.tointeger(math.modf(scratchValue - scratchValue7[6]))
-            -- TODO(native): piVar7[-1] = iVar5;
-            -- TODO(native): piVar7[-2] = iVar6;
-            -- TODO(native): pcVar2 = *(code **)(DAT_0143e90c + 0x53c);
-            -- TODO(native): piVar7[-3] = 0xd0353a;
-            -- TODO(native): (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);
-            scratchValue8 = 0
+            scratchValue4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) - "HUD_QUEST_ICON_BANDIT"))
+            quest:UpdateQuestInfoCounter(scratchValue4, -1, 0)
         end
-        -- TODO(native): *piVar7 = 0xd03545;
-        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
-        -- TODO(native): pcVar2 = *(*piVar1 + 0x1c)
---[[unresolved native value]]
-        -- TODO(native): *piVar7 = 0xd0354d;
-        -- TODO(native): (*pcVar2)(piVar1);
-        -- TODO(native): *piVar7 = 0xd03554;
-        scratchValue7 = scratchValue8
-        if quest:IsActiveThreadTerminating() then return end
+        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
+        if not quest:NewScriptFrame() then return end
     end
     ::FLOW_after_lab_00d034ad::
-    -- TODO(native): *piVar7 = 0xd03453;
     if not quest:IsActiveThreadTerminating() then
-        scratchValue4 = scratchValue7[9]
-        scratchValue6 = scratchValue7[8]
-        scratchValue9 = 0
-        if scratchValue4 - scratchValue6 >> 2 ~= 0 then
+        scratchValue6 = 0
+        scratchValue = 0
+        if scratchValue5 - 0 >> 2 ~= 0 then
             repeat
-                -- TODO(native): if (*(iVar5 + uVar9 * 4) & 4) ~= 0 then
-                scratchValue9 = scratchValue9 + 1; goto continue_1
-                -- TODO(native): *piVar7 = 0xd0347d;
+                -- TODO(native): if (*(iVar3 + uVar6 * 4) & 4) ~= 0 then
+                scratchValue6 = scratchValue6 + 1; goto continue_1
                 if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
-                scratchValue4 = scratchValue7[9]
-                -- TODO(native): piVar7[7] = piVar7[7] + 1;
-                scratchValue6 = scratchValue7[8]
-                scratchValue9 = scratchValue9 + 1
+                scratchValue7 = scratchValue7 + 1
+                scratchValue = 0
+                scratchValue4 = scratchValue5
+                scratchValue6 = scratchValue6 + 1
                 ::continue_1::
-            until scratchValue9 >= (scratchValue4 - scratchValue6 >> 2)
+            until scratchValue6 >= (scratchValue4 - scratchValue >> 2)
         end
-        -- TODO(native): *piVar7 = iVar4;
-        -- TODO(native): piVar7[-1] = iVar5;
-        -- TODO(native): piVar7[-2] = 0xd034ad;
-        -- TODO(native): std_vector_push_copy_element(piVar7 + 8,piVar7[-1],*piVar7);
-        if quest:GetMasterGameState("BanditCampKillNoBandits") and scratchValue7[7] ~= scratchValue8 then
-            -- TODO(native): *piVar7 = 0xd034c7;
+        -- TODO(native): std_vector_push_copy_element(&iStack_c,iVar3,iVar4);
+        if quest:GetMasterGameState("BanditCampKillNoBandits") and scratchValue7 ~= 0 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
             quest:SetMasterGameState("BanditCampKillNoBandits", false)
         end
-        if not quest:GetMasterGameState("BanditCampKillManyBandits") and scratchValue7[6] = scratchValue7[7], quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= scratchValue7[7] then
-            -- TODO(native): *piVar7 = 0xd03506;
+        if not quest:GetMasterGameState("BanditCampKillManyBandits") and "HUD_QUEST_ICON_BANDIT" = scratchValue7, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= "HUD_QUEST_ICON_BANDIT" then
             if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
             quest:SetMasterGameState("BanditCampKillManyBandits", true)
-            local scratchValue2 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill)
-            -- TODO(native): *piVar7 = -1;
-            -- TODO(native): piVar7[-1] = 0xd03530;
-            math.tointeger(math.modf(scratchValue2 - scratchValue7[6]))
-            -- TODO(native): piVar7[-1] = iVar5;
-            -- TODO(native): piVar7[-2] = iVar6;
-            -- TODO(native): pcVar2 = *(code **)(DAT_0143e90c + 0x53c);
-            -- TODO(native): piVar7[-3] = 0xd0353a;
-            -- TODO(native): (*pcVar2)(piVar1,piVar7[-2],piVar7[-1],*piVar7);
-            scratchValue8 = 0
+            scratchValue4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) - "HUD_QUEST_ICON_BANDIT"))
+            quest:UpdateQuestInfoCounter(scratchValue4, -1, 0)
         end
-        -- TODO(native): *piVar7 = 0xd03545;
-        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
-        -- TODO(native): pcVar2 = *(*piVar1 + 0x1c)
---[[unresolved native value]]
-        -- TODO(native): *piVar7 = 0xd0354d;
-        -- TODO(native): (*pcVar2)(piVar1);
-        -- TODO(native): *piVar7 = 0xd03554;
-        scratchValue7 = scratchValue8
-        if quest:IsActiveThreadTerminating() then return end
+        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
+        if not quest:NewScriptFrame() then return end
         goto FLOW_after_lab_00d034ad
     end
     ::LAB_00d03564::
-    -- TODO(native): *piVar7 = 0xd0356d;
-    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)(piVar7 + 8));
+    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
 end
 
 -- Q_BanditCamp.WatchForEndOfScript (retail 0x00d013a0)

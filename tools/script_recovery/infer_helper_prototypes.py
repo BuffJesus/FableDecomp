@@ -45,6 +45,14 @@ def purge(image, address, limit=0x600):
 # Prototypes proven from the retail disassembly; they replace the purge-only inference (which types every stack
 # word `int`, so an immediate float operand printed as a stale register).
 REVIEWED = {
+    # mov eax,ecx; mov ecx,[esp+8]; mov [eax],ecx; ret 8.
+    # The inherited __EH_epilog3 label must not inject exception-stack teardown.
+    0x004502EB: {'name': 'FUN_004502eb', 'cc': '__thiscall', 'ret': 'int',
+                 'params': [{'name': 'p0', 'type': 'int', 'ctype': 'inferred'},
+                            {'name': 'p1', 'type': 'int', 'ctype': 'inferred'}],
+                 'clearCallFixup': True,
+                 'source': 'reviewed disassembly 0x004502EB (2026-09-25): stores second stack word, ret 8',
+                 'bsimLabel': '__EH_epilog3'},
     # IsDistanceFromThingToPositionOver: ecx = the thing (IsAlive through its vtable +0x12c, GetPos +0x18),
     # edx = the C3DVector (fld [esi] / [esi+4] / [esi+8]), one float on the stack (`fld [esp+0xc]; fmul`), AL result,
     # `ret 4`. As `int` the pushed 2.0 printed as `iVar20` and every Trader Escort waypoint test stayed a TODO.
