@@ -54,18 +54,28 @@ local function isParty(quest, e, fl)
     return false
 end
 
--- FadeOutAndKillEntity is the kill that works: ModifyThingHealth(e, -N, true/false) and SetThingAsKilled
--- left a CREATURE_BALVERINE_EASY at full health (Darkwood2, 2026-09-24)
+-- Kill by damage: ModifyThingHealth(e, -N, true) takes health to 0 and the creature dies (the third argument
+-- is "can kill"; false stops at 1 health -- checked live 2026-09-25). Quest scripts see an ordinary death: the
+-- Darkwood rock troll's Main waits for GetHealth(me) == 0 to stop the traders being scared, and a fade-kill
+-- skipped that (the traders stayed scared in Darkwood6, run te6). FadeOutAndKillEntity stays as the fallback
+-- for a target still standing on the next pass (SetThingAsKilled left a balverine at full health).
 local function clearAround(quest, hero, fl, positions)
     local function consider(e)
-        if alive(e) and not e:IsEqualTo(hero) and quest:AreEntitiesEnemies(hero, e) and not isParty(quest, e, fl) then
+        -- a creature killed by damage still reports IsAlive() while it lies there: health 0 is dead
+        -- (without this the te7 run counted each corpse again whenever it slid onto a new rounded position)
+        if alive(e) and quest:GetHealth(e) > 0 and not e:IsEqualTo(hero) and quest:AreEntitiesEnemies(hero, e)
+                and not isParty(quest, e, fl) then
             local p = e:GetPos()
             local key = string.format('%.0f,%.0f', p.x, p.y)
-            if not R.fading[key] or R.frame - R.fading[key] > 90 then
+            if not R.fading[key] then
+                R.fading[key] = R.frame
+                quest:ModifyThingHealth(e, -100000, true)
+                R.kills = R.kills + 1
+                say('killed ' .. tostring(e:GetDefName()))
+            elseif R.frame - R.fading[key] > 90 and quest:GetHealth(e) > 0 then
                 R.fading[key] = R.frame
                 e:FadeOutAndKillEntity(true, 0.3, true)
-                R.kills = R.kills + 1
-                say('cleared ' .. tostring(e:GetDefName()))
+                say('faded ' .. tostring(e:GetDefName()))
             end
         end
     end

@@ -34,8 +34,8 @@
       45.17
     ],
     "BarrowFields": [
-      2690.0,
-      2190.0
+      2643.89,
+      2167.16
     ]
   },
   "enemyNames": [
@@ -55,6 +55,6 @@
     "DarkwoodTrader",
     "EndTrader"
   ],
-  "party": "quest:GetStateInt('TradersStillAliveCounter')",
+  "party": "(quest:GetHero():GetCurrentMapName() == 'BarrowFields') and 0 or quest:GetStateInt('TradersStillAliveCounter')",
   "partyHost": "TraderEscort"
 }
