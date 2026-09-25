@@ -1,0 +1,18 @@
+{
+  "quest": "QS_GuardianSisterInfo",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "QS_GuardianSisterInfo",
+    "travel": [
+      [339, 3808.0, 4288.0, 29.2, "BowerstoneSlums"]
+    ],
+    "talk": "MazeAtTavern",
+    "talkLabel": "Maze"
+  },
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('QS_GuardianSisterInfo')",
+  "failed": "(not quest:IsQuestActive('QS_GuardianSisterInfo')) and not quest:IsQuestCompleted('QS_GuardianSisterInfo')"
+}

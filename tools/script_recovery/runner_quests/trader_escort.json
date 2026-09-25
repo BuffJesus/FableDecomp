@@ -1,6 +1,23 @@
 {
   "quest": "Q_TraderEscort",
   "host": "LUAGameflow",
+  "start": {
+    "quest": "Q_TraderEscort",
+    "title": "Trader Escort",
+    "guild": [
+      70,
+      4787.62,
+      3680.52,
+      38.0
+    ],
+    "card": "OBJECT_QUEST_CARD_DARKWOOD_TRADER_ESCORT",
+    "travel": [
+      18,
+      3056.0,
+      2720.0,
+      63.5
+    ]
+  },
   "maps": "^(?:Darkwood|BarrowFields$)",
   "legs": {
     "Darkwood1": [
@@ -35,7 +52,9 @@
     ],
     "BarrowFields": [
       2643.89,
-      2167.16
+      2167.16,
+      25.53,
+      false
     ]
   },
   "enemyNames": [

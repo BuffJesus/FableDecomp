@@ -1,0 +1,48 @@
+{
+  "quest": "Q_WaspBoss",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "Q_WaspBoss",
+    "title": "Wasp Menace",
+    "guild": [
+      70,
+      4787.62,
+      3680.52,
+      38.0
+    ],
+    "card": "OBJECT_QUEST_CARD_WASP_MENACE",
+    "travel": [
+      [
+        1,
+        3296.0,
+        3552.0,
+        39.0,
+        "LookoutPoint"
+      ],
+      [
+        2,
+        3168.0,
+        3568.0,
+        33.8,
+        "PicnicArea"
+      ]
+    ]
+  },
+  "maps": "PicnicArea$|LookoutPoint$",
+  "legs": {},
+  "hunt": true,
+  "enemyNames": [
+    "HornetDrone",
+    "WaspChaser",
+    "WaspAttacker"
+  ],
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('Q_WaspBoss')",
+  "failed": "(not quest:IsQuestActive('Q_WaspBoss')) and not quest:IsQuestCompleted('Q_WaspBoss')",
+  "fightNames": [
+    "QueenHornet"
+  ],
+  "fightDefs": [
+    "CREATURE_HORNET_PICNIC"
+  ]
+}
