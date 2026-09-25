@@ -867,6 +867,13 @@ def normalise_typed_decompile(text: str) -> str:
         phase = text[m.start():end]
         phase = re.sub(r'\b' + re.escape(var) + r' = \(CCharString(?:_bv)?\)\(float\)', scalar + ' = ', phase)
         phase = re.sub(r'\(float\)' + re.escape(var) + r'\b', scalar, phase)
+        # bare copies of the value in the same phase (`CVar6 = CVar2; ... (float)CVar6`, RockTrollTrigger Main's
+        # trigger distance: the copy read the unset string register and the distance test got nil, 2026-09-24)
+        # (only a plain copy whose target is itself read as a float: the slot's later non-float life -- a handle,
+        # a pointer -- shares this phase and must keep its name)
+        phase = re.sub(r'^([ \t]*)(\w+) = ' + re.escape(var) + r';',
+                       lambda mm: f'{mm.group(1)}{mm.group(2)} = {scalar};' if re.search(r'\(float\)' + re.escape(mm.group(2)) + r'\b', phase) else mm.group(0),
+                       phase, flags=re.M)
         phase = re.sub(r'\(float10\)', '', phase)
         text = text[:m.start()] + phase + text[end:]
     return text
@@ -1440,6 +1447,47 @@ def fold_name_compare(text):
     return text
 
 
+RE_INLINE_STRING_EQUALITY = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<p>\w+) = \(int \*\)(?P<call>[^;\n]+);[ \t]*\r?\n'
+    r'[ \t]*(?P<a>\w+) = \(undefined4 \*\)\*(?P=p);[ \t]*\r?\n'
+    r'[ \t]*(?P<b>\w+) = (?P<other>[^;\n]+);[ \t]*\r?\n'
+    r'[ \t]*if \((?P=b) == (?P=a)\) \{[ \t]*\r?\n[ \t]*(?P<c>\w+) = \'\\x01\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
+    r'[ \t]*else if \(\((?P=b) == \(undefined4 \*\)0x0\) \|\| \((?P=a) == \(undefined4 \*\)0x0\)\) \{[ \t]*\r?\n'
+    r'[ \t]*(?P=c) = \'\\0\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
+    r'[ \t]*else if \((?P=b)\[1\] == (?P=a)(?:\.y|\[1\])\) \{[ \t]*\r?\n'
+    r'[ \t]*(?P<cmp>\w+) = CBasicString<char>::Compare\(\(void \*\)\*(?P=b),\(void \*\)(?:\*(?P=a)|(?P=a)\.x)\);[ \t]*\r?\n'
+    r'[ \t]*(?P=c) = [^;\n]*(?P=cmp)[^;\n]*;[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n'
+    r'[ \t]*else \{[ \t]*\r?\n[ \t]*(?P=c) = \'\\0\';[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n', re.M)
+
+
+def fold_inline_string_equality(text):
+    """`CCharString == CCharString` inlined over the two string reps: same pointer -> true, a null rep -> false,
+    same length -> `CBasicString<char>::Compare(..) == 0`, else false. The operands are a string the code just
+    produced (`p = (int *)CALL; a = *p`) and another rep (`b = EXPR`): the whole block is `c = ENGINE_StrEq(p, EXPR)`
+    (DarkwoodTrader Main: only the trader whose GetDataString() is the quest's TraderToTalk greets the camp
+    trader; unfolded, every trader took the greeting branch and none resumed following, 2026-09-24)."""
+    def repl(m):
+        # the getter stays a statement (the lifter reads `p = (int *)CALL` as `p = me:GetDataString()`)
+        return (f"{m.group('ind')}{m.group('p')} = (int *){m.group('call').strip()};\n"
+                f"{m.group('ind')}{m.group('c')} = ENGINE_StrEq({m.group('p')}, {m.group('other').strip()});\n")
+    out, pos = [], 0
+    for m in RE_INLINE_STRING_EQUALITY.finditer(text):
+        out.append(text[pos:m.start()])
+        out.append(repl(m))
+        pos = m.end()
+        # the flag's next use tests it as a char (`if (c == '\0')`): the result is a boolean now
+        c = re.escape(m.group('c'))
+        nxt = re.search(r'\b' + c + r'\b', text[pos:])
+        if nxt:
+            at = pos + nxt.start()
+            test = re.match(c + r" (==|!=) '\\0'", text[at:])
+            if test:
+                out.append(text[pos:at] + ('!' if test.group(1) == '==' else '') + m.group('c'))
+                pos = at + test.end()
+    out.append(text[pos:])
+    return ''.join(out)
+
+
 def fold_null_string_branches(text):
     """`operator==(CCharString, literal)` inlined: a null buffer takes an inlined `"" == literal` path (folded to
     `false` by `fold_inline_strncmp`), otherwise `Compare`. The Lua string compare covers both, so the general
@@ -1895,6 +1943,7 @@ def lower_after_annotate(text, thing_slots=None):
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
+    text = fold_inline_string_equality(text)
     text = fold_by_value_thing_release(text)
     text = fold_thing_copy_from_pointer(text)
     # a no-operand thing method called through the stack thing's own vtable word (`(**(code **)(X._0_4_ + 0x12c))()`
@@ -2675,6 +2724,19 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     for var in table_registers:
         text = re.sub(r'\*\((float|int|undefined4|uint) \*\)\(' + re.escape(var) + r' \+ (0x[0-9a-f]{3,}|\d{3,})\)',
                       r'*(\1 *)(DAT_0143e90c + \2)', text)
+    # an int field the export typed as a string slot: `X = *(CCharString *)(DAT_0143e90c + OFF);` whose next use
+    # is `(int)X` (DarkwoodAssassinSpawn Main's spawn distance 0xe14; left alone the distance test read nil)
+    for m in list(re.finditer(r'^([ \t]*)(\w+) = \*\(CCharString(?:_bv)? \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\);', text, re.M)):
+        var = re.escape(m.group(2))
+        at = text.find(m.group(0))
+        tail = text[at + len(m.group(0)):]
+        use = re.search(r'(\(int\))?(?<![\w&])' + var + r'\b', tail)
+        if not use or not use.group(1):
+            continue
+        end = re.search(r'&' + var + r'\b|^[ \t]*' + var + r' = ', tail, re.M)
+        scope, rest = (tail[:end.start()], tail[end.start():]) if end else (tail, '')
+        text = (text[:at] + f'{m.group(1)}{m.group(2)} = ENGINE_GlobalGameData({m.group(3)});'
+                + re.sub(r'\(int\)' + var + r'\b', m.group(2), scope) + rest)
     text = lower_global_definition_strings(text, getattr(spec, 'call_labels', {}))
     text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
     text = re.sub(r'\*\((?:int|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
@@ -3070,6 +3132,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = re.sub(r'^([ \t]*)CCharString(?:::|__)AssignFromWide\((?:\(CCharString \*\))?\(?' + base + r' \+ ' + off_re(off) + r'\)?,\s*(0x[0-9a-f]+)\);',
                               assign_wide, text, flags=re.M)
             text = re.sub(member, f'{tag}STATE_GetString("{name}")', text)
+            # the member's string rep read raw for an inlined `==` (`puVar1 = *(undefined4 **)(parent + 0x78)`,
+            # DarkwoodTrader Main's TraderToTalk test; fold_inline_string_equality finishes it)
+            text = re.sub(r'\*\(undefined4 \*\*\)\(' + base + r' \+ ' + off_re(off) + r'\)', f'{tag}STATE_GetString("{name}")', text)
     # 3c'. helpers returning a CScriptThing through a hidden pointer: Ghidra drops the pointer push, so the
     # call reads `Helper(this);` and the result is the stack object whose Data (`X._4_4_`) is used next.
     hidden = {label for label, target in getattr(spec, 'call_labels', {}).items() if target in getattr(spec, 'hidden_thing_returns', set())}
@@ -3564,6 +3629,7 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'math.tointeger(math.modf({a[0]}))')   # integral part (truncated toward zero), one value in every operand position
     # Ghidra's `ABS(x)` is the x87 `fabs` (PreMeleeWhisper 0x00D5282C-0x00D5283D: `fld; fabs; fcomp [1.0]; fnstsw; test ah,0x41; jp`)
     text = re.sub(r'(?<![\w.:])ABS\(', 'math.abs(', text)
+    text = _expand_calls(text, 'ENGINE_StrEq', lambda a: f'({a[0]} == {a[1]})' if len(a) == 2 else 'ENGINE_StrEq(' + ', '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_Round', lambda a: f'math.floor(({a[0]}) + 0.5)' if len(a) == 1 else 'ENGINE_Round(' + ', '.join(a) + ')')
     text = text.replace('ENGINE_IsAllDead(', '__native_all_dead(')     # the helper is defined per file by convert_quest_unit

@@ -12,14 +12,14 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar2, CVar6, f_CVar2, pCVar4, pCVar5, xStack_10, xStack_20, xStack_30
+    local CVar6, f_CVar2, pCVar4, pCVar5, xStack_10, xStack_20, xStack_30
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     local bVar3 = not alive
     if not bVar3 then
         f_CVar2 = quest:ReadGlobalGameData(0xe1c)
-        CVar6 = CVar2
+        CVar6 = f_CVar2
         -- TODO(native): xStack_34 = CVar2;
         pCVar4 = quest:GetHero()
         bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar4, CVar6)
@@ -30,7 +30,7 @@ function Main(quest, me)
             if bVar3 then
                 return
             end
-            CVar6 = CVar2
+            CVar6 = f_CVar2
             pCVar4 = quest:GetHero()
             bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar4, CVar6)
         end

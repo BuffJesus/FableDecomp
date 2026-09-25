@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar3, bVar4, dist, fVar10, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_24
+    local bVar4, dist, fVar10, iVar1, iVar8, i_stk_2c, p0, pCVar6, pCVar7, pCVar9, r1, r2, r3, r4, timerId, uVar5, xStack_20, xStack_24
     local alive = true
     local function __cleanup_LAB_00e02ff7()
         quest:DeregisterTimer(i_stk_2c)
@@ -26,7 +26,7 @@ function Main(quest, me)
     timerId = quest:RegisterTimer()
     i_stk_2c = timerId
     quest:SetTimer(i_stk_2c, 2)
-    -- TODO(native): xStack_20 = *(CCharString *)(DAT_0143e90c + 0xe14);
+    xStack_20 = quest:ReadGlobalGameData(0xe14)
     iVar8 = quest:ReadGlobalGameData(0x3b0)
     iVar1 = quest:ReadGlobalGameData(0x3ac)
     uVar5 = math.random(0, 32767)
@@ -35,10 +35,10 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
-        -- TODO(native): f_CVar3 = (int)xStack_20;
+        -- TODO(native): f_CVar3 = xStack_20;
         -- TODO(native): xStack_20 = CVar3;
         repeat
-            dist = CVar3
+            dist = f_CVar3
             pCVar6 = quest:GetHero()
             bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar6, dist)
             if bVar4 then

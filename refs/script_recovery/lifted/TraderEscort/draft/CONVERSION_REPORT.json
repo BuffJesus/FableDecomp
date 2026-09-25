@@ -918,8 +918,6 @@
           "todo": [
             "label LAB_00e09ee8",
             "label LAB_00e0a363",
-            "unnamed field 0x14",
-            "unlifted: iVar8 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);",
             "label LAB_00e0a389",
             "label LAB_00e0a4ef",
             "label LAB_00e07e06",
@@ -930,8 +928,6 @@
             "unlifted: xStack_144 = xStack_12c;",
             "label LAB_00e07e30_c9",
             "label LAB_00e07e30_c10",
-            "unlifted: puVar7 = *piVar14",
-            "unlifted: puVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x78)",
             "unlifted: uVar19 = SUB41(&xStack_158,0)"
           ],
           "calls": [
@@ -1118,6 +1114,7 @@
             "CreateEffectAtPos",
             "ModifyThingHealth",
             "GetDataString",
+            "ENGINE_StrEq",
             "IsActiveThreadTerminating",
             "PlayAnimation",
             "IsPerformingScriptTask",
@@ -1449,7 +1446,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1355,
+          "lines": 1338,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2184,10 +2181,9 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: xStack_20 = *(CCharString *)(DAT_0143e90c + 0xe14);",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0x3ac) + (uVar",
             "unlifted: CCharString::CCharString(&xStack_30,&xStack_28);",
-            "unlifted: f_CVar3 = (int)xStack_20;",
+            "unlifted: f_CVar3 = xStack_20;",
             "unlifted: xStack_20 = CVar3;",
             "IsCameraPosOnScreen: missing pos (0 args for 1 params)",
             "verify cleanup at LAB_00e02ff7 (lifted as early return)",
@@ -2204,6 +2200,7 @@
             "IsActiveThreadTerminating",
             "RegisterTimer",
             "SetTimer",
+            "ENGINE_GlobalGameData",
             "ENGINE_GlobalGameData",
             "ENGINE_GlobalGameData",
             "ENGINE_Rand",
@@ -3659,16 +3656,6 @@
           "Init": [
             "v_stk_20"
           ]
-        },
-        "FSE/TraderEscort/Entities/DarkwoodAssassinSpawn.lua": {
-          "Main": [
-            "CVar3"
-          ]
-        },
-        "FSE/TraderEscort/Entities/RockTrollTrigger.lua": {
-          "Main": [
-            "CVar2"
-          ]
         }
       },
       "cleanupRegions": {
@@ -3724,7 +3711,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 74
+        "todo": 69
       }
     }
   ],
@@ -3735,6 +3722,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 74
+    "todo": 69
   }
 }

@@ -12,7 +12,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | Q_TraderEscort | TurnToBalv | 0x00e0a820 | True | 2 |
 | Q_TraderEscort | Q_TraderEscort | WatchForPickpocketing | 0x00e04f10 | True | 3 |
 | Q_TraderEscort | Q_TraderEscort | MakeTraderComment | 0x00e01900 | True | 16 |
-| Q_TraderEscort | DarkwoodTrader | Main | 0x00e07640 | True | 17 |
+| Q_TraderEscort | DarkwoodTrader | Main | 0x00e07640 | True | 13 |
 | Q_TraderEscort | DarkwoodTrader | Init | 0x00e04bd0 | True | 0 |
 | Q_TraderEscort | DarkwoodTrader | OnPersist | 0x00e05330 | True | 1 |
 | Q_TraderEscort | DarkwoodTrader | OnPredicateFail | 0x00e01760 | True | 0 |
@@ -29,7 +29,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | TraderComment | Init | 0x00e02d40 | True | 0 |
 | Q_TraderEscort | TraderComment | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | TraderComment | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_TraderEscort | DarkwoodAssassinSpawn | Main | 0x00e02e50 | True | 14 |
+| Q_TraderEscort | DarkwoodAssassinSpawn | Main | 0x00e02e50 | True | 13 |
 | Q_TraderEscort | DarkwoodAssassinSpawn | Init | 0x00e02e20 | True | 0 |
 | Q_TraderEscort | DarkwoodAssassinSpawn | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | DarkwoodAssassinSpawn | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -70,4 +70,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderEscort | EndTrader | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderEscort | EndTrader | OnPredicateFail | 0x00e04ae0 | True | 0 |
 
-Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 74}`
+Summary: `{"owners": 15, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 16, "fileSyntaxChecked": 16, "todo": 69}`

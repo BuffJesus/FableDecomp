@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar2, fVar21, fret_0, fret_00, fret_01, fret_02, fret_03, iVar22, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar11, pCVar12, pCVar13, pCVar15, pCVar20, pCVar6, pSpeaker, pcVar23, piVar14, puVar1, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar17, uVar19, xStack_118, xStack_158, xStack_168, xStack_c0, xStack_e8, xStack_f8
+    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fStack_20, fVar2, fVar21, fret_0, fret_00, fret_01, fret_02, fret_03, iVar22, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar11, pCVar12, pCVar13, pCVar15, pCVar20, pCVar6, pSpeaker, pcVar23, piVar14, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar17, uVar19, xStack_118, xStack_158, xStack_168, xStack_c0, xStack_e8, xStack_f8
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -457,25 +457,8 @@ function Main(quest, me)
                     r6 = quest:CreateEffectAtPos("", pCVar13, fVar21, bVar3, bVar5)
                     quest:ModifyThingHealth(me, 1000.0, false)
                     piVar14 = me:GetDataString()
-                    -- TODO(native): puVar7 = *piVar14
-                    puVar7 = nil --[[unresolved native value]]
-                    -- TODO(native): puVar1 = *(__native_entity_state:GetStateInt("self_0x14") + 0x78)
-                    puVar1 = nil --[[unresolved native value]]
-                    if puVar1 == puVar7 then
-                        c_stk_171 = 1
-                    else
-                        if (puVar1 == nil) or (puVar7 == nil) then
-                            c_stk_171 = 0
-                        else
-                            if puVar1[1] == puVar7.y then
-                                -- TODO(native): iVar8 = CBasicString<char>::Compare((void *)*puVar1,(void *)puVar7.x);
-                                c_stk_171 = (not (iVar8 ~= 0)) and 1 or 0
-                            else
-                                c_stk_171 = 0
-                            end
-                        end
-                    end
-                    if c_stk_171 == 0 then
+                    c_stk_171 = (piVar14 == quest:GetStateString("TraderToTalk"))
+                    if not c_stk_171 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if not bVar3 then
