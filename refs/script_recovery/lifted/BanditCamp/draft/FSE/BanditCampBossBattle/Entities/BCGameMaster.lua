@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar2, bVar3, cVar4, fVar1, fret_0, fret_00, fret_01, fret_02, iVar10, iVar11, iVar8, iVar9, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar5, pCVar6, pcVar7, r1, r2, r3, xStack_10, xStack_20, x_stk_2c
+    local __native_condition_1, bVar2, bVar3, cVar4, fVar1, fret_0, fret_00, fret_01, fret_02, iVar10, iVar11, iVar8, iVar9, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar5, pCVar6, pcVar7, r1, r2, r3, xStack_10, xStack_20, x_stk_2c
     local alive = true
     bVar3 = false
     alive = quest:NewScriptFrame(me)
@@ -258,8 +258,15 @@ function Main(quest, me)
     bVar3 = not alive
     if bVar3 then goto LAB_00d071d7 end
     quest:SetPrizeTavernTable(true)
-    fret_01 = quest:SetQuitTavernGame(true)
-    while (GSI->GetBestTimeGuessTheAddition(), 0.0 == fret_01 or (bVar3 = GSI->IsHeroInTavernGame(), bVar3)) do
+    quest:SetQuitTavernGame(true)
+    while true do
+        fret_01 = quest:GetBestTimeGuessTheAddition()
+        __native_condition_1 = 0.0 == fret_01
+        if not __native_condition_1 then
+            bVar3 = quest:IsHeroInTavernGame()
+            __native_condition_1 = bVar3
+        end
+        if not (__native_condition_1) then break end
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

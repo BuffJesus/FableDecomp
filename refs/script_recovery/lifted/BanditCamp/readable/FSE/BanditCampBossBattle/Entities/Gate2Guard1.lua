@@ -18,13 +18,12 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult2, predicateResult4, predicateResult, taskRunning, scratchValue, timerId
-    local this_01, scratchValue47, scratchValue48, scratchValue49, scratchValue50, resource, movie3
-    local movie4
+    local scratchValue45, scratchValue46, scratchValue48, scratchValue49, resource, movie3, movie4
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
     end
-    scratchValue50 = 0
+    scratchValue49 = 0
     if not quest:NewScriptFrame(me) then return end
     resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -36,9 +35,9 @@ function Main(quest, me)
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, 0)
         scratchValue = 0
-        scratchValue49 = 0
-        predicateResult2 = quest:IsActiveThreadTerminating()
         scratchValue48 = 0
+        predicateResult2 = quest:IsActiveThreadTerminating()
+        scratchValue46 = 0
         repeat
             if predicateResult2 then
                 quest:DeregisterTimer(timerId)
@@ -47,16 +46,16 @@ function Main(quest, me)
             end
             if not quest:GetStateBool("Gate2Open") then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                scratchValue47 = scratchValue48 | 1
-                scratchValue50 = scratchValue47
+                scratchValue45 = scratchValue46 | 1
+                scratchValue49 = scratchValue45
                 if me:MsgIsHitByHero() then
                     goto LAB_00d0daf6
                 else
-                    scratchValue47 = scratchValue48 | 3
-                    scratchValue50 = scratchValue47
+                    scratchValue45 = scratchValue46 | 3
+                    scratchValue49 = scratchValue45
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue47 = scratchValue48 | 7
-                        scratchValue50 = scratchValue47
+                        scratchValue45 = scratchValue46 | 7
+                        scratchValue49 = scratchValue45
                         if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0daf6 end
                     end
                     predicateResult4 = false
@@ -65,22 +64,22 @@ function Main(quest, me)
                 ::LAB_00d0daf6::
                 predicateResult4 = true
                 ::FLOW_past_lab_00d0daf6::
-                if scratchValue47 & 4 ~= 0 then
-                    scratchValue47 = scratchValue47 & 0xfffffffb
-                    scratchValue50 = scratchValue47
+                if scratchValue45 & 4 ~= 0 then
+                    scratchValue45 = scratchValue45 & 0xfffffffb
+                    scratchValue49 = scratchValue45
                 end
-                if scratchValue47 & 2 ~= 0 then
-                    scratchValue47 = scratchValue47 & 0xfffffffd
-                    scratchValue50 = scratchValue47
+                if scratchValue45 & 2 ~= 0 then
+                    scratchValue45 = scratchValue45 & 0xfffffffd
+                    scratchValue49 = scratchValue45
                 end
-                if scratchValue47 & 1 ~= 0 then
-                    scratchValue50 = scratchValue47 & 0xfffffffe
+                if scratchValue45 & 1 ~= 0 then
+                    scratchValue49 = scratchValue45 & 0xfffffffe
                 end
                 if predicateResult4 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d0eb73 end
                     movie3 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    local switch1 = scratchValue49
+                    local switch1 = scratchValue48
                     repeat
                         if switch1 == 0 then
                             if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
@@ -89,7 +88,7 @@ function Main(quest, me)
                             goto FLOW_past_lab_00d0dc78
                             ::LAB_00d0dc78::
                             me:SetFriendsWithEverythingFlag(true)
-                            scratchValue49 = 1
+                            scratchValue48 = 1
                             break
                             ::FLOW_past_lab_00d0dc78::
                             if not me:Speak(hero, "TEXT_QST_009_BANDIT2_HIT_FIRST", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0e8c4 end
@@ -141,7 +140,7 @@ function Main(quest, me)
                         quest:SetTimer(timerId, 10)
                     end
                 end
-                if not me:IsTalkedToByHero() then quest:NewScriptFrame(me); predicateResult2 = quest:IsActiveThreadTerminating(); scratchValue48 = scratchValue50; goto continue_2 end
+                if not me:IsTalkedToByHero() then quest:NewScriptFrame(me); predicateResult2 = quest:IsActiveThreadTerminating(); scratchValue46 = scratchValue49; goto continue_2 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0eb73 end
                 quest:SetStateBool("SpokenToSecondGuard", true)
                 resources:PrepareResource(resource)
@@ -170,24 +169,15 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     quest:SetStateBool("Gate2Open", true)
-                    if this_01 == nil then
-                        this_01 = 0
-                    else
-                        scratchValue50 = scratchValue50 | 56
-                        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,pCVar9,0);
-                        -- TODO(native): *(undefined4 *)(this_01 + 0x38) = uVar1;
-                        -- TODO(native): *(undefined4 *)(this_01 + 0x3c) = 2.0;
-                        -- TODO(native): CCharString::CCharString((CCharString *)(this_01 + 0x40),&xStack_7c);
+                    quest:CreateThread("OpenGate", {args = {2.0, "Gate2Outer"}})  -- native parent-quest worker OpenGate, bound values
+                    if scratchValue49 & 32 ~= 0 then
+                        scratchValue46 = scratchValue49 & 0xffffffdf
                     end
-                    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);
-                    if scratchValue50 & 32 ~= 0 then
-                        scratchValue48 = scratchValue50 & 0xffffffdf
+                    if scratchValue46 & 16 ~= 0 then
+                        scratchValue46 = scratchValue46 & 0xffffffef
                     end
-                    if scratchValue48 & 16 ~= 0 then
-                        scratchValue48 = scratchValue48 & 0xffffffef
-                    end
-                    if scratchValue48 & 8 ~= 0 then
-                        scratchValue50 = scratchValue48 & 0xfffffff7
+                    if scratchValue46 & 8 ~= 0 then
+                        scratchValue49 = scratchValue46 & 0xfffffff7
                     end
                     local conversationId2 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(conversationId2, hero)
@@ -230,16 +220,16 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                 end
-                scratchValue48 = scratchValue50
-                scratchValue50 = scratchValue50 | 64
+                local scratchValue47 = scratchValue49
+                scratchValue49 = scratchValue49 | 64
                 if me:MsgIsHitByHero() then
                     goto LAB_00d0e82e
                 else
-                    scratchValue47 = scratchValue48 | 192
-                    scratchValue50 = scratchValue47
+                    scratchValue45 = scratchValue47 | 192
+                    scratchValue49 = scratchValue45
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue47 = scratchValue48 | 448
-                        scratchValue50 = scratchValue47
+                        scratchValue45 = scratchValue47 | 448
+                        scratchValue49 = scratchValue45
                         if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0e82e end
                     end
                     predicateResult = false
@@ -248,16 +238,16 @@ function Main(quest, me)
                 ::LAB_00d0e82e::
                 predicateResult = true
                 ::FLOW_past_lab_00d0e82e::
-                if scratchValue47 & 256 ~= 0 then
-                    scratchValue47 = scratchValue47 & 0xfffffeff
-                    scratchValue50 = scratchValue47
+                if scratchValue45 & 256 ~= 0 then
+                    scratchValue45 = scratchValue45 & 0xfffffeff
+                    scratchValue49 = scratchValue45
                 end
-                if scratchValue47 < 0 then
-                    scratchValue47 = scratchValue47 & 0xffffff7f
-                    scratchValue50 = scratchValue47
+                if scratchValue45 < 0 then
+                    scratchValue45 = scratchValue45 & 0xffffff7f
+                    scratchValue49 = scratchValue45
                 end
-                if scratchValue47 & 64 ~= 0 then
-                    scratchValue50 = scratchValue47 & 0xffffffbf
+                if scratchValue45 & 64 ~= 0 then
+                    scratchValue49 = scratchValue45 & 0xffffffbf
                 end
                 if predicateResult then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d0eb73 end
@@ -271,7 +261,7 @@ function Main(quest, me)
             end
             quest:NewScriptFrame(me)
             predicateResult2 = quest:IsActiveThreadTerminating()
-            scratchValue48 = scratchValue50
+            scratchValue46 = scratchValue49
             ::continue_2::
         until false
     end

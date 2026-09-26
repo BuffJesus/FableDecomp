@@ -15,10 +15,9 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult3, predicateResult6, predicateResult9, predicateResult11
-    local predicateResult12, predicateResult15, getStateBool, scratchValue4, scratchValue5
-    local registerTimer, conversationId, timerId, switch1, campHostage, scratchValue, scratchValue19
-    local scratchValue20, scratchValue21, movie, movie3
-    scratchValue19 = 0
+    local predicateResult12, predicateResult15, hostagesRescued, taskRunning, scratchValue4
+    local scratchValue5, registerTimer, conversationId, timerId, switch1, campHostage, scratchValue
+    local movie, movie3
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -28,15 +27,15 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then goto LAB_00d0a6ae end
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
-    scratchValue20 = 0
+    scratchValue = 0
     scratchValue4 = 0
     campHostage = quest:GetNearestWithScriptName(me, "CampHostage")
     quest:EntitySetFacingAngleTowardsThing(me, campHostage, false)
     scratchValue5 = 0
     registerTimer = quest:RegisterTimer()
     dropPass = true
-    getStateBool = quest:GetStateBool("HostagesRescued")
-    while not getStateBool do
+    hostagesRescued = quest:GetStateBool("HostagesRescued")
+    while not hostagesRescued do
         if not quest:NewScriptFrame(me) then goto LAB_00d0a693 end
         if quest:MsgOnHeroPickedPocket() then
             dropPass = false
@@ -44,23 +43,23 @@ function Main(quest, me)
         if not quest:IsDistanceBetweenThingsUnder(me, hero, 7.0) or not quest:IsDistanceBetweenThingsUnder(me, campHostage, 12.0) or 0 < quest:GetTimer(timerId) then goto LAB_00d09458 end
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, campHostage)
-        switch1 = scratchValue20
+        switch1 = scratchValue
         repeat
             if switch1 == 0 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_FIRST", me, campHostage, false)
-                scratchValue20 = 1
+                scratchValue = 1
                 break
             elseif switch1 == 1 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_SECOND", me, campHostage, false)
-                scratchValue20 = 2
+                scratchValue = 2
                 break
             elseif switch1 == 2 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_THIRD", me, campHostage, false)
-                scratchValue20 = 3
+                scratchValue = 3
                 break
             elseif switch1 == 3 then
                 quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_FOURTH", me, campHostage, false)
-                scratchValue20 = 4
+                scratchValue = 4
                 break
             else
                 if switch1 == 4 then
@@ -68,7 +67,7 @@ function Main(quest, me)
                     goto LAB_00d09432
                 elseif switch1 == 5 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_SIXTH", me, campHostage, false)
-                    scratchValue20 = 6
+                    scratchValue = 6
                     break
                 elseif switch1 == 6 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_GUARD_SEVENTH", me, campHostage, false)
@@ -76,7 +75,7 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00d09432
                 ::LAB_00d09432::
-                scratchValue20 = 5
+                scratchValue = 5
                 ::FLOW_past_lab_00d09432::
             end
         until true
@@ -84,8 +83,6 @@ function Main(quest, me)
         ::LAB_00d09458::
         if 1 == 1 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
-            scratchValue = scratchValue19 | 3
-            scratchValue21 = scratchValue
             if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0) then goto LAB_00d094cb end
             predicateResult = true
             if me:IsPerformingScriptTask() then goto LAB_00d094cb end
@@ -93,14 +90,6 @@ function Main(quest, me)
             ::LAB_00d094cb::
             predicateResult = false
             ::FLOW_past_lab_00d094cb::
-            if scratchValue & 2 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffd
-                scratchValue21 = scratchValue
-            end
-            if scratchValue & 1 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffe
-                scratchValue21 = scratchValue
-            end
             if predicateResult then
                 local guardFirstMarker = quest:GetThingWithScriptName("GuardFirstMarker")
                 me:MoveToPosition(guardFirstMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
@@ -113,8 +102,6 @@ function Main(quest, me)
             end
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
-            scratchValue = scratchValue19 | 12
-            scratchValue21 = scratchValue
             if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardSecondMarker"), 2.0) then goto LAB_00d09657 end
             predicateResult3 = true
             if me:IsPerformingScriptTask() then goto LAB_00d09657 end
@@ -122,14 +109,6 @@ function Main(quest, me)
             ::LAB_00d09657::
             predicateResult3 = false
             ::FLOW_past_lab_00d09657::
-            if scratchValue & 8 ~= 0 then
-                scratchValue = scratchValue & 0xfffffff7
-                scratchValue21 = scratchValue
-            end
-            if scratchValue & 4 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffb
-                scratchValue21 = scratchValue
-            end
             if predicateResult3 then
                 local guardSecondMarker = quest:GetThingWithScriptName("GuardSecondMarker")
                 me:MoveToPosition(guardSecondMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
@@ -192,15 +171,11 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(me, campHostage, false)
                 quest:PauseAllNonScriptedEntities(false)
             end
-            scratchValue = scratchValue21
         end
-        scratchValue19 = scratchValue | 16
         if me:MsgIsHitByHero() then
             goto LAB_00d09aee
         else
-            scratchValue19 = scratchValue | 48
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue19 = scratchValue | 112
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d09aee end
             end
             predicateResult6 = false
@@ -210,17 +185,8 @@ function Main(quest, me)
         ::LAB_00d09aee::
         predicateResult6 = true
         ::FLOW_past_lab_00d09aee::
-        if scratchValue19 & 64 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xffffffbf
-        end
-        if scratchValue19 & 32 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xffffffdf
-        end
-        if scratchValue19 & 16 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xffffffef
-        end
         if not predicateResult6 then
-            getStateBool = quest:GetStateBool("HostagesRescued")
+            hostagesRescued = quest:GetStateBool("HostagesRescued")
         else
             if not quest:IsActiveThreadTerminating() then
                 quest:ClearThingHasInformation(me)
@@ -235,7 +201,7 @@ function Main(quest, me)
                 return
             end
             goto LAB_00d0a693
-            getStateBool = quest:GetStateBool("HostagesRescued")
+            hostagesRescued = quest:GetStateBool("HostagesRescued")
         end
     end
     predicateResult9 = quest:IsActiveThreadTerminating()
@@ -243,8 +209,6 @@ function Main(quest, me)
         scratchValue4 = predicateResult9
         quest:ClearThingHasInformation(me)
         while not quest:IsActiveThreadTerminating() do
-            scratchValue = scratchValue19 | 384
-            scratchValue21 = scratchValue
             if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0) then goto LAB_00d09bc7 end
             predicateResult11 = true
             if me:IsPerformingScriptTask() then goto LAB_00d09bc7 end
@@ -252,21 +216,11 @@ function Main(quest, me)
             ::LAB_00d09bc7::
             predicateResult11 = false
             ::FLOW_past_lab_00d09bc7::
-            if scratchValue & 256 ~= 0 then
-                scratchValue = scratchValue & 0xfffffeff
-                scratchValue21 = scratchValue
-            end
-            if scratchValue < 0 then
-                scratchValue = scratchValue & 0xffffff7f
-                scratchValue21 = scratchValue
-            end
             if predicateResult11 then
                 local guardFirstMarker4 = quest:GetThingWithScriptName("GuardFirstMarker")
                 me:MoveToPosition(guardFirstMarker4:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             end
             if not quest:IsDistanceBetweenThingsUnder(me, hero, 7.0) then goto LAB_00d09cf7 end
-            scratchValue = scratchValue | 1536
-            scratchValue21 = scratchValue
             if not quest:IsDistanceBetweenThingsUnder(me, quest:GetThingWithScriptName("GuardFirstMarker"), 12.0) then goto LAB_00d09cf7 end
             predicateResult12 = true
             if 0 < quest:GetTimer(timerId) then goto LAB_00d09cf7 end
@@ -274,44 +228,31 @@ function Main(quest, me)
             ::LAB_00d09cf7::
             predicateResult12 = false
             ::FLOW_past_lab_00d09cf7::
-            if scratchValue & 1024 ~= 0 then
-                scratchValue = scratchValue & 0xfffffbff
-                scratchValue21 = scratchValue
-            end
-            if scratchValue & 512 ~= 0 then
-                scratchValue = scratchValue & 0xfffffdff
-                scratchValue21 = scratchValue
-            end
             if predicateResult12 then
                 if quest:IsActiveThreadTerminating() then break end
                 local conversationId2 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId2, hero)
-                local switch = scratchValue20
+                local switch = scratchValue
                 repeat
                     if switch == 0 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FIRST", me, hero, false)
-                        scratchValue20 = 1
-                        scratchValue = scratchValue21
+                        scratchValue = 1
                         break
                     elseif switch == 1 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_SECOND", me, hero, false)
-                        scratchValue20 = 2
-                        scratchValue = scratchValue21
+                        scratchValue = 2
                         break
                     elseif switch == 2 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_THIRD", me, hero, false)
-                        scratchValue20 = 3
-                        scratchValue = scratchValue21
+                        scratchValue = 3
                         break
                     elseif switch == 3 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FOURTH", me, hero, false)
-                        scratchValue20 = 4
-                        scratchValue = scratchValue21
+                        scratchValue = 4
                         break
                     elseif switch == 4 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FIFTH", me, hero, false)
-                        scratchValue20 = 5
-                        scratchValue = scratchValue21
+                        scratchValue = 5
                         break
                     elseif switch == 5 then
                         quest:AddLineToConversation(conversationId2, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_SIXTH", me, hero, false)
@@ -351,15 +292,11 @@ function Main(quest, me)
                     end
                     quest:PauseAllNonScriptedEntities(false)
                 end
-                scratchValue = scratchValue21
             end
-            scratchValue19 = scratchValue | 2048
             if me:MsgIsHitByHero() then
                 goto LAB_00d0a3d3
             else
-                scratchValue19 = scratchValue | 0x1800
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue19 = scratchValue | 0x3800
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0a3d3 end
                 end
                 predicateResult15 = false
@@ -368,15 +305,6 @@ function Main(quest, me)
             ::LAB_00d0a3d3::
             predicateResult15 = true
             ::FLOW_past_lab_00d0a3d3::
-            if scratchValue19 & 0x2000 ~= 0 then
-                scratchValue19 = scratchValue19 & 0xffffdfff
-            end
-            if scratchValue19 & 4096 ~= 0 then
-                scratchValue19 = scratchValue19 & 0xffffefff
-            end
-            if scratchValue19 & 2048 ~= 0 then
-                scratchValue19 = scratchValue19 & 0xfffff7ff
-            end
             if not predicateResult15 then
                 quest:NewScriptFrame(me)
             else
@@ -386,7 +314,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00d0a62b end
                     me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_LATE_HIT", GROUP_SELECT_FIRST, false, true, false)
-                    getStateBool = me:IsPerformingScriptTask()
+                    taskRunning = me:IsPerformingScriptTask()
                     goto LAB_00d0a5d1
                 end
                 break
@@ -406,9 +334,9 @@ function Main(quest, me)
     resources:DestroyMovie(movie)
     goto LAB_00d0a693
     ::LAB_00d0a5d1::
-    if not getStateBool then goto LAB_00d0a5f7 end
+    if not taskRunning then goto LAB_00d0a5f7 end
     if not quest:NewScriptFrame(me) then goto LAB_00d0a4c8 end
-    getStateBool = me:IsPerformingScriptTask()
+    taskRunning = me:IsPerformingScriptTask()
     goto LAB_00d0a5d1
     ::LAB_00d0a4c8::
     quest:PauseAllNonScriptedEntities(false)

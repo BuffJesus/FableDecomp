@@ -86,7 +86,7 @@ end
 function BanditKingMissionProcess(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local readGlobalGameDataFloat, fret_00, timerId, scratchValue, scratchValue6, resource7
+    local readGlobalGameDataFloat, timerId, scratchValue, scratchValue6, resource7
     while (1 - (quest:IsLevelLoaded("BanditCampBoss") and 1 or 0)) ~= 0 do
         if not quest:NewScriptFrame() then return end
     end
@@ -164,17 +164,16 @@ function BanditKingMissionProcess(quest)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource7)
         quest:DisplayQuestInfo(true)
-        -- TODO(native): iVar6 = (**(iVar6 + 0x510))(*(this + 0x40),fret_00,fVar8, pColour1,pColour2,"HUD_QUEST_ICON_TWINBLADE","",fVar13)
---[[unresolved native value]]
+        local infoElement = quest:AddQuestInfoBar(quest:GetHealth(nil), 0.0, {R = 255, G = 0, B = 0, A = 255}, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TWINBLADE", "", 1.0)
         local C_stk_4c_2 = ""
         while C_stk_4c_1 < quest:GetHealth(nil) do
             if not quest:NewScriptFrame() then goto LAB_00d11905 end
-            quest:UpdateQuestInfoBar(quest:GetHealth(nil), -1.0, -1.0, 0)
+            quest:UpdateQuestInfoBar(infoElement, quest:GetHealth(nil), -1.0, -1.0)
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
         quest:DeactivateQuest("Q_BanditCamp_Barriers", 0)
         quest:DisplayQuestInfo(false)
-        quest:RemoveQuestInfoElement(0)
+        quest:RemoveQuestInfoElement(infoElement)
         quest:StopOverrideMusic(false)
         quest:ModifyThingHealth(nil, C_stk_4c_2 - quest:GetHealth(nil), false)
         if nil ~= nil and (nil):IsAlive() then
@@ -434,66 +433,49 @@ end
 function CheckForFirstAreaMassacre(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local elem_1, elem_2, scratchValue, scratchValue3, defensiveGuardBandit, scratchValue5
+    local scratchValue, killsXStack, scratchValue5, defensiveGuardBandit
     while true do
         local thing = quest:GetThingWithScriptName("Gate1")
         if thing ~= nil and thing:IsOpenDoor() then break end
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
+    killsXStack = 0
     repeat
         while not quest:IsLevelLoaded("BanditCampMain") do
             if not quest:NewScriptFrame() then return end
         end
-        -- TODO(native): CIndexBuffer::CIndexBuffer((CIndexBuffer *)&xStack_5c,(int)&xStack_75);
-        if hero:MsgGetThingsKilled() then
-            if quest:IsActiveThreadTerminating() then
-                -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);
-                return
-            end
-            -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-            -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+        local scratchValue7 = hero:MsgGetThingsKilledGroups()
+        if #scratchValue7 ~= 0 then
+            killsXStack = killsXStack + #scratchValue7
         end
         local followers = quest:GetFollowingEntityList(hero)
-        scratchValue3 = 0
+        scratchValue5 = 0
         if #followers ~= 0 then
             scratchValue = 0
             repeat
-                if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d0f264(); return end
-                -- TODO(native): cVar5 = elem_1:MsgGetThingsKilled(&xStack_5c)
-    --[[unresolved native value]]
-                if nil then
-                    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d0f264(); return end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                local scratchValue8 = followers[scratchValue + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue8 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue8
                 end
-                scratchValue3 = scratchValue3 + 1
+                scratchValue5 = scratchValue5 + 1
                 scratchValue = scratchValue + 1
-            until scratchValue3 >= #followers
+            until scratchValue5 >= #followers
         end
-        if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d0f264(); return end
         local getHeroSummonedCreaturesList = quest:GetHeroSummonedCreaturesList()
-        scratchValue3 = 0
+        scratchValue5 = 0
         if #getHeroSummonedCreaturesList ~= 0 then
             scratchValue = 0
             repeat
-                if quest:IsActiveThreadTerminating() then
-                    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);
-                    return
+                local scratchValue9 = getHeroSummonedCreaturesList[scratchValue + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue9 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue9
                 end
-                -- TODO(native): cVar5 = elem_2:MsgGetThingsKilled(&xStack_5c)
-    --[[unresolved native value]]
-                if nil then
-                    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00d0f264(); return end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
-                end
-                scratchValue3 = scratchValue3 + 1
+                scratchValue5 = scratchValue5 + 1
                 scratchValue = scratchValue + 1
-            until scratchValue3 >= #getHeroSummonedCreaturesList
+            until scratchValue5 >= #getHeroSummonedCreaturesList
         end
-        if quest:IsActiveThreadTerminating() then break end
-        if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_EnemiesToKillInFirstArea) <= scratchValue5 then
+        if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_EnemiesToKillInFirstArea) <= killsXStack then
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             hero:AcquireControl(4)
@@ -516,9 +498,9 @@ function CheckForFirstAreaMassacre(quest)
     goto LAB_00d0f608
     while true do
         quest:GiveThingBestEnemyTarget(defensiveGuardBandit[scratchValue + 1], hero)
-        scratchValue3 = scratchValue3 + 1
+        scratchValue5 = scratchValue5 + 1
         scratchValue = scratchValue + 1
-        if #defensiveGuardBandit <= scratchValue3 then break end
+        if #defensiveGuardBandit <= scratchValue5 then break end
         if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
     end
     ::FLOW_after_lab_00d0f4d7::
@@ -534,7 +516,9 @@ end
 function CheckForSecondAreaMassacre(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local elem_1, elem_2, scratchValue, scratchValue6, scratchValue7, actorMap, scratchValue8
+    local scratchValue4, scratchValue5, killsXStack, scratchValue7, scratchValue8, scratchValue9
+    local actorMap
+    killsXStack = 0
     if quest:IsActiveThreadTerminating() then return end
     while true do
         while not quest:IsLevelLoaded("BanditCampResidential") do
@@ -543,43 +527,37 @@ function CheckForSecondAreaMassacre(quest)
         if quest:GetStateBool("Gate3Open") then
             return
         end
-        if hero:MsgGetThingsKilled() then
-            -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-            -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+        local scratchValue = hero:MsgGetThingsKilledGroups()
+        if #scratchValue ~= 0 then
+            killsXStack = killsXStack + #scratchValue
         end
         local followers = quest:GetFollowingEntityList(hero)
-        scratchValue = 0
+        scratchValue7 = 0
         if #followers ~= 0 then
+            scratchValue4 = 0
             repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00d0f9d8 end
-                -- TODO(native): cVar4 = elem_1:MsgGetThingsKilled(&xStack_5c)
-    --[[unresolved native value]]
-                if nil then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d0fe39 end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                local scratchValue12 = followers[scratchValue4 + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue12 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue12
                 end
-                scratchValue = scratchValue + 1
-            until scratchValue >= #followers
+                scratchValue7 = scratchValue7 + 1
+                scratchValue4 = scratchValue4 + 1
+            until scratchValue7 >= #followers
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d0fa12 end
         local getHeroSummonedCreaturesList = quest:GetHeroSummonedCreaturesList()
-        scratchValue6 = 0
+        scratchValue8 = 0
         if #getHeroSummonedCreaturesList ~= 0 then
+            scratchValue5 = 0
             repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00d0fa46 end
-                -- TODO(native): cVar4 = elem_2:MsgGetThingsKilled(&xStack_5c)
-    --[[unresolved native value]]
-                if nil then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d0fe39 end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                local scratchValue13 = getHeroSummonedCreaturesList[scratchValue5 + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue13 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue13
                 end
-                scratchValue6 = scratchValue6 + 1
-            until scratchValue6 >= #getHeroSummonedCreaturesList
+                scratchValue8 = scratchValue8 + 1
+                scratchValue5 = scratchValue5 + 1
+            until scratchValue8 >= #getHeroSummonedCreaturesList
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d0fa7a end
-        if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_EnemiesToKillInSecondArea) <= scratchValue8 then break end
+        if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_EnemiesToKillInSecondArea) <= killsXStack then break end
         if not quest:NewScriptFrame() then return end
     end
     if not quest:IsActiveThreadTerminating() then
@@ -601,14 +579,14 @@ function CheckForSecondAreaMassacre(quest)
         resources:DestroyMovie(movie)
         quest:SetStateBool("Gate3Open", true)
         local defensiveGuardBandit = quest:GetAllThingsWithScriptName("DefensiveGuardBandit")
-        scratchValue7 = 0
+        scratchValue9 = 0
         if #defensiveGuardBandit ~= 0 then
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0fe48 end
                 -- TODO(native): xStack_6c = (CCharString)(iStack_50 + iVar6);
                 quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
-                scratchValue7 = scratchValue7 + 1
-            until scratchValue7 >= #defensiveGuardBandit
+                scratchValue9 = scratchValue9 + 1
+            until scratchValue9 >= #defensiveGuardBandit
         end
         if not quest:IsActiveThreadTerminating() then
             quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", quest:GetThingWithScriptName("DefensiveGuardLeader"):GetPos(), ""), hero)
@@ -691,7 +669,6 @@ end
 -- Q_BanditCampBossBattle.OpenGate (retail 0x00d0ebc0)
 function OpenGate(quest, timeDelay, doorName)
     quest:Pause(timeDelay)
-    local pDoor = quest:GetThingWithScriptName(nil --[[missing]])
-    quest:OpenDoor(pDoor)
+    quest:OpenDoor(quest:GetThingWithScriptName(doorName))
 end
 

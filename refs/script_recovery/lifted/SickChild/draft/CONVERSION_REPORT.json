@@ -2947,21 +2947,14 @@
             "bsimVoid": false
           },
           "todo": [
-            "switch lowering rejected: unreviewed switch case expression",
             "label LAB_00ecbf3a",
-            "unlifted: switch(CVar4) {",
-            "unlifted: case (CCharString)0x0:",
-            "unlifted: case (CCharString)0x1:",
             "AddLineToConversation: missing spListener (3 args for 5 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: case (CCharString)0x2:",
             "AddLineToConversation: missing spSpeaker, spListener (2 args for 5 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: case (CCharString)0x3:",
             "AddLineToConversation: missing spSpeaker, spListener (2 args for 5 params)",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: default:",
             "unlifted: xStack_ac = (CCharString)((int)CVar4 + 1);",
             "unlifted: CCharString::operator=(&xStack_d8,\"TEXT_QST_B10_TRADERA_REPEATB_10\");",
             "unlifted: uStack_b0 = uStack_b0 | 1;",
@@ -3084,24 +3077,19 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 357,
+          "lines": 368,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_SickChild/Entities/TalkingTrader1.lua:Main",
-                "line": 360,
-                "message": "FSE/V_SickChild/Entities/TalkingTrader1.lua:Main:360: break outside loop at line 247"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
             "goto FLOW_hoist_lab_00ecc923_1;",
             "goto FLOW_hoist_lab_00ecc928_1;",
+            "goto FLOW_past_lab_00ecc1f4;",
             "goto FLOW_past_lab_00ecc20b;",
             "goto FLOW_past_lab_00ecc2be;",
             "goto FLOW_past_lab_00ecc53c;",
@@ -3110,6 +3098,7 @@
             "goto FLOW_past_lab_00ecc913;",
             "goto FLOW_past_lab_00ecc923;",
             "goto FLOW_past_lab_00ecc928;",
+            "goto LAB_00ecc1f4;",
             "goto LAB_00ecc20b;",
             "goto LAB_00ecc220;",
             "goto LAB_00ecc2be;",
@@ -3132,6 +3121,7 @@
           "nativeLabels": [
             "FLOW_hoist_lab_00ecc923_1",
             "FLOW_hoist_lab_00ecc928_1",
+            "FLOW_past_lab_00ecc1f4",
             "FLOW_past_lab_00ecc20b",
             "FLOW_past_lab_00ecc2be",
             "FLOW_past_lab_00ecc53c",
@@ -4149,13 +4139,8 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 13,
-        "passed": 9,
+        "passed": 10,
         "errors": [
-          {
-            "path": "FSE/V_SickChild/Entities/TalkingTrader1.lua",
-            "line": 372,
-            "message": "FSE/V_SickChild/Entities/TalkingTrader1.lua:372: break outside loop at line 259"
-          },
           {
             "path": "FSE/V_SickChild/Entities/WomanToAttract.lua",
             "line": 820,
@@ -4357,10 +4342,10 @@
         "owners": 12,
         "functions": 49,
         "missing": 0,
-        "functionSyntaxPassed": 46,
-        "fileSyntaxPassed": 9,
+        "functionSyntaxPassed": 47,
+        "fileSyntaxPassed": 10,
         "fileSyntaxChecked": 13,
-        "todo": 437
+        "todo": 430
       }
     }
   ],
@@ -4368,9 +4353,9 @@
     "owners": 12,
     "functions": 49,
     "missing": 0,
-    "functionSyntaxPassed": 46,
-    "fileSyntaxPassed": 9,
+    "functionSyntaxPassed": 47,
+    "fileSyntaxPassed": 10,
     "fileSyntaxChecked": 13,
-    "todo": 437
+    "todo": 430
   }
 }

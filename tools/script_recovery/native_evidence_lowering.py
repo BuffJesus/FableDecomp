@@ -236,9 +236,54 @@ def fold_dword_colours(text: str) -> str:
     return text
 
 
+def gather_colour_byte_stores(text: str) -> str:
+    """Two colours built at once interleave their byte stores with other plain setup lines (BanditKing Main
+    0x00D0A830's Twinblade bar: `b._2_1_ = 0xff; b._3_1_ = 0xff; a._2_1_ = ..; pColour2 = &b; pColour1 = &a;
+    fVar8 = 0.0; b._1_1_ = 0; b._0_1_ = 0; ...`). Inside one run of such lines (literal / address / plain copies,
+    no calls or control flow) the four byte stores of a stack slot are one colour: move them together, at the
+    slot's first store, so `fold_stack_colours` sees the run it expects."""
+    store = re.compile(r'^[ \t]*(\w*Stack_\w+)\._([0-3])_1_ = (?:0x[0-9a-f]+|\d+);[ \t]*$')
+    simple = re.compile(r'^[ \t]*\w+(?:\._[0-3]_1_)? = (?:&?\w+|-?[\d.]+|0x[0-9a-f]+);[ \t]*$')
+    lines = text.split('\n')
+    i = 0
+    while i < len(lines):
+        if not simple.match(lines[i]):
+            i += 1
+            continue
+        j = i
+        while j < len(lines) and simple.match(lines[j]):
+            j += 1
+        block = lines[i:j]
+        stores = {}
+        for k, line in enumerate(block):
+            m = store.match(line)
+            if m:
+                stores.setdefault(m.group(1), []).append((k, int(m.group(2))))
+        for var, found in stores.items():
+            if sorted(b for _, b in found) != [0, 1, 2, 3]:
+                continue
+            ks = [k for k, _ in found]
+            if ks == list(range(ks[0], ks[0] + 4)):
+                continue        # already one run
+            if any(re.search(r'\b' + re.escape(var) + r'\b', block[k]) for k in range(len(block)) if k not in ks and k > ks[0]
+                   and not re.match(r'^[ \t]*\w+ = &' + re.escape(var) + r';', block[k])):
+                continue        # the slot is read inside the run: keep the order
+            moved = [block[k] for k in ks]
+            rest = [line for k, line in enumerate(block) if k not in ks]
+            at = ks[0] - sum(1 for k in ks if k < ks[0])
+            block = rest[:at] + moved + rest[at:]
+            break
+        else:
+            i = j
+            continue
+        lines[i:j] = block      # re-scan the same block for the next colour
+    return '\n'.join(lines)
+
+
 def fold_stack_colours(text: str) -> str:
     """A CRGBColour built on the stack byte by byte (`c._0_1_ = B; c._1_1_ = G; c._2_1_ = R; c._3_1_ = A`,
     retail ABI is BGRA) and passed by address becomes an FSE colour table."""
+    text = gather_colour_byte_stores(text)
     # one colour = one run of adjacent byte stores of the same slot name (the name may serve several
     # colours, or a string, elsewhere in the function)
     pos = 0
@@ -293,8 +338,18 @@ def isolate_gsi_vtable_temps(text: str) -> str:
         n += 1
         alias = f'gsivt{n}'   # a plain identifier: the annotate pass collects GSI aliases by assignment shape
         head, tail = text[:m.end()], text[m.end():]
-        nxt = re.search(r'^[ \t]*' + re.escape(var) + r' = ', tail, re.M)
-        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        redefine = re.compile(r'^[ \t]*' + re.escape(var) + r' = ', re.M)
+        nxt = redefine.search(tail)
+        cut = nxt.start() if nxt else len(tail)
+        if nxt:
+            # the reassignment may BE the vcall through the loaded vtable (`iVar5 = (**(code **)(iVar5 + 0x51c))(..)`,
+            # Q_BanditCamp CheckAnyBanditsKilled 0x00D032F0's AddQuestInfoCounter): its right side still reads the load
+            line_end = tail.find('\n', cut)
+            line = tail[cut:line_end if line_end >= 0 else len(tail)]
+            if re.search(r'\(\*\*\((?:code \*\*\)\((?:\(int\))?)?' + re.escape(var) + r' \+ ', line.split('=', 1)[1]):
+                after = redefine.search(tail, line_end + 1) if line_end >= 0 else None
+                cut = after.start() if after else len(tail)
+        scope, rest = tail[:cut], tail[cut:]
         scope = re.sub(r'\(\*\*\(code \*\*\)\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
         scope = re.sub(r'\(\*\*\(code \*\*\)\(\(int\)' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)
         scope = re.sub(r'\(\*\*\(' + re.escape(var) + r' \+ ', f'(**(code **)({alias} + ', scope)     # the untyped vcall spelling `(**(X + 0x118))(`
@@ -409,11 +464,77 @@ RE_BV_THING_INLINE = re.compile(
     r'(?=(?:[ \t]*\w+\._\d_4_ = [^;]+;[ \t]*\r?\n){0,2}[ \t]*(?P<var>\w+)\._0_4_ = &PTR_[A-Za-z_]*_01238c8c;)', re.M)
 
 
+RE_SIGNED_POW2_DIV = re.compile(
+    r'(?:\(int\))?\((?P<x>[^;()]*(?:\([^;()]*\)[^;()]*)*?) \+ \((?P=x) >> 0x1f & (?P<m>0x[0-9a-f]+|\d+)U?\)\) >> (?P<k>0x[0-9a-f]+|\d+)')
+
+
+def fold_signed_pow2_division(text: str) -> str:
+    """MSVC's signed `x / 2^k`: `(x + (x >> 31 & 2^k-1)) >> k` rounds toward zero (BanditKing Main 0x00D0A830,
+    `KingHealth < initial * 3 / 4`). Lua's `>>` is a logical 64-bit shift and `3U` is not a Lua number, so spell
+    the division: truncate the quotient like C."""
+    def fold(m):
+        k = int(m.group('k'), 0)
+        if int(m.group('m'), 0) != (1 << k) - 1 or not 1 <= k <= 30:
+            return m.group(0)
+        return f'ENGINE_Trunc(({m.group("x")}) / {1 << k})'
+    text = RE_SIGNED_POW2_DIV.sub(fold, text)
+    # the same quotient Ghidra already recognised (`(int)CVar8 / 2`, BanditKing's half-health taunt): an integer
+    # division, where Lua's `/` would compare against 2.5 instead of 2
+    return re.sub(r'\(int\)(\w+) / (\d+)\b(?!\.)', r'ENGINE_Trunc(\1 / \2)', text)
+
+
+def _balanced_end(text: str, at: int):
+    """Index just past the parenthesis group opening at text[at] ('('), or None."""
+    depth = 0
+    for i in range(at, len(text)):
+        depth += {'(': 1, ')': -1}.get(text[i], 0)
+        if depth == 0:
+            return i + 1
+    return None
+
+
+def _comma_st0_call(lines, first: int, name: str):
+    """(line, column) of the call whose ST0 result `name` reads when both sit in one comma expression
+    (`(CALL(args), <no other call> name`), else None. Searches the statement that holds the first read."""
+    start = max(0, first - 6)
+    window = '\n'.join(lines[start:first + 1])
+    idx = len(window) - len(lines[first]) + re.search(r'\b' + re.escape(name) + r'\b', lines[first]).start()
+    prefix = window[:idx]
+    boundary = max(prefix.rfind(';'), prefix.rfind('{'), prefix.rfind('}'))
+    found = None
+    for m in re.finditer(r'GSI->\w+\(|\(\*\*\(code \*\*\)', prefix):
+        if m.start() <= boundary or not prefix[:m.start()].rstrip().endswith('('):
+            continue
+        end = _balanced_end(prefix, m.end() - 1 if m.group(0).startswith('GSI') else m.start())
+        if end is not None and not m.group(0).startswith('GSI'):
+            end = _balanced_end(prefix, end) if prefix[end:end + 1] == '(' else None
+        if end is None:
+            continue
+        rest = re.match(r'\s*,', prefix[end:])
+        if rest and not re.search(r'GSI->|\(\*\*\(code|\b\w+\(', prefix[end + rest.end():]):
+            found = m.start()
+    if found is None:
+        return None
+    line_starts = [0]
+    for l in lines[start:first + 1]:
+        line_starts.append(line_starts[-1] + len(l) + 1)
+    k = max(i for i, s in enumerate(line_starts[:-1]) if s <= found)
+    return start + k, found - line_starts[k]
+
+
 def bind_st0_results(text: str) -> str:
     """Ghidra drops the float (ST0) result of an overridden vtable call and reads it back as
     `extraout_ST0[_NN]`; each such name belongs to the nearest preceding call statement whose result
     was not assigned. Bind it: `fret_NN = <call>;` and use `fret_NN` where the extraout name was read."""
     names = sorted(set(re.findall(r'\bextraout_ST0(?:_\d+)?\b', text)), key=lambda n: (len(n), n))
+    # `__ftol2`'s ST0 operand (typed by the export) when Ghidra lost the producing call's float result: a
+    # `float10 value[_NN];` that is never assigned and only read as `__ftol2(value)` (BanditKing Main 0x00D0A830,
+    # `GetHealth` then `fistp`). The same unassigned ST0 read as extraout_ST0, spelled as the parameter's name.
+    for name in re.findall(r'^[ \t]*float10 (value(?:_\d+)?);', text, re.M):
+        body = re.sub(r'^[ \t]*float10 ' + name + r';', '', text, flags=re.M)
+        uses = [body[max(0, m.start() - 20):m.start()] for m in re.finditer(r'\b' + name + r'\b', body)]
+        if uses and all(re.search(r'__ftol2\(\s*(?:\(float10\))?$', u) for u in uses):
+            names.append(name)
     if not names:
         return text
     lines = text.split('\n')
@@ -422,7 +543,18 @@ def bind_st0_results(text: str) -> str:
                       and not re.match(r'^\s*float10 ' + re.escape(name) + r';', l)), None)
         if first is None:
             continue
-        fret = 'fret_' + (name.split('_', 2)[2] if name.count('_') == 2 else '0')
+        suffix = name.split('_', 2)[2] if name.count('_') == 2 else name.split('_', 1)[1] if name.startswith('value_') else '0'
+        fret = ('fret_' if name.startswith('extraout') else 'fret_v') + suffix
+        # the ST0 read sits in a comma expression after its producing call (`while ((CALL(), K == extraout_ST0_01
+        # || ...))`, BCGameMaster Main 0x00D067A0): the call in that expression is the source, re-evaluated with it,
+        # not the nearest preceding statement (there, an unrelated void SetQuitTavernGame)
+        inline = _comma_st0_call(lines, first, name)
+        if inline is not None:
+            k, at = inline
+            lines[k] = lines[k][:at] + fret + ' = ' + lines[k][at:]
+            lines = [re.sub(r'\b' + re.escape(name) + r'\b', fret, l) for l in lines]
+            lines = [l for l in lines if not re.match(r'^\s*float10 ' + re.escape(fret) + r';', l)]
+            continue
         for k in range(first - 1, -1, -1):
             l = lines[k]
             if re.match(r'^\s*(?:\(\*\*\(code \*\*\)|GSI->|[\w:]+::[\w~]+\s*\(|\w+\()', l) and l.rstrip().endswith(');') and ' = ' not in l.split('(')[0]                     and not re.match(r'^\s*(?:std::|NHeroInformationScreens::|C\w+::(?:~?C\w+|_\w+)\s*\(|operator_(?:delete|new)\(|\(\*\(code \*\))', l):    # not a ctor/dtor/release of a temp
@@ -498,6 +630,95 @@ def fold_flag_relays(text: str, slots) -> str:
             if done:
                 break
     return text
+
+
+def _relay_slot_flags(text: str) -> str:
+    """Components of registers joined by bit-set copies (`A = B | K`) and plain / masked register copies, plus the
+    stack slots they are parked in; each component goes through `_relay_slot_flag_group`. (The generic copy groups
+    in `drop_eh_state_flags` also join through literal inits (`X = 0`), which merges unrelated locals.)"""
+    ident = r'(?!\d)\w+'
+    edge = re.compile(r'^[ \t]*(' + ident + r') = (' + ident + r')( [|&] (?:0x[0-9a-f]+|\d+))?;[ \t]*$', re.M)
+    edges = [(m.group(1), m.group(2), m.group(3) or '') for m in edge.finditer(text) if m.group(1) != m.group(2)]
+    regs = lambda n: 'Stack_' not in n
+    seeds = {n for a, b, k in edges if ' | ' in k and regs(a) and regs(b) for n in (a, b)}
+    done = set()
+    for seed in sorted(seeds):
+        if seed in done:
+            continue
+        component, grow = {seed}, True
+        while grow:
+            grow = False
+            for a, b, _ in edges:
+                if regs(a) and regs(b) and (a in component) != (b in component):
+                    component |= {a, b}
+                    grow = True
+        done |= component
+        slots = {s for a, b, _ in edges for s, r in ((a, b), (b, a)) if not regs(s) and r in component}
+        relayed = _relay_slot_flag_group(text, component | slots)
+        if relayed is not None:
+            text = relayed
+    return text
+
+
+def _relay_slot_flag_group(text: str, group):
+    """A flag word that alternates between registers AND is parked in a stack slot the function also uses for other
+    values (Gate1GuardOuter Main 0x00D01630: `CVar13 = CVar12 | 1; xStack_124 = CVar13; ... CVar13 = xStack_124;
+    ... CVar12 = CVar13 | 0x20;`, while `xStack_124` is also the "Gate1GuardInner" string and a vtable pointer).
+    The registers are one flag when every line naming them is a flag shape, a copy between them, or a store to /
+    reload from the slot; the slot is only a relay when, after each flag store, nothing but a reload reads it
+    before its next real definition. Then the relay lines go and the registers are spelled as one name, which the
+    single-flag rule below removes. Returns None (text untouched) for any other shape."""
+    slots = {n for n in group if 'Stack_' in n}
+    regs = group - slots
+    if not slots or len(regs) < 2:
+        return None
+    num = r'(?:0x[0-9a-f]+|\d+)'
+    names = '|'.join(re.escape(n) for n in sorted(regs))
+    member = re.compile(r'\b(?:' + names + r')\b')
+    cross = re.compile(r'^[ \t]*(\w+) = (\w+)(?: [|&] ' + num + r')?;[ \t]*$')
+    lines = text.split('\n')
+    relay, has_set = set(), False
+    for i, line in enumerate(lines):
+        if not member.search(line):
+            continue
+        m = cross.match(line)
+        if m and m.group(1) in regs and m.group(2) in regs:
+            has_set |= ' | ' in line
+            continue
+        if m and ((m.group(1) in slots and m.group(2) in regs) or (m.group(1) in regs and m.group(2) in slots
+                                                                     and not re.search(r' [|&] ', line))):
+            relay.add(i)
+            continue
+        m = next((sh.match(line) for sh in EH_FLAG_SHAPES if sh.match(line)), None)
+        if not m or m.group('f') not in regs:
+            return None
+    if not has_set or not relay:
+        return None
+    for slot in slots:
+        s = re.escape(slot)
+        holds_flag = False
+        for i, line in enumerate(lines):
+            if not re.search(r'\b' + s + r'\b', line) or re.match(r'^[ \t]*[\w ]+\*? ' + s + r'(?: \[\d+\])?;[ \t]*$', line):
+                continue
+            if i in relay:
+                holds_flag = re.match(r'^[ \t]*' + s + r' = ', line) is not None or holds_flag
+                if not re.match(r'^[ \t]*' + s + r' = ', line) and not holds_flag:
+                    return None                    # a reload of a value no flag store put there
+                continue
+            defines = (re.match(r'^[ \t]*' + s + r' = ', line) and not re.search(r'\b' + s + r'\b', line.split('=', 1)[1])
+                       or re.search(r'&' + s + r'\b', line))
+            if holds_flag and not defines:
+                return None                        # the parked flag would be read as a real value
+            if defines:
+                holds_flag = False
+    one = sorted(regs)[0]
+    others = '|'.join(re.escape(n) for n in sorted(regs - {one}))
+    lines = [l for i, l in enumerate(lines) if i not in relay
+             and not re.match(r'^[ \t]*[\w ]+\*? (?:' + others + r');[ \t]*$', l)]
+    text = '\n'.join(lines)
+    text = re.sub(r'^([ \t]*)(?:' + names + r') = (?:' + names + r')( [|&] ' + num + r')?;[ \t]*$',
+                  lambda m: f'{m.group(1)}{one} = {one}{m.group(2)};' if m.group(2) else '', text, flags=re.M)
+    return member.sub(one, text)
 
 
 def drop_eh_state_flags(text: str) -> str:
@@ -633,6 +854,7 @@ def drop_eh_state_flags(text: str) -> str:
             gb.add(a)
         else:
             groups.append({a, b})
+    text = _relay_slot_flags(text)
     for group in groups:
         if len(group) < 2 or not any(re.match(r'(?:unaff_E[A-Z]{2}|uVar\d+|bVar\d+)$', n) for n in group):
             continue
@@ -1943,6 +2165,81 @@ def fold_char_flags(text):
     return text
 
 
+def fold_things_killed_vectors(text):
+    """`MsgGetThingsKilled(thing, &V)` whose words the script reads. Retail (CGameScriptThing 0x008D3DD0) pushes one
+    CEventKilledCreature::CreatureGroupOfKilledThing word per kill this frame into the std::vector<ulong> {V, E},
+    returning true when it pushed one. Q_BanditCamp CheckAnyBanditsKilled 0x00D032F0 counts the words with bit 4
+    (`*(byte *)(R + i * 4) & 4` through register copies of V / E); the area-massacre checks add the count
+    (`E - (int)V >> 2`) for the hero and each follower / summon, then erase the words. The sidecar binding
+    MsgGetThingsKilledGroups returns them as a Lua list, so: the call fills V, the count is its length, a word is
+    `V[i + 1]`, and the ctor / zeroing / erase / free are list resets. Every script read of the vector and its
+    register copies must be one of those shapes, or the function is left as it was."""
+    for vec in sorted(set(re.findall(r'CScriptThing::MsgGetThingsKilled\([^;]+?,\s*&(\w+)\)', text))):
+        v = re.escape(vec)
+        ends = set(re.findall(r'(\w+) - (?:\(int\))?' + v + r' >> 2', text))
+        if len(ends) != 1:
+            continue
+        end = ends.pop()
+        e = re.escape(end)
+        new = text
+        results = []
+        def call(m):
+            results.append(m.group(2))
+            return (f'{m.group(1)}{vec} = CScriptThing::MsgGetThingsKilledGroups({m.group(3)});\n'
+                    f'{m.group(1)}{m.group(2)} = ENGINE_ListLen({vec}) != 0;')
+        new = re.sub(r'^([ \t]*)(\w+) = CScriptThing::MsgGetThingsKilled\(([^;]+?),\s*&' + v + r'\);', call, new, flags=re.M)
+        for r in results:   # a char-typed result (`cVar5 != '\0'`) now holds a Lua boolean
+            new = re.sub(r'\b' + re.escape(r) + r" != '\\0'", r, new)
+            new = re.sub(r'\b' + re.escape(r) + r" == '\\0'", '!' + r, new)
+        new = re.sub(r'^([ \t]*)' + v + r' = 0;', r'\g<1>' + vec + ' = ENGINE_EmptyList();', new, flags=re.M)
+        new = re.sub(r'^[ \t]*' + e + r' = 0;[ \t]*\r?\n', '', new, flags=re.M)
+        new = re.sub(r'^([ \t]*)CIndexBuffer::CIndexBuffer\(\(CIndexBuffer \*\)&' + v + r',[^;]*\);', r'\g<1>' + vec + ' = ENGINE_EmptyList();', new, flags=re.M)
+        new = re.sub(r'^[ \t]*CFileInstaller::CActiveFile::OnReadFinished\(\(CActiveFile \*\)&' + v + r'\);[ \t]*\r?\n', '', new, flags=re.M)
+        new = re.sub(r'^([ \t]*)std_vector_push_copy_element\(&' + v + r',[^;]*\);', r'\g<1>' + vec + ' = ENGINE_EmptyList();', new, flags=re.M)
+        new = re.sub(r'\b' + e + r' - (?:\(int\))?' + v + r' >> 2\b', f'ENGINE_ListLen({vec})', new)
+        out, alias, ok = [], {}, True
+        for line in new.split('\n'):
+            m = re.match(r'^[ \t]*(\w+) = (\w+);[ \t]*$', line)
+            if m and m.group(2) in (vec, end) and m.group(1) not in (vec, end):
+                alias[m.group(1)] = 'begin' if m.group(2) == vec else 'end'
+                continue
+            m = re.match(r'^[ \t]*(\w+) = ', line)
+            if m and m.group(1) in alias:
+                del alias[m.group(1)]             # the register takes another value: its copy of the vector ends
+            begins = [vec] + [n for n, k in alias.items() if k == 'begin']
+            ends_ = [end] + [n for n, k in alias.items() if k == 'end']
+            for b in begins:
+                line = re.sub(r'\*\((?:byte|uint|int|ulong|undefined4) \*\)\(' + re.escape(b) + r' \+ (\w+) \* 4\)',
+                              lambda mm: f'ENGINE_ListWord({vec}, {mm.group(1)})', line)
+                for en in ends_:
+                    line = re.sub(r'\b' + re.escape(en) + r' - (?:\(int\))?' + re.escape(b) + r' >> 2\b',
+                                  f'ENGINE_ListLen({vec})', line)
+            if any(re.search(r'\b' + re.escape(n) + r'\b', line) for n in alias) or re.search(r'\b' + e + r'\b', line) \
+                    and not re.match(r'^[ \t]*[\w ]+ \**' + e + r';', line):
+                ok = False                         # a copy of the vector used some other way
+                break
+            out.append(line)
+        if ok:
+            text = '\n'.join(out)
+            # a kill total kept in a slot the export typed as a string (the area-massacre checks' CStack_74:
+            # `= 0`, `+= count`, `<= ReadGlobalGameDataFloat(0xe78)`, later the slot of an empty name string)
+            for total in set(re.findall(r'^[ \t]*(\w+) = \(CCharString(?:_bv)?\)\(\(int\)\1 \+ \(?ENGINE_ListLen\(' + v + r'\)\)?\);',
+                                        text, re.M)):
+                t = re.escape(total)
+                text = re.sub(r'^([ \t]*)' + t + r' = \(CCharString(?:_bv)?\)\(\(int\)' + t + r' \+ \(?(ENGINE_ListLen\(' + v + r'\))\)?\);',
+                              r'\g<1>' + total + ' = ' + total + r' + \2;', text, flags=re.M)
+                text = re.sub(r'^([ \t]*)' + t + r' = \(CCharString(?:_bv)?\)0x0;', r'\g<1>' + total + ' = 0;', text, flags=re.M)
+                text = re.sub(r'\(float\)\(int\)' + t + r'\b', '(float)' + total, text)
+                # the counter's life (its `= 0` up to the slot's next use as a string, `&slot`) as a local: the
+                # lifter keeps stack-slot stores as temporaries and leaves a slot's self-update unlifted
+                init = re.search(r'^[ \t]*' + t + r' = 0;', text, re.M)
+                if init:
+                    stop = re.search(r'&' + t + r'\b', text[init.start():])
+                    cut = init.start() + stop.start() if stop else len(text)
+                    text = text[:init.start()] + re.sub(r'\b' + t + r'\b', 'native_arg_kills_' + total, text[init.start():cut]) + text[cut:]
+    return text
+
+
 def lower_after_annotate(text, thing_slots=None):
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
@@ -1976,6 +2273,8 @@ def lower_after_annotate(text, thing_slots=None):
     # and its `if (v != 0) free(v)` guard are the binding's business (TraderConflictGood::WatchForKilledPeople)
     for vec in set(re.findall(r'CScriptThing::MsgGetThingsKilled\([^,;]+,\s*&(\w+)\)', text)):
         v = re.escape(vec)
+        if re.search(r'\w+ - (?:\(int\))?' + v + r' >> 2', text):
+            continue        # the script reads the words: fold_things_killed_vectors (after the element fold)
         text = re.sub(r'(CScriptThing::MsgGetThingsKilled\([^,;]+),\s*&' + v + r'\)', r'\1)', text)
         text = re.sub(r'^[ \t]*' + v + r' = \(void \*\)0x0;[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'^[ \t]*if \(' + v + r' != \(void \*\)0x0\) \{[ \t]*\r?\n[ \t]*free\(' + v + r'\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n', '', text, flags=re.M)
@@ -2002,6 +2301,7 @@ def lower_after_annotate(text, thing_slots=None):
     # result) that the decompiler then "reassembles" from unrelated registers: the temporary is the result
     text = RE_BV_THING_RESULT.sub(lambda m: f'{m.group(1)}{m.group(4)} = {m.group(2)}({m.group(3)});\n', text)
     text = fold_local_thing_vectors(text, thing_slots)
+    text = fold_things_killed_vectors(text)
     # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
     # function registers exactly one timer that is the id
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)
@@ -2754,6 +3054,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\(float \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameDataFloat(\1)', text)
     text = re.sub(r'\*\((?:int|undefined4|uint) \*\)\(DAT_0143e90c \+ (0x[0-9a-f]+|\d+)\)', r'ENGINE_GlobalGameData(\1)', text)
     text = fold_position_reads(text)
+    text = fold_signed_pow2_division(text)
     # CRT truncation of an x87 value (`__ftol2((float10)x)`, typed with its ST0 operand by the export)
     text = re.sub(r'\b__ftol2\(\s*(?:\(float10\))?', 'ENGINE_Trunc(', text)
     # inlined `CScriptThing::GetDataString()` into a hidden-result slot: the empty global string (DAT_0143e8ec)
@@ -3640,6 +3941,10 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'LOCALLIST_Erase', lambda a: f'table.remove({a[0]}, {a[1]} + 1)')
     text = _expand_calls(text, 'LOCALLIST_PushString', lambda a: f'table.insert({a[0]}, {a[1]})')
     text = re.sub(r'LOCALLIST_NewStrings\(\)', '{}', text)
+    # a word list returned by a sidecar binding (MsgGetThingsKilledGroups): length, 0-based word, reset
+    text = _expand_calls(text, 'ENGINE_ListLen', lambda a: f'#{a[0]}' if re.fullmatch(r'\w+', a[0]) else f'#({a[0]})')
+    text = _expand_calls(text, 'ENGINE_ListWord', lambda a: f'{a[0]}[({a[1]}) + 1]')
+    text = _expand_calls(text, 'ENGINE_EmptyList', lambda a: '{}')
     text = _expand_calls(text, 'ENGINE_Trunc', lambda a: f'math.tointeger(math.modf({a[0]}))')   # integral part (truncated toward zero), one value in every operand position
     # Ghidra's `ABS(x)` is the x87 `fabs` (PreMeleeWhisper 0x00D5282C-0x00D5283D: `fld; fabs; fcomp [1.0]; fnstsw; test ah,0x41; jp`)
     text = re.sub(r'(?<![\w.:])ABS\(', 'math.abs(', text)

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, bVar4, cVar5, c_stk_ed, dist, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar14, iVar15, iVar6, iVar8, i_stk_108, native_arg_switch_1, p0, pCVar7, pCVar9, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, this_01, uVar1, uVar10, uVar11, u_stk_c8, u_stk_f4, xStack_104, xStack_b4, xStack_c4, xStack_dc, xStack_ec, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_c
+    local bVar3, bVar4, cVar5, c_stk_ed, dist, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar14, iVar15, iVar6, iVar8, i_stk_108, native_arg_switch_1, p0, pCVar7, pcVar13, r1, r2, r3, r4, r5, r6, r7, r8, uVar10, uVar11, u_stk_c8, u_stk_f4, xStack_104, xStack_b4, xStack_c4, xStack_dc, xStack_ec, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d0e96f()
         quest:DeregisterTimer(i_stk_108)
@@ -335,18 +335,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_b4)
                         quest:SetStateBool("Gate2Open", true)
-                        if this_01 == nil then
-                            this_01 = 0x0
-                        else
-                            u_stk_f4 = u_stk_f4 | 0x38
-                            pCVar9 = extraout_EAX
-                            pCVar9 = (a .. pCVar9)
-                            -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>(this_01,pCVar9,0);
-                            -- TODO(native): *(undefined4 *)(this_01 + 0x38) = uVar1;
-                            -- TODO(native): *(undefined4 *)(this_01 + 0x3c) = 2.0;
-                            -- TODO(native): CCharString::CCharString((CCharString *)(this_01 + 0x40),&xStack_7c);
-                        end
-                        -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);
+                        quest:CreateThread("OpenGate", {args = {2.0, "Gate2Outer"}})  -- native parent-quest worker OpenGate, bound values
                         if (u_stk_f4 & 0x20) ~= 0 then
                             uVar11 = u_stk_f4 & 0xffffffdf
                         end

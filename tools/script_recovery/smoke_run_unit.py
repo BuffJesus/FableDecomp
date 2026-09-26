@@ -49,6 +49,7 @@ local function make_thing(label)
             if k == "GetName" or k == "GetDataString" or k == "GetDefName" then return "" end
             if k == "IsAlive" then return true end
             if k == "IsDead" or k == "IsNull" or k == "IsEqualTo" or k == "IsBeingCarriedBy" then return false end
+            if k == "MsgGetThingsKilledGroups" then return {} end   -- the sidecar's word list (empty = no kill)
             if k:match("^Is") or k:match("^Msg") or k:match("^Has") or k:match("^Can") then return false end
             if k:match("^Get") then return 0 end
             return nil

@@ -1,0 +1,31 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index f1ad3cf..3d3ad1d 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -401,6 +401,26 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         return vt->IsEqualTo ? vt->IsEqualTo(imp, reinterpret_cast<const CScriptThing*>(rhs->pImp.Data))
+                              : me->pImp.Data == rhs->pImp.Data;
+     };
++    // CGameScriptThing::MsgGetThingsKilled (0x008D3DD0, slot 0xDC) walks the thing's events and, for each type-0x22
++    // (killed creature) event of the current frame, pushes the event's +0x8 word: CEventKilledCreature::
++    // CreatureGroupOfKilledThing. It returns true exactly when it pushed one. Retail scripts test the group bits
++    // (Q_BanditCamp CheckAnyBanditsKilled 0x00D032F0 counts `group & 4`), so hand the words to Lua; an empty table
++    // is the false result. The vector is filled and freed by retail's CRT (see GetAll* below).
++    thing["MsgGetThingsKilledGroups"] = [](CScriptThing* me, sol::this_state ts) -> sol::table {
++        sol::state_view lua(ts);
++        sol::table groups = lua.create_table();
++        if (!me || !Game_free) return groups;
++        auto* imp = reinterpret_cast<CGameScriptThing*>(me->pImp.Data);
++        if (!imp || !imp->pVTable) return groups;
++        auto* vt = reinterpret_cast<CGameScriptThingVTable*>(imp->pVTable);
++        if (!vt->MsgGetThingsKilled) return groups;
++        struct RetailULongVector { unsigned long* begin; unsigned long* end; unsigned long* cap; } words = { nullptr, nullptr, nullptr };
++        vt->MsgGetThingsKilled(imp, reinterpret_cast<std::vector<unsigned long>*>(&words));
++        if (words.begin && words.end >= words.begin)
++            for (unsigned long* w = words.begin; w != words.end; ++w) groups.add(static_cast<lua_Integer>(*w));
++        if (words.begin) Game_free(words.begin);
++        return groups;
++    };
+ }
+ 
+ // Registered AFTER the upstream bindings (LuaManager.cpp binds its own GetAll* later than

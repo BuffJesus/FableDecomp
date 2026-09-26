@@ -12,10 +12,8 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar2, cVar3, c_stk_d5, c_stk_d6, fVar1, fVar15, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar4, iVar6, i_stk_dc, i_stk_e0, native_arg_sequence_1, native_arg_switch_1, native_arg_switch_2, p0, pCVar5, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, uVar10, uVar9, u_stk_b4, u_stk_d4, xStack_30, xStack_48, xStack_98, xStack_b0, xStack_d0
+    local bVar2, cVar3, c_stk_d5, c_stk_d6, fVar1, fVar15, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar4, iVar6, i_stk_dc, i_stk_e0, native_arg_sequence_1, native_arg_switch_1, native_arg_switch_2, p0, pCVar5, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, u_stk_b4, xStack_30, xStack_48, xStack_98, xStack_b0, xStack_d0
     local alive = true
-    uVar9 = 0
-    u_stk_d4 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -143,8 +141,6 @@ function Main(quest, me)
             bVar2 = not alive
             if bVar2 then goto LAB_00d0a693 end
             fVar15 = 2.0
-            uVar10 = uVar9 | 3
-            u_stk_d4 = uVar10
             pCVar5 = quest:GetThingWithScriptName("GuardFirstMarker")
             bVar2 = quest:IsDistanceBetweenThingsOver(me, pCVar5, fVar15)
             if bVar2 then
@@ -158,14 +154,6 @@ function Main(quest, me)
             ::LAB_00d094cb::
             bVar2 = false
             ::FLOW_past_lab_00d094cb::
-            if (uVar10 & 2) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffd
-                u_stk_d4 = uVar10
-            end
-            if (uVar10 & 1) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffe
-                u_stk_d4 = uVar10
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -202,8 +190,6 @@ function Main(quest, me)
             bVar2 = not alive
             if bVar2 then goto LAB_00d0a693 end
             fVar15 = 2.0
-            uVar10 = uVar9 | 0xc
-            u_stk_d4 = uVar10
             pCVar5 = quest:GetThingWithScriptName("GuardSecondMarker")
             bVar2 = quest:IsDistanceBetweenThingsOver(me, pCVar5, fVar15)
             if bVar2 then
@@ -217,14 +203,6 @@ function Main(quest, me)
             ::LAB_00d09657::
             bVar2 = false
             ::FLOW_past_lab_00d09657::
-            if (uVar10 & 8) ~= 0 then
-                uVar10 = uVar10 & 0xfffffff7
-                u_stk_d4 = uVar10
-            end
-            if (uVar10 & 4) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffb
-                u_stk_d4 = uVar10
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -358,18 +336,14 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 pCVar8 = xStack_b0
             end
-            uVar10 = u_stk_d4
             iVar4 = i_stk_dc
         end
-        uVar9 = uVar10 | 0x10
         bVar2 = me:MsgIsHitByHero()
         if bVar2 then
             goto LAB_00d09aee
         else
-            uVar9 = uVar10 | 0x30
             bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar2 then
-                uVar9 = uVar10 | 0x70
                 bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar2 then goto LAB_00d09aee end
             end
@@ -380,15 +354,6 @@ function Main(quest, me)
         ::LAB_00d09aee::
         bVar2 = true
         ::FLOW_past_lab_00d09aee::
-        if (uVar9 & 0x40) ~= 0 then
-            uVar9 = uVar9 & 0xffffffbf
-        end
-        if (uVar9 & 0x20) ~= 0 then
-            uVar9 = uVar9 & 0xffffffdf
-        end
-        if (uVar9 & 0x10) ~= 0 then
-            uVar9 = uVar9 & 0xffffffef
-        end
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -420,8 +385,6 @@ function Main(quest, me)
         bVar2 = not alive
         while not bVar2 do
             fVar15 = 2.0
-            uVar10 = uVar9 | 0x180
-            u_stk_d4 = uVar10
             pCVar5 = quest:GetThingWithScriptName("GuardFirstMarker")
             bVar2 = quest:IsDistanceBetweenThingsOver(me, pCVar5, fVar15)
             if bVar2 then
@@ -435,14 +398,6 @@ function Main(quest, me)
             ::LAB_00d09bc7::
             bVar2 = false
             ::FLOW_past_lab_00d09bc7::
-            if (uVar10 & 0x100) ~= 0 then
-                uVar10 = uVar10 & 0xfffffeff
-                u_stk_d4 = uVar10
-            end
-            if uVar10 < 0 then
-                uVar10 = uVar10 & 0xffffff7f
-                u_stk_d4 = uVar10
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -460,8 +415,6 @@ function Main(quest, me)
             bVar2 = quest:IsDistanceBetweenThingsUnder(me, pCVar5, fVar15)
             if bVar2 then
                 fVar15 = 12.0
-                uVar10 = uVar10 | 0x600
-                u_stk_d4 = uVar10
                 pCVar5 = quest:GetThingWithScriptName("GuardFirstMarker")
                 bVar2 = quest:IsDistanceBetweenThingsUnder(me, pCVar5, fVar15)
                 if not bVar2 then goto LAB_00d09cf7 end
@@ -475,14 +428,6 @@ function Main(quest, me)
             ::LAB_00d09cf7::
             bVar2 = false
             ::FLOW_past_lab_00d09cf7::
-            if (uVar10 & 0x400) ~= 0 then
-                uVar10 = uVar10 & 0xfffffbff
-                u_stk_d4 = uVar10
-            end
-            if (uVar10 & 0x200) ~= 0 then
-                uVar10 = uVar10 & 0xfffffdff
-                u_stk_d4 = uVar10
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -496,35 +441,30 @@ function Main(quest, me)
                         pCVar5 = quest:GetHero()
                         quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FIRST", me, pCVar5, false)
                         u_stk_b4 = 1
-                        uVar10 = u_stk_d4
                         break
                     else
                         if native_arg_switch_2 == 1 then
                             pCVar5 = quest:GetHero()
                             quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_SECOND", me, pCVar5, false)
                             u_stk_b4 = 2
-                            uVar10 = u_stk_d4
                             break
                         else
                             if native_arg_switch_2 == 2 then
                                 pCVar5 = quest:GetHero()
                                 quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_THIRD", me, pCVar5, false)
                                 u_stk_b4 = 3
-                                uVar10 = u_stk_d4
                                 break
                             else
                                 if native_arg_switch_2 == 3 then
                                     pCVar5 = quest:GetHero()
                                     quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FOURTH", me, pCVar5, false)
                                     u_stk_b4 = 4
-                                    uVar10 = u_stk_d4
                                     break
                                 else
                                     if native_arg_switch_2 == 4 then
                                         pCVar5 = quest:GetHero()
                                         quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_GUARD_LATE_CONVO_FIFTH", me, pCVar5, false)
                                         u_stk_b4 = 5
-                                        uVar10 = u_stk_d4
                                         break
                                     else
                                         if native_arg_switch_2 == 5 then
@@ -627,17 +567,13 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     pCVar8 = xStack_98
                 end
-                uVar10 = u_stk_d4
             end
-            uVar9 = uVar10 | 0x800
             bVar2 = me:MsgIsHitByHero()
             if bVar2 then
                 goto LAB_00d0a3d3
             else
-                uVar9 = uVar10 | 0x1800
                 bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar2 then
-                    uVar9 = uVar10 | 0x3800
                     bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d0a3d3 end
                 end
@@ -647,15 +583,6 @@ function Main(quest, me)
             ::LAB_00d0a3d3::
             bVar2 = true
             ::FLOW_past_lab_00d0a3d3::
-            if (uVar9 & 0x2000) ~= 0 then
-                uVar9 = uVar9 & 0xffffdfff
-            end
-            if (uVar9 & 0x1000) ~= 0 then
-                uVar9 = uVar9 & 0xffffefff
-            end
-            if (uVar9 & 0x800) ~= 0 then
-                uVar9 = uVar9 & 0xfffff7ff
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive

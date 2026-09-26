@@ -12,14 +12,13 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, this_00, uVar4, uVar8, u_stk_b4, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
+    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, this_00, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d05880()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_c4)
         resources:ReleaseResource(xStack_e8)
     end
-    u_stk_b4 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -38,24 +37,17 @@ function Main(quest, me)
         bVar5 = not alive
         if not bVar5 then
             cVar6 = quest:GetStateBool("AssassinsUnderAttack")
-            uVar4 = 0
             c_stk_c5 = bVar5
             while (not cVar6 and (not quest:GetStateBool("AssassinCutsceneTriggered"))) do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then goto LAB_00d058f3 end
-                uVar8 = uVar4 | 1
-                u_stk_b4 = uVar8
                 cVar6 = me:MsgIsHitByHero()
                 if not cVar6 then
-                    uVar8 = uVar4 | 3
-                    u_stk_b4 = uVar8
                     -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                     bVar5 = nil --[[unresolved native value]]
                     if bVar5 then
-                        uVar8 = uVar4 | 7
-                        u_stk_b4 = uVar8
                         -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                         bVar5 = nil --[[unresolved native value]]
                         if not bVar5 then goto LAB_00d04cdc end
@@ -68,17 +60,6 @@ function Main(quest, me)
                 ::LAB_00d04cdc::
                 c_stk_c6 = 1
                 ::FLOW_past_lab_00d04cdc::
-                if (uVar8 & 4) ~= 0 then
-                    uVar8 = uVar8 & 0xfffffffb
-                    u_stk_b4 = uVar8
-                end
-                if (uVar8 & 2) ~= 0 then
-                    uVar8 = uVar8 & 0xfffffffd
-                    u_stk_b4 = uVar8
-                end
-                if (uVar8 & 1) ~= 0 then
-                    u_stk_b4 = uVar8 & 0xfffffffe
-                end
                 if c_stk_c6 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
@@ -453,7 +434,6 @@ function Main(quest, me)
                     ::LAB_00d057a5::
                 end
                 cVar6 = quest:GetStateBool("AssassinsUnderAttack")
-                uVar4 = u_stk_b4
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive

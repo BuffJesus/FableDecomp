@@ -38,7 +38,12 @@ def lower_nonfallthrough_switches(statements, allow_fallthrough=False):
                         if body:
                             groups.append((labels, body))
                             labels, body = [], []
-                        labels.append(child.text)
+                        # a typed export can cast an integer case literal to the selector slot's type
+                        # (`case (CCharString)0x0:`, AssassinMarker 0x00D11930 / BanditKing 0x00D0A830):
+                        # the comparison is still on the integer. Spell it in decimal like Ghidra's integer
+                        # labels: the lifter reads a hex `== 0x0` as a null-pointer (nil) test.
+                        labels.append(re.sub(r'^\((?:CCharString(?:_bv)?|int|uint|undefined\d?)\)\s*(-?(?:0x[0-9a-fA-F]+|\d+))$',
+                                             lambda m: str(int(m[1], 0)), child.text))
                     else:
                         if not labels:
                             raise ValueError('switch has statements before its first case')

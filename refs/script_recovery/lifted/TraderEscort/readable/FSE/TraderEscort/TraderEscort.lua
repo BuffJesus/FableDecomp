@@ -481,7 +481,7 @@ end
 
 -- Q_TraderEscort.MakeTraderComment (retail 0x00e01900)
 function MakeTraderComment(quest, commentToMake, speaker, commentType)
-    local scratchValue19, darkwoodTrader, scratchValue52
+    local darkwoodTrader, scratchValue51
     local commentTimer = quest:GetStateInt("CommentTimer")
     local hero = quest:GetHero()
     -- TODO(native): xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);
@@ -522,7 +522,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
         else
             (nil):GetDataString()
         end
-        local scratchValue33 = commentToMake
+        local scratchValue32 = commentToMake
         quest:AddLineToConversation(conversationId, (("TEXT_QST_067_" .. speaker) .. "_") .. commentToMake, nil, hero, false)
         if commentType ~= 1 then goto LAB_00e02355 end
         if quest:IsActiveThreadTerminating() then return false end
@@ -530,29 +530,29 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
         if not (darkwoodTrader ~= nil and darkwoodTrader:IsAlive()) or (darkwoodTrader ~= nil and darkwoodTrader:IsEqualTo((nil)._4_4_)) then
             goto LAB_00e02213
         else
-            local scratchValue2 = quest:TextEntryExists(((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue33) .. "_RESPONSE")
+            local scratchValue2 = quest:TextEntryExists(((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue32) .. "_RESPONSE")
             speaker = CONCAT31(speaker._1_3_,1)
             if not scratchValue2 then goto LAB_00e02213 end
         end
         goto FLOW_past_lab_00e02213
         ::LAB_00e02213::
         ::FLOW_past_lab_00e02213::
-        scratchValue52 = 31
+        scratchValue51 = 31
         if 31 & 16 ~= 0 then
-            scratchValue52 = 31 & 0xffffffef
+            scratchValue51 = 31 & 0xffffffef
         end
-        if scratchValue52 & 8 ~= 0 then
-            scratchValue52 = scratchValue52 & 0xfffffff7
+        if scratchValue51 & 8 ~= 0 then
+            scratchValue51 = scratchValue51 & 0xfffffff7
         end
-        if scratchValue52 & 4 ~= 0 then
-            scratchValue52 = scratchValue52 & 0xfffffffb
+        if scratchValue51 & 4 ~= 0 then
+            scratchValue51 = scratchValue51 & 0xfffffffb
         end
         if speaker ~= 0 then
             if quest:IsActiveThreadTerminating() then
                 return false
             end
             quest:AddPersonToConversation(conversationId, darkwoodTrader)
-            quest:AddLineToConversation(conversationId, ((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue33) .. "_RESPONSE", darkwoodTrader, hero, false)
+            quest:AddLineToConversation(conversationId, ((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue32) .. "_RESPONSE", darkwoodTrader, hero, false)
         end
         ::LAB_00e02355::
         quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
@@ -576,7 +576,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
         -- TODO(native): xStack_24 = xStack_18;
         -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);
     end
-    local scratchValue36 = commentToMake
+    local scratchValue35 = commentToMake
     if commentToMake ~= nil then
         local predicateResult = commentToMake == "ROCK_TROLL_CLOSE"
         commentToMake = CONCAT31(commentToMake._1_3_,predicateResult)
@@ -585,7 +585,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
     goto FLOW_past_lab_00e01ba2
     ::LAB_00e01ba2::
     if quest:IsActiveThreadTerminating() then return false end
-    quest:PlayCriteriaSoundOnThing(quest:GetThingWithScriptName("EARTH_TROLL_OFFSCREEN_ROAR"), scratchValue19)
+    quest:PlayCriteriaSoundOnThing(quest:GetThingWithScriptName("RockTrollTrigger"), "EARTH_TROLL_OFFSCREEN_ROAR")
     quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
     local conversationId2 = quest:AddNewConversation(darkwoodTrader9, false, false)
@@ -599,7 +599,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
         quest:AddPersonToConversation(conversationId2, darkwoodTrader8)
         if not (darkwoodTrader9 ~= nil and darkwoodTrader9:IsAlive()) then
             if not quest:IsActiveThreadTerminating() then
-                quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue36, nil, hero, false)
+                quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue35, nil, hero, false)
                 quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_NO", darkwoodTrader8, hero, false)
                 local scratchValue = nil
                 quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. scratchValue:GetDataString()) .. "_INTRO_RESPONSE_REWARD", scratchValue, hero, false)
@@ -609,7 +609,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
             end
         elseif not quest:IsActiveThreadTerminating() then
             quest:AddPersonToConversation(conversationId2, darkwoodTrader9)
-            quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue36, nil, hero, false)
+            quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue35, nil, hero, false)
             quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_NO", darkwoodTrader8, hero, false)
             quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader9:GetDataString()) .. "_INTRO_RESPONSE_OATH", darkwoodTrader9, hero, false)
             quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_BAD_NEWS", darkwoodTrader8, hero, false)

@@ -172,8 +172,8 @@ function MakeTraderComment(quest, me, commentToMake, speaker, commentType)
     ::LAB_00e01ba2::
     scratchValue2 = quest:IsActiveThreadTerminating()
     if scratchValue2 then goto LAB_00e01ab8 end
-    scratchValue4 = quest:GetThingWithScriptName("EARTH_TROLL_OFFSCREEN_ROAR")
-    scratchValue8 = quest:PlayCriteriaSoundOnThing(scratchValue4, getDataString2)
+    scratchValue4 = quest:GetThingWithScriptName("RockTrollTrigger")
+    scratchValue8 = quest:PlayCriteriaSoundOnThing(scratchValue4, "EARTH_TROLL_OFFSCREEN_ROAR")
     quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
     conversationId = quest:AddNewConversation(darkwoodTrader3, false, false)

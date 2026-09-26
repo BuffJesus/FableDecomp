@@ -1529,21 +1529,16 @@ function CheckFriendlyAttacks(quest)
 end
 
 function KeepTabsOnWhisper(quest)
-    local CVar5, CVar6, bVar2, bVar3, pCVar4, pPosition, r1, xStack_2c
+    local bVar2, bVar3, pCVar4, pPosition, r1
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then
         return
     end
-    CVar5 = 0
     repeat
-        CVar6 = CVar5 | 1
-        xStack_2c = CVar6
         bVar2 = quest:IsLevelLoaded("GuildWoods")
         if bVar2 then
-            CVar6 = CVar5 | 3
-            xStack_2c = CVar6
             bVar3 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
             bVar2 = true
             if not bVar3 then goto LAB_00d3cc48 end
@@ -1554,15 +1549,6 @@ function KeepTabsOnWhisper(quest)
         ::LAB_00d3cc48::
         bVar2 = false
         ::FLOW_past_lab_00d3cc48::
-        if (CVar6 & 2) ~= 0 then
-            CVar6 = CVar6 & 0xfffffffd
-            xStack_2c = CVar6
-        end
-        if (CVar6 & 1) ~= 0 then
-            CVar6 = CVar6 & 0xfffffffe
-            xStack_2c = CVar6
-        end
-        CVar5 = CVar6
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -1585,7 +1571,6 @@ function KeepTabsOnWhisper(quest)
                 return
             end
             bVar2 = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
-            CVar5 = xStack_2c
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -1594,7 +1579,6 @@ function KeepTabsOnWhisper(quest)
                 end
                 pCVar4 = quest:GetThingWithScriptName("MeleeApprentice")
                 bVar2 = (pCVar4 ~= nil and pCVar4:IsAlive())
-                CVar5 = xStack_2c
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive

@@ -920,7 +920,7 @@ function Main(quest, me)
                     -- LAB_00e07e06: (native jump target)
                     goto LAB_00e085f8
                 end
-                fret_0 = quest:FadeOutAndKillEntity(me, true, 2.0, true)
+                quest:FadeOutAndKillEntity(me, true, 2.0, true)
             end
             fVar19 = 5.0
             pCVar6 = quest:GetHero()

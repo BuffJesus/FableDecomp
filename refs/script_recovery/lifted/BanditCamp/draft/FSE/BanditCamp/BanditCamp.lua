@@ -246,7 +246,7 @@ function WatchForCostume(quest)
 end
 
 function CheckAnyBanditsKilled(quest)
-    local bVar2, iVar3, iVar4, iVar5, i_stk_8, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14
+    local bVar2, iStack_c, iVar3, iVar4, iVar5, max, native_arg_sequence_1, scale, this_00, uVar6, v_stk_10, xStack_14
     local alive = true
     v_stk_10 = 0
     if not quest:GetStateBool("BoastBegun") then
@@ -281,17 +281,17 @@ function CheckAnyBanditsKilled(quest)
         end
         scale = 1.0
         iVar3 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88)))
-        -- TODO(native): iVar5 = (**(iVar5 + 0x51c))(piVar1,"HUD_QUEST_ICON_BANDIT",iVar3,scale)
-        iVar5 = nil --[[unresolved native value]]
+        iVar5 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_BANDIT", iVar3, scale)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
         while true do
-            i_stk_8 = 0
+            iStack_c = {}
             -- TODO(native): ::__EH_epilog3(auStack_4,(int)&uStack_15,0);
             this_00 = quest:GetHero()
-            bVar2 = this_00:MsgGetThingsKilled()
+            iStack_c = this_00:MsgGetThingsKilledGroups()
+            bVar2 = #iStack_c ~= 0
             if bVar2 then break end
             -- LAB_00d034ad: (native jump target)
             if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
@@ -321,9 +321,8 @@ function CheckAnyBanditsKilled(quest)
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
                 max = -1
                 iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
-                quest:UpdateQuestInfoCounter(iVar4, max, i_stk_8)
+                quest:UpdateQuestInfoCounter(iVar5, iVar4, max)
             end
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -336,22 +335,18 @@ function CheckAnyBanditsKilled(quest)
         bVar2 = not alive
         if not bVar2 then
             uVar6 = 0
-            iVar3 = 0
-            if i_stk_8 - 0 >> 2 ~= 0 then
+            if #iStack_c ~= 0 then
                 repeat
-                    -- TODO(native): if (*(iVar3 + uVar6 * 4) & 4) ~= 0 then
-                    if false then
+                    if (iStack_c[(uVar6) + 1] & 4) ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then goto LAB_00d03564 end
                         v_stk_10 = v_stk_10 + 1
-                        iVar3 = 0
-                        iVar4 = i_stk_8
                     end
                     uVar6 = uVar6 + 1
-                until not (uVar6 < (iVar4 - iVar3 >> 2))
+                until not (uVar6 < (#iStack_c))
             end
-            -- TODO(native): std_vector_push_copy_element(&iStack_c,iVar3,iVar4);
+            iStack_c = {}
             if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -377,9 +372,8 @@ function CheckAnyBanditsKilled(quest)
                 quest:SetMasterGameState("BanditCampKillManyBandits", true)
                 max = -1
                 iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
-                quest:UpdateQuestInfoCounter(iVar4, max, 0)
+                quest:UpdateQuestInfoCounter(iVar5, iVar4, max)
             end
-            -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
             alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -389,7 +383,6 @@ function CheckAnyBanditsKilled(quest)
             goto FLOW_after_lab_00d034ad
         end
         ::LAB_00d03564::
-        -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);
     end
 end
 

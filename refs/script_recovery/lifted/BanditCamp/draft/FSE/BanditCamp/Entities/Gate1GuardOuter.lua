@@ -12,9 +12,8 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar12, CVar13, bVar4, bVar5, cVar6, c_stk_111, c_stk_145, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, iVar15, iVar16, iVar7, iVar8, i_stk_14c, pCVar10, pCVar11, pCVar9, pQuestName, pcVar14, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10c, xStack_124, xStack_134, xStack_144, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_78, x_stk_84, x_stk_90, x_stk_c
+    local bVar4, bVar5, cVar6, c_stk_111, c_stk_145, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, iVar15, iVar16, iVar7, iVar8, i_stk_14c, pCVar10, pCVar11, pCVar9, pQuestName, pcVar14, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10c, xStack_134, xStack_144, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_78, x_stk_84, x_stk_90, x_stk_c
     local alive = true
-    CVar12 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -93,30 +92,20 @@ function Main(quest, me)
             if not bVar4 then
                 xStack_134 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                CVar13 = CVar12 | 1
-                xStack_124 = CVar13
                 pCVar10 = quest:GetHero()
                 bVar4 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_SHIRT_BANDITCAMP")
                 if bVar4 then
                     goto LAB_00d01abe
                 else
-                    CVar13 = CVar12 | 3
-                    xStack_124 = CVar13
                     pCVar10 = quest:GetHero()
                     bVar4 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_TROUSERS_BANDITCAMP")
                     if bVar4 then goto LAB_00d01abe end
-                    CVar13 = CVar12 | 7
-                    xStack_124 = CVar13
                     pCVar10 = quest:GetHero()
                     bVar4 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_HAT_BANDITCAMP")
                     if bVar4 then goto LAB_00d01abe end
-                    CVar13 = CVar12 | 0xf
-                    xStack_124 = CVar13
                     pCVar10 = quest:GetHero()
                     bVar4 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_BOOTS_BANDITCAMP")
                     if bVar4 then goto LAB_00d01abe end
-                    CVar13 = CVar12 | 0x1f
-                    xStack_124 = CVar13
                     pCVar10 = quest:GetHero()
                     bVar5 = quest:IsWearingClothingItem(pCVar10, "OBJECT_HERO_GLOVES_BANDITCAMP")
                     bVar4 = true
@@ -126,25 +115,6 @@ function Main(quest, me)
                 ::LAB_00d01abe::
                 bVar4 = false
                 ::FLOW_past_lab_00d01abe::
-                if (CVar13 & 0x10) ~= 0 then
-                    CVar13 = CVar13 & 0xffffffef
-                    xStack_124 = CVar13
-                end
-                if (CVar13 & 8) ~= 0 then
-                    CVar13 = CVar13 & 0xfffffff7
-                    xStack_124 = CVar13
-                end
-                if (CVar13 & 4) ~= 0 then
-                    CVar13 = CVar13 & 0xfffffffb
-                    xStack_124 = CVar13
-                end
-                if (CVar13 & 2) ~= 0 then
-                    CVar13 = CVar13 & 0xfffffffd
-                    xStack_124 = CVar13
-                end
-                if (CVar13 & 1) ~= 0 then
-                    -- TODO(native): xStack_124 = CVar13 & 0xfffffffe;
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -186,7 +156,6 @@ function Main(quest, me)
                 ::LAB_00d02592::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_134)
-                CVar13 = xStack_124
                 goto LAB_00d0274f
                 ::FLOW_past_lab_00d01be9::
                 pCVar10 = quest:GetHero()
@@ -571,13 +540,10 @@ function Main(quest, me)
     end
     goto FLOW_past_lab_00d0274f
     ::LAB_00d0274f::
-    CVar12 = CVar13 | 0x20
     cVar6 = me:MsgIsHitByHero()
     if not cVar6 then
-        CVar12 = CVar13 | 0x60
         bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
         if bVar4 then
-            CVar12 = CVar13 | 0xe0
             bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
             if not bVar4 then goto LAB_00d027e0 end
         end
@@ -589,15 +555,6 @@ function Main(quest, me)
     ::LAB_00d027e0::
     bVar4 = true
     ::FLOW_past_lab_00d027e0::
-    if (CVar12 & 0x80) ~= 0 then
-        CVar12 = CVar12 & 0xffffff7f
-    end
-    if (CVar12 & 0x40) ~= 0 then
-        CVar12 = CVar12 & 0xffffffbf
-    end
-    if (CVar12 & 0x20) ~= 0 then
-        CVar12 = CVar12 & 0xffffffdf
-    end
     if not bVar4 then
         -- TODO(native): if (*(char *)(*(int *)(this + 0x14) + 0x48) == '\0') goto code_r0x00d0283a;
         alive = not quest:IsActiveThreadTerminating()

@@ -218,6 +218,51 @@ RE_THREAD_CAPTURE = re.compile(
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,(?:""|&DAT_[0-9a-f]+),-1\);\s*'
     r'CGuiVarTransferStruct::Add\([^;]*?,\s*(?P=obj),\s*\w+\);[ \t]*\n'
     r'(?:[ \t]*std::\s*_Cons_val<[^;]*?;[ \t]*\n)*', re.S)
+# The same parent-quest worker spawned with bound VALUES (Gate2Guard1 Main 0x00D0D910: `ParentClass.OpenGate` with
+# +0x3c = 2.0 (the delay) and +0x40 = a copy of the "Gate2Outer" string temporary, `operator new(0x44)`): the
+# fields after +0x38 are the worker's parameters in order, OpenGate(time_delay, door_name).
+RE_THREAD_VALUES = re.compile(
+    r'(?P<obj>\w+) = (?:::)?operator_new\((?P<size>0x[0-9a-f]+)\);\s*'
+    r'if \((?P=obj) == [^;{]*?0x0\) \{[^{}]*\}\s*else \{'
+    r'(?P<body>[^{}]*?)'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>\w+)",-1\);'     # the member name, then
+    r'(?=(?:\s*\w+ = extraout_EAX;)?\s*CCharString::CCharString\([^;]*?"ParentClass\.",-1\);)'   # "ParentClass."
+    r'(?P<body2>[^{}]*?)'
+    r'\*\(code \*\*\)\((?P=obj) \+ 0x34\) =\s*&?(?P<fn>[\w:]+);\s*'
+    r'\*\(undefined4 \*\)\((?P=obj) \+ 0x38\) = \w+;\s*'
+    r'(?P<fields>(?:(?:\*\(\w+ \*\)\((?P=obj) \+ 0x[0-9a-f]+\) = [^;]+;|CCharString::CCharString\(\(CCharString \*\)\((?P=obj) \+ 0x[0-9a-f]+\),&?\w+\);'
+    r'|std::\s*_Cons_val<[^;]*?;)\s*)+)'
+    r'\}\s*'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,(?:""|&DAT_[0-9a-f]+),-1\);\s*'
+    r'CGuiVarTransferStruct::Add\([^;]*?,\s*(?P=obj),\s*\w+\);[ \t]*\n'
+    r'(?:[ \t]*std::\s*_Cons_val<[^;]*?;[ \t]*\n)*', re.S)
+
+
+def _bound_thread_values(match):
+    """The Lua operands of a RE_THREAD_VALUES spawn, or None when a field is not a literal / literal-built string
+    or the fields do not exactly fill the object after +0x3c."""
+    obj, body = re.escape(match.group('obj')), match.group('body') + match.group('body2')
+    values, offset = [], 0x3c
+    for f in re.finditer(r'\*\(\w+ \*\)\(' + obj + r' \+ (0x[0-9a-f]+)\) = ([^;]+);'
+                         r'|CCharString::CCharString\(\(CCharString \*\)\(' + obj + r' \+ (0x[0-9a-f]+)\),&?(\w+)\);',
+                         match.group('fields')):
+        at = int(f.group(1) or f.group(3), 16)
+        if at != offset:
+            return None
+        if f.group(1):
+            value = f.group(2).strip()
+            if not re.fullmatch(r'-?\d+(?:\.\d+)?|0x[0-9a-f]+', value):
+                return None
+            values.append(str(int(value, 16)) if value.startswith('0x') else value)
+        else:
+            literal = re.search(r'CCharString::CCharString\((?:\(CCharString \*\))?&?' + re.escape(f.group(4)) + r',"((?:[^"\\]|\\.)*)",-1\);', body)
+            if not literal:
+                return None
+            values.append(f'"{literal.group(1)}"')
+        offset += 4
+    return values if values and offset == int(match.group('size'), 16) else None
+
+
 # the unwind-flag guards after it (`if ((F & 4) != 0) { F = F & ~4; <temp dtor> }`): consumed only for a flag the
 # spawn block itself set (`auVar5 = 7` / `= local_20`), never one shared with the function's other cleanup
 RE_FLAG_GUARD = re.compile(r'[ \t]*if \(\(\(?(?:uint\))?(?P<flag>\w+) & (?:0x[0-9a-f]+|\d+)\)? != 0\) \{[^{}]*\}[ \t]*\n')
@@ -1560,6 +1605,16 @@ class Lifter:
             # 0x00DFE0F0) is that local -- dropping it left the optional key absent (third audit, 2026-09-20)
             operands = [a[1:] if a.startswith("&") and a[1:] in self.locals and a[1:] not in self.temps
                         and self.kind_of(a[1:]) in ('string', None) else a for a in operands]
+            # the function's own by-value parameter passed by address (`GetThingWithScriptName(&result, &door_name)`,
+            # Q_BanditCampBossBattle OpenGate 0x00D0EBC0) is a const reference to that value, never an out slot:
+            # dropped, the door lookup went out with a nil name and no gate opened
+            # (Ghidra may type the parameter `int`; the CCharString cast on its address says what it holds)
+            for a in operands:
+                m = re.fullmatch(r'\((CCharString|CScriptThing)(?:_bv)? \*\)&(native_arg_\w+)', a.strip())
+                if m:
+                    self.kinds[m[2]] = 'string' if m[1] == 'CCharString' else 'thing'
+            operands = [re.sub(r'^(?:\([\w ]+\*\))?&', '', a) if re.fullmatch(r'(?:\([\w ]+\*\))?&native_arg_\w+', a.strip()) else a
+                        for a in operands]
         raw_args = [a for a in operands if not a.startswith("&") and a not in ("this", "param_1")]
         params = None
         if spec:
@@ -2050,6 +2105,17 @@ class Lifter:
             return f'    @@THREADARGS#{len(spawn_flags) - 1} {match.group("name")} {match.group("fn")} me\n'
 
         text = RE_THREAD_CAPTURE.sub(thread_capture, text)
+
+        def thread_values(match: re.Match) -> str:
+            values = _bound_thread_values(match)
+            if values is None:
+                return match.group(0)
+            thread_objects.add(match.group('obj'))
+            spawn_flags.append(set(re.findall(r'(?m)^[ \t]*(\w+) = (?:\([^()]*\)\s*)?(?:\d+|\w+);', match.group(0)))
+                               - {match.group('obj')})
+            return f'    @@THREADARGS#{len(spawn_flags) - 1} {match.group("name")} {match.group("fn")} {", ".join(values)}\n'
+
+        text = RE_THREAD_VALUES.sub(thread_values, text)
         for k, flags in enumerate(spawn_flags):
             marker = re.search(r'@@THREADARGS#%d [^\n]*\n' % k, text)
             end = marker.end()
@@ -2281,6 +2347,21 @@ class Lifter:
         self.kinds[name] = 'bool'
         return name
 
+    def lower_loop_head_tree(self, role, cond):
+        """A loop head that calls (`while ((fret = GetBestTime(), K == fret) || (b = InGame(), b))`,
+        BCGameMaster Main 0x00D067A0): C re-evaluates the calls on every test, so lower the
+        short-circuit tree inside the loop and break when it is false."""
+        def assigned(node):
+            if node[0] == 'seq':
+                return [re.match(r'\s*(\w+)', s)[1] for s in node[1]] + assigned(node[2])
+            return [n for child in node[1] for n in assigned(child)] if node[0] in ('and', 'or') else []
+        tree = parse_condition_tree(cond)
+        for name in assigned(tree):
+            self.mutable_scalars.add(name)
+        self.emit('while true do')
+        self.indent += 1
+        self.emit(f'if not ({self.lower_condition_tree(role, tree)}) then break end')
+
     def statement(self, role: str, line: str) -> None:
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
@@ -2367,8 +2448,9 @@ class Lifter:
             self.threads.append({"name": name, "body": body, "args": [arg]})
             # (the comment names the thread, not the member label: bsim mislabels TurnToBalv's pointer as
             # Script_Darkwood_Balverine_Trader; the CSpawnedFunc name literal is the evidence)
+            what = "the entity's own thing captured" if arg == 'me' else 'bound values'
             self.emit(f'{self.receiver}:CreateThread("{name}", {{args = {{{arg}}}}})'
-                      f'  -- native parent-quest worker {name}, the entity\'s own thing captured')
+                      f'  -- native parent-quest worker {name}, {what}')
             self.calls.append("CreateThread")
             return
         if stripped.startswith("@@THREAD "):
@@ -2552,6 +2634,18 @@ class Lifter:
             self.emit(f"if {condition} then")
             self.indent += 1
             return
+        m = RE_WHILE.match(line)
+        if m and has_call_assignment(m.group(1)):
+            # the single-operator form below lowers only a call on the right; a call sequence on the
+            # left of `||` / `&&` needs the tree (`while ((f = GetBestTime(), K == f) || ...)`)
+            def calls(node):
+                if node[0] == 'seq':
+                    return any(re.search(r'\w\s*\(', s) for s in node[1]) or calls(node[2])
+                return node[0] in ('and', 'or') and any(calls(child) for child in node[1])
+            tree = parse_condition_tree(m.group(1))
+            if tree[0] in ('and', 'or') and any(calls(child) for child in tree[1][:-1]):
+                self.lower_loop_head_tree(role, m.group(1))
+                return
         m = conditional_call_assignment(line)
         if m:
             control, left, op, target, owner, name, args, right = m
@@ -2686,6 +2780,9 @@ class Lifter:
                 for part in sequence[:-1]:
                     self.statement(role, part + ';')
                 self.emit(f'if not ({self.expr(sequence[-1])}) then break end')
+                return
+            if cond != "true" and has_call_assignment(cond):
+                self.lower_loop_head_tree(role, cond)
                 return
             self.emit("while true do" if cond == "true" else f"while {self.expr(cond)} do")
             self.indent += 1

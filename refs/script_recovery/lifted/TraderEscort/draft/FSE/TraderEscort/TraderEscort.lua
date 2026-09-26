@@ -995,8 +995,8 @@ function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00e01ab8 end
-    pCVar4 = quest:GetThingWithScriptName("EARTH_TROLL_OFFSCREEN_ROAR")
-    r4 = quest:PlayCriteriaSoundOnThing(pCVar4, pCVar8)
+    pCVar4 = quest:GetThingWithScriptName("RockTrollTrigger")
+    r4 = quest:PlayCriteriaSoundOnThing(pCVar4, "EARTH_TROLL_OFFSCREEN_ROAR")
     quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
     iVar6 = quest:AddNewConversation(r3, false, false)

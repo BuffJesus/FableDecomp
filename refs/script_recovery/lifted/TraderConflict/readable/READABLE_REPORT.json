@@ -707,7 +707,7 @@
       "unusedAlive": 0,
       "flagTests": 14,
       "declarations": 16,
-      "decimalLiterals": 16
+      "decimalLiterals": 3
      }
     },
     {
@@ -767,56 +767,6 @@
      "function": "Main",
      "sourceLine": 13,
      "locals": {
-      "CVar6_1": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "CVar6_2": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "CVar7_1": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null
-       ]
-      },
-      "CVar7_2": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null
-       ]
-      },
       "bVar2_1": {
        "name": "predicateResult",
        "basis": "consistent call/state result",
@@ -846,7 +796,7 @@
        ]
       },
       "bVar2_5": {
-       "name": "scratchValue5",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -867,7 +817,7 @@
        ]
       },
       "bVar2_8": {
-       "name": "scratchValue6",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -903,7 +853,7 @@
        ]
       },
       "bVar2_13": {
-       "name": "scratchValue7",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -967,7 +917,7 @@
        ]
       },
       "bVar2_22": {
-       "name": "scratchValue8",
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -1091,7 +1041,7 @@
        ]
       },
       "iVar5_1": {
-       "name": "scratchValue9",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -1194,24 +1144,12 @@
        "assignmentRoles": [
         "banditFighter"
        ]
-      },
-      "xStack_2c": {
-       "name": "scratchValue10",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ]
       }
      },
      "splitLocals": {
       "bVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "bVar2_1": [
          6
@@ -1223,106 +1161,106 @@
          24
         ],
         "bVar2_4": [
-         32
+         31
         ],
         "bVar2_5": [
-         37
+         35
         ],
         "bVar2_6": [
-         40
+         37
         ],
         "bVar2_7": [
-         43
+         39
         ],
         "bVar2_8": [
-         46
+         41
         ],
         "bVar2_9": [
-         49,
-         55
+         44,
+         50
         ],
         "bVar2_10": [
-         70
+         53
         ],
         "bVar2_11": [
-         77
+         59
         ],
         "bVar2_12": [
-         82
+         63
         ],
         "bVar2_13": [
-         85
+         65
         ],
         "bVar2_14": [
-         88,
-         93
+         68,
+         72
         ],
         "bVar2_15": [
-         106
+         75
         ],
         "bVar2_16": [
-         115
+         84
         ],
         "bVar2_17": [
-         117
+         86
         ],
         "bVar2_18": [
-         127
+         95
         ],
         "bVar2_19": [
-         132
+         100
         ],
         "bVar2_20": [
-         138
+         104
         ],
         "bVar2_21": [
-         144
+         108
         ],
         "bVar2_22": [
-         148
+         110
         ],
         "bVar2_23": [
-         151,
-         155
+         113,
+         117
         ],
         "bVar2_24": [
-         170
+         120
         ],
         "bVar2_25": [
-         175
+         125
         ],
         "bVar2_26": [
-         187
+         136
         ],
         "bVar2_27": [
-         192
+         141
         ],
         "bVar2_28": [
-         194
+         143
         ],
         "bVar2_29": [
-         205
+         154
         ],
         "bVar2_30": [
-         207
+         156
         ],
         "bVar2_31": [
-         213
+         162
         ],
         "bVar2_32": [
-         232
+         181
         ],
         "bVar2_33": [
-         238
+         187
         ],
         "bVar2_34": [
-         248
+         196
         ]
        }
       },
       "pCVar3": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "pCVar3_1": [
          10
@@ -1331,34 +1269,34 @@
          26
         ],
         "pCVar3_3": [
-         114
+         83
         ],
         "pCVar3_4": [
-         180
+         130
         ],
         "pCVar3_5": [
-         182
+         132
         ],
         "pCVar3_6": [
-         204
+         153
         ],
         "pCVar3_7": [
-         218
+         167
         ],
         "pCVar3_8": [
-         220
+         169
         ],
         "pCVar3_9": [
-         223
+         172
         ],
         "pCVar3_10": [
-         225
+         174
         ]
        }
       },
       "cVar1": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "cVar1_1": [
          14,
@@ -1366,97 +1304,51 @@
         ],
         "cVar1_2": [
          28,
-         124
+         92
         ],
         "cVar1_3": [
-         129,
-         245
+         97,
+         193
         ],
         "cVar1_4": [
-         229,
-         236
-        ]
-       }
-      },
-      "CVar6": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
-       "versions": {
-        "CVar6_1": [
-         36,
-         39,
-         42,
-         45,
-         58,
-         61,
-         64,
-         67,
-         89,
-         94,
-         97,
-         100,
-         103
-        ],
-        "CVar6_2": [
-         136,
-         142,
-         146,
-         158,
-         162,
-         166,
+         178,
          185
-        ]
-       }
-      },
-      "CVar7": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
-       "versions": {
-        "CVar7_1": [
-         29,
-         123,
-         244
-        ],
-        "CVar7_2": [
-         76,
-         81,
-         84
         ]
        }
       },
       "fVar8": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "fVar8_1": [
-         113
+         82
         ],
         "fVar8_2": [
-         203
+         152
         ]
        }
       },
       "iVar5": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "iVar5_1": [
-         211
+         160
         ],
         "iVar5_2": [
-         217
+         166
         ]
        }
       },
       "pCVar4": {
        "declarationLine": 2,
-       "originalDeclaration": "    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1, xStack_2c\n",
+       "originalDeclaration": "    local bVar2, cVar1, conversationID, fVar8, iVar5, pCVar3, pCVar4, r1\n",
        "versions": {
         "pCVar4_1": [
          12
         ],
         "pCVar4_2": [
-         227
+         176
         ]
        }
       }
@@ -1465,28 +1357,28 @@
      "inlinedLiteralLocals": {
       "fVar8_1": {
        "literal": "15.0",
-       "definitionLine": 113,
+       "definitionLine": 82,
        "readLines": [
-        115
+        84
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local CVar6_1, CVar6_2, CVar7_1, CVar7_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, cVar1_1, cVar1_2, cVar1_3, cVar1_4, conversationID, fVar8_1, fVar8_2, iVar5_1, iVar5_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar4_1, pCVar4_2, r1, xStack_2c\n",
-        "113": "                fVar8_1 = 15.0\n",
-        "115": "                bVar2_16 = quest:IsDistanceBetweenThingsUnder(me, pCVar3_3, fVar8_1)\n"
+        "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, cVar1_1, cVar1_2, cVar1_3, cVar1_4, conversationID, fVar8_1, fVar8_2, iVar5_1, iVar5_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar4_1, pCVar4_2, r1\n",
+        "82": "                fVar8_1 = 15.0\n",
+        "84": "                bVar2_16 = quest:IsDistanceBetweenThingsUnder(me, pCVar3_3, fVar8_1)\n"
        }
       },
       "fVar8_2": {
        "literal": "15.0",
-       "definitionLine": 203,
+       "definitionLine": 152,
        "readLines": [
-        205
+        154
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "2": "    local CVar6_1, CVar6_2, CVar7_1, CVar7_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, cVar1_1, cVar1_2, cVar1_3, cVar1_4, conversationID, fVar8_2, iVar5_1, iVar5_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar4_1, pCVar4_2, r1, xStack_2c\n",
-        "203": "                        fVar8_2 = 15.0\n",
-        "205": "                        bVar2_29 = quest:IsDistanceBetweenThingsUnder(me, pCVar3_6, fVar8_2)\n"
+        "2": "    local bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, cVar1_1, cVar1_2, cVar1_3, cVar1_4, conversationID, fVar8_2, iVar5_1, iVar5_2, pCVar3_1, pCVar3_2, pCVar3_3, pCVar3_4, pCVar3_5, pCVar3_6, pCVar3_7, pCVar3_8, pCVar3_9, pCVar3_10, pCVar4_1, pCVar4_2, r1\n",
+        "152": "                        fVar8_2 = 15.0\n",
+        "154": "                        bVar2_29 = quest:IsDistanceBetweenThingsUnder(me, pCVar3_6, fVar8_2)\n"
        }
       }
      },
@@ -1494,7 +1386,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 269,
+     "sourceLine": 217,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1503,7 +1395,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 273,
+     "sourceLine": 221,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1512,7 +1404,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 276,
+     "sourceLine": 224,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1530,7 +1422,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 162,
+     "sourceLine": 106,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1539,7 +1431,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 166,
+     "sourceLine": 110,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1548,7 +1440,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 169,
+     "sourceLine": 113,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1556,7 +1448,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -1572,7 +1464,7 @@
        "inlinedTemporaries": 30,
        "deadDefinitions": 0,
        "guardWrappers": 4,
-       "retryLoops": 3,
+       "retryLoops": 4,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 0,
@@ -1580,16 +1472,16 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 2,
+       "tailGuards": 120,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 2,
+       "gotoElse": 120,
        "booleanBranches": 0,
-       "elseif": 2,
+       "elseif": 1,
        "elseExit": 1,
        "gotoReturn": 0,
        "ifAroundWhile": 0,
@@ -1597,15 +1489,15 @@
        "controlAcquires": 0,
        "sunkLocals": 5,
        "cleanupClosureNames": 0,
-       "parentheses": 12,
+       "parentheses": 2,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 1,
        "hoistedState": 0
       },
       "before": {
-       "lines": 239,
-       "temporaries": 45,
+       "lines": 187,
+       "temporaries": 40,
        "labels": 6,
        "gotos": 10,
        "terminationChecks": 18,
@@ -1613,8 +1505,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 152,
-       "temporaries": 9,
+       "lines": 96,
+       "temporaries": 3,
        "labels": 6,
        "gotos": 10,
        "terminationChecks": 7,

@@ -254,13 +254,7 @@
           },
           "todo": [
             "unlifted: ::__EH_epilog3(auStack_4,(int)&uStack_15,0);",
-            "label LAB_00d034ad",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
-            "unlifted: std_vector_push_copy_element(&iStack_c,iVar3,iVar4);",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&iStack_c);",
-            "unlifted: iVar5 = (**(iVar5 + 0x51c))(piVar1,&\"HUD_QUEST_ICON_BANDIT\",iVar3,scale)",
-            "unlifted: if (*(iVar3 + uVar6 * 4) & 4) ~= 0 then"
+            "label LAB_00d034ad"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -272,9 +266,11 @@
             "SetStateBool",
             "IsActiveThreadTerminating",
             "ENGINE_Trunc",
+            "AddQuestInfoCounter",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "GetHero",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
             "IsActiveThreadTerminating",
@@ -285,6 +281,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
             "IsActiveThreadTerminating",
@@ -294,7 +291,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 145,
+          "lines": 138,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -362,7 +359,6 @@
           },
           "todo": [
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: xStack_124 = CVar13 & 0xfffffffe;",
             "label LAB_00d028b4",
             "label LAB_00d028dd",
             "unlifted: if (*(char *)(*(int *)(this + 0x14) + 0x48) == '\\0') goto code_r0x00d0283a;",
@@ -587,7 +583,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 651,
+          "lines": 608,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -948,7 +944,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 20
+        "todo": 13
       }
     },
     {
@@ -1166,8 +1162,7 @@
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(p",
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(p",
-            "unlifted: iVar6 = (**(iVar6 + 0x510))(*(this + 0x40),fret_00,fVar8, pColour1,pColour2,\"HUD_QUEST_ICO"
+            "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(p"
           ],
           "calls": [
             "IsLevelLoaded",
@@ -1238,7 +1233,10 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
             "DisplayQuestInfo",
+            "ENGINE_Colour",
+            "ENGINE_Colour",
             "GetHealth",
+            "AddQuestInfoBar",
             "GetHealth",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1320,7 +1318,7 @@
             "SetTeleportingAsActive",
             "SetStateBool"
           ],
-          "lines": 244,
+          "lines": 245,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1590,24 +1588,12 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CIndexBuffer::CIndexBuffer((CIndexBuffer *)&xStack_5c,(int)&xStack_75);",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);",
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
             "verify cleanup at LAB_00d0f264 (lifted as early return)",
             "verify cleanup at LAB_00d0f264 (lifted as early return)",
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
             "label LAB_00d0f264",
             "label LAB_00d0f26d",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);",
-            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);",
             "verify cleanup at LAB_00d0f264 (lifted as early return)",
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
-            "label LAB_00d0f4d7",
-            "unlifted: cVar5 = elem_1:MsgGetThingsKilled(&xStack_5c)",
-            "unlifted: cVar5 = elem_2:MsgGetThingsKilled(&xStack_5c)"
+            "label LAB_00d0f4d7"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -1624,21 +1610,25 @@
             "IsActiveThreadTerminating",
             "IsLevelLoaded",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "GetHero",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "GetHero",
             "GetFollowingEntityList",
             "IsActiveThreadTerminating",
             "LOCALLIST_At",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "GetHeroSummonedCreaturesList",
             "IsActiveThreadTerminating",
             "LOCALLIST_At",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
@@ -1672,7 +1662,7 @@
             "GetHero",
             "GiveThingBestEnemyTarget"
           ],
-          "lines": 191,
+          "lines": 190,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1706,21 +1696,13 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
-            "unlifted: xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));",
-            "unlifted: std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);",
             "unlifted: xStack_38._0_4_ = malloc(0x24);",
             "unlifted: *(undefined1 *)xStack_38._0_4_ = 0;",
             "unlifted: *(undefined **)(xStack_38._0_4_ + 4) = (undefined *)0x0;",
             "unlifted: *(undefined4 *)(xStack_38._0_4_ + 8) = xStack_38._0_4_;",
             "unlifted: *(undefined4 *)(xStack_38._0_4_ + 0xc) = xStack_38._0_4_;",
             "unlifted: xStack_6c = (CCharString)(iStack_50 + iVar6);",
-            "GiveThingBestEnemyTarget: missing spTarget (1 args for 2 params)",
-            "unlifted: cVar4 = elem_1:MsgGetThingsKilled(&xStack_5c)",
-            "unlifted: cVar4 = elem_2:MsgGetThingsKilled(&xStack_5c)"
+            "GiveThingBestEnemyTarget: missing spTarget (1 args for 2 params)"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -1733,20 +1715,23 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetHero",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "GetHero",
             "GetFollowingEntityList",
             "IsActiveThreadTerminating",
             "LOCALLIST_At",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "GetHeroSummonedCreaturesList",
             "IsActiveThreadTerminating",
             "LOCALLIST_At",
-            "MsgGetThingsKilled",
+            "MsgGetThingsKilledGroups",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1779,7 +1764,7 @@
             "GiveThingBestEnemyTarget",
             "QUESTTHING_Empty"
           ],
-          "lines": 172,
+          "lines": 173,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1893,9 +1878,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)"
-          ],
+          "todo": [],
           "calls": [
             "Pause",
             "GetThingWithScriptName",
@@ -1928,11 +1911,6 @@
           "todo": [
             "label LAB_00d0e96f",
             "label LAB_00d0e8ef",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(undefined4 *)(this_01 + 0x38) = uVar1;",
-            "unlifted: *(undefined4 *)(this_01 + 0x3c) = 2.0;",
-            "unlifted: CCharString::CCharString((CCharString *)(this_01 + 0x40),&xStack_7c);",
-            "unlifted: CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_01,sectionName);",
             "verify cleanup at LAB_00d0e96f (lifted as early return)",
             "label LAB_00d0eab3"
           ],
@@ -2053,7 +2031,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "SetStateBool",
-            "ENGINE_Concat",
+            "CreateThread",
             "AddNewConversation",
             "GetHero",
             "AddPersonToConversation",
@@ -2133,7 +2111,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 552,
+          "lines": 541,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2354,6 +2332,8 @@
             "IsActiveThreadTerminating",
             "SetPrizeTavernTable",
             "SetQuitTavernGame",
+            "GetBestTimeGuessTheAddition",
+            "IsHeroInTavernGame",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
@@ -2401,19 +2381,13 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 357,
+          "lines": 364,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/BanditCampBossBattle/Entities/BCGameMaster.lua:Main",
-                "line": 250,
-                "message": "FSE/BanditCampBossBattle/Entities/BCGameMaster.lua:Main:250: unexpected symbol near '>'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -2553,18 +2527,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "switch lowering rejected: unreviewed switch case expression",
             "label LAB_00d1248e",
-            "unlifted: switch(ctr_c8) {",
-            "unlifted: case (CCharString)0x0:",
-            "unlifted: case (CCharString)0x1:",
-            "unlifted: case (CCharString)0x2:",
-            "unlifted: case (CCharString)0x3:",
-            "unlifted: case (CCharString)0x4:",
-            "unlifted: case (CCharString)0x5:",
-            "unlifted: default:",
-            "unlifted: goto switchD_00d11fb1_default;",
-            "unlifted: switchD_00d11fb1_default:",
             "label LAB_00d12259"
           ],
           "calls": [
@@ -2726,22 +2689,17 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 318,
+          "lines": 330,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua:Main",
-                "line": 106,
-                "message": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua:Main:106: 'end' expected (to close 'while' at line 27) near 'else'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
+            "goto FLOW_native_label_1;",
             "goto FLOW_past_lab_00d12245;",
             "goto FLOW_past_lab_00d1244c;",
             "goto FLOW_past_lab_00d128a3;",
@@ -2756,6 +2714,7 @@
             "if (native_arg_sequence_1) goto LAB_00d12226;"
           ],
           "nativeLabels": [
+            "FLOW_native_label_1",
             "FLOW_past_lab_00d12245",
             "FLOW_past_lab_00d1244c",
             "FLOW_past_lab_00d128a3",
@@ -3029,7 +2988,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 475,
+          "lines": 455,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4456,7 +4415,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 719,
+          "lines": 646,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5061,15 +5020,8 @@
             "bsimVoid": true
           },
           "todo": [
-            "switch lowering rejected: unreviewed switch case expression",
             "label LAB_00d0ad0a",
-            "label LAB_00d0ad21",
-            "unlifted: switch(CVar8) {",
-            "unlifted: case (CCharString)0x0:",
-            "unlifted: case (CCharString)0x1:",
-            "unlifted: case (CCharString)0x2:",
-            "unlifted: case (CCharString)0x3:",
-            "unlifted: case (CCharString)0x4:"
+            "label LAB_00d0ad21"
           ],
           "calls": [
             "NewScriptFrame",
@@ -5184,23 +5136,18 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 280,
+          "lines": 293,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/BanditCampBossBattle/Entities/BanditKing.lua:Main",
-                "line": 35,
-                "message": "FSE/BanditCampBossBattle/Entities/BanditKing.lua:Main:35: malformed number near '3U'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
             "goto FLOW_hoist_lab_00d0b297_1;",
+            "goto FLOW_past_lab_00d0ae5e;",
             "goto FLOW_past_lab_00d0af0f;",
             "goto FLOW_past_lab_00d0b27a;",
             "goto FLOW_past_lab_00d0b297;",
@@ -5215,6 +5162,7 @@
           ],
           "nativeLabels": [
             "FLOW_hoist_lab_00d0b297_1",
+            "FLOW_past_lab_00d0ae5e",
             "FLOW_past_lab_00d0af0f",
             "FLOW_past_lab_00d0b27a",
             "FLOW_past_lab_00d0b297",
@@ -5659,26 +5607,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 15,
-        "passed": 12,
-        "errors": [
-          {
-            "path": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua",
-            "line": 118,
-            "message": "FSE/BanditCampBossBattle/Entities/AssassinMarker.lua:118: 'end' expected (to close 'while' at line 39) near 'else'"
-          },
-          {
-            "path": "FSE/BanditCampBossBattle/Entities/BCGameMaster.lua",
-            "line": 262,
-            "message": "FSE/BanditCampBossBattle/Entities/BCGameMaster.lua:262: unexpected symbol near '>'"
-          },
-          {
-            "path": "FSE/BanditCampBossBattle/Entities/BanditKing.lua",
-            "line": 47,
-            "message": "FSE/BanditCampBossBattle/Entities/BanditKing.lua:47: malformed number near '3U'"
-          }
-        ]
+        "passed": 15,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -5702,12 +5634,8 @@
           "Main": [
             "bVar4"
           ],
-          "CheckForFirstAreaMassacre": [
-            "xStack_74"
-          ],
           "CheckForSecondAreaMassacre": [
-            "xStack_38",
-            "xStack_74"
+            "xStack_38"
           ]
         }
       },
@@ -5736,10 +5664,10 @@
         "owners": 15,
         "functions": 67,
         "missing": 0,
-        "functionSyntaxPassed": 64,
-        "fileSyntaxPassed": 12,
+        "functionSyntaxPassed": 67,
+        "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 117
+        "todo": 72
       }
     },
     {
@@ -5880,9 +5808,9 @@
     "owners": 19,
     "functions": 85,
     "missing": 0,
-    "functionSyntaxPassed": 82,
-    "fileSyntaxPassed": 16,
+    "functionSyntaxPassed": 85,
+    "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 19,
-    "todo": 137
+    "todo": 85
   }
 }

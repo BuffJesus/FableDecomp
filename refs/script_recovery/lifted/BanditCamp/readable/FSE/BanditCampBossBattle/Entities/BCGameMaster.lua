@@ -16,8 +16,8 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local isObjectInThingsPossession, isObjectInThingsPossession2, isObjectInThingsPossession3
-    local isObjectInThingsPossession4, isObjectInThingsPossession5, isActiveThreadTerminating
-    local taskRunning, taskRunning2, fret_01, sequence, sequence22, sequence32, movie
+    local isObjectInThingsPossession4, isObjectInThingsPossession5, taskRunning, taskRunning2
+    local sequence, sequence22, sequence32, movie
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     if not givenPass then
@@ -146,14 +146,13 @@ function Main(quest, me)
             goto LAB_00d071d7
         end
     end
-    isActiveThreadTerminating = quest:IsActiveThreadTerminating()
-    if isActiveThreadTerminating then goto LAB_00d071d7 end
+    if quest:IsActiveThreadTerminating() then goto LAB_00d071d7 end
     quest:SetPrizeTavernTable(true)
-    fret_01 = quest:SetQuitTavernGame(true)
-    while GSI->GetBestTimeGuessTheAddition(), 0.0 == fret_01 or (isActiveThreadTerminating = GSI->IsHeroInTavernGame(), isActiveThreadTerminating) do
+    quest:SetQuitTavernGame(true)
+    while true do
+        if not (0.0 == quest:GetBestTimeGuessTheAddition() or quest:IsHeroInTavernGame()) then break end
         quest:NewScriptFrame(me)
-        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
-        if isActiveThreadTerminating then
+        if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
             do return end
         end

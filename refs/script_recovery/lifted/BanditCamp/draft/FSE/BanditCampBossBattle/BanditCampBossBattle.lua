@@ -81,7 +81,7 @@ end
 
 function BanditKingMissionProcess(quest)
     local resources = quest:RetailResources()
-    local C_stk_4c, bVar2, c_stk_99, fVar13, fVar8, f_stk_a4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iStack_78, iVar12, iVar6, pCVar3, pCVar4, pScriptObject, pThing, r1, uVar10, uVar11, uVar7, xStack_10, xStack_20, xStack_48, xStack_5c, xStack_6c, xStack_84, xStack_90
+    local C_stk_4c, bVar2, c_stk_99, fVar13, fVar8, f_stk_a4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iStack_78, iVar12, iVar6, pCVar3, pCVar4, pColour1, pColour2, pScriptObject, pThing, r1, uVar10, uVar11, uVar7, xStack_10, xStack_20, xStack_48, xStack_5c, xStack_6c, xStack_84, xStack_90
     local alive = true
     bVar2 = quest:IsLevelLoaded("BanditCampBoss")
     c_stk_99 = (1 - (bVar2 and 1 or 0))
@@ -197,10 +197,11 @@ function BanditKingMissionProcess(quest)
             resources:ReleaseResource(xStack_6c)
             quest:DisplayQuestInfo(true)
             fVar13 = 1.0
+            pColour2 = {R = 255, G = 0, B = 0, A = 255}
+            pColour1 = {R = 255, G = 0, B = 0, A = 255}
             fVar8 = 0.0
             fret_00 = quest:GetHealth(xStack_90)
-            -- TODO(native): iVar6 = (**(iVar6 + 0x510))(*(this + 0x40),fret_00,fVar8, pColour1,pColour2,"HUD_QUEST_ICON_TWINBLADE","",fVar13)
-            iVar6 = nil --[[unresolved native value]]
+            iVar6 = quest:AddQuestInfoBar(fret_00, fVar8, pColour1, pColour2, "HUD_QUEST_ICON_TWINBLADE", "", fVar13)
             f_stk_a4 = C_stk_4c
             C_stk_4c = ""
             fret_01 = quest:GetHealth(xStack_90)
@@ -213,7 +214,7 @@ function BanditKingMissionProcess(quest)
                     fVar13 = -1.0
                     fVar8 = -1.0
                     fret_02 = quest:GetHealth(xStack_90)
-                    quest:UpdateQuestInfoBar(fret_02, fVar8, fVar13, 0)
+                    quest:UpdateQuestInfoBar(iVar6, fret_02, fVar8, fVar13)
                     fret_03 = quest:GetHealth(xStack_90)
                 until not (f_stk_a4 < fret_03)
             end
@@ -222,7 +223,7 @@ function BanditKingMissionProcess(quest)
             if not bVar2 then
                 quest:DeactivateQuest("Q_BanditCamp_Barriers", 0)
                 quest:DisplayQuestInfo(false)
-                quest:RemoveQuestInfoElement(0)
+                quest:RemoveQuestInfoElement(iVar6)
                 quest:StopOverrideMusic(false)
                 bVar2 = false
                 fret_04 = quest:GetHealth(xStack_90)
@@ -670,7 +671,7 @@ end
 
 function CheckForFirstAreaMassacre(quest)
     local resources = quest:RetailResources()
-    local b2, bVar4, cVar5, ePriority, elem_1, elem_2, iVar7, pCVar6, pPosition, pScriptObject, r1, uVar8, xStack_10, xStack_20, xStack_44, xStack_50, xStack_68, xStack_6c, xStack_74
+    local b2, bVar4, cVar5, ePriority, elem_1, elem_2, iVar7, native_arg_kills_xStack_74, pCVar6, pPosition, pScriptObject, r1, uVar8, xStack_10, xStack_20, xStack_44, xStack_50, xStack_5c, xStack_68, xStack_6c
     local alive = true
     while true do
         pCVar6 = quest:GetThingWithScriptName("Gate1")
@@ -689,6 +690,7 @@ function CheckForFirstAreaMassacre(quest)
     if bVar4 then
         return
     end
+    native_arg_kills_xStack_74 = 0
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then
@@ -718,18 +720,18 @@ function CheckForFirstAreaMassacre(quest)
                 return
             end
         end
-        -- TODO(native): CIndexBuffer::CIndexBuffer((CIndexBuffer *)&xStack_5c,(int)&xStack_75);
+        xStack_5c = {}
         pCVar6 = quest:GetHero()
-        bVar4 = pCVar6:MsgGetThingsKilled()
+        xStack_5c = pCVar6:MsgGetThingsKilledGroups()
+        bVar4 = #xStack_5c ~= 0
         if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then
-                -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);
                 return
             end
-            -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-            -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+            native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+            xStack_5c = {}
         end
         pCVar6 = quest:GetHero()
         xStack_68 = quest:GetFollowingEntityList(pCVar6)
@@ -741,14 +743,14 @@ function CheckForFirstAreaMassacre(quest)
                 bVar4 = not alive
                 if bVar4 then __cleanup_LAB_00d0f264(); return end
                 elem_1 = xStack_68[(iVar7) / 0xc + 1]
-                -- TODO(native): cVar5 = elem_1:MsgGetThingsKilled(&xStack_5c)
-                cVar5 = nil --[[unresolved native value]]
+                xStack_5c = elem_1:MsgGetThingsKilledGroups()
+                cVar5 = #xStack_5c ~= 0
                 if cVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then __cleanup_LAB_00d0f264(); return end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                    native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+                    xStack_5c = {}
                 end
                 uVar8 = uVar8 + 1
                 iVar7 = iVar7 + 0xc
@@ -768,18 +770,17 @@ function CheckForFirstAreaMassacre(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then
-                    -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_5c);
                     return
                 end
                 elem_2 = xStack_68[(iVar7) / 0xc + 1]
-                -- TODO(native): cVar5 = elem_2:MsgGetThingsKilled(&xStack_5c)
-                cVar5 = nil --[[unresolved native value]]
+                xStack_5c = elem_2:MsgGetThingsKilledGroups()
+                cVar5 = #xStack_5c ~= 0
                 if cVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then __cleanup_LAB_00d0f264(); return end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                    native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+                    xStack_5c = {}
                 end
                 uVar8 = uVar8 + 1
                 iVar7 = iVar7 + 0xc
@@ -789,7 +790,7 @@ function CheckForFirstAreaMassacre(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then break end
-        if quest:ReadGlobalGameDataFloat(0xe78) <= xStack_74 then
+        if quest:ReadGlobalGameDataFloat(0xe78) <= native_arg_kills_xStack_74 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00d0f5f9 end
@@ -863,8 +864,9 @@ end
 
 function CheckForSecondAreaMassacre(quest)
     local resources = quest:RetailResources()
-    local b2, bVar3, cVar4, elem_1, elem_2, iStack_50, iVar6, iVar8, i_stk_58, pCVar5, pPosition, pScriptObject, r1, uVar7, xStack_10, xStack_20, xStack_38, xStack_68, xStack_74
+    local b2, bVar3, cVar4, elem_1, elem_2, iStack_50, iVar6, iVar8, native_arg_kills_xStack_74, pCVar5, pPosition, pScriptObject, r1, uVar7, xStack_10, xStack_20, xStack_38, xStack_5c, xStack_68
     local alive = true
+    native_arg_kills_xStack_74 = 0
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if bVar3 then
@@ -898,15 +900,15 @@ function CheckForSecondAreaMassacre(quest)
             alive = not quest:IsActiveThreadTerminating()
             return
         end
-        i_stk_58 = 0
         pCVar5 = quest:GetHero()
-        bVar3 = pCVar5:MsgGetThingsKilled()
+        xStack_5c = pCVar5:MsgGetThingsKilledGroups()
+        bVar3 = #xStack_5c ~= 0
         if bVar3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00d0fe48 end
-            -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-            -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+            native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+            xStack_5c = {}
         end
         pCVar5 = quest:GetHero()
         xStack_68 = quest:GetFollowingEntityList(pCVar5)
@@ -918,14 +920,14 @@ function CheckForSecondAreaMassacre(quest)
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d0f9d8 end
                 elem_1 = xStack_68[(iVar6) / 0xc + 1]
-                -- TODO(native): cVar4 = elem_1:MsgGetThingsKilled(&xStack_5c)
-                cVar4 = nil --[[unresolved native value]]
+                xStack_5c = elem_1:MsgGetThingsKilledGroups()
+                cVar4 = #xStack_5c ~= 0
                 if cVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d0fe39 end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                    native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+                    xStack_5c = {}
                 end
                 uVar7 = uVar7 + 1
                 iVar6 = iVar6 + 0xc
@@ -943,14 +945,14 @@ function CheckForSecondAreaMassacre(quest)
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d0fa46 end
                 elem_2 = xStack_68[(iVar6) / 0xc + 1]
-                -- TODO(native): cVar4 = elem_2:MsgGetThingsKilled(&xStack_5c)
-                cVar4 = nil --[[unresolved native value]]
+                xStack_5c = elem_2:MsgGetThingsKilledGroups()
+                cVar4 = #xStack_5c ~= 0
                 if cVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d0fe39 end
-                    -- TODO(native): xStack_74 = (CCharString)((int)xStack_74 + (i_stk_58 - (int)xStack_5c >> 2));
-                    -- TODO(native): std_vector_push_copy_element(&xStack_5c,(int)xStack_5c,i_stk_58);
+                    native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
+                    xStack_5c = {}
                 end
                 uVar7 = uVar7 + 1
                 iVar6 = iVar6 + 0xc
@@ -959,7 +961,7 @@ function CheckForSecondAreaMassacre(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d0fa7a end
-        if quest:ReadGlobalGameDataFloat(0xe7c) <= xStack_74 then break end
+        if quest:ReadGlobalGameDataFloat(0xe7c) <= native_arg_kills_xStack_74 then break end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -1147,7 +1149,7 @@ end
 
 function OpenGate(quest, native_arg_time_delay, native_arg_door_name)
     quest:Pause(native_arg_time_delay)
-    local pDoor = quest:GetThingWithScriptName(nil --[[missing]])
+    local pDoor = quest:GetThingWithScriptName(native_arg_door_name)
     quest:OpenDoor(pDoor)
     pDoor = nil
 end

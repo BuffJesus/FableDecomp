@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, bVar5, cVar4, ctr_c8, dist, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar6, iVar9, i_stk_c4, native_arg_sequence_1, pCVar7, pScriptObject, pcVar10, r1, r2, r3, r4, r5, r6, xStack_10, xStack_20, xStack_30, xStack_58, xStack_64, xStack_70, xStack_84, xStack_94, xStack_a4, xStack_b4
+    local bVar3, bVar5, cVar4, ctr_c8, dist, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar6, iVar9, i_stk_c4, native_arg_sequence_1, native_arg_switch_2, pCVar7, pScriptObject, pcVar10, r1, r2, r3, r4, r5, r6, xStack_10, xStack_20, xStack_30, xStack_58, xStack_64, xStack_70, xStack_84, xStack_94, xStack_a4, xStack_b4
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -75,189 +75,201 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then goto LAB_00d12245 end
-            -- TODO(native): switch(ctr_c8) {
-            -- TODO(native): case (CCharString)0x0:
-            iVar9 = quest:AddNewConversation(r1, false, false)
-            quest:AddPersonToConversation(iVar9, r2)
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_ONE", r1, r2, false)
-            break
-            -- TODO(native): case (CCharString)0x1:
-            iVar9 = quest:AddNewConversation(r2, false, false)
-            quest:AddPersonToConversation(iVar9, r1)
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN2_LISTENED_ONE", r2, r1, false)
-            break
-            -- TODO(native): case (CCharString)0x2:
-            iVar9 = quest:AddNewConversation(r1, false, false)
-            quest:AddPersonToConversation(iVar9, r2)
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_TWO", r1, r2, false)
-            break
-            -- TODO(native): case (CCharString)0x3:
-            iVar9 = quest:AddNewConversation(r2, false, false)
-            quest:AddPersonToConversation(iVar9, r1)
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN2_LISTENED_TWO", r2, r1, false)
-            break
-            -- TODO(native): case (CCharString)0x4:
-            iVar9 = quest:AddNewConversation(r1, false, false)
-            pCVar7 = quest:GetHero()
-            quest:AddPersonToConversation(iVar9, pCVar7)
-            pCVar7 = quest:GetHero()
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_THREE", r1, pCVar7, false)
-            break
-            -- TODO(native): case (CCharString)0x5:
-            iVar9 = quest:AddNewConversation(r1, false, false)
-            pCVar7 = quest:GetHero()
-            quest:AddPersonToConversation(iVar9, pCVar7)
-            pCVar7 = quest:GetHero()
-            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_FOUR", r1, pCVar7, false)
-            break
-            -- TODO(native): default:
-            -- TODO(native): goto switchD_00d11fb1_default;
-        end
-        -- TODO(native): switchD_00d11fb1_default:
-        ctr_c8 = ctr_c8 + 1
-    else
-        alive = not quest:IsActiveThreadTerminating()
-        bVar3 = not alive
-        if bVar3 then goto LAB_00d12245 end
-        resources:TryAcquire(xStack_a4, r1, 4)
-        resources:TryAcquire(xStack_84, r2, 4)
-        resources:TryAcquire(xStack_94, r3, 4)
-        xStack_b4 = resources:StartMovie("")
-        quest:PauseAllNonScriptedEntities(true)
-        xStack_58 = resources:ScriptThing(xStack_a4)
-        pCVar7 = xStack_58
-        fret_0 = quest:GetHealth(pCVar7)
-        fVar2 = 0.0
-        xStack_58 = nil
-        if fVar2 < fret_0 then
-            iVar13 = 0
-            iVar12 = 1
-            iVar11 = 0
-            iVar6 = 0
-            pcVar10 = "TEXT_QST_009_ASSASSIN1_ATTACKED"
-            pCVar7 = quest:GetHero()
-            r4 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-            iVar6 = me:IsPerformingScriptTask()
-            cVar4 = iVar6
-            while cVar4 do
-                alive = quest:NewScriptFrame(me)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_b4)
-                    quest:DeregisterTimer(i_stk_c4)
-                    resources:ReleaseResource(xStack_94)
-                    resources:ReleaseResource(xStack_84)
-                    resources:ReleaseResource(xStack_a4)
-                    r3 = nil
-                    r2 = nil
-                    r1 = nil
-                    return
+            native_arg_switch_2 = ctr_c8
+            repeat
+                if native_arg_switch_2 == 0 then
+                    iVar9 = quest:AddNewConversation(r1, false, false)
+                    quest:AddPersonToConversation(iVar9, r2)
+                    quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_ONE", r1, r2, false)
+                    break
+                else
+                    if native_arg_switch_2 == 1 then
+                        iVar9 = quest:AddNewConversation(r2, false, false)
+                        quest:AddPersonToConversation(iVar9, r1)
+                        quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN2_LISTENED_ONE", r2, r1, false)
+                        break
+                    else
+                        if native_arg_switch_2 == 2 then
+                            iVar9 = quest:AddNewConversation(r1, false, false)
+                            quest:AddPersonToConversation(iVar9, r2)
+                            quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_TWO", r1, r2, false)
+                            break
+                        else
+                            if native_arg_switch_2 == 3 then
+                                iVar9 = quest:AddNewConversation(r2, false, false)
+                                quest:AddPersonToConversation(iVar9, r1)
+                                quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN2_LISTENED_TWO", r2, r1, false)
+                                break
+                            else
+                                if native_arg_switch_2 == 4 then
+                                    iVar9 = quest:AddNewConversation(r1, false, false)
+                                    pCVar7 = quest:GetHero()
+                                    quest:AddPersonToConversation(iVar9, pCVar7)
+                                    pCVar7 = quest:GetHero()
+                                    quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_THREE", r1, pCVar7, false)
+                                    break
+                                else
+                                    if native_arg_switch_2 == 5 then
+                                        iVar9 = quest:AddNewConversation(r1, false, false)
+                                        pCVar7 = quest:GetHero()
+                                        quest:AddPersonToConversation(iVar9, pCVar7)
+                                        pCVar7 = quest:GetHero()
+                                        quest:AddLineToConversation(iVar9, "TEXT_QST_009_ASSASSIN1_LISTENED_FOUR", r1, pCVar7, false)
+                                        break
+                                    else
+                                        goto FLOW_native_label_1
+                                    end
+                                end
+                            end
+                        end
+                    end
                 end
-                iVar6 = me:IsPerformingScriptTask()
-                cVar4 = iVar6
-            end
+            until not (false)
+            ::FLOW_native_label_1::
+            ctr_c8 = ctr_c8 + 1
+        else
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            if not bVar3 then goto LAB_00d11c9b end
-            goto LAB_00d1244c
-        end
-        goto FLOW_past_lab_00d1244c
-        ::LAB_00d1244c::
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_b4)
-        quest:DeregisterTimer(i_stk_c4)
-        goto LAB_00d128bf
-        ::FLOW_past_lab_00d1244c::
-        ::LAB_00d11c9b::
-        xStack_64 = resources:ScriptThing(xStack_84)
-        pCVar7 = xStack_64
-        fret_00 = quest:GetHealth(pCVar7)
-        fVar2 = 0.0
-        xStack_64 = nil
-        if fVar2 < fret_00 then
-            iVar13 = 0
-            iVar12 = 1
-            iVar11 = 0
-            iVar6 = 0
-            pcVar10 = "TEXT_QST_009_ASSASSIN2_ATTACKED"
-            pCVar7 = quest:GetHero()
-            r5 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-            iVar6 = me:IsPerformingScriptTask()
-            cVar4 = iVar6
-            while cVar4 do
-                alive = quest:NewScriptFrame(me)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar3 = not alive
-                if bVar3 then
-                    -- LAB_00d12259: (native jump target)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_b4)
-                    quest:DeregisterTimer(i_stk_c4)
-                    resources:ReleaseResource(xStack_94)
-                    resources:ReleaseResource(xStack_84)
-                    resources:ReleaseResource(xStack_a4)
-                    r3 = nil
-                    r2 = nil
-                    r1 = nil
-                    return
-                end
+            if bVar3 then goto LAB_00d12245 end
+            resources:TryAcquire(xStack_a4, r1, 4)
+            resources:TryAcquire(xStack_84, r2, 4)
+            resources:TryAcquire(xStack_94, r3, 4)
+            xStack_b4 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            xStack_58 = resources:ScriptThing(xStack_a4)
+            pCVar7 = xStack_58
+            fret_0 = quest:GetHealth(pCVar7)
+            fVar2 = 0.0
+            xStack_58 = nil
+            if fVar2 < fret_0 then
+                iVar13 = 0
+                iVar12 = 1
+                iVar11 = 0
+                iVar6 = 0
+                pcVar10 = "TEXT_QST_009_ASSASSIN1_ATTACKED"
+                pCVar7 = quest:GetHero()
+                r4 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                 iVar6 = me:IsPerformingScriptTask()
                 cVar4 = iVar6
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then goto LAB_00d1244c end
-        end
-        xStack_70 = resources:ScriptThing(xStack_94)
-        pCVar7 = xStack_70
-        fret_01 = quest:GetHealth(pCVar7)
-        fVar2 = 0.0
-        xStack_70 = nil
-        if fVar2 < fret_01 then
-            iVar13 = 0
-            iVar12 = 1
-            iVar11 = 0
-            iVar6 = 0
-            pcVar10 = "TEXT_QST_009_ASSASSIN3_ATTACKED"
-            pCVar7 = quest:GetHero()
-            r6 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-            iVar6 = me:IsPerformingScriptTask()
-            cVar4 = iVar6
-            while cVar4 do
-                alive = quest:NewScriptFrame(me)
+                while cVar4 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_b4)
+                        quest:DeregisterTimer(i_stk_c4)
+                        resources:ReleaseResource(xStack_94)
+                        resources:ReleaseResource(xStack_84)
+                        resources:ReleaseResource(xStack_a4)
+                        r3 = nil
+                        r2 = nil
+                        r1 = nil
+                        return
+                    end
+                    iVar6 = me:IsPerformingScriptTask()
+                    cVar4 = iVar6
+                end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
-                if bVar3 then
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_b4)
-                    quest:DeregisterTimer(i_stk_c4)
-                    goto LAB_00d128bf
-                end
+                if not bVar3 then goto LAB_00d11c9b end
+                goto LAB_00d1244c
+            end
+            goto FLOW_past_lab_00d1244c
+            ::LAB_00d1244c::
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_b4)
+            quest:DeregisterTimer(i_stk_c4)
+            goto LAB_00d128bf
+            ::FLOW_past_lab_00d1244c::
+            ::LAB_00d11c9b::
+            xStack_64 = resources:ScriptThing(xStack_84)
+            pCVar7 = xStack_64
+            fret_00 = quest:GetHealth(pCVar7)
+            fVar2 = 0.0
+            xStack_64 = nil
+            if fVar2 < fret_00 then
+                iVar13 = 0
+                iVar12 = 1
+                iVar11 = 0
+                iVar6 = 0
+                pcVar10 = "TEXT_QST_009_ASSASSIN2_ATTACKED"
+                pCVar7 = quest:GetHero()
+                r5 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
                 iVar6 = me:IsPerformingScriptTask()
                 cVar4 = iVar6
+                while cVar4 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        -- LAB_00d12259: (native jump target)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_b4)
+                        quest:DeregisterTimer(i_stk_c4)
+                        resources:ReleaseResource(xStack_94)
+                        resources:ReleaseResource(xStack_84)
+                        resources:ReleaseResource(xStack_a4)
+                        r3 = nil
+                        r2 = nil
+                        r1 = nil
+                        return
+                    end
+                    iVar6 = me:IsPerformingScriptTask()
+                    cVar4 = iVar6
+                end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if bVar3 then goto LAB_00d1244c end
             end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then goto LAB_00d1244c end
+            xStack_70 = resources:ScriptThing(xStack_94)
+            pCVar7 = xStack_70
+            fret_01 = quest:GetHealth(pCVar7)
+            fVar2 = 0.0
+            xStack_70 = nil
+            if fVar2 < fret_01 then
+                iVar13 = 0
+                iVar12 = 1
+                iVar11 = 0
+                iVar6 = 0
+                pcVar10 = "TEXT_QST_009_ASSASSIN3_ATTACKED"
+                pCVar7 = quest:GetHero()
+                r6 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                iVar6 = me:IsPerformingScriptTask()
+                cVar4 = iVar6
+                while cVar4 do
+                    alive = quest:NewScriptFrame(me)
+                    alive = not quest:IsActiveThreadTerminating()
+                    bVar3 = not alive
+                    if bVar3 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_b4)
+                        quest:DeregisterTimer(i_stk_c4)
+                        goto LAB_00d128bf
+                    end
+                    iVar6 = me:IsPerformingScriptTask()
+                    cVar4 = iVar6
+                end
+                alive = not quest:IsActiveThreadTerminating()
+                bVar3 = not alive
+                if bVar3 then goto LAB_00d1244c end
+            end
+            pCVar7 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(r1, pCVar7)
+            pCVar7 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(r2, pCVar7)
+            pCVar7 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(r3, pCVar7)
+            bVar3 = true
+            resources:PrepareResource(xStack_a4)
+            resources:PrepareResource(xStack_84)
+            resources:PrepareResource(xStack_94)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(xStack_b4)
         end
-        pCVar7 = quest:GetHero()
-        quest:GiveThingBestEnemyTarget(r1, pCVar7)
-        pCVar7 = quest:GetHero()
-        quest:GiveThingBestEnemyTarget(r2, pCVar7)
-        pCVar7 = quest:GetHero()
-        quest:GiveThingBestEnemyTarget(r3, pCVar7)
-        bVar3 = true
-        resources:PrepareResource(xStack_a4)
-        resources:PrepareResource(xStack_84)
-        resources:PrepareResource(xStack_94)
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_b4)
-    end
-    ::LAB_00d12226::
-    cVar4 = quest:GetStateBool("AssassinCutsceneTriggered")
-    iVar6 = i_stk_c4
+        ::LAB_00d12226::
+        cVar4 = quest:GetStateBool("AssassinCutsceneTriggered")
+        iVar6 = i_stk_c4
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive

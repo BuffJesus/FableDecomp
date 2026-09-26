@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local CVar6, CVar7, bVar2, cVar1, conversationID, fVar8, iVar5, p0, pCVar3, pCVar4, r1, xStack_2c
+    local bVar2, cVar1, conversationID, fVar8, iVar5, p0, pCVar3, pCVar4, r1
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -39,7 +39,6 @@ function Main(quest, me)
             pCVar3 = quest:GetNearestWithScriptName(me, "IsAGuard")
             quest:GiveThingBestEnemyTarget(me, pCVar3)
             cVar1 = quest:GetStateBool("PlayerEngaged")
-            CVar7 = 0
             while not cVar1 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -47,16 +46,12 @@ function Main(quest, me)
                 if bVar2 then
                     return
                 end
-                CVar6 = CVar7 | 1
                 bVar2 = me:MsgIsHitBy("")
                 if bVar2 then
-                    CVar6 = CVar7 | 3
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then goto LAB_00df8b83 end
-                    CVar6 = CVar7 | 7
                     bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar2 then
-                        CVar6 = CVar7 | 0xf
                         bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar2 then goto LAB_00df8b83 end
                     end
@@ -68,18 +63,6 @@ function Main(quest, me)
                 ::LAB_00df8b83::
                 bVar2 = false
                 ::FLOW_past_lab_00df8b83::
-                if (CVar6 & 8) ~= 0 then
-                    CVar6 = CVar6 & 0xfffffff7
-                end
-                if (CVar6 & 4) ~= 0 then
-                    CVar6 = CVar6 & 0xfffffffb
-                end
-                if (CVar6 & 2) ~= 0 then
-                    CVar6 = CVar6 & 0xfffffffd
-                end
-                if (CVar6 & 1) ~= 0 then
-                    CVar6 = CVar6 & 0xfffffffe
-                end
                 if bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -88,35 +71,21 @@ function Main(quest, me)
                     end
                     quest:ModifyThingHealth(me, 100.0, false)
                 else
-                    CVar7 = CVar6 | 0x10
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then
                         goto LAB_00df8c73
                     else
-                        CVar7 = CVar6 | 0x30
                         bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar2 then
-                            CVar7 = CVar6 | 0x70
                             bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar2 then goto LAB_00df8c73 end
                         end
                         bVar2 = false
-                        CVar6 = CVar7
                     end
                     goto FLOW_past_lab_00df8c73
                     ::LAB_00df8c73::
                     bVar2 = true
-                    CVar6 = CVar7
                     ::FLOW_past_lab_00df8c73::
-                    if (CVar6 & 0x40) ~= 0 then
-                        CVar6 = CVar6 & 0xffffffbf
-                    end
-                    if (CVar6 & 0x20) ~= 0 then
-                        CVar6 = CVar6 & 0xffffffdf
-                    end
-                    if (CVar6 & 0x10) ~= 0 then
-                        CVar6 = CVar6 & 0xffffffef
-                    end
                     if bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
@@ -137,7 +106,6 @@ function Main(quest, me)
                     end
                     quest:SetStateBool("PlayerEngaged", true)
                 end
-                CVar7 = CVar6
                 cVar1 = quest:GetStateBool("PlayerEngaged")
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -151,18 +119,12 @@ function Main(quest, me)
                     if bVar2 then
                         return
                     end
-                    CVar6 = CVar7 | 0x80
-                    xStack_2c = CVar6
                     bVar2 = me:MsgIsHitByHero()
                     if bVar2 then
                         goto LAB_00df8dcb
                     else
-                        CVar6 = CVar7 | 0x180
-                        xStack_2c = CVar6
                         bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar2 then
-                            CVar6 = CVar7 | 0x380
-                            xStack_2c = CVar6
                             bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar2 then goto LAB_00df8dcb end
                         end
@@ -172,18 +134,6 @@ function Main(quest, me)
                     ::LAB_00df8dcb::
                     bVar2 = true
                     ::FLOW_past_lab_00df8dcb::
-                    if (CVar6 & 0x200) ~= 0 then
-                        CVar6 = CVar6 & 0xfffffdff
-                        xStack_2c = CVar6
-                    end
-                    if (CVar6 & 0x100) ~= 0 then
-                        CVar6 = CVar6 & 0xfffffeff
-                        xStack_2c = CVar6
-                    end
-                    if (CVar6 & 0x80) ~= 0 then
-                        CVar6 = CVar6 & 0xffffff7f
-                        xStack_2c = CVar6
-                    end
                     if bVar2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
@@ -202,7 +152,6 @@ function Main(quest, me)
                             pCVar3 = quest:GetHero()
                             quest:AddLineToConversation(conversationID, "TEXT_QST_B12_BANDIT_ON_HIT_10", me, pCVar3, false)
                             __native_entity_state:SetStateBool("HitWarning", true)
-                            CVar6 = xStack_2c
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -267,7 +216,6 @@ function Main(quest, me)
                             end
                         end
                     end
-                    CVar7 = CVar6
                     cVar1 = quest:GetStateBool("MissionSucceeded")
                 end
                 alive = not quest:IsActiveThreadTerminating()
