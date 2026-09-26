@@ -11,7 +11,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCamp | Q_BanditCamp | WatchForCostume | 0x00d00fd0 | True | 0 |
 | Q_BanditCamp | Q_BanditCamp | CheckAnyBanditsKilled | 0x00d032f0 | True | 2 |
 | Q_BanditCamp | Q_BanditCamp | WatchForEndOfScript | 0x00d013a0 | True | 0 |
-| Q_BanditCamp | Gate1GuardOuter | Main | 0x00d01630 | True | 10 |
+| Q_BanditCamp | Gate1GuardOuter | Main | 0x00d01630 | True | 8 |
 | Q_BanditCamp | Gate1GuardOuter | Init | 0x00d01590 | True | 0 |
 | Q_BanditCamp | Gate1GuardOuter | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCamp | Gate1GuardOuter | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 85}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 83}`

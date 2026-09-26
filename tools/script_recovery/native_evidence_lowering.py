@@ -923,6 +923,12 @@ def drop_eh_state_flags(text: str) -> str:
 
 def normalise_typed_decompile(text: str) -> str:
     """Typed exports (ExportTypedTranslationUnit) print a few shapes the untyped pipeline never saw."""
+    # Ghidra names some jump targets `code_r0xADDR` instead of `LAB_ADDR` (Gate1GuardOuter Main 0x00D01630's
+    # `if (AttackedOuterGateGuards == 0) goto code_r0x00d0283a;` -- keep waiting). Left unlifted, the condition
+    # vanished and an unprovoked hero fell into GiveThingBestEnemyTarget: the gate guard attacked on arrival
+    # (bc4, 2026-09-25; retail v16 on the same save stays peaceful). Spell them as ordinary labels.
+    text = re.sub(r'\bcode_r0x([0-9a-f]{8})\b',
+                  lambda m: f'LAB_{m.group(1)}' if f'LAB_{m.group(1)}' not in text else m.group(0), text)
     text = re.sub(r'return CONCAT31\([^;]*?,\s*(0|1)\);', lambda m: f'return {"true" if m.group(1) == "1" else "false"};', text)
     text = re.sub(r"return CONCAT31\(\w+,\s*'\\x01' - (\w+)\);", r'return !\1;', text)
     text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'!(\1)', text)

@@ -315,3 +315,54 @@ the kill-groups patch (v17) and a Bandit Camp bundle entry. Both wait on
 the user freeing the game install. The remaining 91 TODOs are mostly native
 labels, cleanup-order notes and the hostage cutscene slots.
 
+## Live runs (v17 / v18, from `adult_maze2_completed_2026-09-25`)
+
+Config: `tools/script_recovery/runner_quests/bandit_camp.json`. Bundles are
+staged with `tools/script_recovery/stage_bundle_with_units.py`: v16 byte for
+byte, plus the scratch sidecar build (sidecar-abi-v13 + the kill-groups patch)
+and Bandit Camp's readable packages as overrides. The manifest is recomputed.
+
+- **bc1:** the card's table title is "Find The Bandit Seeress", not
+  "Bandit Camp". OCR listed all rows.
+- **bc2:**
+  - Evidence: all three Bandit Camp scripts and their entities load and run.
+    The status expression calls `quest:GetHero():MsgGetThingsKilledGroups()`
+    in the BanditCamp VM and gets a list back, so the new binding is live.
+  - Failure: GiveHeroObject's item boxes paused the game, and the
+    SetHeroAsWearing statements sent meanwhile did not take effect.
+  - Failure: the runner's hostile-clearing reflex killed the gate guard,
+    which ended his entity script.
+  - Runner fixes: `setup` runs before travel and clears boxes, `setupCheck`,
+    and `clear: false`.
+- **bc3:** the pause ladder's RMB "no" answer fires whenever a status eval
+  times out. With no question up, that is an attack in the world. Runner fix:
+  a `pauseSteps` override; Bandit Camp uses `["clear"]`.
+- **bc4:** the guard still attacked on arrival with no input.
+  - The World Cullis Gates menu came from the hero standing on the camp's
+    Cullis pedestal. The landing point (1945,2112) is beside
+    OBJECT_GUILD_PEDESTAL_TELEPORT_01 (1937.0,2112.7 world). The landing is
+    now the retail arrival spot BanditCampHSP (1944.7,2109.7).
+  - Re-applying FACTION_TWINBLADE_CAMP_BANDITS and clearing the guard's enemy
+    target changed nothing. All 9 retail references to that faction string
+    are EntitySetInFaction calls in this family.
+  - `quest:ClearHeroEnemyOfGuards()` killed the game process (the log ends
+    at the batch, with no ok/error line). Do not call it.
+- **bcr1 (retail oracle):** v16 has no Bandit Camp override. Same save,
+  disguise and teleport: the guards stay peaceful for three minutes and the
+  hero never moves.
+- **Cause:** Gate1GuardOuter Main's `if (AttackedOuterGateGuards == 0) goto
+  code_r0x00d0283a;` (keep waiting) was unlifted, because the lifter only
+  knows `LAB_` labels. An unprovoked hero fell into
+  `GiveThingBestEnemyTarget(me, hero)`. `normalise_typed_decompile` now
+  spells `code_r0xADDR` as `LAB_ADDR`.
+  - All-unit A/B vs 783df67: Gate1GuardOuter changes, plus a pure label
+    rename in Bordello's Magicman (its `code_r` label had been synthesised
+    as FLOW_native_label_1).
+  - Smoke 19/0, 83 TODOs. v18 carries the fix.
+
+Also seen: Q_BanditCampBossBattle's gate watcher calls
+`GetThingWithScriptName('Gate1')` every frame, as retail does. The sidecar's
+adopted reference count on that thing climbed to 2,540, so returned handles
+are not collected between frames. This is a slow sidecar leak.
+
+

@@ -556,7 +556,7 @@ function Main(quest, me)
     bVar4 = true
     ::FLOW_past_lab_00d027e0::
     if not bVar4 then
-        -- TODO(native): if (*(char *)(*(int *)(this + 0x14) + 0x48) == '\0') goto code_r0x00d0283a;
+        if not quest:GetStateBool("AttackedOuterGateGuards") then goto LAB_00d0283a end
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
@@ -614,7 +614,7 @@ function Main(quest, me)
     ::LAB_00d02889::
     resources:DestroyMovie(xStack_134)
     goto LAB_00d02851
-    -- TODO(native): code_r0x00d0283a:
+    ::LAB_00d0283a::
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive

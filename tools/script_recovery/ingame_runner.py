@@ -21,7 +21,11 @@ Quest file (JSON):
   fightWhen  optional Lua condition in stateHost (default host), checked before combat input
   stateStatus optional Lua expression in stateHost, logged every third poll for quest-specific diagnostics
   hunt       true: with no route, walk to the nearest living enemyNames enemy
+  clear      false: no reflex clearing of hostiles near the hero (a disguise quest: Bandit Camp's gate guard is a
+             hostile until the disguise is worn, and clearing him ended his entity script)
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
+  pauseSteps optional input ladder for paused frames instead of [answer, clear, answer, ENTER] (e.g. ["clear"] where
+             a scripted conversation pauses frames and a mouse answer would be an attack)
   done       Lua expression, evaluated in `host`, true when the test succeeded
   failed     Lua expression, true when it failed
   party      Lua expression (in `partyHost`) for the followers the quest expects right now
@@ -31,7 +35,10 @@ Quest file (JSON):
              (skipped when the quest is already active; the card is taken through the real UI: TAB beside a card,
              the row found by OCR of the summary title while hovering each row, then Take Quest)
              optional "talk": "<script name>", "talkLabel": "<name shown when targeted>": start the conversation
-             the quest waits for (a quest Gameflow grants without a card leaves out "card"/"title")
+             the quest waits for (a quest Gameflow grants without a card leaves out "card"/"title"); an empty
+             talkLabel presses TAB once facing them without the OCR check (logged `talk_blind`)
+             optional "setup": [Lua statement, ...] run once in `host` before travel (assistance; item boxes cleared),
+             "setupCheck": a Lua expression that must be true after it
 Log: work/runner/<tag>.jsonl (one status per poll) + screenshots at stalls and pauses.
 
     --launch --save PROFILE   stage PROFILE's AutoSave, launch the bundle and load it (autopilot's launcher);
@@ -228,6 +235,7 @@ def play(a, q) -> str:
                f"E.Runner.fightNames = {{{', '.join(repr(n) for n in q.get('fightNames', []))}}}; "
                f"E.Runner.fightDefs = {{{', '.join(repr(n) for n in q.get('fightDefs', []))}}}; "
                f"E.Runner.fightDrain = {'true' if q.get('fightDrain', True) else 'false'}; "
+               f"E.Runner.clear = {'true' if q.get('clear', True) else 'false'}; "
                f"E.Runner.fightBounds = " + ('{' + ','.join(str(float(v)) for v in q['fightBounds']) + '}' if q.get('fightBounds') else 'nil') + '; ' +
                f"if not E.Runner.thread then E.Runner.thread = true; quest:CreateThread('RunnerMain') end")
     regions = ', '.join(f'["{m}"]="{r}"' for m, r in world.items() if m in grid.maps and re.search(q['maps'], m + ' ' + r))
@@ -359,6 +367,13 @@ def play(a, q) -> str:
                 game_input('key TAB')
                 time.sleep(1.0)
                 return True
+            if not label:
+                # no known target label (a quest NPC whose on-screen name is unrecorded): the teleport faced
+                # them, so TAB acts on them; the quest's own state tells whether the conversation started
+                log('talk_blind', side=[dx, dy], target=target)
+                game_input('key TAB')
+                time.sleep(1.0)
+                return True
         return False
 
     if q.get('start'):
@@ -369,6 +384,23 @@ def play(a, q) -> str:
                 log('start_failed', quest=s['quest'])
                 return 'failed'
             log('card_taken', quest=s['quest'])
+        # assistance statements run once in the host BEFORE travel (Bandit Camp: the disguise the gate guard checks,
+        # given and worn through GiveHeroObject / SetHeroAsWearing instead of the inventory UI, must be on before any
+        # bandit sees the hero). An item-received box pauses the game until it is clicked away, so each statement is
+        # followed by clearing boxes; a statement sent while one is up can be lost (SetHeroAsWearing in run bc2).
+        for line in s.get('setup', []):
+            reply = send(f'{host}: {line}', 20)
+            for _ in range(4):
+                if game_input('clear').strip() == '(no box)':
+                    break
+                time.sleep(0.5)
+            log('setup', line=line, reply=[r for r in reply if 'error' in r.lower() or ' ok ' in r][:2])
+        if s.get('setup') and s.get('setupCheck'):
+            val, _ = ev(s['setupCheck'], 20)
+            log('setup_check', value=val)
+            if val != 'true':
+                log('start_failed', quest=s['quest'], reason='setup check failed')
+                return 'failed'
         dest = s.get('travel')
         last = (dest[-1] if dest and isinstance(dest[0], list) else dest) or []
         arrived = active == 'true' and len(last) > 4 and ev(f"tostring(quest:IsRegionLoaded('{last[4]}'))", 10)[0] == 'true'
@@ -391,7 +423,11 @@ def play(a, q) -> str:
             # it ignores input for a moment after it appears, so the ladder repeats quickly.
             paused += 1
             answer = 'hold RMB 100' if q.get('answer', 'no') == 'no' else 'hold LMB 100'
-            step = [answer, 'clear', answer, 'key ENTER'][(paused - 1) % 4]
+            # a quest can replace the ladder: when no question is up the mouse answer is an attack in the world
+            # (bc3: a scripted conversation paused the host's frames, the RMB "no" swung at the disguised hero's gate
+            # guard and his AI fought back)
+            ladder = q.get('pauseSteps') or [answer, 'clear', answer, 'key ENTER']
+            step = ladder[(paused - 1) % len(ladder)]
             if paused % 4 == 1:
                 shot = out / f'{a.tag}_pause_{int(time.time())}.png'
                 game_input(f'capture {shot}')

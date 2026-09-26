@@ -309,6 +309,23 @@ class BoundValueSpawnTests(unittest.TestCase):
         self.assertEqual(lifter.todo, [])
 
 
+class CodeRefLabelTests(unittest.TestCase):
+    def test_code_r_labels_become_ordinary_labels(self):
+        # Gate1GuardOuter Main 0x00D01630: the guard keeps waiting unless AttackedOuterGateGuards is set
+        from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
+        native = ("{\n  if (*(char *)(*(int *)((int)this + 0x14) + 0x48) == '\\0') goto code_r0x00d0283a;\n"
+                  "  GSI->GiveThingBestEnemyTarget(me, hero);\n  return;\ncode_r0x00d0283a:\n  GSI->NewScriptFrame();\n}")
+        out = normalise_typed_decompile(native)
+        self.assertIn('goto LAB_00d0283a;', out)
+        self.assertIn('\nLAB_00d0283a:\n', out)
+        self.assertNotIn('code_r0x', out)
+
+    def test_existing_lab_of_the_same_address_keeps_the_code_r_name(self):
+        from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
+        native = '{\n  goto code_r0x00d0283a;\nLAB_00d0283a:\n  return;\ncode_r0x00d0283a:\n  return;\n}'
+        self.assertIn('code_r0x00d0283a', normalise_typed_decompile(native))
+
+
 class CastCaseLabelTests(unittest.TestCase):
     def test_string_typed_integer_labels_compare_as_integers(self):
         statements = ['switch(ctr_c8) {', 'case (CCharString)0x0:', 'GSI->SetTimer(1, 0);', 'break;',

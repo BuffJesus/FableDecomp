@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_2, native_arg_switch_3, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
+    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -579,9 +579,9 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(r11, nil --[[missing]])
                 alive = quest:NewScriptFrame(me)
                 quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]])
-                native_arg_switch_2 = quest:GetStateInt("BeersDrunk")
+                native_arg_switch_1 = quest:GetStateInt("BeersDrunk")
                 repeat
-                    if native_arg_switch_2 == 0 then
+                    if native_arg_switch_1 == 0 then
                         fVar13 = quest:GetHealth(nil --[[missing]])
                         cVar6 = 0.0 < fVar13
                         if cVar6 then
@@ -617,7 +617,7 @@ function Main(quest, me)
                         end
                         break
                     else
-                        if native_arg_switch_2 == 1 then
+                        if native_arg_switch_1 == 1 then
                             xStack_180 = resources:ScriptThing(xStack_364)
                             fVar13 = quest:GetHealth(nil --[[missing]])
                             cVar6 = 0.0 < fVar13
@@ -652,7 +652,7 @@ function Main(quest, me)
                             end
                             break
                         else
-                            if native_arg_switch_2 == 2 then
+                            if native_arg_switch_1 == 2 then
                                 fVar13 = quest:GetHealth(nil --[[missing]])
                                 cVar6 = 0.0 < fVar13
                                 if cVar6 then
@@ -686,7 +686,7 @@ function Main(quest, me)
                                 end
                                 break
                             else
-                                if native_arg_switch_2 == 3 then
+                                if native_arg_switch_1 == 3 then
                                     fVar13 = quest:GetHealth(nil --[[missing]])
                                     cVar6 = 0.0 < fVar13
                                     if cVar6 then
@@ -720,7 +720,7 @@ function Main(quest, me)
                                     end
                                     break
                                 else
-                                    if native_arg_switch_2 == 4 then
+                                    if native_arg_switch_1 == 4 then
                                         fVar13 = quest:GetHealth(nil --[[missing]])
                                         cVar6 = 0.0 < fVar13
                                         if cVar6 then
@@ -754,7 +754,7 @@ function Main(quest, me)
                                         end
                                         break
                                     else
-                                        if native_arg_switch_2 == 5 then
+                                        if native_arg_switch_1 == 5 then
                                             fVar13 = quest:GetHealth(nil --[[missing]])
                                             cVar6 = 0.0 < fVar13
                                             if cVar6 then
@@ -828,7 +828,7 @@ function Main(quest, me)
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar5 = not alive
-                                                    if not bVar5 then goto FLOW_native_label_1 end
+                                                    if not bVar5 then goto LAB_00e428c7 end
                                                     quest:PauseAllNonScriptedEntities(nil --[[missing]])
                                                     this_00 = xStack_330
                                                     -- LAB_00e4485d: (native jump target)
@@ -1513,9 +1513,9 @@ function Main(quest, me)
                 quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]], nil --[[missing]])
                 xStack_310 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(nil --[[missing]])
-                native_arg_switch_3 = quest:GetStateInt("BeersDrunk")
+                native_arg_switch_2 = quest:GetStateInt("BeersDrunk")
                 repeat
-                    if native_arg_switch_3 == 0 then
+                    if native_arg_switch_2 == 0 then
                         fVar13 = quest:GetHealth(nil --[[missing]])
                         cVar6 = 0.0 < fVar13
                         if cVar6 then
@@ -1549,7 +1549,7 @@ function Main(quest, me)
                         end
                         break
                     else
-                        if native_arg_switch_3 == 1 then
+                        if native_arg_switch_2 == 1 then
                             fVar13 = quest:GetHealth(nil --[[missing]])
                             cVar6 = 0.0 < fVar13
                             if cVar6 then
@@ -1578,7 +1578,7 @@ function Main(quest, me)
                             end
                             break
                         else
-                            if native_arg_switch_3 == 2 then
+                            if native_arg_switch_2 == 2 then
                                 fVar13 = quest:GetHealth(nil --[[missing]])
                                 cVar6 = 0.0 < fVar13
                                 if cVar6 then
@@ -1607,7 +1607,7 @@ function Main(quest, me)
                                 end
                                 break
                             else
-                                if native_arg_switch_3 == 3 then
+                                if native_arg_switch_2 == 3 then
                                     xStack_160 = resources:ScriptThing(xStack_354)
                                     fVar13 = quest:GetHealth(nil --[[missing]])
                                     cVar6 = 0.0 < fVar13
@@ -1637,7 +1637,7 @@ function Main(quest, me)
                                     end
                                     break
                                 else
-                                    if native_arg_switch_3 == 4 then
+                                    if native_arg_switch_2 == 4 then
                                         fVar13 = quest:GetHealth(nil --[[missing]])
                                         cVar6 = 0.0 < fVar13
                                         if cVar6 then
@@ -1666,7 +1666,7 @@ function Main(quest, me)
                                         end
                                         break
                                     else
-                                        if native_arg_switch_3 == 5 then
+                                        if native_arg_switch_2 == 5 then
                                             fVar13 = quest:GetHealth(nil --[[missing]])
                                             cVar6 = 0.0 < fVar13
                                             if cVar6 then
@@ -1779,13 +1779,13 @@ function Main(quest, me)
     quest:DeregisterTimer(timerId)
     quest:DeregisterTimer(i_stk_378)
     goto LAB_00e4451f
-    ::FLOW_native_label_1::
+    ::LAB_00e428c7::
     iVar21 = me:IsPerformingScriptTask()
     if not iVar21 then return end  -- TODO(native): goto LAB_00e428d4
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
-    if not bVar5 then goto FLOW_native_label_1 end
+    if not bVar5 then goto LAB_00e428c7 end
     quest:PauseAllNonScriptedEntities(nil --[[missing]])
     this_00 = xStack_330
     -- LAB_00e4485d_c34: (native jump target)

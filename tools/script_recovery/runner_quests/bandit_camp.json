@@ -1,0 +1,51 @@
+{
+  "quest": "Q_BanditCamp",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "Q_BanditCamp",
+    "title": "Find The Bandit Seeress",
+    "guild": [
+      70,
+      4787.62,
+      3680.52,
+      38.0
+    ],
+    "card": "OBJECT_QUEST_CARD_BANDIT_CAMP",
+    "travel": [
+      [
+        14,
+        1944.7,
+        2109.7,
+        42.2,
+        "BanditCampEntrance"
+      ]
+    ],
+    "setup": [
+      "quest:GiveHeroObject('OBJECT_HERO_SHIRT_BANDITCAMP', 1)",
+      "quest:GiveHeroObject('OBJECT_HERO_TROUSERS_BANDITCAMP', 1)",
+      "quest:GiveHeroObject('OBJECT_HERO_HAT_BANDITCAMP', 1)",
+      "quest:GiveHeroObject('OBJECT_HERO_BOOTS_BANDITCAMP', 1)",
+      "quest:GiveHeroObject('OBJECT_HERO_GLOVES_BANDITCAMP', 1)",
+      "quest:SetHeroAsWearing('OBJECT_HERO_SHIRT_BANDITCAMP')",
+      "quest:SetHeroAsWearing('OBJECT_HERO_TROUSERS_BANDITCAMP')",
+      "quest:SetHeroAsWearing('OBJECT_HERO_HAT_BANDITCAMP')",
+      "quest:SetHeroAsWearing('OBJECT_HERO_BOOTS_BANDITCAMP')",
+      "quest:SetHeroAsWearing('OBJECT_HERO_GLOVES_BANDITCAMP')"
+    ],
+    "talk": "Gate1GuardOuter",
+    "talkLabel": "",
+    "setupCheck": "tostring(quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_SHIRT_BANDITCAMP') and quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_TROUSERS_BANDITCAMP') and quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_HAT_BANDITCAMP') and quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_BOOTS_BANDITCAMP') and quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_GLOVES_BANDITCAMP'))"
+  },
+  "maps": "^BanditCamp",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "stateHost": "BanditCamp",
+  "stateStatus": "'gate1=' .. tostring(quest:GetStateBool('Gate1Open')) .. ' wearingShirt=' .. tostring(quest:IsWearingClothingItem(quest:GetHero(), 'OBJECT_HERO_SHIRT_BANDITCAMP')) .. ' kills=' .. #quest:GetHero():MsgGetThingsKilledGroups()",
+  "done": "quest:IsQuestCompleted('Q_BanditCamp')",
+  "failed": "(not quest:IsQuestActive('Q_BanditCamp')) and not quest:IsQuestCompleted('Q_BanditCamp')",
+  "clear": false,
+  "pauseSteps": [
+    "clear"
+  ]
+}
