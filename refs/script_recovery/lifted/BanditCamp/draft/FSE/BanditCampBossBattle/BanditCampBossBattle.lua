@@ -117,7 +117,7 @@ function BanditKingMissionProcess(quest)
     bVar2 = false
     pCVar4 = pCVar3:GetPos()
     pCVar3 = quest:CreateCreature("CREATURE_BOSS_BANDIT_KING", pCVar4, "BanditKing")
-    -- TODO(native): CCountedPointer<CDiskFileWin32>::operator=__at704580((CCountedPointer<CDiskFileWin32> *)xStack_90,(int)&*(int *)(pCVar3 + 0x4));
+    xStack_90 = pCVar3
     xStack_5c = resources:NewResource()
     xStack_6c = resources:NewResource()
     resources:TryAcquire(xStack_5c, xStack_90, 4)
@@ -203,7 +203,7 @@ function BanditKingMissionProcess(quest)
             fret_00 = quest:GetHealth(xStack_90)
             iVar6 = quest:AddQuestInfoBar(fret_00, fVar8, pColour1, pColour2, "HUD_QUEST_ICON_TWINBLADE", "", fVar13)
             f_stk_a4 = C_stk_4c
-            C_stk_4c = ""
+            C_stk_4c = f_stk_a4
             fret_01 = quest:GetHealth(xStack_90)
             if f_stk_a4 < fret_01 then
                 repeat

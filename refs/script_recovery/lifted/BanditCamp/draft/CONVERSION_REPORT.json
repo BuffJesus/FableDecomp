@@ -1158,7 +1158,6 @@
           "todo": [
             "CancelUsingAbility: not in FSE manifest",
             "CancelUsingAbility: not in FSE manifest",
-            "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at704580((CCountedPointer<CDiskFileWin32> *)xS",
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(p",
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
@@ -5667,7 +5666,7 @@
         "functionSyntaxPassed": 67,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 72
+        "todo": 71
       }
     },
     {
@@ -5811,6 +5810,6 @@
     "functionSyntaxPassed": 85,
     "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 19,
-    "todo": 83
+    "todo": 82
   }
 }

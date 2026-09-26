@@ -326,6 +326,37 @@ class CodeRefLabelTests(unittest.TestCase):
         self.assertIn('code_r0x00d0283a', normalise_typed_decompile(native))
 
 
+class BossKingTests(unittest.TestCase):
+    """BanditKingMissionProcess 0x00D109F0: the created Twinblade and the fight's quarter-health threshold."""
+
+    def test_counted_pair_assignment_keeps_the_created_thing(self):
+        from tools.script_recovery.native_evidence_lowering import lower_after_annotate
+        native = ('{\n  pCVar3 = GSI->CreateCreature(&xStack_2c,&xStack_94,pCVar4,pCVar9,bVar2);\n'
+                  '  CCountedPointer<CDiskFileWin32>::operator=__at704580((CCountedPointer<CDiskFileWin32> *)xStack_90,'
+                  '(int)&*(int *)(pCVar3 + 0x4));\n  fret_0 = GSI->GetHealth((CScriptThing *)xStack_90);\n}')
+        out = lower_after_annotate(native)
+        self.assertIn('xStack_90 = (CScriptThing *)pCVar3;', out)
+        self.assertNotIn('__at704580', out)
+
+    def test_float_copy_back_judged_over_the_targets_life(self):
+        from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
+        native = '\n'.join([
+            '{', '  CCharString::CCharString(&xStack_a4,"",-1);',
+            '  xStack_a4 = (CCharString)(float)(int)C_stk_4c;', '  C_stk_4c = xStack_a4;',
+            '  if ((float)xStack_a4 < fret_01) {', '  }',
+            '  CCharString::CCharString(&xStack_a4,"Q_BanditCamp_Barriers",-1);', '  GSI->DeactivateQuest(&xStack_a4,0);',
+            '  GSI->ModifyThingHealth(king,(float)C_stk_4c - fret_04,false);', '}'])
+        out = normalise_typed_decompile(native)
+        self.assertIn('C_stk_4c = f_stk_a4;', out)
+        self.assertIn('CCharString::CCharString(&xStack_a4,"Q_BanditCamp_Barriers",-1);', out)   # the string life keeps its name
+
+    def test_copy_whose_target_is_never_read_as_float_keeps_the_slot(self):
+        from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
+        native = '\n'.join(['{', '  xStack_a4 = (CCharString)(float)(int)C_stk_4c;', '  pThing = xStack_a4;',
+                            '  CCharString::CCharString(&xStack_a4,"x",-1);', '  GSI->Use(pThing);', '}'])
+        self.assertIn('pThing = xStack_a4;', normalise_typed_decompile(native))
+
+
 class CastCaseLabelTests(unittest.TestCase):
     def test_string_typed_integer_labels_compare_as_integers(self):
         statements = ['switch(ctr_c8) {', 'case (CCharString)0x0:', 'GSI->SetTimer(1, 0);', 'break;',

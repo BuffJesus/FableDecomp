@@ -22,7 +22,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | Main | 0x00d038e0 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | Init | 0x00d03610 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | OnPersist | 0x00cbd4e0 | True | 0 |
-| Q_BanditCampBossBattle | Q_BanditCampBossBattle | BanditKingMissionProcess | 0x00d109f0 | True | 7 |
+| Q_BanditCampBossBattle | Q_BanditCampBossBattle | BanditKingMissionProcess | 0x00d109f0 | True | 6 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForBanditCampGates | 0x00d04770 | True | 1 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | ProcessHostageCutscenes | 0x00d0fe80 | True | 4 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForTermination | 0x00d04260 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 83}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 82}`

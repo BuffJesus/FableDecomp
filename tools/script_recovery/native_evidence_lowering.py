@@ -1099,8 +1099,19 @@ def normalise_typed_decompile(text: str) -> str:
         # trigger distance: the copy read the unset string register and the distance test got nil, 2026-09-24)
         # (only a plain copy whose target is itself read as a float: the slot's later non-float life -- a handle,
         # a pointer -- shares this phase and must keep its name)
+        # (the target's float read is looked for over the TARGET's life -- from the copy to its next assignment --
+        # not just this slot's phase: BanditKingMissionProcess 0x00D109F0 copies the quarter-health threshold back
+        # into CStack_4c, the slot is reused for a quest-name string, and only then does ModifyThingHealth read
+        # `(float)CStack_4c`; judged on the phase alone the copy kept the string name and the threshold became "")
+        def target_is_float(mm, base=m.start()):
+            # (located in the ORIGINAL text: the phase has already been rewritten, so its offsets do not apply)
+            copy = re.search(r'^[ \t]*' + re.escape(mm.group(2)) + r' = ' + re.escape(var) + r';', text[base:], re.M)
+            rest = text[base + copy.end():] if copy else ''
+            nxt_def = re.search(r'^[ \t]*' + re.escape(mm.group(2)) + r' = ', rest, re.M)
+            life = rest[:nxt_def.start()] if nxt_def else rest
+            return re.search(r'\(float\)' + re.escape(mm.group(2)) + r'\b', phase) or re.search(r'\(float\)' + re.escape(mm.group(2)) + r'\b', life)
         phase = re.sub(r'^([ \t]*)(\w+) = ' + re.escape(var) + r';',
-                       lambda mm: f'{mm.group(1)}{mm.group(2)} = {scalar};' if re.search(r'\(float\)' + re.escape(mm.group(2)) + r'\b', phase) else mm.group(0),
+                       lambda mm: f'{mm.group(1)}{mm.group(2)} = {scalar};' if target_is_float(mm) else mm.group(0),
                        phase, flags=re.M)
         phase = re.sub(r'\(float10\)', '', phase)
         text = text[:m.start()] + phase + text[end:]
@@ -2308,6 +2319,13 @@ def lower_after_annotate(text, thing_slots=None):
     text = RE_BV_THING_RESULT.sub(lambda m: f'{m.group(1)}{m.group(4)} = {m.group(2)}({m.group(3)});\n', text)
     text = fold_local_thing_vectors(text, thing_slots)
     text = fold_things_killed_vectors(text)
+    # 0x00704580 (bsim-labelled CCountedPointer<CDiskFileWin32>::operator=) assigns a {Data, Info} counted pair:
+    # release the old Info, copy both words, add-ref. Applied to a returned thing's +4 pair it is
+    # CScriptThing::operator= (BanditKingMissionProcess 0x00D109F0 keeps CreateCreature's Twinblade in xStack_90
+    # this way; left as a TODO the king was nil in every later call and the boss fight could not run)
+    text = re.sub(r'^([ \t]*)CCountedPointer<CDiskFileWin32>::operator=__at704580\(\(CCountedPointer<CDiskFileWin32> \*\)&?(\w+),'
+                  r'\s*\(int\)&\*\(int \*\)\((\w+) \+ 0x4\)\);',
+                  r'\1\2 = (CScriptThing *)\3;', text, flags=re.M)
     # `GSI->DeregisterTimer(unaff_REG)`: Ghidra lost the register holding the id across the block; when the
     # function registers exactly one timer that is the id
     timers = re.findall(r'^[ \t]*(\w+) = (?:\(\w+\))?GSI->RegisterTimer\(\);', text, re.M)

@@ -24,9 +24,10 @@ Quest file (JSON):
   clear      false: no reflex clearing of hostiles near the hero (a disguise quest: Bandit Camp's gate guard is a
              hostile until the disguise is worn, and clearing him ended his entity script)
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
-  steps      optional [{name, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...] after the start:
-             talk to the script-named NPC, then wait until the Lua expression is true (a step's pauseSteps answers
-             its own yes/no questions); a step still false after `tries` talks fails the run
+  steps      optional [{name, travel, fight, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...]
+             after the start: cross to `travel` ([slot, x, y, z, region] like start.travel), fight the `fight`
+             script names for the step's duration, talk to the script-named NPC, then wait until the Lua expression
+             is true (a step's pauseSteps answers its own yes/no questions); still false after `tries` fails the run
   pauseSteps optional input ladder for paused frames instead of [answer, clear, answer, ENTER] (e.g. ["clear"] where
              a scripted conversation pauses frames and a mouse answer would be an attack)
   done       Lua expression, evaluated in `host`, true when the test succeeded
@@ -419,6 +420,7 @@ def play(a, q) -> str:
     paused, last_log, polls, fights = 0, 0, 0, 0
     # quest steps after the start: talk to a script-named NPC, then wait for `until` (Lua in the step's stateHost)
     steps, step_i, step_started, step_tries = q.get('steps', []), 0, None, 0
+    step_fight = False          # a step's own fight targets are set in the Lua runner (Runner.fightNames)
     while time.time() < deadline:
         game_input('move 512 384')          # keep the window focused (the game freezes in the background)
         val, err = ev("Runner and Runner.status or 'no runner'", timeout=4)
@@ -467,12 +469,22 @@ def play(a, q) -> str:
             if step_started is None:
                 step_started, step_tries = time.time(), step_tries + 1
                 log('step_start', step=stp.get('name', step_i), attempt=step_tries)
+                if stp.get('travel') and not travel(stp['travel']):
+                    log('step_travel_failed', step=stp.get('name', step_i))
+                if stp.get('fight'):
+                    names = ', '.join(repr(n) for n in stp['fight'])
+                    send(f'{host}: Runner.fightNames = {{{names}}}', 10)
+                    step_fight = True
                 if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', '')):
                     log('step_talk_failed', step=stp.get('name', step_i))
             reply = send(f"eval {host_s}: tostring({stp['until']})", 6)
             val = next((r.rsplit(' = ', 1)[-1] for r in reply if '[Autopilot] eval ' in r), None)
             if val == 'true':
                 log('step_done', step=stp.get('name', step_i), seconds=round(time.time() - step_started))
+                if stp.get('fight'):
+                    names = ', '.join(repr(n) for n in q.get('fightNames', []))
+                    send(f'{host}: Runner.fightNames = {{{names}}}', 10)
+                    step_fight = False
                 step_i, step_started, step_tries = step_i + 1, None, 0
             elif time.time() - step_started > stp.get('timeout', 180):
                 if step_tries >= stp.get('tries', 2):
@@ -492,7 +504,7 @@ def play(a, q) -> str:
         if 'pos' not in st or st.get('scene') == 'true':
             time.sleep(1)
             continue
-        if q.get('fightNames') or q.get('fightDefs'):
+        if q.get('fightNames') or q.get('fightDefs') or step_fight:
             # a death a script must see as a kill BY the hero (MsgIsKilledBy): the runner drains the target to 1
             # health and places the hero beside it; the last blow is a real attack (sword, then a spell)
             ready = not q.get('fightWhen') or state_eval(f"tostring({q['fightWhen']})", 6) == 'true'

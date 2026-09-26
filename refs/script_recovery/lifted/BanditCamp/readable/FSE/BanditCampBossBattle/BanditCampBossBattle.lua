@@ -101,10 +101,9 @@ function BanditKingMissionProcess(quest)
     quest:SetThingAsUsable(quest:GetThingWithScriptName("Gate3Inner"), false)
     quest:SetTeleportingAsActive(false)
     quest:OverrideMusic(1, false, false)
-    quest:CreateCreature("CREATURE_BOSS_BANDIT_KING", quest:GetThingWithScriptName("BanditKingSpawn"):GetPos(), "BanditKing")
-    -- TODO(native): CCountedPointer<CDiskFileWin32>::operator=__at704580((CCountedPointer<CDiskFileWin32> *)xStack_90,(int)&*(int *)(pCVar3 + 0x4));
+    local bossBanditKing = quest:CreateCreature("CREATURE_BOSS_BANDIT_KING", quest:GetThingWithScriptName("BanditKingSpawn"):GetPos(), "BanditKing")
     local resource5 = resources:NewResource()
-    resources:TryAcquire(resource5, nil, 4)
+    resources:TryAcquire(resource5, bossBanditKing, 4)
     hero:AcquireControl(4)
     local actorMap = resources:NewActorMap()
     -- TODO(native): pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_84,&xStack_a0);
@@ -125,7 +124,7 @@ function BanditKingMissionProcess(quest)
     resources:DestroyActorMap(actorMap)
     hero:ReleaseControl()
     resources:ReleaseResource(resource5)
-    local C_stk_4c_1 = math.tointeger(math.modf(quest:GetHealth(nil) * 0.25))
+    local C_stk_4c_1 = math.tointeger(math.modf(quest:GetHealth(bossBanditKing) * 0.25))
     quest:ActivateQuest("Q_BanditCamp_Barriers")
     local invisibleWall = quest:GetAllThingsWithScriptName("InvisibleWall")
     if #invisibleWall ~= 0 then
@@ -139,15 +138,15 @@ function BanditKingMissionProcess(quest)
         until scratchValue6 >= #invisibleWall
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
-    quest:EntitySetAsKillable(nil, false, true)
+    quest:EntitySetAsKillable(bossBanditKing, false, true)
     quest:SetStateBool("BanditKingFightStarted", true)
     quest:SetMasterGameState("BodyGuardsMustStandAndWait", true)
     quest:OverrideMusic(23, false, false)
     resource7 = resources:NewResource()
-    resources:TryAcquire(resource7, nil, 4)
+    resources:TryAcquire(resource7, bossBanditKing, 4)
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
-    quest:EntitySetFacingAngleTowardsThing(nil, hero, false)
+    quest:EntitySetFacingAngleTowardsThing(bossBanditKing, hero, false)
     while 0 < quest:GetTimer(timerId) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
@@ -164,19 +163,18 @@ function BanditKingMissionProcess(quest)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource7)
         quest:DisplayQuestInfo(true)
-        local infoElement = quest:AddQuestInfoBar(quest:GetHealth(nil), 0.0, {R = 255, G = 0, B = 0, A = 255}, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TWINBLADE", "", 1.0)
-        local C_stk_4c_2 = ""
-        while C_stk_4c_1 < quest:GetHealth(nil) do
+        local infoElement = quest:AddQuestInfoBar(quest:GetHealth(bossBanditKing), 0.0, {R = 255, G = 0, B = 0, A = 255}, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TWINBLADE", "", 1.0)
+        while C_stk_4c_1 < quest:GetHealth(bossBanditKing) do
             if not quest:NewScriptFrame() then goto LAB_00d11905 end
-            quest:UpdateQuestInfoBar(infoElement, quest:GetHealth(nil), -1.0, -1.0)
+            quest:UpdateQuestInfoBar(infoElement, quest:GetHealth(bossBanditKing), -1.0, -1.0)
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
         quest:DeactivateQuest("Q_BanditCamp_Barriers", 0)
         quest:DisplayQuestInfo(false)
         quest:RemoveQuestInfoElement(infoElement)
         quest:StopOverrideMusic(false)
-        quest:ModifyThingHealth(nil, C_stk_4c_2 - quest:GetHealth(nil), false)
-        if nil ~= nil and (nil):IsAlive() then
+        quest:ModifyThingHealth(bossBanditKing, C_stk_4c_1 - quest:GetHealth(bossBanditKing), false)
+        if bossBanditKing ~= nil and bossBanditKing:IsAlive() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
             quest:SetStateBool("BanditKingFightEnded", true)
             quest:SetMasterGameState("BodyGuardsMustStandAndWait", false)
@@ -185,7 +183,7 @@ function BanditKingMissionProcess(quest)
             local resource = resources:NewResource()
             local resource3 = resources:NewResource()
             local resource4 = resources:NewResource()
-            resources:TryAcquire(resource, nil, 4)
+            resources:TryAcquire(resource, bossBanditKing, 4)
             resources:TryAcquire(resource4, sister, 4)
             resources:TryAcquire(resource3, hero, 4)
             local actorMap2 = resources:NewActorMap()

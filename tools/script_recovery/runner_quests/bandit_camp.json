@@ -84,6 +84,72 @@
       "until": "quest:GetStateBool('Gate2Open')",
       "stateHost": "BanditCampBossBattle",
       "timeout": 180
+    },
+    {
+      "name": "kill_hostage_guard",
+      "fight": [
+        "CampHostageGuard"
+      ],
+      "until": "quest:IsObjectInThingsPossession('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', quest:GetHero()) or quest:GetStateBool('HostagesRescued')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 240
+    },
+    {
+      "name": "free_hostages",
+      "talk": "CampHostageDoor",
+      "talkLabel": "",
+      "until": "quest:GetStateBool('Gate3Open')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 240
+    },
+    {
+      "name": "enter_boss",
+      "travel": [
+        [
+          16,
+          1631.5,
+          2112.3,
+          46.9,
+          "BanditCampBoss"
+        ]
+      ],
+      "until": "quest:GetStateBool('BanditKingFightStarted')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 300,
+      "tries": 1
+    },
+    {
+      "name": "boss_fight",
+      "fight": [
+        "BanditKing"
+      ],
+      "until": "quest:GetStateBool('BanditKingFightEnded')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 420,
+      "tries": 1
+    },
+    {
+      "name": "theresa_scene",
+      "until": "quest:GetStateBool('ItsAllOver')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 420,
+      "tries": 1
+    },
+    {
+      "name": "back_to_residential",
+      "travel": [
+        [
+          15,
+          1774.7,
+          2113.7,
+          37.6,
+          "BanditCampCentre"
+        ]
+      ],
+      "until": "quest:GetStateBool('MissionSucceeded')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 240,
+      "tries": 1
     }
   ]
 }
