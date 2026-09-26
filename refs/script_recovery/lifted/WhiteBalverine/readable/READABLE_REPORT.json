@@ -9728,7 +9728,7 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 4,
+       "copies": 3,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 121,
@@ -10824,7 +10824,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 5,
-      "declarations": 7,
+      "declarations": 6,
       "decimalLiterals": 13
      }
     },
@@ -11079,6 +11079,13 @@
         "getStateThing"
        ]
       },
+      "pCVar9_3": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
+      },
       "r1": {
        "name": "mkWbwFirstspawnb",
        "basis": "consistent call/state result",
@@ -11125,32 +11132,32 @@
          20
         ],
         "bVar15_5": [
-         59
+         54
         ],
         "bVar15_6": [
-         74,
-         78
+         69,
+         73
         ],
         "bVar15_7": [
-         91
+         86
         ],
         "bVar15_8": [
-         104
+         99
         ],
         "bVar15_9": [
-         112
+         107
         ],
         "bVar15_10": [
-         118
+         113
         ],
         "bVar15_11": [
-         121
+         116
         ],
         "bVar15_12": [
-         124
+         119
         ],
         "bVar15_13": [
-         128
+         123
         ]
        }
       },
@@ -11159,25 +11166,13 @@
        "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
        "versions": {
         "cVar7_1": [
-         65
+         60
         ],
         "cVar7_2": [
-         68
+         63
         ],
         "cVar7_3": [
-         71
-        ]
-       }
-      },
-      "pCVar11": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
-       "versions": {
-        "pCVar11_1": [
-         58
-        ],
-        "pCVar11_2": [
-         95
+         66
         ]
        }
       },
@@ -11190,6 +11185,21 @@
         ],
         "pCVar9_2": [
          28
+        ],
+        "pCVar9_3": [
+         40
+        ]
+       }
+      },
+      "pCVar11": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+       "versions": {
+        "pCVar11_1": [
+         53
+        ],
+        "pCVar11_2": [
+         90
         ]
        }
       }
@@ -11198,15 +11208,15 @@
      "inlinedLiteralLocals": {
       "bVar15_12": {
        "literal": "true",
-       "definitionLine": 124,
+       "definitionLine": 119,
        "readLines": [
-        126
+        121
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar15_13, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
-        "124": "            bVar15_12 = true\n",
-        "126": "            quest:SetQuestAsFailed(pQuestName, bVar15_12, \"\", bVar16)\n"
+        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar15_13, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pCVar9_3, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+        "119": "            bVar15_12 = true\n",
+        "121": "            quest:SetQuestAsFailed(pQuestName, bVar15_12, \"\", bVar16)\n"
        }
       }
      },
@@ -11214,7 +11224,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 143,
+     "sourceLine": 138,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11223,7 +11233,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 152,
+     "sourceLine": 147,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11232,7 +11242,7 @@
     },
     {
      "function": "MonitorBalverine",
-     "sourceLine": 155,
+     "sourceLine": 150,
      "locals": {
       "bVar2_1": {
        "name": "predicateResult",
@@ -11284,7 +11294,7 @@
     },
     {
      "function": "SpawnBalverines",
-     "sourceLine": 183,
+     "sourceLine": 178,
      "locals": {
       "bVar2_1": {
        "name": "isActiveThreadTerminating",
@@ -11697,7 +11707,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 114,
+     "sourceLine": 110,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11706,7 +11716,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 123,
+     "sourceLine": 119,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11715,7 +11725,7 @@
     },
     {
      "function": "MonitorBalverine",
-     "sourceLine": 126,
+     "sourceLine": 122,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11724,7 +11734,7 @@
     },
     {
      "function": "SpawnBalverines",
-     "sourceLine": 147,
+     "sourceLine": 143,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11737,7 +11747,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 6,
+       "splitLocals": 8,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -11746,7 +11756,7 @@
        "exitChecksInlined": 2,
        "frameChecks": 2,
        "inlinedTemporaries": 13,
-       "deadDefinitions": 2,
+       "deadDefinitions": 1,
        "guardWrappers": 0,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
@@ -11771,7 +11781,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 9,
+       "sunkLocals": 13,
        "cleanupClosureNames": 0,
        "parentheses": 7,
        "cosmetics": 0,
@@ -11780,8 +11790,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 132,
-       "temporaries": 26,
+       "lines": 127,
+       "temporaries": 27,
        "labels": 5,
        "gotos": 11,
        "terminationChecks": 8,
@@ -11789,7 +11799,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 107,
+       "lines": 103,
        "temporaries": 6,
        "labels": 4,
        "gotos": 10,

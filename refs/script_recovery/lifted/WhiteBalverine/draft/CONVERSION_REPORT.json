@@ -1734,14 +1734,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_48._0_4_ = (undefined1 *)0x0;",
-            "unlifted: xStack_48._0_4_ = malloc(0x24);",
-            "unlifted: *(undefined1 *)xStack_48._0_4_ = 0;",
-            "unlifted: *(undefined4 *)(xStack_48._0_4_ + 4) = 0;",
-            "unlifted: *(undefined4 *)(xStack_48._0_4_ + 8) = xStack_48._0_4_;",
-            "unlifted: *(undefined4 *)(xStack_48._0_4_ + 0xc) = xStack_48._0_4_;"
-          ],
+          "todo": [],
           "calls": [
             "AddEntityBinding",
             "AddEntityBinding",
@@ -1763,6 +1756,7 @@
             "CreateThread",
             "RESOURCE_NewResource",
             "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
             "ACTORMAP_Set",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -1798,7 +1792,7 @@
             "DeactivateQuestLater",
             "DisplayQuestInfo"
           ],
-          "lines": 140,
+          "lines": 135,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2511,7 +2505,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 21
+        "todo": 15
       }
     }
   ],
@@ -2522,6 +2516,6 @@
     "functionSyntaxPassed": 45,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 28
+    "todo": 22
   }
 }

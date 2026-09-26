@@ -42,12 +42,7 @@ function Main(quest)
     end
     xStack_20 = resources:NewResource()
     resources:TryAcquire(xStack_20, pCVar9, 4)
-    -- TODO(native): xStack_48._0_4_ = (undefined1 *)0x0;
-    -- TODO(native): xStack_48._0_4_ = malloc(0x24);
-    -- TODO(native): *(undefined1 *)xStack_48._0_4_ = 0;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 4) = 0;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 8) = xStack_48._0_4_;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 0xc) = xStack_48._0_4_;
+    pCVar9 = resources:NewActorMap()
     resources:SetActor(pCVar9, "BALV", xStack_20)
     xStack_10 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
@@ -98,7 +93,7 @@ function Main(quest)
                 resources:PrepareResource(xStack_30)
                 quest:OverrideMusic(0x17, false, false)
                 pCVar11 = quest:GetHero()
-                quest:GiveThingBestEnemyTarget(pCVar9, pCVar11)
+                quest:GiveThingBestEnemyTarget(pCVar11, r1)
                 CVar1 = quest:GetStateBool("MissionFailed")
                 goto LAB_00e18d99
             end

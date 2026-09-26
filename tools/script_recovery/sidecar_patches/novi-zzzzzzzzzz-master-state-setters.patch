@@ -1,0 +1,15 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 63a8dd3..bd18648 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -13383,6 +13383,10 @@ void LuaQuestState::SetMasterGameState(const std::string& flagName, sol::object
+         if (flagName == "LostToThunder") { pMaster->LostToThunder = bVal; return; }
+         if (flagName == "KilledThunder") { pMaster->KilledThunder = bVal; return; }
+         if (flagName == "CollectedSoulFromArena") { pMaster->CollectedSoulFromArena = bVal; return; }
++        // the getter already reads these two; without a setter the Demon Door's SetMasterGameState("SingingStonesInSync", false)
++        // was dropped, so V_SingingStones never saw the door open (V_TrophyDealer DemonDoorFace, 2026-09-26)
++        if (flagName == "SingingStonesInSync") { pMaster->SingingStonesInSync = bVal; return; }
++        if (flagName == "TCGTimeLimitBoastTaken") { pMaster->TCGTimeLimitBoastTaken = bVal; return; }
+         if (flagName == "KilledBriar") { pMaster->KilledBriar = bVal; return; }
+         if (flagName == "CollectedSoulFromMother") { pMaster->CollectedSoulFromMother = bVal; return; }
+         if (flagName == "KilledGM") { pMaster->KilledGM = bVal; return; }

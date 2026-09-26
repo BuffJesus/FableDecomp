@@ -20,6 +20,7 @@ function Main(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_WhiteBalverineKnotholeGlade", "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_07", "Witchwood4", "KnotholeGlade")
+    local mkWbwFirstspawnb = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWNB")
     quest:SetStateThing("WhiteBalverine", quest:GetThingWithScriptName("WBWW_WhiteBalverine"))
     local getStateThing = quest:GetStateThing("WhiteBalverine")
     quest:SetThingPersistent(getStateThing, true)
@@ -33,33 +34,28 @@ function Main(quest)
     end
     local resource = resources:NewResource()
     resources:TryAcquire(resource, getStateThing, 4)
-    -- TODO(native): xStack_48._0_4_ = (undefined1 *)0x0;
-    -- TODO(native): xStack_48._0_4_ = malloc(0x24);
-    -- TODO(native): *(undefined1 *)xStack_48._0_4_ = 0;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 4) = 0;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 8) = xStack_48._0_4_;
-    -- TODO(native): *(undefined4 *)(xStack_48._0_4_ + 0xc) = xStack_48._0_4_;
-    resources:SetActor(getStateThing, "BALV", resource)
+    local actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "BALV", resource)
     local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
-    resources:RunMacro("CS_WBW_DRINK", getStateThing, false, true)
+    resources:RunMacro("CS_WBW_DRINK", actorMap, false, true)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie)
-    resources:DestroyActorMap(getStateThing)
+    resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
     local resource2 = resources:NewResource()
-    resources:TryAcquire(resource2, getStateThing, 4)
+    resources:TryAcquire(resource2, actorMap, 4)
     repeat
         scratchValue = scratchValue2
-        if quest:IsDistanceBetweenThingsUnder(hero, getStateThing, 8.0) then
+        if quest:IsDistanceBetweenThingsUnder(hero, actorMap, 8.0) then
             goto LAB_00e18ce8
         else
             scratchValue = scratchValue2 | 32
-            if getStateThing:MsgIsHitByHero() then goto LAB_00e18ce8 end
+            if actorMap:MsgIsHitByHero() then goto LAB_00e18ce8 end
             scratchValue = scratchValue2 | 96
-            if getStateThing:MsgIsHitByAnySpecialAbilityFromHero() then
+            if actorMap:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue = scratchValue2 | 224
-                if not getStateThing:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e18ce8 end
+                if not actorMap:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e18ce8 end
             end
             predicateResult = true
         end
@@ -82,7 +78,7 @@ function Main(quest)
             if not quest:IsActiveThreadTerminating() then
                 resources:PrepareResource(resource2)
                 quest:OverrideMusic(23, false, false)
-                quest:GiveThingBestEnemyTarget(getStateThing, hero)
+                quest:GiveThingBestEnemyTarget(hero, mkWbwFirstspawnb)
                 missionFailed = quest:GetStateBool("MissionFailed")
                 goto LAB_00e18d99
             end

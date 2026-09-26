@@ -1143,10 +1143,14 @@ def fold_outgoing_stack_slots(text: str) -> str:
 # std::map<CCharString, CCountedPointer<...>> built inline (header node malloc + 4 links), filled with
 # operator[] + counted-pointer assignment, run through RunCutsceneMacro_Func, destroyed with
 # StdMap_Destroy_API. Lowered to the retail-resource API used by the readable New Oakvale package.
+# (the head pointer may live in the stack slot's first member, spelled `xStack_48._0_4_` with `(undefined1 *)` /
+# `(undefined4 *)` member casts: Q_WhiteBalverineWW Main 0x00E18630's CS_WBW_DRINK actor map, whose SetActor /
+# RunMacro / DestroyActorMap then took the balverine thing as the map, 2026-09-26)
 RE_MAP_NEW = re.compile(
-    r'^(?P<ind>[ \t]*)(?:(?P<m0>\w+) = \(undefined1 \*\)0x0;\s*)?(?P<map>\w+) = (?:\(\w+ \*\))?malloc\(0x24\);\s*'
-    r'(?:\w+ = 0;\s*)?\*(?P=map) = 0;\s*\*\(undefined4 \*\)\((?P=map) \+ 4\) = 0;\s*'
-    r'\*\(undefined1 \*\*\)\((?P=map) \+ 8\) = (?P=map);\s*\*\(undefined1 \*\*\)\((?P=map) \+ 0xc\) = (?P=map);[ \t]*\r?\n', re.M)
+    r'^(?P<ind>[ \t]*)(?:(?P<m0>\w+(?:\._0_4_)?) = \(undefined1 \*\)0x0;\s*)?(?P<map>\w+?)(?P<mem>\._0_4_)? = (?:\(\w+ \*\))?malloc\(0x24\);\s*'
+    r'(?:[\w.]+ = 0;\s*)?\*(?:\(undefined1 \*\))?(?P=map)(?P=mem)? = 0;\s*\*\(undefined4 \*\)\((?P=map)(?P=mem)? \+ 4\) = 0;\s*'
+    r'\*\((?:undefined1 \*\*|undefined4 \*)\)\((?P=map)(?P=mem)? \+ 8\) = (?P=map)(?P=mem)?;\s*'
+    r'\*\((?:undefined1 \*\*|undefined4 \*)\)\((?P=map)(?P=mem)? \+ 0xc\) = (?P=map)(?P=mem)?;[ \t]*\r?\n', re.M)
 RE_MAP_SET = re.compile(
     r'^(?P<ind>[ \t]*)CCharString::CCharString\(\(CCharString \*\)&?(?P<key>\w+),(?P<keyval>"[^"]*"|&DAT_[0-9a-f]+|\w+),-1\);\s*'
     r'(?P<node>\w+) = std::\s*map<CCharString,CCountedPointer<[^;]*?::operator\[\]\((?:\(map<[^;]*?\*\))?&?(?P<map>\w+),(?:\(CCharString \*\))?&?(?P=key)\);\s*'
