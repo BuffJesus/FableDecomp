@@ -213,6 +213,7 @@ def play(a, q) -> str:
     c = Channel(a.bundle)
     grid = Grid(q['maps'], hazards=HAZARDS | set(q.get('hazards', [])))
     world = {name: region for name, (_, _, _, _, region) in grid.maps.items()}
+    steps, step_i = q.get('steps', []), 0      # (read by wait_for's pause ladder before the step loop starts)
 
     def send(line, timeout=10):
         return c.send([line], timeout=timeout)
@@ -259,12 +260,17 @@ def play(a, q) -> str:
         return 'failed'
 
     def wait_for(expr, want, seconds):
-        end = time.time() + seconds
+        end, unanswered = time.time() + seconds, 0
         while time.time() < end:
             val, _ = ev(expr, 6)
             if val == want:
                 return True
-            game_input('clear')             # a region's arrival boxes pause script frames
+            # no reply = frames paused. A step's own pause ladder handles box-less full-screen menus too: bc13's
+            # Quest Completed screen came up on arrival from the boss area, `clear` found no box, and the region
+            # wait timed out with the quest already complete (so nothing was harvested)
+            ladder = (steps[min(step_i, len(steps) - 1)].get('pauseSteps') if val is None and steps else None) or ['clear']
+            game_input(ladder[unanswered % len(ladder)])   # a region's arrival boxes pause script frames
+            unanswered += val is None
             time.sleep(2)
         return False
 
@@ -434,7 +440,9 @@ def play(a, q) -> str:
             # a quest can replace the ladder: when no question is up the mouse answer is an attack in the world
             # (bc3: a scripted conversation paused the host's frames, the RMB "no" swung at the disguised hero's gate
             # guard and his AI fought back)
-            current = steps[step_i] if step_i < len(steps) else {}
+            # past the last step the last step's ladder still applies: its completion screen (bc14's Quest Completed)
+            # comes up while the runner waits for `done`
+            current = steps[min(step_i, len(steps) - 1)] if steps else {}
             ladder = current.get('pauseSteps') or q.get('pauseSteps') or [answer, 'clear', answer, 'key ENTER']
             step = ladder[(paused - 1) % len(ladder)]
             if paused % 4 == 1:

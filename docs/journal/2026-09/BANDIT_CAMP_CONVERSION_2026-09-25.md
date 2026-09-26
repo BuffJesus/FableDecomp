@@ -474,24 +474,58 @@ the Twinblade fight and its spare/kill choice), then MissionSucceeded.
   resolves `CancelUsingAbility_API = pVTable[398]` (0x638, GameInterface.cpp)
   but never binds it to Lua.
 
+## 2026-09-26: Bandit Camp completes (bc12 / bc13 / bc14)
+
+- **CancelUsingAbility bound** (`sidecar_patches/novi-zzzzzzzzz-cancel-using-ability.patch`,
+  GSI 0x638 = `pVTable[398]`, range-checked against `MAX_NUMBER_OF_HERO_ABILITIES`). The
+  converter reads the patch as binding evidence, so the two `TODO(native)` lines are gone
+  from the regenerated unit.
+- **bc12 (v21): quest completed.** It ran hands-free from `adult_maze2_completed_2026-09-25`
+  through the boss: BanditKingMissionProcess survives arrival, the runner's `fightDrain`
+  assistance brings the King to his 25% threshold (so the boss fight is not a real fight),
+  and then the Theresa cutscene and the full `3_theresa_flashback_comp` video play, followed by
+  `MissionSucceeded` and `SetQuestAsCompleted('Q_BanditCamp')` (Bandit Seal, 4,500 + 6,550 gold,
+  1,000 + 1,238 renown). The Quest Completed screen had no box for `clear`; one ENTER was sent
+  by hand through the runner's input channel, then the runner finished and harvested
+  `adult_bandit_camp_completed_2026-09-25`.
+- **v21 had lost `MsgGetThingsKilledGroups`.** bc12 logged 2 runtime errors
+  (CheckForFirstAreaMassacre / CheckForSecondAreaMassacre: nil method). The v17-v19 DLLs came
+  from the previous session's scratch copy, and `sidecar-abi-v13` never had the
+  things-killed patch. **The live sidecar = sidecar-abi-v13 + every patch after
+  novi-zzzzzzz (things-killed, cancel-using-ability), applied in a scratch copy**; the base
+  itself stays as v16's source (GOTCHAS).
+- **Hostage guard: a converter bug, not a missing lure.** CampHostageGuard.Main (0x00D09010)
+  reuses the "CampHostage" string temporary's stack slot as the patrol-leg byte
+  (1 = GuardFirstMarker, 2 = GuardSecondMarker, flipped every 10 s). The lifter dropped both
+  stores and folded the test to `1 == 1`, so he never left the door. `split_scalar_slot_tail`
+  (native_evidence_lowering.py, `test_scalar_slot_tail.py`) recovers it; all-unit A/B:
+  only CampHostageGuard.lua changes (3b9602b). The readable pass got slightly worse in that
+  function (two temps merged into `getStateBool`, four GetHealth results no longer inlined):
+  cosmetic, open.
+- **bc13 (v22 = both bindings + the patrol fix; runner teleport removed): the guard walks
+  off by himself** (hostage_key passes in 69 s on distance > 6 from the door), the hostages
+  are freed through retail's rescue branch, and the log has 0 Lua errors. Two runner faults:
+  the quest-wide `key ENTER` I had added skipped the flashback video (84 s vs 182 s), and the
+  Quest Completed screen paused frames right on arrival, so `travel()`'s region wait got no
+  replies and failed the step with the quest already complete (nothing harvested). Fixes:
+  ENTER now lives only in `back_to_residential`'s `pauseSteps`, and `wait_for` runs the
+  current step's pause ladder while its checks go unanswered.
+- **bc14:** **done, 0 Lua errors.** Every step on retail mechanics except the key gift and the drained boss: the guard walks off by himself again (hostage_key 55 s), the Theresa scene plays the full video (179 s), and `back_to_residential` crosses cleanly. The Quest Completed screen still needed one hand ENTER, because past the last step the main loop fell back to the quest-wide `["clear"]` ladder; both ladder sites now keep the last step's `pauseSteps`. Harvested `adult_bandit_camp_completed_2026-09-26` (use this checkpoint). 
+- **bc15 (the same config, fixed runner): zero manual input.** done, 0 Lua errors; the runner pressed ENTER once on the Quest Completed screen and nowhere else (Theresa scene 166 s, video intact).
+
 ## Resume here (next session)
 
-1. Add `quest["CancelUsingAbility"] = [](LuaQuestState& self, int ability) { ... CancelUsingAbility_API(gsi, (EHeroAbility)ability) }`
-   to `tools/script_recovery/sidecar_patches/novi-zzzzzzzz-things-killed-groups.patch`
-   (or a new patch). Apply it in the scratch copy of sidecar-abi-v13, then
-   MSBuild Release|x86. The copy was in the session scratchpad (sidecar_v17),
-   so recreate it from sidecar-abi-v13 if it is gone.
-2. `python tools/script_recovery/stage_bundle_with_units.py --base v16 --out v21 --dll <build>/Release/FableScriptExtender.dll --unit bandit_camp --note "..."`,
-   then run `local_test.py` preflight.
-3. `python -X utf8 -u tools/script_recovery/ingame_runner.py tools/script_recovery/runner_quests/bandit_camp.json --bundle v21 --tag bc12 --minutes 40 --launch --save adult_maze2_completed_2026-09-25 --harvest adult_bandit_camp_completed_2026-09-25`.
-   Read the frames myself (a capture every ~20 s after arrival). The remaining
-   steps: enter_boss -> boss_fight (fight BanditKing until
-   BanditKingFightEnded; his script ends the fight at 25% health and makes
-   him unkillable) -> theresa_scene (ItsAllOver) -> back_to_residential
-   (MissionSucceeded) -> done (Q_BanditCamp completed).
-4. Open follow-ups:
-   - a retail-faithful lure for the hostage guard (his patrol
-     GuardFirstMarker/GuardSecondMarker on a 10 s timer did not start);
+1. Rebuild the sidecar if needed: copy `work/new-oakvale-original-fse-20260912/sidecar-abi-v13`
+   to the scratchpad, `git apply` `novi-zzzzzzzz-things-killed-groups.patch` then
+   `novi-zzzzzzzzz-cancel-using-ability.patch` there, MSBuild Release|x86 (`-p:` switches).
+   Bundle v22 already has this DLL (local-candidate-v22).
+2. Next quest after Bandit Camp in the adult chain: start it from the harvested
+   `adult_bandit_camp_completed_*` checkpoint with a new runner_quests config.
+3. Open follow-ups:
+   - the hostage key is still given by the runner (`do`); find the retail source (pickpocket
+     / the Forger) and drive it;
+   - the boss fight is drained, not fought: an unassisted King fight is untested;
+   - CampHostageGuard readable-pass regressions (see above);
    - the sidecar's per-frame GetThingWithScriptName reference climb;
    - `ClearHeroEnemyOfGuards` crashes the game (do not call it);
    - ForgeFSE canonical fork (D:\Code\ForgeFSE-retail-shadow) lacks the whole
