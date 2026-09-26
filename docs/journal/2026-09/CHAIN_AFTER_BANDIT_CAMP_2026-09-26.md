@@ -62,6 +62,12 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
   duplicated character, so DestroyMovie freed the previous movie). The Knothole half never autosaves at its
   end (Gameflow's stage-870 save is written when the card is taken), so both halves now run as one config
   (`runner_quests/white_balverine.json`).
+- **White Balverine COMPLETE on the converted scripts (wb5, v28, 0 Lua errors)**: both halves in one run -- the
+  Knothole Glade half as above, then WitchWood_7 (CS_WBW_DRINK, WBWW_WhiteBalverine killed, MonitorBalverine's
+  trophy head + objective 08), KG_Chief's CS_WBK_CHIEF4, MissionSucceeded -> WhiteBalverineFinished ->
+  SetQuestAsCompleted('Q_WhiteBalverineKnotholeGlade'), Gameflow stage 875. Checkpoint
+  `adult_white_balverine_completed_2026-09-26`. wb4 had died at WW Main's first line on a temp-destruction flag
+  word seeded from a disguised `!b && b` (fixed 70be5e1).
 - Runner: the ENTER in a pause ladder is safe only while frames are paused (no Lua reply): with nothing up it
   opens the pause menu. `wait_for`'s ladder falls back to the quest-wide `pauseSteps`.
 - Save hygiene: a diagnostic wrapped in `timeout` was killed before its `finally`, leaving the staged save in
@@ -70,10 +76,11 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
 
 ## Resume here
 
-1. White Balverine: finish the Witchwood half (kill WBWW_WhiteBalverine in WitchWood_7, KG_Chief's CS_WBK_CHIEF4)
-   with `runner_quests/white_balverine.json` from `adult_trophy_dealer_completed_2026-09-26`.
+1. Next: Gameflow stage 875 waits for Q_Arena to be taken (its card is added at 870: "The Arena"), from
+   `adult_white_balverine_completed_2026-09-26`. Convert its unit (Q_Arena allocator 0x00CFABF0 per the native
+   catalog), then a runner config (card title from `game_text`).
 2. White Balverine: review the 22 TODOs (two unresolved PlayAnimation /
    IsPerformingScriptTask receivers in WW SpawnBalverines: the quest-context resource receiver is refused by
-   design until its resource is proven; the actor-map build is fixed), then a runner config (Knothole Glade).
+   design until its resource is proven; the actor-map build is fixed). The quest plays through regardless.
 3. Singing Stones by hand-free strikes (optional): fix the `hit` stand-off.
-4. Sidecar for v25 = sidecar-abi-v13 + things-killed + cancel-using-ability + master-state-setters patches.
+4. Sidecar for v25-v28 = sidecar-abi-v13 + things-killed + cancel-using-ability + master-state-setters patches.

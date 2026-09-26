@@ -3,10 +3,11 @@
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
-**After Bandit Camp (2026-09-26, converted scripts, v25 + runner)**: QS_GuardianTrophyDealerInfo (Maze in the
-Guild) and V_TrophyDealer (Witchwood, Demon Door, the dealer's cave) are COMPLETE in-game, 0 Lua errors; the
-Singing Stones puzzle is assisted (retail-native). White Balverine is converted, not yet played. Next quest,
-units, converter fixes and resume steps: [chain after Bandit Camp](journal/2026-09/CHAIN_AFTER_BANDIT_CAMP_2026-09-26.md).
+**After Bandit Camp (2026-09-26, converted scripts, v28 + runner)**: QS_GuardianTrophyDealerInfo (Maze in the
+Guild), V_TrophyDealer (Witchwood, Demon Door, the dealer's cave) and White Balverine (Knothole Glade + Witchwood,
+both halves in one run) are COMPLETE in-game, 0 Lua errors; the Singing Stones puzzle is assisted (retail-native).
+Checkpoint `adult_white_balverine_completed_2026-09-26` (Gameflow 875, next: Q_Arena). Units, converter fixes and
+resume steps: [chain after Bandit Camp](journal/2026-09/CHAIN_AFTER_BANDIT_CAMP_2026-09-26.md).
 
 **Bandit Camp is COMPLETE in-game (2026-09-26, converted scripts, v22 + in-game runner)**: from
 `adult_maze2_completed_2026-09-25` through both gates, the Forger, the hostage guard walking off on
