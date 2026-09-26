@@ -3,6 +3,11 @@
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
+**Bandit Camp (2026-09-25, converted scripts, v19 + in-game runner)**: hands-free through gate 1 (disguise),
+guard 2, the Forger's pass, gate 2 and the freed hostages (0 Lua errors). Blocked at the boss: the sidecar never
+binds `CancelUsingAbility` (GSI 0x638, already resolved as `CancelUsingAbility_API`), so BanditKingMissionProcess
+dies on arrival. Resume steps: [Bandit Camp journal, "Resume here"](journal/2026-09/BANDIT_CAMP_CONVERSION_2026-09-25.md).
+
 **Trader Escort is COMPLETE in-game (2026-09-25)**: v15 + the in-game runner played it hands-free from
 `adult_trader_escort_accepted_v15_2026-09-24` to `SetQuestAsCompleted` (all three traders, troll, end trader),
 0 Lua errors, no quest state set by hand. Three converter fixes landed on the way (exporter tag loss, comparison

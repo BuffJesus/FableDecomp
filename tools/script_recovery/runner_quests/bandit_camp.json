@@ -87,7 +87,7 @@
     },
     {
       "name": "hostage_key",
-      "until": "quest:IsObjectInThingsPossession('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', quest:GetHero()) or quest:GetStateBool('HostagesRescued')",
+      "until": "quest:IsObjectInThingsPossession('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', quest:GetHero()) and quest:GetDistanceBetweenThings(quest:GetThingWithScriptName('CampHostageGuard'), quest:GetThingWithScriptName('CampHostageDoor')) > 6",
       "stateHost": "BanditCampBossBattle",
       "timeout": 60,
       "travel": [
@@ -100,7 +100,8 @@
         ]
       ],
       "do": [
-        "quest:GiveHeroObject('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', 1)"
+        "quest:GiveHeroObject('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', 1)",
+        "local g = quest:GetThingWithScriptName('CampHostageGuard'); if g then quest:EntityTeleportToPosition(g, {x = 1760.0, y = 2110.0, z = 38.0}, 0, true, true) end"
       ]
     },
     {

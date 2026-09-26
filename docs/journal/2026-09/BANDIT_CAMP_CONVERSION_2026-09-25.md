@@ -449,3 +449,53 @@ the Twinblade fight and its spare/kill choice), then MissionSucceeded.
   a runner VM every frame around the TAB, to see whether the engine reports
   the use at all under our bundle, and whether our door script's loop is
   actually ticking.
+- **Correction (user, watching the game):** the hostage guard is visible;
+  "never in frame" was my captures' framing, not the game. The sword
+  misses are the known friendly-fire limit: the disguised hero is
+  friendly to the camp, and swings on a friendly NPC register nothing
+  (the Guild runs found the same). The retail oracle agrees because it
+  is the same engine behaviour.
+- **The door's "guard too close" is correct.** The guard patrols between
+  GuardFirstMarker and GuardSecondMarker on a 10 s timer, and the intended
+  play is to wait until he has walked off (or distract him), then open
+  the cage. bc11 emulates that by teleporting him away after giving the
+  key; a retail-faithful lure is still open.
+
+## bc11 (v19): hostages freed; the boss thread dies on a missing binding
+
+- Steps 1-4 as before. hostage_key gives the key and moves the guard away
+  from the cage (emulating the retail lure). free_hostages: the converted
+  door takes the rescue branch and Gate3Open is set in 48 s.
+- enter_boss fails. The log shows
+  `LUA RUNTIME ERROR in thread 'BanditKingMissionProcess': BanditCampBossBattle.lua:95:
+  attempt to call a nil value (method 'CancelUsingAbility')`.
+  Retail calls GSI slot 0x638 twice (`CancelUsingAbility(0xf)`,
+  `CancelUsingAbility(10)`) on entering the boss level. The sidecar already
+  resolves `CancelUsingAbility_API = pVTable[398]` (0x638, GameInterface.cpp)
+  but never binds it to Lua.
+
+## Resume here (next session)
+
+1. Add `quest["CancelUsingAbility"] = [](LuaQuestState& self, int ability) { ... CancelUsingAbility_API(gsi, (EHeroAbility)ability) }`
+   to `tools/script_recovery/sidecar_patches/novi-zzzzzzzz-things-killed-groups.patch`
+   (or a new patch). Apply it in the scratch copy of sidecar-abi-v13, then
+   MSBuild Release|x86. The copy was in the session scratchpad (sidecar_v17),
+   so recreate it from sidecar-abi-v13 if it is gone.
+2. `python tools/script_recovery/stage_bundle_with_units.py --base v16 --out v21 --dll <build>/Release/FableScriptExtender.dll --unit bandit_camp --note "..."`,
+   then run `local_test.py` preflight.
+3. `python -X utf8 -u tools/script_recovery/ingame_runner.py tools/script_recovery/runner_quests/bandit_camp.json --bundle v21 --tag bc12 --minutes 40 --launch --save adult_maze2_completed_2026-09-25 --harvest adult_bandit_camp_completed_2026-09-25`.
+   Read the frames myself (a capture every ~20 s after arrival). The remaining
+   steps: enter_boss -> boss_fight (fight BanditKing until
+   BanditKingFightEnded; his script ends the fight at 25% health and makes
+   him unkillable) -> theresa_scene (ItsAllOver) -> back_to_residential
+   (MissionSucceeded) -> done (Q_BanditCamp completed).
+4. Open follow-ups:
+   - a retail-faithful lure for the hostage guard (his patrol
+     GuardFirstMarker/GuardSecondMarker on a 10 s timer did not start);
+   - the sidecar's per-frame GetThingWithScriptName reference climb;
+   - `ClearHeroEnemyOfGuards` crashes the game (do not call it);
+   - ForgeFSE canonical fork (D:\Code\ForgeFSE-retail-shadow) lacks the whole
+     NoviUnitBindings layer and the new bindings; port on a fresh branch
+     (its uncommitted changes are another session's);
+   - Codex's two untracked runner files (runner_checkpoints/second_maze_completed.json,
+     runner_quests/guardian_sister_info_2.json) are still uncommitted.

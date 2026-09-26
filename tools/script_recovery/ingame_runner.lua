@@ -236,6 +236,13 @@ function RunnerMain(quest)
             R.status = 'ERROR ' .. tostring(err)
             say('error ' .. tostring(err))
         end
+        -- a diagnostic probe set over the channel (`Runner.probe = function(quest) ... end`): polled every frame,
+        -- a non-nil result is logged (the Bandit Camp cage door: does the engine report the hero's use at all?)
+        if R.probe then
+            local pok, v = pcall(R.probe, quest)
+            if not pok then say('probe error ' .. tostring(v)); R.probe = nil
+            elseif v ~= nil then say('probe ' .. tostring(v)) end
+        end
     end
     say('runner stopped')
 end
