@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, cVar5, fVar3, fret_0, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, xStack_10, xStack_20, xStack_30
+    local bVar4, cVar5, fVar3, fret_0, iVar10, iVar8, p1, p4, p5, pCVar6, pThing, pppuVar9, r1, xStack_10, xStack_20, xStack_30, xStack_3c
     local alive = true
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
@@ -72,17 +72,17 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_30)
                 return
             end
-            pCVar6 = resources:NewActorMap()
-            resources:SetActor(pCVar6, "GM", xStack_30)
-            resources:SetActor(pCVar6, "HERO", xStack_20)
+            xStack_3c = resources:NewActorMap()
+            resources:SetActor(xStack_3c, "GM", xStack_30)
+            resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", pCVar6, false, true)
+            resources:RunMacro("CS_GUILD_DEPARTURE_GM_DONE", xStack_3c, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
-            resources:DestroyActorMap(pCVar6)
+            resources:DestroyActorMap(xStack_3c)
             resources:ReleaseResource(xStack_20)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_09", "GuildWoods", "")
             quest:ActivateQuest("Q_GuildTrainingWoodsDeparture")
@@ -103,11 +103,11 @@ function Main(quest, me)
                     if bVar4 then goto LAB_00d5134c end
                     xStack_20 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    pCVar6 = resources:ScriptThing(xStack_30)
-                    pCVar6 = pCVar6
+                    xStack_3c = resources:ScriptThing(xStack_30)
+                    pCVar6 = xStack_3c
                     fret_0 = quest:GetHealth(pCVar6)
                     fVar3 = 0.0
-                    pCVar6 = nil
+                    xStack_3c = nil
                     if fVar3 < fret_0 then
                         p5 = 0
                         p4 = 1

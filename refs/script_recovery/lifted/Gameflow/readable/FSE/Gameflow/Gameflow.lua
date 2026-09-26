@@ -14,7 +14,7 @@ function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, isActiveThreadTerminating, predicateResult4, predicateResult5
-    local getMasterGameState, switch, actorMap, scratchValue
+    local getMasterGameState, switch, newActorMap
     quest:CreateThread("CoreQuestReminder")  -- native thread body NScript::CQ_HeroSoulsNostroScript::CNostro::Main: lift it as function CoreQuestReminder(quest)
     quest:CreateThread("CheckBarrowFieldsGuards")  -- native thread body NScript::CGameflowScript::CheckBarrowFieldsGuards: lift it as function CheckBarrowFieldsGuards(quest)
     isActiveThreadTerminating = false
@@ -40,39 +40,39 @@ function Main(quest)
                 if not quest:NewScriptFrame() then return end
             end
             if quest:IsActiveThreadTerminating() then return end
-            scratchValue = {}
-            table.insert(scratchValue, "Hook_Fresco_07_OakValeRaid")
-            table.insert(scratchValue, "Hook_Fresco_09_TimePassing")
-            table.insert(scratchValue, "Hook_Fresco_10_UneasyAlliance")
-            table.insert(scratchValue, "Q_GuildTraining")
-            quest:ActivateMultipleQuestsWithoutLoadingResources(scratchValue)
+            newActorMap = {}
+            table.insert(newActorMap, "Hook_Fresco_07_OakValeRaid")
+            table.insert(newActorMap, "Hook_Fresco_09_TimePassing")
+            table.insert(newActorMap, "Hook_Fresco_10_UneasyAlliance")
+            table.insert(newActorMap, "Q_GuildTraining")
+            quest:ActivateMultipleQuestsWithoutLoadingResources(newActorMap)
             quest:AddLogbookStoryEntry(30)
             quest:AddNewRumourToCategory("GUILD_TRAINING", "TEXT_AI_GOSSIP_GUILD_TRAINING_GUILD")
             quest:SetCategoryActivity("GUILD_TRAINING", true)
             quest:AddGossipVillage("GUILD_TRAINING", "VILLAGE_GUILD_COMPLEX_INSIDE")
-            scratchValue = {}
-            table.insert(scratchValue, "CreatureGenerators")
-            table.insert(scratchValue, "Q_ArenaHoldingScript")
-            table.insert(scratchValue, "V_AssassinAttacks")
-            table.insert(scratchValue, "V_BanditToll")
-            table.insert(scratchValue, "V_TravellingHeroes")
-            table.insert(scratchValue, "V_BeardyBaldy")
-            table.insert(scratchValue, "V_BodyGuard")
-            table.insert(scratchValue, "Q_BowerstoneTownLifeIntro")
-            table.insert(scratchValue, "V_ChapelOfEvil")
-            table.insert(scratchValue, "V_DemonDoors")
-            table.insert(scratchValue, "V_Fisherman")
-            table.insert(scratchValue, "V_FisticuffsClub")
-            table.insert(scratchValue, "V_HauntedHouse")
-            table.insert(scratchValue, "Q_HerosOldHouse")
-            table.insert(scratchValue, "V_HiddenBooty")
-            table.insert(scratchValue, "V_RandomPopulationSim")
-            table.insert(scratchValue, "Q_RansomVictimChiefsHouse")
-            table.insert(scratchValue, "V_RockTrollFirstEncounter")
-            table.insert(scratchValue, "V_StatueMaster")
-            table.insert(scratchValue, "V_SwordInTheStone")
-            table.insert(scratchValue, "V_TempleOfLight")
-            quest:ActivateMultipleQuestsWithoutLoadingResources(scratchValue)
+            newActorMap = {}
+            table.insert(newActorMap, "CreatureGenerators")
+            table.insert(newActorMap, "Q_ArenaHoldingScript")
+            table.insert(newActorMap, "V_AssassinAttacks")
+            table.insert(newActorMap, "V_BanditToll")
+            table.insert(newActorMap, "V_TravellingHeroes")
+            table.insert(newActorMap, "V_BeardyBaldy")
+            table.insert(newActorMap, "V_BodyGuard")
+            table.insert(newActorMap, "Q_BowerstoneTownLifeIntro")
+            table.insert(newActorMap, "V_ChapelOfEvil")
+            table.insert(newActorMap, "V_DemonDoors")
+            table.insert(newActorMap, "V_Fisherman")
+            table.insert(newActorMap, "V_FisticuffsClub")
+            table.insert(newActorMap, "V_HauntedHouse")
+            table.insert(newActorMap, "Q_HerosOldHouse")
+            table.insert(newActorMap, "V_HiddenBooty")
+            table.insert(newActorMap, "V_RandomPopulationSim")
+            table.insert(newActorMap, "Q_RansomVictimChiefsHouse")
+            table.insert(newActorMap, "V_RockTrollFirstEncounter")
+            table.insert(newActorMap, "V_StatueMaster")
+            table.insert(newActorMap, "V_SwordInTheStone")
+            table.insert(newActorMap, "V_TempleOfLight")
+            quest:ActivateMultipleQuestsWithoutLoadingResources(newActorMap)
             switch = 100
         end
         if switch == 100 then
@@ -100,10 +100,10 @@ function Main(quest)
                 quest:EntityTeleportToThing(quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetThingWithScriptName("M_GuildmasterMarker"), false)
             end
             quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
-            actorMap = quest:GetThingWithScriptName("GuildDoors")
-            if actorMap ~= nil and actorMap:IsAlive() then
+            local guildDoors = quest:GetThingWithScriptName("GuildDoors")
+            if guildDoors ~= nil and guildDoors:IsAlive() then
                 if quest:IsActiveThreadTerminating() then return end
-                quest:SetThingAsUsable(actorMap, true)
+                quest:SetThingAsUsable(guildDoors, true)
             end
             quest:AddQuestCard("OBJECT_QUEST_CARD_WASP_MENACE", "Q_WaspBoss", false, false)
             quest:SetStateInt("CoreQuestWaiting", 1)
@@ -907,14 +907,14 @@ function Main(quest)
                 end
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-            actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "Hero", resource)
+            newActorMap = resources:NewActorMap()
+            resources:SetActor(newActorMap, "Hero", resource)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            resources:RunMacro("CS_FABLE_CREDITS", actorMap, false, true)
+            resources:RunMacro("CS_FABLE_CREDITS", newActorMap, false, true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
-            resources:DestroyActorMap(actorMap)
+            resources:DestroyActorMap(newActorMap)
             resources:ReleaseResource(resource)
             quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("NW3BronzeDoorHSP"), false)
             while not quest:IsRegionLoaded("NorthernWastes3") do

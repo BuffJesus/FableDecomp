@@ -6589,18 +6589,11 @@
         "rivalHeroWhisperOrchardFarm"
        ]
       },
-      "r2_1": {
+      "r2": {
        "name": "mkOfwbWhisper",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mkOfwbWhisper"
-       ]
-      },
-      "r2_2": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
        ]
       },
       "r3": {
@@ -6618,6 +6611,13 @@
        ]
       },
       "xStack_80": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
+      },
+      "xStack_8c": {
        "name": "actorMap2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -6652,7 +6652,7 @@
      "splitLocals": {
       "bVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_8c, xStack_9c, xStack_ac, xStack_bc\n",
        "versions": {
         "bVar3_1": [
          15
@@ -6722,7 +6722,7 @@
       },
       "pCVar5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_8c, xStack_9c, xStack_ac, xStack_bc\n",
        "versions": {
         "pCVar5_1": [
          40
@@ -6749,7 +6749,7 @@
       },
       "bVar10": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_8c, xStack_9c, xStack_ac, xStack_bc\n",
        "versions": {
         "bVar10_1": [
          162
@@ -6761,25 +6761,13 @@
       },
       "pCVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_8c, xStack_9c, xStack_ac, xStack_bc\n",
        "versions": {
         "pCVar7_1": [
          164
         ],
         "pCVar7_2": [
          188
-        ]
-       }
-      },
-      "r2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c1, ePriority, fVar8, f_stk_10, iVar11, iVar4, i_stk_14, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_80, xStack_9c, xStack_ac, xStack_bc\n",
-       "versions": {
-        "r2_1": [
-         47
-        ],
-        "r2_2": [
-         145
         ]
        }
       }
@@ -7127,18 +7115,11 @@
         "rivalHeroWhisperOrchardFarm"
        ]
       },
-      "r2_1": {
+      "r2": {
        "name": "mkOfwbWhisper",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "mkOfwbWhisper"
-       ]
-      },
-      "r2_2": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
        ]
       },
       "r3": {
@@ -7164,7 +7145,7 @@
        ]
       },
       "xStack_88": {
-       "name": "actorMap2",
+       "name": "actorMap",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "actorMap"
@@ -7176,6 +7157,13 @@
        "assignmentRoles": [
         "movie",
         "resource"
+       ]
+      },
+      "xStack_a4": {
+       "name": "actorMap2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
        ]
       },
       "xStack_c0": {
@@ -7190,7 +7178,7 @@
      "splitLocals": {
       "bVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "bVar3_1": [
          15
@@ -7275,7 +7263,7 @@
       },
       "pCVar5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "pCVar5_1": [
          39
@@ -7305,7 +7293,7 @@
       },
       "bVar10": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "bVar10_1": [
          204
@@ -7317,7 +7305,7 @@
       },
       "c_stk_c5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "c_stk_c5_1": [
          40
@@ -7329,7 +7317,7 @@
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "native_arg_sequence_1_1": [
          138
@@ -7344,25 +7332,13 @@
       },
       "pCVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
+       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_a4, xStack_c0\n",
        "versions": {
         "pCVar7_1": [
          206
         ],
         "pCVar7_2": [
          231
-        ]
-       }
-      },
-      "r2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local b3, bVar10, bVar3, cVar1, c_stk_c5, ePriority, fVar8, f_stk_14, iVar11, iVar4, i_stk_10, native_arg_sequence_1, pCVar5, pCVar7, pMessage, pPosition, pppuVar9, r1, r2, r3, r4, xStack_7c, xStack_88, xStack_98, xStack_c0\n",
-       "versions": {
-        "r2_1": [
-         63
-        ],
-        "r2_2": [
-         179
         ]
        }
       }

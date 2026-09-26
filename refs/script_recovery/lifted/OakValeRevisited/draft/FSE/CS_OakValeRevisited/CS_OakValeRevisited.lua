@@ -141,7 +141,7 @@ end
 
 function helper_EE8390(quest)
     local resources = quest:RetailResources()
-    local cVar5, iVar8, pppuVar12, pppuVar4, ppuVar14, ppuVar2, pvStack_74, this_01, uVar11
+    local cVar5, iVar8, pppuVar12, pppuVar4, ppuVar14, ppuVar2, this_01, uVar11
     local alive = true
     quest:CreateThread("OakValeFire")  -- native thread body NScript::CCS_OakValeRevisitedScript::OakValeFire: lift it as function OakValeFire(quest)
     local bVar9 = not bVar9
@@ -187,7 +187,7 @@ function helper_EE8390(quest)
     iVar8 = 0
     local iVar3 = (quest:GetStateListCount("FirePoint") * 0xc)
     -- TODO(native): this = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *)(this + 0x54);
-    local ppv_stk_74 = nil
+    local pvStack_74 = nil
     -- TODO(native): std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> ::resize(this,(iVar3 - iVar8) / 0xc);
     iVar8 = (quest:GetStateListCount("Fires") * 0xc) - *this >> 0x1f
     uVar11 = 0

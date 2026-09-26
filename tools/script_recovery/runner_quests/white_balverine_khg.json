@@ -1,0 +1,65 @@
+{
+  "quest": "Q_WhiteBalverineKnotholeGlade",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "Q_WhiteBalverineKnotholeGlade",
+    "guild": [70, 4787.62, 3680.52, 38.0],
+    "card": "OBJECT_QUEST_CARD_WHITE_BALVERINE_KNOTHOLE_GLADE",
+    "travel": [[26, 2256.0, 3248.0, 99.5, "KnotholeGlade"]]
+  },
+  "maps": "^KnotholeGlade",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "stateHost": "WhiteBalverineKnotholeGlade",
+  "stateStatus": "'state=' .. tostring(quest:GetStateInt('BalverineState')) .. ' gates=' .. tostring(quest:IsQuestActive('V_KnotholeGladeGates'))",
+  "steps": [
+    {
+      "name": "gate_balverines",
+      "note": "V_KnotholeGladeGates (retail native): KGG_* balverines, CREATURE_BALVERINE_01; BalverineState 1 -> 2 when that quest ends",
+      "fight": ["KGG_Balverine", "KGG_MurdererBalverine", "KGG_SurpriseBalverine"],
+      "until": "quest:GetStateInt('BalverineState') >= 2",
+      "timeout": 420,
+      "tries": 1
+    },
+    {
+      "name": "drive_off_1",
+      "fight": ["WB_WhiteBalverine"],
+      "until": "quest:GetStateInt('BalverineState') >= 3",
+      "timeout": 300,
+      "tries": 1
+    },
+    {
+      "name": "hunters_wife_ambush",
+      "note": "state 3: CS_WBK_CHIEF1, objective 03, then waits for the hero within 10 of WhiteBalverineAmbushMarker",
+      "do": ["local m = quest:GetThingWithScriptName('WhiteBalverineAmbushMarker'); if m then local p = m:GetPos(); p.x = p.x + 3.0; quest:EntityTeleportToPosition(quest:GetHero(), p, 0, true, true) end"],
+      "until": "quest:GetStateInt('BalverineState') >= 4",
+      "timeout": 240,
+      "tries": 2
+    },
+    {
+      "name": "drive_off_2",
+      "fight": ["WB_WhiteBalverine"],
+      "until": "quest:GetStateInt('BalverineState') >= 5",
+      "timeout": 300,
+      "tries": 1
+    },
+    {
+      "name": "drive_off_3",
+      "note": "state 5: CS_WBK_CHIEF2, objective 05 and a tutorial box (clear), then 6: guards spawn; hits drive it to 7",
+      "fight": ["WB_WhiteBalverine"],
+      "until": "quest:GetStateInt('BalverineState') >= 7",
+      "timeout": 420,
+      "tries": 1
+    },
+    {
+      "name": "chief_thanks",
+      "note": "state 7: CS_WBK_CHIEF3, MissionSucceeded -> WatchForTermination activates Q_WhiteBalverineWW",
+      "until": "quest:GetStateBool('MissionSucceeded')",
+      "timeout": 240,
+      "tries": 1
+    }
+  ],
+  "done": "quest:IsQuestActive('Q_WhiteBalverineWW')",
+  "failed": "(not quest:IsQuestActive('Q_WhiteBalverineKnotholeGlade')) and not quest:IsQuestCompleted('Q_WhiteBalverineKnotholeGlade')"
+}

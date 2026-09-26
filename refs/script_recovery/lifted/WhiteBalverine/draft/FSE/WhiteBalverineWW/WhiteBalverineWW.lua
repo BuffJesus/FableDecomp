@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30
+    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48
     local alive = true
     quest:AddEntityBinding("KG_Chief", "WhiteBalverineWW/Entities/KG_Chief", 1)
     bVar14 = not bVar16 and not bVar15
@@ -42,14 +42,14 @@ function Main(quest)
     end
     xStack_20 = resources:NewResource()
     resources:TryAcquire(xStack_20, pCVar9, 4)
-    pCVar9 = resources:NewActorMap()
-    resources:SetActor(pCVar9, "BALV", xStack_20)
+    xStack_48 = resources:NewActorMap()
+    resources:SetActor(xStack_48, "BALV", xStack_20)
     xStack_10 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
-    resources:RunMacro("CS_WBW_DRINK", pCVar9, false, true)
+    resources:RunMacro("CS_WBW_DRINK", xStack_48, false, true)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(xStack_10)
-    resources:DestroyActorMap(pCVar9)
+    resources:DestroyActorMap(xStack_48)
     resources:ReleaseResource(xStack_20)
     xStack_30 = resources:NewResource()
     resources:TryAcquire(xStack_30, pCVar9, 4)
@@ -93,7 +93,7 @@ function Main(quest)
                 resources:PrepareResource(xStack_30)
                 quest:OverrideMusic(0x17, false, false)
                 pCVar11 = quest:GetHero()
-                quest:GiveThingBestEnemyTarget(pCVar11, r1)
+                quest:GiveThingBestEnemyTarget(pCVar9, pCVar11)
                 CVar1 = quest:GetStateBool("MissionFailed")
                 goto LAB_00e18d99
             end

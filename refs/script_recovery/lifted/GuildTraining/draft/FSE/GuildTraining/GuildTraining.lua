@@ -131,7 +131,7 @@ end
 
 function RunTutorials(quest)
     local resources = quest:RetailResources()
-    local angle, b3, bVar14, bVar2, elem_1, fret_0, iStack_48, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_54, xStack_88
+    local angle, b3, bVar14, bVar2, elem_1, fret_0, iStack_48, iVar16, iVar9, pCVar12, pCVar3, pCVar4, pCVar6, pCVar7, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, thing, uVar15, uVar8, xStack_10, xStack_20, xStack_30, xStack_54, xStack_84_2, xStack_88
     local alive = true
     r1 = quest:GetThingWithScriptName("SecretBookcase")
     r2 = quest:GetNearestWithDefName(r1, "REGION_EXIT_POINT")
@@ -839,17 +839,17 @@ function RunTutorials(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            r13 = resources:NewActorMap()
-            resources:SetActor(r13, "HERO", xStack_20)
-            resources:SetActor(r13, "GM", xStack_30)
+            xStack_84_2 = resources:NewActorMap()
+            resources:SetActor(xStack_84_2, "HERO", xStack_20)
+            resources:SetActor(xStack_84_2, "GM", xStack_30)
             xStack_10 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", r13, false, true)
+            resources:RunMacro("CS_GUILD_DEPARTURE_EXIT_WOODS", xStack_84_2, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
-            resources:DestroyActorMap(r13)
+            resources:DestroyActorMap(xStack_84_2)
             resources:ReleaseResource(xStack_20)
             resources:ReleaseResource(xStack_30)
             uVar15 = false
@@ -1743,7 +1743,7 @@ end
 
 function RunArrivalCutscene(quest)
     local resources = quest:RetailResources()
-    local bVar3, iVar7, pCVar4, pPosition, pppuVar6, r1, xStack_10, xStack_20, xStack_30
+    local bVar3, iVar7, pCVar4, pPosition, pppuVar6, r1, xStack_10, xStack_20, xStack_30, xStack_3c
     local alive = true
     quest:SetTimeOfDay(19.0)
     alive = quest:NewScriptFrame()
@@ -1789,20 +1789,20 @@ function RunArrivalCutscene(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            pCVar4 = resources:NewActorMap()
-            resources:SetActor(pCVar4, "MAZE", xStack_30)
-            resources:SetActor(pCVar4, "HERO", xStack_20)
+            xStack_3c = resources:NewActorMap()
+            resources:SetActor(xStack_3c, "MAZE", xStack_30)
+            resources:SetActor(xStack_3c, "HERO", xStack_20)
             xStack_10 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_ARRIVE", pCVar4, false, true)
+            resources:RunMacro("CS_GUILD_ARRIVE", xStack_3c, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:FadeScreenOut(0.5, 0.0)
             quest:SetAllowScreenFadingOnNextRegionChange(false)
             quest:SetRegionTextDisplayAsActive(false)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
-            resources:DestroyActorMap(pCVar4)
+            resources:DestroyActorMap(xStack_3c)
             resources:ReleaseResource(xStack_20)
             resources:ReleaseResource(xStack_30)
             quest:RemoveThing(r1, false, true)

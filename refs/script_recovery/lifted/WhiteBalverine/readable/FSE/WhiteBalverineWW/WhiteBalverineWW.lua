@@ -20,7 +20,6 @@ function Main(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_WhiteBalverineKnotholeGlade", "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_07", "Witchwood4", "KnotholeGlade")
-    local mkWbwFirstspawnb = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWNB")
     quest:SetStateThing("WhiteBalverine", quest:GetThingWithScriptName("WBWW_WhiteBalverine"))
     local getStateThing = quest:GetStateThing("WhiteBalverine")
     quest:SetThingPersistent(getStateThing, true)
@@ -44,18 +43,18 @@ function Main(quest)
     resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
     local resource2 = resources:NewResource()
-    resources:TryAcquire(resource2, actorMap, 4)
+    resources:TryAcquire(resource2, getStateThing, 4)
     repeat
         scratchValue = scratchValue2
-        if quest:IsDistanceBetweenThingsUnder(hero, actorMap, 8.0) then
+        if quest:IsDistanceBetweenThingsUnder(hero, getStateThing, 8.0) then
             goto LAB_00e18ce8
         else
             scratchValue = scratchValue2 | 32
-            if actorMap:MsgIsHitByHero() then goto LAB_00e18ce8 end
+            if getStateThing:MsgIsHitByHero() then goto LAB_00e18ce8 end
             scratchValue = scratchValue2 | 96
-            if actorMap:MsgIsHitByAnySpecialAbilityFromHero() then
+            if getStateThing:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue = scratchValue2 | 224
-                if not actorMap:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e18ce8 end
+                if not getStateThing:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e18ce8 end
             end
             predicateResult = true
         end
@@ -78,7 +77,7 @@ function Main(quest)
             if not quest:IsActiveThreadTerminating() then
                 resources:PrepareResource(resource2)
                 quest:OverrideMusic(23, false, false)
-                quest:GiveThingBestEnemyTarget(hero, mkWbwFirstspawnb)
+                quest:GiveThingBestEnemyTarget(getStateThing, hero)
                 missionFailed = quest:GetStateBool("MissionFailed")
                 goto LAB_00e18d99
             end

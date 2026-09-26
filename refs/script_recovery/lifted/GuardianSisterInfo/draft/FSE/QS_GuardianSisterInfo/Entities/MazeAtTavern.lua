@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c
+    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -185,15 +185,15 @@ function Main(quest, me)
                         pCVar12 = xStack_2c
                         pCVar6 = quest:GetHero()
                         resources:TryAcquire(pCVar12, pCVar6, iVar7)
-                        pCVar6 = resources:NewActorMap()
-                        resources:SetActor(pCVar6, "ME", xStack_8c)
-                        resources:SetActor(pCVar6, "HERO", xStack_2c)
+                        xStack_54 = resources:NewActorMap()
+                        resources:SetActor(xStack_54, "ME", xStack_8c)
+                        resources:SetActor(xStack_54, "HERO", xStack_2c)
                         xStack_1c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        resources:RunMacro("CS_GUARDIANSISTER_BOWERSTONE", pCVar6, false, true)
+                        resources:RunMacro("CS_GUARDIANSISTER_BOWERSTONE", xStack_54, false, true)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_1c)
-                        resources:DestroyActorMap(pCVar6)
+                        resources:DestroyActorMap(xStack_54)
                         resources:ReleaseResource(xStack_2c)
                         quest:SetStateBool("GuardianSpokeToHero", true)
                         quest:ClearThingHasInformation(me)

@@ -2366,7 +2366,13 @@ class Lifter:
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
             target, name, argtext = pseudo.group(1), pseudo.group(2), pseudo.group(3)
-            if target:
+            if target and name in ('RESOURCE_NewResource', 'RESOURCE_StartMovie', 'ACTORMAP_New', 'STRINGMAP_New'):
+                # a new object built in a slot that earlier served as a thing's hidden-result slot: the slot's old
+                # result variable is not this object (Q_WhiteBalverineKnotholeGlade Main 0x00E13F10: xStack_20 held
+                # GetThingWithScriptName results into pCVar6, then became the chief's resource for CS_WBK_CHIEF2;
+                # following the mapping bound CHIEF to the hero's resource and killed Main, 2026-09-26)
+                self.slot_results.pop(target, None)
+            elif target:
                 target = self.slot_results.get(target, target)
             lifted = [self.expr(a) for a in self.arguments(argtext)]
             call = f'{name}({", ".join(lifted)})'

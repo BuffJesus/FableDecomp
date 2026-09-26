@@ -1812,23 +1812,26 @@ def canonicalise_stack_objects(text: str) -> str:
     """Ghidra names each stack slot separately (`appuStack_ac` … `uStack_a4`), so members of one
     stack object (a 16-byte resource/movie/map) appear under several names. Objects created by the
     pseudo API give their base slot and size; every slot name inside that extent becomes the base."""
-    bases = []
-    for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty)\(', text):
-        shift = int(m.group(3), 16) if m.group(3) else 0
-        bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')], m.group(4)))
-    if not bases:
+    def plan(text):
+        bases = []
+        for m in re.finditer(r'\b([A-Za-z]+Stack_|local_)([0-9a-f]+)(?:_p([48c]))? = (RESOURCE_NewResource|RESOURCE_StartMovie|ACTORMAP_New|STRINGMAP_New|QUESTTHING_Empty)\(', text):
+            shift = int(m.group(3), 16) if m.group(3) else 0
+            bases.append((m.start(), m.group(1), int(m.group(2), 16) - shift, STACK_OBJECT_SIZES[m.group(4)], m.group(0)[:m.group(0).index(' =')], m.group(4)))
+        # the same stack bytes may host a different object later in the function: each object's names
+        # are rewritten only from its constructor up to the next constructor whose extent overlaps
+        pieces = []
+        for i, (start, prefix, boff, size, name, _kind) in enumerate(bases):
+            def overlaps(b):
+                return b[2] - b[3] < boff and boff - size < b[2] and b[2] != boff   # extents (off-size, off]
+            # the object's text runs from the previous overlapping construction (its members may be read
+            # before the constructor line, e.g. an iterator element copy) to the next one
+            region_start = next((b[0] for b in reversed(bases[:i]) if overlaps(b)), 0)
+            region_end = next((b[0] for b in bases[i + 1:] if overlaps(b)), len(text))
+            pieces.append((region_start, region_end, start, prefix, boff, size, name))
+        return sorted(pieces, key=lambda x: (x[0], x[1]))
+    pieces = plan(text)
+    if not pieces:
         return text
-    # the same stack bytes may host a different object later in the function: each object's names
-    # are rewritten only from its constructor up to the next constructor whose extent overlaps
-    pieces = []
-    for i, (start, prefix, boff, size, name, _kind) in enumerate(bases):
-        def overlaps(b):
-            return b[2] - b[3] < boff and boff - size < b[2] and b[2] != boff   # extents (off-size, off]
-        # the object's text runs from the previous overlapping construction (its members may be read
-        # before the constructor line, e.g. an iterator element copy) to the next one
-        region_start = next((b[0] for b in reversed(bases[:i]) if overlaps(b)), 0)
-        region_end = next((b[0] for b in bases[i + 1:] if overlaps(b)), len(text))
-        pieces.append((region_start, region_end, start, prefix, boff, size, name))
 
     # None of these objects has a float member (PDB: CScriptGameResourceObject*Base = vtable, base pointer,
     # CCountedPointer; CScriptThing = vtable, CCountedPointer; std::_Tree = comp, head, size), so a float-typed
@@ -1893,8 +1896,15 @@ def canonicalise_stack_objects(text: str) -> str:
         segment = re.sub(r'\(' + re.escape(name) + r' \+ (?:4|8|0xc|12)\)', name, segment)
         segment = re.sub(r'&' + re.escape(name) + r'\b', name, segment)
         return segment
-    # rewrite spans back to front so earlier offsets stay valid (spans of one extent do not overlap)
-    for start, end, ctor, prefix, boff, size, name in sorted(pieces, key=lambda x: (x[0], x[1]), reverse=True):
+    # rewrite spans back to front, re-planning from the CURRENT text before each one: regions of different objects
+    # overlap, and a rewrite that changes length (`&xStack_20` -> `xStack_20`) shifted the text under the next
+    # splice's stale offsets (Q_WhiteBalverineKnotholeGlade Main 0x00E13F10: the second cutscene's movie came out
+    # `xStack_100 = RESOURCE_StartMovie("")`, a duplicated character, so DestroyMovie freed the first movie, 2026-09-26)
+    for k in reversed(range(len(pieces))):
+        current = plan(text)
+        if len(current) != len(pieces):
+            break
+        start, end, ctor, prefix, boff, size, name = current[k]
         text = text[:start] + rewrite(text[start:end], ctor - start, boff, size, name) + text[end:]
     return text
 

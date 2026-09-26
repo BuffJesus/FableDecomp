@@ -1414,11 +1414,10 @@
        ]
       },
       "r1": {
-       "name": "actorMap",
-       "basis": "named by the API that consumes it",
+       "name": "guildDoors",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "guildDoors",
-        "actorMap"
+        "guildDoors"
        ]
       },
       "uVar11": {
@@ -1445,11 +1444,12 @@
        ]
       },
       "xStack_81c": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
+       "name": "newActorMap",
+       "basis": "one method, several names",
        "assignmentRoles": [
         null,
-        null
+        null,
+        "actorMap"
        ]
       }
      },
@@ -2536,7 +2536,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 6,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -2570,12 +2570,12 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 12,
        "controlAcquires": 0,
-       "sunkLocals": 7,
+       "sunkLocals": 9,
        "cleanupClosureNames": 0,
        "parentheses": 5,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 4,
+       "freeSuffixes": 3,
        "hoistedState": 0
       },
       "before": {
@@ -2589,7 +2589,7 @@
       },
       "after": {
        "lines": 955,
-       "temporaries": 8,
+       "temporaries": 7,
        "labels": 6,
        "gotos": 7,
        "terminationChecks": 57,

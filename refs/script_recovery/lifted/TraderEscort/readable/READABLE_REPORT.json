@@ -2487,7 +2487,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 2,
-      "declarations": 11,
+      "declarations": 12,
       "decimalLiterals": 10
      }
     },
@@ -3447,24 +3447,12 @@
         null
        ]
       },
-      "pCVar14_1": {
-       "name": "position",
-       "basis": "consistent call/state result",
+      "pCVar14": {
+       "name": "getPos",
+       "basis": "one method, several names",
        "assignmentRoles": [
-        "position"
-       ]
-      },
-      "pCVar14_2": {
-       "name": "scratchValue32",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "pCVar14_3": {
-       "name": "scratchValue33",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
+        "position",
+        null,
         null
        ]
       },
@@ -3516,14 +3504,14 @@
        ]
       },
       "pCVar6_7": {
-       "name": "scratchValue34",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_8": {
-       "name": "scratchValue35",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3551,35 +3539,35 @@
        ]
       },
       "pCVar6_12": {
-       "name": "scratchValue36",
+       "name": "scratchValue34",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_13": {
-       "name": "scratchValue37",
+       "name": "scratchValue35",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_14": {
-       "name": "scratchValue38",
+       "name": "scratchValue36",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_15": {
-       "name": "scratchValue39",
+       "name": "scratchValue37",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_16": {
-       "name": "scratchValue40",
+       "name": "scratchValue38",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3593,14 +3581,14 @@
        ]
       },
       "pCVar6_18": {
-       "name": "scratchValue41",
+       "name": "scratchValue39",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_19": {
-       "name": "scratchValue42",
+       "name": "scratchValue40",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3614,7 +3602,7 @@
        ]
       },
       "pCVar6_21": {
-       "name": "scratchValue43",
+       "name": "scratchValue41",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3652,7 +3640,7 @@
        ]
       },
       "puVar7": {
-       "name": "getPos",
+       "name": "getPos2",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
@@ -3721,16 +3709,15 @@
        ]
       },
       "r5": {
-       "name": "actorMap3",
-       "basis": "named by the API that consumes it",
+       "name": "thing",
+       "basis": "one method, several names",
        "assignmentRoles": [
         "campTraderA",
-        null,
-        "actorMap"
+        null
        ]
       },
       "r6": {
-       "name": "scratchValue44",
+       "name": "scratchValue42",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3744,11 +3731,10 @@
        ]
       },
       "r8": {
-       "name": "movie",
-       "basis": "named by the API that consumes it",
+       "name": "mkDtebInfexit",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "mkDtebInfexit",
-        "movie"
+        "mkDtebInfexit"
        ]
       },
       "r9": {
@@ -3759,7 +3745,7 @@
        ]
       },
       "uVar16": {
-       "name": "scratchValue45",
+       "name": "scratchValue43",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3777,6 +3763,13 @@
         "predicateResult"
        ]
       },
+      "xStack_108": {
+       "name": "movie",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "movie"
+       ]
+      },
       "xStack_118": {
        "name": "resource",
        "basis": "named by the API that consumes it",
@@ -3785,6 +3778,13 @@
         null,
         null,
         "resource"
+       ]
+      },
+      "xStack_150": {
+       "name": "actorMap3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
        ]
       },
       "xStack_168": {
@@ -3825,7 +3825,7 @@
      "splitLocals": {
       "iVar8": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "iVar8_1": [
          82,
@@ -3929,7 +3929,7 @@
       },
       "pCVar6": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "pCVar6_1": [
          176,
@@ -4006,7 +4006,7 @@
       },
       "pCVar13": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "pCVar13_1": [
          157
@@ -4072,7 +4072,7 @@
       },
       "fVar19": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "fVar19_1": [
          97
@@ -4126,7 +4126,7 @@
       },
       "bVar5": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "bVar5_1": [
          50
@@ -4166,7 +4166,7 @@
       },
       "cVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "cVar4_1": [
          11,
@@ -4207,7 +4207,7 @@
       },
       "iVar20": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "iVar20_1": [
          151
@@ -4240,7 +4240,7 @@
       },
       "pcVar21": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "pcVar21_1": [
          156
@@ -4276,7 +4276,7 @@
       },
       "pCVar12": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "versions": {
         "pCVar12_1": [
          65
@@ -4303,26 +4303,11 @@
          495
         ]
        }
-      },
-      "pCVar14": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
-       "versions": {
-        "pCVar14_1": [
-         409
-        ],
-        "pCVar14_2": [
-         881
-        ],
-        "pCVar14_3": [
-         889
-        ]
-       }
       }
      },
      "removedLiteralLocals": {
       "bVar5_9": {
-       "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_2, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+       "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_9, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_2, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
        "406": "                    bVar5_9 = false\n"
       }
      },
@@ -4335,7 +4320,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_2, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_2, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "99": "                    fVar19_2 = 9.0\n",
         "101": "                    bVar5_4 = quest:IsDistanceBetweenThingsUnder(me, pCVar6_3, fVar19_2)\n"
        }
@@ -4348,7 +4333,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_3, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "105": "                        fVar19_3 = 5.0\n",
         "107": "                        bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar6_4, fVar19_3)\n"
        }
@@ -4361,7 +4346,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_4, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "229": "                fVar19_4 = 3.0\n",
         "232": "                bVar3 = (pCVar6_7 ~= nil and pCVar6_7:IsDistanceFromPositionOver(xStack_e8, fVar19_4))\n"
        }
@@ -4374,7 +4359,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_5, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "250": "                        fVar19_5 = 3.0\n",
         "253": "                        bVar3 = (pCVar6_8 ~= nil and pCVar6_8:IsDistanceFromPositionOver(xStack_e8, fVar19_5))\n"
        }
@@ -4387,7 +4372,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_6, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "269": "                fVar19_6 = 3.0\n",
         "271": "                quest:EntityFollowThing(me, pCVar6_9, fVar19_6, bVar3)\n"
        }
@@ -4400,7 +4385,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_7, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "275": "                fVar19_7 = 20.0\n",
         "277": "                bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar6_10, fVar19_7)\n"
        }
@@ -4413,7 +4398,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_8, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "282": "                    fVar19_8 = 20.0\n",
         "284": "                    bVar3 = quest:IsDistanceBetweenThingsUnder(me, pCVar6_11, fVar19_8)\n"
        }
@@ -4426,7 +4411,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_9, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "377": "                    fVar19_9 = 5.0\n",
         "380": "                    bVar3 = (pCVar6_12 ~= nil and pCVar6_12:IsDistanceFromPositionOver(xStack_118, fVar19_9))\n"
        }
@@ -4439,7 +4424,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_10, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "398": "                            fVar19_10 = 5.0\n",
         "401": "                            bVar3 = (pCVar6_13 ~= nil and pCVar6_13:IsDistanceFromPositionOver(xStack_118, fVar19_10))\n"
        }
@@ -4452,9 +4437,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_11, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "408": "                    fVar19_11 = 0.0\n",
-        "410": "                    r6 = quest:CreateEffectAtPos(\"HEAL_LEVEL2\", pCVar14_1, fVar19_11, bVar3)\n"
+        "410": "                    r6 = quest:CreateEffectAtPos(\"HEAL_LEVEL2\", pCVar14, fVar19_11, bVar3)\n"
        }
       },
       "fVar19_12": {
@@ -4465,7 +4450,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_12, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "491": "                    fVar19_12 = 3.0\n",
         "493": "                    quest:EntityFollowThing(me, pCVar6_1, fVar19_12, bVar3)\n"
        }
@@ -4478,7 +4463,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_13, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "792": "    fVar19_13 = 5.0\n",
         "794": "    bVar3 = quest:IsDistanceBetweenThingsOver(r7, pCVar6_17, fVar19_13)\n"
        }
@@ -4491,7 +4476,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_14, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "810": "                fVar19_14 = 2.0\n",
         "813": "                c_stk_169 = (pCVar6_18 ~= nil and pCVar6_18:IsDistanceFromPositionOver(r5, fVar19_14))\n"
        }
@@ -4504,7 +4489,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_15, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "836": "                    fVar19_15 = 2.0\n",
         "839": "                    c_stk_169 = (pCVar6_19 ~= nil and pCVar6_19:IsDistanceFromPositionOver(r5, fVar19_15))\n"
        }
@@ -4517,7 +4502,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar19_16, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "849": "            fVar19_16 = 5.0\n",
         "851": "            bVar3 = quest:IsDistanceBetweenThingsOver(r7, pCVar6_20, fVar19_16)\n"
        }
@@ -4530,7 +4515,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "1173": "                        fVar2 = 0.0\n",
         "1174": "                        if fVar2 < fret_03 then\n"
        }
@@ -4543,9 +4528,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_7, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "880": "            iVar20_7 = 4\n",
-        "883": "            bVar3 = resources:TryAcquire(pCVar14_2, pCVar6_1, iVar20_7)\n"
+        "883": "            bVar3 = resources:TryAcquire(pCVar14, pCVar6_1, iVar20_7)\n"
        }
       },
       "iVar20_8": {
@@ -4556,9 +4541,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_8, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "888": "                iVar20_8 = 4\n",
-        "891": "                bVar3 = resources:TryAcquire(pCVar14_3, pCVar6_1, iVar20_8)\n"
+        "891": "                bVar3 = resources:TryAcquire(pCVar14, pCVar6_1, iVar20_8)\n"
        }
       },
       "iVar20_9": {
@@ -4569,7 +4554,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar20_9, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "1177": "                            iVar20_9 = 0\n",
         "1185": "                            r11 = me:Speak(pCVar6_22, pvVar9, iVar8_29, (iVar20_9 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
@@ -4582,7 +4567,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_29, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "1178": "                            iVar8_29 = 0\n",
         "1185": "                            r11 = me:Speak(pCVar6_22, pvVar9, iVar8_29, ((0) ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
@@ -4595,7 +4580,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_1, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "156": "                            pcVar21_1 = \"_FOLLOW_ME\"\n",
         "159": "                            pCVar13_3 = (pCVar13_2 .. pcVar21_1)\n"
        }
@@ -4608,7 +4593,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_2, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "293": "                pcVar21_2 = \"_KILLED_EARTH_TROLL\"\n",
         "296": "                pCVar13_6 = (pCVar13_5 .. pcVar21_2)\n"
        }
@@ -4621,7 +4606,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_3, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "443": "                            pcVar21_3 = \"_GREET_ALLY_10\"\n",
         "446": "                            pCVar13_11 = (pCVar13_10 .. pcVar21_3)\n"
        }
@@ -4634,7 +4619,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_4, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "450": "                            pcVar21_4 = \"_GREET_ALLY_RESPONSE\"\n",
         "453": "                            pCVar13_14 = (pCVar13_13 .. pcVar21_4)\n"
        }
@@ -4647,7 +4632,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_5, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "457": "                            pcVar21_5 = \"_GREET_ALLY_20\"\n",
         "460": "                            pCVar13_17 = (pCVar13_16 .. pcVar21_5)\n"
        }
@@ -4660,7 +4645,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_6, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "914": "                pcVar21_6 = \"SCARED\"\n",
         "916": "                iVar8_22 = ((pvVar9 ~= pcVar21_6) and 1 or 0)\n"
        }
@@ -4673,7 +4658,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14_1, pCVar14_2, pCVar14_3, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
+        "3": "    local __native_condition_1, bVar3, bVar5_1, bVar5_2, bVar5_3, bVar5_4, bVar5_5, bVar5_6, bVar5_7, bVar5_8, bVar5_10, bVar5_11, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, c_stk_169, c_stk_171, fVar19_1, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20_1, iVar20_2, iVar20_3, iVar20_4, iVar20_5, iVar20_6, iVar8_1, iVar8_2, iVar8_3, iVar8_4, iVar8_5, iVar8_6, iVar8_7, iVar8_8, iVar8_9, iVar8_10, iVar8_11, iVar8_12, iVar8_13, iVar8_14, iVar8_15, iVar8_16, iVar8_17, iVar8_18, iVar8_19, iVar8_20, iVar8_21, iVar8_22, iVar8_23, iVar8_24, iVar8_25, iVar8_26, iVar8_27, iVar8_28, iVar8_30, iVar8_31, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p4, p5, pCVar12_1, pCVar12_2, pCVar12_3, pCVar12_4, pCVar12_5, pCVar12_6, pCVar12_7, pCVar12_8, pCVar13_1, pCVar13_2, pCVar13_3, pCVar13_4, pCVar13_5, pCVar13_6, pCVar13_7, pCVar13_8, pCVar13_9, pCVar13_10, pCVar13_11, pCVar13_12, pCVar13_13, pCVar13_14, pCVar13_15, pCVar13_16, pCVar13_17, pCVar13_18, pCVar13_19, pCVar13_20, pCVar14, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar6_17, pCVar6_18, pCVar6_19, pCVar6_20, pCVar6_21, pCVar6_22, pcVar21_7, pcVar21_8, pcVar21_9, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8\n",
         "1179": "                            pcVar21_9 = \"_THANKS\"\n",
         "1182": "                            pCVar13_20 = (pCVar13_19 .. pcVar21_9)\n"
        }
@@ -5279,7 +5264,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 22,
+       "splitLocals": 24,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -5313,12 +5298,12 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 15,
        "controlAcquires": 0,
-       "sunkLocals": 40,
+       "sunkLocals": 44,
        "cleanupClosureNames": 0,
        "parentheses": 62,
        "cosmetics": 1,
        "firstAssignments": 0,
-       "freeSuffixes": 4,
+       "freeSuffixes": 5,
        "hoistedState": 4
       },
       "before": {
@@ -13603,18 +13588,11 @@
         "darkwoodTrader"
        ]
       },
-      "r2_1": {
+      "r2": {
        "name": "darkwoodTrader2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "darkwoodTrader"
-       ]
-      },
-      "r2_2": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
        ]
       },
       "r3": {
@@ -13636,6 +13614,13 @@
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
+       ]
+      },
+      "xStack_3c": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
        ]
       },
       "xStack_50": {
@@ -13691,7 +13676,7 @@
      "splitLocals": {
       "bVar2": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "bVar2_1": [
          6
@@ -13885,7 +13870,7 @@
       },
       "pCVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "pCVar4_1": [
          18
@@ -13906,7 +13891,7 @@
       },
       "pCVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "pCVar7_1": [
          54
@@ -13927,7 +13912,7 @@
       },
       "iVar8": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "iVar8_1": [
          93,
@@ -13946,7 +13931,7 @@
       },
       "bVar14": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "bVar14_1": [
          51
@@ -13961,7 +13946,7 @@
       },
       "cVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "cVar3_1": [
          171
@@ -13977,7 +13962,7 @@
       },
       "pCVar6": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "pCVar6_1": [
          46
@@ -13992,7 +13977,7 @@
       },
       "c_stk_c1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "c_stk_c1_1": [
          330
@@ -14004,7 +13989,7 @@
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "native_arg_sequence_1_1": [
          164
@@ -14017,21 +14002,9 @@
         ]
        }
       },
-      "r2": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
-       "versions": {
-        "r2_1": [
-         20
-        ],
-        "r2_2": [
-         153
-        ]
-       }
-      },
       "uVar15": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "uVar15_1": [
          313
@@ -14043,7 +14016,7 @@
       },
       "xStack_60": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "xStack_60_1": [
          21
@@ -14055,7 +14028,7 @@
       },
       "xStack_b0": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "xStack_b0_1": [
          30
@@ -14067,7 +14040,7 @@
       },
       "x_stk_d0": {
        "declarationLine": 3,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0\n",
        "versions": {
         "x_stk_d0_1": [
          102
@@ -14080,7 +14053,7 @@
      },
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
-       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+       "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
        "164": "            native_arg_sequence_1_1 = false\n"
       }
      },
@@ -14093,7 +14066,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_1, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "51": "        bVar14_1 = false\n",
         "55": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, bVar14_1)\n"
        }
@@ -14106,7 +14079,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_2, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "252": "            bVar14_2 = false\n",
         "255": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, bVar14_2, b3)\n"
        }
@@ -14119,7 +14092,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14_3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "277": "            bVar14_3 = true\n",
         "280": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", bVar14_3)\n"
        }
@@ -14132,7 +14105,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "52": "        bVar2_6 = true\n",
         "55": "        quest:KickOffQuestStartScreen(pCVar7_1, bVar2_6, (false))\n"
        }
@@ -14145,7 +14118,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_42, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "253": "            bVar2_42 = true\n",
         "255": "            quest:SetQuestAsCompleted(pCVar7_2, bVar2_42, (false), b3)\n"
        }
@@ -14158,7 +14131,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_45, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "278": "            bVar2_45 = true\n",
         "280": "            quest:SetQuestAsFailed(pCVar7_3, bVar2_45, \"TEXT_QST_067_QUEST_FAILED_TRADERS_DIED\", (true))\n"
        }
@@ -14171,7 +14144,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_52, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "324": "                bVar2_52 = false\n",
         "325": "                if bVar2_52 then\n"
        }
@@ -14184,7 +14157,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_55, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "350": "                bVar2_55 = false\n",
         "351": "                if bVar2_55 then\n"
        }
@@ -14197,7 +14170,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_1, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "313": "            uVar15_1 = 0\n",
         "315": "            quest:DeactivateQuestLater(pCVar7_4, uVar15_1)\n"
        }
@@ -14210,7 +14183,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2_1, r2_2, r3, uVar15_2, xStack_1c, xStack_2c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
+        "3": "    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, bVar2_27, bVar2_28, bVar2_29, bVar2_30, bVar2_31, bVar2_32, bVar2_33, bVar2_34, bVar2_35, bVar2_36, bVar2_37, bVar2_38, bVar2_39, bVar2_40, bVar2_41, bVar2_43, bVar2_44, bVar2_46, bVar2_47, bVar2_48, bVar2_49, bVar2_50, bVar2_51, bVar2_53, bVar2_54, bVar2_56, bVar2_57, bVar2_58, bVar2_59, cVar3_1, cVar3_2, cVar3_3, c_stk_c1_1, c_stk_c1_2, dist, ePriority, iVar8_1, iVar8_2, iVar8_3, iVar8_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pppuVar12, r1, r2, r3, uVar15_2, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60_1, xStack_60_2, xStack_b0_1, xStack_b0_2, xStack_c0, xStack_dc, x_stk_d0_1, x_stk_d0_2\n",
         "383": "        uVar15_2 = 0\n",
         "385": "        quest:DeactivateQuestLater(pCVar7_5, uVar15_2)\n"
        }

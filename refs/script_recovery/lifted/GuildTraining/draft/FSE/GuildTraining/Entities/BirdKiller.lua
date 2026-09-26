@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_18, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
@@ -210,11 +210,11 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if not bVar3 then
-                                r1 = resources:NewActorMap()
-                                resources:SetActor(r1, "HERO", xStack_38)
-                                resources:SetActor(r1, "ME", xStack_8c)
-                                resources:RunMacro("CS_GUILD_GULLS_INTRO", r1, false, true)
-                                resources:DestroyActorMap(r1)
+                                xStack_18 = resources:NewActorMap()
+                                resources:SetActor(xStack_18, "HERO", xStack_38)
+                                resources:SetActor(xStack_18, "ME", xStack_8c)
+                                resources:RunMacro("CS_GUILD_GULLS_INTRO", xStack_18, false, true)
+                                resources:DestroyActorMap(xStack_18)
                                 resources:ReleaseResource(xStack_38)
                                 goto LAB_00d4e853
                             end

@@ -1518,14 +1518,14 @@ function Main(quest)
                 resources:ReleaseResource(xStack_68)
                 return
             end
-            r1 = resources:NewActorMap()
-            resources:SetActor(r1, "Hero", xStack_68)
+            xStack_81c = resources:NewActorMap()
+            resources:SetActor(xStack_81c, "Hero", xStack_68)
             xStack_58 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            resources:RunMacro("CS_FABLE_CREDITS", r1, false, true)
+            resources:RunMacro("CS_FABLE_CREDITS", xStack_81c, false, true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_58)
-            resources:DestroyActorMap(r1)
+            resources:DestroyActorMap(xStack_81c)
             resources:ReleaseResource(xStack_68)
             uVar11 = false
             pCVar5 = quest:GetThingWithScriptName("NW3BronzeDoorHSP")

@@ -236,7 +236,7 @@ end
 
 function WatchForMissionRules(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0
+    local __native_condition_1, __native_condition_2, __native_condition_3, b3, bVar14, bVar2, cVar3, c_stk_c1, dist, ePriority, iVar8, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pppuVar12, r1, r2, r3, uVar15, xStack_1c, xStack_2c, xStack_3c, xStack_50, xStack_60, xStack_b0, xStack_c0, xStack_dc, x_stk_d0
     local alive = true
     if not quest:GetStateBool("IntroFinished") then
         alive = not quest:IsActiveThreadTerminating()
@@ -404,14 +404,14 @@ function WatchForMissionRules(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then break end
-            r2 = resources:NewActorMap()
+            xStack_3c = resources:NewActorMap()
             xStack_60 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            resources:RunMacro("CS_DARKWOOD_TRADER_BALVERINE", r2, false, true)
+            resources:RunMacro("CS_DARKWOOD_TRADER_BALVERINE", xStack_3c, false, true)
             quest:SetStateBool("ShownBalverine", true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_60)
-            resources:DestroyActorMap(r2)
+            resources:DestroyActorMap(xStack_3c)
         end
         if not quest:GetStateBool("EndStarted") then
             bVar2 = quest:IsRegionLoaded("BarrowFields")

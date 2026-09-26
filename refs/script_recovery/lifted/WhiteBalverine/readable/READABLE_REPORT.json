@@ -6823,7 +6823,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 41,
-      "declarations": 51,
+      "declarations": 47,
       "decimalLiterals": 3
      }
     },
@@ -7381,91 +7381,70 @@
        ]
       },
       "pCVar6_4": {
-       "name": "resource2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "pCVar6_5": {
        "name": "hero",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar6_6": {
+      "pCVar6_5": {
        "name": "hero2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
        ]
       },
-      "pCVar6_7": {
+      "pCVar6_6": {
        "name": "whiteBalverine2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "whiteBalverine"
        ]
       },
-      "pCVar6_8": {
+      "pCVar6_7": {
        "name": "escapePoint2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "escapePoint2"
        ]
       },
+      "pCVar6_8": {
+       "name": "resource2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
       "pCVar6_9": {
-       "name": "resource3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "pCVar6_10": {
-       "name": "resource4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "pCVar6_11": {
        "name": "whiteBalverine3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "whiteBalverine"
        ]
       },
-      "pCVar6_12": {
+      "pCVar6_10": {
        "name": "balvEscape2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "balvEscape2"
        ]
       },
-      "pCVar6_13": {
+      "pCVar6_11": {
        "name": "guard1Pos",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "guard1Pos"
        ]
       },
-      "pCVar6_14": {
+      "pCVar6_12": {
        "name": "guard2Pos",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "guard2Pos"
        ]
       },
-      "pCVar6_15": {
-       "name": "resource5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "pCVar6_16": {
-       "name": "resource6",
+      "pCVar6_13": {
+       "name": "resource3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
@@ -7542,24 +7521,10 @@
        ]
       },
       "pCVar8_6": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
-       ]
-      },
-      "pCVar8_7": {
        "name": "hero5",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "hero"
-       ]
-      },
-      "pCVar8_8": {
-       "name": "actorMap2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
        ]
       },
       "r1": {
@@ -7576,32 +7541,18 @@
         "villageKnotholeglade"
        ]
       },
-      "r3_1": {
+      "r3": {
        "name": "fullmoonBalverine",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "fullmoonBalverine"
        ]
       },
-      "r3_2": {
-       "name": "actorMap3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
-       ]
-      },
-      "r4_1": {
+      "r4": {
        "name": "fullmoonBalverine2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "fullmoonBalverine"
-       ]
-      },
-      "r4_2": {
-       "name": "resource7",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
        ]
       },
       "r5": {
@@ -7618,18 +7569,11 @@
         "knGuard"
        ]
       },
-      "r7_1": {
+      "r7": {
        "name": "knGuard2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "knGuard"
-       ]
-      },
-      "r7_2": {
-       "name": "resource8",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
        ]
       },
       "xStack_10_1": {
@@ -7646,25 +7590,81 @@
         "movie"
        ]
       },
-      "xStack_20": {
+      "xStack_10_3": {
+       "name": "movie3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "movie"
+       ]
+      },
+      "xStack_20_1": {
+       "name": "resource4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_20_2": {
+       "name": "resource5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_20_3": {
+       "name": "resource6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_30_1": {
+       "name": "resource7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_30_2": {
+       "name": "resource8",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_30_3": {
        "name": "resource9",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "resource"
        ]
       },
-      "x_stk_100": {
-       "name": "movie3",
+      "xStack_3c_1": {
+       "name": "actorMap",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "movie"
+        "actorMap"
+       ]
+      },
+      "xStack_3c_2": {
+       "name": "actorMap2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
+      },
+      "xStack_3c_3": {
+       "name": "actorMap3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
        ]
       }
      },
      "splitLocals": {
       "bVar3": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "bVar3_1": [
          5,
@@ -7851,7 +7851,7 @@
       },
       "pCVar6": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "pCVar6_1": [
          77
@@ -7860,52 +7860,43 @@
          82
         ],
         "pCVar6_3": [
-         116
-        ],
-        "pCVar6_4": [
          119
         ],
-        "pCVar6_5": [
+        "pCVar6_4": [
          140
         ],
-        "pCVar6_6": [
+        "pCVar6_5": [
          148
         ],
-        "pCVar6_7": [
+        "pCVar6_6": [
          161
         ],
-        "pCVar6_8": [
+        "pCVar6_7": [
          166
         ],
-        "pCVar6_9": [
-         198
-        ],
-        "pCVar6_10": [
+        "pCVar6_8": [
          202
         ],
-        "pCVar6_11": [
+        "pCVar6_9": [
          263
         ],
-        "pCVar6_12": [
+        "pCVar6_10": [
          268
         ],
-        "pCVar6_13": [
+        "pCVar6_11": [
          273
         ],
-        "pCVar6_14": [
+        "pCVar6_12": [
          277
         ],
-        "pCVar6_15": [
-         319
-        ],
-        "pCVar6_16": [
+        "pCVar6_13": [
          322
         ]
        }
       },
       "pCVar8": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "pCVar8_1": [
          120
@@ -7923,19 +7914,13 @@
          203
         ],
         "pCVar8_6": [
-         205
-        ],
-        "pCVar8_7": [
          323
-        ],
-        "pCVar8_8": [
-         325
         ]
        }
       },
       "pCVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "pCVar4_1": [
          25
@@ -7956,7 +7941,7 @@
       },
       "pCVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "pCVar7_1": [
          84
@@ -7977,7 +7962,7 @@
       },
       "iVar13": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "iVar13_1": [
          118
@@ -7995,7 +7980,7 @@
       },
       "iVar1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "iVar1_1": [
          89,
@@ -8011,9 +7996,69 @@
         ]
        }
       },
+      "xStack_10": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
+       "versions": {
+        "xStack_10_1": [
+         125
+        ],
+        "xStack_10_2": [
+         208
+        ],
+        "xStack_10_3": [
+         328
+        ]
+       }
+      },
+      "xStack_20": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
+       "versions": {
+        "xStack_20_1": [
+         115
+        ],
+        "xStack_20_2": [
+         198
+        ],
+        "xStack_20_3": [
+         318
+        ]
+       }
+      },
+      "xStack_30": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
+       "versions": {
+        "xStack_30_1": [
+         116
+        ],
+        "xStack_30_2": [
+         199
+        ],
+        "xStack_30_3": [
+         319
+        ]
+       }
+      },
+      "xStack_3c": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
+       "versions": {
+        "xStack_3c_1": [
+         122
+        ],
+        "xStack_3c_2": [
+         205
+        ],
+        "xStack_3c_3": [
+         325
+        ]
+       }
+      },
       "fVar14": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "fVar14_1": [
          139
@@ -8025,7 +8070,7 @@
       },
       "native_arg_sequence_1": {
        "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
+       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, xStack_30, xStack_3c\n",
        "versions": {
         "native_arg_sequence_1_1": [
          292
@@ -8037,66 +8082,18 @@
          304
         ]
        }
-      },
-      "r3": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
-       "versions": {
-        "r3_1": [
-         85
-        ],
-        "r3_2": [
-         122
-        ]
-       }
-      },
-      "r4": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
-       "versions": {
-        "r4_1": [
-         169
-        ],
-        "r4_2": [
-         199
-        ]
-       }
-      },
-      "r7": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
-       "versions": {
-        "r7_1": [
-         280
-        ],
-        "r7_2": [
-         318
-        ]
-       }
-      },
-      "xStack_10": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar3, fVar14, iVar1, iVar13, native_arg_sequence_1, pCVar4, pCVar6, pCVar7, pCVar8, r1, r2, r3, r4, r5, r6, r7, xStack_10, xStack_20, x_stk_100\n",
-       "versions": {
-        "xStack_10_1": [
-         125
-        ],
-        "xStack_10_2": [
-         328
-        ]
-       }
       }
      },
      "removedLiteralLocals": {
       "bVar3_17": {
-       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
        "83": "            bVar3_17 = false\n",
        "269": "            bVar3_17 = false\n",
        "274": "        bVar3_17 = false\n",
        "278": "        bVar3_17 = false\n"
       },
       "native_arg_sequence_1_1": {
-       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+       "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_1, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
        "292": "    native_arg_sequence_1_1 = false\n"
       }
      },
@@ -8109,9 +8106,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_1, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
         "139": "        fVar14_1 = 10.0\n",
-        "142": "        bVar3_25 = quest:IsDistanceBetweenThingsUnder(pCVar8_2, pCVar6_5, fVar14_1)\n"
+        "142": "        bVar3_25 = quest:IsDistanceBetweenThingsUnder(pCVar8_2, pCVar6_4, fVar14_1)\n"
        }
       },
       "fVar14_2": {
@@ -8122,9 +8119,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, fVar14_2, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
         "147": "            fVar14_2 = 10.0\n",
-        "150": "            bVar3_25 = quest:IsDistanceBetweenThingsUnder(pCVar8_3, pCVar6_6, fVar14_2)\n"
+        "150": "            bVar3_25 = quest:IsDistanceBetweenThingsUnder(pCVar8_3, pCVar6_5, fVar14_2)\n"
        }
       },
       "iVar13_1": {
@@ -8135,9 +8132,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_1, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
         "118": "        iVar13_1 = 4\n",
-        "121": "        resources:TryAcquire(pCVar6_4, pCVar8_1, iVar13_1)\n"
+        "121": "        resources:TryAcquire(pCVar6_3, pCVar8_1, iVar13_1)\n"
        }
       },
       "iVar13_2": {
@@ -8148,9 +8145,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_2, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
         "201": "        iVar13_2 = 4\n",
-        "204": "        resources:TryAcquire(pCVar6_10, pCVar8_5, iVar13_2)\n"
+        "204": "        resources:TryAcquire(pCVar6_8, pCVar8_5, iVar13_2)\n"
        }
       },
       "iVar13_4": {
@@ -8161,9 +8158,9 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar6_14, pCVar6_15, pCVar6_16, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, pCVar8_7, pCVar8_8, r1, r2, r3_1, r3_2, r4_1, r4_2, r5, r6, r7_1, r7_2, xStack_10_1, xStack_10_2, xStack_20, x_stk_100\n",
+        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, iVar1_1, iVar1_2, iVar1_3, iVar13_3, iVar13_4, native_arg_sequence_1_2, pCVar4_1, pCVar4_2, pCVar4_3, pCVar4_4, pCVar4_5, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar6_10, pCVar6_11, pCVar6_12, pCVar6_13, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pCVar7_5, pCVar8_1, pCVar8_2, pCVar8_3, pCVar8_4, pCVar8_5, pCVar8_6, r1, r2, r3, r4, r5, r6, r7, xStack_10_1, xStack_10_2, xStack_10_3, xStack_20_1, xStack_20_2, xStack_20_3, xStack_30_1, xStack_30_2, xStack_30_3, xStack_3c_1, xStack_3c_2, xStack_3c_3\n",
         "321": "            iVar13_4 = 4\n",
-        "324": "            resources:TryAcquire(pCVar6_16, pCVar8_7, iVar13_4)\n"
+        "324": "            resources:TryAcquire(pCVar6_13, pCVar8_6, iVar13_4)\n"
        }
       }
      },
@@ -8409,7 +8406,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 198,
+     "sourceLine": 199,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8418,7 +8415,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 213,
+     "sourceLine": 214,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8427,7 +8424,7 @@
     },
     {
      "function": "WatchForTermination",
-     "sourceLine": 217,
+     "sourceLine": 218,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8440,7 +8437,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 16,
+       "splitLocals": 19,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -8448,15 +8445,15 @@
        "aliveStaging": 22,
        "exitChecksInlined": 5,
        "frameChecks": 19,
-       "inlinedTemporaries": 32,
-       "deadDefinitions": 9,
+       "inlinedTemporaries": 35,
+       "deadDefinitions": 5,
        "guardWrappers": 0,
        "retryLoops": 11,
        "booleanMaterialisation": 4,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 10,
+       "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 2,
@@ -8473,13 +8470,13 @@
        "gotoReturn": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
-       "controlAcquires": 1,
-       "sunkLocals": 25,
+       "controlAcquires": 0,
+       "sunkLocals": 31,
        "cleanupClosureNames": 0,
        "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 2,
+       "freeSuffixes": 3,
        "hoistedState": 0
       },
       "before": {
@@ -8492,8 +8489,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 181,
-       "temporaries": 5,
+       "lines": 182,
+       "temporaries": 4,
        "labels": 1,
        "gotos": 31,
        "terminationChecks": 16,
@@ -10824,7 +10821,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 5,
-      "declarations": 6,
+      "declarations": 7,
       "decimalLiterals": 13
      }
     },
@@ -11079,13 +11076,6 @@
         "getStateThing"
        ]
       },
-      "pCVar9_3": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
-       ]
-      },
       "r1": {
        "name": "mkWbwFirstspawnb",
        "basis": "consistent call/state result",
@@ -11113,12 +11103,19 @@
        "assignmentRoles": [
         "resource"
        ]
+      },
+      "xStack_48": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
       }
      },
      "splitLocals": {
       "bVar15": {
        "declarationLine": 3,
-       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
        "versions": {
         "bVar15_1": [],
         "bVar15_2": [
@@ -11163,7 +11160,7 @@
       },
       "cVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
        "versions": {
         "cVar7_1": [
          60
@@ -11176,30 +11173,27 @@
         ]
        }
       },
-      "pCVar9": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
-       "versions": {
-        "pCVar9_1": [
-         26
-        ],
-        "pCVar9_2": [
-         28
-        ],
-        "pCVar9_3": [
-         40
-        ]
-       }
-      },
       "pCVar11": {
        "declarationLine": 3,
-       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
        "versions": {
         "pCVar11_1": [
          53
         ],
         "pCVar11_2": [
          90
+        ]
+       }
+      },
+      "pCVar9": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
+       "versions": {
+        "pCVar9_1": [
+         26
+        ],
+        "pCVar9_2": [
+         28
         ]
        }
       }
@@ -11214,7 +11208,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar15_13, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pCVar9_3, pQuestName, r1, xStack_10, xStack_20, xStack_30\n",
+        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar15_13, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
         "119": "            bVar15_12 = true\n",
         "121": "            quest:SetQuestAsFailed(pQuestName, bVar15_12, \"\", bVar16)\n"
        }
@@ -11707,7 +11701,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 110,
+     "sourceLine": 109,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11716,7 +11710,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 119,
+     "sourceLine": 118,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11725,7 +11719,7 @@
     },
     {
      "function": "MonitorBalverine",
-     "sourceLine": 122,
+     "sourceLine": 121,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11734,7 +11728,7 @@
     },
     {
      "function": "SpawnBalverines",
-     "sourceLine": 143,
+     "sourceLine": 142,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11747,7 +11741,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 8,
+       "splitLocals": 7,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -11756,7 +11750,7 @@
        "exitChecksInlined": 2,
        "frameChecks": 2,
        "inlinedTemporaries": 13,
-       "deadDefinitions": 1,
+       "deadDefinitions": 2,
        "guardWrappers": 0,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
@@ -11781,7 +11775,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 13,
+       "sunkLocals": 11,
        "cleanupClosureNames": 0,
        "parentheses": 7,
        "cosmetics": 0,
@@ -11799,7 +11793,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 103,
+       "lines": 102,
        "temporaries": 6,
        "labels": 4,
        "gotos": 10,

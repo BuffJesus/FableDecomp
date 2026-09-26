@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
+    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_20c, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -455,7 +455,7 @@ function Main(quest, me)
                         x_stk_260 = resources:ScriptThing(xStack_364)
                         fVar13 = quest:GetHealth(nil --[[missing]])
                         cVar6 = 0.0 < fVar13
-                        xStack_214 = nil
+                        x_stk_20c = nil
                         x_stk_260 = 0
                         if not cVar6 then
                             goto LAB_00e42003

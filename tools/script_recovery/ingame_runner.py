@@ -268,8 +268,10 @@ def play(a, q) -> str:
             # no reply = frames paused. A step's own pause ladder handles box-less full-screen menus too: bc13's
             # Quest Completed screen came up on arrival from the boss area, `clear` found no box, and the region
             # wait timed out with the quest already complete (so nothing was harvested)
+            # (a quest's start screen shown on activation pauses frames with no box for `clear`: wb1's crossing to
+            # Knothole Glade waited behind White Balverine's; ENTER is safe here because frames are paused)
             ladder = ((steps[min(step_i, len(steps) - 1)].get('pauseSteps') if steps else None) or q.get('pauseSteps')
-                      if val is None else None) or ['clear']
+                      or ['clear', 'key ENTER'] if val is None else None) or ['clear']
             game_input(ladder[unanswered % len(ladder)])   # a region's arrival boxes pause script frames
             unanswered += val is None
             time.sleep(2)

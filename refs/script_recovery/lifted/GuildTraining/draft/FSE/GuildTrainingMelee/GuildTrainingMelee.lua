@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local bUnknown, bVar6, iVar8, native_arg_sequence_1, pCVar4, pPosition, pThingToMove, pppuVar7, r1, xStack_10, xStack_20
+    local bUnknown, bVar6, iVar8, native_arg_sequence_1, pCVar4, pPosition, pThingToMove, pppuVar7, r1, xStack_10, xStack_20, xStack_2c, xStack_3c
     local alive = true
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster", 1)
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent", 1)
@@ -61,18 +61,18 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
         if not bVar6 then
-            pCVar4 = resources:NewActorMap()
-            resources:SetActor(pCVar4, "HERO", xStack_10)
-            resources:SetActor(pCVar4, "WHISPER", xStack_20)
-            pThingToMove = resources:StartMovie("")
+            xStack_2c = resources:NewActorMap()
+            resources:SetActor(xStack_2c, "HERO", xStack_10)
+            resources:SetActor(xStack_2c, "WHISPER", xStack_20)
+            xStack_3c = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            resources:RunMacro("CS_GUILD_MELEE_INTRO", pCVar4, false, true)
+            resources:RunMacro("CS_GUILD_MELEE_INTRO", xStack_2c, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:SetStateBool("TalkedToWhisper", true)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(pThingToMove)
-            resources:DestroyActorMap(pCVar4)
+            resources:DestroyMovie(xStack_3c)
+            resources:DestroyActorMap(xStack_2c)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
             quest:AddLogbookStoryEntry(40)
             bVar6 = quest:DisplayTutorial(0x1a)

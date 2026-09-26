@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_118, xStack_168, xStack_c0, xStack_e8, xStack_f8
+    local __native_condition_1, bVar3, bVar5, cVar4, c_stk_169, c_stk_171, fVar19, fVar2, f_stk_20, fret_0, fret_00, fret_01, fret_02, fret_03, iVar20, iVar8, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_switch_1, p0, p4, p5, pCVar12, pCVar13, pCVar14, pCVar6, pcVar21, piVar11, puVar7, pvVar9, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, uVar16, uVar18, xStack_108, xStack_118, xStack_150, xStack_168, xStack_c0, xStack_e8, xStack_f8
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -945,7 +945,7 @@ function Main(quest, me)
                 alive = quest:NewScriptFrame(me)
             end
         else
-            r8 = resources:StartMovie("")
+            xStack_108 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             r9 = quest:GetNearestWithScriptName(me, "DarkwoodTrader")
             r10 = quest:GetFurthestWithScriptName(me, "DarkwoodTrader")
@@ -984,7 +984,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_118)
                     resources:ReleaseResource(xStack_e8)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(r8)
+                    resources:DestroyMovie(xStack_108)
                     goto LAB_00e085f8
                 end
                 ::LAB_00e07c7c::
@@ -1010,9 +1010,9 @@ function Main(quest, me)
                     r10 = xStack_c0
                 end
                 quest:FixMovieSequenceCamera(true)
-                r5 = resources:NewActorMap()
-                resources:SetActor(r5, "HERO", xStack_e8)
-                resources:SetActor(r5, "TRADERI", xStack_168)
+                xStack_150 = resources:NewActorMap()
+                resources:SetActor(xStack_150, "HERO", xStack_e8)
+                resources:SetActor(xStack_150, "TRADERI", xStack_168)
                 iVar8 = (r9 ~= nil and r9:IsAlive())
                 if not iVar8 then
                     goto LAB_00e081e9
@@ -1049,14 +1049,14 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if not bVar3 then
-                                    resources:SetActor(r5, "TRADERS", xStack_118)
-                                    resources:SetActor(r5, "TRADERN", xStack_f8)
+                                    resources:SetActor(xStack_150, "TRADERS", xStack_118)
+                                    resources:SetActor(xStack_150, "TRADERN", xStack_f8)
                                     pcVar21 = "CS_DARKWOOD_TRADER_INFECTED_BOTH"
                                     goto LAB_00e081c2
                                 end
                             end
                             ::LAB_00e07e30::
-                            resources:DestroyActorMap(r5)
+                            resources:DestroyActorMap(xStack_150)
                             goto LAB_00e07db9
                         end
                         piVar11 = r9:GetDataString()
@@ -1070,7 +1070,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                resources:DestroyActorMap(r5)
+                                resources:DestroyActorMap(xStack_150)
                                 goto LAB_00e07db9
                             end
                             resources:PrepareResource(xStack_f8)
@@ -1080,7 +1080,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
-                                    resources:DestroyActorMap(r5)
+                                    resources:DestroyActorMap(xStack_150)
                                     goto LAB_00e07db9
                                 end
                                 bVar3 = resources:TryAcquire(xStack_f8, r9, 4)
@@ -1088,7 +1088,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if not bVar3 then
-                                resources:SetActor(r5, "TRADERN", xStack_f8)
+                                resources:SetActor(xStack_150, "TRADERN", xStack_f8)
                                 pcVar21 = "CS_DARKWOOD_TRADER_INFECTED_NORMAL"
                                 goto LAB_00e081c2
                             end
@@ -1108,7 +1108,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if not bVar3 then
-                                    resources:SetActor(r5, "TRADERS", xStack_118)
+                                    resources:SetActor(xStack_150, "TRADERS", xStack_118)
                                     pcVar21 = "CS_DARKWOOD_TRADER_INFECTED_SCARED"
                                     goto LAB_00e081c2
                                 end
@@ -1117,10 +1117,10 @@ function Main(quest, me)
                         end
                         goto FLOW_past_lab_00e081c2
                         ::LAB_00e081c2::
-                        resources:RunMacro(pcVar21, r5, false, true)
+                        resources:RunMacro(pcVar21, xStack_150, false, true)
                         goto LAB_00e081e9
                         ::FLOW_hoist_lab_00e081c2_1::
-                        resources:DestroyActorMap(r5)
+                        resources:DestroyActorMap(xStack_150)
                         goto LAB_00e07db9
                         ::FLOW_past_lab_00e081c2::
                     end
@@ -1135,7 +1135,7 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then
                         -- LAB_00e07e30_c7: (native jump target)
-                        resources:DestroyActorMap(r5)
+                        resources:DestroyActorMap(xStack_150)
                         goto LAB_00e07db9
                     end
                     iVar8 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -1148,7 +1148,7 @@ function Main(quest, me)
                     if iVar8 == 1 then
                         if bVar3 then
                             -- LAB_00e07e30_c8: (native jump target)
-                            resources:DestroyActorMap(r5)
+                            resources:DestroyActorMap(xStack_150)
                             goto LAB_00e07db9
                         end
                         c_stk_169 = 1
@@ -1157,14 +1157,14 @@ function Main(quest, me)
                         if bVar3 then goto LAB_00e07db0 end
                         pcVar21 = "CS_DARKWOOD_TRADER_INFECTED_LEAVES"
                     end
-                    resources:RunMacro(pcVar21, r5, false, true)
+                    resources:RunMacro(pcVar21, xStack_150, false, true)
                     quest:FixMovieSequenceCamera(false)
-                    resources:DestroyActorMap(r5)
+                    resources:DestroyActorMap(xStack_150)
                     resources:ReleaseResource(xStack_f8)
                     resources:ReleaseResource(xStack_118)
                     resources:ReleaseResource(xStack_e8)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(r8)
+                    resources:DestroyMovie(xStack_108)
                     if c_stk_169 == 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -1185,14 +1185,14 @@ function Main(quest, me)
                 end
                 ::FLOW_past_lab_00e081e9::
                 ::LAB_00e07db0::
-                resources:DestroyActorMap(r5)
+                resources:DestroyActorMap(xStack_150)
             end
             ::LAB_00e07db9::
             resources:ReleaseResource(xStack_f8)
             resources:ReleaseResource(xStack_118)
             resources:ReleaseResource(xStack_e8)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(r8)
+            resources:DestroyMovie(xStack_108)
         end
     end
     ::LAB_00e085f8::
@@ -1211,7 +1211,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if not bVar3 then
-        bVar3 = quest:IsDistanceBetweenThingsOver(me, r5, 7.0)
+        bVar3 = quest:IsDistanceBetweenThingsOver(me, xStack_150, 7.0)
         if bVar3 then
             repeat
                 alive = quest:NewScriptFrame(me)
@@ -1225,7 +1225,7 @@ function Main(quest, me)
                     if bVar3 then goto LAB_00e0a346 end
                     me:MoveToThing(pCVar6, 4.0, 0)
                 end
-                bVar3 = quest:IsDistanceBetweenThingsOver(me, r5, 7.0)
+                bVar3 = quest:IsDistanceBetweenThingsOver(me, xStack_150, 7.0)
             until not (bVar3)
         end
         alive = not quest:IsActiveThreadTerminating()

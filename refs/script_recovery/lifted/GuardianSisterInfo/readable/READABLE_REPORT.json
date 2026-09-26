@@ -350,13 +350,6 @@
         "hero"
        ]
       },
-      "pCVar6_9": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
-       ]
-      },
       "pCVar9_1": {
        "name": "getActiveQuestName",
        "basis": "consistent call/state result",
@@ -419,6 +412,13 @@
         "movie"
        ]
       },
+      "xStack_54": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
+      },
       "xStack_8c": {
        "name": "newResource",
        "basis": "one method, several names",
@@ -442,7 +442,7 @@
      "splitLocals": {
       "bVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "bVar4_1": [
          7
@@ -530,7 +530,7 @@
       },
       "pCVar6": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "pCVar6_1": [
          22
@@ -555,15 +555,12 @@
         ],
         "pCVar6_8": [
          165
-        ],
-        "pCVar6_9": [
-         167
         ]
        }
       },
       "iVar11": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "iVar11_1": [
          113
@@ -578,7 +575,7 @@
       },
       "iVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "iVar7_1": [
          41
@@ -593,7 +590,7 @@
       },
       "pCVar9": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "pCVar9_1": [
          182
@@ -605,7 +602,7 @@
       },
       "uVar13": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "uVar13_1": [
          30,
@@ -628,7 +625,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "53": "                        bVar4_9 = false\n",
         "55": "                        quest:EntitySetFacingAngleTowardsThing(me, pCVar6_5, bVar4_9)\n"
        }
@@ -641,7 +638,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "181": "                        bVar4_25 = false\n",
         "183": "                        quest:SetQuestAsCompleted(pCVar9_1, bVar4_25, b2, b3)\n"
        }
@@ -654,7 +651,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "108": "                        fVar3 = 0.0\n",
         "109": "                        if fVar3 < fret_0 then\n"
        }
@@ -667,7 +664,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "113": "                            iVar11_1 = 0\n",
         "116": "                            r1 = me:Speak(pCVar6_7, p1, iVar11_1, (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
@@ -680,7 +677,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "112": "                            iVar7_2 = 0\n",
         "116": "                            r1 = me:Speak(pCVar6_7, p1, (0), (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
@@ -693,7 +690,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "163": "                        iVar7_3 = 4\n",
         "166": "                        resources:TryAcquire(pCVar12, pCVar6_8, iVar7_3)\n"
        }
@@ -706,7 +703,7 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar6_9, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_8c, x_stk_c\n",
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
         "184": "                        uVar13_2 = 0\n",
         "186": "                        quest:DeactivateQuestLater(pCVar9_2, uVar13_2)\n"
        }
