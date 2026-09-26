@@ -168,6 +168,9 @@ function Init(quest)
     quest:SetMasterGameState("TCGMadeTimeLimit", false)
 end
 
+function OnPersist(quest, context)
+end
+
 function WatchTimeLimit(quest)
     local CVar2, bVar3, cVar1, iStack_8, iVar4
     local alive = true

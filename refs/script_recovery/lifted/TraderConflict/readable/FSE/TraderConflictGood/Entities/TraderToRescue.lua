@@ -13,34 +13,35 @@ local barIndex
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult2, predicateResult3, predicateResult4, predicateResult5
-    local predicateResult, predicateResult14, scratchValue12, predicateResult18, predicateResult19
-    local predicateResult23, scratchValue13, isRegionLoaded, dist, getHeroTargetedThing
-    local scratchValue23, getDataString, scratchValue25, banditHostageKeeper, teleporterMarker
-    local conversationId, scratchValue29, scratchValue30, scratchValue31, scratchValue32
-    local scratchValue33, timerId, timerId2, scratchValue34, line, timerId3, scratchValue36
-    local timerId4, movie3, timerId5
+    local scratchValue, predicateResult6, predicateResult9, predicateResult, scratchValue12
+    local predicateResult14, predicateResult15, predicateResult19, controlAcquired
+    local predicateResult28, predicateResult29, predicateResult30, predicateResult31
+    local msgIsHitByAnySpecialAbilityFromHero, getStateBool, isRegionLoaded, conversationId, timerId
+    local sequence1, getDataString, getHeroTargetedThing, scratchValue27, teleporterMarker
+    local scratchValue31, scratchValue32, timerId2, timerId3, scratchValue34, line, timerId4
+    local msgExpressionPerformedTo, timerId5, movie3
+    msgIsHitByAnySpecialAbilityFromHero = false
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("IntroDone") do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    scratchValue32 = resources:NewResource()
-    resources:PrepareResource(scratchValue32)
-    while not me:AcquireControl(4) do
+    local resource = resources:NewResource()
+    resources:PrepareResource(resource)
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00e005f9 end
     end
     if not quest:IsActiveThreadTerminating() then
+        timerId5 = quest:RegisterTimer()
         timerId4 = quest:RegisterTimer()
-        timerId3 = quest:RegisterTimer()
-        banditHostageKeeper = quest:GetNearestWithScriptName(me, "TC_BanditHostageKeeper")
+        local banditHostageKeeper = quest:GetNearestWithScriptName(me, "TC_BanditHostageKeeper")
         isRegionLoaded = 0
-        predicateResult2 = quest:IsActiveThreadTerminating()
+        predicateResult28 = quest:IsActiveThreadTerminating()
         repeat
-            if predicateResult2 then
-                quest:DeregisterTimer(timerId3)
+            if predicateResult28 then
                 quest:DeregisterTimer(timerId4)
-                resources:ReleaseResource(scratchValue32)
+                quest:DeregisterTimer(timerId5)
+                resources:ReleaseResource(resource)
                 return
             end
             if me:IsTalkedToByHero() then goto LAB_00dfe32c end
@@ -48,35 +49,43 @@ function Main(quest, me)
             if getDataString ~= nil and getDataString == "TRADERB" then
                 if quest:GetStateBool("OpenedCage") then goto LAB_00dfe32c end
             end
-            scratchValue36 = me:MsgExpressionPerformedTo()
-            if scratchValue36 == nil then goto LAB_00dfe4df end
-            if scratchValue36 == nil then
+            msgExpressionPerformedTo = me:MsgExpressionPerformedTo()
+            if msgExpressionPerformedTo == nil then goto LAB_00dfe4df end
+            if msgExpressionPerformedTo == nil then
                 goto LAB_00dfe4df
             else
-                if scratchValue36 ~= "EXPRESSION_FOLLOW" then goto LAB_00dfe4df end
+                if msgExpressionPerformedTo ~= "EXPRESSION_FOLLOW" then goto LAB_00dfe4df end
             end
             goto LAB_00dfe32c
             goto FLOW_past_lab_00dfe4df
             ::LAB_00dfe4df::
-            predicateResult3 = false
+            predicateResult29 = false
             ::FLOW_past_lab_00dfe4df::
             goto FLOW_past_lab_00dfe32c
             ::LAB_00dfe32c::
-            predicateResult3 = true
+            predicateResult29 = true
             ::FLOW_past_lab_00dfe32c::
-            if predicateResult3 then
+            scratchValue32 = 0
+            if predicateResult29 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                 movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                scratchValue32 = resources:ScriptThing(scratchValue33)
-                if quest:GetHealth(scratchValue32) <= 0.0 then goto LAB_00dfebc5 end
+                if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00dfebc5 end
                 me:Speak(hero, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_INTRO", 0, false, true, false)
-                scratchValue13 = me:IsPerformingScriptTask()
+                getStateBool = me:IsPerformingScriptTask()
                 goto LAB_00dfeb57
             end
-            local sequence1 = quest:GetTimer(timerId3) == 0 or (isRegionLoaded == 0 and not (banditHostageKeeper ~= nil and banditHostageKeeper:IsAlive()))
+            timerId = quest:GetTimer(timerId4)
+            sequence1 = timerId == 0
+            if not sequence1 then
+                timerId = timerId5
+                sequence1 = isRegionLoaded == 0
+                if sequence1 then
+                    timerId = timerId5
+                    sequence1 = not (banditHostageKeeper ~= nil and banditHostageKeeper:IsAlive())
+                end
+            end
             if sequence1 then
-                dist = 15.0
                 if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
@@ -94,19 +103,20 @@ function Main(quest, me)
                         quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_OVERHERE", me, hero, false)
                     end
                     quest:SetTimer(timerId4, 10)
-                    quest:SetTimer(timerId4, quest:GetTimer(timerId4) + 5)
+                    timerId = timerId5
+                    quest:SetTimer(timerId5, quest:GetTimer(timerId5) + 5)
                 end
             end
-            if quest:GetTimer(timerId4) ~= 0 then goto LAB_00dfe63d end
+            if quest:GetTimer(timerId) ~= 0 then goto LAB_00dfe63d end
             getHeroTargetedThing = quest:GetHeroTargetedThing()
             if not (getHeroTargetedThing ~= nil and getHeroTargetedThing:IsEqualTo(me)) then goto LAB_00dfe63d end
-            predicateResult4 = true
+            predicateResult30 = true
             if not quest:IsPlayerHoldingLockTargetButton() then goto LAB_00dfe63d end
             goto FLOW_past_lab_00dfe63d
             ::LAB_00dfe63d::
-            predicateResult4 = false
+            predicateResult30 = false
             ::FLOW_past_lab_00dfe63d::
-            if predicateResult4 then
+            if predicateResult30 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                 local sequence = IsPlayerThreateningEntity(me) == 0 or math.random(0, 32767) % 3 ~= 0
                 if sequence then
@@ -120,42 +130,44 @@ function Main(quest, me)
                     quest:AddPersonToConversation(conversationId, hero)
                     quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_THREATENWEAPON", me, hero, false)
                 end
-                quest:SetTimer(timerId4, 20)
-                quest:SetTimer(quest:GetTimer(timerId5) + 5, dist)
+                quest:SetTimer(timerId5, 20)
+                quest:SetTimer(timerId4, quest:GetTimer(timerId4) + 5)
             end
             if me:MsgIsHitByHero() then
                 goto LAB_00dfe8b5
             else
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    msgIsHitByAnySpecialAbilityFromHero = true
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dfe8b5 end
                 end
-                predicateResult5 = false
+                msgIsHitByAnySpecialAbilityFromHero = true
+                predicateResult31 = false
             end
             goto FLOW_past_lab_00dfe8b5
             ::LAB_00dfe8b5::
-            predicateResult5 = true
+            predicateResult31 = true
             ::FLOW_past_lab_00dfe8b5::
-            if not predicateResult5 then quest:NewScriptFrame(me); predicateResult2 = quest:IsActiveThreadTerminating(); goto continue_1 end
+            if not predicateResult31 then quest:NewScriptFrame(me); predicateResult28 = quest:IsActiveThreadTerminating(); goto continue_1 end
             if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
             conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONHIT", me, hero, false)
-            quest:SetTimer(timerId4, 10)
+            quest:SetTimer(timerId5, 10)
             quest:NewScriptFrame(me)
-            predicateResult2 = quest:IsActiveThreadTerminating()
+            predicateResult28 = quest:IsActiveThreadTerminating()
             ::continue_1::
         until false
     end
     goto LAB_00e005f9
     ::LAB_00dfeb57::
-    if scratchValue13 then
+    if getStateBool then
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie3)
             goto LAB_00e005d5
         end
-        scratchValue13 = me:IsPerformingScriptTask()
+        getStateBool = me:IsPerformingScriptTask()
         goto LAB_00dfeb57
     end
     if not quest:IsActiveThreadTerminating() then goto LAB_00dfebc5 end
@@ -169,7 +181,7 @@ function Main(quest, me)
         quest:DeactivateQuest("Q_TraderConflictGood_Extras", 0)
         quest:ActivateQuest("Q_TraderConflictGood_Extras")
         quest:SetIsPushableByHero(me, true)
-        quest:EntityFollowThing(me, hero, nil --[[missing]], nil --[[missing]])
+        quest:EntityFollowThing(me, hero, 3.0, true)
         quest:SetEntityAsRegionFollowing(hero, me, true)
         quest:EntitySetOpinionReactionsEnabled(me, false)
         quest:EntitySetDeedReactionsEnabled(me, false)
@@ -183,49 +195,52 @@ function Main(quest, me)
             goto FLOW_past_lab_00dfee05
             ::LAB_00dfee05::
             if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
-            scratchValue25 = "HUD_QUEST_ICON_TRADER_HAT_02"
+            scratchValue27 = "HUD_QUEST_ICON_TRADER_HAT_02"
             goto LAB_00dfee1b
             ::FLOW_past_lab_00dfee05::
             if me:GetDataString() == "TRADERC" then goto LAB_00dfee05 end
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
-            scratchValue25 = "HUD_QUEST_ICON_TRADER"
+            scratchValue27 = "HUD_QUEST_ICON_TRADER"
             goto LAB_00dfee1b
         end
         goto FLOW_past_lab_00dfee1b
         ::LAB_00dfee1b::
-        barIndex = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, scratchValue25, 1.0)
+        barIndex = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, scratchValue27, 1.0)
         ::FLOW_past_lab_00dfee1b::
-        resources:PrepareResource(scratchValue32)
+        resources:PrepareResource(resource)
         while not quest:IsEntityFollowingHero(me) do
             if not quest:NewScriptFrame(me) then goto LAB_00e005d5 end
         end
         if not quest:IsActiveThreadTerminating() then
             quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + 1)
             scratchValue = 10
-            timerId = quest:RegisterTimer()
-            quest:SetTimer(timerId, 20)
             timerId2 = quest:RegisterTimer()
-            while not quest:IsActiveThreadTerminating() do
-                isRegionLoaded = not quest:IsRegionLoaded("BanditCampEntrance")
-                while isRegionLoaded do
+            quest:SetTimer(timerId2, 20)
+            timerId3 = quest:RegisterTimer()
+            predicateResult6 = quest:IsActiveThreadTerminating()
+            scratchValue31 = 0
+            while not predicateResult6 do
+                isRegionLoaded = 1 - (quest:IsRegionLoaded("BanditCampEntrance") and 1 or 0)
+                while isRegionLoaded ~= 0 do
                     if not quest:NewScriptFrame(me) then goto LAB_00e005b1 end
                     if me:IsTalkedToByHero() then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         scratchValue34 = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONTALK_"
                         line = scratchValue34 .. tostring(scratchValue)
                         if not quest:TextEntryExists(line) then
+                            scratchValue = 10
                             line = scratchValue34 .. tostring(10)
                         end
-                        -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
-                        resources:PrepareResource(scratchValue23)
-                        while not me:AcquireControl(4) do
+                        -- TODO(native): xStack_118 = (CCharString)((int)CVar18 + 0xa);
+                        resources:PrepareResource(resource)
+                        while not resources:TryAcquire(resource, me, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00e005b1 end
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         local movie = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        if quest:GetHealth(resources:ScriptThing(timerId2)) > 0.0 then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, line, 0, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
@@ -241,89 +256,133 @@ function Main(quest, me)
                                 goto LAB_00e005b1
                             end
                         end
-                        resources:PrepareResource(scratchValue32)
+                        resources:PrepareResource(resource)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                     end
-                    local timeRemaining = quest:GetTimer(timerId4) == 0 and IsPlayerThreateningEntity(me) ~= 0
+                    local timeRemaining = quest:GetTimer(timerId5) == 0 and IsPlayerThreateningEntity(me) ~= 0
                     local scratchValue3 = timeRemaining and quest:IsPlayerHoldingLockTargetButton()
                     if scratchValue3 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         conversationId = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId, hero)
                         quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_THREATEN", me, hero, false)
-                        quest:SetTimer(timerId4, 20)
+                        quest:SetTimer(timerId5, 20)
                     end
-                    if me:MsgIsHitBy("") then goto LAB_00dff3b5 end
-                    if me:MsgIsHitByAnySpecialAbilityFrom("") then goto LAB_00dff3b5 end
-                    goto LAB_00dff3f2
-                    goto FLOW_past_lab_00dff3f2
-                    ::LAB_00dff3f2::
-                    predicateResult = false
-                    ::FLOW_past_lab_00dff3f2::
+                    scratchValue32 = scratchValue31 | 64
+                    if me:MsgIsHitBy("") then
+                        goto LAB_00dff3b5
+                    else
+                        scratchValue32 = scratchValue31 | 192
+                        if me:MsgIsHitByAnySpecialAbilityFrom("") then goto LAB_00dff3b5 end
+                        goto LAB_00dff3f2
+                    end
                     goto FLOW_past_lab_00dff3b5
                     ::LAB_00dff3b5::
-                    predicateResult = true
+                    scratchValue32 = scratchValue32 | 256
+                    predicateResult9 = true
                     if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dff3f2 end
                     ::FLOW_past_lab_00dff3b5::
-                    if predicateResult then
+                    goto FLOW_past_lab_00dff3f2
+                    ::LAB_00dff3f2::
+                    predicateResult9 = false
+                    ::FLOW_past_lab_00dff3f2::
+                    if scratchValue32 & 256 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xfffffeff
+                    end
+                    if scratchValue32 & 64 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xffffffbf
+                    end
+                    if predicateResult9 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                        local health = quest:GetHealth(me) <= 5.0 or quest:GetTimer(scratchValue32) ~= 0
+                        scratchValue31 = scratchValue32
+                        local health = quest:GetHealth(me) <= 5.0 or quest:GetTimer(timerId3) ~= 0
                         if health then
                             goto LAB_00dff54a
                         else
+                            scratchValue31 = scratchValue32 | 512
                             if me:MsgIsHitByHero() then goto LAB_00dff54a end
+                            scratchValue31 = scratchValue32 | 1536
                             if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                                scratchValue31 = scratchValue32 | 3584
                                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dff54a end
                             end
-                            predicateResult14 = true
+                            scratchValue32 = scratchValue31
+                            predicateResult = true
                         end
                         goto FLOW_past_lab_00dff54a
                         ::LAB_00dff54a::
-                        predicateResult14 = false
+                        scratchValue32 = scratchValue31
+                        predicateResult = false
                         ::FLOW_past_lab_00dff54a::
-                        if predicateResult14 then
+                        if scratchValue32 & 2048 ~= 0 then
+                            scratchValue32 = scratchValue32 & 0xfffff7ff
+                        end
+                        if scratchValue32 & 1024 ~= 0 then
+                            scratchValue32 = scratchValue32 & 0xfffffbff
+                        end
+                        if scratchValue32 & 512 ~= 0 then
+                            scratchValue32 = scratchValue32 & 0xfffffdff
+                        end
+                        if predicateResult then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                             if me:GetDataString() ~= "TRADERA" then
                                 if me:GetDataString() ~= "TRADERB" then
-                                    scratchValue = scratchValue32
+                                    scratchValue = 1
                                     if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                    quest:PlaySoundOnThing(me, "SND_MM_TRADER_C_SCREAM_0" .. tostring(scratchValue32))
-                                    scratchValue12 = scratchValue == 4
+                                    quest:PlaySoundOnThing(me, "SND_MM_TRADER_C_SCREAM_0" .. tostring(1))
+                                    scratchValue12 = 1 == 4
                                 else
-                                    scratchValue = scratchValue32
+                                    scratchValue = 1
                                     if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                    quest:PlaySoundOnThing(me, "SND_MM_TRADER_B_SCREAM_0" .. tostring(scratchValue32))
-                                    scratchValue12 = scratchValue == 3
+                                    quest:PlaySoundOnThing(me, "SND_MM_TRADER_B_SCREAM_0" .. tostring(1))
+                                    scratchValue12 = 1 == 3
                                 end
                             else
-                                scratchValue = scratchValue32
+                                scratchValue = 1
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
-                                quest:PlaySoundOnThing(me, "SND_MM_TRADER_A_SCREAM_0" .. tostring(scratchValue32))
-                                scratchValue12 = scratchValue == 3
+                                quest:PlaySoundOnThing(me, "SND_MM_TRADER_A_SCREAM_0" .. tostring(1))
+                                scratchValue12 = 1 == 3
                             end
                             if scratchValue12 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                                 scratchValue = 0
                             end
-                            -- TODO(native): xStack_148 = (CCharString)((int)CVar13 + 1);
-                            quest:SetTimer(4, scratchValue)
+                            -- TODO(native): xStack_14c = (CCharString)((int)CVar18 + 1);
+                            quest:SetTimer(timerId3, 4)
                         else
+                            scratchValue31 = scratchValue32
                             if quest:GetHealth(me) <= 5.0 then
                                 goto LAB_00dff887
                             else
+                                scratchValue31 = scratchValue32 | 4096
                                 if not me:MsgIsHitByHero() then
-                                    if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)) then
-                                        goto LAB_00dff887
+                                    scratchValue31 = scratchValue32 | 0x3000
+                                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                                        scratchValue31 = scratchValue32 | 0x7000
+                                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dff880 end
                                     end
+                                    goto LAB_00dff887
                                 end
-                                predicateResult18 = true
+                                ::LAB_00dff880::
+                                scratchValue32 = scratchValue31
+                                predicateResult14 = true
                             end
                             goto FLOW_past_lab_00dff887
                             ::LAB_00dff887::
-                            predicateResult18 = false
+                            scratchValue32 = scratchValue31
+                            predicateResult14 = false
                             ::FLOW_past_lab_00dff887::
-                            if predicateResult18 then
+                            if scratchValue32 & 0x4000 ~= 0 then
+                                scratchValue32 = scratchValue32 & 0xffffbfff
+                            end
+                            if scratchValue32 & 0x2000 ~= 0 then
+                                scratchValue32 = scratchValue32 & 0xffffdfff
+                            end
+                            if scratchValue32 & 4096 ~= 0 then
+                                scratchValue32 = scratchValue32 & 0xffffefff
+                            end
+                            if predicateResult14 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                                 conversationId = quest:AddNewConversation(me, false, false)
                                 quest:AddPersonToConversation(conversationId, hero)
@@ -331,24 +390,42 @@ function Main(quest, me)
                             end
                         end
                     end
-                    if me:MsgIsHitByHero() then goto LAB_00dffa46 end
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dffa46 end
+                    scratchValue31 = scratchValue32 | 0x8000
+                    if me:MsgIsHitByHero() then
+                        goto LAB_00dffa46
+                    else
+                        scratchValue31 = scratchValue32 | 0x18000
+                        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                            scratchValue31 = scratchValue32 | 0x38000
+                            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00dffa46 end
+                        end
+                        scratchValue32 = scratchValue31
+                        predicateResult15 = false
                     end
-                    predicateResult19 = false
                     goto FLOW_past_lab_00dffa46
                     ::LAB_00dffa46::
-                    predicateResult19 = true
+                    scratchValue32 = scratchValue31
+                    predicateResult15 = true
                     ::FLOW_past_lab_00dffa46::
-                    local sequence3 = predicateResult19 and quest:IsActiveThreadTerminating()
+                    if scratchValue32 & 0x20000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xfffdffff
+                    end
+                    if scratchValue32 & 0x10000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xfffeffff
+                    end
+                    if scratchValue32 & 0x8000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xffff7fff
+                    end
+                    local sequence3 = predicateResult15 and quest:IsActiveThreadTerminating()
                     if sequence3 then goto LAB_00e005b1 end
-                    if not me:MsgExpressionPerformedTo() then isRegionLoaded = not quest:IsRegionLoaded("BanditCampEntrance"); scratchValue = 10; goto continue_3 end
-                    if line ~= nil and line == "EXPRESSION_WAIT" then
+                    msgExpressionPerformedTo = me:MsgExpressionPerformedTo()
+                    if msgExpressionPerformedTo == nil then isRegionLoaded = (1 - (quest:IsRegionLoaded("BanditCampEntrance") and 1 or 0)); scratchValue31 = scratchValue32; goto continue_3 end
+                    if msgExpressionPerformedTo ~= nil and msgExpressionPerformedTo == "EXPRESSION_WAIT" then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005b1 end
                         quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") - 1)
                     end
-                    isRegionLoaded = not quest:IsRegionLoaded("BanditCampEntrance")
-                    scratchValue = 10
+                    isRegionLoaded = 1 - (quest:IsRegionLoaded("BanditCampEntrance") and 1 or 0)
+                    scratchValue31 = scratchValue32
                     ::continue_3::
                 end
                 if quest:IsActiveThreadTerminating() then break end
@@ -361,18 +438,18 @@ function Main(quest, me)
                         scratchValue34 = ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONTALK_"
                         line = scratchValue34 .. tostring(scratchValue)
                         if not quest:TextEntryExists(line) then
+                            scratchValue = 10
                             line = scratchValue34 .. tostring(10)
                         end
-                        -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
-                        resources:PrepareResource(scratchValue23)
-                        while not me:AcquireControl(4) do
+                        -- TODO(native): xStack_118 = (CCharString)((int)CVar18 + 0xa);
+                        resources:PrepareResource(resource)
+                        while not resources:TryAcquire(resource, me, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                         local movie2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        movie3 = resources:ScriptThing(scratchValue32)
-                        if quest:GetHealth(movie3) > 0.0 then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, line, 0, false, true, false)
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
@@ -388,41 +465,57 @@ function Main(quest, me)
                                 goto LAB_00e005ac
                             end
                         end
-                        resources:PrepareResource(scratchValue32)
+                        resources:PrepareResource(resource)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
                     end
-                    local timeRemaining2 = quest:GetTimer(timerId4) == 0 and IsPlayerThreateningEntity(me) ~= 0
+                    local timeRemaining2 = quest:GetTimer(timerId5) == 0 and IsPlayerThreateningEntity(me) ~= 0
                     local scratchValue6 = timeRemaining2 and quest:IsPlayerHoldingLockTargetButton()
                     if scratchValue6 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                         conversationId = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId, hero)
                         quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_THREATEN", me, hero, false)
-                        quest:SetTimer(timerId4, 20)
+                        quest:SetTimer(timerId5, 20)
                     end
-                    if me:MsgIsHitByHero() then goto LAB_00e0006b end
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e0006b end
+                    scratchValue32 = scratchValue31 | 0x40000
+                    if me:MsgIsHitByHero() then
+                        goto LAB_00e0006b
+                    else
+                        scratchValue32 = scratchValue31 | 0xc0000
+                        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                            scratchValue32 = scratchValue31 | 0x1c0000
+                            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e0006b end
+                        end
+                        predicateResult19 = false
                     end
-                    predicateResult23 = false
                     goto FLOW_past_lab_00e0006b
                     ::LAB_00e0006b::
-                    predicateResult23 = true
+                    predicateResult19 = true
                     ::FLOW_past_lab_00e0006b::
-                    if predicateResult23 then
+                    if scratchValue32 & 0x100000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xffefffff
+                    end
+                    if scratchValue32 & 0x80000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xfff7ffff
+                    end
+                    if scratchValue32 & 0x40000 ~= 0 then
+                        scratchValue32 = scratchValue32 & 0xfffbffff
+                    end
+                    if predicateResult19 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                         conversationId = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId, hero)
                         quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_ONHIT", me, hero, false)
                     end
-                    if me:MsgExpressionPerformedTo() then
-                        if timerId3 ~= nil and timerId3 == "EXPRESSION_WAIT" then
+                    msgExpressionPerformedTo = me:MsgExpressionPerformedTo()
+                    if msgExpressionPerformedTo ~= nil then
+                        if msgExpressionPerformedTo ~= nil and msgExpressionPerformedTo == "EXPRESSION_WAIT" then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                             quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") - 1)
                         end
                     end
-                    if not quest:IsDistanceBetweenThingsUnder(me, scratchValue30, 20.0) then isRegionLoaded = quest:IsRegionLoaded("BanditCampEntrance"); scratchValue = 10; goto continue_5 end
+                    if not quest:IsDistanceBetweenThingsUnder(me, teleporterMarker, 20.0) then isRegionLoaded = quest:IsRegionLoaded("BanditCampEntrance"); scratchValue31 = scratchValue32; goto continue_5 end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                     quest:SetStateInt("TradersReachedTeleporter", quest:GetStateInt("TradersReachedTeleporter") + 1)
                     quest:EntityStopFollowing(me)
@@ -438,15 +531,16 @@ function Main(quest, me)
                         goto LAB_00e00595
                     end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
-                    resources:PrepareResource(scratchValue31)
-                    scratchValue13 = me:AcquireControl(4)
+                    resources:PrepareResource(resource)
+                    controlAcquired = resources:TryAcquire(resource, me, 4)
                     goto LAB_00e0035a
                     isRegionLoaded = quest:IsRegionLoaded("BanditCampEntrance")
-                    scratchValue = 10
+                    scratchValue31 = scratchValue32
                     ::continue_5::
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00e005ac end
                 quest:NewScriptFrame(me)
+                predicateResult6 = quest:IsActiveThreadTerminating()
             end
             goto LAB_00e005b1
         end
@@ -454,16 +548,16 @@ function Main(quest, me)
     ::FLOW_past_lab_00dfebc5::
     goto LAB_00e005d5
     ::LAB_00e0035a::
-    if not scratchValue13 then
+    if not controlAcquired then
         if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
-        scratchValue13 = me:AcquireControl(4)
+        controlAcquired = resources:TryAcquire(resource, me, 4)
         goto LAB_00e0035a
     end
     if not quest:IsActiveThreadTerminating() then
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         quest:AddLineToConversation(conversationId, ("TEXT_QST_B11_" .. me:GetDataString()) .. "_FREED_10", me, hero, false)
-        while quest:IsDistanceBetweenThingsOver(me, scratchValue29, 2.0) do
+        while quest:IsDistanceBetweenThingsOver(me, teleporterMarker, 2.0) do
             if quest:GetStateBool("OutroStart") then break end
             if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
             if not me:IsPerformingScriptTask() then
@@ -479,7 +573,7 @@ function Main(quest, me)
                 end
             elseif not quest:IsActiveThreadTerminating() then
                 me:ClearCommands()
-                resources:PrepareResource(banditHostageKeeper)
+                resources:PrepareResource(resource)
                 while not quest:GetStateBool("OutroDone") do
                     if not quest:NewScriptFrame(me) then goto LAB_00e005ac end
                 end
@@ -493,13 +587,13 @@ function Main(quest, me)
     ::FLOW_past_lab_00e00595::
     ::LAB_00e005ac::
     ::LAB_00e005b1::
-    quest:DeregisterTimer(timerId2)
-    quest:DeregisterTimer(timerId)
-    ::LAB_00e005d5::
     quest:DeregisterTimer(timerId3)
+    quest:DeregisterTimer(timerId2)
+    ::LAB_00e005d5::
     quest:DeregisterTimer(timerId4)
+    quest:DeregisterTimer(timerId5)
     ::LAB_00e005f9::
-    resources:ReleaseResource(scratchValue32)
+    resources:ReleaseResource(resource)
 end
 
 -- TraderToRescue.Init (retail 0x00dfb1b0)

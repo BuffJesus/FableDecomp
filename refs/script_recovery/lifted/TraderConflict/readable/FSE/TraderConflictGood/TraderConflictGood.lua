@@ -110,6 +110,10 @@ function Init(quest)
     quest:SetMasterGameState("TCGMadeTimeLimit", false)
 end
 
+-- Q_TraderConflictGood.OnPersist (retail 0x00cbd4e0)
+function OnPersist(quest, context)
+end
+
 -- Q_TraderConflictGood.WatchTimeLimit (retail 0x00dfaeb0)
 function WatchTimeLimit(quest)
     local timerId = quest:RegisterTimer()

@@ -12,112 +12,111 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, bVar4, bVar5, bVar7, bVar8, cVar6, fVar13, fVar2, fret_0, iVar11, iVar12, p0, p1, p4, p5, pCVar10, pCVar9, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_30
+    local bVar2, bVar3, bVar4, bVar6, bVar7, cVar5, fVar1, fVar12, fret_0, iVar10, iVar11, p0, p1, p4, p5, pCVar8, pCVar9, pQuestName, r1, r2, r3, xStack_10, xStack_20, x_stk_2c
     local alive = true
-    bVar7 = false
-    bVar4 = false
+    bVar6 = false
     bVar3 = false
-    bVar8 = false
+    bVar2 = false
+    bVar7 = false
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    bVar5 = not alive
-    if not bVar5 then
+    bVar4 = not alive
+    if not bVar4 then
         xStack_20 = resources:NewResource()
         pQuestName = quest:GetActiveQuestName()
         quest:EntityAttachToScript(me, pQuestName)
         quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
         quest:MiniMapAddMarker(me, "HUD_ORB_GREEN_SMALL")
+        pCVar8 = quest:GetHero()
+        quest:EntitySetThingAsAllyOfThing(me, pCVar8)
         pCVar9 = quest:GetHero()
-        quest:EntitySetThingAsAllyOfThing(me, pCVar9)
-        pCVar10 = quest:GetHero()
-        quest:EntitySetThingAsAllyOfThing(pCVar10, me)
+        quest:EntitySetThingAsAllyOfThing(pCVar9, me)
         quest:EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(me, false)
-        cVar6 = quest:GetStateBool("QuestStartScreened")
-        while not cVar6 do
+        cVar5 = quest:GetStateBool("QuestStartScreened")
+        while not cVar5 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            bVar5 = not alive
-            if bVar5 then goto LAB_00df87fe end
-            cVar6 = quest:GetStateBool("QuestStartScreened")
+            bVar4 = not alive
+            if bVar4 then goto LAB_00df87fe end
+            cVar5 = quest:GetStateBool("QuestStartScreened")
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar5 = not alive
-        if not bVar5 then
-            bVar5 = true
-            fVar13 = 1.0
-            pCVar9 = quest:GetHero()
-            quest:EntityFollowThing(me, pCVar9, fVar13, bVar5)
+        bVar4 = not alive
+        if not bVar4 then
+            bVar4 = true
+            fVar12 = 1.0
+            pCVar8 = quest:GetHero()
+            quest:EntityFollowThing(me, pCVar8, fVar12, bVar4)
             r1 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_BANDIT", 1.0)
-            cVar6 = quest:GetStateBool("MissionSucceeded")
-            while not cVar6 do
+            cVar5 = quest:GetStateBool("MissionSucceeded")
+            while not cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                bVar5 = not alive
-                if bVar5 then goto LAB_00df87fe end
+                bVar4 = not alive
+                if bVar4 then goto LAB_00df87fe end
                 if not __native_entity_state:GetStateBool("SetAgainstHero") then
-                    bVar8 = true
-                    bVar5 = me:IsTalkedToByHero()
-                    if not bVar5 then goto LAB_00df82d0 end
-                    bVar5 = true
+                    bVar7 = true
+                    bVar4 = me:IsTalkedToByHero()
+                    if not bVar4 then goto LAB_00df82d0 end
+                    bVar4 = true
                 else
                     goto LAB_00df82d0
                 end
                 goto FLOW_past_lab_00df82d0
                 ::LAB_00df82d0::
-                bVar5 = false
+                bVar4 = false
                 ::FLOW_past_lab_00df82d0::
-                if bVar8 then
-                    bVar8 = false
+                if bVar7 then
+                    bVar7 = false
                 end
-                if bVar5 then
+                if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar5 = not alive
-                    if bVar5 then goto LAB_00df87fe end
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00df87fe end
                     resources:PrepareResource(xStack_20)
-                    bVar5 = resources:TryAcquire(xStack_20, me, 4)
-                    while not bVar5 do
+                    bVar4 = resources:TryAcquire(xStack_20, me, 4)
+                    while not bVar4 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then goto LAB_00df87fe end
-                        bVar5 = resources:TryAcquire(xStack_20, me, 4)
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00df87fe end
+                        bVar4 = resources:TryAcquire(xStack_20, me, 4)
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar5 = not alive
-                    if bVar5 then goto LAB_00df87fe end
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00df87fe end
                     xStack_10 = resources:StartMovie("")
-                    pCVar10 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_30 = resources:ScriptThing(xStack_20)
-                    pCVar9 = x_stk_30
-                    fret_0 = quest:GetHealth(pCVar9)
-                    fVar2 = 0.0
-                    if fVar2 < fret_0 then
+                    x_stk_2c = resources:ScriptThing(xStack_20)
+                    pCVar8 = x_stk_2c
+                    fret_0 = quest:GetHealth(pCVar8)
+                    fVar1 = 0.0
+                    if fVar1 < fret_0 then
                         p5 = 0
                         p4 = 1
-                        iVar12 = 0
-                        iVar11 = 2
+                        iVar11 = 0
+                        iVar10 = 2
                         p1 = "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO"
-                        pCVar9 = quest:GetHero()
-                        r2 = me:Speak(pCVar9, p1, iVar11, (iVar12 ~= 0), (p4 ~= 0), (p5 ~= 0))
-                        iVar11 = me:IsPerformingScriptTask()
-                        cVar6 = iVar11
-                        while cVar6 do
+                        pCVar8 = quest:GetHero()
+                        r2 = me:Speak(pCVar8, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        iVar10 = me:IsPerformingScriptTask()
+                        cVar5 = iVar10
+                        while cVar5 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then
+                            bVar4 = not alive
+                            if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_10)
                                 resources:ReleaseResource(xStack_20)
                                 return
                             end
-                            iVar11 = me:IsPerformingScriptTask()
-                            cVar6 = iVar11
+                            iVar10 = me:IsPerformingScriptTask()
+                            cVar5 = iVar10
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then
+                        bVar4 = not alive
+                        if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_10)
                             resources:ReleaseResource(xStack_20)
@@ -128,106 +127,106 @@ function Main(quest, me)
                     resources:DestroyMovie(xStack_10)
                 end
                 if not __native_entity_state:GetStateBool("SetAgainstHero") then
-                    bVar7 = me:MsgIsHitByHero()
-                    if not bVar7 then
-                        bVar7 = true
-                        bVar4 = true
-                        bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                        if bVar5 then
-                            bVar7 = true
-                            bVar4 = true
+                    bVar6 = me:MsgIsHitByHero()
+                    if not bVar6 then
+                        bVar6 = true
+                        bVar3 = true
+                        bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                        if bVar4 then
+                            bVar6 = true
                             bVar3 = true
-                            bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not bVar5 then goto LAB_00df8518 end
+                            bVar2 = true
+                            bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                            if not bVar4 then goto LAB_00df8518 end
                         end
                         goto LAB_00df851c
                     end
                     ::LAB_00df8518::
-                    bVar7 = true
-                    bVar5 = true
+                    bVar6 = true
+                    bVar4 = true
                 else
                     goto LAB_00df851c
                 end
                 goto FLOW_past_lab_00df851c
                 ::LAB_00df851c::
-                bVar5 = false
+                bVar4 = false
                 ::FLOW_past_lab_00df851c::
+                if bVar2 then
+                    bVar2 = false
+                end
                 if bVar3 then
                     bVar3 = false
                 end
+                if bVar6 then
+                    bVar6 = false
+                end
                 if bVar4 then
-                    bVar4 = false
-                end
-                if bVar7 then
-                    bVar7 = false
-                end
-                if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar5 = not alive
-                    if bVar5 then goto LAB_00df87fe end
+                    bVar4 = not alive
+                    if bVar4 then goto LAB_00df87fe end
                     if not __native_entity_state:GetStateBool("HitWarning") then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then goto LAB_00df87fe end
-                        iVar12 = quest:AddNewConversation(me, false, false)
-                        pCVar9 = quest:GetHero()
-                        quest:AddPersonToConversation(iVar12, pCVar9)
-                        pCVar9 = quest:GetHero()
-                        quest:AddLineToConversation(iVar12, "TEXT_QST_B12_BANDIT_FOLLOWER_ON_HIT_10", me, pCVar9, false)
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00df87fe end
+                        iVar11 = quest:AddNewConversation(me, false, false)
+                        pCVar8 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar11, pCVar8)
+                        pCVar8 = quest:GetHero()
+                        quest:AddLineToConversation(iVar11, "TEXT_QST_B12_BANDIT_FOLLOWER_ON_HIT_10", me, pCVar8, false)
                         __native_entity_state:SetStateBool("HitWarning", true)
                     elseif not quest:GetStateBool("HeroAttackedBandit") then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then goto LAB_00df87fe end
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00df87fe end
                         r3 = quest:GetNearestWithScriptName(me, "TC_BanditFighter")
-                        bVar5 = quest:IsDistanceBetweenThingsUnder(me, r3, 15.0)
-                        if bVar5 then
+                        bVar4 = quest:IsDistanceBetweenThingsUnder(me, r3, 15.0)
+                        if bVar4 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then
+                            bVar4 = not alive
+                            if bVar4 then
                                 resources:ReleaseResource(xStack_20)
                                 return
                             end
                             quest:SetStateBool("HeroAttackedBandit", true)
                         end
                         quest:EntityStopFollowing(me)
+                        pCVar8 = quest:GetHero()
+                        quest:GiveThingBestEnemyTarget(me, pCVar8)
+                        pCVar8 = quest:GetHero()
+                        quest:EntityUnsetThingAsAllyOfThing(me, pCVar8)
                         pCVar9 = quest:GetHero()
-                        quest:GiveThingBestEnemyTarget(me, pCVar9)
-                        pCVar9 = quest:GetHero()
-                        quest:EntityUnsetThingAsAllyOfThing(me, pCVar9)
-                        pCVar10 = quest:GetHero()
-                        quest:EntityUnsetThingAsAllyOfThing(pCVar10, me)
+                        quest:EntityUnsetThingAsAllyOfThing(pCVar9, me)
                         __native_entity_state:SetStateBool("SetAgainstHero", true)
                     end
                 end
                 if (not __native_entity_state:GetStateBool("SetAgainstHero")) and (quest:GetStateBool("HeroAttackedBandit")) then
-                    fVar13 = 15.0
-                    pCVar9 = quest:GetHero()
-                    bVar5 = quest:IsDistanceBetweenThingsUnder(me, pCVar9, fVar13)
-                    if bVar5 then
+                    fVar12 = 15.0
+                    pCVar8 = quest:GetHero()
+                    bVar4 = quest:IsDistanceBetweenThingsUnder(me, pCVar8, fVar12)
+                    if bVar4 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then goto LAB_00df87fe end
-                        iVar12 = quest:AddNewConversation(me, false, false)
-                        pCVar9 = quest:GetHero()
-                        quest:AddPersonToConversation(iVar12, pCVar9)
-                        pCVar9 = quest:GetHero()
-                        quest:AddLineToConversation(iVar12, "TEXT_QST_B12_BANDIT_FOLLOWER_SEEKING_REVENGE_10", me, pCVar9, false)
+                        bVar4 = not alive
+                        if bVar4 then goto LAB_00df87fe end
+                        iVar11 = quest:AddNewConversation(me, false, false)
+                        pCVar8 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar11, pCVar8)
+                        pCVar8 = quest:GetHero()
+                        quest:AddLineToConversation(iVar11, "TEXT_QST_B12_BANDIT_FOLLOWER_SEEKING_REVENGE_10", me, pCVar8, false)
                         quest:EntityStopFollowing(me)
+                        pCVar8 = quest:GetHero()
+                        quest:GiveThingBestEnemyTarget(me, pCVar8)
+                        pCVar8 = quest:GetHero()
+                        quest:EntityUnsetThingAsAllyOfThing(me, pCVar8)
                         pCVar9 = quest:GetHero()
-                        quest:GiveThingBestEnemyTarget(me, pCVar9)
-                        pCVar9 = quest:GetHero()
-                        quest:EntityUnsetThingAsAllyOfThing(me, pCVar9)
-                        pCVar10 = quest:GetHero()
-                        quest:EntityUnsetThingAsAllyOfThing(pCVar10, me)
+                        quest:EntityUnsetThingAsAllyOfThing(pCVar9, me)
                         __native_entity_state:SetStateBool("SetAgainstHero", true)
                     end
                 end
-                cVar6 = quest:GetStateBool("MissionSucceeded")
+                cVar5 = quest:GetStateBool("MissionSucceeded")
             end
             alive = not quest:IsActiveThreadTerminating()
-            bVar8 = not alive
-            if not bVar8 then
+            bVar7 = not alive
+            if not bVar7 then
                 quest:RemoveThing(me, false, true)
             end
         end

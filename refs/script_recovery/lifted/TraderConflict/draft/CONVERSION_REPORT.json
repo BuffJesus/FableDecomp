@@ -309,6 +309,28 @@
         },
         {
           "owner": "Q_TraderConflictEvil",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/TraderConflictEvil/TraderConflictEvil.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "Q_TraderConflictEvil",
           "function": "WatchTimeLimit",
           "address": "0x00df7980",
           "path": "FSE/TraderConflictEvil/TraderConflictEvil.lua",
@@ -697,7 +719,7 @@
             "RemoveThing",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 222,
+          "lines": 221,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -711,9 +733,9 @@
             "goto FLOW_past_lab_00df851c;",
             "goto LAB_00df82d0;",
             "goto LAB_00df851c;",
-            "if (!bVar5) goto LAB_00df82d0;",
-            "if (!bVar5) goto LAB_00df8518;",
-            "if (bVar5) goto LAB_00df87fe;"
+            "if (!bVar4) goto LAB_00df82d0;",
+            "if (!bVar4) goto LAB_00df8518;",
+            "if (bVar4) goto LAB_00df87fe;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00df82d0",
@@ -1283,15 +1305,7 @@
           "nativeLabels": []
         }
       ],
-      "missing": [
-        {
-          "owner": "Q_TraderConflictEvil",
-          "function": "OnPersist",
-          "address": "0x00cbd4e0",
-          "path": "FSE/TraderConflictEvil/TraderConflictEvil.lua",
-          "evidence": "cluster lifecycle slot"
-        }
-      ],
+      "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": true,
@@ -1323,9 +1337,9 @@
       },
       "summary": {
         "owners": 6,
-        "functions": 25,
-        "missing": 1,
-        "functionSyntaxPassed": 25,
+        "functions": 26,
+        "missing": 0,
+        "functionSyntaxPassed": 26,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
         "todo": 7
@@ -1496,6 +1510,28 @@
           "readableLocalNames": {},
           "nativeJumps": [],
           "nativeLabels": []
+        },
+        {
+          "owner": "Q_TraderConflictGood",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/TraderConflictGood/TraderConflictGood.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
         },
         {
           "owner": "Q_TraderConflictGood",
@@ -2056,10 +2092,9 @@
             "bsimVoid": false
           },
           "todo": [
-            "EntityFollowThing: missing distance, bUnknown (2 args for 4 params)",
-            "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);",
-            "unlifted: xStack_148 = (CCharString)((int)CVar13 + 1);",
-            "unlifted: xStack_10c = (CCharString)((int)CVar13 + 0xa);"
+            "unlifted: xStack_118 = (CCharString)((int)CVar18 + 0xa);",
+            "unlifted: xStack_14c = (CCharString)((int)CVar18 + 1);",
+            "unlifted: xStack_118 = (CCharString)((int)CVar18 + 0xa);"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2069,10 +2104,10 @@
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RegisterTimer",
             "RegisterTimer",
@@ -2112,7 +2147,6 @@
             "GetHero",
             "GetDataString",
             "ENGINE_Concat",
-            "ENGINE_Concat",
             "AddLineToConversation",
             "ENGINE_Rand",
             "IsActiveThreadTerminating",
@@ -2121,7 +2155,6 @@
             "AddPersonToConversation",
             "GetHero",
             "GetDataString",
-            "ENGINE_Concat",
             "ENGINE_Concat",
             "AddLineToConversation",
             "SetTimer",
@@ -2227,10 +2260,10 @@
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -2328,10 +2361,10 @@
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -2393,14 +2426,14 @@
             "SetStateBool",
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2434,7 +2467,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 952,
+          "lines": 1066,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2484,31 +2517,32 @@
             "goto LAB_00e005b1;",
             "goto LAB_00e005d5;",
             "goto LAB_00e005f9;",
-            "if (!bVar2) goto LAB_00dfe4df;",
-            "if (!bVar2) goto LAB_00dfe63d;",
-            "if (!bVar2) goto LAB_00dfe8b5;",
-            "if (!cVar3) goto LAB_00dfe63d;",
-            "if (!cVar3) goto LAB_00dfeb80;",
-            "if (!cVar3) goto LAB_00dff54a;",
-            "if (!cVar3) goto LAB_00dff880;",
-            "if (!cVar3) goto LAB_00dffa46;",
-            "if (!cVar3) goto LAB_00e0006b;",
-            "if (!p0_00_b3) goto LAB_00dfebc5;",
+            "if (!bVar10) goto LAB_00dff54a;",
+            "if (!bVar10) goto LAB_00dff880;",
+            "if (!bVar10) goto LAB_00dffa46;",
+            "if (!bVar10) goto LAB_00e0006b;",
+            "if (!bVar6) goto LAB_00dfe4df;",
+            "if (!bVar6) goto LAB_00dfe8b5;",
+            "if (!bVar8) goto LAB_00dfe63d;",
+            "if (!cVar7) goto LAB_00dfe63d;",
+            "if (!cVar7) goto LAB_00dfeb80;",
             "if (*(char *)(*(int *)(this + 0x14) + 0x65) != '\\0') goto LAB_00dfe32c;",
-            "if (bVar2) goto LAB_00dfe32c;",
-            "if (bVar2) goto LAB_00e005ac;",
-            "if (bVar2) goto LAB_00e005b1;",
-            "if (bVar2) goto LAB_00e005d5;",
-            "if (bVar2) goto LAB_00e005f9;",
-            "if (cVar3) goto LAB_00dfee05;",
-            "if (cVar3) goto LAB_00dff3b5;",
-            "if (cVar3) goto LAB_00dff3f2;",
-            "if (cVar3) goto LAB_00dff54a;",
-            "if (cVar3) goto LAB_00e0038b;",
-            "if (iVar11 != 0) goto LAB_00dfe4df;",
-            "if (iVar11 == 0) goto LAB_00dfe2e9;",
-            "if (iVar21 == 0) goto LAB_00dffb06;",
-            "if (iVar21 == 0) goto LAB_00e001c0;",
+            "if (bVar10) goto LAB_00dff3b5;",
+            "if (bVar10) goto LAB_00dff54a;",
+            "if (bVar10) goto LAB_00e0038b;",
+            "if (bVar10) goto LAB_00e005ac;",
+            "if (bVar10) goto LAB_00e005b1;",
+            "if (bVar10) goto LAB_00e005d5;",
+            "if (bVar11) goto LAB_00dff3f2;",
+            "if (bVar6) goto LAB_00dfe32c;",
+            "if (bVar6) goto LAB_00e005d5;",
+            "if (bVar6) goto LAB_00e005f9;",
+            "if (c_stk_171 != '\\0') goto LAB_00dfee05;",
+            "if (fret_0 <= fVar3) goto LAB_00dfebc5;",
+            "if (iVar17 != 0) goto LAB_00dfe4df;",
+            "if (iVar17 == 0) goto LAB_00dfe2e9;",
+            "if (iVar17 == 0) goto LAB_00dffb06;",
+            "if (iVar17 == 0) goto LAB_00e001c0;",
             "if (native_arg_sequence_3) goto LAB_00e005b1;"
           ],
           "nativeLabels": [
@@ -3377,15 +3411,7 @@
           "nativeLabels": []
         }
       ],
-      "missing": [
-        {
-          "owner": "Q_TraderConflictGood",
-          "function": "OnPersist",
-          "address": "0x00cbd4e0",
-          "path": "FSE/TraderConflictGood/TraderConflictGood.lua",
-          "evidence": "cluster lifecycle slot"
-        }
-      ],
+      "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": true,
@@ -3415,16 +3441,6 @@
           "AttackPeople": [
             "piStack_14"
           ]
-        },
-        "FSE/TraderConflictGood/Entities/TraderToRescue.lua": {
-          "Main": [
-            "i_stk_15c",
-            "xStack_110",
-            "xStack_114",
-            "xStack_138",
-            "xStack_14c_2",
-            "x_stk_170"
-          ]
         }
       },
       "sharedHelpers": {
@@ -3447,22 +3463,22 @@
       },
       "summary": {
         "owners": 8,
-        "functions": 38,
-        "missing": 1,
-        "functionSyntaxPassed": 38,
+        "functions": 39,
+        "missing": 0,
+        "functionSyntaxPassed": 39,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 20
+        "todo": 19
       }
     }
   ],
   "summary": {
     "owners": 14,
-    "functions": 63,
-    "missing": 2,
-    "functionSyntaxPassed": 63,
+    "functions": 65,
+    "missing": 0,
+    "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 27
+    "todo": 26
   }
 }

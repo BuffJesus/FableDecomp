@@ -6,6 +6,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 |---|---|---|---|---|---:|
 | Q_TraderConflictEvil | Q_TraderConflictEvil | Main | 0x00df6010 | True | 6 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | Init | 0x00df5cd0 | True | 0 |
+| Q_TraderConflictEvil | Q_TraderConflictEvil | OnPersist | 0x00cbd4e0 | True | 0 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | WatchTimeLimit | 0x00df7980 | True | 0 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | UpdateLiveEnemies | 0x00df9b80 | True | 0 |
 | Q_TraderConflictEvil | Q_TraderConflictEvil | helper_DF9E00 | 0x00df9e00 | True | 0 |
@@ -31,6 +32,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictEvil | IsAGuard | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | Main | 0x00dfa450 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | Init | 0x00dfa0e0 | True | 0 |
+| Q_TraderConflictGood | Q_TraderConflictGood | OnPersist | 0x00cbd4e0 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchTimeLimit | 0x00dfaeb0 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchForRegionTransitions | 0x00dfc920 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | WatchForHittingEnemies | 0x00dfc630 | True | 1 |
@@ -39,7 +41,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | Q_TraderConflictGood | UpdateLiveEnemies | 0x00dfc320 | True | 0 |
 | Q_TraderConflictGood | Q_TraderConflictGood | AttackPeople | 0x00dfd600 | True | 8 |
 | Q_TraderConflictGood | Q_TraderConflictGood | helper_DFDED0 | 0x00dfded0 | True | 0 |
-| Q_TraderConflictGood | TraderToRescue | Main | 0x00dfe0f0 | True | 4 |
+| Q_TraderConflictGood | TraderToRescue | Main | 0x00dfe0f0 | True | 3 |
 | Q_TraderConflictGood | TraderToRescue | Init | 0x00dfb1b0 | True | 0 |
 | Q_TraderConflictGood | TraderToRescue | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | TraderToRescue | OnPredicateFail | 0x00dfb100 | True | 0 |
@@ -68,4 +70,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_TraderConflictGood | CampHostageDoor | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_TraderConflictGood | CampHostageDoor | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 14, "functions": 63, "missing": 2, "functionSyntaxPassed": 63, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 27}`
+Summary: `{"owners": 14, "functions": 65, "missing": 0, "functionSyntaxPassed": 65, "fileSyntaxPassed": 15, "fileSyntaxChecked": 15, "todo": 26}`

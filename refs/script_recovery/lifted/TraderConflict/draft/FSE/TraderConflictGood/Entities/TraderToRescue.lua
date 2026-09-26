@@ -12,82 +12,85 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar13, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push3, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_24, bVar2, cVar3, c_stk_161, dist, fVar16, iVar11, iVar18, iVar19, iVar20, iVar21, i_stk_15c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, p0_00, p0_00_b3, p1, pCVar10, pCVar4, pCVar5, pCVar7, pcVar17, piVar9, pvVar8, r1, r2, r3, r4, r5, r6, r7, r8, uVar6, xStack_110, xStack_114, xStack_138, xStack_148, xStack_14c_2, xStack_150, xStack_154, xStack_158, xStack_15c, xStack_164, xStack_168, xStack_16c, xStack_18, xStack_28, xStack_b8, x_stk_170
+    local CVar18, CVar25, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, bVar10, bVar11, bVar4, bVar6, bVar8, bVar9, cVar7, c_stk_155, c_stk_171, fVar26, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar14, iVar17, iVar27, iVar28, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, pCVar12, pCVar13, pCVar15, pCVar20, pcVar21, pvVar16, r1, r2, r3, r4, r5, r6, r7, r8, uVar22, uVar5, u_stk_170, xStack_124, xStack_148, xStack_150, xStack_154, xStack_15c, xStack_160, xStack_164, xStack_168, xStack_16c, xStack_1c, xStack_2c, xStack_b8, x_stk_c
     local alive = true
+    bVar4 = false
+    bVar9 = false
+    bVar11 = false
+    bVar10 = false
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if bVar2 then
+    bVar6 = not alive
+    if bVar6 then
         return
     end
-    cVar3 = quest:GetStateBool("IntroDone")
-    while not cVar3 do
+    cVar7 = quest:GetStateBool("IntroDone")
+    while not cVar7 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if bVar2 then
+        bVar6 = not alive
+        if bVar6 then
             return
         end
-        cVar3 = quest:GetStateBool("IntroDone")
+        cVar7 = quest:GetStateBool("IntroDone")
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if bVar2 then
+    bVar6 = not alive
+    if bVar6 then
         return
     end
     xStack_148 = resources:NewResource()
     resources:PrepareResource(xStack_148)
-    iVar21 = 4
-    p1 = xStack_148
-    cVar3 = me:AcquireControl(4)
-    while not cVar3 do
+    bVar6 = resources:TryAcquire(xStack_148, me, 4)
+    while not bVar6 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if bVar2 then goto LAB_00e005f9 end
-        cVar3 = me:AcquireControl(4)
+        bVar6 = not alive
+        if bVar6 then goto LAB_00e005f9 end
+        bVar6 = resources:TryAcquire(xStack_148, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if not bVar2 then
+    bVar6 = not alive
+    if not bVar6 then
         xStack_16c = quest:RegisterTimer()
         xStack_164 = quest:RegisterTimer()
         r1 = quest:GetNearestWithScriptName(me, "TC_BanditHostageKeeper")
-        c_stk_161 = 0
+        c_stk_155 = 0
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
+        bVar6 = not alive
         repeat
-            if bVar2 then
+            if bVar6 then
                 quest:DeregisterTimer(xStack_164)
                 quest:DeregisterTimer(xStack_16c)
                 resources:ReleaseResource(xStack_148)
                 return
             end
-            bVar2 = me:IsTalkedToByHero()
-            if bVar2 then goto LAB_00dfe32c end
-            pCVar4 = me:GetDataString()
-            if pCVar4 == nil then
-                bVar2 = false
-                if bVar2 then
+            bVar6 = me:IsTalkedToByHero()
+            if bVar6 then goto LAB_00dfe32c end
+            bVar4 = true
+            pCVar12 = me:GetDataString()
+            if pCVar12 == nil then
+                bVar6 = false
+                if bVar6 then
                     goto LAB_00dfe2e9
                 end
             else
-                iVar11 = ((pCVar4 == "TRADERB") and 0 or 1)
-                if iVar11 == 0 then goto LAB_00dfe2e9 end
+                iVar17 = ((pCVar12 == "TRADERB") and 0 or 1)
+                if iVar17 == 0 then goto LAB_00dfe2e9 end
             end
             goto FLOW_past_lab_00dfe2e9
             ::LAB_00dfe2e9::
             if quest:GetStateBool("OpenedCage") then goto LAB_00dfe32c end
             ::FLOW_past_lab_00dfe2e9::
             xStack_168 = me:MsgExpressionPerformedTo()
-            bVar2 = xStack_168 ~= nil
-            if bVar2 then
+            bVar6 = xStack_168 ~= nil
+            if bVar6 then
                 if xStack_168 == nil then
-                    bVar2 = false
-                    if not bVar2 then goto LAB_00dfe4df end
+                    bVar6 = false
+                    if not bVar6 then goto LAB_00dfe4df end
                 else
-                    iVar11 = ((xStack_168 == "EXPRESSION_FOLLOW") and 0 or 1)
-                    if iVar11 ~= 0 then goto LAB_00dfe4df end
+                    iVar17 = ((xStack_168 == "EXPRESSION_FOLLOW") and 0 or 1)
+                    if iVar17 ~= 0 then goto LAB_00dfe4df end
                 end
                 goto LAB_00dfe32c
             else
@@ -95,53 +98,60 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00dfe4df
             ::LAB_00dfe4df::
-            bVar2 = false
+            bVar6 = false
             ::FLOW_past_lab_00dfe4df::
             goto FLOW_past_lab_00dfe32c
             ::LAB_00dfe32c::
-            bVar2 = true
+            bVar6 = true
             ::FLOW_past_lab_00dfe32c::
-            if bVar2 then
+            if bVar4 then
+                bVar4 = false
+            end
+            u_stk_170 = 0
+            if bVar6 then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e005d5 end
+                bVar10 = not alive
+                if bVar10 then goto LAB_00e005d5 end
                 xStack_b8 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                xStack_148 = resources:ScriptThing(xStack_14c_2)
-                pCVar7 = xStack_148
-                fVar16 = quest:GetHealth(pCVar7)
-                p0_00_b3 = not (fVar16 <= 0.0)
-                if not p0_00_b3 then goto LAB_00dfebc5 end
-                iVar19 = 0
-                iVar18 = 1
-                iVar11 = 0
-                pcVar17 = "_INTRO"
-                pCVar4 = me:GetDataString()
-                pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                pCVar4 = (pCVar4 .. pcVar17)
-                pvVar8 = pCVar4
-                iVar21 = quest:GetHero()
-                r2 = me:Speak(iVar21, pvVar8, iVar11, false, (iVar18 ~= 0), (iVar19 ~= 0))
-                iVar21 = me:IsPerformingScriptTask()
-                cVar3 = iVar21
+                xStack_124 = resources:ScriptThing(xStack_148)
+                pCVar13 = xStack_124
+                fret_0 = quest:GetHealth(pCVar13)
+                fVar3 = 0.0
+                if fret_0 <= fVar3 then goto LAB_00dfebc5 end
+                iVar27 = 0
+                iVar14 = 1
+                iVar17 = 0
+                pCVar20 = 0x0
+                pcVar21 = "_INTRO"
+                pCVar12 = me:GetDataString()
+                pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                pCVar12 = (pCVar12 .. pcVar21)
+                pvVar16 = pCVar12
+                pCVar13 = quest:GetHero()
+                r2 = me:Speak(pCVar13, pvVar16, pCVar20, (iVar17 ~= 0), (iVar14 ~= 0), (iVar27 ~= 0))
+                iVar17 = me:IsPerformingScriptTask()
+                cVar7 = iVar17
                 goto LAB_00dfeb57
             end
-            iVar11 = quest:GetTimer(xStack_164)
+            iVar17 = quest:GetTimer(xStack_164)
             native_arg_sequence_1 = false
-            if iVar11 == 0 then
+            if iVar17 == 0 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
             end
             if not native_arg_sequence_1 then
-                if c_stk_161 == 0 then
+                iVar17 = xStack_16c
+                if c_stk_155 == 0 then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
                 end
                 if native_arg_sequence_1 then
-                    cVar3 = (r1 ~= nil and r1:IsAlive())
-                    if not cVar3 then
+                    cVar7 = (r1 ~= nil and r1:IsAlive())
+                    iVar17 = xStack_16c
+                    if not cVar7 then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -149,85 +159,93 @@ function Main(quest, me)
                 end
             end
             if native_arg_sequence_1 then
-                dist = 15.0
-                pCVar5 = quest:GetHero()
-                bVar2 = quest:IsDistanceBetweenThingsUnder(me, pCVar5, dist)
-                if bVar2 then
+                fVar26 = 15.0
+                pCVar13 = quest:GetHero()
+                bVar6 = quest:IsDistanceBetweenThingsUnder(me, pCVar13, fVar26)
+                if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005d5 end
-                    __push1 = quest:GetHero()
-                    quest:EntitySetFacingAngleTowardsThing(me, __push1, false)
-                    __native_condition_1 = c_stk_161 == 0
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00e005d5 end
+                    CVar25 = 0x0
+                    pCVar13 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, pCVar13, (CVar25 ~= 0))
+                    __native_condition_1 = c_stk_155 == 0
                     if __native_condition_1 then
-                        cVar3 = (r1 ~= nil and r1:IsAlive())
-                        __native_condition_1 = not cVar3
+                        cVar7 = (r1 ~= nil and r1:IsAlive())
+                        __native_condition_1 = not cVar7
                     end
                     if __native_condition_1 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005d5 end
-                        uVar6 = quest:AddNewConversation(me, false, false)
-                        __push2 = quest:GetHero()
-                        quest:AddPersonToConversation(uVar6, __push2)
-                        __push3 = quest:GetHero()
-                        pcVar17 = "_KEEPERISDEAD"
-                        pCVar4 = me:GetDataString()
-                        pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                        pCVar4 = (pCVar4 .. pcVar17)
-                        quest:AddLineToConversation(uVar6, pCVar4, me, __push3, false)
-                        c_stk_161 = 1
+                        bVar6 = not alive
+                        if bVar6 then goto LAB_00e005d5 end
+                        iVar14 = quest:AddNewConversation(me, false, false)
+                        pCVar20 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar14, pCVar20)
+                        pCVar15 = quest:GetHero()
+                        uVar22 = false
+                        pcVar21 = "_KEEPERISDEAD"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar20 = (pCVar12 .. pcVar21)
+                        quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
+                        c_stk_155 = 1
                     else
-                        iVar11 = math.random(0, 32767)
-                        if iVar11 % 5 == 0 then
+                        iVar17 = math.random(0, 32767)
+                        if iVar17 % 5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then goto LAB_00e005d5 end
-                            uVar6 = quest:AddNewConversation(me, false, false)
-                            __push4 = quest:GetHero()
-                            quest:AddPersonToConversation(uVar6, __push4)
-                            __push5 = quest:GetHero()
-                            pcVar17 = "_OVERHERE"
-                            pCVar4 = me:GetDataString()
-                            pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                            pCVar4 = (pCVar4 .. pcVar17)
-                            quest:AddLineToConversation(uVar6, pCVar4, me, __push5, false)
+                            bVar6 = not alive
+                            if bVar6 then goto LAB_00e005d5 end
+                            iVar14 = quest:AddNewConversation(me, false, false)
+                            pCVar20 = quest:GetHero()
+                            quest:AddPersonToConversation(iVar14, pCVar20)
+                            pCVar15 = quest:GetHero()
+                            uVar22 = false
+                            pcVar21 = "_OVERHERE"
+                            pCVar12 = me:GetDataString()
+                            pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                            pCVar20 = (pCVar12 .. pcVar21)
+                            quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
                         end
                     end
-                    quest:SetTimer(xStack_16c, 10)
-                    iVar11 = quest:GetTimer(xStack_16c)
-                    quest:SetTimer(xStack_16c, iVar11 + 5)
+                    quest:SetTimer(xStack_164, 10)
+                    iVar17 = xStack_16c
+                    iVar14 = quest:GetTimer(xStack_16c)
+                    quest:SetTimer(iVar17, iVar14 + 5)
                 end
             end
-            iVar11 = quest:GetTimer(xStack_16c)
-            if iVar11 == 0 then
-                iVar11 = quest:GetHeroTargetedThing()
-                bVar2 = (iVar11 ~= nil and iVar11:IsEqualTo(me))
-                if not bVar2 then goto LAB_00dfe63d end
-                cVar3 = quest:IsPlayerHoldingLockTargetButton()
-                bVar2 = true
-                if not cVar3 then goto LAB_00dfe63d end
+            iVar17 = quest:GetTimer(iVar17)
+            if iVar17 == 0 then
+                bVar10 = true
+                pCVar13 = quest:GetHeroTargetedThing()
+                cVar7 = (pCVar13 ~= nil and pCVar13:IsEqualTo(me))
+                if not cVar7 then goto LAB_00dfe63d end
+                bVar8 = quest:IsPlayerHoldingLockTargetButton()
+                bVar6 = true
+                if not bVar8 then goto LAB_00dfe63d end
             else
                 goto LAB_00dfe63d
             end
             goto FLOW_past_lab_00dfe63d
             ::LAB_00dfe63d::
-            bVar2 = false
+            bVar6 = false
             ::FLOW_past_lab_00dfe63d::
-            if bVar2 then
+            if bVar10 then
+                bVar10 = false
+            end
+            if bVar6 then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e005d5 end
-                iVar11 = IsPlayerThreateningEntity(me)
+                bVar6 = not alive
+                if bVar6 then goto LAB_00e005d5 end
+                iVar17 = IsPlayerThreateningEntity(me)
                 native_arg_sequence_2 = false
-                if iVar11 == 0 then
+                if iVar17 == 0 then
                     native_arg_sequence_2 = true
                 else
                     native_arg_sequence_2 = false
                 end
                 if not native_arg_sequence_2 then
-                    iVar11 = math.random(0, 32767)
-                    if iVar11 % 3 ~= 0 then
+                    iVar17 = math.random(0, 32767)
+                    if iVar17 % 3 ~= 0 then
                         native_arg_sequence_2 = true
                     else
                         native_arg_sequence_2 = false
@@ -235,89 +253,101 @@ function Main(quest, me)
                 end
                 if native_arg_sequence_2 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005d5 end
-                    uVar6 = quest:AddNewConversation(me, false, false)
-                    __push6 = quest:GetHero()
-                    quest:AddPersonToConversation(uVar6, __push6)
-                    __push7 = quest:GetHero()
-                    pcVar17 = "_THREATEN"
-                    pCVar4 = me:GetDataString()
-                    pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                    pCVar4 = (pCVar4 .. pcVar17)
-                    quest:AddLineToConversation(uVar6, pCVar4, me, __push7, false)
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00e005d5 end
+                    iVar14 = quest:AddNewConversation(me, false, false)
+                    pCVar20 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar14, pCVar20)
+                    pCVar15 = quest:GetHero()
+                    uVar22 = false
+                    pcVar21 = "_THREATEN"
+                    pCVar12 = me:GetDataString()
+                    pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                    pCVar20 = (pCVar12 .. pcVar21)
+                    quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
                 else
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005d5 end
-                    uVar6 = quest:AddNewConversation(me, false, false)
-                    __push8 = quest:GetHero()
-                    quest:AddPersonToConversation(uVar6, __push8)
-                    __push9 = quest:GetHero()
-                    pcVar17 = "_THREATENWEAPON"
-                    pCVar4 = me:GetDataString()
-                    pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                    pCVar4 = (pCVar4 .. pcVar17)
-                    quest:AddLineToConversation(uVar6, pCVar4, me, __push9, false)
+                    bVar6 = not alive
+                    if bVar6 then goto LAB_00e005d5 end
+                    iVar14 = quest:AddNewConversation(me, false, false)
+                    pCVar20 = quest:GetHero()
+                    quest:AddPersonToConversation(iVar14, pCVar20)
+                    pCVar15 = quest:GetHero()
+                    uVar22 = false
+                    pcVar21 = "_THREATENWEAPON"
+                    pCVar12 = me:GetDataString()
+                    pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                    pCVar20 = (pCVar12 .. pcVar21)
+                    quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
                 end
                 quest:SetTimer(xStack_16c, 0x14)
-                CVar13 = x_stk_170
-                iVar11 = quest:GetTimer(x_stk_170)
-                quest:SetTimer(iVar11 + 5, dist)
+                iVar17 = xStack_164
+                iVar14 = quest:GetTimer(xStack_164)
+                quest:SetTimer(iVar17, iVar14 + 5)
             end
-            bVar2 = me:MsgIsHitByHero()
-            if bVar2 then
+            bVar6 = me:MsgIsHitByHero()
+            if bVar6 then
                 goto LAB_00dfe8b5
             else
-                bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                if bVar2 then
-                    bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                    if not bVar2 then goto LAB_00dfe8b5 end
+                bVar9 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                if bVar9 then
+                    bVar9 = true
+                    bVar11 = true
+                    bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                    if not bVar6 then goto LAB_00dfe8b5 end
                 end
-                bVar2 = false
+                bVar9 = true
+                bVar6 = false
             end
             goto FLOW_past_lab_00dfe8b5
             ::LAB_00dfe8b5::
-            bVar2 = true
+            bVar6 = true
             ::FLOW_past_lab_00dfe8b5::
-            if bVar2 then
+            if bVar11 then
+                bVar11 = false
+            end
+            if bVar9 then
+                bVar9 = false
+            end
+            if bVar6 then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e005d5 end
-                uVar6 = quest:AddNewConversation(me, false, false)
-                __push10 = quest:GetHero()
-                quest:AddPersonToConversation(uVar6, __push10)
-                __push11 = quest:GetHero()
-                pcVar17 = "_ONHIT"
-                pCVar4 = me:GetDataString()
-                pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                pCVar4 = (pCVar4 .. pcVar17)
-                quest:AddLineToConversation(uVar6, pCVar4, me, __push11, false)
+                bVar6 = not alive
+                if bVar6 then goto LAB_00e005d5 end
+                iVar14 = quest:AddNewConversation(me, false, false)
+                pCVar20 = quest:GetHero()
+                quest:AddPersonToConversation(iVar14, pCVar20)
+                pCVar15 = quest:GetHero()
+                uVar22 = false
+                pcVar21 = "_ONHIT"
+                pCVar12 = me:GetDataString()
+                pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                pCVar20 = (pCVar12 .. pcVar21)
+                quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
                 quest:SetTimer(xStack_16c, 10)
             end
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
+            bVar6 = not alive
         until false
     end
     goto LAB_00e005f9
     ::LAB_00dfeb57::
-    if not cVar3 then goto LAB_00dfeb80 end
+    if not cVar7 then goto LAB_00dfeb80 end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if bVar2 then
+    bVar10 = not alive
+    if bVar10 then
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_b8)
         goto LAB_00e005d5
     end
-    iVar21 = me:IsPerformingScriptTask()
-    cVar3 = iVar21
+    iVar17 = me:IsPerformingScriptTask()
+    cVar7 = iVar17
     goto LAB_00dfeb57
     ::LAB_00dfeb80::
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if bVar2 then
+    bVar10 = not alive
+    if bVar10 then
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_b8)
     else
@@ -328,528 +358,611 @@ function Main(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(xStack_b8)
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if not bVar2 then
+    bVar10 = not alive
+    if not bVar10 then
         quest:DeactivateQuest("Q_TraderConflictGood_Extras", 0)
         quest:ActivateQuest("Q_TraderConflictGood_Extras")
-        quest:SetIsPushableByHero(me, true)
-        uVar6 = quest:GetHero()
-        quest:EntityFollowThing(me, uVar6, nil --[[missing]], nil --[[missing]])
-        uVar6 = quest:GetHero()
-        quest:SetEntityAsRegionFollowing(uVar6, me, true)
+        CVar25 = 0x1
+        quest:SetIsPushableByHero(me, (CVar25 ~= 0))
+        CVar25 = 0x1
+        fVar26 = 3.0
+        pCVar20 = quest:GetHero()
+        quest:EntityFollowThing(me, pCVar20, fVar26, (CVar25 ~= 0))
+        CVar25 = 0x1
+        pCVar13 = quest:GetHero()
+        quest:SetEntityAsRegionFollowing(pCVar13, me, (CVar25 ~= 0))
         quest:EntitySetOpinionReactionsEnabled(me, false)
         quest:EntitySetDeedReactionsEnabled(me, false)
         quest:EntitySetCombatEnabled(me, false)
         quest:EntitySetInFaction(me, "FACTION_TRADERS")
         quest:DisplayQuestInfo(true)
-        pCVar4 = me:GetDataString()
-        iVar21 = ((pCVar4 == "TRADERA") and 0 or 1)
-        cVar3 = not (iVar21 ~= 0)
-        if not cVar3 then
-            pCVar4 = me:GetDataString()
-            iVar21 = ((pCVar4 == "TRADERB") and 0 or 1)
-            cVar3 = not (iVar21 ~= 0)
-            if cVar3 then
+        pCVar12 = me:GetDataString()
+        iVar17 = ((pCVar12 == "TRADERA") and 0 or 1)
+        c_stk_171 = not (iVar17 ~= 0)
+        if not c_stk_171 then
+            pCVar12 = me:GetDataString()
+            iVar17 = ((pCVar12 == "TRADERB") and 0 or 1)
+            c_stk_171 = not (iVar17 ~= 0)
+            if c_stk_171 then
                 goto LAB_00dfee05
             end
             goto FLOW_past_lab_00dfee05
             ::LAB_00dfee05::
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then goto LAB_00e005d5 end
-            pcVar17 = "HUD_QUEST_ICON_TRADER_HAT_02"
+            bVar10 = not alive
+            if bVar10 then goto LAB_00e005d5 end
+            pcVar21 = "HUD_QUEST_ICON_TRADER_HAT_02"
             goto LAB_00dfee1b
             ::FLOW_past_lab_00dfee05::
-            pCVar4 = me:GetDataString()
-            iVar21 = ((pCVar4 == "TRADERC") and 0 or 1)
-            cVar3 = not (iVar21 ~= 0)
-            if cVar3 then goto LAB_00dfee05 end
+            pCVar12 = me:GetDataString()
+            iVar17 = ((pCVar12 == "TRADERC") and 0 or 1)
+            c_stk_171 = not (iVar17 ~= 0)
+            if c_stk_171 then goto LAB_00dfee05 end
         else
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then goto LAB_00e005d5 end
-            pcVar17 = "HUD_QUEST_ICON_TRADER"
+            bVar10 = not alive
+            if bVar10 then goto LAB_00e005d5 end
+            pcVar21 = "HUD_QUEST_ICON_TRADER"
             goto LAB_00dfee1b
         end
         goto FLOW_past_lab_00dfee1b
         ::LAB_00dfee1b::
-        uVar6 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, pcVar17, 1.0)
-        __native_entity_state:SetStateInt("BarIndex", uVar6)
+        iVar17 = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, pcVar21, 1.0)
+        __native_entity_state:SetStateInt("BarIndex", iVar17)
         ::FLOW_past_lab_00dfee1b::
         resources:PrepareResource(xStack_148)
-        cVar3 = quest:IsEntityFollowingHero(me)
-        while not cVar3 do
+        bVar10 = quest:IsEntityFollowingHero(me)
+        while not bVar10 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then goto LAB_00e005d5 end
-            cVar3 = quest:IsEntityFollowingHero(me)
+            bVar10 = not alive
+            if bVar10 then goto LAB_00e005d5 end
+            bVar10 = quest:IsEntityFollowingHero(me)
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if not bVar2 then
+        bVar10 = not alive
+        if not bVar10 then
             quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + 1)
-            CVar13 = 0xa
+            CVar18 = 0xa
             xStack_150 = quest:RegisterTimer()
             quest:SetTimer(xStack_150, 0x14)
             xStack_154 = quest:RegisterTimer()
             alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            while not bVar2 do
-                cVar3 = quest:IsRegionLoaded("BanditCampEntrance")
-                c_stk_161 = not (cVar3)
-                while c_stk_161 do
+            bVar10 = not alive
+            uVar5 = u_stk_170
+            while not bVar10 do
+                bVar10 = quest:IsRegionLoaded("BanditCampEntrance")
+                c_stk_155 = (1 - (bVar10 and 1 or 0))
+                while c_stk_155 ~= 0 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005b1 end
-                    cVar3 = me:IsTalkedToByHero()
-                    if cVar3 then
+                    bVar10 = not alive
+                    if bVar10 then goto LAB_00e005b1 end
+                    bVar10 = me:IsTalkedToByHero()
+                    if bVar10 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005b1 end
-                        pCVar4 = me:GetDataString()
-                        pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                        pCVar4 = (pCVar4 .. "_ONTALK_")
-                        xStack_158 = pCVar4
-                        pCVar4 = tostring(CVar13)
-                        pCVar4 = (xStack_158 .. pCVar4)
-                        xStack_15c = pCVar4
-                        cVar3 = quest:TextEntryExists(xStack_15c)
-                        if not cVar3 then
-                            CVar13 = 0xa
-                            pCVar4 = tostring(10)
-                            pCVar4 = (xStack_158 .. pCVar4)
-                            xStack_15c = pCVar4
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005b1 end
+                        pcVar21 = "_ONTALK_"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar12 = (pCVar12 .. pcVar21)
+                        xStack_15c = pCVar12
+                        pCVar12 = tostring(CVar18)
+                        pCVar12 = (xStack_15c .. pCVar12)
+                        xStack_160 = pCVar12
+                        bVar10 = quest:TextEntryExists(xStack_160)
+                        if not bVar10 then
+                            CVar18 = 0xa
+                            pCVar12 = tostring(10)
+                            pCVar12 = (xStack_15c .. pCVar12)
+                            xStack_160 = pCVar12
                         end
-                        -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
-                        resources:PrepareResource(i_stk_15c)
-                        cVar3 = me:AcquireControl(4)
-                        while not cVar3 do
+                        -- TODO(native): xStack_118 = (CCharString)((int)CVar18 + 0xa);
+                        resources:PrepareResource(xStack_148)
+                        bVar10 = resources:TryAcquire(xStack_148, me, 4)
+                        while not bVar10 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then goto LAB_00e005b1 end
-                            cVar3 = me:AcquireControl(4)
+                            bVar10 = not alive
+                            if bVar10 then goto LAB_00e005b1 end
+                            bVar10 = resources:TryAcquire(xStack_148, me, 4)
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005b1 end
-                        xStack_18 = resources:StartMovie("")
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005b1 end
+                        xStack_1c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        au_stk_24 = resources:ScriptThing(xStack_154)
-                        pCVar7 = au_stk_24
-                        fVar16 = quest:GetHealth(pCVar7)
-                        p0_00_b3 = not (fVar16 <= 0.0)
-                        if p0_00_b3 then
-                            iVar20 = 0
-                            iVar19 = 1
-                            iVar18 = 0
-                            iVar11 = 0
-                            pvVar8 = xStack_15c
-                            iVar21 = quest:GetHero()
-                            r3 = me:Speak(iVar21, pvVar8, iVar11, (iVar18 ~= 0), (iVar19 ~= 0), (iVar20 ~= 0))
-                            iVar21 = me:IsPerformingScriptTask()
-                            cVar3 = iVar21
-                            while cVar3 do
+                        x_stk_c = resources:ScriptThing(xStack_148)
+                        pCVar20 = x_stk_c
+                        fret_00 = quest:GetHealth(pCVar20)
+                        fVar3 = 0.0
+                        if fVar3 < fret_00 then
+                            iVar28 = 0
+                            iVar27 = 1
+                            iVar14 = 0
+                            iVar17 = 0
+                            pvVar16 = xStack_160
+                            pCVar20 = quest:GetHero()
+                            r3 = me:Speak(pCVar20, pvVar16, iVar17, (iVar14 ~= 0), (iVar27 ~= 0), (iVar28 ~= 0))
+                            iVar17 = me:IsPerformingScriptTask()
+                            cVar7 = iVar17
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then
+                                bVar10 = not alive
+                                if bVar10 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_18)
+                                    resources:DestroyMovie(xStack_1c)
                                     goto LAB_00e005b1
                                 end
-                                iVar21 = me:IsPerformingScriptTask()
-                                cVar3 = iVar21
+                                iVar17 = me:IsPerformingScriptTask()
+                                cVar7 = iVar17
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
+                            bVar10 = not alive
+                            if bVar10 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_18)
+                                resources:DestroyMovie(xStack_1c)
                                 goto LAB_00e005b1
                             end
                         end
                         resources:PrepareResource(xStack_148)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_18)
+                        resources:DestroyMovie(xStack_1c)
                     end
-                    iVar21 = quest:GetTimer(xStack_16c)
-                    __native_condition_3 = iVar21 == 0
+                    iVar17 = quest:GetTimer(xStack_16c)
+                    __native_condition_3 = iVar17 == 0
                     if __native_condition_3 then
-                        iVar21 = IsPlayerThreateningEntity(me)
-                        __native_condition_3 = iVar21 ~= 0
+                        iVar17 = IsPlayerThreateningEntity(me)
+                        __native_condition_3 = iVar17 ~= 0
                     end
                     __native_condition_2 = __native_condition_3
                     if __native_condition_2 then
-                        cVar3 = quest:IsPlayerHoldingLockTargetButton()
-                        __native_condition_2 = cVar3
+                        bVar10 = quest:IsPlayerHoldingLockTargetButton()
+                        __native_condition_2 = bVar10
                     end
                     if __native_condition_2 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005b1 end
-                        uVar6 = quest:AddNewConversation(me, false, false)
-                        __push12 = quest:GetHero()
-                        quest:AddPersonToConversation(uVar6, __push12)
-                        __push13 = quest:GetHero()
-                        pCVar4 = me:GetDataString()
-                        pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                        pCVar4 = (pCVar4 .. "_THREATEN")
-                        quest:AddLineToConversation(uVar6, pCVar4, me, __push13, false)
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005b1 end
+                        iVar14 = quest:AddNewConversation(me, false, false)
+                        pCVar20 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar14, pCVar20)
+                        pCVar13 = quest:GetHero()
+                        uVar22 = false
+                        pcVar21 = "_THREATEN"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar12 = (pCVar12 .. pcVar21)
+                        quest:AddLineToConversation(iVar14, pCVar12, me, pCVar13, uVar22)
                         quest:SetTimer(xStack_16c, 0x14)
                     end
-                    cVar3 = me:MsgIsHitBy("")
-                    if not cVar3 then
-                        cVar3 = me:MsgIsHitByAnySpecialAbilityFrom("")
-                        if cVar3 then goto LAB_00dff3b5 end
-                        goto LAB_00dff3f2
-                    else
+                    u_stk_170 = uVar5 | 0x40
+                    bVar10 = me:MsgIsHitBy("")
+                    if bVar10 then
                         goto LAB_00dff3b5
+                    else
+                        u_stk_170 = uVar5 | 0xc0
+                        bVar10 = me:MsgIsHitByAnySpecialAbilityFrom("")
+                        if bVar10 then goto LAB_00dff3b5 end
+                        goto LAB_00dff3f2
                     end
-                    goto FLOW_past_lab_00dff3f2
-                    ::LAB_00dff3f2::
-                    bVar2 = false
-                    ::FLOW_past_lab_00dff3f2::
                     goto FLOW_past_lab_00dff3b5
                     ::LAB_00dff3b5::
-                    cVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                    bVar2 = true
-                    if cVar3 then goto LAB_00dff3f2 end
+                    u_stk_170 = u_stk_170 | 0x100
+                    bVar11 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                    bVar10 = true
+                    if bVar11 then goto LAB_00dff3f2 end
                     ::FLOW_past_lab_00dff3b5::
-                    if bVar2 then
+                    goto FLOW_past_lab_00dff3f2
+                    ::LAB_00dff3f2::
+                    bVar10 = false
+                    ::FLOW_past_lab_00dff3f2::
+                    if (u_stk_170 & 0x100) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xfffffeff
+                    end
+                    if (u_stk_170 & 0x40) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xffffffbf
+                    end
+                    if bVar10 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005b1 end
-                        fVar16 = quest:GetHealth(me)
-                        __native_condition_4 = fVar16 <= 5.0
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005b1 end
+                        fret_01 = quest:GetHealth(me)
+                        uVar5 = u_stk_170
+                        __native_condition_4 = fret_01 <= 5.0
                         if not __native_condition_4 then
-                            iVar21 = quest:GetTimer(xStack_148)
-                            __native_condition_4 = iVar21 ~= 0
+                            iVar17 = quest:GetTimer(xStack_154)
+                            __native_condition_4 = iVar17 ~= 0
                         end
                         if __native_condition_4 then
                             goto LAB_00dff54a
                         else
-                            cVar3 = me:MsgIsHitByHero()
-                            if cVar3 then goto LAB_00dff54a end
-                            cVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                            if cVar3 then
-                                cVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                                if not cVar3 then goto LAB_00dff54a end
+                            bVar10 = me:MsgIsHitByHero()
+                            uVar5 = u_stk_170 | 0x200
+                            if bVar10 then goto LAB_00dff54a end
+                            bVar10 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                            uVar5 = u_stk_170 | 0x600
+                            if bVar10 then
+                                bVar10 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                                uVar5 = u_stk_170 | 0xe00
+                                if not bVar10 then goto LAB_00dff54a end
                             end
-                            bVar2 = true
+                            u_stk_170 = uVar5
+                            bVar10 = true
                         end
                         goto FLOW_past_lab_00dff54a
                         ::LAB_00dff54a::
-                        bVar2 = false
+                        u_stk_170 = uVar5
+                        bVar10 = false
                         ::FLOW_past_lab_00dff54a::
-                        if bVar2 then
+                        if (u_stk_170 & 0x800) ~= 0 then
+                            u_stk_170 = u_stk_170 & 0xfffff7ff
+                        end
+                        if (u_stk_170 & 0x400) ~= 0 then
+                            u_stk_170 = u_stk_170 & 0xfffffbff
+                        end
+                        if (u_stk_170 & 0x200) ~= 0 then
+                            u_stk_170 = u_stk_170 & 0xfffffdff
+                        end
+                        if bVar10 then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then goto LAB_00e005b1 end
-                            piVar9 = me:GetDataString()
-                            iVar21 = ((piVar9 == "TRADERA") and 0 or 1)
-                            cVar3 = not (iVar21 ~= 0)
-                            if not cVar3 then
-                                piVar9 = me:GetDataString()
-                                iVar21 = ((piVar9 == "TRADERB") and 0 or 1)
-                                cVar3 = not (iVar21 ~= 0)
-                                if not cVar3 then
+                            bVar10 = not alive
+                            if bVar10 then goto LAB_00e005b1 end
+                            pCVar12 = me:GetDataString()
+                            iVar17 = ((pCVar12 == "TRADERA") and 0 or 1)
+                            c_stk_171 = not (iVar17 ~= 0)
+                            if not c_stk_171 then
+                                pCVar12 = me:GetDataString()
+                                iVar17 = ((pCVar12 == "TRADERB") and 0 or 1)
+                                c_stk_171 = not (iVar17 ~= 0)
+                                if not c_stk_171 then
                                     alive = not quest:IsActiveThreadTerminating()
-                                    bVar2 = not alive
-                                    CVar13 = xStack_148
-                                    if bVar2 then goto LAB_00e005b1 end
-                                    pCVar4 = tostring(xStack_148)
-                                    __push14 = ("SND_MM_TRADER_C_SCREAM_0" .. pCVar4)
-                                    r4 = quest:PlaySoundOnThing(me, __push14)
-                                    bVar2 = CVar13 == 0x4
+                                    bVar10 = not alive
+                                    CVar18 = 0x1
+                                    if bVar10 then goto LAB_00e005b1 end
+                                    pCVar12 = tostring(0x1)
+                                    pCVar12 = ("SND_MM_TRADER_C_SCREAM_0" .. pCVar12)
+                                    r4 = quest:PlaySoundOnThing(me, pCVar12)
+                                    bVar10 = CVar18 == 0x4
                                 else
                                     alive = not quest:IsActiveThreadTerminating()
-                                    bVar2 = not alive
-                                    CVar13 = xStack_148
-                                    if bVar2 then goto LAB_00e005b1 end
-                                    pCVar4 = tostring(xStack_148)
-                                    __push15 = ("SND_MM_TRADER_B_SCREAM_0" .. pCVar4)
-                                    r5 = quest:PlaySoundOnThing(me, __push15)
-                                    bVar2 = CVar13 == 0x3
+                                    bVar10 = not alive
+                                    CVar18 = 0x1
+                                    if bVar10 then goto LAB_00e005b1 end
+                                    pCVar12 = tostring(0x1)
+                                    pCVar12 = ("SND_MM_TRADER_B_SCREAM_0" .. pCVar12)
+                                    r5 = quest:PlaySoundOnThing(me, pCVar12)
+                                    bVar10 = CVar18 == 0x3
                                 end
                             else
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                CVar13 = xStack_148
-                                if bVar2 then goto LAB_00e005b1 end
-                                pCVar4 = tostring(xStack_148)
-                                __push16 = ("SND_MM_TRADER_A_SCREAM_0" .. pCVar4)
-                                r6 = quest:PlaySoundOnThing(me, __push16)
-                                bVar2 = CVar13 == 0x3
+                                bVar10 = not alive
+                                CVar18 = 0x1
+                                if bVar10 then goto LAB_00e005b1 end
+                                pCVar12 = tostring(0x1)
+                                pCVar12 = ("SND_MM_TRADER_A_SCREAM_0" .. pCVar12)
+                                r6 = quest:PlaySoundOnThing(me, pCVar12)
+                                bVar10 = CVar18 == 0x3
                             end
-                            if bVar2 then
+                            if bVar10 then
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then goto LAB_00e005b1 end
-                                CVar13 = 0x0
+                                bVar10 = not alive
+                                if bVar10 then goto LAB_00e005b1 end
+                                CVar18 = 0x0
                             end
-                            -- TODO(native): xStack_148 = (CCharString)((int)CVar13 + 1);
-                            quest:SetTimer(4, CVar13)
+                            -- TODO(native): xStack_14c = (CCharString)((int)CVar18 + 1);
+                            quest:SetTimer(xStack_154, 4)
                         else
-                            fVar16 = quest:GetHealth(me)
-                            if fVar16 <= 5.0 then
+                            fret_02 = quest:GetHealth(me)
+                            uVar5 = u_stk_170
+                            if fret_02 <= 5.0 then
                                 goto LAB_00dff887
                             else
-                                cVar3 = me:MsgIsHitByHero()
-                                if not cVar3 then
-                                    cVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                                    if cVar3 then
-                                        cVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                                        if not cVar3 then goto LAB_00dff880 end
+                                bVar10 = me:MsgIsHitByHero()
+                                uVar5 = u_stk_170 | 0x1000
+                                if not bVar10 then
+                                    bVar10 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                                    uVar5 = u_stk_170 | 0x3000
+                                    if bVar10 then
+                                        bVar10 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                                        uVar5 = u_stk_170 | 0x7000
+                                        if not bVar10 then goto LAB_00dff880 end
                                     end
                                     goto LAB_00dff887
                                 end
                                 ::LAB_00dff880::
-                                bVar2 = true
+                                u_stk_170 = uVar5
+                                bVar10 = true
                             end
                             goto FLOW_past_lab_00dff887
                             ::LAB_00dff887::
-                            bVar2 = false
+                            u_stk_170 = uVar5
+                            bVar10 = false
                             ::FLOW_past_lab_00dff887::
-                            if bVar2 then
+                            if (u_stk_170 & 0x4000) ~= 0 then
+                                u_stk_170 = u_stk_170 & 0xffffbfff
+                            end
+                            if (u_stk_170 & 0x2000) ~= 0 then
+                                u_stk_170 = u_stk_170 & 0xffffdfff
+                            end
+                            if (u_stk_170 & 0x1000) ~= 0 then
+                                u_stk_170 = u_stk_170 & 0xffffefff
+                            end
+                            if bVar10 then
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then goto LAB_00e005b1 end
-                                uVar6 = quest:AddNewConversation(me, false, false)
-                                __push17 = quest:GetHero()
-                                quest:AddPersonToConversation(uVar6, __push17)
-                                __push18 = quest:GetHero()
-                                pCVar4 = me:GetDataString()
-                                pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                                pCVar4 = (pCVar4 .. "_ONHIT")
-                                quest:AddLineToConversation(uVar6, pCVar4, me, __push18, false)
+                                bVar10 = not alive
+                                if bVar10 then goto LAB_00e005b1 end
+                                iVar14 = quest:AddNewConversation(me, false, false)
+                                pCVar20 = quest:GetHero()
+                                quest:AddPersonToConversation(iVar14, pCVar20)
+                                pCVar13 = quest:GetHero()
+                                uVar22 = false
+                                pcVar21 = "_ONHIT"
+                                pCVar12 = me:GetDataString()
+                                pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                                pCVar12 = (pCVar12 .. pcVar21)
+                                quest:AddLineToConversation(iVar14, pCVar12, me, pCVar13, uVar22)
                             end
                         end
                     end
-                    cVar3 = me:MsgIsHitByHero()
-                    if not cVar3 then
-                        cVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                        if cVar3 then
-                            cVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not cVar3 then goto LAB_00dffa46 end
-                        end
-                        bVar2 = false
-                    else
+                    bVar10 = me:MsgIsHitByHero()
+                    uVar5 = u_stk_170 | 0x8000
+                    if bVar10 then
                         goto LAB_00dffa46
+                    else
+                        bVar10 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                        uVar5 = u_stk_170 | 0x18000
+                        if bVar10 then
+                            bVar10 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                            uVar5 = u_stk_170 | 0x38000
+                            if not bVar10 then goto LAB_00dffa46 end
+                        end
+                        u_stk_170 = uVar5
+                        bVar10 = false
                     end
                     goto FLOW_past_lab_00dffa46
                     ::LAB_00dffa46::
-                    bVar2 = true
+                    u_stk_170 = uVar5
+                    bVar10 = true
                     ::FLOW_past_lab_00dffa46::
+                    if (u_stk_170 & 0x20000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xfffdffff
+                    end
+                    if (u_stk_170 & 0x10000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xfffeffff
+                    end
+                    if (u_stk_170 & 0x8000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xffff7fff
+                    end
                     native_arg_sequence_3 = false
-                    if bVar2 then
+                    if bVar10 then
                         native_arg_sequence_3 = true
                     else
                         native_arg_sequence_3 = false
                     end
                     if native_arg_sequence_3 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
+                        bVar10 = not alive
+                        if bVar10 then
                             native_arg_sequence_3 = true
                         else
                             native_arg_sequence_3 = false
                         end
                     end
                     if native_arg_sequence_3 then goto LAB_00e005b1 end
-                    cVar3 = me:MsgExpressionPerformedTo()
-                    if cVar3 then
-                        if xStack_15c == nil then
-                            bVar2 = false
-                            if bVar2 then
+                    xStack_168 = me:MsgExpressionPerformedTo()
+                    bVar10 = xStack_168 ~= nil
+                    if bVar10 then
+                        if xStack_168 == nil then
+                            bVar10 = false
+                            if bVar10 then
                                 goto LAB_00dffb06
                             end
                         else
-                            iVar21 = ((xStack_15c == "EXPRESSION_WAIT") and 0 or 1)
-                            if iVar21 == 0 then goto LAB_00dffb06 end
+                            iVar17 = ((xStack_168 == "EXPRESSION_WAIT") and 0 or 1)
+                            if iVar17 == 0 then goto LAB_00dffb06 end
                         end
                         goto FLOW_past_lab_00dffb06
                         ::LAB_00dffb06::
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005b1 end
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005b1 end
                         quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + -1)
                         ::FLOW_past_lab_00dffb06::
                     end
-                    cVar3 = quest:IsRegionLoaded("BanditCampEntrance")
-                    c_stk_161 = not (cVar3)
-                    CVar13 = 0xa
+                    bVar10 = quest:IsRegionLoaded("BanditCampEntrance")
+                    c_stk_155 = (1 - (bVar10 and 1 or 0))
+                    uVar5 = u_stk_170
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then break end
+                bVar10 = not alive
+                if bVar10 then break end
                 r7 = quest:GetThingWithScriptName("TeleporterMarker")
-                c_stk_161 = quest:IsRegionLoaded("BanditCampEntrance")
-                while c_stk_161 do
+                c_stk_155 = quest:IsRegionLoaded("BanditCampEntrance")
+                while c_stk_155 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005ac end
-                    cVar3 = me:IsTalkedToByHero()
-                    if cVar3 then
+                    bVar10 = not alive
+                    if bVar10 then goto LAB_00e005ac end
+                    bVar10 = me:IsTalkedToByHero()
+                    if bVar10 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        pCVar4 = me:GetDataString()
-                        pCVar4 = ("TEXT_QST_B11_" .. pCVar4)
-                        pCVar4 = (pCVar4 .. "_ONTALK_")
-                        xStack_158 = pCVar4
-                        pCVar4 = tostring(CVar13)
-                        pCVar4 = (xStack_158 .. pCVar4)
-                        xStack_15c = pCVar4
-                        cVar3 = quest:TextEntryExists(xStack_15c)
-                        if not cVar3 then
-                            CVar13 = 0xa
-                            pCVar4 = tostring(10)
-                            pCVar4 = (xStack_158 .. pCVar4)
-                            xStack_15c = pCVar4
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        pcVar21 = "_ONTALK_"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar12 = (pCVar12 .. pcVar21)
+                        xStack_15c = pCVar12
+                        pCVar12 = tostring(CVar18)
+                        pCVar12 = (xStack_15c .. pCVar12)
+                        xStack_160 = pCVar12
+                        bVar10 = quest:TextEntryExists(xStack_160)
+                        if not bVar10 then
+                            CVar18 = 0xa
+                            pCVar12 = tostring(10)
+                            pCVar12 = (xStack_15c .. pCVar12)
+                            xStack_160 = pCVar12
                         end
-                        -- TODO(native): xStack_10c = (CCharString)((int)CVar13 + 0xa);
-                        resources:PrepareResource(i_stk_15c)
-                        cVar3 = me:AcquireControl(4)
-                        while not cVar3 do
+                        -- TODO(native): xStack_118 = (CCharString)((int)CVar18 + 0xa);
+                        resources:PrepareResource(xStack_148)
+                        bVar10 = resources:TryAcquire(xStack_148, me, 4)
+                        while not bVar10 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then goto LAB_00e005ac end
-                            cVar3 = me:AcquireControl(4)
+                            bVar10 = not alive
+                            if bVar10 then goto LAB_00e005ac end
+                            bVar10 = resources:TryAcquire(xStack_148, me, 4)
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        xStack_28 = resources:StartMovie("")
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        xStack_2c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
                         xStack_b8 = resources:ScriptThing(xStack_148)
-                        pCVar7 = xStack_b8
-                        fVar16 = quest:GetHealth(pCVar7)
-                        p0_00_b3 = not (fVar16 <= 0.0)
-                        if p0_00_b3 then
-                            iVar20 = 0
-                            iVar19 = 1
-                            iVar18 = 0
-                            iVar11 = 0
-                            pvVar8 = xStack_15c
-                            iVar21 = quest:GetHero()
-                            r8 = me:Speak(iVar21, pvVar8, iVar11, (iVar18 ~= 0), (iVar19 ~= 0), (iVar20 ~= 0))
-                            iVar21 = me:IsPerformingScriptTask()
-                            cVar3 = iVar21
-                            while cVar3 do
+                        pCVar20 = xStack_b8
+                        fret_03 = quest:GetHealth(pCVar20)
+                        fVar3 = 0.0
+                        if fVar3 < fret_03 then
+                            iVar28 = 0
+                            iVar27 = 1
+                            iVar14 = 0
+                            iVar17 = 0
+                            pvVar16 = xStack_160
+                            pCVar20 = quest:GetHero()
+                            r8 = me:Speak(pCVar20, pvVar16, iVar17, (iVar14 ~= 0), (iVar27 ~= 0), (iVar28 ~= 0))
+                            iVar17 = me:IsPerformingScriptTask()
+                            cVar7 = iVar17
+                            while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
-                                bVar2 = not alive
-                                if bVar2 then
+                                bVar10 = not alive
+                                if bVar10 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_28)
+                                    resources:DestroyMovie(xStack_2c)
                                     goto LAB_00e005ac
                                 end
-                                iVar21 = me:IsPerformingScriptTask()
-                                cVar3 = iVar21
+                                iVar17 = me:IsPerformingScriptTask()
+                                cVar7 = iVar17
                             end
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
+                            bVar10 = not alive
+                            if bVar10 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_28)
+                                resources:DestroyMovie(xStack_2c)
                                 goto LAB_00e005ac
                             end
                         end
                         resources:PrepareResource(xStack_148)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_28)
+                        resources:DestroyMovie(xStack_2c)
                     end
-                    iVar21 = quest:GetTimer(xStack_16c)
-                    __native_condition_6 = iVar21 == 0
+                    iVar17 = quest:GetTimer(xStack_16c)
+                    __native_condition_6 = iVar17 == 0
                     if __native_condition_6 then
-                        iVar21 = IsPlayerThreateningEntity(me)
-                        __native_condition_6 = iVar21 ~= 0
+                        iVar17 = IsPlayerThreateningEntity(me)
+                        __native_condition_6 = iVar17 ~= 0
                     end
                     __native_condition_5 = __native_condition_6
                     if __native_condition_5 then
-                        cVar3 = quest:IsPlayerHoldingLockTargetButton()
-                        __native_condition_5 = cVar3
+                        bVar10 = quest:IsPlayerHoldingLockTargetButton()
+                        __native_condition_5 = bVar10
                     end
                     if __native_condition_5 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        uVar6 = quest:AddNewConversation(me, false, false)
-                        __push19 = quest:GetHero()
-                        quest:AddPersonToConversation(uVar6, __push19)
-                        __push20 = quest:GetHero()
-                        pCVar10 = me:GetDataString()
-                        pCVar10 = ("TEXT_QST_B11_" .. pCVar10)
-                        pCVar4 = (pCVar10 .. "_THREATEN")
-                        quest:AddLineToConversation(uVar6, pCVar4, me, __push20, false)
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        iVar14 = quest:AddNewConversation(me, false, false)
+                        pCVar20 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar14, pCVar20)
+                        pCVar13 = quest:GetHero()
+                        uVar22 = false
+                        pcVar21 = "_THREATEN"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar12 = (pCVar12 .. pcVar21)
+                        quest:AddLineToConversation(iVar14, pCVar12, me, pCVar13, uVar22)
                         quest:SetTimer(xStack_16c, 0x14)
                     end
-                    cVar3 = me:MsgIsHitByHero()
-                    if not cVar3 then
-                        cVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                        if cVar3 then
-                            cVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not cVar3 then goto LAB_00e0006b end
-                        end
-                        bVar2 = false
-                    else
+                    u_stk_170 = uVar5 | 0x40000
+                    bVar10 = me:MsgIsHitByHero()
+                    if bVar10 then
                         goto LAB_00e0006b
+                    else
+                        u_stk_170 = uVar5 | 0xc0000
+                        bVar10 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                        if bVar10 then
+                            u_stk_170 = uVar5 | 0x1c0000
+                            bVar10 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                            if not bVar10 then goto LAB_00e0006b end
+                        end
+                        bVar10 = false
                     end
                     goto FLOW_past_lab_00e0006b
                     ::LAB_00e0006b::
-                    bVar2 = true
+                    bVar10 = true
                     ::FLOW_past_lab_00e0006b::
-                    if bVar2 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        uVar6 = quest:AddNewConversation(me, false, false)
-                        __push21 = quest:GetHero()
-                        quest:AddPersonToConversation(uVar6, __push21)
-                        __push22 = quest:GetHero()
-                        pCVar10 = me:GetDataString()
-                        pCVar10 = ("TEXT_QST_B11_" .. pCVar10)
-                        pCVar4 = (pCVar10 .. "_ONHIT")
-                        quest:AddLineToConversation(uVar6, pCVar4, me, __push22, false)
+                    if (u_stk_170 & 0x100000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xffefffff
                     end
-                    cVar3 = me:MsgExpressionPerformedTo()
-                    if cVar3 then
-                        if xStack_164 == nil then
-                            bVar2 = false
-                            if bVar2 then
+                    if (u_stk_170 & 0x80000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xfff7ffff
+                    end
+                    if (u_stk_170 & 0x40000) ~= 0 then
+                        u_stk_170 = u_stk_170 & 0xfffbffff
+                    end
+                    if bVar10 then
+                        alive = not quest:IsActiveThreadTerminating()
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        iVar14 = quest:AddNewConversation(me, false, false)
+                        pCVar20 = quest:GetHero()
+                        quest:AddPersonToConversation(iVar14, pCVar20)
+                        pCVar13 = quest:GetHero()
+                        uVar22 = false
+                        pcVar21 = "_ONHIT"
+                        pCVar12 = me:GetDataString()
+                        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+                        pCVar12 = (pCVar12 .. pcVar21)
+                        quest:AddLineToConversation(iVar14, pCVar12, me, pCVar13, uVar22)
+                    end
+                    xStack_168 = me:MsgExpressionPerformedTo()
+                    bVar10 = xStack_168 ~= nil
+                    if bVar10 then
+                        if xStack_168 == nil then
+                            bVar10 = false
+                            if bVar10 then
                                 goto LAB_00e001c0
                             end
                         else
-                            iVar21 = ((xStack_164 == "EXPRESSION_WAIT") and 0 or 1)
-                            if iVar21 == 0 then goto LAB_00e001c0 end
+                            iVar17 = ((xStack_168 == "EXPRESSION_WAIT") and 0 or 1)
+                            if iVar17 == 0 then goto LAB_00e001c0 end
                         end
                         goto FLOW_past_lab_00e001c0
                         ::LAB_00e001c0::
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
                         quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + -1)
                         ::FLOW_past_lab_00e001c0::
                     end
-                    bVar2 = quest:IsDistanceBetweenThingsUnder(me, xStack_114, 20.0)
-                    if bVar2 then
+                    bVar10 = quest:IsDistanceBetweenThingsUnder(me, r7, 20.0)
+                    if bVar10 then
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
                         quest:SetStateInt("TradersReachedTeleporter", quest:GetStateInt("TradersReachedTeleporter") + 1)
                         quest:EntityStopFollowing(me)
-                        __push23 = quest:GetHero()
-                        quest:SetEntityAsRegionFollowing(__push23, me, false)
+                        CVar25 = 0x0
+                        pCVar13 = quest:GetHero()
+                        quest:SetEntityAsRegionFollowing(pCVar13, me, (CVar25 ~= 0))
                         quest:EntitySetAsScared(me, false)
                         if 2 < quest:GetStateInt("TradersReachedTeleporter") then
                             alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then goto LAB_00e005ac end
+                            bVar10 = not alive
+                            if bVar10 then goto LAB_00e005ac end
                             quest:SetStateBool("OutroStart", true)
                             quest:SetStateBool("MissionSucceeded", true)
                             alive = quest:NewScriptFrame(me)
@@ -858,21 +971,21 @@ function Main(quest, me)
                             goto LAB_00e00595
                         end
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        resources:PrepareResource(xStack_138)
-                        cVar3 = me:AcquireControl(4)
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        resources:PrepareResource(xStack_148)
+                        bVar10 = resources:TryAcquire(xStack_148, me, 4)
                         goto LAB_00e0035a
                     end
-                    c_stk_161 = quest:IsRegionLoaded("BanditCampEntrance")
-                    CVar13 = 0xa
+                    c_stk_155 = quest:IsRegionLoaded("BanditCampEntrance")
+                    uVar5 = u_stk_170
                 end
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e005ac end
+                bVar10 = not alive
+                if bVar10 then goto LAB_00e005ac end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
+                bVar10 = not alive
             end
             goto LAB_00e005b1
         end
@@ -880,71 +993,72 @@ function Main(quest, me)
     ::FLOW_past_lab_00dfebc5::
     goto LAB_00e005d5
     ::LAB_00e0035a::
-    if cVar3 then goto LAB_00e0038b end
+    if bVar10 then goto LAB_00e0038b end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if bVar2 then goto LAB_00e005ac end
-    cVar3 = me:AcquireControl(4)
+    bVar10 = not alive
+    if bVar10 then goto LAB_00e005ac end
+    bVar10 = resources:TryAcquire(xStack_148, me, 4)
     goto LAB_00e0035a
     ::LAB_00e0038b::
     alive = not quest:IsActiveThreadTerminating()
-    bVar2 = not alive
-    if not bVar2 then
-        uVar6 = quest:AddNewConversation(me, false, false)
-        __push24 = quest:GetHero()
-        quest:AddPersonToConversation(uVar6, __push24)
-        __push25 = quest:GetHero()
-        pCVar4 = xStack_b8
-        pCVar10 = me:GetDataString()
-        pCVar10 = ("TEXT_QST_B11_" .. pCVar10)
-        pCVar4 = (pCVar10 .. "_FREED_10")
-        quest:AddLineToConversation(uVar6, pCVar4, me, __push25, false)
-        bVar2 = quest:IsDistanceBetweenThingsOver(me, xStack_110, 2.0)
-        if bVar2 then
+    bVar10 = not alive
+    if not bVar10 then
+        iVar14 = quest:AddNewConversation(me, false, false)
+        pCVar20 = quest:GetHero()
+        quest:AddPersonToConversation(iVar14, pCVar20)
+        pCVar13 = quest:GetHero()
+        uVar22 = false
+        pcVar21 = "_FREED_10"
+        pCVar12 = me:GetDataString()
+        pCVar12 = ("TEXT_QST_B11_" .. pCVar12)
+        pCVar12 = (pCVar12 .. pcVar21)
+        quest:AddLineToConversation(iVar14, pCVar12, me, pCVar13, uVar22)
+        bVar10 = quest:IsDistanceBetweenThingsOver(me, r7, 2.0)
+        if bVar10 then
             repeat
                 if quest:GetStateBool("OutroStart") then break end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00e005ac end
-                iVar21 = me:IsPerformingScriptTask()
-                if not iVar21 then
+                bVar10 = not alive
+                if bVar10 then goto LAB_00e005ac end
+                iVar17 = me:IsPerformingScriptTask()
+                if not iVar17 then
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if bVar2 then goto LAB_00e005ac end
+                    bVar10 = not alive
+                    if bVar10 then goto LAB_00e005ac end
                     me:MoveToThing(r7, 1.0, 1)
                 end
-                bVar2 = quest:IsDistanceBetweenThingsOver(me, xStack_110, 2.0)
-            until not (bVar2)
+                bVar10 = quest:IsDistanceBetweenThingsOver(me, r7, 2.0)
+            until not (bVar10)
         end
         alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if not bVar2 then
+        bVar10 = not alive
+        if not bVar10 then
             if not quest:GetStateBool("OutroStart") then
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if not bVar2 then
+                bVar10 = not alive
+                if not bVar10 then
                     quest:RemoveQuestInfoElement(__native_entity_state:GetStateInt("BarIndex"))
                     quest:FadeOutAndKillEntity(me, true, 1.0, true)
                 end
             else
                 alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if not bVar2 then
+                bVar10 = not alive
+                if not bVar10 then
                     me:ClearCommands()
-                    resources:PrepareResource(r1)
-                    cVar3 = quest:GetStateBool("OutroDone")
-                    while not cVar3 do
+                    resources:PrepareResource(xStack_148)
+                    cVar7 = quest:GetStateBool("OutroDone")
+                    while not cVar7 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then goto LAB_00e005ac end
-                        cVar3 = quest:GetStateBool("OutroDone")
+                        bVar10 = not alive
+                        if bVar10 then goto LAB_00e005ac end
+                        cVar7 = quest:GetStateBool("OutroDone")
                     end
                     alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if not bVar2 then
+                    bVar10 = not alive
+                    if not bVar10 then
                         goto LAB_00e00595
                     end
                 end
