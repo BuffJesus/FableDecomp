@@ -734,6 +734,20 @@ def drop_eh_state_flags(text: str) -> str:
     CVar4 | 2); ... CCharString::CCharString(&xStack_4,"DoMission",-1)`). The casts are dropped and the
     slot's flag-phase lines (everything naming it before its first constructor) move onto the register, so
     the register is the one flag the rules above see (GuildTrainingWoodsMelee Main / DoMission)."""
+    # the seed spelled from two never-assigned registers (`bVar14 = !bVar16 && !bVar15;`, Q_WhiteBalverineWW Main
+    # 0x00E18630): Ghidra's rendering of uninitialised stack bytes; the word then only takes flag updates. Start it at
+    # 0 so the rules below see a plain flag -- left alone it reached Lua as a boolean and `& 16` killed Main, 2026-09-26
+    def zero_seed(m):
+        ind, f, a, b = m.group(1), m.group(2), m.group(3), m.group(4)
+        # constant false: the operands are each other's negation (`bVar16 = !bVar15;` then `!bVar16 && !bVar15`, the
+        # disguised `!b && b`), or never assigned at all
+        negated = any(re.search(r'^[ \t]*' + re.escape(x) + r' = !' + re.escape(y) + r';', text, re.M) for x, y in ((a, b), (b, a)))
+        if not negated and any(re.search(r'^[ \t]*' + re.escape(x) + r' = ', text, re.M) for x in (a, b)):
+            return m.group(0)
+        if not re.search(r'\b' + re.escape(f) + r' [|&] (?:0x[0-9a-f]+|\d+)', text):
+            return m.group(0)
+        return f'{ind}{f} = 0;'
+    text = re.sub(r'^([ \t]*)(\w+) = !(\w+) && !(\w+);', zero_seed, text, flags=re.M)
     # the sign test of a byte slice is a bit test (`CVar6._0_1_ < '\0'` = bit 0x80, `._1_1_` = 0x8000): Ghidra's
     # rendering of `test byte, 0x80` on the flag word (TraderConflictEvil CTC_BanditFighter 0x00DF8970 -- the slice
     # became a fresh nil scalar `CVar6_b0` under the byte-store rename, 2026-09-20 audit)

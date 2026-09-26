@@ -7,10 +7,9 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local missionFailed, scratchValue, scratchValue2, scratchValue3, predicateResult
-    local predicateResult5
+    local missionFailed, scratchValue, scratchValue2, predicateResult
     quest:AddEntityBinding("KG_Chief", "WhiteBalverineWW/Entities/KG_Chief", 1)
-    scratchValue2 = not predicateResult5 and not scratchValue3
+    scratchValue2 = 0
     quest:AddEntityBinding("WBWW_WhiteBalverine", "WhiteBalverineWW/Entities/WBWW_WhiteBalverine", 1)
     quest:AddEntityBinding("WBWW_SoldierBalverine", "WhiteBalverineWW/Entities/WBWW_SoldierBalverine", 1)
     quest:FinalizeEntityBindings()
@@ -24,7 +23,7 @@ function Main(quest)
     local getStateThing = quest:GetStateThing("WhiteBalverine")
     quest:SetThingPersistent(getStateThing, true)
     quest:CreateThread("MonitorBalverine")  -- native thread body MonitorBalverine: lift it as function MonitorBalverine(quest)
-    if scratchValue2 & 8 ~= 0 then
+    if 0 & 8 ~= 0 then
         scratchValue2 = scratchValue2 & 247
     end
     quest:CreateThread("SpawnBalverines")  -- native thread body 0x00E19560: lift it as function SpawnBalverines(quest)

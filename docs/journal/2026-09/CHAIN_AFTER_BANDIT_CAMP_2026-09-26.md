@@ -52,6 +52,16 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
   captures `work/runner/td4_hit_*.png`); drawing with Q toggles the sheath, an attack click draws by itself.
   The sidecar's SetMasterGameState had no setter for `SingingStonesInSync` / `TCGTimeLimitBoastTaken` (the getter
   reads them): `novi-zzzzzzzzzz-master-state-setters.patch`, v25.
+- **White Balverine (v27): the Knothole Glade half plays through (wb3, 0 Lua errors)**: card taken by the
+  text-bank title ("White Balverine", `game_text`), gate balverines (V_KnotholeGladeGates, retail native:
+  `KGG_*`, CREATURE_BALVERINE_01), three drive-offs of `WB_WhiteBalverine` (drained fight, real hits), the ambush
+  marker, CS_WBK_CHIEF1-3, MissionSucceeded, Q_WhiteBalverineWW activated. wb2 had died at CS_WBK_CHIEF2 on two
+  converter bugs, both fixed (817f92a): a slot reused after serving as a hidden-result slot kept its old result
+  variable (the chief's resource lifted as `pCVar6`, CHIEF bound to the hero's resource), and
+  canonicalise_stack_objects spliced overlapping regions at stale offsets (`xStack_100 = StartMovie`, a
+  duplicated character, so DestroyMovie freed the previous movie). The Knothole half never autosaves at its
+  end (Gameflow's stage-870 save is written when the card is taken), so both halves now run as one config
+  (`runner_quests/white_balverine.json`).
 - Runner: the ENTER in a pause ladder is safe only while frames are paused (no Lua reply): with nothing up it
   opens the pause menu. `wait_for`'s ladder falls back to the quest-wide `pauseSteps`.
 - Save hygiene: a diagnostic wrapped in `timeout` was killed before its `finally`, leaving the staged save in
@@ -60,8 +70,8 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
 
 ## Resume here
 
-1. Next quest: Q_WhiteBalverineKnotholeGlade (Gameflow 856 waits for the card to be taken at the Guild, 870
-   for completion), from `adult_trophy_dealer_completed_2026-09-26`. Its unit is converted (below).
+1. White Balverine: finish the Witchwood half (kill WBWW_WhiteBalverine in WitchWood_7, KG_Chief's CS_WBK_CHIEF4)
+   with `runner_quests/white_balverine.json` from `adult_trophy_dealer_completed_2026-09-26`.
 2. White Balverine: review the 22 TODOs (two unresolved PlayAnimation /
    IsPerformingScriptTask receivers in WW SpawnBalverines: the quest-context resource receiver is refused by
    design until its resource is proven; the actor-map build is fixed), then a runner config (Knothole Glade).

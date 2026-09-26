@@ -1,0 +1,16 @@
+{
+  "quest": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "QS_GuardianSisterInfo2_SisterInBanditCamp",
+    "travel": [[336, 2549.0, 1954.0, 8.7, "OakBay"]],
+    "talk": "MazeAtTavern",
+    "talkLabel": "Maze"
+  },
+  "maps": "OakBay$",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('QS_GuardianSisterInfo2_SisterInBanditCamp') and quest:GetMasterGameState('PostSavePosition') == 700",
+  "failed": "not quest:IsQuestActive('QS_GuardianSisterInfo2_SisterInBanditCamp') and not quest:IsQuestCompleted('QS_GuardianSisterInfo2_SisterInBanditCamp')"
+}

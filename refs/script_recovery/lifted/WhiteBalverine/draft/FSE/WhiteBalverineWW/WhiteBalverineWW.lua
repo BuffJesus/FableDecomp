@@ -6,7 +6,7 @@ function Main(quest)
     local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48
     local alive = true
     quest:AddEntityBinding("KG_Chief", "WhiteBalverineWW/Entities/KG_Chief", 1)
-    bVar14 = not bVar16 and not bVar15
+    bVar14 = 0
     quest:AddEntityBinding("WBWW_WhiteBalverine", "WhiteBalverineWW/Entities/WBWW_WhiteBalverine", 1)
     quest:AddEntityBinding("WBWW_SoldierBalverine", "WhiteBalverineWW/Entities/WBWW_SoldierBalverine", 1)
     quest:FinalizeEntityBindings()

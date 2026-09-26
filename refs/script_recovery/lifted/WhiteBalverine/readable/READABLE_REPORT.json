@@ -9725,7 +9725,7 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 3,
+       "copies": 4,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 121,
@@ -10923,18 +10923,13 @@
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "predicateResult",
+        null,
         null,
         null,
         null
        ]
       },
       "bVar15_1": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "bVar15_2": {
        "name": "isLevelLoaded",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -10942,28 +10937,28 @@
         "isLevelLoaded"
        ]
       },
-      "bVar15_3": {
+      "bVar15_2": {
        "name": "isActiveThreadTerminating",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar15_4": {
+      "bVar15_3": {
        "name": "isActiveThreadTerminating2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar15_5": {
+      "bVar15_4": {
        "name": "isDistanceBetweenThingsUnder",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isDistanceBetweenThingsUnder"
        ]
       },
-      "bVar15_6": {
+      "bVar15_5": {
        "name": "predicateResult",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -10971,53 +10966,46 @@
         "predicateResult"
        ]
       },
-      "bVar15_7": {
+      "bVar15_6": {
        "name": "predicateResult2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
-      "bVar15_8": {
+      "bVar15_7": {
        "name": "predicateResult3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
-      "bVar15_9": {
+      "bVar15_8": {
        "name": "isActiveThreadTerminating3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar15_10": {
+      "bVar15_9": {
        "name": "predicateResult4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "predicateResult"
        ]
       },
-      "bVar15_11": {
+      "bVar15_10": {
        "name": "isActiveThreadTerminating4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar15_13": {
+      "bVar15_12": {
        "name": "isActiveThreadTerminating5",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
-       ]
-      },
-      "bVar16": {
-       "name": "predicateResult5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
        ]
       },
       "cVar7_1": {
@@ -11035,7 +11023,7 @@
        ]
       },
       "cVar7_3": {
-       "name": "scratchValue4",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -11117,43 +11105,42 @@
        "declarationLine": 3,
        "originalDeclaration": "    local CVar1, bVar13, bVar14, bVar15, bVar16, cVar7, delay, dist, pCVar11, pCVar12, pCVar9, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
        "versions": {
-        "bVar15_1": [],
-        "bVar15_2": [
+        "bVar15_1": [
          11,
          18
         ],
-        "bVar15_3": [
+        "bVar15_2": [
          14
         ],
-        "bVar15_4": [
+        "bVar15_3": [
          20
         ],
-        "bVar15_5": [
+        "bVar15_4": [
          54
         ],
-        "bVar15_6": [
+        "bVar15_5": [
          69,
          73
         ],
-        "bVar15_7": [
+        "bVar15_6": [
          86
         ],
-        "bVar15_8": [
+        "bVar15_7": [
          99
         ],
-        "bVar15_9": [
+        "bVar15_8": [
          107
         ],
-        "bVar15_10": [
+        "bVar15_9": [
          113
         ],
-        "bVar15_11": [
+        "bVar15_10": [
          116
         ],
-        "bVar15_12": [
+        "bVar15_11": [
          119
         ],
-        "bVar15_13": [
+        "bVar15_12": [
          123
         ]
        }
@@ -11200,7 +11187,7 @@
      },
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {
-      "bVar15_12": {
+      "bVar15_11": {
        "literal": "true",
        "definitionLine": 119,
        "readLines": [
@@ -11208,9 +11195,22 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar15_13, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
-        "119": "            bVar15_12 = true\n",
-        "121": "            quest:SetQuestAsFailed(pQuestName, bVar15_12, \"\", bVar16)\n"
+        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_11, bVar15_12, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
+        "119": "            bVar15_11 = true\n",
+        "121": "            quest:SetQuestAsFailed(pQuestName, bVar15_11, \"\", bVar16)\n"
+       }
+      },
+      "bVar16": {
+       "literal": "true",
+       "definitionLine": 118,
+       "readLines": [
+        121
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local CVar1, bVar13, bVar14, bVar15_1, bVar15_2, bVar15_3, bVar15_4, bVar15_5, bVar15_6, bVar15_7, bVar15_8, bVar15_9, bVar15_10, bVar15_12, bVar16, cVar7_1, cVar7_2, cVar7_3, delay, dist, pCVar11_1, pCVar11_2, pCVar12, pCVar9_1, pCVar9_2, pQuestName, r1, xStack_10, xStack_20, xStack_30, xStack_48\n",
+        "118": "            bVar16 = true\n",
+        "121": "            quest:SetQuestAsFailed(pQuestName, (true), \"\", bVar16)\n"
        }
       }
      },
@@ -11736,7 +11736,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 2,
+   "wrappedDeclarations": 1,
    "style": {
     "functions": {
      "Main": {
@@ -11750,7 +11750,7 @@
        "exitChecksInlined": 2,
        "frameChecks": 2,
        "inlinedTemporaries": 13,
-       "deadDefinitions": 2,
+       "deadDefinitions": 1,
        "guardWrappers": 0,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
@@ -11777,15 +11777,15 @@
        "controlAcquires": 0,
        "sunkLocals": 11,
        "cleanupClosureNames": 0,
-       "parentheses": 7,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 127,
-       "temporaries": 27,
+       "lines": 126,
+       "temporaries": 25,
        "labels": 5,
        "gotos": 11,
        "terminationChecks": 8,
@@ -11794,7 +11794,7 @@
       },
       "after": {
        "lines": 102,
-       "temporaries": 6,
+       "temporaries": 4,
        "labels": 4,
        "gotos": 10,
        "terminationChecks": 6,
