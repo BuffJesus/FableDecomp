@@ -1,0 +1,153 @@
+{
+  "schema": "expressions-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "6561f18efa561b523dc691e7b0afe0b2c1549aa108c1eba50d62a393e7a65806",
+  "exportedFunctions": 107,
+  "quests": [
+    {
+      "script": "Expression_Dig",
+      "allocator": "0x00EEAE70",
+      "vtable": "0x012F5628",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEA790",
+        "0x00EEAE70"
+      ]
+    },
+    {
+      "script": "Expression_Fish",
+      "allocator": "0x00EE9F00",
+      "vtable": "0x012F54E4",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EE94A0",
+        "0x00EE9F00"
+      ]
+    },
+    {
+      "script": "Expression_Follow",
+      "allocator": "0x00EEA3E0",
+      "vtable": "0x012F55B8",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EE9F50",
+        "0x00EEA3E0"
+      ]
+    },
+    {
+      "script": "Expression_Picklock",
+      "allocator": "0x00EEBD70",
+      "vtable": "0x012F56D0",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEB780",
+        "0x00EEBD70"
+      ]
+    },
+    {
+      "script": "Expression_Pickpocket",
+      "allocator": "0x00EEB730",
+      "vtable": "0x012F56A0",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEAEC0",
+        "0x00EEB730"
+      ]
+    },
+    {
+      "script": "Expression_Steal",
+      "allocator": "0x00EEC390",
+      "vtable": "0x012F5700",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEBDC0",
+        "0x00EEC390"
+      ]
+    },
+    {
+      "script": "Expression_Wait",
+      "allocator": "0x00EEA740",
+      "vtable": "0x012F55F8",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEA430",
+        "0x00EEA740"
+      ]
+    },
+    {
+      "script": "Global_DebugCycleThroughSpeech",
+      "allocator": "0x00EE9450",
+      "vtable": "0x012F54B4",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EE90F0",
+        "0x00EE9450"
+      ]
+    },
+    {
+      "script": "Global_GiveHeroItemsFromRewardChest",
+      "allocator": "0x00EEC750",
+      "vtable": "0x012F5730",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEC3E0",
+        "0x00EEC750"
+      ]
+    },
+    {
+      "script": "Global_OpenChest",
+      "allocator": "0x00EECEA0",
+      "vtable": "0x012F5760",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EEC7A0",
+        "0x00EECEA0"
+      ]
+    },
+    {
+      "script": "Global_TeleportToHeroGuild",
+      "allocator": "0x00CDDB60",
+      "vtable": "0x012C2FB8",
+      "entities": [],
+      "vtableWriters": []
+    },
+    {
+      "script": "Global_ToggleTimeDisplay",
+      "allocator": "0x00EED060",
+      "vtable": "0x012F57A0",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EECEF0",
+        "0x00EED060"
+      ]
+    },
+    {
+      "script": "Global_WatchForHeroDeath",
+      "allocator": "0x00EE90A0",
+      "vtable": "0x012F5470",
+      "entities": [],
+      "vtableWriters": [
+        "0x00EE8E80",
+        "0x00EE90A0"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00EE8F50",
+      "store": "0x00EE8F97",
+      "body": "0x00EE8FE0",
+      "name": "WatchForHeroDeath",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00EEA020",
+      "store": "0x00EEA1AF",
+      "body": "0x00EEA240",
+      "name": "FollowThread",
+      "bodyExported": false
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

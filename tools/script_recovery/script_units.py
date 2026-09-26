@@ -119,6 +119,22 @@ UNITS = {
         'schema': 'arena-native-inventory/0.1',
         'package': 'Arena',
     },
+    'expressions': {
+        # The hero's expression actions and the global scripts, one contiguous block after CS_OakValeRevisited:
+        # Global_WatchForHeroDeath 0x00EE8FE0, Expression_Fish 0x00EE95C0, _Wait 0x00EEA460, _Dig 0x00EEA7C0,
+        # _Pickpocket 0x00EEAEF0, _Picklock 0x00EEB7B0, _Steal 0x00EEBDF0, Global_GiveHeroItemsFromRewardChest
+        # 0x00EEC410, Global_OpenChest 0x00EEC890 ... up to the next family's allocator 0x00EED220.
+        'evidence': ROOT / 'refs/script_recovery/expressions',
+        'lo': 0xEE8E80, 'hi': 0xEED220,
+        'ir_glob': '[EG][xl]*.json',     # Expression_* and Global_* only (a bare `*.json` loads every script's IR)
+        'scripts': ['Global_WatchForHeroDeath', 'Expression_Fish', 'Expression_Follow', 'Expression_Wait', 'Expression_Dig',
+                    'Expression_Pickpocket', 'Expression_Picklock', 'Expression_Steal', 'Global_TeleportToHeroGuild',
+                    'Global_GiveHeroItemsFromRewardChest', 'Global_OpenChest',
+                    'Global_DebugCycleThroughSpeech', 'Global_ToggleTimeDisplay'],   # (debug globals, in the same block)
+        'pdb_pattern': '*CExpression_*',   # pdb/Ego_r-pdb-locals.tsv also holds the *CGlobal_* run (two patterns)
+        'schema': 'expressions-native-inventory/0.1',
+        'package': 'Expressions',
+    },
     'tour_guide': {
         # Gameflow stage 200 activates V_TourGuide beside the QS_GuardianSisterInfo card.
         # Cluster vtable lifecycle (own block only): 0x00EE42A0 .. allocator 0x00EE6C00; the next family's

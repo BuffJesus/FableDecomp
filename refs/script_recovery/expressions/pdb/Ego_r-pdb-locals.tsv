@@ -1,0 +1,285 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CExpression_PicklockScript::Main	11949136	1590
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-40	0
+0	7	Terminated		10	1	1	3	30006	-73	0
+0	7	Percentage		8	4	1	3	30006	-68	0
+0	7	Finished		10	1	1	3	30006	-74	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	DeedHandle		13	4	1	3	30006	-44	0
+0	7	TimerDuration		8	4	1	3	30006	-72	0
+0	7	PicklockTimer		13	4	1	3	30006	-64	0
+0	7	Percentile		13	4	1	3	30006	-44	0
+FUNCTION	NScript::CExpression_PickpocketScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_DigScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FishScript::Main	11937968	3239
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-128	0
+0	7	handle	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	Camera1	CScriptThing	0	12	1	3	30006	-24	0
+0	7	Camera2	CScriptThing	0	12	1	3	30006	-36	0
+0	7	Success		10	1	1	3	30006	-133	0
+0	7	FishingSpots	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-56	0
+0	7	UsingFishingSpot		10	1	1	3	30006	-148	0
+0	7	FishingRod	CCharString	0	4	1	3	30006	-144	0
+0	7	Fish	CScriptThing	0	12	1	3	30006	-100	0
+0	7	FishingSpot	CScriptThing	0	12	1	3	30006	-112	0
+0	7	fishing_pos	C3DVector	0	12	1	3	30006	-88	0
+FUNCTION	NScript::CExpression_PickpocketScript::Alloc	11949040	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CExpression_WaitScript::Alloc	11944064	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CExpression_StealScript::RegisterMain	11952672	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PicklockScript::RegisterMain	11950736	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_PickpocketScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FishScript::RegisterMain	11937616	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_DigScript::RegisterMain	11946128	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PickpocketScript::Main	11946528	2206
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-52	0
+0	7	SpottedTimer		13	4	1	3	30006	-88	0
+0	7	BeenSpotted		10	1	1	3	30006	-94	0
+0	7	Terminated		10	1	1	3	30006	-93	0
+0	7	Percentage		8	4	1	3	30006	-80	0
+0	7	Finished		10	1	1	3	30006	-95	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-56	0
+0	7	TimerDuration		8	4	1	3	30006	-92	0
+0	7	PickpocketTimer		13	4	1	3	30006	-84	0
+0	7	LastSecond		13	4	1	3	30006	-60	0
+0	7	Percentile		13	4	1	3	30006	-60	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_PickpocketScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PickpocketScript::RegisterMain	11948736	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_WaitScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_StealScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_DigScript::Alloc	11946432	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CExpression_FishScript::Init	11937600	8
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_PicklockScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PicklockScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_DigScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_StealScript::Alloc	11952976	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_PicklockScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PickpocketScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_DigScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_StealScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_DigScript::Main	11944160	1962
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	handle	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	Success		10	1	1	3	30006	-83	0
+0	7	WieldingRangedWeapon		10	1	1	3	30006	-81	0
+0	7	DiggingSpot	CScriptThing	0	12	1	3	30006	-72	0
+0	7	WieldingMeleeWeapon		10	1	1	3	30006	-82	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript>	11941648	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CExpression_FollowScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_FishScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FishScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PicklockScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FollowScript::Alloc	11942880	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CExpression_FollowScript::RegisterMain	11941808	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FollowScript::Main	11942112	765
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	handle	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_FishScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_WaitScript::Main	11942976	757
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	handle	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CExpression_StealScript::Main	11951136	1532
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-40	0
+0	7	Terminated		10	1	1	3	30006	-73	0
+0	7	Percentage		8	4	1	3	30006	-68	0
+0	7	Finished		10	1	1	3	30006	-74	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	DeedHandle		13	4	1	3	30006	-48	0
+0	7	StealTimer		13	4	1	3	30006	-64	0
+0	7	TimerDuration		8	4	1	3	30006	-72	0
+0	7	Percentile		13	4	1	3	30006	-48	0
+FUNCTION	NScript::CExpression_FishScript::Alloc	11941216	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CExpression_WaitScript::RegisterMain	11943760	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_PicklockScript::Alloc	11951040	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_FollowScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_WaitScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FollowScript::FollowThread	11941312	329
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-40	0
+0	7	seh_target	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CExpression_DigScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_StealScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_FollowScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FollowScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_StealScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CExpression_WaitScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CExpression_FishScript::OnPersist	11937920	35
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CExpression_WaitScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+MATCHES	52
+FUNCTION	NScript::CGlobal_OpenChestScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::Alloc	11936208	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_OpenChestScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_TeleportToHeroGuildScript::Main	9187184	1351
+0	7	this		0	4	4	5	18	0	0
+0	7	GuildTeleportMarker	CScriptThing	0	12	1	3	30006	-56	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	Followers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-44	0
+FUNCTION	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::Main	11953072	838
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-40	0
+0	7	IsCreatureDrop		10	1	1	3	30006	-49	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::RegisterMain	11956896	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_DebugCycleThroughSpeechScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_OpenChestScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::RegisterMain	11953920	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::Alloc	11957248	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::WatchForHeroDeath	11935488	108
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_TeleportToHeroGuildScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_OpenChestScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_OpenChestScript::Main	11954624	2029
+0	7	this		0	4	4	5	18	0	0
+0	7	TargetedThing	CScriptThing	0	12	1	3	30006	-72	0
+0	7	KeyDefName	CCharString	0	4	1	3	30006	-88	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	handle	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	DefNames	std::vector<CCharString,std::allocator<CCharString> >	0	16	1	3	30006	-60	0
+0	7	WieldingRangedWeapon		10	1	1	3	30006	-89	0
+0	7	WieldingMeleeWeapon		10	1	1	3	30006	-90	0
+0	7	ContainsItems		10	1	1	3	30006	-91	0
+0	7	ScriptName	CCharString	0	4	1	3	30006	-84	0
+FUNCTION	NScript::CGlobal_DebugCycleThroughSpeechScript::Main	11936608	888
+0	7	this		0	4	4	5	18	0	0
+0	7	targeted_thing	CScriptThing	0	12	1	3	30006	-68	0
+0	7	entries	std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >	0	16	1	3	30006	-44	0
+0	7	seh_target	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	it	std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<unsigned long,std::less<unsigned long>,std::allocator<unsigned long>,0> > >	0	4	1	3	30006	-80	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::OnPersist	11957200	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::RegisterMain	11935600	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_DebugCycleThroughSpeechScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_OpenChestScript::Alloc	11956656	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::Main	11956768	124
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::Alloc	11954224	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_ToggleTimeDisplayScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_DebugCycleThroughSpeechScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_DebugCycleThroughSpeechScript::Alloc	11937504	87
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CGlobal_GiveHeroItemsFromRewardChestScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_TeleportToHeroGuildScript::RegisterMain	9186880	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::Init	11956752	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_DebugCycleThroughSpeechScript::RegisterMain	11936304	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_DebugCycleThroughSpeechScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_TeleportToHeroGuildScript::Alloc	9188544	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CGlobal_WatchForHeroDeathScript::Main	11935904	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CGlobal_ToggleTimeDisplayScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_TeleportToHeroGuildScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_ToggleTimeDisplayScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CGlobal_OpenChestScript::RegisterMain	11954320	297
+0	7	this		0	4	4	5	18	0	0
+MATCHES	44

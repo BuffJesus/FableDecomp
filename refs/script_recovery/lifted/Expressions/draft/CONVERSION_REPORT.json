@@ -1,0 +1,2410 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Dig",
+      "package": "Expression_Dig",
+      "packages": [
+        {
+          "owner": "Expression_Dig",
+          "path": "FSE/Expression_Dig/Expression_Dig.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Dig",
+          "function": "Main",
+          "address": "0x00eea7c0",
+          "path": "FSE/Expression_Dig/Expression_Dig.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
+            "MakeHeroCarryItemInHand: missing spThing, setAsPersistent (1 args for 3 params)",
+            "PlayLoopingAnimation: unresolved entity receiver/resource in quest context",
+            "ClearCommands: unresolved entity receiver/resource in quest context",
+            "PlayAnimation: unresolved entity receiver/resource in quest context",
+            "ClearCommands: unresolved entity receiver/resource in quest context",
+            "PlayAnimation: unresolved entity receiver/resource in quest context",
+            "MakeHeroCarryItemInHand: missing setAsPersistent (2 args for 3 params)"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "IsHeroControlledByPlayer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "SetCutsceneMode",
+            "RESOURCE_StartMovie",
+            "PauseAllEntities",
+            "FadeScreenOut",
+            "Pause",
+            "GetHero",
+            "EntityForceToLookAtNothing",
+            "GetHero",
+            "GetPos",
+            "GetHero",
+            "GetAngleXY",
+            "GetHero",
+            "GetPos",
+            "GetHero",
+            "IsEntityWieldingMeleeWeapon",
+            "GetHero",
+            "IsEntityWieldingRangedWeapon",
+            "SheatheHeroWeapons",
+            "MakeHeroCarryItemInHand",
+            "FadeScreenIn",
+            "Pause",
+            "GetHero",
+            "GetNearestEnabledDiggingSpot",
+            "IsAlive",
+            "GetHero",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "HeroGoDigging",
+            "Pause",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "Pause",
+            "HeroStopDigging",
+            "FadeScreenOut",
+            "Pause",
+            "MakeHeroCarryItemInHand",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntityUnsheatheMeleeWeapon",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntityUnsheatheRangedWeapon",
+            "GetHero",
+            "EntityResetForceToLookAt",
+            "Pause",
+            "FadeScreenIn",
+            "SetCutsceneMode",
+            "CameraDefault",
+            "IsActiveThreadTerminating",
+            "GiveHeroItemsFromContainer",
+            "PauseAllEntities",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 159,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00eeaba2;",
+            "goto FLOW_past_lab_00eeabfa;",
+            "goto LAB_00eeab2b;",
+            "goto LAB_00eeaba2;",
+            "goto LAB_00eeabfa;",
+            "if ((char)!iVar8) goto LAB_00eeaba2;",
+            "if (bVar3) goto LAB_00eead80;",
+            "if (bVar3) goto LAB_00eead92;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00eeaba2",
+            "FLOW_past_lab_00eeabfa",
+            "LAB_00eeab2b",
+            "LAB_00eeaba2",
+            "LAB_00eeabfa",
+            "LAB_00eead80",
+            "LAB_00eead92"
+          ]
+        },
+        {
+          "owner": "Expression_Dig",
+          "function": "Init",
+          "address": "0x00eea7b0",
+          "path": "FSE/Expression_Dig/Expression_Dig.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Dig",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Dig/Expression_Dig.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 8
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Fish",
+      "package": "Expression_Fish",
+      "packages": [
+        {
+          "owner": "Expression_Fish",
+          "path": "FSE/Expression_Fish/Expression_Fish.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Fish",
+          "function": "Main",
+          "address": "0x00ee95c0",
+          "path": "FSE/Expression_Fish/Expression_Fish.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
+            "MakeHeroCarryItemInHand: missing spThing (2 args for 3 params)",
+            "MakeHeroCarryItemInHand: missing spThing, setAsActive, setAsPersistent (0 args for 3 params)",
+            "PlayLoopingAnimation: unresolved entity receiver/resource in quest context",
+            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_6c,iStack_60 + iVar12 * 0xc);",
+            "unlifted: xStack_30 = (undefined **)puVar7.x;",
+            "unlifted: xStack_2c = puVar7.y;",
+            "PlayAnimation: unresolved entity receiver/resource in quest context",
+            "PlayAnimation: unresolved entity receiver/resource in quest context",
+            "MakeHeroCarryItemInHand: missing spThing, setAsPersistent (1 args for 3 params)",
+            "unlifted: fret_0 = quest:GetWaterHeightAtPosition(&xStack_30)"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "IsHeroControlledByPlayer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "SetEnvironmentalEffectsAlwaysUpdate",
+            "RESOURCE_StartMovie",
+            "SetToDisplayTutorialsDuringCutscenes",
+            "GetHero",
+            "EntityForceToLookAtNothing",
+            "PauseAllEntities",
+            "FadeScreenOut",
+            "Pause",
+            "SheatheHeroWeapons",
+            "GetMostRecentValidUsedTargetName",
+            "ENGINE_StrNotEqual",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "IsObjectInThingsPossession",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "IsObjectInThingsPossession",
+            "IsActiveThreadTerminating",
+            "MakeHeroCarryItemInHand",
+            "IsActiveThreadTerminating",
+            "MakeHeroCarryItemInHand",
+            "QUESTTHING_Empty",
+            "GetHero",
+            "GetAllThingsWithDefNameByDistanceFrom",
+            "LOCALLIST_Count",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsFishingSpotEnabled",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "GetWaterHeightAtPosition",
+            "GetHero",
+            "GetPos",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "GetThingWithScriptName",
+            "GetThingWithScriptName",
+            "Pause",
+            "GetHero",
+            "CameraUseCameraPoint",
+            "FadeScreenIn",
+            "Pause",
+            "QUESTTHING_Empty",
+            "HeroGoFishing",
+            "MsgOnFishingGameFinished",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgOnFishingGameFinished",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "CameraUseCameraPoint",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "Pause",
+            "FadeScreenOut",
+            "Pause",
+            "IsActiveThreadTerminating",
+            "DisableFishingSpot",
+            "MakeHeroCarryItemInHand",
+            "GetHero",
+            "EntityResetForceToLookAt",
+            "CameraResetToViewBehindHero",
+            "CameraDefault",
+            "Pause",
+            "PauseAllEntities",
+            "FadeScreenIn",
+            "Pause",
+            "IsActiveThreadTerminating",
+            "GiveHeroItemsFromContainer",
+            "UpdateFishWeight",
+            "RemoveThing",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "UpdateFishWeight",
+            "GiveHeroItem",
+            "SetEnvironmentalEffectsAlwaysUpdate",
+            "SetToDisplayTutorialsDuringCutscenes",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 269,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00ee98bc;",
+            "goto FLOW_past_lab_00ee98de;",
+            "goto FLOW_past_lab_00ee9adf;",
+            "goto FLOW_past_lab_00ee9cd6;",
+            "goto LAB_00ee98bc;",
+            "goto LAB_00ee98de;",
+            "goto LAB_00ee9adf;",
+            "goto LAB_00ee9cd6;",
+            "if (100.0 <= (pCVar8.x - (float)xStack_30) * (pCVar8.x - (float)xStack_30) + fVar1 * fVar1 + fVar10 * fVar10) goto LAB_00ee9adf;",
+            "if (bVar2) goto LAB_00ee9ea5;",
+            "if (bVar2) goto LAB_00ee9ee4;",
+            "if (bVar3) goto LAB_00ee9ea5;",
+            "if (bVar3) goto LAB_00ee9ec0;",
+            "if (iVar6 < 1) goto LAB_00ee9adf;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00ee98bc",
+            "FLOW_past_lab_00ee98de",
+            "FLOW_past_lab_00ee9adf",
+            "FLOW_past_lab_00ee9cd6",
+            "LAB_00ee98bc",
+            "LAB_00ee98de",
+            "LAB_00ee9adf",
+            "LAB_00ee9cd6",
+            "LAB_00ee9ea5",
+            "LAB_00ee9ec0",
+            "LAB_00ee9ee4"
+          ]
+        },
+        {
+          "owner": "Expression_Fish",
+          "function": "Init",
+          "address": "0x00ee94c0",
+          "path": "FSE/Expression_Fish/Expression_Fish.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Fish",
+          "function": "OnPersist",
+          "address": "0x00ee9590",
+          "path": "FSE/Expression_Fish/Expression_Fish.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "context",
+                "lua": "native_arg_context",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Expression_Fish/Expression_Fish.lua": {
+          "Main": [
+            "xStack_2c",
+            "xStack_30"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 11
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Follow",
+      "package": "Expression_Follow",
+      "packages": [
+        {
+          "owner": "Expression_Follow",
+          "path": "FSE/Expression_Follow/Expression_Follow.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Follow",
+          "function": "Main",
+          "address": "0x00eea020",
+          "path": "FSE/Expression_Follow/Expression_Follow.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "FadeScreenOut",
+            "Pause",
+            "CreateThread",
+            "CameraDefault",
+            "Pause",
+            "FadeScreenIn",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 38,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00eea22f;"
+          ],
+          "nativeLabels": [
+            "LAB_00eea22f"
+          ]
+        },
+        {
+          "owner": "Expression_Follow",
+          "function": "Init",
+          "address": "0x00ee9f70",
+          "path": "FSE/Expression_Follow/Expression_Follow.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Follow",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Follow/Expression_Follow.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "Expression_Follow",
+          "function": "FollowThread",
+          "address": "0x00eea240",
+          "path": "FSE/Expression_Follow/Expression_Follow.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: cVar2 = (**(*piStack_18 + 0x12c))()"
+          ],
+          "calls": [
+            "GetHeroTargetedThing",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_TryAcquire",
+            "GetHero",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 44,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {
+            "pCVar4": "hero"
+          },
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Expression_Follow/Expression_Follow.lua": {
+          "FollowThread": [
+            "piStack_18"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 4,
+        "missing": 0,
+        "functionSyntaxPassed": 4,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 1
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Picklock",
+      "package": "Expression_Picklock",
+      "packages": [
+        {
+          "owner": "Expression_Picklock",
+          "path": "FSE/Expression_Picklock/Expression_Picklock.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Picklock",
+          "function": "Main",
+          "address": "0x00eeb7b0",
+          "path": "FSE/Expression_Picklock/Expression_Picklock.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: xStack_24 = (CCharString)((float)(int)xStack_20 + 1.0);",
+            "unlifted: xStack_28 = (CCharString)(_DAT_0122ded8 - (float)i_stk_2c / (float)value);",
+            "unlifted: xStack_20 = (CCharString)(iVar9 % 100);"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "GetHeroTargetedThing",
+            "IsEntityPickLockable",
+            "IsInMovieSequence",
+            "RESOURCE_StartMovie",
+            "DisplayMiniGameInfo",
+            "ENGINE_GlobalGameDataFloat",
+            "GetHeroStatLevel",
+            "GetHeroStatMax",
+            "GetConstantFPS",
+            "ENGINE_Trunc",
+            "GetHero",
+            "EntityPostOpinionDeedKeepSearchingForWitnesses",
+            "StartSneaking",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsDPadButtonHeldForExpression",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "MsgIsHitBy",
+            "IsActiveThreadTerminating",
+            "IsDeedWitnessed",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "UpdateMiniGameInfoBar",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RemoveOpinionDeedStillSearchingForWitnesses",
+            "DisplayMiniGameInfo",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "IsActiveThreadTerminating",
+            "EntitySetAsPickLocked",
+            "ChangeHeroMoralityDueToPicklock",
+            "RESOURCE_DestroyMovie",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 154,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": false,
+            "checked": 1,
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/Expression_Picklock/Expression_Picklock.lua:Main",
+                "line": 83,
+                "message": "FSE/Expression_Picklock/Expression_Picklock.lua:Main:83: ')' expected near 'uVar11'"
+              }
+            ]
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00eebb6c;",
+            "goto LAB_00eebb6c;",
+            "goto LAB_00eebc32;",
+            "if (!bVar4) goto LAB_00eebb6c;",
+            "if (bVar4) goto LAB_00eeb8af;",
+            "if (bVar4) goto LAB_00eebc32;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00eebb6c",
+            "LAB_00eeb8af",
+            "LAB_00eebb6c",
+            "LAB_00eebc32"
+          ]
+        },
+        {
+          "owner": "Expression_Picklock",
+          "function": "Init",
+          "address": "0x00eeb7a0",
+          "path": "FSE/Expression_Picklock/Expression_Picklock.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Picklock",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Picklock/Expression_Picklock.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "FSE/Expression_Picklock/Expression_Picklock.lua",
+            "line": 86,
+            "message": "FSE/Expression_Picklock/Expression_Picklock.lua:86: ')' expected near 'uVar11'"
+          }
+        ]
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Expression_Picklock/Expression_Picklock.lua": {
+          "Main": [
+            "xStack_24",
+            "xStack_28"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 2,
+        "fileSyntaxPassed": 0,
+        "fileSyntaxChecked": 1,
+        "todo": 3
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Pickpocket",
+      "package": "Expression_Pickpocket",
+      "packages": [
+        {
+          "owner": "Expression_Pickpocket",
+          "path": "FSE/Expression_Pickpocket/Expression_Pickpocket.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Pickpocket",
+          "function": "Main",
+          "address": "0x00eeaef0",
+          "path": "FSE/Expression_Pickpocket/Expression_Pickpocket.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: xStack_30 = (CCharString)((float)(int)xStack_2c + 1.0);",
+            "label LAB_00eeb4fa",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "unlifted: xStack_38 = (CCharString)(_DAT_0122ded8 - (float)(int)C_stk_40 / (float)value);",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "unlifted: xStack_28._4_4_ = piVar4;",
+            "unlifted: *piVar3 = *piVar3 + 1;",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "label LAB_00eeb521",
+            "verify cleanup at LAB_00eeb5dd (lifted as early return)",
+            "verify cleanup at LAB_00eeb4fa (lifted as early return)",
+            "label LAB_00eeb5dd",
+            "label LAB_00eeb583",
+            "GetPThing: CScriptThing method not in FSE manifest",
+            "verify cleanup at LAB_00eeb4fa (lifted as early return)",
+            "unlifted: xStack_2c = (CCharString)(iVar13 % 100);",
+            "unlifted: piVar3 = *(pCVar11 + 0x8)",
+            "unlifted: piVar4 = *(pCVar11 + 0x4)"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "GetHeroTargetedThing",
+            "IsEntityPickPocketable",
+            "IsInMovieSequence",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "DisplayMiniGameInfo",
+            "EntitySetCutsceneBehaviour",
+            "PauseAllNonScriptedEntities",
+            "ENGINE_GlobalGameDataFloat",
+            "GetHeroStatLevel",
+            "GetHeroStatMax",
+            "GetConstantFPS",
+            "ENGINE_Trunc",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsDPadButtonHeldForExpression",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "MsgIsHitBy",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "UpdateMiniGameInfoBar",
+            "GetHeroTargetedThing",
+            "QUESTTHING_Empty",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "GetConstantFPS",
+            "ENGINE_Trunc",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "EntitySetCutsceneBehaviour",
+            "DisplayMiniGameInfo",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "EntitySetCutsceneBehaviour",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "GetPThing",
+            "GetHero",
+            "SendEntityEvent",
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "EntitySetAsPickPocketed",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 267,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00eeb3f9;",
+            "goto LAB_00eeb3f9;",
+            "if (1.0 <= (float)xStack_38) goto LAB_00eeb3f9;",
+            "if (bVar7) goto LAB_00eeafc7;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00eeb3f9",
+            "LAB_00eeafc7",
+            "LAB_00eeb3f9"
+          ]
+        },
+        {
+          "owner": "Expression_Pickpocket",
+          "function": "Init",
+          "address": "0x00eeaee0",
+          "path": "FSE/Expression_Pickpocket/Expression_Pickpocket.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Pickpocket",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Pickpocket/Expression_Pickpocket.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "cleanupRegions": {
+        "FSE/Expression_Pickpocket/Expression_Pickpocket.lua": {
+          "LAB_00eeb4fa": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "resources:DestroyMovie(xStack_10)"
+          ],
+          "LAB_00eeb5dd": [
+            "quest:PauseAllNonScriptedEntities(false)",
+            "resources:DestroyMovie(xStack_10)"
+          ]
+        }
+      },
+      "declaredFreeLocals": {
+        "FSE/Expression_Pickpocket/Expression_Pickpocket.lua": {
+          "Main": [
+            "xStack_30",
+            "xStack_38"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 21
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Steal",
+      "package": "Expression_Steal",
+      "packages": [
+        {
+          "owner": "Expression_Steal",
+          "path": "FSE/Expression_Steal/Expression_Steal.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Steal",
+          "function": "Main",
+          "address": "0x00eebdf0",
+          "path": "FSE/Expression_Steal/Expression_Steal.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: xStack_24 = (CCharString)((float)(int)xStack_20 + 1.0);",
+            "unlifted: xStack_28 = (CCharString)(_DAT_0122ded8 - (float)i_stk_2c / (float)value);",
+            "unlifted: xStack_20 = (CCharString)(iVar8 % 100);"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "GetHeroTargetedThing",
+            "IsEntityStealable",
+            "IsInMovieSequence",
+            "RESOURCE_StartMovie",
+            "DisplayMiniGameInfo",
+            "GetStealDuration",
+            "GetHeroStatLevel",
+            "GetHeroStatMax",
+            "GetConstantFPS",
+            "ENGINE_Trunc",
+            "GetHero",
+            "EntityPostOpinionDeedKeepSearchingForWitnesses",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsDPadButtonHeldForExpression",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "MsgIsHitBy",
+            "IsActiveThreadTerminating",
+            "IsDeedWitnessed",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "UpdateMiniGameInfoBar",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RemoveOpinionDeedStillSearchingForWitnesses",
+            "DisplayMiniGameInfo",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "IsActiveThreadTerminating",
+            "EntitySetAsStolen",
+            "ChangeHeroMoralityDueToTheft",
+            "RESOURCE_DestroyMovie",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 150,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": false,
+            "checked": 1,
+            "passed": 0,
+            "errors": [
+              {
+                "path": "FSE/Expression_Steal/Expression_Steal.lua:Main",
+                "line": 79,
+                "message": "FSE/Expression_Steal/Expression_Steal.lua:Main:79: ')' expected near 'uVar10'"
+              }
+            ]
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00eec18c;",
+            "goto LAB_00eec18c;",
+            "goto LAB_00eec252;",
+            "if (!bVar4) goto LAB_00eec18c;",
+            "if (bVar4) goto LAB_00eebeef;",
+            "if (bVar4) goto LAB_00eec252;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00eec18c",
+            "LAB_00eebeef",
+            "LAB_00eec18c",
+            "LAB_00eec252"
+          ]
+        },
+        {
+          "owner": "Expression_Steal",
+          "function": "Init",
+          "address": "0x00eebde0",
+          "path": "FSE/Expression_Steal/Expression_Steal.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Steal",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Steal/Expression_Steal.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": false,
+        "checked": 1,
+        "passed": 0,
+        "errors": [
+          {
+            "path": "FSE/Expression_Steal/Expression_Steal.lua",
+            "line": 82,
+            "message": "FSE/Expression_Steal/Expression_Steal.lua:82: ')' expected near 'uVar10'"
+          }
+        ]
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Expression_Steal/Expression_Steal.lua": {
+          "Main": [
+            "xStack_24",
+            "xStack_28"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 2,
+        "fileSyntaxPassed": 0,
+        "fileSyntaxChecked": 1,
+        "todo": 3
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Expression_Wait",
+      "package": "Expression_Wait",
+      "packages": [
+        {
+          "owner": "Expression_Wait",
+          "path": "FSE/Expression_Wait/Expression_Wait.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Expression_Wait",
+          "function": "Main",
+          "address": "0x00eea460",
+          "path": "FSE/Expression_Wait/Expression_Wait.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: CScriptBase::KillSpawnedFunction((CScriptBase *)this,(int)&xStack_34,0);"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "FadeScreenOut",
+            "Pause",
+            "DeactivateQuest",
+            "CameraDefault",
+            "Pause",
+            "FadeScreenIn",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 41,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar3) goto LAB_00eea668;"
+          ],
+          "nativeLabels": [
+            "LAB_00eea668"
+          ]
+        },
+        {
+          "owner": "Expression_Wait",
+          "function": "Init",
+          "address": "0x00eea450",
+          "path": "FSE/Expression_Wait/Expression_Wait.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Expression_Wait",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Expression_Wait/Expression_Wait.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 1
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_DebugCycleThroughSpeech",
+      "package": "Global_DebugCycleThroughSpeech",
+      "packages": [
+        {
+          "owner": "Global_DebugCycleThroughSpeech",
+          "path": "FSE/Global_DebugCycleThroughSpeech/Global_DebugCycleThroughSpeech.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_DebugCycleThroughSpeech",
+          "function": "Main",
+          "address": "0x00ee91e0",
+          "path": "FSE/Global_DebugCycleThroughSpeech/Global_DebugCycleThroughSpeech.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: xStack_28 = *(int **)(pCVar3 + 0x4);",
+            "label LAB_00ee93a8",
+            "unlifted: List_Node_Initialize(&xStack_1c,(int)&xStack_2d,(int)&xStack_2e);",
+            "unlifted: LTextTreeWalkThrough_dtor(&xStack_1c);",
+            "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
+            "Speak: unresolved entity receiver/resource in quest context",
+            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
+            "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
+            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
+            "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
+            "unlifted: uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this_01);",
+            "label LAB_00ee9391",
+            "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
+            "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
+            "unlifted: LTextTreeWalkThrough_Cleanup(&xStack_1c);",
+            "unlifted: uVar6 = *(xStack_1c + 8)",
+            "unlifted: pCVar4 = ENGINE_IntToString(*(uVar6 + 0x10))",
+            "unlifted: iVar5 = *(uVar6 + 0x10)"
+          ],
+          "calls": [
+            "GetHero",
+            "QUESTTHING_Empty",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "DebugGetAllTextEntriesForTargetedThing",
+            "IsActiveThreadTerminating",
+            "FixMovieSequenceCamera",
+            "RESOURCE_NewResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "ENGINE_IntToString",
+            "AddScreenTitleMessage",
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "FixMovieSequenceCamera",
+            "RESOURCE_ReleaseResource",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "QUESTTHING_Empty"
+          ],
+          "lines": 95,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_DebugCycleThroughSpeech",
+          "function": "Init",
+          "address": "0x00ee9110",
+          "path": "FSE/Global_DebugCycleThroughSpeech/Global_DebugCycleThroughSpeech.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_DebugCycleThroughSpeech",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Global_DebugCycleThroughSpeech/Global_DebugCycleThroughSpeech.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Global_DebugCycleThroughSpeech/Global_DebugCycleThroughSpeech.lua": {
+          "Main": [
+            "i_stk_18",
+            "xStack_1c"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 21
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_GiveHeroItemsFromRewardChest",
+      "package": "Global_GiveHeroItemsFromRewardChest",
+      "packages": [
+        {
+          "owner": "Global_GiveHeroItemsFromRewardChest",
+          "path": "FSE/Global_GiveHeroItemsFromRewardChest/Global_GiveHeroItemsFromRewardChest.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_GiveHeroItemsFromRewardChest",
+          "function": "Main",
+          "address": "0x00eec410",
+          "path": "FSE/Global_GiveHeroItemsFromRewardChest/Global_GiveHeroItemsFromRewardChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "GetMostRecentValidUsedTarget",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "ENGINE_EmptyString",
+            "GetDefName",
+            "ENGINE_StrCmp",
+            "IsActiveThreadTerminating",
+            "GiveHeroItemsFromContainer",
+            "RemoveThing",
+            "IsHeroControlledByPlayer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsHeroChild",
+            "IsActiveThreadTerminating",
+            "DisplayTutorial",
+            "IsActiveThreadTerminating",
+            "MsgIsTutorialClickedPast",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgIsTutorialClickedPast",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 82,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00eec676;",
+            "if (bVar4) goto LAB_00eec676;"
+          ],
+          "nativeLabels": [
+            "LAB_00eec676"
+          ]
+        },
+        {
+          "owner": "Global_GiveHeroItemsFromRewardChest",
+          "function": "Init",
+          "address": "0x00eec400",
+          "path": "FSE/Global_GiveHeroItemsFromRewardChest/Global_GiveHeroItemsFromRewardChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_GiveHeroItemsFromRewardChest",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Global_GiveHeroItemsFromRewardChest/Global_GiveHeroItemsFromRewardChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 0
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_OpenChest",
+      "package": "Global_OpenChest",
+      "packages": [
+        {
+          "owner": "Global_OpenChest",
+          "path": "FSE/Global_OpenChest/Global_OpenChest.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_OpenChest",
+          "function": "Main",
+          "address": "0x00eec890",
+          "path": "FSE/Global_OpenChest/Global_OpenChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
+            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);",
+            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsPersistent",
+            "IsHeroControlledByPlayer",
+            "IsActiveThreadTerminating",
+            "GetMostRecentValidUsedTarget",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetNumberOfKeysNeededToUnlockChest",
+            "IsActiveThreadTerminating",
+            "GetNumberOfItemsOfTypeInInventory",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PlayCriteriaSoundOnThing",
+            "DisplayLockedChestMessage",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "IsEntityWieldingMeleeWeapon",
+            "GetHero",
+            "IsEntityWieldingRangedWeapon",
+            "SetToKeepHeroAbilitiesDuringCutscenes",
+            "SetToDisplayTutorialsDuringCutscenes",
+            "RESOURCE_StartMovie",
+            "SetCutsceneMode",
+            "EntitySetCutsceneBehaviour",
+            "PauseAllEntities",
+            "GetItemDefNamesFromContainer",
+            "OpenChest",
+            "IsActiveThreadTerminating",
+            "MsgOnChestOpeningCancelled",
+            "IsChestOpen",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgOnChestOpeningCancelled",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "MsgIsHitBy",
+            "GetHero",
+            "MsgIsHitByAnySpecialAbilityFrom",
+            "IsChestOpen",
+            "IsActiveThreadTerminating",
+            "PauseAllEntities",
+            "EntitySetCutsceneBehaviour",
+            "SetCutsceneMode",
+            "CameraDefault",
+            "SetToKeepHeroAbilitiesDuringCutscenes",
+            "SetToDisplayTutorialsDuringCutscenes",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntityUnsheatheMeleeWeapon",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntityUnsheatheRangedWeapon",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "MsgOnHeroRewardedWithItemsFrom",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgOnHeroRewardedWithItemsFrom",
+            "IsActiveThreadTerminating",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 211,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00eec9da;",
+            "goto FLOW_past_lab_00eecc47;",
+            "goto FLOW_past_lab_00eecca6;",
+            "goto FLOW_past_lab_00eecd4f;",
+            "goto FLOW_past_lab_00eece56;",
+            "goto LAB_00eec9da;",
+            "goto LAB_00eecc47;",
+            "goto LAB_00eecca6;",
+            "goto LAB_00eecd4f;",
+            "goto LAB_00eece56;",
+            "goto LAB_00eece5f;",
+            "if (!bVar2) goto LAB_00eece68;",
+            "if (!bVar6) goto LAB_00eecca6;",
+            "if (bVar2) goto LAB_00eec9c9;",
+            "if (bVar2) goto LAB_00eecd9a;",
+            "if (bVar2) goto LAB_00eecd9f;",
+            "if (bVar2) goto LAB_00eecdb1;",
+            "if (bVar6) goto LAB_00eecc47;",
+            "if (bVar6) goto LAB_00eecd9f;",
+            "if (iVar9 <= iVar10) goto LAB_00eec9da;",
+            "if (native_arg_sequence_1) goto LAB_00eec9c0;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00eec9da",
+            "FLOW_past_lab_00eecc47",
+            "FLOW_past_lab_00eecca6",
+            "FLOW_past_lab_00eecd4f",
+            "FLOW_past_lab_00eece56",
+            "LAB_00eec9c0",
+            "LAB_00eec9c9",
+            "LAB_00eec9da",
+            "LAB_00eecc47",
+            "LAB_00eecca6",
+            "LAB_00eecd4f",
+            "LAB_00eecd9a",
+            "LAB_00eecd9f",
+            "LAB_00eecdb1",
+            "LAB_00eece56",
+            "LAB_00eece5f",
+            "LAB_00eece68"
+          ]
+        },
+        {
+          "owner": "Global_OpenChest",
+          "function": "Init",
+          "address": "0x00eec7c0",
+          "path": "FSE/Global_OpenChest/Global_OpenChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_OpenChest",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Global_OpenChest/Global_OpenChest.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Global_OpenChest/Global_OpenChest.lua": {
+          "Main": [
+            "i_stk_28"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 3
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_TeleportToHeroGuild",
+      "package": "Global_TeleportToHeroGuild",
+      "packages": [
+        {
+          "owner": "Global_TeleportToHeroGuild",
+          "path": "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_TeleportToHeroGuild",
+          "function": "Main",
+          "address": "0x00cdd6b0",
+          "path": "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00cdd9d7",
+            "label LAB_00cdd9e9",
+            "EntityTeleportToPosition: missing pos (4 args for 5 params)",
+            "SetGuildSealRecallLocation: missing angle (1 args for 2 params)"
+          ],
+          "calls": [
+            "GetHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsTeleportingActive",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GetFollowingEntityList",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "GetHero",
+            "GetHero",
+            "GetAngleXY",
+            "GetPos",
+            "SetGuildSealRecallLocation",
+            "GetHero",
+            "EntityTeleportToThing",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "GetGuildSealRecallPos",
+            "IsActiveThreadTerminating",
+            "GetGuildSealRecallPos",
+            "GetHero",
+            "EntityTeleportToPosition",
+            "GetGuildSealRecallAngleXY",
+            "GetHero",
+            "EntitySetFacingAngle",
+            "SetGuildSealRecallLocation",
+            "DeactivateQuestLater"
+          ],
+          "lines": 126,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto LAB_00cdda68;",
+            "if (!bVar3) goto LAB_00cdda71;"
+          ],
+          "nativeLabels": [
+            "LAB_00cdda68",
+            "LAB_00cdda71"
+          ]
+        },
+        {
+          "owner": "Global_TeleportToHeroGuild",
+          "function": "Init",
+          "address": "0x00cdd5e0",
+          "path": "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_TeleportToHeroGuild",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua": {
+          "Main": [
+            "xStack_1c"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 4
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_ToggleTimeDisplay",
+      "package": "Global_ToggleTimeDisplay",
+      "packages": [
+        {
+          "owner": "Global_ToggleTimeDisplay",
+          "path": "FSE/Global_ToggleTimeDisplay/Global_ToggleTimeDisplay.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_ToggleTimeDisplay",
+          "function": "Main",
+          "address": "0x00eecf20",
+          "path": "FSE/Global_ToggleTimeDisplay/Global_ToggleTimeDisplay.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool",
+            "DisplayTime",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 5,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_ToggleTimeDisplay",
+          "function": "Init",
+          "address": "0x00eecf10",
+          "path": "FSE/Global_ToggleTimeDisplay/Global_ToggleTimeDisplay.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_ToggleTimeDisplay",
+          "function": "OnPersist",
+          "address": "0x00eed030",
+          "path": "FSE/Global_ToggleTimeDisplay/Global_ToggleTimeDisplay.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "context",
+                "lua": "native_arg_context",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "summary": {
+        "owners": 1,
+        "functions": 3,
+        "missing": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 0
+      }
+    },
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Global_WatchForHeroDeath",
+      "package": "Global_WatchForHeroDeath",
+      "packages": [
+        {
+          "owner": "Global_WatchForHeroDeath",
+          "path": "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Global_WatchForHeroDeath",
+          "function": "Main",
+          "address": "0x00ee8f50",
+          "path": "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "CreateThread"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_WatchForHeroDeath",
+          "function": "Init",
+          "address": "0x00ee8ea0",
+          "path": "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Global_WatchForHeroDeath",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "Global_WatchForHeroDeath",
+          "function": "WatchForHeroDeath",
+          "address": "0x00ee8fe0",
+          "path": "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "IsAlive",
+            "GetHero",
+            "IsUnconscious",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 34,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 1,
+        "passed": 1,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {},
+      "declaredFreeLocals": {
+        "FSE/Global_WatchForHeroDeath/Global_WatchForHeroDeath.lua": {
+          "Main": [
+            "bVar1"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 1,
+        "functions": 4,
+        "missing": 0,
+        "functionSyntaxPassed": 4,
+        "fileSyntaxPassed": 1,
+        "fileSyntaxChecked": 1,
+        "todo": 0
+      }
+    }
+  ],
+  "summary": {
+    "owners": 13,
+    "functions": 41,
+    "missing": 0,
+    "functionSyntaxPassed": 39,
+    "fileSyntaxPassed": 11,
+    "fileSyntaxChecked": 13,
+    "todo": 76
+  }
+}
