@@ -268,7 +268,8 @@ def play(a, q) -> str:
             # no reply = frames paused. A step's own pause ladder handles box-less full-screen menus too: bc13's
             # Quest Completed screen came up on arrival from the boss area, `clear` found no box, and the region
             # wait timed out with the quest already complete (so nothing was harvested)
-            ladder = (steps[min(step_i, len(steps) - 1)].get('pauseSteps') if val is None and steps else None) or ['clear']
+            ladder = ((steps[min(step_i, len(steps) - 1)].get('pauseSteps') if steps else None) or q.get('pauseSteps')
+                      if val is None else None) or ['clear']
             game_input(ladder[unanswered % len(ladder)])   # a region's arrival boxes pause script frames
             unanswered += val is None
             time.sleep(2)
@@ -355,11 +356,13 @@ def play(a, q) -> str:
         time.sleep(2.0)
         return wait_for(f"tostring(quest:IsQuestActive('{s['quest']}'))", 'true', 30)
 
-    def talk(name, label):
+    def talk(name, label, sides=None):
         """start a conversation the quest waits for: stand beside the script-named NPC until the top-centre target
         label is theirs (OCR; TAB acts on whoever is targeted), then TAB"""
         wait_for("tostring(not quest:IsInCutscene() and not quest:IsInMovieSequence())", 'true', 180)
-        for dx, dy in CARD_SIDES:
+        # stand-offs: a config's `talkSides` for an NPC beside a wall (GTDI_Maze stands at a Guild pillar: the 1.5
+        # stand-offs land inside geometry and the engine relocates the hero to another room; 1.0 in +x targets him)
+        for dx, dy in (sides or CARD_SIDES):
             send(f"{host}: local g = quest:GetThingWithScriptName('{name}'); local p = g:GetPos(); "
                  f"p.x = p.x + {dx}; p.y = p.y + {dy}; p.z = p.z + 0.5; local h = quest:GetHero(); "
                  f"quest:EntityTeleportToPosition(h, p, 0, true, true)", 20)
@@ -419,7 +422,7 @@ def play(a, q) -> str:
             if not travel(dest):
                 log('start_failed', quest=s['quest'], reason='travel failed')
                 return 'failed'
-        if s.get('talk') and not talk(s['talk'], s.get('talkLabel', '')):
+        if s.get('talk') and not talk(s['talk'], s.get('talkLabel', ''), s.get('talkSides')):
             log('start_failed', quest=s['quest'], talk=s['talk'])
             return 'failed'
 
@@ -488,8 +491,31 @@ def play(a, q) -> str:
                     names = ', '.join(repr(n) for n in stp['fight'])
                     send(f'{host}: Runner.fightNames = {{{names}}}', 10)
                     step_fight = True
-                if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', '')):
+                if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', ''), stp.get('talkSides')):
                     log('step_talk_failed', step=stp.get('name', step_i))
+                for script, data in stp.get('hit', []):
+                    # strike world objects in order (V_SingingStones: four `SingingStone`s told apart by their data
+                    # string, hit D B A C). A retail-native quest's state is not readable from Lua, so each object
+                    # gets a few real swings from beside it; a re-hit object is ignored by its own script
+                    sel = (f"(function() for _, t in ipairs(quest:GetAllThingsWithScriptName('{script}')) do "
+                           f"if t:GetDataString() == '{data}' then return t end end end)()")
+                    # stand on the inner side (toward the objects' centroid): a fixed +x stand-off put the hero outside
+                    # the stone ring against its fence (td3); Q toggles the sheath, the attack click draws by itself
+                    send(f"{host}: local s = quest:GetAllThingsWithScriptName('{script}'); local cx, cy = 0, 0; "
+                         f"for _, o in ipairs(s) do local q = o:GetPos(); cx = cx + q.x / #s; cy = cy + q.y / #s end; "
+                         f"local t = {sel}; local p = t:GetPos(); local dx, dy = cx - p.x, cy - p.y; "
+                         f"local d = math.max(math.sqrt(dx * dx + dy * dy), 0.01); p.x = p.x + dx / d * 1.5; p.y = p.y + dy / d * 1.5; "
+                         f"quest:EntityTeleportToPosition(quest:GetHero(), p, 0, true, true)", 20)
+                    time.sleep(1.0)
+                    for _ in range(stp.get('swings', 3)):
+                        send(f"{host}: quest:EntitySetFacingAngleTowardsThing(quest:GetHero(), {sel}, true); "
+                             f"quest:CameraResetToViewBehindHero(0.1)", 20)
+                        time.sleep(0.6)
+                        game_input('lmb 1')
+                        time.sleep(0.9)
+                    log('step_hit', script=script, data=data)
+                    time.sleep(stp.get('hitPause', 3.0))         # the stone's line plays between hits
+                    game_input(f"capture {out / f'{a.tag}_hit_{script}_{data}.png'}")
             reply = send(f"eval {host_s}: tostring({stp['until']})", 6)
             val = next((r.rsplit(' = ', 1)[-1] for r in reply if '[Autopilot] eval ' in r), None)
             if val == 'true':

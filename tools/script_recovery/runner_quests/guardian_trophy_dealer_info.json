@@ -1,0 +1,17 @@
+{
+  "quest": "QS_GuardianTrophyDealerInfo",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "QS_GuardianTrophyDealerInfo",
+    "travel": [[70, 4787.62, 3680.52, 38.0]],
+    "talk": "GTDI_Maze",
+    "talkLabel": "Maze",
+    "talkSides": [[1.0, 0], [0, 1.0], [0, -1.0]]
+  },
+  "maps": "HeroGuildComplexInside$",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "done": "quest:IsQuestCompleted('QS_GuardianTrophyDealerInfo') and quest:GetMasterGameState('PostSavePosition') == 850",
+  "failed": "(not quest:IsQuestActive('QS_GuardianTrophyDealerInfo')) and not quest:IsQuestCompleted('QS_GuardianTrophyDealerInfo')"
+}

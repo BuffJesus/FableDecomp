@@ -1,0 +1,62 @@
+{
+  "quest": "V_TrophyDealer",
+  "host": "LUAGameflow",
+  "start": {
+    "quest": "V_TrophyDealer",
+    "travel": [
+      [
+        28,
+        1792.0,
+        3360.0,
+        53.9,
+        "Witchwood1"
+      ]
+    ]
+  },
+  "maps": "Witchwood",
+  "legs": {},
+  "enemyNames": [],
+  "answer": "no",
+  "pauseSteps": [
+    "clear",
+    "key ENTER"
+  ],
+  "steps": [
+    {
+      "name": "singing_stones",
+      "travel": [
+        [
+          45,
+          1952.0,
+          3456.0,
+          70.8,
+          "Witchwood2"
+        ]
+      ],
+      "until": "quest:IsRegionLoaded('Witchwood2') and (function() local f = quest:GetThingWithScriptName('DemonDoorFace'); return f == nil or f:IsNull() end)()",
+      "timeout": 120,
+      "tries": 2,
+      "do": [
+        "quest:SetMasterGameState('SingingStonesInSync', true)"
+      ],
+      "note": "assistance: V_SingingStones is retail native (not a converted unit); the runner's `hit` step could not yet land the four D B A C strikes reliably (stand-offs relocated beside the stones), so the flag its correct-tune path sets is set here and retail's DemonDoorFace opens the door (CS_TROPHY_DEALER_DOOR_OPENS)"
+    },
+    {
+      "name": "trophy_dealer_cave",
+      "travel": [
+        [
+          52,
+          1952.0,
+          3344.0,
+          49.9,
+          "WitchwoodCavern"
+        ]
+      ],
+      "until": "quest:IsQuestCompleted('V_TrophyDealer')",
+      "timeout": 240,
+      "tries": 1
+    }
+  ],
+  "done": "quest:IsQuestCompleted('V_TrophyDealer') and quest:GetMasterGameState('PostSavePosition') == 856",
+  "failed": "(not quest:IsQuestActive('V_TrophyDealer')) and not quest:IsQuestCompleted('V_TrophyDealer')"
+}
