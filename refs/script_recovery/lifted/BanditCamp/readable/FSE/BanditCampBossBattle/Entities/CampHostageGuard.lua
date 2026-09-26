@@ -15,9 +15,9 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult3, predicateResult6, predicateResult9, predicateResult11
-    local predicateResult12, predicateResult15, hostagesRescued, taskRunning, scratchValue4
-    local scratchValue5, registerTimer, conversationId, timerId, switch1, campHostage, scratchValue
-    local movie, movie3
+    local predicateResult12, predicateResult15, getStateBool, scratchValue4, scratchValue5
+    local registerTimer, conversationId, timerId, switch1, campHostage, scratchValue, movie, movie3
+    local scratchValue20
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -31,11 +31,12 @@ function Main(quest, me)
     scratchValue4 = 0
     campHostage = quest:GetNearestWithScriptName(me, "CampHostage")
     quest:EntitySetFacingAngleTowardsThing(me, campHostage, false)
+    scratchValue20 = 1
     scratchValue5 = 0
     registerTimer = quest:RegisterTimer()
     dropPass = true
-    hostagesRescued = quest:GetStateBool("HostagesRescued")
-    while not hostagesRescued do
+    getStateBool = quest:GetStateBool("HostagesRescued")
+    while not getStateBool do
         if not quest:NewScriptFrame(me) then goto LAB_00d0a693 end
         if quest:MsgOnHeroPickedPocket() then
             dropPass = false
@@ -81,7 +82,7 @@ function Main(quest, me)
         until true
         quest:SetTimer(timerId, 10)
         ::LAB_00d09458::
-        if 1 == 1 then
+        if scratchValue20 == 1 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
             if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0) then goto LAB_00d094cb end
             predicateResult = true
@@ -95,7 +96,7 @@ function Main(quest, me)
                 me:MoveToPosition(guardFirstMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             elseif quest:GetTimer(registerTimer) < 1 then
                 if scratchValue5 ~= 0 then
-                    if not quest:IsActiveThreadTerminating() then goto LAB_00d09756 end
+                    if not quest:IsActiveThreadTerminating() then scratchValue20 = 2; goto LAB_00d09756 end
                     goto LAB_00d0a693
                 end
                 goto LAB_00d095b5
@@ -114,6 +115,7 @@ function Main(quest, me)
                 me:MoveToPosition(guardSecondMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             elseif quest:GetTimer(registerTimer) < 1 then
                 if scratchValue5 == 0 then goto LAB_00d095b5 end
+                scratchValue20 = 1
                 goto LAB_00d09756
             end
         end
@@ -133,7 +135,8 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
                 movie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_0 then
                     me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_FIRST_CHAT", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
@@ -154,7 +157,8 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
                 movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_00 then
                     me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_SECOND_CHAT", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
@@ -186,7 +190,7 @@ function Main(quest, me)
         predicateResult6 = true
         ::FLOW_past_lab_00d09aee::
         if not predicateResult6 then
-            hostagesRescued = quest:GetStateBool("HostagesRescued")
+            getStateBool = quest:GetStateBool("HostagesRescued")
         else
             if not quest:IsActiveThreadTerminating() then
                 quest:ClearThingHasInformation(me)
@@ -201,7 +205,7 @@ function Main(quest, me)
                 return
             end
             goto LAB_00d0a693
-            hostagesRescued = quest:GetStateBool("HostagesRescued")
+            getStateBool = quest:GetStateBool("HostagesRescued")
         end
     end
     predicateResult9 = quest:IsActiveThreadTerminating()
@@ -273,7 +277,8 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then break end
                     movie3 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
+                    if 0.0 < fret_01 then
                         if not me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_LATE_SPEAK_FIRST", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0a4c8 end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d0a4c8 end
                     end
@@ -283,7 +288,8 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then break end
                     movie = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    local fret_02 = quest:GetHealth(resources:ScriptThing(resource))
+                    if 0.0 < fret_02 then
                         me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_LATE_SPEAK_SECOND", GROUP_SELECT_FIRST, false, true, false)
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d09dc7 end
@@ -314,7 +320,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00d0a62b end
                     me:Speak(hero, "TEXT_QST_009_HOSTAGE_GUARD_LATE_HIT", GROUP_SELECT_FIRST, false, true, false)
-                    taskRunning = me:IsPerformingScriptTask()
+                    getStateBool = me:IsPerformingScriptTask()
                     goto LAB_00d0a5d1
                 end
                 break
@@ -334,9 +340,9 @@ function Main(quest, me)
     resources:DestroyMovie(movie)
     goto LAB_00d0a693
     ::LAB_00d0a5d1::
-    if not taskRunning then goto LAB_00d0a5f7 end
+    if not getStateBool then goto LAB_00d0a5f7 end
     if not quest:NewScriptFrame(me) then goto LAB_00d0a4c8 end
-    taskRunning = me:IsPerformingScriptTask()
+    getStateBool = me:IsPerformingScriptTask()
     goto LAB_00d0a5d1
     ::LAB_00d0a4c8::
     quest:PauseAllNonScriptedEntities(false)

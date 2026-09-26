@@ -1927,6 +1927,46 @@ def fold_offset_string_temporaries(text: str) -> str:
     return text
 
 
+SCALAR_SLOT_CAST = r'\((?:CCharString|byte|uchar|char|int|uint|undefined1|undefined4)\)'
+
+
+def split_scalar_slot_tail(text):
+    """A stack slot the compiler reuses: an object first (its address taken: a string temporary's ctor / dtor), a
+    plain byte or int afterwards. The export keeps the object's type, so the scalar stores and tests read
+    `xStack_9c = (CCharString)0x2;` / `if (xStack_9c == (CCharString)0x1)`. Every line after the slot's LAST
+    address use that names it in only those shapes is the scalar life: give it a lifter-visible scalar name
+    (CampHostageGuard.Main 0x00D09010: the "CampHostage" lookup string, then the guard's patrol leg 1/2 --
+    left as an object name, both leg stores were dropped and the test folded to `1 == 1`, so the guard never
+    walked to GuardSecondMarker and the hostage door stayed guarded, 2026-09-26)."""
+    # (a hidden-result slot too: only lines after its last address use are touched)
+    lines = text.split('\n')
+    for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', text))):
+        n = re.escape(name)
+        store = re.compile(r'^([ \t]*)' + n + r' = ' + SCALAR_SLOT_CAST + r'(0x[0-9a-f]+|\d+);[ \t]*\r?$')
+        test = re.compile(r'\b' + n + r' ([!=]=) ' + SCALAR_SLOT_CAST + r'(0x[0-9a-f]+|\d+)(?=\W)')
+        uses = [i for i, l in enumerate(lines) if re.search(r'\b' + n + r'\b', l)]
+        addressed = [i for i in uses if re.search(r'&' + n + r'\b|\(\w+ \*+\)' + n + r'\b|\b' + n + r'\s*[\[.]', lines[i])]
+        if not addressed:
+            continue
+        tail = [i for i in uses if i > addressed[-1] and not re.match(r'^[ \t]*(?:[\w:<>,]+ )+\**' + n + r'(?: \[\d+\])?;', lines[i])]
+        # stores AND a test: a store-only tail is a member reset of the dead object (MagicBarrier's `= 0`s), not a variable
+        if not tail or not any(store.match(lines[i]) for i in tail) or not any(test.search(lines[i]) for i in tail):
+            continue
+        # a state byte / counter only: code-address stores (V_Bordello Madame's `xStack_12c = (CCharString)0xe3dfe8`
+        # run) are Ghidra's view of a pushed return address or pointer, not a variable
+        if any(int(store.match(lines[i]).group(2), 0) > 0xffff for i in tail if store.match(lines[i])):
+            continue
+        if not all(store.match(lines[i]) or (test.search(lines[i]) and not re.search(r'\b' + n + r'\b', test.sub('', lines[i])))
+                   for i in tail):
+            continue
+        m = re.fullmatch(r'([A-Za-z]*)(?:Stack_|local_)([0-9a-f]+)', name)
+        scalar = f'{m.group(1) or "v"}_stk_{m.group(2)}'
+        for i in tail:
+            lines[i] = store.sub(lambda mm: f'{mm.group(1)}{scalar} = {int(mm.group(2), 0)};', lines[i])
+            lines[i] = test.sub(lambda mm: f'{scalar} {mm.group(1)} {int(mm.group(2), 0)}', lines[i])
+    return '\n'.join(lines)
+
+
 def rename_scalar_stack_locals(text):
     """Ghidra stack names (`local_14`, `uStack_8`) are refused by the lifter's assignment rule (they
     are usually object slots). Ones that only ever appear as plain scalars get lifter-visible names."""
@@ -1950,6 +1990,7 @@ def rename_scalar_stack_locals(text):
     hidden -= set(re.findall(r'^[ \t]*' + STK + r' = (?:p[A-Z]\w*|thing_\w+|r\d+|native_arg_\w+);', text, re.M)) - cast_args   # pointer-typed values only
     # a stack CScriptThing that only ever holds lowered values is a plain handle: drop its casts
     text = re.sub(r'\(CScriptThing \*\)((?:[A-Za-z]+Stack_|local_)[0-9a-f]+)\b', lambda m: m.group(0) if m.group(1) in hidden else m.group(1), text)
+    text = split_scalar_slot_tail(text)
     body = re.sub(r'^[ \t]*(?:[\w:<>,]+ )+\**\w+(?: \[\d+\])?;[ \t]*\r?$', '', text, flags=re.M)   # declarations
     for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+\b', body))):
         if name in hidden:

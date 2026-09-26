@@ -1,0 +1,23 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index f1ad3cf..59a90da 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -180,6 +180,18 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         auto* gsi = self.GetGameInterface();
+         return (gsi && IsHeroInProjectileWeaponMode_API) ? IsHeroInProjectileWeaponMode_API(gsi) : false;
+     };
++    // ---- hero ability cancel (GSI slot 0x638, void(EHeroAbility)) ---------------------------------
++    // Q_BanditCamp BanditKingMissionProcess calls slot 0x638 with 0xF (ghost sword) and 10 (summon) as the hero
++    // enters the boss arena; CancelUsingAbility_API is resolved from pVTable[398] (= 0x638 / 4).
++    quest["CancelUsingAbility"] = [](LuaQuestState& self, int ability) {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi || !CancelUsingAbility_API) { LogToFile("!!! ERROR: CancelUsingAbility - API not available!"); return; }
++        if (ability < 0 || ability >= MAX_NUMBER_OF_HERO_ABILITIES) {
++            LogToFile("!!! WARNING: CancelUsingAbility called with an out-of-range ability; ignored.");
++            return;
++        }
++        CancelUsingAbility_API(gsi, static_cast<EHeroAbility>(ability));
++    };
+     // ---- text table probe (GSI slot 0x598, bool(const CCharString&) const) ----------------------
+     // The key is required natively; a call without one is a converter gap (the operand was dropped), logged and false.
+     quest["TextEntryExists"] = [](LuaQuestState& self, sol::optional<std::string> key) -> bool {

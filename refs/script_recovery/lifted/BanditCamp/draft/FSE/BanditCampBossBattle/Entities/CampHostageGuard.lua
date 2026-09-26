@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar2, cVar3, c_stk_d5, c_stk_d6, fVar1, fVar15, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar4, iVar6, i_stk_dc, i_stk_e0, native_arg_sequence_1, native_arg_switch_1, native_arg_switch_2, p0, pCVar5, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, u_stk_b4, xStack_30, xStack_48, xStack_98, xStack_b0, xStack_d0
+    local bVar2, cVar3, c_stk_d5, c_stk_d6, fVar1, fVar15, fret_0, fret_00, fret_01, fret_02, fret_03, iVar13, iVar14, iVar16, iVar4, iVar6, i_stk_dc, i_stk_e0, native_arg_sequence_1, native_arg_switch_1, native_arg_switch_2, p0, pCVar5, pCVar7, pCVar8, pcVar12, r1, r2, r3, r4, r5, r6, u_stk_b4, xStack_30, xStack_48, xStack_98, xStack_b0, xStack_d0, x_stk_9c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -39,6 +39,7 @@ function Main(quest, me)
     c_stk_d5 = 0
     r1 = quest:GetNearestWithScriptName(me, "CampHostage")
     quest:EntitySetFacingAngleTowardsThing(me, r1, false)
+    x_stk_9c = 1
     c_stk_d6 = 0
     iVar4 = quest:RegisterTimer()
     __native_entity_state:SetStateBool("DropPass", true)
@@ -136,7 +137,7 @@ function Main(quest, me)
         quest:SetTimer(i_stk_e0, 10)
         iVar4 = i_stk_dc
         ::LAB_00d09458::
-        if 0x1 == 0x1 then
+        if x_stk_9c == 1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d0a693 end
@@ -178,6 +179,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if not bVar2 then
+                            x_stk_9c = 2
                             goto LAB_00d09756
                         end
                         goto LAB_00d0a693
@@ -227,6 +229,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00d0a693 end
+                    x_stk_9c = 1
                     goto LAB_00d09756
                 end
             end

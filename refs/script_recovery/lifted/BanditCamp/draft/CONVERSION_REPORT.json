@@ -1156,8 +1156,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "CancelUsingAbility: not in FSE manifest",
-            "CancelUsingAbility: not in FSE manifest",
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
             "unlifted: CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(p",
             "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
@@ -1317,7 +1315,7 @@
             "SetTeleportingAsActive",
             "SetStateBool"
           ],
-          "lines": 245,
+          "lines": 243,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4414,7 +4412,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 646,
+          "lines": 649,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5666,7 +5664,7 @@
         "functionSyntaxPassed": 67,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 71
+        "todo": 69
       }
     },
     {
@@ -5810,6 +5808,6 @@
     "functionSyntaxPassed": 85,
     "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 19,
-    "todo": 82
+    "todo": 80
   }
 }

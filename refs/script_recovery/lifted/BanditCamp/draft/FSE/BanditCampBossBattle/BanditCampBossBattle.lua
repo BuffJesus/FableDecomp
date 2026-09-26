@@ -100,9 +100,7 @@ function BanditKingMissionProcess(quest)
     if bVar2 then
         return
     end
-    -- TODO(native): CancelUsingAbility is not a ForgeFSE binding
     quest:CancelUsingAbility(0xf)
-    -- TODO(native): CancelUsingAbility is not a ForgeFSE binding
     quest:CancelUsingAbility(10)
     quest:SetAbilityAvailability(0xf, false)
     quest:SetAbilityAvailability(10, false)

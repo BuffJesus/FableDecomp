@@ -91,9 +91,7 @@ function BanditKingMissionProcess(quest)
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    -- TODO(native): CancelUsingAbility is not a ForgeFSE binding
     quest:CancelUsingAbility(15)
-    -- TODO(native): CancelUsingAbility is not a ForgeFSE binding
     quest:CancelUsingAbility(10)
     quest:SetAbilityAvailability(15, false)
     quest:SetAbilityAvailability(10, false)
