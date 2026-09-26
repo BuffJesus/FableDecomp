@@ -302,6 +302,15 @@ def play(a, q) -> str:
     def take_card(s):
         """the real card table: TAB beside a card, find the quest's row by the summary title, Take Quest"""
         card = s['card']
+        # the row title as the game shows it: the config's `title`, else its `titleKey`, else the quest card's
+        # `TEXT_QUEST_<QUEST>_TITLE`, read from the install's text.big (game_text; Q_TraderEscort's is TRADER_PATH)
+        if not s.get('title'):
+            from tools.script_recovery import game_text
+            s['title'] = game_text.text(s['titleKey']) if s.get('titleKey') else game_text.quest_title(s['quest'])
+            log('card_title', title=s['title'], key=s.get('titleKey') or f"TEXT_QUEST_{game_text.quest_key(s['quest'])}_TITLE")
+            if not s['title']:
+                log('card_title_missing', quest=s['quest'])
+                return False
         if not wait_for(f"tostring(#quest:GetAllThingsWithDefName('{card}') > 0)", 'true', 5):
             if not travel(s['guild']):
                 return False
