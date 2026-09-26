@@ -102,6 +102,23 @@ UNITS = {
         'schema': 'white-balverine-native-inventory/0.1',
         'package': 'WhiteBalverine',
     },
+    'arena': {
+        # Gameflow stage 875 waits for Q_Arena to be taken, 900 for it to complete. Its own block is small: ctor
+        # 0x00CFA660, Init 0x00CFA700 (the Arena regions, boast texts), OnPersist 0x00CFAB10 (ArenaState, ArenaRound,
+        # GoldMultiplier ...), allocator 0x00CFABF0, dtor 0x00CFAC40; Q_AwakeningTheOracle begins at 0x00CFAD30. The
+        # vtable's other slots (Main, workers, entities) live in the code block below.
+        'evidence': ROOT / 'refs/script_recovery/arena',
+        'lo': 0xF0F910, 'hi': 0xF28000,
+        # the lifecycle block 0x00CFA660..0x00CFAD30 is anchored in define_addresses.txt; the range is the quest's
+        # code block (Main, workers, the CCham / CShadow / CArenaEnemy / CArenaSpawn entities), after the
+        # Q_AmbushTraders family and before Q_HeroSouls
+        'ir_glob': 'Q_Arena*.json',
+        # the inventory also binds Q_ArenaHoldingScript (allocator 0x00CF8860: entrance guards, fans)
+        'scripts': ['Q_Arena', 'Q_ArenaHoldingScript'],
+        'pdb_pattern': '*CQ_Arena*',
+        'schema': 'arena-native-inventory/0.1',
+        'package': 'Arena',
+    },
     'tour_guide': {
         # Gameflow stage 200 activates V_TourGuide beside the QS_GuardianSisterInfo card.
         # Cluster vtable lifecycle (own block only): 0x00EE42A0 .. allocator 0x00EE6C00; the next family's

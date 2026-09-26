@@ -1,0 +1,1656 @@
+{
+  "schema": "quest-unit-evidence/1",
+  "script": "Q_Arena",
+  "package": "Arena",
+  "nativeClass": "NScript::CQ_ArenaScript",
+  "allocator": "0x00CFABF0",
+  "vtable": "0x012C7798",
+  "master": {
+    "fields": {
+      "0x4": [
+        "PostSavePosition",
+        "Int"
+      ],
+      "0x8": [
+        "HenchmanCommentaryState",
+        "Int"
+      ],
+      "0xc": [
+        "HenchmanOverrideState",
+        "Int"
+      ],
+      "0x10": [
+        "HenchmanSacrificedBodge",
+        "Bool"
+      ],
+      "0x11": [
+        "HauntedBarrowFieldsCompleted",
+        "Bool"
+      ],
+      "0x14": [
+        "RandomEntityVillagerMax",
+        "Int"
+      ],
+      "0x18": [
+        "RandomEntityGuardMax",
+        "Int"
+      ],
+      "0x1c": [
+        "RandomEntityBanditMax",
+        "Int"
+      ],
+      "0x20": [
+        "RandomEntityVillagerCount",
+        "Int"
+      ],
+      "0x24": [
+        "RandomEntityGuardCount",
+        "Int"
+      ],
+      "0x28": [
+        "RandomEntityBanditCount",
+        "Int"
+      ],
+      "0x2c": [
+        "RandomEntityVillagerPercentage",
+        "Float"
+      ],
+      "0x30": [
+        "RandomEntityGuardPercentage",
+        "Float"
+      ],
+      "0x34": [
+        "RandomEntityBanditPercentage",
+        "Float"
+      ],
+      "0x38": [
+        "RandomEntitySheriffAlive",
+        "Bool"
+      ],
+      "0x39": [
+        "RandomEntityLieutenantAlive",
+        "Bool"
+      ],
+      "0x3a": [
+        "BanditCampTwinbladeKilled",
+        "Bool"
+      ],
+      "0x44": [
+        "ArcheryHighScore",
+        "Int"
+      ],
+      "0x48": [
+        "FriendOfForeman",
+        "Bool"
+      ],
+      "0x49": [
+        "BridgeOpened",
+        "Bool"
+      ],
+      "0x4a": [
+        "GrannyMemoryReturned",
+        "Bool"
+      ],
+      "0x4b": [
+        "IsLunaHuman",
+        "Bool"
+      ],
+      "0x4c": [
+        "CondemnedManDead",
+        "Bool"
+      ],
+      "0x4d": [
+        "CondemnedManForgiven",
+        "Bool"
+      ],
+      "0x4e": [
+        "CondemnedManMeetsBodyGuard",
+        "Bool"
+      ],
+      "0x4f": [
+        "CondemnedManMeetsBodyGuardCutSceneStart",
+        "Bool"
+      ],
+      "0x50": [
+        "CondemnedManMeetsBodyGuardCutSceneFinished",
+        "Bool"
+      ],
+      "0x54": [
+        "TeddySolution",
+        "String"
+      ],
+      "0x58": [
+        "OrchardFarmRaidLastCompleted",
+        "Int"
+      ],
+      "0x5c": [
+        "OrchardFarmTraderEscortCounter",
+        "Int"
+      ],
+      "0x60": [
+        "SeenAbbeyMotherAtGuild",
+        "Bool"
+      ],
+      "0x61": [
+        "DefeatedThunder",
+        "Bool"
+      ],
+      "0x62": [
+        "LostToThunder",
+        "Bool"
+      ],
+      "0x63": [
+        "KilledThunder",
+        "Bool"
+      ],
+      "0x64": [
+        "CollectedSoulFromArena",
+        "Bool"
+      ],
+      "0x65": [
+        "KilledBriar",
+        "Bool"
+      ],
+      "0x66": [
+        "CollectedSoulFromMother",
+        "Bool"
+      ],
+      "0x67": [
+        "KilledGM",
+        "Bool"
+      ],
+      "0x68": [
+        "CollectedSoulFromNostro",
+        "Bool"
+      ],
+      "0x6c": [
+        "DeliveredSoul",
+        "Int"
+      ],
+      "0x70": [
+        "CurrentHeroSoulsPosition",
+        "Int"
+      ],
+      "0x74": [
+        "WhisperKilledByHero",
+        "Bool"
+      ],
+      "0x75": [
+        "ArenaFinished",
+        "Bool"
+      ],
+      "0x76": [
+        "GatesRequireClosing",
+        "Bool"
+      ],
+      "0x77": [
+        "GatesRequireOpening",
+        "Bool"
+      ],
+      "0x78": [
+        "HeroDrunkness",
+        "Int"
+      ],
+      "0x7c": [
+        "TrophyDealerHeroSpokenToDemonDoors",
+        "Bool"
+      ],
+      "0x80": [
+        "VillagerAngryRating",
+        "Float"
+      ],
+      "0x84": [
+        "MotherDodgingKraken",
+        "Bool"
+      ],
+      "0x88": [
+        "JackBossBattleResult",
+        "Int"
+      ],
+      "0x8c": [
+        "JackBossBattleHeroGoodAtEnd",
+        "Bool"
+      ],
+      "0x8d": [
+        "WifeLeavingYou",
+        "Bool"
+      ],
+      "0x8e": [
+        "WifeLeftYou",
+        "Bool"
+      ],
+      "0x90": [
+        "CurrentScene",
+        "Int"
+      ],
+      "0x94": [
+        "StartNextScene",
+        "Bool"
+      ],
+      "0x98": [
+        "CurrentChapter",
+        "Int"
+      ],
+      "0x9c": [
+        "ScorpionsDestroyed",
+        "Bool"
+      ],
+      "0x9d": [
+        "ScorpionsDestroyedCutscenePlayed",
+        "Bool"
+      ],
+      "0x9e": [
+        "SkillTrainingStarted",
+        "Bool"
+      ],
+      "0x9f": [
+        "WillTrainingStarted",
+        "Bool"
+      ],
+      "0xa0": [
+        "MovingDummiesNeeded",
+        "Bool"
+      ],
+      "0xa4": [
+        "SkillScore",
+        "Int"
+      ],
+      "0xa8": [
+        "HighestSkillScore",
+        "Int"
+      ],
+      "0xac": [
+        "WillScore",
+        "Int"
+      ],
+      "0xb0": [
+        "MeleeApprenticeNeededForCutscene",
+        "Bool"
+      ],
+      "0xb4": [
+        "GlobalMeleeGrade",
+        "Int"
+      ],
+      "0xb8": [
+        "GlobalSkillGrade",
+        "Int"
+      ],
+      "0xbc": [
+        "GlobalWillGrade",
+        "Int"
+      ],
+      "0xc0": [
+        "GuildWarningOccuring",
+        "Bool"
+      ],
+      "0xc1": [
+        "SkillTestOccuring",
+        "Bool"
+      ],
+      "0xc2": [
+        "WillTestOccuring",
+        "Bool"
+      ],
+      "0xc3": [
+        "SkillRepeating",
+        "Bool"
+      ],
+      "0xc4": [
+        "SkillRepeatKnown",
+        "Bool"
+      ],
+      "0xc5": [
+        "SkillDummyReset",
+        "Bool"
+      ],
+      "0xc6": [
+        "HeroTakingGuildTest",
+        "Bool"
+      ],
+      "0xc7": [
+        "SwordInTheStoneComplete",
+        "Bool"
+      ],
+      "0xc8": [
+        "AmbushTradersAllGuardsDead",
+        "Bool"
+      ],
+      "0xc9": [
+        "AmbushTradersAllTradersDead",
+        "Bool"
+      ],
+      "0xcc": [
+        "AmbushTradersKillCount",
+        "Int"
+      ],
+      "0xd0": [
+        "AmbushTradersBanditHireCount",
+        "Int"
+      ],
+      "0xd4": [
+        "AmbushTradersSpyDead",
+        "Bool"
+      ],
+      "0xd5": [
+        "StruckDealWithLadyGrey",
+        "Bool"
+      ],
+      "0xd6": [
+        "HeroExposedLadyGrey",
+        "Bool"
+      ],
+      "0xd7": [
+        "HeroMarriedLadyGrey",
+        "Bool"
+      ],
+      "0xd8": [
+        "BountyHuntWithinTimeLimit",
+        "Bool"
+      ],
+      "0xd9": [
+        "BountyHuntDecapitation",
+        "Bool"
+      ],
+      "0xda": [
+        "BountyHuntTimeLimitExceeded",
+        "Bool"
+      ],
+      "0xdc": [
+        "AchievementsWorthyOfSong",
+        "Int"
+      ],
+      "0xe0": [
+        "BreakSiegeFinished",
+        "Bool"
+      ],
+      "0xe1": [
+        "WhiteBalverineFinished",
+        "Bool"
+      ],
+      "0xe2": [
+        "MadBomberFinished",
+        "Bool"
+      ],
+      "0xe3": [
+        "BodyGuardsMustStandAndWait",
+        "Bool"
+      ],
+      "0xe4": [
+        "BodyGuardsInLimbo",
+        "Bool"
+      ],
+      "0xe5": [
+        "WifeHeroFlirting",
+        "Bool"
+      ],
+      "0xe8": [
+        "PrisonRaceNumber",
+        "Int"
+      ],
+      "0xec": [
+        "PrisonRaceWonByHero",
+        "Bool"
+      ],
+      "0xed": [
+        "WasPrisonRaceEverWonByHero",
+        "Bool"
+      ],
+      "0xee": [
+        "PrisonKeyStolenByHero",
+        "Bool"
+      ],
+      "0xef": [
+        "BooksPreviouslyOpened_0",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
+        "Bool"
+      ],
+      "0xf7": [
+        "BooksPreviouslyOpened_2",
+        "Bool"
+      ],
+      "0xf2": [
+        "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf4": [
+        "HeroDollsScriptUsingTeacher",
+        "Bool"
+      ],
+      "0xf8": [
+        "MaxChickenKickingScore",
+        "Int"
+      ],
+      "0xfc": [
+        "StoryTellerSpecialStories",
+        "Int"
+      ],
+      "0x100": [
+        "StoryTellerToldSpecialStories",
+        "Int"
+      ],
+      "0x104": [
+        "GHeroName",
+        "Int"
+      ],
+      "0x108": [
+        "TimeAdvancePointTriggered",
+        "Bool"
+      ],
+      "0x109": [
+        "OFBRCratesStolen",
+        "Bool"
+      ],
+      "0x10a": [
+        "OFBR_NoCratesWereStolen",
+        "Bool"
+      ],
+      "0x10b": [
+        "DarkwoodAllTradersAlive",
+        "Bool"
+      ],
+      "0x10c": [
+        "MadBomberNoBombsExplode",
+        "Bool"
+      ],
+      "0x10d": [
+        "HobbeCavePerpertratorKilled",
+        "Bool"
+      ],
+      "0x110": [
+        "HobbeCaveInnocentSacrificed",
+        "Int"
+      ],
+      "0x114": [
+        "HobbeCaveBoyUnharmed",
+        "Bool"
+      ],
+      "0x115": [
+        "BanditCampKillNoBandits",
+        "Bool"
+      ],
+      "0x116": [
+        "BreakSiegeNoAssistance",
+        "Bool"
+      ],
+      "0x117": [
+        "BreakSiegeKilledLeader",
+        "Bool"
+      ],
+      "0x118": [
+        "OrchardFarmBanditKilled",
+        "Bool"
+      ],
+      "0x119": [
+        "OrchardFarmGuardKilled",
+        "Bool"
+      ],
+      "0x11a": [
+        "BanditCampKillManyBandits",
+        "Bool"
+      ],
+      "0x11b": [
+        "HobbeContestKillMoreHobbes",
+        "Bool"
+      ],
+      "0x11c": [
+        "GraveyardKillAllInnocents",
+        "Bool"
+      ],
+      "0x120": [
+        "DarkwoodPickpocketedAllTraders",
+        "Int"
+      ],
+      "0x124": [
+        "HangingTreeBanditKilled",
+        "Bool"
+      ],
+      "0x125": [
+        "HangingTreeGuardKilled",
+        "Bool"
+      ],
+      "0x126": [
+        "TCGKillNoBandits",
+        "Bool"
+      ],
+      "0x127": [
+        "TCGMadeTimeLimit",
+        "Bool"
+      ],
+      "0x128": [
+        "TCEKeepBanditFollowerAlive",
+        "Bool"
+      ],
+      "0x129": [
+        "TCEMadeTimeLimit",
+        "Bool"
+      ],
+      "0x12a": [
+        "RansomVictimVictimNoDamage",
+        "Bool"
+      ],
+      "0x12b": [
+        "RansomVictimKidnappersKilled",
+        "Bool"
+      ],
+      "0x12c": [
+        "RansomVictimSaveVictim",
+        "Bool"
+      ],
+      "0x12d": [
+        "RansomVictimHaveVictimKilled",
+        "Bool"
+      ],
+      "0x12e": [
+        "MinionCampBriarNoDamage",
+        "Bool"
+      ],
+      "0x12f": [
+        "FireHeartFreeAllPrisoners",
+        "Bool"
+      ],
+      "0x130": [
+        "FireHeartKillAllPrisoners",
+        "Bool"
+      ],
+      "0x131": [
+        "TCETimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x132": [
+        "TCGTimeLimitBoastTaken",
+        "Bool"
+      ],
+      "0x133": [
+        "HeroWoreMask",
+        "Bool"
+      ],
+      "0x140": [
+        "SingingStonesInSync",
+        "Bool"
+      ]
+    },
+    "unmapped": [
+      {
+        "offset": "0x3c",
+        "pdbOffset": "0x3c",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateCurrent"
+      },
+      {
+        "offset": "0x40",
+        "pdbOffset": "0x40",
+        "type": "ArcheryOpenState",
+        "name": "ArcheryStateRequired"
+      },
+      {
+        "offset": "0x134",
+        "pdbOffset": "0x134",
+        "type": "vector<CCharString,std::allocator<CCharString>_>",
+        "name": "BoastRegions"
+      }
+    ],
+    "things": {}
+  },
+  "quest": {
+    "functions": {
+      "destructor": {
+        "address": "0x00cfac20",
+        "evidence": "cluster lifecycle slot"
+      },
+      "RegisterMain": {
+        "address": "0x00cfaa50",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Main": {
+        "address": "0x00f0fb70",
+        "evidence": "cluster lifecycle slot"
+      },
+      "Init": {
+        "address": "0x00cfa700",
+        "evidence": "cluster lifecycle slot"
+      },
+      "OnPersist": {
+        "address": "0x00cfab10",
+        "evidence": "cluster lifecycle slot"
+      },
+      "WatchForTermination": {
+        "address": "0x00f14300",
+        "spawnedAs": "WatchForTermination",
+        "evidence": "inventory thread registration"
+      },
+      "CrowdChecker": {
+        "address": "0x00f1cce0",
+        "spawnedAs": "CrowdChecker",
+        "evidence": "inventory thread registration"
+      },
+      "InitialiseVariables": {
+        "address": "0x00f25840",
+        "evidence": "PDB-name via string-set match (jaccard 1.00)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "AnimateCrowd": {
+        "address": "0x00f1ec70",
+        "evidence": "PDB-name via string-set match (jaccard 1.00)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "GetFanfareMusic": {
+        "address": "0x00f14270",
+        "evidence": "bsim label only; string sets inconclusive",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "PlayWave": {
+        "address": "0x00f1eed0",
+        "evidence": "PDB-name via string-set match (jaccard 0.56)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "GivePrizeFund": {
+        "address": "0x00f21300",
+        "evidence": "PDB-name via string-set match (jaccard 1.00)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "GetEndRoundQuestion": {
+        "address": "0x00f21590",
+        "evidence": "PDB-name via string-set match (jaccard 1.00)",
+        "bsimAgrees": true,
+        "callers": [
+          "quest"
+        ]
+      },
+      "helper_F14250": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f14250",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25980": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25980",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F261A0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f261a0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25AC0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25ac0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26B30": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26b30",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25B00": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25b00",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26920": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26920",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25BB0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25bb0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26AE0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26ae0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26AA0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26aa0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25F60": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25f60",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25C60": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25c60",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25C20": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25c20",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25F90": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25f90",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25D20": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25d20",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26150": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26150",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F26110": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f26110",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25F10": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25f10",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25DD0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25dd0",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
+      "helper_F25D90": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00f25d90",
+        "callers": [
+          "quest"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      }
+    },
+    "fields": {
+      "0xa4": [
+        "ArenaState",
+        "Int"
+      ],
+      "0xa8": [
+        "ArenaRound",
+        "Int"
+      ],
+      "0xac": [
+        "ArenaRoundWave",
+        "Int"
+      ],
+      "0xb0": [
+        "GoldMultiplier",
+        "Int"
+      ],
+      "0xb4": [
+        "ChamLeaving",
+        "Bool"
+      ],
+      "0xb8": [
+        "GoldTotal",
+        "Int"
+      ],
+      "0xbc": [
+        "InHitCutsceneAlready",
+        "Bool"
+      ],
+      "0xbd": [
+        "NeedBertForSpeech",
+        "Bool"
+      ],
+      "0xcc": [
+        "PlayerLeaving",
+        "Bool"
+      ],
+      "0xcd": [
+        "PlayerWon",
+        "Bool"
+      ],
+      "0xd0": [
+        "TotalCreatures_0",
+        "Int"
+      ],
+      "0xd4": [
+        "TotalCreatures_1",
+        "Int"
+      ],
+      "0xd8": [
+        "TotalCreatures_2",
+        "Int"
+      ],
+      "0xdc": [
+        "ExtraCreatures",
+        "Int"
+      ],
+      "0xe0": [
+        "MissionSucceeded",
+        "Bool"
+      ],
+      "0xe1": [
+        "MissionFailed",
+        "Bool"
+      ],
+      "0xe2": [
+        "ArenaSpawnNeeded_0",
+        "Bool"
+      ],
+      "0xe6": [
+        "ArenaSpawnNeeded_1",
+        "Bool"
+      ],
+      "0xea": [
+        "ArenaSpawnNeeded_2",
+        "Bool"
+      ],
+      "0xee": [
+        "ArenaSpawnNeeded_3",
+        "Bool"
+      ],
+      "0xf2": [
+        "ArenaSpawnNeeded_4",
+        "Bool"
+      ],
+      "0xf6": [
+        "ArenaSpawnNeeded_5",
+        "Bool"
+      ],
+      "0xfa": [
+        "ArenaSpawnNeeded_6",
+        "Bool"
+      ],
+      "0xfe": [
+        "ArenaSpawnNeeded_7",
+        "Bool"
+      ],
+      "0x102": [
+        "ArenaSpawnNeeded_8",
+        "Bool"
+      ],
+      "0x106": [
+        "ArenaSpawnNeeded_9",
+        "Bool"
+      ],
+      "0x10a": [
+        "ArenaSpawnNeeded_10",
+        "Bool"
+      ],
+      "0x10e": [
+        "ArenaSpawnNeeded_11",
+        "Bool"
+      ],
+      "0x112": [
+        "ArenaSpawnNeeded_12",
+        "Bool"
+      ],
+      "0x116": [
+        "ArenaSpawnNeeded_13",
+        "Bool"
+      ],
+      "0x11a": [
+        "ArenaSpawnNeeded_14",
+        "Bool"
+      ],
+      "0x11e": [
+        "ArenaSpawnNeeded_15",
+        "Bool"
+      ],
+      "0xf4": [
+        "NewCrowdPoints",
+        "Int"
+      ],
+      "0xf8": [
+        "NewCrowdHappiness",
+        "Int"
+      ],
+      "0xfc": [
+        "NewCrowdBaseLevel",
+        "Int"
+      ],
+      "0x100": [
+        "GlobalCrowdTimer",
+        "Int"
+      ],
+      "0x104": [
+        "FinalBattleCS",
+        "Bool"
+      ],
+      "0x114": [
+        "PauseCrowdChecker",
+        "Bool"
+      ],
+      "0x115": [
+        "WhisperNeededForCutscene",
+        "Bool"
+      ],
+      "0x118": [
+        "StopTimeIndex",
+        "Int"
+      ]
+    },
+    "thingFields": {
+      "0xc0": "CellsVillage",
+      "0x108": "Whisper"
+    },
+    "unmappedFields": [
+      {
+        "offset": "0x48",
+        "pdbOffset": "0x5c",
+        "type": "CCharString[4][5]",
+        "name": "CrowdLoopTags"
+      },
+      {
+        "offset": "0x98",
+        "pdbOffset": "0xac",
+        "type": "vector<CArenaRoundDef,std::allocator<CArenaRoundDef>_>",
+        "name": "Rounds"
+      }
+    ],
+    "timers": [
+      "GlobalCrowdTimer"
+    ],
+    "arrays": [
+      {
+        "name": "TotalCreatures",
+        "element": "long",
+        "base": "0xd0",
+        "stride": 4,
+        "count": 3,
+        "members": {
+          "0x0": [
+            "",
+            "Int"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "ArenaSpawnNeeded",
+        "element": "bool",
+        "base": "0xe2",
+        "stride": 4,
+        "count": 16,
+        "members": {
+          "0x0": [
+            "",
+            "Bool"
+          ]
+        },
+        "things": {}
+      }
+    ],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
+  },
+  "entities": {
+    "Cham": {
+      "nativeClass": "NScript::CQ_ArenaScript::CCham",
+      "classEvidence": "name",
+      "vtable": "0x012F8FB4",
+      "functions": {
+        "destructor": {
+          "address": "0x00f14750"
+        },
+        "Main": {
+          "address": "0x00f14770"
+        },
+        "Init": {
+          "address": "0x00f14720"
+        },
+        "GetParentScript": {
+          "address": "0x00f14710"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "Flick": {
+      "nativeClass": "NScript::CQ_ArenaScript::CFlick",
+      "classEvidence": "name",
+      "vtable": "0x012F8FE8",
+      "functions": {
+        "destructor": {
+          "address": "0x00f14a70"
+        },
+        "Main": {
+          "address": "0x00f14a90"
+        },
+        "Init": {
+          "address": "0x00f14a30"
+        },
+        "GetParentScript": {
+          "address": "0x00f14a20"
+        },
+        "OnPersist": {
+          "address": "0x00f216c0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ],
+        "0x20": [
+          "HintNumber",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "Shadow": {
+      "nativeClass": "NScript::CQ_ArenaScript::CShadow",
+      "classEvidence": "name",
+      "vtable": "0x012F927C",
+      "functions": {
+        "destructor": {
+          "address": "0x00f16290"
+        },
+        "Main": {
+          "address": "0x00f162b0"
+        },
+        "Init": {
+          "address": "0x00f16250"
+        },
+        "GetParentScript": {
+          "address": "0x00f16240"
+        },
+        "OnPersist": {
+          "address": "0x00f21780"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ],
+        "0x20": [
+          "HintNumber",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "Needle": {
+      "nativeClass": "NScript::CQ_ArenaScript::CNeedle",
+      "classEvidence": "name",
+      "vtable": "0x012F911C",
+      "functions": {
+        "destructor": {
+          "address": "0x00f15640"
+        },
+        "Main": {
+          "address": "0x00f15660"
+        },
+        "Init": {
+          "address": "0x00f15600"
+        },
+        "GetParentScript": {
+          "address": "0x00f155f0"
+        },
+        "OnPersist": {
+          "address": "0x00f21720"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ],
+        "0x20": [
+          "HintNumber",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "Roth": {
+      "nativeClass": "NScript::CQ_ArenaScript::CRoth",
+      "classEvidence": "name",
+      "vtable": "0x012F8F98",
+      "functions": {
+        "destructor": {
+          "address": "0x00f14650"
+        },
+        "Main": {
+          "address": "0x00f21880"
+        },
+        "Init": {
+          "address": "0x00f14610"
+        },
+        "GetParentScript": {
+          "address": "0x00f14600"
+        },
+        "OnPersist": {
+          "address": "0x00f21660"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ],
+        "0x20": [
+          "HintNumber",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "CellWhisper": {
+      "nativeClass": "NScript::CQ_ArenaScript::CCellWhisper",
+      "classEvidence": "name",
+      "vtable": "0x012F9458",
+      "functions": {
+        "destructor": {
+          "address": "0x00f170a0"
+        },
+        "Main": {
+          "address": "0x00f170c0"
+        },
+        "Init": {
+          "address": "0x00f17090"
+        },
+        "GetParentScript": {
+          "address": "0x00f17080"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "ArenaCellDoorGuard": {
+      "nativeClass": "NScript::CQ_ArenaScript::CArenaCellDoorGuard",
+      "classEvidence": "name",
+      "vtable": "0x012F95A8",
+      "functions": {
+        "destructor": {
+          "address": "0x00f17c50"
+        },
+        "Main": {
+          "address": "0x00f17c70"
+        },
+        "Init": {
+          "address": "0x00f17c20"
+        },
+        "GetParentScript": {
+          "address": "0x00f17c10"
+        },
+        "OnPersist": {
+          "address": "0x00f217e0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "ArenaCellDoorGuard2": {
+      "nativeClass": "NScript::CQ_ArenaScript::CArenaCellDoorGuard2",
+      "classEvidence": "name",
+      "vtable": "0x012F9B5C",
+      "functions": {
+        "destructor": {
+          "address": "0x00f19b90"
+        },
+        "Main": {
+          "address": "0x00f19bb0"
+        },
+        "Init": {
+          "address": "0x00f19b60"
+        },
+        "GetParentScript": {
+          "address": "0x00f19b50"
+        },
+        "OnPersist": {
+          "address": "0x00f21830"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "EarlyTalk",
+          "Bool"
+        ],
+        "0x1d": [
+          "ChamTalk",
+          "Bool"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "SUMMONED_CREATURE": {
+      "nativeClass": "NScript::CQ_ArenaScript::CSUMMONED_CREATURE",
+      "classEvidence": "name",
+      "vtable": "0x012F9CC8",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1b200"
+        },
+        "Main": {
+          "address": "0x00f1b220"
+        },
+        "Init": {
+          "address": "0x00f1b1a0"
+        },
+        "GetParentScript": {
+          "address": "0x00f1b190"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00f1b1b0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "ArenaEnemy": {
+      "nativeClass": "NScript::CQ_ArenaScript::CArenaEnemy",
+      "classEvidence": "name",
+      "vtable": "0x012F9C50",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1a8d0"
+        },
+        "Main": {
+          "address": "0x00f1a990"
+        },
+        "Init": {
+          "address": "0x00f1a8c0"
+        },
+        "GetParentScript": {
+          "address": "0x00f1a8b0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00f1a8f0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {
+        "0x1c": [
+          "HealthBarIndex",
+          "Int"
+        ],
+        "0x20": [
+          "BigCreature",
+          "Bool"
+        ],
+        "0x24": [
+          "MyCreatureType",
+          "Int"
+        ]
+      },
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "ArenaSpawn": {
+      "nativeClass": "NScript::CQ_ArenaScript::CArenaSpawn",
+      "classEvidence": "name",
+      "vtable": "0x012F9CE4",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1b670"
+        },
+        "Main": {
+          "address": "0x00f1b690"
+        },
+        "Init": {
+          "address": "0x00f1b660"
+        },
+        "GetParentScript": {
+          "address": "0x00f1b650"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "CagedBalverine": {
+      "nativeClass": "NScript::CQ_ArenaScript::CCagedBalverine",
+      "classEvidence": "name",
+      "vtable": "0x012F9EA4",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1cb30"
+        },
+        "Main": {
+          "address": "0x00f1cb20"
+        },
+        "Init": {
+          "address": "0x00f1cae0"
+        },
+        "GetParentScript": {
+          "address": "0x00f1cad0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "ArenaCellExitGuard": {
+      "nativeClass": "NScript::CQ_ArenaScript::CArenaCellExitGuard",
+      "classEvidence": "name",
+      "vtable": "0x012F9D2C",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1b9a0"
+        },
+        "Main": {
+          "address": "0x00f1b9c0"
+        },
+        "Init": {
+          "address": "0x00f1b990"
+        },
+        "GetParentScript": {
+          "address": "0x00f1b980"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    },
+    "WhisperAlly": {
+      "nativeClass": "NScript::CQ_ArenaScript::CWhisperAlly",
+      "classEvidence": "name",
+      "vtable": "0x012F9D10",
+      "functions": {
+        "destructor": {
+          "address": "0x00f1b8c0"
+        },
+        "Main": {
+          "address": "0x00f22d80"
+        },
+        "Init": {
+          "address": "0x00f1b8b0"
+        },
+        "GetParentScript": {
+          "address": "0x00f1b8a0"
+        },
+        "OnPersist": {
+          "address": "0x00cdebc0"
+        },
+        "OnPredicateFail": {
+          "address": "0x00cdebd0"
+        },
+        "OnInterrupted": {
+          "address": "0x00cdebe0"
+        }
+      },
+      "helpers": {},
+      "fields": {},
+      "thingFields": {},
+      "unmappedFields": [],
+      "timers": [],
+      "arrays": []
+    }
+  }
+}

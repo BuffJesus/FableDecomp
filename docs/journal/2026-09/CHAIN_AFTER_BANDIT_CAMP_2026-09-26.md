@@ -76,9 +76,16 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
 
 ## Resume here
 
-1. Next: Gameflow stage 875 waits for Q_Arena to be taken (its card is added at 870: "The Arena"), from
-   `adult_white_balverine_completed_2026-09-26`. Convert its unit (Q_Arena allocator 0x00CFABF0 per the native
-   catalog), then a runner config (card title from `game_text`).
+1. Next: Gameflow stage 875 waits for Q_Arena to be taken ("The Arena"), from
+   `adult_white_balverine_completed_2026-09-26`. Unit `arena` is registered and converted as a BASELINE, not
+   playable yet: the quest's lifecycle block 0x00CFA660..0x00CFAD30 is small (Init, OnPersist, allocator
+   0x00CFABF0) and its code (Main, workers WatchForTermination / CrowdChecker, the entities Cham, Flick, Shadow,
+   Needle, Roth, CellWhisper, the cell guards, CagedBalverine, ArenaEnemy / ArenaSpawn / SUMMONED_CREATURE,
+   WhisperAlly) is the block 0x00F0F910..0x00F28000, so the unit range is that block and the lifecycle block,
+   Q_ArenaHoldingScript (allocator 0x00CF8860, found by the inventory) and the shared entity stubs 0x00CDEBC0 /
+   0x00CDEBD0 are anchors. Draft: 22 files, 90 functions, 0 missing, 7 file syntax failures, 682 TODOs (81 are
+   `pCVarN = (CScriptThing *)...` thing reads, 32 raw vcalls), readable smoke 10 problems. Arena.lua alone
+   has 202 TODOs.
 2. White Balverine: review the 22 TODOs (two unresolved PlayAnimation /
    IsPerformingScriptTask receivers in WW SpawnBalverines: the quest-context resource receiver is refused by
    design until its resource is proven; the actor-map build is fixed). The quest plays through regardless.

@@ -1,0 +1,469 @@
+{
+  "schema": "arena-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "46fef3bf50290a310468c6284d2615b9f3c1f92092fc6c68bc4de17c03cc8d84",
+  "exportedFunctions": 131,
+  "quests": [
+    {
+      "script": "Q_Arena",
+      "allocator": "0x00CFABF0",
+      "vtable": "0x012C7798",
+      "entities": [
+        {
+          "name": "Cham",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FC1D",
+          "addBindingCall": "0x00F0FC5A",
+          "factoryStore": "0x00F0FC46",
+          "factory": "0x00F14670",
+          "vtable": "0x012F8FB4",
+          "functions": {
+            "destructor": "0x00F14750",
+            "Main": "0x00F14770",
+            "Init": "0x00F14720",
+            "GetParentScript": "0x00F14710",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F14710",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "Flick",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FC82",
+          "addBindingCall": "0x00F0FCC2",
+          "factoryStore": "0x00F0FCA9",
+          "factory": "0x00F14980",
+          "vtable": "0x012F8FE8",
+          "functions": {
+            "destructor": "0x00F14A70",
+            "Main": "0x00F14A90",
+            "Init": "0x00F14A30",
+            "GetParentScript": "0x00F14A20",
+            "OnPersist": "0x00F216C0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F14A90",
+            "0x00F14A20",
+            "0x00F216C0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "Shadow",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FCEA",
+          "addBindingCall": "0x00F0FD2A",
+          "factoryStore": "0x00F0FD11",
+          "factory": "0x00F161A0",
+          "vtable": "0x012F927C",
+          "functions": {
+            "destructor": "0x00F16290",
+            "Main": "0x00F162B0",
+            "Init": "0x00F16250",
+            "GetParentScript": "0x00F16240",
+            "OnPersist": "0x00F21780",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F162B0",
+            "0x00F16240",
+            "0x00F21780",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "Needle",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FD52",
+          "addBindingCall": "0x00F0FD92",
+          "factoryStore": "0x00F0FD79",
+          "factory": "0x00F15550",
+          "vtable": "0x012F911C",
+          "functions": {
+            "destructor": "0x00F15640",
+            "Main": "0x00F15660",
+            "Init": "0x00F15600",
+            "GetParentScript": "0x00F155F0",
+            "OnPersist": "0x00F21720",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F15660",
+            "0x00F155F0",
+            "0x00F21720",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "Roth",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FDBA",
+          "addBindingCall": "0x00F0FDFA",
+          "factoryStore": "0x00F0FDE1",
+          "factory": "0x00F14560",
+          "vtable": "0x012F8F98",
+          "functions": {
+            "destructor": "0x00F14650",
+            "Main": "0x00F21880",
+            "Init": "0x00F14610",
+            "GetParentScript": "0x00F14600",
+            "OnPersist": "0x00F21660",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F21880",
+            "0x00F14600",
+            "0x00F21660",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "CellWhisper",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FE22",
+          "addBindingCall": "0x00F0FE62",
+          "factoryStore": "0x00F0FE49",
+          "factory": "0x00F16FE0",
+          "vtable": "0x012F9458",
+          "functions": {
+            "destructor": "0x00F170A0",
+            "Main": "0x00F170C0",
+            "Init": "0x00F17090",
+            "GetParentScript": "0x00F17080",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F170C0",
+            "0x00F17090",
+            "0x00F17080",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "ArenaCellDoorGuard",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FE8A",
+          "addBindingCall": "0x00F0FECA",
+          "factoryStore": "0x00F0FEB1",
+          "factory": "0x00F17B70",
+          "vtable": "0x012F95A8",
+          "functions": {
+            "destructor": "0x00F17C50",
+            "Main": "0x00F17C70",
+            "Init": "0x00F17C20",
+            "GetParentScript": "0x00F17C10",
+            "OnPersist": "0x00F217E0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F17C70",
+            "0x00F17C10",
+            "0x00F217E0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "ArenaCellDoorGuard2",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FEF2",
+          "addBindingCall": "0x00F0FF35",
+          "factoryStore": "0x00F0FF1C",
+          "factory": "0x00F19AB0",
+          "vtable": "0x012F9B5C",
+          "functions": {
+            "destructor": "0x00F19B90",
+            "Main": "0x00F19BB0",
+            "Init": "0x00F19B60",
+            "GetParentScript": "0x00F19B50",
+            "OnPersist": "0x00F21830",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F19BB0",
+            "0x00F19B50",
+            "0x00F21830",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "SUMMONED_CREATURE",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FF5F",
+          "addBindingCall": "0x00F0FF9E",
+          "factoryStore": "0x00F0FF89",
+          "factory": "0x00F1B0F0",
+          "vtable": "0x012F9CC8",
+          "functions": {
+            "destructor": "0x00F1B200",
+            "Main": "0x00F1B220",
+            "Init": "0x00F1B1A0",
+            "GetParentScript": "0x00F1B190",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00F1B1B0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F1B1A0",
+            "0x00F1B190",
+            "0x00CDEBC0",
+            "0x00F1B1B0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "ArenaEnemy",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F0FFC9",
+          "addBindingCall": "0x00F10008",
+          "factoryStore": "0x00F0FFF3",
+          "factory": "0x00F1A810",
+          "vtable": "0x012F9C50",
+          "functions": {
+            "destructor": "0x00F1A8D0",
+            "Main": "0x00F1A990",
+            "Init": "0x00F1A8C0",
+            "GetParentScript": "0x00F1A8B0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00F1A8F0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F1A8C0",
+            "0x00F1A8B0",
+            "0x00CDEBC0",
+            "0x00F1A8F0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "ArenaSpawn",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F10033",
+          "addBindingCall": "0x00F10072",
+          "factoryStore": "0x00F1005D",
+          "factory": "0x00F1B5B0",
+          "vtable": "0x012F9CE4",
+          "functions": {
+            "destructor": "0x00F1B670",
+            "Main": "0x00F1B690",
+            "Init": "0x00F1B660",
+            "GetParentScript": "0x00F1B650",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F1B660",
+            "0x00F1B650",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "CagedBalverine",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F1009D",
+          "addBindingCall": "0x00F100DC",
+          "factoryStore": "0x00F100C7",
+          "factory": "0x00F1CA30",
+          "vtable": "0x012F9EA4",
+          "functions": {
+            "destructor": "0x00F1CB30",
+            "Main": "0x00F1CB20",
+            "Init": "0x00F1CAE0",
+            "GetParentScript": "0x00F1CAD0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F1CB20",
+            "0x00F1CAE0",
+            "0x00F1CAD0",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "ArenaCellExitGuard",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F10107",
+          "addBindingCall": "0x00F1014A",
+          "factoryStore": "0x00F10131",
+          "factory": "0x00F1B8E0",
+          "vtable": "0x012F9D2C",
+          "functions": {
+            "destructor": "0x00F1B9A0",
+            "Main": "0x00F1B9C0",
+            "Init": "0x00F1B990",
+            "GetParentScript": "0x00F1B980",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F1B9C0",
+            "0x00F1B990",
+            "0x00F1B980",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        },
+        {
+          "name": "WhisperAlly",
+          "registrationFunction": "0x00F0FB70",
+          "namePush": "0x00F10175",
+          "addBindingCall": "0x00F101B8",
+          "factoryStore": "0x00F1019F",
+          "factory": "0x00F1B800",
+          "vtable": "0x012F9D10",
+          "functions": {
+            "destructor": "0x00F1B8C0",
+            "Main": "0x00F22D80",
+            "Init": "0x00F1B8B0",
+            "GetParentScript": "0x00F1B8A0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": [
+            "0x00F22D80",
+            "0x00F1B8B0",
+            "0x00F1B8A0",
+            "0x00CDEBC0",
+            "0x00CDEBD0",
+            "0x00CDEBE0"
+          ]
+        }
+      ],
+      "vtableWriters": [
+        "0x00CFA660"
+      ]
+    },
+    {
+      "script": "Q_ArenaHoldingScript",
+      "allocator": "0x00CF8860",
+      "vtable": "0x012C60A0",
+      "entities": [
+        {
+          "name": "EntranceGuard",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF0875",
+          "addBindingCall": "0x00CF08BC",
+          "factoryStore": "0x00CF08A2",
+          "factory": "0x00CF0B60",
+          "functions": {},
+          "missingExports": [
+            "0x00CF0B60"
+          ]
+        },
+        {
+          "name": "EntranceGuard2",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF08E8",
+          "addBindingCall": "0x00CF0924",
+          "factoryStore": "0x00CF090F",
+          "factory": "0x00CF0C40",
+          "functions": {},
+          "missingExports": [
+            "0x00CF0C40"
+          ]
+        },
+        {
+          "name": "OakvaleFan",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF094C",
+          "addBindingCall": "0x00CF0988",
+          "factoryStore": "0x00CF0973",
+          "factory": "0x00CF17F0",
+          "functions": {},
+          "missingExports": [
+            "0x00CF17F0"
+          ]
+        },
+        {
+          "name": "BowerstoneFan",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF09B0",
+          "addBindingCall": "0x00CF09EC",
+          "factoryStore": "0x00CF09D7",
+          "factory": "0x00CF2A90",
+          "functions": {},
+          "missingExports": [
+            "0x00CF2A90"
+          ]
+        },
+        {
+          "name": "HookCoastFan",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF0A14",
+          "addBindingCall": "0x00CF0A50",
+          "factoryStore": "0x00CF0A3B",
+          "factory": "0x00CF3C40",
+          "functions": {},
+          "missingExports": [
+            "0x00CF3C40"
+          ]
+        },
+        {
+          "name": "FanMarker",
+          "registrationFunction": "0x00CF0790",
+          "namePush": "0x00CF0A78",
+          "addBindingCall": "0x00CF0AB4",
+          "factoryStore": "0x00CF0A9F",
+          "factory": "0x00CF4DF0",
+          "functions": {},
+          "missingExports": [
+            "0x00CF4DF0"
+          ]
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00F0FB70",
+      "store": "0x00F10295",
+      "body": "0x00F14300",
+      "name": "WatchForTermination",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00F0FB70",
+      "store": "0x00F10312",
+      "body": "0x00F1CCE0",
+      "name": "CrowdChecker",
+      "bodyExported": false
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

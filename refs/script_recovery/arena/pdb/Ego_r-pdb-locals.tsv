@@ -1,0 +1,661 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::Alloc	9294896	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CFanMarker::Main	9305152	7432
+0	7			0	0	2	1	0	0	9312556
+0	7			0	0	2	1	0	0	9312500
+0	7	this		0	4	4	5	18	0	0
+0	7	ChatTimer	CTimer	0	4	1	3	30006	-16	0
+0	7	seh_BowerstoneFan	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-184	0
+0	7	seh_HookCoastFan	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-200	0
+0	7	OakValeFan	CScriptThing	0	12	1	3	30006	-244	0
+0	7	BowerstoneFan	CScriptThing	0	12	1	3	30006	-256	0
+0	7	ChatLevel		13	4	1	3	30006	-220	0
+0	7	seh_OakValeFan	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-216	0
+0	7	HookCoastFan	CScriptThing	0	12	1	3	30006	-232	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-20	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellExitGuard::Alloc	9365056	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::Alloc	9335904	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellExitGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::~CQ_ArenaScript	9417232	288
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::Alloc	9289472	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CWhisperAlly::Alloc	9364880	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::GetEndRoundQuestion	9330192	280
+0	7			0	0	2	1	0	0	9330440
+0	7	this		0	4	4	5	18	0	0
+0	7	_Fail_Val	TRet<CCharString>	0	4	1	3	30006	-20	0
+FUNCTION	NScript::CQ_ArenaScript::Alloc	9417712	102
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_ArenaScript::GivePrizeFund	9328480	664
+0	7			0	0	2	1	0	0	9329112
+0	7	this		0	4	4	5	18	0	0
+0	7	line2	CCharString	0	4	1	3	30006	-20	0
+0	7	line1	CCharString	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CQ_ArenaScript::CWhisperAlly::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::Main	9339632	3932
+0	7			0	0	2	1	0	0	9343536
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-216	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-184	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-152	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-152	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::Main	9300112	4859
+0	7	this		0	4	4	5	18	0	0
+0	7	HaveLaterChatted		10	1	1	3	30006	-189	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+0	7	HaveChatted		10	1	1	3	30006	-209	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CWhisperAlly::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::InitialiseVariables	12145680	320
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::OnPredicateFail	9360064	212
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::OnPersist	9371808	96
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCham::Init	9331648	42
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CWhisperAlly::Main	9401104	13820
+0	7			0	0	2	1	0	0	9414904
+0	7	this		0	4	4	5	18	0	0
+0	7	FightTimer	CTimer	0	4	1	3	30006	-296	0
+0	7	QuarterHealth		13	4	1	3	30006	-292	0
+0	7	HealthBarIndex		13	4	1	3	30006	-200	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-284	0
+0	7	InitialHealth		13	4	1	3	30006	-232	0
+0	7	QuarterMoan		10	1	1	3	30006	-297	0
+0	7	HalfMoan		10	1	1	3	30006	-265	0
+0	7	FightingBiggie		10	1	1	3	30006	-265	0
+0	7	PleadTimer	CTimer	0	4	1	3	30006	-240	0
+0	7	PleadNumber		13	4	1	3	30006	-204	0
+0	7	WhisperDieTimer	CTimer	0	4	1	3	30006	-244	0
+0	7	Target	CScriptThing	0	12	1	3	30006	-264	0
+0	7	AllCreatures		13	4	1	3	30006	-244	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-140	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	7	NewTarget	CScriptThing	0	12	1	3	30006	-156	0
+0	7	Conversation		13	4	1	3	30006	-292	0
+0	7	Conversation		13	4	1	3	30006	-292	0
+0	7	HLStyleConversationIndex		13	4	1	3	30006	-292	0
+0	7	HLStyleConversationIndex		13	4	1	3	30006	-292	0
+0	7	HLStyleConversationIndex		13	4	1	3	30006	-292	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-124	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-140	0
+0	7	HeroDoor	CScriptThing	0	12	1	3	30006	-156	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-140	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-108	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-264	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-84	0
+0	7	seh_whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-68	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-156	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::Alloc	9362896	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::Init	9335840	55
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::Main	9289648	5248
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-208	0
+0	7	HaveChatted		10	1	1	3	30006	-213	0
+0	7	HaveFinalChatted		10	1	1	3	30006	-189	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-180	0
+FUNCTION	NScript::CQ_ArenaScript::CCellWhisper::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::`scalar deleting destructor'	9417824	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::OnPersist	9371808	96
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::Main	9313088	1274
+0	7	this		0	4	4	5	18	0	0
+0	7	ArenaRevisitedTimer	CTimer	0	4	1	3	30006	-32	0
+0	7	ArenaDoor	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCham::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaSpawn::Main	9364432	448
+0	7	this		0	4	4	5	18	0	0
+0	7	DeathTimer	CTimer	0	4	1	3	30006	-28	0
+0	7	MyParticle	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::WatchForTermination	9330736	732
+0	7	this		0	4	4	5	18	0	0
+0	7	OutsideArena	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_ArenaScript::CCagedBalverine::Alloc	9370336	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCagedBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::Init	9335840	55
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCellWhisper::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_ArenaScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::OnPersist	9371904	67
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaScript::CCellWhisper::Alloc	9343568	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::CreateActiveEntityScript	9314368	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_ArenaScript::AnimateCrowd	9372944	728
+0	7			0	0	2	1	0	0	9373652
+0	7	this		0	4	4	5	18	0	0
+0	7	audience_members	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-28	0
+0	7	member	CScriptThing	0	12	1	3	30006	-40	0
+FUNCTION	NScript::CQ_ArenaScript::OnPersist	9371584	215
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::Main	9360464	2299
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaSpawn::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Alloc	9286112	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::Init	9286016	13
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaSpawn::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::OnPersist	9314864	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::Alloc	9332416	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CFanMarker::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CWhisperAlly::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCellWhisper::Main	9343744	3280
+0	7			0	0	2	1	0	0	9347004
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-92	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::PlayWave	9373680	11588
+0	7	this		0	4	4	5	18	0	0
+0	7	NumSpawns		13	4	1	3	30006	-204	0
+0	7	CurrentEnemies	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-304	0
+0	7	CreatureCounter		0	12	1	3	30006	-236	0
+0	7	MaxCreatures		0	12	1	3	30006	-248	0
+0	7	MultipleBigEnemySpawnPoints		13	4	1	3	30006	-124	0
+0	7	SmallEnemySpawnPoint	CScriptThing	0	12	1	3	30006	-340	0
+0	7	PositiveSpawn		13	4	1	3	30006	-208	0
+0	7	BigEnemySpawnPoint	CScriptThing	0	12	1	3	30006	-364	0
+0	7	NegativeSpawn		13	4	1	3	30006	-272	0
+0	7	AllBigSpawnMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-288	0
+0	7	AllSpawnMarkers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-320	0
+0	7	NextSpawnPositive		10	1	1	3	30006	-265	0
+0	7	DoorTimer	CTimer	0	4	1	3	30006	-372	0
+0	7	AllCreatures		13	4	1	3	30006	-328	0
+0	7	FurthestArenaSpawn	CScriptThing	0	12	1	3	30006	-352	0
+0	7	Conversation		13	4	1	3	30006	-324	0
+0	7	i		13	4	1	3	30006	-328	0
+0	7	j		13	4	1	3	30006	-200	0
+0	7	NextCreature	CScriptThing	0	12	1	3	30006	-236	0
+0	7	idx		13	4	1	3	30006	-252	0
+0	7	idx		13	4	1	3	30006	-252	0
+0	7	NextCreature	CScriptThing	0	12	1	3	30006	-220	0
+0	7	idx		13	4	1	3	30006	-252	0
+0	7	NextCreature	CScriptThing	0	12	1	3	30006	-248	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-196	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-272	0
+0	7	CreatedObject	CScriptThing	0	12	1	3	30006	-248	0
+0	7	RandAngle		8	4	1	3	30006	-260	0
+0	7	random_vector	C3DVector	0	12	1	3	30006	-236	0
+0	7	spawn_pos	C3DVector	0	12	1	3	30006	-220	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::Alloc	9347024	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaScript>::CActiveEntityScript<NScript::CQ_ArenaScript>	9370592	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_ArenaScript::CCellWhisper::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCham::Main	9331872	539
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::Main	9394544	6556
+0	7			0	0	2	1	0	0	9401076
+0	7			0	0	2	1	0	0	9401056
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-340	0
+0	7	GoingToTellHero		13	4	1	3	30006	-324	0
+0	7	TellHeroTimer	CTimer	0	4	1	3	30006	-344	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-212	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-316	0
+0	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	16	1	3	30006	-196	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-304	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-316	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-316	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Main	9314912	9336
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-364	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-340	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-348	0
+0	7	followers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-324	0
+0	7	Followers		10	1	1	3	30006	-365	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-348	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-340	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-212	0
+0	7	followers	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-324	0
+0	7	Followers		10	1	1	3	30006	-365	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-228	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-212	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::Alloc	9360288	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaEnemy::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCham::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::Alloc	9356112	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellExitGuard::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::Init	9335840	55
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::Init	9335840	55
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::Main	9363072	1170
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::RegisterMain	9312784	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::OnPersist	9371808	96
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaScript::CCagedBalverine::Main	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::Main	9286464	3008
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-248	0
+0	7	HaveChatted		10	1	1	3	30006	-249	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-220	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-220	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-112	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-220	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-220	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::Alloc	9286288	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::Alloc	9299936	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::Main	9347200	8856
+0	7			0	0	2	1	0	0	9356024
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-580	0
+0	7	Turned		10	1	1	3	30006	-513	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-544	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-584	0
+0	7	seh_Bert	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-508	0
+0	7	Bert	CScriptThing	0	12	1	3	30006	-492	0
+0	7	seh_Bert	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-560	0
+0	7	Bert	CScriptThing	0	12	1	3	30006	-528	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-400	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-456	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::Main	12146000	24600
+0	7			0	0	2	1	0	0	12170520
+0	7			0	0	2	1	0	0	12170484
+0	7	this		0	4	4	5	18	0	0
+0	7	ChamTimer	CTimer	0	4	1	3	30006	-728	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-616	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-576	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-656	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-676	0
+0	7	seh_Cham	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-632	0
+0	7	Flick	CScriptThing	0	12	1	3	30006	-588	0
+0	7	Needle	CScriptThing	0	12	1	3	30006	-548	0
+0	7	Cham	CScriptThing	0	12	1	3	30006	-520	0
+0	7	seh_Bert	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-460	0
+0	7	Bert	CScriptThing	0	12	1	3	30006	-600	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-576	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	seh_Shadow	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-656	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-708	0
+0	7	seh_Needle	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-676	0
+0	7	Shadow	CScriptThing	0	12	1	3	30006	-508	0
+0	7	seh_Flick	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-496	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-440	0
+0	7	seh_Roth	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-704	0
+0	7	Roth	CScriptThing	0	12	1	3	30006	-480	0
+0	7	Flick	CScriptThing	0	12	1	3	30006	-548	0
+0	7	Needle	CScriptThing	0	12	1	3	30006	-520	0
+0	7	seh_Bert	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-496	0
+0	7	Bert	CScriptThing	0	12	1	3	30006	-600	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-576	0
+0	7	seh_Shadow	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-632	0
+0	7	seh_Needle	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-656	0
+0	7	Shadow	CScriptThing	0	12	1	3	30006	-508	0
+0	7	seh_Flick	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-676	0
+0	7	seh_Roth	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-704	0
+0	7	Roth	CScriptThing	0	12	1	3	30006	-588	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-440	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-708	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-460	0
+0	7	HeroDoor	CScriptThing	0	12	1	3	30006	-600	0
+0	7	cutscenename	CCharString	0	4	1	3	30006	-680	0
+0	7	prizesay	CCharString	0	4	1	3	30006	-716	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-676	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-656	0
+0	7	seh_Whisper	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-632	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-660	0
+0	7	csargs	std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CCharString> > >	0	16	1	3	30006	-704	0
+0	7	HeroTitle	EHeroTitle	6	4	1	3	30006	-444	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-576	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-708	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-676	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-576	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-716	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-632	0
+0	7	seh_Roth	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-656	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+0	7	HallEntrance	CScriptThing	0	12	1	3	30006	-560	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-56	0
+FUNCTION	NScript::CQ_ArenaScript::CRoth::Alloc	9331472	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellExitGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCham::Alloc	9331696	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::Main	9356288	3766
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-204	0
+0	7	Turned		10	1	1	3	30006	-205	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-112	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+FUNCTION	NScript::CQ_ArenaScript::CrowdChecker	9385408	7924
+0	7			0	0	2	1	0	0	9393296
+0	7			0	0	2	1	0	0	9393264
+0	7			0	0	2	1	0	0	9393184
+0	7	this		0	4	4	5	18	0	0
+0	7	SingleShouterTimer	CTimer	0	4	1	3	30006	-372	0
+0	7	HappinessLevels		0	12	1	3	30006	-24	0
+0	7	CurrentCrowdBaseLevel		13	4	1	3	30006	-260	0
+0	7	CrowdCheckTimer	CTimer	0	4	1	3	30006	-368	0
+0	7	CurrentCrowdHappiness		13	4	1	3	30006	-284	0
+0	7	SingleShouterID		13	4	1	3	30006	-68	0
+0	7	CrowdSoundSources	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-348	0
+0	7	DoorToArena	CScriptThing	0	12	1	3	30006	-300	0
+0	7	HavePlayedOneSound		10	1	1	3	30006	-361	0
+0	7	AudienceVec	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-332	0
+0	7	SoundSourceIDVec	std::vector<unsigned long,std::allocator<unsigned long> >	0	16	1	3	30006	-316	0
+0	7	CrowdPoints		13	4	1	3	30006	-288	0
+0	7	i		13	4	1	3	30006	-252	0
+0	7	SoundSource	CScriptThing	0	12	1	3	30006	-360	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::RegisterMain	9370784	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CCagedBalverine::Init	9370224	104
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::Alloc	9339456	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::Main	9332592	3233
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-168	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CNeedle::Main	9336080	3372
+0	7			0	0	2	1	0	0	9339436
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-180	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-148	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellExitGuard::Main	9365232	4989
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-312	0
+0	7	EarlyTalk		10	1	1	3	30006	-294	0
+0	7	Turned		10	1	1	3	30006	-293	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-284	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-292	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-184	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-292	0
+FUNCTION	NScript::CQ_ArenaScript::GetFanfareMusic	9330480	136
+0	7			0	0	2	1	0	0	9330576
+0	7	this		0	4	4	5	18	0	0
+0	7	Fanfare		6	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CFanMarker::Alloc	9304976	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CFanMarker::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CQ_ArenaScript	9328240	228
+0	7	this		0	4	4	5	18	0	0
+0	7	master_script_data		0	4	3	3	30006	4	0
+0	7	game		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc<NScript::CQ_ArenaScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::OnPersist	9371904	67
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::Init	9286032	7
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CSUMMONED_CREATURE::OnPredicateFail	9362768	125
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::Main	9295072	4863
+0	7	this		0	4	4	5	18	0	0
+0	7	HaveLaterChatted		10	1	1	3	30006	-202	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-200	0
+0	7	HaveChatted		10	1	1	3	30006	-201	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-76	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-176	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaSpawn::Alloc	9364256	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaSpawn::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::Alloc	9324256	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_ArenaScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_ArenaScript>::CreateActiveEntityScript	9371088	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_ArenaScript::CFlick::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::Init	9329152	1039
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard::Init	9356064	48
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CArenaCellDoorGuard2::Init	9356064	48
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>::CActiveEntityScript<NScript::CQ_ArenaHoldingScriptScript>	9312592	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_ArenaScript::CCagedBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_ArenaHoldingScriptScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_ArenaScript::CShadow::OnPersist	9371808	96
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+MATCHES	143
