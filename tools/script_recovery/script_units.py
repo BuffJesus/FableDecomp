@@ -65,6 +65,30 @@ UNITS = {
         'schema': 'guardian-sister-info-native-inventory/0.1',
         'package': 'GuardianSisterInfo',
     },
+    'guardian_trophy_dealer_info': {
+        # Gameflow stage 800 (EGP_MAZE_TELEPORT_TO_WW, right after Bandit Camp) waits on QS_GuardianTrophyDealerInfo.
+        # Manifest: the entity CGTDI_Maze Init 0x00E27C60 / Main 0x00E27E90; the block opens after the
+        # guardian_sister_info unit's hi (allocator 0x00E277E0) and ends at the next family's allocator 0x00E28CA0.
+        'evidence': ROOT / 'refs/script_recovery/guardian_trophy_dealer_info',
+        'lo': 0xE277E0, 'hi': 0xE28CA0,
+        'ir_glob': 'QS_GuardianTrophyDealerInfo*.json',
+        'scripts': ['QS_GuardianTrophyDealerInfo'],
+        'pdb_pattern': '*CQS_GuardianTrophyDealerInfo*',
+        'schema': 'guardian-trophy-dealer-info-native-inventory/0.1',
+        'package': 'GuardianTrophyDealerInfo',
+    },
+    'trophy_dealer': {
+        # Gameflow stage 850 (EGP_TROPHY_DEALER) waits on V_TrophyDealer, the card GTDI_Maze hands over. Manifest:
+        # CV_TrophyDealerScript Init 0x00EE6D60 / HilightGuildTeleporter 0x00EE71A0; the block opens at the tour guide's
+        # allocator 0x00EE6C00 and ends at its own allocator 0x00EE80A0 (the tour_guide unit's range over-covers it).
+        'evidence': ROOT / 'refs/script_recovery/trophy_dealer',
+        'lo': 0xEE6C00, 'hi': 0xEE80A0,
+        'ir_glob': 'V_TrophyDealer*.json',
+        'scripts': ['V_TrophyDealer'],
+        'pdb_pattern': '*CV_TrophyDealer*',
+        'schema': 'trophy-dealer-native-inventory/0.1',
+        'package': 'TrophyDealer',
+    },
     'tour_guide': {
         # Gameflow stage 200 activates V_TourGuide beside the QS_GuardianSisterInfo card.
         # Cluster vtable lifecycle (own block only): 0x00EE42A0 .. allocator 0x00EE6C00; the next family's

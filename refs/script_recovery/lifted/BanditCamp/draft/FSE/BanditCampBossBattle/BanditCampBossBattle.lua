@@ -815,12 +815,7 @@ function CheckForFirstAreaMassacre(quest)
             xStack_50 = quest:GetAllThingsWithScriptName("DefensiveGuardBandit")
             uVar8 = 0
             if #xStack_50 == 0 then goto LAB_00d0f52f end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar4 = not alive
-            if bVar4 then
-                goto LAB_00d0f608
-            end
-            goto FLOW_after_lab_00d0f4d7
+            goto LAB_00d0f4d7
         end
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -830,21 +825,20 @@ function CheckForFirstAreaMassacre(quest)
         end
     until false
     goto LAB_00d0f608
+    ::LAB_00d0f4d7::
     while true do
+        alive = not quest:IsActiveThreadTerminating()
+        bVar4 = not alive
+        if bVar4 then
+            goto LAB_00d0f608
+        end
         xStack_6c = xStack_50[(iVar7) / 0xc + 1]
         pCVar6 = quest:GetHero()
         quest:GiveThingBestEnemyTarget(xStack_6c, pCVar6)
         uVar8 = uVar8 + 1
         iVar7 = iVar7 + 0xc
         if (#xStack_50) <= uVar8 then break end
-        -- LAB_00d0f4d7: (native jump target)
-        alive = not quest:IsActiveThreadTerminating()
-        bVar4 = not alive
-        if bVar4 then
-            goto LAB_00d0f608
-        end
     end
-    ::FLOW_after_lab_00d0f4d7::
     ::LAB_00d0f52f::
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive

@@ -1,0 +1,68 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::OnPersist	10959760	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Init	10957936	19
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::Alloc	10964416	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>	10958144	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Main	10959808	4608
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-104	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-88	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-112	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-108	0
+FUNCTION	CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::Init	10947504	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::WaitForPieceOver	10957648	286
+0	7	this		0	4	4	5	18	0	0
+0	7	Maze	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::Alloc	10957968	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQS_GuardianTrophyDealerInfoScript>::CreateActiveEntityScript	10959264	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::RegisterMain	10958336	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQS_GuardianTrophyDealerInfoScript::Main	10958640	623
+0	7	this		0	4	4	5	18	0	0
+MATCHES	20

@@ -9,7 +9,7 @@ local SCRIPT_DEF = {
 
 -- DarkwoodAssassinSpawn.Main (retail 0x00e02e50)
 function Main(quest, me)
-    local timerId, p0, entity, scratchValue8, scratchValue9
+    local timerId, p0, entity, scratchValue, scratchValue15
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
@@ -17,7 +17,7 @@ function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 2)
-    local scratchValue = quest:ReadGlobalGameData(SCRIPT_DEF.TE_AssassinSpawnDistance)
+    local scratchValue17 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_AssassinSpawnDistance)
     quest:ReadGlobalGameData(944)
     quest:ReadGlobalGameData(940)
     math.random(0, 32767)
@@ -26,7 +26,7 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         -- TODO(native): xStack_20 = CVar3;
         repeat
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, scratchValue) then goto LAB_00e02f91 end
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, scratchValue17) then goto LAB_00e02f91 end
             if quest:IsCameraPosOnScreen(me:GetPos()) then goto LAB_00e02f91 end
             if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
             goto FLOW_past_lab_00e02f91
@@ -55,19 +55,18 @@ function Main(quest, me)
             if not quest:IsDistanceBetweenThingsOver(entity, hero, 18.0) then goto LAB_00e0320d end
             if quest:IsActiveThreadTerminating() then goto LAB_00e03372 end
             if quest:IsDistanceBetweenThingsUnder(entity, hero, 18.0) then goto LAB_00e031e9 end
-            if not quest:NewScriptFrame(me) then goto LAB_00e03372 end
-            goto FLOW_after_lab_00e031b3
+            goto LAB_00e031b3
             quest:NewScriptFrame(me)
             ::continue_1::
         until quest:IsActiveThreadTerminating()
     end
     quest:DeregisterTimer(timerId)
     do return end
+    ::LAB_00e031b3::
     while true do
-        if quest:IsDistanceBetweenThingsUnder(entity, hero, 18.0) then break end
         if not quest:NewScriptFrame(me) then goto LAB_00e03372 end
+        if quest:IsDistanceBetweenThingsUnder(entity, hero, 18.0) then break end
     end
-    ::FLOW_after_lab_00e031b3::
     ::LAB_00e031e9::
     quest:PlaySoundOnThing(entity, "DarkwoodAssassin")
     ::LAB_00e0320d::
@@ -76,14 +75,14 @@ function Main(quest, me)
         while not quest:IsDistanceBetweenThingsUnder(entity, hero, 12.0) do
             if not quest:NewScriptFrame(me) then goto LAB_00e03372 end
         end
-        scratchValue8 = quest:PlaySoundOnThing(entity, nil --[[missing]])
+        scratchValue = quest:PlaySoundOnThing(entity, nil --[[missing]])
     end
     if not quest:IsDistanceBetweenThingsOver(entity, hero, 8.0) then quest:RemoveThing(p0, false, true); goto LAB_00e03372 end
     if quest:IsActiveThreadTerminating() then goto LAB_00e03372 end
     while not quest:IsDistanceBetweenThingsUnder(entity, hero, 8.0) do
         if not quest:NewScriptFrame(me) then goto LAB_00e03372 end
     end
-    scratchValue9 = quest:PlaySoundOnThing(entity, nil --[[missing]])
+    scratchValue15 = quest:PlaySoundOnThing(entity, nil --[[missing]])
     quest:RemoveThing(p0, false, true)
     ::LAB_00e03372::
     quest:DeregisterTimer(timerId)

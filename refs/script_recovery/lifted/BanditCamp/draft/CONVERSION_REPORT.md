@@ -26,7 +26,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForBanditCampGates | 0x00d04770 | True | 1 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | ProcessHostageCutscenes | 0x00d0fe80 | True | 4 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForTermination | 0x00d04260 | True | 0 |
-| Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForFirstAreaMassacre | 0x00d0ee70 | True | 6 |
+| Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForFirstAreaMassacre | 0x00d0ee70 | True | 5 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForSecondAreaMassacre | 0x00d0f640 | True | 7 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForSecondAreaDoorHelp | 0x00d043a0 | True | 1 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | OpenGate | 0x00d0ebc0 | True | 0 |
@@ -82,7 +82,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | BanditKing | Init | 0x00cdebb0 | True | 0 |
 | Q_BanditCampBossBattle | BanditKing | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | BanditKing | OnPredicateFail | 0x00d0a7b0 | True | 0 |
-| Q_BanditCampBossBattle | CROWDBANDITS | Main | 0x00d0b3e0 | True | 1 |
+| Q_BanditCampBossBattle | CROWDBANDITS | Main | 0x00d0b3e0 | True | 0 |
 | Q_BanditCampBossBattle | CROWDBANDITS | Init | 0x00cdebb0 | True | 0 |
 | Q_BanditCampBossBattle | CROWDBANDITS | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | CROWDBANDITS | OnPredicateFail | 0x00d0b380 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 80}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 78}`

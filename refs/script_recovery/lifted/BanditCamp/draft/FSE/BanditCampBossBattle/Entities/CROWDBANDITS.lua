@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, b2, bVar5, bVar6, cVar1, conversationID, fVar11, iVar8, i_stk_74, p0, pCVar10, pCVar7, r1, r10, r11, r12, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar4, uVar9, u_stk_78, xStack_20, xStack_7c
+    local __native_condition_1, b2, bVar5, bVar6, cVar1, conversationID, fVar11, iVar8, i_stk_74, p0, pCVar10, pCVar7, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar4, uVar9, u_stk_78, xStack_20, xStack_7c
     local alive = true
     u_stk_78 = 0
     alive = quest:NewScriptFrame(me)
@@ -335,160 +335,7 @@ function Main(quest, me)
                     quest:EntitySetAsUseMovementInActions(me, true)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
-                    if not bVar5 then
-                        if quest:GetStateBool("BanditsNeededForCutscene") then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then break end
-                            quest:EntitySetAsUseMovementInActions(me, true)
-                            resources:PrepareResource(xStack_20)
-                            cVar1 = quest:GetStateBool("BanditsNeededForCutscene")
-                            while cVar1 do
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if bVar5 then goto LAB_00d0c28b end
-                                cVar1 = quest:GetStateBool("BanditsNeededForCutscene")
-                            end
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then break end
-                            resources:PrepareResource(xStack_20)
-                            bVar5 = resources:TryAcquire(xStack_20, me, 4)
-                            while not bVar5 do
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if bVar5 then goto LAB_00d0c28b end
-                                bVar5 = resources:TryAcquire(xStack_20, me, 4)
-                            end
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then break end
-                            quest:EntitySetAsUseMovementInActions(me, false)
-                        end
-                        if not quest:GetStateBool("TwinBladeKilled") then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then break end
-                            iVar8 = quest:GetTimer(timerId)
-                            if iVar8 < 1 then
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if bVar5 then break end
-                                uVar9 = math.random(0, 32767)
-                                uVar9 = uVar9 & 0x80000001
-                                bVar5 = uVar9 == 0
-                                if uVar9 < 0 then
-                                    bVar5 = (uVar9 - 1 | 0xfffffffe) == 0xffffffff
-                                end
-                                if bVar5 then
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar5 = not alive
-                                    if bVar5 then break end
-                                    iVar8 = math.random(0, 32767)
-                                    iVar8 = iVar8 % 3
-                                    if iVar8 == 0 then
-                                        me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
-                                    else
-                                        if iVar8 == 1 then
-                                            me:PlayAnimation("ST_THREATEN", false, false, false, true, true, false, false)
-                                            goto LAB_00d0c05b_c1
-                                        end
-                                        if iVar8 == 2 then
-                                            me:PlayAnimation("SCRIPT_SHOUT", false, false, false, true, true, false, false)
-                                            goto LAB_00d0c05b_c1
-                                        end
-                                    end
-                                    ::LAB_00d0c05b_c1::
-                                    uVar9 = math.random(0, 32767)
-                                    uVar9 = uVar9 & 0x80000003
-                                    bVar5 = uVar9 == 0
-                                    if uVar9 < 0 then
-                                        bVar5 = (uVar9 - 1 | 0xfffffffc) == 0xffffffff
-                                    end
-                                    if bVar5 then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar5 = not alive
-                                        if bVar5 then break end
-                                        uVar9 = math.random(0, 32767)
-                                        uVar9 = uVar9 & 0x80000001
-                                        if uVar9 < 0 then
-                                            uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
-                                        end
-                                        if uVar9 == 0 then
-                                            r9 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
-                                        elseif uVar9 == 1 then
-                                            r10 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
-                                        end
-                                    end
-                                else
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar5 = not alive
-                                    if bVar5 then break end
-                                    quest:SetTimer(timerId, 2)
-                                end
-                            end
-                        end
-                        if quest:GetStateInt("AngryBanditNeeded") < 1 then
-                            uVar4 = u_stk_78
-                            u_stk_78 = u_stk_78 | 1
-                            bVar5 = me:MsgIsHitByHero()
-                            if bVar5 then goto LAB_00d0c1af_c1 end
-                            uVar9 = uVar4 | 3
-                            u_stk_78 = uVar9
-                            bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                            if bVar5 then
-                                uVar9 = uVar4 | 7
-                                u_stk_78 = uVar9
-                                bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                                if not bVar5 then goto LAB_00d0c1af_c1 end
-                            end
-                            bVar5 = false
-                        end
-                        goto FLOW_past_lab_00d0c1af_c1
-                        ::LAB_00d0c1af_c1::
-                        bVar5 = true
-                        ::FLOW_past_lab_00d0c1af_c1::
-                        if (uVar9 & 4) ~= 0 then
-                            uVar9 = uVar9 & 0xfffffffb
-                            u_stk_78 = uVar9
-                        end
-                        if (uVar9 & 2) ~= 0 then
-                            uVar9 = uVar9 & 0xfffffffd
-                            u_stk_78 = uVar9
-                        end
-                        if (uVar9 & 1) ~= 0 then
-                            u_stk_78 = uVar9 & 0xfffffffe
-                        end
-                        if bVar5 then
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if not bVar5 then
-                                pCVar7 = quest:GetHero()
-                                quest:GiveThingBestEnemyTarget(me, pCVar7)
-                                quest:EntitySetAbleToBeEngagedInCombat(me, true)
-                                resources:PrepareResource(xStack_20)
-                                if quest:GetStateInt("AngryBanditNeeded") == 0 then goto LAB_00d0c278_c1 end
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if not bVar5 then
-                                    quest:SetStateInt("AngryBanditNeeded", quest:GetStateInt("AngryBanditNeeded") + -1)
-                                    goto LAB_00d0c278_c1
-                                end
-                                goto FLOW_past_lab_00d0c278_c1
-                                ::LAB_00d0c278_c1::
-                                repeat
-                                    alive = quest:NewScriptFrame(me)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar5 = not alive
-                                until not (not bVar5)
-                                ::FLOW_past_lab_00d0c278_c1::
-                            end
-                            break
-                        end
-                        goto FLOW_after_lab_00d0be35
-                    end
+                    if not bVar5 then goto LAB_00d0be35 end
                     goto LAB_00d0c28b
                 end
             end
@@ -499,12 +346,8 @@ function Main(quest, me)
     end
     quest:DeregisterTimer(timerId)
     goto LAB_00d0c294
+    ::LAB_00d0be35::
     while true do
-        alive = quest:NewScriptFrame(me)
-        alive = not quest:IsActiveThreadTerminating()
-        bVar5 = not alive
-        if bVar5 then break end
-        -- LAB_00d0be35: (native jump target)
         if quest:GetStateBool("BanditsNeededForCutscene") then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
@@ -586,9 +429,9 @@ function Main(quest, me)
                             uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
                         end
                         if uVar9 == 0 then
-                            r11 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
+                            r9 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
                         elseif uVar9 == 1 then
-                            r12 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
+                            r10 = quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
                         end
                     end
                 else
@@ -658,8 +501,11 @@ function Main(quest, me)
             end
             break
         end
+        alive = quest:NewScriptFrame(me)
+        alive = not quest:IsActiveThreadTerminating()
+        bVar5 = not alive
+        if bVar5 then break end
     end
-    ::FLOW_after_lab_00d0be35::
     ::LAB_00d0c28b::
     quest:DeregisterTimer(xStack_7c)
     ::LAB_00d0c294::

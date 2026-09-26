@@ -2150,7 +2150,6 @@
             "unlifted: xStack_20 = CVar3;",
             "verify cleanup at LAB_00e02ff7 (lifted as early return)",
             "label LAB_00e02ff7",
-            "label LAB_00e031b3",
             "PlaySoundOnThing: missing soundName (1 args for 2 params)",
             "PlaySoundOnThing: missing soundName (1 args for 2 params)"
           ],
@@ -2194,13 +2193,11 @@
             "ENGINE_IsDistanceBetweenThingsUnder",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "DeregisterTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "DeregisterTimer",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PlaySoundOnThing",
             "GetHero",
@@ -2228,7 +2225,7 @@
             "RemoveThing",
             "DeregisterTimer"
           ],
-          "lines": 177,
+          "lines": 172,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2238,12 +2235,12 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00e031b3;",
             "goto FLOW_hoist_lab_00e03105_1;",
             "goto FLOW_past_lab_00e02f91;",
             "goto FLOW_past_lab_00e03105;",
             "goto LAB_00e02f91;",
             "goto LAB_00e03105;",
+            "goto LAB_00e031b3;",
             "if (!bVar4) goto LAB_00e0320d;",
             "if (bVar4) goto LAB_00e02f91;",
             "if (bVar4) goto LAB_00e03105;",
@@ -2251,12 +2248,12 @@
             "if (bVar4) goto LAB_00e03372;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00e031b3",
             "FLOW_hoist_lab_00e03105_1",
             "FLOW_past_lab_00e02f91",
             "FLOW_past_lab_00e03105",
             "LAB_00e02f91",
             "LAB_00e03105",
+            "LAB_00e031b3",
             "LAB_00e031e9",
             "LAB_00e0320d",
             "LAB_00e03372"
@@ -3669,7 +3666,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 62
+        "todo": 61
       }
     }
   ],
@@ -3680,6 +3677,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 62
+    "todo": 61
   }
 }

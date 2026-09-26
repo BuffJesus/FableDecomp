@@ -1,0 +1,509 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "QS_GuardianTrophyDealerInfo",
+      "package": "QS_GuardianTrophyDealerInfo",
+      "packages": [
+        {
+          "owner": "QS_GuardianTrophyDealerInfo",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua"
+        },
+        {
+          "owner": "GTDI_Maze",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "QS_GuardianTrophyDealerInfo",
+          "function": "Main",
+          "address": "0x00e27920",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "CreateThread",
+            "GetActiveQuestName",
+            "SetQuestCardObjective"
+          ],
+          "lines": 7,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QS_GuardianTrophyDealerInfo",
+          "function": "Init",
+          "address": "0x00e27870",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "QS_GuardianTrophyDealerInfo",
+          "function": "OnPersist",
+          "address": "0x00e27e60",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "context",
+                "lua": "native_arg_context",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "QS_GuardianTrophyDealerInfo",
+          "function": "WaitForPieceOver",
+          "address": "0x00e27ac0",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00e27b57"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "IsAlive",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 42,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GTDI_Maze",
+          "function": "Main",
+          "address": "0x00e27e90",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00e28502",
+            "label LAB_00e28c52"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "SetThingHasInformation",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "EntitySetAsKillable",
+            "EntitySetAsDamageable",
+            "SetIsPushableByHero",
+            "GetActiveQuestName",
+            "KickOffQuestStartScreen",
+            "MiniMapAddMarker",
+            "IsActiveThreadTerminating",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "RESOURCE_PrepareResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "FixMovieSequenceCamera",
+            "RESOURCE_RunMacro",
+            "RESOURCE_RunMacro",
+            "RESOURCE_RunMacro",
+            "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ReleaseResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "FixMovieSequenceCamera",
+            "RESOURCE_RunMacro",
+            "RESOURCE_RunMacro",
+            "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "GiveHeroQuestCardDirectly",
+            "GetThingWithScriptName",
+            "SetTeleporterAsActive",
+            "ClearThingHasInformation",
+            "MiniMapRemoveMarker",
+            "EntitySetFacingAngle",
+            "AddLogbookStoryEntry",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "SetStateBool",
+            "IsActiveThreadTerminating",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "GetHero",
+            "EntitySetFacingAngleTowardsThing",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 405,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00e280a7;",
+            "goto FLOW_past_lab_00e28814;",
+            "goto FLOW_past_lab_00e28a13;",
+            "goto FLOW_past_lab_00e28c81;",
+            "goto LAB_00e280a7;",
+            "goto LAB_00e28214;",
+            "goto LAB_00e28494;",
+            "goto LAB_00e28674;",
+            "goto LAB_00e28814;",
+            "goto LAB_00e28a13;",
+            "goto LAB_00e28ac9;",
+            "goto LAB_00e28c81;",
+            "goto LAB_00e28c85;",
+            "goto LAB_00e28c8a;",
+            "if (!bVar5) goto LAB_00e280a7;",
+            "if (!bVar5) goto LAB_00e281e0;",
+            "if (!bVar5) goto LAB_00e28460;",
+            "if (!bVar5) goto LAB_00e28814;",
+            "if (!bVar5) goto LAB_00e28a13;",
+            "if (bVar5) goto LAB_00e28c3f;",
+            "if (bVar5) goto LAB_00e28c8a;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00e280a7",
+            "FLOW_past_lab_00e28814",
+            "FLOW_past_lab_00e28a13",
+            "FLOW_past_lab_00e28c81",
+            "LAB_00e280a7",
+            "LAB_00e281e0",
+            "LAB_00e28214",
+            "LAB_00e28460",
+            "LAB_00e28494",
+            "LAB_00e28674",
+            "LAB_00e28814",
+            "LAB_00e28a13",
+            "LAB_00e28ac9",
+            "LAB_00e28c3f",
+            "LAB_00e28c81",
+            "LAB_00e28c85",
+            "LAB_00e28c8a"
+          ]
+        },
+        {
+          "owner": "GTDI_Maze",
+          "function": "Init",
+          "address": "0x00e27c60",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetAngleXY",
+            "SetStateFloat"
+          ],
+          "lines": 2,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "GTDI_Maze",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "GTDI_Maze",
+          "function": "OnPredicateFail",
+          "address": "0x00e27c80",
+          "path": "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 2,
+        "passed": 2,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "GTDI_Maze": "QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze"
+      },
+      "declaredFreeLocals": {
+        "FSE/QS_GuardianTrophyDealerInfo/QS_GuardianTrophyDealerInfo.lua": {
+          "Main": [
+            "bVar2"
+          ]
+        }
+      },
+      "summary": {
+        "owners": 2,
+        "functions": 8,
+        "missing": 0,
+        "functionSyntaxPassed": 8,
+        "fileSyntaxPassed": 2,
+        "fileSyntaxChecked": 2,
+        "todo": 3
+      }
+    }
+  ],
+  "summary": {
+    "owners": 2,
+    "functions": 8,
+    "missing": 0,
+    "functionSyntaxPassed": 8,
+    "fileSyntaxPassed": 2,
+    "fileSyntaxChecked": 2,
+    "todo": 3
+  }
+}

@@ -108,11 +108,7 @@ function Main(quest, me)
                 pCVar6 = quest:GetHero()
                 bVar4 = quest:IsDistanceBetweenThingsUnder(r1, pCVar6, fVar10)
                 if bVar4 then goto LAB_00e031e9 end
-                alive = quest:NewScriptFrame(me)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar4 = not alive
-                if bVar4 then goto LAB_00e03372 end
-                goto FLOW_after_lab_00e031b3
+                goto LAB_00e031b3
             end
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -121,18 +117,17 @@ function Main(quest, me)
     end
     quest:DeregisterTimer(i_stk_2c)
     do return end
+    ::LAB_00e031b3::
     while true do
-        fVar10 = 18.0
-        pCVar6 = quest:GetHero()
-        bVar4 = quest:IsDistanceBetweenThingsUnder(r1, pCVar6, fVar10)
-        if bVar4 then break end
-        -- LAB_00e031b3: (native jump target)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e03372 end
+        fVar10 = 18.0
+        pCVar6 = quest:GetHero()
+        bVar4 = quest:IsDistanceBetweenThingsUnder(r1, pCVar6, fVar10)
+        if bVar4 then break end
     end
-    ::FLOW_after_lab_00e031b3::
     ::LAB_00e031e9::
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive

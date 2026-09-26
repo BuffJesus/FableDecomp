@@ -344,6 +344,57 @@ def merge_equivalent_regions(statements):
     return out
 
 
+def rotate_mid_entered_loops(statements):
+    """`while( true ) { A; LAB: B; }` reachable only through `goto LAB` (the line before the loop is an
+    unconditional jump or return) is the same loop rotated: `LAB: while( true ) { B; A; }`. Lua cannot jump into a
+    loop body, and copying B to the jump site and then leaving the loop skipped the retry (GTDI_Maze 0x00E27E90:
+    the hero TryAcquire retry, entered at its NewScriptFrame, 2026-09-26). Declined when A holds a label, the body
+    a `continue` (it would re-enter at B instead of A), or a jump to LAB comes from inside the loop."""
+    out = list(statements)
+    i = 0
+    while i < len(out):
+        if out[i].strip() not in ('while( true ) {', 'while (true) {'):
+            i += 1
+            continue
+        depth, j = 1, i + 1
+        while j < len(out) and depth:
+            t = out[j].strip()
+            if t.startswith('}'):
+                depth -= 1
+                if depth == 0:
+                    break
+            if t.endswith('{'):
+                depth += 1
+            j += 1
+        if j >= len(out) or out[j].strip() != '}':
+            i += 1
+            continue
+        prev = next((out[k].strip() for k in range(i - 1, -1, -1) if out[k].strip()), '')
+        body = out[i + 1:j]
+        depth, split = 0, None
+        for m, raw in enumerate(body):
+            t = raw.strip()
+            if t.startswith('}'):
+                depth -= 1
+            if depth == 0 and re.fullmatch(LABEL_TOKEN + r':', t) and split is None:
+                split = m
+            if t.endswith('{'):
+                depth += 1
+        if (split is None or split == 0 or not re.fullmatch(r'(?:goto ' + LABEL_TOKEN + r'|return);', prev)
+                or any(re.match(r'^' + LABEL_TOKEN + r':', r.strip()) for r in body[:split])
+                or any(r.strip() == 'continue;' for r in body)):
+            i += 1
+            continue
+        label = body[split].strip()[:-1]
+        if any(re.search(r'\bgoto ' + re.escape(label) + r';', r) for r in out[i:j + 1]):
+            i += 1
+            continue
+        indent = out[i][:len(out[i]) - len(out[i].lstrip())]
+        out[i:j + 1] = [indent + label + ':', out[i]] + body[split + 1:] + body[:split] + [out[j]]
+        i = j + 1
+    return out
+
+
 def duplicate_sibling_tails(statements):
     """Rewrite `goto L` jumps whose label sits in a sibling block Lua cannot enter.
 
@@ -352,6 +403,7 @@ def duplicate_sibling_tails(statements):
     to the jump site and the jump retargeted to a synthetic label placed right after the block's
     closing brace (an enclosing scope of the jump, which Lua accepts). Other jumps are untouched.
     """
+    statements = rotate_mid_entered_loops(statements)
     scopes, labels, uses, closes = [], {}, [], {}
     serial = 0
     for index, statement in enumerate(statements):

@@ -429,10 +429,12 @@ end
 function CheckForFirstAreaMassacre(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, killsXStack, scratchValue5, defensiveGuardBandit
+    local scratchValue5, scratchValue6, scratchValue7, killsXStack, scratchValue8, scratchValue9
+    local scratchValue10, defensiveGuardBandit
     while true do
-        local thing = quest:GetThingWithScriptName("Gate1")
-        if thing ~= nil and thing:IsOpenDoor() then break end
+        local gate1 = quest:GetThingWithScriptName("Gate1")
+        local scratchValue = gate1 ~= nil and gate1:IsOpenDoor()
+        if scratchValue then break end
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
@@ -441,36 +443,37 @@ function CheckForFirstAreaMassacre(quest)
         while not quest:IsLevelLoaded("BanditCampMain") do
             if not quest:NewScriptFrame() then return end
         end
-        local scratchValue7 = hero:MsgGetThingsKilledGroups()
-        if #scratchValue7 ~= 0 then
-            killsXStack = killsXStack + #scratchValue7
+        local scratchValue12 = hero:MsgGetThingsKilledGroups()
+        if #scratchValue12 ~= 0 then
+            killsXStack = killsXStack + #scratchValue12
         end
         local followers = quest:GetFollowingEntityList(hero)
-        scratchValue5 = 0
+        scratchValue8 = 0
         if #followers ~= 0 then
-            scratchValue = 0
+            scratchValue5 = 0
             repeat
-                local scratchValue8 = followers[scratchValue + 1]:MsgGetThingsKilledGroups()
-                if #scratchValue8 ~= 0 then
-                    killsXStack = killsXStack + #scratchValue8
+                local scratchValue13 = followers[scratchValue5 + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue13 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue13
                 end
+                scratchValue8 = scratchValue8 + 1
                 scratchValue5 = scratchValue5 + 1
-                scratchValue = scratchValue + 1
-            until scratchValue5 >= #followers
+            until scratchValue8 >= #followers
         end
         local getHeroSummonedCreaturesList = quest:GetHeroSummonedCreaturesList()
-        scratchValue5 = 0
+        scratchValue9 = 0
         if #getHeroSummonedCreaturesList ~= 0 then
-            scratchValue = 0
+            scratchValue6 = 0
             repeat
-                local scratchValue9 = getHeroSummonedCreaturesList[scratchValue + 1]:MsgGetThingsKilledGroups()
-                if #scratchValue9 ~= 0 then
-                    killsXStack = killsXStack + #scratchValue9
+                local scratchValue14 = getHeroSummonedCreaturesList[scratchValue6 + 1]:MsgGetThingsKilledGroups()
+                if #scratchValue14 ~= 0 then
+                    killsXStack = killsXStack + #scratchValue14
                 end
-                scratchValue5 = scratchValue5 + 1
-                scratchValue = scratchValue + 1
-            until scratchValue5 >= #getHeroSummonedCreaturesList
+                scratchValue9 = scratchValue9 + 1
+                scratchValue6 = scratchValue6 + 1
+            until scratchValue9 >= #getHeroSummonedCreaturesList
         end
+        scratchValue7 = 0
         if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_EnemiesToKillInFirstArea) <= killsXStack then
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
@@ -485,26 +488,25 @@ function CheckForFirstAreaMassacre(quest)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             quest:SetStateBool("Gate2Open", true)
-            if #quest:GetAllThingsWithScriptName("DefensiveGuardBandit") == 0 then goto LAB_00d0f52f end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
-            goto FLOW_after_lab_00d0f4d7
+            defensiveGuardBandit = quest:GetAllThingsWithScriptName("DefensiveGuardBandit")
+            scratchValue10 = 0
+            if #defensiveGuardBandit == 0 then goto LAB_00d0f52f end
+            goto LAB_00d0f4d7
         end
         if not quest:NewScriptFrame() then return end
     until false
     goto LAB_00d0f608
+    ::LAB_00d0f4d7::
     while true do
-        quest:GiveThingBestEnemyTarget(defensiveGuardBandit[scratchValue + 1], hero)
-        scratchValue5 = scratchValue5 + 1
-        scratchValue = scratchValue + 1
-        if #defensiveGuardBandit <= scratchValue5 then break end
         if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
+        quest:GiveThingBestEnemyTarget(defensiveGuardBandit[scratchValue7 + 1], hero)
+        scratchValue10 = scratchValue10 + 1
+        scratchValue7 = scratchValue7 + 1
+        if #defensiveGuardBandit <= scratchValue10 then break end
     end
-    ::FLOW_after_lab_00d0f4d7::
     ::LAB_00d0f52f::
-    if not quest:IsActiveThreadTerminating() then
-        quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", quest:GetThingWithScriptName("DefensiveGuardLeader"):GetPos(), ""), hero)
-    end
-    ::LAB_00d0f5f9::
+    if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
+    quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", quest:GetThingWithScriptName("DefensiveGuardLeader"):GetPos(), ""), hero)
     ::LAB_00d0f608::
 end
 

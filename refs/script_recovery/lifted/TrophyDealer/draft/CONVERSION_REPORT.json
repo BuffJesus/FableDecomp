@@ -1,0 +1,511 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "V_TrophyDealer",
+      "package": "V_TrophyDealer",
+      "packages": [
+        {
+          "owner": "V_TrophyDealer",
+          "path": "FSE/V_TrophyDealer/V_TrophyDealer.lua"
+        },
+        {
+          "owner": "TrophyDealerInCave",
+          "path": "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua"
+        },
+        {
+          "owner": "DemonDoorFace",
+          "path": "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "V_TrophyDealer",
+          "function": "Main",
+          "address": "0x00ee6e90",
+          "path": "FSE/V_TrophyDealer/V_TrophyDealer.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetCreatureGeneratorsEnabled",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "ActivateQuestWithoutLoadingResources",
+            "CreateThread",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "KickOffQuestStartScreen",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded"
+          ],
+          "lines": 28,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_TrophyDealer",
+          "function": "Init",
+          "address": "0x00ee6d60",
+          "path": "FSE/V_TrophyDealer/V_TrophyDealer.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetActiveQuestName",
+            "SetQuestCardObjective"
+          ],
+          "lines": 2,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_TrophyDealer",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/V_TrophyDealer/V_TrophyDealer.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "V_TrophyDealer",
+          "function": "HilightGuildTeleporter",
+          "address": "0x00ee71a0",
+          "path": "FSE/V_TrophyDealer/V_TrophyDealer.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsRegionLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "MiniMapAddMarker",
+            "IsRegionLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "MiniMapRemoveMarker"
+          ],
+          "lines": 32,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar1) goto LAB_00ee7326;"
+          ],
+          "nativeLabels": [
+            "LAB_00ee7326"
+          ]
+        },
+        {
+          "owner": "TrophyDealerInCave",
+          "function": "Main",
+          "address": "0x00ee76f0",
+          "path": "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "RESOURCE_NewResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "EntitySetAsKillable",
+            "EntitySetAsDamageable",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "SetCreatureGeneratorsEnabled",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "FadeScreenIn",
+            "GetActiveQuestName",
+            "DeactivateQuestLater",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 55,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar3) goto LAB_00ee7842;"
+          ],
+          "nativeLabels": [
+            "LAB_00ee7842"
+          ]
+        },
+        {
+          "owner": "TrophyDealerInCave",
+          "function": "Init",
+          "address": "0x00ee73f0",
+          "path": "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetThingHasInformation"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "TrophyDealerInCave",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "TrophyDealerInCave",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DemonDoorFace",
+          "function": "Main",
+          "address": "0x00ee7a20",
+          "path": "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00ee7b22",
+            "label LAB_00ee7e82"
+          ],
+          "calls": [
+            "RESOURCE_NewResource",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "MiniMapAddMarker",
+            "IsActiveThreadTerminating",
+            "IsTalkedToByHero",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ReleaseResource",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "SetMasterGameState",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource",
+            "RESOURCE_ReleaseResource",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_RunMacro",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "GetThingWithScriptName",
+            "SetThingPersistent",
+            "SetMasterGameState",
+            "RemoveThing",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 151,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar3) goto LAB_00ee808a;"
+          ],
+          "nativeLabels": [
+            "LAB_00ee808a"
+          ]
+        },
+        {
+          "owner": "DemonDoorFace",
+          "function": "Init",
+          "address": "0x00ee74e0",
+          "path": "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "SetThingHasInformation",
+            "SetThingPersistent",
+            "EntitySetAsDamageable"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DemonDoorFace",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "DemonDoorFace",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 3,
+        "passed": 3,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "TrophyDealerInCave": "V_TrophyDealer/Entities/TrophyDealerInCave",
+        "DemonDoorFace": "V_TrophyDealer/Entities/DemonDoorFace"
+      },
+      "summary": {
+        "owners": 3,
+        "functions": 12,
+        "missing": 0,
+        "functionSyntaxPassed": 12,
+        "fileSyntaxPassed": 3,
+        "fileSyntaxChecked": 3,
+        "todo": 2
+      }
+    }
+  ],
+  "summary": {
+    "owners": 3,
+    "functions": 12,
+    "missing": 0,
+    "functionSyntaxPassed": 12,
+    "fileSyntaxPassed": 3,
+    "fileSyntaxChecked": 3,
+    "todo": 2
+  }
+}

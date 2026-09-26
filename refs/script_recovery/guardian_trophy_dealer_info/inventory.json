@@ -1,0 +1,48 @@
+{
+  "schema": "guardian-trophy-dealer-info-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "ae6bb45a5887322c997c40a08a085ec20c980ac845f557d3c816053d02089f39",
+  "exportedFunctions": 21,
+  "quests": [
+    {
+      "script": "QS_GuardianTrophyDealerInfo",
+      "allocator": "0x00E28CA0",
+      "vtable": "0x012E2018",
+      "entities": [
+        {
+          "name": "GTDI_Maze",
+          "registrationFunction": "0x00E27920",
+          "namePush": "0x00E27940",
+          "addBindingCall": "0x00E27981",
+          "factoryStore": "0x00E27969",
+          "factory": "0x00E27BB0",
+          "vtable": "0x012E20A4",
+          "functions": {
+            "destructor": "0x00E27C90",
+            "Main": "0x00E27E90",
+            "Init": "0x00E27C60",
+            "GetParentScript": "0x00E27C50",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00E27C80",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00E27840"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E27920",
+      "store": "0x00E279E0",
+      "body": "0x00E27AC0",
+      "name": "WaitForPieceOver",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

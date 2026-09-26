@@ -1,0 +1,75 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CV_TrophyDealerScript::CDemonDoorFace::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CDemonDoorFace::Init	11925376	69
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::RegisterMain	11925824	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Alloc	11925200	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CV_TrophyDealerScript::Alloc	11930976	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CDemonDoorFace::Main	11928816	2160
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-60	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-96	0
+0	7	door	CScriptThing	0	12	1	3	30006	-92	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-96	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-44	0
+FUNCTION	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CV_TrophyDealerScript>::CreateActiveEntityScript	11927232	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CEntityScriptBinding<NScript::CV_TrophyDealerScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CV_TrophyDealerScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CV_TrophyDealerScript>::CActiveEntityScript<NScript::CV_TrophyDealerScript>	11925632	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CV_TrophyDealerScript::CDemonDoorFace::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CV_TrophyDealerScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::Main	11926128	1095
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CV_TrophyDealerScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Init	11925168	26
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CDemonDoorFace::Alloc	11925456	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc<NScript::CV_TrophyDealerScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::Init	11924432	218
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_TrophyDealerScript::HilightGuildTeleporter	11924656	510
+0	7	this		0	4	4	5	18	0	0
+0	7	Teleporter	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Main	11927728	1075
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-44	0
+MATCHES	23
