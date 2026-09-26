@@ -24,6 +24,9 @@ Quest file (JSON):
   clear      false: no reflex clearing of hostiles near the hero (a disguise quest: Bandit Camp's gate guard is a
              hostile until the disguise is worn, and clearing him ended his entity script)
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
+  steps      optional [{name, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...] after the start:
+             talk to the script-named NPC, then wait until the Lua expression is true (a step's pauseSteps answers
+             its own yes/no questions); a step still false after `tries` talks fails the run
   pauseSteps optional input ladder for paused frames instead of [answer, clear, answer, ENTER] (e.g. ["clear"] where
              a scripted conversation pauses frames and a mouse answer would be an attack)
   done       Lua expression, evaluated in `host`, true when the test succeeded
@@ -414,6 +417,8 @@ def play(a, q) -> str:
 
     deadline = time.time() + a.minutes * 60
     paused, last_log, polls, fights = 0, 0, 0, 0
+    # quest steps after the start: talk to a script-named NPC, then wait for `until` (Lua in the step's stateHost)
+    steps, step_i, step_started, step_tries = q.get('steps', []), 0, None, 0
     while time.time() < deadline:
         game_input('move 512 384')          # keep the window focused (the game freezes in the background)
         val, err = ev("Runner and Runner.status or 'no runner'", timeout=4)
@@ -426,7 +431,8 @@ def play(a, q) -> str:
             # a quest can replace the ladder: when no question is up the mouse answer is an attack in the world
             # (bc3: a scripted conversation paused the host's frames, the RMB "no" swung at the disguised hero's gate
             # guard and his AI fought back)
-            ladder = q.get('pauseSteps') or [answer, 'clear', answer, 'key ENTER']
+            current = steps[step_i] if step_i < len(steps) else {}
+            ladder = current.get('pauseSteps') or q.get('pauseSteps') or [answer, 'clear', answer, 'key ENTER']
             step = ladder[(paused - 1) % len(ladder)]
             if paused % 4 == 1:
                 shot = out / f'{a.tag}_pause_{int(time.time())}.png'
@@ -455,6 +461,25 @@ def play(a, q) -> str:
             game_input(f"capture {out / (a.tag + '_end.png')}")
             result = 'done' if done == 'true' else 'failed'
             break
+        if step_i < len(steps):
+            stp = steps[step_i]
+            host_s = stp.get('stateHost', q.get('stateHost', host))
+            if step_started is None:
+                step_started, step_tries = time.time(), step_tries + 1
+                log('step_start', step=stp.get('name', step_i), attempt=step_tries)
+                if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', '')):
+                    log('step_talk_failed', step=stp.get('name', step_i))
+            reply = send(f"eval {host_s}: tostring({stp['until']})", 6)
+            val = next((r.rsplit(' = ', 1)[-1] for r in reply if '[Autopilot] eval ' in r), None)
+            if val == 'true':
+                log('step_done', step=stp.get('name', step_i), seconds=round(time.time() - step_started))
+                step_i, step_started, step_tries = step_i + 1, None, 0
+            elif time.time() - step_started > stp.get('timeout', 180):
+                if step_tries >= stp.get('tries', 2):
+                    log('step_failed', step=stp.get('name', step_i), until=val)
+                    result = 'failed'
+                    break
+                step_started = None             # talk again
         # conversations keep frames running and wait for 'Next' (the Darkwood4 camp-trader greeting held the
         # party for minutes): `clear` clicks only when a box / subtitle icon is actually on screen
         polls += 1

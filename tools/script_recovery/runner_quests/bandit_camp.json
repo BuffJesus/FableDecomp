@@ -21,6 +21,7 @@
       ]
     ],
     "setup": [
+      "quest:GiveHeroGold(3000)",
       "quest:GiveHeroObject('OBJECT_HERO_SHIRT_BANDITCAMP', 1)",
       "quest:GiveHeroObject('OBJECT_HERO_TROUSERS_BANDITCAMP', 1)",
       "quest:GiveHeroObject('OBJECT_HERO_HAT_BANDITCAMP', 1)",
@@ -47,5 +48,42 @@
   "clear": false,
   "pauseSteps": [
     "clear"
+  ],
+  "steps": [
+    {
+      "name": "gate1_open",
+      "until": "quest:GetStateBool('Gate1Open')",
+      "stateHost": "BanditCamp",
+      "timeout": 240,
+      "tries": 1
+    },
+    {
+      "name": "guard2_first",
+      "talk": "Gate2Guard1",
+      "talkLabel": "",
+      "until": "quest:GetStateBool('SpokenToSecondGuard')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 150
+    },
+    {
+      "name": "forger_pass",
+      "talk": "BanditForger",
+      "talkLabel": "",
+      "until": "quest:IsObjectInThingsPossession('OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS', quest:GetHero())",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 180,
+      "pauseSteps": [
+        "hold LMB 100",
+        "clear"
+      ]
+    },
+    {
+      "name": "gate2_open",
+      "talk": "Gate2Guard1",
+      "talkLabel": "",
+      "until": "quest:GetStateBool('Gate2Open')",
+      "stateHost": "BanditCampBossBattle",
+      "timeout": 180
+    }
   ]
 }

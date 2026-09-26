@@ -366,3 +366,33 @@ adopted reference count on that thing climbed to 2,540, so returned handles
 are not collected between frames. This is a slow sidecar leak.
 
 
+
+## Gates 1 and 2 on the converted scripts (bc6 / bc7, v18)
+
+- **bc6:** the disguised hero talks to Gate1GuardOuter. The full retail
+  conversation plays ("Hello, mate. Nice Bandit gear." ... "Another one coming
+  in, Joe. Open the gates."). Then the experience tutorial appears and
+  `Gate1Open` becomes true. No hostility, 0 Lua errors.
+- **bc7** uses the runner's new `steps` (talk to a script-named NPC, then
+  wait for a Lua condition in the quest's VM, with a per-step pause ladder
+  for yes/no questions), all hands-free:
+  - gate1_open: 118 s.
+  - guard2_first: 13 s. `SpokenToSecondGuard` is set.
+  - forger_pass: 94 s. The Forger asks for 1,000 gold, the step's LMB ladder
+    answers yes, "Excellent choice, my friend", and the hero holds
+    OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS.
+  - gate2_open: 23 s. `Gate2Open` is set. The log shows
+    `Thread 'OpenGate' registered ... with 2 argument(s)`, then the lookup of
+    'Gate2Outer'. This is the bound-value worker spawn converted this session.
+    The region caption "Twinblade Elite's Camp" follows as the hero crosses
+    into the residential camp.
+  - 0 Lua errors.
+- **Assistance used:** the disguise is given and worn, and 3,000 gold is
+  given (the Forger costs 1,000).
+- **Checkpoint copies** (profile folders; AutoSave plus the `.cp` checkpoint):
+  `adult_bandit_camp_gate1_2026-09-25`, `adult_bandit_camp_gate2_2026-09-25`.
+  The launcher loads AutoSave, and whether it restores the `.cp` state is
+  untested.
+
+Next leg: the residential camp and Q_BanditCampBossBattle (the hostages,
+the Twinblade fight and its spare/kill choice), then MissionSucceeded.
