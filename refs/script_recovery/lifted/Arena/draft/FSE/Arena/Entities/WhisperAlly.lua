@@ -191,7 +191,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then goto LAB_00f25806 end
                 xStack_54 = resources:StartMovie("")
-                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_c0,*(int *)(this + 4));
+                quest:PauseAllNonScriptedEntities(true)
                 bVar3 = false
                 pCVar18 = 0x1
                 pCVar17 = 0x0
@@ -205,7 +205,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_54)
                         goto LAB_00f25806
                     end
@@ -215,7 +215,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
-                    -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:ReleaseResource(xStack_64)
                     goto LAB_00f25806
                 end
@@ -899,13 +899,13 @@ function Main(quest, me)
                 goto LAB_00f24bc4
             else
                 xStack_54 = resources:StartMovie("")
-                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_d4,*(int *)(this + 4));
+                quest:PauseAllNonScriptedEntities(true)
                 xStack_a0 = resources:NewActorMap()
                 resources:SetActor(xStack_a0, "Hero", xStack_74)
                 resources:SetActor(xStack_a0, "Whisper", xStack_104)
                 resources:RunMacro("CS_ARENA_WHISPER_BEFORESTRIKE", xStack_a0, false, true)
                 resources:DestroyActorMap(xStack_a0)
-                -- TODO(native): (**(code **)(*(int *)xStack_d4 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_54)
                 resources:ReleaseResource(xStack_74)
                 pQuestName = quest:GetActiveQuestName()
@@ -1004,9 +1004,9 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then break end
                         xStack_54 = resources:StartMovie("")
-                        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_d0,*(int *)(this + 4));
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_104);
-                        fret_08 = quest:GetHealth(r3)
+                        quest:PauseAllNonScriptedEntities(true)
+                        pCVar6 = resources:ScriptThing(xStack_104)
+                        fret_08 = quest:GetHealth(pCVar6)
                         fVar2 = 0.0
                         if fVar2 < fret_08 then
                             bVar3 = false
@@ -1022,7 +1022,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
-                                    -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                                    quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(xStack_54)
                                     goto LAB_00f257f4
                                 end
@@ -1032,7 +1032,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_54)
                                 break
                             end
@@ -1046,7 +1046,7 @@ function Main(quest, me)
                         quest:EntityUnsetThingAsAllyOfThing(me, pCVar6)
                         pCVar7 = quest:GetHero()
                         quest:EntityUnsetThingAsAllyOfThing(pCVar7, me)
-                        -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_54)
                         quest:DisplayQuestInfo(true)
                         iVar12 = quest:AddQuestInfoBar(xStack_a4, 0.0, 0xffff0000, {R = 255, G = 0, B = 0, A = 255}, "HUD_WHISPER_ICON", "", 1.0)
@@ -1105,11 +1105,11 @@ function Main(quest, me)
                                 resources:SetActor(xStack_a0, "Hero", xStack_64)
                                 quest:EntitySetAsDrawable(me, false)
                                 xStack_e8 = resources:StartMovie("")
-                                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_78,*(int *)(this + 4));
+                                quest:PauseAllNonScriptedEntities(true)
                                 resources:RunMacro("CS_ARENA_WHISPER_KILLED", xStack_a0, false, true)
                                 quest:GiveHeroGold(10000)
                                 quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0xaf0))
-                                -- TODO(native): (**(code **)(*(int *)xStack_78 + 0x5ec))(0);
+                                quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_e8)
                                 resources:DestroyActorMap(xStack_a0)
                                 resources:ReleaseResource(xStack_34)

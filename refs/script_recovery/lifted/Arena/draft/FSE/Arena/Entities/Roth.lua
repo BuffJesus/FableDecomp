@@ -15,12 +15,14 @@ function Main(quest, me)
     local CVar2, bVar3, cVar4, dist, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar11, iVar20, iVar23, iVar7, native_arg_switch_2, native_arg_switch_3, p1, pCVar10, pCVar12, pCVar15, pCVar16, pCVar18, pCVar19, pCVar22, pCVar22_b3, pCVar5, pCVar6, pQuestName, pThing, pThing1, pcVar13, ppuVar24, uVar14, uVar17, uVar21, xStack_128, xStack_144, xStack_88, xStack_98, xStack_b0, xStack_bc, xStack_c8
     local alive = true
     local function __cleanup_LAB_00f22cd8()
+        quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
         pCVar12 = xStack_128
         resources:DestroyMovie(pCVar12)
         quest:DeregisterTimer(iVar7)
         resources:DestroyMovie(xStack_144)
     end
     local function __cleanup_LAB_00f22cec()
+        quest:PauseAllNonScriptedEntities((pCVar15 ~= 0))
         pCVar12 = xStack_128
         resources:DestroyMovie(pCVar12)
         quest:DeregisterTimer(iVar7)
@@ -153,7 +155,7 @@ function Main(quest, me)
                     end
                 until not (false)
                 xStack_88 = resources:StartMovie("")
-                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_a0,*(int *)(this + 4));
+                quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 pCVar5 = 0x0
                 resources:RunMacroWithStrings("CS_ARENA_ROTHWIMP", xStack_bc, xStack_c8, false, true)
@@ -162,7 +164,7 @@ function Main(quest, me)
                 __native_entity_state:SetStateBool("EarlyTalk", true)
                 __native_entity_state:SetStateBool("ChamTalk", true)
                 resources:PrepareResource(xStack_144)
-                -- TODO(native): (**(code **)(*xStack_a0 + 0x5ec))();
+                quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
                 resources:DestroyMovie(xStack_88)
                 resources:DestroyStringMap(xStack_c8)
                 resources:DestroyActorMap(xStack_bc)
@@ -349,9 +351,9 @@ function Main(quest, me)
                     end
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     xStack_98 = resources:StartMovie("")
-                    -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_12c,*(int *)(this + 4));
-                    -- TODO(native): pCVar5 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                    fret_07 = quest:GetHealth(pCVar10)
+                    quest:PauseAllNonScriptedEntities(true)
+                    pCVar5 = resources:ScriptThing(xStack_144)
+                    fret_07 = quest:GetHealth(pCVar5)
                     pCVar22 = CONCAT13(1,(int3)(pCVar22 & 0xffffff))
                     if fret_07 <= 0.0 then
                         pCVar22 = (pCVar22 & 0xffffff & 0xffffff)
@@ -437,14 +439,14 @@ function Main(quest, me)
             end
         end
         xStack_128 = resources:StartMovie("")
-        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_134,*(int *)(this + 4));
+        quest:PauseAllNonScriptedEntities(true)
         iVar11 = quest:GetStateInt("ArenaState")
         if (iVar11 == 3) and (not __native_entity_state:GetStateBool("EarlyTalk")) then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if not bVar3 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_0 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_0 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_0 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -460,7 +462,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
-                            -- TODO(native): (**(code **)(*xStack_134 + 0x5ec))();
+                            quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
                             pCVar12 = xStack_128
                             __cleanup_LAB_00f22d25(); return
                         end
@@ -481,8 +483,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if not bVar3 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_00 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_00 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_00 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -520,8 +522,8 @@ function Main(quest, me)
         end
         repeat
             if native_arg_switch_3 == 0 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_01 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_01 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_01 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -553,8 +555,8 @@ function Main(quest, me)
             break
             ::FLOW_past_lab_00f22807::
             if native_arg_switch_3 == 1 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_02 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_02 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_02 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -578,8 +580,8 @@ function Main(quest, me)
                 break
             end
             if native_arg_switch_3 == 2 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_03 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_03 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_03 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -603,8 +605,8 @@ function Main(quest, me)
                 break
             end
             if native_arg_switch_3 == 3 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_04 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_04 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_04 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -628,8 +630,8 @@ function Main(quest, me)
                 break
             end
             if native_arg_switch_3 == 4 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_05 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_05 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_05 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -653,8 +655,8 @@ function Main(quest, me)
                 break
             end
             if native_arg_switch_3 == 5 then
-                -- TODO(native): pCVar10 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_144);
-                fret_06 = quest:GetHealth(p1)
+                pCVar10 = resources:ScriptThing(xStack_144)
+                fret_06 = quest:GetHealth(pCVar10)
                 -- TODO(native): pCVar22_b3 = !(fret_06 <= (float10)0.0);
                 if pCVar22_b3 then
                     bVar3 = false
@@ -684,7 +686,7 @@ function Main(quest, me)
         until not (false)
         __native_entity_state:SetStateInt("HintNumber", __native_entity_state:GetStateInt("HintNumber") + 1)
         ::FLOW_native_label_1::
-        -- TODO(native): (**(code **)(*xStack_134 + 0x5ec))();
+        quest:PauseAllNonScriptedEntities((native_arg_switch_3 ~= 0))
         pCVar12 = xStack_128
         ::LAB_00f22bf5::
         resources:ReleaseResource(pCVar12)

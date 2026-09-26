@@ -7,8 +7,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, this_00, scratchValue4, scratchValue6, movie2, meControl
-    scratchValue6 = 0
+    local scratchValue2, this_00, scratchValue, scratchValue12, movie2, meControl
+    scratchValue12 = 0
     local resource = resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -32,16 +32,14 @@ function Main(quest, me)
             local switch1 = math.random(0, 32767) % (quest:GetStateInt("ArenaRound") - 2)
             repeat
                 if switch1 == 0 then
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_0 = quest:GetHealth(nil --[[missing]])
+                    local fret_0 = quest:GetHealth(resources:ScriptThing(meControl))
                     if fret_0 <= 0.0 then break end
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00f17af0 end
                     end
                     goto LAB_00f17734
                 elseif switch1 == 1 then
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_00 = quest:GetHealth(nil --[[missing]])
+                    local fret_00 = quest:GetHealth(resources:ScriptThing(meControl))
                     if 0.0 < fret_00 then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00f17af0 end
@@ -50,8 +48,7 @@ function Main(quest, me)
                     end
                     break
                 elseif switch1 == 2 then
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_01 = quest:GetHealth(nil --[[missing]])
+                    local fret_01 = quest:GetHealth(resources:ScriptThing(meControl))
                     if 0.0 < fret_01 then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00f17af0 end
@@ -60,8 +57,7 @@ function Main(quest, me)
                     end
                     break
                 elseif switch1 == 3 then
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_02 = quest:GetHealth(nil --[[missing]])
+                    local fret_02 = quest:GetHealth(resources:ScriptThing(meControl))
                     if 0.0 < fret_02 then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00f17af0 end
@@ -70,8 +66,7 @@ function Main(quest, me)
                     end
                     break
                 elseif switch1 == 4 then
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_03 = quest:GetHealth(nil --[[missing]])
+                    local fret_03 = quest:GetHealth(resources:ScriptThing(meControl))
                     if 0.0 < fret_03 then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00f17af0 end
@@ -91,36 +86,36 @@ function Main(quest, me)
             resources:DestroyMovie(movie2)
             goto LAB_00f17a59
         else
-            local scratchValue5 = scratchValue6
-            scratchValue6 = scratchValue6 | 1
+            local scratchValue11 = scratchValue12
+            scratchValue12 = scratchValue12 | 1
             if me:MsgIsHitByHero() then
                 goto LAB_00f177f7
             else
-                scratchValue4 = scratchValue5 | 3
-                scratchValue6 = scratchValue4
+                scratchValue = scratchValue11 | 3
+                scratchValue12 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue4 = scratchValue5 | 7
-                    scratchValue6 = scratchValue4
+                    scratchValue = scratchValue11 | 7
+                    scratchValue12 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f177f7 end
                 end
-                scratchValue = 0
+                scratchValue2 = 0
             end
             goto FLOW_past_lab_00f177f7
             ::LAB_00f177f7::
-            scratchValue = 1
+            scratchValue2 = 1
             ::FLOW_past_lab_00f177f7::
-            if scratchValue4 & 4 ~= 0 then
-                scratchValue4 = scratchValue4 & 0xfffffffb
-                scratchValue6 = scratchValue4
+            if scratchValue & 4 ~= 0 then
+                scratchValue = scratchValue & 0xfffffffb
+                scratchValue12 = scratchValue
             end
-            if scratchValue4 & 2 ~= 0 then
-                scratchValue4 = scratchValue4 & 0xfffffffd
-                scratchValue6 = scratchValue4
+            if scratchValue & 2 ~= 0 then
+                scratchValue = scratchValue & 0xfffffffd
+                scratchValue12 = scratchValue
             end
-            if scratchValue4 & 1 ~= 0 then
-                scratchValue6 = scratchValue4 & 0xfffffffe
+            if scratchValue & 1 ~= 0 then
+                scratchValue12 = scratchValue & 0xfffffffe
             end
-            if scratchValue ~= 0 then
+            if scratchValue2 ~= 0 then
                 resources:PrepareResource(meControl)
                 while not resources:TryAcquire(meControl, me, 4) do
                     if not quest:NewScriptFrame(me) then goto LAB_00f17b3f end
@@ -129,21 +124,13 @@ function Main(quest, me)
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     local movie = resources:StartMovie("")
-                    -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_8c,*(int *)(this + 4));
-                    -- TODO(native): pCVar7 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_9c);
-                    local fret_04 = quest:GetHealth(nil --[[missing]])
+                    quest:PauseAllNonScriptedEntities(true)
+                    local fret_04 = quest:GetHealth(resources:ScriptThing(meControl))
                     if 0.0 < fret_04 then
                         while me:IsPerformingScriptTask() do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                -- TODO(native): (**(code **)(*(int *)xStack_8c + 0x5ec))(0);
-                                goto LAB_00f17b32
-                            end
+                            if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00f17b32 end
                         end
-                        if quest:IsActiveThreadTerminating() then
-                            -- TODO(native): (**(code **)(*(int *)xStack_8c + 0x5ec))(0);
-                            goto LAB_00f17b32
-                        end
+                        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f17b32 end
                         goto FLOW_past_lab_00f17b32
                         ::LAB_00f17b32::
                         this_00 = movie
@@ -154,7 +141,7 @@ function Main(quest, me)
                     quest:EntitySetThingAsAllyOfThing(me, hero_)
                     quest:EntitySetThingAsAllyOfThing(hero_, me)
                     quest:SetStateBool("InHitCutsceneAlready", false)
-                    -- TODO(native): (**(code **)(*(int *)xStack_8c + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                 end
                 goto LAB_00f17a59

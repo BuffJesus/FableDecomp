@@ -944,6 +944,50 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\bcode_r0x([0-9a-f]{8})\b',
                   lambda m: f'LAB_{m.group(1)}' if f'LAB_{m.group(1)}' not in text else m.group(0), text)
     text = re.sub(r'return CONCAT31\([^;]*?,\s*(0|1)\);', lambda m: f'return {"true" if m.group(1) == "1" else "false"};', text)
+    # the interface pointer cached in a STACK slot (`piStack_230 = *(int **)((int)this + 0x40);` then
+    # `(**(code **)(*piStack_230 + 0x5ec))(piStack_230,true)`, Q_Arena Main 0x00F0FB70's pause/unpause around every
+    # round's scenes): register copies annotate as GSI calls, but the slot was renamed by the stack-object folding
+    # and its receiver dropped, so 32 such calls stayed TODOs. When every definition of the slot is the interface
+    # pointer and its address is never taken, its vcalls are spelled on the pointer itself (2026-09-26)
+    gsi_ptr = r'\*\((?:int|void|undefined4) \*\*\)\(\(int\)this \+ (?:4|0x40)\)|\*\((?:int|void|undefined4) \*\*\)\(this \+ (?:4|0x40)\)'
+    for slot in set(re.findall(r'^[ \t]*(\w+Stack_[0-9a-f]+) = (?:' + gsi_ptr + r');', text, re.M)):
+        s = re.escape(slot)
+        defs = re.findall(r'^[ \t]*' + s + r' = ([^;]+);', text, re.M)
+        if not defs or not all(re.fullmatch(gsi_ptr, d.strip()) for d in defs) or re.search(r'&' + s + r'\b', text):
+            continue
+        ptr = defs[0].strip()
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?' + s + r' \+ (0x[0-9a-f]+)\)\)\(' + s + r'\b',
+                      lambda m: f'(**(code **)(*{ptr} + {m.group(1)}))({ptr}', text)
+    # CWideScreenMagicPauseEntities (0x00CBE09A / dtor 0x00CBE0B3): a scope object whose ctor stores the interface
+    # pointer and calls PauseAllNonScriptedEntities(true), whose dtor calls it with false -- the Arena's entity
+    # scenes open one per scene. Its ctor, its inlined dtor (`(**(code **)(*(int *)S + 0x5ec))(0)` through the
+    # stored member) and a dtor call become the interface calls they are (2026-09-26)
+    for m in list(re.finditer(r'CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities\s*\(\s*(?:\([^()]*\))?&?(\w+),\s*\*\((?:int|void|undefined4) \*\)\(\(?(?:int\))?this \+ (4|0x40)\)\);', text)):
+        slot, off = m.group(1), m.group(2)
+        gsi = f'*(int **)(this + {off})'
+        s = re.escape(slot)
+        text = text.replace(m.group(0), f'(**(code **)(*{gsi} + 0x5ec))({gsi},true);')
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\)|\*\(int \*\*\))?' + s + r' \+ 0x5ec\)\)\((?:0|false)\);',
+                      f'(**(code **)(*{gsi} + 0x5ec))({gsi},false);', text)
+        text = re.sub(r'CWideScreenMagicPauseEntities::~CWideScreenMagicPauseEntities\s*\(\s*(?:\([^()]*\))?&?' + s + r'\);',
+                      f'(**(code **)(*{gsi} + 0x5ec))({gsi},false);', text)
+    # ... and through a stack slot Ghidra never saw written (the pointer was loaded into ECX for the __thiscall and
+    # the receiver dropped: `(**(code **)(*(int *)CStack_8c + 0x5ec))(0)`, 45 of the Arena's entity calls). A
+    # vtable offset past every CScriptThing slot (> 0x200) on such a phantom slot is the script interface; spell it
+    # on the interface pointer this function uses (quest scripts `this + 0x40`, entity scripts `this + 4`)
+    offsets = re.findall(r'\*\((?:int|void|undefined4) \*\*\)\(\(int\)this \+ (4|0x40)\)|\*\((?:int|void|undefined4) \*\*\)\(this \+ (4|0x40)\)', text)
+    if offsets:
+        counts = {}
+        for a, b in offsets:
+            counts[a or b] = counts.get(a or b, 0) + 1
+        own = max(counts, key=counts.get)
+        ptr = f'*(int **)(this + {own})'
+        def phantom(m):
+            slot, off, args = m.group(1), m.group(2), m.group(3)
+            if int(off, 16) <= 0x200 or re.search(r'^[ \t]*' + re.escape(slot) + r' = ', text, re.M) or re.search(r'&' + re.escape(slot) + r'\b', text):
+                return m.group(0)
+            return f'(**(code **)(*{ptr} + {off}))({ptr}' + (f',{args}' if args.strip() else '') + ');'
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?(\w*Stack_[0-9a-f]+) \+ (0x[0-9a-f]+)\)\)\(([^;()]*)\);', phantom, text)
     text = re.sub(r"return CONCAT31\(\w+,\s*'\\x01' - (\w+)\);", r'return !\1;', text)
     text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'!(\1)', text)
     text = re.sub(r'return CONCAT31\(\w+,\s*([^;]+)\);', r'return \1;', text)
@@ -1594,6 +1638,10 @@ def fold_resource_objects(text, call_labels):
                 return out
             text = re.sub(r'^([ \t]*)(?:(\w+) = (?:\((?:CScriptThing|void) \*\)\s*)?)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,]+?),\s*([^;]+?)\);',
                           script_thing, text, flags=re.M)
+            # the same call printed with the resource only, its result in the return register (the Arena's
+            # `pCVar6 = (CScriptThing *) Res::GetScriptThing((Res *)&xStack_238);`, 81 sites, 2026-09-26)
+            text = re.sub(r'^([ \t]*)(\w+) = (?:\((?:CScriptThing|void) \*\)\s*)?' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;,()]+?|\([^;,()]+\)\s*&?\w+)\);',
+                          lambda m: f'{m.group(1)}{m.group(2)} = RESOURCE_ScriptThing({_strip_addr(m.group(3))});', text, flags=re.M)
         elif target in TIMER_CTOR:
             text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(([^;]+?)\);', lambda m: f'{m.group(1)}{_strip_addr(m.group(2))} = GSI->RegisterTimer();', text, flags=re.M)
         elif target in TIMER_DTOR:

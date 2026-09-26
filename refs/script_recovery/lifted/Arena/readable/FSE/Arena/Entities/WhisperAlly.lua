@@ -11,14 +11,14 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local addNewConversation, scratchValue, isActiveThreadTerminating, c_stk_ed_1, c_stk_ed_2
     local arenaState, scratchValue15, scratchValue16, scratchValue24, timerId2, conversationId2
-    local scratchValue30, resource, nearest, summonedCreature, timerId, scratchValue33
-    local scratchValue36, scratchValue37, scratchValue38, uVar21_b3, scratchValue40, resource4
-    local scratchValue41, resource6, resource7, scratchValue42, infoElement2
+    local scratchValue30, resource, nearest, summonedCreature, timerId, scratchValue34
+    local scratchValue37, scratchValue38, scratchValue39, uVar21_b3, scratchValue41, resource4
+    local scratchValue42, resource6, resource7, scratchValue43, infoElement2
     local function ReleaseEverything()
         quest:DeregisterTimer(scratchValue30)
         resources:ReleaseResource(resource4)
     end
-    scratchValue40 = 0
+    scratchValue41 = 0
     resource4 = resources:NewResource()
     while quest:GetStateBool("WhisperNeededForCutscene") do
         quest:NewScriptFrame(me)
@@ -69,7 +69,7 @@ function Main(quest, me)
             resources:ReleaseResource(resource4)
             return
         end
-        while scratchValue41 == 0 and quest:GetStateInt("ArenaState") ~= 8 do
+        while scratchValue42 == 0 and quest:GetStateInt("ArenaState") ~= 8 do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue30)
@@ -123,39 +123,39 @@ function Main(quest, me)
             if me:IsTalkedToByHero() then
                 if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
                 local movie = resources:StartMovie("")
-                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_c0,*(int *)(this + 4));
+                quest:PauseAllNonScriptedEntities(true)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
-                        -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         goto LAB_00f25806
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
-                    -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:ReleaseResource(resource6)
                     goto LAB_00f25806
                 end
                 -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))();
                 resources:DestroyMovie(movie)
             end
-            local scratchValue34 = scratchValue40
-            scratchValue40 = scratchValue40 | 1
+            local scratchValue35 = scratchValue41
+            scratchValue41 = scratchValue41 | 1
             if not me:MsgIsHitByHero() then
-                scratchValue33 = scratchValue34 | 3
+                scratchValue34 = scratchValue35 | 3
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue33 = scratchValue34 | 7
+                    scratchValue34 = scratchValue35 | 7
                 end
             end
-            if scratchValue33 & 4 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xfffffffb
+            if scratchValue34 & 4 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xfffffffb
             end
-            if scratchValue33 & 2 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xfffffffd
+            if scratchValue34 & 2 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xfffffffd
             end
-            if scratchValue33 & 1 ~= 0 then
-                scratchValue40 = scratchValue33 & 0xfffffffe
+            if scratchValue34 & 1 ~= 0 then
+                scratchValue41 = scratchValue34 & 0xfffffffe
             end
             if in_stack_fffffeec & 0xffffff >> 24 ~= 0 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
@@ -176,29 +176,29 @@ function Main(quest, me)
         end
         resources:PrepareResource(resource4)
         quest:SetTimer(scratchValue30, 10)
-        while scratchValue41 ~= 0 and quest:GetStateInt("ArenaState") ~= 8 do
+        while scratchValue42 ~= 0 and quest:GetStateInt("ArenaState") ~= 8 do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue30)
                 resources:ReleaseResource(resource4)
                 return
             end
-            local scratchValue35 = scratchValue40
-            scratchValue40 = scratchValue40 | 8
+            local scratchValue36 = scratchValue41
+            scratchValue41 = scratchValue41 | 8
             if not me:MsgIsHitByHero() then
-                scratchValue33 = scratchValue35 | 24
+                scratchValue34 = scratchValue36 | 24
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue33 = scratchValue35 | 56
+                    scratchValue34 = scratchValue36 | 56
                 end
             end
-            if scratchValue33 & 32 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xffffffdf
+            if scratchValue34 & 32 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xffffffdf
             end
-            if scratchValue33 & 16 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xffffffef
+            if scratchValue34 & 16 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xffffffef
             end
-            if scratchValue33 & 8 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xfffffff7
+            if scratchValue34 & 8 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xfffffff7
             end
             if in_stack_fffffeec & 0xffffff >> 24 ~= 0 then
                 if quest:IsActiveThreadTerminating() then
@@ -252,18 +252,18 @@ function Main(quest, me)
                 quest:SetTimer(scratchValue30, 10)
                 goto LAB_00f241aa
                 ::FLOW_past_lab_00f24190::
-                scratchValue36 = scratchValue33 | 1024
-                scratchValue40 = scratchValue36
+                scratchValue37 = scratchValue34 | 1024
+                scratchValue41 = scratchValue37
                 if me:MsgIsHitBy("") then
-                    scratchValue36 = scratchValue33 | 3072
-                    scratchValue40 = scratchValue36
+                    scratchValue37 = scratchValue34 | 3072
+                    scratchValue41 = scratchValue37
                 end
-                if scratchValue36 & 2048 ~= 0 then
-                    scratchValue36 = scratchValue36 & 0xfffff7ff
-                    scratchValue40 = scratchValue36
+                if scratchValue37 & 2048 ~= 0 then
+                    scratchValue37 = scratchValue37 & 0xfffff7ff
+                    scratchValue41 = scratchValue37
                 end
-                if scratchValue36 & 1024 ~= 0 then
-                    scratchValue40 = scratchValue36 & 0xfffffbff
+                if scratchValue37 & 1024 ~= 0 then
+                    scratchValue41 = scratchValue37 & 0xfffffbff
                 end
                 if in_stack_fffffeec & 0xffffff >> 24 == 0 then
                     -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
@@ -324,9 +324,9 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then goto LAB_00f243b3 end
                     if 0 < quest:GetTimer(scratchValue30) then goto LAB_00f241aa end
                     if quest:GetHealth(nearest) < 10.0 then
-                        scratchValue41 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue41, hero)
-                        quest:AddLineToConversation(scratchValue41, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_WINNING", me, hero, false)
+                        scratchValue42 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue42, hero)
+                        quest:AddLineToConversation(scratchValue42, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_WINNING", me, hero, false)
                         goto LAB_00f23d7f
                     end
                     goto FLOW_past_lab_00f23d7f
@@ -334,18 +334,18 @@ function Main(quest, me)
                     quest:SetTimer(scratchValue30, 10)
                     goto LAB_00f241aa
                     ::FLOW_past_lab_00f23d7f::
-                    scratchValue37 = scratchValue33 | 256
-                    scratchValue40 = scratchValue37
+                    scratchValue38 = scratchValue34 | 256
+                    scratchValue41 = scratchValue38
                     if me:MsgIsHitBy("") then
-                        scratchValue37 = scratchValue33 | 768
-                        scratchValue40 = scratchValue37
+                        scratchValue38 = scratchValue34 | 768
+                        scratchValue41 = scratchValue38
                     end
-                    if scratchValue37 & 512 ~= 0 then
-                        scratchValue37 = scratchValue37 & 0xfffffdff
-                        scratchValue40 = scratchValue37
+                    if scratchValue38 & 512 ~= 0 then
+                        scratchValue38 = scratchValue38 & 0xfffffdff
+                        scratchValue41 = scratchValue38
                     end
-                    if scratchValue37 & 256 ~= 0 then
-                        scratchValue40 = scratchValue37 & 0xfffffeff
+                    if scratchValue38 & 256 ~= 0 then
+                        scratchValue41 = scratchValue38 & 0xfffffeff
                     end
                     if in_stack_fffffeec & 0xffffff >> 24 == 0 then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
@@ -359,9 +359,9 @@ function Main(quest, me)
                             goto LAB_00f241aa
                         end
                     elseif not quest:IsActiveThreadTerminating() then
-                        scratchValue41 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue41, hero)
-                        quest:AddLineToConversation(scratchValue41, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_BEEN_HIT", me, hero, false)
+                        scratchValue42 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue42, hero)
+                        quest:AddLineToConversation(scratchValue42, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_BEEN_HIT", me, hero, false)
                         goto LAB_00f23d7f
                     end
                 end
@@ -389,35 +389,35 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00f243a7 end
             if quest:GetTimer(scratchValue30) < 1 then
                 if 10.0 <= quest:GetHealth(nearest) then
-                    scratchValue38 = scratchValue33 | 64
-                    scratchValue40 = scratchValue38
+                    scratchValue39 = scratchValue34 | 64
+                    scratchValue41 = scratchValue39
                     if me:MsgIsHitBy("") then
-                        scratchValue38 = scratchValue33 | 192
-                        scratchValue40 = scratchValue38
+                        scratchValue39 = scratchValue34 | 192
+                        scratchValue41 = scratchValue39
                     end
-                    if scratchValue38 < 0 then
-                        scratchValue38 = scratchValue38 & 0xffffff7f
-                        scratchValue40 = scratchValue38
+                    if scratchValue39 < 0 then
+                        scratchValue39 = scratchValue39 & 0xffffff7f
+                        scratchValue41 = scratchValue39
                     end
-                    if scratchValue38 & 64 ~= 0 then
-                        scratchValue40 = scratchValue38 & 0xffffffbf
+                    if scratchValue39 & 64 ~= 0 then
+                        scratchValue41 = scratchValue39 & 0xffffffbf
                     end
                     if in_stack_fffffeec & 0xffffff >> 24 == 0 then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         if not me:MsgHitEnemyWithMeleeWeapon() then goto LAB_00f23a17 end
                         if quest:IsActiveThreadTerminating() then goto LAB_00f243a7 end
-                        scratchValue41 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue41, hero)
-                        quest:AddLineToConversation(scratchValue41, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_HIT", me, hero, false)
+                        scratchValue42 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue42, hero)
+                        quest:AddLineToConversation(scratchValue42, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_HIT", me, hero, false)
                     else
-                        scratchValue41 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(scratchValue41, hero)
-                        quest:AddLineToConversation(scratchValue41, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_BEEN_HIT", me, hero, false)
+                        scratchValue42 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(scratchValue42, hero)
+                        quest:AddLineToConversation(scratchValue42, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_BEEN_HIT", me, hero, false)
                     end
                 else
-                    scratchValue41 = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(scratchValue41, hero)
-                    quest:AddLineToConversation(scratchValue41, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_WINNING", me, hero, false)
+                    scratchValue42 = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(scratchValue42, hero)
+                    quest:AddLineToConversation(scratchValue42, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_WINNING", me, hero, false)
                 end
                 quest:SetTimer(scratchValue30, 10)
             end
@@ -480,7 +480,7 @@ function Main(quest, me)
     infoElement2 = nil --[[unresolved native value]]
     addNewConversation = math.tointeger(math.modf(quest:GetHealth(me)))
     c_stk_ed_2 = 0
-    scratchValue42 = addNewConversation
+    scratchValue43 = addNewConversation
     scratchValue = math.tointeger(math.modf(quest:GetHealth(me) * 0.25))
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
@@ -492,7 +492,7 @@ function Main(quest, me)
             quest:AddPersonToConversation(conversationId, hero)
             quest:AddLineToConversation(conversationId, "TEXT_QST_005_V2_ARENA_WHISPER_FINALBATTLE_QUARTER", me, hero, false)
             quest:SetTimer(timerId, 13)
-            addNewConversation = scratchValue42
+            addNewConversation = scratchValue43
         end
         if (quest:GetHealth(me) < math.tointeger(math.modf(addNewConversation / 2)) and c_stk_ed_2 == 0) and quest:GetTimer(timerId) < 6 then
             if quest:IsActiveThreadTerminating() then goto LAB_00f257fd end
@@ -556,26 +556,25 @@ function Main(quest, me)
         goto LAB_00f24bc4
     else
         local movie2 = resources:StartMovie("")
-        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_d4,*(int *)(this + 4));
+        quest:PauseAllNonScriptedEntities(true)
         local actorMap = resources:NewActorMap()
         resources:SetActor(actorMap, "Hero", resource7)
         resources:SetActor(actorMap, "Whisper", resource4)
         resources:RunMacro("CS_ARENA_WHISPER_BEFORESTRIKE", actorMap, false, true)
         resources:DestroyActorMap(actorMap)
-        -- TODO(native): (**(code **)(*(int *)xStack_d4 + 0x5ec))(0);
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
         resources:ReleaseResource(resource7)
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_ARENA_OBJECTIVE_04_ROUND_10", "Arena", "KnotholeGlade")
         quest:SetThingAsUsable(quest:GetThingWithScriptName("ArenaMainExit"), true)
-        local arenaHeroGate = quest:GetThingWithScriptName("ArenaHeroGate")
-        quest:OpenDoor(arenaHeroGate)
-        scratchValue41 = quest:RegisterTimer()
-        quest:SetTimer(scratchValue41, 0)
+        quest:OpenDoor(quest:GetThingWithScriptName("ArenaHeroGate"))
+        scratchValue42 = quest:RegisterTimer()
+        quest:SetTimer(scratchValue42, 0)
         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
         quest:EntitySetFacingAngleTowardsThing(hero, me, false)
         isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         while not isActiveThreadTerminating do
-            if 0 < quest:GetTimer(scratchValue41) then goto LAB_00f25062 end
+            if 0 < quest:GetTimer(scratchValue42) then goto LAB_00f25062 end
             if quest:IsActiveThreadTerminating() then break end
             conversationId2 = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId2, hero)
@@ -602,16 +601,16 @@ function Main(quest, me)
                     ::FLOW_past_lab_00f25040::
                 end
             until true
-            quest:SetTimer(scratchValue41, 10)
+            quest:SetTimer(scratchValue42, 10)
             ::LAB_00f25062::
-            local scratchValue39 = scratchValue40
-            scratchValue40 = scratchValue40 | 4096
+            local scratchValue40 = scratchValue41
+            scratchValue41 = scratchValue41 | 4096
             if me:MsgIsHitByHero() then
                 goto LAB_00f250f0
             else
-                scratchValue33 = scratchValue39 | 0x3000
+                scratchValue34 = scratchValue40 | 0x3000
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue33 = scratchValue39 | 0x7000
+                    scratchValue34 = scratchValue40 | 0x7000
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f250f0 end
                 end
                 isActiveThreadTerminating = false
@@ -620,31 +619,30 @@ function Main(quest, me)
             ::LAB_00f250f0::
             isActiveThreadTerminating = true
             ::FLOW_past_lab_00f250f0::
-            if scratchValue33 & 0x4000 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xffffbfff
+            if scratchValue34 & 0x4000 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xffffbfff
             end
-            if scratchValue33 & 0x2000 ~= 0 then
-                scratchValue33 = scratchValue33 & 0xffffdfff
+            if scratchValue34 & 0x2000 ~= 0 then
+                scratchValue34 = scratchValue34 & 0xffffdfff
             end
-            if scratchValue33 & 4096 ~= 0 then
-                scratchValue40 = scratchValue33 & 0xffffefff
+            if scratchValue34 & 4096 ~= 0 then
+                scratchValue41 = scratchValue34 & 0xffffefff
             end
             if isActiveThreadTerminating then
                 if quest:IsActiveThreadTerminating() then break end
                 local movie3 = resources:StartMovie("")
-                -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_d0,*(int *)(this + 4));
-                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_104);
-                if 0.0 < quest:GetHealth(arenaHeroGate) then
+                quest:PauseAllNonScriptedEntities(true)
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
-                            -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                            quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
                             goto LAB_00f257f4
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
-                        -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie3)
                         break
                     end
@@ -655,10 +653,10 @@ function Main(quest, me)
                 quest:EntitySetInFaction(me, "FACTION_MONSTER")
                 quest:EntityUnsetThingAsAllyOfThing(me, hero)
                 quest:EntityUnsetThingAsAllyOfThing(hero, me)
-                -- TODO(native): (**(code **)(*(int *)xStack_d0 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie3)
                 quest:DisplayQuestInfo(true)
-                local infoElement = quest:AddQuestInfoBar(scratchValue42, 0.0, 0xffff0000, {R = 255, G = 0, B = 0, A = 255}, "HUD_WHISPER_ICON", "", 1.0)
+                local infoElement = quest:AddQuestInfoBar(scratchValue43, 0.0, 0xffff0000, {R = 255, G = 0, B = 0, A = 255}, "HUD_WHISPER_ICON", "", 1.0)
                 while 1.0 < quest:GetHealth(me) do
                     if not quest:NewScriptFrame(me) then goto LAB_00f257f4 end
                     quest:UpdateQuestInfoBar(infoElement, quest:GetHealth(me), -1.0, -1.0)
@@ -682,11 +680,11 @@ function Main(quest, me)
                         resources:SetActor(actorMap2, "Hero", resource6)
                         quest:EntitySetAsDrawable(me, false)
                         local movie4 = resources:StartMovie("")
-                        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_78,*(int *)(this + 4));
+                        quest:PauseAllNonScriptedEntities(true)
                         resources:RunMacro("CS_ARENA_WHISPER_KILLED", actorMap2, false, true)
                         quest:GiveHeroGold(10000)
                         quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(2800))
-                        -- TODO(native): (**(code **)(*(int *)xStack_78 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie4)
                         resources:DestroyActorMap(actorMap2)
                         resources:ReleaseResource(resource5)
@@ -707,7 +705,7 @@ function Main(quest, me)
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end
         ::LAB_00f257f4::
-        quest:DeregisterTimer(scratchValue41)
+        quest:DeregisterTimer(scratchValue42)
     end
     goto FLOW_past_lab_00f24bc4
     ::LAB_00f24bc4::
@@ -716,7 +714,7 @@ function Main(quest, me)
     ::LAB_00f257fd::
     quest:DeregisterTimer(timerId)
     ::LAB_00f25806::
-    quest:DeregisterTimer(scratchValue41)
+    quest:DeregisterTimer(scratchValue42)
     resources:ReleaseResource(resource4)
 end
 

@@ -654,7 +654,7 @@ function Main(quest)
     end
     if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00f11eec end
     resource7 = resources:StartMovie("")
-    -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_2b4,*(int *)(this + 0x40));
+    quest:PauseAllNonScriptedEntities(true)
     resource8 = resources:NewResource()
     resource9 = resources:NewResource()
     resources:PrepareResource(resource8)
@@ -688,6 +688,7 @@ function Main(quest)
     resources:DestroyActorMap(actorMap5)
     resources:ReleaseResource(resource9)
     resources:ReleaseResource(resource8)
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(resource7)
     cellsToHallOfHeroesEntrance = quest:GetThingWithScriptName("CellsToHallOfHeroesEntrance")
     quest:EntityTeleportToThing(hero, cellsToHallOfHeroesEntrance, false)
@@ -715,6 +716,7 @@ function Main(quest)
     ::LAB_00f13f09::
     resources:ReleaseResource(resource9)
     resources:ReleaseResource(resource8)
+    quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(resource7)
     ::FLOW_past_lab_00f11eec::
     ::LAB_00f141be::
@@ -1390,8 +1392,8 @@ function PlayWave(quest)
     local ctr_fc, timerId, createCreatureNearby, readGlobalGameData, scratchValue7, scratchValue8
     local scratchValue9, scratchValue12, scratchValue13, scratchValue14, scratchValue15, sequence1
     local whisperAlly, hero10, scratchValue21, whisperAlly3, hero11, scratchValue24, scratchValue25
-    local scratchValue27, scratchValue28, arenaEnemy, movie, getDataString, resource, scratchValue30
-    local infoElement
+    local scratchValue27, arenaEnemy, movie, getDataString, resource, scratchValue29, infoElement
+    local scratchValue30
     local bigCreatureSpawnPoint = quest:GetThingWithScriptName("BigCreatureSpawnPoint")
     timerId = quest:RegisterTimer()
     quest:SetStateBool("PauseCrowdChecker", false)
@@ -1406,12 +1408,13 @@ function PlayWave(quest)
     if arenaSpawn ~= nil then
         getDataString = arenaSpawn:GetDataString()
     end
-    scratchValue12 = tonumber(getDataString)
-    -- TODO(native): xStack_104 = (int *)(iVar4 - 1);
+    timerId = tonumber(getDataString)
+    scratchValue12 = timerId
+    scratchValue30 = timerId - 1
     scratchValue5 = 1
-    if scratchValue27 == 0xffffffff then
+    if scratchValue30 == 0xffffffff then
         if quest:IsActiveThreadTerminating() then goto LAB_00f2116f end
-        -- TODO(native): xStack_104 = (int *)(iVar6 - 1);
+        scratchValue30 = createCreatureNearby - 1
     end
     arenaEnemy = quest:GetAllThingsWithScriptName("ArenaEnemy")
     sequence1 = quest:GetStateInt("ArenaRound") == 0 and quest:GetStateInt("ArenaRoundWave") == 0 and #arenaEnemy ~= 0
@@ -1441,27 +1444,27 @@ function PlayWave(quest)
                                     repeat
                                         timerId = scratchValue14
                                         scratchValue24 = arenaSpawn2[scratchValue14 / 12 + 1]:GetDataString()
-                                        if tonumber(scratchValue24) == scratchValue27 then
+                                        if tonumber(scratchValue24) == scratchValue30 then
                                             if not quest:IsActiveThreadTerminating() then
                                                 if quest:GetStateInt("ArenaRound") == 3 then
                                                     if not quest:IsActiveThreadTerminating() then
                                                         quest:SetCreatureCreationDelayFrames(1)
                                                         -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + self_0x98) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
                                                         createCreatureNearby = nil --[[unresolved native value]]
-                                                        scratchValue30 = quest:CreateCreature("ArenaEnemy", arenaSpawn2[timerId / 12 + 1]:GetPos(), scratchValue24)
+                                                        scratchValue29 = quest:CreateCreature("ArenaEnemy", arenaSpawn2[timerId / 12 + 1]:GetPos(), scratchValue24)
                                                         goto LAB_00f1fcce
                                                     end
                                                 elseif not quest:IsActiveThreadTerminating() then
                                                     quest:SetCreatureCreationDelayFrames(1)
                                                     -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + self_0x98) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
                                                     createCreatureNearby = nil --[[unresolved native value]]
-                                                    scratchValue30 = quest:CreateCreatureNearby("ArenaEnemy", arenaSpawn2[timerId / 12 + 1]:GetPos(), createCreatureNearby + 40 + scratchValue, arenaEnemy)
+                                                    scratchValue29 = quest:CreateCreatureNearby("ArenaEnemy", arenaSpawn2[timerId / 12 + 1]:GetPos(), createCreatureNearby + 40 + scratchValue, arenaEnemy)
                                                     goto LAB_00f1fcce
                                                 end
                                                 goto FLOW_past_lab_00f1fcce
                                                 ::LAB_00f1fcce::
                                                 quest:ResetCreatureCreationDelayFrames()
-                                                quest:EntitySetCutsceneBehaviour(scratchValue30, CUTSCENE_BEHAVIOUR_PAUSED)
+                                                quest:EntitySetCutsceneBehaviour(scratchValue29, CUTSCENE_BEHAVIOUR_PAUSED)
                                                 whisperAlly = quest:GetThingWithScriptName("WhisperAlly")
                                                 if not (whisperAlly ~= nil and whisperAlly:IsAlive()) then
                                                     if not quest:IsActiveThreadTerminating() then hero10 = hero; goto LAB_00f1fe19 end
@@ -1472,7 +1475,7 @@ function PlayWave(quest)
                                                         scratchValue2 = (scratchValue25 - 1 | 0xfffffffe) == 0xffffffff
                                                     end
                                                     if scratchValue2 then
-                                                        if not quest:IsActiveThreadTerminating() then quest:GiveThingBestEnemyTarget(scratchValue30, quest:GetThingWithScriptName("WhisperAlly")); goto LAB_00f1fe22 end
+                                                        if not quest:IsActiveThreadTerminating() then quest:GiveThingBestEnemyTarget(scratchValue29, quest:GetThingWithScriptName("WhisperAlly")); goto LAB_00f1fe22 end
                                                     elseif not quest:IsActiveThreadTerminating() then
                                                         hero10 = hero
                                                         goto LAB_00f1fe19
@@ -1480,12 +1483,12 @@ function PlayWave(quest)
                                                 end
                                                 goto FLOW_past_lab_00f1fe19
                                                 ::LAB_00f1fe19::
-                                                quest:GiveThingBestEnemyTarget(scratchValue30, hero10)
+                                                quest:GiveThingBestEnemyTarget(scratchValue29, hero10)
                                                 goto LAB_00f1fe22
                                                 ::FLOW_past_lab_00f1fe19::
                                                 goto FLOW_past_lab_00f1fe22
                                                 ::LAB_00f1fe22::
-                                                -- TODO(native): this[(int)xStack_104 + 0xe2] = (CQ_ArenaScript)0x1;
+                                                -- TODO(native): this[(int)x_stk_104 + 0xe2] = (CQ_ArenaScript)0x1;
                                                 timerId = scratchValue14
                                                 goto LAB_00f1fe48
                                                 ::FLOW_past_lab_00f1fe22::
@@ -1498,10 +1501,10 @@ function PlayWave(quest)
                                         scratchValue14 = timerId + 12
                                     until scratchValue15 >= createCreatureNearby
                                 end
-                                -- TODO(native): xStack_104 = (int *)((int)xStack_104 - 1);
-                                if scratchValue27 == 0xffffffff then
+                                scratchValue30 = scratchValue30 - 1
+                                if scratchValue30 == 0xffffffff then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00f20cc5 end
-                                    -- TODO(native): xStack_104 = (int *)(iVar6 - 1);
+                                    scratchValue30 = createCreatureNearby - 1
                                 end
                                 scratchValue5 = 1
                             else
@@ -1646,13 +1649,13 @@ function PlayWave(quest)
             readGlobalGameData = nil --[[unresolved native value]]
             -- TODO(native): *(int *)(xStack_f4 + iVar4) = iVar6;
         end
-        if 0 < *(scratchValue30 + timerId) then
+        if 0 < *(scratchValue29 + timerId) then
             if quest:IsActiveThreadTerminating() then goto LAB_00f20ca1 end
             -- TODO(native): quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar4), *__element("TotalCreatures", 0), -1)
         end
         -- TODO(native): xStack_108 = (CCharString)((int)CVar14 + 0x38);
         timerId = timerId + 4
-    until scratchValue28 >= 168
+    until scratchValue27 >= 168
     if quest:IsActiveThreadTerminating() then
         quest:DeregisterTimer(timerId2)
         -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
@@ -1679,7 +1682,7 @@ function PlayWave(quest)
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00f208af end
             timerId = timerId + *__element("TotalCreatures", 0)
-            if 0 < *(scratchValue30 + scratchValue8) then
+            if 0 < *(scratchValue29 + scratchValue8) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00f2096f end
                 -- TODO(native): quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar6), *__element("TotalCreatures", 0), -1)
             end
@@ -1726,7 +1729,7 @@ function PlayWave(quest)
     ::LAB_00f20700::
     while true do
         if quest:IsActiveThreadTerminating() then goto LAB_00f20b8b end
-        if 0 < *(scratchValue30 + timerId) then
+        if 0 < *(scratchValue29 + timerId) then
             if quest:IsActiveThreadTerminating() then goto LAB_00f21166 end
             -- TODO(native): quest:RemoveQuestInfoElement(*(xStack_f4 + iVar4))
         end
@@ -1762,33 +1765,33 @@ function PlayWave(quest)
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00f212cc end
         movie = resources:StartMovie("")
-        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_104,*(int *)(this + 0x40));
+        quest:PauseAllNonScriptedEntities(true)
         resource = resources:NewResource()
         resources:PrepareResource(resource)
         while not resources:TryAcquire(resource, hero, 4) do
             quest:NewScriptFrame()
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
-                -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 goto FLOW_after_lab_00f211ba
             end
         end
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
             goto FLOW_after_lab_00f211ba
         end
         if 7 < quest:GetStateInt("ArenaRound") then
             quest:FadeScreenOut(0.5, 0.5)
             quest:Pause(0.5)
             resources:ReleaseResource(resource)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             goto LAB_00f21166
         end
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
         else
             quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES", "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", "ArenaEnemy", GetEndRoundQuestion(quest) ~= 0)
             timerId = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -1798,7 +1801,7 @@ function PlayWave(quest)
             end
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
-                -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 goto FLOW_after_lab_00f211ba
             end
             predicateResult32 = quest:IsActiveThreadTerminating()
@@ -1808,14 +1811,14 @@ function PlayWave(quest)
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(0.5)
                     resources:ReleaseResource(resource)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     goto LAB_00f21166
                 end
             else
                 if predicateResult32 then
                     resources:ReleaseResource(resource)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     goto FLOW_after_lab_00f211ba
                 end
                 quest:SetStateBool("PlayerLeaving", true)
@@ -1827,7 +1830,7 @@ function PlayWave(quest)
                     quest:NewScriptFrame()
                     if quest:IsActiveThreadTerminating() then
                         resources:ReleaseResource(resource)
-                        -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                        quest:PauseAllNonScriptedEntities(false)
                         goto FLOW_after_lab_00f211ba
                     end
                 end
@@ -1835,14 +1838,14 @@ function PlayWave(quest)
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(0.5)
                     resources:ReleaseResource(resource)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     goto LAB_00f21166
                 end
             end
             ::LAB_00f212a6::
             resources:ReleaseResource(resource)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
         end
         ::FLOW_after_lab_00f211ba::
         resources:DestroyMovie(movie)

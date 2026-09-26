@@ -59,8 +59,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        fret_05 = quest:GetHealth(nil --[[missing]])
+                        pCVar6 = resources:ScriptThing(xStack_238)
+                        fret_05 = quest:GetHealth(pCVar6)
                         fVar1 = 0.0
                         if fVar1 < fret_05 then
                             bVar3 = false
@@ -103,8 +103,8 @@ function Main(quest, me)
                         bVar3 = not alive
                         if iVar5 ~= 1 then
                             if not bVar3 then
-                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                fret_25 = quest:GetHealth(nil --[[missing]])
+                                pCVar6 = resources:ScriptThing(xStack_238)
+                                fret_25 = quest:GetHealth(pCVar6)
                                 fVar1 = 0.0
                                 if fVar1 < fret_25 then
                                     bVar3 = false
@@ -150,8 +150,8 @@ function Main(quest, me)
                             native_arg_switch_1 = quest:GetStateInt("ArenaRound")
                             repeat
                                 if native_arg_switch_1 == 0 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    fret_06 = quest:GetHealth(r1)
+                                    pCVar6 = resources:ScriptThing(xStack_238)
+                                    fret_06 = quest:GetHealth(pCVar6)
                                     fVar1 = 0.0
                                     if fVar1 < fret_06 then
                                         iVar5 = me:IsPerformingScriptTask()
@@ -168,8 +168,8 @@ function Main(quest, me)
                                         bVar3 = not alive
                                         if bVar3 then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    fret_07 = quest:GetHealth(nil --[[missing]])
+                                    pCVar6 = resources:ScriptThing(xStack_224)
+                                    fret_07 = quest:GetHealth(pCVar6)
                                     fVar1 = 0.0
                                     if fVar1 < fret_07 then
                                         iVar5 = me:IsPerformingScriptTask()
@@ -187,8 +187,8 @@ function Main(quest, me)
                                     goto FLOW_hoist_lab_00f19379_1
                                 else
                                     if native_arg_switch_1 == 1 then
-                                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                        fret_08 = quest:GetHealth(nil --[[missing]])
+                                        pCVar6 = resources:ScriptThing(xStack_238)
+                                        fret_08 = quest:GetHealth(pCVar6)
                                         fVar1 = 0.0
                                         if fVar1 < fret_08 then
                                             iVar5 = me:IsPerformingScriptTask()
@@ -205,8 +205,8 @@ function Main(quest, me)
                                             bVar3 = not alive
                                             if bVar3 then goto LAB_00f19a2a end
                                         end
-                                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                        fret_09 = quest:GetHealth(nil --[[missing]])
+                                        pCVar6 = resources:ScriptThing(xStack_224)
+                                        fret_09 = quest:GetHealth(pCVar6)
                                         fVar1 = 0.0
                                         if fVar1 < fret_09 then
                                             iVar5 = me:IsPerformingScriptTask()
@@ -223,8 +223,8 @@ function Main(quest, me)
                                             bVar3 = not alive
                                             if bVar3 then goto LAB_00f19a2a end
                                         end
-                                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                        fret_10 = quest:GetHealth(nil --[[missing]])
+                                        pCVar6 = resources:ScriptThing(xStack_238)
+                                        fret_10 = quest:GetHealth(pCVar6)
                                         fVar1 = 0.0
                                         if fVar1 < fret_10 then
                                             bVar3 = false
@@ -248,8 +248,8 @@ function Main(quest, me)
                                         break
                                     else
                                         if native_arg_switch_1 == 2 then
-                                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                            fret_11 = quest:GetHealth(nil --[[missing]])
+                                            pCVar6 = resources:ScriptThing(xStack_238)
+                                            fret_11 = quest:GetHealth(pCVar6)
                                             fVar1 = 0.0
                                             if fVar1 < fret_11 then
                                                 iVar5 = me:IsPerformingScriptTask()
@@ -266,8 +266,8 @@ function Main(quest, me)
                                                 bVar3 = not alive
                                                 if bVar3 then goto LAB_00f19a2a end
                                             end
-                                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                            fret_12 = quest:GetHealth(nil --[[missing]])
+                                            pCVar6 = resources:ScriptThing(xStack_224)
+                                            fret_12 = quest:GetHealth(pCVar6)
                                             fVar1 = 0.0
                                             if fVar1 < fret_12 then
                                                 iVar5 = me:IsPerformingScriptTask()
@@ -285,8 +285,8 @@ function Main(quest, me)
                                             break
                                         else
                                             if native_arg_switch_1 == 3 then
-                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                fret_13 = quest:GetHealth(nil --[[missing]])
+                                                pCVar6 = resources:ScriptThing(xStack_238)
+                                                fret_13 = quest:GetHealth(pCVar6)
                                                 fVar1 = 0.0
                                                 if fVar1 < fret_13 then
                                                     iVar5 = me:IsPerformingScriptTask()
@@ -303,8 +303,8 @@ function Main(quest, me)
                                                     bVar3 = not alive
                                                     if bVar3 then goto LAB_00f19a2a end
                                                 end
-                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                fret_14 = quest:GetHealth(nil --[[missing]])
+                                                pCVar6 = resources:ScriptThing(xStack_224)
+                                                fret_14 = quest:GetHealth(pCVar6)
                                                 fVar1 = 0.0
                                                 if fVar1 < fret_14 then
                                                     iVar5 = me:IsPerformingScriptTask()
@@ -322,8 +322,8 @@ function Main(quest, me)
                                                 break
                                             else
                                                 if native_arg_switch_1 == 4 then
-                                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                    fret_15 = quest:GetHealth(nil --[[missing]])
+                                                    pCVar6 = resources:ScriptThing(xStack_238)
+                                                    fret_15 = quest:GetHealth(pCVar6)
                                                     fVar1 = 0.0
                                                     if fVar1 < fret_15 then
                                                         iVar5 = me:IsPerformingScriptTask()
@@ -340,8 +340,8 @@ function Main(quest, me)
                                                         bVar3 = not alive
                                                         if bVar3 then goto LAB_00f19a2a end
                                                     end
-                                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                    fret_16 = quest:GetHealth(nil --[[missing]])
+                                                    pCVar6 = resources:ScriptThing(xStack_224)
+                                                    fret_16 = quest:GetHealth(pCVar6)
                                                     fVar1 = 0.0
                                                     if fVar1 < fret_16 then
                                                         iVar5 = me:IsPerformingScriptTask()
@@ -359,8 +359,8 @@ function Main(quest, me)
                                                     break
                                                 else
                                                     if native_arg_switch_1 == 5 then
-                                                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                        fret_17 = quest:GetHealth(nil --[[missing]])
+                                                        pCVar6 = resources:ScriptThing(xStack_238)
+                                                        fret_17 = quest:GetHealth(pCVar6)
                                                         fVar1 = 0.0
                                                         if fVar1 < fret_17 then
                                                             iVar5 = me:IsPerformingScriptTask()
@@ -377,8 +377,8 @@ function Main(quest, me)
                                                             bVar3 = not alive
                                                             if bVar3 then goto LAB_00f19a2a end
                                                         end
-                                                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                        fret_18 = quest:GetHealth(nil --[[missing]])
+                                                        pCVar6 = resources:ScriptThing(xStack_224)
+                                                        fret_18 = quest:GetHealth(pCVar6)
                                                         fVar1 = 0.0
                                                         if fVar1 < fret_18 then
                                                             iVar5 = me:IsPerformingScriptTask()
@@ -396,8 +396,8 @@ function Main(quest, me)
                                                         break
                                                     else
                                                         if native_arg_switch_1 == 6 then
-                                                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                            fret_19 = quest:GetHealth(nil --[[missing]])
+                                                            pCVar6 = resources:ScriptThing(xStack_238)
+                                                            fret_19 = quest:GetHealth(pCVar6)
                                                             fVar1 = 0.0
                                                             if fVar1 < fret_19 then
                                                                 iVar5 = me:IsPerformingScriptTask()
@@ -414,8 +414,8 @@ function Main(quest, me)
                                                                 bVar3 = not alive
                                                                 if bVar3 then goto LAB_00f19a2a end
                                                             end
-                                                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                            fret_20 = quest:GetHealth(nil --[[missing]])
+                                                            pCVar6 = resources:ScriptThing(xStack_224)
+                                                            fret_20 = quest:GetHealth(pCVar6)
                                                             fVar1 = 0.0
                                                             if fVar1 < fret_20 then
                                                                 iVar5 = me:IsPerformingScriptTask()
@@ -433,8 +433,8 @@ function Main(quest, me)
                                                             break
                                                         else
                                                             if native_arg_switch_1 == 7 then
-                                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                                fret_21 = quest:GetHealth(nil --[[missing]])
+                                                                pCVar6 = resources:ScriptThing(xStack_238)
+                                                                fret_21 = quest:GetHealth(pCVar6)
                                                                 fVar1 = 0.0
                                                                 if fVar1 < fret_21 then
                                                                     iVar5 = me:IsPerformingScriptTask()
@@ -451,8 +451,8 @@ function Main(quest, me)
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00f19a2a end
                                                                 end
-                                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                                fret_22 = quest:GetHealth(nil --[[missing]])
+                                                                pCVar6 = resources:ScriptThing(xStack_224)
+                                                                fret_22 = quest:GetHealth(pCVar6)
                                                                 fVar1 = 0.0
                                                                 if fVar1 < fret_22 then
                                                                     iVar5 = me:IsPerformingScriptTask()
@@ -469,8 +469,8 @@ function Main(quest, me)
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00f19a2a end
                                                                 end
-                                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                                                fret_23 = quest:GetHealth(nil --[[missing]])
+                                                                pCVar6 = resources:ScriptThing(xStack_238)
+                                                                fret_23 = quest:GetHealth(pCVar6)
                                                                 fVar1 = 0.0
                                                                 if fVar1 < fret_23 then
                                                                     iVar5 = me:IsPerformingScriptTask()
@@ -487,8 +487,8 @@ function Main(quest, me)
                                                                     bVar3 = not alive
                                                                     if bVar3 then goto LAB_00f19a2a end
                                                                 end
-                                                                -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                                                fret_24 = quest:GetHealth(nil --[[missing]])
+                                                                pCVar6 = resources:ScriptThing(xStack_224)
+                                                                fret_24 = quest:GetHealth(pCVar6)
                                                                 fVar1 = 0.0
                                                                 if fVar1 < fret_24 then
                                                                     bVar3 = false
@@ -547,8 +547,8 @@ function Main(quest, me)
                         this_01 = xStack_214
                         goto LAB_00f19a72
                     end
-                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                    fret_01 = quest:GetHealth(nil --[[missing]])
+                    pCVar6 = resources:ScriptThing(xStack_238)
+                    fret_01 = quest:GetHealth(pCVar6)
                     fVar1 = 0.0
                     if fVar1 < fret_01 then
                         bVar3 = false
@@ -609,8 +609,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_1ec)
                             goto LAB_00f19a17
                             ::FLOW_past_lab_00f199b9::
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                            fret_02 = quest:GetHealth(r2)
+                            pCVar6 = resources:ScriptThing(xStack_238)
+                            fret_02 = quest:GetHealth(pCVar6)
                             fVar1 = 0.0
                             if fVar1 < fret_02 then
                                 iVar5 = me:IsPerformingScriptTask()
@@ -627,8 +627,8 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00f199b9 end
                             end
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_1ec);
-                            fret_03 = quest:GetHealth(nil --[[missing]])
+                            pCVar6 = resources:ScriptThing(xStack_1ec)
+                            fret_03 = quest:GetHealth(pCVar6)
                             fVar1 = 0.0
                             if fVar1 < fret_03 then
                                 iVar5 = me:IsPerformingScriptTask()
@@ -656,8 +656,8 @@ function Main(quest, me)
                             goto LAB_00f194b7
                         end
                         if not bVar3 then
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                            fret_04 = quest:GetHealth(nil --[[missing]])
+                            pCVar6 = resources:ScriptThing(xStack_238)
+                            fret_04 = quest:GetHealth(pCVar6)
                             fVar1 = 0.0
                             if fVar1 < fret_04 then
                                 bVar3 = false
@@ -693,8 +693,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        fret_0 = quest:GetHealth(nil --[[missing]])
+                        pCVar6 = resources:ScriptThing(xStack_238)
+                        fret_0 = quest:GetHealth(pCVar6)
                         fVar1 = 0.0
                         if fVar1 < fret_0 then
                             bVar3 = false
@@ -722,8 +722,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        fret_00 = quest:GetHealth(nil --[[missing]])
+                        pCVar6 = resources:ScriptThing(xStack_238)
+                        fret_00 = quest:GetHealth(pCVar6)
                         fVar1 = 0.0
                         if fVar1 < fret_00 then
                             bVar3 = false
@@ -809,9 +809,9 @@ function Main(quest, me)
                     if bVar3 then break end
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     xStack_184 = resources:StartMovie("")
-                    -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_1f0,*(int *)(this + 4));
-                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                    fret_26 = quest:GetHealth(nil --[[missing]])
+                    quest:PauseAllNonScriptedEntities(true)
+                    pCVar6 = resources:ScriptThing(xStack_238)
+                    fret_26 = quest:GetHealth(pCVar6)
                     fVar1 = 0.0
                     if fVar1 < fret_26 then
                         bVar3 = false
@@ -827,7 +827,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then
-                                -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
+                                quest:PauseAllNonScriptedEntities(false)
                                 goto LAB_00f19a6b
                             end
                             iVar5 = me:IsPerformingScriptTask()
@@ -836,7 +836,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then
-                            -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
+                            quest:PauseAllNonScriptedEntities(false)
                             goto LAB_00f19a6b
                         end
                         goto FLOW_past_lab_00f19a6b
@@ -851,7 +851,7 @@ function Main(quest, me)
                     pCVar7 = quest:GetHero()
                     quest:EntitySetThingAsAllyOfThing(pCVar7, me)
                     quest:SetStateBool("InHitCutsceneAlready", false)
-                    -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_184)
                 end
             else

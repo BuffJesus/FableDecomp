@@ -1174,7 +1174,7 @@ function Main(quest)
     bVar16 = not alive
     if not bVar16 then
         xStack_250 = resources:StartMovie("")
-        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_2b4,*(int *)(this + 0x40));
+        quest:PauseAllNonScriptedEntities(true)
         xStack_27c = resources:NewResource()
         xStack_28c = resources:NewResource()
         resources:PrepareResource(xStack_27c)
@@ -1241,6 +1241,7 @@ function Main(quest)
                 resources:DestroyActorMap(xStack_298)
                 resources:ReleaseResource(xStack_28c)
                 resources:ReleaseResource(xStack_27c)
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_250)
                 r16 = quest:GetThingWithScriptName("CellsToHallOfHeroesEntrance")
                 bVar16 = false
@@ -1286,6 +1287,7 @@ function Main(quest)
         ::LAB_00f13f09::
         resources:ReleaseResource(xStack_28c)
         resources:ReleaseResource(xStack_27c)
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_250)
     end
     ::FLOW_past_lab_00f11eec::
@@ -2293,7 +2295,7 @@ end
 
 function PlayWave(quest)
     local resources = quest:RetailResources()
-    local CVar14, b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_d0, i_stk_e8, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, uVar11, uVar9, xStack_104, xStack_108, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_cc
+    local CVar14, b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_d0, i_stk_e8, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, uVar11, uVar9, xStack_108, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_104, x_stk_cc
     local alive = true
     r1 = quest:GetThingWithScriptName("ARENA_SpawnPoint")
     r2 = quest:GetThingWithScriptName("BigCreatureSpawnPoint")
@@ -2397,13 +2399,13 @@ function PlayWave(quest)
     end
     iVar4 = tonumber(xStack_a0)
     i_stk_b4 = iVar4
-    -- TODO(native): xStack_104 = (int *)(iVar4 + -1);
+    x_stk_104 = (iVar4 + -1)
     c_stk_fd = 1
-    if xStack_104 == 0xffffffff then
+    if x_stk_104 == 0xffffffff then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            -- TODO(native): xStack_104 = (int *)(iVar6 + -1);
+            x_stk_104 = (iVar6 + -1)
             goto LAB_00f1f37d
         end
         goto LAB_00f2116f
@@ -2475,7 +2477,7 @@ function PlayWave(quest)
                                         iVar4 = i_stk_d0
                                         pvVar8 = xStack_130[(i_stk_d0) / 0xc + 1]:GetDataString()
                                         piVar10 = tonumber(pvVar8)
-                                        c_stk_13d = piVar10 == xStack_104
+                                        c_stk_13d = piVar10 == x_stk_104
                                         if c_stk_13d then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar3 = not alive
@@ -2557,7 +2559,7 @@ function PlayWave(quest)
                                                 ::FLOW_past_lab_00f1fe19::
                                                 goto FLOW_past_lab_00f1fe22
                                                 ::LAB_00f1fe22::
-                                                -- TODO(native): this[(int)xStack_104 + 0xe2] = (CQ_ArenaScript)0x1;
+                                                -- TODO(native): this[(int)x_stk_104 + 0xe2] = (CQ_ArenaScript)0x1;
                                                 iVar4 = i_stk_d0
                                                 goto LAB_00f1fe48
                                                 ::FLOW_past_lab_00f1fe22::
@@ -2570,14 +2572,14 @@ function PlayWave(quest)
                                         i_stk_d0 = iVar4 + 0xc
                                     until not (i_stk_e8 < iVar6)
                                 end
-                                -- TODO(native): xStack_104 = (int *)((int)xStack_104 + -1);
-                                if xStack_104 == 0xffffffff then
+                                x_stk_104 = (x_stk_104 + -1)
+                                if x_stk_104 == 0xffffffff then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
                                         goto LAB_00f20cc5
                                     end
-                                    -- TODO(native): xStack_104 = (int *)(iVar6 + -1);
+                                    x_stk_104 = (iVar6 + -1)
                                 end
                                 c_stk_fd = 1
                             else
@@ -2985,7 +2987,7 @@ function PlayWave(quest)
         bVar3 = not alive
         if bVar3 then goto LAB_00f212cc end
         xStack_9c = resources:StartMovie("")
-        -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_104,*(int *)(this + 0x40));
+        quest:PauseAllNonScriptedEntities(true)
         xStack_b0 = resources:NewResource()
         resources:PrepareResource(xStack_b0)
         iVar6 = 4
@@ -2998,7 +3000,7 @@ function PlayWave(quest)
             bVar3 = not alive
             if bVar3 then
                 resources:ReleaseResource(xStack_b0)
-                -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 goto FLOW_after_lab_00f211ba
             end
             iVar6 = 4
@@ -3010,7 +3012,7 @@ function PlayWave(quest)
         bVar3 = not alive
         if bVar3 then
             resources:ReleaseResource(xStack_b0)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
             goto FLOW_after_lab_00f211ba
         end
         if 7 < quest:GetStateInt("ArenaRound") then
@@ -3018,7 +3020,7 @@ function PlayWave(quest)
             quest:FadeScreenOut(0.5, 0.5)
             quest:Pause(0.5)
             resources:ReleaseResource(xStack_b0)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_9c)
             goto LAB_00f21166
         end
@@ -3027,7 +3029,7 @@ function PlayWave(quest)
         if bVar3 then
             -- LAB_00f211ba: (native jump target)
             resources:ReleaseResource(xStack_b0)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
         else
             bVar3 = true
             pQuestionText = GetEndRoundQuestion(quest)
@@ -3044,7 +3046,7 @@ function PlayWave(quest)
             bVar3 = not alive
             if bVar3 then
                 resources:ReleaseResource(xStack_b0)
-                -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                quest:PauseAllNonScriptedEntities(false)
                 goto FLOW_after_lab_00f211ba
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -3056,14 +3058,14 @@ function PlayWave(quest)
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(0.5)
                     resources:ReleaseResource(xStack_b0)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_9c)
                     goto LAB_00f21166
                 end
             else
                 if bVar3 then
                     resources:ReleaseResource(xStack_b0)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     goto FLOW_after_lab_00f211ba
                 end
                 quest:SetStateBool("PlayerLeaving", true)
@@ -3084,7 +3086,7 @@ function PlayWave(quest)
                         bVar3 = not alive
                         if bVar3 then
                             resources:ReleaseResource(xStack_b0)
-                            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                            quest:PauseAllNonScriptedEntities(false)
                             goto FLOW_after_lab_00f211ba
                         end
                         bVar3 = quest:IsConversationActive(iVar6)
@@ -3096,14 +3098,14 @@ function PlayWave(quest)
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(0.5)
                     resources:ReleaseResource(xStack_b0)
-                    -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_9c)
                     goto LAB_00f21166
                 end
             end
             ::LAB_00f212a6::
             resources:ReleaseResource(xStack_b0)
-            -- TODO(native): (**(code **)(*xStack_104 + 0x5ec))(0);
+            quest:PauseAllNonScriptedEntities(false)
         end
         ::FLOW_after_lab_00f211ba::
         resources:DestroyMovie(xStack_9c)

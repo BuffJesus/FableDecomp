@@ -13,8 +13,9 @@ function Main(quest, me)
     local cellsVillage = quest:GetStateThing("CellsVillage")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult11, predicateResult14, scratchValue, scratchValue32, thing, this_01
-    local scratchValue34, scratchValue35, scratchValue36, resource, movie2, resource3, meControl
+    local predicateResult11, predicateResult14, scratchValue, scratchValue32, scratchValue33
+    local this_01, scratchValue34, scratchValue35, scratchValue36, resource, movie2, resource3
+    local meControl
     scratchValue36 = 0
     resources:NewResource()
     quest:EntitySetOpinionReactionsEnabled(me, false)
@@ -38,10 +39,9 @@ function Main(quest, me)
                 if scratchValue32 ~= 3 then
                     if scratchValue32 ~= 5 or chamTalk then
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        local fret_05 = quest:GetHealth(nil --[[missing]])
-                        if 0.0 < fret_05 then
-                            thing = hero
+                        scratchValue33 = resources:ScriptThing(meControl)
+                        if 0.0 < quest:GetHealth(scratchValue33) then
+                            scratchValue33 = hero
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                             end
@@ -59,10 +59,9 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
                         if scratchValue32 ~= 1 then
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                            local fret_25 = quest:GetHealth(nil --[[missing]])
-                            if 0.0 < fret_25 then
-                                thing = hero
+                            scratchValue33 = resources:ScriptThing(meControl)
+                            if 0.0 < quest:GetHealth(scratchValue33) then
+                                scratchValue33 = hero
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f19a3c end
                                 end
@@ -82,16 +81,14 @@ function Main(quest, me)
                             local switch1 = quest:GetStateInt("ArenaRound")
                             repeat
                                 if switch1 == 0 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    if 0.0 < quest:GetHealth(arenaCellDoorGuard) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_07 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_07 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -99,26 +96,21 @@ function Main(quest, me)
                                     end
                                     goto FLOW_hoist_lab_00f19379_1
                                 elseif switch1 == 1 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_08 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_08 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_09 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_09 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_10 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_10 then
-                                        thing = hero
+                                    scratchValue33 = resources:ScriptThing(meControl)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                        scratchValue33 = hero
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -126,17 +118,14 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 2 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_11 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_11 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_12 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_12 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -144,17 +133,14 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 3 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_13 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_13 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_14 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_14 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -162,17 +148,14 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 4 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_15 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_15 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_16 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_16 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -180,17 +163,14 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 5 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_17 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_17 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_18 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_18 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -198,17 +178,14 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 6 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_19 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_19 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_20 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_20 then
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -216,34 +193,27 @@ function Main(quest, me)
                                     end
                                     break
                                 elseif switch1 == 7 then
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_21 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_21 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_22 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_22 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                                    local fret_23 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_23 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_224);
-                                    local fret_24 = quest:GetHealth(nil --[[missing]])
-                                    if 0.0 < fret_24 then
-                                        thing = hero
+                                    scratchValue33 = resources:ScriptThing(resource3)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                        scratchValue33 = hero
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -275,10 +245,7 @@ function Main(quest, me)
                         this_01 = movie2
                         goto LAB_00f19a72
                     end
-                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                    local fret_01 = quest:GetHealth(nil --[[missing]])
-                    if 0.0 < fret_01 then
-                        thing = hero
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                         end
@@ -307,16 +274,14 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             goto LAB_00f19a17
                             ::FLOW_past_lab_00f199b9::
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                            if 0.0 < quest:GetHealth(arenaCellDoorGuard22) then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f199ae end
                                 end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f199b9 end
                             end
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)xStack_1ec);
-                            local fret_03 = quest:GetHealth(nil --[[missing]])
-                            if 0.0 < fret_03 then
+                            scratchValue33 = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scratchValue33) then
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f199ae end
                                 end
@@ -333,10 +298,9 @@ function Main(quest, me)
                             goto LAB_00f194b7
                         end
                         if not predicateResult8 then
-                            -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                            local fret_04 = quest:GetHealth(nil --[[missing]])
-                            if 0.0 < fret_04 then
-                                thing = hero
+                            scratchValue33 = resources:ScriptThing(meControl)
+                            if 0.0 < quest:GetHealth(scratchValue33) then
+                                scratchValue33 = hero
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                                 end
@@ -351,10 +315,9 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     if not earlyTalk then
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        local fret_0 = quest:GetHealth(nil --[[missing]])
-                        if 0.0 < fret_0 then
-                            thing = hero
+                        scratchValue33 = resources:ScriptThing(meControl)
+                        if 0.0 < quest:GetHealth(scratchValue33) then
+                            scratchValue33 = hero
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                             end
@@ -363,10 +326,9 @@ function Main(quest, me)
                         earlyTalk = true
                     else
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                        local fret_00 = quest:GetHealth(nil --[[missing]])
-                        if 0.0 < fret_00 then
-                            thing = hero
+                        scratchValue33 = resources:ScriptThing(meControl)
+                        if 0.0 < quest:GetHealth(scratchValue33) then
+                            scratchValue33 = hero
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a3c end
                             end
@@ -391,13 +353,13 @@ function Main(quest, me)
             end
             scratchValue34 = scratchValue36
             scratchValue36 = scratchValue36 | 1
-            if thing:MsgIsHitByHero() then
+            if scratchValue33:MsgIsHitByHero() then
                 goto LAB_00f19571
             else
                 scratchValue35 = scratchValue34 | 3
-                if thing:MsgIsHitByAnySpecialAbilityFromHero() then
+                if scratchValue33:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue35 = scratchValue34 | 7
-                    if not thing:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f19571 end
+                    if not scratchValue33:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f19571 end
                 end
                 predicateResult11 = false
             end
@@ -418,22 +380,14 @@ function Main(quest, me)
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     local movie = resources:StartMovie("")
-                    -- TODO(native): CWideScreenMagicPauseEntities::CWideScreenMagicPauseEntities((CWideScreenMagicPauseEntities *)&xStack_1f0,*(int *)(this + 4));
-                    -- TODO(native): pCVar6 = (CScriptThing *) CScriptGameResourceObjectScriptedThingBase::_GetScriptThing_CScriptGameResourceObjectScriptedThingBase__UBE_AVCScriptThing__XZ((CScriptGameResourceObjectScriptedThingBase *)&xStack_238);
-                    local fret_26 = quest:GetHealth(nil --[[missing]])
-                    if 0.0 < fret_26 then
-                        thing = hero
+                    quest:PauseAllNonScriptedEntities(true)
+                    scratchValue33 = resources:ScriptThing(meControl)
+                    if 0.0 < quest:GetHealth(scratchValue33) then
+                        scratchValue33 = hero
                         while me:IsPerformingScriptTask() do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
-                                goto LAB_00f19a6b
-                            end
+                            if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00f19a6b end
                         end
-                        if quest:IsActiveThreadTerminating() then
-                            -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
-                            goto LAB_00f19a6b
-                        end
+                        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f19a6b end
                         goto FLOW_past_lab_00f19a6b
                         ::LAB_00f19a6b::
                         this_01 = movie
@@ -444,7 +398,7 @@ function Main(quest, me)
                     quest:EntitySetThingAsAllyOfThing(me, hero)
                     quest:EntitySetThingAsAllyOfThing(hero, me)
                     quest:SetStateBool("InHitCutsceneAlready", false)
-                    -- TODO(native): (**(code **)(*(int *)xStack_1f0 + 0x5ec))(0);
+                    quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                 end
             else
@@ -463,8 +417,8 @@ function Main(quest, me)
                     scratchValue36 = scratchValue35 & 0xfffffff7
                 end
                 if predicateResult14 then
-                    thing = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
-                    me:MoveToPosition(thing:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+                    scratchValue33 = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
+                    me:MoveToPosition(scratchValue33:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
                     scratchValue = 0
                 elseif scratchValue == 0 then
                     if not me:IsPerformingScriptTask() then
