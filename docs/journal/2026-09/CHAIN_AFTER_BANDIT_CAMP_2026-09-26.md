@@ -76,18 +76,27 @@ leaves out the port's `SetTeleportingAsActive` (retail calls only SetTeleporterA
 
 ## Resume here
 
-1. Next: Gameflow stage 875 waits for Q_Arena to be taken ("The Arena"), from
-   `adult_white_balverine_completed_2026-09-26`. Unit `arena` is registered and converted as a BASELINE, not
-   playable yet: the quest's lifecycle block 0x00CFA660..0x00CFAD30 is small (Init, OnPersist, allocator
-   0x00CFABF0) and its code (Main, workers WatchForTermination / CrowdChecker, the entities Cham, Flick, Shadow,
-   Needle, Roth, CellWhisper, the cell guards, CagedBalverine, ArenaEnemy / ArenaSpawn / SUMMONED_CREATURE,
-   WhisperAlly) is the block 0x00F0F910..0x00F28000, so the unit range is that block and the lifecycle block,
-   Q_ArenaHoldingScript (allocator 0x00CF8860, found by the inventory) and the shared entity stubs 0x00CDEBC0 /
-   0x00CDEBD0 are anchors. Draft: 22 files, 90 functions, 0 missing, 7 file syntax failures, 682 TODOs (81 are
-   `pCVarN = (CScriptThing *)...` thing reads, 32 raw vcalls), readable smoke 10 problems. Arena.lua alone
-   has 202 TODOs.
-2. White Balverine: review the 22 TODOs (two unresolved PlayAnimation /
-   IsPerformingScriptTask receivers in WW SpawnBalverines: the quest-context resource receiver is refused by
-   design until its resource is proven; the actor-map build is fixed). The quest plays through regardless.
-3. Singing Stones by hand-free strikes (optional): fix the `hit` stand-off.
-4. Sidecar for v25-v28 = sidecar-abi-v13 + things-killed + cancel-using-ability + master-state-setters patches.
+1. Main chain: Gameflow stage 875 waits for Q_Arena ("The Arena"), checkpoint
+   `adult_white_balverine_completed_2026-09-26`. Unit `arena` is a baseline, not playable yet: range = the code
+   block 0x00F0F910..0x00F28000; the lifecycle block 0x00CFA660..0x00CFAD30, Q_ArenaHoldingScript (allocator
+   0x00CF8860) and the shared entity stubs 0x00CDEBC0 / 0x00CDEBD0 are anchors. 22 files, 90 functions, 0 missing,
+   7 file syntax failures, 451 TODOs (682 before the GetScriptThing / cached-interface / pause-scope fixes,
+   0c63c85), readable smoke 10. Work the TODO classes down, then a runner config.
+2. Side quests (the user asked, 2026-09-26): converted units that were never played -- Trader Conflict (Good
+   "Trader Rescue" / Evil "Trader Massacre", cards from Gameflow stage 700), Beggar and Child, Book Collecting,
+   Bordello, Chicken Kicking, Sick Child, Tour Guide, Picnic After Wasp, Guildmaster Village. Trader Conflict was
+   re-exported with the current exporter (ad87f54: TraderToRescue's EntityFollowThing(me, hero, 3.0, true) had
+   lost its operands) and staged as v29 (`stage_bundle_with_units.py --refresh` replaces a unit already in the
+   base). Its runner config is not written yet: arrive at BanditCampEntrance (slot 14), intro cutscene + start
+   screen + a time limit, bandits turn hostile, the cage opens on TAB (CampHostageDoor), freed traders follow the
+   hero, three must reach the teleporter (TradersReachedTeleporter) -> OutroDone. Followers do not survive
+   map-slot teleports: the escort has to walk. Check Aeon's port list before converting new side quests.
+3. Exporter gap: an immediate pushed before a by-value CScriptThing copy (`push 0x41200000; sub esp,0xc; <inline
+   copy>; call [gsi+0xcc4]`) is recorded in pushedStack as null and Ghidra drops the constant, so
+   SetCombatNearbyBreakOffRange(creature, nil) in Trader Conflict (the sidecar's float receives nil, likely 0).
+   Record `push imm` values per site in ExportTypedTranslationUnit.java and let the lowering fill
+   ENGINE_LostOperand from them.
+4. White Balverine: 22 TODOs left (two unresolved PlayAnimation / IsPerformingScriptTask receivers in WW
+   SpawnBalverines). The quest plays through regardless.
+5. Singing Stones by hand-free strikes (optional): fix the `hit` stand-off.
+6. Sidecar for v25-v29 = sidecar-abi-v13 + things-killed + cancel-using-ability + master-state-setters patches.

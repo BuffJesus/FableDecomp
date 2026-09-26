@@ -42,6 +42,9 @@ def main():
     a.add_argument('--out', required=True)
     a.add_argument('--dll', type=Path, help='replacement NoviCompatibility.dll')
     a.add_argument('--unit', nargs='*', default=[])
+    a.add_argument('--refresh', nargs='*', default=[],
+                   help='units already in the base: replace their package folders with the regenerated readable ones '
+                        '(their retail_override entries stay, the script names are the same)')
     a.add_argument('--note', default='')
     args = a.parse_args()
     base, out = bundle_path(args.base), bundle_path(args.out)
@@ -68,6 +71,14 @@ def main():
         if close < 0:
             raise SystemExit('retail_override.lua: unexpected tail')
         text = text[:close + 1] + entries + text[close + 1:]
+    for unit_name in args.refresh:
+        package = script_unit(unit_name)['package']
+        for child in readable_dir(package).iterdir():
+            if child.is_dir():
+                if not (novi / child.name).exists():
+                    raise SystemExit(f'{unit_name}: {child.name} is not in the base bundle (use --unit)')
+                shutil.rmtree(novi / child.name)
+                shutil.copytree(child, novi / child.name)
     override.write_bytes((text.replace('\n', '\r\n') if crlf else text).encode('utf-8'))
     names = check_override(override)
     manifest = json.loads((base / 'manifest.json').read_text(encoding='utf-8'))
