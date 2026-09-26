@@ -89,6 +89,19 @@ UNITS = {
         'schema': 'trophy-dealer-native-inventory/0.1',
         'package': 'TrophyDealer',
     },
+    'white_balverine': {
+        # Gameflow stage 856 waits for Q_WhiteBalverineKnotholeGlade to be taken, 870 for it to complete. Strings in
+        # the wasp translation unit: its Init 0x00E13C60 / Main 0x00E13F10 sit right after the wasp destructor
+        # 0x00E13BF0 (the wasp_boss unit's range over-covers them); its allocator 0x00E183B0 opens the
+        # Q_WhiteBalverineWW block (strings WBWW_WhiteBalverine, CS_WBW_DRINK), which ends at the next allocator 0x00E1A770.
+        'evidence': ROOT / 'refs/script_recovery/white_balverine',
+        'lo': 0xE13C20, 'hi': 0xE1A770,
+        'ir_glob': 'Q_WhiteBalverine*.json',
+        'scripts': ['Q_WhiteBalverineKnotholeGlade', 'Q_WhiteBalverineWW'],
+        'pdb_pattern': '*CQ_WhiteBalverine*',
+        'schema': 'white-balverine-native-inventory/0.1',
+        'package': 'WhiteBalverine',
+    },
     'tour_guide': {
         # Gameflow stage 200 activates V_TourGuide beside the QS_GuardianSisterInfo card.
         # Cluster vtable lifecycle (own block only): 0x00EE42A0 .. allocator 0x00EE6C00; the next family's

@@ -56,9 +56,8 @@ function Main(quest, me)
         quest:SetIsPushableByHero(me, false)
         quest:EntitySetAsKillable(me, false, true)
         pCVar9 = me:GetPos()
-        -- TODO(native): xStack_188 = *(undefined4 *)pCVar9;
-        -- TODO(native): x_stk_17c = *(pCVar9 + 0x8)
-        x_stk_17c = nil --[[unresolved native value]]
+        -- TODO(native): xStack_188 = pCVar9.x;
+        x_stk_17c = pCVar9.z
         iVar10 = quest:RegisterTimer()
         i_stk_3a4 = iVar10
         quest:SetTimer(i_stk_3a4, 0)

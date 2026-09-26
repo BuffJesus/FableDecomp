@@ -1,0 +1,288 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::OnPersist	10874208	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::SpawnBalverines	10884832	2532
+0	7	this		0	4	4	5	18	0	0
+0	7	UsedBackupSpawnPoint		10	1	1	3	30006	-245	0
+0	7	HealthLossToTriggerSummon		13	4	1	3	30006	-220	0
+0	7	NextHealthBarrier		13	4	1	3	30006	-228	0
+0	7	SummonCutsceneShown		10	1	1	3	30006	-246	0
+0	7	RoundNumber		13	4	1	3	30006	-232	0
+0	7	Marker	CScriptThing	0	12	1	3	30006	-244	0
+0	7	NewBalv	CScriptThing	0	12	1	3	30006	-68	0
+0	7	seh_WhiteBalverine	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-164	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-212	0
+0	7	CutsceneBalverine	CScriptThing	0	12	1	3	30006	-112	0
+0	7	seh_balv	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-144	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-56	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-212	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-100	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-212	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-84	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::Alloc	10893168	150
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::`scalar deleting destructor'	10592768	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>::CreateActiveEntityScript	10884336	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_WhiteBalverineWWScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::Init	10858656	572
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::Main	10866256	390
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::Alloc	10865904	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::~CQ_WhiteBalverineWWScript	10592464	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Main	10870064	2992
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-172	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-148	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::Alloc	10881936	150
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::`scalar deleting destructor'	10882096	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::MonitorBalverine	10882480	637
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::Init	10710528	5
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::RegisterMain	10873408	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::Main	10874256	7527
+0	7	this		0	4	4	5	18	0	0
+0	7	KG_Chief	CScriptThing	0	12	1	3	30006	-100	0
+0	7	KnotholeGladeVillage	CScriptThing	0	12	1	3	30006	-88	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	7	seh_chief	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	7	seh_chief	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-104	0
+0	7	seh_chief	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>::CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>	10883840	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::Alloc	10883120	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::RegisterMain	10884032	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::Main	10866256	390
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::Alloc	10883296	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>	10873056	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::Init	10882128	347
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::Alloc	10866080	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::~CQ_WhiteBalverineKnotholeGladeScript	10881792	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::Alloc	10869888	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_WhiteBalverineKnotholeGladeScript>::CreateActiveEntityScript	10873712	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::Init	10883472	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::Main	10296336	26
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Init	10860176	270
+0	7	this		0	4	4	5	18	0	0
+0	7	HornSoundLoc	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::Main	10296336	26
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>	10883680	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Alloc	10860000	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::Main	10868448	1431
+0	7	this		0	4	4	5	18	0	0
+0	7	G2	CScriptThing	0	12	1	3	30006	-92	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	Balv	CScriptThing	0	12	1	3	30006	-80	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-56	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::Main	10866832	1431
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	G1	CScriptThing	0	12	1	3	30006	-92	0
+0	7	Balv	CScriptThing	0	12	1	3	30006	-80	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-56	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::Alloc	10883504	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::Main	10890320	2837
+0	7	this		0	4	4	5	18	0	0
+0	7	Marker	CScriptThing	0	12	1	3	30006	-100	0
+0	7	seh_WhiteBalverine	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-76	0
+0	7	seh_WhiteBalverine	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-44	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-116	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-60	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>::CActiveEntityScript<NScript::CQ_WhiteBalverineKnotholeGladeScript>	10873216	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_WhiteBalverineWWScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::WatchForTermination	10859232	754
+0	7	this		0	4	4	5	18	0	0
+0	7	KnotholeGladeVillage	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CKG_Chief::Main	10887376	2943
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-212	0
+0	7	seh_hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-84	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-68	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-172	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-116	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-156	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-172	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-100	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-172	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::Alloc	10868272	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::Alloc	10866656	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::Main	10860448	5452
+0	7	this		0	4	4	5	18	0	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-272	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-96	0
+0	7	local_position	C3DVector	0	12	1	3	30006	-84	0
+0	7	RunOffTimer	CTimer	0	4	1	3	30006	-252	0
+0	7	WBFinalDestination	CScriptThing	0	12	1	3	30006	-108	0
+0	7	Guard1	CScriptThing	0	12	1	3	30006	-248	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::Init	10463920	104
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+MATCHES	84

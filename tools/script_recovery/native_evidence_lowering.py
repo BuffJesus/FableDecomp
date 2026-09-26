@@ -965,8 +965,11 @@ def normalise_typed_decompile(text: str) -> str:
     # the GSI pointer cached in a register the export mistyped as a by-value string (`CVar10 = *(CCharString_bv *)(this + 4);`
     # then `(**(code **)(*(int *)CVar10 + 0x120))((void *)CVar10, ..)`, the Skill Guildmaster's out-of-ring check
     # 0x00D5AE70): the plain interface-alias spelling, so the vcalls read `GSI->` and the alias is stripped
-    for reg in set(re.findall(r'^[ \t]*(\w+) = \*\(CCharString_bv \*\)\(this \+ (?:4|0x4)\);', text, re.M)):
-        text = re.sub(r'^([ \t]*)' + re.escape(reg) + r' = \*\(CCharString_bv \*\)\(this \+ (?:4|0x4)\);', r'\1' + reg + ' = *(int **)(this + 4);', text, flags=re.M)
+    # (a quest script's interface lives at this + 0x40: Q_WhiteBalverineKnotholeGlade Main 0x00E13F10 caches it in
+    # `this_00` for its GetHero / GetThingWithScriptName ambush-marker poll)
+    for reg, off in set(re.findall(r'^[ \t]*(\w+) = \*\(CCharString_bv \*\)\(this \+ (4|0x4|0x40)\);', text, re.M)):
+        off = '4' if off in ('4', '0x4') else off
+        text = re.sub(r'^([ \t]*)' + re.escape(reg) + r' = \*\(CCharString_bv \*\)\(this \+ (?:4|0x4|0x40)\);', r'\1' + reg + f' = *(int **)(this + {off});', text, flags=re.M)
         text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + re.escape(reg) + r' \+ (0x[0-9a-f]+)\)\)\(\(void \*\)' + re.escape(reg) + r'\b', r'(**(code **)(*' + reg + r' + \1))(' + reg, text)
     text = re.sub(r'\b(CScriptThing|CCharString|C3DVector|CRGBColour|CWideString|CRGBFloatColour)_bv\b', r'\1', text)
     text = fold_outgoing_stack_slots(text)
@@ -2107,9 +2110,10 @@ def fold_position_reads(text):
     for v in vecs:
         text = re.sub(r'^([ \t]*)' + re.escape(v) + r' = \((?:float|undefined4|int|C3DVector) \*\)(?=CScriptThing::GetPos\()', r'\1' + v + ' = ', text, flags=re.M)
         text = re.sub(r'^[ \t]*[\w:]+ \*' + re.escape(v) + r';[ \t]*\r?\n', '', text, flags=re.M)
-        text = re.sub(r'\*\(float \*\)\(' + re.escape(v) + r' \+ (?:4|0x4)\)', v + '.y', text)
-        text = re.sub(r'\*\(float \*\)\(' + re.escape(v) + r' \+ (?:8|0x8)\)', v + '.z', text)
-        text = re.sub(r'\*\(float \*\)' + re.escape(v) + r'\b', v + '.x', text)
+        # (`undefined4` / `int`: the same 4-byte member read of a member-wise copy, WB_WhiteBalverine 0x00E16290)
+        text = re.sub(r'\*\((?:float|undefined4|int) \*\)\(' + re.escape(v) + r' \+ (?:4|0x4)\)', v + '.y', text)
+        text = re.sub(r'\*\((?:float|undefined4|int) \*\)\(' + re.escape(v) + r' \+ (?:8|0x8)\)', v + '.z', text)
+        text = re.sub(r'\*\((?:float|undefined4|int) \*\)' + re.escape(v) + r'\b', v + '.x', text)
         # (not a vtable-call head: the register is reused, and `(**(code **)(*piVar5 + 0x5ec))(piVar5,..)` is the
         # interface's PauseAllNonScriptedEntities while piVar5 = *(int **)(this + 4) -- EndTrader Main had twelve
         # such calls turned into `piVar5.x + 0x5ec` TODOs, so its movies never paused the world, 2026-09-24)
@@ -2143,6 +2147,23 @@ def fold_position_reads(text):
     text = re.sub(r'^(?P<ind>[ \t]*)(?P<obj>\w*Stack_(?P<slot>[0-9a-f]+))(?:\._0_4_|\[0\]) = (?P<v>\w+)\.x;[ \t]*\r?\n'
                   r'(?P<a>' + other + r')[ \t]*(?P=obj)(?:\._4_4_|\[1\]) = (?P=v)\.y;[ \t]*\r?\n'
                   r'(?P<b>' + other + r')[ \t]*(?P=obj)(?:\._8_4_|\[2\]) = (?P=v)\.z;[ \t]*\r?\n', vector_copy_interleaved, text, flags=re.M)
+    # the three member stores in any order with computed values (Q_WhiteBalverineKnotholeGlade Main 0x00E13F10: the
+    # ambush marker's position raised 9 units, stored z, y, x: `._8_4_ = V.z + 9.0; ._4_4_ = V.y; ._0_4_ = V.x;`)
+    member = {'_0_4_': 0, '_4_4_': 1, '_8_4_': 2}
+    def vector_build(m):
+        rows = [(m.group(f'k{i}'), m.group(f'e{i}')) for i in range(3)]
+        obj = m.group('obj')
+        if sorted(member[k] for k, _ in rows) != [0, 1, 2] or any(re.search(r'\b' + re.escape(obj) + r'\b', e) for _, e in rows):
+            return m.group(0)
+        # a position computed from values: an all-constant fill (the zero member-init, a float's bit pattern as an int,
+        # KickedChicken's `._8_4_ = 0x3f800000`) is left to the passes that know those shapes
+        if not any(re.search(r'\b[A-Za-z_]\w*\b', re.sub(r'\b0x[0-9a-fA-F]+\b', '', e)) for _, e in rows):
+            return m.group(0)
+        comp = dict((member[k], e) for k, e in rows)
+        return f"{m.group('ind')}{obj} = ENGINE_Vector3({comp[0]}, {comp[1]}, {comp[2]});\n"
+    store = r'[ \t]*(?P=obj)\.(?P<k{n}>_[048]_4_) = (?P<e{n}>[^;\n]+);[ \t]*\r?\n'
+    text = re.sub(r'^(?P<ind>[ \t]*)(?P<obj>\w*Stack_[0-9a-f]+)\.(?P<k0>_[048]_4_) = (?P<e0>[^;\n]+);[ \t]*\r?\n'
+                  + store.format(n=1) + store.format(n=2), vector_build, text, flags=re.M)
     return text
 
 

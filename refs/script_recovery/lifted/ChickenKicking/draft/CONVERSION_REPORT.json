@@ -262,7 +262,7 @@
             "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 0x88) = uVar3;",
             "unlifted: *(int **)(*(int *)(this + 0x14) + 0x8c) = piVar5;",
             "unlifted: *piVar5 = *piVar5 + 1;",
-            "unlifted: xStack_188 = *(undefined4 *)pCVar9;",
+            "unlifted: xStack_188 = pCVar9.x;",
             "unlifted: ctr_CVar19 = xStack_374;",
             "unlifted: xStack_374 = xStack_374 | 1;",
             "label LAB_00e660d3",
@@ -363,7 +363,6 @@
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
             "unlifted: piVar2 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x8c)",
-            "unlifted: x_stk_17c = *(pCVar9 + 0x8)",
             "unlifted: iVar10 = IsDistanceFromThingToPositionUnder((me),&xStack_188,0x40c00000)",
             "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
           ],
@@ -811,7 +810,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1517,
+          "lines": 1516,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1765,7 +1764,7 @@
         "functionSyntaxPassed": 20,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 5,
-        "todo": 185
+        "todo": 184
       }
     }
   ],
@@ -1776,6 +1775,6 @@
     "functionSyntaxPassed": 20,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 5,
-    "todo": 185
+    "todo": 184
   }
 }

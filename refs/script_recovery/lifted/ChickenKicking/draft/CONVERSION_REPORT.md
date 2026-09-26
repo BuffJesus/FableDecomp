@@ -9,7 +9,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_ChickenKicking | V_ChickenKicking | OnPersist | 0x00e629a0 | True | 0 |
 | V_ChickenKicking | V_ChickenKicking | CreateSpectators | 0x00e62d60 | True | 0 |
 | V_ChickenKicking | V_ChickenKicking | LookAfterOrganiser | 0x00e631f0 | True | 0 |
-| V_ChickenKicking | ChickenMaster | Main | 0x00e64fb0 | False | 111 |
+| V_ChickenKicking | ChickenMaster | Main | 0x00e64fb0 | False | 110 |
 | V_ChickenKicking | ChickenMaster | Init | 0x00e63560 | True | 0 |
 | V_ChickenKicking | ChickenMaster | OnPersist | 0x00e641b0 | True | 3 |
 | V_ChickenKicking | ChickenMaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -27,4 +27,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_ChickenKicking | Spectator | OnPersist | 0x00cdebc0 | True | 0 |
 | V_ChickenKicking | Spectator | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 5, "functions": 22, "missing": 0, "functionSyntaxPassed": 20, "fileSyntaxPassed": 4, "fileSyntaxChecked": 5, "todo": 185}`
+Summary: `{"owners": 5, "functions": 22, "missing": 0, "functionSyntaxPassed": 20, "fileSyntaxPassed": 4, "fileSyntaxChecked": 5, "todo": 184}`
