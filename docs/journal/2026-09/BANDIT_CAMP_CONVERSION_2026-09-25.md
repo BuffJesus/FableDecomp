@@ -396,3 +396,56 @@ are not collected between frames. This is a slow sidecar leak.
 
 Next leg: the residential camp and Q_BanditCampBossBattle (the hostages,
 the Twinblade fight and its spare/kill choice), then MissionSucceeded.
+
+## Boss leg attempt (bc8, v19)
+
+- Two conversion bugs found before the run, both fixed in 136abc2:
+  - BanditKingMissionProcess lost Twinblade: CreateCreature's result
+    reaches the stack thing through 0x00704580, a counted-pair assignment
+    left as a TODO.
+  - The quarter-health threshold became "" in its float copy-back.
+- Steps 1-4 replay hands-free as in bc7:
+  - gate 1: 119 s
+  - guard 2: 10 s
+  - Forger: 89 s
+  - gate 2: 25 s
+- kill_hostage_guard, first try: `fightStep` found no CampHostageGuard,
+  because the residential level is not streamed in while the hero stands at
+  gate 2. A manual GoToMapSlotRetailTransition(15, ...) fixed it, and the
+  step now travels there itself.
+- kill_hostage_guard, second try: the guard exists as a script thing at
+  his spawn point (1713.6, 2075.6), alive at 1 health, 1.6 to 6 m from the
+  hero. But he never appears in any captured frame, and 36 fight iterations
+  of real sword input never hit him. His Init ran (the key went into his
+  inventory) and his Main is acquiring its resources. Open question:
+  hidden, not drawn, or not physically placed? A TC_BanditHostageKeeper is
+  placed at nearly the same spot (1715.2, 2076.7).
+- Retail oracle bcr2 (v16, same route, conditions checked from LUAGameflow)
+  is running to see whether the retail guard is visible and killable.
+- Retail also lets the hero pickpocket the key: the guard's loop polls
+  MsgOnHeroPickedPocket.
+- **Retail oracle bcr3** (v16, native Bandit Camp scripts, the same route with
+  conditions checked from LUAGameflow): gate 1 took 124 s, guard 2 10 s,
+  the Forger 95 s and gate 2 22 s (ours: 119/10/89/25). The retail
+  CampHostageGuard is equally out of reach: a script thing 1.5 m away,
+  never in frame, and the sword hits nothing. So this is not a conversion
+  defect; the fight route is wrong for this guard at this hour. The config
+  now gives the key as logged assistance (`do` step action), and the cage
+  door frees the hostages because the guard is more than 5 m away.
+- **bc10 (v19, key assist):**
+  - Steps 1-4 replay (117/10/92/27 s), and the key arrives in the
+    residential camp.
+  - The cage door never registers the hero's use. The TAB prompt shows and
+    TAB was pressed several times (focused), but `HostagesRescued` and
+    `PlayGuardTooCloseCutscene` both stay false. The door's entity Main is
+    running (entered, never exited), and MsgIsUsedByHero matches retail
+    (CScriptThing slot 0x50 forwards to the implementation's +0x50).
+  - 0 Lua errors.
+- **Retail oracle bcr4** (v16, the same key assist and door TAB): the door
+  reacts at once and plays "Twinblade's hostages have escaped! Grab them
+  before they get away!". This is likely the guard-too-close branch, since
+  the unseen guard stands about 3 m from the door.
+- **Next:** a diagnostic run that polls the door thing's MsgIsUsedByHero from
+  a runner VM every frame around the TAB, to see whether the engine reports
+  the use at all under our bundle, and whether our door script's loop is
+  actually ticking.

@@ -24,8 +24,9 @@ Quest file (JSON):
   clear      false: no reflex clearing of hostiles near the hero (a disguise quest: Bandit Camp's gate guard is a
              hostile until the disguise is worn, and clearing him ended his entity script)
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
-  steps      optional [{name, travel, fight, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...]
-             after the start: cross to `travel` ([slot, x, y, z, region] like start.travel), fight the `fight`
+  steps      optional [{name, travel, do, fight, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...]
+             after the start: cross to `travel` ([slot, x, y, z, region] like start.travel), run the `do` Lua
+             statements in `host` (assistance, logged), fight the `fight`
              script names for the step's duration, talk to the script-named NPC, then wait until the Lua expression
              is true (a step's pauseSteps answers its own yes/no questions); still false after `tries` fails the run
   pauseSteps optional input ladder for paused frames instead of [answer, clear, answer, ENTER] (e.g. ["clear"] where
@@ -471,6 +472,10 @@ def play(a, q) -> str:
                 log('step_start', step=stp.get('name', step_i), attempt=step_tries)
                 if stp.get('travel') and not travel(stp['travel']):
                     log('step_travel_failed', step=stp.get('name', step_i))
+                for line in stp.get('do', []):             # assistance statements, logged like start.setup
+                    reply = send(f'{host}: {line}', 20)
+                    game_input('clear')
+                    log('step_do', line=line, reply=[r for r in reply if 'error' in r.lower() or ' ok ' in r][:1])
                 if stp.get('fight'):
                     names = ', '.join(repr(n) for n in stp['fight'])
                     send(f'{host}: Runner.fightNames = {{{names}}}', 10)

@@ -86,13 +86,22 @@
       "timeout": 180
     },
     {
-      "name": "kill_hostage_guard",
-      "fight": [
-        "CampHostageGuard"
-      ],
+      "name": "hostage_key",
       "until": "quest:IsObjectInThingsPossession('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', quest:GetHero()) or quest:GetStateBool('HostagesRescued')",
       "stateHost": "BanditCampBossBattle",
-      "timeout": 240
+      "timeout": 60,
+      "travel": [
+        [
+          15,
+          1774.7,
+          2113.7,
+          37.6,
+          "BanditCampCentre"
+        ]
+      ],
+      "do": [
+        "quest:GiveHeroObject('OBJECT_BANDIT_CAMP_HOSTAGE_KEY', 1)"
+      ]
     },
     {
       "name": "free_hostages",
