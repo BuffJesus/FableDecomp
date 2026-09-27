@@ -11,8 +11,12 @@ validated). **Afternoon: syntax failures 10 → 0** (369 files; 24 superseded fi
 listed in `SUPERSEDED.json`). OakValeRevisited and BookCollecting recovered (flag maps, member thing lists,
 `quest:GlobalConversations`); the six old clusters are registered units (`register_unit.py`). 23-unit A/B: only
 the five intended units change. Two more sidecar patches (state-list resize, global conversations), candidate
-builds, nothing installed or run in-game. Next: build a playtest bundle for the promoted ambient/old-cluster units
-and check them in-game; open items (BeardyBaldy `extraout_EAX`, SummoningTheShip Init, BookCollecting
+builds, nothing installed or run in-game. **Playtest bundle v30** (`local-candidate-v30` = v29 + the round-12 sidecar
+candidate + the 11 recovered/registered units as retail overrides; offline checks: 210 Lua files parse, manifest
+hashes match) is staged but NOT run -- the user deferred in-game testing (machine busy). Its sidecar also carries
+the three round-10 patches never run in-game (resource-vtable-methods, entity-event-data, arena-rounds), and its
+ambient village overrides (Bordello, SickChild, BeardyBaldy, ...) are live from the first frame, so compare any
+regression in the adult chain against v29 first. Next: run v30 in-game; open items (BeardyBaldy `extraout_EAX`, SummoningTheShip Init, BookCollecting
 DoConversation) in [member resources](journal/2026-09/MEMBER_RESOURCES_2026-09-27.md).
 
 **Current user priority (2026-09-26):** review all current Lua ports for Aeon-style
