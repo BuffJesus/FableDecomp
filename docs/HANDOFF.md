@@ -7,10 +7,13 @@ Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMA
 `seh_*` resource members and the `csargs` string map now lower to a persistent sidecar store
 (`resources:MemberResource / MemberStringMap / AssignResource / ClearStringMap`, patch
 `novi-zzzzzzzzzzzzzz-member-resources.patch`, candidate DLL builds; NOT installed or in-game
-validated). Bordello, SickChild, ChickenKicking parse; A/B of all 23 units: only those plus
-Book Collecting change. Uncommitted. Next: BookCollecting's record-vector copy, OakValeRevisited's
-thing-vector walk, and registering the 8 old cluster lifts as units. Details and open items:
-[member resources](journal/2026-09/MEMBER_RESOURCES_2026-09-27.md).
+validated). **Afternoon: syntax failures 10 → 0** (369 files; 24 superseded first-generation lifts
+listed in `SUPERSEDED.json`). OakValeRevisited and BookCollecting recovered (flag maps, member thing lists,
+`quest:GlobalConversations`); the six old clusters are registered units (`register_unit.py`). 23-unit A/B: only
+the five intended units change. Two more sidecar patches (state-list resize, global conversations), candidate
+builds, nothing installed or run in-game. Next: build a playtest bundle for the promoted ambient/old-cluster units
+and check them in-game; open items (BeardyBaldy `extraout_EAX`, SummoningTheShip Init, BookCollecting
+DoConversation) in [member resources](journal/2026-09/MEMBER_RESOURCES_2026-09-27.md).
 
 **Current user priority (2026-09-26):** review all current Lua ports for Aeon-style
 readability, including older Arena output. Eleven passes across 357 files updated 126

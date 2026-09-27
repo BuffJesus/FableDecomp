@@ -65,3 +65,60 @@ class, found only padding/pointers, emitted nothing), so the refcount dances sta
   first-generation cluster lifts with no registered unit (BeardyBaldy, DragonBossFight, GTDI_Maze
   (superseded by the unit port), HerosOldHouse ×2, SingingStones, StatueMaster, SummoningTheShip).
   Registering those clusters as units is the likely route.
+
+## Continuation: the remaining ten (same day, second session)
+
+Syntax failures across the inventory: **10 → 0** (369 files; 24 superseded first-generation lifts excluded,
+each listed in its package's `SUPERSEDED.json` with an audited replacement). Unresolved diagnostics 2,390 → 2,000;
+machine temporaries 6,034 → 4,749. All generator changes are A/B-checked against the pre-session generator over the
+23 original units: only BookCollecting, Bordello, ChickenKicking, SickChild and OakValeRevisited change.
+
+**OakValeRevisited** (now also has a typed TU: the exporter failed on a UTF-8 BOM in `define_addresses.txt`).
+`OakValeFire` and the mission helper read like the retail logic (and like Aeon's port) with no TODOs:
+the `OakValeFlag` member map is the cutscene flag map (`RunMacroWithFlags(..., quest:RetailFlags("OakValeFlag"))`),
+the fire thread waits on `RetailFlags(...):Get("fire")` as a boolean, fills `FirePoint` from
+`GetAllThingsWithScriptName`, sizes `Fires` (`StateListResize`) and stores each effect (`StateListSetAt`).
+Generator: `this`-alias and member-list register resolution; bare member-list operands; `vector<CScriptThing>::resize`
+(0xD34AC0); inlined `CScriptThing::operator=` into a list element; `map<CCharString,bool>` members (0x8ADF10) incl.
+boolean char tests; the macro flag-map form; inline actor-map destructor on `._0_4_/._4_4_` fields.
+`restore_stack_operands` no longer moves a counter phase across slots (bytes: OakValeFire's `[esp+0x10]`), only when
+the old renaming would split it across different slots -- the first, broader version regressed Trader Conflict /
+Trader Comment / Guild counters and was narrowed until the A/B was clean.
+
+**BookCollecting**: `BookReactions` (vector<CConversation>) is an unmodified snapshot of definitions +0x4C8
+(evidence `definitionSnapshots`, detected in the unit's own reached functions of the typed TU). Reads go to
+`quest:GlobalConversations(0x4c8)` (sidecar, CConversation layout from `CConversation::Copy` 0x00E54CA0); the STL
+assign/copy/destroy helpers that only the dropped fill reached are omitted and reported. Member resources taken as
+a plain assignment (`pCVar5 = this + 0x58`, seh_Boy) no longer leak `this`.
+
+**Six old clusters registered as units** (`register_unit.py`, the Gameflow recipe): beardy_baldy,
+dragon_boss_fight, heros_old_house, singing_stones, statue_master, summoning_the_ship. Ranges end at the NEXT block's
+first lifecycle function, not the next allocator (sick_child's allocator-bounded range swallows SingingStones'
+threads). Generic fixes they needed: x87 -- a `__ftol2` operand duplicated with `fld st(0)` (`f_st0`), `_CIfmod`
+operands read from the call-site bytes (`fmod(angle, 1.0)`), `fpatan` = `math.atan(y, x)`, a proven float return
+for unit helpers the PDB does not name (StatueMaster 0xED43D0, `ghidra_typing_spec.proven_float_returns`),
+`(float)(int / N)` truncation; a scalar float member array walked by pointer (AnglesToFaceList); the inlined
+`CScriptThing::GetPos` through a register copy of the Data field (StatueMaster's SM_Center, lifted as `IsXbox`);
+C comma sequences -- through any lvalue, in `else if` heads and one-line `if (...) break;`; `1U` literals;
+`MsgOnRegionLoaded(&name)` returns the region name (BeardyBaldy compares it).
+
+StatueMaster smoke is clean; so are DragonBossFight, HerosOldHouse, SingingStones. Open in the new units:
+BeardyBaldy `extraout_EAX` returns in its hair/tash helpers, SummoningTheShip `in_stack_00000004` and boolean
+arithmetic in two `Init`s. BookCollecting `DoConversation` still loses its speaker compares and the speaker resource
+method calls; `BookReaction` is emitted as function `null` (unit JSON name drift noted earlier).
+
+Sidecar patches (build on round 10 + member resources): `novi-zzzzzzzzzzzzzzz-state-list-resize.patch`,
+`novi-zzzzzzzzzzzzzzzz-global-conversations.patch`; the Release x86 candidate builds. NOT installed; nothing here was
+run in-game (the promoted scripts are not in a playtest bundle yet).
+
+Validation: `test_round12_lowerings.py` (10) + `test_member_resources.py` (5); focused regression subset compared
+with the morning commit in a separate worktree (see below); 23-unit A/B; smoke of the promoted units (new smoke
+problems are mock artifacts: the mock returns nil for RetailFlags / GlobalConversations / positions).
+
+Later the same afternoon: C bool-to-int in arithmetic (`ENGINE_BoolToInt`, SummonerMinion/Attacker Init) and
+prototypes for unit functions the PDB does not name, from their `ret N` purge (`ghidra_typing_spec.stack_purges`:
+STS_BriarRose `RemoveNeighbours(true)` -- `push 1` at 0x00DF1971 -- had read an unbound `in_stack_00000004`).
+Applied only to the six re-exported new units' typing specs; the 23 existing units' typed TUs are unchanged, and the
+final 23-unit A/B still changes only the five intended units. BeardyBaldy's hair/tash helpers stay open: Ghidra
+lost the result byte (`mov al, [esp+3]` at 0x00E53AC6, set 0/1 by each clothing check) and prints
+`CONCAT31(extraout_EAX >> 8, 1)` on every path -- no sound operand to lower.

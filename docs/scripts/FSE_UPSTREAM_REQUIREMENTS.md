@@ -163,3 +163,16 @@ the six round-10 patches). **Deployment pending:** the Release x86 candidate bui
 (`work/readability_marathon_20260927_round12/sidecar_candidate/`); not installed or in-game validated.
 Known gap: the quest scope is never closed, so members outlive a finished quest (retail destroys
 them with the script object).
+
+## Member thing lists and global conversations (2026-09-27, afternoon)
+
+| Binding | Retail | Notes |
+| --- | --- | --- |
+| `quest:StateListResize(name, n)` | `std::vector<CScriptThing>::resize(n, CScriptThing())` 0xD34AC0 | truncate or pad with empty things (CS_OakValeRevisited OakValeFire sizes `Fires`) |
+| `quest:StateListSetAt(name, i, thing)` | inlined `CScriptThing::operator=` into element i (0-based) | stores a copy; an empty/nil thing stores an empty handle |
+| `quest:GlobalConversations(offset)` | `std::vector<CConversation>` at `*(0x0143E90C) + offset` | array of `{Lines, Speaker, Dialogue, Animation, AnimLoop}` (CConversation::Copy 0x00E54CA0 layout, 0x5C bytes); V_BookCollecting reads BookReactions (+0x4C8) through it |
+
+Patches: `novi-zzzzzzzzzzzzzzz-state-list-resize.patch`, `novi-zzzzzzzzzzzzzzzz-global-conversations.patch`
+(after the member-resources patch). The Release x86 candidate in
+`work/readability_marathon_20260927_round12/sidecar_candidate/` builds; not installed or in-game validated.
+`quest:RetailFlags(name)` (already bound) now also serves member `map<CCharString,bool>` flag maps.

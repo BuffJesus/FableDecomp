@@ -4,7 +4,9 @@ All lifted readable*, lifted FSE, and authored Lua; draft/evidence/candidates ex
 
 Mechanical findings only. No file is certified fully readable by this audit.
 
-Files: 359; syntax failures: 10.
+Files: 369; syntax failures: 0.
+
+Superseded first-generation lifts excluded: 24 (each listed in its package's SUPERSEDED.json with the registered unit's replacement, which is audited).
 
 | Script | Status | Jumps | Native names | Machine locals | Generic locals | Unresolved |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
@@ -51,9 +53,11 @@ Files: 359; syntax failures: 10.
 | lifted/BanditCamp/readable/FSE/BanditCampBossBattle/Entities/Gate3Guard.lua | needs-recovery | 26 | 42 | 0 | 46 | 2 |
 | lifted/BanditCamp/readable/FSE/BanditCampHoldingScript/BanditCampHoldingScript.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/BanditCamp/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/BeardyBaldy/FSE/BeardyBaldy/BeardyBaldy.lua | invalid-lua | 0 | 0 | 288 | 16 | 58 |
-| lifted/BeardyBaldy/FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
 | lifted/BeardyBaldy/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/BeardyBaldy/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/BeardyBaldy/readable/FSE/V_BeardyBaldy/Entities/BB_BeardyBaldyMan.lua | needs-recovery | 92 | 112 | 0 | 45 | 24 |
+| lifted/BeardyBaldy/readable/FSE/V_BeardyBaldy/native_quest_helpers.lua | needs-readability-work | 0 | 0 | 2 | 2 | 0 |
+| lifted/BeardyBaldy/readable/FSE/V_BeardyBaldy/V_BeardyBaldy.lua | needs-recovery | 28 | 46 | 2 | 40 | 23 |
 | lifted/BeggarAndChild/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/BeggarAndChild/readable/FSE/V_BeggarAndChild/Entities/BeggarBully.lua | needs-recovery | 90 | 128 | 3 | 93 | 11 |
 | lifted/BeggarAndChild/readable/FSE/V_BeggarAndChild/Entities/LookoutPointBeggar.lua | needs-recovery | 148 | 202 | 7 | 122 | 25 |
@@ -61,7 +65,7 @@ Files: 359; syntax failures: 10.
 | lifted/BookCollecting/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/BookCollecting/readable/FSE/V_BookCollecting/Entities/BS_Teacher.lua | needs-recovery | 32 | 53 | 4 | 58 | 177 |
 | lifted/BookCollecting/readable/FSE/V_BookCollecting/native_quest_helpers.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/BookCollecting/readable/FSE/V_BookCollecting/V_BookCollecting.lua | invalid-lua | 12 | 30 | 0 | 93 | 76 |
+| lifted/BookCollecting/readable/FSE/V_BookCollecting/V_BookCollecting.lua | needs-recovery | 12 | 21 | 0 | 27 | 38 |
 | lifted/Bordello/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/Bordello/readable/FSE/V_Bordello/Entities/BordelloClient.lua | needs-recovery | 31 | 46 | 0 | 21 | 17 |
 | lifted/Bordello/readable/FSE/V_Bordello/Entities/BordelloEntrance.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
@@ -79,11 +83,13 @@ Files: 359; syntax failures: 10.
 | lifted/ChickenKicking/readable/FSE/V_ChickenKicking/Entities/Spectator.lua | needs-recovery | 3 | 5 | 1 | 24 | 3 |
 | lifted/ChickenKicking/readable/FSE/V_ChickenKicking/native_quest_helpers.lua | needs-readability-work | 0 | 4 | 0 | 0 | 0 |
 | lifted/ChickenKicking/readable/FSE/V_ChickenKicking/V_ChickenKicking.lua | needs-readability-work | 1 | 1 | 0 | 4 | 0 |
-| lifted/DragonBossFight/FSE/DragonBossFight/DragonBossFight.lua | invalid-lua | 0 | 1 | 238 | 8 | 44 |
-| lifted/DragonBossFight/FSE/DragonBossFight/Entities/DBMinion.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/DragonBossFight/FSE/DragonBossFight/Entities/DBSummoner.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/DragonBossFight/FSE/DragonBossFight/Entities/Dragon.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
 | lifted/DragonBossFight/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/DragonBossFight/readable/FSE/DragonBossFight/DragonBossFight.lua | needs-recovery | 0 | 6 | 0 | 59 | 4 |
+| lifted/DragonBossFight/readable/FSE/DragonBossFight/Entities/DBMinion.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/DragonBossFight/readable/FSE/DragonBossFight/Entities/DBSummoner.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/DragonBossFight/readable/FSE/DragonBossFight/Entities/Dragon.lua | needs-recovery | 4 | 18 | 0 | 5 | 13 |
+| lifted/DragonBossFight/readable/FSE/DragonBossFight/native_quest_helpers.lua | needs-readability-work | 0 | 0 | 0 | 2 | 0 |
+| lifted/DragonBossFight/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/Expressions/readable/FSE/Expression_Dig/Expression_Dig.lua | needs-readability-work | 5 | 8 | 0 | 5 | 0 |
 | lifted/Expressions/readable/FSE/Expression_Fish/Expression_Fish.lua | needs-recovery | 11 | 16 | 0 | 26 | 5 |
 | lifted/Expressions/readable/FSE/Expression_Follow/Expression_Follow.lua | needs-recovery | 0 | 0 | 0 | 2 | 2 |
@@ -113,7 +119,6 @@ Files: 359; syntax failures: 10.
 | lifted/GuardianSisterInfo/readable/FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua | needs-readability-work | 4 | 5 | 16 | 45 | 0 |
 | lifted/GuardianSisterInfo/readable/FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/GuardianSisterInfo/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/GuardianTrophyDealerInfo/FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua | invalid-lua | 0 | 0 | 173 | 31 | 75 |
 | lifted/GuardianTrophyDealerInfo/FSE/GuardianTrophyDealerInfo/GuardianTrophyDealerInfo.lua | needs-recovery | 0 | 0 | 2 | 0 | 2 |
 | lifted/GuardianTrophyDealerInfo/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/GuardianTrophyDealerInfo/readable/FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua | needs-readability-work | 23 | 39 | 0 | 8 | 0 |
@@ -173,10 +178,12 @@ Files: 359; syntax failures: 10.
 | lifted/GuildTraining/readable_converter/FSE/GuildTrainingWoodsWill/Entities/WillWhisper.lua | needs-readability-work | 3 | 5 | 0 | 4 | 0 |
 | lifted/GuildTraining/readable_converter/FSE/GuildTrainingWoodsWill/GuildTrainingWoodsWill.lua | needs-readability-work | 5 | 8 | 0 | 109 | 0 |
 | lifted/GuildTraining/readable_converter/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/HerosOldHouse/FSE/HerosOldHouse/Entities/ExtraBooty.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/HerosOldHouse/FSE/HerosOldHouse/Entities/GhostFisherman.lua | invalid-lua | 0 | 0 | 155 | 11 | 77 |
-| lifted/HerosOldHouse/FSE/HerosOldHouse/HerosOldHouse.lua | invalid-lua | 0 | 0 | 84 | 4 | 12 |
 | lifted/HerosOldHouse/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/HerosOldHouse/readable/FSE/HerosOldHouse/Entities/ExtraBooty.lua | needs-readability-work | 0 | 0 | 0 | 4 | 0 |
+| lifted/HerosOldHouse/readable/FSE/HerosOldHouse/Entities/FishermansWife.lua | needs-readability-work | 50 | 66 | 0 | 65 | 0 |
+| lifted/HerosOldHouse/readable/FSE/HerosOldHouse/Entities/GhostFisherman.lua | needs-readability-work | 29 | 45 | 0 | 6 | 0 |
+| lifted/HerosOldHouse/readable/FSE/HerosOldHouse/HerosOldHouse.lua | needs-readability-work | 3 | 5 | 0 | 4 | 0 |
+| lifted/HerosOldHouse/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/MazeResearch/FSE/MazeResearch/Entities/EmptyGrave.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
 | lifted/MazeResearch/FSE/MazeResearch/Entities/HistoryBookcase.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
 | lifted/MazeResearch/FSE/MazeResearch/MazeResearch.lua | needs-recovery | 0 | 0 | 0 | 0 | 1 |
@@ -223,7 +230,7 @@ Files: 359; syntax failures: 10.
 | lifted/NewOakValeIntro/readable/FSE/NewOakValeIntro/native_quest_helpers.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/NewOakValeIntro/readable/FSE/NewOakValeIntro/NewOakValeIntro.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/NewOakValeIntro/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/OakValeRevisited/readable/FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua | invalid-lua | 1 | 2 | 0 | 67 | 56 |
+| lifted/OakValeRevisited/readable/FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua | needs-readability-work | 0 | 2 | 10 | 16 | 0 |
 | lifted/OakValeRevisited/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/OrchardFarm/readable/FSE/OrchardFarmRaid/Entities/Artefact.lua | needs-readability-work | 1 | 0 | 0 | 4 | 0 |
 | lifted/OrchardFarm/readable/FSE/OrchardFarmRaid/Entities/CrateTeamMember.lua | needs-readability-work | 3 | 5 | 4 | 27 | 0 |
@@ -265,22 +272,27 @@ Files: 359; syntax failures: 10.
 | lifted/SickChild/readable/FSE/V_SickChild/native_quest_helpers.lua | needs-recovery | 0 | 4 | 6 | 2 | 21 |
 | lifted/SickChild/readable/FSE/V_SickChild/V_SickChild.lua | needs-recovery | 0 | 1 | 2 | 4 | 22 |
 | lifted/SingingStones/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/SingingStones/FSE/SingingStones/Entities/ManWithDoorName.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SingingStones/FSE/SingingStones/Entities/SingingStone.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SingingStones/FSE/SingingStones/SingingStones.lua | invalid-lua | 0 | 0 | 159 | 23 | 46 |
+| lifted/SingingStones/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/SingingStones/readable/FSE/V_SingingStones/Entities/ManWithDoorName.lua | needs-readability-work | 24 | 33 | 0 | 243 | 0 |
+| lifted/SingingStones/readable/FSE/V_SingingStones/Entities/SingingStone.lua | needs-recovery | 16 | 27 | 0 | 46 | 20 |
+| lifted/SingingStones/readable/FSE/V_SingingStones/V_SingingStones.lua | needs-recovery | 2 | 2 | 0 | 26 | 14 |
 | lifted/StatueMaster/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/StatueMaster/FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/StatueMaster/FSE/StatueMaster/Entities/StatueMasterChest.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/StatueMaster/FSE/StatueMaster/Entities/StatueMasterStatue.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/StatueMaster/FSE/StatueMaster/StatueMaster.lua | invalid-lua | 0 | 0 | 110 | 5 | 10 |
+| lifted/StatueMaster/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/StatueMaster/readable/FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua | needs-readability-work | 1 | 2 | 0 | 4 | 0 |
+| lifted/StatueMaster/readable/FSE/V_StatueMaster/Entities/StatueMasterChest.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/StatueMaster/readable/FSE/V_StatueMaster/Entities/StatueMasterStatue.lua | needs-readability-work | 0 | 0 | 2 | 4 | 0 |
+| lifted/StatueMaster/readable/FSE/V_StatueMaster/native_quest_helpers.lua | needs-readability-work | 0 | 0 | 0 | 10 | 0 |
+| lifted/StatueMaster/readable/FSE/V_StatueMaster/V_StatueMaster.lua | needs-readability-work | 0 | 0 | 0 | 35 | 0 |
 | lifted/SummoningTheShip/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/FireHeart.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/FireHeartHolder.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/STS_BriarRose.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/SummonerAttacker.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/Entities/SummonerMinion.lua | needs-recovery | 0 | 0 | 0 | 0 | 2 |
-| lifted/SummoningTheShip/FSE/SummoningTheShip/SummoningTheShip.lua | invalid-lua | 0 | 0 | 94 | 11 | 49 |
+| lifted/SummoningTheShip/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/FireHeart.lua | needs-recovery | 3 | 5 | 0 | 4 | 2 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/FireHeartHolder.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/STS_BriarRose.lua | needs-recovery | 17 | 29 | 0 | 21 | 5 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/SummonerAttacker.lua | needs-recovery | 3 | 5 | 0 | 8 | 1 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/Entities/SummonerMinion.lua | needs-recovery | 0 | 0 | 0 | 4 | 1 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/native_quest_helpers.lua | needs-readability-work | 0 | 0 | 0 | 2 | 0 |
+| lifted/SummoningTheShip/readable/FSE/SummoningTheShip/SummoningTheShip.lua | needs-readability-work | 0 | 7 | 0 | 7 | 0 |
 | lifted/TourGuide/readable/FSE/quests.lua | needs-human-review | 0 | 0 | 0 | 0 | 0 |
 | lifted/TourGuide/readable/FSE/V_TourGuide/Entities/TourGuideFollower.lua | needs-recovery | 8 | 12 | 0 | 22 | 5 |
 | lifted/TourGuide/readable/FSE/V_TourGuide/Entities/TourGuideGuide.lua | needs-recovery | 37 | 54 | 0 | 30 | 14 |
