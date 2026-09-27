@@ -38,12 +38,10 @@ function Init(quest)
     quest:SetStateInt("ClientsAlive", 0)
     quest:SetStateBool("WearingWhoreWig", false)
     quest:SetStateBool("ClientInUse_0", false)
-    -- TODO(native): name field 0x59 (undefined1)
-    quest:SetStateBool("self_0x59", false)
-    -- TODO(native): name field 0x5a (undefined1)
-    quest:SetStateBool("self_0x5a", false)
+    quest:SetStateBool("ClientInUse_1", false)
+    quest:SetStateBool("ClientInUse_2", false)
     x_stk_c = nil
-    -- TODO(native): CScriptThing::operator=((CScriptThing *)__element("ClientInUse", 1),(CScriptThing *)0x0);
+    quest:SetStateThing("BordelloVillage", nil)
     x_stk_c = nil
     x_stk_c = 0
     quest:SetStateInt("BeersDrunk", 0)
@@ -78,15 +76,15 @@ function OnPersist(quest, context)
     local heroFoundDeedsLocation = quest:GetStateBool("HeroFoundDeedsLocation") or false
     heroFoundDeedsLocation = quest:PersistTransferBool(context, "HeroFoundDeedsLocation", heroFoundDeedsLocation)
     quest:SetStateBool("HeroFoundDeedsLocation", heroFoundDeedsLocation)
-    local clientInUse[0] = quest:GetStateBool("ClientInUse[0]") or false
-    clientInUse[0] = quest:PersistTransferBool(context, "ClientInUse[0]", clientInUse[0])
-    quest:SetStateBool("ClientInUse[0]", clientInUse[0])
-    local clientInUse[1] = quest:GetStateBool("ClientInUse[1]") or false
-    clientInUse[1] = quest:PersistTransferBool(context, "ClientInUse[1]", clientInUse[1])
-    quest:SetStateBool("ClientInUse[1]", clientInUse[1])
-    local clientInUse[2] = quest:GetStateBool("ClientInUse[2]") or false
-    clientInUse[2] = quest:PersistTransferBool(context, "ClientInUse[2]", clientInUse[2])
-    quest:SetStateBool("ClientInUse[2]", clientInUse[2])
+    local clientInUse0 = quest:GetStateBool("ClientInUse_0") or false
+    clientInUse0 = quest:PersistTransferBool(context, "ClientInUse[0]", clientInUse0)
+    quest:SetStateBool("ClientInUse_0", clientInUse0)
+    local clientInUse1 = quest:GetStateBool("ClientInUse_1") or false
+    clientInUse1 = quest:PersistTransferBool(context, "ClientInUse[1]", clientInUse1)
+    quest:SetStateBool("ClientInUse_1", clientInUse1)
+    local clientInUse2 = quest:GetStateBool("ClientInUse_2") or false
+    clientInUse2 = quest:PersistTransferBool(context, "ClientInUse[2]", clientInUse2)
+    quest:SetStateBool("ClientInUse_2", clientInUse2)
     local beersDrunk = quest:GetStateInt("BeersDrunk") or 0
     beersDrunk = quest:PersistTransferInt(context, "BeersDrunk", beersDrunk)
     quest:SetStateInt("BeersDrunk", beersDrunk)
@@ -289,7 +287,7 @@ function AdjustTavernPrices(quest)
             if bVar5 then break end
             pCVar6 = quest:GetHero()
             pCVar6 = quest:GetNearestWithDefName(pCVar6, "VILLAGE_BORDELLO")
-            -- TODO(native): CScriptThing::operator=((CScriptThing *)__element("ClientInUse", 1),(CScriptThing *)pCVar6);
+            quest:SetStateThing("BordelloVillage", pCVar6)
             pCVar6 = nil
             pCVar6 = quest:GetHero()
             pCVar6 = quest:GetNearestWithDefName(pCVar6, "CREATURE_OAKVALE_VILLAGER_FEMALE_BARMAID")
@@ -478,7 +476,7 @@ end
 
 function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
     local resources = quest:RetailResources()
-    local bVar6, pCVar7, piStack_20, piVar2, piVar4
+    local bVar6
     local alive = true
     quest:SetStateBool("CutscenePlaying", true)
     local xStack_10 = resources:NewResource()
@@ -487,78 +485,10 @@ function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
     resources:TryAcquire(pScriptObject, pThing, 4)
     local xStack_1c = resources:NewActorMap()
     resources:SetActor(xStack_1c, "HERO", xStack_10)
-    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piStack_20 = *(int **)(this + 0x80);
-    -- TODO(native): local piVar2 = *(pCVar7 + 0xc)
-    local uVar3 = quest:GetStateInt("self_0x7c")
-    if piVar2 ~= piStack_20 then
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + -1;
-            if **(pCVar7 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar7 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar7 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar7 + 0xc) = piStack_20;
-        if piStack_20 ~= nil then
-            -- TODO(native): *piStack_20 = *piStack_20 + 1;
-        end
-    end
-    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piStack_20 = *(int **)(this + 0x90);
-    -- TODO(native): piVar2 = *(pCVar7 + 0xc)
-    piVar2 = nil --[[unresolved native value]]
-    uVar3 = quest:GetStateInt("self_0x8c")
-    if piVar2 ~= piStack_20 then
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + -1;
-            if **(pCVar7 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar7 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar7 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar7 + 0xc) = piStack_20;
-        if piStack_20 ~= nil then
-            -- TODO(native): *piStack_20 = *piStack_20 + 1;
-        end
-    end
-    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piVar2 = *(this + 0xa0)
-    piVar2 = nil --[[unresolved native value]]
-    -- TODO(native): local piVar4 = *(pCVar7 + 0xc)
-    uVar3 = quest:GetStateInt("self_0x9c")
-    if piVar4 ~= piVar2 then
-        if piVar4 ~= nil then
-            -- TODO(native): *piVar4 = *piVar4 + -1;
-            if **(pCVar7 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar7 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar7 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar7 + 0xc) = piVar2;
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + 1;
-        end
-    end
-    -- TODO(native): pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piVar2 = *(this + 0xb0)
-    piVar2 = nil --[[unresolved native value]]
-    -- TODO(native): piVar4 = *(pCVar7 + 0xc)
-    piVar4 = nil --[[unresolved native value]]
-    uVar3 = quest:GetStateInt("self_0xac")
-    if piVar4 ~= piVar2 then
-        if piVar4 ~= nil then
-            -- TODO(native): *piVar4 = *piVar4 + -1;
-            if **(pCVar7 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar7 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar7 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar7 + 0xc) = piVar2;
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + 1;
-        end
-    end
+    resources:SetActor(xStack_1c, "BOSS", resources:MemberResource("seh_Boss"))
+    resources:SetActor(xStack_1c, "GUARD", resources:MemberResource("seh_Guard"))
+    resources:SetActor(xStack_1c, "MADAM", resources:MemberResource("seh_Madam"))
+    resources:SetActor(xStack_1c, "WHORE", resources:MemberResource("seh_Whore"))
     quest:FixMovieSequenceCamera(true)
     local cVar5 = native_arg_param_3
     if native_arg_param_3 then
@@ -572,7 +502,7 @@ function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
         -- TODO(native): SetCutsceneSkippableWhilePaused is not a ForgeFSE binding
         quest:SetCutsceneSkippableWhilePaused(true)
     end
-    -- TODO(native): RunCutsceneMacro_Func((CCharString *)&native_arg_param_2,xStack_1c,(void *)0x0,(CTCCarryable *)(this + 0xb4),false,true);
+    resources:RunMacroWithStrings(native_arg_param_2, xStack_1c, resources:MemberStringMap("csargs"), false, true)
     if cVar5 then
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive
@@ -587,7 +517,7 @@ function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
     end
     quest:FixMovieSequenceCamera(false)
     quest:SetStateBool("CutscenePlaying", false)
-    -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)(this + 0xb4));
+    resources:ClearStringMap(resources:MemberStringMap("csargs"))
     resources:DestroyActorMap(xStack_1c)
     resources:ReleaseResource(xStack_10)
 end
@@ -605,5 +535,140 @@ function helper_E3E6B0(quest)
         return "_HEROLADY"
     end
     return "_HEROMAN"
+end
+
+function helper_E44A40(quest)
+    local bVar3, bVar5, pCVar4
+    bVar5 = 1
+    pCVar4 = quest:GetHero()
+    bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_01")
+    if not bVar3 then
+        bVar5 = 3
+        pCVar4 = quest:GetHero()
+        bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_02")
+        if not bVar3 then
+            bVar5 = 7
+            pCVar4 = quest:GetHero()
+            bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_03")
+            if not bVar3 then
+                bVar5 = 0xf
+                pCVar4 = quest:GetHero()
+                bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_MUTTON_01")
+                if not bVar3 then
+                    bVar5 = 0x1f
+                    pCVar4 = quest:GetHero()
+                    bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_LONG_01")
+                    if not bVar3 then
+                        bVar5 = 0x3f
+                        pCVar4 = quest:GetHero()
+                        bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_CHIN_01")
+                        if not bVar3 then
+                            bVar5 = 0x7f
+                            pCVar4 = quest:GetHero()
+                            bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_TRAMP_01")
+                            if not bVar3 then
+                                bVar5 = 0xff
+                                pCVar4 = quest:GetHero()
+                                bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_WATSON_01")
+                                if not bVar3 then goto LAB_00e44c26 end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    ::LAB_00e44c26::
+    if bVar5 < 0 then
+        bVar5 = bVar5 & 0x7f
+    end
+    if (bVar5 & 0x40) ~= 0 then
+        bVar5 = bVar5 & 0xbf
+    end
+    if (bVar5 & 0x20) ~= 0 then
+        bVar5 = bVar5 & 0xdf
+    end
+    if (bVar5 & 0x10) ~= 0 then
+        bVar5 = bVar5 & 0xef
+    end
+    if (bVar5 & 8) ~= 0 then
+        bVar5 = bVar5 & 0xf7
+    end
+    if (bVar5 & 4) ~= 0 then
+        bVar5 = bVar5 & 0xfb
+    end
+    if (bVar5 & 2) ~= 0 then
+        bVar5 = bVar5 & 0xfd
+    end
+    return
+end
+
+function helper_E44CC0(quest)
+    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9
+    bVar7 = false
+    bVar6 = false
+    bVar5 = false
+    bVar4 = false
+    bVar3 = false
+    pCVar9 = quest:GetHero()
+    bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMITH_01")
+    if not bVar8 then
+        bVar7 = true
+        bVar6 = false
+        bVar5 = false
+        bVar4 = false
+        bVar3 = false
+        pCVar9 = quest:GetHero()
+        bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHTRADER_01")
+        if not bVar8 then
+            bVar7 = true
+            bVar6 = true
+            bVar5 = false
+            bVar4 = false
+            bVar3 = false
+            pCVar9 = quest:GetHero()
+            bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHKHG_01")
+            if not bVar8 then
+                bVar7 = true
+                bVar6 = true
+                bVar5 = true
+                bVar4 = false
+                bVar3 = false
+                pCVar9 = quest:GetHero()
+                bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSHERIFF_01")
+                if not bVar8 then
+                    bVar7 = true
+                    bVar6 = true
+                    bVar5 = true
+                    bVar4 = true
+                    bVar3 = false
+                    pCVar9 = quest:GetHero()
+                    bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHCHINESE_01")
+                    if not bVar8 then
+                        bVar7 = true
+                        bVar6 = true
+                        bVar5 = true
+                        bVar4 = true
+                        bVar3 = true
+                        pCVar9 = quest:GetHero()
+                        bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMALL_01")
+                        if not bVar8 then goto LAB_00e44e30 end
+                    end
+                end
+            end
+        end
+    end
+    ::LAB_00e44e30::
+    if bVar3 then
+    end
+    if bVar4 then
+    end
+    if bVar5 then
+    end
+    if bVar6 then
+    end
+    if bVar7 then
+    end
+    return
 end
 

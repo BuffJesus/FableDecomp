@@ -13,8 +13,8 @@ local SCRIPT_DEF = {
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue, assassinsUnderAttack, scratchValue4, scratchValue5
-    local questionAnswer, questionAnswer2, movie2, resource
+    local scratchValue, assassinsUnderAttack, scratchValue4, scratchValue5, questionAnswer
+    local questionAnswer2, movie2, resource
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
@@ -24,14 +24,14 @@ function Main(quest, me)
     resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d058f3 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    predicateResult = quest:IsActiveThreadTerminating()
-    if predicateResult then goto LAB_00d058f3 end
+    local predicateResult = quest:IsActiveThreadTerminating()
+    if predicateResult then resources:ReleaseResource(resource); return end
     assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack")
     scratchValue4 = predicateResult
     while not assassinsUnderAttack and not quest:GetStateBool("AssassinCutsceneTriggered") do
-        if not quest:NewScriptFrame(me) then goto LAB_00d058f3 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if me:MsgIsHitByHero() then goto LAB_00d04cdc end
         -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
         scratchValue = nil --[[unresolved native value]]
@@ -46,76 +46,75 @@ function Main(quest, me)
         scratchValue5 = 1
         ::FLOW_past_lab_00d04cdc::
         if scratchValue5 ~= 0 then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d058f3 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:SetStateBool("AssassinsUnderAttack", true)
         end
         -- TODO(native): bVar5 = (**(*me + 0x6c))(me,"SCRIPT_NAME_HERO")
         local scratchValue3 = nil --[[unresolved native value]]
         if not scratchValue3 then assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d058f3 end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         if not quest:GetStateBool("Gate3Open") then
             if not scratchValue4 then
-                if not quest:IsActiveThreadTerminating() then
-                    local movie3 = resources:StartMovie("")
-                    quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
-                        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d0580f end
-                    end
-                    quest:GiveHeroYesNoQuestion("TEXT_QST_009_ASSASSIN1_INTRO_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                local movie3 = resources:StartMovie("")
+                quest:PauseAllNonScriptedEntities(true)
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d0580f end
+                end
+                quest:GiveHeroYesNoQuestion("TEXT_QST_009_ASSASSIN1_INTRO_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                while questionAnswer < 0 do
+                    if not quest:NewScriptFrame(me) then goto LAB_00d0584f end
                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while questionAnswer < 0 do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d0584f end
-                        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-                    end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
-                    if questionAnswer == 1 then
-                        if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_AssassinGoldAmount) then
-                            if not quest:IsActiveThreadTerminating() then
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                    if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_POOR", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
-                                    goto LAB_00d05364
-                                end
-                                goto LAB_00d05373
-                            end
-                            goto LAB_00d0584f
-                        end
+                end
+                if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
+                if questionAnswer == 1 then
+                    if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_AssassinGoldAmount) then
                         if not quest:IsActiveThreadTerminating() then
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
+                                if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_POOR", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
+                                goto LAB_00d05364
                             end
-                            quest:SetStateBool("AssassinCutsceneTriggered", true)
-                            quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_AssassinGoldAmount))))
-                            quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
                             goto LAB_00d05373
                         end
-                        quest:PauseAllNonScriptedEntities(false)
-                        goto LAB_00d0580f
+                        goto LAB_00d0584f
                     end
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
-                        goto LAB_00d05364
+                    if not quest:IsActiveThreadTerminating() then
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_YES", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
+                            if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
+                        end
+                        quest:SetStateBool("AssassinCutsceneTriggered", true)
+                        quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_AssassinGoldAmount))))
+                        quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
+                        goto LAB_00d05373
                     end
-                    goto FLOW_hoist_lab_00d05364_1
-                    goto FLOW_past_lab_00d05364
-                    ::LAB_00d05364::
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
-                    ::FLOW_hoist_lab_00d05364_1::
-                    ::LAB_00d05373::
-                    quest:SetStateBool("TalkedToAssassin", true)
-                    scratchValue4 = 1
                     quest:PauseAllNonScriptedEntities(false)
-                    goto LAB_00d057a5
-                    ::FLOW_past_lab_00d05364::
-                    ::LAB_00d0584f::
-                    quest:PauseAllNonScriptedEntities(false)
-                    ::LAB_00d0580f::
-                    resources:DestroyMovie(movie3)
-                    resources:ReleaseResource(resource)
-                    return
+                    goto LAB_00d0580f
                 end
-                goto LAB_00d058f3
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                    if not me:Speak(hero, "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_NO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0584f end
+                    goto LAB_00d05364
+                end
+                goto FLOW_hoist_lab_00d05364_1
+                goto FLOW_past_lab_00d05364
+                ::LAB_00d05364::
+                if quest:IsActiveThreadTerminating() then goto LAB_00d0584f end
+                ::FLOW_hoist_lab_00d05364_1::
+                ::LAB_00d05373::
+                quest:SetStateBool("TalkedToAssassin", true)
+                scratchValue4 = 1
+                quest:PauseAllNonScriptedEntities(false)
+                goto LAB_00d057a5
+                ::FLOW_past_lab_00d05364::
+                ::LAB_00d0584f::
+                quest:PauseAllNonScriptedEntities(false)
+                ::LAB_00d0580f::
+                resources:DestroyMovie(movie3)
+                resources:ReleaseResource(resource)
+                do return end
+                resources:ReleaseResource(resource)
+                return
             end
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
@@ -190,7 +189,7 @@ function Main(quest, me)
         assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack")
         ::continue_1::
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d058f3 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     if not quest:GetStateBool("AssassinCutsceneTriggered") and not quest:GetStateBool("AssassinsUnderAttack") then
         repeat
             quest:NewScriptFrame(me)
@@ -204,7 +203,6 @@ function Main(quest, me)
             quest:NewScriptFrame(me)
         until quest:IsActiveThreadTerminating()
     end
-    ::LAB_00d058f3::
     resources:ReleaseResource(resource)
 end
 

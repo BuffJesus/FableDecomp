@@ -171,7 +171,7 @@ RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')
 RE_ADDR_OF = re.compile(r'^(?:\([^)]*\))?\s*&(\w+|stack0x[0-9a-f]+)$')
 RE_STRING_PARAM = re.compile(r'string|CCharString|char', re.I)
 RE_TRANSFER = re.compile(
-    r'CPersistContext::Transfer<(\w+)>\s*\(\s*\w+\s*,\s*"(\w+)"\s*,\s*\([^)]*\)\(\w+ \+ (0x[0-9a-fA-F]+)\)')
+    r'CPersistContext::Transfer<(\w+)>\s*\(\s*\w+\s*,\s*"(\w+(?:\[\d+\])?)"\s*,\s*\([^)]*\)\(\w+ \+ (0x[0-9a-fA-F]+)\)')
 RE_BINDING = re.compile(
     r'(?P<var>\w+) = (?:::)?operator_new\(0x1c\);.*?'
     r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>[^"]+)",-1\);.*?'
@@ -305,6 +305,28 @@ RE_PAIRED_TERMINATION_ALIAS = re.compile(
     r'(?=if\s*\(\s*extraout_AL(?:_\d+)?\s*(?:==|!=)\s*\'\\0\')', re.S)
 RE_ADDR_LITERAL = re.compile(r'^0x([0-9a-f]{6,7})$')
 RE_RESOURCE_METHOD = re.compile(r'_?(\w+?)_CScriptGameResourceObjectScriptedThingBase')
+# CScriptGameResourceObjectScriptedThingBaseVTable methods the host binds on the resources object
+# (LuaRetailResources + the novi-zzzzzzzzzzz-resource-vtable-methods patch): return kind, then operand types
+# quest bindings ForgeFSE overloads with a one-string form the manifest does not list (see interface_call)
+STRING_OVERLOADS = {'MakeHeroCarryItemInHand'}
+RESOURCE_VTABLE_METHODS = {
+    'MoveToPosition': ('void', 'sol::table', 'float', 'int', 'bool', 'bool'),
+    'MoveToThing': ('void', 'thing', 'float', 'int', 'bool', 'bool', 'bool', 'bool'),
+    'FollowThing': ('void', 'thing', 'float', 'bool'),
+    'StopFollowingThing': ('void', 'thing'),
+    'IsFollowActionRunning': ('bool', 'thing'),
+    'ClearCommands': ('void',),
+    'PerformExpression': ('void', 'thing', 'string'),
+    'PlayAnimation': ('void', 'string') + ('bool',) * 7,
+    'PlayCombatAnimation': ('void', 'string') + ('bool',) * 6,
+    'PlayLoopingAnimation': ('void', 'string', 'int') + ('bool',) * 7,
+    'ClearAllActions': ('void',),
+    'ClearAllActionsIncludingLoopingAnimations': ('void',),
+    'DropGenericBox': ('void',),
+    'UnsheatheWeapons': ('void',),
+    'IsPerformingScriptTask': ('bool',),
+    'IsFollowingThing': ('bool',),
+}
 # CScriptThing message getters take the hitter/talker script name; ForgeFSE only binds the
 # hero-specialised forms, which the hand ports use (me:MsgIsHitByHero() etc.). Applied only when the
 # recovered string operand is "SCRIPT_NAME_HERO"; any other name keeps the raw slot name and a TODO.
@@ -407,11 +429,13 @@ class RData:
         self.data = data
         self.secs = []
         self.raw_secs = []
+        self.names = []
         for i in range(nsec):
             off = pe + 24 + opt + i * 40
             vsize, va, rsize, raw = struct.unpack_from("<IIII", data, off + 8)
             self.secs.append((va, max(vsize, rsize), raw))
             self.raw_secs.append((va, rsize, raw))
+            self.names.append((data[off:off + 8].rstrip(b'\0').decode('ascii', 'replace'), va, rsize))
 
     def bytes_at(self, va: int, size: int) -> bytes | None:
         """Read a complete, file-backed region; virtual padding is not native byte evidence."""
@@ -424,6 +448,21 @@ class RData:
                 data = self.data[offset:offset + size]
                 return data if len(data) == size else None
         return None
+
+    def float_constant(self, va: int) -> str | None:
+        """A read-only float constant (`DAT_0129ba3c` = 1e-4, Global_TeleportToHeroGuild's recall-position epsilon):
+        only a `.rdata` word that decodes to a finite float of sane magnitude."""
+        if not self.ok:
+            return None
+        rva = va - self.base
+        if not any(n == '.rdata' and sva <= rva and rva + 4 <= sva + size for n, sva, size in self.names):
+            return None
+        raw = self.bytes_at(va, 4)
+        value = struct.unpack('<f', raw)[0] if raw else None
+        if value is None or value != value or not (value == 0 or 1e-7 <= abs(value) <= 1e7):
+            return None
+        # the shortest decimal that is the same float32 (`0.0001`, not 9.999999747378752e-05)
+        return next(t for t in (f'{value:.{d}g}' for d in range(1, 10)) if struct.pack('<f', float(t)) == raw)
 
     def string_at(self, va: int) -> str | None:
         """Read a printable literal wholly contained in a file-backed section.
@@ -555,7 +594,11 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
     # three-float stack vectors (`&fStack_64` -> `ENGINE_Vector3(x, y, z)`): untagged, the resolved vector had no
     # slot to land in and the segment teleports were emitted WITHOUT their position.
     for name, spec in result.items():
-        if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen', 'EntityTeleportToPosition')):
+        # (SetGuildSealRecallLocation: Global_TeleportToHeroGuild 0x00CDD6B0 stores the hero's position, then a zero vector)
+        if name == 'GetGuildSealRecallPos' and spec.get('returnType') == 'sol::table':
+            spec['returnNativeKind'] = 'vector'   # GetGuildSealRecallPos: a C3DVector as {x, y, z}
+        if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen', 'EntityTeleportToPosition',
+                                                      'SetGuildSealRecallLocation')):
             continue
         for parameter in spec.get('parameters', []):
             if parameter.get('type') == 'sol::table' and parameter.get('name') in ('position', 'pos'):
@@ -888,6 +931,7 @@ class Lifter:
         self.helper_names: set[str] = set()
         self.helper_parameters: dict[str, list[str]] = {}
         self.helper_return_kinds: dict[str, str] = {}
+        self.hidden_string_helpers: set[str] = set()
         self.parent_helpers: dict[str, dict] = {}
         self.thing_sigs = thing_sigs or {}   # CScriptThing method name -> decorated name (operand shape)
         # interface messages whose retail slot returns bool with a CScriptThing* out-parameter while the Forge binding
@@ -932,6 +976,7 @@ class Lifter:
         self.last_parent_branch = None
         self.slot_alias: dict[str, str] = {}   # `ppVar7 = apStack_c;` -> the stack slot it points at
         self.slot_results: dict[str, str] = {}  # hidden return slot -> Lua result variable
+        self.resource_slots: set[str] = set()  # slots holding a RESOURCE_NewResource object
         self.skip_depth = 0                  # inside a dropped block (refcount release idiom)
         self.cleanup_labels: set[str] = set()  # labels whose suffix is destructor-only then return
         self.thing_predicate_evidence: list[dict] = []
@@ -1485,6 +1530,41 @@ class Lifter:
                                    or bool(re.fullmatch(r'-?\d+', lifted.strip()))) else None)
         return name + suffix if suffix and name + suffix in self.manifest else None
 
+    def quest_resource_method(self, target, method, argtext) -> bool:
+        """A quest calling an entity method on a resource it acquired
+        (`CScriptGameResourceObjectScriptedThingBase::_PlayLoopingAnimation_..((..*)xStack_30, &anim, 2, ..)` after
+        `RESOURCE_TryAcquire(xStack_30, hero, 4)`, Expression_Dig 0x00EEA9D0) is a virtual call on that resource
+        object, which the host dispatches through the same retail vtable (`resources:<Method>(resource, ...)`,
+        CScriptGameResourceObjectScriptedThingBaseVTable).  Quest context has only the resource ahead of the
+        method's own operands, so nothing else is dropped."""
+        params = RESOURCE_VTABLE_METHODS.get(method)
+        operands = self.arguments(argtext)
+        if params is None or not operands or self.slot_name(operands[0]) not in self.resource_slots:
+            return False
+        from tools.script_recovery.native_evidence_lowering import _strip_addr
+        resource = self.expr(self.slot_name(operands[0]))
+        rest = operands[1:1 + len(params) - 1]
+        if len(rest) != len(params) - 1:
+            return False
+        args = []
+        for a in rest:
+            slot = _strip_addr(a)
+            if slot in self.temps:        # a staged CCharString (`CCharString(&CStack_40, "ST_DIGGING_IDLE")`)
+                args.append(self.temps.pop(slot))
+                if slot in self.order:
+                    self.order.remove(slot)
+            else:
+                args.append(self.expr(slot))
+        args = self._coerce_args([{'type': t} for t in params[1:]], args)
+        call = f'resources:{method}({", ".join([resource] + args)})'
+        if target and params[0] != 'void':
+            self.emit(f'{self.declare(target)} = {call}')
+            self.kinds[target] = 'bool'
+        else:
+            self.emit(call)
+        self.calls.append(method)
+        return True
+
     def interface_call(self, target: str | None, name: str, argtext: str) -> bool:
         if name in self.out_thing_msgs:
             # WatchForPickpocketing 0x00E04F10: `MsgOnHeroPickedPocket(gsi, local_c)` then `local_c.IsEqualTo(trader)`;
@@ -1536,6 +1616,23 @@ class Lifter:
                 self.forget_value(target)
                 self.emit(f'{self.declare(target)} = nil --[[unresolved native result]]')
             return True
+        if name in STRING_OVERLOADS and spec:
+            # GSI 0x23C MakeHeroCarryItemInHand(const CCharString& defName) beside the 0x238 by-Thing form the
+            # manifest describes (Expression_Dig 0x00EEA7C0: `CCharString(&CStack_40, "OBJECT_SPADE")` then slot
+            # 0x23C with that string alone); ForgeFSE binds both as one sol::overload.
+            from tools.script_recovery.native_evidence_lowering import _strip_addr
+            only = [_strip_addr(a) for a in self.arguments(argtext)]
+            value = None
+            if len(only) == 1 and only[0] in self.temps and self.kind_of(self.temps[only[0]]) == 'string':
+                value = self.temps.pop(only[0])
+                if only[0] in self.order:
+                    self.order.remove(only[0])
+            elif len(only) == 1 and self.kind_of(self.slot_results.get(only[0], '')) == 'string':
+                value = self.slot_results[only[0]]   # an earlier string result's slot (Fish: slot 0x500's name)
+            if value is not None:
+                self.emit(f'{self.receiver}:{name}({value})')
+                self.calls.append(name)
+                return True
         if name == 'NewScriptFrame' and spec:
             # Retail's no-argument frame call uses its active script thread.
             # The host bridge receives that execution entity explicitly; it is
@@ -1659,7 +1756,7 @@ class Lifter:
                 # (`if #hero ~= 0`, 2026-09-20)
                 self.slot_results.pop(target, None)
                 self.emit(f"{self.declare(target)} = {call}")
-                kind = self.result_kind(spec.get("returnType", "void"))
+                kind = self.result_kind(spec.get("returnType", "void")) or spec.get('returnNativeKind')
                 if name == 'GetMasterGameState' and args and args[0].strip('"') in master_bool_flags():
                     kind = 'bool'      # a PDB-typed bool master flag: the binding returns a Lua boolean
                 if kind:
@@ -1675,7 +1772,7 @@ class Lifter:
                 self.results += 1
                 var = f"r{self.results}"
                 self.emit(f"{self.declare(var)} = {call}")
-                kind = self.result_kind(spec.get("returnType", "void"))
+                kind = self.result_kind(spec.get("returnType", "void")) or spec.get('returnNativeKind')
                 if kind:
                     self.kinds[var] = kind
                 if return_slot:
@@ -2131,6 +2228,11 @@ class Lifter:
         # that same CSpawnedFunc allocation above; unrelated GUI transfers remain visible TODOs.
         text = RE_GUI_TRANSFER_ADD.sub(
             lambda m: "" if m.group(1) in thread_objects else m.group(0), text)
+        # the CCharString dtor (0x99EAE0) of a stack slot stays as a marker: it ends the slot's value (statement())
+        # a .rdata float word used as an arithmetic / comparison operand is its literal value
+        text = re.sub(r'\b_?DAT_([0-9a-f]{8})\b(?=\s*[*<>+-])|(?<=[*<>+-] )_?DAT_([0-9a-f]{8})\b',
+                      lambda m: self.rdata.float_constant(int(m[1] or m[2], 16)) or m[0], text)
+        text = re.sub(r'std::\s*_Cons_val<[^;]*?__at99eae0\(\s*(?:\(\w+ \*\))?&(\w+)\s*\);', r'__string_dtor(\1);', text)
         text = RE_CONS_VAL.sub("", text)
         # MSVC funnels early exits through destructor epilogues.  An if-goto can be represented as
         # an ordinary Lua return without a review marker only when the target is the final label and
@@ -2366,15 +2468,21 @@ class Lifter:
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
             target, name, argtext = pseudo.group(1), pseudo.group(2), pseudo.group(3)
-            if target and name in ('RESOURCE_NewResource', 'RESOURCE_StartMovie', 'ACTORMAP_New', 'STRINGMAP_New'):
+            # Concatenation constructs a new value in its destination slot. Read
+            # any old source value before detaching the slot's previous hidden
+            # result; the old result variable itself must not be overwritten.
+            concat_args = [self.expr(a) for a in self.arguments(argtext)] if name == 'ENGINE_Concat' else None
+            if target and name in ('RESOURCE_NewResource', 'RESOURCE_StartMovie', 'ACTORMAP_New', 'STRINGMAP_New', 'ENGINE_Concat'):
                 # a new object built in a slot that earlier served as a thing's hidden-result slot: the slot's old
                 # result variable is not this object (Q_WhiteBalverineKnotholeGlade Main 0x00E13F10: xStack_20 held
                 # GetThingWithScriptName results into pCVar6, then became the chief's resource for CS_WBK_CHIEF2;
                 # following the mapping bound CHIEF to the hero's resource and killed Main, 2026-09-26)
                 self.slot_results.pop(target, None)
+                if name == 'RESOURCE_NewResource':
+                    self.resource_slots.add(target)
             elif target:
                 target = self.slot_results.get(target, target)
-            lifted = [self.expr(a) for a in self.arguments(argtext)]
+            lifted = concat_args if concat_args is not None else [self.expr(a) for a in self.arguments(argtext)]
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
@@ -2388,6 +2496,13 @@ class Lifter:
             return
         stripped = line.strip()
         if not stripped:
+            return
+        dtor = re.fullmatch(r'__string_dtor\((\w+)\);', stripped)
+        if dtor:
+            # CCharString::~CCharString (0x99EAE0) ends the slot's value: a later write to the slot is a new string,
+            # not the old result variable (Global_GiveHeroItemsFromRewardChest 0x00EEC410: xStack_20 held
+            # GetActiveQuestName, was destroyed, then took the chest's GetDefName -- the compare read the quest name)
+            self.slot_results.pop(dtor[1], None)
             return
         structural = bool(re.match(r'^(?:if|else|while|for|do|return|goto)\b|^}', stripped))
         assigned = RE_LOCAL_ASSIGN.match(line) or RE_SLOT_ASSIGN.match(line)
@@ -2416,6 +2531,12 @@ class Lifter:
         # similarity label claims ten arguments, some containing ordinary noise names.
         # Resolve its explicit string slot before generic noise removal can discard the call.
         direct = RE_NAMED_CALL.match(line)
+        # Resource vtable signatures determine the real operands. Ghidra appends
+        # unrelated registers to PerformExpression; those must not erase the call.
+        resource_method = RE_RESOURCE_METHOD.search(direct[2]) if direct else None
+        if (resource_method and resource_method[1] == 'PerformExpression' and not self.execution_entity
+                and self.quest_resource_method(direct[1], resource_method[1], direct[3])):
+            return
         if direct and self.callee_names.get(direct[2]) == 'AddLogbookTutorialEntry':
             operands = self.arguments(direct[3])
             slot = self.slot_name(operands[0]) if operands else None
@@ -2899,6 +3020,8 @@ class Lifter:
                     self.kinds[target] = parent_helper['returnKind']
                 return
             mangled = RE_RESOURCE_METHOD.search(name)
+            if mangled and not self.execution_entity and self.quest_resource_method(target, mangled.group(1), argtext):
+                return
             if mangled and mangled.group(1) in self.manifest:
                 # CScriptGameResourceObjectScriptedThingBase::<Method>(resource, thing, ...) is the
                 # controlled-entity API: Forge exposes it as me:<Method>(...) (pMe implied).
@@ -2935,7 +3058,18 @@ class Lifter:
                 self.interface_call(target, resolved, argtext)
                 return
             if resolved in self.helper_names:
-                operands = [self.expr(x) for x in self.arguments(argtext)]
+                raw_operands = self.arguments(argtext)
+                result_slot = None
+                if resolved in self.hidden_string_helpers and len(raw_operands) == 3:
+                    from tools.script_recovery.native_evidence_lowering import _strip_addr
+                    result_slot = _strip_addr(raw_operands.pop(1))
+                    if not re.fullmatch(r'[A-Za-z_]\w*', result_slot):
+                        self.todo.append(f'{resolved}: unproven hidden string destination')
+                        self.emit(f'-- TODO(native): {stripped}')
+                        return
+                    self.forget_value(result_slot)
+                    self.slot_results.pop(result_slot, None)
+                operands = [self.expr(x) for x in raw_operands]
                 # Recovered script helpers are C++ member functions. Their first explicit Ghidra
                 # operand is the native `this`; generated Lua helpers receive Quest directly.
                 if operands and operands[0] in ("this", "param_1", "in_ECX"):
@@ -2945,6 +3079,14 @@ class Lifter:
                     self.todo.append(f'{resolved}: {len(operands)} helper operands for {len(expected)} parameters')
                 context = [self.receiver] + (['me'] if self.execution_entity else [])
                 call = f"{resolved}({', '.join(context + operands)})"
+                if result_slot:
+                    destination = target or result_slot
+                    self.emit(f'{self.declare(destination)} = {call}')
+                    self.kinds[destination] = 'string'
+                    self.kinds[result_slot] = 'string'
+                    if target:
+                        self.slot_results[result_slot] = target
+                    return
                 self.emit(f'{self.declare(target)} = {call}' if target else call)
                 if target and resolved in self.helper_return_kinds:
                     self.kinds[target] = self.helper_return_kinds[resolved]
@@ -3094,6 +3236,20 @@ class Lifter:
         self.emit(f"-- TODO(native): {stripped}")
 
 
+def persist_local_name(name: str) -> str:
+    """A transfer key is data, not necessarily a legal or safe local identifier."""
+    from tools.script_recovery.readable_lua import camel
+    var = name[:1].lower() + name[1:]
+    if not re.fullmatch(r'[A-Za-z_]\w*', var, re.ASCII):
+        var = camel(name)
+    reserved = {'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function',
+                'goto', 'if', 'in', 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then',
+                'true', 'until', 'while', 'quest', 'me', 'context', 'resources'}
+    if var in reserved:
+        var = 'saved' + var[:1].upper() + var[1:]
+    return var
+
+
 def lift_persist(decompile: str, receiver: str) -> tuple[list[str], dict[str, tuple[str, str]], list[str]]:
     state: dict[str, tuple[str, str]] = {}
     out: list[str] = []
@@ -3101,7 +3257,7 @@ def lift_persist(decompile: str, receiver: str) -> tuple[list[str], dict[str, tu
     for ctype, name, offset in RE_TRANSFER.findall(decompile):
         kind = TYPE_MAP.get(ctype, "Int")
         state[offset.lower()] = (name, kind)
-        var = name[0].lower() + name[1:]
+        var = persist_local_name(name)
         out.append(f'    local {var} = {receiver}:GetState{kind}("{name}") or {LUA_DEFAULT[kind]}')
         out.append(f'    {var} = {receiver}:PersistTransfer{kind}(context, "{name}", {var})')
         out.append(f'    {receiver}:SetState{kind}("{name}", {var})')

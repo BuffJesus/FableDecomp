@@ -26,12 +26,12 @@ function Main(quest, me)
     resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e1a6c6 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e1a6c6 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     quest:EntityAttachToScript(me, quest:GetActiveQuestName())
     while not quest:GetStateBool("MissionSucceeded") do
-        if not quest:NewScriptFrame(me) then goto LAB_00e1a6c6 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
         if me:IsTalkedToByHero() then
             if not quest:GetStateBool("WhiteBalverineAlive") then
                 local resource = resources:NewResource()
@@ -99,13 +99,13 @@ function Main(quest, me)
         predicateResult = true
         ::FLOW_past_lab_00e1a451::
         if predicateResult then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e1a6c6 end
-            if not quest:NewScriptFrame(me) then goto LAB_00e1a6c6 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
             resources:PrepareResource(resource2)
             while not resources:TryAcquire(resource2, thing, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00e1a6c6 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e1a6c6 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
@@ -128,14 +128,13 @@ function Main(quest, me)
             end
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
-            if not quest:NewScriptFrame(me) then goto LAB_00e1a6c6 end
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
             me:SetFriendsWithEverythingFlag(thing)
         end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:ClearThingHasInformation(me)
     end
-    ::LAB_00e1a6c6::
     resources:ReleaseResource(resource2)
 end
 

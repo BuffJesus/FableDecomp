@@ -6,7 +6,7 @@ function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     if not quest:NewScriptFrame() then return end
-    if not hero:AcquireControl(4) then hero:ReleaseControl(); return end
+    if not hero:AcquireControl(4) then return end
     local movie = resources:StartMovie("")
     quest:FadeScreenOut(0.5, 0.5)
     quest:Pause(1.0)

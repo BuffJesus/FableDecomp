@@ -9,14 +9,14 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 2) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfbcd3 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if math.random(0, 32767) % 5 == 0 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00dfbcd3 end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         local conversationID = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationID, hero)
         if quest:GetStateInt("BanditSecurityLinesSaid") == 0 then
@@ -36,7 +36,6 @@ function Main(quest, me)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
-    ::LAB_00dfbcd3::
     resources:ReleaseResource(resource)
 end
 

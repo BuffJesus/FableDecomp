@@ -3,28 +3,25 @@
 
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
--- per-entity fields (native class members; one Lua state per entity instance)
-local self0X14
-
 -- SUMMONED_CREATURE.Main (retail 0x00f1b220)
 function Main(quest, me)
     local predicateResult, getStateInt
     local globalCrowdTimer = quest:GetStateInt("GlobalCrowdTimer")
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
-    -- TODO(native): *(int *)__element("TotalCreatures", 0) = *(int *)__element("TotalCreatures", 0) + 1;
+    quest:SetStateInt("TotalCreatures_0", quest:GetStateInt("TotalCreatures_0") + 1)
     quest:SetStateInt("ExtraCreatures", quest:GetStateInt("ExtraCreatures") + 1)
     while not quest:IsActiveThreadTerminating() do
         if me:MsgIsHitByHeroWithFlourish() then
             if quest:GetTimer(globalCrowdTimer) < 1 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), self0X14 + 84 + quest:GetStateInt("NewCrowdBaseLevel") * 20)
+                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                 quest:SetTimer(globalCrowdTimer, 10)
                 getStateInt = quest:GetStateInt("NewCrowdPoints") + 5
                 goto LAB_00f1b586
             end
         elseif me:MsgIsHitByHeroWithDecapitate() then
             if quest:GetTimer(globalCrowdTimer) < 9 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), self0X14 + 84 + quest:GetStateInt("NewCrowdBaseLevel") * 20)
+                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                 quest:SetTimer(globalCrowdTimer, 10)
                 getStateInt = quest:GetStateInt("NewCrowdPoints") + 7
                 goto LAB_00f1b586
@@ -65,7 +62,7 @@ end
 
 -- SUMMONED_CREATURE.OnPredicateFail (retail 0x00f1b1b0)
 function OnPredicateFail(quest, me)
-    -- TODO(native): *(int *)__element("TotalCreatures", 0) = *(int *)__element("TotalCreatures", 0) - 1;
+    quest:SetStateInt("TotalCreatures_0", quest:GetStateInt("TotalCreatures_0") - 1)
     if me:MsgIsKilledBy("SCRIPT_NAME_HERO") then
         quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 8)
     end

@@ -10,55 +10,43 @@ end
 
 function Main(questObject)
     Quest = questObject
-    local bVar7, iVar6
     local alive = true
     Quest:AddEntityBinding("ScytheMarker", "ScytheInfo/Entities/ScytheMarker")
     Quest:AddEntityBinding("ScytheNearOracle", "ScytheInfo/Entities/ScytheNearOracle")
     Quest:FinalizeEntityBindings()
-    local ppVar4 = Quest:GetActiveQuestName()
-    Quest:SetQuestCardObjective(ppVar4, "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03", "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03", "")
-    local uVar5 = Quest:RegisterTimer()
-    Quest:SetTimer(uVar5, 100)
-    local cVar2 = Quest:IsRegionLoaded("NorthernWastes2")
-    while cVar2 do
+    Quest:SetQuestCardObjective(Quest:GetActiveQuestName(), "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03", "TEXT_QUEST_AWAKEN_ORACLE_OBJECTIVE_03", "")
+    local timerId = Quest:RegisterTimer()
+    Quest:SetTimer(timerId, 100)
+    while Quest:IsRegionLoaded("NorthernWastes2") do
         alive = Quest:NewScriptFrame()
-        bVar7 = not alive
-        if bVar7 then return end  -- TODO(native): goto LAB_00e29db9
-        iVar6 = Quest:GetTimer(uVar5)
-        if iVar6 == 0 then
-            bVar7 = not alive
-            if bVar7 then return end  -- TODO(native): goto LAB_00e29e58
+        if not alive then return end  -- TODO(native): goto LAB_00e29db9
+        if Quest:GetTimer(timerId) == 0 then
+            if not alive then return end  -- TODO(native): goto LAB_00e29e58
             Quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_B03_SCYTHE_RETURN_TO_SNOWSPIRE_REMINDER_10", "", nil --[[missing]], nil --[[missing]])
-            Quest:SetTimer(uVar5, 100)
+            Quest:SetTimer(timerId, 100)
         end
-        cVar2 = Quest:IsRegionLoaded("NorthernWastes2")
     end
-    bVar7 = not alive
-    if bVar7 then
+    if not alive then
         -- LAB_00e29db0: (native jump target)
         -- LAB_00e29db9: (native jump target)
-        Quest:DeregisterTimer(uVar5)
+        Quest:DeregisterTimer(timerId)
         return
     end
-    local CVar1 = Quest:GetStateBool("self_0x48")
+    local self0X = Quest:GetStateBool("self_0x48")
     repeat
-        if CVar1 then
-            bVar7 = not alive
-            if not bVar7 then
-                ppVar4 = Quest:GetActiveQuestName()
-                Quest:SetQuestAsCompleted(ppVar4, nil --[[missing]], nil --[[missing]], nil --[[missing]])
-                ppVar4 = Quest:GetActiveQuestName()
-                Quest:DeactivateQuestLater(ppVar4, nil --[[missing]])
+        if self0X then
+            if alive then
+                Quest:SetQuestAsCompleted(Quest:GetActiveQuestName(), nil --[[missing]], nil --[[missing]], nil --[[missing]])
+                Quest:DeactivateQuestLater(Quest:GetActiveQuestName(), nil --[[missing]])
                 Quest:FadeScreenIn()
             end
             -- LAB_00e29e58: (native jump target)
-            Quest:DeregisterTimer(uVar5)
+            Quest:DeregisterTimer(timerId)
             return
         end
         alive = Quest:NewScriptFrame()
-        bVar7 = not alive
-        if bVar7 then return end  -- TODO(native): goto LAB_00e29db0
-        CVar1 = Quest:GetStateBool("self_0x48")
+        if not alive then return end  -- TODO(native): goto LAB_00e29db0
+        self0X = Quest:GetStateBool("self_0x48")
     until false
 end
 

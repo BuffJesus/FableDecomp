@@ -86,7 +86,7 @@ function Main(quest)
     end
     ::LAB_00d51dd9::
     quest:DeregisterTimer(timerId)
-    goto LAB_00d51de2
+    do return end
     ::LAB_00d5193f::
     resources:ReleaseResource(resource)
     ::LAB_00d51948::

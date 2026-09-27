@@ -12,6 +12,22 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
     local __native_condition_1, b2, bVar5, bVar6, cVar1, conversationID, fVar11, iVar8, i_stk_74, p0, pCVar10, pCVar7, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar4, uVar9, u_stk_78, xStack_20, xStack_7c
     local alive = true
     u_stk_78 = 0
@@ -323,7 +339,7 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then goto LAB_00d0c28b end
                     pCVar10 = me:GetDataString()
-                    iVar8 = tonumber(pCVar10)
+                    iVar8 = parseGameInteger(pCVar10)
                     if iVar8 == 1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive

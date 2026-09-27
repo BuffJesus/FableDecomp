@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "wasp_boss",
- "draft": "refs\\script_recovery\\lifted\\WaspBoss\\draft",
+ "draft": "refs/script_recovery/lifted/WaspBoss/draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -13,6 +13,12 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": []
+   },
+   "readability": {
+    "lines": 2,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WaspBoss/Entities/FleeingWoman.lua": {
@@ -391,7 +397,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 70,
+     "sourceLine": 69,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -400,7 +406,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 74,
+     "sourceLine": 73,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -409,7 +415,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 77,
+     "sourceLine": 76,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -422,7 +428,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 5,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -448,15 +454,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 4,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 5,
+       "sunkLocals": 7,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
@@ -474,10 +485,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 53,
-       "temporaries": 3,
-       "labels": 2,
-       "gotos": 5,
+       "lines": 52,
+       "temporaries": 2,
+       "labels": 1,
+       "gotos": 1,
        "terminationChecks": 8,
        "frameChecks": 3,
        "requires": 0
@@ -511,11 +522,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -574,11 +590,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -637,11 +658,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -679,6 +705,46 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 82,
+    "counts": {
+     "genericTemporaries": 5,
+     "gotos": 1
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 20,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 33,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 35,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 57,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 57,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 64,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     }
     ]
    }
   },
@@ -894,11 +960,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -957,11 +1028,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1020,11 +1096,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1083,11 +1164,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1127,6 +1213,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 29,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WaspBoss/Entities/HornetDrone.lua": {
@@ -1596,7 +1688,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 69,
+     "sourceLine": 68,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1605,7 +1697,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 73,
+     "sourceLine": 72,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1614,7 +1706,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 76,
+     "sourceLine": 75,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1653,11 +1745,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 40,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 8,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1679,10 +1776,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 57,
+       "lines": 56,
        "temporaries": 1,
-       "labels": 5,
-       "gotos": 13,
+       "labels": 3,
+       "gotos": 5,
        "terminationChecks": 6,
        "frameChecks": 4,
        "requires": 0
@@ -1716,11 +1813,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1779,11 +1881,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1842,11 +1949,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1884,6 +1996,102 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 81,
+    "counts": {
+     "genericTemporaries": 4,
+     "gotos": 5,
+     "nativeNames": 8
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 33,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 33,
+      "category": "nativeNames",
+      "text": "LAB_00e1203a"
+     },
+     {
+      "line": 36,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 36,
+      "category": "nativeNames",
+      "text": "LAB_00e1203a"
+     },
+     {
+      "line": 38,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 40,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 40,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1203a"
+     },
+     {
+      "line": 41,
+      "category": "nativeNames",
+      "text": "LAB_00e1203a"
+     },
+     {
+      "line": 42,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 43,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1203a"
+     },
+     {
+      "line": 44,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 44,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 44,
+      "category": "nativeNames",
+      "text": "LAB_00e12130"
+     },
+     {
+      "line": 58,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 58,
+      "category": "nativeNames",
+      "text": "LAB_00e12130"
+     },
+     {
+      "line": 62,
+      "category": "nativeNames",
+      "text": "LAB_00e12130"
+     }
     ]
    }
   },
@@ -2073,7 +2281,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 25,
+     "sourceLine": 24,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2082,7 +2290,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 29,
+     "sourceLine": 28,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2091,7 +2299,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 32,
+     "sourceLine": 31,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2130,11 +2338,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 2,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2156,10 +2369,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 17,
+       "lines": 16,
        "temporaries": 0,
-       "labels": 1,
-       "gotos": 2,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 2,
        "frameChecks": 2,
        "requires": 0
@@ -2193,11 +2406,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2256,11 +2474,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2319,11 +2542,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2362,6 +2590,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 37,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WaspBoss/Entities/WaspAttacker.lua": {
@@ -2543,7 +2777,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 20,
+     "sourceLine": 19,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2552,7 +2786,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 23,
+     "sourceLine": 22,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2561,7 +2795,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 26,
+     "sourceLine": 25,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2600,11 +2834,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 1,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2626,10 +2865,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 15,
+       "lines": 14,
        "temporaries": 0,
-       "labels": 1,
-       "gotos": 1,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 1,
        "frameChecks": 2,
        "requires": 0
@@ -2663,11 +2902,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2726,11 +2970,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2789,11 +3038,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2833,6 +3087,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 31,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WaspBoss/Entities/WaspChaser.lua": {
@@ -3087,7 +3347,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 31,
+     "sourceLine": 29,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3096,7 +3356,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 34,
+     "sourceLine": 32,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3105,7 +3365,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 37,
+     "sourceLine": 35,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3118,7 +3378,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -3144,15 +3404,20 @@
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 1,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 2,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 2,
+       "sunkLocals": 4,
        "cleanupClosureNames": 0,
        "parentheses": 3,
        "cosmetics": 0,
@@ -3170,10 +3435,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 26,
-       "temporaries": 1,
-       "labels": 1,
-       "gotos": 2,
+       "lines": 24,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 2,
        "frameChecks": 2,
        "requires": 0
@@ -3207,11 +3472,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3270,11 +3540,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3333,11 +3608,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3377,6 +3657,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 41,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WaspBoss/Entities/WaspChaseWoman.lua": {
@@ -4077,7 +4363,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 85,
+     "sourceLine": 84,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4086,7 +4372,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 89,
+     "sourceLine": 88,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4095,7 +4381,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 92,
+     "sourceLine": 91,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4103,12 +4389,12 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 7,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -4134,15 +4420,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 2,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 11,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 3,
+       "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 7,
+       "sunkLocals": 11,
        "cleanupClosureNames": 0,
        "parentheses": 16,
        "cosmetics": 0,
@@ -4160,11 +4451,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 72,
-       "temporaries": 6,
-       "labels": 5,
-       "gotos": 10,
-       "terminationChecks": 6,
+       "lines": 71,
+       "temporaries": 4,
+       "labels": 1,
+       "gotos": 2,
+       "terminationChecks": 8,
        "frameChecks": 4,
        "requires": 0
       }
@@ -4197,11 +4488,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4260,11 +4556,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4323,11 +4624,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4365,6 +4671,72 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 97,
+    "counts": {
+     "genericTemporaries": 6,
+     "gotos": 2,
+     "nativeNames": 3
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 16,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 32,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 41,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 41,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 42,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 44,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 61,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 61,
+      "category": "nativeNames",
+      "text": "LAB_00e112c4"
+     },
+     {
+      "line": 68,
+      "category": "nativeNames",
+      "text": "LAB_00e112c4"
+     },
+     {
+      "line": 76,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 76,
+      "category": "nativeNames",
+      "text": "LAB_00e112c4"
+     }
     ]
    }
   },
@@ -6412,11 +6784,16 @@
        "constantConditions": 3,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 1,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 1,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 10,
        "controlAcquires": 0,
@@ -6475,11 +6852,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6538,11 +6920,16 @@
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6601,11 +6988,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6642,6 +7034,597 @@
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 294,
+    "counts": {
+     "genericTemporaries": 15,
+     "gotos": 46,
+     "nativeNames": 55
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 21,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 21,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 22,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 28,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 28,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 30,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 30,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 34,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 34,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 36,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 36,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 41,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 41,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 44,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 44,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 46,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 46,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 51,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 51,
+      "category": "nativeNames",
+      "text": "LAB_00e0fd75"
+     },
+     {
+      "line": 52,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 52,
+      "category": "nativeNames",
+      "text": "LAB_00e0fbf4"
+     },
+     {
+      "line": 55,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 55,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 58,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 58,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 60,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 60,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 65,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 65,
+      "category": "nativeNames",
+      "text": "LAB_00e0fd75"
+     },
+     {
+      "line": 66,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 66,
+      "category": "nativeNames",
+      "text": "LAB_00e0fbf4"
+     },
+     {
+      "line": 69,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 69,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e0fbf4"
+     },
+     {
+      "line": 70,
+      "category": "nativeNames",
+      "text": "LAB_00e0fbf4"
+     },
+     {
+      "line": 74,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 74,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 76,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e0fbf4"
+     },
+     {
+      "line": 83,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 83,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 85,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 85,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 96,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 97,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 99,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 99,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 104,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 112,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 115,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 123,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 126,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 132,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 133,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 133,
+      "category": "nativeNames",
+      "text": "LAB_00e10323"
+     },
+     {
+      "line": 135,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 135,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 140,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 141,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 141,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 147,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 150,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 150,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 157,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 157,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 159,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 159,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 163,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 163,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 165,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 165,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 166,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 167,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 167,
+      "category": "nativeNames",
+      "text": "LAB_00e10323"
+     },
+     {
+      "line": 170,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 170,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e10323"
+     },
+     {
+      "line": 171,
+      "category": "nativeNames",
+      "text": "LAB_00e10323"
+     },
+     {
+      "line": 172,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 173,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e10323"
+     },
+     {
+      "line": 179,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 179,
+      "category": "nativeNames",
+      "text": "LAB_00e1036a"
+     },
+     {
+      "line": 182,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 182,
+      "category": "nativeNames",
+      "text": "LAB_00e1036a"
+     },
+     {
+      "line": 184,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 184,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1036a"
+     },
+     {
+      "line": 185,
+      "category": "nativeNames",
+      "text": "LAB_00e1036a"
+     },
+     {
+      "line": 189,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 189,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 195,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 195,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 197,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 197,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 200,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 200,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 202,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 202,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 205,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 205,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 207,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 207,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 210,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 210,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 212,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 212,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 246,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 246,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 251,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 251,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 256,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 256,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 261,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 261,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 267,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1036a"
+     },
+     {
+      "line": 268,
+      "category": "nativeNames",
+      "text": "LAB_00e109a6"
+     },
+     {
+      "line": 270,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     },
+     {
+      "line": 273,
+      "category": "nativeNames",
+      "text": "LAB_00e0fd75"
+     },
+     {
+      "line": 276,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 276,
+      "category": "nativeNames",
+      "text": "LAB_00e109ab"
+     }
     ]
    }
   },
@@ -7143,7 +8126,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 84,
+     "sourceLine": 85,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7152,7 +8135,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 88,
+     "sourceLine": 89,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7161,7 +8144,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 91,
+     "sourceLine": 92,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7174,7 +8157,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 8,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -7193,22 +8176,27 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 141,
+       "tailGuards": 181,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 140,
+       "sharedExitTests": 0,
+       "gotoElse": 180,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 1,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 8,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 4,
+       "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 5,
+       "sunkLocals": 13,
        "cleanupClosureNames": 0,
        "parentheses": 2,
        "cosmetics": 0,
@@ -7226,11 +8214,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 69,
-       "temporaries": 5,
-       "labels": 5,
-       "gotos": 7,
-       "terminationChecks": 6,
+       "lines": 70,
+       "temporaries": 1,
+       "labels": 1,
+       "gotos": 2,
+       "terminationChecks": 9,
        "frameChecks": 4,
        "requires": 0
       }
@@ -7263,11 +8251,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -7326,11 +8319,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -7389,11 +8387,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -7431,6 +8434,41 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 98,
+    "counts": {
+     "gotos": 2,
+     "nativeNames": 3
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 62,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 62,
+      "category": "nativeNames",
+      "text": "LAB_00e11a0a"
+     },
+     {
+      "line": 66,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 66,
+      "category": "nativeNames",
+      "text": "LAB_00e11a0a"
+     },
+     {
+      "line": 71,
+      "category": "nativeNames",
+      "text": "LAB_00e11a0a"
+     }
     ]
    }
   },
@@ -8768,7 +9806,7 @@
     },
     {
      "function": "helper_E12F20",
-     "sourceLine": 238,
+     "sourceLine": 237,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8777,7 +9815,7 @@
     },
     {
      "function": "helper_E13310",
-     "sourceLine": 271,
+     "sourceLine": 270,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8786,7 +9824,7 @@
     },
     {
      "function": "helper_E137B0",
-     "sourceLine": 308,
+     "sourceLine": 306,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8825,11 +9863,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -8888,11 +9931,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -8951,11 +9999,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9014,11 +10067,16 @@
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9077,11 +10135,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 2,
        "controlAcquires": 0,
@@ -9140,11 +10203,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9203,11 +10271,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9240,7 +10313,7 @@
      },
      "GuildmasterHelp": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 3,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -9266,15 +10339,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 9,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 2,
+       "sunkLocals": 4,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
@@ -9292,10 +10370,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 39,
-       "temporaries": 2,
-       "labels": 1,
-       "gotos": 9,
+       "lines": 38,
+       "temporaries": 1,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 5,
        "frameChecks": 6,
        "requires": 0
@@ -9329,11 +10407,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9392,11 +10475,16 @@
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 60,
        "booleanBranches": 1,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 4,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
@@ -9418,10 +10506,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 36,
+       "lines": 35,
        "temporaries": 3,
-       "labels": 1,
-       "gotos": 3,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 3,
        "frameChecks": 3,
        "requires": 0
@@ -9455,11 +10543,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9495,6 +10588,257 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": []
+   },
+   "readability": {
+    "lines": 353,
+    "counts": {
+     "genericTemporaries": 41,
+     "gotos": 1,
+     "nativeNames": 6
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 105,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 106,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 106,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 106,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 106,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 107,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 111,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 112,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 116,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 117,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 117,
+      "category": "nativeNames",
+      "text": "LAB_00e12a9c"
+     },
+     {
+      "line": 120,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 120,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 121,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 121,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 122,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 122,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 124,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 125,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 126,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 126,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 127,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 128,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 129,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 129,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 130,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 133,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 134,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 143,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 144,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 144,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 146,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 151,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 153,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 154,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 160,
+      "category": "nativeNames",
+      "text": "helper_E13310"
+     },
+     {
+      "line": 167,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 168,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 168,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 170,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 171,
+      "category": "nativeNames",
+      "text": "LAB_00e12a9c"
+     },
+     {
+      "line": 172,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 282,
+      "category": "nativeNames",
+      "text": "helper_E13310"
+     },
+     {
+      "line": 283,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 295,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 301,
+      "category": "nativeNames",
+      "text": "helper_E137B0"
+     },
+     {
+      "line": 307,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 319,
+      "category": "nativeNames",
+      "text": "helper_E137B0"
+     }
+    ]
    }
   }
  },

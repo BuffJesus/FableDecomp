@@ -54,12 +54,15 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: *(undefined4 *)__element(\"GuildMasterDialogue\", 0) = 0;",
-            "unlifted: *(undefined1 *)__element(\"GuildMasterDialogue\", 1) = 0;"
+          "todo": [],
+          "calls": [
+            "QUESTSTATE_SetBool",
+            "QUESTSTATE_SetBool",
+            "QUESTSTATE_SetBool",
+            "QUESTSTATE_SetBool",
+            "QUESTSTATE_SetBool"
           ],
-          "calls": [],
-          "lines": 2,
+          "lines": 5,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -581,7 +584,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 72
+        "todo": 70
       }
     }
   ],
@@ -592,6 +595,6 @@
     "functionSyntaxPassed": 7,
     "fileSyntaxPassed": 2,
     "fileSyntaxChecked": 2,
-    "todo": 72
+    "todo": 70
   }
 }

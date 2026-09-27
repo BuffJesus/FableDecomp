@@ -146,14 +146,14 @@ end
 function WatchForRegionTransitions(quest)
     local allCreaturesIndex, scratchValue
     while not quest:GetStateBool("OutroDone") do
-        if not quest:NewScriptFrame() then goto LAB_00dfca72 end
+        if not quest:NewScriptFrame() then return end
         if quest:MsgOnRegionLoaded() then
             UpdateLiveEnemies(quest)
             scratchValue = 0
             if quest:GetStateListCount("AllCreatures") ~= 0 then
                 allCreaturesIndex = 0
                 repeat
-                    if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", allCreaturesIndex), nil --[[operand lost by the decompiler]])
                     quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", allCreaturesIndex), false)
                     quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", allCreaturesIndex), "FACTION_BANDITS")
@@ -161,11 +161,10 @@ function WatchForRegionTransitions(quest)
                     allCreaturesIndex = allCreaturesIndex + 1
                 until scratchValue >= quest:GetStateListCount("AllCreatures")
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00dfca72 end
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("EnteredNewRegion", true)
         end
     end
-    ::LAB_00dfca72::
 end
 
 -- Q_TraderConflictGood.WatchForHittingEnemies (retail 0x00dfc630)
@@ -302,12 +301,11 @@ end
 -- Q_TraderConflictGood.WatchForKilledPeople (retail 0x00dfc290)
 function WatchForKilledPeople(quest)
     while quest:GetStateInt("TradersReachedTeleporter") < 3 do
-        if not quest:NewScriptFrame() then goto LAB_00dfc302 end
+        if not quest:NewScriptFrame() then return end
         if quest:GetHero():MsgGetThingsKilled() then
             quest:SetMasterGameState("TCGKillNoBandits", false)
         end
     end
-    ::LAB_00dfc302::
 end
 
 -- Q_TraderConflictGood.UpdateLiveEnemies (retail 0x00dfc320)

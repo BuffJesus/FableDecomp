@@ -13,17 +13,12 @@ function Main(questObject)
     Quest:AddEntityBinding("EmptyGrave", "MazeResearch/Entities/EmptyGrave")
     Quest:AddEntityBinding("HistoryBookcase", "MazeResearch/Entities/HistoryBookcase")
     Quest:FinalizeEntityBindings()
-    local ppVar3 = Quest:GetActiveQuestName()
-    Quest:SetQuestCardObjective(ppVar3, "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01", "HeroGuildComplexInside", "")
+    Quest:SetQuestCardObjective(Quest:GetActiveQuestName(), "TEXT_QUEST_MAZE_RESEARCH_OBJECTIVE_01", "HeroGuildComplexInside", "")
 end
 
 function OnPersist(questObject, context)
     Quest = questObject
-    local swordTaken = Quest:GetStateBool("SwordTaken") or false
-    swordTaken = Quest:PersistTransferBool(context, "SwordTaken", swordTaken)
-    Quest:SetStateBool("SwordTaken", swordTaken)
-    local bookRead = Quest:GetStateBool("BookRead") or false
-    bookRead = Quest:PersistTransferBool(context, "BookRead", bookRead)
-    Quest:SetStateBool("BookRead", bookRead)
+    Quest:SetStateBool("SwordTaken", Quest:PersistTransferBool(context, "SwordTaken", Quest:GetStateBool("SwordTaken")))
+    Quest:SetStateBool("BookRead", Quest:PersistTransferBool(context, "BookRead", Quest:GetStateBool("BookRead")))
 end
 

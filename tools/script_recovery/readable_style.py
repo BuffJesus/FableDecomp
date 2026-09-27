@@ -444,7 +444,13 @@ def tidy_closures(lines):
     count = 0
     structure = _structure(lines)
     ranges = _closure_ranges(structure) or []
-    for a, b in ranges:
+    def straight_line(a, b):
+        return not any(re.search(r'^\s*(?:if|elseif|else|while|for|repeat|until|do|goto|return|break|end|function|local function)\b|::',
+                                 line) for line in _structure(lines[a + 1:b]))
+
+    for a, b in reversed(ranges):
+        if not straight_line(a, b):
+            continue
         body = lines[a + 1:b]
         literal = re.compile(r'(\s*)(\w+) = (true|false|nil|-?\d+(?:\.\d+)?)\n')
         i = 0
@@ -469,6 +475,8 @@ def tidy_closures(lines):
     if flow.ok:
         structure = flow.structure
         for a, b in _closure_ranges(structure) or []:
+            if not straight_line(a, b):
+                continue
             name_m = re.match(r'\s*local function (\w+)\(', structure[a])
             if not name_m:
                 continue
@@ -924,6 +932,28 @@ def sink_hoisted_locals(lines):
     return lines, count
 
 
+def _call_statement(expression):
+    """Whether a complete expression is a simple Lua call statement.
+
+    A call somewhere inside an expression is not enough: `prefix .. f()` and
+    `f() + g()` cannot stand alone as statements. Keep their assignment so all
+    calls, operators and short-circuit evaluation retain their original order.
+    """
+    code = _structure_line(expression).strip()
+    head = re.match(r'[A-Za-z_]\w*(?:\.\w+)*(?::\w+)?\s*\(', code)
+    if not head:
+        return False
+    depth = 1
+    for i in range(head.end(), len(code)):
+        if code[i] == '(':
+            depth += 1
+        elif code[i] == ')':
+            depth -= 1
+            if depth == 0:
+                return i == len(code) - 1
+    return False
+
+
 def prune_dead_defs(lines):
     """A temporary's assignment whose value no read can reach: gone when the value is a literal or a
     state query, kept as the bare call when it has effects (`quest:NewScriptFrame(me)`)."""
@@ -949,8 +979,10 @@ def prune_dead_defs(lines):
                 lines[d] = ''
             elif self_only:
                 continue                              # `v = v and f()`: keep the statement as is
-            else:
+            elif _call_statement(m.group(2)):
                 lines[d] = f'{m.group(1)}{m.group(2)}\n'
+            else:
+                continue
             count += 1
     return lines, count
 
@@ -1718,10 +1750,28 @@ def split_initialised_locals(lines):
 
 def drop_free_suffixes(lines):
     """`guildStagBeetle2` whose base name `guildStagBeetle` no longer occurs in the function (the earlier
-    holder was inlined away): the base name."""
+    holder was inlined away): the base name, only for a proven local binding."""
     count = 0
     text = ''.join(lines)
     idents = {t.group(0) for t in re.finditer(r'[A-Za-z_]\w*', text)}
+    # A bare assignment can write a global/upvalue. Tokenize the whole function
+    # so declarations inside multiline comments/strings cannot establish scope.
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('comment', 'longcomment', 'string', 'longstring')
+                   else t[0] for t in tokens(text))
+    structure = code.splitlines(keepends=True)
+    declarations = {}
+    header = re.fullmatch(r'(?:local )?function [\w.:]+\(([^)]*)\)', structure[0].strip()) if structure else None
+    if header:
+        for name in header[1].split(','):
+            name = name.strip()
+            if re.fullmatch(r'[A-Za-z_]\w*', name):
+                declarations.setdefault(name, []).append((0, 1, len(structure[0])))
+    for i, line in enumerate(structure):
+        decl = re.match(r'^( *)local (?!function\b)([\w, ]+?)(?:\s*=|\s*$)', line)
+        if decl:
+            for name in decl[2].split(','):
+                declarations.setdefault(name.strip(), []).append((i, len(decl[1]), decl.end()))
     renames = {}
     for name in sorted(idents):
         m = re.fullmatch(r'([A-Za-z]\w*?[A-Za-z])(\d+)', name)   # `thing_38` keeps its slot suffix
@@ -1729,6 +1779,16 @@ def drop_free_suffixes(lines):
             continue
         if re.search(r'(?m)^\s*(?:local )?function\s+' + re.escape(name) + r'\b', text):
             continue                                   # a function definition, not a local
+        bindings = declarations.get(name, [])
+        if len(bindings) != 1:
+            continue                                   # global/upvalue or shadowed binding
+        start, indent, rhs = bindings[0]
+        end = next((i for i in range(start + 1, len(structure))
+                    if structure[i].strip() and len(structure[i]) - len(structure[i].lstrip(' ')) < indent), len(structure))
+        word = r'\b' + re.escape(name) + r'\b'
+        if (re.search(word, structure[start][rhs:]) or
+                any(re.search(word, line) for line in structure[:start] + structure[end:])):
+            continue                                   # initializer or out-of-scope use reads an outer value
         if not any(re.match(r'\s*(?:local )?' + re.escape(name) + r'\s*(?:,[\w\s,]*)?=(?!=)', l) for l in lines):
             continue                                   # not assigned here: a bare call statement starts
                                                        # with its name too (`helper_E12F20(quest)`)
@@ -2074,11 +2134,16 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('constantConditions', fold_constant_conditions)
         total += run('emptyElse', prune_empty_else)
         total += run('unusedClosures', prune_unused_closures)
+        total += run('sharedExitTests', fold_shared_exit_tests)
         total += run('gotoElse', fold_goto_else)
         total += run('booleanBranches', fold_boolean_branches)
+        total += run('booleanJumpChains', fold_boolean_jump_chains)
         total += run('elseif', fold_elseif)
         total += run('elseExit', fold_else_exit)
         total += run('gotoReturn', fold_goto_return)
+        total += run('nestedReturnJumps', fold_nested_return_jumps)
+        total += run('loopExitJumps', fold_loop_exit_jumps)
+        total += run('cleanupExitJumps', fold_cleanup_exit_jumps)
         total += run('ifAroundWhile', fold_if_around_while)
         return total
 
@@ -2624,6 +2689,11 @@ def fold_goto_return(lines):
         rest = [l for l in lines[i + 1:] if l.strip()]
         if len(rest) != 2 or not re.fullmatch(r'    return(?: [^\n]*)?\n', rest[0]) or rest[1] != 'end\n':
             continue
+        # A return expression evaluated at a jump site may bind to a different
+        # local there. Only scope-independent returns can move without a lexical
+        # binding proof (a shadowed result in a nested block is not the tail's result).
+        if _line_reads(_structure_line(rest[0])):
+            continue
         ret = rest[0].strip()
         label = m.group(1)
         for j, l in enumerate(lines):
@@ -2643,6 +2713,271 @@ def fold_goto_return(lines):
         if not re.search(r'\bgoto ' + label + r'\b', ''.join(lines)):
             lines[i] = ''
     return lines, count
+
+
+def fold_shared_exit_tests(lines):
+    """Combine two otherwise-empty branches that jump to the same label.
+
+    Short-circuit OR preserves the order and number of condition evaluations.
+    This does not move the destination or duplicate any branch body.
+    """
+    # The emitter uses one statement per line. Decline text with multiline
+    # literals/comments rather than interpreting their contents as branches.
+    text = ''.join(lines)
+    if re.search(r'\[=*\[|\\(?:\r?\n|z)', text):
+        if any(t.lastgroup in ('longstring', 'longcomment', 'string') and '\n' in t[0] for t in tokens(text)):
+            return lines, 0
+    count, index = 0, 0
+    while index + 4 < len(lines):
+        first = re.fullmatch(r'([ \t]*)if (.+) then\n', lines[index])
+        if first:
+            indent = first[1]
+            jump = re.fullmatch(re.escape(indent) + r'    goto (\w+)\n', lines[index + 1])
+            second = re.fullmatch(re.escape(indent) + r'    if (.+) then goto (\w+) end\n', lines[index + 3])
+            if (jump and second and jump[1] == second[2]
+                    and lines[index + 2] == indent + 'else\n'
+                    and lines[index + 4] == indent + 'end\n'):
+                lines[index:index + 5] = [f'{indent}if ({first[2]}) or ({second[1]}) then goto {jump[1]} end\n']
+                count += 1
+        index += 1
+    return lines, count
+
+
+def fold_boolean_jump_chains(lines):
+    """A private boolean built through a shared jump target becomes short-circuit Lua.
+
+    Every incoming edge must belong to the chain. The temporary must be a unique
+    local, uncaptured and unread by its conditions, so delaying its intermediate
+    assignment cannot be observed by a condition's calls.
+    """
+    flow = Flow(lines)
+    if not flow.ok:
+        return lines, 0
+    declared = Counter(_declared_temporaries(flow.structure))
+    code = '\n'.join(flow.structure)
+    labels = Counter(re.findall(r'::(\w+)::', code))
+    jumps = Counter(re.findall(r'\bgoto (\w+)\b', code))
+    for start, raw in enumerate(lines):
+        first = re.fullmatch(r'([ \t]*)(?:if .+ then goto \w+ end|\w+ = (?:true|false))\n', raw)
+        if not first:
+            continue
+        indent = first[1]
+        conditions, target, store = [], None, None
+        i = start
+        while i < len(lines):
+            guard = re.fullmatch(re.escape(indent) + r'if (.+) then goto (\w+) end\n', lines[i])
+            assignment = re.fullmatch(re.escape(indent) + r'(\w+) = (true|false)\n', lines[i])
+            if guard and (target is None or target == guard[2]):
+                target = guard[2]
+                conditions.append(guard[1])
+            elif assignment and store is None:
+                store = (assignment[1], assignment[2])
+            else:
+                break
+            i += 1
+        if not conditions or store is None or i + 3 >= len(lines):
+            continue
+        name, initial = store
+        if declared[name] != 1 or name in flow.pinned:
+            continue
+        if any(name in _line_reads(_structure_line(c)) for c in conditions):
+            continue
+        done = re.fullmatch(re.escape(indent) + r'goto (\w+)\n', lines[i])
+        if not done or done[1] == target:
+            continue
+        final = 'false' if initial == 'true' else 'true'
+        expected = [f'{indent}::{target}::\n', f'{indent}{name} = {final}\n', f'{indent}::{done[1]}::\n']
+        if lines[i + 1:i + 4] != expected:
+            continue
+        if labels[target] != 1 or labels[done[1]] != 1 or jumps[target] != len(conditions) or jumps[done[1]] != 1:
+            continue
+        expression = ' or '.join('(' + c + ')' for c in conditions)
+        rhs = ('not ' if initial == 'true' else 'not not ') + '(' + expression + ')'
+        lines[start:i + 4] = [f'{indent}{name} = {rhs}\n']
+        return lines, len(conditions) + 1
+    return lines, 0
+
+
+def fold_nested_return_jumps(lines):
+    """Replace jumps to an immediate bare return, including nested early exits.
+
+    No return expression is moved across scopes: shadowed locals would change its
+    meaning. Duplicate label names and closure bodies are deliberately excluded.
+    A block around a non-tail return keeps Lua's last-statement grammar intact.
+    """
+    structure = _structure(lines)
+    ranges = _closure_ranges(structure)
+    if ranges is None:
+        return lines, 0
+    excluded = {i for a, b in ranges for i in range(a, b + 1)}
+    labels = Counter(re.findall(r'::(\w+)::', '\n'.join(structure)))
+    count = 0
+    for i, raw in enumerate(structure):
+        match = re.fullmatch(r'\s*::(\w+)::\s*', raw)
+        if not match or i in excluded or labels[match[1]] != 1:
+            continue
+        nxt = next((j for j in range(i + 1, len(structure)) if structure[j].strip()), None)
+        implicit_tail = (raw.startswith('    ::') and not raw.startswith('     ')
+                         and nxt is not None and structure[nxt] == 'end'
+                         and not any(s.strip() for s in structure[nxt + 1:]))
+        if nxt is None or (structure[nxt].strip() != 'return' and not implicit_tail):
+            continue
+        label = match[1]
+        for j, line in enumerate(lines):
+            if j in excluded:
+                continue
+            jump = re.fullmatch(r'([ \t]*)goto ' + re.escape(label) + r'\s*\n', line)
+            if jump:
+                following = next((s.strip() for s in structure[j + 1:] if s.strip()), 'end')
+                tail = following == 'end' or following == 'else' or following.startswith(('elseif ', 'until '))
+                lines[j] = jump[1] + ('return' if tail else 'do return end') + '\n'
+                count += 1
+            elif re.fullmatch(r'[ \t]*if .+ then goto ' + re.escape(label) + r' end\n', line):
+                lines[j] = re.sub(r'\bthen goto ' + re.escape(label) + r' end\n$', 'then return end\n', line)
+                count += 1
+        remaining = '\n'.join(_structure(lines))
+        if not re.search(r'\bgoto ' + re.escape(label) + r'\b', remaining):
+            lines[i] = ''
+    return lines, count
+
+
+def fold_loop_exit_jumps(lines):
+    """A jump to immediately after the innermost loop is an ordinary break.
+
+    Retain jumps out of multiple loops and across intervening cleanup. Parsing
+    lexical loop ownership matters: replacing an outer-loop jump inside an inner
+    loop with break would silently change quest behavior.
+    """
+    structure = _structure(lines)
+    stack, loops, owners = [], {}, {}
+    for i, raw in enumerate(structure):
+        line = raw.strip()
+        if re.fullmatch(r'(?:local )?function \w+\([^)]*\)', line):
+            stack.append(('function', i))
+        elif re.fullmatch(r'(?:while .+ do|for .+ do|repeat)', line):
+            stack.append(('loop', i))
+        elif re.fullmatch(r'(?:if .+ then|do)', line):
+            stack.append(('block', i))
+        elif line == 'end' or line.startswith('until '):
+            if not stack:
+                return lines, 0
+            kind, start = stack.pop()
+            if kind == 'loop':
+                loops[start] = i
+        elif 'function' in line:
+            # Anonymous/multiline function syntax is outside the emitter shape.
+            return lines, 0
+        if re.search(r'\bgoto \w+\b', line):
+            for kind, start in reversed(stack):
+                if kind == 'function':
+                    break
+                if kind == 'loop':
+                    owners[i] = start
+                    break
+    if stack:
+        return lines, 0
+    label_counts = Counter(re.findall(r'::(\w+)::', '\n'.join(structure)))
+    exits = {}
+    for start, end in loops.items():
+        nxt = next((j for j in range(end + 1, len(structure)) if structure[j].strip()), None)
+        label = re.fullmatch(r'\s*::(\w+)::\s*', structure[nxt]) if nxt is not None else None
+        if label and label_counts[label[1]] == 1:
+            exits[start] = (label[1], nxt)
+    count = 0
+    for i, owner in owners.items():
+        if owner not in exits:
+            continue
+        label, _ = exits[owner]
+        raw = lines[i]
+        standalone = re.fullmatch(r'([ \t]*)goto ' + re.escape(label) + r'\n', raw)
+        if standalone:
+            lines[i] = standalone[1] + 'break\n'
+            count += 1
+        elif re.fullmatch(r'[ \t]*if .+ then goto ' + re.escape(label) + r' end\n', raw):
+            lines[i] = re.sub(r'\bthen goto ' + re.escape(label) + r' end\n$', 'then break end\n', raw)
+            count += 1
+    remaining = '\n'.join(_structure(lines))
+    for label, i in exits.values():
+        if not re.search(r'\bgoto ' + re.escape(label) + r'\b', remaining):
+            lines[i] = ''
+    return lines, count
+
+
+def fold_cleanup_exit_jumps(lines):
+    """Inline a short, straight cleanup tail at its early exits.
+
+    Only one or two calls and a void return are moved. Every local they read must
+    be a unique outer binding declared before all jump sites. This rejects shadowed
+    movie/resource handles, loop variables and Lua to-be-closed locals.
+    """
+    structure = _structure(lines)
+    if any('<close>' in s or '<const>' in s for s in structure):
+        return lines, 0
+    ranges = _closure_ranges(structure)
+    if ranges is None:
+        return lines, 0
+    excluded = {i for a, b in ranges for i in range(a, b + 1)}
+    label_counts = Counter(re.findall(r'::(\w+)::', '\n'.join(structure)))
+    declarations = {}
+    for i, line in enumerate(structure):
+        decl = re.match(r'^( *)local (?!function\b)([\w, ]+?)(?:\s*=|\s*$)', line)
+        if decl:
+            for name in decl[2].split(','):
+                declarations.setdefault(name.strip(), []).append((i, len(decl[1]) == 4))
+        local_function = re.match(r'^( *)local function (\w+)\(', line)
+        if local_function:
+            declarations.setdefault(local_function[2], []).append((i, len(local_function[1]) == 4))
+        params = re.search(r'\bfunction(?:\s+[\w.:]+)?\s*\(([^)]*)\)', line)
+        if params:
+            for name in params[1].split(','):
+                declarations.setdefault(name.strip(), []).append((i, i == 0))
+        loop = re.match(r'\s*for ([\w, ]+?)(?:\s*=|\s+in\s)', line)
+        if loop:
+            for name in loop[1].split(','):
+                declarations.setdefault(name.strip(), []).append((i, False))
+    for i, line in enumerate(structure):
+        label = re.fullmatch(r'    ::(\w+)::', line)
+        if not label or i in excluded or label_counts[label[1]] != 1:
+            continue
+        tail = [j for j in range(i + 1, len(lines)) if structure[j].strip()]
+        if not tail or structure[tail[-1]] != 'end':
+            continue
+        body = tail[:-1]
+        if body and structure[body[-1]] == '    return':
+            body = body[:-1]
+        if not 1 <= len(body) <= 2 or any(not re.fullmatch(r'    [\w.:]+\(.*\)', structure[j]) for j in body):
+            continue
+        # Preserve diagnostic comments rather than copying or discarding them.
+        if any(t.lastgroup in ('comment', 'longcomment')
+               for t in tokens(''.join(lines[i + 1:tail[-1]]))):
+            continue
+        reads = set().union(*(_line_reads(structure[j]) for j in body))
+        sites = [j for j, s in enumerate(structure) if re.search(r'\bgoto ' + re.escape(label[1]) + r'\b', s)]
+        if not sites or any(j in excluded for j in sites):
+            continue
+        if any(len(declarations[n]) != 1 or not declarations[n][0][1]
+               or declarations[n][0][0] >= min(sites) for n in reads if n in declarations):
+            continue
+        calls = [lines[j].strip() for j in body]
+        edits = {}
+        for j in sites:
+            standalone = re.fullmatch(r'([ \t]*)goto ' + re.escape(label[1]) + r'\n', lines[j])
+            inline = re.fullmatch(r'([ \t]*if .+ then )(?:goto ' + re.escape(label[1]) + r') end\n', lines[j])
+            if standalone:
+                following = next((s.strip() for s in structure[j + 1:] if s.strip()), 'end')
+                final = following in ('end', 'else') or following.startswith(('elseif ', 'until '))
+                edits[j] = ''.join(standalone[1] + call + '\n' for call in calls)
+                edits[j] += standalone[1] + ('return' if final else 'do return end') + '\n'
+            elif inline:
+                edits[j] = inline[1] + '; '.join([*calls, 'return']) + ' end\n'
+            else:
+                break
+        if len(edits) == len(sites):
+            for j, text in edits.items():
+                lines[j] = text
+            lines[i] = ''
+            return ''.join(lines).splitlines(keepends=True), len(edits)
+    return lines, 0
 
 
 def fold_if_around_while(lines):

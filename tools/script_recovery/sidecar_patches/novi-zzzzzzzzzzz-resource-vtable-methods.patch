@@ -1,0 +1,93 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 5243110..2cf3f0a 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -220,6 +220,71 @@ public:
+             throw std::runtime_error("Retail resource ClearAllActions is unavailable");
+         table->ClearAllActions(expert);
+     }
++    // The rest of CScriptGameResourceObjectScriptedThingBaseVTable, for quest scripts that call entity methods on a
++    // resource they acquired (Expression_Dig 0x00EEA9D0: ClearAllActionsIncludingLoopingAnimations, then
++    // PlayLoopingAnimation on the hero's resource). Same contract as above: an empty resource is a no-op.
++    CScriptGameResourceObjectScriptedThingBaseVTable* ResourceTable(CScriptGameResourceObjectScriptedThingBase* expert,
++                                                                   const char* method) {
++        auto* table = reinterpret_cast<CScriptGameResourceObjectScriptedThingBaseVTable*>(expert->pVTable);
++        if (!table) throw std::runtime_error(std::string("Retail resource ") + method + " is unavailable");
++        return table;
++    }
++    void MoveToThing(unsigned id, sol::object thing, float radius, int moveType, bool b1, bool b2, bool b3, bool b4) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        ResourceTable(expert, "MoveToThing")->MoveToThing(expert, ResolveThingArgument(thing), radius,
++                                                          static_cast<EScriptEntityMoveType>(moveType), b1, b2, b3, b4);
++    }
++    void StopFollowingThing(unsigned id, sol::object thing) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        ResourceTable(expert, "StopFollowingThing")->StopFollowingThing(expert, ResolveThingArgument(thing));
++    }
++    bool IsFollowActionRunning(unsigned id, sol::object thing) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return false;
++        return ResourceTable(expert, "IsFollowActionRunning")->IsFollowActionRunning(expert, ResolveThingArgument(thing));
++    }
++    void PerformExpression(unsigned id, sol::object target, const std::string& expression) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        FableString name(expression.c_str());
++        ResourceTable(expert, "PerformExpression")->PerformExpression(expert, ResolveThingArgument(target), name.get());
++    }
++    void PlayCombatAnimation(unsigned id, const std::string& animationName, bool b1, bool b2, bool b3, bool b4, bool b5, bool b6) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        FableString animation(animationName.c_str());
++        ResourceTable(expert, "PlayCombatAnimation")->PlayCombatAnimation(expert, animation.get(), b1, b2, b3, b4, b5, b6);
++    }
++    void PlayLoopingAnimation(unsigned id, const std::string& animationName, int loopCount,
++                              bool b1, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        FableString animation(animationName.c_str());
++        ResourceTable(expert, "PlayLoopingAnimation")->PlayLoopingAnimation(expert, animation.get(), loopCount,
++                                                                            b1, b2, b3, b4, b5, b6, b7);
++    }
++    void ClearAllActionsIncludingLoopingAnimations(unsigned id) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        ResourceTable(expert, "ClearAllActionsIncludingLoopingAnimations")->ClearAllActionsIncludingLoopingAnimations(expert);
++    }
++    void DropGenericBox(unsigned id) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        ResourceTable(expert, "DropGenericBox")->DropGenericBox(expert);
++    }
++    void UnsheatheWeapons(unsigned id) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return;
++        ResourceTable(expert, "UnsheatheWeapons")->UnsheatheWeapons(expert);
++    }
++    bool IsFollowingThing(unsigned id) {
++        auto* expert = Get(id, Kind::Resource).resource.pImp.Data;
++        if (!expert) return false;
++        return ResourceTable(expert, "IsFollowingThing")->IsFollowingThing(expert);
++    }
+     // Explicit query on a resource-returned Thing: retail helper 0x00CBE45C,
+     // __fastcall bool(CScriptThing*, const C3DVector*, float). Native husband
+     // home checks (DB1729/DB17D3) call it on the Thing from GetScriptThing, not on
+@@ -2162,6 +2227,16 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["PlayAnimation"] = &LuaRetailResources::PlayAnimation;
+     type["ClearCommands"] = &LuaRetailResources::ClearCommands;
+     type["ClearAllActions"] = &LuaRetailResources::ClearAllActions;
++    type["MoveToThing"] = &LuaRetailResources::MoveToThing;
++    type["StopFollowingThing"] = &LuaRetailResources::StopFollowingThing;
++    type["IsFollowActionRunning"] = &LuaRetailResources::IsFollowActionRunning;
++    type["PerformExpression"] = &LuaRetailResources::PerformExpression;
++    type["PlayCombatAnimation"] = &LuaRetailResources::PlayCombatAnimation;
++    type["PlayLoopingAnimation"] = &LuaRetailResources::PlayLoopingAnimation;
++    type["ClearAllActionsIncludingLoopingAnimations"] = &LuaRetailResources::ClearAllActionsIncludingLoopingAnimations;
++    type["DropGenericBox"] = &LuaRetailResources::DropGenericBox;
++    type["UnsheatheWeapons"] = &LuaRetailResources::UnsheatheWeapons;
++    type["IsFollowingThing"] = &LuaRetailResources::IsFollowingThing;
+     type["ThingIsDistanceFromPositionOver"] = &LuaRetailResources::ThingIsDistanceFromPositionOver;
+     type["ReadAnimationArgument5"] = &LuaRetailResources::ReadAnimationArgument5;
+     type["IsHitByHeroExceptAbility"] = &LuaRetailResources::IsHitByHeroExceptAbility;

@@ -1926,10 +1926,7 @@
           },
           "todo": [
             "label LAB_00e19cd7",
-            "PlayAnimation: unresolved entity receiver/resource in quest context",
-            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
             "goto LAB_00e19d25",
-            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
             "label LAB_00e19d25",
             "label LAB_00e19d43",
             "label LAB_00e19d48",
@@ -1974,9 +1971,12 @@
             "EntitySetAttackThingImmediately",
             "Pause",
             "PlaySoundOnThing",
+            "PlayAnimation",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -2015,7 +2015,7 @@
             "RESOURCE_ReleaseResource",
             "IsActiveThreadTerminating"
           ],
-          "lines": 167,
+          "lines": 166,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2505,7 +2505,7 @@
         "functionSyntaxPassed": 17,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 15
+        "todo": 12
       }
     }
   ],
@@ -2516,6 +2516,6 @@
     "functionSyntaxPassed": 45,
     "fileSyntaxPassed": 11,
     "fileSyntaxChecked": 11,
-    "todo": 22
+    "todo": 19
   }
 }

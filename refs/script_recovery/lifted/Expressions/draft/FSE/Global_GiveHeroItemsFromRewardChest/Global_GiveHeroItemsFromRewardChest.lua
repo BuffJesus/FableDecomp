@@ -26,11 +26,11 @@ function Main(quest)
         bVar4 = not alive
         if bVar4 then goto LAB_00eec676 end
         if not (r1 ~= nil and not r1:IsNull()) then
-            pCVar5 = ""
+            xStack_20 = ""
         else
             xStack_20 = r1:GetDefName()
         end
-        iVar6 = ((pCVar5 == "OBJECT_CHEST_REWARD_ON_DEATH") and 0 or 1)
+        iVar6 = ((xStack_20 == "OBJECT_CHEST_REWARD_ON_DEATH") and 0 or 1)
         cVar3 = not (iVar6 ~= 0)
         if cVar3 then
             alive = not quest:IsActiveThreadTerminating()

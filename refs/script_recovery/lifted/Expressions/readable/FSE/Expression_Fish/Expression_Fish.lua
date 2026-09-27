@@ -5,67 +5,69 @@
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, getAllThingsWithDefNameByDistanceFrom, scratchValue4, scratchValue5
-    local count, scratchValue, globalFishingCamera1, globalFishingCamera, movie, scratchValue14
-    local scratchValue15, msgOnFishingGameFinished
+    local predicateResult, scratchValue4, scratchValue9, string, scratchValue13, scratchValue14
+    local msgOnFishingGameFinished
     if not quest:NewScriptFrame() then return end
-    scratchValue = 0
+    scratchValue9 = 0
     quest:SetQuestAsPersistent(quest:GetActiveQuestName(), false)
     while not quest:IsHeroControlledByPlayer() do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
-    scratchValue4 = 4
-    while not resources:TryAcquire(resource, hero, scratchValue4) do
-        if not quest:NewScriptFrame() then goto LAB_00ee9ee4 end
-        scratchValue4 = 4
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource); return end
     end
     quest:SetEnvironmentalEffectsAlwaysUpdate(true)
-    movie = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:SetToDisplayTutorialsDuringCutscenes(true)
     quest:EntityForceToLookAtNothing(hero)
     quest:PauseAllEntities(true)
     quest:FadeScreenOut(0.5, 0.5)
     quest:Pause(1.0)
     quest:SheatheHeroWeapons()
-    -- TODO(native): ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context; arguments: 
-    if quest:GetMostRecentValidUsedTargetName() == 0x122d70e then
+    resources:ClearAllActionsIncludingLoopingAnimations(resource)
+    local getMostRecentValidUsedTargetName = quest:GetMostRecentValidUsedTargetName()
+    if getMostRecentValidUsedTargetName == "" then
         if not quest:IsActiveThreadTerminating() then
             if quest:IsObjectInThingsPossession("OBJECT_FISHING_ROD_UPGRADED", hero) then
-                if not quest:IsActiveThreadTerminating() then goto LAB_00ee98bc end
+                if not quest:IsActiveThreadTerminating() then string = "OBJECT_FISHING_ROD_UPGRADED"; goto LAB_00ee98bc end
             elseif not quest:IsActiveThreadTerminating() then
+                string = "OBJECT_FISHING_ROD"
                 goto LAB_00ee98bc
             end
             goto FLOW_past_lab_00ee98bc
             ::LAB_00ee98bc::
-            quest:MakeHeroCarryItemInHand(nil --[[missing]], scratchValue4 ~= 0, false)
+            quest:MakeHeroCarryItemInHand(string)
             goto LAB_00ee98de
             ::FLOW_past_lab_00ee98bc::
         end
     elseif not quest:IsActiveThreadTerminating() then
-        quest:MakeHeroCarryItemInHand(nil --[[missing]], nil --[[missing]], nil --[[missing]])
+        quest:MakeHeroCarryItemInHand(getMostRecentValidUsedTargetName)
         goto LAB_00ee98de
     end
-    goto FLOW_past_lab_00ee98de
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00ee98de::
-    -- TODO(native): PlayLoopingAnimation: unresolved entity receiver/resource in quest context; arguments: -1,0,0,0,1,true,0,0
+    resources:PlayLoopingAnimation(resource, "ST_FISHING_IDLE", -1, false, false, false, true, true, false, false)
     predicateResult = false
-    getAllThingsWithDefNameByDistanceFrom = quest:GetAllThingsWithDefNameByDistanceFrom(hero, "MARKER_FISHING_SPOT")
-    count = #getAllThingsWithDefNameByDistanceFrom
+    local getAllThingsWithDefNameByDistanceFrom = quest:GetAllThingsWithDefNameByDistanceFrom(hero, "MARKER_FISHING_SPOT")
+    local count = #getAllThingsWithDefNameByDistanceFrom
     if count < 1 then goto LAB_00ee9adf end
     if not quest:IsActiveThreadTerminating() then
-        scratchValue5 = 0
+        scratchValue4 = 0
         if 0 < count then
             repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00ee9ec0 end
-                if quest:IsFishingSpotEnabled(getAllThingsWithDefNameByDistanceFrom[scratchValue / 12 + 1]) then
+                if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
+                if quest:IsFishingSpotEnabled(getAllThingsWithDefNameByDistanceFrom[scratchValue9 + 1]) then
+                    if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
                     -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_6c,iStack_60 + iVar12 * 0xc);
                     break
                 end
-                scratchValue5 = scratchValue5 + 1
-                scratchValue = scratchValue + 12
-            until scratchValue5 >= count
+                scratchValue4 = scratchValue4 + 1
+                scratchValue9 = scratchValue9 + 1
+            until scratchValue4 >= count
         end
         if not quest:IsActiveThreadTerminating() then
             if not (nil ~= nil and (nil):IsAlive()) then
@@ -76,19 +78,21 @@ function Main(quest)
                 -- TODO(native): fret_0 = quest:GetWaterHeightAtPosition(&xStack_30)
                 local fret_0 = nil --[[unresolved native value]]
                 local position = hero:GetPos()
-                local scratchValue2 = position.y - scratchValue14
+                local scratchValue = position.y - scratchValue13
                 local scratchValue3 = position.z - fret_0
-                if 100.0 <= (position.x - scratchValue15) * (position.x - scratchValue15) + scratchValue2 * scratchValue2 + scratchValue3 * scratchValue3 then goto LAB_00ee9adf end
+                if 100.0 <= (position.x - scratchValue14) * (position.x - scratchValue14) + scratchValue * scratchValue + scratchValue3 * scratchValue3 then goto LAB_00ee9adf end
                 if not quest:IsActiveThreadTerminating() then
                     if not quest:IsActiveThreadTerminating() then quest:EntitySetFacingAngleTowardsThing(hero, nil, true); goto LAB_00ee9adf end
                 end
             end
         end
     end
-    goto FLOW_past_lab_00ee9adf
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00ee9adf::
-    globalFishingCamera1 = quest:GetThingWithScriptName("GlobalFishingCamera1")
-    globalFishingCamera = quest:GetThingWithScriptName("GlobalFishingCamera2")
+    local globalFishingCamera1 = quest:GetThingWithScriptName("GlobalFishingCamera1")
+    local globalFishingCamera = quest:GetThingWithScriptName("GlobalFishingCamera2")
     quest:Pause(1.0)
     quest:CameraUseCameraPoint(globalFishingCamera1, hero, -1.0, 0, -1)
     quest:FadeScreenIn()
@@ -96,32 +100,31 @@ function Main(quest)
     quest:HeroGoFishing(true)
     msgOnFishingGameFinished = quest:MsgOnFishingGameFinished()
     while msgOnFishingGameFinished == nil do
-        if not quest:NewScriptFrame() then goto LAB_00ee9ea5 end
+        if not quest:NewScriptFrame() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         msgOnFishingGameFinished = quest:MsgOnFishingGameFinished()
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00ee9ea5 end
+    if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
     quest:CameraUseCameraPoint(globalFishingCamera, hero, -1.0, 0, -1)
     if not (msgOnFishingGameFinished ~= nil and msgOnFishingGameFinished:IsAlive()) then
-        if not quest:IsActiveThreadTerminating() then
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,1,0,1,true,0,0
-            goto LAB_00ee9cd6
-        end
+        if not quest:IsActiveThreadTerminating() then resources:PlayAnimation(resource, "ST_FISHING_FAILURE", false, true, false, true, true, false, false); goto LAB_00ee9cd6 end
     elseif not quest:IsActiveThreadTerminating() then
         predicateResult = true
-        -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,1,0,1,true,0,0
+        resources:PlayAnimation(resource, "ST_FISHING_SUCCESS", false, true, false, true, true, false, false)
         quest:Pause(0.2)
         goto LAB_00ee9cd6
     end
-    goto FLOW_past_lab_00ee9cd6
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00ee9cd6::
     quest:Pause(3.75)
     quest:FadeScreenOut(0.5, 0.5)
     quest:Pause(1.0)
     if predicateResult then
-        if quest:IsActiveThreadTerminating() then goto LAB_00ee9ea5 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:DisableFishingSpot(nil)
     end
-    quest:MakeHeroCarryItemInHand(nil --[[missing]], predicateResult, nil --[[missing]])
+    quest:MakeHeroCarryItemInHand("")
     quest:EntityResetForceToLookAt(hero)
     quest:CameraResetToViewBehindHero(0.0)
     quest:CameraDefault()
@@ -130,25 +133,19 @@ function Main(quest)
     quest:FadeScreenIn()
     quest:Pause(0.5)
     if predicateResult then
-        if quest:IsActiveThreadTerminating() then goto LAB_00ee9ea5 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:GiveHeroItemsFromContainer(nil, false)
         quest:UpdateFishWeight(msgOnFishingGameFinished)
         quest:RemoveThing(msgOnFishingGameFinished, false, true)
     elseif msgOnFishingGameFinished ~= nil and msgOnFishingGameFinished:IsAlive() then
-        if quest:IsActiveThreadTerminating() then goto LAB_00ee9ea5 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:UpdateFishWeight(msgOnFishingGameFinished)
         quest:GiveHeroItem(msgOnFishingGameFinished)
     end
     quest:SetEnvironmentalEffectsAlwaysUpdate(false)
     quest:SetToDisplayTutorialsDuringCutscenes(false)
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    ::FLOW_past_lab_00ee9cd6::
-    ::LAB_00ee9ea5::
-    ::FLOW_past_lab_00ee9adf::
-    ::LAB_00ee9ec0::
-    ::FLOW_past_lab_00ee98de::
     resources:DestroyMovie(movie)
-    ::LAB_00ee9ee4::
     resources:ReleaseResource(resource)
 end
 

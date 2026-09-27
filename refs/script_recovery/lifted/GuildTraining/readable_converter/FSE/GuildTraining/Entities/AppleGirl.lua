@@ -10,7 +10,7 @@ local appleMode, currentApples, childAppleMode, haveChatted
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult6, predicateResult, ctr_64, questionAnswer, conversationId8, switch, movie
+    local ctr_64, questionAnswer, conversationId8, switch, movie
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -89,14 +89,7 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         while appleMode == 1 do
             if not quest:NewScriptFrame(me) then goto LAB_00d3e1b6 end
-            if not childAppleMode then goto LAB_00d3d987 end
-            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then goto LAB_00d3d987 end
-            predicateResult6 = true
-            goto FLOW_past_lab_00d3d987
-            ::LAB_00d3d987::
-            predicateResult6 = false
-            ::FLOW_past_lab_00d3d987::
-            if predicateResult6 then
+            if not ((not childAppleMode) or quest:IsQuestActive("Q_GuildTrainingPreMelee")) then
                 quest:RemoveThing(me, false, true)
             end
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1 then
@@ -176,14 +169,7 @@ function Main(quest, me)
             ::FLOW_native_label_1::
         end
         while not quest:IsActiveThreadTerminating() do
-            if not childAppleMode then goto LAB_00d3e0a0 end
-            if quest:IsQuestActive("Q_GuildTrainingPreMelee") then goto LAB_00d3e0a0 end
-            predicateResult = true
-            goto FLOW_past_lab_00d3e0a0
-            ::LAB_00d3e0a0::
-            predicateResult = false
-            ::FLOW_past_lab_00d3e0a0::
-            if predicateResult then
+            if not ((not childAppleMode) or quest:IsQuestActive("Q_GuildTrainingPreMelee")) then
                 quest:RemoveThing(me, false, true)
             end
             if not (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and quest:GetTimer(timerId) < 1) then

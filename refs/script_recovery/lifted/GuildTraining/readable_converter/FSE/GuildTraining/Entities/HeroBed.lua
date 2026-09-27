@@ -49,20 +49,18 @@ function Main(quest, me)
             end
         end
     end
-    goto LAB_00d44c44
+    do return end
     ::LAB_00d449bd::
     if #guildBedFloorPallet01 ~= 0 then
-        goto LAB_00d44c44
+        return
     end
-    goto LAB_00d44bc3
+    do return end
     ::LAB_00d44b4d::
-    goto LAB_00d44bc3
+    do return end
     ::LAB_00d4482d::
     if #guildBedFloorPallet01 ~= 0 then
-        goto LAB_00d44c44
+        return
     end
-    ::LAB_00d44bc3::
-    ::LAB_00d44c44::
 end
 
 -- HeroBed.Init (retail 0x00d40be0)

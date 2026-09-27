@@ -88,11 +88,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unnamed field 0x59 written in Init",
-            "unnamed field 0x5a written in Init",
-            "unlifted: CScriptThing::operator=((CScriptThing *)__element(\"ClientInUse\", 1),(CScriptThing *)0x0);"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -110,11 +106,12 @@
             "SetStateBool",
             "SetStateBool",
             "QUESTTHING_Empty",
+            "QUESTTHING_Set",
             "QUESTTHING_Empty",
             "SetStateInt",
             "SetStateBool"
           ],
-          "lines": 24,
+          "lines": 22,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -143,11 +140,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: field operand `(void *)__element(\"ClientInUse\", 0)` not a member; keyed by the transfer name `ClientInUse[0]`",
-            "persist transfer: quest member at this + 0x59 has no PDB name; keyed by the transfer name `ClientInUse[1]`",
-            "persist transfer: quest member at this + 0x5a has no PDB name; keyed by the transfer name `ClientInUse[2]`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -192,16 +185,10 @@
           "lines": 39,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_Bordello/V_Bordello.lua:OnPersist",
-                "line": 29,
-                "message": "FSE/V_Bordello/V_Bordello.lua:OnPersist:29: unexpected symbol near '['"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           }
         },
         {
@@ -365,9 +352,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CScriptThing::operator=((CScriptThing *)__element(\"ClientInUse\", 1),(CScriptThing *)pCVar6"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "IsRegionLoaded",
@@ -377,6 +362,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "GetNearestWithDefName",
+            "QUESTTHING_Set",
             "QUESTTHING_Empty",
             "GetHero",
             "GetNearestWithDefName",
@@ -539,47 +525,9 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x80);",
-            "unnamed field 0x7c",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x90);",
-            "unnamed field 0x8c",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x9c",
-            "unlifted: *piVar4 = *piVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar2;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0xac",
-            "unlifted: *piVar4 = *piVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar2;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
             "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "unlifted: RunCutsceneMacro_Func((CCharString *)&native_arg_param_2,xStack_1c,(void *)0x0,(CTCCarryab",
             "label LAB_00e3ea29",
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)(this + 0xb4));",
-            "unlifted: local piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(this + 0xa0)",
-            "unlifted: local piVar4 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(this + 0xb0)",
-            "unlifted: piVar4 = *(pCVar7 + 0xc)"
+            "SetCutsceneSkippableWhilePaused: not in FSE manifest"
           ],
           "calls": [
             "SetStateBool",
@@ -588,33 +536,33 @@
             "RESOURCE_TryAcquire",
             "ACTORMAP_New",
             "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "FixMovieSequenceCamera",
             "IsActiveThreadTerminating",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "SetCutsceneSkippableWhilePaused",
+            "RESOURCE_RunMacroWithStrings",
             "IsActiveThreadTerminating",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "SetCutsceneSkippableWhilePaused",
             "FixMovieSequenceCamera",
             "SetStateBool",
+            "STRINGMAP_Clear",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 112,
+          "lines": 44,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_Bordello/V_Bordello.lua:helper_E3E720",
-                "line": 19,
-                "message": "FSE/V_Bordello/V_Bordello.lua:helper_E3E720:19: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -646,6 +594,94 @@
           "nativeLabels": []
         },
         {
+          "owner": "V_Bordello",
+          "function": "helper_E44A40",
+          "address": "0x00e44a40",
+          "path": "FSE/V_Bordello/V_Bordello.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": "bool",
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle"
+          ],
+          "lines": 63,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (!bVar3) goto LAB_00e44c26;"
+          ],
+          "nativeLabels": [
+            "LAB_00e44c26"
+          ]
+        },
+        {
+          "owner": "V_Bordello",
+          "function": "helper_E44CC0",
+          "address": "0x00e44cc0",
+          "path": "FSE/V_Bordello/V_Bordello.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": "bool",
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle",
+            "GetHero",
+            "IsWearingHairstyle"
+          ],
+          "lines": 66,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (!bVar8) goto LAB_00e44e30;"
+          ],
+          "nativeLabels": [
+            "LAB_00e44e30"
+          ]
+        },
+        {
           "owner": "Madame",
           "function": "Main",
           "address": "0x00e3bb70",
@@ -662,8 +698,6 @@
             "SetIsPushableByHero: missing spThing (1 args for 2 params)",
             "unlifted: xStack_124._0_3_ = 0;",
             "unlifted: xStack_124_b3 = '\\0';",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
-            "unlifted: pCVar6 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "unlifted: xStack_124_b3 = !(iVar5 != 0);",
             "unlifted: xStack_164 = CVar2 & 0xffffff;",
@@ -697,6 +731,7 @@
             "IsActiveThreadTerminating",
             "AcquireControl",
             "IsActiveThreadTerminating",
+            "RESOURCE_AssignResource",
             "RegisterTimer",
             "SetTimer",
             "IsActiveThreadTerminating",
@@ -706,6 +741,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
+            "STRINGMAP_Set",
             "SetStateBool",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -1122,7 +1158,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1210,
+          "lines": 1211,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1302,8 +1338,6 @@
             "EntitySetPersonalityOverride: not in FSE manifest",
             "unlifted: xStack_15c = xStack_15c | 2;",
             "unlifted: xStack_15c = uVar15 & 0xfffffffd;",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "label LAB_00e40364",
             "GetHealth: missing pThing (0 args for 1 params)",
@@ -1312,9 +1346,7 @@
             "GetHealth: missing pThing (0 args for 1 params)",
             "GetHealth: missing pThing (0 args for 1 params)",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
-            "unlifted: pCVar14 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar14 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
             "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)",
             "label LAB_00e3fdc4",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
@@ -1330,12 +1362,9 @@
             "EntitySetPersonalityOverride: not in FSE manifest",
             "unlifted: xStack_15c = xStack_15c | 2;",
             "unlifted: xStack_15c = uVar15 & 0xfffffffd;",
-            "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
-            "unlifted: pCVar12 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: pCVar12 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)",
             "SetNumberOfTimesHeroHasHadSex: missing count (0 args for 1 params)",
@@ -1375,7 +1404,7 @@
             "EntitySetPersonalityOverride",
             "MsgIsHitByHero",
             "IsActiveThreadTerminating",
-            "RESOURCE_Reset",
+            "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource",
             "AcquireControl",
             "NewScriptFrame",
@@ -1393,7 +1422,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "RESOURCE_Reset",
+            "RESOURCE_PrepareResource",
             "RESOURCE_StartMovie",
             "StartMovieSequence",
             "PauseAllNonScriptedEntities",
@@ -1481,6 +1510,8 @@
             "GiveHeroGold",
             "ENTITYSTATE_GetString",
             "ENGINE_Concat",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
             "SetCutsceneSkippable",
             "IsActiveThreadTerminating",
             "ENGINE_StrCmp",
@@ -1526,7 +1557,7 @@
             "EntitySetPersonalityOverride",
             "MsgIsHitByHero",
             "IsActiveThreadTerminating",
-            "RESOURCE_Reset",
+            "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource",
             "AcquireControl",
             "NewScriptFrame",
@@ -1570,6 +1601,8 @@
             "IsActiveThreadTerminating",
             "ENGINE_Concat",
             "ENGINE_Concat",
+            "STRINGMAP_Set",
+            "STRINGMAP_Set",
             "SetCutsceneSkippable",
             "IsActiveThreadTerminating",
             "SetCutsceneSkippable",
@@ -1592,7 +1625,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 858,
+          "lines": 854,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1715,17 +1748,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: puStack_1c = v_stk_4;",
-            "unlifted: iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,\"POLLY\");",
-            "unlifted: iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,\"AMELIA\");",
-            "unlifted: iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,\"LUCREZIA\");",
-            "unlifted: iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,\"SOPHIA\");",
-            "unlifted: iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,\"HEDWIG\");",
-            "unlifted: if *pOther == nil then",
-            "unlifted: if *pOther == nil then",
-            "unlifted: if *pOther == nil then",
-            "unlifted: if *pOther == nil then",
-            "unlifted: if *pOther == nil then"
+            "unlifted: puStack_1c = v_stk_4;"
           ],
           "calls": [
             "SetStateBool",
@@ -1734,18 +1757,24 @@
             "SetStateBool",
             "ENTITYSTATE_GetString",
             "GetDataString",
+            "ENTITYSTATE_SetString",
             "SetThingHasInformation",
             "EntitySetAsKillable",
             "EntitySetAsToAddToComboMultiplierWhenHit",
             "EntitySetOpinionReactionMask",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt",
+            "ENGINE_StrCmp",
             "SetStateInt"
           ],
-          "lines": 80,
+          "lines": 77,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1849,12 +1878,12 @@
           "nativeSignature": {
             "parameters": [
               {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
+                "native": "dialogueSuffix",
+                "lua": "native_arg_dialogueSuffix",
                 "type": "CCharString *"
               }
             ],
-            "returnKind": null,
+            "returnKind": "string",
             "bsimVoid": false
           },
           "todo": [],
@@ -1887,12 +1916,9 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
             "label LAB_00e40a6c",
-            "unlifted: this_01 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "label LAB_00e40e2c",
-            "unlifted: this_01 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "unlifted: if (*(this + 0x14))[0x48] == nil then"
           ],
@@ -1906,6 +1932,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "RESOURCE_AssignResource",
             "IsActiveThreadTerminating",
             "IsTalkedToByHero",
             "MsgIsHitByHero",
@@ -1932,6 +1959,7 @@
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
             "ENGINE_Concat",
+            "STRINGMAP_Set",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
             "PauseAllNonScriptedEntities",
@@ -2017,6 +2045,7 @@
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
             "ENGINE_Concat",
+            "STRINGMAP_Set",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
             "PauseAllNonScriptedEntities",
@@ -2038,7 +2067,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 532,
+          "lines": 530,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2175,7 +2204,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
             "unlifted: xStack_308 = (undefined **)**(int **)(this + 4);",
             "unlifted: xStack_344 = (int *)(*(code *)xStack_308[0x46])();",
             "unlifted: (*(code *)xStack_308[0x16e])();",
@@ -2259,11 +2287,10 @@
             "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
             "CameraUseCameraPoint: missing spCamPoint, spTarget, duration, i1, i2 (0 args for 5 params)",
             "unlifted: bVar5 = NScript::CV_BordelloScript::IsHeroWearingBeard__ate3e320(*(CV_BordelloScript **)(t",
-            "helper_E44A40: 1 helper operands for 0 parameters",
+            "unlifted: bVar5 = NScript::CV_BordelloScript::IsHeroWearingBeard__ate44a40(*(CV_BordelloScript **)(t",
             "GetHealth: missing pThing (0 args for 1 params)",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "helper_E44CC0: 1 helper operands for 0 parameters",
             "GetHealth: missing pThing (0 args for 1 params)",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
@@ -2346,9 +2373,7 @@
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "label LAB_00e4485d_c34",
             "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
-            "unlifted: bVar5 = helper_E44A40(quest, me, *(this + 0x14))",
-            "unlifted: bVar5 = helper_E44CC0(quest, me, *(this + 0x14))"
+            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2360,6 +2385,7 @@
             "IsActiveThreadTerminating",
             "AcquireControl",
             "IsActiveThreadTerminating",
+            "RESOURCE_AssignResource",
             "RegisterTimer",
             "RegisterTimer",
             "SetTimer",
@@ -2993,7 +3019,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 1790,
+          "lines": 1789,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3186,94 +3212,6 @@
           "nativeLabels": []
         },
         {
-          "owner": "Magicman",
-          "function": "helper_E44A40",
-          "address": "0x00e44a40",
-          "path": "FSE/V_Bordello/Entities/Magicman.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": "bool",
-            "bsimVoid": false
-          },
-          "todo": [],
-          "calls": [
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle"
-          ],
-          "lines": 63,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "if (!bVar3) goto LAB_00e44c26;"
-          ],
-          "nativeLabels": [
-            "LAB_00e44c26"
-          ]
-        },
-        {
-          "owner": "Magicman",
-          "function": "helper_E44CC0",
-          "address": "0x00e44cc0",
-          "path": "FSE/V_Bordello/Entities/Magicman.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": "bool",
-            "bsimVoid": false
-          },
-          "todo": [],
-          "calls": [
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle",
-            "GetHero",
-            "IsWearingHairstyle"
-          ],
-          "lines": 66,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "if (!bVar8) goto LAB_00e44e30;"
-          ],
-          "nativeLabels": [
-            "LAB_00e44e30"
-          ]
-        },
-        {
           "owner": "BordelloClient",
           "function": "Main",
           "address": "0x00e44ea0",
@@ -3289,11 +3227,9 @@
             "unlifted: (**(code **)(*unaff_EBX + 0x5ec))();",
             "unlifted: (**(code **)(*unaff_EBP + 0x5ec))();",
             "unlifted: (**(code **)(*unaff_EBP + 0x5ec))();",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedT",
-            "unlifted: pCVar9 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<",
+            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
             "NScript::CV_BordelloScript::PlayCutscene: unproven parent helper receiver or arity",
             "unlifted: (**(code **)(*unaff_EBX + 0x5ec))();",
-            "unnamed field 0x14",
             "unlifted: xStack_e0_b3 = '\\x01';",
             "unlifted: xStack_c4_b3 = '\\0';",
             "unlifted: xStack_c4_b3 = '\\x01';",
@@ -3449,6 +3385,7 @@
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "ENGINE_Concat",
+            "STRINGMAP_Set",
             "SetCutsceneSkippable",
             "SetStateInt",
             "SetHeroAsHavingHadGaySex",
@@ -3490,7 +3427,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "SetStateInt",
-            "RESOURCE_Reset",
+            "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -3626,7 +3563,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 798,
+          "lines": 801,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3701,10 +3638,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: *(undefined1 *)(*(int *)(this + 0x14) + 0x58 + iVar3) = 1;",
-            "unlifted: if *pcVar4 == 0 then"
-          ],
+          "todo": [],
           "calls": [
             "SetStateInt",
             "SetStateInt",
@@ -3713,10 +3647,11 @@
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
+            "QUESTSTATE_SetBool",
             "SetThingPersistent",
             "EntitySetOpinionReactionMask"
           ],
-          "lines": 21,
+          "lines": 20,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4035,21 +3970,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 9,
-        "passed": 7,
-        "errors": [
-          {
-            "path": "FSE/V_Bordello/V_Bordello.lua",
-            "line": 81,
-            "message": "FSE/V_Bordello/V_Bordello.lua:81: unexpected symbol near '['"
-          },
-          {
-            "path": "FSE/V_Bordello/native_quest_helpers.lua",
-            "line": 134,
-            "message": "FSE/V_Bordello/native_quest_helpers.lua:134: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 9,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -4065,12 +3989,6 @@
         "FSE/V_Bordello/V_Bordello.lua": {
           "Main": [
             "bVar4"
-          ],
-          "helper_E3E720": [
-            "pCVar7",
-            "piStack_20",
-            "piVar2",
-            "piVar4"
           ]
         },
         "FSE/V_Bordello/Entities/Madame.lua": {
@@ -4085,16 +4003,7 @@
         },
         "FSE/V_Bordello/Entities/BordelloLady.lua": {
           "Main": [
-            "aCStack_11c",
-            "xStack_118",
-            "xStack_140",
-            "xStack_154",
-            "xStack_170",
-            "xStack_178",
-            "xStack_1a8",
-            "xStack_c8",
-            "xStack_f4",
-            "xStack_fc"
+            "xStack_1a8"
           ]
         },
         "FSE/V_Bordello/Entities/Magicman.lua": {
@@ -4108,7 +4017,6 @@
           "Main": [
             "xStack_120",
             "xStack_c4_b3",
-            "xStack_e4",
             "xStack_e8_2_b3",
             "x_stk_108"
           ]
@@ -4119,77 +4027,35 @@
         "functions": [
           "helper_E3E320",
           "helper_E3E6B0",
-          "helper_E3E720"
+          "helper_E3E720",
+          "helper_E44CC0"
         ],
         "todo": {
           "helper_E3E320": [],
           "helper_E3E6B0": [],
           "helper_E3E720": [
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x80);",
-            "unnamed field 0x7c",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x90);",
-            "unnamed field 0x8c",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x9c",
-            "unlifted: *piVar4 = *piVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar2;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0xac",
-            "unlifted: *piVar4 = *piVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar2;",
-            "unlifted: *piVar2 = *piVar2 + 1;",
             "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "unlifted: RunCutsceneMacro_Func((CCharString *)&native_arg_param_2,xStack_1c,(void *)0x0,(CTCCarryab",
             "label LAB_00e3ea29",
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)(this + 0xb4));",
-            "unlifted: local piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(this + 0xa0)",
-            "unlifted: local piVar4 = *(pCVar7 + 0xc)",
-            "unlifted: piVar2 = *(this + 0xb0)",
-            "unlifted: piVar4 = *(pCVar7 + 0xc)"
-          ]
+            "SetCutsceneSkippableWhilePaused: not in FSE manifest"
+          ],
+          "helper_E44CC0": []
         },
         "syntax": {
           "runtime": "Lua 5.4",
-          "ok": false,
+          "ok": true,
           "checked": 1,
-          "passed": 0,
-          "errors": [
-            {
-              "path": "FSE/V_Bordello/native_quest_helpers.lua",
-              "line": 134,
-              "message": "FSE/V_Bordello/native_quest_helpers.lua:134: unexpected symbol near '*'"
-            }
-          ]
+          "passed": 1,
+          "errors": []
         }
       },
       "summary": {
         "owners": 8,
         "functions": 42,
         "missing": 0,
-        "functionSyntaxPassed": 40,
-        "fileSyntaxPassed": 7,
+        "functionSyntaxPassed": 42,
+        "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 361
+        "todo": 286
       }
     }
   ],
@@ -4197,9 +4063,9 @@
     "owners": 8,
     "functions": 42,
     "missing": 0,
-    "functionSyntaxPassed": 40,
-    "fileSyntaxPassed": 7,
+    "functionSyntaxPassed": 42,
+    "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 9,
-    "todo": 361
+    "todo": 286
   }
 }

@@ -203,10 +203,12 @@
             "GetThingWithScriptName",
             "GetThingWithScriptName",
             "GetThingWithScriptName",
+            "RESOURCE_MemberResource",
             "RESOURCE_TryAcquire",
             "EntityTeleportToThing",
             "QUESTTHING_Empty",
             "SetIsPushableByHero",
+            "RESOURCE_MemberResource",
             "RESOURCE_TryAcquire",
             "EntityTeleportToThing",
             "QUESTTHING_Empty",
@@ -547,6 +549,46 @@
           ]
         },
         {
+          "owner": "V_BookCollecting",
+          "function": "helper_E55C60",
+          "address": "0x00e55c60",
+          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "strParam_1",
+                "lua": "native_arg_strParam_1",
+                "type": "CCharString *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "AddNewRumourToCategory: missing rumourTextKey (1 args for 2 params)",
+            "AddGossipVillage: missing villageName (1 args for 2 params)",
+            "AddGossipFactionToCategory: missing factionName (1 args for 2 params)"
+          ],
+          "calls": [
+            "AddRumourCategory",
+            "AddNewRumourToCategory",
+            "AddGossipVillage",
+            "AddGossipFactionToCategory"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
           "owner": "BS_Teacher",
           "function": "Main",
           "address": "0x00e54e90",
@@ -558,6 +600,8 @@
             "bsimVoid": false
           },
           "todo": [
+            "NScript::CV_BookCollectingScript::AddGossip: unproven parent helper receiver or arity",
+            "NScript::CV_BookCollectingScript::AddGossip: unproven parent helper receiver or arity",
             "verify cleanup at LAB_00e559a8 (lifted as early return)",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
             "label LAB_00e559f0",
@@ -601,8 +645,6 @@
             "unlifted: (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);",
             "label LAB_00e55c16",
             "verify cleanup at LAB_00e55c3a (lifted as early return)",
-            "unlifted: helper_E55C60(quest, me, *(this + 0x14))",
-            "unlifted: helper_E55C60(quest, me, *(this + 0x14))",
             "unlifted: CVar12 = *(this + 4)",
             "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
             "unlifted: CVar2 = *pCVar11",
@@ -671,6 +713,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
@@ -759,6 +802,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
@@ -873,46 +917,6 @@
           "todo": [],
           "calls": [],
           "lines": 0,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "BS_Teacher",
-          "function": "helper_E55C60",
-          "address": "0x00e55c60",
-          "path": "FSE/V_BookCollecting/Entities/BS_Teacher.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "strParam_1",
-                "lua": "native_arg_strParam_1",
-                "type": "CCharString *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "AddNewRumourToCategory: missing rumourTextKey (1 args for 2 params)",
-            "AddGossipVillage: missing villageName (1 args for 2 params)",
-            "AddGossipFactionToCategory: missing factionName (1 args for 2 params)"
-          ],
-          "calls": [
-            "AddRumourCategory",
-            "AddNewRumourToCategory",
-            "AddGossipVillage",
-            "AddGossipFactionToCategory"
-          ],
-          "lines": 4,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1144,7 +1148,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: *piVar1 = *piVar1 + 1;",
             "unlifted: cVar3 = (**(*uStack_14 + 0x12c))()",
@@ -1327,6 +1330,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "ENGINE_IntToString",
             "ENGINE_Concat",
@@ -1383,8 +1387,8 @@
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": false,
-        "checked": 2,
-        "passed": 1,
+        "checked": 3,
+        "passed": 2,
         "errors": [
           {
             "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
@@ -1408,9 +1412,6 @@
           ]
         },
         "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
-          "helper_E55CE0": [
-            "xStack_58"
-          ],
           "helper_E56D10": [
             "pCVar6"
           ],
@@ -1447,14 +1448,34 @@
           ]
         }
       },
+      "sharedHelpers": {
+        "path": "FSE/V_BookCollecting/native_quest_helpers.lua",
+        "functions": [
+          "helper_E55C60"
+        ],
+        "todo": {
+          "helper_E55C60": [
+            "AddNewRumourToCategory: missing rumourTextKey (1 args for 2 params)",
+            "AddGossipVillage: missing villageName (1 args for 2 params)",
+            "AddGossipFactionToCategory: missing factionName (1 args for 2 params)"
+          ]
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
       "summary": {
         "owners": 2,
         "functions": 19,
         "missing": 0,
         "functionSyntaxPassed": 18,
-        "fileSyntaxPassed": 1,
-        "fileSyntaxChecked": 2,
-        "todo": 264
+        "fileSyntaxPassed": 2,
+        "fileSyntaxChecked": 3,
+        "todo": 263
       }
     }
   ],
@@ -1463,8 +1484,8 @@
     "functions": 19,
     "missing": 0,
     "functionSyntaxPassed": 18,
-    "fileSyntaxPassed": 1,
-    "fileSyntaxChecked": 2,
-    "todo": 264
+    "fileSyntaxPassed": 2,
+    "fileSyntaxChecked": 3,
+    "todo": 263
   }
 }

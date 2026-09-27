@@ -23,14 +23,16 @@ function Main(quest, me)
     end
     scratchValue = ctr_8
     if 3 < ctr_8 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
+        if quest:IsActiveThreadTerminating() then return end
         scratchValue = 3
     end
-    if not (math.random(0, 32767) % scratchValue == 0) then helpers.UpdateLiveEnemies(quest, me); goto LAB_00dfcbf7 end
-    if quest:IsActiveThreadTerminating() then goto LAB_00dfcbf7 end
-    quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
-    helpers.UpdateLiveEnemies(quest, me)
-    ::LAB_00dfcbf7::
+    if not (math.random(0, 32767) % scratchValue == 0) then
+        helpers.UpdateLiveEnemies(quest, me)
+    else
+        if quest:IsActiveThreadTerminating() then return end
+        quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
+        helpers.UpdateLiveEnemies(quest, me)
+    end
 end
 
 -- BanditExtra.Init (retail 0x00cdebb0)

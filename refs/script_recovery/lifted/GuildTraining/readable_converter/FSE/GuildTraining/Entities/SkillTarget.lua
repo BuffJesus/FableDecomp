@@ -27,28 +27,28 @@ function Main(quest, me)
     local dummyEndMarker = quest:GetNearestWithScriptName(me, "DummyEndMarker")
     local dummyStartMarker = quest:GetNearestWithScriptName(me, "DummyStartMarker")
     if dummyNumber == 1 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
+        if quest:IsActiveThreadTerminating() then return end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummySegements)))
         nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker3")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_FrontDummyWorth)
     elseif dummyNumber == 2 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
+        if quest:IsActiveThreadTerminating() then return end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummySegements)))
         nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker2")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MiddleDummyWorth)
     else
-        if quest:IsActiveThreadTerminating() then goto LAB_00d41f6f end
+        if quest:IsActiveThreadTerminating() then return end
         speed = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummySegements)))
         nearest = quest:GetNearestWithScriptName(me, "StaticDummyMarker1")
         readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_RearDummyWorth)
     end
     dummyWorth = math.tointeger(math.modf(readGlobalGameDataFloat))
-    if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
-    if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
+    if not quest:NewScriptFrame(me) then return end
+    if not quest:NewScriptFrame(me) then return end
     getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
     i_stk_16c_1 = 0
     while not getMasterGameState do
-        if not quest:NewScriptFrame(me) then goto LAB_00d41f6f end
+        if not quest:NewScriptFrame(me) then return end
         getMasterGameState = quest:GetMasterGameState("SkillTrainingStarted")
     end
     predicateResult4 = false
@@ -257,7 +257,7 @@ function Main(quest, me)
             i_stk_16c_1 = i_stk_16c_1 + 1
             if i_stk_16c_1 == speed then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                scratchValue5 = scratchValue5 == 0
+                scratchValue5 = scratchValue5 == 0 and 1 or 0
                 i_stk_16c_1 = 0
             end
             if quest:GetMasterGameState("SkillRepeatKnown") then
@@ -284,12 +284,27 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         predicateResult4 = quest:IsActiveThreadTerminating()
     until false
-    ::LAB_00d41f6f::
 end
 
 -- SkillTarget.Init (retail 0x00d41ca0)
 function Init(quest, me)
-    dummyNumber = tonumber(me:GetDataString())
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
+    dummyNumber = parseGameInteger(me:GetDataString())
 end
 
 -- SkillTarget.OnPersist (retail 0x00cdebc0)

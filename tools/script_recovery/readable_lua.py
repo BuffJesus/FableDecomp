@@ -88,8 +88,11 @@ def assignment_role(expression):
     method = re.match(r'\w+:(\w+)\(', expression)
     if method:
         name = method[1]
-        known = {'GetHero': 'hero', 'RegisterTimer': 'timerId', 'GetTimer': 'timeRemaining',
+        known = {'GetHero': 'hero', 'GetHeroTargetedThing': 'target',
+                 'EntityPostOpinionDeedKeepSearchingForWitnesses': 'opinionDeedId',
+                 'RegisterTimer': 'timerId', 'GetTimer': 'timeRemaining',
                  'GetHealth': 'health', 'ThingHealth': 'health', 'GetHomePos': 'homePosition',
+                 'GetDataString': 'dataString',
                  'GetPos': 'position', 'AcquireControl': 'controlAcquired',
                  'TryAcquire': 'controlAcquired', 'IsPerformingScriptTask': 'taskRunning',
                  'ThingAlive': 'thingAlive', 'ThingIsDistanceFromPositionOver': 'outsideDistance',
@@ -135,6 +138,7 @@ def _list_position(m):
 USE_ROLES = (
     (r'resources:TryAcquire\(\s*NAME\s*,\s*(?P<of>\w+)\s*,', 'resource', _named_after('of', 'Control')),
     (r'resources:ReleaseResource\(\s*NAME\s*\)', 'resource', 'resource'),
+    (r'resources:ScriptThing\(\s*NAME\s*\)', 'resource', 'resource'),
     (r'resources:(?:DestroyMovie|StopMovie)\(\s*NAME\s*\)', 'resource', 'movie'),
     (r'resources:TryAcquire\([^,()]+,\s*NAME\s*,', 'thing', 'thing'),
     (r'quest:EntityAttachToScript\(\s*NAME\s*,', 'thing', 'entity'),
@@ -148,6 +152,9 @@ USE_ROLES = (
      'conversation', 'conversationId'),
     (r'quest:(?:RemoveQuestInfoElement|SetQuestInfoElementActive)\(\s*NAME\b', 'info', 'infoElement'),
     (r'quest:UpdateQuestInfoTick\([^,()]+,\s*NAME\b', 'info', 'ticked'),
+    (r'quest:UpdateMiniGameInfoBar\(\s*NAME\s*\)', 'progress', 'progress'),
+    (r'quest:IsDeedWitnessed\(\s*NAME\s*\)', 'deed', 'opinionDeedId'),
+    (r'quest:RemoveOpinionDeedStillSearchingForWitnesses\([^,()]+,\s*NAME\s*\)', 'deed', 'opinionDeedId'),
     (r'quest:(?:GetStateListAt|StateListErase|StateListSet)\(\s*"(?P<of>[^"]+)"\s*,\s*NAME\s*(?P<scale>/)?',
      'index', _list_position),
     (r'quest:ReadGlobalGameData\w*At\([^,()]+,\s*NAME\b', 'index', 'index'),
@@ -243,15 +250,25 @@ def readable_function(source):
         if match:
             declarations.update(n.strip() for n in match[1].split(','))
     occupied = {t[0] for t in tokens(source) if t.lastgroup == 'identifier'}
+    # Ghidra also propagates the native CCharString parameter spelling pOther to
+    # local getter results. Rename only the proven data-string lifetime, leaving
+    # unrelated uses of this otherwise meaningful name alone.
+    string_aliases = set()
+    for name in declarations:
+        if re.fullmatch(r'pOther(?:_\d+)?', name):
+            definitions = re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)
+            values = [rhs.strip() for rhs in definitions if rhs.strip() != 'nil']
+            if values and all(re.fullmatch(r'\w+:GetDataString\(\)', rhs) for rhs in values):
+                string_aliases.add(name)
     names, evidence = {}, {}
     # the role of a copy (`r1_2 = pCVar9_4`) is the role of what it copies: direct roles first, copies after
     direct = {}
     for name, count in declarations.items():
-        if count == 1 and GENERATED.fullmatch(name):
+        if count == 1 and (GENERATED.fullmatch(name) or name in string_aliases):
             rhs_list = [rhs.strip() for rhs in re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)]
             direct[name] = [assignment_role(r) for r in rhs_list if r != 'nil' and not re.fullmatch(r'[A-Za-z_]\w*', r)]
     for name, count in declarations.items():
-        if count != 1 or not GENERATED.fullmatch(name):
+        if count != 1 or not (GENERATED.fullmatch(name) or name in string_aliases):
             continue
         assignments = re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)
         roles = []

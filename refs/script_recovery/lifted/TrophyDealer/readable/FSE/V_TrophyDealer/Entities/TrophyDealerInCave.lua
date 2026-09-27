@@ -4,7 +4,6 @@
 -- TrophyDealerInCave.Main (retail 0x00ee76f0)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local movie, actorMap
     local resource2 = resources:NewResource()
     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     quest:EntitySetAsKillable(me, false, true)
@@ -13,13 +12,13 @@ function Main(quest, me)
     resources:TryAcquire(resource, quest:GetHero(), 4)
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00ee7842 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00ee7842 end
-    actorMap = resources:NewActorMap()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
+    local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "Hero", resource)
     resources:SetActor(actorMap, "Trophy", resource2)
-    movie = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     resources:RunMacro("CS_TROPHY_DEALER", actorMap, false, true)
     quest:PauseAllNonScriptedEntities(false)
@@ -32,7 +31,6 @@ function Main(quest, me)
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
     resources:ReleaseResource(resource2)
     do return end
-    ::LAB_00ee7842::
     resources:ReleaseResource(resource)
     resources:ReleaseResource(resource2)
 end

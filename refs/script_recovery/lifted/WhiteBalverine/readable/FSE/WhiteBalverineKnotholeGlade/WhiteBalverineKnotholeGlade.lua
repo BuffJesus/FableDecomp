@@ -17,7 +17,6 @@ local SCRIPT_DEF = {
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie3, resource6, resource9, actorMap3
     while not quest:IsLevelLoaded("KnotholeGlade") do
         if not quest:NewScriptFrame() then return end
     end
@@ -40,37 +39,37 @@ function Main(quest)
     local chief = quest:GetThingWithScriptName("KG_Chief")
     quest:SetVillageLimbo(quest:GetThingWithScriptName("VILLAGE_KNOTHOLEGLADE"), true)
     if not quest:GetStateBool("QuestStartScreenShown") then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetStateBool("QuestStartScreenShown", true)
         quest:KickOffQuestStartScreen("Q_WhiteBalverineKnotholeGlade", true, false)
     end
     quest:CreateThread("WatchForTermination")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective: lift it as function WatchForTermination(quest)
     if quest:GetStateInt("BalverineState") == 0 or quest:GetStateInt("BalverineState") == 1 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetStateInt("BalverineState", 1)
         while quest:IsQuestActive("V_KnotholeGladeGates") do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
         quest:SetStateInt("BalverineState", 2)
     end
     if quest:GetStateInt("BalverineState") == 2 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         local whiteBalverine = quest:GetThingWithScriptName("WB_WhiteBalverine")
         if not (whiteBalverine ~= nil and whiteBalverine:IsAlive()) then
             quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", quest:GetThingWithScriptName("WB_WhiteBalverineSpawnMarker"):GetPos(), "WB_WhiteBalverine")
         end
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_02", "KnotholeGlade", "KnotholeGlade")
         while quest:GetStateInt("BalverineState") ~= 3 do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:StopOverrideMusic(false)
     end
     if quest:GetStateInt("BalverineState") == 3 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
+        if not quest:NewScriptFrame() then return end
         while not quest:IsHeroControlledByPlayer() do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
         local resource = resources:NewResource()
         local resource7 = resources:NewResource()
@@ -93,30 +92,30 @@ function Main(quest)
         resources:ReleaseResource(resource)
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_03", "KnotholeGlade", "KnotholeGlade")
         while not quest:IsDistanceBetweenThingsUnder(quest:GetThingWithScriptName("WhiteBalverineAmbushMarker"), hero, 10.0) do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_04", "KnotholeGlade", "KnotholeGlade")
         quest:SetStateInt("BalverineState", 4)
     end
     if quest:GetStateInt("BalverineState") == 4 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         local whiteBalverine2 = quest:GetThingWithScriptName("WB_WhiteBalverine")
         if not (whiteBalverine2 ~= nil and whiteBalverine2:IsAlive()) then
             local position = quest:GetThingWithScriptName("WB_EscapePoint2"):GetPos()
             quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", {x = position.x, y = position.y, z = position.z + 9.0}, "WB_WhiteBalverine")
         end
         while quest:GetStateInt("BalverineState") ~= 5 do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:StopOverrideMusic(false)
     end
     if quest:GetStateInt("BalverineState") == 5 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
+        if not quest:NewScriptFrame() then return end
         while not quest:IsHeroControlledByPlayer() do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
         quest:SetStateBool("WifeCutsceneStart", true)
         local resource5 = resources:NewResource()
@@ -138,26 +137,26 @@ function Main(quest)
         resources:DestroyActorMap(actorMap2)
         resources:ReleaseResource(resource8)
         resources:ReleaseResource(resource5)
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
+        if not quest:NewScriptFrame() then return end
+        if not quest:NewScriptFrame() then return end
+        if not quest:NewScriptFrame() then return end
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_05", "KnotholeGlade", "KnotholeGlade")
         quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
         quest:GiveHeroRenownPoints(math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.WBK_RenownAwardForSecondDefence))))
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
+        if not quest:NewScriptFrame() then return end
+        if not quest:NewScriptFrame() then return end
+        if not quest:NewScriptFrame() then return end
         quest:Pause(2.0)
         if quest:DisplayTutorial(TUTORIAL_CATEGORY_AUGMENTATION) then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+            if quest:IsActiveThreadTerminating() then return end
             while not quest:MsgIsTutorialClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00e154cb end
+                if not quest:NewScriptFrame() then return end
             end
         end
         quest:SetStateInt("BalverineState", 6)
     end
     if quest:GetStateInt("BalverineState") == 6 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         local whiteBalverine3 = quest:GetThingWithScriptName("WB_WhiteBalverine")
         if not (whiteBalverine3 ~= nil and whiteBalverine3:IsAlive()) then
             quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", quest:GetThingWithScriptName("WB_BalvEscape2"):GetPos(), "WB_WhiteBalverine")
@@ -165,24 +164,24 @@ function Main(quest)
         quest:CreateCreature("CREATURE_KN_GUARD", quest:GetThingWithScriptName("WB_Guard1Pos"):GetPos(), "WB_Guard1")
         quest:CreateCreature("CREATURE_KN_GUARD", quest:GetThingWithScriptName("WB_Guard2Pos"):GetPos(), "WB_Guard2")
         while quest:GetStateInt("BalverineState") ~= 7 do
-            if not quest:NewScriptFrame() then goto LAB_00e154cb end
+            if not quest:NewScriptFrame() then return end
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
+        if quest:IsActiveThreadTerminating() then return end
         quest:StopOverrideMusic(false)
     end
-    if not (quest:GetStateInt("BalverineState") == 7 and not quest:IsActiveThreadTerminating()) then goto LAB_00e154cb end
+    if not (quest:GetStateInt("BalverineState") == 7 and not quest:IsActiveThreadTerminating()) then return end
     while not quest:IsHeroControlledByPlayer() do
-        if not quest:NewScriptFrame() then goto LAB_00e154cb end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e154cb end
-    resource6 = resources:NewResource()
-    resource9 = resources:NewResource()
+    if quest:IsActiveThreadTerminating() then return end
+    local resource6 = resources:NewResource()
+    local resource9 = resources:NewResource()
     resources:TryAcquire(resource6, chief, 4)
     resources:TryAcquire(resource9, hero, 4)
-    actorMap3 = resources:NewActorMap()
+    local actorMap3 = resources:NewActorMap()
     resources:SetActor(actorMap3, "HERO", resource9)
     resources:SetActor(actorMap3, "CHIEF", resource6)
-    movie3 = resources:StartMovie("")
+    local movie3 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro("CS_WBK_CHIEF3", actorMap3, false, true)
@@ -194,7 +193,6 @@ function Main(quest)
     resources:ReleaseResource(resource9)
     resources:ReleaseResource(resource6)
     quest:SetStateBool("MissionSucceeded", true)
-    ::LAB_00e154cb::
 end
 
 -- Q_WhiteBalverineKnotholeGlade.Init (retail 0x00e13c60)
@@ -232,13 +230,12 @@ function WatchForTermination(quest)
     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_06", "Witchwood4", "KnotholeGlade")
     quest:SetVillageLimbo(quest:GetThingWithScriptName("VILLAGE_KNOTHOLEGLADE"), false)
     while not quest:GetMasterGameState("WhiteBalverineFinished") do
-        if not quest:NewScriptFrame() then goto LAB_00e15740 end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e15740 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
     quest:Pause(1.0)
     quest:FadeScreenIn()
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    ::LAB_00e15740::
 end
 

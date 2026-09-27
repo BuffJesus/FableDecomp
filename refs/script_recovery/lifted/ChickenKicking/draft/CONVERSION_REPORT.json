@@ -244,6 +244,51 @@
           "nativeLabels": []
         },
         {
+          "owner": "V_ChickenKicking",
+          "function": "helper_E68B20",
+          "address": "0x00e68b20",
+          "path": "FSE/V_ChickenKicking/V_ChickenKicking.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "strParam_1",
+                "lua": "native_arg_strParam_1",
+                "type": "CCharString *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "FixMovieSequenceCamera",
+            "RESOURCE_RunMacroWithStrings",
+            "FixMovieSequenceCamera",
+            "STRINGMAP_Clear",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 14,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
           "owner": "ChickenMaster",
           "function": "Main",
           "address": "0x00e64fb0",
@@ -255,39 +300,18 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0x14",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unnamed field 0x14",
-            "unlifted: (*(code *)(*(int **)(*(int *)(this + 0x14) + 0x8c))[1])();",
-            "unlifted: *(undefined4 *)(*(int *)(this + 0x14) + 0x88) = uVar3;",
-            "unlifted: *(int **)(*(int *)(this + 0x14) + 0x8c) = piVar5;",
-            "unlifted: *piVar5 = *piVar5 + 1;",
             "unlifted: xStack_188 = pCVar9.x;",
             "unlifted: ctr_CVar19 = xStack_374;",
             "unlifted: xStack_374 = xStack_374 | 1;",
             "label LAB_00e660d3",
             "unlifted: ctr_CVar19 = C_stk_370;",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
             "label LAB_00e661a5",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
             "unlifted: ctr_CVar19 = C_stk_370;",
             "unlifted: ctr_CVar19 = C_stk_370;",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
             "unlifted: ctr_CVar19 = *(int **)(this + 4);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
-            "unnamed field 0x14",
-            "helper_E68B20: 2 helper operands for 1 parameters",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
             "unlifted: ctr_CVar19 = 0;",
@@ -315,7 +339,7 @@
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: ctr_CVar19 = ctr_CVar19 + 0x19;",
             "unlifted: CCharString::CCharString(&xStack_398_2,&xStack_398);",
-            "unnamed field 0x14",
+            "Game_InitializeArena: unproven parent helper receiver or arity",
             "unlifted: CCharString__SetFromFormatV();",
             "unlifted: CWideString::CWideString(xStack_208,(int)&xStack_354);",
             "unlifted: Vector_PushBack(xStack_360,(int)xStack_208);",
@@ -358,11 +382,10 @@
             "unnamed field 0x18",
             "UpdateOnlineScore_ChickenKick: not in FSE manifest",
             "unlifted: CCharString::CCharString(&xStack_398_2,&xStack_398);",
-            "unnamed field 0x14",
+            "Game_InitializeArena: unproven parent helper receiver or arity",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
-            "unlifted: piVar2 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x8c)",
             "unlifted: iVar10 = IsDistanceFromThingToPositionUnder((me),&xStack_188,0x40c00000)",
             "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
           ],
@@ -375,6 +398,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "RESOURCE_AssignResource",
             "EntitySetAppearanceMorphSeed",
             "SetThingHasInformation",
             "SetIsPushableByHero",
@@ -810,19 +834,13 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1516,
+          "lines": 1501,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua:Main",
-                "line": 28,
-                "message": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua:Main:28: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1084,74 +1102,6 @@
           "nativeLabels": []
         },
         {
-          "owner": "ChickenMaster",
-          "function": "helper_E68B20",
-          "address": "0x00e68b20",
-          "path": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "strParam_1",
-                "lua": "native_arg_strParam_1",
-                "type": "CCharString *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x7c);",
-            "unnamed field 0x78",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar5 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar5 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar5 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: piStack_20 = *(int **)(this + 0x8c);",
-            "unnamed field 0x88",
-            "unlifted: *piVar1 = *piVar1 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar5 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar5 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar5 + 0xc) = piStack_20;",
-            "unlifted: *piStack_20 = *piStack_20 + 1;",
-            "unlifted: RunCutsceneMacro_Func(native_arg_strParam_1,xStack_1c,(void *)0x0,(CTCCarryable *)(this + ",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)(this + 0x64));",
-            "unlifted: local piVar1 = *(pCVar5 + 0xc)",
-            "unlifted: piVar1 = *(pCVar5 + 0xc)"
-          ],
-          "calls": [
-            "RESOURCE_NewResource",
-            "GetHero",
-            "RESOURCE_TryAcquire",
-            "ACTORMAP_New",
-            "ACTORMAP_Set",
-            "FixMovieSequenceCamera",
-            "FixMovieSequenceCamera",
-            "ACTORMAP_Destroy",
-            "RESOURCE_ReleaseResource"
-          ],
-          "lines": 47,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua:helper_E68B20",
-                "line": 16,
-                "message": "..._ChickenKicking/Entities/ChickenMaster.lua:helper_E68B20:16: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
           "owner": "ChickenSign",
           "function": "Main",
           "address": "0x00e64df0",
@@ -1289,7 +1239,6 @@
           "todo": [
             "unlifted: xStack_3c = *(int **)pCVar4;",
             "unlifted: fStack_24 = pCVar4.x;",
-            "PlaySoundOnThing: missing soundName (1 args for 2 params)",
             "unlifted: xStack_30 = *(undefined1 (*) [4])pCVar4;",
             "unlifted: xStack_30 = *(int **)(pCVar4 + 0x8);",
             "unlifted: fStack_24 = (float)xStack_c._0_4_ - pfVar6.x;",
@@ -1307,10 +1256,6 @@
             "label LAB_00e64c61",
             "verify cleanup at LAB_00e64c61 (lifted as early return)",
             "verify cleanup at LAB_00e64c61 (lifted as early return)",
-            "unlifted: bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)(*(int *)(this + 0x14) + 0x70));",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
             "unlifted: pi_stk_38 = *(pCVar4 + 0x4)",
             "unlifted: pfVar7 = (**(piVar8[-3] + 0x18))()"
           ],
@@ -1388,14 +1333,14 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "SetStateBool",
-            "RESOURCE_Reset",
+            "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating"
           ],
-          "lines": 227,
+          "lines": 224,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1698,16 +1643,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
-        "checked": 5,
-        "passed": 4,
-        "errors": [
-          {
-            "path": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua",
-            "line": 40,
-            "message": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua:40: unexpected symbol near '*'"
-          }
-        ]
+        "ok": true,
+        "checked": 6,
+        "passed": 6,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -1718,10 +1657,8 @@
       },
       "declaredFreeLocals": {
         "FSE/V_ChickenKicking/Entities/ChickenMaster.lua": {
-          "helper_E68B20": [
-            "pCVar5",
-            "piStack_20",
-            "piVar1"
+          "Main": [
+            "piVar2"
           ]
         },
         "FSE/V_ChickenKicking/Entities/KickedChicken.lua": {
@@ -1757,14 +1694,30 @@
           ]
         }
       },
+      "sharedHelpers": {
+        "path": "FSE/V_ChickenKicking/native_quest_helpers.lua",
+        "functions": [
+          "helper_E68B20"
+        ],
+        "todo": {
+          "helper_E68B20": []
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
       "summary": {
         "owners": 5,
         "functions": 22,
         "missing": 0,
-        "functionSyntaxPassed": 20,
-        "fileSyntaxPassed": 4,
-        "fileSyntaxChecked": 5,
-        "todo": 184
+        "functionSyntaxPassed": 22,
+        "fileSyntaxPassed": 6,
+        "fileSyntaxChecked": 6,
+        "todo": 137
       }
     }
   ],
@@ -1772,9 +1725,9 @@
     "owners": 5,
     "functions": 22,
     "missing": 0,
-    "functionSyntaxPassed": 20,
-    "fileSyntaxPassed": 4,
-    "fileSyntaxChecked": 5,
-    "todo": 184
+    "functionSyntaxPassed": 22,
+    "fileSyntaxPassed": 6,
+    "fileSyntaxChecked": 6,
+    "todo": 137
   }
 }

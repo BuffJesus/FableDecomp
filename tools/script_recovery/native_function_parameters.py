@@ -29,8 +29,9 @@ def function_parameters(source, *, member=False):
     # likewise a reviewed `bool __thiscall` outranks Ghidra's `int` (IsThingCarryingCrate: a Lua boolean
     # result must not be tested with `~= 0`)
     bsim_bool = bool(comment and re.search(r'\bbool\s+__thiscall\b', comment.group(1)))
+    string_value = bool(re.match(r'CCharString\s+__thiscall\b', header))
     return {'parameters': params,
-            'returnKind': None if bsim_void else 'bool' if bsim_bool else (('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None),
+            'returnKind': None if bsim_void else 'bool' if bsim_bool else 'string' if string_value else (('bool' if kind[1] in ('bool', 'char') else 'number') if kind else None),
             'bsimVoid': bsim_void}
 
 

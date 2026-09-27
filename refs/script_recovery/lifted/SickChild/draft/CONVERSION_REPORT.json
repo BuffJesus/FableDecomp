@@ -216,26 +216,6 @@
             "unlifted: *(undefined4 *)(puStack_34 + 4) = 0;",
             "unlifted: *(undefined1 **)(puStack_34 + 8) = puStack_34;",
             "unlifted: *(undefined1 **)(puStack_34 + 0xc) = puStack_34;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x60",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x50",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: *ppuVar4 = *ppuVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(int *)(pCVar7 + 8) = i_stk_14;",
-            "unlifted: *(undefined ***)(pCVar7 + 0xc) = ppuVar5;",
-            "unlifted: *ppuVar5 = *ppuVar5 + 1;",
             "unlifted: StdMap_DestroyNode(&xStack_28,unaff_EBP[1]);",
             "unlifted: unaff_EBP[2] = unaff_EBP;",
             "unlifted: unaff_EBP[1] = 0;",
@@ -248,34 +228,27 @@
             "unlifted: free(xStack_1c);",
             "unlifted: p1 = *unaff_EBP",
             "unlifted: p0 = *xStack_10",
-            "unlifted: local piVar1 = *(this + 0x64)",
-            "unlifted: local piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar1 = *(this + 0x54)",
-            "unlifted: piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: local ppuVar4 = *(pCVar7 + 0xc)"
+            "unlifted: ACTORMAP_Set(puStack_34, \"HERO\", &local_1c)"
           ],
           "calls": [
             "RESOURCE_NewResource",
             "GetHero",
             "STRINGMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacroWithStrings",
             "FixMovieSequenceCamera",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 104,
+          "lines": 55,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_SickChild/V_SickChild.lua:helper_ECE460",
-                "line": 40,
-                "message": "FSE/V_SickChild/V_SickChild.lua:helper_ECE460:40: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -293,14 +266,9 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)xStack_70",
             "label LAB_00ece3f7",
-            "unnamed field 0x14",
             "label LAB_00ece3b6",
-            "unnamed field 0x14",
             "label LAB_00ecdf97",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
@@ -312,7 +280,6 @@
             "unnamed field 0x14",
             "unnamed field 0x14",
             "unlifted: (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);",
-            "unnamed field 0x14",
             "unnamed field 0x14",
             "unnamed field 0x14",
             "verify cleanup at LAB_00ece3f7 (lifted as early return)",
@@ -338,6 +305,7 @@
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
@@ -390,6 +358,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1330,9 +1299,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
             "verify cleanup at LAB_00ecf292 (lifted as early return)",
             "label LAB_00ecf292",
             "label LAB_00ecf3e5",
@@ -1421,6 +1387,7 @@
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
@@ -1703,6 +1670,7 @@
             "label LAB_00ec9b00",
             "label LAB_00ec9b2c",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)xStack_13",
+            "unlifted: xStack_158 = xStack_158 | 4;",
             "unlifted: xStack_170 = (int *)CONCAT13(1,(undefined3)xStack_170);",
             "unlifted: xStack_158 = uVar11 & 0xfffffffb;",
             "label LAB_00ec95d3",
@@ -2091,7 +2059,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 903,
+          "lines": 904,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3605,6 +3573,7 @@
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "RESOURCE_PrepareResource",
             "AcquireControl",
             "NewScriptFrame",
@@ -3974,15 +3943,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x30",
-            "unlifted: xStack_2c = *(CCharString *)(this + 0x30);",
-            "unnamed field 0x2c",
-            "unlifted: *(int *)CVar3 = *(int *)CVar3 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar6 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar6 + 8) = uVar4;",
-            "unlifted: *(CCharString *)(pCVar6 + 0xc) = xStack_2c;",
-            "unlifted: *(int *)xStack_2c = *(int *)xStack_2c + 1;",
             "unlifted: xStack_1c = malloc(0x18);",
             "unlifted: *xStack_1c = 0;",
             "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
@@ -3992,14 +3952,14 @@
             "unlifted: *(undefined1 **)(xStack_1c + 8) = xStack_1c;",
             "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
             "unlifted: *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: free(xStack_1c);",
-            "unlifted: local CVar3 = *(pCVar6 + 0xc)"
+            "unlifted: free(xStack_1c);"
           ],
           "calls": [
             "RESOURCE_NewResource",
             "GetHero",
             "RESOURCE_TryAcquire",
             "ACTORMAP_New",
+            "ACTORMAP_Set",
             "ACTORMAP_Set",
             "ENGINE_GlobalGameDataString",
             "STRINGMAP_Set",
@@ -4009,19 +3969,13 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 47,
+          "lines": 31,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_SickChild/Entities/WomanToAttract.lua:helper_ED0B10",
-                "line": 17,
-                "message": "FSE/V_SickChild/Entities/WomanToAttract.lua:helper_ED0B10:17: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [],
@@ -4137,26 +4091,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 13,
-        "passed": 10,
-        "errors": [
-          {
-            "path": "FSE/V_SickChild/Entities/WomanToAttract.lua",
-            "line": 820,
-            "message": "FSE/V_SickChild/Entities/WomanToAttract.lua:820: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/V_SickChild/V_SickChild.lua",
-            "line": 143,
-            "message": "FSE/V_SickChild/V_SickChild.lua:143: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/V_SickChild/native_quest_helpers.lua",
-            "line": 42,
-            "message": "FSE/V_SickChild/native_quest_helpers.lua:42: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 13,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -4176,10 +4114,7 @@
         "FSE/V_SickChild/V_SickChild.lua": {
           "helper_ECE460": [
             "i_stk_14",
-            "pCVar7",
-            "piVar1",
-            "piVar2",
-            "ppuVar4",
+            "puStack_34",
             "xStack_28"
           ]
         },
@@ -4218,8 +4153,6 @@
             "xStack_a8_b3"
           ],
           "helper_ED0B10": [
-            "CVar3",
-            "pCVar6",
             "pOther",
             "xStack_1c"
           ]
@@ -4228,7 +4161,7 @@
       "cleanupRegions": {
         "FSE/V_SickChild/Entities/SickChildsMother.lua": {
           "LAB_00ece3f7": [
-            "quest:PauseAllNonScriptedEntities((__native_entity_state:GetStateInt(\"self_0x14\") + 0x48))",
+            "quest:PauseAllNonScriptedEntities(resources:MemberResource(\"seh_Mother\"))",
             "resources:DestroyMovie(xStack_94)"
           ]
         },
@@ -4285,26 +4218,6 @@
             "unlifted: *(undefined4 *)(puStack_34 + 4) = 0;",
             "unlifted: *(undefined1 **)(puStack_34 + 8) = puStack_34;",
             "unlifted: *(undefined1 **)(puStack_34 + 0xc) = puStack_34;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x60",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unnamed field 0x50",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(undefined4 *)(pCVar7 + 8) = uVar3;",
-            "unlifted: *(int **)(pCVar7 + 0xc) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: pCVar7 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString",
-            "unlifted: *ppuVar4 = *ppuVar4 + -1;",
-            "unlifted: (*(code *)(*(int **)(pCVar7 + 0xc))[1])();",
-            "unlifted: *(int *)(pCVar7 + 8) = i_stk_14;",
-            "unlifted: *(undefined ***)(pCVar7 + 0xc) = ppuVar5;",
-            "unlifted: *ppuVar5 = *ppuVar5 + 1;",
             "unlifted: StdMap_DestroyNode(&xStack_28,unaff_EBP[1]);",
             "unlifted: unaff_EBP[2] = unaff_EBP;",
             "unlifted: unaff_EBP[1] = 0;",
@@ -4317,35 +4230,25 @@
             "unlifted: free(xStack_1c);",
             "unlifted: p1 = *unaff_EBP",
             "unlifted: p0 = *xStack_10",
-            "unlifted: local piVar1 = *(this + 0x64)",
-            "unlifted: local piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: piVar1 = *(this + 0x54)",
-            "unlifted: piVar2 = *(pCVar7 + 0xc)",
-            "unlifted: local ppuVar4 = *(pCVar7 + 0xc)"
+            "unlifted: ACTORMAP_Set(puStack_34, \"HERO\", &local_1c)"
           ]
         },
         "syntax": {
           "runtime": "Lua 5.4",
-          "ok": false,
+          "ok": true,
           "checked": 1,
-          "passed": 0,
-          "errors": [
-            {
-              "path": "FSE/V_SickChild/native_quest_helpers.lua",
-              "line": 42,
-              "message": "FSE/V_SickChild/native_quest_helpers.lua:42: unexpected symbol near '*'"
-            }
-          ]
+          "passed": 1,
+          "errors": []
         }
       },
       "summary": {
         "owners": 12,
         "functions": 49,
         "missing": 0,
-        "functionSyntaxPassed": 47,
-        "fileSyntaxPassed": 10,
+        "functionSyntaxPassed": 49,
+        "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 13,
-        "todo": 430
+        "todo": 388
       }
     }
   ],
@@ -4353,9 +4256,9 @@
     "owners": 12,
     "functions": 49,
     "missing": 0,
-    "functionSyntaxPassed": 47,
-    "fileSyntaxPassed": 10,
+    "functionSyntaxPassed": 49,
+    "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 430
+    "todo": 388
   }
 }

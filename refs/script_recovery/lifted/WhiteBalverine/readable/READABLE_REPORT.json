@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "white_balverine",
- "draft": "refs\\script_recovery\\lifted\\WhiteBalverine\\draft",
+ "draft": "refs/script_recovery/lifted/WhiteBalverine/draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -13,6 +13,12 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": []
+   },
+   "readability": {
+    "lines": 2,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineKnotholeGlade/Entities/KG_Chief.lua": {
@@ -30,7 +36,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 10,
-      "declarations": 22,
+      "declarations": 21,
       "decimalLiterals": 2
      }
     },
@@ -1880,7 +1886,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 264,
+     "sourceLine": 273,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1889,7 +1895,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 267,
+     "sourceLine": 276,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1898,7 +1904,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 270,
+     "sourceLine": 279,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1906,20 +1912,20 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 0,
+   "wrappedDeclarations": 1,
    "style": {
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 12,
+       "splitLocals": 11,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
        "staleLabelComments": 4,
        "aliveStaging": 42,
        "exitChecksInlined": 4,
-       "frameChecks": 11,
-       "inlinedTemporaries": 64,
+       "frameChecks": 13,
+       "inlinedTemporaries": 61,
        "deadDefinitions": 9,
        "guardWrappers": 1,
        "retryLoops": 10,
@@ -1930,22 +1936,27 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 2,
+       "tailGuards": 9,
        "blockingSpeech": 5,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "gotoElse": 4,
+       "sharedExitTests": 0,
+       "gotoElse": 6,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 1,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 14,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 21,
+       "sunkLocals": 19,
        "cleanupClosureNames": 0,
        "parentheses": 70,
        "cosmetics": 0,
@@ -1963,12 +1974,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 255,
-       "temporaries": 7,
-       "labels": 22,
-       "gotos": 49,
-       "terminationChecks": 22,
-       "frameChecks": 6,
+       "lines": 264,
+       "temporaries": 9,
+       "labels": 18,
+       "gotos": 34,
+       "terminationChecks": 21,
+       "frameChecks": 8,
        "requires": 0
       }
      },
@@ -2000,11 +2011,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2063,11 +2079,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2126,11 +2147,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2169,6 +2195,757 @@
      "Init",
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 286,
+    "counts": {
+     "genericTemporaries": 64,
+     "gotos": 34,
+     "nativeNames": 50
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 12,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 12,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 12,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 12,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 13,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 22,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 24,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 29,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 29,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 30,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 30,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 32,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 32,
+      "category": "nativeNames",
+      "text": "LAB_00e17f13"
+     },
+     {
+      "line": 34,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 34,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 35,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 35,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 37,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 37,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 38,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 38,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 39,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 39,
+      "category": "nativeNames",
+      "text": "LAB_00e17f13"
+     },
+     {
+      "line": 41,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 41,
+      "category": "nativeNames",
+      "text": "LAB_00e17f21"
+     },
+     {
+      "line": 43,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 43,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f13"
+     },
+     {
+      "line": 44,
+      "category": "nativeNames",
+      "text": "LAB_00e17f13"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 46,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 46,
+      "category": "nativeNames",
+      "text": "LAB_00e17f21"
+     },
+     {
+      "line": 47,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f13"
+     },
+     {
+      "line": 48,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 48,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f21"
+     },
+     {
+      "line": 49,
+      "category": "nativeNames",
+      "text": "LAB_00e17f21"
+     },
+     {
+      "line": 50,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 51,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f21"
+     },
+     {
+      "line": 52,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 54,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 54,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 56,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 57,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 57,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 58,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 58,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 60,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 61,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 61,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 63,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 63,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 63,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 77,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 77,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6"
+     },
+     {
+      "line": 79,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 79,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6"
+     },
+     {
+      "line": 80,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 80,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e181f6"
+     },
+     {
+      "line": 81,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6"
+     },
+     {
+      "line": 86,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e181f6"
+     },
+     {
+      "line": 99,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 102,
+      "category": "nativeNames",
+      "text": "FLOW_after_lab_00e17e8f"
+     },
+     {
+      "line": 123,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 123,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 134,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 134,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 137,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 137,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 138,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 138,
+      "category": "nativeNames",
+      "text": "LAB_00e17e55"
+     },
+     {
+      "line": 140,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 140,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 146,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 146,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 155,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 155,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 163,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 163,
+      "category": "nativeNames",
+      "text": "LAB_00e17d91"
+     },
+     {
+      "line": 164,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 164,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 165,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 165,
+      "category": "nativeNames",
+      "text": "LAB_00e17d91"
+     },
+     {
+      "line": 166,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 167,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 167,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17d91"
+     },
+     {
+      "line": 168,
+      "category": "nativeNames",
+      "text": "LAB_00e17d91"
+     },
+     {
+      "line": 169,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 170,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17d91"
+     },
+     {
+      "line": 171,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 172,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 172,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 174,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 175,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 175,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 178,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 178,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 179,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 179,
+      "category": "nativeNames",
+      "text": "LAB_00e17e55"
+     },
+     {
+      "line": 183,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 183,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 185,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 185,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17e64"
+     },
+     {
+      "line": 186,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 190,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 190,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 192,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 193,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 193,
+      "category": "nativeNames",
+      "text": "LAB_00e17f21_c1"
+     },
+     {
+      "line": 195,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 195,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f21_c1"
+     },
+     {
+      "line": 196,
+      "category": "nativeNames",
+      "text": "LAB_00e17f21_c1"
+     },
+     {
+      "line": 197,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 198,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17f21_c1"
+     },
+     {
+      "line": 199,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 200,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 200,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 201,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 201,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 203,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 204,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 204,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 205,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 205,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 207,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 208,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
+     },
+     {
+      "line": 208,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 210,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 224,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 224,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6_c1"
+     },
+     {
+      "line": 226,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 226,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6_c1"
+     },
+     {
+      "line": 227,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 227,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e181f6_c1"
+     },
+     {
+      "line": 228,
+      "category": "nativeNames",
+      "text": "LAB_00e181f6_c1"
+     },
+     {
+      "line": 233,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e181f6_c1"
+     },
+     {
+      "line": 247,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 247,
+      "category": "nativeNames",
+      "text": "FLOW_after_lab_00e17e8f"
+     },
+     {
+      "line": 248,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e17e64"
+     },
+     {
+      "line": 257,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 257,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 258,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 258,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     },
+     {
+      "line": 259,
+      "category": "nativeNames",
+      "text": "LAB_00e17e55"
+     },
+     {
+      "line": 260,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 260,
+      "category": "nativeNames",
+      "text": "LAB_00e17e64"
+     },
+     {
+      "line": 261,
+      "category": "nativeNames",
+      "text": "LAB_00e181ca"
+     }
     ]
    }
   },
@@ -2636,7 +3413,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 70,
+     "sourceLine": 68,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2645,7 +3422,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 73,
+     "sourceLine": 71,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2654,7 +3431,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 76,
+     "sourceLine": 74,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2667,7 +3444,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 6,
+       "splitLocals": 7,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -2693,15 +3470,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 60,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 4,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 10,
+       "sunkLocals": 12,
        "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
@@ -2719,10 +3501,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 62,
-       "temporaries": 3,
-       "labels": 4,
-       "gotos": 7,
+       "lines": 60,
+       "temporaries": 2,
+       "labels": 2,
+       "gotos": 3,
        "terminationChecks": 6,
        "frameChecks": 5,
        "requires": 0
@@ -2756,11 +3538,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2819,11 +3606,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2882,11 +3674,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -2925,6 +3722,87 @@
      "Init",
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 80,
+    "counts": {
+     "genericTemporaries": 6,
+     "gotos": 3,
+     "nativeNames": 5
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 42,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 44,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 47,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 47,
+      "category": "nativeNames",
+      "text": "LAB_00e17103"
+     },
+     {
+      "line": 48,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 56,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 56,
+      "category": "nativeNames",
+      "text": "LAB_00e17103"
+     },
+     {
+      "line": 58,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 58,
+      "category": "nativeNames",
+      "text": "LAB_00e17119"
+     },
+     {
+      "line": 59,
+      "category": "nativeNames",
+      "text": "LAB_00e17103"
+     },
+     {
+      "line": 63,
+      "category": "nativeNames",
+      "text": "LAB_00e17119"
+     }
     ]
    }
   },
@@ -3392,7 +4270,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 70,
+     "sourceLine": 68,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3401,7 +4279,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 73,
+     "sourceLine": 71,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3410,7 +4288,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 76,
+     "sourceLine": 74,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3423,7 +4301,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 6,
+       "splitLocals": 7,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -3449,15 +4327,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 60,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 4,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 10,
+       "sunkLocals": 12,
        "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
@@ -3475,10 +4358,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 62,
-       "temporaries": 3,
-       "labels": 4,
-       "gotos": 7,
+       "lines": 60,
+       "temporaries": 2,
+       "labels": 2,
+       "gotos": 3,
        "terminationChecks": 6,
        "frameChecks": 5,
        "requires": 0
@@ -3512,11 +4395,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3575,11 +4463,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3638,11 +4531,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3681,6 +4579,87 @@
      "Init",
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 80,
+    "counts": {
+     "genericTemporaries": 6,
+     "gotos": 3,
+     "nativeNames": 5
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 42,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 44,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 45,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 47,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 47,
+      "category": "nativeNames",
+      "text": "LAB_00e17623"
+     },
+     {
+      "line": 48,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 56,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 56,
+      "category": "nativeNames",
+      "text": "LAB_00e17623"
+     },
+     {
+      "line": 58,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 58,
+      "category": "nativeNames",
+      "text": "LAB_00e17639"
+     },
+     {
+      "line": 59,
+      "category": "nativeNames",
+      "text": "LAB_00e17623"
+     },
+     {
+      "line": 63,
+      "category": "nativeNames",
+      "text": "LAB_00e17639"
+     }
     ]
    }
   },
@@ -3877,11 +4856,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3940,11 +4924,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4003,11 +4992,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4066,11 +5060,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4110,6 +5109,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 26,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineKnotholeGlade/Entities/WB_Villager.lua": {
@@ -4305,11 +5310,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4368,11 +5378,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4431,11 +5446,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4494,11 +5514,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4537,6 +5562,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 30,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineKnotholeGlade/Entities/WB_WhiteBalverine.lua": {
@@ -6517,7 +7548,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 406,
+     "sourceLine": 389,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6526,7 +7557,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 411,
+     "sourceLine": 394,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6535,7 +7566,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 414,
+     "sourceLine": 397,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6548,7 +7579,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 9,
+       "splitLocals": 10,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -6567,22 +7598,27 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 305,
+       "tailGuards": 325,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 300,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 30,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 7,
        "controlAcquires": 0,
-       "sunkLocals": 15,
+       "sunkLocals": 17,
        "cleanupClosureNames": 0,
        "parentheses": 18,
        "cosmetics": 0,
@@ -6600,10 +7636,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 395,
-       "temporaries": 18,
-       "labels": 24,
-       "gotos": 65,
+       "lines": 378,
+       "temporaries": 17,
+       "labels": 23,
+       "gotos": 46,
        "terminationChecks": 34,
        "frameChecks": 24,
        "requires": 0
@@ -6637,11 +7673,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6700,11 +7741,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6763,11 +7809,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -6805,6 +7856,1012 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 405,
+    "counts": {
+     "genericTemporaries": 84,
+     "gotos": 46,
+     "nativeNames": 69
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult4"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult17"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult23"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "predicateResult30"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 16,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 16,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 16,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 24,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 26,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 36,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 42,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 42,
+      "category": "nativeNames",
+      "text": "LAB_00e16078"
+     },
+     {
+      "line": 45,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 45,
+      "category": "nativeNames",
+      "text": "LAB_00e16078"
+     },
+     {
+      "line": 47,
+      "category": "genericTemporaries",
+      "text": "predicateResult4"
+     },
+     {
+      "line": 49,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 49,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16078"
+     },
+     {
+      "line": 50,
+      "category": "nativeNames",
+      "text": "LAB_00e16078"
+     },
+     {
+      "line": 51,
+      "category": "genericTemporaries",
+      "text": "predicateResult4"
+     },
+     {
+      "line": 52,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16078"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "predicateResult4"
+     },
+     {
+      "line": 54,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 54,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 55,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 57,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 69,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 70,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 74,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 79,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 93,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 93,
+      "category": "nativeNames",
+      "text": "LAB_00e1647d"
+     },
+     {
+      "line": 97,
+      "category": "nativeNames",
+      "text": "LAB_00e1647d"
+     },
+     {
+      "line": 102,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 102,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 104,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 104,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 109,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 113,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 113,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 115,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 115,
+      "category": "nativeNames",
+      "text": "LAB_00e16666"
+     },
+     {
+      "line": 118,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 118,
+      "category": "nativeNames",
+      "text": "LAB_00e16666"
+     },
+     {
+      "line": 120,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 122,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 122,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16666"
+     },
+     {
+      "line": 123,
+      "category": "nativeNames",
+      "text": "LAB_00e16666"
+     },
+     {
+      "line": 124,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 125,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16666"
+     },
+     {
+      "line": 126,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 127,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 127,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 128,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 130,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 131,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 131,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 136,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 136,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 138,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 138,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 145,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 145,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f"
+     },
+     {
+      "line": 151,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 151,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b"
+     },
+     {
+      "line": 152,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 152,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f"
+     },
+     {
+      "line": 155,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 155,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f"
+     },
+     {
+      "line": 157,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 157,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b"
+     },
+     {
+      "line": 159,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 159,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1687b"
+     },
+     {
+      "line": 160,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b"
+     },
+     {
+      "line": 162,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1687b"
+     },
+     {
+      "line": 165,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 165,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f"
+     },
+     {
+      "line": 169,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 169,
+      "category": "nativeNames",
+      "text": "LAB_00e168ed"
+     },
+     {
+      "line": 170,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f"
+     },
+     {
+      "line": 172,
+      "category": "nativeNames",
+      "text": "LAB_00e16964"
+     },
+     {
+      "line": 176,
+      "category": "nativeNames",
+      "text": "LAB_00e168ed"
+     },
+     {
+      "line": 178,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 180,
+      "category": "nativeNames",
+      "text": "FLOW_after_lab_00e15f22"
+     },
+     {
+      "line": 184,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 190,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 190,
+      "category": "nativeNames",
+      "text": "LAB_00e15b1a"
+     },
+     {
+      "line": 193,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 193,
+      "category": "nativeNames",
+      "text": "LAB_00e15b1a"
+     },
+     {
+      "line": 195,
+      "category": "genericTemporaries",
+      "text": "predicateResult17"
+     },
+     {
+      "line": 197,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 197,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e15b1a"
+     },
+     {
+      "line": 198,
+      "category": "nativeNames",
+      "text": "LAB_00e15b1a"
+     },
+     {
+      "line": 199,
+      "category": "genericTemporaries",
+      "text": "predicateResult17"
+     },
+     {
+      "line": 200,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e15b1a"
+     },
+     {
+      "line": 201,
+      "category": "genericTemporaries",
+      "text": "predicateResult17"
+     },
+     {
+      "line": 202,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 202,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 203,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 205,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 217,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 218,
+      "category": "genericTemporaries",
+      "text": "scratchValue9"
+     },
+     {
+      "line": 219,
+      "category": "genericTemporaries",
+      "text": "scratchValue9"
+     },
+     {
+      "line": 219,
+      "category": "genericTemporaries",
+      "text": "scratchValue9"
+     },
+     {
+      "line": 219,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 222,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 227,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 228,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 228,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 228,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 246,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 252,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 252,
+      "category": "nativeNames",
+      "text": "LAB_00e16078_c1"
+     },
+     {
+      "line": 255,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 255,
+      "category": "nativeNames",
+      "text": "LAB_00e16078_c1"
+     },
+     {
+      "line": 257,
+      "category": "genericTemporaries",
+      "text": "predicateResult23"
+     },
+     {
+      "line": 259,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 259,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16078_c1"
+     },
+     {
+      "line": 260,
+      "category": "nativeNames",
+      "text": "LAB_00e16078_c1"
+     },
+     {
+      "line": 261,
+      "category": "genericTemporaries",
+      "text": "predicateResult23"
+     },
+     {
+      "line": 262,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16078_c1"
+     },
+     {
+      "line": 263,
+      "category": "genericTemporaries",
+      "text": "predicateResult23"
+     },
+     {
+      "line": 264,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 264,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 265,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 267,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 279,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 280,
+      "category": "genericTemporaries",
+      "text": "scratchValue11"
+     },
+     {
+      "line": 281,
+      "category": "genericTemporaries",
+      "text": "scratchValue11"
+     },
+     {
+      "line": 281,
+      "category": "genericTemporaries",
+      "text": "scratchValue11"
+     },
+     {
+      "line": 281,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 284,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 289,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 290,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 290,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 290,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 303,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 303,
+      "category": "nativeNames",
+      "text": "LAB_00e1647d_c1"
+     },
+     {
+      "line": 307,
+      "category": "nativeNames",
+      "text": "LAB_00e1647d_c1"
+     },
+     {
+      "line": 312,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 312,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 314,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 314,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 319,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 323,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 323,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 325,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 325,
+      "category": "nativeNames",
+      "text": "LAB_00e16666_c1"
+     },
+     {
+      "line": 328,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 328,
+      "category": "nativeNames",
+      "text": "LAB_00e16666_c1"
+     },
+     {
+      "line": 330,
+      "category": "genericTemporaries",
+      "text": "predicateResult30"
+     },
+     {
+      "line": 332,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 332,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16666_c1"
+     },
+     {
+      "line": 333,
+      "category": "nativeNames",
+      "text": "LAB_00e16666_c1"
+     },
+     {
+      "line": 334,
+      "category": "genericTemporaries",
+      "text": "predicateResult30"
+     },
+     {
+      "line": 335,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e16666_c1"
+     },
+     {
+      "line": 336,
+      "category": "genericTemporaries",
+      "text": "predicateResult30"
+     },
+     {
+      "line": 337,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 337,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 338,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 340,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 341,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 341,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 346,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 346,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 348,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 348,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 355,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 355,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f_c1"
+     },
+     {
+      "line": 361,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 361,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b_c1"
+     },
+     {
+      "line": 362,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 362,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f_c1"
+     },
+     {
+      "line": 365,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 365,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f_c1"
+     },
+     {
+      "line": 367,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 367,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b_c1"
+     },
+     {
+      "line": 369,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 369,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1687b_c1"
+     },
+     {
+      "line": 370,
+      "category": "nativeNames",
+      "text": "LAB_00e1687b_c1"
+     },
+     {
+      "line": 372,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1687b_c1"
+     },
+     {
+      "line": 375,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 375,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f_c1"
+     },
+     {
+      "line": 379,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 379,
+      "category": "nativeNames",
+      "text": "LAB_00e168ed_c1"
+     },
+     {
+      "line": 380,
+      "category": "nativeNames",
+      "text": "LAB_00e1694f_c1"
+     },
+     {
+      "line": 382,
+      "category": "nativeNames",
+      "text": "LAB_00e16964_c1"
+     },
+     {
+      "line": 386,
+      "category": "nativeNames",
+      "text": "LAB_00e168ed_c1"
+     },
+     {
+      "line": 388,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 388,
+      "category": "nativeNames",
+      "text": "FLOW_after_lab_00e15f22"
+     }
     ]
    }
   },
@@ -8406,7 +10463,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 199,
+     "sourceLine": 197,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8415,7 +10472,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 214,
+     "sourceLine": 212,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8424,7 +10481,7 @@
     },
     {
      "function": "WatchForTermination",
-     "sourceLine": 218,
+     "sourceLine": 216,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -8437,7 +10494,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 19,
+       "splitLocals": 23,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -8463,15 +10520,20 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 38,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
        "controlAcquires": 0,
-       "sunkLocals": 31,
+       "sunkLocals": 39,
        "cleanupClosureNames": 0,
        "parentheses": 6,
        "cosmetics": 0,
@@ -8489,10 +10551,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 182,
-       "temporaries": 4,
-       "labels": 1,
-       "gotos": 31,
+       "lines": 180,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 16,
        "frameChecks": 19,
        "requires": 0
@@ -8526,11 +10588,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -8589,11 +10656,16 @@
        "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -8652,11 +10724,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 2,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
@@ -8678,10 +10755,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 22,
+       "lines": 21,
        "temporaries": 0,
-       "labels": 1,
-       "gotos": 2,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 2,
        "frameChecks": 2,
        "requires": 0
@@ -8692,6 +10769,12 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": []
+   },
+   "readability": {
+    "lines": 241,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineWW/Entities/KG_Chief.lua": {
@@ -9678,7 +11761,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 141,
+     "sourceLine": 140,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -9687,7 +11770,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 146,
+     "sourceLine": 145,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -9696,7 +11779,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 149,
+     "sourceLine": 148,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -9725,7 +11808,7 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 4,
+       "copies": 3,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 121,
@@ -9735,11 +11818,16 @@
        "constantConditions": 3,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 120,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 11,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 3,
        "controlAcquires": 0,
@@ -9761,10 +11849,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 129,
+       "lines": 128,
        "temporaries": 4,
-       "labels": 3,
-       "gotos": 11,
+       "labels": 2,
+       "gotos": 3,
        "terminationChecks": 10,
        "frameChecks": 8,
        "requires": 0
@@ -9798,11 +11886,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9861,11 +11954,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9924,11 +12022,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -9966,6 +12069,77 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 154,
+    "counts": {
+     "genericTemporaries": 4,
+     "gotos": 3,
+     "nativeNames": 5
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 90,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 90,
+      "category": "nativeNames",
+      "text": "LAB_00e1a451"
+     },
+     {
+      "line": 93,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 93,
+      "category": "nativeNames",
+      "text": "LAB_00e1a451"
+     },
+     {
+      "line": 95,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 97,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 97,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1a451"
+     },
+     {
+      "line": 98,
+      "category": "nativeNames",
+      "text": "LAB_00e1a451"
+     },
+     {
+      "line": 99,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 100,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e1a451"
+     },
+     {
+      "line": 101,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     }
     ]
    }
   },
@@ -10153,11 +12327,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10216,11 +12395,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10279,11 +12463,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10342,11 +12531,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10386,6 +12580,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 22,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineWW/Entities/WBWW_WhiteBalverine.lua": {
@@ -10572,11 +12772,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10635,11 +12840,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10698,11 +12908,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10761,11 +12976,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -10804,6 +13024,12 @@
      "OnPersist",
      "OnPredicateFail"
     ]
+   },
+   "readability": {
+    "lines": 23,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/WhiteBalverineWW/WhiteBalverineWW.lua": {
@@ -11391,6 +13617,14 @@
        ]
       },
       "cVar4": {
+       "name": "taskRunning",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning",
+        "taskRunning"
+       ]
+      },
+      "iVar8_1": {
        "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -11398,7 +13632,21 @@
         null
        ]
       },
-      "iVar8_1": {
+      "iVar8_2": {
+       "name": "taskRunning2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning"
+       ]
+      },
+      "iVar8_3": {
+       "name": "taskRunning3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "taskRunning"
+       ]
+      },
+      "i_stk_a4": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -11406,26 +13654,8 @@
         null
        ]
       },
-      "iVar8_2": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "iVar8_3": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "i_stk_a4": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
       "i_stk_d0": {
-       "name": "scratchValue6",
+       "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -11469,7 +13699,7 @@
        ]
       },
       "r1_2": {
-       "name": "scratchValue7",
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -11481,12 +13711,12 @@
        ]
       },
       "r2_2": {
-       "name": "scratchValue8",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
       "r3": {
-       "name": "scratchValue9",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -11549,16 +13779,17 @@
        ]
       },
       "i_stk_a8": {
-       "name": "scratchValue10",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "i_stk_d4": {
-       "name": "scratchValue11",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
         null
        ]
       }
@@ -11587,10 +13818,10 @@
          85
         ],
         "bVar2_7": [
-         97
+         96
         ],
         "bVar2_8": [
-         107
+         105
         ]
        }
       },
@@ -11600,16 +13831,16 @@
        "versions": {
         "bVar5_1": [
          19,
-         159
+         157
         ],
         "bVar5_2": [
-         120
+         118
         ],
         "bVar5_3": [
-         129
+         127
         ],
         "bVar5_4": [
-         145
+         143
         ]
        }
       },
@@ -11637,13 +13868,13 @@
        "versions": {
         "iVar8_1": [
          25,
-         162
+         161
         ],
         "iVar8_2": [
-         92
+         91
         ],
         "iVar8_3": [
-         103
+         101
         ]
        }
       },
@@ -11767,11 +13998,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 2,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -11830,11 +14066,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -11893,11 +14134,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -11956,11 +14202,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -11993,7 +14244,7 @@
      },
      "SpawnBalverines": {
       "rewrites": {
-       "splitLocals": 18,
+       "splitLocals": 16,
        "closures": 2,
        "hero": 1,
        "cutscenes": 0,
@@ -12001,10 +14252,10 @@
        "aliveStaging": 8,
        "exitChecksInlined": 6,
        "frameChecks": 1,
-       "inlinedTemporaries": 14,
+       "inlinedTemporaries": 16,
        "deadDefinitions": 1,
        "guardWrappers": 0,
-       "retryLoops": 0,
+       "retryLoops": 1,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 1,
@@ -12012,31 +14263,36 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 0,
+       "tailGuards": 60,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 2,
-       "gotoElse": 0,
+       "sharedExitTests": 0,
+       "gotoElse": 60,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 4,
        "controlAcquires": 0,
-       "sunkLocals": 21,
+       "sunkLocals": 15,
        "cleanupClosureNames": 1,
        "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 1,
+       "firstAssignments": 3,
        "freeSuffixes": 1,
        "hoistedState": 0
       },
       "before": {
-       "lines": 159,
+       "lines": 158,
        "temporaries": 33,
        "labels": 0,
        "gotos": 0,
@@ -12045,8 +14301,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 113,
-       "temporaries": 12,
+       "lines": 108,
+       "temporaries": 11,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 5,
@@ -12060,6 +14316,452 @@
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist"
+    ]
+   },
+   "readability": {
+    "lines": 256,
+    "counts": {
+     "genericTemporaries": 63,
+     "gotos": 10,
+     "nativeNames": 14
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 10,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 10,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 10,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 12,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 27,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 27,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 30,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 31,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 31,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 47,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 47,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 49,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 49,
+      "category": "nativeNames",
+      "text": "LAB_00e18ce8"
+     },
+     {
+      "line": 51,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 51,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 52,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 52,
+      "category": "nativeNames",
+      "text": "LAB_00e18ce8"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 55,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 55,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 56,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 56,
+      "category": "nativeNames",
+      "text": "LAB_00e18ce8"
+     },
+     {
+      "line": 58,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 60,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 60,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e18ce8"
+     },
+     {
+      "line": 61,
+      "category": "nativeNames",
+      "text": "LAB_00e18ce8"
+     },
+     {
+      "line": 62,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 63,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e18ce8"
+     },
+     {
+      "line": 64,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 65,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 65,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 67,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 68,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 68,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 70,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 73,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 81,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 81,
+      "category": "nativeNames",
+      "text": "LAB_00e18d99"
+     },
+     {
+      "line": 87,
+      "category": "nativeNames",
+      "text": "LAB_00e18e80"
+     },
+     {
+      "line": 90,
+      "category": "nativeNames",
+      "text": "LAB_00e18d99"
+     },
+     {
+      "line": 92,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 92,
+      "category": "nativeNames",
+      "text": "LAB_00e18e80"
+     },
+     {
+      "line": 94,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 94,
+      "category": "nativeNames",
+      "text": "LAB_00e18d99"
+     },
+     {
+      "line": 98,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 98,
+      "category": "nativeNames",
+      "text": "LAB_00e18e80"
+     },
+     {
+      "line": 101,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 101,
+      "category": "nativeNames",
+      "text": "LAB_00e18e80"
+     },
+     {
+      "line": 107,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 107,
+      "category": "nativeNames",
+      "text": "LAB_00e18e80"
+     },
+     {
+      "line": 129,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 131,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 142,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 150,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 150,
+      "category": "genericTemporaries",
+      "text": "predicateResult7"
+     },
+     {
+      "line": 150,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 150,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 150,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 158,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 159,
+      "category": "genericTemporaries",
+      "text": "predicateResult7"
+     },
+     {
+      "line": 161,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 162,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 162,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 163,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 164,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 167,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 171,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 173,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 174,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 184,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 184,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 185,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 185,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 216,
+      "category": "genericTemporaries",
+      "text": "predicateResult7"
+     },
+     {
+      "line": 220,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 244,
+      "category": "genericTemporaries",
+      "text": "predicateResult7"
+     },
+     {
+      "line": 247,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 247,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 247,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 248,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 248,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 249,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 249,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 251,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     }
     ]
    }
   }

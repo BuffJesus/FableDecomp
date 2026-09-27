@@ -36,7 +36,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WhiteBalverineWW | Q_WhiteBalverineWW | Init | 0x00e18480 | True | 0 |
 | Q_WhiteBalverineWW | Q_WhiteBalverineWW | OnPersist | 0x00cbd4e0 | True | 0 |
 | Q_WhiteBalverineWW | Q_WhiteBalverineWW | MonitorBalverine | 0x00e18eb0 | True | 0 |
-| Q_WhiteBalverineWW | Q_WhiteBalverineWW | SpawnBalverines | 0x00e19560 | True | 11 |
+| Q_WhiteBalverineWW | Q_WhiteBalverineWW | SpawnBalverines | 0x00e19560 | True | 8 |
 | Q_WhiteBalverineWW | KG_Chief | Main | 0x00e19d80 | True | 4 |
 | Q_WhiteBalverineWW | KG_Chief | Init | 0x00e19390 | True | 0 |
 | Q_WhiteBalverineWW | KG_Chief | OnPersist | 0x00cdebc0 | True | 0 |
@@ -50,4 +50,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WhiteBalverineWW | WBWW_SoldierBalverine | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_WhiteBalverineWW | WBWW_SoldierBalverine | OnPredicateFail | 0x00e19290 | True | 0 |
 
-Summary: `{"owners": 11, "functions": 45, "missing": 0, "functionSyntaxPassed": 45, "fileSyntaxPassed": 11, "fileSyntaxChecked": 11, "todo": 22}`
+Summary: `{"owners": 11, "functions": 45, "missing": 0, "functionSyntaxPassed": 45, "fileSyntaxPassed": 11, "fileSyntaxChecked": 11, "todo": 19}`

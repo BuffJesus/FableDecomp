@@ -7,7 +7,6 @@ local TUTORIAL_CATEGORY_MOVEMENT = 26  -- ETutorialCategory (Ego_r.pdb)
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local actorMap, pThingToMove
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster", 1)
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent", 1)
     quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder", 1)
@@ -32,28 +31,27 @@ function Main(quest)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, hero, 4) do
-        if not quest:NewScriptFrame() then goto LAB_00d56509 end
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d56509 end
-    actorMap = resources:NewActorMap()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
+    local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "WHISPER", resource2)
-    pThingToMove = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacro("CS_GUILD_MELEE_INTRO", actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:SetStateBool("TalkedToWhisper", true)
     quest:PauseAllNonScriptedEntities(false)
-    resources:DestroyMovie(pThingToMove)
+    resources:DestroyMovie(movie)
     resources:DestroyActorMap(actorMap)
     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_03", "", "")
     quest:AddLogbookStoryEntry(40)
-    if not (quest:DisplayTutorial(TUTORIAL_CATEGORY_MOVEMENT) and not quest:IsActiveThreadTerminating()) then goto LAB_00d56509 end
+    if not (quest:DisplayTutorial(TUTORIAL_CATEGORY_MOVEMENT) and not quest:IsActiveThreadTerminating()) then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     while not quest:MsgIsTutorialClickedPast() do
-        if not quest:NewScriptFrame() then goto LAB_00d56509 end
+        if not quest:NewScriptFrame() then break end
     end
-    ::LAB_00d56509::
     resources:ReleaseResource(resource)
     resources:ReleaseResource(resource2)
 end

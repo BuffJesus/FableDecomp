@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar3, __native_condition_1, aCStack_11c, bVar5, cVar6, fVar17, fVar18, iVar19, iVar21, iVar24, iVar25, iVar9, native_arg_sequence_1, p0, pCVar11, pCVar12, pCVar14, pCVar7, pcVar26, piVar1, pppuVar20, pppuVar28, ppuVar13, pvVar8, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar15, uVar4, xStack_118, xStack_140, xStack_154, xStack_15c, xStack_170, xStack_178, xStack_190, xStack_1a0, xStack_1a8, xStack_b4, xStack_c8, xStack_d4, xStack_f4, xStack_fc, x_stk_188
+    local CVar3, __native_condition_1, bVar5, cVar6, fVar17, fVar18, iVar19, iVar21, iVar24, iVar25, iVar9, native_arg_sequence_1, p0, pCVar11, pCVar12, pCVar7, pcVar26, piVar1, pppuVar20, pppuVar28, ppuVar13, pvVar8, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, uVar10, uVar15, uVar4, xStack_15c, xStack_190, xStack_1a0, xStack_1a8, xStack_b4, xStack_d4, x_stk_188
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -106,7 +106,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if not bVar5 then
-                    resources:Reset((__native_entity_state:GetStateInt("self_0x14") + 0xa4))
+                    resources:PrepareResource(resources:MemberResource("seh_Whore"))
                     resources:PrepareResource(xStack_1a0)
                     cVar6 = me:AcquireControl(4)
                     while not cVar6 do
@@ -150,7 +150,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if not bVar5 then
-            resources:Reset((__native_entity_state:GetStateInt("self_0x14") + 0xa4))
+            resources:PrepareResource(resources:MemberResource("seh_Whore"))
             xStack_190 = resources:StartMovie("")
             pppuVar28 = xStack_190
             quest:StartMovieSequence()
@@ -192,7 +192,7 @@ function Main(quest, me)
                     iVar24 = 1
                     iVar21 = 0
                     iVar19 = 0
-                    pCVar7 = helper_E403D0(quest, me, xStack_118)
+                    pCVar7 = helper_E403D0(quest, me, "HAPPY")
                     pvVar8 = pCVar7
                     iVar9 = quest:GetHero()
                     r2 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -250,7 +250,7 @@ function Main(quest, me)
                             iVar24 = 1
                             iVar21 = 0
                             iVar19 = 0
-                            pCVar7 = helper_E403D0(quest, me, xStack_178)
+                            pCVar7 = helper_E403D0(quest, me, "MAGICIAN_HINT")
                             pvVar8 = pCVar7
                             iVar9 = quest:GetHero()
                             r3 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -297,7 +297,7 @@ function Main(quest, me)
                         iVar24 = 1
                         iVar21 = 0
                         iVar19 = 0
-                        pCVar7 = helper_E403D0(quest, me, xStack_170)
+                        pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_INTRODUCTION")
                         pvVar8 = pCVar7
                         iVar9 = quest:GetHero()
                         r4 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -329,7 +329,7 @@ function Main(quest, me)
                                 iVar24 = 1
                                 iVar21 = 0
                                 iVar19 = 0
-                                pCVar7 = helper_E403D0(quest, me, xStack_c8)
+                                pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_REMINDER")
                                 pvVar8 = pCVar7
                                 iVar9 = quest:GetHero()
                                 r5 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -358,7 +358,7 @@ function Main(quest, me)
                                 iVar24 = 1
                                 iVar21 = 0
                                 iVar19 = 0
-                                pCVar7 = helper_E403D0(quest, me, xStack_f4)
+                                pCVar7 = helper_E403D0(quest, me, "PARTY_AGAIN")
                                 pvVar8 = pCVar7
                                 iVar9 = quest:GetHero()
                                 r6 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -381,7 +381,7 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00e3f957
                     ::LAB_00e3f957::
-                    uVar10 = helper_E403D0(quest, me, "PARTY_AGAIN")
+                    uVar10 = helper_E403D0(quest, me, "PARTY_PAID_QUESTION")
                     quest:GiveHeroYesNoQuestion(uVar10, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "PARTY_PAID_QUESTION")
                     iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
                     while iVar9 < 0 do
@@ -410,7 +410,7 @@ function Main(quest, me)
                                         iVar24 = 1
                                         iVar21 = 0
                                         iVar19 = 0
-                                        pCVar7 = helper_E403D0(quest, me, xStack_154)
+                                        pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_FOLLOW_ME")
                                         pvVar8 = pCVar7
                                         iVar9 = quest:GetHero()
                                         r7 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -429,14 +429,12 @@ function Main(quest, me)
                                         if bVar5 then goto LAB_00e3f729 end
                                     end
                                     quest:GiveHeroGold(fVar18)
-                                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0xa4),&xStack_1a8);
+                                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
                                     pCVar11 = __native_entity_state:GetStateString("Name")
                                     pCVar12 = ("TEXT_CS_B13_SEX_" .. pCVar11)
-                                    -- TODO(native): pCVar14 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),(CCharString *)xStack_d4);
-                                    pCVar14 = pCVar12
-                                    pCVar12 = helper_E403D0(quest, me, xStack_140)
-                                    -- TODO(native): pCVar14 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_16c);
-                                    pCVar14 = pCVar12
+                                    resources:SetString(resources:MemberStringMap("csargs"), pCVar7, pCVar12)
+                                    pCVar12 = helper_E403D0(quest, me, "PARTY_PAID_PLEASED")
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", pCVar12)
                                     quest:SetCutsceneSkippable(nil --[[missing]])
                                     if not quest:GetStateBool("HadSex") then
                                         alive = not quest:IsActiveThreadTerminating()
@@ -505,7 +503,7 @@ function Main(quest, me)
                                         iVar24 = 1
                                         iVar21 = 0
                                         iVar19 = 0
-                                        pCVar7 = helper_E403D0(quest, me, xStack_fc)
+                                        pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_TOO_EXPENSIVE")
                                         pvVar8 = pCVar7
                                         iVar9 = quest:GetHero()
                                         r8 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -555,7 +553,7 @@ function Main(quest, me)
                 iVar24 = 1
                 iVar21 = 0
                 iVar19 = 0
-                pCVar7 = helper_E403D0(quest, me, xStack_190)
+                pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_DECLINED")
                 pvVar8 = pCVar7
                 iVar9 = quest:GetHero()
                 r9 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -648,7 +646,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if not bVar5 then
-                    resources:Reset((__native_entity_state:GetStateInt("self_0x14") + 0xa4))
+                    resources:PrepareResource(resources:MemberResource("seh_Whore"))
                     resources:PrepareResource(xStack_1a0)
                     cVar6 = me:AcquireControl(4)
                     while not cVar6 do
@@ -710,7 +708,7 @@ function Main(quest, me)
                     iVar24 = 1
                     iVar21 = 0
                     iVar19 = 0
-                    pCVar7 = helper_E403D0(quest, me, pcVar26)
+                    pCVar7 = helper_E403D0(quest, me, "PARTY_FREE")
                     pvVar8 = pCVar7
                     iVar9 = quest:GetHero()
                     r10 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -729,7 +727,7 @@ function Main(quest, me)
                     if bVar5 then goto LAB_00e4039f end
                 end
                 pppuVar20 = "TEXT_OBJECT_HERO_ANSWER_YES"
-                uVar10 = helper_E403D0(quest, me, aCStack_11c)
+                uVar10 = helper_E403D0(quest, me, "PARTY_FREE_QUESTION")
                 quest:GiveHeroYesNoQuestion(uVar10, pppuVar20, "TEXT_OBJECT_HERO_ANSWER_NO", "PARTY_FREE_QUESTION")
                 iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
                 while iVar9 < 0 do
@@ -753,7 +751,7 @@ function Main(quest, me)
                             iVar24 = 1
                             iVar21 = 0
                             iVar19 = 0
-                            pCVar7 = helper_E403D0(quest, me, "PARTY_PAID_DECLINED")
+                            pCVar7 = helper_E403D0(quest, me, "PARTY_FREE_FOLLOW_ME")
                             pvVar8 = pCVar7
                             iVar9 = quest:GetHero()
                             r11 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -771,15 +769,13 @@ function Main(quest, me)
                             bVar5 = not alive
                             if bVar5 then goto LAB_00e403af end
                         end
-                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0xa4),&xStack_1a8);
+                        -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
                         pcVar26 = "_BOSS"
                         pCVar11 = ("TEXT_CS_B13_SEX_" .. __native_entity_state:GetStateString("Name"))
                         pCVar11 = (pCVar11 .. pcVar26)
-                        -- TODO(native): pCVar12 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_130_2);
-                        pCVar12 = pCVar11
-                        pCVar11 = helper_E403D0(quest, me, "$SEXTALK")
-                        -- TODO(native): pCVar12 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_120);
-                        pCVar12 = pCVar11
+                        resources:SetString(resources:MemberStringMap("csargs"), "$SEXTALK", pCVar11)
+                        pCVar11 = helper_E403D0(quest, me, "PARTY_FREE_FINISHING_UP")
+                        resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", pCVar11)
                         quest:SetCutsceneSkippable(true)
                         -- TODO(native): CVar3 = *__native_entity_state:GetStateString("Name")
                         CVar3 = nil --[[unresolved native value]]
@@ -837,7 +833,7 @@ function Main(quest, me)
                     iVar24 = 1
                     iVar21 = 0
                     iVar19 = 0
-                    pCVar7 = helper_E403D0(quest, me, "PARTY_FREE_FINISHING_UP")
+                    pCVar7 = helper_E403D0(quest, me, "PARTY_FREE_DECLINED")
                     pvVar8 = pCVar7
                     iVar9 = quest:GetHero()
                     r13 = me:Speak(iVar9, pvVar8, iVar19, (iVar21 ~= 0), (iVar24 ~= 0), (iVar25 ~= 0))
@@ -881,6 +877,8 @@ function Init(quest, me)
     __native_entity_state:SetStateBool("NoLongerWorking", false)
     this_00 = __native_entity_state:GetStateString("Name")
     pOther = me:GetDataString()
+    this_00 = pOther
+    __native_entity_state:SetStateString("Name", pOther)
     if not quest:GetStateBool("BecomeNunnery") then
         quest:SetThingHasInformation(me, true)
     end
@@ -888,66 +886,61 @@ function Init(quest, me)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     quest:EntitySetOpinionReactionMask(me, "OPINION_REACTION_MASK_DONT_SCREAM")
     __native_entity_state:SetStateInt("GoldRequired", 0)
-    -- TODO(native): if *pOther == nil then
-    if false then
+    if this_00 == nil then
         bVar4 = false
         if bVar4 then
             goto LAB_00e3ad4d
         end
     else
-        -- TODO(native): iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,"POLLY");
+        iVar1 = ((this_00 == "POLLY") and 0 or 1)
         if iVar1 == 0 then goto LAB_00e3ad4d end
     end
     goto FLOW_past_lab_00e3ad4d
     ::LAB_00e3ad4d::
     __native_entity_state:SetStateInt("GoldRequired", 0x32)
     ::FLOW_past_lab_00e3ad4d::
-    -- TODO(native): if *pOther == nil then
-    if false then
+    if this_00 == nil then
         bVar4 = false
         if bVar4 then
             goto LAB_00e3ad89
         end
     else
-        -- TODO(native): iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,"AMELIA");
+        iVar1 = ((this_00 == "AMELIA") and 0 or 1)
         if iVar1 == 0 then goto LAB_00e3ad89 end
     end
     goto FLOW_past_lab_00e3ad89
     ::LAB_00e3ad89::
     __native_entity_state:SetStateInt("GoldRequired", 100)
     ::FLOW_past_lab_00e3ad89::
-    -- TODO(native): if *pOther == nil then
-    if false then
+    if this_00 == nil then
         bVar4 = false
         if bVar4 then
             goto LAB_00e3adc5
         end
     else
-        -- TODO(native): iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,"LUCREZIA");
+        iVar1 = ((this_00 == "LUCREZIA") and 0 or 1)
         if iVar1 == 0 then goto LAB_00e3adc5 end
     end
     goto FLOW_past_lab_00e3adc5
     ::LAB_00e3adc5::
     __native_entity_state:SetStateInt("GoldRequired", 200)
     ::FLOW_past_lab_00e3adc5::
-    -- TODO(native): if *pOther == nil then
-    if false then
+    if this_00 == nil then
         bVar4 = false
         if not bVar4 then goto LAB_00e3ae08 end
     else
-        -- TODO(native): iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,"SOPHIA");
+        iVar1 = ((this_00 == "SOPHIA") and 0 or 1)
         if iVar1 ~= 0 then goto LAB_00e3ae08 end
     end
     __native_entity_state:SetStateInt("GoldRequired", 1000)
     ::LAB_00e3ae08::
-    -- TODO(native): if *pOther == nil then
-    if false then
+    if this_00 == nil then
         bVar4 = false
         if not bVar4 then
             return
         end
     else
-        -- TODO(native): iVar1 = CBasicString<char>::Compare((void *)**(undefined4 **)this_00,"HEDWIG");
+        iVar1 = ((this_00 == "HEDWIG") and 0 or 1)
         if iVar1 ~= 0 then
             return
         end
@@ -967,10 +960,10 @@ end
 function OnPredicateFail(quest, me)
 end
 
-function helper_E403D0(quest, me, native_arg_param_1)
+function helper_E403D0(quest, me, native_arg_dialogueSuffix)
     local pCVar1 = ("TEXT_QST_B13_" .. __native_entity_state:GetStateString("Name"))
     pCVar1 = (pCVar1 .. "_")
-    (pCVar1 .. in_stack_00000008)
-    return native_arg_param_1
+    local hiddenStringResult = (pCVar1 .. native_arg_dialogueSuffix)
+    return hiddenStringResult
 end
 

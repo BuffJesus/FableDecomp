@@ -8,13 +8,12 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d43263 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     while true do
         if quest:IsActiveThreadTerminating() then break end
         quest:NewScriptFrame(me)
     end
-    ::LAB_00d43263::
     resources:ReleaseResource(resource)
 end
 

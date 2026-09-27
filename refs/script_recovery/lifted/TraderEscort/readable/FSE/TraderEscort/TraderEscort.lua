@@ -38,22 +38,20 @@ function Main(quest)
     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_01", "Darkwood1", "Greatwood")
     quest:CreateThread("WatchForSurprisingBalverines")  -- native thread body CQ_TraderEscortScript::WatchForSurprisingBalverines: lift it as function WatchForSurprisingBalverines(quest)
     quest:CreateThread("WatchForMissionRules")  -- native thread body 0x00E06440: lift it as function WatchForMissionRules(quest)
-    if quest:GetStateBool("QuestStartScreened") then goto LAB_00e015c9 end
+    if quest:GetStateBool("QuestStartScreened") then return end
     while true do
         if not quest:NewScriptFrame() then break end
         if quest:HeroHasExpression("EXPRESSION_PICKPOCKET") then
             if quest:IsActiveThreadTerminating() then return end
             local getActiveQuestName = quest:GetActiveQuestName()
             quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_PICKPOCKETTRADERS", 10, quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastReward), true, getActiveQuestName, 0)
-            goto LAB_00e015c9
+            return
         end
         if quest:GetStateBool("QuestStartScreened") then
             return
         end
     end
-    goto FLOW_past_lab_00e015c9
-    ::LAB_00e015c9::
-    ::FLOW_past_lab_00e015c9::
+    do return end
 end
 
 -- Q_TraderEscort.Init (retail 0x00e006d0)
@@ -182,13 +180,12 @@ end
 function WatchForMissionRules(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult3, predicateResult4, predicateResult7, isRegionLoaded
-    local darkwoodTrader4, endTrader
+    local isRegionLoaded, darkwoodTrader4, endTrader
     if not quest:GetStateBool("IntroFinished") then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetStateBool("SavedInMiddle", false)
         while not quest:IsRegionLoaded("Darkwood1") do
-            if not quest:NewScriptFrame() then goto LAB_00e07620 end
+            if not quest:NewScriptFrame() then return end
         end
         local darkwoodTrader = quest:GetNearestWithScriptName(quest:GetThingWithScriptName("MK_DTE_INTRO_TRADER1"), "DarkwoodTrader")
         local darkwoodTrader2 = quest:GetNearestWithScriptName(darkwoodTrader, "DarkwoodTrader")
@@ -216,60 +213,46 @@ function WatchForMissionRules(quest)
     end
     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_02", "Darkwood4", "Greatwood")
     if not quest:GetStateBool("QuestStartScreened") then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetStateBool("IntroFinished", true)
         quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), true, false)
         quest:SetStateBool("QuestStartScreened", true)
     end
     if not quest:GetStateBool("FollowInfoGiven") then
-        if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+        if quest:IsActiveThreadTerminating() then return end
         if quest:IsXbox() then
             quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT")
             while not quest:MsgIsGameInfoClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00e07620 end
+                if not quest:NewScriptFrame() then return end
             end
             if quest:IsActiveThreadTerminating() then return end
         else
             quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT_PC")
             while not quest:MsgIsGameInfoClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00e07620 end
+                if not quest:NewScriptFrame() then return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+            if quest:IsActiveThreadTerminating() then return end
         end
         quest:SetStateBool("FollowInfoGiven", true)
     end
     while quest:GetStateInt("TradersStillAliveCounter") < 1 do
-        if not quest:NewScriptFrame() then goto LAB_00e07620 end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e07620 end
+    if quest:IsActiveThreadTerminating() then return end
     endTrader = nil
     if quest:GetStateBool("SavedInMiddle") then
         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
     end
     while not quest:IsActiveThreadTerminating() do
-        if quest:GetStateBool("GoneWrongWay") then goto LAB_00e06b57 end
-        if not quest:IsRegionLoaded("GreatwoodCaves") then goto LAB_00e06b57 end
-        predicateResult = true
-        goto FLOW_past_lab_00e06b57
-        ::LAB_00e06b57::
-        predicateResult = false
-        ::FLOW_past_lab_00e06b57::
-        if predicateResult then
+        if not (quest:GetStateBool("GoneWrongWay") or (not quest:IsRegionLoaded("GreatwoodCaves"))) then
             quest:DisplayGameInfo("TEXT_QST_067_INFO_GONE_WRONG_WAY")
             while not quest:MsgIsGameInfoClickedPast() do
-                if not quest:NewScriptFrame() then goto LAB_00e0760e end
+                if not quest:NewScriptFrame() then return end
             end
             if quest:IsActiveThreadTerminating() then break end
             quest:SetStateBool("GoneWrongWay", true)
         end
-        if quest:GetStateBool("ShownBalverine") then goto LAB_00e06c33 end
-        if not quest:IsRegionLoaded("Darkwood2") then goto LAB_00e06c33 end
-        predicateResult3 = true
-        goto FLOW_past_lab_00e06c33
-        ::LAB_00e06c33::
-        predicateResult3 = false
-        ::FLOW_past_lab_00e06c33::
-        if predicateResult3 then
+        if not (quest:GetStateBool("ShownBalverine") or (not quest:IsRegionLoaded("Darkwood2"))) then
             local actorMap = resources:NewActorMap()
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
@@ -279,14 +262,7 @@ function WatchForMissionRules(quest)
             resources:DestroyMovie(movie2)
             resources:DestroyActorMap(actorMap)
         end
-        if quest:GetStateBool("EndStarted") then goto LAB_00e06d6c end
-        if not quest:IsRegionLoaded("BarrowFields") or (endTrader ~= nil and endTrader:IsAlive()) then goto LAB_00e06d6c end
-        predicateResult4 = true
-        goto FLOW_past_lab_00e06d6c
-        ::LAB_00e06d6c::
-        predicateResult4 = false
-        ::FLOW_past_lab_00e06d6c::
-        if predicateResult4 then
+        if not (quest:GetStateBool("EndStarted") or (not quest:IsRegionLoaded("BarrowFields") or (endTrader ~= nil and endTrader:IsAlive()))) then
             if not quest:IsActiveThreadTerminating() then
                 endTrader = quest:GetThingWithScriptName("EndTrader")
                 local x_stk_d0_2 = quest:GetThingWithScriptName("M_EndTheQuestHere")
@@ -294,14 +270,7 @@ function WatchForMissionRules(quest)
                 if not quest:GetStateBool("EndStarted") then
                     if not quest:IsActiveThreadTerminating() then
                         ::LAB_00e06e73::
-                        if quest:GetStateBool("EndStarted") then goto LAB_00e06eb0 end
-                        if not quest:IsRegionLoaded("BarrowFields") then goto LAB_00e06eb0 end
-                        predicateResult7 = true
-                        goto FLOW_past_lab_00e06eb0
-                        ::LAB_00e06eb0::
-                        predicateResult7 = false
-                        ::FLOW_past_lab_00e06eb0::
-                        if predicateResult7 then
+                        if not (quest:GetStateBool("EndStarted") or (not quest:IsRegionLoaded("BarrowFields"))) then
                             if not quest:NewScriptFrame() then break end
                             if quest:IsDistanceBetweenThingsUnder(hero, x_stk_d0_2, 4.0) then
                                 if #quest:GetAllThingsWithScriptName("DarkwoodTrader") == quest:GetStateInt("TradersStillAliveCounter") then
@@ -378,27 +347,24 @@ function WatchForMissionRules(quest)
             quest:NewScriptFrame()
         end
     end
-    goto LAB_00e0760e
+    do return end
     ::LAB_00e07574::
     if isRegionLoaded then
-        if not quest:NewScriptFrame() then goto LAB_00e075fa end
+        if not quest:NewScriptFrame() then return end
         isRegionLoaded = quest:IsRegionLoaded("BarrowFields")
         goto LAB_00e07574
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e075fa end
+    if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
     repeat
         quest:NewScriptFrame()
     until quest:IsActiveThreadTerminating()
-    ::LAB_00e075fa::
-    ::LAB_00e0760e::
-    ::LAB_00e07620::
 end
 
 -- Q_TraderEscort.TurnToBalv (retail 0x00e0a820)
 function TurnToBalv(quest, me)
     local resources = quest:RetailResources()
-    local pPosition, resource, movie, actorMap
+    local pPosition
     local resource2 = resources:NewResource()
     local resource3 = resources:NewResource()
     if not (me ~= nil and not me:IsNull()) then
@@ -417,21 +383,21 @@ function TurnToBalv(quest, me)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e0ad0a end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
     resources:PrepareResource(resource2)
     -- TODO(native): bVar3 = resources:TryAcquire(xStack_30, &native_arg_Me, 4)
     while not nil --[[unresolved native value]] do
-        if not quest:NewScriptFrame() then goto LAB_00e0ad0a end
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
         -- TODO(native): bVar3 = resources:TryAcquire(xStack_30, &native_arg_Me, 4)
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e0ad0a end
-    resource = resources:NewResource()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
+    local resource = resources:NewResource()
     resources:TryAcquire(resource, quest:GetHero(), 4)
-    actorMap = resources:NewActorMap()
+    local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "BALV", resource3)
     resources:SetActor(actorMap, "TRADER", resource2)
-    movie = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     resources:RunMacro("CS_DARKWOOD_TRADER_TRANSFORM", actorMap, false, true)
     quest:PauseAllNonScriptedEntities(false)
@@ -447,7 +413,6 @@ function TurnToBalv(quest, me)
         end
         quest:NewScriptFrame()
     until quest:IsActiveThreadTerminating()
-    ::LAB_00e0ad0a::
     resources:ReleaseResource(resource3)
     resources:ReleaseResource(resource2)
 end

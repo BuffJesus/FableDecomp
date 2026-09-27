@@ -12,40 +12,30 @@ function Main(questObject)
     Quest:AddEntityBinding("GTDI_Maze", "GuardianTrophyDealerInfo/Entities/GTDI_Maze")
     Quest:FinalizeEntityBindings()
     Quest:CreateThread("WaitForPieceOver")  -- native thread body NScript::CQ_GuildTrainingScript::WatchForSparrowKilled: lift it as function WaitForPieceOver(quest)
-    if not bVar4 then
-    end
-    local ppVar3 = Quest:GetActiveQuestName()
-    Quest:SetQuestCardObjective(ppVar3, "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01", "HeroGuildComplexInside", "HeroGuildComplexInside")
+    Quest:SetQuestCardObjective(Quest:GetActiveQuestName(), "TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01", "HeroGuildComplexInside", "HeroGuildComplexInside")
 end
 
 function WaitForPieceOver(questObject)
     Quest = questObject
-    local bVar3
     local alive = true
-    local CVar1 = Quest:GetStateBool("PieceOver")
-    while not CVar1 do
+    while not Quest:GetStateBool("PieceOver") do
         alive = Quest:NewScriptFrame()
-        bVar3 = not alive
-        if bVar3 then
+        if not alive then
             return
         end
-        CVar1 = Quest:GetStateBool("PieceOver")
     end
-    bVar3 = not alive
-    if bVar3 then
+    if not alive then
         return
     end
     local __native_thing_predicate_1 = Quest:GetThingWithScriptName("GTDI_Maze")
     while __native_thing_predicate_1 and __native_thing_predicate_1:IsAlive() do
         alive = Quest:NewScriptFrame()
-        bVar3 = not alive
-        if bVar3 then
+        if not alive then
             -- LAB_00e27b57: (native jump target)
             return
         end
     end
-    bVar3 = not alive
-    if not bVar3 then
+    if alive then
         ppVar5 = Quest:GetActiveQuestName()
         Quest:DeactivateQuestLater(ppVar5, 0)
         return
@@ -55,8 +45,6 @@ end
 
 function OnPersist(questObject, context)
     Quest = questObject
-    local pieceOver = Quest:GetStateBool("PieceOver") or false
-    pieceOver = Quest:PersistTransferBool(context, "PieceOver", pieceOver)
-    Quest:SetStateBool("PieceOver", pieceOver)
+    Quest:SetStateBool("PieceOver", Quest:PersistTransferBool(context, "PieceOver", Quest:GetStateBool("PieceOver")))
 end
 

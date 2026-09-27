@@ -16,49 +16,33 @@ end
 
 function Main(questObject)
     Quest = questObject
-    local bVar6, cVar3, ppVar5
     local alive = true
     Quest:AddEntityBinding("Fisherman", "Fisherman/Entities/Fisherman")
     Quest:AddEntityBinding("M_FishermanWaspSpawn", "Fisherman/Entities/M_FishermanWaspSpawn")
     Quest:AddEntityBinding("FishermanBulletinBoard", "Fisherman/Entities/FishermanBulletinBoard")
     Quest:AddEntityBinding("FishermanWasp", "Fisherman/Entities/FishermanWasp")
     Quest:FinalizeEntityBindings()
-    local CVar1 = Quest:GetStateBool("HeroHasSavedFishermanFromWasps")
-    while not CVar1 do
+    while not Quest:GetStateBool("HeroHasSavedFishermanFromWasps") do
         alive = Quest:NewScriptFrame()
-        bVar6 = not alive
-        if bVar6 then
+        if not alive then
             return
         end
-        CVar1 = Quest:GetStateBool("HeroHasSavedFishermanFromWasps")
     end
-    bVar6 = not alive
-    if not bVar6 then
-        cVar3 = Quest:IsRegionLoaded("Fisherman")
-        while cVar3 do
-            alive = Quest:NewScriptFrame()
-            bVar6 = not alive
-            if bVar6 then
-                return
-            end
-            cVar3 = Quest:IsRegionLoaded("Fisherman")
-        end
-        bVar6 = not alive
-        if not bVar6 then
-            Quest:ActivateQuest("V_FishingCompetition")
-            ppVar5 = Quest:GetActiveQuestName()
-            Quest:DeactivateQuestLater(ppVar5, 0)
+    if not alive then return end
+    while Quest:IsRegionLoaded("Fisherman") do
+        alive = Quest:NewScriptFrame()
+        if not alive then
+            return
         end
     end
+    if not alive then return end
+    Quest:ActivateQuest("V_FishingCompetition")
+    Quest:DeactivateQuestLater(Quest:GetActiveQuestName(), 0)
 end
 
 function OnPersist(questObject, context)
     Quest = questObject
-    local fishermanTasks = Quest:GetStateBool("FishermanTasks") or false
-    fishermanTasks = Quest:PersistTransferBool(context, "FishermanTasks", fishermanTasks)
-    Quest:SetStateBool("FishermanTasks", fishermanTasks)
-    local heroHasSavedFishermanFromWasps = Quest:GetStateBool("HeroHasSavedFishermanFromWasps") or false
-    heroHasSavedFishermanFromWasps = Quest:PersistTransferBool(context, "HeroHasSavedFishermanFromWasps", heroHasSavedFishermanFromWasps)
-    Quest:SetStateBool("HeroHasSavedFishermanFromWasps", heroHasSavedFishermanFromWasps)
+    Quest:SetStateBool("FishermanTasks", Quest:PersistTransferBool(context, "FishermanTasks", Quest:GetStateBool("FishermanTasks")))
+    Quest:SetStateBool("HeroHasSavedFishermanFromWasps", Quest:PersistTransferBool(context, "HeroHasSavedFishermanFromWasps", Quest:GetStateBool("HeroHasSavedFishermanFromWasps")))
 end
 

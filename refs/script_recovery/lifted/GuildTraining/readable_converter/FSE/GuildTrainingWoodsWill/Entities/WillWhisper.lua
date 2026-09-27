@@ -11,15 +11,15 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAllowBossPhaseChanges(me, false)
     while quest:GetStateBool("BanditsAlive") do
-        if not quest:NewScriptFrame(me) then goto LAB_00d68acf end
+        if not quest:NewScriptFrame(me) then break end
         if me:MsgIsHitByHero() then
             goto LAB_00d689df
         else
@@ -37,12 +37,11 @@ function Main(quest, me)
             me:SetFriendsWithEverythingFlag(true)
         end
         if quest:GetStateBool("WhisperAnimate") then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d68acf end
+            if quest:IsActiveThreadTerminating() then break end
             quest:SetStateBool("WhisperAnimate", false)
             me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
         end
     end
-    ::LAB_00d68acf::
     resources:ReleaseResource(resource)
 end
 

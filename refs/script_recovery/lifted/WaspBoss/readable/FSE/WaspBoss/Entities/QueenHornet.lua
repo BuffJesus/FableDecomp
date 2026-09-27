@@ -12,14 +12,13 @@ function Main(quest, me)
     quest:Pause(2.0)
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 0) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e11cb7 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e11cb7 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     resources:PrepareResource(resource)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
-    ::LAB_00e11cb7::
     resources:ReleaseResource(resource)
 end
 

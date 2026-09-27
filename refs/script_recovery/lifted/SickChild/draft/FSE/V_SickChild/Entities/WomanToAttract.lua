@@ -21,7 +21,7 @@ function Main(quest, me)
     if bVar3 then
         return
     end
-    this_00 = (this + 0x24)
+    this_00 = resources:MemberResource("seh_me", me)
     resources:PrepareResource(this_00)
     xStack_9c = pCVar9
     x_stk_d0 = this_00
@@ -803,30 +803,14 @@ end
 
 function helper_ED0B10(quest, me)
     local resources = quest:RetailResources()
-    local CVar3, i_stk_18, pCVar6, pOther, xStack_1c
+    local i_stk_18, pOther, xStack_1c
     local xStack_10 = resources:NewResource()
     local pScriptObject = xStack_10
     local pThing = quest:GetHero()
     resources:TryAcquire(pScriptObject, pThing, 4)
     local xStack_28 = resources:NewActorMap()
     resources:SetActor(xStack_28, "HERO", xStack_10)
-    -- TODO(native): pCVar6 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_28,&xStack_30);
-    -- TODO(native): xStack_2c = *(CCharString *)(this + 0x30);
-    -- TODO(native): local CVar3 = *(pCVar6 + 0xc)
-    local uVar4 = __native_entity_state:GetStateInt("self_0x2c")
-    if CVar3 ~= xStack_2c then
-        if CVar3 ~= nil then
-            -- TODO(native): *(int *)CVar3 = *(int *)CVar3 + -1;
-            if **(pCVar6 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar6 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar6 + 8) = uVar4;
-        -- TODO(native): *(CCharString *)(pCVar6 + 0xc) = xStack_2c;
-        if xStack_2c ~= nil then
-            -- TODO(native): *(int *)xStack_2c = *(int *)xStack_2c + 1;
-        end
-    end
+    resources:SetActor(xStack_28, "WOMAN", resources:MemberResource("seh_me", (me)))
     -- TODO(native): xStack_1c = malloc(0x18);
     i_stk_18 = 0
     -- TODO(native): *xStack_1c = 0;

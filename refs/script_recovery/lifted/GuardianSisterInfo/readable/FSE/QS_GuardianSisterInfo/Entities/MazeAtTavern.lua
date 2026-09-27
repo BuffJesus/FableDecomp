@@ -12,22 +12,22 @@ local wavedOver, hitCount, talkCounter
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue, scratchValue4, scratchValue5, newResource
+    local predicateResult, scratchValue4, scratchValue5, newResource
     if not quest:NewScriptFrame(me) then return end
     newResource = resources:NewResource()
     resources:PrepareResource(newResource)
     while not resources:TryAcquire(newResource, me, 3) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e26761 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e26761 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(newResource); return end
     quest:EntitySetAsOpinionSource(me, "OPINION_SOURCE_MAZE_BS_PUB")
     quest:GetThingWithScriptName("M_MazeExit"):GetPos()
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
     quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
-    scratchValue = quest:ReadGlobalGameData(3176)
+    local scratchValue = quest:ReadGlobalGameData(3176)
     scratchValue5 = 0
-    if quest:IsActiveThreadTerminating() then goto LAB_00e26761 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(newResource); return end
     repeat
         if not quest:GetStateBool("GuardianSpokeToHero") and not wavedOver then
             if quest:IsDistanceBetweenThingsUnder(hero, me, scratchValue) then
@@ -77,7 +77,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then break end
             resources:PrepareResource(newResource)
             while not resources:TryAcquire(newResource, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00e26761 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
             local movie2 = resources:StartMovie("")
@@ -105,7 +105,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then break end
             resources:PrepareResource(newResource)
             while not resources:TryAcquire(newResource, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00e26761 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
             local resource = resources:NewResource()
@@ -133,7 +133,6 @@ function Main(quest, me)
             do return end
         end
     until false
-    ::LAB_00e26761::
     resources:ReleaseResource(newResource)
 end
 

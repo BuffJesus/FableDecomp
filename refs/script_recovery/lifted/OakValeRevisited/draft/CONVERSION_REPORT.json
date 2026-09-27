@@ -120,7 +120,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 112,
+          "lines": 113,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -129,8 +129,8 @@
             "errors": [
               {
                 "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:OakValeFire",
-                "line": 28,
-                "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:OakValeFire:28: unexpected symbol near '*'"
+                "line": 29,
+                "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:OakValeFire:29: unexpected symbol near '*'"
               }
             ]
           },
@@ -235,8 +235,8 @@
         "errors": [
           {
             "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
-            "line": 54,
-            "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:54: unexpected symbol near '*'"
+            "line": 55,
+            "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:55: unexpected symbol near '*'"
           }
         ]
       },

@@ -93,7 +93,7 @@ function Main(quest)
                 bVar5 = quest:IsEntityWieldingRangedWeapon(pCVar7)
                 quest:SetToKeepHeroAbilitiesDuringCutscenes(true)
                 quest:SetToDisplayTutorialsDuringCutscenes(true)
-                -- TODO(native): ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context; arguments: 
+                resources:ClearAllActionsIncludingLoopingAnimations(xStack_20)
                 xStack_10 = resources:StartMovie("")
                 quest:SetCutsceneMode(true, false)
                 quest:EntitySetCutsceneBehaviour(r1, 2)

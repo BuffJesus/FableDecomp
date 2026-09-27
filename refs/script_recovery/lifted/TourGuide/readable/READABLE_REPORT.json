@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "tour_guide",
- "draft": "refs\\script_recovery\\lifted\\TourGuide\\draft",
+ "draft": "refs/script_recovery/lifted/TourGuide/draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -13,6 +13,12 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": []
+   },
+   "readability": {
+    "lines": 2,
+    "counts": {},
+    "status": "needs-human-review",
+    "findings": []
    }
   },
   "FSE/V_TourGuide/Entities/TourGuideFollower.lua": {
@@ -857,11 +863,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 80,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 1,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -920,11 +931,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -983,11 +999,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1046,11 +1067,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -1088,6 +1114,253 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 159,
+    "counts": {
+     "nativeNames": 12,
+     "genericTemporaries": 22,
+     "gotos": 8,
+     "unresolvedDiagnostics": 5
+    },
+    "status": "needs-recovery",
+    "findings": [
+     {
+      "line": 7,
+      "category": "nativeNames",
+      "text": "self0X14"
+     },
+     {
+      "line": 11,
+      "category": "nativeNames",
+      "text": "self0X14"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue11"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 38,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 40,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 52,
+      "category": "genericTemporaries",
+      "text": "predicateResult6"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 53,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 61,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 62,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 63,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 69,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 70,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 70,
+      "category": "nativeNames",
+      "text": "LAB_00ee50ab"
+     },
+     {
+      "line": 71,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 77,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 78,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 78,
+      "category": "nativeNames",
+      "text": "LAB_00ee50ab"
+     },
+     {
+      "line": 80,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 80,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee50ab"
+     },
+     {
+      "line": 81,
+      "category": "nativeNames",
+      "text": "LAB_00ee50ab"
+     },
+     {
+      "line": 82,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 83,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee50ab"
+     },
+     {
+      "line": 86,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 90,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 106,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 106,
+      "category": "nativeNames",
+      "text": "LAB_00ee5535"
+     },
+     {
+      "line": 110,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 111,
+      "category": "genericTemporaries",
+      "text": "predicateResult2"
+     },
+     {
+      "line": 113,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): xStack_28 = puVar7.x;"
+     },
+     {
+      "line": 115,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);"
+     },
+     {
+      "line": 116,
+      "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native result]]"
+     },
+     {
+      "line": 118,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 118,
+      "category": "nativeNames",
+      "text": "LAB_00ee5535"
+     },
+     {
+      "line": 119,
+      "category": "genericTemporaries",
+      "text": "scratchValue11"
+     },
+     {
+      "line": 121,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 121,
+      "category": "nativeNames",
+      "text": "LAB_00ee5535"
+     },
+     {
+      "line": 123,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 123,
+      "category": "nativeNames",
+      "text": "LAB_00ee5535"
+     },
+     {
+      "line": 125,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);"
+     },
+     {
+      "line": 126,
+      "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native result]]"
+     },
+     {
+      "line": 139,
+      "category": "nativeNames",
+      "text": "LAB_00ee5535"
+     }
     ]
    }
   },
@@ -2936,11 +3209,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 162,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 2,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 8,
        "controlAcquires": 0,
@@ -2999,11 +3277,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3062,11 +3345,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3125,11 +3413,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3188,11 +3481,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 4,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3214,10 +3512,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 44,
+       "lines": 43,
        "temporaries": 2,
-       "labels": 1,
-       "gotos": 4,
+       "labels": 0,
+       "gotos": 0,
        "terminationChecks": 5,
        "frameChecks": 1,
        "requires": 0
@@ -3230,6 +3528,693 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
+    ]
+   },
+   "readability": {
+    "lines": 377,
+    "counts": {
+     "nativeNames": 54,
+     "genericTemporaries": 30,
+     "gotos": 37,
+     "unresolvedDiagnostics": 14
+    },
+    "status": "needs-recovery",
+    "findings": [
+     {
+      "line": 7,
+      "category": "nativeNames",
+      "text": "self0X14"
+     },
+     {
+      "line": 7,
+      "category": "nativeNames",
+      "text": "self0X164"
+     },
+     {
+      "line": 13,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 13,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 14,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 32,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 34,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 50,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 50,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 52,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 52,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 70,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): MoveToNextWaypoint(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)"
+     },
+     {
+      "line": 72,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 72,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 74,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 75,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 75,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 76,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 76,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 78,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 79,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 79,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 82,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 83,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 83,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 93,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 93,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 101,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 101,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 102,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));"
+     },
+     {
+      "line": 104,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 104,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 116,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 116,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 121,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 121,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 128,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x50 + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));"
+     },
+     {
+      "line": 130,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 130,
+      "category": "nativeNames",
+      "text": "LAB_00ee5fd7"
+     },
+     {
+      "line": 134,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 134,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 142,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));"
+     },
+     {
+      "line": 143,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 143,
+      "category": "nativeNames",
+      "text": "LAB_00ee5fd7"
+     },
+     {
+      "line": 147,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 147,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee5fd7"
+     },
+     {
+      "line": 148,
+      "category": "nativeNames",
+      "text": "LAB_00ee5fd7"
+     },
+     {
+      "line": 150,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 150,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 158,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 158,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 161,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): MoveToNextWaypoint(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)"
+     },
+     {
+      "line": 162,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 162,
+      "category": "nativeNames",
+      "text": "LAB_00ee60d9"
+     },
+     {
+      "line": 164,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee5fd7"
+     },
+     {
+      "line": 167,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 167,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 170,
+      "category": "nativeNames",
+      "text": "LAB_00ee60d9"
+     },
+     {
+      "line": 171,
+      "category": "nativeNames",
+      "text": "self0X14"
+     },
+     {
+      "line": 175,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 175,
+      "category": "nativeNames",
+      "text": "LAB_00ee6232"
+     },
+     {
+      "line": 179,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 179,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 191,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 191,
+      "category": "nativeNames",
+      "text": "LAB_00ee6232"
+     },
+     {
+      "line": 197,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 197,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6232"
+     },
+     {
+      "line": 198,
+      "category": "nativeNames",
+      "text": "LAB_00ee6232"
+     },
+     {
+      "line": 201,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 201,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 209,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 209,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 211,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 211,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 215,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 215,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 220,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 220,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 222,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&xStack_58,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));"
+     },
+     {
+      "line": 226,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 226,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 237,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 237,
+      "category": "nativeNames",
+      "text": "LAB_00ee6456"
+     },
+     {
+      "line": 239,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6232"
+     },
+     {
+      "line": 241,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 241,
+      "category": "nativeNames",
+      "text": "FLOW_hoist_lab_00ee6558_1"
+     },
+     {
+      "line": 243,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 243,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6558"
+     },
+     {
+      "line": 244,
+      "category": "nativeNames",
+      "text": "LAB_00ee6558"
+     },
+     {
+      "line": 245,
+      "category": "nativeNames",
+      "text": "FLOW_hoist_lab_00ee6558_1"
+     },
+     {
+      "line": 246,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 246,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 247,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6558"
+     },
+     {
+      "line": 248,
+      "category": "nativeNames",
+      "text": "LAB_00ee6456"
+     },
+     {
+      "line": 250,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 276,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 276,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 278,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 278,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 281,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 281,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 287,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
+     },
+     {
+      "line": 288,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 289,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 289,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 289,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
+     },
+     {
+      "line": 291,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 291,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 292,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
+     },
+     {
+      "line": 294,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 294,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 296,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 296,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 297,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 298,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 298,
+      "category": "genericTemporaries",
+      "text": "scratchValue12"
+     },
+     {
+      "line": 298,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
+     },
+     {
+      "line": 304,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 304,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 310,
+      "category": "nativeNames",
+      "text": "LAB_00ee6817"
+     },
+     {
+      "line": 338,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): iVar1 = *native_arg_param_2"
+     },
+     {
+      "line": 339,
+      "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native value]]"
+     },
+     {
+      "line": 340,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): (**(code **)(iVar1 + 0x10))(pCVar6,uVar10,uVar11,uVar12,uVar13);"
+     },
+     {
+      "line": 344,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);"
+     },
+     {
+      "line": 345,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);"
+     },
+     {
+      "line": 348,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): *xStack_18 = *xStack_18 + 1;"
+     },
+     {
+      "line": 350,
+      "category": "nativeNames",
+      "text": "self0X164"
+     },
+     {
+      "line": 354,
+      "category": "nativeNames",
+      "text": "self0X164"
+     },
+     {
+      "line": 355,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): name field 0x164 (int)"
+     },
+     {
+      "line": 356,
+      "category": "nativeNames",
+      "text": "self0X164"
+     },
+     {
+      "line": 361,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): name field 0x164 (undefined4)"
+     },
+     {
+      "line": 362,
+      "category": "nativeNames",
+      "text": "self0X164"
+     }
     ]
    }
   },
@@ -3742,11 +4727,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3805,11 +4795,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3868,11 +4863,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3931,11 +4931,16 @@
        "constantConditions": 3,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -3994,11 +4999,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 1,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
@@ -4057,11 +5067,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
@@ -4120,11 +5135,16 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
+       "sharedExitTests": 0,
        "gotoElse": 0,
        "booleanBranches": 0,
+       "booleanJumpChains": 0,
        "elseif": 0,
        "elseExit": 0,
        "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
@@ -4161,6 +5181,418 @@
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "Init"
+    ]
+   },
+   "readability": {
+    "lines": 190,
+    "counts": {
+     "unresolvedDiagnostics": 49,
+     "genericTemporaries": 7,
+     "gotos": 9,
+     "nativeNames": 15
+    },
+    "status": "needs-recovery",
+    "findings": [
+     {
+      "line": 43,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 9),\"M_TG_LocationBalcony\");"
+     },
+     {
+      "line": 44,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_9_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_BALCONY\");"
+     },
+     {
+      "line": 45,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_9_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_BALCONY\");"
+     },
+     {
+      "line": 46,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 4),\"M_TG_LocationBanquet\");"
+     },
+     {
+      "line": 47,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_4_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_BANQUET\");"
+     },
+     {
+      "line": 48,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_4_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_BANQUET\");"
+     },
+     {
+      "line": 49,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 7),\"M_TG_LocationBar\");"
+     },
+     {
+      "line": 52,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 17),\"M_TG_LocationBridge\");"
+     },
+     {
+      "line": 53,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_17_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE\");"
+     },
+     {
+      "line": 54,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_17_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_BRIDGE\");"
+     },
+     {
+      "line": 55,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 14),\"M_TG_LocationCloisters\");"
+     },
+     {
+      "line": 56,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_14_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS\");"
+     },
+     {
+      "line": 57,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_14_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS\");"
+     },
+     {
+      "line": 58,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 10),\"M_TG_LocationDorm1\");"
+     },
+     {
+      "line": 61,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 11),\"M_TG_LocationDorm2\");"
+     },
+     {
+      "line": 64,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 6),\"M_TG_LocationLibrary\");"
+     },
+     {
+      "line": 65,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_6_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY\");"
+     },
+     {
+      "line": 66,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_6_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_LIBRARY\");"
+     },
+     {
+      "line": 67,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 5),\"M_TG_LocationMap\");"
+     },
+     {
+      "line": 70,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 16),\"M_TG_LocationMaze\");"
+     },
+     {
+      "line": 73,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 13),\"M_TG_LocationShop\");"
+     },
+     {
+      "line": 76,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 0),\"M_TG_LocationStart\");"
+     },
+     {
+      "line": 79,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 15),\"M_TG_LocationTomb\");"
+     },
+     {
+      "line": 82,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 1),\"M_TG_LocationTraining\");"
+     },
+     {
+      "line": 83,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_1_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_TRAINING\");"
+     },
+     {
+      "line": 84,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_1_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_TRAINING\");"
+     },
+     {
+      "line": 85,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 2),\"M_TG_LocationServant\");"
+     },
+     {
+      "line": 87,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_2_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_SERVANT\");"
+     },
+     {
+      "line": 88,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 12),\"M_TG_LocationStairsInside\");"
+     },
+     {
+      "line": 91,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 8),\"M_TG_LocationStairsOutside\");"
+     },
+     {
+      "line": 92,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_8_locTextOverheard\"),\"TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE\");"
+     },
+     {
+      "line": 93,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= (quest:GetStateString(\"WaypointInfo_8_locTextRequested\"),\"TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE\");"
+     },
+     {
+      "line": 94,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 3),\"M_TG_LocationStatue\");"
+     },
+     {
+      "line": 97,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"RandomGuideResponse\", 0),\"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0\");"
+     },
+     {
+      "line": 98,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"RandomGuideResponse\", 1),\"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_1\");"
+     },
+     {
+      "line": 99,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"RandomGuideResponse\", 2),\"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_2\");"
+     },
+     {
+      "line": 100,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"RandomGuideResponse\", 3),\"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_3\");"
+     },
+     {
+      "line": 101,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"RandomGuideResponse\", 4),\"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_4\");"
+     },
+     {
+      "line": 102,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseM\", 0),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_10\");"
+     },
+     {
+      "line": 103,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseM\", 1),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_20\");"
+     },
+     {
+      "line": 104,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseM\", 2),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_30\");"
+     },
+     {
+      "line": 105,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseM\", 3),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_40\");"
+     },
+     {
+      "line": 106,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseM\", 4),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_50\");"
+     },
+     {
+      "line": 107,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseF\", 0),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_10\");"
+     },
+     {
+      "line": 108,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseF\", 1),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_20\");"
+     },
+     {
+      "line": 109,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseF\", 2),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_30\");"
+     },
+     {
+      "line": 110,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseF\", 3),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_40\");"
+     },
+     {
+      "line": 111,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::operator= ((CCharString *)__element(\"RandomFollowerResponseF\", 4),\"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_50\");"
+     },
+     {
+      "line": 126,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 127,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 144,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 144,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a39"
+     },
+     {
+      "line": 146,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 146,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a4b"
+     },
+     {
+      "line": 147,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 147,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a39"
+     },
+     {
+      "line": 149,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 149,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee4a39"
+     },
+     {
+      "line": 150,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a39"
+     },
+     {
+      "line": 152,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 152,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a4b"
+     },
+     {
+      "line": 154,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee4a39"
+     },
+     {
+      "line": 155,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 155,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee4a4b"
+     },
+     {
+      "line": 156,
+      "category": "nativeNames",
+      "text": "LAB_00ee4a4b"
+     },
+     {
+      "line": 157,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee4a4b"
+     },
+     {
+      "line": 164,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 166,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 168,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 171,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding"
+     },
+     {
+      "line": 173,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 175,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 175,
+      "category": "nativeNames",
+      "text": "LAB_00ee6b8f"
+     },
+     {
+      "line": 177,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 177,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6b8f"
+     },
+     {
+      "line": 178,
+      "category": "nativeNames",
+      "text": "LAB_00ee6b8f"
+     },
+     {
+      "line": 180,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ee6b8f"
+     },
+     {
+      "line": 184,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 184,
+      "category": "nativeNames",
+      "text": "LAB_00ee6b8f"
+     },
+     {
+      "line": 187,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     }
     ]
    }
   }

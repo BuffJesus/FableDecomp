@@ -4,42 +4,42 @@
 -- Global_TeleportToHeroGuild.Main (retail 0x00cdd6b0)
 function Main(quest)
     local hero = quest:GetHero()
-    local getGuildSealRecallPos, heroGuildTeleportMarker, scratchValue8, scratchValue9
+    local resources = quest:RetailResources()
+    local scratchValue, getGuildSealRecallPos, scratchValue6
     if not quest:NewScriptFrame() then return end
-    if not quest:IsTeleportingActive() then goto LAB_00cdda71 end
-    heroGuildTeleportMarker = quest:GetThingWithScriptName("HERO_GUILD_TELEPORT_MARKER")
-    if not ((heroGuildTeleportMarker ~= nil) and (heroGuildTeleportMarker ~= nil and heroGuildTeleportMarker:IsAlive())) then goto LAB_00cdda68 end
+    if not quest:IsTeleportingActive() then quest:DeactivateQuestLater("Global_TeleportToHeroGuild", 0); return end
+    if quest:IsActiveThreadTerminating() then return end
+    local heroGuildTeleportMarker = quest:GetThingWithScriptName("HERO_GUILD_TELEPORT_MARKER")
+    scratchValue = 0
+    if not ((heroGuildTeleportMarker ~= nil and not heroGuildTeleportMarker:IsNull()) and (heroGuildTeleportMarker ~= nil and heroGuildTeleportMarker:IsAlive())) then goto LAB_00cdda68 end
     if not quest:IsDistanceBetweenThingsUnder(heroGuildTeleportMarker, hero, 5.0) then
         if not quest:IsRegionLoaded("HeroGuildComplexInside") then
-            hero:AcquireControl(4)
-            local scratchValue = (scratchValue9._4_4_ - scratchValue9._0_4_) >> 31
-            scratchValue8 = 0
-            if (scratchValue9._4_4_ - scratchValue9._0_4_) / 12 + scratchValue ~= scratchValue then
+            local followers = quest:GetFollowingEntityList(hero)
+            local resource = resources:NewResource()
+            resources:TryAcquire(resource, hero, 4)
+            scratchValue6 = 0
+            if #followers ~= 0 then
                 repeat
-                    if not quest:IsActiveThreadTerminating() then
-                        scratchValue8 = scratchValue8 + 1
-                    else
-                        hero:ReleaseControl()
-                        do return end
-                        scratchValue8 = scratchValue8 + 1
-                    end
-                until scratchValue8 >= ((scratchValue9._4_4_ - scratchValue9._0_4_) / 12)
+                    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                    resources:PerformExpression(resource, followers[scratchValue + 1], "EXPRESSION_WAIT")
+                    scratchValue6 = scratchValue6 + 1
+                    scratchValue = scratchValue + 1
+                until scratchValue6 >= #followers
             end
-            if quest:IsActiveThreadTerminating() then hero:ReleaseControl(); return end
-            quest:SetGuildSealRecallLocation(hero:GetAngleXY(), 4)
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            quest:SetGuildSealRecallLocation(hero:GetPos(), hero:GetAngleXY())
             quest:EntityTeleportToThing(hero, heroGuildTeleportMarker, true)
-            hero:ReleaseControl()
+            resources:ReleaseResource(resource)
             goto LAB_00cdda68
         end
     end
     getGuildSealRecallPos = quest:GetGuildSealRecallPos()
-    if not (DAT_0129ba3c * DAT_0129ba3c < getGuildSealRecallPos.z * getGuildSealRecallPos.z + getGuildSealRecallPos.y * getGuildSealRecallPos.y + getGuildSealRecallPos.x * getGuildSealRecallPos.x) then quest:SetGuildSealRecallLocation(0.0, nil --[[missing]]); goto LAB_00cdda68 end
+    if not (0.0001 * 0.0001 < getGuildSealRecallPos.z * getGuildSealRecallPos.z + getGuildSealRecallPos.y * getGuildSealRecallPos.y + getGuildSealRecallPos.x * getGuildSealRecallPos.x) then quest:SetGuildSealRecallLocation({x = 0, y = 0, z = 0}, 0.0); goto LAB_00cdda68 end
     if quest:IsActiveThreadTerminating() then return end
-    quest:EntityTeleportToPosition(hero, nil --[[missing]], 0.0, true, true)
+    quest:EntityTeleportToPosition(hero, quest:GetGuildSealRecallPos(), 0.0, true, true)
     quest:EntitySetFacingAngle(hero, quest:GetGuildSealRecallAngleXY(), true)
-    quest:SetGuildSealRecallLocation(0.0, nil --[[missing]])
+    quest:SetGuildSealRecallLocation({x = 0, y = 0, z = 0}, 0.0)
     ::LAB_00cdda68::
-    ::LAB_00cdda71::
     quest:DeactivateQuestLater("Global_TeleportToHeroGuild", 0)
 end
 

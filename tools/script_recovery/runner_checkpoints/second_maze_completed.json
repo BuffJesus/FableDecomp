@@ -1,0 +1,8 @@
+{
+  "host": "LUAGameflow",
+  "maps": "OakBay$",
+  "legs": {},
+  "enemyNames": [],
+  "done": "quest:IsQuestCompleted('Q_WaspBoss') and quest:IsQuestCompleted('QS_GuardianSisterInfo') and quest:IsQuestCompleted('Q_OrchardFarmRaidGood') and quest:IsQuestCompleted('Q_TraderEscort') and quest:GetMasterGameState('PostSavePosition') == 700 and quest:IsQuestCompleted('QS_GuardianSisterInfo2_SisterInBanditCamp')",
+  "failed": "false"
+}

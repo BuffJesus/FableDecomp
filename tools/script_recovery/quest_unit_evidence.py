@@ -33,6 +33,8 @@ EGO_R = ROOT / 'debug_build/ego_r.exe'
 KIND = {'bool': 'Bool', 'long': 'Int', 'int': 'Int', 'unsigned long': 'Int', 'ulong': 'Int', 'unsigned int': 'Int',
         'short': 'Int', 'unsigned short': 'Int', 'char': 'Int', 'unsigned char': 'Int', 'float': 'Float',
         'CTimer': 'Int', 'CCharString': 'String', 'CWideString': 'String'}
+SCALAR_SIZE = {name: 4 for name in KIND}
+SCALAR_SIZE.update({'bool': 1, 'char': 1, 'unsigned char': 1, 'short': 2, 'unsigned short': 2})
 LIFECYCLE = {'RegisterMain', 'Main', 'Init', 'OnPersist', 'destructor'}
 
 
@@ -75,7 +77,11 @@ def load_layouts(path=LAYOUTS):
 CONTAINER = re.compile(r'^(std::)?(vector|list|map|set|deque|multimap)<|^CVectorMap<')
 QUEST_RETAIL_DELTA = -0x14   # retail CQuestScript base is 0x14 bytes smaller than the debug build's (Oakvale + Guild cross-checked)
 THING_TYPES = {'CScriptThing'}
+# script-member resource objects (`seh_*`): constructed with the script, destroyed by its destructor, so they
+# outlive every callback (Bordello's entities assign seh_Guard, its PlayCutscene 0x00E3E720 casts them)
+RESOURCE_TYPES = {'CScriptGameResourceObjectScriptedThingBase'}
 ARRAY = re.compile(r'^(.+?)\[(\d+)\]$')
+STRING_MATRIX = re.compile(r'^(CCharString|CWideString)\[([1-9]\d*)\]\[([1-9]\d*)\]$')
 
 
 def retail_size(layouts, name):
@@ -87,6 +93,7 @@ def retail_size(layouts, name):
 
 
 TIMER_FIELDS = []   # names of CTimer members collected by expand_member (reset per class_fields call)
+RESOURCE_FIELDS = {}   # retail offset -> name of the resource-object members expand_member met (reset likewise)
 
 
 def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_offset):
@@ -102,10 +109,21 @@ def expand_member(layouts, prefix, offset, ftype, fields, skipped, things, pdb_o
     if ftype in THING_TYPES:
         things[hex(offset)] = prefix
         return
+    if ftype in RESOURCE_TYPES:
+        RESOURCE_FIELDS[hex(offset)] = prefix
+        return
+    matrix = STRING_MATRIX.fullmatch(ftype)
+    if matrix:
+        element, rows, columns = matrix[1], int(matrix[2]), int(matrix[3])
+        width = SCALAR_SIZE[element]
+        for row in range(rows):
+            for column in range(columns):
+                fields[hex(offset + (row * columns + column) * width)] = [f'{prefix}_{row}_{column}', 'String']
+        return
     array = ARRAY.match(ftype)
     if array:
         element, count = array.group(1), int(array.group(2))
-        element_size = 4 if KIND.get(element) else (
+        element_size = SCALAR_SIZE[element] if KIND.get(element) else (
             12 if element in THING_TYPES else retail_size(layouts, element))
         if element_size is None:
             skipped.append({'offset': hex(offset), 'pdbOffset': hex(pdb_offset), 'type': ftype, 'name': prefix})
@@ -140,12 +158,21 @@ def array_descriptors(layouts, name, parent_class=None, delta=0):
         retail = f['offset'] + delta - shift
         if CONTAINER.match(f['type']):
             shift += 4
+        matrix = STRING_MATRIX.fullmatch(f['type'])
+        if matrix and f['name'] != '_padding_':
+            element, rows, columns = matrix[1], int(matrix[2]), int(matrix[3])
+            width = SCALAR_SIZE[element]
+            out.append({'name': f['name'], 'element': element, 'base': hex(retail),
+                        'stride': columns * width, 'count': rows, 'dimensions': [rows, columns],
+                        'members': {hex(column * width): [str(column), 'String'] for column in range(columns)},
+                        'things': {}})
+            continue
         array = ARRAY.match(f['type'])
         if not array or f['name'] == '_padding_':
             continue
         element, count = array.group(1), int(array.group(2))
         if KIND.get(element):
-            out.append({'name': f['name'], 'element': element, 'base': hex(retail), 'stride': 4, 'count': count,
+            out.append({'name': f['name'], 'element': element, 'base': hex(retail), 'stride': SCALAR_SIZE[element], 'count': count,
                         'members': {'0x0': ['', KIND[element]]}, 'things': {}})
         elif element in layouts:
             members, skipped, things, pointers = {}, [], {}, {}
@@ -177,6 +204,7 @@ def class_fields(layouts, name, parent_class=None, delta=0):
         return {}, [], {}
     fields, skipped, things = {}, [], {}
     TIMER_FIELDS.clear()
+    RESOURCE_FIELDS.clear()
     shift = 0   # debug-build STL containers carry one extra (iterator-debugging) pointer each
     for f in sorted(copies[0], key=lambda f: f['offset']):
         retail = f['offset'] + delta - shift
@@ -189,6 +217,7 @@ def class_fields(layouts, name, parent_class=None, delta=0):
             continue
         expand_member(layouts, f['name'], retail, f['type'], fields, skipped, things, f['offset'])
     fields['__timers__'] = list(TIMER_FIELDS)
+    fields['__resources__'] = dict(RESOURCE_FIELDS)
     return fields, skipped, things
 
 
@@ -345,9 +374,27 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
     matches, unmatched, used = {}, [], set()
     entity_helpers = {}        # entity class -> {helper name: row}
     entity_helper_addrs = {}   # entity class -> [address]
+    retail = None
+
+    def parent_receiver_only(addr):
+        """Every call of addr loads the entity's parent pointer as `this` right before the call
+        (`mov ecx, [r32+0x14]` = 8B 48..4F 14, no SIB): a quest method only entities call. ChickenKicking 0x00E68B20
+        (`mov ecx, [esi+0x14]; call` at each of its nine sites) was lowered as an entity helper and read its
+        `this + 0x70` quest members as entity fields (2026-09-27)."""
+        nonlocal retail
+        if retail is None:
+            from tools.script_recovery.lift_native_lua import RData
+            retail = RData()
+        sites = [int(str(c['site']), 16) for f in tu_by_address.values() for c in f.get('calls', [])
+                 if str(c.get('target', '')).lower() == addr and c.get('site')]
+        def parent_load(site):
+            before = retail.bytes_at(site - 3, 3)
+            return bool(before) and before[0] == 0x8B and 0x48 <= before[1] <= 0x4F and before[1] != 0x4C and before[2] == 0x14
+        return bool(sites) and all(parent_load(s) for s in sites)
+
     for addr, info in helper_addrs.items():
         owner_classes = {binding_class.get(c, c) for c in info['callers']}
-        if 'quest' not in owner_classes and len(owner_classes) == 1:
+        if 'quest' not in owner_classes and len(owner_classes) == 1 and not parent_receiver_only(addr):
             entity_helper_addrs.setdefault(next(iter(owner_classes)), []).append(addr)
             continue
         retail_strings = {s['value'] for s in tu_by_address[addr].get('strings', []) if s.get('value')}
@@ -406,24 +453,29 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
         functions[f'helper_{row["address"][2:].lstrip("0").upper()}'] = {'evidence': 'unmatched retail helper', **row}
     fields, skipped, things = class_fields(layouts, class_name, delta=QUEST_RETAIL_DELTA)
     quest_timers = fields.pop('__timers__', [])
+    quest_resources = fields.pop('__resources__', {})
     master_fields = list(class_fields(layouts, 'CQ_SunnyvaleMasterData'))
     master_fields[0].pop('__timers__', None)
+    master_fields[0].pop('__resources__', None)
     entities = {}
     for e in quest_inv['entities']:
         klass = binding_class[e['name']]
         ent_fields, ent_skipped, ent_things = class_fields(layouts, klass, parent_class=class_name)
         ent_timers = ent_fields.pop('__timers__', [])
+        ent_resources = ent_fields.pop('__resources__', {})
         entities[e['name']] = {'nativeClass': f'{qualified}::{klass}', 'classEvidence': binding_evidence[e['name']],
                                'vtable': e.get('vtable'),
                                'functions': {k: {'address': str(v).lower()} for k, v in e['functions'].items()},
                                'helpers': entity_helpers.get(klass, {}),
                                'fields': ent_fields, 'thingFields': ent_things, 'unmappedFields': ent_skipped, 'timers': ent_timers,
+                               'resourceFields': ent_resources,
                                'arrays': array_descriptors(layouts, klass, parent_class=class_name)}
     return {'schema': 'quest-unit-evidence/1', 'script': script,
             'package': package or (script[2:] if script.startswith('Q_') else script),   # `Gameflow` has no Q_ prefix
             'nativeClass': qualified, 'allocator': quest_inv['allocator'], 'vtable': quest_inv['vtable'],
             'master': dict(zip(('fields', 'unmapped', 'things'), master_fields)),
             'quest': {'functions': functions, 'fields': fields, 'thingFields': things, 'unmappedFields': skipped, 'timers': quest_timers,
+                      'resourceFields': quest_resources,
                       'arrays': array_descriptors(layouts, class_name, delta=QUEST_RETAIL_DELTA), 'retailOffsetDelta': QUEST_RETAIL_DELTA,
                       'pdbMembersUnused': sorted(set(members) - used), 'nestedPdbMembers': {k: sorted(v) for k, v in nested_members.items()}},
             'entities': entities}

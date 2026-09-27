@@ -13,7 +13,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue2, predicateResult3, predicateResult7, predicateResult8, predicateResult
-    local conversationId3, switch1, movie, scratchValue11, timerId3
+    local conversationId3, switch1, movie, scratchValue11
     if not quest:NewScriptFrame(me) then return end
     quest:SetQuestCardObjective("Q_BanditCamp", "TEXT_QUEST_BANDIT_CAMP_OBJECTIVE_07", "", "BanditCampMain")
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
@@ -48,10 +48,10 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d0b2a0 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); quest:DeregisterTimer(timerId); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d0b2a0 end
-    timerId3 = quest:RegisterTimer()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); quest:DeregisterTimer(timerId); return end
+    local timerId3 = quest:RegisterTimer()
     quest:SetTimer(timerId3, 0)
     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
     quest:EntitySetFacingAngleTowardsThing(hero, me, false)
@@ -158,7 +158,6 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         predicateResult7 = quest:IsActiveThreadTerminating()
     until false
-    ::LAB_00d0b2a0::
     resources:ReleaseResource(resource)
     quest:DeregisterTimer(timerId)
 end

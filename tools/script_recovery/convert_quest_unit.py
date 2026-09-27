@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.script_recovery.lift_native_lua import (  # noqa: E402
     Lifter, RData, annotate, known_callee_aliases, load_manifest, load_slots, load_thing_tables,
-    thing_signatures, lift_persist, parse_thing_signature,
+    thing_signatures, lift_persist, parse_thing_signature, persist_local_name,
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
@@ -139,7 +139,7 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
                 # `quest:PersistTransferStringList(context, name, table)` returning the table (the sidecar binding
                 # is a documented requirement, docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md). Nothing in the script
                 # writes the member, so an empty table goes out and the loaded list comes back.
-                var = name[0].lower() + name[1:]
+                var = persist_local_name(name)
                 out.append(f'    local {var} = quest:PersistTransferStringList(context, "{name}", {{}})'
                            f'  -- {row["type"].split(",")[0]}> member `{row["name"]}` (this + {row["offset"]})')
                 calls.append('PersistTransferStringList')
@@ -156,7 +156,7 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
             kind = evidence[1] if evidence else TYPE_MAP.get(template.replace(' ', '_'), 'Int')
             if not evidence and target:
                 todo.append(f'persist transfer: kind of `{name}` from the bsim template argument `{template}` (callee {target:#x} not FSE-typed)')
-        var = name[0].lower() + name[1:]
+        var = persist_local_name(name)
         state = PERSIST_STATE_KIND[kind]
         if master:
             f = master_fields.get(hex(int(master.group(1), 0)))
@@ -1154,6 +1154,8 @@ class UnitConverter:
         tu = json.loads(Path(tu_path).read_text(encoding='utf-8-sig'))
         self.by_address = {f['address'].lower(): f for f in tu['functions']}
         self.name_by_value_string_parameters()
+        from tools.script_recovery.native_string_returns import recover_string_returns
+        self.hidden_string_returns = recover_string_returns(self.by_address, callee_stack_words, _text_order_sites)
         self.code_range = tuple(int(a, 16) for a in tu['range']) if tu.get('range') else None
         self.hidden_thing_returns = {int(f['address'], 16) for f in tu['functions']
                                      if re.search(r'\*in_stack_\w+ = &PTR_\w*_01238c8c;', f.get('decompile') or '')}
@@ -1659,6 +1661,9 @@ class UnitConverter:
         library |= {f['address'].lower() for n, f in quest_functions.items()
                     if f['address'].lower() not in library and (nf := self.native(f['address']))
                     and nf.get('callers') and all(str(c.get('functionAddress', '')).lower() in library for c in nf['callers'])}
+        from tools.script_recovery.native_arena_rounds import replaced_container_helpers
+        arena_containers = replaced_container_helpers(unit, self.native)
+        library |= arena_containers
         quest_functions = {n: f for n, f in quest_functions.items() if f['address'].lower() not in library}
         quest_state = state_map(unit['quest']['fields'])
         helpers = {f['address'].lower(): n for n, f in quest_functions.items()
@@ -1666,6 +1671,11 @@ class UnitConverter:
         report = {'schema': 'quest-unit-converter/1', 'script': unit['script'], 'package': package,
                   'packages': [], 'functions': [], 'missing': [], 'syntax': {},
                   'controlMode': 'flat experimental' if self.flat_control else 'structured draft'}
+        if arena_containers:
+            report['runtimeBoundaries'] = [{'method': 'InitialiseArenaRounds',
+                'nativeCaller': '0x00f25840', 'replacedCall': '0x00f25980',
+                'omittedUnreachableContainerBodies': sorted(arena_containers),
+                'implementation': 'tools/script_recovery/runtime_bindings/NoviArenaRounds.h'}]
         all_sources, shared_names, shared_inputs = {}, set(), {}
         shared_module = f'{package}.native_quest_helpers'
         owners = [('quest', unit['script'], quest_functions, quest_state, {})]
@@ -1720,6 +1730,8 @@ class UnitConverter:
                         lifter.helper_return_kinds[helper] = signatures[helper]['returnKind']
                     if int(address, 16) in self.hidden_thing_returns:
                         lifter.helper_return_kinds[helper] = 'thing'
+                    if int(address, 16) in self.hidden_string_returns:
+                        lifter.hidden_string_helpers.add(helper)
             relative = f'FSE/{package}/Entities/{owner}.lua' if entity else f'FSE/{package}/{package}.lua'
             chunks = [f'-- Generated native draft: {owner}. Review coverage report before use.',
                       '-- Registration remains disabled until the package is verified.', '']
@@ -1796,6 +1808,7 @@ class UnitConverter:
                 spec_l.call_labels.update({re.sub(r'[^\w:]', '_', k): v for k, v in list(spec_l.call_labels.items()) if re.search(r'[^\w:]', k)})   # also `operator_char_const*` -> `operator_char_const_`
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
+                spec_l.native_address = int(fn['address'], 16)
                 if signature.get('bsimVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
@@ -1915,6 +1928,8 @@ class UnitConverter:
                         shared_lifter.helper_return_kinds[helper] = sig['returnKind']
                     if int(address, 16) in self.hidden_thing_returns:
                         shared_lifter.helper_return_kinds[helper] = 'thing'
+                    if int(address, 16) in self.hidden_string_returns:
+                        shared_lifter.hidden_string_helpers.add(helper)
                 kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'bool' if p['type'] == 'bool' else 'thing' if 'CScriptThing' in p['type']
                          else 'string' if 'CCharString' in p['type'] else 'unknown' for p in signature['parameters']}
                 body = shared_lifter.lift(name, source, native_function=fn, parameters=kinds)

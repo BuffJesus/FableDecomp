@@ -53,8 +53,7 @@ function Main(quest)
                     iVar5 = nil --[[unresolved native value]]
                     pCVar3 = quest:GetHero()
                     -- TODO(native): Speak: unresolved entity receiver/resource in quest context; arguments: (int)pCVar3,iVar5,p2,p3,p4,p5
-                    -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-                    iVar5 = nil --[[unresolved native result]]
+                    iVar5 = resources:IsPerformingScriptTask(xStack_10)
                     cVar1 = iVar5
                     while cVar1 do
                         alive = quest:NewScriptFrame()
@@ -66,8 +65,7 @@ function Main(quest)
                             -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);
                             return
                         end
-                        -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-                        iVar5 = nil --[[unresolved native result]]
+                        iVar5 = resources:IsPerformingScriptTask(xStack_10)
                         cVar1 = iVar5
                     end
                     alive = not quest:IsActiveThreadTerminating()

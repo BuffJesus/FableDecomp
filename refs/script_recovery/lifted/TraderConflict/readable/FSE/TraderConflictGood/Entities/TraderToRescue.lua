@@ -17,8 +17,8 @@ function Main(quest, me)
     local predicateResult14, predicateResult15, predicateResult19, controlAcquired
     local predicateResult28, predicateResult29, predicateResult30, predicateResult31
     local msgIsHitByAnySpecialAbilityFromHero, getStateBool, isRegionLoaded, conversationId, timerId
-    local sequence1, getDataString, getHeroTargetedThing, scratchValue27, teleporterMarker
-    local scratchValue31, scratchValue32, timerId2, timerId3, scratchValue34, line, timerId4
+    local sequence1, getDataString, target, scratchValue27, teleporterMarker, scratchValue31
+    local scratchValue32, timerId2, timerId3, scratchValue34, line, timerId4
     local msgExpressionPerformedTo, timerId5, movie3
     msgIsHitByAnySpecialAbilityFromHero = false
     if not quest:NewScriptFrame(me) then return end
@@ -29,7 +29,7 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e005f9 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
         timerId5 = quest:RegisterTimer()
@@ -51,11 +51,7 @@ function Main(quest, me)
             end
             msgExpressionPerformedTo = me:MsgExpressionPerformedTo()
             if msgExpressionPerformedTo == nil then goto LAB_00dfe4df end
-            if msgExpressionPerformedTo == nil then
-                goto LAB_00dfe4df
-            else
-                if msgExpressionPerformedTo ~= "EXPRESSION_FOLLOW" then goto LAB_00dfe4df end
-            end
+            if msgExpressionPerformedTo == nil or msgExpressionPerformedTo ~= "EXPRESSION_FOLLOW" then goto LAB_00dfe4df end
             goto LAB_00dfe32c
             goto FLOW_past_lab_00dfe4df
             ::LAB_00dfe4df::
@@ -108,8 +104,8 @@ function Main(quest, me)
                 end
             end
             if quest:GetTimer(timerId) ~= 0 then goto LAB_00dfe63d end
-            getHeroTargetedThing = quest:GetHeroTargetedThing()
-            if not (getHeroTargetedThing ~= nil and getHeroTargetedThing:IsEqualTo(me)) then goto LAB_00dfe63d end
+            target = quest:GetHeroTargetedThing()
+            if not (target ~= nil and target:IsEqualTo(me)) then goto LAB_00dfe63d end
             predicateResult30 = true
             if not quest:IsPlayerHoldingLockTargetButton() then goto LAB_00dfe63d end
             goto FLOW_past_lab_00dfe63d
@@ -158,7 +154,8 @@ function Main(quest, me)
             ::continue_1::
         until false
     end
-    goto LAB_00e005f9
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00dfeb57::
     if getStateBool then
         quest:NewScriptFrame(me)
@@ -592,7 +589,6 @@ function Main(quest, me)
     ::LAB_00e005d5::
     quest:DeregisterTimer(timerId4)
     quest:DeregisterTimer(timerId5)
-    ::LAB_00e005f9::
     resources:ReleaseResource(resource)
 end
 

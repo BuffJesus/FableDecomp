@@ -12,11 +12,10 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then return end
     local mazeAtTavern = quest:GetThingWithScriptName("MazeAtTavern")
     while mazeAtTavern ~= nil and mazeAtTavern:IsAlive() do
-        if not quest:NewScriptFrame() then goto LAB_00e26aca end
+        if not quest:NewScriptFrame() then return end
     end
     quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    ::LAB_00e26aca::
 end
 
 -- QS_GuardianSisterInfo2_SisterInBanditCamp.Init (retail 0x00e26810)

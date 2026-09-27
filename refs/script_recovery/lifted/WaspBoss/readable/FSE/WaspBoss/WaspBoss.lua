@@ -205,43 +205,42 @@ end
 
 -- Q_WaspBoss.GuildmasterHelp (retail 0x00e12b30)
 function GuildmasterHelp(quest)
-    local fret_0, fret_00
+    local fret_00
     while not quest:GetStateBool("CutsceneFinished") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     local queenHornet = quest:GetThingWithScriptName("QueenHornet")
-    if not quest:NewScriptFrame() then goto LAB_00e12f02 end
+    if not quest:NewScriptFrame() then return end
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_10", "", true, true)
     while quest:EntityGetBossPhase(queenHornet) ~= 3 do
-        if not quest:NewScriptFrame() then goto LAB_00e12f02 end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12f02 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:Pause(1.0)
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_20", "", true, true)
     while quest:EntityGetBossPhase(queenHornet) ~= 4 do
-        if not quest:NewScriptFrame() then goto LAB_00e12f02 end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12f02 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:Pause(1.0)
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_30", "", true, true)
     while quest:EntityGetBossPhase(queenHornet) ~= 6 do
-        if not quest:NewScriptFrame() then goto LAB_00e12f02 end
+        if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12f02 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:Pause(1.0)
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_40", "", true, true)
-    fret_0 = quest:GetHealth(queenHornet)
+    local fret_0 = quest:GetHealth(queenHornet)
     if quest:ReadGlobalGameData(SCRIPT_DEF.WB_LowHealth) ~= fret_0 then
         repeat
-            if not quest:NewScriptFrame() then goto LAB_00e12f02 end
+            if not quest:NewScriptFrame() then return end
             fret_00 = quest:GetHealth(queenHornet)
         until quest:ReadGlobalGameData(SCRIPT_DEF.WB_LowHealth) == fret_00
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12f02 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:Pause(1.0)
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_072_GUILDMASTER_GUIDANCE_50", "", true, true)
-    ::LAB_00e12f02::
 end
 
 -- Q_WaspBoss.WaspIntro (retail 0x00e12f20)
@@ -287,12 +286,12 @@ function helper_E13310(quest)
     while not quest:GetStateBool("QueenHornetAttacks") do
         if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e135bd end
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WASP_MENACE_OBJECTIVE_02", "", "HeroGuildComplexInside")
     healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     while true do
         while true do
-            if not quest:NewScriptFrame() then goto LAB_00e135bd end
+            if not quest:NewScriptFrame() then return end
             predicateResult = false
             if not quest:IsLevelLoaded("PicnicArea") then break end
             if (queenHornet ~= nil and not queenHornet:IsNull()) and queenHornet ~= nil and queenHornet:MsgIsKilledBy("") then
@@ -302,7 +301,7 @@ function helper_E13310(quest)
                     helper_E137B0(quest)
                     quest:SetStateBool("MissionSucceeded", true)
                 end
-                goto LAB_00e135bd
+                do return end
             end
         end
         if predicateResult then break end
@@ -314,7 +313,6 @@ function helper_E13310(quest)
         quest:DisplayQuestInfo(true)
         healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     end
-    ::LAB_00e135bd::
 end
 
 -- Q_WaspBoss.helper_E137B0 (retail 0x00e137b0)

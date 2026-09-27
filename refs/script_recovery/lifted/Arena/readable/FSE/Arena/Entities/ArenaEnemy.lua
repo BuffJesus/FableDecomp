@@ -4,17 +4,16 @@
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local self0X14, myCreatureType, bigCreature, healthBarIndex
+local myCreatureType, self0X14, bigCreature, healthBarIndex
 
 -- ArenaEnemy.Main (retail 0x00f1a990)
 function Main(quest, me)
     local predicateResult, predicateResult5
-    local self_0x14
     local globalCrowdTimer = quest:GetStateInt("GlobalCrowdTimer")
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     myCreatureType = 0
-    -- TODO(native): if 0 < *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + *(self_0x14 + 0x98)) + 0x28 + quest:GetStateInt("ArenaRoundWave") * 0x3c) then
+    -- TODO(native): if 0 < *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + *(self0X14 + 0x98)) + 0x28 + quest:GetStateInt("ArenaRoundWave") * 0x3c) then
     if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetInFaction(me, "FACTION_MONSTERS")
     bigCreature = false
@@ -38,12 +37,12 @@ function Main(quest, me)
         if me:MsgIsHitByHeroWithFlourish() then
             if quest:GetTimer(globalCrowdTimer) >= 1 then quest:NewScriptFrame(me); goto continue_1 end
             if quest:IsActiveThreadTerminating() then return end
-            quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), self0X14 + 84 + quest:GetStateInt("NewCrowdBaseLevel") * 20)
+            quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
             quest:SetTimer(globalCrowdTimer, 10)
             quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 5)
         elseif me:MsgIsHitByHeroWithDecapitate() then
             if quest:GetTimer(globalCrowdTimer) < 9 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), self0X14 + 84 + quest:GetStateInt("NewCrowdBaseLevel") * 20)
+                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                 quest:SetTimer(globalCrowdTimer, 10)
                 quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 7)
             end

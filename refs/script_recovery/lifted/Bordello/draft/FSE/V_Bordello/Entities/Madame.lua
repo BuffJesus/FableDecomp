@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124, xStack_124_b3, xStack_12c, xStack_134, xStack_148, xStack_148_2, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_178, xStack_17c, xStack_90, xStack_a0, xStack_a4, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80
+    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124, xStack_124_b3, xStack_12c, xStack_134, xStack_148, xStack_148_2, xStack_14c, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_178, xStack_17c, xStack_90, xStack_a0, xStack_a4, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80
     local alive = true
     x_stk_80 = 0
     alive = quest:NewScriptFrame(me)
@@ -59,7 +59,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if bVar3 then goto LAB_00e3e301 end
-    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0x94),xStack_174);
+    resources:AssignResource(resources:MemberResource("seh_Madam"), xStack_174)
     iVar5 = quest:RegisterTimer()
     i_stk_1a8 = iVar5
     quest:SetTimer(iVar5, 2)
@@ -91,7 +91,7 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00e3bde9
             ::LAB_00e3bde9::
-            -- TODO(native): pCVar6 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_150);
+            resources:SetString(resources:MemberStringMap("csargs"), "$LADYINTRO", pcVar18)
             -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
             __native_entity_state:SetStateBool("DoneIntro", true)
             quest:PauseAllNonScriptedEntities(false)
@@ -387,7 +387,7 @@ function Main(quest, me)
                         i_stk_19c = 1
                     end
                     pCVar6 = tostring(i_stk_19c)
-                    ("TEXT_QST_B13_MADAME_CHIT_CHAT_0" .. pCVar6)
+                    xStack_14c = ("TEXT_QST_B13_MADAME_CHIT_CHAT_0" .. pCVar6)
                     au_stk_e8 = resources:ScriptThing(xStack_174)
                     pCVar8 = au_stk_e8
                     fVar14 = quest:GetHealth(pCVar8)
@@ -397,6 +397,7 @@ function Main(quest, me)
                         iVar16 = 1
                         iVar15 = 0
                         iVar7 = 0
+                        pvVar9 = xStack_14c
                         iVar5 = quest:GetHero()
                         r5 = me:Speak(iVar5, pvVar9, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
                         iVar5 = me:IsPerformingScriptTask()

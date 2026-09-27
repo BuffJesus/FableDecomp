@@ -9,7 +9,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult, scratchValue2, this_00, scratchValue12, scratchValue13
+    local predicateResult2, predicateResult, scratchValue2, fret_0, fret_04, this_00, scratchValue12
+    local scratchValue13, movie
     scratchValue13 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
@@ -59,51 +60,50 @@ function Main(quest, me)
         if scratchValue12 & 2 ~= 0 then
             scratchValue13 = scratchValue12 & 0xfffffffd
         end
-        if scratchValue2 ~= 0 then
-            if not quest:IsActiveThreadTerminating() then
-                quest:NewScriptFrame(me)
-                if not quest:IsActiveThreadTerminating() then
-                    resources:PrepareResource(resource)
-                    while not resources:TryAcquire(resource, me, 4) do
-                        if not quest:NewScriptFrame(me) then goto LAB_00e18203 end
-                    end
-                    if not quest:IsActiveThreadTerminating() then
-                        local movie = resources:StartMovie("")
-                        quest:PauseAllNonScriptedEntities(true)
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_074_CHIEF_BEEN_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
-                            while me:IsPerformingScriptTask() do
-                                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6 end
-                            end
-                            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6 end
-                            goto FLOW_past_lab_00e181f6
-                            ::LAB_00e181f6::
-                            this_00 = movie
-                            goto LAB_00e181fa
-                            ::FLOW_past_lab_00e181f6::
-                        end
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
-                        quest:NewScriptFrame(me)
-                        if not quest:IsActiveThreadTerminating() then
-                            me:SetFriendsWithEverythingFlag(true)
-                            resources:PrepareResource(resource)
-                            goto LAB_00e18135
-                        end
-                    end
-                end
-            end
-            goto LAB_00e18203
+        if scratchValue2 == 0 then quest:NewScriptFrame(me); predicateResult2 = quest:IsActiveThreadTerminating(); goto continue_1 end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        resources:PrepareResource(resource)
+        while not resources:TryAcquire(resource, me, 4) do
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
-        ::LAB_00e18135::
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        movie = resources:StartMovie("")
+        quest:PauseAllNonScriptedEntities(true)
+        fret_04 = quest:GetHealth(resources:ScriptThing(resource))
+        if 0.0 < fret_04 then
+            me:Speak(hero, "TEXT_QST_074_CHIEF_BEEN_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+            while me:IsPerformingScriptTask() do
+                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6 end
+            end
+            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6 end
+            goto FLOW_past_lab_00e181f6
+            ::LAB_00e181f6::
+            this_00 = movie
+            resources:DestroyMovie(this_00)
+            resources:ReleaseResource(resource)
+            do return end
+            ::FLOW_past_lab_00e181f6::
+        end
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        quest:NewScriptFrame(me)
+        if not quest:IsActiveThreadTerminating() then
+            me:SetFriendsWithEverythingFlag(true)
+            resources:PrepareResource(resource)
+        else
+            resources:ReleaseResource(resource)
+            return
+        end
         quest:NewScriptFrame(me)
         predicateResult2 = quest:IsActiveThreadTerminating()
+        ::continue_1::
     end
     ::FLOW_after_lab_00e17e8f::
     if not quest:IsActiveThreadTerminating() then
         resources:PrepareResource(resource)
         while not resources:TryAcquire(resource, me, 4) do
-            if not quest:NewScriptFrame(me) then goto LAB_00e18203 end
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
         if not quest:IsActiveThreadTerminating() then
             local movie3 = resources:StartMovie("")
@@ -114,7 +114,9 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         this_00 = movie3
-                        goto LAB_00e181fa
+                        resources:DestroyMovie(this_00)
+                        resources:ReleaseResource(resource)
+                        return
                     end
                     local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
                     if 0.0 < fret_00 then
@@ -122,7 +124,9 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             this_00 = movie3
-                            goto LAB_00e181fa
+                            resources:DestroyMovie(this_00)
+                            resources:ReleaseResource(resource)
+                            return
                         end
                     end
                 else
@@ -143,14 +147,18 @@ function Main(quest, me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     this_00 = movie3
-                                    goto LAB_00e181fa
+                                    resources:DestroyMovie(this_00)
+                                    resources:ReleaseResource(resource)
+                                    return
                                 end
                             end
                             goto LAB_00e17e64
                         end
                         quest:PauseAllNonScriptedEntities(false)
                         this_00 = movie3
-                        goto LAB_00e181fa
+                        resources:DestroyMovie(this_00)
+                        resources:ReleaseResource(resource)
+                        return
                     end
                     if quest:GetStateInt("BalverineState") ~= 7 then goto LAB_00e17d91 end
                     scratchValue13 = scratchValue13 | 1
@@ -200,65 +208,67 @@ function Main(quest, me)
                 scratchValue13 = scratchValue12 & 0xfffffffd
             end
             if scratchValue2 ~= 0 then
-                if not quest:IsActiveThreadTerminating() then
-                    quest:NewScriptFrame(me)
-                    if not quest:IsActiveThreadTerminating() then
-                        resources:PrepareResource(resource)
-                        while not resources:TryAcquire(resource, me, 4) do
-                            if not quest:NewScriptFrame(me) then goto LAB_00e18203 end
-                        end
-                        if not quest:IsActiveThreadTerminating() then
-                            local movie2 = resources:StartMovie("")
-                            quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                me:Speak(hero, "TEXT_QST_074_CHIEF_BEEN_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
-                                while me:IsPerformingScriptTask() do
-                                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6_c1 end
-                                end
-                                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6_c1 end
-                                goto FLOW_past_lab_00e181f6_c1
-                                ::LAB_00e181f6_c1::
-                                this_00 = movie2
-                                goto LAB_00e181fa
-                                ::FLOW_past_lab_00e181f6_c1::
-                            end
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie2)
-                            quest:NewScriptFrame(me)
-                            if not quest:IsActiveThreadTerminating() then
-                                me:SetFriendsWithEverythingFlag(true)
-                                resources:PrepareResource(resource)
-                                goto LAB_00e18135_c1
-                            end
-                        end
-                    end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+                resources:PrepareResource(resource)
+                while not resources:TryAcquire(resource, me, 4) do
+                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 end
-                goto LAB_00e18203
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                local movie2 = resources:StartMovie("")
+                quest:PauseAllNonScriptedEntities(true)
+                fret_04 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_04 then
+                    me:Speak(hero, "TEXT_QST_074_CHIEF_BEEN_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6_c1 end
+                    end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e181f6_c1 end
+                    goto FLOW_past_lab_00e181f6_c1
+                    ::LAB_00e181f6_c1::
+                    this_00 = movie2
+                    resources:DestroyMovie(this_00)
+                    resources:ReleaseResource(resource)
+                    do return end
+                    ::FLOW_past_lab_00e181f6_c1::
+                end
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
+                quest:NewScriptFrame(me)
+                if not quest:IsActiveThreadTerminating() then
+                    me:SetFriendsWithEverythingFlag(true)
+                    resources:PrepareResource(resource)
+                else
+                    resources:ReleaseResource(resource)
+                    return
+                end
             end
-            ::LAB_00e18135_c1::
             quest:NewScriptFrame(me)
             goto FLOW_after_lab_00e17e8f
             ::FLOW_past_lab_00e17e64::
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 this_00 = movie3
-                goto LAB_00e181fa
+                resources:DestroyMovie(this_00)
+                resources:ReleaseResource(resource)
+                return
             end
-            if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00e17e64 end
+            fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+            if fret_0 <= 0.0 then goto LAB_00e17e64 end
             if not me:Speak(hero, "TEXT_QST_074_CHIEF_BALVERINE_IN_FIRST_ATTACK", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e181ca end
             ::LAB_00e17e55::
             if not quest:IsActiveThreadTerminating() then goto LAB_00e17e64 end
             ::LAB_00e181ca::
             quest:PauseAllNonScriptedEntities(false)
             this_00 = movie3
-            goto LAB_00e181fa
+            resources:DestroyMovie(this_00)
+            resources:ReleaseResource(resource)
+            return
         end
     end
-    goto FLOW_past_lab_00e181fa
-    ::LAB_00e181fa::
+    resources:ReleaseResource(resource)
+    do return end
     resources:DestroyMovie(this_00)
-    ::FLOW_past_lab_00e181fa::
-    ::LAB_00e18203::
     resources:ReleaseResource(resource)
 end
 

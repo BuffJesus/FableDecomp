@@ -147,8 +147,8 @@ end
 function SpawnBalverines(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult7, scratchValue, scratchValue2, scratchValue5
-    local scratchValue6, pPosition, thing, this_01, this_02, resource2, movie3
+    local predicateResult, predicateResult7, scratchValue, scratchValue2, scratchValue3, pPosition
+    local thing, this_01, this_02, resource2, movie3
     local pThing = quest:GetStateThing("WhiteBalverine")
     local function ReleaseEverything()
         resources:DestroyMovie(movie3)
@@ -158,20 +158,20 @@ function SpawnBalverines(quest)
     predicateResult = false
     predicateResult7 = false
     quest:ModifyThingHealth(pThing, 250.0, false)
-    local scratchValue10 = math.tointeger(math.modf(quest:GetHealth(pThing) * 0.25))
-    local scratchValue11 = math.tointeger(math.modf(quest:GetHealth(pThing) - scratchValue10))
-    scratchValue2 = 1
-    scratchValue6 = 1
+    local scratchValue7 = math.tointeger(math.modf(quest:GetHealth(pThing) * 0.25))
+    local scratchValue8 = math.tointeger(math.modf(quest:GetHealth(pThing) - scratchValue7))
+    scratchValue = 1
+    scratchValue3 = 1
     repeat
         if not quest:NewScriptFrame() then return end
-        if quest:GetHealth(pThing) < scratchValue11 then
+        if quest:GetHealth(pThing) < scratchValue8 then
             thing = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWN")
             if quest:IsDistanceBetweenThingsUnder(thing, hero, 10.0) then
                 thing = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWNB")
                 predicateResult = true
             end
-            scratchValue5 = 0
-            if 0 < scratchValue2 then
+            scratchValue2 = 0
+            if 0 < scratchValue then
                 repeat
                     if quest:IsActiveThreadTerminating() then return end
                     if not (thing ~= nil and not thing:IsNull()) then
@@ -181,8 +181,8 @@ function SpawnBalverines(quest)
                     end
                     quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "WBWW_SoldierBalverine"), hero)
                     quest:Pause(0.2)
-                    scratchValue5 = scratchValue5 + 1
-                until scratchValue5 >= scratchValue6
+                    scratchValue2 = scratchValue2 + 1
+                until scratchValue2 >= scratchValue3
             end
             if quest:IsActiveThreadTerminating() then return end
             quest:EntitySetAsDamageable(pThing, false)
@@ -194,19 +194,13 @@ function SpawnBalverines(quest)
             quest:EntitySetAttackThingImmediately(pThing, hero, true, true)
             quest:Pause(0.2)
             quest:PlaySoundOnThing(pThing, "SND_LONGWOLFHOWL_01")
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
-            -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-            local scratchValue3 = nil --[[unresolved native result]]
-            scratchValue = scratchValue3
-            while scratchValue do
+            resources:PlayAnimation(resource2, "HOWL", false, false, false, true, true, false, false)
+            while resources:IsPerformingScriptTask(resource2) do
                 quest:NewScriptFrame()
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    ReleaseEverything(); return
+                    ReleaseEverything(); do return end
                 end
-                -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-                local scratchValue4 = nil --[[unresolved native result]]
-                scratchValue = scratchValue4
             end
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
@@ -250,10 +244,11 @@ function SpawnBalverines(quest)
                 predicateResult7 = true
                 resources:ReleaseResource(resource)
             end
-            scratchValue2 = scratchValue6 + 1
-            scratchValue6 = scratchValue2
+            scratchValue8 = scratchValue8 - scratchValue7
+            scratchValue = scratchValue3 + 1
+            scratchValue3 = scratchValue
         end
-        if 3 < scratchValue2 then
+        if 3 < scratchValue then
             return
         end
     until false

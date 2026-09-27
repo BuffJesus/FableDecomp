@@ -173,13 +173,13 @@ function Main(quest)
         local banditFollower = quest:GetThingWithScriptName("TC_BanditFollower")
         addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")
         while addQuestInfoCounter ~= -25 and -1 < addQuestInfoCounter + 25 do
-            if not quest:NewScriptFrame() then goto LAB_00df7957 end
+            if not quest:NewScriptFrame() then return end
             ctr_5c = 0
             if quest:GetStateListCount("AllCreatures") == 0 then UpdateLiveEnemies(quest); quest:UpdateQuestInfoCounter(quest:GetStateInt("CounterID"), ((quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned")) + 25, -1); addQuestInfoCounter = (quest:GetStateListCount("AllCreatures") - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned"); goto continue_2 end
             ctr_78 = 0
             repeat
                 allCreaturesOffset3 = ctr_78
-                if quest:IsActiveThreadTerminating() then goto LAB_00df7957 end
+                if quest:IsActiveThreadTerminating() then return end
                 if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHero() then goto LAB_00df6e53 end
                 if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
                     if not quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00df6e53 end
@@ -273,7 +273,7 @@ function Main(quest)
             if #bsSlumBedBrown01 == 0 then
                 -- LAB_00df77e2: (native jump target)
             end
-            goto LAB_00df7957
+            return
         end
         quest:RemoveQuestInfoElement(quest:GetStateInt("CounterID"))
         scratchValue12 = 0
@@ -286,19 +286,21 @@ function Main(quest)
         addQuestInfoCounter = 0
         if 0 < scratchValue23 then
             repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00df7957 end
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetThingAsUsable(bsSlumBedBrown01[scratchValue12 + 1], true)
                 addQuestInfoCounter = addQuestInfoCounter + 1
                 scratchValue12 = scratchValue12 + 1
             until addQuestInfoCounter >= scratchValue23
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00df7957 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, true, false)
-        if not quest:IsQuestActive("V_SickChild") then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); goto LAB_00df7957 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-        quest:ActivateQuest("V_SickChildBarrowFields")
-        quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-        ::LAB_00df7957::
+        if not quest:IsQuestActive("V_SickChild") then
+            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+        else
+            if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
+            quest:ActivateQuest("V_SickChildBarrowFields")
+            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+        end
         return
     end
     ::FLOW_past_lab_00df6bdb::

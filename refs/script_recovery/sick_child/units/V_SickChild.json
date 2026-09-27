@@ -663,7 +663,11 @@
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
-    "nestedPdbMembers": {}
+    "nestedPdbMembers": {},
+    "resourceFields": {
+      "0x48": "seh_Mother",
+      "0x58": "seh_Witch"
+    }
   },
   "entities": {
     "SickChildsMother": {
@@ -698,7 +702,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "SickChild": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChild",
@@ -732,7 +737,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "SickChildsSister": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChildsSister",
@@ -771,7 +777,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "Witch": {
       "nativeClass": "NScript::CV_SickChildScript::CWitch",
@@ -814,7 +821,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "ManInLove": {
       "nativeClass": "NScript::CV_SickChildScript::CManInLove",
@@ -861,7 +869,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "MansLover": {
       "nativeClass": "NScript::CV_SickChildScript::CMansLover",
@@ -900,7 +909,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "IngredientOwner": {
       "nativeClass": "NScript::CV_SickChildScript::CIngredientOwner",
@@ -943,7 +953,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "TalkingTrader1": {
       "nativeClass": "NScript::CV_SickChildScript::CTalkingTrader1",
@@ -986,7 +997,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "TalkingTrader2": {
       "nativeClass": "NScript::CV_SickChildScript::CTalkingTrader2",
@@ -1029,7 +1041,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "WomanToAttract": {
       "nativeClass": "NScript::CV_SickChildScript::CWomanToAttract",
@@ -1078,7 +1091,10 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {
+        "0x24": "seh_me"
+      }
     },
     "SickChildFishingSpot": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChildFishingSpot",
@@ -1112,7 +1128,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     }
   }
 }

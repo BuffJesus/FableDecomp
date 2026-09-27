@@ -25,12 +25,16 @@ function DoMultiplierCutscene(quest, me)
                     if not quest:IsActiveThreadTerminating() then string = "CS_ORCHARD_GOOD_WHISPERINTRO_GWL"; goto LAB_00dd1d98 end
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    goto LAB_00dd1e95
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(resource)
+                    return
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    goto LAB_00dd1e95
+                    resources:DestroyActorMap(actorMap)
+                    resources:ReleaseResource(resource)
+                    return
                 end
                 string = "CS_ORCHARD_EVIL_WHISPERINTRO_GWL"
                 goto LAB_00dd1d98
@@ -67,7 +71,6 @@ function DoMultiplierCutscene(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     ::FLOW_past_lab_00dd1d98::
     resources:DestroyMovie(movie)
-    ::LAB_00dd1e95::
     resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
 end

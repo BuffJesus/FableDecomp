@@ -15,16 +15,16 @@ function Main(quest, me)
     local bFlag, bVar10, bVar5, bVar6, bVar7, bVar8, cVar9, dist, fVar4, f_stk_84, fret_0, fret_00, fret_01, iVar13, pCVar1, pCVar11, pCVar12, pCVar17, pObjectiveText, pQuestName, pcVar14, uVar15, uVar16, xStack_34, xStack_4c, xStack_60, xStack_94, xStack_98, xStack_9c, xStack_a8
     local alive = true
     local function __cleanup_LAB_00ece3f7()
-        quest:PauseAllNonScriptedEntities((__native_entity_state:GetStateInt("self_0x14") + 0x48))
+        quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
         resources:DestroyMovie(xStack_94)
     end
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar8 = not alive
     if not bVar8 then
-        pCVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x48)
+        pCVar1 = resources:MemberResource("seh_Mother")
         resources:PrepareResource(pCVar1)
-        bVar8 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x48), me, 4)
+        bVar8 = resources:TryAcquire(resources:MemberResource("seh_Mother"), me, 4)
         while not bVar8 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -32,7 +32,7 @@ function Main(quest, me)
             if bVar8 then
                 return
             end
-            bVar8 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x48), me, 4)
+            bVar8 = resources:TryAcquire(resources:MemberResource("seh_Mother"), me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar8 = not alive
@@ -155,7 +155,7 @@ function Main(quest, me)
                                     if bVar8 then
                                         return
                                     end
-                                    pCVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x48)
+                                    pCVar1 = resources:MemberResource("seh_Mother")
                                     resources:PrepareResource(pCVar1)
                                     repeat
                                         alive = quest:NewScriptFrame(me)
@@ -229,7 +229,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar8 = not alive
                                     if bVar8 then
-                                        quest:PauseAllNonScriptedEntities((__native_entity_state:GetStateInt("self_0x14") + 0x48))
+                                        quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
                                         resources:DestroyMovie(xStack_a8)
                                         return
                                     end

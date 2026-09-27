@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, c_stk_bd, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar11, iVar12, iVar13, iVar14, native_arg_sequence_1, native_arg_sequence_2, p1, pCVar15, pCVar2, pCVar7, pCVar8, pcVar10, r1, r2, r3, r4, r5, r6, r7, r8, this_01, this_02, uVar4, uVar9, u_stk_bc, xStack_64, xStack_88, xStack_b8, xStack_d0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_c
+    local bVar5, cVar6, c_stk_bd, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar11, iVar12, iVar13, iVar14, native_arg_sequence_1, native_arg_sequence_2, p1, pCVar15, pCVar2, pCVar7, pCVar8, pcVar10, r1, r2, r3, r4, r5, r6, r7, r8, this_02, uVar4, uVar9, u_stk_bc, xStack_64, xStack_88, xStack_b8, xStack_d0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_c
     local alive = true
     u_stk_bc = 0
     alive = quest:NewScriptFrame(me)
@@ -32,7 +32,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if not bVar5 then
-            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0x84),xStack_d0);
+            resources:AssignResource(resources:MemberResource("seh_Guard"), xStack_d0)
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if not bVar5 then
@@ -159,8 +159,7 @@ function Main(quest, me)
                             if bVar5 then goto LAB_00e40e63 end
                             pCVar8 = require("V_Bordello.native_quest_helpers").helper_E3E6B0(quest, me)
                             pCVar8 = ("TEXT_QST_B13_GUARD_ENTRY_REFUSED" .. pCVar8)
-                            -- TODO(native): this_01 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_a4);
-                            this_01 = pCVar8
+                            resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", pCVar8)
                             xStack_64 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
                             -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
@@ -481,8 +480,7 @@ function Main(quest, me)
                             if bVar5 then goto LAB_00e40e63 end
                             pCVar8 = require("V_Bordello.native_quest_helpers").helper_E3E6B0(quest, me)
                             pCVar8 = ("TEXT_QST_B13_GUARD_ENTRY_REFUSED" .. pCVar8)
-                            -- TODO(native): this_01 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_a4);
-                            this_01 = pCVar8
+                            resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", pCVar8)
                             xStack_64 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
                             -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));

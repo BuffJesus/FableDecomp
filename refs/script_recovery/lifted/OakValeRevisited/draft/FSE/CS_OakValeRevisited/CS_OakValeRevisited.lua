@@ -43,6 +43,7 @@ function OakValeFire(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar7 = not alive
     if not bVar7 then
+        pCVar1 = this + 0x48
         pCVar13 = "Q_REVISITED_FIREPOINT"
         pCVar1 = quest:GetAllThingsWithScriptName(pCVar13)
         -- TODO(native): iVar14 = *pCVar1

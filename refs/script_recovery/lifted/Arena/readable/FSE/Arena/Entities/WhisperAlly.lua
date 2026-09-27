@@ -9,11 +9,10 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local addNewConversation, scratchValue, isActiveThreadTerminating, c_stk_ed_1, c_stk_ed_2
-    local arenaState, scratchValue15, scratchValue16, scratchValue24, timerId2, conversationId2
-    local scratchValue30, resource, nearest, summonedCreature, timerId, scratchValue34
-    local scratchValue37, scratchValue38, scratchValue39, uVar21_b3, scratchValue41, resource4
-    local scratchValue42, resource6, resource7, scratchValue43, infoElement2
+    local addNewConversation, isActiveThreadTerminating, c_stk_ed_1, c_stk_ed_2, arenaState
+    local scratchValue15, scratchValue16, scratchValue24, timerId2, conversationId2, scratchValue30
+    local resource, nearest, summonedCreature, scratchValue34, scratchValue37, scratchValue38
+    local scratchValue39, uVar21_b3, scratchValue41, resource4, scratchValue42, resource6, resource7
     local function ReleaseEverything()
         quest:DeregisterTimer(scratchValue30)
         resources:ReleaseResource(resource4)
@@ -103,25 +102,27 @@ function Main(quest, me)
             end
             if math.random(0, 32767) % 60 ~= 0 then
                 if not quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                     me:MoveToPosition(hero:GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
                 end
             end
             if quest:GetStateBool("WhisperNeededForCutscene") then
-                if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 resources:PrepareResource(resource4)
                 while quest:GetStateBool("WhisperNeededForCutscene") do
-                    if not quest:NewScriptFrame(me) then goto LAB_00f25806 end
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 resources:PrepareResource(resource4)
                 while not resources:TryAcquire(resource4, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00f25806 end
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
             end
             if me:IsTalkedToByHero() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 local movie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 while me:IsPerformingScriptTask() do
@@ -129,13 +130,17 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        goto LAB_00f25806
+                        quest:DeregisterTimer(scratchValue42)
+                        resources:ReleaseResource(resource4)
+                        do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:ReleaseResource(resource6)
-                    goto LAB_00f25806
+                    quest:DeregisterTimer(scratchValue42)
+                    resources:ReleaseResource(resource4)
+                    return
                 end
                 -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))();
                 resources:DestroyMovie(movie)
@@ -158,7 +163,7 @@ function Main(quest, me)
                 scratchValue41 = scratchValue34 & 0xfffffffe
             end
             if in_stack_fffffeec & 0xffffff >> 24 ~= 0 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00f25806 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(scratchValue42); resources:ReleaseResource(resource4); return end
                 quest:ModifyThingHealth(me, 10000.0, false)
                 quest:EntitySetThingAsAllyOfThing(me, hero)
                 quest:EntitySetThingAsAllyOfThing(hero, me)
@@ -286,7 +291,9 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00f243b3
             ::LAB_00f243b3::
-            goto LAB_00f25806
+            quest:DeregisterTimer(scratchValue42)
+            resources:ReleaseResource(resource4)
+            do return end
             ::FLOW_past_lab_00f243b3::
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue30)
@@ -425,14 +432,13 @@ function Main(quest, me)
             ::LAB_00f241aa::
             scratchValue24 = 208
             repeat
-                if not quest:IsActiveThreadTerminating() then
-                    scratchValue24 = scratchValue24 + 4
-                else
+                if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(scratchValue30)
                     resources:ReleaseResource(resource4)
-                    do return end
-                    scratchValue24 = scratchValue24 + 4
+                    return
                 end
+                -- TODO(native): xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);
+                scratchValue24 = scratchValue24 + 4
             until scratchValue24 >= 220
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(scratchValue30)
@@ -477,12 +483,12 @@ function Main(quest, me)
     quest:EntitySetTargetingType(me, 58)
     quest:ModifyThingHealth(me, 10000.0, false)
     -- TODO(native): xStack_ac = quest:AddQuestInfoBarHealth(me, &0xffffff00, "HUD_WHISPER_ICON", 1.0)
-    infoElement2 = nil --[[unresolved native value]]
+    local infoElement2 = nil --[[unresolved native value]]
     addNewConversation = math.tointeger(math.modf(quest:GetHealth(me)))
     c_stk_ed_2 = 0
-    scratchValue43 = addNewConversation
-    scratchValue = math.tointeger(math.modf(quest:GetHealth(me) * 0.25))
-    timerId = quest:RegisterTimer()
+    local scratchValue43 = addNewConversation
+    local scratchValue = math.tointeger(math.modf(quest:GetHealth(me) * 0.25))
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     while scratchValue < quest:GetHealth(me) do
         if not quest:NewScriptFrame(me) then goto LAB_00f257fd end
@@ -713,7 +719,6 @@ function Main(quest, me)
     ::FLOW_past_lab_00f24bc4::
     ::LAB_00f257fd::
     quest:DeregisterTimer(timerId)
-    ::LAB_00f25806::
     quest:DeregisterTimer(scratchValue42)
     resources:ReleaseResource(resource4)
 end

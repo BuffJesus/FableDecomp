@@ -944,63 +944,63 @@
         "ArenaSpawnNeeded_0",
         "Bool"
       ],
-      "0xe6": [
+      "0xe3": [
         "ArenaSpawnNeeded_1",
         "Bool"
       ],
-      "0xea": [
+      "0xe4": [
         "ArenaSpawnNeeded_2",
         "Bool"
       ],
-      "0xee": [
+      "0xe5": [
         "ArenaSpawnNeeded_3",
         "Bool"
       ],
-      "0xf2": [
+      "0xe6": [
         "ArenaSpawnNeeded_4",
         "Bool"
       ],
-      "0xf6": [
+      "0xe7": [
         "ArenaSpawnNeeded_5",
         "Bool"
       ],
-      "0xfa": [
+      "0xe8": [
         "ArenaSpawnNeeded_6",
         "Bool"
       ],
-      "0xfe": [
+      "0xe9": [
         "ArenaSpawnNeeded_7",
         "Bool"
       ],
-      "0x102": [
+      "0xea": [
         "ArenaSpawnNeeded_8",
         "Bool"
       ],
-      "0x106": [
+      "0xeb": [
         "ArenaSpawnNeeded_9",
         "Bool"
       ],
-      "0x10a": [
+      "0xec": [
         "ArenaSpawnNeeded_10",
         "Bool"
       ],
-      "0x10e": [
+      "0xed": [
         "ArenaSpawnNeeded_11",
         "Bool"
       ],
-      "0x112": [
+      "0xee": [
         "ArenaSpawnNeeded_12",
         "Bool"
       ],
-      "0x116": [
+      "0xef": [
         "ArenaSpawnNeeded_13",
         "Bool"
       ],
-      "0x11a": [
+      "0xf0": [
         "ArenaSpawnNeeded_14",
         "Bool"
       ],
-      "0x11e": [
+      "0xf1": [
         "ArenaSpawnNeeded_15",
         "Bool"
       ],
@@ -1035,6 +1035,86 @@
       "0x118": [
         "StopTimeIndex",
         "Int"
+      ],
+      "0x48": [
+        "CrowdLoopTags_0_0",
+        "String"
+      ],
+      "0x4c": [
+        "CrowdLoopTags_0_1",
+        "String"
+      ],
+      "0x50": [
+        "CrowdLoopTags_0_2",
+        "String"
+      ],
+      "0x54": [
+        "CrowdLoopTags_0_3",
+        "String"
+      ],
+      "0x58": [
+        "CrowdLoopTags_0_4",
+        "String"
+      ],
+      "0x5c": [
+        "CrowdLoopTags_1_0",
+        "String"
+      ],
+      "0x60": [
+        "CrowdLoopTags_1_1",
+        "String"
+      ],
+      "0x64": [
+        "CrowdLoopTags_1_2",
+        "String"
+      ],
+      "0x68": [
+        "CrowdLoopTags_1_3",
+        "String"
+      ],
+      "0x6c": [
+        "CrowdLoopTags_1_4",
+        "String"
+      ],
+      "0x70": [
+        "CrowdLoopTags_2_0",
+        "String"
+      ],
+      "0x74": [
+        "CrowdLoopTags_2_1",
+        "String"
+      ],
+      "0x78": [
+        "CrowdLoopTags_2_2",
+        "String"
+      ],
+      "0x7c": [
+        "CrowdLoopTags_2_3",
+        "String"
+      ],
+      "0x80": [
+        "CrowdLoopTags_2_4",
+        "String"
+      ],
+      "0x84": [
+        "CrowdLoopTags_3_0",
+        "String"
+      ],
+      "0x88": [
+        "CrowdLoopTags_3_1",
+        "String"
+      ],
+      "0x8c": [
+        "CrowdLoopTags_3_2",
+        "String"
+      ],
+      "0x90": [
+        "CrowdLoopTags_3_3",
+        "String"
+      ],
+      "0x94": [
+        "CrowdLoopTags_3_4",
+        "String"
       ]
     },
     "thingFields": {
@@ -1042,12 +1122,6 @@
       "0x108": "Whisper"
     },
     "unmappedFields": [
-      {
-        "offset": "0x48",
-        "pdbOffset": "0x5c",
-        "type": "CCharString[4][5]",
-        "name": "CrowdLoopTags"
-      },
       {
         "offset": "0x98",
         "pdbOffset": "0xac",
@@ -1077,12 +1151,46 @@
         "name": "ArenaSpawnNeeded",
         "element": "bool",
         "base": "0xe2",
-        "stride": 4,
+        "stride": 1,
         "count": 16,
         "members": {
           "0x0": [
             "",
             "Bool"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "CrowdLoopTags",
+        "element": "CCharString",
+        "base": "0x48",
+        "stride": 20,
+        "count": 4,
+        "dimensions": [
+          4,
+          5
+        ],
+        "members": {
+          "0x0": [
+            "0",
+            "String"
+          ],
+          "0x4": [
+            "1",
+            "String"
+          ],
+          "0x8": [
+            "2",
+            "String"
+          ],
+          "0xc": [
+            "3",
+            "String"
+          ],
+          "0x10": [
+            "4",
+            "String"
           ]
         },
         "things": {}

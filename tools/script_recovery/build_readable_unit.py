@@ -31,6 +31,7 @@ from tools.script_recovery import readable_lua  # noqa: E402
 from tools.script_recovery.readable_lua import readable_source, wrap_local_declarations  # noqa: E402
 from tools.script_recovery.readable_style import style_source, state_writers  # noqa: E402
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
+from tools.script_recovery.audit_readability import inspect_source  # noqa: E402
 from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 
 # converter-only spellings the role renamer should treat as generated temporaries. `scratchValue\d*` is the
@@ -399,6 +400,7 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')
+        report['files'][rel]['readability'] = inspect_source(text)
     report['syntax'] = checker.check(sources)
     (out / 'READABLE_REPORT.json').write_text(json.dumps(report, indent=1) + '\n', encoding='utf-8')
     metrics = {}
@@ -411,6 +413,8 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
     # a file whose passes raised shipped as the raw draft: that is a silent loss of the whole readable stage
     # for it, so it belongs in the summary, not only in files[rel].error
     summary = {'files': len(sources), 'syntaxOk': report['syntax']['ok'],
+               'readabilityIssues': {rel: f['readability']['counts'] for rel, f in report['files'].items()
+                                     if f['readability']['findings']},
                'shippedAsDraft': {rel: f['error'] for rel, f in report['files'].items() if f.get('error')},
                'errors': [e['path'] for e in report['syntax'].get('errors', [])],
                'rewrites': sum(v for f in report['files'].values() for fn in f['functions'] for v in fn['rewrites'].values()),

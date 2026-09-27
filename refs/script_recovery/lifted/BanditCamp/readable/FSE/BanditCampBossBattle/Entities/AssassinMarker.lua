@@ -62,10 +62,9 @@ function Main(quest, me)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_ASSASSIN1_LISTENED_FOUR", assassin1, hero, false)
                     break
                 else
-                    goto FLOW_native_label_1
+                    break
                 end
             until true
-            ::FLOW_native_label_1::
             ctr_c = ctr_c + 1
         else
             resources:TryAcquire(resource7, assassin1, 4)

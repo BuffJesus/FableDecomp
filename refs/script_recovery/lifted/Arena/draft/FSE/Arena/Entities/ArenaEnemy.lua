@@ -131,7 +131,7 @@ function Main(quest, me)
                 if bVar5 then
                     return
                 end
-                pCVar8 = (__native_entity_state:GetStateInt("self_0x14") + 0x54 + quest:GetStateInt("NewCrowdBaseLevel") * 0x14)
+                pCVar8 = quest:GetStateString(("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                 pCVar10 = quest:GetHero()
                 pCVar10 = quest:GetNearestWithScriptName(pCVar10, "ArenaSpawn")
                 r1 = quest:PlayCriteriaSoundOnThing(pCVar10, pCVar8)
@@ -153,7 +153,7 @@ function Main(quest, me)
                     if bVar5 then
                         return
                     end
-                    pCVar8 = (__native_entity_state:GetStateInt("self_0x14") + 0x54 + quest:GetStateInt("NewCrowdBaseLevel") * 0x14)
+                    pCVar8 = quest:GetStateString(("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                     pCVar10 = quest:GetHero()
                     pCVar10 = quest:GetNearestWithScriptName(pCVar10, "ArenaSpawn")
                     r2 = quest:PlayCriteriaSoundOnThing(pCVar10, pCVar8)

@@ -5,8 +5,7 @@
 function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, isEntityWieldingMeleeWeapon, isEntityWieldingRangedWeapon, duration
-    local scratchValue, getNearestEnabledDiggingSpot, movie
+    local predicateResult, duration
     if not quest:NewScriptFrame() then return end
     quest:SetQuestAsPersistent(quest:GetActiveQuestName(), false)
     while not quest:IsHeroControlledByPlayer() do
@@ -14,13 +13,11 @@ function Main(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
-    scratchValue = 4
-    while not resources:TryAcquire(resource, hero, scratchValue) do
-        if not quest:NewScriptFrame() then goto LAB_00eead92 end
-        scratchValue = 4
+    while not resources:TryAcquire(resource, hero, 4) do
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource); return end
     end
     quest:SetCutsceneMode(true, false)
-    movie = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:PauseAllEntities(true)
     quest:FadeScreenOut(0.25, 0.25)
     quest:Pause(0.5)
@@ -28,15 +25,15 @@ function Main(quest)
     hero:GetPos()
     hero:GetAngleXY()
     hero:GetPos()
-    isEntityWieldingMeleeWeapon = quest:IsEntityWieldingMeleeWeapon(hero)
-    isEntityWieldingRangedWeapon = quest:IsEntityWieldingRangedWeapon(hero)
+    local isEntityWieldingMeleeWeapon = quest:IsEntityWieldingMeleeWeapon(hero)
+    local isEntityWieldingRangedWeapon = quest:IsEntityWieldingRangedWeapon(hero)
     quest:SheatheHeroWeapons()
-    -- TODO(native): ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context; arguments: 
-    quest:MakeHeroCarryItemInHand(nil --[[missing]], scratchValue ~= 0, nil --[[missing]])
+    resources:ClearAllActionsIncludingLoopingAnimations(resource)
+    quest:MakeHeroCarryItemInHand("OBJECT_SPADE")
     quest:FadeScreenIn()
     quest:Pause(0.5)
-    -- TODO(native): PlayLoopingAnimation: unresolved entity receiver/resource in quest context; arguments: 2,0,0,0,1,true,0,0
-    getNearestEnabledDiggingSpot = quest:GetNearestEnabledDiggingSpot(hero)
+    resources:PlayLoopingAnimation(resource, "ST_DIGGING_IDLE", 2, false, false, false, true, true, false, false)
+    local getNearestEnabledDiggingSpot = quest:GetNearestEnabledDiggingSpot(hero)
     if not (getNearestEnabledDiggingSpot ~= nil and getNearestEnabledDiggingSpot:IsAlive()) then
         goto LAB_00eeaba2
     else
@@ -44,7 +41,9 @@ function Main(quest)
         predicateResult = true
         if not quest:IsActiveThreadTerminating() then quest:EntitySetFacingAngleTowardsThing(hero, getNearestEnabledDiggingSpot, true); goto LAB_00eeab2b end
     end
-    goto FLOW_past_lab_00eeaba2
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00eeaba2::
     predicateResult = false
     ::LAB_00eeab2b::
@@ -52,30 +51,32 @@ function Main(quest)
     quest:Pause(0.25)
     if predicateResult then
         if not quest:IsActiveThreadTerminating() then
-            -- TODO(native): ClearCommands: unresolved entity receiver/resource in quest context; arguments: 
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
+            resources:ClearCommands(resource)
+            resources:PlayAnimation(resource, "ST_DIGGING_SUCCESS", false, false, false, true, true, false, false)
             duration = 0.55
             goto LAB_00eeabfa
         end
     elseif not quest:IsActiveThreadTerminating() then
-        -- TODO(native): ClearCommands: unresolved entity receiver/resource in quest context; arguments: 
-        -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
+        resources:ClearCommands(resource)
+        resources:PlayAnimation(resource, "ST_DIGGING_FAILURE", false, false, false, true, true, false, false)
         duration = 1.5
         goto LAB_00eeabfa
     end
-    goto FLOW_past_lab_00eeabfa
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00eeabfa::
     quest:Pause(duration)
     quest:Pause(2.0)
     quest:HeroStopDigging()
     quest:FadeScreenOut(0.25, 0.25)
     quest:Pause(0.25)
-    quest:MakeHeroCarryItemInHand(getNearestEnabledDiggingSpot, predicateResult, nil --[[missing]])
+    quest:MakeHeroCarryItemInHand("")
     if isEntityWieldingMeleeWeapon then
-        if quest:IsActiveThreadTerminating() then goto LAB_00eead80 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:EntityUnsheatheMeleeWeapon(hero, false)
     elseif isEntityWieldingRangedWeapon then
-        if quest:IsActiveThreadTerminating() then goto LAB_00eead80 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:EntityUnsheatheRangedWeapon(hero, false)
     end
     quest:EntityResetForceToLookAt(hero)
@@ -84,16 +85,12 @@ function Main(quest)
     quest:SetCutsceneMode(false, true)
     quest:CameraDefault()
     if predicateResult then
-        if quest:IsActiveThreadTerminating() then goto LAB_00eead80 end
+        if quest:IsActiveThreadTerminating() then resources:DestroyMovie(movie); resources:ReleaseResource(resource); return end
         quest:GiveHeroItemsFromContainer(getNearestEnabledDiggingSpot, false)
     end
     quest:PauseAllEntities(false)
     quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    ::FLOW_past_lab_00eeabfa::
-    ::FLOW_past_lab_00eeaba2::
-    ::LAB_00eead80::
     resources:DestroyMovie(movie)
-    ::LAB_00eead92::
     resources:ReleaseResource(resource)
 end
 

@@ -1,0 +1,97 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 2cf3f0a..eadb255 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1163,6 +1163,53 @@ void SetString(unsigned map, const std::string& key, const std::string& value) {
+     CCharString_AssignLiteral_API(output, value.c_str());
+ }
+ void DestroyStringMap(unsigned id) { Release(id, Kind::StringMap); }
++// Retail std::map<CCharString,CCharString>::clear 0x9AACE0 (disasm 2026-09-27: erase every node through
++// 0x9AA830, relink the head, size 0) -- the destructor 0x9AC310 is the same body plus freeing the head, so
++// destroy + construct in place leaves the same empty map.
++void ClearStringMap(unsigned id) {
++    auto& e = Get(id, Kind::StringMap);
++    StdMap_String_Destroy_API(e.map);
++    StdMap_String_Construct_API(e.map);
++}
++
++// Script-member resource objects (PDB `seh_*` CScriptGameResourceObjectScriptedThingBase members) and
++// member string maps (Bordello `csargs`): retail constructs them with the script object and destroys them in
++// its destructor (CV_BordelloScript 0x00E46A50), so they outlive every callback. This scope is the quest
++// state's long-lived one (quest:RetailResources()), which the quest and each of its entity VMs share, so an
++// entity's `parent->seh_Guard = res` (0x8ABD10) is what the quest's PlayCutscene 0x00E3E720 later reads.
++// An entity's own member is keyed by its owner thing as well (one slot per entity instance).
++unsigned MemberResource(const std::string& name, sol::object owner) {
++    const std::string key = MemberKey(name, owner);
++    auto found = m_members.find(key);
++    if (found != m_members.end()) return found->second;
++    const unsigned id = NewResource();
++    m_members.emplace(key, id);
++    return id;
++}
++unsigned MemberStringMap(const std::string& name, sol::object owner) {
++    const std::string key = "strings:" + MemberKey(name, owner);
++    auto found = m_members.find(key);
++    if (found != m_members.end()) return found->second;
++    const unsigned id = NewStringMap();
++    m_members.emplace(key, id);
++    return id;
++}
++// Retail CScriptGameResourceObjectScriptedThingBase::operator= 0x8ABD10: the destination takes a counted copy
++// of the source's handle. The copy holds the same control, so it takes over the registry entry that lets
++// cutscene assembly and `me:` commands find the controlling resource once the source local is released.
++void AssignResource(unsigned destination, unsigned source) {
++    auto& d = Get(destination, Kind::Resource);
++    auto& s = Get(source, Kind::Resource);
++    if (&d == &s) return;
++    Unregister(d);
++    CBaseObject_Assign_API(&d.resource, &s.resource);
++    d.prepared = s.prepared;
++    if (s.controlledData && d.resource.pImp.Data) {
++        d.controlledData = s.controlledData;
++        g_controlHandlesByEntityData[d.controlledData] = &d.resource;
++        g_retailResourceHandles.insert(&d.resource);
++    }
++}
+ void RunMacroWithStrings(const std::string& name, unsigned actors, unsigned inputs,
+                          bool setup, bool skippable) {
+     auto& actorMap = Get(actors, Kind::ActorMap);
+@@ -2059,6 +2106,19 @@ private:
+         auto& entry = Get(id, kind);
+         Destroy(entry);
+         m_entries.erase(id);
++        for (auto it = m_members.begin(); it != m_members.end(); ++it)
++            if (it->second == id) { m_members.erase(it); break; }
++    }
++    static std::string MemberKey(const std::string& name, const sol::object& owner) {
++        if (name.empty()) throw std::runtime_error("Retail member resources need a member name");
++        CScriptThing* thing = nullptr;
++        if (owner.is<std::shared_ptr<CScriptThing>>()) thing = owner.as<std::shared_ptr<CScriptThing>>().get();
++        else if (owner.is<CScriptThing*>()) thing = owner.as<CScriptThing*>();
++        else if (owner.valid() && owner.get_type() != sol::type::lua_nil && owner.get_type() != sol::type::none)
++            throw std::runtime_error("Retail member resource owner must be a thing");
++        if (!thing) return name;
++        if (!thing->pImp.Data) throw std::runtime_error("Retail member resource owner is an empty thing");
++        return name + "@" + std::to_string(reinterpret_cast<uintptr_t>(thing->pImp.Data));
+     }
+     static void Register(Entry& e, CScriptThing* actor) {
+         if (!actor || !actor->pImp.Data) return;
+@@ -2099,6 +2159,7 @@ private:
+     // IDs never repeat within a scope; erased handles remain invalid.
+     unsigned m_nextId = 0;
+     std::map<unsigned, std::unique_ptr<Entry>> m_entries;
++    std::map<std::string, unsigned> m_members;   // member name (@ owner entity data) -> persistent entry id
+ };
+ 
+ inline void RegisterRetailResources(sol::state& lua) {
+@@ -2195,6 +2256,10 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["RemoveDeadFatherMarker"] = &LuaRetailResources::RemoveDeadFatherMarker;
+     type["RemoveRawThing"] = &LuaRetailResources::RemoveRawThing;
+     type["RunMacroWithStrings"] = &LuaRetailResources::RunMacroWithStrings;
++    type["MemberResource"] = &LuaRetailResources::MemberResource;
++    type["MemberStringMap"] = &LuaRetailResources::MemberStringMap;
++    type["AssignResource"] = &LuaRetailResources::AssignResource;
++    type["ClearStringMap"] = &LuaRetailResources::ClearStringMap;
+     type["SetActiveQuestObjective"] = &LuaRetailResources::SetActiveQuestObjective;
+     type["SetRawCutsceneBehaviour"] = &LuaRetailResources::SetRawCutsceneBehaviour;
+     type["SetRawScared"] = &LuaRetailResources::SetRawScared;

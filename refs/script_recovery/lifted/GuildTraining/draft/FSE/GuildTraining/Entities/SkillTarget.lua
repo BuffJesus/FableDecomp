@@ -616,8 +616,24 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
     local this_00 = me:GetDataString()
-    local iVar1 = tonumber(this_00)
+    local iVar1 = parseGameInteger(this_00)
     __native_entity_state:SetStateInt("DummyNumber", iVar1)
 end
 

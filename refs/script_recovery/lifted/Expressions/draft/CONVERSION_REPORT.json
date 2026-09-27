@@ -22,16 +22,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
-            "MakeHeroCarryItemInHand: missing spThing, setAsPersistent (1 args for 3 params)",
-            "PlayLoopingAnimation: unresolved entity receiver/resource in quest context",
-            "ClearCommands: unresolved entity receiver/resource in quest context",
-            "PlayAnimation: unresolved entity receiver/resource in quest context",
-            "ClearCommands: unresolved entity receiver/resource in quest context",
-            "PlayAnimation: unresolved entity receiver/resource in quest context",
-            "MakeHeroCarryItemInHand: missing setAsPersistent (2 args for 3 params)"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
             "NewScriptFrame",
@@ -69,9 +60,11 @@
             "GetHero",
             "IsEntityWieldingRangedWeapon",
             "SheatheHeroWeapons",
+            "ClearAllActionsIncludingLoopingAnimations",
             "MakeHeroCarryItemInHand",
             "FadeScreenIn",
             "Pause",
+            "PlayLoopingAnimation",
             "GetHero",
             "GetNearestEnabledDiggingSpot",
             "IsAlive",
@@ -82,7 +75,11 @@
             "HeroGoDigging",
             "Pause",
             "IsActiveThreadTerminating",
+            "ClearCommands",
+            "PlayAnimation",
             "IsActiveThreadTerminating",
+            "ClearCommands",
+            "PlayAnimation",
             "Pause",
             "Pause",
             "HeroStopDigging",
@@ -203,7 +200,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 8
+        "todo": 0
       }
     },
     {
@@ -229,16 +226,9 @@
             "bsimVoid": true
           },
           "todo": [
-            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
-            "MakeHeroCarryItemInHand: missing spThing (2 args for 3 params)",
-            "MakeHeroCarryItemInHand: missing spThing, setAsActive, setAsPersistent (0 args for 3 params)",
-            "PlayLoopingAnimation: unresolved entity receiver/resource in quest context",
             "unlifted: CScriptThing::operator=((CScriptThing *)xStack_6c,iStack_60 + iVar12 * 0xc);",
             "unlifted: xStack_30 = (undefined **)puVar7.x;",
             "unlifted: xStack_2c = puVar7.y;",
-            "PlayAnimation: unresolved entity receiver/resource in quest context",
-            "PlayAnimation: unresolved entity receiver/resource in quest context",
-            "MakeHeroCarryItemInHand: missing spThing, setAsPersistent (1 args for 3 params)",
             "unlifted: fret_0 = quest:GetWaterHeightAtPosition(&xStack_30)"
           ],
           "calls": [
@@ -269,6 +259,7 @@
             "FadeScreenOut",
             "Pause",
             "SheatheHeroWeapons",
+            "ClearAllActionsIncludingLoopingAnimations",
             "GetMostRecentValidUsedTargetName",
             "ENGINE_StrNotEqual",
             "IsActiveThreadTerminating",
@@ -281,6 +272,7 @@
             "MakeHeroCarryItemInHand",
             "IsActiveThreadTerminating",
             "MakeHeroCarryItemInHand",
+            "PlayLoopingAnimation",
             "QUESTTHING_Empty",
             "GetHero",
             "GetAllThingsWithDefNameByDistanceFrom",
@@ -319,7 +311,9 @@
             "CameraUseCameraPoint",
             "IsAlive",
             "IsActiveThreadTerminating",
+            "PlayAnimation",
             "IsActiveThreadTerminating",
+            "PlayAnimation",
             "Pause",
             "Pause",
             "FadeScreenOut",
@@ -474,7 +468,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 11
+        "todo": 4
       }
     },
     {
@@ -677,11 +671,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_24 = (CCharString)((float)(int)xStack_20 + 1.0);",
-            "unlifted: xStack_28 = (CCharString)(_DAT_0122ded8 - (float)i_stk_2c / (float)value);",
-            "unlifted: xStack_20 = (CCharString)(iVar9 % 100);"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
             "NewScriptFrame",
@@ -739,19 +729,13 @@
             "GetActiveQuestName",
             "DeactivateQuestLater"
           ],
-          "lines": 154,
+          "lines": 159,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Expression_Picklock/Expression_Picklock.lua:Main",
-                "line": 83,
-                "message": "FSE/Expression_Picklock/Expression_Picklock.lua:Main:83: ')' expected near 'uVar11'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -820,35 +804,21 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 1,
-        "passed": 0,
-        "errors": [
-          {
-            "path": "FSE/Expression_Picklock/Expression_Picklock.lua",
-            "line": 86,
-            "message": "FSE/Expression_Picklock/Expression_Picklock.lua:86: ')' expected near 'uVar11'"
-          }
-        ]
+        "passed": 1,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Expression_Picklock/Expression_Picklock.lua": {
-          "Main": [
-            "xStack_24",
-            "xStack_28"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
         "missing": 0,
-        "functionSyntaxPassed": 2,
-        "fileSyntaxPassed": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 3
+        "todo": 0
       }
     },
     {
@@ -874,15 +844,11 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_30 = (CCharString)((float)(int)xStack_2c + 1.0);",
             "label LAB_00eeb4fa",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
-            "unlifted: xStack_38 = (CCharString)(_DAT_0122ded8 - (float)(int)C_stk_40 / (float)value);",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
-            "unlifted: xStack_28._4_4_ = piVar4;",
-            "unlifted: *piVar3 = *piVar3 + 1;",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
             "verify cleanup at LAB_00eeb5dd (lifted as early return)",
             "label LAB_00eeb521",
@@ -891,10 +857,7 @@
             "label LAB_00eeb5dd",
             "label LAB_00eeb583",
             "GetPThing: CScriptThing method not in FSE manifest",
-            "verify cleanup at LAB_00eeb4fa (lifted as early return)",
-            "unlifted: xStack_2c = (CCharString)(iVar13 % 100);",
-            "unlifted: piVar3 = *(pCVar11 + 0x8)",
-            "unlifted: piVar4 = *(pCVar11 + 0x4)"
+            "verify cleanup at LAB_00eeb4fa (lifted as early return)"
           ],
           "calls": [
             "GetHero",
@@ -992,7 +955,7 @@
             "GetActiveQuestName",
             "DeactivateQuestLater"
           ],
-          "lines": 267,
+          "lines": 260,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1004,7 +967,7 @@
           "nativeJumps": [
             "goto FLOW_past_lab_00eeb3f9;",
             "goto LAB_00eeb3f9;",
-            "if (1.0 <= (float)xStack_38) goto LAB_00eeb3f9;",
+            "if (1.0 <= f_stk_38) goto LAB_00eeb3f9;",
             "if (bVar7) goto LAB_00eeafc7;"
           ],
           "nativeLabels": [
@@ -1083,14 +1046,6 @@
           ]
         }
       },
-      "declaredFreeLocals": {
-        "FSE/Expression_Pickpocket/Expression_Pickpocket.lua": {
-          "Main": [
-            "xStack_30",
-            "xStack_38"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
@@ -1098,7 +1053,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 21
+        "todo": 14
       }
     },
     {
@@ -1123,11 +1078,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_24 = (CCharString)((float)(int)xStack_20 + 1.0);",
-            "unlifted: xStack_28 = (CCharString)(_DAT_0122ded8 - (float)i_stk_2c / (float)value);",
-            "unlifted: xStack_20 = (CCharString)(iVar8 % 100);"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
             "NewScriptFrame",
@@ -1182,19 +1133,13 @@
             "GetActiveQuestName",
             "DeactivateQuestLater"
           ],
-          "lines": 150,
+          "lines": 155,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Expression_Steal/Expression_Steal.lua:Main",
-                "line": 79,
-                "message": "FSE/Expression_Steal/Expression_Steal.lua:Main:79: ')' expected near 'uVar10'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1263,35 +1208,21 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 1,
-        "passed": 0,
-        "errors": [
-          {
-            "path": "FSE/Expression_Steal/Expression_Steal.lua",
-            "line": 82,
-            "message": "FSE/Expression_Steal/Expression_Steal.lua:82: ')' expected near 'uVar10'"
-          }
-        ]
+        "passed": 1,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Expression_Steal/Expression_Steal.lua": {
-          "Main": [
-            "xStack_24",
-            "xStack_28"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
         "missing": 0,
-        "functionSyntaxPassed": 2,
-        "fileSyntaxPassed": 0,
+        "functionSyntaxPassed": 3,
+        "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 3
+        "todo": 0
       }
     },
     {
@@ -1457,10 +1388,8 @@
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
             "Speak: unresolved entity receiver/resource in quest context",
-            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
-            "IsPerformingScriptTask: unresolved entity receiver/resource in quest context",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);",
             "unlifted: CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);",
             "unlifted: uVar6 = CMemoryAllocatorVariableSize::GetNoAllocatedAreas(this_01);",
@@ -1487,9 +1416,11 @@
             "ENGINE_IntToString",
             "AddScreenTitleMessage",
             "GetHero",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "IsActiveThreadTerminating",
@@ -1500,7 +1431,7 @@
             "DeactivateQuestLater",
             "QUESTTHING_Empty"
           ],
-          "lines": 95,
+          "lines": 93,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1585,7 +1516,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 21
+        "todo": 19
       }
     },
     {
@@ -1752,7 +1683,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);"
           ],
@@ -1789,6 +1719,7 @@
             "IsEntityWieldingRangedWeapon",
             "SetToKeepHeroAbilitiesDuringCutscenes",
             "SetToDisplayTutorialsDuringCutscenes",
+            "ClearAllActionsIncludingLoopingAnimations",
             "RESOURCE_StartMovie",
             "SetCutsceneMode",
             "EntitySetCutsceneBehaviour",
@@ -1957,7 +1888,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 3
+        "todo": 2
       }
     },
     {
@@ -1984,9 +1915,7 @@
           },
           "todo": [
             "label LAB_00cdd9d7",
-            "label LAB_00cdd9e9",
-            "EntityTeleportToPosition: missing pos (4 args for 5 params)",
-            "SetGuildSealRecallLocation: missing angle (1 args for 2 params)"
+            "label LAB_00cdd9e9"
           ],
           "calls": [
             "GetHero",
@@ -2010,6 +1939,7 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
+            "PerformExpression",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "GetHero",
@@ -2108,13 +2038,6 @@
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Global_TeleportToHeroGuild/Global_TeleportToHeroGuild.lua": {
-          "Main": [
-            "xStack_1c"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
@@ -2122,7 +2045,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 4
+        "todo": 2
       }
     },
     {
@@ -2402,9 +2325,9 @@
     "owners": 13,
     "functions": 41,
     "missing": 0,
-    "functionSyntaxPassed": 39,
-    "fileSyntaxPassed": 11,
+    "functionSyntaxPassed": 41,
+    "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 76
+    "todo": 43
   }
 }

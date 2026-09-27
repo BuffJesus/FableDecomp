@@ -11,9 +11,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult23, predicateResult27, isActiveThreadTerminating
-    local questionAnswer, questionAnswer2, scratchValue14, scratchValue45, resource, this_00
-    local meControl, movie2
+    local predicateResult2, predicateResult23, isActiveThreadTerminating, questionAnswer
+    local questionAnswer2, scratchValue14, scratchValue45, resource, this_00, meControl, movie2
     local function ReleaseEverything()
         local this_00 = movie2
         resources:DestroyMovie(this_00)
@@ -289,23 +288,14 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie2)
             end
-        else
-            if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("CellExitMarker"), 1.0) then goto LAB_00f1c818 end
-            predicateResult27 = true
-            if me:IsPerformingScriptTask() then goto LAB_00f1c818 end
-            goto FLOW_past_lab_00f1c818
-            ::LAB_00f1c818::
-            predicateResult27 = false
-            ::FLOW_past_lab_00f1c818::
-            if predicateResult27 then
-                scratchValue14 = quest:GetThingWithScriptName("CellExitMarker")
-                me:MoveToPosition(scratchValue14:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
-                isActiveThreadTerminating = false
-            elseif not isActiveThreadTerminating then
-                if not me:IsPerformingScriptTask() then
-                    isActiveThreadTerminating = true
-                    quest:EntitySetFacingAngle(me, quest:GetThingWithScriptName("CellExitMarker"):GetAngleXY(), true)
-                end
+        elseif not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("CellExitMarker"), 1.0)) or me:IsPerformingScriptTask()) then
+            scratchValue14 = quest:GetThingWithScriptName("CellExitMarker")
+            me:MoveToPosition(scratchValue14:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+            isActiveThreadTerminating = false
+        elseif not isActiveThreadTerminating then
+            if not me:IsPerformingScriptTask() then
+                isActiveThreadTerminating = true
+                quest:EntitySetFacingAngle(me, quest:GetThingWithScriptName("CellExitMarker"):GetAngleXY(), true)
             end
         end
         ::LAB_00f1c953::

@@ -4,15 +4,14 @@
 -- WaspChaser.Main (retail 0x00e10bf0)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local waspChaseWoman
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e10d61 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e10d61 end
-    waspChaseWoman = quest:GetThingWithScriptName("WaspChaseWoman")
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    local waspChaseWoman = quest:GetThingWithScriptName("WaspChaseWoman")
     me:FollowThing(waspChaseWoman, 1.0, true)
     while not quest:IsActiveThreadTerminating() do
         if waspChaseWoman ~= nil and waspChaseWoman:IsAlive() then
@@ -25,7 +24,6 @@ function Main(quest, me)
             quest:NewScriptFrame(me)
         end
     end
-    ::LAB_00e10d61::
     resources:ReleaseResource(resource)
 end
 

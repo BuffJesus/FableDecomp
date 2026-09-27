@@ -12,6 +12,22 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
     local bVar3, cVar4, dist, elem_1, fVar2, f_stk_28, f_stk_94, fret_0, iStack_90, iVar10, iVar11, native_arg_sequence_1, native_arg_switch_2, p1, p4, p5, pCVar5, pCVar6, pThing, puVar8, pvVar7, r1, r2, timerId, uVar9, xStack_1c, xStack_a0, x_stk_c
     local alive = true
     quest:EntitySetAsKillable(me, false, true)
@@ -164,7 +180,7 @@ function Main(quest, me)
                     return
                 end
                 pvVar7 = r2:GetDataString()
-                f_stk_94 = tonumber(pvVar7)
+                f_stk_94 = parseGameInteger(pvVar7)
                 uVar9 = 0
                 iStack_90 = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
                 if #iStack_90 ~= 0 then
@@ -179,7 +195,7 @@ function Main(quest, me)
                         end
                         elem_1 = iStack_90[(iVar10) / 0xc + 1]
                         pvVar7 = elem_1:GetDataString()
-                        f_stk_28 = tonumber(pvVar7)
+                        f_stk_28 = parseGameInteger(pvVar7)
                         if f_stk_28 == f_stk_94 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive

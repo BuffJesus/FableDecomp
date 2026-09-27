@@ -10,12 +10,10 @@ local chamTalk, earlyTalk
 
 -- ArenaCellDoorGuard.Main (retail 0x00f17c70)
 function Main(quest, me)
-    local cellsVillage = quest:GetStateThing("CellsVillage")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult11, predicateResult14, scratchValue, scratchValue32, scratchValue33
-    local this_01, scratchValue34, scratchValue35, scratchValue36, resource, movie2, resource3
-    local meControl
+    local predicateResult11, scratchValue, scratchValue32, scratchValue33, scratchValue34
+    local scratchValue35, scratchValue36, resource, movie2, resource3, meControl
     scratchValue36 = 0
     resources:NewResource()
     quest:EntitySetOpinionReactionsEnabled(me, false)
@@ -47,8 +45,9 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                this_01 = movie2
-                                goto LAB_00f19a72
+                                resources:DestroyMovie(movie2)
+                                resources:ReleaseResource(meControl)
+                                return
                             end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_ENTER_ARENA_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -230,7 +229,7 @@ function Main(quest, me)
                             quest:FadeScreenOut(0.5, 0.5)
                             quest:Pause(0.5)
                             quest:SetStateInt("ArenaState", 6)
-                            quest:ClearHeroEnemyOfGuards(cellsVillage)
+                            quest:ClearHeroEnemyOfGuards(quest:GetStateThing("CellsVillage"))
                             resources:PrepareResource(resource3)
                             quest:SetStateBool("NeedBertForSpeech", false)
                             resources:ReleaseResource(resource3)
@@ -242,8 +241,9 @@ function Main(quest, me)
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        this_01 = movie2
-                        goto LAB_00f19a72
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(meControl)
+                        return
                     end
                     if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                         while me:IsPerformingScriptTask() do
@@ -290,7 +290,7 @@ function Main(quest, me)
                             quest:FadeScreenOut(0.5, 0.5)
                             quest:Pause(0.5)
                             quest:SetStateInt("ArenaState", 6)
-                            quest:ClearHeroEnemyOfGuards(cellsVillage)
+                            quest:ClearHeroEnemyOfGuards(quest:GetStateThing("CellsVillage"))
                             resources:PrepareResource(resource)
                             quest:SetStateBool("NeedBertForSpeech", false)
                             resources:ReleaseResource(resource)
@@ -334,8 +334,9 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                this_01 = movie2
-                                goto LAB_00f19a72
+                                resources:DestroyMovie(movie2)
+                                resources:ReleaseResource(meControl)
+                                return
                             end
                         end
                     end
@@ -348,8 +349,9 @@ function Main(quest, me)
                 goto LAB_00f19935
                 ::FLOW_past_lab_00f194b7::
                 quest:PauseAllNonScriptedEntities(false)
-                this_01 = movie2
-                goto LAB_00f19a72
+                resources:DestroyMovie(movie2)
+                resources:ReleaseResource(meControl)
+                return
             end
             scratchValue34 = scratchValue36
             scratchValue36 = scratchValue36 | 1
@@ -390,8 +392,9 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f19a6b end
                         goto FLOW_past_lab_00f19a6b
                         ::LAB_00f19a6b::
-                        this_01 = movie
-                        goto LAB_00f19a72
+                        resources:DestroyMovie(movie)
+                        resources:ReleaseResource(meControl)
+                        do return end
                         ::FLOW_past_lab_00f19a6b::
                     end
                     quest:ModifyThingHealth(me, 10000.0, false)
@@ -403,13 +406,7 @@ function Main(quest, me)
                 end
             else
                 scratchValue35 = scratchValue35 | 24
-                if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerRight"), 1.0) then goto LAB_00f197e9 end
-                predicateResult14 = true
-                if me:IsPerformingScriptTask() then goto LAB_00f197e9 end
-                goto FLOW_past_lab_00f197e9
-                ::LAB_00f197e9::
-                predicateResult14 = false
-                ::FLOW_past_lab_00f197e9::
+                local predicateResult14 = not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerRight"), 1.0)) or me:IsPerformingScriptTask())
                 if scratchValue35 & 16 ~= 0 then
                     scratchValue35 = scratchValue35 & 0xffffffef
                 end
@@ -432,22 +429,21 @@ function Main(quest, me)
             quest:NewScriptFrame(me)
         until false
     end
-    goto LAB_00f19a7b
+    resources:ReleaseResource(meControl)
+    do return end
     ::LAB_00f19a09::
     resources:ReleaseResource(resource3)
     ::LAB_00f19a17::
     quest:PauseAllNonScriptedEntities(false)
-    this_01 = movie2
-    goto LAB_00f19a72
+    resources:DestroyMovie(movie2)
+    resources:ReleaseResource(meControl)
+    do return end
     ::LAB_00f199ae::
     resources:ReleaseResource(resource)
     ::LAB_00f19a37::
     ::LAB_00f19a3c::
     quest:PauseAllNonScriptedEntities(false)
-    this_01 = movie2
-    ::LAB_00f19a72::
-    resources:DestroyMovie(this_01)
-    ::LAB_00f19a7b::
+    resources:DestroyMovie(movie2)
     resources:ReleaseResource(meControl)
 end
 

@@ -14,10 +14,9 @@ local dropPass
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult3, predicateResult6, predicateResult9, predicateResult11
-    local predicateResult12, predicateResult15, getStateBool, scratchValue4, scratchValue5
-    local registerTimer, conversationId, timerId, switch1, campHostage, scratchValue, movie, movie3
-    local scratchValue20
+    local predicateResult6, predicateResult9, predicateResult, getStateBool, scratchValue4
+    local scratchValue5, registerTimer, conversationId, timerId, switch1, campHostage, scratchValue
+    local movie, movie3, scratchValue20
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -84,14 +83,7 @@ function Main(quest, me)
         ::LAB_00d09458::
         if scratchValue20 == 1 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
-            if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0) then goto LAB_00d094cb end
-            predicateResult = true
-            if me:IsPerformingScriptTask() then goto LAB_00d094cb end
-            goto FLOW_past_lab_00d094cb
-            ::LAB_00d094cb::
-            predicateResult = false
-            ::FLOW_past_lab_00d094cb::
-            if predicateResult then
+            if not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0)) or me:IsPerformingScriptTask()) then
                 local guardFirstMarker = quest:GetThingWithScriptName("GuardFirstMarker")
                 me:MoveToPosition(guardFirstMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             elseif quest:GetTimer(registerTimer) < 1 then
@@ -103,14 +95,7 @@ function Main(quest, me)
             end
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00d0a693 end
-            if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardSecondMarker"), 2.0) then goto LAB_00d09657 end
-            predicateResult3 = true
-            if me:IsPerformingScriptTask() then goto LAB_00d09657 end
-            goto FLOW_past_lab_00d09657
-            ::LAB_00d09657::
-            predicateResult3 = false
-            ::FLOW_past_lab_00d09657::
-            if predicateResult3 then
+            if not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardSecondMarker"), 2.0)) or me:IsPerformingScriptTask()) then
                 local guardSecondMarker = quest:GetThingWithScriptName("GuardSecondMarker")
                 me:MoveToPosition(guardSecondMarker:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             elseif quest:GetTimer(registerTimer) < 1 then
@@ -213,26 +198,11 @@ function Main(quest, me)
         scratchValue4 = predicateResult9
         quest:ClearThingHasInformation(me)
         while not quest:IsActiveThreadTerminating() do
-            if not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0) then goto LAB_00d09bc7 end
-            predicateResult11 = true
-            if me:IsPerformingScriptTask() then goto LAB_00d09bc7 end
-            goto FLOW_past_lab_00d09bc7
-            ::LAB_00d09bc7::
-            predicateResult11 = false
-            ::FLOW_past_lab_00d09bc7::
-            if predicateResult11 then
+            if not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardFirstMarker"), 2.0)) or me:IsPerformingScriptTask()) then
                 local guardFirstMarker4 = quest:GetThingWithScriptName("GuardFirstMarker")
                 me:MoveToPosition(guardFirstMarker4:GetPos(), 1.0, ENTITY_MOVE_WALK, false, true)
             end
-            if not quest:IsDistanceBetweenThingsUnder(me, hero, 7.0) then goto LAB_00d09cf7 end
-            if not quest:IsDistanceBetweenThingsUnder(me, quest:GetThingWithScriptName("GuardFirstMarker"), 12.0) then goto LAB_00d09cf7 end
-            predicateResult12 = true
-            if 0 < quest:GetTimer(timerId) then goto LAB_00d09cf7 end
-            goto FLOW_past_lab_00d09cf7
-            ::LAB_00d09cf7::
-            predicateResult12 = false
-            ::FLOW_past_lab_00d09cf7::
-            if predicateResult12 then
+            if not ((not quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)) or not quest:IsDistanceBetweenThingsUnder(me, quest:GetThingWithScriptName("GuardFirstMarker"), 12.0) or (0 < quest:GetTimer(timerId))) then
                 if quest:IsActiveThreadTerminating() then break end
                 local conversationId2 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId2, hero)
@@ -305,13 +275,13 @@ function Main(quest, me)
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0a3d3 end
                 end
-                predicateResult15 = false
+                predicateResult = false
             end
             goto FLOW_past_lab_00d0a3d3
             ::LAB_00d0a3d3::
-            predicateResult15 = true
+            predicateResult = true
             ::FLOW_past_lab_00d0a3d3::
-            if not predicateResult15 then
+            if not predicateResult then
                 quest:NewScriptFrame(me)
             else
                 if not quest:IsActiveThreadTerminating() then

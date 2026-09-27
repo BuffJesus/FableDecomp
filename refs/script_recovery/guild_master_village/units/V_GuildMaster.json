@@ -622,21 +622,25 @@
         "GuildMasterDialogue_0",
         "Bool"
       ],
-      "0x4c": [
+      "0x49": [
         "GuildMasterDialogue_1",
+        "Bool"
+      ],
+      "0x4a": [
+        "GuildMasterDialogue_2",
+        "Bool"
+      ],
+      "0x4b": [
+        "GuildMasterDialogue_3",
+        "Bool"
+      ],
+      "0x4c": [
+        "GuildMasterDialogue_4",
         "Bool"
       ],
       "0x50": [
         "LastDialogueSaid",
         "String"
-      ],
-      "0x54": [
-        "GuildMasterDialogue_3",
-        "Bool"
-      ],
-      "0x58": [
-        "GuildMasterDialogue_4",
-        "Bool"
       ]
     },
     "thingFields": {},
@@ -647,7 +651,7 @@
         "name": "GuildMasterDialogue",
         "element": "bool",
         "base": "0x48",
-        "stride": 4,
+        "stride": 1,
         "count": 5,
         "members": {
           "0x0": [

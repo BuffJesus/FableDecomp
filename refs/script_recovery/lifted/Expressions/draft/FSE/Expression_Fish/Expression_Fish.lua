@@ -58,9 +58,9 @@ function Main(quest)
     quest:FadeScreenOut(0.5, 0.5)
     quest:Pause(1.0)
     quest:SheatheHeroWeapons()
-    -- TODO(native): ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context; arguments: 
+    resources:ClearAllActionsIncludingLoopingAnimations(xStack_20)
     r1 = quest:GetMostRecentValidUsedTargetName()
-    iVar6 = ((r1 ~= 0x122d70e) and 1 or 0)
+    iVar6 = ((r1 ~= "") and 1 or 0)
     if iVar6 == 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -86,7 +86,7 @@ function Main(quest)
             end
             goto FLOW_past_lab_00ee98bc
             ::LAB_00ee98bc::
-            quest:MakeHeroCarryItemInHand(nil --[[missing]], (iVar12 ~= 0), (iVar9 ~= 0))
+            quest:MakeHeroCarryItemInHand(string)
             goto LAB_00ee98de
             ::FLOW_past_lab_00ee98bc::
         end
@@ -94,13 +94,13 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            quest:MakeHeroCarryItemInHand(nil --[[missing]], nil --[[missing]], nil --[[missing]])
+            quest:MakeHeroCarryItemInHand(r1)
             goto LAB_00ee98de
         end
     end
     goto FLOW_past_lab_00ee98de
     ::LAB_00ee98de::
-    -- TODO(native): PlayLoopingAnimation: unresolved entity receiver/resource in quest context; arguments: -1,0,0,0,1,true,0,0
+    resources:PlayLoopingAnimation(xStack_20, "ST_FISHING_IDLE", -1, false, false, false, true, true, false, false)
     bVar2 = false
     xStack_6c = nil
     pCVar4 = quest:GetHero()
@@ -208,7 +208,7 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if not bVar3 then
-                -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,1,0,1,true,0,0
+                resources:PlayAnimation(xStack_20, "ST_FISHING_FAILURE", false, true, false, true, true, false, false)
                 goto LAB_00ee9cd6
             end
         else
@@ -216,7 +216,7 @@ function Main(quest)
             bVar2 = not alive
             if not bVar2 then
                 bVar2 = true
-                -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,1,0,1,true,0,0
+                resources:PlayAnimation(xStack_20, "ST_FISHING_SUCCESS", false, true, false, true, true, false, false)
                 quest:Pause(0.2)
                 goto LAB_00ee9cd6
             end
@@ -232,7 +232,7 @@ function Main(quest)
             if bVar3 then goto LAB_00ee9ea5 end
             quest:DisableFishingSpot(xStack_6c)
         end
-        quest:MakeHeroCarryItemInHand(nil --[[missing]], bVar2, nil --[[missing]])
+        quest:MakeHeroCarryItemInHand("")
         pCVar4 = quest:GetHero()
         quest:EntityResetForceToLookAt(pCVar4)
         quest:CameraResetToViewBehindHero(0.0)

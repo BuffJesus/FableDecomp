@@ -9,12 +9,11 @@ function Main(quest, me)
     local waspVictim = quest:GetThingWithScriptName("WaspVictim")
     quest:GiveThingBestEnemyTarget(me, waspVictim)
     while waspVictim ~= nil and waspVictim:IsAlive() do
-        if not quest:NewScriptFrame(me) then goto LAB_00e1155e end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     end
-    ::LAB_00e1155e::
     resources:ReleaseResource(resource)
 end
 

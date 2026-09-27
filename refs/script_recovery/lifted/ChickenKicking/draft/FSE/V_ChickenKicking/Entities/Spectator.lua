@@ -80,8 +80,8 @@ function Main(quest, me)
                     return
                 end
                 pCVar8 = tostring(__native_entity_state:GetStateInt("SpectatorNumber"))
-                ("TEXT_QST_B17_SPECTATOR_" .. pCVar8)
-                pCVar8 = (0 .. "_GREETING")
+                xStack_64 = ("TEXT_QST_B17_SPECTATOR_" .. pCVar8)
+                pCVar8 = (xStack_64 .. "_GREETING")
                 xStack_64 = pCVar8
                 x_stk_38 = resources:ScriptThing(xStack_20)
                 pCVar9 = x_stk_38
@@ -126,7 +126,7 @@ function Main(quest, me)
                     __cleanup_LAB_00e63fea(); return
                 end
                 pCVar8 = tostring(__native_entity_state:GetStateInt("SpectatorNumber"))
-                ("TEXT_QST_B17_SPECTATOR_" .. pCVar8)
+                xStack_60 = ("TEXT_QST_B17_SPECTATOR_" .. pCVar8)
                 pCVar8 = (xStack_60 .. "_TIP")
                 xStack_60 = pCVar8
                 x_stk_2c = resources:ScriptThing(xStack_20)

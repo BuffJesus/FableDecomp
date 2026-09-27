@@ -21,9 +21,9 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local isActiveThreadTerminating, taskRunning, taskRunning4, c_stk_22d_1, c_stk_22d_2, ctr_22c
     local tutorialState, scratchValue6, questionAnswer, questionAnswer2, questionAnswer3
-    local questionAnswer4, questionAnswer5, scratchValue9, timerId, timerId6, index, willApprentice
-    local willApprentice2, willApprentice3, resource, actorMap2, movie2, resource2, resource3
-    local actorMap3, timerId7, timerId8, timerId9
+    local questionAnswer4, questionAnswer5, scratchValue9, index, willApprentice, willApprentice2
+    local willApprentice3, resource, actorMap2, movie2, resource2, resource3, actorMap3, timerId7
+    local timerId8, timerId9
     local resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -33,14 +33,14 @@ function Main(quest, me)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d61b7b end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAlwaysBlockAttacksFromThing(me, hero, true)
     quest:SetThingHasInformation(me, false, false, false)
     quest:SetPlayerUsingWillDummies(true)
     quest:SetIsPushableByHero(me, false)
-    timerId = quest:RegisterTimer()
-    timerId6 = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
+    local timerId6 = quest:RegisterTimer()
     quest:SetTimer(timerId6, 0)
     ctr_22c = 0
     quest:EntitySetTargetingType(me, 26)
@@ -346,10 +346,9 @@ function Main(quest, me)
                             resources:SetString(actorMap2, "$GRADE", "TEXT_QST_028_GUILDMASTER_WILL_GRADE_F")
                             break
                         else
-                            goto FLOW_native_label_1
+                            break
                         end
                     until true
-                    ::FLOW_native_label_1::
                     resources:SetActor(actorMap3, "HERO", resource3)
                     resources:SetActor(actorMap3, "TEACHER", resource4)
                     resources:RunMacro("CS_GUILD_WILL_WON_START", actorMap3, false, false)
@@ -505,14 +504,7 @@ function Main(quest, me)
     isActiveThreadTerminating = quest:IsActiveThreadTerminating()
     ::LAB_00d60a99::
     if not isActiveThreadTerminating then
-        if quest:GetStateBool("BanditsDefeated") then goto LAB_00d6158a end
-        if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then goto LAB_00d6158a end
-        isActiveThreadTerminating = true
-        goto FLOW_past_lab_00d6158a
-        ::LAB_00d6158a::
-        isActiveThreadTerminating = false
-        ::FLOW_past_lab_00d6158a::
-        if isActiveThreadTerminating then
+        if not (quest:GetStateBool("BanditsDefeated") or quest:IsQuestActive("Q_GuildTrainingWoodsWill")) then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId6)
                 quest:DeregisterTimer(timerId)
@@ -754,7 +746,6 @@ function Main(quest, me)
     ::LAB_00d61b69::
     quest:DeregisterTimer(timerId6)
     quest:DeregisterTimer(timerId)
-    ::LAB_00d61b7b::
     resources:ReleaseResource(resource4)
 end
 

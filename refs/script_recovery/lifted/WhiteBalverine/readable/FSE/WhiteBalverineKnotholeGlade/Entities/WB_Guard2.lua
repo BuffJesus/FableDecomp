@@ -7,16 +7,16 @@ local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 -- WB_Guard2.Main (retail 0x00e17320)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local getMasterGameState, p0_00, guard2Pos
+    local getMasterGameState, p0_00
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 3) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e174a0 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e174a0 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:EntitySetCutsceneBehaviour(me, CUTSCENE_BEHAVIOUR_PAUSED)
-    guard2Pos = quest:GetThingWithScriptName("WB_Guard2Pos")
+    local guard2Pos = quest:GetThingWithScriptName("WB_Guard2Pos")
     if guard2Pos == nil then
         p0_00 = {x = 0, y = 0, z = 0}
     else
@@ -24,9 +24,9 @@ function Main(quest, me)
     end
     me:MoveToPosition(p0_00, 3.0, ENTITY_MOVE_RUN, false, true)
     while not quest:IsDistanceBetweenThingsUnder(me, guard2Pos, 5.0) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e17497 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e17497 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     getMasterGameState = quest:GetMasterGameState("WhiteBalverineFinished")
     repeat
         if getMasterGameState then
@@ -63,8 +63,6 @@ function Main(quest, me)
         ::LAB_00e17639::
         getMasterGameState = quest:GetMasterGameState("WhiteBalverineFinished")
     until false
-    ::LAB_00e17497::
-    ::LAB_00e174a0::
     resources:ReleaseResource(resource)
 end
 

@@ -12,29 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, b_stk_b5, cVar5, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar11, iVar13, iVar15, iVar17, native_arg_sequence_1, pCVar12, pCVar14, pCVar16, pCVar6, pCVar7, pRelativeTo, pThing1, pcVar10, piVar1, piVar2, ppuVar18, this_00, uVar8, uVar9, u_stk_b0, xStack_64, xStack_74, xStack_c8
+    local bVar4, b_stk_b5, cVar5, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar11, iVar13, iVar15, iVar17, native_arg_sequence_1, pCVar12, pCVar14, pCVar16, pCVar6, pCVar7, pRelativeTo, pThing1, pcVar10, ppuVar18, this_00, uVar8, uVar9, u_stk_b0, xStack_64, xStack_74, xStack_c8
     local alive = true
     u_stk_b0 = 0
     ppuVar18 = resources:NewResource()
     pCVar6 = quest:GetNearestWithDefName(me, "VILLAGE_ARENA_CELLS")
-    -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-    piVar1 = nil --[[unresolved native value]]
-    -- TODO(native): xStack_a8 = *(CCharString *)(pCVar6 + 0x4);
-    -- TODO(native): piVar2 = *(__native_entity_state:GetStateInt("self_0x14") + 0xc8)
-    piVar2 = nil --[[unresolved native value]]
-    if piVar2 ~= piVar1 then
-        if piVar2 ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 + -1;
-            if **(__native_entity_state:GetStateInt("self_0x14") + 0xc8) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(*(int *)(this + 0x14) + 0xc8))[1])();
-            end
-        end
-        -- TODO(native): *(CCharString *)(*(int *)(this + 0x14) + 0xc4) = xStack_a8;
-        -- TODO(native): *(int **)(*(int *)(this + 0x14) + 0xc8) = piVar1;
-        if piVar1 ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + 1;
-        end
-    end
+    quest:SetStateThing("CellsVillage", pCVar6)
     pCVar6 = nil
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")

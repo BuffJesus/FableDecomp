@@ -10,7 +10,6 @@ local timesSpoken
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie, resource, actorMap
     local resource2 = resources:NewResource()
     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     resources:PrepareResource(resource2)
@@ -23,10 +22,10 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
-    if quest:IsActiveThreadTerminating() then goto LAB_00ee808a end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     while true do
         if me:IsTalkedToByHero() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00ee808a end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             if not quest:GetMasterGameState("SingingStonesInSync") then
                 local movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
@@ -53,7 +52,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
             end
             if not quest:GetMasterGameState("TrophyDealerHeroSpokenToDemonDoors") then
-                if quest:IsActiveThreadTerminating() then goto LAB_00ee808a end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
                 quest:SetMasterGameState("TrophyDealerHeroSpokenToDemonDoors", true)
                 quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03", "Witchwood2", "")
             end
@@ -65,8 +64,8 @@ function Main(quest, me)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00ee808a end
-    resource = resources:NewResource()
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+    local resource = resources:NewResource()
     resources:TryAcquire(resource, hero, 4)
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
@@ -82,10 +81,10 @@ function Main(quest, me)
         resources:ReleaseResource(resource2)
         return
     end
-    actorMap = resources:NewActorMap()
+    local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "DOOR", resource2)
-    movie = resources:StartMovie("")
+    local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     resources:RunMacro("CS_TROPHY_DEALER_DOOR_OPENS", actorMap, false, true)
     quest:PauseAllNonScriptedEntities(false)
@@ -96,7 +95,6 @@ function Main(quest, me)
     quest:SetThingPersistent(quest:GetThingWithScriptName("DemonDoorDoor"), true)
     quest:SetMasterGameState("SingingStonesInSync", false)
     quest:RemoveThing(me, false, true)
-    ::LAB_00ee808a::
     resources:ReleaseResource(resource2)
 end
 

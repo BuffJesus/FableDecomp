@@ -1298,7 +1298,6 @@ function Main(quest)
 end
 
 function Init(quest)
-    quest:SetStateBool("ArenaSpawnNeeded_10", true)  -- native constructor: initial value
     quest:SetStateInt("GlobalCrowdTimer", quest:RegisterTimer())  -- native constructor: CTimer member
     local bVar1, iVar2
     local alive = true
@@ -1316,9 +1315,9 @@ function Init(quest)
     quest:SetStateBool("NeedBertForSpeech", false)
     quest:SetStateBool("PlayerLeaving", false)
     quest:SetStateBool("PlayerWon", false)
-    -- TODO(native): *(undefined4 *)__element("TotalCreatures", 0) = 0;
-    -- TODO(native): *(undefined4 *)__element("TotalCreatures", 1) = 0;
-    -- TODO(native): *(undefined4 *)__element("TotalCreatures", 2) = 0;
+    quest:SetStateInt("TotalCreatures_0", 0)
+    quest:SetStateInt("TotalCreatures_1", 0)
+    quest:SetStateInt("TotalCreatures_2", 0)
     quest:SetStateInt("ExtraCreatures", 0)
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -1446,7 +1445,7 @@ function WatchForTermination(quest)
 end
 
 function CrowdChecker(quest)
-    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_f4, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar1, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_150, xStack_c0
+    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iStack_f4, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar1, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_150, xStack_c0
     local alive = true
     -- TODO(native): aiStack_c[0] = 0;
     -- TODO(native): aiStack_c[1] = 200;
@@ -1461,7 +1460,6 @@ function CrowdChecker(quest)
     i_stk_15c = quest:RegisterTimer()
     quest:SetTimer(i_stk_15c, 0xf)
     i_stk_114 = -1
-    i_stk_f4 = -1
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     while true do
@@ -1670,7 +1668,7 @@ function CrowdChecker(quest)
             end
             quest:SetStateInt("NewCrowdPoints", 400)
         end
-        if (i_stk_114 ~= quest:GetStateInt("NewCrowdHappiness")) or (i_stk_f4 ~= quest:GetStateInt("NewCrowdBaseLevel")) then
+        if (i_stk_114 ~= quest:GetStateInt("NewCrowdHappiness")) or (-1 ~= quest:GetStateInt("NewCrowdBaseLevel")) then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
@@ -1681,7 +1679,7 @@ function CrowdChecker(quest)
             iVar3 = quest:GetStateInt("NewCrowdBaseLevel")
             quest:SetStateInt("NewCrowdHappiness", i_stk_114)
             uVar9 = 0
-            i_stk_f4 = iVar3
+            iStack_f4 = iVar3
             if #xStack_150 ~= 0 then
                 iVar4 = 0
                 repeat
@@ -1695,7 +1693,7 @@ function CrowdChecker(quest)
                     -- TODO(native): quest:StopSound(*(xStack_12c + uVar9 * 4))
                     quest:Pause(0.2)
                     -- TODO(native): puStack_10 = (uint *)((int)xStack_12c + uVar9 * 4);
-                    uVar5 = quest:PlayCriteriaSoundOnThing(xStack_150[(iVar4) / 0xc + 1], iStack_138)
+                    uVar5 = quest:PlayCriteriaSoundOnThing(xStack_150[(iVar4) / 0xc + 1], quest:GetStateString(("CrowdLoopTags_" .. iVar3 .. "_" .. i_stk_114)))
                     -- TODO(native): *puStack_10 = uVar5;
                     c_stk_151 = 0
                     quest:Pause(0.3)
@@ -1838,7 +1836,7 @@ function CrowdChecker(quest)
         end
         c_stk_151 = 1
         r2 = quest:GetThingWithScriptName("SingleShouter")
-        xStack_c0 = quest:PlayCriteriaSoundOnThing(r2, xStack_150)
+        xStack_c0 = quest:PlayCriteriaSoundOnThing(r2, quest:GetStateString(("CrowdLoopTags_" .. iStack_f4 .. "_" .. i_stk_114)))
         iVar4 = math.random(0, 32767)
         quest:SetTimer(i_stk_15c, iVar4 % quest:ReadGlobalGameData(0xa68) + quest:ReadGlobalGameData(0xa64))
         iVar4 = quest:AddNewConversation(r2, false, false)
@@ -2157,46 +2155,27 @@ function CrowdChecker(quest)
 end
 
 function InitialiseVariables(quest)
-    helper_F25980(quest, this + 0x98, DAT_0143e90c + 0x1044)
-    -- TODO(native): name field 0x48 (CCharString)
-    quest:SetStateString("self_0x48", "ARENA_HECKLE_SMALL_LOOP")
-    -- TODO(native): name field 0x4c (CCharString)
-    quest:SetStateString("self_0x4c", "ARENA_CHANT_LOOP")
-    -- TODO(native): name field 0x50 (CCharString)
-    quest:SetStateString("self_0x50", "ARENA_APPLAUSE_SMALL_LOOP")
-    -- TODO(native): name field 0x54 (CCharString)
-    quest:SetStateString("self_0x54", "ARENA_CHEER_CROWD")
-    -- TODO(native): name field 0x58 (CCharString)
-    quest:SetStateString("self_0x58", "ARENA_AWWW")
-    -- TODO(native): name field 0x5c (CCharString)
-    quest:SetStateString("self_0x5c", "ARENA_HECKLE_SMALL_LOOP")
-    -- TODO(native): name field 0x60 (CCharString)
-    quest:SetStateString("self_0x60", "ARENA_CHANT_LOOP")
-    -- TODO(native): name field 0x64 (CCharString)
-    quest:SetStateString("self_0x64", "ARENA_APPLAUSE_MEDIUM_LOOP")
-    -- TODO(native): name field 0x68 (CCharString)
-    quest:SetStateString("self_0x68", "ARENA_CHEER_CROWD")
-    -- TODO(native): name field 0x6c (CCharString)
-    quest:SetStateString("self_0x6c", "ARENA_AWWW")
-    -- TODO(native): name field 0x70 (CCharString)
-    quest:SetStateString("self_0x70", "ARENA_HECKLE_MEDIUM_LOOP")
-    -- TODO(native): name field 0x74 (CCharString)
-    quest:SetStateString("self_0x74", "ARENA_CHANT_LOOP")
-    -- TODO(native): name field 0x78 (CCharString)
-    quest:SetStateString("self_0x78", "ARENA_APPLAUSE_BIG_LOOP")
-    -- TODO(native): name field 0x7c (CCharString)
-    quest:SetStateString("self_0x7c", "ARENA_CHEER_CROWD")
-    -- TODO(native): name field 0x80 (CCharString)
-    quest:SetStateString("self_0x80", "ARENA_AWWW")
-    -- TODO(native): name field 0x84 (CCharString)
-    quest:SetStateString("self_0x84", "ARENA_HECKLE_BIG_LOOP")
-    -- TODO(native): name field 0x88 (CCharString)
-    quest:SetStateString("self_0x88", "ARENA_CHANT_LOOP")
-    -- TODO(native): name field 0x8c (CCharString)
-    quest:SetStateString("self_0x8c", "ARENA_APPLAUSE_BIG_LOOP")
-    -- TODO(native): name field 0x90 (CCharString)
-    quest:SetStateString("self_0x90", "ARENA_CHEER_CROWD")
-    -- TODO(native): pCVar1 = CCharString::operator=((CCharString *)(this + 0x94),"ARENA_AWWW");
+    quest:InitialiseArenaRounds()
+    quest:SetStateString("CrowdLoopTags_0_0", "ARENA_HECKLE_SMALL_LOOP")
+    quest:SetStateString("CrowdLoopTags_0_1", "ARENA_CHANT_LOOP")
+    quest:SetStateString("CrowdLoopTags_0_2", "ARENA_APPLAUSE_SMALL_LOOP")
+    quest:SetStateString("CrowdLoopTags_0_3", "ARENA_CHEER_CROWD")
+    quest:SetStateString("CrowdLoopTags_0_4", "ARENA_AWWW")
+    quest:SetStateString("CrowdLoopTags_1_0", "ARENA_HECKLE_SMALL_LOOP")
+    quest:SetStateString("CrowdLoopTags_1_1", "ARENA_CHANT_LOOP")
+    quest:SetStateString("CrowdLoopTags_1_2", "ARENA_APPLAUSE_MEDIUM_LOOP")
+    quest:SetStateString("CrowdLoopTags_1_3", "ARENA_CHEER_CROWD")
+    quest:SetStateString("CrowdLoopTags_1_4", "ARENA_AWWW")
+    quest:SetStateString("CrowdLoopTags_2_0", "ARENA_HECKLE_MEDIUM_LOOP")
+    quest:SetStateString("CrowdLoopTags_2_1", "ARENA_CHANT_LOOP")
+    quest:SetStateString("CrowdLoopTags_2_2", "ARENA_APPLAUSE_BIG_LOOP")
+    quest:SetStateString("CrowdLoopTags_2_3", "ARENA_CHEER_CROWD")
+    quest:SetStateString("CrowdLoopTags_2_4", "ARENA_AWWW")
+    quest:SetStateString("CrowdLoopTags_3_0", "ARENA_HECKLE_BIG_LOOP")
+    quest:SetStateString("CrowdLoopTags_3_1", "ARENA_CHANT_LOOP")
+    quest:SetStateString("CrowdLoopTags_3_2", "ARENA_APPLAUSE_BIG_LOOP")
+    quest:SetStateString("CrowdLoopTags_3_3", "ARENA_CHEER_CROWD")
+    quest:SetStateString("CrowdLoopTags_3_4", "ARENA_AWWW")
 end
 
 function AnimateCrowd(quest)
@@ -2295,15 +2274,30 @@ end
 
 function PlayWave(quest)
     local resources = quest:RetailResources()
-    local CVar14, b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_d0, i_stk_e8, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, uVar11, uVar9, xStack_108, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_104, x_stk_cc
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
+    local b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, creatureCounterIds, creatureGroupIndex, creatureType, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_c0, i_stk_d0, i_stk_e8, initialCreatureCounts, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, replacementCounterId, savedCreatureGroupIndex, totalCreaturesIndex, totalCreaturesIndex2, uVar11, uVar9, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_104, x_stk_cc
     local alive = true
     r1 = quest:GetThingWithScriptName("ARENA_SpawnPoint")
     r2 = quest:GetThingWithScriptName("BigCreatureSpawnPoint")
     iVar4 = quest:RegisterTimer()
     quest:SetStateBool("PauseCrowdChecker", false)
     i_stk_15c = iVar4
-    -- TODO(native): if (*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x38 + quest:GetStateInt("ArenaRoundWave") * 0x3c) == 0) and ((quest:GetStateInt("ArenaRound") ~= 0 or (quest:GetStateInt("ArenaRoundWave") ~= 0))) then
-    if false then
+    if (not quest:GetStateBool(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_ShortWave"))) and ((quest:GetStateInt("ArenaRound") ~= 0 or (quest:GetStateInt("ArenaRoundWave") ~= 0))) then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
@@ -2390,6 +2384,7 @@ function PlayWave(quest)
     i_stk_84 = #xStack_118
     xStack_130 = quest:GetAllThingsWithScriptName("ArenaSpawn")
     iVar6 = #xStack_130
+    i_stk_c0 = iVar6
     pCVar5 = quest:GetHero()
     r3 = quest:GetFurthestWithScriptName(pCVar5, "ArenaSpawn")
     if not (r3 ~= nil and not r3:IsNull()) then
@@ -2397,7 +2392,7 @@ function PlayWave(quest)
     else
         xStack_a0 = r3:GetDataString()
     end
-    iVar4 = tonumber(xStack_a0)
+    iVar4 = parseGameInteger(xStack_a0)
     i_stk_b4 = iVar4
     x_stk_104 = (iVar4 + -1)
     c_stk_fd = 1
@@ -2439,23 +2434,23 @@ function PlayWave(quest)
         if bVar3 then
             goto LAB_00f20cc5
         end
-        -- TODO(native): *(int *)__element("TotalCreatures", 0) = #xStack_124;
+        quest:SetStateInt("TotalCreatures_0", #xStack_124)
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00f21166 end
         ctr_10c = 0
-        -- TODO(native): if 0 < *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x28 + quest:GetStateInt("ArenaRoundWave") * 0x3c) then
-        if false then
+        if 0 < quest:GetStateInt(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_NumWaveCreatures")) then
+            totalCreaturesIndex = 0
+            creatureGroupIndex = 0
             repeat
-                CVar14 = 0x0
+                savedCreatureGroupIndex = creatureGroupIndex
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00f21166 end
-                -- TODO(native): *(int *)__element("TotalCreatures", 0) = 0;
+                quest:SetStateInt(("TotalCreatures_" .. totalCreaturesIndex), 0)
                 i_stk_b8 = 0
-                -- TODO(native): if 0 < *(*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c) + 0x2c + CVar14) then
-                if false then
+                if 0 < quest:GetStateInt(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_NumCreatures")) then
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -2476,7 +2471,7 @@ function PlayWave(quest)
                                     repeat
                                         iVar4 = i_stk_d0
                                         pvVar8 = xStack_130[(i_stk_d0) / 0xc + 1]:GetDataString()
-                                        piVar10 = tonumber(pvVar8)
+                                        piVar10 = parseGameInteger(pvVar8)
                                         c_stk_13d = piVar10 == x_stk_104
                                         if c_stk_13d then
                                             alive = not quest:IsActiveThreadTerminating()
@@ -2488,11 +2483,10 @@ function PlayWave(quest)
                                                     bVar3 = not alive
                                                     if not bVar3 then
                                                         quest:SetCreatureCreationDelayFrames(1)
-                                                        -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
-                                                        iVar6 = nil --[[unresolved native value]]
+                                                        creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         bVar3 = true
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreature("ArenaEnemy", pCVar13, pvVar8)
+                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy")
                                                         xStack_e4 = pCVar5
                                                         goto LAB_00f1fcce
                                                     end
@@ -2501,12 +2495,11 @@ function PlayWave(quest)
                                                     bVar3 = not alive
                                                     if not bVar3 then
                                                         quest:SetCreatureCreationDelayFrames(1)
-                                                        -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
-                                                        iVar6 = nil --[[unresolved native value]]
+                                                        creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         bVar3 = false
                                                         fVar18 = 1.0
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreatureNearby("ArenaEnemy", pCVar13, (iVar6 + 0x28 + CVar14), xStack_124)
+                                                        pCVar5 = quest:CreateCreatureNearby(creatureType, pCVar13, fVar18, "ArenaEnemy")
                                                         xStack_e4 = pCVar5
                                                         goto LAB_00f1fcce
                                                     end
@@ -2559,8 +2552,9 @@ function PlayWave(quest)
                                                 ::FLOW_past_lab_00f1fe19::
                                                 goto FLOW_past_lab_00f1fe22
                                                 ::LAB_00f1fe22::
-                                                -- TODO(native): this[(int)x_stk_104 + 0xe2] = (CQ_ArenaScript)0x1;
+                                                quest:SetStateBool(("ArenaSpawnNeeded_" .. x_stk_104), true)
                                                 iVar4 = i_stk_d0
+                                                iVar6 = i_stk_c0
                                                 goto LAB_00f1fe48
                                                 ::FLOW_past_lab_00f1fe22::
                                                 ::FLOW_past_lab_00f1fcce::
@@ -2594,7 +2588,7 @@ function PlayWave(quest)
                                     repeat
                                         iVar4 = i_stk_e8
                                         pvVar8 = xStack_130[(i_stk_e8) / 0xc + 1]:GetDataString()
-                                        iVar12 = tonumber(pvVar8)
+                                        iVar12 = parseGameInteger(pvVar8)
                                         c_stk_13d = iVar12 == i_stk_b4
                                         if c_stk_13d then
                                             alive = not quest:IsActiveThreadTerminating()
@@ -2606,12 +2600,11 @@ function PlayWave(quest)
                                                     bVar3 = not alive
                                                     if not bVar3 then
                                                         quest:SetCreatureCreationDelayFrames(1)
-                                                        -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
-                                                        iVar6 = nil --[[unresolved native value]]
+                                                        creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         pCVar19 = "ArenaEnemy"
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreature("ArenaEnemy", pCVar13, pvVar8)
-                                                        i_stk_d0 = pCVar5
+                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy")
+                                                        xStack_c0 = pCVar5
                                                         goto LAB_00f1f934
                                                     end
                                                 else
@@ -2619,12 +2612,11 @@ function PlayWave(quest)
                                                     bVar3 = not alive
                                                     if not bVar3 then
                                                         quest:SetCreatureCreationDelayFrames(1)
-                                                        -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
-                                                        iVar6 = nil --[[unresolved native value]]
+                                                        creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         bVar3 = false
                                                         fVar18 = 1.0
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreatureNearby("ArenaEnemy", pCVar13, (iVar6 + 0x28 + CVar14), xStack_a0)
+                                                        pCVar5 = quest:CreateCreatureNearby(creatureType, pCVar13, fVar18, "ArenaEnemy")
                                                         xStack_c0 = pCVar5
                                                         goto LAB_00f1f934
                                                     end
@@ -2677,8 +2669,9 @@ function PlayWave(quest)
                                                 ::FLOW_past_lab_00f1fa88::
                                                 goto FLOW_past_lab_00f1fa91
                                                 ::LAB_00f1fa91::
-                                                -- TODO(native): this[i_stk_b4 + 0xe2] = (CQ_ArenaScript)0x1;
+                                                quest:SetStateBool(("ArenaSpawnNeeded_" .. i_stk_b4), true)
                                                 iVar4 = i_stk_e8
+                                                iVar6 = i_stk_c0
                                                 goto LAB_00f1faba
                                                 ::FLOW_past_lab_00f1fa91::
                                                 ::FLOW_past_lab_00f1f934::
@@ -2713,8 +2706,7 @@ function PlayWave(quest)
                                 else
                                     pCVar13 = r2:GetPos()
                                 end
-                                -- TODO(native): pCVar5 = quest:CreateCreatureNearby("ArenaEnemy", pCVar13, (*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c) + 0x28 + CVar14), xStack_130)
-                                pCVar5 = nil --[[unresolved native value]]
+                                pCVar5 = quest:CreateCreatureNearby(quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType")), pCVar13, 1.0, "ArenaEnemy")
                                 xStack_f4 = pCVar5
                                 quest:ResetCreatureCreationDelayFrames()
                             else
@@ -2726,7 +2718,7 @@ function PlayWave(quest)
                                     iVar4 = 0
                                     repeat
                                         pvVar8 = xStack_118[(iVar4) / 0xc + 1]:GetDataString()
-                                        iVar12 = tonumber(pvVar8)
+                                        iVar12 = parseGameInteger(pvVar8)
                                         c_stk_13d = iVar12 == i_stk_b8
                                         if c_stk_13d then
                                             alive = not quest:IsActiveThreadTerminating()
@@ -2735,11 +2727,10 @@ function PlayWave(quest)
                                                 goto LAB_00f20cc5
                                             end
                                             quest:SetCreatureCreationDelayFrames(1)
-                                            -- TODO(native): iVar6 = *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)
-                                            iVar6 = nil --[[unresolved native value]]
+                                            creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                             uVar9 = xStack_118[(iVar4) / 0xc + 1]:GetPos()
-                                            CVar14 = 0x0
-                                            iVar6 = quest:CreateCreatureNearby("ArenaEnemy", uVar9, iVar6 + 0x28 + 0x0, pvVar8)
+                                            savedCreatureGroupIndex = creatureGroupIndex
+                                            iVar6 = quest:CreateCreatureNearby(creatureType, uVar9, iVar4, "ArenaEnemy")
                                             -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);
                                             quest:ResetCreatureCreationDelayFrames()
                                         end
@@ -2752,10 +2743,9 @@ function PlayWave(quest)
                             pCVar5 = quest:GetHero()
                             quest:GiveThingBestEnemyTarget(xStack_f4, pCVar5)
                         end
-                        -- TODO(native): *(int *)__element("TotalCreatures", 0) = *(int *)__element("TotalCreatures", 0) + 1;
+                        quest:SetStateInt(("TotalCreatures_" .. totalCreaturesIndex), quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex)) + 1)
                         i_stk_b8 = i_stk_b8 + 1
-                    -- TODO(native): until not (i_stk_b8 < *(*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c) + 0x2c + CVar14))
-                    until true
+                    until not (i_stk_b8 < quest:GetStateInt(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_NumCreatures")))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -2768,17 +2758,21 @@ function PlayWave(quest)
                     return
                 end
                 ctr_10c = ctr_10c + 1
-                -- TODO(native): xStack_108 = (CCharString)((int)CVar14 + 0x38);
-            -- TODO(native): until not (ctr_10c < *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x28 + quest:GetStateInt("ArenaRoundWave") * 0x3c))
-            until true
+                totalCreaturesIndex = totalCreaturesIndex + 1
+                creatureGroupIndex = savedCreatureGroupIndex + 1
+            until not (ctr_10c < quest:GetStateInt(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_NumWaveCreatures")))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00f20ca1 end
     end
+    creatureGroupIndex = 0
+    initialCreatureCounts = {}
+    creatureCounterIds = {}
+    totalCreaturesIndex2 = 0
     iVar4 = 0
     repeat
-        CVar14 = 0x0
+        savedCreatureGroupIndex = creatureGroupIndex
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
@@ -2789,28 +2783,27 @@ function PlayWave(quest)
             -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
             return
         end
-        -- TODO(native): iVar6 = *__element("TotalCreatures", 0)
-        iVar6 = nil --[[unresolved native value]]
-        -- TODO(native): *(int *)(xStack_e4 + iVar4) = iVar6;
-        -- TODO(native): *(undefined4 *)(xStack_f4 + iVar4) = 0xffffffff;
+        iVar6 = quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2))
+        initialCreatureCounts[(iVar4 / 4) + 1] = iVar6
+        creatureCounterIds[(iVar4 / 4) + 1] = -1
         if 0 < iVar6 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            CVar14 = 0x0
+            savedCreatureGroupIndex = creatureGroupIndex
             if bVar3 then goto LAB_00f20ca1 end
-            -- TODO(native): iVar6 = quest:AddQuestInfoCounterList("ArenaEnemy", (0x0 + 0x30 + *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c)), *__element("TotalCreatures", 0))
-            iVar6 = nil --[[unresolved native value]]
-            -- TODO(native): *(int *)(xStack_f4 + iVar4) = iVar6;
+            iVar6 = quest:AddQuestInfoCounterList(quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. creatureGroupIndex .. "_HUDType")), quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2)), 1.0)
+            creatureCounterIds[(iVar4 / 4) + 1] = iVar6
         end
-        if 0 < *(xStack_e4 + iVar4) then
+        if 0 < initialCreatureCounts[(iVar4 / 4) + 1] then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00f20ca1 end
-            -- TODO(native): quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar4), *__element("TotalCreatures", 0), -1)
+            quest:UpdateQuestInfoCounterList(creatureCounterIds[(iVar4 / 4) + 1], quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2)), -1)
         end
-        -- TODO(native): xStack_108 = (CCharString)((int)CVar14 + 0x38);
+        creatureGroupIndex = savedCreatureGroupIndex + 1
         iVar4 = iVar4 + 4
-    until not (xStack_108 < 0xa8)
+        totalCreaturesIndex2 = totalCreaturesIndex2 + 1
+    until not (creatureGroupIndex < 3)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if bVar3 then
@@ -2825,12 +2818,14 @@ function PlayWave(quest)
     quest:DisplayQuestInfo(true)
     iVar4 = 0
     iVar6 = 0
+    totalCreaturesIndex2 = 0
     repeat
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00f2049f end
-        iVar4 = iVar4 + *__element("TotalCreatures", 0)
+        iVar4 = iVar4 + quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2))
         iVar6 = iVar6 + 1
+        totalCreaturesIndex2 = totalCreaturesIndex2 + 1
     until not (iVar6 < 3)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -2848,19 +2843,21 @@ function PlayWave(quest)
         bVar3 = not alive
         iVar4 = 0
         if bVar3 then goto LAB_00f207f4 end
+        totalCreaturesIndex2 = 0
         iVar6 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00f208af end
-            iVar4 = iVar4 + *__element("TotalCreatures", 0)
-            if 0 < *(xStack_e4 + iVar6) then
+            iVar4 = iVar4 + quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2))
+            if 0 < initialCreatureCounts[(iVar6 / 4) + 1] then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00f2096f end
-                -- TODO(native): quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar6), *__element("TotalCreatures", 0), -1)
+                quest:UpdateQuestInfoCounterList(creatureCounterIds[(iVar6 / 4) + 1], quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2)), -1)
             end
             iVar6 = iVar6 + 4
+            totalCreaturesIndex2 = totalCreaturesIndex2 + 1
         until not (iVar6 < 0xc)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -2869,10 +2866,10 @@ function PlayWave(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00f20ca1 end
-            quest:RemoveQuestInfoElement(xStack_f4)
-            -- TODO(native): xStack_e4._0_4_ = xStack_e4._0_4_ + *(int *)(this + 0xdc);
-            -- TODO(native): xStack_f4 = quest:AddQuestInfoCounterList("ArenaEnemy", (*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + quest:GetStateInt("self_0x98")) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c) + 0x30), xStack_e4._0_4_)
-            xStack_f4 = nil --[[unresolved native value]]
+            quest:RemoveQuestInfoElement(creatureCounterIds[(0) + 1])
+            initialCreatureCounts[(0) + 1] = initialCreatureCounts[(0) + 1] + quest:GetStateInt("ExtraCreatures")
+            replacementCounterId = quest:AddQuestInfoCounterList(quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. 0 .. "_HUDType")), initialCreatureCounts[(0) + 1], 1.0)
+            creatureCounterIds[(0) + 1] = replacementCounterId
             quest:SetStateInt("ExtraCreatures", 0)
         end
         bVar3 = quest:IsLevelLoaded("Arena")
@@ -2882,12 +2879,14 @@ function PlayWave(quest)
             if bVar3 then goto LAB_00f20ca1 end
             quest:SetStateBool("PlayerLeaving", true)
             iVar6 = 0
+            totalCreaturesIndex2 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00f20ca1 end
-                -- TODO(native): *(undefined4 *)__element("TotalCreatures", 0) = 0;
+                quest:SetStateInt(("TotalCreatures_" .. totalCreaturesIndex2), 0)
                 iVar6 = iVar6 + 1
+                totalCreaturesIndex2 = totalCreaturesIndex2 + 1
             until not (iVar6 < 3)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -2927,11 +2926,11 @@ function PlayWave(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00f20b8b end
-        if 0 < *(xStack_e4 + iVar4) then
+        if 0 < initialCreatureCounts[(iVar4 / 4) + 1] then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00f21166 end
-            -- TODO(native): quest:RemoveQuestInfoElement(*(xStack_f4 + iVar4))
+            quest:RemoveQuestInfoElement(creatureCounterIds[(iVar4 / 4) + 1])
         end
         iVar4 = iVar4 + 4
         if 0xb < iVar4 then break end
@@ -2945,8 +2944,7 @@ function PlayWave(quest)
     iVar4 = quest:GetStateInt("ArenaRoundWave")
     quest:SetStateInt("ArenaRoundWave", iVar4 + 1)
     quest:SetStateBool("PauseCrowdChecker", true)
-    -- TODO(native): if iVar4 + 1 == *(quest:GetStateInt("ArenaRound") * 0x38 + 0x28 + quest:GetStateInt("self_0x98")) then
-    if false then
+    if iVar4 + 1 == quest:GetStateInt(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_NumWaves")) then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00f20ca1 end
@@ -3033,7 +3031,7 @@ function PlayWave(quest)
         else
             bVar3 = true
             pQuestionText = GetEndRoundQuestion(quest)
-            quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES", "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", "ArenaEnemy", (pQuestionText ~= 0))
+            quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES", "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", pvVar8, (pQuestionText ~= 0))
             iVar4 = quest:MsgIsQuestionAnsweredYesOrNo()
             while iVar4 < 0 do
                 alive = quest:NewScriptFrame()
@@ -3129,7 +3127,7 @@ function PlayWave(quest)
             -- TODO(native): xStack_e4._4_4_ = f_stk_f0 + pCVar13.y;
             -- TODO(native): xStack_e4._0_4_ = (float)xStack_f4 + pCVar13.x;
             -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0xa6c) + (uVar11 % (uint)(iVar4 - iVar6 >> 2)) * 4),(int)&xStack_108);
-            pCVar5 = quest:CreateObject("", pCVar13, xStack_118)
+            pCVar5 = quest:CreateObject("", pCVar13, "ArenaEnemy")
             x_stk_cc = pCVar5
             goto LAB_00f20e68
         end
@@ -3294,403 +3292,5 @@ end
 
 function helper_F14250(quest)
     -- TODO(native): return *(this + 0x44)
-end
-
-function helper_F25980(quest, native_arg_param_2)
-    local iVar1, iVar3, pvVar4, uVar2, xStack_4
-    if native_arg_param_2 ~= this then
-        -- TODO(native): iVar3 = *native_arg_param_2
-        iVar3 = nil --[[unresolved native value]]
-        -- TODO(native): iVar1 = *this
-        iVar1 = nil --[[unresolved native value]]
-        -- TODO(native): xStack_4 = native_arg_param_2[1];
-        uVar2 = (xStack_4 - iVar3) / 0x38
-        -- TODO(native): if ((*(this + 8) - iVar1) / 0x38) < uVar2 then
-        if false then
-            iVar3 = helper_F261A0(quest, uVar2, iVar3, xStack_4)
-            -- TODO(native): *(int *)this = iVar3;
-            -- TODO(native): *(uint *)(this + 8) = uVar2 * 0x38 + iVar3;
-        -- TODO(native): elseif ((*(this + 4) - iVar1) / 0x38) < uVar2 then
-        elseif false then
-            -- TODO(native): helper_F26B30(quest, iVar3, iVar1, &0)
-            -- TODO(native): xStack_4 = native_arg_param_2[1];
-            -- TODO(native): pvVar4 = *(this + 4)
-            pvVar4 = nil --[[unresolved native value]]
-            iVar3 = ((pvVar4 - *this) / 0x38) * 0x38 + *native_arg_param_2
-            if iVar3 ~= xStack_4 then
-                repeat
-                    iVar3 = iVar3 + 0x38
-                    pvVar4 = (pvVar4 + 0x38)
-                until not (iVar3 ~= xStack_4)
-            end
-        else
-            -- TODO(native): pvVar4 = helper_F26B30(quest, iVar3, iVar1, &native_arg_param_2)
-            pvVar4 = nil --[[unresolved native value]]
-            -- TODO(native): std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> ::_Destroy(pvVar4,*(void **)(this + 4));
-        end
-        -- TODO(native): *(uint *)(this + 4) = uVar2 * 0x38 + *(int *)this;
-    end
-    return
-end
-
-function helper_F261A0(quest, native_arg_param_2, native_arg_param_3, native_arg_param_4)
-    local iVar2, pvVar1
-    if native_arg_param_2 == 0 then
-        pvVar1 = 0x0
-    else
-        pvVar1 = malloc(native_arg_param_2 * 0x38)
-    end
-    if native_arg_param_3 ~= native_arg_param_4 then
-        iVar2 = native_arg_param_3
-        repeat
-            iVar2 = iVar2 + 0x38
-        until not (iVar2 ~= native_arg_param_4)
-    end
-    return pvVar1
-end
-
-function helper_F25AC0(quest, native_arg_this)
-    local puVar1, puVar2
-    -- TODO(native): local puVar1 = *(native_arg_this + 4)
-    -- TODO(native): puVar2 = *native_arg_this
-    puVar2 = nil --[[unresolved native value]]
-    while puVar2 ~= puVar1 do
-        -- TODO(native): (**(code **)*puVar2)(0);
-        puVar2 = puVar2 + 0xe
-    end
-    -- TODO(native): if *native_arg_this ~= nil then
-    if false then
-        -- TODO(native): free(*(void **)native_arg_this);
-    end
-end
-
-function helper_F26B30(quest, native_arg_param_2)
-    local iVar2
-    local iVar1 = (in_EDX - this) / 0x38
-    local this_00 = native_arg_param_2
-    if 0 < iVar1 then
-        iVar2 = this + 0x2c
-        repeat
-            -- TODO(native): CThingBuildingDef::operator=(this_00,iVar2 + -0x2c);
-            -- TODO(native): *(undefined4 *)(this_00 + 0x28) = *(undefined4 *)(iVar2 + -4);
-            helper_F26920(quest, native_arg_param_2 + (iVar2 - this), iVar2)
-            this_00 = this_00 + 0x38
-            iVar2 = iVar2 + 0x38
-            iVar1 = iVar1 + -1
-        until not (iVar1 ~= 0)
-    end
-    return this_00
-end
-
-function helper_F25B00(quest, native_arg_param_1, native_arg_param_2, native_arg_param_3)
-    -- TODO(native): /* [bsim sim=0.8438385635009688 <- ego_r]
-    -- TODO(native): void __fastcall
-    if this ~= nil then
-        -- TODO(native): CDefClassBase::CDefClassBase(this,in_EDX);
-        -- TODO(native): name field 0x28 (undefined4)
-        -- TODO(native): quest:SetStateInt("self_0x28", *(in_EDX + 0x28))
-        helper_F25BB0(quest, this + 0x2c, in_EDX + 0x2c)
-    end
-    return
-    end
-end
-
-function helper_F26920(quest, native_arg_param_2)
-    local iVar3, pCVar4, pCVar5, pCVar6, uVar1, uVar2
-    if native_arg_param_2 ~= this then
-        iVar3 = native_arg_param_2[1]
-        -- TODO(native): pCVar4 = *this
-        pCVar4 = nil --[[unresolved native value]]
-        -- TODO(native): pCVar5 = *native_arg_param_2
-        pCVar5 = nil --[[unresolved native value]]
-        uVar1 = (iVar3 - pCVar5) / 0x3c
-        -- TODO(native): if ((*(this + 8) - pCVar4) / 0x3c) < uVar1 then
-        if false then
-            iVar3 = helper_F26AE0(quest, uVar1, pCVar5, iVar3)
-            -- TODO(native): *(int *)this = iVar3;
-            -- TODO(native): *(uint *)(this + 8) = uVar1 * 0x3c + iVar3;
-        else
-            -- TODO(native): uVar2 = (*(this + 4) - pCVar4) / 0x3c
-            uVar2 = nil --[[unresolved native value]]
-            if uVar2 < uVar1 then
-                iVar3 = (uVar2 * 0x3c) / 0x3c
-                if 0 < iVar3 then
-                    repeat
-                        -- TODO(native): CParentDefClassBase::operator=(pCVar4,pCVar5);
-                        pCVar5 = pCVar5 + 0x3c
-                        pCVar4 = pCVar4 + 0x3c
-                        iVar3 = iVar3 + -1
-                    until not (iVar3 ~= 0)
-                end
-                pCVar4 = native_arg_param_2[1]
-                -- TODO(native): pCVar5 = *(this + 4)
-                pCVar5 = nil --[[unresolved native value]]
-                pCVar6 = (((pCVar5 - *this) / 0x3c) * 0x3c + *native_arg_param_2)
-                while pCVar6 ~= pCVar4 do
-                    if pCVar5 ~= nil then
-                        helper_F25C60(quest, pCVar5, pCVar6)
-                    end
-                    pCVar5 = pCVar5 + 0x3c
-                    pCVar6 = pCVar6 + 0x3c
-                end
-            else
-                iVar3 = (iVar3 - pCVar5) / 0x3c
-                if 0 < iVar3 then
-                    repeat
-                        -- TODO(native): CParentDefClassBase::operator=(pCVar4,pCVar5);
-                        pCVar5 = pCVar5 + 0x3c
-                        pCVar4 = pCVar4 + 0x3c
-                        iVar3 = iVar3 + -1
-                    until not (iVar3 ~= 0)
-                end
-                -- TODO(native): pCVar5 = *(this + 4)
-                pCVar5 = nil --[[unresolved native value]]
-                while pCVar4 ~= pCVar5 do
-                    -- TODO(native): (*(code *)**(undefined4 **)pCVar4)(0);
-                    pCVar4 = pCVar4 + 0x3c
-                end
-            end
-        end
-        -- TODO(native): *(uint *)(this + 4) = uVar1 * 0x3c + *(int *)this;
-    end
-    return
-end
-
-function helper_F25BB0(quest, native_arg_param_2)
-    local pCVar3, this_00
-    local piVar2 = native_arg_param_2
-    -- TODO(native): helper_F25C20(quest, (native_arg_param_2[1] - *native_arg_param_2) / 0x3c, &native_arg_param_2)
-    local pCVar1 = piVar2[1]
-    -- TODO(native): local this_00 = *this
-    -- TODO(native): pCVar3 = *piVar2
-    pCVar3 = nil --[[unresolved native value]]
-    while pCVar3 ~= pCVar1 do
-        if this_00 ~= nil then
-            helper_F25C60(quest, this_00, pCVar3)
-        end
-        this_00 = this_00 + 0x3c
-        pCVar3 = pCVar3 + 0x3c
-    end
-    -- TODO(native): *(CParentDefClassBase **)(this + 4) = this_00;
-    return
-end
-
-function helper_F26AE0(quest, native_arg_param_2, native_arg_param_3, native_arg_param_4)
-    local iVar2, pvVar1
-    if native_arg_param_2 == 0 then
-        pvVar1 = 0x0
-    else
-        pvVar1 = malloc(native_arg_param_2 * 0x3c)
-    end
-    if native_arg_param_3 ~= native_arg_param_4 then
-        iVar2 = pvVar1 - native_arg_param_3
-        repeat
-            if native_arg_param_3 + iVar2 ~= nil then
-                helper_F25C60(quest, native_arg_param_3 + iVar2, native_arg_param_3)
-            end
-            native_arg_param_3 = native_arg_param_3 + 0x3c
-        until not (native_arg_param_3 ~= native_arg_param_4)
-    end
-    return pvVar1
-end
-
-function helper_F26AA0(quest, native_arg_this)
-    local puVar1, puVar2
-    -- TODO(native): local puVar1 = *(native_arg_this + 4)
-    -- TODO(native): puVar2 = *native_arg_this
-    puVar2 = nil --[[unresolved native value]]
-    while puVar2 ~= puVar1 do
-        -- TODO(native): (**(code **)*puVar2)(0);
-        puVar2 = puVar2 + 0xf
-    end
-    -- TODO(native): if *native_arg_this ~= nil then
-    if false then
-        -- TODO(native): free(*(void **)native_arg_this);
-    end
-end
-
-function helper_F25F60(quest, native_arg_param_1)
-    -- TODO(native): CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    helper_F25F90(quest, this + 0x2c, native_arg_param_1 + 0x2c)
-    -- TODO(native): name field 0x38 (undefined1)
-    quest:SetStateBool("self_0x38", native_arg_quest:GetStateBool("self_0x38"))
-    return
-end
-
-function helper_F25C60(quest, native_arg_param_1)
-    -- TODO(native): CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    helper_F25D20(quest, this + 0x2c, native_arg_param_1 + 0x2c)
-    -- TODO(native): name field 0x38 (undefined1)
-    quest:SetStateBool("self_0x38", native_arg_quest:GetStateBool("self_0x38"))
-    return
-end
-
-function helper_F25C20(quest, native_arg_param_2)
-    local pvVar1
-    pvVar1 = 0x0
-    -- TODO(native): *(undefined4 *)this = 0;
-    -- TODO(native): *(undefined4 *)(this + 4) = 0;
-    -- TODO(native): *(undefined4 *)(this + 8) = 0;
-    if native_arg_param_2 ~= 0 then
-        pvVar1 = malloc(native_arg_param_2 * 0x3c)
-    end
-    -- TODO(native): *(void **)(this + 8) = (void *)(native_arg_param_2 * 0x3c + (int)pvVar1);
-    -- TODO(native): *(void **)this = pvVar1;
-    -- TODO(native): *(void **)(this + 4) = pvVar1;
-    return
-end
-
-function helper_F25F90(quest, native_arg_param_2)
-    local iVar5, pCVar1, pCVar2, pCVar6, pCVar7, this_00, this_01, uVar3, uVar4
-    if native_arg_param_2 ~= this then
-        iVar5 = native_arg_param_2[1]
-        -- TODO(native): this_00 = *this
-        this_00 = nil --[[unresolved native value]]
-        -- TODO(native): pCVar6 = *native_arg_param_2
-        pCVar6 = nil --[[unresolved native value]]
-        uVar3 = (iVar5 - pCVar6) / 0x38
-        -- TODO(native): if ((*(this + 8) - this_00) / 0x38) < uVar3 then
-        if false then
-            iVar5 = helper_F26150(quest, uVar3, pCVar6, iVar5)
-            -- TODO(native): *(int *)this = iVar5;
-            -- TODO(native): *(uint *)(this + 8) = uVar3 * 0x38 + iVar5;
-        else
-            -- TODO(native): uVar4 = (*(this + 4) - this_00) / 0x38
-            uVar4 = nil --[[unresolved native value]]
-            if uVar4 < uVar3 then
-                iVar5 = (uVar4 * 0x38) / 0x38
-                if 0 < iVar5 then
-                    repeat
-                        helper_F25F10(quest, this_00, pCVar6)
-                        pCVar6 = pCVar6 + 0x38
-                        this_00 = this_00 + 0x38
-                        iVar5 = iVar5 + -1
-                    until not (iVar5 ~= 0)
-                end
-                pCVar2 = native_arg_param_2[1]
-                -- TODO(native): this_01 = *(this + 4)
-                this_01 = nil --[[unresolved native value]]
-                pCVar7 = (((this_01 - *this) / 0x38) * 0x38 + *native_arg_param_2)
-                while pCVar7 ~= pCVar2 do
-                    if this_01 ~= nil then
-                        helper_F25DD0(quest, this_01, pCVar7)
-                    end
-                    this_01 = this_01 + 0x38
-                    pCVar7 = pCVar7 + 0x38
-                end
-            else
-                iVar5 = (iVar5 - pCVar6) / 0x38
-                if 0 < iVar5 then
-                    repeat
-                        helper_F25F10(quest, this_00, pCVar6)
-                        pCVar6 = pCVar6 + 0x38
-                        this_00 = this_00 + 0x38
-                        iVar5 = iVar5 + -1
-                    until not (iVar5 ~= 0)
-                end
-                -- TODO(native): pCVar1 = *(this + 4)
-                pCVar1 = nil --[[unresolved native value]]
-                while this_00 ~= pCVar1 do
-                    -- TODO(native): (*(code *)**(undefined4 **)this_00)(0);
-                    this_00 = this_00 + 0x38
-                end
-            end
-        end
-        -- TODO(native): *(uint *)(this + 4) = uVar3 * 0x38 + *(int *)this;
-    end
-    return
-end
-
-function helper_F25D20(quest, native_arg_param_2)
-    local pCVar3, this_00
-    local piVar2 = native_arg_param_2
-    -- TODO(native): helper_F25D90(quest, (native_arg_param_2[1] - *native_arg_param_2) / 0x38, &native_arg_param_2)
-    local pCVar1 = piVar2[1]
-    -- TODO(native): local this_00 = *this
-    -- TODO(native): pCVar3 = *piVar2
-    pCVar3 = nil --[[unresolved native value]]
-    while pCVar3 ~= pCVar1 do
-        if this_00 ~= nil then
-            helper_F25DD0(quest, this_00, pCVar3)
-        end
-        this_00 = this_00 + 0x38
-        pCVar3 = pCVar3 + 0x38
-    end
-    -- TODO(native): *(COpinionDeedReactionDef **)(this + 4) = this_00;
-    return
-end
-
-function helper_F26150(quest, native_arg_param_2, native_arg_param_3, native_arg_param_4)
-    local iVar2, pvVar1
-    if native_arg_param_2 == 0 then
-        pvVar1 = 0x0
-    else
-        pvVar1 = malloc(native_arg_param_2 * 0x38)
-    end
-    if native_arg_param_3 ~= native_arg_param_4 then
-        iVar2 = pvVar1 - native_arg_param_3
-        repeat
-            if native_arg_param_3 + iVar2 ~= nil then
-                helper_F25DD0(quest, native_arg_param_3 + iVar2, native_arg_param_3)
-            end
-            native_arg_param_3 = native_arg_param_3 + 0x38
-        until not (native_arg_param_3 ~= native_arg_param_4)
-    end
-    return pvVar1
-end
-
-function helper_F26110(quest, native_arg_this)
-    local puVar1, puVar2
-    -- TODO(native): local puVar1 = *(native_arg_this + 4)
-    -- TODO(native): puVar2 = *native_arg_this
-    puVar2 = nil --[[unresolved native value]]
-    while puVar2 ~= puVar1 do
-        -- TODO(native): (**(code **)*puVar2)(0);
-        puVar2 = puVar2 + 0xe
-    end
-    -- TODO(native): if *native_arg_this ~= nil then
-    if false then
-        -- TODO(native): free(*(void **)native_arg_this);
-    end
-end
-
-function helper_F25F10(quest, native_arg_param_1)
-    -- TODO(native): CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);
-    -- TODO(native): CCharString::operator=((CCharString *)(this + 0x28),(CCharString *)(native_arg_param_1 + 0x28));
-    -- TODO(native): name field 0x2c (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x2c", *(native_arg_param_1 + 0x2c))
-    -- TODO(native): CCharString::operator=((CCharString *)(this + 0x30),(CCharString *)(native_arg_param_1 + 0x30));
-    -- TODO(native): name field 0x34 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x34", *(native_arg_param_1 + 0x34))
-end
-
-function helper_F25DD0(quest, native_arg_param_1)
-    -- TODO(native): CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);
-    -- TODO(native): CCharString::CCharString((CCharString *)(this + 0x28),(CCharString *)(native_arg_param_1 + 0x28));
-    -- TODO(native): name field 0x2c (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x2c", *(native_arg_param_1 + 0x2c))
-    -- TODO(native): CCharString::CCharString((CCharString *)(this + 0x30),(CCharString *)(native_arg_param_1 + 0x30));
-    -- TODO(native): name field 0x34 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x34", *(native_arg_param_1 + 0x34))
-    return
-end
-
-function helper_F25D90(quest, native_arg_param_2)
-    local pvVar1
-    pvVar1 = 0x0
-    -- TODO(native): *(undefined4 *)this = 0;
-    -- TODO(native): *(undefined4 *)(this + 4) = 0;
-    -- TODO(native): *(undefined4 *)(this + 8) = 0;
-    if native_arg_param_2 ~= 0 then
-        pvVar1 = malloc(native_arg_param_2 * 0x38)
-    end
-    -- TODO(native): *(void **)(this + 8) = (void *)(native_arg_param_2 * 0x38 + (int)pvVar1);
-    -- TODO(native): *(void **)this = pvVar1;
-    -- TODO(native): *(void **)(this + 4) = pvVar1;
-    return
 end
 

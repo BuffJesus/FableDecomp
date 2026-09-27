@@ -8,14 +8,13 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d409c5 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d409c5 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:SetIsPushableByHero(me, false)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
-    ::LAB_00d409c5::
     resources:ReleaseResource(resource)
 end
 

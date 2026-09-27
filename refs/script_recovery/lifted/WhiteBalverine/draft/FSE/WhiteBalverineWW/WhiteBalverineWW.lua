@@ -274,9 +274,8 @@ function SpawnBalverines(quest)
             quest:EntitySetAttackThingImmediately(pThing, pCVar6, bVar2, true)
             quest:Pause(0.2)
             r3 = quest:PlaySoundOnThing(pThing, "SND_LONGWOLFHOWL_01")
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
-            -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-            iVar8 = nil --[[unresolved native result]]
+            resources:PlayAnimation(xStack_bc, "HOWL", false, false, false, true, true, false, false)
+            iVar8 = resources:IsPerformingScriptTask(xStack_bc)
             cVar4 = iVar8
             while cVar4 do
                 alive = quest:NewScriptFrame()
@@ -286,8 +285,7 @@ function SpawnBalverines(quest)
                     quest:PauseAllNonScriptedEntities(false)
                     __cleanup_LAB_00e19d25(); return
                 end
-                -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-                iVar8 = nil --[[unresolved native result]]
+                iVar8 = resources:IsPerformingScriptTask(xStack_bc)
                 cVar4 = iVar8
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -348,6 +346,7 @@ function SpawnBalverines(quest)
                 bVar5 = true
                 resources:ReleaseResource(xStack_60)
             end
+            i_stk_d4 = i_stk_d4 - i_stk_a8
             iVar8 = i_stk_d0 + 1
             i_stk_d0 = iVar8
         end

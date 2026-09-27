@@ -29,9 +29,9 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        this_00 = (__native_entity_state:GetStateInt("self_0x14") + 0x58)
+        this_00 = resources:MemberResource("seh_Witch")
         resources:PrepareResource(this_00)
-        bVar6 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x58), me, 4)
+        bVar6 = resources:TryAcquire(resources:MemberResource("seh_Witch"), me, 4)
         while not bVar6 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -39,7 +39,7 @@ function Main(quest, me)
             if bVar6 then
                 return
             end
-            bVar6 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x58), me, 4)
+            bVar6 = resources:TryAcquire(resources:MemberResource("seh_Witch"), me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar6 = not alive

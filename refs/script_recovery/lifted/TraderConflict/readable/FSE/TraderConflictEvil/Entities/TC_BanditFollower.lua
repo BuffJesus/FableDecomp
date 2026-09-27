@@ -12,7 +12,7 @@ local setAgainstHero, hitWarning
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult8
+    local predicateResult
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     quest:EntityAttachToScript(me, quest:GetActiveQuestName())
@@ -22,26 +22,19 @@ function Main(quest, me)
     quest:EntitySetThingAsAllyOfThing(hero, me)
     quest:EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(me, false)
     while not quest:GetStateBool("QuestStartScreened") do
-        if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:EntityFollowThing(me, hero, 1.0, true)
     quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_BANDIT", 1.0)
     while not quest:GetStateBool("MissionSucceeded") do
-        if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
-        if setAgainstHero then goto LAB_00df82d0 end
-        if not me:IsTalkedToByHero() then goto LAB_00df82d0 end
-        predicateResult = true
-        goto FLOW_past_lab_00df82d0
-        ::LAB_00df82d0::
-        predicateResult = false
-        ::FLOW_past_lab_00df82d0::
-        if predicateResult then
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        if not (setAgainstHero or (not me:IsTalkedToByHero())) then
             resources:PrepareResource(resource)
             while not resources:TryAcquire(resource, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00df87fe end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
@@ -72,13 +65,13 @@ function Main(quest, me)
                 goto LAB_00df851c
             end
         end
-        predicateResult8 = true
+        predicateResult = true
         goto FLOW_past_lab_00df851c
         ::LAB_00df851c::
-        predicateResult8 = false
+        predicateResult = false
         ::FLOW_past_lab_00df851c::
-        if predicateResult8 then
-            if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
+        if predicateResult then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if not hitWarning then
                 local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
@@ -97,7 +90,7 @@ function Main(quest, me)
         end
         if not setAgainstHero and quest:GetStateBool("HeroAttackedBandit") then
             if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
-                if quest:IsActiveThreadTerminating() then goto LAB_00df87fe end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 local conversationId2 = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId2, hero)
                 quest:AddLineToConversation(conversationId2, "TEXT_QST_B12_BANDIT_FOLLOWER_SEEKING_REVENGE_10", me, hero, false)
@@ -112,7 +105,6 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         quest:RemoveThing(me, false, true)
     end
-    ::LAB_00df87fe::
     resources:ReleaseResource(resource)
 end
 

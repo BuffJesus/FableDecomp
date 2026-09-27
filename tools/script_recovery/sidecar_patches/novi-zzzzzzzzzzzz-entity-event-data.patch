@@ -1,0 +1,28 @@
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -180,6 +180,25 @@
+         auto* gsi = self.GetGameInterface();
+         return (gsi && IsHeroInProjectileWeaponMode_API) ? IsHeroInProjectileWeaponMode_API(gsi) : false;
+     };
++    // SendEntityEvent's fourth native argument is a CThing*, obtained from a
++    // retained script handle. Pickpocket's spotted path passes its current target.
++    quest["SendEntityEventWithThingData"] = [](LuaQuestState& self, int eventType,
++        const std::shared_ptr<CScriptThing>& sender, const std::shared_ptr<CScriptThing>& receiver,
++        const std::shared_ptr<CScriptThing>& data) {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi || !SendEntityEvent_API)
++            throw std::runtime_error("SendEntityEventWithThingData API unavailable");
++        CThing* nativeData = nullptr;
++        auto* impl = data ? reinterpret_cast<CGameScriptThing*>(data->pImp.Data) : nullptr;
++        if (impl) {
++            auto* table = reinterpret_cast<CGameScriptThingVTable*>(impl->pVTable);
++            if (!table || !table->GetPThing)
++                throw std::runtime_error("SendEntityEventWithThingData GetPThing unavailable");
++            nativeData = table->GetPThing(impl);
++        }
++        SendEntityEvent_API(gsi, static_cast<NEntityEvents::EEventType>(eventType),
++                            sender.get(), receiver.get(), nativeData);
++    };
+     // ---- hero ability cancel (GSI slot 0x638, void(EHeroAbility)) ---------------------------------
+     // Q_BanditCamp BanditKingMissionProcess calls slot 0x638 with 0xF (ghost sword) and 10 (summon) as the hero
+     // enters the boss arena; CancelUsingAbility_API is resolved from pVTable[398] (= 0x638 / 4).

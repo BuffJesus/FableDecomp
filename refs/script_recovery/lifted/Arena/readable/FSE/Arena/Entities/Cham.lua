@@ -18,20 +18,19 @@ function Main(quest, me)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00f1492e end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00f1492e end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00f1492e end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     me:MoveToPosition(quest:GetThingWithScriptName("GuardingDoorMarkerLeft"):GetPos(), 1.0, ENTITY_MOVE_RUN, false, true)
     while me:IsPerformingScriptTask() do
-        if not quest:NewScriptFrame(me) then goto LAB_00f1492e end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:RemoveThing(me, false, true)
     end
-    ::LAB_00f1492e::
     resources:ReleaseResource(resource)
 end
 

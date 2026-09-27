@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar1, cVar2, ctr_68, fStack_24, fStack_48, fVar10, fVar9, f_p1, f_stk_1c, f_stk_20, f_stk_2c, f_stk_40, f_stk_44, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, fret_0, native_arg_sequence_1, pCVar3, pCVar4, pRight, pfVar6, pfVar7, piVar8, pi_stk_38, r1, r2, uVar5, xStack_3c, xStack_c
+    local bVar1, cVar2, ctr_68, fStack_24, fStack_48, fVar10, fVar9, f_p1, f_stk_1c, f_stk_20, f_stk_2c, f_stk_40, f_stk_44, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, fret_0, native_arg_sequence_1, pCVar3, pCVar4, pRight, pfVar6, pfVar7, piVar8, pi_stk_38, r1, r2, uVar5, xStack_3c, xStack_68, xStack_c
     local alive = true
     r1 = quest:GetThingWithScriptName("ChickenKickingArena")
     pCVar3 = quest:GetThingWithScriptName("FirstLineMarker")
@@ -78,8 +78,8 @@ function Main(quest, me)
                 uVar5 = (uVar5 - 1 | 0xfffffffc) + 1
             end
             pRight = tostring(uVar5 + 1)
-            ("SND_MM_CHICKEN_BUKARK_0" .. pRight)
-            r2 = quest:PlaySoundOnThing(me, nil --[[missing]])
+            xStack_68 = ("SND_MM_CHICKEN_BUKARK_0" .. pRight)
+            r2 = quest:PlaySoundOnThing(me, xStack_68)
         end
         pCVar3 = quest:GetHero()
         pCVar4 = pCVar3:GetPos()
@@ -163,7 +163,7 @@ function Main(quest, me)
                     f_stk_2c = pfVar7[1] - pfVar6.y
                     -- TODO(native): xStack_30 = (*pfVar7 - pfVar6.x);
                     f_stk_40 = 0.0
-                    if (DAT_0129ba3c * DAT_0129ba3c < fStack_48 * fStack_48 + f_stk_44 * f_stk_44) and (DAT_0129ba3c * DAT_0129ba3c < f_stk_2c * f_stk_2c + pCVar3 * pCVar3) then
+                    if (0.0001 * 0.0001 < fStack_48 * fStack_48 + f_stk_44 * f_stk_44) and (0.0001 * 0.0001 < f_stk_2c * f_stk_2c + pCVar3 * pCVar3) then
                         -- TODO(native): C3DVector::GetScaled((C3DVector *)&fStack_48);
                         -- TODO(native): C3DVector::GetScaled((C3DVector *)xStack_30);
                         -- TODO(native): xStack_18._8_4_ = 1.0;
@@ -222,17 +222,14 @@ function Main(quest, me)
             end
         end
         quest:SetStateBool("ChickenLanded", true)
-        -- TODO(native): bVar1 = C3DMeshInfo::HasPhysicsMesh((C3DMeshInfo *)(*(int *)(this + 0x14) + 0x70));
-        if bVar1 then
-            resources:Reset((__native_entity_state:GetStateInt("self_0x14") + 0x70))
-        end
-        bVar1 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x70), me, 4)
+        resources:PrepareResource(resources:MemberResource("seh_Chicken"))
+        bVar1 = resources:TryAcquire(resources:MemberResource("seh_Chicken"), me, 4)
         while not bVar1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if bVar1 then goto LAB_00e64cf3 end
-            bVar1 = resources:TryAcquire((__native_entity_state:GetStateInt("self_0x14") + 0x70), me, 4)
+            bVar1 = resources:TryAcquire(resources:MemberResource("seh_Chicken"), me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
     end

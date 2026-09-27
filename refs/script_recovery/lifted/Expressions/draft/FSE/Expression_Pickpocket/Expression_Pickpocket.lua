@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local C_stk_40, __native_condition_1, bVar6, bVar7, bVar8, bVar9, cVar10, fVar2, fVar5, iVar13, i_stk_3c, pCVar11, pCVar12, pExtraData, pSender, piVar3, piVar4, r1, uVar14, value, xStack_10, xStack_2c, xStack_30, xStack_38, x_stk_20
+    local C_stk_40, __native_condition_1, bVar6, bVar7, bVar8, bVar9, cVar10, fVar2, fVar5, f_stk_30, f_stk_38, iVar13, i_stk_2c, i_stk_3c, pCVar11, pCVar12, pExtraData, pSender, r1, uVar14, value, xStack_10, xStack_2c
     local alive = true
     local function __cleanup_LAB_00eeb4fa()
         quest:PauseAllNonScriptedEntities(false)
@@ -39,9 +39,9 @@ function Main(quest)
             bVar6 = false
             bVar7 = false
             xStack_2c = quest:GetHeroStatLevel(5)
-            -- TODO(native): xStack_30 = (CCharString)((float)(int)xStack_2c + 1.0);
+            f_stk_30 = (xStack_2c + 1.0)
             xStack_2c = quest:GetHeroStatMax(5)
-            fVar5 = xStack_30 / (xStack_2c + 1.0)
+            fVar5 = f_stk_30 / (xStack_2c + 1.0)
             xStack_2c = quest:GetConstantFPS()
             value = xStack_2c * (fVar2 / fVar5)
             C_stk_40 = math.tointeger(math.modf(value))
@@ -104,25 +104,16 @@ function Main(quest)
                         bVar9 = true
                     end
                 end
-                -- TODO(native): xStack_38 = (CCharString)(_DAT_0122ded8 - (float)(int)C_stk_40 / (float)value);
-                if 1.0 < xStack_38 then
+                f_stk_38 = (1 - C_stk_40 / value)
+                if 1.0 < f_stk_38 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar8 = not alive
                     if bVar8 then __cleanup_LAB_00eeb5dd(); return end
+                    f_stk_38 = 1.0
                 end
-                quest:UpdateMiniGameInfoBar(1.0)
+                quest:UpdateMiniGameInfoBar(f_stk_38)
                 pCVar11 = quest:GetHeroTargetedThing()
-                -- TODO(native): piVar3 = *(pCVar11 + 0x8)
-                piVar3 = nil --[[unresolved native value]]
-                -- TODO(native): piVar4 = *(pCVar11 + 0x4)
-                piVar4 = nil --[[unresolved native value]]
-                if x_stk_20 ~= piVar3 then
-                    -- TODO(native): xStack_28._4_4_ = piVar4;
-                    x_stk_20 = piVar3
-                    if piVar3 ~= nil then
-                        -- TODO(native): *piVar3 = *piVar3 + 1;
-                    end
-                end
+                r1 = pCVar11
                 pCVar11 = nil
                 __native_condition_1 = not (r1 ~= nil and not r1:IsNull())
                 if not __native_condition_1 then
@@ -139,7 +130,7 @@ function Main(quest)
                         resources:DestroyMovie(xStack_10)
                         return
                     end
-                    if 1.0 <= 0x3f800000 then goto LAB_00eeb3f9 end
+                    if 1.0 <= f_stk_38 then goto LAB_00eeb3f9 end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar8 = not alive
                     if bVar8 then
@@ -167,6 +158,7 @@ function Main(quest)
                             pCVar11 = quest:GetHero()
                             quest:EntitySetFacingAngleTowardsThing(r1, pCVar11, bVar8)
                         end
+                        xStack_2c = C_stk_40
                     end
                 end
                 goto FLOW_past_lab_00eeb3f9
@@ -191,6 +183,7 @@ function Main(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar8 = not alive
                     if bVar8 then __cleanup_LAB_00eeb5dd(); return end
+                    i_stk_3c = i_stk_3c + -1
                 end
             until not (not bVar9)
             alive = not quest:IsActiveThreadTerminating()
@@ -239,8 +232,8 @@ function Main(quest)
                         bVar7 = not alive
                         if bVar7 then __cleanup_LAB_00eeb4fa(); return end
                         iVar13 = math.random(0, 32767)
-                        -- TODO(native): xStack_2c = (CCharString)(iVar13 % 100);
-                        if xStack_2c < 0x3f800000 * 100.0 then
+                        i_stk_2c = (iVar13 % 100)
+                        if i_stk_2c < f_stk_38 * 100.0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar7 = not alive
                             if bVar7 then

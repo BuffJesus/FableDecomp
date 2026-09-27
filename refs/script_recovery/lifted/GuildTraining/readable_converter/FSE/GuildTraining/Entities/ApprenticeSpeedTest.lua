@@ -352,7 +352,7 @@ function Main(quest, me)
                 raceMode = raceMode_
                 ::continue_7::
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+            if quest:IsActiveThreadTerminating() then break end
             if raceMode_ == 2 then
                 i_stk_210_2 = scratchValue44 - 1
                 repeat
@@ -500,7 +500,7 @@ function Main(quest, me)
                     end
                 until raceMode_ ~= 2
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+            if quest:IsActiveThreadTerminating() then break end
             if raceMode_ == 3 then
                 i_stk_210_3 = scratchValue44 - 1
                 local scratchValue23 = i_stk_210_3
@@ -508,11 +508,11 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     local isDistanceBetweenThingsUnder4 = quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) and quest:GetTimer(timerId4) < 1
                     if isDistanceBetweenThingsUnder4 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                        if quest:IsActiveThreadTerminating() then break end
                         conversationId2 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(conversationId2, speedFriend)
                         if scratchValue23 < 5 then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                            if quest:IsActiveThreadTerminating() then break end
                             switch8 = scratchValue23
                             repeat
                                 if scratchValue23 == 0 then
@@ -541,10 +541,10 @@ function Main(quest, me)
                                 isActiveThreadTerminating = (scratchValue43 - 1 | 0xfffffffe) == 0xffffffff
                             end
                             if not isActiveThreadTerminating then
-                                if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                                if quest:IsActiveThreadTerminating() then break end
                                 quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_FRIEND_POST_ARGUE_SEVENTH_LINE", speedFriend, me, false)
                             else
-                                if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+                                if quest:IsActiveThreadTerminating() then break end
                                 quest:AddLineToConversation(conversationId2, "TEXT_QST_028_FAST_APPRENTICE_POST_ARGUE_SIXTH_LINE", me, speedFriend, false)
                             end
                         end
@@ -608,9 +608,9 @@ function Main(quest, me)
                         resources:DestroyMovie(movie7)
                     end
                 end
-                goto LAB_00d405fc
+                break
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d405fc end
+            if quest:IsActiveThreadTerminating() then break end
             quest:NewScriptFrame(me)
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end

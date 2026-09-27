@@ -18,9 +18,9 @@ local heroStanding, whisperStanding, whisperEarly, whisperLate
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, conversationId, scratchValue, timerId, index, meleeOpponent, this_01
-    local resource2, resource3, actorMap, resource4, resource5, actorMap2, infoCounter, resource6
-    local timerId2, resource7, resource9, movie4, resource, resource11, scratchValue12
+    local conversationId, scratchValue, timerId, index, meleeOpponent, this_01, resource2, resource3
+    local actorMap, resource4, resource5, actorMap2, infoCounter, resource6, timerId2, resource7
+    local resource9, movie4, resource, resource11, scratchValue12
     local function ReleaseEverything()
         resources:ReleaseResource(resource7)
         resources:ReleaseResource(resource)
@@ -114,14 +114,7 @@ function Main(quest, me)
     while scratchValue == 1 do
         if not quest:NewScriptFrame(me) then goto LAB_00d5933c end
         if not me:IsTalkedToByHero() then
-            if not ((not quest:GetStateBool("EarlyHitWhisper")) or (not quest:GetStateBool("WhisperArrived"))) then goto LAB_00d586db end
-            if me:MsgIsHitByHero() then goto LAB_00d586db end
-            predicateResult = false
-            goto FLOW_past_lab_00d586db
-            ::LAB_00d586db::
-            predicateResult = true
-            ::FLOW_past_lab_00d586db::
-            if predicateResult then
+            if not not ((not ((not quest:GetStateBool("EarlyHitWhisper")) or (not quest:GetStateBool("WhisperArrived")))) or me:MsgIsHitByHero()) then
                 resource4 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 actorMap2 = resources:ScriptThing(resource6)
@@ -441,10 +434,9 @@ function Main(quest, me)
                     resources:SetString(actorMap, "$GRADE", "TEXT_QST_028_GUILDMASTER_MELEE_TEST_GRADE_F")
                     break
                 else
-                    goto FLOW_native_label_1
+                    break
                 end
             until true
-            ::FLOW_native_label_1::
             movie4 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)

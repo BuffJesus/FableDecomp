@@ -222,12 +222,12 @@ function Main(quest, me)
                 local addQuestInfoCounter = quest:AddQuestInfoCounter("HUD_ICON_ARROW", 0, 1.0)
                 infoElement = quest:AddQuestInfoTimer(timerId3, "HUD_CLOCK_ICON", 1.0)
                 quest:DisplayQuestInfo(true)
-                scratchValue3 = 0
+                scratchValue3 = false
                 scratchValue4 = 0
                 local timerId4 = quest:RegisterTimer()
                 timerId = timerId4
                 quest:SetTimer(timerId4, 0)
-                while 0 < quest:GetTimer(timerId3) and scratchValue3 == 0 do
+                while 0 < quest:GetTimer(timerId3) and not scratchValue3 do
                     if not quest:NewScriptFrame(me) then goto LAB_00d50594 end
                     if quest:GetTimer(timerId) < 1 then
                         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
@@ -235,7 +235,7 @@ function Main(quest, me)
                     end
                     if quest:GetMasterGameState("GuildWarningOccuring") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue3 = 1
+                        scratchValue3 = true
                         scratchValue4 = 1
                     end
                     if quest:GetHeroWillEnergy() == 0 and quest:GetTimer(willHelpTimer) < 1 then
@@ -251,7 +251,7 @@ function Main(quest, me)
                         quest:UpdateQuestInfoCounter(addQuestInfoCounter, quest:GetMasterGameState("WillScore"), -1)
                     else
                         if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
-                        scratchValue3 = 1
+                        scratchValue3 = true
                         scratchValue4 = 1
                         quest:UpdateQuestInfoCounter(addQuestInfoCounter, quest:GetMasterGameState("WillScore"), -1)
                     end
@@ -263,7 +263,7 @@ function Main(quest, me)
                 quest:DisplayQuestInfo(false)
                 quest:RemoveQuestInfoElement(addQuestInfoCounter)
                 quest:RemoveQuestInfoElement(infoElement)
-                if scratchValue3 == 0 then
+                if not scratchValue3 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d50594 end
                     infoElement = quest:GetMasterGameState("WillScore")
                     index = 0
@@ -297,7 +297,7 @@ function Main(quest, me)
                                 if not quest:IsActiveThreadTerminating() then
                                     resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_APLUS_PRIZE", actorMap, false, true)
                                     quest:ClearThingHasInformation(me)
-                                    goto FLOW_native_label_1
+                                    break
                                 end
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
@@ -330,10 +330,9 @@ function Main(quest, me)
                             resources:RunMacro("CS_GUILD_DEPARTURE_WILL_TEST_F", actorMap, false, true)
                             break
                         else
-                            goto FLOW_native_label_1
+                            break
                         end
                     until true
-                    ::FLOW_native_label_1::
                     if quest:GetMasterGameState("GlobalWillGrade") < 7 - scratchValue then
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)

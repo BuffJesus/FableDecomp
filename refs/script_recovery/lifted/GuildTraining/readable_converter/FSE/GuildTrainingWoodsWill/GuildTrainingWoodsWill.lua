@@ -11,7 +11,7 @@ function Main(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, ctr_84, ctr_88, scratchValue2, addNewConversation, scratchValue3, getHero
-    local pppuVar, scratchValue4, resource, movie, scratchValue5, actorMap, resource2, willBandit
+    local pppuVar, scratchValue4, movie, actorMap, resource2, willBandit
     scratchValue2 = 0
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -42,15 +42,15 @@ function Main(quest)
     while not scratchValue do
         quest:NewScriptFrame()
         scratchValue = quest:IsActiveThreadTerminating()
-        if scratchValue then goto LAB_00d685d5 end
+        if scratchValue then resources:ReleaseResource(resource3); return end
         scratchValue = resources:TryAcquire(resource3, willWhisper, 4)
     end
     scratchValue = quest:IsActiveThreadTerminating()
-    if scratchValue then goto LAB_00d685d5 end
+    if scratchValue then resources:ReleaseResource(resource3); return end
     willBandit = quest:GetAllThingsWithScriptName("WillBandit")
     scratchValue3 = #willBandit * 12
-    resource = resources:NewResource()
-    scratchValue5 = (function(n) local t = {} for i = 1, n do t[i] = resources:NewResource() end return t end)(scratchValue3 / 12)
+    local resource = resources:NewResource()
+    local scratchValue5 = (function(n) local t = {} for i = 1, n do t[i] = resources:NewResource() end return t end)(scratchValue3 / 12)
     resources:ReleaseResource(resource)
     scratchValue4 = 0
     if #willBandit ~= 0 then
@@ -102,7 +102,7 @@ function Main(quest)
         if #willBandit ~= 0 then
             repeat
                 scratchValue = quest:IsActiveThreadTerminating()
-                if scratchValue then goto LAB_00d685cc end
+                if scratchValue then resources:ReleaseResource(resource3); return end
                 getHero = willBandit[scratchValue2 / 12 + 1]
                 local pTarget = hero
                 quest:GiveThingBestEnemyTarget(getHero, pTarget)
@@ -121,32 +121,32 @@ function Main(quest)
             while quest:GetStateBool("BanditsAlive") do
                 quest:NewScriptFrame()
                 scratchValue = quest:IsActiveThreadTerminating()
-                if scratchValue then goto LAB_00d685cc end
+                if scratchValue then resources:ReleaseResource(resource3); return end
                 scratchValue = quest:IsLevelLoaded("GuildWoods")
                 if not scratchValue then
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                     scratchValue = quest:IsLevelLoaded("GuildWoods")
                     while not scratchValue do
                         quest:NewScriptFrame()
                         scratchValue = quest:IsActiveThreadTerminating()
-                        if scratchValue then goto LAB_00d685cc end
+                        if scratchValue then resources:ReleaseResource(resource3); return end
                         scratchValue = quest:IsLevelLoaded("GuildWoods")
                     end
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                 end
                 willBandit = quest:GetAllThingsWithScriptName("WillBandit")
                 if #willBandit == 0 then
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                     quest:SetStateBool("BanditsAlive", false)
                 end
                 getHero = hero
                 local fret_00 = quest:GetHealth(getHero)
                 if fret_00 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                     addNewConversation = quest:AddNewConversation(willWhisper, false, false)
                     getHero = hero
                     quest:AddPersonToConversation(addNewConversation, getHero)
@@ -155,29 +155,29 @@ function Main(quest)
                     scratchValue = quest:IsXbox()
                     if scratchValue then
                         scratchValue = quest:IsActiveThreadTerminating()
-                        if scratchValue then goto LAB_00d685cc end
+                        if scratchValue then resources:ReleaseResource(resource3); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP")
                         scratchValue = quest:MsgIsGameInfoClickedPast()
                         while not scratchValue do
                             quest:NewScriptFrame()
                             scratchValue = quest:IsActiveThreadTerminating()
-                            if scratchValue then goto LAB_00d685cc end
+                            if scratchValue then resources:ReleaseResource(resource3); return end
                             scratchValue = quest:MsgIsGameInfoClickedPast()
                         end
                     else
                         scratchValue = quest:IsActiveThreadTerminating()
-                        if scratchValue then goto LAB_00d685cc end
+                        if scratchValue then resources:ReleaseResource(resource3); return end
                         quest:DisplayGameInfo("TEXT_QST_028_ONSCREENHELP_STRAFE_HELP_PC")
                         scratchValue = quest:MsgIsGameInfoClickedPast()
                         while not scratchValue do
                             quest:NewScriptFrame()
                             scratchValue = quest:IsActiveThreadTerminating()
-                            if scratchValue then goto LAB_00d685cc end
+                            if scratchValue then resources:ReleaseResource(resource3); return end
                             scratchValue = quest:MsgIsGameInfoClickedPast()
                         end
                     end
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                     quest:SetStateBool("WhisperAnimate", true)
                     quest:ChangeHeroHealthBy(1000.0, true, false)
                 end
@@ -189,7 +189,7 @@ function Main(quest)
                 while not scratchValue do
                     quest:NewScriptFrame()
                     scratchValue = quest:IsActiveThreadTerminating()
-                    if scratchValue then goto LAB_00d685cc end
+                    if scratchValue then resources:ReleaseResource(resource3); return end
                     scratchValue = resources:TryAcquire(resource3, willWhisper, 4)
                 end
                 scratchValue = quest:IsActiveThreadTerminating()
@@ -235,13 +235,11 @@ function Main(quest)
             end
         end
     end
-    goto FLOW_past_lab_00d67db1
+    resources:ReleaseResource(resource3)
+    do return end
     ::LAB_00d67db1::
     resources:ReleaseResource(resource2)
     for _, r in ipairs(scratchValue5) do resources:ReleaseResource(r) end
-    ::FLOW_past_lab_00d67db1::
-    ::LAB_00d685cc::
-    ::LAB_00d685d5::
     resources:ReleaseResource(resource3)
 end
 

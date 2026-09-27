@@ -7,7 +7,10 @@ function Main(quest)
 end
 
 function Init(quest)
-    -- TODO(native): *(undefined4 *)__element("GuildMasterDialogue", 0) = 0;
-    -- TODO(native): *(undefined1 *)__element("GuildMasterDialogue", 1) = 0;
+    quest:SetStateBool("GuildMasterDialogue_0", false)
+    quest:SetStateBool("GuildMasterDialogue_1", false)
+    quest:SetStateBool("GuildMasterDialogue_2", false)
+    quest:SetStateBool("GuildMasterDialogue_3", false)
+    quest:SetStateBool("GuildMasterDialogue_4", false)
 end
 

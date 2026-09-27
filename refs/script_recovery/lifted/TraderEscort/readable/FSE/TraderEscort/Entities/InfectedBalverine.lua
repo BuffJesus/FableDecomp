@@ -11,23 +11,23 @@ local SCRIPT_DEF = {
 -- InfectedBalverine.Main (retail 0x00e02950)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult7, v_stk_24_2
+    local predicateResult, predicateResult7
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e02c78 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     predicateResult7 = quest:IsActiveThreadTerminating()
-    if predicateResult7 then goto LAB_00e02c78 end
-    v_stk_24_2 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_BalverineTimeToGoDistance)
+    if predicateResult7 then resources:ReleaseResource(resource); return end
+    local v_stk_24_2 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_BalverineTimeToGoDistance)
     repeat
-        if not quest:NewScriptFrame(me) then goto LAB_00e02c78 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if not me:IsPerformingScriptTask() then
             me:PlayLoopingAnimation("ST_MUNCH", -1, false, false, false)
         end
         if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), v_stk_24_2) then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e02c78 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             me:ClearAllActionsIncludingLoopingAnimations()
             predicateResult7 = true
         end
@@ -44,24 +44,23 @@ function Main(quest, me)
         predicateResult = true
         ::FLOW_past_lab_00e02b66::
         if predicateResult then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e02c78 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             predicateResult7 = true
         end
         if quest:GetStateBool("MissionFailed") then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e02c78 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             break
         end
     until predicateResult7
-    if quest:IsActiveThreadTerminating() then goto LAB_00e02c78 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:SetStateBool("InfectedTraderCanGetUp", true)
     me:PlayCombatAnimation("LEAP_STRAIGHT_UP", true, false)
     while me:IsPerformingScriptTask() do
-        if not quest:NewScriptFrame(me) then goto LAB_00e02c78 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:RemoveThing(me, false, true)
     end
-    ::LAB_00e02c78::
     resources:ReleaseResource(resource)
 end
 

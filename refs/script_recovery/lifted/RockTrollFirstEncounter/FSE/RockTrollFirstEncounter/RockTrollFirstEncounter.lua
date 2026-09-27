@@ -21,104 +21,68 @@ end
 
 function Main(questObject)
     Quest = questObject
-    local CVar1, bVar4, uVar6
     local alive = true
     Quest:AddEntityBinding("RTFE_Sparrow", "RockTrollFirstEncounter/Entities/RTFE_Sparrow")
     Quest:AddEntityBinding("RTFE_RockTroll", "RockTrollFirstEncounter/Entities/RTFE_RockTroll")
     Quest:AddEntityBinding("M_RTFERockTrollTrigger", "RockTrollFirstEncounter/Entities/M_RTFERockTrollTrigger")
     Quest:FinalizeEntityBindings()
-    local pCVar11 = "Witchwood1"
-    local cVar3 = Quest:IsRegionLoaded("Witchwood1")
-    while not cVar3 do
+    while not Quest:IsRegionLoaded("Witchwood1") do
         alive = Quest:NewScriptFrame()
-        bVar4 = not alive
-        if bVar4 then
+        if not alive then
             return
         end
-        cVar3 = Quest:IsRegionLoaded("Witchwood1")
     end
-    bVar4 = not alive
-    if not bVar4 then
-        Quest:CreateThread("WatchForRegionExit")  -- native thread body 0x00EC4130: lift it as function WatchForRegionExit(quest)
-        if (unaff_EBX & 8) ~= 0 then
+    if not alive then return end
+    Quest:CreateThread("WatchForRegionExit")  -- native thread body 0x00EC4130: lift it as function WatchForRegionExit(quest)
+    if not Quest:GetStateBool("Activated") then
+        if not alive then
+            return
         end
-        if not Quest:GetStateBool("Activated") then
-            bVar4 = not alive
-            if bVar4 then
-                return
-            end
-            Quest:ActivateQuest("V_RockTrollFirstEncounter_Activate")
-            Quest:SetStateBool("Activated", true)
-        end
-        CVar1 = Quest:GetStateBool("self_0x4a")
-        while not CVar1 do
-            alive = Quest:NewScriptFrame()
-            bVar4 = not alive
-            if bVar4 then
-                return
-            end
-            CVar1 = Quest:GetStateBool("self_0x4a")
-        end
-        bVar4 = not alive
-        if not bVar4 then
-            Quest:RemoveQuestInfoElement(0)
-            Quest:DisplayQuestInfo(nil --[[missing]])
-            cVar3 = Quest:MsgOnRegionLoaded()
-            while cVar3 == 0 do
-                alive = Quest:NewScriptFrame()
-                bVar4 = not alive
-                if bVar4 then return end  -- native destructor epilogue LAB_00ec4112
-                cVar3 = Quest:MsgOnRegionLoaded()
-            end
-            bVar4 = not alive
-            if not bVar4 then
-                Quest:SetCreatureGeneratorsEnabled("Witchwood1", true)
-                Quest:DeactivateQuestLater("V_RockTrollFirstEncounter_Activate", 0)
-                uVar6 = Quest:GetActiveQuestName()
-                Quest:DeactivateQuestLater(uVar6, nil --[[missing]])
-            end
-            -- LAB_00ec4112: (native jump target)
+        Quest:ActivateQuest("V_RockTrollFirstEncounter_Activate")
+        Quest:SetStateBool("Activated", true)
+    end
+    while not Quest:GetStateBool("self_0x4a") do
+        alive = Quest:NewScriptFrame()
+        if not alive then
+            return
         end
     end
+    if not alive then return end
+    Quest:RemoveQuestInfoElement(0)
+    Quest:DisplayQuestInfo(nil --[[missing]])
+    while Quest:MsgOnRegionLoaded() == 0 do
+        alive = Quest:NewScriptFrame()
+        if not alive then return end  -- native destructor epilogue LAB_00ec4112
+    end
+    if not alive then return end
+    Quest:SetCreatureGeneratorsEnabled("Witchwood1", true)
+    Quest:DeactivateQuestLater("V_RockTrollFirstEncounter_Activate", 0)
+    Quest:DeactivateQuestLater(Quest:GetActiveQuestName(), nil --[[missing]])
 end
 
 function WatchForRegionExit(questObject)
     Quest = questObject
-    local bVar2
     local alive = true
-    local pCVar4 = "Witchwood1"
-    local cVar1 = Quest:IsRegionLoaded("Witchwood1")
+    local isRegionLoaded = Quest:IsRegionLoaded("Witchwood1")
     while true do
-        if not cVar1 then
-            bVar2 = not alive
-            if not bVar2 then
+        if not isRegionLoaded then
+            if alive then
                 Quest:SetCreatureGeneratorsEnabled("Witchwood1", true)
             end
             return
         end
         alive = Quest:NewScriptFrame()
-        bVar2 = not alive
-        if bVar2 then break end
-        cVar1 = Quest:IsRegionLoaded("Witchwood1")
+        if not alive then break end
+        isRegionLoaded = Quest:IsRegionLoaded("Witchwood1")
     end
 end
 
 function OnPersist(questObject, context)
     Quest = questObject
-    local activated = Quest:GetStateBool("Activated") or false
-    activated = Quest:PersistTransferBool(context, "Activated", activated)
-    Quest:SetStateBool("Activated", activated)
-    local rockTrollTriggered = Quest:GetStateBool("RockTrollTriggered") or false
-    rockTrollTriggered = Quest:PersistTransferBool(context, "RockTrollTriggered", rockTrollTriggered)
-    Quest:SetStateBool("RockTrollTriggered", rockTrollTriggered)
-    local playedExhumeCutScene = Quest:GetStateBool("PlayedExhumeCutScene") or false
-    playedExhumeCutScene = Quest:PersistTransferBool(context, "PlayedExhumeCutScene", playedExhumeCutScene)
-    Quest:SetStateBool("PlayedExhumeCutScene", playedExhumeCutScene)
-    local addedItemsToRockTroll = Quest:GetStateBool("AddedItemsToRockTroll") or false
-    addedItemsToRockTroll = Quest:PersistTransferBool(context, "AddedItemsToRockTroll", addedItemsToRockTroll)
-    Quest:SetStateBool("AddedItemsToRockTroll", addedItemsToRockTroll)
-    local rockTrollHealthBarID = Quest:GetStateBool("RockTrollHealthBarID") or false
-    rockTrollHealthBarID = Quest:PersistTransferBool(context, "RockTrollHealthBarID", rockTrollHealthBarID)
-    Quest:SetStateBool("RockTrollHealthBarID", rockTrollHealthBarID)
+    Quest:SetStateBool("Activated", Quest:PersistTransferBool(context, "Activated", Quest:GetStateBool("Activated")))
+    Quest:SetStateBool("RockTrollTriggered", Quest:PersistTransferBool(context, "RockTrollTriggered", Quest:GetStateBool("RockTrollTriggered")))
+    Quest:SetStateBool("PlayedExhumeCutScene", Quest:PersistTransferBool(context, "PlayedExhumeCutScene", Quest:GetStateBool("PlayedExhumeCutScene")))
+    Quest:SetStateBool("AddedItemsToRockTroll", Quest:PersistTransferBool(context, "AddedItemsToRockTroll", Quest:GetStateBool("AddedItemsToRockTroll")))
+    Quest:SetStateBool("RockTrollHealthBarID", Quest:PersistTransferBool(context, "RockTrollHealthBarID", Quest:GetStateBool("RockTrollHealthBarID")))
 end
 

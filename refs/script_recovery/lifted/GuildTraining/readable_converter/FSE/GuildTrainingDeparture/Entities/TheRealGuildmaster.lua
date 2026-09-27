@@ -25,7 +25,7 @@ function Main(quest, me)
             do return end
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d5134c end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     if not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
         local resource = resources:NewResource()
         resources:PrepareResource(resource)
@@ -60,7 +60,7 @@ function Main(quest, me)
         quest:SetMasterGameState("HeroTakingGuildTest", true)
     end
     while quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") do
-        if not quest:NewScriptFrame(me) then goto LAB_00d5134c end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
         if me:IsTalkedToByHero() then
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
@@ -90,7 +90,6 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         quest:ClearThingHasInformation(me)
     end
-    ::LAB_00d5134c::
     resources:ReleaseResource(resource2)
 end
 

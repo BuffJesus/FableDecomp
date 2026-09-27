@@ -34,18 +34,14 @@ function Main(quest)
             -- TODO(native): iVar5 = *(uVar6 + 0x10)
 --[[unresolved native value]]
             -- TODO(native): Speak: unresolved entity receiver/resource in quest context; arguments: (int)pCVar3,iVar5,p2,p3,p4,p5
-            -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-    --[[unresolved native result]]
-            while nil do
+            while resources:IsPerformingScriptTask(resource) do
                 quest:NewScriptFrame()
                 if quest:IsActiveThreadTerminating() then
                     resources:ReleaseResource(resource)
                     -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)&xStack_1c);
                     -- TODO(native): CFileInstaller::CActiveFile::OnReadFinished((CActiveFile *)&xStack_1c);
-                    return
+                    do return end
                 end
-                -- TODO(native): IsPerformingScriptTask: unresolved entity receiver/resource in quest context; arguments: 
-    --[[unresolved native result]]
             end
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)

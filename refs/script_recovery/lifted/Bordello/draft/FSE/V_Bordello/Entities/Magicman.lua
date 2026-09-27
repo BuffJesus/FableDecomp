@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_20c, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
+    local __native_condition_1, __native_condition_2, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, p0_00, pCVar10, pCVar11, pcVar14, ppuStack_348, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r4, r40, r41, r42, r43, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_374, xStack_160, xStack_16c, xStack_180, xStack_1bc, xStack_214, xStack_254, xStack_2d8, xStack_2f8, xStack_2f8_2, xStack_310, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_1a4, x_stk_20c, x_stk_224, x_stk_230, x_stk_23c, x_stk_248, x_stk_260, x_stk_268
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -33,7 +33,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
     if bVar5 then goto LAB_00e44528 end
-    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0x74),xStack_364);
+    resources:AssignResource(resources:MemberResource("seh_Boss"), 0)
     i_stk_378 = quest:RegisterTimer()
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0x28)
@@ -160,7 +160,7 @@ function Main(quest, me)
                         goto LAB_00e4451f
                     end
                     pCVar10 = tostring(i_stk_350)
-                    ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
+                    xStack_1bc = ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
                     cVar6 = quest:TextEntryExists()
                     if not cVar6 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -180,7 +180,7 @@ function Main(quest, me)
                     ppuVar4 = 0
                     xStack_350 = p0
                     pCVar10 = tostring(0)
-                    ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
+                    x_stk_1a4 = ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
                     -- TODO(native): (*(code *)xStack_308[0x16e])();
                     i_stk_350 = ppuVar4 + 1
                     quest:SetTimer(timerId, 0x1e)
@@ -321,7 +321,7 @@ function Main(quest, me)
                         if 4 < xStack_364 then
                         end
                         pCVar10 = tostring(1)
-                        ("TEXT_QST_B13_MAGICMAN_CHATTER_0" .. pCVar10)
+                        xStack_310 = ("TEXT_QST_B13_MAGICMAN_CHATTER_0" .. pCVar10)
                         x_stk_23c = resources:ScriptThing(1)
                         fVar13 = quest:GetHealth(nil --[[missing]])
                         cVar6 = 0.0 < fVar13
@@ -331,6 +331,7 @@ function Main(quest, me)
                             iVar20 = 1
                             iVar19 = 0
                             iVar18 = 0
+                            pvVar8 = xStack_310
                             iVar21 = quest:GetHero()
                             r7 = me:Speak(iVar21, pvVar8, iVar18, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))
                             iVar21 = me:IsPerformingScriptTask()
@@ -969,7 +970,7 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then goto LAB_00e4450d end
                     pCVar10 = tostring(i_stk_350)
-                    ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
+                    xStack_180 = ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
                     cVar6 = quest:TextEntryExists()
                     if not cVar6 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -985,7 +986,7 @@ function Main(quest, me)
                     ppuVar4 = xStack_364
                     xStack_364 = p0
                     pCVar10 = tostring(xStack_364)
-                    ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
+                    xStack_160 = ("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. pCVar10)
                     -- TODO(native): (*(code *)xStack_194[0x16e])();
                     i_stk_350 = ppuVar4 + 1
                     quest:SetTimer(timerId, 0x1e)
@@ -1013,8 +1014,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if not bVar5 then
-                        -- TODO(native): bVar5 = helper_E44A40(quest, me, *(this + 0x14))
-                        bVar5 = nil --[[unresolved native value]]
+                        -- TODO(native): bVar5 = NScript::CV_BordelloScript::IsHeroWearingBeard__ate44a40(*(CV_BordelloScript **)(this + 0x14));
                         if bVar5 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -1056,8 +1056,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if not bVar5 then
-                            -- TODO(native): bVar5 = helper_E44CC0(quest, me, *(this + 0x14))
-                            bVar5 = nil --[[unresolved native value]]
+                            bVar5 = require("V_Bordello.native_quest_helpers").helper_E44CC0(quest, me)
                             if bVar5 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
@@ -1821,140 +1820,5 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-end
-
-function helper_E44A40(quest, me)
-    local bVar3, bVar5, pCVar4
-    bVar5 = 1
-    pCVar4 = quest:GetHero()
-    bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_01")
-    if not bVar3 then
-        bVar5 = 3
-        pCVar4 = quest:GetHero()
-        bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_02")
-        if not bVar3 then
-            bVar5 = 7
-            pCVar4 = quest:GetHero()
-            bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_03")
-            if not bVar3 then
-                bVar5 = 0xf
-                pCVar4 = quest:GetHero()
-                bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_MUTTON_01")
-                if not bVar3 then
-                    bVar5 = 0x1f
-                    pCVar4 = quest:GetHero()
-                    bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_LONG_01")
-                    if not bVar3 then
-                        bVar5 = 0x3f
-                        pCVar4 = quest:GetHero()
-                        bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_CHIN_01")
-                        if not bVar3 then
-                            bVar5 = 0x7f
-                            pCVar4 = quest:GetHero()
-                            bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_TRAMP_01")
-                            if not bVar3 then
-                                bVar5 = 0xff
-                                pCVar4 = quest:GetHero()
-                                bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_WATSON_01")
-                                if not bVar3 then goto LAB_00e44c26 end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
-    ::LAB_00e44c26::
-    if bVar5 < 0 then
-        bVar5 = bVar5 & 0x7f
-    end
-    if (bVar5 & 0x40) ~= 0 then
-        bVar5 = bVar5 & 0xbf
-    end
-    if (bVar5 & 0x20) ~= 0 then
-        bVar5 = bVar5 & 0xdf
-    end
-    if (bVar5 & 0x10) ~= 0 then
-        bVar5 = bVar5 & 0xef
-    end
-    if (bVar5 & 8) ~= 0 then
-        bVar5 = bVar5 & 0xf7
-    end
-    if (bVar5 & 4) ~= 0 then
-        bVar5 = bVar5 & 0xfb
-    end
-    if (bVar5 & 2) ~= 0 then
-        bVar5 = bVar5 & 0xfd
-    end
-    return
-end
-
-function helper_E44CC0(quest, me)
-    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9
-    bVar7 = false
-    bVar6 = false
-    bVar5 = false
-    bVar4 = false
-    bVar3 = false
-    pCVar9 = quest:GetHero()
-    bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMITH_01")
-    if not bVar8 then
-        bVar7 = true
-        bVar6 = false
-        bVar5 = false
-        bVar4 = false
-        bVar3 = false
-        pCVar9 = quest:GetHero()
-        bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHTRADER_01")
-        if not bVar8 then
-            bVar7 = true
-            bVar6 = true
-            bVar5 = false
-            bVar4 = false
-            bVar3 = false
-            pCVar9 = quest:GetHero()
-            bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHKHG_01")
-            if not bVar8 then
-                bVar7 = true
-                bVar6 = true
-                bVar5 = true
-                bVar4 = false
-                bVar3 = false
-                pCVar9 = quest:GetHero()
-                bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSHERIFF_01")
-                if not bVar8 then
-                    bVar7 = true
-                    bVar6 = true
-                    bVar5 = true
-                    bVar4 = true
-                    bVar3 = false
-                    pCVar9 = quest:GetHero()
-                    bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHCHINESE_01")
-                    if not bVar8 then
-                        bVar7 = true
-                        bVar6 = true
-                        bVar5 = true
-                        bVar4 = true
-                        bVar3 = true
-                        pCVar9 = quest:GetHero()
-                        bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMALL_01")
-                        if not bVar8 then goto LAB_00e44e30 end
-                    end
-                end
-            end
-        end
-    end
-    ::LAB_00e44e30::
-    if bVar3 then
-    end
-    if bVar4 then
-    end
-    if bVar5 then
-    end
-    if bVar6 then
-    end
-    if bVar7 then
-    end
-    return
 end
 

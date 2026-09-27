@@ -14,16 +14,15 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local predicateResult3, scratchValue5, predicateResult4, predicateResult7, predicateResult8
     local scratchValue, predicateResult, predicateResult14, scratchValue19, addNewConversation
-    local infoCounter, infoCounter2, infoCounter3, scratchValue32, scratchValue33, movie, actorMap2
-    local resource, timerId
-    scratchValue32 = 0
+    local scratchValue33, scratchValue34, movie, actorMap, resource
+    scratchValue33 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b9 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b9 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     notFighting = true
     notBeaten = true
     beenHit = 0
@@ -45,37 +44,37 @@ function Main(quest, me)
         resources:ReleaseResource(resource2)
         return
     end
-    actorMap2 = resources:NewActorMap()
-    resources:SetActor(actorMap2, "HERO", resource)
-    resources:SetActor(actorMap2, "MAZE", resource2)
+    actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    resources:SetActor(actorMap, "MAZE", resource2)
     movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
-    resources:RunMacro("CS_GUILD_DEPARTURE_MAZE_START", actorMap2, false, true)
+    resources:RunMacro("CS_GUILD_DEPARTURE_MAZE_START", actorMap, false, true)
     quest:FixMovieSequenceCamera(false)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie)
-    resources:DestroyActorMap(actorMap2)
+    resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
     quest:EntitySetInFaction(me, "FACTION_MONSTERS")
-    infoCounter3 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+    local infoCounter3 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
     quest:DisplayQuestInfo(true)
     resources:PrepareResource(resource2)
     quest:EntitySetBossPhase(me, 0)
     quest:EntitySetAsDamageable(hero, false)
     quest:UpdateQuestInfoCounter(infoCounter3, beenHit, -1)
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     quest:CacheMusicSet(47)
     addNewConversation = 0
     while notBeaten do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 3
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+        scratchValue34 = scratchValue33 | 3
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             goto LAB_00d64cba
         else
-            scratchValue33 = scratchValue32 | 15
+            scratchValue34 = scratchValue33 | 15
             predicateResult3 = false
             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA") then goto LAB_00d64cba end
         end
@@ -83,52 +82,54 @@ function Main(quest, me)
         ::LAB_00d64cba::
         predicateResult3 = true
         ::FLOW_past_lab_00d64cba::
-        if scratchValue33 & 8 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffff7
+        if scratchValue34 & 8 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffff7
         end
-        if scratchValue33 & 4 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffb
+        if scratchValue34 & 4 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffffb
         end
-        if scratchValue33 & 2 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffd
+        if scratchValue34 & 2 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffffd
         end
-        if scratchValue33 & 1 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffffe
+        if scratchValue34 & 1 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffffe
         end
         if predicateResult3 then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
             local getStateInt = beenHit + 1
             beenHit = getStateInt
             if getStateInt == 7 then
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 notBeaten = false
                 quest:ModifyThingHealth(me, 1000.0, false)
             end
             quest:UpdateQuestInfoCounter(infoCounter3, beenHit, -1)
-            scratchValue32 = scratchValue33
+            scratchValue33 = scratchValue34
             if not (quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation)) then goto continue_1 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-            scratchValue32 = math.random(0, 32767) & 0x80000001
-            scratchValue5 = scratchValue32 == 0
-            if scratchValue32 < 0 then
-                scratchValue5 = (scratchValue32 - 1 | 0xfffffffe) == 0xffffffff
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+            scratchValue33 = math.random(0, 32767) & 0x80000001
+            scratchValue5 = scratchValue33 == 0
+            if scratchValue33 < 0 then
+                scratchValue5 = (scratchValue33 - 1 | 0xfffffffe) == 0xffffffff
             end
             if scratchValue5 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, hero, false)
             else
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, hero, false)
             end
             quest:SetTimer(timerId, 5)
         else
-            scratchValue32 = scratchValue33 | 48
+            scratchValue33 = scratchValue34 | 48
             if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW") then
                 goto LAB_00d64f41
             else
-                scratchValue32 = scratchValue33 | 240
+                scratchValue33 = scratchValue34 | 240
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW") then goto LAB_00d64f41 end
                 goto LAB_00d64f56
             end
@@ -141,27 +142,28 @@ function Main(quest, me)
             ::LAB_00d64f56::
             predicateResult4 = false
             ::FLOW_past_lab_00d64f56::
-            if scratchValue32 < 0 then
-                scratchValue32 = scratchValue32 & 0xffffff7f
+            if scratchValue33 < 0 then
+                scratchValue33 = scratchValue33 & 0xffffff7f
             end
-            if scratchValue32 & 64 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffbf
+            if scratchValue33 & 64 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffffbf
             end
-            if scratchValue32 & 32 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffdf
+            if scratchValue33 & 32 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffffdf
             end
-            if scratchValue32 & 16 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffffef
+            if scratchValue33 & 16 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffffef
             end
             if predicateResult4 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_BOW", me, hero, false)
                 quest:ModifyThingHealth(me, 1000.0, false)
             elseif me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 if not quest:IsConversationActive(addNewConversation) then
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_LIGHTNING", me, hero, false)
@@ -171,16 +173,16 @@ function Main(quest, me)
         end
         ::continue_1::
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     quest:RemoveQuestInfoElement(infoCounter3)
     quest:DisplayQuestInfo(false)
     beenHit = 0
     notBeaten = true
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     resource = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
@@ -194,7 +196,9 @@ function Main(quest, me)
         ::LAB_00d65b9f::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(resource)
-        goto LAB_00d664b0
+        quest:DeregisterTimer(timerId)
+        resources:ReleaseResource(resource2)
+        do return end
         ::FLOW_past_lab_00d65b9f::
     end
     quest:EntitySetAsDrawable(hero, true)
@@ -203,17 +207,17 @@ function Main(quest, me)
     resources:DestroyMovie(resource)
     resources:PrepareResource(resource2)
     quest:EntitySetBossPhase(me, 1)
-    infoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+    local infoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
     quest:DisplayQuestInfo(true)
     quest:UpdateQuestInfoCounter(infoCounter, beenHit, -1)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     while notBeaten do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 768
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+        scratchValue34 = scratchValue33 | 768
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             goto LAB_00d654d1
         else
-            scratchValue33 = scratchValue32 | 3840
+            scratchValue34 = scratchValue33 | 3840
             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA") then goto LAB_00d654d1 end
             goto LAB_00d654e6
         end
@@ -226,30 +230,30 @@ function Main(quest, me)
         ::LAB_00d654e6::
         predicateResult7 = false
         ::FLOW_past_lab_00d654e6::
-        if scratchValue33 & 2048 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffff7ff
+        if scratchValue34 & 2048 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffff7ff
         end
-        if scratchValue33 & 1024 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffbff
+        if scratchValue34 & 1024 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffbff
         end
-        if scratchValue33 & 512 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffdff
+        if scratchValue34 & 512 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffdff
         end
-        if scratchValue33 & 256 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffffeff
+        if scratchValue34 & 256 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffffeff
         end
         if predicateResult7 then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
             addNewConversation = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(addNewConversation, hero)
             quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_MELEE", me, hero, false)
             quest:ModifyThingHealth(me, 1000.0, false)
         else
-            scratchValue32 = scratchValue33 | 0x3000
+            scratchValue33 = scratchValue34 | 0x3000
             if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW") then
                 goto LAB_00d65670
             else
-                scratchValue32 = scratchValue33 | 0xf000
+                scratchValue33 = scratchValue34 | 0xf000
                 predicateResult8 = false
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW") then goto LAB_00d65670 end
             end
@@ -257,49 +261,51 @@ function Main(quest, me)
             ::LAB_00d65670::
             predicateResult8 = true
             ::FLOW_past_lab_00d65670::
-            if scratchValue32 >> 8 < 0 then
-                scratchValue32 = scratchValue32 & 0xffff7fff
+            if scratchValue33 >> 8 < 0 then
+                scratchValue33 = scratchValue33 & 0xffff7fff
             end
-            if scratchValue32 & 0x4000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffbfff
+            if scratchValue33 & 0x4000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffbfff
             end
-            if scratchValue32 & 0x2000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffdfff
+            if scratchValue33 & 0x2000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffdfff
             end
-            if scratchValue32 & 4096 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffffefff
+            if scratchValue33 & 4096 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffffefff
             end
             if predicateResult8 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 local getStateInt2 = beenHit + 1
                 beenHit = getStateInt2
                 if getStateInt2 == 7 then
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     notBeaten = false
                     quest:ModifyThingHealth(me, 1000.0, false)
                 end
                 quest:UpdateQuestInfoCounter(infoCounter, beenHit, -1)
                 if not (quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation)) then goto continue_2 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                scratchValue33 = math.random(0, 32767) & 0x80000001
-                scratchValue = scratchValue33 == 0
-                if scratchValue33 < 0 then
-                    scratchValue = (scratchValue33 - 1 | 0xfffffffe) == 0xffffffff
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+                scratchValue34 = math.random(0, 32767) & 0x80000001
+                scratchValue = scratchValue34 == 0
+                if scratchValue34 < 0 then
+                    scratchValue = (scratchValue34 - 1 | 0xfffffffe) == 0xffffffff
                 end
                 if scratchValue then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, hero, false)
                 else
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, hero, false)
                 end
                 quest:SetTimer(timerId, 5)
             elseif me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 if not quest:IsConversationActive(addNewConversation) then
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, hero)
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_LIGHTNING", me, hero, false)
@@ -309,16 +315,16 @@ function Main(quest, me)
         end
         ::continue_2::
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     quest:RemoveQuestInfoElement(infoCounter)
     quest:DisplayQuestInfo(false)
     beenHit = 0
     notBeaten = true
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     resource = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
@@ -332,13 +338,17 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(resource)
-                goto LAB_00d664b0
+                quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(resource2)
+                do return end
             end
         end
         if quest:IsActiveThreadTerminating() then
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(resource)
-            goto LAB_00d664b0
+            quest:DeregisterTimer(timerId)
+            resources:ReleaseResource(resource2)
+            return
         end
     end
     quest:EntitySetAsDrawable(hero, true)
@@ -347,17 +357,17 @@ function Main(quest, me)
     resources:DestroyMovie(resource)
     resources:PrepareResource(resource2)
     quest:EntitySetBossPhase(me, 2)
-    infoCounter2 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
+    local infoCounter2 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_MAZE", 7, 1.0)
     quest:DisplayQuestInfo(true)
     quest:UpdateQuestInfoCounter(infoCounter2, beenHit, -1)
     quest:EntityWillTeleportToArea(me, me:GetPos().x, 5.0, 20.0)
     while notBeaten do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
-        scratchValue33 = scratchValue32 | 0x30000
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+        scratchValue34 = scratchValue33 | 0x30000
         if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD") then
             goto LAB_00d65d51
         else
-            scratchValue33 = scratchValue32 | 0xf0000
+            scratchValue34 = scratchValue33 | 0xf0000
             if me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA") then goto LAB_00d65d51 end
             goto LAB_00d65d66
         end
@@ -370,30 +380,30 @@ function Main(quest, me)
         ::LAB_00d65d66::
         predicateResult = false
         ::FLOW_past_lab_00d65d66::
-        if scratchValue33 & 0x80000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfff7ffff
+        if scratchValue34 & 0x80000 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfff7ffff
         end
-        if scratchValue33 & 0x40000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffbffff
+        if scratchValue34 & 0x40000 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffbffff
         end
-        if scratchValue33 & 0x20000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffdffff
+        if scratchValue34 & 0x20000 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffdffff
         end
-        if scratchValue33 & 0x10000 ~= 0 then
-            scratchValue33 = scratchValue33 & 0xfffeffff
+        if scratchValue34 & 0x10000 ~= 0 then
+            scratchValue34 = scratchValue34 & 0xfffeffff
         end
         if predicateResult then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
             addNewConversation = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(addNewConversation, hero)
             quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_MELEE", me, hero, false)
             goto LAB_00d65e4c
         else
-            scratchValue32 = scratchValue33 | 0x300000
+            scratchValue33 = scratchValue34 | 0x300000
             if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW") then
                 goto LAB_00d65ef7
             else
-                scratchValue32 = scratchValue33 | 0xf00000
+                scratchValue33 = scratchValue34 | 0xf00000
                 if me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW") then goto LAB_00d65ef7 end
                 goto LAB_00d65f0c
             end
@@ -406,50 +416,52 @@ function Main(quest, me)
             ::LAB_00d65f0c::
             predicateResult14 = false
             ::FLOW_past_lab_00d65f0c::
-            if scratchValue32 & 0x800000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xff7fffff
+            if scratchValue33 & 0x800000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xff7fffff
             end
-            if scratchValue32 & 0x400000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffbfffff
+            if scratchValue33 & 0x400000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffbfffff
             end
-            if scratchValue32 & 0x200000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffdfffff
+            if scratchValue33 & 0x200000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffdfffff
             end
-            if scratchValue32 & 0x100000 ~= 0 then
-                scratchValue32 = scratchValue32 & 0xffefffff
+            if scratchValue33 & 0x100000 ~= 0 then
+                scratchValue33 = scratchValue33 & 0xffefffff
             end
             if predicateResult14 then
-                if not quest:IsActiveThreadTerminating() then
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_BOW", me, hero, false)
-                    goto LAB_00d65e4c
-                end
-                goto LAB_00d664b0
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(addNewConversation, hero)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_LIGHTNING_BOW", me, hero, false)
+                goto LAB_00d65e4c
+                quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(resource2)
+                return
             end
             if me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL) then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                 local getStateInt3 = beenHit + 1
                 beenHit = getStateInt3
                 if getStateInt3 == 7 then
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                     notBeaten = false
                     quest:ModifyThingHealth(me, 1000.0, false)
                 end
                 quest:UpdateQuestInfoCounter(infoCounter2, beenHit, -1)
                 if quest:GetTimer(timerId) < 1 and not quest:IsConversationActive(addNewConversation) then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
-                    scratchValue33 = math.random(0, 32767) & 0x80000001
-                    scratchValue19 = scratchValue33 == 0
-                    if scratchValue33 < 0 then
-                        scratchValue19 = (scratchValue33 - 1 | 0xfffffffe) == 0xffffffff
+                    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
+                    scratchValue34 = math.random(0, 32767) & 0x80000001
+                    scratchValue19 = scratchValue34 == 0
+                    if scratchValue34 < 0 then
+                        scratchValue19 = (scratchValue34 - 1 | 0xfffffffe) == 0xffffffff
                     end
                     if scratchValue19 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                         addNewConversation = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(addNewConversation, hero)
                         quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_ON_HIT", me, hero, false)
                     else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+                        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
                         addNewConversation = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(addNewConversation, hero)
                         quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, hero, false)
@@ -463,14 +475,14 @@ function Main(quest, me)
         quest:ModifyThingHealth(me, 1000.0, false)
         ::FLOW_past_lab_00d65e4c::
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     quest:RemoveQuestInfoElement(infoCounter2)
     quest:DisplayQuestInfo(false)
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d664b0 end
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d664b0 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource2); return end
     me:ClearCommands()
     quest:EntitySetInFaction(me, "FACTION_HERO")
     resource = resources:NewResource()
@@ -481,7 +493,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then
         goto LAB_00d6632b
     else
-        local actorMap = resources:NewActorMap()
+        actorMap = resources:NewActorMap()
         resources:SetActor(actorMap, "HERO", resource)
         resources:SetActor(actorMap, "MAZE", resource2)
         movie = resources:StartMovie("")
@@ -498,13 +510,12 @@ function Main(quest, me)
         quest:RemoveThing(me, false, true)
         quest:EntitySetAsDamageable(hero, true)
     end
-    goto FLOW_past_lab_00d6632b
+    quest:DeregisterTimer(timerId)
+    resources:ReleaseResource(resource2)
+    do return end
     ::LAB_00d6632b::
     resources:ReleaseResource(resource)
-    ::FLOW_past_lab_00d6632b::
-    ::LAB_00d664b0::
     quest:DeregisterTimer(timerId)
-    ::LAB_00d664b9::
     resources:ReleaseResource(resource2)
 end
 

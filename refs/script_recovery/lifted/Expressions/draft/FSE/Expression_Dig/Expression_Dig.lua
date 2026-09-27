@@ -66,11 +66,11 @@ function Main(quest)
     pCVar6 = quest:GetHero()
     bVar4 = quest:IsEntityWieldingRangedWeapon(pCVar6)
     quest:SheatheHeroWeapons()
-    -- TODO(native): ClearAllActionsIncludingLoopingAnimations: unresolved entity receiver/resource in quest context; arguments: 
-    quest:MakeHeroCarryItemInHand(nil --[[missing]], (iVar10 ~= 0), nil --[[missing]])
+    resources:ClearAllActionsIncludingLoopingAnimations(xStack_30)
+    quest:MakeHeroCarryItemInHand("OBJECT_SPADE")
     quest:FadeScreenIn()
     quest:Pause(0.5)
-    -- TODO(native): PlayLoopingAnimation: unresolved entity receiver/resource in quest context; arguments: 2,0,0,0,1,true,0,0
+    resources:PlayLoopingAnimation(xStack_30, "ST_DIGGING_IDLE", 2, false, false, false, true, true, false, false)
     pCVar6 = quest:GetHero()
     r1 = quest:GetNearestEnabledDiggingSpot(pCVar6)
     iVar8 = (r1 ~= nil and r1:IsAlive())
@@ -102,8 +102,8 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if not bVar5 then
-            -- TODO(native): ClearCommands: unresolved entity receiver/resource in quest context; arguments: 
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
+            resources:ClearCommands(xStack_30)
+            resources:PlayAnimation(xStack_30, "ST_DIGGING_SUCCESS", false, false, false, true, true, false, false)
             duration = 0.55
             goto LAB_00eeabfa
         end
@@ -111,8 +111,8 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if not bVar5 then
-            -- TODO(native): ClearCommands: unresolved entity receiver/resource in quest context; arguments: 
-            -- TODO(native): PlayAnimation: unresolved entity receiver/resource in quest context; arguments: 0,0,0,1,true,0,0
+            resources:ClearCommands(xStack_30)
+            resources:PlayAnimation(xStack_30, "ST_DIGGING_FAILURE", false, false, false, true, true, false, false)
             duration = 1.5
             goto LAB_00eeabfa
         end
@@ -124,7 +124,7 @@ function Main(quest)
     quest:HeroStopDigging()
     quest:FadeScreenOut(0.25, 0.25)
     quest:Pause(0.25)
-    quest:MakeHeroCarryItemInHand(r1, bVar2, nil --[[missing]])
+    quest:MakeHeroCarryItemInHand("")
     if bVar3 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

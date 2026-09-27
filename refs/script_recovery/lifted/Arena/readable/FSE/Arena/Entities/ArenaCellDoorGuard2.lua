@@ -7,35 +7,16 @@ local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local self0X14, earlyTalk, chamTalk
+local earlyTalk, chamTalk
 
 -- ArenaCellDoorGuard2.Main (retail 0x00f19bb0)
 function Main(quest, me)
-    local self_0x14
-    local cellsVillage = quest:GetStateThing("CellsVillage")
-    local hero = quest:GetHero()
+    local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue, scratchValue8, scratchValue9, meControl
-    scratchValue9 = 0
+    local predicateResult, scratchValue, scratchValue7, scratchValue8, meControl
+    scratchValue8 = 0
     local resource = resources:NewResource()
-    -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-    --[[unresolved native value]]
-    -- TODO(native): xStack_a8 = *(CCharString *)(pCVar6 + 0x4);
-    -- TODO(native): piVar2 = *(self_0x14 + 0xc8)
-    --[[unresolved native value]]
-    if nil ~= nil then
-        if nil ~= nil then
-            -- TODO(native): *piVar2 = *piVar2 - 1;
-            if **(self0X14 + 200) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(*(int *)(this + 0x14) + 0xc8))[1])();
-            end
-        end
-        -- TODO(native): *(CCharString *)(*(int *)(this + 0x14) + 0xc4) = xStack_a8;
-        -- TODO(native): *(int **)(*(int *)(this + 0x14) + 0xc8) = piVar1;
-        if nil ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + 1;
-        end
-    end
+    quest:SetStateThing("CellsVillage", quest:GetNearestWithDefName(me, "VILLAGE_ARENA_CELLS"))
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, false)
@@ -43,26 +24,26 @@ function Main(quest, me)
     while quest:GetStateInt("ArenaState") == 2 do
         if not quest:NewScriptFrame(me) then return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00f1a7f6 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     resources:PrepareResource(meControl)
     while not resources:TryAcquire(meControl, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00f1a7f6 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     predicateResult = quest:IsActiveThreadTerminating()
-    if predicateResult or quest:IsActiveThreadTerminating() then goto LAB_00f1a7f6 end
+    if predicateResult or quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     repeat
         if quest:GetStateInt("ArenaState") == 4 then
             if quest:IsActiveThreadTerminating() then break end
-            quest:ClearHeroEnemyOfGuards(cellsVillage)
+            quest:ClearHeroEnemyOfGuards(quest:GetStateThing("CellsVillage"))
             resources:PrepareResource(meControl)
             while quest:GetStateInt("ArenaState") == 4 do
-                if not quest:NewScriptFrame(me) then goto LAB_00f1a7f6 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
-            quest:ClearHeroEnemyOfGuards(cellsVillage)
+            quest:ClearHeroEnemyOfGuards(quest:GetStateThing("CellsVillage"))
             resources:PrepareResource(meControl)
             while not resources:TryAcquire(meControl, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00f1a7f6 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
             local guardingDoorMarkerLeft = quest:GetThingWithScriptName("GuardingDoorMarkerLeft")
@@ -71,15 +52,15 @@ function Main(quest, me)
         end
         if quest:GetStateBool("NeedBertForSpeech") then
             if quest:IsActiveThreadTerminating() then break end
-            quest:ClearHeroEnemyOfGuards(cellsVillage)
+            quest:ClearHeroEnemyOfGuards(quest:GetStateThing("CellsVillage"))
             resources:PrepareResource(meControl)
             while quest:GetStateBool("NeedBertForSpeech") do
-                if not quest:NewScriptFrame(me) then goto LAB_00f1a7f6 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
             resources:PrepareResource(meControl)
             while not resources:TryAcquire(meControl, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00f1a7f6 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then break end
         end
@@ -140,7 +121,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie2)
         else
-            scratchValue = scratchValue9 | 3
+            scratchValue = scratchValue8 | 3
             if scratchValue & 2 ~= 0 then
                 scratchValue = scratchValue & 0xfffffffd
             end
@@ -148,26 +129,26 @@ function Main(quest, me)
                 scratchValue = scratchValue & 0xfffffffe
             end
             if in_stack_ffffff34 & 0xffffff >> 24 == 0 then
-                scratchValue8 = scratchValue | 4
-                scratchValue9 = scratchValue8
+                scratchValue7 = scratchValue | 4
+                scratchValue8 = scratchValue7
                 if not me:MsgIsHitByHero() then
-                    scratchValue8 = scratchValue | 12
-                    scratchValue9 = scratchValue8
+                    scratchValue7 = scratchValue | 12
+                    scratchValue8 = scratchValue7
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue8 = scratchValue | 28
-                        scratchValue9 = scratchValue8
+                        scratchValue7 = scratchValue | 28
+                        scratchValue8 = scratchValue7
                     end
                 end
-                if scratchValue8 & 16 ~= 0 then
-                    scratchValue8 = scratchValue8 & 0xffffffef
-                    scratchValue9 = scratchValue8
+                if scratchValue7 & 16 ~= 0 then
+                    scratchValue7 = scratchValue7 & 0xffffffef
+                    scratchValue8 = scratchValue7
                 end
-                if scratchValue8 & 8 ~= 0 then
-                    scratchValue8 = scratchValue8 & 0xfffffff7
-                    scratchValue9 = scratchValue8
+                if scratchValue7 & 8 ~= 0 then
+                    scratchValue7 = scratchValue7 & 0xfffffff7
+                    scratchValue8 = scratchValue7
                 end
-                if scratchValue8 & 4 ~= 0 then
-                    scratchValue9 = scratchValue8 & 0xfffffffb
+                if scratchValue7 & 4 ~= 0 then
+                    scratchValue8 = scratchValue7 & 0xfffffffb
                 end
                 if in_stack_ffffff34 & 0xffffff >> 24 == 0 then
                     if not predicateResult then
@@ -196,8 +177,8 @@ function Main(quest, me)
                             ::FLOW_past_lab_00f1a7e9::
                         end
                         quest:ModifyThingHealth(me, 10000.0, false)
-                        quest:EntitySetThingAsAllyOfThing(me, hero)
-                        quest:EntitySetThingAsAllyOfThing(hero, me)
+                        quest:EntitySetThingAsAllyOfThing(me, hero_)
+                        quest:EntitySetThingAsAllyOfThing(hero_, me)
                         quest:SetStateBool("InHitCutsceneAlready", false)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
@@ -216,7 +197,6 @@ function Main(quest, me)
             do return end
         end
     until false
-    ::LAB_00f1a7f6::
     resources:ReleaseResource(resource)
 end
 

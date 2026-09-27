@@ -66,7 +66,7 @@ local quest = setmetatable({}, { __index = function(_, k)
         end
         if k == "IsActiveThreadTerminating" then return terminating end
         if k:match("^GetAll") or k == "GetFollowingEntityList" or k == "GetStateListCopy" then return {} end
-        if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
+        if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With") or k:match("Target$"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)
         end
         if k == "RetailResources" then return RESOURCES end
@@ -145,7 +145,8 @@ return results
 
 # bindings the converter emits ahead of the sidecar: each is a row in docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md
 # (the retail transfer it stands for is named there). Reported as `pendingMethods`, not counted as problems.
-PENDING_BINDINGS = set()   # PersistTransferStringList landed in the sidecar (b2b4697, 2026-09-19)
+PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet in the installed sidecar
+                    'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap'}
 
 
 def registered_methods():

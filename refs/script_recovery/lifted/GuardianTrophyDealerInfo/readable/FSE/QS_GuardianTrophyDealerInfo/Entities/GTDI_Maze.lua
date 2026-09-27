@@ -19,7 +19,7 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e28c8a end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if not quest:IsActiveThreadTerminating() then
         quest:EntitySetAsKillable(me, false, true)
@@ -65,7 +65,8 @@ function Main(quest, me)
             until false
         end
     end
-    goto LAB_00e28c8a
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00e281e0::
     while true do
         quest:NewScriptFrame(me)
@@ -115,7 +116,8 @@ function Main(quest, me)
     quest:PauseAllNonScriptedEntities(false)
     ::LAB_00e28c85::
     resources:ReleaseResource(this_00)
-    goto LAB_00e28c8a
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00e28460::
     while true do
         quest:NewScriptFrame(me)
@@ -160,7 +162,7 @@ function Main(quest, me)
     resources:DestroyActorMap(actorMap2)
     resources:ReleaseResource(resource3)
     ::LAB_00e28674::
-    if quest:IsActiveThreadTerminating() then goto LAB_00e28c8a end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_FIND_TROPHY_DEALER", "V_TrophyDealer", false)
     quest:SetTeleporterAsActive(quest:GetThingWithScriptName("WitchwoodTeleporter"), true)
     quest:ClearThingHasInformation(me)
@@ -169,7 +171,7 @@ function Main(quest, me)
     quest:AddLogbookStoryEntry(130)
     quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
     quest:SetStateBool("PieceOver", true)
-    if quest:IsActiveThreadTerminating() then goto LAB_00e28c8a end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     repeat
         if me:MsgIsHitByHero() then
             goto LAB_00e28814
@@ -189,7 +191,7 @@ function Main(quest, me)
                 quest:EntitySetThingAsAllyOfThing(hero, me)
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00e28c8a end
+                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 end
                 if not quest:IsActiveThreadTerminating() then
                     local movie4 = resources:StartMovie("")
@@ -246,7 +248,6 @@ function Main(quest, me)
             do return end
         end
     until false
-    ::LAB_00e28c8a::
     resources:ReleaseResource(resource)
 end
 

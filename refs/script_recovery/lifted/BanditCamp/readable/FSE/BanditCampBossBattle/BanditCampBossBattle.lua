@@ -86,7 +86,7 @@ end
 function BanditKingMissionProcess(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local readGlobalGameDataFloat, timerId, scratchValue, scratchValue6, resource7
+    local readGlobalGameDataFloat, scratchValue, scratchValue6
     while (1 - (quest:IsLevelLoaded("BanditCampBoss") and 1 or 0)) ~= 0 do
         if not quest:NewScriptFrame() then return end
     end
@@ -129,20 +129,20 @@ function BanditKingMissionProcess(quest)
         scratchValue = 0
         scratchValue6 = 0
         repeat
-            if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
+            if quest:IsActiveThreadTerminating() then return end
             quest:EntitySetAsDrawable(invisibleWall[scratchValue + 1], false)
             scratchValue6 = scratchValue6 + 1
             scratchValue = scratchValue + 1
         until scratchValue6 >= #invisibleWall
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetAsKillable(bossBanditKing, false, true)
     quest:SetStateBool("BanditKingFightStarted", true)
     quest:SetMasterGameState("BodyGuardsMustStandAndWait", true)
     quest:OverrideMusic(23, false, false)
-    resource7 = resources:NewResource()
+    local resource7 = resources:NewResource()
     resources:TryAcquire(resource7, bossBanditKing, 4)
-    timerId = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 5)
     quest:EntitySetFacingAngleTowardsThing(bossBanditKing, hero, false)
     while 0 < quest:GetTimer(timerId) do
@@ -150,7 +150,7 @@ function BanditKingMissionProcess(quest)
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource7)
-            goto LAB_00d11905
+            do return end
         end
     end
     if quest:IsActiveThreadTerminating() then
@@ -163,17 +163,17 @@ function BanditKingMissionProcess(quest)
         quest:DisplayQuestInfo(true)
         local infoElement = quest:AddQuestInfoBar(quest:GetHealth(bossBanditKing), 0.0, {R = 255, G = 0, B = 0, A = 255}, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_TWINBLADE", "", 1.0)
         while C_stk_4c_1 < quest:GetHealth(bossBanditKing) do
-            if not quest:NewScriptFrame() then goto LAB_00d11905 end
+            if not quest:NewScriptFrame() then return end
             quest:UpdateQuestInfoBar(infoElement, quest:GetHealth(bossBanditKing), -1.0, -1.0)
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:DeactivateQuest("Q_BanditCamp_Barriers", 0)
         quest:DisplayQuestInfo(false)
         quest:RemoveQuestInfoElement(infoElement)
         quest:StopOverrideMusic(false)
         quest:ModifyThingHealth(bossBanditKing, C_stk_4c_1 - quest:GetHealth(bossBanditKing), false)
         if bossBanditKing ~= nil and bossBanditKing:IsAlive() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("BanditKingFightEnded", true)
             quest:SetMasterGameState("BodyGuardsMustStandAndWait", false)
             local sister = quest:CreateCreature("CREATURE_SISTER", quest:GetThingWithScriptName("BanditKingSpawn"):GetPos(), "HeroSister")
@@ -218,9 +218,9 @@ function BanditKingMissionProcess(quest)
         quest:SetAbilityAvailability(15, true)
         quest:SetAbilityAvailability(10, true)
         while (1 - (quest:IsLevelLoaded("BanditCampResidential") and 1 or 0)) ~= 0 do
-            if not quest:NewScriptFrame() then goto LAB_00d11905 end
+            if not quest:NewScriptFrame() then return end
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d11905 end
+        if quest:IsActiveThreadTerminating() then return end
         if not quest:GetStateBool("TwinBladeKilled") then
             readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_TwinBladeSavedMorality)
         else
@@ -231,7 +231,6 @@ function BanditKingMissionProcess(quest)
         quest:SetTeleportingAsActive(true)
         quest:SetStateBool("MissionSucceeded", true)
     end
-    ::LAB_00d11905::
 end
 
 -- Q_BanditCampBossBattle.WatchForBanditCampGates (retail 0x00d04770)
@@ -267,7 +266,7 @@ function ProcessHostageCutscenes(quest)
             return
         end
         if quest:IsRegionLoaded("BanditCampCentre") then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+            if quest:IsActiveThreadTerminating() then return end
             -- TODO(native): xStack_78 = xStack_78 | 1;
             local predicateResult = not (campHostage2 ~= nil and not campHostage2:IsNull()) or not (campHostage2 ~= nil and campHostage2:MsgIsKilledBy(""))
             if not predicateResult then goto LAB_00d10034 end
@@ -286,82 +285,80 @@ function ProcessHostageCutscenes(quest)
                 -- TODO(native): xStack_78 = CVar8 & 0xfffffffe;
             end
             if scratchValue4 ~= 0 then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("HostageKilled", true)
             end
         end
         if quest:GetStateBool("HostagesRescued") then
-            if not quest:IsActiveThreadTerminating() then
-                if not quest:GetStateBool("Gate3Open") then
-                    if not quest:IsActiveThreadTerminating() then
-                        quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_HostageMoralityGain))
-                        local resource7 = resources:NewResource()
-                        local resource9 = resources:NewResource()
-                        local resource4 = resources:NewResource()
-                        resource = resource7
-                        resources:TryAcquire(resource7, hero, 4)
-                        resources:TryAcquire(resource9, campHostage2, 4)
-                        resources:TryAcquire(resource4, campHostage, 4)
-                        local actorMap2 = resources:NewActorMap()
-                        resources:SetActor(actorMap2, "HERO", resource7)
-                        resources:SetActor(actorMap2, "HOST1", resource9)
-                        resources:SetActor(actorMap2, "HOST2", resource4)
-                        local movie2 = resources:StartMovie("")
-                        quest:PauseAllNonScriptedEntities(true)
-                        quest:FixMovieSequenceCamera(true)
-                        resources:RunMacro("CS_BANDITCAMP_HOSTAGEFREE", actorMap2, false, true)
-                        quest:FixMovieSequenceCamera(false)
-                        quest:RemoveThing(quest:GetThingWithScriptName("Gate3Guard"), false, true)
-                        quest:SetStateBool("Gate3Open", true)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie2)
-                        resources:DestroyActorMap(actorMap2)
-                        resources:ReleaseResource(resource4)
-                        resources:ReleaseResource(resource9)
-                        resources:ReleaseResource(resource7)
-                    end
-                elseif not quest:IsActiveThreadTerminating() then
-                    quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_HostageMoralityGain))
-                    local resource5 = resources:NewResource()
-                    local resource8 = resources:NewResource()
-                    local resource10 = resources:NewResource()
-                    resources:TryAcquire(resource5, hero, 4)
-                    resources:TryAcquire(resource8, campHostage2, 4)
-                    resources:TryAcquire(resource10, campHostage, 4)
-                    local actorMap3 = resources:NewActorMap()
-                    resources:SetActor(actorMap3, "HERO", resource5)
-                    resources:SetActor(actorMap3, "HOST1", resource8)
-                    resources:SetActor(actorMap3, "HOST2", resource10)
-                    local movie3 = resources:StartMovie("")
-                    quest:PauseAllNonScriptedEntities(true)
-                    quest:FixMovieSequenceCamera(true)
-                    resources:RunMacro("CS_BANDITCAMP_HOSTAGEFREE_NOTOPEN", actorMap3, false, true)
-                    quest:FixMovieSequenceCamera(false)
-                    quest:RemoveThing(quest:GetThingWithScriptName("Gate3Guard"), false, true)
-                    quest:SetStateBool("Gate3Open", true)
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie3)
-                    resources:DestroyActorMap(actorMap3)
-                    resources:ReleaseResource(resource10)
-                    resources:ReleaseResource(resource8)
-                    resources:ReleaseResource(resource5)
-                end
+            if quest:IsActiveThreadTerminating() then return end
+            if not quest:GetStateBool("Gate3Open") then
+                if quest:IsActiveThreadTerminating() then return end
+                quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_HostageMoralityGain))
+                local resource7 = resources:NewResource()
+                local resource9 = resources:NewResource()
+                local resource4 = resources:NewResource()
+                resource = resource7
+                resources:TryAcquire(resource7, hero, 4)
+                resources:TryAcquire(resource9, campHostage2, 4)
+                resources:TryAcquire(resource4, campHostage, 4)
+                local actorMap2 = resources:NewActorMap()
+                resources:SetActor(actorMap2, "HERO", resource7)
+                resources:SetActor(actorMap2, "HOST1", resource9)
+                resources:SetActor(actorMap2, "HOST2", resource4)
+                local movie2 = resources:StartMovie("")
+                quest:PauseAllNonScriptedEntities(true)
+                quest:FixMovieSequenceCamera(true)
+                resources:RunMacro("CS_BANDITCAMP_HOSTAGEFREE", actorMap2, false, true)
+                quest:FixMovieSequenceCamera(false)
+                quest:RemoveThing(quest:GetThingWithScriptName("Gate3Guard"), false, true)
+                quest:SetStateBool("Gate3Open", true)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
+                resources:DestroyActorMap(actorMap2)
+                resources:ReleaseResource(resource4)
+                resources:ReleaseResource(resource9)
+                resources:ReleaseResource(resource7)
+            elseif not quest:IsActiveThreadTerminating() then
+                quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_HostageMoralityGain))
+                local resource5 = resources:NewResource()
+                local resource8 = resources:NewResource()
+                local resource10 = resources:NewResource()
+                resources:TryAcquire(resource5, hero, 4)
+                resources:TryAcquire(resource8, campHostage2, 4)
+                resources:TryAcquire(resource10, campHostage, 4)
+                local actorMap3 = resources:NewActorMap()
+                resources:SetActor(actorMap3, "HERO", resource5)
+                resources:SetActor(actorMap3, "HOST1", resource8)
+                resources:SetActor(actorMap3, "HOST2", resource10)
+                local movie3 = resources:StartMovie("")
+                quest:PauseAllNonScriptedEntities(true)
+                quest:FixMovieSequenceCamera(true)
+                resources:RunMacro("CS_BANDITCAMP_HOSTAGEFREE_NOTOPEN", actorMap3, false, true)
+                quest:FixMovieSequenceCamera(false)
+                quest:RemoveThing(quest:GetThingWithScriptName("Gate3Guard"), false, true)
+                quest:SetStateBool("Gate3Open", true)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie3)
+                resources:DestroyActorMap(actorMap3)
+                resources:ReleaseResource(resource10)
+                resources:ReleaseResource(resource8)
+                resources:ReleaseResource(resource5)
             end
-            goto LAB_00d109cc
+            return
         end
         if not quest:GetStateBool("HostageKilled") then quest:NewScriptFrame(); predicateResult3 = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+        if quest:IsActiveThreadTerminating() then return end
         predicateResult2 = not (campHostage2 ~= nil and campHostage2:IsAlive()) and not (campHostage ~= nil and campHostage:IsAlive())
         if predicateResult2 then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+            if quest:IsActiveThreadTerminating() then return end
             amount = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_DoubleHostageMoralityLoss)
         else
-            if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+            if quest:IsActiveThreadTerminating() then return end
             amount = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_SingleHostageMoralityLoss)
         end
         quest:GiveHeroMorality(amount)
-        if quest:GetStateBool("Gate3Open") then goto LAB_00d109c8 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d109cc end
+        if quest:GetStateBool("Gate3Open") then quest:SetStateBool("Gate3Open", true); return end
+        if quest:IsActiveThreadTerminating() then return end
         movie = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         hero:AcquireControl(4)
@@ -396,16 +393,14 @@ function ProcessHostageCutscenes(quest)
     else
         local defensiveGuardLeader = quest:GetThingWithScriptName("DefensiveGuardLeader")
         quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", defensiveGuardLeader:GetPos(), ""), hero)
-        goto LAB_00d109c8
+        quest:SetStateBool("Gate3Open", true)
+        return
     end
     goto FLOW_past_lab_00d108f6
     ::LAB_00d108f6::
     ::FLOW_past_lab_00d108f6::
-    goto FLOW_past_lab_00d109c8
-    ::LAB_00d109c8::
+    do return end
     quest:SetStateBool("Gate3Open", true)
-    ::FLOW_past_lab_00d109c8::
-    ::LAB_00d109cc::
 end
 
 -- Q_BanditCampBossBattle.WatchForTermination (retail 0x00d04260)
@@ -495,19 +490,18 @@ function CheckForFirstAreaMassacre(quest)
         end
         if not quest:NewScriptFrame() then return end
     until false
-    goto LAB_00d0f608
+    do return end
     ::LAB_00d0f4d7::
     while true do
-        if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:GiveThingBestEnemyTarget(defensiveGuardBandit[scratchValue7 + 1], hero)
         scratchValue10 = scratchValue10 + 1
         scratchValue7 = scratchValue7 + 1
         if #defensiveGuardBandit <= scratchValue10 then break end
     end
     ::LAB_00d0f52f::
-    if quest:IsActiveThreadTerminating() then goto LAB_00d0f608 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", quest:GetThingWithScriptName("DefensiveGuardLeader"):GetPos(), ""), hero)
-    ::LAB_00d0f608::
 end
 
 -- Q_BanditCampBossBattle.CheckForSecondAreaMassacre (retail 0x00d0f640)

@@ -11,8 +11,7 @@ function Main(questObject)
     Quest:AddEntityBinding("MeetSisterMessenger", "MeetSister/Entities/MeetSisterMessenger")
     Quest:AddEntityBinding("MeetSisterSister", "MeetSister/Entities/MeetSisterSister")
     Quest:FinalizeEntityBindings()
-    local ppVar3 = Quest:GetActiveQuestName()
-    Quest:SetQuestCardObjective(ppVar3, "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY", "HauntedHouse", "BarrowFields")
+    Quest:SetQuestCardObjective(Quest:GetActiveQuestName(), "TEXT_QUEST_THERESA_MOTHER_INFO_2_SUMMARY", "HauntedHouse", "BarrowFields")
 end
 
 function OnPersist(questObject, context)

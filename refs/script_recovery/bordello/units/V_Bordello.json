@@ -697,6 +697,42 @@
           "_HEROMAN",
           "_HEROWHORE"
         ]
+      },
+      "helper_E44A40": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00e44a40",
+        "callers": [
+          "Magicman"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": [
+          "OBJECT_HERO_BEARD_01",
+          "OBJECT_HERO_BEARD_02",
+          "OBJECT_HERO_BEARD_03",
+          "OBJECT_HERO_BEARD_CHIN_01",
+          "OBJECT_HERO_BEARD_LONG_01",
+          "OBJECT_HERO_BEARD_MUTTON_01",
+          "OBJECT_HERO_BEARD_TRAMP_01",
+          "OBJECT_HERO_BEARD_WATSON_01"
+        ]
+      },
+      "helper_E44CC0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00e44cc0",
+        "callers": [
+          "Magicman"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": [
+          "OBJECT_HERO_TASHCHINESE_01",
+          "OBJECT_HERO_TASHKHG_01",
+          "OBJECT_HERO_TASHSHERIFF_01",
+          "OBJECT_HERO_TASHSMALL_01",
+          "OBJECT_HERO_TASHSMITH_01",
+          "OBJECT_HERO_TASHTRADER_01"
+        ]
       }
     },
     "fields": {
@@ -744,11 +780,11 @@
         "ClientInUse_0",
         "Bool"
       ],
-      "0x5c": [
+      "0x59": [
         "ClientInUse_1",
         "Bool"
       ],
-      "0x60": [
+      "0x5a": [
         "ClientInUse_2",
         "Bool"
       ],
@@ -786,7 +822,7 @@
         "name": "ClientInUse",
         "element": "bool",
         "base": "0x58",
-        "stride": 4,
+        "stride": 1,
         "count": 3,
         "members": {
           "0x0": [
@@ -799,7 +835,13 @@
     ],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
-    "nestedPdbMembers": {}
+    "nestedPdbMembers": {},
+    "resourceFields": {
+      "0x74": "seh_Boss",
+      "0x84": "seh_Guard",
+      "0x94": "seh_Madam",
+      "0xa4": "seh_Whore"
+    }
   },
   "entities": {
     "Madame": {
@@ -843,7 +885,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "BordelloLady": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloLady",
@@ -908,7 +951,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "BordelloGuard": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloGuard",
@@ -942,7 +986,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "Magicman": {
       "nativeClass": "NScript::CV_BordelloScript::CMagicman",
@@ -971,18 +1016,7 @@
           "address": "0x00cdebe0"
         }
       },
-      "helpers": {
-        "helper_E44A40": {
-          "address": "0x00e44a40",
-          "evidence": "unnamed entity helper",
-          "size": 632
-        },
-        "helper_E44CC0": {
-          "address": "0x00e44cc0",
-          "evidence": "unnamed entity helper",
-          "size": 478
-        }
-      },
+      "helpers": {},
       "fields": {
         "0x1c": [
           "DoneToutIntro",
@@ -996,7 +1030,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "BordelloClient": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloClient",
@@ -1047,7 +1082,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "M_HeroDownstairs": {
       "nativeClass": "NScript::CV_BordelloScript::CM_HeroDownstairs",
@@ -1081,7 +1117,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     },
     "BordelloEntrance": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloEntrance",
@@ -1115,7 +1152,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {}
     }
   }
 }

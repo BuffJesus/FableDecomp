@@ -5,29 +5,18 @@
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult3, conversationId, string
+    local predicateResult, conversationId, string
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 2) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfb974 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00dfb974 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
-        if not quest:NewScriptFrame(me) then goto LAB_00dfb974 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:GetStateBool("CommentedOnBanditCostume") then goto LAB_00dfb588 end
-    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_SHIRT_BANDITCAMP") then goto LAB_00dfb588 end
-    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP") then goto LAB_00dfb588 end
-    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP") then goto LAB_00dfb588 end
-    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP") then goto LAB_00dfb588 end
-    predicateResult = true
-    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP") then goto LAB_00dfb588 end
-    goto FLOW_past_lab_00dfb588
-    ::LAB_00dfb588::
-    predicateResult = false
-    ::FLOW_past_lab_00dfb588::
-    if predicateResult then
+    if not (quest:GetStateBool("CommentedOnBanditCostume") or not quest:IsWearingClothingItem(hero, "OBJECT_HERO_SHIRT_BANDITCAMP") or not quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP") or not quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP") or not quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP") or (not quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP"))) then
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_BANDIT_COSTUME_10"
@@ -43,12 +32,12 @@ function Main(quest, me)
                 end
             end
         end
-        predicateResult3 = true
+        predicateResult = true
         goto FLOW_past_lab_00dfb79f
         ::LAB_00dfb79f::
-        predicateResult3 = false
+        predicateResult = false
         ::FLOW_past_lab_00dfb79f::
-        if predicateResult3 then
+        if predicateResult then
             conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_PART_BANDIT_COSTUME_10"
@@ -78,7 +67,6 @@ function Main(quest, me)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()
-    ::LAB_00dfb974::
     resources:ReleaseResource(resource)
 end
 

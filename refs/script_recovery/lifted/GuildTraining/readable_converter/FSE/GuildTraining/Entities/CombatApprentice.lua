@@ -19,9 +19,9 @@ local waitingForFight
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult3, predicateResult, predicateResult41, scratchValue4, scratchValue5
-    local scratchValue6, scratchValue7, getHealth, scratchValue14, addNewConversation
-    local scratchValue15, index, p0, meleeApprentice, this_00
+    local predicateResult3, predicateResult, scratchValue4, scratchValue5, scratchValue6
+    local scratchValue7, getHealth, scratchValue14, addNewConversation, scratchValue15, index, p0
+    local meleeApprentice, this_00
     local resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -357,14 +357,9 @@ function Main(quest, me)
                         scratchValue7 = 1
                         quest:SetStateBool("FightFinished", true)
                     end
-                    if not (meleeApprentice ~= nil and not meleeApprentice:IsNull()) then
-                        scratchValue4 = 0
-                    else
-                        scratchValue4 = meleeApprentice:MsgIsHitByHeroWithProjectileWeapon() ~= nil
-                    end
-                    if not scratchValue4 then
+                    if not ((meleeApprentice ~= nil and not meleeApprentice:IsNull()) and meleeApprentice:MsgIsHitByHeroWithProjectileWeapon() ~= nil) then
                         if not (meleeApprentice ~= nil and not meleeApprentice:IsNull()) then
-                            scratchValue4 = 0
+                            scratchValue4 = false
                         else
                             scratchValue4 = meleeApprentice:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL)
                         end
@@ -441,19 +436,12 @@ function Main(quest, me)
                         quest:SetStateBool("FightFinished", true)
                     end
                     if not (meleeApprentice ~= nil and not meleeApprentice:IsNull()) then
-                        scratchValue4 = 0
+                        scratchValue4 = false
                     else
                         scratchValue4 = meleeApprentice:MsgIsHitByHero()
                     end
                     if not scratchValue4 then
-                        if not quest:IsPlayerCreatureBlocking() then goto LAB_00d4b8c5 end
-                        if not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")) then goto LAB_00d4b8c5 end
-                        predicateResult41 = true
-                        goto FLOW_past_lab_00d4b8c5
-                        ::LAB_00d4b8c5::
-                        predicateResult41 = false
-                        ::FLOW_past_lab_00d4b8c5::
-                        if predicateResult41 then
+                        if not ((not quest:IsPlayerCreatureBlocking()) or (not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")))) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
                             if quest:GetTimer(addNewConversation) < 1 then
                                 if not quest:IsActiveThreadTerminating() then
@@ -559,7 +547,7 @@ function Main(quest, me)
                                         if not quest:IsActiveThreadTerminating() then
                                             resources:RunMacro("CS_GUILD_DEPARTURE_MELEE_TEST_APLUS_PRIZE", actorMap, false, true)
                                             quest:ClearThingHasInformation(me)
-                                            goto FLOW_native_label_1
+                                            break
                                         end
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(movie7)
@@ -590,10 +578,9 @@ function Main(quest, me)
                                     resources:RunMacro("CS_GUILD_DEPARTURE_MELEE_TEST_F", actorMap, false, true)
                                     break
                                 else
-                                    goto FLOW_native_label_1
+                                    break
                                 end
                             until true
-                            ::FLOW_native_label_1::
                             if quest:GetMasterGameState("GlobalMeleeGrade") < 7 - scratchValue15 then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)

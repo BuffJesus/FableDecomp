@@ -40,11 +40,9 @@ function HilightGuildTeleporter(quest)
     local heroGuildTeleportMarker = quest:GetThingWithScriptName("HERO_GUILD_TELEPORT_MARKER")
     quest:MiniMapAddMarker(heroGuildTeleportMarker, "HUD_ORB_QUEST_CORE")
     while not quest:IsRegionLoaded("Witchwood1") do
-        if not quest:NewScriptFrame() then goto LAB_00ee7326 end
+        if not quest:NewScriptFrame() then return end
     end
-    if not quest:IsActiveThreadTerminating() then
-        quest:MiniMapRemoveMarker(heroGuildTeleportMarker)
-    end
-    ::LAB_00ee7326::
+    if quest:IsActiveThreadTerminating() then return end
+    quest:MiniMapRemoveMarker(heroGuildTeleportMarker)
 end
 

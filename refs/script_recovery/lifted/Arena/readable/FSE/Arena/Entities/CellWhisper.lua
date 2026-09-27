@@ -7,7 +7,7 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, this_00, scratchValue, scratchValue12, movie2, meControl
+    local scratchValue2, scratchValue, scratchValue12, movie2, meControl
     scratchValue12 = 0
     local resource = resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
@@ -24,9 +24,9 @@ function Main(quest, me)
         if me:IsTalkedToByHero() then
             resources:PrepareResource(meControl)
             while not resources:TryAcquire(meControl, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00f17b3f end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00f17b3f end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             local switch1 = math.random(0, 32767) % (quest:GetStateInt("ArenaRound") - 2)
@@ -78,8 +78,9 @@ function Main(quest, me)
                 ::LAB_00f17734::
                 if not quest:IsActiveThreadTerminating() then break end
                 quest:PauseAllNonScriptedEntities(false)
-                this_00 = movie2
-                goto LAB_00f17b36
+                resources:DestroyMovie(movie2)
+                resources:ReleaseResource(resource)
+                do return end
                 ::FLOW_past_lab_00f17734::
             until true
             quest:PauseAllNonScriptedEntities(false)
@@ -118,9 +119,9 @@ function Main(quest, me)
             if scratchValue2 ~= 0 then
                 resources:PrepareResource(meControl)
                 while not resources:TryAcquire(meControl, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00f17b3f end
+                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00f17b3f end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     local movie = resources:StartMovie("")
@@ -133,8 +134,9 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f17b32 end
                         goto FLOW_past_lab_00f17b32
                         ::LAB_00f17b32::
-                        this_00 = movie
-                        goto LAB_00f17b36
+                        resources:DestroyMovie(movie)
+                        resources:ReleaseResource(resource)
+                        do return end
                         ::FLOW_past_lab_00f17b32::
                     end
                     quest:ModifyThingHealth(me, 10000.0, false)
@@ -156,10 +158,7 @@ function Main(quest, me)
     do return end
     ::LAB_00f17af0::
     quest:PauseAllNonScriptedEntities(false)
-    this_00 = movie2
-    ::LAB_00f17b36::
-    resources:DestroyMovie(this_00)
-    ::LAB_00f17b3f::
+    resources:DestroyMovie(movie2)
     resources:ReleaseResource(resource)
 end
 

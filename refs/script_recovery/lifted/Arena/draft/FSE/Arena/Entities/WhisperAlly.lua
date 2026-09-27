@@ -672,6 +672,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_104)
                     return
                 end
+                -- TODO(native): xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);
                 iVar12 = iVar12 + 4
             until not (iVar12 < 0xdc)
             alive = not quest:IsActiveThreadTerminating()

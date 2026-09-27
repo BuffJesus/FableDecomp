@@ -142,7 +142,7 @@ function CheckAnyBanditsKilled(quest)
         msgGetThingsKilledGroups = quest:GetHero():MsgGetThingsKilledGroups()
         if #msgGetThingsKilledGroups ~= 0 then break end
         if quest:GetMasterGameState("BanditCampKillNoBandits") and false then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetMasterGameState("BanditCampKillNoBandits", false)
         end
         sequence = not quest:GetMasterGameState("BanditCampKillManyBandits")
@@ -151,21 +151,21 @@ function CheckAnyBanditsKilled(quest)
             sequence = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= 0
         end
         if sequence then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetMasterGameState("BanditCampKillManyBandits", true)
             quest:UpdateQuestInfoCounter(addQuestInfoCounter, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) - scratchValue8)), -1)
         end
         if not quest:NewScriptFrame() then return end
     end
     ::FLOW_after_lab_00d034ad::
-    if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+    if quest:IsActiveThreadTerminating() then return end
     scratchValue = 0
     if #msgGetThingsKilledGroups ~= 0 then
         repeat
             if msgGetThingsKilledGroups[scratchValue + 1] & 4 == 0 then
                 scratchValue = scratchValue + 1
             else
-                if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+                if quest:IsActiveThreadTerminating() then return end
                 scratchValue7 = scratchValue7 + 1
                 scratchValue = scratchValue + 1
             end
@@ -173,7 +173,7 @@ function CheckAnyBanditsKilled(quest)
     end
     msgGetThingsKilledGroups = {}
     if quest:GetMasterGameState("BanditCampKillNoBandits") and scratchValue7 ~= 0 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetMasterGameState("BanditCampKillNoBandits", false)
     end
     sequence13 = not quest:GetMasterGameState("BanditCampKillManyBandits")
@@ -182,13 +182,12 @@ function CheckAnyBanditsKilled(quest)
         sequence13 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) <= scratchValue8
     end
     if sequence13 then
-        if quest:IsActiveThreadTerminating() then goto LAB_00d03564 end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetMasterGameState("BanditCampKillManyBandits", true)
         quest:UpdateQuestInfoCounter(addQuestInfoCounter, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_BoastBanditKill) - scratchValue8)), -1)
     end
     if not quest:NewScriptFrame() then return end
     goto FLOW_after_lab_00d034ad
-    ::LAB_00d03564::
 end
 
 -- Q_BanditCamp.WatchForEndOfScript (retail 0x00d013a0)

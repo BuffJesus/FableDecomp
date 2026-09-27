@@ -164,7 +164,12 @@ function Main(quest, me)
     while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then goto LAB_00d070e0 end
     end
-    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d070ea end
+    if quest:IsActiveThreadTerminating() then
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie)
+        resources:ReleaseResource(resource)
+        return
+    end
     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
         if not me:Speak(hero, "TEXT_QST_009_GAMES_MASTER_WON", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d06bc5 end
         if quest:IsActiveThreadTerminating() then goto LAB_00d070e0 end
@@ -193,7 +198,9 @@ function Main(quest, me)
     goto LAB_00d06c55
     ::LAB_00d06bc5::
     quest:PauseAllNonScriptedEntities(false)
-    goto LAB_00d070ea
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00d06c7b::
     if not quest:IsActiveThreadTerminating() then goto LAB_00d06c8d end
     goto FLOW_past_lab_00d06c8d
@@ -206,7 +213,6 @@ function Main(quest, me)
     ::FLOW_past_lab_00d06c8d::
     ::LAB_00d070e0::
     quest:PauseAllNonScriptedEntities(false)
-    ::LAB_00d070ea::
     resources:DestroyMovie(movie)
     resources:ReleaseResource(resource)
 end

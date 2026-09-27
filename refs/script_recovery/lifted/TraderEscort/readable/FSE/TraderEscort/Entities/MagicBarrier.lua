@@ -29,7 +29,7 @@ function Main(quest, me)
     end
     createEffectAtPos2 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02", getPos2, getAngleXY11, false)
     while not quest:GetStateBool("TradersShouldBeScared") do
-        if not quest:NewScriptFrame(me) then goto LAB_00e046bf end
+        if not quest:NewScriptFrame(me) then return end
         if not (createEffectAtPos ~= nil and createEffectAtPos:IsAlive()) and not (createEffectAtPos2 ~= nil and createEffectAtPos2:IsAlive()) then
             if not (barrierFX ~= nil and not barrierFX:IsNull()) then
                 getPos3 = {x = 0, y = 0, z = 0}
@@ -55,9 +55,9 @@ function Main(quest, me)
             createEffectAtPos2 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02", getPos4, getAngleXY, false)
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e046bf end
+    if quest:IsActiveThreadTerminating() then return end
     while quest:GetStateBool("TradersShouldBeScared") do
-        if not quest:NewScriptFrame(me) then goto LAB_00e046b6 end
+        if not quest:NewScriptFrame(me) then return end
         if not (createEffectAtPos ~= nil and createEffectAtPos:IsAlive()) and not (createEffectAtPos2 ~= nil and createEffectAtPos2:IsAlive()) then
             if not (barrierFX ~= nil and not barrierFX:IsNull()) then
                 getPos5 = {x = 0, y = 0, z = 0}
@@ -83,7 +83,7 @@ function Main(quest, me)
             createEffectAtPos2 = quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02", getPos6, getAngleXY11, false)
         end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e046b6 end
+    if quest:IsActiveThreadTerminating() then return end
     quest:RemoveThing(createEffectAtPos, false, true)
     quest:RemoveThing(createEffectAtPos2, false, true)
     if not (barrierFX ~= nil and not barrierFX:IsNull()) then
@@ -99,8 +99,6 @@ function Main(quest, me)
     end
     quest:CreateEffectAtPos("NEW_RED_FORCEFIELD_IDLE_02_OFF", getPos8, barrierFX:GetAngleXY(), false)
     quest:RemoveThing(me, false, true)
-    ::LAB_00e046b6::
-    ::LAB_00e046bf::
 end
 
 -- MagicBarrier.Init (retail 0x00e03f30)

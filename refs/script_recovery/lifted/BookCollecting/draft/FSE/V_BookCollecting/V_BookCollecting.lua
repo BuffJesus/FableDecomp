@@ -97,7 +97,7 @@ function null(quest, native_arg_param_1)
     r2 = quest:GetThingWithScriptName("girl0")
     r3 = quest:GetThingWithScriptName(nil --[[missing]])
     r4 = quest:GetThingWithScriptName(nil --[[missing]])
-    this_00 = (this + 0x58)
+    this_00 = resources:MemberResource("seh_Boy")
     resources:TryAcquire(this_00, r1, 4)
     quest:EntityTeleportToThing(r1, r3, false)
     if r1._8_4_ ~= nil then
@@ -109,7 +109,7 @@ function null(quest, native_arg_param_1)
     quest:SetIsPushableByHero(thing, false)
     -- TODO(native): (**(code **)(*(int *)this_00 + 0x58))();
     -- TODO(native): (**(code **)(*(int *)this_00 + 0x28))();
-    this_01 = (this + 0x68)
+    this_01 = resources:MemberResource("seh_Girl")
     resources:TryAcquire(this_01, r2, 4)
     quest:EntityTeleportToThing(r2, r4, false)
     if r2._8_4_ ~= nil then
@@ -396,5 +396,12 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         bVar2 = not alive
     until not (not bVar2)
     ::LAB_00e56cd0::
+end
+
+function helper_E55C60(quest, native_arg_strParam_1)
+    quest:AddRumourCategory(native_arg_strParam_1)
+    quest:AddNewRumourToCategory(native_arg_strParam_1, nil --[[missing]])
+    quest:AddGossipVillage(native_arg_strParam_1, nil --[[missing]])
+    quest:AddGossipFactionToCategory(native_arg_strParam_1, nil --[[missing]])
 end
 

@@ -350,28 +350,27 @@ function MoveToNextWaypoint(quest, me, param1, param2)
         local self0X = self0X164
         while true do
             if not (getThingWithScriptName2 == nil or not (getThingWithScriptName2 ~= nil and getThingWithScriptName2:IsAlive())) then break end
-            if not quest:NewScriptFrame(me) then goto LAB_00ee6a24 end
+            if not quest:NewScriptFrame(me) then return end
             local getStateInt = self0X164 + 1
             -- TODO(native): name field 0x164 (int)
             self0X164 = getStateInt
             if getStateInt < 18 then
-                if getStateInt == self0X and quest:IsActiveThreadTerminating() then goto LAB_00ee6a24 end
+                if getStateInt == self0X and quest:IsActiveThreadTerminating() then return end
             else
-                if quest:IsActiveThreadTerminating() then goto LAB_00ee6a24 end
+                if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): name field 0x164 (undefined4)
                 self0X164 = 0
             end
             local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
             getThingWithScriptName2 = getThingWithScriptName
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00ee6a24 end
+        if quest:IsActiveThreadTerminating() then return end
         if getThingWithScriptName2 == nil then
             getPos = {x = 0, y = 0, z = 0}
         else
             getPos = getThingWithScriptName2:GetPos()
         end
         param2:SetDataString(getPos)
-        ::LAB_00ee6a24::
         return
     end
 end

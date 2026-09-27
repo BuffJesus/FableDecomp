@@ -17,10 +17,10 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local addQuestInfoCounter, addQuestInfoCounter2, isActiveThreadTerminating, guildmasterTeleport
     local scratchValue6, scratchValue7, ctr_154, dummyHits, dummyHits2, questionAnswer
-    local questionAnswer2, questionAnswer3, conversationId, timerId2, switch, getPos, timerId
-    local scratchValue20, newActorMap, movie, actorMap, resource2, timerId3, timerId4, thing
+    local questionAnswer2, questionAnswer3, conversationId, switch, getPos, timerId, scratchValue21
+    local newActorMap, movie, actorMap, resource2, timerId3, timerId4
     guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
-    scratchValue20 = 0
+    scratchValue21 = 0
     while not guildmasterTeleport do
         if not quest:NewScriptFrame(me) then return end
         guildmasterTeleport = quest:GetStateBool("GuildmasterTeleport")
@@ -30,32 +30,34 @@ function Main(quest, me)
     local resource3 = resources:NewResource()
     resources:PrepareResource(resource3)
     while not resources:TryAcquire(resource3, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d55c4f end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d55c4f end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     quest:EntitySetAsKillable(me, false, true)
     quest:SetIsPushableByHero(me, false)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntityTeleportToThing(me, quest:GetThingWithScriptName("M_MeleeTeacherStand"), false)
-    timerId2 = quest:RegisterTimer()
+    local timerId2 = quest:RegisterTimer()
     quest:SetTimer(timerId2, 0)
     scratchValue7 = 1
     repeat
-        if not quest:NewScriptFrame(me) then goto LAB_00d55c46 end
+        if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
         if me:IsTalkedToByHero() then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
             scratchValue7 = 0
         end
         if not quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) or 0 < quest:GetTimer(timerId2) then goto FLOW_native_label_1 end
+        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
         quest:SetTimer(timerId2, 5)
-        switch = scratchValue20
+        switch = scratchValue21
         repeat
             if switch == 0 then
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, hero, false)
                 me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
-                scratchValue20 = 1
+                scratchValue21 = 1
                 break
             else
                 if switch == 1 then
@@ -65,7 +67,7 @@ function Main(quest, me)
                 elseif switch == 2 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_THIRD", me, hero, false)
-                    scratchValue20 = 3
+                    scratchValue21 = 3
                     break
                 elseif switch == 3 then
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)
@@ -74,13 +76,13 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00d53316
                 ::LAB_00d53316::
-                scratchValue20 = 2
+                scratchValue21 = 2
                 ::FLOW_past_lab_00d53316::
             end
         until true
         ::FLOW_native_label_1::
     until scratchValue7 == 0
-    if quest:IsActiveThreadTerminating() then goto LAB_00d55c46 end
+    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
     quest:SetStateBool("WhisperStopFollowing", true)
     resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
@@ -107,7 +109,7 @@ function Main(quest, me)
             if not quest:IsActiveThreadTerminating() then
                 quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_PUNCH")
                 while not quest:MsgIsGameInfoClickedPast() do
-                    if not quest:NewScriptFrame(me) then goto LAB_00d55c46 end
+                    if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
                 end
                 if not quest:IsActiveThreadTerminating() then
                     quest:AddLogbookTutorialEntry("TEXT_QST_LOG_COMBAT_LOCKINGON")
@@ -118,7 +120,7 @@ function Main(quest, me)
         elseif not quest:IsActiveThreadTerminating() then
             quest:DisplayGameInfo("TEXT_QST_028_PREMELEE_INSTRUCTIONS_PUNCH_PC")
             while not quest:MsgIsGameInfoClickedPast() do
-                if not quest:NewScriptFrame(me) then goto LAB_00d55c46 end
+                if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource3); return end
             end
             if not quest:IsActiveThreadTerminating() then
                 quest:AddLogbookTutorialEntryPC("TEXT_QST_LOG_COMBAT_LOCKINGON")
@@ -271,8 +273,7 @@ function Main(quest, me)
                             getPos = preMeleeDummy:GetPos()
                         end
                         newActorMap = {x = getPos.x, y = getPos.y, z = getPos.z}
-                        -- TODO(native): CreateEffect is not a ForgeFSE binding
-                        quest:CreateEffect(thing, "SMASH_DUMMY_01", newActorMap, "", 0.0, false, false)
+                        quest:CreateEffectAtPos("SMASH_DUMMY_01", newActorMap, 0.0, false)
                         quest:FadeOutAndKillEntity(preMeleeDummy, true, 1.0, true)
                         actorMap = resources:NewActorMap()
                         resources:SetActor(actorMap, "HERO", resource2)
@@ -280,8 +281,8 @@ function Main(quest, me)
                         quest:FixMovieSequenceCamera(true)
                         resources:RunMacro("CS_GUILD_PREMELEE_PASSED_SETUP", actorMap, false, false)
                         quest:PauseAllNonScriptedEntities(true)
-                        local scratchValue21 = quest:CreateExperienceOrb(newActorMap, 1)
-                        quest:EntitySetCutsceneBehaviour(scratchValue21, CUTSCENE_BEHAVIOUR_NOT_PAUSED)
+                        local scratchValue22 = quest:CreateExperienceOrb(newActorMap, 1)
+                        quest:EntitySetCutsceneBehaviour(scratchValue22, CUTSCENE_BEHAVIOUR_NOT_PAUSED)
                         resources:RunMacro("CS_GUILD_PREMELEE_PASSED", actorMap, false, true)
                         quest:FixMovieSequenceCamera(false)
                         quest:PauseAllNonScriptedEntities(false)
@@ -307,7 +308,7 @@ function Main(quest, me)
                         ::LAB_00d5439e::
                         timerId3 = quest:RegisterTimer()
                         quest:SetTimer(timerId3, 10)
-                        while scratchValue21 ~= nil and scratchValue21:IsAlive() do
+                        while scratchValue22 ~= nil and scratchValue22:IsAlive() do
                             if not quest:NewScriptFrame(me) then goto LAB_00d55c2b end
                             if quest:GetTimer(timerId3) < 1 then
                                 local conversationId4 = quest:AddNewConversation(me, false, false)
@@ -641,13 +642,12 @@ function Main(quest, me)
         quest:DeregisterTimer(timerId4)
         ::FLOW_past_lab_00d536c0::
     end
-    goto FLOW_past_lab_00d533bb
+    quest:DeregisterTimer(timerId2)
+    resources:ReleaseResource(resource3)
+    do return end
     ::LAB_00d533bb::
     resources:ReleaseResource(resource2)
-    ::FLOW_past_lab_00d533bb::
-    ::LAB_00d55c46::
     quest:DeregisterTimer(timerId2)
-    ::LAB_00d55c4f::
     resources:ReleaseResource(resource3)
 end
 

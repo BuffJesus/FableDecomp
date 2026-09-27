@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, piVar2, piVar5, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, this_00, uVar18, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
+    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, piVar2, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, this_00, uVar18, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
     local alive = true
     C_stk_370 = 0
     xStack_394 = resources:NewResource()
@@ -31,22 +31,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar6 = not alive
     if not bVar6 then
-        piVar5 = xStack_394
-        -- TODO(native): piVar2 = *(__native_entity_state:GetStateInt("self_0x14") + 0x8c)
-        piVar2 = nil --[[unresolved native value]]
-        if piVar2 ~= xStack_394 then
-            if piVar2 ~= nil then
-                -- TODO(native): *piVar2 = *piVar2 + -1;
-                if **(__native_entity_state:GetStateInt("self_0x14") + 0x8c) == 0 then
-                    -- TODO(native): (*(code *)(*(int **)(*(int *)(this + 0x14) + 0x8c))[1])();
-                end
-            end
-            -- TODO(native): *(undefined4 *)(*(int *)(this + 0x14) + 0x88) = uVar3;
-            -- TODO(native): *(int **)(*(int *)(this + 0x14) + 0x8c) = piVar5;
-            if piVar5 ~= nil then
-                -- TODO(native): *piVar5 = *piVar5 + 1;
-            end
-        end
+        resources:AssignResource(resources:MemberResource("seh_ChickenMaster"), xStack_394)
         quest:EntitySetAppearanceMorphSeed(me, 4)
         quest:SetThingHasInformation(me, false, false, false)
         thing_b8 = piVar2
@@ -233,7 +218,7 @@ function Main(quest, me)
                 c_stk_381 = bVar6
                 xStack_33c = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_HITGUYTOP")
+                require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_HITGUYTOP")
                 quest:SetStateBool("RanOff", true)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_33c)
@@ -329,7 +314,7 @@ function Main(quest, me)
                             resources:DestroyMovie(xStack_32c)
                             goto LAB_00e68af4
                         end
-                        helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_INITIALWALK1")
+                        require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK1")
                         quest:SetStateBool("KnowGhostHasGone", true)
                         pCVar14 = quest:GetActiveQuestName()
                         quest:SetQuestCardObjective(pCVar14, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
@@ -395,7 +380,7 @@ function Main(quest, me)
                             resources:DestroyMovie(xStack_34c)
                             goto LAB_00e68af4
                         end
-                        helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_INITIALWALK2")
+                        require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK2")
                         quest:SetStateBool("KnowGhostHasGone", true)
                         pCVar14 = quest:GetActiveQuestName()
                         quest:SetQuestCardObjective(pCVar14, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
@@ -552,7 +537,7 @@ function Main(quest, me)
                         c_stk_381 = bVar6
                         xStack_154 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_HITGUYBOTTOM")
+                        require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_HITGUYBOTTOM")
                         quest:SetStateBool("RanOff", true)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_154)
@@ -941,7 +926,7 @@ function Main(quest, me)
                         ::FLOW_past_lab_00e68a59::
                         goto FLOW_past_lab_00e6743e
                         ::LAB_00e6743e::
-                        helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_INTRO")
+                        require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_INTRO")
                         quest:FadeScreenIn()
                         quest:GiveHeroYesNoQuestion("TEXT_QST_B17_GREETING_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                         iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -964,7 +949,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
                                     if bVar6 then goto LAB_00e68a8f end
-                                    helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), "CS_CHICKING_START")
+                                    require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_START")
                                     __native_entity_state:SetStateBool("HeroHasPlayed", true)
                                     quest:ConfiscateAllHeroWeapons()
                                     quest:SetHeroWillAsUsable(false)
@@ -988,7 +973,7 @@ function Main(quest, me)
                         end
                         goto FLOW_past_lab_00e6760c
                         ::LAB_00e6760c::
-                        helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"), pcVar20)
+                        require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, pcVar20)
                         goto LAB_00e67619
                         ::FLOW_past_lab_00e6760c::
                         goto FLOW_past_lab_00e67619
@@ -1270,7 +1255,7 @@ function Main(quest, me)
                                 xStack_398 = pcVar20
                                 ::LAB_00e6805d::
                                 -- TODO(native): CCharString::CCharString(&xStack_398_2,&xStack_398);
-                                helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"))
+                                -- TODO(native): Game_InitializeArena(*(undefined4 *)(this + 0x14));
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_34c)
                                 CVar27 = 0x1
@@ -1496,7 +1481,7 @@ function Main(quest, me)
                                 xStack_164 = resources:StartMovie("")
                                 quest:PauseAllNonScriptedEntities(true)
                                 -- TODO(native): CCharString::CCharString(&xStack_398_2,&xStack_398);
-                                helper_E68B20(quest, me, __native_entity_state:GetStateInt("self_0x14"))
+                                -- TODO(native): Game_InitializeArena(*(undefined4 *)(this + 0x14));
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_164)
                                 -- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);
@@ -1550,57 +1535,5 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-end
-
-function helper_E68B20(quest, me, native_arg_strParam_1)
-    local pCVar5, piStack_20, piVar1
-    local resources = quest:RetailResources()
-    local xStack_10 = resources:NewResource()
-    local pScriptObject = xStack_10
-    local pThing = quest:GetHero()
-    resources:TryAcquire(pScriptObject, pThing, 4)
-    local xStack_1c = resources:NewActorMap()
-    resources:SetActor(xStack_1c, "HERO", xStack_10)
-    -- TODO(native): pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piStack_20 = *(int **)(this + 0x7c);
-    -- TODO(native): local piVar1 = *(pCVar5 + 0xc)
-    local uVar3 = __native_entity_state:GetStateInt("self_0x78")
-    if piVar1 ~= piStack_20 then
-        if piVar1 ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + -1;
-            if **(pCVar5 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar5 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar5 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar5 + 0xc) = piStack_20;
-        if piStack_20 ~= nil then
-            -- TODO(native): *piStack_20 = *piStack_20 + 1;
-        end
-    end
-    -- TODO(native): pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_1c,&xStack_24);
-    -- TODO(native): piStack_20 = *(int **)(this + 0x8c);
-    -- TODO(native): piVar1 = *(pCVar5 + 0xc)
-    piVar1 = nil --[[unresolved native value]]
-    uVar3 = __native_entity_state:GetStateInt("self_0x88")
-    if piVar1 ~= piStack_20 then
-        if piVar1 ~= nil then
-            -- TODO(native): *piVar1 = *piVar1 + -1;
-            if **(pCVar5 + 0xc) == 0 then
-                -- TODO(native): (*(code *)(*(int **)(pCVar5 + 0xc))[1])();
-            end
-        end
-        -- TODO(native): *(undefined4 *)(pCVar5 + 8) = uVar3;
-        -- TODO(native): *(int **)(pCVar5 + 0xc) = piStack_20;
-        if piStack_20 ~= nil then
-            -- TODO(native): *piStack_20 = *piStack_20 + 1;
-        end
-    end
-    quest:FixMovieSequenceCamera(true)
-    -- TODO(native): RunCutsceneMacro_Func(native_arg_strParam_1,xStack_1c,(void *)0x0,(CTCCarryable *)(this + 0x64),false,true);
-    quest:FixMovieSequenceCamera(false)
-    -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)(this + 0x64));
-    resources:DestroyActorMap(xStack_1c)
-    resources:ReleaseResource(xStack_10)
 end
 

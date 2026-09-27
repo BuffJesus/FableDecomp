@@ -680,6 +680,16 @@
         "bestPdbCandidate": null,
         "score": 0.0,
         "retailStrings": []
+      },
+      "helper_E55C60": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00e55c60",
+        "callers": [
+          "BS_Teacher"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
       }
     },
     "fields": {
@@ -755,7 +765,11 @@
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
-    "nestedPdbMembers": {}
+    "nestedPdbMembers": {},
+    "resourceFields": {
+      "0x58": "seh_Boy",
+      "0x68": "seh_Girl"
+    }
   },
   "entities": {
     "BS_Teacher": {
@@ -786,11 +800,6 @@
         }
       },
       "helpers": {
-        "helper_E55C60": {
-          "address": "0x00e55c60",
-          "evidence": "unnamed entity helper",
-          "size": 122
-        },
         "helper_E55CE0": {
           "address": "0x00e55ce0",
           "evidence": "unnamed entity helper",
@@ -841,7 +850,10 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": []
+      "arrays": [],
+      "resourceFields": {
+        "0x34": "seh_me"
+      }
     }
   }
 }

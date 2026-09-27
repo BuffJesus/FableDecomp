@@ -19,7 +19,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if not bVar3 then
-        -- TODO(native): *(int *)__element("TotalCreatures", 0) = *(int *)__element("TotalCreatures", 0) + 1;
+        quest:SetStateInt("TotalCreatures_0", quest:GetStateInt("TotalCreatures_0") + 1)
         quest:SetStateInt("ExtraCreatures", quest:GetStateInt("ExtraCreatures") + 1)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -38,7 +38,7 @@ function Main(quest, me)
                     if bVar3 then
                         return
                     end
-                    pCVar9 = (__native_entity_state:GetStateInt("self_0x14") + 0x54 + quest:GetStateInt("NewCrowdBaseLevel") * 0x14)
+                    pCVar9 = quest:GetStateString(("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                     pCVar6 = quest:GetHero()
                     pCVar6 = quest:GetNearestWithScriptName(pCVar6, "ArenaSpawn")
                     r1 = quest:PlayCriteriaSoundOnThing(pCVar6, pCVar9)
@@ -61,7 +61,7 @@ function Main(quest, me)
                         if bVar3 then
                             return
                         end
-                        pCVar9 = (__native_entity_state:GetStateInt("self_0x14") + 0x54 + quest:GetStateInt("NewCrowdBaseLevel") * 0x14)
+                        pCVar9 = quest:GetStateString(("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
                         pCVar6 = quest:GetHero()
                         pCVar6 = quest:GetNearestWithScriptName(pCVar6, "ArenaSpawn")
                         r2 = quest:PlayCriteriaSoundOnThing(pCVar6, pCVar9)
@@ -123,7 +123,7 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-    -- TODO(native): *(int *)__element("TotalCreatures", 0) = *(int *)__element("TotalCreatures", 0) + -1;
+    quest:SetStateInt("TotalCreatures_0", quest:GetStateInt("TotalCreatures_0") + -1)
     local cVar2 = me:MsgIsKilledBy("SCRIPT_NAME_HERO")
     if cVar2 then
         quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 8)

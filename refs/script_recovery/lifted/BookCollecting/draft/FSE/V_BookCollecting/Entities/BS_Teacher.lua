@@ -46,7 +46,7 @@ function Main(quest, me)
         if bVar6 then
             return
         end
-        -- TODO(native): helper_E55C60(quest, me, *(this + 0x14))
+        -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
         quest:SetStateInt("GossipState", 1)
     elseif (iVar1 < 4) or (quest:GetStateInt("GossipState") ~= 1) then
         if (9 < iVar1) and (quest:GetStateInt("GossipState") < 3) then
@@ -55,7 +55,7 @@ function Main(quest, me)
             if bVar6 then
                 return
             end
-            -- TODO(native): helper_E55C60(quest, me, *(this + 0x14))
+            -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
             quest:SetStateInt("GossipState", 3)
         end
     else
@@ -148,7 +148,7 @@ function Main(quest, me)
                 -- TODO(native): CVar12 = *(this + 4)
                 CVar12 = nil --[[unresolved native value]]
                 quest:PauseAllNonScriptedEntities(true)
-                pCVar11 = (this + 0x34)
+                pCVar11 = resources:MemberResource("seh_me", me)
                 resources:PrepareResource(pCVar11)
                 bVar6 = resources:TryAcquire(pCVar11, me, 4)
                 while not bVar6 do
@@ -463,7 +463,7 @@ function Main(quest, me)
                         end
                         xStack_10 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        this_00 = (this + 0x34)
+                        this_00 = resources:MemberResource("seh_me", me)
                         resources:PrepareResource(this_00)
                         bVar6 = resources:TryAcquire(this_00, me, 4)
                         while not bVar6 do
@@ -565,13 +565,6 @@ end
 function OnPredicateFail(quest, me)
 end
 
-function helper_E55C60(quest, me, native_arg_strParam_1)
-    quest:AddRumourCategory(native_arg_strParam_1)
-    quest:AddNewRumourToCategory(native_arg_strParam_1, nil --[[missing]])
-    quest:AddGossipVillage(native_arg_strParam_1, nil --[[missing]])
-    quest:AddGossipFactionToCategory(native_arg_strParam_1, nil --[[missing]])
-end
-
 function helper_E55CE0(quest, me, native_arg_param_1)
     local resources = quest:RetailResources()
     local bVar3, cVar4, ePriority, fVar2, fret_0, fret_00, fret_01, fret_02, iVar6, pCVar15, pCVar17, pCVar5, pCVar7, pOther, pcVar11, pvVar9, this_00, uVar10, uVar12, uVar13, uVar14, uVar16, value, xStack_24, xStack_30, xStack_3c, xStack_58
@@ -579,7 +572,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
     value = native_arg_param_1
     uVar10 = 0
     pCVar5 = tostring(native_arg_param_1)
-    ("TEXT_QST_B16_OFFER_BOOK_" .. pCVar5)
+    native_arg_param_1 = ("TEXT_QST_B16_OFFER_BOOK_" .. pCVar5)
     quest:GiveHeroYesNoQuestion(native_arg_param_1, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
     iVar6 = quest:MsgIsQuestionAnsweredYesOrNo()
     while iVar6 < 0 do
@@ -783,7 +776,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
     end
     pOther = this + 0x34
     pCVar5 = tostring(value)
-    ("CS_SCHOOLBOOK_" .. pCVar5)
+    xStack_58 = ("CS_SCHOOLBOOK_" .. pCVar5)
     xStack_24 = resources:NewResource()
     ePriority = 4
     pCVar15 = xStack_24
@@ -939,14 +932,14 @@ function helper_E55CE0(quest, me, native_arg_param_1)
 end
 
 function helper_E56D10(quest, me, native_arg_param_2)
-    local cVar3, iVar7, iVar9, pCVar6, piVar1, piVar2, uStack_14, xStack_24, x_stk_10
+    local cVar3, iVar7, iVar9, pCVar6, piVar1, piVar2, uStack_14, x_stk_10
     local iVar8 = native_arg_param_2
     local pCVar4 = quest:GetHero()
     quest:EntityPostOpinionDeedToRecipient(pCVar4, iVar8, me)
     iVar7 = 0
     local pCVar5 = tostring(0)
-    (DAT_012448ec .. pCVar5)
-    local r1 = quest:GetThingWithScriptName(nil --[[missing]])
+    local xStack_24 = (DAT_012448ec .. pCVar5)
+    local r1 = quest:GetThingWithScriptName(xStack_24)
     while uStack_14 ~= nil do
         -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
         cVar3 = nil --[[unresolved native value]]
@@ -1214,6 +1207,7 @@ function helper_E57020(quest, me)
 end
 
 function helper_E57530(quest, me)
+    local resources = quest:RetailResources()
     local bVar5, cVar6, fVar4, fret_0, fret_00, fret_01, fret_02, iVar7, native_arg_sequence_1, pCVar1, pCVar10, pCVar12, pCVar8, pCVar9, pcVar14, pvVar11, uVar15, uVar16, uVar17, value, xStack_28, x_stk_14, x_stk_18
     local alive = true
     value = 0xffffffff
@@ -1303,7 +1297,7 @@ function helper_E57530(quest, me)
                 if bVar5 then
                     return
                 end
-                pCVar12 = (this + 0x34)
+                pCVar12 = resources:MemberResource("seh_me", me)
                 -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
                 pCVar9 = nil --[[unresolved native value]]
                 fret_00 = quest:GetHealth(nil --[[missing]])
@@ -1345,7 +1339,7 @@ function helper_E57530(quest, me)
                 return
             end
             pCVar12 = tostring(value)
-            ("TEXT_QST_B16_BOOK_REQUEST_" .. pCVar12)
+            x_stk_14 = ("TEXT_QST_B16_BOOK_REQUEST_" .. pCVar12)
             pCVar1 = this + 0x34
             -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
             pCVar9 = nil --[[unresolved native value]]

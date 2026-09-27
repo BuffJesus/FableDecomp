@@ -798,9 +798,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: *(undefined4 *)__element(\"TotalCreatures\", 0) = 0;",
-            "unlifted: *(undefined4 *)__element(\"TotalCreatures\", 1) = 0;",
-            "unlifted: *(undefined4 *)__element(\"TotalCreatures\", 2) = 0;",
             "unlifted: this[iVar2 + 0xe2] = (CQ_ArenaScript)0x0;"
           ],
           "calls": [
@@ -818,6 +815,9 @@
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
             "SetStateInt",
             "SetStateBool",
             "SetStateBool",
@@ -1215,7 +1215,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 706,
+          "lines": 705,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1273,51 +1273,31 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "helper_F25980: 2 helper operands for 1 parameters",
-            "unnamed field 0x48 written in InitialiseVariables",
-            "unnamed field 0x4c written in InitialiseVariables",
-            "unnamed field 0x50 written in InitialiseVariables",
-            "unnamed field 0x54 written in InitialiseVariables",
-            "unnamed field 0x58 written in InitialiseVariables",
-            "unnamed field 0x5c written in InitialiseVariables",
-            "unnamed field 0x60 written in InitialiseVariables",
-            "unnamed field 0x64 written in InitialiseVariables",
-            "unnamed field 0x68 written in InitialiseVariables",
-            "unnamed field 0x6c written in InitialiseVariables",
-            "unnamed field 0x70 written in InitialiseVariables",
-            "unnamed field 0x74 written in InitialiseVariables",
-            "unnamed field 0x78 written in InitialiseVariables",
-            "unnamed field 0x7c written in InitialiseVariables",
-            "unnamed field 0x80 written in InitialiseVariables",
-            "unnamed field 0x84 written in InitialiseVariables",
-            "unnamed field 0x88 written in InitialiseVariables",
-            "unnamed field 0x8c written in InitialiseVariables",
-            "unnamed field 0x90 written in InitialiseVariables",
-            "unlifted: pCVar1 = CCharString::operator=((CCharString *)(this + 0x94),\"ARENA_AWWW\");"
-          ],
+          "todo": [],
           "calls": [
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString",
-            "SetStateString"
+            "ENGINE_InitialiseArenaRounds",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString"
           ],
-          "lines": 40,
+          "lines": 21,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1412,43 +1392,17 @@
             "bsimVoid": true
           },
           "todo": [
-            "unnamed field 0x98",
             "label LAB_00f1f059",
             "label LAB_00f212f0",
             "unlifted: CCharString::CCharString(xStack_a0,(CCharString *)&DAT_0143e8ec);",
-            "unlifted: *(int *)__element(\"TotalCreatures\", 0) = LOCALLIST_Count(xStack_124);",
-            "unnamed field 0x98",
-            "unlifted: *(int *)__element(\"TotalCreatures\", 0) = 0;",
-            "unnamed field 0x98",
-            "unnamed field 0x98",
-            "unnamed field 0x98",
-            "unlifted: this[(int)x_stk_104 + 0xe2] = (CQ_ArenaScript)0x1;",
-            "unnamed field 0x98",
-            "unnamed field 0x98",
-            "unlifted: this[i_stk_b4 + 0xe2] = (CQ_ArenaScript)0x1;",
             "label LAB_00f20181",
-            "unnamed field 0x98",
-            "unnamed field 0x98",
             "unlifted: CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);",
-            "unlifted: *(int *)__element(\"TotalCreatures\", 0) = *(int *)__element(\"TotalCreatures\", 0) + 1;",
-            "unnamed field 0x98",
             "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
-            "unlifted: xStack_108 = (CCharString)((int)CVar14 + 0x38);",
-            "unnamed field 0x98",
             "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
-            "unlifted: *(int *)(xStack_e4 + iVar4) = iVar6;",
-            "unlifted: *(undefined4 *)(xStack_f4 + iVar4) = 0xffffffff;",
-            "unnamed field 0x98",
-            "unlifted: *(int *)(xStack_f4 + iVar4) = iVar6;",
-            "unlifted: xStack_108 = (CCharString)((int)CVar14 + 0x38);",
             "label LAB_00f200e2",
             "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
             "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
-            "unlifted: xStack_e4._0_4_ = xStack_e4._0_4_ + *(int *)(this + 0xdc);",
-            "unnamed field 0x98",
-            "unlifted: *(undefined4 *)__element(\"TotalCreatures\", 0) = 0;",
             "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
-            "unnamed field 0x98",
             "label LAB_00f21107_c14",
             "label LAB_00f211ba",
             "label LAB_00f21107",
@@ -1457,25 +1411,7 @@
             "unlifted: xStack_e4._4_4_ = f_stk_f0 + pCVar13.y;",
             "unlifted: xStack_e4._0_4_ = (float)xStack_f4 + pCVar13.x;",
             "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0xa6c) + (uVar",
-            "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);",
-            "unlifted: if (*(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")) + ",
-            "unlifted: if 0 < *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\"))",
-            "unlifted: if 0 < *(*(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\"",
-            "unlifted: iVar6 = *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")",
-            "unlifted: iVar6 = *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")",
-            "unlifted: iVar6 = *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")",
-            "unlifted: iVar6 = *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")",
-            "unlifted: pCVar5 = quest:CreateCreatureNearby(\"ArenaEnemy\", pCVar13, (*(*(quest:GetStateInt(\"ArenaRo",
-            "unlifted: iVar6 = *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt(\"self_0x98\")",
-            "unlifted: until not (i_stk_b8 < *(*(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetState",
-            "unlifted: until not (ctr_10c < *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + quest:GetStateInt",
-            "unlifted: iVar6 = *__element(\"TotalCreatures\", 0)",
-            "unlifted: iVar6 = quest:AddQuestInfoCounterList(\"ArenaEnemy\", (0x0 + 0x30 + *(*(quest:GetStateInt(\"A",
-            "unlifted: quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar4), *__element(\"TotalCreatures\", 0), -1",
-            "unlifted: quest:UpdateQuestInfoCounterList(*(xStack_f4 + iVar6), *__element(\"TotalCreatures\", 0), -1",
-            "unlifted: xStack_f4 = quest:AddQuestInfoCounterList(\"ArenaEnemy\", (*(*(quest:GetStateInt(\"ArenaRound",
-            "unlifted: quest:RemoveQuestInfoElement(*(xStack_f4 + iVar4))",
-            "unlifted: if iVar4 + 1 == *(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x28 + quest:GetStateInt(\"self_"
+            "unlifted: iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
           ],
           "calls": [
             "GetThingWithScriptName",
@@ -1533,8 +1469,10 @@
             "IsActiveThreadTerminating",
             "GetAllThingsWithScriptName",
             "IsActiveThreadTerminating",
+            "SetStateInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_SetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1543,10 +1481,12 @@
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "SetCreatureCreationDelayFrames",
+            "QUESTSTATE_GetString",
             "GetPos",
             "CreateCreature",
             "IsActiveThreadTerminating",
             "SetCreatureCreationDelayFrames",
+            "QUESTSTATE_GetString",
             "GetPos",
             "CreateCreatureNearby",
             "ResetCreatureCreationDelayFrames",
@@ -1563,6 +1503,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget",
+            "QUESTSTATE_SetBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetDataString",
@@ -1570,10 +1511,12 @@
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "SetCreatureCreationDelayFrames",
+            "QUESTSTATE_GetString",
             "GetPos",
             "CreateCreature",
             "IsActiveThreadTerminating",
             "SetCreatureCreationDelayFrames",
+            "QUESTSTATE_GetString",
             "GetPos",
             "CreateCreatureNearby",
             "ResetCreatureCreationDelayFrames",
@@ -1590,6 +1533,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget",
+            "QUESTSTATE_SetBool",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
@@ -1601,25 +1545,33 @@
             "GetDataString",
             "IsActiveThreadTerminating",
             "SetCreatureCreationDelayFrames",
+            "QUESTSTATE_GetString",
             "GetPos",
             "CreateCreatureNearby",
             "ResetCreatureCreationDelayFrames",
             "EntitySetCutsceneBehaviour",
             "GetHero",
             "GiveThingBestEnemyTarget",
+            "QUESTSTATE_SetInt",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "DeregisterTimer",
             "QUESTTHING_Empty",
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
+            "ENGINE_EmptyList",
+            "ENGINE_EmptyList",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
             "DeregisterTimer",
             "QUESTTHING_Empty",
             "QUESTTHING_Empty",
+            "QUESTSTATE_GetInt",
+            "ENGINE_SetListWord",
+            "ENGINE_SetListWord",
             "IsActiveThreadTerminating",
             "AddQuestInfoCounterList",
+            "ENGINE_SetListWord",
             "IsActiveThreadTerminating",
             "UpdateQuestInfoCounterList",
             "IsActiveThreadTerminating",
@@ -1642,12 +1594,15 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "RemoveQuestInfoElement",
+            "ENGINE_SetListWord",
             "AddQuestInfoCounterList",
+            "ENGINE_SetListWord",
             "SetStateInt",
             "IsLevelLoaded",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_SetInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
@@ -1758,19 +1713,13 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 856,
+          "lines": 859,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Arena.lua:PlayWave",
-                "line": 510,
-                "message": "FSE/Arena/Arena.lua:PlayWave:510: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -1961,808 +1910,6 @@
           ],
           "calls": [],
           "lines": 1,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25980",
-          "address": "0x00f25980",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: xStack_4 = native_arg_param_2[1];",
-            "unlifted: *(int *)this = iVar3;",
-            "unlifted: *(uint *)(this + 8) = uVar2 * 0x38 + iVar3;",
-            "helper_F26B30: 3 helper operands for 1 parameters",
-            "unlifted: xStack_4 = native_arg_param_2[1];",
-            "helper_F26B30: 3 helper operands for 1 parameters",
-            "unlifted: std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelli",
-            "unlifted: *(uint *)(this + 4) = uVar2 * 0x38 + *(int *)this;",
-            "unlifted: iVar3 = *native_arg_param_2",
-            "unlifted: iVar1 = *this",
-            "unlifted: if ((*(this + 8) - iVar1) / 0x38) < uVar2 then",
-            "unlifted: elseif ((*(this + 4) - iVar1) / 0x38) < uVar2 then",
-            "unlifted: helper_F26B30(quest, iVar3, iVar1, &0)",
-            "unlifted: pvVar4 = *(this + 4)",
-            "unlifted: pvVar4 = helper_F26B30(quest, iVar3, iVar1, &native_arg_param_2)"
-          ],
-          "calls": [],
-          "lines": 34,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Arena.lua:helper_F25980",
-                "line": 21,
-                "message": "FSE/Arena/Arena.lua:helper_F25980:21: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F261A0",
-          "address": "0x00f261a0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              },
-              {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "int"
-              },
-              {
-                "native": "param_4",
-                "lua": "native_arg_param_4",
-                "type": "int"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [],
-          "calls": [],
-          "lines": 13,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25AC0",
-          "address": "0x00f25ac0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "this",
-                "lua": "native_arg_this",
-                "type": "std::allocator<CConversation>_> *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: (**(code **)*puVar2)(0);",
-            "unlifted: free(*(void **)native_arg_this);",
-            "unlifted: local puVar1 = *(native_arg_this + 4)",
-            "unlifted: puVar2 = *native_arg_this",
-            "unlifted: if *native_arg_this ~= nil then"
-          ],
-          "calls": [],
-          "lines": 12,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26B30",
-          "address": "0x00f26b30",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "CThingBuildingDef *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: CThingBuildingDef::operator=(this_00,iVar2 + -0x2c);",
-            "unlifted: *(undefined4 *)(this_00 + 0x28) = *(undefined4 *)(iVar2 + -4);",
-            "helper_F26920: 2 helper operands for 1 parameters"
-          ],
-          "calls": [],
-          "lines": 15,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25B00",
-          "address": "0x00f25b00",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "allocator<CTCHeroOnlineScoreboard::CClanMember> *"
-              },
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "CClanMember *"
-              },
-              {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "CClanMember *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: /* [bsim sim=0.8438385635009688 <- ego_r]",
-            "unlifted: void __fastcall",
-            "unlifted: CDefClassBase::CDefClassBase(this,in_EDX);",
-            "unnamed field 0x28 written in helper_F25B00",
-            "helper_F25BB0: 2 helper operands for 1 parameters",
-            "unlifted: quest:SetStateInt(\"self_0x28\", *(in_EDX + 0x28))"
-          ],
-          "calls": [
-            "SetStateInt"
-          ],
-          "lines": 10,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Arena.lua:helper_F25B00",
-                "line": 12,
-                "message": "FSE/Arena/Arena.lua:helper_F25B00:12: <eof> expected near 'end'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26920",
-          "address": "0x00f26920",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: *(int *)this = iVar3;",
-            "unlifted: *(uint *)(this + 8) = uVar1 * 0x3c + iVar3;",
-            "unlifted: CParentDefClassBase::operator=(pCVar4,pCVar5);",
-            "helper_F25C60: 2 helper operands for 1 parameters",
-            "unlifted: CParentDefClassBase::operator=(pCVar4,pCVar5);",
-            "unlifted: (*(code *)**(undefined4 **)pCVar4)(0);",
-            "unlifted: *(uint *)(this + 4) = uVar1 * 0x3c + *(int *)this;",
-            "unlifted: pCVar4 = *this",
-            "unlifted: pCVar5 = *native_arg_param_2",
-            "unlifted: if ((*(this + 8) - pCVar4) / 0x3c) < uVar1 then",
-            "unlifted: uVar2 = (*(this + 4) - pCVar4) / 0x3c",
-            "unlifted: pCVar5 = *(this + 4)",
-            "unlifted: pCVar5 = *(this + 4)"
-          ],
-          "calls": [],
-          "lines": 58,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Arena.lua:helper_F26920",
-                "line": 31,
-                "message": "FSE/Arena/Arena.lua:helper_F26920:31: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25BB0",
-          "address": "0x00f25bb0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "helper_F25C20: 2 helper operands for 1 parameters",
-            "helper_F25C60: 2 helper operands for 1 parameters",
-            "unlifted: *(CParentDefClassBase **)(this + 4) = this_00;",
-            "unlifted: helper_F25C20(quest, (native_arg_param_2[1] - *native_arg_param_2) / 0x3c, &native_arg_par",
-            "unlifted: local this_00 = *this",
-            "unlifted: pCVar3 = *piVar2"
-          ],
-          "calls": [],
-          "lines": 16,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26AE0",
-          "address": "0x00f26ae0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              },
-              {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "CParentDefClassBase *"
-              },
-              {
-                "native": "param_4",
-                "lua": "native_arg_param_4",
-                "type": "CParentDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "helper_F25C60: 2 helper operands for 1 parameters"
-          ],
-          "calls": [],
-          "lines": 16,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26AA0",
-          "address": "0x00f26aa0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "this",
-                "lua": "native_arg_this",
-                "type": "std::allocator<CConversation>_> *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: (**(code **)*puVar2)(0);",
-            "unlifted: free(*(void **)native_arg_this);",
-            "unlifted: local puVar1 = *(native_arg_this + 4)",
-            "unlifted: puVar2 = *native_arg_this",
-            "unlifted: if *native_arg_this ~= nil then"
-          ],
-          "calls": [],
-          "lines": 12,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25F60",
-          "address": "0x00f25f60",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CParentDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);",
-            "unnamed field 0x28 written in helper_F25F60",
-            "helper_F25F90: 2 helper operands for 1 parameters",
-            "unnamed field 0x38 written in helper_F25F60",
-            "unnamed field 0x38",
-            "unlifted: quest:SetStateInt(\"self_0x28\", *(native_arg_param_1 + 0x28))"
-          ],
-          "calls": [
-            "SetStateInt",
-            "SetStateBool"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25C60",
-          "address": "0x00f25c60",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CParentDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);",
-            "unnamed field 0x28 written in helper_F25C60",
-            "helper_F25D20: 2 helper operands for 1 parameters",
-            "unnamed field 0x38 written in helper_F25C60",
-            "unnamed field 0x38",
-            "unlifted: quest:SetStateInt(\"self_0x28\", *(native_arg_param_1 + 0x28))"
-          ],
-          "calls": [
-            "SetStateInt",
-            "SetStateBool"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25C20",
-          "address": "0x00f25c20",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: *(undefined4 *)this = 0;",
-            "unlifted: *(undefined4 *)(this + 4) = 0;",
-            "unlifted: *(undefined4 *)(this + 8) = 0;",
-            "unlifted: *(void **)(this + 8) = (void *)(native_arg_param_2 * 0x3c + (int)pvVar1);",
-            "unlifted: *(void **)this = pvVar1;",
-            "unlifted: *(void **)(this + 4) = pvVar1;"
-          ],
-          "calls": [],
-          "lines": 12,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25F90",
-          "address": "0x00f25f90",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: *(int *)this = iVar5;",
-            "unlifted: *(uint *)(this + 8) = uVar3 * 0x38 + iVar5;",
-            "helper_F25F10: 2 helper operands for 1 parameters",
-            "helper_F25DD0: 2 helper operands for 1 parameters",
-            "helper_F25F10: 2 helper operands for 1 parameters",
-            "unlifted: (*(code *)**(undefined4 **)this_00)(0);",
-            "unlifted: *(uint *)(this + 4) = uVar3 * 0x38 + *(int *)this;",
-            "unlifted: this_00 = *this",
-            "unlifted: pCVar6 = *native_arg_param_2",
-            "unlifted: if ((*(this + 8) - this_00) / 0x38) < uVar3 then",
-            "unlifted: uVar4 = (*(this + 4) - this_00) / 0x38",
-            "unlifted: this_01 = *(this + 4)",
-            "unlifted: pCVar1 = *(this + 4)"
-          ],
-          "calls": [],
-          "lines": 58,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Arena.lua:helper_F25F90",
-                "line": 31,
-                "message": "FSE/Arena/Arena.lua:helper_F25F90:31: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25D20",
-          "address": "0x00f25d20",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "helper_F25D90: 2 helper operands for 1 parameters",
-            "helper_F25DD0: 2 helper operands for 1 parameters",
-            "unlifted: *(COpinionDeedReactionDef **)(this + 4) = this_00;",
-            "unlifted: helper_F25D90(quest, (native_arg_param_2[1] - *native_arg_param_2) / 0x38, &native_arg_par",
-            "unlifted: local this_00 = *this",
-            "unlifted: pCVar3 = *piVar2"
-          ],
-          "calls": [],
-          "lines": 16,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26150",
-          "address": "0x00f26150",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              },
-              {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "COpinionDeedReactionDef *"
-              },
-              {
-                "native": "param_4",
-                "lua": "native_arg_param_4",
-                "type": "COpinionDeedReactionDef *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "helper_F25DD0: 2 helper operands for 1 parameters"
-          ],
-          "calls": [],
-          "lines": 16,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F26110",
-          "address": "0x00f26110",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "this",
-                "lua": "native_arg_this",
-                "type": "std::allocator<CConversation>_> *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: (**(code **)*puVar2)(0);",
-            "unlifted: free(*(void **)native_arg_this);",
-            "unlifted: local puVar1 = *(native_arg_this + 4)",
-            "unlifted: puVar2 = *native_arg_this",
-            "unlifted: if *native_arg_this ~= nil then"
-          ],
-          "calls": [],
-          "lines": 12,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25F10",
-          "address": "0x00f25f10",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "unlifted: CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x28),(CCharString *)(native_arg_param_1 + 0",
-            "unnamed field 0x2c written in helper_F25F10",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x30),(CCharString *)(native_arg_param_1 + 0",
-            "unnamed field 0x34 written in helper_F25F10",
-            "unlifted: quest:SetStateInt(\"self_0x2c\", *(native_arg_param_1 + 0x2c))",
-            "unlifted: quest:SetStateInt(\"self_0x34\", *(native_arg_param_1 + 0x34))"
-          ],
-          "calls": [
-            "SetStateInt",
-            "SetStateInt"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25DD0",
-          "address": "0x00f25dd0",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "COpinionDeedReactionDef *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);",
-            "unlifted: CCharString::CCharString((CCharString *)(this + 0x28),(CCharString *)(native_arg_param_1 +",
-            "unnamed field 0x2c written in helper_F25DD0",
-            "unlifted: CCharString::CCharString((CCharString *)(this + 0x30),(CCharString *)(native_arg_param_1 +",
-            "unnamed field 0x34 written in helper_F25DD0",
-            "unlifted: quest:SetStateInt(\"self_0x2c\", *(native_arg_param_1 + 0x2c))",
-            "unlifted: quest:SetStateInt(\"self_0x34\", *(native_arg_param_1 + 0x34))"
-          ],
-          "calls": [
-            "SetStateInt",
-            "SetStateInt"
-          ],
-          "lines": 8,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Q_Arena",
-          "function": "helper_F25D90",
-          "address": "0x00f25d90",
-          "path": "FSE/Arena/Arena.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: *(undefined4 *)this = 0;",
-            "unlifted: *(undefined4 *)(this + 4) = 0;",
-            "unlifted: *(undefined4 *)(this + 8) = 0;",
-            "unlifted: *(void **)(this + 8) = (void *)(native_arg_param_2 * 0x38 + (int)pvVar1);",
-            "unlifted: *(void **)this = pvVar1;",
-            "unlifted: *(void **)(this + 4) = pvVar1;"
-          ],
-          "calls": [],
-          "lines": 12,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5013,27 +4160,18 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_a8 = *(CCharString *)(pCVar6 + 0x4);",
-            "unnamed field 0x14",
-            "unlifted: *piVar2 = *piVar2 + -1;",
-            "unnamed field 0x14",
-            "unlifted: (*(code *)(*(int **)(*(int *)(this + 0x14) + 0xc8))[1])();",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x14) + 0xc4) = xStack_a8;",
-            "unlifted: *(int **)(*(int *)(this + 0x14) + 0xc8) = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
             "label LAB_00f1a7ed",
             "verify cleanup at LAB_00f1a7b7 (lifted as early return)",
             "verify cleanup at LAB_00f1a7b7 (lifted as early return)",
             "goto LAB_00f1a7ed",
             "verify cleanup at LAB_00f1a7b7 (lifted as early return)",
             "verify cleanup at LAB_00f1a7b7 (lifted as early return)",
-            "goto LAB_00f1a7ed",
-            "unlifted: piVar1 = *(pCVar6 + 0x8)",
-            "unlifted: piVar2 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0xc8)"
+            "goto LAB_00f1a7ed"
           ],
           "calls": [
             "RESOURCE_NewResource",
             "GetNearestWithDefName",
+            "QUESTTHING_Set",
             "QUESTTHING_Empty",
             "EntitySetOpinionReactionsEnabled",
             "EntitySetInFaction",
@@ -5163,19 +4301,13 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 414,
+          "lines": 397,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Entities/ArenaCellDoorGuard2.lua:Main",
-                "line": 16,
-                "message": "FSE/Arena/Entities/ArenaCellDoorGuard2.lua:Main:16: unexpected symbol near '*'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -5310,20 +4442,18 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: *(int *)__element(\"TotalCreatures\", 0) = *(int *)__element(\"TotalCreatures\", 0) + 1;",
-            "unnamed field 0x14",
-            "unnamed field 0x14"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "SetStateInt",
             "SetStateInt",
             "IsActiveThreadTerminating",
             "MsgIsHitByHeroWithFlourish",
             "IsActiveThreadTerminating",
             "GetTimer",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "GetHero",
             "GetNearestWithScriptName",
             "PlayCriteriaSoundOnThing",
@@ -5332,6 +4462,7 @@
             "IsActiveThreadTerminating",
             "GetTimer",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "GetHero",
             "GetNearestWithScriptName",
             "PlayCriteriaSoundOnThing",
@@ -5425,10 +4556,9 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: *(int *)__element(\"TotalCreatures\", 0) = *(int *)__element(\"TotalCreatures\", 0) + -1;"
-          ],
+          "todo": [],
           "calls": [
+            "SetStateInt",
             "MsgIsKilledBy",
             "SetStateInt"
           ],
@@ -5458,8 +4588,6 @@
           "todo": [
             "unnamed field 0x14",
             "unlifted: iVar9 = CBasicString<char>::Compare(*(void **)CVar1,*(void **)CVar2);",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
             "unnamed field 0x14",
             "unlifted: if 0 < *(*(quest:GetStateInt(\"ArenaRound\") * 0x38 + 0x2c + *(__native_entity_state:GetStat",
             "unlifted: iVar9 = *(*(*(iVar9 + 0xa8) * 0x38 + 0x2c + *(iVar9 + 0x98)) + 0x2c + *(iVar9 + 0xac) * 0x",
@@ -5497,6 +4625,7 @@
             "IsActiveThreadTerminating",
             "GetTimer",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "GetHero",
             "GetNearestWithScriptName",
             "PlayCriteriaSoundOnThing",
@@ -5506,6 +4635,7 @@
             "IsActiveThreadTerminating",
             "GetTimer",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "GetHero",
             "GetNearestWithScriptName",
             "PlayCriteriaSoundOnThing",
@@ -5645,30 +4775,28 @@
             "bsimVoid": true
           },
           "todo": [
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "label LAB_00f1b7e2",
-            "unlifted: *(undefined1 *)(*(int *)(this + 0x14) + 0xe2 + iVar4) = 0;",
-            "unlifted: cVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0xe2 + iVar4)",
-            "unlifted: cVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0xe2 + iVar4)"
+            "label LAB_00f1b7e2"
           ],
           "calls": [
             "GetDataString",
             "RegisterTimer",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetBool",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "QUESTSTATE_GetBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "GetPos",
             "CreateEffectAtPos",
+            "QUESTSTATE_SetBool",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "DeregisterTimer"
           ],
-          "lines": 45,
+          "lines": 43,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6229,6 +5357,8 @@
             "MsgHitEnemyWithMeleeWeapon: CScriptThing method not in FSE manifest",
             "label LAB_00f24190_c17",
             "MsgHitEnemyWithMeleeWeapon: CScriptThing method not in FSE manifest",
+            "unnamed field 0x14",
+            "unlifted: xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);",
             "label LAB_00f2431b",
             "label LAB_00f243f6",
             "label LAB_00f243ca",
@@ -6710,7 +5840,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1134,
+          "lines": 1135,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -6872,18 +6002,8 @@
         "runtime": "Lua 5.4",
         "ok": false,
         "checked": 15,
-        "passed": 12,
+        "passed": 14,
         "errors": [
-          {
-            "path": "FSE/Arena/Arena.lua",
-            "line": 2805,
-            "message": "FSE/Arena/Arena.lua:2805: unexpected symbol near '*'"
-          },
-          {
-            "path": "FSE/Arena/Entities/ArenaCellDoorGuard2.lua",
-            "line": 28,
-            "message": "FSE/Arena/Entities/ArenaCellDoorGuard2.lua:28: unexpected symbol near '*'"
-          },
           {
             "path": "FSE/Arena/Entities/Roth.lua",
             "line": 294,
@@ -6892,6 +6012,35 @@
         ]
       },
       "controlMode": "structured draft",
+      "runtimeBoundaries": [
+        {
+          "method": "InitialiseArenaRounds",
+          "nativeCaller": "0x00f25840",
+          "replacedCall": "0x00f25980",
+          "omittedUnreachableContainerBodies": [
+            "0x00f25980",
+            "0x00f25ac0",
+            "0x00f25b00",
+            "0x00f25bb0",
+            "0x00f25c20",
+            "0x00f25c60",
+            "0x00f25d20",
+            "0x00f25d90",
+            "0x00f25dd0",
+            "0x00f25f10",
+            "0x00f25f60",
+            "0x00f25f90",
+            "0x00f26110",
+            "0x00f26150",
+            "0x00f261a0",
+            "0x00f26920",
+            "0x00f26aa0",
+            "0x00f26ae0",
+            "0x00f26b30"
+          ],
+          "implementation": "tools/script_recovery/runtime_bindings/NoviArenaRounds.h"
+        }
+      ],
       "bindingFiles": {
         "Cham": "Arena/Entities/Cham",
         "Flick": "Arena/Entities/Flick",
@@ -6907,9 +6056,6 @@
         "CagedBalverine": "Arena/Entities/CagedBalverine",
         "ArenaCellExitGuard": "Arena/Entities/ArenaCellExitGuard",
         "WhisperAlly": "Arena/Entities/WhisperAlly"
-      },
-      "constructorDefaults": {
-        "Q_Arena": 1
       },
       "cleanupRegions": {
         "FSE/Arena/Arena.lua": {
@@ -7035,27 +6181,6 @@
         "FSE/Arena/Arena.lua": {
           "CrowdChecker": [
             "aiStack_c"
-          ],
-          "PlayWave": [
-            "xStack_108"
-          ],
-          "helper_F25980": [
-            "xStack_4"
-          ],
-          "helper_F25AC0": [
-            "puVar1"
-          ],
-          "helper_F25BB0": [
-            "this_00"
-          ],
-          "helper_F26AA0": [
-            "puVar1"
-          ],
-          "helper_F25D20": [
-            "this_00"
-          ],
-          "helper_F26110": [
-            "puVar1"
           ]
         },
         "FSE/Arena/Entities/Flick.lua": {
@@ -7108,12 +6233,12 @@
       },
       "summary": {
         "owners": 15,
-        "functions": 87,
+        "functions": 68,
         "missing": 0,
-        "functionSyntaxPassed": 80,
-        "fileSyntaxPassed": 12,
+        "functionSyntaxPassed": 67,
+        "fileSyntaxPassed": 14,
         "fileSyntaxChecked": 15,
-        "todo": 451
+        "todo": 247
       }
     },
     {
@@ -7280,11 +6405,11 @@
   ],
   "summary": {
     "owners": 22,
-    "functions": 90,
+    "functions": 71,
     "missing": 0,
-    "functionSyntaxPassed": 83,
-    "fileSyntaxPassed": 19,
+    "functionSyntaxPassed": 70,
+    "fileSyntaxPassed": 21,
     "fileSyntaxChecked": 22,
-    "todo": 451
+    "todo": 247
   }
 }

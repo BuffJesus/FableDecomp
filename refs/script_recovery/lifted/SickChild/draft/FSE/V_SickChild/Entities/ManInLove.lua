@@ -272,6 +272,7 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(true)
                 -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)xStack_138);
                 uVar4 = xStack_158
+                -- TODO(native): xStack_158 = xStack_158 | 4;
                 pCVar7 = quest:GetHero()
                 bVar5 = quest:IsObjectInThingsPossession("", pCVar7)
                 if bVar5 then

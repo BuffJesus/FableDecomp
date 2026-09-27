@@ -16,17 +16,17 @@ function Main(quest, me)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e12162 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12162 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     me:MoveToThing(quest:GetNearestWithScriptName(me, "Q_WB_DeadBody"), 0.30000001192092896, ENTITY_MOVE_RUN)
     while me:IsPerformingScriptTask() do
-        if not quest:NewScriptFrame(me) then goto LAB_00e12162 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12162 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     me:PlayAnimation("ST_FEED_INTO", false, false, true, false, true, false, false)
     me:PlayLoopingAnimation("ST_FEED_LOOP", -1, false, false, true)
-    if quest:IsActiveThreadTerminating() then goto LAB_00e12162 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while true do
         if me:IsAwareOfHero() then break end
         if me:MsgIsHitByHero() then
@@ -53,17 +53,16 @@ function Main(quest, me)
         me:ClearAllActionsIncludingLoopingAnimations()
         me:PlayAnimation("ST_FEED_OUTOF", false, false, true, true, true, false, false)
         while me:IsPerformingScriptTask() do
-            if not quest:NewScriptFrame(me) then goto LAB_00e12162 end
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
         goto LAB_00e12130
     end
-    goto FLOW_past_lab_00e12130
+    resources:ReleaseResource(resource)
+    do return end
     ::LAB_00e12130::
-    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e12130 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     resources:PrepareResource(resource)
-    ::FLOW_past_lab_00e12130::
-    ::LAB_00e12162::
     resources:ReleaseResource(resource)
 end
 

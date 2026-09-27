@@ -7,7 +7,23 @@ local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, switch, p4, p5, hero4, getPos, scratchValue4
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
+    local scratchValue6, switch, hero4, getPos, scratchValue
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(true)
     while not quest:GetStateBool("WhisperCutsceneFinished") do
@@ -35,14 +51,11 @@ function Main(quest, me)
             return
         end
         if me:IsTalkedToByHero() then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d52e1b end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             me:ClearCommands()
-            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-            if 0.0 < fret_0 then
-                p5 = 0
-                p4 = 1
+            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                 me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CHAT", GROUP_SELECT_FIRST, false, true, false)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
@@ -75,36 +88,35 @@ function Main(quest, me)
         end
         local f_stk_94_1 = getPos.z - hero:GetPos().z
         if quest:IsDistanceBetweenThingsUnder(me, preMeleeChatMarker2, 7.0) then
-            local isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 7.0)
-            local sequence = not isDistanceBetweenThingsUnder or 5 < quest:GetTimer(timerId) or 1.0 < math.abs(f_stk_94_1)
+            local sequence = not quest:IsDistanceBetweenThingsUnder(me, hero, 7.0) or 5 < quest:GetTimer(timerId) or 1.0 < math.abs(f_stk_94_1)
             if sequence then goto LAB_00d52d56 end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource)
                 return
             end
-            local f_stk_94_2 = tonumber(preMeleeChatMarker2:GetDataString())
-            scratchValue4 = 0
+            local f_stk_94_2 = parseGameInteger(preMeleeChatMarker2:GetDataString())
+            scratchValue = 0
             local preMeleeChatMarker = quest:GetAllThingsWithScriptName("PreMeleeChatMarker")
             if #preMeleeChatMarker ~= 0 then
-                scratchValue = 0
+                scratchValue6 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    if tonumber(preMeleeChatMarker[scratchValue + 1]:GetDataString()) ~= f_stk_94_2 then scratchValue4 = scratchValue4 + 1; scratchValue = scratchValue + 1; goto continue_3 end
+                    if parseGameInteger(preMeleeChatMarker[scratchValue6 + 1]:GetDataString()) ~= f_stk_94_2 then scratchValue = scratchValue + 1; scratchValue6 = scratchValue6 + 1; goto continue_3 end
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    quest:RemoveThing(preMeleeChatMarker[scratchValue + 1], false, true)
-                    scratchValue4 = scratchValue4 + 1
+                    quest:RemoveThing(preMeleeChatMarker[scratchValue6 + 1], false, true)
                     scratchValue = scratchValue + 1
+                    scratchValue6 = scratchValue6 + 1
                     ::continue_3::
-                until scratchValue4 >= #preMeleeChatMarker
+                until scratchValue >= #preMeleeChatMarker
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
@@ -161,18 +173,16 @@ function Main(quest, me)
                 elseif f_stk_94_2 == 20 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_DINING_ROOM", me, hero, false)
                 else
-                    goto FLOW_native_label_1
+                    break
                 end
             until true
-            ::FLOW_native_label_1::
         end
         ::LAB_00d52d56::
     end
-    if not quest:IsActiveThreadTerminating() then goto LAB_00d52e1b end
+    if not quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
     quest:DeregisterTimer(timerId)
     resources:ReleaseResource(resource)
     do return end
-    ::LAB_00d52e1b::
     quest:DeregisterTimer(timerId)
     resources:ReleaseResource(resource)
 end

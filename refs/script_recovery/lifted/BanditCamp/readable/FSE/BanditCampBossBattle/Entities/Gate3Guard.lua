@@ -9,18 +9,18 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult3, predicateResult, predicateResult20, timerId
-    local scratchValue, scratchValue6
+    local predicateResult2, predicateResult3, predicateResult, predicateResult20, scratchValue
+    local scratchValue6
     scratchValue6 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00d07d05 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     predicateResult20 = quest:IsActiveThreadTerminating()
-    if predicateResult20 then goto LAB_00d07d05 end
-    timerId = quest:RegisterTimer()
+    if predicateResult20 then resources:ReleaseResource(resource); return end
+    local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     quest:SetQuestCardObjective("Q_BanditCamp", "TEXT_QUEST_BANDIT_CAMP_OBJECTIVE_06", "", "BanditCampMain")
     predicateResult2 = quest:IsActiveThreadTerminating()
@@ -174,7 +174,6 @@ function Main(quest, me)
         quest:NewScriptFrame(me)
         predicateResult2 = quest:IsActiveThreadTerminating()
     until false
-    ::LAB_00d07d05::
     resources:ReleaseResource(resource)
 end
 

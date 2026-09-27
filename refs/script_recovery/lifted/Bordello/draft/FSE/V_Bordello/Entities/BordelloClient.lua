@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __push1, __push2, __push3, __push4, __push5, __push6, bVar4, cVar5, fVar16, fVar2, iVar12, iVar17, iVar18, iVar19, iVar21, iVar6, native_arg_sequence_1, p0, pCVar10, pCVar7, pCVar9, pcVar20, piVar15, puVar8, pvVar11, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, xStack_118, xStack_120, xStack_30, xStack_40, xStack_8c, xStack_c4_b3, xStack_dc, xStack_e0_b3, xStack_e4, xStack_e8_2_b3, x_stk_108, x_stk_18
+    local __push1, __push2, __push3, __push4, __push5, __push6, bVar4, cVar5, fVar16, fVar2, iVar12, iVar17, iVar18, iVar19, iVar21, iVar6, native_arg_sequence_1, p0, pCVar10, pCVar7, pCVar9, pcVar20, piVar15, puVar8, pvVar11, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, stack0xfffffee0, xStack_118, xStack_120, xStack_30, xStack_40, xStack_8c, xStack_b4, xStack_c4, xStack_c4_b3, xStack_c8, xStack_dc, xStack_e0, xStack_e0_b3, xStack_e4, xStack_e8_2, xStack_e8_2_b3, x_stk_108, x_stk_18
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -82,7 +82,7 @@ function Main(quest, me)
                 pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                 pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar20)
-                (pCVar9 .. pCVar7)
+                stack0xfffffee0 = (pCVar9 .. pCVar7)
                 xStack_40 = resources:ScriptThing(xStack_118)
                 pCVar10 = xStack_40
                 fVar16 = quest:GetHealth(pCVar10)
@@ -194,7 +194,7 @@ function Main(quest, me)
                                 pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                                 pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                                 pCVar9 = (pCVar9 .. pcVar20)
-                                (pCVar9 .. pCVar7)
+                                xStack_b4 = (pCVar9 .. pCVar7)
                                 x_stk_18 = resources:ScriptThing(xStack_118)
                                 __push1 = x_stk_18
                                 fVar16 = quest:GetHealth(__push1)
@@ -204,6 +204,7 @@ function Main(quest, me)
                                     iVar19 = 1
                                     iVar18 = 0
                                     iVar17 = 0
+                                    pvVar11 = xStack_b4
                                     iVar12 = quest:GetHero()
                                     r4 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                                     iVar12 = me:IsPerformingScriptTask()
@@ -241,7 +242,7 @@ function Main(quest, me)
                             pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                             pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                             pCVar9 = (pCVar9 .. pcVar20)
-                            (pCVar9 .. pCVar7)
+                            xStack_e4 = (pCVar9 .. pCVar7)
                             xStack_40 = resources:ScriptThing(xStack_118)
                             __push2 = xStack_40
                             fVar16 = quest:GetHealth(__push2)
@@ -251,6 +252,7 @@ function Main(quest, me)
                                 iVar19 = 1
                                 iVar18 = 0
                                 iVar17 = 0
+                                pvVar11 = xStack_e4
                                 iVar12 = quest:GetHero()
                                 r5 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                                 iVar12 = me:IsPerformingScriptTask()
@@ -305,7 +307,7 @@ function Main(quest, me)
                                     pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                                     pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                                     pCVar9 = (pCVar9 .. pcVar20)
-                                    (pCVar9 .. pCVar7)
+                                    xStack_c8 = (pCVar9 .. pCVar7)
                                     xStack_30 = resources:ScriptThing(xStack_118)
                                     pCVar10 = xStack_30
                                     fVar16 = quest:GetHealth(pCVar10)
@@ -315,7 +317,7 @@ function Main(quest, me)
                                         iVar19 = 1
                                         iVar18 = 0
                                         iVar17 = 0
-                                        pvVar11 = ""
+                                        pvVar11 = xStack_c8
                                         iVar12 = quest:GetHero()
                                         r6 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                                         iVar12 = me:IsPerformingScriptTask()
@@ -345,14 +347,13 @@ function Main(quest, me)
                                     __push4 = quest:GetNumberOfTimesHeroHasHadSex()
                                     quest:SetNumberOfTimesHeroHasHadSex(__push4)
                                     quest:SetCutsceneSkippable(false)
-                                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= ((CScriptGameResourceObjectScriptedThingBase *)(*(int *)(this + 0x14) + 0xa4),&xStack_120);
+                                    -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_120);
                                     quest:SetStateBool("HeroPartying", true)
                                     pcVar20 = "_LEAVE_01"
                                     pCVar7 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                                     pCVar7 = ("TEXT_QST_B13_CLIENT" .. pCVar7)
                                     pCVar7 = (pCVar7 .. pcVar20)
-                                    -- TODO(native): pCVar9 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[]((map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 0xb4),&xStack_e8_2);
-                                    pCVar9 = pCVar7
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", pCVar7)
                                     -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
                                     quest:SetCutsceneSkippable(true)
                                     __native_entity_state:SetStateInt("BrainState", 3)
@@ -367,7 +368,7 @@ function Main(quest, me)
                                     pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                                     pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                                     pCVar9 = (pCVar9 .. pcVar20)
-                                    (pCVar9 .. pCVar7)
+                                    xStack_c4 = (pCVar9 .. pCVar7)
                                     x_stk_18 = resources:ScriptThing(xStack_120)
                                     __push5 = x_stk_18
                                     fVar16 = quest:GetHealth(__push5)
@@ -377,6 +378,7 @@ function Main(quest, me)
                                         iVar19 = 1
                                         iVar18 = 0
                                         iVar17 = 0
+                                        pvVar11 = xStack_c4
                                         iVar12 = quest:GetHero()
                                         r7 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                                         iVar12 = me:IsPerformingScriptTask()
@@ -435,7 +437,7 @@ function Main(quest, me)
                     pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                     pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                     pCVar9 = (pCVar9 .. pcVar20)
-                    (pCVar9 .. pCVar7)
+                    xStack_e8_2 = (pCVar9 .. pCVar7)
                     xStack_8c = resources:ScriptThing(xStack_118)
                     __push6 = xStack_8c
                     fVar16 = quest:GetHealth(__push6)
@@ -445,7 +447,7 @@ function Main(quest, me)
                         iVar19 = 1
                         iVar18 = 0
                         iVar17 = 0
-                        pvVar11 = "$ENDLINE"
+                        pvVar11 = xStack_e8_2
                         iVar12 = quest:GetHero()
                         r8 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                         iVar12 = me:IsPerformingScriptTask()
@@ -469,7 +471,7 @@ function Main(quest, me)
                     ::LAB_00e46498::
                     __native_entity_state:SetStateInt("NextLine", __native_entity_state:GetStateInt("NextLine") + 1)
                     ::LAB_00e464a0::
-                    resources:Reset((__native_entity_state:GetStateInt("self_0x14") + 0xa4))
+                    resources:PrepareResource(resources:MemberResource("seh_Whore"))
                     resources:PrepareResource(xStack_118)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_dc)
@@ -533,7 +535,7 @@ function Main(quest, me)
                             pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                             pCVar9 = ("TEXT_QST_B13_CLIENT" .. pCVar9)
                             pCVar9 = (pCVar9 .. pcVar20)
-                            (pCVar9 .. pCVar7)
+                            xStack_e4 = (pCVar9 .. pCVar7)
                             xStack_8c = resources:ScriptThing(xStack_118)
                             pCVar10 = xStack_8c
                             fVar16 = quest:GetHealth(pCVar10)
@@ -543,7 +545,7 @@ function Main(quest, me)
                                 iVar18 = 1
                                 iVar17 = 0
                                 iVar12 = 0
-                                pvVar11 = "$ENDLINE"
+                                pvVar11 = xStack_e8_2
                                 iVar6 = quest:GetHero()
                                 r9 = me:Speak(iVar6, pvVar11, iVar12, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
                                 iVar6 = me:IsPerformingScriptTask()
@@ -658,7 +660,7 @@ function Main(quest, me)
                 pCVar9 = tostring(__native_entity_state:GetStateInt("ClientID") + 1)
                 pCVar9 = ("TEXT_QST_B13_WOMAN" .. pCVar9)
                 pCVar9 = (pCVar9 .. pcVar20)
-                (pCVar9 .. pCVar7)
+                xStack_e0 = (pCVar9 .. pCVar7)
                 xStack_30 = resources:ScriptThing(xStack_118)
                 pCVar10 = xStack_30
                 fVar16 = quest:GetHealth(pCVar10)
@@ -668,6 +670,7 @@ function Main(quest, me)
                     iVar19 = 1
                     iVar18 = 0
                     iVar17 = 0
+                    pvVar11 = xStack_e4
                     iVar12 = quest:GetHero()
                     r10 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))
                     iVar12 = me:IsPerformingScriptTask()
@@ -813,7 +816,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local iVar3
+    local clientInUseIndex, iVar3
     quest:SetStateInt("ClientsAlive", quest:GetStateInt("ClientsAlive") + 1)
     __native_entity_state:SetStateInt("BrainState", 1)
     local iVar2 = math.random(0, 32767)
@@ -821,16 +824,15 @@ function Init(quest, me)
     __native_entity_state:SetStateInt("NextLine", 1)
     __native_entity_state:SetStateInt("ClientID", 0)
     __native_entity_state:SetStateInt("SexChance", iVar2 % 5)
-    local pcVar4 = __element("ClientInUse", 0)
+    clientInUseIndex = 0
     repeat
-        -- TODO(native): if *pcVar4 == 0 then
-        if false then
+        if not quest:GetStateBool(("ClientInUse_" .. clientInUseIndex)) then
             __native_entity_state:SetStateInt("ClientID", iVar3)
-            -- TODO(native): *(undefined1 *)(*(int *)(this + 0x14) + 0x58 + iVar3) = 1;
+            quest:SetStateBool(("ClientInUse_" .. iVar3), true)
             break
         end
         iVar3 = iVar3 + 1
-        pcVar4 = pcVar4 + 1
+        clientInUseIndex = clientInUseIndex + 1
     until not (iVar3 < 3)
     quest:SetThingPersistent(me, true)
     quest:EntitySetOpinionReactionMask(me, "OPINION_REACTION_MASK_DONT_SCREAM")

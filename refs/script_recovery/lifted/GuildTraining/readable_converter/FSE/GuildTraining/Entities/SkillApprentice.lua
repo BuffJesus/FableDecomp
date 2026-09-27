@@ -329,7 +329,7 @@ function Main(quest, me)
                         if not quest:IsActiveThreadTerminating() then
                             resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS_PRIZE", actorMap, false, true)
                             quest:ClearThingHasInformation(me)
-                            goto FLOW_native_label_1
+                            break
                         end
                         goto LAB_00d4de05
                     elseif scratchValue27 == 1 then
@@ -351,10 +351,9 @@ function Main(quest, me)
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", actorMap, false, true)
                         break
                     else
-                        goto FLOW_native_label_1
+                        break
                     end
                 until true
-                ::FLOW_native_label_1::
                 if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue27 then
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
                     quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue27)

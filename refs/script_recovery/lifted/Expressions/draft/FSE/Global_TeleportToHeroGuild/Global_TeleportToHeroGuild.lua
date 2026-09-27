@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local __native_condition_1, b2, bVar3, bVar5, cVar4, ePriority, fVar12, fret_0, fret_00, iVar2, iVar9, pCVar6, pCVar7, pCVar8, pScriptObject, r1, r2, uVar10, uVar11, xStack_10, xStack_1c
+    local __native_condition_1, b2, bVar3, bVar5, cVar4, ePriority, fVar12, fret_0, fret_00, iVar9, pCVar6, pCVar7, pCVar8, pScriptObject, r1, uVar10, uVar11, xStack_10, xStack_1c
     local alive = true
     pCVar6 = quest:GetHero()
     alive = quest:NewScriptFrame()
@@ -55,15 +55,14 @@ function Main(quest)
                     return
                 end
                 pCVar6 = quest:GetHero()
-                r2 = quest:GetFollowingEntityList(pCVar6)
+                xStack_1c = quest:GetFollowingEntityList(pCVar6)
                 xStack_10 = resources:NewResource()
                 ePriority = 4
                 pScriptObject = xStack_10
                 pCVar6 = quest:GetHero()
                 resources:TryAcquire(pScriptObject, pCVar6, ePriority)
-                iVar2 = (xStack_1c._4_4_ - xStack_1c._0_4_) >> 0x1f
                 uVar10 = 0
-                if (xStack_1c._4_4_ - xStack_1c._0_4_) / 0xc + iVar2 ~= iVar2 then
+                if #xStack_1c ~= 0 then
                     repeat
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -71,9 +70,10 @@ function Main(quest)
                             resources:ReleaseResource(xStack_10)
                             return
                         end
+                        resources:PerformExpression(xStack_10, xStack_1c[(iVar9) / 0xc + 1], "EXPRESSION_WAIT")
                         uVar10 = uVar10 + 1
                         iVar9 = iVar9 + 0xc
-                    until not (uVar10 < ((xStack_1c._4_4_ - xStack_1c._0_4_) / 0xc))
+                    until not (uVar10 < (#xStack_1c))
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -87,7 +87,7 @@ function Main(quest)
                 fret_00 = pCVar6:GetAngleXY()
                 fVar12 = fret_00
                 pCVar7 = pCVar8:GetPos()
-                quest:SetGuildSealRecallLocation(fVar12, ePriority)
+                quest:SetGuildSealRecallLocation(pCVar7, fVar12)
                 bVar3 = true
                 pCVar6 = r1
                 pCVar8 = quest:GetHero()
@@ -106,7 +106,7 @@ function Main(quest)
             return
         end
         pCVar7 = quest:GetGuildSealRecallPos()
-        if DAT_0129ba3c * DAT_0129ba3c < pCVar7.z * pCVar7.z + pCVar7.y * pCVar7.y + pCVar7.x * pCVar7.x then
+        if 0.0001 * 0.0001 < pCVar7.z * pCVar7.z + pCVar7.y * pCVar7.y + pCVar7.x * pCVar7.x then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
@@ -117,14 +117,14 @@ function Main(quest)
             fVar12 = 0.0
             pCVar7 = quest:GetGuildSealRecallPos()
             pCVar6 = quest:GetHero()
-            quest:EntityTeleportToPosition(pCVar6, nil --[[missing]], fVar12, uVar11, b2)
+            quest:EntityTeleportToPosition(pCVar6, pCVar7, fVar12, uVar11, b2)
             uVar11 = true
             fret_0 = quest:GetGuildSealRecallAngleXY()
             fVar12 = fret_0
             pCVar6 = quest:GetHero()
             quest:EntitySetFacingAngle(pCVar6, fVar12, uVar11)
         end
-        quest:SetGuildSealRecallLocation(0.0, nil --[[missing]])
+        quest:SetGuildSealRecallLocation({x = 0, y = 0, z = 0}, 0.0)
     end
     ::LAB_00cdda68::
     ::LAB_00cdda71::

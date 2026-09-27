@@ -11,18 +11,33 @@ do
 end
 
 function Main(quest, me)
+    local function parseGameInteger(text)
+        local value, negative = 0, false
+        for position = 1, #text do
+            local character = text:sub(position, position)
+            if character == "." then break end
+            if character == "-" then
+                negative = true
+            elseif character >= "0" and character <= "9" then
+                value = (value * 10 + tonumber(character)) % 4294967296
+            end
+        end
+        if negative then value = (-value) % 4294967296 end
+        -- Match the game's signed 32-bit result, including overflow.
+        if value >= 2147483648 then value = value - 4294967296 end
+        return value
+    end
     local bVar3, cVar1, pPosition, r1
     local alive = true
     local p0 = v_stk_14
     local this_00 = me:GetDataString()
-    local iVar4 = tonumber(this_00)
+    local iVar4 = parseGameInteger(this_00)
     local timerId = quest:RegisterTimer()
     local v_stk_14 = timerId
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     while not bVar3 do
-        -- TODO(native): cVar1 = *(__native_entity_state:GetStateInt("self_0x14") + 0xe2 + iVar4)
-        cVar1 = nil --[[unresolved native value]]
+        cVar1 = quest:GetStateBool(("ArenaSpawnNeeded_" .. iVar4))
         while not cVar1 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -31,8 +46,7 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId)
                 return
             end
-            -- TODO(native): cVar1 = *(__native_entity_state:GetStateInt("self_0x14") + 0xe2 + iVar4)
-            cVar1 = nil --[[unresolved native value]]
+            cVar1 = quest:GetStateBool(("ArenaSpawnNeeded_" .. iVar4))
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -50,7 +64,7 @@ function Main(quest, me)
             r1 = quest:CreateEffectAtPos("SUMMON_ARENA", pPosition, (v_stk_14 + 4), 0.0)
             timerId = v_stk_14
         end
-        -- TODO(native): *(undefined1 *)(*(int *)(this + 0x14) + 0xe2 + iVar4) = 0;
+        quest:SetStateBool(("ArenaSpawnNeeded_" .. iVar4), false)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive

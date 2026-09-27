@@ -11,7 +11,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult4, predicateResult5, msgIsHitByHero, predicateResult13
-    local fret_0, fret_00, p0, this_00, movie, movie3
+    local fret_00, p0, this_00, movie
     predicateResult13 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)
@@ -34,21 +34,21 @@ function Main(quest, me)
             return
         end
         if quest:GetMasterGameState("GuildWarningOccuring") then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             resources:PrepareResource(resource)
             while quest:GetMasterGameState("GuildWarningOccuring") do
-                if not quest:NewScriptFrame(me) then goto LAB_00d444a1 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             resources:PrepareResource(resource)
             while not resources:TryAcquire(resource, me, 4) do
-                if not quest:NewScriptFrame(me) then goto LAB_00d444a1 end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         end
         local isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, preMeleeMazeTargetMarker, 4.0) and not me:IsPerformingScriptTask()
         if isDistanceBetweenThingsOver then
-            if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if not (preMeleeMazeTargetMarker ~= nil and not preMeleeMazeTargetMarker:IsNull()) then
                 p0 = {x = 0, y = 0, z = 0}
             else
@@ -75,7 +75,7 @@ function Main(quest, me)
         predicateResult = predicateResult and false
         predicateResult13 = predicateResult13 and false
         if not predicateResult5 then quest:NewScriptFrame(me); predicateResult4 = quest:IsActiveThreadTerminating(); goto continue_2 end
-        if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         me:ClearCommands()
         movie = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
@@ -89,7 +89,9 @@ function Main(quest, me)
             goto FLOW_past_lab_00d44494
             ::LAB_00d44494::
             this_00 = movie
-            goto LAB_00d44498
+            resources:DestroyMovie(this_00)
+            resources:ReleaseResource(resource)
+            do return end
             ::FLOW_past_lab_00d44494::
         end
         me:SetFriendsWithEverythingFlag(true)
@@ -100,11 +102,11 @@ function Main(quest, me)
         ::continue_2::
     end
     ::FLOW_after_lab_00d441bb::
-    if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     me:ClearCommands()
-    movie3 = resources:StartMovie("")
+    local movie3 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
-    fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+    local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
     if fret_0 <= 0.0 then
         goto LAB_00d441a3
     end
@@ -116,7 +118,7 @@ function Main(quest, me)
     predicateResult = predicateResult and false
     predicateResult13 = predicateResult13 and false
     if msgIsHitByHero then
-        if quest:IsActiveThreadTerminating() then goto LAB_00d444a1 end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         me:ClearCommands()
         local movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
@@ -130,7 +132,9 @@ function Main(quest, me)
             goto FLOW_past_lab_00d44494_c1
             ::LAB_00d44494_c1::
             this_00 = movie2
-            goto LAB_00d44498
+            resources:DestroyMovie(this_00)
+            resources:ReleaseResource(resource)
+            do return end
             ::FLOW_past_lab_00d44494_c1::
         end
         me:SetFriendsWithEverythingFlag(true)
@@ -146,15 +150,15 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then
             quest:PauseAllNonScriptedEntities(false)
             this_00 = movie3
-            goto LAB_00d44498
+            resources:DestroyMovie(this_00)
+            resources:ReleaseResource(resource)
+            do return end
         end
     end
     if not quest:IsActiveThreadTerminating() then goto LAB_00d441a3 end
     quest:PauseAllNonScriptedEntities(false)
     this_00 = movie3
-    ::LAB_00d44498::
     resources:DestroyMovie(this_00)
-    ::LAB_00d444a1::
     resources:ReleaseResource(resource)
 end
 

@@ -17,19 +17,19 @@ local screamedAtHero
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, p0_00, fleeingWomanEscapePos
+    local predicateResult, p0_00
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e0f616 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e0f616 end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerDistance)) do
-        if not quest:NewScriptFrame(me) then goto LAB_00e0f616 end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00e0f616 end
-    fleeingWomanEscapePos = quest:GetThingWithScriptName("FleeingWomanEscapePos")
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    local fleeingWomanEscapePos = quest:GetThingWithScriptName("FleeingWomanEscapePos")
     predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
@@ -64,7 +64,6 @@ function Main(quest, me)
         predicateResult = quest:IsActiveThreadTerminating()
         ::continue_1::
     until false
-    ::LAB_00e0f616::
     resources:ReleaseResource(resource)
 end
 
