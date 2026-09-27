@@ -4,7 +4,9 @@
 OnPersist transfer, so it is no longer persisted as a scalar bool (honest TODO; binding missing). Only
 BookCollecting changes. All 55 unit JSONs since regenerated; Lua changes only in BookCollecting (order), Bordello/TourGuide
 (unnamed workers now carry their spawn-site names, WatchForHeroLeavingRegionWithBeer / WatchForNoFollowers).
-See [marathon third checkpoint](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md).
+**Candidate v33 staged** (v32 + 8 files: BookCollecting, Bordello, 3 scalar-copy fixes; pinned adult-chain
+packages untouched; 210 Lua parse, 215 hashes match; NOT installed or run). Next: run v33 in-game when the
+install is free. See [marathon checkpoints 3-5 + v33](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md).
 
 **Marathon checkpoint (2026-09-27):** saved scalar/handle copies now survive dead-store
 cleanup. BookCollecting conversation handles are preserved across animation branches.

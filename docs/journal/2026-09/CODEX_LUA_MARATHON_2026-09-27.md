@@ -130,3 +130,14 @@ its registration function agrees. Test: `test_spawn_site_thread_names.py` (4 pas
 A/B (`work/codex_lua_threads_20260927/`): only the two function names change.
 ChickenKicking's two unnamed bodies (0x00E6AF20, 0x00E6AD20; spawned by an
 unreached entity Init) use an allocation shape no spawn pattern matches; no Lua effect.
+
+## Candidate v33 (staged, not installed or run)
+
+`work/new-oakvale-original-fse-20260912/local-candidate-v33` = v32 + eight refreshed
+files in five packages (BookCollecting, Bordello, SickChild Witch, SummoningTheShip
+BriarRose, GuardianSisterInfo2 MazeAtTavern). A file is refreshed only when v32's copy
+equalled its committed readable source at v32's build commit 9bdb299. The 56 other
+differing roster files were pinned to older, in-game-proven revisions and are kept.
+(A blanket refresh would also have swapped in an older, hand-reviewed GuildTrainingSkill.)
+Offline: 210 Lua parse, 215 manifest hashes match; mock smoke of the five packages vs
+v32: 0 new failures, 1 fixed (teacher `DAT_012448ec`), 10 pre-existing. Sidecar unchanged.
