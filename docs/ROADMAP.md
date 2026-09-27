@@ -141,6 +141,8 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 - Unicorn emulation — assessed 2026-07-27 as optional local pilot; not implemented; not on parity totals — `docs/pipeline/UNICORN_EMULATION_PLAN.md`
 - Co-op revival — RE audits done (`CUT_COOP_MULTIPLAYER.md`); implementation moved to FableForge docs; no active work
 - Installer / settings UI / x64 / broad C++23 modernization — deferred until the reconstructed process reaches the game loop
+  - Scripting redesign (engine-native Lua, generated bindings, explicit async, headless tests) — proposal 2026-09-26, `docs/engine/SCRIPTING_REDESIGN.md`; its "Now" steps (binding table + LuaLS annotations, lint, fake-world test host) can run on ForgeFSE today
+  - In-engine modding environment (Source-style tools mode, mod folders over a read-only install, entity I/O, background bakes; s&box notes) — proposal 2026-09-26, `docs/engine/IN_ENGINE_MODDING_ENVIRONMENT.md`
 
 ## Definitions (grade ladder, lowest to highest)
 
