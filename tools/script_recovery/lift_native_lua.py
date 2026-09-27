@@ -2458,7 +2458,8 @@ class Lifter:
         short-circuit tree inside the loop and break when it is false."""
         def assigned(node):
             if node[0] == 'seq':
-                return [re.match(r'\s*(\w+)', s)[1] for s in node[1]] + assigned(node[2])
+                # (a store through a pointer, `*piVar1 = 7`, names no scalar)
+                return [m[1] for m in (re.match(r'\s*(\w+)\s*=', s) for s in node[1]) if m] + assigned(node[2])
             return [n for child in node[1] for n in assigned(child)] if node[0] in ('and', 'or') else []
         tree = parse_condition_tree(cond)
         for name in assigned(tree):
