@@ -216,6 +216,7 @@ function Main(quest, me)
                     quest:SetStateBool("PlayGuardTooCloseCutscene", false)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_10)
+                    iVar5 = i_stk_70
                 end
                 cVar4 = quest:GetStateBool("HostagesRescued")
             end

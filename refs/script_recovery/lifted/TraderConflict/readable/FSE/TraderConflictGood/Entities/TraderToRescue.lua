@@ -82,6 +82,7 @@ function Main(quest, me)
                 end
             end
             if sequence1 then
+                timerId = timerId5
                 if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e005d5 end
                     quest:EntitySetFacingAngleTowardsThing(me, hero, false)

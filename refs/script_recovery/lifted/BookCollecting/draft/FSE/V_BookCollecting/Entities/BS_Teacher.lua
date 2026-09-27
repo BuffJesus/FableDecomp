@@ -1325,7 +1325,7 @@ function helper_E57530(quest, me)
             pCVar1 = resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
             pCVar9 = nil --[[unresolved native value]]
-            fret_01 = quest:GetHealth(pCVar8)
+            fret_01 = quest:GetHealth(nil --[[missing]])
             fVar4 = 0.0
             if fVar4 < fret_01 then
                 -- TODO(native): iVar7 = *pCVar1
@@ -1361,7 +1361,7 @@ function helper_E57530(quest, me)
         pCVar1 = resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
         pCVar9 = nil --[[unresolved native value]]
-        fret_0 = quest:GetHealth(pCVar8)
+        fret_0 = quest:GetHealth(nil --[[missing]])
         fVar4 = 0.0
         if fret_0 <= fVar4 then
             return
@@ -1399,7 +1399,7 @@ function helper_E57530(quest, me)
     pCVar1 = resources:MemberResource("seh_me", me)
     -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
     pCVar9 = nil --[[unresolved native value]]
-    fret_02 = quest:GetHealth(pCVar8)
+    fret_02 = quest:GetHealth(nil --[[missing]])
     fVar4 = 0.0
     if fret_02 <= fVar4 then
         return

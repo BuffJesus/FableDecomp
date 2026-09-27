@@ -20,7 +20,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | SickChildsSister | Init | 0x00ec6860 | True | 0 |
 | V_SickChild | SickChildsSister | OnPersist | 0x00ecd860 | True | 1 |
 | V_SickChild | SickChildsSister | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| V_SickChild | Witch | Main | 0x00ece7f0 | True | 84 |
+| V_SickChild | Witch | Main | 0x00ece7f0 | True | 86 |
 | V_SickChild | Witch | Init | 0x00ec80c0 | True | 0 |
 | V_SickChild | Witch | OnPersist | 0x00ecd890 | True | 2 |
 | V_SickChild | Witch | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -54,4 +54,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | SickChildFishingSpot | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | SickChildFishingSpot | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 371}`
+Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 373}`

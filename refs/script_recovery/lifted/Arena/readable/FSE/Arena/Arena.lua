@@ -827,9 +827,9 @@ end
 function CrowdChecker(quest)
     local scratchValue, predicateResult, predicateResult9, scratchValue2, scratchValue3
     local scratchValue4, c_stk_151_1, arenaAudience01, newCrowdBaseLevel, scratchValue6
-    local scratchValue7, scratchValue10, scratchValue11, scratchValue13, timerId, timerId3
-    local i_stk_fc_3, switch4, hero39, playCriteriaSoundOnThing, scratchValue22, scratchValue23
-    local scratchValue25, crowdSoundSource
+    local scratchValue7, scratchValue11, scratchValue12, scratchValue14, timerId, timerId3
+    local i_stk_fc_3, switch4, hero39, playCriteriaSoundOnThing, scratchValue23, scratchValue24
+    local scratchValue26, crowdSoundSource
     local hero = quest:GetHero()
     -- TODO(native): aiStack_c[0] = 0;
     -- TODO(native): aiStack_c[1] = 200;
@@ -842,7 +842,7 @@ function CrowdChecker(quest)
     quest:SetTimer(timerId, 0)
     timerId3 = quest:RegisterTimer()
     quest:SetTimer(timerId3, 15)
-    scratchValue13 = -1
+    scratchValue14 = -1
     predicateResult = quest:IsActiveThreadTerminating()
     while true do
         if predicateResult then break end
@@ -852,15 +852,15 @@ function CrowdChecker(quest)
             local cellsExitToArena = quest:GetThingWithScriptName("CellsExitToArena")
             while quest:IsLevelLoaded("ArenaCells") do
                 if not quest:NewScriptFrame() then goto LAB_00f1eba3 end
-                local scratchValue9 = math.random(0, 32767) % 3
-                if scratchValue9 == 0 then
+                local scratchValue10 = math.random(0, 32767) % 3
+                if scratchValue10 == 0 then
                     playCriteriaSoundOnThing = quest:PlayCriteriaSoundOnThing(cellsExitToArena, "ARENA_HECKLE_BIG_MUFFLED_LOOP")
                 else
-                    if scratchValue9 == 1 then
+                    if scratchValue10 == 1 then
                         playCriteriaSoundOnThing = quest:PlayCriteriaSoundOnThing(cellsExitToArena, "ARENA_APPLAUSE_MEDIUM_MUFFLED_LOOP")
                         goto LAB_00f1cf00
                     end
-                    if scratchValue9 == 2 then
+                    if scratchValue10 == 2 then
                         playCriteriaSoundOnThing = quest:PlayCriteriaSoundOnThing(cellsExitToArena, "ARENA_CHANT_MUFFLED_LOOP")
                         goto LAB_00f1cf00
                     end
@@ -955,8 +955,8 @@ function CrowdChecker(quest)
                 quest:DeregisterTimer(timerId)
                 return
             end
-            if not ((scratchValue[scratchValue6] <= quest:GetStateInt("NewCrowdPoints")) or (scratchValue6 == 0)) then scratchValue6 = scratchValue6 - 1; scratchValue10 = -1; goto continue_2 end
-            scratchValue10 = scratchValue6
+            if not ((scratchValue[scratchValue6] <= quest:GetStateInt("NewCrowdPoints")) or (scratchValue6 == 0)) then scratchValue6 = scratchValue6 - 1; scratchValue11 = -1; goto continue_2 end
+            scratchValue11 = scratchValue6
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId3)
                 quest:DeregisterTimer(timerId)
@@ -964,10 +964,10 @@ function CrowdChecker(quest)
             end
             break
             scratchValue6 = scratchValue6 - 1
-            scratchValue10 = -1
+            scratchValue11 = -1
             ::continue_2::
         until not (-1 < scratchValue6)
-        scratchValue13 = scratchValue10
+        scratchValue14 = scratchValue11
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId3)
             quest:DeregisterTimer(timerId)
@@ -983,18 +983,18 @@ function CrowdChecker(quest)
             end
             quest:SetStateInt("NewCrowdPoints", 400)
         end
-        if scratchValue13 ~= quest:GetStateInt("NewCrowdHappiness") or (-1 ~= quest:GetStateInt("NewCrowdBaseLevel")) then
+        if scratchValue14 ~= quest:GetStateInt("NewCrowdHappiness") or (-1 ~= quest:GetStateInt("NewCrowdBaseLevel")) then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId3)
                 quest:DeregisterTimer(timerId)
                 return
             end
             local newCrowdBaseLevel2 = quest:GetStateInt("NewCrowdBaseLevel")
-            quest:SetStateInt("NewCrowdHappiness", scratchValue13)
-            scratchValue22 = 0
+            quest:SetStateInt("NewCrowdHappiness", scratchValue14)
+            scratchValue23 = 0
             newCrowdBaseLevel = newCrowdBaseLevel2
             if #crowdSoundSource ~= 0 then
-                scratchValue11 = 0
+                scratchValue12 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId3)
@@ -1004,13 +1004,13 @@ function CrowdChecker(quest)
                     -- TODO(native): quest:StopSound(*(xStack_12c + uVar9 * 4))
                     quest:Pause(0.2)
                     -- TODO(native): puStack_10 = (uint *)((int)xStack_12c + uVar9 * 4);
-                    quest:PlayCriteriaSoundOnThing(crowdSoundSource[scratchValue11 + 1], quest:GetStateString("CrowdLoopTags_" .. newCrowdBaseLevel2 .. "_" .. scratchValue13))
+                    quest:PlayCriteriaSoundOnThing(crowdSoundSource[scratchValue12 + 1], quest:GetStateString("CrowdLoopTags_" .. newCrowdBaseLevel2 .. "_" .. scratchValue14))
                     -- TODO(native): *puStack_10 = uVar5;
                     c_stk_151_1 = 0
                     quest:Pause(0.3)
-                    scratchValue22 = scratchValue22 + 1
-                    scratchValue11 = scratchValue11 + 1
-                until scratchValue22 >= #crowdSoundSource
+                    scratchValue23 = scratchValue23 + 1
+                    scratchValue12 = scratchValue12 + 1
+                until scratchValue23 >= #crowdSoundSource
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId3)
@@ -1018,7 +1018,7 @@ function CrowdChecker(quest)
                 return
             end
         end
-        scratchValue23 = 0
+        scratchValue24 = 0
         if #arenaAudience01 ~= 0 then
             scratchValue7 = 0
             repeat
@@ -1027,17 +1027,17 @@ function CrowdChecker(quest)
                     quest:DeregisterTimer(timerId)
                     return
                 end
-                if not quest:IsCameraPosOnScreen(arenaAudience01[scratchValue7 + 1]:GetPos()) then scratchValue23 = scratchValue23 + 1; scratchValue7 = scratchValue7 + 1; goto continue_4 end
+                if not quest:IsCameraPosOnScreen(arenaAudience01[scratchValue7 + 1]:GetPos()) then scratchValue24 = scratchValue24 + 1; scratchValue7 = scratchValue7 + 1; goto continue_4 end
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId3)
                     quest:DeregisterTimer(timerId)
                     return
                 end
-                if scratchValue13 == 0 then
-                    local scratchValue19 = math.random(0, 32767) & 0x80000001
-                    scratchValue2 = scratchValue19 == 0
-                    if scratchValue19 < 0 then
-                        scratchValue2 = (scratchValue19 - 1 | 0xfffffffe) == 0xffffffff
+                if scratchValue14 == 0 then
+                    local scratchValue20 = math.random(0, 32767) & 0x80000001
+                    scratchValue2 = scratchValue20 == 0
+                    if scratchValue20 < 0 then
+                        scratchValue2 = (scratchValue20 - 1 | 0xfffffffe) == 0xffffffff
                     end
                     if scratchValue2 then
                         if quest:IsActiveThreadTerminating() then
@@ -1054,11 +1054,11 @@ function CrowdChecker(quest)
                         end
                         quest:EntityPlayObjectAnimation(arenaAudience01[scratchValue7 + 1], "IDLE_BREATHE_01", true)
                     end
-                elseif scratchValue13 == 1 then
-                    local scratchValue21 = math.random(0, 32767) & 0x80000001
-                    scratchValue3 = scratchValue21 == 0
-                    if scratchValue21 < 0 then
-                        scratchValue3 = (scratchValue21 - 1 | 0xfffffffe) == 0xffffffff
+                elseif scratchValue14 == 1 then
+                    local scratchValue22 = math.random(0, 32767) & 0x80000001
+                    scratchValue3 = scratchValue22 == 0
+                    if scratchValue22 < 0 then
+                        scratchValue3 = (scratchValue22 - 1 | 0xfffffffe) == 0xffffffff
                     end
                     if scratchValue3 then
                         if quest:IsActiveThreadTerminating() then
@@ -1075,13 +1075,13 @@ function CrowdChecker(quest)
                         end
                         quest:EntityPlayObjectAnimation(arenaAudience01[scratchValue7 + 1], "CHEER_LOOP_01", true)
                     end
-                elseif scratchValue13 == 2 then
+                elseif scratchValue14 == 2 then
                     quest:EntityPlayObjectAnimation(arenaAudience01[scratchValue7 + 1], "CHEER_LOOP_01", true)
                 end
-                scratchValue23 = scratchValue23 + 1
+                scratchValue24 = scratchValue24 + 1
                 scratchValue7 = scratchValue7 + 1
                 ::continue_4::
-            until scratchValue23 >= #arenaAudience01
+            until scratchValue24 >= #arenaAudience01
         end
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId3)
@@ -1103,7 +1103,7 @@ function CrowdChecker(quest)
             return
         end
         local singleShouter = quest:GetThingWithScriptName("SingleShouter")
-        quest:PlayCriteriaSoundOnThing(singleShouter, quest:GetStateString("CrowdLoopTags_" .. newCrowdBaseLevel .. "_" .. scratchValue13))
+        quest:PlayCriteriaSoundOnThing(singleShouter, quest:GetStateString("CrowdLoopTags_" .. newCrowdBaseLevel .. "_" .. scratchValue14))
         quest:SetTimer(timerId3, math.random(0, 32767) % quest:ReadGlobalGameData(2664) + quest:ReadGlobalGameData(2660))
         local conversationId = quest:AddNewConversation(singleShouter, false, false)
         quest:AddPersonToConversation(conversationId, hero)
@@ -1153,10 +1153,10 @@ function CrowdChecker(quest)
             quest:DeregisterTimer(timerId)
             return
         end
-        scratchValue25 = math.random(0, 32767) & 0x80000001
-        scratchValue4 = scratchValue25 == 0
-        if scratchValue25 < 0 then
-            scratchValue4 = (scratchValue25 - 1 | 0xfffffffe) == 0xffffffff
+        scratchValue26 = math.random(0, 32767) & 0x80000001
+        scratchValue4 = scratchValue26 == 0
+        if scratchValue26 < 0 then
+            scratchValue4 = (scratchValue26 - 1 | 0xfffffffe) == 0xffffffff
         end
         if scratchValue4 then
             if quest:IsActiveThreadTerminating() then
@@ -1398,13 +1398,13 @@ function PlayWave(quest)
         return value
     end
     local scratchValue, scratchValue2, predicateResult37, scratchValue4, creatureCounterIds
-    local creatureGroupIndex, creatureType, ctr_10c, ctr_fc, timerId, createCreatureNearby
-    local scratchValue12, scratchValue13, scratchValue14, count, scratchValue20, scratchValue21
-    local scratchValue22, scratchValue23, scratchValue24, initialCreatureCounts, sequence1, getPos
+    local creatureGroupIndex, creatureType, ctr_10c, ctr_fc, timerId, arenaSpawn2Count
+    local scratchValue14, scratchValue15, scratchValue16, count, scratchValue21, scratchValue22
+    local count2, scratchValue23, scratchValue24, initialCreatureCounts, sequence1, getPos
     local whisperAlly, hero10, scratchValue28, whisperAlly3, hero11, scratchValue32, arenaSpawn
     local savedCreatureGroupIndex, totalCreaturesIndex, totalCreaturesIndex2, scratchValue33
     local multipleBigCreatureSpawnPoint, arenaEnemy, arenaSpawn2, movie, dataString, resource
-    local scratchValue36, createCreatureNearby2, scratchValue38
+    local scratchValue36, createCreatureNearby, scratchValue38
     local bigCreatureSpawnPoint = quest:GetThingWithScriptName("BigCreatureSpawnPoint")
     timerId = quest:RegisterTimer()
     quest:SetStateBool("PauseCrowdChecker", false)
@@ -1440,19 +1440,19 @@ function PlayWave(quest)
     multipleBigCreatureSpawnPoint = quest:GetAllThingsWithScriptName("MultipleBigCreatureSpawnPoint")
     count = #multipleBigCreatureSpawnPoint
     arenaSpawn2 = quest:GetAllThingsWithScriptName("ArenaSpawn")
-    createCreatureNearby = #arenaSpawn2
-    scratchValue22 = createCreatureNearby
+    arenaSpawn2Count = #arenaSpawn2
+    count2 = arenaSpawn2Count
     arenaSpawn = quest:GetFurthestWithScriptName(hero, "ArenaSpawn")
     if arenaSpawn ~= nil then
         dataString = arenaSpawn:GetDataString()
     end
     timerId = parseGameInteger(dataString)
-    scratchValue20 = timerId
+    scratchValue21 = timerId
     scratchValue38 = timerId - 1
     scratchValue4 = 1
     if scratchValue38 == 0xffffffff then
         if quest:IsActiveThreadTerminating() then goto LAB_00f2116f end
-        scratchValue38 = createCreatureNearby - 1
+        scratchValue38 = arenaSpawn2Count - 1
     end
     arenaEnemy = quest:GetAllThingsWithScriptName("ArenaEnemy")
     sequence1 = quest:GetStateInt("ArenaRound") == 0 and quest:GetStateInt("ArenaRoundWave") == 0 and #arenaEnemy ~= 0
@@ -1469,7 +1469,7 @@ function PlayWave(quest)
                 savedCreatureGroupIndex = creatureGroupIndex
                 if quest:IsActiveThreadTerminating() then goto LAB_00f21166 end
                 quest:SetStateInt("TotalCreatures_" .. totalCreaturesIndex, 0)
-                scratchValue21 = 0
+                scratchValue22 = 0
                 if 0 < quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_NumCreatures") then
                     repeat
                         if quest:IsActiveThreadTerminating() then goto LAB_00f21166 end
@@ -1478,7 +1478,7 @@ function PlayWave(quest)
                             if scratchValue4 == 0 then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f20cc5 end
                                 scratchValue24 = 0
-                                if 0 < createCreatureNearby then
+                                if 0 < arenaSpawn2Count then
                                     scratchValue23 = 0
                                     repeat
                                         timerId = scratchValue23
@@ -1525,7 +1525,6 @@ function PlayWave(quest)
                                                 ::LAB_00f1fe22::
                                                 quest:SetStateBool("ArenaSpawnNeeded_" .. scratchValue38, true)
                                                 timerId = scratchValue23
-                                                createCreatureNearby = scratchValue22
                                                 goto LAB_00f1fe48
                                                 ::FLOW_past_lab_00f1fe22::
                                                 ::FLOW_past_lab_00f1fcce::
@@ -1535,23 +1534,23 @@ function PlayWave(quest)
                                         ::LAB_00f1fe48::
                                         scratchValue24 = scratchValue24 + 1
                                         scratchValue23 = timerId + 12
-                                    until scratchValue24 >= createCreatureNearby
+                                    until scratchValue24 >= arenaSpawn2Count
                                 end
                                 scratchValue38 = scratchValue38 - 1
                                 if scratchValue38 == 0xffffffff then
                                     if quest:IsActiveThreadTerminating() then goto LAB_00f20cc5 end
-                                    scratchValue38 = createCreatureNearby - 1
+                                    scratchValue38 = arenaSpawn2Count - 1
                                 end
                                 scratchValue4 = 1
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f20cc5 end
                                 scratchValue23 = 0
-                                if 0 < createCreatureNearby then
+                                if 0 < arenaSpawn2Count then
                                     scratchValue24 = 0
                                     repeat
                                         timerId = scratchValue24
                                         scratchValue32 = arenaSpawn2[scratchValue24 / 12 + 1]:GetDataString()
-                                        if parseGameInteger(scratchValue32) == scratchValue20 then
+                                        if parseGameInteger(scratchValue32) == scratchValue21 then
                                             if not quest:IsActiveThreadTerminating() then
                                                 if quest:GetStateInt("ArenaRound") == 3 then
                                                     if not quest:IsActiveThreadTerminating() then
@@ -1591,9 +1590,8 @@ function PlayWave(quest)
                                                 ::FLOW_past_lab_00f1fa88::
                                                 goto FLOW_past_lab_00f1fa91
                                                 ::LAB_00f1fa91::
-                                                quest:SetStateBool("ArenaSpawnNeeded_" .. scratchValue20, true)
+                                                quest:SetStateBool("ArenaSpawnNeeded_" .. scratchValue21, true)
                                                 timerId = scratchValue24
-                                                createCreatureNearby = scratchValue22
                                                 goto LAB_00f1faba
                                                 ::FLOW_past_lab_00f1fa91::
                                                 ::FLOW_past_lab_00f1f934::
@@ -1603,16 +1601,16 @@ function PlayWave(quest)
                                         ::LAB_00f1faba::
                                         scratchValue23 = scratchValue23 + 1
                                         scratchValue24 = timerId + 12
-                                    until scratchValue23 >= createCreatureNearby
+                                    until scratchValue23 >= arenaSpawn2Count
                                 end
-                                scratchValue20 = (scratchValue20 + 1) % createCreatureNearby
+                                scratchValue21 = (scratchValue21 + 1) % arenaSpawn2Count
                                 scratchValue4 = 0
                             end
                         else
                             if quest:IsActiveThreadTerminating() then goto LAB_00f21166 end
-                            createCreatureNearby2 = nil
+                            createCreatureNearby = nil
                             local predicateResult = quest:IsActiveThreadTerminating()
-                            if createCreatureNearby == 1 then
+                            if arenaSpawn2Count == 1 then
                                 if predicateResult then
                                     goto LAB_00f20cc5
                                 end
@@ -1622,7 +1620,7 @@ function PlayWave(quest)
                                 else
                                     getPos = bigCreatureSpawnPoint:GetPos()
                                 end
-                                createCreatureNearby2 = quest:CreateCreatureNearby(quest:GetStateString("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"), getPos, 1.0, "ArenaEnemy")
+                                createCreatureNearby = quest:CreateCreatureNearby(quest:GetStateString("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"), getPos, 1.0, "ArenaEnemy")
                                 quest:ResetCreatureCreationDelayFrames()
                             else
                                 if predicateResult then
@@ -1633,12 +1631,12 @@ function PlayWave(quest)
                                     timerId = 0
                                     repeat
                                         scratchValue32 = multipleBigCreatureSpawnPoint[timerId / 12 + 1]:GetDataString()
-                                        if parseGameInteger(scratchValue32) ~= scratchValue21 then ctr_fc = ctr_fc + 1; timerId = timerId + 12; goto continue_1 end
+                                        if parseGameInteger(scratchValue32) ~= scratchValue22 then ctr_fc = ctr_fc + 1; timerId = timerId + 12; goto continue_1 end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f20cc5 end
                                         quest:SetCreatureCreationDelayFrames(1)
                                         creatureType = quest:GetStateString("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType")
                                         savedCreatureGroupIndex = creatureGroupIndex
-                                        createCreatureNearby = quest:CreateCreatureNearby(creatureType, multipleBigCreatureSpawnPoint[timerId / 12 + 1]:GetPos(), timerId, "ArenaEnemy")
+                                        quest:CreateCreatureNearby(creatureType, multipleBigCreatureSpawnPoint[timerId / 12 + 1]:GetPos(), timerId, "ArenaEnemy")
                                         -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);
                                         quest:ResetCreatureCreationDelayFrames()
                                         ctr_fc = ctr_fc + 1
@@ -1647,12 +1645,12 @@ function PlayWave(quest)
                                     until ctr_fc >= count
                                 end
                             end
-                            quest:EntitySetCutsceneBehaviour(createCreatureNearby2, CUTSCENE_BEHAVIOUR_PAUSED)
-                            quest:GiveThingBestEnemyTarget(createCreatureNearby2, hero)
+                            quest:EntitySetCutsceneBehaviour(createCreatureNearby, CUTSCENE_BEHAVIOUR_PAUSED)
+                            quest:GiveThingBestEnemyTarget(createCreatureNearby, hero)
                         end
                         quest:SetStateInt("TotalCreatures_" .. totalCreaturesIndex, quest:GetStateInt("TotalCreatures_" .. totalCreaturesIndex) + 1)
-                        scratchValue21 = scratchValue21 + 1
-                    until scratchValue21 >= quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_NumCreatures")
+                        scratchValue22 = scratchValue22 + 1
+                    until scratchValue22 >= quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_NumCreatures")
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId2)
@@ -1701,14 +1699,14 @@ function PlayWave(quest)
     end
     quest:DisplayQuestInfo(true)
     timerId = 0
-    scratchValue12 = 0
+    scratchValue14 = 0
     totalCreaturesIndex2 = 0
     repeat
         if quest:IsActiveThreadTerminating() then goto LAB_00f2049f end
         timerId = timerId + quest:GetStateInt("TotalCreatures_" .. totalCreaturesIndex2)
-        scratchValue12 = scratchValue12 + 1
+        scratchValue14 = scratchValue14 + 1
         totalCreaturesIndex2 = totalCreaturesIndex2 + 1
-    until scratchValue12 >= 3
+    until scratchValue14 >= 3
     if quest:IsActiveThreadTerminating() then
         quest:DeregisterTimer(timerId2)
         -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
@@ -1719,17 +1717,17 @@ function PlayWave(quest)
         timerId = 0
         if quest:IsActiveThreadTerminating() then goto LAB_00f207f4 end
         totalCreaturesIndex2 = 0
-        scratchValue13 = 0
+        scratchValue15 = 0
         repeat
             if quest:IsActiveThreadTerminating() then goto LAB_00f208af end
             timerId = timerId + quest:GetStateInt("TotalCreatures_" .. totalCreaturesIndex2)
-            if 0 < initialCreatureCounts[(scratchValue13 / 4) + 1] then
+            if 0 < initialCreatureCounts[(scratchValue15 / 4) + 1] then
                 if quest:IsActiveThreadTerminating() then goto LAB_00f2096f end
-                quest:UpdateQuestInfoCounterList(creatureCounterIds[(scratchValue13 / 4) + 1], quest:GetStateInt("TotalCreatures_" .. totalCreaturesIndex2), -1)
+                quest:UpdateQuestInfoCounterList(creatureCounterIds[(scratchValue15 / 4) + 1], quest:GetStateInt("TotalCreatures_" .. totalCreaturesIndex2), -1)
             end
-            scratchValue13 = scratchValue13 + 4
+            scratchValue15 = scratchValue15 + 4
             totalCreaturesIndex2 = totalCreaturesIndex2 + 1
-        until scratchValue13 >= 12
+        until scratchValue15 >= 12
         if quest:IsActiveThreadTerminating() then goto LAB_00f20a2f end
         if quest:GetStateInt("ExtraCreatures") ~= 0 then
             if quest:IsActiveThreadTerminating() then goto LAB_00f20ca1 end
@@ -1741,14 +1739,14 @@ function PlayWave(quest)
         if not quest:IsLevelLoaded("Arena") then
             if quest:IsActiveThreadTerminating() then goto LAB_00f20ca1 end
             quest:SetStateBool("PlayerLeaving", true)
-            scratchValue14 = 0
+            scratchValue16 = 0
             totalCreaturesIndex2 = 0
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00f20ca1 end
                 quest:SetStateInt("TotalCreatures_" .. totalCreaturesIndex2, 0)
-                scratchValue14 = scratchValue14 + 1
+                scratchValue16 = scratchValue16 + 1
                 totalCreaturesIndex2 = totalCreaturesIndex2 + 1
-            until scratchValue14 >= 3
+            until scratchValue16 >= 3
             if quest:IsActiveThreadTerminating() then goto LAB_00f20ca1 end
         end
     end
@@ -1768,6 +1766,7 @@ function PlayWave(quest)
     ::LAB_00f2096f::
     goto LAB_00f20ae2
     ::LAB_00f20b8b::
+    timerId = timerId2
     goto LAB_00f21195
     ::LAB_00f20700::
     while true do

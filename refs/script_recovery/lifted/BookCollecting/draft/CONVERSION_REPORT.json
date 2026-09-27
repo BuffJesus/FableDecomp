@@ -274,7 +274,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 123,
+          "lines": 127,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1066,10 +1066,13 @@
             "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: (**(code **)((int)x_stk_14 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);",
             "unlifted: iVar7 = *(iVar7 + 0x94)",
             "unlifted: if (ctr_CVar13 == quest:GetStateInt(\"LastBookRequested\")) or (*(ctr_CVar13 + *(__native_en",
@@ -1249,7 +1252,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 170
+        "todo": 173
       }
     }
   ],
@@ -1260,6 +1263,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 170
+    "todo": 173
   }
 }

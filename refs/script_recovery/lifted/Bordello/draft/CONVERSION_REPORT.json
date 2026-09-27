@@ -1154,7 +1154,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1209,
+          "lines": 1211,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2215,6 +2215,7 @@
             "unlifted: xStack_2bc = (undefined **)**(int **)(this + 4);",
             "unlifted: xStack_344 = (int *)(*(code *)xStack_2bc[0x46])();",
             "unlifted: (*(code *)xStack_2bc[0x16e])(__push17,__push19,0,(this + 8),__unknown_push);",
+            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "label LAB_00e43023",
             "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
             "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
@@ -2898,7 +2899,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 1841,
+          "lines": 1843,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3934,7 +3935,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 140
+        "todo": 141
       }
     }
   ],
@@ -3945,6 +3946,6 @@
     "functionSyntaxPassed": 42,
     "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 9,
-    "todo": 140
+    "todo": 141
   }
 }

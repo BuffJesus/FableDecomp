@@ -170,6 +170,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
             goto LAB_00e56b54
         else
             bVar2 = false
+            iVar6 = i_stk_10
             if not bVar2 then goto LAB_00e56c30 end
             goto LAB_00e56b84
         end
@@ -197,6 +198,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     if bVar2 then goto LAB_00e56cd0 end
     pCVar5 = resources:MemberResource("seh_Boy")
     ::FLOW_hoist_lab_00e56b54_1::
+    iVar6 = i_stk_10
     if pCVar5 ~= nil then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -216,6 +218,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         bVar2 = not alive
         if bVar2 then goto LAB_00e56cd0 end
         resources:PlayAnimation(pCVar5, xStack_1c, false, true, false, true, true, false, false)
+        iVar6 = i_stk_10
         goto LAB_00e56c30
         ::FLOW_past_lab_00e56c84::
         alive = not quest:IsActiveThreadTerminating()
@@ -223,6 +226,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         if bVar2 then goto LAB_00e56cd0 end
         resources:PlayAnimation(pCVar5, xStack_1c, false, true, false, false, true, false, false)
         resources:PlayLoopingAnimation(pCVar5, native_arg_param_2, -1, false, false, true, false, true, false, false)
+        iVar6 = i_stk_10
     end
     ::FLOW_past_lab_00e56b54::
     ::LAB_00e56c30::

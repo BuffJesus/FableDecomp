@@ -4859,11 +4859,16 @@ def drop_dead_local_stores(text: str) -> str:
         # alias) is dead when nothing reads the local before its next store; scalar stores stay — a later
         # store inside a loop body may not run before the read after the loop
         for m in reversed(dead):
-            if not re.fullmatch(r'(?:\(\w+ \*+\))?&?(?:(?:[A-Za-z]+Stack_|local_)\w+|this)', m.group(2).strip()):
+            # A plain stack-local copy can carry a scalar (BookCollecting's
+            # saved conversation ID). Only explicit pointer expressions qualify.
+            if not re.fullmatch(r'(?:\(\w+ \*+\)&?|&)(?:(?:[A-Za-z]+Stack_|local_)\w+|this)', m.group(2).strip()):
                 continue
             tail = text[m.end():]
             nxt = any_store.search(tail)
             region = tail[:nxt.start()] if nxt else tail
+            # Textual order is not execution order across branches or joins.
+            if re.search(r'[{}]|\b(?:if|else|goto|return|break|continue|while|for|do|switch)\b|^\s*\w+:', region, re.M):
+                continue
             if not re.search(r'\b' + v + r'\b', dtor.sub('', region)):
                 text = text[:m.start()] + dtor.sub('', region) + (tail[nxt.start():] if nxt else '')
     return text

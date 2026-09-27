@@ -883,6 +883,7 @@ function AttackPeople(quest)
                 end
                 ctr_38 = ctr_38 + 1
                 iVar7 = iVar7 + 0xc
+                iVar4 = i_stk_3c
             until not (ctr_38 < (#xStack_24))
         end
         goto LAB_00dfdaff
@@ -920,6 +921,7 @@ function AttackPeople(quest)
     ::FLOW_after_lab_00dfda90::
     ::LAB_00dfdabb::
     r1 = nil
+    iVar4 = i_stk_3c
     ::LAB_00dfdaff::
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive

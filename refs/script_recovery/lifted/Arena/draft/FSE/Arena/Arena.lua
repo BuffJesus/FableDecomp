@@ -1797,6 +1797,7 @@ function CrowdChecker(quest)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
+        iVar3 = i_stk_158
         if bVar2 then
             quest:DeregisterTimer(i_stk_15c)
             quest:DeregisterTimer(i_stk_158)
@@ -2119,6 +2120,7 @@ function CrowdChecker(quest)
         until not (false)
         ::LAB_00f1e2e9::
         ::FLOW_native_label_1::
+        iVar3 = i_stk_158
     end
     ::LAB_00f1e2fb::
     pCVar6 = quest:GetHero()
@@ -2709,6 +2711,7 @@ function PlayWave(quest)
                                 pCVar5 = quest:CreateCreatureNearby(quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType")), pCVar13, 1.0, "ArenaEnemy")
                                 xStack_f4 = pCVar5
                                 quest:ResetCreatureCreationDelayFrames()
+                                iVar6 = i_stk_c0
                             else
                                 if bVar3 then
                                     goto LAB_00f20cc5
@@ -2733,6 +2736,7 @@ function PlayWave(quest)
                                             iVar6 = quest:CreateCreatureNearby(creatureType, uVar9, iVar4, "ArenaEnemy")
                                             -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);
                                             quest:ResetCreatureCreationDelayFrames()
+                                            iVar6 = i_stk_c0
                                         end
                                         ctr_fc = ctr_fc + 1
                                         iVar4 = iVar4 + 0xc
@@ -2920,6 +2924,7 @@ function PlayWave(quest)
     r3 = nil
     goto LAB_00f20ae2
     ::LAB_00f20b8b::
+    iVar4 = i_stk_15c
     goto LAB_00f21195
     ::LAB_00f20700::
     while true do

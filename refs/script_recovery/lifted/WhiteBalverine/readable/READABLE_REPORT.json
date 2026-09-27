@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "white_balverine",
- "draft": "refs/script_recovery/lifted/WhiteBalverine/draft",
+ "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\white_balverine",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -10792,7 +10792,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 12,
-      "declarations": 20,
+      "declarations": 21,
       "decimalLiterals": 1
      }
     },
@@ -11318,6 +11318,13 @@
         "hero"
        ]
       },
+      "pCVar8_10": {
+       "name": "scratchValue22",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
       "pcVar10_1": {
        "name": "line",
        "basis": "named by the API that consumes it",
@@ -11396,7 +11403,7 @@
        ]
       },
       "xStack_9c": {
-       "name": "scratchValue22",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -11410,21 +11417,21 @@
        ]
       },
       "x_stk_18": {
-       "name": "scratchValue23",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "x_stk_24": {
        "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "x_stk_c": {
+      "x_stk_24": {
        "name": "scratchValue25",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "x_stk_c": {
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -11519,6 +11526,40 @@
         ]
        }
       },
+      "pCVar8": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar4, bVar5, bVar7, cVar6, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar14, pCVar8, pQuestName, pScriptObject, pcVar10, r1, r2, r3, xStack_34, xStack_48, xStack_78, xStack_84, xStack_94, xStack_9c, xStack_b0, x_stk_18, x_stk_24, x_stk_c\n",
+       "versions": {
+        "pCVar8_1": [],
+        "pCVar8_2": [
+         55
+        ],
+        "pCVar8_3": [
+         84
+        ],
+        "pCVar8_4": [
+         93
+        ],
+        "pCVar8_5": [
+         121
+        ],
+        "pCVar8_6": [
+         130
+        ],
+        "pCVar8_7": [
+         155
+        ],
+        "pCVar8_8": [
+         199
+        ],
+        "pCVar8_9": [
+         208
+        ],
+        "pCVar8_10": [
+         241
+        ]
+       }
+      },
       "iVar11": {
        "declarationLine": 3,
        "originalDeclaration": "    local bVar4, bVar5, bVar7, cVar6, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar14, pCVar8, pQuestName, pScriptObject, pcVar10, r1, r2, r3, xStack_34, xStack_48, xStack_78, xStack_84, xStack_94, xStack_9c, xStack_b0, x_stk_18, x_stk_24, x_stk_c\n",
@@ -11552,44 +11593,13 @@
         ]
        }
       },
-      "pCVar8": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local bVar4, bVar5, bVar7, cVar6, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar14, pCVar8, pQuestName, pScriptObject, pcVar10, r1, r2, r3, xStack_34, xStack_48, xStack_78, xStack_84, xStack_94, xStack_9c, xStack_b0, x_stk_18, x_stk_24, x_stk_c\n",
-       "versions": {
-        "pCVar8_1": [],
-        "pCVar8_2": [
-         55
-        ],
-        "pCVar8_3": [
-         84
-        ],
-        "pCVar8_4": [
-         93
-        ],
-        "pCVar8_5": [
-         121
-        ],
-        "pCVar8_6": [
-         130
-        ],
-        "pCVar8_7": [
-         155
-        ],
-        "pCVar8_8": [
-         199
-        ],
-        "pCVar8_9": [
-         208
-        ]
-       }
-      },
       "cVar6": {
        "declarationLine": 3,
        "originalDeclaration": "    local bVar4, bVar5, bVar7, cVar6, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar14, pCVar8, pQuestName, pScriptObject, pcVar10, r1, r2, r3, xStack_34, xStack_48, xStack_78, xStack_84, xStack_94, xStack_9c, xStack_b0, x_stk_18, x_stk_24, x_stk_c\n",
        "versions": {
         "cVar6_1": [
          40,
-         241
+         242
         ],
         "cVar6_2": [
          96,
@@ -11708,7 +11718,7 @@
          175
         ],
         "bVar7_2": [
-         244
+         245
         ]
        }
       }
@@ -11719,7 +11729,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 266,
+     "sourceLine": 267,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11728,7 +11738,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 271,
+     "sourceLine": 272,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11737,7 +11747,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 274,
+     "sourceLine": 275,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -11801,7 +11811,7 @@
        "exitChecksInlined": 2,
        "frameChecks": 8,
        "inlinedTemporaries": 52,
-       "deadDefinitions": 10,
+       "deadDefinitions": 11,
        "guardWrappers": 1,
        "retryLoops": 6,
        "booleanMaterialisation": 2,
@@ -11840,8 +11850,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 240,
-       "temporaries": 74,
+       "lines": 241,
+       "temporaries": 75,
        "labels": 3,
        "gotos": 13,
        "terminationChecks": 21,

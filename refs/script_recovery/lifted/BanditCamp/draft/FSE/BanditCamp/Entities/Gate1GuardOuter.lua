@@ -83,6 +83,7 @@ function Main(quest, me)
                     pCVar10 = nil --[[unresolved native value]]
                     quest:AddLineToConversation(iVar8, "TEXT_QST_009_BANDIT1_CALL_OVER_SECOND", me, nil --[[missing]], false)
                 end
+                iVar7 = i_stk_14c
                 quest:SetTimer(i_stk_14c, 10)
             end
             bVar4 = me:IsTalkedToByHero()
@@ -156,6 +157,7 @@ function Main(quest, me)
                 ::LAB_00d02592::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_134)
+                iVar7 = i_stk_14c
                 goto LAB_00d0274f
                 ::FLOW_past_lab_00d01be9::
                 pCVar10 = quest:GetHero()

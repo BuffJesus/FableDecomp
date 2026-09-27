@@ -184,8 +184,13 @@ function Main(quest)
                 bVar13 = not alive
                 if bVar13 then goto LAB_00df75ec end
                 piVar7 = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetDefName()
-                iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
-                c_stk_7d = not (iVar8 ~= 0)
+                if piVar7 == nil then
+                    CVar5 = 0x0
+                    c_stk_7d = false
+                else
+                    iVar8 = ((piVar7 == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER") and 0 or 1)
+                    c_stk_7d = not (iVar8 ~= 0)
+                end
                 if c_stk_7d then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar13 = not alive

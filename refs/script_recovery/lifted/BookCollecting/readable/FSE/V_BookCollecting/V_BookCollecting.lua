@@ -106,35 +106,34 @@ end
 function DoConversation(quest, param1, param)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local conversationId, scratchValue, memberResource
-    local scratchValue5 = quest:GlobalConversations(1224)[param1 + 1]["Speaker"][param + 1]
-    local scratchValue6 = quest:GlobalConversations(1224)[param1 + 1]["Dialogue"][param + 1]
-    local scratchValue7 = quest:GlobalConversations(1224)[param1 + 1]["Animation"][param + 1]
+    local conversationId, scratchValue7, memberResource
+    local scratchValue8 = quest:GlobalConversations(1224)[param1 + 1]["Speaker"][param + 1]
+    local scratchValue9 = quest:GlobalConversations(1224)[param1 + 1]["Dialogue"][param + 1]
+    local scratchValue = quest:GlobalConversations(1224)[param1 + 1]["Animation"][param + 1]
     param = quest:GlobalConversations(1224)[param1 + 1]["AnimLoop"][param + 1]
-    local getThingWithScriptName = quest:GetThingWithScriptName(scratchValue5)
-    scratchValue = -1
-    conversationId = scratchValue6 ~= "NULL" and 1 or 0
-    if conversationId ~= 0 then
+    local getThingWithScriptName = quest:GetThingWithScriptName(scratchValue8)
+    scratchValue7 = -1
+    if scratchValue9 ~= "NULL" then
         if quest:IsActiveThreadTerminating() then return end
         local conversationId2 = quest:AddNewConversation(getThingWithScriptName, false, false)
-        scratchValue = conversationId2
+        scratchValue7 = conversationId2
         quest:AddPersonToConversation(conversationId2, hero)
-        quest:AddLineToConversation(conversationId2, scratchValue6, getThingWithScriptName, hero, false)
+        quest:AddLineToConversation(conversationId2, scratchValue9, getThingWithScriptName, hero, false)
     end
     memberResource = 0
-    if scratchValue5 == nil then
+    if scratchValue8 == nil then
         if false then
             goto LAB_00e56b54
         else
+            conversationId = scratchValue7
             goto LAB_00e56c30
             goto LAB_00e56b84
         end
         goto FLOW_hoist_lab_00e56b84_1
     else
-        conversationId = scratchValue5 == "boy0" and 0 or 1
-        if conversationId == 0 then goto LAB_00e56b54 end
-        conversationId = scratchValue
-        if scratchValue5 == "girl0" then goto LAB_00e56b84 end
+        if scratchValue8 == "boy0" then goto LAB_00e56b54 end
+        conversationId = scratchValue7
+        if scratchValue8 == "girl0" then goto LAB_00e56b84 end
     end
     goto FLOW_past_lab_00e56b84
     ::LAB_00e56b84::
@@ -148,19 +147,17 @@ function DoConversation(quest, param1, param)
     if quest:IsActiveThreadTerminating() then return end
     memberResource = resources:MemberResource("seh_Boy")
     ::FLOW_hoist_lab_00e56b54_1::
+    conversationId = scratchValue7
     if memberResource ~= nil then
         if quest:IsActiveThreadTerminating() then return end
-        if param ~= 0 then
-            conversationId = param == "NULL" and 0 or 1
-            if conversationId == 0 then goto LAB_00e56c84 end
+        if param ~= 0 and param == "NULL" then
+            resources:PlayAnimation(memberResource, scratchValue, false, true, false, true, true, false, false)
+            conversationId = scratchValue7
+            goto LAB_00e56c30
         end
-        goto FLOW_past_lab_00e56c84
-        ::LAB_00e56c84::
-        resources:PlayAnimation(memberResource, scratchValue7, false, true, false, true, true, false, false)
-        goto LAB_00e56c30
-        ::FLOW_past_lab_00e56c84::
-        resources:PlayAnimation(memberResource, scratchValue7, false, true, false, false, true, false, false)
+        resources:PlayAnimation(memberResource, scratchValue, false, true, false, false, true, false, false)
         resources:PlayLoopingAnimation(memberResource, param, -1, false, false, true, false, true, false, false)
+        conversationId = scratchValue7
     end
     ::FLOW_past_lab_00e56b54::
     ::LAB_00e56c30::

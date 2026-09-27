@@ -581,7 +581,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 608,
+          "lines": 610,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2106,7 +2106,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 541,
+          "lines": 542,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3563,7 +3563,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 281,
+          "lines": 283,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3799,7 +3799,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 218,
+          "lines": 219,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3947,7 +3947,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 70,
+          "lines": 71,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

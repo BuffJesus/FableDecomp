@@ -162,6 +162,7 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
+        iVar6 = i_stk_264
         if bVar3 then goto LAB_00d5933c end
         cVar4 = me:IsTalkedToByHero()
         if not cVar4 then
@@ -179,6 +180,7 @@ function Main(quest, me)
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
+                iVar6 = i_stk_264
                 if bVar3 then goto LAB_00d5933c end
                 xStack_204 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
@@ -214,6 +216,7 @@ function Main(quest, me)
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_204)
+                        iVar6 = i_stk_264
                         goto LAB_00d5933c
                     end
                 end
@@ -224,6 +227,7 @@ function Main(quest, me)
         else
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
+            iVar6 = i_stk_264
             if bVar3 then goto LAB_00d5933c end
             quest:SetStateInt("TutorialState", 2)
         end
@@ -243,6 +247,7 @@ function Main(quest, me)
         if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
+            iVar6 = i_stk_264
             if bVar3 then goto LAB_00d5933c end
             iVar6 = quest:AddNewConversation(me, false, false)
             pCVar5 = quest:GetHero()
@@ -265,6 +270,7 @@ function Main(quest, me)
                 end
             end
         end
+        iVar6 = i_stk_264
         iVar7 = quest:GetStateInt("TutorialState")
     end
     alive = not quest:IsActiveThreadTerminating()

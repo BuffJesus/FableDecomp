@@ -1663,7 +1663,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 426,
+          "lines": 427,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3400,7 +3400,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1045,
+          "lines": 1047,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3878,7 +3878,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 703,
+          "lines": 704,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4786,7 +4786,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 595,
+          "lines": 603,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5844,9 +5844,11 @@
         },
         "FSE/GuildTraining/Entities/SkillTarget.lua": {
           "LAB_00d42ef8": [
+            "pCVar6 = r6",
             "quest:DeregisterTimer(xStack_190)"
           ],
           "LAB_00d42efe": [
+            "pCVar6 = r7",
             "quest:DeregisterTimer(xStack_190)"
           ],
           "LAB_00d42f02": [
@@ -6793,7 +6795,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 785,
+          "lines": 791,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -7287,7 +7289,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 840,
+          "lines": 843,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9727,7 +9729,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1238,
+          "lines": 1253,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11907,7 +11909,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 776,
+          "lines": 798,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

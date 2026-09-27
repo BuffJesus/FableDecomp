@@ -233,6 +233,7 @@ function Main(quest, me)
                     quest:EntitySetThingAsAllyOfThing(pCVar16, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_4c)
+                    iVar6 = xStack_78
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -256,6 +257,7 @@ function Main(quest, me)
                 ::LAB_00ec64c5::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_34)
+                iVar6 = xStack_78
                 uVar3 = u_stk_88
                 u_stk_88 = u_stk_88 | 2
                 bVar4 = me:MsgIsHitByHero()
@@ -327,6 +329,7 @@ function Main(quest, me)
                     quest:EntitySetThingAsAllyOfThing(pCVar16, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_4c)
+                    iVar6 = xStack_78
                 end
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()

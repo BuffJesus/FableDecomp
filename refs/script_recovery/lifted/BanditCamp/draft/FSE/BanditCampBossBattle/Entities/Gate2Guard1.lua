@@ -507,6 +507,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             uVar11 = u_stk_f4
+            iVar6 = i_stk_108
         until false
     end
     goto LAB_00d0eb7c

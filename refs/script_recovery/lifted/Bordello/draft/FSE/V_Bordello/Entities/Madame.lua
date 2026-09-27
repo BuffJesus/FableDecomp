@@ -46,6 +46,7 @@ function Main(quest, me)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     xStack_174 = resources:NewResource()
     resources:PrepareResource(xStack_174)
+    xStack_160 = xStack_174
     xStack_164 = p0
     cVar4 = resources:TryAcquire(xStack_174, me, 4)
     while not cVar4 do
@@ -1203,6 +1204,7 @@ function Main(quest, me)
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
+            iVar5 = i_stk_1a8
             uVar20 = uVar11
         end
     end

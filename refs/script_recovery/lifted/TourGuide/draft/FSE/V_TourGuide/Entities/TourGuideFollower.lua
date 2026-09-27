@@ -121,6 +121,7 @@ function Main(quest, me)
                 quest:AddPersonToConversation(iVar5, pCVar6)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar5, xStack_54, me, pCVar6, false)
+                iVar4 = i_stk_50
                 quest:SetTimer(i_stk_50, quest:ReadGlobalGameData(0x8e4))
                 me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(0x8d0), true)
             end

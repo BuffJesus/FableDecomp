@@ -10,8 +10,8 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult2, predicateResult3, predicateResult, predicateResult20, scratchValue
-    local scratchValue6
-    scratchValue6 = 0
+    local scratchValue7
+    scratchValue7 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -31,16 +31,16 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             return
         end
-        local scratchValue5 = scratchValue6
-        scratchValue6 = scratchValue6 | 1
+        local scratchValue6 = scratchValue7
+        scratchValue7 = scratchValue7 | 1
         if me:MsgIsHitByHero() then
             goto LAB_00d076a9
         else
-            scratchValue = scratchValue5 | 3
-            scratchValue6 = scratchValue
+            scratchValue = scratchValue6 | 3
+            scratchValue7 = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue5 | 7
-                scratchValue6 = scratchValue
+                scratchValue = scratchValue6 | 7
+                scratchValue7 = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d076a9 end
             end
             predicateResult3 = false
@@ -51,14 +51,14 @@ function Main(quest, me)
         ::FLOW_past_lab_00d076a9::
         if scratchValue & 4 ~= 0 then
             scratchValue = scratchValue & 0xfffffffb
-            scratchValue6 = scratchValue
+            scratchValue7 = scratchValue
         end
         if scratchValue & 2 ~= 0 then
             scratchValue = scratchValue & 0xfffffffd
-            scratchValue6 = scratchValue
+            scratchValue7 = scratchValue
         end
         if scratchValue & 1 ~= 0 then
-            scratchValue6 = scratchValue & 0xfffffffe
+            scratchValue7 = scratchValue & 0xfffffffe
         end
         if predicateResult3 then
             if not quest:IsActiveThreadTerminating() then

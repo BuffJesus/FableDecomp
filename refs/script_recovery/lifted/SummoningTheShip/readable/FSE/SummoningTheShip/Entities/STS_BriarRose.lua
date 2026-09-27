@@ -11,7 +11,7 @@ local brainState
 -- STS_BriarRose.Main (retail 0x00df1830)
 function Main(quest, me)
     local predicateResult, predicateResult18, predicateResult21, scratchValue, getStateInt, sequence
-    local nearest, pOther, summonerAttacker, scratchValue15
+    local scratchValue15, pOther, nearest, scratchValue17
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("SummonerAttacksStarted") do
         if not quest:NewScriptFrame(me) then return end
@@ -23,33 +23,33 @@ function Main(quest, me)
     local pQuestName = quest:GetActiveQuestName()
     quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_03", "HookCoast", "HookCoast")
     RemoveNeighbours(quest, me, 1)
-    scratchValue15 = 0
-    summonerAttacker = nil
+    scratchValue17 = 0
+    nearest = nil
     while not quest:IsActiveThreadTerminating() do
         if quest:GetStateInt("CurrentAttackWave") == 1 then
-            if scratchValue15 ~= 1 then
+            if scratchValue17 ~= 1 then
                 nearest = quest:GetNearestWithScriptName(me, "SummonerAttacker")
-                summonerAttacker = nearest
-                if summonerAttacker ~= nil and summonerAttacker:IsAlive() then
-                    quest:GiveThingBestEnemyTarget(me, summonerAttacker)
+                if nearest ~= nil and nearest:IsAlive() then
+                    quest:GiveThingBestEnemyTarget(me, nearest)
                 end
-                scratchValue15 = 1
+                scratchValue17 = 1
             end
             -- TODO(native): } else {
-            if scratchValue15 == 1 and not (summonerAttacker ~= nil and summonerAttacker:IsAlive()) then
+            if scratchValue17 == 1 and not (nearest ~= nil and nearest:IsAlive()) then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+                local summonerAttacker = quest:GetNearestWithScriptName(me, "SummonerAttacker")
                 local summonerMinion = quest:GetNearestWithScriptName(me, "SummonerMinion")
-                if (quest:GetDistanceBetweenThings(me, quest:GetNearestWithScriptName(me, "SummonerAttacker")) ^ 2) <= (quest:GetDistanceBetweenThings(me, summonerMinion) ^ 2) then
-                    if not quest:IsActiveThreadTerminating() then goto LAB_00df1b40 end
+                if (quest:GetDistanceBetweenThings(me, summonerAttacker) ^ 2) <= (quest:GetDistanceBetweenThings(me, summonerMinion) ^ 2) then
+                    if not quest:IsActiveThreadTerminating() then scratchValue15 = summonerAttacker; goto LAB_00df1b40 end
                 elseif not quest:IsActiveThreadTerminating() then
-                    nearest = summonerMinion
+                    scratchValue15 = summonerMinion
                     goto LAB_00df1b40
                 end
                 goto FLOW_past_lab_00df1b40
                 ::LAB_00df1b40::
-                summonerAttacker = nearest
-                if summonerAttacker ~= nil and summonerAttacker:IsAlive() then
-                    quest:GiveThingBestEnemyTarget(me, summonerAttacker)
+                nearest = scratchValue15
+                if scratchValue15 ~= nil and scratchValue15:IsAlive() then
+                    quest:GiveThingBestEnemyTarget(me, scratchValue15)
                 end
                 goto LAB_00df1b8b
                 ::FLOW_past_lab_00df1b40::

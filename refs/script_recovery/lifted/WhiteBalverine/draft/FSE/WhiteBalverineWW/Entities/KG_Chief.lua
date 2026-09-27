@@ -262,6 +262,7 @@ function Main(quest, me)
                     if bVar4 then goto LAB_00e1a6c6 end
                     me:SetFriendsWithEverythingFlag(xStack_9c)
                 end
+                pCVar8 = xStack_9c
                 cVar6 = quest:GetStateBool("MissionSucceeded")
             end
             alive = not quest:IsActiveThreadTerminating()

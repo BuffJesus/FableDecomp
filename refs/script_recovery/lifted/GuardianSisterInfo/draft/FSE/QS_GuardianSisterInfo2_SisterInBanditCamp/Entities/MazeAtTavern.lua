@@ -317,6 +317,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         uVar15 = u_stk_7c
+        iVar11 = i_stk_98
     until false
 end
 

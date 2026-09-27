@@ -652,7 +652,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 358,
+          "lines": 361,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1333,6 +1333,7 @@
             "unnamed field 0x14",
             "unnamed field 0x14",
             "unnamed field 0x14",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
             "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16);",
             "unnamed field 0x14",
@@ -1341,6 +1342,7 @@
             "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");",
             "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");",
             "unnamed field 0x14",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
             "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pvVar11,uVar16,uVar17);",
             "unnamed field 0x14",
@@ -1526,7 +1528,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 515,
+          "lines": 517,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4133,6 +4135,7 @@
         },
         "FSE/V_SickChild/Entities/Witch.lua": {
           "Main": [
+            "au_stk_28",
             "xStack_90_2"
           ]
         },
@@ -4248,7 +4251,7 @@
         "functionSyntaxPassed": 49,
         "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 13,
-        "todo": 371
+        "todo": 373
       }
     }
   ],
@@ -4259,6 +4262,6 @@
     "functionSyntaxPassed": 49,
     "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 371
+    "todo": 373
   }
 }

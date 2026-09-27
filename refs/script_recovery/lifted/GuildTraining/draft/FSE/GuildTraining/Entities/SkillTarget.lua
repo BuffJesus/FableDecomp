@@ -14,9 +14,11 @@ function Main(quest, me)
     local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_164, f_stk_20, f_stk_2c, f_stk_38, f_stk_44, f_stk_48, f_stk_4c, f_stk_50, f_stk_54, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_98, f_stk_9c, f_stk_a0, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_18c, xStack_190, x_stk_188
     local alive = true
     local function __cleanup_LAB_00d42ef8()
+        pCVar6 = r6
         quest:DeregisterTimer(xStack_190)
     end
     local function __cleanup_LAB_00d42efe()
+        pCVar6 = r7
         quest:DeregisterTimer(xStack_190)
     end
     local function __cleanup_LAB_00d42f02()
@@ -446,6 +448,7 @@ function Main(quest, me)
                                                             if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                             pCVar6 = quest:GetHero()
                                                             quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_EXCELLENT_HIT", r6, pCVar6, false)
+                                                            pCVar6 = r6
                                                         else
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar3 = not alive
@@ -455,6 +458,7 @@ function Main(quest, me)
                                                             end
                                                             pCVar6 = quest:GetHero()
                                                             quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_GOOD_HIT", r6, pCVar6, false)
+                                                            pCVar6 = r6
                                                         end
                                                     else
                                                         alive = not quest:IsActiveThreadTerminating()
@@ -462,6 +466,7 @@ function Main(quest, me)
                                                         if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                         pCVar6 = quest:GetHero()
                                                         quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_MEDIUM_HIT", r6, pCVar6, false)
+                                                        pCVar6 = r6
                                                     end
                                                 else
                                                     alive = not quest:IsActiveThreadTerminating()
@@ -469,6 +474,7 @@ function Main(quest, me)
                                                     if bVar3 then __cleanup_LAB_00d42ef8(); return end
                                                     pCVar6 = quest:GetHero()
                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_SKILL_SOFT_HIT", r6, pCVar6, false)
+                                                    pCVar6 = r6
                                                 end
                                             else
                                                 if bVar4 then
@@ -511,6 +517,7 @@ function Main(quest, me)
                                                     pCVar6 = quest:GetHero()
                                                     quest:AddLineToConversation(iVar8, "TEXT_QST_028_APPRENTICE_SKILL_SOFT_HIT", r7, pCVar6, false)
                                                 end
+                                                pCVar6 = r7
                                             end
                                         end
                                     end
@@ -607,6 +614,7 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
+                    iVar5 = i_stk_16c
                     fVar12 = f_stk_164
                 until false
             end

@@ -19,7 +19,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local addQuestInfoTickByText, ticked, c_stk_215_1, c_stk_215_2, c_stk_215_3, tutorialState
-    local scratchValue, questionAnswer, addNewConversation, scratchValue29, i_stk_1d0_1, i_stk_1ec_1
+    local scratchValue, questionAnswer, addNewConversation, scratchValue30, i_stk_1d0_1, i_stk_1ec_1
     local i_stk_1ec_2, i_stk_1ec_3, timerId, index, actorMap, actorMap2, resource7, resource8
     local resource9, actorMap3, movie, movie2, addQuestInfoTickByText2, addQuestInfoTickByText3
     local addQuestInfoTickByText4, resource, timerId4, timerId5, movie3
@@ -717,35 +717,35 @@ function Main(quest, me)
             index = 0
             scratchValue = 0
             repeat
-                scratchValue29 = scratchValue
+                scratchValue30 = scratchValue
                 if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) < getMasterGameState ~= (quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) == getMasterGameState) then
                     if quest:IsActiveThreadTerminating() then ReleaseEverything6(); return end
                     break
                 end
-                scratchValue = scratchValue29 + 1
+                scratchValue = scratchValue30 + 1
                 index = index + 1
             until scratchValue >= 7
             local actorMap4 = resources:NewStringMap()
             repeat
-                if scratchValue29 == 0 then
+                if scratchValue30 == 0 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_APLUS")
                     break
-                elseif scratchValue29 == 1 then
+                elseif scratchValue30 == 1 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_A")
                     break
-                elseif scratchValue29 == 2 then
+                elseif scratchValue30 == 2 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_B")
                     break
-                elseif scratchValue29 == 3 then
+                elseif scratchValue30 == 3 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_C")
                     break
-                elseif scratchValue29 == 4 then
+                elseif scratchValue30 == 4 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_D")
                     break
-                elseif scratchValue29 == 5 then
+                elseif scratchValue30 == 5 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_E")
                     break
-                elseif scratchValue29 == 6 then
+                elseif scratchValue30 == 6 then
                     resources:SetString(actorMap4, "$GRADE", "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_F")
                     break
                 else

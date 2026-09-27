@@ -12,9 +12,10 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, i_stk_5c, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, xStack_10, xStack_1c, xStack_38, xStack_70, xStack_80
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, bVar4, cVar5, fVar17, fVar2, fVar20, fret_0, fret_00, iVar14, iVar18, iVar19, iVar21, iVar22, i_stk_5c, pCVar10, pCVar6, pCVar8, pCVar9, pcVar15, pppuVar16, r1, r2, r3, r4, r5, uVar12, uVar13, u_stk_78, xStack_10, xStack_1c, xStack_38, xStack_70, xStack_80
     local alive = true
     uVar12 = 0
+    u_stk_78 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -104,11 +105,13 @@ function Main(quest, me)
         bVar3 = not alive
         if bVar3 then goto LAB_00d664b0 end
         uVar13 = uVar12 | 3
+        u_stk_78 = uVar13
         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
         if bVar3 then
             goto LAB_00d64cba
         else
             uVar13 = uVar12 | 0xf
+            u_stk_78 = uVar13
             bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
             bVar3 = false
             if bVar4 then goto LAB_00d64cba end
@@ -119,15 +122,19 @@ function Main(quest, me)
         ::FLOW_past_lab_00d64cba::
         if (uVar13 & 8) ~= 0 then
             uVar13 = uVar13 & 0xfffffff7
+            u_stk_78 = uVar13
         end
         if (uVar13 & 4) ~= 0 then
             uVar13 = uVar13 & 0xfffffffb
+            u_stk_78 = uVar13
         end
         if (uVar13 & 2) ~= 0 then
             uVar13 = uVar13 & 0xfffffffd
+            u_stk_78 = uVar13
         end
         if (uVar13 & 1) ~= 0 then
             uVar13 = uVar13 & 0xfffffffe
+            u_stk_78 = uVar13
         end
         if bVar3 then
             alive = not quest:IsActiveThreadTerminating()
@@ -180,6 +187,7 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SPARRING", me, pCVar6, false)
                 end
                 quest:SetTimer(xStack_80, 5)
+                uVar12 = u_stk_78
             end
         else
             uVar12 = uVar13 | 0x30
@@ -335,11 +343,13 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d664b0 end
                 uVar13 = uVar12 | 0x300
+                u_stk_78 = uVar13
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                 if bVar3 then
                     goto LAB_00d654d1
                 else
                     uVar13 = uVar12 | 0xf00
+                    u_stk_78 = uVar13
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
                     if bVar3 then goto LAB_00d654d1 end
                     goto LAB_00d654e6
@@ -356,15 +366,19 @@ function Main(quest, me)
                 ::FLOW_past_lab_00d654e6::
                 if (uVar13 & 0x800) ~= 0 then
                     uVar13 = uVar13 & 0xfffff7ff
+                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x400) ~= 0 then
                     uVar13 = uVar13 & 0xfffffbff
+                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x200) ~= 0 then
                     uVar13 = uVar13 & 0xfffffdff
+                    u_stk_78 = uVar13
                 end
                 if (uVar13 & 0x100) ~= 0 then
                     uVar13 = uVar13 & 0xfffffeff
+                    u_stk_78 = uVar13
                 end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -376,6 +390,7 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_MELEE", me, pCVar6, false)
                     quest:ModifyThingHealth(me, 1000.0, false)
+                    uVar12 = u_stk_78
                 else
                     uVar12 = uVar13 | 0x3000
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
@@ -567,11 +582,13 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d664b0 end
                         uVar13 = uVar12 | 0x30000
+                        u_stk_78 = uVar13
                         bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_LONGSWORD")
                         if bVar3 then
                             goto LAB_00d65d51
                         else
                             uVar13 = uVar12 | 0xf0000
+                            u_stk_78 = uVar13
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_IRON_KATANA")
                             if bVar3 then goto LAB_00d65d51 end
                             goto LAB_00d65d66
@@ -588,15 +605,19 @@ function Main(quest, me)
                         ::FLOW_past_lab_00d65d66::
                         if (uVar13 & 0x80000) ~= 0 then
                             uVar13 = uVar13 & 0xfff7ffff
+                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x40000) ~= 0 then
                             uVar13 = uVar13 & 0xfffbffff
+                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x20000) ~= 0 then
                             uVar13 = uVar13 & 0xfffdffff
+                            u_stk_78 = uVar13
                         end
                         if (uVar13 & 0x10000) ~= 0 then
                             uVar13 = uVar13 & 0xfffeffff
+                            u_stk_78 = uVar13
                         end
                         if bVar3 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -711,6 +732,7 @@ function Main(quest, me)
                         goto FLOW_past_lab_00d65e4c
                         ::LAB_00d65e4c::
                         quest:ModifyThingHealth(me, 1000.0, false)
+                        uVar12 = u_stk_78
                         ::FLOW_past_lab_00d65e4c::
                         iVar19 = i_stk_5c
                         cVar5 = __native_entity_state:GetStateBool("NotBeaten")

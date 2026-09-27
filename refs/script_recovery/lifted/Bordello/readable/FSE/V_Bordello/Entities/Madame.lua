@@ -12,17 +12,17 @@ local doneIntro, mentionedNunnery
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, __push10, __push14, __push15, __push9, scratchValue3, scratchValue6
-    local scratchValue7, ctr_140, health, scratchValue8, scratchValue9, scratchValue10
-    local scratchValue11, timerId, getTimer, scratchValue12, timerId2, sequence1, sequence, p0
-    local resource, scratchValue13, thing, line, line2, speechResult, speechResult2, speechResult3
-    local speechResult4, speechResult5, speechResult6, speechResult7, speechResult8, speechResult9
-    local speechResult10, speechResult11, speechResult12, speechResult13, speechResult14
-    local speechResult15, speechResult16, speechResult17, speechResult18, speechResult19
-    local speechResult20, speechResult21, speechResult22, this_00, scratchValue15, scratchValue16
-    local scratchValue17, resource2, scratchValue18, scratchValue19, resource3, resource4
-    local startMovie, movie, newResource, scratchValue22, scratchValue23, scratchValue24, movie3
-    local movie4, movie5, movie6, scratchValue26, scriptThing, scriptThing2, scriptThing3
+    local scratchValue, __push10, __push9, scratchValue3, scratchValue6, scratchValue7, ctr_140
+    local health, scratchValue8, scratchValue9, scratchValue10, scratchValue11, timerId, getTimer
+    local scratchValue12, timerId2, sequence1, sequence, p0, resource, scratchValue13, thing, line
+    local line2, speechResult, speechResult2, speechResult3, speechResult4, speechResult5
+    local speechResult6, speechResult7, speechResult8, speechResult9, speechResult10, speechResult11
+    local speechResult12, speechResult13, speechResult14, speechResult15, speechResult16
+    local speechResult17, speechResult18, speechResult19, speechResult20, speechResult21
+    local speechResult22, this_00, scratchValue15, scratchValue16, scratchValue17, resource2
+    local scratchValue18, scratchValue19, resource3, resource4, startMovie, startMovie2, newResource
+    local scratchValue22, scratchValue23, scratchValue24, movie3, movie4, movie5, scratchValue26
+    local scriptThing, scriptThing2, scriptThing3
     scriptThing3 = 0
     quest:NewScriptFrame(me)
     scratchValue6 = quest:IsActiveThreadTerminating()
@@ -53,6 +53,7 @@ function Main(quest, me)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     newResource = resources:NewResource()
     resources:PrepareResource(newResource)
+    startMovie2 = newResource
     local scratchValue21 = p0
     scratchValue7 = resources:TryAcquire(newResource, me, 4)
     while not scratchValue7 do
@@ -71,7 +72,7 @@ function Main(quest, me)
     if not doneIntro then
         scratchValue6 = quest:IsActiveThreadTerminating()
         if not scratchValue6 then
-            movie = resources:StartMovie("")
+            startMovie2 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             scratchValue6 = helpers.IsHeroWearingBeard(quest, me)
@@ -89,7 +90,7 @@ function Main(quest, me)
                     goto LAB_00e3bde9
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                resource = movie
+                resource = startMovie2
             end
             goto FLOW_past_lab_00e3bde9
             ::LAB_00e3bde9::
@@ -97,11 +98,11 @@ function Main(quest, me)
             helpers.PlayCutscene(quest, me, "CS_BORDELLO_INTRO", false)
             doneIntro = true
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie)
+            resources:DestroyMovie(startMovie2)
             goto LAB_00e3be37
             ::FLOW_hoist_lab_00e3bde9_1::
             quest:PauseAllNonScriptedEntities(false)
-            resource = movie
+            resource = startMovie2
             ::FLOW_past_lab_00e3bde9::
             goto LAB_00e3e2ea
         end
@@ -147,7 +148,7 @@ function Main(quest, me)
             ::LAB_00e3bf28::
             scratchValue6 = quest:IsActiveThreadTerminating()
             if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
-            movie5 = resources:StartMovie("")
+            movie4 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             scratchValue3 = resources:ScriptThing(resource2)
@@ -171,9 +172,9 @@ function Main(quest, me)
                 scratchValue6 = quest:IsActiveThreadTerminating()
                 if not scratchValue6 then timerId = me:IsPerformingScriptTask(); scratchValue7 = timerId; goto continue_1 end
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie4)
-                quest:DeregisterTimer(movie)
-                resources:DestroyMovie(movie)
+                resources:DestroyMovie(movie3)
+                quest:DeregisterTimer(startMovie2)
+                resources:DestroyMovie(startMovie2)
                 do return end
                 timerId = me:IsPerformingScriptTask()
                 scratchValue7 = timerId
@@ -186,7 +187,7 @@ function Main(quest, me)
             end
             quest:GiveHeroObject("OBJECT_BEER_TANKARD", -1, true)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie4)
+            resources:DestroyMovie(movie3)
             ::FLOW_past_lab_00e3bf28::
         end
         scratchValue18 = me:IsTalkedToByHero()
@@ -312,7 +313,7 @@ function Main(quest, me)
                 if scratchValue18 then
                     scratchValue6 = quest:IsActiveThreadTerminating()
                     if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
-                    movie4 = resources:StartMovie("")
+                    movie3 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     helpers.PlayCutscene(quest, me, "CS_BORDELLO_MAGICIAN_LEAVES", false)
@@ -320,7 +321,7 @@ function Main(quest, me)
                     thing = quest:GetThingWithScriptName("BordelloHouse")
                     quest:SetHouseOwnedByPlayer(thing, true, true)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie4)
+                    resources:DestroyMovie(movie3)
                     goto LAB_00e3cab0
                     quest:DeregisterTimer(timerId2)
                     resources:ReleaseResource(newResource)
@@ -335,7 +336,7 @@ function Main(quest, me)
                 if sequence then
                     scratchValue6 = quest:IsActiveThreadTerminating()
                     if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
-                    local movie2 = resources:StartMovie("")
+                    local movie = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
@@ -371,7 +372,7 @@ function Main(quest, me)
                             scratchValue6 = quest:IsActiveThreadTerminating()
                             if scratchValue6 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resource = movie2
+                                resource = movie
                                 goto LAB_00e3e2ea
                             end
                             timerId = me:IsPerformingScriptTask()
@@ -380,14 +381,14 @@ function Main(quest, me)
                         scratchValue6 = quest:IsActiveThreadTerminating()
                         if scratchValue6 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resource = movie2
+                            resource = movie
                             goto LAB_00e3e2ea
                         end
                     end
                     ctr_140 = ctr_140 + 1
                     quest:FixMovieSequenceCamera(false)
                     quest:PauseAllNonScriptedEntities(false)
-                    resource = movie2
+                    resource = movie
                 else
                     scratchValue6 = quest:IsActiveThreadTerminating()
                     if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
@@ -473,7 +474,7 @@ function Main(quest, me)
         if scratchValue18 == 0 then scratchValue16 = scratchValue15; scratchValue7 = quest:GetStateBool("PlayerOwned"); goto continue_2 end
         scratchValue6 = quest:IsActiveThreadTerminating()
         if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
-        movie6 = resources:StartMovie("")
+        movie5 = resources:StartMovie("")
         quest:StartMovieSequence()
         quest:PauseAllNonScriptedEntities(true)
         quest:FixMovieSequenceCamera(true)
@@ -507,7 +508,7 @@ function Main(quest, me)
                 scratchValue6 = quest:IsActiveThreadTerminating()
                 if not scratchValue6 then timerId = me:IsPerformingScriptTask(); scratchValue7 = timerId; goto continue_3 end
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie6)
+                resources:DestroyMovie(movie5)
                 quest:DeregisterTimer(getTimer)
                 resources:ReleaseResource(newResource)
                 do return end
@@ -518,13 +519,13 @@ function Main(quest, me)
             scratchValue6 = quest:IsActiveThreadTerminating()
             if scratchValue6 then
                 quest:PauseAllNonScriptedEntities(false)
-                resource = movie6
+                resource = movie5
                 goto LAB_00e3e2ea
             end
         end
         quest:FixMovieSequenceCamera(false)
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie6)
+        resources:DestroyMovie(movie5)
         scratchValue16 = scratchValue15
         scratchValue7 = quest:GetStateBool("PlayerOwned")
         ::continue_2::
@@ -895,7 +896,7 @@ function Main(quest, me)
                                     end
                                     quest:TakeObjectFromHero("OBJECT_DEEDS_BORDELLO")
                                     thing = quest:GetThingWithScriptName("BordelloHouse")
-                                    quest:SetHouseOwnedByPlayer(thing, movie4 ~= 0, false)
+                                    quest:SetHouseOwnedByPlayer(thing, movie3 ~= 0, false)
                                     quest:SetStateBool("BecomeNunnery", true)
                                     quest:ClearThingHasInformation(me)
                                     quest:GiveHeroRenownPoints(100)
@@ -929,8 +930,8 @@ function Main(quest, me)
                                 end
                             else
                                 if scratchValue6 then goto LAB_00e3d473 end
-                                movie4 = resources:ScriptThing(resource3)
-                                getTimer = movie4
+                                movie3 = resources:ScriptThing(resource3)
+                                getTimer = movie3
                                 health = quest:GetHealth(getTimer)
                                 scratchValue7 = 0.0 < health
                                 if scratchValue7 then
@@ -1044,63 +1045,64 @@ function Main(quest, me)
             if scratchValue15 & 8 ~= 0 then
                 scratchValue15 = scratchValue15 & 0xfffffff7
             end
-            if scratchValue26 == 0 then quest:NewScriptFrame(me); scratchValue6 = quest:IsActiveThreadTerminating(); scratchValue16 = scratchValue15; goto continue_4 end
-            scratchValue6 = quest:IsActiveThreadTerminating()
-            if scratchValue6 then break end
-            movie3 = resources:StartMovie("")
-            quest:StartMovieSequence()
-            quest:PauseAllNonScriptedEntities(true)
-            quest:FixMovieSequenceCamera(true)
-            __push14 = hero
-            quest:EntitySetFacingAngleTowardsThing(me, __push14, false)
-            quest:Pause(1.0)
-            __push15 = hero
-            newResource = p0
-            quest:EntitySetFacingAngleTowardsThing(me, __push15, true)
-            quest:NewScriptFrame(me)
-            quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 1, nil --[[missing]])
-            movie6 = resources:ScriptThing(newResource)
-            thing = movie6
-            health = quest:GetHealth(thing)
-            scratchValue7 = 0.0 < health
-            if scratchValue7 then
-                scratchValue11 = 0
-                scratchValue10 = 1
-                scratchValue9 = 0
-                getTimer = 2
-                line2 = this_00
-                timerId = hero
-                speechResult15 = me:Speak(timerId, line2, getTimer, scratchValue9 ~= 0, scratchValue10 ~= 0, scratchValue11 ~= 0)
-                timerId = me:IsPerformingScriptTask()
-                scratchValue7 = timerId
-                while scratchValue7 do
-                    quest:NewScriptFrame(me)
+            if scratchValue26 ~= 0 then
+                scratchValue6 = quest:IsActiveThreadTerminating()
+                if scratchValue6 then break end
+                local movie2 = resources:StartMovie("")
+                quest:StartMovieSequence()
+                quest:PauseAllNonScriptedEntities(true)
+                quest:FixMovieSequenceCamera(true)
+                local __push14 = hero
+                quest:EntitySetFacingAngleTowardsThing(me, __push14, false)
+                quest:Pause(1.0)
+                local __push15 = hero
+                newResource = p0
+                quest:EntitySetFacingAngleTowardsThing(me, __push15, true)
+                quest:NewScriptFrame(me)
+                quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 1, nil --[[missing]])
+                movie5 = resources:ScriptThing(newResource)
+                thing = movie5
+                health = quest:GetHealth(thing)
+                scratchValue7 = 0.0 < health
+                if scratchValue7 then
+                    scratchValue11 = 0
+                    scratchValue10 = 1
+                    scratchValue9 = 0
+                    getTimer = 2
+                    line2 = this_00
+                    timerId = hero
+                    speechResult15 = me:Speak(timerId, line2, getTimer, scratchValue9 ~= 0, scratchValue10 ~= 0, scratchValue11 ~= 0)
+                    timerId = me:IsPerformingScriptTask()
+                    scratchValue7 = timerId
+                    while scratchValue7 do
+                        quest:NewScriptFrame(me)
+                        scratchValue6 = quest:IsActiveThreadTerminating()
+                        if scratchValue6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00e3e2e3
+                        end
+                        timerId = me:IsPerformingScriptTask()
+                        scratchValue7 = timerId
+                    end
                     scratchValue6 = quest:IsActiveThreadTerminating()
                     if scratchValue6 then
                         quest:PauseAllNonScriptedEntities(false)
                         goto LAB_00e3e2e3
                     end
-                    timerId = me:IsPerformingScriptTask()
-                    scratchValue7 = timerId
+                    goto FLOW_past_lab_00e3e2e3
+                    ::LAB_00e3e2e3::
+                    resource = movie2
+                    goto LAB_00e3e2ea
+                    ::FLOW_past_lab_00e3e2e3::
                 end
-                scratchValue6 = quest:IsActiveThreadTerminating()
-                if scratchValue6 then
-                    quest:PauseAllNonScriptedEntities(false)
-                    goto LAB_00e3e2e3
-                end
-                goto FLOW_past_lab_00e3e2e3
-                ::LAB_00e3e2e3::
-                resource = movie3
-                goto LAB_00e3e2ea
-                ::FLOW_past_lab_00e3e2e3::
+                quest:FixMovieSequenceCamera(false)
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
             end
-            quest:FixMovieSequenceCamera(false)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie3)
             quest:NewScriptFrame(me)
             scratchValue6 = quest:IsActiveThreadTerminating()
+            timerId = timerId2
             scratchValue16 = scratchValue15
-            ::continue_4::
         end
     end
     ::FLOW_past_lab_00e3be37::

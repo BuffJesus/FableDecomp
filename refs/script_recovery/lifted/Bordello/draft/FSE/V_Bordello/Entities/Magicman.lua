@@ -1028,7 +1028,8 @@ function Main(quest, me)
                 __push20 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, __push20, true)
                 alive = quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(me, pCVar11, -1.0, 0, -1)
+                pCVar11 = "CAM_B_OWNER"
+                quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
                 bVar5 = require("V_Bordello.native_quest_helpers").helper_E3E320(quest, me)
                 if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -1429,6 +1430,7 @@ function Main(quest, me)
                 __push31 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(__push31, nil --[[missing]], __unknown_push)
                 alive = quest:NewScriptFrame(me)
+                pCVar11 = "CAM_B_OWNER"
                 quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], __unknown_push, -1.0, 0)
                 bVar5 = require("V_Bordello.native_quest_helpers").helper_E3E320(quest, me)
                 if bVar5 then

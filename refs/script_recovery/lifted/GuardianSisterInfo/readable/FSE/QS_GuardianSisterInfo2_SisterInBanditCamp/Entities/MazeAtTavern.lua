@@ -12,8 +12,8 @@ local hitCount, talkCounter, wavedOver
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local b3, predicateResult, scratchValue, isPerformingScriptTask, p4, p5, scratchValue5
-    local scratchValue6, scratchValue7
+    local b3, predicateResult, scratchValue, i_stk_98_2, p4, p5, scratchValue5, scratchValue6
+    local scratchValue7
     scratchValue7 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource3 = resources:NewResource()
@@ -29,18 +29,18 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, true, false)
     predicateResult = quest:IsActiveThreadTerminating()
     scratchValue6 = 0
-    isPerformingScriptTask = quest:RegisterTimer()
+    local timerId = quest:RegisterTimer()
     repeat
-        local i_stk_98_2 = isPerformingScriptTask
+        i_stk_98_2 = timerId
         if predicateResult then
-            quest:DeregisterTimer(isPerformingScriptTask)
+            quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource3)
             return
         end
-        if quest:GetTimer(isPerformingScriptTask) == 0 then
+        if quest:GetTimer(timerId) == 0 then
             if quest:IsDistanceBetweenThingsUnder(hero, me, 30.0) then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(isPerformingScriptTask)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     return
                 end
@@ -48,13 +48,13 @@ function Main(quest, me)
                 quest:AddPersonToConversation(conversationId, hero)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, hero, false)
                 me:PlayAnimation("ST_HELLO", false, false, false, true, true, false, false)
-                quest:SetTimer(i_stk_98_2, 5)
+                quest:SetTimer(timerId, 5)
                 scratchValue6 = scratchValue7
             end
         end
         if not quest:GetStateBool("GuardianSpokeToHero") then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(i_stk_98_2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
@@ -91,7 +91,7 @@ function Main(quest, me)
         end
         if scratchValue ~= 0 then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(i_stk_98_2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
@@ -101,13 +101,13 @@ function Main(quest, me)
             while not resources:TryAcquire(resource3, me, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     do return end
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(i_stk_98_2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
@@ -118,24 +118,20 @@ function Main(quest, me)
                 p5 = 0
                 p4 = 1
                 me:Speak(hero, "TEXT_QST_076_MAZE_ON_HIT_10", GROUP_SELECT_FIRST, false, true, false)
-                isPerformingScriptTask = me:IsPerformingScriptTask()
-                while isPerformingScriptTask do
+                while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
-                    if not quest:IsActiveThreadTerminating() then
-                        isPerformingScriptTask = me:IsPerformingScriptTask()
-                    else
+                    if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
-                        quest:DeregisterTimer(i_stk_98_2)
+                        quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource3)
                         do return end
-                        isPerformingScriptTask = me:IsPerformingScriptTask()
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie2)
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     return
                 end
@@ -146,7 +142,7 @@ function Main(quest, me)
         end
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(i_stk_98_2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
@@ -154,19 +150,19 @@ function Main(quest, me)
             while not resources:TryAcquire(resource3, me, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     do return end
                 end
             end
             if quest:IsActiveThreadTerminating() then
-                quest:DeregisterTimer(i_stk_98_2)
+                quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource3)
                 return
             end
             if talkCounter == 0 then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     return
                 end
@@ -189,7 +185,7 @@ function Main(quest, me)
             talkCounter = talkCounter + 1
             if hitCount < 1 then
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     return
                 end
@@ -197,13 +193,13 @@ function Main(quest, me)
                 while not resources:TryAcquire(resource3, me, 3) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
-                        quest:DeregisterTimer(i_stk_98_2)
+                        quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource3)
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(i_stk_98_2)
+                    quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource3)
                     return
                 end
@@ -220,7 +216,7 @@ function Main(quest, me)
             quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
             quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
         end
-        quest:DeregisterTimer(i_stk_98_2)
+        quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource3)
         do return end
         quest:NewScriptFrame(me)

@@ -1,5 +1,11 @@
 # Lua recovery handoff - 2026-09-26
 
+**Marathon checkpoint (2026-09-27):** saved scalar/handle copies now survive dead-store
+cleanup. BookCollecting conversation handles are preserved across animation branches.
+144 tests / 28 subtests pass; 29-unit A/B reviewed; affected smoke has no new failing
+callbacks; 369-file audit has zero syntax failures. V32 has not yet been repackaged.
+See [marathon evidence and next fixes](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md).
+
 **Codex worker dispatch follow-up (2026-09-27):** BookCollecting's teacher now
 queues `BookReaction` with its captured index; the registered worker name is recovered
 from retail instructions. v32 is staged, not installed or run. 129 tests / 28 subtests

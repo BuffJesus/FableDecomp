@@ -850,6 +850,7 @@ function Main(quest, me)
             ::FLOW_past_lab_00f249e1::
             ::LAB_00f249f7::
             fret_06 = quest:GetHealth(me)
+            CVar8 = xStack_a4
         until not (f_stk_bc < fret_06)
     end
     alive = not quest:IsActiveThreadTerminating()

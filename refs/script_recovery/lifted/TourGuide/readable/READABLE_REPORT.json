@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "tour_guide",
- "draft": "work\\codex_lua_resume_20260927\\comparison\\after\\tour_guide",
+ "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\tour_guide",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -36,7 +36,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 4,
-      "declarations": 8,
+      "declarations": 9,
       "decimalLiterals": 5
      }
     },
@@ -331,21 +331,30 @@
        ]
       },
       "iVar4_3": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null,
+        null
+       ]
+      },
+      "iVar4_4": {
        "name": "taskRunning3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "taskRunning"
        ]
       },
-      "iVar4_4": {
+      "iVar4_5": {
        "name": "taskRunning4",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "taskRunning"
        ]
       },
-      "iVar4_5": {
-       "name": "scratchValue6",
+      "iVar4_6": {
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -373,7 +382,7 @@
        ]
       },
       "iVar5_2": {
-       "name": "scratchValue7",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -422,14 +431,14 @@
        ]
       },
       "pCVar6_5": {
-       "name": "scratchValue8",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar6_6": {
-       "name": "scratchValue9",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -444,7 +453,7 @@
        ]
       },
       "pvVar8": {
-       "name": "scratchValue10",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -466,7 +475,7 @@
        ]
       },
       "xStack_28": {
-       "name": "scratchValue11",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -478,7 +487,7 @@
        ]
       },
       "xStack_54": {
-       "name": "scratchValue12",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -505,7 +514,7 @@
         ],
         "bVar2_5": [
          39,
-         117
+         118
         ],
         "bVar2_6": [
          50
@@ -530,47 +539,47 @@
          94
         ],
         "bVar2_13": [
-         120
+         121
         ],
         "bVar2_14": [
-         124,
-         134
+         125,
+         135
         ],
         "bVar2_15": [
-         128
+         129
         ],
         "bVar2_16": [
-         137
+         138
         ],
         "bVar2_17": [
-         143
+         144
         ],
         "bVar2_18": [
-         149
+         150
         ],
         "bVar2_19": [
-         153
+         154
         ],
         "bVar2_20": [
-         161
+         162
         ],
         "bVar2_21": [
-         177
+         178
         ],
         "bVar2_22": [
-         184
+         185
         ],
         "bVar2_23": [
-         189
+         190
         ],
         "bVar2_24": [
-         199
+         200
         ],
         "bVar2_25": [
-         206
+         207
         ],
         "bVar2_26": [
-         212
+         213
         ]
        }
       },
@@ -585,29 +594,30 @@
          79
         ],
         "iVar4_3": [
-         139
+         112,
+         170,
+         192
         ],
         "iVar4_4": [
-         145
+         140
         ],
         "iVar4_5": [
-         156
+         146
         ],
         "iVar4_6": [
-         169,
-         191
+         157
         ],
         "iVar4_7": [
-         173
+         174
         ],
         "iVar4_8": [
-         180
+         181
         ],
         "iVar4_9": [
-         186
+         187
         ],
         "iVar4_10": [
-         195
+         196
         ]
        }
       },
@@ -625,13 +635,13 @@
          110
         ],
         "pCVar6_4": [
-         151
+         152
         ],
         "pCVar6_5": [
-         170
+         171
         ],
         "pCVar6_6": [
-         192
+         193
         ]
        }
       },
@@ -640,16 +650,16 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, bVar2, cVar3, iVar4, iVar5, i_stk_50, pCVar6, pOther, puVar7, pvVar8, r1, xStack_10, xStack_28, xStack_40, xStack_54\n",
        "versions": {
         "cVar3_1": [
-         140,
-         146
+         141,
+         147
         ],
         "cVar3_2": [
-         174,
-         196
+         175,
+         197
         ],
         "cVar3_3": [
-         181,
-         187
+         182,
+         188
         ]
        }
       },
@@ -689,17 +699,12 @@
          42
         ],
         "xStack_40_2": [
-         152
+         153
         ]
        }
       }
      },
      "removedLiteralLocals": {
-      "iVar4_6": {
-       "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_6, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, r1_2, xStack_10, xStack_28, xStack_40_1, xStack_40_2, xStack_54\n",
-       "169": "                            iVar4_6 = 3.0\n",
-       "191": "                                iVar4_6 = 3.0\n"
-      },
       "r1_2": {
        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_6, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, r1_2, xStack_10, xStack_28, xStack_40_1, xStack_40_2, xStack_54\n",
        "43": "                r1_2 = nil\n"
@@ -719,35 +724,35 @@
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
+        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_10, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_6, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
         "76": "                bVar2_10 = false\n",
         "78": "                quest:EntitySetFacingAngleTowardsThing(me, pCVar6_1, bVar2_10)\n"
        }
       },
       "iVar4_7": {
        "literal": "nil",
-       "definitionLine": 173,
+       "definitionLine": 174,
        "readLines": [
-        174
+        175
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
-        "173": "                            iVar4_7 = nil --[[unresolved native result]]\n",
-        "174": "                            cVar3_2 = iVar4_7\n"
+        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_6, iVar4_7, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
+        "174": "                            iVar4_7 = nil --[[unresolved native result]]\n",
+        "175": "                            cVar3_2 = iVar4_7\n"
        }
       },
       "iVar4_10": {
        "literal": "nil",
-       "definitionLine": 195,
+       "definitionLine": 196,
        "readLines": [
-        196
+        197
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
-        "195": "                                iVar4_10 = nil --[[unresolved native result]]\n",
-        "196": "                                cVar3_2 = iVar4_10\n"
+        "3": "    local __native_condition_1, __native_condition_2, bVar2_1, bVar2_2, bVar2_3, bVar2_4, bVar2_5, bVar2_6, bVar2_7, bVar2_8, bVar2_9, bVar2_11, bVar2_12, bVar2_13, bVar2_14, bVar2_15, bVar2_16, bVar2_17, bVar2_18, bVar2_19, bVar2_20, bVar2_21, bVar2_22, bVar2_23, bVar2_24, bVar2_25, bVar2_26, cVar3_1, cVar3_2, cVar3_3, iVar4_1, iVar4_2, iVar4_3, iVar4_4, iVar4_5, iVar4_6, iVar4_8, iVar4_9, iVar4_10, iVar5_1, iVar5_2, iVar5_3, i_stk_50, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pOther, puVar7, pvVar8, r1_1, xStack_10, xStack_28, xStack_40_2, xStack_54\n",
+        "196": "                                iVar4_10 = nil --[[unresolved native result]]\n",
+        "197": "                                cVar3_2 = iVar4_10\n"
        }
       }
      },
@@ -755,7 +760,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 240,
+     "sourceLine": 241,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -764,7 +769,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 244,
+     "sourceLine": 245,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -773,7 +778,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 247,
+     "sourceLine": 248,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -846,7 +851,7 @@
        "exitChecksInlined": 0,
        "frameChecks": 3,
        "inlinedTemporaries": 29,
-       "deadDefinitions": 4,
+       "deadDefinitions": 7,
        "guardWrappers": 0,
        "retryLoops": 5,
        "booleanMaterialisation": 6,
@@ -885,8 +890,8 @@
        "hoistedState": 1
       },
       "before": {
-       "lines": 216,
-       "temporaries": 51,
+       "lines": 219,
+       "temporaries": 52,
        "labels": 3,
        "gotos": 7,
        "terminationChecks": 21,
@@ -1154,17 +1159,17 @@
      {
       "line": 14,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 15,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue8"
      },
      {
       "line": 15,
       "category": "genericTemporaries",
       "text": "scratchValue12"
+     },
+     {
+      "line": 15,
+      "category": "genericTemporaries",
+      "text": "scratchValue13"
      },
      {
       "line": 38,
@@ -1199,12 +1204,12 @@
      {
       "line": 62,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "text": "scratchValue8"
      },
      {
       "line": 63,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "text": "scratchValue8"
      },
      {
       "line": 69,
@@ -1224,7 +1229,7 @@
      {
       "line": 71,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "text": "scratchValue8"
      },
      {
       "line": 77,
@@ -1259,7 +1264,7 @@
      {
       "line": 82,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
+      "text": "scratchValue13"
      },
      {
       "line": 83,
@@ -1269,7 +1274,7 @@
      {
       "line": 86,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
+      "text": "scratchValue13"
      },
      {
       "line": 90,
@@ -1324,7 +1329,7 @@
      {
       "line": 119,
       "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue12"
      },
      {
       "line": 121,

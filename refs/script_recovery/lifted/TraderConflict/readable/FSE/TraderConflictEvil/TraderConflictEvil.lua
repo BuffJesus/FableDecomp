@@ -19,9 +19,9 @@ local SCRIPT_DEF = {
 -- Q_TraderConflictEvil.Main (retail 0x00df6010)
 function Main(quest)
     local allCreaturesOffset, allCreaturesOffset2, allCreaturesOffset3, predicateResult, c_stk_7d_2
-    local ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, f_stk_70_1, f_stk_70_2, addQuestInfoCounter
-    local scratchValue11, scratchValue12, scratchValue17, creaturesItem, getNearestWithScriptName
-    local oakvaleVillagerMaleFakeShopkeeper, getDataString
+    local c_stk_7d_3, ctr_40, ctr_44, ctr_5c, ctr_74, ctr_78, f_stk_70_1, f_stk_70_2
+    local addQuestInfoCounter, scratchValue11, scratchValue12, scratchValue17, creaturesItem
+    local getNearestWithScriptName, oakvaleVillagerMaleFakeShopkeeper, getDataString
     local hero = quest:GetHero()
     addQuestInfoCounter = 0
     quest:AddEntityBinding("TC_GuardSpawnPoint", "TraderConflictEvil/Entities/TC_GuardSpawnPoint")
@@ -139,13 +139,20 @@ function Main(quest)
         if quest:GetStateListCount("AllCreatures") ~= 0 then
             repeat
                 if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
-                if quest:GetStateListAt("AllCreatures", 0 / 12):GetDefName() ~= "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER" then
+                creaturesItem = quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):GetDefName()
+                if creaturesItem == nil then
+                    allCreaturesOffset3 = 0
+                    c_stk_7d_3 = false
+                else
+                    c_stk_7d_3 = creaturesItem == "CREATURE_OAKVALE_VILLAGER_MALE_SHOPKEEPER"
+                end
+                if not c_stk_7d_3 then
                     ctr_40 = ctr_40 + 1
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00df75ec end
                     addQuestInfoCounter = 0
                     if 0 ~= (quest:GetStateListCount("AllCreatures") * 12) then
-                        if quest:GetStateListAt("AllCreatures", 0 / 12):IsEqualTo(quest:GetStateListAt("AllCreatures", 0 / 12)) then
+                        if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):IsEqualTo(quest:GetStateListAt("AllCreatures", 0 / 12)) then
                             quest:StateListErase("AllCreatures", 0 / 12)
                             break
                         end

@@ -380,7 +380,7 @@ end
 
 -- Q_TraderConflictGood.AttackPeople (retail 0x00dfd600)
 function AttackPeople(quest)
-    local ctr_38, scratchValue4, timerId, sequence, scratchValue5, scratchValue7, scratchValue8
+    local ctr_38, scratchValue5, timerId, sequence, scratchValue6, scratchValue8, scratchValue9
     local hero = quest:GetHero()
     local function DeregisterTimers()
         quest:DeregisterTimer(timerId)
@@ -397,18 +397,18 @@ function AttackPeople(quest)
         if not quest:NewScriptFrame() then quest:DeregisterTimer(timerId); goto LAB_00dfde13 end
         ctr_38 = 0
         if #allCreatures ~= 0 then
-            scratchValue4 = 0
+            scratchValue5 = 0
             repeat
-                local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue4 + 1], "TraderToRescue")
-                if quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], hero, 15.0) or quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue4 + 1], traderToRescue, 15.0) then
+                local traderToRescue = quest:GetNearestWithScriptName(allCreatures[scratchValue5 + 1], "TraderToRescue")
+                if quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue5 + 1], hero, 15.0) or quest:IsDistanceBetweenThingsUnder(allCreatures[scratchValue5 + 1], traderToRescue, 15.0) then
                     goto LAB_00dfd841
                 end
                 goto FLOW_past_lab_00dfd841
                 ::LAB_00dfd841::
-                scratchValue5 = ctr_38
+                scratchValue6 = ctr_38
                 sequence = quest:IsDistanceBetweenThingsUnder(allCreatures[ctr_38 + 1], traderToRescue, 15.0)
                 if not sequence then
-                    sequence = quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], traderToRescue) and scratchValue7 ~= nil
+                    sequence = quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue6 + 1], traderToRescue) and scratchValue8 ~= nil
                     if sequence then
                         -- TODO(native): cVar3 = (**(*piStack_14 + 0x12c))()
                         local scratchValue = nil --[[unresolved native value]]
@@ -417,22 +417,22 @@ function AttackPeople(quest)
                 end
                 if sequence then
                     if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
-                    quest:GiveThingBestEnemyTarget(allCreatures[scratchValue5 + 1], traderToRescue)
+                    quest:GiveThingBestEnemyTarget(allCreatures[scratchValue6 + 1], traderToRescue)
                     if quest:GetTimer(timerId) == 0 then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                        local conversationId = quest:AddNewConversation(allCreatures[scratchValue5 + 1], false, false)
+                        local conversationId = quest:AddNewConversation(allCreatures[scratchValue6 + 1], false, false)
                         quest:AddPersonToConversation(conversationId, hero)
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", allCreatures[scratchValue5 + 1], hero, false)
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_B11_BANDIT_ATTACK_TRADER", allCreatures[scratchValue6 + 1], hero, false)
                         goto LAB_00dfda32
                     end
                 else
                     if quest:IsActiveThreadTerminating() then DeregisterTimers(); return end
-                    quest:GiveThingBestEnemyTarget(allCreatures[scratchValue5 + 1], hero)
+                    quest:GiveThingBestEnemyTarget(allCreatures[scratchValue6 + 1], hero)
                     if quest:GetTimer(timerId) == 0 then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-                        local conversationId2 = quest:AddNewConversation(allCreatures[scratchValue5 + 1], false, false)
+                        local conversationId2 = quest:AddNewConversation(allCreatures[scratchValue6 + 1], false, false)
                         quest:AddPersonToConversation(conversationId2, hero)
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_HERO", allCreatures[scratchValue5 + 1], hero, false)
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_B11_BANDIT_ATTACK_HERO", allCreatures[scratchValue6 + 1], hero, false)
                         goto LAB_00dfda32
                     end
                 end
@@ -440,9 +440,9 @@ function AttackPeople(quest)
                 ::LAB_00dfda32::
                 quest:SetTimer(timerId, 4)
                 ::FLOW_past_lab_00dfda32::
-                quest:MiniMapAddMarker(allCreatures[scratchValue5 + 1], "HUD_ORB_RED_SMALL")
+                quest:MiniMapAddMarker(allCreatures[scratchValue6 + 1], "HUD_ORB_RED_SMALL")
                 if #allCreatures ~= 0 then
-                    if allCreatures[scratchValue5 + 1]:IsEqualTo(allCreatures[0 + 1]) then
+                    if allCreatures[scratchValue6 + 1]:IsEqualTo(allCreatures[0 + 1]) then
                         table.remove(allCreatures, 0 + 1)
                         break
                     end
@@ -450,12 +450,12 @@ function AttackPeople(quest)
                 end
                 goto LAB_00dfdabb
                 ::FLOW_past_lab_00dfd841::
-                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue4 + 1], hero) then goto LAB_00dfd841 end
-                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue4 + 1], traderToRescue) then
-                    if allCreatures[scratchValue4 + 1]:GetName() ~= "TC_BanditGuard" then goto LAB_00dfd841 end
+                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], hero) then goto LAB_00dfd841 end
+                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], traderToRescue) then
+                    if allCreatures[scratchValue5 + 1]:GetName() ~= "TC_BanditGuard" then goto LAB_00dfd841 end
                 end
                 ctr_38 = ctr_38 + 1
-                scratchValue4 = scratchValue4 + 1
+                scratchValue5 = scratchValue5 + 1
             until ctr_38 >= #allCreatures
         end
         goto LAB_00dfdaff
@@ -474,10 +474,10 @@ function AttackPeople(quest)
     ::LAB_00dfde13::
     do return end
     while true do
-        scratchValue8 = scratchValue8 + 1
-        if scratchValue8 == #allCreatures then break end
-        if allCreatures[scratchValue5 + 1]:IsEqualTo(allCreatures[scratchValue8 + 1]) then
-            table.remove(allCreatures, scratchValue8 + 1)
+        scratchValue9 = scratchValue9 + 1
+        if scratchValue9 == #allCreatures then break end
+        if allCreatures[scratchValue6 + 1]:IsEqualTo(allCreatures[scratchValue9 + 1]) then
+            table.remove(allCreatures, scratchValue9 + 1)
             break
         end
     end

@@ -150,21 +150,25 @@ function Main(quest, me)
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
+            iVar16 = i_stk_220
             if bVar4 then goto LAB_00d5da96 end
             cVar5 = me:IsTalkedToByHero()
             if cVar5 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
+                iVar16 = i_stk_220
                 if bVar4 then goto LAB_00d5da96 end
                 if not quest:GetMasterGameState("HeroTakingGuildTest") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
+                    iVar16 = i_stk_220
                     if bVar4 then goto LAB_00d5da96 end
                     me:ClearCommands()
                     quest:SetStateInt("TutorialState", 3)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
+                    iVar16 = i_stk_220
                     if bVar4 then goto LAB_00d5da96 end
                     xStack_1c0 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
@@ -203,6 +207,7 @@ function Main(quest, me)
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_1c0)
+                            iVar16 = i_stk_220
                             goto LAB_00d5da96
                         end
                     end
@@ -213,6 +218,7 @@ function Main(quest, me)
             fVar20 = 5.5
             pCVar6 = quest:GetHero()
             bVar4 = quest:IsDistanceBetweenThingsUnder(pCVar6, me, fVar20)
+            iVar16 = i_stk_220
             __native_condition_2 = bVar4
             if __native_condition_2 then
                 iVar15 = quest:GetTimer(i_stk_220)
@@ -250,6 +256,7 @@ function Main(quest, me)
                 ::LAB_00d5b380::
                 i_stk_1ec = 1 - i_stk_1ec
             end
+            iVar16 = i_stk_220
             iVar15 = quest:GetStateInt("TutorialState")
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -268,6 +275,7 @@ function Main(quest, me)
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
+            iVar16 = i_stk_220
             if bVar4 then goto LAB_00d5da96 end
             quest:SetStateInt("TutorialState", 3)
             quest:SetMasterGameState("SkillRepeatKnown", false)
@@ -1171,36 +1179,43 @@ function Main(quest, me)
                         if native_arg_switch_2 == 0 then
                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_APLUS"
                             resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                            pCVar11 = "$GRADE"
                             break
                         else
                             if native_arg_switch_2 == 1 then
                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_A"
                                 resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                pCVar11 = "$GRADE"
                                 break
                             else
                                 if native_arg_switch_2 == 2 then
                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_B"
                                     resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                    pCVar11 = "$GRADE"
                                     break
                                 else
                                     if native_arg_switch_2 == 3 then
                                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_C"
                                         resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                        pCVar11 = "$GRADE"
                                         break
                                     else
                                         if native_arg_switch_2 == 4 then
                                             pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_D"
                                             resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                            pCVar11 = "$GRADE"
                                             break
                                         else
                                             if native_arg_switch_2 == 5 then
                                                 pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_E"
                                                 resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                                pCVar11 = "$GRADE"
                                                 break
                                             else
                                                 if native_arg_switch_2 == 6 then
                                                     pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_GRADE_F"
                                                     resources:SetString(xStack_1cc, "$GRADE", pcVar14)
+                                                    pCVar11 = "$GRADE"
                                                     break
                                                 else
                                                     goto FLOW_native_label_1

@@ -646,6 +646,7 @@ function Main(quest, me)
                                         quest:AddPersonToConversation(iVar9, pCVar6)
                                         pCVar6 = quest:GetHero()
                                         quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_DEFEND", r3, pCVar6, false)
+                                        pCVar6 = r3
                                     end
                                     goto FLOW_hoist_lab_00d57e71_1
                                 end
@@ -702,6 +703,7 @@ function Main(quest, me)
                                                     quest:AddPersonToConversation(iVar9, pCVar6)
                                                     pCVar6 = quest:GetHero()
                                                     quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_ATTACK", r4, pCVar6, false)
+                                                    pCVar6 = r4
                                                     goto LAB_00d57e71
                                                 end
                                             end
@@ -752,6 +754,7 @@ function Main(quest, me)
                                                         quest:AddPersonToConversation(iVar9, pCVar6)
                                                         pCVar6 = quest:GetHero()
                                                         quest:AddLineToConversation(iVar9, "TEXT_QST_028_THUNDER_MELEE_FINISH", r5, pCVar6, false)
+                                                        pCVar6 = r5
                                                         goto LAB_00d57e71
                                                     end
                                                 end

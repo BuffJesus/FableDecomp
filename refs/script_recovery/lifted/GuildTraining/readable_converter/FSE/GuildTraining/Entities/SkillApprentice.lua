@@ -19,7 +19,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, scratchValue2, scratchValue3, scratchValue4, infoElement, questionAnswer
-    local scratchValue, scratchValue27, timerId, index, p0, resource, actorMap, resource3, movie4
+    local scratchValue, scratchValue22, timerId, index, p0, resource, actorMap, resource3, movie4
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource3)
@@ -292,14 +292,14 @@ function Main(quest, me)
                 index = 0
                 scratchValue = 0
                 repeat
-                    scratchValue27 = scratchValue
+                    scratchValue22 = scratchValue
                     if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_SkillGrades, index) <= infoElement then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d4de3d end
                         break
                     end
                     index = index + 1
-                    scratchValue = scratchValue27 + 1
-                until not (scratchValue27 + 1 < 7)
+                    scratchValue = scratchValue22 + 1
+                until not (scratchValue22 + 1 < 7)
                 resource = resources:NewResource()
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, hero, 4) do
@@ -320,7 +320,7 @@ function Main(quest, me)
                 ::LAB_00d4d979::
                 resources:SetActor(actorMap, "ME", resource3)
                 repeat
-                    if scratchValue27 == 0 then
+                    if scratchValue22 == 0 then
                         if quest:GetMasterGameState("GlobalSkillGrade") == 7 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d4de05 end
                             resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_APLUS", actorMap, false, true)
@@ -332,31 +332,31 @@ function Main(quest, me)
                             break
                         end
                         goto LAB_00d4de05
-                    elseif scratchValue27 == 1 then
+                    elseif scratchValue22 == 1 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_A", actorMap, false, true)
                         break
-                    elseif scratchValue27 == 2 then
+                    elseif scratchValue22 == 2 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_B", actorMap, false, true)
                         break
-                    elseif scratchValue27 == 3 then
+                    elseif scratchValue22 == 3 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_C", actorMap, false, true)
                         break
-                    elseif scratchValue27 == 4 then
+                    elseif scratchValue22 == 4 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_D", actorMap, false, true)
                         break
-                    elseif scratchValue27 == 5 then
+                    elseif scratchValue22 == 5 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_E", actorMap, false, true)
                         break
-                    elseif scratchValue27 == 6 then
+                    elseif scratchValue22 == 6 then
                         resources:RunMacro("CS_GUILD_DEPARTURE_SKILL_TEST_F", actorMap, false, true)
                         break
                     else
                         break
                     end
                 until true
-                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue27 then
+                if quest:GetMasterGameState("GlobalSkillGrade") < 7 - scratchValue22 then
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d4de1f end
-                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue27)
+                    quest:SetMasterGameState("GlobalSkillGrade", 7 - scratchValue22)
                 end
                 quest:FixMovieSequenceCamera(false)
                 quest:PauseAllNonScriptedEntities(false)

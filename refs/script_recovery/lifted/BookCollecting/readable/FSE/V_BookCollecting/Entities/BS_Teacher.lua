@@ -756,7 +756,8 @@ function LookForBook(quest, me)
             resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
-            if 0.0 >= quest:GetHealth(hero) then AskForBook(quest, me, value); goto LAB_00e57924 end
+            local fret_01 = quest:GetHealth(nil --[[missing]])
+            if 0.0 >= fret_01 then AskForBook(quest, me, value); goto LAB_00e57924 end
             -- TODO(native): iVar7 = *pCVar1
 --[[unresolved native value]]
             -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);
@@ -772,7 +773,8 @@ function LookForBook(quest, me)
         resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
-        if quest:GetHealth(hero) <= 0.0 then
+        local fret_0 = quest:GetHealth(nil --[[missing]])
+        if fret_0 <= 0.0 then
             return
         end
         -- TODO(native): iVar7 = *pCVar1
@@ -790,7 +792,8 @@ function LookForBook(quest, me)
     resources:MemberResource("seh_me", me)
     -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
-    if quest:GetHealth(hero) <= 0.0 then
+    local fret_02 = quest:GetHealth(nil --[[missing]])
+    if fret_02 <= 0.0 then
         return
     end
     -- TODO(native): iVar7 = *pCVar1

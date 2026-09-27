@@ -374,7 +374,7 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer"
           ],
-          "lines": 325,
+          "lines": 326,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

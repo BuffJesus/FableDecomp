@@ -2157,7 +2157,7 @@
             "ClearThingHasInformation",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 257,
+          "lines": 258,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -11,8 +11,8 @@ function Main(quest, me)
     local self_0x = self0X14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult6, scratchValue5, scratchValue7, conversationId, pOther
-    local scratchValue11, scratchValue12
+    local predicateResult, predicateResult6, scratchValue5, scratchValue8, conversationId, pOther
+    local scratchValue12, scratchValue13
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
     local resource = resources:NewResource()
@@ -59,8 +59,8 @@ function Main(quest, me)
         me:ClearCommands()
         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
         scratchValue5 = math.random(0, 32767)
-        scratchValue7 = quest:EntityGetSex(me)
-        if scratchValue7 == 1 then
+        scratchValue8 = quest:EntityGetSex(me)
+        if scratchValue8 == 1 then
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
                 quest:DeregisterTimer(timerId)
@@ -68,7 +68,7 @@ function Main(quest, me)
             end
             pOther = self_0x + 316 + (scratchValue5 % 5) * 4
             goto LAB_00ee50ab
-        elseif scratchValue7 == 2 then
+        elseif scratchValue8 == 2 then
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
                 quest:DeregisterTimer(timerId)
@@ -79,11 +79,11 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00ee50ab
         ::LAB_00ee50ab::
-        scratchValue12 = pOther
+        scratchValue13 = pOther
         ::FLOW_past_lab_00ee50ab::
         conversationId = quest:AddNewConversation(me, false, false)
         quest:AddPersonToConversation(conversationId, hero)
-        quest:AddLineToConversation(conversationId, scratchValue12, me, hero, false)
+        quest:AddLineToConversation(conversationId, scratchValue13, me, hero, false)
         quest:SetTimer(timerId, quest:ReadGlobalGameData(2276))
         me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(2256), true)
         quest:NewScriptFrame(me)
@@ -116,7 +116,7 @@ function Main(quest, me)
     --[[unresolved native result]]
                 while nil do
                     if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
-                    me:MoveToPosition(scratchValue11, 1.0, ENTITY_MOVE_WALK, false, true)
+                    me:MoveToPosition(scratchValue12, 1.0, ENTITY_MOVE_WALK, false, true)
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ee5535 end
                     end

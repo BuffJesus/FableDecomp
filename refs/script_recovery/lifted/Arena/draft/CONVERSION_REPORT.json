@@ -1215,7 +1215,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 705,
+          "lines": 707,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1713,7 +1713,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 859,
+          "lines": 862,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3992,7 +3992,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 919,
+          "lines": 921,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5840,7 +5840,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1135,
+          "lines": 1136,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -823,6 +823,7 @@ function Main(quest, me)
                         ::LAB_00d4b857::
                         quest:SetTimer(xStack_258, 0xf)
                         ::FLOW_past_lab_00d4b857::
+                        iVar6 = xStack_258
                         cVar4 = quest:GetStateBool("FightFinished")
                     end
                     alive = not quest:IsActiveThreadTerminating()
@@ -1056,6 +1057,7 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
+        iVar5 = i_stk_260
     until false
 end
 

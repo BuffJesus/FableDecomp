@@ -569,7 +569,8 @@ function Main(quest, me)
                 quest:Pause(1.0)
                 quest:EntitySetFacingAngleTowardsThing(me, hero, true)
                 quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(me, getHero, -1.0, 0, -1)
+                getHero = "CAM_B_OWNER"
+                quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
                 if helpers.IsHeroWearingBeard(quest, me) then
                     if not quest:IsActiveThreadTerminating() then
                         if helpers.helper_E44A40(quest, me) then
@@ -803,6 +804,7 @@ function Main(quest, me)
                 quest:Pause(1.0)
                 quest:EntitySetFacingAngleTowardsThing(hero, nil --[[missing]], __unknown_push)
                 quest:NewScriptFrame(me)
+                getHero = "CAM_B_OWNER"
                 quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], __unknown_push, -1.0, 0)
                 if helpers.IsHeroWearingBeard(quest, me) then
                     if quest:IsActiveThreadTerminating() then

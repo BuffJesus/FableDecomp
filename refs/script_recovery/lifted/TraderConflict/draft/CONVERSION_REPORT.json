@@ -194,7 +194,7 @@
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty"
           ],
-          "lines": 493,
+          "lines": 498,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1996,7 +1996,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 255,
+          "lines": 257,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2467,7 +2467,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1066,
+          "lines": 1067,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

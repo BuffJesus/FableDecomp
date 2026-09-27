@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, piVar1, pvVar11, stack0xffffff3c, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
+    local CVar5, au_stk_28, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, piVar1, pvVar11, stack0xffffff3c, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         resources:DestroyMovie(xStack_8c)
@@ -385,6 +385,7 @@ function Main(quest, me)
             end
             if native_arg_sequence_1 then
                 repeat
+                    pCVar20 = "SCRIPT_NAME_HERO"
                     cVar7 = me:IsTalkedToByHero()
                     if cVar7 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -396,7 +397,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(true)
                         -- TODO(native): pCVar12 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
                         pCVar12 = nil --[[unresolved native value]]
-                        fret_03 = quest:GetHealth(pCVar20)
+                        fret_03 = quest:GetHealth(nil --[[missing]])
                         fVar3 = 0.0
                         if fVar3 < fret_03 then
                             -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
@@ -485,9 +486,10 @@ function Main(quest, me)
                         ::FLOW_past_lab_00ecf622::
                         xStack_8c_2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
+                        pCVar20 = au_stk_28
                         -- TODO(native): pCVar12 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
                         pCVar12 = nil --[[unresolved native value]]
-                        fret_04 = quest:GetHealth(pCVar20)
+                        fret_04 = quest:GetHealth(nil --[[missing]])
                         fVar3 = 0.0
                         if fVar3 < fret_04 then
                             -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)

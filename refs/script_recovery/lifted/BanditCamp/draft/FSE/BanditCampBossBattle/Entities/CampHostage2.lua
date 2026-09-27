@@ -66,6 +66,7 @@ function Main(quest, me)
                             quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_SECOND_CRY_SECOND", me, pCVar6, false)
                             i_stk_30 = 0
                         end
+                        iVar4 = i_stk_34
                         quest:SetTimer(i_stk_34, 8)
                     end
                 end

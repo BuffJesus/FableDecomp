@@ -135,6 +135,7 @@ function Main(quest, me)
                             end
                             goto FLOW_past_lab_00d07820
                             ::LAB_00d07820::
+                            iVar6 = i_stk_70
                             quest:SetTimer(i_stk_70, 10)
                             goto LAB_00d0783a
                             ::FLOW_past_lab_00d07820::
@@ -276,6 +277,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         pCVar9 = xStack_20
                         ::LAB_00d07bb5::
+                        iVar6 = i_stk_70
                         goto LAB_00d07bbe
                         ::FLOW_past_lab_00d07cf7::
                     end

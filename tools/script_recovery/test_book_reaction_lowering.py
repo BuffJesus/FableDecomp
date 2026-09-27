@@ -138,3 +138,49 @@ def test_generated_teacher_dispatches_registered_worker_with_original_index(gene
         (lua.globals().helper_E55CE0 or lua.globals().AskForBook)(quest, lua.table(), 17)
         assert events == ([('ReadingBook', True), ('ReadingBook', False), (name, 17)]
                           if answer == 1 and not terminate else [])
+
+
+@pytest.mark.parametrize('speaker', ['boy0', 'girl0'])
+@pytest.mark.parametrize('dialogue', ['TEXT_BOOK_LINE', 'NULL'])
+@pytest.mark.parametrize('loop', ['ANIM_LOOP', 'NULL'])
+def test_conversation_keeps_saved_handle_through_actor_and_animation_branches(generated, speaker, dialogue, loop):
+    _, workers, _ = generated
+    for source in workers:
+        lua = LuaRuntime(unpack_returned_tuples=True)
+        lua.execute(source)
+        events = []
+        record = lambda kind: lambda _, *args: events.append((kind, *args))
+        resource = lua.table_from({k: record(k) for k in ('PlayAnimation', 'PlayLoopingAnimation')})
+        resource['MemberResource'] = lambda _, key: key
+        resource['IsPerformingScriptTask'] = lambda _, handle: False
+        row = lua.table_from({key: lua.table_from([value]) for key, value in
+                              [('Speaker', speaker), ('Dialogue', dialogue),
+                               ('Animation', 'ANIM_START'), ('AnimLoop', loop)]})
+        quest = lua.table_from({
+            'RetailResources': lambda _: resource,
+            'GlobalConversations': lambda _, offset: lua.table_from([row]),
+            'GetHero': lambda _: 'hero',
+            'GetThingWithScriptName': lambda _, name: name,
+            'IsActiveThreadTerminating': lambda _: False,
+            'AddNewConversation': lambda *_: 73,
+            'AddPersonToConversation': record('person'),
+            'AddLineToConversation': record('line'),
+            'RemoveConversation': record('remove'),
+            'GetStateBool': lambda *_: False,
+        })
+        seen = []
+        def active(_, handle):
+            seen.append(handle)
+            return len(seen) == 1  # yield once, then finish
+        quest['IsConversationActive'] = active
+        quest['NewScriptFrame'] = lambda *_: True
+        (lua.globals().helper_E569D0 or lua.globals().DoConversation)(quest, 0, 0)
+        handle = 73 if dialogue != 'NULL' else -1
+        assert seen == [handle, handle]
+        assert ('remove', handle, False) in events
+        assert [e[1] for e in events if e[0] == 'PlayAnimation'] == [
+            'seh_Boy' if speaker == 'boy0' else 'seh_Girl']
+        looping = [e for e in events if e[0] == 'PlayLoopingAnimation']
+        assert len(looping) == (loop != 'NULL')
+        if looping:
+            assert looping[0][2] == loop

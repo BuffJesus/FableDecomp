@@ -97,6 +97,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if not bVar5 then
+                                pCVar8 = r1
                                 goto LAB_00df1b40
                             end
                         else

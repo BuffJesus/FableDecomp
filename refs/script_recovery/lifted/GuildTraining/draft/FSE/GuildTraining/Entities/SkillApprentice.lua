@@ -717,6 +717,7 @@ function Main(quest, me)
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
+        iVar6 = i_stk_174
     until false
 end
 

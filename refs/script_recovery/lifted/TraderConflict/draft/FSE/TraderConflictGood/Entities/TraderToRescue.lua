@@ -162,6 +162,7 @@ function Main(quest, me)
                 fVar26 = 15.0
                 pCVar13 = quest:GetHero()
                 bVar6 = quest:IsDistanceBetweenThingsUnder(me, pCVar13, fVar26)
+                iVar17 = xStack_16c
                 if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive

@@ -179,6 +179,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_60)
         end
+        iVar4 = xStack_84
         iVar7 = __native_entity_state:GetStateInt("AppleMode")
     end
     alive = not quest:IsActiveThreadTerminating()

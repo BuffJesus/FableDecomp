@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "arena",
- "draft": "refs/script_recovery/lifted/Arena/draft",
+ "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\arena",
  "files": {
   "FSE/Arena/Arena.lua": {
    "functions": [
@@ -86,7 +86,7 @@
       "deadStores": 3,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 7,
+      "declarations": 8,
       "decimalLiterals": 13
      }
     },
@@ -3077,6 +3077,14 @@
        ]
       },
       "iVar3_6": {
+       "name": "scratchValue8",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar3_7": {
        "name": "getHeroTitle",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -3084,14 +3092,14 @@
        ]
       },
       "iVar4_1": {
-       "name": "scratchValue8",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar4_2": {
-       "name": "scratchValue9",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3105,7 +3113,7 @@
        ]
       },
       "iVar4_4": {
-       "name": "scratchValue10",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3113,7 +3121,7 @@
        ]
       },
       "iVar4_5": {
-       "name": "scratchValue11",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3128,7 +3136,7 @@
        ]
       },
       "iVar4_7": {
-       "name": "scratchValue12",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3142,7 +3150,7 @@
        ]
       },
       "i_stk_114": {
-       "name": "scratchValue13",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -3475,14 +3483,14 @@
        ]
       },
       "puVar8": {
-       "name": "scratchValue14",
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pu_stk_14c": {
-       "name": "scratchValue15",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3496,7 +3504,7 @@
        ]
       },
       "r1_2": {
-       "name": "scratchValue16",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -3508,35 +3516,35 @@
        ]
       },
       "uVar5_1": {
-       "name": "scratchValue17",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "uVar5_2": {
        "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "uVar5_3": {
+      "uVar5_2": {
        "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "uVar5_4": {
+      "uVar5_3": {
        "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "uVar5_5": {
+      "uVar5_4": {
        "name": "scratchValue21",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "uVar5_5": {
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3553,14 +3561,6 @@
        ]
       },
       "uVar9_2": {
-       "name": "scratchValue22",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "uVar9_3": {
        "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -3568,15 +3568,23 @@
         null
        ]
       },
-      "uVar9_4": {
+      "uVar9_3": {
        "name": "scratchValue24",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "uVar9_4": {
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "uVar9_5": {
-       "name": "scratchValue25",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3590,7 +3598,7 @@
        ]
       },
       "xStack_c0": {
-       "name": "scratchValue26",
+       "name": "scratchValue27",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -3724,44 +3732,44 @@
          353
         ],
         "bVar2_40": [
-         363
+         364
         ],
         "bVar2_41": [
-         376
+         377
         ],
         "bVar2_42": [
-         385
+         386
         ],
         "bVar2_43": [
-         401
+         402
         ],
         "bVar2_44": [
-         468
+         469
         ],
         "bVar2_45": [
-         476,
-         478
+         477,
+         479
         ],
         "bVar2_46": [
-         482
+         483
         ],
         "bVar2_47": [
-         543
+         544
         ],
         "bVar2_48": [
-         679
+         681
         ],
         "bVar2_49": [
-         682
+         684
         ],
         "bVar2_50": [
-         691
+         693
         ],
         "bVar2_51": [
-         694
+         696
         ],
         "bVar2_52": [
-         705
+         707
         ]
        }
       },
@@ -3770,121 +3778,121 @@
        "originalDeclaration": "    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iStack_f4, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_150, xStack_c0\n",
        "versions": {
         "pCVar6_1": [
-         397
+         398
         ],
         "pCVar6_2": [
-         410
+         411
         ],
         "pCVar6_3": [
-         415
+         416
         ],
         "pCVar6_4": [
-         420
+         421
         ],
         "pCVar6_5": [
-         425
+         426
         ],
         "pCVar6_6": [
-         430
+         431
         ],
         "pCVar6_7": [
-         435
+         436
         ],
         "pCVar6_8": [
-         440
+         441
         ],
         "pCVar6_9": [
-         445
+         446
         ],
         "pCVar6_10": [
-         450
+         451
         ],
         "pCVar6_11": [
-         491
+         492
         ],
         "pCVar6_12": [
-         496
+         497
         ],
         "pCVar6_13": [
-         501
+         502
         ],
         "pCVar6_14": [
-         506
+         507
         ],
         "pCVar6_15": [
-         511
+         512
         ],
         "pCVar6_16": [
-         516
+         517
         ],
         "pCVar6_17": [
-         521
+         522
         ],
         "pCVar6_18": [
-         526
+         527
         ],
         "pCVar6_19": [
-         553
+         554
         ],
         "pCVar6_20": [
-         558
+         559
         ],
         "pCVar6_21": [
-         563
+         564
         ],
         "pCVar6_22": [
-         568
+         569
         ],
         "pCVar6_23": [
-         573
+         574
         ],
         "pCVar6_24": [
-         578
+         579
         ],
         "pCVar6_25": [
-         583
+         584
         ],
         "pCVar6_26": [
-         588
+         589
         ],
         "pCVar6_27": [
-         593
+         594
         ],
         "pCVar6_28": [
-         598
+         599
         ],
         "pCVar6_29": [
-         603
+         604
         ],
         "pCVar6_30": [
-         608
+         609
         ],
         "pCVar6_31": [
-         613
+         614
         ],
         "pCVar6_32": [
-         618
+         619
         ],
         "pCVar6_33": [
-         623
+         624
         ],
         "pCVar6_34": [
-         628
+         629
         ],
         "pCVar6_35": [
-         633
+         634
         ],
         "pCVar6_36": [
-         638
+         639
         ],
         "pCVar6_37": [
-         643
+         644
         ],
         "pCVar6_38": [
-         648
+         649
         ],
         "pCVar6_39": [
-         678
+         680
         ]
        }
       },
@@ -3910,13 +3918,13 @@
          255
         ],
         "iVar4_6": [
-         360
+         361
         ],
         "iVar4_7": [
-         394
+         395
         ],
         "iVar4_8": [
-         396
+         397
         ]
        }
       },
@@ -3942,7 +3950,11 @@
          349
         ],
         "iVar3_6": [
-         549
+         354,
+         677
+        ],
+        "iVar3_7": [
+         550
         ]
        }
       },
@@ -3986,10 +3998,10 @@
          348
         ],
         "uVar9_4": [
-         474
+         475
         ],
         "uVar9_5": [
-         475
+         476
         ]
        }
       },
@@ -4017,7 +4029,7 @@
          252
         ],
         "c_stk_151_2": [
-         391
+         392
         ]
        }
       },
@@ -4026,13 +4038,13 @@
        "originalDeclaration": "    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iStack_f4, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_150, xStack_c0\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         369
+         370
         ],
         "native_arg_sequence_1_2": [
-         371,
-         373,
-         378,
-         380
+         372,
+         374,
+         379,
+         381
         ]
        }
       },
@@ -4056,7 +4068,7 @@
     },
     {
      "function": "InitialiseVariables",
-     "sourceLine": 2078,
+     "sourceLine": 2080,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4065,7 +4077,7 @@
     },
     {
      "function": "AnimateCrowd",
-     "sourceLine": 2102,
+     "sourceLine": 2104,
      "locals": {
       "iVar5_1": {
        "name": "scratchValue",
@@ -4179,7 +4191,7 @@
     },
     {
      "function": "GetFanfareMusic",
-     "sourceLine": 2152,
+     "sourceLine": 2154,
      "locals": {
       "native_arg_Fanfare": {
        "name": "fanfare",
@@ -4201,7 +4213,7 @@
     },
     {
      "function": "PlayWave",
-     "sourceLine": 2195,
+     "sourceLine": 2197,
      "locals": {
       "bVar20": {
        "name": "predicateResult",
@@ -4868,6 +4880,7 @@
         null,
         null,
         null,
+        null,
         "arenaRoundWave",
         "questionAnswer",
         "questionAnswer",
@@ -4928,30 +4941,17 @@
        ]
       },
       "iVar6_8": {
-       "name": "createCreatureNearby",
-       "basis": "one method, several names",
+       "name": "scratchValue11",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "count",
+        null,
         null,
         null,
         null
        ]
       },
       "iVar6_9": {
-       "name": "getStateInt",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getStateInt"
-       ]
-      },
-      "iVar6_10": {
-       "name": "scratchValue11",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar6_11": {
        "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -4959,15 +4959,21 @@
         null
        ]
       },
-      "iVar6_12": {
+      "iVar6_10": {
+       "name": "getStateInt",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "getStateInt"
+       ]
+      },
+      "iVar6_11": {
        "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        null,
         null
        ]
       },
-      "iVar6_13": {
+      "iVar6_12": {
        "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -4975,46 +4981,55 @@
         null
        ]
       },
-      "iVar6_14": {
+      "iVar6_13": {
        "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar6_14": {
+       "name": "scratchValue16",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
         null
        ]
       },
       "iVar6_15": {
-       "name": "scratchValue16",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar6_16": {
        "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar6_17": {
+      "iVar6_16": {
        "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar6_18": {
-       "name": "conversationId5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar6_19": {
+      "iVar6_17": {
        "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
+       ]
+      },
+      "iVar6_18": {
+       "name": "scratchValue20",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar6_19": {
+       "name": "conversationId5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
        ]
       },
       "i_stk_15c": {
@@ -5032,14 +5047,6 @@
        ]
       },
       "i_stk_b4": {
-       "name": "scratchValue20",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "i_stk_b8": {
        "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -5047,11 +5054,19 @@
         null
        ]
       },
-      "i_stk_c0": {
+      "i_stk_b8": {
        "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        null,
         null
+       ]
+      },
+      "i_stk_c0": {
+       "name": "count2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "count"
        ]
       },
       "i_stk_d0": {
@@ -5512,7 +5527,7 @@
          203,
          215,
          330,
-         725
+         728
         ],
         "bVar3_22": [
          211
@@ -5571,129 +5586,129 @@
          409
         ],
         "bVar3_40": [
-         436
+         437
         ],
         "bVar3_41": [
-         462
+         464
         ],
         "bVar3_42": [
-         476
+         478
         ],
         "bVar3_43": [
-         487
+         489
         ],
         "bVar3_44": [
-         501
+         503
         ],
         "bVar3_45": [
-         508
+         510
         ],
         "bVar3_46": [
-         517
+         519
         ],
         "bVar3_47": [
-         532
+         534
         ],
         "bVar3_48": [
-         539
+         541
         ],
         "bVar3_49": [
-         551
+         553
         ],
         "bVar3_50": [
-         557
+         559
         ],
         "bVar3_51": [
-         561
+         563
         ],
         "bVar3_52": [
-         568
+         570
         ],
         "bVar3_53": [
-         571
+         573
         ],
         "bVar3_54": [
-         579
-        ],
-        "bVar3_55": [
          581
         ],
+        "bVar3_55": [
+         583
+        ],
         "bVar3_56": [
-         587
+         589
         ],
         "bVar3_57": [
-         593
+         595
         ],
         "bVar3_58": [
-         598
+         600
         ],
         "bVar3_59": [
-         627
-        ],
-        "bVar3_60": [
          630
         ],
+        "bVar3_60": [
+         633
+        ],
         "bVar3_61": [
-         637
+         640
         ],
         "bVar3_62": [
-         646
+         649
         ],
         "bVar3_63": [
-         654
+         657
         ],
         "bVar3_64": [
-         660
+         663
         ],
         "bVar3_65": [
-         671,
-         676
+         674,
+         679
         ],
         "bVar3_66": [
-         674
+         677
         ],
         "bVar3_67": [
-         678
+         681
         ],
         "bVar3_68": [
-         687,
-         700
-        ],
-        "bVar3_69": [
-         691
-        ],
-        "bVar3_70": [
+         690,
          703
         ],
+        "bVar3_69": [
+         694
+        ],
+        "bVar3_70": [
+         706
+        ],
         "bVar3_71": [
-         719
+         722
         ],
         "bVar3_72": [
-         731
+         734
         ],
         "bVar3_73": [
-         736
+         739
         ],
         "bVar3_74": [
-         743
+         746
         ],
         "bVar3_75": [
-         765
+         768
         ],
         "bVar3_76": [
-         771
+         774
         ],
         "bVar3_77": [
-         776
+         779
         ],
         "bVar3_78": [
-         782
+         785
         ],
         "bVar3_79": [
-         786
+         789
         ],
         "bVar3_80": [
-         806
+         809
         ]
        }
       },
@@ -5762,25 +5777,25 @@
          421
         ],
         "pCVar5_20": [
-         454
+         456
         ],
         "pCVar5_21": [
-         685
+         688
         ],
         "pCVar5_22": [
-         698
+         701
         ],
         "pCVar5_23": [
-         766
+         769
         ],
         "pCVar5_24": [
-         768
+         771
         ],
         "pCVar5_25": [
-         816
+         819
         ],
         "pCVar5_26": [
-         821
+         824
         ]
        }
       },
@@ -5816,43 +5831,45 @@
          108,
          273,
          388,
-         444
+         424,
+         448
         ],
         "iVar6_9": [
-         496
+         445,
+         812
         ],
         "iVar6_10": [
-         504
+         498
         ],
         "iVar6_11": [
-         529,
-         535
+         506
         ],
         "iVar6_12": [
-         555,
-         565
+         531,
+         537
         ],
         "iVar6_13": [
-         584,
-         590
+         557,
+         567
         ],
         "iVar6_14": [
-         665
+         586,
+         592
         ],
         "iVar6_15": [
-         666
+         668
         ],
         "iVar6_16": [
-         684
+         669
         ],
         "iVar6_17": [
-         697
+         687
         ],
         "iVar6_18": [
-         767
+         700
         ],
         "iVar6_19": [
-         809
+         770
         ]
        }
       },
@@ -5864,10 +5881,10 @@
          305
         ],
         "iVar12_2": [
-         433
+         434
         ],
         "iVar12_3": [
-         813
+         816
         ]
        }
       },
@@ -5890,7 +5907,7 @@
     },
     {
      "function": "GivePrizeFund",
-     "sourceLine": 3039,
+     "sourceLine": 3044,
      "locals": {
       "bVar3_2": {
        "name": "isConversationActive",
@@ -6033,7 +6050,7 @@
     },
     {
      "function": "GetEndRoundQuestion",
-     "sourceLine": 3126,
+     "sourceLine": 3131,
      "locals": {
       "native_arg_switch_1": {
        "name": "switch1",
@@ -6050,7 +6067,7 @@
     },
     {
      "function": "helper_F14250",
-     "sourceLine": 3175,
+     "sourceLine": 3180,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6141,8 +6158,15 @@
      "function": "PlayWave",
      "sourceLine": 1364,
      "locals": {
+      "scratchValue11": {
+       "name": "arenaSpawn2Count",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "arenaSpawn2Count"
+       ]
+      },
       "scratchValue37": {
-       "name": "createCreatureNearby2",
+       "name": "createCreatureNearby",
        "basis": "one method, several names",
        "assignmentRoles": [
         null
@@ -6156,7 +6180,7 @@
     },
     {
      "function": "GivePrizeFund",
-     "sourceLine": 1905,
+     "sourceLine": 1904,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6165,7 +6189,7 @@
     },
     {
      "function": "GetEndRoundQuestion",
-     "sourceLine": 1963,
+     "sourceLine": 1962,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6174,7 +6198,7 @@
     },
     {
      "function": "helper_F14250",
-     "sourceLine": 1998,
+     "sourceLine": 1997,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6468,7 +6492,7 @@
        "exitChecksInlined": 3,
        "frameChecks": 2,
        "inlinedTemporaries": 96,
-       "deadDefinitions": 5,
+       "deadDefinitions": 7,
        "guardWrappers": 0,
        "retryLoops": 2,
        "booleanMaterialisation": 4,
@@ -6507,8 +6531,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 706,
-       "temporaries": 138,
+       "lines": 708,
+       "temporaries": 139,
        "labels": 16,
        "gotos": 26,
        "terminationChecks": 37,
@@ -6740,15 +6764,15 @@
        "exitChecksInlined": 13,
        "frameChecks": 5,
        "inlinedTemporaries": 106,
-       "deadDefinitions": 35,
+       "deadDefinitions": 36,
        "guardWrappers": 0,
        "retryLoops": 6,
        "booleanMaterialisation": 7,
        "booleanCompares": 0,
        "conditions": 10,
        "literals": 0,
-       "copies": 3,
-       "selfAssignments": 0,
+       "copies": 7,
+       "selfAssignments": 4,
        "flagClears": 0,
        "tailGuards": 121,
        "blockingSpeech": 0,
@@ -6779,7 +6803,7 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 804,
+       "lines": 807,
        "temporaries": 142,
        "labels": 37,
        "gotos": 85,
@@ -6788,7 +6812,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 540,
+       "lines": 539,
        "temporaries": 43,
        "labels": 37,
        "gotos": 85,
@@ -7012,9 +7036,9 @@
     ]
    },
    "readability": {
-    "lines": 2029,
+    "lines": 2028,
     "counts": {
-     "genericTemporaries": 231,
+     "genericTemporaries": 227,
      "gotos": 179,
      "nativeNames": 262,
      "unresolvedDiagnostics": 33,
@@ -8115,17 +8139,17 @@
      {
       "line": 830,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
-     },
-     {
-      "line": 830,
-      "category": "genericTemporaries",
       "text": "scratchValue11"
      },
      {
       "line": 830,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue12"
+     },
+     {
+      "line": 830,
+      "category": "genericTemporaries",
+      "text": "scratchValue14"
      },
      {
       "line": 831,
@@ -8135,17 +8159,17 @@
      {
       "line": 831,
       "category": "genericTemporaries",
-      "text": "scratchValue22"
+      "text": "scratchValue23"
      },
      {
       "line": 831,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 832,
       "category": "genericTemporaries",
-      "text": "scratchValue25"
+      "text": "scratchValue26"
      },
      {
       "line": 834,
@@ -8165,7 +8189,7 @@
      {
       "line": 845,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 846,
@@ -8200,17 +8224,17 @@
      {
       "line": 855,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 856,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 859,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 861,
@@ -8225,7 +8249,7 @@
      {
       "line": 863,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 865,
@@ -8460,7 +8484,7 @@
      {
       "line": 958,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 958,
@@ -8470,7 +8494,7 @@
      {
       "line": 959,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 959,
@@ -8490,7 +8514,7 @@
      {
       "line": 967,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 969,
@@ -8500,32 +8524,32 @@
      {
       "line": 970,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 970,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 986,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 993,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 994,
       "category": "genericTemporaries",
-      "text": "scratchValue22"
+      "text": "scratchValue23"
      },
      {
       "line": 997,
       "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue12"
      },
      {
       "line": 1004,
@@ -8540,12 +8564,12 @@
      {
       "line": 1007,
       "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue12"
      },
      {
       "line": 1007,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 1008,
@@ -8560,32 +8584,32 @@
      {
       "line": 1011,
       "category": "genericTemporaries",
-      "text": "scratchValue22"
+      "text": "scratchValue23"
      },
      {
       "line": 1011,
       "category": "genericTemporaries",
-      "text": "scratchValue22"
+      "text": "scratchValue23"
      },
      {
       "line": 1012,
       "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue12"
      },
      {
       "line": 1012,
       "category": "genericTemporaries",
-      "text": "scratchValue11"
+      "text": "scratchValue12"
      },
      {
       "line": 1013,
       "category": "genericTemporaries",
-      "text": "scratchValue22"
+      "text": "scratchValue23"
      },
      {
       "line": 1021,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1023,
@@ -8600,12 +8624,12 @@
      {
       "line": 1030,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1030,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1030,
@@ -8625,12 +8649,12 @@
      {
       "line": 1036,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 1037,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue20"
      },
      {
       "line": 1038,
@@ -8640,12 +8664,12 @@
      {
       "line": 1038,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue20"
      },
      {
       "line": 1039,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue20"
      },
      {
       "line": 1040,
@@ -8655,7 +8679,7 @@
      {
       "line": 1040,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue20"
      },
      {
       "line": 1042,
@@ -8675,12 +8699,12 @@
      {
       "line": 1057,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 1058,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
       "line": 1059,
@@ -8690,12 +8714,12 @@
      {
       "line": 1059,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
       "line": 1060,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
       "line": 1061,
@@ -8705,7 +8729,7 @@
      {
       "line": 1061,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
       "line": 1063,
@@ -8725,7 +8749,7 @@
      {
       "line": 1078,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 1079,
@@ -8735,12 +8759,12 @@
      {
       "line": 1081,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1081,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1082,
@@ -8755,7 +8779,7 @@
      {
       "line": 1084,
       "category": "genericTemporaries",
-      "text": "scratchValue23"
+      "text": "scratchValue24"
      },
      {
       "line": 1098,
@@ -8775,7 +8799,7 @@
      {
       "line": 1106,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue14"
      },
      {
       "line": 1146,
@@ -8795,7 +8819,7 @@
      {
       "line": 1156,
       "category": "genericTemporaries",
-      "text": "scratchValue25"
+      "text": "scratchValue26"
      },
      {
       "line": 1157,
@@ -8805,12 +8829,12 @@
      {
       "line": 1157,
       "category": "genericTemporaries",
-      "text": "scratchValue25"
+      "text": "scratchValue26"
      },
      {
       "line": 1158,
       "category": "genericTemporaries",
-      "text": "scratchValue25"
+      "text": "scratchValue26"
      },
      {
       "line": 1159,
@@ -8820,7 +8844,7 @@
      {
       "line": 1159,
       "category": "genericTemporaries",
-      "text": "scratchValue25"
+      "text": "scratchValue26"
      },
      {
       "line": 1161,
@@ -8960,22 +8984,17 @@
      {
       "line": 1402,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 1402,
-      "category": "genericTemporaries",
-      "text": "scratchValue13"
-     },
-     {
-      "line": 1402,
-      "category": "genericTemporaries",
       "text": "scratchValue14"
      },
      {
       "line": 1402,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue15"
+     },
+     {
+      "line": 1402,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
      },
      {
       "line": 1402,
@@ -8983,7 +9002,7 @@
       "text": "scratchValue21"
      },
      {
-      "line": 1403,
+      "line": 1402,
       "category": "genericTemporaries",
       "text": "scratchValue22"
      },
@@ -9098,14 +9117,9 @@
       "text": "LAB_00f1f251"
      },
      {
-      "line": 1444,
-      "category": "genericTemporaries",
-      "text": "scratchValue22"
-     },
-     {
       "line": 1450,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue21"
      },
      {
       "line": 1451,
@@ -9170,7 +9184,7 @@
      {
       "line": 1472,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
       "line": 1475,
@@ -9424,66 +9438,66 @@
      },
      {
       "line": 1528,
-      "category": "genericTemporaries",
-      "text": "scratchValue22"
-     },
-     {
-      "line": 1529,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1529,
+      "line": 1528,
       "category": "nativeNames",
       "text": "LAB_00f1fe48"
      },
      {
-      "line": 1530,
+      "line": 1529,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1fe22"
      },
      {
-      "line": 1531,
+      "line": 1530,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1fcce"
      },
      {
-      "line": 1533,
+      "line": 1532,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1533,
+      "line": 1532,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1535,
+      "line": 1534,
       "category": "nativeNames",
       "text": "LAB_00f1fe48"
      },
      {
-      "line": 1536,
+      "line": 1535,
+      "category": "genericTemporaries",
+      "text": "scratchValue24"
+     },
+     {
+      "line": 1535,
       "category": "genericTemporaries",
       "text": "scratchValue24"
      },
      {
       "line": 1536,
-      "category": "genericTemporaries",
-      "text": "scratchValue24"
-     },
-     {
-      "line": 1537,
       "category": "genericTemporaries",
       "text": "scratchValue23"
      },
      {
-      "line": 1538,
+      "line": 1537,
       "category": "genericTemporaries",
       "text": "scratchValue24"
      },
      {
-      "line": 1540,
+      "line": 1539,
+      "category": "genericTemporaries",
+      "text": "scratchValue38"
+     },
+     {
+      "line": 1539,
       "category": "genericTemporaries",
       "text": "scratchValue38"
      },
@@ -9494,48 +9508,53 @@
      },
      {
       "line": 1541,
-      "category": "genericTemporaries",
-      "text": "scratchValue38"
-     },
-     {
-      "line": 1542,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1542,
+      "line": 1541,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1543,
+      "line": 1542,
       "category": "genericTemporaries",
       "text": "scratchValue38"
      },
      {
-      "line": 1545,
+      "line": 1544,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 1547,
+      "line": 1546,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1547,
+      "line": 1546,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1548,
+      "line": 1547,
       "category": "genericTemporaries",
       "text": "scratchValue23"
      },
      {
-      "line": 1550,
+      "line": 1549,
       "category": "genericTemporaries",
       "text": "scratchValue24"
+     },
+     {
+      "line": 1551,
+      "category": "genericTemporaries",
+      "text": "scratchValue24"
+     },
+     {
+      "line": 1552,
+      "category": "genericTemporaries",
+      "text": "scratchValue32"
      },
      {
       "line": 1552,
@@ -9550,77 +9569,77 @@
      {
       "line": 1553,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue21"
      },
      {
-      "line": 1554,
+      "line": 1558,
       "category": "genericTemporaries",
-      "text": "scratchValue32"
-     },
-     {
-      "line": 1554,
-      "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue28"
      },
      {
       "line": 1559,
-      "category": "genericTemporaries",
-      "text": "scratchValue28"
-     },
-     {
-      "line": 1560,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1560,
+      "line": 1559,
       "category": "nativeNames",
       "text": "LAB_00f1f934"
+     },
+     {
+      "line": 1563,
+      "category": "genericTemporaries",
+      "text": "scratchValue28"
      },
      {
       "line": 1564,
-      "category": "genericTemporaries",
-      "text": "scratchValue28"
-     },
-     {
-      "line": 1565,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1565,
+      "line": 1564,
       "category": "nativeNames",
       "text": "LAB_00f1f934"
      },
      {
-      "line": 1567,
+      "line": 1566,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1567,
+      "line": 1566,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1f934"
      },
      {
-      "line": 1568,
+      "line": 1567,
       "category": "nativeNames",
       "text": "LAB_00f1f934"
      },
      {
-      "line": 1570,
+      "line": 1569,
       "category": "genericTemporaries",
       "text": "scratchValue28"
      },
      {
-      "line": 1573,
+      "line": 1572,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1573,
+      "line": 1572,
       "category": "nativeNames",
       "text": "LAB_00f1fa88"
+     },
+     {
+      "line": 1574,
+      "category": "genericTemporaries",
+      "text": "scratchValue33"
+     },
+     {
+      "line": 1575,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 1575,
@@ -9630,12 +9649,12 @@
      {
       "line": 1576,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "scratchValue33"
      },
      {
-      "line": 1576,
+      "line": 1577,
       "category": "genericTemporaries",
-      "text": "scratchValue33"
+      "text": "scratchValue2"
      },
      {
       "line": 1577,
@@ -9643,179 +9662,169 @@
       "text": "scratchValue33"
      },
      {
-      "line": 1578,
+      "line": 1579,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 1578,
-      "category": "genericTemporaries",
-      "text": "scratchValue33"
      },
      {
       "line": 1580,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 1581,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1581,
+      "line": 1580,
       "category": "nativeNames",
       "text": "LAB_00f1fa91"
      },
      {
-      "line": 1584,
+      "line": 1583,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1584,
+      "line": 1583,
       "category": "nativeNames",
       "text": "LAB_00f1fa88"
      },
      {
-      "line": 1587,
+      "line": 1586,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1587,
+      "line": 1586,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1fa88"
      },
      {
-      "line": 1588,
+      "line": 1587,
       "category": "nativeNames",
       "text": "LAB_00f1fa88"
      },
      {
-      "line": 1590,
+      "line": 1589,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1590,
+      "line": 1589,
       "category": "nativeNames",
       "text": "LAB_00f1fa91"
+     },
+     {
+      "line": 1590,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00f1fa88"
+     },
+     {
+      "line": 1591,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 1591,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00f1fa88"
-     },
-     {
-      "line": 1592,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 1592,
-      "category": "nativeNames",
       "text": "FLOW_past_lab_00f1fa91"
      },
      {
-      "line": 1593,
+      "line": 1592,
       "category": "nativeNames",
       "text": "LAB_00f1fa91"
      },
      {
-      "line": 1594,
+      "line": 1593,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue21"
      },
      {
-      "line": 1595,
+      "line": 1594,
       "category": "genericTemporaries",
       "text": "scratchValue24"
      },
      {
-      "line": 1596,
-      "category": "genericTemporaries",
-      "text": "scratchValue22"
-     },
-     {
-      "line": 1597,
+      "line": 1595,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1597,
+      "line": 1595,
       "category": "nativeNames",
       "text": "LAB_00f1faba"
      },
      {
-      "line": 1598,
+      "line": 1596,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1fa91"
      },
      {
-      "line": 1599,
+      "line": 1597,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f1f934"
      },
      {
-      "line": 1601,
+      "line": 1599,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1601,
+      "line": 1599,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1603,
+      "line": 1601,
       "category": "nativeNames",
       "text": "LAB_00f1faba"
      },
      {
-      "line": 1604,
+      "line": 1602,
       "category": "genericTemporaries",
       "text": "scratchValue23"
      },
      {
-      "line": 1604,
+      "line": 1602,
       "category": "genericTemporaries",
       "text": "scratchValue23"
      },
      {
-      "line": 1605,
+      "line": 1603,
       "category": "genericTemporaries",
       "text": "scratchValue24"
      },
      {
-      "line": 1606,
+      "line": 1604,
       "category": "genericTemporaries",
       "text": "scratchValue23"
      },
      {
-      "line": 1608,
+      "line": 1606,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue21"
      },
      {
-      "line": 1608,
+      "line": 1606,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue21"
      },
      {
-      "line": 1609,
+      "line": 1607,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 1612,
+      "line": 1610,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1612,
+      "line": 1610,
       "category": "nativeNames",
       "text": "LAB_00f21166"
+     },
+     {
+      "line": 1612,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
       "line": 1614,
@@ -9823,339 +9832,349 @@
       "text": "predicateResult"
      },
      {
-      "line": 1616,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 1617,
+      "line": 1615,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1617,
+      "line": 1615,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1628,
+      "line": 1626,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 1629,
+      "line": 1627,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1629,
+      "line": 1627,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
+     },
+     {
+      "line": 1633,
+      "category": "genericTemporaries",
+      "text": "scratchValue32"
+     },
+     {
+      "line": 1634,
+      "category": "genericTemporaries",
+      "text": "scratchValue32"
+     },
+     {
+      "line": 1634,
+      "category": "genericTemporaries",
+      "text": "scratchValue22"
+     },
+     {
+      "line": 1634,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 1635,
-      "category": "genericTemporaries",
-      "text": "scratchValue32"
-     },
-     {
-      "line": 1636,
-      "category": "genericTemporaries",
-      "text": "scratchValue32"
-     },
-     {
-      "line": 1636,
-      "category": "genericTemporaries",
-      "text": "scratchValue21"
-     },
-     {
-      "line": 1636,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1637,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 1637,
+      "line": 1635,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1642,
+      "line": 1640,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);"
      },
      {
-      "line": 1654,
+      "line": 1652,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
-      "line": 1654,
+      "line": 1652,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
-      "line": 1655,
+      "line": 1653,
       "category": "genericTemporaries",
-      "text": "scratchValue21"
+      "text": "scratchValue22"
      },
      {
-      "line": 1659,
+      "line": 1657,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1667,
+      "line": 1665,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1667,
+      "line": 1665,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1678,
+      "line": 1676,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1686,
+      "line": 1684,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1686,
+      "line": 1684,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1690,
+      "line": 1688,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1690,
+      "line": 1688,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1699,
+      "line": 1697,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1704,
+      "line": 1702,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
+      "text": "scratchValue14"
      },
      {
-      "line": 1707,
+      "line": 1705,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1707,
+      "line": 1705,
       "category": "nativeNames",
       "text": "LAB_00f2049f"
      },
      {
-      "line": 1709,
+      "line": 1707,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
+      "text": "scratchValue14"
+     },
+     {
+      "line": 1707,
+      "category": "genericTemporaries",
+      "text": "scratchValue14"
      },
      {
       "line": 1709,
       "category": "genericTemporaries",
-      "text": "scratchValue12"
+      "text": "scratchValue14"
      },
      {
-      "line": 1711,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 1714,
+      "line": 1712,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1720,
+      "line": 1718,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1720,
+      "line": 1718,
       "category": "nativeNames",
       "text": "LAB_00f207f4"
      },
      {
-      "line": 1722,
+      "line": 1720,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue15"
      },
      {
-      "line": 1724,
+      "line": 1722,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1724,
+      "line": 1722,
       "category": "nativeNames",
       "text": "LAB_00f208af"
      },
      {
-      "line": 1726,
+      "line": 1724,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue15"
      },
      {
-      "line": 1727,
+      "line": 1725,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1727,
+      "line": 1725,
       "category": "nativeNames",
       "text": "LAB_00f2096f"
      },
      {
+      "line": 1726,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
+     },
+     {
       "line": 1728,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue15"
+     },
+     {
+      "line": 1728,
+      "category": "genericTemporaries",
+      "text": "scratchValue15"
      },
      {
       "line": 1730,
       "category": "genericTemporaries",
-      "text": "scratchValue13"
+      "text": "scratchValue15"
      },
      {
-      "line": 1730,
-      "category": "genericTemporaries",
-      "text": "scratchValue13"
-     },
-     {
-      "line": 1732,
-      "category": "genericTemporaries",
-      "text": "scratchValue13"
-     },
-     {
-      "line": 1733,
+      "line": 1731,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1733,
+      "line": 1731,
       "category": "nativeNames",
       "text": "LAB_00f20a2f"
      },
      {
-      "line": 1735,
+      "line": 1733,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1735,
+      "line": 1733,
+      "category": "nativeNames",
+      "text": "LAB_00f20ca1"
+     },
+     {
+      "line": 1740,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 1740,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
       "line": 1742,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 1742,
-      "category": "nativeNames",
-      "text": "LAB_00f20ca1"
-     },
-     {
-      "line": 1744,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
+      "text": "scratchValue16"
      },
      {
-      "line": 1747,
+      "line": 1745,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1747,
+      "line": 1745,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
+     },
+     {
+      "line": 1747,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
+     },
+     {
+      "line": 1747,
+      "category": "genericTemporaries",
+      "text": "scratchValue16"
      },
      {
       "line": 1749,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
+      "text": "scratchValue16"
      },
      {
-      "line": 1749,
-      "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 1751,
-      "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 1752,
+      "line": 1750,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1752,
+      "line": 1750,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1755,
+      "line": 1753,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1755,
+      "line": 1753,
       "category": "nativeNames",
       "text": "LAB_00f20700"
      },
      {
-      "line": 1756,
+      "line": 1754,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1757,
+      "line": 1755,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1759,
+      "line": 1757,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1759,
+      "line": 1757,
       "category": "nativeNames",
       "text": "LAB_00f2119d"
      },
      {
-      "line": 1760,
+      "line": 1758,
       "category": "nativeNames",
       "text": "LAB_00f2049f"
      },
      {
-      "line": 1762,
+      "line": 1760,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1764,
+      "line": 1762,
       "category": "nativeNames",
       "text": "LAB_00f207f4"
+     },
+     {
+      "line": 1763,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 1763,
+      "category": "nativeNames",
+      "text": "LAB_00f20ae2"
+     },
+     {
+      "line": 1764,
+      "category": "nativeNames",
+      "text": "LAB_00f208af"
      },
      {
       "line": 1765,
@@ -10170,7 +10189,7 @@
      {
       "line": 1766,
       "category": "nativeNames",
-      "text": "LAB_00f208af"
+      "text": "LAB_00f2096f"
      },
      {
       "line": 1767,
@@ -10185,435 +10204,420 @@
      {
       "line": 1768,
       "category": "nativeNames",
-      "text": "LAB_00f2096f"
+      "text": "LAB_00f20b8b"
      },
      {
-      "line": 1769,
+      "line": 1770,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 1769,
-      "category": "nativeNames",
-      "text": "LAB_00f20ae2"
      },
      {
       "line": 1770,
       "category": "nativeNames",
-      "text": "LAB_00f20b8b"
-     },
-     {
-      "line": 1771,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 1771,
-      "category": "nativeNames",
       "text": "LAB_00f21195"
      },
      {
-      "line": 1772,
+      "line": 1771,
       "category": "nativeNames",
       "text": "LAB_00f20700"
      },
      {
-      "line": 1774,
+      "line": 1773,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1774,
+      "line": 1773,
       "category": "nativeNames",
       "text": "LAB_00f20b8b"
      },
      {
-      "line": 1776,
+      "line": 1775,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1776,
+      "line": 1775,
       "category": "nativeNames",
       "text": "LAB_00f21166"
      },
      {
-      "line": 1782,
+      "line": 1781,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1782,
+      "line": 1781,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1788,
+      "line": 1787,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1788,
+      "line": 1787,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1792,
+      "line": 1791,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1792,
+      "line": 1791,
       "category": "nativeNames",
       "text": "LAB_00f20ce5"
      },
      {
-      "line": 1793,
+      "line": 1792,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1793,
+      "line": 1792,
       "category": "nativeNames",
       "text": "LAB_00f20e68"
      },
      {
-      "line": 1795,
+      "line": 1794,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1795,
+      "line": 1794,
       "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1796,
+      "line": 1795,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1796,
+      "line": 1795,
       "category": "nativeNames",
       "text": "LAB_00f20ce5"
      },
      {
-      "line": 1798,
+      "line": 1797,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1798,
+      "line": 1797,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f20e68"
+     },
+     {
+      "line": 1798,
+      "category": "nativeNames",
+      "text": "LAB_00f20e68"
+     },
+     {
+      "line": 1799,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 1799,
       "category": "nativeNames",
-      "text": "LAB_00f20e68"
-     },
-     {
-      "line": 1800,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 1800,
-      "category": "nativeNames",
       "text": "LAB_00f20ca1"
      },
      {
-      "line": 1807,
+      "line": 1806,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1807,
+      "line": 1806,
       "category": "nativeNames",
       "text": "LAB_00f212cc"
      },
      {
-      "line": 1809,
+      "line": 1808,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1809,
+      "line": 1808,
       "category": "nativeNames",
       "text": "LAB_00f212cc"
      },
      {
-      "line": 1819,
+      "line": 1818,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1819,
+      "line": 1818,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1825,
+      "line": 1824,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1825,
+      "line": 1824,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1833,
+      "line": 1832,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1833,
+      "line": 1832,
       "category": "nativeNames",
       "text": "LAB_00f21166"
      },
      {
-      "line": 1839,
+      "line": 1838,
       "category": "genericTemporaries",
       "text": "scratchValue32"
      },
      {
-      "line": 1842,
+      "line": 1841,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1842,
+      "line": 1841,
       "category": "nativeNames",
       "text": "LAB_00f212a6"
      },
      {
-      "line": 1848,
+      "line": 1847,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1848,
+      "line": 1847,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1850,
+      "line": 1849,
       "category": "genericTemporaries",
       "text": "predicateResult37"
      },
      {
-      "line": 1852,
+      "line": 1851,
       "category": "genericTemporaries",
       "text": "predicateResult37"
      },
      {
-      "line": 1859,
+      "line": 1858,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1859,
+      "line": 1858,
       "category": "nativeNames",
       "text": "LAB_00f21166"
      },
      {
-      "line": 1862,
+      "line": 1861,
       "category": "genericTemporaries",
       "text": "predicateResult37"
      },
      {
-      "line": 1865,
+      "line": 1864,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1865,
+      "line": 1864,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1877,
+      "line": 1876,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1877,
+      "line": 1876,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1886,
+      "line": 1885,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1886,
+      "line": 1885,
       "category": "nativeNames",
       "text": "LAB_00f21166"
      },
      {
-      "line": 1889,
+      "line": 1888,
       "category": "nativeNames",
       "text": "LAB_00f212a6"
      },
      {
-      "line": 1893,
+      "line": 1892,
       "category": "nativeNames",
       "text": "FLOW_after_lab_00f211ba"
      },
      {
-      "line": 1895,
+      "line": 1894,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f20e68"
      },
      {
-      "line": 1896,
+      "line": 1895,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1896,
+      "line": 1895,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f20ce5"
      },
      {
-      "line": 1897,
+      "line": 1896,
       "category": "nativeNames",
       "text": "LAB_00f20ce5"
      },
      {
-      "line": 1903,
+      "line": 1902,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): fStack_d8 = (float)(iVar12 % 0x168) * 0.0027777778450399637;"
      },
      {
-      "line": 1904,
+      "line": 1903,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): Math_CartesianToSpherical(xStack_f4,(int)fStack_d8);"
      },
      {
-      "line": 1906,
+      "line": 1905,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_e4._4_4_ = f_stk_f0 + pCVar13.y;"
      },
      {
-      "line": 1907,
+      "line": 1906,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_e4._0_4_ = (float)xStack_f4 + pCVar13.x;"
      },
      {
-      "line": 1908,
+      "line": 1907,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0xa6c) + (uVar11 % (uint)(iVar4 - iVar6 >> 2)) * 4),(int)&xStack_108);"
      },
      {
-      "line": 1910,
+      "line": 1909,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1910,
+      "line": 1909,
       "category": "nativeNames",
       "text": "LAB_00f20e68"
      },
      {
-      "line": 1912,
+      "line": 1911,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f20ce5"
      },
      {
-      "line": 1913,
+      "line": 1912,
       "category": "nativeNames",
       "text": "LAB_00f212cc"
      },
      {
-      "line": 1914,
+      "line": 1913,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1914,
+      "line": 1913,
       "category": "nativeNames",
       "text": "LAB_00f20cc5"
      },
      {
-      "line": 1916,
+      "line": 1915,
       "category": "nativeNames",
       "text": "LAB_00f21166"
      },
      {
-      "line": 1917,
+      "line": 1916,
       "category": "nativeNames",
       "text": "LAB_00f2116f"
      },
      {
-      "line": 1919,
+      "line": 1918,
       "category": "nativeNames",
       "text": "LAB_00f21195"
      },
      {
-      "line": 1921,
+      "line": 1920,
       "category": "nativeNames",
       "text": "LAB_00f2119d"
      },
      {
-      "line": 1923,
+      "line": 1922,
       "category": "nativeNames",
       "text": "LAB_00f20a2f"
      },
      {
-      "line": 1924,
+      "line": 1923,
       "category": "nativeNames",
       "text": "LAB_00f20ae2"
      },
      {
-      "line": 1926,
+      "line": 1925,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);"
      },
      {
-      "line": 1939,
+      "line": 1938,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND1_PRIZE\");"
      },
      {
-      "line": 1944,
+      "line": 1943,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND2_PRIZE\");"
      },
      {
-      "line": 1949,
+      "line": 1948,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND3_PRIZE\");"
      },
      {
-      "line": 1954,
+      "line": 1953,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND4_PRIZE\");"
      },
      {
-      "line": 1959,
+      "line": 1958,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND5_PRIZE\");"
      },
      {
-      "line": 1964,
+      "line": 1963,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND6_PRIZE\");"
      },
      {
-      "line": 1969,
+      "line": 1968,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND7_PRIZE\");"
      },
      {
-      "line": 1974,
+      "line": 1973,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator= (&xStack_4,\"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND8_PRIZE\");"
      },
      {
-      "line": 2027,
+      "line": 2026,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): return *(this + 0x44)"
      }
@@ -11672,6 +11676,7 @@
         null,
         null,
         "hero",
+        "arenaCellDoorGuard2",
         null,
         "hero",
         null,
@@ -11684,7 +11689,8 @@
         "hero",
         null,
         "hero",
-        "guardingDoorMarkerRight"
+        "guardingDoorMarkerRight",
+        "arenaCellDoorGuard2"
        ]
       },
       "pCVar7_1": {
@@ -11816,7 +11822,7 @@
         ],
         "bVar3_4": [
          25,
-         811
+         812
         ],
         "bVar3_5": [
          32
@@ -11832,11 +11838,11 @@
          88,
          195,
          434,
-         489,
-         586,
-         617,
-         640,
-         721
+         490,
+         587,
+         618,
+         641,
+         722
         ],
         "bVar3_9": [
          57
@@ -11963,118 +11969,118 @@
          458
         ],
         "bVar3_50": [
-         478
+         479
         ],
         "bVar3_51": [
-         496
+         497
         ],
         "bVar3_52": [
-         501
+         502
         ],
         "bVar3_53": [
-         508
+         509
         ],
         "bVar3_54": [
-         513
+         514
         ],
         "bVar3_55": [
-         516
+         517
         ],
         "bVar3_56": [
-         523,
-         528
+         524,
+         529
         ],
         "bVar3_57": [
-         526
+         527
         ],
         "bVar3_58": [
-         530
+         531
         ],
         "bVar3_59": [
-         547
+         548
         ],
         "bVar3_60": [
-         552
+         553
         ],
         "bVar3_61": [
-         563
+         564
         ],
         "bVar3_62": [
-         568
+         569
         ],
         "bVar3_63": [
-         593
+         594
         ],
         "bVar3_64": [
-         598
+         599
         ],
         "bVar3_65": [
-         608
+         609
         ],
         "bVar3_66": [
-         611
+         612
         ],
         "bVar3_67": [
-         624
+         625
         ],
         "bVar3_68": [
-         629
+         630
         ],
         "bVar3_69": [
-         634
+         635
         ],
         "bVar3_70": [
-         647
+         648
         ],
         "bVar3_71": [
-         653
+         654
         ],
         "bVar3_72": [
-         677
+         678
         ],
         "bVar3_73": [
-         682
+         683
         ],
         "bVar3_74": [
-         685
+         686
         ],
         "bVar3_75": [
-         688,
-         692
+         689,
+         693
         ],
         "bVar3_76": [
-         704
+         705
         ],
         "bVar3_77": [
-         708
+         709
         ],
         "bVar3_78": [
-         712
+         713
         ],
         "bVar3_79": [
-         729
+         730
         ],
         "bVar3_80": [
-         738
+         739
         ],
         "bVar3_81": [
-         762
+         763
         ],
         "bVar3_82": [
-         765,
-         772
+         766,
+         773
         ],
         "bVar3_83": [
-         781
+         782
         ],
         "bVar3_84": [
-         793
+         794
         ],
         "bVar3_85": [
-         797
+         798
         ],
         "bVar3_86": [
-         801
+         802
         ]
        }
       },
@@ -12170,32 +12176,32 @@
          444
         ],
         "cVar4_23": [
-         493,
-         499
+         494,
+         500
         ],
         "cVar4_24": [
-         544,
-         550
+         545,
+         551
         ],
         "cVar4_25": [
-         560,
-         566
+         561,
+         567
         ],
         "cVar4_26": [
-         590,
-         596
+         591,
+         597
         ],
         "cVar4_27": [
-         621,
-         627
+         622,
+         628
         ],
         "cVar4_28": [
-         644,
-         650
+         645,
+         651
         ],
         "cVar4_29": [
-         725,
-         735
+         726,
+         736
         ]
        }
       },
@@ -12204,16 +12210,16 @@
        "originalDeclaration": "    local bVar3, cVar4, c_stk_1f5, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, fret_23, fret_24, fret_25, fret_26, fret_27, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7, pcVar9, ppuVar13, r1, r2, this_01, uVar2, uVar8, u_stk_1f4, xStack_184, xStack_1ec, xStack_214, xStack_224, xStack_238\n",
        "versions": {
         "pCVar7_1": [
-         750
+         751
         ],
         "pCVar7_2": [
-         752
+         753
         ],
         "pCVar7_3": [
-         761
+         762
         ],
         "pCVar7_4": [
-         800
+         801
         ]
        }
       }
@@ -12225,11 +12231,11 @@
        "88": "                                    bVar3_8 = false\n",
        "195": "                                            bVar3_8 = false\n",
        "434": "                                                                    bVar3_8 = false\n",
-       "489": "                        bVar3_8 = false\n",
-       "586": "                                bVar3_8 = false\n",
-       "617": "                            bVar3_8 = false\n",
-       "640": "                            bVar3_8 = false\n",
-       "721": "                        bVar3_8 = false\n"
+       "490": "                        bVar3_8 = false\n",
+       "587": "                                bVar3_8 = false\n",
+       "618": "                            bVar3_8 = false\n",
+       "641": "                            bVar3_8 = false\n",
+       "722": "                        bVar3_8 = false\n"
       },
       "pcVar9": {
        "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, bVar3_58, bVar3_59, bVar3_60, bVar3_61, bVar3_62, bVar3_63, bVar3_64, bVar3_65, bVar3_66, bVar3_67, bVar3_68, bVar3_69, bVar3_70, bVar3_71, bVar3_72, bVar3_73, bVar3_74, bVar3_75, bVar3_76, bVar3_77, bVar3_78, bVar3_79, bVar3_80, bVar3_81, bVar3_82, bVar3_83, bVar3_84, bVar3_85, bVar3_86, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, cVar4_10, cVar4_11, cVar4_12, cVar4_13, cVar4_14, cVar4_15, cVar4_16, cVar4_17, cVar4_18, cVar4_19, cVar4_20, cVar4_21, cVar4_22, cVar4_23, cVar4_24, cVar4_25, cVar4_26, cVar4_27, cVar4_28, cVar4_29, c_stk_1f5, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, fret_23, fret_24, fret_25, fret_26, fret_27, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, pcVar9, ppuVar13, r1, r2, this_01, uVar2, uVar8, u_stk_1f4, xStack_184, xStack_1ec, xStack_214, xStack_224, xStack_238\n",
@@ -12237,25 +12243,25 @@
        "89": "                                    pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_ANOTHER_REFUSAL\"\n",
        "196": "                                            pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_YES_ROUND1_SECOND\"\n",
        "435": "                                                                    pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD2_YES_ROUND7_SECOND\"\n",
-       "490": "                        pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_LATE_QUESTION\"\n",
-       "587": "                                pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_NO\"\n",
-       "618": "                            pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_EARLY_FIRST\"\n",
-       "641": "                            pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_EARLY_SECOND\"\n",
-       "722": "                        pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_ATTACKED\"\n"
+       "491": "                        pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_LATE_QUESTION\"\n",
+       "588": "                                pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_NO\"\n",
+       "619": "                            pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_EARLY_FIRST\"\n",
+       "642": "                            pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_EARLY_SECOND\"\n",
+       "723": "                        pcVar9 = \"TEXT_QST_005_V2_ARENA_MAIN_CELL_GUARD_ATTACKED\"\n"
       }
      },
      "inlinedLiteralLocals": {
       "bVar3_86": {
        "literal": "false",
-       "definitionLine": 801,
+       "definitionLine": 802,
        "readLines": [
-        803
+        804
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, bVar3_32, bVar3_33, bVar3_34, bVar3_35, bVar3_36, bVar3_37, bVar3_38, bVar3_39, bVar3_40, bVar3_41, bVar3_42, bVar3_43, bVar3_44, bVar3_45, bVar3_46, bVar3_47, bVar3_48, bVar3_49, bVar3_50, bVar3_51, bVar3_52, bVar3_53, bVar3_54, bVar3_55, bVar3_56, bVar3_57, bVar3_58, bVar3_59, bVar3_60, bVar3_61, bVar3_62, bVar3_63, bVar3_64, bVar3_65, bVar3_66, bVar3_67, bVar3_68, bVar3_69, bVar3_70, bVar3_71, bVar3_72, bVar3_73, bVar3_74, bVar3_75, bVar3_76, bVar3_77, bVar3_78, bVar3_79, bVar3_80, bVar3_81, bVar3_82, bVar3_83, bVar3_84, bVar3_85, bVar3_86, cVar4_1, cVar4_2, cVar4_3, cVar4_4, cVar4_5, cVar4_6, cVar4_7, cVar4_8, cVar4_9, cVar4_10, cVar4_11, cVar4_12, cVar4_13, cVar4_14, cVar4_15, cVar4_16, cVar4_17, cVar4_18, cVar4_19, cVar4_20, cVar4_21, cVar4_22, cVar4_23, cVar4_24, cVar4_25, cVar4_26, cVar4_27, cVar4_28, cVar4_29, c_stk_1f5, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, fret_23, fret_24, fret_25, fret_26, fret_27, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7_1, pCVar7_2, pCVar7_3, pCVar7_4, ppuVar13, r1, r2, this_01, uVar2, uVar8, u_stk_1f4, xStack_184, xStack_1ec, xStack_214, xStack_224, xStack_238\n",
-        "801": "                            bVar3_86 = false\n",
-        "803": "                            quest:EntitySetFacingAngle(me, fret_27, bVar3_86)\n"
+        "802": "                            bVar3_86 = false\n",
+        "804": "                            quest:EntitySetFacingAngle(me, fret_27, bVar3_86)\n"
        }
       }
      },
@@ -12263,7 +12269,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 845,
+     "sourceLine": 847,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -12272,7 +12278,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 852,
+     "sourceLine": 854,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -12281,7 +12287,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 861,
+     "sourceLine": 863,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -12339,7 +12345,7 @@
        "exitChecksInlined": 4,
        "frameChecks": 33,
        "inlinedTemporaries": 158,
-       "deadDefinitions": 3,
+       "deadDefinitions": 5,
        "guardWrappers": 0,
        "retryLoops": 32,
        "booleanMaterialisation": 0,
@@ -12378,7 +12384,7 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 749,
+       "lines": 751,
        "temporaries": 105,
        "labels": 22,
        "gotos": 94,
@@ -31743,10 +31749,10 @@
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 5,
-      "deadStores": 4,
+      "deadStores": 3,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 8,
+      "declarations": 9,
       "decimalLiterals": 39
      }
     },
@@ -31808,15 +31814,12 @@
      "sourceLine": 13,
      "locals": {
       "CVar8_1": {
-       "name": "addNewConversation",
-       "basis": "one method, several names",
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
         null,
-        "conversationId",
-        "conversationId",
-        "conversationId",
-        "conversationId"
+        null
        ]
       },
       "CVar8_2": {
@@ -31826,22 +31829,42 @@
         "conversationId"
        ]
       },
+      "CVar8_3": {
+       "name": "conversationId2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "CVar8_4": {
+       "name": "conversationId3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "CVar8_5": {
+       "name": "conversationId4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "CVar8_6": {
+       "name": "conversationId5",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
       "CVar9": {
-       "name": "scratchValue",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "__native_condition_1": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "__native_condition_2": {
        "name": "scratchValue3",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -31849,8 +31872,16 @@
         null
        ]
       },
-      "__native_condition_3": {
+      "__native_condition_2": {
        "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "__native_condition_3": {
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -31858,14 +31889,6 @@
        ]
       },
       "__native_condition_4": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "__native_condition_5": {
        "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -31873,8 +31896,16 @@
         null
        ]
       },
-      "bVar3": {
+      "__native_condition_5": {
        "name": "scratchValue7",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "bVar3": {
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "predicateResult",
@@ -32031,19 +32062,19 @@
        ]
       },
       "cVar4_4": {
-       "name": "scratchValue8",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "cVar4_5": {
-       "name": "scratchValue9",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
       "cVar4_6": {
-       "name": "scratchValue10",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -32064,28 +32095,28 @@
        ]
       },
       "fVar19_1": {
-       "name": "scratchValue11",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "fVar19_2": {
        "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "fVar2": {
+      "fVar19_2": {
        "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "f_stk_bc": {
+      "fVar2": {
        "name": "scratchValue14",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "f_stk_bc": {
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32100,14 +32131,6 @@
        ]
       },
       "iVar12_2": {
-       "name": "scratchValue15",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "iVar12_3": {
        "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
@@ -32115,15 +32138,23 @@
         null
        ]
       },
-      "iVar12_4": {
+      "iVar12_3": {
        "name": "scratchValue17",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar12_4": {
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar12_5": {
-       "name": "scratchValue18",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32144,14 +32175,14 @@
        ]
       },
       "iVar12_8": {
-       "name": "scratchValue19",
+       "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar12_9": {
-       "name": "scratchValue20",
+       "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32165,14 +32196,14 @@
        ]
       },
       "iVar12_11": {
-       "name": "scratchValue21",
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "iVar12_12": {
-       "name": "scratchValue22",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32186,7 +32217,7 @@
        ]
       },
       "iVar12_14": {
-       "name": "scratchValue23",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32200,7 +32231,7 @@
        ]
       },
       "iVar12_16": {
-       "name": "scratchValue24",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -32264,7 +32295,7 @@
        ]
       },
       "iVar20_1": {
-       "name": "scratchValue25",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -32273,42 +32304,42 @@
        ]
       },
       "iVar20_2": {
-       "name": "scratchValue26",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar20_3": {
        "name": "scratchValue27",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar20_4": {
-       "name": "conversationId2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "conversationId"
-       ]
-      },
-      "iVar20_5": {
+      "iVar20_3": {
        "name": "scratchValue28",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar20_6": {
+      "iVar20_4": {
+       "name": "conversationId6",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "conversationId"
+       ]
+      },
+      "iVar20_5": {
        "name": "scratchValue29",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
-      "iVar5": {
+      "iVar20_6": {
        "name": "scratchValue30",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar5": {
+       "name": "scratchValue31",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         "timerId",
@@ -32682,7 +32713,7 @@
        ]
       },
       "pCVar6_51": {
-       "name": "scratchValue31",
+       "name": "scratchValue32",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -32808,14 +32839,14 @@
        ]
       },
       "pcVar15": {
-       "name": "scratchValue32",
+       "name": "scratchValue33",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
         null
        ]
       },
-      "r1_1": {
+      "r1": {
        "name": "nearest",
        "basis": "one method, several names",
        "assignmentRoles": [
@@ -32826,11 +32857,6 @@
         "arenaEnemy",
         "summonedCreature"
        ]
-      },
-      "r1_2": {
-       "name": "scratchValue33",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
       },
       "r2": {
        "name": "summonedCreature4",
@@ -32998,17 +33024,11 @@
         "resource"
        ]
       },
-      "xStack_a0_1": {
+      "xStack_a0": {
        "name": "actorMap",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "actorMap"
-       ]
-      },
-      "xStack_a0_2": {
-       "name": "actorMap2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
+        "actorMap",
         "actorMap"
        ]
       },
@@ -33059,7 +33079,7 @@
         ],
         "pCVar6_3": [
          177,
-         968
+         969
         ],
         "pCVar6_4": [
          229
@@ -33173,56 +33193,56 @@
          797
         ],
         "pCVar6_41": [
-         820
+         821
         ],
         "pCVar6_42": [
-         840,
-         848
+         841,
+         849
         ],
         "pCVar6_43": [
-         870
+         871
         ],
         "pCVar6_44": [
-         877
+         878
         ],
         "pCVar6_45": [
-         890
+         891
         ],
         "pCVar6_46": [
-         895
+         896
         ],
         "pCVar6_47": [
-         900
+         901
         ],
         "pCVar6_48": [
-         905
+         906
         ],
         "pCVar6_49": [
-         910
+         911
         ],
         "pCVar6_50": [
-         915
+         916
         ],
         "pCVar6_51": [
-         962
+         963
         ],
         "pCVar6_52": [
-         992
+         993
         ],
         "pCVar6_53": [
-         996
+         997
         ],
         "pCVar6_54": [
-         1023
+         1024
         ],
         "pCVar6_55": [
-         1031
+         1032
         ],
         "pCVar6_56": [
-         1050
+         1051
         ],
         "pCVar6_57": [
-         1066
+         1067
         ]
        }
       },
@@ -33295,16 +33315,16 @@
          789
         ],
         "iVar12_21": [
-         885
+         886
         ],
         "iVar12_22": [
-         969
+         970
         ],
         "iVar12_23": [
-         980
+         981
         ],
         "iVar12_24": [
-         1003
+         1004
         ]
        }
       },
@@ -33322,28 +33342,28 @@
          696
         ],
         "pCVar7_4": [
-         822
+         823
         ],
         "pCVar7_5": [
-         841
+         842
         ],
         "pCVar7_6": [
-         849
+         850
         ],
         "pCVar7_7": [
-         880
+         881
         ],
         "pCVar7_8": [
-         998
+         999
         ],
         "pCVar7_9": [
-         1024
+         1025
         ],
         "pCVar7_10": [
-         1032
+         1033
         ],
         "pCVar7_11": [
-         1067
+         1068
         ]
        }
       },
@@ -33377,8 +33397,34 @@
          679
         ],
         "cVar4_8": [
-         970,
-         981
+         971,
+         982
+        ]
+       }
+      },
+      "CVar8": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7, pQuestName, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec\n",
+       "versions": {
+        "CVar8_1": [
+         704,
+         739,
+         810
+        ],
+        "CVar8_2": [
+         733
+        ],
+        "CVar8_3": [
+         754
+        ],
+        "CVar8_4": [
+         770
+        ],
+        "CVar8_5": [
+         781
+        ],
+        "CVar8_6": [
+         794
         ]
        }
       },
@@ -33392,19 +33438,19 @@
          526
         ],
         "iVar20_2": [
-         839
+         840
         ],
         "iVar20_3": [
-         847
+         848
         ],
         "iVar20_4": [
-         889
+         890
         ],
         "iVar20_5": [
-         1022
+         1023
         ],
         "iVar20_6": [
-         1030
+         1031
         ]
        }
       },
@@ -33434,7 +33480,7 @@
          590
         ],
         "uVar14_6": [
-         929
+         930
         ]
        }
       },
@@ -33446,27 +33492,10 @@
          173
         ],
         "xStack_54_2": [
-         857
+         858
         ],
         "xStack_54_3": [
-         960
-        ]
-       }
-      },
-      "CVar8": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7, pQuestName, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec\n",
-       "versions": {
-        "CVar8_1": [
-         704,
-         739,
-         754,
-         770,
-         781,
-         794
-        ],
-        "CVar8_2": [
-         733
+         961
         ]
        }
       },
@@ -33494,38 +33523,7 @@
          130
         ],
         "fVar19_2": [
-         1011
-        ]
-       }
-      },
-      "r1": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7, pQuestName, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec\n",
-       "versions": {
-        "r1_1": [
-         237,
-         318,
-         324,
-         444,
-         451,
-         559
-        ],
-        "r1_2": [
-         261,
-         651,
-         654
-        ]
-       }
-      },
-      "xStack_a0": {
-       "declarationLine": 3,
-       "originalDeclaration": "    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar6, pCVar7, pQuestName, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec\n",
-       "versions": {
-        "xStack_a0_1": [
-         859
-        ],
-        "xStack_a0_2": [
-         1052
+         1012
         ]
        }
       }
@@ -33536,7 +33534,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 1112,
+     "sourceLine": 1113,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33545,7 +33543,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 1115,
+     "sourceLine": 1116,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33554,7 +33552,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 1118,
+     "sourceLine": 1119,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33565,7 +33563,7 @@
      "function": "Main",
      "sourceLine": 8,
      "locals": {
-      "scratchValue7": {
+      "scratchValue8": {
        "name": "isActiveThreadTerminating",
        "basis": "one method, several names",
        "assignmentRoles": [
@@ -33575,7 +33573,7 @@
         "isActiveThreadTerminating"
        ]
       },
-      "scratchValue25": {
+      "scratchValue26": {
        "name": "timerId2",
        "basis": "named by the API that consumes it",
        "assignmentRoles": [
@@ -33591,7 +33589,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 722,
+     "sourceLine": 720,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33600,7 +33598,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 725,
+     "sourceLine": 723,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33609,7 +33607,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 728,
+     "sourceLine": 726,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -33622,7 +33620,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 20,
+       "splitLocals": 22,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -33631,15 +33629,15 @@
        "exitChecksInlined": 3,
        "frameChecks": 7,
        "inlinedTemporaries": 226,
-       "deadDefinitions": 10,
+       "deadDefinitions": 14,
        "guardWrappers": 0,
        "retryLoops": 14,
        "booleanMaterialisation": 12,
        "booleanCompares": 0,
        "conditions": 3,
        "literals": 5,
-       "copies": 7,
-       "selfAssignments": 1,
+       "copies": 10,
+       "selfAssignments": 3,
        "flagClears": 0,
        "tailGuards": 484,
        "blockingSpeech": 0,
@@ -33661,7 +33659,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 7,
        "controlAcquires": 0,
-       "sunkLocals": 37,
+       "sunkLocals": 41,
        "cleanupClosureNames": 1,
        "parentheses": 37,
        "cosmetics": 0,
@@ -33670,8 +33668,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 1095,
-       "temporaries": 173,
+       "lines": 1099,
+       "temporaries": 176,
        "labels": 30,
        "gotos": 82,
        "terminationChecks": 82,
@@ -33679,7 +33677,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 713,
+       "lines": 711,
        "temporaries": 24,
        "labels": 24,
        "gotos": 61,
@@ -33903,10 +33901,10 @@
     ]
    },
    "readability": {
-    "lines": 737,
+    "lines": 735,
     "counts": {
      "machineTemporaries": 15,
-     "genericTemporaries": 217,
+     "genericTemporaries": 218,
      "unresolvedDiagnostics": 14,
      "gotos": 61,
      "nativeNames": 85
@@ -33924,24 +33922,24 @@
       "text": "c_stk_ed_2"
      },
      {
-      "line": 13,
-      "category": "genericTemporaries",
-      "text": "scratchValue15"
-     },
-     {
-      "line": 13,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "scratchValue16"
      },
      {
       "line": 13,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue17"
      },
      {
       "line": 13,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue25"
+     },
+     {
+      "line": 13,
+      "category": "genericTemporaries",
+      "text": "scratchValue31"
      },
      {
       "line": 14,
@@ -33959,7 +33957,7 @@
       "text": "scratchValue38"
      },
      {
-      "line": 15,
+      "line": 14,
       "category": "genericTemporaries",
       "text": "scratchValue39"
      },
@@ -33976,7 +33974,7 @@
      {
       "line": 17,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 20,
@@ -33991,32 +33989,32 @@
      {
       "line": 37,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 39,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 46,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 52,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 56,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue16"
      },
      {
       "line": 59,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 63,
@@ -34026,22 +34024,22 @@
      {
       "line": 64,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue16"
      },
      {
       "line": 64,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue16"
      },
      {
       "line": 65,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue16"
      },
      {
       "line": 67,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 71,
@@ -34051,17 +34049,17 @@
      {
       "line": 74,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 78,
       "category": "genericTemporaries",
-      "text": "scratchValue16"
+      "text": "scratchValue17"
      },
      {
       "line": 81,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 85,
@@ -34071,27 +34069,27 @@
      {
       "line": 86,
       "category": "genericTemporaries",
-      "text": "scratchValue16"
+      "text": "scratchValue17"
      },
      {
       "line": 86,
       "category": "genericTemporaries",
-      "text": "scratchValue16"
+      "text": "scratchValue17"
      },
      {
       "line": 87,
       "category": "genericTemporaries",
-      "text": "scratchValue16"
+      "text": "scratchValue17"
      },
      {
       "line": 93,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 99,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 105,
@@ -34241,12 +34239,12 @@
      {
       "line": 176,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 183,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 184,
@@ -34256,7 +34254,7 @@
      {
       "line": 187,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 191,
@@ -34351,12 +34349,12 @@
      {
       "line": 210,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 220,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 224,
@@ -34366,7 +34364,7 @@
      {
       "line": 225,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 225,
@@ -34376,12 +34374,12 @@
      {
       "line": 226,
       "category": "genericTemporaries",
-      "text": "scratchValue9"
+      "text": "scratchValue10"
      },
      {
       "line": 227,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 230,
@@ -34426,17 +34424,17 @@
      {
       "line": 236,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 241,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 245,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 245,
@@ -34461,22 +34459,22 @@
      {
       "line": 248,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 249,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 250,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 251,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 252,
@@ -34506,12 +34504,12 @@
      {
       "line": 256,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 257,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 258,
@@ -34631,22 +34629,22 @@
      {
       "line": 277,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 278,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 279,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 280,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 281,
@@ -34661,22 +34659,22 @@
      {
       "line": 284,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 285,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 286,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 287,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 288,
@@ -34726,7 +34724,7 @@
      {
       "line": 299,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 303,
@@ -34736,7 +34734,7 @@
      {
       "line": 305,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 309,
@@ -34746,7 +34744,7 @@
      {
       "line": 310,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 310,
@@ -34756,7 +34754,7 @@
      {
       "line": 311,
       "category": "genericTemporaries",
-      "text": "scratchValue10"
+      "text": "scratchValue11"
      },
      {
       "line": 318,
@@ -34811,7 +34809,7 @@
      {
       "line": 332,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 332,
@@ -34866,7 +34864,7 @@
      {
       "line": 341,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 342,
@@ -34986,22 +34984,22 @@
      {
       "line": 361,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 362,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 363,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 364,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 366,
@@ -35051,7 +35049,7 @@
      {
       "line": 378,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 387,
@@ -35121,7 +35119,7 @@
      {
       "line": 397,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 399,
@@ -35281,7 +35279,7 @@
      {
       "line": 429,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 431,
@@ -35296,12 +35294,12 @@
      {
       "line": 433,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue25"
      },
      {
       "line": 436,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 440,
@@ -35311,42 +35309,42 @@
      {
       "line": 441,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue25"
      },
      {
       "line": 441,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue25"
      },
      {
       "line": 442,
       "category": "genericTemporaries",
-      "text": "scratchValue24"
+      "text": "scratchValue25"
      },
      {
       "line": 444,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 452,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 459,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 466,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 472,
       "category": "genericTemporaries",
-      "text": "scratchValue30"
+      "text": "scratchValue31"
      },
      {
       "line": 485,
@@ -35359,6 +35357,11 @@
       "text": "--[[unresolved native value]]"
      },
      {
+      "line": 487,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
       "line": 488,
       "category": "machineTemporaries",
       "text": "c_stk_ed_2"
@@ -35366,105 +35369,115 @@
      {
       "line": 489,
       "category": "genericTemporaries",
-      "text": "scratchValue43"
+      "text": "scratchValue2"
      },
      {
-      "line": 490,
+      "line": 492,
       "category": "genericTemporaries",
-      "text": "scratchValue"
+      "text": "scratchValue2"
      },
      {
       "line": 493,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 494,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 494,
+      "line": 493,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 496,
+      "line": 494,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 495,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 496,
+      "line": 495,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
       "line": 501,
       "category": "genericTemporaries",
-      "text": "scratchValue43"
+      "text": "scratchValue"
      },
      {
-      "line": 503,
+      "line": 501,
       "category": "machineTemporaries",
       "text": "c_stk_ed_2"
      },
      {
-      "line": 504,
+      "line": 502,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 504,
+      "line": 502,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 508,
+      "line": 506,
       "category": "machineTemporaries",
       "text": "c_stk_ed_2"
      },
      {
-      "line": 512,
+      "line": 510,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 512,
+      "line": 510,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 518,
+      "line": 516,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding"
      },
      {
-      "line": 519,
+      "line": 517,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 519,
+      "line": 517,
       "category": "nativeNames",
       "text": "LAB_00f249f7"
      },
      {
-      "line": 520,
+      "line": 518,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 520,
+      "line": 518,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 525,
+      "line": 523,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 525,
+      "line": 523,
+      "category": "nativeNames",
+      "text": "LAB_00f249e1"
+     },
+     {
+      "line": 529,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 529,
       "category": "nativeNames",
       "text": "LAB_00f249e1"
      },
@@ -35476,57 +35489,57 @@
      {
       "line": 531,
       "category": "nativeNames",
-      "text": "LAB_00f249e1"
-     },
-     {
-      "line": 533,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 533,
-      "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 535,
+      "line": 533,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 535,
+      "line": 533,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f249e1"
+     },
+     {
+      "line": 534,
+      "category": "nativeNames",
+      "text": "LAB_00f249e1"
      },
      {
       "line": 536,
       "category": "nativeNames",
-      "text": "LAB_00f249e1"
-     },
-     {
-      "line": 538,
-      "category": "nativeNames",
       "text": "FLOW_past_lab_00f249e1"
      },
      {
-      "line": 539,
+      "line": 537,
       "category": "nativeNames",
       "text": "LAB_00f249f7"
      },
      {
-      "line": 541,
+      "line": 539,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 541,
+      "line": 539,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 543,
+      "line": 541,
       "category": "genericTemporaries",
-      "text": "scratchValue"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 549,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 549,
+      "category": "nativeNames",
+      "text": "LAB_00f257fd"
      },
      {
       "line": 551,
@@ -35539,67 +35552,67 @@
       "text": "LAB_00f257fd"
      },
      {
-      "line": 553,
+      "line": 556,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 553,
-      "category": "nativeNames",
-      "text": "LAB_00f257fd"
-     },
-     {
-      "line": 558,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 558,
+      "line": 556,
       "category": "nativeNames",
       "text": "LAB_00f24bc4"
      },
      {
-      "line": 562,
+      "line": 560,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 562,
+      "line": 560,
       "category": "nativeNames",
       "text": "LAB_00f24bc4"
      },
      {
-      "line": 577,
+      "line": 575,
       "category": "genericTemporaries",
       "text": "scratchValue42"
      },
      {
-      "line": 578,
+      "line": 576,
       "category": "genericTemporaries",
       "text": "scratchValue42"
      },
      {
-      "line": 583,
+      "line": 581,
       "category": "genericTemporaries",
       "text": "scratchValue42"
      },
      {
-      "line": 583,
+      "line": 581,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 583,
+      "line": 581,
       "category": "nativeNames",
       "text": "LAB_00f25062"
      },
      {
-      "line": 597,
+      "line": 595,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 597,
+      "line": 595,
+      "category": "nativeNames",
+      "text": "LAB_00f25040"
+     },
+     {
+      "line": 601,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 601,
       "category": "nativeNames",
       "text": "LAB_00f25040"
      },
@@ -35611,12 +35624,12 @@
      {
       "line": 603,
       "category": "nativeNames",
-      "text": "LAB_00f25040"
+      "text": "FLOW_past_lab_00f25040"
      },
      {
-      "line": 605,
-      "category": "gotos",
-      "text": "goto"
+      "line": 604,
+      "category": "nativeNames",
+      "text": "LAB_00f25040"
      },
      {
       "line": 605,
@@ -35624,54 +35637,54 @@
       "text": "FLOW_past_lab_00f25040"
      },
      {
-      "line": 606,
-      "category": "nativeNames",
-      "text": "LAB_00f25040"
+      "line": 608,
+      "category": "genericTemporaries",
+      "text": "scratchValue42"
      },
      {
-      "line": 607,
+      "line": 609,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00f25040"
+      "text": "LAB_00f25062"
      },
      {
       "line": 610,
       "category": "genericTemporaries",
-      "text": "scratchValue42"
+      "text": "scratchValue40"
+     },
+     {
+      "line": 610,
+      "category": "genericTemporaries",
+      "text": "scratchValue41"
      },
      {
       "line": 611,
-      "category": "nativeNames",
-      "text": "LAB_00f25062"
-     },
-     {
-      "line": 612,
       "category": "genericTemporaries",
-      "text": "scratchValue40"
+      "text": "scratchValue41"
      },
      {
-      "line": 612,
+      "line": 611,
       "category": "genericTemporaries",
       "text": "scratchValue41"
      },
      {
       "line": 613,
-      "category": "genericTemporaries",
-      "text": "scratchValue41"
-     },
-     {
-      "line": 613,
-      "category": "genericTemporaries",
-      "text": "scratchValue41"
-     },
-     {
-      "line": 615,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 615,
+      "line": 613,
       "category": "nativeNames",
       "text": "LAB_00f250f0"
+     },
+     {
+      "line": 615,
+      "category": "genericTemporaries",
+      "text": "scratchValue34"
+     },
+     {
+      "line": 615,
+      "category": "genericTemporaries",
+      "text": "scratchValue40"
      },
      {
       "line": 617,
@@ -35684,47 +35697,47 @@
       "text": "scratchValue40"
      },
      {
-      "line": 619,
-      "category": "genericTemporaries",
-      "text": "scratchValue34"
-     },
-     {
-      "line": 619,
-      "category": "genericTemporaries",
-      "text": "scratchValue40"
-     },
-     {
-      "line": 620,
+      "line": 618,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 620,
+      "line": 618,
       "category": "nativeNames",
       "text": "LAB_00f250f0"
      },
      {
-      "line": 624,
+      "line": 622,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 624,
+      "line": 622,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f250f0"
+     },
+     {
+      "line": 623,
+      "category": "nativeNames",
+      "text": "LAB_00f250f0"
      },
      {
       "line": 625,
       "category": "nativeNames",
-      "text": "LAB_00f250f0"
-     },
-     {
-      "line": 627,
-      "category": "nativeNames",
       "text": "FLOW_past_lab_00f250f0"
      },
      {
-      "line": 628,
+      "line": 626,
+      "category": "genericTemporaries",
+      "text": "scratchValue34"
+     },
+     {
+      "line": 627,
+      "category": "genericTemporaries",
+      "text": "scratchValue34"
+     },
+     {
+      "line": 627,
       "category": "genericTemporaries",
       "text": "scratchValue34"
      },
@@ -35734,17 +35747,12 @@
       "text": "scratchValue34"
      },
      {
-      "line": 629,
+      "line": 630,
       "category": "genericTemporaries",
       "text": "scratchValue34"
      },
      {
-      "line": 631,
-      "category": "genericTemporaries",
-      "text": "scratchValue34"
-     },
-     {
-      "line": 632,
+      "line": 630,
       "category": "genericTemporaries",
       "text": "scratchValue34"
      },
@@ -35754,122 +35762,117 @@
       "text": "scratchValue34"
      },
      {
-      "line": 634,
-      "category": "genericTemporaries",
-      "text": "scratchValue34"
-     },
-     {
-      "line": 635,
+      "line": 633,
       "category": "genericTemporaries",
       "text": "scratchValue41"
      },
      {
-      "line": 635,
+      "line": 633,
       "category": "genericTemporaries",
       "text": "scratchValue34"
      },
      {
-      "line": 647,
+      "line": 645,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 647,
+      "line": 645,
       "category": "nativeNames",
       "text": "LAB_00f257f4"
+     },
+     {
+      "line": 663,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
      },
      {
       "line": 665,
-      "category": "genericTemporaries",
-      "text": "scratchValue43"
-     },
-     {
-      "line": 667,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 667,
+      "line": 665,
       "category": "nativeNames",
       "text": "LAB_00f257f4"
      },
      {
-      "line": 676,
+      "line": 674,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 676,
+      "line": 674,
       "category": "nativeNames",
       "text": "LAB_00f257e3"
      },
      {
-      "line": 681,
+      "line": 679,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 681,
+      "line": 679,
       "category": "nativeNames",
       "text": "LAB_00f257e3"
      },
      {
-      "line": 701,
+      "line": 699,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 701,
+      "line": 699,
       "category": "nativeNames",
       "text": "LAB_00f2578b"
      },
      {
-      "line": 704,
+      "line": 702,
       "category": "nativeNames",
       "text": "LAB_00f257e3"
      },
      {
-      "line": 709,
+      "line": 707,
       "category": "nativeNames",
       "text": "LAB_00f2578b"
      },
      {
-      "line": 713,
+      "line": 711,
       "category": "nativeNames",
       "text": "LAB_00f257f4"
      },
      {
-      "line": 714,
+      "line": 712,
       "category": "genericTemporaries",
       "text": "scratchValue42"
      },
      {
-      "line": 716,
+      "line": 714,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 716,
+      "line": 714,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f24bc4"
      },
      {
-      "line": 717,
+      "line": 715,
       "category": "nativeNames",
       "text": "LAB_00f24bc4"
      },
      {
-      "line": 719,
+      "line": 717,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00f24bc4"
      },
      {
-      "line": 720,
+      "line": 718,
       "category": "nativeNames",
       "text": "LAB_00f257fd"
      },
      {
-      "line": 722,
+      "line": 720,
       "category": "genericTemporaries",
       "text": "scratchValue42"
      }

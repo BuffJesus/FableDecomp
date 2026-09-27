@@ -537,6 +537,7 @@ function Main(quest, me)
                         end
                         ::LAB_00f19a2a::
                         resources:ReleaseResource(xStack_224)
+                        pCVar6 = r1
                         goto LAB_00f19a37
                     end
                     alive = not quest:IsActiveThreadTerminating()
@@ -922,6 +923,7 @@ function Main(quest, me)
     goto LAB_00f19a72
     ::LAB_00f199ae::
     resources:ReleaseResource(xStack_1ec)
+    pCVar6 = r2
     ::LAB_00f19a37::
     ::LAB_00f19a3c::
     quest:PauseAllNonScriptedEntities(false)

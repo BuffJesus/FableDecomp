@@ -17,7 +17,7 @@ local repeatMelee, badHit
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local timerId, ctr_c, tutorialState, addNewConversation, scratchValue8
+    local timerId, ctr_c, tutorialState, addNewConversation, scratchValue9
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -285,11 +285,11 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    scratchValue8 = math.random(0, 32767) & 0x80000001
-                    if scratchValue8 < 0 then
-                        scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
+                    scratchValue9 = math.random(0, 32767) & 0x80000001
+                    if scratchValue9 < 0 then
+                        scratchValue9 = (scratchValue9 - 1 | 0xfffffffe) + 1
                     end
-                    if scratchValue8 == 1 then
+                    if scratchValue9 == 1 then
                         if quest:IsActiveThreadTerminating() then
                             quest:DeregisterTimer(timerId2)
                             resources:ReleaseResource(resource)
@@ -390,11 +390,11 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        scratchValue8 = math.random(0, 32767) & 0x80000001
-                        if scratchValue8 < 0 then
-                            scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
+                        scratchValue9 = math.random(0, 32767) & 0x80000001
+                        if scratchValue9 < 0 then
+                            scratchValue9 = (scratchValue9 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue8 == 1 then
+                        if scratchValue9 == 1 then
                             if quest:IsActiveThreadTerminating() then
                                 quest:DeregisterTimer(timerId2)
                                 resources:ReleaseResource(resource)
@@ -424,11 +424,11 @@ function Main(quest, me)
                     end
                     if quest:GetTimer(timerId) < 9 then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                        scratchValue8 = math.random(0, 32767) & 0x80000001
-                        if scratchValue8 < 0 then
-                            scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
+                        scratchValue9 = math.random(0, 32767) & 0x80000001
+                        if scratchValue9 < 0 then
+                            scratchValue9 = (scratchValue9 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue8 == 1 then
+                        if scratchValue9 == 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                             addNewConversation = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(addNewConversation, hero)
@@ -454,11 +454,11 @@ function Main(quest, me)
                     end
                     if quest:GetTimer(timerId) < 9 then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                        scratchValue8 = math.random(0, 32767) & 0x80000001
-                        if scratchValue8 < 0 then
-                            scratchValue8 = (scratchValue8 - 1 | 0xfffffffe) + 1
+                        scratchValue9 = math.random(0, 32767) & 0x80000001
+                        if scratchValue9 < 0 then
+                            scratchValue9 = (scratchValue9 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue8 == 1 then
+                        if scratchValue9 == 1 then
                             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                             addNewConversation = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(addNewConversation, hero)
