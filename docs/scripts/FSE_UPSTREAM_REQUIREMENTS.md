@@ -105,3 +105,61 @@ frame return values, `OnPredicateFail` dispatch.
 - Per-quest binding gaps: `refs/script_recovery/orchard_farm/RUNTIME_API_GAPS.md`,
   `refs/script_recovery/lifted/NewOakValeIntro/UPSTREAM_FSE_COMPATIBILITY.json`.
 - Upstream audit notes: `docs/journal/2026-09/NEW_OAKVALE_ORIGINAL_FSE_COMPATIBILITY_2026-09-12.md`.
+
+
+## Arena round definitions (2026-09-26)
+
+`quest:InitialiseArenaRounds()` replaces the reviewed definition-vector copy at
+retail `0xF25854` (`0xF25980`, quest +0x98 from global definitions +0x1044).
+The implementation copies the script-visible round/wave/creature fields into
+owned values, then writes `Rounds_<round>_Waves_<wave>_Creatures_<group>_*`
+through the existing namespaced Int/Bool/String state methods. Indices are zero
+based. Declared counts and vector lengths remain distinct; no Lua table or native
+pointer is shared between callback states. Opaque inherited definition fields
+are not script state and are not copied into Lua. Arena's native OnPersist does
+not serialize this round-definition vector.
+
+Source: `tools/script_recovery/runtime_bindings/NoviArenaRounds.h` and
+`arena_round_snapshot.h`; installable source patch:
+`tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzz-arena-rounds.patch`.
+**Deployment pending:** the x86 C++ snapshot executable and binding compile probe
+pass against the ABI-v13 headers. A separate Release x86 candidate DLL builds
+and links with all six subsequent patches (things-killed through Arena rounds).
+It is not installed or in-game validated; smoke reports the method as pending.
+The candidate and its patch/hash manifest are in
+`work/readability_marathon_20260926_round10/sidecar_candidate/`. Preserve the other
+patches when preparing a later candidate; do not drop existing bindings.
+
+Reproduce without changing the base checkout or game installation:
+
+```powershell
+python -X utf8 -m tools.script_recovery.run_arena_round_checks --forge-root work/new-oakvale-original-fse-20260912/sidecar-abi-v13 --output work/arena-round-checks-new
+```
+
+The output directory must be new. The executable checks nested vectors, owned
+strings, signed counts, empty vectors, declared counts, and malformed extents.
+The compile probe instantiates the real sol registration with the actual FSE
+headers; it does not link or run engine code. Generated Lua and the retired
+container bodies remain traceable through `runtimeBoundaries` in the conversion
+report. The original native evidence is retained in the translation unit.
+
+## Script-member resources and string maps (2026-09-27)
+
+Retail scripts keep resource objects (PDB `seh_*`, `CScriptGameResourceObjectScriptedThingBase`)
+and cutscene-argument string maps (`csargs`, `std::map<CCharString,CCharString>`) as script
+members: constructed with the script and destroyed by its destructor (Bordello `0x00E46A50`).
+Entities write their quest's members (BordelloGuard `0x00E40420`: `parent->seh_Guard = res`,
+`parent->csargs["$DIALOGUE"] = ...`) and the quest's cutscene helper reads them (`0x00E3E720`).
+
+| Binding | Retail | Notes |
+| --- | --- | --- |
+| `resources:MemberResource(name[, owner])` | member resource object | one persistent entry per PDB member name in the quest's long-lived `RetailResources` scope (shared by the quest and its entity VMs); an entity's own member is keyed by its thing too |
+| `resources:MemberStringMap(name[, owner])` | `std::map<CCharString,CCharString>` member | persistent; filled with the existing `SetString`, passed to `RunMacroWithStrings` |
+| `resources:AssignResource(dst, src)` | `CScriptGameResourceObjectScriptedThingBase::operator=` `0x8ABD10` (= `CBaseObject_Assign_API`) | counted copy; the copy takes over the control-handle registry entry |
+| `resources:ClearStringMap(id)` | `std::map<CCharString,CCharString>::clear` `0x9AACE0` | disasm: the destructor `0x9AC310` without freeing the head, so destroy + construct in place |
+
+Patch: `tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzzz-member-resources.patch` (on top of
+the six round-10 patches). **Deployment pending:** the Release x86 candidate builds
+(`work/readability_marathon_20260927_round12/sidecar_candidate/`); not installed or in-game validated.
+Known gap: the quest scope is never closed, so members outlive a finished quest (retail destroys
+them with the script object).

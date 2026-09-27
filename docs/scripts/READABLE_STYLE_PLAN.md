@@ -74,7 +74,9 @@ me:MoveToThing(fleeMarker, 3.0, 1) -- 1 = ENTITY_MOVE_RUN (Non-blocking)
    PDB-named containers (`teams[myTeam].crateCarrier` instead of `quest:GetStateThing("Teams_" .. t .. "_TeamCrateCarrier")`).
 4. **Structure.** Recognise the three goto idioms on the readable stage: retry loop → `while`; early-exit cleanup → the
    existing `__cleanup_X()` helper (drop the `-- LAB_x: (native jump target)` comment); shared tails (already duplicated).
-   No `::label::` survives; an unstructurable jump becomes a numbered comment at most. Builds on native_goto_scopes.py.
+   No `::label::` belongs in an accepted finished readable port. An unstructured jump remains a visible
+   blocker until its behavior is recovered; never replace executable control flow with a comment or a
+   dummy state machine to make the output appear finished. Builds on native_goto_scopes.py.
 5. **Constants and comments.** `helper_DCEC50(quest, me, 2)` → PDB name (`SetMemberState`) + enum constant
    (`MEMBER_FETCHING`, from the unit evidence enum fields; FSE enum tables for move types etc. as inline comments); one-line
    header per function from the PDB name/role (Main, per-frame thread, helper).

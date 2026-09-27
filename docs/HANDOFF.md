@@ -1,7 +1,50 @@
-# Lua recovery handoff - 2026-09-25
+# Lua recovery handoff - 2026-09-26
 
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
+
+**Twelfth pass (2026-09-27): script-member resources.** Syntax failures 16 → 10. Retail
+`seh_*` resource members and the `csargs` string map now lower to a persistent sidecar store
+(`resources:MemberResource / MemberStringMap / AssignResource / ClearStringMap`, patch
+`novi-zzzzzzzzzzzzzz-member-resources.patch`, candidate DLL builds; NOT installed or in-game
+validated). Bordello, SickChild, ChickenKicking parse; A/B of all 23 units: only those plus
+Book Collecting change. Uncommitted. Next: BookCollecting's record-vector copy, OakValeRevisited's
+thing-vector walk, and registering the 8 old cluster lifts as units. Details and open items:
+[member resources](journal/2026-09/MEMBER_RESOURCES_2026-09-27.md).
+
+**Current user priority (2026-09-26):** review all current Lua ports for Aeon-style
+readability, including older Arena output. Eleven passes across 357 files updated 126
+current Lua files; 16 syntax failures remain. Net goto reduction is 898; the Arena round-data
+pass restored seven previously omitted countdown/interruption jumps (counts below are as of pass eleven; pass twelve: 10 syntax failures). Boolean-array
+layout, persistence keys, integer parsing and BordelloLady's hidden string return are recovered.
+Her Name initialization, five prices and all 15 dialogue suffixes are recovered; Init has no LAB labels.
+Resource handling and Main's missing operands remain unresolved. All-unit validation is recorded
+in the [readability review](journal/2026-09/ALL_SCRIPT_READABILITY_REVIEW_2026-09-26.md).
+Arena creature counters, local GUI counter arrays, dynamic spawn flags and its 4x5 crowd-tag table
+are recovered. PlayWave parses; all twenty crowd tags initialize and indexed crowd reactions use strings.
+Arena's root now loads: a shared primitive-state snapshot replaces its round-vector
+copy, and PlayWave reads named round/wave/creature fields. Nineteen unreachable
+container helpers are omitted with call-graph evidence; 139 diagnostics are resolved.
+Both creation APIs and countdown branches reach HUD setup in 24 generated-script traces.
+The Release x86 sidecar candidate with all six later patches builds/links in
+`work/readability_marathon_20260926_round10/sidecar_candidate`; it is not installed or
+in-game validated. Arena-pass validation: 527 tests and 28 subtests; all 23 units
+have no new smoke regressions. Multi-point spawning/combat/reward flow remains unverified.
+The older named-cluster roots for MazeResearch, MeetSister, ScytheInfo, Fisherman,
+RockTrollFirstEncounter and GuardianTrophyDealerInfo now use the readable pass.
+Their 80 callback traces agree; 109 machine-temporary references are removed.
+A suffix-scope fix preserves undeclared globals (including two unresolved helper
+files). Phase eleven: 225 tests plus 101 subtests; 220 unit/legacy script smoke
+comparisons have no new regressions. Reproduce older outputs with
+`python -m tools.script_recovery.build_readable_cluster --script <cluster> --out <new-directory>`.
+Next: missing operands/field names and old entity stubs; 16 files still fail syntax.
+Do not call the remaining generated output fully readable.
+
+**Expressions continuation (2026-09-26):** guild-seal teleport now preserves its zero
+recall vector and follower expression loop; draft/readable behavioral tests pass.
+All 23 units compared: changes limited to Expressions, White Balverine WW resource
+calls, and Chicken Kicking's epsilon. Picklock/Steal still need packed-flag/numeric
+recovery before an Expressions live bundle. See [Expressions recovery](journal/2026-09/EXPRESSIONS_RECOVERY_2026-09-26.md).
 
 **After Bandit Camp (2026-09-26, converted scripts, v28 + runner)**: QS_GuardianTrophyDealerInfo (Maze in the
 Guild), V_TrophyDealer (Witchwood, Demon Door, the dealer's cave) and White Balverine (Knothole Glade + Witchwood,
@@ -67,9 +110,24 @@ loaded into the global map before a host exists.
 
 Change generators and evidence, never generated Lua by hand.
 
-**Reconstruction lane (2026-09-25):** boot-path de-bake, 40 -> 25 asm leaves of 118, `CGame::Play` now genuine,
-full bootstrap green except the WinMain fixture (needs Fable closed). Gates: `python tools/decomp_pipeline/gate_boot_leaves.py`
-and `gate_header_dependents.py`. Next steps are in ROADMAP (c); details in
+**Reconstruction lane (2026-09-25):** round 3 completes the boot-leaf de-bake:
+117/118 verified leaves are genuine C++ (the remaining Exit is an import thunk), and
+both game-component constructors pass parity and behavior. The unmodified bootstrap,
+including WinMain, passes; OpenRetailBank's real-bank runtime probe passes too.
+Branch `land/boot-debake` (round 15, 2026-09-26): 123/123 boot leaves, CBaseClass
+root class, and the **trap-linked CGame::Play seam**: `python tools/decomp_pipeline/play_seam.py`
+links Play over every landed genuine source, traps the rest and prints the next missing
+callee in execution order. Round 15 verifies ten functions (2,551 retail bytes),
+including four near matches. Three scaffolds graduated; only unsigned-long vector
+assignment at 0045BC09 remains. The --entry system diagnostic now passes profiler
+construction and math tables, then traps at GFInitVectorMath (00A5B850: CPUID;
+VC7.1 has no __cpuid intrinsic). No asm substitute or bypass was added.
+Play still faults at GetFont+8 with no font manager; connect real startup and font
+inputs after resolving its dependencies. Default system flags request no fonts/display.
+The seam reads Data\CompiledDefs read-only. Before every commit run
+`python tools/decomp_pipeline/gate_all.py --bootstrap`.
+Commit with a temp index (the checkout is shared with `feat/novi-script-recovery`). See
+[PLAY_SEAM_DRIVER_2026-09-26](journal/2026-09/PLAY_SEAM_DRIVER_2026-09-26.md),
 [BOOT_DEBAKE_2026-09-25](journal/2026-09/BOOT_DEBAKE_2026-09-25.md).
 
 From the repository root:
@@ -99,3 +157,55 @@ still unseen. See [Evil + boasts](journal/2026-09/ORCHARD_EVIL_AND_BOASTS_2026-0
 Unrelated reconstruction outputs and root scratch remain outside this Lua
 checkpoint. Preserve them. Earlier handoff history is retained in
 [HANDOFF_ARCHIVE.md](journal/HANDOFF_ARCHIVE.md).
+
+**Native round 16:** two rendering fixtures now link their candidates and pass NEAR_MATCH; seven verified near matches in total. Runtime stops remain GFInitVectorMath/CPUID and missing Play font startup. See the [round 16 journal](journal/2026-09/PLAY_SEAM_DRIVER_2026-09-26.md).
+
+**Native round 17:** eleven font lookup/acquisition/ownership functions verified (616 retail bytes); one assembly bake replaced. Nine verified near matches. Next font dependencies are the static/streaming constructors; runtime still requires real font-manager startup and the CPUID gap. See the [round 17 journal](journal/2026-09/PLAY_SEAM_DRIVER_2026-09-26.md).
+
+## Native frontend priority - 2026-09-26
+
+User clarification: the visible program must run reconstructed retail C++, not
+rely on authored frontend adapters. The visual checkpoint is reference/debugging
+material, not completion of this goal. No further adapter expansion is the default.
+
+1. Recover retail GFMain (00402510) and its startup dependencies, starting from
+   recovered WinMain. The startup probe now executes genuine MicroThread::SetStack
+   (009D86B0) and stops at @GFMain@12. Command:
+   `python tools/decomp_pipeline/play_seam.py --entry startup --out work/native-startup`.
+2. Follow retail startup/configuration to construct display, input and font managers;
+   then GFInitialise -> CGame initialisation -> Play. The isolated system probe's
+   CPUID gap and the font constructors remain open. Do not bypass them with adapters.
+3. Run the recovered frontend state, layout, rendering and input code against assets
+   read from installed retail containers at runtime. Extracted/pre-rendered menu BMPs
+   and embedded artwork do not satisfy this milestone.
+4. Validate a visible frontend and its actions against retail, with provenance for
+   the linked engine code and runtime asset reads. Keep LIVE omitted as requested.
+   Traps, unresolved dependencies, and unverified startup data remain explicit blockers.
+
+Reconstruction still means genuine decompilation-derived C++, passing behavior
+fixtures and byte-close VC7.1 output. This is not modernization/fork work.
+
+## Shutdown handoff - 2026-09-26
+
+User is shutting the computer down. Native implementation checkpoint: 74b2a78.
+All work is saved; no native reconstruction build, probe, or game window remains
+running from this session. No task depends on keeping the computer on.
+
+Resume on land/boot-debake without switching the shared Lua checkout. Use a separate
+Git index for native commits. Start with the native startup journal:
+`docs/journal/2026-09/NATIVE_FRONTEND_STARTUP_2026-09-26.md`.
+
+Next implementation: genuine retail GFMain at 00402510. Its fresh decompilation is
+`work/codex-native-startup/GFMain_00402510_decomp.c`; cross-check the call addresses
+against `rebuild/integration/gfmain_calls.tsv` and retail disassembly. Existing
+GFMain phase adapters are reference material, not the implementation to link.
+Reproduce the frontier with:
+`python tools/decomp_pipeline/play_seam.py --entry startup --out work/codex-native-startup`.
+Expected: WinMain -> recovered SetStack -> trap @GFMain@12 (exit 86).
+
+Requirement: the visible frontend must run recovered retail C++ and load real
+containers at runtime. Do not extend/relaunch the authored visual checkpoint as a
+substitute. LIVE removal is committed and visually verified. The native frontend
+is not yet visible; the later system CPUID and font startup gaps remain open.
+Latest checks: all gates PASS, 123 boot leaves, 488 header dependents, zero
+regressions, full bootstrap; SetStack parity/behavior and mutation checks passed.
