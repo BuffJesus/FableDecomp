@@ -11,26 +11,24 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult3, predicateResult6, predicateResult, predicateResult23, predicateResult25
-    local scratchValue8, health4, questionAnswer, questionAnswer2, p0_00, p1, pppuVar, pppuVar20_b3
-    local lookoutPointBeggar, scratchValue13, scratchValue, scratchValue15, conversationId, movie
-    local movie2, movie3, resource, resource2, scratchValue17, movie4
+    local beggarHit, health, questionAnswer, questionAnswer2, p1, pppuVar, pppuVar20_b3
+    local lookoutPointBeggar, scratchValue15, scratchValue, scratchValue17, movie, movie2, movie3
+    local resource, resource2, scratchValue19, movie4
     if not quest:NewScriptFrame(me) then return end
     local resource3 = resources:NewResource()
     resources:PrepareResource(resource3)
     p1 = resource3
-    scratchValue8 = me:AcquireControl(4)
-    while not scratchValue8 do
+    while not resources:TryAcquire(resource3, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(lookoutPointBeggar); return end
-        scratchValue8 = resources:TryAcquire(resource3, me, 4)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(lookoutPointBeggar); return end
     lookoutPointBeggar = quest:GetThingWithScriptName("LookoutPointBeggar")
     -- TODO(native): xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
-    scratchValue8 = quest:GetStateBool("BeggarHit")
+    beggarHit = quest:GetStateBool("BeggarHit")
     predicateResult3 = false
-    while ((not scratchValue8 and (not quest:GetStateBool("BullyHit"))) and (not quest:GetStateBool("BeggarLeft"))) and not quest:GetStateBool("BullyLeft") do
+    while ((not beggarHit and (not quest:GetStateBool("BullyHit"))) and (not quest:GetStateBool("BeggarLeft"))) and not quest:GetStateBool("BullyLeft") do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(lookoutPointBeggar); return end
         if me:IsTalkedToByHero() then
             predicateResult3 = true
@@ -83,7 +81,7 @@ function Main(quest, me)
                                 end
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e5bab8 end
-                                if scratchValue13 == 0 then
+                                if scratchValue15 == 0 then
                                     -- TODO(native): xStack_164._0_3_ = CONCAT12(1,(undefined2)xStack_164);
                                     quest:GetHealth(resources:ScriptThing(resource2))
                                     -- TODO(native): pppuVar20_b3 = !(fVar15 <= (float10)0.0);
@@ -126,12 +124,12 @@ function Main(quest, me)
                     do return end
                     ::FLOW_past_lab_00e5c469::
                     if not quest:IsActiveThreadTerminating() then
-                        local health = quest:GetHealth(resources:ScriptThing(resource2))
-                        scratchValue15 = CONCAT13(1,int3p1)
+                        health = quest:GetHealth(resources:ScriptThing(resource2))
+                        scratchValue17 = CONCAT13(1,int3p1)
                         if health <= 0.0 then
-                            scratchValue15 = p1 & 0xffffff
+                            scratchValue17 = p1 & 0xffffff
                         end
-                        if scratchValue15 >> 24 ~= 0 then
+                        if scratchValue17 >> 24 ~= 0 then
                             if not me:Speak(hero, "TEXT_QST_015_BULLY_FRIEND_TALK_20", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5ce8a end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e5bab8 end
                         end
@@ -145,10 +143,10 @@ function Main(quest, me)
                             predicateResult = quest:IsActiveThreadTerminating()
                             if questionAnswer == 1 then
                                 if not predicateResult then
-                                    local health3 = quest:GetHealth(resources:ScriptThing(resource))
-                                    pppuVar = CONCAT13(1,int3scratchValue15)
-                                    if health3 <= 0.0 then
-                                        pppuVar = scratchValue15 & 0xffffff
+                                    health = quest:GetHealth(resources:ScriptThing(resource))
+                                    pppuVar = CONCAT13(1,int3scratchValue17)
+                                    if health <= 0.0 then
+                                        pppuVar = scratchValue17 & 0xffffff
                                     end
                                     if pppuVar20_b3 then
                                         if not me:Speak(hero, "TEXT_QST_015_BULLY_TEACH_BELCH", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5bab8 end
@@ -199,10 +197,10 @@ function Main(quest, me)
                     do return end
                     ::FLOW_hoist_lab_00e5ce8a_1::
                     if predicateResult then goto FLOW_past_lab_00e5ce8a end
-                    health4 = quest:GetHealth(resources:ScriptThing(resource))
-                    pppuVar = CONCAT13(1,int3scratchValue15)
-                    if health4 <= 0.0 then
-                        pppuVar = scratchValue15 & 0xffffff
+                    health = quest:GetHealth(resources:ScriptThing(resource))
+                    pppuVar = CONCAT13(1,int3scratchValue17)
+                    if health <= 0.0 then
+                        pppuVar = scratchValue17 & 0xffffff
                     end
                     if pppuVar20_b3 then
                         if not me:Speak(hero, "TEXT_QST_015_BULLY_REPEAT_BELCH_QUESTION_REFUSAL", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5ce8a end
@@ -283,7 +281,7 @@ function Main(quest, me)
                 ::LAB_00e5bc19::
                 if not quest:GetStateBool("QuestCardGiven") then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e5bab8 end
-                    quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue17)
+                    quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue19)
                     quest:SetStateBool("QuestCardGiven", true)
                 end
                 quest:PauseAllNonScriptedEntities(false)
@@ -309,22 +307,22 @@ function Main(quest, me)
                 if me:IsTalkedToByHero() then
                     predicateResult3 = true
                 end
-                scratchValue15 = scratchValue | 8
+                scratchValue17 = scratchValue | 8
                 if me:MsgIsHitByHero() then
                     goto LAB_00e5c69b
                 else
-                    scratchValue15 = scratchValue | 24
+                    scratchValue17 = scratchValue | 24
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue15 = scratchValue | 56
+                        scratchValue17 = scratchValue | 56
                         if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e5c69b end
                     end
                     predicateResult23 = false
-                    scratchValue = scratchValue15
+                    scratchValue = scratchValue17
                 end
                 goto FLOW_past_lab_00e5c69b
                 ::LAB_00e5c69b::
                 predicateResult23 = true
-                scratchValue = scratchValue15
+                scratchValue = scratchValue17
                 ::FLOW_past_lab_00e5c69b::
                 if scratchValue & 32 ~= 0 then
                     scratchValue = scratchValue & 0xffffffdf
@@ -368,7 +366,7 @@ function Main(quest, me)
                         break
                     end
                 until true
-                conversationId = quest:AddNewConversation(me, false, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, lookoutPointBeggar)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_TAUNT", me, nil --[[missing]], false)
                 quest:Pause(0.20000000298023224)
@@ -391,13 +389,13 @@ function Main(quest, me)
                 if me:IsTalkedToByHero() then
                     predicateResult3 = true
                 end
-                scratchValue15 = scratchValue | 64
+                scratchValue17 = scratchValue | 64
                 if me:MsgIsHitByHero() then
                     goto LAB_00e5caf0
                 else
-                    scratchValue15 = scratchValue | 192
+                    scratchValue17 = scratchValue | 192
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue15 = scratchValue | 448
+                        scratchValue17 = scratchValue | 448
                         if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e5caf0 end
                     end
                     predicateResult25 = false
@@ -406,16 +404,16 @@ function Main(quest, me)
                 ::LAB_00e5caf0::
                 predicateResult25 = true
                 ::FLOW_past_lab_00e5caf0::
-                if scratchValue15 & 256 ~= 0 then
-                    scratchValue15 = scratchValue15 & 0xfffffeff
+                if scratchValue17 & 256 ~= 0 then
+                    scratchValue17 = scratchValue17 & 0xfffffeff
                 end
-                if scratchValue15 < 0 then
-                    scratchValue15 = scratchValue15 & 0xffffff7f
+                if scratchValue17 < 0 then
+                    scratchValue17 = scratchValue17 & 0xffffff7f
                 end
-                if scratchValue15 & 64 ~= 0 then
-                    scratchValue15 = scratchValue15 & 0xffffffbf
+                if scratchValue17 & 64 ~= 0 then
+                    scratchValue17 = scratchValue17 & 0xffffffbf
                 end
-                scratchValue = scratchValue15
+                scratchValue = scratchValue17
                 if predicateResult25 then
                     goto FLOW_hoist_lab_00e5cec4_1
                 end
@@ -434,27 +432,22 @@ function Main(quest, me)
                 goto FLOW_native_label_2
                 goto LAB_00e5cd44
             else
-                -- TODO(native): p0_00 = *xStack_13c
-                p0_00 = nil --[[unresolved native value]]
-                -- TODO(native): iVar9 = CBasicString<char>::Compare(p0_00,"EXPRESSION_BELCH");
-                if timerId2 ~= 0 then
-                    -- TODO(native): iVar9 = CBasicString<char>::Compare(p0_00,"EXPRESSION_FART");
-                    if timerId2 == 0 then goto LAB_00e5cd44 end
+                if resource ~= "EXPRESSION_BELCH" then
+                    if resource == "EXPRESSION_FART" then goto LAB_00e5cd44 end
                     goto FLOW_native_label_2
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00e5cedc end
                 -- TODO(native): xStack_138 = xStack_138 + 1;
-                conversationId = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId, hero)
+                local conversationId2 = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId2, hero)
                 repeat
                     if movie3 == 1 then
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_FIRST_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_FIRST_BELCH", me, hero, false)
                         break
                     elseif movie3 == 2 then
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_SECOND_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_SECOND_BELCH", me, hero, false)
                         break
                     elseif movie3 == 3 then
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_THIRD_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_THIRD_BELCH", me, hero, false)
                         break
                     elseif movie3 == 4 then
                         quest:SetStateBool("BelchedAtBully", true)
@@ -477,7 +470,7 @@ function Main(quest, me)
             return
         end
         ::LAB_00e5cd74::
-        scratchValue8 = quest:GetStateBool("BeggarHit")
+        beggarHit = quest:GetStateBool("BeggarHit")
         -- TODO(native): unaff_EBP = uVar12;
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(lookoutPointBeggar); return end

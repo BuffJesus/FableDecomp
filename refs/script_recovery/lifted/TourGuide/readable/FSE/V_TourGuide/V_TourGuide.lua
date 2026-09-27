@@ -41,20 +41,20 @@ function Init(quest)
     quest:SetStateBool("OverheardTourGuideThisWaypoint", false)
     quest:SetStateInt("WaypointCounter", 0)
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 9),"M_TG_LocationBalcony");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_9_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_BALCONY");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_9_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_BALCONY");
+    quest:SetStateString("WaypointInfo_9_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BALCONY")
+    quest:SetStateString("WaypointInfo_9_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BALCONY")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 4),"M_TG_LocationBanquet");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_4_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_BANQUET");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_4_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_BANQUET");
+    quest:SetStateString("WaypointInfo_4_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BANQUET")
+    quest:SetStateString("WaypointInfo_4_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BANQUET")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 7),"M_TG_LocationBar");
     quest:SetStateString("WaypointInfo_7_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BAR")
     quest:SetStateString("WaypointInfo_7_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BAR")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 17),"M_TG_LocationBridge");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_17_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_17_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_BRIDGE");
+    quest:SetStateString("WaypointInfo_17_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE")
+    quest:SetStateString("WaypointInfo_17_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BRIDGE")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 14),"M_TG_LocationCloisters");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_14_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_14_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS");
+    quest:SetStateString("WaypointInfo_14_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS")
+    quest:SetStateString("WaypointInfo_14_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 10),"M_TG_LocationDorm1");
     quest:SetStateString("WaypointInfo_10_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_DORM1")
     quest:SetStateString("WaypointInfo_10_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_DORM1")
@@ -62,8 +62,8 @@ function Init(quest)
     quest:SetStateString("WaypointInfo_11_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_DORM2")
     quest:SetStateString("WaypointInfo_11_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_DORM2")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 6),"M_TG_LocationLibrary");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_6_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_6_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_LIBRARY");
+    quest:SetStateString("WaypointInfo_6_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY")
+    quest:SetStateString("WaypointInfo_6_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_LIBRARY")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 5),"M_TG_LocationMap");
     quest:SetStateString("WaypointInfo_5_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_MAP")
     quest:SetStateString("WaypointInfo_5_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_MAP")
@@ -80,35 +80,35 @@ function Init(quest)
     quest:SetStateString("WaypointInfo_15_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_TOMB")
     quest:SetStateString("WaypointInfo_15_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_TOMB")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 1),"M_TG_LocationTraining");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_1_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_TRAINING");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_1_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_TRAINING");
+    quest:SetStateString("WaypointInfo_1_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_TRAINING")
+    quest:SetStateString("WaypointInfo_1_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_TRAINING")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 2),"M_TG_LocationServant");
     quest:SetStateString("WaypointInfo_2_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_SERVANT")
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_2_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_SERVANT");
+    quest:SetStateString("WaypointInfo_2_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_SERVANT")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 12),"M_TG_LocationStairsInside");
     quest:SetStateString("WaypointInfo_12_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STAIR")
     quest:SetStateString("WaypointInfo_12_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STAIR")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 8),"M_TG_LocationStairsOutside");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_8_locTextOverheard"),"TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE");
-    -- TODO(native): CCharString::operator= (quest:GetStateString("WaypointInfo_8_locTextRequested"),"TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE");
+    quest:SetStateString("WaypointInfo_8_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE")
+    quest:SetStateString("WaypointInfo_8_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE")
     -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 3),"M_TG_LocationStatue");
     quest:SetStateString("WaypointInfo_3_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STATUE")
     quest:SetStateString("WaypointInfo_3_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STATUE")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomGuideResponse", 0),"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomGuideResponse", 1),"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_1");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomGuideResponse", 2),"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_2");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomGuideResponse", 3),"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_3");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomGuideResponse", 4),"TEXT_QST_066_RANDOM_GUIDE_RESPONSE_4");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseM", 0),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_10");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseM", 1),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_20");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseM", 2),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_30");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseM", 3),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_40");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseM", 4),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_50");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseF", 0),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_10");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseF", 1),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_20");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseF", 2),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_30");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseF", 3),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_40");
-    -- TODO(native): CCharString::operator= ((CCharString *)__element("RandomFollowerResponseF", 4),"TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_50");
+    quest:SetStateString("RandomGuideResponse_" .. 0, "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0")
+    quest:SetStateString("RandomGuideResponse_" .. 1, "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_1")
+    quest:SetStateString("RandomGuideResponse_" .. 2, "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_2")
+    quest:SetStateString("RandomGuideResponse_" .. 3, "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_3")
+    quest:SetStateString("RandomGuideResponse_" .. 4, "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_4")
+    quest:SetStateString("RandomFollowerResponseM_" .. 0, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_10")
+    quest:SetStateString("RandomFollowerResponseM_" .. 1, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_20")
+    quest:SetStateString("RandomFollowerResponseM_" .. 2, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_30")
+    quest:SetStateString("RandomFollowerResponseM_" .. 3, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_40")
+    quest:SetStateString("RandomFollowerResponseM_" .. 4, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_50")
+    quest:SetStateString("RandomFollowerResponseF_" .. 0, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_10")
+    quest:SetStateString("RandomFollowerResponseF_" .. 1, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_20")
+    quest:SetStateString("RandomFollowerResponseF_" .. 2, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_30")
+    quest:SetStateString("RandomFollowerResponseF_" .. 3, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_40")
+    quest:SetStateString("RandomFollowerResponseF_" .. 4, "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_50")
 end
 
 -- V_TourGuide.OnPersist (retail 0x00ee5720)

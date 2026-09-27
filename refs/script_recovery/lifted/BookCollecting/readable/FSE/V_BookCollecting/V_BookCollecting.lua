@@ -36,7 +36,7 @@ function Init(quest)
     if 0 >= quest:GetStateInt("BooksInGame") then return end
     scratchValue = 0
     repeat
-        -- TODO(native): CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), (CCharString *)(quest:ReadGlobalGameData(0x4d4) + iVar1 * 4));
+        -- TODO(native): CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), quest:ReadGlobalGameDataStringAt(0x4d4, iVar1));
         -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xac)) = 0;
         -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xa0)) = 0;
         scratchValue = scratchValue + 1
@@ -57,67 +57,47 @@ function OnPersist(quest, context)
     quest:SetStateBool("BookOwned", quest:PersistTransferBool(context, "BookOwned", quest:GetStateBool("BookOwned")))
 end
 
--- V_BookCollecting.null (retail 0x00e566f0)
-function null(quest, param1)
+-- V_BookCollecting.NativeThread_00e566f0 (retail 0x00e566f0)
+function NativeThread_00e566f0(quest, param1)
     local resources = quest:RetailResources()
-    local readingBook, thing, thing_00, thing_01, thing_02
-    local scratchValue2 = param1
+    local readingBook
+    local index = param1
     local scratchValue = quest:GlobalConversations(1224)[param1 + 1].Lines
     if scratchValue == 0 then
         return
     end
     local boy0 = quest:GetThingWithScriptName("boy0")
     local girl0 = quest:GetThingWithScriptName("girl0")
-    local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-    local getThingWithScriptName2 = quest:GetThingWithScriptName(nil --[[missing]])
+    local getThingWithScriptName = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(1200, index))
+    local getThingWithScriptName2 = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(1212, index))
     local this_00 = resources:MemberResource("seh_Boy")
     resources:TryAcquire(this_00, boy0, 4)
     quest:EntityTeleportToThing(boy0, getThingWithScriptName, false)
-    if boy0._8_4_ ~= nil then
-        -- TODO(native): *xStack_24._8_4_ = *xStack_24._8_4_ + 1;
-    end
-    -- TODO(native): thing._4_4_ = xStack_24._4_4_;
-    -- TODO(native): thing._8_4_ = xStack_24._8_4_;
-    quest:SetIsPushableByHero(nil, false)
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x58))();
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x28))();
+    quest:SetIsPushableByHero(boy0, false)
+    resources:ClearAllActionsIncludingLoopingAnimations(this_00)
+    resources:ClearCommands(this_00)
     local this_01 = resources:MemberResource("seh_Girl")
     resources:TryAcquire(this_01, girl0, 4)
     quest:EntityTeleportToThing(girl0, getThingWithScriptName2, false)
-    if girl0._8_4_ ~= nil then
-        -- TODO(native): *xStack_30._8_4_ = *xStack_30._8_4_ + 1;
-    end
-    -- TODO(native): thing_00._4_4_ = xStack_30._4_4_;
-    -- TODO(native): thing_00._8_4_ = xStack_30._8_4_;
-    quest:SetIsPushableByHero(nil, false)
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x58))();
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x28))();
+    quest:SetIsPushableByHero(girl0, false)
+    resources:ClearAllActionsIncludingLoopingAnimations(this_01)
+    resources:ClearCommands(this_01)
     readingBook = quest:GetStateBool("ReadingBook")
     param1 = 0
     while not readingBook and param1 < scratchValue do
         if not quest:NewScriptFrame() then return end
-        DoConversation(quest, scratchValue2, param1)
+        DoConversation(quest, index, param1)
         readingBook = quest:GetStateBool("ReadingBook")
         param1 = param1 + 1
     end
     if quest:IsActiveThreadTerminating() then return end
-    if boy0._8_4_ ~= nil then
-        -- TODO(native): *xStack_24._8_4_ = *xStack_24._8_4_ + 1;
-    end
-    -- TODO(native): thing_01._4_4_ = xStack_24._4_4_;
-    -- TODO(native): thing_01._8_4_ = xStack_24._8_4_;
-    quest:SetIsPushableByHero(nil, true)
-    if girl0._8_4_ ~= nil then
-        -- TODO(native): *xStack_30._8_4_ = *xStack_30._8_4_ + 1;
-    end
-    -- TODO(native): thing_02._4_4_ = xStack_30._4_4_;
-    -- TODO(native): thing_02._8_4_ = xStack_30._8_4_;
-    quest:SetIsPushableByHero(nil, true)
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x58))();
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x28))();
+    quest:SetIsPushableByHero(boy0, true)
+    quest:SetIsPushableByHero(girl0, true)
+    resources:ClearAllActionsIncludingLoopingAnimations(this_00)
+    resources:ClearCommands(this_00)
     resources:PrepareResource(this_00)
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x58))(&xStack_28);
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x28))();
+    resources:ClearAllActionsIncludingLoopingAnimations(this_01)
+    resources:ClearCommands(this_01)
     resources:PrepareResource(this_01)
 end
 
@@ -126,24 +106,23 @@ end
 function DoConversation(quest, param1, param)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, addNewConversation, scratchValue3, sequence, p0, memberResource
-    local scratchValue6
-    addNewConversation = param * 4
-    local scratchValue4 = quest:GlobalConversations(1224)[param1 + 1]["Speaker"][param + 1]
-    local scratchValue5 = quest:GlobalConversations(1224)[param1 + 1]["Dialogue"][param + 1]
-    scratchValue6 = quest:GlobalConversations(1224)[param1 + 1]["Animation"][param + 1]
+    local conversationId, scratchValue, memberResource
+    local scratchValue5 = quest:GlobalConversations(1224)[param1 + 1]["Speaker"][param + 1]
+    local scratchValue6 = quest:GlobalConversations(1224)[param1 + 1]["Dialogue"][param + 1]
+    local scratchValue7 = quest:GlobalConversations(1224)[param1 + 1]["Animation"][param + 1]
     param = quest:GlobalConversations(1224)[param1 + 1]["AnimLoop"][param + 1]
-    local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-    scratchValue3 = -1
-    scratchValue = scratchValue5 ~= 0x12393e4 and 1 or 0
-    if scratchValue ~= 0 then
+    local getThingWithScriptName = quest:GetThingWithScriptName(scratchValue5)
+    scratchValue = -1
+    conversationId = scratchValue6 ~= "NULL" and 1 or 0
+    if conversationId ~= 0 then
         if quest:IsActiveThreadTerminating() then return end
-        addNewConversation = quest:AddNewConversation(getThingWithScriptName, false, false)
-        scratchValue3 = addNewConversation
-        quest:AddPersonToConversation(addNewConversation, hero)
-        quest:AddLineToConversation(addNewConversation, nil --[[missing]], getThingWithScriptName, hero, scratchValue5 ~= 0)
+        local conversationId2 = quest:AddNewConversation(getThingWithScriptName, false, false)
+        scratchValue = conversationId2
+        quest:AddPersonToConversation(conversationId2, hero)
+        quest:AddLineToConversation(conversationId2, scratchValue6, getThingWithScriptName, hero, false)
     end
-    if scratchValue4 == nil then
+    memberResource = 0
+    if scratchValue5 == nil then
         if false then
             goto LAB_00e56b54
         else
@@ -152,13 +131,10 @@ function DoConversation(quest, param1, param)
         end
         goto FLOW_hoist_lab_00e56b84_1
     else
-        -- TODO(native): p0 = *xStack_14
-        p0 = nil --[[unresolved native value]]
-        -- TODO(native): iVar6 = CBasicString<char>::Compare(p0,"boy0");
-        if scratchValue == 0 then goto LAB_00e56b54 end
-        -- TODO(native): iVar8 = CBasicString<char>::Compare(p0,"girl0");
-        scratchValue = scratchValue3
-        if addNewConversation == 0 then goto LAB_00e56b84 end
+        conversationId = scratchValue5 == "boy0" and 0 or 1
+        if conversationId == 0 then goto LAB_00e56b54 end
+        conversationId = scratchValue
+        if scratchValue5 == "girl0" then goto LAB_00e56b84 end
     end
     goto FLOW_past_lab_00e56b84
     ::LAB_00e56b84::
@@ -175,45 +151,39 @@ function DoConversation(quest, param1, param)
     if memberResource ~= nil then
         if quest:IsActiveThreadTerminating() then return end
         if param ~= 0 then
-            -- TODO(native): iVar6 = CBasicString<char>::Compare(*(void **)native_arg_param_2,"NULL");
-            if scratchValue == 0 then goto LAB_00e56c84 end
+            conversationId = param == "NULL" and 0 or 1
+            if conversationId == 0 then goto LAB_00e56c84 end
         end
         goto FLOW_past_lab_00e56c84
         ::LAB_00e56c84::
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,1,true,0,0);
+        resources:PlayAnimation(memberResource, scratchValue7, false, true, false, true, true, false, false)
         goto LAB_00e56c30
         ::FLOW_past_lab_00e56c84::
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,0,true,0,0);
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x50))(&xStack_18,0xffffffff,0,0,1,0,true,0,0);
+        resources:PlayAnimation(memberResource, scratchValue7, false, true, false, false, true, false, false)
+        resources:PlayLoopingAnimation(memberResource, param, -1, false, false, true, false, true, false, false)
     end
     ::FLOW_past_lab_00e56b54::
     ::LAB_00e56c30::
     repeat
-        local isConversationActive = quest:IsConversationActive(nil --[[missing]])
-        sequence = not isConversationActive
-        if sequence then
-            -- TODO(native): cVar3 = (**(*pCVar5 + 0x68))()
-    --[[unresolved native value]]
-            sequence = not nil
-        end
-        if sequence or quest:GetStateBool("ReadingBook") then
+        local isConversationActive = quest:IsConversationActive(conversationId)
+        if not (not isConversationActive and not resources:IsPerformingScriptTask(memberResource) or quest:GetStateBool("ReadingBook")) then
+            quest:NewScriptFrame()
+        else
             if not quest:IsActiveThreadTerminating() then
-                quest:RemoveConversation(false)
+                quest:RemoveConversation(conversationId, false)
             end
             break
+            quest:NewScriptFrame()
         end
-        quest:NewScriptFrame()
     until quest:IsActiveThreadTerminating()
 end
 
 -- V_BookCollecting.AddGossip (retail 0x00e55c60)
 -- E55C60: bsim names this body NScript::CV_BookCollectingScript::AddGossip (a homologous script member); no PDB name
-function AddGossip(quest, strParam1)
+function AddGossip(quest, strParam1, strParam2, strParam3, strParam4)
     quest:AddRumourCategory(strParam1)
-    quest:AddNewRumourToCategory(strParam1, nil --[[missing]])
-    quest:AddGossipVillage(strParam1, nil --[[missing]])
-    quest:AddGossipFactionToCategory(strParam1, nil --[[missing]])
+    quest:AddNewRumourToCategory(strParam1, strParam2)
+    quest:AddGossipVillage(strParam1, strParam3)
+    quest:AddGossipFactionToCategory(strParam1, strParam4)
 end
 

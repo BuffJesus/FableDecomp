@@ -9,24 +9,22 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local isActiveThreadTerminating, predicateResult, predicateResult30, scratchValue7
-    local scratchValue8, scratchValue9, predicateResult31, scratchValue, scratchValue11, timerId
+    local scratchValue8, scratchValue9, predicateResult31, beggarHit, scratchValue11, timerId
     local i_stk_1fc_2, switch4, p0, beggarBully, this_00, scratchValue19, scratchValue20
     local conversationId, movie, movie2, movie3, movie4, scratchValue21, resource, scratchValue25
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
-    scratchValue = me:AcquireControl(4)
-    while not scratchValue do
+    while not resources:TryAcquire(resource2, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(beggarBully); return end
-        scratchValue = resources:TryAcquire(resource2, me, 4)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(beggarBully); return end
     beggarBully = quest:GetThingWithScriptName("BeggarBully")
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
-    scratchValue = quest:GetStateBool("BeggarHit")
+    beggarHit = quest:GetStateBool("BeggarHit")
     isActiveThreadTerminating = false
-    while ((not scratchValue and (not quest:GetStateBool("BullyHit"))) and (not quest:GetStateBool("BeggarLeft"))) and not quest:GetStateBool("BullyLeft") do
+    while ((not beggarHit and (not quest:GetStateBool("BullyHit"))) and (not quest:GetStateBool("BeggarLeft"))) and not quest:GetStateBool("BullyLeft") do
         if not quest:NewScriptFrame(me) then goto LAB_00e5b19b end
         if me:IsTalkedToByHero() then
             isActiveThreadTerminating = true
@@ -662,7 +660,7 @@ function Main(quest, me)
         ::FLOW_native_label_2::
         quest:DeregisterTimer(i_stk_1fc_2)
         ::LAB_00e5b163::
-        scratchValue = quest:GetStateBool("BeggarHit")
+        beggarHit = quest:GetStateBool("BeggarHit")
     end
     if not quest:IsActiveThreadTerminating() and not resources:ScriptThing(beggarBully):IsNull() then
         resources:PrepareResource(beggarBully)

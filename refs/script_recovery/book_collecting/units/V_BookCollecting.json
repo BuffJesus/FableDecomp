@@ -616,9 +616,9 @@
         "address": "0x00e54880",
         "evidence": "cluster lifecycle slot"
       },
-      "null": {
+      "NativeThread_00e566f0": {
         "address": "0x00e566f0",
-        "spawnedAs": null,
+        "spawnedAs": "NativeThread_00e566f0",
         "evidence": "inventory thread registration"
       },
       "helper_E54AA0": {

@@ -67,12 +67,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CCharString::operator=((CCharString *)__element(\"ListText\", 0),\"A\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"ListText\", 1),\"B\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"ListText\", 2),\"C\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"ListText\", 3),\"D\");"
-          ],
+          "todo": [],
           "calls": [
             "SetStateInt",
             "SetStateInt",
@@ -83,6 +78,10 @@
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
@@ -913,7 +912,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 47
+        "todo": 43
       }
     }
   ],
@@ -924,6 +923,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 47
+    "todo": 43
   }
 }

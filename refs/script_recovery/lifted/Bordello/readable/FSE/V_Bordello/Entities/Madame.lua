@@ -54,13 +54,13 @@ function Main(quest, me)
     newResource = resources:NewResource()
     resources:PrepareResource(newResource)
     local scratchValue21 = p0
-    scratchValue7 = me:AcquireControl(4)
+    scratchValue7 = resources:TryAcquire(newResource, me, 4)
     while not scratchValue7 do
         quest:NewScriptFrame(me)
         scratchValue6 = quest:IsActiveThreadTerminating()
         if scratchValue6 then resources:ReleaseResource(newResource); return end
         scratchValue19 = p0
-        scratchValue7 = me:AcquireControl(4)
+        scratchValue7 = resources:TryAcquire(newResource, me, 4)
     end
     scratchValue6 = quest:IsActiveThreadTerminating()
     if scratchValue6 then resources:ReleaseResource(newResource); return end
@@ -94,7 +94,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e3bde9
             ::LAB_00e3bde9::
             resources:SetString(resources:MemberStringMap("csargs"), "$LADYINTRO", line)
-            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+            helpers.PlayCutscene(quest, me, "CS_BORDELLO_INTRO", false)
             doneIntro = true
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
@@ -194,8 +194,7 @@ function Main(quest, me)
             scratchValue6 = quest:IsActiveThreadTerminating()
             if scratchValue6 then quest:DeregisterTimer(timerId2); resources:ReleaseResource(newResource); return end
             sequence1 = false
-            -- TODO(native): if (*(this + 0x14))[0x49] == nil then
-            sequence1 = false
+            sequence1 = not quest:GetStateBool("HeroTricking")
             if sequence1 then
                 scratchValue6 = helpers.IsHeroWearingBeard(quest, me)
                 sequence1 = scratchValue6
@@ -316,7 +315,7 @@ function Main(quest, me)
                     movie4 = resources:StartMovie("")
                     quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
-                    -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                    helpers.PlayCutscene(quest, me, "CS_BORDELLO_MAGICIAN_LEAVES", false)
                     quest:SetStateBool("PlayerOwned", true)
                     thing = quest:GetThingWithScriptName("BordelloHouse")
                     quest:SetHouseOwnedByPlayer(thing, true, true)
@@ -328,8 +327,7 @@ function Main(quest, me)
                     return
                 end
                 sequence = false
-                -- TODO(native): if (*(this + 0x14))[0x49] == nil then
-                sequence = false
+                sequence = not quest:GetStateBool("HeroTricking")
                 if not sequence then
                     scratchValue6 = helpers.IsHeroWearingBeard(quest, me)
                     sequence = not scratchValue6

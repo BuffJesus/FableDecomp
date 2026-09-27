@@ -1299,6 +1299,9 @@ class Lifter:
             return "thing"
         if arg.startswith('"'):
             return "string"
+        string_read = re.match(r'ENGINE_GlobalGameDataStringAt\(', arg.strip())
+        if string_read and _balanced_call(arg.strip(), string_read.end() - 1):
+            return 'string'
         if re.match(r'ENGINE_(?:Vector3|VectorCopy|ZeroVector)\(|\{x = ', arg.strip()):    # an inline C3DVector (a stack vector built from three float slots)
             return 'vector'
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
@@ -1542,10 +1545,15 @@ class Lifter:
         method's own operands, so nothing else is dropped."""
         params = RESOURCE_VTABLE_METHODS.get(method)
         operands = self.arguments(argtext)
-        if params is None or not operands or self.slot_name(operands[0]) not in self.resource_slots:
+        receiver = self.slot_name(operands[0]) if operands else None
+        if receiver is None and operands:
+            # a plain local holding a resource (a script-member resource: `pCVar5 = RESOURCE_MemberResource(...)`)
+            plain = re.fullmatch(r'(?:\([^)]*\))?\s*(\w+)', operands[0].strip())
+            receiver = plain.group(1) if plain else None
+        if params is None or not operands or receiver not in self.resource_slots:
             return False
         from tools.script_recovery.native_evidence_lowering import _strip_addr
-        resource = self.expr(self.slot_name(operands[0]))
+        resource = self.expr(receiver)
         rest = operands[1:1 + len(params) - 1]
         if len(rest) != len(params) - 1:
             return False
@@ -2484,6 +2492,10 @@ class Lifter:
                 self.slot_results.pop(target, None)
                 if name == 'RESOURCE_NewResource':
                     self.resource_slots.add(target)
+            elif target and name == 'RESOURCE_MemberResource':
+                # a script-member resource held in a local (V_BookCollecting's speaker, seh_Boy / seh_Girl) is a
+                # resource receiver like a constructed one
+                self.resource_slots.add(target)
             elif target:
                 target = self.slot_results.get(target, target)
             lifted = concat_args if concat_args is not None else [self.expr(a) for a in self.arguments(argtext)]
@@ -2493,7 +2505,7 @@ class Lifter:
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
                                       else 'bool' if name.startswith(('ENGINE_Is', 'RESOURCE_Is')) or name.endswith('STATE_GetBool')
-                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString') or name.endswith('STATE_GetString') else 'number')
+                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)
@@ -3064,7 +3076,7 @@ class Lifter:
             if resolved in self.helper_names:
                 raw_operands = self.arguments(argtext)
                 result_slot = None
-                if resolved in self.hidden_string_helpers and len(raw_operands) == 3:
+                if resolved in self.hidden_string_helpers and len(raw_operands) in (2, 3):
                     from tools.script_recovery.native_evidence_lowering import _strip_addr
                     result_slot = _strip_addr(raw_operands.pop(1))
                     if not re.fullmatch(r'[A-Za-z_]\w*', result_slot):

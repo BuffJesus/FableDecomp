@@ -9,16 +9,16 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult17, predicateResult18, predicateResult19
-    local predicateResult20, scratchValue19, scratchValue20, scratchValue21, scratchValue22
-    local scratchValue23, scratchValue24, health, getTimer, timesMadeLaugh, scratchValue35, getHero
-    local scratchValue37, scratchValue38, scratchValue39, scratchValue40, conversationId, movie
-    local movie2, movie3, scratchValue44, scratchValue46, scratchValue47
+    local predicateResult20, taskRunning, predicateResult32, predicateResult33, predicateResult34
+    local predicateResult35, predicateResult36, health, getTimer, timesMadeLaugh, scratchValue6
+    local getHero, scratchValue8, scratchValue9, scratchValue, scratchValue11, conversationId, movie
+    local movie2, movie3, scratchValue15, scratchValue17, scratchValue18
     if not quest:NewScriptFrame(me) then return end
     local this_00 = resources:MemberResource("seh_me", me)
     resources:PrepareResource(this_00)
     while not me:AcquireControl(4) do
         if not quest:NewScriptFrame(me) then return end
-        scratchValue47 = this_00
+        scratchValue18 = this_00
     end
     if quest:IsActiveThreadTerminating() then return end
     if quest:GetStateBool("LaughingWomanKilled") then
@@ -26,7 +26,7 @@ function Main(quest, me)
     end
     -- TODO(native): xStack_a8 = *(CScriptThing **)(this + 0xc);
     -- TODO(native): xStack_c8 = *(C3DMeshInfo **)(this + 0x10);
-    if scratchValue47 ~= nil then
+    if scratchValue18 ~= nil then
         -- TODO(native): *(int *)xStack_c8 = *(int *)xStack_c8 + 1;
     end
     quest:SetIsPushableByHero(nil --[[missing]], false)
@@ -51,17 +51,17 @@ function Main(quest, me)
                 getTimer = timesMadeLaugh_
                 if getTimer == 0 then
                     quest:AddLineToConversation(conversationId, "TEXT_QST_B10_LAUGHING_WOMAN_NOT_LAUGHED", hero, nil --[[missing]], false)
-                    -- TODO(native): (**(code **)(*(int *)this_00 + 0x48))(&xStack_8c,0,0,1,0,true,0,0);
+                    me:PlayAnimation("STANDARD_TALK_SADNESS", false, false, true, false, true, false, false)
                 else
                     if getTimer == 1 then
                         quest:AddLineToConversation(conversationId, "TEXT_QST_B10_LAUGHING_WOMAN_LAUGHED_A_BIT", hero, nil --[[missing]], false)
-                        -- TODO(native): (**(code **)(*(int *)this_00 + 0x48))(xStack_9c,0,0,1,0,true,0,0);
+                        me:PlayAnimation("ST_OPINION_RIDICULE_SNIGGER", false, false, true, false, true, false, false)
                         quest:AddLineToConversation(conversationId, "TEXT_QST_B10_LAUGHING_WOMAN_MADE_LAUGH_ONCE", hero, nil --[[missing]], false)
                         goto LAB_00ecfbad
                     end
                     if getTimer == 2 then
                         quest:AddLineToConversation(conversationId, "TEXT_QST_B10_LAUGHING_WOMAN_NEARLY_HYSTERICAL", hero, nil --[[missing]], false)
-                        -- TODO(native): (**(code **)(*(int *)this_00 + 0x48))(&xStack_a8,0,0,1,0,true,0,0);
+                        me:PlayAnimation("ST_OPINION_RIDICULE_POINT_AND_LAUGH", false, false, true, false, true, false, false)
                         quest:AddLineToConversation(conversationId, "TEXT_QST_B10_LAUGHING_WOMAN_MADE_LAUGH_TWICE", hero, nil --[[missing]], false)
                         goto LAB_00ecfbad
                     end
@@ -74,13 +74,13 @@ function Main(quest, me)
     --[[unresolved native value]]
         if nil and not givenObject then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
-            if scratchValue35 == nil then
+            if scratchValue6 == nil then
                 goto LAB_00ecff84
             end
             goto FLOW_past_lab_00ecff84
             ::LAB_00ecff84::
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
-            if scratchValue35 == nil then
+            if scratchValue6 == nil then
                 if false then
                     goto LAB_00ed002a
                 elseif false then
@@ -95,25 +95,25 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00ed00c3
             ::LAB_00ed00c3::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_ARMPUMP"; goto LAB_00ed00db end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_ARMPUMP"; goto LAB_00ed00db end
             ::FLOW_hoist_lab_00ed00c3_3::
             goto FLOW_hoist_lab_00ed0091_3
             ::FLOW_past_lab_00ed00c3::
             goto FLOW_past_lab_00ed0091
             ::LAB_00ed0091::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_HEROPOSE"; goto LAB_00ed00db end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_HEROPOSE"; goto LAB_00ed00db end
             ::FLOW_hoist_lab_00ed0091_3::
             goto FLOW_hoist_lab_00ed005f_2
             ::FLOW_past_lab_00ed0091::
             goto FLOW_past_lab_00ed005f
             ::LAB_00ed005f::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_FLIRT"; goto LAB_00ed00db end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_FLIRT"; goto LAB_00ed00db end
             ::FLOW_hoist_lab_00ed005f_2::
             goto FLOW_hoist_lab_00ed002a_1
             ::FLOW_past_lab_00ed005f::
             goto FLOW_past_lab_00ed002a
             ::LAB_00ed002a::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_RUDE"; goto LAB_00ed00db end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_RUDE"; goto LAB_00ed00db end
             ::FLOW_hoist_lab_00ed002a_1::
             goto FLOW_past_lab_00ed00db
             ::LAB_00ed00db::
@@ -123,7 +123,7 @@ function Main(quest, me)
             do return end
             ::FLOW_past_lab_00ed002a::
             -- TODO(native): pvVar11 = *pCVar19
-            scratchValue40 = nil --[[unresolved native value]]
+            scratchValue11 = nil --[[unresolved native value]]
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_SHIT");
             predicateResult17 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
@@ -145,26 +145,24 @@ function Main(quest, me)
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             -- TODO(native): pCVar9 = (**(*this_00 + 0x30))(xStack_84)
-            scratchValue37 = nil --[[unresolved native value]]
+            scratchValue8 = nil --[[unresolved native value]]
             health = quest:GetHealth(nil --[[missing]])
             if 0.0 < health then
                 -- TODO(native): pCVar19 = *(this + 4)
-                scratchValue35 = nil --[[unresolved native value]]
+                scratchValue6 = nil --[[unresolved native value]]
                 -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                 -- TODO(native): uVar7 = (**(*pCVar19 + 0x118))(pvVar11,uVar7,uVar8,uVar15,uVar16)
                 conversationId = nil --[[unresolved native value]]
                 -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                while nil --[[unresolved native value]] do
+                while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie("TEXT_QST_B10_LAUGHING_WOMAN_NEARLY_HYSTERICAL")
                         quest:DeregisterTimer(getHero)
-                        return
+                        do return end
                     end
-                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
@@ -180,51 +178,51 @@ function Main(quest, me)
             goto LAB_00ed069d
             ::FLOW_past_lab_00ecff84::
             -- TODO(native): pvVar11 = *pCVar19
-            scratchValue40 = nil --[[unresolved native value]]
+            scratchValue11 = nil --[[unresolved native value]]
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_PELVIC_THRUST");
-            local scratchValue3 = getTimer == 0 and 1 or 0
+            local predicateResult21 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if not scratchValue3 then
+            if not predicateResult21 then
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COCK_A_DOODLE_DO");
-                local scratchValue4 = getTimer == 0 and 1 or 0
+                local predicateResult22 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if not scratchValue4 then
+                if not predicateResult22 then
                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_CROTCH_GRAB");
-                    local scratchValue5 = getTimer == 0 and 1 or 0
+                    local predicateResult23 = getTimer == 0
                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                    if not scratchValue5 then
+                    if not predicateResult23 then
                         -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_KISS_MY_ASS");
-                        local scratchValue6 = getTimer == 0 and 1 or 0
+                        local predicateResult24 = getTimer == 0
                         -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                        if not scratchValue6 then
+                        if not predicateResult24 then
                             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_FLAMENCO");
-                            local scratchValue7 = getTimer == 0 and 1 or 0
+                            local predicateResult25 = getTimer == 0
                             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                            if not scratchValue7 then
+                            if not predicateResult25 then
                                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COSSACK");
-                                local scratchValue8 = getTimer == 0 and 1 or 0
+                                local predicateResult26 = getTimer == 0
                                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                if not scratchValue8 then
+                                if not predicateResult26 then
                                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_AIR_GUITAR");
-                                    local scratchValue9 = getTimer == 0 and 1 or 0
+                                    local predicateResult27 = getTimer == 0
                                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                    if not scratchValue9 then
+                                    if not predicateResult27 then
                                         -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_BALLET");
-                                        local scratchValue = getTimer == 0 and 1 or 0
+                                        local predicateResult28 = getTimer == 0
                                         -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                        if not scratchValue then
+                                        if not predicateResult28 then
                                             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_SATURDAY_NIGHT_FEVER");
-                                            local scratchValue11 = getTimer == 0 and 1 or 0
+                                            local predicateResult29 = getTimer == 0
                                             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                            if not scratchValue11 then
+                                            if not predicateResult29 then
                                                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_TAP");
-                                                local scratchValue12 = getTimer == 0 and 1 or 0
+                                                local predicateResult30 = getTimer == 0
                                                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                                if not scratchValue12 then
+                                                if not predicateResult30 then
                                                     -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_GIGGLE");
-                                                    local scratchValue13 = getTimer == 0 and 1 or 0
+                                                    local predicateResult31 = getTimer == 0
                                                     -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                                                    if not scratchValue13 then goto LAB_00ecff84 end
+                                                    if not predicateResult31 then goto LAB_00ecff84 end
                                                 end
                                             end
                                         end
@@ -237,7 +235,7 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
             timesMadeLaugh_ = timesMadeLaugh_ + 1
-            if scratchValue35 == nil then
+            if scratchValue6 == nil then
                 if false then
                     goto LAB_00ed0245
                 elseif false then
@@ -254,7 +252,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00ed04c2
             ::LAB_00ed04c2::
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
-            scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_GIGGLE_ONCE"
+            scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_GIGGLE_ONCE"
             goto LAB_00ed02fa
             ::FLOW_hoist_lab_00ed04c2_6::
             goto LAB_00ed02e2
@@ -267,7 +265,7 @@ function Main(quest, me)
             ::FLOW_past_lab_00ed04c2::
             goto FLOW_past_lab_00ed02ac
             ::LAB_00ed02ac::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_KISSARSE_ONCE"; goto LAB_00ed02fa end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_KISSARSE_ONCE"; goto LAB_00ed02fa end
             ::FLOW_hoist_lab_00ed02ac_2::
             goto FLOW_hoist_lab_00ed027a_2
             ::FLOW_hoist_lab_00ed02ac_3::
@@ -275,7 +273,7 @@ function Main(quest, me)
             ::FLOW_past_lab_00ed02ac::
             goto FLOW_past_lab_00ed027a
             ::LAB_00ed027a::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_CROTCH_ONCE"; goto LAB_00ed02fa end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_CROTCH_ONCE"; goto LAB_00ed02fa end
             ::FLOW_hoist_lab_00ed027a_2::
             goto FLOW_hoist_lab_00ed0245_1
             ::FLOW_hoist_lab_00ed027a_3::
@@ -283,7 +281,7 @@ function Main(quest, me)
             ::FLOW_past_lab_00ed027a::
             goto FLOW_past_lab_00ed0245
             ::LAB_00ed0245::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_COCK_ONCE"; goto LAB_00ed02fa end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_COCK_ONCE"; goto LAB_00ed02fa end
             ::FLOW_hoist_lab_00ed0245_1::
             quest:DeregisterTimer(getHero)
             do return end
@@ -293,7 +291,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00ed0210
             ::LAB_00ed0210::
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
-            scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_VULGAR_ONCE"
+            scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_VULGAR_ONCE"
             ::LAB_00ed02fa::
             ::LAB_00ed02ff::
             movie2 = resources:StartMovie("")
@@ -313,10 +311,8 @@ function Main(quest, me)
 --[[unresolved native value]]
                         conversationId = hero
                         -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                        -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                        while nil --[[unresolved native value]] do
+                        while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00ed0a36 end
-                            -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00ed0411 end
                     end
@@ -332,10 +328,8 @@ function Main(quest, me)
 --[[unresolved native value]]
                         conversationId = hero
                         -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                        -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                        while nil --[[unresolved native value]] do
+                        while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then goto LAB_00ed0a36 end
-                            -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00ed0411 end
                     end
@@ -362,21 +356,21 @@ function Main(quest, me)
 --[[unresolved native value]]
             conversationId = hero
             -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-            -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-            scratchValue19 = nil --[[unresolved native value]]
-            getHero = scratchValue35
-            while scratchValue19 do
+            taskRunning = me:IsPerformingScriptTask()
+            getHero = scratchValue6
+            while taskRunning do
                 quest:NewScriptFrame(me)
-                if quest:IsActiveThreadTerminating() then
+                if not quest:IsActiveThreadTerminating() then
+                    taskRunning = me:IsPerformingScriptTask()
+                else
                     -- TODO(native): (**(code **)(*(int *)pCVar6 + 0x5ec))(0);
                     resources:DestroyMovie(movie2)
                     quest:DeregisterTimer(getHero)
-                    return
+                    do return end
+                    taskRunning = me:IsPerformingScriptTask()
                 end
-                -- TODO(native): cVar4 = (**(*this_00 + 0x68))(pvVar11)
-                scratchValue19 = nil --[[unresolved native value]]
             end
-            scratchValue35 = getHero
+            scratchValue6 = getHero
             if not quest:IsActiveThreadTerminating() then goto LAB_00ed0666 end
             -- TODO(native): iVar5 = *pCVar6
 --[[unresolved native value]]
@@ -387,55 +381,55 @@ function Main(quest, me)
             do return end
             ::FLOW_past_lab_00ed0210::
             -- TODO(native): pvVar11 = *pCVar19
-            scratchValue40 = nil --[[unresolved native value]]
+            scratchValue11 = nil --[[unresolved native value]]
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_PELVIC_THRUST");
-            scratchValue20 = getTimer == 0 and 1 or 0
+            predicateResult32 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if scratchValue20 then goto LAB_00ed0210 end
+            if predicateResult32 then goto LAB_00ed0210 end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COCK_A_DOODLE_DO");
-            scratchValue21 = getTimer == 0 and 1 or 0
+            predicateResult33 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if scratchValue21 then goto LAB_00ed0245 end
+            if predicateResult33 then goto LAB_00ed0245 end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_CROTCH_GRAB");
-            scratchValue22 = getTimer == 0 and 1 or 0
+            predicateResult34 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if scratchValue22 then goto LAB_00ed027a end
+            if predicateResult34 then goto LAB_00ed027a end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_KISS_MY_ASS");
-            scratchValue23 = getTimer == 0 and 1 or 0
+            predicateResult35 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if scratchValue23 then goto LAB_00ed02ac end
+            if predicateResult35 then goto LAB_00ed02ac end
             -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_FLAMENCO");
-            scratchValue24 = getTimer == 0 and 1 or 0
+            predicateResult36 = getTimer == 0
             -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-            if not scratchValue24 then
+            if not predicateResult36 then
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_COSSACK");
-                local scratchValue25 = getTimer == 0 and 1 or 0
+                local predicateResult37 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue25 then goto LAB_00ed02e2 end
+                if predicateResult37 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_AIR_GUITAR");
-                local scratchValue26 = getTimer == 0 and 1 or 0
+                local predicateResult38 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue26 then goto LAB_00ed02e2 end
+                if predicateResult38 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_BALLET");
-                local scratchValue27 = getTimer == 0 and 1 or 0
+                local predicateResult39 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue27 then goto LAB_00ed02e2 end
+                if predicateResult39 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_SATURDAY_NIGHT_FEVER");
-                local scratchValue28 = getTimer == 0 and 1 or 0
+                local predicateResult40 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue28 then goto LAB_00ed02e2 end
+                if predicateResult40 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_TAP");
-                local scratchValue29 = getTimer == 0 and 1 or 0
+                local predicateResult41 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue29 then goto LAB_00ed02e2 end
+                if predicateResult41 then goto LAB_00ed02e2 end
                 -- TODO(native): iVar5 = CBasicString<char>::Compare(pvVar11,"EXPRESSION_GIGGLE");
-                local scratchValue30 = getTimer == 0 and 1 or 0
+                local predicateResult42 = getTimer == 0
                 -- TODO(native): xStack_9c = (CScriptThing *)CONCAT13(cVar4,(undefined3)xStack_9c);
-                if scratchValue30 then goto LAB_00ed04c2 end
+                if predicateResult42 then goto LAB_00ed04c2 end
                 goto LAB_00ed02ff
             end
             ::LAB_00ed02e2::
-            if not quest:IsActiveThreadTerminating() then scratchValue39 = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_DANCE_ONCE"; goto LAB_00ed02fa end
+            if not quest:IsActiveThreadTerminating() then scratchValue = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_DANCE_ONCE"; goto LAB_00ed02fa end
             quest:DeregisterTimer(getHero)
             return
         end
@@ -452,7 +446,7 @@ function Main(quest, me)
         ::LAB_00ed06d4::
         -- TODO(native): xStack_9c = (CScriptThing *)((uint)xStack_9c & 0xffffff);
         ::FLOW_past_lab_00ed06d4::
-        if scratchValue44 ~= 0 then
+        if scratchValue15 ~= 0 then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(getHero); return end
             movie = resources:StartMovie("")
             getHero = 1
@@ -466,17 +460,15 @@ function Main(quest, me)
                 if health5 <= 0.0 then
                     -- TODO(native): xStack_a8 = (CScriptThing *)(uVar2 & 0xffffff);
                 end
-                scratchValue38 = scratchValue35
-                scratchValue35 = scratchValue38
-                if scratchValue46 ~= 0 then
+                scratchValue9 = scratchValue6
+                scratchValue6 = scratchValue9
+                if scratchValue17 ~= 0 then
                     -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                     conversationId = hero
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ed0a79 end
-                        -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                     end
                     goto LAB_00ed0952
                 end
@@ -488,17 +480,15 @@ function Main(quest, me)
                 if health6 <= 0.0 then
                     -- TODO(native): xStack_a8 = (CScriptThing *)(uVar2 & 0xffffff);
                 end
-                scratchValue38 = scratchValue35
-                scratchValue35 = scratchValue38
-                if scratchValue46 ~= 0 then
+                scratchValue9 = scratchValue6
+                scratchValue6 = scratchValue9
+                if scratchValue17 ~= 0 then
                     -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                     conversationId = hero
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ed0a79 end
-                        -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                     end
                     goto LAB_00ed0952
                 end
@@ -510,24 +500,22 @@ function Main(quest, me)
                 if health7 <= 0.0 then
                     -- TODO(native): xStack_a8 = (CScriptThing *)(uVar2 & 0xffffff);
                 end
-                scratchValue38 = scratchValue35
-                scratchValue35 = scratchValue38
-                if scratchValue46 ~= 0 then
+                scratchValue9 = scratchValue6
+                scratchValue6 = scratchValue9
+                if scratchValue17 ~= 0 then
                     -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                     conversationId = hero
                     -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
-                    -- TODO(native): cVar4 = (**(*this_00 + 0x68))(uVar7)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then goto LAB_00ed0a79 end
-                        -- TODO(native): cVar4 = (**(*this_00 + 0x68))()
                     end
                     goto LAB_00ed0952
                 end
             end
             goto FLOW_past_lab_00ed0952
             ::LAB_00ed0952::
-            scratchValue35 = scratchValue38
+            scratchValue6 = scratchValue9
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)

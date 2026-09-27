@@ -1,5 +1,15 @@
 # Lua recovery handoff - 2026-09-26
 
+**Codex continuation (2026-09-27):** workflow skills validated; inherited readability fixes
+and BookCollecting's worker key, indexed marker reads and by-value actors are promoted.
+Candidate **v31** is staged (210 Lua files parse; 215 manifest hashes match), NOT installed
+or run in-game. Focused suite: 177 passed / 30 subtests. Full suite: 2,414 passed,
+30 failed, 12 errored; replay of those 42 cases matches baseline (36 pass, 6 fail),
+with no current-only failure reproduced. See journal for subtests and context limits.
+The 29-unit A/B against inherited sources changes only BookCollecting. Combined source
+improvements affect eight units; unresolved Bordello smoke faults and BookCollecting
+teacher dispatch remain. See [continuation and next gates](journal/2026-09/CODEX_LUA_CONTINUATION_2026-09-27.md).
+
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 

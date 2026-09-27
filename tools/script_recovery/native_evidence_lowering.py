@@ -478,6 +478,17 @@ def fold_by_value_things(text: str, code_range=None) -> str:
     """By-value CScriptThing arguments (typed export): the copy constructor fills an outgoing slot
     (`&stack0xNN`) and the decompiler reassembles it into a `pThing._0_4_/_4_4_/_8_4_` temporary that
     is passed to the call. The argument is simply the copied source."""
+    # The typed export can expose an inlined copy entirely as object slices,
+    # rather than the register loads handled below (BookReaction, 0xE566F0).
+    # Both words and the retain must agree on the source; the vtable proves
+    # that this is a CScriptThing copy, not three arbitrary scalar stores.
+    sliced = re.compile(
+        r'^(?P<ind>[ \t]*)if \((?:\(int \*\))?(?P<src>\w+)\._8_4_ != \(int \*\)0x0\) \{\s*'
+        r'\*(?:\(int \*\))?(?P=src)\._8_4_ = \*(?:\(int \*\))?(?P=src)\._8_4_ \+ 1;\s*\}\s*'
+        r'(?P<dst>\w+)\._4_4_ = (?P=src)\._4_4_;\s*'
+        r'(?P=dst)\._0_4_ = &PTR_[A-Za-z_]*_01238c8c;\s*'
+        r'(?P=dst)\._8_4_ = (?P=src)\._8_4_;', re.M)
+    text = sliced.sub(lambda m: f'{m["ind"]}{m["dst"]} = {m["src"]};', text)
     if code_range:
         lo, hi = code_range
         text = re.sub(r'^[ \t]*\w+ = (?:\([\w ]+\*+\))?0x([0-9a-f]{6,7});[ \t]*\r?\n',
@@ -1142,6 +1153,19 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r"return CONCAT31\(\w+,\s*'\\x01' - (\w+)\);", r'return !\1;', text)
     text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'!(\1)', text)
     text = re.sub(r'return CONCAT31\(\w+,\s*([^;]+)\);', r'return \1;', text)
+    # the same with a stale-register high part of any shape (`CONCAT31((int3)((uint)extraout_EAX >> 8),uStack_19)`,
+    # V_BeardyBaldy IsHeroWearingAnyTash 0x00E538F0: `mov al, [esp+3]; ret` -- AL is the whole bool)
+    def low_part(m):
+        end = _balanced_end(text, m.end() - 1)
+        if end is None or not re.match(r'\s*;', text[end:]):
+            return None
+        parts = _split_top(text[m.end():end - 1])
+        if len(parts) != 2 or not re.search(r'extraout_|unaff_|in_\w+|>> 8', parts[0]):
+            return None
+        return m.start(), end, f'return {parts[1].strip()}'
+    edits = [e for e in (low_part(m) for m in re.finditer(r'\breturn CONCAT(?:31|21|11)\(', text)) if e]
+    for start, end, repl in reversed(edits):
+        text = text[:start] + repl + text[end:]
     text = re.sub(r'^([ \t]*\w+ = )CONCAT31\(extraout_var\w*,\s*(\w+)\);', r'\1\2;', text, flags=re.M)
     text = re.sub(r'return \(uint\)extraout_var(?:_\d+)? << 8;', 'return false;', text)
     text = re.sub(r'return \(uint\)(\w+) << 8;', r'return false;', text)
@@ -1191,6 +1215,19 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'\b(\w+)\._(\d+)_1_\b(?! = (?:0x[0-9a-f]+|\d+);)', r'\1_b\2', text)
     text = re.sub(r'(\b(?:this|\w+) \+ )(\d{2,})\b', lambda m: m.group(1) + hex(int(m.group(2))), text)
     text = re.sub(r'\bthis\[(\d{2,})\]', lambda m: f'this[{int(m.group(1)):#x}]', text)   # `this[100]`: a byte field printed with a decimal index
+    # an entity reading its parent script's byte field through the script type (`(*(CV_BordelloScript **)(this + 0x14))[0x49]
+    # == (CV_BordelloScript)0x0`, V_Bordello BordelloClient Main 0x00E3BB70): the parent field load the field pass reads
+    text = re.sub(r"\(\*\((\w+) \*\*\)\(this \+ 0x14\)\)\[(0x[0-9a-f]+|\d+)\](?:\s*(==|!=)\s*\(\1\)0x0\b)?",
+                  lambda m: f"*(char *)(*(int *)(this + 0x14) + {int(m.group(2), 0):#x})" + (f" {m.group(3)} '\\0'" if m.group(3) else ''), text)
+    # ... and through a local assigned the parent once (`pCVar2 = *(CV_BordelloScript **)(this + 0x14); if (pCVar2[0x48] ==
+    # (CV_BordelloScript)0x0)`, V_Bordello BordelloGuard Main 0x00E40420)
+    for m in list(re.finditer(r'^[ \t]*(\w+) = \*\((\w+) \*\*\)\(this \+ 0x14\);', text, re.M)):
+        var, cls = m.group(1), m.group(2)
+        if (len(re.findall(r'^[ \t]*' + re.escape(var) + r' = ', text, re.M))
+                != len(re.findall(r'^[ \t]*' + re.escape(var) + r' = \*\(' + re.escape(cls) + r' \*\*\)\(this \+ 0x14\);', text, re.M))):
+            continue    # (every assignment reloads the parent: Ghidra repeats the load per branch)
+        text = re.sub(r'(?<![\w.>])' + re.escape(var) + r"\[(0x[0-9a-f]+|\d+)\](?:\s*(==|!=)\s*\(" + re.escape(cls) + r"\)0x0\b)?",
+                      lambda mm: f"*(char *)(*(int *)(this + 0x14) + {int(mm.group(1), 0):#x})" + (f" {mm.group(2)} '\\0'" if mm.group(2) else ''), text)
     # an int member updated through a pointer temporary (`P = (int *)(parent + 0x54); *P = *P + 1;`): the member itself
     text = re.sub(r'^([ \t]*)(\w+) = \(int \*\)\(((?:this|\*\(int \*\)\(this \+ 0x14\)) \+ (?:0x[0-9a-f]+|\d+))\);[ \t]*\r?\n[ \t]*\*\2 = \*\2 \+ (-?(?:0x[0-9a-f]+|\d+));[ \t]*\r?\n(?![ \t]*[^\n]*\b\2\b)',   # (an array element's member has its own rule)
                   lambda m: f'{m.group(1)}*(int *)({m.group(3)}) = *(int *)({m.group(3)}) + {m.group(4)};\n', text, flags=re.M)
@@ -1536,6 +1573,14 @@ def reconcile_destructor_kinds(text):
 # sidecar's CBaseObject_Assign_API; std::map<CCharString,CCharString>::clear is 0x9AACE0 (disasm 2026-09-27).
 RESOURCE_ASSIGN = {0x8ABD10}
 STRINGMAP_CLEAR = {0x9AACE0}
+# CScriptGameResourceObjectScriptedThingBaseVTable slots (ForgeFSE EntityScriptingAPI.h) the host binds on `resources`
+# (lift_native_lua.RESOURCE_VTABLE_METHODS)
+RESOURCE_VTABLE_SLOTS = {0x10: 'MoveToPosition', 0x14: 'MoveToThing', 0x1c: 'FollowThing', 0x20: 'StopFollowingThing',
+                         0x24: 'IsFollowActionRunning', 0x28: 'ClearCommands', 0x44: 'PerformExpression',
+                         0x48: 'PlayAnimation', 0x4c: 'PlayCombatAnimation', 0x50: 'PlayLoopingAnimation',
+                         0x54: 'ClearAllActions', 0x58: 'ClearAllActionsIncludingLoopingAnimations',
+                         0x60: 'DropGenericBox', 0x64: 'UnsheatheWeapons', 0x68: 'IsPerformingScriptTask',
+                         0x6c: 'IsFollowingThing'}
 _MEMBER_CAST = r'(?:\((?:int|[\w:<>,]+ ?\*+)\)\s*)*'
 _THIS = r'\bthis\b(?!_)'
 _PARENT = r'\*\(int \*\)\(\(?(?:\(int\))?\s*' + _THIS + r'\)? \+ 0x14\)'
@@ -1597,6 +1642,23 @@ def lower_member_resources(text, spec):
             out.append(rewrite(text[m.end():end], r'\b' + var + r'\b', spec.parent_resources, spec.parent_string_maps, ''))
             pos = end
         text = ''.join(out) + text[pos:]
+    # vtable calls through a local that only ever holds a member resource (or null) are the resource's methods
+    # (V_BookCollecting DoConversation picks seh_Boy / seh_Girl as the speaker, then `(**(code **)(*(int *)pCVar5 +
+    # 0x48))(anim, ...)` = PlayAnimation, 0x50 PlayLoopingAnimation, 0x68 IsPerformingScriptTask); spelled as the
+    # bsim-labelled resource calls the lifter binds on `resources`
+    for var in set(re.findall(r'^[ \t]*(\w+) = ' + MEMBER_RESOURCE + r';', text, re.M)):
+        v = re.escape(var)
+        rhs = re.findall(r'^[ \t]*' + v + r' = ([^;]+);', text, re.M)
+        if not all(re.fullmatch(MEMBER_RESOURCE + r'|\(\w+ \*\)0x0|0', r.strip()) for r in rhs):
+            continue
+        def vcall(m, var=var):
+            name = RESOURCE_VTABLE_SLOTS.get(int(m.group(1), 16))
+            if name is None:
+                return m.group(0)
+            rest = m.group(2)
+            return (f'CScriptGameResourceObjectScriptedThingBase::_{name}_CScriptGameResourceObjectScriptedThingBase('
+                    f'(CScriptGameResourceObjectScriptedThingBase *){var}' + (', ' if rest.strip() != ')' else '') + rest)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + v + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', vcall, text)
     for label, target in (getattr(spec, 'call_labels', None) or {}).items():
         head = re.escape(label).replace('::', r'\s*::\s*')
         if target in RESOURCE_ASSIGN:
@@ -1739,9 +1801,27 @@ def _thing_source(arg):
     return arg[1:] if arg.startswith('&') else arg
 
 
+_RDATA = None
+
+
 def _empty_literal(operand):
-    """`CCharString__NotEqual(&name, 0x122d70e)` compares with the empty literal (Expression_Fish 0x00EE95C0)."""
-    return '""' if re.fullmatch(r'0x0*122d70e', operand.strip(), re.I) else operand
+    """`CCharString__NotEqual(&name, 0x122d70e)` compares with the empty literal (Expression_Fish 0x00EE95C0); any
+    other address of a printable NUL-terminated .rdata string is that literal (V_BookCollecting DoConversation's
+    `NotEqual(&dialogue, 0x12393e4)` = "NULL", the no-line marker in the book reactions)."""
+    global _RDATA
+    op = operand.strip()
+    if re.fullmatch(r'0x0*122d70e', op, re.I):
+        return '""'
+    m = re.fullmatch(r'0x0*(1[0-9a-f]{6})', op, re.I)
+    if m:
+        if _RDATA is None:
+            from tools.script_recovery.lift_native_lua import RData
+            _RDATA = RData()
+        raw = _RDATA.bytes_at(int(m.group(1), 16), 64) or b''
+        text = raw.split(b'\0', 1)[0]
+        if b'\0' in raw and text and all(32 <= c < 127 for c in text) and b'"' not in text and b'\\' not in text:
+            return '"' + text.decode('ascii') + '"'
+    return operand
 
 
 def _strip_addr(arg):
@@ -2053,6 +2133,16 @@ def fold_name_compare(text):
     # the same on a string object living in a stack slot (`GetDataString` into `xStack_74`): no pointer to it
     text = re.sub(r'\b(\w*Stack_\w+) (==|!=) \(CCharString(?:_bv)?\)0x0', r'\1 \2 (CCharString *)0x0', text)
     text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)(\w*Stack_\w+),("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
+    # any string variable (a parameter: V_BookCollecting DoConversation's anim-loop name vs "NULL"), and its buffer
+    # pointer taken once and only compared (`p0 = *(void **)speaker; Compare(p0,"boy0") ... Compare(p0,"girl0")`)
+    text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)(\w+),\s*("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
+    for m in list(re.finditer(r'^[ \t]*(\w+) = \*\(void \*\*\)(\w+);[ \t]*\r?\n', text, re.M)):
+        p, s = re.escape(m.group(1)), m.group(2)
+        uses = re.findall(r'\b' + p + r'\b', text[m.end():])
+        compares = re.findall(r'CBasicString<char>::Compare\(' + p + r',\s*"[^"]*"\)', text[m.end():])
+        if uses and len(uses) == len(compares) and len(re.findall(r'^[ \t]*' + p + r' = ', text, re.M)) == 1:
+            text = text.replace(m.group(0), '', 1)
+            text = re.sub(r'CBasicString<char>::Compare\(' + p + r',\s*("[^"]*")\)', lambda mm, s=s: f'ENGINE_StrCmp({s}, {mm.group(1)})', text)
     return text
 
 
@@ -3344,6 +3434,13 @@ def lower_global_definition_strings(text, call_labels):
     Keep a runtime table read: decoded script.bin values are evidence, not constants.
     Only the exact callee and a global-definition field with a named output slot qualify.
     """
+    # A typed vector<CCharString> element is already a string, not a CDefString
+    # token. Preserve its dynamic index and read it through the sidecar.
+    vector_element = re.compile(
+        r'\(CCharString(?:_bv)? \*\)\(\*\(int \*\)\(DAT_0143e90c \+ '
+        r'(?P<offset>0x[0-9a-f]+|\d+)\) \+ (?P<index>\w+) \* 4\)')
+    text = vector_element.sub(
+        lambda m: f'ENGINE_GlobalGameDataStringAt({m["offset"]}, {m["index"]})', text)
     for label, target in call_labels.items():
         if target != 0x415D70:
             continue
@@ -3599,6 +3696,56 @@ def lower_cifmod(text, spec):
         pos = m.end()
     out.append(text[pos:])
     return ''.join(out)
+
+
+def rebuild_acquire_operands(text, spec):
+    """`StartScriptingEntity` (interface slot 0x20) printed with no operands: Ghidra lost the pushes, the export kept
+    them per site (`pushedStack` [priority imm, &resource, thing]). V_Bordello Magicman Main 0x00E40E80 acquires
+    itself into a resource it then copies into the quest's seh_Boss (`push 4; lea edx,[esp+0x28]; push edx; push ebx`
+    at 0x00E40F13) -- lifted as `me:AcquireControl(4)`, the copy then read a zeroed slot. Rebuilt only when every
+    part is proven: a constructed resource at the pushed slot, the entity's own thing (+8), a `push imm8` priority."""
+    if not getattr(spec, 'entity', False):
+        return text
+    receiver = r'\(\*\*\(code \*\*\)\(\*\*\(int \*\*\)\(\(?(?:\(int\))?this\)? \+ (?:4|0x4)\) \+ 0x20\)\)\('
+    uses = list(re.finditer(receiver, text))
+    sites = sorted((c for c in (getattr(spec, 'indirect_calls', None) or []) if str(c.get('slot', '')).lower() == '0x20'),
+                   key=lambda c: int(c['site'], 16))
+    byte_at = getattr(spec, 'byte_at', None)
+    if not uses or len(uses) != len(sites) or byte_at is None:
+        return text
+    edits = []
+    for m, site in zip(uses, sites):
+        if text[m.end():m.end() + 1] != ')':
+            continue                    # printed with its operands: the ordinary folds own it
+        pushed = site.get('pushedStack') or []
+        if len(pushed) != 3 or pushed[1] is None or pushed[1] >= 0 or pushed[2] != 8:
+            continue
+        name = f'xStack_{-pushed[1]:x}'
+        if not re.search(r'\b' + name + r' = RESOURCE_NewResource\(\)', text):
+            continue
+        at = int(site['site'], 16)
+        window = bytes(byte_at(at - 12 + i) for i in range(12))
+        push = window.rfind(b'\x6a')
+        if push < 0 or push + 1 >= len(window):
+            continue
+        priority = window[push + 1]
+        edits.append((m.start(), m.end() + 1, f'RESOURCE_TryAcquire({name}, (CScriptThing *)(this + 8), {priority})'))
+    for start, end, repl in reversed(edits):
+        text = text[:start] + repl + text[end:]
+    return text
+
+
+def drop_resource_field_zeroes(text):
+    """A resource constructed on the stack has its Data / Info fields zeroed right after the constructor; once the
+    fields fold onto the object's own name they read `X = 0;` / `X = (CCharString)0x0;` and overwrite the handle
+    (Magicman Main: `xStack_364 = RESOURCE_NewResource(); xStack_364 = 0; RESOURCE_PrepareResource(xStack_364)`)."""
+    def repl(m):
+        name = re.escape(m.group(2))
+        tail = m.group(3)
+        kept = re.sub(r'^[ \t]*' + name + r' = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n', '', tail, flags=re.M)
+        return m.group(1) + kept
+    return re.sub(r'^([ \t]*(\w+) = RESOURCE_NewResource\(\);[ \t]*\r?\n)((?:[ \t]*\w+ = (?:\([\w ]+\*?\))?0(?:x0)?;[ \t]*\r?\n){1,3})',
+                  repl, text, flags=re.M)
 
 
 def name_ftol2_operand(text):
@@ -4032,7 +4179,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 text = pat_load.sub(lambda m, k=key, kind=kind, tag=tag: f'{tag}STATE_Get{kind}({k.format(idx=m.group("idx"))})', text)
                 if kind == 'String':
                     for pat in (r'\((?:CWideString|CCharString) \*\)\(' + base + r' \+ ' + idx_form + r' \+ ' + off_re(absolute) + r'\)',
-                                r'\((?:CWideString|CCharString) \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)'):
+                                r'\((?:CWideString|CCharString) \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)',
+                                # an entity reading its parent's string array: (CCharString *)(PARENT + ABS + IDX * 4) (V_BeardyBaldy
+                                # GetRandomSpeech 0x00E53CB0)
+                                r'\((?:CWideString|CCharString) \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ ' + idx_form + r'\)'):
                         text = re.sub(pat, lambda m, k=key, tag=tag: f'{tag}STATE_GetString({k.format(idx=m.group("idx"))})', text)
             # scalar sub-arrays with a trailing byte index: *(T *)(BASE + ABS + IDX * 4)  (Teams[0].StateCounter[i])
             for member_off, (mname, kind) in a['members'].items():
@@ -4081,6 +4231,13 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                               f'__element("{a["name"]}", {index})', text)
                 text = re.sub(r'(?<![\w(])' + base + r' \+ ' + off_re(a['base'] + index * stride) + r'(?![\w)])',
                               f'__element("{a["name"]}", {index})', text)
+            # a string array element assigned with CCharString::operator= (V_BeardyBaldy's RandomSpeech[10] lines, Tour
+            # Guide's stops): namespaced String state, the keys the constant-index fields use
+            if a.get('element') in ('CCharString', 'CWideString'):
+                text = re.sub(r'^([ \t]*)CCharString::operator=\s*\(\s*(?:\(CCharString \*\))?__element\("' + re.escape(a['name'])
+                              + r'", ([^;]+?)\),\s*([^;]+?)\);',
+                              lambda m, a=a, tag=tag: f'{m.group(1)}{tag}STATE_SetString(__key("{a["name"]}_" .. {m.group(2)}), '
+                                                      f'{_empty_literal(_strip_addr(m.group(3)))});', text, flags=re.M)
             # element pointer members (Teams[i].EnemyTeam): stored as the sibling index, read through
             for pmember, pname in a.get('pointers', {}).items():
                 for index in range(a['count']):
@@ -4525,7 +4682,25 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_local_string_vectors(text, getattr(spec, 'call_labels', None) or {})
     text = fold_counted_map_stores(text, getattr(spec, 'call_labels', None) or {})
     text = fold_drifted_actor_values(text)
+    text = drop_resource_field_zeroes(text)
+    text = rebuild_acquire_operands(text, spec)
     text = lower_embedded_state_stores(text)
+    # a string field assigned with CCharString::operator= after the field pass read it (`RequiredHairdo = ""`,
+    # V_BeardyBaldy Init 0x00E4F620): the setter
+    text = re.sub(r'^([ \t]*)CCharString::operator=\s*\(\s*(?:\(CCharString \*\))?((?:QUEST|ENTITY)STATE)_GetString\(("[^"]*"|__key\((?:[^;()]|\([^;()]*\))*\))\),\s*([^;]+?)\);',
+                  lambda m: f'{m.group(1)}{m.group(2)}_SetString({m.group(3)}, {_empty_literal(_strip_addr(m.group(4)))});', text, flags=re.M)
+    # ... and a local string assigned a state string value (GetRandomSpeech 0x00E53CB0: `xStack_8 = RandomSpeech[i]`)
+    text = re.sub(r'^([ \t]*)CCharString::operator=\s*\(&(\w*Stack_\w+|local_\w+),\s*((?:QUEST|ENTITY)STATE_GetString\([^;]*\))\);',
+                  lambda m: f'{m.group(1)}{m.group(2)} = {m.group(3)};', text, flags=re.M)
+    # a function declared `bool` (bsim/PDB header) returning a byte local that only ever holds 0 / 1 returns a Lua
+    # boolean: callers test it with `not` (V_BeardyBaldy IsHeroWearingAnyTash's result byte, `mov al,[esp+3]`)
+    if re.search(r'\bbool __thiscall\b', text[:600]):
+        for var in set(re.findall(r'^[ \t]*return (\w+);', text, re.M)):
+            v = re.escape(var)
+            stores = re.findall(r'^[ \t]*' + v + r' = ([^;]+);', text, re.M)
+            if stores and {s.strip() for s in stores} <= {'0', '1', '0x0', '0x1', 'false', 'true'}:
+                text = re.sub(r'^([ \t]*' + v + r' = )(?:0x0|0)(;)', r'\1false\2', text, flags=re.M)
+                text = re.sub(r'^([ \t]*' + v + r' = )(?:0x1|1)(;)', r'\1true\2', text, flags=re.M)
     # C's bool-to-int in arithmetic (`WaveID = (cVar5 != '\0') + 1`, SummoningTheShip SummonerMinion Init
     # 0x00DF2980): Lua cannot add a boolean
     text = re.sub(r"\((\w+) != '\\0'\) ([+*-]) ", r'ENGINE_BoolToInt(\1) \2 ', text)
@@ -4672,7 +4847,8 @@ def drop_dead_local_stores(text: str) -> str:
             continue      # every store carries a call or nested assignment: keep
         v = re.escape(var)
         dtor = re.compile(r'^[ \t]*std::\s*_Cons_val<[^;(]*?\s*\(' + v + r'\);[ \t]*\r?\n', re.M)
-        decl = re.compile(r'^[ \t]*[\w :*]+\b' + v + r'(?:\s*\[\d+\])?;[ \t]*\r?\n', re.M)
+        # (`return v;` is not a declaration: V_BeardyBaldy IsHeroWearingAnyTash's result byte lost both its stores)
+        decl = re.compile(r'^(?![ \t]*return\b)[ \t]*[\w :*]+\b' + v + r'(?:\s*\[\d+\])?;[ \t]*\r?\n', re.M)
         any_store = re.compile(r'(?<![\w.>])' + v + r'(?:\[0\])? = (?!=)')
         if len(dead) == len(ms):
             rest = dtor.sub('', decl.sub('', re.sub(r'^[ \t]*' + v + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)))
@@ -4792,6 +4968,7 @@ LUA_PSEUDO = [
     (re.compile(r'ENGINE_GlobalGameDataFloatAt\('), 'quest:ReadGlobalGameDataFloatAt('),
     (re.compile(r'ENGINE_GlobalGameDataFloat\('), 'quest:ReadGlobalGameDataFloat('),
     (re.compile(r'ENGINE_GlobalGameDataString\('), 'quest:ReadGlobalGameDataString('),
+    (re.compile(r'ENGINE_GlobalGameDataStringAt\('), 'quest:ReadGlobalGameDataStringAt('),
     (re.compile(r'ENGINE_InitialiseArenaRounds\('), 'quest:InitialiseArenaRounds('),
     (re.compile(r'ENGINE_GlobalGameData\('), 'quest:ReadGlobalGameData('),
     (re.compile(r'ACTORMAP_Set\('), 'resources:SetActor('),

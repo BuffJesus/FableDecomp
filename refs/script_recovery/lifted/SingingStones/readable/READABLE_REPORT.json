@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "singing_stones",
- "draft": "refs\\script_recovery\\lifted\\SingingStones\\draft",
+ "draft": "work\\codex_lua_resume_20260927\\comparison\\after\\singing_stones",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -4642,7 +4642,7 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 0,
+       "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -4950,33 +4950,13 @@
    "readability": {
     "lines": 203,
     "counts": {
-     "unresolvedDiagnostics": 14,
      "genericTemporaries": 26,
+     "unresolvedDiagnostics": 10,
      "gotos": 2,
      "nativeNames": 2
     },
     "status": "needs-recovery",
     "findings": [
-     {
-      "line": 40,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"ListText\", 0),\"A\");"
-     },
-     {
-      "line": 41,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"ListText\", 1),\"B\");"
-     },
-     {
-      "line": 42,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"ListText\", 2),\"C\");"
-     },
-     {
-      "line": 43,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"ListText\", 3),\"D\");"
-     },
      {
       "line": 62,
       "category": "genericTemporaries",

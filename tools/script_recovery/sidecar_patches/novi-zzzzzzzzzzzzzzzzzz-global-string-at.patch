@@ -1,0 +1,21 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index e9f91da..03ff690 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -419,6 +419,16 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         auto* array = *reinterpret_cast<const float* const volatile*>(definitions + offset);
+         return array ? array[index] : 0.0f;
+     };
++    // element `index` of a std::vector<CCharString> in the definitions ({first, last, end} at +offset): V_BookCollecting
++    // BookReaction 0x00E566F0 reads the boy/girl marker names at +0x4B0 / +0x4BC by the reaction index
++    quest["ReadGlobalGameDataStringAt"] = [](LuaQuestState&, int offset, int index) -> std::string {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0 || index < 0) return "";
++        struct Vec { const CCharString* first; const CCharString* last; const CCharString* end; };
++        const auto* v = reinterpret_cast<const Vec*>(definitions + offset);
++        if (!v->first || v->first + index >= v->last) return "";
++        return NoviCCharStringToStd(v->first + index);
++    };
+     // ---- CScriptThing methods -------------------------------------------------------------------
+     thing["GetName"] = [](CScriptThing* me) -> std::string {
+         if (!me || !me->pVTable) return "";

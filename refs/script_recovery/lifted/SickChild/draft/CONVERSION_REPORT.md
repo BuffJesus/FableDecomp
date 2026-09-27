@@ -44,7 +44,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | TalkingTrader2 | Init | 0x00ecca30 | True | 0 |
 | V_SickChild | TalkingTrader2 | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | TalkingTrader2 | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| V_SickChild | WomanToAttract | Main | 0x00ecf7f0 | True | 129 |
+| V_SickChild | WomanToAttract | Main | 0x00ecf7f0 | True | 112 |
 | V_SickChild | WomanToAttract | Init | 0x00ecd380 | True | 0 |
 | V_SickChild | WomanToAttract | OnPersist | 0x00ecd9b0 | True | 1 |
 | V_SickChild | WomanToAttract | OnPredicateFail | 0x00ecd390 | True | 0 |
@@ -54,4 +54,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | SickChildFishingSpot | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | SickChildFishingSpot | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 388}`
+Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 371}`

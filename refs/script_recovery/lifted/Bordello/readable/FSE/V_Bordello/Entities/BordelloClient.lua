@@ -18,13 +18,13 @@ function Main(quest, me)
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
-    while not me:AcquireControl(4) do
+    while not resources:TryAcquire(resource, me, 4) do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local clientSpawn = quest:GetThingWithScriptName("M_ClientSpawn")
     timerId = quest:RegisterTimer()
-    if me:GetDefName() ~= "CREATURE_BS_VILLAGER_FEMALE" then
+    if not ((me:GetDefName() == "CREATURE_BS_VILLAGER_FEMALE") and 1 or 0) then
         while brainState == 1 do
             if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             if not me:IsPerformingScriptTask() then
@@ -87,15 +87,14 @@ function Main(quest, me)
             if not me:IsTalkedToByHero() then goto continue_3 end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             resources:PrepareResource(resource)
-            while not me:AcquireControl(4) do
+            while not resources:TryAcquire(resource, me, 4) do
                 if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             me:ClearCommands()
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            -- TODO(native): if (*(this + 0x14))[0x49] ~= nil then
-            if false and helpers.IsHeroWearingBeard(quest, me) then
+            if quest:GetStateBool("HeroTricking") and helpers.IsHeroWearingBeard(quest, me) then
                 if not quest:IsActiveThreadTerminating() then
                     if sexChance ~= 0 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e466b8 end
@@ -187,7 +186,7 @@ function Main(quest, me)
                             quest:SetStateBool("HeroPartying", true)
                             getDefName = ("TEXT_QST_B13_CLIENT" .. tostring(clientID + 1)) .. "_LEAVE_01"
                             resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", getDefName)
-                            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                            helpers.PlayCutscene(quest, me, "CS_BORDELLO_PAIDFORSEX_QUICKIE", true)
                             quest:SetCutsceneSkippable(true)
                             brainState = 3
                             quest:SetHeroAsHavingHadGaySex(true)
@@ -253,7 +252,7 @@ function Main(quest, me)
         end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
         resources:PrepareResource(resource)
-        while not me:AcquireControl(4) do
+        while not resources:TryAcquire(resource, me, 4) do
             if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
         end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -356,7 +355,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                 me:ClearCommands()
                 resources:PrepareResource(resource)
-                while not me:AcquireControl(4) do
+                while not resources:TryAcquire(resource, me, 4) do
                     if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                 end
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -415,7 +414,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             me:ClearCommands()
             resources:PrepareResource(resource)
-            while not me:AcquireControl(4) do
+            while not resources:TryAcquire(resource, me, 4) do
                 if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end

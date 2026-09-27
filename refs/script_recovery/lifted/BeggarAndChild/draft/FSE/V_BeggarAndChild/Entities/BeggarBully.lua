@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, cVar5, fVar15, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, native_arg_switch_3, native_arg_switch_4, p0, p0_00, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, pppuVar20_b3, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uStack_158_b2, uVar11, uVar12, uVar13, uVar2, uVar8, xStack_110, xStack_124, xStack_138, xStack_13c, xStack_150, xStack_164, xStack_78, xStack_fc, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
+    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, cVar5, fVar15, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, native_arg_switch_3, native_arg_switch_4, p0, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, pppuVar20_b3, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uStack_158_b2, uVar11, uVar12, uVar13, uVar2, uVar8, xStack_110, xStack_124, xStack_138, xStack_13c, xStack_150, xStack_164, xStack_78, xStack_fc, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -22,7 +22,7 @@ function Main(quest, me)
         resources:PrepareResource(xStack_164)
         p2 = 4
         p1 = xStack_164
-        cVar5 = me:AcquireControl(4)
+        cVar5 = resources:TryAcquire(xStack_164, me, 4)
         while not cVar5 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -801,11 +801,9 @@ function Main(quest, me)
                                 if not bVar6 then goto FLOW_native_label_2 end
                                 goto LAB_00e5cd44
                             else
-                                -- TODO(native): p0_00 = *xStack_13c
-                                p0_00 = nil --[[unresolved native value]]
-                                -- TODO(native): iVar9 = CBasicString<char>::Compare(p0_00,"EXPRESSION_BELCH");
+                                iVar9 = ((xStack_13c == "EXPRESSION_BELCH") and 0 or 1)
                                 if iVar9 ~= 0 then
-                                    -- TODO(native): iVar9 = CBasicString<char>::Compare(p0_00,"EXPRESSION_FART");
+                                    iVar9 = ((xStack_13c == "EXPRESSION_FART") and 0 or 1)
                                     if iVar9 == 0 then goto LAB_00e5cd44 end
                                     goto FLOW_native_label_2
                                 end

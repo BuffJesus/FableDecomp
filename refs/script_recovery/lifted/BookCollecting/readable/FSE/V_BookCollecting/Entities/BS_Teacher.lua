@@ -1,6 +1,8 @@
 -- Readable native conversion: BS_Teacher. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local helpers = require("V_BookCollecting.native_quest_helpers")
+
 -- per-entity fields (native class members; one Lua state per entity instance)
 local booksAccepted, self0X14, badBooksForHat, goodBooksForHat, moralityReward, booksWanted
 local booksComment, self0X34
@@ -9,10 +11,10 @@ local booksComment, self0X34
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue4, scratchValue25, scratchValue26, meControl, hero
-    local scratchValue27, movie
+    local scratchValue, scratchValue4, scratchValue24, scratchValue25, meControl, hero
+    local scratchValue26, movie
     local function ReleaseEverything()
-        local scratchValue26 = nil --[[unresolved native value]]
+        local scratchValue25 = nil --[[unresolved native value]]
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
     end
@@ -27,12 +29,12 @@ function Main(quest, me)
     local booksDonated = quest:GetStateInt("BooksDonated")
     if booksDonated < 4 and quest:GetStateInt("GossipState") == 0 then
         if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
+        helpers.AddGossip(quest, me, "Book Collection - Need Books", "TEXT_AI_GOSSIP_BOOK_COLLECTION_NEED", "VILLAGE_BOWERSTONE_SLUMS", "FACTION_VILLAGERS")
         quest:SetStateInt("GossipState", 1)
     elseif booksDonated < 4 or quest:GetStateInt("GossipState") ~= 1 then
         if 9 < booksDonated and quest:GetStateInt("GossipState") < 3 then
             if quest:IsActiveThreadTerminating() then return end
-            -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
+            helpers.AddGossip(quest, me, "Book Collection - Given Books", "TEXT_AI_GOSSIP_BOOK_COLLECTION_GIVEN", "VILLAGE_BOWERSTONE_SLUMS", "FACTION_VILLAGERS")
             quest:SetStateInt("GossipState", 3)
         end
     else
@@ -83,7 +85,7 @@ function Main(quest, me)
                 if 0.0 < fret_00 then
                     -- TODO(native): CVar2 = *pCVar11
                     scratchValue4 = nil --[[unresolved native value]]
-                    scratchValue27 = "TEXT_QST_B16_INTRO"
+                    scratchValue26 = "TEXT_QST_B16_INTRO"
                     -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                     -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                     while nil --[[unresolved native value]] do
@@ -108,7 +110,7 @@ function Main(quest, me)
                 if 0.0 < fret_0 then
                     -- TODO(native): CVar2 = *pCVar11
                     scratchValue4 = nil --[[unresolved native value]]
-                    scratchValue27 = "TEXT_QST_B16_INTRO_B"
+                    scratchValue26 = "TEXT_QST_B16_INTRO_B"
                     -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                     -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                     while nil --[[unresolved native value]] do
@@ -127,7 +129,7 @@ function Main(quest, me)
             local fret_04 = quest:GetHealth(nil --[[missing]])
             if 0.0 < fret_04 then
                 -- TODO(native): xStack_7c = *pCVar11;
-                scratchValue27 = "TEXT_QST_B16_BOOK_WRONG_TIME"
+                scratchValue26 = "TEXT_QST_B16_BOOK_WRONG_TIME"
                 -- TODO(native): (**(code **)((int)xStack_7c + 0x34))(pCVar9,pcVar13);
                 -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                 while nil --[[unresolved native value]] do
@@ -136,7 +138,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then
                     -- TODO(native): iVar8 = *CVar12
-                    scratchValue26 = nil --[[unresolved native value]]
+                    scratchValue25 = nil --[[unresolved native value]]
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     return
@@ -150,14 +152,14 @@ function Main(quest, me)
                 if 0.0 < fret_03 then
                     -- TODO(native): CVar12 = *pCVar11
                     scratchValue = nil --[[unresolved native value]]
-                    scratchValue27 = "TEXT_QST_B16_BOOK_LOOK"
+                    scratchValue26 = "TEXT_QST_B16_BOOK_LOOK"
                     -- TODO(native): (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);
                     -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                     while nil --[[unresolved native value]] do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             -- TODO(native): iVar8 = *xStack_7c
-                            scratchValue26 = nil --[[unresolved native value]]
+                            scratchValue25 = nil --[[unresolved native value]]
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
                             return
@@ -175,7 +177,7 @@ function Main(quest, me)
             if 0.0 < fret_01 then
                 -- TODO(native): CVar2 = *pCVar11
                 scratchValue4 = nil --[[unresolved native value]]
-                scratchValue27 = "TEXT_QST_B16_BOOK_REQUEST_AGAIN"
+                scratchValue26 = "TEXT_QST_B16_BOOK_REQUEST_AGAIN"
                 -- TODO(native): (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);
                 -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                 while nil --[[unresolved native value]] do
@@ -185,8 +187,8 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             end
             -- TODO(native): iVar1 = *(self0X14 + 0x94)
-            scratchValue25 = nil --[[unresolved native value]]
-            if quest:IsObjectInThingsPossession(scratchValue27, hero_) then
+            scratchValue24 = nil --[[unresolved native value]]
+            if quest:IsObjectInThingsPossession(scratchValue26, hero_) then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
                 if AskForBook(quest, me) then
                     if quest:IsActiveThreadTerminating() then
@@ -198,7 +200,7 @@ function Main(quest, me)
                 else
                     if quest:IsActiveThreadTerminating() then
                         -- TODO(native): iVar8 = *xStack_7c
-                        scratchValue26 = nil --[[unresolved native value]]
+                        scratchValue25 = nil --[[unresolved native value]]
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
                         return
@@ -209,7 +211,7 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then
                 -- TODO(native): iVar8 = *xStack_7c
-                scratchValue26 = nil --[[unresolved native value]]
+                scratchValue25 = nil --[[unresolved native value]]
                 ReleaseEverything2(); return
             end
             -- TODO(native): pCVar9 = (**(*pCVar11 + 0x30))()
@@ -218,7 +220,7 @@ function Main(quest, me)
             if 0.0 < fret_02 then
                 -- TODO(native): CVar12 = *pCVar11
                 scratchValue = nil --[[unresolved native value]]
-                scratchValue27 = "TEXT_QST_B16_BOOK_LOST"
+                scratchValue26 = "TEXT_QST_B16_BOOK_LOST"
                 -- TODO(native): (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);
                 -- TODO(native): cVar7 = (**(*pCVar11 + 0x68))(pCVar9)
                 while nil --[[unresolved native value]] do
@@ -227,7 +229,7 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then
                     -- TODO(native): iVar8 = *xStack_7c
-                    scratchValue26 = nil --[[unresolved native value]]
+                    scratchValue25 = nil --[[unresolved native value]]
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                     return
@@ -266,17 +268,15 @@ function Main(quest, me)
                 local fret_05 = quest:GetHealth(nil --[[missing]])
                 if 0.0 < fret_05 then
                     -- TODO(native): iVar8 = *this_00
-                    scratchValue26 = nil --[[unresolved native value]]
+                    scratchValue25 = nil --[[unresolved native value]]
                     -- TODO(native): (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);
-                    -- TODO(native): cVar7 = (**(*this_00 + 0x68))(pCVar9)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
-                            return
+                            do return end
                         end
-                        -- TODO(native): cVar7 = (**(*this_00 + 0x68))()
                     end
                     if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                 end
@@ -317,9 +317,11 @@ function AskForBook(quest, me, param1)
     local self_0x34
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, hero, prize, this_00, flags, getHero
+    local questionAnswer, hero, pOther, prize, this_00, flags, getHero, predicateResult, resource
+    local actorMap, actorMap2, scratchValue
     local value = param1
     flags = 0
+    predicateResult = false
     param1 = "TEXT_QST_B16_OFFER_BOOK_" .. tostring(param1)
     quest:GiveHeroYesNoQuestion(param1, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -350,7 +352,7 @@ function AskForBook(quest, me, param1)
             -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
             hero = nil --[[unresolved native value]]
             local fret_01 = quest:GetHealth(nil --[[missing]])
-            if fret_01 <= 0.0 then return end
+            if fret_01 <= 0.0 then goto LAB_00e566a1 end
             -- TODO(native): iVar6 = *pCVar17
 --[[unresolved native value]]
             -- TODO(native): (**(code **)(iVar6 + 0x34))(uVar12);
@@ -365,7 +367,7 @@ function AskForBook(quest, me, param1)
             -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
             hero = nil --[[unresolved native value]]
             local fret_02 = quest:GetHealth(getHero)
-            if fret_02 <= 0.0 then return end
+            if fret_02 <= 0.0 then goto LAB_00e566a1 end
             -- TODO(native): iVar6 = *pCVar17
 --[[unresolved native value]]
             -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
@@ -376,7 +378,7 @@ function AskForBook(quest, me, param1)
             end
         end
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
-        return
+        goto LAB_00e566a1
     end
     if isActiveThreadTerminating then
         do return false end
@@ -386,6 +388,7 @@ function AskForBook(quest, me, param1)
     quest:TakeObjectFromHero(prize)
     -- TODO(native): *(undefined1 *)(*(int *)(*(int *)(this + 0x14) + 0xa0) + (int)value) = 1;
     quest:SetStateInt("BooksDonated", quest:GetStateInt("BooksDonated") + 1)
+    predicateResult = true
     if value < booksWanted then
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         quest:SetStateInt("GoodBooksDonated", quest:GetStateInt("GoodBooksDonated") + 1)
@@ -424,14 +427,14 @@ function AskForBook(quest, me, param1)
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         end
     end
-    local pOther = resources:MemberResource("seh_me", me)
-    local scratchValue = "CS_SCHOOLBOOK_" .. tostring(value)
-    local resource = resources:NewResource()
+    pOther = resources:MemberResource("seh_me", me)
+    scratchValue = "CS_SCHOOLBOOK_" .. tostring(value)
+    resource = resources:NewResource()
     resources:TryAcquire(resource, hero_, 4)
-    local actorMap2 = resources:NewActorMap()
+    actorMap2 = resources:NewActorMap()
     resources:SetActor(actorMap2, "Hero", resource)
     -- TODO(native): resources:SetActor(xStack_3c, "Teacher", &pOther)
-    local actorMap = resources:NewStringMap()
+    actorMap = resources:NewStringMap()
     GetBookSpecificArgs(quest, me, value, actorMap)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacroWithStrings(scratchValue, actorMap2, actorMap, false, true)
@@ -493,7 +496,7 @@ function AskForBook(quest, me, param1)
                     quest:SetStateBool("HatRewarded", true)
                 end
             end
-            goto FLOW_after_lab_00e560d5_213
+            goto FLOW_after_lab_00e560d5_215
         end
         if quest:GetStateInt("BooksDonated") == booksAccepted then
             if quest:IsActiveThreadTerminating() then
@@ -513,7 +516,7 @@ function AskForBook(quest, me, param1)
                         quest:SetStateBool("HatRewarded", true)
                     end
                 end
-                goto FLOW_after_lab_00e560d5_213
+                goto FLOW_after_lab_00e560d5_215
             end
             -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)xStack_30);
             resources:SetString(actorMap, "$PRIZE", "OBJECT_SILVER_KEY")
@@ -523,7 +526,7 @@ function AskForBook(quest, me, param1)
             quest:SetStateBool("KeyRewarded", true)
         end
     end
-    ::FLOW_after_lab_00e560d5_213::
+    ::FLOW_after_lab_00e560d5_215::
     quest:FadeScreenIn()
     quest:FixMovieSequenceCamera(false)
     resources:DestroyStringMap(actorMap)
@@ -542,6 +545,8 @@ function AskForBook(quest, me, param1)
     if flags & 4 ~= 0 then
         flags = flags & 0xfffffffb
     end
+    ::LAB_00e566a1::
+    return predicateResult
 end
 
 -- BS_Teacher.helper_E56D10 (retail 0x00e56d10)
@@ -597,10 +602,10 @@ end
 -- E57020: bsim names this body NScript::CV_BookCollectingScript::CBS_Teacher::GetBookSpecificArgs (a homologous script member); no PDB name
 function GetBookSpecificArgs(quest, me)
     local resources = quest:RetailResources()
-    local getMasterGameState, arg, arg13, arg14, arg15, arg3
+    local arg, arg13, arg14, arg15, arg3
     if this == 15 then
         if quest:IsActiveThreadTerminating() then return end
-        getMasterGameState = quest:GetMasterGameState("PostSavePosition")
+        local getMasterGameState = quest:GetMasterGameState("PostSavePosition")
         if getMasterGameState < 1251 then
             arg = "TEXT_CS_B16_BOOK15_90D"
         elseif getMasterGameState < 1701 then
@@ -671,8 +676,7 @@ function GetBookSpecificArgs(quest, me)
         goto LAB_00e57345
         goto LAB_00e573aa
     else
-        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(void **)this,"A");
-        local predicateResult = getMasterGameState == 0
+        local predicateResult = "$ARG1" == "A"
         -- TODO(native): param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)CONCAT31(param_2._1_3_,cVar2);
         if predicateResult then goto LAB_00e573aa end
         goto LAB_00e57345
@@ -697,7 +701,7 @@ function LookForBook(quest, me)
     local self_0x34
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, value, scratchValue8, x_stk_14_1, x_stk_14_2, scratchValue9
+    local scratchValue, value, scratchValue6, x_stk_14_1, x_stk_14_2, scratchValue7
     value = 0xffffffff
     -- TODO(native): ctr_CVar13 = 0;
     if booksInGame < 1 then
@@ -715,15 +719,15 @@ function LookForBook(quest, me)
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): if (ctr_CVar13 == quest:GetStateInt("LastBookRequested")) or (*(ctr_CVar13 + *(self_0x14 + 0xa0)) ~= 0) then
                 if false then
-                    if scratchValue8 == 0xffffffff then
+                    if scratchValue6 == 0xffffffff then
                         if quest:IsActiveThreadTerminating() then return end
-                        scratchValue8 = 0xfffffffe
+                        scratchValue6 = 0xfffffffe
                         value = 0xfffffffe
                     end
                 else
                     if quest:IsActiveThreadTerminating() then return end
                     -- TODO(native): xStack_28 = ctr_CVar13;
-                    value = scratchValue8
+                    value = scratchValue6
                     -- TODO(native): if *(ctr_CVar13 + *(self_0x14 + 0xac)) == 0 then
                 end
             end
@@ -768,13 +772,11 @@ function LookForBook(quest, me)
             -- TODO(native): iVar7 = *pCVar1
 --[[unresolved native value]]
             -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);
-            -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-            while nil --[[unresolved native value]] do
+            while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then return end
-                -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
             end
             if quest:IsActiveThreadTerminating() then return end
-            AskForBook(quest, me, scratchValue9)
+            AskForBook(quest, me, scratchValue7)
             ::LAB_00e57924::
             return
         end
@@ -788,14 +790,10 @@ function LookForBook(quest, me)
         -- TODO(native): iVar7 = *pCVar1
 --[[unresolved native value]]
         -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
-        -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-    --[[unresolved native value]]
-        if nil == 0 then return end
+        if not me:IsPerformingScriptTask() then return end
         repeat
             if not quest:NewScriptFrame(me) then return end
-            -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
-    --[[unresolved native value]]
-        until not nil
+        until not me:IsPerformingScriptTask()
         do return end
         return
     end
@@ -810,10 +808,8 @@ function LookForBook(quest, me)
     -- TODO(native): iVar7 = *pCVar1
 --[[unresolved native value]]
     -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
-    -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-    while nil --[[unresolved native value]] do
+    while me:IsPerformingScriptTask() do
         if not quest:NewScriptFrame(me) then return end
-        -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
     end
 end
 

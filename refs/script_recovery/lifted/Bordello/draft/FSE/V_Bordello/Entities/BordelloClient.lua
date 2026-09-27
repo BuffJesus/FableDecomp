@@ -23,13 +23,13 @@ function Main(quest, me)
     xStack_118 = resources:NewResource()
     resources:PrepareResource(xStack_118)
     xStack_118 = xStack_118
-    cVar5 = me:AcquireControl(4)
+    cVar5 = resources:TryAcquire(xStack_118, me, 4)
     while not cVar5 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e469e6 end
-        cVar5 = me:AcquireControl(4)
+        cVar5 = resources:TryAcquire(xStack_118, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -39,7 +39,7 @@ function Main(quest, me)
     iVar6 = quest:RegisterTimer()
     pCVar7 = me:GetDefName()
     iVar12 = ((pCVar7 == "CREATURE_BS_VILLAGER_FEMALE") and 0 or 1)
-    cVar5 = not (iVar12 ~= 0)
+    cVar5 = (not (iVar12 ~= 0)) and 1 or 0
     if not cVar5 then
         iVar12 = __native_entity_state:GetStateInt("BrainState")
         while iVar12 == 1 do
@@ -148,13 +148,13 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e469cb end
                     resources:PrepareResource(xStack_118)
-                    cVar5 = me:AcquireControl(4)
+                    cVar5 = resources:TryAcquire(xStack_118, me, 4)
                     while not cVar5 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00e469cb end
-                        cVar5 = me:AcquireControl(4)
+                        cVar5 = resources:TryAcquire(xStack_118, me, 4)
                     end
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -164,8 +164,7 @@ function Main(quest, me)
                     pCVar10 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
                     native_arg_sequence_1 = false
-                    -- TODO(native): if (*(this + 0x14))[0x49] ~= nil then
-                    if false then
+                    if quest:GetStateBool("HeroTricking") then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
@@ -354,7 +353,7 @@ function Main(quest, me)
                                     pCVar7 = ("TEXT_QST_B13_CLIENT" .. pCVar7)
                                     pCVar7 = (pCVar7 .. pcVar20)
                                     resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", pCVar7)
-                                    -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                    require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_PAIDFORSEX_QUICKIE", true)
                                     quest:SetCutsceneSkippable(true)
                                     __native_entity_state:SetStateInt("BrainState", 3)
                                     quest:SetHeroAsHavingHadGaySex(true)
@@ -482,13 +481,13 @@ function Main(quest, me)
             bVar4 = not alive
             if not bVar4 then
                 resources:PrepareResource(xStack_118)
-                cVar5 = me:AcquireControl(4)
+                cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 while not cVar5 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e469cb end
-                    cVar5 = me:AcquireControl(4)
+                    cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -639,13 +638,13 @@ function Main(quest, me)
                 if bVar4 then goto LAB_00e469cb end
                 me:ClearCommands()
                 resources:PrepareResource(xStack_118)
-                cVar5 = me:AcquireControl(4)
+                cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 while not cVar5 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e469cb end
-                    cVar5 = me:AcquireControl(4)
+                    cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -734,13 +733,13 @@ function Main(quest, me)
                 if bVar4 then goto LAB_00e469cb end
                 me:ClearCommands()
                 resources:PrepareResource(xStack_118)
-                cVar5 = me:AcquireControl(4)
+                cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 while not cVar5 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e469cb end
-                    cVar5 = me:AcquireControl(4)
+                    cVar5 = resources:TryAcquire(xStack_118, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive

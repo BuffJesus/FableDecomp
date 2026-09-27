@@ -176,3 +176,14 @@ Patches: `novi-zzzzzzzzzzzzzzz-state-list-resize.patch`, `novi-zzzzzzzzzzzzzzzz-
 (after the member-resources patch). The Release x86 candidate in
 `work/readability_marathon_20260927_round12/sidecar_candidate/` builds; not installed or in-game validated.
 `quest:RetailFlags(name)` (already bound) now also serves member `map<CCharString,bool>` flag maps.
+
+## Indexed definition strings (2026-09-27)
+
+`quest:ReadGlobalGameDataStringAt(offset, index)` returns the zero-based element of
+`vector<CCharString>` at the global definition object's byte offset. BookReaction
+(0x00E566F0) reads boy/girl markers at +0x4B0/+0x4BC; native loads and PDB
+BookBoyMarker/BookGirlMarker types support this ABI. Invalid negative indices,
+null definitions and absent/out-of-range elements return an empty string.
+Patch: `tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzzzzzzz-global-string-at.patch`.
+The round-12 Release x86 sidecar candidate builds; this binding is pending in the
+installed sidecar and has not been verified in-game. Do not treat mock support as deployment.

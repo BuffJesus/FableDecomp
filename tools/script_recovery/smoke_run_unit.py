@@ -147,7 +147,7 @@ return results
 # (the retail transfer it stands for is named there). Reported as `pendingMethods`, not counted as problems.
 PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet in the installed sidecar
                     'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap',
-                    'StateListResize', 'StateListSetAt', 'GlobalConversations'}
+                    'StateListResize', 'StateListSetAt', 'GlobalConversations', 'ReadGlobalGameDataStringAt'}
 
 
 def registered_methods():

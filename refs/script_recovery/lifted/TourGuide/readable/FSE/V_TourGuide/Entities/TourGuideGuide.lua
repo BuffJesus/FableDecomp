@@ -11,7 +11,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, outsideDistance, addNewConversation, getTimer, getPos, scratchValue16
-    local scratchValue17, closingTimeExit
+    local scratchValue17, getStateString, closingTimeExit
     scratchValue17 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -138,10 +138,7 @@ function Main(quest, me)
                             end
                             if not quest:IsActiveThreadTerminating() then
                                 lastRandomSpeechIdx = addNewConversation
-                                if not quest:IsActiveThreadTerminating() then
-                                    -- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));
-                                    goto LAB_00ee5fd7
-                                end
+                                if not quest:IsActiveThreadTerminating() then getStateString = quest:GetStateString("RandomGuideResponse_" .. addNewConversation); goto LAB_00ee5fd7 end
                             end
                         end
                         goto FLOW_past_lab_00ee5fd7
@@ -150,7 +147,7 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                             local conversationId = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(conversationId, hero)
-                            quest:AddLineToConversation(conversationId, "", me, hero, false)
+                            quest:AddLineToConversation(conversationId, getStateString, me, hero, false)
                             quest:SetTimer(timerId, quest:ReadGlobalGameData(2272))
                         end
                         resources:PrepareResource(resource)
@@ -219,7 +216,7 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                         lastRandomSpeechIdx = getTimer
-                        -- TODO(native): CCharString::CCharString(&xStack_58,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));
+                        -- TODO(native): CCharString::CCharString(&xStack_58,quest:GetStateString(("RandomGuideResponse_" .. iVar6)));
                         if quest:GetStateBool("TourGuideKilled") then
                             quest:NewScriptFrame(me)
                         else

@@ -46,7 +46,7 @@ function Main(quest, me)
         if bVar6 then
             return
         end
-        -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
+        require("V_BookCollecting.native_quest_helpers").helper_E55C60(quest, me, "Book Collection - Need Books", "TEXT_AI_GOSSIP_BOOK_COLLECTION_NEED", "VILLAGE_BOWERSTONE_SLUMS", "FACTION_VILLAGERS")
         quest:SetStateInt("GossipState", 1)
     elseif (iVar1 < 4) or (quest:GetStateInt("GossipState") ~= 1) then
         if (9 < iVar1) and (quest:GetStateInt("GossipState") < 3) then
@@ -55,7 +55,7 @@ function Main(quest, me)
             if bVar6 then
                 return
             end
-            -- TODO(native): NScript::CV_BookCollectingScript::AddGossip(*(CV_BookCollectingScript **)(this + 0x14));
+            require("V_BookCollecting.native_quest_helpers").helper_E55C60(quest, me, "Book Collection - Given Books", "TEXT_AI_GOSSIP_BOOK_COLLECTION_GIVEN", "VILLAGE_BOWERSTONE_SLUMS", "FACTION_VILLAGERS")
             quest:SetStateInt("GossipState", 3)
         end
     else
@@ -493,8 +493,7 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_B16_COMPLETE"
                             pCVar9 = quest:GetHero()
                             -- TODO(native): (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);
-                            -- TODO(native): cVar7 = (**(*this_00 + 0x68))(pCVar9)
-                            cVar7 = nil --[[unresolved native value]]
+                            cVar7 = me:IsPerformingScriptTask()
                             while cVar7 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
@@ -505,8 +504,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(xStack_10)
                                     return
                                 end
-                                -- TODO(native): cVar7 = (**(*this_00 + 0x68))()
-                                cVar7 = nil --[[unresolved native value]]
+                                cVar7 = me:IsPerformingScriptTask()
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -567,10 +565,11 @@ end
 
 function helper_E55CE0(quest, me, native_arg_param_1)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, ePriority, fVar2, fret_0, fret_00, fret_01, fret_02, iVar6, pCVar15, pCVar17, pCVar5, pCVar7, pOther, pcVar11, pvVar9, this_00, uVar10, uVar12, uVar13, uVar14, uVar16, value, xStack_24, xStack_30, xStack_3c, xStack_58
+    local bVar3, cVar4, ePriority, fVar2, fret_0, fret_00, fret_01, fret_02, iVar6, pCVar15, pCVar17, pCVar5, pCVar7, pOther, pcVar11, pvVar9, this_00, uVar10, uVar12, uVar13, uVar14, uVar16, v_stk_45, value, xStack_24, xStack_30, xStack_3c, xStack_58
     local alive = true
     value = native_arg_param_1
     uVar10 = 0
+    v_stk_45 = false
     pCVar5 = tostring(native_arg_param_1)
     native_arg_param_1 = ("TEXT_QST_B16_OFFER_BOOK_" .. pCVar5)
     quest:GiveHeroYesNoQuestion(native_arg_param_1, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -686,6 +685,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
     quest:TakeObjectFromHero(pcVar11)
     -- TODO(native): *(undefined1 *)(*(int *)(*(int *)(this + 0x14) + 0xa0) + (int)value) = 1;
     quest:SetStateInt("BooksDonated", quest:GetStateInt("BooksDonated") + 1)
+    v_stk_45 = true
     if value < __native_entity_state:GetStateInt("BooksWanted") then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
@@ -864,7 +864,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
                     quest:SetStateBool("HatRewarded", true)
                 end
             end
-            goto FLOW_after_lab_00e560d5_213
+            goto FLOW_after_lab_00e560d5_215
         end
         if quest:GetStateInt("BooksDonated") == __native_entity_state:GetStateInt("BooksAccepted") then
             alive = not quest:IsActiveThreadTerminating()
@@ -890,7 +890,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
                         quest:SetStateBool("HatRewarded", true)
                     end
                 end
-                goto FLOW_after_lab_00e560d5_213
+                goto FLOW_after_lab_00e560d5_215
             end
             -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)xStack_30);
             pcVar11 = "OBJECT_SILVER_KEY"
@@ -901,7 +901,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             quest:SetStateBool("KeyRewarded", true)
         end
     end
-    ::FLOW_after_lab_00e560d5_213::
+    ::FLOW_after_lab_00e560d5_215::
     quest:FadeScreenIn()
     quest:FixMovieSequenceCamera(false)
     resources:DestroyStringMap(xStack_30)
@@ -928,7 +928,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
         uVar10 = uVar10 & 0xfffffffd
     end
     ::LAB_00e566a1::
-    return
+    return v_stk_45
 end
 
 function helper_E56D10(quest, me, native_arg_param_2)
@@ -1182,7 +1182,7 @@ function helper_E57020(quest, me)
         if not bVar1 then goto LAB_00e57345 end
         goto LAB_00e573aa
     else
-        -- TODO(native): iVar5 = CBasicString<char>::Compare(*(void **)this,"A");
+        iVar5 = (("$ARG1" == "A") and 0 or 1)
         cVar2 = not (iVar5 ~= 0)
         -- TODO(native): param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)CONCAT31(param_2._1_3_,cVar2);
         if cVar2 then goto LAB_00e573aa end
@@ -1354,15 +1354,13 @@ function helper_E57530(quest, me)
                 pvVar11 = x_stk_14
                 pCVar8 = quest:GetHero()
                 -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);
-                -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-                cVar6 = nil --[[unresolved native value]]
+                cVar6 = me:IsPerformingScriptTask()
                 while cVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00e57924 end
-                    -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
-                    cVar6 = nil --[[unresolved native value]]
+                    cVar6 = me:IsPerformingScriptTask()
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -1394,9 +1392,8 @@ function helper_E57530(quest, me)
         pcVar14 = "TEXT_QST_B16_BOOK_NONE_FOUND"
         pCVar8 = quest:GetHero()
         -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
-        -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-        cVar6 = nil --[[unresolved native value]]
-        if cVar6 ~= 0 then
+        cVar6 = me:IsPerformingScriptTask()
+        if cVar6 then
             repeat
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -1404,8 +1401,7 @@ function helper_E57530(quest, me)
                 if bVar5 then
                     return
                 end
-                -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
-                cVar6 = nil --[[unresolved native value]]
+                cVar6 = me:IsPerformingScriptTask()
             until not (cVar6)
             alive = not quest:IsActiveThreadTerminating()
             return
@@ -1434,8 +1430,7 @@ function helper_E57530(quest, me)
     pcVar14 = "TEXT_QST_B16_BOOK_NOT_FOUND"
     pCVar8 = quest:GetHero()
     -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
-    -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))(pCVar8)
-    cVar6 = nil --[[unresolved native value]]
+    cVar6 = me:IsPerformingScriptTask()
     while cVar6 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
@@ -1443,8 +1438,7 @@ function helper_E57530(quest, me)
         if bVar5 then
             return
         end
-        -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
-        cVar6 = nil --[[unresolved native value]]
+        cVar6 = me:IsPerformingScriptTask()
     end
     ::LAB_00e579ce::
     alive = not quest:IsActiveThreadTerminating()

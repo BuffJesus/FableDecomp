@@ -122,13 +122,13 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_88)
                     end
                     native_arg_sequence_1 = false
-                    if pCVar2[0x48] == nil then
+                    if not quest:GetStateBool("HeroPartying") then
                         native_arg_sequence_1 = true
                     else
                         native_arg_sequence_1 = false
                     end
                     if native_arg_sequence_1 then
-                        if pCVar2[0x49] == nil then
+                        if not quest:GetStateBool("HeroTricking") then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false
@@ -162,7 +162,7 @@ function Main(quest, me)
                             resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", pCVar8)
                             xStack_64 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                            require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_KICKEDOUT", false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_64)
                         end
@@ -182,9 +182,9 @@ function Main(quest, me)
                     xStack_b8 = resources:StartMovie("")
                     pCVar15 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    if pCVar2[0x4d] == nil then
+                    if not quest:GetStateBool("BecomeNunnery") then
                         native_arg_sequence_2 = false
-                        if pCVar2[0x49] ~= nil then
+                        if quest:GetStateBool("HeroTricking") then
                             native_arg_sequence_2 = true
                         else
                             native_arg_sequence_2 = false
@@ -227,8 +227,7 @@ function Main(quest, me)
                             end
                             goto LAB_00e40a57
                         end
-                        -- TODO(native): if (*(this + 0x14))[0x48] == nil then
-                        if false then
+                        if not quest:GetStateBool("HeroPartying") then
                             bVar5 = require("V_Bordello.native_quest_helpers").helper_E3E320(quest, me)
                             if bVar5 then
                                 alive = not quest:IsActiveThreadTerminating()
@@ -445,11 +444,11 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_88)
                     end
                     native_arg_sequence_1 = false
-                    if pCVar2[0x48] == nil then
+                    if not quest:GetStateBool("HeroPartying") then
                         native_arg_sequence_1 = true
                     end
                     if native_arg_sequence_1 then
-                        if pCVar2[0x49] == nil then
+                        if not quest:GetStateBool("HeroTricking") then
                             native_arg_sequence_1 = true
                         else
                             native_arg_sequence_1 = false
@@ -483,7 +482,7 @@ function Main(quest, me)
                             resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", pCVar8)
                             xStack_64 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                            require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_KICKEDOUT", false)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_64)
                         end

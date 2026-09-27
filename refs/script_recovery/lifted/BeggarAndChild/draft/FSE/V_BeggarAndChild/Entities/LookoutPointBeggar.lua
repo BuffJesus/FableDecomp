@@ -22,7 +22,7 @@ function Main(quest, me)
         resources:PrepareResource(xStack_210)
         p2 = 4
         p1 = xStack_210
-        cVar4 = me:AcquireControl(4)
+        cVar4 = resources:TryAcquire(xStack_210, me, 4)
         while not cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()

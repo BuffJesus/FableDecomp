@@ -12,7 +12,6 @@ local lastRandomSpeechIdx1, lastRandomSpeechIdx2
 
 -- BB_BeardyBaldyMan.Main (retail 0x00e50fd0)
 function Main(quest, me)
-    local requiredHairdo = quest:GetStateString("RequiredHairdo")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, predicateResult2, scratchValue3, p0, this_00
@@ -36,7 +35,7 @@ function Main(quest, me)
         if not quest:GetStateBool("AttackedByHero") then
             if quest:GetTimer(quest:GetStateInt("RandomSpeechTimer")) == 0 then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                -- TODO(native): GetRandomSpeech(quest, me, &xStack_1e8)
+                local scratchValue47 = GetRandomSpeech(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 quest:EntitySetFacingAngleTowardsThing(hero, me, false)
@@ -44,7 +43,7 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 local addNewConversation = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, "", me, hero, false)
+                quest:AddLineToConversation(addNewConversation, scratchValue47, me, hero, false)
                 helpers.ResetRandomSpeechTime(quest, me)
                 goto LAB_00e51417
                 resources:ReleaseResource(resource)
@@ -161,13 +160,11 @@ function Main(quest, me)
                             if quest:IsWearingHairstyle(hero, quest:ReadGlobalGameDataString(1104)) then
                                 if predicateResult2 then goto LAB_00e53600 end
                                 quest:GiveHeroObject(quest:ReadGlobalGameDataString(1116), -1, false)
-                                quest:ReadGlobalGameDataString(1112)
-                                -- TODO(native): CCharString::operator= (requiredHairdo,&xStack_124);
+                                quest:SetStateString("RequiredHairdo", quest:ReadGlobalGameDataString(1112))
                             else
                                 if predicateResult2 then goto LAB_00e53600 end
                                 quest:GiveHeroObject(quest:ReadGlobalGameDataString(1108), -1, false)
-                                quest:ReadGlobalGameDataString(1104)
-                                -- TODO(native): CCharString::operator= (requiredHairdo,&xStack_154);
+                                quest:SetStateString("RequiredHairdo", quest:ReadGlobalGameDataString(1104))
                             end
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                 if not me:Speak(hero, "TEXT_QST_014_PHASE1_INTRO3", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e53600 end
@@ -236,7 +233,7 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    if quest:IsWearingHairstyle(hero, requiredHairdo) then
+                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
@@ -393,12 +390,12 @@ function Main(quest, me)
                         end
                         goto LAB_00e5276b
                     end
-                    if not quest:IsWearingHairstyle(hero, requiredHairdo) then
+                    if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
                         goto LAB_00e52a37
                     end
                     goto FLOW_past_lab_00e52a37
                     ::LAB_00e52a37::
-                    if quest:IsWearingHairstyle(hero, requiredHairdo) then
+                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
                         if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then
                             if not quest:IsActiveThreadTerminating() then
                                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -410,7 +407,7 @@ function Main(quest, me)
                             goto LAB_00e5276b
                         end
                     end
-                    if quest:IsWearingHairstyle(hero, requiredHairdo) then
+                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
                         goto LAB_00e52c5e
                     else
                         if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then goto LAB_00e52c5e end
@@ -427,7 +424,7 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00e52c5e
                     ::LAB_00e52c5e::
-                    if not quest:IsWearingHairstyle(hero, requiredHairdo) then
+                    if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
                         if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -548,8 +545,7 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                -- TODO(native): if (*(this + 0x14))[0x67] ~= nil then
-                if false then
+                if quest:GetStateBool("AllHairChanged") then
                     -- TODO(native): bVar6 = IsHeroWearingBeard(quest, me, *(this + 0x14))
                     scratchValue = nil --[[unresolved native value]]
                     local sequence1 = scratchValue and helpers.IsHeroWearingAnyTash(quest, me) and helpers.IsHeroWearingAnyOddHairdo(quest, me)
@@ -711,7 +707,7 @@ end
 -- BB_BeardyBaldyMan.IsHeroWearingBeard (retail 0x00e53670)
 -- E53670: bsim names this body NScript::CV_BordelloScript::IsHeroWearingBeard (a homologous script member); no PDB name
 function IsHeroWearingBeard(quest, me)
-    local flags
+    local flags, predicateResult
     local hero = quest:GetHero()
     flags = 1
     if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_01") then
@@ -728,6 +724,8 @@ function IsHeroWearingBeard(quest, me)
                             flags = 127
                             if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_TRAMP_01") then
                                 flags = 255
+                                predicateResult = false
+                                if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_WATSON_01") then goto LAB_00e53856 end
                             end
                         end
                     end
@@ -735,6 +733,8 @@ function IsHeroWearingBeard(quest, me)
             end
         end
     end
+    predicateResult = true
+    ::LAB_00e53856::
     if flags < 0 then
         flags = flags & 127
     end
@@ -753,11 +753,12 @@ function IsHeroWearingBeard(quest, me)
     if flags & 4 ~= 0 then
         flags = flags & 251
     end
+    return predicateResult
 end
 
 -- BB_BeardyBaldyMan.GetRandomSpeech (retail 0x00e53cb0)
 -- E53CB0: bsim names this body NScript::CV_ArcheryCompetitionScript::CAC_Owner::GetRandomSpeech (a homologous script member); no PDB name
-function GetRandomSpeech(quest, me, param1)
+function GetRandomSpeech(quest, me)
     local predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
@@ -769,11 +770,7 @@ function GetRandomSpeech(quest, me, param1)
         if quest:IsActiveThreadTerminating() then do return "" end; goto FLOW_after_lab_00e53d52 end
         lastRandomSpeechIdx2 = lastRandomSpeechIdx1
         lastRandomSpeechIdx1 = scratchValue
-        if not quest:IsActiveThreadTerminating() then
-            -- TODO(native): CCharString::operator= (&xStack_8,(CCharString *)(*(int *)(this + 0x14) + 0x78 + iVar2 * 4));
-            do return "" end
-            goto FLOW_after_lab_00e53d52
-        end
+        if not quest:IsActiveThreadTerminating() then do return quest:GetStateString("RandomSpeech_" .. scratchValue) end; goto FLOW_after_lab_00e53d52 end
         do return "" end
         goto FLOW_after_lab_00e53d52
         quest:NewScriptFrame(me)

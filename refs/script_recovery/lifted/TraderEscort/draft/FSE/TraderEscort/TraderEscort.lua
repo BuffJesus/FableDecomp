@@ -511,10 +511,10 @@ function WatchForMissionRules(quest)
             pCVar7 = quest:GetActiveQuestName()
             quest:SetQuestAsCompleted(pCVar7, bVar2, bVar14, b3)
             quest:SetCreatureGeneratorsEnabled("Darkwood1", true)
-            quest:SetCreatureGeneratorsEnabled(pCVar7, true)
             quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
             bVar2 = quest:IsRegionLoaded("BarrowFields")
             goto LAB_00e07574
         end

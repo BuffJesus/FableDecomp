@@ -443,7 +443,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -1079,19 +1079,16 @@
             "label LAB_00e5c30a",
             "label LAB_00e5ce57",
             "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "unlifted: iVar9 = CBasicString<char>::Compare(p0_00,\"EXPRESSION_BELCH\");",
-            "unlifted: iVar9 = CBasicString<char>::Compare(p0_00,\"EXPRESSION_FART\");",
             "label LAB_00e5cbfe",
             "unlifted: xStack_138 = xStack_138 + 1;",
-            "unlifted: unaff_EBP = uVar12;",
-            "unlifted: p0_00 = *xStack_13c"
+            "unlifted: unaff_EBP = uVar12;"
           ],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
             "RESOURCE_PrepareResource",
-            "AcquireControl",
+            "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
@@ -1329,6 +1326,8 @@
             "SetStateBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "ENGINE_StrCmp",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -1351,7 +1350,7 @@
             "SetPreferredQuickAccessItem",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 866,
+          "lines": 864,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1678,7 +1677,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 3,
-        "todo": 58
+        "todo": 55
       }
     }
   ],
@@ -1689,6 +1688,6 @@
     "functionSyntaxPassed": 10,
     "fileSyntaxPassed": 2,
     "fileSyntaxChecked": 3,
-    "todo": 58
+    "todo": 55
   }
 }

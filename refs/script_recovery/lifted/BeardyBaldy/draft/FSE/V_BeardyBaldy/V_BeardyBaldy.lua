@@ -179,16 +179,16 @@ function Init(quest)
     quest:SetStateBool("AllHairChanged", false)
     quest:SetStateInt("IncorrectHairComboCount", 0)
     quest:SetStateBool("AttackedByHero", false)
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 0),"TEXT_QST_014_RANDOM_00");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 1),"TEXT_QST_014_RANDOM_10");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 2),"TEXT_QST_014_RANDOM_20");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 3),"TEXT_QST_014_RANDOM_30");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 4),"TEXT_QST_014_RANDOM_40");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 5),"TEXT_QST_014_RANDOM_50");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 6),"TEXT_QST_014_RANDOM_60");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 7),"TEXT_QST_014_RANDOM_70");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 8),"TEXT_QST_014_RANDOM_80");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("RandomSpeech", 9),"TEXT_QST_014_RANDOM_90");
+    quest:SetStateString(("RandomSpeech_" .. 0), "TEXT_QST_014_RANDOM_00")
+    quest:SetStateString(("RandomSpeech_" .. 1), "TEXT_QST_014_RANDOM_10")
+    quest:SetStateString(("RandomSpeech_" .. 2), "TEXT_QST_014_RANDOM_20")
+    quest:SetStateString(("RandomSpeech_" .. 3), "TEXT_QST_014_RANDOM_30")
+    quest:SetStateString(("RandomSpeech_" .. 4), "TEXT_QST_014_RANDOM_40")
+    quest:SetStateString(("RandomSpeech_" .. 5), "TEXT_QST_014_RANDOM_50")
+    quest:SetStateString(("RandomSpeech_" .. 6), "TEXT_QST_014_RANDOM_60")
+    quest:SetStateString(("RandomSpeech_" .. 7), "TEXT_QST_014_RANDOM_70")
+    quest:SetStateString(("RandomSpeech_" .. 8), "TEXT_QST_014_RANDOM_80")
+    quest:SetStateString(("RandomSpeech_" .. 9), "TEXT_QST_014_RANDOM_90")
 end
 
 function OnPersist(quest, context)
@@ -752,7 +752,7 @@ function GoTalkToBeardyBaldy(quest)
 end
 
 function IsHeroWearingAnyTash(quest)
-    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9
+    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9, u_stk_19
     bVar7 = false
     bVar6 = false
     bVar5 = false
@@ -800,12 +800,14 @@ function IsHeroWearingAnyTash(quest)
                         bVar3 = true
                         pCVar9 = quest:GetHero()
                         bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMALL_01")
+                        u_stk_19 = false
                         if not bVar8 then goto LAB_00e53a60 end
                     end
                 end
             end
         end
     end
+    u_stk_19 = true
     ::LAB_00e53a60::
     if bVar3 then
     end
@@ -817,11 +819,11 @@ function IsHeroWearingAnyTash(quest)
     end
     if bVar7 then
     end
-    return CONCAT31((int3)(extraout_EAX >> 8),1)
+    return u_stk_19
 end
 
 function IsHeroWearingAnyOddHairdo(quest)
-    local bVar3, bVar4, bVar5, bVar6, bVar7, pCVar8
+    local bVar3, bVar4, bVar5, bVar6, bVar7, pCVar8, u_stk_15
     bVar6 = false
     bVar5 = false
     bVar4 = false
@@ -856,11 +858,13 @@ function IsHeroWearingAnyOddHairdo(quest)
                     bVar3 = true
                     pCVar8 = quest:GetHero()
                     bVar7 = quest:IsWearingHairstyle(pCVar8, "OBJECT_HERO_HAIR_PLATS_01")
+                    u_stk_15 = false
                     if not bVar7 then goto LAB_00e53c05 end
                 end
             end
         end
     end
+    u_stk_15 = true
     ::LAB_00e53c05::
     if bVar3 then
     end
@@ -870,7 +874,7 @@ function IsHeroWearingAnyOddHairdo(quest)
     end
     if bVar6 then
     end
-    return CONCAT31((int3)(extraout_EAX >> 8),1)
+    return u_stk_15
 end
 
 function GoTalkToBarber(quest)

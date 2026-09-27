@@ -19,7 +19,6 @@ function Main(quest, me)
     bVar5 = not alive
     if not bVar5 then
         x_stk_188 = resources:NewResource()
-        x_stk_188 = 0
         quest:SetCreatureBrain(nil --[[missing]], "BRAIN_PASSIVE_OVERRIDE")
         r1 = me:GetHomePos()
         r1 = nil
@@ -218,8 +217,7 @@ function Main(quest, me)
                 goto LAB_00e403af
             else
                 native_arg_sequence_1 = false
-                -- TODO(native): if (*(this + 0x14))[0x49] ~= nil then
-                if false then
+                if quest:GetStateBool("HeroTricking") then
                     native_arg_sequence_1 = true
                 else
                     native_arg_sequence_1 = false
@@ -459,7 +457,7 @@ function Main(quest, me)
                                         if bVar5 then goto LAB_00e3f729 end
                                         pcVar26 = "CS_BORDELLO_PAYINGFORSEX"
                                         ::FLOW_past_lab_00e3fd35::
-                                        -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                        require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, pcVar26, true)
                                         quest:SetStateBool("HadSex", true)
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
@@ -479,13 +477,13 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar5 = not alive
                                         if bVar5 then goto LAB_00e3f729 end
-                                        -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                        require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG", true)
                                         goto LAB_00e3fd64
                                         ::FLOW_past_lab_00e3fcdb::
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar5 = not alive
                                         if bVar5 then goto LAB_00e3eee8 end
-                                        -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                        require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE", true)
                                     end
                                     ::LAB_00e3fd64::
                                     quest:SetCutsceneSkippable(nil --[[missing]])
@@ -795,7 +793,7 @@ function Main(quest, me)
             if bVar5 then goto LAB_00e403af end
             pcVar26 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE"
             ::LAB_00e3f4a5::
-            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+            require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, pcVar26, true)
             quest:SetCutsceneSkippable(nil --[[missing]])
             __native_entity_state:SetStateBool("PartiedAlready", true)
             quest:SetStateBool("HeroPartying", true)
@@ -813,7 +811,7 @@ function Main(quest, me)
             __native_entity_state:SetStateBool("WalkingDownstairs", true)
             goto LAB_00e3ffe3
             ::FLOW_hoist_lab_00e3fd7c_1::
-            -- TODO(native): iVar9 = CBasicString<char>::Compare(*(void **)CVar3,"HEDWIG");
+            iVar9 = ((CVar3 == "HEDWIG") and 0 or 1)
             if iVar9 ~= 0 then goto LAB_00e3f48a end
             -- LAB_00e3f4e7: (native jump target)
             alive = not quest:IsActiveThreadTerminating()

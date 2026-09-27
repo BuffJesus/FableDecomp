@@ -64,7 +64,7 @@
             "unlifted: CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)(this + 0x94),iV",
             "unlifted: std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,st",
             "unlifted: std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,st",
-            "unlifted: CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), (CCharString *",
+            "unlifted: CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), ENGINE_GlobalG",
             "unlifted: *(undefined1 *)(iVar1 + *(int *)(this + 0xac)) = 0;",
             "unlifted: *(undefined1 *)(iVar1 + *(int *)(this + 0xa0)) = 0;"
           ],
@@ -155,7 +155,7 @@
         },
         {
           "owner": "V_BookCollecting",
-          "function": "null",
+          "function": "NativeThread_00e566f0",
           "address": "0x00e566f0",
           "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
           "evidence": "inventory thread registration",
@@ -170,30 +170,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "unlifted: *xStack_24._8_4_ = *xStack_24._8_4_ + 1;",
-            "unlifted: thing._4_4_ = xStack_24._4_4_;",
-            "unlifted: thing._8_4_ = xStack_24._8_4_;",
-            "unlifted: (**(code **)(*(int *)this_00 + 0x58))();",
-            "unlifted: (**(code **)(*(int *)this_00 + 0x28))();",
-            "unlifted: *xStack_30._8_4_ = *xStack_30._8_4_ + 1;",
-            "unlifted: thing_00._4_4_ = xStack_30._4_4_;",
-            "unlifted: thing_00._8_4_ = xStack_30._8_4_;",
-            "unlifted: (**(code **)(*(int *)this_01 + 0x58))();",
-            "unlifted: (**(code **)(*(int *)this_01 + 0x28))();",
-            "unlifted: *xStack_24._8_4_ = *xStack_24._8_4_ + 1;",
-            "unlifted: thing_01._4_4_ = xStack_24._4_4_;",
-            "unlifted: thing_01._8_4_ = xStack_24._8_4_;",
-            "unlifted: *xStack_30._8_4_ = *xStack_30._8_4_ + 1;",
-            "unlifted: thing_02._4_4_ = xStack_30._4_4_;",
-            "unlifted: thing_02._8_4_ = xStack_30._8_4_;",
-            "unlifted: (**(code **)(*(int *)this_00 + 0x58))();",
-            "unlifted: (**(code **)(*(int *)this_00 + 0x28))();",
-            "unlifted: (**(code **)(*(int *)this_01 + 0x58))(&xStack_28);",
-            "unlifted: (**(code **)(*(int *)this_01 + 0x28))();"
-          ],
+          "todo": [],
           "calls": [
             "ENGINE_ConversationLines",
             "IsActiveThreadTerminating",
@@ -204,24 +181,28 @@
             "RESOURCE_MemberResource",
             "RESOURCE_TryAcquire",
             "EntityTeleportToThing",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
+            "ClearAllActionsIncludingLoopingAnimations",
+            "ClearCommands",
             "RESOURCE_MemberResource",
             "RESOURCE_TryAcquire",
             "EntityTeleportToThing",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
+            "ClearAllActionsIncludingLoopingAnimations",
+            "ClearCommands",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
-            "QUESTTHING_Empty",
             "SetIsPushableByHero",
+            "ClearAllActionsIncludingLoopingAnimations",
+            "ClearCommands",
             "RESOURCE_PrepareResource",
+            "ClearAllActionsIncludingLoopingAnimations",
+            "ClearCommands",
             "RESOURCE_PrepareResource"
           ],
-          "lines": 72,
+          "lines": 52,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -259,19 +240,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "AddLineToConversation: missing textKey (4 args for 5 params)",
-            "unlifted: iVar6 = CBasicString<char>::Compare(p0,\"boy0\");",
-            "unlifted: iVar8 = CBasicString<char>::Compare(p0,\"girl0\");",
-            "unlifted: iVar6 = CBasicString<char>::Compare(*(void **)native_arg_param_2,\"NULL\");",
-            "unlifted: (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,1,true,0,0);",
-            "unlifted: (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,0,true,0,0);",
-            "unlifted: (**(code **)(*(int *)pCVar5 + 0x50))(&xStack_18,0xffffffff,0,0,1,0,true,0,0);",
-            "IsConversationActive: missing conversationID (0 args for 1 params)",
-            "unlifted: p0 = *xStack_14",
-            "unlifted: cVar3 = (**(*pCVar5 + 0x68))()"
-          ],
+          "todo": [],
           "calls": [
             "ENGINE_ConversationString",
             "ENGINE_ConversationString",
@@ -285,20 +254,27 @@
             "AddPersonToConversation",
             "GetHero",
             "AddLineToConversation",
+            "ENGINE_StrCmp",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "IsActiveThreadTerminating",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
+            "PlayAnimation",
             "IsActiveThreadTerminating",
+            "PlayAnimation",
+            "PlayLoopingAnimation",
             "IsConversationActive",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RemoveConversation",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 126,
+          "lines": 123,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -348,16 +324,27 @@
                 "native": "strParam_1",
                 "lua": "native_arg_strParam_1",
                 "type": "CCharString *"
+              },
+              {
+                "native": "strParam_2",
+                "lua": "native_arg_strParam_2",
+                "type": "CCharString *"
+              },
+              {
+                "native": "strParam_3",
+                "lua": "native_arg_strParam_3",
+                "type": "CCharString *"
+              },
+              {
+                "native": "strParam_4",
+                "lua": "native_arg_strParam_4",
+                "type": "CCharString *"
               }
             ],
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "AddNewRumourToCategory: missing rumourTextKey (1 args for 2 params)",
-            "AddGossipVillage: missing villageName (1 args for 2 params)",
-            "AddGossipFactionToCategory: missing factionName (1 args for 2 params)"
-          ],
+          "todo": [],
           "calls": [
             "AddRumourCategory",
             "AddNewRumourToCategory",
@@ -388,8 +375,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "NScript::CV_BookCollectingScript::AddGossip: unproven parent helper receiver or arity",
-            "NScript::CV_BookCollectingScript::AddGossip: unproven parent helper receiver or arity",
             "verify cleanup at LAB_00e559a8 (lifted as early return)",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
             "label LAB_00e559f0",
@@ -465,9 +450,7 @@
             "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
             "unlifted: iVar8 = *xStack_7c",
             "unlifted: pCVar9 = (**(*this_00 + 0x30))()",
-            "unlifted: iVar8 = *this_00",
-            "unlifted: cVar7 = (**(*this_00 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*this_00 + 0x68))()"
+            "unlifted: iVar8 = *this_00"
           ],
           "calls": [
             "SetThingPersistent",
@@ -603,10 +586,12 @@
             "RESOURCE_DestroyMovie",
             "GetHealth",
             "GetHero",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
             "PauseAllNonScriptedEntities",
@@ -620,7 +605,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 523,
+          "lines": 521,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -895,7 +880,7 @@
             "SetStateBool",
             "ENGINE_Concat"
           ],
-          "lines": 362,
+          "lines": 364,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -907,7 +892,7 @@
           "nativeJumps": [
             "goto FLOW_after_lab_00e55dcf;",
             "goto FLOW_after_lab_00e560d5;",
-            "goto FLOW_after_lab_00e560d5_213;",
+            "goto FLOW_after_lab_00e560d5_215;",
             "goto LAB_00e566a1;",
             "if (bVar3) goto LAB_00e560d5_c17;",
             "if (bVar3) goto LAB_00e560d5_c18;",
@@ -917,7 +902,7 @@
           "nativeLabels": [
             "FLOW_after_lab_00e55dcf",
             "FLOW_after_lab_00e560d5",
-            "FLOW_after_lab_00e560d5_213",
+            "FLOW_after_lab_00e560d5_215",
             "LAB_00e560d5_c17",
             "LAB_00e560d5_c18",
             "LAB_00e566a1"
@@ -996,7 +981,6 @@
           "todo": [
             "label LAB_00e5750f",
             "unlifted: CCharString::CCharString((CCharString *)&this,(CCharString *)(*(int *)(this + 0x18) + 0x54",
-            "unlifted: iVar5 = CBasicString<char>::Compare(*(void **)this,\"A\");",
             "unlifted: param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCh",
             "unparsed parameter: std::less<CCharString>"
           ],
@@ -1035,6 +1019,7 @@
             "STRINGMAP_Set",
             "ENGINE_Concat",
             "STRINGMAP_Set",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set"
@@ -1102,16 +1087,10 @@
             "unlifted: cVar6 = (**(*pCVar12 + 0x68))()",
             "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
             "unlifted: iVar7 = *pCVar1",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))(pCVar8)",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))()",
             "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
             "unlifted: iVar7 = *pCVar1",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))(pCVar8)",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))()",
             "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
-            "unlifted: iVar7 = *pCVar1",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))(pCVar8)",
-            "unlifted: cVar6 = (**(*pCVar1 + 0x68))()"
+            "unlifted: iVar7 = *pCVar1"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -1137,25 +1116,31 @@
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating"
           ],
-          "lines": 240,
+          "lines": 234,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1254,11 +1239,7 @@
           "helper_E55C60"
         ],
         "todo": {
-          "helper_E55C60": [
-            "AddNewRumourToCategory: missing rumourTextKey (1 args for 2 params)",
-            "AddGossipVillage: missing villageName (1 args for 2 params)",
-            "AddGossipFactionToCategory: missing factionName (1 args for 2 params)"
-          ]
+          "helper_E55C60": []
         },
         "syntax": {
           "runtime": "Lua 5.4",
@@ -1275,7 +1256,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 224
+        "todo": 177
       }
     }
   ],
@@ -1286,6 +1267,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 224
+    "todo": 177
   }
 }

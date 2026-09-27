@@ -42,7 +42,7 @@ function Init(quest)
     if 0 < quest:GetStateInt("BooksInGame") then
         iVar1 = 0
         repeat
-            -- TODO(native): CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), (CCharString *)(quest:ReadGlobalGameData(0x4d4) + iVar1 * 4));
+            -- TODO(native): CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), quest:ReadGlobalGameDataStringAt(0x4d4, iVar1));
             -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xac)) = 0;
             -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xa0)) = 0;
             iVar1 = iVar1 + 1
@@ -81,7 +81,7 @@ function OnPersist(quest, context)
     quest:SetStateBool("BookOwned", bookOwned)
 end
 
-function null(quest, native_arg_param_1)
+function NativeThread_00e566f0(quest, native_arg_param_1)
     local resources = quest:RetailResources()
     local CVar1, bVar4, iVar2, lVar3, r1, r2, r3, r4, thing, thing_00, thing_01, thing_02, this_00, this_01
     local alive = true
@@ -93,32 +93,22 @@ function null(quest, native_arg_param_1)
     end
     r1 = quest:GetThingWithScriptName("boy0")
     r2 = quest:GetThingWithScriptName("girl0")
-    r3 = quest:GetThingWithScriptName(nil --[[missing]])
-    r4 = quest:GetThingWithScriptName(nil --[[missing]])
+    r3 = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(0x4b0, lVar3))
+    r4 = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(0x4bc, lVar3))
     this_00 = resources:MemberResource("seh_Boy")
     resources:TryAcquire(this_00, r1, 4)
     quest:EntityTeleportToThing(r1, r3, false)
-    if r1._8_4_ ~= nil then
-        -- TODO(native): *xStack_24._8_4_ = *xStack_24._8_4_ + 1;
-    end
-    -- TODO(native): thing._4_4_ = xStack_24._4_4_;
-    thing = nil
-    -- TODO(native): thing._8_4_ = xStack_24._8_4_;
+    thing = r1
     quest:SetIsPushableByHero(thing, false)
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x58))();
-    -- TODO(native): (**(code **)(*(int *)this_00 + 0x28))();
+    resources:ClearAllActionsIncludingLoopingAnimations(this_00)
+    resources:ClearCommands(this_00)
     this_01 = resources:MemberResource("seh_Girl")
     resources:TryAcquire(this_01, r2, 4)
     quest:EntityTeleportToThing(r2, r4, false)
-    if r2._8_4_ ~= nil then
-        -- TODO(native): *xStack_30._8_4_ = *xStack_30._8_4_ + 1;
-    end
-    -- TODO(native): thing_00._4_4_ = xStack_30._4_4_;
-    thing_00 = nil
-    -- TODO(native): thing_00._8_4_ = xStack_30._8_4_;
+    thing_00 = r2
     quest:SetIsPushableByHero(thing_00, false)
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x58))();
-    -- TODO(native): (**(code **)(*(int *)this_01 + 0x28))();
+    resources:ClearAllActionsIncludingLoopingAnimations(this_01)
+    resources:ClearCommands(this_01)
     CVar1 = quest:GetStateBool("ReadingBook")
     native_arg_param_1 = 0
     while (not CVar1 and (native_arg_param_1 < iVar2)) do
@@ -133,25 +123,15 @@ function null(quest, native_arg_param_1)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
-        if r1._8_4_ ~= nil then
-            -- TODO(native): *xStack_24._8_4_ = *xStack_24._8_4_ + 1;
-        end
-        -- TODO(native): thing_01._4_4_ = xStack_24._4_4_;
-        thing_01 = nil
-        -- TODO(native): thing_01._8_4_ = xStack_24._8_4_;
+        thing_01 = r1
         quest:SetIsPushableByHero(thing_01, true)
-        if r2._8_4_ ~= nil then
-            -- TODO(native): *xStack_30._8_4_ = *xStack_30._8_4_ + 1;
-        end
-        -- TODO(native): thing_02._4_4_ = xStack_30._4_4_;
-        thing_02 = nil
-        -- TODO(native): thing_02._8_4_ = xStack_30._8_4_;
+        thing_02 = r2
         quest:SetIsPushableByHero(thing_02, true)
-        -- TODO(native): (**(code **)(*(int *)this_00 + 0x58))();
-        -- TODO(native): (**(code **)(*(int *)this_00 + 0x28))();
+        resources:ClearAllActionsIncludingLoopingAnimations(this_00)
+        resources:ClearCommands(this_00)
         resources:PrepareResource(this_00)
-        -- TODO(native): (**(code **)(*(int *)this_01 + 0x58))(&xStack_28);
-        -- TODO(native): (**(code **)(*(int *)this_01 + 0x28))();
+        resources:ClearAllActionsIncludingLoopingAnimations(this_01)
+        resources:ClearCommands(this_01)
         resources:PrepareResource(this_01)
     end
     ::LAB_00e56993::
@@ -159,7 +139,7 @@ end
 
 function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     local resources = quest:RetailResources()
-    local bVar2, cVar3, iVar6, iVar8, i_stk_10, native_arg_sequence_1, p0, pCVar4, pCVar5, r1, xStack_14, xStack_18, xStack_1c
+    local bVar2, cVar3, iVar6, iVar8, i_stk_10, native_arg_sequence_1, pCVar4, pCVar5, r1, xStack_14, xStack_18, xStack_1c
     local alive = true
     iVar6 = native_arg_param_1 * 0x5c
     iVar8 = native_arg_param_2 * 4
@@ -167,9 +147,9 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     xStack_18 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Dialogue"][(native_arg_param_2) + 1]
     xStack_1c = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Animation"][(native_arg_param_2) + 1]
     native_arg_param_2 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["AnimLoop"][(native_arg_param_2) + 1]
-    r1 = quest:GetThingWithScriptName(nil --[[missing]])
+    r1 = quest:GetThingWithScriptName(xStack_14)
     i_stk_10 = -1
-    iVar6 = ((xStack_18 ~= 0x12393e4) and 1 or 0)
+    iVar6 = ((xStack_18 ~= "NULL") and 1 or 0)
     if iVar6 ~= 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -181,7 +161,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         pCVar4 = quest:GetHero()
         quest:AddPersonToConversation(iVar8, pCVar4)
         pCVar4 = quest:GetHero()
-        quest:AddLineToConversation(iVar8, nil --[[missing]], r1, pCVar4, (xStack_18 ~= 0))
+        quest:AddLineToConversation(iVar8, xStack_18, r1, pCVar4, false)
     end
     pCVar5 = 0x0
     if xStack_14 == nil then
@@ -195,11 +175,9 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         end
         goto FLOW_hoist_lab_00e56b84_1
     else
-        -- TODO(native): p0 = *xStack_14
-        p0 = nil --[[unresolved native value]]
-        -- TODO(native): iVar6 = CBasicString<char>::Compare(p0,"boy0");
+        iVar6 = ((xStack_14 == "boy0") and 0 or 1)
         if iVar6 == 0 then goto LAB_00e56b54 end
-        -- TODO(native): iVar8 = CBasicString<char>::Compare(p0,"girl0");
+        iVar8 = ((xStack_14 == "girl0") and 0 or 1)
         iVar6 = i_stk_10
         if iVar8 == 0 then goto LAB_00e56b84 end
     end
@@ -229,7 +207,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
                 goto LAB_00e56c84
             end
         else
-            -- TODO(native): iVar6 = CBasicString<char>::Compare(*(void **)native_arg_param_2,"NULL");
+            iVar6 = ((native_arg_param_2 == "NULL") and 0 or 1)
             if iVar6 == 0 then goto LAB_00e56c84 end
         end
         goto FLOW_past_lab_00e56c84
@@ -237,19 +215,19 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e56cd0 end
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,1,true,0,0);
+        resources:PlayAnimation(pCVar5, xStack_1c, false, true, false, true, true, false, false)
         goto LAB_00e56c30
         ::FLOW_past_lab_00e56c84::
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00e56cd0 end
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x48))(xStack_1c,0,1,0,0,true,0,0);
-        -- TODO(native): (**(code **)(*(int *)pCVar5 + 0x50))(&xStack_18,0xffffffff,0,0,1,0,true,0,0);
+        resources:PlayAnimation(pCVar5, xStack_1c, false, true, false, false, true, false, false)
+        resources:PlayLoopingAnimation(pCVar5, native_arg_param_2, -1, false, false, true, false, true, false, false)
     end
     ::FLOW_past_lab_00e56b54::
     ::LAB_00e56c30::
     repeat
-        bVar2 = quest:IsConversationActive(nil --[[missing]])
+        bVar2 = quest:IsConversationActive(iVar6)
         native_arg_sequence_1 = false
         if not bVar2 then
             native_arg_sequence_1 = true
@@ -257,8 +235,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
             native_arg_sequence_1 = false
         end
         if native_arg_sequence_1 then
-            -- TODO(native): cVar3 = (**(*pCVar5 + 0x68))()
-            cVar3 = nil --[[unresolved native value]]
+            cVar3 = resources:IsPerformingScriptTask(pCVar5)
             if not cVar3 then
                 native_arg_sequence_1 = true
             else
@@ -276,7 +253,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                quest:RemoveConversation(false)
+                quest:RemoveConversation(iVar6, false)
             end
             break
         end
@@ -287,10 +264,10 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     ::LAB_00e56cd0::
 end
 
-function helper_E55C60(quest, native_arg_strParam_1)
+function helper_E55C60(quest, native_arg_strParam_1, native_arg_strParam_2, native_arg_strParam_3, native_arg_strParam_4)
     quest:AddRumourCategory(native_arg_strParam_1)
-    quest:AddNewRumourToCategory(native_arg_strParam_1, nil --[[missing]])
-    quest:AddGossipVillage(native_arg_strParam_1, nil --[[missing]])
-    quest:AddGossipFactionToCategory(native_arg_strParam_1, nil --[[missing]])
+    quest:AddNewRumourToCategory(native_arg_strParam_1, native_arg_strParam_2)
+    quest:AddGossipVillage(native_arg_strParam_1, native_arg_strParam_3)
+    quest:AddGossipFactionToCategory(native_arg_strParam_1, native_arg_strParam_4)
 end
 

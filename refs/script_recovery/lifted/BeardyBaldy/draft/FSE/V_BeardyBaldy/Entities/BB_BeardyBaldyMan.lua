@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar5, bVar6, bVar8, cVar7, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, iVar13, iVar14, iVar15, iVar16, native_arg_sequence_1, p0, pCVar10, pCVar11, pCVar9, pThing, pcVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r3, r4, r5, r6, r7, r8, r9, this_00, uVar1, xStack_124, xStack_12c, xStack_138, xStack_140, xStack_148, xStack_150, xStack_154, xStack_158, xStack_16c, xStack_170, xStack_174, xStack_178, xStack_184, xStack_188, xStack_18c, xStack_19c, xStack_1ac, xStack_1bc, xStack_1c8, xStack_1cc, xStack_1d4, xStack_1e4, xStack_1fc, xStack_20c, x_stk_108, x_stk_114, x_stk_120, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_b4, x_stk_c, x_stk_c0, x_stk_cc, x_stk_d8, x_stk_e4, x_stk_f0, x_stk_fc
+    local __native_condition_1, bVar5, bVar6, bVar8, cVar7, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, iVar13, iVar14, iVar15, iVar16, native_arg_sequence_1, p0, pCVar10, pCVar11, pCVar9, pThing, pcVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r3, r4, r5, r6, r7, r8, r9, this_00, uVar1, xStack_124, xStack_12c, xStack_138, xStack_140, xStack_148, xStack_150, xStack_154, xStack_158, xStack_16c, xStack_170, xStack_174, xStack_178, xStack_184, xStack_188, xStack_18c, xStack_19c, xStack_1ac, xStack_1bc, xStack_1c8, xStack_1cc, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1fc, xStack_20c, x_stk_108, x_stk_114, x_stk_120, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_b4, x_stk_c, x_stk_c0, x_stk_cc, x_stk_d8, x_stk_e4, x_stk_f0, x_stk_fc
     local alive = true
     bVar5 = false
     bVar8 = false
@@ -59,7 +59,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_20c)
                     return
                 end
-                -- TODO(native): helper_E53CB0(quest, me, &xStack_1e8)
+                xStack_1e8 = helper_E53CB0(quest, me)
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
@@ -83,7 +83,7 @@ function Main(quest, me)
                                 pCVar11 = quest:GetHero()
                                 quest:AddPersonToConversation(iVar14, pCVar11)
                                 pCVar11 = quest:GetHero()
-                                quest:AddLineToConversation(iVar14, "", me, pCVar11, false)
+                                quest:AddLineToConversation(iVar14, xStack_1e8, me, pCVar11, false)
                                 require("V_BeardyBaldy.native_quest_helpers").helper_E53C70(quest, me)
                                 goto LAB_00e51417
                             end
@@ -366,13 +366,13 @@ function Main(quest, me)
                                     xStack_12c = quest:ReadGlobalGameDataString(0x45c)
                                     quest:GiveHeroObject(xStack_12c, -1, false)
                                     xStack_124 = quest:ReadGlobalGameDataString(0x458)
-                                    -- TODO(native): CCharString::operator= (quest:GetStateString("RequiredHairdo"),&xStack_124);
+                                    quest:SetStateString("RequiredHairdo", xStack_124)
                                 else
                                     if bVar8 then goto LAB_00e53600 end
                                     xStack_16c = quest:ReadGlobalGameDataString(0x454)
                                     quest:GiveHeroObject(xStack_16c, -1, false)
                                     xStack_154 = quest:ReadGlobalGameDataString(0x450)
-                                    -- TODO(native): CCharString::operator= (quest:GetStateString("RequiredHairdo"),&xStack_154);
+                                    quest:SetStateString("RequiredHairdo", xStack_154)
                                 end
                                 x_stk_24 = resources:ScriptThing(xStack_20c)
                                 pCVar10 = x_stk_24
@@ -1221,8 +1221,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_20c)
                     return
                 end
-                -- TODO(native): if (*(this + 0x14))[0x67] ~= nil then
-                if false then
+                if quest:GetStateBool("AllHairChanged") then
                     -- TODO(native): bVar6 = helper_E53670(quest, me, *(this + 0x14))
                     bVar6 = nil --[[unresolved native value]]
                     native_arg_sequence_1 = false
@@ -1521,7 +1520,7 @@ function OnPredicateFail(quest, me)
 end
 
 function helper_E53670(quest, me)
-    local bVar3, bVar5, pCVar4
+    local bVar3, bVar5, b_stk_21, pCVar4
     bVar5 = 1
     pCVar4 = quest:GetHero()
     bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_01")
@@ -1553,6 +1552,7 @@ function helper_E53670(quest, me)
                                 bVar5 = 0xff
                                 pCVar4 = quest:GetHero()
                                 bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_WATSON_01")
+                                b_stk_21 = false
                                 if not bVar3 then goto LAB_00e53856 end
                             end
                         end
@@ -1561,6 +1561,7 @@ function helper_E53670(quest, me)
             end
         end
     end
+    b_stk_21 = true
     ::LAB_00e53856::
     if bVar5 < 0 then
         bVar5 = bVar5 & 0x7f
@@ -1583,19 +1584,20 @@ function helper_E53670(quest, me)
     if (bVar5 & 2) ~= 0 then
         bVar5 = bVar5 & 0xfd
     end
-    return
+    return b_stk_21
 end
 
-function helper_E53CB0(quest, me, native_arg_param_1)
-    local bVar1, iVar2
+function helper_E53CB0(quest, me)
+    local bVar1, hiddenStringResult, iVar2, xStack_8
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
     bVar1 = not alive
     repeat
         if bVar1 then
             -- LAB_00e53d10: (native jump target)
+            hiddenStringResult = ""
             -- LAB_00e53d52: (native jump target)
-            return ""
+            return hiddenStringResult
         end
         ::FLOW_after_lab_00e53d52::
         iVar2 = math.random(0, 32767)
@@ -1604,7 +1606,8 @@ function helper_E53CB0(quest, me, native_arg_param_1)
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if bVar1 then
-                do return "" end
+                hiddenStringResult = ""
+                do return hiddenStringResult end
                 goto FLOW_after_lab_00e53d52
             end
             __native_entity_state:SetStateInt("lastRandomSpeechIdx2", __native_entity_state:GetStateInt("lastRandomSpeechIdx1"))
@@ -1612,12 +1615,14 @@ function helper_E53CB0(quest, me, native_arg_param_1)
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if not bVar1 then
-                -- TODO(native): CCharString::operator= (&xStack_8,(CCharString *)(*(int *)(this + 0x14) + 0x78 + iVar2 * 4));
-                do return "" end
+                xStack_8 = quest:GetStateString(("RandomSpeech_" .. iVar2))
+                hiddenStringResult = xStack_8
+                do return hiddenStringResult end
                 goto FLOW_after_lab_00e53d52
             end
+            hiddenStringResult = ""
             -- LAB_00e53d52_c3: (native jump target)
-            do return "" end
+            do return hiddenStringResult end
             goto FLOW_after_lab_00e53d52
         end
         alive = quest:NewScriptFrame(me)

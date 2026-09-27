@@ -160,3 +160,49 @@ def recover_string_returns(functions, stack_words, ordered_sites):
         fn['decompile'] = source[:header.start()] + new_header + body
         recovered.add(int(address, 16))
     return recovered
+
+
+def recover_void_string_returns(functions, stack_words):
+    """A `class CCharString __thiscall X(void)` member (ego_r) whose only native operand is the hidden output:
+    every use of the output is the copy-construction of the result (`CCharString((CCharString *)out, src)`) or
+    `return out;`, and the callee purges exactly that one word (`ret 4`). The output becomes a local result and
+    the function returns it; callers keep the pushed slot, which the lifter binds to the helper's result.
+    (V_BeardyBaldy CAC_Owner::GetRandomSpeech 0x00E53CB0.)"""
+    recovered = set()
+    for address, fn in functions.items():
+        source = fn.get('decompile') or ''
+        if re.search(r'\bhiddenStringResult\b', source):
+            continue
+        comment = re.search(r'/\*\s*\[bsim[^\]]*\]([\s\S]*?)\*/', source)
+        if not comment or not re.search(r'class\s+CCharString\s+__thiscall\s+[\w:]+\(void\)', comment[1]):
+            continue
+        header = re.search(r'(?:int|CCharString\s*\*|undefined4)\s*__thiscall\s+[\w:]+\((?P<receiver>\w+\s*\*this),'
+                           r'\s*(?:int|undefined4|CCharString\s*\*)\s*(?P<out>\w+)\)', source)
+        if not header or stack_words(int(address, 16)) != 1:
+            continue
+        out, body = header['out'], source[header.end():]
+        uses = len(re.findall(r'\b' + re.escape(out) + r'\b', body))
+        ctors = len(re.findall(r'CCharString::CCharString\(\(CCharString \*\)' + re.escape(out) + r',', body))
+        returns = len(re.findall(r'\breturn ' + re.escape(out) + r';', body))
+        if not ctors or not returns or uses != ctors + returns or re.search(r'\breturn\b(?! ' + re.escape(out) + r';)', body):
+            continue
+        body = body.replace('{', '{\n  CCharString hiddenStringResult;', 1)
+        body = re.sub(r'CCharString::CCharString\(\(CCharString \*\)' + re.escape(out) + r',',
+                      'CCharString::CCharString(&hiddenStringResult,', body)
+        body = re.sub(r'\breturn ' + re.escape(out) + r';', 'return hiddenStringResult;', body)
+        # the copy source is a pointer temp set to a local on every path into the shared exit (`other = &xStack_8;
+        # goto LAB_..`): copy at each assignment instead, so each path's value reaches the result
+        source_ptr = re.findall(r'CCharString::CCharString\(&hiddenStringResult,(\w+)\);', body)
+        if len(set(source_ptr)) == 1 and re.search(r'CCharString(?:_bv)? \*' + source_ptr[0] + r';', body):
+            ptr = source_ptr[0]
+            assign = r'\b' + ptr + r' = (?:\(CCharString(?:_bv)? \*\))?(&?\w+);'
+            sets = re.findall(assign, body)
+            if sets and len(re.findall(r'\b' + ptr + r'\b', body)) == len(sets) + len(source_ptr) + 1:
+                body = re.sub(assign, lambda m: f'hiddenStringResult = {m[1].lstrip("&")};', body)
+                body = re.sub(r'[ \t]*CCharString::CCharString\(&hiddenStringResult,' + ptr + r'\);[ \t]*\r?\n', '', body)
+                body = re.sub(r'[ \t]*CCharString(?:_bv)? \*' + ptr + r';[ \t]*\r?\n', '', body)
+        new_header = re.sub(r'^\w+\s*\*?\s*__thiscall', 'CCharString __thiscall', header[0])
+        new_header = new_header[:new_header.index('(') + 1] + header['receiver'] + ')'
+        fn['decompile'] = source[:header.start()] + new_header + body
+        recovered.add(int(address, 16))
+    return recovered

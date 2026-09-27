@@ -538,7 +538,7 @@ function helper_E3E6B0(quest)
 end
 
 function helper_E44A40(quest)
-    local bVar3, bVar5, pCVar4
+    local bVar3, bVar5, b_stk_21, pCVar4
     bVar5 = 1
     pCVar4 = quest:GetHero()
     bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_01")
@@ -570,6 +570,7 @@ function helper_E44A40(quest)
                                 bVar5 = 0xff
                                 pCVar4 = quest:GetHero()
                                 bVar3 = quest:IsWearingHairstyle(pCVar4, "OBJECT_HERO_BEARD_WATSON_01")
+                                b_stk_21 = false
                                 if not bVar3 then goto LAB_00e44c26 end
                             end
                         end
@@ -578,6 +579,7 @@ function helper_E44A40(quest)
             end
         end
     end
+    b_stk_21 = true
     ::LAB_00e44c26::
     if bVar5 < 0 then
         bVar5 = bVar5 & 0x7f
@@ -600,11 +602,11 @@ function helper_E44A40(quest)
     if (bVar5 & 2) ~= 0 then
         bVar5 = bVar5 & 0xfd
     end
-    return
+    return b_stk_21
 end
 
 function helper_E44CC0(quest)
-    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9
+    local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, b_stk_19, pCVar9
     bVar7 = false
     bVar6 = false
     bVar5 = false
@@ -652,12 +654,14 @@ function helper_E44CC0(quest)
                         bVar3 = true
                         pCVar9 = quest:GetHero()
                         bVar8 = quest:IsWearingHairstyle(pCVar9, "OBJECT_HERO_TASHSMALL_01")
+                        b_stk_19 = false
                         if not bVar8 then goto LAB_00e44e30 end
                     end
                 end
             end
         end
     end
+    b_stk_19 = true
     ::LAB_00e44e30::
     if bVar3 then
     end
@@ -669,6 +673,6 @@ function helper_E44CC0(quest)
     end
     if bVar7 then
     end
-    return
+    return b_stk_19
 end
 

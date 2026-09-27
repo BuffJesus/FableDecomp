@@ -285,7 +285,7 @@ end
 
 -- V_Bordello.helper_E44A40 (retail 0x00e44a40)
 function helper_E44A40(quest)
-    local flags
+    local flags, predicateResult
     local hero = quest:GetHero()
     flags = 1
     if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_01") then
@@ -302,6 +302,8 @@ function helper_E44A40(quest)
                             flags = 127
                             if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_TRAMP_01") then
                                 flags = 255
+                                predicateResult = false
+                                if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_WATSON_01") then goto LAB_00e44c26 end
                             end
                         end
                     end
@@ -309,6 +311,8 @@ function helper_E44A40(quest)
             end
         end
     end
+    predicateResult = true
+    ::LAB_00e44c26::
     if flags < 0 then
         flags = flags & 127
     end
@@ -327,18 +331,28 @@ function helper_E44A40(quest)
     if flags & 4 ~= 0 then
         flags = flags & 251
     end
+    return predicateResult
 end
 
 -- V_Bordello.IsHeroWearingTash (retail 0x00e44cc0)
 -- E44CC0: bsim names this body NScript::CV_BordelloScript::IsHeroWearingTash (a homologous script member); no PDB name
 function IsHeroWearingTash(quest)
+    local predicateResult
     local hero = quest:GetHero()
-    if quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSMITH_01") then return end
-    if quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHTRADER_01") then return end
-    if quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHKHG_01") then return end
-    if quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSHERIFF_01") then return end
-    if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHCHINESE_01") then
-        if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSMALL_01") then return end
+    if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSMITH_01") then
+        if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHTRADER_01") then
+            if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHKHG_01") then
+                if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSHERIFF_01") then
+                    if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHCHINESE_01") then
+                        predicateResult = false
+                        if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_TASHSMALL_01") then goto LAB_00e44e30 end
+                    end
+                end
+            end
+        end
     end
+    predicateResult = true
+    ::LAB_00e44e30::
+    return predicateResult
 end
 

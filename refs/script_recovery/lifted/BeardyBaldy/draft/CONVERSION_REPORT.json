@@ -120,18 +120,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 0),\"TEXT_QST_014_RANDOM_00",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 1),\"TEXT_QST_014_RANDOM_10",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 2),\"TEXT_QST_014_RANDOM_20",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 3),\"TEXT_QST_014_RANDOM_30",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 4),\"TEXT_QST_014_RANDOM_40",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 5),\"TEXT_QST_014_RANDOM_50",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 6),\"TEXT_QST_014_RANDOM_60",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 7),\"TEXT_QST_014_RANDOM_70",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 8),\"TEXT_QST_014_RANDOM_80",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"RandomSpeech\", 9),\"TEXT_QST_014_RANDOM_90"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -153,7 +142,17 @@
             "SetStateBool",
             "SetStateBool",
             "SetStateInt",
-            "SetStateBool"
+            "SetStateBool",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString"
           ],
           "lines": 32,
           "syntax": {
@@ -713,7 +712,7 @@
             "GetHero",
             "IsWearingHairstyle"
           ],
-          "lines": 66,
+          "lines": 68,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -753,7 +752,7 @@
             "GetHero",
             "IsWearingHairstyle"
           ],
-          "lines": 50,
+          "lines": 52,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -857,8 +856,6 @@
             "label LAB_00e53541",
             "helper_E53F60: 3 helper operands for 2 parameters",
             "label LAB_00e51633",
-            "unlifted: CCharString::operator= (QUESTSTATE_GetString(\"RequiredHairdo\"),&xStack_124);",
-            "unlifted: CCharString::operator= (QUESTSTATE_GetString(\"RequiredHairdo\"),&xStack_154);",
             "helper_E53F60: 3 helper operands for 2 parameters",
             "label LAB_00e53618",
             "label LAB_00e51eb4",
@@ -871,7 +868,6 @@
             "helper_E53F60: 3 helper operands for 2 parameters",
             "helper_E53670: 1 helper operands for 0 parameters",
             "label LAB_00e52fd3",
-            "unlifted: helper_E53CB0(quest, me, &xStack_1e8)",
             "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
             "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
             "unlifted: QUESTSTATE_SetString(\"RequiredBeard\", &xStack_148)",
@@ -881,7 +877,6 @@
             "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_184)",
             "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_158)",
             "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
-            "unlifted: if (*(this + 0x14))[0x67] ~= nil then",
             "unlifted: bVar6 = helper_E53670(quest, me, *(this + 0x14))"
           ],
           "calls": [
@@ -1019,9 +1014,11 @@
             "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "ENGINE_GlobalGameDataString",
+            "QUESTSTATE_SetString",
             "ENGINE_GlobalGameDataString",
             "GiveHeroObject",
             "ENGINE_GlobalGameDataString",
+            "QUESTSTATE_SetString",
             "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
@@ -1468,7 +1465,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 1493,
+          "lines": 1492,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1643,7 +1640,7 @@
             "GetHero",
             "IsWearingHairstyle"
           ],
-          "lines": 63,
+          "lines": 65,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1666,20 +1663,13 @@
           "path": "FSE/V_BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
           "evidence": "unnamed entity helper",
           "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "int"
-              }
-            ],
-            "returnKind": "number",
+            "parameters": [],
+            "returnKind": "string",
             "bsimVoid": false
           },
           "todo": [
             "label LAB_00e53d10",
             "label LAB_00e53d52",
-            "unlifted: CCharString::operator= (&xStack_8,(CCharString *)(*(int *)(this + 0x14) + 0x78 + iVar2 * 4",
             "label LAB_00e53d52_c3"
           ],
           "calls": [
@@ -1689,10 +1679,11 @@
             "SetStateInt",
             "SetStateInt",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 37,
+          "lines": 41,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1804,7 +1795,7 @@
         "functionSyntaxPassed": 23,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 73
+        "todo": 58
       }
     }
   ],
@@ -1815,6 +1806,6 @@
     "functionSyntaxPassed": 23,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 73
+    "todo": 58
   }
 }

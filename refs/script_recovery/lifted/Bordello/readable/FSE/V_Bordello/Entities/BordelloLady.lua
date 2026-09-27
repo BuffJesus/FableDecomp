@@ -13,8 +13,9 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, predicateResult2, predicateResult, predicateResult22, scratchValue4, health
-    local getHealth, questionAnswer, scratchValue10, getStateString, scratchValue11, line, resource2
-    local pppuVar28, scratchValue16, scratchValue17, getStateInt, getStateInt2, resource
+    local getHealth, questionAnswer, questionAnswer2, getStateString, scratchValue11, line
+    local scratchValue13, resource2, pppuVar28, scratchValue16, scratchValue17, getStateInt
+    local getStateInt2, resource
     if not quest:NewScriptFrame(me) then return end
     resources:NewResource()
     quest:SetCreatureBrain(nil --[[missing]], "BRAIN_PASSIVE_OVERRIDE")
@@ -149,8 +150,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then
         goto LAB_00e403af
     else
-        -- TODO(native): if (*(this + 0x14))[0x49] ~= nil then
-        if false and helpers.IsHeroWearingBeard(quest, me) and not quest:GetStateBool("PlayerOwned") then
+        if quest:GetStateBool("HeroTricking") and helpers.IsHeroWearingBeard(quest, me) and not quest:GetStateBool("PlayerOwned") then
             if not quest:IsActiveThreadTerminating() then
                 health = quest:GetHealth(nil --[[missing]])
                 getHealth = 0.0
@@ -226,12 +226,24 @@ function Main(quest, me)
                             quest:SetCutsceneSkippable(nil --[[missing]])
                             if not quest:GetStateBool("HadSex") then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
-                                -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                if name == nil then
+                                    goto LAB_00e3fd35
+                                else
+                                    if name ~= "HEDWIG" then goto LAB_00e3fd35 end
+                                    scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_HEDWIG"
+                                end
+                                goto FLOW_past_lab_00e3fd35
+                                ::LAB_00e3fd35::
+                                scratchValue13 = "CS_BORDELLO_PAYINGFORSEX"
+                                ::FLOW_past_lab_00e3fd35::
+                                helpers.PlayCutscene(quest, me, scratchValue13, true)
                                 quest:SetStateBool("HadSex", true)
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
-                                if not (name ~= nil and name == "HEDWIG") then
-                                    -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                                if name ~= nil and name == "HEDWIG" then
+                                    helpers.PlayCutscene(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG", true)
+                                else
+                                    helpers.PlayCutscene(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE", true)
                                 end
                             end
                             quest:SetCutsceneSkippable(nil --[[missing]])
@@ -373,24 +385,19 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00e4039f end
         end
         quest:GiveHeroYesNoQuestion(GetLHTSTag(quest, me, "PARTY_FREE_QUESTION"), "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "PARTY_FREE_QUESTION")
-        scratchValue10 = quest:MsgIsQuestionAnsweredYesOrNo()
-        while scratchValue10 < 0 do
+        questionAnswer2 = quest:MsgIsQuestionAnsweredYesOrNo()
+        while questionAnswer2 < 0 do
             if not quest:NewScriptFrame(me) then goto LAB_00e403af end
-            scratchValue10 = quest:MsgIsQuestionAnsweredYesOrNo()
+            questionAnswer2 = quest:MsgIsQuestionAnsweredYesOrNo()
         end
         if not quest:IsActiveThreadTerminating() then
             predicateResult22 = quest:IsActiveThreadTerminating()
-            if scratchValue10 == 1 then
+            if questionAnswer2 == 1 then
                 if predicateResult22 then goto LAB_00e403af end
                 getHealth = quest:GetHealth(nil --[[missing]])
                 if 0.0 < getHealth then
                     line = GetLHTSTag(quest, me, "PARTY_FREE_FOLLOW_ME")
-                    me:Speak(hero, line, 0, false, true, false)
-                    scratchValue10 = me:IsPerformingScriptTask()
-                    while scratchValue10 do
-                        if not quest:NewScriptFrame(me) then goto LAB_00e4039f end
-                        scratchValue10 = me:IsPerformingScriptTask()
-                    end
+                    if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e4039f end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
                 end
                 -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
@@ -412,8 +419,9 @@ function Main(quest, me)
     goto FLOW_past_lab_00e3f48a
     ::LAB_00e3f48a::
     if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
+    scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE"
     ::LAB_00e3f4a5::
-    -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+    helpers.PlayCutscene(quest, me, scratchValue13, true)
     quest:SetCutsceneSkippable(nil --[[missing]])
     partiedAlready = true
     quest:SetStateBool("HeroPartying", true)
@@ -430,9 +438,8 @@ function Main(quest, me)
     walkingDownstairs = true
     goto LAB_00e3ffe3
     ::FLOW_hoist_lab_00e3fd7c_1::
-    -- TODO(native): iVar9 = CBasicString<char>::Compare(*(void **)CVar3,"HEDWIG");
-    if scratchValue10 ~= 0 then goto LAB_00e3f48a end
-    if not quest:IsActiveThreadTerminating() then goto LAB_00e3f4a5 end
+    if nil ~= "HEDWIG" then goto LAB_00e3f48a end
+    if not quest:IsActiveThreadTerminating() then scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG"; goto LAB_00e3f4a5 end
     -- TODO(native): (**(code **)(*piVar1 + 0x5ec))();
     resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
     resources:ReleaseResource(resource2)

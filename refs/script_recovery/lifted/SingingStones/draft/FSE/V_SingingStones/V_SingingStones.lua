@@ -45,10 +45,10 @@ function Init(quest)
     quest:SetStateInt("RudePlayList_0", 2)
     quest:SetStateInt("RudePlayList_1", 3)
     quest:SetStateInt("RudePlayList_3", 0)
-    -- TODO(native): CCharString::operator=((CCharString *)__element("ListText", 0),"A");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("ListText", 1),"B");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("ListText", 2),"C");
-    -- TODO(native): CCharString::operator=((CCharString *)__element("ListText", 3),"D");
+    quest:SetStateString(("ListText_" .. 0), "A")
+    quest:SetStateString(("ListText_" .. 1), "B")
+    quest:SetStateString(("ListText_" .. 2), "C")
+    quest:SetStateString(("ListText_" .. 3), "D")
     quest:SetStateBool("DoorManIntroComplete", false)
     quest:SetStateBool("DoorManAttackedByHero", false)
     quest:SetStateBool("DoorManHasBribe", false)

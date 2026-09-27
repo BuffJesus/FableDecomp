@@ -291,13 +291,12 @@ function WatchForMissionRules(quest)
         ::LAB_00e073cf::
         if not quest:IsActiveThreadTerminating() then
             quest:GiveHeroGold(#quest:GetAllThingsWithScriptName("DarkwoodTrader") * quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderGoldReward))
-            local getActiveQuestName = quest:GetActiveQuestName()
-            quest:SetQuestAsCompleted(getActiveQuestName, true, false, false)
+            quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
             quest:SetCreatureGeneratorsEnabled("Darkwood1", true)
-            quest:SetCreatureGeneratorsEnabled(getActiveQuestName, true)
             quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
+            quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
             isRegionLoaded = quest:IsRegionLoaded("BarrowFields")
             goto LAB_00e07574
         end

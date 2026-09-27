@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, pvVar11, r1, r2, r3, uVar12, u_stk_7c, xStack_8c, xStack_9c
+    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, pvVar11, r1, r2, r3, uVar12, u_stk_7c, xStack_80, xStack_8c, xStack_9c
     local alive = true
     u_stk_7c = 0
     xStack_9c = resources:NewResource()
@@ -231,7 +231,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive
                                     if not bVar4 then
-                                        -- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));
+                                        xStack_80 = quest:GetStateString(("RandomGuideResponse_" .. iVar6))
                                         goto LAB_00ee5fd7
                                     end
                                 end
@@ -247,7 +247,7 @@ function Main(quest, me)
                             pCVar8 = quest:GetHero()
                             quest:AddPersonToConversation(iVar7, pCVar8)
                             pCVar8 = quest:GetHero()
-                            quest:AddLineToConversation(iVar7, "", me, pCVar8, false)
+                            quest:AddLineToConversation(iVar7, xStack_80, me, pCVar8, false)
                             quest:SetTimer(i_stk_a0, quest:ReadGlobalGameData(0x8e0))
                         end
                         resources:PrepareResource(xStack_9c)
@@ -368,7 +368,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00ee6558 end
-                        -- TODO(native): CCharString::CCharString(&xStack_58,(CCharString *)(*(int *)(this + 0x14) + 0x128 + iVar6 * 4));
+                        -- TODO(native): CCharString::CCharString(&xStack_58,quest:GetStateString(("RandomGuideResponse_" .. iVar6)));
                         if not quest:GetStateBool("TourGuideKilled") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive

@@ -47,14 +47,14 @@ function Main(quest, me)
     xStack_174 = resources:NewResource()
     resources:PrepareResource(xStack_174)
     xStack_164 = p0
-    cVar4 = me:AcquireControl(4)
+    cVar4 = resources:TryAcquire(xStack_174, me, 4)
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00e3e301 end
         xStack_12c = p0
-        cVar4 = me:AcquireControl(4)
+        cVar4 = resources:TryAcquire(xStack_174, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -92,7 +92,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e3bde9
             ::LAB_00e3bde9::
             resources:SetString(resources:MemberStringMap("csargs"), "$LADYINTRO", pcVar18)
-            -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+            require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_INTRO", false)
             __native_entity_state:SetStateBool("DoneIntro", true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_160)
@@ -200,8 +200,7 @@ function Main(quest, me)
             bVar3 = not alive
             if bVar3 then goto LAB_00e3e2ef end
             native_arg_sequence_1 = false
-            -- TODO(native): if (*(this + 0x14))[0x49] == nil then
-            if false then
+            if not quest:GetStateBool("HeroTricking") then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
@@ -342,7 +341,7 @@ function Main(quest, me)
                         xStack_cc = resources:StartMovie("")
                         quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): NScript::CV_BordelloScript::PlayCutscene(*(CV_BordelloScript **)(this + 0x14));
+                        require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_MAGICIAN_LEAVES", false)
                         quest:SetStateBool("PlayerOwned", true)
                         pCVar8 = quest:GetThingWithScriptName("BordelloHouse")
                         quest:SetHouseOwnedByPlayer(pCVar8, true, true)
@@ -353,8 +352,7 @@ function Main(quest, me)
                     goto LAB_00e3e2ef
                 end
                 native_arg_sequence_2 = false
-                -- TODO(native): if (*(this + 0x14))[0x49] == nil then
-                if false then
+                if not quest:GetStateBool("HeroTricking") then
                     native_arg_sequence_2 = true
                 else
                     native_arg_sequence_2 = false

@@ -1,0 +1,55 @@
+diff --git a/FableScriptExtender/LuaQuestHost.cpp b/FableScriptExtender/LuaQuestHost.cpp
+index d59ae90..d3fe4c5 100644
+--- a/FableScriptExtender/LuaQuestHost.cpp
++++ b/FableScriptExtender/LuaQuestHost.cpp
+@@ -2,6 +2,7 @@
+ #include "LuaQuestState.h"
+ #include "LuaManager.h"
+ #include "Autopilot.h"
++#include "NoviUnitBindings.h"
+ #include "GameInterface.h"
+ 
+ constexpr int MAX_QUEST_THREADS = 20;
+@@ -98,6 +99,8 @@ LuaQuestHost::~LuaQuestHost() {
+     // (2026-09-20 v6 run: crash on the first cutscene command after
+     // GuildTrainingWoodsMelee was deleted, ScorpionHome's host still registered).
+     LuaManager::GetInstance().UnregisterQuestEntityScripts(m_pQuestState.get());
++    // the script object's members (quest:RetailResources() scope, member lists) die with it, as in retail
++    NoviReleaseUnitData(m_pQuestState.get());
+     if(m_nativeLifetime==NativeQuestLifetime::NewOakValeIntro) {
+         // VM finalizers may borrow quest state: release the VM while it is live.
+         m_env=sol::environment();
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index e41d905..e9f91da 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -37,10 +37,27 @@ struct NoviUnitQuestData {
+     std::shared_ptr<LuaRetailResources> resources;
+ };
+ 
+-inline NoviUnitQuestData& NoviUnitData(LuaQuestState& self) {
++inline std::map<LuaQuestState*, NoviUnitQuestData>& NoviUnitTable() {
+     // Quest states live for the quest instance; a side table keeps this header self-contained.
+     static std::map<LuaQuestState*, NoviUnitQuestData> table;
+-    return table[&self];
++    return table;
++}
++
++inline NoviUnitQuestData& NoviUnitData(LuaQuestState& self) {
++    return NoviUnitTable()[&self];
++}
++
++// The quest ends (~LuaQuestHost, after its threads and entity scripts are gone): release what its script object
++// owned -- retail destroys the seh_* member resources, csargs and member vectors in the script's destructor
++// (CV_BordelloScript 0x00E46A50), which also releases the control those resources held.
++inline void NoviReleaseUnitData(LuaQuestState* state) {
++    auto& table = NoviUnitTable();
++    auto found = table.find(state);
++    if (found == table.end()) return;
++    if (found->second.resources) {
++        try { found->second.resources->Close(); } catch (...) {}
++    }
++    table.erase(found);
+ }
+ 
+ // A copy of a thing handle owned by Lua/state storage (retail CScriptThing copy constructor + destructor).

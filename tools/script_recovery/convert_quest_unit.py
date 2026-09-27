@@ -583,7 +583,7 @@ def _text_order_sites(text, fn):
         while j < len(text) and depth:
             depth += {'(': 1, ')': -1}.get(text[j], 0)
             j += 1
-        heads.append((m.start(), m.end(), j - 1, ('ptr', int(bases.pop(), 16) + 4 * int(m.group('index'), 16)), False))
+        heads.append((m.start(), m.end(), j - 1, ('ptr', int(bases.pop(), 16) + 4 * int(m.group('index'), 16), 4 * int(m.group('index'), 16)), False))
     labels = {c['currentName'] for c in fn.get('calls', []) if c.get('currentName')}
     for label in labels:
         spans = _call_spans(text, label)
@@ -619,6 +619,11 @@ def _text_order_sites(text, fn):
         if entry is None:
             return None
         site, is_vtable = entry
+        if is_vtable and not vtable and isinstance(key, tuple) and len(key) == 3 and site.get('slot') is not None                 and int(site['slot'], 16) == key[2]:
+            # the local Ghidra saw loaded with a vtable's address is really the receiver's vtable (`call [esi+0x118]`
+            # printed `(*(code *)ppuStack_308[0x46])()`, V_Bordello Magicman Main 0x00E414A0): the export's vtable
+            # site when the index is its slot -- the whole function's pairing failed on this one head
+            vtable, key = True, hex(key[2])
         if vtable and not is_vtable:
             # a direct call through a local Ghidra saw loaded with a vtable's address, printed as a vtable head
             # (`local_30._0_4_ = &PTR_..._01238c8c;` then `(**(code **)(local_30._0_4_ + 300))()`, MakeTraderComment
@@ -987,6 +992,13 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
             plus = int(m.group('plus'), 0) if m.group('plus') else 0
             by_value = not m.group('amp') and not (m.group('cast') and '*' in m.group('cast')) and not m.group('plus')
             slot = ((slots[k][1] if slots[k][1] is not None else slots[k][0]) if by_value else slots[k][0]) if slots is not None and k < len(slots) else None
+            # an address operand the export places in the caller's own stack parameters (+4k = param_k of a
+            # __thiscall): Ghidra drifted it onto a local (V_BookCollecting DoConversation 0x00E56C22 passes the
+            # anim-loop string it built in place over param_2 -- `lea ecx,[esp+0x3c]` -- printed as `&local_18`)
+            if (slot is not None and slot > 0 and slot % 4 == 0 and m.group('amp') and not plus
+                    and re.search(r'\bparam_' + str(slot // 4) + r'\b', text)):
+                out[k] = (m.group('cast') or '') + '&param_' + str(slot // 4)
+                continue
             addr = slot if slot is not None and slot < 0 else None
             if addr is not None and not plus and name in canonical:
                 addr = canonical[name]
@@ -1191,8 +1203,11 @@ class UnitConverter:
         tu = json.loads(Path(tu_path).read_text(encoding='utf-8-sig'))
         self.by_address = {f['address'].lower(): f for f in tu['functions']}
         self.name_by_value_string_parameters()
+        self.pass_by_value_string_scalars()
         from tools.script_recovery.native_string_returns import recover_string_returns
         self.hidden_string_returns = recover_string_returns(self.by_address, callee_stack_words, _text_order_sites)
+        from tools.script_recovery.native_string_returns import recover_void_string_returns
+        self.hidden_string_returns |= recover_void_string_returns(self.by_address, callee_stack_words)
         self.code_range = tuple(int(a, 16) for a in tu['range']) if tu.get('range') else None
         self.hidden_thing_returns = {int(f['address'], 16) for f in tu['functions']
                                      if re.search(r'\*in_stack_\w+ = &PTR_\w*_01238c8c;', f.get('decompile') or '')}
@@ -1351,8 +1366,17 @@ class UnitConverter:
             header = re.search(r'^(\w[\w :<>,*]*?\b\w+)\((\w[\w *]*?\*?\s*\w+)\)\s*\r?\n\s*\{', text, re.M)
             if not header:
                 continue
-            fn['decompile'] = (text[:header.start(2)] + header.group(2) + ',CCharString *strParam_1' + text[header.end(2):]
-                               ).replace('(CCharString_bv *)&stack0x00000004', 'strParam_1').replace('&stack0x00000004', 'strParam_1')
+            # K strings by value (`&stack0x00000004` .. `&stack0x00000010`: V_BookCollecting AddGossip 0x00E55C60 takes
+            # category, text key, village, faction -- only the first was recovered)
+            count = 1
+            while f'&stack0x{4 * (count + 1):08x}' in text:
+                count += 1
+            params = ''.join(f',CCharString *strParam_{k}' for k in range(1, count + 1))
+            body = text[:header.start(2)] + header.group(2) + params + text[header.end(2):]
+            for k in range(1, count + 1):
+                slot = f'&stack0x{4 * k:08x}'
+                body = body.replace(f'(CCharString_bv *){slot}', f'strParam_{k}').replace(slot, f'strParam_{k}')
+            fn['decompile'] = body
             target = int(address, 16)
             for caller in self.by_address.values():
                 labels = {c['currentName'] for c in caller.get('calls', []) if c.get('currentName') and int(c.get('target', '0'), 16) == target}
@@ -1362,15 +1386,95 @@ class UnitConverter:
                         # that field (TraderToRescue 0x00DFE0F0's outro: `Helper(*(undefined4 *)(this + 0x14))`,
                         # the same slot its neighbours write -- the call kept its receiver and lost the string,
                         # so "CS_TRADERCON_GOOD_OUTRO" never reached the Lua, 2026-09-22)
-                        pat = re.compile(r'^(?P<ctor>[ \t]*CCharString::CCharString\s*\(\(CCharString \*\)&stack0x[0-9a-f]{8},(?P<lit>"[^"]*"|\w+),-1\);[ \t]*\r?\n)'
+                        one = r'[ \t]*CCharString::CCharString\s*\(\(CCharString \*\)&stack0x[0-9a-f]{8},\s*(?:"[^"]*"|\w+),-1\);[ \t]*\r?\n'
+                        pat = re.compile(r'^(?P<ctor>(?:' + one + r'){' + str(count) + r'})'
                                          r'(?P<ind>[ \t]*)' + re.escape(spelling).replace('::', r'\s*::\s*')
-                                         + r'\s*\((?P<recv>this|\*\(undefined4 \*\)\((?:\(int\))?this \+ (?:0x[0-9a-f]+|\d+)\))\);', re.M)
-                        # the temporary's constructor stays: every printed call keeps its place in the callOrder pairing
-                        caller['decompile'], n = pat.subn(
-                            lambda m: f'{m.group("ctor")}{m.group("ind")}{spelling}({m.group("recv")},{m.group("lit")});',
-                            caller.get('decompile') or '')
+                                         + r'\s*\((?P<recv>this|\*\((?:undefined4 \*|\w+ \*\*)\)\((?:\(int\))?this \+ (?:0x[0-9a-f]+|\d+)\))\);', re.M)
+
+                        def pass_literals(m):
+                            # the lowest outgoing slot is the first parameter
+                            made = re.findall(r'&stack0x([0-9a-f]{8}),\s*("[^"]*"|\w+),-1', m.group('ctor'))
+                            lits = [lit for _, lit in sorted(made, key=lambda p: int(p[0], 16))]
+                            return f'{m.group("ctor")}{m.group("ind")}{spelling}({m.group("recv")},{",".join(lits)});'
+                        # the temporaries' constructors stay: every printed call keeps its place in the callOrder pairing
+                        caller['decompile'], n = pat.subn(pass_literals, caller.get('decompile') or '')
                         if n:
                             break
+
+    def pass_by_value_string_scalars(self):
+        """A member taking `(class CCharString, bool)` (ego_r) that Ghidra did type (`this, undefined4 param_2, char
+        param_3`), called with only the receiver printed: each caller builds the string in the outgoing slot
+        (`CCharString::CCharString((CCharString *)&stack0x..,"CS_BORDELLO_KICKEDOUT",-1);`) and pushed the bool
+        before it (`push 0` / `push 1` / a callee-saved register written once, `xor edi,edi`). The call gets both
+        operands back. (V_Bordello PlayCutscene 0x00E3E720: every entity cutscene lost its macro name.)"""
+        try:
+            from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+            from capstone.x86 import X86_OP_IMM, X86_OP_REG
+        except ImportError:
+            return
+        cs = Cs(CS_ARCH_X86, CS_MODE_32)
+        cs.detail = True
+        targets = set()
+        for address, fn in self.by_address.items():
+            comment = re.search(r'/\*\s*\[bsim[^\]]*\]([\s\S]*?)\*/', fn.get('decompile') or '')
+            if (comment and re.search(r'__thiscall\s+[\w:]+\(class\s+CCharString,\s*bool\)', comment[1])
+                    and re.search(r'__thiscall\s+[\w:]+\(\w+\s*\*this,\s*undefined4\s+\w+,\s*(?:char|bool)\s+\w+\)', fn['decompile'])):
+                targets.add(int(address, 16))
+        if not targets:
+            return
+        ctor = r'CCharString::CCharString\s*\(\(CCharString \*\)&stack0x[0-9a-f]{8},\s*(?P<lit>"[^"]*"|\w+),\s*-1\);\s*'
+        for caller in self.by_address.values():
+            sites = [c for c in caller.get('calls', []) if int(c.get('target', '0'), 16) in targets]
+            if not sites:
+                continue
+            text = caller.get('decompile') or ''
+            from tools.script_recovery.native_string_returns import _target_sites
+            entries = [(a, e, args, site, name, vt) for target in targets
+                       for a, e, args, site, name, vt in _target_sites(text, caller, [c for c in sites if int(c['target'], 16) == target])]
+            size = int(caller['bodyEndExclusive'], 16) - int(caller['address'], 16) if caller.get('bodyEndExclusive') else 0
+            if not size:
+                continue
+            insns = list(cs.disasm(self.rdata.bytes_at(int(caller['address'], 16), size) or b'', int(caller['address'], 16)))
+            index = {ins.address: i for i, ins in enumerate(insns)}
+
+            def last_write(i, reg):
+                # the nearest earlier write in address order: a callee-saved register VC7.1 keeps as a zero/one
+                # constant (`xor edi,edi` in the prologue, re-zeroed later in the body)
+                for ins in reversed(insns[:i]):
+                    if not (ins.operands and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg):
+                        continue
+                    if ins.mnemonic in ('push', 'cmp', 'test'):
+                        continue
+                    if ins.mnemonic == 'xor' and ins.operands[1].type == X86_OP_REG and ins.reg_name(ins.operands[1].reg) == reg:
+                        return 0
+                    if ins.mnemonic == 'mov' and ins.operands[1].type == X86_OP_IMM:
+                        return ins.operands[1].imm
+                    return None
+                return None
+            edits = []
+            for a, e, args, site, key, vtable in entries:
+                if vtable or int(site.get('target', '0'), 16) not in targets or len(args) != 1:
+                    continue
+                head = re.search(ctor + r'(?:[\w:]+\s*)$', text[:a - 1]) if text[a - 1] == '(' else None
+                i = index.get(int(site['site'], 16))
+                if not head or i is None or i < 7:
+                    continue
+                # push BOOL; [test/jcc]; push ecx; mov ecx,esp; push -1; push lit; call ctor; mov ecx,[..]; call target
+                if [f'{x.mnemonic} {x.op_str}' for x in insns[i - 6:i - 4]] != ['push ecx', 'mov ecx, esp']:
+                    continue
+                k = i - 7
+                while k > 0 and (insns[k].mnemonic.startswith('j') or insns[k].mnemonic in ('test', 'cmp')):
+                    k -= 1
+                if insns[k].mnemonic != 'push':
+                    continue
+                op = insns[k].operands[0]
+                value = op.imm if op.type == X86_OP_IMM else last_write(k, insns[k].reg_name(op.reg)) if op.type == X86_OP_REG else None
+                if value not in (0, 1):
+                    continue
+                edits.append((a, e, f'{args[0]},{head["lit"]},{"true" if value else "false"}'))
+            for a, e, replacement in sorted(edits, reverse=True):
+                text = text[:a] + replacement + text[e:]
+            caller['decompile'] = text
 
     APPEND_CSTRING = 0x99F600    # CCharString::AppendCString(dest, src, const char*) — __fastcall + one stack operand
 
@@ -1854,6 +1958,12 @@ class UnitConverter:
                         if call.get('currentName') and address in helpers:
                             for label in (call['currentName'], call['currentName'].split('::')[-1]):
                                 candidates.setdefault(label, set()).add(address)
+                    # a label bsim put on two quest helpers (`IsHeroWearingBeard` on 0x00E3E320 and its tash twin, V_Bordello
+                    # Magicman Main) is printed per site as `<label>__at<target>` by disambiguate_call_labels
+                    for label, addresses in list(candidates.items()):
+                        if len(addresses) > 1:
+                            for address in addresses:
+                                candidates.setdefault(f'{label}__at{int(address, 16):x}', set()).add(address)
                     for label, addresses in candidates.items():
                         if len(addresses) != 1:
                             continue
@@ -1896,6 +2006,7 @@ class UnitConverter:
                 spec_l.code_range = self.code_range
                 spec_l.native_address = int(fn['address'], 16)
                 spec_l.calls = fn.get('calls', [])
+                spec_l.indirect_calls = fn.get('indirectCalls', [])
                 if signature.get('bsimVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
@@ -1998,6 +2109,8 @@ class UnitConverter:
                 if name not in shared_inputs:
                     continue
                 source, fn, signature, aliases = shared_inputs[name]
+                if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
+                    print(f'===== LOWERED (shared) {name}', source, sep='\n', file=sys.stderr)
                 shared_lifter = Lifter(self.manifest, quest_state, 'quest', False, package, self.rdata,
                                        callee_names=aliases, thing_sigs=thing_signatures(self.things),
                                        live_termination=True, execution_entity=True, native_gotos=True,
