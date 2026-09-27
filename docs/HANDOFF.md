@@ -1,5 +1,10 @@
 # Lua recovery handoff - 2026-09-26
 
+**Crash resume (2026-09-27):** BookOwned's retail +0xAC byte-vector offset now comes from its named
+OnPersist transfer, so it is no longer persisted as a scalar bool (honest TODO; binding missing). Only
+BookCollecting changes. 54 committed unit JSONs lag the builder (stale regeneration); reverted, queued.
+See [marathon third checkpoint](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md).
+
 **Marathon checkpoint (2026-09-27):** saved scalar/handle copies now survive dead-store
 cleanup. BookCollecting conversation handles are preserved across animation branches.
 144 tests / 28 subtests pass; 29-unit A/B reviewed; affected smoke has no new failing

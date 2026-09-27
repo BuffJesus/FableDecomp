@@ -76,9 +76,7 @@ function OnPersist(quest, context)
     lastBookRequested = quest:PersistTransferInt(context, "LastBookRequested", lastBookRequested)
     quest:SetStateInt("LastBookRequested", lastBookRequested)
     -- TODO(native): quest:PersistTransfer(context, "BookDonated", ...)  -- vector<bool,std::allocator<bool>_> member `BookDonated` (callee 0xcdcf80); binding missing
-    local bookOwned = quest:GetStateBool("BookOwned") or false
-    bookOwned = quest:PersistTransferBool(context, "BookOwned", bookOwned)
-    quest:SetStateBool("BookOwned", bookOwned)
+    -- TODO(native): quest:PersistTransfer(context, "BookOwned", ...)  -- vector<bool,std::allocator<bool>_> member `BookOwned` (callee 0xcdcf80); binding missing
 end
 
 function BookReaction(quest, native_arg_param_1)

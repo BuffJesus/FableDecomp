@@ -112,8 +112,7 @@
           },
           "todo": [
             "persist transfer: `BookDonated` is a `vector<bool,std::allocator<bool>_>` member (BookDonated, this + 0xa0); no PersistTransfer list binding (callee 0xcdcf80 is Transfer<vector>, 3 operands)",
-            "persist transfer: kind of `BookOwned` from the bsim template argument `signed_char` (callee 0xcdcf80 not FSE-typed)",
-            "persist transfer: quest member at this + 0xac has no PDB name; keyed by the transfer name `BookOwned`"
+            "persist transfer: `BookOwned` is a `vector<bool,std::allocator<bool>_>` member (BookOwned, this + 0xac); no PersistTransfer list binding (callee 0xcdcf80 is Transfer<vector>, 3 operands)"
           ],
           "calls": [
             "GetStateBool",
@@ -139,12 +138,9 @@
             "SetStateInt",
             "GetStateInt",
             "PersistTransferInt",
-            "SetStateInt",
-            "GetStateBool",
-            "PersistTransferBool",
-            "SetStateBool"
+            "SetStateInt"
           ],
-          "lines": 28,
+          "lines": 26,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1252,7 +1248,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 173
+        "todo": 172
       }
     }
   ],
@@ -1263,6 +1259,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 173
+    "todo": 172
   }
 }

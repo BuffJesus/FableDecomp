@@ -275,6 +275,48 @@ class DebugImage:
         return found
 
 
+
+def persisted_container_offsets(rows, fields, function):
+    """Prefer a uniquely named native transfer over estimated container layout."""
+    strings = {int(s['address'], 16): s.get('value') for s in function.get('strings', [])}
+    source = function.get('decompile') or ''
+    pattern = re.compile(r'(?P<label>CPersistContext::Transfer<[^;]+?>)\s*\([^,;]+,\s*(?P<name>0x[0-9a-fA-F]+|"[^"\n]*"),\s*(?:\(int\))?this \+ (?P<offset>0x[0-9a-fA-F]+)\);')
+    matches = list(pattern.finditer(source))
+    proven = {}
+    for label in {m['label'] for m in matches}:
+        uses = [m for m in matches if m['label'] == label]
+        all_uses = list(re.finditer(re.escape(label) + r'\s*\(', source))
+        calls = [c for c in function.get('calls', []) if c.get('currentName') == label]
+        if len(all_uses) != len(calls):
+            continue
+        by_start = {m.start(): call for m, call in zip(all_uses, calls)}
+        for m in uses:
+            call = by_start[m.start()]
+            name = m['name'][1:-1] if m['name'].startswith('"') else strings.get(int(m['name'], 16))
+            if name:
+                proven.setdefault(name, []).append((int(m['offset'], 16), call))
+    occupied = {int(k, 16) for k in fields if k.startswith('0x')}
+    out = []
+    for row in rows:
+        copies = proven.get(row['name'], [])
+        offsets = {offset for offset, _ in copies}
+        if ('vector<' not in row['type'] or len(offsets) != 1 or
+                sum(r['name'] == row['name'] for r in rows) != 1 or
+                next(iter(offsets)) in occupied or
+                any(int(r['offset'], 16) == next(iter(offsets)) for r in rows if r is not row)):
+            out.append(row)
+            continue
+        offset = next(iter(offsets))
+        if offset == int(row['offset'], 16):
+            out.append(row)
+            continue
+        call = copies[0][1]
+        out.append(dict(row, estimatedOffset=row['offset'], offset=hex(offset), offsetEvidence={
+            'kind': 'named native persistence transfer', 'function': function['address'],
+            'site': call['site'], 'callee': call['target']}))
+    return out
+
+
 def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, layouts, package=None, typed_by_address=None):
     class_name = f'C{script}Script'
     qualified = f'NScript::{class_name}'
@@ -452,6 +494,9 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
     for row in unmatched:
         functions[f'helper_{row["address"][2:].lstrip("0").upper()}'] = {'evidence': 'unmatched retail helper', **row}
     fields, skipped, things = class_fields(layouts, class_name, delta=QUEST_RETAIL_DELTA)
+    persist = functions.get('OnPersist', {}).get('address', '').lower()
+    persist_function = (typed_by_address or tu_by_address).get(persist, {})
+    skipped = persisted_container_offsets(skipped, fields, persist_function)
     # a vector<CConversation> member that exactly one call fills from the global definitions and nothing else
     # passes by address: an unmodified snapshot of static data (V_BookCollecting Init 0x00E54990:
     # `std_vector_CConversation_Assign(this + 0x4c, DAT_0143e90c + 0x4c8)`, read by BookReaction / DoConversation)

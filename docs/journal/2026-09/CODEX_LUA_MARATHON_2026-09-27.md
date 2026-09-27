@@ -65,3 +65,31 @@ Scratch: `work/codex_lua_literals_20260927/`.
   DoConversation failures are nil global-conversation data in the smoke harness.
 - Corpus audit still has 369 files, zero syntax failures and 1,844 unresolved
   diagnostics. No installation or game launch; packaging follows the metadata pass.
+
+## Third checkpoint: container offsets from native persistence (resumed after a crash)
+
+The debug-PDB layout estimated BookOwned at retail +0xB0 (VC7.1 `vector<bool>` size),
+which collided with nothing and let OnPersist's `CPersistContext::Transfer` at
+0x00E54981 (callee 0x00CDCF80, `this + 0xAC`) be misread as a scalar bool
+(`GetStateBool/PersistTransferBool/SetStateBool`). Retail stores both flag vectors as
+12-byte `vector<unsigned char>` (BookDonated +0xA0, BookOwned +0xAC; Init resizes
+`this + 0xAC` as `vector<unsigned_char>`).
+
+`quest_unit_evidence.persisted_container_offsets` now moves a vector member to the
+offset of its uniquely named native transfer, only when the name, owner (`this`),
+offset and call-to-site pairing are all unambiguous and no scalar or other member
+sits there. The unit JSON keeps `estimatedOffset` and an `offsetEvidence` record.
+
+- `tools/script_recovery/test_persist_container_offsets.py`: 8 pass (six ambiguity
+  cases leave rows untouched; the real BookCollecting OnPersist is checked).
+- Generated OnPersist now emits an honest `TODO(native)` for BookOwned (byte-vector
+  binding missing) instead of a wrong scalar-bool round trip.
+- Scratch: `work/codex_lua_persist_20260927/`. No installation or game launch.
+- A/B: all 29 units' evidence rebuilt with the new pass; `offsetEvidence` (the only
+  thing the pass adds) appears in V_BookCollecting alone. Regenerated BookCollecting:
+  only OnPersist changes (draft + readable, both parse; TODO count 173 -> 172).
+- **Finding, not promoted:** a full rebuild of the committed unit JSONs shows drift in
+  54 other files from earlier committed builder changes never regenerated into them
+  (e.g. empty `definitionSnapshots`, Bordello `BooksPreviouslyOpened_*` slot fix,
+  `resourceFields`, named `NativeThread_*` spawns). Those were reverted to HEAD here;
+  regenerate + corpus A/B them as their own pass before the next bundle.

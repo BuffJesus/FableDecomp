@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "book_collecting",
- "draft": "work\\codex_lua_literals_20260927\\after",
+ "draft": "refs\\script_recovery\\lifted\\BookCollecting\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -5225,7 +5225,7 @@
     },
     {
      "function": "BookReaction",
-     "sourceLine": 83,
+     "sourceLine": 81,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",
@@ -5320,7 +5320,7 @@
     },
     {
      "function": "helper_E569D0",
-     "sourceLine": 138,
+     "sourceLine": 136,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",
@@ -5700,7 +5700,7 @@
     },
     {
      "function": "helper_E55C60",
-     "sourceLine": 263,
+     "sourceLine": 261,
      "locals": {
       "native_arg_strParam_1": {
        "name": "strParam1",
@@ -5933,7 +5933,7 @@
      },
      "OnPersist": {
       "rewrites": {
-       "splitLocals": 9,
+       "splitLocals": 8,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -5941,7 +5941,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 18,
+       "inlinedTemporaries": 16,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -5956,7 +5956,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 5,
+       "constantConditions": 4,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -5974,14 +5974,14 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 9,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 30,
+       "lines": 28,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -6215,7 +6215,7 @@
     "lines": 186,
     "counts": {
      "genericTemporaries": 27,
-     "unresolvedDiagnostics": 8,
+     "unresolvedDiagnostics": 9,
      "gotos": 10,
      "nativeNames": 17
     },
@@ -6285,6 +6285,11 @@
       "line": 56,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PersistTransfer(context, \"BookDonated\", ...)  -- vector<bool,std::allocator<bool>_> member `BookDonated` (callee 0xcdcf80); binding missing"
+     },
+     {
+      "line": 57,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): quest:PersistTransfer(context, \"BookOwned\", ...)  -- vector<bool,std::allocator<bool>_> member `BookOwned` (callee 0xcdcf80); binding missing"
      },
      {
       "line": 65,

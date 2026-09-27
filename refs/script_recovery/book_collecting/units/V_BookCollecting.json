@@ -755,10 +755,17 @@
         "name": "BookDonated"
       },
       {
-        "offset": "0xb0",
+        "offset": "0xac",
         "pdbOffset": "0xd0",
         "type": "vector<bool,std::allocator<bool>_>",
-        "name": "BookOwned"
+        "name": "BookOwned",
+        "estimatedOffset": "0xb0",
+        "offsetEvidence": {
+          "kind": "named native persistence transfer",
+          "function": "0x00E54880",
+          "site": "0x00E54981",
+          "callee": "0x00CDCF80"
+        }
       }
     ],
     "timers": [],
