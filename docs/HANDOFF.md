@@ -1,5 +1,11 @@
 # Lua recovery handoff - 2026-09-26
 
+**Codex worker dispatch follow-up (2026-09-27):** BookCollecting's teacher now
+queues `BookReaction` with its captured index; the registered worker name is recovered
+from retail instructions. v32 is staged, not installed or run. 129 tests / 28 subtests
+pass; 29-unit A/B changes only BookCollecting; 369-file audit has zero syntax failures.
+Three existing BookCollecting smoke faults remain. See [evidence, validation and next work](journal/2026-09/CODEX_LUA_SPAWN_2026-09-27.md).
+
 **Codex continuation (2026-09-27):** workflow skills validated; inherited readability fixes
 and BookCollecting's worker key, indexed marker reads and by-value actors are promoted.
 Candidate **v31** is staged (210 Lua files parse; 215 manifest hashes match), NOT installed

@@ -57,8 +57,8 @@ function OnPersist(quest, context)
     quest:SetStateBool("BookOwned", quest:PersistTransferBool(context, "BookOwned", quest:GetStateBool("BookOwned")))
 end
 
--- V_BookCollecting.NativeThread_00e566f0 (retail 0x00e566f0)
-function NativeThread_00e566f0(quest, param1)
+-- V_BookCollecting.BookReaction (retail 0x00e566f0)
+function BookReaction(quest, param1)
     local resources = quest:RetailResources()
     local readingBook
     local index = param1

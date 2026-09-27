@@ -565,7 +565,7 @@ end
 
 function helper_E55CE0(quest, me, native_arg_param_1)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, ePriority, fVar2, fret_0, fret_00, fret_01, fret_02, iVar6, pCVar15, pCVar17, pCVar5, pCVar7, pOther, pcVar11, pvVar9, this_00, uVar10, uVar12, uVar13, uVar14, uVar16, v_stk_45, value, xStack_24, xStack_30, xStack_3c, xStack_58
+    local bVar3, cVar4, ePriority, fVar2, fret_0, fret_00, fret_01, fret_02, iVar6, pCVar15, pCVar17, pCVar5, pCVar7, pOther, pcVar11, pvVar9, uVar10, uVar12, uVar13, uVar14, uVar16, v_stk_45, value, xStack_24, xStack_30, xStack_3c, xStack_58
     local alive = true
     value = native_arg_param_1
     uVar10 = 0
@@ -908,25 +908,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
     resources:DestroyActorMap(xStack_3c)
     resources:ReleaseResource(xStack_24)
     quest:SetStateBool("ReadingBook", false)
-    if this_00 == nil then
-        this_00 = 0x0
-    else
-        -- TODO(native): xStack_50 = *(CCharString *)(this + 0x14);
-        pCVar5 = extraout_EAX
-        pCVar5 = (a .. pCVar5)
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar5,0);
-        -- TODO(native): *(code **)(this_00 + 0x34) = BookReaction;
-        -- TODO(native): *(CCharString *)(this_00 + 0x38) = xStack_50;
-        -- TODO(native): *(CCharString *)(this_00 + 0x3c) = value;
-        uVar10 = 7
-    end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
-    if (uVar10 & 4) ~= 0 then
-        uVar10 = uVar10 & 0xfffffffb
-    end
-    if (uVar10 & 2) ~= 0 then
-        uVar10 = uVar10 & 0xfffffffd
-    end
+    quest:CreateThread("BookReaction", {args = {value}})  -- native parent-quest worker BookReaction, bound values
     ::LAB_00e566a1::
     return v_stk_45
 end

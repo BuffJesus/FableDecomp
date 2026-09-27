@@ -81,7 +81,7 @@ function OnPersist(quest, context)
     quest:SetStateBool("BookOwned", bookOwned)
 end
 
-function NativeThread_00e566f0(quest, native_arg_param_1)
+function BookReaction(quest, native_arg_param_1)
     local resources = quest:RetailResources()
     local CVar1, bVar4, iVar2, lVar3, r1, r2, r3, r4, thing, thing_00, thing_01, thing_02, this_00, this_01
     local alive = true

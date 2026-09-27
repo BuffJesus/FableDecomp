@@ -32,6 +32,9 @@ def generated():
     name = thread_names(inventory['threads'])['0x00e566f0']
     assert unit['quest']['functions'][name]['address'] == '0x00e566f0'
     yield name, [(out / stage / 'FSE/V_BookCollecting/V_BookCollecting.lua').read_text()
+                 for stage in ('draft', 'readable')], ['package.preload["V_BookCollecting.native_quest_helpers"] = function()\n'
+                 + (out / stage / 'FSE/V_BookCollecting/native_quest_helpers.lua').read_text() + '\nend\n'
+                 + (out / stage / 'FSE/V_BookCollecting/Entities/BS_Teacher.lua').read_text()
                  for stage in ('draft', 'readable')]
     scratch.cleanup()
 
@@ -39,7 +42,7 @@ def generated():
 @pytest.mark.parametrize('lines,reading,terminate', [(0, False, False), (2, False, False),
                                                    (2, True, False), (2, False, True)])
 def test_generated_worker_keeps_markers_actor_values_and_exit_order(generated, lines, reading, terminate):
-    name, sources = generated
+    name, sources, _ = generated
     for source in sources:
         lua = LuaRuntime(unpack_returned_tuples=True)
         lua.execute(source)
@@ -101,3 +104,37 @@ def test_marker_read_requires_string_type_global_base_and_word_stride():
     for bad in (source.replace('CCharString_bv', 'CScriptThing_bv'),
                 source.replace('DAT_0143e90c', 'unknown'), source.replace('* 4', '* 8')):
         assert lower_global_definition_strings(bad, {}) == bad
+
+
+@pytest.mark.parametrize('answer,terminate', [(1, False), (0, False), (1, True)])
+def test_generated_teacher_dispatches_registered_worker_with_original_index(generated, answer, terminate):
+    name, workers, teachers = generated
+    for worker, teacher in zip(workers, teachers):
+        lua = LuaRuntime(unpack_returned_tuples=True)
+        lua.execute(worker)
+        assert callable(lua.globals()[name])
+        # Isolate cutscene-string construction and existing resource/conversation
+        # gaps; this exercises dispatch and early exits, not full donation parity.
+        lua.execute(teacher + '\nif __native_entity_state then '
+                    '__native_entity_state:SetStateInt("BooksWanted", 0) else booksWanted = 0 end\n'
+                    'helper_E57020 = function() end; GetBookSpecificArgs = function() end')
+        events = []
+        noop = lambda *args: None
+        resources = lua.table_from({k: noop for k in ('SetActor', 'TryAcquire', 'RunMacroWithStrings',
+                                    'DestroyStringMap', 'DestroyActorMap', 'ReleaseResource')})
+        for key in ('MemberResource', 'NewResource', 'NewActorMap', 'NewStringMap'):
+            resources[key] = lambda *args: lua.table()
+        quest = lua.table_from({k: noop for k in ('GiveHeroYesNoQuestion', 'TakeObjectFromHero',
+                               'SetStateInt', 'FixMovieSequenceCamera', 'FadeScreenIn')})
+        quest['RetailResources'] = lambda _: resources
+        quest['MsgIsQuestionAnsweredYesOrNo'] = lambda _: answer
+        quest['IsActiveThreadTerminating'] = lambda _: terminate
+        quest['GetStateInt'] = lambda *_: 0
+        quest['GetStateBool'] = lambda *_: True  # reward branches already completed
+        quest['GetHealth'] = lambda *_: 0  # bypass unresolved speech-resource dispatch
+        quest['GetHero'] = lambda _: lua.table()
+        quest['SetStateBool'] = lambda _, key, value: events.append((key, value))
+        quest['CreateThread'] = lambda _, key, opts: events.append((key, opts['args'][1]))
+        (lua.globals().helper_E55CE0 or lua.globals().AskForBook)(quest, lua.table(), 17)
+        assert events == ([('ReadingBook', True), ('ReadingBook', False), (name, 17)]
+                          if answer == 1 and not terminate else [])

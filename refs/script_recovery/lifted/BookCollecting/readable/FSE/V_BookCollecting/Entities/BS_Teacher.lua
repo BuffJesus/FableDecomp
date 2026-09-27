@@ -317,10 +317,9 @@ function AskForBook(quest, me, param1)
     local self_0x34
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, hero, pOther, prize, this_00, flags, getHero, predicateResult, resource
-    local actorMap, actorMap2, scratchValue
+    local questionAnswer, hero, pOther, prize, getHero, predicateResult, resource, actorMap
+    local actorMap2, scratchValue
     local value = param1
-    flags = 0
     predicateResult = false
     param1 = "TEXT_QST_B16_OFFER_BOOK_" .. tostring(param1)
     quest:GiveHeroYesNoQuestion(param1, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -533,18 +532,7 @@ function AskForBook(quest, me, param1)
     resources:DestroyActorMap(actorMap2)
     resources:ReleaseResource(resource)
     quest:SetStateBool("ReadingBook", false)
-    if this_00 ~= nil then
-        -- TODO(native): xStack_50 = *(CCharString *)(this + 0x14);
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar5,0);
-        -- TODO(native): *(code **)(this_00 + 0x34) = BookReaction;
-        -- TODO(native): *(CCharString *)(this_00 + 0x38) = xStack_50;
-        -- TODO(native): *(CCharString *)(this_00 + 0x3c) = value;
-        flags = 7
-    end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
-    if flags & 4 ~= 0 then
-        flags = flags & 0xfffffffb
-    end
+    quest:CreateThread("BookReaction", {args = {value}})  -- native parent-quest worker BookReaction, bound values
     ::LAB_00e566a1::
     return predicateResult
 end

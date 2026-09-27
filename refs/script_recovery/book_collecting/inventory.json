@@ -37,7 +37,7 @@
       "registrationFunction": "0x00E55CE0",
       "store": "0x00E564B8",
       "body": "0x00E566F0",
-      "name": null,
+      "name": "BookReaction",
       "bodyExported": true
     }
   ],

@@ -238,6 +238,29 @@ RE_THREAD_VALUES = re.compile(
     r'(?:[ \t]*std::\s*_Cons_val<[^;]*?;[ \t]*\n)*', re.S)
 
 
+# A single word captured after the parent receiver (BookCollecting's teacher,
+# retail 0x00E56458..0x00E564E2). Ghidra may type both words as CCharString,
+# but these are direct stores, not string construction/copy operations. Require
+# the exact parent load, constructor, object layout and parent registration.
+RE_THREAD_WORD = re.compile(
+    r'(?P<obj>\w+) = (?:::)?operator_new\(0x40\);\s*'
+    r'if \((?P=obj) == [^;{]*?0x0\) \{\s*(?P=obj) = [^;]*?0x0;\s*\}\s*else \{\s*'
+    r'(?P<parent>\w+) = \*\((?:undefined4|int|CCharString(?:_bv)?) \*\)\(this \+ 0x14\);\s*'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"(?P<name>\w+)",-1\);\s*'
+    r'(?P<str>\w+) = extraout_EAX;\s*'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"ParentClass\.",-1\);\s*'
+    r'(?P=str) = ENGINE_Concat\(\w+, (?P=str)\);\s*'
+    r'CSpawnedFunc<[^>]+>::CSpawnedFunc<[^>]+>\s*\((?P=obj),(?P=str),0\);\s*'
+    r'\*\(undefined \*\*\*\)(?P=obj) = &PTR_\w+;\s*'
+    r'\*\(code \*\*\)\((?P=obj) \+ 0x34\) = &?(?P<fn>[\w:]+);\s*'
+    r'\*\((?:undefined4|int|CCharString(?:_bv)?) \*\)\((?P=obj) \+ 0x38\) = (?P=parent);\s*'
+    r'\*\((?:undefined4|int|CCharString(?:_bv)?) \*\)\((?P=obj) \+ 0x3c\) = (?P<arg>\w+);\s*'
+    r'(?P<flag>\w+) = 7;\s*\}\s*'
+    r'CCharString::CCharString\((?:\(CCharString \*\))?&?\w+,"",-1\);\s*'
+    r'CGuiVarTransferStruct::Add\(\*\(CGuiVarTransferStruct \*\*\)\(this \+ 0x14\),(?P=obj),\w+\);[ \t]*\n'
+    r'(?:[ \t]*std::\s*_Cons_val<[^;]*?;[ \t]*\n)*', re.S)
+
+
 def _bound_thread_values(match):
     """The Lua operands of a RE_THREAD_VALUES spawn, or None when a field is not a literal / literal-built string
     or the fields do not exactly fill the object after +0x3c."""
@@ -2224,6 +2247,15 @@ class Lifter:
             return f'    @@THREADARGS#{len(spawn_flags) - 1} {match.group("name")} {match.group("fn")} {", ".join(values)}\n'
 
         text = RE_THREAD_VALUES.sub(thread_values, text)
+
+        def thread_word(match: re.Match) -> str:
+            if not self.entity:
+                return match.group(0)
+            thread_objects.add(match['obj'])
+            spawn_flags.append({match['flag']})
+            return f'    @@THREADARGS#{len(spawn_flags) - 1} {match["name"]} {match["fn"]} {match["arg"]}\n'
+
+        text = RE_THREAD_WORD.sub(thread_word, text)
         for k, flags in enumerate(spawn_flags):
             marker = re.search(r'@@THREADARGS#%d [^\n]*\n' % k, text)
             end = marker.end()
@@ -2592,7 +2624,7 @@ class Lifter:
             # (the comment names the thread, not the member label: bsim mislabels TurnToBalv's pointer as
             # Script_Darkwood_Balverine_Trader; the CSpawnedFunc name literal is the evidence)
             what = "the entity's own thing captured" if arg == 'me' else 'bound values'
-            self.emit(f'{self.receiver}:CreateThread("{name}", {{args = {{{arg}}}}})'
+            self.emit(f'{self.receiver}:CreateThread("{name}", {{args = {{{self.expr(arg)}}}}})'
                       f'  -- native parent-quest worker {name}, {what}')
             self.calls.append("CreateThread")
             return

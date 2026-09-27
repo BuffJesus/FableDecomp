@@ -155,7 +155,7 @@
         },
         {
           "owner": "V_BookCollecting",
-          "function": "NativeThread_00e566f0",
+          "function": "BookReaction",
           "address": "0x00e566f0",
           "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
           "evidence": "inventory thread registration",
@@ -745,13 +745,6 @@
             "label LAB_00e560f5_c18",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
-            "unnamed field 0x14",
-            "unlifted: xStack_50 = *(CCharString *)(this + 0x14);",
-            "unlifted: CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowS",
-            "unlifted: *(code **)(this_00 + 0x34) = BookReaction;",
-            "unlifted: *(CCharString *)(this_00 + 0x38) = xStack_50;",
-            "unlifted: *(CCharString *)(this_00 + 0x3c) = value;",
-            "unlifted: CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);",
             "unlifted: pCVar7 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))(xStack_24)",
             "unlifted: iVar6 = *pCVar17",
             "unlifted: cVar4 = (**(*pCVar17 + 0x68))(uVar12)",
@@ -878,9 +871,9 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "SetStateBool",
-            "ENGINE_Concat"
+            "CreateThread"
           ],
-          "lines": 364,
+          "lines": 346,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1256,7 +1249,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 177
+        "todo": 170
       }
     }
   ],
@@ -1267,6 +1260,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 177
+    "todo": 170
   }
 }
