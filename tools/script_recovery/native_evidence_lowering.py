@@ -544,7 +544,12 @@ def fold_signed_pow2_division(text: str) -> str:
     text = RE_SIGNED_POW2_DIV.sub(fold, text)
     # the same quotient Ghidra already recognised (`(int)CVar8 / 2`, BanditKing's half-health taunt): an integer
     # division, where Lua's `/` would compare against 2.5 instead of 2
-    return re.sub(r'\(int\)(\w+) / (\d+)\b(?!\.)', r'ENGINE_Trunc(\1 / \2)', text)
+    text = re.sub(r'\(int\)(\w+) / (\d+)\b(?!\.)', r'ENGINE_Trunc(\1 / \2)', text)
+    # an int local's quotient converted to floating point (`(float10)(iVar1 / 100)`, V_StatueMaster's hour of the
+    # day, `fiadd` of the integer quotient at 0x00ED4406): the division is integral before the conversion
+    ints = set(re.findall(r'^[ \t]*(?:int|uint|long|ulong|undefined4) (\w+);', text, re.M))
+    return re.sub(r'\((float10|float|double)\)\((\w+) / (0x[0-9a-f]+|\d+)\)(?!\.)',
+                  lambda m: f'({m.group(1)})ENGINE_Trunc({m.group(2)} / {int(m.group(3), 0)})' if m.group(2) in ints else m.group(0), text)
 
 
 def _balanced_end(text: str, at: int):
@@ -1545,7 +1550,10 @@ def _member_expression(base, offset):
     bare form must follow a comma or a call's own parenthesis, not a cast's)."""
     off = r'(?:' + hex(offset) + r'|' + str(offset) + r')\b'
     body = r'(?:\(int\)\s*)?\(?' + base + r'\)? \+ ' + off
-    return re.compile(r'(?<![*)\w])' + _MEMBER_CAST + r'(?:\(\s*' + body + r'\s*\)|(?:(?<=,)|(?<=\w\())' + body + r'(?=\s*[,)]))')
+    # (or the whole right-hand side of an assignment: `pCVar5 = this + 0x58;`, V_BookCollecting DoConversation picking
+    # seh_Boy / seh_Girl as the speaker, lifted as `this + 88` -- a free global `this` in Lua)
+    return re.compile(r'(?<![*)\w])' + _MEMBER_CAST + r'(?:\(\s*' + body + r'\s*\)|(?:(?<=,)|(?<=\w\())' + body + r'(?=\s*[,)])'
+                      r'|(?<== )' + body + r'(?=;))')
 
 
 def _constructed_resource(text, name):
@@ -1571,6 +1579,9 @@ def lower_member_resources(text, spec):
         return text
     for base, resources, string_maps, owner in families:
         text = rewrite(text, base, resources, string_maps, owner)
+    # the quest's flag maps (an entity's own flag map would need a per-instance key: none met yet)
+    for offset, name in (getattr(spec, 'parent_flag_maps', {}) or {}).items():
+        text = _member_expression(_PARENT if spec.entity else _THIS, offset).sub(f'FLAGS_Member("{name}")', text)
     if spec.entity and (getattr(spec, 'parent_resources', {}) or getattr(spec, 'parent_string_maps', {})):
         # the parent pointer cached in a register local (`iVar10 = *(int *)((int)this + 0x14);`, ChickenMaster
         # 0x00E64FB0's `seh_ChickenMaster = res`): Ghidra reuses the local, so it names the parent only from that
@@ -1605,6 +1616,26 @@ def lower_member_resources(text, spec):
         elif target in STRINGMAP_CLEAR:
             text = re.sub(r'^([ \t]*)' + head + r'\s*\(\s*(' + MEMBER_STRINGS + r')\s*\);',
                           lambda m: f'{m.group(1)}STRINGMAP_Clear({m.group(2)});', text, flags=re.M)
+        elif target in BOOLMAP_INDEX:
+            # `p = operator[](FLAGS, &key); c = *p;` / `*p = v;` on a member flag map
+            flags = r'(FLAGS_Member\("\w+"\))'
+            text = re.sub(r'^([ \t]*)(\w+) = ' + head + r'\s*\(\s*' + flags + r',\s*(?:\(CCharString \*\))?&?(\w+)\s*\);[ \t]*\r?\n'
+                          r'[ \t]*(\w+) = \*\2;',
+                          lambda m: f'{m.group(1)}{m.group(5)} = FLAGS_Get({m.group(3)}, {m.group(4)});', text, flags=re.M)
+            text = re.sub(r'^([ \t]*)(\w+) = ' + head + r'\s*\(\s*' + flags + r',\s*(?:\(CCharString \*\))?&?(\w+)\s*\);[ \t]*\r?\n'
+                          r'[ \t]*\*\2 = ([^;]+);',
+                          lambda m: f'{m.group(1)}FLAGS_Set({m.group(3)}, {m.group(4)}, {m.group(5)});', text, flags=re.M)
+            # the flag is a C++ bool read into a char (`cVar1 != '\x01'`); in Lua it is a boolean, and `~= 1` is
+            # always true -- OakValeFire's wait for the cutscene's "fire" flag would never end
+            for var in set(re.findall(r'^[ \t]*(\w+) = FLAGS_Get\(', text, re.M)):
+                v = re.escape(var)
+                if re.findall(r'^[ \t]*' + v + r' = (?!FLAGS_Get\()', text, re.M):
+                    continue
+                truth = r"(?:'\\x01'|'\\x1'|1|true)"
+                false = r"(?:'\\0'|'\\x00'|0|false)"
+                text = re.sub(r'\b' + v + r' != ' + truth + r'(?!\w)', f'!{var}', text)
+                text = re.sub(r'\b' + v + r' == ' + false + r'(?!\w)', f'!{var}', text)
+                text = re.sub(r'\b' + v + r' (?:!= ' + false + r'|== ' + truth + r')(?!\w)', var, text)
     return text
 
 
@@ -1654,6 +1685,12 @@ def fold_actor_maps(text, resolve_string=None):
                                      f'{m.group("member") or "&" + m.group("src")});\n', text)
     text = RE_MAP_RUN.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({keyval(m.group("keyval"))}, {m.group("map")}, {m.group("setup")}, {m.group("skip")});\n', text)
     text = RE_MAP_DESTROY.sub(r'\1ACTORMAP_Destroy(\2);', text)
+    # a member flag map in the macro's flags slot (CS_OakValeRevisited 0x00EE8390 passes OakValeFlag, which the
+    # cutscene sets while the OakValeFire thread polls it)
+    text = re.sub(r'^(?P<ind>[ \t]*)RunCutsceneMacro_Func\((?P<key>(?:\(CCharString \*\))?&?\(?[\w. +]+\)?),\s*&?(?P<map>[\w.]+),\s*'
+                  r'(?P<flags>FLAGS_Member\("\w+"\)),\s*\(void \*\)0x0\s*,\s*(?P<setup>true|false),\s*(?P<skip>true|false)\);',
+                  lambda m: f'{m.group("ind")}RESOURCE_RunMacroWithFlags({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, '
+                            f'{m.group("flags")}, {m.group("setup")}, {m.group("skip")});', text, flags=re.M)
     text = RE_MAP_RUN_STRINGS.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacroWithStrings({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, {m.group("strings")}, {m.group("setup")}, {m.group("skip")});', text)
     text = RE_MAP_RUN_VAR.sub(lambda m: f'{m.group("ind")}RESOURCE_RunMacro({_strip_addr(m.group("key"))}, {m.group("map").split(".field")[0]}, {m.group("setup")}, {m.group("skip")});', text)
     return text
@@ -1669,6 +1706,9 @@ THING_CTOR = {0x6E7B40}              # CScriptThing::CScriptThing() (stores vtab
 MOVIE_DTOR = {0x6E7B80}               # MovieResource_Destroy_API
 MOVIE_BASE_CTOR = {0x6E7A60}          # the movie object's base ctor (CBaseObject_Construct 0x99A380 + vtable 0126008c); the derived
                                       # part is inlined at the call site and already lowers to RESOURCE_StartMovie (disasm 2026-09-19)
+THING_VECTOR_RESIZE = {0xD34AC0}      # std::vector<CScriptThing>::resize(n, const CScriptThing& fill): the fill is a thing
+                                      # built by 0x6E7B40 and destroyed by 0x4AA840 around each call (OakValeFire 0x00EE8870)
+BOOLMAP_INDEX = {0x8ADF10}            # std::map<CCharString,bool>::operator[] (the sidecar's StdMap_Bool_OperatorBracket_API)
 COUNTED_ASSIGN = {0x8AB1E0}           # CCountedPointer::operator=(this, const CCountedPointer&): out-of-line refcount dance (disasm 2026-09-19)
 NODE_SELF = {0x99A3B0}                # `mov eax, ecx; ret 4`: returns its receiver, no effect (bsim: CFourierAnalysis::CFourierAnalysis)
 COUNTED_RELEASE = {0x6E7AB0, 0xCE1000}   # CCountedPointer release: decref [this+4], zero [this], [this+4] (disasm 2026-09-16)
@@ -2675,6 +2715,10 @@ def fold_things_killed_vectors(text):
 
 
 def lower_after_annotate(text, thing_slots=None):
+    # `b = GSI->MsgOnRegionLoaded(&name)`: the binding returns the region name or nil (PollRegionMessage), so the
+    # out-parameter IS the result and the bool its presence (V_BeardyBaldy Main compares the region it waited for)
+    text = re.sub(r'^([ \t]*)(\w+) = GSI->(MsgOnRegion(?:Loaded|Unloaded))\(&(\w+)\);',
+                  r'\1\4 = GSI->\3();\n\1\2 = ENGINE_NotNil(\4);', text, flags=re.M)
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
@@ -2836,6 +2880,12 @@ def lower_after_annotate(text, thing_slots=None):
     text = re.sub(r'^([ \t]*)if \((\w+) != (?:\([\w ]+\*\))?0(?:x0)?\) \{[ \t]*\r?\n[ \t]*StdMap_DestroyNode\(&?\2,[^;\n]*\);[ \t]*\r?\n(?:[ \t]*[^\n]*;[ \t]*\r?\n){0,4}?[ \t]*\}[ \t]*\r?\n'
                   r'(?:[ \t]*if \(\2 != (?:\([\w ]+\*\))?0(?:x0)?\) \{[ \t]*\r?\n[ \t]*free\(\2\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n)?',
                   lambda m: f'{m.group(1)}ACTORMAP_Destroy({m.group(2)});\n', text, flags=re.M)
+    # the same with the map's size / head read as fields of one stack object (`M._4_4_` size, `M._0_4_` head:
+    # CS_OakValeRevisited 0x00EE8390's "Hero" map, left as `if actorMap._4_4_ ~= 0`, indexing a Lua number)
+    text = re.sub(r'^([ \t]*)if \((\w+)\._4_4_ != 0\) \{[ \t]*\r?\n[ \t]*StdMap_DestroyNode\(&?\2,[^;\n]*\);[ \t]*\r?\n(?:[ \t]*[^\n]*;[ \t]*\r?\n){0,4}?[ \t]*\}[ \t]*\r?\n'
+                  r'(?:[ \t]*if \((?:\([\w ]+\*\))?\2\._0_4_ != (?:\([\w ]+\*\))?0(?:x0)?\) \{[ \t]*\r?\n[ \t]*free\((?:\(void \*\))?\2\._0_4_\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n)?',
+                  lambda m: f'{m.group(1)}ACTORMAP_Destroy({m.group(2)});\n'
+                  if re.search(r'^[ \t]*' + re.escape(m.group(2)) + r' = ACTORMAP_New\(\);', text, re.M) else m.group(0), text, flags=re.M)
     # an element receiver named by the vector folds repeated as the explicit `this` operand
     text = re.sub(r'(CScriptThing::\w+\(((?:LOCAL|QUEST|ENTITY)LIST_At\w*\([^()]*\)), ?)(?:\(int \*\))?\2(?:,\s*|(?=\)))', r'\1', text)
     # receiver aliases (`this_00 = *(int **)(this + 0x40);`) are dead once their vcalls read `GSI->`
@@ -3000,6 +3050,10 @@ def fold_local_thing_vectors(text, thing_slots=None):
     def call(m):
         if not m.group(3).startswith('GetAllThings') and m.group(5) not in constructed:
             return m.group(0)
+        # `GetAllThingsWith*(name, &out)`: with one operand left the out-vector was already folded (a member fill,
+        # `lst_FirePoint = GSI->GetAllThingsWithScriptName(&name)`) and that operand is the NAME (OakValeFire 0x00EE8870)
+        if m.group(3).startswith('GetAllThingsWith') and m.group(4) is None:
+            return m.group(0)
         vectors.append(m.group(5))
         return f'{m.group(1)}{m.group(5)} = GSI->{m.group(3)}({m.group(4) or ""});\n{m.group(1)}{m.group(2)} = LOCALLIST_Count({m.group(5)});'
     # the leading operands are optional: `GetAllCreaturesExcludingHero(&vec)` has none
@@ -3066,6 +3120,9 @@ def fold_local_thing_vectors(text, thing_slots=None):
                 return m.group(0)
             before = text[max(0, m.end(1) - 16):m.end(1)]     # up to and including the `(` / `,` before the name
             if re.search(r'(?:LOCALLIST_(?:Count|At)|free)\($', before):
+                return m.group(0)
+            # the whole table handed to a member-list fill (`QUESTLIST_Set("FirePoint", lst_FirePoint)`, OakValeFire)
+            if re.search(r'(?:QUEST|ENTITY)LIST_Set\("\w+",\s*$', text[max(0, m.end(1) - 80):m.end(1)]):
                 return m.group(0)
             return f'{m.group(1)}LOCALLIST_At({vec}, {m.group(2) or 0})'
         text = re.sub(r'([(,]\s*)' + v + r'(?: \+ (\d+))?(?=\s*[,)])', element, text)
@@ -3232,6 +3289,11 @@ class LoweringSpec:
         self.parent_resources = {int(k, 16): v for k, v in q.get('resourceFields', {}).items()}
         self.parent_string_maps = {int(x['offset'], 16): x['name'] for x in q.get('unmappedFields', [])
                                    if x['type'].startswith('map<CCharString,CCharString,')}
+        # std::map<CCharString,bool> members: cutscene flag maps (CS_OakValeRevisited `OakValeFlag`), the sidecar's
+        # quest-owned quest:RetailFlags(name)
+        self.parent_snapshots = {int(k, 16): (v['name'], int(v['global'], 16)) for k, v in q.get('definitionSnapshots', {}).items()}
+        self.parent_flag_maps = {int(x['offset'], 16): x['name'] for x in q.get('unmappedFields', [])
+                                 if x['type'].startswith('map<CCharString,bool,')}
         master = unit.get('master', {})
         self.master_fields = {int(k, 16): tuple(v) for k, v in master.get('fields', {}).items()}
         if entity:
@@ -3293,6 +3355,279 @@ def lower_global_definition_strings(text, call_labels):
     return text
 
 
+def resolve_this_aliases(text, spec):
+    """Locals that only ever hold `this` are `this`; a local assigned once from `this + OFF` where OFF is a member
+    thing list is that member. CS_OakValeRevisited OakValeFire 0x00EE8870 keeps `this` in `pCVar11` / a spilled
+    `local_14` and the FirePoint / Fires vectors in `pOutThings` / `this_00`, so its GetAllThingsWithScriptName
+    fill, element reads and resize never reached the member-list lowering (2026-09-27)."""
+    def assignments(var):
+        return re.findall(r'^[ \t]*' + re.escape(var) + r'(?:\[0\])? = ([^;]+);', text, re.M)
+    names = set(re.findall(r'^[ \t]*(\w+)(?:\[0\])? = (?:\(\w+ \*\))?this;', text, re.M)) - {'this'}
+    aliases = set()
+    changed = True
+    while changed:
+        changed = False
+        for var in names - aliases:
+            rhs = [re.sub(r'^\(\w+ \*\)', '', r.strip()) for r in assignments(var)]
+            if rhs and all(r == 'this' or r in aliases for r in rhs) and not re.search(r'&' + re.escape(var) + r'\b', text):
+                aliases.add(var)
+                changed = True
+    for var in aliases:
+        text = re.sub(r'^[ \t]*' + re.escape(var) + r'(?:\[0\])? = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'^[ \t]*[\w:<>, ]+\*\s*' + re.escape(var) + r'(?: \[\d+\])?;[ \t]*\r?\n', '', text, flags=re.M)
+        text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'(?:\[0\])?\b', 'this', text)
+    lists = set(getattr(spec, 'self_lists', {}) or {})
+    for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\([^;]*?\*\)\s*)?(?:\(this \+ (0x[0-9a-f]+)\)|this \+ (0x[0-9a-f]+));[ \t]*\r?\n', text, re.M)):
+        var, off = m.group(1), int(m.group(2) or m.group(3), 16)
+        if off not in lists or len(assignments(var)) != 1 or re.search(r'&' + re.escape(var) + r'\b', text):
+            continue
+        # a pointer-to-begin temporary read as `*P` / `P[1]` is the list machinery's own shape (begin / end values:
+        # Trader Conflict Evil's AllCreatures walk, 2026-09-27 A/B) -- leave it to that
+        body = re.sub(r'^[ \t]*[\w:<>, ]+?\*+\s*' + re.escape(var) + r';[ \t]*\r?$', '', text, flags=re.M)   # not its declaration
+        if re.search(r'(?<![\w)])\*' + re.escape(var) + r'\b|\b' + re.escape(var) + r'\[', body):
+            continue
+        text = text.replace(m.group(0), '', 1)
+        text = re.sub(r'^[ \t]*[^;\n]*\*\s*' + re.escape(var) + r';[ \t]*\r?\n', '', text, count=1, flags=re.M)
+        text = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', f'(this + {hex(off)})', text)
+    return text
+
+
+def lower_embedded_state_stores(text):
+    """A member store inside a comma expression (`if (... && (this->BootyDugUp = 1, !this->WifeAttacked))`,
+    HerosOldHouse ExtraBooty) is lowered by the field pass as a READ on the left of `=` (only statements that start
+    with the store become Set calls): `QUESTSTATE_GetBool("BootyDugUp") = 1`. That is the setter."""
+    return re.sub(r'\b((?:QUEST|ENTITY)STATE|GSI->)(?:_)?Get(Int|Bool|Float|String)\((\"[^\"]*\"|__key\([^()]*\))\) = ([^,;()]+(?:\([^()]*\))?)(?=\s*[,)])',
+                  lambda m: (f'GSI->SetState{m.group(2)}({m.group(3)}, {m.group(4).strip()})' if m.group(1) == 'GSI->'
+                             else f'{m.group(1)}_Set{m.group(2)}({m.group(3)}, {m.group(4).strip()})'), text)
+
+
+def _brace_end(text, at):
+    """Index just past the `}` matching the `{` at text[at] (braces only; string literals skipped), or None."""
+    depth, i, n = 0, at, len(text)
+    while i < n:
+        c = text[i]
+        if c == '"':
+            i += 1
+            while i < n and text[i] != '"':
+                i += 2 if text[i] == '\\' else 1
+        elif c == '{':
+            depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                return i + 1
+        i += 1
+    return None
+
+
+def brace_assigning_single_ifs(text):
+    """`if ((b) || (b = IsActiveThreadTerminating(this), b)) break;` -- a one-statement `if` whose condition embeds
+    an assignment gets braces, so it reaches the lifter's short-circuit tree like every `if (...) {` head
+    (V_BeardyBaldy Main 0x00E4FA90's terminating re-check before the thread registrations)."""
+    out, pos = [], 0
+    for m in re.finditer(r'^([ \t]*)(?:else )?if \(', text, re.M):
+        if m.start() < pos:
+            continue
+        start = m.end() - 1
+        end = _balanced_end(text, start)
+        if end is None:
+            continue
+        cond = text[start + 1:end - 1]
+        if not re.search(r'(?<![=!<>])=(?!=)', re.sub(r'"(?:[^"\\]|\\.)*"', '', cond)):
+            continue
+        # (not `goto`: the lifter's sequence emulation already lowers `if (seq) goto L;` correctly)
+        tail = re.match(r'[ \t]*((?:break|continue|return[^;\n]*);)[ \t]*(?=\r?\n)', text[end:])
+        if not tail:
+            continue
+        ind = m.group(1)
+        out.append(text[pos:end])
+        out.append(f' {{\n{ind}  {tail.group(1)}\n{ind}}}')
+        pos = end + tail.end()
+    out.append(text[pos:])
+    return ''.join(out)
+
+
+def nest_assigning_else_if(text):
+    """`} else if (COND) {` whose COND embeds an assignment (a C comma sequence: `(v = f(), v != 0)`) is
+    `} else { if (COND) { ... } }`: only an `if` head reaches the lifter's short-circuit tree lowering (Dragon's
+    `(fret = GetHealth(me), fret < low ...)`, STS_BriarRose's `(alive = attacker->IsAlive(), !alive)`). The added
+    brace closes after the rest of the chain, so every later `else` stays inside the nested `if`."""
+    def assigns(cond):
+        return re.search(r'(?<![=!<>])=(?!=)', re.sub(r'"(?:[^"\\]|\\.)*"', '', cond)) is not None
+    while True:
+        for m in re.finditer(r'\}\s*else if \(', text):
+            start = m.end() - 1
+            end = _balanced_end(text, start)
+            if end is None or not assigns(text[start + 1:end - 1]):
+                continue
+            brace = re.match(r'\s*\{', text[end:])
+            if not brace:
+                continue
+            # walk the rest of the chain: block, then `else if (...) {` / `else {` blocks
+            pos = end + brace.end() - 1
+            while True:
+                close = _brace_end(text, pos)
+                if close is None:
+                    break
+                nxt = re.match(r'\s*else(?: if \((?P<c>))?', text[close:])
+                if not nxt:
+                    break
+                if nxt.group('c') is not None:
+                    cstart = close + nxt.end() - 1
+                    cend = _balanced_end(text, cstart)
+                    ob = re.match(r'\s*\{', text[cend:]) if cend else None
+                    if not ob:
+                        close = None
+                        break
+                    pos = cend + ob.end() - 1
+                else:
+                    ob = re.match(r'\s*\{', text[close + nxt.end():])
+                    if not ob:
+                        close = None
+                        break
+                    pos = close + nxt.end() + ob.end() - 1
+            if close is None:
+                continue
+            text = text[:close] + '\n}' + text[close:]
+            text = text[:m.start()] + '} else {\nif (' + text[m.end():]
+            break
+        else:
+            return text
+
+
+def index_member_array_walks(text, spec):
+    """`P = this + BASE + j*S; C = j; do { ... *(T *)P ... P = P + S; C = C + 1; } while (...)` walks a scalar member
+    array in step with the counter: `*(T *)P` is element C, spelled as the dynamic-index form the array lowering
+    names (`*(T *)(this + BASE + C * S)`). V_StatueMaster GetStatuePointingPosition 0x00ED4420 walks
+    AnglesToFaceList[1..3] with `lea edx,[esi+0x4c]; mov ecx,1 ... inc ecx; add edx,4` (it was read as element 1
+    on every iteration). Only the case where the counter starts at the element index is rewritten."""
+    for a in getattr(spec, 'self_arrays', []) or []:
+        stride, base, count = a.get('stride'), a['base'], a['count']
+        if stride not in (1, 2, 4) or a['members'] != {0: ('', a['members'].get(0, ('', ''))[1])}:
+            continue
+        for m in list(re.finditer(r'^[ \t]*(\w+) = (?:\([^;]*?\*\)\s*)?\(?this \+ (0x[0-9a-f]+)\)?;[ \t]*\r?\n', text, re.M)):
+            ptr, off = m.group(1), int(m.group(2), 16)
+            if not (base <= off < base + count * stride) or (off - base) % stride:
+                continue
+            j = (off - base) // stride
+            p = re.escape(ptr)
+            step = re.search(r'^[ \t]*' + p + r' = ' + p + r' \+ ' + str(stride) + r';[ \t]*\r?\n', text[m.end():], re.M)
+            if not step:
+                continue
+            body = text[m.end():m.end() + step.end()]
+            loop = re.search(r'^[ \t]*do \{', body, re.M)
+            if not loop:
+                continue
+            counters = re.findall(r'^[ \t]*(\w+) = ' + str(j) + r';', body[:loop.start()], re.M)
+            loop_text = text[m.end() + loop.start():m.end() + step.end() + 200]
+            counters = [c for c in counters if len(re.findall(r'^[ \t]*' + re.escape(c) + r' = ' + re.escape(c) + r' \+ 1;', loop_text, re.M)) == 1]
+            if len(counters) != 1 or len(re.findall(r'^[ \t]*' + p + r' = ', text, re.M)) != 2:
+                continue
+            others = re.sub(r'\*\(\w+ \*\)' + p + r'\b', '', body[:step.start()])
+            if re.search(r'\b' + p + r'\b', others):
+                continue     # used other than as the element it points at
+            c = counters[0]
+            new_body = re.sub(r'\*\((\w+) \*\)' + p + r'\b', lambda mm: f'*({mm.group(1)} *)(this + {hex(base)} + {c} * {stride})', body[:step.start()])
+            text = text[:m.start()] + new_body + text[m.end() + step.end():]
+            text = re.sub(r'^[ \t]*\w+(?: \*+| )' + p + r';[ \t]*\r?\n', '', text, count=1, flags=re.M)
+    return text
+
+
+CONVERSATION_STRIDE = 0x5C
+CONVERSATION_STRINGS = {0x2C: 'Speaker', 0x38: 'Dialogue', 0x44: 'Animation', 0x50: 'AnimLoop'}   # CConversation::Copy 0x00E54CA0
+
+
+def lower_conversation_snapshots(text, spec):
+    """A vector<CConversation> member the script fills once from the global definitions and never writes
+    (unit evidence `definitionSnapshots`) is read straight from those definitions: the fill call goes, element reads
+    become ENGINE_ConversationLines / ENGINE_ConversationString (sidecar quest:GlobalConversations). V_BookCollecting
+    BookReactions = definitions +0x4C8 (Init 0x00E54990), read by BookReaction 0x00E566F0 (`Lines`) and
+    DoConversation 0x00E569D0 (Speaker/Dialogue/Animation/AnimLoop of reaction i, line j)."""
+    snapshots = getattr(spec, 'parent_snapshots', {}) or {}
+    if not snapshots:
+        return text
+    base = _PARENT if spec.entity else _THIS
+    for off, (name, glob) in snapshots.items():
+        member = r'(?:\(int\))?\(?' + base + r'\)? \+ (?:' + hex(off) + '|' + str(off) + r')\b'
+        text = re.sub(r'^[ \t]*\w+\(\s*' + member + r'\)?,\s*DAT_0143e90c \+ (?:' + hex(glob) + '|' + str(glob) + r')\);[ \t]*\r?\n', '', text, flags=re.M)
+        begin = r'\*\(int \*\)\(' + base + r' \+ (?:' + hex(off) + '|' + str(off) + r')\)'
+        text = re.sub(r'\*\((?:int|undefined4) \*\)\((\w+) \* 0x5c \+ 0x28 \+ ' + begin + r'\)',
+                      lambda m: f'ENGINE_ConversationLines({hex(glob)}, {m.group(1)})', text)
+
+        def index(var, scale, pos, text=text):
+            defs = list(re.finditer(r'^[ \t]*' + re.escape(var) + r' = (\w+) \* ' + scale + r';', text[:pos], re.M))
+            return defs[-1].group(1) if defs else f'({var}) / {scale}'
+        def string(m):
+            field = CONVERSATION_STRINGS.get(int(m.group('vo'), 16))
+            if field is None:
+                return m.group(0)
+            i, j = index(m.group('b'), '0x5c', m.start()), index(m.group('j'), '4', m.start())
+            return f'ENGINE_ConversationString({hex(glob)}, {i}, "{field}", {j})'
+        text = re.sub(r'\(CCharString(?:_bv)? \*\)\(\*\(int \*\)\((?P<b>\w+) \+ (?P<vo>0x[0-9a-f]+) \+ ' + begin + r'\) \+ (?P<j>\w+)\)', string, text)
+        # the copy constructor of a local string from it is an assignment
+        text = re.sub(r'^([ \t]*)CCharString::CCharString\(\s*(?:\(CCharString \*\))?&?(\w+),\s*(ENGINE_ConversationString\([^;]*\))\);',
+                      r'\1\2 = \3;', text, flags=re.M)
+    return text
+
+
+CIFMOD = 0xBFEB28   # MSVCR71 _CIfmod: fmod(ST1, ST0), both operands on the x87 stack, result in ST0
+
+
+def lower_cifmod(text, spec):
+    """`_CIfmod()` printed without operands: each call site's bytes load them just before it -- `fld dword
+    [esp+x]` (the dividend, the value the code parked there with `fst`, Ghidra's `f_stk_*` store before the call)
+    then `fld qword [abs]` (a .rdata constant divisor). V_StatueMaster Main 0x00ED3B30 wraps each statue angle
+    into [0, 1) with `fmod(angle, 1.0)` (0x00ED3DC9..0x00ED3DD3). The k-th printed call is the k-th site; any site
+    whose bytes differ leaves every call alone."""
+    calls = [c for c in (getattr(spec, 'calls', None) or []) if str(c.get('target', '')).lower() == hex(CIFMOD).replace('0x', '0x00')]
+    uses = list(re.finditer(r'\b_CIfmod\(\)', text))
+    byte_at = getattr(spec, 'byte_at', None)
+    if not uses or len(calls) != len(uses) or byte_at is None:
+        return text
+    sites = sorted(int(c['site'], 16) for c in calls)
+    out, pos = [], 0
+    for m, site in zip(uses, sites):
+        raw = bytes(byte_at(site - 10 + i) for i in range(10))
+        if raw[0:3] != b'\xd9\x44\x24' or raw[4:6] != b'\xdd\x05':
+            return text
+        divisor = struct.unpack('<d', bytes(byte_at(int.from_bytes(raw[6:10], 'little') + i) for i in range(8)))[0]
+        parked = list(re.finditer(r'^[ \t]*(f_stk_\w+|fStack_\w+) = [^;]+;', text[:m.start()], re.M))
+        if not parked:
+            return text
+        out.append(text[pos:m.start()])
+        out.append(f'ENGINE_Fmod({parked[-1].group(1)}, {divisor!r})')
+        pos = m.end()
+    out.append(text[pos:])
+    return ''.join(out)
+
+
+def name_ftol2_operand(text):
+    """`X = __ftol2(E); ... extraout_ST0` -- Ghidra only shows ST0 live after the truncation call when the code
+    duplicated the operand first (`fld st(0); call __ftol2`), so extraout_ST0 IS E. E may read X itself
+    (V_StatueMaster GetStatuePointingPosition 0x00ED4420: `iVar1 = __ftol2(f(iVar1))`, then `extraout_ST0 - iVar1`
+    = the fractional day), so it gets a temporary before the call instead of being substituted after it."""
+    if 'extraout_ST0' not in text:
+        return text
+    use = re.search(r'^(?![ \t]*float10 extraout_ST0;).*\bextraout_ST0\b', text, re.M)
+    if not use:
+        return text
+    first_use = use.start() + use.group(0).index('extraout_ST0')
+    calls = []
+    for m in re.finditer(r'^([ \t]*)(\w+) = __ftol2\(', text, re.M):
+        end = _balanced_end(text, m.end() - 1)
+        if end and end < first_use and text[end:end + 1] == ';':
+            calls.append((m, text[m.end():end - 1], end + 1))
+    if not calls:
+        return text
+    m, operand, stmt_end = calls[-1]
+    if re.search(r'\b(?!(?:if|while|for|switch|return|do)\b)\w+\s*\(', text[stmt_end:first_use]):
+        return text          # another call could have consumed ST0
+    temp = 'f_st0'
+    text = text[:m.start()] + f'{m.group(1)}{temp} = {operand};\n{m.group(1)}{m.group(2)} = __ftol2({temp});' + text[stmt_end:]
+    text = re.sub(r'^[ \t]*float10 extraout_ST0;[ \t]*\r?\n', '', text, flags=re.M)
+    return re.sub(r'(?:\(float10\))?\bextraout_ST0\b', temp, text)
+
+
 def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     diag = []
     text = source
@@ -3301,6 +3636,11 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = normalise_typed_decompile(text)
+    text = resolve_this_aliases(text, spec)
+    text = name_ftol2_operand(text)
+    text = index_member_array_walks(text, spec)
+    text = lower_cifmod(text, spec)
+    text = lower_conversation_snapshots(text, spec)
     if getattr(spec, 'native_address', None) == 0xf1eed0:
         from tools.script_recovery.native_arena_counter_arrays import recover_counter_arrays
         text = recover_counter_arrays(text)
@@ -3624,6 +3964,10 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                 from tools.script_recovery.native_integer_arrays import lower_integer_array
                 text = lower_integer_array(text, a, base, tag)
                 continue
+            if a.get('element') == 'float' and stride == 4 and a['members'] == {0: ('', 'Float')}:
+                from tools.script_recovery.native_integer_arrays import lower_float_array
+                text = lower_float_array(text, a, base, tag)
+                continue
             if a.get('element') == 'bool' and stride == 1 and a['members'] == {0: ('', 'Bool')}:
                 # PlayWave F1FA9F/F1FE2D: MOV BYTE PTR [ESI+EAX+E2],1.
                 # Ghidra spells the byte-addressed receiver as a class subscript.
@@ -3863,6 +4207,35 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             # erase(begin, end) is a clear
             text = re.sub(r'Std_Vector_Erase_Range\((?:\(int \*\))?(?:\w+|' + re.escape(ref) + r'),\s*' + re.escape(bv) + r',\s*(?:' + re.escape(ev) + r'|\(' + re.escape(f'{tag}LIST_Count("{name}")') + r' \* 0xc\))\);',
                           f'{tag}LIST_Clear("{name}");', text)
+            # the member's address as a whole call argument (`GSI->GetAllThingsWithScriptName(&name,(this + 0x48))`,
+            # `resize((this + 0x54),n,fill)`: CS_OakValeRevisited OakValeFire 0x00EE8870)
+            text = re.sub(r'([(,]\s*)\(' + base + r' \+ ' + off_re(off) + r'\)(?=\s*[,)])', lambda mm, ref=ref: mm.group(1) + ref, text)
+            for label, target in getattr(spec, 'call_labels', {}).items():
+                if target in THING_VECTOR_RESIZE:
+                    fills = []
+                    def resize(mm, name=name, tag=tag, fills=fills):
+                        fills.append(mm.group(3))
+                        return f'{mm.group(1)}{tag}LIST_Resize("{name}", {mm.group(2)});'
+                    text = re.sub(r'^([ \t]*)' + re.escape(label).replace('::', r'\s*::\s*') + r'\s*\(\s*(?:\([^()]*\*\)\s*)?' + re.escape(ref) +
+                                  r',\s*([^;]+?),\s*(\w+)\s*\);', resize, text, flags=re.M)
+                    # the fill value (an empty CScriptThing the sidecar supplies itself) is dead once folded
+                    for fill in set(fills):
+                        f_ = re.escape(fill)
+                        body = re.sub(r'^[ \t]*[\w:<>]+(?: \*+| )\s*' + f_ + r';[ \t]*\r?\n', '', text, flags=re.M)   # not its declaration
+                        if len(re.findall(r'\b' + f_ + r'\b', body)) == len(re.findall(r'^[ \t]*' + f_ + r' = [^;\n]*;', body, re.M)):
+                            text = re.sub(r'^[ \t]*' + f_ + r' = [^;\n]*;[ \t]*\r?\n', '', text, flags=re.M)
+            # an element assigned a thing with CScriptThing::operator= inlined: Info/Data read off the source, the
+            # element's Info slot (begin + i*0xc + 8) compared, released, stored, retained (OakValeFire's
+            # `Fires[i] = CreateEffect(...)`)
+            begin_names = [re.escape(bv)] + [re.escape(v) for v in re.findall(r'^[ \t]*(\w+) = ' + re.escape(bv) + r';', text, re.M)]
+            for bname in begin_names:
+                text = re.sub(r'^(?P<ind>[ \t]*)(?P<info>\w+) = \*\(int \*\*\)\((?P<src>\w+) \+ (?:0x8|8)\);\s*'
+                              r'(?P<data>\w+) = \*\(undefined4 \*\)\((?P=src) \+ (?:0x4|4)\);\s*'
+                              r'(?P<slot>\w+) = \(int \*\)\((?P<idx>\w+) \+ 8 \+ ' + bname + r'\);\s*'
+                              r'(?P<old>\w+) = \(int \*\)\*(?P=slot);\s*'
+                              r'if \((?P=old) != (?P=info)\) \{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}[ \t]*\r?\n',
+                              lambda mm, name=name, tag=tag: f'{mm.group("ind")}{tag}LIST_SetAt("{name}", ({mm.group("idx")}) / 0xc, {mm.group("src")});\n',
+                              text, flags=re.M)
             # an interface call filling the member through its out-argument returns the table
             text = re.sub(r'^([ \t]*)GSI->(\w+)\(((?:[^;()]*?),\s*)?' + re.escape(ref) + r'\);',
                           lambda m, name=name, tag=tag: f'{m.group(1)}{tag}LIST_Set("{name}", GSI->{m.group(2)}({(m.group(3) or "").rstrip().rstrip(",")}));', text, flags=re.M)
@@ -4152,6 +4525,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_local_string_vectors(text, getattr(spec, 'call_labels', None) or {})
     text = fold_counted_map_stores(text, getattr(spec, 'call_labels', None) or {})
     text = fold_drifted_actor_values(text)
+    text = lower_embedded_state_stores(text)
+    # C's bool-to-int in arithmetic (`WaveID = (cVar5 != '\0') + 1`, SummoningTheShip SummonerMinion Init
+    # 0x00DF2980): Lua cannot add a boolean
+    text = re.sub(r"\((\w+) != '\\0'\) ([+*-]) ", r'ENGINE_BoolToInt(\1) \2 ', text)
+    text = brace_assigning_single_ifs(text)
+    text = nest_assigning_else_if(text)
+    # C unsigned literals (`nextSummonerSpawnPoint + 1U`, DragonBossFight 0x00D25890) are plain Lua numbers
+    text = re.sub(r'"(?:[^"\\\n]|\\.)*"|\b((?:0x[0-9a-f]+|\d+))U\b', lambda m: m.group(1) if m.group(1) else m.group(0), text)
     return text, diag
 
 
@@ -4379,8 +4760,15 @@ LUA_PSEUDO = [
     (re.compile(r'QUESTLIST_Erase\('), 'quest:StateListErase('),
     (re.compile(r'QUESTLIST_Clear\('), 'quest:StateListClear('),
     (re.compile(r'ENTITYLIST_Clear\('), '__native_entity_state:StateListClear('),
+    (re.compile(r'QUESTLIST_SetAt\('), 'quest:StateListSetAt('),
+    (re.compile(r'ENTITYLIST_SetAt\('), '__native_entity_state:StateListSetAt('),
+    (re.compile(r'QUESTLIST_Resize\('), 'quest:StateListResize('),
+    (re.compile(r'ENTITYLIST_Resize\('), '__native_entity_state:StateListResize('),
     (re.compile(r'QUESTLIST_Set\('), 'quest:StateListSet('),
     (re.compile(r'ENTITYLIST_Set\('), '__native_entity_state:StateListSet('),
+    (re.compile(r'FLAGS_Member\(("\w+")\)'), r'quest:RetailFlags(\1)'),
+    (re.compile(r'FLAGS_Get\(([^,()]+(?:\([^()]*\))?), '), r'\1:Get('),
+    (re.compile(r'FLAGS_Set\(([^,()]+(?:\([^()]*\))?), '), r'\1:Set('),
     (re.compile(r'ENTITYLIST_Erase\('), '__native_entity_state:StateListErase('),
     (re.compile(r'QUESTLIST_(?:BeginValue|Ref)\('), 'quest:GetStateListRef('),
     (re.compile(r'QUESTLIST_EndValue\('), 'quest:GetStateListEnd('),
@@ -4393,6 +4781,10 @@ LUA_PSEUDO = [
     (re.compile(r'QUESTTHING_Empty\(\)'), 'nil'),
     (re.compile(r'ENGINE_LostOperand\(\)'), 'nil --[[operand lost by the decompiler]]'),
     (re.compile(r'ENGINE_Rand\(\)'), 'math.random(0, 32767)'),
+    (re.compile(r'ENGINE_Fmod\('), 'math.fmod('),
+    (re.compile(r'ENGINE_BoolToInt\((\w+)\)'), r'((\1 ~= false and \1 ~= nil and \1 ~= 0) and 1 or 0)'),
+    (re.compile(r'ENGINE_NotNil\((\w+)\)'), r'(\1 ~= nil)'),
+    (re.compile(r'(?<![\w.:])fpatan\('), 'math.atan('),   # x87 FPATAN = atan2(ST1, ST0), Ghidra's fpatan(ST1, ST0)
     (re.compile(r'ENGINE_EmptyString\(\)'), '""'),
     (re.compile(r'ENGINE_ZeroVector\(\)'), '{x = 0, y = 0, z = 0}'),
     (re.compile(r'ENGINE_VectorCopy\((\w+)\)'), r'{x = \1.x, y = \1.y, z = \1.z}'),
@@ -4490,6 +4882,8 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_StrEq', lambda a: f'({a[0]} == {a[1]})' if len(a) == 2 else 'ENGINE_StrEq(' + ', '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_StrCmp', lambda a: f'(({a[0]} == {a[1]}) and 0 or 1)' if len(a) == 2 else 'ENGINE_StrCmp(' + ', '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_Round', lambda a: f'math.floor(({a[0]}) + 0.5)' if len(a) == 1 else 'ENGINE_Round(' + ', '.join(a) + ')')
+    text = _expand_calls(text, 'ENGINE_ConversationLines', lambda a: f'quest:GlobalConversations({a[0]})[({a[1]}) + 1].Lines' if len(a) == 2 else 'ENGINE_ConversationLines(' + ', '.join(a) + ')')
+    text = _expand_calls(text, 'ENGINE_ConversationString', lambda a: f'quest:GlobalConversations({a[0]})[({a[1]}) + 1][{a[2]}][({a[3]}) + 1]' if len(a) == 4 else 'ENGINE_ConversationString(' + ', '.join(a) + ')')
     text = text.replace('ENGINE_IsAllDead(', '__native_all_dead(')     # the helper is defined per file by convert_quest_unit
     # its parameter is the vector itself: an element index here is the list rewrite overreaching
     text = re.sub(r'__native_all_dead\((\w+)\[[^\]]*\]\)', r'__native_all_dead(\1)', text)

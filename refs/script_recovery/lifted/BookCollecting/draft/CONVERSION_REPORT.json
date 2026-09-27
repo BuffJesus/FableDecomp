@@ -60,7 +60,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "helper_E54AA0: 2 helper operands for 1 parameters",
             "unlifted: p1 = CCharString::CCharString(xStack_4);",
             "unlifted: CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)(this + 0x94),iV",
             "unlifted: std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,st",
@@ -82,7 +81,7 @@
             "ENGINE_GlobalGameData",
             "SetStateInt"
           ],
-          "lines": 26,
+          "lines": 25,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -172,7 +171,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "unnamed field 0x4c",
             "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
             "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
             "unlifted: *xStack_24._8_4_ = *xStack_24._8_4_ + 1;",
@@ -194,10 +192,10 @@
             "unlifted: (**(code **)(*(int *)this_00 + 0x58))();",
             "unlifted: (**(code **)(*(int *)this_00 + 0x28))();",
             "unlifted: (**(code **)(*(int *)this_01 + 0x58))(&xStack_28);",
-            "unlifted: (**(code **)(*(int *)this_01 + 0x28))();",
-            "unlifted: iVar2 = *(native_arg_param_1 * 0x5c + 0x28 + quest:GetStateInt(\"self_0x4c\"))"
+            "unlifted: (**(code **)(*(int *)this_01 + 0x28))();"
           ],
           "calls": [
+            "ENGINE_ConversationLines",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
             "GetThingWithScriptName",
@@ -223,7 +221,7 @@
             "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource"
           ],
-          "lines": 73,
+          "lines": 72,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -238,218 +236,6 @@
           "nativeLabels": [
             "LAB_00e56993"
           ]
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E54AA0",
-          "address": "0x00e54aa0",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: *(int *)this = iVar3;",
-            "unlifted: *(uint *)(this + 8) = uVar1 * 0x5c + iVar3;",
-            "helper_E54C50: 2 helper operands for 1 parameters",
-            "helper_E54CA0: 2 helper operands for 1 parameters",
-            "helper_E54C50: 2 helper operands for 1 parameters",
-            "unlifted: std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelli",
-            "unlifted: *(uint *)(this + 4) = uVar1 * 0x5c + *(int *)this;",
-            "unlifted: pCVar4 = *this",
-            "unlifted: pCVar5 = *native_arg_param_2",
-            "unlifted: if ((*(this + 8) - pCVar4) / 0x5c) < uVar1 then",
-            "unlifted: uVar2 = (*(this + 4) - pCVar4) / 0x5c",
-            "unlifted: pCVar4 = *(this + 4)"
-          ],
-          "calls": [],
-          "lines": 53,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": false,
-            "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_BookCollecting/V_BookCollecting.lua:helper_E54AA0",
-                "line": 31,
-                "message": "FSE/V_BookCollecting/V_BookCollecting.lua:helper_E54AA0:31: unexpected symbol near '*'"
-              }
-            ]
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E54E40",
-          "address": "0x00e54e40",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              },
-              {
-                "native": "param_3",
-                "lua": "native_arg_param_3",
-                "type": "CDefClassBase *"
-              },
-              {
-                "native": "param_4",
-                "lua": "native_arg_param_4",
-                "type": "CDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "helper_E54CA0: 2 helper operands for 1 parameters"
-          ],
-          "calls": [],
-          "lines": 16,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E54C10",
-          "address": "0x00e54c10",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "this",
-                "lua": "native_arg_this",
-                "type": "std::allocator<CConversation>_> *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unlifted: (**(code **)*puVar2)(0);",
-            "unlifted: free(*(void **)native_arg_this);",
-            "unlifted: local puVar1 = *(native_arg_this + 4)",
-            "unlifted: puVar2 = *native_arg_this",
-            "unlifted: if *native_arg_this ~= nil then"
-          ],
-          "calls": [],
-          "lines": 12,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E54C50",
-          "address": "0x00e54c50",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "unlifted: CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);",
-            "unnamed field 0x28 written in helper_E54C50",
-            "unlifted: CCombatWheel__operator_(this + 0x2c,(int)(native_arg_param_1 + 0x2c));",
-            "unlifted: CCombatWheel__operator_(this + 0x38,(int)(native_arg_param_1 + 0x38));",
-            "unlifted: CCombatWheel__operator_(this + 0x44,(int)(native_arg_param_1 + 0x44));",
-            "unlifted: CCombatWheel__operator_(this + 0x50,(int)(native_arg_param_1 + 0x50));",
-            "unlifted: quest:SetStateInt(\"self_0x28\", *(native_arg_param_1 + 0x28))"
-          ],
-          "calls": [
-            "SetStateInt"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E54CA0",
-          "address": "0x00e54ca0",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CDefClassBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "unlifted: CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);",
-            "unnamed field 0x28 written in helper_E54CA0",
-            "unlifted: Vector_Copy(this + 0x2c,(int)(native_arg_param_1 + 0x2c));",
-            "unlifted: Vector_Copy(this + 0x38,(int)(native_arg_param_1 + 0x38));",
-            "unlifted: Vector_Copy(this + 0x44,(int)(native_arg_param_1 + 0x44));",
-            "unlifted: Vector_Copy(this + 0x50,(int)(native_arg_param_1 + 0x50));",
-            "unlifted: quest:SetStateInt(\"self_0x28\", *(native_arg_param_1 + 0x28))"
-          ],
-          "calls": [
-            "SetStateInt"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
         },
         {
           "owner": "V_BookCollecting",
@@ -474,10 +260,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: CCharString::CCharString(&xStack_14,(CCharString *)(*(int *)(iVar6 + 0x2c + *(int *)(this ",
-            "unlifted: CCharString::CCharString(&xStack_18,(CCharString *)(*(int *)(iVar6 + 0x38 + *(int *)(this ",
-            "unlifted: CCharString::CCharString(xStack_1c,(CCharString *)(*(int *)(iVar6 + 0x44 + *(int *)(this +",
-            "unlifted: CCharString::CCharString((CCharString *)&native_arg_param_2, (CCharString *)(*(int *)(iVar",
             "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
             "AddLineToConversation: missing textKey (4 args for 5 params)",
             "unlifted: iVar6 = CBasicString<char>::Compare(p0,\"boy0\");",
@@ -491,6 +273,10 @@
             "unlifted: cVar3 = (**(*pCVar5 + 0x68))()"
           ],
           "calls": [
+            "ENGINE_ConversationString",
+            "ENGINE_ConversationString",
+            "ENGINE_ConversationString",
+            "ENGINE_ConversationString",
             "GetThingWithScriptName",
             "ENGINE_StrNotEqual",
             "IsActiveThreadTerminating",
@@ -500,7 +286,9 @@
             "GetHero",
             "AddLineToConversation",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1009,11 +797,13 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "SetStateInt",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
@@ -1024,6 +814,7 @@
             "SetStateInt",
             "IsActiveThreadTerminating",
             "SetStateInt",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
@@ -1031,11 +822,13 @@
             "IsActiveThreadTerminating",
             "GiveHeroMorality",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "RESOURCE_NewResource",
@@ -1341,18 +1134,21 @@
             "IsActiveThreadTerminating",
             "ENGINE_IntToString",
             "ENGINE_Concat",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
             "NewScriptFrame",
@@ -1386,39 +1182,33 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 3,
-        "passed": 2,
-        "errors": [
-          {
-            "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-            "line": 192,
-            "message": "FSE/V_BookCollecting/V_BookCollecting.lua:192: unexpected symbol near '*'"
-          }
-        ]
+        "passed": 3,
+        "errors": []
       },
       "controlMode": "structured draft",
-      "bindingFiles": {
-        "BS_Teacher": "V_BookCollecting/Entities/BS_Teacher"
-      },
-      "declaredFreeLocals": {
-        "FSE/V_BookCollecting/V_BookCollecting.lua": {
-          "helper_E54C10": [
-            "puVar1"
-          ],
-          "helper_E569D0": [
-            "xStack_14",
-            "xStack_18"
-          ]
-        },
-        "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
-          "helper_E56D10": [
-            "pCVar6"
-          ],
-          "helper_E57530": [
-            "x_stk_18"
+      "runtimeBoundaries": [
+        {
+          "method": "GlobalConversations",
+          "members": {
+            "0x4c": {
+              "name": "BookReactions",
+              "global": "0x4c8",
+              "element": "CConversation"
+            }
+          },
+          "omittedUnreachableContainerBodies": [
+            "0x00e54aa0",
+            "0x00e54c10",
+            "0x00e54c50",
+            "0x00e54ca0",
+            "0x00e54e40"
           ]
         }
+      ],
+      "bindingFiles": {
+        "BS_Teacher": "V_BookCollecting/Entities/BS_Teacher"
       },
       "cleanupRegions": {
         "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
@@ -1448,6 +1238,16 @@
           ]
         }
       },
+      "declaredFreeLocals": {
+        "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
+          "helper_E56D10": [
+            "pCVar6"
+          ],
+          "helper_E57530": [
+            "x_stk_18"
+          ]
+        }
+      },
       "sharedHelpers": {
         "path": "FSE/V_BookCollecting/native_quest_helpers.lua",
         "functions": [
@@ -1470,22 +1270,22 @@
       },
       "summary": {
         "owners": 2,
-        "functions": 19,
+        "functions": 14,
         "missing": 0,
-        "functionSyntaxPassed": 18,
-        "fileSyntaxPassed": 2,
+        "functionSyntaxPassed": 14,
+        "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 263
+        "todo": 224
       }
     }
   ],
   "summary": {
     "owners": 2,
-    "functions": 19,
+    "functions": 14,
     "missing": 0,
-    "functionSyntaxPassed": 18,
-    "fileSyntaxPassed": 2,
+    "functionSyntaxPassed": 14,
+    "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 263
+    "todo": 224
   }
 }

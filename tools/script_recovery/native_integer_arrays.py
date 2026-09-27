@@ -56,3 +56,20 @@ def lower_integer_array(text, array, base, tag):
                       lambda m: f'{m.group(1)}{tag}STATE_SetInt({key(m.group("idx"))}, {m.group(3)});', text, flags=re.M)
         text = re.sub(deref, lambda m: get(m.group('idx')), text)
     return text
+
+
+def lower_float_array(text, array, base, tag):
+    """Dynamic elements of a `float[N]` member (`*(float *)(this + BASE + i * 4)`): namespaced Float state, the
+    same keys the constant-index fields use (`Name_<i>`). V_StatueMaster AnglesToFaceList (GetStatuePointingPosition
+    0x00ED4420). No cursor or address-taking form is recovered here."""
+    name = array['name']
+    offset = '(?:' + str(array['base']) + '|' + hex(array['base']) + ')'
+    key = lambda index: f'__key("{name}_" .. {index})'
+    idx = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\("[^"]*"\)|[A-Za-z_]\w*)'
+    for expression in (idx + r' \* (?:4|0x4) \+ ' + offset + r' \+ ' + base,
+                       base + r' \+ ' + offset + r' \+ ' + idx + r' \* (?:4|0x4)'):
+        deref = r'\*\((?:float|undefined4) \*\)\(' + expression + r'\)'
+        text = re.sub(r'^([ \t]*)' + deref + r' = ([^;]+);',
+                      lambda m: f'{m.group(1)}{tag}STATE_SetFloat({key(m.group("idx"))}, {m.group(3)});', text, flags=re.M)
+        text = re.sub(deref, lambda m: f'{tag}STATE_GetFloat({key(m.group("idx"))})', text)
+    return text

@@ -1,0 +1,144 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::CActiveEntityScript<NScript::CQ_SummoningTheShipScript>	10690928	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeart::Main	10689200	1550
+0	7	this		0	4	4	5	18	0	0
+0	7	FireHeart	CScriptThing	0	12	1	3	30006	-24	0
+0	7	BriarRoseCommentTimer	CTimer	0	4	1	3	30006	-60	0
+0	7	HeartBeat	CTimer	0	4	1	3	30006	-28	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::Main	10694368	1162
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::Alloc	10687424	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Main	10681872	3118
+0	7	this		0	4	4	5	18	0	0
+0	7	SummonerCountComment		13	4	1	3	30006	-60	0
+0	7	BriarMode		13	4	1	3	30006	-144	0
+0	7	AttackedByEnemyTimer	CTimer	0	4	1	3	30006	-164	0
+0	7	Enemy	CScriptThing	0	12	1	3	30006	-160	0
+0	7	PreviousAIState		13	4	1	3	30006	-72	0
+0	7	Minion	CScriptThing	0	12	1	3	30006	-36	0
+0	7	Summoner	CScriptThing	0	12	1	3	30006	-48	0
+0	7	SummonerCountCommentString	CCharString	0	4	1	3	30006	-148	0
+FUNCTION	CActiveEntityScript<NScript::CQ_SummoningTheShipScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::Init	10680864	257
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeart::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Init	10681136	179
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeart::Init	10688976	44
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeartHolder::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeartHolder::Alloc	10688288	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::MakeBriarRoseComment	10681328	360
+0	7	this		0	4	4	5	18	0	0
+0	7	comment_to_make		0	4	3	3	30006	4	0
+0	7	BriarRose	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	CSpawnedFunc<NScript::CQ_SummoningTheShipScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_SummoningTheShipScript>::CreateActiveEntityScript	10691424	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::Alloc	10690752	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::OnPredicateFail	10684992	118
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Init	10685296	133
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::Main	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::Main	10687728	552
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::RegisterMain	10691120	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeartHolder::Main	10688464	507
+0	7	this		0	4	4	5	18	0	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-28	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-32	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeart::Alloc	10689024	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::Alloc	10681696	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeartHolder::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_SummoningTheShipScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::DoMission	10691920	2445
+0	7	this		0	4	4	5	18	0	0
+0	7	BriarRose	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::Alloc	10695536	118
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Main	10685440	1981
+0	7	this		0	4	4	5	18	0	0
+0	7	FireHeart	CScriptThing	0	12	1	3	30006	-68	0
+0	7	Minion2	CScriptThing	0	12	1	3	30006	-92	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-28	0
+0	7	Minion1	CScriptThing	0	12	1	3	30006	-80	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Alloc	10685120	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::`scalar deleting destructor'	10695664	108
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeartHolder::Init	10463920	104
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerAttacker::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::Init	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::PlayCutscene	10064592	736
+0	7	this		0	4	4	5	18	0	0
+0	7	CutsceneDef	CCharString	0	4	3	3	30006	4	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-60	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-44	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-80	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-28	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CSummonerMinion::Init	10687600	122
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_SummoningTheShipScript::CFireHeart::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+MATCHES	48

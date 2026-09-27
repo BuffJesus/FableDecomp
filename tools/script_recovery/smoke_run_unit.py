@@ -146,7 +146,8 @@ return results
 # bindings the converter emits ahead of the sidecar: each is a row in docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md
 # (the retail transfer it stands for is named there). Reported as `pendingMethods`, not counted as problems.
 PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet in the installed sidecar
-                    'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap'}
+                    'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap',
+                    'StateListResize', 'StateListSetAt', 'GlobalConversations'}
 
 
 def registered_methods():

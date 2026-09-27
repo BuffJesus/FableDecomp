@@ -1,0 +1,117 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CV_SingingStonesScript::WatchForCompleteTune	11821264	2448
+0	7			0	0	2	1	0	0	11823696
+0	7	this		0	4	4	5	18	0	0
+0	7	RudePlayed		10	1	1	3	30006	-161	0
+0	7	Winner		10	1	1	3	30006	-153	0
+0	7	Rude		10	1	1	3	30006	-162	0
+0	7	SpeakMarker	CScriptThing	0	12	1	3	30006	-140	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-56	0
+0	7	SpeakMarker	CScriptThing	0	12	1	3	30006	-140	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-124	0
+0	7	spawn_points	std::vector<CScriptThing,std::allocator<CScriptThing> >	0	16	1	3	30006	-92	0
+0	7	balverine	CScriptThing	0	12	1	3	30006	-24	0
+0	7	Speech	CCharString	0	4	1	3	30006	-152	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-72	0
+0	7	SpeakMarker	CScriptThing	0	12	1	3	30006	-40	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-124	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::`scalar deleting destructor'	11820128	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::OnPersist	11820656	131
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::OnPersist	599968	3
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CV_SingingStonesScript::CManWithDoorName::Init	11114128	22
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::WatchForSpokenToDemonDoors	11813072	150
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::Alloc	11813232	233
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CV_SingingStonesScript>::CActiveEntityScript<NScript::CV_SingingStonesScript>	11819632	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CV_SingingStonesScript::Alloc	11826592	102
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CManWithDoorName::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::WatchForRegionLeaving	11820800	454
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CV_SingingStonesScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CManWithDoorName::Alloc	11814112	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CEntityScriptBinding<NScript::CV_SingingStonesScript>::CreateActiveEntityScript	11820160	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CSpawnedFunc<NScript::CV_SingingStonesScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CManWithDoorName::Main	11814288	5027
+0	7	this		0	4	4	5	18	0	0
+0	7	regionName	CCharString	0	4	1	3	30006	-280	0
+0	7	sehMe	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-276	0
+0	7	item	CCharString	0	4	1	3	30006	-256	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-88	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	Exit	CScriptThing	0	12	1	3	30006	-224	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-152	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-168	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-120	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-104	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-136	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-244	0
+FUNCTION	NScript::CV_SingingStonesScript::`scalar deleting destructor'	11826704	125
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CManWithDoorName::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CV_SingingStonesScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::~CSingingStone	11819328	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::Init	11812944	121
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::Init	11813472	632
+0	7			0	0	2	1	0	0	11814088
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CV_SingingStonesScript	11812800	129
+0	7	this		0	4	4	5	18	0	0
+0	7	master_script_data		0	4	3	3	30006	4	0
+0	7	game		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CV_SingingStonesScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::RegisterMain	11819824	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::Main	11823712	993
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_SingingStonesScript::CSingingStone::Main	11824720	1872
+0	7			0	0	2	1	0	0	11826576
+0	7	this		0	4	4	5	18	0	0
+0	7	SpeakMarker	CScriptThing	0	12	1	3	30006	-48	0
+0	7	i		6	4	1	3	30006	-88	0
+FUNCTION	CSpawnedFunc<NScript::CV_SingingStonesScript>::CSpawnedFunc<NScript::CV_SingingStonesScript>	11819472	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	CEntityScriptBinding<NScript::CV_SingingStonesScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+MATCHES	30

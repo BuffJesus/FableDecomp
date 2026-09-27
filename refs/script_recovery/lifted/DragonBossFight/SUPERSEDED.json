@@ -1,0 +1,21 @@
+{
+  "files": {
+    "FSE/DragonBossFight/DragonBossFight.lua": {
+      "by": "readable/FSE/DragonBossFight/DragonBossFight.lua",
+      "reason": "registered unit dragon_boss_fight (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/DragonBossFight/Entities/DBMinion.lua": {
+      "by": "readable/FSE/DragonBossFight/Entities/DBMinion.lua",
+      "reason": "registered unit dragon_boss_fight (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/DragonBossFight/Entities/DBSummoner.lua": {
+      "by": "readable/FSE/DragonBossFight/Entities/DBSummoner.lua",
+      "reason": "registered unit dragon_boss_fight (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/DragonBossFight/Entities/Dragon.lua": {
+      "by": "readable/FSE/DragonBossFight/Entities/Dragon.lua",
+      "reason": "registered unit dragon_boss_fight (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

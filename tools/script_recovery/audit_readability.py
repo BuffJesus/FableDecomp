@@ -42,13 +42,26 @@ def inspect_source(source):
             else 'needs-readability-work' if findings else 'needs-human-review', 'findings': findings}
 
 
+def superseded(root=ROOT):
+    """First-generation lifts replaced by a registered unit's port: `<package>/SUPERSEDED.json` maps each old file
+    (package-relative) to its replacement. A listed file whose replacement is missing is NOT treated as superseded."""
+    out = {}
+    for marker in sorted((root / 'refs/script_recovery/lifted').glob('*/SUPERSEDED.json')):
+        package = marker.parent
+        for old, row in json.loads(marker.read_text(encoding='utf-8'))['files'].items():
+            if (package / row['by']).is_file():
+                out[(package / old).resolve()] = (package / row['by']).relative_to(root).as_posix()
+    return out
+
+
 def current_scripts(root=ROOT):
     lifted = root / 'refs/script_recovery/lifted'
+    replaced = superseded(root)
     for package in sorted(lifted.iterdir()):
         if package.is_dir():
             for stage in sorted(package.iterdir()):
                 if stage.is_dir() and (stage.name.startswith('readable') or stage.name == 'FSE'):
-                    yield from sorted(stage.rglob('*.lua'))
+                    yield from (p for p in sorted(stage.rglob('*.lua')) if p.resolve() not in replaced)
     yield from sorted((root / 'refs/script_recovery/authored').rglob('*.lua'))
 
 
@@ -70,6 +83,7 @@ def audit(root=ROOT):
     return {'schema': 'lua-readability-audit/1',
             'scope': 'All lifted readable*, lifted FSE, and authored Lua; draft/evidence/candidates excluded.',
             'qualification': 'Mechanical findings only. No file is certified fully readable by this audit.',
+            'superseded': {k.relative_to(root).as_posix() if k.is_relative_to(root) else str(k): v for k, v in superseded(root).items()},
             'files': rows, 'summary': {'files': len(rows), 'syntaxFailures': sum(not r['syntax']['ok'] for r in rows.values()),
                                       'statuses': dict(Counter(r['status'] for r in rows.values())),
                                       'counts': dict(totals)}}
@@ -78,6 +92,8 @@ def audit(root=ROOT):
 def markdown(report):
     lines = ['# Current Lua readability review', '', report['scope'], '', report['qualification'], '',
              f"Files: {report['summary']['files']}; syntax failures: {report['summary']['syntaxFailures']}.", '',
+             f"Superseded first-generation lifts excluded: {len(report.get('superseded', {}))} "
+             "(each listed in its package's SUPERSEDED.json with the registered unit's replacement, which is audited).", '',
              '| Script | Status | Jumps | Native names | Machine locals | Generic locals | Unresolved |',
              '| --- | --- | ---: | ---: | ---: | ---: | ---: |']
     for path, row in report['files'].items():

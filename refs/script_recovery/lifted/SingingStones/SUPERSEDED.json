@@ -1,0 +1,17 @@
+{
+  "files": {
+    "FSE/SingingStones/Entities/ManWithDoorName.lua": {
+      "by": "readable/FSE/V_SingingStones/Entities/ManWithDoorName.lua",
+      "reason": "registered unit singing_stones (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SingingStones/Entities/SingingStone.lua": {
+      "by": "readable/FSE/V_SingingStones/Entities/SingingStone.lua",
+      "reason": "registered unit singing_stones (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SingingStones/SingingStones.lua": {
+      "by": "readable/FSE/V_SingingStones/V_SingingStones.lua",
+      "reason": "registered unit singing_stones (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

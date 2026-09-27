@@ -181,7 +181,7 @@ RE_CONS_VAL = re.compile(r'std::\s*_(?:Cons|Dest)_val<[^;]*?;', re.S)    # bsim-
 RE_GSI = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?GSI->(\w+)\s*\((.*)\);\s*$')
 RE_NAMED_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([^;]*?\)\s*)?([\w:~]+)\s*\((.*)\);\s*$')
 # Evidence-lowering pseudo statements (native_evidence_lowering.py) are emitted as-is with lifted operands.
-RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|RESLIST_\w+|STRINGMAP_\w+)\s*\((.*)\);\s*$')
+RE_PSEUDO_CALL = re.compile(r'^\s*(?:(\w+) = )?(?:\([\w ]+\))?((?:QUEST|ENTITY)(?:THING|STATE|LIST)_\w+|ACTORMAP_\w+|RESOURCE_\w+|ENGINE_\w+|LOCALLIST_\w+|RESLIST_\w+|STRINGMAP_\w+|FLAGS_\w+)\s*\((.*)\);\s*$')
 RE_IF_GOTO = re.compile(r'^\s*if \((.*)\) goto (' + LABEL_TOKEN + r');\s*$')
 RE_IF_BREAK = re.compile(r'^\s*if\s*\((.*)\)\s*break;\s*$')
 def _balanced(depth):
@@ -349,7 +349,10 @@ RE_SIG_TOKEN = re.compile(r'W4\w+?@@|A[AB]V\w+?@@|P[AB]V\w+?@@|A[AB]V\d@|A[AB][A
 # publishes g_PresentedItemName instead)
 # MsgIsHitByHeroWithProjectileWeapon(float& damage): LuaEntityAPI returns the damage (number) or nil -- the
 # SkillTarget archery loop reads the out float after the wait (`0.0 < damage`), 2026-09-20 in-game nil compare
-OUT_AS_RESULT = {'MsgExpressionPerformedTo': 'string', 'MsgIsHitByHeroWithProjectileWeapon': 'number'}
+# `MsgOnRegionLoaded/Unloaded(CCharString& region)` too (LuaQuestState::PollRegionMessage returns the region or nil):
+# V_BeardyBaldy Main compares the loaded region with "BowerstoneSlumsWarehouses" (2026-09-27)
+OUT_AS_RESULT = {'MsgExpressionPerformedTo': 'string', 'MsgIsHitByHeroWithProjectileWeapon': 'number',
+                 'MsgOnRegionLoaded': 'string', 'MsgOnRegionUnloaded': 'string'}
 # The hidden return-slot operand Ghidra shows for by-value class returns (`&stack0x..`, `&pos`, `auStack_48`).
 RE_HIDDEN_SLOT = re.compile(r'^(?:\([^)]*\))?\s*&?(?:stack0x[0-9a-f]+|local_\w+|pos|\w*Stack_\w+)$')
 # C syntax that survived lowering (a pointer dereference / address-of operand, a vtable head, a Ghidra

@@ -179,7 +179,124 @@ def unit_functions(unit_dir):
                                              'ret': ('void' if qname.split('::')[-1] in void_names else
                                                      'bool' if bool_returns.get(address.lower()) == qname else 'int'),
                                              'params': plist, 'source': 'PDB stack parameters'})
+    # helpers the PDB does not name: a proven x87 return is float (int stack parameters from `ret N`)
+    helper_rows = {}
+    for path in sorted((Path(unit_dir) / 'units').glob('*.json')):
+        unit = json.loads(path.read_text(encoding='utf-8'))
+        for name, f in unit['quest']['functions'].items():
+            if name.startswith('helper_') and f.get('address'):
+                helper_rows[f['address'].lower()] = name
+        for ent in unit['entities'].values():
+            for name, f in ent.get('helpers', {}).items():
+                if name.startswith('helper_') and f.get('address'):
+                    helper_rows[f['address'].lower()] = name
+    for address, purge in proven_float_returns(unit_dir).items():
+        if address in helper_rows and address not in out:
+            out[address] = {'name': helper_rows[address], 'cc': '__thiscall', 'ret': 'float',
+                            'params': [{'name': f'param_{i + 1}', 'type': 'int', 'ctype': 'ret N'} for i in range(purge // 4)],
+                            'source': 'x87 return proven by disassembly'}
+    # any other unit function the PDB does not prototype whose `ret N` purges stack operands: Ghidra's own
+    # (bsim-guessed) signature drops them -- SummoningTheShip STS_BriarRose RemoveNeighbours 0x00DF2090 is `ret 4`
+    # with `push 1` at its call site 0x00DF1971, but was typed `void (void)` and read `in_stack_00000004`
+    named = {}
+    for path in sorted((Path(unit_dir) / 'units').glob('*.json')):
+        unit = json.loads(path.read_text(encoding='utf-8'))
+        rows = list(unit['quest']['functions'].items())
+        for ent in unit['entities'].values():
+            rows += list(ent['functions'].items()) + list(ent.get('helpers', {}).items())
+        for name, f in rows:
+            if f.get('address') and name not in ('destructor', 'RegisterMain'):
+                named.setdefault(f['address'].lower(), name)
+    decompiles = {}
+    tu_path = Path(unit_dir) / 'translation_unit.json'
+    if tu_path.exists():
+        decompiles = {f['address'].lower(): f.get('decompile') or '' for f in json.loads(tu_path.read_text(encoding='utf-8-sig'))['functions']}
+    for address, purge in stack_purges(unit_dir).items():
+        if purge <= 0 or address in out or address not in named:
+            continue
+        returns_value = re.search(r'\breturn [^;]+;', decompiles.get(address, '')) is not None
+        out[address] = {'name': named[address], 'cc': '__thiscall', 'ret': 'int' if returns_value else 'void',
+                        'params': [{'name': f'param_{i + 1}', 'type': 'int', 'ctype': 'ret N'} for i in range(purge // 4)],
+                        'source': 'stack purge (ret N) by disassembly'}
     return out
+
+
+def stack_purges(unit_dir, image=None):
+    """address -> the single `ret N` operand of each translation-unit function (absent when its returns disagree)."""
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from tools.script_recovery.lift_native_lua import RData
+    path = Path(unit_dir) / 'translation_unit.json'
+    if not path.exists():
+        return {}
+    image = image or RData()
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    result = {}
+    for fn in json.loads(path.read_text(encoding='utf-8-sig'))['functions']:
+        purges = set()
+        for span in fn.get('bodyRanges', []):
+            start, end = int(span['start'], 16), int(span['endExclusive'], 16)
+            raw = image.bytes_at(start, end - start)
+            if not raw:
+                purges.add(None)
+                break
+            for ins in decoder.disasm(raw, start):
+                if ins.mnemonic == 'ret':
+                    purges.add(int(ins.op_str, 0) if ins.op_str else 0)
+        if len(purges) == 1 and None not in purges:
+            result[fn['address'].lower()] = purges.pop()
+    return result
+
+
+FPU_POP2 = {'fcompp', 'fucompp'}
+FPU_POP1 = {'fstp', 'fistp', 'fcomp', 'fucomp', 'ficomp', 'faddp', 'fsubp', 'fsubrp', 'fmulp', 'fdivp', 'fdivrp', 'fbstp'}
+FTOL2 = 0xBFEA70
+
+
+def proven_float_returns(unit_dir, image=None):
+    """Unit helpers the PDB does not name whose every `ret` leaves exactly one value on the x87 stack return float
+    (V_StatueMaster 0x00ED43D0: `fild; fmul; fiadd; fmul; ret` -- the time of day as a fraction of a day, which bsim
+    labelled `bool CGameCameraManager::HasCameraMode` and Ghidra decompiled as `(bool)((char)(t / 100) * 'd')`).
+    Linear depth tracking; a call other than __ftol2 (which pops its operand) with values on the stack, or a
+    negative depth, rejects the function. Returns address -> stack bytes purged by `ret N`."""
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from tools.script_recovery.lift_native_lua import RData
+    path = Path(unit_dir) / 'translation_unit.json'
+    if not path.exists():
+        return {}
+    image = image or RData()
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    result = {}
+    for fn in json.loads(path.read_text(encoding='utf-8-sig'))['functions']:
+        depth, valid, purges = 0, True, set()
+        for span in fn.get('bodyRanges', []):
+            start, end = int(span['start'], 16), int(span['endExclusive'], 16)
+            raw = image.bytes_at(start, end - start)
+            if not raw:
+                valid = False
+                break
+            for ins in decoder.disasm(raw, start):
+                m = ins.mnemonic
+                if m == 'ret':
+                    valid &= depth == 1
+                    purges.add(int(ins.op_str, 0) if ins.op_str else 0)
+                elif m == 'call':
+                    if ins.op_str.startswith('0x') and int(ins.op_str, 16) == FTOL2:
+                        depth -= 1
+                    elif depth:
+                        valid = False
+                elif m.startswith('fld') or m == 'fild':
+                    depth += 1
+                elif m in FPU_POP2:
+                    depth -= 2
+                elif m in FPU_POP1:
+                    depth -= 1
+                if depth < 0:
+                    valid = False
+                if not valid:
+                    break
+        if valid and len(purges) == 1:
+            result[fn['address'].lower()] = purges.pop()
+    return result
 
 
 def proven_bool_returns(unit_dir, image=None):

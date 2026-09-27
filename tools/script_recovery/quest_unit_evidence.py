@@ -275,7 +275,7 @@ class DebugImage:
         return found
 
 
-def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, layouts, package=None):
+def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, layouts, package=None, typed_by_address=None):
     class_name = f'C{script}Script'
     qualified = f'NScript::{class_name}'
     quest_inv = next(q for q in inventory['quests'] if q['script'] == script)
@@ -452,6 +452,24 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
     for row in unmatched:
         functions[f'helper_{row["address"][2:].lstrip("0").upper()}'] = {'evidence': 'unmatched retail helper', **row}
     fields, skipped, things = class_fields(layouts, class_name, delta=QUEST_RETAIL_DELTA)
+    # a vector<CConversation> member that exactly one call fills from the global definitions and nothing else
+    # passes by address: an unmodified snapshot of static data (V_BookCollecting Init 0x00E54990:
+    # `std_vector_CConversation_Assign(this + 0x4c, DAT_0143e90c + 0x4c8)`, read by BookReaction / DoConversation)
+    snapshots = {}
+    for member in skipped:
+        if not member['type'].startswith('vector<CConversation,'):
+            continue
+        off = int(member['offset'], 16)
+        spelled = r'(?:\(int\))?\(?(?:this|param_1)\)? \+ (?:' + hex(off) + '|' + str(off) + r')\b'
+        # only this script's own functions (the reached set): a unit range can hold a neighbour family's code
+        # (book_collecting's reaches V_BeggarAndChild, whose `this + 0x4c` is a byte flag); the untyped export
+        # drops the ECX operand, so the typed decompiles are read when present
+        decompiles = [f for a, f in (typed_by_address or tu_by_address).items() if a in seen]
+        sites = [m for f in decompiles
+                 for m in re.finditer(r'\w+\(\s*' + spelled + r'\)?,\s*DAT_0143e90c \+ (0x[0-9a-f]+)\);', f.get('decompile') or '')]
+        stores = sum(len(re.findall(r'\*\([^;()]*\*\)\(' + spelled + r'\) = ', f.get('decompile') or '')) for f in decompiles)
+        if len(sites) == 1 and not stores:
+            snapshots[member['offset']] = {'name': member['name'], 'global': sites[0].group(1), 'element': 'CConversation'}
     quest_timers = fields.pop('__timers__', [])
     quest_resources = fields.pop('__resources__', {})
     master_fields = list(class_fields(layouts, 'CQ_SunnyvaleMasterData'))
@@ -476,6 +494,7 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
             'master': dict(zip(('fields', 'unmapped', 'things'), master_fields)),
             'quest': {'functions': functions, 'fields': fields, 'thingFields': things, 'unmappedFields': skipped, 'timers': quest_timers,
                       'resourceFields': quest_resources,
+                      'definitionSnapshots': snapshots,
                       'arrays': array_descriptors(layouts, class_name, delta=QUEST_RETAIL_DELTA), 'retailOffsetDelta': QUEST_RETAIL_DELTA,
                       'pdbMembersUnused': sorted(set(members) - used), 'nestedPdbMembers': {k: sorted(v) for k, v in nested_members.items()}},
             'entities': entities}
@@ -492,13 +511,16 @@ def main():
     inventory = json.loads((evidence / 'inventory.json').read_text(encoding='utf-8-sig'))
     tu = json.loads((evidence / 'translation_unit.json').read_text(encoding='utf-8-sig'))
     by_address = {f['address'].lower(): f for f in tu['functions']}
+    typed_path = evidence / 'translation_unit_typed.json'
+    typed = ({f['address'].lower(): f for f in json.loads(typed_path.read_text(encoding='utf-8-sig'))['functions']}
+             if typed_path.exists() else None)
     pdb, image, layouts = pdb_functions(evidence / 'pdb/Ego_r-pdb-locals.tsv'), DebugImage(), load_layouts()
     out = evidence / 'units'
     out.mkdir(exist_ok=True)
     summary = []
     for q in inventory['quests']:
         cluster = json.loads((args.clusters / f"{q['script']}.json").read_text(encoding='utf-8-sig'))
-        unit = build_unit(q['script'], inventory, cluster, by_address, tu['range'], pdb, image, layouts)
+        unit = build_unit(q['script'], inventory, cluster, by_address, tu['range'], pdb, image, layouts, typed_by_address=typed)
         (out / f"{q['script']}.json").write_text(json.dumps(unit, indent=2) + '\n', encoding='utf-8')
         fns = unit['quest']['functions']
         summary.append({'script': q['script'], 'questFunctions': len(fns),

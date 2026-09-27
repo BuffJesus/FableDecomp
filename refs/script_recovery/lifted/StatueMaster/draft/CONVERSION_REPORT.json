@@ -1,0 +1,593 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "V_StatueMaster",
+      "package": "V_StatueMaster",
+      "packages": [
+        {
+          "owner": "V_StatueMaster",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua"
+        },
+        {
+          "owner": "StatueMasterStatue",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua"
+        },
+        {
+          "owner": "StatueMasterCellarDoors",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua"
+        },
+        {
+          "owner": "StatueMasterChest",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterChest.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "V_StatueMaster",
+          "function": "Main",
+          "address": "0x00ed3b30",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "GetThingWithScriptName",
+            "GetThingWithScriptName",
+            "GetThingWithScriptName",
+            "GetThingWithScriptName",
+            "GetThingWithScriptName",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "SetStateFloat",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "SetStateFloat",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "SetStateFloat",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "SetStateFloat",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty"
+          ],
+          "lines": 95,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_StatueMaster",
+          "function": "Init",
+          "address": "0x00ed3a80",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_StatueMaster",
+          "function": "GetStatuePointingPosition",
+          "address": "0x00ed4420",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua",
+          "evidence": "bsim label only; string sets inconclusive",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": "number",
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetTimeOfDay",
+            "ENGINE_Trunc"
+          ],
+          "lines": 14,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_StatueMaster",
+          "function": "helper_ED43D0",
+          "address": "0x00ed43d0",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": "bool",
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetTimeOfDay"
+          ],
+          "lines": 2,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterStatue",
+          "function": "Main",
+          "address": "0x00ed41d0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "EntitySetCutsceneBehaviour",
+            "GetThingWithScriptName",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "EntitySetFacingAngle",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "SetReadableObjectTextTag",
+            "SetReadableObjectTextTag",
+            "SetReadableObjectTextTag",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 37,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterStatue",
+          "function": "Init",
+          "address": "0x00ed4170",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetReadableObjectTextTag"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterStatue",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "StatueMasterStatue",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterCellarDoors",
+          "function": "Main",
+          "address": "0x00ed45a0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetThingWithScriptName",
+            "IsAlive",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "EntitySetAsLocked",
+            "IsActiveThreadTerminating",
+            "EntitySetAsLocked",
+            "IsActiveThreadTerminating",
+            "MsgIsUsedByHero",
+            "IsActiveThreadTerminating",
+            "DisplayGameInfo",
+            "MsgIsGameInfoClickedPast",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgIsGameInfoClickedPast",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 65,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (!bVar3) goto LAB_00ed45ff;"
+          ],
+          "nativeLabels": [
+            "LAB_00ed45ff"
+          ]
+        },
+        {
+          "owner": "StatueMasterCellarDoors",
+          "function": "Init",
+          "address": "0x00ed4570",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterCellarDoors",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "StatueMasterCellarDoors",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterChest",
+          "function": "Main",
+          "address": "0x00ed4830",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterChest.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RemoveThing"
+          ],
+          "lines": 11,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterChest",
+          "function": "Init",
+          "address": "0x00ed4820",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterChest.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "StatueMasterChest",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterChest.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "StatueMasterChest",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/V_StatueMaster/Entities/StatueMasterChest.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [
+        {
+          "owner": "V_StatueMaster",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/V_StatueMaster/V_StatueMaster.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 5,
+        "passed": 5,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "StatueMasterStatue": "V_StatueMaster/Entities/StatueMasterStatue",
+        "StatueMasterCellarDoors": "V_StatueMaster/Entities/StatueMasterCellarDoors",
+        "StatueMasterChest": "V_StatueMaster/Entities/StatueMasterChest"
+      },
+      "declaredFreeLocals": {
+        "FSE/V_StatueMaster/V_StatueMaster.lua": {
+          "Main": [
+            "fret_0",
+            "fret_00",
+            "fret_01",
+            "fret_02"
+          ]
+        },
+        "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua": {
+          "Main": [
+            "fret_0"
+          ]
+        }
+      },
+      "sharedHelpers": {
+        "path": "FSE/V_StatueMaster/native_quest_helpers.lua",
+        "functions": [
+          "GetStatuePointingPosition",
+          "helper_ED43D0"
+        ],
+        "todo": {
+          "GetStatuePointingPosition": [],
+          "helper_ED43D0": []
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
+      "summary": {
+        "owners": 4,
+        "functions": 16,
+        "missing": 1,
+        "functionSyntaxPassed": 16,
+        "fileSyntaxPassed": 5,
+        "fileSyntaxChecked": 5,
+        "todo": 0
+      }
+    }
+  ],
+  "summary": {
+    "owners": 4,
+    "functions": 16,
+    "missing": 1,
+    "functionSyntaxPassed": 16,
+    "fileSyntaxPassed": 5,
+    "fileSyntaxChecked": 5,
+    "todo": 0
+  }
+}

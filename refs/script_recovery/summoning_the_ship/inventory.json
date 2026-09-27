@@ -1,0 +1,143 @@
+{
+  "schema": "summoning-the-ship-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "ded573ce84cb628f078c1ecb14de473c0108f028ae40fbed8cf4947716a0f3e8",
+  "exportedFunctions": 51,
+  "quests": [
+    {
+      "script": "Q_SummoningTheShip",
+      "allocator": "0x00DF4070",
+      "vtable": "0x012DE10C",
+      "entities": [
+        {
+          "name": "STS_BriarRose",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF13C3",
+          "addBindingCall": "0x00DF1400",
+          "factoryStore": "0x00DF13EC",
+          "factory": "0x00DF16B0",
+          "vtable": "0x012DE1AC",
+          "functions": {
+            "destructor": "0x00DF1810",
+            "Main": "0x00DF1830",
+            "Init": "0x00DF1760",
+            "GetParentScript": "0x00DF1750",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DF1800",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SummonerAttacker",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF1428",
+          "addBindingCall": "0x00DF1464",
+          "factoryStore": "0x00DF144F",
+          "factory": "0x00DF21F0",
+          "vtable": "0x012DE274",
+          "functions": {
+            "destructor": "0x00DF22F0",
+            "Main": "0x00DF2380",
+            "Init": "0x00DF2310",
+            "GetParentScript": "0x00DF2290",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DF22A0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "SummonerMinion",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF148C",
+          "addBindingCall": "0x00DF14C8",
+          "factoryStore": "0x00DF14B3",
+          "factory": "0x00DF2960",
+          "vtable": "0x012DE2B8",
+          "functions": {
+            "destructor": "0x00DF2A20",
+            "Main": "0x00DF2AB0",
+            "Init": "0x00DF2A40",
+            "GetParentScript": "0x00DF2A00",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00DF2A10",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FireHeartHolder",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF14F0",
+          "addBindingCall": "0x00DF152C",
+          "factoryStore": "0x00DF1517",
+          "factory": "0x00DF2C20",
+          "vtable": "0x012DE2D4",
+          "functions": {
+            "destructor": "0x00DF2D10",
+            "Main": "0x00DF2D30",
+            "Init": "0x00DF2CD0",
+            "GetParentScript": "0x00DF2CC0",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "FireHeart",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF1554",
+          "addBindingCall": "0x00DF1590",
+          "factoryStore": "0x00DF157B",
+          "factory": "0x00DF2E90",
+          "vtable": "0x012DE2F0",
+          "functions": {
+            "destructor": "0x00DF2F70",
+            "Main": "0x00DF2F90",
+            "Init": "0x00DF2F40",
+            "GetParentScript": "0x00DF2F30",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        },
+        {
+          "name": "M_ActivateLighthouse",
+          "registrationFunction": "0x00DF13A0",
+          "namePush": "0x00DF15B8",
+          "addBindingCall": "0x00DF15F4",
+          "factoryStore": "0x00DF15DF",
+          "factory": "0x00DF3460",
+          "vtable": "0x012DE334",
+          "functions": {
+            "destructor": "0x00DF3530",
+            "Main": "0x00DF3520",
+            "Init": "0x00DF3510",
+            "GetParentScript": "0x00DF3500",
+            "OnPersist": "0x00CDEBC0",
+            "OnPredicateFail": "0x00CDEBD0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": [
+        "0x00DF4070"
+      ]
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00DF13A0",
+      "store": "0x00DF1652",
+      "body": "0x00DF36E0",
+      "name": "DoMission",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

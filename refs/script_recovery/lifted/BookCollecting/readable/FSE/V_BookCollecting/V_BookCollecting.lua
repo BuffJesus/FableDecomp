@@ -20,7 +20,6 @@ end
 function Init(quest)
     local scratchValue
     quest:SetStateBool("ReadingBook", false)
-    helper_E54AA0(quest, this + 76, DAT_0143e90c + 1224)
     quest:SetStateBool("DoneIntro", false)
     quest:SetStateBool("HatRewarded", false)
     quest:SetStateBool("KeyRewarded", false)
@@ -62,10 +61,9 @@ end
 function null(quest, param1)
     local resources = quest:RetailResources()
     local readingBook, thing, thing_00, thing_01, thing_02
-    local scratchValue = param1
-    -- TODO(native): iVar2 = *(native_arg_param_1 * 0x5c + 0x28 + quest:GetStateInt("self_0x4c"))
-    --[[unresolved native value]]
-    if nil == 0 then
+    local scratchValue2 = param1
+    local scratchValue = quest:GlobalConversations(1224)[param1 + 1].Lines
+    if scratchValue == 0 then
         return
     end
     local boy0 = quest:GetThingWithScriptName("boy0")
@@ -96,9 +94,9 @@ function null(quest, param1)
     -- TODO(native): (**(code **)(*(int *)this_01 + 0x28))();
     readingBook = quest:GetStateBool("ReadingBook")
     param1 = 0
-    while not readingBook and param1 < nil do
+    while not readingBook and param1 < scratchValue do
         if not quest:NewScriptFrame() then return end
-        DoConversation(quest, scratchValue, param1)
+        DoConversation(quest, scratchValue2, param1)
         readingBook = quest:GetStateBool("ReadingBook")
         param1 = param1 + 1
     end
@@ -123,139 +121,29 @@ function null(quest, param1)
     resources:PrepareResource(this_01)
 end
 
--- V_BookCollecting.helper_E54AA0 (retail 0x00e54aa0)
-function helper_E54AA0(quest, param2)
-    local scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue7, scratchValue9
-    if param2 == this then return end
-    local scratchValue = param2[1]
-    -- TODO(native): pCVar4 = *this
-    scratchValue5 = nil --[[unresolved native value]]
-    -- TODO(native): pCVar5 = *native_arg_param_2
-    scratchValue7 = nil --[[unresolved native value]]
-    local scratchValue10 = (scratchValue - scratchValue7) / 92
-    -- TODO(native): if ((*(this + 8) - pCVar4) / 0x5c) < uVar1 then
-    if false then
-        helper_E54E40(quest, scratchValue10, scratchValue7, scratchValue)
-        -- TODO(native): *(int *)this = iVar3;
-        -- TODO(native): *(uint *)(this + 8) = uVar1 * 0x5c + iVar3;
-    else
-        -- TODO(native): uVar2 = (*(this + 4) - pCVar4) / 0x5c
-    --[[unresolved native value]]
-        if nil < scratchValue10 then
-            scratchValue3 = (nil * 92) / 92
-            if 0 < scratchValue3 then
-                repeat
-                    Copy(quest, scratchValue5, scratchValue7)
-                    scratchValue7 = scratchValue7 + 92
-                    scratchValue5 = scratchValue5 + 92
-                    scratchValue3 = scratchValue3 - 1
-                until scratchValue3 == 0
-            end
-            -- TODO(native): pCVar4 = *(this + 4)
-            scratchValue6 = nil --[[unresolved native value]]
-            local scratchValue8 = param2[1]
-            scratchValue9 = ((scratchValue6 - *this) / 92) * 92 + *param2
-            while scratchValue9 ~= scratchValue8 do
-                if scratchValue6 ~= nil then
-                    helper_E54CA0(quest, scratchValue6, scratchValue9)
-                end
-                scratchValue6 = scratchValue6 + 92
-                scratchValue9 = scratchValue9 + 92
-            end
-        else
-            scratchValue4 = (scratchValue - scratchValue7) / 92
-            if 0 < scratchValue4 then
-                repeat
-                    Copy(quest, scratchValue5, scratchValue7)
-                    scratchValue7 = scratchValue7 + 92
-                    scratchValue5 = scratchValue5 + 92
-                    scratchValue4 = scratchValue4 - 1
-                until scratchValue4 == 0
-            end
-            -- TODO(native): std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> ::_Destroy(pCVar4,*(void **)(this + 4));
-        end
-    end
-    -- TODO(native): *(uint *)(this + 4) = uVar1 * 0x5c + *(int *)this;
-end
-
--- V_BookCollecting.helper_E54E40 (retail 0x00e54e40)
-function helper_E54E40(quest, param2, param, param4)
-    local scratchValue2
-    if param2 == 0 then
-        scratchValue2 = 0
-    else
-        scratchValue2 = malloc(param2 * 92)
-    end
-    if param ~= param4 then
-        local scratchValue = scratchValue2 - param
-        repeat
-            if (param + scratchValue) ~= nil then
-                helper_E54CA0(quest, param + scratchValue, param)
-            end
-            param = param + 92
-        until param == param4
-    end
-    return scratchValue2
-end
-
--- V_BookCollecting.helper_E54C10 (retail 0x00e54c10)
-function helper_E54C10(quest, this)
-    local scratchValue, scratchValue2
-    -- TODO(native): local puVar1 = *(native_arg_this + 4)
-    -- TODO(native): puVar2 = *native_arg_this
-    scratchValue2 = nil --[[unresolved native value]]
-    while scratchValue2 ~= scratchValue do
-        -- TODO(native): (**(code **)*puVar2)(0);
-        scratchValue2 = scratchValue2 + 23
-    end
-    -- TODO(native): if *native_arg_this ~= nil then
-end
-
--- V_BookCollecting.Copy (retail 0x00e54c50)
--- E54C50: bsim names this body CConversation::Copy (a homologous script member); no PDB name
-function Copy(quest, param1)
-    -- TODO(native): CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    -- TODO(native): CCombatWheel__operator_(this + 0x2c,(int)(native_arg_param_1 + 0x2c));
-    -- TODO(native): CCombatWheel__operator_(this + 0x38,(int)(native_arg_param_1 + 0x38));
-    -- TODO(native): CCombatWheel__operator_(this + 0x44,(int)(native_arg_param_1 + 0x44));
-    -- TODO(native): CCombatWheel__operator_(this + 0x50,(int)(native_arg_param_1 + 0x50));
-end
-
--- V_BookCollecting.helper_E54CA0 (retail 0x00e54ca0)
-function helper_E54CA0(quest, param1)
-    -- TODO(native): CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    -- TODO(native): Vector_Copy(this + 0x2c,(int)(native_arg_param_1 + 0x2c));
-    -- TODO(native): Vector_Copy(this + 0x38,(int)(native_arg_param_1 + 0x38));
-    -- TODO(native): Vector_Copy(this + 0x44,(int)(native_arg_param_1 + 0x44));
-    -- TODO(native): Vector_Copy(this + 0x50,(int)(native_arg_param_1 + 0x50));
-end
-
 -- V_BookCollecting.DoConversation (retail 0x00e569d0)
 -- E569D0: bsim names this body NScript::CV_BookCollectingScript::DoConversation (a homologous script member); no PDB name
-function DoConversation(quest, param1, param2)
-    local scratchValue, addNewConversation, scratchValue3, sequence, p0, scratchValue4
-    local scratchValue5, scratchValue6
+function DoConversation(quest, param1, param)
     local hero = quest:GetHero()
-    addNewConversation = param2 * 4
-    -- TODO(native): CCharString::CCharString(&xStack_14,(CCharString *)(*(int *)(iVar6 + 0x2c + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString(&xStack_18,(CCharString *)(*(int *)(iVar6 + 0x38 + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString(xStack_1c,(CCharString *)(*(int *)(iVar6 + 0x44 + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString((CCharString *)&native_arg_param_2, (CCharString *)(*(int *)(iVar6 + 0x50 + *(int *)(this + 0x4c)) + iVar8));
+    local resources = quest:RetailResources()
+    local scratchValue, addNewConversation, scratchValue3, sequence, p0, memberResource
+    local scratchValue6
+    addNewConversation = param * 4
+    local scratchValue4 = quest:GlobalConversations(1224)[param1 + 1]["Speaker"][param + 1]
+    local scratchValue5 = quest:GlobalConversations(1224)[param1 + 1]["Dialogue"][param + 1]
+    scratchValue6 = quest:GlobalConversations(1224)[param1 + 1]["Animation"][param + 1]
+    param = quest:GlobalConversations(1224)[param1 + 1]["AnimLoop"][param + 1]
     local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
     scratchValue3 = -1
-    scratchValue = scratchValue6 ~= 0x12393e4 and 1 or 0
+    scratchValue = scratchValue5 ~= 0x12393e4 and 1 or 0
     if scratchValue ~= 0 then
         if quest:IsActiveThreadTerminating() then return end
         addNewConversation = quest:AddNewConversation(getThingWithScriptName, false, false)
         scratchValue3 = addNewConversation
         quest:AddPersonToConversation(addNewConversation, hero)
-        quest:AddLineToConversation(addNewConversation, nil --[[missing]], getThingWithScriptName, hero, false)
+        quest:AddLineToConversation(addNewConversation, nil --[[missing]], getThingWithScriptName, hero, scratchValue5 ~= 0)
     end
-    if scratchValue5 == nil then
+    if scratchValue4 == nil then
         if false then
             goto LAB_00e56b54
         else
@@ -275,18 +163,18 @@ function DoConversation(quest, param1, param2)
     goto FLOW_past_lab_00e56b84
     ::LAB_00e56b84::
     if quest:IsActiveThreadTerminating() then return end
-    scratchValue4 = this + 104
+    memberResource = resources:MemberResource("seh_Girl")
     ::FLOW_hoist_lab_00e56b84_1::
     goto FLOW_hoist_lab_00e56b54_1
     ::FLOW_past_lab_00e56b84::
     goto FLOW_past_lab_00e56b54
     ::LAB_00e56b54::
     if quest:IsActiveThreadTerminating() then return end
-    scratchValue4 = this + 88
+    memberResource = resources:MemberResource("seh_Boy")
     ::FLOW_hoist_lab_00e56b54_1::
-    if scratchValue4 ~= nil then
+    if memberResource ~= nil then
         if quest:IsActiveThreadTerminating() then return end
-        if param2 ~= 0 then
+        if param ~= 0 then
             -- TODO(native): iVar6 = CBasicString<char>::Compare(*(void **)native_arg_param_2,"NULL");
             if scratchValue == 0 then goto LAB_00e56c84 end
         end

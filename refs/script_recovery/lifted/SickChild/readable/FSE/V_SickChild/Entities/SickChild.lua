@@ -25,7 +25,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local timerId = quest:RegisterTimer()
     local getSleepingPositionAndOrientationFromBed = quest:GetSleepingPositionAndOrientationFromBed(me, quest:GetThingWithScriptName("SickChildBed"))
-    local scratchValue5 = fpatan(scratchValue4,scratchValue6)
+    local scratchValue5 = math.atan(scratchValue4,scratchValue6)
     if (scratchValue5 * 0.15915493667125702 < 0.0) or 1.0 <= (scratchValue5 * 0.15915493667125702) then
         if fret_0 < 0.0 then
             -- TODO(native): xStack_8c = (CCharString)(f_stk_8c + 1.0);

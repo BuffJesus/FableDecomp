@@ -1,0 +1,95 @@
+{
+  "schema": "beardy-baldy-native-inventory/0.1",
+  "retailSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+  "translationSha256": "2f83d44adbdee3cc84f78700cf668f6ce926ce2909295a682707a462b90ec563",
+  "exportedFunctions": 38,
+  "quests": [
+    {
+      "script": "V_BeardyBaldy",
+      "allocator": "0x00E54260",
+      "vtable": "0x012E5790",
+      "entities": [
+        {
+          "name": "BB_BeardyBaldyMan",
+          "registrationFunction": "0x00E4FA20",
+          "namePush": "0x00E4FA41",
+          "addBindingCall": "0x00E4FA82",
+          "factoryStore": "0x00E4FA6A",
+          "factory": "0x00E507E0",
+          "vtable": "0x012E5AEC",
+          "functions": {
+            "destructor": "0x00E508F0",
+            "Main": "0x00E50FD0",
+            "Init": "0x00E50890",
+            "GetParentScript": "0x00E50880",
+            "OnPersist": "0x00E508D0",
+            "OnPredicateFail": "0x00E508E0",
+            "OnInterrupted": "0x00CDEBE0"
+          },
+          "missingExports": []
+        }
+      ],
+      "vtableWriters": []
+    }
+  ],
+  "threads": [
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FB7C",
+      "body": "0x00E50100",
+      "name": "WatchForQuestFinished",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FC34",
+      "body": "0x00E50910",
+      "name": "WatchForQuestCardConditions",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FCAC",
+      "body": "0x00E504C0",
+      "name": "WatchForBarberLadyDeath",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FD24",
+      "body": "0x00E503D0",
+      "name": "WatchForBeardyBaldyDeath",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FD9C",
+      "body": "0x00E50150",
+      "name": "WatchForNewHairdo",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FE14",
+      "body": "0x00E50210",
+      "name": "WatchForNewBeard",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E4FA20",
+      "store": "0x00E4FE8F",
+      "body": "0x00E502E0",
+      "name": "WatchForNewTash",
+      "bodyExported": true
+    },
+    {
+      "registrationFunction": "0x00E50FD0",
+      "store": "0x00E51086",
+      "body": "0x00E53D90",
+      "name": "WatchForAttack",
+      "bodyExported": true
+    }
+  ],
+  "errors": [],
+  "status": "ownership inventory; Lua behavior and lifecycle parity are not verified"
+}

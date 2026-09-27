@@ -25,7 +25,6 @@ end
 function Init(quest)
     local iVar1
     quest:SetStateBool("ReadingBook", false)
-    helper_E54AA0(quest, this + 0x4c, DAT_0143e90c + 0x4c8)
     quest:SetStateBool("DoneIntro", false)
     quest:SetStateBool("HatRewarded", false)
     quest:SetStateBool("KeyRewarded", false)
@@ -87,8 +86,7 @@ function null(quest, native_arg_param_1)
     local CVar1, bVar4, iVar2, lVar3, r1, r2, r3, r4, thing, thing_00, thing_01, thing_02, this_00, this_01
     local alive = true
     lVar3 = native_arg_param_1
-    -- TODO(native): iVar2 = *(native_arg_param_1 * 0x5c + 0x28 + quest:GetStateInt("self_0x4c"))
-    iVar2 = nil --[[unresolved native value]]
+    iVar2 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1].Lines
     if iVar2 == 0 then
         alive = not quest:IsActiveThreadTerminating()
         return
@@ -159,125 +157,16 @@ function null(quest, native_arg_param_1)
     ::LAB_00e56993::
 end
 
-function helper_E54AA0(quest, native_arg_param_2)
-    local iVar3, pCVar4, pCVar5, pCVar6, uVar1, uVar2
-    if native_arg_param_2 ~= this then
-        iVar3 = native_arg_param_2[1]
-        -- TODO(native): pCVar4 = *this
-        pCVar4 = nil --[[unresolved native value]]
-        -- TODO(native): pCVar5 = *native_arg_param_2
-        pCVar5 = nil --[[unresolved native value]]
-        uVar1 = (iVar3 - pCVar5) / 0x5c
-        -- TODO(native): if ((*(this + 8) - pCVar4) / 0x5c) < uVar1 then
-        if false then
-            iVar3 = helper_E54E40(quest, uVar1, pCVar5, iVar3)
-            -- TODO(native): *(int *)this = iVar3;
-            -- TODO(native): *(uint *)(this + 8) = uVar1 * 0x5c + iVar3;
-        else
-            -- TODO(native): uVar2 = (*(this + 4) - pCVar4) / 0x5c
-            uVar2 = nil --[[unresolved native value]]
-            if uVar2 < uVar1 then
-                iVar3 = (uVar2 * 0x5c) / 0x5c
-                if 0 < iVar3 then
-                    repeat
-                        helper_E54C50(quest, pCVar4, pCVar5)
-                        pCVar5 = pCVar5 + 0x5c
-                        pCVar4 = pCVar4 + 0x5c
-                        iVar3 = iVar3 + -1
-                    until not (iVar3 ~= 0)
-                end
-                -- TODO(native): pCVar4 = *(this + 4)
-                pCVar4 = nil --[[unresolved native value]]
-                pCVar5 = native_arg_param_2[1]
-                pCVar6 = (((pCVar4 - *this) / 0x5c) * 0x5c + *native_arg_param_2)
-                while pCVar6 ~= pCVar5 do
-                    if pCVar4 ~= nil then
-                        helper_E54CA0(quest, pCVar4, pCVar6)
-                    end
-                    pCVar4 = pCVar4 + 0x5c
-                    pCVar6 = pCVar6 + 0x5c
-                end
-            else
-                iVar3 = (iVar3 - pCVar5) / 0x5c
-                if 0 < iVar3 then
-                    repeat
-                        helper_E54C50(quest, pCVar4, pCVar5)
-                        pCVar5 = pCVar5 + 0x5c
-                        pCVar4 = pCVar4 + 0x5c
-                        iVar3 = iVar3 + -1
-                    until not (iVar3 ~= 0)
-                end
-                -- TODO(native): std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter>,std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>_>_> ::_Destroy(pCVar4,*(void **)(this + 4));
-            end
-        end
-        -- TODO(native): *(uint *)(this + 4) = uVar1 * 0x5c + *(int *)this;
-    end
-    return
-end
-
-function helper_E54E40(quest, native_arg_param_2, native_arg_param_3, native_arg_param_4)
-    local iVar2, pvVar1
-    if native_arg_param_2 == 0 then
-        pvVar1 = 0x0
-    else
-        pvVar1 = malloc(native_arg_param_2 * 0x5c)
-    end
-    if native_arg_param_3 ~= native_arg_param_4 then
-        iVar2 = pvVar1 - native_arg_param_3
-        repeat
-            if (native_arg_param_3 + iVar2) ~= nil then
-                helper_E54CA0(quest, (native_arg_param_3 + iVar2), native_arg_param_3)
-            end
-            native_arg_param_3 = native_arg_param_3 + 0x5c
-        until not (native_arg_param_3 ~= native_arg_param_4)
-    end
-    return pvVar1
-end
-
-function helper_E54C10(quest, native_arg_this)
-    local puVar1, puVar2
-    -- TODO(native): local puVar1 = *(native_arg_this + 4)
-    -- TODO(native): puVar2 = *native_arg_this
-    puVar2 = nil --[[unresolved native value]]
-    while puVar2 ~= puVar1 do
-        -- TODO(native): (**(code **)*puVar2)(0);
-        puVar2 = puVar2 + 0x17
-    end
-    -- TODO(native): if *native_arg_this ~= nil then
-    if false then
-        -- TODO(native): free(*(void **)native_arg_this);
-    end
-end
-
-function helper_E54C50(quest, native_arg_param_1)
-    -- TODO(native): CThingBuildingDef::operator=((CThingBuildingDef *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    -- TODO(native): CCombatWheel__operator_(this + 0x2c,(int)(native_arg_param_1 + 0x2c));
-    -- TODO(native): CCombatWheel__operator_(this + 0x38,(int)(native_arg_param_1 + 0x38));
-    -- TODO(native): CCombatWheel__operator_(this + 0x44,(int)(native_arg_param_1 + 0x44));
-    -- TODO(native): CCombatWheel__operator_(this + 0x50,(int)(native_arg_param_1 + 0x50));
-end
-
-function helper_E54CA0(quest, native_arg_param_1)
-    -- TODO(native): CDefClassBase::CDefClassBase((CDefClassBase *)this,(int)native_arg_param_1);
-    -- TODO(native): name field 0x28 (undefined4)
-    -- TODO(native): quest:SetStateInt("self_0x28", *(native_arg_param_1 + 0x28))
-    -- TODO(native): Vector_Copy(this + 0x2c,(int)(native_arg_param_1 + 0x2c));
-    -- TODO(native): Vector_Copy(this + 0x38,(int)(native_arg_param_1 + 0x38));
-    -- TODO(native): Vector_Copy(this + 0x44,(int)(native_arg_param_1 + 0x44));
-    -- TODO(native): Vector_Copy(this + 0x50,(int)(native_arg_param_1 + 0x50));
-end
-
 function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
-    local bVar2, cVar3, iVar6, iVar8, i_stk_10, native_arg_sequence_1, p0, pCVar4, pCVar5, r1, xStack_14, xStack_18
+    local resources = quest:RetailResources()
+    local bVar2, cVar3, iVar6, iVar8, i_stk_10, native_arg_sequence_1, p0, pCVar4, pCVar5, r1, xStack_14, xStack_18, xStack_1c
     local alive = true
     iVar6 = native_arg_param_1 * 0x5c
     iVar8 = native_arg_param_2 * 4
-    -- TODO(native): CCharString::CCharString(&xStack_14,(CCharString *)(*(int *)(iVar6 + 0x2c + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString(&xStack_18,(CCharString *)(*(int *)(iVar6 + 0x38 + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString(xStack_1c,(CCharString *)(*(int *)(iVar6 + 0x44 + *(int *)(this + 0x4c)) + iVar8));
-    -- TODO(native): CCharString::CCharString((CCharString *)&native_arg_param_2, (CCharString *)(*(int *)(iVar6 + 0x50 + *(int *)(this + 0x4c)) + iVar8));
+    xStack_14 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Speaker"][(native_arg_param_2) + 1]
+    xStack_18 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Dialogue"][(native_arg_param_2) + 1]
+    xStack_1c = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Animation"][(native_arg_param_2) + 1]
+    native_arg_param_2 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["AnimLoop"][(native_arg_param_2) + 1]
     r1 = quest:GetThingWithScriptName(nil --[[missing]])
     i_stk_10 = -1
     iVar6 = ((xStack_18 ~= 0x12393e4) and 1 or 0)
@@ -292,7 +181,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         pCVar4 = quest:GetHero()
         quest:AddPersonToConversation(iVar8, pCVar4)
         pCVar4 = quest:GetHero()
-        quest:AddLineToConversation(iVar8, nil --[[missing]], r1, pCVar4, false)
+        quest:AddLineToConversation(iVar8, nil --[[missing]], r1, pCVar4, (xStack_18 ~= 0))
     end
     pCVar5 = 0x0
     if xStack_14 == nil then
@@ -319,7 +208,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00e56cd0 end
-    pCVar5 = this + 0x68
+    pCVar5 = resources:MemberResource("seh_Girl")
     ::FLOW_hoist_lab_00e56b84_1::
     goto FLOW_hoist_lab_00e56b54_1
     ::FLOW_past_lab_00e56b84::
@@ -328,7 +217,7 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then goto LAB_00e56cd0 end
-    pCVar5 = this + 0x58
+    pCVar5 = resources:MemberResource("seh_Boy")
     ::FLOW_hoist_lab_00e56b54_1::
     if pCVar5 ~= nil then
         alive = not quest:IsActiveThreadTerminating()

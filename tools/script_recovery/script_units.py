@@ -247,6 +247,65 @@ UNITS = {
         'schema': 'oakvale-revisited-native-inventory/0.1',
         'package': 'OakValeRevisited',
     },
+    # The six old named-cluster scripts (first-generation lifts under refs/script_recovery/lifted/<X>/FSE, Aeon has
+    # hand ports of all of them). Range = the cluster's own lifecycle block up to the NEXT block's first lifecycle
+    # function, not the next allocator: a family's allocator sits at the END of its block, so the allocator bound
+    # (used for sick_child / book_collecting) swallows the neighbour's code -- sick_child's inventory lists
+    # SingingStones' three threads (registered by 0x00ED10A0). 2026-09-27.
+    'beardy_baldy': {
+        'evidence': ROOT / 'refs/script_recovery/beardy_baldy',
+        'lo': 0xE4F620, 'hi': 0xE543B0,
+        'ir_glob': 'V_BeardyBaldy*.json',
+        'scripts': ['V_BeardyBaldy'],
+        'pdb_pattern': '*CV_BeardyBaldy*',
+        'schema': 'beardy-baldy-native-inventory/0.1',
+        'package': 'BeardyBaldy',
+    },
+    'dragon_boss_fight': {
+        'evidence': ROOT / 'refs/script_recovery/dragon_boss_fight',
+        'lo': 0xD254B0, 'hi': 0xD273A0,
+        'ir_glob': 'Q_DragonBossFight*.json',
+        'scripts': ['Q_DragonBossFight'],
+        'pdb_pattern': '*CQ_DragonBossFight*',
+        'schema': 'dragon-boss-fight-native-inventory/0.1',
+        'package': 'DragonBossFight',
+    },
+    'heros_old_house': {
+        'evidence': ROOT / 'refs/script_recovery/heros_old_house',
+        'lo': 0xD89DA0, 'hi': 0xD8D640,
+        'ir_glob': 'Q_HerosOldHouse*.json',
+        'scripts': ['Q_HerosOldHouse'],
+        'pdb_pattern': '*CQ_HerosOldHouse*',
+        'schema': 'heros-old-house-native-inventory/0.1',
+        'package': 'HerosOldHouse',
+    },
+    'singing_stones': {
+        'evidence': ROOT / 'refs/script_recovery/singing_stones',
+        'lo': 0xED0EC0, 'hi': 0xED3A80,
+        'ir_glob': 'V_SingingStones*.json',
+        'scripts': ['V_SingingStones'],
+        'pdb_pattern': '*CV_SingingStones*',
+        'schema': 'singing-stones-native-inventory/0.1',
+        'package': 'SingingStones',
+    },
+    'statue_master': {
+        'evidence': ROOT / 'refs/script_recovery/statue_master',
+        'lo': 0xED3A80, 'hi': 0xED4B10,
+        'ir_glob': 'V_StatueMaster*.json',
+        'scripts': ['V_StatueMaster'],
+        'pdb_pattern': '*CV_StatueMaster*',
+        'schema': 'statue-master-native-inventory/0.1',
+        'package': 'StatueMaster',
+    },
+    'summoning_the_ship': {
+        'evidence': ROOT / 'refs/script_recovery/summoning_the_ship',
+        'lo': 0xDF1230, 'hi': 0xDF4130,
+        'ir_glob': 'Q_SummoningTheShip*.json',
+        'scripts': ['Q_SummoningTheShip'],
+        'pdb_pattern': '*CQ_SummoningTheShip*',
+        'schema': 'summoning-the-ship-native-inventory/0.1',
+        'package': 'SummoningTheShip',
+    },
     'orchard_farm': {
         # Q_OrchardFarmRaid ctor 0x00DCC040 .. Q_OrchardFarmRaidGood dtor 0x00DD26C0 (+ tail)
         # Q_OrchardFarm_Barricade has no script class: it is a resource section quest activated by the raid.

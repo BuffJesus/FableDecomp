@@ -1,0 +1,942 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Q_DragonBossFight",
+      "package": "DragonBossFight",
+      "packages": [
+        {
+          "owner": "Q_DragonBossFight",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua"
+        },
+        {
+          "owner": "Dragon",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua"
+        },
+        {
+          "owner": "DBMinion",
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua"
+        },
+        {
+          "owner": "DBSummoner",
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "Main",
+          "address": "0x00d255e0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "CreateThread"
+          ],
+          "lines": 7,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "Init",
+          "address": "0x00d254b0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateInt",
+            "AddQuestRegion"
+          ],
+          "lines": 8,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "DoMission",
+          "address": "0x00d26190",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "IsRegionLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsRegionLoaded",
+            "IsActiveThreadTerminating",
+            "FadeScreenOutUntilNextCallToFadeScreenIn",
+            "SetMasterGameState",
+            "GetAllCreaturesExcludingHero",
+            "EntitySetInLimbo",
+            "LOCALLIST_Count",
+            "OverrideMusic",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "GetActiveQuestName",
+            "KickOffQuestStartScreen",
+            "FadeScreenIn",
+            "SetTeleportingAsActive",
+            "DisplayQuestInfo",
+            "ENGINE_Colour",
+            "GetThingWithScriptName",
+            "AddQuestInfoBarHealth",
+            "QUESTTHING_Empty",
+            "CreateThread",
+            "CreateThread",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "SetTeleportingAsActive",
+            "SetCutsceneActionMode",
+            "SetCutsceneActionMode",
+            "FLAGS_Get",
+            "IsActiveThreadTerminating",
+            "AddLogbookStoryEntry",
+            "SetMasterGameState",
+            "EntitySetInLimbo",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHeroMorality",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PlayAVIMovie",
+            "AddLogbookStoryEntry",
+            "SetMasterGameState",
+            "EntitySetInLimbo",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHeroMorality",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PlayAVIMovie",
+            "GiveHeroMorality",
+            "StopOverrideMusic",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 178,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar3) goto LAB_00d26a3a;"
+          ],
+          "nativeLabels": [
+            "LAB_00d26a3a"
+          ]
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "RunEnemySpawning",
+          "address": "0x00d26ba0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetAllThingsWithScriptName",
+            "GetAllThingsWithScriptName",
+            "SetStateInt",
+            "SetStateBool",
+            "SetStateBool",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "SetStateBool"
+          ],
+          "lines": 47,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "JackTaunts",
+          "address": "0x00d26a50",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "label LAB_00d26b7e"
+          ],
+          "calls": [
+            "RegisterTimer",
+            "SetTimer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "GetHero",
+            "AddNewConversation",
+            "GetHero",
+            "GetHero",
+            "ENGINE_IntToString",
+            "ENGINE_Concat",
+            "AddLineToConversation",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "DeregisterTimer"
+          ],
+          "lines": 43,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00d26b6e;"
+          ],
+          "nativeLabels": [
+            "LAB_00d26b6e"
+          ]
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "SpawnMinions",
+          "address": "0x00d26cc0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "PDB-name via string-set match (jaccard 1.00)",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "GetPos",
+            "CreateEffectAtPos",
+            "QUESTTHING_Empty",
+            "GetPos",
+            "CreateCreature",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 26,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "SpawnSummoners",
+          "address": "0x00d26e60",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "PDB-name via string-set match (jaccard 1.00)",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "CreateEffectAtPos: missing position (3 args for 5 params)",
+            "CreateCreature: missing position (2 args for 3 params)",
+            "unlifted: pCVar4 = (**(*(QUESTLIST_BeginValue(\"SummonerSpawnPoints\") + quest:GetStateInt(\"NextSummon",
+            "unlifted: pCVar4 = (**(*(QUESTLIST_BeginValue(\"SummonerSpawnPoints\") + quest:GetStateInt(\"NextSummon"
+          ],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "CreateEffectAtPos",
+            "QUESTTHING_Empty",
+            "CreateCreature",
+            "QUESTTHING_Empty",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 46,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "helper_D25C20",
+          "address": "0x00d25c20",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateBool",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "SetStateInt"
+          ],
+          "lines": 13,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "helper_D27050",
+          "address": "0x00d27050",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "FixMovieSequenceCamera",
+            "RESOURCE_RunMacroWithFlags",
+            "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 15,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Dragon",
+          "function": "Main",
+          "address": "0x00d25a00",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: } else {",
+            "unlifted: } else {",
+            "unlifted: *(undefined4 *)(this_00 + 0x6c) = uVar4;"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsCreatureFlying",
+            "IsActiveThreadTerminating",
+            "IsCreatureFlying",
+            "IsActiveThreadTerminating",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "ENGINE_GlobalGameData",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "ENGINE_GlobalGameData",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "ENGINE_GlobalGameData",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 115,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00d25bfd;",
+            "goto LAB_00d25bfd;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00d25bfd",
+            "LAB_00d25bfd"
+          ]
+        },
+        {
+          "owner": "Dragon",
+          "function": "Init",
+          "address": "0x00d25880",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "helper_D258C0: 2 helper operands for 1 parameters",
+            "unlifted: helper_D258C0(quest, me, *(this + 0x14), 0)"
+          ],
+          "calls": [
+            "SetStateFloat",
+            "SetStateFloat",
+            "SetStateFloat"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Dragon",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "Dragon",
+          "function": "OnPredicateFail",
+          "address": "0x00d259a0",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "MsgIsKilledBy",
+            "SetStateInt"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Dragon",
+          "function": "helper_D258C0",
+          "address": "0x00d258c0",
+          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
+          "evidence": "unnamed entity helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unnamed field 0x48 written in helper_D258C0",
+            "unnamed field 0x68 written in helper_D258C0",
+            "unnamed field 0x6c written in helper_D258C0",
+            "unnamed field 0x68 written in helper_D258C0",
+            "unnamed field 0x6c written in helper_D258C0",
+            "unnamed field 0x68 written in helper_D258C0",
+            "unnamed field 0x6c written in helper_D258C0",
+            "unnamed field 0x68 written in helper_D258C0",
+            "unnamed field 0x6c written in helper_D258C0"
+          ],
+          "calls": [
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt"
+          ],
+          "lines": 44,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBMinion",
+          "function": "Main",
+          "address": "0x00d25d80",
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GiveThingBestEnemyTarget",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RemoveThing"
+          ],
+          "lines": 24,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBMinion",
+          "function": "Init",
+          "address": "0x00d25d10",
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBMinion",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "DBMinion",
+          "function": "OnPredicateFail",
+          "address": "0x00d25d20",
+          "path": "FSE/DragonBossFight/Entities/DBMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "GetTimer",
+            "SetTimer"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBSummoner",
+          "function": "Main",
+          "address": "0x00d25f50",
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GiveThingBestEnemyTarget",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RemoveThing"
+          ],
+          "lines": 24,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBSummoner",
+          "function": "Init",
+          "address": "0x00d25ee0",
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "DBSummoner",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "DBSummoner",
+          "function": "OnPredicateFail",
+          "address": "0x00d25ef0",
+          "path": "FSE/DragonBossFight/Entities/DBSummoner.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "GetTimer",
+            "SetTimer"
+          ],
+          "lines": 3,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [
+        {
+          "owner": "Q_DragonBossFight",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 5,
+        "passed": 5,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "Dragon": "DragonBossFight/Entities/Dragon",
+        "DBMinion": "DragonBossFight/Entities/DBMinion",
+        "DBSummoner": "DragonBossFight/Entities/DBSummoner"
+      },
+      "declaredFreeLocals": {
+        "FSE/DragonBossFight/DragonBossFight.lua": {
+          "Main": [
+            "bVar2"
+          ]
+        }
+      },
+      "sharedHelpers": {
+        "path": "FSE/DragonBossFight/native_quest_helpers.lua",
+        "functions": [
+          "helper_D25C20"
+        ],
+        "todo": {
+          "helper_D25C20": []
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
+      "summary": {
+        "owners": 4,
+        "functions": 22,
+        "missing": 1,
+        "functionSyntaxPassed": 22,
+        "fileSyntaxPassed": 5,
+        "fileSyntaxChecked": 5,
+        "todo": 19
+      }
+    }
+  ],
+  "summary": {
+    "owners": 4,
+    "functions": 22,
+    "missing": 1,
+    "functionSyntaxPassed": 22,
+    "fileSyntaxPassed": 5,
+    "fileSyntaxChecked": 5,
+    "todo": 19
+  }
+}

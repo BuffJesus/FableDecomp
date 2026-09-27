@@ -1,0 +1,17 @@
+{
+  "files": {
+    "FSE/HerosOldHouse/Entities/ExtraBooty.lua": {
+      "by": "readable/FSE/HerosOldHouse/Entities/ExtraBooty.lua",
+      "reason": "registered unit heros_old_house (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/HerosOldHouse/Entities/GhostFisherman.lua": {
+      "by": "readable/FSE/HerosOldHouse/Entities/GhostFisherman.lua",
+      "reason": "registered unit heros_old_house (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/HerosOldHouse/HerosOldHouse.lua": {
+      "by": "readable/FSE/HerosOldHouse/HerosOldHouse.lua",
+      "reason": "registered unit heros_old_house (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

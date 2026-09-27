@@ -1,0 +1,33 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 781ddd8..42e607c 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -144,6 +144,28 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         it->second.erase(it->second.begin() + index);
+     };
+     quest["StateListClear"] = [](LuaQuestState& self, const std::string& name) { NoviUnitData(self).lists[name].clear(); };
++    // std::vector<CScriptThing>::resize(n, CScriptThing()) 0xD34AC0: truncate, or pad with empty things
++    // (CS_OakValeRevisited OakValeFire sizes Fires to the fire-point count before filling it)
++    quest["StateListResize"] = [](LuaQuestState& self, const std::string& name, int count) {
++        auto& list = NoviUnitData(self).lists[name];
++        const std::size_t n = count < 0 ? 0 : static_cast<std::size_t>(count);
++        if (list.size() > n) list.resize(n);
++        while (list.size() < n) list.push_back(NoviEmptyThing());
++    };
++    // element i (0-based, like GetStateListAt) = thing, CScriptThing::operator= inlined at the site
++    quest["StateListSetAt"] = [](LuaQuestState& self, const std::string& name, int index, sol::object value) {
++        auto& list = NoviUnitData(self).lists[name];
++        if (index < 0 || index >= static_cast<int>(list.size()))
++            throw std::runtime_error("StateListSetAt index out of range for " + name);
++        std::shared_ptr<CScriptThing> copy;
++        if (value.is<std::shared_ptr<CScriptThing>>()) {
++            auto sp = value.as<std::shared_ptr<CScriptThing>>();
++            copy = sp ? NoviCopyThing(sp.get()) : nullptr;
++        } else if (value.is<CScriptThing*>()) {
++            copy = NoviCopyThing(value.as<CScriptThing*>());
++        }
++        list[static_cast<std::size_t>(index)] = copy ? copy : NoviEmptyThing();
++    };
+     // a member vector filled through an interface out-argument (`GSI->GetAllCreaturesExcludingHero(&m_AllCreatures)`)
+     // takes the table the binding returned; a by-value copy (`std::vector<CScriptThing> local(m_AllCreatures)`) is a table copy
+     quest["StateListSet"] = [](LuaQuestState& self, const std::string& name, sol::table values) {

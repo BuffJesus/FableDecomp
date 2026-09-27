@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "oakvale_revisited",
- "draft": "refs/script_recovery/lifted/OakValeRevisited/draft",
+ "draft": "refs\\script_recovery\\lifted\\OakValeRevisited\\draft",
  "files": {
   "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua": {
    "functions": [
@@ -17,8 +17,8 @@
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 1,
-      "declarations": 2,
+      "flagTests": 0,
+      "declarations": 1,
       "decimalLiterals": 0
      }
     },
@@ -28,15 +28,15 @@
       "flags": 0,
       "termination": 4,
       "listArithmetic": 0,
-      "byteIndices": 0,
+      "byteIndices": 2,
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 0,
       "deadStores": 1,
       "unusedAlive": 0,
       "flagTests": 4,
-      "declarations": 7,
-      "decimalLiterals": 19
+      "declarations": 5,
+      "decimalLiterals": 4
      }
     },
     {
@@ -45,15 +45,15 @@
       "flags": 0,
       "termination": 1,
       "listArithmetic": 0,
-      "byteIndices": 0,
+      "byteIndices": 2,
       "voidReturns": 0,
       "nilReleases": 0,
       "emptyIfs": 1,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 0,
-      "declarations": 1,
-      "decimalLiterals": 14
+      "flagTests": 1,
+      "declarations": 3,
+      "decimalLiterals": 2
      }
     }
    ],
@@ -62,41 +62,413 @@
      "function": "Main",
      "sourceLine": 4,
      "locals": {
-      "native_arg_param_2": {
-       "name": "param2",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_param_3": {
-       "name": "param3",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_param_4": {
-       "name": "param4",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_param_5": {
-       "name": "param5",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "bVar2_1": {
-       "name": "predicateResult",
-       "basis": "consistent call/state result",
+      "bVar1": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "predicateResult"
+        "isRegionLoaded",
+        "predicateResult",
+        "isActiveThreadTerminating",
+        "isRegionLoaded"
        ]
-      },
-      "bVar2_2": {
+      }
+     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "OakValeFire",
+     "sourceLine": 25,
+     "locals": {
+      "bVar6_1": {
        "name": "isActiveThreadTerminating",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
+      "bVar6_2": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar6_3": {
+       "name": "isActiveThreadTerminating2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar6_5": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar6_6": {
+       "name": "isActiveThreadTerminating3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar6_7": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar6_8": {
+       "name": "isActiveThreadTerminating4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "iVar10_3": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar2_1": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar2_2": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "pCVar9": {
+       "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "uVar12": {
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "u_stk_18": {
+       "name": "scratchValue6",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
       "cVar1": {
+       "name": "retailFlags",
+       "basis": "one method, several names",
+       "assignmentRoles": [
+        null,
+        null,
+        null,
+        null
+       ]
+      }
+     },
+     "splitLocals": {
+      "bVar6": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar6, ctr_28, iVar10, iVar2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+       "versions": {
+        "bVar6_1": [
+         7
+        ],
+        "bVar6_2": [
+         14
+        ],
+        "bVar6_3": [
+         25
+        ],
+        "bVar6_4": [
+         29
+        ],
+        "bVar6_5": [
+         38
+        ],
+        "bVar6_6": [
+         43
+        ],
+        "bVar6_7": [
+         50
+        ],
+        "bVar6_8": [
+         59
+        ]
+       }
+      },
+      "iVar10": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar6, ctr_28, iVar10, iVar2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+       "versions": {
+        "iVar10_1": [
+         18
+        ],
+        "iVar10_2": [
+         52
+        ],
+        "iVar10_3": [
+         57,
+         65
+        ]
+       }
+      },
+      "iVar2": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar6, ctr_28, iVar10, iVar2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+       "versions": {
+        "iVar2_1": [
+         19
+        ],
+        "iVar2_2": [
+         53
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {
+      "bVar6_4": {
+       "literal": "false",
+       "definitionLine": 29,
+       "readLines": [
+        31
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "2": "    local bVar6_1, bVar6_2, bVar6_3, bVar6_4, bVar6_5, bVar6_6, bVar6_7, bVar6_8, ctr_28, iVar10_1, iVar10_2, iVar10_3, iVar2_1, iVar2_2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+        "29": "                bVar6_4 = false\n",
+        "31": "                pCVar9 = quest:CreateEffectAtPos(\"OAKVALE_BURNING_PATCH\", pPosition, 0.0, bVar6_4)\n"
+       }
+      },
+      "iVar10_1": {
+       "literal": "0",
+       "definitionLine": 18,
+       "readLines": [
+        20
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "2": "    local bVar6_1, bVar6_2, bVar6_3, bVar6_5, bVar6_6, bVar6_7, bVar6_8, ctr_28, iVar10_1, iVar10_2, iVar10_3, iVar2_1, iVar2_2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+        "18": "        iVar10_1 = 0\n",
+        "20": "        quest:StateListResize(\"Fires\", (iVar2_1 - iVar10_1) / 0xc)\n"
+       }
+      },
+      "iVar10_2": {
+       "literal": "0",
+       "definitionLine": 52,
+       "readLines": [
+        54
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "2": "    local bVar6_1, bVar6_2, bVar6_3, bVar6_5, bVar6_6, bVar6_7, bVar6_8, ctr_28, iVar10_2, iVar10_3, iVar2_1, iVar2_2, lst_FirePoint, pCVar9, pPosition, uVar12, u_stk_18\n",
+        "52": "                iVar10_2 = 0\n",
+        "54": "                quest:StateListResize(\"Fires\", (iVar2_2 - iVar10_2) / 0xc)\n"
+       }
+      }
+     },
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "helper_EE8390",
+     "sourceLine": 98,
+     "locals": {
+      "bVar10_1": {
+       "name": "isActiveThreadTerminating",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar10_2": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "cVar7": {
+       "name": "scratchValue",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar11_2": {
+       "name": "scratchValue2",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null
+       ]
+      },
+      "iVar9_2": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "iVar9_3": {
+       "name": "scratchValue4",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      },
+      "xStack_2c": {
+       "name": "fence",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "fence"
+       ]
+      },
+      "pCVar8": {
+       "name": "thing",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        "ovHeroStartMarker",
+        "hero"
+       ]
+      },
+      "xStack_10": {
+       "name": "movie",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "movie"
+       ]
+      },
+      "xStack_20": {
+       "name": "resource",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "resource"
+       ]
+      },
+      "xStack_38": {
+       "name": "actorMap",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "actorMap"
+       ]
+      }
+     },
+     "splitLocals": {
+      "iVar9": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar10, cVar7, iVar11, iVar9, v_stk_44, xStack_2c\n",
+       "versions": {
+        "iVar9_1": [
+         24
+        ],
+        "iVar9_2": [
+         29,
+         37
+        ],
+        "iVar9_3": [
+         47,
+         54
+        ]
+       }
+      },
+      "bVar10": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar10, cVar7, iVar11, iVar9, v_stk_44, xStack_2c\n",
+       "versions": {
+        "bVar10_1": [
+         31
+        ],
+        "bVar10_2": [
+         41
+        ]
+       }
+      },
+      "iVar11": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar10, cVar7, iVar11, iVar9, v_stk_44, xStack_2c\n",
+       "versions": {
+        "iVar11_1": [
+         14
+        ],
+        "iVar11_2": [
+         25
+        ]
+       }
+      },
+      "v_stk_44": {
+       "declarationLine": 3,
+       "originalDeclaration": "    local bVar10, cVar7, iVar11, iVar9, v_stk_44, xStack_2c\n",
+       "versions": {
+        "v_stk_44_1": [
+         27,
+         36
+        ],
+        "v_stk_44_2": [
+         45,
+         53
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {
+      "iVar11_1": {
+       "literal": "4",
+       "definitionLine": 14,
+       "readLines": [
+        17
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar10_1, bVar10_2, cVar7, iVar11_1, iVar11_2, iVar9_1, iVar9_2, iVar9_3, v_stk_44_1, v_stk_44_2, xStack_2c\n",
+        "14": "    iVar11_1 = 4\n",
+        "17": "    resources:TryAcquire(pScriptObject, pCVar8, iVar11_1)\n"
+       }
+      },
+      "iVar9_1": {
+       "literal": "0",
+       "definitionLine": 24,
+       "readLines": [
+        26
+       ],
+       "basis": "single literal definition dominates every read",
+       "previousLines": {
+        "3": "    local bVar10_1, bVar10_2, cVar7, iVar11_2, iVar9_1, iVar9_2, iVar9_3, v_stk_44_1, v_stk_44_2, xStack_2c\n",
+        "24": "    iVar9_1 = 0\n",
+        "26": "    quest:StateListResize(\"Fires\", (iVar11_2 - iVar9_1) / 0xc)\n"
+       }
+      }
+     },
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "Main",
+     "sourceLine": 4,
+     "locals": {
+      "scratchValue": {
        "name": "isRegionLoaded",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -105,458 +477,6 @@
        ]
       }
      },
-     "splitLocals": {
-      "bVar2": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar2\n",
-       "versions": {
-        "bVar2_1": [
-         9
-        ],
-        "bVar2_2": [
-         17
-        ]
-       }
-      }
-     },
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
-     "function": "OakValeFire",
-     "sourceLine": 26,
-     "locals": {
-      "CVar3_1": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "CVar3_2": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "bVar7_1": {
-       "name": "isActiveThreadTerminating",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar7_2": {
-       "name": "predicateResult",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar7_3": {
-       "name": "isActiveThreadTerminating2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar7_4": {
-       "name": "predicateResult2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar7_5": {
-       "name": "isActiveThreadTerminating3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "bVar7_6": {
-       "name": "predicateResult3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar7_7": {
-       "name": "isActiveThreadTerminating4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isActiveThreadTerminating"
-       ]
-      },
-      "iVar10": {
-       "name": "createEffectAtPos",
-       "basis": "one method, several names",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "iVar14_2": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar14_3": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "iVar14_4": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar14_5": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "pCVar1_1": {
-       "name": "scratchValue7",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "pCVar1_2": {
-       "name": "getAllThingsWithScriptName",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "getAllThingsWithScriptName"
-       ]
-      },
-      "pCVar11": {
-       "name": "scratchValue8",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "pC_stk_1c": {
-       "name": "scratchValue9",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "piVar2": {
-       "name": "scratchValue10",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "uVar12": {
-       "name": "scratchValue11",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      },
-      "u_stk_20": {
-       "name": "scratchValue12",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null
-       ]
-      }
-     },
-     "splitLocals": {
-      "bVar7": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar3, bVar7, iVar10, iVar14, iVar4, pCVar1, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "versions": {
-        "bVar7_1": [
-         8
-        ],
-        "bVar7_2": [
-         17
-        ],
-        "bVar7_3": [
-         33
-        ],
-        "bVar7_4": [
-         69
-        ],
-        "bVar7_5": [
-         76
-        ],
-        "bVar7_6": [
-         85
-        ],
-        "bVar7_7": [
-         97
-        ]
-       }
-      },
-      "iVar14": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar3, bVar7, iVar10, iVar14, iVar4, pCVar1, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "versions": {
-        "iVar14_1": [
-         23,
-         88
-        ],
-        "iVar14_2": [
-         27
-        ],
-        "iVar14_3": [
-         31,
-         63
-        ],
-        "iVar14_4": [
-         92
-        ],
-        "iVar14_5": [
-         95,
-         103
-        ]
-       }
-      },
-      "CVar3": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar3, bVar7, iVar10, iVar14, iVar4, pCVar1, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "versions": {
-        "CVar3_1": [
-         14
-        ],
-        "CVar3_2": [
-         73,
-         82
-        ]
-       }
-      },
-      "pCVar1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar3, bVar7, iVar10, iVar14, iVar4, pCVar1, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "versions": {
-        "pCVar1_1": [
-         19
-        ],
-        "pCVar1_2": [
-         21
-        ]
-       }
-      }
-     },
-     "removedLiteralLocals": {
-      "iVar14_1": {
-       "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_1, iVar14_2, iVar14_3, iVar14_4, iVar14_5, iVar4, pCVar1_1, pCVar1_2, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "23": "        iVar14_1 = nil --[[unresolved native value]]\n",
-       "88": "                iVar14_1 = nil --[[unresolved native value]]\n"
-      },
-      "uVar9": {
-       "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_1, iVar14_2, iVar14_3, iVar14_4, iVar14_5, iVar4, pCVar1_1, pCVar1_2, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "41": "                uVar9 = nil --[[unresolved native value]]\n"
-      },
-      "u_stk_18": {
-       "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_1, iVar14_2, iVar14_3, iVar14_4, iVar14_5, iVar4, pCVar1_1, pCVar1_2, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, uVar9, u_stk_18, u_stk_20\n",
-       "46": "                u_stk_18 = nil --[[unresolved native value]]\n"
-      }
-     },
-     "inlinedLiteralLocals": {
-      "iVar4": {
-       "literal": "nil",
-       "definitionLine": 39,
-       "readLines": [
-        47
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_2, iVar14_3, iVar14_4, iVar14_5, iVar4, pCVar1_1, pCVar1_2, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, u_stk_20\n",
-        "39": "                iVar4 = nil --[[unresolved native value]]\n",
-        "47": "                piVar2 = (iVar14_3 + 8 + iVar4)\n"
-       }
-      },
-      "pCVar13": {
-       "literal": "\"Q_REVISITED_FIREPOINT\"",
-       "definitionLine": 20,
-       "readLines": [
-        21
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_2, iVar14_3, iVar14_4, iVar14_5, pCVar1_1, pCVar1_2, pCVar11, pCVar13, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, u_stk_20\n",
-        "20": "        pCVar13 = \"Q_REVISITED_FIREPOINT\"\n",
-        "21": "        pCVar1_2 = quest:GetAllThingsWithScriptName(pCVar13)\n"
-       }
-      },
-      "piVar5": {
-       "literal": "nil",
-       "definitionLine": 44,
-       "readLines": [
-        50,
-        59
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_2, iVar14_3, iVar14_4, iVar14_5, pCVar1_1, pCVar1_2, pCVar11, pC_stk_1c, piVar2, piVar5, piVar6, this_00, uVar12, u_stk_20\n",
-        "44": "                piVar5 = nil --[[unresolved native value]]\n",
-        "50": "                if piVar6 ~= piVar5 then\n",
-        "59": "                    if piVar5 ~= nil then\n"
-       }
-      },
-      "piVar6": {
-       "literal": "nil",
-       "definitionLine": 49,
-       "readLines": [
-        50,
-        51
-       ],
-       "basis": "single literal definition dominates every read",
-       "previousLines": {
-        "2": "    local CVar3_1, CVar3_2, bVar7_1, bVar7_2, bVar7_3, bVar7_4, bVar7_5, bVar7_6, bVar7_7, iVar10, iVar14_2, iVar14_3, iVar14_4, iVar14_5, pCVar1_1, pCVar1_2, pCVar11, pC_stk_1c, piVar2, piVar6, this_00, uVar12, u_stk_20\n",
-        "49": "                piVar6 = nil --[[unresolved native value]]\n",
-        "50": "                if piVar6 ~= (nil) then\n",
-        "51": "                    if piVar6 ~= nil then\n"
-       }
-      }
-     },
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
-     "function": "helper_EE8390",
-     "sourceLine": 137,
-     "locals": {
-      "cVar5": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "iVar8": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "ppuVar14": {
-       "name": "resource",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "ppuVar2": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "uVar11": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "bVar9": {
-       "name": "isActiveThreadTerminating",
-       "basis": "one method, several names",
-       "assignmentRoles": [
-        "predicateResult",
-        "isActiveThreadTerminating",
-        "predicateResult"
-       ]
-      },
-      "uStack_64": {
-       "name": "ovHeroStartMarker",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "ovHeroStartMarker"
-       ]
-      },
-      "ppVar6": {
-       "name": "hero",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "hero",
-        "hero"
-       ]
-      },
-      "appu_stk_24": {
-       "name": "movie",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "movie"
-       ]
-      },
-      "local_40": {
-       "name": "resource2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "puVar7": {
-       "name": "actorMap",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "actorMap"
-       ]
-      },
-      "pppuStack_7c": {
-       "name": "resource3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "resource"
-       ]
-      },
-      "pCVar10": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "iVar3": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "pvStack_74": {
-       "name": "fence",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "fence"
-       ]
-      }
-     },
-     "splitLocals": {},
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
-     "function": "Main",
-     "sourceLine": 4,
-     "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -565,7 +485,16 @@
     {
      "function": "OakValeFire",
      "sourceLine": 19,
-     "locals": {},
+     "locals": {
+      "scratchValue": {
+       "name": "firesIndex",
+       "basis": "named by the API that consumes it",
+       "assignmentRoles": [
+        null,
+        null
+       ]
+      }
+     },
      "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
@@ -573,13 +502,14 @@
     },
     {
      "function": "helper_EE8390",
-     "sourceLine": 95,
+     "sourceLine": 54,
      "locals": {
-      "scratchValue6": {
-       "name": "getStateListCount",
-       "basis": "consistent call/state result",
+      "scratchValue": {
+       "name": "firesIndex",
+       "basis": "named by the API that consumes it",
        "assignmentRoles": [
-        "getStateListCount"
+        null,
+        null
        ]
       }
      },
@@ -589,7 +519,7 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
@@ -602,7 +532,7 @@
        "aliveStaging": 3,
        "exitChecksInlined": 0,
        "frameChecks": 1,
-       "inlinedTemporaries": 1,
+       "inlinedTemporaries": 2,
        "deadDefinitions": 0,
        "guardWrappers": 1,
        "retryLoops": 0,
@@ -643,7 +573,7 @@
       },
       "before": {
        "lines": 20,
-       "temporaries": 1,
+       "temporaries": 0,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 2,
@@ -662,18 +592,18 @@
      },
      "OakValeFire": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 0,
-       "aliveStaging": 6,
+       "aliveStaging": 7,
        "exitChecksInlined": 4,
-       "frameChecks": 1,
-       "inlinedTemporaries": 3,
-       "deadDefinitions": 7,
+       "frameChecks": 2,
+       "inlinedTemporaries": 8,
+       "deadDefinitions": 0,
        "guardWrappers": 3,
-       "retryLoops": 1,
+       "retryLoops": 2,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 2,
@@ -681,7 +611,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 2,
+       "tailGuards": 1,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
@@ -701,17 +631,17 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 8,
+       "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 7,
-       "cosmetics": 1,
+       "parentheses": 3,
+       "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 105,
-       "temporaries": 18,
+       "lines": 65,
+       "temporaries": 12,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 8,
@@ -719,28 +649,28 @@
        "requires": 0
       },
       "after": {
-       "lines": 75,
-       "temporaries": 8,
-       "labels": 1,
-       "gotos": 1,
-       "terminationChecks": 6,
-       "frameChecks": 1,
+       "lines": 34,
+       "temporaries": 4,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 5,
+       "frameChecks": 2,
        "requires": 0
       }
      },
      "helper_EE8390": {
       "rewrites": {
-       "splitLocals": 23,
+       "splitLocals": 12,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
        "staleLabelComments": 0,
        "aliveStaging": 2,
-       "exitChecksInlined": 0,
+       "exitChecksInlined": 1,
        "frameChecks": 0,
-       "inlinedTemporaries": 0,
-       "deadDefinitions": 0,
-       "guardWrappers": 0,
+       "inlinedTemporaries": 7,
+       "deadDefinitions": 1,
+       "guardWrappers": 1,
        "retryLoops": 0,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
@@ -749,7 +679,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 0,
+       "tailGuards": 1,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
@@ -771,14 +701,14 @@
        "controlAcquires": 0,
        "sunkLocals": 9,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
-       "cosmetics": 1,
-       "firstAssignments": 14,
+       "parentheses": 3,
+       "cosmetics": 0,
+       "firstAssignments": 0,
        "freeSuffixes": 1,
        "hoistedState": 0
       },
       "before": {
-       "lines": 88,
+       "lines": 55,
        "temporaries": 8,
        "labels": 0,
        "gotos": 0,
@@ -787,8 +717,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 85,
-       "temporaries": 6,
+       "lines": 42,
+       "temporaries": 4,
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 2,
@@ -803,20 +733,14 @@
     "pureLocalFunctions": []
    },
    "readability": {
-    "lines": 184,
+    "lines": 99,
     "counts": {
-     "unresolvedDiagnostics": 56,
      "nativeNames": 2,
-     "genericTemporaries": 67,
-     "gotos": 1
+     "genericTemporaries": 16,
+     "machineTemporaries": 10
     },
-    "status": "needs-recovery",
+    "status": "needs-readability-work",
     "findings": [
-     {
-      "line": 11,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CSubtitleRenderer::SetText((CSubtitleRenderer *)0x64,(CFontBank *)ppVar3,unaff_ESI,unaff_EBX,pCVar4, unaff_retaddr,native_arg_param_2,native_arg_param_3,native_arg_param_4,native_arg_param_5);"
-     },
      {
       "line": 12,
       "category": "nativeNames",
@@ -825,622 +749,137 @@
      {
       "line": 22,
       "category": "genericTemporaries",
-      "text": "scratchValue"
+      "text": "scratchValue5"
      },
      {
       "line": 22,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 22,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 22,
-      "category": "genericTemporaries",
-      "text": "scratchValue9"
-     },
-     {
-      "line": 23,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
-     },
-     {
-      "line": 23,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 24,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> ::operator[]((map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *)(this + 0x60),local_28);"
-     },
-     {
-      "line": 25,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): local CVar3 = *pCVar8"
-     },
-     {
-      "line": 26,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 28,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> ::operator[]((map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *)(this + 0x60),local_28);"
+      "text": "scratchValue6"
      },
      {
       "line": 29,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CVar3 = *pCVar8"
-     },
-     {
-      "line": 30,
       "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 30,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 34,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): iVar14 = *pCVar1"
-     },
-     {
-      "line": 35,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "text": "scratchValue6"
      },
      {
       "line": 36,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): this_00 = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *)(this + 0x54);"
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 36,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
      },
      {
       "line": 37,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> ::resize(this_00,(iVar10 - iVar14) / 0xc);"
-     },
-     {
-      "line": 38,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 39,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 40,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 41,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 41,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 42,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue6"
      },
      {
       "line": 45,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): iVar4 = *this_00"
-     },
-     {
-      "line": 46,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 47,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): uVar9 = (**(*(*pCVar1 + iVar14) + 0x18))(\"FirePoints\",0,0,0)"
-     },
-     {
-      "line": 48,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 50,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): piVar5 = *(iVar10 + 8)"
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
      },
      {
       "line": 51,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
      },
      {
-      "line": 52,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): u_stk_18 = *(iVar10 + 4)"
+      "line": 51,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
      },
      {
       "line": 53,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 54,
-      "category": "genericTemporaries",
-      "text": "scratchValue10"
-     },
-     {
-      "line": 54,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 55,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): piVar6 = *piVar2"
-     },
-     {
-      "line": 56,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 57,
-      "category": "genericTemporaries",
-      "text": "scratchValue9"
-     },
-     {
-      "line": 57,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 59,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *piVar6 = *piVar6 - 1;"
-     },
-     {
-      "line": 60,
-      "category": "genericTemporaries",
-      "text": "scratchValue10"
-     },
-     {
-      "line": 61,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (*(code *)((int *)*piVar2)[1])();"
-     },
-     {
-      "line": 64,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(undefined4 *)(iVar14 + 4 + iVar4) = u_stk_18;"
-     },
-     {
-      "line": 65,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *piVar2 = (int)piVar5;"
-     },
-     {
-      "line": 67,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *piVar5 = *piVar5 + 1;"
-     },
-     {
-      "line": 69,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 69,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 70,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 70,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 71,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 71,
-      "category": "genericTemporaries",
-      "text": "scratchValue9"
-     },
-     {
-      "line": 73,
-      "category": "genericTemporaries",
-      "text": "scratchValue12"
-     },
-     {
-      "line": 76,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> ::operator[]((map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *)(pCVar11 + 0x60),(CCharString *)&stack0xffffffd0);"
-     },
-     {
-      "line": 77,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CVar3 = *pCVar8"
-     },
-     {
-      "line": 78,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 79,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (**(code **)(*(int *)(pCVar11 + 0x3c) + 0x1c))();"
-     },
-     {
-      "line": 81,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): pCVar8 = std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> ::operator[]((map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,C2DVector>_>_> *)(pCVar11 + 0x60),(CCharString *)&stack0xffffffd0);"
-     },
-     {
-      "line": 82,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CVar3 = *pCVar8"
-     },
-     {
-      "line": 85,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): iVar14 = *pCVar1"
-     },
-     {
-      "line": 86,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 87,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> ::resize(this_00,(iVar10 - iVar14) / 0xc);"
-     },
-     {
-      "line": 88,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 89,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
-     },
-     {
-      "line": 90,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 90,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 93,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (**(code **)(*(int *)(pCVar11 + 0x3c) + 0x1b0))(*(int *)this_00 + iVar14,0,1);"
-     },
-     {
-      "line": 94,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
-     },
-     {
-      "line": 94,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
-     },
-     {
-      "line": 95,
-      "category": "genericTemporaries",
-      "text": "scratchValue11"
-     },
-     {
-      "line": 99,
+      "line": 57,
       "category": "nativeNames",
       "text": "helper_EE8390"
      },
      {
-      "line": 102,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 102,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 102,
+      "line": 60,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 105,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): local_44 = (int *)(uint)bVar9;"
+      "line": 60,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_1"
      },
      {
-      "line": 114,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): StartScriptingEntity: unresolved entity receiver/resource in quest context; arguments:"
+      "line": 60,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_2"
      },
      {
-      "line": 115,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): this_01 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)&uStack_64,(CCharString *)&stack0xffffff94);"
+      "line": 75,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_1"
      },
      {
-      "line": 116,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): local ppuVar2 = *(this_01 + 0xc)"
+      "line": 81,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_1"
      },
      {
-      "line": 117,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "line": 81,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_1"
      },
      {
-      "line": 119,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "line": 83,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_1"
      },
      {
-      "line": 120,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *ppuVar2 = *ppuVar2 - 1;"
+      "line": 88,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_2"
      },
      {
-      "line": 122,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (*(code *)(*(int **)(this_01 + 0xc))[1])();"
-     },
-     {
-      "line": 125,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(pair<EHeroMorphType,CParticleMorphs::CEntry> **)(this_01 + 8) = ppVar13;"
-     },
-     {
-      "line": 126,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(undefined ***)(this_01 + 0xc) = ppuVar14;"
-     },
-     {
-      "line": 128,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *ppuVar14 = *ppuVar14 + 1;"
-     },
-     {
-      "line": 131,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 132,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): RunCutsceneMacro_Func();"
-     },
-     {
-      "line": 134,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): StdMap_DestroyNode(*(undefined4 *)pvStack_74[(4) / 0xc + 1]);"
-     },
-     {
-      "line": 135,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(void **)pvStack_74[(8) / 0xc + 1] = pvStack_74;"
-     },
-     {
-      "line": 136,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(undefined4 *)pvStack_74[(4) / 0xc + 1] = 0;"
-     },
-     {
-      "line": 137,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *(void **)pvStack_74[(0xc) / 0xc + 1] = pvStack_74;"
-     },
-     {
-      "line": 140,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 142,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): this = (vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *)(this + 0x54);"
-     },
-     {
-      "line": 144,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): std::vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> ::resize(this,(iVar3 - iVar8) / 0xc);"
-     },
-     {
-      "line": 145,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 146,
+      "line": 90,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 147,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 147,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 148,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 154,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): quest:RemoveThing(ppVar6, *this + iVar8, false)"
-     },
-     {
-      "line": 155,
+      "line": 92,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 155,
+      "line": 93,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 156,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "line": 95,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_2"
      },
      {
-      "line": 156,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "line": 95,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_2"
      },
      {
-      "line": 157,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 163,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 164,
+      "line": 96,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 166,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 166,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 167,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 169,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): cVar5 = (**(*(\"CS_OakValeRevisited\" + iVar8) + 300))()"
-     },
-     {
-      "line": 170,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 170,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 171,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 172,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 174,
+      "line": 96,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 174,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 175,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 175,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 177,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 179,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): for (; pppuVar4 != pppuVar12; pppuVar4 = pppuVar4 + 3) {"
-     },
-     {
-      "line": 180,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (*(code *)**pppuVar4)(0);"
+      "line": 97,
+      "category": "machineTemporaries",
+      "text": "v_stk_44_2"
      }
     ]
    }
@@ -1467,15 +906,9 @@
  "bsimHelperNames": {},
  "syntax": {
   "runtime": "Lua 5.4",
-  "ok": false,
+  "ok": true,
   "checked": 2,
-  "passed": 1,
-  "errors": [
-   {
-    "path": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua",
-    "line": 38,
-    "message": "FSE/CS_OakValeRevisited/CS_OakValeRevisited.lua:38: unexpected symbol near '*'"
-   }
-  ]
+  "passed": 2,
+  "errors": []
  }
 }

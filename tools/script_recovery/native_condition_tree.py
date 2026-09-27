@@ -59,7 +59,30 @@ def _split_top(text, ops=('&&', '||')):
     return None, [text]
 
 
-ASSIGN = re.compile(r'^\s*(\w+)\s*=\s*(?!=)(.+)$', re.S)
+ASSIGN_NAME = re.compile(r'^\s*(\w+)\s*=\s*(?!=)(.+)$', re.S)
+
+
+class _Assign:
+    """A sequence statement: `name = expr`, or a store through any lvalue (`*(undefined1 *)(P + 0x4d) = 1`,
+    HerosOldHouse ExtraBooty) -- a top-level `=` that is not part of `==`, `!=`, `<=`, `>=`."""
+    @staticmethod
+    def match(item):
+        if ASSIGN_NAME.match(item):
+            return True
+        masked = _LITERALS.sub(lambda m: ' ' * len(m[0]), item)
+        depth = 0
+        for i, ch in enumerate(masked):
+            if ch in '([{':
+                depth += 1
+            elif ch in ')]}':
+                depth -= 1
+            elif ch == '=' and depth == 0:
+                prev, nxt = masked[i - 1] if i else '', masked[i + 1] if i + 1 < len(masked) else ''
+                return prev not in '=!<>' and nxt != '=' and bool(masked[:i].strip())
+        return False
+
+
+ASSIGN = _Assign
 
 
 def parse(condition):
@@ -86,7 +109,9 @@ def has_call_assignment(condition):
     def walk(node):
         kind = node[0]
         if kind == 'seq':
-            return any(re.search(r'\w\s*\(', s) for s in node[1]) or walk(node[2])
+            # any sequence element: a Lua expression cannot hold a statement, call or not (HerosOldHouse
+            # ExtraBooty's `(parent->BootyDugUp = 1, !parent->WifeAttacked)` lifted as `GetStateBool(..) = 1`)
+            return bool(node[1]) or walk(node[2])
         if kind in ('and', 'or'):
             return any(walk(n) for n in node[1])
         return False

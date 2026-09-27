@@ -1,0 +1,42 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 42e607c..e41d905 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -344,6 +344,37 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (!definitions || offset < 0) return 0;
+         return *reinterpret_cast<const volatile int*>(definitions + offset);
+     };
++    // A std::vector<CConversation> in the global definitions (*(0x0143E90C) + offset), copied into Lua. Retail
++    // CConversation (0x5C bytes, CConversation::Copy 0x00E54CA0): Lines @0x28, then vector<CCharString> Speaker
++    // @0x2C, Dialogue @0x38, Animation @0x44, AnimLoop @0x50. V_BookCollecting Init snapshots +0x4C8 into its
++    // BookReactions member and never writes it; the scripts read the definitions through this instead.
++    quest["GlobalConversations"] = [](LuaQuestState&, int offset, sol::this_state ts) -> sol::table {
++        sol::state_view lua(ts);
++        sol::table out = lua.create_table();
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0) return out;
++        struct Vec { const unsigned char* first; const unsigned char* last; const unsigned char* end; };
++        const auto* conversations = reinterpret_cast<const Vec*>(definitions + offset);
++        auto strings = [&](const unsigned char* record, int at) {
++            sol::table list = lua.create_table();
++            const auto* v = reinterpret_cast<const Vec*>(record + at);
++            int n = 0;
++            for (const unsigned char* p = v->first; p && p < v->last; p += sizeof(CCharString))
++                list[++n] = NoviCCharStringToStd(reinterpret_cast<const CCharString*>(p));
++            return list;
++        };
++        int index = 0;
++        for (const unsigned char* r = conversations->first; r && r + 0x5C <= conversations->last; r += 0x5C) {
++            sol::table c = lua.create_table();
++            c["Lines"] = *reinterpret_cast<const int*>(r + 0x28);
++            c["Speaker"] = strings(r, 0x2C);
++            c["Dialogue"] = strings(r, 0x38);
++            c["Animation"] = strings(r, 0x44);
++            c["AnimLoop"] = strings(r, 0x50);
++            out[++index] = c;
++        }
++        return out;
++    };
+     quest["ReadGlobalGameDataFloat"] = [](LuaQuestState&, int offset) -> float {
+         auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
+         if (!definitions || offset < 0) return 0.0f;

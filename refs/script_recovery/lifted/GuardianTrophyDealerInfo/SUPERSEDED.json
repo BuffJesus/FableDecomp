@@ -1,0 +1,9 @@
+{
+  "files": {
+    "FSE/GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua": {
+      "by": "readable/FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua",
+      "reason": "registered unit guardian_trophy_dealer_info (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

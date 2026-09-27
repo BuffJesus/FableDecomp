@@ -654,7 +654,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
         java.util.LinkedHashSet<Long> extra = new java.util.LinkedHashSet<>();
         if (!args[3].equals("-")) {
             for (String line : Files.readAllLines(new File(args[3]).toPath())) {
-                String t = line.trim();
+                String t = line.replace("﻿", "").trim();   // a BOM on the first line (oakvale_revisited's defines)
                 if (t.isEmpty() || t.startsWith("#")) continue;
                 long a = Long.parseLong(t.split("\\s+")[0].replace("0x", ""), 16);
                 Address addr = toAddr(a);

@@ -1,0 +1,122 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::Init	10156512	160
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CExtraBooty::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CExtraBooty::Alloc	10157200	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::Alloc	10173680	94
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::OnPredicateFail	10156672	141
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::Main	10160000	5667
+0	7	this		0	4	4	5	18	0	0
+0	7	BootyMarker	CScriptThing	0	12	1	3	30006	-320	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-336	0
+0	7	GhostTimer	CTimer	0	4	1	3	30006	-340	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-292	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-276	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-248	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-308	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::`scalar deleting destructor'	9324352	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::CreateActiveEntityScript	10159280	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+FUNCTION	CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::CActiveEntityScript<NScript::CQ_HerosOldHouseScript>	10157536	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::Main	10165680	7987
+0	7	this		0	4	4	5	18	0	0
+0	7	BootyMarker	CScriptThing	0	12	1	3	30006	-392	0
+0	7	WifeTimer	CTimer	0	4	1	3	30006	-412	0
+0	7	seh_me	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-408	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-128	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-232	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-52	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-188	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-68	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-204	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-172	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+0	7	seh_Hero	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-112	0
+0	7	mymap	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase,std::less<CCharString>,std::allocator<std::pair<CCharString const ,CScriptGameResourceObjectScriptedThingBase> > >	0	16	1	3	30006	-96	0
+0	7	FriendEscape	CScriptThing	0	12	1	3	30006	-216	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-144	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-324	0
+0	7	FriendEscape	CScriptThing	0	12	1	3	30006	-216	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-204	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-316	0
+0	7	FriendEscape	CScriptThing	0	12	1	3	30006	-156	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-188	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-316	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::OnPersist	10159776	93
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::Init	10156048	285
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::Alloc	10156816	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::Main	10158032	1244
+0	7	this		0	4	4	5	18	0	0
+0	7	FishermansWife	CScriptThing	0	12	1	3	30006	-24	0
+0	7	HaveSetQuestAsFailed		10	1	1	3	30006	-45	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::RegisterMain	10157728	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::CSpawnedFunc<NScript::CQ_HerosOldHouseScript>	10157376	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CExtraBooty::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CFishermansWife::OnPersist	10159920	67
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::OnPersist	10159872	33
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CActiveEntityScript<NScript::CQ_HerosOldHouseScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CExtraBooty::Main	10156992	205
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CEntityScriptBinding<NScript::CQ_HerosOldHouseScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::WatchForBooty	10155328	711
+0	7	this		0	4	4	5	18	0	0
+0	7	HiddenBooty	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::CGhostFisherman::Alloc	10156336	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	NScript::CQ_HerosOldHouseScript::Init	10155296	18
+0	7	this		0	4	4	5	18	0	0
+MATCHES	32

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "FSE/BeardyBaldy/BeardyBaldy.lua": {
+      "by": "readable/FSE/V_BeardyBaldy/V_BeardyBaldy.lua",
+      "reason": "registered unit beardy_baldy (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/BeardyBaldy/Entities/BB_BeardyBaldyMan.lua": {
+      "by": "readable/FSE/V_BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+      "reason": "registered unit beardy_baldy (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

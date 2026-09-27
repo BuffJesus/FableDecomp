@@ -1,0 +1,21 @@
+{
+  "files": {
+    "FSE/StatueMaster/Entities/StatueMasterCellarDoors.lua": {
+      "by": "readable/FSE/V_StatueMaster/Entities/StatueMasterCellarDoors.lua",
+      "reason": "registered unit statue_master (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/StatueMaster/Entities/StatueMasterChest.lua": {
+      "by": "readable/FSE/V_StatueMaster/Entities/StatueMasterChest.lua",
+      "reason": "registered unit statue_master (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/StatueMaster/Entities/StatueMasterStatue.lua": {
+      "by": "readable/FSE/V_StatueMaster/Entities/StatueMasterStatue.lua",
+      "reason": "registered unit statue_master (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/StatueMaster/StatueMaster.lua": {
+      "by": "readable/FSE/V_StatueMaster/V_StatueMaster.lua",
+      "reason": "registered unit statue_master (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

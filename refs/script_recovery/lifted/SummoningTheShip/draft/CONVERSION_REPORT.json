@@ -1,0 +1,1315 @@
+{
+  "units": [
+    {
+      "schema": "quest-unit-converter/1",
+      "script": "Q_SummoningTheShip",
+      "package": "SummoningTheShip",
+      "packages": [
+        {
+          "owner": "Q_SummoningTheShip",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua"
+        },
+        {
+          "owner": "STS_BriarRose",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua"
+        },
+        {
+          "owner": "SummonerAttacker",
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua"
+        },
+        {
+          "owner": "SummonerMinion",
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua"
+        },
+        {
+          "owner": "FireHeartHolder",
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua"
+        },
+        {
+          "owner": "FireHeart",
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua"
+        },
+        {
+          "owner": "M_ActivateLighthouse",
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua"
+        }
+      ],
+      "functions": [
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "Main",
+          "address": "0x00df13a0",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "AddEntityBinding",
+            "FinalizeEntityBindings",
+            "CreateThread"
+          ],
+          "lines": 10,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "Init",
+          "address": "0x00df1230",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "cluster lifecycle slot",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "AddQuestRegion",
+            "AddQuestRegion",
+            "SetStateInt",
+            "SetStateInt",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool"
+          ],
+          "lines": 8,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "DoMission",
+          "address": "0x00df36e0",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "inventory thread registration",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "IsLevelLoaded",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsLevelLoaded",
+            "IsActiveThreadTerminating",
+            "SetSummonerDeathExplosionAffectsHero",
+            "SetWeaponOutCrimeEnabled",
+            "GetThingWithScriptName",
+            "RemoveThing",
+            "GetThingWithScriptName",
+            "RemoveThing",
+            "GetThingWithScriptName",
+            "RemoveThing",
+            "GetThingWithScriptName",
+            "SetVillageLimbo",
+            "GetActiveQuestName",
+            "KickOffQuestStartScreen",
+            "FadeScreenIn",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "OverrideMusic",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "SetStateBool",
+            "OverrideMusic",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsFailed",
+            "SetSummonerDeathExplosionAffectsHero",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetThingWithScriptName",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "AddNewConversation",
+            "SetStateInt",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "AddLineToConversation",
+            "StopOverrideMusic",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "PlayAVIMovie",
+            "GetActiveQuestName",
+            "SetQuestAsCompleted",
+            "IsActiveThreadTerminating",
+            "GetActiveQuestName",
+            "SetQuestAsFailed",
+            "GetThingWithScriptName",
+            "SetVillageLimbo",
+            "SetWeaponOutCrimeEnabled",
+            "GetThingWithScriptName",
+            "RemoveThing",
+            "StopOverrideMusic",
+            "GetThingWithScriptName",
+            "GetHero",
+            "EntityTeleportToThing",
+            "GetActiveQuestName",
+            "DeactivateQuestLater"
+          ],
+          "lines": 172,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar2) goto LAB_00df3e3a;"
+          ],
+          "nativeLabels": [
+            "LAB_00df3e3a"
+          ]
+        },
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "MakeBriarRoseComment",
+          "address": "0x00df20f0",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "PDB-name via string-set match (jaccard 0.67)",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "comment_to_make",
+                "lua": "native_arg_comment_to_make",
+                "type": "CCharString_bv *"
+              }
+            ],
+            "returnKind": "bool",
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "IsConversationActive",
+            "SetTimer",
+            "GetThingWithScriptName",
+            "IsAlive",
+            "AddNewConversation",
+            "SetStateInt",
+            "GetHero",
+            "AddPersonToConversation",
+            "GetHero",
+            "ENGINE_Concat",
+            "AddLineToConversation"
+          ],
+          "lines": 22,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "helper_DF3E50",
+          "address": "0x00df3e50",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "RESOURCE_NewResource",
+            "GetHero",
+            "RESOURCE_TryAcquire",
+            "ACTORMAP_New",
+            "ACTORMAP_Set",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "FixMovieSequenceCamera",
+            "RESOURCE_RunMacro",
+            "FixMovieSequenceCamera",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 15,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "STS_BriarRose",
+          "function": "Main",
+          "address": "0x00df1830",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "unlifted: } else {",
+            "label LAB_00df206e",
+            "unlifted: iVar9 = *(*(this + 0x14) + 0x48)",
+            "unlifted: bVar5 = require(\"SummoningTheShip.native_quest_helpers\").MakeBriarRoseComment(quest, me, &"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "RegisterTimer",
+            "SetStateInt",
+            "GetActiveQuestName",
+            "SetQuestCardObjective",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetNearestWithScriptName",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "GiveThingBestEnemyTarget",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "GetNearestWithScriptName",
+            "GetNearestWithScriptName",
+            "ENGINE_SquaredDistance",
+            "ENGINE_SquaredDistance",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GiveThingBestEnemyTarget",
+            "DeregisterTimer",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "GetCurrentStateGroupType",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "MsgIsHitBy",
+            "MsgIsHitByAnySpecialAbilityFrom",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "SetTimer",
+            "MsgIsHitBy",
+            "MsgIsHitByAnySpecialAbilityFrom",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "SetTimer",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "DeregisterTimer"
+          ],
+          "lines": 325,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00df1b40;",
+            "goto FLOW_past_lab_00df1bd5;",
+            "goto FLOW_past_lab_00df1d56;",
+            "goto FLOW_past_lab_00df1e73;",
+            "goto FLOW_past_lab_00df1f96;",
+            "goto LAB_00df1b40;",
+            "goto LAB_00df1b8b;",
+            "goto LAB_00df1bd5;",
+            "goto LAB_00df1d56;",
+            "goto LAB_00df1e73;",
+            "goto LAB_00df1f96;",
+            "if (!bVar5) goto LAB_00df1d56;",
+            "if (!bVar5) goto LAB_00df1e73;",
+            "if (!bVar5) goto LAB_00df1f96;",
+            "if (bVar5) goto LAB_00df204e;",
+            "if (iVar9 != 1) goto LAB_00df1cb0;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00df1b40",
+            "FLOW_past_lab_00df1bd5",
+            "FLOW_past_lab_00df1d56",
+            "FLOW_past_lab_00df1e73",
+            "FLOW_past_lab_00df1f96",
+            "LAB_00df1b40",
+            "LAB_00df1b8b",
+            "LAB_00df1bd5",
+            "LAB_00df1cb0",
+            "LAB_00df1d56",
+            "LAB_00df1e73",
+            "LAB_00df1f96",
+            "LAB_00df204e"
+          ]
+        },
+        {
+          "owner": "STS_BriarRose",
+          "function": "Init",
+          "address": "0x00df1760",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "EntitySetAsRespondingToFollowAndWaitExpressions",
+            "SetThingPersistent",
+            "EntitySetAsAllowedToFollowHero",
+            "SetThingHasInformation",
+            "EntitySheatheWeapons",
+            "GetHero",
+            "EntitySetThingAsAllyOfThing",
+            "EntitySetAsKillable",
+            "EntitySetAsDamageable",
+            "EntitySetAsToAddToComboMultiplierWhenHit"
+          ],
+          "lines": 11,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "STS_BriarRose",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "STS_BriarRose",
+          "function": "OnPredicateFail",
+          "address": "0x00df1800",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "STS_BriarRose",
+          "function": "helper_DF2090",
+          "address": "0x00df2090",
+          "path": "FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+          "evidence": "unnamed entity helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "ClearThingBestEnemyTarget",
+            "GetHero",
+            "EntityFollowThing",
+            "EntityStopFollowing"
+          ],
+          "lines": 8,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "SummonerAttacker",
+          "function": "Main",
+          "address": "0x00df2380",
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: FadeInThing(p0,0x40000000);"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "EntitySetAlpha",
+            "EntitySetInLimbo",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "MiniMapAddMarker",
+            "EntitySetInLimbo",
+            "IsActiveThreadTerminating",
+            "AddQuestInfoBarHealth",
+            "RESOURCE_NewResource",
+            "GetThingWithScriptName",
+            "QUESTTHING_Empty",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "RESOURCE_TryAcquire",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_TryAcquire",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "SummonerLightningOrbAttackTarget",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GetPos",
+            "CreateCreatureNearby",
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GetPos",
+            "CreateCreatureNearby",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsOver",
+            "IsActiveThreadTerminating",
+            "RESOURCE_PrepareResource",
+            "MiniMapRemoveMarker",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ReleaseResource"
+          ],
+          "lines": 158,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00df26bd;",
+            "goto LAB_00df26bd;",
+            "if (!bVar2) goto LAB_00df26bd;",
+            "if (bVar2) goto LAB_00df292a;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00df26bd",
+            "LAB_00df26bd",
+            "LAB_00df292a"
+          ]
+        },
+        {
+          "owner": "SummonerAttacker",
+          "function": "Init",
+          "address": "0x00df2310",
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "GetDataString",
+            "ENGINE_StrCmp",
+            "SetStateInt"
+          ],
+          "lines": 5,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "SummonerAttacker",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "SummonerAttacker",
+          "function": "OnPredicateFail",
+          "address": "0x00df22a0",
+          "path": "FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "MsgIsKilledBy",
+            "SetStateInt"
+          ],
+          "lines": 5,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "SummonerMinion",
+          "function": "Main",
+          "address": "0x00df2ab0",
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: FadeInThing(p0,0x40000000);"
+          ],
+          "calls": [
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "EntitySetAlpha",
+            "EntitySetInLimbo",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "GetHero",
+            "GiveThingBestEnemyTarget",
+            "EntitySetInLimbo",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "Pause",
+            "RemoveThing",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating"
+          ],
+          "lines": 53,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "SummonerMinion",
+          "function": "Init",
+          "address": "0x00df2a40",
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "GetDataString",
+            "ENGINE_StrCmp",
+            "SetStateInt"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "SummonerMinion",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "SummonerMinion",
+          "function": "OnPredicateFail",
+          "address": "0x00df2a10",
+          "path": "FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FireHeartHolder",
+          "function": "Main",
+          "address": "0x00df2d30",
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "MsgIsUsedByHero",
+            "IsActiveThreadTerminating",
+            "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
+            "SetStateBool",
+            "TakeObjectFromHero",
+            "MiniMapRemoveMarker",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie"
+          ],
+          "lines": 35,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FireHeartHolder",
+          "function": "Init",
+          "address": "0x00df2cd0",
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "MiniMapAddMarker"
+          ],
+          "lines": 1,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FireHeartHolder",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "FireHeartHolder",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FireHeart",
+          "function": "Main",
+          "address": "0x00df2f90",
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: r2 = quest:AddQuestInfoBarHealth(r1, &0xff00ff00, \"HUD_ICON_FIRE_HEART\", 1.0)"
+          ],
+          "calls": [
+            "EntitySetAlpha",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "MiniMapRemoveMarker",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "EntitySetAsDamageable",
+            "DisplayQuestInfo",
+            "EntitySetAlpha",
+            "RegisterTimer",
+            "GetThingWithScriptName",
+            "AddQuestInfoBarHealth",
+            "RegisterTimer",
+            "SetTimer",
+            "GetHealth",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "GetHealth",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "Play2DSound",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "Play2DSound",
+            "SetTimer",
+            "IsActiveThreadTerminating",
+            "Play2DSound",
+            "SetTimer",
+            "MsgIsHitBy",
+            "MsgIsHitByAnySpecialAbilityFrom",
+            "MsgIsHitByHeroSpecialAbility",
+            "IsActiveThreadTerminating",
+            "GetTimer",
+            "IsActiveThreadTerminating",
+            "SetTimer",
+            "GetHealth",
+            "IsActiveThreadTerminating",
+            "SetStateBool",
+            "DeregisterTimer",
+            "DeregisterTimer"
+          ],
+          "lines": 143,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_past_lab_00df3310;",
+            "goto FLOW_past_lab_00df33c1;",
+            "goto LAB_00df3310;",
+            "goto LAB_00df33c1;",
+            "if (!bVar3) goto LAB_00df3310;",
+            "if (!bVar3) goto LAB_00df33c1;",
+            "if (bVar3) goto LAB_00df3431;"
+          ],
+          "nativeLabels": [
+            "FLOW_past_lab_00df3310",
+            "FLOW_past_lab_00df33c1",
+            "LAB_00df3310",
+            "LAB_00df33c1",
+            "LAB_00df3431"
+          ]
+        },
+        {
+          "owner": "FireHeart",
+          "function": "Init",
+          "address": "0x00df2f40",
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "EntitySetAsKillable",
+            "EntitySetAsDamageable"
+          ],
+          "lines": 2,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "FireHeart",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "FireHeart",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/SummoningTheShip/Entities/FireHeart.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "M_ActivateLighthouse",
+          "function": "Main",
+          "address": "0x00df3520",
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "M_ActivateLighthouse",
+          "function": "Init",
+          "address": "0x00df3510",
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "M_ActivateLighthouse",
+          "function": "OnPersist",
+          "address": "0x00cdebc0",
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          }
+        },
+        {
+          "owner": "M_ActivateLighthouse",
+          "function": "OnPredicateFail",
+          "address": "0x00cdebd0",
+          "path": "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+          "evidence": null,
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [],
+          "lines": 0,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        }
+      ],
+      "missing": [
+        {
+          "owner": "Q_SummoningTheShip",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/SummoningTheShip/SummoningTheShip.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 8,
+        "passed": 8,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "STS_BriarRose": "SummoningTheShip/Entities/STS_BriarRose",
+        "SummonerAttacker": "SummoningTheShip/Entities/SummonerAttacker",
+        "SummonerMinion": "SummoningTheShip/Entities/SummonerMinion",
+        "FireHeartHolder": "SummoningTheShip/Entities/FireHeartHolder",
+        "FireHeart": "SummoningTheShip/Entities/FireHeart",
+        "M_ActivateLighthouse": "SummoningTheShip/Entities/M_ActivateLighthouse"
+      },
+      "declaredFreeLocals": {
+        "FSE/SummoningTheShip/SummoningTheShip.lua": {
+          "Main": [
+            "bVar2"
+          ]
+        }
+      },
+      "sharedHelpers": {
+        "path": "FSE/SummoningTheShip/native_quest_helpers.lua",
+        "functions": [
+          "MakeBriarRoseComment"
+        ],
+        "todo": {
+          "MakeBriarRoseComment": []
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
+      "summary": {
+        "owners": 7,
+        "functions": 30,
+        "missing": 1,
+        "functionSyntaxPassed": 30,
+        "fileSyntaxPassed": 8,
+        "fileSyntaxChecked": 8,
+        "todo": 7
+      }
+    }
+  ],
+  "summary": {
+    "owners": 7,
+    "functions": 30,
+    "missing": 1,
+    "functionSyntaxPassed": 30,
+    "fileSyntaxPassed": 8,
+    "fileSyntaxChecked": 8,
+    "todo": 7
+  }
+}

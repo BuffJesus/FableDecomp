@@ -51,6 +51,19 @@ def conditional_call_assignment(line):
     left, right = _unwrap(condition[:at]), _unwrap(condition[at + 2:])
     if not left:
         return None
+    # a left operand that is itself a C comma sequence (`(!t && (parent->BootyDugUp = 1, !parent->WifeAttacked))
+    # && (t = f(), !t)`, HerosOldHouse ExtraBooty) cannot be rendered as one Lua expression: the general tree does it
+    # (only a sequence holding a non-call statement: call sequences on the left keep their existing lowering)
+    from tools.script_recovery.native_condition_tree import parse as parse_tree
+    def plain_sequence(node):
+        if node[0] == 'seq':
+            return any(not re.search(r'\w\s*\(', s) or re.match(r'\s*\*', s) for s in node[1]) or plain_sequence(node[2])
+        return node[0] in ('and', 'or') and any(plain_sequence(n) for n in node[1])
+    try:
+        if plain_sequence(parse_tree(left)):
+            return None
+    except Exception:
+        return None
     try:
         operands = split_arguments(right)
     except ValueError:

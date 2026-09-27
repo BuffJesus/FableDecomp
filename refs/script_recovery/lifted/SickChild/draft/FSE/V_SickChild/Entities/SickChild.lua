@@ -43,7 +43,7 @@ function Main(quest, me)
         i_stk_7c = iVar6
         pCVar7 = quest:GetThingWithScriptName("SickChildBed")
         r1 = quest:GetSleepingPositionAndOrientationFromBed(me, pCVar7)
-        fVar12 = fpatan(fStack_24,f_stk_20)
+        fVar12 = math.atan(fStack_24,f_stk_20)
         f_stk_8c = (fVar12 * 0.15915493667125702)
         if (fVar12 * 0.15915493667125702 < 0.0) or (1.0 <= f_stk_8c) then
             f_stk_8c = fret_0

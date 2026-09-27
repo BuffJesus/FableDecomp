@@ -346,6 +346,7 @@ function AskForBook(quest, me, param1)
         if value < booksWanted then
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
             quest:SetStateInt("LastBookRequested", value)
+            resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
             hero = nil --[[unresolved native value]]
             local fret_01 = quest:GetHealth(nil --[[missing]])
@@ -360,6 +361,7 @@ function AskForBook(quest, me, param1)
             end
         else
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
+            resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
             hero = nil --[[unresolved native value]]
             local fret_02 = quest:GetHealth(getHero)
@@ -387,6 +389,7 @@ function AskForBook(quest, me, param1)
     if value < booksWanted then
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         quest:SetStateInt("GoodBooksDonated", quest:GetStateInt("GoodBooksDonated") + 1)
+        resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
         hero = nil --[[unresolved native value]]
         local fret_0 = quest:GetHealth(nil --[[missing]])
@@ -405,6 +408,7 @@ function AskForBook(quest, me, param1)
         helper_E56D10(quest, me, 44)
     else
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
+        resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
         hero = nil --[[unresolved native value]]
         local fret_00 = quest:GetHealth(nil --[[missing]])
@@ -420,7 +424,7 @@ function AskForBook(quest, me, param1)
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         end
     end
-    local pOther = this + 52
+    local pOther = resources:MemberResource("seh_me", me)
     local scratchValue = "CS_SCHOOLBOOK_" .. tostring(value)
     local resource = resources:NewResource()
     resources:TryAcquire(resource, hero_, 4)
@@ -693,7 +697,7 @@ function LookForBook(quest, me)
     local self_0x34
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, value, scratchValue9, x_stk_14_1, x_stk_14_2, scratchValue10
+    local scratchValue, value, scratchValue8, x_stk_14_1, x_stk_14_2, scratchValue9
     value = 0xffffffff
     -- TODO(native): ctr_CVar13 = 0;
     if booksInGame < 1 then
@@ -711,15 +715,15 @@ function LookForBook(quest, me)
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): if (ctr_CVar13 == quest:GetStateInt("LastBookRequested")) or (*(ctr_CVar13 + *(self_0x14 + 0xa0)) ~= 0) then
                 if false then
-                    if scratchValue9 == 0xffffffff then
+                    if scratchValue8 == 0xffffffff then
                         if quest:IsActiveThreadTerminating() then return end
-                        scratchValue9 = 0xfffffffe
+                        scratchValue8 = 0xfffffffe
                         value = 0xfffffffe
                     end
                 else
                     if quest:IsActiveThreadTerminating() then return end
                     -- TODO(native): xStack_28 = ctr_CVar13;
-                    value = scratchValue9
+                    value = scratchValue8
                     -- TODO(native): if *(ctr_CVar13 + *(self_0x14 + 0xac)) == 0 then
                 end
             end
@@ -757,6 +761,7 @@ function LookForBook(quest, me)
             end
             if quest:IsActiveThreadTerminating() then return end
             x_stk_14_2 = "TEXT_QST_B16_BOOK_REQUEST_" .. tostring(value)
+            resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
             if 0.0 >= quest:GetHealth(hero) then AskForBook(quest, me, value); goto LAB_00e57924 end
@@ -769,11 +774,12 @@ function LookForBook(quest, me)
                 -- TODO(native): cVar6 = (**(*pCVar1 + 0x68))()
             end
             if quest:IsActiveThreadTerminating() then return end
-            AskForBook(quest, me, scratchValue10)
+            AskForBook(quest, me, scratchValue9)
             ::LAB_00e57924::
             return
         end
         if quest:IsActiveThreadTerminating() then return end
+        resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
         if quest:GetHealth(hero) <= 0.0 then
@@ -795,6 +801,7 @@ function LookForBook(quest, me)
     end
     ::FLOW_past_lab_00e57678::
     if quest:IsActiveThreadTerminating() then return end
+    resources:MemberResource("seh_me", me)
     -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
     if quest:GetHealth(hero) <= 0.0 then

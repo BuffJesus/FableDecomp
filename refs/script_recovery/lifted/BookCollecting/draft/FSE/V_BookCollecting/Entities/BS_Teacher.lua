@@ -607,7 +607,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
                 goto FLOW_after_lab_00e55dcf
             end
             quest:SetStateInt("LastBookRequested", value)
-            pCVar17 = this + 0x34
+            pCVar17 = resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar7 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))(xStack_24)
             pCVar7 = nil --[[unresolved native value]]
             fret_01 = quest:GetHealth(nil --[[missing]])
@@ -641,7 +641,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
                 do return false end
                 goto FLOW_after_lab_00e55dcf
             end
-            pCVar17 = this + 0x34
+            pCVar17 = resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar7 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))(xStack_24)
             pCVar7 = nil --[[unresolved native value]]
             fret_02 = quest:GetHealth(uVar12)
@@ -694,7 +694,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             goto FLOW_after_lab_00e55dcf
         end
         quest:SetStateInt("GoodBooksDonated", quest:GetStateInt("GoodBooksDonated") + 1)
-        pCVar17 = this + 0x34
+        pCVar17 = resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar7 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))(xStack_24)
         pCVar7 = nil --[[unresolved native value]]
         fret_0 = quest:GetHealth(nil --[[missing]])
@@ -738,7 +738,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             do return false end
             goto FLOW_after_lab_00e55dcf
         end
-        pCVar17 = this + 0x34
+        pCVar17 = resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar7 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))(xStack_24)
         pCVar7 = nil --[[unresolved native value]]
         fret_00 = quest:GetHealth(nil --[[missing]])
@@ -774,7 +774,7 @@ function helper_E55CE0(quest, me, native_arg_param_1)
             end
         end
     end
-    pOther = this + 0x34
+    pOther = resources:MemberResource("seh_me", me)
     pCVar5 = tostring(value)
     xStack_58 = ("CS_SCHOOLBOOK_" .. pCVar5)
     xStack_24 = resources:NewResource()
@@ -1340,7 +1340,7 @@ function helper_E57530(quest, me)
             end
             pCVar12 = tostring(value)
             x_stk_14 = ("TEXT_QST_B16_BOOK_REQUEST_" .. pCVar12)
-            pCVar1 = this + 0x34
+            pCVar1 = resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
             pCVar9 = nil --[[unresolved native value]]
             fret_01 = quest:GetHealth(pCVar8)
@@ -1378,7 +1378,7 @@ function helper_E57530(quest, me)
         if bVar5 then
             return
         end
-        pCVar1 = this + 0x34
+        pCVar1 = resources:MemberResource("seh_me", me)
         -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
         pCVar9 = nil --[[unresolved native value]]
         fret_0 = quest:GetHealth(pCVar8)
@@ -1418,7 +1418,7 @@ function helper_E57530(quest, me)
     if bVar5 then
         return
     end
-    pCVar1 = this + 0x34
+    pCVar1 = resources:MemberResource("seh_me", me)
     -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
     pCVar9 = nil --[[unresolved native value]]
     fret_02 = quest:GetHealth(pCVar8)

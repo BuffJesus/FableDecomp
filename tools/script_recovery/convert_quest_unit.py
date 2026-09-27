@@ -1025,16 +1025,38 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     # remaining (non-call) spellings: a name with one true slot follows that object; a name Ghidra spread
     # over several slots follows the object of its nearest call-site use (field reads `N._4_4_`, `&N`,
     # inlined constructor stores all sit next to the call that produced or consumed the object)
+    # A slot Ghidra typed CCharString that ALSO serves as an integer counter (`X = (CCharString)0x0;`,
+    # `X = (CCharString)((int)X + 0xc);`, `(int)X` in an index) keeps Ghidra's own name in that counter phase: its
+    # integer uses are not object uses, and following the nearest string object moved OakValeFire 0x00EE8870's byte
+    # index `[esp+0x10]` (Ghidra's `local_28`, the "fire" string's slot) onto the CreateEffect name temp at -0x18
+    # while its initialisation stayed put -- an uninitialised counter (bytes: 0xEE898B / 0xEE89C1 / 0xEE8A69)
+    def counter_phase(name):
+        n = re.escape(name)
+        if not re.search(r'^[ \t]*' + n + r' = \(CCharString(?:_bv)?\)\(\(int\)' + n + r' \+ (?:0x[0-9a-f]+|\d+)\);', text, re.M):
+            return None
+        return re.compile(r'\(int\)' + n + r'\b|^[ \t]*' + n + r'(?= = \(CCharString(?:_bv)?\)(?:0x0;|\(\(int\)' + n + r' \+ ))', re.M)
     for name, lst in by_name.items():
         offs = {o for _, o in lst}
-        if len(offs) == 1:
-            off = next(iter(offs))
-            text = re.sub(r'\b' + re.escape(name) + r'\b', name_at(off, name, min(p for p, _ in lst)), text)
-        else:
-            def nearest(m, lst=lst, name=name):
-                pos, off = min(lst, key=lambda u: abs(u[0] - m.start()))
-                return name_at(off, name, pos)
-            text = re.sub(r'\b' + re.escape(name) + r'\b', nearest, text)
+        def target(start, lst=lst, name=name, offs=offs):
+            if len(offs) == 1:
+                return name_at(next(iter(offs)), name, min(p for p, _ in lst))
+            pos, off = min(lst, key=lambda u: abs(u[0] - start))
+            return name_at(off, name, pos)
+        # keep the counter phase under Ghidra's name ONLY when the object renaming would split it across names
+        # (its start and its index then read different variables); a consistent renaming is the old behaviour
+        # (Trader Conflict / Trader Comment counters rely on it, 2026-09-27 A/B)
+        phase = counter_phase(name)
+        keep = set()
+        if phase is not None:
+            starts = [m.end() - len(name) for m in phase.finditer(text)]
+            # different SLOTS, not just lifetimes of one slot (`xStack_64` / `xStack_64_2`, which the counter pass
+            # unifies: Guild Training AppleGirl / BirdKiller)
+            slots = {re.sub(r'^(\w*Stack_[0-9a-f]+)_\d+$', r'\1', target(s)) for s in starts}
+            if len(slots) > 1:
+                keep = set(starts)
+        def rename(m, keep=keep, target=target):
+            return m.group(0) if m.start() in keep else target(m.start())
+        text = re.sub(r'\b' + re.escape(name) + r'\b', rename, text)
     # a thing object's Info field under its own Ghidra name (`uStack_9c` = `auStack_a0 + 4`: only ever nulled,
     # null-tested and the receiver of thing vcalls -- CheckFriendlyAttacks 0x00D45060's "did the hero hit the Maze"
     # checks) follows the object the thing-cast renamed (`auStack_a0` -> `xStack_90`), as `xStack_90._4_4_`: slot
@@ -1046,16 +1068,31 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
         field = f'uStack_{int(g.group(1), 16) - 4:x}'
         if not re.search(r'\(\*\*\(code \*\*\)\(\*' + field + r' \+ (?:0x[0-9a-f]+|\d+)\)\)\(', text):
             continue
-        stores = set(re.findall(r'^[ \t]*' + field + r' = ([^;]+);', text, re.M))
-        if not stores or not stores <= {'(int *)0x0', '0', '0x0'}:
+        # register copies that only ever hold the field (or null) are the field too (V_StatueMaster Main 0x00ED3B30:
+        # `piVar4 = uStack_38; ... uStack_38 = piVar4;` around SM_Center's inlined GetPos, which lifted the later
+        # `(**(code **)(*piVar4 + 0x18))()` as the interface's IsXbox)
+        nulls = {'(int *)0x0', '0', '0x0'}
+        aliases = {field}
+        grew = True
+        while grew:
+            grew = False
+            for v in set(re.findall(r'^[ \t]*(\w+) = (?:\(int \*\))?' + field + r';', text, re.M)) - aliases:
+                rhs = set(r.strip() for r in re.findall(r'^[ \t]*' + re.escape(v) + r' = ([^;]+);', text, re.M))
+                if rhs <= nulls | aliases | {f'(int *){a}' for a in aliases} and not re.search(r'&' + re.escape(v) + r'\b', text):
+                    aliases.add(v)
+                    grew = True
+        stores = set(s.strip() for a in aliases for s in re.findall(r'^[ \t]*' + re.escape(a) + r' = ([^;]+);', text, re.M))
+        if not stores or not stores <= nulls | aliases | {f'(int *){a}' for a in aliases}:
             continue
         offs = {o for _, o in lst}
         obj = name_at(next(iter(offs)), name, min(p for p, _ in lst)) if len(offs) == 1 else None
         if obj is None:
             continue
-        text = re.sub(r'^[ \t]*(?:undefined4|int \*) ' + field + r';[ \t]*\r?\n', '', text, flags=re.M)
-        text = re.sub(r'^[ \t]*' + field + r' = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
-        text = re.sub(r'(?<![\w.])' + field + r'\b', f'{obj}._4_4_', text)
+        for a in aliases:
+            ea = re.escape(a)
+            text = re.sub(r'^[ \t]*(?:undefined4 |int \*\s*)' + ea + r';[ \t]*\r?\n', '', text, flags=re.M)
+            text = re.sub(r'^[ \t]*' + ea + r' = [^;]+;[ \t]*\r?\n', '', text, flags=re.M)
+            text = re.sub(r'(?<![\w.])' + ea + r'\b', f'{obj}._4_4_', text)
     return text
 
 
@@ -1652,6 +1689,49 @@ class UnitConverter:
         fn = self.by_address.get(address.lower())
         return fn if fn and fn.get('decompile') else None
 
+    def snapshot_container_helpers(self, unit):
+        """Unit helpers reachable ONLY through a definition-snapshot fill call that the lowering drops
+        (`definitionSnapshots`: V_BookCollecting's std::vector<CConversation> operator= 0x00E54AA0 and the copy /
+        destroy helpers behind it): with the member read from the definitions they have no caller left."""
+        snapshots = unit['quest'].get('definitionSnapshots', {})
+        if not snapshots:
+            return set()
+        functions = [f for n, f in unit['quest']['functions'].items() if n not in SKIP_ROLES]
+        for entity in unit['entities'].values():
+            functions += [f for n, f in {**entity['functions'], **entity.get('helpers', {})}.items() if n not in SKIP_ROLES]
+        names = {f['address'].lower(): n for n, f in unit['quest']['functions'].items()}
+        for entity in unit['entities'].values():
+            names.update({f['address'].lower(): n for n, f in {**entity['functions'], **entity.get('helpers', {})}.items()})
+        addresses = {f['address'].lower() for f in functions}
+        graph, fill_edges = {}, set()
+        for address in addresses:
+            fn = self.native(address)
+            if not fn:
+                return set()
+            labels = {c.get('currentName'): str(c['target']).lower() for c in fn.get('calls', []) if c.get('currentName')}
+            graph[address] = {str(c['target']).lower() for c in fn.get('calls', [])} & addresses
+            for off, snap in snapshots.items():
+                o = int(off, 16)
+                spelled = r'(?:\(int\))?\(?(?:this|param_1)\)? \+ (?:' + hex(o) + '|' + str(o) + r')\b'
+                for m in re.finditer(r'(\w+)\(\s*' + spelled + r'\)?,\s*DAT_0143e90c \+ ' + snap['global'] + r'\);', fn['decompile']):
+                    if m.group(1) in labels:
+                        fill_edges.add((address, labels[m.group(1)]))
+        if not fill_edges:
+            return set()
+        def reachable(roots, cut):
+            found, pending = set(), list(roots)
+            while pending:
+                a = pending.pop()
+                if a in found:
+                    continue
+                found.add(a)
+                pending.extend(t for t in graph.get(a, ()) if (a, t) not in cut)
+            return found
+        roots = {a for a in addresses if not names.get(a, '').startswith('helper_')}
+        kept = reachable(roots, fill_edges)
+        dropped = reachable({t for _, t in fill_edges}, set()) - kept
+        return {a for a in dropped if names.get(a, '').startswith('helper_') or names.get(a) == 'Copy'}
+
     def convert(self, unit, out):
         package = unit['package']
         quest_functions = {n: f for n, f in unit['quest']['functions'].items() if n not in SKIP_ROLES}
@@ -1664,6 +1744,8 @@ class UnitConverter:
         from tools.script_recovery.native_arena_rounds import replaced_container_helpers
         arena_containers = replaced_container_helpers(unit, self.native)
         library |= arena_containers
+        snapshot_containers = self.snapshot_container_helpers(unit)
+        library |= snapshot_containers
         quest_functions = {n: f for n, f in quest_functions.items() if f['address'].lower() not in library}
         quest_state = state_map(unit['quest']['fields'])
         helpers = {f['address'].lower(): n for n, f in quest_functions.items()
@@ -1671,8 +1753,12 @@ class UnitConverter:
         report = {'schema': 'quest-unit-converter/1', 'script': unit['script'], 'package': package,
                   'packages': [], 'functions': [], 'missing': [], 'syntax': {},
                   'controlMode': 'flat experimental' if self.flat_control else 'structured draft'}
+        if snapshot_containers:
+            report.setdefault('runtimeBoundaries', []).append({'method': 'GlobalConversations',
+                'members': unit['quest'].get('definitionSnapshots', {}),
+                'omittedUnreachableContainerBodies': sorted(snapshot_containers)})
         if arena_containers:
-            report['runtimeBoundaries'] = [{'method': 'InitialiseArenaRounds',
+            report['runtimeBoundaries'] = report.get('runtimeBoundaries', []) + [{'method': 'InitialiseArenaRounds',
                 'nativeCaller': '0x00f25840', 'replacedCall': '0x00f25980',
                 'omittedUnreachableContainerBodies': sorted(arena_containers),
                 'implementation': 'tools/script_recovery/runtime_bindings/NoviArenaRounds.h'}]
@@ -1809,6 +1895,7 @@ class UnitConverter:
                 spec_l.hidden_thing_returns = self.hidden_thing_returns
                 spec_l.code_range = self.code_range
                 spec_l.native_address = int(fn['address'], 16)
+                spec_l.calls = fn.get('calls', [])
                 if signature.get('bsimVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)

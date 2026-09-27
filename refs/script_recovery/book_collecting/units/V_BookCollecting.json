@@ -769,6 +769,13 @@
     "resourceFields": {
       "0x58": "seh_Boy",
       "0x68": "seh_Girl"
+    },
+    "definitionSnapshots": {
+      "0x4c": {
+        "name": "BookReactions",
+        "global": "0x4c8",
+        "element": "CConversation"
+      }
     }
   },
   "entities": {

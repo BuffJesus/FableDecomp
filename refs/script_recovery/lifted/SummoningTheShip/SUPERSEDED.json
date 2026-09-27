@@ -1,0 +1,33 @@
+{
+  "files": {
+    "FSE/SummoningTheShip/Entities/FireHeart.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/FireHeart.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/Entities/FireHeartHolder.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/FireHeartHolder.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/M_ActivateLighthouse.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/Entities/STS_BriarRose.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/STS_BriarRose.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/Entities/SummonerAttacker.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/SummonerAttacker.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/Entities/SummonerMinion.lua": {
+      "by": "readable/FSE/SummoningTheShip/Entities/SummonerMinion.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    },
+    "FSE/SummoningTheShip/SummoningTheShip.lua": {
+      "by": "readable/FSE/SummoningTheShip/SummoningTheShip.lua",
+      "reason": "registered unit summoning_the_ship (convert_quest_unit + build_readable_unit)"
+    }
+  },
+  "schema": "lifted-superseded/1"
+}

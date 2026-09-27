@@ -1,0 +1,150 @@
+depth	tag	name	type	baseType	size	dataKind	location	register	offset	rva
+FUNCTION	NScript::CV_BeardyBaldyScript::IsHeroWearingAnyBeard	11055184	864
+0	7	this		0	4	4	5	18	0	0
+0	7	anyBeard		10	1	1	3	30006	-49	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::OnPersist	599968	3
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForAttack	11161680	506
+0	7	this		0	4	4	5	18	0	0
+0	7	moi	CScriptThing	0	12	3	3	30006	4	0
+FUNCTION	NScript::CV_BeardyBaldyScript::GoTalkToBeardyBaldy	11159632	351
+0	7	this		0	4	4	5	18	0	0
+0	7	beardyBaldyMan	CScriptThing	0	12	1	3	30006	-24	0
+0	7	barberLady	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Init	11161216	57
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::~CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>	9548272	143
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::OnPredicateFail	5267616	1
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::`scalar deleting destructor'	10596448	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CV_BeardyBaldyScript>::CSpawnedFunc<NScript::CV_BeardyBaldyScript>	11162656	154
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForBarberLadyDeath	11158912	353
+0	7	this		0	4	4	5	18	0	0
+0	7	barber	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Alloc	11162480	167
+0	7	parent_class		0	4	3	5	19	0	0
+0	7	pmaster_data		0	4	3	3	30006	4	0
+0	7	thing		0	4	3	3	30006	8	0
+FUNCTION	CSpawnedFunc<NScript::CV_BeardyBaldyScript>::SuspendableProcess	11135920	17
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::~CV_BeardyBaldyScript	11179824	156
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc<NScript::CV_BeardyBaldyScript>::`scalar deleting destructor'	9186432	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForNewTash	11158368	296
+0	7	this		0	4	4	5	18	0	0
+0	7	defName	CCharString	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::Main	11165040	11379
+0	7	this		0	4	4	5	18	0	0
+0	7	regionName	CCharString	0	4	1	3	30006	-544	0
+0	7	sehMe	CScriptGameResourceObjectScriptedThingBase	0	16	1	3	30006	-540	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-316	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-472	0
+0	7	randomSpeech	CCharString	0	4	1	3	30006	-524	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-504	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-472	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-468	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-472	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-520	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-472	0
+0	7	speech_movie	CScriptGameResourceObjectMovieBase	0	16	1	3	30006	-452	0
+0	7	PauseMyEntitiesPlease	CWideScreenMagicPauseEntities	0	4	1	3	30006	-472	0
+0	7	Exit	CScriptThing	0	12	1	3	30006	-372	0
+FUNCTION	CEntityScriptBinding<NScript::CV_BeardyBaldyScript>::GetEntityScriptName	11847264	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForBeardyBaldyDeath	11158672	236
+0	7	this		0	4	4	5	18	0	0
+0	7	beardyBaldyMan	CScriptThing	0	12	1	3	30006	-24	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::GetParentScript	9198288	4
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::SetWanderPointAndDistance	11162192	285
+0	7	this		0	4	4	5	18	0	0
+0	7	moi		0	4	3	3	30006	4	0
+0	7	pos		0	4	3	3	30006	8	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForNewHairdo	11157840	242
+0	7	this		0	4	4	5	18	0	0
+0	7	defName	CCharString	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CV_BeardyBaldyScript::OnPersist	11176928	633
+0	7	this		0	4	4	5	18	0	0
+0	7	context		0	4	3	3	30006	4	0
+FUNCTION	CActiveEntityScript<NScript::CV_BeardyBaldyScript>::SuspendableProcess	11959632	79
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::SuspendableProcess	11993296	58
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::Init	11157520	250
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>	11162816	268
+0	7	this		0	4	4	5	18	0	0
+0	7	name		0	4	3	3	30006	4	0
+0	7	number		14	4	3	3	30006	8	0
+0	7	pclass		0	4	3	3	30006	12	0
+0	7	func		0	4	3	3	30006	16	0
+0	7	par1	CScriptThing	0	12	3	3	30006	20	0
+FUNCTION	CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>::`scalar deleting destructor'	9551888	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForNewBeard	11158096	261
+0	7	this		0	4	4	5	18	0	0
+0	7	defName	CCharString	0	4	1	3	30006	-16	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForQuestCardConditions	11163584	1448
+0	7	this		0	4	4	5	18	0	0
+0	7	regionName	CCharString	0	4	1	3	30006	-84	0
+0	7	beardyBaldyMan	CScriptThing	0	12	1	3	30006	-36	0
+0	7	defName	CCharString	0	4	1	3	30006	-80	0
+FUNCTION	NScript::CV_BeardyBaldyScript::IsHeroWearingAnyTash	11159984	658
+0	7	this		0	4	4	5	18	0	0
+0	7	anyTash		10	1	1	3	30006	-41	0
+FUNCTION	NScript::CV_BeardyBaldyScript::WatchForQuestFinished	11157776	61
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::IsHeroWearingAnyOddHairdo	11160656	556
+0	7	this		0	4	4	5	18	0	0
+0	7	anyHair		10	1	1	3	30006	-37	0
+FUNCTION	NScript::CV_BeardyBaldyScript::ResetRandomSpeechTime	11161280	63
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CV_BeardyBaldyScript	11157344	174
+0	7	this		0	4	4	5	18	0	0
+0	7	master_script_data		0	4	3	3	30006	4	0
+0	7	game		0	4	3	3	30006	8	0
+FUNCTION	CActiveEntityScript<NScript::CV_BeardyBaldyScript>::CActiveEntityScript<NScript::CV_BeardyBaldyScript>	11163088	185
+0	7	this		0	4	4	5	18	0	0
+0	7	entity		0	4	3	3	30006	4	0
+0	7	entity_uid		7	8	3	3	30006	8	0
+0	7	parent_script		0	4	3	3	30006	16	0
+0	7	entity_script		0	4	3	3	30006	20	0
+0	7	flags		14	4	3	3	30006	24	0
+FUNCTION	CActiveEntityScript<NScript::CV_BeardyBaldyScript>::`scalar deleting destructor'	11399088	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::`scalar deleting destructor'	11180096	30
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::GoTalkToBarber	11159280	351
+0	7	this		0	4	4	5	18	0	0
+0	7	beardyBaldyMan	CScriptThing	0	12	1	3	30006	-24	0
+0	7	barberLady	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CV_BeardyBaldyScript::Alloc	11179984	102
+0	7	master_script_data		0	4	3	5	18	0	0
+0	7	game		0	4	3	5	19	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::Main	11177568	2247
+0	7	this		0	4	4	5	18	0	0
+0	7	regionName	CCharString	0	4	1	3	30006	-52	0
+0	7	beardyBaldyMan	CScriptThing	0	12	1	3	30006	-24	0
+0	7	barberLady	CScriptThing	0	12	1	3	30006	-36	0
+FUNCTION	NScript::CV_BeardyBaldyScript::RegisterMain	11163280	297
+0	7	this		0	4	4	5	18	0	0
+FUNCTION	NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::GetRandomSpeech	11161344	322
+0	7	this		0	4	4	5	18	0	0
+0	7	Bob	CCharString	0	4	1	3	30006	-20	0
+0	7	_Fail_Val	TRet<CCharString>	0	4	1	3	30006	-28	0
+0	7	randomText	CCharString	0	4	1	3	30006	-24	0
+FUNCTION	CEntityScriptBinding<NScript::CV_BeardyBaldyScript>::CreateActiveEntityScript	11176432	484
+0	7	this		0	4	4	5	18	0	0
+0	7	thing		0	4	3	3	30006	8	0
+0	7	entity_uid		7	8	3	3	30006	12	0
+0	7	script_class	CCountedPointer<CEntityScriptBase>	0	8	1	3	30006	-20	0
+MATCHES	43
