@@ -284,7 +284,7 @@
         },
         {
           "owner": "V_TourGuide",
-          "function": "NativeThread_00ee6a40",
+          "function": "WatchForNoFollowers",
           "address": "0x00ee6a40",
           "path": "FSE/V_TourGuide/V_TourGuide.lua",
           "evidence": "inventory thread registration",

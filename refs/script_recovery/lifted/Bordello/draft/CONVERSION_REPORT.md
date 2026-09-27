@@ -11,7 +11,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_Bordello | V_Bordello | WatchForDeedStatus | 0x00e3a150 | True | 1 |
 | V_Bordello | V_Bordello | CreateCustomers | 0x00e3a350 | True | 2 |
 | V_Bordello | V_Bordello | AdjustTavernPrices | 0x00e3a6b0 | True | 0 |
-| V_Bordello | V_Bordello | NativeThread_00e44980 | 0x00e44980 | True | 0 |
+| V_Bordello | V_Bordello | WatchForHeroLeavingRegionWithBeer | 0x00e44980 | True | 0 |
 | V_Bordello | V_Bordello | helper_E3E320 | 0x00e3e320 | True | 0 |
 | V_Bordello | V_Bordello | helper_E3E720 | 0x00e3e720 | True | 3 |
 | V_Bordello | V_Bordello | helper_E3E6B0 | 0x00e3e6b0 | True | 0 |

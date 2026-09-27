@@ -352,7 +352,7 @@ function AdjustTavernPrices(quest)
     end
 end
 
-function NativeThread_00e44980(quest)
+function WatchForHeroLeavingRegionWithBeer(quest)
     local bVar1
     local alive = true
     while true do

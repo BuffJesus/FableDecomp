@@ -112,3 +112,21 @@ Generated Lua changes in only three units:
   Neither version starts it (nothing calls CreateThread for it) -- an open gap.
 
 All three readables parse; 426 unit-evidence-dependent tests pass. No install or launch.
+
+## Fifth checkpoint: spawned workers keep their spawn-site names
+
+The two `NativeThread_<addr>` bodies were not orphans: Bordello's Magicman spawns
+`CreateThread("WatchForHeroLeavingRegionWithBeer")` (body 0x00E44980, spawn in
+0x00E40E80) and TourGuideGuide spawns `CreateThread("WatchForNoFollowers")` (body
+0x00EE6A40, spawn in 0x00EE57B0; bsim independently names it
+`CV_TourGuideScript::WatchForNoFollowers`). The inventory left `name` null because
+the retail name is concatenated at run time ("ParentClass." + member), so the quest
+defined the body under a key the entity's CreateThread never found.
+
+`quest_unit_evidence.spawn_site_thread_names` fills a null name from the lifter's
+own spawn patterns (same order, each spawn consumed once, wrapped typed-decompile
+lines joined, "ParentClass." prefix rejected), only when every spawn of that body in
+its registration function agrees. Test: `test_spawn_site_thread_names.py` (4 pass).
+A/B (`work/codex_lua_threads_20260927/`): only the two function names change.
+ChickenKicking's two unnamed bodies (0x00E6AF20, 0x00E6AD20; spawned by an
+unreached entity Init) use an allocation shape no spawn pattern matches; no Lua effect.

@@ -630,9 +630,9 @@
         "spawnedAs": "WatchForClosingTime",
         "evidence": "inventory thread registration"
       },
-      "NativeThread_00ee6a40": {
+      "WatchForNoFollowers": {
         "address": "0x00ee6a40",
-        "spawnedAs": "NativeThread_00ee6a40",
+        "spawnedAs": "WatchForNoFollowers",
         "evidence": "inventory thread registration"
       }
     },

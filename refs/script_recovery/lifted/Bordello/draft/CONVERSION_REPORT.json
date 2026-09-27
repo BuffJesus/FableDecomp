@@ -403,7 +403,7 @@
         },
         {
           "owner": "V_Bordello",
-          "function": "NativeThread_00e44980",
+          "function": "WatchForHeroLeavingRegionWithBeer",
           "address": "0x00e44980",
           "path": "FSE/V_Bordello/V_Bordello.lua",
           "evidence": "inventory thread registration",

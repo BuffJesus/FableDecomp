@@ -218,7 +218,7 @@ function WatchForClosingTime(quest)
     until false
 end
 
-function NativeThread_00ee6a40(quest)
+function WatchForNoFollowers(quest)
     local bVar2, iVar3, xStack_c
     local alive = true
     xStack_c = quest:GetAllThingsWithScriptName("TourGuideFollower")

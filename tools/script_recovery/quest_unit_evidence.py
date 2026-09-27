@@ -52,6 +52,49 @@ def thread_names(rows, *, unique_names=True):
     return names
 
 
+def spawn_site_thread_names(rows, tu_by_address):
+    """Fill an inventory thread's missing name from its CSpawnedFunc name literal.
+
+    The inventory scan leaves `name` null when the spawn concatenates it at run time
+    ("ParentClass." + member, V_TourGuide 0x00EE57B0 -> 0x00EE6A40 WatchForNoFollowers).
+    The lifter's own spawn patterns recover that literal at the call site; a name is used
+    only when every spawn of the body inside its registration function agrees."""
+    from tools.script_recovery.lift_native_lua import (
+        RE_THREAD, RE_THREAD_CAPTURE, RE_THREAD_VALUES, RE_THREAD_WORD)
+    by_name = {}
+    for address, f in tu_by_address.items():
+        by_name.setdefault(f.get('currentName'), set()).add(address)
+
+    def body_address(token):
+        m = re.fullmatch(r'(?:FUN|LAB)_([0-9a-fA-F]{8})', token)
+        if m:
+            return '0x' + m[1].lower()
+        found = by_name.get(token, set())
+        return next(iter(found)) if len(found) == 1 else None
+
+    names = {}
+    for reg in {t['registrationFunction'].lower() for t in rows if not t.get('name')}:
+        # typed exports wrap long calls (`CCharString::CCharString\n  ((CCharString *)&x,"Name",-1)`)
+        source = re.sub(r'\s*\n\s*', '', tu_by_address.get(reg, {}).get('decompile') or '')
+        # the lifter's order; each spawn is consumed by the first pattern that claims it
+        for pattern in (RE_THREAD_CAPTURE, RE_THREAD_VALUES, RE_THREAD_WORD, RE_THREAD):
+            def claim(m):
+                name, fn = ((m[2], m[3]) if pattern is RE_THREAD else (m['name'], m['fn']))
+                body = body_address(fn)
+                if body and not name.endswith('.'):
+                    names.setdefault((reg, body), set()).add(name)
+                return ' '
+            source = pattern.sub(claim, source)
+    out = []
+    for row in rows:
+        found = names.get((row['registrationFunction'].lower(), row['body'].lower()), set())
+        if row.get('name') or len(found) != 1:
+            out.append(row)
+        else:
+            out.append(dict(row, name=next(iter(found)), nameEvidence='spawn-site CSpawnedFunc literal'))
+    return out
+
+
 def load_layouts(path=LAYOUTS):
     """class name -> list of {offset, type, name} (duplicate class names keep every copy, in order).
     load_layouts.sizes holds the PDB size of every class (first copy wins)."""
@@ -329,6 +372,7 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
     lo, hi = int(tu_range[0], 16), int(tu_range[1], 16)
     # Sibling quests can register identically named workers at different addresses.
     # Validate name uniqueness only after finding this quest's reachable bodies.
+    inventory = dict(inventory, threads=spawn_site_thread_names(inventory['threads'], typed_by_address or tu_by_address))
     threads = thread_names(inventory['threads'], unique_names=False)
     thread_registration = {t['body'].lower(): t['registrationFunction'].lower() for t in inventory['threads']}
     # Every lifecycle address of every entity in the whole unit (never a "helper").

@@ -22944,7 +22944,7 @@
      }
     },
     {
-     "function": "NativeThread_00e44980",
+     "function": "WatchForHeroLeavingRegionWithBeer",
      "rewrites": {
       "flags": 0,
       "termination": 1,
@@ -23557,7 +23557,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "NativeThread_00e44980",
+     "function": "WatchForHeroLeavingRegionWithBeer",
      "sourceLine": 330,
      "locals": {
       "bVar1_1": {
@@ -24504,7 +24504,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "NativeThread_00e44980",
+     "function": "WatchForHeroLeavingRegionWithBeer",
      "sourceLine": 153,
      "locals": {},
      "splitLocals": {},
@@ -25037,7 +25037,7 @@
        "requires": 0
       }
      },
-     "NativeThread_00e44980": {
+     "WatchForHeroLeavingRegionWithBeer": {
       "rewrites": {
        "splitLocals": 1,
        "closures": 0,

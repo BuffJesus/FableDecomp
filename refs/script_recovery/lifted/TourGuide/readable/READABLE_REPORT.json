@@ -4330,7 +4330,7 @@
      }
     },
     {
-     "function": "NativeThread_00ee6a40",
+     "function": "WatchForNoFollowers",
      "rewrites": {
       "flags": 0,
       "termination": 2,
@@ -4567,7 +4567,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "NativeThread_00ee6a40",
+     "function": "WatchForNoFollowers",
      "sourceLine": 212,
      "locals": {
       "bVar2_1": {
@@ -4694,7 +4694,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "NativeThread_00ee6a40",
+     "function": "WatchForNoFollowers",
      "sourceLine": 157,
      "locals": {},
      "splitLocals": {},
@@ -5114,7 +5114,7 @@
        "requires": 0
       }
      },
-     "NativeThread_00ee6a40": {
+     "WatchForNoFollowers": {
       "rewrites": {
        "splitLocals": 2,
        "closures": 0,

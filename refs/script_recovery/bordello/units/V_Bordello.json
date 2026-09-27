@@ -640,9 +640,9 @@
         "spawnedAs": "AdjustTavernPrices",
         "evidence": "inventory thread registration"
       },
-      "NativeThread_00e44980": {
+      "WatchForHeroLeavingRegionWithBeer": {
         "address": "0x00e44980",
-        "spawnedAs": "NativeThread_00e44980",
+        "spawnedAs": "WatchForHeroLeavingRegionWithBeer",
         "evidence": "inventory thread registration"
       },
       "helper_E3E320": {
