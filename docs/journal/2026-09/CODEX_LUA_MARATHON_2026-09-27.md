@@ -47,3 +47,21 @@ Next: preserve pooled string-address operands through concatenation (teacher boy
 girl prefixes); correct BookOwned's retail +0xAC container evidence so persistence
 cannot misclassify it as a scalar bool. Its byte-vector binding remains unsupported.
 Other lanes' native-engine changes were preserved.
+
+## Second checkpoint: pooled literal operands
+
+After 03aa36b, preserved &DAT literal addresses through the string-helper operand
+rewrite so the existing read-only .rdata resolver can decode them. The teacher's
+opinion helper 0x00E56D10 now uses "boy" (0x012448EC) and "girl" (0x012448F0).
+No literal value is guessed from its label; unresolved addresses remain unresolved.
+Scratch: `work/codex_lua_literals_20260927/`.
+
+- 37 focused tests pass. The actual generated helper failed on the baseline's
+  DAT_012448EC concatenation and now looks up boy0/girl0 in both forms.
+  That test only covers an empty pupil population; iteration/copy gaps remain.
+- 29-unit A/B: only BookCollecting's teacher Lua changes. Three Lua/report files
+  promoted after validation. All affected files parse.
+- BookCollecting smoke improves 3 to 2 failures; remaining BookReaction and
+  DoConversation failures are nil global-conversation data in the smoke harness.
+- Corpus audit still has 369 files, zero syntax failures and 1,844 unresolved
+  diagnostics. No installation or game launch; packaging follows the metadata pass.

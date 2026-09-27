@@ -920,7 +920,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
     quest:EntityPostOpinionDeedToRecipient(pCVar4, iVar8, me)
     iVar7 = 0
     local pCVar5 = tostring(0)
-    local xStack_24 = (DAT_012448ec .. pCVar5)
+    local xStack_24 = ("boy" .. pCVar5)
     local r1 = quest:GetThingWithScriptName(xStack_24)
     while uStack_14 ~= nil do
         -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
@@ -932,7 +932,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
         quest:EntityPostOpinionDeedToRecipient(pCVar4, iVar9, pCVar6)
         iVar7 = iVar7 + 1
         pCVar5 = tostring(iVar7)
-        pCVar5 = (DAT_012448ec .. pCVar5)
+        pCVar5 = ("boy" .. pCVar5)
         xStack_24 = pCVar5
         pCVar6 = quest:GetThingWithScriptName(xStack_24)
         -- TODO(native): piVar1 = *(pCVar6 + 0x8)
@@ -951,7 +951,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
     iVar7 = 0
     while true do
         pCVar5 = tostring(iVar7)
-        pCVar5 = (DAT_012448f0 .. pCVar5)
+        pCVar5 = ("girl" .. pCVar5)
         xStack_24 = pCVar5
         pCVar6 = quest:GetThingWithScriptName(xStack_24)
         -- TODO(native): piVar1 = *(pCVar6 + 0x8)

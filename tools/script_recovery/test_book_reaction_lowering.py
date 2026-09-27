@@ -184,3 +184,23 @@ def test_conversation_keeps_saved_handle_through_actor_and_animation_branches(ge
         assert len(looping) == (loop != 'NULL')
         if looping:
             assert looping[0][2] == loop
+
+
+
+def test_teacher_opinion_helper_resolves_pooled_pupil_prefixes(generated):
+    _, _, teachers = generated
+    for source in teachers:
+        lua = LuaRuntime(unpack_returned_tuples=True)
+        lua.execute(source)
+        lookups, deeds = [], []
+        def lookup(_, name):
+            lookups.append(name)
+            return None  # only validates the empty population path/prefixes
+        quest = lua.table_from({
+            'GetHero': lambda _: 'hero',
+            'GetThingWithScriptName': lookup,
+            'EntityPostOpinionDeedToRecipient': lambda _, *args: deeds.append(args),
+        })
+        lua.globals().helper_E56D10(quest, 'teacher', 44)
+        assert lookups == ['boy0', 'girl0']
+        assert deeds == [('hero', 44, 'teacher')]

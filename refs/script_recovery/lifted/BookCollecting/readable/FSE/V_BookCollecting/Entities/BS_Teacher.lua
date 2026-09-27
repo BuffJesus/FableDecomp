@@ -543,14 +543,14 @@ function helper_E56D10(quest, me, param2)
     local hero = quest:GetHero()
     quest:EntityPostOpinionDeedToRecipient(hero, param2, me)
     scratchValue = 0
-    local getThingWithScriptName = quest:GetThingWithScriptName(DAT_012448ec .. tostring(0))
+    local getThingWithScriptName = quest:GetThingWithScriptName("boy" .. tostring(0))
     while scratchValue5 ~= nil do
         -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
     --[[unresolved native value]]
         if not nil then break end
         quest:EntityPostOpinionDeedToRecipient(hero, param2, getThingWithScriptName)
         scratchValue = scratchValue + 1
-        quest:GetThingWithScriptName(DAT_012448ec .. tostring(scratchValue))
+        quest:GetThingWithScriptName("boy" .. tostring(scratchValue))
         -- TODO(native): piVar1 = *(pCVar6 + 0x8)
     --[[unresolved native value]]
         -- TODO(native): piVar2 = *(pCVar6 + 0x4)
@@ -565,7 +565,7 @@ function helper_E56D10(quest, me, param2)
     end
     scratchValue2 = 0
     while true do
-        quest:GetThingWithScriptName(DAT_012448f0 .. tostring(scratchValue2))
+        quest:GetThingWithScriptName("girl" .. tostring(scratchValue2))
         -- TODO(native): piVar1 = *(pCVar6 + 0x8)
     --[[unresolved native value]]
         -- TODO(native): piVar2 = *(pCVar6 + 0x4)

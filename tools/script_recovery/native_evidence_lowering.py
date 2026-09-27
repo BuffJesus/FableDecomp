@@ -2052,7 +2052,10 @@ KEYED_LOGBOOK = {0xCBE960: 'AddLogbookStoryEntry', 0xCBE9EE: 'AddLogbookTutorial
 
 def _strip_ptr_cast(operand):
     """`(int *)pcVar17` / `&CStack_128` operands of the string helpers: the register / slot itself."""
-    return re.sub(r'^\((?:int|char|void|CCharString|undefined4?)(?: \*)?\)(?=&?\w+$)', '', operand.strip()).lstrip('&')   # a cast on a member expression stays
+    value = re.sub(r'^\((?:int|char|void|CCharString|undefined4?)(?: \*)?\)(?=&?\w+$)', '', operand.strip())
+    # A pooled literal's address must reach the later .rdata resolver. Dropping
+    # '&' here turns the teacher's "boy"/"girl" prefixes into unresolved globals.
+    return value if re.fullmatch(r'&DAT_[0-9a-f]{8}', value) else value.lstrip('&')
 
 
 def fold_engine_helpers(text, call_labels):

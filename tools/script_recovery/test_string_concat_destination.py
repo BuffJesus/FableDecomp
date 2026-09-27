@@ -67,3 +67,23 @@ def test_multiline_expression_does_not_gain_a_second_assignment(prefix, address)
     out = fold_engine_helpers(source, {'Concat': 0x99F690})
     assert 'slot = ENGINE_Concat(' not in out
     assert prefix + '    ENGINE_Concat(left, right);' in out
+
+
+@pytest.mark.parametrize('operand', ['&DAT_012448ec', '(char *)&DAT_012448ec'])
+@pytest.mark.parametrize('prefix', ['', 'result = '])
+def test_pooled_literal_address_survives_string_helper_rewrite(operand, prefix):
+    source = '    ' + prefix + f'Concat(&slot, {operand}, suffix);'
+    result = fold_engine_helpers(source, {'Concat': 0x99F570})
+    assert 'ENGINE_Concat(&DAT_012448ec, suffix)' in result
+
+
+def test_string_comparison_also_preserves_literal_address():
+    source = 'result = NotEqual(&slot, &DAT_012448f0);'
+    from tools.script_recovery.native_evidence_lowering import STRING_NOT_EQUAL
+    result = fold_engine_helpers(source, {'NotEqual': next(iter(STRING_NOT_EQUAL))})
+    assert '&DAT_012448f0' in result
+
+
+def test_unproven_callee_does_not_change_literal_or_operand():
+    source = '    Unknown(&slot, &DAT_012448ec, suffix);'
+    assert fold_engine_helpers(source, {'Unknown': 0x99F571}) == source

@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "book_collecting",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\book_collecting",
+ "draft": "work\\codex_lua_literals_20260927\\after",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -3338,7 +3338,7 @@
    "readability": {
     "lines": 806,
     "counts": {
-     "nativeNames": 57,
+     "nativeNames": 54,
      "genericTemporaries": 63,
      "unresolvedDiagnostics": 155,
      "gotos": 35,
@@ -4392,11 +4392,6 @@
       "text": "scratchValue"
      },
      {
-      "line": 546,
-      "category": "nativeNames",
-      "text": "DAT_012448ec"
-     },
-     {
       "line": 547,
       "category": "genericTemporaries",
       "text": "scratchValue5"
@@ -4420,11 +4415,6 @@
       "line": 552,
       "category": "genericTemporaries",
       "text": "scratchValue"
-     },
-     {
-      "line": 553,
-      "category": "nativeNames",
-      "text": "DAT_012448ec"
      },
      {
       "line": 553,
@@ -4475,11 +4465,6 @@
       "line": 566,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 568,
-      "category": "nativeNames",
-      "text": "DAT_012448f0"
      },
      {
       "line": 568,
