@@ -93,3 +93,22 @@ sits there. The unit JSON keeps `estimatedOffset` and an `offsetEvidence` record
   (e.g. empty `definitionSnapshots`, Bordello `BooksPreviouslyOpened_*` slot fix,
   `resourceFields`, named `NativeThread_*` spawns). Those were reverted to HEAD here;
   regenerate + corpus A/B them as their own pass before the next bundle.
+
+## Fourth checkpoint: stale unit evidence regenerated
+
+All 55 unit JSONs (29 units) regenerated with the current builder and inputs. A/B:
+each unit converted from HEAD JSONs, then from regenerated ones, with the same
+converter. Scratch: `work/codex_lua_regen_20260927/` (`before/`, `after/`, logs).
+
+Evidence drift (field-path counts): shared Gameflow globals `BooksPreviouslyOpened[3]`
+packed at 0xEF-0xF1 instead of a stray 0xF7 slot (195, repeated per unit), empty
+`definitionSnapshots` (54), `resourceFields` for `seh_*` members (47 quest + entity
+rows), master `unmapped` (14), four renamed spawned-function keys, one array row.
+
+Generated Lua changes in only three units:
+- BookCollecting: `AddGossip` (0x00E55C60) moves position; body identical.
+- Bordello 0x00E44980 and TourGuide 0x00EE6A40: a registered native thread with no
+  spawn name was emitted as `function null(quest)`; now `NativeThread_<addr>`.
+  Neither version starts it (nothing calls CreateThread for it) -- an open gap.
+
+All three readables parse; 426 unit-evidence-dependent tests pass. No install or launch.

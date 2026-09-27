@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -742,6 +746,8 @@
     "timers": [
       "CommentTimer"
     ],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -838,6 +844,7 @@
         "RegulateFollowStateComment",
         "RegulateBanterComment"
       ],
+      "resourceFields": {},
       "arrays": []
     },
     "FleshEatingBalverine": {
@@ -872,6 +879,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "InfectedBalverine": {
@@ -906,6 +914,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "TraderComment": {
@@ -940,6 +949,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "DarkwoodAssassinSpawn": {
@@ -974,6 +984,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "DarkwoodBalverineTrader": {
@@ -1008,6 +1019,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "RockTrollTrigger": {
@@ -1047,6 +1059,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "DarkwoodRockTroll": {
@@ -1086,6 +1099,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "MagicBarrier": {
@@ -1120,6 +1134,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "TE_BanditLeader": {
@@ -1154,6 +1169,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "BanditCronies": {
@@ -1188,6 +1204,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "DW5_Balv": {
@@ -1222,6 +1239,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "DW5_Bandit": {
@@ -1256,6 +1274,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "EndTrader": {
@@ -1295,6 +1314,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

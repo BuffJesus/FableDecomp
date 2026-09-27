@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -770,6 +774,8 @@
     "thingFields": {},
     "unmappedFields": [],
     "timers": [],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -813,6 +819,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "BCGameMaster": {
@@ -856,6 +863,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "AssassinMarker": {
@@ -890,6 +898,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Assassin1": {
@@ -924,6 +933,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Assassin2": {
@@ -958,6 +968,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Assassin3": {
@@ -992,6 +1003,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Gate3Guard": {
@@ -1026,6 +1038,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CampHostage": {
@@ -1060,6 +1073,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CampHostage2": {
@@ -1094,6 +1108,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CampHostageDoor": {
@@ -1128,6 +1143,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CampHostageGuard": {
@@ -1167,6 +1183,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "BanditForger": {
@@ -1206,6 +1223,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "BanditKing": {
@@ -1245,6 +1263,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CROWDBANDITS": {
@@ -1279,6 +1298,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

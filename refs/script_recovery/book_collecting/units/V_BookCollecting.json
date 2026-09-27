@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -631,6 +635,16 @@
         "score": 0.0,
         "retailStrings": []
       },
+      "helper_E55C60": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00e55c60",
+        "callers": [
+          "BS_Teacher"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
       "helper_E54E40": {
         "evidence": "unmatched retail helper",
         "address": "0x00e54e40",
@@ -676,16 +690,6 @@
         "address": "0x00e569d0",
         "callers": [
           "quest"
-        ],
-        "bestPdbCandidate": null,
-        "score": 0.0,
-        "retailStrings": []
-      },
-      "helper_E55C60": {
-        "evidence": "unmatched retail helper",
-        "address": "0x00e55c60",
-        "callers": [
-          "BS_Teacher"
         ],
         "bestPdbCandidate": null,
         "score": 0.0,
@@ -769,10 +773,6 @@
       }
     ],
     "timers": [],
-    "arrays": [],
-    "retailOffsetDelta": -20,
-    "pdbMembersUnused": [],
-    "nestedPdbMembers": {},
     "resourceFields": {
       "0x58": "seh_Boy",
       "0x68": "seh_Girl"
@@ -783,7 +783,11 @@
         "global": "0x4c8",
         "element": "CConversation"
       }
-    }
+    },
+    "arrays": [],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
   },
   "entities": {
     "BS_Teacher": {
@@ -864,10 +868,10 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
       "resourceFields": {
         "0x34": "seh_me"
-      }
+      },
+      "arrays": []
     }
   }
 }

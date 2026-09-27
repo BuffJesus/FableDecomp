@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -657,6 +661,8 @@
     },
     "unmappedFields": [],
     "timers": [],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -700,6 +706,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WB_WhiteBalverine": {
@@ -739,6 +746,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WB_ScaredVillager": {
@@ -773,6 +781,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WB_Guard1": {
@@ -807,6 +816,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WB_Guard2": {
@@ -841,6 +851,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "KG_Chief": {
@@ -875,6 +886,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

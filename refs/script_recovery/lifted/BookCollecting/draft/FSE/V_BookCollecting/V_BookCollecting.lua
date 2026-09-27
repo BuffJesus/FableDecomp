@@ -135,6 +135,13 @@ function BookReaction(quest, native_arg_param_1)
     ::LAB_00e56993::
 end
 
+function helper_E55C60(quest, native_arg_strParam_1, native_arg_strParam_2, native_arg_strParam_3, native_arg_strParam_4)
+    quest:AddRumourCategory(native_arg_strParam_1)
+    quest:AddNewRumourToCategory(native_arg_strParam_1, native_arg_strParam_2)
+    quest:AddGossipVillage(native_arg_strParam_1, native_arg_strParam_3)
+    quest:AddGossipFactionToCategory(native_arg_strParam_1, native_arg_strParam_4)
+end
+
 function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     local resources = quest:RetailResources()
     local bVar2, cVar3, iVar6, iVar8, i_stk_10, native_arg_sequence_1, pCVar4, pCVar5, r1, xStack_14, xStack_18, xStack_1c
@@ -264,12 +271,5 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
         bVar2 = not alive
     until not (not bVar2)
     ::LAB_00e56cd0::
-end
-
-function helper_E55C60(quest, native_arg_strParam_1, native_arg_strParam_2, native_arg_strParam_3, native_arg_strParam_4)
-    quest:AddRumourCategory(native_arg_strParam_1)
-    quest:AddNewRumourToCategory(native_arg_strParam_1, native_arg_strParam_2)
-    quest:AddGossipVillage(native_arg_strParam_1, native_arg_strParam_3)
-    quest:AddGossipFactionToCategory(native_arg_strParam_1, native_arg_strParam_4)
 end
 

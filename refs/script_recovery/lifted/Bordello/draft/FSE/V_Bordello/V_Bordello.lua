@@ -352,7 +352,7 @@ function AdjustTavernPrices(quest)
     end
 end
 
-function null(quest)
+function NativeThread_00e44980(quest)
     local bVar1
     local alive = true
     while true do

@@ -157,8 +157,8 @@ function AdjustTavernPrices(quest)
     end
 end
 
--- V_Bordello.null (retail 0x00e44980)
-function null(quest)
+-- V_Bordello.NativeThread_00e44980 (retail 0x00e44980)
+function NativeThread_00e44980(quest)
     local isRegionLoaded
     while true do
         isRegionLoaded = quest:IsRegionLoaded("Bordello")

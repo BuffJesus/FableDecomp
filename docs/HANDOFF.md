@@ -2,7 +2,8 @@
 
 **Crash resume (2026-09-27):** BookOwned's retail +0xAC byte-vector offset now comes from its named
 OnPersist transfer, so it is no longer persisted as a scalar bool (honest TODO; binding missing). Only
-BookCollecting changes. 54 committed unit JSONs lag the builder (stale regeneration); reverted, queued.
+BookCollecting changes. All 55 unit JSONs since regenerated; Lua changes only in BookCollecting (order), Bordello/TourGuide
+(`function null` -> `NativeThread_<addr>`, still never spawned).
 See [marathon third checkpoint](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md).
 
 **Marathon checkpoint (2026-09-27):** saved scalar/handle copies now survive dead-store

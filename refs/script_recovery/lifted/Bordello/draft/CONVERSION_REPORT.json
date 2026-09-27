@@ -403,7 +403,7 @@
         },
         {
           "owner": "V_Bordello",
-          "function": "null",
+          "function": "NativeThread_00e44980",
           "address": "0x00e44980",
           "path": "FSE/V_Bordello/V_Bordello.lua",
           "evidence": "inventory thread registration",

@@ -101,6 +101,15 @@ function BookReaction(quest, param1)
     resources:PrepareResource(this_01)
 end
 
+-- V_BookCollecting.AddGossip (retail 0x00e55c60)
+-- E55C60: bsim names this body NScript::CV_BookCollectingScript::AddGossip (a homologous script member); no PDB name
+function AddGossip(quest, strParam1, strParam2, strParam3, strParam4)
+    quest:AddRumourCategory(strParam1)
+    quest:AddNewRumourToCategory(strParam1, strParam2)
+    quest:AddGossipVillage(strParam1, strParam3)
+    quest:AddGossipFactionToCategory(strParam1, strParam4)
+end
+
 -- V_BookCollecting.DoConversation (retail 0x00e569d0)
 -- E569D0: bsim names this body NScript::CV_BookCollectingScript::DoConversation (a homologous script member); no PDB name
 function DoConversation(quest, param1, param)
@@ -173,14 +182,5 @@ function DoConversation(quest, param1, param)
             quest:NewScriptFrame()
         end
     until quest:IsActiveThreadTerminating()
-end
-
--- V_BookCollecting.AddGossip (retail 0x00e55c60)
--- E55C60: bsim names this body NScript::CV_BookCollectingScript::AddGossip (a homologous script member); no PDB name
-function AddGossip(quest, strParam1, strParam2, strParam3, strParam4)
-    quest:AddRumourCategory(strParam1)
-    quest:AddNewRumourToCategory(strParam1, strParam2)
-    quest:AddGossipVillage(strParam1, strParam3)
-    quest:AddGossipFactionToCategory(strParam1, strParam4)
 end
 

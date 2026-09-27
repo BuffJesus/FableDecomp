@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -736,6 +740,8 @@
     "timers": [
       "ReachedWaspHelper"
     ],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -774,6 +780,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WaspChaser": {
@@ -808,6 +815,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WaspChaseWoman": {
@@ -842,6 +850,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WaspAttacker": {
@@ -876,6 +885,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WaspVictim": {
@@ -910,6 +920,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "FleeingWoman": {
@@ -949,6 +960,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WaspHelper": {
@@ -996,6 +1008,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "QueenHornet": {
@@ -1035,6 +1048,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "HornetDrone": {
@@ -1074,6 +1088,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -660,14 +664,15 @@
     "thingFields": {},
     "unmappedFields": [],
     "timers": [],
-    "arrays": [],
-    "retailOffsetDelta": -20,
-    "pdbMembersUnused": [],
-    "nestedPdbMembers": {},
     "resourceFields": {
       "0x48": "seh_Mother",
       "0x58": "seh_Witch"
-    }
+    },
+    "definitionSnapshots": {},
+    "arrays": [],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
   },
   "entities": {
     "SickChildsMother": {
@@ -702,8 +707,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "SickChild": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChild",
@@ -737,8 +742,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "SickChildsSister": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChildsSister",
@@ -777,8 +782,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "Witch": {
       "nativeClass": "NScript::CV_SickChildScript::CWitch",
@@ -821,8 +826,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "ManInLove": {
       "nativeClass": "NScript::CV_SickChildScript::CManInLove",
@@ -869,8 +874,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "MansLover": {
       "nativeClass": "NScript::CV_SickChildScript::CMansLover",
@@ -909,8 +914,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "IngredientOwner": {
       "nativeClass": "NScript::CV_SickChildScript::CIngredientOwner",
@@ -953,8 +958,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "TalkingTrader1": {
       "nativeClass": "NScript::CV_SickChildScript::CTalkingTrader1",
@@ -997,8 +1002,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "TalkingTrader2": {
       "nativeClass": "NScript::CV_SickChildScript::CTalkingTrader2",
@@ -1041,8 +1046,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "WomanToAttract": {
       "nativeClass": "NScript::CV_SickChildScript::CWomanToAttract",
@@ -1091,10 +1096,10 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
       "resourceFields": {
         "0x24": "seh_me"
-      }
+      },
+      "arrays": []
     },
     "SickChildFishingSpot": {
       "nativeClass": "NScript::CV_SickChildScript::CSickChildFishingSpot",
@@ -1128,8 +1133,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     }
   }
 }

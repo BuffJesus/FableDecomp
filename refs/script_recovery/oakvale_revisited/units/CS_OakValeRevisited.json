@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -661,6 +665,16 @@
       }
     ],
     "timers": [],
+    "resourceFields": {
+      "0x6c": "v1",
+      "0x7c": "v2",
+      "0x8c": "v3",
+      "0x9c": "v4",
+      "0xac": "v5",
+      "0xbc": "v6",
+      "0xcc": "v7"
+    },
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],

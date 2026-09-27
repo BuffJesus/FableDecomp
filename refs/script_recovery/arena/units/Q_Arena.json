@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -876,6 +880,86 @@
       }
     },
     "fields": {
+      "0x48": [
+        "CrowdLoopTags_0_0",
+        "String"
+      ],
+      "0x4c": [
+        "CrowdLoopTags_0_1",
+        "String"
+      ],
+      "0x50": [
+        "CrowdLoopTags_0_2",
+        "String"
+      ],
+      "0x54": [
+        "CrowdLoopTags_0_3",
+        "String"
+      ],
+      "0x58": [
+        "CrowdLoopTags_0_4",
+        "String"
+      ],
+      "0x5c": [
+        "CrowdLoopTags_1_0",
+        "String"
+      ],
+      "0x60": [
+        "CrowdLoopTags_1_1",
+        "String"
+      ],
+      "0x64": [
+        "CrowdLoopTags_1_2",
+        "String"
+      ],
+      "0x68": [
+        "CrowdLoopTags_1_3",
+        "String"
+      ],
+      "0x6c": [
+        "CrowdLoopTags_1_4",
+        "String"
+      ],
+      "0x70": [
+        "CrowdLoopTags_2_0",
+        "String"
+      ],
+      "0x74": [
+        "CrowdLoopTags_2_1",
+        "String"
+      ],
+      "0x78": [
+        "CrowdLoopTags_2_2",
+        "String"
+      ],
+      "0x7c": [
+        "CrowdLoopTags_2_3",
+        "String"
+      ],
+      "0x80": [
+        "CrowdLoopTags_2_4",
+        "String"
+      ],
+      "0x84": [
+        "CrowdLoopTags_3_0",
+        "String"
+      ],
+      "0x88": [
+        "CrowdLoopTags_3_1",
+        "String"
+      ],
+      "0x8c": [
+        "CrowdLoopTags_3_2",
+        "String"
+      ],
+      "0x90": [
+        "CrowdLoopTags_3_3",
+        "String"
+      ],
+      "0x94": [
+        "CrowdLoopTags_3_4",
+        "String"
+      ],
       "0xa4": [
         "ArenaState",
         "Int"
@@ -1035,86 +1119,6 @@
       "0x118": [
         "StopTimeIndex",
         "Int"
-      ],
-      "0x48": [
-        "CrowdLoopTags_0_0",
-        "String"
-      ],
-      "0x4c": [
-        "CrowdLoopTags_0_1",
-        "String"
-      ],
-      "0x50": [
-        "CrowdLoopTags_0_2",
-        "String"
-      ],
-      "0x54": [
-        "CrowdLoopTags_0_3",
-        "String"
-      ],
-      "0x58": [
-        "CrowdLoopTags_0_4",
-        "String"
-      ],
-      "0x5c": [
-        "CrowdLoopTags_1_0",
-        "String"
-      ],
-      "0x60": [
-        "CrowdLoopTags_1_1",
-        "String"
-      ],
-      "0x64": [
-        "CrowdLoopTags_1_2",
-        "String"
-      ],
-      "0x68": [
-        "CrowdLoopTags_1_3",
-        "String"
-      ],
-      "0x6c": [
-        "CrowdLoopTags_1_4",
-        "String"
-      ],
-      "0x70": [
-        "CrowdLoopTags_2_0",
-        "String"
-      ],
-      "0x74": [
-        "CrowdLoopTags_2_1",
-        "String"
-      ],
-      "0x78": [
-        "CrowdLoopTags_2_2",
-        "String"
-      ],
-      "0x7c": [
-        "CrowdLoopTags_2_3",
-        "String"
-      ],
-      "0x80": [
-        "CrowdLoopTags_2_4",
-        "String"
-      ],
-      "0x84": [
-        "CrowdLoopTags_3_0",
-        "String"
-      ],
-      "0x88": [
-        "CrowdLoopTags_3_1",
-        "String"
-      ],
-      "0x8c": [
-        "CrowdLoopTags_3_2",
-        "String"
-      ],
-      "0x90": [
-        "CrowdLoopTags_3_3",
-        "String"
-      ],
-      "0x94": [
-        "CrowdLoopTags_3_4",
-        "String"
       ]
     },
     "thingFields": {
@@ -1132,35 +1136,9 @@
     "timers": [
       "GlobalCrowdTimer"
     ],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [
-      {
-        "name": "TotalCreatures",
-        "element": "long",
-        "base": "0xd0",
-        "stride": 4,
-        "count": 3,
-        "members": {
-          "0x0": [
-            "",
-            "Int"
-          ]
-        },
-        "things": {}
-      },
-      {
-        "name": "ArenaSpawnNeeded",
-        "element": "bool",
-        "base": "0xe2",
-        "stride": 1,
-        "count": 16,
-        "members": {
-          "0x0": [
-            "",
-            "Bool"
-          ]
-        },
-        "things": {}
-      },
       {
         "name": "CrowdLoopTags",
         "element": "CCharString",
@@ -1191,6 +1169,34 @@
           "0x10": [
             "4",
             "String"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "TotalCreatures",
+        "element": "long",
+        "base": "0xd0",
+        "stride": 4,
+        "count": 3,
+        "members": {
+          "0x0": [
+            "",
+            "Int"
+          ]
+        },
+        "things": {}
+      },
+      {
+        "name": "ArenaSpawnNeeded",
+        "element": "bool",
+        "base": "0xe2",
+        "stride": 1,
+        "count": 16,
+        "members": {
+          "0x0": [
+            "",
+            "Bool"
           ]
         },
         "things": {}
@@ -1233,6 +1239,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Flick": {
@@ -1280,6 +1287,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Shadow": {
@@ -1327,6 +1335,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Needle": {
@@ -1374,6 +1383,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "Roth": {
@@ -1421,6 +1431,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CellWhisper": {
@@ -1455,6 +1466,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "ArenaCellDoorGuard": {
@@ -1498,6 +1510,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "ArenaCellDoorGuard2": {
@@ -1541,6 +1554,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "SUMMONED_CREATURE": {
@@ -1575,6 +1589,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "ArenaEnemy": {
@@ -1622,6 +1637,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "ArenaSpawn": {
@@ -1656,6 +1672,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "CagedBalverine": {
@@ -1690,6 +1707,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "ArenaCellExitGuard": {
@@ -1724,6 +1742,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     },
     "WhisperAlly": {
@@ -1758,6 +1777,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

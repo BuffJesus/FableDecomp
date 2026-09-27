@@ -8,8 +8,8 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_BookCollecting | V_BookCollecting | Init | 0x00e54990 | True | 7 |
 | V_BookCollecting | V_BookCollecting | OnPersist | 0x00e54880 | True | 2 |
 | V_BookCollecting | V_BookCollecting | BookReaction | 0x00e566f0 | True | 0 |
-| V_BookCollecting | V_BookCollecting | helper_E569D0 | 0x00e569d0 | True | 0 |
 | V_BookCollecting | V_BookCollecting | helper_E55C60 | 0x00e55c60 | True | 0 |
+| V_BookCollecting | V_BookCollecting | helper_E569D0 | 0x00e569d0 | True | 0 |
 | V_BookCollecting | BS_Teacher | Main | 0x00e54e90 | True | 76 |
 | V_BookCollecting | BS_Teacher | Init | 0x00e54630 | True | 0 |
 | V_BookCollecting | BS_Teacher | OnPersist | 0x00cdebc0 | True | 0 |

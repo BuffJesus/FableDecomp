@@ -5120,23 +5120,6 @@
      }
     },
     {
-     "function": "helper_E569D0",
-     "rewrites": {
-      "flags": 2,
-      "termination": 6,
-      "listArithmetic": 0,
-      "byteIndices": 0,
-      "voidReturns": 0,
-      "nilReleases": 0,
-      "emptyIfs": 0,
-      "deadStores": 0,
-      "unusedAlive": 0,
-      "flagTests": 6,
-      "declarations": 11,
-      "decimalLiterals": 6
-     }
-    },
-    {
      "function": "helper_E55C60",
      "rewrites": {
       "flags": 0,
@@ -5151,6 +5134,23 @@
       "flagTests": 0,
       "declarations": 0,
       "decimalLiterals": 0
+     }
+    },
+    {
+     "function": "helper_E569D0",
+     "rewrites": {
+      "flags": 2,
+      "termination": 6,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 6,
+      "declarations": 11,
+      "decimalLiterals": 6
      }
     }
    ],
@@ -5319,8 +5319,38 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_E569D0",
+     "function": "helper_E55C60",
      "sourceLine": 136,
+     "locals": {
+      "native_arg_strParam_1": {
+       "name": "strParam1",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      },
+      "native_arg_strParam_2": {
+       "name": "strParam2",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      },
+      "native_arg_strParam_3": {
+       "name": "strParam3",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      },
+      "native_arg_strParam_4": {
+       "name": "strParam4",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      }
+     },
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "helper_E569D0",
+     "sourceLine": 143,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",
@@ -5699,36 +5729,6 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_E55C60",
-     "sourceLine": 261,
-     "locals": {
-      "native_arg_strParam_1": {
-       "name": "strParam1",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_strParam_2": {
-       "name": "strParam2",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_strParam_3": {
-       "name": "strParam3",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "native_arg_strParam_4": {
-       "name": "strParam4",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      }
-     },
-     "splitLocals": {},
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
      "function": "Main",
      "sourceLine": 4,
      "locals": {
@@ -5774,7 +5774,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_E569D0",
+     "function": "helper_E55C60",
      "sourceLine": 100,
      "locals": {},
      "splitLocals": {},
@@ -5783,8 +5783,8 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_E55C60",
-     "sourceLine": 172,
+     "function": "helper_E569D0",
+     "sourceLine": 107,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -6067,74 +6067,6 @@
        "requires": 0
       }
      },
-     "helper_E569D0": {
-      "rewrites": {
-       "splitLocals": 8,
-       "closures": 0,
-       "hero": 1,
-       "cutscenes": 0,
-       "staleLabelComments": 0,
-       "aliveStaging": 4,
-       "exitChecksInlined": 1,
-       "frameChecks": 0,
-       "inlinedTemporaries": 7,
-       "deadDefinitions": 2,
-       "guardWrappers": 0,
-       "retryLoops": 0,
-       "booleanMaterialisation": 8,
-       "booleanCompares": 0,
-       "conditions": 3,
-       "literals": 0,
-       "copies": 0,
-       "selfAssignments": 0,
-       "flagClears": 0,
-       "tailGuards": 1,
-       "blockingSpeech": 0,
-       "uintFixups": 0,
-       "freshGuards": 0,
-       "constantConditions": 3,
-       "emptyElse": 1,
-       "unusedClosures": 0,
-       "sharedExitTests": 0,
-       "gotoElse": 3,
-       "booleanBranches": 0,
-       "booleanJumpChains": 0,
-       "elseif": 0,
-       "elseExit": 0,
-       "gotoReturn": 0,
-       "nestedReturnJumps": 5,
-       "loopExitJumps": 0,
-       "cleanupExitJumps": 0,
-       "ifAroundWhile": 0,
-       "deadTerminationChecks": 2,
-       "controlAcquires": 0,
-       "sunkLocals": 13,
-       "cleanupClosureNames": 0,
-       "parentheses": 14,
-       "cosmetics": 0,
-       "firstAssignments": 0,
-       "freeSuffixes": 2,
-       "hoistedState": 0
-      },
-      "before": {
-       "lines": 112,
-       "temporaries": 19,
-       "labels": 10,
-       "gotos": 18,
-       "terminationChecks": 8,
-       "frameChecks": 0,
-       "requires": 0
-      },
-      "after": {
-       "lines": 71,
-       "temporaries": 3,
-       "labels": 7,
-       "gotos": 10,
-       "terminationChecks": 6,
-       "frameChecks": 0,
-       "requires": 0
-      }
-     },
      "helper_E55C60": {
       "rewrites": {
        "splitLocals": 0,
@@ -6199,6 +6131,74 @@
        "labels": 0,
        "gotos": 0,
        "terminationChecks": 0,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
+     "helper_E569D0": {
+      "rewrites": {
+       "splitLocals": 8,
+       "closures": 0,
+       "hero": 1,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 4,
+       "exitChecksInlined": 1,
+       "frameChecks": 0,
+       "inlinedTemporaries": 7,
+       "deadDefinitions": 2,
+       "guardWrappers": 0,
+       "retryLoops": 0,
+       "booleanMaterialisation": 8,
+       "booleanCompares": 0,
+       "conditions": 3,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 1,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 3,
+       "emptyElse": 1,
+       "unusedClosures": 0,
+       "sharedExitTests": 0,
+       "gotoElse": 3,
+       "booleanBranches": 0,
+       "booleanJumpChains": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "nestedReturnJumps": 5,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 2,
+       "controlAcquires": 0,
+       "sunkLocals": 13,
+       "cleanupClosureNames": 0,
+       "parentheses": 14,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 2,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 112,
+       "temporaries": 19,
+       "labels": 10,
+       "gotos": 18,
+       "terminationChecks": 8,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 71,
+       "temporaries": 3,
+       "labels": 7,
+       "gotos": 10,
+       "terminationChecks": 6,
        "frameChecks": 0,
        "requires": 0
       }
@@ -6307,64 +6307,39 @@
       "text": "scratchValue"
      },
      {
-      "line": 109,
+      "line": 118,
       "category": "genericTemporaries",
       "text": "scratchValue7"
-     },
-     {
-      "line": 110,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 111,
-      "category": "genericTemporaries",
-      "text": "scratchValue9"
-     },
-     {
-      "line": 112,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 114,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 115,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 116,
-      "category": "genericTemporaries",
-      "text": "scratchValue9"
      },
      {
       "line": 119,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "text": "scratchValue8"
      },
      {
-      "line": 121,
+      "line": 120,
       "category": "genericTemporaries",
       "text": "scratchValue9"
      },
      {
-      "line": 124,
+      "line": 121,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 123,
       "category": "genericTemporaries",
       "text": "scratchValue8"
      },
      {
-      "line": 126,
-      "category": "gotos",
-      "text": "goto"
+      "line": 124,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
      },
      {
-      "line": 126,
-      "category": "nativeNames",
-      "text": "LAB_00e56b54"
+      "line": 125,
+      "category": "genericTemporaries",
+      "text": "scratchValue9"
      },
      {
       "line": 128,
@@ -6372,71 +6347,31 @@
       "text": "scratchValue7"
      },
      {
-      "line": 129,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 129,
-      "category": "nativeNames",
-      "text": "LAB_00e56c30"
-     },
-     {
       "line": 130,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue9"
      },
      {
-      "line": 130,
-      "category": "nativeNames",
-      "text": "LAB_00e56b84"
-     },
-     {
-      "line": 132,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 132,
-      "category": "nativeNames",
-      "text": "FLOW_hoist_lab_00e56b84_1"
-     },
-     {
-      "line": 134,
+      "line": 133,
       "category": "genericTemporaries",
       "text": "scratchValue8"
      },
      {
-      "line": 134,
+      "line": 135,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 134,
+      "line": 135,
       "category": "nativeNames",
       "text": "LAB_00e56b54"
      },
      {
-      "line": 135,
+      "line": 137,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 136,
-      "category": "genericTemporaries",
-      "text": "scratchValue8"
-     },
-     {
-      "line": 136,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 136,
-      "category": "nativeNames",
-      "text": "LAB_00e56b84"
-     },
-     {
       "line": 138,
       "category": "gotos",
       "text": "goto"
@@ -6444,7 +6379,12 @@
      {
       "line": 138,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e56b84"
+      "text": "LAB_00e56c30"
+     },
+     {
+      "line": 139,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 139,
@@ -6452,87 +6392,147 @@
       "text": "LAB_00e56b84"
      },
      {
-      "line": 142,
+      "line": 141,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 141,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e56b84_1"
      },
      {
       "line": 143,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 143,
       "category": "gotos",
       "text": "goto"
      },
      {
       "line": 143,
       "category": "nativeNames",
-      "text": "FLOW_hoist_lab_00e56b54_1"
+      "text": "LAB_00e56b54"
      },
      {
       "line": 144,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 145,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 145,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 145,
+      "category": "nativeNames",
+      "text": "LAB_00e56b84"
+     },
+     {
+      "line": 147,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 147,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e56b84"
      },
      {
-      "line": 145,
+      "line": 148,
+      "category": "nativeNames",
+      "text": "LAB_00e56b84"
+     },
+     {
+      "line": 151,
+      "category": "nativeNames",
+      "text": "FLOW_hoist_lab_00e56b84_1"
+     },
+     {
+      "line": 152,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 145,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e56b54"
-     },
-     {
-      "line": 146,
-      "category": "nativeNames",
-      "text": "LAB_00e56b54"
-     },
-     {
-      "line": 149,
+      "line": 152,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e56b54_1"
      },
      {
-      "line": 150,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "line": 153,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e56b84"
      },
      {
       "line": 154,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 155,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 156,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 156,
-      "category": "nativeNames",
-      "text": "LAB_00e56c30"
-     },
-     {
-      "line": 158,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 160,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 162,
+      "line": 154,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e56b54"
      },
      {
+      "line": 155,
+      "category": "nativeNames",
+      "text": "LAB_00e56b54"
+     },
+     {
+      "line": 158,
+      "category": "nativeNames",
+      "text": "FLOW_hoist_lab_00e56b54_1"
+     },
+     {
+      "line": 159,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
       "line": 163,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 164,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 165,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 165,
+      "category": "nativeNames",
+      "text": "LAB_00e56c30"
+     },
+     {
+      "line": 167,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 169,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 171,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e56b54"
+     },
+     {
+      "line": 172,
       "category": "nativeNames",
       "text": "LAB_00e56c30"
      }
@@ -6541,8 +6541,8 @@
   }
  },
  "bsimHelperNames": {
-  "helper_E569D0": "DoConversation",
   "helper_E55C60": "AddGossip",
+  "helper_E569D0": "DoConversation",
   "helper_E55CE0": "AskForBook",
   "helper_E57020": "GetBookSpecificArgs",
   "helper_E57530": "LookForBook"

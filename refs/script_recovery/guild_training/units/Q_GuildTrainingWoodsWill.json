@@ -355,6 +355,10 @@
         "BountyHuntTimeLimitExceeded",
         "Bool"
       ],
+      "0xdc": [
+        "AchievementsWorthyOfSong",
+        "Int"
+      ],
       "0xe0": [
         "BreakSiegeFinished",
         "Bool"
@@ -399,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -417,6 +425,14 @@
       ],
       "0xf8": [
         "MaxChickenKickingScore",
+        "Int"
+      ],
+      "0xfc": [
+        "StoryTellerSpecialStories",
+        "Int"
+      ],
+      "0x100": [
+        "StoryTellerToldSpecialStories",
         "Int"
       ],
       "0x104": [
@@ -574,24 +590,6 @@
         "name": "ArcheryStateRequired"
       },
       {
-        "offset": "0xdc",
-        "pdbOffset": "0xdc",
-        "type": "ulong",
-        "name": "AchievementsWorthyOfSong"
-      },
-      {
-        "offset": "0xfc",
-        "pdbOffset": "0xfc",
-        "type": "ulong",
-        "name": "StoryTellerSpecialStories"
-      },
-      {
-        "offset": "0x100",
-        "pdbOffset": "0x100",
-        "type": "ulong",
-        "name": "StoryTellerToldSpecialStories"
-      },
-      {
         "offset": "0x134",
         "pdbOffset": "0x134",
         "type": "vector<CCharString,std::allocator<CCharString>_>",
@@ -671,6 +669,8 @@
     "thingFields": {},
     "unmappedFields": [],
     "timers": [],
+    "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
@@ -709,6 +709,7 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
+      "resourceFields": {},
       "arrays": []
     }
   }

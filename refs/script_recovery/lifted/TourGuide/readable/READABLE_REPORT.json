@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "tour_guide",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\tour_guide",
+ "draft": "refs\\script_recovery\\lifted\\TourGuide\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -4330,7 +4330,7 @@
      }
     },
     {
-     "function": "null",
+     "function": "NativeThread_00ee6a40",
      "rewrites": {
       "flags": 0,
       "termination": 2,
@@ -4567,7 +4567,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "null",
+     "function": "NativeThread_00ee6a40",
      "sourceLine": 212,
      "locals": {
       "bVar2_1": {
@@ -4694,7 +4694,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "null",
+     "function": "NativeThread_00ee6a40",
      "sourceLine": 157,
      "locals": {},
      "splitLocals": {},
@@ -5114,7 +5114,7 @@
        "requires": 0
       }
      },
-     "null": {
+     "NativeThread_00ee6a40": {
       "rewrites": {
        "splitLocals": 2,
        "closures": 0,

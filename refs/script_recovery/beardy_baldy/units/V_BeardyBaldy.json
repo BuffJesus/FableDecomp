@@ -843,6 +843,7 @@
       "RandomSpeechTimer"
     ],
     "resourceFields": {},
+    "definitionSnapshots": {},
     "arrays": [
       {
         "name": "RandomSpeech",

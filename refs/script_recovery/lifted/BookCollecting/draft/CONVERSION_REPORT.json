@@ -216,6 +216,57 @@
         },
         {
           "owner": "V_BookCollecting",
+          "function": "helper_E55C60",
+          "address": "0x00e55c60",
+          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "strParam_1",
+                "lua": "native_arg_strParam_1",
+                "type": "CCharString *"
+              },
+              {
+                "native": "strParam_2",
+                "lua": "native_arg_strParam_2",
+                "type": "CCharString *"
+              },
+              {
+                "native": "strParam_3",
+                "lua": "native_arg_strParam_3",
+                "type": "CCharString *"
+              },
+              {
+                "native": "strParam_4",
+                "lua": "native_arg_strParam_4",
+                "type": "CCharString *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "AddRumourCategory",
+            "AddNewRumourToCategory",
+            "AddGossipVillage",
+            "AddGossipFactionToCategory"
+          ],
+          "lines": 4,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_BookCollecting",
           "function": "helper_E569D0",
           "address": "0x00e569d0",
           "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
@@ -307,57 +358,6 @@
             "LAB_00e56c84",
             "LAB_00e56cd0"
           ]
-        },
-        {
-          "owner": "V_BookCollecting",
-          "function": "helper_E55C60",
-          "address": "0x00e55c60",
-          "path": "FSE/V_BookCollecting/V_BookCollecting.lua",
-          "evidence": "unmatched retail helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "strParam_1",
-                "lua": "native_arg_strParam_1",
-                "type": "CCharString *"
-              },
-              {
-                "native": "strParam_2",
-                "lua": "native_arg_strParam_2",
-                "type": "CCharString *"
-              },
-              {
-                "native": "strParam_3",
-                "lua": "native_arg_strParam_3",
-                "type": "CCharString *"
-              },
-              {
-                "native": "strParam_4",
-                "lua": "native_arg_strParam_4",
-                "type": "CCharString *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [],
-          "calls": [
-            "AddRumourCategory",
-            "AddNewRumourToCategory",
-            "AddGossipVillage",
-            "AddGossipFactionToCategory"
-          ],
-          "lines": 4,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
         },
         {
           "owner": "BS_Teacher",

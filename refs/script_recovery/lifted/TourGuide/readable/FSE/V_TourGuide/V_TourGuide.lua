@@ -159,8 +159,8 @@ function WatchForClosingTime(quest)
     until false
 end
 
--- V_TourGuide.null (retail 0x00ee6a40)
-function null(quest)
+-- V_TourGuide.NativeThread_00ee6a40 (retail 0x00ee6a40)
+function NativeThread_00ee6a40(quest)
     local predicateResult
     local tourGuideFollower = quest:GetAllThingsWithScriptName("TourGuideFollower")
     predicateResult = quest:IsActiveThreadTerminating()

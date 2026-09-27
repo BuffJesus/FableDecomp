@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -692,14 +696,15 @@
       }
     ],
     "timers": [],
-    "arrays": [],
-    "retailOffsetDelta": -20,
-    "pdbMembersUnused": [],
-    "nestedPdbMembers": {},
     "resourceFields": {
       "0x70": "seh_Chicken",
       "0x80": "seh_ChickenMaster"
-    }
+    },
+    "definitionSnapshots": {},
+    "arrays": [],
+    "retailOffsetDelta": -20,
+    "pdbMembersUnused": [],
+    "nestedPdbMembers": {}
   },
   "entities": {
     "ChickenMaster": {
@@ -751,8 +756,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "ChickenSign": {
       "nativeClass": "NScript::CV_ChickenKickingScript::CChickenSign",
@@ -793,8 +798,8 @@
         }
       ],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "KickedChicken": {
       "nativeClass": "NScript::CV_ChickenKickingScript::CKickedChicken",
@@ -828,8 +833,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "Spectator": {
       "nativeClass": "NScript::CV_ChickenKickingScript::CSpectator",
@@ -868,8 +873,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     }
   }
 }

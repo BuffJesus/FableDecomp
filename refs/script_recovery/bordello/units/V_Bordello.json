@@ -403,16 +403,20 @@
         "BooksPreviouslyOpened_0",
         "Bool"
       ],
-      "0xf3": [
-        "PrisonGameDoneBefore",
+      "0xf0": [
+        "BooksPreviouslyOpened_1",
         "Bool"
       ],
-      "0xf7": [
+      "0xf1": [
         "BooksPreviouslyOpened_2",
         "Bool"
       ],
       "0xf2": [
         "PrisonTorturedBefore",
+        "Bool"
+      ],
+      "0xf3": [
+        "PrisonGameDoneBefore",
         "Bool"
       ],
       "0xf4": [
@@ -636,9 +640,9 @@
         "spawnedAs": "AdjustTavernPrices",
         "evidence": "inventory thread registration"
       },
-      "null": {
+      "NativeThread_00e44980": {
         "address": "0x00e44980",
-        "spawnedAs": null,
+        "spawnedAs": "NativeThread_00e44980",
         "evidence": "inventory thread registration"
       },
       "helper_E3E320": {
@@ -817,6 +821,13 @@
       }
     ],
     "timers": [],
+    "resourceFields": {
+      "0x74": "seh_Boss",
+      "0x84": "seh_Guard",
+      "0x94": "seh_Madam",
+      "0xa4": "seh_Whore"
+    },
+    "definitionSnapshots": {},
     "arrays": [
       {
         "name": "ClientInUse",
@@ -835,13 +846,7 @@
     ],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
-    "nestedPdbMembers": {},
-    "resourceFields": {
-      "0x74": "seh_Boss",
-      "0x84": "seh_Guard",
-      "0x94": "seh_Madam",
-      "0xa4": "seh_Whore"
-    }
+    "nestedPdbMembers": {}
   },
   "entities": {
     "Madame": {
@@ -885,8 +890,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "BordelloLady": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloLady",
@@ -951,8 +956,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "BordelloGuard": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloGuard",
@@ -986,8 +991,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "Magicman": {
       "nativeClass": "NScript::CV_BordelloScript::CMagicman",
@@ -1030,8 +1035,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "BordelloClient": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloClient",
@@ -1082,8 +1087,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "M_HeroDownstairs": {
       "nativeClass": "NScript::CV_BordelloScript::CM_HeroDownstairs",
@@ -1117,8 +1122,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     },
     "BordelloEntrance": {
       "nativeClass": "NScript::CV_BordelloScript::CBordelloEntrance",
@@ -1152,8 +1157,8 @@
       "thingFields": {},
       "unmappedFields": [],
       "timers": [],
-      "arrays": [],
-      "resourceFields": {}
+      "resourceFields": {},
+      "arrays": []
     }
   }
 }

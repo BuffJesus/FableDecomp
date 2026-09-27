@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "bordello",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\bordello",
+ "draft": "refs\\script_recovery\\lifted\\Bordello\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -8780,7 +8780,7 @@
        "booleanCompares": 0,
        "conditions": 2,
        "literals": 42,
-       "copies": 26,
+       "copies": 34,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 2,
@@ -22944,7 +22944,7 @@
      }
     },
     {
-     "function": "null",
+     "function": "NativeThread_00e44980",
      "rewrites": {
       "flags": 0,
       "termination": 1,
@@ -23557,7 +23557,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "null",
+     "function": "NativeThread_00e44980",
      "sourceLine": 330,
      "locals": {
       "bVar1_1": {
@@ -24504,7 +24504,7 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "null",
+     "function": "NativeThread_00e44980",
      "sourceLine": 153,
      "locals": {},
      "splitLocals": {},
@@ -25037,7 +25037,7 @@
        "requires": 0
       }
      },
-     "null": {
+     "NativeThread_00e44980": {
       "rewrites": {
        "splitLocals": 1,
        "closures": 0,
