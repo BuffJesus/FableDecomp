@@ -1,5 +1,5 @@
 -- Generated from the same native helper bodies as the quest draft.
-local IsHeroWearingAnyOddHairdo, IsHeroWearingAnyTash, helper_E53C70
+local IsHeroWearingAnyOddHairdo, IsHeroWearingAnyTash, SetWanderPointAndDistance, helper_E53C70
 function IsHeroWearingAnyOddHairdo(quest, me)
     local bVar3, bVar4, bVar5, bVar6, bVar7, pCVar8, u_stk_15
     bVar6 = false
@@ -126,9 +126,19 @@ function IsHeroWearingAnyTash(quest, me)
     return u_stk_19
 end
 
+function SetWanderPointAndDistance(quest, me, native_arg_param_1, native_arg_param_2)
+    local center = {x = native_arg_param_2.x, y = native_arg_param_2.y, z = native_arg_param_2.z}
+    quest:SetWanderCentrePoint(native_arg_param_1, center)
+    local fVar3 = quest:ReadGlobalGameDataFloat(0x448)
+    quest:SetWanderMinDistance(native_arg_param_1, fVar3)
+    fVar3 = quest:ReadGlobalGameDataFloat(0x44c)
+    quest:SetWanderMaxDistance(native_arg_param_1, fVar3)
+    quest:SetScriptingStateGroup(native_arg_param_1, 4)
+end
+
 function helper_E53C70(quest, me)
     local iVar2 = math.random(0, 32767)
     quest:SetTimer(quest:GetStateInt("RandomSpeechTimer"), quest:ReadGlobalGameData(0x494) - iVar2 % quest:ReadGlobalGameData(0x498))
 end
 
-return {IsHeroWearingAnyOddHairdo = IsHeroWearingAnyOddHairdo, IsHeroWearingAnyTash = IsHeroWearingAnyTash, helper_E53C70 = helper_E53C70}
+return {IsHeroWearingAnyOddHairdo = IsHeroWearingAnyOddHairdo, IsHeroWearingAnyTash = IsHeroWearingAnyTash, SetWanderPointAndDistance = SetWanderPointAndDistance, helper_E53C70 = helper_E53C70}

@@ -4,7 +4,7 @@
 local helpers = require("DragonBossFight.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local mediumHealth, lowHealth, veryLowHealth, self0X48, self0X68, self0X6C
+local mediumHealth, lowHealth, veryLowHealth
 
 -- Dragon.Main (retail 0x00d25a00)
 function Main(quest, me)
@@ -74,7 +74,7 @@ end
 
 -- Dragon.Init (retail 0x00d25880)
 function Init(quest, me)
-    -- TODO(native): helper_D258C0(quest, me, *(this + 0x14), 0)
+    helpers.helper_D258C0(quest, me, 0)
     mediumHealth = quest:ReadGlobalGameData(2996)
     lowHealth = quest:ReadGlobalGameData(3000)
     veryLowHealth = quest:ReadGlobalGameData(3004)
@@ -88,40 +88,6 @@ end
 function OnPredicateFail(quest, me)
     if me:MsgIsKilledBy("") then
         quest:SetStateInt("DragonState", 4)
-    end
-end
-
--- helper 0xD258C0 (named after the state it writes)
-function Setself_0x48(quest, me, param1)
-    -- TODO(native): name field 0x48 (int)
-    self0X48 = param1
-    if param1 == 0 then
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): name field 0x68 (undefined4)
-        self0X68 = quest:ReadGlobalGameData(3008)
-        -- TODO(native): name field 0x6c (undefined4)
-        self0X6C = quest:ReadGlobalGameData(3024)
-        return
-    elseif param1 == 1 then
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): name field 0x68 (undefined4)
-        self0X68 = quest:ReadGlobalGameData(3012)
-        -- TODO(native): name field 0x6c (undefined4)
-        self0X6C = quest:ReadGlobalGameData(3028)
-        return
-    elseif param1 == 2 then
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): name field 0x68 (undefined4)
-        self0X68 = quest:ReadGlobalGameData(3016)
-        -- TODO(native): name field 0x6c (undefined4)
-        self0X6C = quest:ReadGlobalGameData(3032)
-        return
-    elseif param1 == 3 then
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): name field 0x68 (undefined4)
-        self0X68 = quest:ReadGlobalGameData(3020)
-        -- TODO(native): name field 0x6c (undefined4)
-        self0X6C = quest:ReadGlobalGameData(3036)
     end
 end
 

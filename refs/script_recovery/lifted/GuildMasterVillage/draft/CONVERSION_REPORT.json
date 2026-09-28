@@ -75,6 +75,126 @@
           "nativeLabels": []
         },
         {
+          "owner": "V_GuildMaster",
+          "function": "helper_E91F20",
+          "address": "0x00e91f20",
+          "path": "FSE/V_GuildMaster/V_GuildMaster.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [
+            "switch tree flattening rejected: a value outside the cases runs a body",
+            "unlifted: CCharString::CCharString(&xStack_c,other);",
+            "label FLOW_native_label_2_c1",
+            "label LAB_00e922bb_c1",
+            "label LAB_00e922c9_c1",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "label FLOW_native_label_2_c2",
+            "label LAB_00e922bb_c2",
+            "label LAB_00e922c9_c2",
+            "unlifted: CCharString::CCharString(in_stack_00000004,&xStack_c);",
+            "label LAB_00e922c9_c3",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "label FLOW_native_label_2_c4",
+            "label LAB_00e922bb_c4",
+            "label LAB_00e922c9_c4",
+            "label LAB_00e922bb_c5",
+            "label LAB_00e922c9_c5",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "label FLOW_native_label_2",
+            "label LAB_00e922bb",
+            "label LAB_00e922c9",
+            "label LAB_00e922bb_c6",
+            "label LAB_00e922c9_c6",
+            "label LAB_00e922bb_c7",
+            "label LAB_00e922c9_c7",
+            "label LAB_00e92061",
+            "unlifted: CCharString::CCharString(in_stack_00000004,&xStack_c);",
+            "label LAB_00e92207",
+            "unlifted: CCharString::CCharString(in_stack_00000004,&xStack_c);",
+            "label LAB_00e92048",
+            "unlifted: CCharString::CCharString(in_stack_00000004,&xStack_c);",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "unlifted: CCharString::CCharString(in_stack_00000004,&xStack_c);",
+            "label LAB_00e922c9_c12",
+            "verify cleanup at LAB_00e92061 (lifted as early return)",
+            "label LAB_00e922bb_c13",
+            "label LAB_00e922c9_c13",
+            "unlifted: iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);",
+            "unlifted: iVar4 = *(iVar4 + 0x70)",
+            "unlifted: CVar2 = *QUESTSTATE_GetString(\"LastDialogueSaid\")",
+            "unlifted: if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then",
+            "unlifted: QUESTSTATE_SetString(\"LastDialogueSaid\", &pcVar7)"
+          ],
+          "calls": [
+            "GetMasterGameState",
+            "IsQuestCompleted",
+            "IsActiveThreadTerminating",
+            "IsQuestActive",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "ENGINE_Rand",
+            "SetStateBool",
+            "SetStateBool",
+            "SetStateBool",
+            "GetHeroTitle",
+            "SetStateBool",
+            "QUESTSTATE_SetString"
+          ],
+          "lines": 433,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "goto FLOW_after_flow_native_label_2;",
+            "goto FLOW_after_flow_native_label_2_242;",
+            "goto FLOW_after_flow_native_label_2_357;",
+            "goto FLOW_native_label_1;",
+            "goto FLOW_past_flow_native_label_1;",
+            "goto FLOW_past_lab_00e92080;",
+            "goto FLOW_past_lab_00e923f7;",
+            "goto LAB_00e92080;",
+            "goto LAB_00e923f7;",
+            "if ((iVar4 != 0x13) || (this[0x49] != (CV_GuildMasterScript)0x0)) goto LAB_00e924b3;",
+            "if (iVar1 == 0x8fc) goto LAB_00e923f7;"
+          ],
+          "nativeLabels": [
+            "FLOW_after_flow_native_label_2",
+            "FLOW_after_flow_native_label_2_242",
+            "FLOW_after_flow_native_label_2_357",
+            "FLOW_native_label_1",
+            "FLOW_past_flow_native_label_1",
+            "FLOW_past_lab_00e92080",
+            "FLOW_past_lab_00e923f7",
+            "LAB_00e92080",
+            "LAB_00e923f7",
+            "LAB_00e924b3"
+          ]
+        },
+        {
           "owner": "GuildMasterGameFlow",
           "function": "Main",
           "address": "0x00e90be0",
@@ -88,16 +208,12 @@
           "todo": [
             "label LAB_00e90cb3",
             "label LAB_00e91df7",
-            "helper_E91F20: 1 helper operands for 0 parameters",
             "label LAB_00e91e97",
             "label LAB_00e91ea7",
-            "helper_E91F20: 1 helper operands for 0 parameters",
-            "unlifted: pCVar11 = helper_E91F20(quest, me, *(this + 0x14))",
             "unlifted: bVar5 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
             "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
             "unlifted: bVar5 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: pCVar11 = helper_E91F20(quest, me, *(this + 0x14))"
+            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")"
           ],
           "calls": [
             "NewScriptFrame",
@@ -154,6 +270,7 @@
             "GetThingWithScriptName",
             "GetPos",
             "GetHero",
+            "IsDistanceFromPositionUnder",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "GetThingWithScriptName",
@@ -284,7 +401,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 538,
+          "lines": 536,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -419,22 +536,49 @@
           "readableLocalNames": {},
           "nativeJumps": [],
           "nativeLabels": []
-        },
+        }
+      ],
+      "missing": [
         {
-          "owner": "GuildMasterGameFlow",
-          "function": "helper_E91F20",
-          "address": "0x00e91f20",
-          "path": "FSE/V_GuildMaster/Entities/GuildMasterGameFlow.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
+          "owner": "V_GuildMaster",
+          "function": "OnPersist",
+          "address": "0x00cbd4e0",
+          "path": "FSE/V_GuildMaster/V_GuildMaster.lua",
+          "evidence": "cluster lifecycle slot"
+        }
+      ],
+      "syntax": {
+        "runtime": "Lua 5.4",
+        "ok": true,
+        "checked": 3,
+        "passed": 3,
+        "errors": []
+      },
+      "controlMode": "structured draft",
+      "bindingFiles": {
+        "GuildMasterGameFlow": "V_GuildMaster/Entities/GuildMasterGameFlow"
+      },
+      "cleanupRegions": {
+        "FSE/V_GuildMaster/V_GuildMaster.lua": {
+          "LAB_00e92061": [
+            "do return \"\" end"
+          ]
+        },
+        "FSE/V_GuildMaster/native_quest_helpers.lua": {
+          "LAB_00e92061": [
+            "do return \"\" end"
+          ]
+        }
+      },
+      "sharedHelpers": {
+        "path": "FSE/V_GuildMaster/native_quest_helpers.lua",
+        "functions": [
+          "helper_E91F20"
+        ],
+        "todo": {
+          "helper_E91F20": [
             "switch tree flattening rejected: a value outside the cases runs a body",
             "unlifted: CCharString::CCharString(&xStack_c,other);",
-            "unnamed field 0x44",
             "label FLOW_native_label_2_c1",
             "label LAB_00e922bb_c1",
             "label LAB_00e922c9_c1",
@@ -475,106 +619,19 @@
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "label LAB_00e922bb_c13",
             "label LAB_00e922c9_c13",
-            "unnamed field 0x50",
             "unlifted: iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);",
-            "unnamed field 0x4a",
-            "unnamed field 0x4a written in helper_E91F20",
-            "unnamed field 0x4b",
-            "unnamed field 0x4b written in helper_E91F20",
-            "unnamed field 0x4c",
-            "unnamed field 0x4c written in helper_E91F20",
-            "unnamed field 0x49",
-            "unnamed field 0x49 written in helper_E91F20",
-            "unlifted: CCharString::operator=((CCharString *)(this + 0x50),&xStack_10);",
-            "unlifted: iVar1 = *(iVar4 + 4)",
-            "unlifted: if *(iVar4 + 0x60) == 0 then",
             "unlifted: iVar4 = *(iVar4 + 0x70)",
-            "unlifted: if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then"
-          ],
-          "calls": [
-            "IsQuestCompleted",
-            "IsActiveThreadTerminating",
-            "IsQuestActive",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "ENGINE_Rand",
-            "SetStateBool",
-            "SetStateBool",
-            "SetStateBool",
-            "GetHeroTitle",
-            "SetStateBool"
-          ],
-          "lines": 439,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "goto FLOW_after_flow_native_label_2;",
-            "goto FLOW_after_flow_native_label_2_243;",
-            "goto FLOW_after_flow_native_label_2_358;",
-            "goto FLOW_native_label_1;",
-            "goto FLOW_past_flow_native_label_1;",
-            "goto FLOW_past_lab_00e92080;",
-            "goto FLOW_past_lab_00e923f7;",
-            "goto LAB_00e92080;",
-            "goto LAB_00e923f7;",
-            "if ((iVar4 != 0x13) || (this[0x49] != (CV_GuildMasterScript)0x0)) goto LAB_00e924b3;",
-            "if (iVar1 == 0x8fc) goto LAB_00e923f7;"
-          ],
-          "nativeLabels": [
-            "FLOW_after_flow_native_label_2",
-            "FLOW_after_flow_native_label_2_243",
-            "FLOW_after_flow_native_label_2_358",
-            "FLOW_native_label_1",
-            "FLOW_past_flow_native_label_1",
-            "FLOW_past_lab_00e92080",
-            "FLOW_past_lab_00e923f7",
-            "LAB_00e92080",
-            "LAB_00e923f7",
-            "LAB_00e924b3"
+            "unlifted: CVar2 = *QUESTSTATE_GetString(\"LastDialogueSaid\")",
+            "unlifted: if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then",
+            "unlifted: QUESTSTATE_SetString(\"LastDialogueSaid\", &pcVar7)"
           ]
-        }
-      ],
-      "missing": [
-        {
-          "owner": "V_GuildMaster",
-          "function": "OnPersist",
-          "address": "0x00cbd4e0",
-          "path": "FSE/V_GuildMaster/V_GuildMaster.lua",
-          "evidence": "cluster lifecycle slot"
-        }
-      ],
-      "syntax": {
-        "runtime": "Lua 5.4",
-        "ok": true,
-        "checked": 2,
-        "passed": 2,
-        "errors": []
-      },
-      "controlMode": "structured draft",
-      "bindingFiles": {
-        "GuildMasterGameFlow": "V_GuildMaster/Entities/GuildMasterGameFlow"
-      },
-      "cleanupRegions": {
-        "FSE/V_GuildMaster/Entities/GuildMasterGameFlow.lua": {
-          "LAB_00e92061": [
-            "do return \"\" end"
-          ]
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
         }
       },
       "summary": {
@@ -582,9 +639,9 @@
         "functions": 7,
         "missing": 1,
         "functionSyntaxPassed": 7,
-        "fileSyntaxPassed": 2,
-        "fileSyntaxChecked": 2,
-        "todo": 70
+        "fileSyntaxPassed": 3,
+        "fileSyntaxChecked": 3,
+        "todo": 55
       }
     }
   ],
@@ -593,8 +650,8 @@
     "functions": 7,
     "missing": 1,
     "functionSyntaxPassed": 7,
-    "fileSyntaxPassed": 2,
-    "fileSyntaxChecked": 2,
-    "todo": 70
+    "fileSyntaxPassed": 3,
+    "fileSyntaxChecked": 3,
+    "todo": 55
   }
 }

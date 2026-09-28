@@ -99,7 +99,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                -- TODO(native): SetWanderPointAndDistance(quest, me, *(this + 0x14), me, iVar13)
+                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -203,7 +203,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                -- TODO(native): SetWanderPointAndDistance(quest, me, *(this + 0x14), me, iVar13)
+                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -364,7 +364,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                -- TODO(native): SetWanderPointAndDistance(quest, me, *(this + 0x14), me, iVar13)
+                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -522,7 +522,7 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                -- TODO(native): SetWanderPointAndDistance(quest, me, *(this + 0x14), me, iVar13)
+                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -777,17 +777,5 @@ function GetRandomSpeech(quest, me)
         predicateResult = quest:IsActiveThreadTerminating()
         ::continue_1::
     until false
-end
-
--- BB_BeardyBaldyMan.SetWanderPointAndDistance (retail 0x00e53f60)
--- E53F60: bsim names this body NScript::CV_BeardyBaldyScript::SetWanderPointAndDistance (a homologous script member); no PDB name
-function SetWanderPointAndDistance(quest, me, param1, param2)
-    -- TODO(native): local center = *native_arg_param_2
-    quest:SetWanderCentrePoint(nil --[[missing]], nil --[[missing]])
-    quest:ReadGlobalGameDataFloat(1096)
-    quest:SetWanderMinDistance(nil --[[missing]], param1)
-    quest:ReadGlobalGameDataFloat(1100)
-    quest:SetWanderMaxDistance(nil --[[missing]], param1)
-    quest:SetScriptingStateGroup(nil --[[missing]], param1)
 end
 

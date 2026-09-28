@@ -25,6 +25,10 @@ BOOL_TRUE = {'1', "'\\x01'", 'true'}
 BOOL_FALSE = {'0', "'\\0'", 'false'}
 
 
+# an entity's parent-script int member used as an array index (V_TourGuide TourGuideGuide Main: WaypointCounter at +0x164)
+PARENT_INT_FIELD = r'\*\(int \*\)\(\*\(int \*\)\(this \+ 0x14\) \+ 0x[0-9a-f]+\)'
+
+
 def off_re(n):
     return f'(?:{hex(n)}|{n})'
 
@@ -1684,6 +1688,28 @@ def lower_member_resources(text, spec):
             return (f'CScriptGameResourceObjectScriptedThingBase::_{name}_CScriptGameResourceObjectScriptedThingBase('
                     f'(CScriptGameResourceObjectScriptedThingBase *){var}' + (', ' if rest.strip() != ')' else '') + rest)
         text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + v + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', vcall, text)
+    # ... and through a `CScriptGameResourceObjectScriptedThingBase &` parameter, directly or via its vtable read into
+    # a temporary (V_TourGuide MoveToNextWaypoint 0x00EE6850: `iVar1 = *(int *)param_2; ... (**(code **)(iVar1 +
+    # 0x10))(pos, 1.0, 0, 0, 1)` = MoveToPosition, the guide walking to the next stop)
+    header = text.split('{', 1)[0]
+    for param in re.findall(r'CScriptGameResourceObjectScriptedThingBase \*(native_arg_\w+)', header):
+        p = re.escape(param)
+        def pvcall(m, param=param):
+            name = RESOURCE_VTABLE_SLOTS.get(int(m.group(1), 16))
+            if name is None:
+                return m.group(0)
+            rest = m.group(2)
+            return (f'CScriptGameResourceObjectScriptedThingBase::_{name}_CScriptGameResourceObjectScriptedThingBase('
+                    f'(CScriptGameResourceObjectScriptedThingBase *){param}' + (', ' if rest.strip() != ')' else '') + rest)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + p + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', pvcall, text)
+        for tm in list(re.finditer(r'^[ \t]*(\w+) = \*\(int \*\)' + p + r';[ \t]*\r?\n', text, re.M))[::-1]:
+            tmp = re.escape(tm.group(1))
+            tail = text[tm.end():]
+            nxt = re.search(r'^[ \t]*' + tmp + r' = ', tail, re.M)
+            scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+            scope = re.sub(r'\(\*\*\(code \*\*\)\(' + tmp + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', pvcall, scope)
+            if not re.search(r'\b' + tmp + r'\b', scope):
+                text = text[:tm.start()] + scope + rest
     for label, target in (getattr(spec, 'call_labels', None) or {}).items():
         head = re.escape(label).replace('::', r'\s*::\s*')
         if target in RESOURCE_ASSIGN:
@@ -2727,6 +2753,33 @@ def fold_thing_copy_from_pointer(text):
     return RE_THING_COPY_FROM_POINTER.sub(lambda m: f"{m.group('ind')}{m.group('dst')} = (CScriptThing *){m.group('src')};\n", text)
 
 
+RE_THING_STAGED_FROM_REFERENCE = re.compile(
+    r'^(?P<ind>[ \t]*)(?P<data>\w+) = \*\(undefined4 \*\)\((?P<src>\w+) \+ 4\);[ \t]*\r?\n'
+    r'[ \t]*(?P<info>\w+) = \*\(int \*\*\)\((?P=src) \+ 8\);[ \t]*\r?\n'
+    r'[ \t]*if \((?P=info) != \(int \*\)0x0\) \{[ \t]*\r?\n'
+    r'[ \t]*\*(?P=info) = \*(?P=info) \+ 1;[ \t]*\r?\n'
+    r'[ \t]*\}[ \t]*\r?\n'
+    r'[ \t]*(?P<dst>\w+)\._4_4_ = (?P=data);[ \t]*\r?\n'
+    r'[ \t]*(?P=dst)\._0_4_ = &PTR__scalar_deleting_destructor__01238c8c;[ \t]*\r?\n'
+    r'[ \t]*(?P=dst)\._8_4_ = (?P=info);[ \t]*\r?\n', re.M)
+
+
+def fold_thing_staged_from_reference(text):
+    """A by-value CScriptThing argument copy-constructed from a `CScriptThing const &` parameter (Data, Info, addref,
+    then vtable/Data/Info into the argument slot): `dst = src`. V_BeardyBaldy SetWanderPointAndDistance 0x00E53F60
+    stages its thing four times (`mov edx,[esi+4]; ... mov ecx,[esi+8]; inc [ecx]`) for SetWanderCentrePoint /
+    Min / MaxDistance / SetScriptingStateGroup; lifted raw every call lost its thing operand, 2026-09-28.
+    The two temporaries must be read nowhere else."""
+    def fold(m):
+        for tmp in (m.group('data'), m.group('info')):
+            nxt = re.search(r'\b' + re.escape(tmp) + r'\b', text[m.end():])
+            # the temporary's next mention must be a redefinition (or none): nothing else reads this copy
+            if nxt and not re.match(r'\s*=(?!=)', text[m.end() + nxt.end():]):
+                return m.group(0)
+        return f"{m.group('ind')}{m.group('dst')} = (CScriptThing *){m.group('src')};\n"
+    return RE_THING_STAGED_FROM_REFERENCE.sub(fold, text)
+
+
 def fold_char_flags(text):
     """A byte flag (`cVar = '\\0'` / `'\\x01'`, tested `cVar != '\\0'`) mixes numeric literals with boolean tests once
     lifted: `cVar = 0 ... if cVar then` is always taken (0 is truthy in Lua) and `if not cVar then` never is. When a
@@ -2847,6 +2900,9 @@ def lower_after_annotate(text, thing_slots=None):
     text = fold_inline_string_equality(text)
     text = fold_by_value_thing_release(text)
     text = fold_thing_copy_from_pointer(text)
+    text = fold_thing_staged_from_reference(text)
+    # a C3DVector copied out of a `C3DVector const &` parameter (SetWanderPointAndDistance's `center`)
+    text = re.sub(r'^([ \t]*)(\w+) = \*\(C3DVector(?:_bv)? \*\)(native_arg_\w+);', r'\1\2 = ENGINE_VectorCopy(\3);', text, flags=re.M)
     # a no-operand thing method called through the stack thing's own vtable word (`(**(code **)(X._0_4_ + 0x12c))()`
     # = X.IsAlive()) on a slot the function uses as a CScriptThing (MagicBarrier's force-field handles, 2026-09-24)
     if thing_slots:
@@ -4048,6 +4104,13 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\((?:CCharString(?:_bv)?) \*\)&(\w*Stack_\w+)\b', r'&\1', text)
 
     parent = r'\*\(int \*\)\(this \+ 0x14\)'
+    # the parent pointer loaded as the script class (`*(CV_TourGuideScript **)(this + 0x14) + 0x168`, the thing
+    # argument of MoveToNextWaypoint at 0x00EE5B42: `lea edx,[ecx+0x168]`): Ghidra's placeholder class has no size,
+    # so the sum is a byte offset; respelled only onto a known parent member offset
+    if spec.entity:
+        known = set(spec.parent_fields) | set(spec.parent_things) | set(spec.parent_lists)
+        text = re.sub(r'\*\(CV_\w+ \*\*\)\(this \+ 0x14\)(?= \+ (0x[0-9a-f]+|\d+)\))',
+                      lambda m: '*(int *)(this + 0x14)' if int(m.group(1), 0) in known else m.group(0), text)
     # 1. alias locals for parent / master pointers, substituted in place (assignment removed)
     def inline_alias(text, base_pattern, kinds):
         alias_re = re.compile(r'^[ \t]*(\w+) = (?:\([\w ]+\*\))?' + base_pattern + r';[ \t]*\r?\n', re.M)
@@ -4134,6 +4197,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
         # 3a. struct arrays with dynamic index: *(T *)(IDX * STRIDE + BASE+MEMBER + PARENTBASE)
         for a in arrays:
             stride = a['stride']
+            # the base folded into the index: `BASE + (IDX + 6) * 0xc` for WaypointInfo at +0x48 (V_TourGuide: Main's and
+            # MoveToNextWaypoint's `GetThingWithScriptName(WaypointInfo[WaypointCounter].locMarker)`) is
+            # `BASE + IDX * 0xc + 0x48`, the form the member rules below read
+            if a['base'] and a['base'] % stride == 0:
+                folded = a['base'] // stride
+                text = re.sub(r'(?<=' + base + r' \+ )\((?P<idx>' + PARENT_INT_FIELD + r'|\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\("[^"]*"\)|\w+) \+ '
+                              + off_re(folded) + r'\) \* ' + off_re(stride) + r'(?=\))',
+                              lambda m, a=a: f'{m.group("idx")} * {stride:#x} + {a["base"]:#x}', text)
             if a.get('dimensions') and a.get('element') in ('CCharString', 'CWideString'):
                 from tools.script_recovery.native_string_matrices import lower_string_matrix
                 text = lower_string_matrix(text, a, base, tag)
@@ -4205,7 +4276,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             for member_off, (mname, kind) in a['members'].items():
                 absolute = a['base'] + member_off
                 key = f'__key("{a["name"]}_" .. {{idx}} .. "_{mname}")' if mname else f'__key("{a["name"]}_" .. {{idx}})'
-                idx_form = r'(?P<idx>\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* ' + off_re(stride)
+                idx_form = r'(?P<idx>' + PARENT_INT_FIELD + r'|\*\(int \*\)\(this \+ 0x[0-9a-f]+\)|(?:QUEST|ENTITY)STATE_GetInt\(\"[^\"]*\"\)|\w+) \* ' + off_re(stride)
                 pat_store = re.compile(r'^([ \t]*)\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\) =\s*([^;]+);', re.M)
                 text = pat_store.sub(lambda m, k=key, kind=kind, tag=tag: f'{m.group(1)}QUESTSTATE_Set{kind}({k.format(idx=m.group("idx"))}, {_lit(m.group(3), kind)});', text)
                 pat_load = re.compile(r'\*\(' + TYPE + r' \*\)\(' + idx_form + r' \+ ' + off_re(absolute) + r' \+ ' + base + r'\)')
@@ -4217,6 +4288,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                                 # GetRandomSpeech 0x00E53CB0)
                                 r'\((?:CWideString|CCharString) \*\)\(' + base + r' \+ ' + off_re(absolute) + r' \+ ' + idx_form + r'\)'):
                         text = re.sub(pat, lambda m, k=key, tag=tag: f'{tag}STATE_GetString({k.format(idx=m.group("idx"))})', text)
+                    # a local copy-constructed from the element (TourGuideGuide Main: the stop's overheard text)
+                    text = re.sub(r'^([ \t]*)CCharString::CCharString\(&(\w+),\s*((?:QUEST|ENTITY)STATE_GetString\(__key\("'
+                                  + re.escape(a['name']) + r'_.*\))\);[ \t]*$', r'\1\2 = \3;', text, flags=re.M)
             # scalar sub-arrays with a trailing byte index: *(T *)(BASE + ABS + IDX * 4)  (Teams[0].StateCounter[i])
             for member_off, (mname, kind) in a['members'].items():
                 sub = re.match(r'(.+)_(\d+)$', mname)
@@ -4318,7 +4392,12 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\) \+ (0x[0-9a-f]+|\d+)\)\)\s*\(', vcall, text)
             # the thing's counted pointer Data (+4) compared to null: (BASE+OFF+4)
             text = re.sub(r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off + 4) + r'\)', f'__thing_valid({recv})', text)
-            text = re.sub(r'\(CScriptThing \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', recv, text)
+            # (also passed by value: `(CScriptThing_bv *)(BASE + OFF)`, V_TourGuide TourGuideGuide Main's
+            # IsDistanceBetweenThingsUnder(me, &parent->NextTourWaypoint, 2.0) at 0x00EE60D9)
+            text = re.sub(r'\(CScriptThing(?:_bv)? \*\)\(' + base + r' \+ ' + off_re(off) + r'\)', recv, text)
+            # ... or with the cast already stripped by an earlier rewrite (ENGINE_IsDistanceBetweenThingsUnder's operands):
+            # a bare member address -- no cast or dereference before it -- is the thing itself
+            text = re.sub(r'(?<![\w)*])\(' + base + r' \+ ' + off_re(off) + r'\)', recv, text)
         # 3c. Thing vectors
         for off, name in lists.items():
             begin = r'\*\(int \*\)\(' + base + r' \+ ' + off_re(off) + r'\)'
@@ -5077,8 +5156,13 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
     text = _expand_calls(text, 'ENGINE_IntToString', lambda a: f'tostring({a[0]})')
     text = _expand_calls(text, 'ENGINE_StrNotEqual', lambda a: f'(({a[0]} ~= {a[1]}) and 1 or 0)')
+    # a discarded result (KickedChicken Main 0x00E64210 pops four of them with `fstp st(0)`) is the call alone: a
+    # bare `(d ^ 2)` statement would continue the previous line as a call in Lua
+    text = re.sub(r'^([ \t]*)ENGINE_SquaredDistance\(', r'\1ENGINE_DiscardedDistance(', text, flags=re.M)
+    text = _expand_calls(text, 'ENGINE_DiscardedDistance', lambda a: f'quest:GetDistanceBetweenThings({", ".join(a)})')
     text = _expand_calls(text, 'ENGINE_SquaredDistance', lambda a: f'(quest:GetDistanceBetweenThings({", ".join(a)}) ^ 2)')
     text = _expand_calls(text, 'LOCALLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
+    text = _expand_calls(text, 'LOCALLIST_StringAt', lambda a: f'{a[0]}[{a[1]} + 1]')   # native_literal_string_vectors
     # a local array of resource objects (fold_local_resource_arrays): a Lua list of fresh resources
     text = _expand_calls(text, 'RESLIST_At', lambda a: f'{a[0]}[{a[1]} + 1]')
     text = _expand_calls(text, 'RESLIST_New', lambda a: f'(function(n) local t = {{}} for i = 1, n do t[i] = resources:NewResource() end return t end)({a[0]})')

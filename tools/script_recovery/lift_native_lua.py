@@ -608,6 +608,12 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
         params.append({'name':'b5','type':'sol::optional<bool>','optional':True})
     # LuaManager / LuaEntityAPI forward this query to retail 0x00CBE45C.
     # Retain native squared-distance and boundary semantics instead of Lua math.
+    # ... and its Under twin 0x00CBE4B7, bound by the novi-...-position-under sidecar patch
+    result.setdefault('IsDistanceFromPositionUnder', {
+        'scope': 'Entity', 'returnType': 'bool', 'blocking': False,
+        'parameters': [{'name': 'pMe', 'type': 'CScriptThing*'},
+                       {'name': 'position', 'type': 'sol::table', 'nativeKind': 'vector'},
+                       {'name': 'distance', 'type': 'float'}]})
     result.setdefault('IsDistanceFromPositionOver', {
         'scope': 'Entity', 'returnType': 'bool', 'blocking': False,
         'parameters': [{'name': 'pMe', 'type': 'CScriptThing*'},
@@ -2095,6 +2101,9 @@ class Lifter:
         self.locals.update(self.parameters)
         self.mutable_scalars.update(self.parameters)
         self.kinds.update(parameters or {})
+        # a `CScriptGameResourceObjectScriptedThingBase &` parameter is the caller's acquired resource (V_TourGuide
+        # MoveToNextWaypoint's MoveToPosition): its methods are `resources:<Method>(param, ...)`
+        self.resource_slots.update(n for n, k in (parameters or {}).items() if k == 'resource')
         if self.entity:
             decompile, self.self_wrapper_arguments = fold_self_wrapper_arguments(decompile)
         if native_function is not None:
@@ -2660,7 +2669,7 @@ class Lifter:
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
                                       else 'bool' if name.startswith(('ENGINE_Is', 'RESOURCE_Is')) or name.endswith('STATE_GetBool')
-                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString') or name.endswith('STATE_GetString') else 'number')
+                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString', 'LOCALLIST_StringAt') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)
@@ -3147,9 +3156,17 @@ class Lifter:
         if m and not stripped.startswith("if ") and not stripped.startswith("while "):
             target, name, argtext = m.group(1), m.group(2), m.group(3)
             resolved = self.callee_names.get(name, name.split("::")[-1])
-            if resolved == 'IsDistanceFromThingToPositionOver':
+            if resolved in ('IsDistanceFromThingToPositionOver', 'IsDistanceFromThingToPositionUnder'):
+                # (Under: retail 0x00CBE4B7, the sidecar's thing:IsDistanceFromPositionUnder, same fastcall ABI)
+                method = 'IsDistanceFromPosition' + resolved.removeprefix('IsDistanceFromThingToPosition')
                 # (the position is passed by address -- `&xStack_68`, EndTrader Main -- or through a C3DVector cast)
                 operands = [self.expr(re.sub(r'^(?:\(C3DVector \*\)\s*)?&(?=\w+$)', '', a.strip())) for a in self.arguments(argtext)]
+                if len(operands) == 3:
+                    # a parenthesised receiver (`(me)`), and the float distance pushed as its raw bits (`0x40c00000`
+                    # = 6.0, V_ChickenKicking ChickenMaster Main): the helper's third operand is a float by its ABI
+                    operands[0] = re.sub(r'^\((\w+)\)$', r'\1', operands[0])
+                    if re.fullmatch(r'0x[0-9a-f]{8}', operands[2]):
+                        operands[2] = repr(struct.unpack('<f', struct.pack('<I', int(operands[2], 16)))[0])
                 proven = False
                 if len(operands) == 3:
                     actor, position, distance = operands
@@ -3166,13 +3183,13 @@ class Lifter:
                         self.emit(f'{self.declare(target)} = nil --[[unresolved native result]]')
                         self.kinds.pop(target, None)
                     return
-                call = f'{actor}:IsDistanceFromPositionOver({position}, {distance})'
+                call = f'{actor}:{method}({position}, {distance})'
                 if target:
                     self.emit(f'{self.declare(target)} = ({actor} ~= nil and {call})')
                     self.kinds[target] = 'bool'
                 else:
                     self.emit(f'if {actor} ~= nil then {call} end')
-                self.calls.append('IsDistanceFromPositionOver')
+                self.calls.append(method)
                 return
             parent_helper = self.parent_helpers.get(name)
             if parent_helper:
@@ -3191,7 +3208,11 @@ class Lifter:
                     self.kinds[target] = parent_helper['returnKind']
                 return
             mangled = RE_RESOURCE_METHOD.search(name)
-            if mangled and not self.execution_entity and self.quest_resource_method(target, mangled.group(1), argtext):
+            # (in entity context too when the receiver is a resource PARAMETER: the caller's acquisition, which need
+            # not control `me`)
+            first = (self.arguments(argtext) or [''])[0]
+            param_receiver = re.sub(r'^(?:\([^)]*\))?\s*&?', '', first.strip()) in (self.parameters & self.resource_slots)
+            if mangled and (not self.execution_entity or param_receiver) and self.quest_resource_method(target, mangled.group(1), argtext):
                 return
             if mangled and mangled.group(1) in self.manifest:
                 # CScriptGameResourceObjectScriptedThingBase::<Method>(resource, thing, ...) is the

@@ -716,6 +716,16 @@ function GoTalkToBeardyBaldy(quest)
     r1 = nil
 end
 
+function SetWanderPointAndDistance(quest, native_arg_param_1, native_arg_param_2)
+    local center = {x = native_arg_param_2.x, y = native_arg_param_2.y, z = native_arg_param_2.z}
+    quest:SetWanderCentrePoint(native_arg_param_1, center)
+    local fVar3 = quest:ReadGlobalGameDataFloat(0x448)
+    quest:SetWanderMinDistance(native_arg_param_1, fVar3)
+    fVar3 = quest:ReadGlobalGameDataFloat(0x44c)
+    quest:SetWanderMaxDistance(native_arg_param_1, fVar3)
+    quest:SetScriptingStateGroup(native_arg_param_1, 4)
+end
+
 function IsHeroWearingAnyTash(quest)
     local bVar3, bVar4, bVar5, bVar6, bVar7, bVar8, pCVar9, u_stk_19
     bVar7 = false

@@ -671,6 +671,50 @@
         },
         {
           "owner": "V_BeardyBaldy",
+          "function": "SetWanderPointAndDistance",
+          "address": "0x00e53f60",
+          "path": "FSE/V_BeardyBaldy/V_BeardyBaldy.lua",
+          "evidence": "bsim label only; string sets inconclusive",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "CScriptThing *"
+              },
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "C3DVector *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [],
+          "calls": [
+            "ENGINE_VectorCopy",
+            "SetWanderCentrePoint",
+            "ENGINE_GlobalGameDataFloat",
+            "SetWanderMinDistance",
+            "ENGINE_GlobalGameDataFloat",
+            "SetWanderMaxDistance",
+            "SetScriptingStateGroup"
+          ],
+          "lines": 7,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "V_BeardyBaldy",
           "function": "IsHeroWearingAnyTash",
           "address": "0x00e538f0",
           "path": "FSE/V_BeardyBaldy/V_BeardyBaldy.lua",
@@ -837,29 +881,21 @@
             "unlifted: *(undefined4 *)(this_00 + 0x38) = uVar1;",
             "unlifted: CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);",
             "label LAB_00e53541",
-            "helper_E53F60: 3 helper operands for 2 parameters",
             "label LAB_00e51633",
-            "helper_E53F60: 3 helper operands for 2 parameters",
             "label LAB_00e53618",
             "label LAB_00e51eb4",
-            "helper_E53F60: 3 helper operands for 2 parameters",
             "helper_E53670: 1 helper operands for 0 parameters",
             "label LAB_00e52c43",
             "label LAB_00e52d63_c38",
             "label LAB_00e52d63_c39",
             "label LAB_00e53650",
-            "helper_E53F60: 3 helper operands for 2 parameters",
             "helper_E53670: 1 helper operands for 0 parameters",
             "label LAB_00e52fd3",
-            "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
-            "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
             "unlifted: QUESTSTATE_SetString(\"RequiredBeard\", &xStack_148)",
             "unlifted: QUESTSTATE_SetString(\"RequiredBeard\", &xStack_138)",
-            "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
             "unlifted: bVar6 = helper_E53670(quest, me, *(this + 0x14))",
             "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_184)",
             "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_158)",
-            "unlifted: helper_E53F60(quest, me, *(this + 0x14), me, iVar13)",
             "unlifted: bVar6 = helper_E53670(quest, me, *(this + 0x14))"
           ],
           "calls": [
@@ -1681,55 +1717,6 @@
           "nativeLabels": [
             "FLOW_after_lab_00e53d52"
           ]
-        },
-        {
-          "owner": "BB_BeardyBaldyMan",
-          "function": "helper_E53F60",
-          "address": "0x00e53f60",
-          "path": "FSE/V_BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "int"
-              },
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "int"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "SetWanderCentrePoint: missing spThing, pos (0 args for 2 params)",
-            "SetWanderMinDistance: missing spThing (1 args for 2 params)",
-            "SetWanderMaxDistance: missing spThing (1 args for 2 params)",
-            "SetScriptingStateGroup: missing spThing (1 args for 2 params)",
-            "unlifted: local center = *native_arg_param_2"
-          ],
-          "calls": [
-            "SetWanderCentrePoint",
-            "ENGINE_GlobalGameDataFloat",
-            "SetWanderMinDistance",
-            "ENGINE_GlobalGameDataFloat",
-            "SetWanderMaxDistance",
-            "SetScriptingStateGroup"
-          ],
-          "lines": 7,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
         }
       ],
       "missing": [],
@@ -1756,11 +1743,13 @@
         "functions": [
           "IsHeroWearingAnyOddHairdo",
           "IsHeroWearingAnyTash",
+          "SetWanderPointAndDistance",
           "helper_E53C70"
         ],
         "todo": {
           "IsHeroWearingAnyOddHairdo": [],
           "IsHeroWearingAnyTash": [],
+          "SetWanderPointAndDistance": [],
           "helper_E53C70": []
         },
         "syntax": {
@@ -1778,7 +1767,7 @@
         "functionSyntaxPassed": 23,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 52
+        "todo": 39
       }
     }
   ],
@@ -1789,6 +1778,6 @@
     "functionSyntaxPassed": 23,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 52
+    "todo": 39
   }
 }

@@ -21,11 +21,11 @@ local ghostChat, haveTalked, heroHasPlayed, kickingChickens, self0X18
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue3, isDistanceBetweenThingsUnder, isActiveThreadTerminating
-    local predicateResult, scratchValue13, scratchValue14, scratchValue16, questionAnswer
-    local questionAnswer2, scratchValue18, conversationId, sequence1, sequence, sequence3, thing
-    local line, mkCkOrg, this_00, scratchValue29, movie3, movie4, movie5, movie6
-    scratchValue3 = 0
+    local scratchValue, C_stk_370_1, isActiveThreadTerminating, predicateResult, scratchValue12
+    local scratchValue13, scratchValue15, questionAnswer, questionAnswer2, scratchValue18
+    local conversationId, sequence1, sequence, sequence3, thing, line, mkCkOrg, this_00
+    local scratchValue29, movie3, movie4, movie5, movie6
+    C_stk_370_1 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -41,12 +41,13 @@ function Main(quest, me)
     quest:SetThingHasInformation(me, false, false, false)
     quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsKillable(me, false, true)
-    -- TODO(native): xStack_188 = pCVar9.x;
+    local position = me:GetPos()
+    local vec_188 = {x = position.x, y = position.y, z = position.z}
     local timerId3 = quest:RegisterTimer()
     quest:SetTimer(timerId3, 0)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
-    scratchValue13 = 0
+    scratchValue12 = 0
     if quest:GetStateBool("KnowGhostHasGone") then
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId)
@@ -58,14 +59,7 @@ function Main(quest, me)
     end
     while not quest:GetStateBool("KnowGhostHasGone") do
         if not quest:NewScriptFrame(me) then goto LAB_00e68af4 end
-        isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(hero, me, 5.5)
-        if isDistanceBetweenThingsUnder then
-            -- TODO(native): iVar10 = IsDistanceFromThingToPositionUnder((me),&xStack_188,0x40c00000)
-    --[[unresolved native value]]
-            isDistanceBetweenThingsUnder = nil ~= 0
-        end
-        if isDistanceBetweenThingsUnder and quest:GetTimer(timerId3) < 1 then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
+        if (quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) and (me ~= nil and me:IsDistanceFromPositionUnder(vec_188, 6.0))) and quest:GetTimer(timerId3) < 1 then
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
             conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
@@ -77,7 +71,7 @@ function Main(quest, me)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_B17_MASTER_EARLY_ASIDE_FIRST_POSTCHAT", me, hero, false)
             end
             quest:SetTimer(timerId3, 8)
-            while (0 < quest:GetTimer(timerId3) and (scratchValue13 == 0)) and not quest:GetStateBool("TalkedTo") do
+            while (0 < quest:GetTimer(timerId3) and (scratchValue12 == 0)) and not quest:GetStateBool("TalkedTo") do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId)
@@ -98,54 +92,54 @@ function Main(quest, me)
                 -- TODO(native): xStack_374 = xStack_374 | 1;
                 if me:MsgIsHitByHero() then goto LAB_00e654e0 end
                 scratchValue = ctr_CVar19 | 3
-                scratchValue3 = scratchValue
+                C_stk_370_1 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue = ctr_CVar19 | 7
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e654e0 end
                 end
-                scratchValue14 = 0
+                scratchValue13 = 0
                 goto FLOW_past_lab_00e654e0
                 ::LAB_00e654e0::
-                scratchValue14 = 1
+                scratchValue13 = 1
                 ::FLOW_past_lab_00e654e0::
                 if scratchValue & 4 ~= 0 then
                     scratchValue = scratchValue & 0xfffffffb
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                 end
                 if scratchValue & 2 ~= 0 then
                     scratchValue = scratchValue & 0xfffffffd
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                 end
                 if scratchValue & 1 ~= 0 then
-                    scratchValue3 = scratchValue & 0xfffffffe
+                    C_stk_370_1 = scratchValue & 0xfffffffe
                 end
-                if scratchValue14 ~= 0 then
+                if scratchValue13 ~= 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         quest:DeregisterTimer(timerId3)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    scratchValue13 = 1
+                    scratchValue12 = 1
                 end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
             quest:SetTimer(timerId3, 15)
         end
         -- TODO(native): ctr_CVar19 = C_stk_370;
-        scratchValue29 = scratchValue3 | 8
+        scratchValue29 = C_stk_370_1 | 8
         if me:MsgIsHitByHero() then goto LAB_00e65617 end
         scratchValue29 = ctr_CVar19 | 24
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
             scratchValue29 = ctr_CVar19 | 56
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e65617 end
         end
-        scratchValue14 = 0
-        if scratchValue13 ~= 0 then goto LAB_00e65617 end
+        scratchValue13 = 0
+        if scratchValue12 ~= 0 then goto LAB_00e65617 end
         goto FLOW_past_lab_00e65617
         ::LAB_00e65617::
-        scratchValue14 = 1
+        scratchValue13 = 1
         ::FLOW_past_lab_00e65617::
         if scratchValue29 & 32 ~= 0 then
             scratchValue29 = scratchValue29 & 0xffffffdf
@@ -156,10 +150,10 @@ function Main(quest, me)
         if scratchValue29 & 8 ~= 0 then
             scratchValue29 = scratchValue29 & 0xfffffff7
         end
-        if scratchValue14 ~= 0 then
+        if scratchValue13 ~= 0 then
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating then goto LAB_00e68af4 end
-            scratchValue13 = isActiveThreadTerminating
+            scratchValue12 = isActiveThreadTerminating
             movie5 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             helpers.helper_E68B20(quest, me, "CS_CHICKING_HITGUYTOP")
@@ -169,105 +163,105 @@ function Main(quest, me)
         end
         sequence1 = me:IsTalkedToByHero()
         if not sequence1 then
-            scratchValue14 = 0
+            scratchValue13 = 0
             sequence1 = quest:GetStateBool("TalkedTo")
         end
         if sequence1 then
-            scratchValue14 = 1
+            scratchValue13 = 1
         end
-        scratchValue3 = scratchValue29 & 0xffffffbf
-        if scratchValue14 ~= 0 then
+        C_stk_370_1 = scratchValue29 & 0xffffffbf
+        if scratchValue13 == 0 then goto continue_3 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
+        quest:SetStateBool("TalkedTo", false)
+        quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_CHICKEN_KICKING", quest:GetActiveQuestName(), false)
+        quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_01", "", "")
+        if not ghostChat then
             if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
-            quest:SetStateBool("TalkedTo", false)
-            quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_CHICKEN_KICKING", quest:GetActiveQuestName(), false)
-            quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_01", "", "")
-            if not ghostChat then
-                if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
-                ghostChat = true
-                movie4 = resources:StartMovie("")
-                quest:PauseAllNonScriptedEntities(true)
-                thing = quest:GetThingWithScriptName("GhostFisherman")
-                predicateResult = quest:IsActiveThreadTerminating()
-                if thing ~= nil and thing:IsAlive() then
-                    if predicateResult then
-                        goto LAB_00e66150
+            ghostChat = true
+            movie4 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            thing = quest:GetThingWithScriptName("GhostFisherman")
+            predicateResult = quest:IsActiveThreadTerminating()
+            if thing ~= nil and thing:IsAlive() then
+                if predicateResult then
+                    goto LAB_00e66150
+                end
+                goto FLOW_past_lab_00e66150
+                ::LAB_00e66150::
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie4)
+                goto LAB_00e68af4
+                ::FLOW_past_lab_00e66150::
+                local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_0 then
+                    me:Speak(hero, "TEXT_QST_B17_MASTER_INITIAL_MEETING", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            quest:DeregisterTimer(timerId)
+                            quest:DeregisterTimer(timerId3)
+                            resources:ReleaseResource(resource)
+                            do return end
+                        end
                     end
-                    goto FLOW_past_lab_00e66150
-                    ::LAB_00e66150::
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e66150 end
+                end
+            else
+                if predicateResult then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                     goto LAB_00e68af4
-                    ::FLOW_past_lab_00e66150::
-                    local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-                    if 0.0 < fret_0 then
-                        me:Speak(hero, "TEXT_QST_B17_MASTER_INITIAL_MEETING", GROUP_SELECT_FIRST, false, true, false)
-                        while me:IsPerformingScriptTask() do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                quest:DeregisterTimer(timerId)
-                                quest:DeregisterTimer(timerId3)
-                                resources:ReleaseResource(resource)
-                                do return end
-                            end
-                        end
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e66150 end
-                    end
-                else
-                    if predicateResult then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie4)
-                        goto LAB_00e68af4
-                    end
-                    helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK1")
-                    quest:SetStateBool("KnowGhostHasGone", true)
-                    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
                 end
+                helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK1")
+                quest:SetStateBool("KnowGhostHasGone", true)
+                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
+            end
+            quest:PauseAllNonScriptedEntities(false)
+        else
+            if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
+            movie6 = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            thing = quest:GetThingWithScriptName("GhostFisherman")
+            predicateResult = quest:IsActiveThreadTerminating()
+            if thing ~= nil and thing:IsAlive() then
+                if predicateResult then
+                    goto LAB_00e661e4
+                end
+                goto FLOW_past_lab_00e661e4
+                ::LAB_00e661e4::
                 quest:PauseAllNonScriptedEntities(false)
-            else
-                if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
-                movie6 = resources:StartMovie("")
-                quest:PauseAllNonScriptedEntities(true)
-                thing = quest:GetThingWithScriptName("GhostFisherman")
-                predicateResult = quest:IsActiveThreadTerminating()
-                if thing ~= nil and thing:IsAlive() then
-                    if predicateResult then
-                        goto LAB_00e661e4
+                resources:DestroyMovie(movie6)
+                goto LAB_00e68af4
+                ::FLOW_past_lab_00e661e4::
+                local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+                if 0.0 < fret_00 then
+                    me:Speak(hero, "TEXT_QST_B17_MASTER_RETURN_MEETING", GROUP_SELECT_FIRST, false, true, false)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            quest:DeregisterTimer(timerId)
+                            quest:DeregisterTimer(timerId3)
+                            resources:ReleaseResource(resource)
+                            do return end
+                        end
                     end
-                    goto FLOW_past_lab_00e661e4
-                    ::LAB_00e661e4::
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e661e4 end
+                end
+            else
+                if predicateResult then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie6)
                     goto LAB_00e68af4
-                    ::FLOW_past_lab_00e661e4::
-                    local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
-                    if 0.0 < fret_00 then
-                        me:Speak(hero, "TEXT_QST_B17_MASTER_RETURN_MEETING", GROUP_SELECT_FIRST, false, true, false)
-                        while me:IsPerformingScriptTask() do
-                            quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                quest:PauseAllNonScriptedEntities(false)
-                                quest:DeregisterTimer(timerId)
-                                quest:DeregisterTimer(timerId3)
-                                resources:ReleaseResource(resource)
-                                do return end
-                            end
-                        end
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e661e4 end
-                    end
-                else
-                    if predicateResult then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie6)
-                        goto LAB_00e68af4
-                    end
-                    helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK2")
-                    quest:SetStateBool("KnowGhostHasGone", true)
-                    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
                 end
-                quest:PauseAllNonScriptedEntities(false)
+                helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK2")
+                quest:SetStateBool("KnowGhostHasGone", true)
+                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
             end
+            quest:PauseAllNonScriptedEntities(false)
         end
+        ::continue_3::
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
     if not quest:NewScriptFrame(me) then goto LAB_00e68af4 end
@@ -281,62 +275,62 @@ function Main(quest, me)
             quest:AddPersonToConversation(conversationId, hero)
             quest:AddLineToConversation(conversationId, "TEXT_QST_B17_MASTER_GAME_ASIDE", me, hero, false)
             quest:SetTimer(timerId3, 8)
-            while (0 < quest:GetTimer(timerId3) and (not scratchValue13)) and not quest:GetStateBool("TalkedTo") do
+            while (0 < quest:GetTimer(timerId3) and (not scratchValue12)) and not quest:GetStateBool("TalkedTo") do
                 if not quest:NewScriptFrame(me) then goto LAB_00e68aeb end
                 if me:IsTalkedToByHero() then
                     quest:SetStateBool("TalkedTo", true)
                 end
                 -- TODO(native): ctr_CVar19 = C_stk_370;
-                scratchValue3 = scratchValue3 | 128
+                C_stk_370_1 = C_stk_370_1 | 128
                 if me:MsgIsHitByHero() then goto LAB_00e661fd end
                 scratchValue = ctr_CVar19 | 384
-                scratchValue3 = scratchValue
+                C_stk_370_1 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue = ctr_CVar19 | 896
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e661fd end
                 end
-                scratchValue14 = 0
+                scratchValue13 = 0
                 goto FLOW_past_lab_00e661fd
                 ::LAB_00e661fd::
-                scratchValue14 = 1
+                scratchValue13 = 1
                 ::FLOW_past_lab_00e661fd::
                 if scratchValue & 512 ~= 0 then
                     scratchValue = scratchValue & 0xfffffdff
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                 end
                 if scratchValue & 256 ~= 0 then
                     scratchValue = scratchValue & 0xfffffeff
-                    scratchValue3 = scratchValue
+                    C_stk_370_1 = scratchValue
                 end
                 if scratchValue & 128 ~= 0 then
-                    scratchValue3 = scratchValue & 0xffffff7f
+                    C_stk_370_1 = scratchValue & 0xffffff7f
                 end
-                if scratchValue14 ~= 0 then
+                if scratchValue13 ~= 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e68aeb end
-                    scratchValue13 = 1
+                    scratchValue12 = 1
                 end
             end
             if quest:IsActiveThreadTerminating() then break end
             quest:SetTimer(timerId3, 15)
         end
         -- TODO(native): ctr_CVar19 = C_stk_370;
-        scratchValue29 = scratchValue3 | 1024
+        scratchValue29 = C_stk_370_1 | 1024
         if me:MsgIsHitByHero() then goto LAB_00e6634f end
         scratchValue29 = ctr_CVar19 | 3072
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
             scratchValue29 = ctr_CVar19 | 0x1c00
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e6634f end
         end
-        sequence = scratchValue13 ~= 0
+        sequence = scratchValue12 ~= 0
         if not sequence then
-            scratchValue14 = 0
+            scratchValue13 = 0
             sequence = quest:GetStateBool("SpectatorsUnderAttack")
         end
         if sequence then goto LAB_00e6634f end
         goto FLOW_past_lab_00e6634f
         ::LAB_00e6634f::
-        scratchValue14 = 1
+        scratchValue13 = 1
         ::FLOW_past_lab_00e6634f::
         if scratchValue29 & 4096 ~= 0 then
             scratchValue29 = scratchValue29 & 0xffffefff
@@ -347,11 +341,11 @@ function Main(quest, me)
         if scratchValue29 & 1024 ~= 0 then
             scratchValue29 = scratchValue29 & 0xfffffbff
         end
-        if scratchValue14 ~= 0 then
+        if scratchValue13 ~= 0 then
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating then break end
             quest:SetStateBool("SpectatorsUnderAttack", false)
-            scratchValue13 = isActiveThreadTerminating
+            scratchValue12 = isActiveThreadTerminating
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             helpers.helper_E68B20(quest, me, "CS_CHICKING_HITGUYBOTTOM")
@@ -361,14 +355,14 @@ function Main(quest, me)
         end
         sequence3 = me:IsTalkedToByHero()
         if not sequence3 then
-            scratchValue14 = 0
+            scratchValue13 = 0
             sequence3 = quest:GetStateBool("TalkedTo")
         end
         if sequence3 then
-            scratchValue14 = 1
+            scratchValue13 = 1
         end
-        scratchValue3 = scratchValue29 & 0xffffdfff
-        if scratchValue14 ~= 0 then
+        C_stk_370_1 = scratchValue29 & 0xffffdfff
+        if scratchValue13 ~= 0 then
             if quest:IsActiveThreadTerminating() then break end
             quest:SetStateBool("TalkedTo", false)
             if haveTalked then
@@ -744,9 +738,9 @@ function Main(quest, me)
                     -- TODO(native): GetFormattedString is not a ForgeFSE binding
                     quest:GetFormattedString("TEXT_QST_B17_SCORE", thing)
                     -- TODO(native): CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);
-                    if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_HighPrize) then
-                        if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_MidPrize) then
-                            if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_LowPrize) then
+                    if scratchValue15 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_HighPrize) then
+                        if scratchValue15 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_MidPrize) then
+                            if scratchValue15 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_LowPrize) then
                                 if not quest:IsActiveThreadTerminating() then
                                     -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_274);
                                     -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c8);

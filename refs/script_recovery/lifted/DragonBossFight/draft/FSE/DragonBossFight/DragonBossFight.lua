@@ -394,6 +394,44 @@ function helper_D25C20(quest)
     end
 end
 
+function helper_D258C0(quest, native_arg_param_1)
+    local bVar1
+    local alive = true
+    quest:SetStateInt("DragonState", native_arg_param_1)
+    if native_arg_param_1 == 0 then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar1 = not alive
+        if not bVar1 then
+            quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(0xbc0))
+            quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(0xbd0))
+            return
+        end
+    elseif native_arg_param_1 == 1 then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar1 = not alive
+        if not bVar1 then
+            quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(0xbc4))
+            quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(0xbd4))
+            return
+        end
+    elseif native_arg_param_1 == 2 then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar1 = not alive
+        if not bVar1 then
+            quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(0xbc8))
+            quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(0xbd8))
+            return
+        end
+    elseif native_arg_param_1 == 3 then
+        alive = not quest:IsActiveThreadTerminating()
+        bVar1 = not alive
+        if not bVar1 then
+            quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(0xbcc))
+            quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(0xbdc))
+        end
+    end
+end
+
 function helper_D27050(quest, native_arg_param_1)
     local resources = quest:RetailResources()
     local xStack_20 = resources:NewResource()

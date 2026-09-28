@@ -328,6 +328,71 @@
           ]
         },
         {
+          "owner": "V_TourGuide",
+          "function": "helper_EE6850",
+          "address": "0x00ee6850",
+          "path": "FSE/V_TourGuide/V_TourGuide.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "CScriptThing *"
+              },
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "CScriptGameResourceObjectScriptedThingBase *"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": true
+          },
+          "todo": [
+            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 4);",
+            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 8);",
+            "unlifted: *xStack_18 = *xStack_18 + 1;"
+          ],
+          "calls": [
+            "IsAlive",
+            "IsActiveThreadTerminating",
+            "GetPos",
+            "MoveToPosition",
+            "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
+            "IsAlive",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "GetThingWithScriptName",
+            "QUESTTHING_Empty",
+            "IsActiveThreadTerminating",
+            "ENGINE_ZeroVector",
+            "GetPos",
+            "MoveToPosition"
+          ],
+          "lines": 80,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [
+            "if (bVar4) goto LAB_00ee6a24;",
+            "if (native_arg_sequence_1) goto LAB_00ee6a24;"
+          ],
+          "nativeLabels": [
+            "LAB_00ee6a24"
+          ]
+        },
+        {
           "owner": "TourGuideGuide",
           "function": "Main",
           "address": "0x00ee57b0",
@@ -339,22 +404,9 @@
             "bsimVoid": false
           },
           "todo": [
-            "unnamed field 0x14",
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "unnamed field 0x14",
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "helper_EE6850: 3 helper operands for 2 parameters",
-            "unlifted: CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *",
             "label LAB_00ee6533",
-            "unlifted: CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x50 + *(int *)",
-            "helper_EE6850: 3 helper operands for 2 parameters",
             "label LAB_00ee6541",
-            "unnamed field 0x14",
-            "unlifted: CCharString::CCharString(&xStack_58,QUESTSTATE_GetString(__key(\"RandomGuideResponse_\" .. i",
-            "AddLineToConversation: missing textKey (4 args for 5 params)",
-            "label LAB_00ee65d9",
-            "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)",
-            "unlifted: helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)"
+            "label LAB_00ee65d9"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -419,6 +471,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "IsActiveThreadTerminating",
             "GetRandomThingWithScriptName",
             "IsAlive",
@@ -443,6 +496,7 @@
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "SetStateBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -506,6 +560,7 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -683,78 +738,6 @@
           "readableLocalNames": {},
           "nativeJumps": [],
           "nativeLabels": []
-        },
-        {
-          "owner": "TourGuideGuide",
-          "function": "helper_EE6850",
-          "address": "0x00ee6850",
-          "path": "FSE/V_TourGuide/Entities/TourGuideGuide.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "CScriptThing *"
-              },
-              {
-                "native": "param_2",
-                "lua": "native_arg_param_2",
-                "type": "CScriptGameResourceObjectScriptedThingBase *"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": true
-          },
-          "todo": [
-            "unlifted: (**(code **)(iVar1 + 0x10))(pCVar6,uVar10,uVar11,uVar12,uVar13);",
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 4);",
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 8);",
-            "unlifted: *xStack_18 = *xStack_18 + 1;",
-            "unnamed field 0x164",
-            "unnamed field 0x164",
-            "unnamed field 0x164 written in helper_EE6850",
-            "unnamed field 0x164 written in helper_EE6850",
-            "unnamed field 0x164",
-            "GetThingWithScriptName: missing scriptName (0 args for 1 params)",
-            "unlifted: iVar1 = *native_arg_param_2"
-          ],
-          "calls": [
-            "IsAlive",
-            "IsActiveThreadTerminating",
-            "GetPos",
-            "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
-            "IsAlive",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "GetThingWithScriptName",
-            "QUESTTHING_Empty",
-            "IsActiveThreadTerminating",
-            "ENGINE_ZeroVector",
-            "GetPos",
-            "SetDataString"
-          ],
-          "lines": 84,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [
-            "if (bVar4) goto LAB_00ee6a24;",
-            "if (native_arg_sequence_1) goto LAB_00ee6a24;"
-          ],
-          "nativeLabels": [
-            "LAB_00ee6a24"
-          ]
         },
         {
           "owner": "TourGuideFollower",
@@ -969,8 +952,8 @@
       "syntax": {
         "runtime": "Lua 5.4",
         "ok": true,
-        "checked": 3,
-        "passed": 3,
+        "checked": 4,
+        "passed": 4,
         "errors": []
       },
       "controlMode": "structured draft",
@@ -985,14 +968,34 @@
           ]
         }
       },
+      "sharedHelpers": {
+        "path": "FSE/V_TourGuide/native_quest_helpers.lua",
+        "functions": [
+          "helper_EE6850"
+        ],
+        "todo": {
+          "helper_EE6850": [
+            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 4);",
+            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 8);",
+            "unlifted: *xStack_18 = *xStack_18 + 1;"
+          ]
+        },
+        "syntax": {
+          "runtime": "Lua 5.4",
+          "ok": true,
+          "checked": 1,
+          "passed": 1,
+          "errors": []
+        }
+      },
       "summary": {
         "owners": 3,
         "functions": 15,
         "missing": 0,
         "functionSyntaxPassed": 15,
-        "fileSyntaxPassed": 3,
-        "fileSyntaxChecked": 3,
-        "todo": 55
+        "fileSyntaxPassed": 4,
+        "fileSyntaxChecked": 4,
+        "todo": 34
       }
     }
   ],
@@ -1001,8 +1004,8 @@
     "functions": 15,
     "missing": 0,
     "functionSyntaxPassed": 15,
-    "fileSyntaxPassed": 3,
-    "fileSyntaxChecked": 3,
-    "todo": 55
+    "fileSyntaxPassed": 4,
+    "fileSyntaxChecked": 4,
+    "todo": 34
   }
 }

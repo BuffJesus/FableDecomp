@@ -3,15 +3,17 @@
 
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
+local helpers = require("V_TourGuide.native_quest_helpers")
+
 -- per-entity fields (native class members; one Lua state per entity instance)
-local saveWaypointIdx, lastRandomSpeechIdx, self0X14, self0X164
+local saveWaypointIdx, lastRandomSpeechIdx
 
 -- TourGuideGuide.Main (retail 0x00ee57b0)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, outsideDistance, addNewConversation, getTimer, getPos, scratchValue16
-    local scratchValue17, getStateString, closingTimeExit
+    local scratchValue17, getStateString3, closingTimeExit
     scratchValue17 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -55,19 +57,17 @@ function Main(quest, me)
                     quest:SetStateThing("NextTourWaypoint", quest:GetThingWithScriptName("M_TG_LocationStart"))
                     quest:SetStateInt("WaypointCounter", 0)
                 else
-                    local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-                    quest:SetStateThing("NextTourWaypoint", getThingWithScriptName)
+                    quest:SetStateThing("NextTourWaypoint", quest:GetThingWithScriptName(quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker")))
                 end
             else
                 quest:SetStateInt("WaypointCounter", saveWaypointIdx + 1)
                 if 17 < quest:GetStateInt("WaypointCounter") then
                     quest:SetStateInt("WaypointCounter", 0)
                 end
-                local getThingWithScriptName2 = quest:GetThingWithScriptName(nil --[[missing]])
-                quest:SetStateThing("NextTourWaypoint", getThingWithScriptName2)
+                quest:SetStateThing("NextTourWaypoint", quest:GetThingWithScriptName(quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker")))
                 saveWaypointIdx = 0xffffffff
             end
-            -- TODO(native): MoveToNextWaypoint(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)
+            helpers.MoveToNextWaypoint(quest, me, quest:GetStateThing("NextTourWaypoint"), resource)
             if not quest:GetStateBool("SpawnedQuestFinishThread") then
                 if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
                 quest:CreateThread("WatchForNoFollowers")  -- native thread body NScript::CV_TourGuideScript::WatchForNoFollowers: lift it as function WatchForNoFollowers(quest)
@@ -99,15 +99,14 @@ function Main(quest, me)
         end
         if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameDataFloat(2260)) and not quest:GetStateBool("OverheardTourGuideThisWaypoint") then
             if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
-            -- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
+            local getStateString2 = quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locTextOverheard")
             if not quest:GetStateBool("TourGuideKilled") then
-                if quest:IsActiveThreadTerminating() then goto LAB_00ee6817 end
                 local getRandomThingWithScriptName2 = quest:GetRandomThingWithScriptName("TourGuideFollower")
                 addNewConversation = getRandomThingWithScriptName2 ~= nil and getRandomThingWithScriptName2:IsAlive()
                 if addNewConversation then
                     addNewConversation = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(addNewConversation, getRandomThingWithScriptName2)
-                    quest:AddLineToConversation(addNewConversation, "", me, getRandomThingWithScriptName2, false)
+                    quest:AddLineToConversation(addNewConversation, getStateString2, me, getRandomThingWithScriptName2, false)
                 end
             end
             quest:SetStateBool("OverheardTourGuideThisWaypoint", true)
@@ -125,7 +124,7 @@ function Main(quest, me)
                         quest:EntitySetFacingAngleTowardsThing(me, hero, false)
                         if not quest:GetStateBool("GuideSpokenToHeroThisWaypoint") then
                             if not quest:IsActiveThreadTerminating() then
-                                -- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x50 + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
+                                getStateString3 = quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locTextRequested")
                                 quest:SetStateBool("GuideSpokenToHeroThisWaypoint", true)
                                 goto LAB_00ee5fd7
                             end
@@ -138,7 +137,7 @@ function Main(quest, me)
                             end
                             if not quest:IsActiveThreadTerminating() then
                                 lastRandomSpeechIdx = addNewConversation
-                                if not quest:IsActiveThreadTerminating() then getStateString = quest:GetStateString("RandomGuideResponse_" .. addNewConversation); goto LAB_00ee5fd7 end
+                                if not quest:IsActiveThreadTerminating() then getStateString3 = quest:GetStateString("RandomGuideResponse_" .. addNewConversation); goto LAB_00ee5fd7 end
                             end
                         end
                         goto FLOW_past_lab_00ee5fd7
@@ -147,17 +146,14 @@ function Main(quest, me)
                             if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                             local conversationId = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(conversationId, hero)
-                            quest:AddLineToConversation(conversationId, getStateString, me, hero, false)
+                            quest:AddLineToConversation(conversationId, getStateString3, me, hero, false)
                             quest:SetTimer(timerId, quest:ReadGlobalGameData(2272))
                         end
                         resources:PrepareResource(resource)
                         while not resources:TryAcquire(resource, me, 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00ee6558 end
                         end
-                        if not quest:IsActiveThreadTerminating() then
-                            -- TODO(native): MoveToNextWaypoint(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)
-                            goto LAB_00ee60d9
-                        end
+                        if not quest:IsActiveThreadTerminating() then helpers.MoveToNextWaypoint(quest, me, quest:GetStateThing("NextTourWaypoint"), resource); goto LAB_00ee60d9 end
                         ::FLOW_past_lab_00ee5fd7::
                     end
                 end
@@ -165,7 +161,7 @@ function Main(quest, me)
             end
         end
         ::LAB_00ee60d9::
-        if quest:IsDistanceBetweenThingsUnder(me, self0X14 + 360, 2.0) then
+        if quest:IsDistanceBetweenThingsUnder(me, quest:GetStateThing("NextTourWaypoint"), 2.0) then
             if not quest:IsActiveThreadTerminating() then
                 local tourGuideFollower = quest:GetNearestWithScriptName(me, "TourGuideFollower")
                 if not (tourGuideFollower ~= nil and tourGuideFollower:IsAlive()) then
@@ -216,14 +212,13 @@ function Main(quest, me)
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                         lastRandomSpeechIdx = getTimer
-                        -- TODO(native): CCharString::CCharString(&xStack_58,quest:GetStateString(("RandomGuideResponse_" .. iVar6)));
+                        local getStateString = quest:GetStateString("RandomGuideResponse_" .. getTimer)
                         if quest:GetStateBool("TourGuideKilled") then
                             quest:NewScriptFrame(me)
                         else
-                            if quest:IsActiveThreadTerminating() then goto LAB_00ee6558 end
                             local conversationId2 = quest:AddNewConversation(me, false, false)
                             quest:AddPersonToConversation(conversationId2, hero)
-                            quest:AddLineToConversation(conversationId2, nil --[[missing]], me, hero, false)
+                            quest:AddLineToConversation(conversationId2, getStateString, me, hero, false)
                             quest:NewScriptFrame(me)
                         end
                     end
@@ -324,51 +319,5 @@ end
 
 -- TourGuideGuide.OnPredicateFail (retail 0x00ee4cc0)
 function OnPredicateFail(quest, me)
-end
-
--- TourGuideGuide.MoveToNextWaypoint (retail 0x00ee6850)
--- EE6850: bsim names this body NScript::CV_TourGuideScript::MoveToNextWaypoint (a homologous script member); no PDB name
-function MoveToNextWaypoint(quest, me, param1, param2)
-    local getPos, getThingWithScriptName2
-    if param1 ~= nil and param1:IsAlive() then
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): iVar1 = *native_arg_param_2
---[[unresolved native value]]
-        -- TODO(native): (**(code **)(iVar1 + 0x10))(pCVar6,uVar10,uVar11,uVar12,uVar13);
-        return
-    else
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
-        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
-        getThingWithScriptName2 = nil
-        if nil ~= nil then
-            -- TODO(native): *xStack_18 = *xStack_18 + 1;
-        end
-        local self0X = self0X164
-        while true do
-            if not (getThingWithScriptName2 == nil or not (getThingWithScriptName2 ~= nil and getThingWithScriptName2:IsAlive())) then break end
-            if not quest:NewScriptFrame(me) then return end
-            local getStateInt = self0X164 + 1
-            -- TODO(native): name field 0x164 (int)
-            self0X164 = getStateInt
-            if getStateInt < 18 then
-                if getStateInt == self0X and quest:IsActiveThreadTerminating() then return end
-            else
-                if quest:IsActiveThreadTerminating() then return end
-                -- TODO(native): name field 0x164 (undefined4)
-                self0X164 = 0
-            end
-            local getThingWithScriptName = quest:GetThingWithScriptName(nil --[[missing]])
-            getThingWithScriptName2 = getThingWithScriptName
-        end
-        if quest:IsActiveThreadTerminating() then return end
-        if getThingWithScriptName2 == nil then
-            getPos = {x = 0, y = 0, z = 0}
-        else
-            getPos = getThingWithScriptName2:GetPos()
-        end
-        param2:SetDataString(getPos)
-        return
-    end
 end
 

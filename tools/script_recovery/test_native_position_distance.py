@@ -39,12 +39,19 @@ class PositionDistanceTests(unittest.TestCase):
     def test_unproven_native_operands_are_rejected(self):
         for operands in ('actor, (C3DVector *)&uStack_150, 2.0',
                          'unknown, position, 2.0', 'me, position, 2.0',
-                         'actor, position, 0x40000000', 'actor, position'):
+                         'actor, position, unknownDistance', 'actor, position'):
             with self.subTest(operands=operands):
                 lifter, body = self.lift(operands)
                 self.assertTrue(lifter.todo)
                 self.assertNotIn('IsDistanceFromPositionOver', lifter.calls)
                 self.assertIn('answer = nil --[[unresolved native result]]', body)
+
+    def test_literal_float_bits_in_the_distance_slot_are_the_float(self):
+        # the helper's third operand is a float stack argument: V_ChickenKicking ChickenMaster pushes it as an
+        # immediate (`push 0x40c00000; lea edx,[esp+0x230]; mov ecx,ebp; call 0xcbe4b7`), which Ghidra prints raw
+        lifter, body = self.lift('(actor), position, 0x40000000')
+        self.assertEqual(lifter.todo, [])
+        self.assertIn('actor:IsDistanceFromPositionOver(position, 2.0)', body)
 
     def test_reviewed_signature_overlay_preserves_input(self):
         original = {}

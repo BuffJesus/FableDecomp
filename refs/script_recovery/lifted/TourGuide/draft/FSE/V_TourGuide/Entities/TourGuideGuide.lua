@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, pvVar11, r1, r2, r3, uVar12, u_stk_7c, xStack_80, xStack_8c, xStack_9c
+    local __native_condition_1, bVar4, cVar5, fVar13, iVar6, iVar7, i_stk_a0, i_stk_a4, native_arg_sequence_1, pCVar8, pThing, puVar10, pvVar11, r1, r2, r3, uVar12, u_stk_7c, xStack_58, xStack_68, xStack_80, xStack_8c, xStack_9c
     local alive = true
     u_stk_7c = 0
     xStack_9c = resources:NewResource()
@@ -88,7 +88,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00ee6817 end
-                    pCVar8 = quest:GetThingWithScriptName(nil --[[missing]])
+                    pCVar8 = quest:GetThingWithScriptName(quest:GetStateString(("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker")))
                     quest:SetStateThing("NextTourWaypoint", pCVar8)
                 end
             else
@@ -102,11 +102,11 @@ function Main(quest, me)
                     if bVar4 then goto LAB_00ee6817 end
                     quest:SetStateInt("WaypointCounter", 0)
                 end
-                pCVar8 = quest:GetThingWithScriptName(nil --[[missing]])
+                pCVar8 = quest:GetThingWithScriptName(quest:GetStateString(("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker")))
                 quest:SetStateThing("NextTourWaypoint", pCVar8)
                 __native_entity_state:SetStateInt("saveWaypointIdx", 0xffffffff)
             end
-            -- TODO(native): helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)
+            require("V_TourGuide.native_quest_helpers").helper_EE6850(quest, me, quest:GetStateThing("NextTourWaypoint"), xStack_9c)
             if not quest:GetStateBool("SpawnedQuestFinishThread") then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -152,7 +152,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00ee6817 end
-            -- TODO(native): CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
+            xStack_68 = quest:GetStateString(("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locTextOverheard"))
             if not quest:GetStateBool("TourGuideKilled") then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
@@ -170,7 +170,7 @@ function Main(quest, me)
                     end
                     iVar6 = quest:AddNewConversation(me, false, false)
                     quest:AddPersonToConversation(iVar6, r2)
-                    quest:AddLineToConversation(iVar6, "", me, r2, false)
+                    quest:AddLineToConversation(iVar6, xStack_68, me, r2, false)
                 end
             end
             quest:SetStateBool("OverheardTourGuideThisWaypoint", true)
@@ -207,7 +207,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if not bVar4 then
-                                -- TODO(native): CCharString::operator= (&xStack_80,(CCharString *)(*(int *)(this + 0x14) + 0x50 + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));
+                                xStack_80 = quest:GetStateString(("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locTextRequested"))
                                 quest:SetStateBool("GuideSpokenToHeroThisWaypoint", true)
                                 goto LAB_00ee5fd7
                             end
@@ -262,7 +262,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if not bVar4 then
-                            -- TODO(native): helper_EE6850(quest, me, *(this + 0x14), (*(this + 0x14) + 0x168), xStack_9c)
+                            require("V_TourGuide.native_quest_helpers").helper_EE6850(quest, me, quest:GetStateThing("NextTourWaypoint"), xStack_9c)
                             goto LAB_00ee60d9
                         end
                         ::FLOW_past_lab_00ee5fd7::
@@ -273,7 +273,7 @@ function Main(quest, me)
             end
         end
         ::LAB_00ee60d9::
-        bVar4 = quest:IsDistanceBetweenThingsUnder(me, (__native_entity_state:GetStateInt("self_0x14") + 0x168), 2.0)
+        bVar4 = quest:IsDistanceBetweenThingsUnder(me, quest:GetStateThing("NextTourWaypoint"), 2.0)
         if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
@@ -368,7 +368,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00ee6558 end
-                        -- TODO(native): CCharString::CCharString(&xStack_58,quest:GetStateString(("RandomGuideResponse_" .. iVar6)));
+                        xStack_58 = quest:GetStateString(("RandomGuideResponse_" .. iVar6))
                         if not quest:GetStateBool("TourGuideKilled") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
@@ -379,7 +379,7 @@ function Main(quest, me)
                             pCVar8 = quest:GetHero()
                             quest:AddPersonToConversation(iVar7, pCVar8)
                             pCVar8 = quest:GetHero()
-                            quest:AddLineToConversation(iVar7, nil --[[missing]], me, pCVar8, false)
+                            quest:AddLineToConversation(iVar7, xStack_58, me, pCVar8, false)
                         end
                     end
                     alive = quest:NewScriptFrame(me)
@@ -551,92 +551,5 @@ function OnPersist(quest, me, context)
 end
 
 function OnPredicateFail(quest, me)
-end
-
-function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
-    local __native_condition_1, bVar4, cVar5, iVar1, iVar9, native_arg_sequence_1, pCVar6, pCVar7, puVar8, uVar10, uVar11, uVar12, uVar13, xStack_18
-    local alive = true
-    bVar4 = (native_arg_param_1 ~= nil and native_arg_param_1:IsAlive())
-    if bVar4 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar4 = not alive
-        if not bVar4 then
-            -- TODO(native): iVar1 = *native_arg_param_2
-            iVar1 = nil --[[unresolved native value]]
-            uVar13 = 1
-            uVar12 = 0
-            uVar11 = 0
-            uVar10 = 1.0
-            pCVar6 = native_arg_param_1:GetPos()
-            -- TODO(native): (**(code **)(iVar1 + 0x10))(pCVar6,uVar10,uVar11,uVar12,uVar13);
-            return
-        end
-    else
-        alive = not quest:IsActiveThreadTerminating()
-        bVar4 = not alive
-        if not bVar4 then
-            -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
-            -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
-            xStack_18 = nil
-            if xStack_18 ~= nil then
-                -- TODO(native): *xStack_18 = *xStack_18 + 1;
-            end
-            iVar1 = __native_entity_state:GetStateInt("self_0x164")
-            while true do
-                __native_condition_1 = xStack_18 == nil
-                if not __native_condition_1 then
-                    cVar5 = (xStack_18 ~= nil and xStack_18:IsAlive())
-                    __native_condition_1 = not cVar5
-                end
-                if not __native_condition_1 then break end
-                alive = quest:NewScriptFrame(me)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar4 = not alive
-                if bVar4 then goto LAB_00ee6a24 end
-                iVar9 = __native_entity_state:GetStateInt("self_0x164") + 1
-                -- TODO(native): name field 0x164 (int)
-                __native_entity_state:SetStateInt("self_0x164", iVar9)
-                if iVar9 < 0x12 then
-                    native_arg_sequence_1 = false
-                    if iVar9 == iVar1 then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
-                    if native_arg_sequence_1 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar4 = not alive
-                        if bVar4 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then goto LAB_00ee6a24 end
-                else
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar4 = not alive
-                    if bVar4 then goto LAB_00ee6a24 end
-                    -- TODO(native): name field 0x164 (undefined4)
-                    __native_entity_state:SetStateInt("self_0x164", 0)
-                end
-                pCVar7 = quest:GetThingWithScriptName(nil --[[missing]])
-                xStack_18 = pCVar7
-                pCVar7 = nil
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar4 = not alive
-            if not bVar4 then
-                if xStack_18 == nil then
-                    puVar8 = {x = 0, y = 0, z = 0}
-                else
-                    puVar8 = xStack_18:GetPos()
-                end
-                native_arg_param_2:SetDataString(puVar8)
-            end
-            ::LAB_00ee6a24::
-            return
-        end
-    end
 end
 

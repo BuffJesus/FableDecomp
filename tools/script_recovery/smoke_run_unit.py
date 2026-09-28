@@ -66,6 +66,7 @@ local quest = setmetatable({}, { __index = function(_, k)
         end
         if k == "IsActiveThreadTerminating" then return terminating end
         if k:match("^GetAll") or k == "GetFollowingEntityList" or k == "GetStateListCopy" then return {} end
+        if k:match("^GetDistance") then return 0 end   -- a float (GetDistanceBetweenThings is not a thing getter)
         if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With") or k:match("Target$"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)
         end
@@ -135,6 +136,7 @@ for _, fname in ipairs(ordered) do
             if kind == "string" then extra[i] = "" elseif kind == "number" then extra[i] = 0 elseif kind == "bool" then extra[i] = false
             elseif kind == "resources" then extra[i] = RESOURCES elseif kind == "function" then extra[i] = function() return true end
             elseif kind == "state" then extra[i] = make_thing("state")
+            elseif kind == "vector" then extra[i] = {x = 0, y = 0, z = 0}
             else extra[i] = make_thing("arg" .. i) end
         end
         local rok, rerr
@@ -153,7 +155,31 @@ return results
 # (the retail transfer it stands for is named there). Reported as `pendingMethods`, not counted as problems.
 PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet in the installed sidecar
                     'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap',
-                    'StateListResize', 'StateListSetAt', 'GlobalConversations', 'ReadGlobalGameDataStringAt'}
+                    'StateListResize', 'StateListSetAt', 'GlobalConversations', 'ReadGlobalGameDataStringAt',
+                    'IsDistanceFromPositionUnder'}
+
+
+def recorded_parameter_types(unit_name):
+    """{(file, function): [harness kind]} from the converter report's native signatures, so a parameter the
+    readable pass names `param1` still receives the thing / vector / number the retail prototype takes."""
+    try:
+        package = script_unit(unit_name)['package']
+        report = json.loads((ROOT / 'refs/script_recovery/lifted' / package / 'draft/CONVERSION_REPORT.json').read_text(encoding='utf-8'))
+    except (OSError, KeyError, ValueError):
+        return {}
+    def kind(t):
+        return ('thing' if 'CScriptThing' in t else 'vector' if 'C3DVector' in t
+                else 'number' if 'CScriptGameResourceObjectScriptedThingBase' in t or t in ('int', 'uint', 'long', 'float', 'double', 'char')
+                else 'bool' if t == 'bool' else 'string' if 'CCharString' in t else None)
+    out = {}
+    for u in report.get('units', []):
+        for row in u.get('functions', []):
+            params = (row.get('nativeSignature') or {}).get('parameters') or []
+            kinds = [kind(p.get('type', '')) for p in params]
+            if params and None not in kinds:
+                out[(row['path'].removeprefix('FSE/'), row['function'])] = kinds
+                out[(row['path'].removeprefix('FSE/'), int(row['address'], 16))] = kinds   # readable renames helpers
+    return out
 
 
 def registered_methods():
@@ -204,6 +230,7 @@ def main():
         u = script_unit(args.unit)
         base = ROOT / 'refs/script_recovery/lifted' / u['package'] / args.stage / 'FSE'
     known = registered_methods()
+    native_types = recorded_parameter_types(args.unit) if not args.package_dir else {}
     report, problems = {}, 0
     for path in sorted(base.rglob('*.lua')):
         source = path.read_text(encoding='utf-8')
@@ -217,6 +244,15 @@ def main():
         for name, params in re.findall(r'^function ([\w.]+)\(([^)]*)\)', source, re.M):
             entity_file = '__native_entity_state' in source
             extra = [p.strip() for p in params.split(',')][2 if entity_file else 1:]
+            rel_path = path.relative_to(base).as_posix()
+            recorded = native_types.get((rel_path, name))
+            if recorded is None:
+                # the readable header comment names the retail body: `-- Owner.Name (retail 0x00ee6850)`
+                at = re.search(r'\(retail (0x[0-9a-fA-F]+)\)[^\n]*\n(?:--[^\n]*\n)*function ' + re.escape(name) + r'\(', source)
+                recorded = native_types.get((rel_path, int(at.group(1), 16))) if at else None
+            if recorded and len(recorded) == len(extra):
+                kinds[name] = lua.table(*recorded)
+                continue
             kinds[name] = lua.table(*[('resources' if p == 'resources'
                                        else 'state' if p in ('state', 'entityState', 'progress', 'talkState')
                                        else 'function' if re.search(r'^(body|predicate|callback|fn|target|add\w+|on\w+)$', p, re.I)

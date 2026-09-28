@@ -129,7 +129,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    -- TODO(native): helper_D258C0(quest, me, *(this + 0x14), 0)
+    require("DragonBossFight.native_quest_helpers").helper_D258C0(quest, me, 0)
     __native_entity_state:SetStateFloat("MediumHealth", quest:ReadGlobalGameData(0xbb4))
     __native_entity_state:SetStateFloat("LowHealth", quest:ReadGlobalGameData(0xbb8))
     __native_entity_state:SetStateFloat("VeryLowHealth", quest:ReadGlobalGameData(0xbbc))
@@ -142,53 +142,6 @@ function OnPredicateFail(quest, me)
     local cVar1 = me:MsgIsKilledBy("")
     if cVar1 then
         quest:SetStateInt("DragonState", 4)
-    end
-end
-
-function helper_D258C0(quest, me, native_arg_param_1)
-    local bVar1
-    local alive = true
-    -- TODO(native): name field 0x48 (int)
-    __native_entity_state:SetStateInt("self_0x48", native_arg_param_1)
-    if native_arg_param_1 == 0 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar1 = not alive
-        if not bVar1 then
-            -- TODO(native): name field 0x68 (undefined4)
-            __native_entity_state:SetStateInt("self_0x68", quest:ReadGlobalGameData(0xbc0))
-            -- TODO(native): name field 0x6c (undefined4)
-            __native_entity_state:SetStateInt("self_0x6c", quest:ReadGlobalGameData(0xbd0))
-            return
-        end
-    elseif native_arg_param_1 == 1 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar1 = not alive
-        if not bVar1 then
-            -- TODO(native): name field 0x68 (undefined4)
-            __native_entity_state:SetStateInt("self_0x68", quest:ReadGlobalGameData(0xbc4))
-            -- TODO(native): name field 0x6c (undefined4)
-            __native_entity_state:SetStateInt("self_0x6c", quest:ReadGlobalGameData(0xbd4))
-            return
-        end
-    elseif native_arg_param_1 == 2 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar1 = not alive
-        if not bVar1 then
-            -- TODO(native): name field 0x68 (undefined4)
-            __native_entity_state:SetStateInt("self_0x68", quest:ReadGlobalGameData(0xbc8))
-            -- TODO(native): name field 0x6c (undefined4)
-            __native_entity_state:SetStateInt("self_0x6c", quest:ReadGlobalGameData(0xbd8))
-            return
-        end
-    elseif native_arg_param_1 == 3 then
-        alive = not quest:IsActiveThreadTerminating()
-        bVar1 = not alive
-        if not bVar1 then
-            -- TODO(native): name field 0x68 (undefined4)
-            __native_entity_state:SetStateInt("self_0x68", quest:ReadGlobalGameData(0xbcc))
-            -- TODO(native): name field 0x6c (undefined4)
-            __native_entity_state:SetStateInt("self_0x6c", quest:ReadGlobalGameData(0xbdc))
-        end
     end
 end
 

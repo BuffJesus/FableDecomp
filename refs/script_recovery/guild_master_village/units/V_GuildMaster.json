@@ -619,6 +619,25 @@
       "OnPersist": {
         "address": "0x00cbd4e0",
         "evidence": "cluster lifecycle slot"
+      },
+      "helper_E91F20": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00e91f20",
+        "callers": [
+          "GuildMasterGameFlow"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": [
+          "QS_GuardianSisterInfo2_SisterInBanditCamp",
+          "TEXT_QST_081_ARENA",
+          "TEXT_QST_081_BANDIT_CAMP",
+          "TEXT_QST_081_BANDIT_CAMP_TWINBLADE",
+          "TEXT_QST_081_BEFORE_HOOK_COAST",
+          "TEXT_QST_081_DRAGON_FIGHT_10",
+          "TEXT_QST_081_FINALGRAVEYARD",
+          "TEXT_QST_081_FOCAL_SITES"
+        ]
       }
     },
     "fields": {
@@ -700,13 +719,7 @@
           "address": "0x00cdebe0"
         }
       },
-      "helpers": {
-        "helper_E91F20": {
-          "address": "0x00e91f20",
-          "evidence": "unnamed entity helper",
-          "size": 1484
-        }
-      },
+      "helpers": {},
       "fields": {},
       "thingFields": {},
       "unmappedFields": [],

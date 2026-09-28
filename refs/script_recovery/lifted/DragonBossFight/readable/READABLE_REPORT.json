@@ -142,6 +142,23 @@
      }
     },
     {
+     "function": "helper_D258C0",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 1,
+      "decimalLiterals": 8
+     }
+    },
+    {
      "function": "helper_D27050",
      "rewrites": {
       "flags": 0,
@@ -1346,8 +1363,70 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_D27050",
+     "function": "helper_D258C0",
      "sourceLine": 365,
+     "locals": {
+      "native_arg_param_1": {
+       "name": "param1",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      },
+      "bVar1_1": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_2": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_3": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_4": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      }
+     },
+     "splitLocals": {
+      "bVar1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar1\n",
+       "versions": {
+        "bVar1_1": [
+         7
+        ],
+        "bVar1_2": [
+         15
+        ],
+        "bVar1_3": [
+         23
+        ],
+        "bVar1_4": [
+         31
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "helper_D27050",
+     "sourceLine": 403,
      "locals": {
       "native_arg_param_1": {
        "name": "param1",
@@ -1464,8 +1543,17 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_D27050",
+     "function": "helper_D258C0",
      "sourceLine": 219,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "helper_D27050",
+     "sourceLine": 243,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2020,6 +2108,74 @@
        "requires": 0
       }
      },
+     "helper_D258C0": {
+      "rewrites": {
+       "splitLocals": 1,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 5,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 4,
+       "deadDefinitions": 0,
+       "guardWrappers": 4,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "sharedExitTests": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "booleanJumpChains": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 37,
+       "temporaries": 4,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 23,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
      "helper_D27050": {
       "rewrites": {
        "splitLocals": 8,
@@ -2093,14 +2249,15 @@
     "entityStateAliased": 0,
     "namedHelpers": 0,
     "pureLocalFunctions": [
+     "helper_D258C0",
      "helper_D25C20"
     ]
    },
    "readability": {
-    "lines": 246,
+    "lines": 271,
     "counts": {
      "genericTemporaries": 59,
-     "nativeNames": 6,
+     "nativeNames": 7,
      "unresolvedDiagnostics": 4
     },
     "status": "needs-recovery",
@@ -2447,6 +2604,11 @@
      },
      {
       "line": 230,
+      "category": "nativeNames",
+      "text": "helper_D258C0"
+     },
+     {
+      "line": 255,
       "category": "nativeNames",
       "text": "helper_D27050"
      }
@@ -3446,39 +3608,6 @@
       "declarations": 0,
       "decimalLiterals": 0
      }
-    },
-    {
-     "function": "helper_D258C0",
-     "rewrites": {
-      "flags": 0,
-      "termination": 0,
-      "listArithmetic": 0,
-      "byteIndices": 0,
-      "voidReturns": 0,
-      "nilReleases": 0,
-      "emptyIfs": 0,
-      "deadStores": 0,
-      "unusedAlive": 0,
-      "flagTests": 0,
-      "declarations": 0,
-      "decimalLiterals": 8
-     }
-    },
-    {
-     "function": "Setself_0x48",
-     "rewrites": {
-      "flags": 0,
-      "termination": 0,
-      "listArithmetic": 0,
-      "byteIndices": 0,
-      "voidReturns": 0,
-      "nilReleases": 0,
-      "emptyIfs": 0,
-      "deadStores": 0,
-      "unusedAlive": 0,
-      "flagTests": 0,
-      "declarations": 1
-     }
     }
    ],
    "locals": [
@@ -3726,68 +3855,6 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
-     "function": "helper_D258C0",
-     "sourceLine": 142,
-     "locals": {
-      "native_arg_param_1": {
-       "name": "param1",
-       "basis": "native argument role",
-       "assignmentRoles": []
-      },
-      "bVar1_1": {
-       "name": "predicateResult",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar1_2": {
-       "name": "predicateResult2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar1_3": {
-       "name": "predicateResult3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar1_4": {
-       "name": "predicateResult4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      }
-     },
-     "splitLocals": {
-      "bVar1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local bVar1\n",
-       "versions": {
-        "bVar1_1": [
-         8
-        ],
-        "bVar1_2": [
-         18
-        ],
-        "bVar1_3": [
-         28
-        ],
-        "bVar1_4": [
-         38
-        ]
-       }
-      }
-     },
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
      "function": "Main",
      "sourceLine": 9,
      "locals": {},
@@ -3817,15 +3884,6 @@
     {
      "function": "OnPredicateFail",
      "sourceLine": 84,
-     "locals": {},
-     "splitLocals": {},
-     "removedLiteralLocals": {},
-     "inlinedLiteralLocals": {},
-     "removedLiteralLocalsAfterInlining": {}
-    },
-    {
-     "function": "Setself_0x48",
-     "sourceLine": 91,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4090,15 +4148,6 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 7,
-       "temporaries": 0,
-       "labels": 0,
-       "gotos": 0,
-       "terminationChecks": 0,
-       "frameChecks": 0,
-       "requires": 0
-      },
-      "after": {
        "lines": 6,
        "temporaries": 0,
        "labels": 0,
@@ -4106,110 +4155,36 @@
        "terminationChecks": 0,
        "frameChecks": 0,
        "requires": 0
-      }
-     },
-     "Setself_0x48": {
-      "rewrites": {
-       "splitLocals": 1,
-       "closures": 0,
-       "hero": 0,
-       "cutscenes": 0,
-       "staleLabelComments": 0,
-       "aliveStaging": 5,
-       "exitChecksInlined": 0,
-       "frameChecks": 0,
-       "inlinedTemporaries": 4,
-       "deadDefinitions": 0,
-       "guardWrappers": 4,
-       "retryLoops": 0,
-       "booleanMaterialisation": 0,
-       "booleanCompares": 0,
-       "conditions": 0,
-       "literals": 0,
-       "copies": 0,
-       "selfAssignments": 0,
-       "flagClears": 0,
-       "tailGuards": 0,
-       "blockingSpeech": 0,
-       "uintFixups": 0,
-       "freshGuards": 0,
-       "constantConditions": 0,
-       "emptyElse": 0,
-       "unusedClosures": 0,
-       "sharedExitTests": 0,
-       "gotoElse": 0,
-       "booleanBranches": 0,
-       "booleanJumpChains": 0,
-       "elseif": 0,
-       "elseExit": 0,
-       "gotoReturn": 0,
-       "nestedReturnJumps": 0,
-       "loopExitJumps": 0,
-       "cleanupExitJumps": 0,
-       "ifAroundWhile": 0,
-       "deadTerminationChecks": 0,
-       "controlAcquires": 0,
-       "sunkLocals": 0,
-       "cleanupClosureNames": 0,
-       "parentheses": 0,
-       "cosmetics": 0,
-       "firstAssignments": 0,
-       "freeSuffixes": 0,
-       "hoistedState": 0
-      },
-      "before": {
-       "lines": 46,
-       "temporaries": 4,
-       "labels": 0,
-       "gotos": 0,
-       "terminationChecks": 4,
-       "frameChecks": 0,
-       "requires": 0
       },
       "after": {
-       "lines": 32,
+       "lines": 5,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 4,
+       "terminationChecks": 0,
        "frameChecks": 0,
        "requires": 0
       }
      }
     },
-    "hoistedRequires": 1,
-    "entityStateAliased": 18,
-    "namedHelpers": 1,
+    "hoistedRequires": 2,
+    "entityStateAliased": 9,
+    "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
     ]
    },
    "readability": {
-    "lines": 127,
+    "lines": 93,
     "counts": {
-     "nativeNames": 18,
      "genericTemporaries": 5,
      "gotos": 4,
-     "unresolvedDiagnostics": 13
+     "nativeNames": 7,
+     "unresolvedDiagnostics": 3
     },
     "status": "needs-recovery",
     "findings": [
-     {
-      "line": 7,
-      "category": "nativeNames",
-      "text": "self0X48"
-     },
-     {
-      "line": 7,
-      "category": "nativeNames",
-      "text": "self0X68"
-     },
-     {
-      "line": 7,
-      "category": "nativeNames",
-      "text": "self0X6C"
-     },
      {
       "line": 11,
       "category": "genericTemporaries",
@@ -4302,104 +4277,31 @@
      },
      {
       "line": 77,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): helper_D258C0(quest, me, *(this + 0x14), 0)"
-     },
-     {
-      "line": 96,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x48 (int)"
-     },
-     {
-      "line": 97,
       "category": "nativeNames",
-      "text": "self0X48"
-     },
-     {
-      "line": 100,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x68 (undefined4)"
-     },
-     {
-      "line": 101,
-      "category": "nativeNames",
-      "text": "self0X68"
-     },
-     {
-      "line": 102,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x6c (undefined4)"
-     },
-     {
-      "line": 103,
-      "category": "nativeNames",
-      "text": "self0X6C"
-     },
-     {
-      "line": 107,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x68 (undefined4)"
-     },
-     {
-      "line": 108,
-      "category": "nativeNames",
-      "text": "self0X68"
-     },
-     {
-      "line": 109,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x6c (undefined4)"
-     },
-     {
-      "line": 110,
-      "category": "nativeNames",
-      "text": "self0X6C"
-     },
-     {
-      "line": 114,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x68 (undefined4)"
-     },
-     {
-      "line": 115,
-      "category": "nativeNames",
-      "text": "self0X68"
-     },
-     {
-      "line": 116,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x6c (undefined4)"
-     },
-     {
-      "line": 117,
-      "category": "nativeNames",
-      "text": "self0X6C"
-     },
-     {
-      "line": 121,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x68 (undefined4)"
-     },
-     {
-      "line": 122,
-      "category": "nativeNames",
-      "text": "self0X68"
-     },
-     {
-      "line": 123,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): name field 0x6c (undefined4)"
-     },
-     {
-      "line": 124,
-      "category": "nativeNames",
-      "text": "self0X6C"
+      "text": "helper_D258C0"
      }
     ]
    }
   },
   "FSE/DragonBossFight/native_quest_helpers.lua": {
    "functions": [
+    {
+     "function": "helper_D258C0",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 0,
+      "decimalLiterals": 8
+     }
+    },
     {
      "function": "helper_D25C20",
      "rewrites": {
@@ -4416,12 +4318,90 @@
       "declarations": 1,
       "decimalLiterals": 0
      }
+    },
+    {
+     "function": "SetDragonState",
+     "rewrites": {
+      "flags": 0,
+      "termination": 0,
+      "listArithmetic": 0,
+      "byteIndices": 0,
+      "voidReturns": 0,
+      "nilReleases": 0,
+      "emptyIfs": 0,
+      "deadStores": 0,
+      "unusedAlive": 0,
+      "flagTests": 0,
+      "declarations": 1
+     }
     }
    ],
    "locals": [
     {
-     "function": "helper_D25C20",
+     "function": "helper_D258C0",
      "sourceLine": 3,
+     "locals": {
+      "native_arg_param_1": {
+       "name": "param1",
+       "basis": "native argument role",
+       "assignmentRoles": []
+      },
+      "bVar1_1": {
+       "name": "predicateResult",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_2": {
+       "name": "predicateResult2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_3": {
+       "name": "predicateResult3",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      },
+      "bVar1_4": {
+       "name": "predicateResult4",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "predicateResult"
+       ]
+      }
+     },
+     "splitLocals": {
+      "bVar1": {
+       "declarationLine": 2,
+       "originalDeclaration": "    local bVar1\n",
+       "versions": {
+        "bVar1_1": [
+         7
+        ],
+        "bVar1_2": [
+         15
+        ],
+        "bVar1_3": [
+         23
+        ],
+        "bVar1_4": [
+         31
+        ]
+       }
+      }
+     },
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
+     "function": "helper_D25C20",
+     "sourceLine": 41,
      "locals": {
       "bVar2": {
        "name": "predicateResult",
@@ -4444,8 +4424,17 @@
      "removedLiteralLocalsAfterInlining": {}
     },
     {
+     "function": "SetDragonState",
+     "sourceLine": 4,
+     "locals": {},
+     "splitLocals": {},
+     "removedLiteralLocals": {},
+     "inlinedLiteralLocals": {},
+     "removedLiteralLocalsAfterInlining": {}
+    },
+    {
      "function": "helper_D25C20",
-     "sourceLine": 3,
+     "sourceLine": 28,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4456,6 +4445,74 @@
    "wrappedDeclarations": 0,
    "style": {
     "functions": {
+     "SetDragonState": {
+      "rewrites": {
+       "splitLocals": 1,
+       "closures": 0,
+       "hero": 0,
+       "cutscenes": 0,
+       "staleLabelComments": 0,
+       "aliveStaging": 5,
+       "exitChecksInlined": 0,
+       "frameChecks": 0,
+       "inlinedTemporaries": 4,
+       "deadDefinitions": 0,
+       "guardWrappers": 4,
+       "retryLoops": 0,
+       "booleanMaterialisation": 0,
+       "booleanCompares": 0,
+       "conditions": 0,
+       "literals": 0,
+       "copies": 0,
+       "selfAssignments": 0,
+       "flagClears": 0,
+       "tailGuards": 0,
+       "blockingSpeech": 0,
+       "uintFixups": 0,
+       "freshGuards": 0,
+       "constantConditions": 0,
+       "emptyElse": 0,
+       "unusedClosures": 0,
+       "sharedExitTests": 0,
+       "gotoElse": 0,
+       "booleanBranches": 0,
+       "booleanJumpChains": 0,
+       "elseif": 0,
+       "elseExit": 0,
+       "gotoReturn": 0,
+       "nestedReturnJumps": 0,
+       "loopExitJumps": 0,
+       "cleanupExitJumps": 0,
+       "ifAroundWhile": 0,
+       "deadTerminationChecks": 0,
+       "controlAcquires": 0,
+       "sunkLocals": 0,
+       "cleanupClosureNames": 0,
+       "parentheses": 0,
+       "cosmetics": 0,
+       "firstAssignments": 0,
+       "freeSuffixes": 0,
+       "hoistedState": 0
+      },
+      "before": {
+       "lines": 37,
+       "temporaries": 4,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 0,
+       "requires": 0
+      },
+      "after": {
+       "lines": 23,
+       "temporaries": 0,
+       "labels": 0,
+       "gotos": 0,
+       "terminationChecks": 4,
+       "frameChecks": 0,
+       "requires": 0
+      }
+     },
      "helper_D25C20": {
       "rewrites": {
        "splitLocals": 4,
@@ -4527,27 +4584,34 @@
     },
     "hoistedRequires": 0,
     "entityStateAliased": 0,
-    "namedHelpers": 0,
+    "namedHelpers": 1,
     "pureLocalFunctions": [
+     "SetDragonState",
      "helper_D25C20"
     ]
    },
    "readability": {
-    "lines": 15,
+    "lines": 40,
     "counts": {
-     "genericTemporaries": 2
+     "genericTemporaries": 2,
+     "nativeNames": 1
     },
     "status": "needs-readability-work",
     "findings": [
      {
-      "line": 9,
+      "line": 34,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 10,
+      "line": 35,
       "category": "genericTemporaries",
       "text": "predicateResult"
+     },
+     {
+      "line": 40,
+      "category": "nativeNames",
+      "text": "helper_D258C0"
      }
     ]
    }

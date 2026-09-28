@@ -187,3 +187,13 @@ null definitions and absent/out-of-range elements return an empty string.
 Patch: `tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzzzzzzz-global-string-at.patch`.
 The round-12 Release x86 sidecar candidate builds; this binding is pending in the
 installed sidecar and has not been verified in-game. Do not treat mock support as deployment.
+
+## Thing-to-position Under test (2026-09-28)
+
+`thing:IsDistanceFromPositionUnder(position, distance)` forwards to retail 0x00CBE4B7
+(`__fastcall bool(CScriptThing*, const C3DVector*, float)`: alive, and squared distance strictly below
+`distance^2`), the twin of the already-bound `IsDistanceFromPositionOver` (0x00CBE45C). Callers:
+V_GuildMaster GuildMasterGameFlow Main (hero within 3.0 of TeleporterResidue) and V_ChickenKicking
+ChickenMaster Main (its vector operand is still unrecovered). Patch
+`novi-zzzzzzzzzzzzzzzzzzz-position-under.patch`; the round-12 Release x86 candidate builds with it;
+not installed or in-game validated.

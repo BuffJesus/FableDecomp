@@ -466,17 +466,43 @@ def build_unit(script, inventory, cluster, tu_by_address, tu_range, pdb, image, 
         """Every call of addr loads the entity's parent pointer as `this` right before the call
         (`mov ecx, [r32+0x14]` = 8B 48..4F 14, no SIB): a quest method only entities call. ChickenKicking 0x00E68B20
         (`mov ecx, [esi+0x14]; call` at each of its nine sites) was lowered as an entity helper and read its
-        `this + 0x70` quest members as entity fields (2026-09-27)."""
+        `this + 0x70` quest members as entity fields (2026-09-27).
+        The load may sit a few instructions before the call when the arguments are pushed after it (V_TourGuide
+        0x00EE6850 MoveToNextWaypoint: `mov ecx,[esi+0x14]; lea eax,[esp+0x18]; push eax; lea edx,[ecx+0x168];
+        push edx; call`): the caller is decoded linearly from its entry and, walking back from the call over
+        straight-line instructions that leave ecx alone, the first ecx write must be that load (2026-09-28)."""
         nonlocal retail
         if retail is None:
             from tools.script_recovery.lift_native_lua import RData
             retail = RData()
-        sites = [int(str(c['site']), 16) for f in tu_by_address.values() for c in f.get('calls', [])
+        sites = [(int(str(c['site']), 16), int(f['address'], 16)) for f in tu_by_address.values() for c in f.get('calls', [])
                  if str(c.get('target', '')).lower() == addr and c.get('site')]
-        def parent_load(site):
+        def parent_load(site, entry):
             before = retail.bytes_at(site - 3, 3)
-            return bool(before) and before[0] == 0x8B and 0x48 <= before[1] <= 0x4F and before[1] != 0x4C and before[2] == 0x14
-        return bool(sites) and all(parent_load(s) for s in sites)
+            if bool(before) and before[0] == 0x8B and 0x48 <= before[1] <= 0x4F and before[1] != 0x4C and before[2] == 0x14:
+                return True
+            import capstone
+            from capstone import x86
+            md = capstone.Cs(capstone.CS_ARCH_X86, capstone.CS_MODE_32)
+            md.detail = True
+            code = retail.bytes_at(entry, site - entry) if site > entry else None
+            if not code:
+                return False
+            decoded = list(md.disasm(code, entry))
+            if not decoded or decoded[-1].address + decoded[-1].size != site:
+                return False            # the linear sweep did not land on the call: no claim
+            for insn in reversed(decoded[-8:]):
+                if insn.group(capstone.CS_GRP_JUMP) or insn.group(capstone.CS_GRP_CALL) or insn.group(capstone.CS_GRP_RET):
+                    return False
+                _, written = insn.regs_access()
+                if x86.X86_REG_ECX not in written and x86.X86_REG_CX not in written and x86.X86_REG_CL not in written:
+                    continue
+                ops = insn.operands
+                return (insn.mnemonic == 'mov' and len(ops) == 2 and ops[0].type == x86.X86_OP_REG and ops[0].reg == x86.X86_REG_ECX
+                        and ops[1].type == x86.X86_OP_MEM and ops[1].mem.disp == 0x14 and ops[1].mem.index == 0
+                        and ops[1].mem.base not in (0, x86.X86_REG_ESP))
+            return False
+        return bool(sites) and all(parent_load(s, e) for s, e in sites)
 
     for addr, info in helper_addrs.items():
         owner_classes = {binding_class.get(c, c) for c in info['callers']}

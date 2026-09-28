@@ -1,0 +1,21 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 03ff690..2b5f4cc 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -430,6 +430,16 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         return NoviCCharStringToStd(v->first + index);
+     };
+     // ---- CScriptThing methods -------------------------------------------------------------------
++    // Retail 0x00CBE4B7 IsDistanceFromThingToPositionUnder, __fastcall bool(CScriptThing*, const C3DVector*, float):
++    // alive and squared distance strictly below distance^2 (V_GuildMaster GuildMasterGameFlow waits for the hero near
++    // the TeleporterResidue marker, V_ChickenKicking). The Over twin 0x00CBE45C is LuaEntityAPI's
++    // IsDistanceFromPositionOver; calling the retail helper keeps its x87 arithmetic and boundary.
++    thing["IsDistanceFromPositionUnder"] = [](CScriptThing* me, sol::table position, float distance) -> bool {
++        if (!me) return false;
++        using tUnder = bool(__fastcall*)(CScriptThing*, const C3DVector*, float);
++        const C3DVector target = {position["x"].get_or(0.0f), position["y"].get_or(0.0f), position["z"].get_or(0.0f)};
++        return ASLR<tUnder>(0x00CBE4B7)(me, &target, distance);
++    };
+     thing["GetName"] = [](CScriptThing* me) -> std::string {
+         if (!me || !me->pVTable) return "";
+         auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);

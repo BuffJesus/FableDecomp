@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar1, cVar2, ctr_68, fStack_24, fStack_48, fVar10, fVar9, f_p1, f_stk_1c, f_stk_20, f_stk_2c, f_stk_40, f_stk_44, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, fret_0, native_arg_sequence_1, pCVar3, pCVar4, pRight, pfVar6, pfVar7, piVar8, pi_stk_38, r1, r2, uVar5, xStack_3c, xStack_68, xStack_c
+    local bVar1, cVar2, ctr_68, fStack_24, fStack_48, fVar10, fVar9, f_p1, f_stk_1c, f_stk_20, f_stk_2c, f_stk_40, f_stk_44, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, fret_0, native_arg_sequence_1, pCVar3, pCVar4, pRight, pfVar6, pfVar7, piVar8, pi_stk_38, r1, r2, uVar5, vec_24, vec_30, vec_3c, xStack_3c, xStack_68, xStack_c
     local alive = true
     r1 = quest:GetThingWithScriptName("ChickenKickingArena")
     pCVar3 = quest:GetThingWithScriptName("FirstLineMarker")
@@ -32,33 +32,29 @@ function Main(quest, me)
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("RearRight")
-    (quest:GetDistanceBetweenThings(r1, pCVar3) ^ 2)
+    quest:GetDistanceBetweenThings(r1, pCVar3)
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("MidRight")
-    (quest:GetDistanceBetweenThings(r1, pCVar3) ^ 2)
+    quest:GetDistanceBetweenThings(r1, pCVar3)
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("MidRight2")
-    (quest:GetDistanceBetweenThings(r1, pCVar3) ^ 2)
+    quest:GetDistanceBetweenThings(r1, pCVar3)
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("FrontRight")
-    (quest:GetDistanceBetweenThings(r1, pCVar3) ^ 2)
+    quest:GetDistanceBetweenThings(r1, pCVar3)
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("FoulLineMarkerA")
     pCVar4 = pCVar3:GetPos()
-    -- TODO(native): xStack_3c = *(int **)pCVar4;
-    -- TODO(native): pi_stk_38 = *(pCVar4 + 0x4)
-    pi_stk_38 = nil --[[unresolved native value]]
+    vec_3c = {x = pCVar4.x, y = pCVar4.y, z = pCVar4.z}
     pCVar3 = nil
     f_stk_2c = 0.0
     pCVar3 = quest:GetThingWithScriptName("FoulLineMarkerB")
     pCVar4 = pCVar3:GetPos()
-    -- TODO(native): fStack_24 = pCVar4.x;
-    f_stk_20 = pCVar4.y
-    f_stk_1c = pCVar4.z
+    vec_24 = {x = pCVar4.x, y = pCVar4.y, z = pCVar4.z}
     pCVar3 = nil
     f_stk_2c = 0.0
     quest:SetStateInt("DistanceBand", 0)
@@ -83,9 +79,7 @@ function Main(quest, me)
         end
         pCVar3 = quest:GetHero()
         pCVar4 = pCVar3:GetPos()
-        -- TODO(native): xStack_30 = *(undefined1 (*) [4])pCVar4;
-        f_stk_2c = pCVar4.y
-        -- TODO(native): xStack_30 = *(int **)(pCVar4 + 0x8);
+        vec_30 = {x = pCVar4.x, y = pCVar4.y, z = pCVar4.z}
         bVar1 = quest:EntityGetShotStrikePos(me)
         if bVar1 then
             alive = not quest:IsActiveThreadTerminating()
@@ -93,7 +87,7 @@ function Main(quest, me)
             if not bVar1 then goto LAB_00e64831 end
             goto LAB_00e64cf3
         end
-    until not ((f_stk_20 - f_stk_2c) * (xStack_3c - pCVar3) - (pi_stk_38 - f_stk_2c) * (fStack_24 - pCVar3) <= 0.0)
+    until not ((vec_24.y - vec_30.y) * (vec_3c.x - vec_30.x) - (vec_3c.y - vec_30.y) * (vec_24.x - vec_30.x) <= 0.0)
     alive = not quest:IsActiveThreadTerminating()
     bVar1 = not alive
     if not bVar1 then

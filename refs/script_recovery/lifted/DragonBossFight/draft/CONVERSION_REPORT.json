@@ -386,6 +386,51 @@
         },
         {
           "owner": "Q_DragonBossFight",
+          "function": "helper_D258C0",
+          "address": "0x00d258c0",
+          "path": "FSE/DragonBossFight/DragonBossFight.lua",
+          "evidence": "unmatched retail helper",
+          "nativeSignature": {
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "int"
+              }
+            ],
+            "returnKind": null,
+            "bsimVoid": false
+          },
+          "todo": [],
+          "calls": [
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt",
+            "IsActiveThreadTerminating",
+            "SetStateInt",
+            "SetStateInt"
+          ],
+          "lines": 35,
+          "syntax": {
+            "runtime": "Lua 5.4",
+            "ok": true,
+            "checked": 1,
+            "passed": 1,
+            "errors": []
+          },
+          "readableLocalNames": {},
+          "nativeJumps": [],
+          "nativeLabels": []
+        },
+        {
+          "owner": "Q_DragonBossFight",
           "function": "helper_D27050",
           "address": "0x00d27050",
           "path": "FSE/DragonBossFight/DragonBossFight.lua",
@@ -505,10 +550,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "helper_D258C0: 2 helper operands for 1 parameters",
-            "unlifted: helper_D258C0(quest, me, *(this + 0x14), 0)"
-          ],
+          "todo": [],
           "calls": [
             "SetStateFloat",
             "SetStateFloat",
@@ -571,61 +613,6 @@
             "SetStateInt"
           ],
           "lines": 4,
-          "syntax": {
-            "runtime": "Lua 5.4",
-            "ok": true,
-            "checked": 1,
-            "passed": 1,
-            "errors": []
-          },
-          "readableLocalNames": {},
-          "nativeJumps": [],
-          "nativeLabels": []
-        },
-        {
-          "owner": "Dragon",
-          "function": "helper_D258C0",
-          "address": "0x00d258c0",
-          "path": "FSE/DragonBossFight/Entities/Dragon.lua",
-          "evidence": "unnamed entity helper",
-          "nativeSignature": {
-            "parameters": [
-              {
-                "native": "param_1",
-                "lua": "native_arg_param_1",
-                "type": "int"
-              }
-            ],
-            "returnKind": null,
-            "bsimVoid": false
-          },
-          "todo": [
-            "unnamed field 0x48 written in helper_D258C0",
-            "unnamed field 0x68 written in helper_D258C0",
-            "unnamed field 0x6c written in helper_D258C0",
-            "unnamed field 0x68 written in helper_D258C0",
-            "unnamed field 0x6c written in helper_D258C0",
-            "unnamed field 0x68 written in helper_D258C0",
-            "unnamed field 0x6c written in helper_D258C0",
-            "unnamed field 0x68 written in helper_D258C0",
-            "unnamed field 0x6c written in helper_D258C0"
-          ],
-          "calls": [
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt",
-            "IsActiveThreadTerminating",
-            "SetStateInt",
-            "SetStateInt"
-          ],
-          "lines": 44,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -906,9 +893,11 @@
       "sharedHelpers": {
         "path": "FSE/DragonBossFight/native_quest_helpers.lua",
         "functions": [
+          "helper_D258C0",
           "helper_D25C20"
         ],
         "todo": {
+          "helper_D258C0": [],
           "helper_D25C20": []
         },
         "syntax": {
@@ -926,7 +915,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 5,
         "fileSyntaxChecked": 5,
-        "todo": 19
+        "todo": 8
       }
     }
   ],
@@ -937,6 +926,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 5,
     "fileSyntaxChecked": 5,
-    "todo": 19
+    "todo": 8
   }
 }

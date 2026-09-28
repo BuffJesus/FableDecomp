@@ -330,6 +330,14 @@ function GoTalkToBeardyBaldy(quest)
     quest:MiniMapRemoveMarker(getNearestWithDefName)
 end
 
+-- V_BeardyBaldy.SetWanderPointAndDistance (retail 0x00e53f60)
+function SetWanderPointAndDistance(quest, param1, param2)
+    quest:SetWanderCentrePoint(param1, {x = param2.x, y = param2.y, z = param2.z})
+    quest:SetWanderMinDistance(param1, quest:ReadGlobalGameDataFloat(1096))
+    quest:SetWanderMaxDistance(param1, quest:ReadGlobalGameDataFloat(1100))
+    quest:SetScriptingStateGroup(param1, 4)
+end
+
 -- V_BeardyBaldy.IsHeroWearingAnyTash (retail 0x00e538f0)
 function IsHeroWearingAnyTash(quest)
     local predicateResult

@@ -1,20 +1,6 @@
--- Generated native draft: V_GuildMaster. Review coverage report before use.
--- Registration remains disabled until the package is verified.
-
-function Main(quest)
-    quest:AddEntityBinding("GuildMasterGameFlow", "V_GuildMaster/Entities/GuildMasterGameFlow", 1)
-    quest:FinalizeEntityBindings()
-end
-
-function Init(quest)
-    quest:SetStateBool("GuildMasterDialogue_0", false)
-    quest:SetStateBool("GuildMasterDialogue_1", false)
-    quest:SetStateBool("GuildMasterDialogue_2", false)
-    quest:SetStateBool("GuildMasterDialogue_3", false)
-    quest:SetStateBool("GuildMasterDialogue_4", false)
-end
-
-function helper_E91F20(quest)
+-- Generated from the same native helper bodies as the quest draft.
+local helper_E91F20
+function helper_E91F20(quest, me)
     local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5
     local alive = true
     -- TODO(native): CCharString::CCharString(&xStack_c,other);
@@ -451,3 +437,4 @@ function helper_E91F20(quest)
     return pcVar7
 end
 
+return {helper_E91F20 = helper_E91F20}

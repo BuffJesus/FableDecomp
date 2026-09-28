@@ -300,7 +300,6 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_188 = pCVar9.x;",
             "unlifted: ctr_CVar19 = xStack_374;",
             "unlifted: xStack_374 = xStack_374 | 1;",
             "label LAB_00e660d3",
@@ -386,7 +385,6 @@
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
-            "unlifted: iVar10 = IsDistanceFromThingToPositionUnder((me),&xStack_188,0x40c00000)",
             "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
           ],
           "calls": [
@@ -404,6 +402,7 @@
             "SetIsPushableByHero",
             "EntitySetAsKillable",
             "GetPos",
+            "ENGINE_VectorCopy",
             "RegisterTimer",
             "SetTimer",
             "RegisterTimer",
@@ -418,6 +417,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
+            "IsDistanceFromPositionUnder",
             "GetTimer",
             "IsActiveThreadTerminating",
             "GetHero",
@@ -834,7 +834,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1501,
+          "lines": 1499,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1112,12 +1112,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unnamed field 0x1c",
-            "unnamed field 0x1c"
-          ],
+          "todo": [],
           "calls": [
             "SetThingAsUsable",
+            "LOCALLIST_StringAt",
             "GetThingWithScriptName",
             "SetReadableObjectText",
             "QUESTTHING_Empty",
@@ -1125,6 +1123,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "LOCALLIST_StringAt",
             "GetThingWithScriptName",
             "SetReadableObjectText",
             "QUESTTHING_Empty"
@@ -1152,21 +1151,9 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: this_00 = (vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>",
-            "unlifted: p1 = CCharString::CCharString(&xStack_4);",
-            "unlifted: std::vector<std::pair<CCharString,long>,std::allocator<std::pair<CCharString,long>_>_>::re",
-            "unlifted: CCharString__AssignFromWide(*(void **)this_00,0x12e8044);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 4),0x12e800c);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 8),0x12e7fd8);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 0xc),0x12e7f98);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 0x10),0x12e7f64);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 0x14),0x12e7f24);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 0x18),0x12e7ee8);",
-            "unlifted: CCharString__AssignFromWide((void *)(*(int *)this_00 + 0x1c),0x12e7ea0);"
-          ],
+          "todo": [],
           "calls": [],
-          "lines": 11,
+          "lines": 0,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1237,10 +1224,6 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: xStack_3c = *(int **)pCVar4;",
-            "unlifted: fStack_24 = pCVar4.x;",
-            "unlifted: xStack_30 = *(undefined1 (*) [4])pCVar4;",
-            "unlifted: xStack_30 = *(int **)(pCVar4 + 0x8);",
             "unlifted: fStack_24 = (float)xStack_c._0_4_ - pfVar6.x;",
             "unlifted: C3DVector::GetScaled((C3DVector *)&fStack_24);",
             "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);",
@@ -1256,7 +1239,6 @@
             "label LAB_00e64c61",
             "verify cleanup at LAB_00e64c61 (lifted as early return)",
             "verify cleanup at LAB_00e64c61 (lifted as early return)",
-            "unlifted: pi_stk_38 = *(pCVar4 + 0x4)",
             "unlifted: pfVar7 = (**(piVar8[-3] + 0x18))()"
           ],
           "calls": [
@@ -1287,9 +1269,11 @@
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
             "GetPos",
+            "ENGINE_VectorCopy",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
             "GetPos",
+            "ENGINE_VectorCopy",
             "QUESTTHING_Empty",
             "SetStateInt",
             "NewScriptFrame",
@@ -1302,6 +1286,7 @@
             "PlaySoundOnThing",
             "GetHero",
             "GetPos",
+            "ENGINE_VectorCopy",
             "EntityGetShotStrikePos",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -1340,7 +1325,7 @@
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating"
           ],
-          "lines": 224,
+          "lines": 218,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1666,9 +1651,18 @@
             "fStack_24",
             "fStack_48",
             "fret_0",
+            "pi_stk_38",
             "xStack_3c",
             "xStack_c"
           ]
+        }
+      },
+      "literalStringVectors": {
+        "FSE/V_ChickenKicking/Entities/ChickenSign.lua": {
+          "0x1c": {
+            "name": "TextKeys",
+            "count": 8
+          }
         }
       },
       "cleanupRegions": {
@@ -1717,7 +1711,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 137
+        "todo": 117
       }
     }
   ],
@@ -1728,6 +1722,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 6,
-    "todo": 137
+    "todo": 117
   }
 }

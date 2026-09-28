@@ -25,6 +25,17 @@ def function_parameters(source, *, member=False):
     # the ego_r bsim signature in the leading comment is the reviewed prototype: when it says void, Ghidra's
     # guessed int is a leftover register (a pointer temporary), not a result
     comment = re.search(r'/\*\s*\[bsim[^\]]*\]\s*([\s\S]*?)\*/', source)
+    # ... and its `class CScriptThing const &` / `class C3DVector const &` parameters outrank an untyped `int`
+    # (V_BeardyBaldy SetWanderPointAndDistance 0x00E53F60 exported as (int param_1, int param_2): the thing
+    # operand of all four wander calls was lifted as a number and dropped, 2026-09-28)
+    proto = comment and re.search(r'__thiscall\s+[\w:~<>]+\(([^()]*)\)', comment.group(1))
+    if proto:
+        reviewed = [] if proto.group(1).strip() in ('', 'void') else split_arguments(proto.group(1))
+        if len(reviewed) == len(params):
+            for p, r in zip(params, reviewed):
+                ref = re.fullmatch(r'\s*class\s+(CScriptThing|C3DVector)\s+const\s*&\s*', r)
+                if ref and p['type'] in ('int', 'undefined4'):
+                    p['type'] = ref.group(1) + ' *'
     bsim_void = bool(comment and re.search(r'\bvoid\s+__thiscall\b', comment.group(1)))
     # likewise a reviewed `bool __thiscall` outranks Ghidra's `int` (IsThingCarryingCrate: a Lua boolean
     # result must not be tested with `~= 0`)

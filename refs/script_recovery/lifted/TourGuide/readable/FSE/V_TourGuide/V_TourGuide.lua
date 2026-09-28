@@ -188,3 +188,44 @@ function WatchForNoFollowers(quest)
     until false
 end
 
+-- V_TourGuide.MoveToNextWaypoint (retail 0x00ee6850)
+-- EE6850: bsim names this body NScript::CV_TourGuideScript::MoveToNextWaypoint (a homologous script member); no PDB name
+function MoveToNextWaypoint(quest, param1, param2)
+    local resources = quest:RetailResources()
+    local getPos, getThingWithScriptName
+    if param1 ~= nil and param1:IsAlive() then
+        if quest:IsActiveThreadTerminating() then return end
+        resources:MoveToPosition(param2, param1:GetPos(), 1.0, 0, false, true)
+        return
+    else
+        if quest:IsActiveThreadTerminating() then return end
+        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
+        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
+        getThingWithScriptName = nil
+        if nil ~= nil then
+            -- TODO(native): *xStack_18 = *xStack_18 + 1;
+        end
+        local waypointCounter = quest:GetStateInt("WaypointCounter")
+        while true do
+            if not (getThingWithScriptName == nil or not (getThingWithScriptName ~= nil and getThingWithScriptName:IsAlive())) then break end
+            if not quest:NewScriptFrame() then return end
+            local getStateInt = quest:GetStateInt("WaypointCounter") + 1
+            quest:SetStateInt("WaypointCounter", getStateInt)
+            if getStateInt < 18 then
+                if getStateInt == waypointCounter and quest:IsActiveThreadTerminating() then return end
+            else
+                quest:SetStateInt("WaypointCounter", 0)
+            end
+            getThingWithScriptName = quest:GetThingWithScriptName(quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker"))
+        end
+        if quest:IsActiveThreadTerminating() then return end
+        if getThingWithScriptName == nil then
+            getPos = {x = 0, y = 0, z = 0}
+        else
+            getPos = getThingWithScriptName:GetPos()
+        end
+        resources:MoveToPosition(param2, getPos, 1.0, 0, false, true)
+        return
+    end
+end
+

@@ -226,6 +226,31 @@ function SpawnEnemies(quest)
     quest:SetStateInt("NumFlyBysSinceLastSummonerSpawn", 0)
 end
 
+-- Q_DragonBossFight.helper_D258C0 (retail 0x00d258c0)
+function helper_D258C0(quest, param1)
+    quest:SetStateInt("DragonState", param1)
+    if param1 == 0 then
+        if quest:IsActiveThreadTerminating() then return end
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3008))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3024))
+        return
+    elseif param1 == 1 then
+        if quest:IsActiveThreadTerminating() then return end
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3012))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3028))
+        return
+    elseif param1 == 2 then
+        if quest:IsActiveThreadTerminating() then return end
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3016))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3032))
+        return
+    elseif param1 == 3 then
+        if quest:IsActiveThreadTerminating() then return end
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3020))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3036))
+    end
+end
+
 -- Q_DragonBossFight.helper_D27050 (retail 0x00d27050)
 function helper_D27050(quest, param1)
     local resources = quest:RetailResources()

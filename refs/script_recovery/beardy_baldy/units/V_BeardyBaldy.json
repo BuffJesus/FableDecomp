@@ -668,6 +668,14 @@
           "quest"
         ]
       },
+      "SetWanderPointAndDistance": {
+        "address": "0x00e53f60",
+        "evidence": "bsim label only; string sets inconclusive",
+        "bsimAgrees": true,
+        "callers": [
+          "BB_BeardyBaldyMan"
+        ]
+      },
       "IsHeroWearingAnyTash": {
         "address": "0x00e538f0",
         "evidence": "PDB-name via string-set match (jaccard 0.86)",
@@ -863,8 +871,7 @@
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [
       "IsHeroWearingAnyBeard",
-      "ResetRandomSpeechTime",
-      "SetWanderPointAndDistance"
+      "ResetRandomSpeechTime"
     ],
     "nestedPdbMembers": {
       "CBB_BeardyBaldyMan": [
@@ -910,11 +917,6 @@
           "address": "0x00e53cb0",
           "evidence": "unnamed entity helper",
           "size": 210
-        },
-        "helper_E53F60": {
-          "address": "0x00e53f60",
-          "evidence": "unnamed entity helper",
-          "size": 249
         }
       },
       "fields": {

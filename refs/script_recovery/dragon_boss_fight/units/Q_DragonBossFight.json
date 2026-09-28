@@ -661,6 +661,16 @@
         "score": 0.0,
         "retailStrings": []
       },
+      "helper_D258C0": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00d258c0",
+        "callers": [
+          "Dragon"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
+      },
       "helper_D27050": {
         "evidence": "unmatched retail helper",
         "address": "0x00d27050",
@@ -784,13 +794,7 @@
           "address": "0x00cdebe0"
         }
       },
-      "helpers": {
-        "helper_D258C0": {
-          "address": "0x00d258c0",
-          "evidence": "unnamed entity helper",
-          "size": 212
-        }
-      },
+      "helpers": {},
       "fields": {
         "0x1c": [
           "MediumHealth",

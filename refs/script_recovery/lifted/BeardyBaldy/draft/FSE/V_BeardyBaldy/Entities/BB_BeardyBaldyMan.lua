@@ -183,7 +183,7 @@ function Main(quest, me)
                     return
                 end
                 iVar13 = me:GetPos()
-                -- TODO(native): helper_E53F60(quest, me, *(this + 0x14), me, iVar13)
+                require("V_BeardyBaldy.native_quest_helpers").SetWanderPointAndDistance(quest, me, me, iVar13)
                 quest:SetStateBool("InitialisePhase", false)
             end
             cVar7 = me:IsTalkedToByHero()
@@ -473,7 +473,7 @@ function Main(quest, me)
                     return
                 end
                 iVar13 = me:GetPos()
-                -- TODO(native): helper_E53F60(quest, me, *(this + 0x14), me, iVar13)
+                require("V_BeardyBaldy.native_quest_helpers").SetWanderPointAndDistance(quest, me, me, iVar13)
                 quest:SetStateBool("InitialisePhase", false)
             end
             cVar7 = me:IsTalkedToByHero()
@@ -753,7 +753,7 @@ function Main(quest, me)
                     return
                 end
                 iVar13 = me:GetPos()
-                -- TODO(native): helper_E53F60(quest, me, *(this + 0x14), me, iVar13)
+                require("V_BeardyBaldy.native_quest_helpers").SetWanderPointAndDistance(quest, me, me, iVar13)
                 quest:SetStateBool("InitialisePhase", false)
             end
             cVar7 = me:IsTalkedToByHero()
@@ -1186,7 +1186,7 @@ function Main(quest, me)
                     return
                 end
                 iVar13 = me:GetPos()
-                -- TODO(native): helper_E53F60(quest, me, *(this + 0x14), me, iVar13)
+                require("V_BeardyBaldy.native_quest_helpers").SetWanderPointAndDistance(quest, me, me, iVar13)
                 quest:SetStateBool("InitialisePhase", false)
             end
             cVar7 = me:IsTalkedToByHero()
@@ -1629,15 +1629,5 @@ function helper_E53CB0(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
     until false
-end
-
-function helper_E53F60(quest, me, native_arg_param_1, native_arg_param_2)
-    -- TODO(native): local center = *native_arg_param_2
-    quest:SetWanderCentrePoint(nil --[[missing]], nil --[[missing]])
-    local fVar3 = quest:ReadGlobalGameDataFloat(0x448)
-    quest:SetWanderMinDistance(nil --[[missing]], native_arg_param_1)
-    fVar3 = quest:ReadGlobalGameDataFloat(0x44c)
-    quest:SetWanderMaxDistance(nil --[[missing]], native_arg_param_1)
-    quest:SetScriptingStateGroup(nil --[[missing]], native_arg_param_1)
 end
 

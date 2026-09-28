@@ -634,6 +634,16 @@
         "address": "0x00ee6a40",
         "spawnedAs": "WatchForNoFollowers",
         "evidence": "inventory thread registration"
+      },
+      "helper_EE6850": {
+        "evidence": "unmatched retail helper",
+        "address": "0x00ee6850",
+        "callers": [
+          "TourGuideGuide"
+        ],
+        "bestPdbCandidate": null,
+        "score": 0.0,
+        "retailStrings": []
       }
     },
     "fields": {
@@ -1060,13 +1070,7 @@
           "address": "0x00cdebe0"
         }
       },
-      "helpers": {
-        "helper_EE6850": {
-          "address": "0x00ee6850",
-          "evidence": "unnamed entity helper",
-          "size": 484
-        }
-      },
+      "helpers": {},
       "fields": {
         "0x1c": [
           "saveWaypointIdx",

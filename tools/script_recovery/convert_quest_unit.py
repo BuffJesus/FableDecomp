@@ -34,6 +34,8 @@ from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, 
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
 from tools.script_recovery.declare_free_locals import declare_free_locals  # noqa: E402
+from tools.script_recovery import native_literal_string_vectors  # noqa: E402
+from tools.script_recovery.native_vector_component_copies import fold_vector_component_copies  # noqa: E402
 
 ENTITY_STATE = '''local __native_entity_state = {}
 do
@@ -1927,6 +1929,18 @@ class UnitConverter:
                       '-- Registration remains disabled until the package is verified.', '']
             if entity:
                 chunks.append(ENTITY_STATE)
+            # member string vectors Init fills from literals and nothing else writes: immutable file-level tables
+            owner_row = (next((e for n, e in unit['entities'].items() if class_owner[n] == owner), None)
+                         if entity else unit['quest'])
+            decompiles = {n: unwrap_statements(self.native(f['address'])['decompile'])
+                          for n, f in functions.items() if self.native(f['address'])}
+            literal_vectors = native_literal_string_vectors.recover(
+                (owner_row or {}).get('unmappedFields', []), decompiles, self.rdata.wide_string_at)
+            if literal_vectors:
+                chunks.append(native_literal_string_vectors.prelude(
+                    literal_vectors, (owner_row or {}).get('nativeClass', owner).split('::')[-1]))
+                report.setdefault('literalStringVectors', {})[relative] = {
+                    hex(o): {'name': v[0], 'count': len(v[1])} for o, v in literal_vectors.items()}
             for name, spec in functions.items():
                 row = {'owner': owner, 'function': name, 'address': spec['address'], 'path': relative,
                        'evidence': spec.get('evidence')}
@@ -1990,7 +2004,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(unwrap_statements(fn['decompile'])), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_vector_component_copies(native_literal_string_vectors.apply(unwrap_statements(fn['decompile']), name, literal_vectors))), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in
@@ -2025,6 +2039,7 @@ class UnitConverter:
                 else:
                     parameter_kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES
                                        else 'bool' if p['type'] == 'bool'
+                                       else 'resource' if 'CScriptGameResourceObjectScriptedThingBase' in p['type']
                                        else 'thing' if 'CScriptThing' in p['type']
                                        else 'string' if 'CCharString' in p['type'] else 'unknown'
                                        for p in signature['parameters']}
@@ -2130,7 +2145,8 @@ class UnitConverter:
                         shared_lifter.helper_return_kinds[helper] = 'thing'
                     if int(address, 16) in self.hidden_string_returns:
                         shared_lifter.hidden_string_helpers.add(helper)
-                kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'bool' if p['type'] == 'bool' else 'thing' if 'CScriptThing' in p['type']
+                kinds = {p['lua']: 'number' if p['type'] in NUMBER_TYPES else 'bool' if p['type'] == 'bool'
+                         else 'resource' if 'CScriptGameResourceObjectScriptedThingBase' in p['type'] else 'thing' if 'CScriptThing' in p['type']
                          else 'string' if 'CCharString' in p['type'] else 'unknown' for p in signature['parameters']}
                 body = shared_lifter.lift(name, source, native_function=fn, parameters=kinds)
                 params = 'quest, me' + ''.join(', ' + p['lua'] for p in signature['parameters'])
