@@ -32,7 +32,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_Arena | Needle | Init | 0x00f15600 | True | 0 |
 | Q_Arena | Needle | OnPersist | 0x00f21720 | True | 3 |
 | Q_Arena | Needle | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_Arena | Roth | Main | 0x00f21880 | False | 47 |
+| Q_Arena | Roth | Main | 0x00f21880 | True | 47 |
 | Q_Arena | Roth | Init | 0x00f14610 | True | 0 |
 | Q_Arena | Roth | OnPersist | 0x00f21660 | True | 3 |
 | Q_Arena | Roth | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -76,4 +76,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_ArenaHoldingScript | Q_ArenaHoldingScript | Init | 0x00cf06d0 | True | 0 |
 | Q_ArenaHoldingScript | Q_ArenaHoldingScript | OnPersist | 0x00cbd4e0 | True | 0 |
 
-Summary: `{"owners": 22, "functions": 71, "missing": 0, "functionSyntaxPassed": 70, "fileSyntaxPassed": 21, "fileSyntaxChecked": 22, "todo": 247}`
+Summary: `{"owners": 22, "functions": 71, "missing": 0, "functionSyntaxPassed": 71, "fileSyntaxPassed": 22, "fileSyntaxChecked": 22, "todo": 247}`

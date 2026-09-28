@@ -11,8 +11,8 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult8, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04
-    local fret_05, fret_06, scratchValue, registerTimer, switch, switch3, movie, scratchValue23
-    local pCVar22_b3, thing, movie2, meControl, movie3, movie4, actorMap, actorMap2
+    local fret_05, fret_06, predicateResult29, scratchValue, registerTimer, switch, switch3, movie
+    local scratchValue23, pCVar22_b3, thing, movie2, meControl, movie3, movie4, actorMap, actorMap2
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(thing ~= 0)
         local movie = movie2
@@ -202,9 +202,20 @@ function Main(quest, me)
         quest:SetTimer(registerTimer, 3)
         ::FLOW_past_lab_00f220f0::
         ::LAB_00f221ae::
-        local scratchValue24 = CONCAT13(me:IsTalkedToByHero(),int3in_stack_fffffeb4)
-        if not pCVar22_b3 then
-            if scratchValue24 & 0xffffff >> 24 ~= 0 then
+        if not me:IsTalkedToByHero() then
+            if me:MsgIsHitByHero() then
+                goto LAB_00f22979
+            else
+                if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f22979 end
+                end
+                predicateResult29 = false
+            end
+            goto FLOW_past_lab_00f22979
+            ::LAB_00f22979::
+            predicateResult29 = true
+            ::FLOW_past_lab_00f22979::
+            if predicateResult29 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(registerTimer)
                     resources:DestroyMovie(meControl)
@@ -242,9 +253,7 @@ function Main(quest, me)
                     movie4 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
                     thing = resources:ScriptThing(meControl)
-                    local fret_07 = quest:GetHealth(thing)
-                    CONCAT13(1,int3(scratchValue24 & 0xffffff))
-                    if pCVar22_b3 then
+                    if quest:GetHealth(thing) > 0.0 then
                         scratchValue23 = 0
                         scratchValue = me:IsPerformingScriptTask()
                         while scratchValue do

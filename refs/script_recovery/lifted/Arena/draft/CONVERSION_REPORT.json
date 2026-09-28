@@ -3275,19 +3275,13 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 670,
+          "lines": 675,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/Arena/Entities/Roth.lua:Main",
-                "line": 258,
-                "message": "FSE/Arena/Entities/Roth.lua:Main:258: ')' expected near 'in_stack_fffffeb4'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
@@ -3295,10 +3289,12 @@
             "goto FLOW_native_label_1;",
             "goto FLOW_past_lab_00f220f0;",
             "goto FLOW_past_lab_00f22807;",
+            "goto FLOW_past_lab_00f22979;",
             "goto LAB_00f21f12;",
             "goto LAB_00f220f0;",
             "goto LAB_00f221ae;",
             "goto LAB_00f22807;",
+            "goto LAB_00f22979;",
             "goto LAB_00f22bf5;",
             "goto LAB_00f22bfa;",
             "goto LAB_00f22c10;",
@@ -3313,6 +3309,7 @@
             "FLOW_native_label_1",
             "FLOW_past_lab_00f220f0",
             "FLOW_past_lab_00f22807",
+            "FLOW_past_lab_00f22979",
             "LAB_00f21f12",
             "LAB_00f220f0",
             "LAB_00f221ae",
@@ -6021,16 +6018,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 15,
-        "passed": 14,
-        "errors": [
-          {
-            "path": "FSE/Arena/Entities/Roth.lua",
-            "line": 294,
-            "message": "FSE/Arena/Entities/Roth.lua:294: ')' expected near 'in_stack_fffffeb4'"
-          }
-        ]
+        "passed": 15,
+        "errors": []
       },
       "controlMode": "structured draft",
       "runtimeBoundaries": [
@@ -6256,8 +6247,8 @@
         "owners": 15,
         "functions": 68,
         "missing": 0,
-        "functionSyntaxPassed": 67,
-        "fileSyntaxPassed": 14,
+        "functionSyntaxPassed": 68,
+        "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
         "todo": 247
       }
@@ -6428,8 +6419,8 @@
     "owners": 22,
     "functions": 71,
     "missing": 0,
-    "functionSyntaxPassed": 70,
-    "fileSyntaxPassed": 21,
+    "functionSyntaxPassed": 71,
+    "fileSyntaxPassed": 22,
     "fileSyntaxChecked": 22,
     "todo": 247
   }

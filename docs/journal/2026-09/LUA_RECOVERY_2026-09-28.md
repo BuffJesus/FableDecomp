@@ -139,3 +139,20 @@ helper_ECE460 (ScorpionHome is intentional).
   OakValeFire were harness failures).
 - A/B: only BookCollecting (BS_Teacher) and SickChild (Mother, Witch, WomanToAttract) change; each changed file has
   fewer `missing` / `unresolved` / TODO placeholders than before. Tests: `test_ask_for_book_recovery.py` (4).
+
+## Late: Roth's high-byte flag (after `8d92536`)
+
+Corpus smoke **5 → 4** failing functions (Arena cell guards ×2, SickChild helper_ECE460, ScorpionHome intentional).
+Arena Roth Main (0x00F21880) keeps a byte flag at `[esp+0x13]` (`mov byte ptr [esp+0x13], 1`; cleared when
+GetHealth <= 0; read back), which Ghidra prints under two dwords: `pCVar15 = CONCAT13(1,(int3)pCVar22)` stores, the
+test reads `pCVar22 >> 0x18`, and one site stores `CONCAT13(bVar3, ...)`. `fold_cross_variable_high_byte_flags`
+(in `normalise_typed_decompile`, after the existing `if (C) { X = Y & mask }` shape and before tests become `X_b3`)
+makes the store, its `& 0xffffff` alternatives and the next high-byte test of either name one boolean
+`hb_stk_fNNN`, when nothing else in a 45-line window mentions them. A/B: only Roth changes.
+Tests: `test_cross_variable_high_byte.py` (2).
+
+Open, analysed: **SickChild helper_ECE460** builds `CCharString("NULL")` (0x012393E4) and sets the macro string map's
+`$ARG1` to a CCharString member of its scripted-thing resource (`local_4`, resource object +0xC) unless that equals
+"NULL" (the four-operand `_stricmp` is the inlined compare). Ghidra also hands the operands of the GSI +0x20 call
+(StartScriptingEntity: `&resource, 4` and GetHero's result) to GetHero. The resource member's meaning needs the
+scripted-thing resource layout before this can be lifted faithfully.

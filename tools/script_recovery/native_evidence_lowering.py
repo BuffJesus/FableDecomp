@@ -285,6 +285,48 @@ def fold_high_byte_flags(text: str) -> str:
                       lambda mm: f'{flag} = {literal.get(mm[1].strip(), "(" + mm[1] + ") != 0")};', text)
         text = re.sub(r'\b' + v + r' = ' + cast + r'\(\(uint\)' + v + r' & 0xffffff\);', flag + ' = false;', text)
         text = re.sub(r'\(char\)\(\(uint\)' + v + r' >> (?:0x18|24)\)', flag, text)
+    return fold_cross_variable_high_byte_flags(text)
+
+
+def fold_cross_variable_high_byte_flags(text: str) -> str:
+    """The same byte flag printed under two dwords: Arena Roth Main (0x00F21880) sets `mov byte ptr [esp+0x13], 1`,
+    clears it when GetHealth(...) <= 0 and reads it back, which Ghidra spells `pCVar15 = CONCAT13(1,(int3)pCVar22);`
+    / `pCVar15 = (uint)pCVar22 & 0xffffff;` then `if ((char)((uint)pCVar22 >> 0x18) != '\\0')` -- the store names one
+    variable, the test another (V_BeggarAndChild BeggarBully likewise). Lifted raw, CONCAT13 was an undefined global.
+    Within a short window, a `X = CONCAT13(K,(int3)Y)` store, its `X = Y & 0xffffff` alternatives and the first
+    high-byte test of X or Y are one boolean, when nothing else in the window mentions X or Y."""
+    cast = r'(?:\([\w ]+\*?\))?'
+    literal = {'0': 'false', '0x0': 'false', '1': 'true', '0x1': 'true'}
+    store = re.compile(r'^(?P<ind>[ \t]*)(?P<x>\w+) = ' + cast + r'CONCAT13\((?P<k>[^,;()]+),\s*\((?:int3|undefined3)\)(?P<y>\w+)\);[ \t]*\r?$', re.M)
+    serial = 0
+    pos = 0
+    while (m := store.search(text, pos)):
+        x, y = m['x'], m['y']
+        if x == y:
+            pos = m.end()
+            continue
+        names = r'(?:' + re.escape(x) + '|' + re.escape(y) + r')'
+        tail = text[m.end():]
+        lines = tail.split('\n')[:46]     # (Roth's second site: 31 lines of destructor bookkeeping in between)
+        window = '\n'.join(lines)
+        test = re.search(r'\(char\)\((?:\(uint\))?' + names + r' >> (?:0x18|24)\)', window)
+        if not test:
+            pos = m.end()
+            continue
+        before = window[:test.start()]
+        alt = re.compile(r'^[ \t]*' + re.escape(x) + r' = ' + cast + r'\(\(uint\)' + re.escape(y) + r' & 0xffffff\);[ \t]*\r?$', re.M)
+        if re.search(r'\b' + names + r'\b', alt.sub('', before)):
+            pos = m.end()
+            continue
+        serial += 1
+        flag = f'hb_stk_f{serial:03x}'
+        k = m['k'].strip()
+        if re.fullmatch(r'b\w*Var\d+', k):
+            literal = dict(literal, **{k: k})       # a bool register (`bVar3`) is the boolean itself
+        new_before = alt.sub(lambda a: re.match(r'[ \t]*', a.group(0)).group(0) + f'{flag} = false;', before)
+        rest = tail[test.end():]
+        text = (text[:m.start()] + f"{m['ind']}{flag} = {literal.get(k, '(' + k + ') != 0')};" + new_before + flag + rest)
+        pos = m.start() + 1
     return text
 
 
@@ -1270,6 +1312,8 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'^([ \t]*)(\w+) = (?:\([\w *]+\))?CONCAT13\(1,\s*\((?:int3|undefined3)\)(\w+)\);[ \t]*\r?\n[ \t]*if \(([^\n]*)\) \{[ \t]*\r?\n'
                   r'[ \t]*\2 = (?:\([\w *]+\))?\(\(uint\)\3 & 0xffffff\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n(?P<back>[ \t]*\3 = \2;[ \t]*\r?\n)?',
                   lambda m: f'{m.group(1)}{m.group(3) if m.group("back") else m.group(2)}_b3 = !({m.group(4)});\n', text, flags=re.M)
+    # the other shapes of one byte flag printed under two dwords (Arena Roth's `CONCAT13(bVar3,..)` and branch-set forms)
+    text = fold_cross_variable_high_byte_flags(text)
     text = re.sub(r"\(char\)\(\(uint\)(\w+) >> 0x18\) (==|!=) '\\0'", lambda m: f'{"!" if m.group(2) == "==" else ""}{m.group(1)}_b3', text)
     # Ghidra's `joined_r0x<addr>` block labels are ordinary labels to the goto passes
     def joined(m):

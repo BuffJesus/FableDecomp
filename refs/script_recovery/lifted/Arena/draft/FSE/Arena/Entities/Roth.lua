@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar2, bVar3, cVar4, dist, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, iVar11, iVar20, iVar23, iVar7, native_arg_switch_2, native_arg_switch_3, p1, pCVar10, pCVar12, pCVar15, pCVar16, pCVar18, pCVar19, pCVar22, pCVar22_b3, pCVar5, pCVar6, pQuestName, pThing, pThing1, pcVar13, ppuVar24, uVar14, uVar17, uVar21, xStack_128, xStack_144, xStack_88, xStack_98, xStack_b0, xStack_bc, xStack_c8
+    local CVar2, bVar3, cVar4, dist, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, hb_stk_f001, hb_stk_f002, hb_stk_f003, iVar11, iVar20, iVar23, iVar7, native_arg_switch_2, native_arg_switch_3, p1, pCVar10, pCVar12, pCVar15, pCVar16, pCVar18, pCVar19, pCVar22_b3, pCVar5, pCVar6, pQuestName, pThing, pThing1, pcVar13, ppuVar24, uVar14, uVar17, uVar21, xStack_128, xStack_144, xStack_88, xStack_98, xStack_b0, xStack_bc, xStack_c8
     local alive = true
     local function __cleanup_LAB_00f22cd8()
         quest:PauseAllNonScriptedEntities((pCVar5 ~= 0))
@@ -291,19 +291,24 @@ function Main(quest, me)
         ::FLOW_past_lab_00f220f0::
         ::LAB_00f221ae::
         bVar3 = me:IsTalkedToByHero()
-        pCVar22 = CONCAT13(bVar3,(int3)in_stack_fffffeb4)
-        if not pCVar22_b3 then
+        hb_stk_f001 = bVar3
+        if not hb_stk_f001 then
             bVar3 = me:MsgIsHitByHero()
             if bVar3 then
+                goto LAB_00f22979
             else
                 bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar3 then
                     bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f22979 end
                 end
+                hb_stk_f002 = false
             end
+            goto FLOW_past_lab_00f22979
             ::LAB_00f22979::
-            if (pCVar22 & 0xffffff >> 0x18) ~= 0 then
+            hb_stk_f002 = true
+            ::FLOW_past_lab_00f22979::
+            if hb_stk_f002 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
@@ -354,11 +359,11 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(true)
                     pCVar5 = resources:ScriptThing(xStack_144)
                     fret_07 = quest:GetHealth(pCVar5)
-                    pCVar22 = CONCAT13(1,(int3)(pCVar22 & 0xffffff))
+                    hb_stk_f003 = true
                     if fret_07 <= 0.0 then
-                        pCVar22 = (pCVar22 & 0xffffff & 0xffffff)
+                        hb_stk_f003 = false
                     end
-                    if pCVar22_b3 then
+                    if hb_stk_f003 then
                         bVar3 = false
                         pCVar19 = 0x1
                         pCVar18 = 0x0
