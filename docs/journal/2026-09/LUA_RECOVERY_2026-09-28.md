@@ -331,3 +331,22 @@ constructs two strings on the outgoing stack, including literal `NULL` at 0x0123
 against NULL with `_stricmp` at 0x00ECE501, and at 0x00ECE52F takes that same parameter's address for `$ARG1`.
 Next: recover the generic dropped by-value string signature and caller operands, then the local map/resource
 construction. Do not patch just the `_stricmp` symptom or invent a resource member. No helper change landed.
+
+### Candidate v37: offline staging complete
+
+Source checkpoint **98fa73a** (timer **581c1ff**); both local, not pushed. Bundle:
+`work/new-oakvale-original-fse-20260912/local-candidate-v37`, derived from v36. **45 Lua files refreshed**,
+including later BookCollecting/ChickenMaster fixes and WomanToAttract's timer. Fifty-six differing candidates
+retain their pinned source lineage; no ambiguous mappings. All nonupdated payloads are byte-identical to v36.
+No new override registrations: GuildMasterVillage is outside this existing roster, so its source improvements
+are not in v37. Its remaining goto recovery and any roster change are separate work.
+
+Validation: **210 Lua parse, 216 manifest hashes match, 38 override entries**. Before/after whole-package smoke
+has **zero new errors**; 17 existing mock failures remain (full identities in `package_validation_v37.json`).
+Sidecar stays **e83c39f**, DLL SHA-256
+`f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+`stage_v37.py` and `validate_v37.py` in marathon scratch record the staging/validation procedure.
+**Not installed or run in-game.** User's background-only constraint remains active.
+
+Next offline work: recover helper_ECE460's two by-value strings and its map/resource lowering from the
+native evidence above; continue GuildMaster's shared cleanup tails without hiding unresolved jumps.

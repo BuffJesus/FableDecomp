@@ -1,5 +1,11 @@
 # Lua recovery handoff - 2026-09-26
 
+**Latest: v37 staged offline (2026-09-28):** `local-candidate-v37` = v36 + 45 roster Lua files, unchanged
+sidecar e83c39f. 210 Lua parse / 216 hashes match / no new package smoke errors. Not installed or run.
+Local checkpoints: timer `581c1ff`, readability `98fa73a`; not pushed. GuildMasterVillage source improved but
+is outside the existing bundle roster. Next offline recovery: helper_ECE460's dropped two-string signature;
+GuildMaster cleanup tails remain open. Background-only constraint remains active. See latest journal entry.
+
 **Offline marathon (2026-09-28, after `581c1ff`):** promoted 75 Lua files in 18 units; shared attack-guard
 and Boolean-condition recovery removes 40 gotos. GuildMasterGameFlow loses six; other GuildMaster jumps remain.
 371 Lua parse; affected smoke has no new errors. Broad tests: 268 passed / 529 subtests, eight old cases match
