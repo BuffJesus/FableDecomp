@@ -15,8 +15,7 @@ local SCRIPT_DEF = {
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local assassinsUnderAttack, scratchValue, scratchValue3, questionAnswer, questionAnswer2, movie2
-    local resource
+    local assassinsUnderAttack, scratchValue, questionAnswer, questionAnswer2, movie2, resource
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
@@ -34,16 +33,7 @@ function Main(quest, me)
     scratchValue = predicateResult
     while not assassinsUnderAttack and not quest:GetStateBool("AssassinCutsceneTriggered") do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
-        if me:MsgIsHitByHero() then goto LAB_00d04cdc end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d04cdc end
-        end
-        scratchValue3 = 0
-        goto FLOW_past_lab_00d04cdc
-        ::LAB_00d04cdc::
-        scratchValue3 = 1
-        ::FLOW_past_lab_00d04cdc::
-        if scratchValue3 ~= 0 then
+        if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             quest:SetStateBool("AssassinsUnderAttack", true)
         end
         if not me:IsTalkedToByHero() then assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end

@@ -13,8 +13,8 @@ function Main(quest, me)
     local self_0x14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isObjectInThingsPossession, predicateResult8, predicateResult16, questionAnswer
-    local scratchValue, scratchValue8, hero6, movie3, movie4, movie5
+    local isObjectInThingsPossession, predicateResult8, questionAnswer, scratchValue, scratchValue8
+    local hero6, movie3, movie4, movie5
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
         resources:DestroyMovie(movie4)
@@ -153,16 +153,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie4)
         end
-        if me:MsgIsHitByHero() then goto LAB_00ece11a end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ece11a end
-        end
-        predicateResult16 = false
-        goto FLOW_past_lab_00ece11a
-        ::LAB_00ece11a::
-        predicateResult16 = true
-        ::FLOW_past_lab_00ece11a::
-        if predicateResult16 then
+        if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if quest:IsActiveThreadTerminating() then return end
             resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)

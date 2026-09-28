@@ -26,6 +26,7 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            if me:IsPerformingScriptTask() and quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             local switch1 = math.random(0, 32767) % (quest:GetStateInt("ArenaRound") - 2)
@@ -89,9 +90,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00f177f7
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f177f7 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f177f7 end
                 scratchValue = 0
             end
             goto FLOW_past_lab_00f177f7
@@ -104,6 +103,7 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 end
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                if me:IsPerformingScriptTask() and quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     local movie = resources:StartMovie("")

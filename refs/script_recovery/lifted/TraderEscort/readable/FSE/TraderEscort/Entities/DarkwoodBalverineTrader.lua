@@ -3,7 +3,8 @@
 
 -- DarkwoodBalverineTrader.Main (retail 0x00e03480)
 function Main(quest, me)
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     repeat
         quest:NewScriptFrame(me)

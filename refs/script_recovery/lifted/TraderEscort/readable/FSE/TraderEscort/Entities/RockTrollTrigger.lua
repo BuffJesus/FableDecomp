@@ -13,7 +13,8 @@ local rockTrollSpawned
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     local f_CVar = quest:ReadGlobalGameData(SCRIPT_DEF.TE_EarthTrollTriggerDistance)
     -- TODO(native): xStack_34 = CVar2;
     while not quest:IsDistanceBetweenThingsUnder(me, hero, f_CVar) do

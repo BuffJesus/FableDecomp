@@ -61,7 +61,7 @@ function Main(quest, me)
         end
         if setAgainstHero then goto LAB_00df851c end
         if not me:MsgIsHitByHero() then
-            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)) then
+            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL))) then
                 goto LAB_00df851c
             end
         end

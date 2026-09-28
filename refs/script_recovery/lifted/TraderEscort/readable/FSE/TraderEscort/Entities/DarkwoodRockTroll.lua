@@ -6,7 +6,8 @@ local healthBarID
 
 -- DarkwoodRockTroll.Main (retail 0x00e03d30)
 function Main(quest, me)
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     while 0.0 < quest:GetHealth(me) do
         if not quest:NewScriptFrame(me) then return end

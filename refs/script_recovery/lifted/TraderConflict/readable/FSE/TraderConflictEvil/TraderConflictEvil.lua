@@ -188,9 +188,7 @@ function Main(quest)
                 allCreaturesOffset3 = ctr_78
                 if quest:IsActiveThreadTerminating() then return end
                 if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHero() then goto LAB_00df6e53 end
-                if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00df6e53 end
-                end
+                if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByAnySpecialAbilityFromHero() and not quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00df6e53 end
                 predicateResult = false
                 if quest:IsDistanceBetweenThingsUnder(quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12), banditFollower, 10.0) then goto LAB_00df6e53 end
                 goto FLOW_past_lab_00df6e53
@@ -227,9 +225,7 @@ function Main(quest)
                     end
                 end
                 if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitBy("TC_BanditFighter") then goto LAB_00df706d end
-                if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") then
-                    if not quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00df706d end
-                end
+                if quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByAnySpecialAbilityFrom("TC_BanditFighter") and not quest:GetStateListAt("AllCreatures", allCreaturesOffset3 / 12):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00df706d end
                 predicateResult = false
                 goto FLOW_past_lab_00df706d
                 ::LAB_00df706d::

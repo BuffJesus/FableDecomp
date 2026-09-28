@@ -4,10 +4,12 @@
 -- TE_BanditLeader.Main (retail 0x00e035e0)
 function Main(quest, me)
     local hero = quest:GetHero()
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     local conversationID = quest:AddNewConversation(me, false, false)
     quest:AddPersonToConversation(conversationID, hero)
     quest:AddLineToConversation(conversationID, "TEXT_QST_067_BANDIT_ATTACK", me, hero, false)

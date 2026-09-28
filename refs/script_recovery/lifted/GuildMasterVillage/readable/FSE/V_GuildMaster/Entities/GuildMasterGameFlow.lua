@@ -11,7 +11,7 @@ local helpers = require("V_GuildMaster.native_quest_helpers")
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, questionAnswer, this_00
+    local questionAnswer, this_00
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -91,16 +91,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                 end
-                if me:MsgIsHitByHero() then goto LAB_00e914b3 end
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e914b3 end
-                end
-                scratchValue = 0
-                goto FLOW_past_lab_00e914b3
-                ::LAB_00e914b3::
-                scratchValue = 1
-                ::FLOW_past_lab_00e914b3::
-                if scratchValue ~= 0 then
+                if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
                     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                     local movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
@@ -129,16 +120,7 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         end
-        if me:MsgIsHitByHero() then goto LAB_00e91742 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e91742 end
-        end
-        scratchValue = 0
-        goto FLOW_past_lab_00e91742
-        ::LAB_00e91742::
-        scratchValue = 1
-        ::FLOW_past_lab_00e91742::
-        if scratchValue ~= 0 then
+        if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if not quest:IsActiveThreadTerminating() then
                 local movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)

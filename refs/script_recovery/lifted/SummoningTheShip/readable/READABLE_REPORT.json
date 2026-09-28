@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "summoning_the_ship",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\summoning_the_ship",
+ "draft": "refs\\script_recovery\\lifted\\SummoningTheShip\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -486,7 +486,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 75,
+     "sourceLine": 73,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -495,7 +495,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 80,
+     "sourceLine": 78,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -504,7 +504,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 83,
+     "sourceLine": 81,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -543,7 +543,7 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "sharedExitTests": 0,
+       "sharedExitTests": 1,
        "gotoElse": 38,
        "booleanBranches": 0,
        "booleanJumpChains": 3,
@@ -558,7 +558,7 @@
        "controlAcquires": 0,
        "sunkLocals": 4,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 1,
@@ -574,7 +574,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 66,
+       "lines": 64,
        "temporaries": 1,
        "labels": 2,
        "gotos": 3,
@@ -797,7 +797,7 @@
     ]
    },
    "readability": {
-    "lines": 89,
+    "lines": 87,
     "counts": {
      "genericTemporaries": 4,
      "unresolvedDiagnostics": 2,
@@ -832,47 +832,47 @@
       "text": "LAB_00df3310"
      },
      {
-      "line": 53,
+      "line": 52,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 53,
+      "line": 52,
       "category": "nativeNames",
       "text": "LAB_00df3310"
      },
      {
-      "line": 55,
+      "line": 53,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 57,
+      "line": 55,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 57,
+      "line": 55,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00df3310"
+     },
+     {
+      "line": 56,
+      "category": "nativeNames",
+      "text": "LAB_00df3310"
+     },
+     {
+      "line": 57,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
       "line": 58,
       "category": "nativeNames",
-      "text": "LAB_00df3310"
-     },
-     {
-      "line": 59,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 60,
-      "category": "nativeNames",
       "text": "FLOW_past_lab_00df3310"
      },
      {
-      "line": 61,
+      "line": 59,
       "category": "genericTemporaries",
       "text": "predicateResult"
      }
@@ -2688,7 +2688,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 160,
+     "sourceLine": 154,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2697,7 +2697,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 173,
+     "sourceLine": 167,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2706,7 +2706,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 176,
+     "sourceLine": 170,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2715,7 +2715,7 @@
     },
     {
      "function": "helper_DF2090",
-     "sourceLine": 179,
+     "sourceLine": 173,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2754,7 +2754,7 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "sharedExitTests": 0,
+       "sharedExitTests": 3,
        "gotoElse": 1,
        "booleanBranches": 0,
        "booleanJumpChains": 0,
@@ -2769,7 +2769,7 @@
        "controlAcquires": 0,
        "sunkLocals": 12,
        "cleanupClosureNames": 0,
-       "parentheses": 6,
+       "parentheses": 12,
        "cosmetics": 1,
        "firstAssignments": 0,
        "freeSuffixes": 4,
@@ -2785,7 +2785,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 148,
+       "lines": 142,
        "temporaries": 10,
        "labels": 12,
        "gotos": 17,
@@ -3076,7 +3076,7 @@
     ]
    },
    "readability": {
-    "lines": 194,
+    "lines": 188,
     "counts": {
      "genericTemporaries": 28,
      "unresolvedDiagnostics": 5,
@@ -3326,34 +3326,44 @@
       "text": "LAB_00df1d56"
      },
      {
-      "line": 107,
+      "line": 106,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 107,
+      "line": 106,
       "category": "nativeNames",
       "text": "LAB_00df1d56"
      },
      {
-      "line": 109,
+      "line": 107,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 111,
+      "line": 109,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 111,
+      "line": 109,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00df1d56"
      },
      {
-      "line": 112,
+      "line": 110,
       "category": "nativeNames",
       "text": "LAB_00df1d56"
+     },
+     {
+      "line": 111,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 112,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00df1d56"
      },
      {
       "line": 113,
@@ -3361,14 +3371,14 @@
       "text": "predicateResult"
      },
      {
-      "line": 114,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00df1d56"
+      "line": 120,
+      "category": "gotos",
+      "text": "goto"
      },
      {
-      "line": 115,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
+      "line": 120,
+      "category": "nativeNames",
+      "text": "LAB_00df1e73"
      },
      {
       "line": 122,
@@ -3381,12 +3391,22 @@
       "text": "LAB_00df1e73"
      },
      {
+      "line": 123,
+      "category": "genericTemporaries",
+      "text": "predicateResult18"
+     },
+     {
       "line": 125,
       "category": "gotos",
       "text": "goto"
      },
      {
       "line": 125,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00df1e73"
+     },
+     {
+      "line": 126,
       "category": "nativeNames",
       "text": "LAB_00df1e73"
      },
@@ -3396,87 +3416,67 @@
       "text": "predicateResult18"
      },
      {
-      "line": 129,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 129,
+      "line": 128,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00df1e73"
      },
      {
-      "line": 130,
-      "category": "nativeNames",
-      "text": "LAB_00df1e73"
-     },
-     {
-      "line": 131,
+      "line": 129,
       "category": "genericTemporaries",
       "text": "predicateResult18"
      },
      {
-      "line": 132,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00df1e73"
-     },
-     {
-      "line": 133,
-      "category": "genericTemporaries",
-      "text": "predicateResult18"
-     },
-     {
-      "line": 142,
+      "line": 138,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 142,
+      "line": 138,
+      "category": "nativeNames",
+      "text": "LAB_00df1f96"
+     },
+     {
+      "line": 140,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 140,
+      "category": "nativeNames",
+      "text": "LAB_00df1f96"
+     },
+     {
+      "line": 141,
+      "category": "genericTemporaries",
+      "text": "predicateResult21"
+     },
+     {
+      "line": 143,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 143,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00df1f96"
+     },
+     {
+      "line": 144,
       "category": "nativeNames",
       "text": "LAB_00df1f96"
      },
      {
       "line": 145,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "predicateResult21"
      },
      {
-      "line": 145,
+      "line": 146,
       "category": "nativeNames",
-      "text": "LAB_00df1f96"
+      "text": "FLOW_past_lab_00df1f96"
      },
      {
       "line": 147,
-      "category": "genericTemporaries",
-      "text": "predicateResult21"
-     },
-     {
-      "line": 149,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 149,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00df1f96"
-     },
-     {
-      "line": 150,
-      "category": "nativeNames",
-      "text": "LAB_00df1f96"
-     },
-     {
-      "line": 151,
-      "category": "genericTemporaries",
-      "text": "predicateResult21"
-     },
-     {
-      "line": 152,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00df1f96"
-     },
-     {
-      "line": 153,
       "category": "genericTemporaries",
       "text": "predicateResult21"
      }
@@ -4225,7 +4225,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 77,
+     "sourceLine": 75,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4234,7 +4234,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 83,
+     "sourceLine": 81,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4243,7 +4243,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 86,
+     "sourceLine": 84,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4282,7 +4282,7 @@
        "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "sharedExitTests": 0,
+       "sharedExitTests": 1,
        "gotoElse": 20,
        "booleanBranches": 0,
        "booleanJumpChains": 0,
@@ -4297,7 +4297,7 @@
        "controlAcquires": 0,
        "sunkLocals": 3,
        "cleanupClosureNames": 0,
-       "parentheses": 6,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,
@@ -4313,7 +4313,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 68,
+       "lines": 66,
        "temporaries": 5,
        "labels": 2,
        "gotos": 3,
@@ -4365,7 +4365,7 @@
        "controlAcquires": 0,
        "sunkLocals": 2,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
+       "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -4536,7 +4536,7 @@
     ]
    },
    "readability": {
-    "lines": 96,
+    "lines": 94,
     "counts": {
      "genericTemporaries": 8,
      "unresolvedDiagnostics": 1,
@@ -4566,34 +4566,44 @@
       "text": "LAB_00df26bd"
      },
      {
-      "line": 47,
+      "line": 46,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 47,
+      "line": 46,
       "category": "nativeNames",
       "text": "LAB_00df26bd"
      },
      {
-      "line": 49,
+      "line": 47,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 51,
+      "line": 49,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 51,
+      "line": 49,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00df26bd"
      },
      {
-      "line": 52,
+      "line": 50,
       "category": "nativeNames",
       "text": "LAB_00df26bd"
+     },
+     {
+      "line": 51,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 52,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00df26bd"
      },
      {
       "line": 53,
@@ -4601,32 +4611,22 @@
       "text": "predicateResult"
      },
      {
-      "line": 54,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00df26bd"
-     },
-     {
-      "line": 55,
+      "line": 79,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 81,
+      "line": 80,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 82,
+      "line": 80,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 82,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 82,
+      "line": 80,
       "category": "genericTemporaries",
       "text": "predicateResult"
      }
@@ -4796,7 +4796,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 31,
+     "sourceLine": 33,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4805,7 +4805,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 36,
+     "sourceLine": 38,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4814,7 +4814,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 39,
+     "sourceLine": 41,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -4834,7 +4834,7 @@
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 3,
-       "frameChecks": 3,
+       "frameChecks": 2,
        "inlinedTemporaries": 12,
        "deadDefinitions": 6,
        "guardWrappers": 0,
@@ -4864,11 +4864,11 @@
        "loopExitJumps": 0,
        "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 1,
+       "deadTerminationChecks": 0,
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 3,
+       "parentheses": 11,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -4884,12 +4884,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 24,
+       "lines": 26,
        "temporaries": 1,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 3,
-       "frameChecks": 3,
+       "terminationChecks": 5,
+       "frameChecks": 2,
        "requires": 0
       }
      },
@@ -4936,7 +4936,7 @@
        "controlAcquires": 0,
        "sunkLocals": 2,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
+       "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -5107,7 +5107,7 @@
     ]
    },
    "readability": {
-    "lines": 45,
+    "lines": 47,
     "counts": {
      "unresolvedDiagnostics": 1,
      "genericTemporaries": 4
@@ -5115,27 +5115,27 @@
     "status": "needs-recovery",
     "findings": [
      {
-      "line": 20,
+      "line": 22,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): FadeInThing(p0,0x40000000);"
      },
      {
-      "line": 34,
+      "line": 36,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 35,
+      "line": 37,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 35,
+      "line": 37,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 35,
+      "line": 37,
       "category": "genericTemporaries",
       "text": "predicateResult"
      }

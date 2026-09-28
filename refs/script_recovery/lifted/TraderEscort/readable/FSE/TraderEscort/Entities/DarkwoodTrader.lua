@@ -353,9 +353,7 @@ function Main(quest, me)
                     goto LAB_00e099dc
                 else
                     if me:MsgIsHitByHero() then goto LAB_00e099dc end
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e099dc end
-                    end
+                    if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e099dc end
                     scratchValue2 = true
                 end
                 goto FLOW_past_lab_00e099dc
@@ -371,7 +369,7 @@ function Main(quest, me)
                         goto LAB_00e09b4f
                     else
                         if not me:MsgIsHitByHero() then
-                            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)) then
+                            if not (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL))) then
                                 goto LAB_00e09b4f
                             end
                         end

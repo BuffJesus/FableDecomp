@@ -3,7 +3,8 @@
 
 -- DBMinion.Main (retail 0x00d25d80)
 function Main(quest, me)
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     while quest:GetStateInt("DragonState") ~= 4 do
         if not quest:NewScriptFrame(me) then return end

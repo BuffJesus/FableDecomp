@@ -137,6 +137,7 @@ function AdjustTavernPrices(quest)
         while not quest:IsRegionLoaded("Bordello") do
             if not quest:NewScriptFrame() then return end
         end
+        if quest:IsActiveThreadTerminating() then break end
         quest:SetStateThing("BordelloVillage", quest:GetNearestWithDefName(hero, "VILLAGE_BORDELLO"))
         quest:EntitySetOpinionReactionMask(quest:GetNearestWithDefName(hero, "CREATURE_OAKVALE_VILLAGER_FEMALE_BARMAID"), "OPINION_REACTION_MASK_DONT_SCREAM")
         quest:EntitySetOpinionReactionMask(quest:GetNearestWithDefName(hero, "CREATURE_OAKVALE_VILLAGER_MALE_BARMAN"), "OPINION_REACTION_MASK_DONT_SCREAM")

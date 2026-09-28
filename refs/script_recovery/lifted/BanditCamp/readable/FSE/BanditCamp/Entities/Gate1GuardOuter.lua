@@ -17,8 +17,7 @@ local aiState
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult6, predicateResult, scratchValue, scratchValue14, timerId, gate1GuardInner
-    local movie2, resource
+    local predicateResult, scratchValue, scratchValue14, timerId, gate1GuardInner, movie2, resource
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
         resource = resources:NewResource()
@@ -74,14 +73,14 @@ function Main(quest, me)
                     if quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP") then goto LAB_00d01abe end
                     if quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP") then goto LAB_00d01abe end
                     if quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP") then goto LAB_00d01abe end
-                    predicateResult6 = true
+                    predicateResult = true
                     if quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP") then goto LAB_00d01abe end
                 end
                 goto FLOW_past_lab_00d01abe
                 ::LAB_00d01abe::
-                predicateResult6 = false
+                predicateResult = false
                 ::FLOW_past_lab_00d01abe::
-                if predicateResult6 then
+                if predicateResult then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_DISGUISE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
@@ -229,16 +228,7 @@ function Main(quest, me)
     end
     goto FLOW_past_lab_00d0274f
     ::LAB_00d0274f::
-    if me:MsgIsHitByHero() then goto LAB_00d027e0 end
-    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d027e0 end
-    end
-    predicateResult = false
-    goto FLOW_past_lab_00d027e0
-    ::LAB_00d027e0::
-    predicateResult = true
-    ::FLOW_past_lab_00d027e0::
-    if not predicateResult then
+    if not (not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL))))) then
         if not quest:GetStateBool("AttackedOuterGateGuards") then goto LAB_00d0283a end
         if not quest:IsActiveThreadTerminating() then
             quest:GiveThingBestEnemyTarget(me, hero)

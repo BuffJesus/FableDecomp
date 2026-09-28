@@ -35,9 +35,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00e58fce
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e58fce end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e58fce end
             predicateResult = false
         end
         goto FLOW_past_lab_00e58fce
@@ -421,9 +419,7 @@ function Main(quest, me)
                 if scratchValue5 then
                     goto LAB_00e5a8ab
                 else
-                    if quest:MsgIsActionModeButtonPressed() then
-                        if not quest:MsgIsTutorialClickedPast() then goto LAB_00e5a8ab end
-                    end
+                    if quest:MsgIsActionModeButtonPressed() and not quest:MsgIsTutorialClickedPast() then goto LAB_00e5a8ab end
                     predicateResult30 = false
                 end
                 goto FLOW_past_lab_00e5a8ab
@@ -527,9 +523,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00e5addd
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e5addd end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e5addd end
                 predicateResult31 = false
             end
             goto FLOW_past_lab_00e5addd

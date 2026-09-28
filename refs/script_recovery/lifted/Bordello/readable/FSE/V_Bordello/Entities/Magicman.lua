@@ -547,9 +547,7 @@ function Main(quest, me)
                 getHero = hero
                 if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e4450d end
-                    if not quest:TextEntryExists("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. tostring(i_stk_350_1)) then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e4450d end
-                    end
+                    if not quest:TextEntryExists("TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0" .. tostring(i_stk_350_1)) and quest:IsActiveThreadTerminating() then goto LAB_00e4450d end
                     quest:AddPersonToConversation(quest:AddNewConversation(me, false, false), hero)
                     -- TODO(native): xStack_2bc = (undefined **)**(int **)(this + 4);
                     -- TODO(native): xStack_344 = (int *)(*(code *)xStack_2bc[0x46])();

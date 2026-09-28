@@ -3,7 +3,7 @@
 
 -- V_BeardyBaldy.Main (retail 0x00e4fa20)
 function Main(quest)
-    local predicateResult, msgOnRegionLoaded
+    local msgOnRegionLoaded
     quest:AddEntityBinding("BB_BeardyBaldyMan", "V_BeardyBaldy/Entities/BB_BeardyBaldyMan")
     quest:FinalizeEntityBindings()
     if not quest:IsActiveThreadTerminating() then
@@ -36,16 +36,7 @@ function Main(quest)
     ::LAB_00e500eb::
     do return end
     ::LAB_00e4fef3::
-    if quest:GetStateBool("QuestFinished") then goto LAB_00e4ff2f end
-    if quest:GetStateBool("QuestComplete") then
-        if not quest:IsRegionLoaded("BowerstoneSlumsWarehouses") then goto LAB_00e4ff2f end
-    end
-    predicateResult = true
-    goto FLOW_past_lab_00e4ff2f
-    ::LAB_00e4ff2f::
-    predicateResult = false
-    ::FLOW_past_lab_00e4ff2f::
-    if not predicateResult then
+    if quest:GetStateBool("QuestFinished") or (quest:GetStateBool("QuestComplete") and (not quest:IsRegionLoaded("BowerstoneSlumsWarehouses"))) then
         if not quest:IsActiveThreadTerminating() then
             local beardyBaldyMan = quest:GetThingWithScriptName("BB_BeardyBaldyMan")
             local bowerstoneSlumsVillagerFemaleBarber = quest:GetNearestWithScriptName(quest:GetHero(), "CREATURE_BOWERSTONE_SLUMS_VILLAGER_FEMALE_BARBER")

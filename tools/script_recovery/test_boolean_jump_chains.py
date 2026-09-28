@@ -56,3 +56,14 @@ def test_observable_intermediates_and_outside_edges_are_not_folded(source):
     lines, count = fold_boolean_jump_chains(source.splitlines(keepends=True))
     assert count == 0
     assert ''.join(lines) == source
+
+
+@pytest.mark.parametrize('values', list(itertools.product([False, True], repeat=3)) + [(None, 0, '')])
+@pytest.mark.parametrize('initial', [0, 1])
+def test_numeric_flags_preserve_value_type_and_short_circuit(values, initial):
+    source = SOURCE.replace('flag = true', f'flag = {initial}').replace('flag = false', f'flag = {1 - initial}')
+    lines, count = fold_boolean_jump_chains(source.splitlines(True))
+    result = ''.join(lines)
+    assert count == 4 and 'goto ' not in result
+    assert run(result, values) == run(source, values)
+    assert type(run(result, values)[0]) is int

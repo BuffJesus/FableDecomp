@@ -51,9 +51,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00d0c68f
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0c68f end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0c68f end
             predicateResult3 = false
             if quest:AreEntitiesEnemies(me, hero) then goto LAB_00d0c68f end
         end
@@ -210,9 +208,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00d0d12f
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0d12f end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0d12f end
                 predicateResult = false
                 if quest:AreEntitiesEnemies(me, hero) then goto LAB_00d0d12f end
             end

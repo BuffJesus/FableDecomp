@@ -55,9 +55,7 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_15c = xStack_15c | 2;
         if me:MsgIsHitByHero() then goto LAB_00e40183 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40183 end
-        end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40183 end
         goto FLOW_past_lab_00e40183
         ::LAB_00e40183::
         ::FLOW_past_lab_00e40183::

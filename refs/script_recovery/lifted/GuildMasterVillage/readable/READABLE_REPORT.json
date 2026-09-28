@@ -2050,7 +2050,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 258,
+     "sourceLine": 240,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2059,7 +2059,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 267,
+     "sourceLine": 249,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2068,7 +2068,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 270,
+     "sourceLine": 252,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2089,13 +2089,13 @@
        "aliveStaging": 37,
        "exitChecksInlined": 6,
        "frameChecks": 7,
-       "inlinedTemporaries": 84,
+       "inlinedTemporaries": 86,
        "deadDefinitions": 11,
        "guardWrappers": 1,
        "retryLoops": 10,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
-       "conditions": 0,
+       "conditions": 2,
        "literals": 2,
        "copies": 1,
        "selfAssignments": 0,
@@ -2107,10 +2107,10 @@
        "constantConditions": 4,
        "emptyElse": 0,
        "unusedClosures": 0,
-       "sharedExitTests": 0,
+       "sharedExitTests": 2,
        "gotoElse": 520,
        "booleanBranches": 0,
-       "booleanJumpChains": 0,
+       "booleanJumpChains": 6,
        "elseif": 0,
        "elseExit": 2,
        "gotoReturn": 0,
@@ -2122,10 +2122,10 @@
        "controlAcquires": 0,
        "sunkLocals": 33,
        "cleanupClosureNames": 0,
-       "parentheses": 65,
+       "parentheses": 71,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 1,
+       "freeSuffixes": 0,
        "hoistedState": 0
       },
       "before": {
@@ -2138,10 +2138,10 @@
        "requires": 0
       },
       "after": {
-       "lines": 247,
-       "temporaries": 3,
-       "labels": 19,
-       "gotos": 38,
+       "lines": 229,
+       "temporaries": 2,
+       "labels": 15,
+       "gotos": 32,
        "terminationChecks": 24,
        "frameChecks": 3,
        "requires": 0
@@ -2361,153 +2361,92 @@
     ]
    },
    "readability": {
-    "lines": 276,
+    "lines": 258,
     "counts": {
-     "genericTemporaries": 7,
-     "gotos": 38,
-     "nativeNames": 57
+     "gotos": 32,
+     "nativeNames": 47
     },
     "status": "needs-readability-work",
     "findings": [
      {
-      "line": 14,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 94,
+      "line": 129,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 94,
-      "category": "nativeNames",
-      "text": "LAB_00e914b3"
-     },
-     {
-      "line": 96,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 96,
-      "category": "nativeNames",
-      "text": "LAB_00e914b3"
-     },
-     {
-      "line": 98,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 99,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 99,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e914b3"
-     },
-     {
-      "line": 100,
-      "category": "nativeNames",
-      "text": "LAB_00e914b3"
-     },
-     {
-      "line": 101,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 102,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e914b3"
-     },
-     {
-      "line": 103,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 132,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 132,
-      "category": "nativeNames",
-      "text": "LAB_00e91742"
-     },
-     {
-      "line": 134,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 134,
-      "category": "nativeNames",
-      "text": "LAB_00e91742"
-     },
-     {
-      "line": 136,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 137,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 137,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e91742"
-     },
-     {
-      "line": 138,
-      "category": "nativeNames",
-      "text": "LAB_00e91742"
-     },
-     {
-      "line": 139,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 140,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e91742"
-     },
-     {
-      "line": 141,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 147,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 147,
+      "line": 129,
       "category": "nativeNames",
       "text": "LAB_00e91898"
      },
      {
-      "line": 149,
+      "line": 131,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 149,
+      "line": 131,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91898"
      },
      {
-      "line": 150,
+      "line": 132,
       "category": "nativeNames",
       "text": "LAB_00e91898"
+     },
+     {
+      "line": 135,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 135,
+      "category": "nativeNames",
+      "text": "LAB_00e918af"
+     },
+     {
+      "line": 136,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e91898"
+     },
+     {
+      "line": 143,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 143,
+      "category": "nativeNames",
+      "text": "LAB_00e91ef9"
+     },
+     {
+      "line": 146,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 146,
+      "category": "nativeNames",
+      "text": "LAB_00e91898"
+     },
+     {
+      "line": 149,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 149,
+      "category": "nativeNames",
+      "text": "LAB_00e91ef9"
+     },
+     {
+      "line": 151,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 151,
+      "category": "nativeNames",
+      "text": "FLOW_hoist_lab_00e91ef9_1"
      },
      {
       "line": 153,
@@ -2517,100 +2456,105 @@
      {
       "line": 153,
       "category": "nativeNames",
-      "text": "LAB_00e918af"
+      "text": "FLOW_past_lab_00e91ef9"
      },
      {
       "line": 154,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e91898"
-     },
-     {
-      "line": 161,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 161,
-      "category": "nativeNames",
       "text": "LAB_00e91ef9"
      },
      {
-      "line": 164,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 164,
-      "category": "nativeNames",
-      "text": "LAB_00e91898"
-     },
-     {
-      "line": 167,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 167,
-      "category": "nativeNames",
-      "text": "LAB_00e91ef9"
-     },
-     {
-      "line": 169,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 169,
+      "line": 156,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e91ef9_1"
      },
      {
-      "line": 171,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 171,
+      "line": 158,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91ef9"
      },
      {
-      "line": 172,
-      "category": "nativeNames",
-      "text": "LAB_00e91ef9"
-     },
-     {
-      "line": 174,
-      "category": "nativeNames",
-      "text": "FLOW_hoist_lab_00e91ef9_1"
-     },
-     {
-      "line": 176,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e91ef9"
-     },
-     {
-      "line": 177,
+      "line": 159,
       "category": "nativeNames",
       "text": "LAB_00e918af"
      },
      {
-      "line": 186,
+      "line": 168,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 186,
+      "line": 168,
       "category": "nativeNames",
       "text": "LAB_00e91ccb"
      },
      {
-      "line": 187,
+      "line": 169,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 187,
+      "line": 169,
+      "category": "nativeNames",
+      "text": "LAB_00e91ee8"
+     },
+     {
+      "line": 171,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 171,
+      "category": "nativeNames",
+      "text": "LAB_00e91db4"
+     },
+     {
+      "line": 173,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 173,
+      "category": "nativeNames",
+      "text": "LAB_00e91ee8"
+     },
+     {
+      "line": 176,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 176,
+      "category": "nativeNames",
+      "text": "LAB_00e91ccb"
+     },
+     {
+      "line": 180,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 180,
+      "category": "nativeNames",
+      "text": "LAB_00e91ee8"
+     },
+     {
+      "line": 181,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 181,
+      "category": "nativeNames",
+      "text": "LAB_00e91ccb"
+     },
+     {
+      "line": 186,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 186,
       "category": "nativeNames",
       "text": "LAB_00e91ee8"
      },
@@ -2622,15 +2566,15 @@
      {
       "line": 189,
       "category": "nativeNames",
-      "text": "LAB_00e91db4"
+      "text": "LAB_00e91ccb"
      },
      {
-      "line": 191,
+      "line": 193,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 191,
+      "line": 193,
       "category": "nativeNames",
       "text": "LAB_00e91ee8"
      },
@@ -2645,237 +2589,177 @@
       "text": "LAB_00e91ccb"
      },
      {
-      "line": 198,
+      "line": 196,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 198,
-      "category": "nativeNames",
-      "text": "LAB_00e91ee8"
-     },
-     {
-      "line": 199,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 199,
-      "category": "nativeNames",
-      "text": "LAB_00e91ccb"
-     },
-     {
-      "line": 204,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 204,
-      "category": "nativeNames",
-      "text": "LAB_00e91ee8"
-     },
-     {
-      "line": 207,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 207,
-      "category": "nativeNames",
-      "text": "LAB_00e91ccb"
-     },
-     {
-      "line": 211,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 211,
-      "category": "nativeNames",
-      "text": "LAB_00e91ee8"
-     },
-     {
-      "line": 212,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 212,
-      "category": "nativeNames",
-      "text": "LAB_00e91ccb"
-     },
-     {
-      "line": 214,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 214,
+      "line": 196,
       "category": "nativeNames",
       "text": "LAB_00e91db4"
      },
      {
-      "line": 215,
+      "line": 197,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 215,
+      "line": 197,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e91db4_1"
      },
      {
-      "line": 217,
+      "line": 199,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 217,
+      "line": 199,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e91db4_2"
      },
      {
-      "line": 219,
+      "line": 201,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 219,
+      "line": 201,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91db4"
      },
      {
-      "line": 220,
+      "line": 202,
       "category": "nativeNames",
       "text": "LAB_00e91db4"
      },
      {
-      "line": 223,
+      "line": 205,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 223,
+      "line": 205,
       "category": "nativeNames",
       "text": "LAB_00e91dcc"
      },
      {
-      "line": 224,
+      "line": 206,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e91db4_1"
      },
      {
-      "line": 225,
+      "line": 207,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 225,
+      "line": 207,
       "category": "nativeNames",
       "text": "LAB_00e91ccb"
      },
      {
-      "line": 226,
+      "line": 208,
       "category": "nativeNames",
       "text": "FLOW_hoist_lab_00e91db4_2"
      },
      {
-      "line": 228,
+      "line": 210,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 228,
+      "line": 210,
       "category": "nativeNames",
       "text": "LAB_00e91ccb"
      },
      {
-      "line": 229,
+      "line": 211,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 229,
+      "line": 211,
       "category": "nativeNames",
       "text": "LAB_00e91ee8"
      },
      {
-      "line": 233,
+      "line": 215,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 233,
+      "line": 215,
       "category": "nativeNames",
       "text": "LAB_00e91db4"
      },
      {
-      "line": 234,
+      "line": 216,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 234,
+      "line": 216,
       "category": "nativeNames",
       "text": "LAB_00e91ee8"
      },
      {
-      "line": 235,
+      "line": 217,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91db4"
      },
      {
-      "line": 236,
+      "line": 218,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 236,
+      "line": 218,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91ee8"
      },
      {
-      "line": 237,
+      "line": 219,
       "category": "nativeNames",
       "text": "LAB_00e91ee8"
      },
      {
-      "line": 239,
+      "line": 221,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91ee8"
      },
      {
-      "line": 240,
+      "line": 222,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 240,
+      "line": 222,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91ccb"
      },
      {
-      "line": 241,
+      "line": 223,
       "category": "nativeNames",
       "text": "LAB_00e91ccb"
      },
      {
-      "line": 243,
+      "line": 225,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e91ccb"
      },
      {
-      "line": 245,
+      "line": 227,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 245,
+      "line": 227,
       "category": "nativeNames",
       "text": "LAB_00e91ef9"
      },
      {
-      "line": 249,
+      "line": 231,
       "category": "nativeNames",
       "text": "LAB_00e91dcc"
      }

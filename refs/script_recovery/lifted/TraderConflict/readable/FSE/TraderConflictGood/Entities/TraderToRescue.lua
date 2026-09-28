@@ -46,9 +46,7 @@ function Main(quest, me)
             end
             if me:IsTalkedToByHero() then goto LAB_00dfe32c end
             getDataString = me:GetDataString()
-            if getDataString ~= nil and getDataString == "TRADERB" then
-                if quest:GetStateBool("OpenedCage") then goto LAB_00dfe32c end
-            end
+            if ((getDataString ~= nil) and (getDataString == "TRADERB")) and quest:GetStateBool("OpenedCage") then goto LAB_00dfe32c end
             msgExpressionPerformedTo = me:MsgExpressionPerformedTo()
             if msgExpressionPerformedTo == nil then goto LAB_00dfe4df end
             if msgExpressionPerformedTo == nil or msgExpressionPerformedTo ~= "EXPRESSION_FOLLOW" then goto LAB_00dfe4df end

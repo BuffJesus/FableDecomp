@@ -49,9 +49,7 @@ function Main(quest, me)
         if me:MsgIsHitBy("SummonerAttacker") then
             goto LAB_00df3310
         else
-            if me:MsgIsHitByAnySpecialAbilityFrom("SummonerAttacker") then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df3310 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFrom("SummonerAttacker") and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df3310 end
             predicateResult = false
         end
         goto FLOW_past_lab_00df3310

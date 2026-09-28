@@ -92,9 +92,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00ec6567
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec6567 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec6567 end
             scratchValue3 = 0
         end
         goto FLOW_past_lab_00ec6567

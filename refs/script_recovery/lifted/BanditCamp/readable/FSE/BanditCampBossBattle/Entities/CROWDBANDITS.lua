@@ -24,10 +24,10 @@ function Main(quest, me)
         if value >= 2147483648 then value = value - 4294967296 end
         return value
     end
-    local predicateResult, scratchValue2, scratchValue3, predicateResult3, scratchValue5
-    local scratchValue6, scratchValue7, scratchValue8, scratchValue9, scratchValue, kingHealth
-    local timerId, scratchValue32, scratchValue36, scratchValue38, scratchValue42, scratchValue44
-    local scratchValue46, scratchValue48, scratchValue54
+    local predicateResult, scratchValue2, scratchValue3, scratchValue5, scratchValue6, scratchValue7
+    local scratchValue8, scratchValue9, scratchValue, kingHealth, timerId, scratchValue32
+    local scratchValue36, scratchValue38, scratchValue42, scratchValue44, scratchValue46
+    local scratchValue48, scratchValue54
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetTargetable(me, false)
     quest:EntitySetAsDamageable(me, false)
@@ -307,17 +307,7 @@ function Main(quest, me)
                 end
             end
         end
-        if quest:GetStateInt("AngryBanditNeeded") >= 1 then goto LAB_00d0c1af end
-        if me:MsgIsHitByHero() then goto LAB_00d0c1af end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0c1af end
-        end
-        predicateResult3 = false
-        goto FLOW_past_lab_00d0c1af
-        ::LAB_00d0c1af::
-        predicateResult3 = true
-        ::FLOW_past_lab_00d0c1af::
-        if predicateResult3 then
+        if not not ((quest:GetStateInt("AngryBanditNeeded") >= 1) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if not quest:IsActiveThreadTerminating() then
                 quest:GiveThingBestEnemyTarget(me, hero)
                 quest:EntitySetAbleToBeEngagedInCombat(me, true)

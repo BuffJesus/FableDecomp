@@ -41,9 +41,7 @@ function Main(quest, me)
                 if me:MsgIsHitByHero() then
                     goto LAB_00e16078
                 else
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16078 end
-                    end
+                    if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16078 end
                     predicateResult4 = false
                 end
                 goto FLOW_past_lab_00e16078
@@ -114,9 +112,7 @@ function Main(quest, me)
                 if me:MsgIsHitByHero() then
                     goto LAB_00e16666
                 else
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16666 end
-                    end
+                    if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16666 end
                     predicateResult = false
                 end
                 goto FLOW_past_lab_00e16666
@@ -189,9 +185,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00e15b1a
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e15b1a end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e15b1a end
             predicateResult17 = false
         end
         goto FLOW_past_lab_00e15b1a
@@ -251,9 +245,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00e16078_c1
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16078_c1 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16078_c1 end
                 predicateResult23 = false
             end
             goto FLOW_past_lab_00e16078_c1
@@ -324,9 +316,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00e16666_c1
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16666_c1 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e16666_c1 end
                 predicateResult30 = false
             end
             goto FLOW_past_lab_00e16666_c1

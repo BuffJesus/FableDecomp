@@ -3,11 +3,14 @@
 
 -- SickChildFishingSpot.Main (retail 0x00ecd530)
 function Main(quest, me)
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
+    if quest:IsActiveThreadTerminating() then return end
     while true do
         if not quest:IsFishingSpotEnabled(me) then break end
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetStateBool("GotFishingSpotMushroom", true)
 end
 

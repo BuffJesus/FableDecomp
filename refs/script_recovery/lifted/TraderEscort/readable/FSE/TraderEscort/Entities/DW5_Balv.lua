@@ -3,10 +3,12 @@
 
 -- DW5_Balv.Main (retail 0x00e04970)
 function Main(quest, me)
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     while not me:IsAwareOfHero() do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:GiveThingBestEnemyTarget(me, quest:GetHero())
     repeat
         quest:NewScriptFrame(me)

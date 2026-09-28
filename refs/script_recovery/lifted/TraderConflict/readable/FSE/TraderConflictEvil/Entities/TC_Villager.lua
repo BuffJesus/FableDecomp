@@ -5,7 +5,7 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- TC_Villager.Main (retail 0x00df9180)
 function Main(quest, me)
-    local predicateResult, predicateResult6
+    local predicateResult
     local screamOutTimer = quest:GetStateInt("ScreamOutTimer")
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
@@ -22,32 +22,20 @@ function Main(quest, me)
     quest:EntityUnsetThingAsAllyOfThing(hero, me)
     while not quest:GetStateBool("PlayerEngaged") do
         if not quest:NewScriptFrame(me) then return end
-        if not me:MsgIsHitBy("") then goto LAB_00df9372 end
-        if me:MsgIsHitByHero() then goto LAB_00df9372 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df9372 end
-        end
-        predicateResult = true
-        goto FLOW_past_lab_00df9372
-        ::LAB_00df9372::
-        predicateResult = false
-        ::FLOW_past_lab_00df9372::
-        if predicateResult then
+        if not ((not me:MsgIsHitBy("")) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             quest:ModifyThingHealth(me, 100.0, false)
         else
             if me:MsgIsHitByHero() then
                 goto LAB_00df9462
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df9462 end
-                end
-                predicateResult6 = false
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df9462 end
+                predicateResult = false
             end
             goto FLOW_past_lab_00df9462
             ::LAB_00df9462::
-            predicateResult6 = true
+            predicateResult = true
             ::FLOW_past_lab_00df9462::
-            if predicateResult6 then
+            if predicateResult then
                 quest:SetStateBool("PlayerEngaged", true)
             end
         end

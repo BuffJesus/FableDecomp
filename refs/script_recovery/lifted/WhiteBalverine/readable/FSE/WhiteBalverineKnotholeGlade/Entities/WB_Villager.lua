@@ -7,7 +7,8 @@ local done
 -- WB_Villager.Main (retail 0x00e16c40)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
     while not quest:IsActiveThreadTerminating() do
         quest:NewScriptFrame(me)

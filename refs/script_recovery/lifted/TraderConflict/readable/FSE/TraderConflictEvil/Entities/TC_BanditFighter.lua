@@ -8,7 +8,7 @@ local hitWarning
 
 -- TC_BanditFighter.Main (retail 0x00df8970)
 function Main(quest, me)
-    local predicateResult, predicateResult4, predicateResult6
+    local predicateResult, predicateResult6
     local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetInFaction(me, "FACTION_BANDITS_FRIENDLY")
@@ -22,32 +22,20 @@ function Main(quest, me)
     quest:GiveThingBestEnemyTarget(me, quest:GetNearestWithScriptName(me, "IsAGuard"))
     while not quest:GetStateBool("PlayerEngaged") do
         if not quest:NewScriptFrame(me) then return end
-        if not me:MsgIsHitBy("") then goto LAB_00df8b83 end
-        if me:MsgIsHitByHero() then goto LAB_00df8b83 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8b83 end
-        end
-        predicateResult = true
-        goto FLOW_past_lab_00df8b83
-        ::LAB_00df8b83::
-        predicateResult = false
-        ::FLOW_past_lab_00df8b83::
-        if predicateResult then
+        if not ((not me:MsgIsHitBy("")) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             quest:ModifyThingHealth(me, 100.0, false)
         else
             if me:MsgIsHitByHero() then
                 goto LAB_00df8c73
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8c73 end
-                end
-                predicateResult4 = false
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8c73 end
+                predicateResult = false
             end
             goto FLOW_past_lab_00df8c73
             ::LAB_00df8c73::
-            predicateResult4 = true
+            predicateResult = true
             ::FLOW_past_lab_00df8c73::
-            if predicateResult4 then
+            if predicateResult then
                 quest:SetStateBool("PlayerEngaged", true)
             end
         end
@@ -62,9 +50,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00df8dcb
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8dcb end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df8dcb end
             predicateResult6 = false
         end
         goto FLOW_past_lab_00df8dcb

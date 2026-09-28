@@ -103,9 +103,7 @@ function Main(quest, me)
             if me:MsgIsHitBy("SummonerAttacker") then
                 goto LAB_00df1d56
             else
-                if me:MsgIsHitByAnySpecialAbilityFrom("SummonerAttacker") then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1d56 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFrom("SummonerAttacker") and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1d56 end
                 predicateResult = false
             end
             goto FLOW_past_lab_00df1d56
@@ -121,9 +119,7 @@ function Main(quest, me)
             if me:MsgIsHitBy("SummonerMinion") then
                 goto LAB_00df1e73
             else
-                if me:MsgIsHitByAnySpecialAbilityFrom("SummonerMinion") then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1e73 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFrom("SummonerMinion") and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1e73 end
                 predicateResult18 = false
             end
             goto FLOW_past_lab_00df1e73
@@ -141,9 +137,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00df1f96
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1f96 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00df1f96 end
             predicateResult21 = false
         end
         goto FLOW_past_lab_00df1f96

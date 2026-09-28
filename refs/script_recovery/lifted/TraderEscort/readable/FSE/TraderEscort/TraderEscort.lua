@@ -337,7 +337,7 @@ function WatchForMissionRules(quest)
         end
         if not (not quest:GetStateBool("SavedNearEnd") and quest:MsgOnRegionLoaded()) then
             quest:NewScriptFrame()
-        elseif not ("" ~= nil and "" == "Darkwood6") then
+        elseif not (("" ~= nil) and ("" == "Darkwood6")) then
             quest:NewScriptFrame()
         else
             if quest:IsActiveThreadTerminating() then break end

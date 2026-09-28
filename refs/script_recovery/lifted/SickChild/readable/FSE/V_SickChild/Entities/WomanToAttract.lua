@@ -153,27 +153,7 @@ function Main(quest, me)
             -- TODO(native): unaff_EBP = pCVar9;
             goto LAB_00ed069d
             ::FLOW_past_lab_00ecff84::
-            if scratchValue ~= "EXPRESSION_PELVIC_THRUST" then
-                if scratchValue ~= "EXPRESSION_COCK_A_DOODLE_DO" then
-                    if scratchValue ~= "EXPRESSION_CROTCH_GRAB" then
-                        if scratchValue ~= "EXPRESSION_KISS_MY_ASS" then
-                            if scratchValue ~= "EXPRESSION_FLAMENCO" then
-                                if scratchValue ~= "EXPRESSION_COSSACK" then
-                                    if scratchValue ~= "EXPRESSION_AIR_GUITAR" then
-                                        if scratchValue ~= "EXPRESSION_BALLET" then
-                                            if scratchValue ~= "EXPRESSION_SATURDAY_NIGHT_FEVER" then
-                                                if scratchValue ~= "EXPRESSION_TAP" then
-                                                    if scratchValue ~= "EXPRESSION_GIGGLE" then goto LAB_00ecff84 end
-                                                end
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
+            if scratchValue ~= "EXPRESSION_PELVIC_THRUST" and ((scratchValue ~= "EXPRESSION_COCK_A_DOODLE_DO") and ((scratchValue ~= "EXPRESSION_CROTCH_GRAB") and ((scratchValue ~= "EXPRESSION_KISS_MY_ASS") and ((scratchValue ~= "EXPRESSION_FLAMENCO") and ((scratchValue ~= "EXPRESSION_COSSACK") and ((scratchValue ~= "EXPRESSION_AIR_GUITAR") and ((scratchValue ~= "EXPRESSION_BALLET") and ((scratchValue ~= "EXPRESSION_SATURDAY_NIGHT_FEVER") and ((scratchValue ~= "EXPRESSION_TAP") and (scratchValue ~= "EXPRESSION_GIGGLE")))))))))) then goto LAB_00ecff84 end
             timesMadeLaugh_ = timesMadeLaugh_ + 1
             if scratchValue == nil then
                 if false then

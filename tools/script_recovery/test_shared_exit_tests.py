@@ -31,6 +31,16 @@ def test_both_conditions_and_fallthrough_keep_their_effects(first, second):
     assert before(first, second) == after(first, second)
 
 
+@pytest.mark.parametrize('first', [None, False, True, 0, ''])
+@pytest.mark.parametrize('second', [None, False, True, 0, ''])
+def test_nested_guard_preserves_short_circuit_and_fallthrough(first, second):
+    source = SOURCE.replace('        goto done\n    else\n', '')
+    lines, count = fold_shared_exit_tests(source.splitlines(True))
+    assert count == 1
+    lua = LuaRuntime()
+    assert lua.execute(source)(first, second) == lua.execute(''.join(lines))(first, second)
+
+
 @pytest.mark.parametrize('old,new', [
     ('if b() then goto done end', 'if b() then goto another end'),
     ('        goto done\n', '        record()\n        goto done\n'),

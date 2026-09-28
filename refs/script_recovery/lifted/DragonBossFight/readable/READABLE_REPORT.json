@@ -1743,7 +1743,7 @@
        "controlAcquires": 0,
        "sunkLocals": 4,
        "cleanupClosureNames": 0,
-       "parentheses": 15,
+       "parentheses": 18,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 1,
@@ -1879,7 +1879,7 @@
        "controlAcquires": 0,
        "sunkLocals": 3,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
+       "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -1947,7 +1947,7 @@
        "controlAcquires": 0,
        "sunkLocals": 2,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 2,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -2015,7 +2015,7 @@
        "controlAcquires": 0,
        "sunkLocals": 6,
        "cleanupClosureNames": 0,
-       "parentheses": 2,
+       "parentheses": 3,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -2760,7 +2760,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 14,
+     "sourceLine": 15,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2769,7 +2769,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 18,
+     "sourceLine": 19,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2778,7 +2778,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 21,
+     "sourceLine": 22,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2798,7 +2798,7 @@
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 1,
-       "frameChecks": 2,
+       "frameChecks": 1,
        "inlinedTemporaries": 6,
        "deadDefinitions": 3,
        "guardWrappers": 1,
@@ -2832,7 +2832,7 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -2848,12 +2848,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 9,
+       "lines": 10,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 1,
-       "frameChecks": 2,
+       "terminationChecks": 2,
+       "frameChecks": 1,
        "requires": 0
       }
      },
@@ -3071,7 +3071,7 @@
     ]
    },
    "readability": {
-    "lines": 30,
+    "lines": 31,
     "counts": {},
     "status": "needs-human-review",
     "findings": []
@@ -3222,7 +3222,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 14,
+     "sourceLine": 15,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3231,7 +3231,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 18,
+     "sourceLine": 19,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3240,7 +3240,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 21,
+     "sourceLine": 22,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3260,7 +3260,7 @@
        "staleLabelComments": 0,
        "aliveStaging": 0,
        "exitChecksInlined": 1,
-       "frameChecks": 2,
+       "frameChecks": 1,
        "inlinedTemporaries": 6,
        "deadDefinitions": 3,
        "guardWrappers": 1,
@@ -3294,7 +3294,7 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 4,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -3310,12 +3310,12 @@
        "requires": 0
       },
       "after": {
-       "lines": 9,
+       "lines": 10,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 1,
-       "frameChecks": 2,
+       "terminationChecks": 2,
+       "frameChecks": 1,
        "requires": 0
       }
      },
@@ -3533,7 +3533,7 @@
     ]
    },
    "readability": {
-    "lines": 30,
+    "lines": 31,
     "counts": {},
     "status": "needs-human-review",
     "findings": []

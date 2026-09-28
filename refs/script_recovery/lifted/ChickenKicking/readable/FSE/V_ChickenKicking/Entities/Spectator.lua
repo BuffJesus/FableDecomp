@@ -74,9 +74,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00e63e78
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e63e78 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e63e78 end
             predicateResult = false
         end
         goto FLOW_past_lab_00e63e78

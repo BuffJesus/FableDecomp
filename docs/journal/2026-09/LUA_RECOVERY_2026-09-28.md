@@ -287,3 +287,47 @@ space after the parenthesis). Needs the 29-unit A/B and full suite before landin
   `test_native_loop_timer`, and `test_native_entry_timer` under `tools/script_recovery`.
 - Next from desktop transcript: GuildMaster's remaining goto structure, then stage candidate v37 before
   playtesting. Existing helper_ECE460 and TraderEscort parameter-slot recovery gaps remain open.
+
+### Offline marathon: shared attack guards and nested Boolean comparisons (base `581c1ff`)
+
+User requested background work: no game launch and no shared-install writes. The timer fix is checkpoint
+`581c1ff` (local only). This pass fixes the shared readability generator, not individual Lua scripts.
+
+- Empty nested guards combine with short-circuit AND; alternative guards keep OR. Private 0/1 jump chains
+  retain numeric type when needed, while Boolean uses lose their number round trip. GuildMasterGameFlow's
+  two attack checks (native labels 0x00E914B3 and 0x00E91742) now express hero hit OR non-healing special hit;
+  six jumps and their scratch flag disappear. Other GuildMaster cleanup/quest-card gotos remain unresolved.
+- The numeric truth simplifier now balances parentheses with strings/comments masked. Both 0/1 directions
+  and both equality operators preserve Boolean result type and call order. It refuses larger RHS operands
+  such as 0.5 and 0 + 1. Negation rewrites keep grouping: `not not (a == b)` previously could become
+  `not a ~= b`, which changes the result. Some regenerated functions retain explicit termination checks
+  where the old optimization combined them with NewScriptFrame; these account for extra mock calls.
+- 29-unit before/after regeneration, reviewed diffs in `final_review.diff`: 78 changed Lua files in 19 units.
+  **75 files / 18 units promoted**, byte-for-byte from tested scratch. GuildTraining's three changed files
+  are excluded: its existing readable_converter differs from a clean baseline in three files (including
+  ArtifactThief/FinalMaze), so that lineage needs separate review. The hand-reviewed training tree stays intact.
+- Audit: **371 files, zero syntax failures; 40 fewer gotos, 44 fewer generic temporaries**. Unresolved count
+  stays 1,498. This is a readability checkpoint, not certification of full retail equivalence.
+- Broad suite: **268 passed, 529 subtests passed**, five failures and three setup errors identical to baseline
+  (older Oakvale native/candidate tests). Same-order baseline run: 185 passed, 48 failed, three errors,
+  529 subtests; the additional 43 baseline failures are newly added chain/guard tests. An isolated replay
+  of the eight old cases hit Unicorn access-violation noise and was stopped; `baseline_style_suite.log`
+  supersedes that partial run. No full script-recovery suite rerun.
+- Final bounds/semantics checks: **165 passed / eight subtests**. Final source reproduces GuildMaster scratch
+  exactly. Whole-zero hardening has no matching materialized expressions in existing corpus inputs/outputs;
+  targeted tests cover numeric prefixes and compound operands. All affected-unit before/after smoke JSONs
+  reviewed: no new errors. Existing helper_ECE460 `_stricmp`, Bordello helper argument faults and pending
+  member-resource bindings remain. Beardy's unchanged entity has random-dependent call-count variation.
+- Reproduce from `work/codex_lua_marathon_20260928/`: `ab/compare.py` does full before/after; `ab/refresh.py`
+  reuses the frozen before trees. `style_tests_final.log`, `test_comparison.json`, `bounds_tests.log`,
+  `final_smoke_comparison.json`, `promotion.json`, and `readability.json` contain results. Source snapshots
+  and intermediate comparisons are retained; final diff supersedes checkpoint-1 output.
+
+**Next native recovery evidence:** SickChild helper 0x00ECE460 is not blocked on a guessed resource-string
+member. Its bytes prove **two by-value CCharString parameters**: `ret 8` at 0x00ECE7E9; after popping saved
+registers, destructors on `[esp+0x38]` and `[esp+0x3C]` with frame size 0x34 (entry +4/+8). Caller 0x00ECDBDB
+constructs two strings on the outgoing stack, including literal `NULL` at 0x012393E4 and macro pointer
+0x012F2600. At 0x00ECE4EE the helper loads the second parameter from `[esp+0x48]` (frame 0x40), compares it
+against NULL with `_stricmp` at 0x00ECE501, and at 0x00ECE52F takes that same parameter's address for `$ARG1`.
+Next: recover the generic dropped by-value string signature and caller operands, then the local map/resource
+construction. Do not patch just the `_stricmp` symptom or invent a resource member. No helper change landed.

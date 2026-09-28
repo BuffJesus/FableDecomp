@@ -1678,6 +1678,37 @@ def _balanced_group(text, start):
     return None
 
 
+def fold_numeric_truth_tests(line):
+    """Remove a 0/1 round trip without changing a comparison's Boolean result."""
+    pattern = re.compile(r' and (?P<yes>[01]) or (?P<no>[01])(?P<close>\)) (?P<op>~=|==) 0(?![\w.])')
+    while True:
+        masked = _structure_line(line)
+        stack, opens = [], {}
+        for i, char in enumerate(masked):
+            if char == '(':
+                stack.append(i)
+            elif char == ')' and stack:
+                opens[i] = stack.pop()
+        changed = False
+        for match in pattern.finditer(masked):
+            following = masked[match.end():].lstrip()
+            if following and following[0] in '+-*/%^&|~<>.':
+                continue  # zero is part of a larger operand, not the comparison's RHS
+            inner_end = match.start() - 1
+            inner_start = opens.get(inner_end)
+            if (inner_start is None or match['yes'] == match['no']
+                    or opens.get(match.start('close')) != inner_start - 1):
+                continue
+            condition = line[inner_start + 1:inner_end]
+            invert = (match['op'] == '~=') == (match['yes'] == '0')
+            replacement = ('not ' if invert else 'not not ') + '(' + condition + ')'
+            line = line[:inner_start - 1] + replacement + line[match.end():]
+            changed = True
+            break
+        if not changed:
+            return line
+
+
 def simplify_conditions(lines):
     """`not (not X)` -> X, `not (a == b)` -> `a ~= b`, `((C) and 0 or 1) ~= 0` -> `not (C)`, and an
     unread `p = T()` (pure) staging store."""
@@ -1687,17 +1718,7 @@ def simplify_conditions(lines):
         if line.lstrip().startswith('--'):
             continue
         new = line
-        # the decompiler's int-valued comparison, both ways round:
-        #   ((C) and 0 or 1) ~= 0  is  not (C)      ((C) and 1 or 0) ~= 0  is  (C)
-        for staged, negated in ((r'and 0 or 1', True), (r'and 1 or 0', False)):
-            # one nesting level, but any number of groups with text between them:
-            # `quest:GetStateListAt("L", i):GetDefName() == "X"` is two groups, not one
-            pattern = r'\(\((?P<c>(?:[^()]*\([^()]*\))*[^()]*)\) ' + staged + r'\) (?P<op>~=|==) 0'
-            for m in reversed(list(re.finditer(pattern, new))):
-                cond = m.group('c')
-                invert = (m.group('op') == '~=') == negated
-                repl = f'not ({cond})' if invert else f'({cond})'
-                new = new[:m.start()] + repl + new[m.end():]
+        new = fold_numeric_truth_tests(new)
         # not (not X) / not (a == b)
         pos = 0
         while (m := re.compile(r'\bnot \(').search(new, pos)):
@@ -1709,7 +1730,7 @@ def simplify_conditions(lines):
             if neg.startswith('not '):
                 pos = m.end()
                 continue
-            new = new[:m.start()] + neg + new[end:]
+            new = new[:m.start()] + '(' + neg + ')' + new[end:]
             pos = m.start()
         for _ in range(4):
             before = new
@@ -2716,7 +2737,7 @@ def fold_goto_return(lines):
 
 
 def fold_shared_exit_tests(lines):
-    """Combine two otherwise-empty branches that jump to the same label.
+    """Combine empty alternative or nested guards leading to the same jump.
 
     Short-circuit OR preserves the order and number of condition evaluations.
     This does not move the destination or duplicate any branch body.
@@ -2728,10 +2749,18 @@ def fold_shared_exit_tests(lines):
         if any(t.lastgroup in ('longstring', 'longcomment', 'string') and '\n' in t[0] for t in tokens(text)):
             return lines, 0
     count, index = 0, 0
-    while index + 4 < len(lines):
+    while index + 2 < len(lines):
         first = re.fullmatch(r'([ \t]*)if (.+) then\n', lines[index])
         if first:
             indent = first[1]
+            nested = re.fullmatch(re.escape(indent) + r'    if (.+) then goto (\w+) end\n', lines[index + 1])
+            if nested and lines[index + 2] == indent + 'end\n':
+                lines[index:index + 3] = [f'{indent}if ({first[2]}) and ({nested[1]}) then goto {nested[2]} end\n']
+                count += 1
+                index += 1
+                continue
+            if index + 4 >= len(lines):
+                break
             jump = re.fullmatch(re.escape(indent) + r'    goto (\w+)\n', lines[index + 1])
             second = re.fullmatch(re.escape(indent) + r'    if (.+) then goto (\w+) end\n', lines[index + 3])
             if (jump and second and jump[1] == second[2]
@@ -2744,7 +2773,7 @@ def fold_shared_exit_tests(lines):
 
 
 def fold_boolean_jump_chains(lines):
-    """A private boolean built through a shared jump target becomes short-circuit Lua.
+    """A private boolean or 0/1 flag built through a jump becomes short-circuit Lua.
 
     Every incoming edge must belong to the chain. The temporary must be a unique
     local, uncaptured and unread by its conditions, so delaying its intermediate
@@ -2758,7 +2787,7 @@ def fold_boolean_jump_chains(lines):
     labels = Counter(re.findall(r'::(\w+)::', code))
     jumps = Counter(re.findall(r'\bgoto (\w+)\b', code))
     for start, raw in enumerate(lines):
-        first = re.fullmatch(r'([ \t]*)(?:if .+ then goto \w+ end|\w+ = (?:true|false))\n', raw)
+        first = re.fullmatch(r'([ \t]*)(?:if .+ then goto \w+ end|\w+ = (?:true|false|0|1))\n', raw)
         if not first:
             continue
         indent = first[1]
@@ -2766,7 +2795,7 @@ def fold_boolean_jump_chains(lines):
         i = start
         while i < len(lines):
             guard = re.fullmatch(re.escape(indent) + r'if (.+) then goto (\w+) end\n', lines[i])
-            assignment = re.fullmatch(re.escape(indent) + r'(\w+) = (true|false)\n', lines[i])
+            assignment = re.fullmatch(re.escape(indent) + r'(\w+) = (true|false|0|1)\n', lines[i])
             if guard and (target is None or target == guard[2]):
                 target = guard[2]
                 conditions.append(guard[1])
@@ -2785,7 +2814,7 @@ def fold_boolean_jump_chains(lines):
         done = re.fullmatch(re.escape(indent) + r'goto (\w+)\n', lines[i])
         if not done or done[1] == target:
             continue
-        final = 'false' if initial == 'true' else 'true'
+        final = {'true': 'false', 'false': 'true', '0': '1', '1': '0'}[initial]
         expected = [f'{indent}::{target}::\n', f'{indent}{name} = {final}\n', f'{indent}::{done[1]}::\n']
         if lines[i + 1:i + 4] != expected:
             continue
@@ -2793,6 +2822,8 @@ def fold_boolean_jump_chains(lines):
             continue
         expression = ' or '.join('(' + c + ')' for c in conditions)
         rhs = ('not ' if initial == 'true' else 'not not ') + '(' + expression + ')'
+        if initial in ('0', '1'):
+            rhs = f'({expression}) and {final} or {initial}'
         lines[start:i + 4] = [f'{indent}{name} = {rhs}\n']
         return lines, len(conditions) + 1
     return lines, 0

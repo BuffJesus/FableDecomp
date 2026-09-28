@@ -116,9 +116,7 @@ function Main(quest, me)
         ::FLOW_past_lab_00ecd29f::
         ::LAB_00eccf0a::
         if me:MsgIsHitByHero() then goto LAB_00eccf8f end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00eccf8f end
-        end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00eccf8f end
         goto LAB_00eccfad
         goto FLOW_past_lab_00eccfad
         ::LAB_00eccfad::

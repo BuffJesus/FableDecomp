@@ -24,9 +24,7 @@ function Main(quest, me)
     -- TODO(native): if *(self_0x14 + ctr_4c) ~= myStoneNumber then goto LAB_00ed34e2 end
     if not quest:IsActiveThreadTerminating() then
         repeat
-            if quest:IsDistanceBetweenThingsUnder(me, hero, 35.0) then
-                if quest:IsCameraPosOnScreen(me:GetPos()) then goto LAB_00ed344b end
-            end
+            if quest:IsDistanceBetweenThingsUnder(me, hero, 35.0) and quest:IsCameraPosOnScreen(me:GetPos()) then goto LAB_00ed344b end
             if not quest:NewScriptFrame(me) then goto LAB_00ed3906 end
         until false
     end

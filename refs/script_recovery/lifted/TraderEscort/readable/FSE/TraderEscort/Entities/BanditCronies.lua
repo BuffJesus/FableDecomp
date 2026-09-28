@@ -5,10 +5,12 @@
 function Main(quest, me)
     local scratchValue
     local hero = quest:GetHero()
-    if not quest:NewScriptFrame(me) then return end
+    quest:NewScriptFrame(me)
+    if quest:IsActiveThreadTerminating() then return end
     while not quest:IsDistanceBetweenThingsUnder(me, hero, 13.0) do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:ReadGlobalGameData(944)
     quest:ReadGlobalGameData(940)
     math.random(0, 32767)

@@ -9,6 +9,7 @@ function Main(quest, me)
         if me:MsgIsUsedByHero() then break end
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:OpenDoor(me)
     quest:SetStateBool("OpenedCage", true)
 end

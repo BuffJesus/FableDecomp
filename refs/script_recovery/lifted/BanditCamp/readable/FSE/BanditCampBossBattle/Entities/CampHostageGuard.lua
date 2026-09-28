@@ -164,9 +164,7 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then
             goto LAB_00d09aee
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d09aee end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d09aee end
             predicateResult6 = false
             if quest:GetStateBool("HostageKilled") then goto LAB_00d09aee end
         end
@@ -272,9 +270,7 @@ function Main(quest, me)
             if me:MsgIsHitByHero() then
                 goto LAB_00d0a3d3
             else
-                if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0a3d3 end
-                end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0a3d3 end
                 predicateResult = false
             end
             goto FLOW_past_lab_00d0a3d3

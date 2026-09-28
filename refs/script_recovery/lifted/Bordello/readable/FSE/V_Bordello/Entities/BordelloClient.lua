@@ -395,9 +395,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie5)
             end
             if me:MsgIsHitByHero() then goto LAB_00e453d2 end
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e453d2 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e453d2 end
             -- TODO(native): xStack_c4_b3 = '\0';
             goto FLOW_past_lab_00e453d2
             ::LAB_00e453d2::

@@ -189,9 +189,7 @@ function WatchForHittingEnemies(quest)
             repeat
                 if quest:IsActiveThreadTerminating() then return end
                 if quest:GetStateListAt("AllCreatures", allCreaturesIndex):MsgIsHitBy("") then goto LAB_00dfc735 end
-                if quest:GetStateListAt("AllCreatures", allCreaturesIndex):MsgIsHitByAnySpecialAbilityFrom("") then
-                    if not quest:GetStateListAt("AllCreatures", allCreaturesIndex):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00dfc735 end
-                end
+                if quest:GetStateListAt("AllCreatures", allCreaturesIndex):MsgIsHitByAnySpecialAbilityFrom("") and not quest:GetStateListAt("AllCreatures", allCreaturesIndex):MsgIsHitByHeroSpecialAbility(14) then goto LAB_00dfc735 end
                 predicateResult = false
                 goto FLOW_past_lab_00dfc735
                 ::LAB_00dfc735::
@@ -451,9 +449,7 @@ function AttackPeople(quest)
                 goto LAB_00dfdabb
                 ::FLOW_past_lab_00dfd841::
                 if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], hero) then goto LAB_00dfd841 end
-                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], traderToRescue) then
-                    if allCreatures[scratchValue5 + 1]:GetName() ~= "TC_BanditGuard" then goto LAB_00dfd841 end
-                end
+                if quest:IsThingAwareOfOtherThingInAnyWay(allCreatures[scratchValue5 + 1], traderToRescue) and allCreatures[scratchValue5 + 1]:GetName() ~= "TC_BanditGuard" then goto LAB_00dfd841 end
                 ctr_38 = ctr_38 + 1
                 scratchValue5 = scratchValue5 + 1
             until ctr_38 >= #allCreatures

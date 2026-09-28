@@ -178,9 +178,7 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_a0 = xStack_a0 | 2;
         if me:MsgIsHitByHero() then goto LAB_00ecef61 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecef61 end
-        end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecef61 end
         goto FLOW_past_lab_00ecef61
         ::LAB_00ecef61::
         ::FLOW_past_lab_00ecef61::
@@ -266,9 +264,7 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_a0 = xStack_a0 | 0x10;
         if me:MsgIsHitByHero() then goto LAB_00ecf576 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecf576 end
-        end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecf576 end
         goto FLOW_past_lab_00ecf576
         ::LAB_00ecf576::
         ::FLOW_past_lab_00ecf576::

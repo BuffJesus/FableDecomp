@@ -19,15 +19,11 @@ function WatchForHeroDeath(quest)
     local hero = quest:GetHero()
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if not (hero ~= nil and hero:IsAlive()) then
-            quest:NewScriptFrame()
-        else
-            repeat
-                if hero ~= nil and hero:IsUnconscious() then break end
-                if not quest:NewScriptFrame() then return end
-            until not (hero ~= nil and hero:IsAlive())
-            quest:NewScriptFrame()
+        while hero ~= nil and hero:IsAlive() do
+            if hero ~= nil and hero:IsUnconscious() then break end
+            if not quest:NewScriptFrame() then return end
         end
+        quest:NewScriptFrame()
     until false
 end
 

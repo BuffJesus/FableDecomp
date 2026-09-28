@@ -318,7 +318,8 @@ end
 -- Q_WaspBoss.helper_E137B0 (retail 0x00e137b0)
 function helper_E137B0(quest)
     local resources = quest:RetailResources()
-    if not quest:NewScriptFrame() then return end
+    quest:NewScriptFrame()
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetStateBool("PanickedVillagersScene", true)
     local resource = resources:NewResource()
     resources:TryAcquire(resource, quest:GetHero(), 4)

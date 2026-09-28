@@ -5,7 +5,7 @@
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, conversationId, string
+    local conversationId, string
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -22,22 +22,7 @@ function Main(quest, me)
         string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_BANDIT_COSTUME_10"
         goto LAB_00dfb630
     else
-        if quest:GetStateBool("CommentedOnBanditCostume") then goto LAB_00dfb79f end
-        if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_SHIRT_BANDITCAMP") then
-            if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP") then
-                if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP") then
-                    if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP") then
-                        if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP") then goto LAB_00dfb79f end
-                    end
-                end
-            end
-        end
-        predicateResult = true
-        goto FLOW_past_lab_00dfb79f
-        ::LAB_00dfb79f::
-        predicateResult = false
-        ::FLOW_past_lab_00dfb79f::
-        if predicateResult then
+        if not (quest:GetStateBool("CommentedOnBanditCostume") or ((not quest:IsWearingClothingItem(hero, "OBJECT_HERO_SHIRT_BANDITCAMP")) and ((not quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP")) and ((not quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP")) and ((not quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP")) and (not quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP"))))))) then
             conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
             string = "TEXT_QST_B11_BANDIT_ATTACK_WEARING_PART_BANDIT_COSTUME_10"

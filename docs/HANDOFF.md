@@ -1,5 +1,13 @@
 # Lua recovery handoff - 2026-09-26
 
+**Offline marathon (2026-09-28, after `581c1ff`):** promoted 75 Lua files in 18 units; shared attack-guard
+and Boolean-condition recovery removes 40 gotos. GuildMasterGameFlow loses six; other GuildMaster jumps remain.
+371 Lua parse; affected smoke has no new errors. Broad tests: 268 passed / 529 subtests, eight old cases match
+baseline; final focused checks 165 passed / eight subtests. GuildTraining generated lineage excluded pending
+review. Background-only authorization: do not launch or install the game. v37 staging follows this checkpoint.
+New evidence for next helper_ECE460 work: two dropped by-value string parameters (ret 8), not a resource-string
+member. See latest [journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md), scratch `work/codex_lua_marathon_20260928/`.
+
 **Codex continuation (2026-09-28, after `118fb6c`):** WomanToAttract timer cleanup now uses the registered
 handle, recovered from the destructor's retail LEA and epilogue. Promoted draft/readable; 29-unit A/B changes
 only WomanToAttract. 58 tests / 7 subtests pass; smoke unchanged; 371-file syntax audit clean. Not packaged or

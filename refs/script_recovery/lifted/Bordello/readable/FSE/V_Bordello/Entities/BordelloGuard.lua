@@ -23,15 +23,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while true do
         if me:IsTalkedToByHero() then break end
-        if me:MsgIsHitByHero() then goto LAB_00e40afa end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa end
-        end
-        scratchValue7 = 0
-        goto FLOW_past_lab_00e40afa
-        ::LAB_00e40afa::
-        scratchValue7 = 1
-        ::FLOW_past_lab_00e40afa::
+        scratchValue7 = (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) and 1 or 0
         if scratchValue7 ~= 0 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
@@ -131,9 +123,7 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
         if not me:MsgIsHitByHero() then
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa_c1 end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa_c1 end
             scratchValue7 = 0
         end
         goto FLOW_past_lab_00e40afa_c1
