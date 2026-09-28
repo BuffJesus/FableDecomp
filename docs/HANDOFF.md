@@ -1,5 +1,16 @@
 # Lua recovery handoff - 2026-09-26
 
+**Resume here (2026-09-27 night):** Lua fixes through `ea7603e` (checkpoints 3-11 in
+[the marathon journal](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md)): BookOwned offset, stale unit evidence
+regenerated, spawn-site worker names, signed-char bit tests, cleanup-flag clusters, Forge out-vector tables,
+resource ScriptThing routing, high-byte flag slots, by-value thing releases, empty cleanup regions. Staged
+**v34** (`work/new-oakvale-original-fse-20260912/local-candidate-v34`) is NOT installed or run; checkpoint 11
+(BeardyBaldy/TraderEscort/BanditCamp) postdates it -> stage v35 before playtesting. Corpus smoke: 24 failing
+functions before this evening's last passes; rerun `work/codex_lua_flags_20260927/cluster_smoke.py` after
+`smoke_run_unit.py --unit` over all units. Open: BordelloLady/Witch flag slots, Roth cross-variable high bytes,
+SickChild helper_ECE460, ChickenKicking unnamed workers. Method: after any shared-pass change run the 29-unit
+A/B (`work/codex_lua_flags_20260927/compare.py`, set CHANGED + baseline copies), promote only intended units.
+
 **Crash resume (2026-09-27):** BookOwned's retail +0xAC byte-vector offset now comes from its named
 OnPersist transfer, so it is no longer persisted as a scalar bool (honest TODO; binding missing). Only
 BookCollecting changes. All 55 unit JSONs since regenerated; Lua changes only in BookCollecting (order), Bordello/TourGuide
