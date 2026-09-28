@@ -5470,103 +5470,13 @@
    "readability": {
     "lines": 231,
     "counts": {
-     "unresolvedDiagnostics": 22,
      "genericTemporaries": 7,
      "gotos": 9,
-     "nativeNames": 15
+     "nativeNames": 15,
+     "unresolvedDiagnostics": 4
     },
     "status": "needs-recovery",
     "findings": [
-     {
-      "line": 43,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 9),\"M_TG_LocationBalcony\");"
-     },
-     {
-      "line": 46,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 4),\"M_TG_LocationBanquet\");"
-     },
-     {
-      "line": 49,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 7),\"M_TG_LocationBar\");"
-     },
-     {
-      "line": 52,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 17),\"M_TG_LocationBridge\");"
-     },
-     {
-      "line": 55,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 14),\"M_TG_LocationCloisters\");"
-     },
-     {
-      "line": 58,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 10),\"M_TG_LocationDorm1\");"
-     },
-     {
-      "line": 61,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 11),\"M_TG_LocationDorm2\");"
-     },
-     {
-      "line": 64,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 6),\"M_TG_LocationLibrary\");"
-     },
-     {
-      "line": 67,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 5),\"M_TG_LocationMap\");"
-     },
-     {
-      "line": 70,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 16),\"M_TG_LocationMaze\");"
-     },
-     {
-      "line": 73,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 13),\"M_TG_LocationShop\");"
-     },
-     {
-      "line": 76,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 0),\"M_TG_LocationStart\");"
-     },
-     {
-      "line": 79,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 15),\"M_TG_LocationTomb\");"
-     },
-     {
-      "line": 82,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 1),\"M_TG_LocationTraining\");"
-     },
-     {
-      "line": 85,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 2),\"M_TG_LocationServant\");"
-     },
-     {
-      "line": 88,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 12),\"M_TG_LocationStairsInside\");"
-     },
-     {
-      "line": 91,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 8),\"M_TG_LocationStairsOutside\");"
-     },
-     {
-      "line": 94,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 3),\"M_TG_LocationStatue\");"
-     },
      {
       "line": 126,
       "category": "genericTemporaries",

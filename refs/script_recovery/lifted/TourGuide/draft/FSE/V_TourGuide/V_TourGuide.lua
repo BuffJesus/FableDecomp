@@ -51,58 +51,58 @@ function Init(quest)
     quest:SetStateBool("GuideSpokenToHeroThisWaypoint", false)
     quest:SetStateBool("OverheardTourGuideThisWaypoint", false)
     quest:SetStateInt("WaypointCounter", 0)
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 9),"M_TG_LocationBalcony");
+    quest:SetStateString("WaypointInfo_9_locMarker", "M_TG_LocationBalcony")
     quest:SetStateString("WaypointInfo_9_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BALCONY")
     quest:SetStateString("WaypointInfo_9_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BALCONY")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 4),"M_TG_LocationBanquet");
+    quest:SetStateString("WaypointInfo_4_locMarker", "M_TG_LocationBanquet")
     quest:SetStateString("WaypointInfo_4_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BANQUET")
     quest:SetStateString("WaypointInfo_4_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BANQUET")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 7),"M_TG_LocationBar");
+    quest:SetStateString("WaypointInfo_7_locMarker", "M_TG_LocationBar")
     quest:SetStateString("WaypointInfo_7_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BAR")
     quest:SetStateString("WaypointInfo_7_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BAR")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 17),"M_TG_LocationBridge");
+    quest:SetStateString("WaypointInfo_17_locMarker", "M_TG_LocationBridge")
     quest:SetStateString("WaypointInfo_17_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE")
     quest:SetStateString("WaypointInfo_17_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_BRIDGE")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 14),"M_TG_LocationCloisters");
+    quest:SetStateString("WaypointInfo_14_locMarker", "M_TG_LocationCloisters")
     quest:SetStateString("WaypointInfo_14_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS")
     quest:SetStateString("WaypointInfo_14_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 10),"M_TG_LocationDorm1");
+    quest:SetStateString("WaypointInfo_10_locMarker", "M_TG_LocationDorm1")
     quest:SetStateString("WaypointInfo_10_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_DORM1")
     quest:SetStateString("WaypointInfo_10_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_DORM1")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 11),"M_TG_LocationDorm2");
+    quest:SetStateString("WaypointInfo_11_locMarker", "M_TG_LocationDorm2")
     quest:SetStateString("WaypointInfo_11_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_DORM2")
     quest:SetStateString("WaypointInfo_11_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_DORM2")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 6),"M_TG_LocationLibrary");
+    quest:SetStateString("WaypointInfo_6_locMarker", "M_TG_LocationLibrary")
     quest:SetStateString("WaypointInfo_6_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY")
     quest:SetStateString("WaypointInfo_6_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_LIBRARY")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 5),"M_TG_LocationMap");
+    quest:SetStateString("WaypointInfo_5_locMarker", "M_TG_LocationMap")
     quest:SetStateString("WaypointInfo_5_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_MAP")
     quest:SetStateString("WaypointInfo_5_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_MAP")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 16),"M_TG_LocationMaze");
+    quest:SetStateString("WaypointInfo_16_locMarker", "M_TG_LocationMaze")
     quest:SetStateString("WaypointInfo_16_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_MAZE")
     quest:SetStateString("WaypointInfo_16_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_MAZE")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 13),"M_TG_LocationShop");
+    quest:SetStateString("WaypointInfo_13_locMarker", "M_TG_LocationShop")
     quest:SetStateString("WaypointInfo_13_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_SHOP")
     quest:SetStateString("WaypointInfo_13_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_SHOP")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 0),"M_TG_LocationStart");
+    quest:SetStateString("WaypointInfo_0_locMarker", "M_TG_LocationStart")
     quest:SetStateString("WaypointInfo_0_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_START")
     quest:SetStateString("WaypointInfo_0_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_START")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 15),"M_TG_LocationTomb");
+    quest:SetStateString("WaypointInfo_15_locMarker", "M_TG_LocationTomb")
     quest:SetStateString("WaypointInfo_15_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_TOMB")
     quest:SetStateString("WaypointInfo_15_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_TOMB")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 1),"M_TG_LocationTraining");
+    quest:SetStateString("WaypointInfo_1_locMarker", "M_TG_LocationTraining")
     quest:SetStateString("WaypointInfo_1_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_TRAINING")
     quest:SetStateString("WaypointInfo_1_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_TRAINING")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 2),"M_TG_LocationServant");
+    quest:SetStateString("WaypointInfo_2_locMarker", "M_TG_LocationServant")
     quest:SetStateString("WaypointInfo_2_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_SERVANT")
     quest:SetStateString("WaypointInfo_2_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_SERVANT")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 12),"M_TG_LocationStairsInside");
+    quest:SetStateString("WaypointInfo_12_locMarker", "M_TG_LocationStairsInside")
     quest:SetStateString("WaypointInfo_12_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STAIR")
     quest:SetStateString("WaypointInfo_12_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STAIR")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 8),"M_TG_LocationStairsOutside");
+    quest:SetStateString("WaypointInfo_8_locMarker", "M_TG_LocationStairsOutside")
     quest:SetStateString("WaypointInfo_8_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE")
     quest:SetStateString("WaypointInfo_8_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE")
-    -- TODO(native): CCharString::operator=((CCharString *)__element("WaypointInfo", 3),"M_TG_LocationStatue");
+    quest:SetStateString("WaypointInfo_3_locMarker", "M_TG_LocationStatue")
     quest:SetStateString("WaypointInfo_3_locTextOverheard", "TEXT_QST_066_LOCATION_OVERHEARD_STATUE")
     quest:SetStateString("WaypointInfo_3_locTextRequested", "TEXT_QST_066_LOCATION_REQUESTED_STATUE")
     quest:SetStateString(("RandomGuideResponse_" .. 0), "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0")

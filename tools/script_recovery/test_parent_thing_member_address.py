@@ -42,3 +42,14 @@ def test_array_base_folded_into_the_index_reads_the_element_member():
     assert 'QUESTSTATE_GetString(__key("WaypointInfo_" .. *(int *)(*(int *)(this + 0x14) + 0x164) .. "_locMarker"))' in out
     out = lowered('  CCharString::CCharString(&xStack_68,(CCharString *)(*(int *)(this + 0x14) + 0x4c + *(int *)(*(int *)(this + 0x14) + 0x164) * 0xc));')
     assert '_stk_68 = QUESTSTATE_GetString(__key("WaypointInfo_" .. *(int *)(*(int *)(this + 0x14) + 0x164) .. "_locTextOverheard"));' in out
+
+
+def test_struct_element_address_is_its_first_string_member():
+    # V_TourGuide Init: `operator=(__element("WaypointInfo", 9), "M_TG_LocationBalcony")` is WaypointInfo[9].locMarker
+    unit = json.loads((ROOT / 'refs/script_recovery/tour_guide/units/V_TourGuide.json').read_text())
+    spec = LoweringSpec(unit, 'V_TourGuide', entity=False, thing_slots={})
+    spec.call_labels = {}
+    out = lower('{\n  CCharString::operator=((CCharString *)(this + 0xb4),"M_TG_LocationBalcony");\n'
+                '  CCharString::operator=((CCharString *)(this + 0x48),"M_TG_LocationStart");\n}', spec)[0]
+    assert 'QUESTSTATE_SetString("WaypointInfo_9_locMarker", "M_TG_LocationBalcony");' in out
+    assert 'QUESTSTATE_SetString("WaypointInfo_0_locMarker", "M_TG_LocationStart");' in out

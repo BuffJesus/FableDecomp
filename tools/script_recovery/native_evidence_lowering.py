@@ -4451,6 +4451,17 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                               + r'", ([^;]+?)\),\s*([^;]+?)\);',
                               lambda m, a=a, tag=tag: f'{m.group(1)}{tag}STATE_SetString(__key("{a["name"]}_" .. {m.group(2)}), '
                                                       f'{_empty_literal(_strip_addr(m.group(3)))});', text, flags=re.M)
+            # ... and a struct element's first member, a string at offset 0: the element's address is that member (V_TourGuide
+            # Init `CCharString::operator=(__element("WaypointInfo", 9), "M_TG_LocationBalcony")` is WaypointInfo[9].locMarker;
+            # left raw, every stop's marker name stayed empty and the guide's GetThingWithScriptName lookups found nothing)
+            first = a['members'].get(0)
+            if first and first[1] == 'String' and first[0]:
+                text = re.sub(r'^([ \t]*)CCharString::operator=\s*\(\s*(?:\(CCharString \*\))?__element\("' + re.escape(a['name'])
+                              + r'", ([^;]+?)\),\s*([^;]+?)\);',
+                              lambda m, a=a, tag=tag, member=first[0]: f'{m.group(1)}{tag}STATE_SetString('
+                              + (f'"{a["name"]}_{m.group(2).strip()}_{member}"' if re.fullmatch(r'\d+', m.group(2).strip())
+                                 else f'__key("{a["name"]}_" .. {m.group(2)} .. "_{member}")')
+                              + f', {_empty_literal(_strip_addr(m.group(3)))});', text, flags=re.M)
             # element pointer members (Teams[i].EnemyTeam): stored as the sibling index, read through
             for pmember, pname in a.get('pointers', {}).items():
                 for index in range(a['count']):

@@ -66,26 +66,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 9),\"M_TG_LocationBalcony\")",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 4),\"M_TG_LocationBanquet\")",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 7),\"M_TG_LocationBar\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 17),\"M_TG_LocationBridge\")",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 14),\"M_TG_LocationCloister",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 10),\"M_TG_LocationDorm1\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 11),\"M_TG_LocationDorm2\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 6),\"M_TG_LocationLibrary\")",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 5),\"M_TG_LocationMap\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 16),\"M_TG_LocationMaze\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 13),\"M_TG_LocationShop\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 0),\"M_TG_LocationStart\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 15),\"M_TG_LocationTomb\");",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 1),\"M_TG_LocationTraining\"",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 2),\"M_TG_LocationServant\")",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 12),\"M_TG_LocationStairsIn",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 8),\"M_TG_LocationStairsOut",
-            "unlifted: CCharString::operator=((CCharString *)__element(\"WaypointInfo\", 3),\"M_TG_LocationStatue\");"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -97,6 +78,24 @@
             "SetStateBool",
             "SetStateBool",
             "SetStateInt",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
+            "QUESTSTATE_SetString",
             "QUESTSTATE_SetString",
             "QUESTSTATE_SetString",
             "QUESTSTATE_SetString",
@@ -988,7 +987,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 31
+        "todo": 13
       }
     }
   ],
@@ -999,6 +998,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 4,
-    "todo": 31
+    "todo": 13
   }
 }

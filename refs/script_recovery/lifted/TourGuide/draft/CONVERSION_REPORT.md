@@ -5,7 +5,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Script | Owner | Function | Address | Compiles | TODO |
 |---|---|---|---|---|---:|
 | V_TourGuide | V_TourGuide | Main | 0x00ee47b0 | True | 0 |
-| V_TourGuide | V_TourGuide | Init | 0x00ee42a0 | True | 18 |
+| V_TourGuide | V_TourGuide | Init | 0x00ee42a0 | True | 0 |
 | V_TourGuide | V_TourGuide | OnPersist | 0x00ee5720 | True | 0 |
 | V_TourGuide | V_TourGuide | WatchForGuideKilled | 0x00ee4a70 | True | 0 |
 | V_TourGuide | V_TourGuide | WatchForClosingTime | 0x00ee4a00 | True | 0 |
@@ -20,4 +20,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_TourGuide | TourGuideFollower | OnPersist | 0x00cdebc0 | True | 0 |
 | V_TourGuide | TourGuideFollower | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 31}`
+Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 13}`

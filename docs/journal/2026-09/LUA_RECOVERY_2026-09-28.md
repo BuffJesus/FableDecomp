@@ -227,3 +227,14 @@ girl0, ... while each exists (was a `while nil`); Global_DebugCycleThroughSpeech
 returns an empty thing for numbered script names from 4 upward, so such loops end. `native_receiver_reaching` takes
 `this` from the prologue's `mov R, ecx` (any callee-saved register) instead of assuming esi (no new sites proven in the
 corpus; V_SickChild WomanToAttract's 0x6C call reloads its receiver from a stack spill, which is not tracked).
+
+### TourGuide stop markers; next: ChickenMaster `csargs` (after `9ef80ff`)
+
+V_TourGuide Init never set `WaypointInfo_N_locMarker` (a struct element's address is its offset-0 string member), so
+every `GetThingWithScriptName(WaypointInfo_N_locMarker)` looked up an empty name. The string-array rule now covers a
+struct array's first string member: all 18 stops are set. A/B: only V_TourGuide.lua. Focused tests pass; the full
+suite was not rerun for this commit (usage limit).
+
+Next, verified in scratch but NOT landed: ChickenMaster's 33 `csargs` map statements lift to
+`resources:SetString(resources:MemberStringMap("csargs"), "$LINE", ...)` once `_MEMBER_CAST` accepts `( map<...> *)` (a
+space after the parenthesis). Needs the 29-unit A/B and full suite before landing.
