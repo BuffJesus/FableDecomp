@@ -652,7 +652,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 361,
+          "lines": 364,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4128,8 +4128,6 @@
         },
         "FSE/V_SickChild/Entities/SickChild.lua": {
           "Main": [
-            "fStack_24",
-            "f_stk_20",
             "fret_0"
           ]
         },

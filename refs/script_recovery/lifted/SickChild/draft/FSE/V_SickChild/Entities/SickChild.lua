@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, bVar4, cVar5, c_stk_81, dist, fStack_24, fVar12, f_stk_20, f_stk_8c, fret_0, fret_00, fret_01, iVar14, iVar15, iVar6, iVar8, i_stk_7c, p0, pCVar16, pCVar7, pCVar9, pcVar13, r1, r2, r3, r4, this_00, uVar11, uVar3, u_stk_88, xStack_34, xStack_4c, xStack_78, xStack_8c, x_stk_18
+    local CVar10, bVar4, cVar5, c_stk_81, dist, fStack_24, fVar12, f_stk_20, f_stk_8c, fret_0, fret_00, fret_01, iVar14, iVar15, iVar6, iVar8, i_stk_7c, p0, pCVar16, pCVar7, pCVar9, pcVar13, r1, r2, r3, r4, this_00, uVar11, uVar3, u_stk_88, xStack_34, xStack_4c, xStack_78, xStack_8c, xStack_c, x_stk_18
     local alive = true
     u_stk_88 = 0
     alive = quest:NewScriptFrame(me)
@@ -43,6 +43,9 @@ function Main(quest, me)
         i_stk_7c = iVar6
         pCVar7 = quest:GetThingWithScriptName("SickChildBed")
         r1 = quest:GetSleepingPositionAndOrientationFromBed(me, pCVar7)
+        xStack_c = r1 and r1.pos or {x = 0.0, y = 0.0, z = 0.0}
+        fStack_24 = r1 and r1.orient.x or 0.0
+        f_stk_20 = r1 and r1.orient.y or 0.0
         fVar12 = math.atan(fStack_24,f_stk_20)
         f_stk_8c = (fVar12 * 0.15915493667125702)
         if (fVar12 * 0.15915493667125702 < 0.0) or (1.0 <= f_stk_8c) then

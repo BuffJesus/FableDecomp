@@ -9,8 +9,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult8, scratchValue3, scratchValue4, scratchValue6, fret_0
-    local fret_01, this_00, scratchValue, scratchValue19, movie2, scratchValue21
+    local predicateResult, predicateResult8, scratchValue3, fret_0, fret_01, this_00, scratchValue
+    local scratchValue19, movie2, scratchValue21
     scratchValue19 = 0
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
@@ -25,7 +25,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local timerId = quest:RegisterTimer()
     local getSleepingPositionAndOrientationFromBed = quest:GetSleepingPositionAndOrientationFromBed(me, quest:GetThingWithScriptName("SickChildBed"))
-    local scratchValue5 = math.atan(scratchValue4,scratchValue6)
+    local scratchValue5 = math.atan(getSleepingPositionAndOrientationFromBed and getSleepingPositionAndOrientationFromBed.orient.x or 0.0,getSleepingPositionAndOrientationFromBed and getSleepingPositionAndOrientationFromBed.orient.y or 0.0)
     if (scratchValue5 * 0.15915493667125702 < 0.0) or 1.0 <= (scratchValue5 * 0.15915493667125702) then
         if fret_0 < 0.0 then
             -- TODO(native): xStack_8c = (CCharString)(f_stk_8c + 1.0);

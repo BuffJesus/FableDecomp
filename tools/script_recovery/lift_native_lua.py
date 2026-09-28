@@ -925,6 +925,10 @@ def master_bool_flags() -> set[str]:
 
 
 _FLAG_CONST = r'(?:0x[0-9a-fA-F]+|\d+)'
+# Forge bindings that return a native call's trailing C3DVector out-parameters as fields of one table,
+# in native operand order (LuaQuestState.cpp GetSleepingPositionAndOrientationFromBed: vtable 0xBC0
+# (pBed, pSleeper, &pos, &orient) -> {pos = {x, y, z}, orient = {x, y, z}}, nil when the API fails).
+OUT_TABLE_FIELDS = {'GetSleepingPositionAndOrientationFromBed': ('pos', 'orient')}
 RE_SIGNED_CHAR_TEST = re.compile(
     r"\(char\)(?:(?P<word>\w+)|\((?P<shifted>\w+) >> (?P<shift>0x[0-9a-fA-F]+|\d+)\)) < '\\0'")
 
@@ -1761,6 +1765,7 @@ class Lifter:
             if variant:
                 name, spec = variant, self.manifest[variant]
         operands = self.arguments(argtext)
+        native_operands = list(operands)
         return_slot = None
         if spec and operands and self.result_kind(spec.get("returnType", "void")) in ("thing", "string"):
             # A by-value CScriptThing/CCharString result travels through a hidden first operand;
@@ -1852,6 +1857,7 @@ class Lifter:
                 elif spec.get("returnType", "void") != "void":
                     # A named result may still be an operand Ghidra dropped from the next call.
                     self.push_temp(target, target)
+                self.bind_out_fields(name, native_operands, target)
             elif spec.get("returnType", "void") != "void":
                 self.results += 1
                 var = f"r{self.results}"
@@ -1862,6 +1868,7 @@ class Lifter:
                 if return_slot:
                     self.slot_results[return_slot] = var
                 self.push_temp(var, var)
+                self.bind_out_fields(name, native_operands, var)
             else:
                 self.emit(call)
         else:
@@ -1870,6 +1877,40 @@ class Lifter:
             self.emit(f"{self.receiver}:{name}({', '.join(args)})")
         self.calls.append(name)
         return True
+
+    def bind_out_fields(self, name: str, operands: list[str], result: str) -> None:
+        """Store a table-returning binding's fields where retail's out-pointers pointed.
+
+        SickChild Main 0x00EC5DE0 passes `pOutPos = &CStack_c` and `pOutOrient = &fStack_24` to
+        vtable 0xBC0, then reads the orientation's floats (`fpatan(fStack_24, fStack_20)`); Forge
+        returns them in a table, so without this the atan read nil. A float slot takes x, y, z at its
+        offset and the two slots below it (only components the function mentions); any other
+        variable takes the whole field. A failed call leaves Forge's zero vector, as the binding does."""
+        fields = OUT_TABLE_FIELDS.get(name)
+        if not fields or len(operands) < len(fields):
+            return
+        text = getattr(self, 'lift_text', '')
+        for field, operand in zip(fields, operands[-len(fields):]):
+            op = operand.strip()
+            address_of = getattr(self, 'address_of', {})
+            if op in address_of:
+                base = address_of[op]
+            elif re.fullmatch(r'(?:\([\w ]+\*\))?&\w+', op):
+                base = re.sub(r'^(?:\([\w ]+\*\))?&', '', op)
+            else:
+                continue            # not provably an address: leave the operand alone
+            m = re.fullmatch(r'f(?:Stack|_stk)_([0-9a-f]+)', base)
+            if m:
+                offset = int(m[1], 16)
+                for index, axis in enumerate('xyz'):
+                    hits = sorted(set(re.findall(r'\bf(?:Stack|_stk)_%x\b' % (offset - 4 * index), text)))
+                    if len(hits) == 1:
+                        self.emit(f"{self.declare(hits[0])} = {result} and {result}.{field}.{axis} or 0.0")
+                        self.kinds[hits[0]] = 'number'
+            elif len(re.findall(r'\b' + re.escape(base) + r'\b', text)) > 1 + (base in address_of.values()):
+                # read somewhere besides its declaration-free address-of: bind the whole vector
+                self.emit(f"{self.declare(base)} = {result} and {result}.{field} or {{x = 0.0, y = 0.0, z = 0.0}}")
+                self.kinds[base] = 'vector'
 
     def thing_call(self, target: str | None, name: str, thing_text: str, rest: str) -> None:
         """`CScriptThing::Name(receiver, operands)` (annotated thing-vtable dispatch or a direct call).
@@ -2252,6 +2293,8 @@ class Lifter:
                 and not re.search(r'\bin_ECX\s*=(?!=)', decompile)):
             decompile = re.sub(r'\bin_ECX\b', "this", decompile)
         decompile = lower_signed_char_tests(decompile)
+        self.address_of = dict(re.findall(r'^\s*(\w+) = (?:\([\w ]+\*\))?&(\w+);', decompile, re.M))
+        self.lift_text = decompile
         # Some exact-target termination calls are decompiled as void with their AL result copied
         # by the following statement. Recover only that immediate use, never unrelated AL values.
         terminating = {"CScriptBase::IsActiveThreadTerminating"}

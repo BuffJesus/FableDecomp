@@ -155,3 +155,13 @@ v32: 0 new failures, 1 fixed (teacher `DAT_012448ec`), 10 pre-existing. Sidecar 
 - 29-unit A/B (`work/codex_lua_flags_20260927/`): eight units change, only those lines. All
   readables parse; GuildTraining's readable is hand-reviewed, so only its draft changes.
   `test_cleanup_flag_words.py`: 3 pass. No install or launch.
+
+## Seventh checkpoint: out-vectors returned as table fields
+
+SickChild Main (0x00EC5DE0) passes `pOutPos = &CStack_c`, `pOutOrient = &fStack_24` to vtable
+0xBC0 and then takes `fpatan(fStack_24, fStack_20)`. Forge's GetSleepingPositionAndOrientationFromBed
+returns `{pos, orient}` (LuaQuestState.cpp), so the atan read two nils. `OUT_TABLE_FIELDS` +
+`Lifter.bind_out_fields` bind each trailing out-pointer's stack slot from the named field (float slot:
+x/y/z at descending offsets; other variables: the whole vector), falling back to Forge's zero vector.
+Only SickChild calls it; A/B changes only those lines. Smoke harness now returns that table shape.
+SickChild smoke 4 -> 3 failures (Main fixed; TalkingTrader1/Witch flag slots and helper_ECE460 remain).

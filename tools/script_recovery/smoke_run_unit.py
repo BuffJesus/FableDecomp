@@ -80,6 +80,10 @@ local quest = setmetatable({}, { __index = function(_, k)
         if k == "MsgIsGameInfoClickedPast" or k == "MsgIsTutorialClickedPast" then return true end
         -- the out-thing messages: the sidecar returns the thing, or nil when the message did not fire (not false)
         if k == "MsgOnHeroPickedPocket" or k == "MsgOnHeroPickedLock" or k == "MsgOnFishingGameFinished" or k == "MsgOnTavernGameFinished" then return nil end
+        -- LuaQuestState.cpp returns the two native out-vectors as one table (nil when the API fails)
+        if k == "GetSleepingPositionAndOrientationFromBed" then
+            return { pos = { x = 0, y = 0, z = 0 }, orient = { x = 0, y = 1, z = 0 } }
+        end
         if k == "IsRegionLoaded" or k == "IsQuestActive" then return true end
         if k == "IsConversationActive" then return false end
         if k:match("^Is") or k:match("^Msg") or k:match("^Has") or k:match("^Was") then return false end
