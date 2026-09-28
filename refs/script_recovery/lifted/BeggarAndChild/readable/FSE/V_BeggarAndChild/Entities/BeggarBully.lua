@@ -11,9 +11,9 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult3, predicateResult6, predicateResult, predicateResult23, predicateResult25
-    local beggarHit, health, questionAnswer, questionAnswer2, p1, pppuVar, pppuVar20_b3
-    local lookoutPointBeggar, scratchValue15, scratchValue, movie, movie2, movie3, resource
-    local resource2, scratchValue18, movie4
+    local beggarHit, health, predicateResult27, questionAnswer, questionAnswer2, p1, pppuVar
+    local pppuVar20_b3, lookoutPointBeggar, scratchValue15, scratchValue, conversationId, movie
+    local movie2, movie3, resource, resource2, scratchValue18, movie4
     if not quest:NewScriptFrame(me) then return end
     local resource3 = resources:NewResource()
     resources:PrepareResource(resource3)
@@ -24,6 +24,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(lookoutPointBeggar); return end
     lookoutPointBeggar = quest:GetThingWithScriptName("LookoutPointBeggar")
     -- TODO(native): xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);
+    predicateResult27 = false
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
     beggarHit = quest:GetStateBool("BeggarHit")
@@ -50,7 +51,7 @@ function Main(quest, me)
         else
             if predicateResult3 then
                 predicateResult3 = false
-                if true or quest:GetStateBool("TaughtBelch") then
+                if predicateResult27 or quest:GetStateBool("TaughtBelch") then
                     movie3 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
                     if quest:GetStateBool("TaughtBelch") then
@@ -201,6 +202,7 @@ function Main(quest, me)
                     resources:ReleaseResource(lookoutPointBeggar)
                     return
                 end
+                predicateResult27 = true
                 movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
@@ -340,7 +342,7 @@ function Main(quest, me)
                         break
                     end
                 until true
-                local conversationId = quest:AddNewConversation(me, false, false)
+                conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, lookoutPointBeggar)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_TAUNT", me, nil --[[missing]], false)
                 quest:Pause(0.20000000298023224)
@@ -398,17 +400,17 @@ function Main(quest, me)
                     goto FLOW_native_label_2
                 end
                 -- TODO(native): xStack_138 = xStack_138 + 1;
-                local conversationId2 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId2, hero)
+                conversationId = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId, hero)
                 repeat
                     if movie3 == 1 then
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_FIRST_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_FIRST_BELCH", me, hero, false)
                         break
                     elseif movie3 == 2 then
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_SECOND_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_SECOND_BELCH", me, hero, false)
                         break
                     elseif movie3 == 3 then
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_015_BULLY_THIRD_BELCH", me, hero, false)
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_015_BULLY_THIRD_BELCH", me, hero, false)
                         break
                     elseif movie3 == 4 then
                         quest:SetStateBool("BelchedAtBully", true)

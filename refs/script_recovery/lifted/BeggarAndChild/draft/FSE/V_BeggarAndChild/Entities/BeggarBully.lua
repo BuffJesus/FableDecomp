@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, cVar5, fVar15, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, native_arg_switch_3, native_arg_switch_4, p0, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, pppuVar20_b3, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uStack_158_b2, uVar11, uVar12, uVar13, uVar2, uVar8, xStack_110, xStack_124, xStack_138, xStack_13c, xStack_150, xStack_164, xStack_78, xStack_fc, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
+    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, cVar5, fVar15, hb_stk_128, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, native_arg_switch_3, native_arg_switch_4, p0, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, pppuVar20_b3, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uStack_158_b2, uVar11, uVar12, uVar13, uVar2, uVar8, xStack_110, xStack_124, xStack_138, xStack_13c, xStack_150, xStack_164, xStack_78, xStack_fc, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -37,6 +37,7 @@ function Main(quest, me)
             r1 = quest:GetThingWithScriptName("LookoutPointBeggar")
             uVar2 = (r1 & 0xffffff)
             -- TODO(native): xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);
+            hb_stk_128 = false
             quest:SetThingHasInformation(me, false, false, false)
             quest:EntitySetAsKillable(me, false, true)
             cVar5 = quest:GetStateBool("BeggarHit")
@@ -79,7 +80,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then goto LAB_00e5ce3a end
                         bVar4 = false
-                        if (1 ~= 0) or (quest:GetStateBool("TaughtBelch")) then
+                        if (hb_stk_128) or (quest:GetStateBool("TaughtBelch")) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00e5ce3a end
@@ -397,6 +398,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00e5ce3a end
+                        hb_stk_128 = true
                         xStack_124 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
                         au_stk_54 = resources:ScriptThing(xStack_13c)

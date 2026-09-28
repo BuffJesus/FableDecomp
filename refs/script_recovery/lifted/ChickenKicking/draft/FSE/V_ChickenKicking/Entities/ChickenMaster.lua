@@ -1097,7 +1097,7 @@ function Main(quest, me)
                                     bVar6 = not alive
                                     if not bVar6 then
                                         pcVar20 = "TEXT_QST_B17_MASTER_TOO_FAR_NEW"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c4);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         goto LAB_00e6804a
                                     end
                                     goto LAB_00e68aab
@@ -1107,7 +1107,7 @@ function Main(quest, me)
                                     bVar6 = not alive
                                     if not bVar6 then
                                         pcVar20 = "TEXT_QST_B17_MASTER_TOO_WEAK_NEW"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c0);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         goto LAB_00e6805d
                                     end
                                     goto LAB_00e68ab9
@@ -1134,21 +1134,21 @@ function Main(quest, me)
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_LEFT_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_240);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x64
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68aab end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_LEFT_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1e8);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x32
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FRONT_LEFT_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_238);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x19
                                             end
                                             goto LAB_00e6805d
@@ -1163,21 +1163,21 @@ function Main(quest, me)
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_CENTRE_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1a8);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0xa
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68aab end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_CENTRE_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2b8);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x19
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_NEAR_CENTRE_NEW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),(CCharString *)xStack_1e0);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0xa
                                             end
                                             goto LAB_00e6805d
@@ -1189,13 +1189,13 @@ function Main(quest, me)
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68aab end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_OFF_COURSE"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1d8);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                             else
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_NOWHERE"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_218);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                             end
                                             goto LAB_00e6804a
                                         end
@@ -1217,21 +1217,21 @@ function Main(quest, me)
                                         bVar6 = not alive
                                         if bVar6 then goto LAB_00e68ab9 end
                                         pcVar20 = "TEXT_QST_B17_MASTER_FAR_RIGHT_NEW"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_228);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x64
                                     elseif iVar11 == 2 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
                                         if bVar6 then goto LAB_00e68aab end
                                         pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_RIGHT_NEW"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1b8);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x32
                                     elseif iVar11 == 1 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
                                         if bVar6 then goto LAB_00e68ab9 end
                                         pcVar20 = "TEXT_QST_B17_MASTER_NEAR_RIGHT_NEW"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_220);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x19
                                     end
                                     goto LAB_00e6805d
@@ -1282,16 +1282,16 @@ function Main(quest, me)
                                             bVar6 = not alive
                                             if not bVar6 then
                                                 pcVar20 = "CHICK_KICK_LOW"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_274);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", pcVar20)
                                                 pcVar20 = "CHICK_KICK_LOW_LOOP"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c8);
+                                                resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
                                                 if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar19 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
                                                     if not bVar6 then
                                                         -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
                                                         pcVar20 = "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN_HIGH"
-                                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c4);
+                                                        resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
                                                         goto LAB_00e6894f
                                                     end
                                                 else
@@ -1299,7 +1299,7 @@ function Main(quest, me)
                                                     bVar6 = not alive
                                                     if not bVar6 then
                                                         pcVar20 = "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN"
-                                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c0);
+                                                        resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
                                                         goto LAB_00e6894f
                                                     end
                                                 end
@@ -1313,15 +1313,15 @@ function Main(quest, me)
                                             bVar6 = not alive
                                             if not bVar6 then
                                                 pcVar20 = "CHICK_KICK_MID"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2a4);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", pcVar20)
                                                 pcVar20 = "CHICK_KICK_MID_LOOP"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_29c);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", pcVar20)
                                                 if (quest:GetStateInt("PrizesWon") & 1) == 0 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
                                                     if not bVar6 then
                                                         pcVar20 = "TEXT_QST_B17_MASTER_LOW_PRIZE_FIRST"
-                                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_284);
+                                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         puVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x5c)
                                                         -- TODO(native): *puVar1 = *puVar1 | 1;
                                                         xStack_398 = "CS_CHICKING_LOWPRIZE"
@@ -1337,7 +1337,7 @@ function Main(quest, me)
                                                             if not bVar6 then
                                                                 -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
                                                                 pcVar20 = "TEXT_QST_B17_MASTER_LOW_PRIZE_AGAIN_HIGH"
-                                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_28c);
+                                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                                 goto LAB_00e687e4
                                                             end
                                                         else
@@ -1345,7 +1345,7 @@ function Main(quest, me)
                                                             bVar6 = not alive
                                                             if not bVar6 then
                                                                 pcVar20 = "TEXT_QST_B17_MASTER_LOW_PRIZE_AGAIN"
-                                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_294);
+                                                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                                 goto LAB_00e687e4
                                                             end
                                                         end
@@ -1354,7 +1354,7 @@ function Main(quest, me)
                                                 goto FLOW_past_lab_00e687e4
                                                 ::LAB_00e687e4::
                                                 puVar29 = "50"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_27c);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", puVar29)
                                                 goto LAB_00e68954
                                                 ::FLOW_past_lab_00e687e4::
                                             end
@@ -1364,15 +1364,15 @@ function Main(quest, me)
                                         bVar6 = not alive
                                         if not bVar6 then
                                             pcVar20 = "CHICK_KICK_HIGH"
-                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_24c);
+                                            resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", pcVar20)
                                             pcVar20 = "CHICK_KICK_HIGH_LOOP"
-                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_244);
+                                            resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", pcVar20)
                                             if (quest:GetStateInt("PrizesWon") & 2) == 0 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if not bVar6 then
                                                     pcVar20 = "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_FIRST"
-                                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2b4);
+                                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                     puVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x5c)
                                                     -- TODO(native): *puVar1 = *puVar1 | 2;
                                                     xStack_398 = "CS_CHICKING_MIDPRIZE"
@@ -1388,7 +1388,7 @@ function Main(quest, me)
                                                         if not bVar6 then
                                                             -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
                                                             pcVar20 = "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_AGAIN_HIGH"
-                                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),xStack_234);
+                                                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                             goto LAB_00e685d7
                                                         end
                                                     else
@@ -1396,7 +1396,7 @@ function Main(quest, me)
                                                         bVar6 = not alive
                                                         if not bVar6 then
                                                             pcVar20 = "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_AGAIN"
-                                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_23c);
+                                                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                             goto LAB_00e685d7
                                                         end
                                                     end
@@ -1405,7 +1405,7 @@ function Main(quest, me)
                                             goto FLOW_past_lab_00e685d7
                                             ::LAB_00e685d7::
                                             puVar29 = "100"
-                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2ac);
+                                            resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", puVar29)
                                             -- LAB_00e6894f_c4: (native jump target)
                                             goto LAB_00e68954
                                             ::FLOW_past_lab_00e685d7::
@@ -1416,9 +1416,9 @@ function Main(quest, me)
                                     bVar6 = not alive
                                     if not bVar6 then
                                         pcVar20 = "CHICK_KICK_HIGH"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_200);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", pcVar20)
                                         pcVar20 = "CHICK_KICK_HIGH_LOOP"
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c8);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", pcVar20)
                                         if (quest:GetStateInt("PrizesWon") & 4) == 0 then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
@@ -1439,7 +1439,7 @@ function Main(quest, me)
                                                     if not bVar6 then
                                                         -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
                                                         pcVar20 = "TEXT_QST_B17_MASTER_TOP_PRIZE_AGAIN_HIGH"
-                                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1a0);
+                                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         goto LAB_00e68395
                                                     end
                                                 else
@@ -1447,14 +1447,14 @@ function Main(quest, me)
                                                     bVar6 = not alive
                                                     if not bVar6 then
                                                         pcVar20 = "TEXT_QST_B17_MASTER_TOP_PRIZE_AGAIN"
-                                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1f8);
+                                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         goto LAB_00e68395
                                                     end
                                                 end
                                                 goto FLOW_past_lab_00e68395
                                                 ::LAB_00e68395::
                                                 puVar29 = "200"
-                                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1f0);
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", puVar29)
                                                 -- LAB_00e6894f_c5: (native jump target)
                                                 goto LAB_00e68954
                                                 ::FLOW_past_lab_00e68395::

@@ -1350,7 +1350,7 @@
             "SetPreferredQuickAccessItem",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 825,
+          "lines": 827,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": false,
@@ -1359,8 +1359,8 @@
             "errors": [
               {
                 "path": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:Main",
-                "line": 214,
-                "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:Main:214: ')' expected near 'p1'"
+                "line": 215,
+                "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:Main:215: ')' expected near 'p1'"
               }
             ]
           },
@@ -1563,8 +1563,8 @@
         "errors": [
           {
             "path": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua",
-            "line": 226,
-            "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:226: ')' expected near 'p1'"
+            "line": 227,
+            "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:227: ')' expected near 'p1'"
           }
         ]
       },

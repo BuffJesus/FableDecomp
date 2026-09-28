@@ -21,11 +21,11 @@ local ghostChat, haveTalked, heroHasPlayed, kickingChickens, self0X18
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue2, isActiveThreadTerminating, predicateResult, scratchValue12
-    local scratchValue13, ctr_CVar, scratchValue16, questionAnswer, questionAnswer2, scratchValue19
-    local conversationId, sequence1, sequence, sequence3, thing, line, mkCkOrg, this_00
-    local scratchValue29, movie3, movie4, movie5, movie6
-    scratchValue2 = 0
+    local scratchValue, scratchValue3, isActiveThreadTerminating, predicateResult, scratchValue10
+    local scratchValue11, ctr_CVar, scratchValue14, questionAnswer, questionAnswer2, scratchValue17
+    local conversationId, sequence1, sequence, sequence3, getActiveQuestName, kickedChicken
+    local scratchValue23, mkCkOrg, this_00, scratchValue27, movie3, movie4, movie5, movie6
+    scratchValue3 = 0
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -47,7 +47,7 @@ function Main(quest, me)
     quest:SetTimer(timerId3, 0)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
-    scratchValue12 = 0
+    scratchValue10 = 0
     if quest:GetStateBool("KnowGhostHasGone") then
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(timerId)
@@ -71,7 +71,7 @@ function Main(quest, me)
                 quest:AddLineToConversation(conversationId, "TEXT_QST_B17_MASTER_EARLY_ASIDE_FIRST_POSTCHAT", me, hero, false)
             end
             quest:SetTimer(timerId3, 8)
-            while (0 < quest:GetTimer(timerId3) and (scratchValue12 == 0)) and not quest:GetStateBool("TalkedTo") do
+            while (0 < quest:GetTimer(timerId3) and (scratchValue10 == 0)) and not quest:GetStateBool("TalkedTo") do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(timerId)
@@ -91,68 +91,68 @@ function Main(quest, me)
                 -- TODO(native): xStack_374 = xStack_374 | 1;
                 if me:MsgIsHitByHero() then goto LAB_00e654e0 end
                 scratchValue = ctr_CVar | 3
-                scratchValue2 = scratchValue
+                scratchValue3 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue = ctr_CVar | 7
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e654e0 end
                 end
-                scratchValue13 = 0
+                scratchValue11 = 0
                 goto FLOW_past_lab_00e654e0
                 ::LAB_00e654e0::
-                scratchValue13 = 1
+                scratchValue11 = 1
                 ::FLOW_past_lab_00e654e0::
                 if scratchValue & 4 ~= 0 then
                     scratchValue = scratchValue & 0xfffffffb
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                 end
                 if scratchValue & 2 ~= 0 then
                     scratchValue = scratchValue & 0xfffffffd
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                 end
                 if scratchValue & 1 ~= 0 then
-                    scratchValue2 = scratchValue & 0xfffffffe
+                    scratchValue3 = scratchValue & 0xfffffffe
                 end
-                if scratchValue13 ~= 0 then
+                if scratchValue11 ~= 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(timerId)
                         quest:DeregisterTimer(timerId3)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    scratchValue12 = 1
+                    scratchValue10 = 1
                 end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
             quest:SetTimer(timerId3, 15)
         end
-        ctr_CVar = scratchValue2
-        scratchValue29 = scratchValue2 | 8
+        ctr_CVar = scratchValue3
+        scratchValue27 = scratchValue3 | 8
         if me:MsgIsHitByHero() then goto LAB_00e65617 end
-        scratchValue29 = ctr_CVar | 24
+        scratchValue27 = ctr_CVar | 24
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue29 = ctr_CVar | 56
+            scratchValue27 = ctr_CVar | 56
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e65617 end
         end
-        scratchValue13 = 0
-        if scratchValue12 ~= 0 then goto LAB_00e65617 end
+        scratchValue11 = 0
+        if scratchValue10 ~= 0 then goto LAB_00e65617 end
         goto FLOW_past_lab_00e65617
         ::LAB_00e65617::
-        scratchValue13 = 1
+        scratchValue11 = 1
         ::FLOW_past_lab_00e65617::
-        if scratchValue29 & 32 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xffffffdf
+        if scratchValue27 & 32 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xffffffdf
         end
-        if scratchValue29 & 16 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xffffffef
+        if scratchValue27 & 16 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xffffffef
         end
-        if scratchValue29 & 8 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xfffffff7
+        if scratchValue27 & 8 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xfffffff7
         end
-        if scratchValue13 ~= 0 then
+        if scratchValue11 ~= 0 then
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating then goto LAB_00e68af4 end
-            scratchValue12 = isActiveThreadTerminating
+            scratchValue10 = isActiveThreadTerminating
             movie5 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             helpers.helper_E68B20(quest, me, "CS_CHICKING_HITGUYTOP")
@@ -162,26 +162,27 @@ function Main(quest, me)
         end
         sequence1 = me:IsTalkedToByHero()
         if not sequence1 then
-            scratchValue13 = 0
+            scratchValue11 = 0
             sequence1 = quest:GetStateBool("TalkedTo")
         end
         if sequence1 then
-            scratchValue13 = 1
+            scratchValue11 = 1
         end
-        scratchValue2 = scratchValue29 & 0xffffffbf
-        if scratchValue13 == 0 then goto continue_3 end
+        scratchValue3 = scratchValue27 & 0xffffffbf
+        if scratchValue11 == 0 then goto continue_3 end
         if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
         quest:SetStateBool("TalkedTo", false)
         quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_CHICKEN_KICKING", quest:GetActiveQuestName(), false)
-        quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_01", "", "")
+        getActiveQuestName = quest:GetActiveQuestName()
+        quest:SetQuestCardObjective(getActiveQuestName, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_01", "", "")
         if not ghostChat then
             if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
             ghostChat = true
             movie4 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            thing = quest:GetThingWithScriptName("GhostFisherman")
+            local ghostFisherman = quest:GetThingWithScriptName("GhostFisherman")
             predicateResult = quest:IsActiveThreadTerminating()
-            if thing ~= nil and thing:IsAlive() then
+            if ghostFisherman ~= nil and ghostFisherman:IsAlive() then
                 if predicateResult then
                     goto LAB_00e66150
                 end
@@ -213,16 +214,17 @@ function Main(quest, me)
                 end
                 helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK1")
                 quest:SetStateBool("KnowGhostHasGone", true)
-                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
+                getActiveQuestName = quest:GetActiveQuestName()
+                quest:SetQuestCardObjective(getActiveQuestName, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
             end
             quest:PauseAllNonScriptedEntities(false)
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00e68af4 end
             movie6 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            thing = quest:GetThingWithScriptName("GhostFisherman")
+            local ghostFisherman2 = quest:GetThingWithScriptName("GhostFisherman")
             predicateResult = quest:IsActiveThreadTerminating()
-            if thing ~= nil and thing:IsAlive() then
+            if ghostFisherman2 ~= nil and ghostFisherman2:IsAlive() then
                 if predicateResult then
                     goto LAB_00e661e4
                 end
@@ -254,7 +256,8 @@ function Main(quest, me)
                 end
                 helpers.helper_E68B20(quest, me, "CS_CHICKING_INITIALWALK2")
                 quest:SetStateBool("KnowGhostHasGone", true)
-                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
+                getActiveQuestName = quest:GetActiveQuestName()
+                quest:SetQuestCardObjective(getActiveQuestName, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
             end
             quest:PauseAllNonScriptedEntities(false)
         end
@@ -272,76 +275,76 @@ function Main(quest, me)
             quest:AddPersonToConversation(conversationId, hero)
             quest:AddLineToConversation(conversationId, "TEXT_QST_B17_MASTER_GAME_ASIDE", me, hero, false)
             quest:SetTimer(timerId3, 8)
-            while (0 < quest:GetTimer(timerId3) and (not scratchValue12)) and not quest:GetStateBool("TalkedTo") do
+            while (0 < quest:GetTimer(timerId3) and (not scratchValue10)) and not quest:GetStateBool("TalkedTo") do
                 if not quest:NewScriptFrame(me) then goto LAB_00e68aeb end
                 if me:IsTalkedToByHero() then
                     quest:SetStateBool("TalkedTo", true)
                 end
-                ctr_CVar = scratchValue2
-                scratchValue2 = scratchValue2 | 128
+                ctr_CVar = scratchValue3
+                scratchValue3 = scratchValue3 | 128
                 if me:MsgIsHitByHero() then goto LAB_00e661fd end
                 scratchValue = ctr_CVar | 384
-                scratchValue2 = scratchValue
+                scratchValue3 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
                     scratchValue = ctr_CVar | 896
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e661fd end
                 end
-                scratchValue13 = 0
+                scratchValue11 = 0
                 goto FLOW_past_lab_00e661fd
                 ::LAB_00e661fd::
-                scratchValue13 = 1
+                scratchValue11 = 1
                 ::FLOW_past_lab_00e661fd::
                 if scratchValue & 512 ~= 0 then
                     scratchValue = scratchValue & 0xfffffdff
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                 end
                 if scratchValue & 256 ~= 0 then
                     scratchValue = scratchValue & 0xfffffeff
-                    scratchValue2 = scratchValue
+                    scratchValue3 = scratchValue
                 end
                 if scratchValue & 128 ~= 0 then
-                    scratchValue2 = scratchValue & 0xffffff7f
+                    scratchValue3 = scratchValue & 0xffffff7f
                 end
-                if scratchValue13 ~= 0 then
-                    scratchValue12 = 1
+                if scratchValue11 ~= 0 then
+                    scratchValue10 = 1
                 end
             end
             if quest:IsActiveThreadTerminating() then break end
             quest:SetTimer(timerId3, 15)
         end
-        ctr_CVar = scratchValue2
-        scratchValue29 = scratchValue2 | 1024
+        ctr_CVar = scratchValue3
+        scratchValue27 = scratchValue3 | 1024
         if me:MsgIsHitByHero() then goto LAB_00e6634f end
-        scratchValue29 = ctr_CVar | 3072
+        scratchValue27 = ctr_CVar | 3072
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue29 = ctr_CVar | 0x1c00
+            scratchValue27 = ctr_CVar | 0x1c00
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e6634f end
         end
-        sequence = scratchValue12 ~= 0
+        sequence = scratchValue10 ~= 0
         if not sequence then
-            scratchValue13 = 0
+            scratchValue11 = 0
             sequence = quest:GetStateBool("SpectatorsUnderAttack")
         end
         if sequence then goto LAB_00e6634f end
         goto FLOW_past_lab_00e6634f
         ::LAB_00e6634f::
-        scratchValue13 = 1
+        scratchValue11 = 1
         ::FLOW_past_lab_00e6634f::
-        if scratchValue29 & 4096 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xffffefff
+        if scratchValue27 & 4096 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xffffefff
         end
-        if scratchValue29 & 2048 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xfffff7ff
+        if scratchValue27 & 2048 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xfffff7ff
         end
-        if scratchValue29 & 1024 ~= 0 then
-            scratchValue29 = scratchValue29 & 0xfffffbff
+        if scratchValue27 & 1024 ~= 0 then
+            scratchValue27 = scratchValue27 & 0xfffffbff
         end
-        if scratchValue13 ~= 0 then
+        if scratchValue11 ~= 0 then
             isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             if isActiveThreadTerminating then break end
             quest:SetStateBool("SpectatorsUnderAttack", false)
-            scratchValue12 = isActiveThreadTerminating
+            scratchValue10 = isActiveThreadTerminating
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             helpers.helper_E68B20(quest, me, "CS_CHICKING_HITGUYBOTTOM")
@@ -351,14 +354,14 @@ function Main(quest, me)
         end
         sequence3 = me:IsTalkedToByHero()
         if not sequence3 then
-            scratchValue13 = 0
+            scratchValue11 = 0
             sequence3 = quest:GetStateBool("TalkedTo")
         end
         if sequence3 then
-            scratchValue13 = 1
+            scratchValue11 = 1
         end
-        scratchValue2 = scratchValue29 & 0xffffdfff
-        if scratchValue13 ~= 0 then
+        scratchValue3 = scratchValue27 & 0xffffdfff
+        if scratchValue11 ~= 0 then
             if quest:IsActiveThreadTerminating() then break end
             quest:SetStateBool("TalkedTo", false)
             if haveTalked then
@@ -530,15 +533,15 @@ function Main(quest, me)
                     kickingChickens = true
                     goto LAB_00e67619
                 end
-                if not quest:IsActiveThreadTerminating() then line = "CS_CHICKING_NOCASH"; goto LAB_00e6760c end
+                if not quest:IsActiveThreadTerminating() then scratchValue23 = "CS_CHICKING_NOCASH"; goto LAB_00e6760c end
                 goto LAB_00e68a73
             else
-                line = "CS_CHICKING_NOKICK"
+                scratchValue23 = "CS_CHICKING_NOKICK"
                 goto LAB_00e6760c
             end
             goto FLOW_past_lab_00e6760c
             ::LAB_00e6760c::
-            helpers.helper_E68B20(quest, me, line)
+            helpers.helper_E68B20(quest, me, scratchValue23)
             goto LAB_00e67619
             ::FLOW_past_lab_00e6760c::
             goto FLOW_past_lab_00e67619
@@ -568,7 +571,7 @@ function Main(quest, me)
                 quest:Pause(1.0)
                 quest:EntityTeleportToThing(hero, hero, false)
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                scratchValue19 = 0
+                scratchValue17 = 0
                 ctr_CVar = 0
                 repeat
                     if not quest:NewScriptFrame(me) then goto LAB_00e68ae2 end
@@ -576,7 +579,7 @@ function Main(quest, me)
                     quest:SetPlayerCreatureOnlyTarget(kickingChicken01)
                     quest:SetIsPushableByHero(kickingChicken01, false)
                     quest:UpdateQuestInfoCounter(infoCounter4, ctr_CVar, -1)
-                    quest:UpdateQuestInfoCounter(infoCounter3, scratchValue19, -1)
+                    quest:UpdateQuestInfoCounter(infoCounter3, scratchValue17, -1)
                     quest:FadeScreenIn()
                     if not quest:GetStateBool("InfoDisplayed") then
                         if not quest:IsActiveThreadTerminating() then
@@ -615,17 +618,11 @@ function Main(quest, me)
                     -- TODO(native): CCharString::operator=(&xStack_398,"CS_CHICKING_LANDED");
                     conversationId = quest:GetStateInt("DistanceBand")
                     if conversationId == 4 then
-                        if not quest:IsActiveThreadTerminating() then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c4);
-                            goto LAB_00e6804a
-                        end
+                        if not quest:IsActiveThreadTerminating() then resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_TOO_FAR_NEW"); goto LAB_00e6804a end
                         goto LAB_00e68aab
                     end
                     if conversationId == 0 then
-                        if not quest:IsActiveThreadTerminating() then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c0);
-                            goto LAB_00e6805d
-                        end
+                        if not quest:IsActiveThreadTerminating() then resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_TOO_WEAK_NEW"); goto LAB_00e6805d end
                         goto LAB_00e68ab9
                     end
                     goto FLOW_past_lab_00e68ab9
@@ -642,13 +639,13 @@ function Main(quest, me)
                             if not quest:IsActiveThreadTerminating() then
                                 conversationId = quest:GetStateInt("DistanceBand")
                                 if conversationId == 3 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_240);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_FAR_LEFT_NEW")
                                     ctr_CVar = ctr_CVar + 100
                                 elseif conversationId == 2 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1e8);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_CENTRE_LEFT_NEW")
                                     ctr_CVar = ctr_CVar + 50
                                 elseif conversationId == 1 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_238);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_FRONT_LEFT_NEW")
                                     ctr_CVar = ctr_CVar + 25
                                 end
                                 goto LAB_00e6805d
@@ -657,21 +654,23 @@ function Main(quest, me)
                             if not quest:IsActiveThreadTerminating() then
                                 conversationId = quest:GetStateInt("DistanceBand")
                                 if conversationId == 3 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1a8);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_FAR_CENTRE_NEW")
                                     ctr_CVar = ctr_CVar + 10
                                 elseif conversationId == 2 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2b8);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_CENTRE_CENTRE_NEW")
                                     ctr_CVar = ctr_CVar + 25
                                 elseif conversationId == 1 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),(CCharString *)xStack_1e0);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_NEAR_CENTRE_NEW")
                                     ctr_CVar = ctr_CVar + 10
                                 end
                                 goto LAB_00e6805d
                             end
                         else
                             if conversationId ~= 3 then
-                                if conversationId ~= 0 then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_218);
+                                if conversationId == 0 then
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_OFF_COURSE")
+                                else
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_NOWHERE")
                                 end
                                 goto LAB_00e6804a
                             end
@@ -681,19 +680,18 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00e6804a
                     ::LAB_00e6804a::
-                    line = "CS_CHICKING_MISSED"
                     goto LAB_00e68054
                     ::FLOW_hoist_lab_00e6804a_1::
                     if not quest:IsActiveThreadTerminating() then
                         conversationId = quest:GetStateInt("DistanceBand")
                         if conversationId == 3 then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_228);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_FAR_RIGHT_NEW")
                             ctr_CVar = ctr_CVar + 100
                         elseif conversationId == 2 then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1b8);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_CENTRE_RIGHT_NEW")
                             ctr_CVar = ctr_CVar + 50
                         elseif conversationId == 1 then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_220);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_NEAR_RIGHT_NEW")
                             ctr_CVar = ctr_CVar + 25
                         end
                         goto LAB_00e6805d
@@ -704,18 +702,17 @@ function Main(quest, me)
                     goto LAB_00e68ac5
                     ::FLOW_past_lab_00e6804a::
                     if quest:IsActiveThreadTerminating() then goto LAB_00e68aab end
-                    line = "CS_CHICKING_FOWL"
                     ::LAB_00e68054::
                     ::LAB_00e6805d::
                     -- TODO(native): CCharString::CCharString(&xStack_398_2,&xStack_398);
                     -- TODO(native): Game_InitializeArena(*(undefined4 *)(this + 0x14));
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie6)
-                    thing = quest:GetThingWithScriptName("KickedChicken")
-                    quest:RemoveThing(thing, false, true)
-                    scratchValue19 = scratchValue19 + 1
+                    kickedChicken = quest:GetThingWithScriptName("KickedChicken")
+                    quest:RemoveThing(kickedChicken, false, true)
+                    scratchValue17 = scratchValue17 + 1
                     quest:ResetPlayerCreatureOnlyTarget()
-                until scratchValue19 >= 5
+                until scratchValue17 >= 5
                 if not quest:IsActiveThreadTerminating() then
                     quest:RemoveQuestInfoElement(infoCounter4)
                     quest:RemoveQuestInfoElement(infoCounter)
@@ -727,22 +724,22 @@ function Main(quest, me)
                     -- TODO(native): CWideString::CWideString(xStack_208,(int)&xStack_354);
                     -- TODO(native): Vector_PushBack(xStack_360,(int)xStack_208);
                     -- TODO(native): GetFormattedString is not a ForgeFSE binding
-                    quest:GetFormattedString("TEXT_QST_B17_SCORE", thing)
+                    quest:GetFormattedString("TEXT_QST_B17_SCORE", kickedChicken)
                     -- TODO(native): CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);
-                    if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_HighPrize) then
-                        if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_MidPrize) then
-                            if scratchValue16 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_LowPrize) then
+                    if scratchValue14 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_HighPrize) then
+                        if scratchValue14 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_MidPrize) then
+                            if scratchValue14 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.CHK_LowPrize) then
                                 if not quest:IsActiveThreadTerminating() then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_274);
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c8);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", "CHICK_KICK_LOW")
+                                    resources:SetString(resources:MemberStringMap("csargs"), getActiveQuestName, "CHICK_KICK_LOW_LOOP")
                                     if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar then
                                         if not quest:IsActiveThreadTerminating() then
                                             -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
-                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c4);
+                                            resources:SetString(resources:MemberStringMap("csargs"), getActiveQuestName, "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN_HIGH")
                                             goto LAB_00e6894f
                                         end
                                     elseif not quest:IsActiveThreadTerminating() then
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2c0);
+                                        resources:SetString(resources:MemberStringMap("csargs"), getActiveQuestName, "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN")
                                         goto LAB_00e6894f
                                     end
                                     goto FLOW_past_lab_00e6894f
@@ -751,11 +748,11 @@ function Main(quest, me)
                                     ::FLOW_past_lab_00e6894f::
                                 end
                             elseif not quest:IsActiveThreadTerminating() then
-                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2a4);
-                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_29c);
+                                resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", "CHICK_KICK_MID")
+                                resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", "CHICK_KICK_MID_LOOP")
                                 if quest:GetStateInt("PrizesWon") & 1 == 0 then
                                     if not quest:IsActiveThreadTerminating() then
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_284);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_LOW_PRIZE_FIRST")
                                         -- TODO(native): *puVar1 = *puVar1 | 1;
                                         goto LAB_00e687e4
                                     end
@@ -763,26 +760,26 @@ function Main(quest, me)
                                     if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar then
                                         if not quest:IsActiveThreadTerminating() then
                                             -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
-                                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_28c);
+                                            resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_LOW_PRIZE_AGAIN_HIGH")
                                             goto LAB_00e687e4
                                         end
                                     elseif not quest:IsActiveThreadTerminating() then
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_294);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_LOW_PRIZE_AGAIN")
                                         goto LAB_00e687e4
                                     end
                                 end
                                 goto FLOW_past_lab_00e687e4
                                 ::LAB_00e687e4::
-                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_27c);
+                                resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", "50")
                                 goto LAB_00e68954
                                 ::FLOW_past_lab_00e687e4::
                             end
                         elseif not quest:IsActiveThreadTerminating() then
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_24c);
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_244);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", "CHICK_KICK_HIGH")
+                            resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", "CHICK_KICK_HIGH_LOOP")
                             if quest:GetStateInt("PrizesWon") & 2 == 0 then
                                 if not quest:IsActiveThreadTerminating() then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2b4);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_FIRST")
                                     -- TODO(native): *puVar1 = *puVar1 | 2;
                                     goto LAB_00e685d7
                                 end
@@ -790,23 +787,23 @@ function Main(quest, me)
                                 if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar then
                                     if not quest:IsActiveThreadTerminating() then
                                         -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
-                                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),xStack_234);
+                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_AGAIN_HIGH")
                                         goto LAB_00e685d7
                                     end
                                 elseif not quest:IsActiveThreadTerminating() then
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_23c);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_AGAIN")
                                     goto LAB_00e685d7
                                 end
                             end
                             goto FLOW_past_lab_00e685d7
                             ::LAB_00e685d7::
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2ac);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", "100")
                             goto LAB_00e68954
                             ::FLOW_past_lab_00e685d7::
                         end
                     elseif not quest:IsActiveThreadTerminating() then
-                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_200);
-                        -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1c8);
+                        resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", "CHICK_KICK_HIGH")
+                        resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", "CHICK_KICK_HIGH_LOOP")
                         if quest:GetStateInt("PrizesWon") & 4 == 0 then
                             if not quest:IsActiveThreadTerminating() then
                                 -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
@@ -817,16 +814,16 @@ function Main(quest, me)
                             if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar then
                                 if not quest:IsActiveThreadTerminating() then
                                     -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
-                                    -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1a0);
+                                    resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_TOP_PRIZE_AGAIN_HIGH")
                                     goto LAB_00e68395
                                 end
                             elseif not quest:IsActiveThreadTerminating() then
-                                -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1f8);
+                                resources:SetString(resources:MemberStringMap("csargs"), "$LINE", "TEXT_QST_B17_MASTER_TOP_PRIZE_AGAIN")
                                 goto LAB_00e68395
                             end
                             goto FLOW_past_lab_00e68395
                             ::LAB_00e68395::
-                            -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1f0);
+                            resources:SetString(resources:MemberStringMap("csargs"), "$PRIZE", "200")
                             goto LAB_00e68954
                             ::FLOW_past_lab_00e68395::
                         end

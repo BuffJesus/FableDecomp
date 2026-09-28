@@ -238,3 +238,27 @@ suite was not rerun for this commit (usage limit).
 Next, verified in scratch but NOT landed: ChickenMaster's 33 `csargs` map statements lift to
 `resources:SetString(resources:MemberStringMap("csargs"), "$LINE", ...)` once `_MEMBER_CAST` accepts `( map<...> *)` (a
 space after the parenthesis). Needs the 29-unit A/B and full suite before landing.
+
+### ChickenMaster cutscene lines, SickChild expression reactions, BeggarBully belch flag (after `96246cf`)
+
+- **ChickenMaster `csargs`**: `_MEMBER_CAST` accepts `( map<...> *)`. All 33 cutscene-line statements lift to
+  `resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVarN)`. The key was checked against the native
+  `CCharString("$LINE")` at each site, and every site sets its own `TEXT_QST_B17_*` value first.
+- **String compares per stretch**: `fold_name_compare` folds a pointer loaded once (`pvVar11 = *(void **)pCVar19`)
+  for the compares that follow it, up to its next write. When the pointer has several writes in the function, the
+  stretch may not contain a label or a write of the string. This clears all 26 WomanToAttract expression compares.
+- **`(undefined3)` high-byte flags**: `fold_high_byte_flags` now takes the `(undefined3)` spelling and `X._3_1_` reads.
+  It still refuses a slot whose dword is copied out or used in arithmetic (WomanToAttract `uStack_a8`: a cleanup mask
+  and a string). It rewrites a clear done through a copy (`uVar2 = (uint)X; ...; X = (uVar2 & 0xffffff)`) as the
+  slot's own clear, which is exact because CONCAT13 keeps the low three bytes. A byte test inside a compound
+  condition is the boolean itself, and a whole-dword constant store sets the flag too.
+  - WomanToAttract's alive check becomes `hb_stk_a8 = true; if health <= 0 then hb_stk_a8 = false end`, and its
+    reaction flag is set.
+  - BeggarBully's first-belch flag was `if (1 ~= 0) or TaughtBelch` (always true, so the belch cutscene was always
+    skipped). It is now false at the start and set after the cutscene.
+- A/B (29 units): only ChickenMaster, WomanToAttract and BeggarBully change. SickChild's TODOs drop from 205 to 142
+  in the draft; the CONCAT/Compare clusters drop from 56 to 5.
+- **Open (pre-existing)**: WomanToAttract Main's final `~CTimer(&pCStack_ec)` lifts as `DeregisterTimer(<wrong local>)`.
+  It was `pCVar6` (only ever `0x1`) and is now `hb_stk_a8`; it should be `x_stk_d0`, the `RegisterTimer()` result. The
+  destructor's stack operand resolves to the wrong slot. ManInLove `xStack_170` (a refcounted pointer that is read)
+  correctly stays unfolded.

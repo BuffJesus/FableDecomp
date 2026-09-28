@@ -103,3 +103,12 @@ def test_bordello_play_cutscene_builds_its_actor_map_from_the_members():
     assert 'STRINGMAP_Clear(STRINGMAP_Member("csargs"));' in text
     assert 'RESOURCE_RunMacroWithStrings(' in text and 'STRINGMAP_Member("csargs")' in text
     assert '*piVar2 = *piVar2 + -1;' not in text      # every refcount dance folded into a store
+
+
+def test_a_spaced_map_cast_on_the_parents_string_map_is_still_the_member():
+    # V_ChickenKicking ChickenMaster: Ghidra prints `( map<CCharString,...> *)` with a space after the parenthesis
+    s = spec(unit(string_maps={0x64: 'csargs'}), entity=True)
+    text = ('  pCVar13 = std::map<CCharString,CCharString>::operator[]'
+            '(( map<CCharString,CCharString> *)(*(int *)(this + 0x14) + 100),&xStack_1c4);\n')
+    out = lower_member_resources(text, s)
+    assert 'STRINGMAP_Member("csargs")' in out and '+ 100' not in out

@@ -263,6 +263,56 @@ def fold_low_byte_flags(text: str) -> str:
     return text
 
 
+def _clear_through_copy(text: str, cast: str) -> str:
+    """`uVar2 = (uint)X; X = CONCAT13(1,(undefined3)X); if (h <= 0) X = (T)(uVar2 & 0xffffff);` (V_SickChild
+    WomanToAttract's alive flag, 0x00ED0xxx): CONCAT13 keeps X's low three bytes, so the copy's low bytes are X's and
+    the clear is `X = (T)((uint)X & 0xffffff)` -- when the copy feeds nothing else and only flag stores write X in
+    between. The copy line goes with it."""
+    copy = re.compile(r'^[ \t]*(?P<t>\w+) = \(uint\)(?P<x>\w+);[ \t]*\r?\n', re.M)
+    pos = 0
+    while (m := copy.search(text, pos)):
+        t, x = re.escape(m['t']), re.escape(m['x'])
+        tail = text[m.end():]
+        nxt = re.search(r'^[ \t]*' + t + r' = ', tail, re.M)
+        stretch = tail[:nxt.start()] if nxt else tail
+        clear = re.compile(r'\b' + x + r' = (' + cast + r')\(' + t + r' & 0xffffff\);')
+        clears = list(clear.finditer(stretch))
+        if not clears or len(re.findall(r'\b' + t + r'\b', stretch)) != len(clears):
+            pos = m.end()
+            continue
+        upto = stretch[:clears[-1].start()]
+        writes = re.findall(r'\b' + x + r' = ([^;]*);', upto)
+        if any(not re.match(cast + r'CONCAT13\([^,;]+,\s*\((?:int3|undefined3)\)' + x + r'\)$', w) for w in writes):
+            pos = m.end()
+            continue
+        stretch = clear.sub(lambda c: f"{m['x']} = {c.group(1)}((uint){m['x']} & 0xffffff);", stretch)
+        text = text[:m.start()] + stretch + (tail[nxt.start():] if nxt else '')
+        pos = m.start()
+    return text
+
+
+def _dword_slot_is_read(text: str, v: str, own, cast: str) -> bool:
+    """The slot's whole dword copied into another variable or used in arithmetic (`uVar2 = (uint)xStack_a8;
+    xStack_a8 = (T)(uVar2 & 0xffffff);`, `uVar13 = uStack_a8 | 2;`): its low bytes are live, or the flag is cleared
+    through a temporary this fold does not see. Stack slots are named by offset here, so a string array sharing the
+    offset (`CCharString::CCharString(xStack_9c,..)`) is another object and does not count."""
+    rest = own.sub('', text)
+    rest = re.sub(r'\b' + v + r' = ' + cast + r'\(\(uint\)' + v + r' & 0xffffff\);', '', rest)
+    copied =re.search(r'\b\w+ = ' + cast + r'\(?(?:\(uint\))?' + v + r'\b(?!\._)', rest)
+    arith = re.search(r'\b' + v + r' [|&^+-] ', rest)
+    return bool(copied or arith)
+
+
+def _flag_byte_value(k: str, literal: dict) -> str:
+    """The stored byte as a boolean: a literal, a bool/char register (`cVar4 = '\\x01' - (iVar5 != 0)`, lifted as a
+    boolean -- `(cVar4) != 0` would always hold in Lua) as the char test the lifter folds, anything else `!= 0`."""
+    if k in literal:
+        return literal[k]
+    if re.fullmatch(r'[bc]\w*Var\d+', k):
+        return f"{k} != '\\0'"
+    return '(' + k + ') != 0'
+
+
 def fold_high_byte_flags(text: str) -> str:
     """A dword slot whose HIGH byte carries a flag (Arena ArenaCellDoorGuard2 Main 0x00F19BB0:
     `X = (CCharString *)CONCAT13(1,(int3)X);` when the guard is far away and idle, `X = (CCharString *)((uint)X &
@@ -271,20 +321,33 @@ def fold_high_byte_flags(text: str) -> str:
     the stores were folded into the test as `X & 0xffffff >> 0x18` (always 0 in Lua) and X stayed a free global."""
     cast = r'(?:\([\w ]+\*?\))?'
     literal = {'0': 'false', '0x0': 'false', '1': 'true', '0x1': 'true'}
-    for var in set(re.findall(r'\b(\w+) = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)\1\);', text)):
+    text = _clear_through_copy(text, cast)
+    for var in set(re.findall(r'\b(\w+) = ' + cast + r'CONCAT13\(([^,;]+),\s*\((?:int3|undefined3)\)\1\);', text)):
         var = var[0]
         m = re.search(r'([0-9a-f]+)$', var)
         if not m or re.search(r'\bhb_stk_' + m[1] + r'\b', text):
             continue
         v, flag = re.escape(var), 'hb_stk_' + m[1]
-        own = re.compile(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)' + v + r'\);')
+        own = re.compile(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\((?:int3|undefined3)\)' + v + r'\);')
         if re.search(r'CONCAT\d\d\([^;]*\b' + v + r'\b', own.sub('', text)):
             continue        # a slot packing several flag bytes (Expression_Picklock's CONCAT13(1,CONCAT12(1,uVar11))):
                             # the packed-flag recovery owns it
-        text = re.sub(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)' + v + r'\);',
-                      lambda mm: f'{flag} = {literal.get(mm[1].strip(), "(" + mm[1] + ") != 0")};', text)
+        if re.search(r'CONCAT13\([^,;]+,\s*\(undefined3\)' + v + r'\)', text) and _dword_slot_is_read(text, v, own, cast):
+            continue        # the `(undefined3)` spelling also prints slots whose low bytes are live (V_SickChild
+                            # WomanToAttract `uStack_a8`: a cleanup mask read back as `uVar4 = uStack_a8`, then a string)
+        text = re.sub(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\((?:int3|undefined3)\)' + v + r'\);',
+                      lambda mm: f'{flag} = {_flag_byte_value(mm[1].strip(), literal)};', text)
         text = re.sub(r'\b' + v + r' = ' + cast + r'\(\(uint\)' + v + r' & 0xffffff\);', flag + ' = false;', text)
         text = re.sub(r'\(char\)\(\(uint\)' + v + r' >> (?:0x18|24)\)', flag, text)
+        # (V_SickChild WomanToAttract: `uStack_f0._3_1_`). The byte test is the boolean itself -- `flag != '\0'` inside
+        # a compound condition would lift to `flag ~= 0`, always true for a Lua boolean (V_BeggarAndChild BeggarBully)
+        text = re.sub(r'\b' + v + r"\._3_1_ != '\\0'", flag, text)
+        text = re.sub(r'\b' + v + r"\._3_1_ == '\\0'", f'!{flag}', text)
+        text = re.sub(r'\b' + v + r'\._3_1_', flag, text)
+        # a whole-dword constant store sets the byte too (BeggarBully `xStack_128 = 0;` right before its test)
+        text = re.sub(r'^([ \t]*)' + v + r' = ' + cast + r'(0x[0-9a-fA-F]+|\d+);',
+                      lambda mm: f'{mm.group(0)}\n{mm.group(1)}{flag} = {str(int(mm.group(2), 0) >> 24 != 0).lower()};',
+                      text, flags=re.M)
     return fold_cross_variable_high_byte_flags(text)
 
 
@@ -1654,7 +1717,9 @@ RESOURCE_VTABLE_SLOTS = {0x10: 'MoveToPosition', 0x14: 'MoveToThing', 0x1c: 'Fol
                          0x54: 'ClearAllActions', 0x58: 'ClearAllActionsIncludingLoopingAnimations',
                          0x60: 'DropGenericBox', 0x64: 'UnsheatheWeapons', 0x68: 'IsPerformingScriptTask',
                          0x6c: 'IsFollowingThing'}
-_MEMBER_CAST = r'(?:\((?:int|[\w:<>,]+ ?\*+)\)\s*)*'
+# (a cast printed with a space after its parenthesis -- `( map<CCharString,...> *)`, V_ChickenKicking ChickenMaster's
+# `csargs` cutscene map -- is still a cast)
+_MEMBER_CAST = r'(?:\( ?(?:int|[\w:<>,]+ ?\*+)\)\s*)*'
 _THIS = r'\bthis\b(?!_)'
 _PARENT = r'\*\(int \*\)\(\(?(?:\(int\))?\s*' + _THIS + r'\)? \+ 0x14\)'
 _OWNER = r'(?:, \(CScriptThing \*\)\(this \+ 8\))?'
@@ -2271,14 +2336,29 @@ def fold_name_compare(text):
     # any string variable (a parameter: V_BookCollecting DoConversation's anim-loop name vs "NULL"), and its buffer
     # pointer taken once and only compared (`p0 = *(void **)speaker; Compare(p0,"boy0") ... Compare(p0,"girl0")`)
     text = re.sub(r'CBasicString<char>::Compare\(\*\(void \*\*\)(\w+),\s*("[^"]*")\)', r'ENGINE_StrCmp(\1, \2)', text)
-    for m in list(re.finditer(r'^[ \t]*(\w+) = \*\(void \*\*\)(\w+);[ \t]*\r?\n', text, re.M)):
-        p, s = re.escape(m.group(1)), m.group(2)
-        uses = re.findall(r'\b' + p + r'\b', text[m.end():])
-        compares = re.findall(r'CBasicString<char>::Compare\(' + p + r',\s*"[^"]*"\)', text[m.end():])
-        if uses and len(uses) == len(compares) and len(re.findall(r'^[ \t]*' + p + r' = ', text, re.M)) == 1:
-            text = text.replace(m.group(0), '', 1)
-            text = re.sub(r'CBasicString<char>::Compare\(' + p + r',\s*("[^"]*")\)', lambda mm, s=s: f'ENGINE_StrCmp({s}, {mm.group(1)})', text)
-    return text
+    # A pointer reassigned elsewhere in the function (V_SickChild WomanToAttract: `pvVar11 = *(void **)pCVar19` three
+    # times among other writes) folds per stretch: up to its next write, every use a compare, no label or write of
+    # the string in between -- nothing can reach those compares with another value.
+    while True:
+        for m in re.finditer(r'^[ \t]*(\w+) = \*\(void \*\*\)(\w+);[ \t]*\r?\n', text, re.M):
+            p, s = re.escape(m.group(1)), m.group(2)
+            nxt = re.search(r'^[ \t]*' + p + r' = ', text[m.end():], re.M)
+            region = text[m.end():m.end() + nxt.start()] if nxt else text[m.end():]
+            uses = list(re.finditer(r'\b' + p + r'\b', region))
+            compare = r'CBasicString<char>::Compare\(' + p + r',\s*("[^"]*")\)'
+            if not uses or len(uses) != len(re.findall(compare, region)):
+                continue
+            eol = region.find('\n', uses[-1].end())
+            span = region[:eol if eol >= 0 else len(region)]
+            single = len(re.findall(r'^[ \t]*' + p + r' = ', text, re.M)) == 1
+            if not single and (re.search(r'^[ \t]*(?:\w+:|::\w+::)', span, re.M)
+                               or re.search(r'\b' + re.escape(s) + r' = ', span)):
+                continue
+            folded = re.sub(compare, lambda mm, s=s: f'ENGINE_StrCmp({s}, {mm.group(1)})', span)
+            text = text[:m.start()] + folded + text[m.end() + len(span):]
+            break
+        else:
+            return text
 
 
 # (two spellings: the untyped one -- `(undefined4 *)` reps, `b[1] == a.y` -- and the one the typed export prints once
