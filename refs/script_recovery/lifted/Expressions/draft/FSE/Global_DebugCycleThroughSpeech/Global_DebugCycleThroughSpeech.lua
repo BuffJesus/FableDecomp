@@ -7,11 +7,11 @@ function Main(quest)
     local alive = true
     local pCVar3 = quest:GetHero()
     local xStack_28 = nil
-    -- TODO(native): xStack_28 = *(int **)(pCVar3 + 0x4);
+    -- TODO(native): xStack_28._4_4_ = *(int **)(pCVar3 + 0x4);
     local __native_condition_1 = (xStack_28 ~= nil and not xStack_28:IsNull())
     local cVar1
     if __native_condition_1 then
-        cVar1 = xStack_28:IsAlive()
+        cVar1 = (xStack_28 ~= nil and xStack_28:IsAlive())
         __native_condition_1 = cVar1
     end
     if __native_condition_1 then

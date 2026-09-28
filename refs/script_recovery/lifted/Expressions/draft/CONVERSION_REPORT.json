@@ -1381,7 +1381,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_28 = *(int **)(pCVar3 + 0x4);",
+            "unlifted: xStack_28._4_4_ = *(int **)(pCVar3 + 0x4);",
             "label LAB_00ee93a8",
             "unlifted: List_Node_Initialize(&xStack_1c,(int)&xStack_2d,(int)&xStack_2e);",
             "unlifted: LTextTreeWalkThrough_dtor(&xStack_1c);",

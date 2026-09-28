@@ -39,6 +39,20 @@ local function record(recv, name, ...)
     calls[#calls + 1] = recv .. ":" .. name
     if #calls > 20000 then error("call trace overflow (loop without frames?)") end
 end
+local function make_null_thing(label)
+    -- an empty CScriptThing (a lookup that found nothing): IsNull true, IsAlive false
+    return setmetatable({}, { __index = function(_, k)
+        if k == "__label" then return label end
+        return function(self, ...)
+            record(label, k, ...)
+            if k == "IsNull" then return true end
+            if k:match("^Is") or k:match("^Msg") or k:match("^Has") or k:match("^Can") then return false end
+            if k == "GetPos" then return { x = 0, y = 0, z = 0 } end
+            if k:match("^Get") then return k:match("Name$") and "" or 0 end
+            return nil
+        end
+    end, __tostring = function() return label end })
+end
 local function make_thing(label)
     local t = {}
     return setmetatable(t, { __index = function(_, k)
@@ -76,6 +90,13 @@ local quest = setmetatable({}, { __index = function(_, k)
             return setmetatable({}, { __index = function() return { Lines = 0, Speaker = {}, Dialogue = {}, Animation = {}, AnimLoop = {} } end })
         end
         if k == "ReadGlobalGameData" then return 1 end   -- a positive tunable (retail divides by some: BeardyBaldy speech timer)   -- a float (GetDistanceBetweenThings is not a thing getter)
+        -- numbered script names (`"boy" .. n`, BS_Teacher's opinion loop) exist only for small n: a lookup past them
+        -- finds nothing, as in a level with a handful of children
+        if k == "GetThingWithScriptName" then
+            local name = select(1, ...)
+            local n = type(name) == "string" and tonumber(name:match("(%d+)$"))
+            if n and n >= 4 then return make_null_thing(k) end
+        end
         if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With") or k:match("Target$"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)
         end

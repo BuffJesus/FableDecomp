@@ -88,11 +88,21 @@ def me_receiver_sites(rdata, entry, end):
     ins = list(md.disasm(code, entry))
     if not ins:
         return set()
-    # esi must be `this` for the whole body: one `mov esi, ecx` in the prologue, never written again
-    esi_writes = [k for k, i in enumerate(ins) if x86.X86_REG_ESI in i.regs_access()[1] and i.mnemonic != 'push']
-    if not esi_writes or ins[esi_writes[0]].op_str != 'esi, ecx' or esi_writes[0] > 12 \
-            or any(ins[k].mnemonic != 'pop' for k in esi_writes[1:]):
+    # `this` lives in one callee-saved register for the whole body: the prologue's `mov R, ecx` (esi in the Arena guards,
+    # ebp in V_SickChild WomanToAttract), never written again except the epilogue's pop
+    this_reg = None
+    for k, i in enumerate(ins[:12]):
+        if i.mnemonic == 'mov' and i.op_str.endswith(', ecx') and i.operands[0].type == x86.X86_OP_REG \
+                and i.operands[0].reg in (x86.X86_REG_ESI, x86.X86_REG_EDI, x86.X86_REG_EBX, x86.X86_REG_EBP):
+            this_reg = (i.operands[0].reg, k)
+            break
+    if this_reg is None:
         return set()
+    reg, at = this_reg
+    if any(reg in i.regs_access()[1] and i.mnemonic not in ('push', 'pop') for j, i in enumerate(ins) if j != at):
+        return set()
+    name = md.reg_name(reg)
+    me = ', [' + name + ' + 8]'
     preds = _cfg(ins, x86, capstone, rdata)
     if preds is None:
         return set()
@@ -104,14 +114,14 @@ def me_receiver_sites(rdata, entry, end):
         if len(ecx_defs) != 1 or -1 in ecx_defs:
             continue
         d = ins[next(iter(ecx_defs))]
-        if d.mnemonic == 'lea' and d.op_str == 'ecx, [esi + 8]':
+        if d.mnemonic == 'lea' and d.op_str == 'ecx' + me:
             out.add(i.address)
             continue
         if d.mnemonic != 'mov' or d.operands[1].type != x86.X86_OP_REG:
             continue
         src = d.operands[1].reg
         src_defs = _reaching(ins, preds, next(iter(ecx_defs)), src, x86)
-        if src_defs and -1 not in src_defs and all(ins[j].mnemonic == 'lea' and ins[j].op_str.endswith(', [esi + 8]')
+        if src_defs and -1 not in src_defs and all(ins[j].mnemonic == 'lea' and ins[j].op_str.endswith(me)
                                                    for j in src_defs):
             out.add(i.address)
     return out

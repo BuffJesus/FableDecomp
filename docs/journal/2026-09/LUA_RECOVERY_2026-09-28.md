@@ -217,3 +217,13 @@ identical values (draft only; its readable is hand-reviewed). The A/B snapshot s
 v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort ×2), sidecar
 unchanged. 210 Lua parse, 216 hashes match; mock smoke vs v35 unchanged. Gate1GuardOuter's talk check moves from the
 hero to the guard (retail), in a package completed in-game with the old line.
+
+### Split Data words and the numbered-children loop (after `5f7f305`)
+
+`native_split_thing_words.merge_split_thing_words` (raw decompile): a stack CScriptThing (`undefined1 X [4|8|12]`, used as
+a CScriptThing) whose Data word Ghidra printed as the local four bytes above it becomes `X._4_4_` when that local is only
+stored, null-tested or used as a vtable base. BS_Teacher 0x00E56D10 now posts its opinion deed to boy0, boy1, ... and
+girl0, ... while each exists (was a `while nil`); Global_DebugCycleThroughSpeech gains a nil guard. The smoke mock now
+returns an empty thing for numbered script names from 4 upward, so such loops end. `native_receiver_reaching` takes
+`this` from the prologue's `mov R, ecx` (any callee-saved register) instead of assuming esi (no new sites proven in the
+corpus; V_SickChild WomanToAttract's 0x6C call reloads its receiver from a stack spill, which is not tracked).

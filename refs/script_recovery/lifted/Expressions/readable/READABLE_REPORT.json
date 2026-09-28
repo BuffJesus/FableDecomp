@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "expressions",
- "draft": "refs/script_recovery/lifted/Expressions/draft",
+ "draft": "refs\\script_recovery\\lifted\\Expressions\\draft",
  "files": {
   "FSE/Expression_Dig/Expression_Dig.lua": {
    "functions": [
@@ -7315,14 +7315,14 @@
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        "isAlive"
+        null
        ]
       },
       "cVar1_1": {
-       "name": "isAlive",
-       "basis": "consistent call/state result",
+       "name": "scratchValue5",
+       "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
-        "isAlive"
+        null
        ]
       },
       "cVar1_2": {
@@ -7728,7 +7728,7 @@
      {
       "line": 9,
       "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): xStack_28 = *(int **)(pCVar3 + 0x4);"
+      "text": "-- TODO(native): xStack_28._4_4_ = *(int **)(pCVar3 + 0x4);"
      },
      {
       "line": 12,

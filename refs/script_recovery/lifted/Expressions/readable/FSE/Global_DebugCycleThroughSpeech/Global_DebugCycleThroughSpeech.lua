@@ -6,8 +6,8 @@ function Main(quest)
     local resources = quest:RetailResources()
     local scratchValue, scratchValue3
     local thing = nil
-    -- TODO(native): xStack_28 = *(int **)(pCVar3 + 0x4);
-    if not ((thing ~= nil and not thing:IsNull()) and thing:IsAlive()) then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); return end
+    -- TODO(native): xStack_28._4_4_ = *(int **)(pCVar3 + 0x4);
+    if not ((thing ~= nil and not thing:IsNull()) and (thing ~= nil and thing:IsAlive())) then quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0); return end
     if quest:IsActiveThreadTerminating() then return end
     -- TODO(native): List_Node_Initialize(&xStack_1c,(int)&xStack_2d,(int)&xStack_2e);
     local scratchValue2 = quest:DebugGetAllTextEntriesForTargetedThing()

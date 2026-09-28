@@ -908,22 +908,14 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: cVar3 = (**(*uStack_14 + 0x12c))()",
-            "unlifted: piVar1 = *(pCVar6 + 0x8)",
-            "unlifted: piVar2 = *(pCVar6 + 0x4)",
-            "unlifted: piVar1 = *(pCVar6 + 0x8)",
-            "unlifted: piVar2 = *(pCVar6 + 0x4)",
-            "unlifted: cVar3 = (**(*uStack_14 + 0x12c))()"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
             "EntityPostOpinionDeedToRecipient",
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "GetThingWithScriptName",
+            "IsAlive",
             "GetHero",
             "EntityPostOpinionDeedToRecipient",
             "ENGINE_IntToString",
@@ -934,11 +926,12 @@
             "ENGINE_Concat",
             "GetThingWithScriptName",
             "QUESTTHING_Empty",
+            "IsAlive",
             "GetHero",
             "EntityPostOpinionDeedToRecipient",
             "QUESTTHING_Empty"
           ],
-          "lines": 63,
+          "lines": 41,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1236,7 +1229,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 135
+        "todo": 127
       }
     }
   ],
@@ -1247,6 +1240,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 135
+    "todo": 127
   }
 }

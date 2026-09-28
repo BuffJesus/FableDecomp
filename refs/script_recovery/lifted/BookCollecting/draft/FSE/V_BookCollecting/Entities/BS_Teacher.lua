@@ -898,7 +898,7 @@ function helper_E55CE0(quest, me, native_arg_param_1, native_arg_param_2)
 end
 
 function helper_E56D10(quest, me, native_arg_param_2)
-    local cVar3, iVar7, iVar9, pCVar6, piVar1, piVar2, uStack_14, x_stk_10
+    local cVar3, iVar7, iVar9, pCVar6
     local iVar8 = native_arg_param_2
     local pCVar4 = quest:GetHero()
     quest:EntityPostOpinionDeedToRecipient(pCVar4, iVar8, me)
@@ -906,9 +906,8 @@ function helper_E56D10(quest, me, native_arg_param_2)
     local pCVar5 = tostring(0)
     local xStack_24 = ("boy" .. pCVar5)
     local r1 = quest:GetThingWithScriptName(xStack_24)
-    while uStack_14 ~= nil do
-        -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
-        cVar3 = nil --[[unresolved native value]]
+    while (r1 ~= nil and not r1:IsNull()) do
+        cVar3 = (r1 ~= nil and r1:IsAlive())
         if not cVar3 then break end
         pCVar6 = r1
         iVar9 = native_arg_param_2
@@ -919,17 +918,7 @@ function helper_E56D10(quest, me, native_arg_param_2)
         pCVar5 = ("boy" .. pCVar5)
         xStack_24 = pCVar5
         pCVar6 = quest:GetThingWithScriptName(xStack_24)
-        -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-        piVar1 = nil --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar6 + 0x4)
-        piVar2 = nil --[[unresolved native value]]
-        if x_stk_10 ~= piVar1 then
-            uStack_14 = piVar2
-            x_stk_10 = piVar1
-            if piVar1 ~= nil then
-                -- TODO(native): *piVar1 = *piVar1 + 1;
-            end
-        end
+        r1 = pCVar6
         pCVar6 = nil
     end
     iVar7 = 0
@@ -938,21 +927,10 @@ function helper_E56D10(quest, me, native_arg_param_2)
         pCVar5 = ("girl" .. pCVar5)
         xStack_24 = pCVar5
         pCVar6 = quest:GetThingWithScriptName(xStack_24)
-        -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-        piVar1 = nil --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar6 + 0x4)
-        piVar2 = nil --[[unresolved native value]]
-        if x_stk_10 ~= piVar1 then
-            uStack_14 = piVar2
-            x_stk_10 = piVar1
-            if piVar1 ~= nil then
-                -- TODO(native): *piVar1 = *piVar1 + 1;
-            end
-        end
+        r1 = pCVar6
         pCVar6 = nil
-        if uStack_14 == nil then break end
-        -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
-        cVar3 = nil --[[unresolved native value]]
+        if not (r1 ~= nil and not r1:IsNull()) then break end
+        cVar3 = (r1 ~= nil and r1:IsAlive())
         if not cVar3 then break end
         pCVar6 = r1
         iVar9 = native_arg_param_2

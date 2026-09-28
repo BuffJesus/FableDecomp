@@ -514,50 +514,24 @@ end
 
 -- BS_Teacher.helper_E56D10 (retail 0x00e56d10)
 function helper_E56D10(quest, me, param2)
-    local scratchValue, scratchValue2, scratchValue5, scratchValue6
+    local scratchValue, scratchValue4
     local hero = quest:GetHero()
     quest:EntityPostOpinionDeedToRecipient(hero, param2, me)
     scratchValue = 0
     local getThingWithScriptName = quest:GetThingWithScriptName("boy" .. tostring(0))
-    while scratchValue5 ~= nil do
-        -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
-    --[[unresolved native value]]
-        if not nil then break end
+    while getThingWithScriptName ~= nil do
+        if not (getThingWithScriptName ~= nil and getThingWithScriptName:IsAlive()) then break end
         quest:EntityPostOpinionDeedToRecipient(hero, param2, getThingWithScriptName)
         scratchValue = scratchValue + 1
-        quest:GetThingWithScriptName("boy" .. tostring(scratchValue))
-        -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-    --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar6 + 0x4)
-    --[[unresolved native value]]
-        if scratchValue6 ~= nil then
-            scratchValue5 = nil
-            scratchValue6 = nil
-            if nil ~= nil then
-                -- TODO(native): *piVar1 = *piVar1 + 1;
-            end
-        end
+        getThingWithScriptName = quest:GetThingWithScriptName("boy" .. tostring(scratchValue))
     end
-    scratchValue2 = 0
+    scratchValue4 = 0
     while true do
-        quest:GetThingWithScriptName("girl" .. tostring(scratchValue2))
-        -- TODO(native): piVar1 = *(pCVar6 + 0x8)
-    --[[unresolved native value]]
-        -- TODO(native): piVar2 = *(pCVar6 + 0x4)
-    --[[unresolved native value]]
-        if scratchValue6 ~= nil then
-            scratchValue5 = nil
-            scratchValue6 = nil
-            if nil ~= nil then
-                -- TODO(native): *piVar1 = *piVar1 + 1;
-            end
-        end
-        if scratchValue5 == nil then break end
-        -- TODO(native): cVar3 = (**(*uStack_14 + 0x12c))()
-    --[[unresolved native value]]
-        if not nil then break end
+        getThingWithScriptName = quest:GetThingWithScriptName("girl" .. tostring(scratchValue4))
+        if getThingWithScriptName == nil then break end
+        if not (getThingWithScriptName ~= nil and getThingWithScriptName:IsAlive()) then break end
         quest:EntityPostOpinionDeedToRecipient(hero, param2, getThingWithScriptName)
-        scratchValue2 = scratchValue2 + 1
+        scratchValue4 = scratchValue4 + 1
     end
 end
 
