@@ -727,7 +727,7 @@ def _drifted_byte_slices(text, uses):
         yield m.start(), m.end(), f"{m.group('ind')}{local} = {value};"
 
 
-def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True):
+def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True, address=False):
     """The Ghidra stack slot (negative, entry-ESP relative) a register pushed at `site` was loaded from, read from the
     bytes: the prologue's `sub esp, N` plus its register pushes give the frame base; walking back from the call, the
     register's last definition `mov REG, [esp+X]` with m pushes already outstanding sits at
@@ -769,6 +769,28 @@ def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True)
     idx = next((i for i, ins in enumerate(insns) if ins.address == site), None)
     if idx is None:
         return None
+    if address and (idx == 0 or insns[idx - 1].mnemonic != 'lea'
+                    or insns[idx - 1].op_str.split(',')[0] != reg):
+        return None
+    if address:
+        # Count the frame from a straight-line epilogue. Saved registers may
+        # be pushed later than the initial prologue (BanditKing saves EBP late).
+        # Refuse interior cleanup paths and any intervening stack arguments.
+        frame = 0
+        for ins in insns[idx + 1:]:
+            if ins.mnemonic == 'ret':
+                break
+            if ins.mnemonic == 'pop' and ins.operands[0].type == X86_OP_REG:
+                frame += 4
+            elif (ins.mnemonic == 'add' and ins.op_str.startswith('esp, ')
+                  and ins.operands[1].type == X86_OP_IMM):
+                frame += ins.operands[1].imm
+            elif ins.mnemonic not in ('lea', 'call', 'nop'):
+                return None
+        else:
+            return None
+        if not frame:
+            return None
     # the printed register name is Ghidra's guess (`unaff_EBX` for a `push esi`): when the operand's position is
     # known, the register is whatever the matching push (arguments are pushed right to left: the first pushed
     # argument is the one nearest the call) actually pushes
@@ -793,7 +815,7 @@ def _register_operand_slot(fn, site, reg, arg_index=None, receiver_printed=True)
         if ins.mnemonic == 'push':
             pushes_after += 1
             continue
-        if ins.mnemonic == 'mov' and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg:
+        if ins.mnemonic == ('lea' if address else 'mov') and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg:
             op = ins.operands[1]
             if op.type == X86_OP_MEM and ins.reg_name(op.mem.base) == 'esp' and op.mem.index == 0:
                 # the pushes outstanding AT the mov = those made before it in this argument sequence: none of the
@@ -867,6 +889,13 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
     if ordered is not None:
         # exact pairing through the decompiler's token stream (callOrder): printed calls in text order
         for pos, end, args, site, key, vtable in ordered:
+            # CTimer is a four-byte ID. At its destructor, the exporter can be
+            # one word adrift (WomanToAttract 0xED0AEC: frame 0xE4, lea +0x14).
+            # Recover the explicit receiver address from the instructions.
+            if not vtable and site.get('target', '').lower() == '0x00cd4470':
+                receiver = _register_operand_slot(fn, int(site['site'], 16), 'ecx', address=True)
+                if receiver is not None:
+                    site = dict(site, ecxStack=receiver)
             try:
                 site_addr[pos] = int(site.get('site', ''), 16)
             except (TypeError, ValueError, AttributeError):

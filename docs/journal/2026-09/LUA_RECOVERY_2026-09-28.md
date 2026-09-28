@@ -262,3 +262,28 @@ space after the parenthesis). Needs the 29-unit A/B and full suite before landin
   It was `pCVar6` (only ever `0x1`) and is now `hb_stk_a8`; it should be `x_stk_d0`, the `RegisterTimer()` result. The
   destructor's stack operand resolves to the wrong slot. ManInLove `xStack_170` (a refcounted pointer that is read)
   correctly stays unfolded.
+
+### Codex continuation: WomanToAttract timer destructor (base `118fb6c`)
+
+- Retail Main `0x00ECF7F0` ends with `lea ecx,[esp+0x14]` / `call 0x00CD4470` at
+  `0x00ED0AE8` / `0x00ED0AEC`. Its epilogue restores 0xE4 bytes, proving timer slot -0xD0.
+  The typed export incorrectly reports `ecxStack=-0xCC`; that spelling became the reaction flag.
+- `restore_stack_operands` now corrects this known timer-destructor receiver from bytes when an adjacent
+  LEA and straight-line epilogue prove the frame. Interior branches, overwritten receivers and missing bytes
+  are refused. Counting only the initial prologue was insufficient: BanditKing saves EBP later. That initial
+  attempt and its comparison are superseded by `ab2.log` / `ab/comparison.json`.
+- Promoted only WomanToAttract draft/readable and the readable report. Timer registration, reads and cleanup
+  now share the same handle. No generated Lua was hand-edited. No candidate installed or game launched.
+- Validation in `work/codex_timer_20260928/`: all 29 units regenerated before/after against a converter snapshot
+  of `118fb6c`; only WomanToAttract changes. Scratch readable: 14/14 files parse. Before/after smoke JSON is
+  identical, including the pre-existing `_stricmp` failure in helper_ECE460 and pending MemberResource bindings.
+- Behavioral mock: both generated stages release exactly handle 731 once on immediate termination after
+  registration and termination after the distance check. The committed baseline fails the latter with
+  `wrong timer handle`. Focused suite: **58 passed, 7 subtests passed** (`tests_final.log`); full suite not rerun.
+  Current readability audit: **371 files, 0 syntax failures**; ledger refreshed without narrowing inventory.
+- Reproduce: `python work/codex_timer_20260928/ab/compare.py`; tests include
+  `test_timer_destructor_operand`, `test_round12_lowerings`, `test_skill_target_and_friendly_actor`,
+  `test_member_resources`, `test_high_byte_flag_slots`, `test_resource_member_zero_init`,
+  `test_native_loop_timer`, and `test_native_entry_timer` under `tools/script_recovery`.
+- Next from desktop transcript: GuildMaster's remaining goto structure, then stage candidate v37 before
+  playtesting. Existing helper_ECE460 and TraderEscort parameter-slot recovery gaps remain open.

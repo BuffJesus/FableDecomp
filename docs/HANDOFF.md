@@ -1,5 +1,11 @@
 # Lua recovery handoff - 2026-09-26
 
+**Codex continuation (2026-09-28, after `118fb6c`):** WomanToAttract timer cleanup now uses the registered
+handle, recovered from the destructor's retail LEA and epilogue. Promoted draft/readable; 29-unit A/B changes
+only WomanToAttract. 58 tests / 7 subtests pass; smoke unchanged; 371-file syntax audit clean. Not packaged or
+run in-game. Next per desktop transcript: GuildMaster goto structure, then v37 staging. See the latest entry in
+[journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md); scratch `work/codex_timer_20260928/`.
+
 **Resume here (2026-09-28, evening):** corpus smoke 21 → 2 failing functions today, 0 new; 1 real
 ([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)): SickChild helper_ECE460 (`$ARG1` from a resource string member unless "NULL":
 needs the resource layout). Roth fixed (byte flag printed under two dwords). Today: quest helpers reclassified from entity code, literal TextKeys, vector slots,

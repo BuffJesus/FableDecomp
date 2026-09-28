@@ -10,14 +10,14 @@ local givenObject, timesMadeLaugh_
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, taskRunning, predicateResult43, predicateResult44, timesMadeLaugh2
-    local scratchValue, getHero, scratchValue39, line, movie, movie2, movie3, scratchValue49
+    local predicateResult, taskRunning, predicateResult43, timesMadeLaugh2, scratchValue, getHero
+    local scratchValue37, line, movie, movie2, movie3, scratchValue47
     if not quest:NewScriptFrame(me) then return end
     local this_00 = resources:MemberResource("seh_me", me)
     resources:PrepareResource(this_00)
     while not me:AcquireControl(4) do
         if not quest:NewScriptFrame(me) then return end
-        scratchValue49 = this_00
+        scratchValue47 = this_00
     end
     if quest:IsActiveThreadTerminating() then return end
     if quest:GetStateBool("LaughingWomanKilled") then
@@ -25,7 +25,7 @@ function Main(quest, me)
     end
     -- TODO(native): xStack_a8 = *(CScriptThing **)(this + 0xc);
     -- TODO(native): xStack_c8 = *(C3DMeshInfo **)(this + 0x10);
-    if scratchValue49 ~= nil then
+    if scratchValue47 ~= nil then
         -- TODO(native): *(int *)xStack_c8 = *(int *)xStack_c8 + 1;
     end
     quest:SetIsPushableByHero(nil --[[missing]], false)
@@ -42,7 +42,7 @@ function Main(quest, me)
         end
         if quest:GetTimer(registerTimer) == 0 then
             if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
                 local conversationId = quest:AddNewConversation(hero, unaff_EBP, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 local timesMadeLaugh = timesMadeLaugh_
@@ -70,7 +70,7 @@ function Main(quest, me)
         -- TODO(native): cVar4 = (**(*pCVar9 + 0x74))("")
     --[[unresolved native value]]
         if nil and not givenObject then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
             if scratchValue == nil then
                 goto LAB_00ecff84
             end
@@ -115,7 +115,7 @@ function Main(quest, me)
             ::LAB_00ed00db::
             goto LAB_00ed00e0
             ::FLOW_past_lab_00ed00db::
-            quest:DeregisterTimer(predicateResult44)
+            quest:DeregisterTimer(registerTimer)
             do return end
             ::FLOW_past_lab_00ed002a::
             if scratchValue == "EXPRESSION_SHIT" then goto LAB_00ed002a end
@@ -136,14 +136,14 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie("TEXT_QST_B10_LAUGHING_WOMAN_NEARLY_HYSTERICAL")
-                        quest:DeregisterTimer(predicateResult44)
+                        quest:DeregisterTimer(registerTimer)
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie("TEXT_QST_B10_LAUGHING_WOMAN_NEARLY_HYSTERICAL")
-                    quest:DeregisterTimer(predicateResult44)
+                    quest:DeregisterTimer(registerTimer)
                     return
                 end
             end
@@ -191,7 +191,7 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00ed04c2
             ::LAB_00ed04c2::
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
             line = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_GIGGLE_ONCE"
             goto LAB_00ed02fa
             ::FLOW_hoist_lab_00ed04c2_6::
@@ -223,21 +223,21 @@ function Main(quest, me)
             ::LAB_00ed0245::
             if not quest:IsActiveThreadTerminating() then line = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_COCK_ONCE"; goto LAB_00ed02fa end
             ::FLOW_hoist_lab_00ed0245_1::
-            quest:DeregisterTimer(predicateResult44)
+            quest:DeregisterTimer(registerTimer)
             do return end
             ::FLOW_hoist_lab_00ed0245_2::
             goto LAB_00ed0210
             ::FLOW_past_lab_00ed0245::
             goto FLOW_past_lab_00ed0210
             ::LAB_00ed0210::
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
             line = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_VULGAR_ONCE"
             ::LAB_00ed02fa::
             ::LAB_00ed02ff::
             movie2 = resources:StartMovie("")
             quest:StartMovieSequence()
             -- TODO(native): pCVar9 = *(this + 4)
-            scratchValue39 = nil --[[unresolved native value]]
+            scratchValue37 = nil --[[unresolved native value]]
             -- TODO(native): (**(code **)(*(int *)pCVar9 + 0x5ec))(1);
             timesMadeLaugh2 = timesMadeLaugh_
             if timesMadeLaugh2 ~= 1 then
@@ -280,7 +280,7 @@ function Main(quest, me)
                 else
                     -- TODO(native): (**(code **)(*(int *)pCVar6 + 0x5ec))(0);
                     resources:DestroyMovie(movie2)
-                    quest:DeregisterTimer(predicateResult44)
+                    quest:DeregisterTimer(registerTimer)
                     do return end
                     taskRunning = me:IsPerformingScriptTask()
                 end
@@ -292,7 +292,7 @@ function Main(quest, me)
             ::LAB_00ed0a5a::
             -- TODO(native): (**(code **)(iVar5 + 0x5ec))(0);
             resources:DestroyMovie(movie2)
-            quest:DeregisterTimer(predicateResult44)
+            quest:DeregisterTimer(registerTimer)
             do return end
             ::FLOW_past_lab_00ed0210::
             if scratchValue == "EXPRESSION_PELVIC_THRUST" then goto LAB_00ed0210 end
@@ -310,7 +310,7 @@ function Main(quest, me)
             end
             ::LAB_00ed02e2::
             if not quest:IsActiveThreadTerminating() then line = "TEXT_QST_B10_LAUGHING_WOMAN_LAUGH_DANCE_ONCE"; goto LAB_00ed02fa end
-            quest:DeregisterTimer(predicateResult44)
+            quest:DeregisterTimer(registerTimer)
             return
         end
         ::LAB_00ed069d::
@@ -327,46 +327,43 @@ function Main(quest, me)
         predicateResult43 = false
         ::FLOW_past_lab_00ed06d4::
         if predicateResult43 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
             movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             local timesMadeLaugh3 = timesMadeLaugh_
             if timesMadeLaugh3 == 0 then
-                predicateResult44 = quest:GetHealth(resources:ScriptThing(this_00)) > 0.0
-                scratchValue39 = scratchValue
-                scratchValue = scratchValue39
-                if predicateResult44 then
+                scratchValue37 = scratchValue
+                scratchValue = scratchValue37
+                if quest:GetHealth(resources:ScriptThing(this_00)) > 0.0 then
                     -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                     if not me:Speak(hero, "TEXT_QST_B10_LAUGHING_WOMAN_INTRO", GROUP_SELECT_FIRST, false, true, false) then break end
                     goto LAB_00ed0952
                 end
             elseif timesMadeLaugh3 == 1 then
-                predicateResult44 = quest:GetHealth(resources:ScriptThing(this_00)) > 0.0
-                scratchValue39 = scratchValue
-                scratchValue = scratchValue39
-                if predicateResult44 then
+                scratchValue37 = scratchValue
+                scratchValue = scratchValue37
+                if quest:GetHealth(resources:ScriptThing(this_00)) > 0.0 then
                     -- TODO(native): iVar5 = *this_00
 --[[unresolved native value]]
                     if not me:Speak(hero, "TEXT_QST_B10_LAUGHING_WOMAN_ON_SPEAK_MADE_LAUGH_ONCE", GROUP_SELECT_FIRST, false, true, false) then break end
                     goto LAB_00ed0952
                 end
             elseif timesMadeLaugh3 == 2 then
-                predicateResult44 = quest:GetHealth(resources:ScriptThing(this_00)) > 0.0
-                scratchValue39 = scratchValue
-                scratchValue = scratchValue39
-                if predicateResult44 then
+                scratchValue37 = scratchValue
+                scratchValue = scratchValue37
+                if quest:GetHealth(resources:ScriptThing(this_00)) > 0.0 then
                     if not me:Speak(hero, "TEXT_QST_B10_LAUGHING_WOMAN_ON_SPEAK_MADE_LAUGH_TWICE", GROUP_SELECT_FIRST, false, true, false) then break end
                     goto LAB_00ed0952
                 end
             end
             goto FLOW_past_lab_00ed0952
             ::LAB_00ed0952::
-            scratchValue = scratchValue39
+            scratchValue = scratchValue37
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
-                quest:DeregisterTimer(predicateResult44)
+                quest:DeregisterTimer(registerTimer)
                 return
             end
             ::FLOW_past_lab_00ed0952::
@@ -375,12 +372,12 @@ function Main(quest, me)
             resources:DestroyMovie(movie)
         end
         if givenObject then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(predicateResult44); return end
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
             resources:PrepareResource(this_00)
             if not quest:IsActiveThreadTerminating() then
                 quest:RemoveThing(me, false, true)
             end
-            quest:DeregisterTimer(predicateResult44)
+            quest:DeregisterTimer(registerTimer)
             return
         end
         quest:NewScriptFrame(me)
@@ -388,12 +385,12 @@ function Main(quest, me)
     until false
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie)
-    quest:DeregisterTimer(predicateResult44)
+    quest:DeregisterTimer(registerTimer)
     do return end
     ::LAB_00ed0a36::
     -- TODO(native): (**(code **)(*(int *)pCVar9 + 0x5ec))(0);
     resources:DestroyMovie(movie2)
-    quest:DeregisterTimer(predicateResult44)
+    quest:DeregisterTimer(registerTimer)
 end
 
 -- WomanToAttract.Init (retail 0x00ecd380)

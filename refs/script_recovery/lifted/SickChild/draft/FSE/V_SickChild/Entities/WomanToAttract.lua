@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local au_stk_34, au_stk_4c, au_stk_64, bVar3, cVar4, dist, fVar14, hb_stk_9c, hb_stk_a8, iVar5, pCVar10, pCVar17, pCVar19, pCVar6, pCVar9, pcVar18, pvVar11, r1, r2, r3, r4, r5, r6, r7, this_00, uVar15, uVar16, uVar7, uVar7_pushed, uVar8, xStack_64, xStack_74, xStack_84, xStack_8c, xStack_9c, xStack_a8, xStack_c8, x_stk_18, x_stk_30, x_stk_48, x_stk_d0
+    local au_stk_34, au_stk_4c, au_stk_64, bVar3, cVar4, dist, fVar14, hb_stk_9c, hb_stk_a8, iVar5, pCVar10, pCVar17, pCVar19, pCVar6, pCVar9, pcVar18, pvVar11, r1, r2, r3, r4, r5, r6, r7, this_00, uVar15, uVar16, uVar7, uVar7_pushed, uVar8, xStack_64, xStack_74, xStack_84, xStack_8c, xStack_9c, xStack_a8, xStack_c8, xStack_d0, x_stk_18, x_stk_30, x_stk_48
     local alive = true
     xStack_8c = pCVar9
     alive = quest:NewScriptFrame(me)
@@ -24,7 +24,7 @@ function Main(quest, me)
     this_00 = resources:MemberResource("seh_me", me)
     resources:PrepareResource(this_00)
     xStack_9c = pCVar9
-    x_stk_d0 = this_00
+    xStack_d0 = this_00
     cVar4 = me:AcquireControl(4)
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
@@ -65,15 +65,15 @@ function Main(quest, me)
         end
         quest:SetThingHasInformation(me, false, false, false)
     end
-    x_stk_d0 = quest:RegisterTimer()
+    xStack_d0 = quest:RegisterTimer()
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     repeat
         if bVar3 then
-            quest:DeregisterTimer(x_stk_d0)
+            quest:DeregisterTimer(xStack_d0)
             return
         end
-        iVar5 = quest:GetTimer(x_stk_d0)
+        iVar5 = quest:GetTimer(xStack_d0)
         if iVar5 == 0 then
             dist = 15.0
             pCVar6 = quest:GetHero()
@@ -702,8 +702,8 @@ function Main(quest, me)
                 goto LAB_00ed0ae8
             end
             ::FLOW_past_lab_00ed0952::
-            iVar5 = quest:GetTimer(x_stk_d0)
-            quest:SetTimer(x_stk_d0, iVar5 + 5)
+            iVar5 = quest:GetTimer(xStack_d0)
+            quest:SetTimer(xStack_d0, iVar5 + 5)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_64)
         end
@@ -734,7 +734,7 @@ function Main(quest, me)
     resources:DestroyMovie(xStack_74)
     ::LAB_00ed0a6f::
     ::LAB_00ed0ae8::
-    quest:DeregisterTimer(hb_stk_a8)
+    quest:DeregisterTimer(xStack_d0)
 end
 
 function Init(quest, me)
