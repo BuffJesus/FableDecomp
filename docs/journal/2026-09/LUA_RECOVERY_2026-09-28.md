@@ -190,3 +190,14 @@ temporary, `comment_type` / `comment_to_make` as string temporaries: a raw `CONC
 `r2:IsEqualTo(r3._4_4_)` would become reachable). Enabling comments in an in-game-proven package needs the whole
 function right; next step is parameter-slot reuse for this function. Kept from the attempt: `CScriptThing::GetDataString
 (X, &slot)` → `slot = X:GetDataString()` (and GetName / GetDefName).
+
+## Night: `me` through an int register (after `d82fd83`)
+
+A survey of promoted readables for conditions on a literal `nil` (dead code behind an unresolved value) found 23;
+17 were one shape: `piVar1 = (int *)(this + 8); (**(code **)(*piVar1 + SLOT))(piVar1, ..)`, the hit / talk tests on
+`me` through an int register. `respell_me_register_calls` (entity lowering, after `resolve_this_aliases`) respells those
+calls up to the register's next assignment. MsgIsHitBy..., MsgIsHitByAnySpecialAbilityFrom..., the 0xa4 special-ability
+test and IsTalkedToByHero now run in LookoutPointBeggar, BordelloClient, BordelloLady, GuildMasterGameFlow, the Witch and
+BanditCamp's Assassin1 (BanditCamp is pinned in v35, so the bundle is unchanged). A/B: only those six files. Six nil
+conditions remain (TraderEscort MakeTraderComment, BS_Teacher `uStack_14` IsAlive, TourGuideFollower, STS_BriarRose,
+WomanToAttract).

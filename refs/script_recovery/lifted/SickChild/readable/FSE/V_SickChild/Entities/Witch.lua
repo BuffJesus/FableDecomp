@@ -1,6 +1,8 @@
 -- Readable native conversion: Witch. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 local helpers = require("V_SickChild.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
@@ -11,9 +13,8 @@ function Main(quest, me)
     local self_0x14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue4, scratchValue6, ctr_94_2, thingsForPotionGot, questionAnswer, scratchValue14
-    local scratchValue15, getHero, scratchValue19, scratchValue20, this_01, movie, movie4
-    local scratchValue28, movie5
+    local ctr_94_2, thingsForPotionGot, questionAnswer, scratchValue12, scratchValue13, getHero
+    local scratchValue17, scratchValue18, this_01, movie, movie4, scratchValue26, movie5
     local function ReleaseEverything()
         resources:DestroyMovie(movie)
     end
@@ -22,7 +23,7 @@ function Main(quest, me)
         resources:DestroyMovie(movie)
     end
     local function ReleaseEverything3()
-        local this_01 = scratchValue28 + 4
+        local this_01 = scratchValue26 + 4
         resources:DestroyMovie(this_01)
     end
     if not quest:NewScriptFrame(me) then return end
@@ -115,11 +116,11 @@ function Main(quest, me)
                             return
                         end
                         -- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()
-                        scratchValue15 = nil --[[unresolved native value]]
+                        scratchValue13 = nil --[[unresolved native value]]
                         local fret_0 = quest:GetHealth(nil --[[missing]])
                         if 0.0 < fret_0 then
                             -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-                            scratchValue14 = nil --[[unresolved native value]]
+                            scratchValue12 = nil --[[unresolved native value]]
                             -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
@@ -142,10 +143,10 @@ function Main(quest, me)
                             return
                         end
                         -- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()
-                        scratchValue15 = nil --[[unresolved native value]]
+                        scratchValue13 = nil --[[unresolved native value]]
                         if 0.0 < quest:GetHealth(1) then
                             -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-                            scratchValue14 = nil --[[unresolved native value]]
+                            scratchValue12 = nil --[[unresolved native value]]
                             -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
@@ -160,10 +161,10 @@ function Main(quest, me)
                 else
                     if predicateResult then ReleaseEverything2(); return end
                     -- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()
-                    scratchValue15 = nil --[[unresolved native value]]
+                    scratchValue13 = nil --[[unresolved native value]]
                     if 0.0 < quest:GetHealth(1) then
                         -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-                        scratchValue14 = nil --[[unresolved native value]]
+                        scratchValue12 = nil --[[unresolved native value]]
                         -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
@@ -177,12 +178,8 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_a0 = xStack_a0 | 2;
         if me:MsgIsHitByHero() then goto LAB_00ecef61 end
-        -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-        scratchValue4 = nil --[[unresolved native value]]
-        if scratchValue4 then
-            -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-            local scratchValue5 = nil --[[unresolved native value]]
-            if not scratchValue5 then goto LAB_00ecef61 end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecef61 end
         end
         goto FLOW_past_lab_00ecef61
         ::LAB_00ecef61::
@@ -191,11 +188,11 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then return end
         ctr_94_2 = ctr_94_2 + 1
         if scratchValue == nil then
-            scratchValue19 = "TEXT_QST_B10_WITCH_ONHIT_10"
+            scratchValue17 = "TEXT_QST_B10_WITCH_ONHIT_10"
             goto LAB_00ecf00d
         else
             if scratchValue == 1 then
-                scratchValue19 = "TEXT_QST_B10_WITCH_ONHIT_20"
+                scratchValue17 = "TEXT_QST_B10_WITCH_ONHIT_20"
                 goto LAB_00ecf00d
             end
             if scratchValue == 2 then
@@ -208,7 +205,7 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00ecf00d
         ::LAB_00ecf00d::
-        movie5 = scratchValue19
+        movie5 = scratchValue17
         ::FLOW_past_lab_00ecf00d::
         resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
@@ -244,11 +241,11 @@ function Main(quest, me)
             resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             -- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()
-            scratchValue15 = nil --[[unresolved native value]]
+            scratchValue13 = nil --[[unresolved native value]]
             local fret_03 = quest:GetHealth(nil --[[missing]])
             if 0.0 < fret_03 then
                 -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-                scratchValue14 = nil --[[unresolved native value]]
+                scratchValue12 = nil --[[unresolved native value]]
                 -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16);
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
@@ -269,12 +266,8 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_a0 = xStack_a0 | 0x10;
         if me:MsgIsHitByHero() then goto LAB_00ecf576 end
-        -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-        scratchValue6 = nil --[[unresolved native value]]
-        if scratchValue6 then
-            -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-            local scratchValue7 = nil --[[unresolved native value]]
-            if not scratchValue7 then goto LAB_00ecf576 end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecf576 end
         end
         goto FLOW_past_lab_00ecf576
         ::LAB_00ecf576::
@@ -283,11 +276,11 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then return end
         ctr_94_2 = ctr_94_2 + 1
         if scratchValue2 == nil then
-            scratchValue20 = "TEXT_QST_B10_WITCH_ONHIT_10"
+            scratchValue18 = "TEXT_QST_B10_WITCH_ONHIT_10"
             goto LAB_00ecf622
         else
             if scratchValue2 == 1 then
-                scratchValue20 = "TEXT_QST_B10_WITCH_ONHIT_20"
+                scratchValue18 = "TEXT_QST_B10_WITCH_ONHIT_20"
                 goto LAB_00ecf622
             end
             if scratchValue2 == 2 then
@@ -300,16 +293,16 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00ecf622
         ::LAB_00ecf622::
-        movie5 = scratchValue20
+        movie5 = scratchValue18
         ::FLOW_past_lab_00ecf622::
         resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         -- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()
-        scratchValue15 = nil --[[unresolved native value]]
+        scratchValue13 = nil --[[unresolved native value]]
         local fret_04 = quest:GetHealth(nil --[[missing]])
         if 0.0 < fret_04 then
             -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-            scratchValue14 = nil --[[unresolved native value]]
+            scratchValue12 = nil --[[unresolved native value]]
             -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pvVar11,uVar16,uVar17);
             while me:IsPerformingScriptTask() do
                 quest:NewScriptFrame(me)

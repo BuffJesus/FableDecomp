@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, piVar1, r1, r2, r3, r4, r5, r6, r7, r8, this_00, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
+    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, r1, r2, r3, r4, r5, r6, r7, r8, this_00, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d05880()
         quest:PauseAllNonScriptedEntities(false)
@@ -45,11 +45,9 @@ function Main(quest, me)
                 if bVar5 then goto LAB_00d058f3 end
                 cVar6 = me:MsgIsHitByHero()
                 if not cVar6 then
-                    -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar5 then
-                        -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                        bVar5 = nil --[[unresolved native value]]
+                        bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar5 then goto LAB_00d04cdc end
                     end
                     c_stk_c6 = 0
@@ -66,8 +64,7 @@ function Main(quest, me)
                     if bVar5 then goto LAB_00d058f3 end
                     quest:SetStateBool("AssassinsUnderAttack", true)
                 end
-                -- TODO(native): bVar5 = (**(*me + 0x6c))(me,"SCRIPT_NAME_HERO")
-                bVar5 = nil --[[unresolved native value]]
+                bVar5 = me:IsTalkedToByHero()
                 if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive

@@ -17,3 +17,12 @@ def test_printed_call_is_respelled_without_the_receiver_argument():
     fn = {'address': '0x00F17C70', 'bodyEndExclusive': '0x00F19A8B'}
     out = respell_me_receivers(text, fn, entries, RData())
     assert out == 'bVar3 = (**(code **)(*(int *)(this + 8) + 0xa4))(0xe,&CStack_1a0);'
+
+
+def test_register_loaded_with_me_is_me_until_reassigned():
+    from tools.script_recovery.native_evidence_lowering import respell_me_register_calls
+    text = ('  piVar1 = (int *)(this + 8);\n  bVar5 = (**(code **)(*piVar1 + 0x54))(piVar1,&name);\n'
+            '  piVar1 = *(int **)(this + 4);\n  (**(code **)(*piVar1 + 0x1c))(piVar1);\n')
+    out = respell_me_register_calls(text)
+    assert 'bVar5 = (**(code **)(*(int *)(this + 8) + 0x54))(&name);' in out
+    assert '(**(code **)(*piVar1 + 0x1c))(piVar1);' in out

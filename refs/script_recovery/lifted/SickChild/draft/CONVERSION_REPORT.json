@@ -1346,13 +1346,9 @@
             "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
             "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: bVar6 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar6 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
             "unlifted: pCVar20 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: bVar6 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar6 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
             "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)"
           ],
@@ -1455,6 +1451,8 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -1492,6 +1490,8 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -1510,7 +1510,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 489,
+          "lines": 485,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4221,7 +4221,7 @@
         "functionSyntaxPassed": 49,
         "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 13,
-        "todo": 312
+        "todo": 308
       }
     }
   ],
@@ -4232,6 +4232,6 @@
     "functionSyntaxPassed": 49,
     "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 312
+    "todo": 308
   }
 }

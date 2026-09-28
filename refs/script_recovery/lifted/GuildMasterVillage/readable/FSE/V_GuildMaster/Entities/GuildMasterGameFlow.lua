@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 local helpers = require("V_GuildMaster.native_quest_helpers")
 
 -- GuildMasterGameFlow.Main (retail 0x00e90be0)
@@ -23,6 +25,7 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     repeat
         if quest:IsQuestActive("Q_EndGameFocalSites") then
+            if quest:IsActiveThreadTerminating() then break end
             local resource2 = resources:NewResource()
             resources:PrepareResource(resource2)
             while not resources:TryAcquire(resource2, hero, 4) do
@@ -88,18 +91,11 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                 end
-                if not me:MsgIsHitByHero() then
-                    -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                    if nil then
-                        -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                        if not nil then goto LAB_00e914b3 end
-                    end
-                    scratchValue = 0
-                else
-                    goto LAB_00e914b3
+                if me:MsgIsHitByHero() then goto LAB_00e914b3 end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e914b3 end
                 end
+                scratchValue = 0
                 goto FLOW_past_lab_00e914b3
                 ::LAB_00e914b3::
                 scratchValue = 1
@@ -133,18 +129,11 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         end
-        if not me:MsgIsHitByHero() then
-            -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-            if nil then
-                -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                if not nil then goto LAB_00e91742 end
-            end
-            scratchValue = 0
-        else
-            goto LAB_00e91742
+        if me:MsgIsHitByHero() then goto LAB_00e91742 end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e91742 end
         end
+        scratchValue = 0
         goto FLOW_past_lab_00e91742
         ::LAB_00e91742::
         scratchValue = 1
@@ -258,7 +247,11 @@ function Main(quest, me)
             break
         end
         ::LAB_00e91dcc::
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource)
+            do return end
+        end
     until false
     resources:ReleaseResource(resource)
 end

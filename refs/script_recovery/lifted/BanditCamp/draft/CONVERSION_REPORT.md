@@ -42,7 +42,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | AssassinMarker | Init | 0x00cdebb0 | True | 0 |
 | Q_BanditCampBossBattle | AssassinMarker | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | AssassinMarker | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_BanditCampBossBattle | Assassin1 | Main | 0x00d04ae0 | True | 17 |
+| Q_BanditCampBossBattle | Assassin1 | Main | 0x00d04ae0 | True | 14 |
 | Q_BanditCampBossBattle | Assassin1 | Init | 0x00d04a60 | True | 0 |
 | Q_BanditCampBossBattle | Assassin1 | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | Assassin1 | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 78}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 75}`

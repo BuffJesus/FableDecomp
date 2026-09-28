@@ -1363,12 +1363,7 @@
             "label LAB_00e3f4e7",
             "unlifted: (**(code **)(*piVar1 + 0x5ec))();",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: bVar5 = (**(*me + 0xa8))(me,&xStack_120)",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)",
             "unlifted: ppuVar13 = *piVar1",
-            "unlifted: p0 = (**(*me + 0x1c))(me,xStack_30)",
-            "unlifted: bVar5 = (**(*me + 0xa8))(me,&xStack_120)",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)",
             "unlifted: ppuVar13 = *pppuVar28",
             "unlifted: CVar3 = *ENTITYSTATE_GetString(\"Name\")"
           ],
@@ -1393,6 +1388,8 @@
             "ClearThingHasInformation",
             "EntitySetPersonalityOverride",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource",
@@ -1535,6 +1532,7 @@
             "GetHomePos",
             "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
+            "GetHomePos",
             "MoveToPosition",
             "IsActiveThreadTerminating",
             "SetStateBool",
@@ -1546,6 +1544,8 @@
             "ClearThingHasInformation",
             "EntitySetPersonalityOverride",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
             "RESOURCE_PrepareResource",
@@ -1616,7 +1616,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 821,
+          "lines": 816,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3112,9 +3112,7 @@
             "unlifted: xStack_e0_b3 = '\\x01';",
             "unlifted: xStack_c4_b3 = '\\0';",
             "unlifted: xStack_c4_b3 = '\\x01';",
-            "unlifted: puVar8 = (**(*xStack_e4 + 0x18))()",
-            "unlifted: bVar4 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar4 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")"
+            "unlifted: puVar8 = (**(*xStack_e4 + 0x18))()"
           ],
           "calls": [
             "NewScriptFrame",
@@ -3405,6 +3403,8 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "ClearCommands",
             "RESOURCE_PrepareResource",
@@ -3441,7 +3441,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 800,
+          "lines": 797,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3935,7 +3935,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 141
+        "todo": 134
       }
     }
   ],
@@ -3946,6 +3946,6 @@
     "functionSyntaxPassed": 42,
     "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 9,
-    "todo": 141
+    "todo": 134
   }
 }

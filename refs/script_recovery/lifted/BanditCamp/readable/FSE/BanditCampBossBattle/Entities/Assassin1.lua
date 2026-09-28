@@ -3,6 +3,8 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
 local SCRIPT_DEF = {
     EXPERIENCE_GRANT_SMALL = 60,  -- 10
@@ -13,8 +15,8 @@ local SCRIPT_DEF = {
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, assassinsUnderAttack, scratchValue4, scratchValue5, questionAnswer
-    local questionAnswer2, movie2, resource
+    local assassinsUnderAttack, scratchValue, scratchValue3, questionAnswer, questionAnswer2, movie2
+    local resource
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
@@ -29,32 +31,24 @@ function Main(quest, me)
     local predicateResult = quest:IsActiveThreadTerminating()
     if predicateResult then resources:ReleaseResource(resource); return end
     assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack")
-    scratchValue4 = predicateResult
+    scratchValue = predicateResult
     while not assassinsUnderAttack and not quest:GetStateBool("AssassinCutsceneTriggered") do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if me:MsgIsHitByHero() then goto LAB_00d04cdc end
-        -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-        scratchValue = nil --[[unresolved native value]]
-        if scratchValue then
-            -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-            local scratchValue2 = nil --[[unresolved native value]]
-            if not scratchValue2 then goto LAB_00d04cdc end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d04cdc end
         end
-        scratchValue5 = 0
+        scratchValue3 = 0
         goto FLOW_past_lab_00d04cdc
         ::LAB_00d04cdc::
-        scratchValue5 = 1
+        scratchValue3 = 1
         ::FLOW_past_lab_00d04cdc::
-        if scratchValue5 ~= 0 then
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        if scratchValue3 ~= 0 then
             quest:SetStateBool("AssassinsUnderAttack", true)
         end
-        -- TODO(native): bVar5 = (**(*me + 0x6c))(me,"SCRIPT_NAME_HERO")
-        local scratchValue3 = nil --[[unresolved native value]]
-        if not scratchValue3 then assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        if not me:IsTalkedToByHero() then assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end
         if not quest:GetStateBool("Gate3Open") then
-            if not scratchValue4 then
+            if not scratchValue then
                 local movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -103,7 +97,7 @@ function Main(quest, me)
                 ::FLOW_hoist_lab_00d05364_1::
                 ::LAB_00d05373::
                 quest:SetStateBool("TalkedToAssassin", true)
-                scratchValue4 = 1
+                scratchValue = 1
                 quest:PauseAllNonScriptedEntities(false)
                 goto LAB_00d057a5
                 ::FLOW_past_lab_00d05364::

@@ -2818,10 +2818,7 @@
             "verify cleanup at LAB_00d05880 (lifted as early return)",
             "verify cleanup at LAB_00d05880 (lifted as early return)",
             "verify cleanup at LAB_00d05880 (lifted as early return)",
-            "label LAB_00d057c8",
-            "unlifted: bVar5 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0x6c))(me,&\"SCRIPT_NAME_HERO\")"
+            "label LAB_00d057c8"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2836,8 +2833,11 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "SetStateBool",
+            "IsTalkedToByHero",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -2983,7 +2983,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 455,
+          "lines": 452,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5607,7 +5607,7 @@
         "functionSyntaxPassed": 67,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 67
+        "todo": 64
       }
     },
     {
@@ -5751,6 +5751,6 @@
     "functionSyntaxPassed": 85,
     "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 19,
-    "todo": 78
+    "todo": 75
   }
 }

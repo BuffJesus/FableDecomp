@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __push1, __push2, __push3, __push4, __push5, __push6, bVar4, cVar5, fVar16, fVar2, iVar12, iVar17, iVar18, iVar19, iVar21, iVar6, native_arg_sequence_1, p0, pCVar10, pCVar7, pCVar9, pcVar20, piVar15, puVar8, pvVar11, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, stack0xfffffee0, xStack_118, xStack_120, xStack_30, xStack_40, xStack_8c, xStack_b4, xStack_c4, xStack_c4_b3, xStack_c8, xStack_dc, xStack_e0, xStack_e0_b3, xStack_e4, xStack_e8_2, xStack_e8_2_b3, x_stk_108, x_stk_18
+    local __push1, __push2, __push3, __push4, __push5, __push6, bVar4, cVar5, fVar16, fVar2, iVar12, iVar17, iVar18, iVar19, iVar21, iVar6, native_arg_sequence_1, p0, pCVar10, pCVar7, pCVar9, pcVar20, puVar8, pvVar11, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, stack0xfffffee0, xStack_118, xStack_120, xStack_30, xStack_40, xStack_8c, xStack_b4, xStack_c4, xStack_c4_b3, xStack_c8, xStack_dc, xStack_e0, xStack_e0_b3, xStack_e4, xStack_e8_2, xStack_e8_2_b3, x_stk_108, x_stk_18
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -400,7 +400,6 @@ function Main(quest, me)
                                     end
                                     __native_entity_state:SetStateInt("NextLine", __native_entity_state:GetStateInt("NextLine") + 1)
                                 end
-                                piVar15 = unaff_EBX
                                 goto LAB_00e464a0
                             end
                             ::FLOW_past_lab_00e45d07::
@@ -712,11 +711,9 @@ function Main(quest, me)
             end
             cVar5 = me:MsgIsHitByHero()
             if not cVar5 then
-                -- TODO(native): bVar4 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                bVar4 = nil --[[unresolved native value]]
+                bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar4 then
-                    -- TODO(native): bVar4 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                    bVar4 = nil --[[unresolved native value]]
+                    bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar4 then goto LAB_00e453d2 end
                 end
                 -- TODO(native): xStack_c4_b3 = '\0';

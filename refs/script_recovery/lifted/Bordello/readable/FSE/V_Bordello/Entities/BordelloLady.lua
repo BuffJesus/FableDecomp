@@ -3,6 +3,8 @@
 
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 local helpers = require("V_Bordello.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
@@ -12,9 +14,9 @@ local name, self0Xc_, noLongerWorking, haveTalked, partiedAlready, goldRequired,
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult2, predicateResult, predicateResult22, scratchValue4, health
-    local getHealth, questionAnswer, questionAnswer2, getStateString, scratchValue11, line
-    local scratchValue13, resource2, pppuVar28, getStateInt, resource
+    local scratchValue, predicateResult2, predicateResult, predicateResult22, scratchValue6, health
+    local getHealth, questionAnswer, questionAnswer2, getStateString, scratchValue13, line
+    local scratchValue15, resource2, pppuVar28, getStateInt, resource
     if not quest:NewScriptFrame(me) then return end
     resources:NewResource()
     quest:SetCreatureBrain(nil --[[missing]], "BRAIN_PASSIVE_OVERRIDE")
@@ -38,8 +40,8 @@ function Main(quest, me)
         end
         scratchValue = not me:IsTalkedToByHero()
         if not scratchValue then
-            scratchValue4 = quest:IsReportedOrUnreportedCrimeKnown(nil --[[missing]])
-            scratchValue = scratchValue4
+            scratchValue6 = quest:IsReportedOrUnreportedCrimeKnown(nil --[[missing]])
+            scratchValue = scratchValue6
         end
         local predicateResult3 = not scratchValue
             -- TODO(native): xStack_15c = xStack_15c & 0xfffffffe;
@@ -52,16 +54,9 @@ function Main(quest, me)
             quest:EntitySetPersonalityOverride()
         end
         -- TODO(native): xStack_15c = xStack_15c | 2;
-        if not me:MsgIsHitByHero() then
-            -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
-    --[[unresolved native value]]
-            if nil then
-                -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
-    --[[unresolved native value]]
-                if not nil then goto LAB_00e40183 end
-            end
-        else
-            goto LAB_00e40183
+        if me:MsgIsHitByHero() then goto LAB_00e40183 end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40183 end
         end
         goto FLOW_past_lab_00e40183
         ::LAB_00e40183::
@@ -96,17 +91,17 @@ function Main(quest, me)
     getStateInt = resource2
     quest:PauseAllNonScriptedEntities(true)
     resources:PrepareResource(resource2)
-    scratchValue4 = me:AcquireControl(4)
-    while not scratchValue4 do
+    scratchValue6 = me:AcquireControl(4)
+    while not scratchValue6 do
         quest:NewScriptFrame(me)
         if not quest:IsActiveThreadTerminating() then
-            scratchValue4 = me:AcquireControl(8)
+            scratchValue6 = me:AcquireControl(8)
         else
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             resources:DestroyMovie(movie)
             do return end
-            scratchValue4 = me:AcquireControl(8)
+            scratchValue6 = me:AcquireControl(8)
         end
     end
     if quest:IsActiveThreadTerminating() then
@@ -200,10 +195,10 @@ function Main(quest, me)
                             end
                             quest:GiveHeroGold(0.0)
                             -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
-                            scratchValue11 = "TEXT_CS_B13_SEX_" .. name
-                            resources:SetString(resources:MemberStringMap("csargs"), line, scratchValue11)
-                            scratchValue11 = GetLHTSTag(quest, me, "PARTY_PAID_PLEASED")
-                            resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", scratchValue11)
+                            scratchValue13 = "TEXT_CS_B13_SEX_" .. name
+                            resources:SetString(resources:MemberStringMap("csargs"), line, scratchValue13)
+                            scratchValue13 = GetLHTSTag(quest, me, "PARTY_PAID_PLEASED")
+                            resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", scratchValue13)
                             quest:SetCutsceneSkippable(nil --[[missing]])
                             if not quest:GetStateBool("HadSex") then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
@@ -211,13 +206,13 @@ function Main(quest, me)
                                     goto LAB_00e3fd35
                                 else
                                     if name ~= "HEDWIG" then goto LAB_00e3fd35 end
-                                    scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_HEDWIG"
+                                    scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_HEDWIG"
                                 end
                                 goto FLOW_past_lab_00e3fd35
                                 ::LAB_00e3fd35::
-                                scratchValue13 = "CS_BORDELLO_PAYINGFORSEX"
+                                scratchValue15 = "CS_BORDELLO_PAYINGFORSEX"
                                 ::FLOW_past_lab_00e3fd35::
-                                helpers.PlayCutscene(quest, me, scratchValue13, true)
+                                helpers.PlayCutscene(quest, me, scratchValue15, true)
                                 quest:SetStateBool("HadSex", true)
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
@@ -280,9 +275,7 @@ function Main(quest, me)
     else
         if not (me ~= nil and me:IsDistanceFromPositionOver(me:GetHomePos(), 2.0)) then goto LAB_00e40044 end
         if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
-        -- TODO(native): p0 = (**(*me + 0x1c))(me,xStack_30)
-        local p0 = nil --[[unresolved native value]]
-        me:MoveToPosition(p0, 1.0, ENTITY_MOVE_WALK, false, true)
+        me:MoveToPosition(me:GetHomePos(), 1.0, ENTITY_MOVE_WALK, false, true)
     end
     goto FLOW_past_lab_00e40044
     ::LAB_00e40044::
@@ -302,18 +295,6 @@ function Main(quest, me)
         quest:EntitySetPersonalityOverride()
     end
     -- TODO(native): xStack_15c = xStack_15c | 2;
-    if not me:MsgIsHitByHero() then
-        -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
-    --[[unresolved native value]]
-        if nil then
-            -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
-    --[[unresolved native value]]
-            if not nil then goto LAB_00e40183_c2 end
-        end
-    end
-    goto FLOW_past_lab_00e40183_c2
-    ::LAB_00e40183_c2::
-    ::FLOW_past_lab_00e40183_c2::
         -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
     if not quest:IsActiveThreadTerminating() then
         resources:PrepareResource(resources:MemberResource("seh_Whore"))
@@ -389,9 +370,9 @@ function Main(quest, me)
     goto FLOW_past_lab_00e3f48a
     ::LAB_00e3f48a::
     if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
-    scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE"
+    scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE"
     ::LAB_00e3f4a5::
-    helpers.PlayCutscene(quest, me, scratchValue13, true)
+    helpers.PlayCutscene(quest, me, scratchValue15, true)
     quest:SetCutsceneSkippable(nil --[[missing]])
     partiedAlready = true
     quest:SetStateBool("HeroPartying", true)
@@ -409,7 +390,7 @@ function Main(quest, me)
     goto LAB_00e3ffe3
     ::FLOW_hoist_lab_00e3fd7c_1::
     if nil ~= "HEDWIG" then goto LAB_00e3f48a end
-    if not quest:IsActiveThreadTerminating() then scratchValue13 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG"; goto LAB_00e3f4a5 end
+    if not quest:IsActiveThreadTerminating() then scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG"; goto LAB_00e3f4a5 end
     -- TODO(native): (**(code **)(*piVar1 + 0x5ec))();
     resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
     resources:ReleaseResource(resource2)

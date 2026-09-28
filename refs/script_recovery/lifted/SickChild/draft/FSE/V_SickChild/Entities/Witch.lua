@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar5, au_stk_28, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, piVar1, pvVar11, stack0xffffff3c, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
+    local CVar5, au_stk_28, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, pvVar11, stack0xffffff3c, this_00, this_01, uVar13, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         resources:DestroyMovie(xStack_8c)
@@ -271,11 +271,9 @@ function Main(quest, me)
                 -- TODO(native): xStack_a0 = xStack_a0 | 2;
                 cVar7 = me:MsgIsHitByHero()
                 if not cVar7 then
-                    -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                    bVar6 = nil --[[unresolved native value]]
+                    bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar6 then
-                        -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                        bVar6 = nil --[[unresolved native value]]
+                        bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar6 then goto LAB_00ecef61 end
                     end
                 else
@@ -417,11 +415,9 @@ function Main(quest, me)
                     -- TODO(native): xStack_a0 = xStack_a0 | 0x10;
                     cVar7 = me:MsgIsHitByHero()
                     if not cVar7 then
-                        -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                        bVar6 = nil --[[unresolved native value]]
+                        bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar6 then
-                            -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                            bVar6 = nil --[[unresolved native value]]
+                            bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar6 then goto LAB_00ecf576 end
                         end
                     else

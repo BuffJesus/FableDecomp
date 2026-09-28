@@ -20452,8 +20452,8 @@
       "deadStores": 3,
       "unusedAlive": 0,
       "flagTests": 9,
-      "declarations": 21,
-      "decimalLiterals": 9
+      "declarations": 20,
+      "decimalLiterals": 11
      }
     },
     {
@@ -20703,14 +20703,18 @@
        ]
       },
       "bVar6_25": {
-       "name": "scratchValue4",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "name": "hitByHeroAbility",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hitByHeroAbility"
+       ]
       },
       "bVar6_26": {
-       "name": "scratchValue5",
+       "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "assignmentRoles": [
+        null
+       ]
       },
       "bVar6_27": {
        "name": "predicateResult15",
@@ -20769,14 +20773,18 @@
        ]
       },
       "bVar6_35": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "name": "hitByHeroAbility2",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "hitByHeroAbility"
+       ]
       },
       "bVar6_36": {
-       "name": "scratchValue7",
+       "name": "scratchValue5",
        "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
+       "assignmentRoles": [
+        null
+       ]
       },
       "bVar6_37": {
        "name": "predicateResult22",
@@ -20890,42 +20898,42 @@
        ]
       },
       "fVar3_1": {
-       "name": "scratchValue8",
+       "name": "scratchValue6",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar3_2": {
-       "name": "scratchValue9",
+       "name": "scratchValue7",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar3_3": {
-       "name": "scratchValue10",
+       "name": "scratchValue8",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar3_4": {
-       "name": "scratchValue11",
+       "name": "scratchValue9",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar3_5": {
-       "name": "scratchValue12",
+       "name": "scratchValue10",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "fVar3_6": {
-       "name": "scratchValue13",
+       "name": "scratchValue11",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -20948,7 +20956,7 @@
        ]
       },
       "iVar10_3": {
-       "name": "scratchValue14",
+       "name": "scratchValue12",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -20984,19 +20992,19 @@
        ]
       },
       "pCVar12_3": {
-       "name": "scratchValue15",
+       "name": "scratchValue13",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
       "pCVar15": {
-       "name": "scratchValue16",
+       "name": "scratchValue14",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "pCVar20_1": {
-       "name": "scratchValue17",
+       "name": "scratchValue15",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -21031,7 +21039,7 @@
        ]
       },
       "pcVar14_1": {
-       "name": "scratchValue18",
+       "name": "scratchValue16",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21041,7 +21049,7 @@
        ]
       },
       "pcVar14_2": {
-       "name": "scratchValue19",
+       "name": "scratchValue17",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21049,7 +21057,7 @@
        ]
       },
       "pcVar14_3": {
-       "name": "scratchValue20",
+       "name": "scratchValue18",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21057,7 +21065,7 @@
        ]
       },
       "pvVar11": {
-       "name": "scratchValue21",
+       "name": "scratchValue19",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21065,7 +21073,7 @@
        ]
       },
       "uVar16": {
-       "name": "scratchValue22",
+       "name": "scratchValue20",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21076,7 +21084,7 @@
        ]
       },
       "uVar17": {
-       "name": "scratchValue23",
+       "name": "scratchValue21",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
@@ -21086,14 +21094,14 @@
        ]
       },
       "uVar4": {
-       "name": "scratchValue24",
+       "name": "scratchValue22",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_58": {
-       "name": "scratchValue25",
+       "name": "scratchValue23",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -21114,14 +21122,14 @@
        ]
       },
       "xStack_74": {
-       "name": "scratchValue26",
+       "name": "scratchValue24",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
        ]
       },
       "xStack_7c": {
-       "name": "scratchValue27",
+       "name": "scratchValue25",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -21142,7 +21150,7 @@
        ]
       },
       "xStack_90_2": {
-       "name": "scratchValue28",
+       "name": "scratchValue26",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
@@ -21235,52 +21243,52 @@
          244
         ],
         "bVar6_25": [
-         256
+         255
         ],
         "bVar6_26": [
-         259
+         257
         ],
         "bVar6_27": [
-         270
+         268
         ],
         "bVar6_28": [
-         311
+         309
         ],
         "bVar6_29": [
-         320
+         318
         ],
         "bVar6_30": [
-         334
+         332
         ],
         "bVar6_31": [
-         343
+         341
         ],
         "bVar6_32": [
-         355
+         353
         ],
         "bVar6_33": [
-         376
+         374
         ],
         "bVar6_34": [
-         385
+         383
         ],
         "bVar6_35": [
-         400
+         397
         ],
         "bVar6_36": [
-         403
+         399
         ],
         "bVar6_37": [
-         414
+         410
         ],
         "bVar6_38": [
-         459
+         455
         ],
         "bVar6_39": [
-         467
+         463
         ],
         "bVar6_40": [
-         478
+         474
         ]
        }
       },
@@ -21307,22 +21315,22 @@
          253
         ],
         "cVar7_6": [
-         307,
-         317
+         305,
+         315
         ],
         "cVar7_7": [
-         353
+         351
         ],
         "cVar7_8": [
-         372,
-         382
+         370,
+         380
         ],
         "cVar7_9": [
-         397
+         395
         ],
         "cVar7_10": [
-         455,
-         464
+         451,
+         460
         ]
        }
       },
@@ -21340,13 +21348,13 @@
          228
         ],
         "fVar3_4": [
-         301
+         299
         ],
         "fVar3_5": [
-         364
+         362
         ],
         "fVar3_6": [
-         446
+         442
         ]
        }
       },
@@ -21356,7 +21364,7 @@
        "versions": {
         "iVar10_1": [
          34,
-         331
+         329
         ],
         "iVar10_2": [
          83,
@@ -21366,8 +21374,8 @@
          163,
          201,
          231,
-         367,
-         449
+         365,
+         445
         ]
        }
       },
@@ -21385,8 +21393,8 @@
          158,
          196,
          226,
-         362,
-         444
+         360,
+         440
         ]
        }
       },
@@ -21398,15 +21406,15 @@
          166,
          204,
          234,
-         369
+         367
         ],
         "pcVar14_2": [
-         277,
-         281
+         275,
+         279
         ],
         "pcVar14_3": [
-         421,
-         425
+         417,
+         421
         ]
        }
       },
@@ -21415,10 +21423,10 @@
        "originalDeclaration": "    local CVar5, au_stk_28, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, pvVar11, stack0xffffff3c, this_00, this_01, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0\n",
        "versions": {
         "CVar5_1": [
-         271
+         269
         ],
         "CVar5_2": [
-         415
+         411
         ]
        }
       },
@@ -21427,13 +21435,13 @@
        "originalDeclaration": "    local CVar5, au_stk_28, bVar6, bVar8, cVar7, ctr_94_2, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_sequence_1, pCVar12, pCVar15, pCVar20, pCVar9, pcVar14, pvVar11, stack0xffffff3c, this_00, this_01, uVar16, uVar17, uVar4, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_8c_2, xStack_90_2, xStack_a0\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         335
+         333
         ],
         "native_arg_sequence_1_2": [
+         335,
          337,
-         339,
-         345,
-         347
+         343,
+         345
         ]
        }
       },
@@ -21448,12 +21456,12 @@
          167,
          205,
          235,
-         299,
-         305,
-         352,
-         370,
-         442,
-         453
+         297,
+         303,
+         350,
+         368,
+         438,
+         449
         ]
        }
       },
@@ -21476,7 +21484,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 500,
+     "sourceLine": 496,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21485,7 +21493,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 513,
+     "sourceLine": 509,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21494,7 +21502,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 522,
+     "sourceLine": 518,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21503,7 +21511,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 9,
+     "sourceLine": 11,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21512,7 +21520,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 330,
+     "sourceLine": 324,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21521,7 +21529,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 343,
+     "sourceLine": 337,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21530,7 +21538,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 348,
+     "sourceLine": 342,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -21543,7 +21551,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 14,
+       "splitLocals": 12,
        "closures": 1,
        "hero": 1,
        "cutscenes": 0,
@@ -21551,7 +21559,7 @@
        "aliveStaging": 37,
        "exitChecksInlined": 7,
        "frameChecks": 6,
-       "inlinedTemporaries": 47,
+       "inlinedTemporaries": 51,
        "deadDefinitions": 22,
        "guardWrappers": 2,
        "retryLoops": 7,
@@ -21582,7 +21590,7 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 1,
        "controlAcquires": 0,
-       "sunkLocals": 21,
+       "sunkLocals": 17,
        "cleanupClosureNames": 3,
        "parentheses": 5,
        "cosmetics": 0,
@@ -21591,7 +21599,7 @@
        "hoistedState": 1
       },
       "before": {
-       "lines": 468,
+       "lines": 464,
        "temporaries": 88,
        "labels": 8,
        "gotos": 12,
@@ -21600,8 +21608,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 320,
-       "temporaries": 16,
+       "lines": 312,
+       "temporaries": 14,
        "labels": 9,
        "gotos": 12,
        "terminationChecks": 26,
@@ -21822,304 +21830,269 @@
     ]
    },
    "readability": {
-    "lines": 356,
+    "lines": 349,
     "counts": {
      "nativeNames": 24,
-     "genericTemporaries": 46,
-     "unresolvedDiagnostics": 50,
+     "genericTemporaries": 36,
+     "unresolvedDiagnostics": 42,
      "gotos": 12
     },
     "status": "needs-recovery",
     "findings": [
      {
-      "line": 7,
+      "line": 9,
       "category": "nativeNames",
       "text": "self0X14"
      },
      {
-      "line": 11,
+      "line": 13,
       "category": "nativeNames",
       "text": "self_0x14"
      },
      {
-      "line": 14,
+      "line": 16,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 14,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 14,
-      "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 15,
-      "category": "genericTemporaries",
-      "text": "scratchValue15"
-     },
-     {
-      "line": 15,
-      "category": "genericTemporaries",
-      "text": "scratchValue19"
-     },
-     {
-      "line": 15,
-      "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue12"
      },
      {
       "line": 16,
       "category": "genericTemporaries",
-      "text": "scratchValue28"
+      "text": "scratchValue13"
      },
      {
-      "line": 25,
+      "line": 17,
       "category": "genericTemporaries",
-      "text": "scratchValue28"
+      "text": "scratchValue17"
      },
      {
-      "line": 43,
+      "line": 17,
+      "category": "genericTemporaries",
+      "text": "scratchValue18"
+     },
+     {
+      "line": 17,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 26,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 44,
       "category": "nativeNames",
       "text": "helper_ECE460"
      },
      {
-      "line": 48,
+      "line": 49,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 52,
+      "line": 53,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 54,
+      "line": 55,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 72,
+      "line": 73,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 76,
+      "line": 77,
       "category": "genericTemporaries",
       "text": "predicateResult7"
      },
      {
-      "line": 78,
+      "line": 79,
       "category": "genericTemporaries",
       "text": "predicateResult7"
      },
      {
-      "line": 86,
+      "line": 87,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 105,
+      "line": 106,
       "category": "nativeNames",
       "text": "helper_ECE460"
      },
      {
-      "line": 113,
+      "line": 114,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 117,
+      "line": 118,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 118,
+      "line": 119,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue13"
      },
      {
-      "line": 118,
+      "line": 119,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 121,
+      "line": 122,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar10 = *(self_0x14 + 0x58)"
      },
      {
-      "line": 122,
+      "line": 123,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 122,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "text": "scratchValue12"
      },
      {
       "line": 123,
       "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native value]]"
+     },
+     {
+      "line": 124,
+      "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);"
      },
      {
-      "line": 133,
+      "line": 134,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 139,
+      "line": 140,
       "category": "genericTemporaries",
       "text": "predicateResult7"
      },
      {
-      "line": 140,
+      "line": 141,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 144,
+      "line": 145,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 145,
+      "line": 146,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue13"
      },
      {
-      "line": 145,
+      "line": 146,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 147,
+      "line": 148,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar10 = *(self_0x14 + 0x58)"
      },
      {
-      "line": 148,
+      "line": 149,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 148,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "text": "scratchValue12"
      },
      {
       "line": 149,
       "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native value]]"
+     },
+     {
+      "line": 150,
+      "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);"
      },
      {
-      "line": 154,
+      "line": 155,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:PauseAllNonScriptedEntities(*(this + 4))"
      },
      {
-      "line": 161,
+      "line": 162,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 162,
+      "line": 163,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 163,
+      "line": 164,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue13"
      },
      {
-      "line": 163,
+      "line": 164,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 165,
+      "line": 166,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar10 = *(self_0x14 + 0x58)"
      },
      {
-      "line": 166,
+      "line": 167,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
-     },
-     {
-      "line": 166,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "text": "scratchValue12"
      },
      {
       "line": 167,
       "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native value]]"
+     },
+     {
+      "line": 168,
+      "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);"
      },
      {
-      "line": 178,
+      "line": 179,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_a0 = xStack_a0 | 2;"
      },
      {
-      "line": 179,
+      "line": 180,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 179,
-      "category": "nativeNames",
-      "text": "LAB_00ecef61"
      },
      {
       "line": 180,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): bVar6 = (**(*me + 0xa8))(me,\"SCRIPT_NAME_HERO\")"
-     },
-     {
-      "line": 181,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 181,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "category": "nativeNames",
+      "text": "LAB_00ecef61"
      },
      {
       "line": 182,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 183,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,\"SCRIPT_NAME_HERO\")"
-     },
-     {
-      "line": 184,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 184,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 185,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 185,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 182,
+      "category": "nativeNames",
+      "text": "LAB_00ecef61"
+     },
+     {
+      "line": 184,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 184,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ecef61"
      },
      {
       "line": 185,
@@ -22127,24 +22100,14 @@
       "text": "LAB_00ecef61"
      },
      {
-      "line": 187,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 187,
+      "line": 186,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00ecef61"
      },
      {
-      "line": 188,
-      "category": "nativeNames",
-      "text": "LAB_00ecef61"
-     },
-     {
-      "line": 189,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00ecef61"
+      "line": 187,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
      },
      {
       "line": 190,
@@ -22152,224 +22115,204 @@
       "text": "scratchValue"
      },
      {
-      "line": 193,
+      "line": 191,
       "category": "genericTemporaries",
-      "text": "scratchValue"
+      "text": "scratchValue17"
+     },
+     {
+      "line": 192,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 192,
+      "category": "nativeNames",
+      "text": "LAB_00ecf00d"
      },
      {
       "line": 194,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue"
      },
      {
       "line": 195,
+      "category": "genericTemporaries",
+      "text": "scratchValue17"
+     },
+     {
+      "line": 196,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 195,
+      "line": 196,
       "category": "nativeNames",
       "text": "LAB_00ecf00d"
-     },
-     {
-      "line": 197,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
      },
      {
       "line": 198,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
-     },
-     {
-      "line": 199,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 199,
-      "category": "nativeNames",
-      "text": "LAB_00ecf00d"
-     },
-     {
-      "line": 201,
-      "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 202,
+      "line": 199,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");"
      },
      {
-      "line": 205,
+      "line": 202,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");"
      },
      {
-      "line": 209,
+      "line": 206,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 209,
+      "line": 206,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00ecf00d"
      },
      {
-      "line": 210,
+      "line": 207,
       "category": "nativeNames",
       "text": "LAB_00ecf00d"
      },
      {
-      "line": 211,
+      "line": 208,
       "category": "genericTemporaries",
-      "text": "scratchValue19"
+      "text": "scratchValue17"
      },
      {
-      "line": 212,
+      "line": 209,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00ecf00d"
      },
      {
-      "line": 215,
+      "line": 212,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar20 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 216,
+      "line": 213,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 219,
+      "line": 216,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_58 = *(int *)(*(int *)(this + 0x14) + 0x58);"
      },
      {
-      "line": 220,
+      "line": 217,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)((int)xStack_58 + 0x34))(pCVar20,pvVar11);"
      },
      {
-      "line": 246,
+      "line": 243,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 247,
+      "line": 244,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue13"
      },
      {
-      "line": 247,
+      "line": 244,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 250,
+      "line": 247,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar10 = *(self_0x14 + 0x58)"
      },
      {
-      "line": 251,
+      "line": 248,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
+      "text": "scratchValue12"
      },
      {
-      "line": 251,
+      "line": 248,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 252,
+      "line": 249,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16);"
      },
      {
-      "line": 270,
+      "line": 267,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_a0 = xStack_a0 | 0x10;"
      },
      {
-      "line": 271,
+      "line": 268,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 271,
+      "line": 268,
+      "category": "nativeNames",
+      "text": "LAB_00ecf576"
+     },
+     {
+      "line": 270,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 270,
       "category": "nativeNames",
       "text": "LAB_00ecf576"
      },
      {
       "line": 272,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): bVar6 = (**(*me + 0xa8))(me,\"SCRIPT_NAME_HERO\")"
-     },
-     {
-      "line": 273,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 273,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 274,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 275,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,\"SCRIPT_NAME_HERO\")"
-     },
-     {
-      "line": 276,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 276,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 277,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 277,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 277,
+      "line": 272,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ecf576"
+     },
+     {
+      "line": 273,
       "category": "nativeNames",
       "text": "LAB_00ecf576"
      },
      {
-      "line": 279,
-      "category": "gotos",
-      "text": "goto"
+      "line": 274,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00ecf576"
+     },
+     {
+      "line": 275,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 278,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 279,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00ecf576"
+      "category": "genericTemporaries",
+      "text": "scratchValue18"
+     },
+     {
+      "line": 280,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 280,
       "category": "nativeNames",
-      "text": "LAB_00ecf576"
-     },
-     {
-      "line": 281,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00ecf576"
+      "text": "LAB_00ecf622"
      },
      {
       "line": 282,
@@ -22377,117 +22320,92 @@
       "text": "scratchValue2"
      },
      {
-      "line": 285,
+      "line": 283,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "scratchValue18"
+     },
+     {
+      "line": 284,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 284,
+      "category": "nativeNames",
+      "text": "LAB_00ecf622"
      },
      {
       "line": 286,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
-     },
-     {
-      "line": 287,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 287,
-      "category": "nativeNames",
-      "text": "LAB_00ecf622"
-     },
-     {
-      "line": 289,
-      "category": "genericTemporaries",
       "text": "scratchValue2"
      },
      {
-      "line": 290,
-      "category": "genericTemporaries",
-      "text": "scratchValue20"
-     },
-     {
-      "line": 291,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 291,
-      "category": "nativeNames",
-      "text": "LAB_00ecf622"
-     },
-     {
-      "line": 293,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 294,
+      "line": 287,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");"
      },
      {
-      "line": 297,
+      "line": 290,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");"
      },
      {
-      "line": 301,
+      "line": 294,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 301,
+      "line": 294,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00ecf622"
      },
      {
-      "line": 302,
+      "line": 295,
       "category": "nativeNames",
       "text": "LAB_00ecf622"
      },
      {
-      "line": 303,
+      "line": 296,
       "category": "genericTemporaries",
-      "text": "scratchValue20"
+      "text": "scratchValue18"
      },
      {
-      "line": 304,
+      "line": 297,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00ecf622"
      },
      {
-      "line": 307,
+      "line": 300,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): pCVar12 = (**(*(self_0x14 + 0x58) + 0x30))()"
      },
      {
-      "line": 308,
+      "line": 301,
       "category": "genericTemporaries",
-      "text": "scratchValue15"
+      "text": "scratchValue13"
      },
      {
-      "line": 308,
+      "line": 301,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 311,
+      "line": 304,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar10 = *(self_0x14 + 0x58)"
      },
      {
-      "line": 312,
+      "line": 305,
       "category": "genericTemporaries",
-      "text": "scratchValue14"
+      "text": "scratchValue12"
      },
      {
-      "line": 312,
+      "line": 305,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 313,
+      "line": 306,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar20,pvVar11,uVar16,uVar17);"
      }

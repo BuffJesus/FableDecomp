@@ -429,13 +429,6 @@
             "unlifted: iVar9 = CBasicString<char>::Compare(p0,\"EXPRESSION_BELCH\");",
             "unlifted: iVar9 = CBasicString<char>::Compare(p0,\"EXPRESSION_FART\");",
             "label LAB_00e5b036",
-            "unlifted: bVar5 = (**(*me + 0x54))(me,\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0x6c))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0x54))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa8))(me,&\"SCRIPT_NAME_HERO\")",
-            "unlifted: bVar5 = (**(*me + 0xa4))(me,0xe,&\"SCRIPT_NAME_HERO\")",
             "unlifted: p0 = *xStack_1e8"
           ],
           "calls": [
@@ -455,6 +448,9 @@
             "IsActiveThreadTerminating",
             "IsTalkedToByHero",
             "IsActiveThreadTerminating",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "IsActiveThreadTerminating",
@@ -782,8 +778,12 @@
             "GetTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsTalkedToByHero",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "SetStateBool",
@@ -819,7 +819,7 @@
             "RESOURCE_PrepareResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1208,
+          "lines": 1201,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1677,7 +1677,7 @@
         "functionSyntaxPassed": 10,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 3,
-        "todo": 55
+        "todo": 48
       }
     }
   ],
@@ -1688,6 +1688,6 @@
     "functionSyntaxPassed": 10,
     "fileSyntaxPassed": 2,
     "fileSyntaxChecked": 3,
-    "todo": 55
+    "todo": 48
   }
 }

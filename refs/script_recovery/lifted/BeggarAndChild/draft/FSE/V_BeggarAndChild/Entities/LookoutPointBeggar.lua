@@ -53,16 +53,13 @@ function Main(quest, me)
                 end
                 uVar7 = 0
                 -- TODO(native): xStack_1e4 = xStack_1e4 | 1;
-                -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
-                bVar5 = nil --[[unresolved native value]]
+                bVar5 = me:MsgIsHitByHero()
                 if bVar5 then
                     goto LAB_00e58fce
                 else
-                    -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar5 then
-                        -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                        bVar5 = nil --[[unresolved native value]]
+                        bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar5 then goto LAB_00e58fce end
                     end
                     bVar5 = false
@@ -1059,8 +1056,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00e5b276 end
-                    -- TODO(native): bVar5 = (**(*me + 0x6c))(me,"SCRIPT_NAME_HERO")
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:IsTalkedToByHero()
                     if bVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
@@ -1071,16 +1067,13 @@ function Main(quest, me)
                         bVar3 = true
                     end
                     -- TODO(native): xStack_1e4 = xStack_1e4 | 0x40;
-                    -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:MsgIsHitByHero()
                     if bVar5 then
                         goto LAB_00e5addd
                     else
-                        -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-                        bVar5 = nil --[[unresolved native value]]
+                        bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar5 then
-                            -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-                            bVar5 = nil --[[unresolved native value]]
+                            bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar5 then goto LAB_00e5addd end
                         end
                         bVar5 = false

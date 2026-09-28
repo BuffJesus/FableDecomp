@@ -3,15 +3,17 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
 -- LookoutPointBeggar.Main (retail 0x00e58d40)
 function Main(quest, me)
     local tauntTimer = quest:GetStateInt("TauntTimer")
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isActiveThreadTerminating, predicateResult, predicateResult30, scratchValue7
-    local scratchValue8, scratchValue9, predicateResult31, beggarHit, scratchValue11, timerId
-    local i_stk_1fc_2, switch4, p0, beggarBully, this_00, scratchValue19, conversationId, movie
-    local movie2, movie3, movie4, resource, scratchValue23
+    local isActiveThreadTerminating, predicateResult, predicateResult30, scratchValue8
+    local scratchValue9, scratchValue, predicateResult31, beggarHit, scratchValue13, timerId
+    local i_stk_1fc_2, switch4, p0, beggarBully, this_00, scratchValue21, conversationId, movie
+    local movie2, movie3, movie4, resource, scratchValue25
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
@@ -25,22 +27,16 @@ function Main(quest, me)
     beggarHit = quest:GetStateBool("BeggarHit")
     isActiveThreadTerminating = false
     while ((not beggarHit and (not quest:GetStateBool("BullyHit"))) and (not quest:GetStateBool("BeggarLeft"))) and not quest:GetStateBool("BullyLeft") do
-        if not quest:NewScriptFrame(me) then goto LAB_00e5b19b end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(beggarBully); return end
         if me:IsTalkedToByHero() then
             isActiveThreadTerminating = true
         end
         -- TODO(native): xStack_1e4 = xStack_1e4 | 1;
-        -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-        if nil then
+        if me:MsgIsHitByHero() then
             goto LAB_00e58fce
         else
-            -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-            if nil then
-                -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                if not nil then goto LAB_00e58fce end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e58fce end
             end
             predicateResult = false
         end
@@ -50,14 +46,14 @@ function Main(quest, me)
         ::FLOW_past_lab_00e58fce::
             -- TODO(native): xStack_1e4 = uVar13 & 0xfffffffe;
         if predicateResult then
-            if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(beggarBully); return end
             quest:SetStateBool("BeggarHit", true)
         else
             if isActiveThreadTerminating then
-                if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(beggarBully); return end
                 isActiveThreadTerminating = false
-                if scratchValue11 == 0 and not quest:GetStateBool("TaughtBattleCry") then
-                    scratchValue11 = 1
+                if scratchValue13 == 0 and not quest:GetStateBool("TaughtBattleCry") then
+                    scratchValue13 = 1
                     if quest:GetStateInt("BelchedAtBeggar") == 0 then
                         movie3 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
@@ -72,68 +68,64 @@ function Main(quest, me)
                             if not quest:NewScriptFrame(me) then goto LAB_00e59935 end
                             timerId = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
-                        if not quest:IsActiveThreadTerminating() then
-                            local predicateResult4 = quest:IsActiveThreadTerminating()
-                            if timerId == 1 then
-                                if not predicateResult4 then
-                                    if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                        if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e59935 end
-                                        if quest:IsActiveThreadTerminating() then goto LAB_00e59935 end
-                                    end
-                                    quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
-                                    if quest:GetStateBool("ExpressionTutorialShown") then
-                                        goto LAB_00e599d8
-                                    end
-                                    goto FLOW_past_lab_00e599d8
-                                    ::LAB_00e599d8::
-                                    quest:SetStateBool("TaughtBattleCry", true)
-                                    goto LAB_00e59a93
-                                    ::FLOW_past_lab_00e599d8::
-                                    if quest:IsXbox() then
-                                        if not quest:IsActiveThreadTerminating() then
-                                            quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
-                                            while not quest:MsgIsGameInfoClickedPast() do
-                                                if not quest:NewScriptFrame(me) then goto LAB_00e59935 end
-                                            end
-                                            if not quest:IsActiveThreadTerminating() then goto LAB_00e599d1 end
-                                        end
-                                        goto LAB_00e59935
-                                    end
-                                    if not quest:IsActiveThreadTerminating() then
-                                        quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
-                                        while not quest:MsgIsGameInfoClickedPast() do
-                                            if not quest:NewScriptFrame(me) then goto LAB_00e59935 end
-                                        end
-                                        if not quest:IsActiveThreadTerminating() then goto LAB_00e599d1 end
-                                    end
-                                    goto FLOW_past_lab_00e599d1
-                                    ::LAB_00e599d1::
-                                    quest:SetStateBool("ExpressionTutorialShown", true)
-                                    goto LAB_00e599d8
-                                    ::FLOW_past_lab_00e599d1::
-                                end
-                                quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie2)
-                                goto LAB_00e5b19b
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e596a9 end
+                        if timerId == 1 then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
+                                if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e59935 end
+                                if quest:IsActiveThreadTerminating() then goto LAB_00e59935 end
                             end
-                            if not predicateResult4 then
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                    if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_REFUSED", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e59935 end
-                                    if quest:IsActiveThreadTerminating() then goto LAB_00e59935 end
-                                end
-                                goto LAB_00e59a93
+                            quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
+                            if quest:GetStateBool("ExpressionTutorialShown") then
+                                goto LAB_00e599d8
                             end
-                            goto FLOW_past_lab_00e59a93
-                            ::LAB_00e59a93::
+                            goto FLOW_past_lab_00e599d8
+                            ::LAB_00e599d8::
+                            quest:SetStateBool("TaughtBattleCry", true)
+                            goto LAB_00e59a93
+                            ::FLOW_past_lab_00e599d8::
+                            if quest:IsXbox() then
+                                if not quest:IsActiveThreadTerminating() then
+                                    quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
+                                    while not quest:MsgIsGameInfoClickedPast() do
+                                        if not quest:NewScriptFrame(me) then goto LAB_00e59935 end
+                                    end
+                                    if not quest:IsActiveThreadTerminating() then goto LAB_00e599d1 end
+                                end
+                                goto LAB_00e59935
+                            end
+                            if not quest:IsActiveThreadTerminating() then
+                                quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
+                                while not quest:MsgIsGameInfoClickedPast() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00e59935 end
+                                end
+                                if not quest:IsActiveThreadTerminating() then goto LAB_00e599d1 end
+                            end
+                            goto FLOW_past_lab_00e599d1
+                            ::LAB_00e599d1::
+                            quest:SetStateBool("ExpressionTutorialShown", true)
+                            goto LAB_00e599d8
+                            ::FLOW_past_lab_00e599d1::
                             quest:PauseAllNonScriptedEntities(false)
-                            goto LAB_00e59aa3
-                            ::FLOW_past_lab_00e59a93::
+                            resources:DestroyMovie(movie2)
+                            resources:ReleaseResource(beggarBully)
+                            return
                         end
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
+                            if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_REFUSED", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e59935 end
+                            if quest:IsActiveThreadTerminating() then goto LAB_00e59935 end
+                        end
+                        goto LAB_00e59a93
+                        goto FLOW_past_lab_00e59a93
+                        ::LAB_00e59a93::
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto LAB_00e59aa3
+                        ::FLOW_past_lab_00e59a93::
                         ::FLOW_past_lab_00e596a9::
                         ::LAB_00e59935::
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie2)
-                        goto LAB_00e5b19b
+                        resources:ReleaseResource(beggarBully)
+                        return
                     end
                     movie2 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
@@ -146,7 +138,8 @@ function Main(quest, me)
                     ::LAB_00e59429::
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    goto LAB_00e5b19b
+                    resources:ReleaseResource(beggarBully)
+                    do return end
                     ::FLOW_past_lab_00e59429::
                     ::LAB_00e591a3::
                     quest:GiveHeroYesNoQuestion("TEXT_QST_015_BEGGAR_TEACH_OFFER", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -199,7 +192,8 @@ function Main(quest, me)
                     ::LAB_00e5b1b8::
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    goto LAB_00e5b19b
+                    resources:ReleaseResource(beggarBully)
+                    do return end
                     ::FLOW_past_lab_00e5b1b8::
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_REFUSED", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5b1b8 end
@@ -209,8 +203,8 @@ function Main(quest, me)
                     ::LAB_00e59aa3::
                     resources:DestroyMovie(this_00)
                     if not quest:GetStateBool("QuestCardGiven") then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
-                        quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue23)
+                        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(beggarBully); return end
+                        quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue25)
                         quest:SetStateBool("QuestCardGiven", true)
                     end
                 else
@@ -229,67 +223,67 @@ function Main(quest, me)
                                     if not quest:NewScriptFrame(me) then goto LAB_00e5a527 end
                                     timerId = quest:MsgIsQuestionAnsweredYesOrNo()
                                 end
-                                if not quest:IsActiveThreadTerminating() then
-                                    local predicateResult17 = quest:IsActiveThreadTerminating()
-                                    if timerId == 1 then
-                                        if not predicateResult17 then
-                                            if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                                if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5a527 end
-                                                if quest:IsActiveThreadTerminating() then goto LAB_00e5a527 end
-                                            end
-                                            quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
-                                            if quest:GetStateBool("ExpressionTutorialShown") then
-                                                goto LAB_00e5a06d
-                                            end
-                                            goto FLOW_past_lab_00e5a06d
-                                            ::LAB_00e5a06d::
-                                            quest:SetStateBool("TaughtBattleCry", true)
-                                            goto LAB_00e5a126
-                                            ::FLOW_past_lab_00e5a06d::
-                                            if quest:IsXbox() then
-                                                if not quest:IsActiveThreadTerminating() then
-                                                    quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
-                                                    while not quest:MsgIsGameInfoClickedPast() do
-                                                        if not quest:NewScriptFrame(me) then goto LAB_00e5a527 end
-                                                    end
-                                                    if not quest:IsActiveThreadTerminating() then goto LAB_00e5a066 end
-                                                end
-                                                goto LAB_00e5a527
-                                            end
-                                            if not quest:IsActiveThreadTerminating() then
-                                                quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
-                                                while not quest:MsgIsGameInfoClickedPast() do
-                                                    if not quest:NewScriptFrame(me) then goto LAB_00e5a527 end
-                                                end
-                                                if not quest:IsActiveThreadTerminating() then goto LAB_00e5a066 end
-                                            end
-                                            goto FLOW_past_lab_00e5a066
-                                            ::LAB_00e5a066::
-                                            quest:SetStateBool("ExpressionTutorialShown", true)
-                                            goto LAB_00e5a06d
-                                            ::FLOW_past_lab_00e5a066::
-                                        end
-                                        quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(movie4)
-                                        goto LAB_00e5b19b
+                                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie4); resources:ReleaseResource(beggarBully); return end
+                                local predicateResult17 = quest:IsActiveThreadTerminating()
+                                if timerId == 1 then
+                                    if predicateResult17 then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie4); resources:ReleaseResource(beggarBully); return end
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
+                                        if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5a527 end
+                                        if quest:IsActiveThreadTerminating() then goto LAB_00e5a527 end
                                     end
-                                    if not predicateResult17 then
-                                        if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
-                                            if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL_BELCH", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5a527 end
-                                            if quest:IsActiveThreadTerminating() then goto LAB_00e5a527 end
-                                        end
-                                        goto LAB_00e5a126
+                                    quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
+                                    if quest:GetStateBool("ExpressionTutorialShown") then
+                                        goto LAB_00e5a06d
                                     end
-                                    goto FLOW_past_lab_00e5a126
-                                    ::LAB_00e5a126::
+                                    goto FLOW_past_lab_00e5a06d
+                                    ::LAB_00e5a06d::
+                                    quest:SetStateBool("TaughtBattleCry", true)
+                                    goto LAB_00e5a126
+                                    ::FLOW_past_lab_00e5a06d::
+                                    if quest:IsXbox() then
+                                        if not quest:IsActiveThreadTerminating() then
+                                            quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
+                                            while not quest:MsgIsGameInfoClickedPast() do
+                                                if not quest:NewScriptFrame(me) then goto LAB_00e5a527 end
+                                            end
+                                            if not quest:IsActiveThreadTerminating() then goto LAB_00e5a066 end
+                                        end
+                                        goto LAB_00e5a527
+                                    end
+                                    if not quest:IsActiveThreadTerminating() then
+                                        quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
+                                        while not quest:MsgIsGameInfoClickedPast() do
+                                            if not quest:NewScriptFrame(me) then goto LAB_00e5a527 end
+                                        end
+                                        if not quest:IsActiveThreadTerminating() then goto LAB_00e5a066 end
+                                    end
+                                    goto FLOW_past_lab_00e5a066
+                                    ::LAB_00e5a066::
+                                    quest:SetStateBool("ExpressionTutorialShown", true)
+                                    goto LAB_00e5a06d
+                                    ::FLOW_past_lab_00e5a066::
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie5)
-                                    goto LAB_00e5a6a9
-                                    ::FLOW_past_lab_00e5a126::
+                                    resources:DestroyMovie(movie4)
+                                    resources:ReleaseResource(beggarBully)
+                                    return
                                 end
+                                if not predicateResult17 then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(0)) then
+                                        if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL_BELCH", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5a527 end
+                                        if quest:IsActiveThreadTerminating() then goto LAB_00e5a527 end
+                                    end
+                                    goto LAB_00e5a126
+                                end
+                                goto FLOW_past_lab_00e5a126
+                                ::LAB_00e5a126::
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie5)
+                                goto LAB_00e5a6a9
+                                ::FLOW_past_lab_00e5a126::
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
-                                goto LAB_00e5b19b
+                                resources:ReleaseResource(beggarBully)
+                                return
                             end
                             ::LAB_00e5b1fc::
                             quest:PauseAllNonScriptedEntities(false)
@@ -311,7 +305,8 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie5)
                         ::FLOW_past_lab_00e5b1e6::
-                        goto LAB_00e5b19b
+                        resources:ReleaseResource(beggarBully)
+                        return
                     end
                     movie4 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
@@ -322,21 +317,24 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie4)
-                            goto LAB_00e5b19b
+                            resources:ReleaseResource(beggarBully)
+                            return
                         end
                         if quest:GetHealth(resources:ScriptThing(beggarBully)) <= 0.0 then goto LAB_00e5a683 end
                         if not me:Speak(hero, "TEXT_QST_015_BEGGAR_REPEAT_BATTLE_CRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5a527 end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
-                            goto LAB_00e5b19b
+                            resources:ReleaseResource(beggarBully)
+                            return
                         end
                     end
                     goto FLOW_past_lab_00e5a527
                     ::LAB_00e5a527::
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
-                    goto LAB_00e5b19b
+                    resources:ReleaseResource(beggarBully)
+                    do return end
                     ::FLOW_hoist_lab_00e5a527_1::
                     quest:GiveHeroYesNoQuestion("TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                     timerId = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -387,7 +385,8 @@ function Main(quest, me)
                     ::LAB_00e5b231::
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
-                    goto LAB_00e5b19b
+                    resources:ReleaseResource(beggarBully)
+                    do return end
                     ::FLOW_past_lab_00e5b231::
                     if 0.0 < quest:GetHealth(resources:ScriptThing(beggarBully)) then
                         if not me:Speak(hero, "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5b231 end
@@ -403,7 +402,7 @@ function Main(quest, me)
                 goto LAB_00e5ac46
             end
             if not quest:GetStateBool("BullyHasTaunted") or 0 < quest:GetTimer(quest:GetStateInt("BeggarReplyTimer")) then goto LAB_00e5ac46 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(beggarBully); return end
             quest:EntitySetFacingAngleTowardsThing(quest:GetThingWithScriptName("BeggarBully"), beggarBully)
             quest:SetStateBool("BullyHasTaunted", false)
             timerId = quest:RegisterTimer()
@@ -412,14 +411,14 @@ function Main(quest, me)
             repeat
                 if quest:GetTimer(timerId) < 1 then break end
                 if not quest:NewScriptFrame(me) then goto LAB_00e5b24b end
-                local scratchValue4 = quest:MsgOnQuestFailed("SCRIPT_NAME_HERO")
-                if scratchValue4 then
+                local scratchValue5 = quest:MsgOnQuestFailed("SCRIPT_NAME_HERO")
+                if scratchValue5 then
                     isActiveThreadTerminating = true
                 end
                 -- TODO(native): xStack_1e4 = xStack_1e4 | 8;
                 -- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding
                 quest:MsgIsRegionUnloaded("SCRIPT_NAME_HERO")
-                if scratchValue4 then
+                if scratchValue5 then
                     goto LAB_00e5a8ab
                 else
                     if quest:MsgIsActionModeButtonPressed() then
@@ -462,30 +461,30 @@ function Main(quest, me)
                 until true
                 conversationId = quest:AddNewConversation(nil --[[missing]], false, false)
                 quest:AddPersonToConversation(conversationId, nil --[[missing]])
-                scratchValue19 = math.random(0, 32767) & 0x80000003
-                scratchValue7 = scratchValue19 == 0
-                if scratchValue19 < 0 then
-                    scratchValue7 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
+                scratchValue21 = math.random(0, 32767) & 0x80000003
+                scratchValue8 = scratchValue21 == 0
+                if scratchValue21 < 0 then
+                    scratchValue8 = (scratchValue21 - 1 | 0xfffffffc) == 0xffffffff
                 end
-                if scratchValue7 then
+                if scratchValue8 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                     quest:AddLineToConversation(conversationId, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_01", nil --[[missing]], nil --[[missing]], false)
                 else
-                    scratchValue19 = math.random(0, 32767) & 0x80000003
-                    scratchValue8 = scratchValue19 == 0
-                    if scratchValue19 < 0 then
-                        scratchValue8 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
+                    scratchValue21 = math.random(0, 32767) & 0x80000003
+                    scratchValue9 = scratchValue21 == 0
+                    if scratchValue21 < 0 then
+                        scratchValue9 = (scratchValue21 - 1 | 0xfffffffc) == 0xffffffff
                     end
-                    if scratchValue8 then
+                    if scratchValue9 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                         quest:AddLineToConversation(conversationId, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_02", nil --[[missing]], nil --[[missing]], false)
                     else
-                        scratchValue19 = math.random(0, 32767) & 0x80000003
-                        scratchValue9 = scratchValue19 == 0
-                        if scratchValue19 < 0 then
-                            scratchValue9 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
+                        scratchValue21 = math.random(0, 32767) & 0x80000003
+                        scratchValue = scratchValue21 == 0
+                        if scratchValue21 < 0 then
+                            scratchValue = (scratchValue21 - 1 | 0xfffffffc) == 0xffffffff
                         end
-                        if scratchValue9 then
+                        if scratchValue then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                             goto FLOW_hoist_lab_00e5b24b_1
                         else
@@ -498,19 +497,21 @@ function Main(quest, me)
             goto FLOW_past_lab_00e5b24b
             ::LAB_00e5b24b::
             quest:DeregisterTimer(i_stk_1fc_1)
-            goto LAB_00e5b19b
+            resources:ReleaseResource(beggarBully)
+            do return end
             ::FLOW_hoist_lab_00e5b24b_1::
             quest:AddLineToConversation(conversationId, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_03", nil --[[missing]], nil --[[missing]], false)
             ::FLOW_past_lab_00e5b24b::
             quest:DeregisterTimer(i_stk_1fc_1)
         end
         ::LAB_00e5ac46::
-        local scratchValue20 = me:MsgExpressionPerformedTo()
-        if scratchValue20 == nil then goto LAB_00e5b163 end
+        local scratchValue22 = me:MsgExpressionPerformedTo()
+        if scratchValue22 == nil then goto LAB_00e5b163 end
         if quest:IsActiveThreadTerminating() then goto LAB_00e5b29c end
         goto FLOW_past_lab_00e5b29c
         ::LAB_00e5b29c::
-        goto LAB_00e5b19b
+        resources:ReleaseResource(beggarBully)
+        do return end
         ::FLOW_past_lab_00e5b29c::
         quest:EntitySetFacingAngleTowardsThing(hero, nil --[[missing]])
         timerId = quest:RegisterTimer()
@@ -519,24 +520,15 @@ function Main(quest, me)
         while true do
             if not (not isActiveThreadTerminating and 0 < quest:GetTimer(timerId)) then break end
             if not quest:NewScriptFrame(me) then goto LAB_00e5b276 end
-            -- TODO(native): bVar5 = (**(*me + 0x6c))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-            if nil then
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00e5b19b end
+            if me:IsTalkedToByHero() then
                 isActiveThreadTerminating = true
             end
             -- TODO(native): xStack_1e4 = xStack_1e4 | 0x40;
-            -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-            if nil then
+            if me:MsgIsHitByHero() then
                 goto LAB_00e5addd
             else
-                -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                if nil then
-                    -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                    if not nil then goto LAB_00e5addd end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e5addd end
                 end
                 predicateResult31 = false
             end
@@ -552,7 +544,8 @@ function Main(quest, me)
             goto FLOW_past_lab_00e5b276
             ::LAB_00e5b276::
             quest:DeregisterTimer(timerId)
-            goto LAB_00e5b19b
+            resources:ReleaseResource(beggarBully)
+            do return end
             ::FLOW_hoist_lab_00e5b276_1::
             quest:SetStateBool("BeggarHit", true)
             ::FLOW_past_lab_00e5b276::
@@ -564,7 +557,7 @@ function Main(quest, me)
         goto LAB_00e5b29c
         ::FLOW_past_lab_00e5b293::
         if isActiveThreadTerminating then goto FLOW_native_label_2 end
-        if scratchValue20 == nil then goto FLOW_native_label_2 end
+        if scratchValue22 == nil then goto FLOW_native_label_2 end
         -- TODO(native): p0 = *xStack_1e8
         p0 = nil --[[unresolved native value]]
         -- TODO(native): iVar9 = CBasicString<char>::Compare(p0,"EXPRESSION_BELCH");
@@ -621,7 +614,6 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() and not resources:ScriptThing(beggarBully):IsNull() then
         resources:PrepareResource(beggarBully)
     end
-    ::LAB_00e5b19b::
     resources:ReleaseResource(beggarBully)
 end
 

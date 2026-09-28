@@ -1,6 +1,7 @@
 -- Readable native conversion: BordelloClient. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
 local helpers = require("V_Bordello.native_quest_helpers")
@@ -12,9 +13,8 @@ local clientID, brainState, nextLine, sexChance
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, timerId, getDefName, scriptThing, scratchValue, scriptThing2
-    local stack0xfffffee0, resource2, movie, scratchValue39, movie2, scratchValue41, movie3, line
-    local scratchValue43, line2
+    local questionAnswer, timerId, getDefName, scriptThing, stack0xfffffee0, resource2, movie
+    local scratchValue38, movie3, scratchValue40, movie6, line, scratchValue42, line2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -43,7 +43,7 @@ function Main(quest, me)
             if me:IsTalkedToByHero() then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                 me:ClearCommands()
-                movie2 = resources:StartMovie("")
+                local movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if 3 < nextLine then
                     nextLine = 1
@@ -92,7 +92,7 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             me:ClearCommands()
-            movie2 = resources:StartMovie("")
+            movie3 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             if quest:GetStateBool("HeroTricking") and helpers.IsHeroWearingBeard(quest, me) then
                 if not quest:IsActiveThreadTerminating() then
@@ -109,7 +109,7 @@ function Main(quest, me)
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(movie2)
+                                    resources:DestroyMovie(movie3)
                                     quest:DeregisterTimer(timerId)
                                     resources:ReleaseResource(resource)
                                     do return end
@@ -117,7 +117,7 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(movie2)
+                                resources:DestroyMovie(movie3)
                                 quest:DeregisterTimer(timerId)
                                 resources:ReleaseResource(resource)
                                 return
@@ -130,9 +130,9 @@ function Main(quest, me)
                         nextLine = 1
                     end
                     getDefName = tostring(nextLine)
-                    movie3 = (("TEXT_QST_B13_CLIENT" .. tostring(clientID + 1)) .. "_INTERESTED_0") .. getDefName
+                    movie6 = (("TEXT_QST_B13_CLIENT" .. tostring(clientID + 1)) .. "_INTERESTED_0") .. getDefName
                     if 0.0 >= quest:GetHealth(resources:ScriptThing(resource)) then goto LAB_00e45d07 end
-                    if not me:Speak(hero, movie3, 0, false, true, false) then goto LAB_00e46644 end
+                    if not me:Speak(hero, movie6, 0, false, true, false) then goto LAB_00e46644 end
                     if not quest:IsActiveThreadTerminating() then goto LAB_00e45d07 end
                     goto FLOW_past_lab_00e45d07
                     ::LAB_00e45d07::
@@ -148,7 +148,7 @@ function Main(quest, me)
                         if questionAnswer == 1 then
                             if predicateResult then
                                 -- TODO(native): (**(code **)(*unaff_EBX + 0x5ec))();
-                                resources:DestroyMovie(movie2)
+                                resources:DestroyMovie(movie3)
                                 quest:DeregisterTimer(timerId)
                                 resources:ReleaseResource(resource)
                                 return
@@ -164,7 +164,7 @@ function Main(quest, me)
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         -- TODO(native): (**(code **)(*unaff_EBP + 0x5ec))();
-                                        resources:DestroyMovie(movie3)
+                                        resources:DestroyMovie(movie6)
                                         quest:DeregisterTimer(timerId)
                                         resources:ReleaseResource(resource)
                                         do return end
@@ -172,7 +172,7 @@ function Main(quest, me)
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     -- TODO(native): (**(code **)(*unaff_EBP + 0x5ec))();
-                                    resources:DestroyMovie(movie3)
+                                    resources:DestroyMovie(movie6)
                                     quest:DeregisterTimer(timerId)
                                     resources:ReleaseResource(resource)
                                     return
@@ -208,7 +208,7 @@ function Main(quest, me)
                     ::FLOW_past_lab_00e45d07::
                     ::LAB_00e46644::
                     -- TODO(native): (**(code **)(*unaff_EBX + 0x5ec))();
-                    resources:DestroyMovie(movie2)
+                    resources:DestroyMovie(movie3)
                     quest:DeregisterTimer(timerId)
                     resources:ReleaseResource(resource)
                     return
@@ -218,7 +218,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e466b8
             ::LAB_00e466b8::
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie2)
+            resources:DestroyMovie(movie3)
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource)
             do return end
@@ -227,7 +227,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e466db
             ::LAB_00e466db::
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie2)
+            resources:DestroyMovie(movie3)
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource)
             do return end
@@ -247,7 +247,7 @@ function Main(quest, me)
             resources:PrepareResource(resources:MemberResource("seh_Whore"))
             resources:PrepareResource(resource)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie2)
+            resources:DestroyMovie(movie3)
             ::continue_3::
         end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -262,13 +262,13 @@ function Main(quest, me)
             timerId = me:IsPerformingScriptTask()
             if not timerId then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-                if movie3 == nil then
-                    scratchValue = {x = 0, y = 0, z = 0}
+                if movie6 == nil then
+                    scriptThing = {x = 0, y = 0, z = 0}
                 else
                     -- TODO(native): puVar8 = (**(*xStack_e4 + 0x18))()
-                    scratchValue = nil --[[unresolved native value]]
+                    scriptThing = nil --[[unresolved native value]]
                 end
-                me:MoveToPosition(scratchValue, 1.0, ENTITY_MOVE_WALK, false, true)
+                me:MoveToPosition(scriptThing, 1.0, ENTITY_MOVE_WALK, false, true)
             end
             if quest:IsDistanceBetweenThingsUnder(clientSpawn, me, 5.0) then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -279,13 +279,13 @@ function Main(quest, me)
             else
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                 me:ClearCommands()
-                movie2 = resources:StartMovie("")
+                local movie4 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if 3 < nextLine then
                     nextLine = 1
                 end
                 getDefName = tostring(nextLine)
-                movie3 = (("TEXT_QST_B13_CLIENT" .. tostring(clientID + 1)) .. "_LEAVE_0") .. getDefName
+                movie6 = (("TEXT_QST_B13_CLIENT" .. tostring(clientID + 1)) .. "_LEAVE_0") .. getDefName
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                     me:Speak(hero, line, 0, false, true, false)
                     timerId = me:IsPerformingScriptTask()
@@ -295,7 +295,7 @@ function Main(quest, me)
                             timerId = me:IsPerformingScriptTask()
                         else
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie2)
+                            resources:DestroyMovie(movie4)
                             quest:DeregisterTimer(timerId)
                             resources:ReleaseResource(resource)
                             do return end
@@ -304,7 +304,7 @@ function Main(quest, me)
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie2)
+                        resources:DestroyMovie(movie4)
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
@@ -312,7 +312,7 @@ function Main(quest, me)
                 end
                 nextLine = nextLine + 1
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie2)
+                resources:DestroyMovie(movie4)
                 timerId = brainState
             end
         end
@@ -339,11 +339,11 @@ function Main(quest, me)
                 if not me:IsPerformingScriptTask() then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                     if not (resource ~= nil and not resources:ScriptThing(resource):IsNull()) then
-                        scriptThing2 = {x = 0, y = 0, z = 0}
+                        scriptThing = {x = 0, y = 0, z = 0}
                     else
-                        scriptThing2 = resources:ScriptThing(resource):GetPos()
+                        scriptThing = resources:ScriptThing(resource):GetPos()
                     end
-                    me:MoveToPosition(scriptThing2, 1.0, ENTITY_MOVE_WALK, false, true)
+                    me:MoveToPosition(scriptThing, 1.0, ENTITY_MOVE_WALK, false, true)
                 end
                 if quest:IsDistanceBetweenThingsUnder(me, 0, 5.0) then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -359,32 +359,32 @@ function Main(quest, me)
                     if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
                 end
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-                movie2 = resources:StartMovie("")
+                local movie5 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if 2 < nextLine then
                     nextLine = 1
                 end
                 getDefName = tostring(nextLine)
-                scratchValue41 = (("TEXT_QST_B13_WOMAN" .. tostring(clientID + 1)) .. "_CHAT_0") .. getDefName
+                scratchValue40 = (("TEXT_QST_B13_WOMAN" .. tostring(clientID + 1)) .. "_CHAT_0") .. getDefName
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    if not me:Speak(hero, movie3, 0, false, true, false) then goto LAB_00e4568a end
+                    if not me:Speak(hero, movie6, 0, false, true, false) then goto LAB_00e4568a end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie2)
+                        resources:DestroyMovie(movie5)
                         quest:DeregisterTimer(timerId)
                         resources:ReleaseResource(resource)
                         return
                     end
                 end
                 nextLine = nextLine + 1
-                if scratchValue43 ~= 0 then
+                if scratchValue42 ~= 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e4568a end
                     goto FLOW_hoist_lab_00e4568a_1
                 end
                 goto FLOW_past_lab_00e4568a
                 ::LAB_00e4568a::
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie2)
+                resources:DestroyMovie(movie5)
                 quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource)
                 do return end
@@ -392,25 +392,18 @@ function Main(quest, me)
                 resources:PrepareResource(resource)
                 ::FLOW_past_lab_00e4568a::
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie2)
+                resources:DestroyMovie(movie5)
             end
-            if not me:MsgIsHitByHero() then
-                -- TODO(native): bVar4 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                if nil then
-                    -- TODO(native): bVar4 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
-    --[[unresolved native value]]
-                    if not nil then goto LAB_00e453d2 end
-                end
-                -- TODO(native): xStack_c4_b3 = '\0';
-            else
-                goto LAB_00e453d2
+            if me:MsgIsHitByHero() then goto LAB_00e453d2 end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e453d2 end
             end
+            -- TODO(native): xStack_c4_b3 = '\0';
             goto FLOW_past_lab_00e453d2
             ::LAB_00e453d2::
             -- TODO(native): xStack_c4_b3 = '\x01';
             ::FLOW_past_lab_00e453d2::
-            if scratchValue39 == 0 then quest:NewScriptFrame(me); goto continue_8 end
+            if scratchValue38 == 0 then quest:NewScriptFrame(me); goto continue_8 end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             me:ClearCommands()
             resources:PrepareResource(resource)
@@ -430,7 +423,7 @@ function Main(quest, me)
                     return
                 end
             end
-            if scratchValue43 ~= 0 then
+            if scratchValue42 ~= 0 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e456ca end
                 goto FLOW_hoist_lab_00e456ca_1
             end

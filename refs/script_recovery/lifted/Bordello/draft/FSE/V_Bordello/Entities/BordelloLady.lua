@@ -70,11 +70,9 @@ function Main(quest, me)
             -- TODO(native): xStack_15c = xStack_15c | 2;
             cVar6 = me:MsgIsHitByHero()
             if not cVar6 then
-                -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
-                bVar5 = nil --[[unresolved native value]]
+                bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar5 then
-                    -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar5 then goto LAB_00e40183 end
                 end
             else
@@ -567,8 +565,7 @@ function Main(quest, me)
                 iVar21 = 0
                 iVar19 = 0
                 iVar9 = 1.0
-                -- TODO(native): p0 = (**(*me + 0x1c))(me,xStack_30)
-                p0 = nil --[[unresolved native value]]
+                p0 = me:GetHomePos()
                 me:MoveToPosition(p0, iVar9, iVar19, (iVar21 ~= 0), (iVar24 ~= 0))
             end
             goto FLOW_past_lab_00e40044
@@ -597,11 +594,9 @@ function Main(quest, me)
             -- TODO(native): xStack_15c = xStack_15c | 2;
             cVar6 = me:MsgIsHitByHero()
             if not cVar6 then
-                -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
-                bVar5 = nil --[[unresolved native value]]
+                bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar5 then
-                    -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
-                    bVar5 = nil --[[unresolved native value]]
+                    bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar5 then goto LAB_00e40183_c2 end
                 end
             end

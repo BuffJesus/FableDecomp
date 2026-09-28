@@ -3663,6 +3663,24 @@ def resolve_this_aliases(text, spec):
     return text
 
 
+def respell_me_register_calls(text):
+    """A register loaded with `this + 8` and called through (`piVar1 = (int *)(this + 8); (**(code **)(*piVar1 + 0x54))
+    (piVar1, &name)`, V_BeggarAndChild LookoutPointBeggar Main's MsgIsHitBy / MsgIsHitByAnySpecialAbilityFrom / 0xa4
+    tests): up to the register's next assignment the call is on `me`, spelled as Ghidra prints those (no receiver
+    argument). Lifted raw, every hit test was an unresolved value and its `if` a constant `nil`. The register is reused
+    for other values elsewhere, so only the stretch after each `this + 8` load is respelled."""
+    load = re.compile(r'^[ \t]*(\w+) = (?:\([\w ]+\*\)\s*)?\(this \+ 8\);[ \t]*\r?$', re.M)
+    for m in list(load.finditer(text))[::-1]:
+        var = re.escape(m.group(1))
+        tail = text[m.end():]
+        nxt = re.search(r'^[ \t]*' + var + r' = ', tail, re.M)
+        scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+        scope = re.sub(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?' + var + r' \+ (0x[0-9a-f]+|\d+)\)\)\(' + var + r'(?:,\s*|(?=\)))',
+                       r'(**(code **)(*(int *)(this + 8) + \1))(', scope)
+        text = text[:m.end()] + scope + rest
+    return text
+
+
 def lower_embedded_state_stores(text):
     """A member store inside a comma expression (`if (... && (this->BootyDugUp = 1, !this->WifeAttacked))`,
     HerosOldHouse ExtraBooty) is lowered by the field pass as a READ on the left of `=` (only statements that start
@@ -3959,6 +3977,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = fold_high_byte_flags(text)   # before any pass folds the byte stores into their tests
     text = normalise_typed_decompile(text)
     text = resolve_this_aliases(text, spec)
+    if spec.entity:
+        text = respell_me_register_calls(text)
     text = name_ftol2_operand(text)
     text = index_member_array_walks(text, spec)
     text = lower_cifmod(text, spec)
