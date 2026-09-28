@@ -8,7 +8,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | V_SickChild | Init | 0x00ec5420 | True | 0 |
 | V_SickChild | V_SickChild | OnPersist | 0x00ecd7b0 | True | 0 |
 | V_SickChild | V_SickChild | helper_ECE460 | 0x00ece460 | True | 24 |
-| V_SickChild | SickChildsMother | Main | 0x00ecd9e0 | True | 35 |
+| V_SickChild | SickChildsMother | Main | 0x00ecd9e0 | True | 23 |
 | V_SickChild | SickChildsMother | Init | 0x00ec5c90 | True | 0 |
 | V_SickChild | SickChildsMother | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | SickChildsMother | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -20,7 +20,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | SickChildsSister | Init | 0x00ec6860 | True | 0 |
 | V_SickChild | SickChildsSister | OnPersist | 0x00ecd860 | True | 1 |
 | V_SickChild | SickChildsSister | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| V_SickChild | Witch | Main | 0x00ece7f0 | True | 86 |
+| V_SickChild | Witch | Main | 0x00ece7f0 | True | 62 |
 | V_SickChild | Witch | Init | 0x00ec80c0 | True | 0 |
 | V_SickChild | Witch | OnPersist | 0x00ecd890 | True | 2 |
 | V_SickChild | Witch | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -44,7 +44,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | TalkingTrader2 | Init | 0x00ecca30 | True | 0 |
 | V_SickChild | TalkingTrader2 | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | TalkingTrader2 | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| V_SickChild | WomanToAttract | Main | 0x00ecf7f0 | True | 112 |
+| V_SickChild | WomanToAttract | Main | 0x00ecf7f0 | True | 87 |
 | V_SickChild | WomanToAttract | Init | 0x00ecd380 | True | 0 |
 | V_SickChild | WomanToAttract | OnPersist | 0x00ecd9b0 | True | 1 |
 | V_SickChild | WomanToAttract | OnPredicateFail | 0x00ecd390 | True | 0 |
@@ -54,4 +54,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_SickChild | SickChildFishingSpot | OnPersist | 0x00cdebc0 | True | 0 |
 | V_SickChild | SickChildFishingSpot | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 373}`
+Summary: `{"owners": 12, "functions": 49, "missing": 0, "functionSyntaxPassed": 49, "fileSyntaxPassed": 13, "fileSyntaxChecked": 13, "todo": 312}`

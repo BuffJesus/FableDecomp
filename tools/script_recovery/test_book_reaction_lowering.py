@@ -122,7 +122,8 @@ def test_generated_teacher_dispatches_registered_worker_with_original_index(gene
         noop = lambda *args: None
         resources = lua.table_from({k: noop for k in ('SetActor', 'TryAcquire', 'RunMacroWithStrings',
                                     'DestroyStringMap', 'DestroyActorMap', 'ReleaseResource')})
-        for key in ('MemberResource', 'NewResource', 'NewActorMap', 'NewStringMap'):
+        # (ScriptThing: the teacher's own seh_me GetScriptThing, recovered 2026-09-28)
+        for key in ('MemberResource', 'NewResource', 'NewActorMap', 'NewStringMap', 'ScriptThing'):
             resources[key] = lambda *args: lua.table()
         quest = lua.table_from({k: noop for k in ('GiveHeroYesNoQuestion', 'TakeObjectFromHero',
                                'SetStateInt', 'FixMovieSequenceCamera', 'FadeScreenIn')})

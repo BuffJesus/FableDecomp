@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, cVar4, dist, fVar14, iVar5, pCVar10, pCVar17, pCVar19, pCVar6, pCVar9, pcVar18, pvVar11, this_00, uVar15, uVar16, uVar2, uVar7, uVar8, xStack_64, xStack_74, xStack_84, xStack_8c, xStack_9c, xStack_9c_b3, xStack_a8, xStack_a8_b3, xStack_c8, x_stk_d0
+    local au_stk_34, au_stk_4c, au_stk_64, bVar3, cVar4, dist, fVar14, iVar5, pCVar10, pCVar17, pCVar19, pCVar6, pCVar9, pcVar18, pvVar11, r1, r2, r3, r4, r5, r6, r7, this_00, uVar15, uVar16, uVar2, uVar7, uVar7_pushed, uVar8, xStack_64, xStack_74, xStack_84, xStack_8c, xStack_9c, xStack_9c_b3, xStack_a8, xStack_a8_b3, xStack_c8, x_stk_18, x_stk_30, x_stk_48, x_stk_d0
     local alive = true
     xStack_8c = pCVar9
     alive = quest:NewScriptFrame(me)
@@ -231,23 +231,21 @@ function Main(quest, me)
             xStack_84 = resources:StartMovie("")
             quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
-            -- TODO(native): pCVar9 = (**(*this_00 + 0x30))(xStack_84)
-            pCVar9 = nil --[[unresolved native value]]
-            fVar14 = quest:GetHealth(nil --[[missing]])
+            xStack_84 = resources:ScriptThing(this_00)
+            pCVar9 = xStack_84
+            fVar14 = quest:GetHealth(pCVar9)
             cVar4 = 0.0 < fVar14
             if cVar4 then
                 -- TODO(native): pCVar19 = *(this + 4)
                 pCVar19 = nil --[[unresolved native value]]
-                -- TODO(native): iVar5 = *this_00
-                iVar5 = nil --[[unresolved native value]]
                 uVar16 = 0
                 uVar15 = 1
                 uVar8 = 0
                 uVar7 = 0
                 pvVar11 = pcVar18
-                -- TODO(native): uVar7 = (**(*pCVar19 + 0x118))(pvVar11,uVar7,uVar8,uVar15,uVar16)
-                uVar7 = nil --[[unresolved native value]]
-                -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                uVar7_pushed = uVar7
+                uVar7 = quest:GetHero()
+                r1 = me:Speak(uVar7, pvVar11, uVar7_pushed, (uVar8 ~= 0), (uVar15 ~= 0), (uVar16 ~= 0))
                 cVar4 = me:IsPerformingScriptTask()
                 while cVar4 do
                     alive = quest:NewScriptFrame(me)
@@ -451,15 +449,13 @@ function Main(quest, me)
             pCVar6 = pCVar9
             if iVar5 ~= 1 then
                 if iVar5 == 2 then
-                    -- TODO(native): pCVar10 = (**(*this_00 + 0x30))(auStack_4c)
-                    pCVar10 = nil --[[unresolved native value]]
-                    fVar14 = quest:GetHealth(nil --[[missing]])
+                    au_stk_4c = resources:ScriptThing(this_00)
+                    pCVar10 = au_stk_4c
+                    fVar14 = quest:GetHealth(pCVar10)
                     cVar4 = 0.0 < fVar14
                     if cVar4 then
-                        -- TODO(native): iVar5 = *this_00
-                        iVar5 = nil --[[unresolved native value]]
                         uVar7 = quest:GetHero()
-                        -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                        r2 = me:Speak(uVar7, "TEXT_QST_B10_LAUGHING_WOMAN_MADE_LAUGH_TWICE", 0, false, true, false)
                         cVar4 = me:IsPerformingScriptTask()
                         while cVar4 do
                             alive = quest:NewScriptFrame(me)
@@ -479,15 +475,13 @@ function Main(quest, me)
                     __native_entity_state:SetStateBool("GivenObject", true)
                     quest:GiveHeroMorality(quest:ReadGlobalGameData(0x774))
                 else
-                    -- TODO(native): pCVar10 = (**(*this_00 + 0x30))(xStack_64)
-                    pCVar10 = nil --[[unresolved native value]]
-                    fVar14 = quest:GetHealth(uVar7)
+                    au_stk_64 = resources:ScriptThing(this_00)
+                    pCVar10 = au_stk_64
+                    fVar14 = quest:GetHealth(pCVar10)
                     cVar4 = 0.0 < fVar14
                     if cVar4 then
-                        -- TODO(native): iVar5 = *this_00
-                        iVar5 = nil --[[unresolved native value]]
                         uVar7 = quest:GetHero()
-                        -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                        r3 = me:Speak(uVar7, "TEXT_QST_B10_LAUGHING_WOMAN_MADE_LAUGH_ONCE", 0, false, true, false)
                         cVar4 = me:IsPerformingScriptTask()
                         while cVar4 do
                             alive = quest:NewScriptFrame(me)
@@ -516,20 +510,19 @@ function Main(quest, me)
             resources:DestroyMovie(xStack_84)
             goto LAB_00ed0694
             ::FLOW_past_lab_00ed0666::
-            -- TODO(native): pCVar10 = (**(*this_00 + 0x30))(auStack_34)
-            pCVar10 = nil --[[unresolved native value]]
-            fVar14 = quest:GetHealth(uVar7)
+            au_stk_34 = resources:ScriptThing(this_00)
+            pCVar10 = au_stk_34
+            fVar14 = quest:GetHealth(pCVar10)
             cVar4 = 0.0 < fVar14
             if not cVar4 then goto LAB_00ed0666 end
-            -- TODO(native): iVar5 = *this_00
-            iVar5 = nil --[[unresolved native value]]
             uVar16 = 0
             uVar15 = 1
             uVar8 = 0
             uVar7 = 0
             pvVar11 = pcVar18
+            uVar7_pushed = uVar7
             uVar7 = quest:GetHero()
-            -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+            r4 = me:Speak(uVar7, pvVar11, uVar7_pushed, (uVar8 ~= 0), (uVar15 ~= 0), (uVar16 ~= 0))
             cVar4 = me:IsPerformingScriptTask()
             pCVar6 = pCVar19
             while cVar4 do
@@ -631,9 +624,9 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(true)
             iVar5 = __native_entity_state:GetStateInt("TimesMadeLaugh")
             if iVar5 == 0 then
-                -- TODO(native): uVar7 = (**(*this_00 + 0x30))(xStack_48)
-                uVar7 = nil --[[unresolved native value]]
-                fVar14 = quest:GetHealth(nil --[[missing]])
+                x_stk_48 = resources:ScriptThing(this_00)
+                uVar7 = x_stk_48
+                fVar14 = quest:GetHealth(uVar7)
                 uVar2 = ""
                 -- TODO(native): xStack_a8 = (CScriptThing *)CONCAT13(1,(undefined3)xStack_a8);
                 if fVar14 <= 0.0 then
@@ -645,7 +638,7 @@ function Main(quest, me)
                     -- TODO(native): iVar5 = *this_00
                     iVar5 = nil --[[unresolved native value]]
                     uVar7 = quest:GetHero()
-                    -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                    r5 = me:Speak(uVar7, "TEXT_QST_B10_LAUGHING_WOMAN_INTRO", 0, false, true, false)
                     cVar4 = me:IsPerformingScriptTask()
                     while cVar4 do
                         alive = quest:NewScriptFrame(me)
@@ -657,9 +650,9 @@ function Main(quest, me)
                     goto LAB_00ed0952
                 end
             elseif iVar5 == 1 then
-                -- TODO(native): uVar7 = (**(*this_00 + 0x30))(xStack_30)
-                uVar7 = nil --[[unresolved native value]]
-                fVar14 = quest:GetHealth(nil --[[missing]])
+                x_stk_30 = resources:ScriptThing(this_00)
+                uVar7 = x_stk_30
+                fVar14 = quest:GetHealth(uVar7)
                 uVar2 = xStack_a8
                 -- TODO(native): xStack_a8 = (CScriptThing *)CONCAT13(1,(undefined3)xStack_a8);
                 if fVar14 <= 0.0 then
@@ -671,7 +664,7 @@ function Main(quest, me)
                     -- TODO(native): iVar5 = *this_00
                     iVar5 = nil --[[unresolved native value]]
                     uVar7 = quest:GetHero()
-                    -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                    r6 = me:Speak(uVar7, "TEXT_QST_B10_LAUGHING_WOMAN_ON_SPEAK_MADE_LAUGH_ONCE", 0, false, true, false)
                     cVar4 = me:IsPerformingScriptTask()
                     while cVar4 do
                         alive = quest:NewScriptFrame(me)
@@ -683,9 +676,9 @@ function Main(quest, me)
                     goto LAB_00ed0952
                 end
             elseif iVar5 == 2 then
-                -- TODO(native): uVar7 = (**(*this_00 + 0x30))(xStack_18)
-                uVar7 = nil --[[unresolved native value]]
-                fVar14 = quest:GetHealth(nil --[[missing]])
+                x_stk_18 = resources:ScriptThing(this_00)
+                uVar7 = x_stk_18
+                fVar14 = quest:GetHealth(uVar7)
                 uVar2 = xStack_a8
                 -- TODO(native): xStack_a8 = (CScriptThing *)CONCAT13(1,(undefined3)xStack_a8);
                 if fVar14 <= 0.0 then
@@ -694,10 +687,8 @@ function Main(quest, me)
                 pCVar9 = pCVar19
                 pCVar19 = pCVar9
                 if xStack_a8_b3 ~= 0 then
-                    -- TODO(native): iVar5 = *this_00
-                    iVar5 = nil --[[unresolved native value]]
                     uVar7 = quest:GetHero()
-                    -- TODO(native): (**(code **)(iVar5 + 0x34))(uVar7);
+                    r7 = me:Speak(uVar7, "TEXT_QST_B10_LAUGHING_WOMAN_ON_SPEAK_MADE_LAUGH_TWICE", 0, false, true, false)
                     cVar4 = me:IsPerformingScriptTask()
                     while cVar4 do
                         alive = quest:NewScriptFrame(me)

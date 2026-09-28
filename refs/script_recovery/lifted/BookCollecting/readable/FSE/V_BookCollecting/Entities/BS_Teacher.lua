@@ -1,6 +1,8 @@
 -- Readable native conversion: BS_Teacher. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_RANDOM_NO_REPEAT = 2  -- ETextGroupSelectionMethod
+
 local helpers = require("V_BookCollecting.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
@@ -12,7 +14,7 @@ function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, scratchValue4, scratchValue24, scratchValue25, meControl, hero
-    local scratchValue26, movie
+    local scratchValue26, speechResult, movie, x_stk_58_1
     local function ReleaseEverything()
         local scratchValue25 = nil --[[unresolved native value]]
         quest:PauseAllNonScriptedEntities(false)
@@ -127,6 +129,7 @@ function Main(quest, me)
             -- TODO(native): pCVar9 = (**(*pCVar11 + 0x30))()
             hero = nil --[[unresolved native value]]
             local fret_04 = quest:GetHealth(nil --[[missing]])
+            x_stk_58_1 = 0
             if 0.0 < fret_04 then
                 -- TODO(native): xStack_7c = *pCVar11;
                 scratchValue26 = "TEXT_QST_B16_BOOK_WRONG_TIME"
@@ -190,7 +193,7 @@ function Main(quest, me)
             scratchValue24 = nil --[[unresolved native value]]
             if quest:IsObjectInThingsPossession(scratchValue26, hero_) then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
-                if AskForBook(quest, me) then
+                if AskForBook(quest, me, quest:GetStateInt("LastBookRequested"), "TEXT_QST_B16_BOOK_REFUSE_AGAIN") then
                     if quest:IsActiveThreadTerminating() then
                         -- TODO(native): (**(code **)(*(int *)xStack_7c + 0x5ec))();
                         resources:DestroyMovie(movie)
@@ -267,9 +270,7 @@ function Main(quest, me)
                 hero = nil --[[unresolved native value]]
                 local fret_05 = quest:GetHealth(nil --[[missing]])
                 if 0.0 < fret_05 then
-                    -- TODO(native): iVar8 = *this_00
-                    scratchValue25 = nil --[[unresolved native value]]
-                    -- TODO(native): (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);
+                    speechResult = me:Speak(hero_, "TEXT_QST_B16_COMPLETE", 0.0, x_stk_58_1 ~= 0, false, nil --[[missing]])
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -313,12 +314,10 @@ end
 
 -- BS_Teacher.AskForBook (retail 0x00e55ce0)
 -- E55CE0: bsim names this body NScript::CV_BookCollectingScript::CBS_Teacher::AskForBook (a homologous script member); no PDB name
-function AskForBook(quest, me, param1)
-    local self_0x34
-    local hero_ = quest:GetHero()
+function AskForBook(quest, me, param1, param2)
+    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, hero, pOther, prize, getHero, predicateResult, resource, actorMap
-    local actorMap2, scratchValue
+    local questionAnswer, pOther, predicateResult, resource, actorMap, actorMap2, scratchValue
     local value = param1
     predicateResult = false
     param1 = "TEXT_QST_B16_OFFER_BOOK_" .. tostring(param1)
@@ -348,32 +347,20 @@ function AskForBook(quest, me, param1)
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
             quest:SetStateInt("LastBookRequested", value)
             resources:MemberResource("seh_me", me)
-            -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
-            hero = nil --[[unresolved native value]]
-            local fret_01 = quest:GetHealth(nil --[[missing]])
+            local fret_01 = quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_me", me)))
             if fret_01 <= 0.0 then goto LAB_00e566a1 end
-            -- TODO(native): iVar6 = *pCVar17
---[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar6 + 0x34))(uVar12);
-            -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(uVar12)
-            while nil --[[unresolved native value]] do
+            me:Speak(hero, param2, 2, false, true, false)
+            while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then do return false end; goto FLOW_after_lab_00e55dcf end
-                -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))()
             end
         else
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
             resources:MemberResource("seh_me", me)
-            -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
-            hero = nil --[[unresolved native value]]
-            local fret_02 = quest:GetHealth(getHero)
+            local fret_02 = quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_me", me)))
             if fret_02 <= 0.0 then goto LAB_00e566a1 end
-            -- TODO(native): iVar6 = *pCVar17
---[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
-            -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
-            while nil --[[unresolved native value]] do
+            me:Speak(hero, "TEXT_QST_B16_BOOK_REFUSED_NEVER_MIND", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+            while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then do return false end; goto FLOW_after_lab_00e55dcf end
-                -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))()
             end
         end
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
@@ -384,7 +371,7 @@ function AskForBook(quest, me, param1)
         goto FLOW_after_lab_00e55dcf
     end
     quest:SetStateBool("ReadingBook", true)
-    quest:TakeObjectFromHero(prize)
+    quest:TakeObjectFromHero(nil --[[missing]])
     -- TODO(native): *(undefined1 *)(*(int *)(*(int *)(this + 0x14) + 0xa0) + (int)value) = 1;
     quest:SetStateInt("BooksDonated", quest:GetStateInt("BooksDonated") + 1)
     predicateResult = true
@@ -392,17 +379,11 @@ function AskForBook(quest, me, param1)
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         quest:SetStateInt("GoodBooksDonated", quest:GetStateInt("GoodBooksDonated") + 1)
         resources:MemberResource("seh_me", me)
-        -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
-        hero = nil --[[unresolved native value]]
-        local fret_0 = quest:GetHealth(nil --[[missing]])
+        local fret_0 = quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_me", me)))
         if 0.0 < fret_0 then
-            -- TODO(native): iVar6 = *pCVar17
---[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
-            -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
-            while nil --[[unresolved native value]] do
+            me:Speak(hero, "TEXT_QST_B16_BOOK_ACCEPTED", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+            while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then do return false end; goto FLOW_after_lab_00e55dcf end
-                -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))()
             end
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         end
@@ -411,17 +392,11 @@ function AskForBook(quest, me, param1)
     else
         if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         resources:MemberResource("seh_me", me)
-        -- TODO(native): pCVar7 = (**(self_0x34 + 0x30))(xStack_24)
-        hero = nil --[[unresolved native value]]
-        local fret_00 = quest:GetHealth(nil --[[missing]])
+        local fret_00 = quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_me", me)))
         if 0.0 < fret_00 then
-            -- TODO(native): iVar6 = *pCVar17
---[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);
-            -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))(pCVar7)
-            while nil --[[unresolved native value]] do
+            me:Speak(hero, "TEXT_QST_B16_BOOK_ACCEPTED_GRUDGINGLY", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+            while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then do return false end; goto FLOW_after_lab_00e55dcf end
-                -- TODO(native): cVar4 = (**(*pCVar17 + 0x68))()
             end
             if quest:IsActiveThreadTerminating() then do return false end; goto FLOW_after_lab_00e55dcf end
         end
@@ -429,7 +404,7 @@ function AskForBook(quest, me, param1)
     pOther = resources:MemberResource("seh_me", me)
     scratchValue = "CS_SCHOOLBOOK_" .. tostring(value)
     resource = resources:NewResource()
-    resources:TryAcquire(resource, hero_, 4)
+    resources:TryAcquire(resource, hero, 4)
     actorMap2 = resources:NewActorMap()
     resources:SetActor(actorMap2, "Hero", resource)
     -- TODO(native): resources:SetActor(xStack_3c, "Teacher", &pOther)
@@ -495,7 +470,7 @@ function AskForBook(quest, me, param1)
                     quest:SetStateBool("HatRewarded", true)
                 end
             end
-            goto FLOW_after_lab_00e560d5_215
+            goto FLOW_after_lab_00e560d5_216
         end
         if quest:GetStateInt("BooksDonated") == booksAccepted then
             if quest:IsActiveThreadTerminating() then
@@ -515,7 +490,7 @@ function AskForBook(quest, me, param1)
                         quest:SetStateBool("HatRewarded", true)
                     end
                 end
-                goto FLOW_after_lab_00e560d5_215
+                goto FLOW_after_lab_00e560d5_216
             end
             -- TODO(native): CTCCarryable::OnKill((CTCCarryable *)xStack_30);
             resources:SetString(actorMap, "$PRIZE", "OBJECT_SILVER_KEY")
@@ -525,7 +500,7 @@ function AskForBook(quest, me, param1)
             quest:SetStateBool("KeyRewarded", true)
         end
     end
-    ::FLOW_after_lab_00e560d5_215::
+    ::FLOW_after_lab_00e560d5_216::
     quest:FadeScreenIn()
     quest:FixMovieSequenceCamera(false)
     resources:DestroyStringMap(actorMap)
@@ -689,7 +664,7 @@ function LookForBook(quest, me)
     local self_0x34
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local ctr_CVar, scratchValue, value, scratchValue6, x_stk_14_1, x_stk_14_2, scratchValue7
+    local ctr_CVar, scratchValue, value, scratchValue6, x_stk_14_1, scratchValue7
     value = 0xffffffff
     ctr_CVar = 0
     if booksInGame < 1 then
@@ -754,21 +729,18 @@ function LookForBook(quest, me)
                 return
             end
             if quest:IsActiveThreadTerminating() then return end
-            x_stk_14_2 = "TEXT_QST_B16_BOOK_REQUEST_" .. tostring(value)
+            local x_stk_14_2 = "TEXT_QST_B16_BOOK_REQUEST_" .. tostring(value)
             resources:MemberResource("seh_me", me)
             -- TODO(native): pCVar9 = (**(self_0x34 + 0x30))()
 --[[unresolved native value]]
             local fret_01 = quest:GetHealth(nil --[[missing]])
-            if 0.0 >= fret_01 then AskForBook(quest, me, value); goto LAB_00e57924 end
-            -- TODO(native): iVar7 = *pCVar1
---[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);
-            while me:IsPerformingScriptTask() do
-                if not quest:NewScriptFrame(me) then return end
+            if 0.0 >= fret_01 then
+                AskForBook(quest, me, value, "TEXT_QST_B16_BOOK_REFUSED")
+            else
+                if not me:Speak(hero, x_stk_14_2, 0, false, true, 0.0 ~= 0) then return end
+                if quest:IsActiveThreadTerminating() then return end
+                AskForBook(quest, me, scratchValue7, "TEXT_QST_B16_BOOK_REFUSED")
             end
-            if quest:IsActiveThreadTerminating() then return end
-            AskForBook(quest, me, scratchValue7)
-            ::LAB_00e57924::
             return
         end
         if quest:IsActiveThreadTerminating() then return end
@@ -779,9 +751,7 @@ function LookForBook(quest, me)
         if fret_0 <= 0.0 then
             return
         end
-        -- TODO(native): iVar7 = *pCVar1
---[[unresolved native value]]
-        -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
+        me:Speak(hero, "TEXT_QST_B16_BOOK_NONE_FOUND", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, 0.0 ~= 0)
         if not me:IsPerformingScriptTask() then return end
         repeat
             if not quest:NewScriptFrame(me) then return end
@@ -798,11 +768,6 @@ function LookForBook(quest, me)
     if fret_02 <= 0.0 then
         return
     end
-    -- TODO(native): iVar7 = *pCVar1
---[[unresolved native value]]
-    -- TODO(native): (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);
-    while me:IsPerformingScriptTask() do
-        if not quest:NewScriptFrame(me) then return end
-    end
+    if not me:Speak(hero, "TEXT_QST_B16_BOOK_NOT_FOUND", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, 0.0 ~= 0) then return end
 end
 

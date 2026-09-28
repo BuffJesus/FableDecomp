@@ -114,6 +114,28 @@ ScorpionHome (intentional).
 - A/B (29 units, baseline `a43c8e5`): only the units above change; twelve promoted (GuildTraining draft only; its
   readable is hand-reviewed).
 
-Found, not fixed: **BS_Teacher AskForBook 0x00E55CE0** is `AskForBook(long, class CCharString)` in ego_r but the
-typed export has one `CCharString_bv param_1` that the body uses as the book index; the second (string) operand is lost
-from the lifted signature. Check its callers before relying on the lift.
+## Evening: AskForBook, member-resource speech (after `cb6bc76`)
+
+Corpus smoke **8 → 5** failing functions, none new; 4 real: the two Arena cell guards, Roth, SickChild
+helper_ECE460 (ScorpionHome is intentional).
+
+- **Lost parameter from the reviewed prototype** (`native_function_parameters`): BS_Teacher AskForBook 0x00E55CE0 is
+  `AskForBook(long, class CCharString)` in ego_r (RET 8) but exported with one `CCharString_bv param_1`. When every
+  reviewed parameter is one dword and each missing one's this-call stack slot is referenced, it is appended under its
+  slot name (`stack0x00000008` → `native_arg_param_2`, renamed before the stack-slot passes) and the reviewed scalar
+  type replaces the export's; the refusal line reads the caller's key.
+- **Callers' pushed operands** (`native_local_helper_operands.py`): a local helper call printed with fewer operands than
+  its recovered signature gets the missing ones decoded from the pushes before it (in-place by-value CCharString
+  literal, immediates, `this` / parent member loads), only when every missing one decodes. AskForBook's callers now
+  pass `(LastBookRequested, "TEXT_QST_B16_BOOK_REFUSE_AGAIN")` and `(value, "TEXT_QST_B16_BOOK_REFUSED")`; before, the
+  first passed nothing and `value < booksWanted` would have compared nil.
+- **Member-resource vtable calls**: slot 0x34 is `Speak`, 0x30 `GetScriptThing` (hidden result slot →
+  `resources:ScriptThing`), also directly on the member (`*(this + 0x34)`), through a local copied from a member alias,
+  and through a vtable temporary. SickChildsMother/Witch now wait on `IsPerformingScriptTask()` (was `while nil`),
+  WomanToAttract speaks its laugh lines, BS_Teacher speaks its refusals.
+- **Getter operands**: Ghidra gave Speak's pushes to the preceding operand-less GetHero (0x118); they move to the call
+  that consumes the result, the old register value saved as `<reg>_pushed` when it is also an operand.
+- Harness: `RetailFlags` / `GlobalConversations` mocks shaped like the sidecar bindings (BookReaction, DoConversation and
+  OakValeFire were harness failures).
+- A/B: only BookCollecting (BS_Teacher) and SickChild (Mother, Witch, WomanToAttract) change; each changed file has
+  fewer `missing` / `unresolved` / TODO placeholders than before. Tests: `test_ask_for_book_recovery.py` (4).

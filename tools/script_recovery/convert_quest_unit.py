@@ -1113,6 +1113,16 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
 _MASK = re.compile(r'"(?:[^"\\\n]|\\.)*"|\'(?:[^\'\\\n]|\\.)*\'|/\*[\s\S]*?\*/|//[^\n]*')
 
 
+def rename_stack_parameters(text):
+    """Parameters the export dropped but the reviewed prototype restores (native_function_parameters: named after
+    their stack slot, `stack0x00000008`) get their Lua names before the stack-slot passes rename the slot."""
+    sig = function_parameters(text, member=True)
+    aliases = {p['native']: p['lua'] for p in sig.get('parameters', []) if p['native'].startswith('stack0x')}
+    for slot, lua in aliases.items():
+        text = re.sub(r'\b' + slot + r'\b', lua, text)
+    return text
+
+
 def unwrap_statements(text):
     """Re-join statements Ghidra wrapped across lines (deeply indented code): while a line's
     parentheses are unbalanced, the next line continues it (`+\n  0x5d4))(`, `4)\n  ,0.5`)."""
@@ -1791,6 +1801,17 @@ class UnitConverter:
             decompile = decompile[:start] + replacement + decompile[end:]
         return decompile
 
+    def restore_local_helper_operands(self, decompile, fn):
+        """Operands a local helper call lost (native_local_helper_operands), decoded from the pushes before it."""
+        from tools.script_recovery.native_local_helper_operands import restore_local_helper_operands
+
+        def arity_of(target):
+            helper = self.native(target)
+            if not helper or '__thiscall' not in helper['decompile'][:1500]:
+                return None
+            return len(function_parameters(helper['decompile'], member=True).get('parameters', []))
+        return restore_local_helper_operands(decompile, fn, _text_order_sites(decompile, fn), arity_of, self.rdata)
+
     def native(self, address):
         fn = self.by_address.get(address.lower())
         return fn if fn and fn.get('decompile') else None
@@ -2004,7 +2025,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(unwrap_statements(fn['decompile']), name, literal_vectors)))), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.restore_local_helper_operands(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(rename_stack_parameters(unwrap_statements(fn['decompile'])), name, literal_vectors)))), fn), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in

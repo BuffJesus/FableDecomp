@@ -401,7 +401,6 @@
             "unnamed field 0x14",
             "label LAB_00e55a1e",
             "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))();",
-            "helper_E55CE0: 0 helper operands for 1 parameters",
             "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))();",
             "label LAB_00e55a13",
             "goto LAB_00e55c3f",
@@ -411,7 +410,7 @@
             "label LAB_00e55c3a",
             "label LAB_00e55c3f",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar8 + 0x34))(pCVar9,pcVar13);",
+            "Speak: missing overScreenFade (5 args for 6 params)",
             "label LAB_00e55c16",
             "verify cleanup at LAB_00e55c3a (lifted as early return)",
             "unlifted: CVar12 = *(this + 4)",
@@ -445,8 +444,7 @@
             "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
             "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
             "unlifted: iVar8 = *xStack_7c",
-            "unlifted: pCVar9 = (**(*this_00 + 0x30))()",
-            "unlifted: iVar8 = *this_00"
+            "unlifted: pCVar9 = (**(*this_00 + 0x30))()"
           ],
           "calls": [
             "SetThingPersistent",
@@ -582,6 +580,7 @@
             "RESOURCE_DestroyMovie",
             "GetHealth",
             "GetHero",
+            "Speak",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -601,7 +600,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 521,
+          "lines": 519,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -708,7 +707,12 @@
               {
                 "native": "param_1",
                 "lua": "native_arg_param_1",
-                "type": "CCharString_bv"
+                "type": "long"
+              },
+              {
+                "native": "stack0x00000008",
+                "lua": "native_arg_param_2",
+                "type": "CCharString"
               }
             ],
             "returnKind": "bool",
@@ -716,19 +720,9 @@
           },
           "todo": [
             "label LAB_00e55dcf",
-            "unnamed field 0x34",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar6 + 0x34))(uVar12);",
-            "unnamed field 0x34",
-            "unlifted: (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);",
             "unnamed field 0x14",
+            "TakeObjectFromHero: missing objectDefName (0 args for 1 params)",
             "unlifted: *(undefined1 *)(*(int *)(*(int *)(this + 0x14) + 0xa0) + (int)value) = 1;",
-            "unnamed field 0x34",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);",
-            "unnamed field 0x34",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar6 + 0x34))(pCVar7,pcVar11,uVar12,uVar13,uVar14,uVar16);",
             "helper_E57020: 2 helper operands for 0 parameters",
             "label LAB_00e560d5",
             "label LAB_00e560f5",
@@ -741,22 +735,6 @@
             "label LAB_00e560f5_c18",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
             "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
-            "unlifted: pCVar7 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))(xStack_24)",
-            "unlifted: iVar6 = *pCVar17",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))(uVar12)",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))()",
-            "unlifted: pCVar7 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))(xStack_24)",
-            "unlifted: iVar6 = *pCVar17",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))(pCVar7)",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))()",
-            "unlifted: pCVar7 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))(xStack_24)",
-            "unlifted: iVar6 = *pCVar17",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))(pCVar7)",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))()",
-            "unlifted: pCVar7 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))(xStack_24)",
-            "unlifted: iVar6 = *pCVar17",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))(pCVar7)",
-            "unlifted: cVar4 = (**(*pCVar17 + 0x68))()",
             "unlifted: ACTORMAP_Set(xStack_3c, \"Teacher\", &pOther)"
           ],
           "calls": [
@@ -772,16 +750,24 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "RESOURCE_MemberResource",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "TakeObjectFromHero",
@@ -789,18 +775,26 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "RESOURCE_MemberResource",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "GiveHeroMorality",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "ENGINE_IntToString",
@@ -869,7 +863,7 @@
             "SetStateBool",
             "CreateThread"
           ],
-          "lines": 346,
+          "lines": 332,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -881,7 +875,7 @@
           "nativeJumps": [
             "goto FLOW_after_lab_00e55dcf;",
             "goto FLOW_after_lab_00e560d5;",
-            "goto FLOW_after_lab_00e560d5_215;",
+            "goto FLOW_after_lab_00e560d5_216;",
             "goto LAB_00e566a1;",
             "if (bVar3) goto LAB_00e560d5_c17;",
             "if (bVar3) goto LAB_00e560d5_c18;",
@@ -891,7 +885,7 @@
           "nativeLabels": [
             "FLOW_after_lab_00e55dcf",
             "FLOW_after_lab_00e560d5",
-            "FLOW_after_lab_00e560d5_215",
+            "FLOW_after_lab_00e560d5_216",
             "LAB_00e560d5_c17",
             "LAB_00e560d5_c18",
             "LAB_00e566a1"
@@ -1060,13 +1054,10 @@
             "unlifted: (**(code **)((int)x_stk_14 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);",
             "unnamed field 0x34",
             "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)(iVar7 + 0x34))(pCVar8,pcVar14,uVar15,uVar16,uVar17);",
             "unlifted: iVar7 = *(iVar7 + 0x94)",
             "unlifted: if (ctr_CVar13 == quest:GetStateInt(\"LastBookRequested\")) or (*(ctr_CVar13 + *(__native_en",
             "unlifted: if *(ctr_CVar13 + *(__native_entity_state:GetStateInt(\"self_0x14\") + 0xac)) == 0 then",
@@ -1075,11 +1066,8 @@
             "unlifted: cVar6 = (**(*pCVar12 + 0x68))(pCVar8)",
             "unlifted: cVar6 = (**(*pCVar12 + 0x68))()",
             "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
-            "unlifted: iVar7 = *pCVar1",
             "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
-            "unlifted: iVar7 = *pCVar1",
-            "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()",
-            "unlifted: iVar7 = *pCVar1"
+            "unlifted: pCVar9 = (**(__native_entity_state:GetStateInt(\"self_0x34\") + 0x30))()"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -1105,6 +1093,7 @@
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "Speak",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1114,6 +1103,7 @@
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "Speak",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1123,13 +1113,14 @@
             "RESOURCE_MemberResource",
             "GetHealth",
             "GetHero",
+            "Speak",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating"
           ],
-          "lines": 234,
+          "lines": 228,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1245,7 +1236,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 169
+        "todo": 135
       }
     }
   ],
@@ -1256,6 +1247,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 169
+    "todo": 135
   }
 }

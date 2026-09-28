@@ -166,7 +166,7 @@ RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local
 # split from a string-typed register (`ctr_CVar19`: V_ChickenKicking ChickenMaster's score, whose `= 0` and
 # `+ 0x64` updates were TODOs, so UpdateQuestInfoCounter and the high-score test read nil, 2026-09-28).
 RE_LOCAL_ASSIGN = re.compile(
-    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|(?:f|ctr)_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
+    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+|_pushed)?|(?:f|ctr)_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
     r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')
@@ -2544,7 +2544,7 @@ class Lifter:
                 if _os.environ.get('GOTO_DUMP') and _os.environ['GOTO_DUMP'] in (role or ''):
                     Path(_os.environ['GOTO_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
-        definitions = Counter(re.findall(r'\b((?:f_|ctr_)?[A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
+        definitions = Counter(re.findall(r'\b((?:f_|ctr_)?[A-Za-z]{1,3}Var\d+(?:_\d+|_pushed)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
         # a fall-through switch chain re-assigns its selector local (`native_structured_switch`): a real variable,
         # never a constant to propagate into the guards that follow
         for name, count in Counter(re.findall(r'\b(native_arg_switch_\w+)\s*=(?!=)', '\n'.join(statements))).items():

@@ -1605,7 +1605,7 @@ STRINGMAP_CLEAR = {0x9AACE0}
 # CScriptGameResourceObjectScriptedThingBaseVTable slots (ForgeFSE EntityScriptingAPI.h) the host binds on `resources`
 # (lift_native_lua.RESOURCE_VTABLE_METHODS)
 RESOURCE_VTABLE_SLOTS = {0x10: 'MoveToPosition', 0x14: 'MoveToThing', 0x1c: 'FollowThing', 0x20: 'StopFollowingThing',
-                         0x24: 'IsFollowActionRunning', 0x28: 'ClearCommands', 0x44: 'PerformExpression',
+                         0x24: 'IsFollowActionRunning', 0x28: 'ClearCommands', 0x34: 'Speak', 0x44: 'PerformExpression',
                          0x48: 'PlayAnimation', 0x4c: 'PlayCombatAnimation', 0x50: 'PlayLoopingAnimation',
                          0x54: 'ClearAllActions', 0x58: 'ClearAllActionsIncludingLoopingAnimations',
                          0x60: 'DropGenericBox', 0x64: 'UnsheatheWeapons', 0x68: 'IsPerformingScriptTask',
@@ -1675,19 +1675,56 @@ def lower_member_resources(text, spec):
     # (V_BookCollecting DoConversation picks seh_Boy / seh_Girl as the speaker, then `(**(code **)(*(int *)pCVar5 +
     # 0x48))(anim, ...)` = PlayAnimation, 0x50 PlayLoopingAnimation, 0x68 IsPerformingScriptTask); spelled as the
     # bsim-labelled resource calls the lifter binds on `resources`
-    for var in set(re.findall(r'^[ \t]*(\w+) = ' + MEMBER_RESOURCE + r';', text, re.M)):
-        v = re.escape(var)
-        rhs = re.findall(r'^[ \t]*' + v + r' = ([^;]+);', text, re.M)
-        if not all(re.fullmatch(MEMBER_RESOURCE + r'|\(\w+ \*\)0x0|0', r.strip()) for r in rhs):
-            continue
-        def vcall(m, var=var):
+    # (a local copied from such a local qualifies too: V_BookCollecting BS_Teacher AskForBook 0x00E55CE0 re-seats
+    # `pCVar17 = pOther` where pOther only ever holds seh_me)
+    def resource_vcall(receiver):
+        def vcall(m):
             name = RESOURCE_VTABLE_SLOTS.get(int(m.group(1), 16))
             if name is None:
                 return m.group(0)
             rest = m.group(2)
             return (f'CScriptGameResourceObjectScriptedThingBase::_{name}_CScriptGameResourceObjectScriptedThingBase('
-                    f'(CScriptGameResourceObjectScriptedThingBase *){var}' + (', ' if rest.strip() != ')' else '') + rest)
-        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + v + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', vcall, text)
+                    f'(CScriptGameResourceObjectScriptedThingBase *){receiver}' + (', ' if rest.strip() != ')' else '') + rest)
+        return vcall
+    holders = set(re.findall(r'^[ \t]*(\w+) = ' + MEMBER_RESOURCE + r';', text, re.M))
+    candidates = holders | {a for a, b in re.findall(r'^[ \t]*(\w+) = (\w+);', text, re.M) if b in holders}
+    changed = True
+    while changed:
+        changed = False
+        for var in sorted(candidates):
+            rhs = re.findall(r'^[ \t]*' + re.escape(var) + r' = ([^;]+);', text, re.M)
+            if not all(re.fullmatch(MEMBER_RESOURCE + r'|\(\w+ \*\)0x0|0', r.strip()) or r.strip() in candidates for r in rhs):
+                candidates.discard(var)
+                changed = True
+    for var in candidates:
+        v = re.escape(var)
+        # slot 0x30 GetScriptThing through the alias (V_SickChild WomanToAttract: `uVar7 = (**(code **)(*(int *)this_00 +
+        # 0x30))(xStack_48); GetHealth(uVar7)`), a hidden result slot like the direct member form below
+        text = re.sub(r'^([ \t]*)(\w+) = (?:\(CScriptThing(?:_bv)? \*\))?\(\*\*\(code \*\*\)\(\*\(int \*\)' + v + r' \+ 0x30\)\)\(&?(\w+)\);',
+                      lambda m, var=var: f'{m[1]}{m[3]} = RESOURCE_ScriptThing({var});\n{m[1]}{m[2]} = {m[3]};', text, flags=re.M)
+        text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)' + v + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', resource_vcall(var), text)
+        # the vtable read into a temporary first (`iVar6 = *(int *)pCVar17; ... (**(code **)(iVar6 + 0x34))(..)`,
+        # AskForBook's Speak), up to the temporary's next definition
+        for tm in list(re.finditer(r'^[ \t]*(\w+) = \*\(int \*\)' + v + r';[ \t]*\r?\n', text, re.M))[::-1]:
+            tmp = re.escape(tm.group(1))
+            tail = text[tm.end():]
+            nxt = re.search(r'^[ \t]*' + tmp + r' = ', tail, re.M)
+            scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+            scope = re.sub(r'\(\*\*\(code \*\*\)\(' + tmp + r' \+ (0x[0-9a-f]+)\)\)\((\s*\S)', resource_vcall(var), scope)
+            keep = tm.group(0) if re.search(r'\b' + tmp + r'\b', scope) else ''
+            text = text[:tm.start()] + keep + scope + rest
+    # a vtable call straight through the member (`(**(code **)(*(int *)(this + 0x34) + 0x30))(..)`, AskForBook's
+    # GetScriptThing on seh_me)
+    for base, resources, _, owner in families:
+        for offset, name in resources.items():
+            member = f'RESOURCE_MemberResource("{name}"{owner})'
+            # slot 0x30 GetScriptThing returns through a hidden slot: `X = (CScriptThing *)(vcall)(HIDDEN);`
+            text = re.sub(r'^([ \t]*)(\w+) = (?:\(CScriptThing(?:_bv)? \*\))?\(\*\*\(code \*\*\)\(\*\(int \*\)\((?:\(int\)\s*)?' + base
+                          + r' \+ ' + off_re(offset) + r'\) \+ 0x30\)\)\(&?(\w+)\);',
+                          lambda m, member=member: f'{m[1]}{m[3]} = RESOURCE_ScriptThing({member});\n{m[1]}{m[2]} = {m[3]};',
+                          text, flags=re.M)
+            text = re.sub(r'\(\*\*\(code \*\*\)\(\*\(int \*\)\((?:\(int\)\s*)?' + base + r' \+ ' + off_re(offset) + r'\) \+ (0x[0-9a-f]+)\)\)\((\s*\S)',
+                          resource_vcall(member), text)
     # ... and through a `CScriptGameResourceObjectScriptedThingBase &` parameter, directly or via its vtable read into
     # a temporary (V_TourGuide MoveToNextWaypoint 0x00EE6850: `iVar1 = *(int *)param_2; ... (**(code **)(iVar1 +
     # 0x10))(pos, 1.0, 0, 0, 1)` = MoveToPosition, the guide walking to the next stop)
@@ -2894,6 +2931,7 @@ def lower_after_annotate(text, thing_slots=None):
     # out-parameter IS the result and the bool its presence (V_BeardyBaldy Main compares the region it waited for)
     text = re.sub(r'^([ \t]*)(\w+) = GSI->(MsgOnRegion(?:Loaded|Unloaded))\(&(\w+)\);',
                   r'\1\4 = GSI->\3();\n\1\2 = ENGINE_NotNil(\4);', text, flags=re.M)
+    text = return_misattached_getter_operands(text)   # (GSI names exist only after annotate)
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
@@ -4821,6 +4859,32 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     # C unsigned literals (`nextSummonerSpawnPoint + 1U`, DragonBossFight 0x00D25890) are plain Lua numbers
     text = re.sub(r'"(?:[^"\\\n]|\\.)*"|\b((?:0x[0-9a-f]+|\d+))U\b', lambda m: m.group(1) if m.group(1) else m.group(0), text)
     return text, diag
+
+
+def return_misattached_getter_operands(text: str) -> str:
+    """Ghidra sometimes hands a call's pushes to the operand-less getter that produced its first argument:
+    `uVar12 = GSI->GetHero(pvVar9,uVar12,uVar13,uVar14,uVar16); Res::_Speak_(res, uVar12);` in V_BookCollecting
+    BS_Teacher AskForBook 0x00E55CE0 (retail: `push 0; push 1; push 0; push 2; push key; call [GSI+0x118]; push eax;
+    call [res+0x34]`). GetHero takes none, so the operands go after the result in the next call when that call
+    receives nothing else."""
+    # (also the raw slot through a GSI alias the annotation did not name, `(**(code **)(*(int *)pCVar19 + 0x118))(..)`,
+    # when a resource Speak takes nothing but its result)
+    pat = re.compile(r'^(?P<ind>[ \t]*)(?P<x>\w+) = (?:GSI->GetHero|\(\*\*\(code \*\*\)\(\*\(int \*\)\w+ \+ 0x118\)\))\((?P<args>[^;()]+)\);[ \t]*\r?\n'
+                     r'(?P<ind2>[ \t]*)(?P<call>[\w:]+\((?:\([\w ]+\*\)\w+, )?)(?P=x)\);', re.M)
+    def repair(m):
+        # the register named for the result is also one of the moved operands (`uVar12 = 2` is the method, then
+        # `uVar12 = GetHero(..)`): retail pushed the old value before the getter ran, and the register holds the hero
+        # afterwards (V_SickChild WomanToAttract reads it again for GetHealth), so the pushed value is saved first
+        x = m['x']
+        if 'GSI->GetHero' not in m.group(0) and '_Speak_' not in m['call']:
+            return m.group(0)
+        args = [a.strip() for a in m['args'].split(',')]
+        save = ''
+        if x in args:
+            save = f"{m['ind']}{x}_pushed = {x};\n"
+            args = [f'{x}_pushed' if a == x else a for a in args]
+        return f"{save}{m['ind']}{x} = GSI->GetHero();\n{m['ind2']}{m['call']}{x},{','.join(args)});"
+    return pat.sub(repair, text)
 
 
 def fold_actor_map_releases(text: str) -> str:

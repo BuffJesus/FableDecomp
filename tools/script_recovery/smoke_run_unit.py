@@ -67,6 +67,14 @@ local quest = setmetatable({}, { __index = function(_, k)
         if k == "IsActiveThreadTerminating" then return terminating end
         if k:match("^GetAll") or k == "GetFollowingEntityList" or k == "GetStateListCopy" then return {} end
         if k:match("^GetDistance") then return 0 end
+        -- sidecar-owned containers (quest:RetailFlags(name), quest:GlobalConversations(offset)): shaped like the binding
+        if k == "RetailFlags" then
+            local flags = {}
+            return { Get = function(_, key) return flags[key] or false end, Set = function(_, key, v) flags[key] = v end }
+        end
+        if k == "GlobalConversations" then
+            return setmetatable({}, { __index = function() return { Lines = 0, Speaker = {}, Dialogue = {}, Animation = {}, AnimLoop = {} } end })
+        end
         if k == "ReadGlobalGameData" then return 1 end   -- a positive tunable (retail divides by some: BeardyBaldy speech timer)   -- a float (GetDistanceBetweenThings is not a thing getter)
         if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With") or k:match("Target$"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)

@@ -14,7 +14,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local isObjectInThingsPossession, predicateResult8, predicateResult16, questionAnswer
-    local scratchValue8, scratchValue, hero6, movie3, movie4, movie5
+    local scratchValue, scratchValue8, hero6, movie3, movie4, movie5
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
         resources:DestroyMovie(movie4)
@@ -111,21 +111,19 @@ function Main(quest, me)
                     return
                 end
                 -- TODO(native): pCVar11 = (**(*(self_0x14 + 0x48) + 0x30))()
-                scratchValue = nil --[[unresolved native value]]
+                scratchValue8 = nil --[[unresolved native value]]
                 local fret_0 = quest:GetHealth(nil --[[missing]])
                 if 0.0 < fret_0 then
                     -- TODO(native): iVar13 = *(self_0x14 + 0x48)
-                    scratchValue8 = nil --[[unresolved native value]]
+                    scratchValue = nil --[[unresolved native value]]
                     -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);
-                    -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))(pCVar17)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie4)
-                            return
+                            do return end
                         end
-                        -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))()
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -136,20 +134,18 @@ function Main(quest, me)
             else
                 if predicateResult then ReleaseEverything(); return end
                 -- TODO(native): pCVar11 = (**(*(self_0x14 + 0x48) + 0x30))()
-                scratchValue = nil --[[unresolved native value]]
+                scratchValue8 = nil --[[unresolved native value]]
                 if 0.0 < quest:GetHealth(1) then
                     -- TODO(native): iVar13 = *(self_0x14 + 0x48)
-                    scratchValue8 = nil --[[unresolved native value]]
+                    scratchValue = nil --[[unresolved native value]]
                     -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);
-                    -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))(pCVar17)
-                    while nil --[[unresolved native value]] do
+                    while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
                             resources:DestroyMovie(movie5)
-                            return
+                            do return end
                         end
-                        -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))()
                     end
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 end
@@ -175,17 +171,15 @@ function Main(quest, me)
             local fret_01 = quest:GetHealth(nil --[[missing]])
             if 0.0 < fret_01 then
                 -- TODO(native): iVar13 = *(self_0x14 + 0x48)
-                scratchValue8 = nil --[[unresolved native value]]
+                scratchValue = nil --[[unresolved native value]]
                 -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15);
-                -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))(pCVar17)
-                while nil --[[unresolved native value]] do
+                while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie3)
-                        return
+                        do return end
                     end
-                    -- TODO(native): cVar9 = (**(*(self_0x14 + 0x48) + 0x68))()
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)

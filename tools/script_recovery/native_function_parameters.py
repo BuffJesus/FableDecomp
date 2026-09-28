@@ -36,6 +36,24 @@ def function_parameters(source, *, member=False):
                 ref = re.fullmatch(r'\s*class\s+(CScriptThing|C3DVector)\s+const\s*&\s*', r)
                 if ref and p['type'] in ('int', 'undefined4'):
                     p['type'] = ref.group(1) + ' *'
+        # ... and parameters the export dropped: V_BookCollecting BS_Teacher AskForBook 0x00E55CE0 is
+        # `AskForBook(long, class CCharString)` in ego_r (RET 8), exported as one `CCharString_bv param_1` that the body
+        # uses as the book index while it reads the refusal key at `stack0x00000008`. When every reviewed parameter is
+        # one dword and each missing one's stack slot (this-call: 4 * position) is referenced, the missing parameters
+        # are appended under their slot names, and the reviewed scalar types replace the export's confused ones.
+        dword = re.compile(r'\s*(?:(?:unsigned\s+)?(?:long|int|char|bool|short|float)|class\s+CCharString|[\w:<> ]+\s*[*&])\s*')
+        if len(reviewed) > len(params) and all(dword.fullmatch(r) for r in reviewed):
+            body = source.split('{', 1)[1] if '{' in source else ''
+            missing = [f'stack0x{4 * (i + 1):08x}' for i in range(len(params), len(reviewed))]
+            if all(re.search(r'\b' + slot + r'\b', body) for slot in missing):
+                for p, r in zip(params, reviewed):
+                    scalar = re.fullmatch(r'\s*((?:unsigned\s+)?(?:long|int|bool|short|float))\s*', r)
+                    if scalar and 'CCharString' in p['type']:
+                        p['type'] = scalar.group(1)
+                for i, slot in enumerate(missing, start=len(params)):
+                    r = reviewed[i]
+                    params.append({'native': slot, 'lua': f'native_arg_param_{i + 1}',
+                                   'type': 'CCharString' if 'CCharString' in r else r.replace('class ', '').strip()})
     bsim_void = bool(comment and re.search(r'\bvoid\s+__thiscall\b', comment.group(1)))
     # likewise a reviewed `bool __thiscall` outranks Ghidra's `int` (IsThingCarryingCrate: a Lua boolean
     # result must not be tested with `~= 0`)
