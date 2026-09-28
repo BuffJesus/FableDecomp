@@ -401,7 +401,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 536,
+          "lines": 501,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

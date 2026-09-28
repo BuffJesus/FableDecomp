@@ -9,9 +9,7 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult, scratchValue2, fret_0, fret_04, this_00, scratchValue12
-    local scratchValue13, movie
-    scratchValue13 = 0
+    local predicateResult, scratchValue, fret_0, fret_04, this_00, movie
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
@@ -19,48 +17,31 @@ function Main(quest, me)
     quest:SetIsPushableByHero(me, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:SetThingHasInformation(me, false, false, false)
-    predicateResult2 = quest:IsActiveThreadTerminating()
+    predicateResult = quest:IsActiveThreadTerminating()
     while true do
-        if predicateResult2 then
+        if predicateResult then
             resources:ReleaseResource(resource)
             return
         end
         if me:IsTalkedToByHero() then break end
-        local scratchValue = scratchValue13
-        scratchValue13 = scratchValue13 | 2
         if me:MsgIsHitByHero() then
             goto LAB_00e17f13
         else
-            scratchValue12 = scratchValue | 6
-            scratchValue13 = scratchValue12
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue12 = scratchValue | 14
-                scratchValue13 = scratchValue12
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e17f13 end
             end
             goto LAB_00e17f21
         end
         goto FLOW_past_lab_00e17f13
         ::LAB_00e17f13::
-        scratchValue2 = 1
+        scratchValue = 1
         if quest:GetStateInt("BalverineState") == 7 then goto LAB_00e17f21 end
         ::FLOW_past_lab_00e17f13::
         goto FLOW_past_lab_00e17f21
         ::LAB_00e17f21::
-        scratchValue2 = 0
+        scratchValue = 0
         ::FLOW_past_lab_00e17f21::
-        if scratchValue12 & 8 ~= 0 then
-            scratchValue12 = scratchValue12 & 0xfffffff7
-            scratchValue13 = scratchValue12
-        end
-        if scratchValue12 & 4 ~= 0 then
-            scratchValue12 = scratchValue12 & 0xfffffffb
-            scratchValue13 = scratchValue12
-        end
-        if scratchValue12 & 2 ~= 0 then
-            scratchValue13 = scratchValue12 & 0xfffffffd
-        end
-        if scratchValue2 == 0 then quest:NewScriptFrame(me); predicateResult2 = quest:IsActiveThreadTerminating(); goto continue_1 end
+        if scratchValue == 0 then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); goto continue_1 end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         resources:PrepareResource(resource)
@@ -96,7 +77,7 @@ function Main(quest, me)
             return
         end
         quest:NewScriptFrame(me)
-        predicateResult2 = quest:IsActiveThreadTerminating()
+        predicateResult = quest:IsActiveThreadTerminating()
         ::continue_1::
     end
     ::FLOW_after_lab_00e17e8f::
@@ -160,18 +141,7 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    if quest:GetStateInt("BalverineState") ~= 7 then goto LAB_00e17d91 end
-                    scratchValue13 = scratchValue13 | 1
-                    if quest:IsQuestActive("Q_WhiteBalverineWW") then goto LAB_00e17d91 end
-                    predicateResult = true
-                    goto FLOW_past_lab_00e17d91
-                    ::LAB_00e17d91::
-                    predicateResult = false
-                    ::FLOW_past_lab_00e17d91::
-                    if scratchValue13 & 1 ~= 0 then
-                        scratchValue13 = scratchValue13 & 0xfffffffe
-                    end
-                    if predicateResult then
+                    if not ((quest:GetStateInt("BalverineState") ~= 7) or quest:IsQuestActive("Q_WhiteBalverineWW")) then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e181ca end
                         local fret_03 = quest:GetHealth(resources:ScriptThing(resource))
                         if 0.0 < fret_03 then
@@ -187,27 +157,15 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie3)
             resources:PrepareResource(resource)
-            scratchValue13 = scratchValue13 | 2
             if me:MsgIsHitByHero() then
-                scratchValue2 = 1
+                scratchValue = 1
                 if quest:GetStateInt("BalverineState") == 7 then goto LAB_00e17f21_c1 end
             end
             goto FLOW_past_lab_00e17f21_c1
             ::LAB_00e17f21_c1::
-            scratchValue2 = 0
+            scratchValue = 0
             ::FLOW_past_lab_00e17f21_c1::
-            if scratchValue12 & 8 ~= 0 then
-                scratchValue12 = scratchValue12 & 0xfffffff7
-                scratchValue13 = scratchValue12
-            end
-            if scratchValue12 & 4 ~= 0 then
-                scratchValue12 = scratchValue12 & 0xfffffffb
-                scratchValue13 = scratchValue12
-            end
-            if scratchValue12 & 2 ~= 0 then
-                scratchValue13 = scratchValue12 & 0xfffffffd
-            end
-            if scratchValue2 ~= 0 then
+            if scratchValue ~= 0 then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 resources:PrepareResource(resource)

@@ -12,8 +12,8 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue4, scratchValue6, ctr_94_2, thingsForPotionGot, questionAnswer, scratchValue20
-    local scratchValue21, getHero, scratchValue25, scratchValue26, this_01, scratchValue28
-    local scratchValue31, movie, movie4, scratchValue35, movie5
+    local scratchValue21, getHero, scratchValue25, scratchValue26, this_01, movie, movie4
+    local scratchValue34, movie5
     local function ReleaseEverything()
         resources:DestroyMovie(movie)
     end
@@ -22,7 +22,7 @@ function Main(quest, me)
         resources:DestroyMovie(movie)
     end
     local function ReleaseEverything3()
-        local this_01 = scratchValue35 + 4
+        local this_01 = scratchValue34 + 4
         resources:DestroyMovie(this_01)
     end
     if not quest:NewScriptFrame(me) then return end
@@ -183,11 +183,9 @@ function Main(quest, me)
         end
         -- TODO(native): xStack_a0 = xStack_a0 | 2;
         if me:MsgIsHitByHero() then goto LAB_00ecef61 end
-        scratchValue28 = scratchValue31 | 6
         -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
         scratchValue4 = nil --[[unresolved native value]]
         if scratchValue4 then
-            scratchValue28 = scratchValue31 | 14
             -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
             local scratchValue5 = nil --[[unresolved native value]]
             if not scratchValue5 then goto LAB_00ecef61 end
@@ -195,12 +193,6 @@ function Main(quest, me)
         goto FLOW_past_lab_00ecef61
         ::LAB_00ecef61::
         ::FLOW_past_lab_00ecef61::
-        if scratchValue28 & 8 ~= 0 then
-            scratchValue28 = scratchValue28 & 0xfffffff7
-        end
-        if scratchValue28 & 4 ~= 0 then
-            scratchValue28 = scratchValue28 & 0xfffffffb
-        end
         local scratchValue = ctr_94_2
         if quest:IsActiveThreadTerminating() then return end
         ctr_94_2 = ctr_94_2 + 1
@@ -285,14 +277,11 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        scratchValue31 = movie5
         -- TODO(native): xStack_a0 = xStack_a0 | 0x10;
         if me:MsgIsHitByHero() then goto LAB_00ecf576 end
-        scratchValue28 = scratchValue31 | 48
         -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
         scratchValue6 = nil --[[unresolved native value]]
         if scratchValue6 then
-            scratchValue28 = scratchValue31 | 112
             -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
             local scratchValue7 = nil --[[unresolved native value]]
             if not scratchValue7 then goto LAB_00ecf576 end
@@ -300,12 +289,6 @@ function Main(quest, me)
         goto FLOW_past_lab_00ecf576
         ::LAB_00ecf576::
         ::FLOW_past_lab_00ecf576::
-        if scratchValue28 & 64 ~= 0 then
-            scratchValue28 = scratchValue28 & 0xffffffbf
-        end
-        if scratchValue28 & 32 ~= 0 then
-            scratchValue28 = scratchValue28 & 0xffffffdf
-        end
         local scratchValue2 = ctr_94_2
         if quest:IsActiveThreadTerminating() then return end
         ctr_94_2 = ctr_94_2 + 1

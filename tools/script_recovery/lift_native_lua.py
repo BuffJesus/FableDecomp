@@ -162,9 +162,11 @@ RE_CSTR_MASTER_ASSIGN = re.compile(
 RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local_\w+) = (?:\([^)]*\))?(.+);\s*$')
 # Ghidra names locals `xVarN`; typed exports (prototype overrides) name them after callee parameters
 # (`pThing`, `thing1`, `string`). Any identifier that is not a keyword/global is a local assignment.
-# Float lifetimes split from string registers use `f_CVarN`; keep their assignments too.
+# Float lifetimes split from string registers use `f_CVarN`; keep their assignments too. So do integer counters
+# split from a string-typed register (`ctr_CVar19`: V_ChickenKicking ChickenMaster's score, whose `= 0` and
+# `+ 0x64` updates were TODOs, so UpdateQuestInfoCounter and the high-score test read nil, 2026-09-28).
 RE_LOCAL_ASSIGN = re.compile(
-    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|f_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
+    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+)?|(?:f|ctr)_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
     r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')
@@ -1008,6 +1010,94 @@ def cleanup_flag_words(lines, hoisted):
         if mentions == allowed:
             names += sorted(cluster, key=body.find)
     return names
+
+
+def drop_dead_flag_statements(lines, keep=()):
+    """Cleanup-flag bookkeeping whose word shares a stack slot with another object: remove it.
+
+    The bits only select which conditional temporaries the epilogue destroys; Lua has no destructors, so no
+    statement can observe them. When the word also holds something else, `cleanup_flag_words` cannot start it
+    clear: V_ChickenKicking Spectator Main (0x00E63890) reuses its dead `line` string's slot and ORs the bits onto
+    the stale pointer; V_Bordello BordelloLady Main (0x00E3EB10) tests bit 0 of a slot last loaded from its
+    resource member; V_SickChild Witch Main (0x00ECE7F0). The Lua then did arithmetic on a string or nil.
+    Flag statements are `a = b`, `a = b | K`, `a = b & K` inside a cluster grown from `(v & K) ~= 0` tests,
+    and `if (v & K) ~= 0 then` blocks holding only those. They are dropped when, for every cluster member, each
+    mention outside them either precedes its first flag statement or, after it, is first a fresh definition
+    (so no surviving read ever sees a flag value) and at least one bit is set."""
+    code = [i for i, l in enumerate(lines) if not l.lstrip().startswith('--')]
+    raw_assign = re.compile(r'^\s*(\w+) = (\w+)(?: ([|&]) (' + _FLAG_CONST + r'))?\s*$')
+
+    class _Assign:
+        # flag arithmetic sets a few low bits (`| 0x38`) or clears them (`& 0xfffffffb`); a high-byte boolean's
+        # `& 0xffffff` (BeggarBully's reused uVar13) is not flag bookkeeping
+        @staticmethod
+        def match(line):
+            m = raw_assign.match(line)
+            if m and m[3]:
+                k = int(m[4], 0)
+                if (m[3] == '|' and not 0 < k < 0x10000) or (m[3] == '&' and k < 0xffff0000):
+                    return None
+            return m
+    assign = _Assign
+    # (`if ((v & 0x80) ~= 0) then`: a bit-7 test from lower_signed_char_tests)
+    test = re.compile(r'^(\s*)if (\()?\((\w+) & (' + _FLAG_CONST + r')\) ~= 0(?(2)\)) then\s*$')
+    tested = {m[3] for i in code if (m := test.match(lines[i]))} - set(keep)
+    if not tested:
+        return lines
+    # grown backward through a member's definitions, forward only from a value a bit operation produced (a shared
+    # slot's other copies -- Spectator's `pvVar10 = line`, the string itself -- are not flags)
+    edges = [(m[1], m[2], m[3]) for i in code if (m := assign.match(lines[i]))]
+    produced = {a for a, _, op in edges if op}
+    cluster, grown = set(tested), True
+    while grown:
+        grown = False
+        for a, b, op in edges:
+            if a in ('me', 'quest') or b in ('me', 'quest'):
+                continue
+            # (a plain copy is a leaf: the shared slot's own definitions -- `line = "TEXT_..."` -- stay outside)
+            if (a in cluster and (a in produced or a in tested) and b not in cluster) or (b in cluster and b in produced and a not in cluster):
+                cluster |= {a, b}
+                grown = True
+    flag = set()
+    for i in code:
+        m = assign.match(lines[i])
+        if m and m[1] in cluster and m[2] in cluster:
+            flag.add(i)
+    for i in code:
+        m = test.match(lines[i])
+        if not m or m[3] not in cluster:
+            continue
+        end = next((j for j in range(i + 1, len(lines)) if lines[j] == m[1] + 'end'), None)
+        if end is None:
+            continue
+        body = [j for j in range(i + 1, end) if not lines[j].lstrip().startswith('--')]
+        if all(j in flag for j in body):
+            flag.update(range(i, end + 1))
+    if not any((m := assign.match(lines[i])) and m[3] == '|' for i in flag):
+        return lines
+    # every surviving read of a member must follow (textually) a non-flag definition, not a flag write: V_NewOakValeIntro
+    # AffairMan's mask helper stores the bits into its parameter and returns them (`uVar14 = 1` ... `uVar14 =
+    # native_arg_man_cleanup_mask; return uVar14`), so they are data there, not dead bookkeeping
+    for v in cluster:
+        word = re.compile(r'(?<![\w.:])' + re.escape(v) + r'\b')
+        define = re.compile(r'^\s*(?:local\s+)?' + re.escape(v) + r'\s*=(?!=)(.*)$')
+        if not any(word.search(lines[i]) for i in flag):
+            continue
+        last_flag = None                # None: no write seen yet (a value from before the flag life)
+        for i in code:
+            if not word.search(lines[i]):
+                continue
+            d = define.match(lines[i])
+            if i in flag:
+                if d:
+                    last_flag = True
+                continue
+            if d and not word.search(d[1]):
+                last_flag = False
+                continue
+            if last_flag:
+                return lines        # a surviving read would observe a flag value
+    return [l for i, l in enumerate(lines) if i not in flag or l.lstrip().startswith('--')]
 
 
 class Lifter:
@@ -2454,7 +2544,7 @@ class Lifter:
                 if _os.environ.get('GOTO_DUMP') and _os.environ['GOTO_DUMP'] in (role or ''):
                     Path(_os.environ['GOTO_DUMP_FILE']).write_text('\n'.join(statements), encoding='utf-8')
             self.lua_jumps, self.lua_labels = supported_jumps(statements)
-        definitions = Counter(re.findall(r'\b([A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
+        definitions = Counter(re.findall(r'\b((?:f_|ctr_)?[A-Za-z]{1,3}Var\d+(?:_\d+)?|native_arg_\w+|\w*_stk_[0-9a-f]+|p\d+(?:_\d+)?)\s*=(?!=)', text))
         # a fall-through switch chain re-assigns its selector local (`native_structured_switch`): a real variable,
         # never a constant to propagate into the guards that follow
         for name, count in Counter(re.findall(r'\b(native_arg_switch_\w+)\s*=(?!=)', '\n'.join(statements))).items():
@@ -2525,6 +2615,7 @@ class Lifter:
                             re.sub(r"\b" + re.escape(name) + r"\b", literal.replace("\\", "\\\\"), l)
                             for l in self.out]
         flag_words = cleanup_flag_words(self.out, self.hoisted_scalars)
+        self.out = drop_dead_flag_statements(self.out, keep=flag_words)
         if self.used_alive:
             self.out.insert(0, "    local alive = true")
         for name in reversed(flag_words):

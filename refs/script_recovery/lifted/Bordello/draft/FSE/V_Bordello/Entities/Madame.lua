@@ -483,15 +483,12 @@ function Main(quest, me)
             resources:ReleaseResource(pCVar10)
         end
         ::LAB_00e3cab0::
-        uVar11 = uVar20 | 1
         bVar3 = me:MsgIsHitByHero()
         if bVar3 then
             goto LAB_00e3cb3c
         else
-            uVar11 = uVar20 | 3
             bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar3 then
-                uVar11 = uVar20 | 7
                 bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar3 then goto LAB_00e3cb3c end
             end
@@ -501,15 +498,6 @@ function Main(quest, me)
         ::LAB_00e3cb3c::
         -- TODO(native): xStack_124_b3 = '\x01';
         ::FLOW_past_lab_00e3cb3c::
-        if (uVar11 & 4) ~= 0 then
-            uVar11 = uVar11 & 0xfffffffb
-        end
-        if (uVar11 & 2) ~= 0 then
-            uVar11 = uVar11 & 0xfffffffd
-        end
-        if (uVar11 & 1) ~= 0 then
-            uVar11 = uVar11 & 0xfffffffe
-        end
         if xStack_124_b3 ~= 0 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -569,7 +557,6 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_ec)
         end
-        uVar20 = uVar11
         cVar4 = quest:GetStateBool("PlayerOwned")
     end
     alive = not quest:IsActiveThreadTerminating()
@@ -1117,13 +1104,10 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_15c)
             end
-            uVar11 = uVar20 | 8
             cVar4 = me:MsgIsHitByHero()
             if not cVar4 then
-                uVar11 = uVar20 | 0x18
                 cVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if cVar4 then
-                    uVar11 = uVar20 | 0x38
                     cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not cVar4 then goto LAB_00e3e06a end
                 end
@@ -1135,15 +1119,6 @@ function Main(quest, me)
             ::LAB_00e3e06a::
             -- TODO(native): xStack_f8_b3 = '\x01';
             ::FLOW_past_lab_00e3e06a::
-            if (uVar11 & 0x20) ~= 0 then
-                uVar11 = uVar11 & 0xffffffdf
-            end
-            if (uVar11 & 0x10) ~= 0 then
-                uVar11 = uVar11 & 0xffffffef
-            end
-            if (uVar11 & 8) ~= 0 then
-                uVar11 = uVar11 & 0xfffffff7
-            end
             if xStack_f8_b3 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -1205,7 +1180,6 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             iVar5 = i_stk_1a8
-            uVar20 = uVar11
         end
     end
     ::FLOW_past_lab_00e3be37::

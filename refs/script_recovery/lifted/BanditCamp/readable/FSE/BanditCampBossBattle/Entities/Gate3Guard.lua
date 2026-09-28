@@ -9,9 +9,7 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult3, predicateResult, predicateResult20, scratchValue
-    local scratchValue7
-    scratchValue7 = 0
+    local predicateResult2, predicateResult3, predicateResult, predicateResult20
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -31,16 +29,10 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             return
         end
-        local scratchValue6 = scratchValue7
-        scratchValue7 = scratchValue7 | 1
         if me:MsgIsHitByHero() then
             goto LAB_00d076a9
         else
-            scratchValue = scratchValue6 | 3
-            scratchValue7 = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue6 | 7
-                scratchValue7 = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d076a9 end
             end
             predicateResult3 = false
@@ -49,17 +41,6 @@ function Main(quest, me)
         ::LAB_00d076a9::
         predicateResult3 = true
         ::FLOW_past_lab_00d076a9::
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            scratchValue7 = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffd
-            scratchValue7 = scratchValue
-        end
-        if scratchValue & 1 ~= 0 then
-            scratchValue7 = scratchValue & 0xfffffffe
-        end
         if predicateResult3 then
             if not quest:IsActiveThreadTerminating() then
                 quest:GiveThingBestEnemyTarget(me, hero)

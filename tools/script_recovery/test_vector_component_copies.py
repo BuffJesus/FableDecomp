@@ -37,3 +37,17 @@ def test_substitution_stops_at_reuse_and_restore():
 def test_a_triple_that_is_not_offsets_0_4_8_is_left_alone():
     text = SOURCE.replace('&pCVar4->field_0x8', '&pCVar4->field_0xc')
     assert 'ENGINE_VectorCopy' not in fold_vector_component_copies(text)
+
+
+def test_dword_stored_as_four_bytes_is_one_store():
+    from tools.script_recovery.native_vector_component_copies import fold_split_dword_stores
+    text = ('  thing._8_1_ = (char)piVar2;\n  thing._9_1_ = (char)((uint)piVar2 >> 8);\n'
+            '  thing._10_1_ = (char)((uint)piVar2 >> 0x10);\n  thing._11_1_ = (char)((uint)piVar2 >> 0x18);\n')
+    assert fold_split_dword_stores(text) == '  thing._8_4_ = piVar2;\n'
+    assert fold_split_dword_stores(text.replace('>> 0x10);', '>> 0x10);\n  x = 1;')) != '  thing._8_4_ = piVar2;\n'
+
+
+def test_counter_split_from_a_string_register_is_assigned():
+    from tools.script_recovery import test_lift_native_lua as fx
+    body = '\n'.join(fx.make().lift('Main', '{\n  CCharString ctr_CVar19;\n  ctr_CVar19 = 0;\n  ctr_CVar19 = ctr_CVar19 + 0x64;\n}'))
+    assert 'ctr_CVar19 = ctr_CVar19 + 0x64' in body and 'TODO' not in body

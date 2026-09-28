@@ -9,9 +9,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult8, scratchValue3, fret_0, fret_01, this_00, scratchValue
-    local scratchValue19, movie2, scratchValue21
-    scratchValue19 = 0
+    local predicateResult, predicateResult8, scratchValue3, fret_0, fret_01, this_00, movie2
+    local scratchValue
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -56,13 +55,9 @@ function Main(quest, me)
         ::FLOW_past_lab_00ec6137::
         goto FLOW_past_lab_00ec6108
         ::LAB_00ec6108::
-        scratchValue19 = scratchValue19 | 1
         if me:IsTalkedToByHero() then goto LAB_00ec6137 end
         predicateResult = false
         ::FLOW_past_lab_00ec6108::
-        if scratchValue19 & 1 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xfffffffe
-        end
         if predicateResult then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
@@ -71,12 +66,12 @@ function Main(quest, me)
             end
             local conversationId = quest:AddNewConversation(me, false, false)
             quest:AddPersonToConversation(conversationId, hero)
-            scratchValue21 = "TEXT_QST_B10_BOY_JABBERS_" .. tostring(10)
-            if not quest:TextEntryExists(scratchValue21) then
-                scratchValue21 = "TEXT_QST_B10_BOY_JABBERS_" .. tostring(10)
+            scratchValue = "TEXT_QST_B10_BOY_JABBERS_" .. tostring(10)
+            if not quest:TextEntryExists(scratchValue) then
+                scratchValue = "TEXT_QST_B10_BOY_JABBERS_" .. tostring(10)
             end
             -- TODO(native): xStack_80 = (CCharString)((int)CVar10 + 0xa);
-            quest:AddLineToConversation(conversationId, scratchValue21, me, hero, false)
+            quest:AddLineToConversation(conversationId, scratchValue, me, hero, false)
             quest:SetTimer(timerId, 20)
         end
     end
@@ -94,16 +89,10 @@ function Main(quest, me)
             return
         end
         if me:IsTalkedToByHero() then break end
-        local scratchValue17 = scratchValue19
-        scratchValue19 = scratchValue19 | 2
         if me:MsgIsHitByHero() then
             goto LAB_00ec6567
         else
-            scratchValue = scratchValue17 | 6
-            scratchValue19 = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue17 | 14
-                scratchValue19 = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec6567 end
             end
             scratchValue3 = 0
@@ -112,17 +101,6 @@ function Main(quest, me)
         ::LAB_00ec6567::
         scratchValue3 = 1
         ::FLOW_past_lab_00ec6567::
-        if scratchValue & 8 ~= 0 then
-            scratchValue = scratchValue & 0xfffffff7
-            scratchValue19 = scratchValue
-        end
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            scratchValue19 = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue19 = scratchValue & 0xfffffffd
-        end
         if scratchValue3 == 0 then quest:NewScriptFrame(me); predicateResult8 = quest:IsActiveThreadTerminating(); goto continue_3 end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
         movie2 = resources:StartMovie("")
@@ -160,20 +138,8 @@ function Main(quest, me)
         ::LAB_00ec64c5::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
-        scratchValue19 = scratchValue19 | 2
         if me:MsgIsHitByHero() then
             scratchValue3 = 1
-        end
-        if scratchValue & 8 ~= 0 then
-            scratchValue = scratchValue & 0xfffffff7
-            scratchValue19 = scratchValue
-        end
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            scratchValue19 = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue19 = scratchValue & 0xfffffffd
         end
         if scratchValue3 ~= 0 then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end

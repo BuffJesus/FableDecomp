@@ -18,7 +18,6 @@ function Main(quest, me)
         quest:DeregisterTimer(i_stk_108)
         resources:ReleaseResource(xStack_104)
     end
-    u_stk_f4 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -46,7 +45,6 @@ function Main(quest, me)
         u_stk_c8 = 0
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
-        uVar11 = 0
         repeat
             if bVar3 then
                 quest:DeregisterTimer(i_stk_108)
@@ -60,18 +58,12 @@ function Main(quest, me)
                     __cleanup_LAB_00d0e96f()
                     return
                 end
-                uVar10 = uVar11 | 1
-                u_stk_f4 = uVar10
                 bVar3 = me:MsgIsHitByHero()
                 if bVar3 then
                     goto LAB_00d0daf6
                 else
-                    uVar10 = uVar11 | 3
-                    u_stk_f4 = uVar10
                     bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar3 then
-                        uVar10 = uVar11 | 7
-                        u_stk_f4 = uVar10
                         bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar3 then goto LAB_00d0daf6 end
                     end
@@ -81,17 +73,6 @@ function Main(quest, me)
                 ::LAB_00d0daf6::
                 bVar3 = true
                 ::FLOW_past_lab_00d0daf6::
-                if (uVar10 & 4) ~= 0 then
-                    uVar10 = uVar10 & 0xfffffffb
-                    u_stk_f4 = uVar10
-                end
-                if (uVar10 & 2) ~= 0 then
-                    uVar10 = uVar10 & 0xfffffffd
-                    u_stk_f4 = uVar10
-                end
-                if (uVar10 & 1) ~= 0 then
-                    u_stk_f4 = uVar10 & 0xfffffffe
-                end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -336,15 +317,6 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_b4)
                         quest:SetStateBool("Gate2Open", true)
                         quest:CreateThread("OpenGate", {args = {2.0, "Gate2Outer"}})  -- native parent-quest worker OpenGate, bound values
-                        if (u_stk_f4 & 0x20) ~= 0 then
-                            uVar11 = u_stk_f4 & 0xffffffdf
-                        end
-                        if (uVar11 & 0x10) ~= 0 then
-                            uVar11 = uVar11 & 0xffffffef
-                        end
-                        if (uVar11 & 8) ~= 0 then
-                            u_stk_f4 = uVar11 & 0xfffffff7
-                        end
                         iVar8 = quest:AddNewConversation(me, false, false)
                         pCVar7 = quest:GetHero()
                         quest:AddPersonToConversation(iVar8, pCVar7)
@@ -448,18 +420,12 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(xStack_ec)
                 end
-                uVar11 = u_stk_f4
-                u_stk_f4 = u_stk_f4 | 0x40
                 bVar3 = me:MsgIsHitByHero()
                 if bVar3 then
                     goto LAB_00d0e82e
                 else
-                    uVar10 = uVar11 | 0xc0
-                    u_stk_f4 = uVar10
                     bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar3 then
-                        uVar10 = uVar11 | 0x1c0
-                        u_stk_f4 = uVar10
                         bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar3 then goto LAB_00d0e82e end
                     end
@@ -469,17 +435,6 @@ function Main(quest, me)
                 ::LAB_00d0e82e::
                 bVar3 = true
                 ::FLOW_past_lab_00d0e82e::
-                if (uVar10 & 0x100) ~= 0 then
-                    uVar10 = uVar10 & 0xfffffeff
-                    u_stk_f4 = uVar10
-                end
-                if ((uVar10 & 0x80) ~= 0) then
-                    uVar10 = uVar10 & 0xffffff7f
-                    u_stk_f4 = uVar10
-                end
-                if (uVar10 & 0x40) ~= 0 then
-                    u_stk_f4 = uVar10 & 0xffffffbf
-                end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -506,7 +461,6 @@ function Main(quest, me)
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
-            uVar11 = u_stk_f4
             iVar6 = i_stk_108
         until false
     end

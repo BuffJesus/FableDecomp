@@ -85,3 +85,35 @@ Analysed, not fixed (next session):
   definitions at the call, not a text rule.
 - **SickChild helper_ECE460**: an inlined `CCharString !=` between a constant and the new resource's name,
   printed as a four-operand `_stricmp`, plus an unresolved GSI +0x118 call whose receiver was dropped.
+
+## Afternoon: dead cleanup flags, split counters (after `c3046c0`)
+
+Corpus smoke **15 → 8** failing functions (21 → 8 since the morning), none new; 7 real (ScorpionHome is intentional). Remaining: BookCollecting
+BookReaction/DoConversation, OakValeFire, the two Arena cell guards, Roth, SickChild helper_ECE460, and
+ScorpionHome (intentional).
+
+- **Dead flag bookkeeping** (`lift_native_lua.drop_dead_flag_statements`): cleanup-flag words that share a slot with
+  another object (a dead string, a resource member, the `ebp` register) cannot be started clear, but their bits only
+  select epilogue destructors, which Lua does not have. The cluster grows backward from tested / bit-produced values and
+  forward only from bit-produced ones (plain copies are leaves, so the shared slot's own life stays); flag ops are
+  `| K` with small K and `& K` with near-all-ones K (a high-byte boolean's `& 0xffffff` is not one); `if ((v & 0x80) ~= 0)`
+  counts. Statements drop only when every surviving read of every member is textually preceded by a
+  non-flag definition, not a flag write (a first version checked only the next mention and dropped New Oakvale
+  AffairMan's mask, which goes back to the caller through its parameter and result; `test_native_affair_man_mask`
+  caught it). Loop back-edges are not modelled. Fixes Spectator, BordelloLady Main, Witch, BeggarBully; elsewhere it
+  only removes dead bookkeeping (Arena guards/Whisper/Flick/Needle/Shadow, BanditCamp boss-battle entities,
+  BordelloGuard, Madame, GuildMasterGameFlow, FishermansWife, ManWithDoorName, SickChild, TalkingTrader2, KG_Chief,
+  LookoutPointBeggar, ArtifactThief): every removed line is flag-shaped, nothing is added.
+- **Counters split from string registers** (`ctr_CVarN`): the lifter's local-name filter and definition counter skipped
+  the prefix, so ChickenMaster's score (`= 0`, `+ 0x64` ...) and BS_Teacher's counter were TODOs (and a single
+  definition would have been constant-propagated). ChickenMaster's high-score logic now runs.
+- **Dword stored as four bytes** (`native_vector_component_copies.fold_split_dword_stores`): ChickenMaster's by-value
+  `me` copy for SetIsPushableByHero left `piVar2 >> 8` residue on nil.
+- Smoke harness: recorded native types also apply to readable entity files (leading `me`), are skipped when the bsim
+  prototype's parameter count disagrees with the export (see below), and the integer game-data mock returns 1.
+- A/B (29 units, baseline `a43c8e5`): only the units above change; twelve promoted (GuildTraining draft only; its
+  readable is hand-reviewed).
+
+Found, not fixed: **BS_Teacher AskForBook 0x00E55CE0** is `AskForBook(long, class CCharString)` in ego_r but the
+typed export has one `CCharString_bv param_1` that the body uses as the book index; the second (string) operand is lost
+from the lifted signature. Check its callers before relying on the lift.

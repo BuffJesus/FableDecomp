@@ -10,8 +10,8 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local isActiveThreadTerminating, predicateResult, predicateResult30, scratchValue7
     local scratchValue8, scratchValue9, predicateResult31, beggarHit, scratchValue11, timerId
-    local i_stk_1fc_2, switch4, p0, beggarBully, this_00, scratchValue19, scratchValue20
-    local conversationId, movie, movie2, movie3, movie4, scratchValue21, resource, scratchValue25
+    local i_stk_1fc_2, switch4, p0, beggarBully, this_00, scratchValue19, conversationId, movie
+    local movie2, movie3, movie4, resource, scratchValue23
     if not quest:NewScriptFrame(me) then return end
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
@@ -35,13 +35,9 @@ function Main(quest, me)
         if nil then
             goto LAB_00e58fce
         else
-            scratchValue19 = 0 | 3
-            scratchValue21 = scratchValue19
             -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
             if nil then
-                scratchValue19 = 0 | 7
-                scratchValue21 = scratchValue19
                 -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                 if not nil then goto LAB_00e58fce end
@@ -52,17 +48,7 @@ function Main(quest, me)
         ::LAB_00e58fce::
         predicateResult = true
         ::FLOW_past_lab_00e58fce::
-        if scratchValue19 & 4 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xfffffffb
-            scratchValue21 = scratchValue19
-        end
-        if scratchValue19 & 2 ~= 0 then
-            scratchValue19 = scratchValue19 & 0xfffffffd
-            scratchValue21 = scratchValue19
-        end
-        if scratchValue19 & 1 ~= 0 then
             -- TODO(native): xStack_1e4 = uVar13 & 0xfffffffe;
-        end
         if predicateResult then
             if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
             quest:SetStateBool("BeggarHit", true)
@@ -224,7 +210,7 @@ function Main(quest, me)
                     resources:DestroyMovie(this_00)
                     if not quest:GetStateBool("QuestCardGiven") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e5b19b end
-                        quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue25)
+                        quest:GiveHeroQuestCardDirectly(quest:GetActiveQuestName(), "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", scratchValue23)
                         quest:SetStateBool("QuestCardGiven", true)
                     end
                 else
@@ -430,18 +416,13 @@ function Main(quest, me)
                 if scratchValue4 then
                     isActiveThreadTerminating = true
                 end
-                scratchValue20 = scratchValue21
                 -- TODO(native): xStack_1e4 = xStack_1e4 | 8;
                 -- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding
                 quest:MsgIsRegionUnloaded("SCRIPT_NAME_HERO")
                 if scratchValue4 then
                     goto LAB_00e5a8ab
                 else
-                    scratchValue19 = scratchValue20 | 24
-                    scratchValue21 = scratchValue19
                     if quest:MsgIsActionModeButtonPressed() then
-                        scratchValue19 = scratchValue20 | 56
-                        scratchValue21 = scratchValue19
                         if not quest:MsgIsTutorialClickedPast() then goto LAB_00e5a8ab end
                     end
                     predicateResult30 = false
@@ -450,17 +431,7 @@ function Main(quest, me)
                 ::LAB_00e5a8ab::
                 predicateResult30 = true
                 ::FLOW_past_lab_00e5a8ab::
-                if scratchValue19 & 32 ~= 0 then
-                    scratchValue19 = scratchValue19 & 0xffffffdf
-                    scratchValue21 = scratchValue19
-                end
-                if scratchValue19 & 16 ~= 0 then
-                    scratchValue19 = scratchValue19 & 0xffffffef
-                    scratchValue21 = scratchValue19
-                end
-                if scratchValue19 & 8 ~= 0 then
                     -- TODO(native): xStack_1e4 = uVar13 & 0xfffffff7;
-                end
                 if predicateResult30 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                     quest:SetStateBool("BeggarHit", true)
@@ -491,28 +462,28 @@ function Main(quest, me)
                 until true
                 conversationId = quest:AddNewConversation(nil --[[missing]], false, false)
                 quest:AddPersonToConversation(conversationId, nil --[[missing]])
-                scratchValue20 = math.random(0, 32767) & 0x80000003
-                scratchValue7 = scratchValue20 == 0
-                if scratchValue20 < 0 then
-                    scratchValue7 = (scratchValue20 - 1 | 0xfffffffc) == 0xffffffff
+                scratchValue19 = math.random(0, 32767) & 0x80000003
+                scratchValue7 = scratchValue19 == 0
+                if scratchValue19 < 0 then
+                    scratchValue7 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
                 end
                 if scratchValue7 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                     quest:AddLineToConversation(conversationId, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_01", nil --[[missing]], nil --[[missing]], false)
                 else
-                    scratchValue20 = math.random(0, 32767) & 0x80000003
-                    scratchValue8 = scratchValue20 == 0
-                    if scratchValue20 < 0 then
-                        scratchValue8 = (scratchValue20 - 1 | 0xfffffffc) == 0xffffffff
+                    scratchValue19 = math.random(0, 32767) & 0x80000003
+                    scratchValue8 = scratchValue19 == 0
+                    if scratchValue19 < 0 then
+                        scratchValue8 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
                     end
                     if scratchValue8 then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
                         quest:AddLineToConversation(conversationId, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_02", nil --[[missing]], nil --[[missing]], false)
                     else
-                        scratchValue20 = math.random(0, 32767) & 0x80000003
-                        scratchValue9 = scratchValue20 == 0
-                        if scratchValue20 < 0 then
-                            scratchValue9 = (scratchValue20 - 1 | 0xfffffffc) == 0xffffffff
+                        scratchValue19 = math.random(0, 32767) & 0x80000003
+                        scratchValue9 = scratchValue19 == 0
+                        if scratchValue19 < 0 then
+                            scratchValue9 = (scratchValue19 - 1 | 0xfffffffc) == 0xffffffff
                         end
                         if scratchValue9 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e5b24b end
@@ -534,8 +505,8 @@ function Main(quest, me)
             quest:DeregisterTimer(i_stk_1fc_1)
         end
         ::LAB_00e5ac46::
-        local scratchValue22 = me:MsgExpressionPerformedTo()
-        if scratchValue22 == nil then goto LAB_00e5b163 end
+        local scratchValue20 = me:MsgExpressionPerformedTo()
+        if scratchValue20 == nil then goto LAB_00e5b163 end
         if quest:IsActiveThreadTerminating() then goto LAB_00e5b29c end
         goto FLOW_past_lab_00e5b29c
         ::LAB_00e5b29c::
@@ -554,20 +525,15 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00e5b19b end
                 isActiveThreadTerminating = true
             end
-            scratchValue20 = scratchValue21
             -- TODO(native): xStack_1e4 = xStack_1e4 | 0x40;
             -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
             if nil then
                 goto LAB_00e5addd
             else
-                scratchValue19 = scratchValue20 | 192
-                scratchValue21 = scratchValue19
                 -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                 if nil then
-                    scratchValue19 = scratchValue20 | 448
-                    scratchValue21 = scratchValue19
                     -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                     if not nil then goto LAB_00e5addd end
@@ -578,17 +544,7 @@ function Main(quest, me)
             ::LAB_00e5addd::
             predicateResult31 = true
             ::FLOW_past_lab_00e5addd::
-            if scratchValue19 & 256 ~= 0 then
-                scratchValue19 = scratchValue19 & 0xfffffeff
-                scratchValue21 = scratchValue19
-            end
-            if scratchValue19 & 128 ~= 0 then
-                scratchValue19 = scratchValue19 & 0xffffff7f
-                scratchValue21 = scratchValue19
-            end
-            if scratchValue19 & 64 ~= 0 then
                 -- TODO(native): xStack_1e4 = uVar13 & 0xffffffbf;
-            end
             if predicateResult31 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e5b276 end
                 goto FLOW_hoist_lab_00e5b276_1
@@ -608,7 +564,7 @@ function Main(quest, me)
         goto LAB_00e5b29c
         ::FLOW_past_lab_00e5b293::
         if isActiveThreadTerminating then goto FLOW_native_label_2 end
-        if scratchValue22 == nil then goto FLOW_native_label_2 end
+        if scratchValue20 == nil then goto FLOW_native_label_2 end
         -- TODO(native): p0 = *xStack_1e8
         p0 = nil --[[unresolved native value]]
         -- TODO(native): iVar9 = CBasicString<char>::Compare(p0,"EXPRESSION_BELCH");

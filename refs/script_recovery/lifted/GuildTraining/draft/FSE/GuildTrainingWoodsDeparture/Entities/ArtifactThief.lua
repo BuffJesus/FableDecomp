@@ -94,20 +94,13 @@ function Main(quest, me)
                     quest:AddLineToConversation(iVar6, "TEXT_QST_028_MAZE_WOODS_ARTIFACT_THIEF_COMMENT_SECOND", me, pCVar4, false)
                 end
                 quest:SetTimer(i_stk_188, 10)
-                uVar9 = u_stk_174
             end
-            uVar10 = uVar9 | 1
-            u_stk_174 = uVar10
             bVar2 = me:MsgIsHitByHero()
             if bVar2 then
                 goto LAB_00d6280c
             else
-                uVar10 = uVar9 | 3
-                u_stk_174 = uVar10
                 bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar2 then
-                    uVar10 = uVar9 | 7
-                    u_stk_174 = uVar10
                     bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d6280c end
                 end
@@ -117,19 +110,6 @@ function Main(quest, me)
             ::LAB_00d6280c::
             bVar2 = true
             ::FLOW_past_lab_00d6280c::
-            if (uVar10 & 4) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffb
-                u_stk_174 = uVar10
-            end
-            if (uVar10 & 2) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffd
-                u_stk_174 = uVar10
-            end
-            if (uVar10 & 1) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffe
-                u_stk_174 = uVar10
-            end
-            uVar9 = uVar10
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -233,7 +213,6 @@ function Main(quest, me)
                 pCVar7 = pCVar4:GetPos()
                 me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar13 ~= 0), (iVar14 ~= 0))
                 pCVar4 = nil
-                uVar9 = u_stk_174
             end
             bVar2 = me:IsTalkedToByHero()
             if bVar2 then
@@ -626,7 +605,6 @@ function Main(quest, me)
                 pCVar8 = xStack_158
                 ::LAB_00d638d8::
                 resources:DestroyMovie(pCVar8)
-                uVar9 = u_stk_174
             end
             cVar3 = __native_entity_state:GetStateBool("HoldingArtifact")
         until false
@@ -643,18 +621,12 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d63c96 end
-            uVar10 = uVar9 | 8
-            u_stk_174 = uVar10
             bVar2 = me:MsgIsHitByHero()
             if bVar2 then
                 goto LAB_00d63b21
             else
-                uVar10 = uVar9 | 0x18
-                u_stk_174 = uVar10
                 bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar2 then
-                    uVar10 = uVar9 | 0x38
-                    u_stk_174 = uVar10
                     bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d63b21 end
                 end
@@ -664,19 +636,6 @@ function Main(quest, me)
             ::LAB_00d63b21::
             bVar2 = true
             ::FLOW_past_lab_00d63b21::
-            if (uVar10 & 0x20) ~= 0 then
-                uVar10 = uVar10 & 0xffffffdf
-                u_stk_174 = uVar10
-            end
-            if (uVar10 & 0x10) ~= 0 then
-                uVar10 = uVar10 & 0xffffffef
-                u_stk_174 = uVar10
-            end
-            if (uVar10 & 8) ~= 0 then
-                uVar10 = uVar10 & 0xfffffff7
-                u_stk_174 = uVar10
-            end
-            uVar9 = uVar10
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -699,7 +658,6 @@ function Main(quest, me)
                     iVar5 = 1.0
                     pCVar7 = pCVar4:GetPos()
                     me:MoveToPosition(pCVar7, iVar5, iVar6, (iVar13 ~= 0), (iVar14 ~= 0))
-                    uVar9 = u_stk_174
                 end
             end
             iVar5 = me:IsPerformingScriptTask()

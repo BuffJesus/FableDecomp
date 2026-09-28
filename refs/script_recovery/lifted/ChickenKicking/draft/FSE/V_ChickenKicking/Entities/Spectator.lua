@@ -167,18 +167,13 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
         end
-        CVar4 = xStack_64
         -- TODO(native): xStack_64 = xStack_64 | 1;
         bVar5 = me:MsgIsHitByHero()
         if bVar5 then
             goto LAB_00e63e78
         else
-            CVar11 = CVar4 | 3
-            xStack_64 = CVar11
             bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar5 then
-                CVar11 = CVar4 | 7
-                xStack_64 = CVar11
                 bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar5 then goto LAB_00e63e78 end
             end
@@ -188,17 +183,7 @@ function Main(quest, me)
         ::LAB_00e63e78::
         bVar5 = true
         ::FLOW_past_lab_00e63e78::
-        if (CVar11 & 4) ~= 0 then
-            CVar11 = CVar11 & 0xfffffffb
-            xStack_64 = CVar11
-        end
-        if (CVar11 & 2) ~= 0 then
-            CVar11 = CVar11 & 0xfffffffd
-            xStack_64 = CVar11
-        end
-        if (CVar11 & 1) ~= 0 then
             -- TODO(native): xStack_64 = CVar11 & 0xfffffffe;
-        end
         if bVar5 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive

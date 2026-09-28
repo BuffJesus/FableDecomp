@@ -35,7 +35,7 @@ from tools.script_recovery.annotate_interface_slots import load_thing_slots  # n
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
 from tools.script_recovery.declare_free_locals import declare_free_locals  # noqa: E402
 from tools.script_recovery import native_literal_string_vectors  # noqa: E402
-from tools.script_recovery.native_vector_component_copies import fold_vector_component_copies  # noqa: E402
+from tools.script_recovery.native_vector_component_copies import fold_vector_component_copies, fold_split_dword_stores  # noqa: E402
 
 ENTITY_STATE = '''local __native_entity_state = {}
 do
@@ -2004,7 +2004,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_vector_component_copies(native_literal_string_vectors.apply(unwrap_statements(fn['decompile']), name, literal_vectors))), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(unwrap_statements(fn['decompile']), name, literal_vectors)))), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in

@@ -12,9 +12,7 @@ local timesTalkedTo_, timesHit
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue4, ctr_90, scratchValue, this_00, scratchValue13, scratchValue15, movie3
-    local scratchValue17, line, line2
-    scratchValue15 = 0
+    local scratchValue4, ctr_90, scratchValue, this_00, movie3, scratchValue14, line, line2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -117,14 +115,8 @@ function Main(quest, me)
         break
         ::FLOW_past_lab_00ecd29f::
         ::LAB_00eccf0a::
-        local scratchValue14 = scratchValue15
-        scratchValue15 = scratchValue15 | 1
         if me:MsgIsHitByHero() then goto LAB_00eccf8f end
-        scratchValue13 = scratchValue14 | 3
-        scratchValue15 = scratchValue13
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue13 = scratchValue14 | 7
-            scratchValue15 = scratchValue13
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00eccf8f end
         end
         goto LAB_00eccfad
@@ -137,17 +129,6 @@ function Main(quest, me)
         scratchValue4 = 1
         if quest:GetHealth(me) <= 0.0 then goto LAB_00eccfad end
         ::FLOW_past_lab_00eccf8f::
-        if scratchValue13 & 4 ~= 0 then
-            scratchValue13 = scratchValue13 & 0xfffffffb
-            scratchValue15 = scratchValue13
-        end
-        if scratchValue13 & 2 ~= 0 then
-            scratchValue13 = scratchValue13 & 0xfffffffd
-            scratchValue15 = scratchValue13
-        end
-        if scratchValue13 & 1 ~= 0 then
-            scratchValue15 = scratchValue13 & 0xfffffffe
-        end
         if scratchValue4 == 0 then quest:NewScriptFrame(me); goto continue_4 end
         if quest:IsActiveThreadTerminating() then break end
         if 2 < timesHit then
@@ -156,7 +137,7 @@ function Main(quest, me)
         end
         if not quest:TextEntryExists("TEXT_QST_B10_TRADERB_ONHIT_" .. tostring(ctr_90)) then
             ctr_90 = 10
-            scratchValue17 = "TEXT_QST_B10_TRADERB_ONHIT_" .. tostring(10)
+            scratchValue14 = "TEXT_QST_B10_TRADERB_ONHIT_" .. tostring(10)
         end
         ctr_90 = ctr_90 + 10
         movie3 = resources:StartMovie("")

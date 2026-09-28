@@ -10,7 +10,7 @@ local earlyTalk, chamTalk, hintNumber_
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, this_00, scratchValue, scratchValue18, movie, movie2, meControl
+    local scratchValue, this_00, movie, movie2, meControl
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         local this_00 = movie2
@@ -22,7 +22,6 @@ function Main(quest, me)
         resources:DestroyMovie(this_00)
         resources:DestroyMovie(meControl)
     end
-    scratchValue18 = 0
     resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -110,36 +109,19 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
     else
-        local scratchValue17 = scratchValue18
-        scratchValue18 = scratchValue18 | 1
         if me:MsgIsHitByHero() then
             goto LAB_00f15214
         else
-            scratchValue = scratchValue17 | 3
-            scratchValue18 = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue17 | 7
-                scratchValue18 = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f15214 end
             end
-            scratchValue2 = 0
+            scratchValue = 0
         end
         goto FLOW_past_lab_00f15214
         ::LAB_00f15214::
-        scratchValue2 = 1
+        scratchValue = 1
         ::FLOW_past_lab_00f15214::
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            scratchValue18 = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffd
-            scratchValue18 = scratchValue
-        end
-        if scratchValue & 1 ~= 0 then
-            scratchValue18 = scratchValue & 0xfffffffe
-        end
-        if scratchValue2 == 0 then goto LAB_00f1548b end
+        if scratchValue == 0 then goto LAB_00f1548b end
         resources:PrepareResource(meControl)
         while not resources:TryAcquire(meControl, me, 4) do
             quest:NewScriptFrame(me)

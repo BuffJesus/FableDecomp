@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local bVar5, cVar6, c_stk_85, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, iVar11, iVar12, iVar13, p0, pCVar7, pcVar9, r1, r2, r3, r4, r5, r6, r7, this_00, uVar4, uVar8, u_stk_8c, xStack_58, xStack_84, xStack_9c, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_c
     local alive = true
-    u_stk_8c = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -35,18 +34,12 @@ function Main(quest, me)
             bVar5 = me:IsTalkedToByHero()
             if bVar5 then break end
             -- LAB_00e17e8f: (native jump target)
-            uVar4 = u_stk_8c
-            u_stk_8c = u_stk_8c | 2
             bVar5 = me:MsgIsHitByHero()
             if bVar5 then
                 goto LAB_00e17f13
             else
-                uVar8 = uVar4 | 6
-                u_stk_8c = uVar8
                 bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar5 then
-                    uVar8 = uVar4 | 0xe
-                    u_stk_8c = uVar8
                     bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar5 then goto LAB_00e17f13 end
                 end
@@ -61,17 +54,6 @@ function Main(quest, me)
             ::LAB_00e17f21::
             c_stk_85 = 0
             ::FLOW_past_lab_00e17f21::
-            if (uVar8 & 8) ~= 0 then
-                uVar8 = uVar8 & 0xfffffff7
-                u_stk_8c = uVar8
-            end
-            if (uVar8 & 4) ~= 0 then
-                uVar8 = uVar8 & 0xfffffffb
-                u_stk_8c = uVar8
-            end
-            if (uVar8 & 2) ~= 0 then
-                u_stk_8c = uVar8 & 0xfffffffd
-            end
             if c_stk_85 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -283,7 +265,6 @@ function Main(quest, me)
                             goto LAB_00e181fa
                         end
                         if quest:GetStateInt("BalverineState") == 7 then
-                            u_stk_8c = u_stk_8c | 1
                             bVar5 = quest:IsQuestActive("Q_WhiteBalverineWW")
                             if bVar5 then goto LAB_00e17d91 end
                             bVar5 = true
@@ -294,9 +275,6 @@ function Main(quest, me)
                         ::LAB_00e17d91::
                         bVar5 = false
                         ::FLOW_past_lab_00e17d91::
-                        if (u_stk_8c & 1) ~= 0 then
-                            u_stk_8c = u_stk_8c & 0xfffffffe
-                        end
                         if bVar5 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -334,8 +312,6 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_84)
                 resources:PrepareResource(xStack_9c)
-                uVar4 = u_stk_8c
-                u_stk_8c = u_stk_8c | 2
                 bVar5 = me:MsgIsHitByHero()
                 if bVar5 then
                     goto LAB_00e17f13_c1
@@ -349,17 +325,6 @@ function Main(quest, me)
                 ::LAB_00e17f21_c1::
                 c_stk_85 = 0
                 ::FLOW_past_lab_00e17f21_c1::
-                if (uVar8 & 8) ~= 0 then
-                    uVar8 = uVar8 & 0xfffffff7
-                    u_stk_8c = uVar8
-                end
-                if (uVar8 & 4) ~= 0 then
-                    uVar8 = uVar8 & 0xfffffffb
-                    u_stk_8c = uVar8
-                end
-                if (uVar8 & 2) ~= 0 then
-                    u_stk_8c = uVar8 & 0xfffffffd
-                end
                 if c_stk_85 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive

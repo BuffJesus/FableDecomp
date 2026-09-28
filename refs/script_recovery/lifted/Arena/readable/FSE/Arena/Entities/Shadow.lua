@@ -10,7 +10,7 @@ local earlyTalk, chamTalk, hintNumber
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, switch, this_00, scratchValue24, scratchValue26, movie, movie2, meControl
+    local scratchValue, switch, this_00, movie, movie2, meControl
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         local this_00 = movie2
@@ -26,7 +26,6 @@ function Main(quest, me)
         resources:DestroyMovie(this_00)
         resources:DestroyMovie(meControl)
     end
-    scratchValue26 = 0
     resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -169,16 +168,10 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie2)
         else
-            local scratchValue25 = scratchValue26
-            scratchValue26 = scratchValue26 | 1
             if me:MsgIsHitByHero() then
                 goto LAB_00f16c80
             else
-                scratchValue24 = scratchValue25 | 3
-                scratchValue26 = scratchValue24
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue24 = scratchValue25 | 7
-                    scratchValue26 = scratchValue24
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f16c80 end
                 end
                 scratchValue = 0
@@ -187,17 +180,6 @@ function Main(quest, me)
             ::LAB_00f16c80::
             scratchValue = 1
             ::FLOW_past_lab_00f16c80::
-            if scratchValue24 & 4 ~= 0 then
-                scratchValue24 = scratchValue24 & 0xfffffffb
-                scratchValue26 = scratchValue24
-            end
-            if scratchValue24 & 2 ~= 0 then
-                scratchValue24 = scratchValue24 & 0xfffffffd
-                scratchValue26 = scratchValue24
-            end
-            if scratchValue24 & 1 ~= 0 then
-                scratchValue26 = scratchValue24 & 0xfffffffe
-            end
             if scratchValue == 0 then goto LAB_00f16efb end
             resources:PrepareResource(meControl)
             while not resources:TryAcquire(meControl, me, 4) do

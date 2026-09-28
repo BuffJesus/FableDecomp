@@ -1051,13 +1051,10 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: ctr_CVar13 = 0;",
             "IsObjectInThingsPossession: missing objectDefName (1 args for 2 params)",
             "unnamed field 0x14",
-            "unlifted: xStack_28 = ctr_CVar13;",
             "unnamed field 0x14",
             "unlifted: *(undefined1 *)(ctr_CVar13 + *(int *)(*(int *)(this + 0x14) + 0xac)) = 1;",
-            "unlifted: ctr_CVar13 = ctr_CVar13 + 1;",
             "unnamed field 0x34",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unlifted: (**(code **)((int)x_stk_14 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
@@ -1248,7 +1245,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 172
+        "todo": 169
       }
     }
   ],
@@ -1259,6 +1256,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 172
+    "todo": 169
   }
 }

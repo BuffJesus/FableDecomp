@@ -277,11 +277,9 @@ function Main(quest, me)
                 -- TODO(native): xStack_a0 = xStack_a0 | 2;
                 cVar7 = me:MsgIsHitByHero()
                 if not cVar7 then
-                    uVar13 = uVar4 | 6
                     -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                     bVar6 = nil --[[unresolved native value]]
                     if bVar6 then
-                        uVar13 = uVar4 | 0xe
                         -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                         bVar6 = nil --[[unresolved native value]]
                         if not bVar6 then goto LAB_00ecef61 end
@@ -292,12 +290,6 @@ function Main(quest, me)
                 goto FLOW_past_lab_00ecef61
                 ::LAB_00ecef61::
                 ::FLOW_past_lab_00ecef61::
-                if (uVar13 & 8) ~= 0 then
-                    uVar13 = uVar13 & 0xfffffff7
-                end
-                if (uVar13 & 4) ~= 0 then
-                    uVar13 = uVar13 & 0xfffffffb
-                end
                 if 1 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -435,11 +427,9 @@ function Main(quest, me)
                     -- TODO(native): xStack_a0 = xStack_a0 | 0x10;
                     cVar7 = me:MsgIsHitByHero()
                     if not cVar7 then
-                        uVar13 = uVar4 | 0x30
                         -- TODO(native): bVar6 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                         bVar6 = nil --[[unresolved native value]]
                         if bVar6 then
-                            uVar13 = uVar4 | 0x70
                             -- TODO(native): bVar6 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                             bVar6 = nil --[[unresolved native value]]
                             if not bVar6 then goto LAB_00ecf576 end
@@ -450,12 +440,6 @@ function Main(quest, me)
                     goto FLOW_past_lab_00ecf576
                     ::LAB_00ecf576::
                     ::FLOW_past_lab_00ecf576::
-                    if (uVar13 & 0x40) ~= 0 then
-                        uVar13 = uVar13 & 0xffffffbf
-                    end
-                    if (uVar13 & 0x20) ~= 0 then
-                        uVar13 = uVar13 & 0xffffffdf
-                    end
                     if 1 ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive

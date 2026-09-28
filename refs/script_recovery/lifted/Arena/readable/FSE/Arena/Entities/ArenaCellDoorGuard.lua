@@ -12,9 +12,8 @@ local chamTalk, earlyTalk
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult11, scratchValue, scratchValue32, scratchValue33, scratchValue34
-    local scratchValue35, scratchValue36, resource, movie2, resource3, meControl
-    scratchValue36 = 0
+    local predicateResult11, scratchValue, scratchValue32, scratchValue33, resource, movie2
+    local resource3, meControl
     resources:NewResource()
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -353,14 +352,10 @@ function Main(quest, me)
                 resources:ReleaseResource(meControl)
                 return
             end
-            scratchValue34 = scratchValue36
-            scratchValue36 = scratchValue36 | 1
             if scratchValue33:MsgIsHitByHero() then
                 goto LAB_00f19571
             else
-                scratchValue35 = scratchValue34 | 3
                 if scratchValue33:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue35 = scratchValue34 | 7
                     if not scratchValue33:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f19571 end
                 end
                 predicateResult11 = false
@@ -369,15 +364,6 @@ function Main(quest, me)
             ::LAB_00f19571::
             predicateResult11 = true
             ::FLOW_past_lab_00f19571::
-            if scratchValue35 & 4 ~= 0 then
-                scratchValue35 = scratchValue35 & 0xfffffffb
-            end
-            if scratchValue35 & 2 ~= 0 then
-                scratchValue35 = scratchValue35 & 0xfffffffd
-            end
-            if scratchValue35 & 1 ~= 0 then
-                scratchValue35 = scratchValue35 & 0xfffffffe
-            end
             if predicateResult11 then
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     quest:SetStateBool("InHitCutsceneAlready", true)
@@ -404,25 +390,15 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
                 end
-            else
-                scratchValue35 = scratchValue35 | 24
-                local predicateResult14 = not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerRight"), 1.0)) or me:IsPerformingScriptTask())
-                if scratchValue35 & 16 ~= 0 then
-                    scratchValue35 = scratchValue35 & 0xffffffef
-                end
-                if scratchValue35 & 8 ~= 0 then
-                    scratchValue36 = scratchValue35 & 0xfffffff7
-                end
-                if predicateResult14 then
-                    scratchValue33 = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
-                    me:MoveToPosition(scratchValue33:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
-                    scratchValue = 0
-                elseif scratchValue == 0 then
-                    if not me:IsPerformingScriptTask() then
-                        scratchValue = 1
-                        local guardingDoorMarkerRight = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
-                        quest:EntitySetFacingAngle(me, guardingDoorMarkerRight:GetAngleXY(), false)
-                    end
+            elseif not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerRight"), 1.0)) or me:IsPerformingScriptTask()) then
+                scratchValue33 = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
+                me:MoveToPosition(scratchValue33:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+                scratchValue = 0
+            elseif scratchValue == 0 then
+                if not me:IsPerformingScriptTask() then
+                    scratchValue = 1
+                    local guardingDoorMarkerRight = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
+                    quest:EntitySetFacingAngle(me, guardingDoorMarkerRight:GetAngleXY(), false)
                 end
             end
             ::LAB_00f19935::

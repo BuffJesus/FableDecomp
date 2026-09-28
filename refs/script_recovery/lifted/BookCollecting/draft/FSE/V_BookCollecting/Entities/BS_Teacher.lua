@@ -1190,10 +1190,10 @@ end
 
 function helper_E57530(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, fVar4, fret_0, fret_00, fret_01, fret_02, iVar7, native_arg_sequence_1, pCVar1, pCVar10, pCVar12, pCVar8, pCVar9, pcVar14, pvVar11, uVar15, uVar16, uVar17, value, xStack_28, x_stk_14, x_stk_18
+    local bVar5, cVar6, ctr_CVar13, fVar4, fret_0, fret_00, fret_01, fret_02, iVar7, native_arg_sequence_1, pCVar1, pCVar10, pCVar12, pCVar8, pCVar9, pcVar14, pvVar11, uVar15, uVar16, uVar17, value, xStack_28, x_stk_14, x_stk_18
     local alive = true
     value = 0xffffffff
-    -- TODO(native): ctr_CVar13 = 0;
+    ctr_CVar13 = 0
     x_stk_14 = 0xffffffff
     if quest:GetStateInt("BooksInGame") < 1 then
         goto LAB_00e57678
@@ -1243,7 +1243,7 @@ function helper_E57530(quest, me)
                     if native_arg_sequence_1 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
-                        -- TODO(native): xStack_28 = ctr_CVar13;
+                        xStack_28 = ctr_CVar13
                         if bVar5 then
                             native_arg_sequence_1 = true
                         else
@@ -1265,7 +1265,7 @@ function helper_E57530(quest, me)
                     end
                 end
             end
-            -- TODO(native): ctr_CVar13 = ctr_CVar13 + 1;
+            ctr_CVar13 = ctr_CVar13 + 1
         until not (ctr_CVar13 < quest:GetStateInt("BooksInGame"))
         if value ~= 0xfffffffe then goto LAB_00e57678 end
     end

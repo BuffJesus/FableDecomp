@@ -755,7 +755,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 498,
+          "lines": 484,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -30,7 +30,6 @@ function Main(quest, me)
     end
     local __native_condition_1, b2, bVar5, bVar6, cVar1, conversationID, fVar11, iVar8, i_stk_74, p0, pCVar10, pCVar7, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, timerId, uVar4, uVar9, u_stk_78, xStack_20, xStack_7c
     local alive = true
-    u_stk_78 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -459,16 +458,10 @@ function Main(quest, me)
             end
         end
         if quest:GetStateInt("AngryBanditNeeded") < 1 then
-            uVar4 = u_stk_78
-            u_stk_78 = u_stk_78 | 1
             bVar5 = me:MsgIsHitByHero()
             if bVar5 then goto LAB_00d0c1af end
-            uVar9 = uVar4 | 3
-            u_stk_78 = uVar9
             bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar5 then
-                uVar9 = uVar4 | 7
-                u_stk_78 = uVar9
                 bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar5 then goto LAB_00d0c1af end
             end
@@ -480,17 +473,6 @@ function Main(quest, me)
         ::LAB_00d0c1af::
         bVar5 = true
         ::FLOW_past_lab_00d0c1af::
-        if (uVar9 & 4) ~= 0 then
-            uVar9 = uVar9 & 0xfffffffb
-            u_stk_78 = uVar9
-        end
-        if (uVar9 & 2) ~= 0 then
-            uVar9 = uVar9 & 0xfffffffd
-            u_stk_78 = uVar9
-        end
-        if (uVar9 & 1) ~= 0 then
-            u_stk_78 = uVar9 & 0xfffffffe
-        end
         if bVar5 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive

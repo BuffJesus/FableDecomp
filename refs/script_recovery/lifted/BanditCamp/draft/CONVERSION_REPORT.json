@@ -1499,7 +1499,7 @@
             "GiveThingBestEnemyTarget",
             "SetStateBool"
           ],
-          "lines": 246,
+          "lines": 238,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2106,7 +2106,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 542,
+          "lines": 496,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3563,7 +3563,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 283,
+          "lines": 265,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4832,7 +4832,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 706,
+          "lines": 674,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5416,7 +5416,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 499,
+          "lines": 481,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

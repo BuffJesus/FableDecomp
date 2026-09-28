@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local bVar5, cVar6, c_stk_85, center, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar9, native_arg_switch_1, pCVar12, pCVar13, pCVar14, pCVar7, pCVar8, pThing, pThing1, pcVar11, ppuVar15, this_00, uVar10, uVar4, u_stk_84, xStack_4c, xStack_80, xStack_9c
     local alive = true
-    u_stk_84 = 0
     ppuVar15 = resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -201,18 +200,12 @@ function Main(quest, me)
             resources:DestroyMovie(xStack_80)
             goto LAB_00f17a59
         else
-            uVar4 = u_stk_84
-            u_stk_84 = u_stk_84 | 1
             bVar5 = me:MsgIsHitByHero()
             if bVar5 then
                 goto LAB_00f177f7
             else
-                uVar10 = uVar4 | 3
-                u_stk_84 = uVar10
                 bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar5 then
-                    uVar10 = uVar4 | 7
-                    u_stk_84 = uVar10
                     bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar5 then goto LAB_00f177f7 end
                 end
@@ -222,17 +215,6 @@ function Main(quest, me)
             ::LAB_00f177f7::
             c_stk_85 = 1
             ::FLOW_past_lab_00f177f7::
-            if (uVar10 & 4) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffb
-                u_stk_84 = uVar10
-            end
-            if (uVar10 & 2) ~= 0 then
-                uVar10 = uVar10 & 0xfffffffd
-                u_stk_84 = uVar10
-            end
-            if (uVar10 & 1) ~= 0 then
-                u_stk_84 = uVar10 & 0xfffffffe
-            end
             if c_stk_85 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive

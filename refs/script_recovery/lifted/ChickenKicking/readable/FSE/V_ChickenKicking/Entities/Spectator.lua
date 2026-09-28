@@ -11,7 +11,7 @@ local spectatorNumber
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult, movie, resource, line
+    local predicateResult, movie, resource
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
@@ -45,7 +45,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(true)
             if unaff_EBX >> 16 == 0 then
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                line = ("TEXT_QST_B17_SPECTATOR_" .. tostring(spectatorNumber)) .. "_GREETING"
+                local line = ("TEXT_QST_B17_SPECTATOR_" .. tostring(spectatorNumber)) .. "_GREETING"
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                     if not me:Speak(hero, line, 0, false, true, false) then
                         ReleaseEverything(); return
@@ -70,16 +70,11 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        local scratchValue2 = line
         -- TODO(native): xStack_64 = xStack_64 | 1;
         if me:MsgIsHitByHero() then
             goto LAB_00e63e78
         else
-            scratchValue = scratchValue2 | 3
-            line = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue2 | 7
-                line = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e63e78 end
             end
             predicateResult = false
@@ -88,17 +83,7 @@ function Main(quest, me)
         ::LAB_00e63e78::
         predicateResult = true
         ::FLOW_past_lab_00e63e78::
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            line = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffd
-            line = scratchValue
-        end
-        if scratchValue & 1 ~= 0 then
             -- TODO(native): xStack_64 = CVar11 & 0xfffffffe;
-        end
         if predicateResult then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:SetStateBool("SpectatorsUnderAttack", true)

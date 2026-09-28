@@ -60,15 +60,12 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00d0d8c8 end
-        CVar9 = CVar8 | 1
         bVar2 = me:MsgIsHitByHero()
         if bVar2 then
             goto LAB_00d0c68f
         else
-            CVar9 = CVar8 | 3
             bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar2 then
-                CVar9 = CVar8 | 7
                 bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar2 then goto LAB_00d0c68f end
             end
@@ -81,15 +78,6 @@ function Main(quest, me)
         ::LAB_00d0c68f::
         bVar2 = true
         ::FLOW_past_lab_00d0c68f::
-        if (CVar9 & 4) ~= 0 then
-            CVar9 = CVar9 & 0xfffffffb
-        end
-        if (CVar9 & 2) ~= 0 then
-            CVar9 = CVar9 & 0xfffffffd
-        end
-        if (CVar9 & 1) ~= 0 then
-            CVar9 = CVar9 & 0xfffffffe
-        end
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -102,7 +90,6 @@ function Main(quest, me)
             pCVar5 = quest:GetHero()
             bVar2 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, dist)
             if (not bVar2) or (quest:GetStateBool("Gate2Open")) then goto LAB_00d0c766 end
-            CVar9 = CVar9 | 8
             pCVar5 = quest:GetHero()
             bVar3 = quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", pCVar5)
             bVar2 = true
@@ -114,10 +101,6 @@ function Main(quest, me)
         ::LAB_00d0c766::
         bVar2 = false
         ::FLOW_past_lab_00d0c766::
-        if (CVar9 & 8) ~= 0 then
-            CVar9 = CVar9 & 0xfffffff7
-            xStack_8c = CVar9
-        end
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -434,7 +417,6 @@ function Main(quest, me)
         ::LAB_00d0d023::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_7c)
-        CVar8 = xStack_8c
         goto LAB_00d0d04e
     end
     goto FLOW_past_lab_00d0d04e
@@ -449,15 +431,12 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then goto LAB_00d0d8c8 end
-            CVar9 = CVar8 | 0x10
             bVar2 = me:MsgIsHitByHero()
             if bVar2 then
                 goto LAB_00d0d12f
             else
-                CVar9 = CVar8 | 0x30
                 bVar2 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar2 then
-                    CVar9 = CVar8 | 0x70
                     bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar2 then goto LAB_00d0d12f end
                 end
@@ -470,15 +449,6 @@ function Main(quest, me)
             ::LAB_00d0d12f::
             bVar2 = true
             ::FLOW_past_lab_00d0d12f::
-            if (CVar9 & 0x40) ~= 0 then
-                CVar9 = CVar9 & 0xffffffbf
-            end
-            if (CVar9 & 0x20) ~= 0 then
-                CVar9 = CVar9 & 0xffffffdf
-            end
-            if (CVar9 & 0x10) ~= 0 then
-                CVar9 = CVar9 & 0xffffffef
-            end
             if bVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -506,9 +476,7 @@ function Main(quest, me)
         ::LAB_00d0d27c::
         bVar2 = true
         ::FLOW_past_lab_00d0d27c::
-        if ((xStack_8c & 0x80) ~= 0) then
             -- TODO(native): xStack_8c = xStack_8c & 0xffffff7f;
-        end
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive

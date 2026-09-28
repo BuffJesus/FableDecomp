@@ -66,7 +66,8 @@ local quest = setmetatable({}, { __index = function(_, k)
         end
         if k == "IsActiveThreadTerminating" then return terminating end
         if k:match("^GetAll") or k == "GetFollowingEntityList" or k == "GetStateListCopy" then return {} end
-        if k:match("^GetDistance") then return 0 end   -- a float (GetDistanceBetweenThings is not a thing getter)
+        if k:match("^GetDistance") then return 0 end
+        if k == "ReadGlobalGameData" then return 1 end   -- a positive tunable (retail divides by some: BeardyBaldy speech timer)   -- a float (GetDistanceBetweenThings is not a thing getter)
         if k == "GetHero" or (k:match("^Get") and (k:match("Thing") or k:match("With") or k:match("Target$"))) or k == "CreateCreature" or k == "GetStateThing" or k == "GetStateListAt" then
             return make_thing(k)
         end
@@ -171,11 +172,25 @@ def recorded_parameter_types(unit_name):
         return ('thing' if 'CScriptThing' in t else 'vector' if 'C3DVector' in t
                 else 'number' if 'CScriptGameResourceObjectScriptedThingBase' in t or t in ('int', 'uint', 'long', 'float', 'double', 'char')
                 else 'bool' if t == 'bool' else 'string' if 'CCharString' in t else None)
+    # the reviewed bsim prototype must agree on the parameter count: BS_Teacher AskForBook 0x00E55CE0 is
+    # `AskForBook(long, class CCharString)` in ego_r but exported with one `CCharString_bv param_1` that its body
+    # uses as the book index, so the export's type would feed a string where retail passes a number
+    reviewed = {}
+    try:
+        typed = json.loads((script_unit(unit_name)['evidence'] / 'translation_unit_typed.json').read_text(encoding='utf-8-sig'))
+        for fn in typed.get('functions', []):
+            m = re.search(r'\[bsim[^\]]*\]\s*[\s\S]*?__thiscall\s+[\w:~<>]+\(([^()]*)\)', fn.get('decompile', '')[:1500])
+            if m:
+                reviewed[fn['address'].lower()] = 0 if m[1].strip() in ('', 'void') else m[1].count(',') + 1
+    except (OSError, KeyError, ValueError):
+        pass
     out = {}
     for u in report.get('units', []):
         for row in u.get('functions', []):
             params = (row.get('nativeSignature') or {}).get('parameters') or []
             kinds = [kind(p.get('type', '')) for p in params]
+            if reviewed.get(str(row.get('address', '')).lower(), len(params)) != len(params):
+                continue
             if params and None not in kinds:
                 out[(row['path'].removeprefix('FSE/'), row['function'])] = kinds
                 out[(row['path'].removeprefix('FSE/'), int(row['address'], 16))] = kinds   # readable renames helpers
@@ -250,6 +265,8 @@ def main():
                 # the readable header comment names the retail body: `-- Owner.Name (retail 0x00ee6850)`
                 at = re.search(r'\(retail (0x[0-9a-fA-F]+)\)[^\n]*\n(?:--[^\n]*\n)*function ' + re.escape(name) + r'\(', source)
                 recorded = native_types.get((rel_path, int(at.group(1), 16))) if at else None
+            if recorded and extra[:1] == ['me'] and len(extra) == len(recorded) + 1:
+                recorded = ['thing'] + recorded     # a readable entity file (no state shim) still takes `me`
             if recorded and len(recorded) == len(extra):
                 kinds[name] = lua.table(*recorded)
                 continue

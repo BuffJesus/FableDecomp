@@ -53,15 +53,12 @@ function Main(quest, me)
                     if bVar4 then goto LAB_00e5ce3a end
                     bVar4 = true
                 end
-                uVar12 = unaff_EBP | 1
                 bVar6 = me:MsgIsHitByHero()
                 if bVar6 then
                     goto LAB_00e5b649
                 else
-                    uVar12 = unaff_EBP | 3
                     bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar6 then
-                        uVar12 = unaff_EBP | 7
                         bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar6 then goto LAB_00e5b649 end
                     end
@@ -71,15 +68,6 @@ function Main(quest, me)
                 ::LAB_00e5b649::
                 bVar6 = true
                 ::FLOW_past_lab_00e5b649::
-                if (uVar12 & 4) ~= 0 then
-                    uVar12 = uVar12 & 0xfffffffb
-                end
-                if (uVar12 & 2) ~= 0 then
-                    uVar12 = uVar12 & 0xfffffffd
-                end
-                if (uVar12 & 1) ~= 0 then
-                    uVar12 = uVar12 & 0xfffffffe
-                end
                 if bVar6 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -620,35 +608,21 @@ function Main(quest, me)
                             if bVar4 then goto LAB_00e5cea1 end
                             bVar4 = true
                         end
-                        uVar13 = uVar12 | 8
                         bVar6 = me:MsgIsHitByHero()
                         if bVar6 then
                             goto LAB_00e5c69b
                         else
-                            uVar13 = uVar12 | 0x18
                             bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                             if bVar6 then
-                                uVar13 = uVar12 | 0x38
                                 bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                                 if not bVar6 then goto LAB_00e5c69b end
                             end
                             bVar6 = false
-                            uVar12 = uVar13
                         end
                         goto FLOW_past_lab_00e5c69b
                         ::LAB_00e5c69b::
                         bVar6 = true
-                        uVar12 = uVar13
                         ::FLOW_past_lab_00e5c69b::
-                        if (uVar12 & 0x20) ~= 0 then
-                            uVar12 = uVar12 & 0xffffffdf
-                        end
-                        if (uVar12 & 0x10) ~= 0 then
-                            uVar12 = uVar12 & 0xffffffef
-                        end
-                        if (uVar12 & 8) ~= 0 then
-                            uVar12 = uVar12 & 0xfffffff7
-                        end
                         if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -744,15 +718,12 @@ function Main(quest, me)
                                 end
                                 bVar4 = true
                             end
-                            uVar13 = uVar12 | 0x40
                             bVar6 = me:MsgIsHitByHero()
                             if bVar6 then
                                 goto LAB_00e5caf0
                             else
-                                uVar13 = uVar12 | 0xc0
                                 bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
                                 if bVar6 then
-                                    uVar13 = uVar12 | 0x1c0
                                     bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                                     if not bVar6 then goto LAB_00e5caf0 end
                                 end
@@ -762,16 +733,6 @@ function Main(quest, me)
                             ::LAB_00e5caf0::
                             bVar6 = true
                             ::FLOW_past_lab_00e5caf0::
-                            if (uVar13 & 0x100) ~= 0 then
-                                uVar13 = uVar13 & 0xfffffeff
-                            end
-                            if ((uVar13 & 0x80) ~= 0) then
-                                uVar13 = uVar13 & 0xffffff7f
-                            end
-                            if (uVar13 & 0x40) ~= 0 then
-                                uVar13 = uVar13 & 0xffffffbf
-                            end
-                            uVar12 = uVar13
                             if bVar6 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive

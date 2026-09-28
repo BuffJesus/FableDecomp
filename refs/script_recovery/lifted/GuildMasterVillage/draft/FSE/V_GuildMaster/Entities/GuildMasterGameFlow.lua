@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local always_update, angle, bUnknown, bVar5, cVar6, c_stk_1b1, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar17, iVar18, iVar19, iVar20, pCVar10, pCVar11, pCVar7, pCVar9, pcVar14, piVar1, pppuVar16, pvVar12, r1, r2, r3, r4, r5, r6, r7, r8, this_00, uVar13, uVar4, u_stk_1a0, xStack_198, xStack_1b0, xStack_94, xStack_a0, xStack_b8, xStack_c8, xStack_d8, xStack_ec, x_stk_18, x_stk_30, x_stk_48, x_stk_64, x_stk_78, x_stk_84, x_stk_c
     local alive = true
-    u_stk_1a0 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -176,17 +175,11 @@ function Main(quest, me)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_c8)
                             end
-                            uVar4 = u_stk_1a0
-                            u_stk_1a0 = u_stk_1a0 | 1
                             cVar6 = me:MsgIsHitByHero()
                             if not cVar6 then
-                                uVar13 = uVar4 | 3
-                                u_stk_1a0 = uVar13
                                 -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                                 bVar5 = nil --[[unresolved native value]]
                                 if bVar5 then
-                                    uVar13 = uVar4 | 7
-                                    u_stk_1a0 = uVar13
                                     -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                                     bVar5 = nil --[[unresolved native value]]
                                     if not bVar5 then goto LAB_00e914b3 end
@@ -199,17 +192,6 @@ function Main(quest, me)
                             ::LAB_00e914b3::
                             c_stk_1b1 = 1
                             ::FLOW_past_lab_00e914b3::
-                            if (uVar13 & 4) ~= 0 then
-                                uVar13 = uVar13 & 0xfffffffb
-                                u_stk_1a0 = uVar13
-                            end
-                            if (uVar13 & 2) ~= 0 then
-                                uVar13 = uVar13 & 0xfffffffd
-                                u_stk_1a0 = uVar13
-                            end
-                            if (uVar13 & 1) ~= 0 then
-                                u_stk_1a0 = uVar13 & 0xfffffffe
-                            end
                             if c_stk_1b1 ~= 0 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
@@ -270,17 +252,11 @@ function Main(quest, me)
                         return
                     end
                 end
-                uVar4 = u_stk_1a0
-                u_stk_1a0 = u_stk_1a0 | 8
                 cVar6 = me:MsgIsHitByHero()
                 if not cVar6 then
-                    uVar13 = uVar4 | 0x18
-                    u_stk_1a0 = uVar13
                     -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                     bVar5 = nil --[[unresolved native value]]
                     if bVar5 then
-                        uVar13 = uVar4 | 0x38
-                        u_stk_1a0 = uVar13
                         -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                         bVar5 = nil --[[unresolved native value]]
                         if not bVar5 then goto LAB_00e91742 end
@@ -293,17 +269,6 @@ function Main(quest, me)
                 ::LAB_00e91742::
                 c_stk_1b1 = 1
                 ::FLOW_past_lab_00e91742::
-                if (uVar13 & 0x20) ~= 0 then
-                    uVar13 = uVar13 & 0xffffffdf
-                    u_stk_1a0 = uVar13
-                end
-                if (uVar13 & 0x10) ~= 0 then
-                    uVar13 = uVar13 & 0xffffffef
-                    u_stk_1a0 = uVar13
-                end
-                if (uVar13 & 8) ~= 0 then
-                    u_stk_1a0 = uVar13 & 0xfffffff7
-                end
                 if c_stk_1b1 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive

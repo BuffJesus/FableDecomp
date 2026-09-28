@@ -22,10 +22,8 @@ local leavingHappy, talkedTo, initialAngle
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult22, questionAnswer, addNewConversation, getPos
-    local hiddenBooty, this_00, scratchValue, scratchValue16, scratchValue17, movie, resource
-    local timerId, movie3
-    scratchValue17 = 0
+    local predicateResult, predicateResult22, questionAnswer, getPos, getPos2, getPos3, hiddenBooty
+    local this_00, movie, resource, timerId, movie3
     if not quest:NewScriptFrame(me) then return end
     local resource3 = resources:NewResource()
     resources:PrepareResource(resource3)
@@ -42,9 +40,9 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then goto LAB_00d8d571 end
         if quest:GetTimer(timerId) < 1 then
             if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) then
-                addNewConversation = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, "TEXT_QST_032_FISHERWIFE_CRY", me, hero, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(conversationId, hero)
+                quest:AddLineToConversation(conversationId, "TEXT_QST_032_FISHERWIFE_CRY", me, hero, false)
                 quest:SetTimer(timerId, 15)
             end
         end
@@ -228,16 +226,10 @@ function Main(quest, me)
             ::FLOW_past_lab_00d8ca0f::
             quest:EntitySetFacingAngle(me, initialAngle, true)
         end
-        scratchValue16 = scratchValue17
-        scratchValue17 = scratchValue17 | 1
         if me:MsgIsHitByHero() then
             goto LAB_00d8cab0
         else
-            scratchValue = scratchValue16 | 3
-            scratchValue17 = scratchValue
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue = scratchValue16 | 7
-                scratchValue17 = scratchValue
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d8cab0 end
             end
             predicateResult = false
@@ -246,17 +238,6 @@ function Main(quest, me)
         ::LAB_00d8cab0::
         predicateResult = true
         ::FLOW_past_lab_00d8cab0::
-        if scratchValue & 4 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffb
-            scratchValue17 = scratchValue
-        end
-        if scratchValue & 2 ~= 0 then
-            scratchValue = scratchValue & 0xfffffffd
-            scratchValue17 = scratchValue
-        end
-        if scratchValue & 1 ~= 0 then
-            scratchValue17 = scratchValue & 0xfffffffe
-        end
         if predicateResult then
             if quest:IsActiveThreadTerminating() then goto LAB_00d8d571 end
             movie3 = resources:StartMovie("")
@@ -301,9 +282,9 @@ function Main(quest, me)
         while not quest:IsActiveThreadTerminating() do
             if quest:GetTimer(timerId) < 1 then
                 if quest:IsDistanceBetweenThingsUnder(hero, me, 5.5) then
-                    addNewConversation = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_032_FISHERWIFE_SHOPPING_ASIDE", me, hero, false)
+                    local conversationId2 = quest:AddNewConversation(me, false, false)
+                    quest:AddPersonToConversation(conversationId2, hero)
+                    quest:AddLineToConversation(conversationId2, "TEXT_QST_032_FISHERWIFE_SHOPPING_ASIDE", me, hero, false)
                     quest:SetTimer(timerId, 15)
                 end
             end
@@ -332,22 +313,16 @@ function Main(quest, me)
                 resources:DestroyMovie(resource)
                 local fisherWifeLeaveMarker5 = quest:GetThingWithScriptName("FisherWifeLeaveMarker")
                 if fisherWifeLeaveMarker5 == nil then
-                    getPos = {x = 0, y = 0, z = 0}
+                    getPos2 = {x = 0, y = 0, z = 0}
                 else
-                    getPos = fisherWifeLeaveMarker5:GetPos()
+                    getPos2 = fisherWifeLeaveMarker5:GetPos()
                 end
-                me:MoveToPosition(getPos, 3.0, ENTITY_MOVE_WALK, false, true)
+                me:MoveToPosition(getPos2, 3.0, ENTITY_MOVE_WALK, false, true)
             end
-            scratchValue16 = scratchValue17
-            scratchValue17 = scratchValue17 | 8
             if me:MsgIsHitByHero() then
                 goto LAB_00d8d21b
             else
-                scratchValue = scratchValue16 | 24
-                scratchValue17 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue = scratchValue16 | 56
-                    scratchValue17 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d8d21b end
                 end
                 predicateResult22 = false
@@ -356,17 +331,6 @@ function Main(quest, me)
             ::LAB_00d8d21b::
             predicateResult22 = true
             ::FLOW_past_lab_00d8d21b::
-            if scratchValue & 32 ~= 0 then
-                scratchValue = scratchValue & 0xffffffdf
-                scratchValue17 = scratchValue
-            end
-            if scratchValue & 16 ~= 0 then
-                scratchValue = scratchValue & 0xffffffef
-                scratchValue17 = scratchValue
-            end
-            if scratchValue & 8 ~= 0 then
-                scratchValue17 = scratchValue & 0xfffffff7
-            end
             if predicateResult22 then
                 if quest:IsActiveThreadTerminating() then break end
                 me:ClearCommands()
@@ -399,11 +363,11 @@ function Main(quest, me)
                 quest:SetStateBool("WifeAttacked", true)
                 local fisherWifeLeaveMarker = quest:GetThingWithScriptName("FisherWifeLeaveMarker")
                 if fisherWifeLeaveMarker == nil then
-                    getPos = {x = 0, y = 0, z = 0}
+                    getPos3 = {x = 0, y = 0, z = 0}
                 else
-                    getPos = fisherWifeLeaveMarker:GetPos()
+                    getPos3 = fisherWifeLeaveMarker:GetPos()
                 end
-                me:MoveToPosition(getPos, 3.0, ENTITY_MOVE_RUN, false, true)
+                me:MoveToPosition(getPos3, 3.0, ENTITY_MOVE_RUN, false, true)
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then goto LAB_00d8d568 end
                 end

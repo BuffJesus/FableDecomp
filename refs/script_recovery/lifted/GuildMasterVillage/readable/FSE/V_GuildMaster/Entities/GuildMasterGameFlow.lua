@@ -9,9 +9,7 @@ local helpers = require("V_GuildMaster.native_quest_helpers")
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local c_stk_1b1_1, c_stk_1b1_2, questionAnswer, this_00, scratchValue, scratchValue12
-    local scratchValue13
-    scratchValue13 = 0
+    local scratchValue, questionAnswer, this_00
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -90,40 +88,23 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                 end
-                scratchValue12 = scratchValue13
-                scratchValue13 = scratchValue13 | 1
                 if not me:MsgIsHitByHero() then
-                    scratchValue = scratchValue12 | 3
-                    scratchValue13 = scratchValue
                     -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                     if nil then
-                        scratchValue = scratchValue12 | 7
-                        scratchValue13 = scratchValue
                         -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                         if not nil then goto LAB_00e914b3 end
                     end
-                    c_stk_1b1_1 = 0
+                    scratchValue = 0
                 else
                     goto LAB_00e914b3
                 end
                 goto FLOW_past_lab_00e914b3
                 ::LAB_00e914b3::
-                c_stk_1b1_1 = 1
+                scratchValue = 1
                 ::FLOW_past_lab_00e914b3::
-                if scratchValue & 4 ~= 0 then
-                    scratchValue = scratchValue & 0xfffffffb
-                    scratchValue13 = scratchValue
-                end
-                if scratchValue & 2 ~= 0 then
-                    scratchValue = scratchValue & 0xfffffffd
-                    scratchValue13 = scratchValue
-                end
-                if scratchValue & 1 ~= 0 then
-                    scratchValue13 = scratchValue & 0xfffffffe
-                end
-                if c_stk_1b1_1 ~= 0 then
+                if scratchValue ~= 0 then
                     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                     local movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
@@ -152,40 +133,23 @@ function Main(quest, me)
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         end
-        scratchValue12 = scratchValue13
-        scratchValue13 = scratchValue13 | 8
         if not me:MsgIsHitByHero() then
-            scratchValue = scratchValue12 | 24
-            scratchValue13 = scratchValue
             -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
             if nil then
-                scratchValue = scratchValue12 | 56
-                scratchValue13 = scratchValue
                 -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
     --[[unresolved native value]]
                 if not nil then goto LAB_00e91742 end
             end
-            c_stk_1b1_2 = 0
+            scratchValue = 0
         else
             goto LAB_00e91742
         end
         goto FLOW_past_lab_00e91742
         ::LAB_00e91742::
-        c_stk_1b1_2 = 1
+        scratchValue = 1
         ::FLOW_past_lab_00e91742::
-        if scratchValue & 32 ~= 0 then
-            scratchValue = scratchValue & 0xffffffdf
-            scratchValue13 = scratchValue
-        end
-        if scratchValue & 16 ~= 0 then
-            scratchValue = scratchValue & 0xffffffef
-            scratchValue13 = scratchValue
-        end
-        if scratchValue & 8 ~= 0 then
-            scratchValue13 = scratchValue & 0xfffffff7
-        end
-        if c_stk_1b1_2 ~= 0 then
+        if scratchValue ~= 0 then
             if not quest:IsActiveThreadTerminating() then
                 local movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)

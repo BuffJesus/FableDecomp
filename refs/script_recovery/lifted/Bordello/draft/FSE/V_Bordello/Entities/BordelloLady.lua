@@ -55,9 +55,7 @@ function Main(quest, me)
             else
                 bVar5 = true
             end
-            if (xStack_15c & 1) ~= 0 then
                 -- TODO(native): xStack_15c = xStack_15c & 0xfffffffe;
-            end
             if bVar5 then break end
             -- LAB_00e40085: (native jump target)
             if (not __native_entity_state:GetStateBool("NoLongerWorking")) and (quest:GetStateBool("BecomeNunnery")) then
@@ -69,17 +67,12 @@ function Main(quest, me)
                 -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
                 quest:EntitySetPersonalityOverride()
             end
-            uVar4 = xStack_15c
             -- TODO(native): xStack_15c = xStack_15c | 2;
             cVar6 = me:MsgIsHitByHero()
             if not cVar6 then
-                uVar15 = uVar4 | 6
-                xStack_15c = uVar15
                 -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
                 bVar5 = nil --[[unresolved native value]]
                 if bVar5 then
-                    uVar15 = uVar4 | 0xe
-                    xStack_15c = uVar15
                     -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
                     bVar5 = nil --[[unresolved native value]]
                     if not bVar5 then goto LAB_00e40183 end
@@ -90,17 +83,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e40183
             ::LAB_00e40183::
             ::FLOW_past_lab_00e40183::
-            if (uVar15 & 8) ~= 0 then
-                uVar15 = uVar15 & 0xfffffff7
-                xStack_15c = uVar15
-            end
-            if (uVar15 & 4) ~= 0 then
-                uVar15 = uVar15 & 0xfffffffb
-                xStack_15c = uVar15
-            end
-            if (uVar15 & 2) ~= 0 then
                 -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-            end
             if 1 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -614,13 +597,9 @@ function Main(quest, me)
             -- TODO(native): xStack_15c = xStack_15c | 2;
             cVar6 = me:MsgIsHitByHero()
             if not cVar6 then
-                uVar15 = uVar4 | 6
-                xStack_15c = uVar15
                 -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
                 bVar5 = nil --[[unresolved native value]]
                 if bVar5 then
-                    uVar15 = uVar4 | 0xe
-                    xStack_15c = uVar15
                     -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
                     bVar5 = nil --[[unresolved native value]]
                     if not bVar5 then goto LAB_00e40183_c2 end
@@ -629,17 +608,7 @@ function Main(quest, me)
             goto FLOW_past_lab_00e40183_c2
             ::LAB_00e40183_c2::
             ::FLOW_past_lab_00e40183_c2::
-            if (uVar15 & 8) ~= 0 then
-                uVar15 = uVar15 & 0xfffffff7
-                xStack_15c = uVar15
-            end
-            if (uVar15 & 4) ~= 0 then
-                uVar15 = uVar15 & 0xfffffffb
-                xStack_15c = uVar15
-            end
-            if (uVar15 & 2) ~= 0 then
                 -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-            end
             if 1 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive

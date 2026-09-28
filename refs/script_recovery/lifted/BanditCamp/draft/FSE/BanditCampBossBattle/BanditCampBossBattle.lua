@@ -415,8 +415,6 @@ function ProcessHostageCutscenes(quest)
                 __native_condition_1 = not cVar4
             end
             if __native_condition_1 then
-                CVar8 = CVar2 | 3
-                xStack_78 = CVar8
                 native_arg_sequence_1 = false
                 if (r2 ~= nil and not r2:IsNull()) then
                     native_arg_sequence_1 = true
@@ -440,13 +438,7 @@ function ProcessHostageCutscenes(quest)
             ::LAB_00d10034::
             c_stk_79 = 1
             ::FLOW_past_lab_00d10034::
-            if (CVar8 & 2) ~= 0 then
-                CVar8 = CVar8 & 0xfffffffd
-                xStack_78 = CVar8
-            end
-            if (CVar8 & 1) ~= 0 then
                 -- TODO(native): xStack_78 = CVar8 & 0xfffffffe;
-            end
             if c_stk_79 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive

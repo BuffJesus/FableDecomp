@@ -300,43 +300,28 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: ctr_CVar19 = xStack_374;",
             "unlifted: xStack_374 = xStack_374 | 1;",
             "label LAB_00e660d3",
-            "unlifted: ctr_CVar19 = C_stk_370;",
             "label LAB_00e661a5",
-            "unlifted: ctr_CVar19 = C_stk_370;",
-            "unlifted: ctr_CVar19 = C_stk_370;",
-            "unlifted: ctr_CVar19 = *(int **)(this + 4);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
             "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
-            "unlifted: ctr_CVar19 = 0;",
             "unlifted: CCharString::operator=(&xStack_398,\"CS_CHICKING_LANDED\");",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x64;",
-            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x32;",
-            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x19;",
-            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0xa;",
-            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x19;",
-            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0xa;",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x64;",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x32;",
             "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
-            "unlifted: ctr_CVar19 = ctr_CVar19 + 0x19;",
+            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
+            "unlifted: pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair",
             "unlifted: CCharString::CCharString(&xStack_398_2,&xStack_398);",
             "Game_InitializeArena: unproven parent helper receiver or arity",
             "unlifted: CCharString__SetFromFormatV();",
@@ -385,6 +370,7 @@
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
             "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
+            "unlifted: ctr_CVar19 = *(this + 4)",
             "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
           ],
           "calls": [
@@ -834,7 +820,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1499,
+          "lines": 1495,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1519,7 +1505,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 198,
+          "lines": 183,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1640,12 +1626,15 @@
         "KickedChicken": "V_ChickenKicking/Entities/KickedChicken",
         "Spectator": "V_ChickenKicking/Entities/Spectator"
       },
+      "literalStringVectors": {
+        "FSE/V_ChickenKicking/Entities/ChickenSign.lua": {
+          "0x1c": {
+            "name": "TextKeys",
+            "count": 8
+          }
+        }
+      },
       "declaredFreeLocals": {
-        "FSE/V_ChickenKicking/Entities/ChickenMaster.lua": {
-          "Main": [
-            "piVar2"
-          ]
-        },
         "FSE/V_ChickenKicking/Entities/KickedChicken.lua": {
           "Main": [
             "fStack_24",
@@ -1655,14 +1644,6 @@
             "xStack_3c",
             "xStack_c"
           ]
-        }
-      },
-      "literalStringVectors": {
-        "FSE/V_ChickenKicking/Entities/ChickenSign.lua": {
-          "0x1c": {
-            "name": "TextKeys",
-            "count": 8
-          }
         }
       },
       "cleanupRegions": {
@@ -1711,7 +1692,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 117
+        "todo": 103
       }
     }
   ],
@@ -1722,6 +1703,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 6,
-    "todo": 117
+    "todo": 103
   }
 }

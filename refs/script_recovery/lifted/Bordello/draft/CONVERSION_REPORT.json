@@ -1154,7 +1154,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1211,
+          "lines": 1185,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1616,7 +1616,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 852,
+          "lines": 821,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2055,7 +2055,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 529,
+          "lines": 494,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

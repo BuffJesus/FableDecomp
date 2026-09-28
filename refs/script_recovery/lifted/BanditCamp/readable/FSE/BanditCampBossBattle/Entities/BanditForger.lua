@@ -18,17 +18,15 @@ local givenPass
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, scratchValue2, predicateResult3, predicateResult4, predicateResult
-    local predicateResult20, scratchValue7, scratchValue8, scratchValue9, questionAnswer
-    local questionAnswer2, timerId, scratchValue40, resource
+    local predicateResult3, predicateResult, predicateResult20, scratchValue4, scratchValue5
+    local scratchValue6, questionAnswer, questionAnswer2, addNewConversation, timerId, resource
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
     end
-    scratchValue = 0
-    scratchValue8 = 1
-    scratchValue7 = 0
-    scratchValue9 = 1
+    scratchValue5 = 1
+    scratchValue4 = 0
+    scratchValue6 = 1
     resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -48,15 +46,12 @@ function Main(quest, me)
         givenPass = true
     end
     repeat
-        if scratchValue9 == 0 then goto LAB_00d0d04e end
+        if scratchValue6 == 0 then goto LAB_00d0d04e end
         if not quest:NewScriptFrame(me) then goto LAB_00d0d8c8 end
-        scratchValue2 = 0 | 1
         if me:MsgIsHitByHero() then
             goto LAB_00d0c68f
         else
-            scratchValue2 = 0 | 3
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue2 = 0 | 7
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0c68f end
             end
             predicateResult3 = false
@@ -66,32 +61,11 @@ function Main(quest, me)
         ::LAB_00d0c68f::
         predicateResult3 = true
         ::FLOW_past_lab_00d0c68f::
-        if scratchValue2 & 4 ~= 0 then
-            scratchValue2 = scratchValue2 & 0xfffffffb
-        end
-        if scratchValue2 & 2 ~= 0 then
-            scratchValue2 = scratchValue2 & 0xfffffffd
-        end
-        if scratchValue2 & 1 ~= 0 then
-            scratchValue2 = scratchValue2 & 0xfffffffe
-        end
         if predicateResult3 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
-            scratchValue9 = 0
+            scratchValue6 = 0
         end
-        if quest:GetTimer(timerId) >= 1 then goto LAB_00d0c766 end
-        if not quest:IsDistanceBetweenThingsUnder(hero, me, 10.0) or quest:GetStateBool("Gate2Open") then goto LAB_00d0c766 end
-        scratchValue2 = scratchValue2 | 8
-        predicateResult4 = true
-        if quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero) then goto LAB_00d0c766 end
-        goto FLOW_past_lab_00d0c766
-        ::LAB_00d0c766::
-        predicateResult4 = false
-        ::FLOW_past_lab_00d0c766::
-        if scratchValue2 & 8 ~= 0 then
-            scratchValue40 = scratchValue2 & 0xfffffff7
-        end
-        if predicateResult4 then
+        if not ((quest:GetTimer(timerId) >= 1) or ((not quest:IsDistanceBetweenThingsUnder(hero, me, 10.0)) or quest:GetStateBool("Gate2Open")) or quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero)) then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
             me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
@@ -99,16 +73,16 @@ function Main(quest, me)
                 if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
-            if scratchValue7 == 0 then
-                local conversationId = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId, hero)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_009_FORGER_ASIDE_FIRST", me, hero, false)
-                scratchValue7 = 1
+            if scratchValue4 == 0 then
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(addNewConversation, hero)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_FIRST", me, hero, false)
+                scratchValue4 = 1
             else
-                local conversationId2 = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId2, hero)
-                quest:AddLineToConversation(conversationId2, "TEXT_QST_009_FORGER_ASIDE_SECOND", me, hero, false)
-                scratchValue7 = 0
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                quest:AddPersonToConversation(addNewConversation, hero)
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_SECOND", me, hero, false)
+                scratchValue4 = 0
             end
             quest:SetTimer(timerId, 10)
         end
@@ -117,9 +91,9 @@ function Main(quest, me)
         local movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         if not quest:GetStateBool("Gate2Open") then
-            local predicateResult30 = quest:IsActiveThreadTerminating()
+            local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
             if not quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero) then
-                if predicateResult30 then
+                if isActiveThreadTerminating then
                     quest:PauseAllNonScriptedEntities(false)
                 else
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -161,7 +135,7 @@ function Main(quest, me)
                         quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
                         quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
                         quest:RemoveItemFromContainer(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS")
-                        scratchValue8 = 0
+                        scratchValue5 = 0
                         quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
                         quest:ClearThingHasInformation(me)
                         goto LAB_00d0d023
@@ -173,7 +147,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
                 goto LAB_00d0d8c8
             end
-            if predicateResult30 then
+            if isActiveThreadTerminating then
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie2)
                 goto LAB_00d0d8c8
@@ -224,7 +198,6 @@ function Main(quest, me)
         ::LAB_00d0d023::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
-        scratchValue = scratchValue40
         goto LAB_00d0d04e
     end
     goto FLOW_past_lab_00d0d04e
@@ -232,15 +205,12 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         ::LAB_00d0d063::
         repeat
-            if scratchValue8 == 0 or scratchValue9 == 0 then goto LAB_00d0d85f end
+            if scratchValue5 == 0 or scratchValue6 == 0 then goto LAB_00d0d85f end
             if not quest:NewScriptFrame(me) then goto LAB_00d0d8c8 end
-            scratchValue2 = scratchValue | 16
             if me:MsgIsHitByHero() then
                 goto LAB_00d0d12f
             else
-                scratchValue2 = scratchValue | 48
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue2 = scratchValue | 112
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0d12f end
                 end
                 predicateResult = false
@@ -250,18 +220,9 @@ function Main(quest, me)
             ::LAB_00d0d12f::
             predicateResult = true
             ::FLOW_past_lab_00d0d12f::
-            if scratchValue2 & 64 ~= 0 then
-                scratchValue2 = scratchValue2 & 0xffffffbf
-            end
-            if scratchValue2 & 32 ~= 0 then
-                scratchValue2 = scratchValue2 & 0xffffffdf
-            end
-            if scratchValue2 & 16 ~= 0 then
-                scratchValue2 = scratchValue2 & 0xffffffef
-            end
             if predicateResult then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
-                scratchValue9 = 0
+                scratchValue6 = 0
             end
         until me:IsTalkedToByHero()
         if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
@@ -275,9 +236,7 @@ function Main(quest, me)
         ::LAB_00d0d27c::
         predicateResult20 = true
         ::FLOW_past_lab_00d0d27c::
-        if scratchValue40 & 128 ~= 0 then
             -- TODO(native): xStack_8c = xStack_8c & 0xffffff7f;
-        end
         if predicateResult20 then
             if not quest:IsActiveThreadTerminating() then
                 if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
@@ -323,7 +282,7 @@ function Main(quest, me)
                                 quest:RemoveItemFromContainer(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS")
                                 quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
                                 quest:ClearThingHasInformation(me)
-                                scratchValue8 = 0
+                                scratchValue5 = 0
                                 goto LAB_00d0d829
                             end
                         end
@@ -367,7 +326,7 @@ function Main(quest, me)
     do return end
     ::LAB_00d0d85f::
     if not quest:IsActiveThreadTerminating() then
-        if scratchValue9 == 0 then
+        if scratchValue6 == 0 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
             quest:ClearThingHasInformation(me)
             quest:GiveThingBestEnemyTarget(me, hero)

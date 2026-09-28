@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, piVar2, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, thing_b10, thing_b11, thing_b8, thing_b9, this_00, uVar18, vec_188, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
+    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, ctr_CVar19, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar18, vec_188, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
     local alive = true
     C_stk_370 = 0
     xStack_394 = resources:NewResource()
@@ -34,10 +34,6 @@ function Main(quest, me)
         resources:AssignResource(resources:MemberResource("seh_ChickenMaster"), xStack_394)
         quest:EntitySetAppearanceMorphSeed(me, 4)
         quest:SetThingHasInformation(me, false, false, false)
-        thing_b8 = piVar2
-        thing_b9 = (piVar2 >> 8)
-        thing_b10 = (piVar2 >> 0x10)
-        thing_b11 = (piVar2 >> 0x18)
         quest:SetIsPushableByHero(me, false)
         quest:EntitySetAsKillable(me, false, true)
         pCVar9 = me:GetPos()
@@ -129,7 +125,6 @@ function Main(quest, me)
                         end
                         quest:SetStateBool("TalkedTo", true)
                     end
-                    -- TODO(native): ctr_CVar19 = xStack_374;
                     -- TODO(native): xStack_374 = xStack_374 | 1;
                     cVar7 = me:MsgIsHitByHero()
                     if not cVar7 then
@@ -180,7 +175,7 @@ function Main(quest, me)
                 if bVar6 then goto LAB_00e68af4 end
                 quest:SetTimer(i_stk_3a4, 0xf)
             end
-            -- TODO(native): ctr_CVar19 = C_stk_370;
+            ctr_CVar19 = C_stk_370
             uVar18 = C_stk_370 | 8
             cVar7 = me:MsgIsHitByHero()
             if not cVar7 then
@@ -440,7 +435,7 @@ function Main(quest, me)
                                 if bVar6 then goto LAB_00e68aeb end
                                 quest:SetStateBool("TalkedTo", true)
                             end
-                            -- TODO(native): ctr_CVar19 = C_stk_370;
+                            ctr_CVar19 = C_stk_370
                             C_stk_370 = C_stk_370 | 0x80
                             cVar7 = me:MsgIsHitByHero()
                             if not cVar7 then
@@ -485,7 +480,7 @@ function Main(quest, me)
                         if bVar6 then break end
                         quest:SetTimer(i_stk_3a4, 0xf)
                     end
-                    -- TODO(native): ctr_CVar19 = C_stk_370;
+                    ctr_CVar19 = C_stk_370
                     uVar18 = C_stk_370 | 0x400
                     cVar7 = me:MsgIsHitByHero()
                     if not cVar7 then
@@ -797,7 +792,8 @@ function Main(quest, me)
                         bVar6 = not alive
                         if bVar6 then break end
                         xStack_32c = resources:StartMovie("")
-                        -- TODO(native): ctr_CVar19 = *(int **)(this + 4);
+                        -- TODO(native): ctr_CVar19 = *(this + 4)
+                        ctr_CVar19 = nil --[[unresolved native value]]
                         -- TODO(native): (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);
                         __native_entity_state:SetStateBool("HaveTalked", true)
                         iVar10 = me:IsPerformingScriptTask()
@@ -1010,7 +1006,7 @@ function Main(quest, me)
                             pCVar15 = quest:GetHero()
                             quest:EntitySetFacingAngleTowardsThing(me, pCVar15, (CVar27 ~= 0))
                             iVar10 = 0
-                            -- TODO(native): ctr_CVar19 = 0;
+                            ctr_CVar19 = 0
                             repeat
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
@@ -1139,21 +1135,21 @@ function Main(quest, me)
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_LEFT_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_240);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x64;
+                                                ctr_CVar19 = ctr_CVar19 + 0x64
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68aab end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_LEFT_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1e8);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x32;
+                                                ctr_CVar19 = ctr_CVar19 + 0x32
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FRONT_LEFT_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_238);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x19;
+                                                ctr_CVar19 = ctr_CVar19 + 0x19
                                             end
                                             goto LAB_00e6805d
                                         end
@@ -1168,21 +1164,21 @@ function Main(quest, me)
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_CENTRE_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1a8);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0xa;
+                                                ctr_CVar19 = ctr_CVar19 + 0xa
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68aab end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_CENTRE_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_2b8);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x19;
+                                                ctr_CVar19 = ctr_CVar19 + 0x19
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
                                                 if bVar6 then goto LAB_00e68ab9 end
                                                 pcVar20 = "TEXT_QST_B17_MASTER_NEAR_CENTRE_NEW"
                                                 -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),(CCharString *)xStack_1e0);
-                                                -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0xa;
+                                                ctr_CVar19 = ctr_CVar19 + 0xa
                                             end
                                             goto LAB_00e6805d
                                         end
@@ -1222,21 +1218,21 @@ function Main(quest, me)
                                         if bVar6 then goto LAB_00e68ab9 end
                                         pcVar20 = "TEXT_QST_B17_MASTER_FAR_RIGHT_NEW"
                                         -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_228);
-                                        -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x64;
+                                        ctr_CVar19 = ctr_CVar19 + 0x64
                                     elseif iVar11 == 2 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
                                         if bVar6 then goto LAB_00e68aab end
                                         pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_RIGHT_NEW"
                                         -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_1b8);
-                                        -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x32;
+                                        ctr_CVar19 = ctr_CVar19 + 0x32
                                     elseif iVar11 == 1 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
                                         if bVar6 then goto LAB_00e68ab9 end
                                         pcVar20 = "TEXT_QST_B17_MASTER_NEAR_RIGHT_NEW"
                                         -- TODO(native): pCVar13 = std::map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> ::operator[](( map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)(*(int *)(this + 0x14) + 100),&xStack_220);
-                                        -- TODO(native): ctr_CVar19 = ctr_CVar19 + 0x19;
+                                        ctr_CVar19 = ctr_CVar19 + 0x19
                                     end
                                     goto LAB_00e6805d
                                 end

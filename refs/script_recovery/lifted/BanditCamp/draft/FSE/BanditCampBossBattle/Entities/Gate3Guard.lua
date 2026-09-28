@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local bVar4, b_stk_71, b_stk_72, cVar5, dist, fVar2, fret_0, fret_00, iVar12, iVar13, iVar6, iVar7, i_stk_70, p0, pCVar8, pCVar9, pcVar11, r1, r2, uVar10, uVar3, v_stk_6c, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
     local alive = true
-    v_stk_6c = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -45,18 +44,12 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_30)
                     return
                 end
-                uVar3 = v_stk_6c
-                v_stk_6c = v_stk_6c | 1
                 bVar4 = me:MsgIsHitByHero()
                 if bVar4 then
                     goto LAB_00d076a9
                 else
-                    uVar10 = uVar3 | 3
-                    v_stk_6c = uVar10
                     bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                     if bVar4 then
-                        uVar10 = uVar3 | 7
-                        v_stk_6c = uVar10
                         bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                         if not bVar4 then goto LAB_00d076a9 end
                     end
@@ -66,17 +59,6 @@ function Main(quest, me)
                 ::LAB_00d076a9::
                 bVar4 = true
                 ::FLOW_past_lab_00d076a9::
-                if (uVar10 & 4) ~= 0 then
-                    uVar10 = uVar10 & 0xfffffffb
-                    v_stk_6c = uVar10
-                end
-                if (uVar10 & 2) ~= 0 then
-                    uVar10 = uVar10 & 0xfffffffd
-                    v_stk_6c = uVar10
-                end
-                if (uVar10 & 1) ~= 0 then
-                    v_stk_6c = uVar10 & 0xfffffffe
-                end
                 if bVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive

@@ -6,7 +6,7 @@ local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 local helpers = require("V_Bordello.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local self0Xc, name, noLongerWorking, haveTalked, partiedAlready, goldRequired, walkingDownstairs
+local name, self0Xc_, noLongerWorking, haveTalked, partiedAlready, goldRequired, walkingDownstairs
 
 -- BordelloLady.Main (retail 0x00e3eb10)
 function Main(quest, me)
@@ -14,22 +14,20 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local scratchValue, predicateResult2, predicateResult, predicateResult22, scratchValue4, health
     local getHealth, questionAnswer, questionAnswer2, getStateString, scratchValue11, line
-    local scratchValue13, resource2, pppuVar28, scratchValue16, scratchValue17, getStateInt
-    local getStateInt2, resource
+    local scratchValue13, resource2, pppuVar28, getStateInt, resource
     if not quest:NewScriptFrame(me) then return end
     resources:NewResource()
     quest:SetCreatureBrain(nil --[[missing]], "BRAIN_PASSIVE_OVERRIDE")
-    getStateInt = self0Xc
     quest:SetWanderCentrePoint(nil --[[missing]], nil --[[missing]])
     quest:SetWanderMinDistance(nil --[[missing]], 0)
-    getStateInt2 = self0Xc
+    getStateInt = self0Xc_
     -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);
-    if self0Xc ~= nil then
+    if self0Xc_ ~= nil then
         -- TODO(native): *xStack_1a0 = *xStack_1a0 + 1;
     end
     quest:SetWanderMaxDistance(nil --[[missing]], 16.0)
     -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);
-    if self0Xc ~= nil then
+    if self0Xc_ ~= nil then
         -- TODO(native): *xStack_1a0 = (undefined *)((int)*xStack_1a0 + 1);
     end
     quest:SetScriptingStateGroup(nil --[[missing]], 0)
@@ -44,27 +42,20 @@ function Main(quest, me)
             scratchValue = scratchValue4
         end
         local predicateResult3 = not scratchValue
-        if getStateInt & 1 ~= 0 then
             -- TODO(native): xStack_15c = xStack_15c & 0xfffffffe;
-        end
         if predicateResult3 then break end
         if not noLongerWorking and quest:GetStateBool("BecomeNunnery") then
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(self0Xc); return end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(self0Xc_); return end
             noLongerWorking = true
             quest:ClearThingHasInformation(nil --[[missing]])
             -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
             quest:EntitySetPersonalityOverride()
         end
-        scratchValue17 = getStateInt
         -- TODO(native): xStack_15c = xStack_15c | 2;
         if not me:MsgIsHitByHero() then
-            scratchValue16 = scratchValue17 | 6
-            getStateInt = scratchValue16
             -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
     --[[unresolved native value]]
             if nil then
-                scratchValue16 = scratchValue17 | 14
-                getStateInt = scratchValue16
                 -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
     --[[unresolved native value]]
                 if not nil then goto LAB_00e40183 end
@@ -75,44 +66,34 @@ function Main(quest, me)
         goto FLOW_past_lab_00e40183
         ::LAB_00e40183::
         ::FLOW_past_lab_00e40183::
-        if scratchValue16 & 8 ~= 0 then
-            scratchValue16 = scratchValue16 & 0xfffffff7
-            getStateInt = scratchValue16
-        end
-        if scratchValue16 & 4 ~= 0 then
-            scratchValue16 = scratchValue16 & 0xfffffffb
-            getStateInt = scratchValue16
-        end
-        if scratchValue16 & 2 ~= 0 then
             -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-        end
         if not quest:IsActiveThreadTerminating() then
             resources:PrepareResource(resources:MemberResource("seh_Whore"))
-            resources:PrepareResource(self0Xc)
+            resources:PrepareResource(self0Xc_)
             while not me:AcquireControl(4) do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc); return end
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc_); return end
             end
             if not quest:IsActiveThreadTerminating() then
                 me:ClearCommands()
                 me:PlayAnimation("ST_OPINION_FEAR_IDLE_COWERING", false, false, false, true, true, false, false)
                 while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc); return end
+                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc_); return end
                 end
-                if not quest:IsActiveThreadTerminating() then resources:PrepareResource(self0Xc); goto LAB_00e402f9 end
+                if not quest:IsActiveThreadTerminating() then resources:PrepareResource(self0Xc_); goto LAB_00e402f9 end
             end
         end
-        resources:ReleaseResource(self0Xc)
+        resources:ReleaseResource(self0Xc_)
         do return end
         ::LAB_00e402f9::
         quest:NewScriptFrame(me)
         predicateResult2 = quest:IsActiveThreadTerminating()
     end
     ::FLOW_after_lab_00e40085::
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(getStateInt2); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(getStateInt); return end
     resources:PrepareResource(resources:MemberResource("seh_Whore"))
     local movie = resources:StartMovie("")
     quest:StartMovieSequence()
-    getStateInt2 = resource2
+    getStateInt = resource2
     quest:PauseAllNonScriptedEntities(true)
     resources:PrepareResource(resource2)
     scratchValue4 = me:AcquireControl(4)
@@ -320,14 +301,11 @@ function Main(quest, me)
         -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
         quest:EntitySetPersonalityOverride()
     end
-    scratchValue17 = ""
     -- TODO(native): xStack_15c = xStack_15c | 2;
     if not me:MsgIsHitByHero() then
-        scratchValue16 = scratchValue17 | 6
         -- TODO(native): bVar5 = (**(*me + 0xa8))(me,&xStack_120)
     --[[unresolved native value]]
         if nil then
-            scratchValue16 = scratchValue17 | 14
             -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,&xStack_128)
     --[[unresolved native value]]
             if not nil then goto LAB_00e40183_c2 end
@@ -336,15 +314,7 @@ function Main(quest, me)
     goto FLOW_past_lab_00e40183_c2
     ::LAB_00e40183_c2::
     ::FLOW_past_lab_00e40183_c2::
-    if scratchValue16 & 8 ~= 0 then
-        scratchValue16 = scratchValue16 & 0xfffffff7
-    end
-    if scratchValue16 & 4 ~= 0 then
-        scratchValue16 = scratchValue16 & 0xfffffffb
-    end
-    if scratchValue16 & 2 ~= 0 then
         -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-    end
     if not quest:IsActiveThreadTerminating() then
         resources:PrepareResource(resources:MemberResource("seh_Whore"))
         resources:PrepareResource(resource2)

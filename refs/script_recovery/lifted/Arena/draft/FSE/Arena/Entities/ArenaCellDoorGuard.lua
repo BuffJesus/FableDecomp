@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local bVar3, cVar4, c_stk_1f5, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, fret_23, fret_24, fret_25, fret_26, fret_27, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar10, pCVar11, pCVar12, pCVar6, pCVar7, pcVar9, ppuVar13, r1, r2, this_01, uVar2, uVar8, u_stk_1f4, xStack_184, xStack_1ec, xStack_214, xStack_224, xStack_238
     local alive = true
-    u_stk_1f4 = 0
     ppuVar13 = resources:NewResource()
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -766,16 +765,12 @@ function Main(quest, me)
                 this_01 = xStack_214
                 goto LAB_00f19a72
             end
-            uVar2 = u_stk_1f4
-            u_stk_1f4 = u_stk_1f4 | 1
             bVar3 = pCVar6:MsgIsHitByHero()
             if bVar3 then
                 goto LAB_00f19571
             else
-                uVar8 = uVar2 | 3
                 bVar3 = pCVar6:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar3 then
-                    uVar8 = uVar2 | 7
                     bVar3 = pCVar6:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f19571 end
                 end
@@ -785,15 +780,6 @@ function Main(quest, me)
             ::LAB_00f19571::
             bVar3 = true
             ::FLOW_past_lab_00f19571::
-            if (uVar8 & 4) ~= 0 then
-                uVar8 = uVar8 & 0xfffffffb
-            end
-            if (uVar8 & 2) ~= 0 then
-                uVar8 = uVar8 & 0xfffffffd
-            end
-            if (uVar8 & 1) ~= 0 then
-                uVar8 = uVar8 & 0xfffffffe
-            end
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -857,7 +843,6 @@ function Main(quest, me)
                 end
             else
                 dist = 1.0
-                uVar8 = uVar8 | 0x18
                 pCVar7 = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
                 bVar3 = quest:IsDistanceBetweenThingsOver(me, pCVar7, dist)
                 if bVar3 then
@@ -871,12 +856,6 @@ function Main(quest, me)
                 ::LAB_00f197e9::
                 bVar3 = false
                 ::FLOW_past_lab_00f197e9::
-                if (uVar8 & 0x10) ~= 0 then
-                    uVar8 = uVar8 & 0xffffffef
-                end
-                if (uVar8 & 8) ~= 0 then
-                    u_stk_1f4 = uVar8 & 0xfffffff7
-                end
                 if bVar3 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive

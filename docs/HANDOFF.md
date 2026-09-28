@@ -1,13 +1,14 @@
 # Lua recovery handoff - 2026-09-26
 
-**Resume here (2026-09-28):** corpus smoke 21 → 15 failing functions, 0 new
-([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)): ChickenSign's literal TextKeys table, four quest helpers
-reclassified from entity code (BeardyBaldy wander, TourGuide MoveToNextWaypoint, GuildMaster speech by stage,
-Dragon phase), TourGuide waypoint arrays, resource parameters, KickedChicken/ChickenMaster vector slots, IsDistanceFromPositionUnder (+ sidecar patch
-`novi-zzzzzzzzzzzzzzzzzzz-position-under`, candidate builds). Five units promoted (BeardyBaldy, ChickenKicking,
-DragonBossFight, GuildMasterVillage, TourGuide). v34 predates all of this and the 2026-09-27 checkpoint 11:
-stage v35 before playtesting. Next: yesterday's open list (BordelloLady/Witch flag slots, Roth, SickChild helper_ECE460, Arena cell guards)
-and the TourGuide waypoint-copy TODO. Scratch + A/B harness: `work/codex_lua_20260928/`.
+**Resume here (2026-09-28, evening):** corpus smoke 21 → 8 failing functions today, 0 new; 7 real
+([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)). Remaining: Arena cell guards (merged `pCVar6` receiver, needs
+register reaching definitions), Roth (cross-variable high bytes), BookCollecting BookReaction/DoConversation,
+OakValeFire, SickChild helper_ECE460. Next up: BS_Teacher AskForBook (lost second parameter + member-resource vtable
+calls 0x30/0x34/0x68 through an alias). Morning: quest helpers reclassified from entity code, literal TextKeys, vector
+slots, IsDistanceFromPositionUnder (sidecar patch `novi-zzzzzzzzzzzzzzzzzzz-position-under`, candidate builds).
+Afternoon: dead cleanup-flag bookkeeping dropped, `ctr_CVarN` counters (ChickenMaster score). v34 predates all of
+this: stage v35 before playtesting. The install's `text.big` changed twice today (not this session): seven NOVI
+text tests fail at every commit until it is restored. Scratch + A/B harness: `work/codex_lua_20260928/`.
 
 **Earlier (2026-09-27 night):** Lua fixes through `ea7603e` (checkpoints 3-11 in
 [the marathon journal](journal/2026-09/CODEX_LUA_MARATHON_2026-09-27.md)): BookOwned offset, stale unit evidence

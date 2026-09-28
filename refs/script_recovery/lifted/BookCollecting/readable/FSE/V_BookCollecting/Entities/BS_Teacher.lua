@@ -689,38 +689,40 @@ function LookForBook(quest, me)
     local self_0x34
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, value, scratchValue6, x_stk_14_1, x_stk_14_2, scratchValue7
+    local ctr_CVar, scratchValue, value, scratchValue6, x_stk_14_1, x_stk_14_2, scratchValue7
     value = 0xffffffff
-    -- TODO(native): ctr_CVar13 = 0;
+    ctr_CVar = 0
     if booksInGame < 1 then
         goto LAB_00e57678
     else
         repeat
-            if (((ctr_CVar13 == booksWanted) or (ctr_CVar13 == booksAccepted)) or (ctr_CVar13 == booksComment)) and (-1 < value) then
+            if (((ctr_CVar == booksWanted) or (ctr_CVar == booksAccepted)) or (ctr_CVar == booksComment)) and (-1 < value) then
                 if quest:IsActiveThreadTerminating() then return end
                 break
             end
             -- TODO(native): iVar7 = *(iVar7 + 0x94)
 --[[unresolved native value]]
             local isObjectInThingsPossession = quest:IsObjectInThingsPossession(nil --[[missing]], hero)
-            if isObjectInThingsPossession then
+            if not isObjectInThingsPossession then
+                ctr_CVar = ctr_CVar + 1
+            else
                 if quest:IsActiveThreadTerminating() then return end
                 -- TODO(native): if (ctr_CVar13 == quest:GetStateInt("LastBookRequested")) or (*(ctr_CVar13 + *(self_0x14 + 0xa0)) ~= 0) then
                 if false then
-                    if scratchValue6 == 0xffffffff then
-                        if quest:IsActiveThreadTerminating() then return end
-                        scratchValue6 = 0xfffffffe
-                        value = 0xfffffffe
-                    end
+                    if scratchValue6 ~= 0xffffffff then ctr_CVar = ctr_CVar + 1; goto continue_1 end
+                    if quest:IsActiveThreadTerminating() then return end
+                    scratchValue6 = 0xfffffffe
+                    value = 0xfffffffe
                 else
                     if quest:IsActiveThreadTerminating() then return end
-                    -- TODO(native): xStack_28 = ctr_CVar13;
+                    scratchValue6 = ctr_CVar
                     value = scratchValue6
                     -- TODO(native): if *(ctr_CVar13 + *(self_0x14 + 0xac)) == 0 then
                 end
+                ctr_CVar = ctr_CVar + 1
             end
-            -- TODO(native): ctr_CVar13 = ctr_CVar13 + 1;
-        until ctr_CVar13 >= booksInGame
+            ::continue_1::
+        until ctr_CVar >= booksInGame
         if value ~= 0xfffffffe then goto LAB_00e57678 end
     end
     goto FLOW_past_lab_00e57678

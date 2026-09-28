@@ -13,8 +13,7 @@ local earlyTalk, chamTalk
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, hb_stk_ffffff34_2, scratchValue, scratchValue7, scratchValue8, meControl
-    scratchValue8 = 0
+    local predicateResult, hb_stk_ffffff34_2, meControl
     local resource = resources:NewResource()
     quest:SetStateThing("CellsVillage", quest:GetNearestWithDefName(me, "VILLAGE_ARENA_CELLS"))
     quest:EntitySetOpinionReactionsEnabled(me, false)
@@ -120,85 +119,58 @@ function Main(quest, me)
             ::LAB_00f1a343::
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie2)
-        else
-            scratchValue = scratchValue8 | 3
-            local hb_stk_ffffff34_1 = not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerLeft"), 1.0)) or me:IsPerformingScriptTask())
-            if scratchValue & 2 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffd
+        elseif not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerLeft"), 1.0) or me:IsPerformingScriptTask() then
+            if me:MsgIsHitByHero() then
+                goto LAB_00f1a4e2
+            else
+                if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f1a4e2 end
+                end
+                hb_stk_ffffff34_2 = false
             end
-            if scratchValue & 1 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffe
-            end
-            if not hb_stk_ffffff34_1 then
-                scratchValue7 = scratchValue | 4
-                scratchValue8 = scratchValue7
-                if me:MsgIsHitByHero() then
-                    goto LAB_00f1a4e2
-                else
-                    scratchValue7 = scratchValue | 12
-                    scratchValue8 = scratchValue7
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue7 = scratchValue | 28
-                        scratchValue8 = scratchValue7
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f1a4e2 end
-                    end
-                    hb_stk_ffffff34_2 = false
-                end
-                goto FLOW_past_lab_00f1a4e2
-                ::LAB_00f1a4e2::
-                hb_stk_ffffff34_2 = true
-                ::FLOW_past_lab_00f1a4e2::
-                if scratchValue7 & 16 ~= 0 then
-                    scratchValue7 = scratchValue7 & 0xffffffef
-                    scratchValue8 = scratchValue7
-                end
-                if scratchValue7 & 8 ~= 0 then
-                    scratchValue7 = scratchValue7 & 0xfffffff7
-                    scratchValue8 = scratchValue7
-                end
-                if scratchValue7 & 4 ~= 0 then
-                    scratchValue8 = scratchValue7 & 0xfffffffb
-                end
-                if not hb_stk_ffffff34_2 then
-                    if not predicateResult then
-                        if quest:IsActiveThreadTerminating() then break end
-                        if not me:IsPerformingScriptTask() then
-                            predicateResult = true
-                            local guardingDoorMarkerLeft3 = quest:GetThingWithScriptName("GuardingDoorMarkerLeft")
-                            quest:EntitySetFacingAngle(me, guardingDoorMarkerLeft3:GetAngleXY(), false)
-                        end
-                    end
-                else
+            goto FLOW_past_lab_00f1a4e2
+            ::LAB_00f1a4e2::
+            hb_stk_ffffff34_2 = true
+            ::FLOW_past_lab_00f1a4e2::
+            if not hb_stk_ffffff34_2 then
+                if not predicateResult then
                     if quest:IsActiveThreadTerminating() then break end
-                    if not quest:GetStateBool("InHitCutsceneAlready") then
-                        quest:SetStateBool("InHitCutsceneAlready", true)
-                        local movie = resources:StartMovie("")
-                        quest:PauseAllNonScriptedEntities(true)
-                        local fret_02 = quest:GetHealth(resources:ScriptThing(meControl))
-                        if 0.0 < fret_02 then
-                            while me:IsPerformingScriptTask() do
-                                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00f1a7e9 end
-                            end
-                            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f1a7e9 end
-                            goto FLOW_past_lab_00f1a7e9
-                            ::LAB_00f1a7e9::
-                            -- TODO(native): goto LAB_00f1a7ed
-                            ::FLOW_past_lab_00f1a7e9::
-                        end
-                        quest:ModifyThingHealth(me, 10000.0, false)
-                        quest:EntitySetThingAsAllyOfThing(me, hero_)
-                        quest:EntitySetThingAsAllyOfThing(hero_, me)
-                        quest:SetStateBool("InHitCutsceneAlready", false)
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
+                    if not me:IsPerformingScriptTask() then
+                        predicateResult = true
+                        local guardingDoorMarkerLeft3 = quest:GetThingWithScriptName("GuardingDoorMarkerLeft")
+                        quest:EntitySetFacingAngle(me, guardingDoorMarkerLeft3:GetAngleXY(), false)
                     end
                 end
             else
                 if quest:IsActiveThreadTerminating() then break end
-                local guardingDoorMarkerLeft4 = quest:GetThingWithScriptName("GuardingDoorMarkerLeft")
-                me:MoveToPosition(guardingDoorMarkerLeft4:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
-                predicateResult = false
+                if not quest:GetStateBool("InHitCutsceneAlready") then
+                    quest:SetStateBool("InHitCutsceneAlready", true)
+                    local movie = resources:StartMovie("")
+                    quest:PauseAllNonScriptedEntities(true)
+                    local fret_02 = quest:GetHealth(resources:ScriptThing(meControl))
+                    if 0.0 < fret_02 then
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00f1a7e9 end
+                        end
+                        if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00f1a7e9 end
+                        goto FLOW_past_lab_00f1a7e9
+                        ::LAB_00f1a7e9::
+                        -- TODO(native): goto LAB_00f1a7ed
+                        ::FLOW_past_lab_00f1a7e9::
+                    end
+                    quest:ModifyThingHealth(me, 10000.0, false)
+                    quest:EntitySetThingAsAllyOfThing(me, hero_)
+                    quest:EntitySetThingAsAllyOfThing(hero_, me)
+                    quest:SetStateBool("InHitCutsceneAlready", false)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                end
             end
+        else
+            if quest:IsActiveThreadTerminating() then break end
+            local guardingDoorMarkerLeft4 = quest:GetThingWithScriptName("GuardingDoorMarkerLeft")
+            me:MoveToPosition(guardingDoorMarkerLeft4:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+            predicateResult = false
         end
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then

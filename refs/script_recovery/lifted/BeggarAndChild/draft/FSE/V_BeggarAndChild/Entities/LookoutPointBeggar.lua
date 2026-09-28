@@ -58,13 +58,9 @@ function Main(quest, me)
                 if bVar5 then
                     goto LAB_00e58fce
                 else
-                    uVar13 = uVar7 | 3
-                    xStack_1e4 = uVar13
                     -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                     bVar5 = nil --[[unresolved native value]]
                     if bVar5 then
-                        uVar13 = uVar7 | 7
-                        xStack_1e4 = uVar13
                         -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                         bVar5 = nil --[[unresolved native value]]
                         if not bVar5 then goto LAB_00e58fce end
@@ -75,17 +71,7 @@ function Main(quest, me)
                 ::LAB_00e58fce::
                 bVar5 = true
                 ::FLOW_past_lab_00e58fce::
-                if (uVar13 & 4) ~= 0 then
-                    uVar13 = uVar13 & 0xfffffffb
-                    xStack_1e4 = uVar13
-                end
-                if (uVar13 & 2) ~= 0 then
-                    uVar13 = uVar13 & 0xfffffffd
-                    xStack_1e4 = uVar13
-                end
-                if (uVar13 & 1) ~= 0 then
                     -- TODO(native): xStack_1e4 = uVar13 & 0xfffffffe;
-                end
                 if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
@@ -924,19 +910,14 @@ function Main(quest, me)
                             if bVar3 then goto LAB_00e5b24b end
                             bVar3 = true
                         end
-                        uVar7 = xStack_1e4
                         -- TODO(native): xStack_1e4 = xStack_1e4 | 8;
                         -- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding
                         quest:MsgIsRegionUnloaded("SCRIPT_NAME_HERO")
                         if bVar5 then
                             goto LAB_00e5a8ab
                         else
-                            uVar13 = uVar7 | 0x18
-                            xStack_1e4 = uVar13
                             bVar5 = quest:MsgIsActionModeButtonPressed()
                             if bVar5 then
-                                uVar13 = uVar7 | 0x38
-                                xStack_1e4 = uVar13
                                 bVar5 = quest:MsgIsTutorialClickedPast()
                                 if not bVar5 then goto LAB_00e5a8ab end
                             end
@@ -946,17 +927,7 @@ function Main(quest, me)
                         ::LAB_00e5a8ab::
                         bVar5 = true
                         ::FLOW_past_lab_00e5a8ab::
-                        if (uVar13 & 0x20) ~= 0 then
-                            uVar13 = uVar13 & 0xffffffdf
-                            xStack_1e4 = uVar13
-                        end
-                        if (uVar13 & 0x10) ~= 0 then
-                            uVar13 = uVar13 & 0xffffffef
-                            xStack_1e4 = uVar13
-                        end
-                        if (uVar13 & 8) ~= 0 then
                             -- TODO(native): xStack_1e4 = uVar13 & 0xfffffff7;
-                        end
                         if bVar5 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -1099,20 +1070,15 @@ function Main(quest, me)
                         end
                         bVar3 = true
                     end
-                    uVar7 = xStack_1e4
                     -- TODO(native): xStack_1e4 = xStack_1e4 | 0x40;
                     -- TODO(native): bVar5 = (**(*me + 0x54))(me,"SCRIPT_NAME_HERO")
                     bVar5 = nil --[[unresolved native value]]
                     if bVar5 then
                         goto LAB_00e5addd
                     else
-                        uVar13 = uVar7 | 0xc0
-                        xStack_1e4 = uVar13
                         -- TODO(native): bVar5 = (**(*me + 0xa8))(me,"SCRIPT_NAME_HERO")
                         bVar5 = nil --[[unresolved native value]]
                         if bVar5 then
-                            uVar13 = uVar7 | 0x1c0
-                            xStack_1e4 = uVar13
                             -- TODO(native): bVar5 = (**(*me + 0xa4))(me,0xe,"SCRIPT_NAME_HERO")
                             bVar5 = nil --[[unresolved native value]]
                             if not bVar5 then goto LAB_00e5addd end
@@ -1123,17 +1089,7 @@ function Main(quest, me)
                     ::LAB_00e5addd::
                     bVar5 = true
                     ::FLOW_past_lab_00e5addd::
-                    if (uVar13 & 0x100) ~= 0 then
-                        uVar13 = uVar13 & 0xfffffeff
-                        xStack_1e4 = uVar13
-                    end
-                    if ((uVar13 & 0x80) ~= 0) then
-                        uVar13 = uVar13 & 0xffffff7f
-                        xStack_1e4 = uVar13
-                    end
-                    if (uVar13 & 0x40) ~= 0 then
                         -- TODO(native): xStack_1e4 = uVar13 & 0xffffffbf;
-                    end
                     if bVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive

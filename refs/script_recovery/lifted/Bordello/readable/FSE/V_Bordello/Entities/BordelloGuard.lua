@@ -11,8 +11,7 @@ local helpers = require("V_Bordello.native_quest_helpers")
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue7, this_02, scratchValue24, scratchValue25, scratchValue26, movie, movie2
-    scratchValue26 = 0
+    local scratchValue7, this_02, movie, movie2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -24,14 +23,8 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while true do
         if me:IsTalkedToByHero() then break end
-        scratchValue24 = scratchValue26
-        scratchValue26 = scratchValue26 | 1
         if me:MsgIsHitByHero() then goto LAB_00e40afa end
-        scratchValue25 = scratchValue24 | 3
-        scratchValue26 = scratchValue25
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue25 = scratchValue24 | 7
-            scratchValue26 = scratchValue25
             if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa end
         end
         scratchValue7 = 0
@@ -39,17 +32,6 @@ function Main(quest, me)
         ::LAB_00e40afa::
         scratchValue7 = 1
         ::FLOW_past_lab_00e40afa::
-        if scratchValue25 & 4 ~= 0 then
-            scratchValue25 = scratchValue25 & 0xfffffffb
-            scratchValue26 = scratchValue25
-        end
-        if scratchValue25 & 2 ~= 0 then
-            scratchValue25 = scratchValue25 & 0xfffffffd
-            scratchValue26 = scratchValue25
-        end
-        if scratchValue25 & 1 ~= 0 then
-            scratchValue26 = scratchValue25 & 0xfffffffe
-        end
         if scratchValue7 ~= 0 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
@@ -148,14 +130,8 @@ function Main(quest, me)
         ::LAB_00e40a57::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
-        scratchValue24 = scratchValue26
-        scratchValue26 = scratchValue26 | 1
         if not me:MsgIsHitByHero() then
-            scratchValue25 = scratchValue24 | 3
-            scratchValue26 = scratchValue25
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                scratchValue25 = scratchValue24 | 7
-                scratchValue26 = scratchValue25
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa_c1 end
             end
             scratchValue7 = 0
@@ -164,17 +140,6 @@ function Main(quest, me)
         ::LAB_00e40afa_c1::
         scratchValue7 = 1
         ::FLOW_past_lab_00e40afa_c1::
-        if scratchValue25 & 4 ~= 0 then
-            scratchValue25 = scratchValue25 & 0xfffffffb
-            scratchValue26 = scratchValue25
-        end
-        if scratchValue25 & 2 ~= 0 then
-            scratchValue25 = scratchValue25 & 0xfffffffd
-            scratchValue26 = scratchValue25
-        end
-        if scratchValue25 & 1 ~= 0 then
-            scratchValue26 = scratchValue25 & 0xfffffffe
-        end
         if scratchValue7 ~= 0 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")

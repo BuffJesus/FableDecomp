@@ -14,7 +14,6 @@ function Main(quest, me)
     local resources = quest:RetailResources()
     local __native_condition_1, __native_condition_2, bVar5, cVar6, fVar18, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar15, iVar19, iVar7, iVar9, p0, p0_00, pCVar12, pCVar16, pCVar8, pQuestName, pcVar14, pppuVar17, puVar11, r1, r10, r11, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar13, uVar4, u_stk_164, xStack_120, xStack_130, xStack_174, xStack_178, xStack_28, xStack_38, xStack_50, xStack_5c, xStack_68, xStack_78, xStack_9c, xStack_b0, xStack_c4, x_stk_18, x_stk_44, x_stk_84
     local alive = true
-    u_stk_164 = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -345,18 +344,12 @@ function Main(quest, me)
             ::FLOW_past_lab_00d8ca0f::
             quest:EntitySetFacingAngle(me, __native_entity_state:GetStateFloat("initial_angle"), true)
         end
-        uVar4 = u_stk_164
-        u_stk_164 = u_stk_164 | 1
         bVar5 = me:MsgIsHitByHero()
         if bVar5 then
             goto LAB_00d8cab0
         else
-            uVar13 = uVar4 | 3
-            u_stk_164 = uVar13
             bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar5 then
-                uVar13 = uVar4 | 7
-                u_stk_164 = uVar13
                 bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar5 then goto LAB_00d8cab0 end
             end
@@ -366,17 +359,6 @@ function Main(quest, me)
         ::LAB_00d8cab0::
         bVar5 = true
         ::FLOW_past_lab_00d8cab0::
-        if (uVar13 & 4) ~= 0 then
-            uVar13 = uVar13 & 0xfffffffb
-            u_stk_164 = uVar13
-        end
-        if (uVar13 & 2) ~= 0 then
-            uVar13 = uVar13 & 0xfffffffd
-            u_stk_164 = uVar13
-        end
-        if (uVar13 & 1) ~= 0 then
-            u_stk_164 = uVar13 & 0xfffffffe
-        end
         if bVar5 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
@@ -534,18 +516,12 @@ function Main(quest, me)
                 end
                 me:MoveToPosition(puVar11, 3.0, 0, false, true)
             end
-            uVar4 = u_stk_164
-            u_stk_164 = u_stk_164 | 8
             bVar5 = me:MsgIsHitByHero()
             if bVar5 then
                 goto LAB_00d8d21b
             else
-                uVar13 = uVar4 | 0x18
-                u_stk_164 = uVar13
                 bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar5 then
-                    uVar13 = uVar4 | 0x38
-                    u_stk_164 = uVar13
                     bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar5 then goto LAB_00d8d21b end
                 end
@@ -555,17 +531,6 @@ function Main(quest, me)
             ::LAB_00d8d21b::
             bVar5 = true
             ::FLOW_past_lab_00d8d21b::
-            if (uVar13 & 0x20) ~= 0 then
-                uVar13 = uVar13 & 0xffffffdf
-                u_stk_164 = uVar13
-            end
-            if (uVar13 & 0x10) ~= 0 then
-                uVar13 = uVar13 & 0xffffffef
-                u_stk_164 = uVar13
-            end
-            if (uVar13 & 8) ~= 0 then
-                u_stk_164 = uVar13 & 0xfffffff7
-            end
             if bVar5 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive

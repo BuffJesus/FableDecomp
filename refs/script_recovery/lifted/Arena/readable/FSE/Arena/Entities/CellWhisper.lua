@@ -7,8 +7,7 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue2, scratchValue, scratchValue12, movie2, meControl
-    scratchValue12 = 0
+    local scratchValue, movie2, meControl
     local resource = resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -87,36 +86,19 @@ function Main(quest, me)
             resources:DestroyMovie(movie2)
             goto LAB_00f17a59
         else
-            local scratchValue11 = scratchValue12
-            scratchValue12 = scratchValue12 | 1
             if me:MsgIsHitByHero() then
                 goto LAB_00f177f7
             else
-                scratchValue = scratchValue11 | 3
-                scratchValue12 = scratchValue
                 if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                    scratchValue = scratchValue11 | 7
-                    scratchValue12 = scratchValue
                     if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f177f7 end
                 end
-                scratchValue2 = 0
+                scratchValue = 0
             end
             goto FLOW_past_lab_00f177f7
             ::LAB_00f177f7::
-            scratchValue2 = 1
+            scratchValue = 1
             ::FLOW_past_lab_00f177f7::
-            if scratchValue & 4 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffb
-                scratchValue12 = scratchValue
-            end
-            if scratchValue & 2 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffd
-                scratchValue12 = scratchValue
-            end
-            if scratchValue & 1 ~= 0 then
-                scratchValue12 = scratchValue & 0xfffffffe
-            end
-            if scratchValue2 ~= 0 then
+            if scratchValue ~= 0 then
                 resources:PrepareResource(meControl)
                 while not resources:TryAcquire(meControl, me, 4) do
                     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end

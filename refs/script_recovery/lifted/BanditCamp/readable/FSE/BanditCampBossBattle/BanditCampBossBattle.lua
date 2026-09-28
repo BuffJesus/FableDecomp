@@ -252,8 +252,8 @@ end
 function ProcessHostageCutscenes(quest)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult2, amount, predicateResult3, scratchValue4, scratchValue8
-    local sequence, resource, scratchValue9, actorMap, movie, defensiveGuardBandit
+    local predicateResult2, amount, predicateResult3, scratchValue, scratchValue7, sequence
+    local resource, scratchValue8, actorMap, movie, defensiveGuardBandit
     while not quest:IsRegionLoaded("BanditCampCentre") do
         if not quest:NewScriptFrame() then return end
     end
@@ -270,21 +270,15 @@ function ProcessHostageCutscenes(quest)
             -- TODO(native): xStack_78 = xStack_78 | 1;
             local predicateResult = not (campHostage2 ~= nil and not campHostage2:IsNull()) or not (campHostage2 ~= nil and campHostage2:MsgIsKilledBy(""))
             if not predicateResult then goto LAB_00d10034 end
-            scratchValue = 0 | 3
             sequence = (campHostage ~= nil and not campHostage:IsNull()) and (campHostage ~= nil and campHostage:MsgIsKilledBy(""))
             if sequence then goto LAB_00d10034 end
-            scratchValue4 = 0
+            scratchValue = 0
             goto FLOW_past_lab_00d10034
             ::LAB_00d10034::
-            scratchValue4 = 1
+            scratchValue = 1
             ::FLOW_past_lab_00d10034::
-            if scratchValue & 2 ~= 0 then
-                scratchValue = scratchValue & 0xfffffffd
-            end
-            if scratchValue & 1 ~= 0 then
                 -- TODO(native): xStack_78 = CVar8 & 0xfffffffe;
-            end
-            if scratchValue4 ~= 0 then
+            if scratchValue ~= 0 then
                 if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("HostageKilled", true)
             end
@@ -372,9 +366,9 @@ function ProcessHostageCutscenes(quest)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
         defensiveGuardBandit = quest:GetAllThingsWithScriptName("DefensiveGuardBandit")
-        scratchValue8 = defensiveGuardBandit - defensiveGuardBandit >> 31
-        scratchValue9 = 0
-        if #defensiveGuardBandit + scratchValue8 ~= scratchValue8 then break end
+        scratchValue7 = defensiveGuardBandit - defensiveGuardBandit >> 31
+        scratchValue8 = 0
+        if #defensiveGuardBandit + scratchValue7 ~= scratchValue7 then break end
         goto LAB_00d108eb
         quest:NewScriptFrame()
         predicateResult3 = quest:IsActiveThreadTerminating()
@@ -383,8 +377,8 @@ function ProcessHostageCutscenes(quest)
     while true do
         -- TODO(native): xStack_84 = (CCharString)(xStack_5c + iVar10);
         quest:GiveThingBestEnemyTarget(hero, nil --[[missing]])
-        scratchValue9 = scratchValue9 + 1
-        if #defensiveGuardBandit <= scratchValue9 then break end
+        scratchValue8 = scratchValue8 + 1
+        if #defensiveGuardBandit <= scratchValue8 then break end
         if quest:IsActiveThreadTerminating() then goto LAB_00d108f6 end
     end
     ::LAB_00d108eb::

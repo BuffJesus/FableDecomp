@@ -11,8 +11,7 @@ function Main(quest, me)
     local predicateResult, scratchValue, scratchValue2, scratchValue3, center, scratchValue4
     local isPerformingScriptTask, scratchValue5, scratchValue6, scratchValue7, p0_00, getHero, line
     local speechResult, speechResult2, speechResult3, speechResult4, speechResult5, speechResult6
-    local this_00, scratchValue9, movie, movie2, movie3, movie4, scratchValue10
-    scratchValue9 = 0
+    local this_00, movie, movie2, movie3, movie4, scratchValue8
     quest:NewScriptFrame(me)
     scratchValue2 = quest:IsActiveThreadTerminating()
     if scratchValue2 then
@@ -33,16 +32,12 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             return
         end
-        local scratchValue8 = scratchValue9
-        scratchValue9 = scratchValue9 | 1
         scratchValue2 = me:MsgIsHitByHero()
         if scratchValue2 then
             goto LAB_00ed19df
         else
-            scratchValue9 = scratchValue8 | 3
             scratchValue2 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if scratchValue2 then
-                scratchValue9 = scratchValue8 | 7
                 scratchValue2 = me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)
                 if not scratchValue2 then goto LAB_00ed19df end
             end
@@ -52,15 +47,6 @@ function Main(quest, me)
         ::LAB_00ed19df::
         scratchValue2 = true
         ::FLOW_past_lab_00ed19df::
-        if scratchValue9 & 4 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffffb
-        end
-        if scratchValue9 & 2 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffffd
-        end
-        if scratchValue9 & 1 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffffe
-        end
         if scratchValue2 then
             scratchValue2 = quest:IsActiveThreadTerminating()
             if scratchValue2 then resources:ReleaseResource(resource); return end
@@ -80,8 +66,8 @@ function Main(quest, me)
                 if scratchValue2 then resources:ReleaseResource(resource); return end
                 local movie5 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                local scratchValue12 = resources:ScriptThing(resource)
-                getHero = scratchValue12
+                local scratchValue10 = resources:ScriptThing(resource)
+                getHero = scratchValue10
                 local fret_00 = quest:GetHealth(getHero)
                 scratchValue4 = 0.0
                 if scratchValue4 < fret_00 then
@@ -151,8 +137,8 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             do return end
             ::FLOW_past_lab_00ed276d::
-            local scratchValue15 = resources:ScriptThing(resource)
-            getHero = scratchValue15
+            local scratchValue13 = resources:ScriptThing(resource)
+            getHero = scratchValue13
             local fret_01 = quest:GetHealth(getHero)
             scratchValue4 = 0.0
             if scratchValue4 < fret_01 then
@@ -245,8 +231,8 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                local scratchValue16 = resources:ScriptThing(resource)
-                getHero = scratchValue16
+                local scratchValue14 = resources:ScriptThing(resource)
+                getHero = scratchValue14
                 local fret_02 = quest:GetHealth(getHero)
                 scratchValue4 = 0.0
                 if scratchValue4 < fret_02 then
@@ -293,8 +279,8 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                local scratchValue13 = resources:ScriptThing(resource)
-                getHero = scratchValue13
+                local scratchValue11 = resources:ScriptThing(resource)
+                getHero = scratchValue11
                 local fret_03 = quest:GetHealth(getHero)
                 scratchValue4 = 0.0
                 if scratchValue4 < fret_03 then
@@ -341,8 +327,8 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                local scratchValue11 = resources:ScriptThing(resource)
-                getHero = scratchValue11
+                local scratchValue9 = resources:ScriptThing(resource)
+                getHero = scratchValue9
                 local fret_04 = quest:GetHealth(getHero)
                 scratchValue4 = 0.0
                 if scratchValue4 < fret_04 then
@@ -373,21 +359,21 @@ function Main(quest, me)
         end
         scratchValue = not quest:GetStateBool("DoorManHasBribe")
         if scratchValue then
-            scratchValue10 = ""
+            scratchValue8 = ""
             scratchValue2 = me:MsgIsPresentedWithItem()
-            if scratchValue2 then scratchValue10 = _G.g_PresentedItemName end
+            if scratchValue2 then scratchValue8 = _G.g_PresentedItemName end
             scratchValue = scratchValue2
         end
         if scratchValue then
             scratchValue2 = quest:IsActiveThreadTerminating()
             if scratchValue2 then resources:ReleaseResource(resource); return end
-            if scratchValue10 == nil then
+            if scratchValue8 == nil then
                 scratchValue2 = false
                 if scratchValue2 then
                     goto LAB_00ed26a8
                 end
             else
-                isPerformingScriptTask = scratchValue10 == "OBJECT_GEMSTONE_RUBY" and 0 or 1
+                isPerformingScriptTask = scratchValue8 == "OBJECT_GEMSTONE_RUBY" and 0 or 1
                 if isPerformingScriptTask == 0 then goto LAB_00ed26a8 end
             end
             goto FLOW_past_lab_00ed26a8
@@ -415,8 +401,8 @@ function Main(quest, me)
             end
             scratchValue2 = quest:IsActiveThreadTerminating()
             if not scratchValue2 then
-                local scratchValue14 = resources:ScriptThing(resource)
-                getHero = scratchValue14
+                local scratchValue12 = resources:ScriptThing(resource)
+                getHero = scratchValue12
                 local fret_05 = quest:GetHealth(getHero)
                 scratchValue4 = 0.0
                 if scratchValue4 < fret_05 then

@@ -834,7 +834,7 @@
             "PauseAllNonScriptedEntities",
             "DeregisterTimer"
           ],
-          "lines": 703,
+          "lines": 668,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

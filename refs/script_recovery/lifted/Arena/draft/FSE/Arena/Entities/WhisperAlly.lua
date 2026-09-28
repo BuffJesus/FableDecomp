@@ -18,7 +18,6 @@ function Main(quest, me)
         quest:DeregisterTimer(iVar5)
         resources:ReleaseResource(xStack_104)
     end
-    u_stk_f4 = 0
     xStack_104 = resources:NewResource()
     cVar4 = quest:GetStateBool("WhisperNeededForCutscene")
     while cVar4 do
@@ -222,16 +221,12 @@ function Main(quest, me)
                 -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))();
                 resources:DestroyMovie(xStack_54)
             end
-            uVar14 = u_stk_f4
-            u_stk_f4 = u_stk_f4 | 1
             bVar3 = me:MsgIsHitByHero()
             if bVar3 then
                 goto LAB_00f2337d
             else
-                uVar13 = uVar14 | 3
                 bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar3 then
-                    uVar13 = uVar14 | 7
                     bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f2337d end
                 end
@@ -241,15 +236,6 @@ function Main(quest, me)
             ::LAB_00f2337d::
             hb_stk_fffffeec = true
             ::FLOW_past_lab_00f2337d::
-            if (uVar13 & 4) ~= 0 then
-                uVar13 = uVar13 & 0xfffffffb
-            end
-            if (uVar13 & 2) ~= 0 then
-                uVar13 = uVar13 & 0xfffffffd
-            end
-            if (uVar13 & 1) ~= 0 then
-                u_stk_f4 = uVar13 & 0xfffffffe
-            end
             if hb_stk_fffffeec then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -293,16 +279,12 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_104)
                 return
             end
-            uVar14 = u_stk_f4
-            u_stk_f4 = u_stk_f4 | 8
             bVar3 = me:MsgIsHitByHero()
             if bVar3 then
                 goto LAB_00f235a1
             else
-                uVar13 = uVar14 | 0x18
                 bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar3 then
-                    uVar13 = uVar14 | 0x38
                     bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f235a1 end
                 end
@@ -312,15 +294,6 @@ function Main(quest, me)
             ::LAB_00f235a1::
             hb_stk_fffffeec = true
             ::FLOW_past_lab_00f235a1::
-            if (uVar13 & 0x20) ~= 0 then
-                uVar13 = uVar13 & 0xffffffdf
-            end
-            if (uVar13 & 0x10) ~= 0 then
-                uVar13 = uVar13 & 0xffffffef
-            end
-            if (uVar13 & 8) ~= 0 then
-                uVar13 = uVar13 & 0xfffffff7
-            end
             if hb_stk_fffffeec then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -404,12 +377,8 @@ function Main(quest, me)
                 quest:SetTimer(iVar5, 10)
                 goto LAB_00f241aa
                 ::FLOW_past_lab_00f24190::
-                uVar14 = uVar13 | 0x400
-                u_stk_f4 = uVar14
                 bVar3 = me:MsgIsHitBy("")
                 if bVar3 then
-                    uVar14 = uVar13 | 0xc00
-                    u_stk_f4 = uVar14
                     bVar3 = me:MsgIsHitByHero()
                     hb_stk_fffffeec = true
                     if bVar3 then goto LAB_00f2405a end
@@ -420,13 +389,6 @@ function Main(quest, me)
                 ::LAB_00f2405a::
                 hb_stk_fffffeec = false
                 ::FLOW_past_lab_00f2405a::
-                if (uVar14 & 0x800) ~= 0 then
-                    uVar14 = uVar14 & 0xfffff7ff
-                    u_stk_f4 = uVar14
-                end
-                if (uVar14 & 0x400) ~= 0 then
-                    u_stk_f4 = uVar14 & 0xfffffbff
-                end
                 if not hb_stk_fffffeec then
                     -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                     bVar3 = me:MsgHitEnemyWithMeleeWeapon()
@@ -538,12 +500,8 @@ function Main(quest, me)
                     quest:SetTimer(iVar5, 10)
                     goto LAB_00f241aa
                     ::FLOW_past_lab_00f23d7f::
-                    uVar14 = uVar13 | 0x100
-                    u_stk_f4 = uVar14
                     bVar3 = me:MsgIsHitBy("")
                     if bVar3 then
-                        uVar14 = uVar13 | 0x300
-                        u_stk_f4 = uVar14
                         bVar3 = me:MsgIsHitByHero()
                         hb_stk_fffffeec = true
                         if bVar3 then goto LAB_00f23cba end
@@ -554,13 +512,6 @@ function Main(quest, me)
                     ::LAB_00f23cba::
                     hb_stk_fffffeec = false
                     ::FLOW_past_lab_00f23cba::
-                    if (uVar14 & 0x200) ~= 0 then
-                        uVar14 = uVar14 & 0xfffffdff
-                        u_stk_f4 = uVar14
-                    end
-                    if (uVar14 & 0x100) ~= 0 then
-                        u_stk_f4 = uVar14 & 0xfffffeff
-                    end
                     if not hb_stk_fffffeec then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
@@ -629,12 +580,8 @@ function Main(quest, me)
                 if bVar3 then goto LAB_00f243a7 end
                 fret_0 = quest:GetHealth(r1)
                 if 10.0 <= fret_0 then
-                    uVar14 = uVar13 | 0x40
-                    u_stk_f4 = uVar14
                     bVar3 = me:MsgIsHitBy("")
                     if bVar3 then
-                        uVar14 = uVar13 | 0xc0
-                        u_stk_f4 = uVar14
                         bVar3 = me:MsgIsHitByHero()
                         hb_stk_fffffeec = true
                         if bVar3 then goto LAB_00f2389f end
@@ -645,13 +592,6 @@ function Main(quest, me)
                     ::LAB_00f2389f::
                     hb_stk_fffffeec = false
                     ::FLOW_past_lab_00f2389f::
-                    if ((uVar14 & 0x80) ~= 0) then
-                        uVar14 = uVar14 & 0xffffff7f
-                        u_stk_f4 = uVar14
-                    end
-                    if (uVar14 & 0x40) ~= 0 then
-                        u_stk_f4 = uVar14 & 0xffffffbf
-                    end
                     if not hb_stk_fffffeec then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
@@ -998,16 +938,12 @@ function Main(quest, me)
                     until not (false)
                     quest:SetTimer(xStack_108, 10)
                     ::LAB_00f25062::
-                    uVar14 = u_stk_f4
-                    u_stk_f4 = u_stk_f4 | 0x1000
                     bVar3 = me:MsgIsHitByHero()
                     if bVar3 then
                         goto LAB_00f250f0
                     else
-                        uVar13 = uVar14 | 0x3000
                         bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar3 then
-                            uVar13 = uVar14 | 0x7000
                             bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar3 then goto LAB_00f250f0 end
                         end
@@ -1017,15 +953,6 @@ function Main(quest, me)
                     ::LAB_00f250f0::
                     bVar3 = true
                     ::FLOW_past_lab_00f250f0::
-                    if (uVar13 & 0x4000) ~= 0 then
-                        uVar13 = uVar13 & 0xffffbfff
-                    end
-                    if (uVar13 & 0x2000) ~= 0 then
-                        uVar13 = uVar13 & 0xffffdfff
-                    end
-                    if (uVar13 & 0x1000) ~= 0 then
-                        u_stk_f4 = uVar13 & 0xffffefff
-                    end
                     if bVar3 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
