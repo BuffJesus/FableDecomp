@@ -51,3 +51,12 @@ def test_counter_split_from_a_string_register_is_assigned():
     from tools.script_recovery import test_lift_native_lua as fx
     body = '\n'.join(fx.make().lift('Main', '{\n  CCharString ctr_CVar19;\n  ctr_CVar19 = 0;\n  ctr_CVar19 = ctr_CVar19 + 0x64;\n}'))
     assert 'ctr_CVar19 = ctr_CVar19 + 0x64' in body and 'TODO' not in body
+
+
+def test_dword_pointer_components_with_an_interleaved_store():
+    # V_TourGuide TourGuideFollower Main: the waypoint position read as *P, P[1], P[2] around `iVar4 = 0x40400000;`
+    text = ('{\n  undefined4 *puVar7;\n  uStack_28 = *puVar7;\n  uStack_24 = puVar7[1];\n  iVar4 = 0x40400000;\n'
+            '  uStack_20 = puVar7[2];\n  iVar4 = Over(pvVar8,&uStack_28,iVar4);\n}\n')
+    out = fold_vector_component_copies(text)
+    assert 'vec_28 = ENGINE_VectorCopy(puVar7);\n  iVar4 = 0x40400000;\n' in out
+    assert 'iVar4 = Over(pvVar8,vec_28,iVar4);' in out

@@ -34,18 +34,29 @@ def fold_split_dword_stores(text: str) -> str:
 
 
 def fold_vector_component_copies(text: str) -> str:
+    # (also a dword pointer read as `*P`, `P[1]`, `P[2]` -- V_TourGuide TourGuideFollower Main keeps the waypoint
+    # position that way, with the compiler's unrelated `iVar4 = 0x40400000;` scheduled between two components, before
+    # `IsDistanceFromThingToPositionOver(thing, &uStack_28, 3.0)`)
     vectors = set(re.findall(r'^\s*C3DVector(?:_bv)? \*(\w+);', text, re.M))
-    for p in vectors:
+    dwords = set(re.findall(r'^\s*(?:undefined4|float) \*(\w+);', text, re.M))
+    between = r'(?P<mid%d>[ \t]*\w+ = (?:0x[0-9a-f]+|-?\d+(?:\.\d+)?);[ \t]*\r?\n)?'
+    for p in vectors | dwords:
         pe = re.escape(p)
-        triple = re.compile(r'^(?P<ind>[ \t]*)(?P<x>\w+) = ' + _COMPONENT + pe + r';[ \t]*\r?\n'
-                            r'[ \t]*(?P<y>\w+) = ' + _COMPONENT + r'&' + pe + r'->field_0x4;[ \t]*\r?\n'
-                            r'[ \t]*(?P<z>\w+) = ' + _COMPONENT + r'&' + pe + r'->field_0x8;[ \t]*\r?\n', re.M)
+        if p in vectors:
+            forms = (_COMPONENT + pe, _COMPONENT + r'&' + pe + r'->field_0x4', _COMPONENT + r'&' + pe + r'->field_0x8')
+        else:
+            forms = (r'\*' + pe, pe + r'\[1\]', pe + r'\[2\]')
+        triple = re.compile(r'^(?P<ind>[ \t]*)(?P<x>\w+) = ' + forms[0] + r';[ \t]*\r?\n' + between % 1 +
+                            r'[ \t]*(?P<y>\w+) = ' + forms[1] + r';[ \t]*\r?\n' + between % 2 +
+                            r'[ \t]*(?P<z>\w+) = ' + forms[2] + r';[ \t]*\r?\n', re.M)
         pos = 0
         while (m := triple.search(text, pos)):
             slots = [m.group('x'), m.group('y'), m.group('z')]
             # stack slots only: register temporaries (Roth's `uVar14 = pCVar6->x` feeding `center._0_4_`) are the
             # member-wise copy passes' business
-            if len(set(slots)) != 3 or not all(re.search(r'(?:Stack_|local_)[0-9a-f]+$', s) for s in slots):
+            mids = [m.group('mid1'), m.group('mid2')]
+            if len(set(slots)) != 3 or not all(re.search(r'(?:Stack_|local_)[0-9a-f]+$', s) for s in slots) \
+                    or any(mid and re.search(r'\b(?:' + '|'.join(map(re.escape, slots + [p])) + r')\b', mid) for mid in mids):
                 pos = m.end()
                 continue
             name = 'vec_' + re.sub(r'^\w*?(?:Stack_|local_)', '', slots[0])
@@ -67,6 +78,6 @@ def fold_vector_component_copies(text: str) -> str:
                 cut = tail.rfind('\n', 0, cut) + 1 if nxt else cut
                 region = re.sub(r'(?:\(float\))?(?<![\w.&])' + s + r'\b(?![.\[])', f'{name}.{axis}', tail[:cut])
                 tail = region + tail[cut:]
-            text = head + f'{m.group("ind")}{name} = ENGINE_VectorCopy({p});\n' + tail
+            text = head + f'{m.group("ind")}{name} = ENGINE_VectorCopy({p});\n' + ''.join(mid for mid in mids if mid) + tail
             pos = len(head) + 1
     return text

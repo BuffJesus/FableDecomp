@@ -15,9 +15,9 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_TourGuide | TourGuideGuide | Init | 0x00ee4c60 | True | 0 |
 | V_TourGuide | TourGuideGuide | OnPersist | 0x00cdebc0 | True | 0 |
 | V_TourGuide | TourGuideGuide | OnPredicateFail | 0x00ee4cc0 | True | 0 |
-| V_TourGuide | TourGuideFollower | Main | 0x00ee4dd0 | True | 8 |
+| V_TourGuide | TourGuideFollower | Main | 0x00ee4dd0 | True | 5 |
 | V_TourGuide | TourGuideFollower | Init | 0x00ee4da0 | True | 0 |
 | V_TourGuide | TourGuideFollower | OnPersist | 0x00cdebc0 | True | 0 |
 | V_TourGuide | TourGuideFollower | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 34}`
+Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 31}`

@@ -755,10 +755,7 @@
             "label LAB_00ee5237",
             "unnamed field 0x14",
             "unnamed field 0x14",
-            "FollowThing: missing spTargetThing (2 args for 3 params)",
-            "unlifted: xStack_28 = puVar7.x;",
-            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands",
-            "IsDistanceFromThingToPositionOver: unresolved actor/vector/distance operands"
+            "FollowThing: missing spTargetThing (2 args for 3 params)"
           ],
           "calls": [
             "RegisterTimer",
@@ -832,7 +829,9 @@
             "IsActiveThreadTerminating",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_VectorCopy",
             "RESOURCE_ScriptThing",
+            "IsDistanceFromPositionOver",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "MoveToPosition",
@@ -842,6 +841,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "RESOURCE_ScriptThing",
+            "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
             "FadeOutAndKillEntity",
             "IsActiveThreadTerminating",
@@ -853,7 +853,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 228,
+          "lines": 226,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -961,13 +961,6 @@
         "TourGuideGuide": "V_TourGuide/Entities/TourGuideGuide",
         "TourGuideFollower": "V_TourGuide/Entities/TourGuideFollower"
       },
-      "declaredFreeLocals": {
-        "FSE/V_TourGuide/Entities/TourGuideFollower.lua": {
-          "Main": [
-            "xStack_28"
-          ]
-        }
-      },
       "sharedHelpers": {
         "path": "FSE/V_TourGuide/native_quest_helpers.lua",
         "functions": [
@@ -995,7 +988,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 34
+        "todo": 31
       }
     }
   ],
@@ -1006,6 +999,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 4,
-    "todo": 34
+    "todo": 31
   }
 }

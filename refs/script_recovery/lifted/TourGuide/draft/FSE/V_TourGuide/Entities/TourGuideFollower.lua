@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar2, cVar3, iVar4, iVar5, i_stk_50, pCVar6, pOther, pThing, puVar7, pvVar8, r1, xStack_10, xStack_28, xStack_40, xStack_54
+    local __native_condition_1, __native_condition_2, bVar2, cVar3, iVar4, iVar5, i_stk_50, pCVar6, pOther, pThing, puVar7, pvVar8, r1, vec_28, xStack_10, xStack_40, xStack_54
     local alive = true
     iVar4 = quest:RegisterTimer()
     i_stk_50 = iVar4
@@ -179,19 +179,18 @@ function Main(quest, me)
                             else
                                 puVar7 = xStack_40:GetPos()
                             end
-                            -- TODO(native): xStack_28 = puVar7.x;
+                            vec_28 = {x = puVar7.x, y = puVar7.y, z = puVar7.z}
                             iVar4 = 3.0
                             pCVar6 = resources:ScriptThing(xStack_10)
                             pvVar8 = pCVar6
-                            -- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);
-                            iVar4 = nil --[[unresolved native result]]
+                            iVar4 = (pvVar8 ~= nil and pvVar8:IsDistanceFromPositionOver(vec_28, iVar4))
                             cVar3 = iVar4
                             while cVar3 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then goto LAB_00ee5535 end
-                                me:MoveToPosition(xStack_28, 1.0, 0, false, true)
+                                me:MoveToPosition(vec_28, 1.0, 0, false, true)
                                 iVar4 = me:IsPerformingScriptTask()
                                 cVar3 = iVar4
                                 while cVar3 do
@@ -208,8 +207,7 @@ function Main(quest, me)
                                 iVar4 = 3.0
                                 pCVar6 = resources:ScriptThing(xStack_10)
                                 pvVar8 = pCVar6
-                                -- TODO(native): iVar4 = IsDistanceFromThingToPositionOver(pvVar8,&xStack_28,iVar4);
-                                iVar4 = nil --[[unresolved native result]]
+                                iVar4 = (pvVar8 ~= nil and pvVar8:IsDistanceFromPositionOver(vec_28, iVar4))
                                 cVar3 = iVar4
                             end
                             alive = not quest:IsActiveThreadTerminating()

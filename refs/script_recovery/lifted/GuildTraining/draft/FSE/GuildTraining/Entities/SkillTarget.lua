@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_11c, f_stk_120, f_stk_124, f_stk_134, f_stk_138, f_stk_13c, f_stk_14, f_stk_158, f_stk_15c, f_stk_160, f_stk_164, f_stk_20, f_stk_2c, f_stk_38, f_stk_44, f_stk_48, f_stk_4c, f_stk_50, f_stk_54, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_98, f_stk_9c, f_stk_a0, f_stk_a8, f_stk_ac, f_stk_b4, f_stk_b8, f_stk_bc, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, xStack_18c, xStack_190, x_stk_188
+    local bVar3, bVar4, cVar2, c_stk_165, c_stk_16d, fStack_b0, fVar11, fVar12, f_stk_14, f_stk_164, f_stk_20, f_stk_2c, f_stk_38, f_stk_44, f_stk_48, f_stk_4c, f_stk_50, f_stk_54, f_stk_58, f_stk_5c, f_stk_60, f_stk_64, f_stk_6c, f_stk_70, f_stk_78, f_stk_7c, f_stk_84, f_stk_88, f_stk_98, f_stk_9c, f_stk_a0, f_stk_a8, f_stk_ac, iVar5, iVar8, i_stk_16c, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, pCVar6, pPos, pfVar7, piStack_190, r1, r2, r3, r4, r5, r6, r7, r8, thing1, uVar9, vec_124, vec_13c, vec_160, vec_bc, xStack_18c, xStack_190, x_stk_188
     local alive = true
     local function __cleanup_LAB_00d42ef8()
         pCVar6 = r6
@@ -90,44 +90,36 @@ function Main(quest, me)
                         return
                     end
                     pfVar7 = me:GetPos()
-                    f_stk_bc = pfVar7.x
-                    f_stk_b8 = pfVar7.y
-                    f_stk_b4 = pfVar7.z
+                    vec_bc = {x = pfVar7.x, y = pfVar7.y, z = pfVar7.z}
                     if not (r2 ~= nil and not r2:IsNull()) then
                         pfVar7 = {x = 0, y = 0, z = 0}
                     else
                         pfVar7 = r2:GetPos()
                     end
-                    f_stk_160 = pfVar7.x
-                    f_stk_15c = pfVar7.y
-                    f_stk_158 = pfVar7.z
+                    vec_160 = {x = pfVar7.x, y = pfVar7.y, z = pfVar7.z}
                     if not (r1 ~= nil and not r1:IsNull()) then
                         pfVar7 = {x = 0, y = 0, z = 0}
                     else
                         pfVar7 = r1:GetPos()
                     end
-                    f_stk_124 = pfVar7.x
-                    f_stk_120 = pfVar7.y
-                    f_stk_11c = pfVar7.z
+                    vec_124 = {x = pfVar7.x, y = pfVar7.y, z = pfVar7.z}
                     if not (piStack_190 ~= nil and not piStack_190:IsNull()) then
                         pfVar7 = {x = 0, y = 0, z = 0}
                     else
                         pfVar7 = piStack_190:GetPos()
                     end
                     f_stk_84 = __native_entity_state:GetStateInt("Speed")
-                    f_stk_13c = pfVar7.x
-                    f_stk_138 = pfVar7.y
-                    f_stk_134 = pfVar7.z
-                    f_stk_ac = (f_stk_124 - f_stk_160) / f_stk_84
+                    vec_13c = {x = pfVar7.x, y = pfVar7.y, z = pfVar7.z}
+                    f_stk_ac = (vec_124.x - vec_160.x) / f_stk_84
                     c_stk_16d = 0
                     quest:SetMasterGameState("SkillDummyReset", false)
-                    f_stk_a8 = (f_stk_120 - f_stk_15c) / f_stk_84
-                    f_stk_70 = (f_stk_160 - f_stk_124) / f_stk_84
-                    f_stk_6c = (f_stk_15c - f_stk_120) / f_stk_84
-                    f_stk_7c = (f_stk_13c - f_stk_bc) / f_stk_84
-                    f_stk_78 = (f_stk_138 - f_stk_b8) / f_stk_84
-                    f_stk_88 = (f_stk_160 - f_stk_13c) / f_stk_84
-                    f_stk_84 = (f_stk_15c - f_stk_138) / f_stk_84
+                    f_stk_a8 = (vec_124.y - vec_160.y) / f_stk_84
+                    f_stk_70 = (vec_160.x - vec_124.x) / f_stk_84
+                    f_stk_6c = (vec_160.y - vec_124.y) / f_stk_84
+                    f_stk_7c = (vec_13c.x - vec_bc.x) / f_stk_84
+                    f_stk_78 = (vec_13c.y - vec_bc.y) / f_stk_84
+                    f_stk_88 = (vec_160.x - vec_13c.x) / f_stk_84
+                    f_stk_84 = (vec_160.y - vec_13c.y) / f_stk_84
                     repeat
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
@@ -135,10 +127,10 @@ function Main(quest, me)
                         if bVar3 then
                             return
                         end
-                        f_stk_5c = f_stk_b4
+                        f_stk_5c = vec_bc.z
                         f_stk_2c = f_stk_78 * i_stk_16c
-                        f_stk_64 = f_stk_7c * i_stk_16c + f_stk_bc
-                        f_stk_60 = f_stk_2c + f_stk_b8
+                        f_stk_64 = f_stk_7c * i_stk_16c + vec_bc.x
+                        f_stk_60 = f_stk_2c + vec_bc.y
                         quest:EntityTeleportToPosition(me, {x = f_stk_64, y = f_stk_60, z = f_stk_5c}, fVar12, false, false)
                         iVar5 = iVar5 + 1
                         i_stk_16c = iVar5
@@ -224,10 +216,10 @@ function Main(quest, me)
                             if bVar3 then
                                 return
                             end
-                            f_stk_44 = f_stk_134
+                            f_stk_44 = vec_13c.z
                             f_stk_14 = f_stk_84 * i_stk_16c
-                            f_stk_4c = f_stk_88 * i_stk_16c + f_stk_13c
-                            f_stk_48 = f_stk_14 + f_stk_138
+                            f_stk_4c = f_stk_88 * i_stk_16c + vec_13c.x
+                            f_stk_48 = f_stk_14 + vec_13c.y
                             quest:EntityTeleportToPosition(me, {x = f_stk_4c, y = f_stk_48, z = f_stk_44}, fVar12, false, false)
                             iVar5 = iVar5 + 1
                             i_stk_16c = iVar5
@@ -289,9 +281,9 @@ function Main(quest, me)
                                 return
                             end
                             f_stk_20 = f_stk_a8 * i_stk_16c
-                            f_stk_98 = f_stk_158
-                            f_stk_a0 = f_stk_ac * i_stk_16c + f_stk_160
-                            f_stk_9c = f_stk_20 + f_stk_15c
+                            f_stk_98 = vec_160.z
+                            f_stk_a0 = f_stk_ac * i_stk_16c + vec_160.x
+                            f_stk_9c = f_stk_20 + vec_160.y
                             pPos = {x = f_stk_a0, y = f_stk_9c, z = f_stk_98}
                         else
                             alive = not quest:IsActiveThreadTerminating()
@@ -301,9 +293,9 @@ function Main(quest, me)
                                 return
                             end
                             f_stk_38 = f_stk_6c * i_stk_16c
-                            f_stk_50 = f_stk_11c
-                            f_stk_58 = f_stk_70 * i_stk_16c + f_stk_124
-                            f_stk_54 = f_stk_38 + f_stk_120
+                            f_stk_50 = vec_124.z
+                            f_stk_58 = f_stk_70 * i_stk_16c + vec_124.x
+                            f_stk_54 = f_stk_38 + vec_124.y
                             pPos = {x = f_stk_58, y = f_stk_54, z = f_stk_50}
                         end
                         quest:EntityTeleportToPosition(me, pPos, f_stk_164, false, false)

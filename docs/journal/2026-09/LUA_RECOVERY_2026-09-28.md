@@ -201,3 +201,13 @@ test and IsTalkedToByHero now run in LookoutPointBeggar, BordelloClient, Bordell
 BanditCamp's Assassin1 (BanditCamp is pinned in v35, so the bundle is unchanged). A/B: only those six files. Six nil
 conditions remain (TraderEscort MakeTraderComment, BS_Teacher `uStack_14` IsAlive, TourGuideFollower, STS_BriarRose,
 WomanToAttract).
+
+### Vector copies from dword pointers (after `7169e81`)
+
+`fold_vector_component_copies` also takes a `undefined4 *` / `float *` source read as `*P`, `P[1]`, `P[2]`, with at most one
+unrelated literal store between components (kept, after the copy). V_TourGuide TourGuideFollower's waypoint distance
+test (`IsDistanceFromPositionOver(vec_28, 3.0)`, was unresolved) and its MoveToPosition (was given only the x
+component) now use the whole position. GuildTraining SkillTarget's four positions are respelled as vectors with
+identical values (draft only; its readable is hand-reviewed). The A/B snapshot set now includes the helper modules
+(`native_vector_component_copies`, `native_receiver_reaching`, `native_local_helper_operands`,
+`native_literal_string_vectors`), so later edits to them are compared too.
