@@ -156,3 +156,12 @@ Open, analysed: **SickChild helper_ECE460** builds `CCharString("NULL")` (0x0123
 "NULL" (the four-operand `_stricmp` is the inlined compare). Ghidra also hands the operands of the GSI +0x20 call
 (StartScriptingEntity: `&resource, 4` and GetHero's result) to GetHero. The resource member's meaning needs the
 scripted-thing resource layout before this can be lifted faithfully.
+
+## Candidate v35 (staged, not installed or run)
+
+`local-candidate-v35` = v34 + 23 roster Lua files refreshed from the readables at `26e5fa9` (same rule as v33/v34:
+in-game-pinned packages unchanged) + `FableScriptExtender.dll` from the round-12 sidecar candidate at `e83c39f`
+(v34's `a7bb755` + position-under). `work/codex_lua_20260928/stage_v35.py`, validation
+`package_validation_v35.json`: 210 Lua parse, 216 manifest hashes match; mock smoke of the ten changed packages vs v34:
+7 fixed, the one "new" entry (SetWanderPointAndDistance) is the package-dir harness lacking recorded parameter types.
+Branch pushed at `26e5fa9`.

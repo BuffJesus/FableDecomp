@@ -6,7 +6,8 @@ register reaching definitions), SickChild helper_ECE460 (`$ARG1` from a resource
 needs the resource layout). Roth fixed (byte flag printed under two dwords). Today: quest helpers reclassified from entity code, literal TextKeys, vector slots,
 IsDistanceFromPositionUnder (sidecar patch `novi-zzzzzzzzzzzzzzzzzzz-position-under`, candidate builds), dead
 cleanup-flag bookkeeping, `ctr_` counters (ChickenMaster score), AskForBook's lost parameter + callers' operands,
-member-resource Speak/GetScriptThing. v34 predates all of this: stage v35 before playtesting. The install's `text.big`
+member-resource Speak/GetScriptThing. **Candidate v35 staged** (`local-candidate-v35` = v34 + 23 roster Lua files + sidecar `e83c39f` with
+IsDistanceFromPositionUnder; 210 Lua parse, 216 hashes match; NOT installed or run in-game). The install's `text.big`
 changed twice today (not this session): seven NOVI text tests fail at every commit until it is restored.
 Scratch + A/B harness: `work/codex_lua_20260928/`.
 
