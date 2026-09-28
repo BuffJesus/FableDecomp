@@ -12,9 +12,9 @@ local clientID, brainState, nextLine, sexChance
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, timerId, getDefName, getPos, scratchValue, getPos2, stack0xfffffee0
-    local resource2, movie, scratchValue39, movie2, scratchValue41, movie3, line, scratchValue43
-    local line2
+    local questionAnswer, timerId, getDefName, scriptThing, scratchValue, scriptThing2
+    local stack0xfffffee0, resource2, movie, scratchValue39, movie2, scratchValue41, movie3, line
+    local scratchValue43, line2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -29,12 +29,12 @@ function Main(quest, me)
             if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             if not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-                if not (resource ~= nil and not resource:IsNull()) then
-                    getPos = {x = 0, y = 0, z = 0}
+                if not (resource ~= nil and not resources:ScriptThing(resource):IsNull()) then
+                    scriptThing = {x = 0, y = 0, z = 0}
                 else
-                    getPos = resource:GetPos()
+                    scriptThing = resources:ScriptThing(resource):GetPos()
                 end
-                me:MoveToPosition(getPos, 1.0, ENTITY_MOVE_WALK, false, true)
+                me:MoveToPosition(scriptThing, 1.0, ENTITY_MOVE_WALK, false, true)
             end
             if quest:IsDistanceBetweenThingsUnder(0, me, 5.0) then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -338,12 +338,12 @@ function Main(quest, me)
             if not isActiveThreadTerminating then
                 if not me:IsPerformingScriptTask() then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-                    if not (resource ~= nil and not resource:IsNull()) then
-                        getPos2 = {x = 0, y = 0, z = 0}
+                    if not (resource ~= nil and not resources:ScriptThing(resource):IsNull()) then
+                        scriptThing2 = {x = 0, y = 0, z = 0}
                     else
-                        getPos2 = resource:GetPos()
+                        scriptThing2 = resources:ScriptThing(resource):GetPos()
                     end
-                    me:MoveToPosition(getPos2, 1.0, ENTITY_MOVE_WALK, false, true)
+                    me:MoveToPosition(scriptThing2, 1.0, ENTITY_MOVE_WALK, false, true)
                 end
                 if quest:IsDistanceBetweenThingsUnder(me, 0, 5.0) then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end

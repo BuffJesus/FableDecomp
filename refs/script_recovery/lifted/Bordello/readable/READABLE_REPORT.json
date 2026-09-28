@@ -1160,11 +1160,11 @@
        ]
       },
       "puVar8_1": {
-       "name": "getPos",
+       "name": "scriptThing",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
-        "position"
+        null
        ]
       },
       "puVar8_2": {
@@ -1175,11 +1175,11 @@
        ]
       },
       "puVar8_3": {
-       "name": "getPos2",
+       "name": "scriptThing2",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
-        "position"
+        null
        ]
       },
       "pvVar11": {
@@ -1288,7 +1288,7 @@
        "assignmentRoles": []
       },
       "xStack_30": {
-       "name": "scriptThing",
+       "name": "scriptThing3",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
@@ -1296,7 +1296,7 @@
        ]
       },
       "xStack_40": {
-       "name": "scriptThing2",
+       "name": "scriptThing4",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
@@ -1389,7 +1389,7 @@
        "assignmentRoles": []
       },
       "x_stk_18": {
-       "name": "scriptThing3",
+       "name": "scriptThing5",
        "basis": "one method, several names",
        "assignmentRoles": [
         null,
@@ -2278,7 +2278,7 @@
       "text": "scratchValue41"
      },
      {
-      "line": 16,
+      "line": 17,
       "category": "genericTemporaries",
       "text": "scratchValue43"
      },

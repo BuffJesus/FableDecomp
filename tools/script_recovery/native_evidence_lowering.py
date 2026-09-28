@@ -5077,5 +5077,8 @@ def finish_lua(text: str) -> str:
         text = pattern.sub(repl, text)
     text = KEY.sub('(', text)
     text = re.sub(r'&("[^"]*")', r'\1', text)
+    # thing methods on a resource handle go through its acquired thing (runs after RESOURCE_* expand)
+    from tools.script_recovery.lift_native_lua import route_resource_thing_calls
+    text = '\n'.join(route_resource_thing_calls(text.split('\n')))
     from tools.script_recovery.native_integer_strings import recover_integer_parser
     return recover_integer_parser(text)

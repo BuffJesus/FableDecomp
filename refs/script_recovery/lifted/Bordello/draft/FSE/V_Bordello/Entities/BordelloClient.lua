@@ -52,10 +52,10 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then goto LAB_00e469cb end
-                if not (xStack_118 ~= nil and not xStack_118:IsNull()) then
+                if not (xStack_118 ~= nil and not resources:ScriptThing(xStack_118):IsNull()) then
                     puVar8 = {x = 0, y = 0, z = 0}
                 else
-                    puVar8 = xStack_118:GetPos()
+                    puVar8 = resources:ScriptThing(xStack_118):GetPos()
                 end
                 me:MoveToPosition(puVar8, 1.0, 0, false, true)
             end
@@ -615,10 +615,10 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e469cb end
-                    if not (xStack_118 ~= nil and not xStack_118:IsNull()) then
+                    if not (xStack_118 ~= nil and not resources:ScriptThing(xStack_118):IsNull()) then
                         puVar8 = {x = 0, y = 0, z = 0}
                     else
-                        puVar8 = xStack_118:GetPos()
+                        puVar8 = resources:ScriptThing(xStack_118):GetPos()
                     end
                     me:MoveToPosition(puVar8, 1.0, 0, false, true)
                 end

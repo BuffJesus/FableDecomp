@@ -96,6 +96,8 @@ RESOURCES = setmetatable({}, { __index = function(_, k)
         record("resources", k, ...)
         if k == "TryAcquire" or k == "IsAlive" then return true end
         if k == "NewBarrelWatchSnapshot" or k == "NewPresentedItemOutput" then return make_thing(k) end
+        -- LuaRetailResources::ScriptThing always returns a thing (empty when nothing is acquired)
+        if k == "ScriptThing" then return make_thing(k) end
         if k:match("^New") or k:match("^Start") then return 1 end
         if k:match("^Is") then return false end
         if k:match("^Get") or k:match("^Read") then return 0 end

@@ -944,6 +944,26 @@ def lower_signed_char_tests(decompile):
     return RE_SIGNED_CHAR_TEST.sub(bit, decompile)
 
 
+def route_resource_thing_calls(lines):
+    """Thing methods called on a resource handle go through the resource's acquired thing.
+
+    V_Bordello BordelloClient Main 0x00E44EA0 tests the scripted-thing resource's own thing pointer
+    (`piStack_10c == 0` -> the zero vector, else its vcall +0x18 position); the lowering collapsed
+    that pointer onto the resource id, emitting `resource:IsNull()` / `resource:GetPos()` on a number.
+    The sidecar's `resources:ScriptThing(id)` is retail GetScriptThing (an empty thing, IsNull true,
+    when nothing is acquired). Only names whose every assignment is `resources:NewResource()`."""
+    body = '\n'.join(l for l in lines if not l.lstrip().startswith('--'))
+    handles = set()
+    for name in set(re.findall(r'^\s*(?:local\s+)?(\w+) = resources:NewResource\(\)\s*$', body, re.M)):
+        assigned = re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=(?!=)(.*)$', body, re.M)
+        if all(a.strip() in ('resources:NewResource()', name) for a in assigned):   # (`x = x` copies are no-ops)
+            handles.add(name)
+    if not handles:
+        return lines
+    pattern = re.compile(r'(?<![\w.:])(' + '|'.join(map(re.escape, sorted(handles))) + r'):(\w+)\(')
+    return [l if l.lstrip().startswith('--') else pattern.sub(r'resources:ScriptThing(\1):\2(', l) for l in lines]
+
+
 def cleanup_flag_words(lines, hoisted):
     """Hoisted scalars that hold MSVC conditional-temporary cleanup flags.
 

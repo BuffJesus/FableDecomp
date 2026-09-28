@@ -175,3 +175,16 @@ mentions are those forms and a bit is set. 29-unit A/B: TalkingTrader1 (3 member
 (its rebuild copy) only. Smoke: TalkingTrader1 Main fixed. `test_cleanup_flag_words.py`: 4 pass.
 Remaining v33-package smoke faults: BordelloClient resource index, BordelloLady flag slot +
 dialogue suffix table, Witch flag/CCharString slot overlap, SickChild helper_ECE460.
+
+## Ninth checkpoint: thing methods on resource handles
+
+BordelloClient Main (0x00E44EA0) tests its scripted-thing resource's thing pointer (`piStack_10c == 0`
+-> zero vector, else vcall +0x18 position); the lowering collapsed that pointer onto the resource id
+(`resource:IsNull()`, `resource:GetPos()` on a number). `route_resource_thing_calls` (run at the end
+of `finish_lua`, after RESOURCE_* expansion) sends thing methods on a name whose only assignments are
+`resources:NewResource()` through `resources:ScriptThing(id)` -- the sidecar's retail GetScriptThing,
+an empty thing (IsNull true) when nothing is acquired. 29-unit A/B: only BordelloClient's four lines.
+Smoke mock returns a thing for ScriptThing. BordelloClient Main now runs clean in the harness.
+Remaining in the v33 packages: BordelloLady's flag word shares a slot with state int `self_0xc`;
+GetLHTSTag's failure is a harness artifact (all callers pass string literals); Witch flag/CCharString
+slot overlap; SickChild helper_ECE460 (unaff_EBP / 4-arg _stricmp mislabel).
