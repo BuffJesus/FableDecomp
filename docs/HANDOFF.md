@@ -7,7 +7,8 @@ IsDistanceFromPositionUnder (sidecar patch `novi-zzzzzzzzzzzzzzzzzzz-position-un
 cleanup-flag bookkeeping, `ctr_` counters (ChickenMaster score), AskForBook's lost parameter + callers' operands,
 member-resource Speak/GetScriptThing. **Candidate v35 staged** (`local-candidate-v35` = v34 + 23 roster Lua files + sidecar `e83c39f` with
 IsDistanceFromPositionUnder; 210 Lua parse, 216 hashes match; NOT installed or run in-game). Later commits (`e7ff250`..`24e3a46`: receivers by reaching definitions, `me` through int
-registers, dword-pointer vectors) postdate v35: stage v36 before the next playtest. Next: TraderEscort
+registers, dword-pointer vectors) are in **candidate v36** (`local-candidate-v36`, 6 files over v35; Bandit Camp's outer-gate talk check
+now on the guard -- compare against v35 if that gate misbehaves; NOT installed or run). Next: TraderEscort
 MakeTraderComment (parameter-slot reuse; never runs today), SickChild helper_ECE460. The install's `text.big`
 changed twice today (not this session): seven NOVI text tests fail at every commit until it is restored.
 Scratch + A/B harness: `work/codex_lua_20260928/`.

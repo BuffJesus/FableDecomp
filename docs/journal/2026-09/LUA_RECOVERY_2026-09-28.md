@@ -211,3 +211,9 @@ component) now use the whole position. GuildTraining SkillTarget's four position
 identical values (draft only; its readable is hand-reviewed). The A/B snapshot set now includes the helper modules
 (`native_vector_component_copies`, `native_receiver_reaching`, `native_local_helper_operands`,
 `native_literal_string_vectors`), so later edits to them are compared too.
+
+## Candidate v36 (staged, not installed or run)
+
+v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort ×2), sidecar
+unchanged. 210 Lua parse, 216 hashes match; mock smoke vs v35 unchanged. Gate1GuardOuter's talk check moves from the
+hero to the guard (retail), in a package completed in-game with the old line.
