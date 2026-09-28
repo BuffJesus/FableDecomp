@@ -15352,6 +15352,7 @@
        "basis": "native argument role",
        "assignmentRoles": [
         null,
+        "dataString",
         null
        ]
       },
@@ -18866,6 +18867,7 @@
        "basis": "native argument role",
        "assignmentRoles": [
         null,
+        null,
         null
        ]
       },
@@ -20342,7 +20344,7 @@
         "7": "    if xStack_30 ~= nil then\n",
         "42": "        iVar6_1 = quest:AddNewConversation(xStack_30, false, false)\n",
         "45": "        if not (xStack_30 ~= nil and not xStack_30:IsNull()) then\n",
-        "48": "            xStack_30:GetDataString()\n",
+        "48": "            native_arg_speaker = xStack_30:GetDataString()\n",
         "209": "                pCVar7_5 = xStack_30\n",
         "52": "        pCVar4_4 = xStack_30\n",
         "23": "        if xStack_30 ~= (nil) then\n",

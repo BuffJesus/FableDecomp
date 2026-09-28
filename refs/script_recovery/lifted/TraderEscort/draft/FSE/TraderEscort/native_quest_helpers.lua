@@ -48,7 +48,7 @@ function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_spe
         if not (xStack_30 ~= nil and not xStack_30:IsNull()) then
             native_arg_speaker = ""
         else
-            xStack_30:GetDataString()
+            native_arg_speaker = xStack_30:GetDataString()
         end
         pCVar7 = quest:GetHero()
         pCVar9 = native_arg_comment_to_make

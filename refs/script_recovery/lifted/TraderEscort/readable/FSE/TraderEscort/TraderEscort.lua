@@ -484,7 +484,7 @@ function MakeTraderComment(quest, commentToMake, speaker, commentType)
         if not (nil ~= nil and not (nil):IsNull()) then
             speaker = ""
         else
-            (nil):GetDataString()
+            speaker = (nil):GetDataString()
         end
         local scratchValue32 = commentToMake
         quest:AddLineToConversation(conversationId, (("TEXT_QST_067_" .. speaker) .. "_") .. commentToMake, nil, hero, false)

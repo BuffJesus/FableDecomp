@@ -54,7 +54,7 @@ function MakeTraderComment(quest, me, commentToMake, speaker, commentType)
         if not (scratchValue10 ~= nil and not scratchValue10:IsNull()) then
             speaker = ""
         else
-            scratchValue10:GetDataString()
+            speaker = scratchValue10:GetDataString()
         end
         getHero = hero
         getDataString3 = commentToMake

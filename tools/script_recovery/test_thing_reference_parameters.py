@@ -52,3 +52,9 @@ def test_discarded_squared_distance_is_the_bare_call():
     out = finish_lua('function Main(quest, me)\n    local d = ENGINE_SquaredDistance(a, b)\n    ENGINE_SquaredDistance(a, c)\nend\n')
     assert 'local d = (quest:GetDistanceBetweenThings(a, b) ^ 2)' in out
     assert '\n    quest:GetDistanceBetweenThings(a, c)\n' in out
+
+
+def test_string_getter_through_a_hidden_slot_assigns_it():
+    from tools.script_recovery.native_evidence_lowering import lower_after_annotate
+    out = lower_after_annotate('    CScriptThing::GetDataString(xStack_30, &native_arg_speaker);\n')
+    assert 'native_arg_speaker = CScriptThing::GetDataString(xStack_30);' in out

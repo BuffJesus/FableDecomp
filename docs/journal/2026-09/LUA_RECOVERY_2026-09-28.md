@@ -176,3 +176,17 @@ fall-through, and switch tables bounded by a preceding `cmp reg, N`; anything el
 as Ghidra prints calls on `me`). The Arena cell guards' hit tests now test the guard (were the merged `pCVar6` /
 `pCVar11`); BanditCamp Gate1GuardOuter's talk check was on the hero and is now on the guard (starts the gate
 cutscene). A/B: only those three files. Tests: `test_receiver_reaching.py` (2).
+
+### Found: Trader Escort's trader comments never run (MakeTraderComment 0x00E01900)
+
+Every lift since v15 (the build that completed Trader Escort in-game) returns early from MakeTraderComment: the first
+`IsAlive` on its speaker copy is unresolved, so `if not nil then return false`. Cause: the `CScriptThing const &speaker`
+is copied into `local_30` with its Info word split into `local_28`; the dead-speaker fallback re-seats it with an inlined
+`operator=`; and a second IsAlive goes through the copy's own vtable (`local_30._0_4_ + 300`). A fold for these forms
+(run after `restore_stack_operands`: running before it changed the printed call heads and broke the callOrder pairing)
+recovered the speaker, both IsAlive checks, AddNewConversation, the speaker's data string and the first comment line.
+**Not landed**: the `comment_type` 1/2 branches reuse the parameter slots (`speaker` as a byte flag and a string
+temporary, `comment_type` / `comment_to_make` as string temporaries: a raw `CONCAT31(...)` call and
+`r2:IsEqualTo(r3._4_4_)` would become reachable). Enabling comments in an in-game-proven package needs the whole
+function right; next step is parameter-slot reuse for this function. Kept from the attempt: `CScriptThing::GetDataString
+(X, &slot)` → `slot = X:GetDataString()` (and GetName / GetDefName).

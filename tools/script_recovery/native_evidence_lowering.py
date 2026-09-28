@@ -2976,6 +2976,10 @@ def lower_after_annotate(text, thing_slots=None):
     text = re.sub(r'^([ \t]*)(\w+) = GSI->(MsgOnRegion(?:Loaded|Unloaded))\(&(\w+)\);',
                   r'\1\4 = GSI->\3();\n\1\2 = ENGINE_NotNil(\4);', text, flags=re.M)
     text = return_misattached_getter_operands(text)   # (GSI names exist only after annotate)
+    # a thing's string getter writing through a hidden result slot (`CScriptThing::GetDataString(X, &speaker)`,
+    # Q_TraderEscort MakeTraderComment 0x00E01900 reusing its speaker parameter's slot for the name): the slot is the result
+    text = re.sub(r'^([ \t]*)CScriptThing::(GetDataString|GetName|GetDefName)\((\w+),\s*&(\w+)\);',
+                  r'\1\4 = CScriptThing::\2(\3);', text, flags=re.M)
     text = fold_name_compare(text)
     text = fold_inline_strncmp(text)
     text = fold_null_string_branches(text)
