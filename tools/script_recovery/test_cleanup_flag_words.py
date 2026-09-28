@@ -13,7 +13,19 @@ FLAGS = '''    flags = flags | 1
 
 
 def test_self_updated_tested_word_with_rebuild_copy_is_a_flag_word():
-    assert cleanup_flag_words(FLAGS, {'flags', 'copy'}) == ['flags']
+    assert cleanup_flag_words(FLAGS, {'flags', 'copy'}) == ['flags', 'copy']
+
+
+def test_word_spread_over_copies_with_a_dropped_source_copy():
+    # V_SickChild TalkingTrader1: `uVar5 = uStack_b0` was dropped; uVar5 is only ever read
+    spread = '''    work = saved | 3
+    word = work
+    if (work & 4) ~= 0 then
+        work = work & 0xfffffffb
+        word = work
+    end'''.splitlines()
+    assert cleanup_flag_words(spread, {'work', 'saved', 'word'}) == ['work', 'saved', 'word']
+    assert cleanup_flag_words(spread + ['    quest:SetStateInt("W", word)'], {'work', 'saved', 'word'}) == []
 
 
 def test_words_with_other_uses_are_not_flag_words():

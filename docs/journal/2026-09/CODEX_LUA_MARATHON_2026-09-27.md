@@ -165,3 +165,13 @@ returns `{pos, orient}` (LuaQuestState.cpp), so the atan read two nils. `OUT_TAB
 x/y/z at descending offsets; other variables: the whole vector), falling back to Forge's zero vector.
 Only SickChild calls it; A/B changes only those lines. Smoke harness now returns that table shape.
 SickChild smoke 4 -> 3 failures (Main fixed; TalkingTrader1/Witch flag slots and helper_ECE460 remain).
+
+## Eighth checkpoint: cleanup-flag clusters
+
+TalkingTrader1 spreads one flag word over copies (`uVar5 = uStack_b0` dropped; `uVar13 = uVar5 | 3;
+uStack_b0 = uVar13;`, tests on uVar13), so uVar5 read nil. `cleanup_flag_words` now grows a
+cluster from each tested word through copies/bit updates and zeroes every member when all their
+mentions are those forms and a bit is set. 29-unit A/B: TalkingTrader1 (3 members) and Magicman
+(its rebuild copy) only. Smoke: TalkingTrader1 Main fixed. `test_cleanup_flag_words.py`: 4 pass.
+Remaining v33-package smoke faults: BordelloClient resource index, BordelloLady flag slot +
+dialogue suffix table, Witch flag/CCharString slot overlap, SickChild helper_ECE460.

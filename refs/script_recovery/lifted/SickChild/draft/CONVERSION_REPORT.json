@@ -3047,7 +3047,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 368,
+          "lines": 371,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

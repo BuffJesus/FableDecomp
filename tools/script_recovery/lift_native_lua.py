@@ -945,36 +945,42 @@ def lower_signed_char_tests(decompile):
 
 
 def cleanup_flag_words(lines, hoisted):
-    """Hoisted scalars that are MSVC conditional-temporary cleanup flags.
+    """Hoisted scalars that hold MSVC conditional-temporary cleanup flags.
 
     Retail sets a bit when a conditional temporary is built (`uStack_374 = uStack_374 | 0xe;`) and
     tests it before destroying that temporary (`if (uStack_374 & 1) { uStack_374 &= ~1; ... }`).
     The compiler zeroes the word in the prologue, which Ghidra folds away (V_Bordello Magicman
-    0x00E40E80), so the Lua read an undeclared nil. A word qualifies only when every mention is
-    such an update, a `(v & K) ~= 0` test, or a plain copy used solely to rebuild it
-    (`uVar3 = uStack_374; uStack_374 = uVar3 | 0xc0;`). Returned in source order."""
+    0x00E40E80), so the Lua read an undeclared nil. Ghidra may spread one word over copies
+    (V_SickChild TalkingTrader1: `uVar5 = uStack_b0` dropped, then `uVar13 = uVar5 | 3;
+    uStack_b0 = uVar13;` and tests on uVar13). A cluster grown from a tested word through
+    copies and bit updates qualifies only when every mention of every member is one of those
+    forms (`a = b`, `a = b | K`, `a = b & K`, `(a & K) ~= 0`) and at least one bit is set; all its
+    members then start clear. Returned in source order."""
     body = '\n'.join(l for l in lines if not l.lstrip().startswith('--'))
-    names = []
-    for v in sorted(hoisted, key=lambda n: body.find(n)):
-        ev = re.escape(v)
-        mentions = len(re.findall(r'\b' + ev + r'\b', body))
-        if not mentions:
+    assigns = [(m[1], m[2], m[3]) for m in re.finditer(
+        r'^\s*(\w+) = (\w+)(?: ([|&]) ' + _FLAG_CONST + r')?\s*$', body, re.M)]
+    tests = re.findall(r'\((\w+) & ' + _FLAG_CONST + r'\) ~= 0', body)
+    names, seen = [], set()
+    for seed in sorted(set(tests) & set(hoisted), key=body.find):
+        if seed in seen:
             continue
-        self_updates = re.findall(r'^\s*' + ev + r' = ' + ev + r' [|&] ' + _FLAG_CONST + r'\s*$', body, re.M)
-        sets = [u for u in self_updates if '|' in u]
-        tests = re.findall(r'\(' + ev + r' & ' + _FLAG_CONST + r'\) ~= 0', body)
-        copies = re.findall(r'^\s*(\w+) = ' + ev + r'\s*$', body, re.M)
-        rebuilt = []
-        for c in set(copies):
-            ec = re.escape(c)
-            uses = re.findall(r'^\s*' + ev + r' = ' + ec + r' \| ' + _FLAG_CONST + r'\s*$', body, re.M)
-            # the copy must exist only to rebuild the word: its one assignment plus those rebuilds
-            if c not in hoisted or len(re.findall(r'\b' + ec + r'\b', body)) != copies.count(c) + len(uses):
-                break
-            rebuilt += uses
-        else:
-            if sets and tests and mentions == 2 * len(self_updates) + len(tests) + len(copies) + len(rebuilt):
-                names.append(v)
+        cluster, grown = {seed}, True
+        while grown:
+            grown = False
+            for a, b, _ in assigns:
+                if (a in cluster) != (b in cluster) and a in hoisted and b in hoisted:
+                    cluster |= {a, b}
+                    grown = True
+        seen |= cluster
+        edges = [(a, b, op) for a, b, op in assigns if a in cluster or b in cluster]
+        if any(a not in cluster or b not in cluster for a, b, _ in edges):
+            continue            # a member exchanges values with something that is not a flag word
+        if not any(op == '|' for _, _, op in edges):
+            continue            # never set: nothing proves these are flags
+        allowed = sum(2 for _ in edges) + sum(1 for t in tests if t in cluster)
+        mentions = sum(len(re.findall(r'\b' + re.escape(v) + r'\b', body)) for v in cluster)
+        if mentions == allowed:
+            names += sorted(cluster, key=body.find)
     return names
 
 

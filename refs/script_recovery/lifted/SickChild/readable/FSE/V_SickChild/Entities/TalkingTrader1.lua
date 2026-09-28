@@ -11,7 +11,10 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, scratchValue3, fret_02, scratchValue5, scratchValue, this_00
-    local scratchValue15, scratchValue16, movie3, line, line2
+    local scratchValue14, scratchValue15, movie3, line, line2
+    scratchValue15 = 0  -- compiler cleanup flags start clear
+    -- compiler cleanup flags start clear
+    scratchValue14 = 0  -- compiler cleanup flags start clear
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -184,9 +187,9 @@ function Main(quest, me)
         ::LAB_00ecc54a::
         -- TODO(native): uStack_b0 = uStack_b0 | 1;
         if me:MsgIsHitByHero() then goto LAB_00ecc5ce end
-        scratchValue15 = scratchValue16 | 3
+        scratchValue15 = 0 | 3
         if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue15 = scratchValue16 | 7
+            scratchValue15 = 0 | 7
             local scratchValue2 = me:MsgIsHitByHeroSpecialAbility(nil --[[missing]])
             if not scratchValue2 then goto LAB_00ecc5ce end
         end

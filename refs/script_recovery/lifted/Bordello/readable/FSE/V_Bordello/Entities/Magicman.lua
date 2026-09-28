@@ -22,6 +22,7 @@ function Main(quest, me)
     local i_stk_350_1, timerId3, switch1, switch, p0, getHero, this_01, timerId, scratchValue25
     local scratchValue26, movie, movie4, startMovie, movie5, movie6, resource, scriptThing
     scratchValue26 = 0  -- compiler cleanup flags start clear
+    scratchValue25 = 0  -- compiler cleanup flags start clear
     if not quest:NewScriptFrame(me) then return end
     local resource6 = resources:NewResource()
     resources:PrepareResource(resource6)

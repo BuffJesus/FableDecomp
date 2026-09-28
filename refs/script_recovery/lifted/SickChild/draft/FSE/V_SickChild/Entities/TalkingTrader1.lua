@@ -13,6 +13,9 @@ end
 function Main(quest, me)
     local resources = quest:RetailResources()
     local CVar4, bVar6, cVar7, c_stk_d1, dist, fVar3, fret_0, fret_00, fret_01, fret_02, iVar10, iVar15, iVar16, iVar8, i_stk_a8, i_stk_dc, native_arg_sequence_1, native_arg_switch_1, p0, pCVar12, pCVar9, pcVar14, pvVar11, r1, r2, r3, r4, this_00, uStack_b0, uVar13, uVar5, xStack_34, xStack_44, xStack_64, xStack_b4, xStack_c4, xStack_d8, x_stk_18, x_stk_24, x_stk_c
+    uVar13 = 0  -- compiler cleanup flags start clear
+    uVar5 = 0  -- compiler cleanup flags start clear
+    uStack_b0 = 0  -- compiler cleanup flags start clear
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
