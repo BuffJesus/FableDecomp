@@ -259,6 +259,31 @@ def fold_low_byte_flags(text: str) -> str:
     return text
 
 
+def fold_high_byte_flags(text: str) -> str:
+    """A dword slot whose HIGH byte carries a flag (Arena ArenaCellDoorGuard2 Main 0x00F19BB0:
+    `X = (CCharString *)CONCAT13(1,(int3)X);` when the guard is far away and idle, `X = (CCharString *)((uint)X &
+    0xffffff);` otherwise, later `if ((char)((uint)X >> 0x18) == '\\0')`; the low bytes are an unrelated stale
+    stack argument). The byte is its own boolean local `hb_stk_<slot>` (a name the lifter assigns). Lifted raw,
+    the stores were folded into the test as `X & 0xffffff >> 0x18` (always 0 in Lua) and X stayed a free global."""
+    cast = r'(?:\([\w ]+\*?\))?'
+    literal = {'0': 'false', '0x0': 'false', '1': 'true', '0x1': 'true'}
+    for var in set(re.findall(r'\b(\w+) = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)\1\);', text)):
+        var = var[0]
+        m = re.search(r'([0-9a-f]+)$', var)
+        if not m or re.search(r'\bhb_stk_' + m[1] + r'\b', text):
+            continue
+        v, flag = re.escape(var), 'hb_stk_' + m[1]
+        own = re.compile(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)' + v + r'\);')
+        if re.search(r'CONCAT\d\d\([^;]*\b' + v + r'\b', own.sub('', text)):
+            continue        # a slot packing several flag bytes (Expression_Picklock's CONCAT13(1,CONCAT12(1,uVar11))):
+                            # the packed-flag recovery owns it
+        text = re.sub(r'\b' + v + r' = ' + cast + r'CONCAT13\(([^,;]+),\s*\(int3\)' + v + r'\);',
+                      lambda mm: f'{flag} = {literal.get(mm[1].strip(), "(" + mm[1] + ") != 0")};', text)
+        text = re.sub(r'\b' + v + r' = ' + cast + r'\(\(uint\)' + v + r' & 0xffffff\);', flag + ' = false;', text)
+        text = re.sub(r'\(char\)\(\(uint\)' + v + r' >> (?:0x18|24)\)', flag, text)
+    return text
+
+
 def fold_dword_colours(text: str) -> str:
     """A CRGBColour stored as one dword literal (`X = -0x10000;` = 0xFFFF0000, BGRA bytes B=0 G=0 R=0xff A=0xff) and
     passed as `(CRGBColour_bv *)&X` becomes an FSE colour table (DarkwoodTrader HandleTrader's trader health bar:
@@ -3785,6 +3810,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\*\((?:C\w+Script) \*\*\)\((' + SELF + r') \+ 0x14\)', r'*(int *)(\1 + 0x14)', text)
     text = re.sub(r'\*\((?:C\w+MasterData) \*\*\)\((' + SELF + r') \+ (0x18|0x44)\)', r'*(int *)(\1 + \2)', text)
     text = re.sub(r'\bparam_1\b', 'this', text)
+    text = fold_high_byte_flags(text)   # before any pass folds the byte stores into their tests
     text = normalise_typed_decompile(text)
     text = resolve_this_aliases(text, spec)
     text = name_ftol2_operand(text)

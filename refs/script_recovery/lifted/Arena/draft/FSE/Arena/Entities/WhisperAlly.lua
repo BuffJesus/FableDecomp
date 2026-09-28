@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar16, pCVar17, pCVar18, pCVar6, pCVar7, pQuestName, pThing, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec
+    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, hb_stk_fffffeec, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar16, pCVar17, pCVar18, pCVar6, pCVar7, pQuestName, pThing, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec
     local alive = true
     local function __cleanup_LAB_00f242fc()
         quest:DeregisterTimer(iVar5)
@@ -226,6 +226,7 @@ function Main(quest, me)
             u_stk_f4 = u_stk_f4 | 1
             bVar3 = me:MsgIsHitByHero()
             if bVar3 then
+                goto LAB_00f2337d
             else
                 uVar13 = uVar14 | 3
                 bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
@@ -234,8 +235,12 @@ function Main(quest, me)
                     bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f2337d end
                 end
+                hb_stk_fffffeec = false
             end
+            goto FLOW_past_lab_00f2337d
             ::LAB_00f2337d::
+            hb_stk_fffffeec = true
+            ::FLOW_past_lab_00f2337d::
             if (uVar13 & 4) ~= 0 then
                 uVar13 = uVar13 & 0xfffffffb
             end
@@ -245,7 +250,7 @@ function Main(quest, me)
             if (uVar13 & 1) ~= 0 then
                 u_stk_f4 = uVar13 & 0xfffffffe
             end
-            if (in_stack_fffffeec & 0xffffff >> 0x18) ~= 0 then
+            if hb_stk_fffffeec then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00f25806 end
@@ -292,6 +297,7 @@ function Main(quest, me)
             u_stk_f4 = u_stk_f4 | 8
             bVar3 = me:MsgIsHitByHero()
             if bVar3 then
+                goto LAB_00f235a1
             else
                 uVar13 = uVar14 | 0x18
                 bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
@@ -300,8 +306,12 @@ function Main(quest, me)
                     bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f235a1 end
                 end
+                hb_stk_fffffeec = false
             end
+            goto FLOW_past_lab_00f235a1
             ::LAB_00f235a1::
+            hb_stk_fffffeec = true
+            ::FLOW_past_lab_00f235a1::
             if (uVar13 & 0x20) ~= 0 then
                 uVar13 = uVar13 & 0xffffffdf
             end
@@ -311,7 +321,7 @@ function Main(quest, me)
             if (uVar13 & 8) ~= 0 then
                 uVar13 = uVar13 & 0xfffffff7
             end
-            if (in_stack_fffffeec & 0xffffff >> 0x18) ~= 0 then
+            if hb_stk_fffffeec then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then
@@ -401,10 +411,15 @@ function Main(quest, me)
                     uVar14 = uVar13 | 0xc00
                     u_stk_f4 = uVar14
                     bVar3 = me:MsgIsHitByHero()
+                    hb_stk_fffffeec = true
                     if bVar3 then goto LAB_00f2405a end
                 else
+                    goto LAB_00f2405a
                 end
+                goto FLOW_past_lab_00f2405a
                 ::LAB_00f2405a::
+                hb_stk_fffffeec = false
+                ::FLOW_past_lab_00f2405a::
                 if (uVar14 & 0x800) ~= 0 then
                     uVar14 = uVar14 & 0xfffff7ff
                     u_stk_f4 = uVar14
@@ -412,7 +427,7 @@ function Main(quest, me)
                 if (uVar14 & 0x400) ~= 0 then
                     u_stk_f4 = uVar14 & 0xfffffbff
                 end
-                if (in_stack_fffffeec & 0xffffff >> 0x18) == 0 then
+                if not hb_stk_fffffeec then
                     -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                     bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                     if not bVar3 then goto LAB_00f241aa end
@@ -530,10 +545,15 @@ function Main(quest, me)
                         uVar14 = uVar13 | 0x300
                         u_stk_f4 = uVar14
                         bVar3 = me:MsgIsHitByHero()
+                        hb_stk_fffffeec = true
                         if bVar3 then goto LAB_00f23cba end
                     else
+                        goto LAB_00f23cba
                     end
+                    goto FLOW_past_lab_00f23cba
                     ::LAB_00f23cba::
+                    hb_stk_fffffeec = false
+                    ::FLOW_past_lab_00f23cba::
                     if (uVar14 & 0x200) ~= 0 then
                         uVar14 = uVar14 & 0xfffffdff
                         u_stk_f4 = uVar14
@@ -541,7 +561,7 @@ function Main(quest, me)
                     if (uVar14 & 0x100) ~= 0 then
                         u_stk_f4 = uVar14 & 0xfffffeff
                     end
-                    if (in_stack_fffffeec & 0xffffff >> 0x18) == 0 then
+                    if not hb_stk_fffffeec then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                         if not bVar3 then goto LAB_00f241aa end
@@ -616,10 +636,15 @@ function Main(quest, me)
                         uVar14 = uVar13 | 0xc0
                         u_stk_f4 = uVar14
                         bVar3 = me:MsgIsHitByHero()
+                        hb_stk_fffffeec = true
                         if bVar3 then goto LAB_00f2389f end
                     else
+                        goto LAB_00f2389f
                     end
+                    goto FLOW_past_lab_00f2389f
                     ::LAB_00f2389f::
+                    hb_stk_fffffeec = false
+                    ::FLOW_past_lab_00f2389f::
                     if ((uVar14 & 0x80) ~= 0) then
                         uVar14 = uVar14 & 0xffffff7f
                         u_stk_f4 = uVar14
@@ -627,7 +652,7 @@ function Main(quest, me)
                     if (uVar14 & 0x40) ~= 0 then
                         u_stk_f4 = uVar14 & 0xffffffbf
                     end
-                    if (in_stack_fffffeec & 0xffffff >> 0x18) == 0 then
+                    if not hb_stk_fffffeec then
                         -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                         if not bVar3 then goto LAB_00f23a17 end

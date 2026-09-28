@@ -188,3 +188,14 @@ Smoke mock returns a thing for ScriptThing. BordelloClient Main now runs clean i
 Remaining in the v33 packages: BordelloLady's flag word shares a slot with state int `self_0xc`;
 GetLHTSTag's failure is a harness artifact (all callers pass string literals); Witch flag/CCharString
 slot overlap; SickChild helper_ECE460 (unaff_EBP / 4-arg _stricmp mislabel).
+
+## Tenth checkpoint: high-byte flag slots
+
+Arena ArenaCellDoorGuard2 (0x00F19BB0) and WhisperAlly keep a boolean in a reused stack slot's high byte
+(`X = CONCAT13(1,(int3)X)` / `X = (uint)X & 0xffffff`, tested as `(char)((uint)X >> 0x18) == '\0'`).
+An early pass folded the stores into the test (`X & 0xffffff >> 0x18`: always 0 in Lua, X a nil
+global). `fold_high_byte_flags` (first pass in `lower()`) makes the byte a boolean `hb_stk_<slot>`;
+slots packing several bytes (Expression_Picklock/Steal CONCAT13(1,CONCAT12(..))) are left to the
+packed-flag recovery. 29-unit A/B: only those two Arena entities. Arena smoke 5 -> 3 failures.
+Checked and rejected: letting `unaff_*`/`ctr_*` artifacts join cleanup-flag clusters (BeggarBully's
+and ChickenMaster's registers are reused for a high-byte bool / the chicken score counter).

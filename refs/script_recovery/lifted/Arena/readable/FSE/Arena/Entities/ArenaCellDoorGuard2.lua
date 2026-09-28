@@ -13,7 +13,7 @@ local earlyTalk, chamTalk
 function Main(quest, me)
     local hero_ = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue, scratchValue7, scratchValue8, meControl
+    local predicateResult, hb_stk_ffffff34_2, scratchValue, scratchValue7, scratchValue8, meControl
     scratchValue8 = 0
     local resource = resources:NewResource()
     quest:SetStateThing("CellsVillage", quest:GetNearestWithDefName(me, "VILLAGE_ARENA_CELLS"))
@@ -122,23 +122,32 @@ function Main(quest, me)
             resources:DestroyMovie(movie2)
         else
             scratchValue = scratchValue8 | 3
+            local hb_stk_ffffff34_1 = not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerLeft"), 1.0)) or me:IsPerformingScriptTask())
             if scratchValue & 2 ~= 0 then
                 scratchValue = scratchValue & 0xfffffffd
             end
             if scratchValue & 1 ~= 0 then
                 scratchValue = scratchValue & 0xfffffffe
             end
-            if in_stack_ffffff34 & 0xffffff >> 24 == 0 then
+            if not hb_stk_ffffff34_1 then
                 scratchValue7 = scratchValue | 4
                 scratchValue8 = scratchValue7
-                if not me:MsgIsHitByHero() then
+                if me:MsgIsHitByHero() then
+                    goto LAB_00f1a4e2
+                else
                     scratchValue7 = scratchValue | 12
                     scratchValue8 = scratchValue7
                     if me:MsgIsHitByAnySpecialAbilityFromHero() then
                         scratchValue7 = scratchValue | 28
                         scratchValue8 = scratchValue7
+                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f1a4e2 end
                     end
+                    hb_stk_ffffff34_2 = false
                 end
+                goto FLOW_past_lab_00f1a4e2
+                ::LAB_00f1a4e2::
+                hb_stk_ffffff34_2 = true
+                ::FLOW_past_lab_00f1a4e2::
                 if scratchValue7 & 16 ~= 0 then
                     scratchValue7 = scratchValue7 & 0xffffffef
                     scratchValue8 = scratchValue7
@@ -150,7 +159,7 @@ function Main(quest, me)
                 if scratchValue7 & 4 ~= 0 then
                     scratchValue8 = scratchValue7 & 0xfffffffb
                 end
-                if in_stack_ffffff34 & 0xffffff >> 24 == 0 then
+                if not hb_stk_ffffff34_2 then
                     if not predicateResult then
                         if quest:IsActiveThreadTerminating() then break end
                         if not me:IsPerformingScriptTask() then

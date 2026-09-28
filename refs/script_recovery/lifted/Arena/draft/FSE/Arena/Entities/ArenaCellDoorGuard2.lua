@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, b_stk_b5, cVar5, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar11, iVar13, iVar15, iVar17, native_arg_sequence_1, pCVar12, pCVar14, pCVar16, pCVar6, pCVar7, pRelativeTo, pThing1, pcVar10, ppuVar18, this_00, uVar8, uVar9, u_stk_b0, xStack_64, xStack_74, xStack_c8
+    local bVar4, b_stk_b5, cVar5, dist, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, hb_stk_ffffff34, iVar11, iVar13, iVar15, iVar17, native_arg_sequence_1, pCVar12, pCVar14, pCVar16, pCVar6, pCVar7, pRelativeTo, pThing1, pcVar10, ppuVar18, this_00, uVar8, uVar9, u_stk_b0, xStack_64, xStack_74, xStack_c8
     local alive = true
     u_stk_b0 = 0
     ppuVar18 = resources:NewResource()
@@ -266,21 +266,27 @@ function Main(quest, me)
                     bVar4 = quest:IsDistanceBetweenThingsOver(me, pCVar6, dist)
                     if bVar4 then
                         iVar11 = me:IsPerformingScriptTask()
+                        hb_stk_ffffff34 = true
                         if iVar11 then goto LAB_00f1a3b6 end
                     else
+                        goto LAB_00f1a3b6
                     end
+                    goto FLOW_past_lab_00f1a3b6
                     ::LAB_00f1a3b6::
+                    hb_stk_ffffff34 = false
+                    ::FLOW_past_lab_00f1a3b6::
                     if (uVar8 & 2) ~= 0 then
                         uVar8 = uVar8 & 0xfffffffd
                     end
                     if (uVar8 & 1) ~= 0 then
                         uVar8 = uVar8 & 0xfffffffe
                     end
-                    if (in_stack_ffffff34 & 0xffffff >> 0x18) == 0 then
+                    if not hb_stk_ffffff34 then
                         uVar9 = uVar8 | 4
                         u_stk_b0 = uVar9
                         bVar4 = me:MsgIsHitByHero()
                         if bVar4 then
+                            goto LAB_00f1a4e2
                         else
                             uVar9 = uVar8 | 0xc
                             u_stk_b0 = uVar9
@@ -291,8 +297,12 @@ function Main(quest, me)
                                 bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                                 if not bVar4 then goto LAB_00f1a4e2 end
                             end
+                            hb_stk_ffffff34 = false
                         end
+                        goto FLOW_past_lab_00f1a4e2
                         ::LAB_00f1a4e2::
+                        hb_stk_ffffff34 = true
+                        ::FLOW_past_lab_00f1a4e2::
                         if (uVar9 & 0x10) ~= 0 then
                             uVar9 = uVar9 & 0xffffffef
                             u_stk_b0 = uVar9
@@ -304,7 +314,7 @@ function Main(quest, me)
                         if (uVar9 & 4) ~= 0 then
                             u_stk_b0 = uVar9 & 0xfffffffb
                         end
-                        if (in_stack_ffffff34 & 0xffffff >> 0x18) == 0 then
+                        if not hb_stk_ffffff34 then
                             if b_stk_b5 == false then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
