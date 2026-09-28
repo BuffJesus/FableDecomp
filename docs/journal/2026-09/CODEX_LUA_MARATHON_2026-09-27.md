@@ -199,3 +199,12 @@ slots packing several bytes (Expression_Picklock/Steal CONCAT13(1,CONCAT12(..)))
 packed-flag recovery. 29-unit A/B: only those two Arena entities. Arena smoke 5 -> 3 failures.
 Checked and rejected: letting `unaff_*`/`ctr_*` artifacts join cleanup-flag clusters (BeggarBully's
 and ChickenMaster's registers are reused for a high-byte bool / the chicken score counter).
+
+## Candidate v34 (staged, not installed or run)
+
+`local-candidate-v34` = v33 + eight tracked files (Bordello x4, SickChild x3, BeardyBaldy x1) from
+checkpoints 6-10; pinned packages untouched (same rule, reference commit 1c7e96d). 210 Lua parse; all
+216 manifest hashes match (v33's manifest also re-hashed: its README was rewritten after hashing, and
+STAGING.json is now listed). Mock smoke vs v33: 0 new, 4 fixed, 6 remain (BeardyBaldy WatchForAttack /
+ResetRandomSpeechTime, BordelloLady Main + GetLHTSTag harness artifact, Witch, helper_ECE460).
+Open, recorded: Roth's cross-variable high-byte flags (pCVar15 doubles as a real CCharString pointer).
