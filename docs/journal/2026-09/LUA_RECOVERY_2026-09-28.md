@@ -165,3 +165,14 @@ in-game-pinned packages unchanged) + `FableScriptExtender.dll` from the round-12
 `package_validation_v35.json`: 210 Lua parse, 216 manifest hashes match; mock smoke of the ten changed packages vs v34:
 7 fixed, the one "new" entry (SetWanderPointAndDistance) is the package-dir harness lacking recorded parameter types.
 Branch pushed at `26e5fa9`.
+
+## Night: receivers by reaching definitions (after `4a30c2b`)
+
+Corpus smoke **4 → 2** failing functions (SickChild helper_ECE460; ScorpionHome intentional).
+`native_receiver_reaching.py`: for an entity's thing vtable call, ecx is traced to its source register and every
+definition of that register reaching the call is collected over a CFG decoded from the machine code (direct jumps,
+fall-through, and switch tables bounded by a preceding `cmp reg, N`; anything else, no claim). When all are
+`lea r,[esi+8]` with esi = this for the whole body, the call is respelled on `this + 8` (without a receiver argument,
+as Ghidra prints calls on `me`). The Arena cell guards' hit tests now test the guard (were the merged `pCVar6` /
+`pCVar11`); BanditCamp Gate1GuardOuter's talk check was on the hero and is now on the guard (starts the gate
+cutscene). A/B: only those three files. Tests: `test_receiver_reaching.py` (2).

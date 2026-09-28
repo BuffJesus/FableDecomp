@@ -17,8 +17,8 @@ local aiState
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult6, predicateResult, scratchValue, scratchValue3, conversationId, timerId
-    local scratchValue8, gate1GuardInner, movie2, resource
+    local predicateResult6, predicateResult, scratchValue, scratchValue14, timerId, gate1GuardInner
+    local movie2, resource
     quest:NewScriptFrame(me)
     if not quest:IsActiveThreadTerminating() then
         resource = resources:NewResource()
@@ -31,7 +31,7 @@ function Main(quest, me)
             timerId = quest:RegisterTimer()
             quest:SetTimer(timerId, 0)
             scratchValue = 0
-            scratchValue3 = 0
+            scratchValue14 = 0
             if not quest:IsActiveThreadTerminating() then goto LAB_00d01776 end
             goto FLOW_hoist_lab_00d01776_1
         end
@@ -44,7 +44,7 @@ function Main(quest, me)
             if quest:GetTimer(timerId) < 1 then
                 if quest:IsActiveThreadTerminating() then goto LAB_00d02851 end
                 quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                conversationId = quest:AddNewConversation(me, false, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
                 quest:AddPersonToConversation(conversationId, hero)
                 if scratchValue == 0 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d02851 end
@@ -52,14 +52,14 @@ function Main(quest, me)
                     -- TODO(native): pCVar11 = *(this + 4)
 --[[unresolved native value]]
                     -- TODO(native): pCVar10 = (**(*pCVar11 + 0x118))(pCVar11)
-                    scratchValue8 = nil --[[unresolved native value]]
+--[[unresolved native value]]
                     quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT1_CALL_OVER_FIRST", me, gate1GuardInner, false)
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00d02851 end
                     -- TODO(native): pCVar11 = *(this + 4)
 --[[unresolved native value]]
                     -- TODO(native): pCVar10 = (**(*pCVar11 + 0x118))(pCVar11)
-                    scratchValue8 = nil --[[unresolved native value]]
+--[[unresolved native value]]
                     quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT1_CALL_OVER_SECOND", me, nil --[[missing]], false)
                 end
                 quest:SetTimer(timerId, 10)
@@ -83,9 +83,7 @@ function Main(quest, me)
                 ::FLOW_past_lab_00d01abe::
                 if predicateResult6 then
                     if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
-                    scratchValue8 = resources:ScriptThing(resource)
-                    if 0.0 < quest:GetHealth(scratchValue8) then
-                        scratchValue8 = hero
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_DISGUISE", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
                         goto LAB_00d01be9
                     end
@@ -96,7 +94,7 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
                 ::FLOW_hoist_lab_00d01be9_1::
                 ::LAB_00d01bf8::
-                scratchValue3 = 1
+                scratchValue14 = 1
                 ::LAB_00d02592::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie2)
@@ -105,9 +103,7 @@ function Main(quest, me)
                 if quest:IsWearingClothingItem(hero, "OBJECT_HERO_SHIRT_BANDITCAMP") then
                     if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_TROUSERS_BANDITCAMP") then
                         if not quest:IsActiveThreadTerminating() then
-                            scratchValue8 = resources:ScriptThing(resource)
-                            if 0.0 < quest:GetHealth(scratchValue8) then
-                                scratchValue8 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                 if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_TROUSERS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
                                 goto LAB_00d01be9
                             end
@@ -117,19 +113,15 @@ function Main(quest, me)
                     end
                     if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_HAT_BANDITCAMP") then
                         if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
-                        scratchValue8 = resources:ScriptThing(resource)
-                        if quest:GetHealth(scratchValue8) <= 0.0 then goto LAB_00d01bf8 end
-                        scratchValue8 = hero
+                        if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00d01bf8 end
                         if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_HAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
-                        scratchValue3 = 1
+                        scratchValue14 = 1
                         goto LAB_00d02592
                     end
                     if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_BOOTS_BANDITCAMP") then
                         if not quest:IsActiveThreadTerminating() then
-                            scratchValue8 = resources:ScriptThing(resource)
-                            if 0.0 < quest:GetHealth(scratchValue8) then
-                                scratchValue8 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                 if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_BOOTS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
                                 goto LAB_00d01be9
                             end
@@ -137,19 +129,17 @@ function Main(quest, me)
                         end
                         goto LAB_00d0287c
                     end
-                    local predicateResult20 = quest:IsActiveThreadTerminating()
+                    local isWearingClothingItem = quest:IsActiveThreadTerminating()
                     if not quest:IsWearingClothingItem(hero, "OBJECT_HERO_GLOVES_BANDITCAMP") then
-                        if not predicateResult20 then
-                            scratchValue8 = resources:ScriptThing(resource)
-                            if quest:GetHealth(scratchValue8) <= 0.0 then goto LAB_00d01bf8 end
-                            scratchValue8 = hero
+                        if not isWearingClothingItem then
+                            if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00d01bf8 end
                             if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_GLOVES", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
-                            if not quest:IsActiveThreadTerminating() then scratchValue3 = 1; goto LAB_00d02592 end
+                            if not quest:IsActiveThreadTerminating() then scratchValue14 = 1; goto LAB_00d02592 end
                         end
                         goto LAB_00d0287c
                     end
-                    if not predicateResult20 then
-                        if scratchValue3 == 1 then
+                    if not isWearingClothingItem then
+                        if scratchValue14 == 1 then
                             if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
                             if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                 if not me:Speak(hero, "TEXT_QST_009_BANDIT1_TRIED_AND_IN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
@@ -168,8 +158,7 @@ function Main(quest, me)
                             if not me:Speak(hero, "TEXT_QST_009_BANDIT1_GATE_OPEN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d02870 end
                             if quest:IsActiveThreadTerminating() then goto LAB_00d028a8 end
                         end
-                        scratchValue8 = quest:GetThingWithScriptName("Gate1")
-                        quest:OpenDoor(scratchValue8)
+                        quest:OpenDoor(quest:GetThingWithScriptName("Gate1"))
                         quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_BANDIT_CAMP_OBJECTIVE_05", "BanditCampBoss", "BanditCampEntrance")
                         quest:SetStateBool("Gate1Open", true)
                         quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_MEDIUM))
@@ -197,13 +186,11 @@ function Main(quest, me)
                     goto LAB_00d0287c
                 end
                 if not quest:IsActiveThreadTerminating() then
-                    scratchValue8 = resources:ScriptThing(resource)
-                    if 0.0 < quest:GetHealth(scratchValue8) then
-                        scratchValue8 = hero
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_009_BANDIT1_NO_SHIRT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0287c end
                         if quest:IsActiveThreadTerminating() then goto LAB_00d0287c end
                     end
-                    scratchValue3 = 1
+                    scratchValue14 = 1
                     goto LAB_00d02592
                 end
                 quest:PauseAllNonScriptedEntities(false)
@@ -215,13 +202,11 @@ function Main(quest, me)
         goto LAB_00d02a4d
     end
     if not quest:IsActiveThreadTerminating() then
-        if scratchValue8:IsTalkedToByHero() then
+        if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then goto LAB_00d02851 end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            scratchValue8 = resources:ScriptThing(resource)
-            if 0.0 < quest:GetHealth(scratchValue8) then
-                scratchValue8 = hero
+            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                 me:Speak(hero, "TEXT_QST_009_BANDIT1_ASIDE", GROUP_SELECT_FIRST, false, true, false)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
@@ -266,9 +251,9 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d02851 end
     if 0.0 < quest:GetHealth(me) then
-        conversationId = quest:AddNewConversation(me, false, false)
-        quest:AddPersonToConversation(conversationId, hero)
-        quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT1_ATTACKED_NEW", me, hero, false)
+        local conversationId2 = quest:AddNewConversation(me, false, false)
+        quest:AddPersonToConversation(conversationId2, hero)
+        quest:AddLineToConversation(conversationId2, "TEXT_QST_009_BANDIT1_ATTACKED_NEW", me, hero, false)
     end
     quest:SetStateBool("AttackedOuterGateGuards", true)
     quest:GiveThingBestEnemyTarget(me, hero)

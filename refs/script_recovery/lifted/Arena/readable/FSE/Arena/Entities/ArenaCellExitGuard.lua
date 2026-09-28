@@ -12,7 +12,7 @@ function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult2, predicateResult23, isActiveThreadTerminating, questionAnswer
-    local questionAnswer2, scratchValue14, scratchValue45, resource, this_00, meControl, movie2
+    local questionAnswer2, scratchValue46, resource, this_00, meControl, movie2
     local function ReleaseEverything()
         local this_00 = movie2
         resources:DestroyMovie(this_00)
@@ -115,9 +115,7 @@ function Main(quest, me)
                         local predicateResult9 = quest:IsActiveThreadTerminating()
                         if questionAnswer == 1 then
                             if not predicateResult9 then
-                                scratchValue14 = resources:ScriptThing(meControl)
-                                if 0.0 < quest:GetHealth(scratchValue14) then
-                                    scratchValue14 = hero
+                                if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                     if not me:Speak(hero, "TEXT_QST_005_V2_ARENA_EXIT_CELL_GUARD_STAYING", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00f1c9c5 end
                                     if quest:IsActiveThreadTerminating() then goto LAB_00f1bfb3 end
                                 end
@@ -126,14 +124,12 @@ function Main(quest, me)
                             goto LAB_00f1bfb3
                         end
                         if not predicateResult9 then
-                            scratchValue14 = resources:ScriptThing(meControl)
-                            if 0.0 < quest:GetHealth(scratchValue14) then
-                                scratchValue14 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 if not me:Speak(hero, "TEXT_QST_005_V2_ARENA_EXIT_CELL_GUARD_LEAVING", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00f1bfb3 end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f1c9c5 end
                             end
                             -- TODO(native): CCharString__AssignFromWide("");
-                            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", scratchValue45)
+                            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", scratchValue46)
                             quest:SetStateBool("MissionFailed", true)
                             goto LAB_00f1c512
                         end
@@ -208,23 +204,19 @@ function Main(quest, me)
                                 this_00 = movie
                                 goto LAB_00f1ca0d
                             end
-                            scratchValue14 = resources:ScriptThing(meControl)
-                            if 0.0 < quest:GetHealth(scratchValue14) then
-                                scratchValue14 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 if not me:Speak(hero, "TEXT_QST_005_V2_ARENA_EXIT_CELL_GUARD_STAYING", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00f1bfb3 end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f1bfb3 end
                             end
                         else
                             if predicateResult then goto LAB_00f1bfb3 end
-                            scratchValue14 = resources:ScriptThing(meControl)
-                            if 0.0 < quest:GetHealth(scratchValue14) then
-                                scratchValue14 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 if not me:Speak(hero, "TEXT_QST_005_V2_ARENA_EXIT_CELL_GUARD_LEAVING", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00f1bfb3 end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f1bfb3 end
                             end
                             quest:SetStateBool("MissionFailed", true)
                             -- TODO(native): CCharString__AssignFromWide("");
-                            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, nil --[[missing]], scratchValue45)
+                            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, nil --[[missing]], scratchValue46)
                         end
                         goto LAB_00f1c512
                     end
@@ -247,11 +239,11 @@ function Main(quest, me)
             resources:DestroyMovie(this_00)
             ReleaseControl(); return
         end
-        if scratchValue14:MsgIsHitByHero() then
+        if me:MsgIsHitByHero() then
             goto LAB_00f1c5ba
         else
-            if scratchValue14:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not scratchValue14:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f1c5ba end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f1c5ba end
             end
             predicateResult23 = false
         end
@@ -264,9 +256,7 @@ function Main(quest, me)
                 quest:SetStateBool("InHitCutsceneAlready", true)
                 movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                scratchValue14 = resources:ScriptThing(meControl)
-                if 0.0 < quest:GetHealth(scratchValue14) then
-                    scratchValue14 = hero
+                if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                     me:Speak(hero, "TEXT_QST_005_V2_ARENA_EXIT_CELL_GUARD_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
@@ -289,8 +279,7 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
             end
         elseif not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("CellExitMarker"), 1.0)) or me:IsPerformingScriptTask()) then
-            scratchValue14 = quest:GetThingWithScriptName("CellExitMarker")
-            me:MoveToPosition(scratchValue14:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+            me:MoveToPosition(quest:GetThingWithScriptName("CellExitMarker"):GetPos(), 0, ENTITY_MOVE_WALK, false, true)
             isActiveThreadTerminating = false
         elseif not isActiveThreadTerminating then
             if not me:IsPerformingScriptTask() then

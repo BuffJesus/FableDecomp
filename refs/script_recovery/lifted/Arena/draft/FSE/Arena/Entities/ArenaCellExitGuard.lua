@@ -477,15 +477,15 @@ function Main(quest, me)
             resources:DestroyMovie(this_00)
             __cleanup_LAB_00f1ca16(); return
         end
-        bVar6 = pCVar11:MsgIsHitByHero()
+        bVar6 = me:MsgIsHitByHero()
         if bVar6 then
             goto LAB_00f1c5ba
         else
-            bVar8 = pCVar11:MsgIsHitByAnySpecialAbilityFromHero()
+            bVar8 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar8 then
                 bVar8 = true
                 bVar4 = true
-                bVar6 = pCVar11:MsgIsHitByHeroSpecialAbility(0xe)
+                bVar6 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar6 then goto LAB_00f1c5ba end
             end
             bVar8 = true

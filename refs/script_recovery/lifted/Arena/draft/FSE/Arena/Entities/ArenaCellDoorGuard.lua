@@ -765,13 +765,13 @@ function Main(quest, me)
                 this_01 = xStack_214
                 goto LAB_00f19a72
             end
-            bVar3 = pCVar6:MsgIsHitByHero()
+            bVar3 = me:MsgIsHitByHero()
             if bVar3 then
                 goto LAB_00f19571
             else
-                bVar3 = pCVar6:MsgIsHitByAnySpecialAbilityFromHero()
+                bVar3 = me:MsgIsHitByAnySpecialAbilityFromHero()
                 if bVar3 then
-                    bVar3 = pCVar6:MsgIsHitByHeroSpecialAbility(0xe)
+                    bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not bVar3 then goto LAB_00f19571 end
                 end
                 bVar3 = false

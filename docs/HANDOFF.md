@@ -1,8 +1,7 @@
 # Lua recovery handoff - 2026-09-26
 
-**Resume here (2026-09-28, evening):** corpus smoke 21 → 4 failing functions today, 0 new; 3 real
-([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)): the two Arena cell guards (merged `pCVar6` receiver, needs
-register reaching definitions), SickChild helper_ECE460 (`$ARG1` from a resource string member unless "NULL":
+**Resume here (2026-09-28, evening):** corpus smoke 21 → 2 failing functions today, 0 new; 1 real
+([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)): SickChild helper_ECE460 (`$ARG1` from a resource string member unless "NULL":
 needs the resource layout). Roth fixed (byte flag printed under two dwords). Today: quest helpers reclassified from entity code, literal TextKeys, vector slots,
 IsDistanceFromPositionUnder (sidecar patch `novi-zzzzzzzzzzzzzzzzzzz-position-under`, candidate builds), dead
 cleanup-flag bookkeeping, `ctr_` counters (ChickenMaster score), AskForBook's lost parameter + callers' operands,

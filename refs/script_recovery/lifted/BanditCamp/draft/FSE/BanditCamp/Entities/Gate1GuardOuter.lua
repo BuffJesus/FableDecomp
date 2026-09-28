@@ -492,7 +492,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
-        bVar4 = pCVar10:IsTalkedToByHero()
+        bVar4 = me:IsTalkedToByHero()
         if bVar4 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive

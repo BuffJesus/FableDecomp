@@ -1801,6 +1801,14 @@ class UnitConverter:
             decompile = decompile[:start] + replacement + decompile[end:]
         return decompile
 
+    def respell_me_receivers(self, decompile, fn, entity):
+        """Entity thing calls whose receiver register provably holds `this + 8` on every path
+        (native_receiver_reaching: the Arena cell guards' MsgIsHitByHero on a merged `pCVar6`)."""
+        if not entity:
+            return decompile
+        from tools.script_recovery.native_receiver_reaching import respell_me_receivers
+        return respell_me_receivers(decompile, fn, _text_order_sites(decompile, fn), self.rdata)
+
     def restore_local_helper_operands(self, decompile, fn):
         """Operands a local helper call lost (native_local_helper_operands), decoded from the pushes before it."""
         from tools.script_recovery.native_local_helper_operands import restore_local_helper_operands
@@ -2025,7 +2033,7 @@ class UnitConverter:
                 spec_l.float_at = self.float_at
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.restore_local_helper_operands(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(rename_stack_parameters(unwrap_statements(fn['decompile'])), name, literal_vectors)))), fn), fn), fn), fn), fn), fn), fn.get('calls', []), fn)
+                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.respell_me_receivers(self.restore_local_helper_operands(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(rename_stack_parameters(unwrap_statements(fn['decompile'])), name, literal_vectors)))), fn), fn), fn), fn, entity), fn), fn), fn), fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in

@@ -12,8 +12,7 @@ local chamTalk, earlyTalk
 function Main(quest, me)
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult11, scratchValue, scratchValue32, scratchValue33, resource, movie2
-    local resource3, meControl
+    local predicateResult11, scratchValue, scratchValue4, resource, movie2, resource3, meControl
     resources:NewResource()
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
@@ -32,13 +31,11 @@ function Main(quest, me)
             if me:IsTalkedToByHero() then
                 movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                scratchValue32 = quest:GetStateInt("ArenaState")
-                if scratchValue32 ~= 3 then
-                    if scratchValue32 ~= 5 or chamTalk then
+                scratchValue4 = quest:GetStateInt("ArenaState")
+                if scratchValue4 ~= 3 then
+                    if scratchValue4 ~= 5 or chamTalk then
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        scratchValue33 = resources:ScriptThing(meControl)
-                        if 0.0 < quest:GetHealth(scratchValue33) then
-                            scratchValue33 = hero
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                             end
@@ -50,16 +47,14 @@ function Main(quest, me)
                             end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_ENTER_ARENA_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        scratchValue32 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while scratchValue32 < 0 do
+                        scratchValue4 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while scratchValue4 < 0 do
                             if not quest:NewScriptFrame(me) then goto LAB_00f19a3c end
-                            scratchValue32 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            scratchValue4 = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        if scratchValue32 ~= 1 then
-                            scratchValue33 = resources:ScriptThing(meControl)
-                            if 0.0 < quest:GetHealth(scratchValue33) then
-                                scratchValue33 = hero
+                        if scratchValue4 ~= 1 then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f19a3c end
                                 end
@@ -85,8 +80,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -106,9 +100,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(meControl)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
-                                        scratchValue33 = hero
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -122,8 +114,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -137,8 +128,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -152,8 +142,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -167,8 +156,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -182,8 +170,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -209,9 +196,7 @@ function Main(quest, me)
                                         end
                                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a2a end
                                     end
-                                    scratchValue33 = resources:ScriptThing(resource3)
-                                    if 0.0 < quest:GetHealth(scratchValue33) then
-                                        scratchValue33 = hero
+                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource3)) then
                                         while me:IsPerformingScriptTask() do
                                             if not quest:NewScriptFrame(me) then goto LAB_00f19a09 end
                                         end
@@ -251,14 +236,14 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
                     end
                     quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_ENTER_ARENA_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                    scratchValue32 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while scratchValue32 < 0 do
+                    scratchValue4 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while scratchValue4 < 0 do
                         if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
-                        scratchValue32 = quest:MsgIsQuestionAnsweredYesOrNo()
+                        scratchValue4 = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     if not quest:IsActiveThreadTerminating() then
                         local predicateResult8 = quest:IsActiveThreadTerminating()
-                        if scratchValue32 == 1 then
+                        if scratchValue4 == 1 then
                             if predicateResult8 then goto LAB_00f19a17 end
                             quest:SetStateBool("NeedBertForSpeech", true)
                             local arenaCellDoorGuard22 = quest:GetThingWithScriptName("ArenaCellDoorGuard2")
@@ -279,8 +264,7 @@ function Main(quest, me)
                                 end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00f199b9 end
                             end
-                            scratchValue33 = resources:ScriptThing(resource)
-                            if 0.0 < quest:GetHealth(scratchValue33) then
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f199ae end
                                 end
@@ -297,9 +281,7 @@ function Main(quest, me)
                             goto LAB_00f194b7
                         end
                         if not predicateResult8 then
-                            scratchValue33 = resources:ScriptThing(meControl)
-                            if 0.0 < quest:GetHealth(scratchValue33) then
-                                scratchValue33 = hero
+                            if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                                 end
@@ -314,9 +296,7 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     if not earlyTalk then
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        scratchValue33 = resources:ScriptThing(meControl)
-                        if 0.0 < quest:GetHealth(scratchValue33) then
-                            scratchValue33 = hero
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a17 end
                             end
@@ -325,9 +305,7 @@ function Main(quest, me)
                         earlyTalk = true
                     else
                         if quest:IsActiveThreadTerminating() then goto LAB_00f19a17 end
-                        scratchValue33 = resources:ScriptThing(meControl)
-                        if 0.0 < quest:GetHealth(scratchValue33) then
-                            scratchValue33 = hero
+                        if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then goto LAB_00f19a3c end
                             end
@@ -352,11 +330,11 @@ function Main(quest, me)
                 resources:ReleaseResource(meControl)
                 return
             end
-            if scratchValue33:MsgIsHitByHero() then
+            if me:MsgIsHitByHero() then
                 goto LAB_00f19571
             else
-                if scratchValue33:MsgIsHitByAnySpecialAbilityFromHero() then
-                    if not scratchValue33:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f19571 end
+                if me:MsgIsHitByAnySpecialAbilityFromHero() then
+                    if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f19571 end
                 end
                 predicateResult11 = false
             end
@@ -369,9 +347,7 @@ function Main(quest, me)
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     local movie = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    scratchValue33 = resources:ScriptThing(meControl)
-                    if 0.0 < quest:GetHealth(scratchValue33) then
-                        scratchValue33 = hero
+                    if 0.0 < quest:GetHealth(resources:ScriptThing(meControl)) then
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00f19a6b end
                         end
@@ -391,8 +367,7 @@ function Main(quest, me)
                     resources:DestroyMovie(movie)
                 end
             elseif not ((not quest:IsDistanceBetweenThingsOver(me, quest:GetThingWithScriptName("GuardingDoorMarkerRight"), 1.0)) or me:IsPerformingScriptTask()) then
-                scratchValue33 = quest:GetThingWithScriptName("GuardingDoorMarkerRight")
-                me:MoveToPosition(scratchValue33:GetPos(), 0, ENTITY_MOVE_WALK, false, true)
+                me:MoveToPosition(quest:GetThingWithScriptName("GuardingDoorMarkerRight"):GetPos(), 0, ENTITY_MOVE_WALK, false, true)
                 scratchValue = 0
             elseif scratchValue == 0 then
                 if not me:IsPerformingScriptTask() then
