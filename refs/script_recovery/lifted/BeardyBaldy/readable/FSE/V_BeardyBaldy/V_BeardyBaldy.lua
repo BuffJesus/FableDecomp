@@ -281,51 +281,11 @@ end
 
 -- V_BeardyBaldy.WatchForAttack (retail 0x00e53d90)
 function WatchForAttack(quest, moi)
-    local scratchValue, scratchValue2, scratchValue3, predicateResult, sequence
+    local predicateResult, sequence
     repeat
-        if quest:IsActiveThreadTerminating() then goto LAB_00e53ea8 end
-        goto FLOW_past_lab_00e53ea8
-        ::LAB_00e53ea8::
-        moi = nil
-        scratchValue = moi._8_4_ ~= 0
-        if scratchValue then
-            -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;
-            -- TODO(native): __native_condition_1 = *native_arg_moi._8_4_ == 0
-            scratchValue = nil --[[unresolved native value]]
-        end
-        if scratchValue then
-            -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-        end
-        ::FLOW_after_lab_00e53ec1::
-        ::LAB_00e53ec9::
-        do return end
-        ::FLOW_past_lab_00e53ea8::
+        if quest:IsActiveThreadTerminating() then return end
         if not (moi ~= nil and not moi:IsNull()) or not (moi ~= nil and moi:IsAlive()) then
-            if quest:IsActiveThreadTerminating() then
-                moi = nil
-                scratchValue2 = moi._8_4_ == 0
-                if not scratchValue2 then
-                    -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;
-                    -- TODO(native): __native_condition_3 = *native_arg_moi._8_4_ ~= 0
-                    scratchValue2 = nil --[[unresolved native value]]
-                end
-                if scratchValue2 then goto LAB_00e53ec9 end
-                -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-                goto FLOW_after_lab_00e53ec1
-            end
-            moi = nil
-            if quest:IsActiveThreadTerminating() then
-                scratchValue3 = moi._8_4_ == 0
-                if not scratchValue3 then
-                    -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;
-                    -- TODO(native): __native_condition_4 = *native_arg_moi._8_4_ ~= 0
-                    scratchValue3 = nil --[[unresolved native value]]
-                end
-                if scratchValue3 then goto LAB_00e53ec9 end
-                -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-                goto FLOW_after_lab_00e53ec1
-            end
-            goto LAB_00e53ea8
+            return
         end
         if (moi ~= nil and not moi:IsNull()) and moi:MsgIsHitByHero() then goto LAB_00e53e21 end
         sequence = moi ~= nil and not moi:IsNull()

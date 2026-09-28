@@ -14,7 +14,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_BeardyBaldy | V_BeardyBaldy | WatchForNewHairdo | 0x00e50150 | True | 0 |
 | V_BeardyBaldy | V_BeardyBaldy | WatchForNewBeard | 0x00e50210 | True | 0 |
 | V_BeardyBaldy | V_BeardyBaldy | WatchForNewTash | 0x00e502e0 | True | 1 |
-| V_BeardyBaldy | V_BeardyBaldy | WatchForAttack | 0x00e53d90 | True | 11 |
+| V_BeardyBaldy | V_BeardyBaldy | WatchForAttack | 0x00e53d90 | True | 5 |
 | V_BeardyBaldy | V_BeardyBaldy | GoTalkToBeardyBaldy | 0x00e50650 | True | 1 |
 | V_BeardyBaldy | V_BeardyBaldy | IsHeroWearingAnyTash | 0x00e538f0 | True | 0 |
 | V_BeardyBaldy | V_BeardyBaldy | IsHeroWearingAnyOddHairdo | 0x00e53ad0 | True | 0 |
@@ -28,4 +28,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_BeardyBaldy | BB_BeardyBaldyMan | helper_E53CB0 | 0x00e53cb0 | True | 3 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | helper_E53F60 | 0x00e53f60 | True | 5 |
 
-Summary: `{"owners": 2, "functions": 23, "missing": 0, "functionSyntaxPassed": 23, "fileSyntaxPassed": 3, "fileSyntaxChecked": 3, "todo": 58}`
+Summary: `{"owners": 2, "functions": 23, "missing": 0, "functionSyntaxPassed": 23, "fileSyntaxPassed": 3, "fileSyntaxChecked": 3, "todo": 52}`

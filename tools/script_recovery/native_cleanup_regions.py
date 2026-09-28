@@ -310,15 +310,22 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
         while head_end < len(new_lines) and re.match(r'^\s*(local |--)', new_lines[head_end]):
             head_end += 1
         defs = []
+        empty = []
         for label in sorted(wanted):
             body = expand(label)
             if not body:
+                empty.append(_name(label, regions))
                 continue
             defs.append(f'    local function {_name(label, regions)}()')
             defs.extend('        ' + s for s in body)
             defs.append('    end')
             report[label] = body
         joined = '\n'.join(new_lines[:head_end] + defs + new_lines[head_end:])
+        # a region with nothing left to run defines no function: its call sites go too (V_BeardyBaldy
+        # WatchForAttack 0x00E53D90, whose only epilogue was a by-value thing release, called a nil helper)
+        for name in empty:
+            joined = re.sub(r'(?m)^[ \t]*' + re.escape(name) + r'\(\)[ \t]*\n', '', joined)
+            joined = re.sub(re.escape(name) + r'\(\); ', '', joined)
         # A hoisted cleanup can replace a goto immediately before another branch's
         # label. Lua requires return to end its block; a do block keeps that exit
         # while leaving the following label reachable by the other branch.

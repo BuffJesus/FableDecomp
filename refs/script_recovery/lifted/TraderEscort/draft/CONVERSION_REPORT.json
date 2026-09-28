@@ -604,7 +604,6 @@
             "QUESTTHING_Empty",
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource",
-            "QUESTTHING_Empty",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
@@ -637,7 +636,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 78,
+          "lines": 77,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -679,7 +678,6 @@
             "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
-            "QUESTTHING_Empty",
             "MsgOnHeroPickedPocket",
             "IsActiveThreadTerminating",
             "IsEqualTo",
@@ -689,16 +687,14 @@
             "IsActiveThreadTerminating",
             "SetMasterGameState",
             "QUESTTHING_Empty",
-            "QUESTTHING_Empty",
             "MsgIsKilledBy",
             "IsActiveThreadTerminating",
             "SetMasterGameState",
             "QUESTTHING_Empty",
-            "QUESTTHING_Empty",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 82,
+          "lines": 79,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

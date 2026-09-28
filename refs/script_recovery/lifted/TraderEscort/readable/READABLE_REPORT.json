@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "trader_escort",
- "draft": "work\\codex_lua_resume_20260927\\comparison\\after\\trader_escort",
+ "draft": "refs\\script_recovery\\lifted\\TraderEscort\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -16842,7 +16842,7 @@
      "function": "WatchForSurprisingBalverines",
      "rewrites": {
       "flags": 0,
-      "termination": 7,
+      "termination": 8,
       "listArithmetic": 0,
       "byteIndices": 1,
       "voidReturns": 0,
@@ -16850,8 +16850,8 @@
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 7,
-      "declarations": 8,
+      "flagTests": 8,
+      "declarations": 9,
       "decimalLiterals": 0
      }
     },
@@ -16880,7 +16880,7 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 1,
+      "nilReleases": 0,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
@@ -16897,7 +16897,7 @@
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
-      "nilReleases": 3,
+      "nilReleases": 2,
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
@@ -17058,21 +17058,21 @@
        ]
       },
       "bVar5_11": {
-       "name": "predicateResult3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar5_12": {
        "name": "isActiveThreadTerminating6",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
        ]
       },
-      "bVar5_13": {
+      "bVar5_12": {
        "name": "isActiveThreadTerminating7",
+       "basis": "consistent call/state result",
+       "assignmentRoles": [
+        "isActiveThreadTerminating"
+       ]
+      },
+      "bVar5_13": {
+       "name": "isActiveThreadTerminating8",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "isActiveThreadTerminating"
@@ -17202,13 +17202,13 @@
          76
         ],
         "bVar5_11": [
-         82
+         81
         ],
         "bVar5_12": [
-         89
+         87
         ],
         "bVar5_13": [
-         93
+         91
         ]
        }
       },
@@ -17297,7 +17297,7 @@
     },
     {
      "function": "WatchForMissionRules",
-     "sourceLine": 223,
+     "sourceLine": 221,
      "locals": {
       "__native_condition_1": {
        "name": "scratchValue",
@@ -18476,7 +18476,7 @@
     },
     {
      "function": "TurnToBalv",
-     "sourceLine": 619,
+     "sourceLine": 617,
      "locals": {
       "native_arg_Me": {
        "name": "me",
@@ -18671,7 +18671,7 @@
     },
     {
      "function": "WatchForPickpocketing",
-     "sourceLine": 699,
+     "sourceLine": 697,
      "locals": {
       "native_arg_Trader": {
        "name": "trader",
@@ -18770,25 +18770,25 @@
        "versions": {
         "bVar1_1": [
          6,
-         80
+         77
         ],
         "bVar1_2": [
-         16
+         15
         ],
         "bVar1_3": [
-         19
+         18
         ],
         "bVar1_4": [
-         24
+         23
         ],
         "bVar1_5": [
-         28
+         27
         ],
         "bVar1_6": [
-         44
+         43
         ],
         "bVar1_7": [
-         71
+         69
         ]
        }
       },
@@ -18797,11 +18797,11 @@
        "originalDeclaration": "    local bVar1, cVar2, native_arg_sequence_1, xStack_c\n",
        "versions": {
         "cVar2_1": [
-         21
+         20
         ],
         "cVar2_2": [
-         65,
-         67
+         63,
+         65
         ]
        }
       },
@@ -18810,15 +18810,15 @@
        "originalDeclaration": "    local bVar1, cVar2, native_arg_sequence_1, xStack_c\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         29
+         28
         ],
         "native_arg_sequence_1_2": [
-         31,
-         33,
-         37,
-         39,
-         46,
-         48
+         30,
+         32,
+         36,
+         38,
+         45,
+         47
         ]
        }
       },
@@ -18828,12 +18828,10 @@
        "versions": {
         "xStack_c_1": [
          4,
-         9,
-         60,
-         75
+         9
         ],
         "xStack_c_2": [
-         15
+         14
         ]
        }
       }
@@ -18841,14 +18839,12 @@
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
        "2": "    local bVar1_1, bVar1_2, bVar1_3, bVar1_4, bVar1_5, bVar1_6, bVar1_7, cVar2_1, cVar2_2, native_arg_sequence_1_1, native_arg_sequence_1_2, xStack_c_1, xStack_c_2\n",
-       "29": "                        native_arg_sequence_1_1 = false\n"
+       "28": "                        native_arg_sequence_1_1 = false\n"
       },
       "xStack_c_1": {
        "2": "    local bVar1_1, bVar1_2, bVar1_3, bVar1_4, bVar1_5, bVar1_6, bVar1_7, cVar2_1, cVar2_2, native_arg_sequence_1_1, native_arg_sequence_1_2, xStack_c_1, xStack_c_2\n",
        "4": "    xStack_c_1 = nil\n",
-       "9": "            xStack_c_1 = nil\n",
-       "60": "            xStack_c_1 = nil\n",
-       "75": "            xStack_c_1 = nil\n"
+       "9": "            xStack_c_1 = nil\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -18856,7 +18852,7 @@
     },
     {
      "function": "MakeTraderComment",
-     "sourceLine": 782,
+     "sourceLine": 777,
      "locals": {
       "native_arg_comment_to_make": {
        "name": "commentToMake",
@@ -20646,10 +20642,10 @@
        "hero": 1,
        "cutscenes": 0,
        "staleLabelComments": 1,
-       "aliveStaging": 6,
+       "aliveStaging": 5,
        "exitChecksInlined": 4,
        "frameChecks": 2,
-       "inlinedTemporaries": 10,
+       "inlinedTemporaries": 9,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -20689,8 +20685,8 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 90,
-       "temporaries": 16,
+       "lines": 87,
+       "temporaries": 15,
        "labels": 10,
        "gotos": 13,
        "terminationChecks": 10,
@@ -20893,7 +20889,7 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 77,
+       "lines": 76,
        "temporaries": 11,
        "labels": 1,
        "gotos": 1,
@@ -20990,7 +20986,7 @@
     "counts": {
      "genericTemporaries": 51,
      "gotos": 35,
-     "nativeNames": 64,
+     "nativeNames": 60,
      "unresolvedDiagnostics": 21,
      "machineTemporaries": 2
     },
@@ -21112,16 +21108,6 @@
       "text": "scratchValue6"
      },
      {
-      "line": 141,
-      "category": "nativeNames",
-      "text": "__cleanup_LAB_00e063f5"
-     },
-     {
-      "line": 144,
-      "category": "nativeNames",
-      "text": "__cleanup_LAB_00e063f5"
-     },
-     {
       "line": 147,
       "category": "genericTemporaries",
       "text": "scratchValue"
@@ -21207,11 +21193,6 @@
       "text": "scratchValue"
      },
      {
-      "line": 164,
-      "category": "nativeNames",
-      "text": "__cleanup_LAB_00e063f5"
-     },
-     {
       "line": 165,
       "category": "genericTemporaries",
       "text": "scratchValue"
@@ -21225,11 +21206,6 @@
       "line": 166,
       "category": "nativeNames",
       "text": "LAB_00e06319"
-     },
-     {
-      "line": 168,
-      "category": "nativeNames",
-      "text": "__cleanup_LAB_00e063f5"
      },
      {
       "line": 170,

@@ -138,10 +138,10 @@ function WatchForSurprisingBalverines(quest)
                     quest:SetTimer(quest:GetStateInt("CommentTimer"), 0)
                     MakeTraderComment(quest, "BALVERINE_SURPRISE", quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"), 0)
                     if math.random(0, 32767) % 5 == 0 then
-                        if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end
+                        if quest:IsActiveThreadTerminating() then return end
                         quest:GiveThingBestEnemyTarget(balverineEasy, quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"))
                     else
-                        if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end
+                        if quest:IsActiveThreadTerminating() then return end
                         quest:GiveThingBestEnemyTarget(balverineEasy, hero)
                     end
                     scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
@@ -161,11 +161,11 @@ function WatchForSurprisingBalverines(quest)
     goto LAB_00e0642a
     ::LAB_00e06319::
     if scratchValue then
-        if not quest:NewScriptFrame() then __cleanup_LAB_00e063f5(); return end
+        if not quest:NewScriptFrame() then return end
         scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
         goto LAB_00e06319
     end
-    if quest:IsActiveThreadTerminating() then __cleanup_LAB_00e063f5(); return end
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetStateInt("BalverinesToSurpriseHeroNeeded", quest:GetStateInt("BalverinesToSurpriseHeroNeeded") - 1)
     ::LAB_00e06364::
     if quest:IsActiveThreadTerminating() then goto LAB_00e06415 end

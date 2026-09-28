@@ -587,26 +587,17 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;",
-            "unlifted: (**(code **)(native_arg_moi._8_4_ + 4))();",
+            "label LAB_00e53ea8",
             "label LAB_00e53ec1",
-            "unlifted: *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;",
-            "unlifted: (**(code **)(native_arg_moi._8_4_ + 4))();",
-            "unlifted: *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;",
-            "unlifted: (**(code **)(native_arg_moi._8_4_ + 4))();",
-            "MsgIsHitByAnyAggressiveSpecialAbilityFrom: CScriptThing method not in FSE manifest",
-            "unlifted: __native_condition_1 = *native_arg_moi._8_4_ == 0",
-            "unlifted: __native_condition_3 = *native_arg_moi._8_4_ ~= 0",
-            "unlifted: __native_condition_4 = *native_arg_moi._8_4_ ~= 0"
+            "label LAB_00e53ec9",
+            "goto LAB_00e53ea8",
+            "MsgIsHitByAnyAggressiveSpecialAbilityFrom: CScriptThing method not in FSE manifest"
           ],
           "calls": [
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "IsAlive",
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "IsActiveThreadTerminating",
-            "QUESTTHING_Empty",
             "MsgIsHitByHero",
             "MsgIsHitByAnyAggressiveSpecialAbilityFrom",
             "GetHealth",
@@ -615,7 +606,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 114,
+          "lines": 82,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -625,26 +616,18 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00e53ec1;",
             "goto FLOW_past_lab_00e53e21;",
             "goto FLOW_past_lab_00e53e43;",
-            "goto FLOW_past_lab_00e53ea8;",
             "goto LAB_00e53e21;",
             "goto LAB_00e53e43;",
-            "goto LAB_00e53ea8;",
-            "if ((native_arg_moi._8_4_ == 0) || (*native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1, *native_arg_moi._8_4_ != 0)) goto LAB_00e53ec9;",
             "if (fret_0 <= (float10)9.999999747378752e-05) goto LAB_00e53e43;",
             "if (native_arg_sequence_1) goto LAB_00e53e21;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00e53ec1",
             "FLOW_past_lab_00e53e21",
             "FLOW_past_lab_00e53e43",
-            "FLOW_past_lab_00e53ea8",
             "LAB_00e53e21",
-            "LAB_00e53e43",
-            "LAB_00e53ea8",
-            "LAB_00e53ec9"
+            "LAB_00e53e43"
           ]
         },
         {
@@ -1795,7 +1778,7 @@
         "functionSyntaxPassed": 23,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 58
+        "todo": 52
       }
     }
   ],
@@ -1806,6 +1789,6 @@
     "functionSyntaxPassed": 23,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 58
+    "todo": 52
   }
 }

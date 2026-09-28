@@ -208,3 +208,17 @@ checkpoints 6-10; pinned packages untouched (same rule, reference commit 1c7e96d
 STAGING.json is now listed). Mock smoke vs v33: 0 new, 4 fixed, 6 remain (BeardyBaldy WatchForAttack /
 ResetRandomSpeechTime, BordelloLady Main + GetLHTSTag harness artifact, Witch, helper_ECE460).
 Open, recorded: Roth's cross-variable high-byte flags (pCVar15 doubles as a real CCharString pointer).
+
+## Eleventh checkpoint: by-value thing releases and empty cleanup regions
+
+- `fold_by_value_thing_release` now accepts the wrapped typed-export forms (brace on its own line,
+  inverted test's goto on the same line: V_BeardyBaldy WatchForAttack 0x00E53D90) and drops a released
+  PARAMETER's destructor vtable reset (`P = QUESTTHING_Empty()` -> the fake `P = nil`). WatchForAttack
+  no longer indexes nil; TraderEscort loses four fake `native_arg_* = nil` stores (IsEqualTo intact).
+  A first attempt as a separate early pass broke by-value call arguments corpus-wide and was reverted.
+- `native_cleanup_regions`: a hoisted region whose body is empty defines no helper; its call sites now go
+  too. This removed the corpus's only three calls to undefined helpers (__cleanup_LAB_00d0f264 in
+  BanditCampBossBattle, __cleanup_LAB_00e063f5 in TraderEscort, __cleanup_LAB_00e53ea8 in BeardyBaldy):
+  latent nil-call crashes on those exits.
+- 29-unit A/B: BanditCamp, BeardyBaldy, TraderEscort only. Tests: release/flags 21, cleanup regions 6.
+  BeardyBaldy smoke: WatchForAttack fixed; ResetRandomSpeechTime `% 0` is a mock artifact (game data 0).

@@ -5011,7 +5011,7 @@
      "function": "WatchForAttack",
      "rewrites": {
       "flags": 0,
-      "termination": 1,
+      "termination": 3,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -5019,8 +5019,8 @@
       "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
-      "flagTests": 1,
-      "declarations": 3,
+      "flagTests": 3,
+      "declarations": 5,
       "decimalLiterals": 0
      }
     },
@@ -6291,13 +6291,6 @@
        "assignmentRoles": []
       },
       "__native_condition_1": {
-       "name": "scratchValue",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "__native_condition_2": {
        "name": "predicateResult",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -6305,21 +6298,7 @@
         "predicateResult"
        ]
       },
-      "__native_condition_3": {
-       "name": "scratchValue2",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "__native_condition_4": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "__native_condition_5": {
+      "__native_condition_2": {
        "name": "predicateResult2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
@@ -6360,21 +6339,21 @@
        ]
       },
       "bVar3_2": {
-       "name": "predicateResult6",
+       "name": "isActiveThreadTerminating2",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "predicateResult"
+        "isActiveThreadTerminating"
        ]
       },
       "bVar3_3": {
-       "name": "predicateResult7",
+       "name": "isActiveThreadTerminating3",
        "basis": "consistent call/state result",
        "assignmentRoles": [
-        "predicateResult"
+        "isActiveThreadTerminating"
        ]
       },
       "cVar2_1": {
-       "name": "scratchValue4",
+       "name": "scratchValue",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -6388,7 +6367,7 @@
        ]
       },
       "cVar2_3": {
-       "name": "scratchValue5",
+       "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null
@@ -6408,73 +6387,73 @@
      "splitLocals": {
       "bVar1": {
        "declarationLine": 2,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
        "versions": {
         "bVar1_1": [
          6,
-         113
+         76
         ],
         "bVar1_2": [
-         93,
-         98
+         56,
+         61
         ],
         "bVar1_3": [
-         105
+         68
         ]
        }
       },
       "bVar3": {
        "declarationLine": 2,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
        "versions": {
         "bVar3_1": [
          4,
-         70,
-         102
+         33,
+         65
         ],
         "bVar3_2": [
-         35
+         17
         ],
         "bVar3_3": [
-         49
+         21
         ]
        }
       },
       "cVar2": {
        "declarationLine": 2,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
        "versions": {
         "cVar2_1": [
-         30
+         13
         ],
         "cVar2_2": [
-         66
+         29
         ],
         "cVar2_3": [
-         79
+         42
         ]
        }
       },
       "native_arg_sequence_1": {
        "declarationLine": 2,
-       "originalDeclaration": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
+       "originalDeclaration": "    local __native_condition_1, __native_condition_2, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1\n",
        "versions": {
         "native_arg_sequence_1_1": [
-         71
+         34
         ],
         "native_arg_sequence_1_2": [
-         73,
-         75,
-         81,
-         83
+         36,
+         38,
+         44,
+         46
         ]
        }
       }
      },
      "removedLiteralLocals": {
       "native_arg_sequence_1_1": {
-       "2": "    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1_1, bVar1_2, bVar1_3, bVar3_1, bVar3_2, bVar3_3, cVar2_1, cVar2_2, cVar2_3, fret_0, native_arg_sequence_1_1, native_arg_sequence_1_2\n",
-       "71": "            native_arg_sequence_1_1 = false\n"
+       "2": "    local __native_condition_1, __native_condition_2, bVar1_1, bVar1_2, bVar1_3, bVar3_1, bVar3_2, bVar3_3, cVar2_1, cVar2_2, cVar2_3, fret_0, native_arg_sequence_1_1, native_arg_sequence_1_2\n",
+       "34": "            native_arg_sequence_1_1 = false\n"
       }
      },
      "inlinedLiteralLocals": {},
@@ -6482,7 +6461,7 @@
     },
     {
      "function": "GoTalkToBeardyBaldy",
-     "sourceLine": 692,
+     "sourceLine": 655,
      "locals": {
       "bVar2_1": {
        "name": "isActiveThreadTerminating",
@@ -6559,7 +6538,7 @@
     },
     {
      "function": "IsHeroWearingAnyTash",
-     "sourceLine": 723,
+     "sourceLine": 686,
      "locals": {
       "bVar8_1": {
        "name": "isWearingHairstyle",
@@ -6710,7 +6689,7 @@
     },
     {
      "function": "IsHeroWearingAnyOddHairdo",
-     "sourceLine": 754,
+     "sourceLine": 717,
      "locals": {
       "bVar7_1": {
        "name": "isWearingHairstyle",
@@ -6841,7 +6820,7 @@
     },
     {
      "function": "GoTalkToBarber",
-     "sourceLine": 781,
+     "sourceLine": 744,
      "locals": {
       "bVar2_1": {
        "name": "isActiveThreadTerminating",
@@ -6918,7 +6897,7 @@
     },
     {
      "function": "helper_E53C70",
-     "sourceLine": 812,
+     "sourceLine": 775,
      "locals": {
       "iVar2": {
        "name": "scratchValue",
@@ -7034,7 +7013,7 @@
     },
     {
      "function": "GoTalkToBeardyBaldy",
-     "sourceLine": 346,
+     "sourceLine": 306,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7043,7 +7022,7 @@
     },
     {
      "function": "IsHeroWearingAnyTash",
-     "sourceLine": 361,
+     "sourceLine": 321,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7052,7 +7031,7 @@
     },
     {
      "function": "IsHeroWearingAnyOddHairdo",
-     "sourceLine": 381,
+     "sourceLine": 341,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7061,7 +7040,7 @@
     },
     {
      "function": "GoTalkToBarber",
-     "sourceLine": 399,
+     "sourceLine": 359,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7070,7 +7049,7 @@
     },
     {
      "function": "helper_E53C70",
-     "sourceLine": 414,
+     "sourceLine": 374,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -7767,11 +7746,11 @@
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
-       "staleLabelComments": 1,
-       "aliveStaging": 6,
-       "exitChecksInlined": 2,
+       "staleLabelComments": 0,
+       "aliveStaging": 4,
+       "exitChecksInlined": 4,
        "frameChecks": 0,
-       "inlinedTemporaries": 8,
+       "inlinedTemporaries": 6,
        "deadDefinitions": 2,
        "guardWrappers": 0,
        "retryLoops": 1,
@@ -7800,31 +7779,31 @@
        "loopExitJumps": 0,
        "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 0,
+       "deadTerminationChecks": 2,
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
        "parentheses": 3,
-       "cosmetics": 3,
+       "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,
        "hoistedState": 0
       },
       "before": {
-       "lines": 113,
-       "temporaries": 15,
-       "labels": 8,
-       "gotos": 13,
+       "lines": 74,
+       "temporaries": 10,
+       "labels": 4,
+       "gotos": 6,
        "terminationChecks": 5,
        "frameChecks": 0,
        "requires": 0
       },
       "after": {
-       "lines": 73,
-       "temporaries": 5,
-       "labels": 8,
-       "gotos": 13,
-       "terminationChecks": 4,
+       "lines": 33,
+       "temporaries": 2,
+       "labels": 4,
+       "gotos": 6,
+       "terminationChecks": 2,
        "frameChecks": 0,
        "requires": 0
       }
@@ -8179,12 +8158,12 @@
     ]
    },
    "readability": {
-    "lines": 435,
+    "lines": 395,
     "counts": {
-     "genericTemporaries": 48,
-     "gotos": 30,
-     "nativeNames": 50,
-     "unresolvedDiagnostics": 13
+     "genericTemporaries": 33,
+     "gotos": 23,
+     "nativeNames": 39,
+     "unresolvedDiagnostics": 1
     },
     "status": "needs-recovery",
     "findings": [
@@ -8486,410 +8465,185 @@
      {
       "line": 284,
       "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 284,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 284,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 284,
-      "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 286,
+      "line": 290,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 286,
-      "category": "nativeNames",
-      "text": "LAB_00e53ea8"
-     },
-     {
-      "line": 287,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 287,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53ea8"
-     },
-     {
-      "line": 288,
-      "category": "nativeNames",
-      "text": "LAB_00e53ea8"
      },
      {
       "line": 290,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 291,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 292,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;"
+      "category": "nativeNames",
+      "text": "LAB_00e53e21"
      },
      {
       "line": 293,
       "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): __native_condition_1 = *native_arg_moi._8_4_ == 0"
-     },
-     {
-      "line": 294,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 294,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
+      "text": "-- TODO(native): MsgIsHitByAnyAggressiveSpecialAbilityFrom is not a ForgeFSE binding"
      },
      {
       "line": 296,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 296,
+      "category": "nativeNames",
+      "text": "LAB_00e53e21"
      },
      {
       "line": 297,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();"
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 297,
+      "category": "nativeNames",
+      "text": "LAB_00e53e43"
+     },
+     {
+      "line": 298,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 298,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e53e43"
      },
      {
       "line": 299,
       "category": "nativeNames",
-      "text": "FLOW_after_lab_00e53ec1"
+      "text": "LAB_00e53e43"
      },
      {
       "line": 300,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 301,
       "category": "nativeNames",
-      "text": "LAB_00e53ec9"
+      "text": "FLOW_past_lab_00e53e43"
+     },
+     {
+      "line": 302,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 302,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53ea8"
+      "text": "FLOW_past_lab_00e53e21"
+     },
+     {
+      "line": 303,
+      "category": "nativeNames",
+      "text": "LAB_00e53e21"
+     },
+     {
+      "line": 304,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 305,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 305,
+      "category": "nativeNames",
+      "text": "LAB_00e53e43"
      },
      {
       "line": 306,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e53e21"
      },
      {
       "line": 307,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "predicateResult"
      },
      {
-      "line": 308,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;"
-     },
-     {
-      "line": 309,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): __native_condition_3 = *native_arg_moi._8_4_ ~= 0"
-     },
-     {
-      "line": 310,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 310,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 312,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 312,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 312,
-      "category": "nativeNames",
-      "text": "LAB_00e53ec9"
-     },
-     {
-      "line": 313,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();"
-     },
-     {
-      "line": 314,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 314,
-      "category": "nativeNames",
-      "text": "FLOW_after_lab_00e53ec1"
-     },
-     {
-      "line": 318,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 319,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 320,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ - 1;"
-     },
-     {
-      "line": 321,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): __native_condition_4 = *native_arg_moi._8_4_ ~= 0"
-     },
-     {
-      "line": 322,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 322,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 324,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 324,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 324,
-      "category": "nativeNames",
-      "text": "LAB_00e53ec9"
-     },
-     {
-      "line": 325,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();"
-     },
-     {
-      "line": 326,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 326,
-      "category": "nativeNames",
-      "text": "FLOW_after_lab_00e53ec1"
-     },
-     {
-      "line": 328,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 328,
-      "category": "nativeNames",
-      "text": "LAB_00e53ea8"
-     },
-     {
-      "line": 330,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 330,
-      "category": "nativeNames",
-      "text": "LAB_00e53e21"
-     },
-     {
-      "line": 333,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): MsgIsHitByAnyAggressiveSpecialAbilityFrom is not a ForgeFSE binding"
-     },
-     {
-      "line": 336,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 336,
-      "category": "nativeNames",
-      "text": "LAB_00e53e21"
-     },
-     {
-      "line": 337,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 337,
-      "category": "nativeNames",
-      "text": "LAB_00e53e43"
-     },
-     {
-      "line": 338,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 338,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53e43"
-     },
-     {
-      "line": 339,
-      "category": "nativeNames",
-      "text": "LAB_00e53e43"
-     },
-     {
-      "line": 340,
+      "line": 335,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 341,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53e43"
+      "line": 342,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
-      "line": 342,
+      "line": 343,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 342,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53e21"
      },
      {
       "line": 343,
       "category": "nativeNames",
-      "text": "LAB_00e53e21"
+      "text": "LAB_00e53a60"
      },
      {
-      "line": 344,
+      "line": 349,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 345,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 345,
-      "category": "nativeNames",
-      "text": "LAB_00e53e43"
-     },
-     {
-      "line": 346,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e53e21"
-     },
-     {
-      "line": 347,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 375,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 382,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 383,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 383,
+      "line": 350,
       "category": "nativeNames",
       "text": "LAB_00e53a60"
      },
      {
-      "line": 389,
+      "line": 351,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 390,
-      "category": "nativeNames",
-      "text": "LAB_00e53a60"
-     },
-     {
-      "line": 391,
+      "line": 356,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 396,
+      "line": 362,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 402,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 403,
+      "line": 363,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 403,
+      "line": 363,
       "category": "nativeNames",
       "text": "LAB_00e53c05"
      },
      {
-      "line": 408,
+      "line": 368,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 409,
+      "line": 369,
       "category": "nativeNames",
       "text": "LAB_00e53c05"
      },
      {
-      "line": 410,
+      "line": 370,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 432,
+      "line": 392,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 433,
+      "line": 393,
       "category": "genericTemporaries",
       "text": "scratchValue"
      }

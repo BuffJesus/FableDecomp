@@ -32,6 +32,25 @@ end
         self.assertEqual(calls_of(out, True), ['cleanup'])
         self.assertEqual(calls_of(out, False), ['continue'])
 
+    def test_empty_region_leaves_no_call_to_an_undefined_helper(self):
+        # guard for V_BeardyBaldy WatchForAttack, whose only epilogue (a released by-value thing) is now
+        # dropped; the real shape needs the lifter's nested-label output, so this simpler form only guards
+        # that an empty region never leaves a call behind
+        source = '''function Main(log, stop)
+    if not stop then goto FLOW_continue end
+    -- TODO(native): goto LAB_00d00002
+    ::FLOW_continue::
+    log("continue")
+    do return end
+    -- LAB_00d00002: (native jump target)
+    return
+end
+'''
+        out, _ = hoist_cleanup_regions(source)
+        self.assertNotIn('__cleanup_LAB_00d00002', out)
+        self.assertEqual(calls_of(out, True), [])
+        self.assertEqual(calls_of(out, False), ['continue'])
+
     def test_region_that_falls_out_of_an_if_block_is_hoisted(self):
         # the label sits inside an `if`; the epilogue continues after that block's `end`
         source = '''function Main(log, stop)

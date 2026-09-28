@@ -602,74 +602,39 @@ function WatchForNewTash(quest)
 end
 
 function WatchForAttack(quest, native_arg_moi)
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1
+    local __native_condition_1, __native_condition_2, bVar1, bVar3, cVar2, fret_0, native_arg_sequence_1
     local alive = true
     bVar3 = false
     alive = not quest:IsActiveThreadTerminating()
     bVar1 = not alive
     repeat
         if bVar1 then
-            goto LAB_00e53ea8
+            return
         end
-        goto FLOW_past_lab_00e53ea8
-        ::LAB_00e53ea8::
-        native_arg_moi = nil
-        __native_condition_1 = native_arg_moi._8_4_ ~= 0
-        if __native_condition_1 then
-            -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;
-            -- TODO(native): __native_condition_1 = *native_arg_moi._8_4_ == 0
-            __native_condition_1 = nil --[[unresolved native value]]
+        __native_condition_1 = not (native_arg_moi ~= nil and not native_arg_moi:IsNull())
+        if not __native_condition_1 then
+            cVar2 = (native_arg_moi ~= nil and native_arg_moi:IsAlive())
+            __native_condition_1 = not cVar2
         end
         if __native_condition_1 then
-            -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-            -- LAB_00e53ec1: (native jump target)
+            alive = not quest:IsActiveThreadTerminating()
+            bVar3 = not alive
+            if bVar3 then
+                return
+            end
+            alive = not quest:IsActiveThreadTerminating()
+            bVar3 = not alive
+            if bVar3 then
+                return
+            end
+            return
         end
-        ::FLOW_after_lab_00e53ec1::
-        ::LAB_00e53ec9::
-        do return end
-        ::FLOW_past_lab_00e53ea8::
         __native_condition_2 = not (native_arg_moi ~= nil and not native_arg_moi:IsNull())
         if not __native_condition_2 then
-            cVar2 = (native_arg_moi ~= nil and native_arg_moi:IsAlive())
+            cVar2 = native_arg_moi:MsgIsHitByHero()
             __native_condition_2 = not cVar2
         end
         if __native_condition_2 then
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            if bVar3 then
-                native_arg_moi = nil
-                __native_condition_3 = native_arg_moi._8_4_ == 0
-                if not __native_condition_3 then
-                    -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;
-                    -- TODO(native): __native_condition_3 = *native_arg_moi._8_4_ ~= 0
-                    __native_condition_3 = nil --[[unresolved native value]]
-                end
-                if __native_condition_3 then goto LAB_00e53ec9 end
-                -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-                goto FLOW_after_lab_00e53ec1
-            end
-            alive = not quest:IsActiveThreadTerminating()
-            bVar3 = not alive
-            native_arg_moi = nil
-            if bVar3 then
-                __native_condition_4 = native_arg_moi._8_4_ == 0
-                if not __native_condition_4 then
-                    -- TODO(native): *native_arg_moi._8_4_ = *native_arg_moi._8_4_ + -1;
-                    -- TODO(native): __native_condition_4 = *native_arg_moi._8_4_ ~= 0
-                    __native_condition_4 = nil --[[unresolved native value]]
-                end
-                if __native_condition_4 then goto LAB_00e53ec9 end
-                -- TODO(native): (**(code **)(native_arg_moi._8_4_ + 4))();
-                goto FLOW_after_lab_00e53ec1
-            end
-            goto LAB_00e53ea8
-        end
-        __native_condition_5 = not (native_arg_moi ~= nil and not native_arg_moi:IsNull())
-        if not __native_condition_5 then
-            cVar2 = native_arg_moi:MsgIsHitByHero()
-            __native_condition_5 = not cVar2
-        end
-        if __native_condition_5 then
             bVar3 = true
             native_arg_sequence_1 = false
             if (native_arg_moi ~= nil and not native_arg_moi:IsNull()) then

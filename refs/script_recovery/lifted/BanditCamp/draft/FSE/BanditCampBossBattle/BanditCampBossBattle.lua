@@ -739,14 +739,14 @@ function CheckForFirstAreaMassacre(quest)
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
-                if bVar4 then __cleanup_LAB_00d0f264(); return end
+                if bVar4 then return end
                 elem_1 = xStack_68[(iVar7) / 0xc + 1]
                 xStack_5c = elem_1:MsgGetThingsKilledGroups()
                 cVar5 = #xStack_5c ~= 0
                 if cVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    if bVar4 then __cleanup_LAB_00d0f264(); return end
+                    if bVar4 then return end
                     native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
                     xStack_5c = {}
                 end
@@ -757,7 +757,6 @@ function CheckForFirstAreaMassacre(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
-            __cleanup_LAB_00d0f264()
             return
         end
         xStack_68 = quest:GetHeroSummonedCreaturesList()
@@ -776,7 +775,7 @@ function CheckForFirstAreaMassacre(quest)
                 if cVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    if bVar4 then __cleanup_LAB_00d0f264(); return end
+                    if bVar4 then return end
                     native_arg_kills_xStack_74 = native_arg_kills_xStack_74 + #xStack_5c
                     xStack_5c = {}
                 end

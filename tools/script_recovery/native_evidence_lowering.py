@@ -2693,11 +2693,15 @@ def fold_by_value_thing_release(text):
         n = re.escape(name)
         test = r'\*' + n + r'\._8_4_ = \*' + n + r'\._8_4_ \+ -1, \*' + n + r'\._8_4_'
         destroy = r'[ \t]*\(\*\*\(code \*\*\)\(' + n + r'\._8_4_ \+ 4\)\)\(\);[ \t]*\r?\n'
-        text = re.sub(r'^[ \t]*if \(\(' + n + r'\._8_4_ != 0\) && \(' + test + r' == 0\)\) \{[ \t]*\r?\n' + destroy
+        # (typed exports may put the brace or the goto on another line: V_BeardyBaldy WatchForAttack 0x00E53D90)
+        text = re.sub(r'^[ \t]*if \(\(' + n + r'\._8_4_ != 0\) && \(' + test + r' == 0\)\)\s*\{[ \t]*\r?\n' + destroy
                       + r'(?:(?P<label>\w+):[ \t]*\r?\n)?[ \t]*operator_delete\(\(void \*\)' + n + r'\._8_4_\);[ \t]*\r?\n[ \t]*\}[ \t]*\r?\n',
                       lambda m: f'{m.group("label")}:\n' if m.group('label') else '', text, flags=re.M)
-        text = re.sub(r'^([ \t]*)if \(\(' + n + r'\._8_4_ == 0\) \|\| \(' + test + r' != 0\)\)[ \t]*\r?\n[ \t]*goto (\w+);[ \t]*\r?\n'
+        text = re.sub(r'^([ \t]*)if \(\(' + n + r'\._8_4_ == 0\) \|\| \(' + test + r' != 0\)\s*\)\s*goto (\w+);[ \t]*\r?\n'
                       + destroy + r'[ \t]*goto \w+;[ \t]*\r?\n', r'\1goto \2;\n', text, flags=re.M)
+        if name.startswith('native_arg_'):
+            # the destructor's vtable reset of a released PARAMETER (lowered `P = QUESTTHING_Empty();`, then `P = nil`)
+            text = re.sub(r'^[ \t]*' + n + r' = QUESTTHING_Empty\(\);[ \t]*\r?\n', '', text, flags=re.M)
         text = re.sub(r'\b' + n + r'\._4_4_ == 0\b(?!x)', f'!__thing_valid({name})', text)
         text = re.sub(r'\b' + n + r'\._4_4_ != 0\b(?!x)', f'__thing_valid({name})', text)
         text = re.sub(r'(CScriptThing::IsEqualTo\([^,;()]+,\s*)' + n + r'\._4_4_\)', r'\1' + name + ')', text)

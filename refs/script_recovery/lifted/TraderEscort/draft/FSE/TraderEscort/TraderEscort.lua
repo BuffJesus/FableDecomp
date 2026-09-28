@@ -177,13 +177,13 @@ function WatchForSurprisingBalverines(quest)
                         if iVar9 % 5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
-                            if bVar5 then __cleanup_LAB_00e063f5(); return end
+                            if bVar5 then return end
                             pCVar8 = quest:GetNearestWithScriptName(r1, "DarkwoodTrader")
                             quest:GiveThingBestEnemyTarget(r1, pCVar8)
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
-                            if bVar5 then __cleanup_LAB_00e063f5(); return end
+                            if bVar5 then return end
                             pCVar8 = quest:GetHero()
                             quest:GiveThingBestEnemyTarget(r1, pCVar8)
                         end
@@ -207,14 +207,13 @@ function WatchForSurprisingBalverines(quest)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
-    if bVar5 then __cleanup_LAB_00e063f5(); return end
+    if bVar5 then return end
     cVar6 = (r1 ~= nil and r1:IsAlive())
     goto LAB_00e06319
     ::LAB_00e06349::
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
     if bVar5 then
-        __cleanup_LAB_00e063f5()
         return
     end
     quest:SetStateInt("BalverinesToSurpriseHeroNeeded", quest:GetStateInt("BalverinesToSurpriseHeroNeeded") + -1)
@@ -679,7 +678,6 @@ function TurnToBalv(quest, native_arg_Me)
             r1 = nil
             resources:ReleaseResource(xStack_40)
             resources:ReleaseResource(xStack_30)
-            native_arg_Me = nil
             return
         end
         bVar3 = resources:TryAcquire(xStack_40, r1, 4)
@@ -747,7 +745,6 @@ function WatchForPickpocketing(quest, native_arg_Trader)
     repeat
         if bVar1 then
             xStack_c = nil
-            native_arg_Trader = nil
             -- LAB_00e05100: (native jump target)
             -- LAB_00e05108: (native jump target)
             return
@@ -798,7 +795,6 @@ function WatchForPickpocketing(quest, native_arg_Trader)
             end
             -- LAB_00e050a5: (native jump target)
             xStack_c = nil
-            native_arg_Trader = nil
             return
         end
         ::LAB_00e04f80::
@@ -814,7 +810,6 @@ function WatchForPickpocketing(quest, native_arg_Trader)
                 quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 0)
             end
             xStack_c = nil
-            native_arg_Trader = nil
             return
         end
         alive = quest:NewScriptFrame()

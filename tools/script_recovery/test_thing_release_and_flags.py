@@ -37,12 +37,23 @@ class ByValueThingRelease(unittest.TestCase):
         self.assertIn('LAB_00e05100:\nLAB_00e05108:', self.out)
 
     def test_inverted_release_becomes_the_goto(self):
-        self.assertIn('native_arg_Trader = QUESTTHING_Empty();\n      goto LAB_00e05108;\n    if (', self.out)
+        self.assertIn('LAB_00e050a5:\n      goto LAB_00e05108;\n    if (', self.out)
+        # the released parameter's vtable reset is destructor bookkeeping, not `Trader = nil`
+        self.assertNotIn('QUESTTHING_Empty', self.out)
         self.assertNotIn('+ 4))();', self.out)
 
     def test_data_word_is_validity_and_is_equal_to_takes_the_thing(self):
         self.assertIn('if (!__thing_valid(native_arg_Trader)) {', self.out)
         self.assertIn('CScriptThing::IsEqualTo(xStack_c, native_arg_Trader);', self.out)
+
+    def test_wrapped_typed_export_forms(self):
+        # V_BeardyBaldy WatchForAttack 0x00E53D90: brace on its own line, inverted test's goto on the same line
+        wrapped = (RELEASE.replace('== 0)) {\n', '== 0))\n      {\n')
+                   .replace('!= 0))\n      goto LAB_00e05108;', '!= 0)) goto LAB_00e05108;'))
+        out = fold_by_value_thing_release(wrapped)
+        self.assertNotIn('operator_delete', out)
+        self.assertNotIn('+ 4))();', out)
+        self.assertIn('LAB_00e050a5:\n      goto LAB_00e05108;', out)
 
     def test_untouched_without_the_release_idiom(self):
         text = 'if (other._4_4_ == 0) {\n'
