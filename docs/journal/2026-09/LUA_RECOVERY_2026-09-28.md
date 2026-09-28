@@ -55,6 +55,9 @@ in `work/codex_lua_20260928/`). Nothing installed or run in-game.
 - Full `tools/script_recovery` suite (before the vector fold and the distance-test update): the same 42 failing/erroring
   node IDs as the 2026-09-27 baseline (`work/codex_lua_resume_20260927/failed_nodes.json`), 2,485 passed; one extra
   failing subtest, the raw-bits distance case, since resolved by the reviewed test update above.
+- Full suite after the commit (`a43c8e5`): the 42 baseline nodes plus four NOVI AffairWife tests; SUBFAIL lines
+  identical to the baseline. Those four also fail at `0682f07` in a clean worktree: they read the install's
+  `text.big`, which something outside this session rewrote at 06:51 between my two runs. The install was not touched.
 - ChickenKicking re-promoted after the vector fold; Arena's Roth briefly changed (register temporaries) until the fold
   was restricted to stack slots.
 
@@ -66,3 +69,19 @@ in `work/codex_lua_20260928/`). Nothing installed or run in-game.
   on paths the current control flow does not reach).
 - Unchanged from yesterday: BordelloLady/Witch flag slots, Roth, SickChild helper_ECE460, Arena cell guards,
   BeggarBully/ChickenMaster `unaff_*`, BookCollecting BookReaction/DoConversation, OakValeFire.
+
+Analysed, not fixed (next session):
+- **Flag word in a reused string slot** (Spectator Main 0x00E63890; same family as BordelloLady/Witch): the
+  `line` CCharString at local_68 is dead after its last use, then the slot becomes the cleanup-flag word
+  (`mov ebx,[esp+0x14]; or ebx,1; mov [esp+0x18],ebx` at 0x00E63E00). Retail ORs the bits onto the stale string rep
+  pointer, whose low three bits are clear (allocator alignment), so seeding the word with 0 where the reuse starts
+  is faithful for the `& 1/2/4` tests. The lift also loses the first `| 1` update (a TODO on the string-typed slot),
+  leaving `CVar11` nil on the MsgIsHitByHero path. Plan: a raw-decompile pass for `A = SLOT; B = SLOT | 1; SLOT = B;`
+  after SLOT's last object use.
+- **Arena cell guards** (ArenaCellDoorGuard Main 0x00F17C70): the hit tests' receiver is `ebp`, written only by
+  `lea ebp,[esi+8]` (0x00F17D9D, `me`) and, inside the cutscene branch that exits elsewhere, `mov ebp,[esi+4]`
+  (GSI). The typed export prints several unrelated values as `pCVar6`, so the Lua receiver is whichever branch
+  assigned last (nil on the smoke path, the hero or a resource thing on others). Needs register reaching
+  definitions at the call, not a text rule.
+- **SickChild helper_ECE460**: an inlined `CCharString !=` between a constant and the new resource's name,
+  printed as a four-operand `_stricmp`, plus an unresolved GSI +0x118 call whose receiver was dropped.
