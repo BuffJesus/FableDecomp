@@ -61,7 +61,7 @@ function Main(quest)
         ::LAB_00e18ce8::
         predicateResult = false
         ::FLOW_past_lab_00e18ce8::
-        if scratchValue < 0 then
+        if scratchValue & 128 ~= 0 then
             scratchValue = scratchValue & 127
         end
         if scratchValue & 64 ~= 0 then

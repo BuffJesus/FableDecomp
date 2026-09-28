@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "bandit_camp",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\bandit_camp",
+ "draft": "refs\\script_recovery\\lifted\\BanditCamp\\draft",
  "files": {
   "FSE/BanditCamp/BanditCamp.lua": {
    "functions": [
@@ -34073,7 +34073,7 @@
       "unusedAlive": 0,
       "flagTests": 24,
       "declarations": 37,
-      "decimalLiterals": 10
+      "decimalLiterals": 11
      }
     },
     {
@@ -35948,7 +35948,7 @@
        "controlAcquires": 0,
        "sunkLocals": 15,
        "cleanupClosureNames": 1,
-       "parentheses": 33,
+       "parentheses": 35,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 4,

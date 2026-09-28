@@ -21,6 +21,7 @@ function Main(quest, me)
     local __push19, __push5, isActiveThreadTerminating, predicateResult, scratchValue19, timerId2
     local i_stk_350_1, timerId3, switch1, switch, p0, getHero, this_01, timerId, scratchValue25
     local scratchValue26, movie, movie4, startMovie, movie5, movie6, resource, scriptThing
+    scratchValue26 = 0  -- compiler cleanup flags start clear
     if not quest:NewScriptFrame(me) then return end
     local resource6 = resources:NewResource()
     resources:PrepareResource(resource6)
@@ -266,7 +267,7 @@ function Main(quest, me)
             if scratchValue26 & 256 ~= 0 then
                 scratchValue26 = scratchValue26 & 0xfffffeff
             end
-            if scratchValue26 < 0 then
+            if scratchValue26 & 128 ~= 0 then
                 scratchValue26 = scratchValue26 & 0xffffff7f
             end
             if scratchValue26 & 64 ~= 0 then
@@ -788,7 +789,7 @@ function Main(quest, me)
             if scratchValue26 & 0x10000 ~= 0 then
                 scratchValue26 = scratchValue26 & 0xfffeffff
             end
-            if scratchValue26 >> 8 < 0 then
+            if scratchValue26 & 0x8000 ~= 0 then
                 scratchValue26 = scratchValue26 & 0xffff7fff
             end
             if scratchValue26 & 0x4000 ~= 0 then

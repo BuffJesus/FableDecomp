@@ -205,7 +205,7 @@ function helper_E44A40(quest, me)
     end
     b_stk_21 = true
     ::LAB_00e44c26::
-    if bVar5 < 0 then
+    if ((bVar5 & 0x80) ~= 0) then
         bVar5 = bVar5 & 0x7f
     end
     if (bVar5 & 0x40) ~= 0 then

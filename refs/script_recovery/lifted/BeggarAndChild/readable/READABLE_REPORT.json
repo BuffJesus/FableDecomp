@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "beggar_and_child",
- "draft": "work\\codex_lua_resume_20260927\\comparison\\after\\beggar_and_child",
+ "draft": "refs\\script_recovery\\lifted\\BeggarAndChild\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -37,7 +37,7 @@
       "unusedAlive": 0,
       "flagTests": 44,
       "declarations": 72,
-      "decimalLiterals": 15
+      "decimalLiterals": 16
      }
     },
     {
@@ -1955,7 +1955,7 @@
        "controlAcquires": 0,
        "sunkLocals": 14,
        "cleanupClosureNames": 0,
-       "parentheses": 52,
+       "parentheses": 54,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 4,
@@ -3784,7 +3784,7 @@
       "unusedAlive": 0,
       "flagTests": 63,
       "declarations": 90,
-      "decimalLiterals": 12
+      "decimalLiterals": 13
      }
     },
     {
@@ -5844,7 +5844,7 @@
        "controlAcquires": 0,
        "sunkLocals": 18,
        "cleanupClosureNames": 0,
-       "parentheses": 64,
+       "parentheses": 66,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,

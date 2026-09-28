@@ -2899,7 +2899,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie"
           ],
-          "lines": 1843,
+          "lines": 1844,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

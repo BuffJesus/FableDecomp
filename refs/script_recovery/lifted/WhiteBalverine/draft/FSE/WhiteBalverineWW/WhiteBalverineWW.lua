@@ -77,7 +77,7 @@ function Main(quest)
         ::LAB_00e18ce8::
         bVar15 = false
         ::FLOW_past_lab_00e18ce8::
-        if bVar13 < 0 then
+        if ((bVar13 & 0x80) ~= 0) then
             bVar13 = bVar13 & 0x7f
         end
         if (bVar13 & 0x40) ~= 0 then

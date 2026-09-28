@@ -735,7 +735,7 @@ function IsHeroWearingBeard(quest, me)
     end
     predicateResult = true
     ::LAB_00e53856::
-    if flags < 0 then
+    if flags & 128 ~= 0 then
         flags = flags & 127
     end
     if flags & 64 ~= 0 then

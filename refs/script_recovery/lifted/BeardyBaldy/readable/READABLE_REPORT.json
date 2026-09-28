@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "beardy_baldy",
- "draft": "work\\codex_lua_resume_20260927\\comparison\\after\\beardy_baldy",
+ "draft": "refs\\script_recovery\\lifted\\BeardyBaldy\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -105,7 +105,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 1,
-      "decimalLiterals": 15
+      "decimalLiterals": 16
      }
     },
     {
@@ -2571,7 +2571,7 @@
        "controlAcquires": 0,
        "sunkLocals": 1,
        "cleanupClosureNames": 0,
-       "parentheses": 6,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,

@@ -16723,7 +16723,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 51,
-      "decimalLiterals": 19
+      "decimalLiterals": 20
      }
     },
     {
@@ -17884,6 +17884,7 @@
         null,
         null,
         null,
+        null,
         null
        ]
       },
@@ -18126,112 +18127,112 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_214, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
        "versions": {
         "iVar18_1": [
-         51
+         52
         ],
         "iVar18_2": [
-         112
+         113
         ],
         "iVar18_3": [
-         130
+         131
         ],
         "iVar18_4": [
-         182
+         183
         ],
         "iVar18_5": [
-         245
+         246
         ],
         "iVar18_6": [
-         311
+         312
         ],
         "iVar18_7": [
-         358
+         359
         ],
         "iVar18_8": [
-         422
+         423
         ],
         "iVar18_9": [
-         492
+         493
         ],
         "iVar18_10": [
-         494
+         495
         ],
         "iVar18_11": [
-         507
+         508
         ],
         "iVar18_12": [
-         569
+         570
         ],
         "iVar18_13": [
-         606
+         607
         ],
         "iVar18_14": [
-         641
+         642
         ],
         "iVar18_15": [
-         676
+         677
         ],
         "iVar18_16": [
-         711
+         712
         ],
         "iVar18_17": [
-         746
+         747
         ],
         "iVar18_18": [
-         804
+         805
         ],
         "iVar18_19": [
-         866
+         867
         ],
         "iVar18_20": [
-         925
+         926
         ],
         "iVar18_21": [
-         1003
+         1004
         ],
         "iVar18_22": [
-         1046
+         1047
         ],
         "iVar18_23": [
-         1113
+         1114
         ],
         "iVar18_24": [
-         1157
+         1158
         ],
         "iVar18_25": [
-         1215
+         1216
         ],
         "iVar18_26": [
-         1255
+         1256
         ],
         "iVar18_27": [
-         1302
+         1303
         ],
         "iVar18_28": [
-         1395
+         1396
         ],
         "iVar18_29": [
-         1439
+         1440
         ],
         "iVar18_30": [
-         1509
+         1510
         ],
         "iVar18_31": [
-         1544
+         1545
         ],
         "iVar18_32": [
-         1573
+         1574
         ],
         "iVar18_33": [
-         1602
+         1603
         ],
         "iVar18_34": [
-         1631
+         1632
         ],
         "iVar18_35": [
-         1660
+         1661
         ],
         "iVar18_36": [
-         1703
+         1704
         ]
        }
       },
@@ -18240,16 +18241,16 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_214, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
        "versions": {
         "bVar7_1": [
-         58
+         59
         ],
         "bVar7_2": [
-         93
+         94
         ],
         "bVar7_3": [
-         873
+         874
         ],
         "bVar7_4": [
-         907
+         908
         ]
        }
       },
@@ -18258,13 +18259,13 @@
        "originalDeclaration": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18, iVar19, iVar20, iVar21, iVar22, i_stk_350, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_214, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
        "versions": {
         "i_stk_350_1": [
-         26,
-         166,
-         964
+         27,
+         167,
+         965
         ],
         "i_stk_350_2": [
-         154,
-         952
+         155,
+         953
         ]
        }
       }
@@ -18272,372 +18273,372 @@
      "removedLiteralLocals": {
       "xStack_214": {
        "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_214, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-       "103": "                    xStack_214 = nil\n"
+       "104": "                    xStack_214 = nil\n"
       }
      },
      "inlinedLiteralLocals": {
       "iVar18_1": {
        "literal": "1.0",
-       "definitionLine": 51,
+       "definitionLine": 52,
        "readLines": [
-        53
+        54
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_1, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "51": "                iVar18_1 = 1.0\n",
-        "53": "                me:MoveToPosition(iVar21, iVar18_1, iVar19, (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "52": "                iVar18_1 = 1.0\n",
+        "54": "                me:MoveToPosition(iVar21, iVar18_1, iVar19, (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_5": {
        "literal": "0",
-       "definitionLine": 245,
+       "definitionLine": 246,
        "readLines": [
-        248
+        249
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_5, iVar18_6, iVar18_7, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "245": "                        iVar18_5 = 0\n",
-        "248": "                        r2 = me:Speak(iVar21, pcVar14, iVar18_5, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "246": "                        iVar18_5 = 0\n",
+        "249": "                        r2 = me:Speak(iVar21, pcVar14, iVar18_5, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_6": {
        "literal": "0",
-       "definitionLine": 311,
+       "definitionLine": 312,
        "readLines": [
-        314
+        315
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_6, iVar18_7, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "311": "                            iVar18_6 = 0\n",
-        "314": "                            r3 = me:Speak(iVar21, pvVar8, iVar18_6, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "312": "                            iVar18_6 = 0\n",
+        "315": "                            r3 = me:Speak(iVar21, pvVar8, iVar18_6, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_7": {
        "literal": "0",
-       "definitionLine": 358,
+       "definitionLine": 359,
        "readLines": [
-        361
+        362
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_7, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "358": "                        iVar18_7 = 0\n",
-        "361": "                        r4 = me:Speak(iVar21, pcVar14, iVar18_7, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "359": "                        iVar18_7 = 0\n",
+        "362": "                        r4 = me:Speak(iVar21, pcVar14, iVar18_7, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_12": {
        "literal": "0",
-       "definitionLine": 569,
+       "definitionLine": 570,
        "readLines": [
-        574
+        575
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_12, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "569": "                            iVar18_12 = 0\n",
-        "574": "                            r7 = me:Speak(iVar21, pvVar8, iVar18_12, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "570": "                            iVar18_12 = 0\n",
+        "575": "                            r7 = me:Speak(iVar21, pvVar8, iVar18_12, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_13": {
        "literal": "0",
-       "definitionLine": 606,
+       "definitionLine": 607,
        "readLines": [
-        611
+        612
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_13, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "606": "                                iVar18_13 = 0\n",
-        "611": "                                r8 = me:Speak(iVar21, pvVar8, iVar18_13, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "607": "                                iVar18_13 = 0\n",
+        "612": "                                r8 = me:Speak(iVar21, pvVar8, iVar18_13, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_14": {
        "literal": "0",
-       "definitionLine": 641,
+       "definitionLine": 642,
        "readLines": [
-        646
+        647
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_14, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "641": "                                    iVar18_14 = 0\n",
-        "646": "                                    r9 = me:Speak(iVar21, pvVar8, iVar18_14, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "642": "                                    iVar18_14 = 0\n",
+        "647": "                                    r9 = me:Speak(iVar21, pvVar8, iVar18_14, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_15": {
        "literal": "0",
-       "definitionLine": 676,
+       "definitionLine": 677,
        "readLines": [
-        681
+        682
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_15, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "676": "                                        iVar18_15 = 0\n",
-        "681": "                                        r10 = me:Speak(iVar21, pvVar8, iVar18_15, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "677": "                                        iVar18_15 = 0\n",
+        "682": "                                        r10 = me:Speak(iVar21, pvVar8, iVar18_15, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_16": {
        "literal": "0",
-       "definitionLine": 711,
+       "definitionLine": 712,
        "readLines": [
-        716
+        717
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_16, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "711": "                                            iVar18_16 = 0\n",
-        "716": "                                            r11 = me:Speak(iVar21, pvVar8, iVar18_16, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "712": "                                            iVar18_16 = 0\n",
+        "717": "                                            r11 = me:Speak(iVar21, pvVar8, iVar18_16, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_17": {
        "literal": "0",
-       "definitionLine": 746,
+       "definitionLine": 747,
        "readLines": [
-        751
+        752
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_17, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "746": "                                                iVar18_17 = 0\n",
-        "751": "                                                r12 = me:Speak(iVar21, pvVar8, iVar18_17, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "747": "                                                iVar18_17 = 0\n",
+        "752": "                                                r12 = me:Speak(iVar21, pvVar8, iVar18_17, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_18": {
        "literal": "0",
-       "definitionLine": 804,
+       "definitionLine": 805,
        "readLines": [
-        807
+        808
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_18, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "804": "                                                iVar18_18 = 0\n",
-        "807": "                                                r13 = me:Speak(iVar21, pcVar14, iVar18_18, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "805": "                                                iVar18_18 = 0\n",
+        "808": "                                                r13 = me:Speak(iVar21, pcVar14, iVar18_18, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_19": {
        "literal": "1.0",
-       "definitionLine": 866,
+       "definitionLine": 867,
        "readLines": [
-        868
+        869
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_19, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "866": "                iVar18_19 = 1.0\n",
-        "868": "                me:MoveToPosition(iVar21, iVar18_19, iVar19, (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "867": "                iVar18_19 = 1.0\n",
+        "869": "                me:MoveToPosition(iVar21, iVar18_19, iVar19, (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_21": {
        "literal": "0",
-       "definitionLine": 1003,
+       "definitionLine": 1004,
        "readLines": [
-        1006
+        1007
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_21, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1003": "                                    iVar18_21 = 0\n",
-        "1006": "                                    r14 = me:Speak(iVar21, pcVar14, iVar18_21, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1004": "                                    iVar18_21 = 0\n",
+        "1007": "                                    r14 = me:Speak(iVar21, pcVar14, iVar18_21, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_22": {
        "literal": "0",
-       "definitionLine": 1046,
+       "definitionLine": 1047,
        "readLines": [
-        1049
+        1050
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_22, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1046": "                                        iVar18_22 = 0\n",
-        "1049": "                                        r15 = me:Speak(iVar21, pcVar14, iVar18_22, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1047": "                                        iVar18_22 = 0\n",
+        "1050": "                                        r15 = me:Speak(iVar21, pcVar14, iVar18_22, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_23": {
        "literal": "0",
-       "definitionLine": 1113,
+       "definitionLine": 1114,
        "readLines": [
-        1116
+        1117
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_23, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1113": "                                            iVar18_23 = 0\n",
-        "1116": "                                            r17 = me:Speak(iVar21, pcVar14, iVar18_23, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1114": "                                            iVar18_23 = 0\n",
+        "1117": "                                            r17 = me:Speak(iVar21, pcVar14, iVar18_23, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_24": {
        "literal": "0",
-       "definitionLine": 1157,
+       "definitionLine": 1158,
        "readLines": [
-        1160
+        1161
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_24, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1157": "                                                    iVar18_24 = 0\n",
-        "1160": "                                                    r18 = me:Speak(iVar21, pcVar14, iVar18_24, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1158": "                                                    iVar18_24 = 0\n",
+        "1161": "                                                    r18 = me:Speak(iVar21, pcVar14, iVar18_24, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_25": {
        "literal": "0",
-       "definitionLine": 1215,
+       "definitionLine": 1216,
        "readLines": [
-        1218
+        1219
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_25, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1215": "                                                    iVar18_25 = 0\n",
-        "1218": "                                                    r19 = me:Speak(iVar21, pcVar14, iVar18_25, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1216": "                                                    iVar18_25 = 0\n",
+        "1219": "                                                    r19 = me:Speak(iVar21, pcVar14, iVar18_25, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_26": {
        "literal": "0",
-       "definitionLine": 1255,
+       "definitionLine": 1256,
        "readLines": [
-        1258
+        1259
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_26, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1255": "                                        iVar18_26 = 0\n",
-        "1258": "                                        r20 = me:Speak(iVar21, pcVar14, iVar18_26, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1256": "                                        iVar18_26 = 0\n",
+        "1259": "                                        r20 = me:Speak(iVar21, pcVar14, iVar18_26, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_27": {
        "literal": "0",
-       "definitionLine": 1302,
+       "definitionLine": 1303,
        "readLines": [
-        1305
+        1306
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_27, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1302": "                    iVar18_27 = 0\n",
-        "1305": "                    r21 = me:Speak(iVar21, pcVar14, iVar18_27, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1303": "                    iVar18_27 = 0\n",
+        "1306": "                    r21 = me:Speak(iVar21, pcVar14, iVar18_27, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_28": {
        "literal": "0",
-       "definitionLine": 1395,
+       "definitionLine": 1396,
        "readLines": [
-        1398
+        1399
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_28, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1395": "                        iVar18_28 = 0\n",
-        "1398": "                        r22 = me:Speak(iVar21, pcVar14, iVar18_28, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1396": "                        iVar18_28 = 0\n",
+        "1399": "                        r22 = me:Speak(iVar21, pcVar14, iVar18_28, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_29": {
        "literal": "0",
-       "definitionLine": 1439,
+       "definitionLine": 1440,
        "readLines": [
-        1442
+        1443
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_29, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1439": "                        iVar18_29 = 0\n",
-        "1442": "                        r23 = me:Speak(iVar21, pcVar14, iVar18_29, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1440": "                        iVar18_29 = 0\n",
+        "1443": "                        r23 = me:Speak(iVar21, pcVar14, iVar18_29, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_30": {
        "literal": "0",
-       "definitionLine": 1509,
+       "definitionLine": 1510,
        "readLines": [
-        1514
+        1515
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_30, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1509": "                            iVar18_30 = 0\n",
-        "1514": "                            r24 = me:Speak(iVar21, pvVar8, iVar18_30, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1510": "                            iVar18_30 = 0\n",
+        "1515": "                            r24 = me:Speak(iVar21, pvVar8, iVar18_30, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_31": {
        "literal": "0",
-       "definitionLine": 1544,
+       "definitionLine": 1545,
        "readLines": [
-        1549
+        1550
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_31, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1544": "                                iVar18_31 = 0\n",
-        "1549": "                                r25 = me:Speak(iVar21, pvVar8, iVar18_31, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1545": "                                iVar18_31 = 0\n",
+        "1550": "                                r25 = me:Speak(iVar21, pvVar8, iVar18_31, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_32": {
        "literal": "0",
-       "definitionLine": 1573,
+       "definitionLine": 1574,
        "readLines": [
-        1578
+        1579
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_32, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1573": "                                    iVar18_32 = 0\n",
-        "1578": "                                    r26 = me:Speak(iVar21, pvVar8, iVar18_32, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1574": "                                    iVar18_32 = 0\n",
+        "1579": "                                    r26 = me:Speak(iVar21, pvVar8, iVar18_32, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_33": {
        "literal": "0",
-       "definitionLine": 1602,
+       "definitionLine": 1603,
        "readLines": [
-        1607
+        1608
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_33, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1602": "                                        iVar18_33 = 0\n",
-        "1607": "                                        r27 = me:Speak(iVar21, pvVar8, iVar18_33, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1603": "                                        iVar18_33 = 0\n",
+        "1608": "                                        r27 = me:Speak(iVar21, pvVar8, iVar18_33, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_34": {
        "literal": "0",
-       "definitionLine": 1631,
+       "definitionLine": 1632,
        "readLines": [
-        1636
+        1637
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_34, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1631": "                                            iVar18_34 = 0\n",
-        "1636": "                                            r28 = me:Speak(iVar21, pvVar8, iVar18_34, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1632": "                                            iVar18_34 = 0\n",
+        "1637": "                                            r28 = me:Speak(iVar21, pvVar8, iVar18_34, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_35": {
        "literal": "0",
-       "definitionLine": 1660,
+       "definitionLine": 1661,
        "readLines": [
-        1665
+        1666
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_35, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1660": "                                                iVar18_35 = 0\n",
-        "1665": "                                                r29 = me:Speak(iVar21, pvVar8, iVar18_35, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1661": "                                                iVar18_35 = 0\n",
+        "1666": "                                                r29 = me:Speak(iVar21, pvVar8, iVar18_35, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       },
       "iVar18_36": {
        "literal": "0",
-       "definitionLine": 1703,
+       "definitionLine": 1704,
        "readLines": [
-        1706
+        1707
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local __native_condition_1, __native_condition_2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push16, __push17, __push18, __push19, __push2, __push20, __push21, __push22, __push23, __push24, __push25, __push26, __push27, __push28, __push29, __push3, __push30, __push31, __push32, __push33, __push34, __push4, __push5, __push6, __push7, __push8, __push9, au_stk_100, au_stk_10c, au_stk_178, au_stk_190, au_stk_a0, au_stk_ac, au_stk_b8, au_stk_c4, au_stk_d0, au_stk_e8, bVar5, bVar7_1, bVar7_2, bVar7_3, bVar7_4, cVar16, cVar6, fVar13, fVar23, iVar15, iVar18_2, iVar18_3, iVar18_4, iVar18_8, iVar18_9, iVar18_10, iVar18_11, iVar18_20, iVar18_36, iVar19, iVar20, iVar21, iVar22, i_stk_350_1, i_stk_350_2, i_stk_378, native_arg_switch_1, native_arg_switch_2, p0, pCVar10, pCVar11, pcVar14, ppuVar4, pvVar8, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r3, r30, r4, r5, r6, r7, r8, r9, this_00, this_01, timerId, uVar3, u_stk_294, u_stk_374, xStack_160, xStack_180, xStack_254, xStack_270, xStack_2e4, xStack_2f8, xStack_2f8_2, xStack_2fc, xStack_310, xStack_31c, xStack_32c, xStack_330, xStack_340, xStack_344, xStack_350, xStack_354, xStack_364, x_stk_104, x_stk_110, x_stk_128, x_stk_224, x_stk_23c, x_stk_260, x_stk_268, x_stk_38, x_stk_80, x_stk_98, x_stk_bc, x_stk_c0, x_stk_c8, x_stk_e4, x_stk_ec\n",
-        "1703": "                                                iVar18_36 = 0\n",
-        "1706": "                                                r30 = me:Speak(iVar21, pcVar14, iVar18_36, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
+        "1704": "                                                iVar18_36 = 0\n",
+        "1707": "                                                r30 = me:Speak(iVar21, pcVar14, iVar18_36, (iVar19 ~= 0), (iVar20 ~= 0), (iVar22 ~= 0))\n"
        }
       }
      },
@@ -18645,7 +18646,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 1798,
+     "sourceLine": 1799,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18654,7 +18655,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 1809,
+     "sourceLine": 1810,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18663,7 +18664,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 1815,
+     "sourceLine": 1816,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18701,7 +18702,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 1004,
+     "sourceLine": 1005,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18710,7 +18711,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 1015,
+     "sourceLine": 1016,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18719,7 +18720,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 1019,
+     "sourceLine": 1020,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -18773,14 +18774,14 @@
        "controlAcquires": 0,
        "sunkLocals": 9,
        "cleanupClosureNames": 0,
-       "parentheses": 188,
+       "parentheses": 191,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 4,
        "hoistedState": 0
       },
       "before": {
-       "lines": 1753,
+       "lines": 1754,
        "temporaries": 146,
        "labels": 36,
        "gotos": 153,
@@ -18789,7 +18790,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 986,
+       "lines": 987,
        "temporaries": 23,
        "labels": 38,
        "gotos": 151,
@@ -19011,9 +19012,9 @@
     ]
    },
    "readability": {
-    "lines": 1027,
+    "lines": 1028,
     "counts": {
-     "genericTemporaries": 84,
+     "genericTemporaries": 85,
      "machineTemporaries": 8,
      "gotos": 150,
      "nativeNames": 185,
@@ -19047,79 +19048,74 @@
       "text": "scratchValue26"
      },
      {
-      "line": 28,
+      "line": 24,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 29,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 28,
+      "line": 29,
       "category": "nativeNames",
       "text": "LAB_00e44528"
      },
      {
-      "line": 30,
+      "line": 31,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 30,
+      "line": 31,
       "category": "nativeNames",
       "text": "LAB_00e44528"
      },
      {
-      "line": 35,
+      "line": 36,
       "category": "machineTemporaries",
       "text": "i_stk_350_1"
      },
      {
-      "line": 37,
+      "line": 38,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 37,
+      "line": 38,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 39,
+      "line": 40,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 39,
+      "line": 40,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 43,
+      "line": 44,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 43,
+      "line": 44,
       "category": "nativeNames",
       "text": "LAB_00e410ba"
      },
      {
-      "line": 44,
+      "line": 45,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 44,
+      "line": 45,
       "category": "genericTemporaries",
       "text": "scratchValue26"
-     },
-     {
-      "line": 47,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 47,
-      "category": "nativeNames",
-      "text": "LAB_00e410ba"
      },
      {
       "line": 48,
@@ -19129,60 +19125,65 @@
      {
       "line": 48,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e410ba"
+      "text": "LAB_00e410ba"
+     },
+     {
+      "line": 49,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 49,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e410ba"
+     },
+     {
+      "line": 50,
+      "category": "nativeNames",
       "text": "LAB_00e410ba"
      },
      {
-      "line": 51,
+      "line": 52,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e410ba"
      },
      {
-      "line": 52,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 53,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 53,
+      "line": 54,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 56,
+      "line": 54,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 57,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 56,
+      "line": 57,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 60,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 61,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 61,
+      "line": 62,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 63,
+      "line": 62,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -19192,17 +19193,12 @@
       "text": "scratchValue26"
      },
      {
-      "line": 64,
+      "line": 65,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 66,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 67,
+      "line": 65,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -19212,439 +19208,439 @@
       "text": "scratchValue26"
      },
      {
-      "line": 71,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 71,
-      "category": "nativeNames",
-      "text": "LAB_00e412bc"
-     },
-     {
-      "line": 73,
+      "line": 68,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 73,
+      "line": 68,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 76,
+      "line": 72,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 76,
+      "line": 72,
       "category": "nativeNames",
       "text": "LAB_00e412bc"
      },
      {
-      "line": 78,
+      "line": 74,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 74,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 77,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 78,
+      "line": 77,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e412bc"
+      "text": "LAB_00e412bc"
+     },
+     {
+      "line": 79,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 79,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e412bc"
+     },
+     {
+      "line": 80,
+      "category": "nativeNames",
       "text": "LAB_00e412bc"
      },
      {
-      "line": 81,
+      "line": 82,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e412bc"
      },
      {
-      "line": 82,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 83,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 83,
+      "line": 84,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 86,
+      "line": 84,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 87,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 86,
+      "line": 87,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 92,
+      "line": 93,
       "category": "genericTemporaries",
       "text": "scratchValue19"
      },
      {
-      "line": 98,
+      "line": 99,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 98,
+      "line": 99,
       "category": "nativeNames",
       "text": "LAB_00e4451f"
      },
      {
-      "line": 105,
+      "line": 106,
       "category": "genericTemporaries",
       "text": "scratchValue19"
      },
      {
-      "line": 111,
+      "line": 112,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 111,
+      "line": 112,
       "category": "nativeNames",
       "text": "LAB_00e4451f"
      },
      {
-      "line": 113,
+      "line": 114,
       "category": "machineTemporaries",
       "text": "i_stk_350_1"
      },
      {
-      "line": 117,
+      "line": 118,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 117,
+      "line": 118,
       "category": "nativeNames",
       "text": "LAB_00e4451f"
-     },
-     {
-      "line": 121,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): xStack_308 = (undefined **)**(int **)(this + 4);"
      },
      {
       "line": 122,
       "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): xStack_308 = (undefined **)**(int **)(this + 4);"
+     },
+     {
+      "line": 123,
+      "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_344 = (int *)(*(code *)xStack_308[0x46])();"
      },
      {
-      "line": 124,
+      "line": 125,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (*(code *)xStack_308[0x16e])(__push3,__push5,0,(this + 8),__unknown_push);"
      },
      {
-      "line": 125,
+      "line": 126,
       "category": "machineTemporaries",
       "text": "i_stk_350_1"
      },
      {
-      "line": 130,
+      "line": 131,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 130,
+      "line": 131,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 161,
+      "line": 162,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 161,
+      "line": 162,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 164,
+      "line": 165,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 164,
+      "line": 165,
       "category": "nativeNames",
       "text": "LAB_00e41b75"
      },
      {
-      "line": 166,
+      "line": 167,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 166,
+      "line": 167,
       "category": "nativeNames",
       "text": "LAB_00e445a0"
      },
      {
-      "line": 169,
+      "line": 170,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 169,
+      "line": 170,
       "category": "nativeNames",
       "text": "LAB_00e445a0"
      },
      {
-      "line": 175,
+      "line": 176,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 175,
+      "line": 176,
       "category": "nativeNames",
       "text": "LAB_00e44615"
      },
      {
-      "line": 178,
+      "line": 179,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 178,
+      "line": 179,
       "category": "nativeNames",
       "text": "LAB_00e445a0"
      },
      {
-      "line": 180,
+      "line": 181,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 180,
+      "line": 181,
       "category": "nativeNames",
       "text": "LAB_00e41b75"
      },
      {
-      "line": 182,
+      "line": 183,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 182,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e41b75"
      },
      {
       "line": 183,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e41b75"
+     },
+     {
+      "line": 184,
+      "category": "nativeNames",
       "text": "LAB_00e41b75"
      },
      {
-      "line": 187,
+      "line": 188,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 187,
-      "category": "nativeNames",
-      "text": "LAB_00e41ba8"
      },
      {
       "line": 188,
       "category": "nativeNames",
+      "text": "LAB_00e41ba8"
+     },
+     {
+      "line": 189,
+      "category": "nativeNames",
       "text": "FLOW_past_lab_00e41b75"
      },
      {
-      "line": 192,
+      "line": 193,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 192,
+      "line": 193,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 194,
+      "line": 195,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 194,
+      "line": 195,
       "category": "nativeNames",
       "text": "LAB_00e418e3"
      },
      {
-      "line": 195,
+      "line": 196,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_350 = (CScriptThing *)((uint)xStack_350 | 0x20);"
      },
      {
-      "line": 196,
+      "line": 197,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 197,
+      "line": 198,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 197,
+      "line": 198,
       "category": "nativeNames",
       "text": "LAB_00e418e3"
      },
      {
-      "line": 198,
+      "line": 199,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 198,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e418e3"
      },
      {
       "line": 199,
       "category": "nativeNames",
-      "text": "LAB_00e418e3"
+      "text": "FLOW_past_lab_00e418e3"
      },
      {
       "line": 200,
+      "category": "nativeNames",
+      "text": "LAB_00e418e3"
+     },
+     {
+      "line": 201,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 201,
+      "line": 202,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e418e3"
      },
      {
-      "line": 203,
+      "line": 204,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_350 = (CScriptThing *)((uint)xStack_350 & 0xffffffdf);"
      },
      {
-      "line": 205,
+      "line": 206,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 217,
+      "line": 218,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 217,
+      "line": 218,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 224,
+      "line": 225,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 224,
+      "line": 225,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 227,
+      "line": 228,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_364 = xStack_364 + 1;"
      },
      {
-      "line": 228,
+      "line": 229,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 228,
+      "line": 229,
       "category": "nativeNames",
       "text": "LAB_00e41b75"
      },
      {
-      "line": 232,
+      "line": 233,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 232,
+      "line": 233,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 239,
+      "line": 240,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 239,
+      "line": 240,
       "category": "nativeNames",
       "text": "LAB_00e44615"
      },
      {
-      "line": 242,
+      "line": 243,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 242,
+      "line": 243,
       "category": "nativeNames",
       "text": "LAB_00e445a0"
      },
      {
-      "line": 245,
+      "line": 246,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 245,
+      "line": 246,
       "category": "nativeNames",
       "text": "LAB_00e41b75"
      },
      {
-      "line": 247,
+      "line": 248,
       "category": "nativeNames",
       "text": "LAB_00e445a0"
      },
      {
-      "line": 250,
+      "line": 251,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 250,
+      "line": 251,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 252,
+      "line": 253,
       "category": "nativeNames",
       "text": "LAB_00e41ba8"
      },
      {
-      "line": 253,
-      "category": "genericTemporaries",
-      "text": "scratchValue25"
-     },
-     {
-      "line": 253,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 254,
       "category": "genericTemporaries",
-      "text": "scratchValue26"
+      "text": "scratchValue25"
      },
      {
       "line": 254,
@@ -19653,81 +19649,86 @@
      },
      {
       "line": 255,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
      },
      {
       "line": 255,
-      "category": "nativeNames",
-      "text": "LAB_00e41c4b"
-     },
-     {
-      "line": 256,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
       "line": 256,
-      "category": "genericTemporaries",
-      "text": "scratchValue25"
-     },
-     {
-      "line": 258,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 258,
-      "category": "genericTemporaries",
-      "text": "scratchValue25"
-     },
-     {
-      "line": 259,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 259,
+      "line": 256,
       "category": "nativeNames",
       "text": "LAB_00e41c4b"
      },
      {
-      "line": 262,
+      "line": 257,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 257,
+      "category": "genericTemporaries",
+      "text": "scratchValue25"
+     },
+     {
+      "line": 259,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 259,
+      "category": "genericTemporaries",
+      "text": "scratchValue25"
+     },
+     {
+      "line": 260,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 262,
+      "line": 260,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e41c4b"
+      "text": "LAB_00e41c4b"
+     },
+     {
+      "line": 263,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 263,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e41c4b"
+     },
+     {
+      "line": 264,
+      "category": "nativeNames",
       "text": "LAB_00e41c4b"
      },
      {
-      "line": 265,
+      "line": 266,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e41c4b"
      },
      {
-      "line": 266,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 267,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 267,
+      "line": 268,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 269,
+      "line": 268,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -19737,17 +19738,12 @@
       "text": "scratchValue26"
      },
      {
-      "line": 270,
+      "line": 271,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 272,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 273,
+      "line": 271,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -19757,384 +19753,384 @@
       "text": "scratchValue26"
      },
      {
-      "line": 276,
+      "line": 274,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 274,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 277,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 276,
+      "line": 277,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 291,
+      "line": 292,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 291,
+      "line": 292,
       "category": "nativeNames",
       "text": "LAB_00e42003"
      },
      {
-      "line": 293,
+      "line": 294,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 293,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e42003"
      },
      {
       "line": 294,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e42003"
+     },
+     {
+      "line": 295,
+      "category": "nativeNames",
       "text": "LAB_00e42003"
      },
      {
-      "line": 298,
+      "line": 299,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 298,
-      "category": "nativeNames",
-      "text": "LAB_00e4203f"
      },
      {
       "line": 299,
       "category": "nativeNames",
+      "text": "LAB_00e4203f"
+     },
+     {
+      "line": 300,
+      "category": "nativeNames",
       "text": "FLOW_past_lab_00e42003"
      },
      {
-      "line": 315,
+      "line": 316,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 315,
+      "line": 316,
       "category": "nativeNames",
       "text": "LAB_00e42003"
      },
      {
-      "line": 318,
+      "line": 319,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 318,
+      "line": 319,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 336,
+      "line": 337,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 336,
+      "line": 337,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 342,
+      "line": 343,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 342,
+      "line": 343,
       "category": "nativeNames",
       "text": "LAB_00e4203f"
      },
      {
-      "line": 346,
+      "line": 347,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 346,
+      "line": 347,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 348,
+      "line": 349,
       "category": "nativeNames",
       "text": "LAB_00e4203f"
      },
      {
-      "line": 349,
+      "line": 350,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 350,
+      "line": 351,
       "category": "machineTemporaries",
       "text": "unaff_EBP"
      },
      {
-      "line": 351,
+      "line": 352,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar21 = CBasicString<char>::Compare((void *)*unaff_EBP,\"OBJECT_BEER_TANKARD\");"
      },
      {
-      "line": 352,
+      "line": 353,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 352,
+      "line": 353,
       "category": "nativeNames",
       "text": "LAB_00e42094"
      },
      {
-      "line": 354,
+      "line": 355,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 354,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e42094"
      },
      {
       "line": 355,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e42094"
+     },
+     {
+      "line": 356,
+      "category": "nativeNames",
       "text": "LAB_00e42094"
      },
      {
-      "line": 356,
+      "line": 357,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 356,
+      "line": 357,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 371,
+      "line": 372,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 371,
+      "line": 372,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 375,
+      "line": 376,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 375,
+      "line": 376,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 382,
+      "line": 383,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 382,
+      "line": 383,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 386,
+      "line": 387,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 386,
+      "line": 387,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 393,
+      "line": 394,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 393,
+      "line": 394,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 397,
+      "line": 398,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 397,
+      "line": 398,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 404,
+      "line": 405,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 404,
+      "line": 405,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 408,
+      "line": 409,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 408,
+      "line": 409,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 415,
+      "line": 416,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 415,
+      "line": 416,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 419,
+      "line": 420,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 419,
+      "line": 420,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 426,
+      "line": 427,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 426,
+      "line": 427,
       "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 430,
+      "line": 431,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 430,
+      "line": 431,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 437,
+      "line": 438,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 437,
+      "line": 438,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 446,
+      "line": 447,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 446,
+      "line": 447,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 458,
+      "line": 459,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 458,
+      "line": 459,
       "category": "nativeNames",
       "text": "LAB_00e428c7"
      },
      {
-      "line": 460,
+      "line": 461,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 460,
+      "line": 461,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 468,
+      "line": 469,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 468,
+      "line": 469,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 477,
+      "line": 478,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e42094"
      },
      {
-      "line": 480,
+      "line": 481,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 480,
+      "line": 481,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 482,
+      "line": 483,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 482,
+      "line": 483,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 486,
+      "line": 487,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 486,
+      "line": 487,
       "category": "nativeNames",
       "text": "LAB_00e42a3a"
      },
      {
-      "line": 487,
+      "line": 488,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 487,
+      "line": 488,
       "category": "genericTemporaries",
       "text": "scratchValue26"
-     },
-     {
-      "line": 490,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 490,
-      "category": "nativeNames",
-      "text": "LAB_00e42a3a"
      },
      {
       "line": 491,
@@ -20144,60 +20140,65 @@
      {
       "line": 491,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e42a3a"
+      "text": "LAB_00e42a3a"
+     },
+     {
+      "line": 492,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 492,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e42a3a"
+     },
+     {
+      "line": 493,
+      "category": "nativeNames",
       "text": "LAB_00e42a3a"
      },
      {
-      "line": 494,
+      "line": 495,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e42a3a"
      },
      {
-      "line": 495,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 496,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 496,
+      "line": 497,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 499,
+      "line": 497,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 500,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 499,
+      "line": 500,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 503,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 504,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 504,
+      "line": 505,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 506,
+      "line": 505,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -20207,17 +20208,12 @@
       "text": "scratchValue26"
      },
      {
-      "line": 507,
+      "line": 508,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 509,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 510,
+      "line": 508,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -20227,484 +20223,484 @@
       "text": "scratchValue26"
      },
      {
-      "line": 514,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 514,
-      "category": "nativeNames",
-      "text": "LAB_00e42bf9"
-     },
-     {
-      "line": 516,
+      "line": 511,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 516,
+      "line": 511,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 519,
+      "line": 515,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 519,
+      "line": 515,
       "category": "nativeNames",
       "text": "LAB_00e42bf9"
      },
      {
-      "line": 521,
+      "line": 517,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 517,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 520,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 521,
+      "line": 520,
       "category": "nativeNames",
-      "text": "FLOW_past_lab_00e42bf9"
+      "text": "LAB_00e42bf9"
+     },
+     {
+      "line": 522,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 522,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e42bf9"
+     },
+     {
+      "line": 523,
+      "category": "nativeNames",
       "text": "LAB_00e42bf9"
      },
      {
-      "line": 524,
+      "line": 525,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e42bf9"
      },
      {
-      "line": 525,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 526,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 526,
+      "line": 527,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 529,
+      "line": 527,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 530,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 529,
+      "line": 530,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 534,
+      "line": 535,
       "category": "genericTemporaries",
       "text": "scratchValue19"
      },
      {
-      "line": 537,
+      "line": 538,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 537,
+      "line": 538,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 544,
+      "line": 545,
       "category": "genericTemporaries",
       "text": "scratchValue19"
-     },
-     {
-      "line": 547,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 547,
-      "category": "nativeNames",
-      "text": "LAB_00e4450d"
      },
      {
       "line": 548,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 548,
+      "category": "nativeNames",
+      "text": "LAB_00e4450d"
+     },
+     {
+      "line": 549,
       "category": "machineTemporaries",
       "text": "i_stk_350_1"
      },
      {
-      "line": 549,
+      "line": 550,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 549,
+      "line": 550,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
-     },
-     {
-      "line": 552,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): xStack_2bc = (undefined **)**(int **)(this + 4);"
      },
      {
       "line": 553,
       "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): xStack_2bc = (undefined **)**(int **)(this + 4);"
+     },
+     {
+      "line": 554,
+      "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): xStack_344 = (int *)(*(code *)xStack_2bc[0x46])();"
      },
      {
-      "line": 556,
+      "line": 557,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): (*(code *)xStack_2bc[0x16e])(__push17,__push19,0,(this + 8),__unknown_push);"
      },
      {
-      "line": 557,
+      "line": 558,
       "category": "machineTemporaries",
       "text": "i_stk_350_1"
      },
      {
-      "line": 562,
+      "line": 563,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 562,
+      "line": 563,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 576,
+      "line": 577,
       "category": "nativeNames",
       "text": "helper_E44A40"
      },
      {
-      "line": 582,
+      "line": 583,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 582,
+      "line": 583,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 588,
+      "line": 589,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 588,
+      "line": 589,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 591,
+      "line": 592,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 591,
+      "line": 592,
       "category": "nativeNames",
       "text": "LAB_00e437b3"
      },
      {
-      "line": 595,
+      "line": 596,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 595,
+      "line": 596,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 604,
+      "line": 605,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 604,
+      "line": 605,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 610,
+      "line": 611,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 610,
+      "line": 611,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 613,
+      "line": 614,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 613,
+      "line": 614,
       "category": "nativeNames",
       "text": "LAB_00e437b3"
      },
      {
-      "line": 617,
+      "line": 618,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 617,
+      "line": 618,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 630,
+      "line": 631,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 630,
+      "line": 631,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 634,
+      "line": 635,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 634,
+      "line": 635,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 639,
+      "line": 640,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 639,
+      "line": 640,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 643,
+      "line": 644,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 643,
+      "line": 644,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 649,
+      "line": 650,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 649,
+      "line": 650,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 655,
+      "line": 656,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 655,
+      "line": 656,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 666,
+      "line": 667,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 666,
+      "line": 667,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 670,
+      "line": 671,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 670,
+      "line": 671,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 676,
+      "line": 677,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 676,
+      "line": 677,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 683,
+      "line": 684,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 683,
+      "line": 684,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 695,
+      "line": 696,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 695,
+      "line": 696,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 701,
+      "line": 702,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 701,
+      "line": 702,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 707,
+      "line": 708,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 707,
+      "line": 708,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 711,
+      "line": 712,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 711,
+      "line": 712,
       "category": "nativeNames",
       "text": "LAB_00e437b3"
      },
      {
-      "line": 716,
+      "line": 717,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 716,
+      "line": 717,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 729,
+      "line": 730,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 729,
+      "line": 730,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 733,
+      "line": 734,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 733,
+      "line": 734,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 735,
+      "line": 736,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 735,
+      "line": 736,
       "category": "nativeNames",
       "text": "LAB_00e437b3"
      },
      {
-      "line": 740,
+      "line": 741,
       "category": "nativeNames",
       "text": "LAB_00e448cc"
      },
      {
-      "line": 743,
+      "line": 744,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 743,
+      "line": 744,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 748,
+      "line": 749,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 748,
+      "line": 749,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 760,
+      "line": 761,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 760,
+      "line": 761,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 767,
+      "line": 768,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 767,
+      "line": 768,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 770,
+      "line": 771,
       "category": "nativeNames",
       "text": "LAB_00e437b3"
-     },
-     {
-      "line": 775,
-      "category": "genericTemporaries",
-      "text": "scratchValue25"
-     },
-     {
-      "line": 775,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
      },
      {
       "line": 776,
       "category": "genericTemporaries",
-      "text": "scratchValue26"
+      "text": "scratchValue25"
      },
      {
       "line": 776,
@@ -20713,81 +20709,86 @@
      },
      {
       "line": 777,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
      },
      {
       "line": 777,
-      "category": "nativeNames",
-      "text": "LAB_00e43893"
-     },
-     {
-      "line": 778,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
       "line": 778,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 778,
+      "category": "nativeNames",
+      "text": "LAB_00e43893"
+     },
+     {
+      "line": 779,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 779,
       "category": "genericTemporaries",
       "text": "scratchValue25"
      },
      {
-      "line": 780,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 780,
+      "line": 781,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
       "line": 781,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 782,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 781,
+      "line": 782,
       "category": "nativeNames",
       "text": "LAB_00e43893"
      },
      {
-      "line": 784,
+      "line": 785,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 784,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e43893"
      },
      {
       "line": 785,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e43893"
+     },
+     {
+      "line": 786,
+      "category": "nativeNames",
       "text": "LAB_00e43893"
      },
      {
-      "line": 787,
+      "line": 788,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e43893"
      },
      {
-      "line": 788,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
       "line": 789,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 789,
+      "line": 790,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 791,
+      "line": 790,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -20797,17 +20798,12 @@
       "text": "scratchValue26"
      },
      {
-      "line": 792,
+      "line": 793,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
      {
-      "line": 794,
-      "category": "genericTemporaries",
-      "text": "scratchValue26"
-     },
-     {
-      "line": 795,
+      "line": 793,
       "category": "genericTemporaries",
       "text": "scratchValue26"
      },
@@ -20817,154 +20813,154 @@
       "text": "scratchValue26"
      },
      {
-      "line": 798,
+      "line": 796,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 796,
+      "category": "genericTemporaries",
+      "text": "scratchValue26"
+     },
+     {
+      "line": 799,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 798,
+      "line": 799,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 813,
+      "line": 814,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 813,
+      "line": 814,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 825,
+      "line": 826,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 825,
+      "line": 826,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 832,
+      "line": 833,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 832,
+      "line": 833,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 839,
+      "line": 840,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 839,
+      "line": 840,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 851,
+      "line": 852,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 851,
+      "line": 852,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 858,
+      "line": 859,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 858,
+      "line": 859,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
-     },
-     {
-      "line": 866,
-      "category": "gotos",
-      "text": "goto"
      },
      {
       "line": 867,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 868,
       "category": "machineTemporaries",
       "text": "unaff_EBP"
      },
      {
-      "line": 868,
+      "line": 869,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar21 = CBasicString<char>::Compare((void *)*unaff_EBP,\"OBJECT_BEER_TANKARD\");"
      },
      {
-      "line": 869,
+      "line": 870,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 869,
+      "line": 870,
       "category": "nativeNames",
       "text": "LAB_00e43c54"
      },
      {
-      "line": 871,
+      "line": 872,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 871,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e43c54"
      },
      {
       "line": 872,
       "category": "nativeNames",
+      "text": "FLOW_past_lab_00e43c54"
+     },
+     {
+      "line": 873,
+      "category": "nativeNames",
       "text": "LAB_00e43c54"
      },
      {
-      "line": 873,
+      "line": 874,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 873,
+      "line": 874,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 888,
+      "line": 889,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 888,
+      "line": 889,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
      {
-      "line": 892,
+      "line": 893,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 892,
+      "line": 893,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
-     },
-     {
-      "line": 899,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 899,
-      "category": "nativeNames",
-      "text": "LAB_00e44903"
      },
      {
       "line": 900,
@@ -20977,12 +20973,12 @@
       "text": "LAB_00e44903"
      },
      {
-      "line": 906,
+      "line": 901,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 906,
+      "line": 901,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
@@ -20997,12 +20993,12 @@
       "text": "LAB_00e44903"
      },
      {
-      "line": 913,
+      "line": 908,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 913,
+      "line": 908,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
@@ -21017,12 +21013,12 @@
       "text": "LAB_00e44903"
      },
      {
-      "line": 920,
+      "line": 915,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 920,
+      "line": 915,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
@@ -21037,12 +21033,12 @@
       "text": "LAB_00e44903"
      },
      {
-      "line": 927,
+      "line": 922,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 927,
+      "line": 922,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
@@ -21057,162 +21053,172 @@
       "text": "LAB_00e44903"
      },
      {
-      "line": 931,
+      "line": 929,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 931,
+      "line": 929,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
      {
-      "line": 936,
+      "line": 932,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 932,
+      "category": "nativeNames",
+      "text": "LAB_00e44903"
+     },
+     {
+      "line": 937,
       "category": "genericTemporaries",
       "text": "scratchValue19"
      },
      {
-      "line": 938,
+      "line": 939,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 938,
+      "line": 939,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 954,
+      "line": 955,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 954,
+      "line": 955,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 957,
+      "line": 958,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 957,
+      "line": 958,
       "category": "nativeNames",
       "text": "LAB_00e44903"
      },
      {
-      "line": 966,
+      "line": 967,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e43c54"
      },
      {
-      "line": 969,
+      "line": 970,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 969,
+      "line": 970,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      },
      {
-      "line": 974,
+      "line": 975,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
-     },
-     {
-      "line": 977,
-      "category": "nativeNames",
-      "text": "LAB_00e4451f"
      },
      {
       "line": 978,
       "category": "nativeNames",
+      "text": "LAB_00e4451f"
+     },
+     {
+      "line": 979,
+      "category": "nativeNames",
       "text": "LAB_00e44528"
      },
      {
-      "line": 981,
+      "line": 982,
       "category": "nativeNames",
       "text": "LAB_00e44615"
      },
      {
-      "line": 984,
+      "line": 985,
       "category": "nativeNames",
       "text": "LAB_00e448a1"
      },
      {
-      "line": 987,
+      "line": 988,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 987,
-      "category": "nativeNames",
-      "text": "LAB_00e4451f"
      },
      {
       "line": 988,
       "category": "nativeNames",
-      "text": "LAB_00e428c7"
+      "text": "LAB_00e4451f"
      },
      {
       "line": 989,
+      "category": "nativeNames",
+      "text": "LAB_00e428c7"
+     },
+     {
+      "line": 990,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): goto LAB_00e428d4"
      },
      {
-      "line": 991,
+      "line": 992,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 991,
+      "line": 992,
       "category": "nativeNames",
       "text": "LAB_00e428c7"
      },
      {
-      "line": 993,
+      "line": 994,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 993,
-      "category": "nativeNames",
-      "text": "LAB_00e44862"
      },
      {
       "line": 994,
       "category": "nativeNames",
+      "text": "LAB_00e44862"
+     },
+     {
+      "line": 995,
+      "category": "nativeNames",
       "text": "LAB_00e44811"
      },
      {
-      "line": 997,
+      "line": 998,
       "category": "nativeNames",
       "text": "LAB_00e44862"
      },
      {
-      "line": 1000,
+      "line": 1001,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 1000,
-      "category": "nativeNames",
-      "text": "LAB_00e4451f"
      },
      {
       "line": 1001,
       "category": "nativeNames",
+      "text": "LAB_00e4451f"
+     },
+     {
+      "line": 1002,
+      "category": "nativeNames",
       "text": "LAB_00e44903"
      },
      {
-      "line": 1004,
+      "line": 1005,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 1004,
+      "line": 1005,
       "category": "nativeNames",
       "text": "LAB_00e4450d"
      }
@@ -21286,7 +21292,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 1,
-      "decimalLiterals": 15
+      "decimalLiterals": 16
      }
     },
     {
@@ -22330,7 +22336,7 @@
        "controlAcquires": 0,
        "sunkLocals": 1,
        "cleanupClosureNames": 0,
-       "parentheses": 6,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
@@ -23025,7 +23031,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 1,
-      "decimalLiterals": 15
+      "decimalLiterals": 16
      }
     },
     {
@@ -25352,7 +25358,7 @@
        "controlAcquires": 0,
        "sunkLocals": 1,
        "cleanupClosureNames": 0,
-       "parentheses": 6,
+       "parentheses": 8,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,

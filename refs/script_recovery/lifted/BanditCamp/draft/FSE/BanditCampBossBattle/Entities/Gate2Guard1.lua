@@ -473,7 +473,7 @@ function Main(quest, me)
                     uVar10 = uVar10 & 0xfffffeff
                     u_stk_f4 = uVar10
                 end
-                if uVar10 < 0 then
+                if ((uVar10 & 0x80) ~= 0) then
                     uVar10 = uVar10 & 0xffffff7f
                     u_stk_f4 = uVar10
                 end

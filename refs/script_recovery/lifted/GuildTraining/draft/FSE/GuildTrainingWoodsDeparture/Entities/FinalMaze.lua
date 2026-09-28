@@ -210,7 +210,7 @@ function Main(quest, me)
             ::LAB_00d64f56::
             bVar3 = false
             ::FLOW_past_lab_00d64f56::
-            if uVar12 < 0 then
+            if ((uVar12 & 0x80) ~= 0) then
                 uVar12 = uVar12 & 0xffffff7f
             end
             if (uVar12 & 0x40) ~= 0 then
@@ -406,7 +406,7 @@ function Main(quest, me)
                     ::LAB_00d65670::
                     bVar3 = true
                     ::FLOW_past_lab_00d65670::
-                    if (uVar12 >> 8) < 0 then
+                    if ((uVar12 & 0x8000) ~= 0) then
                         uVar12 = uVar12 & 0xffff7fff
                     end
                     if (uVar12 & 0x4000) ~= 0 then

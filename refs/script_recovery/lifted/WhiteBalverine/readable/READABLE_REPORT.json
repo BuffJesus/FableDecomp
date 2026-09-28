@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "white_balverine",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\white_balverine",
+ "draft": "refs\\script_recovery\\lifted\\WhiteBalverine\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -11818,7 +11818,7 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 3,
+       "copies": 4,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 121,
@@ -13058,7 +13058,7 @@
       "unusedAlive": 0,
       "flagTests": 5,
       "declarations": 7,
-      "decimalLiterals": 13
+      "decimalLiterals": 14
      }
     },
     {
@@ -14023,7 +14023,7 @@
        "controlAcquires": 0,
        "sunkLocals": 11,
        "cleanupClosureNames": 0,
-       "parentheses": 8,
+       "parentheses": 10,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,

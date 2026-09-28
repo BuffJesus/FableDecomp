@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "arena",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\arena",
+ "draft": "refs\\script_recovery\\lifted\\Arena\\draft",
  "files": {
   "FSE/Arena/Arena.lua": {
    "functions": [
@@ -31753,7 +31753,7 @@
       "unusedAlive": 0,
       "flagTests": 0,
       "declarations": 9,
-      "decimalLiterals": 39
+      "decimalLiterals": 40
      }
     },
     {
@@ -33661,7 +33661,7 @@
        "controlAcquires": 0,
        "sunkLocals": 41,
        "cleanupClosureNames": 1,
-       "parentheses": 37,
+       "parentheses": 39,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 1,

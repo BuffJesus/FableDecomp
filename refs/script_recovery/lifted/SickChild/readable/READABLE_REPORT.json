@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "sick_child",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\sick_child",
+ "draft": "refs\\script_recovery\\lifted\\SickChild\\draft",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -13668,7 +13668,7 @@
       "unusedAlive": 0,
       "flagTests": 15,
       "declarations": 37,
-      "decimalLiterals": 22
+      "decimalLiterals": 23
      }
     },
     {
@@ -15580,7 +15580,7 @@
        "controlAcquires": 0,
        "sunkLocals": 11,
        "cleanupClosureNames": 3,
-       "parentheses": 41,
+       "parentheses": 43,
        "cosmetics": 0,
        "firstAssignments": 1,
        "freeSuffixes": 1,

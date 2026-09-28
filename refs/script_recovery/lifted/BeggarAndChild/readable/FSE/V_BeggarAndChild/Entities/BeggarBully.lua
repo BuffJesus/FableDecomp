@@ -407,7 +407,7 @@ function Main(quest, me)
                 if scratchValue17 & 256 ~= 0 then
                     scratchValue17 = scratchValue17 & 0xfffffeff
                 end
-                if scratchValue17 < 0 then
+                if scratchValue17 & 128 ~= 0 then
                     scratchValue17 = scratchValue17 & 0xffffff7f
                 end
                 if scratchValue17 & 64 ~= 0 then

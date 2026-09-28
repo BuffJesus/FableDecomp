@@ -582,7 +582,7 @@ function Main(quest, me)
                 scratchValue19 = scratchValue19 & 0xfffffeff
                 scratchValue21 = scratchValue19
             end
-            if scratchValue19 < 0 then
+            if scratchValue19 & 128 ~= 0 then
                 scratchValue19 = scratchValue19 & 0xffffff7f
                 scratchValue21 = scratchValue19
             end

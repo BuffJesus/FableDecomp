@@ -141,3 +141,17 @@ differing roster files were pinned to older, in-game-proven revisions and are ke
 (A blanket refresh would also have swapped in an older, hand-reviewed GuildTrainingSkill.)
 Offline: 210 Lua parse, 215 manifest hashes match; mock smoke of the five packages vs
 v32: 0 new failures, 1 fixed (teacher `DAT_012448ec`), 10 pre-existing. Sidecar unchanged.
+
+## Sixth checkpoint: signed-char bit tests and cleanup-flag words
+
+- `lower_signed_char_tests`: Ghidra renders a bit-7 test as `(char)x < '\0'`; the lowering
+  dropped the cast (`x < 0`, never true for these unsigned words). Now `(x & 0x80) ~= 0`, and
+  `(char)(x >> N) < '\0'` becomes `x & (0x80 << N)`. Corpus: 30 retail sites.
+- `cleanup_flag_words`: MSVC's conditional-temporary cleanup words (`uStack_374 |= 0xe` ...
+  `if (flags & 1) { flags &= ~1; destroy }`) are zeroed in the prologue, which Ghidra folds away;
+  the Lua read nil. A hoisted local touched only by self bit-updates, `(v & K) ~= 0` tests and
+  rebuild copies is initialised to 0 at entry. Magicman (0x00E40E80) qualifies. BordelloLady
+  and Witch do not: their words share stack slots with a state int / CCharString (open).
+- 29-unit A/B (`work/codex_lua_flags_20260927/`): eight units change, only those lines. All
+  readables parse; GuildTraining's readable is hand-reviewed, so only its draft changes.
+  `test_cleanup_flag_words.py`: 3 pass. No install or launch.

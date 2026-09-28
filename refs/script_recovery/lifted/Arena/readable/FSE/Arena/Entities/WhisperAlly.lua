@@ -402,7 +402,7 @@ function Main(quest, me)
                         scratchValue39 = scratchValue34 | 192
                         scratchValue41 = scratchValue39
                     end
-                    if scratchValue39 < 0 then
+                    if scratchValue39 & 128 ~= 0 then
                         scratchValue39 = scratchValue39 & 0xffffff7f
                         scratchValue41 = scratchValue39
                     end

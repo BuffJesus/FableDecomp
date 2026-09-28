@@ -313,7 +313,7 @@ function helper_E44A40(quest)
     end
     predicateResult = true
     ::LAB_00e44c26::
-    if flags < 0 then
+    if flags & 128 ~= 0 then
         flags = flags & 127
     end
     if flags & 64 ~= 0 then

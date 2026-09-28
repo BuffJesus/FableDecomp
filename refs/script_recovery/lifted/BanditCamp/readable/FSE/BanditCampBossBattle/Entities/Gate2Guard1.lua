@@ -246,7 +246,7 @@ function Main(quest, me)
                     scratchValue46 = scratchValue46 & 0xfffffeff
                     scratchValue50 = scratchValue46
                 end
-                if scratchValue46 < 0 then
+                if scratchValue46 & 128 ~= 0 then
                     scratchValue46 = scratchValue46 & 0xffffff7f
                     scratchValue50 = scratchValue46
                 end

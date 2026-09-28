@@ -1127,7 +1127,7 @@ function Main(quest, me)
                         uVar13 = uVar13 & 0xfffffeff
                         xStack_1e4 = uVar13
                     end
-                    if uVar13 < 0 then
+                    if ((uVar13 & 0x80) ~= 0) then
                         uVar13 = uVar13 & 0xffffff7f
                         xStack_1e4 = uVar13
                     end

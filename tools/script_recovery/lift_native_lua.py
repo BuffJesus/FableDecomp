@@ -924,6 +924,56 @@ def master_bool_flags() -> set[str]:
     return _MASTER_BOOL_FLAGS
 
 
+_FLAG_CONST = r'(?:0x[0-9a-fA-F]+|\d+)'
+RE_SIGNED_CHAR_TEST = re.compile(
+    r"\(char\)(?:(?P<word>\w+)|\((?P<shifted>\w+) >> (?P<shift>0x[0-9a-fA-F]+|\d+)\)) < '\\0'")
+
+
+def lower_signed_char_tests(decompile):
+    """`(char)x < '\\0'` is Ghidra's rendering of a bit-7 test (`test al, al; js`); dropping the cast
+    made it `x < 0`, never true for the unsigned words it tests (V_Bordello Magicman 0x00E40E80:
+    `(char)uStack_374 < '\\0'`, `(char)(uStack_374 >> 8) < '\\0'` are cleanup-flag bits 7 and 15)."""
+    def bit(m):
+        if m['word']:
+            return f"(({m['word']} & 0x80) != 0)"
+        return f"(({m['shifted']} & {hex(0x80 << int(m['shift'], 0))}) != 0)"
+    return RE_SIGNED_CHAR_TEST.sub(bit, decompile)
+
+
+def cleanup_flag_words(lines, hoisted):
+    """Hoisted scalars that are MSVC conditional-temporary cleanup flags.
+
+    Retail sets a bit when a conditional temporary is built (`uStack_374 = uStack_374 | 0xe;`) and
+    tests it before destroying that temporary (`if (uStack_374 & 1) { uStack_374 &= ~1; ... }`).
+    The compiler zeroes the word in the prologue, which Ghidra folds away (V_Bordello Magicman
+    0x00E40E80), so the Lua read an undeclared nil. A word qualifies only when every mention is
+    such an update, a `(v & K) ~= 0` test, or a plain copy used solely to rebuild it
+    (`uVar3 = uStack_374; uStack_374 = uVar3 | 0xc0;`). Returned in source order."""
+    body = '\n'.join(l for l in lines if not l.lstrip().startswith('--'))
+    names = []
+    for v in sorted(hoisted, key=lambda n: body.find(n)):
+        ev = re.escape(v)
+        mentions = len(re.findall(r'\b' + ev + r'\b', body))
+        if not mentions:
+            continue
+        self_updates = re.findall(r'^\s*' + ev + r' = ' + ev + r' [|&] ' + _FLAG_CONST + r'\s*$', body, re.M)
+        sets = [u for u in self_updates if '|' in u]
+        tests = re.findall(r'\(' + ev + r' & ' + _FLAG_CONST + r'\) ~= 0', body)
+        copies = re.findall(r'^\s*(\w+) = ' + ev + r'\s*$', body, re.M)
+        rebuilt = []
+        for c in set(copies):
+            ec = re.escape(c)
+            uses = re.findall(r'^\s*' + ev + r' = ' + ec + r' \| ' + _FLAG_CONST + r'\s*$', body, re.M)
+            # the copy must exist only to rebuild the word: its one assignment plus those rebuilds
+            if c not in hoisted or len(re.findall(r'\b' + ec + r'\b', body)) != copies.count(c) + len(uses):
+                break
+            rebuilt += uses
+        else:
+            if sets and tests and mentions == 2 * len(self_updates) + len(tests) + len(copies) + len(rebuilt):
+                names.append(v)
+    return names
+
+
 class Lifter:
     def __init__(self, manifest: dict[str, dict], state: dict[str, tuple[str, str]], receiver: str,
                  entity: bool, package: str, rdata: RData, callee_names: dict[str, str] | None = None,
@@ -2201,6 +2251,7 @@ class Lifter:
         if (not self.entity and re.search(r'\bCScriptBase\s*\*\s*in_ECX\s*;', decompile)
                 and not re.search(r'\bin_ECX\s*=(?!=)', decompile)):
             decompile = re.sub(r'\bin_ECX\b', "this", decompile)
+        decompile = lower_signed_char_tests(decompile)
         # Some exact-target termination calls are decompiled as void with their AL result copied
         # by the following statement. Recover only that immediate use, never unrelated AL values.
         terminating = {"CScriptBase::IsActiveThreadTerminating"}
@@ -2395,8 +2446,11 @@ class Lifter:
                 self.out = [l if l.lstrip().startswith('--') else
                             re.sub(r"\b" + re.escape(name) + r"\b", literal.replace("\\", "\\\\"), l)
                             for l in self.out]
+        flag_words = cleanup_flag_words(self.out, self.hoisted_scalars)
         if self.used_alive:
             self.out.insert(0, "    local alive = true")
+        for name in reversed(flag_words):
+            self.out.insert(0, f"    {name} = 0  -- compiler cleanup flags start clear")
         if self.hoisted_scalars:
             self.out.insert(0, "    local " + ", ".join(sorted(self.hoisted_scalars)))
         if self.readable_locals:

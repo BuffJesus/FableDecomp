@@ -765,7 +765,7 @@ function Main(quest, me)
                             if (uVar13 & 0x100) ~= 0 then
                                 uVar13 = uVar13 & 0xfffffeff
                             end
-                            if uVar13 < 0 then
+                            if ((uVar13 & 0x80) ~= 0) then
                                 uVar13 = uVar13 & 0xffffff7f
                             end
                             if (uVar13 & 0x40) ~= 0 then

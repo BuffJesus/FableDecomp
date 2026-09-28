@@ -620,7 +620,7 @@ function Main(quest, me)
                     else
                     end
                     ::LAB_00f2389f::
-                    if uVar14 < 0 then
+                    if ((uVar14 & 0x80) ~= 0) then
                         uVar14 = uVar14 & 0xffffff7f
                         u_stk_f4 = uVar14
                     end

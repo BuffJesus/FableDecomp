@@ -759,7 +759,7 @@ function Main(quest, me)
                 if bVar14 then
                     bVar14 = false
                 end
-                if bVar12 < 0 then
+                if ((bVar12 & 0x80) ~= 0) then
                     bVar12 = bVar6 & 0x7f
                 end
                 if bVar5 then

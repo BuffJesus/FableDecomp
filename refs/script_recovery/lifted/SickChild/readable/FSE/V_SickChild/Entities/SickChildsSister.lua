@@ -459,7 +459,7 @@ function Main(quest, me)
         ::FLOW_past_lab_00ec7d68::
         scratchValue = scratchValue5 | 128
         msgIsHitByAnySpecialAbilityFromHero = msgIsHitByAnySpecialAbilityFromHero and false
-        if scratchValue < 0 then
+        if scratchValue & 128 ~= 0 then
             scratchValue = scratchValue5 & 127
         end
         if predicateResult2 then
