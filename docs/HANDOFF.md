@@ -1,5 +1,13 @@
 # Lua recovery handoff - 2026-09-26
 
+**GuildMaster cleanup checkpoint (2026-09-28):** existing continuation and return paths verified;
+543 regression tests pass on fresh draft/readable output, including five retail cleanup entries
+through their real continuation or RET. No cleanup defect demonstrated; broad inlining experiment
+rejected (68 files / 18 units), generator restored, no Lua promoted. v39 unchanged. Next: Witch
+OnPersist uses quest Bool state for entity Int ThingsForPotionGot; trace per-call target types and
+entity ownership. See latest [journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md) and
+`work/codex_guild_cleanup_20260928/`. No installation/game launch/push.
+
 **v39 ready offline (2026-09-28):** source `3a59649`; one BeardyBaldy roster file over v38, unchanged
 sidecar e83c39f. 210 Lua parse / 216 hashes match / no new package smoke errors (16 old mock failures).
 Not installed or run; local commits not pushed. GuildMaster cache/Hero Souls recovery is committed but

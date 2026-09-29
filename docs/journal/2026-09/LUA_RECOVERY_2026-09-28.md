@@ -576,3 +576,43 @@ Validation: **210 Lua files parse, 216 manifest hashes match, no new package smo
 current scratch preserve the procedure and exact comparison. No installation, game launch or push.
 Next: GuildMasterGameFlow's movie cleanup continuations versus its true return epilogue; keep the separate
 Witch progress-persistence issue on the list.
+
+## GuildMaster movie cleanup validation checkpoint (2026-09-28)
+
+Closed the specific continuation-versus-return question with executable regression coverage.
+The current generated GuildMasterGameFlow already preserves these paths; no Lua or generator
+change is promoted at this checkpoint. Native E91898 unpauses/destroys the attack movie and
+continues at E918AF. E91DB4 does the same for dialogue and continues at E91DCC. E91CCB and
+E91EE8 unpause, destroy the dialogue movie and release the controlled resource; E91EF9 receives
+the already-selected movie pointer after unpausing. All three termination entries reach the
+actual RET at E91F11. The apparently adjacent unpause blocks in Lua are separated by jumps;
+there was no demonstrated double-unpause defect to fix.
+
+Added `tools/script_recovery/test_guild_movie_cleanup.py`: **543 tests pass** using a fresh
+registered-unit scratch conversion and explicit scratch-draft readable build. Includes 528
+termination-cut scenarios across draft/readable, 14 explicit continuation/card/wait cases,
+and one retail-instruction test executing all five cleanup entries. Tests check movie identity,
+one unpause/destroy per movie, one final resource release, no gameplay work after termination,
+attack-to-talk continuation, question YES/NO effects and termination during waits. The native
+worker verifies actual continuation/return destinations and stack balance, mocking only the
+pause, movie destructor and resource-release calls. Lua uses FSE blocking-Speak semantics.
+This is offline evidence, not full Main native equivalence or in-game proof; the separate
+focal-site branch and acquisition failure are outside this new matrix.
+
+A proposed bounded C cleanup-inlining pass was evaluated in all 29 registered units. It changed
+68 Lua files across 18 units and expanded many cleanup bodies, so it was rejected rather than
+promoted as a readability improvement. Its generator, focused tests and A/B output are retained
+under `work/codex_guild_cleanup_20260928/rejected_experiment/` and `ab/`. The shared lifter was
+restored byte-for-byte to the owned baseline after the comparison completed. No generated output
+or report was promoted; the current readability inventory and candidate v39 remain unchanged.
+
+Validation command: `python -m pytest tools/script_recovery/test_guild_movie_cleanup.py -q`.
+Artifacts: `tests.log`, `native_cleanup_paths.json`, `accepted_source_hashes.json`,
+`main_disassembly.txt`, `main_raw.c`, and `ab/comparison.json` in the scratch directory.
+No installation, game launch or push.
+
+Next: Witch persistence. Unit metadata already classifies +0x1c IntroDone as Bool and +0x20
+ThingsForPotionGot as Int, and Main/Init use per-entity locals. OnPersist currently writes both
+through quest Bool state. Retail ECD890 calls distinct targets 4045C0 and 410BE0 even though the
+export gives both the same Transfer<signed_char> label. Investigate per-call target typing and
+entity ownership in `lift_persist_evidence`; avoid a Witch-only Lua edit. This remains unfixed.
