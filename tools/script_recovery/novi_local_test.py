@@ -6,12 +6,24 @@ import argparse,csv,datetime,hashlib,json,re,shutil,subprocess
 from pathlib import Path
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
+def validate_dll_roles(bundle):
+    # The chained launcher requires this stock build to install the first hook.
+    # Manifest integrity alone cannot detect a sidecar staged in the stock slot.
+    stock = bundle/'FableScriptExtender.dll'
+    if sha(stock) != '36ffb32ce4f1689d08cd5deef37829760d9f2a840aa9e801e79c86135fdb95ea':
+        raise ValueError('Stock FSE DLL role mismatch: restore the pinned upstream DLL')
+    addon = (bundle/'NoviCompatibility.dll').read_bytes()
+    if b'NoviCompatibilityStart' not in addon:
+        raise ValueError('Add-on DLL lacks NoviCompatibilityStart')
+
 def validate(bundle,game):
     manifest=json.loads((bundle/'manifest.json').read_text())
     for name,digest in manifest['files'].items():
         target=(bundle/name).resolve()
         if not target.is_relative_to(bundle.resolve()) or sha(target)!=digest:
             raise ValueError('Payload hash mismatch: '+name)
+    validate_dll_roles(bundle)
     if sha(game/'Fable.exe')!=manifest['game_exe_sha256']:
         raise ValueError('Unsupported Fable.exe')
     text=(game/'data/Levels/FinalAlbion.qst').read_text(encoding='utf-8-sig')

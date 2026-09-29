@@ -204,6 +204,38 @@ def load_header_is(png: Path, reference: Path) -> bool:
 PROFILE_ROWS = [209, 254, 298, 343, 388, 433, 478, 523, 567]     # y of the nine visible Select Profile rows
 
 
+def profile_row_from_ocr(text: str) -> int | None:
+    """Locate 0atlas by label; its row changes as profiles are added/removed."""
+    matches = []
+    for line in text.splitlines():
+        box, _, label = line.partition('\t')
+        parts = box.split()
+        if len(parts) != 4:
+            continue
+        try:
+            x, y, width, height = map(int, parts)
+        except ValueError:
+            continue
+        # Windows OCR reads the leading zero as capital O in real captures.
+        if label.strip().lower() not in ('0atlas', 'oatlas'):
+            continue
+        center = y + height / 2
+        if 350 <= x <= 650 and 230 <= center <= 580:
+            row = min(PROFILE_ROWS[1:], key=lambda r: abs(r - center))
+            if abs(row - center) <= 12:
+                matches.append(row)
+    return matches[0] if len(matches) == 1 else None
+
+
+def find_frontend_profile(png: Path) -> int | None:
+    import subprocess
+    result = subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass',
+                             '-File', str(Path(__file__).with_name('ocr_png.ps1')), str(png)],
+                            capture_output=True, text=True, encoding='utf-8', errors='replace',
+                            timeout=30, check=True)
+    return profile_row_from_ocr(result.stdout)
+
+
 def highlighted_profile_row(png: Path) -> int:
     """y of the row the light-blue hover bar is on (blue tint of the bar left/right of the text column)"""
     from PIL import Image
@@ -276,8 +308,9 @@ def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
             game_input('click 512 337' if profile_selected else 'click 512 385')   # Continue Game / Change Profile
         elif kind == 'profiles':
             # the list ignores the arrow keys and the DirectInput cursor walk lands about one row (44 px) off:
-            # hover, verify the highlight bar by capture, correct, then click. Rows: New Profile, 0aa, 0atlas.
-            if hover_profile_row(298, shots, f'fe_{step:02d}'):
+            # Locate the label, verify its hover bar, correct, then click.
+            target_row = find_frontend_profile(png)
+            if target_row is not None and hover_profile_row(target_row, shots, f'fe_{step:02d}'):
                 game_input('lmb 1')
                 profile_selected = True
             else:

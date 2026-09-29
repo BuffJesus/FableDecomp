@@ -818,3 +818,22 @@ Selection and verification: stage_v42.py, stage_v42.log, validate_v42.py,
 package_validation_v42.json and bundle_payload_diff.json in the flag scratch directory.
 Not installed or run; no push. Next: ECF48A's branch-carried boolean operands, the dynamic
 speech keys, and movie/string cleanup identity. Full Witch runtime recovery remains open.
+
+
+## Runtime testing resumed: v43 DLL-role repair and earlier-script coverage
+
+User authorized launch/testing and redirected priority to earlier untested ports.
+v42's first launch failed: v35-v42 had the round-12 sidecar in the stock FSE DLL slot.
+v43 restores stock FSE and puts e83c39f in NoviCompatibility.dll, keeping all Lua
+identical. Role validation now catches this despite a self-consistent manifest.
+Fixed the replay frontend's stale profile-row assumption; label lookup and the
+existing load-header check select the backed-up test slot.
+
+Assisted Maze/Bowerstone replay passes (completion, stage 400, CoreQuestWaiting),
+but startup demonstrates StatueMaster Main line 30 reading an unassigned fret_0
+in angle wrapping. The final archived log also finds SickChild entity line 33 passing
+missing teleport operands, rejected by sol. Two runtime errors total. Next: recover
+the generic _CIfmod/ST0 result and bed teleport operands, then the earlier-script queue.
+27 tests plus five subtests pass. Game closed; all 561 save files match the original
+backup; shared installation unchanged. See [runtime journal](LUA_PLAYTEST_2026-09-28.md)
+for evidence, exact command and remaining coverage. No push.

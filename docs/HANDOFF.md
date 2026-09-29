@@ -1,5 +1,16 @@
 # Lua recovery handoff - 2026-09-26
 
+**v43 runtime checkpoint (2026-09-28):** user reauthorized game testing and requested
+coverage of earlier scripts. Fixed v35-v42 DLL-role staging mistake (sidecar had
+replaced stock FSE), added preflight rejection, and corrected frontend profile lookup.
+v43 Lua unchanged; stock and sidecar now chain successfully. Assisted Maze/Bowerstone
+replay completes with stage 400/CoreQuestWaiting. **StatueMaster Main fails at line 30:
+unassigned fret_0 in angle wrapping. SickChild entity also fails at line 33 on missing
+teleport operands.** Next: recover/test these native operands, then
+continue the earlier-port runtime queue. 27 tests + five subtests pass; all 561 save
+files restored unchanged; game closed. No installation or push. Coverage/commands:
+[runtime journal](journal/2026-09/LUA_PLAYTEST_2026-09-28.md).
+
 **v42 ready offline (2026-09-28):** source `ed6fa67`; Witch.lua alone updated over v41.
 Both hit gates now preserve native no-hit/healing exclusions. 210 Lua parse / 216 hashes
 match / zero new package smoke failures (16 old mock failures). Sidecar e83c39f unchanged.
