@@ -189,12 +189,13 @@ PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet
                     'IsDistanceFromPositionUnder'}
 
 
-def recorded_parameter_types(unit_name):
+def recorded_parameter_types(unit_name, report_path=None):
     """{(file, function): [harness kind]} from the converter report's native signatures, so a parameter the
     readable pass names `param1` still receives the thing / vector / number the retail prototype takes."""
     try:
         package = script_unit(unit_name)['package']
-        report = json.loads((ROOT / 'refs/script_recovery/lifted' / package / 'draft/CONVERSION_REPORT.json').read_text(encoding='utf-8'))
+        report_path = report_path or ROOT / 'refs/script_recovery/lifted' / package / 'draft/CONVERSION_REPORT.json'
+        report = json.loads(Path(report_path).read_text(encoding='utf-8'))
     except (OSError, KeyError, ValueError):
         return {}
     def kind(t):
@@ -266,6 +267,7 @@ def main():
     a.add_argument('--instructions', type=int, default=2_000_000)
     a.add_argument('--json', type=Path)
     a.add_argument('--package-dir', type=Path, help='smoke this FSE tree instead of a converter unit')
+    a.add_argument('--conversion-report', type=Path, help='native parameter types for a scratch/package tree')
     args = a.parse_args()
     from lupa.lua54 import LuaRuntime
     if args.package_dir:
@@ -274,7 +276,7 @@ def main():
         u = script_unit(args.unit)
         base = ROOT / 'refs/script_recovery/lifted' / u['package'] / args.stage / 'FSE'
     known = registered_methods()
-    native_types = recorded_parameter_types(args.unit) if not args.package_dir else {}
+    native_types = recorded_parameter_types(args.unit, args.conversion_report) if args.conversion_report or not args.package_dir else {}
     report, problems = {}, 0
     for path in sorted(base.rglob('*.lua')):
         source = path.read_text(encoding='utf-8')

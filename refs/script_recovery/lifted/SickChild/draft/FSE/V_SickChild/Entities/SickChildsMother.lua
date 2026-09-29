@@ -12,10 +12,10 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bFlag, bVar10, bVar5, bVar6, bVar7, bVar8, cVar9, dist, fVar4, f_stk_84, fret_0, fret_00, fret_01, iVar13, pCVar1, pCVar11, pCVar12, pCVar17, pObjectiveText, pQuestName, pcVar14, uVar15, uVar16, xStack_34, xStack_4c, xStack_60, xStack_94, xStack_98, xStack_9c, xStack_a8
+    local bFlag, bVar5, bVar6, bVar7, bVar8, bVar9, cVar10, dist, fVar4, fret_0, fret_00, fret_01, iVar14, pCVar1, pCVar11, pCVar12, pCVar13, pQuestName, pcVar15, uVar16, uVar17, xStack_34, xStack_4c, xStack_70, xStack_94, xStack_98, xStack_9c, xStack_a8
     local alive = true
     local function __cleanup_LAB_00ece3f7()
-        quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_94)
     end
     alive = quest:NewScriptFrame(me)
@@ -70,13 +70,12 @@ function Main(quest, me)
                             end
                             xStack_34 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            require("V_SickChild.native_quest_helpers").helper_ECE460(quest, me)
+                            require("V_SickChild.native_quest_helpers").helper_ECE460(quest, me, "CS_SICK_INTRO", "NULL")
                             bFlag = 0x0
                             pCVar12 = quest:GetActiveQuestName()
                             quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_SICK_CHILD", pCVar12, (bFlag ~= 0))
-                            pObjectiveText = "TEXT_QUEST_SICK_CHILD_OBJECTIVE_01"
                             pQuestName = quest:GetActiveQuestName()
-                            quest:SetQuestCardObjective(pQuestName, pObjectiveText, "", "")
+                            quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_SICK_CHILD_OBJECTIVE_01", "", "")
                             quest:SetStateBool("MotherIntroDone", true)
                             quest:ClearThingHasInformation(me)
                             quest:PauseAllNonScriptedEntities(false)
@@ -87,9 +86,9 @@ function Main(quest, me)
                         goto LAB_00ecdd11
                     else
                         bVar5 = true
-                        cVar9 = me:IsTalkedToByHero()
+                        bVar9 = me:IsTalkedToByHero()
                         bVar8 = true
-                        if not cVar9 then goto LAB_00ecdd11 end
+                        if not bVar9 then goto LAB_00ecdd11 end
                     end
                     goto FLOW_past_lab_00ecdd11
                     ::LAB_00ecdd11::
@@ -105,22 +104,20 @@ function Main(quest, me)
                             return
                         end
                         xStack_94 = resources:StartMovie("")
-                        f_stk_84 = 0x0
-                        pCVar17 = 0x1
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)xStack_70);
-                        pCVar11 = quest:GetHero()
-                        bVar8 = quest:IsObjectInThingsPossession("", pCVar11)
+                        xStack_70 = quest:ReadGlobalGameDataString(0x744)
+                        pCVar13 = quest:GetHero()
+                        bVar8 = quest:IsObjectInThingsPossession(xStack_70, pCVar13)
                         alive = not quest:IsActiveThreadTerminating()
-                        bVar10 = not alive
+                        bVar9 = not alive
                         if bVar8 then
-                            if bVar10 then
+                            if bVar9 then
                                 __cleanup_LAB_00ece3f7()
                                 return
                             end
                             quest:GiveHeroYesNoQuestion("TEXT_QST_B10_MOTHER_CURE_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            iVar13 = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while iVar13 < 0 do
+                            iVar14 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            while iVar14 < 0 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar8 = not alive
@@ -129,7 +126,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(xStack_94)
                                     return
                                 end
-                                iVar13 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                iVar14 = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar8 = not alive
@@ -141,9 +138,9 @@ function Main(quest, me)
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar8 = not alive
-                            if iVar13 == 1 then
+                            if iVar14 == 1 then
                                 if not bVar8 then
-                                    require("V_SickChild.native_quest_helpers").helper_ECE460(quest, me)
+                                    require("V_SickChild.native_quest_helpers").helper_ECE460(quest, me, "CS_SICK_OUTRO", "NULL")
                                     xStack_98 = quest:ReadGlobalGameDataString(0x744)
                                     quest:TakeObjectFromHero(xStack_98)
                                     quest:ClearThingHasInformation(me)
@@ -174,20 +171,20 @@ function Main(quest, me)
                                 resources:DestroyMovie(xStack_94)
                                 return
                             end
-                            -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                            pCVar11 = nil --[[unresolved native value]]
-                            fret_0 = quest:GetHealth(nil --[[missing]])
+                            -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
+                            pCVar13 = nil --[[unresolved native value]]
+                            fret_0 = quest:GetHealth(pCVar11)
                             fVar4 = 0.0
                             if fVar4 < fret_0 then
-                                -- TODO(native): iVar13 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
-                                iVar13 = nil --[[unresolved native value]]
-                                uVar16 = 0
-                                uVar15 = 2
-                                pcVar14 = "TEXT_QST_B10_MOTHER_ASK_CURE"
-                                pCVar17 = quest:GetHero()
-                                -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);
-                                cVar9 = me:IsPerformingScriptTask()
-                                while cVar9 do
+                                -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
+                                iVar14 = nil --[[unresolved native value]]
+                                uVar17 = 0
+                                uVar16 = 2
+                                pcVar15 = "TEXT_QST_B10_MOTHER_ASK_CURE"
+                                pCVar13 = quest:GetHero()
+                                -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                                cVar10 = me:IsPerformingScriptTask()
+                                while cVar10 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar8 = not alive
@@ -196,7 +193,7 @@ function Main(quest, me)
                                         resources:DestroyMovie(xStack_94)
                                         return
                                     end
-                                    cVar9 = me:IsPerformingScriptTask()
+                                    cVar10 = me:IsPerformingScriptTask()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar8 = not alive
@@ -207,30 +204,30 @@ function Main(quest, me)
                                 end
                             end
                         else
-                            if bVar10 then __cleanup_LAB_00ece3f7(); return end
-                            -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                            pCVar11 = nil --[[unresolved native value]]
-                            fret_00 = quest:GetHealth(pCVar17)
+                            if bVar9 then __cleanup_LAB_00ece3f7(); return end
+                            -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
+                            pCVar13 = nil --[[unresolved native value]]
+                            fret_00 = quest:GetHealth(nil --[[missing]])
                             fVar4 = 0.0
                             if fVar4 < fret_00 then
-                                -- TODO(native): iVar13 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
-                                iVar13 = nil --[[unresolved native value]]
+                                -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
+                                iVar14 = nil --[[unresolved native value]]
+                                uVar17 = 0
                                 uVar16 = 0
-                                uVar15 = 0
-                                pcVar14 = "TEXT_QST_B10_MOTHER_CURE_REMIND_10"
-                                pCVar17 = quest:GetHero()
-                                -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);
-                                cVar9 = me:IsPerformingScriptTask()
-                                while cVar9 do
+                                pcVar15 = "TEXT_QST_B10_MOTHER_CURE_REMIND_10"
+                                pCVar13 = quest:GetHero()
+                                -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                                cVar10 = me:IsPerformingScriptTask()
+                                while cVar10 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar8 = not alive
                                     if bVar8 then
-                                        quest:PauseAllNonScriptedEntities(resources:MemberResource("seh_Mother"))
+                                        quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(xStack_a8)
                                         return
                                     end
-                                    cVar9 = me:IsPerformingScriptTask()
+                                    cVar10 = me:IsPerformingScriptTask()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar8 = not alive
@@ -240,14 +237,14 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_94)
                     end
-                    cVar9 = me:MsgIsHitByHero()
-                    if not cVar9 then
-                        cVar9 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                        if cVar9 then
+                    cVar10 = me:MsgIsHitByHero()
+                    if not cVar10 then
+                        bVar8 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                        if bVar8 then
                             bVar7 = true
                             bVar6 = true
-                            cVar9 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not cVar9 then goto LAB_00ece11a end
+                            bVar8 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                            if not bVar8 then goto LAB_00ece11a end
                         end
                         bVar7 = true
                         bVar8 = false
@@ -272,34 +269,35 @@ function Main(quest, me)
                         end
                         xStack_4c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): pCVar17 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                        pCVar17 = nil --[[unresolved native value]]
+                        -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
+                        pCVar13 = nil --[[unresolved native value]]
                         fret_01 = quest:GetHealth(nil --[[missing]])
                         fVar4 = 0.0
                         if fVar4 < fret_01 then
-                            -- TODO(native): iVar13 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
-                            iVar13 = nil --[[unresolved native value]]
-                            uVar15 = 0
-                            pcVar14 = "TEXT_QST_B10_MOTHER_HIT"
-                            pCVar17 = quest:GetHero()
-                            -- TODO(native): (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15);
-                            cVar9 = me:IsPerformingScriptTask()
-                            while cVar9 do
+                            -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
+                            iVar14 = nil --[[unresolved native value]]
+                            uVar17 = 0
+                            uVar16 = 0
+                            pcVar15 = "TEXT_QST_B10_MOTHER_HIT"
+                            pCVar13 = quest:GetHero()
+                            -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                            cVar10 = me:IsPerformingScriptTask()
+                            while cVar10 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar8 = not alive
                                 if bVar8 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_60)
+                                    resources:DestroyMovie("")
                                     return
                                 end
-                                cVar9 = me:IsPerformingScriptTask()
+                                cVar10 = me:IsPerformingScriptTask()
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar8 = not alive
                             if bVar8 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_60)
+                                resources:DestroyMovie("")
                                 return
                             end
                         end
@@ -308,7 +306,7 @@ function Main(quest, me)
                         pCVar11 = quest:GetHero()
                         quest:EntitySetThingAsAllyOfThing(pCVar11, me)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_60)
+                        resources:DestroyMovie("")
                     end
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()

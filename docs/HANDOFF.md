@@ -1,5 +1,12 @@
 # Lua recovery handoff - 2026-09-26
 
+**Latest SickChild marathon (2026-09-28):** two-string helper and four callers recovered; five draft/readable
+Lua files promoted, including the laughing woman's leaving-cutscene string map. 100 tests pass, 371 files
+parse, all 28 unrelated units unchanged. SickChild smoke 4 -> 1 (old WomanToAttract free global remains).
+Candidate v38 staging follows this source checkpoint. No game launch or installation. Next: GuildMaster's
+hidden string return and distinct continue/return cleanup tails; Witch persistence needs separate recovery.
+See latest journal and `work/codex_sickchild_marathon_20260928/` for exact evidence and exclusions.
+
 **Latest offline continuation (2026-09-28):** fixed prototype inference reading past import thunks;
 22 focused tests pass. Audit: 22 unsupported import signatures in 17 units. Reviewed SickChild
 helper_ECE460's two by-value strings and `_stricmp`'s cdecl/two-pointer ABI. Scratch re-export

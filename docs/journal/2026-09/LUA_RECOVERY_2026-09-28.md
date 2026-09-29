@@ -389,3 +389,57 @@ both callers' macro/argument operands, then compare the full SickChild regenerat
 baseline. Review other fresh-export changes separately; do not replace the entire TU blindly.
 Only promote syntax-clean, behavior-tested output with unchanged unrelated-unit comparisons.
 GuildMaster cleanup tails remain the subsequent offline task.
+
+### SickChild marathon: string arguments, maps and caller cleanup recovered
+
+Base `a0a257d`; offline/background only. Promoted exactly five SickChild Lua files in each of draft/readable:
+quest root, shared quest helpers, SickChildsMother, Witch and WomanToAttract. No shared-install changes.
+
+- The earlier corrected Ghidra export supplies only **three reviewed functions** to the typed TU:
+  0x00ECD9E0, 0x00ECE460 and 0x00ECE7F0. All other function records remain identical. Typing spec now records
+  the two reviewed signatures (helper's two by-value strings; CRT `_stricmp` cdecl/two pointers). The full
+  fresh export's other changes remain excluded. Correct stack tracking also repairs the callers' pause and
+  movie cleanup operands and recovers the mother's potion possession lookup. Broader unresolved branches
+  remain; these functions are not certified completely recovered.
+- General lowering recovers null/character-data CCharString reads, zero-only `_stricmp` tests, and complete
+  inline string-map construction/destruction when the proven 0x009AC700 index operation establishes its type.
+  Missing/wrong destructor, mismatched head links and nonempty fallback buffers are rejected. String-map
+  address aliases retain runtime values; char-literal pointers keep existing literal resolution.
+- Native caller recovery now includes ordered sites without exported stack-slot metadata. Parent receiver
+  identity and the outgoing constructors establish all four helper operands: CS_SICK_INTRO/OUTRO/WITCH +
+  NULL, and CS_SICK_POTION + runtime definition offset 0x744. The CDefString-created slot is reused, avoiding
+  a duplicate read. Constructor length, branch barriers and the final ECX receiver are checked.
+- The same rules recover WomanToAttract's leaving-cutscene string map and its runtime `$ITEM` at offset
+  0x738. Both helpers now preserve their actor bindings and actual map/resource lifetimes.
+- Smoke accepts `--conversion-report` so scratch/package runs can use their actual native parameter types.
+  Without it the name heuristic passes a thing table to the new string argument; that early smoke result
+  is superseded by the typed report and the final ordinary `--unit sick_child` smoke.
+
+Validation: **100 focused tests pass**, including four full caller branch fixtures in both draft/readable,
+all four native call sites, NULL/null/mixed-case/empty/missing/nonempty arguments, both helper contexts,
+leaving-cutscene lifetime, unsafe-shape rejection and existing BookCollecting/timer regressions. The potion
+branch fixture seeds existing entity progress; it does not validate persistence. No full-suite claim.
+**371 current Lua files parse**, zero syntax failures. Draft TODOs 245 -> 210; readable corpus diagnostics
+1498 -> 1439. These are mechanical counts, not proof of game equivalence.
+
+29-unit A/B: only the five SickChild files differ; **28 unrelated units unchanged**. Intermediate alias rules
+regressed four static literals in Arena/ChickenMaster; those outputs are superseded and were never promoted.
+Final char-literal guard was checked against all **1,973 exported function inputs**: only those two functions
+changed. Both units regenerated back to byte-identical baseline. Final SickChild regeneration exactly matches
+its tested scratch draft. Reports: `ab/final_comparison.json`, `literal_guard_corpus.json`, `readable_review.diff`,
+`final_tests.log`, `promotion.json`, `source_hashes.json`, `readability.json` under
+`work/codex_sickchild_marathon_20260928/`. Readable generation uses explicit scratch `draft=` inputs.
+
+SickChild smoke problems **4 -> 1**: helper `_stricmp` failure and two free-global sets resolved; no new
+failures. Remaining `unaff_EBP` is in another WomanToAttract path. MemberResource remains a reported pending
+binding in the generic harness. No game launch or runtime proof. Candidate v38 staging follows this source
+checkpoint, preserving v37's sidecar and override roster.
+
+GuildMaster follow-up: native 0x00E91898 unpauses/destroys its movie and continues; 0x00E91DB4 also continues
+through the frame loop. The 0x00E91EE8/0x00E91EF9 path unpauses, destroys the movie, releases the controlled
+resource at 0x00E91F02 and returns. Do not merge these into one exit. Evidence is in
+`guild_cleanup_evidence.txt`. GetGuildMasterSpeech 0x00E91F20 still exports a pointer return with an
+`in_stack_00000004` hidden CCharString result, while ego_r declares a by-value CCharString return. Its hidden
+return and cleanup control flow are the next recovery target. Witch persistence also remains suspect:
+OnPersist currently serializes ThingsForPotionGot as a quest bool instead of the local integer progress;
+that is separate from this tested helper/branch recovery.

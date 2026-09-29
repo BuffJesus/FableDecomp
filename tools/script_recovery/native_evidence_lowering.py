@@ -4056,6 +4056,8 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = fold_high_byte_flags(text)   # before any pass folds the byte stores into their tests
     text = normalise_typed_decompile(text)
+    from tools.script_recovery.native_string_map_lowering import apply as lower_string_maps
+    text = lower_string_maps(text, spec)
     text = resolve_this_aliases(text, spec)
     if spec.entity:
         text = respell_me_register_calls(text)
@@ -5377,6 +5379,8 @@ def finish_lua(text: str) -> str:
     text = _expand_calls(text, '__thing_valid', lambda a: f'({a[0]} ~= nil and not {a[0]}:IsNull())')
     text = _expand_calls(text, 'ENGINE_Colour', lambda a: '{R = %s, G = %s, B = %s, A = %s}' % tuple(a))
     text = _expand_calls(text, 'ENGINE_Concat', lambda a: '(' + ' .. '.join(a) + ')')
+    text = _expand_calls(text, 'ENGINE_StringValue', lambda a: f'({a[0]} or "")')
+    text = _expand_calls(text, 'ENGINE_StrCaseCmp', lambda a: f'((string.lower({a[0]}) == string.lower({a[1]})) and 0 or 1)')
     text = _expand_calls(text, 'ENGINE_IntToString', lambda a: f'tostring({a[0]})')
     text = _expand_calls(text, 'ENGINE_StrNotEqual', lambda a: f'(({a[0]} ~= {a[1]}) and 1 or 0)')
     # a discarded result (KickedChicken Main 0x00E64210 pops four of them with `fstp st(0)`) is the call alone: a

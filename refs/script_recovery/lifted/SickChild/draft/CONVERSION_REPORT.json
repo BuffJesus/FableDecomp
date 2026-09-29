@@ -200,49 +200,44 @@
           "path": "FSE/V_SickChild/V_SickChild.lua",
           "evidence": "unmatched retail helper",
           "nativeSignature": {
-            "parameters": [],
+            "parameters": [
+              {
+                "native": "macroName",
+                "lua": "native_arg_macroName",
+                "type": "CCharString_bv"
+              },
+              {
+                "native": "argument",
+                "lua": "native_arg_argument",
+                "type": "CCharString_bv"
+              }
+            ],
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: local_1c = malloc(0x18);",
-            "unlifted: *local_1c = 0;",
-            "unlifted: *(undefined4 *)(local_1c + 4) = 0;",
-            "unlifted: *(undefined1 **)(local_1c + 8) = local_1c;",
-            "unlifted: *(undefined1 **)(local_1c + 0xc) = local_1c;",
-            "StartScriptingEntity: unresolved entity receiver/resource in quest context",
-            "unlifted: puStack_34 = malloc(0x24);",
-            "unlifted: *puStack_34 = 0;",
-            "unlifted: *(undefined4 *)(puStack_34 + 4) = 0;",
-            "unlifted: *(undefined1 **)(puStack_34 + 8) = puStack_34;",
-            "unlifted: *(undefined1 **)(puStack_34 + 0xc) = puStack_34;",
-            "unlifted: StdMap_DestroyNode(&xStack_28,unaff_EBP[1]);",
-            "unlifted: unaff_EBP[2] = unaff_EBP;",
-            "unlifted: unaff_EBP[1] = 0;",
-            "unlifted: unaff_EBP[3] = unaff_EBP;",
-            "unlifted: free(unaff_EBP);",
-            "unlifted: LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray((LTextTreeWalkThrough *)&x",
-            "unlifted: *(void **)((int)xStack_1c + 8) = xStack_1c;",
-            "unlifted: *(undefined4 *)((int)xStack_1c + 4) = 0;",
-            "unlifted: *(void **)((int)xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: free(xStack_1c);",
-            "unlifted: p1 = *unaff_EBP",
-            "unlifted: p0 = *xStack_10",
-            "unlifted: ACTORMAP_Set(puStack_34, \"HERO\", &local_1c)"
-          ],
+          "todo": [],
           "calls": [
+            "STRINGMAP_New",
             "RESOURCE_NewResource",
             "GetHero",
+            "RESOURCE_TryAcquire",
+            "ENGINE_StringValue",
+            "ENGINE_StringValue",
+            "ENGINE_StrCaseCmp",
+            "ENGINE_StringValue",
             "STRINGMAP_Set",
+            "ACTORMAP_New",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacroWithStrings",
             "FixMovieSequenceCamera",
-            "RESOURCE_ReleaseResource"
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "STRINGMAP_Destroy"
           ],
-          "lines": 55,
+          "lines": 23,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -266,29 +261,28 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x744),(int)xStack_70",
             "label LAB_00ece3f7",
             "label LAB_00ece3b6",
             "label LAB_00ecdf97",
             "unnamed field 0x14",
-            "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);",
-            "verify cleanup at LAB_00ece3f7 (lifted as early return)",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15,uVar16);",
+            "unlifted: (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);",
             "verify cleanup at LAB_00ece3f7 (lifted as early return)",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar13 + 0x34))(pCVar17,pcVar14,uVar15);",
-            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
-            "unlifted: iVar13 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)",
-            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
-            "unlifted: iVar13 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)",
-            "unlifted: pCVar17 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
-            "unlifted: iVar13 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)"
+            "unlifted: (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);",
+            "verify cleanup at LAB_00ece3f7 (lifted as early return)",
+            "unnamed field 0x14",
+            "GetHealth: missing pThing (0 args for 1 params)",
+            "unnamed field 0x14",
+            "unlifted: (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);",
+            "unlifted: pCVar13 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
+            "unlifted: iVar14 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)",
+            "unlifted: pCVar13 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
+            "unlifted: iVar14 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)",
+            "unlifted: pCVar13 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48) + 0x30))()",
+            "unlifted: iVar14 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x48)"
           ],
           "calls": [
             "NewScriptFrame",
@@ -323,6 +317,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
+            "ENGINE_GlobalGameDataString",
             "GetHero",
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
@@ -402,7 +397,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 306,
+          "lines": 304,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -416,8 +411,8 @@
             "goto FLOW_past_lab_00ece11a;",
             "goto LAB_00ecdd11;",
             "goto LAB_00ece11a;",
-            "if (!cVar9) goto LAB_00ecdd11;",
-            "if (!cVar9) goto LAB_00ece11a;"
+            "if (!bVar8) goto LAB_00ece11a;",
+            "if (!bVar9) goto LAB_00ecdd11;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00ecdd11",
@@ -1240,6 +1235,7 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `LeadHeroToSickChild` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `LeadHeroToSickChild`"
           ],
           "calls": [
@@ -1299,57 +1295,48 @@
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);",
+            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);",
             "unnamed field 0x14",
+            "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);",
-            "verify cleanup at LAB_00ecf3e5 (lifted as early return)",
-            "verify cleanup at LAB_00ecf3e5 (lifted as early return)",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16,uVar17);",
+            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);",
             "verify cleanup at LAB_00ecf292 (lifted as early return)",
-            "verify cleanup at LAB_00ecf3e5 (lifted as early return)",
-            "unlifted: xStack_a0 = xStack_a0 | 2;",
-            "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");",
-            "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: xStack_58 = *(int *)(*(int *)(this + 0x14) + 0x58);",
-            "unlifted: (**(code **)((int)xStack_58 + 0x34))(pCVar20,pvVar11);",
+            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);",
+            "verify cleanup at LAB_00ecf292 (lifted as early return)",
+            "verify cleanup at LAB_00ecf292 (lifted as early return)",
+            "unlifted: CCharString::operator=(xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");",
+            "unlifted: CCharString::operator=(xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pcVar14,uVar16);",
-            "unlifted: xStack_a0 = xStack_a0 | 0x10;",
-            "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_30\");",
-            "unlifted: CCharString::operator=(&xStack_a0,\"TEXT_QST_B10_WITCH_ONHIT_20\");",
+            "unlifted: xStack_60 = *(int *)(*(int *)(this + 0x14) + 0x58);",
+            "unlifted: (**(code **)((int)xStack_60 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);",
             "unnamed field 0x14",
             "GetHealth: missing pThing (0 args for 1 params)",
             "unnamed field 0x14",
-            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar20,pvVar11,uVar16,uVar17);",
+            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16,uVar18);",
+            "unlifted: uStack_a8 = uStack_a8 & 0xffffff | 0x10;",
+            "unlifted: uStack_a8._0_3_ = (undefined3)(uStack_a8 | 0x10);",
+            "unnamed field 0x14",
+            "GetHealth: missing pThing (0 args for 1 params)",
+            "unnamed field 0x14",
+            "unlifted: (**(code **)(iVar10 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);",
             "goto LAB_00ecf7c9",
             "label LAB_00ecf7c9",
             "label LAB_00ecf7cd",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: quest:PauseAllNonScriptedEntities(*(this + 4))",
-            "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: pCVar20 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
-            "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pThing = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)",
-            "unlifted: pCVar12 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
+            "unlifted: pCVar11 = (**(*(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58) + 0x30))()",
             "unlifted: iVar10 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x58)"
           ],
           "calls": [
@@ -1437,6 +1424,8 @@
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
@@ -1510,7 +1499,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 485,
+          "lines": 502,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1528,8 +1517,8 @@
             "goto LAB_00ecf00d;",
             "goto LAB_00ecf576;",
             "goto LAB_00ecf622;",
-            "if (!bVar6) goto LAB_00ecef61;",
-            "if (!bVar6) goto LAB_00ecf576;"
+            "if (!bVar4) goto LAB_00ecef61;",
+            "if (!bVar8) goto LAB_00ecf576;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00ecef61",
@@ -1593,16 +1582,18 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `IntroDone` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `IntroDone`",
+            "persist transfer: kind of `ThingsForPotionGot` from the bsim template argument `signed_char` (callee 0x410be0 not FSE-typed)",
             "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `ThingsForPotionGot`"
           ],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
             "SetStateBool",
-            "GetStateInt",
-            "PersistTransferInt",
-            "SetStateInt"
+            "GetStateBool",
+            "PersistTransferBool",
+            "SetStateBool"
           ],
           "lines": 6,
           "syntax": {
@@ -2131,7 +2122,9 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `GivenLetter` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `GivenLetter`",
+            "persist transfer: kind of `GotReward` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `GotReward`"
           ],
           "calls": [
@@ -2517,6 +2510,7 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `LeavingRegion` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `LeavingRegion`"
           ],
           "calls": [
@@ -2839,7 +2833,9 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `BoughtSpecialStuff` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `BoughtSpecialStuff`",
+            "persist transfer: kind of `StoleSpecialStuff` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `StoleSpecialStuff`"
           ],
           "calls": [
@@ -3817,6 +3813,7 @@
             "bsimVoid": false
           },
           "todo": [
+            "persist transfer: kind of `GivenObject` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
             "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `GivenObject`"
           ],
           "calls": [
@@ -3879,18 +3876,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_1c = malloc(0x18);",
-            "unlifted: *xStack_1c = 0;",
-            "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
-            "unlifted: *(undefined1 **)(xStack_1c + 8) = xStack_1c;",
-            "unlifted: *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray((LTextTreeWalkThrough *)&x",
-            "unlifted: *(undefined1 **)(xStack_1c + 8) = xStack_1c;",
-            "unlifted: *(undefined4 *)(xStack_1c + 4) = 0;",
-            "unlifted: *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: free(xStack_1c);"
-          ],
+          "todo": [],
           "calls": [
             "RESOURCE_NewResource",
             "GetHero",
@@ -3898,15 +3884,18 @@
             "ACTORMAP_New",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
+            "STRINGMAP_New",
             "ENGINE_GlobalGameDataString",
+            "ENGINE_StringValue",
             "STRINGMAP_Set",
             "FixMovieSequenceCamera",
             "RESOURCE_RunMacroWithStrings",
             "FixMovieSequenceCamera",
+            "STRINGMAP_Destroy",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 31,
+          "lines": 17,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4047,53 +4036,10 @@
         "WomanToAttract": "V_SickChild/Entities/WomanToAttract",
         "SickChildFishingSpot": "V_SickChild/Entities/SickChildFishingSpot"
       },
-      "declaredFreeLocals": {
-        "FSE/V_SickChild/V_SickChild.lua": {
-          "helper_ECE460": [
-            "i_stk_14",
-            "puStack_34",
-            "xStack_28"
-          ]
-        },
-        "FSE/V_SickChild/Entities/SickChildsMother.lua": {
-          "Main": [
-            "xStack_60",
-            "xStack_a8"
-          ]
-        },
-        "FSE/V_SickChild/Entities/SickChild.lua": {
-          "Main": [
-            "fret_0"
-          ]
-        },
-        "FSE/V_SickChild/Entities/Witch.lua": {
-          "Main": [
-            "au_stk_28",
-            "xStack_90_2"
-          ]
-        },
-        "FSE/V_SickChild/Entities/ManInLove.lua": {
-          "Main": [
-            "xStack_104",
-            "xStack_140"
-          ]
-        },
-        "FSE/V_SickChild/Entities/TalkingTrader2.lua": {
-          "Main": [
-            "x_stk_8e"
-          ]
-        },
-        "FSE/V_SickChild/Entities/WomanToAttract.lua": {
-          "helper_ED0B10": [
-            "pOther",
-            "xStack_1c"
-          ]
-        }
-      },
       "cleanupRegions": {
         "FSE/V_SickChild/Entities/SickChildsMother.lua": {
           "LAB_00ece3f7": [
-            "quest:PauseAllNonScriptedEntities(resources:MemberResource(\"seh_Mother\"))",
+            "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_94)"
           ]
         },
@@ -4114,14 +4060,11 @@
         },
         "FSE/V_SickChild/Entities/Witch.lua": {
           "LAB_00ecf292": [
-            "resources:DestroyMovie(xStack_8c)"
-          ],
-          "LAB_00ecf3e5": [
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_8c)"
           ],
           "LAB_00ecf7c9": [
-            "this_01 = (xStack_90_2 + 4)",
+            "this_01 = xStack_a0",
             "resources:DestroyMovie(this_01)"
           ]
         },
@@ -4133,37 +4076,36 @@
           ]
         }
       },
+      "declaredFreeLocals": {
+        "FSE/V_SickChild/Entities/SickChildsMother.lua": {
+          "Main": [
+            "xStack_a8"
+          ]
+        },
+        "FSE/V_SickChild/Entities/SickChild.lua": {
+          "Main": [
+            "fret_0"
+          ]
+        },
+        "FSE/V_SickChild/Entities/ManInLove.lua": {
+          "Main": [
+            "xStack_104",
+            "xStack_140"
+          ]
+        },
+        "FSE/V_SickChild/Entities/TalkingTrader2.lua": {
+          "Main": [
+            "x_stk_8e"
+          ]
+        }
+      },
       "sharedHelpers": {
         "path": "FSE/V_SickChild/native_quest_helpers.lua",
         "functions": [
           "helper_ECE460"
         ],
         "todo": {
-          "helper_ECE460": [
-            "unlifted: local_1c = malloc(0x18);",
-            "unlifted: *local_1c = 0;",
-            "unlifted: *(undefined4 *)(local_1c + 4) = 0;",
-            "unlifted: *(undefined1 **)(local_1c + 8) = local_1c;",
-            "unlifted: *(undefined1 **)(local_1c + 0xc) = local_1c;",
-            "unlifted: puStack_34 = malloc(0x24);",
-            "unlifted: *puStack_34 = 0;",
-            "unlifted: *(undefined4 *)(puStack_34 + 4) = 0;",
-            "unlifted: *(undefined1 **)(puStack_34 + 8) = puStack_34;",
-            "unlifted: *(undefined1 **)(puStack_34 + 0xc) = puStack_34;",
-            "unlifted: StdMap_DestroyNode(&xStack_28,unaff_EBP[1]);",
-            "unlifted: unaff_EBP[2] = unaff_EBP;",
-            "unlifted: unaff_EBP[1] = 0;",
-            "unlifted: unaff_EBP[3] = unaff_EBP;",
-            "unlifted: free(unaff_EBP);",
-            "unlifted: LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray((LTextTreeWalkThrough *)&x",
-            "unlifted: *(void **)((int)xStack_1c + 8) = xStack_1c;",
-            "unlifted: *(undefined4 *)((int)xStack_1c + 4) = 0;",
-            "unlifted: *(void **)((int)xStack_1c + 0xc) = xStack_1c;",
-            "unlifted: free(xStack_1c);",
-            "unlifted: p1 = *unaff_EBP",
-            "unlifted: p0 = *xStack_10",
-            "unlifted: ACTORMAP_Set(puStack_34, \"HERO\", &local_1c)"
-          ]
+          "helper_ECE460": []
         },
         "syntax": {
           "runtime": "Lua 5.4",
@@ -4180,7 +4122,7 @@
         "functionSyntaxPassed": 49,
         "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 13,
-        "todo": 245
+        "todo": 210
       }
     }
   ],
@@ -4191,6 +4133,6 @@
     "functionSyntaxPassed": 49,
     "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 245
+    "todo": 210
   }
 }

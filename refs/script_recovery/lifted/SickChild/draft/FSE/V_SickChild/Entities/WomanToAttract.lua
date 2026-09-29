@@ -771,7 +771,6 @@ end
 
 function helper_ED0B10(quest, me)
     local resources = quest:RetailResources()
-    local i_stk_18, pOther, xStack_1c
     local xStack_10 = resources:NewResource()
     local pScriptObject = xStack_10
     local pThing = quest:GetHero()
@@ -779,27 +778,14 @@ function helper_ED0B10(quest, me)
     local xStack_28 = resources:NewActorMap()
     resources:SetActor(xStack_28, "HERO", xStack_10)
     resources:SetActor(xStack_28, "WOMAN", resources:MemberResource("seh_me", (me)))
-    -- TODO(native): xStack_1c = malloc(0x18);
-    i_stk_18 = 0
-    -- TODO(native): *xStack_1c = 0;
-    -- TODO(native): *(undefined4 *)(xStack_1c + 4) = 0;
-    -- TODO(native): *(undefined1 **)(xStack_1c + 8) = xStack_1c;
-    -- TODO(native): *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;
+    local xStack_1c = resources:NewStringMap()
     local xStack_2c = quest:ReadGlobalGameDataString(0x738)
+    local pOther = (xStack_2c or "")
     resources:SetString(xStack_1c, "$ITEM", pOther)
     quest:FixMovieSequenceCamera(true)
     resources:RunMacroWithStrings("CS_SICK_LAUGHING_WOMAN_LEAVES", xStack_28, xStack_1c, false, true)
     quest:FixMovieSequenceCamera(false)
-    if i_stk_18 ~= 0 then
-        -- TODO(native): LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray((LTextTreeWalkThrough *)&xStack_1c,*(int *)(xStack_1c + 4));
-        -- TODO(native): *(undefined1 **)(xStack_1c + 8) = xStack_1c;
-        -- TODO(native): *(undefined4 *)(xStack_1c + 4) = 0;
-        -- TODO(native): *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;
-        i_stk_18 = 0
-    end
-    if xStack_1c ~= nil then
-        -- TODO(native): free(xStack_1c);
-    end
+    resources:DestroyStringMap(xStack_1c)
     resources:DestroyActorMap(xStack_28)
     resources:ReleaseResource(xStack_10)
 end

@@ -2760,7 +2760,7 @@ class Lifter:
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
                                       else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
                                       else 'bool' if name.startswith(('ENGINE_Is', 'RESOURCE_Is')) or name.endswith('STATE_GetBool')
-                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString', 'LOCALLIST_StringAt') or name.endswith('STATE_GetString') else 'number')
+                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_StringValue', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString', 'LOCALLIST_StringAt') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)

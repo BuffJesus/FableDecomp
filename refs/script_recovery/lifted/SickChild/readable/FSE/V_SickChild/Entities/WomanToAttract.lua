@@ -403,26 +403,18 @@ end
 -- ED0B10: bsim names this body NScript::CV_SickChildScript::CWomanToAttract::DoLeavingCutscene (a homologous script member); no PDB name
 function DoLeavingCutscene(quest, me)
     local resources = quest:RetailResources()
-    local pOther, actorMap
     local resource = resources:NewResource()
     resources:TryAcquire(resource, quest:GetHero(), 4)
-    local actorMap2 = resources:NewActorMap()
-    resources:SetActor(actorMap2, "HERO", resource)
-    resources:SetActor(actorMap2, "WOMAN", resources:MemberResource("seh_me", me))
-    -- TODO(native): xStack_1c = malloc(0x18);
-    -- TODO(native): *xStack_1c = 0;
-    -- TODO(native): *(undefined4 *)(xStack_1c + 4) = 0;
-    -- TODO(native): *(undefined1 **)(xStack_1c + 8) = xStack_1c;
-    -- TODO(native): *(undefined1 **)(xStack_1c + 0xc) = xStack_1c;
-    quest:ReadGlobalGameDataString(1848)
-    resources:SetString(actorMap, "$ITEM", pOther)
+    local actorMap = resources:NewActorMap()
+    resources:SetActor(actorMap, "HERO", resource)
+    resources:SetActor(actorMap, "WOMAN", resources:MemberResource("seh_me", me))
+    local actorMap2 = resources:NewStringMap()
+    resources:SetString(actorMap2, "$ITEM", quest:ReadGlobalGameDataString(1848) or "")
     quest:FixMovieSequenceCamera(true)
-    resources:RunMacroWithStrings("CS_SICK_LAUGHING_WOMAN_LEAVES", actorMap2, actorMap, false, true)
+    resources:RunMacroWithStrings("CS_SICK_LAUGHING_WOMAN_LEAVES", actorMap, actorMap2, false, true)
     quest:FixMovieSequenceCamera(false)
-    if actorMap ~= nil then
-        -- TODO(native): free(xStack_1c);
-    end
-    resources:DestroyActorMap(actorMap2)
+    resources:DestroyStringMap(actorMap2)
+    resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
 end
 

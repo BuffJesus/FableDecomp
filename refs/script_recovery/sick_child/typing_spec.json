@@ -14666,32 +14666,22 @@
    "bsimLabel": "std::_Dest_val<std::allocator<CMacro>,CMacro>"
   },
   "0xbfeba8": {
-   "name": "MSVCR71.DLL___stricmp",
-   "cc": "__stdcall",
+   "name": "_stricmp",
+   "cc": "__cdecl",
    "ret": "int",
    "params": [
     {
-     "name": "p0",
-     "type": "int",
-     "ctype": "inferred"
+     "name": "left",
+     "type": "char *",
+     "ctype": "const char *"
     },
     {
-     "name": "p1",
-     "type": "int",
-     "ctype": "inferred"
-    },
-    {
-     "name": "p2",
-     "type": "int",
-     "ctype": "inferred"
-    },
-    {
-     "name": "p3",
-     "type": "int",
-     "ctype": "inferred"
+     "name": "right",
+     "type": "char *",
+     "ctype": "const char *"
     }
    ],
-   "source": "inferred ret 16 (ecx=False, edx=False, fpu=False)",
+   "source": "reviewed CRT import and caller cleanup at 0x00ECE501 (2026-09-28)",
    "bsimLabel": "MSVCR71.DLL::_stricmp"
   },
   "0x99a3b0": {
@@ -14843,6 +14833,25 @@
    ],
    "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CCharString::operator+="
+  },
+  "0xece460": {
+   "name": "helper_ECE460",
+   "cc": "__thiscall",
+   "ret": "void",
+   "params": [
+    {
+     "name": "macroName",
+     "type": "CCharString",
+     "ctype": "CCharString"
+    },
+    {
+     "name": "argument",
+     "type": "CCharString",
+     "ctype": "CCharString"
+    }
+   ],
+   "source": "reviewed by-value parameter destructors and ret 8 at 0x00ECE460 (2026-09-28)",
+   "bsimLabel": "Script_InitializeWitchCharacter (untrusted autoname)"
   }
  },
  "thingSlots": {

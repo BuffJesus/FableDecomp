@@ -544,13 +544,14 @@ def respell_code_pointer_calls(text, fn):
     return text
 
 
-def _text_order_sites(text, fn):
+def _text_order_sites(text, fn, *, include_unslotted=False):
     '''Printed calls paired with export sites through `callOrder` (the call ops in the order the decompiler's
     token stream prints them). Every printed call head (vtable head or labelled direct call) is located in
     the text; when their number equals the exported order and every pair agrees on slot / label, the k-th
     printed call is the k-th site. None when the text cannot be reconciled (the caller falls back to the
     per-label address-order pairing).
-    Returns [(args_start, args_end, args, site, slot or label, vtable)] for sites with operand slots.'''
+    Returns [(args_start, args_end, args, site, slot or label, vtable)] for sites with operand slots.
+    include_unslotted also returns calls whose operands must be recovered directly from the bytes.'''
     order = fn.get('callOrder')
     if not order:
         return None
@@ -651,7 +652,7 @@ def _text_order_sites(text, fn):
             key = site.get('currentName')
         elif site.get('currentName') != key:
             return None
-        if vtable or 'pushedStack' in site or 'ecxStack' in site or 'edxStack' in site:
+        if include_unslotted or vtable or 'pushedStack' in site or 'ecxStack' in site or 'edxStack' in site:
             out.append((a, e, _split_top(text[a:e]), site, key, vtable))
     return out
 
@@ -1848,7 +1849,7 @@ class UnitConverter:
             if not helper or '__thiscall' not in helper['decompile'][:1500]:
                 return None
             return len(function_parameters(helper['decompile'], member=True).get('parameters', []))
-        return restore_local_helper_operands(decompile, fn, _text_order_sites(decompile, fn), arity_of, self.rdata)
+        return restore_local_helper_operands(decompile, fn, _text_order_sites(decompile, fn, include_unslotted=True), arity_of, self.rdata)
 
     def native(self, address):
         fn = self.by_address.get(address.lower())
