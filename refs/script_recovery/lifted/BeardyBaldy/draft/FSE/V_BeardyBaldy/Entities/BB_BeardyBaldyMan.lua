@@ -581,7 +581,7 @@ function Main(quest, me)
                             xStack_170 = quest:ReadGlobalGameDataString(0x46c)
                             quest:GiveHeroObject(xStack_170, -1, false)
                             xStack_148 = quest:ReadGlobalGameDataString(0x468)
-                            -- TODO(native): quest:SetStateString("RequiredBeard", &xStack_148)
+                            quest:SetStateString("RequiredBeard", xStack_148)
                         else
                             if bVar8 then
                                 quest:PauseAllNonScriptedEntities(false)
@@ -592,7 +592,7 @@ function Main(quest, me)
                             xStack_178 = quest:ReadGlobalGameDataString(0x464)
                             quest:GiveHeroObject(xStack_178, -1, false)
                             xStack_138 = quest:ReadGlobalGameDataString(0x460)
-                            -- TODO(native): quest:SetStateString("RequiredBeard", &xStack_138)
+                            quest:SetStateString("RequiredBeard", xStack_138)
                         end
                         x_stk_f0 = resources:ScriptThing(xStack_20c)
                         pCVar10 = x_stk_f0
@@ -1070,13 +1070,13 @@ function Main(quest, me)
                         xStack_188 = quest:ReadGlobalGameDataString(0x47c)
                         quest:GiveHeroObject(xStack_188, -1, false)
                         xStack_184 = quest:ReadGlobalGameDataString(0x478)
-                        -- TODO(native): quest:SetStateString("RequiredTash", &xStack_184)
+                        quest:SetStateString("RequiredTash", xStack_184)
                     else
                         if bVar8 then goto LAB_00e5276b end
                         xStack_140 = quest:ReadGlobalGameDataString(0x474)
                         quest:GiveHeroObject(xStack_140, -1, false)
                         xStack_158 = quest:ReadGlobalGameDataString(0x470)
-                        -- TODO(native): quest:SetStateString("RequiredTash", &xStack_158)
+                        quest:SetStateString("RequiredTash", xStack_158)
                     end
                     x_stk_30 = resources:ScriptThing(xStack_20c)
                     pCVar10 = x_stk_30

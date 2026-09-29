@@ -13069,7 +13069,7 @@
   "0x99ebf0": {
    "name": "CCharString_Construct_Literal",
    "cc": "__thiscall",
-   "ret": "void",
+   "ret": "CCharString *",
    "params": [
     {
      "name": "string",
@@ -13082,7 +13082,8 @@
      "ctype": "int"
     }
    ],
-   "typedef": "tCCharString_Constructor_Literal"
+   "typedef": "tCCharString_Constructor_Literal",
+   "source": "reviewed constructor receiver return at 0x0099EC27 (2026-09-28)"
   },
   "0x99ec30": {
    "name": "CCharString_Construct_Copy",
@@ -14324,33 +14325,11 @@
    "bsimLabel": "CBasicString<char>::Compare"
   },
   "0xbfeb16": {
-   "name": "MSVCR71.DLL__rand",
-   "cc": "__stdcall",
+   "name": "rand",
+   "cc": "__cdecl",
    "ret": "int",
-   "params": [
-    {
-     "name": "p0",
-     "type": "int",
-     "ctype": "inferred"
-    },
-    {
-     "name": "p1",
-     "type": "int",
-     "ctype": "inferred"
-    },
-    {
-     "name": "p2",
-     "type": "int",
-     "ctype": "inferred"
-    },
-    {
-     "name": "p3",
-     "type": "int",
-     "ctype": "inferred"
-    }
-   ],
-   "source": "inferred ret 16 (ecx=False, edx=False, fpu=False)",
-   "bsimLabel": "MSVCR71.DLL::rand"
+   "params": [],
+   "source": "reviewed CRT rand import and caller 0x00E92441 (2026-09-28)"
   },
   "0xcbd510": {
    "name": "NParticleEngine__CParticleEmitter__DeleteAllParticles",
@@ -14381,6 +14360,18 @@
    ],
    "source": "inferred ret 4 (ecx=True, edx=False, fpu=False)",
    "bsimLabel": "CDefString::operator_class_CCharString"
+  },
+  "0xe91f20": {
+   "name": "GetGuildMasterSpeech",
+   "cc": "__thiscall",
+   "ret": "CCharString *",
+   "params": [
+    {
+     "name": "result",
+     "type": "CCharString *"
+    }
+   ],
+   "source": "reviewed hidden result and ret 4 at 0x00E922E2/0x00E924E9 (2026-09-28)"
   }
  },
  "thingSlots": {

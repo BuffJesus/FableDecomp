@@ -107,7 +107,8 @@ def test_recovered_result_reaches_lua_caller(generated_guild, stage, name, phase
     lua.execute('math.random = function() return 1 end')
     module = lua.execute((generated_guild / stage / 'FSE/V_GuildMaster' / filename).read_text()) or lua.globals()
     quest = lua.table_from({'GetMasterGameState': lambda _self, key: phase,
-                           'GetStateString': lambda _self, key: ''})
+                           'GetStateString': lambda _self, key: '',
+                           'SetStateString': lambda *_: None})
     assert module[name](quest, lua.table()) == ('' if key is None else 'TEXT_QST_081_' + key)
 
 

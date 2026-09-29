@@ -1,9 +1,8 @@
 -- Generated from the same native helper bodies as the quest draft.
 local helper_E91F20
 function helper_E91F20(quest, me)
-    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5
+    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5
     local alive = true
-    -- TODO(native): CCharString::CCharString(&xStack_c,other);
     iVar1 = quest:GetMasterGameState("PostSavePosition")
     if iVar1 < 0x385 then
         if iVar1 == 900 then
@@ -104,7 +103,6 @@ function helper_E91F20(quest, me)
                                 bVar3 = not alive
                                 if bVar6 then
                                     if bVar3 then
-                                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                         -- LAB_00e922c9_c3: (native jump target)
                                         do return "" end
                                         goto FLOW_after_flow_native_label_2
@@ -263,8 +261,7 @@ function helper_E91F20(quest, me)
                     goto LAB_00e923f7
                 else
                     if iVar1 == 0x9c4 then
-                        -- TODO(native): iVar4 = *(iVar4 + 0x70)
-                        iVar4 = nil --[[unresolved native value]]
+                        iVar4 = quest:GetMasterGameState("CurrentHeroSoulsPosition")
                         if iVar4 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -279,7 +276,6 @@ function helper_E91F20(quest, me)
                                 bVar6 = not alive
                                 if bVar6 then
                                     -- LAB_00e92207: (native jump target)
-                                    -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                     do return "" end
                                     goto FLOW_after_flow_native_label_2_357
                                 end
@@ -290,7 +286,6 @@ function helper_E91F20(quest, me)
                                     bVar6 = not alive
                                     if bVar6 then
                                         -- LAB_00e92048: (native jump target)
-                                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                         do return "" end
                                         goto FLOW_after_flow_native_label_2_357
                                     end
@@ -324,7 +319,6 @@ function helper_E91F20(quest, me)
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar6 = not alive
                                                         if bVar6 then
-                                                            -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                                             do return "" end
                                                             goto FLOW_after_flow_native_label_2_357
                                                         end
@@ -362,45 +356,8 @@ function helper_E91F20(quest, me)
         ::FLOW_after_flow_native_label_2_357::
     end
     ::FLOW_after_flow_native_label_2::
-    -- TODO(native): CVar2 = *quest:GetStateString("LastDialogueSaid")
-    CVar2 = nil --[[unresolved native value]]
-    native_arg_sequence_1 = false
-    if CVar2 == in_stack_fffffff0 then
-        native_arg_sequence_1 = true
-    else
-        native_arg_sequence_1 = false
-    end
-    if not native_arg_sequence_1 then
-        if CVar2 ~= nil then
-            native_arg_sequence_1 = true
-        else
-            native_arg_sequence_1 = false
-        end
-        if native_arg_sequence_1 then
-            if in_stack_fffffff0 ~= nil then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-        end
-        if native_arg_sequence_1 then
-            -- TODO(native): if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then
-            if false then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-        end
-        if native_arg_sequence_1 then
-            -- TODO(native): iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);
-            if iVar4 == 0 then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-        end
-    end
-    if native_arg_sequence_1 then
+    CVar2 = quest:GetStateString("LastDialogueSaid")
+    if (CVar2 == pcVar7) then
         uVar5 = math.random(0, 32767)
         uVar5 = uVar5 & 0x80000003
         bVar6 = uVar5 == 0
@@ -430,7 +387,7 @@ function helper_E91F20(quest, me)
         end
     end
     ::LAB_00e924b3::
-    -- TODO(native): quest:SetStateString("LastDialogueSaid", &pcVar7)
+    quest:SetStateString("LastDialogueSaid", pcVar7)
     return pcVar7
 end
 

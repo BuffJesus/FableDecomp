@@ -4056,6 +4056,9 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'\bparam_1\b', 'this', text)
     text = fold_high_byte_flags(text)   # before any pass folds the byte stores into their tests
     text = normalise_typed_decompile(text)
+    from tools.script_recovery.native_string_values import fold_constructor_copy, fold_rep_equality, fold_member_rep_read
+    text = fold_constructor_copy(text)
+    text = fold_rep_equality(text)
     from tools.script_recovery.native_string_map_lowering import apply as lower_string_maps
     text = lower_string_maps(text, spec)
     text = resolve_this_aliases(text, spec)
@@ -4312,6 +4315,14 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             # after the assignment (the declaration block keeps `int iVarN;`) and only up to that reuse
             nxt = re.search(r'(?<![\w.>])' + re.escape(var) + r' = (?!=)', tail)   # also inside a comma expression
             scope, rest = (tail[:nxt.start()], tail[nxt.start():]) if nxt else (tail, '')
+            # A register can load through its old pointer while replacing itself:
+            # `p = *(int *)(p + off)`. Only its RHS still denotes the pointer.
+            if nxt and kinds in ('master', 'parent master'):
+                assignment = re.match(re.escape(var) + r' = (\*\(' + TYPE + r' \*\)\('
+                                      + re.escape(var) + r' \+ (0x[0-9a-f]+|\d+)\));', rest)
+                if assignment and int(assignment[2], 0) in spec.master_fields:
+                    rhs = re.sub(r'\b' + re.escape(var) + r'\b', lambda _: value, assignment[1])
+                    rest = var + ' = ' + rhs + ';' + rest[assignment.end():]
             scope = re.sub(r'(?<![\w.>])' + re.escape(var) + r'\b', lambda _: value, scope)
             text = head + scope + rest
             pos = m.start()
@@ -4809,7 +4820,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
             text = fold_string_member_aliases(text, member, f'{tag}STATE_GetString("{name}")',
                                              lambda value, tag=tag, name=name: f'{tag}STATE_SetString("{name}", {value})')
             text = re.sub(r'^([ \t]*)CCharString::(?:operator=|CCharString)\(' + member + r',\s*([^;]+?)(?:,\s*-1)?\);',
-                          lambda m, name=name, tag=tag: f'{m.group(1)}{tag}STATE_SetString("{name}", {m.group(2).strip()});', text, flags=re.M)
+                          lambda m, name=name, tag=tag: f'{m.group(1)}{tag}STATE_SetString("{name}", {_strip_addr(m.group(2).strip())});', text, flags=re.M)
             text = re.sub(r'^[ \t]*CCharString::~CCharString\(' + member + r'\);[ \t]*\r?\n', '', text, flags=re.M)
             # CCharString::AssignFromWide(&member, L"...") (0x99B800): the literal is a UTF-16 .rdata string
             resolve_wide = getattr(spec, 'resolve_wide', None)
@@ -4822,6 +4833,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
                     return f'{m.group(1)}{tag}STATE_SetString("{name}", "{literal}");'
                 text = re.sub(r'^([ \t]*)CCharString(?:::|__)AssignFromWide\((?:\(CCharString \*\))?\(?' + base + r' \+ ' + off_re(off) + r'\)?,\s*(0x[0-9a-f]+)\);',
                               assign_wide, text, flags=re.M)
+            text = fold_member_rep_read(text, member, f'{tag}STATE_GetString("{name}")')
             text = re.sub(member, f'{tag}STATE_GetString("{name}")', text)
             # the member's string rep read raw for an inlined `==` (`puVar1 = *(undefined4 **)(parent + 0x78)`,
             # DarkwoodTrader Main's TraderToTalk test; fold_inline_string_equality finishes it)

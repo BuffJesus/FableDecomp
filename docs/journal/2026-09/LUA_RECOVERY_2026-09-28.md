@@ -506,3 +506,58 @@ branches before merging the corrected export. Then recover GuildMasterGameFlow's
 cleanup continuations versus the true return epilogue; native evidence in the previous marathon
 must remain separate. Witch progress persistence remains another task. v38 is unchanged: GuildMaster
 is outside its roster. No new bundle, installation, game launch or push.
+
+### GuildMaster cache / Hero Souls recovery and BeardyBaldy string stores
+
+Continued offline from `8914c8e`, scratch `work/codex_guild_cache_20260928/`.
+GuildMaster's speech helper now reads and writes LastDialogueSaid as a string, compares the selected
+line by value, calls rand only for a repeated line, and updates the four one-time information flags.
+Hero Souls selection now reads CurrentHeroSoulsPosition (+0x70) before reusing its master-pointer
+register. The empty-string constructor/copy no longer loses the constructor's returned receiver.
+
+Generic lowering changes are conservative: constructor-copy folding rejects pointer escapes;
+string equality requires the entire identity/null/length/content test and a dead comparison-result
+temporary on every later path; raw string-member loads require a recovered value consumer; master
+pointer self-reuse is limited to known master fields. Incomplete pointer/memory operations stay
+unresolved. First-pass Bordello/BookCollecting changes were rejected by these tighter guards and
+are superseded, never promoted. Four genuine BeardyBaldy stores also recover RequiredBeard/RequiredTash
+from definition strings at 0x468/0x460/0x478/0x470. Tests read those actual native decompile fragments
+and execute their lowered setters with distinct string values.
+
+Reviewed ABI overrides now persist for rand (0x00BFEB16, cdecl/no args), the literal CCharString
+constructor (0x0099EBF0, receiver return in EAX), and GuildMaster's hidden result (0x00E91F20, ret 4).
+Only the reviewed speech-helper function record was merged from the scratch typed export; the other
+33 function records and the base export header remain unchanged. The three signature records are
+updated. No generated Lua was hand-edited. Native helper instructions and the earlier export/ABI
+artifacts remain available in this and the previous GuildMaster scratch directories.
+
+Validation: **693 targeted tests pass against the registered evidence**, including 672 comparisons
+of draft/readable and quest/shared helper output against retail x86 control flow, four 11-call repeat
+sequences, conservative rejection cases, ABI bytes and four BeardyBaldy string stores. Compared values
+include returned speech, cached speech, flags, query order and random-call counts. Native execution
+mocks string primitives, rand and quest APIs; it is not an in-game test. **81 compatibility tests pass**;
+a broader focused run also passed 133 tests (overlapping coverage; not a full-suite claim). Initial
+pytest-native runs printed handled Windows memory-fault diagnostics despite passing; the final native
+worker runs outside pytest's fault handler, completes cleanly, and checks process exit. An independent
+Python 3.12 standalone native comparison also passed.
+
+Final **29-unit A/B** changes only two GuildMaster files and BB_BeardyBaldyMan; **27 unrelated units
+are byte-identical**. Before outputs were reused only after the first full comparison completed; final
+after outputs regenerate every unit with the tightened guards. Promoted exactly three draft and three
+readable Lua files plus reports. Final draft equals A/B and promoted Lua equals tested scratch.
+**371 current Lua files parse**, zero failures. Readable diagnostics 1419 -> 1391, mechanical only.
+GuildMaster smoke's two free-global reports are resolved: zero problems. BeardyBaldy has zero problems
+before/after with the native parameter report. The scratch smoke without that report supplied a number
+for SetWanderPointAndDistance's vector; `beardy_smoke_after_typed.json` supersedes that harness error.
+
+Reports: `ab/comparison.json`, `ab/initial_comparison.json` (superseded), `source_hashes.json`,
+`guild_final_tests.log`, `registered_guild_tests.log`, `compatibility_tests.log`, `focused.log`,
+`promotion.json`, `review.diff`, `readability.json`, and smoke JSONs. Candidate v39 staging follows this
+source checkpoint: only the BeardyBaldy roster file should change from v38. GuildMaster remains outside
+the existing override roster. No installation, game launch or push. Next: GuildMasterGameFlow's distinct
+movie cleanup continuations versus its true return epilogue; Witch integer-progress persistence remains
+separate. Do not merge those cleanup paths merely because they unpause and destroy the same movie.
+
+Final label-entry guard rejects comparison-result reads when a jump can bypass the replacement
+assignment. Compared both guard versions on all 1,973 exported function inputs: no generated changes
+(`label_guard_corpus.json`). Final targeted rerun: 693 passed. Source hashes refreshed after this guard.

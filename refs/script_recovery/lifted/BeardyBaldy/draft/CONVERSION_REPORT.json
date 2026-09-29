@@ -891,11 +891,7 @@
             "label LAB_00e53650",
             "helper_E53670: 1 helper operands for 0 parameters",
             "label LAB_00e52fd3",
-            "unlifted: QUESTSTATE_SetString(\"RequiredBeard\", &xStack_148)",
-            "unlifted: QUESTSTATE_SetString(\"RequiredBeard\", &xStack_138)",
             "unlifted: bVar6 = helper_E53670(quest, me, *(this + 0x14))",
-            "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_184)",
-            "unlifted: QUESTSTATE_SetString(\"RequiredTash\", &xStack_158)",
             "unlifted: bVar6 = helper_E53670(quest, me, *(this + 0x14))"
           ],
           "calls": [
@@ -1767,7 +1763,7 @@
         "functionSyntaxPassed": 23,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 39
+        "todo": 35
       }
     }
   ],
@@ -1778,6 +1774,6 @@
     "functionSyntaxPassed": 23,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 39
+    "todo": 35
   }
 }

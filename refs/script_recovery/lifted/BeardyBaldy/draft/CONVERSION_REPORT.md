@@ -21,11 +21,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_BeardyBaldy | V_BeardyBaldy | IsHeroWearingAnyOddHairdo | 0x00e53ad0 | True | 0 |
 | V_BeardyBaldy | V_BeardyBaldy | GoTalkToBarber | 0x00e50e40 | True | 1 |
 | V_BeardyBaldy | V_BeardyBaldy | helper_E53C70 | 0x00e53c70 | True | 0 |
-| V_BeardyBaldy | BB_BeardyBaldyMan | Main | 0x00e50fd0 | True | 23 |
+| V_BeardyBaldy | BB_BeardyBaldyMan | Main | 0x00e50fd0 | True | 19 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | Init | 0x00e50890 | True | 0 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | OnPersist | 0x00e508d0 | True | 0 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | OnPredicateFail | 0x00e508e0 | True | 0 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | helper_E53670 | 0x00e53670 | True | 0 |
 | V_BeardyBaldy | BB_BeardyBaldyMan | helper_E53CB0 | 0x00e53cb0 | True | 3 |
 
-Summary: `{"owners": 2, "functions": 23, "missing": 0, "functionSyntaxPassed": 23, "fileSyntaxPassed": 3, "fileSyntaxChecked": 3, "todo": 39}`
+Summary: `{"owners": 2, "functions": 23, "missing": 0, "functionSyntaxPassed": 23, "fileSyntaxPassed": 3, "fileSyntaxChecked": 3, "todo": 35}`

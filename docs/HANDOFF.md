@@ -1,5 +1,13 @@
 # Lua recovery handoff - 2026-09-26
 
+**GuildMaster cache / Hero Souls checkpoint (2026-09-28):** speech helper fully lowers its string/cache
+operations and reads Hero Souls progress; four BeardyBaldy requirement stores also recovered. Three
+draft/readable Lua files promoted. 693 targeted tests / 81 compatibility tests pass, 371 Lua parse,
+27 unrelated units identical. GuildMaster and typed BeardyBaldy smoke clear. v39 staging follows for
+BeardyBaldy only; GuildMaster remains outside the roster. Next: movie cleanup continuations versus true
+return, then Witch progress persistence. No installation/game launch/push. See latest journal and
+`work/codex_guild_cache_20260928/`.
+
 **GuildMaster return checkpoint (2026-09-28):** hidden string-result ABI recognized; terminating speech
 now returns the empty string through cleanup instead of discarding it. Two draft/readable files promoted;
 100 tests / eight subtests pass, 371 Lua parse, all 28 unrelated units unchanged, smoke unchanged.

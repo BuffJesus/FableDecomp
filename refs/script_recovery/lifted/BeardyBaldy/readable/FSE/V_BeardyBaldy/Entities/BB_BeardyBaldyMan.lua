@@ -267,8 +267,7 @@ function Main(quest, me)
                                 return
                             end
                             quest:GiveHeroObject(quest:ReadGlobalGameDataString(1132), -1, false)
-                            quest:ReadGlobalGameDataString(1128)
-                            -- TODO(native): quest:SetStateString("RequiredBeard", &xStack_148)
+                            quest:SetStateString("RequiredBeard", quest:ReadGlobalGameDataString(1128))
                         else
                             if predicateResult2 then
                                 quest:PauseAllNonScriptedEntities(false)
@@ -277,8 +276,7 @@ function Main(quest, me)
                                 return
                             end
                             quest:GiveHeroObject(quest:ReadGlobalGameDataString(1124), -1, false)
-                            quest:ReadGlobalGameDataString(1120)
-                            -- TODO(native): quest:SetStateString("RequiredBeard", &xStack_138)
+                            quest:SetStateString("RequiredBeard", quest:ReadGlobalGameDataString(1120))
                         end
                         if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                             me:Speak(hero, "TEXT_QST_014_PHASE2_INTRO2", GROUP_SELECT_FIRST, false, true, false)
@@ -472,13 +470,11 @@ function Main(quest, me)
                     if quest:IsWearingHairstyle(hero, quest:ReadGlobalGameDataString(1136)) then
                         if predicateResult2 then goto LAB_00e5276b end
                         quest:GiveHeroObject(quest:ReadGlobalGameDataString(1148), -1, false)
-                        quest:ReadGlobalGameDataString(1144)
-                        -- TODO(native): quest:SetStateString("RequiredTash", &xStack_184)
+                        quest:SetStateString("RequiredTash", quest:ReadGlobalGameDataString(1144))
                     else
                         if predicateResult2 then goto LAB_00e5276b end
                         quest:GiveHeroObject(quest:ReadGlobalGameDataString(1140), -1, false)
-                        quest:ReadGlobalGameDataString(1136)
-                        -- TODO(native): quest:SetStateString("RequiredTash", &xStack_158)
+                        quest:SetStateString("RequiredTash", quest:ReadGlobalGameDataString(1136))
                     end
                     if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
                         if not me:Speak(hero, "TEXT_QST_014_PHASE3_INTRO4", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5276b end

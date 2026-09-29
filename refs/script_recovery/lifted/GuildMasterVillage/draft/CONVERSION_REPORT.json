@@ -87,7 +87,6 @@
           },
           "todo": [
             "switch tree flattening rejected: a value outside the cases runs a body",
-            "unlifted: CCharString::CCharString(&xStack_c,other);",
             "label FLOW_native_label_2_c1",
             "label LAB_00e922bb_c1",
             "label LAB_00e922c9_c1",
@@ -96,7 +95,6 @@
             "label FLOW_native_label_2_c2",
             "label LAB_00e922bb_c2",
             "label LAB_00e922c9_c2",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e922c9_c3",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "label FLOW_native_label_2_c4",
@@ -114,25 +112,16 @@
             "label LAB_00e922bb_c7",
             "label LAB_00e922c9_c7",
             "label LAB_00e92061",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e92207",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e92048",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e922c9_c12",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "label LAB_00e922bb_c13",
-            "label LAB_00e922c9_c13",
-            "unlifted: iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);",
-            "unlifted: iVar4 = *(iVar4 + 0x70)",
-            "unlifted: CVar2 = *QUESTSTATE_GetString(\"LastDialogueSaid\")",
-            "unlifted: if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then",
-            "unlifted: QUESTSTATE_SetString(\"LastDialogueSaid\", &pcVar7)"
+            "label LAB_00e922c9_c13"
           ],
           "calls": [
             "GetMasterGameState",
@@ -142,6 +131,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "GetMasterGameState",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -151,6 +141,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "QUESTSTATE_GetString",
             "ENGINE_Rand",
             "SetStateBool",
             "SetStateBool",
@@ -159,7 +150,7 @@
             "SetStateBool",
             "QUESTSTATE_SetString"
           ],
-          "lines": 433,
+          "lines": 389,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -566,7 +557,6 @@
         "todo": {
           "helper_E91F20": [
             "switch tree flattening rejected: a value outside the cases runs a body",
-            "unlifted: CCharString::CCharString(&xStack_c,other);",
             "label FLOW_native_label_2_c1",
             "label LAB_00e922bb_c1",
             "label LAB_00e922c9_c1",
@@ -575,7 +565,6 @@
             "label FLOW_native_label_2_c2",
             "label LAB_00e922bb_c2",
             "label LAB_00e922c9_c2",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e922c9_c3",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "label FLOW_native_label_2_c4",
@@ -593,25 +582,16 @@
             "label LAB_00e922bb_c7",
             "label LAB_00e922c9_c7",
             "label LAB_00e92061",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e92207",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e92048",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
-            "unlifted: CCharString::CCharString(&hiddenStringResult,&xStack_c);",
             "label LAB_00e922c9_c12",
             "verify cleanup at LAB_00e92061 (lifted as early return)",
             "label LAB_00e922bb_c13",
-            "label LAB_00e922c9_c13",
-            "unlifted: iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);",
-            "unlifted: iVar4 = *(iVar4 + 0x70)",
-            "unlifted: CVar2 = *QUESTSTATE_GetString(\"LastDialogueSaid\")",
-            "unlifted: if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then",
-            "unlifted: QUESTSTATE_SetString(\"LastDialogueSaid\", &pcVar7)"
+            "label LAB_00e922c9_c13"
           ]
         },
         "syntax": {
@@ -629,7 +609,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 51
+        "todo": 40
       }
     }
   ],
@@ -640,6 +620,6 @@
     "functionSyntaxPassed": 7,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 51
+    "todo": 40
   }
 }

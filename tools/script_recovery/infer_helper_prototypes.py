@@ -53,6 +53,22 @@ def purge(image, address, limit=0x600, *, _seen=None):
 # Prototypes proven from the retail disassembly; they replace the purge-only inference (which types every stack
 # word `int`, so an immediate float operand printed as a stale register).
 REVIEWED = {
+    # E91F20 writes only the entry ESP+4 hidden result and both exits purge it;
+    # ego_r identifies a CCharString value return with no explicit parameters.
+    0x00E91F20: {'name': 'GetGuildMasterSpeech', 'cc': '__thiscall', 'ret': 'CCharString *',
+                 'params': [{'name': 'result', 'type': 'CCharString *'}],
+                 'source': 'reviewed hidden result and ret 4 at 0x00E922E2/0x00E924E9 (2026-09-28)'},
+    # ff 25 24 01 44 01 imports rand. E92441 calls without arguments; E92446
+    # consumes EAX. It must not inherit the next routine's stack purge.
+    0x00BFEB16: {'name': 'rand', 'cc': '__cdecl', 'ret': 'int', 'params': [],
+                 'source': 'reviewed CRT rand import and caller 0x00E92441 (2026-09-28)'},
+    # ESI holds the receiver; 99EC27 mov eax,esi; 99EC2A ret 8. E91F37
+    # immediately pushes this result as the next copy constructor's source.
+    0x0099EBF0: {'name': 'CCharString_Construct_Literal', 'cc': '__thiscall', 'ret': 'CCharString *',
+                 'params': [{'name': 'string', 'type': 'void *', 'ctype': 'const char*'},
+                            {'name': 'no_chars', 'type': 'int', 'ctype': 'int'}],
+                 'typedef': 'tCCharString_Constructor_Literal',
+                 'source': 'reviewed constructor receiver return at 0x0099EC27 (2026-09-28)'},
     # ECE7D4/ECE7DD take entry ESP+4/+8 and call CCharString_Destroy; ECE7E9
     # returns with ret 8. Callers construct both strings in outgoing stack slots.
     # ECE6FF passes the first to RunCutsceneMacro; ECE544 assigns the second to $ARG1.
