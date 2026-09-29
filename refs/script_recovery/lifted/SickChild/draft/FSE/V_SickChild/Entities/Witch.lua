@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, i_stk_9c, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, r1, r2, r3, stack0xffffff44, this_00, this_01, uVar13, uVar15, uVar16, uVar18, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_a0, x_stk_34
+    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, i_stk_9c, native_arg_byte_uStack_a8_b3, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, r1, r2, r3, stack0xffffff44, this_00, this_01, uVar13, uVar15, uVar16, uVar18, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         quest:PauseAllNonScriptedEntities(false)
@@ -279,11 +279,13 @@ function Main(quest, me)
                         if not bVar4 then goto LAB_00ecef61 end
                     end
                     bVar7 = true
+                    native_arg_byte_uStack_a8_b3 = 0
                 else
                     goto LAB_00ecef61
                 end
                 goto FLOW_past_lab_00ecef61
                 ::LAB_00ecef61::
+                native_arg_byte_uStack_a8_b3 = 1
                 ::FLOW_past_lab_00ecef61::
                 if bVar8 then
                     bVar8 = false
@@ -291,7 +293,7 @@ function Main(quest, me)
                 if bVar7 then
                     bVar7 = false
                 end
-                if 1 ~= 0 then
+                if native_arg_byte_uStack_a8_b3 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     iVar10 = i_stk_9c
@@ -431,14 +433,16 @@ function Main(quest, me)
                             if not bVar8 then goto LAB_00ecf576 end
                         end
                         -- TODO(native): uStack_a8 = uStack_a8 & 0xffffff | 0x10;
+                        native_arg_byte_uStack_a8_b3 = 0
                     else
                         goto LAB_00ecf576
                     end
                     goto FLOW_past_lab_00ecf576
                     ::LAB_00ecf576::
                     -- TODO(native): uStack_a8._0_3_ = (undefined3)(uStack_a8 | 0x10);
+                    native_arg_byte_uStack_a8_b3 = 1
                     ::FLOW_past_lab_00ecf576::
-                    if 1 ~= 0 then
+                    if native_arg_byte_uStack_a8_b3 ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar8 = not alive
                         iVar10 = i_stk_9c

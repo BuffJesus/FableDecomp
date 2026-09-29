@@ -15,8 +15,8 @@ function Main(quest, me)
     local self_0x14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local thingsForPotionGot, questionAnswer, scratchValue9, scratchValue12, scratchValue20
-    local scratchValue21, this_01, movie, movie4
+    local thingsForPotionGot, questionAnswer, scratchValue9, scratchValue, scratchValue12
+    local byteUStackA8B, scratchValue20, scratchValue21, this_01, movie, movie4
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
@@ -173,12 +173,8 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
         end
-        if me:MsgIsHitByHero() then goto LAB_00ecef61 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecef61 end
-        goto FLOW_past_lab_00ecef61
-        ::LAB_00ecef61::
-        ::FLOW_past_lab_00ecef61::
-        local scratchValue = scratchValue12
+        if not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then thingsForPotionGot = thingsForPotionGot_; goto continue_4 end
+        scratchValue = scratchValue12
         if quest:IsActiveThreadTerminating() then return end
         scratchValue12 = scratchValue12 + 1
         if scratchValue == 0 then
@@ -255,54 +251,58 @@ function Main(quest, me)
         if me:MsgIsHitByHero() then goto LAB_00ecf576 end
         if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ecf576 end
         -- TODO(native): uStack_a8 = uStack_a8 & 0xffffff | 0x10;
+        byteUStackA8B = 0
         goto FLOW_past_lab_00ecf576
         ::LAB_00ecf576::
         -- TODO(native): uStack_a8._0_3_ = (undefined3)(uStack_a8 | 0x10);
+        byteUStackA8B = 1
         ::FLOW_past_lab_00ecf576::
-        local scratchValue11 = scratchValue12
-        if quest:IsActiveThreadTerminating() then return end
-        scratchValue12 = scratchValue12 + 1
-        if scratchValue11 == 0 then
-            scratchValue21 = "TEXT_QST_B10_WITCH_ONHIT_10"
-            goto LAB_00ecf622
-        else
-            if scratchValue11 == 1 then
-                scratchValue21 = "TEXT_QST_B10_WITCH_ONHIT_20"
+        if byteUStackA8B ~= 0 then
+            local scratchValue11 = scratchValue12
+            if quest:IsActiveThreadTerminating() then return end
+            scratchValue12 = scratchValue12 + 1
+            if scratchValue11 == 0 then
+                scratchValue21 = "TEXT_QST_B10_WITCH_ONHIT_10"
                 goto LAB_00ecf622
-            end
-            if scratchValue11 == 2 then
-                movie4 = "TEXT_QST_B10_WITCH_ONHIT_30"
-                scratchValue12 = 0
             else
-                movie4 = "TEXT_QST_B10_WITCH_ONHIT_20"
-                scratchValue12 = 0
-            end
-        end
-        goto FLOW_past_lab_00ecf622
-        ::LAB_00ecf622::
-        movie4 = scratchValue21
-        ::FLOW_past_lab_00ecf622::
-        movie = resources:StartMovie("")
-        quest:PauseAllNonScriptedEntities(true)
-        if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Witch"))) then
-            -- TODO(native): iVar10 = *(self_0x14 + 0x58)
-            scratchValue9 = nil --[[unresolved native value]]
-            -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);
-            while me:IsPerformingScriptTask() do
-                quest:NewScriptFrame(me)
-                if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    ReleaseEverything2(); do return end
+                if scratchValue11 == 1 then
+                    scratchValue21 = "TEXT_QST_B10_WITCH_ONHIT_20"
+                    goto LAB_00ecf622
+                end
+                if scratchValue11 == 2 then
+                    movie4 = "TEXT_QST_B10_WITCH_ONHIT_30"
+                    scratchValue12 = 0
+                else
+                    movie4 = "TEXT_QST_B10_WITCH_ONHIT_20"
+                    scratchValue12 = 0
                 end
             end
-            if quest:IsActiveThreadTerminating() then
-                quest:PauseAllNonScriptedEntities(false)
-                ReleaseEverything2()
-                return
+            goto FLOW_past_lab_00ecf622
+            ::LAB_00ecf622::
+            movie4 = scratchValue21
+            ::FLOW_past_lab_00ecf622::
+            movie = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Witch"))) then
+                -- TODO(native): iVar10 = *(self_0x14 + 0x58)
+                scratchValue9 = nil --[[unresolved native value]]
+                -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);
+                while me:IsPerformingScriptTask() do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        ReleaseEverything2(); do return end
+                    end
+                end
+                if quest:IsActiveThreadTerminating() then
+                    quest:PauseAllNonScriptedEntities(false)
+                    ReleaseEverything2()
+                    return
+                end
             end
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(movie4)
         end
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie4)
         if not quest:NewScriptFrame(me) then return end
     until false
 end

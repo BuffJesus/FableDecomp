@@ -753,3 +753,56 @@ Selection and validation are in stage_v41.py, stage_v41.log, validate_v41.py,
 package_validation_v41.json and bundle_payload_diff.json under the receiver scratch directory.
 Not installed or run; no push. Next: Witch dynamic/merged speech operands, on-hit branch gating
 and distinct movie/string cleanup identities; Mother on-hit cleanup also needs separate proof.
+
+## Witch hit gates: projected-byte state (2026-09-28)
+
+Fixed a demonstrated control-flow defect in the existing Witch port. Retail Main stores its
+hit predicate in byte [esp+0x13], but the generated draft propagated the final literal 1 through
+both branch joins. The readable script consequently entered retaliation even on no hit or a
+healing-only special ability. Both pre-potion and post-potion gates now preserve the actual
+condition: direct Hero hit OR special-ability hit excluding the Heal Life spell.
+
+Generic lowering now gives complete condition-only zero/one byte projections scalar locals.
+It consults the original source before dead-store removal, rejecting reused outgoing-argument
+or object slots, incomplete stores, address-taking, mixed assignments and escaping values.
+A full-word high-byte clear combined with a low cleanup-bit update also emits the byte's zero
+store while preserving the original low-word operation. No retail address is hard-coded in
+the implementation and no generated Lua was hand-edited.
+
+Native oracle executes both retail predicate/cleanup blocks with Unicorn in a subprocess:
+ECEEE5 -> ECEFB1 / ECF1A6, and ECF4FE -> ECF5C6 / ECF74D. All 16 combinations of phase,
+direct hit, special hit and healing ability match the expected branch, stored byte and stack
+balance. All 32 draft/readable cases match the native decision and short-circuit query order.
+Generated cases run Init, load progress through OnPersist, and enter Main. No-hit paths run
+to a bounded frame exit without starting a movie; hit paths stop at movie creation, before
+the still-unresolved speech/cleanup. Against v41, 12 no-hit/healing-only cases fail and 20
+hit cases pass, demonstrating the regression rather than merely checking new source text.
+
+Validation: **249 distinct tests plus eight subtests pass** (187 focused/SickChild tests,
+62 flag/scalar/control-flow compatibility tests). **29-unit A/B** with the completed baseline
+and final after regeneration changes only Witch.lua; **28 units are byte-identical**. Fresh
+before/after readable output also changes only Witch, with no registered baseline drift.
+**56 scratch Lua parse**, both typed SickChild smokes have zero failures, and the promoted
+corpus remains **371 Lua files with zero syntax failures**. Draft/readable Witch and reports
+match the tested scratch artifacts. Unresolved diagnostic totals are unchanged.
+
+Broad experiments were rejected, not promoted: the first affected 11 files / six units;
+the condition-only variant affected six files / three units. Review found read-only byte
+renaming and reused slots influencing missing-operand inference. The original-lifetime guard
+keeps those unrelated units unchanged. Their comparison_broad.json and
+comparison_condition_only.json are superseded by ab/comparison.json. Initial after/ and
+test_build outputs are likewise superseded by ab/comparison/after and readable/after.
+
+Scratch: `work/codex_witch_flags_20260928/`. Tests: test_witch_hit_flags.py, final_behavior.log,
+final_compatibility.log, baseline_hit_tests.log, native_matrix.json. Reproduction: ab/compare.py,
+ab/refresh_after.py, explicit build_readable_unit.build before/after (final_readable_build.log),
+validate.py and promote.py. Scope, source hashes, readable.diff, validation.json, promotion.json,
+readability.json and review.diff retain the reviewed inputs and outputs.
+
+Next: remaining Witch speech and distinct movie/string cleanup identities. Correction to older
+handoff wording: ECF48A already has a proven seh_Witch receiver and literal; missing boolean
+pushes come from EBP across branches, not an unproven receiver. ECF12A additionally spills its
+vtable and converts a dynamic CCharString; ECF6E4 also has a dynamic key. See
+remaining_speech_proof.txt and next_ebp_reaching.txt (the latter still contains an entry/unknown
+path and is investigative evidence, not a completed proof). No installation, game launch or
+push; sidecar unchanged. Candidate v42 staging follows this local source checkpoint.

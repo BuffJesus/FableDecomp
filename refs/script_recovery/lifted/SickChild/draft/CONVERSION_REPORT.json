@@ -1479,7 +1479,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 496,
+          "lines": 500,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,

@@ -1,5 +1,15 @@
 # Lua recovery handoff - 2026-09-26
 
+**Witch hit-gate checkpoint (2026-09-28):** both false retaliation gates now preserve the
+native hit/healing predicate. 249 tests plus eight subtests pass; 16 retail executions and
+32 draft/readable cases cover both gates. Only Witch changes across the 29-unit A/B;
+371 Lua parse, typed SickChild smoke clear. Remaining speech/cleanup paths are unresolved.
+Next: ECF48A needs EBP boolean operands (receiver already proven), then dynamic keys and
+movie/string cleanup identity. v42 staging follows; sidecar unchanged; no install/game/push.
+See latest [journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md) and
+`work/codex_witch_flags_20260928/`.
+
+
 **v41 ready offline (2026-09-28):** source `c6ed7dc`; three roster Lua updates over v40
 (Teacher, Mother, Witch). 210 Lua parse / 216 hashes match / zero new package smoke failures
 (16 old mock failures). Sidecar e83c39f unchanged. Not installed or run; local only.

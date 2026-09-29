@@ -1369,6 +1369,11 @@ def normalise_typed_decompile(text: str) -> str:
     text = re.sub(r'::\s+(?=\w)', '::', text)   # `CScriptThing:: _Method_...(` after line joining
     text = re.sub(r'= \((?:CCharString|int|undefined4|uint)\)&PTR_', '= &PTR_', text)   # a cast on a vtable store (the slot Ghidra typed as a string)
     # a byte flag Ghidra merged into the dword slot below it: clearing / setting the top byte
+    # Clearing the high byte can also update the low cleanup bits. Preserve
+    # that word update and separately write the projected byte used by tests.
+    text = re.sub(r'^([ \t]*)(\w+) = \2 & 0xffffff \| (0x[0-9a-f]+|\d+);',
+                  lambda m: (m.group(0) + f'\n{m[1]}{m[2]}_b3 = 0;'
+                             if int(m[3], 0) <= 0xffffff else m.group(0)), text, flags=re.M)
     text = re.sub(r'^([ \t]*)(\w+) = \2 & 0xffffff;', r'\1\2_b3 = 0;', text, flags=re.M)
     text = re.sub(r'^([ \t]*)(\w+) = CONCAT13\((0x[0-9a-f]+|\d+),\s*(?:\(undefined3\))?\2\);', r'\1\2_b3 = \3;', text, flags=re.M)
     # the same flag computed through a second register: `X = CONCAT13(1,(int3)Y); if (C) { X = Y & 0xffffff; } Y = X;`
@@ -2652,9 +2657,43 @@ def split_scalar_slot_tail(text):
     return '\n'.join(lines)
 
 
-def rename_scalar_stack_locals(text):
+def rename_scalar_stack_locals(text, *, source=None):
     """Ghidra stack names (`local_14`, `uStack_8`) are refused by the lifter's assignment rule (they
     are usually object slots). Ones that only ever appear as plain scalars get lifter-visible names."""
+    # Complete zero/one flags used only in conditions are independent of the
+    # containing object's lifetime. Leave partial/escaping projections alone:
+    # other lifetimes may still assign the full word or an overlapping slice.
+    for name in sorted(set(re.findall(r'\b(?:[A-Za-z]+Stack_|local_)[0-9a-f]+_b[0-3]\b', text))):
+        parent = name.rsplit('_b', 1)[0]
+        original = text if source is None else source
+        # Consult the original source: dead-store removal may already have
+        # hidden the parent's outgoing-argument or object lifetime. Such a
+        # merged slot is outside this projection's evidence boundary.
+        if source is not None and not re.search(r'\b' + re.escape(parent) + r'\b', original):
+            continue
+        if re.search(r'&\s*' + re.escape(parent) + r'\b', original):
+            continue
+        writes = re.findall(r'\b' + re.escape(parent) + r' = ([^;]+);', original)
+        if any(not (re.fullmatch(re.escape(parent) + r' & 0xffffff(?: \| (?:0x[0-9a-f]+|\d+))?', rhs)
+                    or re.fullmatch(r'CONCAT13\([01],\(undefined3\)' + re.escape(parent) + r'\)', rhs))
+               for rhs in writes):
+            continue
+        values, tested, valid = set(), False, True
+        for line in text.splitlines():
+            if not re.search(r'\b' + re.escape(name) + r'\b', line):
+                continue
+            store = re.fullmatch(r'\s*' + re.escape(name) + r" = (0x[01]|[01]|'\\0'|'\\x01');\s*", line)
+            if store:
+                values.add(1 if store[1] in ('1', '0x1', "'\\x01'") else 0)
+            elif (re.fullmatch(r'\s*(?:\} else )?(?:if|while) \(.+\) \{\s*', line)
+                  and not re.search(r'\b(?!(?:if|while)\b)\w+\s*\(', line)):
+                tested = True
+            else:
+                valid = False
+                break
+        if not valid or not tested or values != {0, 1}:
+            continue
+        text = re.sub(r'\b' + re.escape(name) + r'\b', 'native_arg_byte_' + name, text)
     # hidden-return slots of GSI/helper calls (`GSI->GetThingWithScriptName((CScriptThing *)auStack_1c, ...)`) are
     # the lifter's slot aliases (`r1`): keep their spelling
     # (at this stage GSI calls are still raw vcalls with the receiver as first argument, so the slot may be any argument)
@@ -5003,7 +5042,7 @@ def lower(source: str, spec: LoweringSpec) -> tuple[str, list[str]]:
     text = re.sub(r'^[ \t]*(?:[A-Za-z]+Stack_|local_)[0-9a-f]+ = (?:\(\w+\))?this;[ \t]*\r?\n', '', text, flags=re.M)
     text = re.sub(r'^[ \t]*(\w+) = \((?:\w+ \*+)\)\w+;[ \t]*\r?\n(?=[ \t]*\1 = )', '', text, flags=re.M)
     text = drop_dead_local_stores(text)
-    text = rename_scalar_stack_locals(text)
+    text = rename_scalar_stack_locals(text, source=source)
     text = fold_local_string_vectors(text, getattr(spec, 'call_labels', None) or {})
     text = fold_counted_map_stores(text, getattr(spec, 'call_labels', None) or {})
     text = fold_drifted_actor_values(text)
