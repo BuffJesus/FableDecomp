@@ -1,5 +1,12 @@
 # Lua recovery handoff - 2026-09-26
 
+**v42 ready offline (2026-09-28):** source `ed6fa67`; Witch.lua alone updated over v41.
+Both hit gates now preserve native no-hit/healing exclusions. 210 Lua parse / 216 hashes
+match / zero new package smoke failures (16 old mock failures). Sidecar e83c39f unchanged.
+Not installed or run; local only. Next: remaining Witch speech operands and movie/string
+cleanup identity. See latest journal and `work/codex_witch_flags_20260928/`.
+
+
 **Witch hit-gate checkpoint (2026-09-28):** both false retaliation gates now preserve the
 native hit/healing predicate. 249 tests plus eight subtests pass; 16 retail executions and
 32 draft/readable cases cover both gates. Only Witch changes across the 29-unit A/B;

@@ -806,3 +806,15 @@ vtable and converts a dynamic CCharString; ECF6E4 also has a dynamic key. See
 remaining_speech_proof.txt and next_ebp_reaching.txt (the latter still contains an entry/unknown
 path and is investigative evidence, not a completed proof). No installation, game launch or
 push; sidecar unchanged. Candidate v42 staging follows this local source checkpoint.
+
+### Candidate v42 staged offline
+
+Source checkpoint **ed6fa67**, local only. `work/new-oakvale-original-fse-20260912/local-candidate-v42`
+is v41 plus Witch.lua with both corrected hit gates. All other payload bytes match v41, except
+manifest/STAGING metadata. **210 Lua parse, 216 hashes match, 38 overrides, zero new package
+smoke failures**; the same 16 old mock failures remain. Sidecar remains **e83c39f**, DLL SHA-256
+`f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+Selection and verification: stage_v42.py, stage_v42.log, validate_v42.py,
+package_validation_v42.json and bundle_payload_diff.json in the flag scratch directory.
+Not installed or run; no push. Next: ECF48A's branch-carried boolean operands, the dynamic
+speech keys, and movie/string cleanup identity. Full Witch runtime recovery remains open.
