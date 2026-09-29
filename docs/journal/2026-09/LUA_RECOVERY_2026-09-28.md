@@ -674,3 +674,19 @@ compatibility.log, promoted_tests.log, and collected_tests.log. New permanent te
 
 Next recovery target: Witch's remaining seh_Witch resource/speech receiver operands and movie
 cleanup identity (still explicit unresolved operations); in-game persistence proof remains separate.
+
+### Candidate v40 staged offline
+
+Source checkpoint **a3e824a**, local only. `work/new-oakvale-original-fse-20260912/local-candidate-v40`
+is v39 plus **16 eligible roster Lua files** with corrected entity persistence. Six Arena files are
+outside the roster. Three Guild Training files and BCGameMaster retain the bundle's different pinned
+lineage; their source fixes are not silently spliced into the staged scripts. All other payloads are
+identical to v39, except manifest/STAGING metadata. The override roster remains 38 entries.
+
+Validation: **210 Lua parse, 216 manifest hashes match, zero new package smoke failures**; the same
+16 old mock failures remain. Sidecar remains **e83c39f**, DLL SHA-256
+`f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+`stage_v40.py`, `validate_v40.py`, `package_validation_v40.json`, `bundle_payload_diff.json` and
+`stage_v40.log` preserve the selection, excluded lineages and verification. No installation/game
+launch/push. Next: Witch's unresolved resource/speech receiver and movie cleanup operands; runtime
+save/reload remains unverified.

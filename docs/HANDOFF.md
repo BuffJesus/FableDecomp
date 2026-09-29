@@ -1,5 +1,12 @@
 # Lua recovery handoff - 2026-09-26
 
+**v40 ready offline (2026-09-28):** source `a3e824a`; 16 eligible roster Lua updates over v39 for
+entity persistence. Six Arena files stay outside the roster; three Guild Training callbacks and
+BCGameMaster retain pinned bundle lineage. 210 Lua parse / 216 hashes match / zero new package
+smoke failures (16 old mock failures). Sidecar e83c39f unchanged. Not installed or run; local only.
+Next: Witch resource/speech receiver and cleanup operands. See latest journal and
+`work/codex_witch_persist_20260928/`.
+
 **Entity persistence checkpoint (2026-09-28):** 26 entity callbacks across nine units now persist
 entity state used by Main/Init. Witch loads three mushrooms, collects one, and saves four in tests.
 216 distinct tests plus eight subtests pass; 29-unit A/B leaves 20 units identical; nine affected
