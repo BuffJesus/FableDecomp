@@ -15,10 +15,14 @@ from tools.script_recovery.export_native_threads import Image, RETAIL_EXE  # noq
 from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 
 
-def purge(image, address, limit=0x600):
+def purge(image, address, limit=0x600, *, _seen=None):
     """(purge bytes, uses ECX, uses EDX, float result) from a linear scan to the first ret.
     ECX/EDX read before being written mark __thiscall/__fastcall register parameters; an FPU
     instruction as the last computation before `ret` marks a floating-point result in ST0."""
+    seen = set() if _seen is None else _seen
+    if address in seen:
+        return None, False, False, False
+    seen.add(address)
     cs = Cs(CS_ARCH_X86, CS_MODE_32); cs.detail = True
     raw = image.bytes_at(address, limit)
     uses = {'ecx': False, 'edx': False}
@@ -35,8 +39,12 @@ def purge(image, address, limit=0x600):
         if ins.mnemonic == 'ret':
             n = ins.operands[0].imm if ins.operands and ins.operands[0].type == X86_OP_IMM else 0
             return n, uses['ecx'], uses['edx'], last_fpu
-        if ins.mnemonic == 'jmp' and ins.operands and ins.operands[0].type == X86_OP_IMM and ins.address == address:
-            return purge(image, ins.operands[0].imm, limit)   # thunk
+        if ins.mnemonic == 'jmp' and ins.address == address:
+            if ins.operands and ins.operands[0].type == X86_OP_IMM:
+                return purge(image, ins.operands[0].imm, limit, _seen=seen)
+            # An import thunk has no local return. Scanning past it attributes the next
+            # unrelated routine's ret N to the imported function (e.g. _stricmp).
+            return None, uses['ecx'], uses['edx'], last_fpu
         if ins.mnemonic not in ('pop', 'add', 'mov', 'lea'):
             last_fpu = ins.mnemonic.startswith('f')
     return None, uses['ecx'], uses['edx'], last_fpu
@@ -45,6 +53,21 @@ def purge(image, address, limit=0x600):
 # Prototypes proven from the retail disassembly; they replace the purge-only inference (which types every stack
 # word `int`, so an immediate float operand printed as a stale register).
 REVIEWED = {
+    # ECE7D4/ECE7DD take entry ESP+4/+8 and call CCharString_Destroy; ECE7E9
+    # returns with ret 8. Callers construct both strings in outgoing stack slots.
+    # ECE6FF passes the first to RunCutsceneMacro; ECE544 assigns the second to $ARG1.
+    0x00ECE460: {'name': 'helper_ECE460', 'cc': '__thiscall', 'ret': 'void',
+                 'params': [{'name': 'macroName', 'type': 'CCharString', 'ctype': 'CCharString'},
+                            {'name': 'argument', 'type': 'CCharString', 'ctype': 'CCharString'}],
+                 'source': 'reviewed by-value parameter destructors and ret 8 at 0x00ECE460 (2026-09-28)',
+                 'bsimLabel': 'Script_InitializeWitchCharacter (untrusted autoname)'},
+    # Retail import thunk ff 25 ec 00 44 01; helper ECE460 pushes two string-data
+    # pointers at ECE4FF/ECE500, calls this address, then adds esp,8 at ECE506.
+    0x00BFEBA8: {'name': '_stricmp', 'cc': '__cdecl', 'ret': 'int',
+                 'params': [{'name': 'left', 'type': 'char *', 'ctype': 'const char *'},
+                            {'name': 'right', 'type': 'char *', 'ctype': 'const char *'}],
+                 'source': 'reviewed CRT import and caller cleanup at 0x00ECE501 (2026-09-28)',
+                 'bsimLabel': 'MSVCR71.DLL::_stricmp'},
     # mov eax,ecx; mov ecx,[esp+8]; mov [eax],ecx; ret 8.
     # The inherited __EH_epilog3 label must not inject exception-stack teardown.
     0x004502EB: {'name': 'FUN_004502eb', 'cc': '__thiscall', 'ret': 'int',
@@ -64,6 +87,19 @@ REVIEWED = {
 }
 
 
+def discard_unproven_inferred(helpers, image):
+    """Revalidate earlier purge guesses, including those that crossed import thunks.
+
+    Reviewed signatures and API typedefs retain authority even without a local return.
+    """
+    removed = []
+    for address, row in list(helpers.items()):
+        if row.get('source', '').startswith('inferred ret ') and purge(image, int(address, 16))[0] is None:
+            del helpers[address]
+            removed.append(address)
+    return removed
+
+
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('--unit', required=True)
@@ -75,9 +111,10 @@ def main():
         json.loads((evidence / 'translation_unit.json').read_text(encoding='utf-8-sig'))
     spec_path = evidence / 'typing_spec.json'
     spec = json.loads(spec_path.read_text(encoding='utf-8'))
-    typed = {int(k, 16) for k in spec['helpers']}
     lo, hi = spec_u['lo'], spec_u['hi']
     image = Image(RETAIL_EXE)
+    removed = discard_unproven_inferred(spec['helpers'], image)
+    typed = {int(k, 16) for k in spec['helpers']}
     added = {}
     for f in tu['functions']:
         for call in f['calls']:
@@ -108,7 +145,8 @@ def main():
             spec['helpers'][hex(t)] = row
             added[t] = row
     spec_path.write_text(json.dumps(spec, indent=1) + '\n', encoding='utf-8')
-    print(json.dumps({'inferred': len(added), 'total helpers': len(spec['helpers'])}, indent=2))
+    print(json.dumps({'inferred': len(added), 'removedUnproven': removed,
+                      'total helpers': len(spec['helpers'])}, indent=2))
     for t, row in sorted(added.items()):
         print(hex(t), row['cc'], len(row['params']), row['bsimLabel'][:70])
 

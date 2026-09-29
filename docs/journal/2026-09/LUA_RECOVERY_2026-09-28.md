@@ -350,3 +350,42 @@ Sidecar stays **e83c39f**, DLL SHA-256
 
 Next offline work: recover helper_ECE460's two by-value strings and its map/resource lowering from the
 native evidence above; continue GuildMaster's shared cleanup tails without hiding unresolved jumps.
+
+### SickChild continuation: import-thunk inference and recovered helper prototype
+
+Background-only continuation after `57f29a0`; no game launch or install changes. Fixed
+`infer_helper_prototypes.py`: an entry jump through the import table now terminates purge inference,
+instead of scanning the adjacent unrelated routine for a `ret N`. Direct thunks still resolve;
+cycles return unproven. Rebuilding a spec revalidates old `inferred ret` rows and removes unsupported
+ones, while retaining reviewed/API signatures. A read-only audit found **22 unsupported signatures
+in 17 registered units**, mostly `rand`; this does not regenerate those units automatically.
+
+Native evidence confirms `_stricmp` at 0x00BFEBA8 is an import jump through 0x014400EC. Its SickChild
+caller pushes two pointers and cleans eight bytes at 0x00ECE506. Baseline inference incorrectly
+returns `(16, False, False, False)`. Added its reviewed cdecl/two-pointer signature, plus helper
+0x00ECE460's two by-value CCharStrings (`macroName`, `argument`). The helper destructors at
+0x00ECE7D8/0x00ECE7E1 and `ret 8` establish parameter ownership; 0x00ECE6FF passes macroName to
+RunCutsceneMacro, and 0x00ECE544 assigns argument to `$ARG1`. The old witch-initializer autoname
+is untrusted and is not evidence of the helper's role.
+
+Validation: **22 focused tests pass**, covering import boundaries, direct thunks/cycles, stale-spec
+rebuild, retail instruction bytes, existing call pairing and timer cleanup. Two broader attempts
+including native-string generation encountered the existing Unicorn `mem_map` access-violation
+loop; stopped only the owned pytest processes. Those attempts do not count as passes.
+
+Scratch `work/codex_sickchild_20260928/` contains `typing_spec.json`, the read-only Ghidra export
+`translation_unit_typed.json`, `typed_export.log`, `draft/`, `import_audit.json`, and
+`focused_tests.log`. The experiment changes only the two reviewed prototypes in its input spec.
+The corrected export now has stable string parameters, hero acquisition and separate actor/string
+maps. It also exposes missing lowering: CCharString null/data extraction around `_stricmp`, the
+`pOther = &argument` alias, and inline string-map construction/destruction. The draft still has
+syntax failures (48/49 functions; 11/13 files pass), including `piVar2 = *"NULL"`.
+**No experimental evidence or Lua promoted; v37 stays unchanged.** Shared generator Lua A/B/smoke
+promotion is deferred until those lowering gaps are fixed; this checkpoint changes prototype
+inference only. Existing evidence specs/TUs remain unchanged pending reviewed regeneration.
+
+Next: finish generic string/map lowering against the corrected helper export, recover and test
+both callers' macro/argument operands, then compare the full SickChild regeneration to its frozen
+baseline. Review other fresh-export changes separately; do not replace the entire TU blindly.
+Only promote syntax-clean, behavior-tested output with unchanged unrelated-unit comparisons.
+GuildMaster cleanup tails remain the subsequent offline task.

@@ -1,5 +1,13 @@
 # Lua recovery handoff - 2026-09-26
 
+**Latest offline continuation (2026-09-28):** fixed prototype inference reading past import thunks;
+22 focused tests pass. Audit: 22 unsupported import signatures in 17 units. Reviewed SickChild
+helper_ECE460's two by-value strings and `_stricmp`'s cdecl/two-pointer ABI. Scratch re-export
+confirms stable operands but exposes string/map lowering gaps; no evidence/Lua promotion or new
+bundle. v37 remains staged, not installed or run. Next: finish helper string/map lowering and
+caller tests, then GuildMaster cleanup tails. See the latest journal entry and
+`work/codex_sickchild_20260928/`. Background-only constraint remains active.
+
 **Latest: v37 staged offline (2026-09-28):** `local-candidate-v37` = v36 + 45 roster Lua files, unchanged
 sidecar e83c39f. 210 Lua parse / 216 hashes match / no new package smoke errors. Not installed or run.
 Local checkpoints: timer `581c1ff`, readability `98fa73a`; not pushed. GuildMasterVillage source improved but
