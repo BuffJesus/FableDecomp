@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "sick_child",
- "draft": "work\\codex_sickchild_marathon_20260928\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\sick_child",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -2256,7 +2256,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 9,
+    "entityStateAliased": 13,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -4878,7 +4878,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 17,
+    "entityStateAliased": 21,
     "namedHelpers": 0,
     "pureLocalFunctions": []
    },
@@ -6511,7 +6511,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 4,
+    "entityStateAliased": 6,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -15368,7 +15368,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 3,
+    "entityStateAliased": 5,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -21621,7 +21621,7 @@
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 2,
+       "constantConditions": 1,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -21734,7 +21734,7 @@
      }
     },
     "hoistedRequires": 2,
-    "entityStateAliased": 21,
+    "entityStateAliased": 25,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -24753,7 +24753,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 13,
+    "entityStateAliased": 15,
     "namedHelpers": 0,
     "pureLocalFunctions": []
    },

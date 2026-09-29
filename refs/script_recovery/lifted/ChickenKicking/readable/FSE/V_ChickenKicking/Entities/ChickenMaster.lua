@@ -874,9 +874,9 @@ end
 
 -- ChickenMaster.OnPersist (retail 0x00e641b0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("HeroHasPlayed", quest:PersistTransferBool(context, "HeroHasPlayed", quest:GetStateBool("HeroHasPlayed")))
-    quest:SetStateBool("HaveTalked", quest:PersistTransferBool(context, "HaveTalked", quest:GetStateBool("HaveTalked")))
-    quest:SetStateBool("GhostChat", quest:PersistTransferBool(context, "GhostChat", quest:GetStateBool("GhostChat")))
+    heroHasPlayed = quest:PersistTransferBool(context, "HeroHasPlayed", heroHasPlayed)
+    haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
+    ghostChat = quest:PersistTransferBool(context, "GhostChat", ghostChat)
 end
 
 -- ChickenMaster.OnPredicateFail (retail 0x00cdebd0)

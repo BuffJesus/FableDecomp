@@ -835,15 +835,15 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local brainState = quest:GetStateInt("BrainState") or 0
+    local brainState = __native_entity_state:GetStateInt("BrainState") or 0
     brainState = quest:PersistTransferInt(context, "BrainState", brainState)
-    quest:SetStateInt("BrainState", brainState)
-    local clientID = quest:GetStateInt("ClientID") or 0
+    __native_entity_state:SetStateInt("BrainState", brainState)
+    local clientID = __native_entity_state:GetStateInt("ClientID") or 0
     clientID = quest:PersistTransferInt(context, "ClientID", clientID)
-    quest:SetStateInt("ClientID", clientID)
-    local sexChance = quest:GetStateInt("SexChance") or 0
+    __native_entity_state:SetStateInt("ClientID", clientID)
+    local sexChance = __native_entity_state:GetStateInt("SexChance") or 0
     sexChance = quest:PersistTransferInt(context, "SexChance", sexChance)
-    quest:SetStateInt("SexChance", sexChance)
+    __native_entity_state:SetStateInt("SexChance", sexChance)
 end
 
 function OnPredicateFail(quest, me)

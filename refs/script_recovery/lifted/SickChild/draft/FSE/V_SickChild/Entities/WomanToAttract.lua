@@ -743,9 +743,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local givenObject = quest:GetStateBool("GivenObject") or false
+    local givenObject = __native_entity_state:GetStateBool("GivenObject") or false
     givenObject = quest:PersistTransferBool(context, "GivenObject", givenObject)
-    quest:SetStateBool("GivenObject", givenObject)
+    __native_entity_state:SetStateBool("GivenObject", givenObject)
 end
 
 function OnPredicateFail(quest, me)

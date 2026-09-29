@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "heros_old_house",
- "draft": "refs\\script_recovery\\lifted\\HerosOldHouse\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\heros_old_house",
  "files": {
   "FSE/HerosOldHouse/Entities/ExtraBooty.lua": {
    "functions": [
@@ -2748,7 +2748,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 12,
+    "entityStateAliased": 16,
     "namedHelpers": 0,
     "pureLocalFunctions": []
    },
@@ -4951,7 +4951,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 7,
+    "entityStateAliased": 9,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"

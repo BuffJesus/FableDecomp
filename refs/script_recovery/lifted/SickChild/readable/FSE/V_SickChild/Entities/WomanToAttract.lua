@@ -381,7 +381,7 @@ end
 
 -- WomanToAttract.OnPersist (retail 0x00ecd9b0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("GivenObject", quest:PersistTransferBool(context, "GivenObject", quest:GetStateBool("GivenObject")))
+    givenObject = quest:PersistTransferBool(context, "GivenObject", givenObject)
 end
 
 -- WomanToAttract.OnPredicateFail (retail 0x00ecd390)

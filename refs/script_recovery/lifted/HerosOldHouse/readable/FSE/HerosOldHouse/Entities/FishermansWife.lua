@@ -432,8 +432,8 @@ end
 
 -- FishermansWife.OnPersist (retail 0x00d8aba0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("TalkedTo", quest:PersistTransferBool(context, "TalkedTo", quest:GetStateBool("TalkedTo")))
-    quest:SetStateBool("LeavingHappy", quest:PersistTransferBool(context, "LeavingHappy", quest:GetStateBool("LeavingHappy")))
+    talkedTo = quest:PersistTransferBool(context, "TalkedTo", talkedTo)
+    leavingHappy = quest:PersistTransferBool(context, "LeavingHappy", leavingHappy)
 end
 
 -- FishermansWife.OnPredicateFail (retail 0x00d8a770)

@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "bandit_camp",
- "draft": "refs\\script_recovery\\lifted\\BanditCamp\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\bandit_camp",
  "files": {
   "FSE/BanditCamp/BanditCamp.lua": {
    "functions": [
@@ -20143,7 +20143,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 3,
+    "entityStateAliased": 5,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -24358,7 +24358,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 3,
+    "entityStateAliased": 5,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"

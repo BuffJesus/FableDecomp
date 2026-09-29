@@ -345,7 +345,7 @@ end
 
 -- BanditForger.OnPersist (retail 0x00d0ee40)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("GivenPass", quest:PersistTransferBool(context, "GivenPass", quest:GetStateBool("GivenPass")))
+    givenPass = quest:PersistTransferBool(context, "GivenPass", givenPass)
 end
 
 -- BanditForger.OnPredicateFail (retail 0x00cdebd0)

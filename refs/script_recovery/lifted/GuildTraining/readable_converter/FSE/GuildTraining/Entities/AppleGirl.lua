@@ -211,8 +211,8 @@ end
 
 -- AppleGirl.OnPersist (retail 0x00d44650)
 function OnPersist(quest, me, context)
-    quest:SetStateInt("AppleMode", quest:PersistTransferInt(context, "AppleMode", quest:GetStateInt("AppleMode") or 0))
-    quest:SetStateInt("CurrentApples", quest:PersistTransferInt(context, "CurrentApples", quest:GetStateInt("CurrentApples") or 0))
+    appleMode = quest:PersistTransferInt(context, "AppleMode", appleMode or 0)
+    currentApples = quest:PersistTransferInt(context, "CurrentApples", currentApples or 0)
 end
 
 -- AppleGirl.OnPredicateFail (retail 0x00d3d120)

@@ -2292,11 +2292,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `HintNumber`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -2617,11 +2613,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `HintNumber`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -2918,11 +2910,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `HintNumber`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -3369,11 +3357,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `HintNumber`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -4099,10 +4083,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -4388,10 +4369,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `EarlyTalk`",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `ChamTalk`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -6250,7 +6228,7 @@
         "functionSyntaxPassed": 68,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 247
+        "todo": 231
       }
     },
     {
@@ -6422,6 +6400,6 @@
     "functionSyntaxPassed": 71,
     "fileSyntaxPassed": 22,
     "fileSyntaxChecked": 22,
-    "todo": 247
+    "todo": 231
   }
 }

@@ -1234,10 +1234,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `LeadHeroToSickChild` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `LeadHeroToSickChild`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -1581,19 +1578,14 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `IntroDone` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `IntroDone`",
-            "persist transfer: kind of `ThingsForPotionGot` from the bsim template argument `signed_char` (callee 0x410be0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `ThingsForPotionGot`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
             "SetStateBool",
-            "GetStateBool",
-            "PersistTransferBool",
-            "SetStateBool"
+            "GetStateInt",
+            "PersistTransferInt",
+            "SetStateInt"
           ],
           "lines": 6,
           "syntax": {
@@ -2121,12 +2113,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `GivenLetter` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `GivenLetter`",
-            "persist transfer: kind of `GotReward` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `GotReward`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -2509,10 +2496,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `LeavingRegion` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `LeavingRegion`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -2832,12 +2816,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `BoughtSpecialStuff` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `BoughtSpecialStuff`",
-            "persist transfer: kind of `StoleSpecialStuff` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `StoleSpecialStuff`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -3812,10 +3791,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: kind of `GivenObject` from the bsim template argument `signed_char` (callee 0x4045c0 not FSE-typed)",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `GivenObject`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -4122,7 +4098,7 @@
         "functionSyntaxPassed": 49,
         "fileSyntaxPassed": 13,
         "fileSyntaxChecked": 13,
-        "todo": 210
+        "todo": 192
       }
     }
   ],
@@ -4133,6 +4109,6 @@
     "functionSyntaxPassed": 49,
     "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 210
+    "todo": 192
   }
 }

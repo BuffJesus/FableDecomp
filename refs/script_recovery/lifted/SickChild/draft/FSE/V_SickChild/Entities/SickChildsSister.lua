@@ -829,9 +829,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local leadHeroToSickChild = quest:GetStateBool("LeadHeroToSickChild") or false
+    local leadHeroToSickChild = __native_entity_state:GetStateBool("LeadHeroToSickChild") or false
     leadHeroToSickChild = quest:PersistTransferBool(context, "LeadHeroToSickChild", leadHeroToSickChild)
-    quest:SetStateBool("LeadHeroToSickChild", leadHeroToSickChild)
+    __native_entity_state:SetStateBool("LeadHeroToSickChild", leadHeroToSickChild)
 end
 
 function OnPredicateFail(quest, me)

@@ -1018,7 +1018,7 @@ end
 
 -- Magicman.OnPersist (retail 0x00e3bad0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("DoneToutIntro", quest:PersistTransferBool(context, "DoneToutIntro", quest:GetStateBool("DoneToutIntro")))
+    doneToutIntro = quest:PersistTransferBool(context, "DoneToutIntro", doneToutIntro)
 end
 
 -- Magicman.OnPredicateFail (retail 0x00cdebd0)

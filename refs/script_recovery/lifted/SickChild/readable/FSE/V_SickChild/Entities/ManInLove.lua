@@ -537,8 +537,8 @@ end
 
 -- ManInLove.OnPersist (retail 0x00ecd8e0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("GivenLetter", quest:PersistTransferBool(context, "GivenLetter", quest:GetStateBool("GivenLetter")))
-    quest:SetStateBool("GotReward", quest:PersistTransferBool(context, "GotReward", quest:GetStateBool("GotReward")))
+    givenLetter = quest:PersistTransferBool(context, "GivenLetter", givenLetter)
+    gotReward = quest:PersistTransferBool(context, "GotReward", gotReward)
 end
 
 -- ManInLove.OnPredicateFail (retail 0x00ec8230)

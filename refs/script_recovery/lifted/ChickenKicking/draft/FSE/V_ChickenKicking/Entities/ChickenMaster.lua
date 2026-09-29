@@ -1517,15 +1517,15 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local heroHasPlayed = quest:GetStateBool("HeroHasPlayed") or false
+    local heroHasPlayed = __native_entity_state:GetStateBool("HeroHasPlayed") or false
     heroHasPlayed = quest:PersistTransferBool(context, "HeroHasPlayed", heroHasPlayed)
-    quest:SetStateBool("HeroHasPlayed", heroHasPlayed)
-    local haveTalked = quest:GetStateBool("HaveTalked") or false
+    __native_entity_state:SetStateBool("HeroHasPlayed", heroHasPlayed)
+    local haveTalked = __native_entity_state:GetStateBool("HaveTalked") or false
     haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
-    quest:SetStateBool("HaveTalked", haveTalked)
-    local ghostChat = quest:GetStateBool("GhostChat") or false
+    __native_entity_state:SetStateBool("HaveTalked", haveTalked)
+    local ghostChat = __native_entity_state:GetStateBool("GhostChat") or false
     ghostChat = quest:PersistTransferBool(context, "GhostChat", ghostChat)
-    quest:SetStateBool("GhostChat", ghostChat)
+    __native_entity_state:SetStateBool("GhostChat", ghostChat)
 end
 
 function OnPredicateFail(quest, me)

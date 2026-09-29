@@ -1597,9 +1597,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `BrainState`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateInt",
             "PersistTransferInt",
@@ -3662,7 +3660,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 61
+        "todo": 60
       }
     }
   ],
@@ -3673,6 +3671,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 61
+    "todo": 60
   }
 }

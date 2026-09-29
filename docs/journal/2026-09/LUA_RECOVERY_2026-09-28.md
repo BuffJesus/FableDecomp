@@ -616,3 +616,61 @@ ThingsForPotionGot as Int, and Main/Init use per-entity locals. OnPersist curren
 through quest Bool state. Retail ECD890 calls distinct targets 4045C0 and 410BE0 even though the
 export gives both the same Transfer<signed_char> label. Investigate per-call target typing and
 entity ownership in `lift_persist_evidence`; avoid a Witch-only Lua edit. This remains unfixed.
+
+## Entity persistence ownership recovered (2026-09-28)
+
+Fixed the shared persistence generator so a direct entity member uses the entity's field metadata
+and `__native_entity_state`, matching Main/Init. Serialization still uses the quest's native
+PersistTransfer API and the original save key. Quest/master ownership remains separate. Entity
+unmapped-member lookup also uses the entity layout instead of coincident quest offsets. Ambiguous
+field operands retain diagnostics; no Witch-specific Lua edits or ABI changes.
+
+Witch's retail OnPersist ECD890 uses ESI = this, transfers IntroDone at +0x1c through 4045C0
+(the FSE Bool API), and ThingsForPotionGot at +0x20 through 410BE0 (the Int API). The native default
+for the latter is a dword zero. Both calls carry a misleading Transfer<signed_char> export label;
+existing per-site address disambiguation already resolves their types in fresh output. Therefore
+the fresh baseline already emitted Int, while the checked-in Witch callback was stale Bool.
+This checkpoint refreshes that stale callback and fixes the actual remaining ownership bug.
+
+Promoted **26 draft and 26 readable files across nine units**: Arena (6), Bandit Camp (2), Bordello
+(4), Chicken Kicking (1), Guild Training (3), Hero's Old House (2), Sick Child (6), Trader Escort (1),
+and Wasp Boss (1). Changes are confined to OnPersist, plus a harmless reorder of uninitialized
+file-local declarations in readable BordelloClient. Main/Init/gameplay function bodies are unchanged.
+All 47 affected scalar transfers now use their entity state. Conversion reports lose the 47 false
+missing-quest-field diagnostics; the readable unresolved-operation inventory stays at 1391.
+
+Validation covers **216 distinct tests plus eight subtests** across the recorded runs (confirmed
+by collect-only; counts below overlap). 84 initial persistence/layout tests pass; 90 focused tests
+include Witch and prior SickChild cutscenes; 52 corpus tests cover all 26 draft/readable callbacks;
+25 compatibility tests plus eight subtests pass. The final promoted-path run passes 87 tests.
+All 26 old draft callbacks fail the new corpus test, while all 26 corrected drafts pass. Tests check
+exact save keys, Boolean/integer types, false and negative/large integer values, round trips, separate
+entity VMs, and shared closure cells between OnPersist and Main/Init. Witch additionally runs real
+Init, loads three mushrooms via OnPersist, consumes one mushroom through Main, reaches CS_SICK_POTION,
+releases its movie, and saves four without debug-seeding progress. Retail instruction operands and
+FSE-typed transfer addresses are checked. These are offline/native-operand and mocked serialization
+checks, not an in-game save/reload claim. Some existing Unicorn-based compatibility tests print the
+known handled Windows memory-fault diagnostics under pytest; final processes exit 0 and tests pass.
+
+The full **29-unit A/B** changes only those 26 draft callbacks; **20 units are byte-identical**.
+A fresh before/after Guild Training readable comparison also changes only its three callbacks.
+Its registered canonical tree is readable_converter, not the old readable tree. Five additional
+readability differences reproduce unchanged in the fresh baseline and were excluded: SkillTarget,
+GuildTraining root, ArtifactThief, FinalMaze and WillWhisper. Only three file-report entries were
+refreshed in that report, with explicit partialRefresh provenance. Other affected readable units
+change exactly their reviewed callback files. No unrelated Lua was promoted.
+
+All nine affected units have **zero before/after typed smoke failures**. **290 scratch Lua files**
+parse, and the current corpus audit confirms **371 files, zero syntax failures**. Promoted files
+match tested scratch output. No installation, game launch or push. Candidate v40 staging follows
+this source checkpoint; retain pinned bundle lineages and the unchanged e83c39f sidecar.
+
+Scratch: `work/codex_witch_persist_20260928/`. Evidence/results: native_persist.txt, ab/comparison.json,
+scope_review.json, guild_baseline_review.json, readable_scope.json, validation.json, promotion.json,
+promotion_scope_review.json, source_hashes.json, readability.json, and review.diff. Test logs:
+tests.log, sick_child_final_tests.log, corpus_baseline_tests.log, corpus_tests.log,
+compatibility.log, promoted_tests.log, and collected_tests.log. New permanent tests are
+`test_entity_persistence.py` and `test_entity_persistence_corpus.py`.
+
+Next recovery target: Witch's remaining seh_Witch resource/speech receiver operands and movie
+cleanup identity (still explicit unresolved operations); in-game persistence proof remains separate.

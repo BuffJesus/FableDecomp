@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "chicken_kicking",
- "draft": "refs\\script_recovery\\lifted\\ChickenKicking\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\chicken_kicking",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -2596,7 +2596,7 @@
      }
     },
     "hoistedRequires": 7,
-    "entityStateAliased": 20,
+    "entityStateAliased": 26,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"

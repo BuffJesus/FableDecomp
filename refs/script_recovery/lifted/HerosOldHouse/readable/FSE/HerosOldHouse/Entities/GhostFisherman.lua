@@ -255,7 +255,7 @@ end
 
 -- GhostFisherman.OnPersist (retail 0x00d8ab70)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("HaveTalked", quest:PersistTransferBool(context, "HaveTalked", quest:GetStateBool("HaveTalked")))
+    haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
 end
 
 -- GhostFisherman.OnPredicateFail (retail 0x00cdebd0)

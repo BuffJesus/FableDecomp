@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "wasp_boss",
- "draft": "refs\\script_recovery\\lifted\\WaspBoss\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\wasp_boss",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -7030,7 +7030,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 9,
+    "entityStateAliased": 11,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"

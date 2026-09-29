@@ -339,8 +339,8 @@ end
 
 -- Witch.OnPersist (retail 0x00ecd890)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("IntroDone", quest:PersistTransferBool(context, "IntroDone", quest:GetStateBool("IntroDone")))
-    quest:SetStateBool("ThingsForPotionGot", quest:PersistTransferBool(context, "ThingsForPotionGot", quest:GetStateBool("ThingsForPotionGot")))
+    introDone = quest:PersistTransferBool(context, "IntroDone", introDone)
+    thingsForPotionGot_ = quest:PersistTransferInt(context, "ThingsForPotionGot", thingsForPotionGot_ or 0)
 end
 
 -- Witch.OnPredicateFail (retail 0x00cdebd0)

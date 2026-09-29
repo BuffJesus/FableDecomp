@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "trader_escort",
- "draft": "refs\\script_recovery\\lifted\\TraderEscort\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\trader_escort",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -6009,7 +6009,7 @@
      }
     },
     "hoistedRequires": 16,
-    "entityStateAliased": 58,
+    "entityStateAliased": 60,
     "namedHelpers": 0,
     "pureLocalFunctions": []
    },

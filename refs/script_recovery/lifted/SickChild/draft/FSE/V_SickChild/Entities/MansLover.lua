@@ -672,9 +672,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local leavingRegion = quest:GetStateBool("LeavingRegion") or false
+    local leavingRegion = __native_entity_state:GetStateBool("LeavingRegion") or false
     leavingRegion = quest:PersistTransferBool(context, "LeavingRegion", leavingRegion)
-    quest:SetStateBool("LeavingRegion", leavingRegion)
+    __native_entity_state:SetStateBool("LeavingRegion", leavingRegion)
 end
 
 function OnPredicateFail(quest, me)

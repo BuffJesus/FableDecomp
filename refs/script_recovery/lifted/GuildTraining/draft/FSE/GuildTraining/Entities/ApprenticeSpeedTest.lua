@@ -1298,9 +1298,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local raceMode = quest:GetStateInt("RaceMode") or 0
+    local raceMode = __native_entity_state:GetStateInt("RaceMode") or 0
     raceMode = quest:PersistTransferInt(context, "RaceMode", raceMode)
-    quest:SetStateInt("RaceMode", raceMode)
+    __native_entity_state:SetStateInt("RaceMode", raceMode)
 end
 
 function OnPredicateFail(quest, me)

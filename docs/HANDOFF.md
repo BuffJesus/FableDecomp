@@ -1,5 +1,13 @@
 # Lua recovery handoff - 2026-09-26
 
+**Entity persistence checkpoint (2026-09-28):** 26 entity callbacks across nine units now persist
+entity state used by Main/Init. Witch loads three mushrooms, collects one, and saves four in tests.
+216 distinct tests plus eight subtests pass; 29-unit A/B leaves 20 units identical; nine affected
+unit smokes clear; 371 Lua parse. Promoted 26 draft/readable files, preserving unrelated Guild Training
+readable lineage. Candidate v40 staging follows; sidecar unchanged. Next: Witch resource/speech
+receiver and cleanup operands. No installation/game launch/push. See latest
+[journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md), `work/codex_witch_persist_20260928/`.
+
 **GuildMaster cleanup checkpoint (2026-09-28):** existing continuation and return paths verified;
 543 regression tests pass on fresh draft/readable output, including five retail cleanup entries
 through their real continuation or RET. No cleanup defect demonstrated; broad inlining experiment

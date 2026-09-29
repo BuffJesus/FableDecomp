@@ -453,12 +453,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local boughtSpecialStuff = quest:GetStateBool("BoughtSpecialStuff") or false
+    local boughtSpecialStuff = __native_entity_state:GetStateBool("BoughtSpecialStuff") or false
     boughtSpecialStuff = quest:PersistTransferBool(context, "BoughtSpecialStuff", boughtSpecialStuff)
-    quest:SetStateBool("BoughtSpecialStuff", boughtSpecialStuff)
-    local stoleSpecialStuff = quest:GetStateBool("StoleSpecialStuff") or false
+    __native_entity_state:SetStateBool("BoughtSpecialStuff", boughtSpecialStuff)
+    local stoleSpecialStuff = __native_entity_state:GetStateBool("StoleSpecialStuff") or false
     stoleSpecialStuff = quest:PersistTransferBool(context, "StoleSpecialStuff", stoleSpecialStuff)
-    quest:SetStateBool("StoleSpecialStuff", stoleSpecialStuff)
+    __native_entity_state:SetStateBool("StoleSpecialStuff", stoleSpecialStuff)
 end
 
 function OnPredicateFail(quest, me)

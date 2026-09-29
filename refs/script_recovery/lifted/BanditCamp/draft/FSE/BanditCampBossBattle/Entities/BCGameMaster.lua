@@ -383,9 +383,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local givenPass = quest:GetStateBool("GivenPass") or false
+    local givenPass = __native_entity_state:GetStateBool("GivenPass") or false
     givenPass = quest:PersistTransferBool(context, "GivenPass", givenPass)
-    quest:SetStateBool("GivenPass", givenPass)
+    __native_entity_state:SetStateBool("GivenPass", givenPass)
 end
 
 function OnPredicateFail(quest, me)

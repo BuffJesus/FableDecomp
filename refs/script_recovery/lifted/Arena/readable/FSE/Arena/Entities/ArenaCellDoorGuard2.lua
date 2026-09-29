@@ -189,8 +189,8 @@ end
 
 -- ArenaCellDoorGuard2.OnPersist (retail 0x00f21830)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("EarlyTalk", quest:PersistTransferBool(context, "EarlyTalk", quest:GetStateBool("EarlyTalk")))
-    quest:SetStateBool("ChamTalk", quest:PersistTransferBool(context, "ChamTalk", quest:GetStateBool("ChamTalk")))
+    earlyTalk = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
+    chamTalk = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
 end
 
 -- ArenaCellDoorGuard2.OnPredicateFail (retail 0x00cdebd0)

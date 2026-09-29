@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "arena",
- "draft": "refs\\script_recovery\\lifted\\Arena\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\arena",
  "files": {
   "FSE/Arena/Arena.lua": {
    "functions": [
@@ -12570,7 +12570,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 7,
+    "entityStateAliased": 11,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -15207,7 +15207,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 6,
+    "entityStateAliased": 10,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -23663,7 +23663,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 11,
+    "entityStateAliased": 17,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -25149,7 +25149,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 11,
+    "entityStateAliased": 17,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -27040,7 +27040,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 13,
+    "entityStateAliased": 19,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -29318,7 +29318,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 11,
+    "entityStateAliased": 17,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -32162,7 +32162,7 @@
        "booleanCompares": 0,
        "conditions": 6,
        "literals": 5,
-       "copies": 7,
+       "copies": 6,
        "selfAssignments": 1,
        "flagClears": 0,
        "tailGuards": 484,

@@ -446,12 +446,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local appleMode = quest:GetStateInt("AppleMode") or 0
+    local appleMode = __native_entity_state:GetStateInt("AppleMode") or 0
     appleMode = quest:PersistTransferInt(context, "AppleMode", appleMode)
-    quest:SetStateInt("AppleMode", appleMode)
-    local currentApples = quest:GetStateInt("CurrentApples") or 0
+    __native_entity_state:SetStateInt("AppleMode", appleMode)
+    local currentApples = __native_entity_state:GetStateInt("CurrentApples") or 0
     currentApples = quest:PersistTransferInt(context, "CurrentApples", currentApples)
-    quest:SetStateInt("CurrentApples", currentApples)
+    __native_entity_state:SetStateInt("CurrentApples", currentApples)
 end
 
 function OnPredicateFail(quest, me)

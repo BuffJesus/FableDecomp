@@ -756,7 +756,7 @@ end
 
 -- ApprenticeSpeedTest.OnPersist (retail 0x00d446a0)
 function OnPersist(quest, me, context)
-    quest:SetStateInt("RaceMode", quest:PersistTransferInt(context, "RaceMode", quest:GetStateInt("RaceMode") or 0))
+    raceMode_ = quest:PersistTransferInt(context, "RaceMode", raceMode_ or 0)
 end
 
 -- ApprenticeSpeedTest.OnPredicateFail (retail 0x00d3e2b0)

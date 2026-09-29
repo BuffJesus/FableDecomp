@@ -7,7 +7,7 @@ local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 local helpers = require("V_Bordello.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local clientID, brainState, nextLine, sexChance
+local brainState, nextLine, clientID, sexChance
 
 -- BordelloClient.Main (retail 0x00e44ea0)
 function Main(quest, me)
@@ -473,9 +473,9 @@ end
 
 -- BordelloClient.OnPersist (retail 0x00e3bb00)
 function OnPersist(quest, me, context)
-    quest:SetStateInt("BrainState", quest:PersistTransferInt(context, "BrainState", quest:GetStateInt("BrainState") or 0))
-    quest:SetStateInt("ClientID", quest:PersistTransferInt(context, "ClientID", quest:GetStateInt("ClientID") or 0))
-    quest:SetStateInt("SexChance", quest:PersistTransferInt(context, "SexChance", quest:GetStateInt("SexChance") or 0))
+    brainState = quest:PersistTransferInt(context, "BrainState", brainState or 0)
+    clientID = quest:PersistTransferInt(context, "ClientID", clientID or 0)
+    sexChance = quest:PersistTransferInt(context, "SexChance", sexChance or 0)
 end
 
 -- BordelloClient.OnPredicateFail (retail 0x00e3b230)

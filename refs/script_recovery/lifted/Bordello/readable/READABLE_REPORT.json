@@ -1,7 +1,7 @@
 {
  "schema": "readable-unit/1",
  "unit": "bordello",
- "draft": "refs\\script_recovery\\lifted\\Bordello\\draft",
+ "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\bordello",
  "files": {
   "FSE/quests.lua": {
    "functions": [],
@@ -36,7 +36,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 38,
-      "declarations": 63,
+      "declarations": 62,
       "decimalLiterals": 6
      }
     },
@@ -1961,7 +1961,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 13,
+       "splitLocals": 12,
        "closures": 0,
        "hero": 1,
        "cutscenes": 0,
@@ -1970,14 +1970,14 @@
        "exitChecksInlined": 8,
        "frameChecks": 15,
        "inlinedTemporaries": 183,
-       "deadDefinitions": 17,
+       "deadDefinitions": 16,
        "guardWrappers": 0,
        "retryLoops": 17,
        "booleanMaterialisation": 4,
        "booleanCompares": 0,
        "conditions": 3,
        "literals": 3,
-       "copies": 12,
+       "copies": 1,
        "selfAssignments": 1,
        "flagClears": 0,
        "tailGuards": 169,
@@ -2006,7 +2006,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 3,
-       "hoistedState": 1
+       "hoistedState": 0
       },
       "before": {
        "lines": 722,
@@ -2018,8 +2018,8 @@
        "requires": 0
       },
       "after": {
-       "lines": 437,
-       "temporaries": 15,
+       "lines": 436,
+       "temporaries": 14,
        "labels": 19,
        "gotos": 31,
        "terminationChecks": 46,
@@ -2233,7 +2233,7 @@
      }
     },
     "hoistedRequires": 2,
-    "entityStateAliased": 66,
+    "entityStateAliased": 72,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -8700,7 +8700,7 @@
      }
     },
     "hoistedRequires": 5,
-    "entityStateAliased": 31,
+    "entityStateAliased": 35,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail",
@@ -11889,7 +11889,7 @@
      }
     },
     "hoistedRequires": 7,
-    "entityStateAliased": 6,
+    "entityStateAliased": 8,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -18117,7 +18117,7 @@
      }
     },
     "hoistedRequires": 24,
-    "entityStateAliased": 6,
+    "entityStateAliased": 8,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"

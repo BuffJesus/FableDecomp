@@ -1104,7 +1104,7 @@ end
 
 -- Madame.OnPersist (retail 0x00e3ba50)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("DoneIntro", quest:PersistTransferBool(context, "DoneIntro", quest:GetStateBool("DoneIntro")))
+    doneIntro = quest:PersistTransferBool(context, "DoneIntro", doneIntro)
 end
 
 -- Madame.OnPredicateFail (retail 0x00cdebd0)

@@ -1746,10 +1746,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `AppleMode`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `CurrentApples`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateInt",
             "PersistTransferInt",
@@ -2392,9 +2389,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `RaceMode`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateInt",
             "PersistTransferInt",
@@ -5381,10 +5376,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `BirdMode`",
-            "persist transfer: quest member at this + 0x24 has no PDB name; keyed by the transfer name `CurrentBirds`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateInt",
             "PersistTransferInt",
@@ -5882,7 +5874,7 @@
         "functionSyntaxPassed": 69,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 137
+        "todo": 132
       }
     },
     {
@@ -13205,6 +13197,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 266
+    "todo": 261
   }
 }

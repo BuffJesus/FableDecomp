@@ -172,9 +172,9 @@ end
 
 -- Flick.OnPersist (retail 0x00f216c0)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("EarlyTalk", quest:PersistTransferBool(context, "EarlyTalk", quest:GetStateBool("EarlyTalk")))
-    quest:SetStateBool("ChamTalk", quest:PersistTransferBool(context, "ChamTalk", quest:GetStateBool("ChamTalk")))
-    quest:SetStateInt("HintNumber", quest:PersistTransferInt(context, "HintNumber", quest:GetStateInt("HintNumber") or 0))
+    earlyTalk = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
+    chamTalk = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
+    hintNumber_ = quest:PersistTransferInt(context, "HintNumber", hintNumber_ or 0)
 end
 
 -- Flick.OnPredicateFail (retail 0x00cdebd0)

@@ -36,7 +36,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | Gate2Guard1 | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_BanditCampBossBattle | BCGameMaster | Main | 0x00d067a0 | True | 1 |
 | Q_BanditCampBossBattle | BCGameMaster | Init | 0x00d06760 | True | 0 |
-| Q_BanditCampBossBattle | BCGameMaster | OnPersist | 0x00d0ee10 | True | 1 |
+| Q_BanditCampBossBattle | BCGameMaster | OnPersist | 0x00d0ee10 | True | 0 |
 | Q_BanditCampBossBattle | BCGameMaster | OnPredicateFail | 0x00d06770 | True | 0 |
 | Q_BanditCampBossBattle | AssassinMarker | Main | 0x00d11930 | True | 2 |
 | Q_BanditCampBossBattle | AssassinMarker | Init | 0x00cdebb0 | True | 0 |
@@ -76,7 +76,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | CampHostageGuard | OnPredicateFail | 0x00d08fb0 | True | 0 |
 | Q_BanditCampBossBattle | BanditForger | Main | 0x00d0c410 | True | 8 |
 | Q_BanditCampBossBattle | BanditForger | Init | 0x00d0c390 | True | 0 |
-| Q_BanditCampBossBattle | BanditForger | OnPersist | 0x00d0ee40 | True | 1 |
+| Q_BanditCampBossBattle | BanditForger | OnPersist | 0x00d0ee40 | True | 0 |
 | Q_BanditCampBossBattle | BanditForger | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_BanditCampBossBattle | BanditKing | Main | 0x00d0a830 | True | 2 |
 | Q_BanditCampBossBattle | BanditKing | Init | 0x00cdebb0 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 75}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 73}`

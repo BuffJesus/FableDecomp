@@ -498,7 +498,7 @@ end
 
 -- SickChildsSister.OnPersist (retail 0x00ecd860)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("LeadHeroToSickChild", quest:PersistTransferBool(context, "LeadHeroToSickChild", quest:GetStateBool("LeadHeroToSickChild")))
+    leadHeroToSickChild = quest:PersistTransferBool(context, "LeadHeroToSickChild", leadHeroToSickChild)
 end
 
 -- SickChildsSister.OnPredicateFail (retail 0x00cdebd0)

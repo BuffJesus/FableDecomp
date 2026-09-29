@@ -533,12 +533,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local introDone = quest:GetStateBool("IntroDone") or false
+    local introDone = __native_entity_state:GetStateBool("IntroDone") or false
     introDone = quest:PersistTransferBool(context, "IntroDone", introDone)
-    quest:SetStateBool("IntroDone", introDone)
-    local thingsForPotionGot = quest:GetStateBool("ThingsForPotionGot") or false
-    thingsForPotionGot = quest:PersistTransferBool(context, "ThingsForPotionGot", thingsForPotionGot)
-    quest:SetStateBool("ThingsForPotionGot", thingsForPotionGot)
+    __native_entity_state:SetStateBool("IntroDone", introDone)
+    local thingsForPotionGot = __native_entity_state:GetStateInt("ThingsForPotionGot") or 0
+    thingsForPotionGot = quest:PersistTransferInt(context, "ThingsForPotionGot", thingsForPotionGot)
+    __native_entity_state:SetStateInt("ThingsForPotionGot", thingsForPotionGot)
 end
 
 function OnPredicateFail(quest, me)

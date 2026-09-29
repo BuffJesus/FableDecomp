@@ -928,12 +928,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local givenLetter = quest:GetStateBool("GivenLetter") or false
+    local givenLetter = __native_entity_state:GetStateBool("GivenLetter") or false
     givenLetter = quest:PersistTransferBool(context, "GivenLetter", givenLetter)
-    quest:SetStateBool("GivenLetter", givenLetter)
-    local gotReward = quest:GetStateBool("GotReward") or false
+    __native_entity_state:SetStateBool("GivenLetter", givenLetter)
+    local gotReward = __native_entity_state:GetStateBool("GotReward") or false
     gotReward = quest:PersistTransferBool(context, "GotReward", gotReward)
-    quest:SetStateBool("GotReward", gotReward)
+    __native_entity_state:SetStateBool("GotReward", gotReward)
 end
 
 function OnPredicateFail(quest, me)

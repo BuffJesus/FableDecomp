@@ -592,7 +592,7 @@ end
 
 -- MansLover.OnPersist (retail 0x00ecd930)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("LeavingRegion", quest:PersistTransferBool(context, "LeavingRegion", quest:GetStateBool("LeavingRegion")))
+    leavingRegion = quest:PersistTransferBool(context, "LeavingRegion", leavingRegion)
 end
 
 -- MansLover.OnPredicateFail (retail 0x00ec9cd0)

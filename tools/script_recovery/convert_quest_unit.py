@@ -109,9 +109,12 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
     member, or a member vector). The transfer kind comes from the callee address (FSE-proven), else from the
     template argument. Returns (lines, calls, todo)."""
     from tools.script_recovery.lift_native_lua import TYPE_MAP
-    quest_fields = state_map(unit['quest'].get('fields', {}))
+    entity = getattr(spec_l, 'entity', False)
+    member_fields = ({hex(offset): field for offset, field in spec_l.self_fields.items()}
+                     if entity else state_map(unit['quest'].get('fields', {})))
     master_fields = state_map(unit.get('master', {}).get('fields', {}))
-    unmapped = {x['offset'].lower(): x for x in unit['quest'].get('unmappedFields', [])}
+    unmapped = {x['offset'].lower(): x for x in
+                (getattr(spec_l, 'self_unmapped', []) if entity else unit['quest'].get('unmappedFields', []))}
     out, calls, todo = [], [], []
     for m in RE_TRANSFER_CALL.finditer(source):
         template, at, arg_text = m.group(1), m.group(2), m.group(3)
@@ -155,7 +158,7 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
             # not an FSE-typed instantiation: the member's PDB kind is the evidence (an enum member is a 4-byte
             # transfer; the retail body is the Transfer<int> shape), the bsim template argument the last resort
             evidence = (master_fields.get(hex(int(master.group(1), 0))) if master
-                        else quest_fields.get(hex(int(member.group(1), 0))) if member else None)
+                        else member_fields.get(hex(int(member.group(1), 0))) if member else None)
             kind = evidence[1] if evidence else TYPE_MAP.get(template.replace(' ', '_'), 'Int')
             if not evidence and target:
                 todo.append(f'persist transfer: kind of `{name}` from the bsim template argument `{template}` (callee {target:#x} not FSE-typed)')
@@ -171,15 +174,17 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
             if not f:
                 todo.append(f'persist transfer: master-data member at +{master.group(1)} has no PDB name; keyed by the transfer name `{name}`')
         else:
-            f = quest_fields.get(hex(int(member.group(1), 0))) if member else None
+            f = member_fields.get(hex(int(member.group(1), 0))) if member else None
             label = f[0] if f else name
+            receiver = '__native_entity_state' if entity and member else 'quest'
             if member and not f:
-                todo.append(f'persist transfer: quest member at this + {member.group(1)} has no PDB name; keyed by the transfer name `{name}`')
+                owner = 'entity' if entity else 'quest'
+                todo.append(f'persist transfer: {owner} member at this + {member.group(1)} has no PDB name; keyed by the transfer name `{name}`')
             elif not member:
                 todo.append(f'persist transfer: field operand `{field}` not a member; keyed by the transfer name `{name}`')
-            out.append(f'    local {var} = quest:GetState{state}("{label}") or {PERSIST_DEFAULT[kind]}')
+            out.append(f'    local {var} = {receiver}:GetState{state}("{label}") or {PERSIST_DEFAULT[kind]}')
             out.append(f'    {var} = quest:PersistTransfer{kind}(context, "{name}", {var})')
-            out.append(f'    quest:SetState{state}("{label}", {var})')
+            out.append(f'    {receiver}:SetState{state}("{label}", {var})')
             calls += [f'GetState{state}', f'PersistTransfer{kind}', f'SetState{state}']
     return out, calls, todo
 

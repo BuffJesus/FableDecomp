@@ -40,7 +40,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WaspBoss | FleeingWoman | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_WaspBoss | WaspHelper | Main | 0x00e0f8a0 | True | 0 |
 | Q_WaspBoss | WaspHelper | Init | 0x00e0f870 | True | 0 |
-| Q_WaspBoss | WaspHelper | OnPersist | 0x00e12300 | True | 1 |
+| Q_WaspBoss | WaspHelper | OnPersist | 0x00e12300 | True | 0 |
 | Q_WaspBoss | WaspHelper | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_WaspBoss | QueenHornet | Main | 0x00e11bb0 | True | 0 |
 | Q_WaspBoss | QueenHornet | Init | 0x00e11b80 | True | 0 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WaspBoss | HornetDrone | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_WaspBoss | HornetDrone | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 5}`
+Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 4}`

@@ -227,8 +227,8 @@ end
 
 -- IngredientOwner.OnPersist (retail 0x00ecd960)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("BoughtSpecialStuff", quest:PersistTransferBool(context, "BoughtSpecialStuff", quest:GetStateBool("BoughtSpecialStuff")))
-    quest:SetStateBool("StoleSpecialStuff", quest:PersistTransferBool(context, "StoleSpecialStuff", quest:GetStateBool("StoleSpecialStuff")))
+    boughtSpecialStuff = quest:PersistTransferBool(context, "BoughtSpecialStuff", boughtSpecialStuff)
+    stoleSpecialStuff = quest:PersistTransferBool(context, "StoleSpecialStuff", stoleSpecialStuff)
 end
 
 -- IngredientOwner.OnPredicateFail (retail 0x00ecb080)

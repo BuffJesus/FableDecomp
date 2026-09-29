@@ -1037,11 +1037,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `HeroHasPlayed`",
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `HaveTalked`",
-            "persist transfer: quest member at this + 0x1f has no PDB name; keyed by the transfer name `GhostChat`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -1692,7 +1688,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 69
+        "todo": 66
       }
     }
   ],
@@ -1703,6 +1699,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 6,
-    "todo": 69
+    "todo": 66
   }
 }

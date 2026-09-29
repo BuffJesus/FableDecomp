@@ -1997,7 +1997,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 20,
+    "entityStateAliased": 24,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -4265,7 +4265,7 @@
        "controlAcquires": 0,
        "sunkLocals": 37,
        "cleanupClosureNames": 2,
-       "parentheses": 55,
+       "parentheses": 58,
        "cosmetics": 0,
        "firstAssignments": 1,
        "freeSuffixes": 1,
@@ -4496,7 +4496,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 15,
+    "entityStateAliased": 17,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "Init",
@@ -7625,7 +7625,7 @@
        "controlAcquires": 0,
        "sunkLocals": 29,
        "cleanupClosureNames": 1,
-       "parentheses": 13,
+       "parentheses": 14,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 2,
@@ -7856,7 +7856,7 @@
      }
     },
     "hoistedRequires": 0,
-    "entityStateAliased": 17,
+    "entityStateAliased": 21,
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPredicateFail"
@@ -67833,5 +67833,13 @@
   "checked": 38,
   "passed": 38,
   "errors": []
+ },
+ "partialRefresh": {
+  "draft": "work\\codex_witch_persist_20260928\\ab\\comparison\\after\\guild_training",
+  "files": [
+   "FSE/GuildTraining/Entities/AppleGirl.lua",
+   "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua",
+   "FSE/GuildTraining/Entities/BirdKiller.lua"
+  ]
  }
 }

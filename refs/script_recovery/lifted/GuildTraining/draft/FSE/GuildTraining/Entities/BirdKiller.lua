@@ -472,12 +472,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local birdMode = quest:GetStateInt("BirdMode") or 0
+    local birdMode = __native_entity_state:GetStateInt("BirdMode") or 0
     birdMode = quest:PersistTransferInt(context, "BirdMode", birdMode)
-    quest:SetStateInt("BirdMode", birdMode)
-    local currentBirds = quest:GetStateInt("CurrentBirds") or 0
+    __native_entity_state:SetStateInt("BirdMode", birdMode)
+    local currentBirds = __native_entity_state:GetStateInt("CurrentBirds") or 0
     currentBirds = quest:PersistTransferInt(context, "CurrentBirds", currentBirds)
-    quest:SetStateInt("CurrentBirds", currentBirds)
+    __native_entity_state:SetStateInt("CurrentBirds", currentBirds)
 end
 
 function OnPredicateFail(quest, me)

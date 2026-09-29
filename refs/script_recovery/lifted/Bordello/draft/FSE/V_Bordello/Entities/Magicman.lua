@@ -1870,9 +1870,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local doneToutIntro = quest:GetStateBool("DoneToutIntro") or false
+    local doneToutIntro = __native_entity_state:GetStateBool("DoneToutIntro") or false
     doneToutIntro = quest:PersistTransferBool(context, "DoneToutIntro", doneToutIntro)
-    quest:SetStateBool("DoneToutIntro", doneToutIntro)
+    __native_entity_state:SetStateBool("DoneToutIntro", doneToutIntro)
 end
 
 function OnPredicateFail(quest, me)

@@ -454,8 +454,8 @@ end
 
 -- BordelloLady.OnPersist (retail 0x00e3ba80)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("PartiedAlready", quest:PersistTransferBool(context, "PartiedAlready", quest:GetStateBool("PartiedAlready")))
-    quest:SetStateBool("HaveTalked", quest:PersistTransferBool(context, "HaveTalked", quest:GetStateBool("HaveTalked")))
+    partiedAlready = quest:PersistTransferBool(context, "PartiedAlready", partiedAlready)
+    haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
 end
 
 -- BordelloLady.OnPredicateFail (retail 0x00cdebd0)

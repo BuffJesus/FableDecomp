@@ -1365,9 +1365,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local brainState = quest:GetStateInt("BrainState") or 0
+    local brainState = __native_entity_state:GetStateInt("BrainState") or 0
     brainState = quest:PersistTransferInt(context, "BrainState", brainState)
-    quest:SetStateInt("BrainState", brainState)
+    __native_entity_state:SetStateInt("BrainState", brainState)
 end
 
 function OnPredicateFail(quest, me)

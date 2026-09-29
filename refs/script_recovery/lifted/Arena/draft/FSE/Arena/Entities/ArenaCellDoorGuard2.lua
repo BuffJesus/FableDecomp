@@ -404,12 +404,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local earlyTalk = quest:GetStateBool("EarlyTalk") or false
+    local earlyTalk = __native_entity_state:GetStateBool("EarlyTalk") or false
     earlyTalk = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
-    quest:SetStateBool("EarlyTalk", earlyTalk)
-    local chamTalk = quest:GetStateBool("ChamTalk") or false
+    __native_entity_state:SetStateBool("EarlyTalk", earlyTalk)
+    local chamTalk = __native_entity_state:GetStateBool("ChamTalk") or false
     chamTalk = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
-    quest:SetStateBool("ChamTalk", chamTalk)
+    __native_entity_state:SetStateBool("ChamTalk", chamTalk)
 end
 
 function OnPredicateFail(quest, me)

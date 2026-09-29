@@ -395,9 +395,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local haveTalked = quest:GetStateBool("HaveTalked") or false
+    local haveTalked = __native_entity_state:GetStateBool("HaveTalked") or false
     haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
-    quest:SetStateBool("HaveTalked", haveTalked)
+    __native_entity_state:SetStateBool("HaveTalked", haveTalked)
 end
 
 function OnPredicateFail(quest, me)

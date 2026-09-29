@@ -1756,9 +1756,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `PleadedToHero`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -2099,7 +2097,7 @@
         "functionSyntaxPassed": 46,
         "fileSyntaxPassed": 10,
         "fileSyntaxChecked": 10,
-        "todo": 5
+        "todo": 4
       }
     }
   ],
@@ -2110,6 +2108,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 10,
     "fileSyntaxChecked": 10,
-    "todo": 5
+    "todo": 4
   }
 }

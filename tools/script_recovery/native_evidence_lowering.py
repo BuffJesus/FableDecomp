@@ -3642,6 +3642,7 @@ class LoweringSpec:
         self.master_fields = {int(k, 16): tuple(v) for k, v in master.get('fields', {}).items()}
         if entity:
             e = unit['entities'][owner]
+            self.self_unmapped = e.get('unmappedFields', [])
             self.self_fields = {int(k, 16): tuple(v) for k, v in e['fields'].items()}
             self.self_things = {int(k, 16): v for k, v in e.get('thingFields', {}).items()}
             self.self_arrays = []
@@ -3653,6 +3654,7 @@ class LoweringSpec:
                                      if x['type'].startswith('map<CCharString,CCharString,')}
             self.parent_off, self.master_off = 0x14, 0x18
         else:
+            self.self_unmapped = q.get('unmappedFields', [])
             self.self_fields, self.self_things = self.parent_fields, self.parent_things
             self.self_arrays, self.self_lists, self.self_pointers = self.parent_arrays, self.parent_lists, {}
             self.self_resources, self.self_string_maps = self.parent_resources, self.parent_string_maps

@@ -748,7 +748,7 @@ end
 
 -- DarkwoodTrader.OnPersist (retail 0x00e05330)
 function OnPersist(quest, me, context)
-    quest:SetStateInt("BrainState", quest:PersistTransferInt(context, "BrainState", quest:GetStateInt("BrainState") or 0))
+    brainState_ = quest:PersistTransferInt(context, "BrainState", brainState_ or 0)
 end
 
 -- DarkwoodTrader.OnPredicateFail (retail 0x00e01760)

@@ -285,7 +285,7 @@ end
 
 -- WaspHelper.OnPersist (retail 0x00e12300)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("PleadedToHero", quest:PersistTransferBool(context, "PleadedToHero", quest:GetStateBool("PleadedToHero")))
+    pleadedToHero = quest:PersistTransferBool(context, "PleadedToHero", pleadedToHero)
 end
 
 -- WaspHelper.OnPredicateFail (retail 0x00cdebd0)

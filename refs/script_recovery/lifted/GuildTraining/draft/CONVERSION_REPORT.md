@@ -19,11 +19,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | Q_GuildTraining | RunSaveXPCutscene2 | 0x00d49a20 | True | 0 |
 | Q_GuildTraining | AppleGirl | Main | 0x00d3d150 | True | 0 |
 | Q_GuildTraining | AppleGirl | Init | 0x00d3d110 | True | 0 |
-| Q_GuildTraining | AppleGirl | OnPersist | 0x00d44650 | True | 2 |
+| Q_GuildTraining | AppleGirl | OnPersist | 0x00d44650 | True | 0 |
 | Q_GuildTraining | AppleGirl | OnPredicateFail | 0x00d3d120 | True | 0 |
 | Q_GuildTraining | ApprenticeSpeedTest | Main | 0x00d3e2e0 | True | 25 |
 | Q_GuildTraining | ApprenticeSpeedTest | Init | 0x00d3e2a0 | True | 0 |
-| Q_GuildTraining | ApprenticeSpeedTest | OnPersist | 0x00d446a0 | True | 1 |
+| Q_GuildTraining | ApprenticeSpeedTest | OnPersist | 0x00d446a0 | True | 0 |
 | Q_GuildTraining | ApprenticeSpeedTest | OnPredicateFail | 0x00d3e2b0 | True | 0 |
 | Q_GuildTraining | SpeedFriend | Main | 0x00d408b0 | True | 0 |
 | Q_GuildTraining | SpeedFriend | Init | 0x00d40870 | True | 0 |
@@ -63,7 +63,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTraining | WillDummy | OnPredicateFail | 0x00d43420 | True | 0 |
 | Q_GuildTraining | BirdKiller | Main | 0x00d4dea0 | True | 3 |
 | Q_GuildTraining | BirdKiller | Init | 0x00d42ff0 | True | 0 |
-| Q_GuildTraining | BirdKiller | OnPersist | 0x00d44c60 | True | 2 |
+| Q_GuildTraining | BirdKiller | OnPersist | 0x00d44c60 | True | 0 |
 | Q_GuildTraining | BirdKiller | OnPredicateFail | 0x00d43010 | True | 0 |
 | Q_GuildTraining | KillBird | Main | 0x00d43190 | True | 0 |
 | Q_GuildTraining | KillBird | Init | 0x00d430f0 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 266}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 261}`

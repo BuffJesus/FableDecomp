@@ -235,9 +235,9 @@ end
 
 -- Shadow.OnPersist (retail 0x00f21780)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("EarlyTalk", quest:PersistTransferBool(context, "EarlyTalk", quest:GetStateBool("EarlyTalk")))
-    quest:SetStateBool("ChamTalk", quest:PersistTransferBool(context, "ChamTalk", quest:GetStateBool("ChamTalk")))
-    quest:SetStateInt("HintNumber", quest:PersistTransferInt(context, "HintNumber", quest:GetStateInt("HintNumber") or 0))
+    earlyTalk = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
+    chamTalk = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
+    hintNumber = quest:PersistTransferInt(context, "HintNumber", hintNumber or 0)
 end
 
 -- Shadow.OnPredicateFail (retail 0x00cdebd0)

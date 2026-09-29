@@ -694,12 +694,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local talkedTo = quest:GetStateBool("TalkedTo") or false
+    local talkedTo = __native_entity_state:GetStateBool("TalkedTo") or false
     talkedTo = quest:PersistTransferBool(context, "TalkedTo", talkedTo)
-    quest:SetStateBool("TalkedTo", talkedTo)
-    local leavingHappy = quest:GetStateBool("LeavingHappy") or false
+    __native_entity_state:SetStateBool("TalkedTo", talkedTo)
+    local leavingHappy = __native_entity_state:GetStateBool("LeavingHappy") or false
     leavingHappy = quest:PersistTransferBool(context, "LeavingHappy", leavingHappy)
-    quest:SetStateBool("LeavingHappy", leavingHappy)
+    __native_entity_state:SetStateBool("LeavingHappy", leavingHappy)
 end
 
 function OnPredicateFail(quest, me)

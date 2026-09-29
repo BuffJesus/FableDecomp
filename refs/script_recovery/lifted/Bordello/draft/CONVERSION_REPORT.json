@@ -576,7 +576,7 @@
           "evidence": "unmatched retail helper",
           "nativeSignature": {
             "parameters": [],
-            "returnKind": null,
+            "returnKind": "string",
             "bsimVoid": false
           },
           "todo": [],
@@ -1262,9 +1262,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `DoneIntro`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -1814,10 +1812,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1d has no PDB name; keyed by the transfer name `PartiedAlready`",
-            "persist transfer: quest member at this + 0x1e has no PDB name; keyed by the transfer name `HaveTalked`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -3049,9 +3044,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `DoneToutIntro`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -3558,11 +3551,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `BrainState`",
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `ClientID`",
-            "persist transfer: quest member at this + 0x24 has no PDB name; keyed by the transfer name `SexChance`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateInt",
             "PersistTransferInt",
@@ -3935,7 +3924,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 134
+        "todo": 127
       }
     }
   ],
@@ -3946,6 +3935,6 @@
     "functionSyntaxPassed": 42,
     "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 9,
-    "todo": 134
+    "todo": 127
   }
 }

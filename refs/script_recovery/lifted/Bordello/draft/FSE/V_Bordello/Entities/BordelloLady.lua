@@ -911,12 +911,12 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local partiedAlready = quest:GetStateBool("PartiedAlready") or false
+    local partiedAlready = __native_entity_state:GetStateBool("PartiedAlready") or false
     partiedAlready = quest:PersistTransferBool(context, "PartiedAlready", partiedAlready)
-    quest:SetStateBool("PartiedAlready", partiedAlready)
-    local haveTalked = quest:GetStateBool("HaveTalked") or false
+    __native_entity_state:SetStateBool("PartiedAlready", partiedAlready)
+    local haveTalked = __native_entity_state:GetStateBool("HaveTalked") or false
     haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
-    quest:SetStateBool("HaveTalked", haveTalked)
+    __native_entity_state:SetStateBool("HaveTalked", haveTalked)
 end
 
 function OnPredicateFail(quest, me)

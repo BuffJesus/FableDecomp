@@ -275,8 +275,8 @@ end
 
 -- BirdKiller.OnPersist (retail 0x00d44c60)
 function OnPersist(quest, me, context)
-    quest:SetStateInt("BirdMode", quest:PersistTransferInt(context, "BirdMode", quest:GetStateInt("BirdMode") or 0))
-    quest:SetStateInt("CurrentBirds", quest:PersistTransferInt(context, "CurrentBirds", quest:GetStateInt("CurrentBirds") or 0))
+    birdMode = quest:PersistTransferInt(context, "BirdMode", birdMode or 0)
+    currentBirds = quest:PersistTransferInt(context, "CurrentBirds", currentBirds or 0)
 end
 
 -- BirdKiller.OnPredicateFail (retail 0x00d43010)

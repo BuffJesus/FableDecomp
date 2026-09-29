@@ -224,7 +224,7 @@ end
 
 -- BCGameMaster.OnPersist (retail 0x00d0ee10)
 function OnPersist(quest, me, context)
-    quest:SetStateBool("GivenPass", quest:PersistTransferBool(context, "GivenPass", quest:GetStateBool("GivenPass")))
+    givenPass = quest:PersistTransferBool(context, "GivenPass", givenPass)
 end
 
 -- BCGameMaster.OnPredicateFail (retail 0x00d06770)

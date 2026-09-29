@@ -2468,9 +2468,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x20 has no PDB name; keyed by the transfer name `GivenPass`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -4961,9 +4959,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: quest member at this + 0x1c has no PDB name; keyed by the transfer name `GivenPass`"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -5607,7 +5603,7 @@
         "functionSyntaxPassed": 67,
         "fileSyntaxPassed": 15,
         "fileSyntaxChecked": 15,
-        "todo": 64
+        "todo": 62
       }
     },
     {
@@ -5751,6 +5747,6 @@
     "functionSyntaxPassed": 85,
     "fileSyntaxPassed": 19,
     "fileSyntaxChecked": 19,
-    "todo": 75
+    "todo": 73
   }
 }

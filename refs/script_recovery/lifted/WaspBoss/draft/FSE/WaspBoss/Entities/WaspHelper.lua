@@ -569,9 +569,9 @@ function Init(quest, me)
 end
 
 function OnPersist(quest, me, context)
-    local pleadedToHero = quest:GetStateBool("PleadedToHero") or false
+    local pleadedToHero = __native_entity_state:GetStateBool("PleadedToHero") or false
     pleadedToHero = quest:PersistTransferBool(context, "PleadedToHero", pleadedToHero)
-    quest:SetStateBool("PleadedToHero", pleadedToHero)
+    __native_entity_state:SetStateBool("PleadedToHero", pleadedToHero)
 end
 
 function OnPredicateFail(quest, me)
