@@ -1,14 +1,14 @@
 # Lua recovery, 2026-09-28
 
 Continuation of [the 2026-09-27 marathon](CODEX_LUA_MARATHON_2026-09-27.md). Corpus smoke (all 29 units,
-readable stage): **21 → 15 failing functions, 0 new** (morning run at `ea7603e` vs. after promotion; scratch
+readable stage): **21 â†’ 15 failing functions, 0 new** (morning run at `ea7603e` vs. after promotion; scratch
 in `work/codex_lua_20260928/`). Nothing installed or run in-game.
 
 ## Converter fixes
 
 - **Literal string-vector members** (`native_literal_string_vectors.py`): a member `vector<CWideString|CCharString>`
   that Init resizes and fills slot by slot from UTF-16 `.rdata` literals, and that nothing else writes, becomes a
-  file-level `local <PdbName> = {...}`; reads `*(this+OFF) + i*4` become `LOCALLIST_StringAt` → `Name[i + 1]`.
+  file-level `local <PdbName> = {...}`; reads `*(this+OFF) + i*4` become `LOCALLIST_StringAt` â†’ `Name[i + 1]`.
   CChickenSign::TextKeys (PDB +0x1c, Init 0x00E68DC0): the sign now reads `TEXT_QST_B17_SIGN_WON_*[PrizesWon + 1]`
   and passes it to `SetReadableObjectText` (retail vtable 0xB24 with the wide string; ForgeFSE wraps that slot).
 - **Quest methods called through the entity's parent** (`quest_unit_evidence.parent_receiver_only`): the
@@ -88,7 +88,7 @@ Analysed, not fixed (next session):
 
 ## Afternoon: dead cleanup flags, split counters (after `c3046c0`)
 
-Corpus smoke **15 → 8** failing functions (21 → 8 since the morning), none new; 7 real (ScorpionHome is intentional). Remaining: BookCollecting
+Corpus smoke **15 â†’ 8** failing functions (21 â†’ 8 since the morning), none new; 7 real (ScorpionHome is intentional). Remaining: BookCollecting
 BookReaction/DoConversation, OakValeFire, the two Arena cell guards, Roth, SickChild helper_ECE460, and
 ScorpionHome (intentional).
 
@@ -116,20 +116,20 @@ ScorpionHome (intentional).
 
 ## Evening: AskForBook, member-resource speech (after `cb6bc76`)
 
-Corpus smoke **8 → 5** failing functions, none new; 4 real: the two Arena cell guards, Roth, SickChild
+Corpus smoke **8 â†’ 5** failing functions, none new; 4 real: the two Arena cell guards, Roth, SickChild
 helper_ECE460 (ScorpionHome is intentional).
 
 - **Lost parameter from the reviewed prototype** (`native_function_parameters`): BS_Teacher AskForBook 0x00E55CE0 is
   `AskForBook(long, class CCharString)` in ego_r (RET 8) but exported with one `CCharString_bv param_1`. When every
   reviewed parameter is one dword and each missing one's this-call stack slot is referenced, it is appended under its
-  slot name (`stack0x00000008` → `native_arg_param_2`, renamed before the stack-slot passes) and the reviewed scalar
+  slot name (`stack0x00000008` â†’ `native_arg_param_2`, renamed before the stack-slot passes) and the reviewed scalar
   type replaces the export's; the refusal line reads the caller's key.
 - **Callers' pushed operands** (`native_local_helper_operands.py`): a local helper call printed with fewer operands than
   its recovered signature gets the missing ones decoded from the pushes before it (in-place by-value CCharString
   literal, immediates, `this` / parent member loads), only when every missing one decodes. AskForBook's callers now
   pass `(LastBookRequested, "TEXT_QST_B16_BOOK_REFUSE_AGAIN")` and `(value, "TEXT_QST_B16_BOOK_REFUSED")`; before, the
   first passed nothing and `value < booksWanted` would have compared nil.
-- **Member-resource vtable calls**: slot 0x34 is `Speak`, 0x30 `GetScriptThing` (hidden result slot →
+- **Member-resource vtable calls**: slot 0x34 is `Speak`, 0x30 `GetScriptThing` (hidden result slot â†’
   `resources:ScriptThing`), also directly on the member (`*(this + 0x34)`), through a local copied from a member alias,
   and through a vtable temporary. SickChildsMother/Witch now wait on `IsPerformingScriptTask()` (was `while nil`),
   WomanToAttract speaks its laugh lines, BS_Teacher speaks its refusals.
@@ -142,7 +142,7 @@ helper_ECE460 (ScorpionHome is intentional).
 
 ## Late: Roth's high-byte flag (after `8d92536`)
 
-Corpus smoke **5 → 4** failing functions (Arena cell guards ×2, SickChild helper_ECE460, ScorpionHome intentional).
+Corpus smoke **5 â†’ 4** failing functions (Arena cell guards Ã—2, SickChild helper_ECE460, ScorpionHome intentional).
 Arena Roth Main (0x00F21880) keeps a byte flag at `[esp+0x13]` (`mov byte ptr [esp+0x13], 1`; cleared when
 GetHealth <= 0; read back), which Ghidra prints under two dwords: `pCVar15 = CONCAT13(1,(int3)pCVar22)` stores, the
 test reads `pCVar22 >> 0x18`, and one site stores `CONCAT13(bVar3, ...)`. `fold_cross_variable_high_byte_flags`
@@ -168,7 +168,7 @@ Branch pushed at `26e5fa9`.
 
 ## Night: receivers by reaching definitions (after `4a30c2b`)
 
-Corpus smoke **4 → 2** failing functions (SickChild helper_ECE460; ScorpionHome intentional).
+Corpus smoke **4 â†’ 2** failing functions (SickChild helper_ECE460; ScorpionHome intentional).
 `native_receiver_reaching.py`: for an entity's thing vtable call, ecx is traced to its source register and every
 definition of that register reaching the call is collected over a CFG decoded from the machine code (direct jumps,
 fall-through, and switch tables bounded by a preceding `cmp reg, N`; anything else, no claim). When all are
@@ -189,7 +189,7 @@ recovered the speaker, both IsAlive checks, AddNewConversation, the speaker's da
 temporary, `comment_type` / `comment_to_make` as string temporaries: a raw `CONCAT31(...)` call and
 `r2:IsEqualTo(r3._4_4_)` would become reachable). Enabling comments in an in-game-proven package needs the whole
 function right; next step is parameter-slot reuse for this function. Kept from the attempt: `CScriptThing::GetDataString
-(X, &slot)` → `slot = X:GetDataString()` (and GetName / GetDefName).
+(X, &slot)` â†’ `slot = X:GetDataString()` (and GetName / GetDefName).
 
 ## Night: `me` through an int register (after `d82fd83`)
 
@@ -214,7 +214,7 @@ identical values (draft only; its readable is hand-reviewed). The A/B snapshot s
 
 ## Candidate v36 (staged, not installed or run)
 
-v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort ×2), sidecar
+v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort Ã—2), sidecar
 unchanged. 210 Lua parse, 216 hashes match; mock smoke vs v35 unchanged. Gate1GuardOuter's talk check moves from the
 hero to the guard (retail), in a package completed in-game with the old line.
 
@@ -690,3 +690,53 @@ Validation: **210 Lua parse, 216 manifest hashes match, zero new package smoke f
 `stage_v40.log` preserve the selection, excluded lineages and verification. No installation/game
 launch/push. Next: Witch's unresolved resource/speech receiver and movie cleanup operands; runtime
 save/reload remains unverified.
+
+## Member resource receivers and speech operands (2026-09-28)
+
+Continued offline using the script-recovery/readability skills. Generic native basic-block
+tracking now pairs ECX with the same member-resource vtable before recovering omitted
+GetScriptThing results or literal Speak operands. It checks a stable this anchor, prologue,
+branch targets, register aliases, calls, stack changes and stores; ambiguous values remain
+unresolved. A recovered GetHero result must match the exported source assignment. Removing
+the stale CScriptThing pointer cast preserves the recovered thing kind through health lowering.
+No quest address is hard-coded in the implementation; generated Lua was not hand-edited.
+
+Recovered **13 resource-to-health lookups and five literal speech calls** across three scripts:
+Witch (six lookups, three speeches), SickChildsMother (three lookups, two speeches), and
+BS_Teacher LookForBook (four entity-owned lookups). Mother previously checked the Hero in
+one branch; she now checks seh_Mother. Teacher retains the entity owner for seh_me.
+Retail sites: Witch health ECEC8A/ECED4C/ECEE0F/ECF082/ECF26C/ECF688, speech
+ECECE3/ECEDA5/ECEE64; Mother health ECDEF5/ECDFD6/ECE1D5, speech ECDF4E/ECE22A;
+Teacher health E576AB/E57769/E5787A/E57956. Speech literals, selection and flags are taken
+from native pushes, not inferred from nearby source names.
+
+**164 distinct tests pass**: 53 new focused tests (17 native/negative checks and 36 generated
+behavior cases), 35 entity-persistence tests, 55 SickChild helper tests, 21 compatibility tests.
+The 15 new draft Mother/Witch branch cases fail against the unchanged baseline, as expected.
+Focused behavior covers exact receiver/arguments, positive/zero/negative health, accepted and
+declined mushrooms, no mushrooms, saved progress, and speech termination with one correct movie
+release. Normal Witch cases stop at the first movie-cleanup boundary; they do not validate the
+later unresolved on-hit flow. Teacher checks the entity resource through Init/LookForBook.
+
+Completed **29-unit A/B**, then regenerated all 29 after outputs for the final conservative
+prologue guard against the unchanged completed baseline. Both comparisons identify exactly
+three files in two units; **27 unrelated units are byte-identical**. Fresh before/after readable
+generation changes the same three files, with no registered baseline drift. Both affected units
+have zero typed smoke failures before and after. **72 scratch Lua files parse; 371 corpus Lua
+files parse** after promotion. Six Lua files (three draft/readable pairs), reports and the ledger
+were promoted; Lua bytes equal tested scratch output. Conversion diagnostics: BookCollecting
+127 -> 115; SickChild 192 -> 161. Remaining diagnostics were preserved.
+
+Scratch: `work/codex_witch_receivers_20260928/`. Reproduce with ab/compare.py (full A/B),
+ab/refresh_after.py (final guard using completed baseline), review.py, validate.py and promote.py.
+Evidence/results: native_main.c/native_main_asm.txt, ab/comparison.json, scope_review.json,
+readable.diff, validation.json, source_hashes.json, promotion.json, readability.json, review.diff,
+final_behavior.log, compatibility.log and baseline_behavior.log. Early partial A/B and after/
+debug_draft outputs are superseded by ab/comparison and readable/after. New permanent regression:
+`tools/script_recovery/test_native_member_resource_calls.py`.
+
+Next: recover Witch dynamic speech at ECF12A/ECF6E4 and the branch-merged receiver at ECF48A;
+trace on-hit branch gating and distinct movie/string cleanup identities in Witch and Mother.
+Witch's remaining on-hit flow can still enter an incorrect cleanup path; this is not a complete
+Witch port or an in-game proof. Sidecar unchanged. No installation, game launch or push.
+Candidate v41 staging follows this source checkpoint.

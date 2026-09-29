@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bFlag, bVar5, bVar6, bVar7, bVar8, bVar9, cVar10, dist, fVar4, fret_0, fret_00, fret_01, iVar14, pCVar1, pCVar11, pCVar12, pCVar13, pQuestName, pcVar15, uVar16, uVar17, xStack_34, xStack_4c, xStack_70, xStack_94, xStack_98, xStack_9c, xStack_a8
+    local bFlag, bVar5, bVar6, bVar7, bVar8, bVar9, cVar10, dist, fVar4, fret_0, fret_00, fret_01, iVar14, pCVar1, pCVar11, pCVar12, pCVar13, pQuestName, pcVar15, r1, r2, uVar16, uVar17, xStack_34, xStack_4c, xStack_70, xStack_94, xStack_98, xStack_9c, xStack_a8
     local alive = true
     local function __cleanup_LAB_00ece3f7()
         quest:PauseAllNonScriptedEntities(false)
@@ -171,9 +171,8 @@ function Main(quest, me)
                                 resources:DestroyMovie(xStack_94)
                                 return
                             end
-                            -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                            pCVar13 = nil --[[unresolved native value]]
-                            fret_0 = quest:GetHealth(pCVar11)
+                            pCVar13 = resources:ScriptThing(resources:MemberResource("seh_Mother"))
+                            fret_0 = quest:GetHealth(pCVar13)
                             fVar4 = 0.0
                             if fVar4 < fret_0 then
                                 -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
@@ -182,7 +181,7 @@ function Main(quest, me)
                                 uVar16 = 2
                                 pcVar15 = "TEXT_QST_B10_MOTHER_ASK_CURE"
                                 pCVar13 = quest:GetHero()
-                                -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                                r1 = me:Speak(pCVar13, "TEXT_QST_B10_MOTHER_ASK_CURE", 2, false, true, false)
                                 cVar10 = me:IsPerformingScriptTask()
                                 while cVar10 do
                                     alive = quest:NewScriptFrame(me)
@@ -205,9 +204,8 @@ function Main(quest, me)
                             end
                         else
                             if bVar9 then __cleanup_LAB_00ece3f7(); return end
-                            -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                            pCVar13 = nil --[[unresolved native value]]
-                            fret_00 = quest:GetHealth(nil --[[missing]])
+                            pCVar13 = resources:ScriptThing(resources:MemberResource("seh_Mother"))
+                            fret_00 = quest:GetHealth(pCVar13)
                             fVar4 = 0.0
                             if fVar4 < fret_00 then
                                 -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
@@ -269,9 +267,8 @@ function Main(quest, me)
                         end
                         xStack_4c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): pCVar13 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x48) + 0x30))()
-                        pCVar13 = nil --[[unresolved native value]]
-                        fret_01 = quest:GetHealth(nil --[[missing]])
+                        pCVar13 = resources:ScriptThing(resources:MemberResource("seh_Mother"))
+                        fret_01 = quest:GetHealth(pCVar13)
                         fVar4 = 0.0
                         if fVar4 < fret_01 then
                             -- TODO(native): iVar14 = *(__native_entity_state:GetStateInt("self_0x14") + 0x48)
@@ -280,7 +277,7 @@ function Main(quest, me)
                             uVar16 = 0
                             pcVar15 = "TEXT_QST_B10_MOTHER_HIT"
                             pCVar13 = quest:GetHero()
-                            -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                            r2 = me:Speak(pCVar13, "TEXT_QST_B10_MOTHER_HIT", 0, false, true, false)
                             cVar10 = me:IsPerformingScriptTask()
                             while cVar10 do
                                 alive = quest:NewScriptFrame(me)

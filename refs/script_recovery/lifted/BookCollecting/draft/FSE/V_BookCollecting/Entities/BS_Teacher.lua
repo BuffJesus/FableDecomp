@@ -1242,9 +1242,8 @@ function helper_E57530(quest, me)
                     return
                 end
                 pCVar12 = resources:MemberResource("seh_me", me)
-                -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
-                pCVar9 = nil --[[unresolved native value]]
-                fret_00 = quest:GetHealth(nil --[[missing]])
+                pCVar9 = resources:ScriptThing(resources:MemberResource("seh_me", (me)))
+                fret_00 = quest:GetHealth(pCVar9)
                 fVar4 = 0.0
                 if fret_00 <= fVar4 then
                     return
@@ -1285,9 +1284,8 @@ function helper_E57530(quest, me)
             pCVar12 = tostring(value)
             x_stk_14 = ("TEXT_QST_B16_BOOK_REQUEST_" .. pCVar12)
             pCVar1 = resources:MemberResource("seh_me", me)
-            -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
-            pCVar9 = nil --[[unresolved native value]]
-            fret_01 = quest:GetHealth(nil --[[missing]])
+            pCVar9 = resources:ScriptThing(resources:MemberResource("seh_me", (me)))
+            fret_01 = quest:GetHealth(pCVar9)
             fVar4 = 0.0
             if fVar4 < fret_01 then
                 uVar17 = 1
@@ -1319,9 +1317,8 @@ function helper_E57530(quest, me)
             return
         end
         pCVar1 = resources:MemberResource("seh_me", me)
-        -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
-        pCVar9 = nil --[[unresolved native value]]
-        fret_0 = quest:GetHealth(nil --[[missing]])
+        pCVar9 = resources:ScriptThing(resources:MemberResource("seh_me", (me)))
+        fret_0 = quest:GetHealth(pCVar9)
         fVar4 = 0.0
         if fret_0 <= fVar4 then
             return
@@ -1355,9 +1352,8 @@ function helper_E57530(quest, me)
         return
     end
     pCVar1 = resources:MemberResource("seh_me", me)
-    -- TODO(native): pCVar9 = (**(__native_entity_state:GetStateInt("self_0x34") + 0x30))()
-    pCVar9 = nil --[[unresolved native value]]
-    fret_02 = quest:GetHealth(nil --[[missing]])
+    pCVar9 = resources:ScriptThing(resources:MemberResource("seh_me", (me)))
+    fret_02 = quest:GetHealth(pCVar9)
     fVar4 = 0.0
     if fret_02 <= fVar4 then
         return

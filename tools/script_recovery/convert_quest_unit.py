@@ -2088,6 +2088,8 @@ class UnitConverter:
                 spec_l.indirect_calls = fn.get('indirectCalls', [])
                 if signature.get('bsimVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
+                from tools.script_recovery.native_member_resource_calls import recover_member_resource_calls
+                decompile = recover_member_resource_calls(decompile, fn, _text_order_sites(decompile, fn), spec_l, self.rdata)
                 lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)), self.things)
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):

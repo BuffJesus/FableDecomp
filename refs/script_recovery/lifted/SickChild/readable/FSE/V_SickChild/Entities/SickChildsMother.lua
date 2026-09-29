@@ -1,6 +1,8 @@
 -- Readable native conversion: SickChildsMother. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST, GROUP_SELECT_RANDOM_NO_REPEAT = 0, 2  -- ETextGroupSelectionMethod
+
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 local helpers = require("V_SickChild.native_quest_helpers")
@@ -13,8 +15,7 @@ function Main(quest, me)
     local self_0x14
     local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isObjectInThingsPossession, predicateResult7, questionAnswer, scratchValue, hero4, movie3
-    local movie4
+    local isObjectInThingsPossession, predicateResult7, questionAnswer, scratchValue, movie3, movie4
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
@@ -109,12 +110,10 @@ function Main(quest, me)
                     resources:DestroyMovie(movie3)
                     return
                 end
-                -- TODO(native): pCVar13 = (**(*(self_0x14 + 0x48) + 0x30))()
-                hero4 = nil --[[unresolved native value]]
-                if 0.0 < quest:GetHealth(hero) then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
                     -- TODO(native): iVar14 = *(self_0x14 + 0x48)
                     scratchValue = nil --[[unresolved native value]]
-                    -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                    me:Speak(hero, "TEXT_QST_B10_MOTHER_ASK_CURE", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -131,10 +130,7 @@ function Main(quest, me)
                 end
             else
                 if predicateResult18 then ReleaseEverything(); return end
-                -- TODO(native): pCVar13 = (**(*(self_0x14 + 0x48) + 0x30))()
-                hero4 = nil --[[unresolved native value]]
-                local fret_00 = quest:GetHealth(nil --[[missing]])
-                if 0.0 < fret_00 then
+                if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
                     -- TODO(native): iVar14 = *(self_0x14 + 0x48)
                     scratchValue = nil --[[unresolved native value]]
                     -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
@@ -156,13 +152,10 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end
             resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            -- TODO(native): pCVar13 = (**(*(self_0x14 + 0x48) + 0x30))()
-            hero4 = nil --[[unresolved native value]]
-            local fret_01 = quest:GetHealth(nil --[[missing]])
-            if 0.0 < fret_01 then
+            if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
                 -- TODO(native): iVar14 = *(self_0x14 + 0x48)
                 scratchValue = nil --[[unresolved native value]]
-                -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                me:Speak(hero, "TEXT_QST_B10_MOTHER_HIT", GROUP_SELECT_FIRST, false, true, false)
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then

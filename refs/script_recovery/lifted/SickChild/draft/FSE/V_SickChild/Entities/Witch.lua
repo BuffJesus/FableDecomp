@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, i_stk_9c, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, stack0xffffff44, this_00, this_01, uVar13, uVar15, uVar16, uVar18, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_a0, x_stk_34
+    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, i_stk_9c, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, r1, r2, r3, stack0xffffff44, this_00, this_01, uVar13, uVar15, uVar16, uVar18, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         quest:PauseAllNonScriptedEntities(false)
@@ -170,9 +170,8 @@ function Main(quest, me)
                                     resources:DestroyMovie(xStack_8c)
                                     return
                                 end
-                                -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                                pCVar11 = nil --[[unresolved native value]]
-                                fret_0 = quest:GetHealth(nil --[[missing]])
+                                pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                                fret_0 = quest:GetHealth(pCVar11)
                                 fVar3 = 0.0
                                 if fVar3 < fret_0 then
                                     -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
@@ -181,7 +180,7 @@ function Main(quest, me)
                                     uVar15 = 0
                                     pcVar14 = "TEXT_QST_B10_WITCH_NEED_MORE_CURE_10"
                                     pCVar11 = quest:GetHero()
-                                    -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);
+                                    r1 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_NEED_MORE_CURE_10", 0, false, true, false)
                                     cVar5 = me:IsPerformingScriptTask()
                                     while cVar5 do
                                         alive = quest:NewScriptFrame(me)
@@ -208,9 +207,8 @@ function Main(quest, me)
                                     resources:DestroyMovie(xStack_8c)
                                     return
                                 end
-                                -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                                pCVar11 = nil --[[unresolved native value]]
-                                fret_00 = quest:GetHealth(nil --[[missing]])
+                                pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                                fret_00 = quest:GetHealth(pCVar11)
                                 fVar3 = 0.0
                                 if fVar3 < fret_00 then
                                     -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
@@ -219,7 +217,7 @@ function Main(quest, me)
                                     uVar15 = 0
                                     pcVar14 = "TEXT_QST_B10_WITCH_NOT_GIVEN_MORE_MUSHROOMS_10"
                                     pCVar11 = quest:GetHero()
-                                    -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);
+                                    r2 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_NOT_GIVEN_MORE_MUSHROOMS_10", 0, false, true, false)
                                     cVar5 = me:IsPerformingScriptTask()
                                     while cVar5 do
                                         alive = quest:NewScriptFrame(me)
@@ -243,9 +241,8 @@ function Main(quest, me)
                             end
                         else
                             if bVar6 then __cleanup_LAB_00ecf292(); return end
-                            -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                            pCVar11 = nil --[[unresolved native value]]
-                            fret_01 = quest:GetHealth(nil --[[missing]])
+                            pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                            fret_01 = quest:GetHealth(pCVar11)
                             fVar3 = 0.0
                             if fVar3 < fret_01 then
                                 -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
@@ -254,7 +251,7 @@ function Main(quest, me)
                                 uVar15 = 0
                                 pcVar14 = "TEXT_QST_B10_WITCH_WAITING_FOR_CURE"
                                 pCVar11 = quest:GetHero()
-                                -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16);
+                                r3 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_WAITING_FOR_CURE", 0, false, true, false)
                                 cVar5 = me:IsPerformingScriptTask()
                                 while cVar5 do
                                     alive = quest:NewScriptFrame(me)
@@ -324,9 +321,8 @@ function Main(quest, me)
                     ::FLOW_past_lab_00ecf00d::
                     xStack_70 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                    pCVar11 = nil --[[unresolved native value]]
-                    fret_02 = quest:GetHealth(nil --[[missing]])
+                    pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                    fret_02 = quest:GetHealth(pCVar11)
                     fVar3 = 0.0
                     x_stk_34 = nil
                     x_stk_34 = 0
@@ -392,9 +388,8 @@ function Main(quest, me)
                         end
                         xStack_70_2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): pThing = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                        pThing = nil --[[unresolved native value]]
-                        fret_03 = quest:GetHealth(nil --[[missing]])
+                        pThing = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                        fret_03 = quest:GetHealth(pThing)
                         fVar3 = 0.0
                         if fVar3 < fret_03 then
                             -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
@@ -473,9 +468,8 @@ function Main(quest, me)
                         ::FLOW_past_lab_00ecf622::
                         xStack_8c = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        -- TODO(native): pCVar11 = (**(*(__native_entity_state:GetStateInt("self_0x14") + 0x58) + 0x30))()
-                        pCVar11 = nil --[[unresolved native value]]
-                        fret_04 = quest:GetHealth(nil --[[missing]])
+                        pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
+                        fret_04 = quest:GetHealth(pCVar11)
                         fVar3 = 0.0
                         if fVar3 < fret_04 then
                             -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
