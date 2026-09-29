@@ -14,6 +14,45 @@ def calls_of(source, *args):
 
 
 class CleanupRegionTests(unittest.TestCase):
+    def test_value_return_survives_cleanup_and_skips_following_jump(self):
+        for terminal in ('return value', 'do return value end'):
+            source = f'''function Main(log, stop)
+    local value = "before"
+    if stop then return end  -- TODO(native): goto LAB_00d00007
+    do return "continue" end
+    -- LAB_00d00007: (native jump target)
+    log("cleanup")
+    value = "after"
+    {terminal}
+    goto FLOW_tail
+    ::FLOW_tail::
+    log("unreachable")
+end
+'''
+            out, _ = hoist_cleanup_regions(source)
+            calls = []
+            lua = LuaRuntime()
+            lua.execute(out)
+            self.assertEqual(lua.globals().Main(calls.append, True), 'after')
+            self.assertEqual(calls, ['cleanup'])
+            self.assertEqual(lua.globals().Main(calls.append, False), 'continue')
+
+    def test_empty_string_return_through_emitted_tail(self):
+        source = '''function Main(stop)
+    if stop then return end  -- TODO(native): goto LAB_00d00008
+    do return "continue" end
+    -- LAB_00d00008: (native jump target)
+    goto FLOW_tail
+    ::FLOW_tail::
+    do return "" end
+end
+'''
+        out, _ = hoist_cleanup_regions(source)
+        lua = LuaRuntime()
+        lua.execute(out)
+        self.assertEqual(lua.globals().Main(True), '')
+        self.assertEqual(lua.globals().Main(False), 'continue')
+
     def test_cleanup_exit_before_another_branch_label_remains_valid(self):
         source = '''function Main(log, stop)
     if not stop then goto FLOW_continue end

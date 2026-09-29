@@ -1,5 +1,12 @@
 # Lua recovery handoff - 2026-09-26
 
+**GuildMaster return checkpoint (2026-09-28):** hidden string-result ABI recognized; terminating speech
+now returns the empty string through cleanup instead of discarding it. Two draft/readable files promoted;
+100 tests / eight subtests pass, 371 Lua parse, all 28 unrelated units unchanged, smoke unchanged.
+Cache/random selection, Hero Souls state and movie cleanup continuations remain open. Corrected rand/
+constructor/hidden-result export is scratch-only in `work/codex_guild_marathon_20260928/`; see latest
+journal for exact next steps. v38 unchanged; no installation, game launch or push.
+
 **v38 ready offline (2026-09-28):** SickChild checkpoint `62a0685`; five bundled Lua updates over v37,
 unchanged sidecar e83c39f. 210 Lua parse, 216 hashes match, no new package smoke failures (16 old mock
 failures remain). Not installed or run; local commits not pushed. Next: GuildMaster hidden string return

@@ -38,11 +38,18 @@ def _emitted_labels(lines):
     return {m.group(1) for line in lines for m in [re.fullmatch(r'\s*::(\w+)::\s*', line)] if m}
 
 
+def _is_return(terminal):
+    return terminal == 'return' or terminal[0] == 'value'
+
+
 def _terminal(s, emitted=()):
     """`return`, a plain `goto LAB_y` (another native region), or a jump to a label the lifter really emitted
     (`goto FLOW_after_lab_x`) ends a straight-line region."""
-    if s == 'return':
+    if s in ('return', 'do return end'):
         return 'return'
+    value = re.fullmatch(r'(?:return (.+)|do return (.+) end)', s)
+    if value:
+        return ('value', value[1] or value[2])
     m = GOTO_LINE.match(s)
     if m:
         return ('goto', m.group(1))
@@ -154,7 +161,7 @@ def _regions(lines):
         if walked is None:
             continue
         body, j, terminal, crossed = walked
-        if body or terminal == 'return' or terminal[0] == 'goto':
+        if body or _is_return(terminal) or terminal[0] in ('goto', 'mark'):
             regions[m.group('label')] = (i, j, body, terminal, crossed)
     # a region that ends by jumping to an emitted label whose own block runs straight to `return` really ends
     # in that return: take the tail into the region so the call sites reproduce the whole epilogue. A region
@@ -163,18 +170,18 @@ def _regions(lines):
     def delegate(body):
         return body[-1][1] if body and body[-1][0] == 'label' else None
     for label, (start, end, body, terminal, crossed) in list(regions.items()):
-        if terminal == 'return' or terminal[0] != 'mark' or delegate(body) in regions:
+        if _is_return(terminal) or terminal[0] != 'mark' or delegate(body) in regions:
             continue
         tail = _emitted_tail(lines, terminal[1])
         if tail is None:
             continue
-        regions[label] = (start, end, body + [('stmt', t) for t in tail], 'return', crossed)
+        regions[label] = (start, end, body + [('stmt', t) for t in tail[0]], tail[1], crossed)
     for _ in range(len(regions)):
         for label, (start, end, body, terminal, crossed) in list(regions.items()):
             inner = delegate(body)
-            if terminal != 'return' and inner in regions and regions[inner][3] == 'return':
-                regions[label] = (start, end, body, 'return', crossed)
-    return {label: region for label, region in regions.items() if region[3] == 'return' or region[3][0] != 'todo'}
+            if not _is_return(terminal) and inner in regions and _is_return(regions[inner][3]):
+                regions[label] = (start, end, body, regions[inner][3], crossed)
+    return {label: region for label, region in regions.items() if _is_return(region[3]) or region[3][0] != 'todo'}
 
 
 def _emitted_tail(lines, name):
@@ -189,10 +196,11 @@ def _emitted_tail(lines, name):
         if not s or s.startswith('--') or re.fullmatch(r'::\w+::', s):
             j += 1
             continue
-        if s in ('return', 'do return end'):
-            return out
+        terminal = _terminal(s)
+        if terminal and _is_return(terminal):
+            return out, terminal
         if s == 'end' and not any(line.strip() for line in lines[j + 1:]):
-            return out                    # the function's own end: falling off it is the same return
+            return (out, 'return')        # the function's own end: falling off it is the same return
         if CONTROL.match(lines[j]):
             return None
         out.append(s)
@@ -228,8 +236,8 @@ def _exit(label, regions, in_place=False):
     inexpressible, which is why it wrote `return` there. Running the cleanup and returning is still what the
     native does with the resources; the flow gap stays on the line as its own TODO."""
     terminal = regions[label][3]
-    if terminal == 'return':
-        return 'return'
+    if _is_return(terminal):
+        return 'return' if terminal == 'return' else f'do return {terminal[1]} end'
     if terminal[0] == 'mark' and not in_place:
         return 'return'
     return f'goto {terminal[1]}'
@@ -238,11 +246,11 @@ def _exit(label, regions, in_place=False):
 def _gap(label, regions):
     """The marker a call site keeps: the jump the region ends with that the site cannot make."""
     terminal = regions[label][3]
-    return f'  -- TODO(native): goto {terminal[1]}' if terminal != 'return' and terminal[0] == 'mark' else ''
+    return f'  -- TODO(native): goto {terminal[1]}' if not _is_return(terminal) and terminal[0] == 'mark' else ''
 
 
 def _name(label, regions):
-    return f'__cleanup_{label}' if regions[label][3] == 'return' else f'__region_{label}'
+    return f'__cleanup_{label}' if _is_return(regions[label][3]) else f'__region_{label}'
 
 
 def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
@@ -275,7 +283,7 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
         def reachable(label, site):
             # a region that ends in `goto Y` can only be reproduced where Y is visible: an enclosing block
             terminal = regions[label][3]
-            if terminal == 'return' or terminal[0] != 'goto':
+            if _is_return(terminal) or terminal[0] != 'goto':
                 return True
             target = next((k for k, line in enumerate(lines) if re.fullmatch(r'\s*::' + re.escape(terminal[1]) + r'::\s*', line)), None)
             return target is not None and scopes[site][:len(scopes[target])] == scopes[target]

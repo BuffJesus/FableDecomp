@@ -2772,7 +2772,7 @@
      "function": "helper_E91F20",
      "rewrites": {
       "flags": 0,
-      "termination": 0,
+      "termination": 7,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -2810,17 +2810,17 @@
        "assignmentRoles": [
         "isQuestCompleted",
         "isQuestActive",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
         "predicateResult",
         "predicateResult",
         "predicateResult",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
         "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
-        "predicateResult",
+        "isActiveThreadTerminating",
         null,
         null
        ]
@@ -2979,7 +2979,7 @@
        "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 20,
-       "aliveStaging": 14,
+       "aliveStaging": 7,
        "exitChecksInlined": 0,
        "frameChecks": 0,
        "inlinedTemporaries": 0,
@@ -3014,7 +3014,7 @@
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
        "sunkLocals": 14,
-       "cleanupClosureNames": 1,
+       "cleanupClosureNames": 0,
        "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -3022,19 +3022,19 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 437,
+       "lines": 427,
        "temporaries": 13,
        "labels": 10,
-       "gotos": 33,
+       "gotos": 23,
        "terminationChecks": 13,
        "frameChecks": 0,
        "requires": 0
       },
       "after": {
-       "lines": 318,
+       "lines": 315,
        "temporaries": 6,
        "labels": 9,
-       "gotos": 32,
+       "gotos": 22,
        "terminationChecks": 13,
        "frameChecks": 0,
        "requires": 0
@@ -3047,10 +3047,10 @@
     "pureLocalFunctions": []
    },
    "readability": {
-    "lines": 322,
+    "lines": 319,
     "counts": {
      "genericTemporaries": 97,
-     "unresolvedDiagnostics": 22,
+     "unresolvedDiagnostics": 12,
      "gotos": 22,
      "nativeNames": 10,
      "machineTemporaries": 2
@@ -3083,22 +3083,27 @@
       "text": "-- TODO(native): CCharString::CCharString(&xStack_c,other);"
      },
      {
-      "line": 13,
+      "line": 10,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 16,
+      "line": 13,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 16,
+      "line": 13,
       "category": "nativeNames",
       "text": "LAB_00e92080"
      },
      {
-      "line": 19,
+      "line": 16,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 21,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
@@ -3118,14 +3123,14 @@
       "text": "scratchValue3"
      },
      {
-      "line": 33,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 37,
+      "line": 34,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 42,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 45,
@@ -3140,22 +3145,32 @@
      {
       "line": 51,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 52,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 53,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 54,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "predicateResult"
      },
      {
       "line": 55,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
+      "category": "gotos",
+      "text": "goto"
      },
      {
-      "line": 56,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "line": 55,
+      "category": "nativeNames",
+      "text": "LAB_00e92080"
      },
      {
       "line": 57,
@@ -3163,44 +3178,34 @@
       "text": "predicateResult"
      },
      {
-      "line": 57,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
       "line": 58,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 58,
-      "category": "nativeNames",
-      "text": "LAB_00e92080"
-     },
-     {
-      "line": 60,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 60,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 61,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 65,
+      "line": 62,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 69,
+      "line": 66,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 66,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e92080"
+     },
+     {
+      "line": 67,
+      "category": "nativeNames",
+      "text": "LAB_00e92080"
+     },
+     {
+      "line": 68,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 69,
@@ -3208,19 +3213,9 @@
       "text": "FLOW_past_lab_00e92080"
      },
      {
-      "line": 70,
-      "category": "nativeNames",
-      "text": "LAB_00e92080"
-     },
-     {
-      "line": 71,
+      "line": 74,
       "category": "genericTemporaries",
       "text": "scratchValue3"
-     },
-     {
-      "line": 72,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e92080"
      },
      {
       "line": 77,
@@ -3228,64 +3223,59 @@
       "text": "scratchValue3"
      },
      {
-      "line": 80,
+      "line": 81,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 82,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 83,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 84,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "predicateResult"
      },
      {
       "line": 85,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 86,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 87,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 88,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
-     },
-     {
-      "line": 90,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 89,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 91,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
       "line": 92,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 94,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 94,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 95,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 98,
+      "line": 95,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 97,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 100,
@@ -3303,32 +3293,32 @@
       "text": "scratchValue3"
      },
      {
-      "line": 109,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 113,
+      "line": 110,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 115,
+      "line": 112,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 117,
+      "line": 114,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 126,
+      "line": 123,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 130,
+      "line": 127,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 132,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
@@ -3349,13 +3339,13 @@
      },
      {
       "line": 144,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 147,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 152,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 155,
@@ -3363,279 +3353,249 @@
       "text": "scratchValue3"
      },
      {
-      "line": 158,
+      "line": 159,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 160,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 161,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 162,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
       "line": 163,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 163,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
      },
      {
       "line": 164,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 166,
-      "category": "genericTemporaries",
       "text": "scratchValue2"
      },
      {
-      "line": 167,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 167,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 168,
+      "line": 165,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 172,
+      "line": 169,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 183,
+      "line": 180,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 183,
+      "line": 180,
       "category": "nativeNames",
       "text": "LAB_00e923f7"
      },
      {
-      "line": 186,
+      "line": 183,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 188,
+      "line": 185,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 192,
+      "line": 189,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 194,
+      "line": 191,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 199,
+      "line": 196,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 198,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 201,
       "category": "gotos",
       "text": "goto"
      },
      {
       "line": 201,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 204,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 204,
       "category": "nativeNames",
       "text": "LAB_00e923f7"
      },
      {
-      "line": 206,
+      "line": 203,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = *(iVar4 + 0x70)"
      },
      {
-      "line": 207,
+      "line": 204,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
+      "line": 206,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 207,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
       "line": 209,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 210,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 212,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 211,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 213,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 214,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
      },
      {
-      "line": 216,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "line": 215,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 217,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 218,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
-     },
-     {
-      "line": 220,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 219,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 221,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 222,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
      },
      {
-      "line": 224,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "line": 223,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 225,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 226,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
-     },
-     {
-      "line": 228,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 230,
+      "line": 227,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 232,
+      "line": 229,
       "category": "genericTemporaries",
       "text": "scratchValue2"
+     },
+     {
+      "line": 230,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 231,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 233,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 233,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
      },
      {
       "line": 234,
       "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 235,
+      "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 236,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
       "line": 237,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 237,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
      },
      {
       "line": 238,
       "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 239,
+      "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 240,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
       "line": 241,
       "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 241,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
      },
      {
       "line": 242,
       "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 243,
+      "category": "genericTemporaries",
       "text": "scratchValue3"
-     },
-     {
-      "line": 244,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 245,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 245,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
      },
      {
       "line": 246,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
      },
      {
-      "line": 249,
+      "line": 247,
       "category": "genericTemporaries",
       "text": "scratchValue2"
+     },
+     {
+      "line": 248,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 250,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 251,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 253,
@@ -3643,109 +3603,124 @@
       "text": "goto"
      },
      {
+      "line": 255,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
       "line": 256,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 258,
       "category": "genericTemporaries",
       "text": "scratchValue2"
      },
      {
-      "line": 259,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 259,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 260,
+      "line": 257,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 265,
+      "line": 262,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 267,
+      "line": 264,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 269,
+      "line": 266,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 269,
+      "line": 266,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e923f7"
      },
      {
-      "line": 270,
+      "line": 267,
       "category": "nativeNames",
       "text": "LAB_00e923f7"
      },
      {
-      "line": 271,
+      "line": 268,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 272,
+      "line": 269,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e923f7"
      },
      {
-      "line": 277,
+      "line": 274,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): CVar2 = *quest:GetStateString(\"LastDialogueSaid\")"
      },
      {
-      "line": 278,
+      "line": 275,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 278,
+      "line": 275,
       "category": "unresolvedDiagnostics",
       "text": "--[[unresolved native value]]"
      },
      {
-      "line": 280,
+      "line": 277,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 280,
+      "line": 277,
       "category": "machineTemporaries",
       "text": "in_stack_fffffff0"
      },
      {
-      "line": 282,
+      "line": 279,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 282,
+      "line": 279,
       "category": "machineTemporaries",
       "text": "in_stack_fffffff0"
      },
      {
-      "line": 284,
+      "line": 281,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then"
      },
      {
-      "line": 288,
+      "line": 285,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);"
+     },
+     {
+      "line": 290,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 291,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 291,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 292,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 292,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
      },
      {
       "line": 293,
@@ -3755,7 +3730,7 @@
      {
       "line": 294,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
       "line": 294,
@@ -3763,34 +3738,14 @@
       "text": "scratchValue4"
      },
      {
-      "line": 295,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
-     },
-     {
-      "line": 295,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
       "line": 296,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 297,
-      "category": "genericTemporaries",
       "text": "scratchValue2"
-     },
-     {
-      "line": 297,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
      },
      {
       "line": 299,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "scratchValue3"
      },
      {
       "line": 302,
@@ -3803,22 +3758,17 @@
       "text": "scratchValue3"
      },
      {
-      "line": 308,
+      "line": 310,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 313,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 318,
+      "line": 315,
       "category": "unresolvedDiagnostics",
       "text": "-- TODO(native): quest:SetStateString(\"LastDialogueSaid\", &pcVar7)"
      },
      {
-      "line": 319,
+      "line": 316,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      }
@@ -3865,7 +3815,7 @@
      "function": "helper_E91F20",
      "rewrites": {
       "flags": 0,
-      "termination": 0,
+      "termination": 7,
       "listArithmetic": 0,
       "byteIndices": 0,
       "voidReturns": 0,
@@ -3874,7 +3824,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
-      "declarations": 7,
+      "declarations": 1,
       "decimalLiterals": 35
      }
     }
@@ -3907,115 +3857,31 @@
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": []
       },
-      "bVar3_1": {
+      "bVar3": {
        "name": "predicateResult",
        "basis": "consistent call/state result",
        "assignmentRoles": [
+        "predicateResult",
         "predicateResult"
        ]
       },
-      "bVar3_2": {
-       "name": "predicateResult2",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_1": {
-       "name": "isQuestCompleted",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isQuestCompleted"
-       ]
-      },
-      "bVar6_2": {
-       "name": "isQuestActive",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "isQuestActive"
-       ]
-      },
-      "bVar6_3": {
-       "name": "predicateResult3",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_4": {
-       "name": "predicateResult4",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_5": {
-       "name": "predicateResult5",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_6": {
-       "name": "predicateResult6",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_7": {
-       "name": "predicateResult7",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_8": {
-       "name": "predicateResult8",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_9": {
-       "name": "predicateResult9",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_10": {
-       "name": "predicateResult10",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_11": {
-       "name": "predicateResult11",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_12": {
-       "name": "predicateResult12",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_13": {
-       "name": "predicateResult13",
-       "basis": "consistent call/state result",
-       "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "bVar6_14": {
+      "bVar6": {
        "name": "scratchValue2",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
+        "isQuestCompleted",
+        "isQuestActive",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "predicateResult",
+        "predicateResult",
+        "predicateResult",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "isActiveThreadTerminating",
+        "predicateResult",
+        "isActiveThreadTerminating",
         null,
         null
        ]
@@ -4027,29 +3893,18 @@
         "getMasterGameState"
        ]
       },
-      "iVar4_1": {
-       "name": "scratchValue3",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": []
-      },
-      "iVar4_2": {
+      "iVar4": {
        "name": "getHeroTitle",
        "basis": "consistent call/state result",
        "assignmentRoles": [
         "getHeroTitle"
        ]
       },
-      "native_arg_sequence_1_1": {
-       "name": "sequence11",
+      "native_arg_sequence_1": {
+       "name": "sequence1",
        "basis": "native argument role",
        "assignmentRoles": [
-        "predicateResult"
-       ]
-      },
-      "native_arg_sequence_1_2": {
-       "name": "sequence12",
-       "basis": "native argument role",
-       "assignmentRoles": [
+        "predicateResult",
         "predicateResult",
         "predicateResult",
         "predicateResult",
@@ -4098,182 +3953,69 @@
        ]
       },
       "pcVar7": {
+       "name": "scratchValue3",
+       "basis": "reused or unresolved native temporary",
+       "assignmentRoles": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ]
+      },
+      "uVar5": {
        "name": "scratchValue4",
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ]
-      },
-      "uVar5_1": {
-       "name": "scratchValue5",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
-        null
-       ]
-      },
-      "uVar5_2": {
-       "name": "scratchValue6",
-       "basis": "reused or unresolved native temporary",
-       "assignmentRoles": [
         null
        ]
       }
      },
-     "splitLocals": {
-      "bVar6": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5\n",
-       "versions": {
-        "bVar6_1": [
-         65
-        ],
-        "bVar6_2": [
-         103
-        ],
-        "bVar6_3": [
-         208
-        ],
-        "bVar6_4": [
-         213
-        ],
-        "bVar6_5": [
-         271
-        ],
-        "bVar6_6": [
-         280
-        ],
-        "bVar6_7": [
-         291
-        ],
-        "bVar6_8": [
-         302
-        ],
-        "bVar6_9": [
-         308
-        ],
-        "bVar6_10": [
-         314
-        ],
-        "bVar6_11": [
-         320
-        ],
-        "bVar6_12": [
-         326
-        ],
-        "bVar6_13": [
-         337
-        ],
-        "bVar6_14": [
-         407,
-         409
-        ]
-       }
-      },
-      "bVar3": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5\n",
-       "versions": {
-        "bVar3_1": [
-         67
-        ],
-        "bVar3_2": [
-         105
-        ]
-       }
-      },
-      "iVar4": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5\n",
-       "versions": {
-        "iVar4_1": [
-         268
-        ],
-        "iVar4_2": [
-         424
-        ]
-       }
-      },
-      "native_arg_sequence_1": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5\n",
-       "versions": {
-        "native_arg_sequence_1_1": [
-         368
-        ],
-        "native_arg_sequence_1_2": [
-         370,
-         372,
-         376,
-         378,
-         382,
-         384,
-         390,
-         392,
-         398,
-         400
-        ]
-       }
-      },
-      "uVar5": {
-       "declarationLine": 2,
-       "originalDeclaration": "    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5\n",
-       "versions": {
-        "uVar5_1": [
-         405
-        ],
-        "uVar5_2": [
-         406
-        ]
-       }
-      }
-     },
+     "splitLocals": {},
      "removedLiteralLocals": {},
      "inlinedLiteralLocals": {},
      "removedLiteralLocalsAfterInlining": {}
@@ -4447,23 +4189,23 @@
      },
      "helper_E91F20": {
       "rewrites": {
-       "splitLocals": 6,
+       "splitLocals": 8,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 20,
-       "aliveStaging": 14,
-       "exitChecksInlined": 1,
+       "aliveStaging": 7,
+       "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 15,
-       "deadDefinitions": 6,
+       "inlinedTemporaries": 0,
+       "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
        "booleanMaterialisation": 7,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 0,
-       "copies": 24,
+       "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
        "tailGuards": 0,
@@ -4477,7 +4219,7 @@
        "gotoElse": 1,
        "booleanBranches": 0,
        "booleanJumpChains": 0,
-       "elseif": 32,
+       "elseif": 31,
        "elseExit": 0,
        "gotoReturn": 0,
        "nestedReturnJumps": 0,
@@ -4486,8 +4228,8 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 10,
-       "cleanupClosureNames": 1,
+       "sunkLocals": 14,
+       "cleanupClosureNames": 0,
        "parentheses": 6,
        "cosmetics": 0,
        "firstAssignments": 0,
@@ -4495,19 +4237,19 @@
        "hoistedState": 0
       },
       "before": {
-       "lines": 436,
-       "temporaries": 30,
+       "lines": 426,
+       "temporaries": 13,
        "labels": 10,
-       "gotos": 33,
+       "gotos": 23,
        "terminationChecks": 13,
        "frameChecks": 0,
        "requires": 0
       },
       "after": {
-       "lines": 291,
-       "temporaries": 4,
+       "lines": 314,
+       "temporaries": 6,
        "labels": 9,
-       "gotos": 32,
+       "gotos": 22,
        "terminationChecks": 13,
        "frameChecks": 0,
        "requires": 0
@@ -4522,16 +4264,21 @@
     ]
    },
    "readability": {
-    "lines": 312,
+    "lines": 335,
     "counts": {
-     "genericTemporaries": 78,
-     "unresolvedDiagnostics": 22,
+     "genericTemporaries": 97,
+     "unresolvedDiagnostics": 12,
      "gotos": 22,
      "nativeNames": 10,
      "machineTemporaries": 2
     },
     "status": "needs-recovery",
     "findings": [
+     {
+      "line": 22,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
      {
       "line": 22,
       "category": "genericTemporaries",
@@ -4553,64 +4300,69 @@
       "text": "-- TODO(native): CCharString::CCharString(&xStack_c,other);"
      },
      {
-      "line": 30,
+      "line": 27,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 33,
+      "line": 30,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 33,
+      "line": 30,
       "category": "nativeNames",
       "text": "LAB_00e92080"
      },
      {
-      "line": 36,
+      "line": 33,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 40,
+      "line": 38,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 43,
+      "line": 41,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 46,
+      "line": 44,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 49,
+      "line": 47,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 53,
+      "line": 51,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 60,
+      "line": 59,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 63,
+      "line": 62,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 66,
+      "line": 65,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
+     },
+     {
+      "line": 68,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 69,
@@ -4618,14 +4370,14 @@
       "text": "predicateResult"
      },
      {
-      "line": 71,
+      "line": 70,
       "category": "genericTemporaries",
-      "text": "predicateResult"
+      "text": "scratchValue2"
      },
      {
       "line": 71,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
       "line": 72,
@@ -4643,14 +4395,9 @@
       "text": "predicateResult"
      },
      {
-      "line": 74,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
       "line": 75,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 79,
@@ -4675,7 +4422,7 @@
      {
       "line": 85,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 86,
@@ -4683,34 +4430,39 @@
       "text": "FLOW_past_lab_00e92080"
      },
      {
-      "line": 90,
+      "line": 91,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 93,
+      "line": 94,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 97,
+      "line": 98,
       "category": "genericTemporaries",
-      "text": "predicateResult2"
+      "text": "scratchValue2"
      },
      {
       "line": 99,
       "category": "genericTemporaries",
-      "text": "predicateResult2"
+      "text": "predicateResult"
      },
      {
       "line": 100,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 101,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
      },
      {
       "line": 102,
-      "category": "gotos",
-      "text": "goto"
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 104,
@@ -4719,48 +4471,43 @@
      },
      {
       "line": 106,
-      "category": "genericTemporaries",
-      "text": "predicateResult2"
-     },
-     {
-      "line": 106,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 107,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 110,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 108,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 109,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 112,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 115,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 118,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 121,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 125,
       "category": "gotos",
       "text": "goto"
+     },
+     {
+      "line": 114,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 117,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 120,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 123,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 127,
@@ -4769,133 +4516,128 @@
      },
      {
       "line": 129,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "category": "gotos",
+      "text": "goto"
      },
      {
-      "line": 138,
+      "line": 131,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 142,
+      "line": 140,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 146,
+      "line": 144,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 149,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 152,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 155,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 158,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 161,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 165,
+      "line": 169,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 168,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 172,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 173,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 175,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
+      "text": "scratchValue3"
      },
      {
       "line": 176,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 177,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 178,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 180,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
-      "line": 191,
+      "line": 181,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 182,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 186,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 197,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 191,
+      "line": 197,
       "category": "nativeNames",
       "text": "LAB_00e923f7"
      },
      {
-      "line": 194,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 196,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
       "line": 200,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 202,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 207,
+      "line": 206,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 209,
+      "line": 208,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 212,
+      "line": 213,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 212,
-      "category": "nativeNames",
-      "text": "LAB_00e923f7"
-     },
-     {
-      "line": 214,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): iVar4 = *(iVar4 + 0x70)"
      },
      {
       "line": 215,
@@ -4903,79 +4645,64 @@
       "text": "scratchValue3"
      },
      {
-      "line": 215,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 216,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 217,
+      "line": 218,
       "category": "gotos",
       "text": "goto"
      },
      {
       "line": 218,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "category": "nativeNames",
+      "text": "LAB_00e923f7"
      },
      {
-      "line": 219,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "line": 220,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): iVar4 = *(iVar4 + 0x70)"
      },
      {
       "line": 221,
       "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
+      "text": "--[[unresolved native value]]"
      },
      {
       "line": 223,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
-      "line": 225,
+      "line": 224,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
       "line": 226,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 228,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
-     },
-     {
-      "line": 230,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 232,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 233,
+      "line": 228,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 234,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
+      "line": 230,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
-      "line": 235,
+      "line": 231,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 232,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
+     },
+     {
+      "line": 234,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 236,
@@ -4983,224 +4710,284 @@
       "text": "scratchValue3"
      },
      {
-      "line": 237,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
       "line": 238,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
       "line": 239,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
      },
      {
       "line": 240,
       "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
-     },
-     {
-      "line": 241,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
      },
      {
       "line": 242,
-      "category": "genericTemporaries",
-      "text": "scratchValue3"
-     },
-     {
-      "line": 243,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 244,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
       "line": 246,
       "category": "genericTemporaries",
-      "text": "scratchValue3"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 247,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 248,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);"
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      },
      {
       "line": 250,
-      "category": "gotos",
-      "text": "goto"
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
-      "line": 253,
-      "category": "gotos",
-      "text": "goto"
+      "line": 251,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 252,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 254,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 255,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): goto FLOW_after_flow_native_label_2_357"
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
      },
      {
       "line": 256,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue3"
      },
      {
-      "line": 261,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 263,
+      "line": 258,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
-      "line": 265,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 265,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e923f7"
-     },
-     {
-      "line": 266,
-      "category": "nativeNames",
-      "text": "LAB_00e923f7"
-     },
-     {
-      "line": 267,
+      "line": 259,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue2"
      },
      {
-      "line": 268,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e923f7"
-     },
-     {
-      "line": 273,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): CVar2 = *quest:GetStateString(\"LastDialogueSaid\")"
-     },
-     {
-      "line": 274,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 274,
-      "category": "unresolvedDiagnostics",
-      "text": "--[[unresolved native value]]"
-     },
-     {
-      "line": 275,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 275,
-      "category": "machineTemporaries",
-      "text": "in_stack_fffffff0"
-     },
-     {
-      "line": 277,
-      "category": "genericTemporaries",
-      "text": "scratchValue"
-     },
-     {
-      "line": 277,
-      "category": "machineTemporaries",
-      "text": "in_stack_fffffff0"
-     },
-     {
-      "line": 279,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then"
-     },
-     {
-      "line": 283,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);"
-     },
-     {
-      "line": 284,
+      "line": 260,
       "category": "genericTemporaries",
       "text": "scratchValue3"
      },
      {
-      "line": 288,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 289,
+      "line": 263,
       "category": "genericTemporaries",
       "text": "scratchValue2"
      },
      {
-      "line": 289,
+      "line": 264,
       "category": "genericTemporaries",
-      "text": "scratchValue6"
+      "text": "scratchValue2"
      },
      {
-      "line": 290,
+      "line": 265,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);"
+     },
+     {
+      "line": 267,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 270,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 272,
       "category": "genericTemporaries",
-      "text": "scratchValue6"
+      "text": "scratchValue2"
+     },
+     {
+      "line": 273,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 274,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 279,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 281,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 283,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 283,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e923f7"
+     },
+     {
+      "line": 284,
+      "category": "nativeNames",
+      "text": "LAB_00e923f7"
+     },
+     {
+      "line": 285,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 286,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e923f7"
      },
      {
       "line": 291,
-      "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): CVar2 = *quest:GetStateString(\"LastDialogueSaid\")"
      },
      {
-      "line": 291,
+      "line": 292,
       "category": "genericTemporaries",
-      "text": "scratchValue6"
+      "text": "scratchValue"
      },
      {
-      "line": 293,
+      "line": 292,
+      "category": "unresolvedDiagnostics",
+      "text": "--[[unresolved native value]]"
+     },
+     {
+      "line": 294,
       "category": "genericTemporaries",
-      "text": "scratchValue2"
+      "text": "scratchValue"
+     },
+     {
+      "line": 294,
+      "category": "machineTemporaries",
+      "text": "in_stack_fffffff0"
      },
      {
       "line": 296,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "scratchValue"
      },
      {
-      "line": 299,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "line": 296,
+      "category": "machineTemporaries",
+      "text": "in_stack_fffffff0"
+     },
+     {
+      "line": 298,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): if *(CVar2 + 4) == *(in_stack_fffffff0 + 4) then"
      },
      {
       "line": 302,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): iVar4 = CBasicString<char>::Compare(*(void **)CVar2,*(void **)in_stack_fffffff0);"
+     },
+     {
+      "line": 307,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 305,
+      "line": 308,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 308,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
       "line": 309,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): quest:SetStateString(\"LastDialogueSaid\", &pcVar7)"
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 309,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
      },
      {
       "line": 310,
       "category": "genericTemporaries",
       "text": "scratchValue4"
+     },
+     {
+      "line": 311,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 311,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 313,
+      "category": "genericTemporaries",
+      "text": "scratchValue2"
+     },
+     {
+      "line": 316,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 319,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 322,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 327,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
+     },
+     {
+      "line": 332,
+      "category": "unresolvedDiagnostics",
+      "text": "-- TODO(native): quest:SetStateString(\"LastDialogueSaid\", &pcVar7)"
+     },
+     {
+      "line": 333,
+      "category": "genericTemporaries",
+      "text": "scratchValue3"
      }
     ]
    }

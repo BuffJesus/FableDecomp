@@ -458,3 +458,51 @@ smokes use the same explicit SickChild parameter report, so its new string argum
 thing table by the name heuristic. `stage_v38.py`, `validate_v38.py`, `package_validation_v38.json` and
 `bundle_payload_diff.json` in marathon scratch preserve the procedure and results. No installation or
 in-game run. Next: GuildMaster hidden string-return/cleanup recovery, then separate Witch persistence.
+
+### GuildMaster hidden result and returning cleanup checkpoint
+
+Offline continuation from `9512faa`; scratch `work/codex_guild_marathon_20260928/`.
+Recovered `GetGuildMasterSpeech`'s hidden output argument and fixed the general cleanup-region pass
+so a region ending in a value return propagates that value. Previously several terminating speech
+branches called a local function returning the empty string and then returned nil themselves. A
+return now ends the region immediately, before any unreachable jump or subsequent side effects.
+The expression is evaluated after cleanup statements. Empty regions and delegated emitted tails
+retain their value returns too. Existing loop/ambiguous-control exclusions remain.
+
+Native evidence: helper `0x00E91F20` has a by-value CCharString ego_r declaration, one hidden output
+word, and `ret 4` exits at `0x00E922E2` / `0x00E924E9`. The output appears only in result constructors
+and returns. Recovery accepts the omitted entry-stack declaration and explicit CCharString_bv
+export spelling, but rejects escaped outputs, wrong purge/signature, alternate returns and collisions.
+`abi_evidence.txt` records retail instructions. No generated Lua was hand-edited.
+
+Promoted exactly two draft and two readable Lua files (quest body and shared speech helper), plus
+reports. GuildMasterGameFlow is unchanged. **100 focused tests and eight subtests pass**: 74 return/
+cleanup cases plus 26 existing string/readability tests; eight unrelated generated/native string cases
+were deliberately deselected. Tests exercise both helper contexts in both stages, 11 phase results,
+three terminating branches, cleanup-before-return behavior and rejected evidence. Optional random
+information selection is disabled in phase fixtures: cache correctness/random-call counts are NOT
+claimed. The original in-process generator fixture hit the known Unicorn mem_map access violation;
+the final fixture isolates constructor emulation in a subprocess and passed. No full-suite claim.
+
+All **29 units** regenerated before/after with unchanged evidence: only GuildMaster's two Lua files
+differ; **28 unrelated units identical**. Baseline snapshots match HEAD. Final draft equals the A/B
+result, and promoted Lua equals tested scratch. **371 current Lua files parse**, zero failures.
+Readable diagnostics 1439 -> 1419, mechanical only. Smoke JSON is byte-equivalent in content before/
+after: two existing `in_stack_fffffff0` free-global reports remain, no new errors. Reports and source
+hashes are in `ab/comparison.json`, `source_hashes.json`, `return_tests.log`, `focused.log`,
+`review.diff`, `promotion.json`, `readability.json`, and `smoke_{before,after}.json`.
+
+Further ABI findings are scratch-only, not merged into registered evidence: CRT rand import
+`0x00BFEB16` is a cdecl zero-argument tail thunk, not the inferred four-argument stdcall. Literal
+CCharString constructor `0x0099EBF0` returns its receiver in EAX (mov eax,esi / ret 8); typing it void
+loses the source of GuildMaster's immediately following copy constructor. A read-only Ghidra export
+with those corrections and the explicit hidden output succeeds (`typing_spec.json`,
+`translation_unit_typed.json`, `typed_export.log`), restoring local_10 stack identity. It exposes
+remaining lowering for the constructor-result alias, inline string equality/cache assignment, and
+Hero Souls master-state field at +0x70. The registered export and specs remain unchanged.
+
+Next: finish those generic lowering paths and test repeat-selection/random counts and Hero Souls
+branches before merging the corrected export. Then recover GuildMasterGameFlow's distinct movie
+cleanup continuations versus the true return epilogue; native evidence in the previous marathon
+must remain separate. Witch progress persistence remains another task. v38 is unchanged: GuildMaster
+is outside its roster. No new bundle, installation, game launch or push.

@@ -4,9 +4,6 @@ function helper_E91F20(quest, me)
     local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_sequence_1, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5
     local alive = true
     -- TODO(native): CCharString::CCharString(&xStack_c,other);
-    local function __region_LAB_00e92061()
-        do return "" end
-    end
     iVar1 = quest:GetMasterGameState("PostSavePosition")
     if iVar1 < 0x385 then
         if iVar1 == 900 then
@@ -68,10 +65,10 @@ function helper_E91F20(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar3 = not alive
                                             if bVar6 then
-                                                if bVar3 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                                if bVar3 then do return "" end end
                                                 goto LAB_00e92080
                                             end
-                                            if bVar3 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                            if bVar3 then do return "" end end
                                             pcVar7 = "TEXT_QST_081_SECOND_MAZE_MEETING"
                                         else
                                             -- FLOW_native_label_2_c2: (native jump target)
@@ -107,14 +104,14 @@ function helper_E91F20(quest, me)
                                 bVar3 = not alive
                                 if bVar6 then
                                     if bVar3 then
-                                        -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                         -- LAB_00e922c9_c3: (native jump target)
                                         do return "" end
                                         goto FLOW_after_flow_native_label_2
                                     end
                                     goto FLOW_native_label_1
                                 end
-                                if bVar3 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                if bVar3 then do return "" end end
                                 pcVar7 = "TEXT_QST_081_MAZE_TELEPORT_TO_WW"
                                 break
                             else
@@ -208,12 +205,12 @@ function helper_E91F20(quest, me)
                                     if not quest:GetMasterGameState("SeenAbbeyMotherAtGuild") then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                        if bVar6 then do return "" end end
                                         pcVar7 = "TEXT_QST_081_BEFORE_HOOK_COAST"
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                        if bVar6 then do return "" end end
                                         pcVar7 = "TEXT_QST_081_HOOK_COAST"
                                     end
                                     break
@@ -272,7 +269,7 @@ function helper_E91F20(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then
-                                __region_LAB_00e92061()
+                                do return "" end
                                 goto FLOW_after_flow_native_label_2_357
                             end
                             pcVar7 = "TEXT_QST_081_HERO_SOULS"
@@ -282,7 +279,7 @@ function helper_E91F20(quest, me)
                                 bVar6 = not alive
                                 if bVar6 then
                                     -- LAB_00e92207: (native jump target)
-                                    -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                                    -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                     do return "" end
                                     goto FLOW_after_flow_native_label_2_357
                                 end
@@ -293,7 +290,7 @@ function helper_E91F20(quest, me)
                                     bVar6 = not alive
                                     if bVar6 then
                                         -- LAB_00e92048: (native jump target)
-                                        -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                         do return "" end
                                         goto FLOW_after_flow_native_label_2_357
                                     end
@@ -302,32 +299,32 @@ function helper_E91F20(quest, me)
                                     if iVar4 == 3 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                        if bVar6 then do return "" end end
                                         pcVar7 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_KILLED_THUNDER"
                                     else
                                         if iVar4 == 4 then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
-                                            if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                            if bVar6 then do return "" end end
                                             pcVar7 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_GOT_ARENA_SOUL"
                                         else
                                             if iVar4 == 5 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                                if bVar6 then do return "" end end
                                                 pcVar7 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_VISIT_YOUR_MOTHER"
                                             else
                                                 if iVar4 == 6 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
-                                                    if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                                    if bVar6 then do return "" end end
                                                     pcVar7 = "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_BRIAR"
                                                 else
                                                     if iVar4 ~= 7 then
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar6 = not alive
                                                         if bVar6 then
-                                                            -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                                                            -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                                             do return "" end
                                                             goto FLOW_after_flow_native_label_2_357
                                                         end
@@ -337,7 +334,7 @@ function helper_E91F20(quest, me)
                                                     end
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
-                                                    if bVar6 then __region_LAB_00e92061(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                                    if bVar6 then do return "" end end
                                                     pcVar7 = "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_SCYTHE"
                                                 end
                                             end

@@ -4,9 +4,6 @@ local GetGuildMasterSpeech
 function GetGuildMasterSpeech(quest, me)
     local predicateResult, scratchValue2, getHeroTitle, sequence1, scratchValue3, scratchValue4
     -- TODO(native): CCharString::CCharString(&xStack_c,other);
-    local function ReleaseEverything()
-        do return "" end
-    end
     local getMasterGameState = quest:GetMasterGameState("PostSavePosition")
     if getMasterGameState < 901 then
         if getMasterGameState == 900 then
@@ -54,10 +51,10 @@ function GetGuildMasterSpeech(quest, me)
                         scratchValue2 = quest:IsQuestCompleted("QS_GuardianSisterInfo2_SisterInBanditCamp")
                         predicateResult = quest:IsActiveThreadTerminating()
                         if scratchValue2 then
-                            if predicateResult then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                            if predicateResult then do return "" end end
                             goto LAB_00e92080
                         end
-                        if predicateResult then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                        if predicateResult then do return "" end end
                         scratchValue3 = "TEXT_QST_081_SECOND_MAZE_MEETING"
                     else
                         -- FLOW_native_label_2_c2: (native jump target)
@@ -85,13 +82,13 @@ function GetGuildMasterSpeech(quest, me)
                         predicateResult = quest:IsActiveThreadTerminating()
                         if scratchValue2 then
                             if predicateResult then
-                                -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                                -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                                 do return "" end
                                 goto FLOW_after_flow_native_label_2
                             end
                             goto FLOW_native_label_1
                         end
-                        if predicateResult then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                        if predicateResult then do return "" end end
                         scratchValue3 = "TEXT_QST_081_MAZE_TELEPORT_TO_WW"
                         break
                     elseif switch5 == 850 then
@@ -160,11 +157,11 @@ function GetGuildMasterSpeech(quest, me)
                         elseif switch7 == 1300 then
                             if not quest:GetMasterGameState("SeenAbbeyMotherAtGuild") then
                                 scratchValue2 = quest:IsActiveThreadTerminating()
-                                if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                if scratchValue2 then do return "" end end
                                 scratchValue3 = "TEXT_QST_081_BEFORE_HOOK_COAST"
                             else
                                 scratchValue2 = quest:IsActiveThreadTerminating()
-                                if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                                if scratchValue2 then do return "" end end
                                 scratchValue3 = "TEXT_QST_081_HOOK_COAST"
                             end
                             break
@@ -208,14 +205,14 @@ function GetGuildMasterSpeech(quest, me)
                 if getHeroTitle == 0 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
                     if scratchValue2 then
-                        ReleaseEverything()
+                        do return "" end
                         goto FLOW_after_flow_native_label_2_357
                     end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS"
                 elseif getHeroTitle == 1 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
                     if scratchValue2 then
-                        -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                         do return "" end
                         goto FLOW_after_flow_native_label_2_357
                     end
@@ -223,32 +220,32 @@ function GetGuildMasterSpeech(quest, me)
                 elseif getHeroTitle == 2 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
                     if scratchValue2 then
-                        -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                        -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                         do return "" end
                         goto FLOW_after_flow_native_label_2_357
                     end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_1ST_SOUL_VISIT_THE_ARENA"
                 elseif getHeroTitle == 3 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
-                    if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                    if scratchValue2 then do return "" end end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_KILLED_THUNDER"
                 elseif getHeroTitle == 4 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
-                    if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                    if scratchValue2 then do return "" end end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_TALK_TO_BRIAR_GOT_ARENA_SOUL"
                 elseif getHeroTitle == 5 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
-                    if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                    if scratchValue2 then do return "" end end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_2ND_SOUL_VISIT_YOUR_MOTHER"
                 elseif getHeroTitle == 6 then
                     scratchValue2 = quest:IsActiveThreadTerminating()
-                    if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                    if scratchValue2 then do return "" end end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_BRIAR"
                 else
                     if getHeroTitle ~= 7 then
                         scratchValue2 = quest:IsActiveThreadTerminating()
                         if scratchValue2 then
-                            -- TODO(native): CCharString::CCharString(in_stack_00000004,&xStack_c);
+                            -- TODO(native): CCharString::CCharString(&hiddenStringResult,&xStack_c);
                             do return "" end
                             goto FLOW_after_flow_native_label_2_357
                         end
@@ -256,7 +253,7 @@ function GetGuildMasterSpeech(quest, me)
                         goto FLOW_after_flow_native_label_2_357
                     end
                     scratchValue2 = quest:IsActiveThreadTerminating()
-                    if scratchValue2 then ReleaseEverything(); return end  -- TODO(native): goto FLOW_after_flow_native_label_2_357
+                    if scratchValue2 then do return "" end end
                     scratchValue3 = "TEXT_QST_081_HERO_SOULS_3RD_SOUL_TALK_TO_SCYTHE"
                 end
             else

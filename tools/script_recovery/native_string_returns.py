@@ -174,20 +174,33 @@ def recover_void_string_returns(functions, stack_words):
         if re.search(r'\bhiddenStringResult\b', source):
             continue
         comment = re.search(r'/\*\s*\[bsim[^\]]*\]([\s\S]*?)\*/', source)
-        if not comment or not re.search(r'class\s+CCharString\s+__thiscall\s+[\w:]+\(void\)', comment[1]):
+        if not comment or not re.search(r'class\s+CCharString\s+__thiscall\s+[\w:]+\s*\(void\)', comment[1]):
             continue
-        header = re.search(r'(?:int|CCharString\s*\*|undefined4)\s*__thiscall\s+[\w:]+\((?P<receiver>\w+\s*\*this),'
-                           r'\s*(?:int|undefined4|CCharString\s*\*)\s*(?P<out>\w+)\)', source)
+        header = re.search(r'(?:int|CCharString(?:_bv)?\s*\*|undefined4)\s*__thiscall\s+[\w:]+\s*\((?P<receiver>\w+\s*\*this),'
+                           r'\s*(?:int|undefined4|CCharString(?:_bv)?\s*\*)\s*(?P<out>\w+)\)', source)
+        dropped = False
+        if not header:
+            # A dropped hidden output can remain as an entry-stack declaration
+            # instead of appearing in the header (GuildMaster GetGuildMasterSpeech).
+            header = re.search(r'(?:int|CCharString(?:_bv)?\s*\*|undefined4)\s*__thiscall\s+[\w:]+\s*\('
+                               r'(?P<receiver>\w+\s*\*this)\)', source)
+            dropped = bool(header and re.search(r'^[ \t]*CCharString \*in_stack_00000004;',
+                                                source[header.end():], re.M))
+            if not dropped:
+                continue
         if not header or stack_words(int(address, 16)) != 1:
             continue
-        out, body = header['out'], source[header.end():]
+        out, body = 'in_stack_00000004' if dropped else header['out'], source[header.end():]
+        if dropped:
+            body = re.sub(r'^[ \t]*CCharString \*in_stack_00000004;[ \t]*\r?\n', '', body, flags=re.M)
         uses = len(re.findall(r'\b' + re.escape(out) + r'\b', body))
-        ctors = len(re.findall(r'CCharString::CCharString\(\(CCharString \*\)' + re.escape(out) + r',', body))
+        constructor = r'CCharString::CCharString\((?:\(CCharString \*\))?' + re.escape(out) + r','
+        ctors = len(re.findall(constructor, body))
         returns = len(re.findall(r'\breturn ' + re.escape(out) + r';', body))
         if not ctors or not returns or uses != ctors + returns or re.search(r'\breturn\b(?! ' + re.escape(out) + r';)', body):
             continue
         body = body.replace('{', '{\n  CCharString hiddenStringResult;', 1)
-        body = re.sub(r'CCharString::CCharString\(\(CCharString \*\)' + re.escape(out) + r',',
+        body = re.sub(constructor,
                       'CCharString::CCharString(&hiddenStringResult,', body)
         body = re.sub(r'\breturn ' + re.escape(out) + r';', 'return hiddenStringResult;', body)
         # the copy source is a pointer temp set to a local on every path into the shared exit (`other = &xStack_8;
