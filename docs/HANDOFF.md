@@ -1,4 +1,17 @@
-# Lua recovery handoff - 2026-09-26
+# Lua recovery handoff - 2026-09-28
+
+**Bedtime stop (2026-09-28, user request):** work stopped after checkpoint
+`07de0f4`. No game or Lua playtest runner remains running; no overnight test or
+background job was started. Resume only when the user returns. v43 is the current
+local test candidate; older v35-v42 launch-readiness claims are superseded by the
+DLL-role diagnosis below. The shared installation is unchanged; nothing pushed.
+
+On resume: first recover StatueMaster's dropped `_CIfmod`/ST0 angle result
+(Main 0x00ED3B30, Lua line 30), then SickChild's bed position/orientation and teleport
+operands (Main 0x00EC5DE0, Lua line 33). Use generic lowering and fresh generated
+behavior tests, then the required scratch A/B before promotion. Replay the existing
+Wasp-completed checkpoint after staging fixes; continue the earlier-script coverage
+queue in the runtime journal. Remaining Witch speech/cleanup work stays open.
 
 **v43 runtime checkpoint (2026-09-28):** user reauthorized game testing and requested
 coverage of earlier scripts. Fixed v35-v42 DLL-role staging mistake (sidecar had

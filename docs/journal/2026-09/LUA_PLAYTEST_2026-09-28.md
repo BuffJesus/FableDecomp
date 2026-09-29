@@ -83,3 +83,20 @@ The 11 newly added overrides since v30 are Bordello, Chicken Kicking, Sick Child
 Book Collecting, Oakvale Revisited, BeardyBaldy, Dragon Boss Fight, Hero's Old House,
 Singing Stones, StatueMaster and Summoning the Ship. Earlier successful runs of
 other quests do not validate these, and later source changes require their own replay.
+
+
+## Bedtime checkpoint
+
+Stopped at the user's request after implementation/runtime checkpoint `07de0f4`.
+Verified no Fable process or Lua launch/replay runner remains active. No overnight
+work scheduled. All 561 saves were verified unchanged after the completed replay;
+shared install unchanged, local commits only.
+
+Resume with the two demonstrated failures: StatueMaster angle-result lowering,
+then SickChild bed teleport operands. Preserve the existing v43 evidence; stage a
+new candidate after reviewed generator fixes, repeat the Maze/Bowerstone replay,
+and continue the earlier-script queue above. Witch's remaining speech/cleanup
+recovery is still open, not the sole next priority.
+
+`docs/ROADMAP.md` already had unrelated working-tree edits at shutdown and was left
+untouched. This handoff and runtime journal carry the current Lua resume state.
