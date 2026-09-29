@@ -1,5 +1,10 @@
 # Lua recovery handoff - 2026-09-26
 
+**v38 ready offline (2026-09-28):** SickChild checkpoint `62a0685`; five bundled Lua updates over v37,
+unchanged sidecar e83c39f. 210 Lua parse, 216 hashes match, no new package smoke failures (16 old mock
+failures remain). Not installed or run; local commits not pushed. Next: GuildMaster hidden string return
+and cleanup tails. Latest journal records the helper tests, remaining SickChild gaps and exact bundle.
+
 **Latest SickChild marathon (2026-09-28):** two-string helper and four callers recovered; five draft/readable
 Lua files promoted, including the laughing woman's leaving-cutscene string map. 100 tests pass, 371 files
 parse, all 28 unrelated units unchanged. SickChild smoke 4 -> 1 (old WomanToAttract free global remains).

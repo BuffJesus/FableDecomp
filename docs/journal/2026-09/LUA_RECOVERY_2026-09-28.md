@@ -443,3 +443,18 @@ resource at 0x00E91F02 and returns. Do not merge these into one exit. Evidence i
 return and cleanup control flow are the next recovery target. Witch persistence also remains suspect:
 OnPersist currently serializes ThingsForPotionGot as a quest bool instead of the local integer progress;
 that is separate from this tested helper/branch recovery.
+
+### Candidate v38 staged offline
+
+Source checkpoint **62a0685**, local only. `work/new-oakvale-original-fse-20260912/local-candidate-v38`
+is v37 plus exactly five reviewed SickChild roster Lua files. All other payloads match v37 byte-for-byte
+apart from manifest/STAGING metadata. Existing pinned lineages and 38 override registrations are preserved;
+no ambiguous mappings. Sidecar remains **e83c39f**, DLL SHA-256
+`f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+
+Validation: **210 Lua files parse, 216 manifest hashes match, no new package smoke failures**. Sixteen
+existing package mock failures remain; SickChild's old helper failure is resolved. Both before/after bundle
+smokes use the same explicit SickChild parameter report, so its new string argument is not supplied a
+thing table by the name heuristic. `stage_v38.py`, `validate_v38.py`, `package_validation_v38.json` and
+`bundle_payload_diff.json` in marathon scratch preserve the procedure and results. No installation or
+in-game run. Next: GuildMaster hidden string-return/cleanup recovery, then separate Witch persistence.
