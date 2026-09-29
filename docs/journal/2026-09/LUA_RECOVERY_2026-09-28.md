@@ -561,3 +561,18 @@ separate. Do not merge those cleanup paths merely because they unpause and destr
 Final label-entry guard rejects comparison-result reads when a jump can bypass the replacement
 assignment. Compared both guard versions on all 1,973 exported function inputs: no generated changes
 (`label_guard_corpus.json`). Final targeted rerun: 693 passed. Source hashes refreshed after this guard.
+
+### Candidate v39 staged offline
+
+Source checkpoint **3a59649**, local only. `work/new-oakvale-original-fse-20260912/local-candidate-v39`
+is v38 plus exactly BB_BeardyBaldyMan.lua with its four recovered requirement stores. GuildMaster remains
+outside the 38-entry override roster. All other payloads match v38; only manifest/STAGING metadata also
+changes. Sidecar remains **e83c39f**, DLL SHA-256
+`f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+
+Validation: **210 Lua files parse, 216 manifest hashes match, no new package smoke failures**; the same
+16 old package mock failures remain. Both package smokes use the existing SickChild parameter report.
+`stage_v39.py`, `validate_v39.py`, `package_validation_v39.json`, and `bundle_payload_diff.json` in the
+current scratch preserve the procedure and exact comparison. No installation, game launch or push.
+Next: GuildMasterGameFlow's movie cleanup continuations versus its true return epilogue; keep the separate
+Witch progress-persistence issue on the list.

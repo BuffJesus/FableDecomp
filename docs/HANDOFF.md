@@ -1,5 +1,11 @@
 # Lua recovery handoff - 2026-09-26
 
+**v39 ready offline (2026-09-28):** source `3a59649`; one BeardyBaldy roster file over v38, unchanged
+sidecar e83c39f. 210 Lua parse / 216 hashes match / no new package smoke errors (16 old mock failures).
+Not installed or run; local commits not pushed. GuildMaster cache/Hero Souls recovery is committed but
+outside the candidate roster. Next: GuildMaster movie cleanup continuations versus return; Witch progress
+persistence remains separate. See latest journal and `work/codex_guild_cache_20260928/`.
+
 **GuildMaster cache / Hero Souls checkpoint (2026-09-28):** speech helper fully lowers its string/cache
 operations and reads Hero Souls progress; four BeardyBaldy requirement stores also recovered. Three
 draft/readable Lua files promoted. 693 targeted tests / 81 compatibility tests pass, 371 Lua parse,
