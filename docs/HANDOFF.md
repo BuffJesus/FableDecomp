@@ -1,5 +1,12 @@
 # Lua recovery handoff - 2026-09-26
 
+**v41 ready offline (2026-09-28):** source `c6ed7dc`; three roster Lua updates over v40
+(Teacher, Mother, Witch). 210 Lua parse / 216 hashes match / zero new package smoke failures
+(16 old mock failures). Sidecar e83c39f unchanged. Not installed or run; local only.
+Next: Witch dynamic/merged speech operands, on-hit branch gating and movie/string cleanup
+identities. See latest journal and `work/codex_witch_receivers_20260928/`.
+
+
 **Member-resource checkpoint (2026-09-28):** recovered 13 health receivers and five literal
 speech calls in Witch, SickChildsMother and BS_Teacher. 164 distinct tests pass; 29-unit A/B
 leaves 27 units identical; both affected typed smokes clear; 371 corpus Lua parse. Three
@@ -94,7 +101,7 @@ only WomanToAttract. 58 tests / 7 subtests pass; smoke unchanged; 371-file synta
 run in-game. Next per desktop transcript: GuildMaster goto structure, then v37 staging. See the latest entry in
 [journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md); scratch `work/codex_timer_20260928/`.
 
-**Resume here (2026-09-28, evening):** corpus smoke 21 â†’ 2 failing functions today, 0 new; 1 real
+**Resume here (2026-09-28, evening):** corpus smoke 21 Ã¢â€ â€™ 2 failing functions today, 0 new; 1 real
 ([journal](journal/2026-09/LUA_RECOVERY_2026-09-28.md)): SickChild helper_ECE460 (`$ARG1` from a resource string member unless "NULL":
 needs the resource layout). Roth fixed (byte flag printed under two dwords). Today: quest helpers reclassified from entity code, literal TextKeys, vector slots,
 IsDistanceFromPositionUnder (sidecar patch `novi-zzzzzzzzzzzzzzzzzzz-position-under`, candidate builds), dead
@@ -152,11 +159,11 @@ teacher dispatch remain. See [continuation and next gates](journal/2026-09/CODEX
 **Playtesting is allowed again (user, 2026-09-24).** Another session may share the install: check before launching.
 Branch: `feat/novi-script-recovery`. Task priorities live in [ROADMAP.md](ROADMAP.md).
 
-**Twelfth pass (2026-09-27): script-member resources.** Syntax failures 16 â†’ 10. Retail
+**Twelfth pass (2026-09-27): script-member resources.** Syntax failures 16 Ã¢â€ â€™ 10. Retail
 `seh_*` resource members and the `csargs` string map now lower to a persistent sidecar store
 (`resources:MemberResource / MemberStringMap / AssignResource / ClearStringMap`, patch
 `novi-zzzzzzzzzzzzzz-member-resources.patch`, candidate DLL builds; NOT installed or in-game
-validated). **Afternoon: syntax failures 10 â†’ 0** (369 files; 24 superseded first-generation lifts
+validated). **Afternoon: syntax failures 10 Ã¢â€ â€™ 0** (369 files; 24 superseded first-generation lifts
 listed in `SUPERSEDED.json`). OakValeRevisited and BookCollecting recovered (flag maps, member thing lists,
 `quest:GlobalConversations`); the six old clusters are registered units (`register_unit.py`). 23-unit A/B: only
 the five intended units change. Two more sidecar patches (state-list resize, global conversations), candidate

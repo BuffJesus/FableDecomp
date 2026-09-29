@@ -1,14 +1,14 @@
 # Lua recovery, 2026-09-28
 
 Continuation of [the 2026-09-27 marathon](CODEX_LUA_MARATHON_2026-09-27.md). Corpus smoke (all 29 units,
-readable stage): **21 â†’ 15 failing functions, 0 new** (morning run at `ea7603e` vs. after promotion; scratch
+readable stage): **21 Ã¢â€ â€™ 15 failing functions, 0 new** (morning run at `ea7603e` vs. after promotion; scratch
 in `work/codex_lua_20260928/`). Nothing installed or run in-game.
 
 ## Converter fixes
 
 - **Literal string-vector members** (`native_literal_string_vectors.py`): a member `vector<CWideString|CCharString>`
   that Init resizes and fills slot by slot from UTF-16 `.rdata` literals, and that nothing else writes, becomes a
-  file-level `local <PdbName> = {...}`; reads `*(this+OFF) + i*4` become `LOCALLIST_StringAt` â†’ `Name[i + 1]`.
+  file-level `local <PdbName> = {...}`; reads `*(this+OFF) + i*4` become `LOCALLIST_StringAt` Ã¢â€ â€™ `Name[i + 1]`.
   CChickenSign::TextKeys (PDB +0x1c, Init 0x00E68DC0): the sign now reads `TEXT_QST_B17_SIGN_WON_*[PrizesWon + 1]`
   and passes it to `SetReadableObjectText` (retail vtable 0xB24 with the wide string; ForgeFSE wraps that slot).
 - **Quest methods called through the entity's parent** (`quest_unit_evidence.parent_receiver_only`): the
@@ -88,7 +88,7 @@ Analysed, not fixed (next session):
 
 ## Afternoon: dead cleanup flags, split counters (after `c3046c0`)
 
-Corpus smoke **15 â†’ 8** failing functions (21 â†’ 8 since the morning), none new; 7 real (ScorpionHome is intentional). Remaining: BookCollecting
+Corpus smoke **15 Ã¢â€ â€™ 8** failing functions (21 Ã¢â€ â€™ 8 since the morning), none new; 7 real (ScorpionHome is intentional). Remaining: BookCollecting
 BookReaction/DoConversation, OakValeFire, the two Arena cell guards, Roth, SickChild helper_ECE460, and
 ScorpionHome (intentional).
 
@@ -116,20 +116,20 @@ ScorpionHome (intentional).
 
 ## Evening: AskForBook, member-resource speech (after `cb6bc76`)
 
-Corpus smoke **8 â†’ 5** failing functions, none new; 4 real: the two Arena cell guards, Roth, SickChild
+Corpus smoke **8 Ã¢â€ â€™ 5** failing functions, none new; 4 real: the two Arena cell guards, Roth, SickChild
 helper_ECE460 (ScorpionHome is intentional).
 
 - **Lost parameter from the reviewed prototype** (`native_function_parameters`): BS_Teacher AskForBook 0x00E55CE0 is
   `AskForBook(long, class CCharString)` in ego_r (RET 8) but exported with one `CCharString_bv param_1`. When every
   reviewed parameter is one dword and each missing one's this-call stack slot is referenced, it is appended under its
-  slot name (`stack0x00000008` â†’ `native_arg_param_2`, renamed before the stack-slot passes) and the reviewed scalar
+  slot name (`stack0x00000008` Ã¢â€ â€™ `native_arg_param_2`, renamed before the stack-slot passes) and the reviewed scalar
   type replaces the export's; the refusal line reads the caller's key.
 - **Callers' pushed operands** (`native_local_helper_operands.py`): a local helper call printed with fewer operands than
   its recovered signature gets the missing ones decoded from the pushes before it (in-place by-value CCharString
   literal, immediates, `this` / parent member loads), only when every missing one decodes. AskForBook's callers now
   pass `(LastBookRequested, "TEXT_QST_B16_BOOK_REFUSE_AGAIN")` and `(value, "TEXT_QST_B16_BOOK_REFUSED")`; before, the
   first passed nothing and `value < booksWanted` would have compared nil.
-- **Member-resource vtable calls**: slot 0x34 is `Speak`, 0x30 `GetScriptThing` (hidden result slot â†’
+- **Member-resource vtable calls**: slot 0x34 is `Speak`, 0x30 `GetScriptThing` (hidden result slot Ã¢â€ â€™
   `resources:ScriptThing`), also directly on the member (`*(this + 0x34)`), through a local copied from a member alias,
   and through a vtable temporary. SickChildsMother/Witch now wait on `IsPerformingScriptTask()` (was `while nil`),
   WomanToAttract speaks its laugh lines, BS_Teacher speaks its refusals.
@@ -142,7 +142,7 @@ helper_ECE460 (ScorpionHome is intentional).
 
 ## Late: Roth's high-byte flag (after `8d92536`)
 
-Corpus smoke **5 â†’ 4** failing functions (Arena cell guards Ã—2, SickChild helper_ECE460, ScorpionHome intentional).
+Corpus smoke **5 Ã¢â€ â€™ 4** failing functions (Arena cell guards Ãƒâ€”2, SickChild helper_ECE460, ScorpionHome intentional).
 Arena Roth Main (0x00F21880) keeps a byte flag at `[esp+0x13]` (`mov byte ptr [esp+0x13], 1`; cleared when
 GetHealth <= 0; read back), which Ghidra prints under two dwords: `pCVar15 = CONCAT13(1,(int3)pCVar22)` stores, the
 test reads `pCVar22 >> 0x18`, and one site stores `CONCAT13(bVar3, ...)`. `fold_cross_variable_high_byte_flags`
@@ -168,7 +168,7 @@ Branch pushed at `26e5fa9`.
 
 ## Night: receivers by reaching definitions (after `4a30c2b`)
 
-Corpus smoke **4 â†’ 2** failing functions (SickChild helper_ECE460; ScorpionHome intentional).
+Corpus smoke **4 Ã¢â€ â€™ 2** failing functions (SickChild helper_ECE460; ScorpionHome intentional).
 `native_receiver_reaching.py`: for an entity's thing vtable call, ecx is traced to its source register and every
 definition of that register reaching the call is collected over a CFG decoded from the machine code (direct jumps,
 fall-through, and switch tables bounded by a preceding `cmp reg, N`; anything else, no claim). When all are
@@ -189,7 +189,7 @@ recovered the speaker, both IsAlive checks, AddNewConversation, the speaker's da
 temporary, `comment_type` / `comment_to_make` as string temporaries: a raw `CONCAT31(...)` call and
 `r2:IsEqualTo(r3._4_4_)` would become reachable). Enabling comments in an in-game-proven package needs the whole
 function right; next step is parameter-slot reuse for this function. Kept from the attempt: `CScriptThing::GetDataString
-(X, &slot)` â†’ `slot = X:GetDataString()` (and GetName / GetDefName).
+(X, &slot)` Ã¢â€ â€™ `slot = X:GetDataString()` (and GetName / GetDefName).
 
 ## Night: `me` through an int register (after `d82fd83`)
 
@@ -214,7 +214,7 @@ identical values (draft only; its readable is hand-reviewed). The A/B snapshot s
 
 ## Candidate v36 (staged, not installed or run)
 
-v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort Ã—2), sidecar
+v35 + 6 roster Lua files (BordelloClient, BordelloLady, Witch, BanditCamp Gate1GuardOuter, TraderEscort Ãƒâ€”2), sidecar
 unchanged. 210 Lua parse, 216 hashes match; mock smoke vs v35 unchanged. Gate1GuardOuter's talk check moves from the
 hero to the guard (retail), in a package completed in-game with the old line.
 
@@ -740,3 +740,16 @@ trace on-hit branch gating and distinct movie/string cleanup identities in Witch
 Witch's remaining on-hit flow can still enter an incorrect cleanup path; this is not a complete
 Witch port or an in-game proof. Sidecar unchanged. No installation, game launch or push.
 Candidate v41 staging follows this source checkpoint.
+
+### Candidate v41 staged offline
+
+Source checkpoint **c6ed7dc**, local only. `work/new-oakvale-original-fse-20260912/local-candidate-v41`
+is v40 plus the three reviewed roster Lua files: BS_Teacher, SickChildsMother and Witch.
+All other payloads match v40 byte-for-byte, except manifest/STAGING metadata. Existing pinned
+lineages remain unchanged. **210 Lua parse, 216 manifest hashes match, 38 overrides, zero new
+package smoke failures**; the same 16 old mock failures remain. Sidecar stays **e83c39f**, DLL
+SHA-256 `f0ded2603690b8325fb0565d8aa0829b83887300f62c5553b03b828513e7df2c`.
+Selection and validation are in stage_v41.py, stage_v41.log, validate_v41.py,
+package_validation_v41.json and bundle_payload_diff.json under the receiver scratch directory.
+Not installed or run; no push. Next: Witch dynamic/merged speech operands, on-hit branch gating
+and distinct movie/string cleanup identities; Mother on-hit cleanup also needs separate proof.
