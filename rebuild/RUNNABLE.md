@@ -1,5 +1,15 @@
 # Runnable reconstruction
 
+## October 10, 2026 status
+
+Native recovery is active; see [the latest native update](../docs/NATIVE_STATUS.md).
+The newer local GPU test renders one retail title sprite through recovered
+drawing routines. Its integration decoder/device/upload/readback boundaries
+remain explicit, and its source/test checkpoint is not yet merged into `main`.
+The executable documented below is the published authored frontend checkpoint,
+not proof of full native-engine boot, world rendering or playable gameplay.
+Older verification entries below are historical, not newly rerun by this update.
+
 This dashboard tracks the shortest honest path from independently verified
 functions to a reconstructed executable. It does not count a diagnostic
 bootstrap as a running game.

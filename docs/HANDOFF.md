@@ -1,4 +1,19 @@
-# Resume here (one page) — updated 2026-09-07
+# Public handoff — updated 2026-10-10
+
+## Current public checkpoint
+
+Native recreation is active. Read [NATIVE_STATUS.md](NATIVE_STATUS.md) for the
+October 10 local verification results, current boundaries and publication scope.
+This update publishes status only; the newer local source/test checkpoint is
+not merged into `main`. The generated dashboard remains the September snapshot.
+The published frontend is authored integration, not a playable native engine.
+
+The resume instructions below are historical September notes. Their branch,
+head, clean-tree and `main` equality claims are not current instructions.
+Do not blindly merge the development branch: unrelated Lua work must stay out
+of a native-only publishing checkpoint.
+
+## Historical September 7 handoff
 
 ## State
 - Branch: `feat/script-recovery-marathon` (head `2e038aa`, clean tree, `main` == this head); `main` was fast-forwarded (519 commits) and pushed to `BuffJesus/FableDecomp` on 2026-09-07 — fast-forward it again after each checkpoint. Note: `git add` on this tree takes 1–6 minutes and HANGS if another process is writing under `rebuild/` (or a reserved-name file like `CON` exists); never run it concurrently with the header generator or retype.

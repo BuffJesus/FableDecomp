@@ -4,10 +4,12 @@ An evidence-gated reconstruction of the native 32-bit Windows
 `Fable.exe`, targeting readable, buildable C/C++ source and a durable native
 modding platform.
 
-> **Current state:** the reconstructed executable boots through the recovered
-> startup path, plays the retail intro sequence, and presents an interactive
-> frontend checkpoint. The complete engine, renderer, and game loop are not yet
-> reconstructed.
+> **Actively developed — October 10, 2026.** Native C/C++ reconstruction is
+> continuing. Recent local tests render a retail title sprite through recovered
+> drawing routines and validate connected texture-loading and lifetime paths.
+> The existing interactive frontend is an authored integration checkpoint,
+> not proof that the reconstructed native engine boots or that the game is playable.
+> [Latest native progress and remaining boundaries](docs/NATIVE_STATUS.md).
 
 [Run the checkpoint](#run-the-checkpoint) ·
 [See current progress](#current-progress) ·
@@ -67,15 +69,22 @@ a worklist, not the intended end state.
 <a id="current-progress"></a>
 ## 2. Current progress
 
+**Latest activity: October 10, 2026.** See the [native development update](docs/NATIVE_STATUS.md)
+for recent recovery and real-GPU validation. This publication updates project
+status; the newer local source/test checkpoint is not yet merged into `main`.
+The generated whole-project figures below remain the **September 7 snapshot**,
+not current completion estimates. Native subsystem checkpoint counts must not
+be added to these totals without a reconciled dashboard refresh.
+
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
 | Verified functional or matching reconstruction | **18,579 · 37.48%** |
 | Byte-identical reconstruction | **8,082 · 16.30%** |
 | Accepted analysis naming quality | **99.211%** |
-| Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
+| Runnable milestone | **Authored integration checkpoint: boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **37.48%** of the 49,568-function catalog.
+Snapshot functional-or-matching coverage is **37.48%** of the 49,568-function catalog.
 Of that verified set, **16.30%** is byte-identical C++.
 The first 5% byte-match milestone has been passed.
 
@@ -129,6 +138,10 @@ numbers.
 
 <a id="run-the-checkpoint"></a>
 ## 3. Run the checkpoint
+
+This runs the authored frontend/integration checkpoint already published in
+`main`. It is not a playable native-engine reconstruction or the newer local
+retail-title raster test described in the [October update](docs/NATIVE_STATUS.md).
 
 From the repository root:
 
@@ -237,7 +250,8 @@ technical material lives in focused documents.
 
 | Document | Purpose |
 |---|---|
-| [HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md) | Authoritative latest checkpoint and exact resume state |
+| [NATIVE_STATUS.md](docs/NATIVE_STATUS.md) | Latest native development update and publication boundaries |
+| [HANDOFF.md](docs/HANDOFF.md) | Current public handoff and historical resume state |
 | [ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md) | Ranked work with acceptance gates |
 | [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md) | Build, launch, smoke, and runtime-boundary instructions |
 | [TOOLCHAIN.md](docs/BUILDING.md) | Ghidra, BSim, FSE, VC7.1, and local prerequisites |

@@ -1,5 +1,20 @@
 # FableTLC roadmap (single source of truth for "what's done / in flight / next")
 
+## Current native focus — October 10, 2026
+
+- [x] Publish a dated native activity update and clarify authored frontend versus recovered engine behavior — [NATIVE_STATUS.md](NATIVE_STATUS.md).
+- [x] Local real-GPU verification draws a retail title sprite; this is not full native frontend boot or gameplay.
+- [ ] Publish dependency-complete reviewed native source/test checkpoints; newer implementations remain local.
+- [ ] Recover remaining native bank-loading/resource-lifetime dependencies, preserving two-attempt deferrals.
+- [ ] Extend verified rendering toward a persistent native visual launch and later world/gameplay initialization.
+- [ ] Reconcile generated whole-project metrics before updating coverage percentages.
+
+## Historical September roadmap
+
+The checklist below records the older published checkpoint, not the current
+native-only work queue. In particular, its broad branch-merge and Lua tasks
+are not instructions for the current native publication.
+
 Updated 2026-09-07. Checklists only. `[x]` = done with evidence, `[ ]` = open, "(verify)" = status
 unconfirmed. Numbers come from `rebuild/COVERAGE.md` (dashboard generated 2026-08-28). Resume
 instructions live in `docs/HANDOFF.md`; long history in `docs/journal/HANDOFF_ARCHIVE.md`.
