@@ -2,7 +2,7 @@
 
 Plan, 2026-09-26. Status: **design agreed, nothing built**. Owner decisions (user, 2026-09-26) are
 marked **[decided]**. Evidence for the platform list: [PLATFORM_SURFACE](PLATFORM_SURFACE.md)
-(generated). Scripting runtime: [SCRIPTING_REDESIGN](../engine/SCRIPTING_REDESIGN.md). Layer rules:
+(generated). Scripting runtime: `docs/engine/SCRIPTING_REDESIGN.md` (lands with the docs reorganization). Layer rules:
 [ARCHITECTURE](../ARCHITECTURE.md).
 
 Contents

@@ -11,8 +11,10 @@ a larger buffer. The read loop 0xAB4910 already refills until the device is empt
     python tools/modern/mouse_buffer_patch.py --exe <Fable.exe> --out <patched.exe> [--records 8192]
 
 The input is never modified; --out must be a different path. Only the Steam retail executable is
-accepted (SHA-256 below), and both patch sites are checked byte for byte before writing. Untested
-in-game: try it on a copy, with the game install not shared by another session.
+accepted (SHA-256 below), and both patch sites are checked byte for byte before writing.
+Verified live 2026-10-17 with the same value written into memory at process start: injected
+1,500-record bursts overflow retail's buffer (DI_BUFFEROVERFLOW) and drain without overflow at
+8,192 (docs/modern/FRAME_TIMING.md "Live results"). The patched file itself has not been played.
 """
 from __future__ import annotations
 

@@ -219,6 +219,17 @@ x86 on the banks up to 250 MB. Read-only use of the install.
   (256 → 8,192 records). Tested on a scratch copy; nothing in the install was touched. In-game
   test pending (needs an unshared install and a 4-8 kHz mouse).
 
+## Live session (user: "You may use the game")
+
+PR #36 opened (`modern/fork-prep-2026-10-17`, from a `main` worktree): modern-tree CI green
+on Ubuntu GCC + LZO and Windows MSVC x64. The docs check flagged one link to a file not yet on
+main; fixed in the PR. Then a live session (FRAME_TIMING "Live results"): the world ticks at
+exactly 15.000 Hz with 4 renders per world frame at 60 Hz VSync. The mouse buffer overflow is
+confirmed live with injected bursts (`DI_BUFFEROVERFLOW` on retail 256) and fixed by 8,192
+(0 overflows, drained in 256-record chunks). The VSync-off measurement is not done (the confirm
+dialog timed out under automation). Two probe sessions died at detach and the game had to be
+closed; all 563 saves were restored and verified.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).

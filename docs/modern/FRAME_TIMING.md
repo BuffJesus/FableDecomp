@@ -185,6 +185,38 @@ it explained a bug that appears only at *high* frame rates. The reported high-fp
 frames (per-frame increments without dt) rather than code that reads the clock. That needs a
 different scan: per-frame counters in render/UI update paths, starting under the UI update 0x599E3F.
 
+## Live results (2026-10-17, retail Fable.exe, validated Lua bundle, adult checkpoint save)
+
+Session scripts: `work/modern_live_20261017/` (not committed: `probe.py`, `inject.py`,
+`early_patch.py`, `mem_patch.py`). All 563 save files were backed up, then restored and
+hash-verified afterwards; the install was not modified.
+
+- **World tick: exactly 15.000 Hz.** The `CMainGameComponent` frame counter (+0x48) was polled
+  with ReadProcessMemory: 225 frames in 15.0 s, median step 66.67 ms, no multi-frame catch-up.
+  The render counter (+0x16138, reset every world frame) peaks at **4 renders per world frame**
+  in 224/225 frames, so render is 60.0 Hz on a 60 Hz mode with the game's own Vertical Sync
+  option on (defaults: `VerticalSyncEnabled TRUE;`, `RefreshRate 0;`). The game sets the
+  display mode itself (1024×768 at 60 Hz here, on a 165 Hz-capable monitor).
+- **Uncapped / high-refresh not measured yet.** `RefreshRate 4` set in the profile does not
+  apply on load (the game rewrites the profile with `RefreshRate 0`). Video Options → Vertical
+  Sync OFF → Apply shows a 10-second real-time confirm (`GFGetTime` based, 0x47EA8D), which the
+  automated input was too slow to accept. Next try: confirm with a single fast click right
+  after Apply, or set the present interval directly.
+- **Mouse buffer overflow confirmed live, and the patch fixes it.** BPs right after both
+  `GetDeviceData` calls in the CMouseDX read loop (0xAB498C, 0xAB49B5) counted the HRESULT and
+  the records returned, while `inject.py` sent 1,500 single-count moves per `SendInput` call
+  (about 130-190 ms per burst, so 1,500 records reach the buffer within 2-3 world frames).
+  Retail (256): the burst reads back as a 255-record read flagged **`DI_BUFFEROVERFLOW`**
+  (2 in run 1, 24 in run 2). With `DIPROP_BUFFERSIZE` 8,192 written into memory 0.3 ms after
+  the process appeared (`early_patch.py`, before the mouse device exists), the same burst drains
+  as 256 + 256 + ... + remainder reads, all `DI_OK`, **0 overflows**. The read loop refills as
+  predicted. A patch written later does not take effect: the device is created at startup and
+  is not recreated on world entry.
+- Debugger gotcha: detaching dbgeng from a running target after a `go()` timeout failed
+  ("target not accessible") and left every game thread suspended. Resuming them killed the
+  game, because the dead session's break-in thread was parked on `int3`. End a session from a
+  breakpoint handler that returns BREAK, then clear the BPs and detach.
+
 ### "Per frame" tunables (PDB member names)
 
 Of the PDB members named per-frame, most sit on thing components (`CTCDivineWrath::NumFramesBetweenDamageHit`,
@@ -266,7 +298,8 @@ settings toggle (scale or zero the three def fields), not a timing fix.
   Tool: `python tools/modern/mouse_buffer_patch.py --exe <Fable.exe> --out <copy.exe> [--records N]`.
   It accepts only the unmodified Steam executable (full SHA-256), checks both `C7 44 24 24 00 01
   00 00` sites, writes a copy (it never modifies the input), and changes exactly 2 bytes. `--check`
-  reports a file's current buffer size. Not yet run in-game.
+  reports a file's current buffer size. The same value written into memory was verified live
+  ("Live results" below).
 
 **Cleared: the GUI, sprite and speech-gain per-frame tunables** (Ego_r readers by member offset,
 then the retail counterpart by call order):
