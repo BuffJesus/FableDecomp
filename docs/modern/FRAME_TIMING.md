@@ -200,8 +200,9 @@ hash-verified afterwards; the install was not modified.
 - **Uncapped / high-refresh not measured yet.** `RefreshRate 4` set in the profile does not
   apply on load (the game rewrites the profile with `RefreshRate 0`). Video Options → Vertical
   Sync OFF → Apply shows a 10-second real-time confirm (`GFGetTime` based, 0x47EA8D), which the
-  automated input was too slow to accept. Next try: confirm with a single fast click right
-  after Apply, or set the present interval directly.
+  automated input could not accept: OK ignores clicks, ENTER and SPACE (FINDINGS_LOG
+  2026-10-17). During the countdown the new mode is live, so the next try is an 8 s sample right
+  after Apply, or the present interval set in memory before device creation.
 - **Mouse buffer overflow confirmed live, and the patch fixes it.** BPs right after both
   `GetDeviceData` calls in the CMouseDX read loop (0xAB498C, 0xAB49B5) counted the HRESULT and
   the records returned, while `inject.py` sent 1,500 single-count moves per `SendInput` call
