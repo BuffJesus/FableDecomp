@@ -27,3 +27,11 @@ See `docs/ARCHITECTURE.md` for the promotion and modernization policy.
   codec for individual cut-co-op `CGameEvent` records, with boundary and stream
   tests. Package framing and gameplay dispatch remain future evidence-gated
   work.
+- `save/` — retail saves and profiles: the `FableSave!` container (zlib, retail load gates),
+  every body section typed (HEADER, clock, PLAYER, ENTITIES cells, NPC names, REGIONS,
+  QUESTS/FACTIONS text and boasts) and `Profile.bin`. Every game-written save (402) and profile
+  (153) re-encodes byte-identically. LZO for the text blobs is an optional GPL download. See
+  `save/README.md`.
+- `bank/` — the BIGB `.big` bank container (TOCs, payload views, minimal-repack writer). All 17
+  bank files in the install round-trip byte-identically, and resize/revert edits hold. See
+  `bank/README.md`.

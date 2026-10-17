@@ -1,0 +1,41 @@
+name: modern-tree
+
+# The C++23 modern tree (rebuild/modern) builds and tests on Linux and Windows x64.
+# MODERNIZATION.md: "CI builds Linux ... from step 1 on". No retail data is needed; the retail
+# save corpus check (fable_save_check) is run locally.
+on:
+  push:
+    branches: [main]
+    paths: ["rebuild/modern/**", ".github/workflows/modern-tree.yml"]
+  pull_request:
+    paths: ["rebuild/modern/**", ".github/workflows/modern-tree.yml"]
+
+jobs:
+  linux-gcc:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Classic zlib (zlib-ng would break byte-identical saves)
+        run: sudo apt-get update && sudo apt-get install -y zlib1g-dev ninja-build
+      # This job links the optional LZO (GPL, downloaded and hash-checked at configure time) so
+      # both the byte-exact and the stored-form text-blob paths are built; Windows leaves it off.
+      - name: Configure (with pinned LZO 2.10 download)
+        run: cmake -S rebuild/modern -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DFABLE_SAVE_WITH_LZO=ON
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  windows-msvc-x64:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+      - name: Configure (pinned zlib 1.3.1 download)
+        run: cmake -S rebuild/modern -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
