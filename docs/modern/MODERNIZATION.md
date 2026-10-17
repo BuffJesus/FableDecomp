@@ -43,6 +43,15 @@ rewrite from scratch. The fork starts from the reconstructed source and changes 
 | Location | **[decided]** Separate CMake tree in this repo (`modern/`), apart from the VC7.1 parity tree. |
 | Fork gate | Source-complete, not byte-complete (below). |
 
+- **Compression: open source where we can** (decided 2026-10-17, user: "Open source where we
+  can"). Reading retail data needs LZO1X and zlib, and the fork reads LZO1X with its own MIT
+  decoder (`rebuild/modern/codec`). Files the original game must still load are written as LZO1X
+  with the MIT encoder ported from FableForge, or in retail's stored form. The fork's own new
+  formats (new saves, caches, mod packages) use zstd (BSD) by default, LZ4 (BSD) where
+  decode speed matters more than size, and zlib where retail compatibility asks for it. Upstream
+  LZO (GPL) stays an optional, never-vendored test dependency for byte-identical retail rewrites
+  (`FABLE_SAVE_WITH_LZO`), and nothing the fork ships needs it.
+
 ## Reconstruction standard: functional first, byte-close
 
 This replaces "every function must be a byte-exact MATCH" as the bar for counting a function as

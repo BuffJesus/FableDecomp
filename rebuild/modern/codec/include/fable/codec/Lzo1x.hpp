@@ -20,4 +20,9 @@ enum class Lzo1xError {
 [[nodiscard]] std::expected<std::vector<std::byte>, Lzo1xError> lzo1x_decompress(
     std::span<const std::byte> stream, std::size_t expected_size);
 
+// LZO1X encoder (MIT, ported from FableForge): hash-chain matches and a cost-based parse over the
+// exact grammar. Valid LZO1X for any decoder, the retail engine's included, but not
+// lzo1x_999's exact bytes (byte-identical rewrites still need upstream LZO; see save/README).
+[[nodiscard]] std::vector<std::byte> lzo1x_compress(std::span<const std::byte> data);
+
 } // namespace fable::codec

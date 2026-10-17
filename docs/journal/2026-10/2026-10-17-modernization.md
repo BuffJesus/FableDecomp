@@ -256,6 +256,24 @@ from the GPU: "FABLE / The Lost Chapters" (`work/title_view/presented.png`). Dec
 0x18/0x23. MSVC x64/x86 and GCC builds, tests green, 0 warnings. The viewer is a pixel check,
 not the step-4 RHI.
 
+- **Correction and the real step-1 result.** The user pointed out that the post came from the
+  parity session: reconstructed engine code (17 VC7.1-parity renderer functions,
+  `gate_native_retail_title_raster.py`) drawing the sprite, not new code. So
+  `work/modern_title_raster/build.py` compiles those same 17 sources, the
+  `NativeRetailTitleRaster_test.cpp` harness and its decoder, all unmodified, with **VS 2022
+  x86** (`/O2 /MT /std:c++17 /permissive /Zc:wchar_t-`), runs them on the GPU, and compares with
+  the VC7.1 run's frames: **8/8 byte-identical** (the 288×160 title raster plus 7 controls,
+  46,080 title pixels). This is fork step 1 on real reconstructed rendering code. x64 stops at
+  the parity tree's own 32-bit guards (`rebuild_abi.h` pointer-size check and the
+  `fable_surface_types.h` size asserts), i.e. the fork-types job of step 2.
+
+- **Compression decision: open source where we can.** The MIT LZO1X encoder from FableForge
+  (the user's program; `src/lzo1x.cpp`, commit a358de0) was ported into `rebuild/modern/codec`.
+  The save writer now uses it when upstream LZO is not linked, and all 8,698 corpus text blobs
+  re-encode and decode back. The policy is in MODERNIZATION "Decisions": LZO1X (MIT) or stored
+  form for retail-loadable files, zstd/LZ4/zlib for the fork's own formats, and GPL LZO only as
+  an optional byte-exact test. Codec round-trip tests added (5 suites green, MSVC + GCC).
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).

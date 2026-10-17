@@ -24,8 +24,9 @@ namespace fable::save {
 // and when the compressed stream would not be shorter than size - 3.
 [[nodiscard]] std::expected<std::string, PersistError> read_lz_text(PersistReader& in);
 
-// Byte-exact with retail when the build links LZO (lzo_compressor_available()); otherwise the
-// stored form, which decodes to the same text.
+// Byte-exact with retail when the build links upstream LZO (lzo_compressor_available());
+// otherwise compressed with the tree's MIT LZO1X encoder: a valid stream that decodes to the same
+// text, but not retail's exact bytes. Falls back to the stored form if that is not smaller.
 void write_lz_text(PersistWriter& out, std::string_view text);
 
 [[nodiscard]] bool lzo_compressor_available() noexcept;

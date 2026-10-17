@@ -16,8 +16,8 @@
 // or `entities:` verdict instead.
 //
 // REGIONS is decoded and must re-encode exactly. QUESTS and FACTIONS (LZO text blobs) are decoded too. A build with FABLE_SAVE_WITH_LZO must
-// re-encode them byte for byte; without LZO they re-encode in the stored form, and the check
-// is that the stored form decodes back to the same text (`quests:` / `factions:` verdicts).
+// re-encode them byte for byte; without it they re-encode with the MIT encoder, and the check
+// is that the result decodes back to the same text (`quests:` / `factions:` verdicts).
 
 #include <fable/save/Entities.hpp>
 #include <fable/save/Profile.hpp>
@@ -207,7 +207,7 @@ int main(int argc, char** argv)
             std::cout << verdict << '\t' << path.string() << '\n';
         }
     }
-    std::cout << "text blobs: " << (fable::save::lzo_compressor_available() ? "LZO byte-exact" : "stored form (no LZO)")
+    std::cout << "text blobs: " << (fable::save::lzo_compressor_available() ? "LZO byte-exact" : "MIT LZO1X encoder (valid, not byte-exact)")
               << '\n';
     int rejected = 0;
     for (const auto& [verdict, count] : totals) {

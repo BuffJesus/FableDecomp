@@ -28,9 +28,11 @@ stay opaque bytes.
 ## Licensing (LZO)
 
 This tree is MIT. LZO is GPL-2.0-or-later, so it is never committed here. The decoder in
-`src/Lzo.cpp` is this module's own implementation of the LZO1X stream format, and without LZO the
-writer emits retail's own stored form (`i16 0` then the raw text). That is the shape retail
-writes when compression does not help, and its reader accepts it. Configure with
+`../codec` holds the tree's own LZO1X decoder and an MIT LZO1X encoder ported from FableForge.
+Without upstream LZO, the writer compresses text blobs with that encoder: a valid stream the
+retail reader accepts, but not retail's exact bytes. It falls back to retail's stored form
+(`i16 0` then the raw text) when compression does not help. All 8,698 corpus text blobs
+re-encode with it and decode back to the same text. Configure with
 `-DFABLE_SAVE_WITH_LZO=ON` to download upstream LZO 2.10 (SHA-256 pinned) or build it from
 `FABLE_LZO_SOURCE_DIR`, and get byte-exact re-encoding. A binary built that way is a combined
 work under the GPL, so whoever distributes it must also offer its source. Either way, everyone

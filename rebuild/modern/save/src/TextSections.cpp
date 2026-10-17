@@ -2,6 +2,8 @@
 
 #include "Lzo.hpp"
 
+#include <fable/codec/Lzo1x.hpp>
+
 #include <algorithm>
 #include <array>
 #include <string>
@@ -96,7 +98,12 @@ void write_lz_text(PersistWriter& out, std::string_view text)
         return;
     }
     const std::string_view head = text.substr(0, text.size() - raw_tail);
-    const auto stream = detail::lzo1x_999_compress(as_bytes(head));
+    // Upstream lzo1x_999 (optional GPL link) gives retail's exact bytes; otherwise the MIT encoder
+    // gives a valid LZO1X stream the retail reader accepts.
+    auto stream = detail::lzo1x_999_compress(as_bytes(head));
+    if (!stream) {
+        stream = codec::lzo1x_compress(as_bytes(head));
+    }
     if (!stream || stream->size() >= head.size()) {
         write_stored(out, text);
         return;
