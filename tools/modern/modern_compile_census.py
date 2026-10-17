@@ -256,14 +256,15 @@ def write_report(rows: list[dict], x86: dict, x64: dict, limit: int | None) -> N
         lines.append(f"| {k} | {s86.get(k, 0)} ({pct(s86.get(k, 0))}) | {s64.get(k, 0)} ({pct(s64.get(k, 0))}) |")
     lines += ["", f"Compile in both configurations: **{both}** ({pct(both)}).", ""]
     # What x64 actually needs, by kind of fix (each line is one piece of work, not one TU).
-    top_ptr = ptr_origin.most_common(1)[0] if ptr_origin else ("-", 0)
     own = "(the TU's own source)"
+    headers_ptr = [(o, n) for o, n in ptr_origin.most_common() if o != own]
+    top_ptr = headers_ptr[0] if headers_ptr else ("-", 0)
     lines += ["## x64 readiness by fix", "",
               f"- **Errors:** {s64.get('error', 0)} TUs; {err_codes64.get('C2821', 0)} are `operator new(unsigned int)`"
-              " in shared headers (one `size_t` spelling each, see below).",
-              f"- **Pointer-width warnings:** {sum(ptr_origin.values())} diagnostics; {top_ptr[1]} come from"
-              f" {len(ptr_unique[top_ptr[0]])} lines of `{top_ptr[0]}` and {len(ptr_unique[own])} sites from"
-              f" {ptr_origin_tus[own]} TUs' own sources.",
+              " (C2821: the size parameter must be spelled `size_t`).",
+              f"- **Pointer-width warnings:** {sum(ptr_origin.values())} diagnostics: {len(ptr_unique[own])} sites in"
+              f" {ptr_origin_tus[own]} TUs' own sources, and {sum(len(ptr_unique[o]) for o, _ in headers_ptr)} lines in"
+              f" {len(headers_ptr)} shared headers (largest: `{top_ptr[0]}`, {top_ptr[1]} diagnostics).",
               f"- **Inline asm:** {s64.get('inline_asm', 0)} TUs, the asm-bake (de-bake) backlog; x64 has no inline asm.",
               "- **Layouts:** see `--layouts` below; the fork's own types replace the PDB layouts.",
               "",

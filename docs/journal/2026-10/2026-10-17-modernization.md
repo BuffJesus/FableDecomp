@@ -230,6 +230,19 @@ confirmed live with injected bursts (`DI_BUFFEROVERFLOW` on retail 256) and fixe
 dialog timed out under automation). Two probe sessions died at detach and the game had to be
 closed; all 563 saves were restored and verified.
 
+- **x64 header fixes applied (user permission 2026-10-17)**: `operator new(unsigned int)` →
+  `operator new(size_t)` in `fable_memory_allocator.h` (2), `fable_file_installer.h`,
+  `fable_boot.h` and `fable_user_profile.h`, and the `fable_string.h` `unknown04`/`unknown08` shim
+  retyped from `fable_u32` to `size_t`. Proven byte-neutral first: all 428 affected TUs (the 128
+  C2821 TUs plus a 300-TU sample of the 1,577 `fable_string.h` TUs) were compiled with VC7.1
+  `/O2 /Oy` against before/after copies of `rebuild/include`, and 427/427 that compile give
+  identical `objdump -d -r` (1 fails both ways). Census rerun: **x64 clean 88.9% → 96.5%**,
+  errors 144 → 26, pointer warnings 14,549 → 468. Left: 8 C2821 in individual sources
+  (placement `operator new`), and new C4267s where the class `operator new(size_t)` forwards to
+  `fable_u32` allocators, a real x64 narrowing the fork must widen. The edited headers also hold
+  other sessions' uncommitted edits, so they are not committed (scratch verifier
+  `hdrfix_verify.py`, results in `work/hdrfix/result.json`).
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
