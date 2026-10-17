@@ -1,0 +1,3022 @@
+{
+ "source": "tools/modern/d3d9_device_census.py",
+ "functions_scanned": 48655,
+ "call_sites": 341,
+ "out_of_range_slots": 0,
+ "seed_globals": {
+  "01436E18": "CRenderManagerCore",
+  "013CB508": "CRenderManager"
+ },
+ "static_instances": 2629,
+ "rtti_typed_methods": 8948,
+ "typed_globals": 87,
+ "typed_methods": 11311,
+ "interfaces": {
+  "IDirect3D9": {
+   "CheckDeviceFormat": {
+    "call_sites": 11,
+    "functions": 11
+   },
+   "CheckDepthStencilMatch": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "CheckDeviceMultiSampleType": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "GetAdapterModeCount": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "EnumAdapterModes": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DDevice9": {
+   "SetTexture": {
+    "call_sites": 116,
+    "functions": 57
+   },
+   "SetStreamSource": {
+    "call_sites": 42,
+    "functions": 29
+   },
+   "SetIndices": {
+    "call_sites": 35,
+    "functions": 28
+   },
+   "SetVertexShaderConstantF": {
+    "call_sites": 34,
+    "functions": 28
+   },
+   "DrawPrimitiveUP": {
+    "call_sites": 9,
+    "functions": 2
+   },
+   "SetTransform": {
+    "call_sites": 6,
+    "functions": 6
+   },
+   "DrawIndexedPrimitive": {
+    "call_sites": 4,
+    "functions": 4
+   },
+   "DrawPrimitive": {
+    "call_sites": 4,
+    "functions": 4
+   },
+   "Release": {
+    "call_sites": 3,
+    "functions": 3
+   },
+   "SetPixelShader": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "Present": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "BeginScene": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "EndScene": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetRenderTarget": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetDepthStencilSurface": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetSamplerState": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetTextureStageState": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetRenderState": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "GetDeviceCaps": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "DrawIndexedPrimitiveUP": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "ShowCursor": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetCursorPosition": {
+    "call_sites": 2,
+    "functions": 1
+   },
+   "CreateIndexBuffer": {
+    "call_sites": 2,
+    "functions": 2
+   },
+   "SetVertexShader": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetVertexDeclaration": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetPixelShaderConstantF": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreatePixelShader": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "Clear": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetGammaRamp": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetViewport": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "StretchRect": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "GetDisplayMode": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "Reset": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "GetBackBuffer": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "GetDepthStencilSurface": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "TestCooperativeLevel": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateOffscreenPlainSurface": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateDepthStencilSurface": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateRenderTarget": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateTexture": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetFVF": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateVertexShader": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateVertexDeclaration": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "CreateVertexBuffer": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "SetCursorProperties": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DIndexBuffer9": {
+   "Release": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DPixelShader9": {
+   "Release": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DSurface9": {
+   "Release": {
+    "call_sites": 3,
+    "functions": 3
+   },
+   "AddRef": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "GetDesc": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DTexture9": {
+   "Release": {
+    "call_sites": 3,
+    "functions": 3
+   },
+   "GetLevelDesc": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "GetSurfaceLevel": {
+    "call_sites": 1,
+    "functions": 1
+   },
+   "AddRef": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DVertexDeclaration9": {
+   "Release": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DVertexShader9": {
+   "Release": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DVolume9": {
+   "Release": {
+    "call_sites": 1,
+    "functions": 1
+   }
+  },
+  "IDirect3DVolumeTexture9": {
+   "Release": {
+    "call_sites": 3,
+    "functions": 2
+   },
+   "AddRef": {
+    "call_sites": 2,
+    "functions": 2
+   }
+  }
+ },
+ "sites": [
+  {
+   "function": "00988020",
+   "name": "ApplyVertexShader",
+   "call": "009880A7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShader",
+   "tier": "B"
+  },
+  {
+   "function": "00988020",
+   "name": "ApplyVertexShader",
+   "call": "009880C5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexDeclaration",
+   "tier": "B"
+  },
+  {
+   "function": "00988190",
+   "name": "DisablePixelShaders",
+   "call": "009881A8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetPixelShader",
+   "tier": "B"
+  },
+  {
+   "function": "009887B0",
+   "name": "SetVSMatrixConstantTransposed",
+   "call": "00988825",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00988840",
+   "name": "SetVSMatrixConstantTransposed",
+   "call": "009888D1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00988A20",
+   "name": "UpdatePixelShader",
+   "call": "00988A3A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetPixelShader",
+   "tier": "B"
+  },
+  {
+   "function": "00988A50",
+   "name": "UpdateCombinedProjectionTransform",
+   "call": "00988E04",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00988E30",
+   "name": "UpdateWorldTransform",
+   "call": "00988E60",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00988E80",
+   "name": "UpdateLocalisedSphereMapping",
+   "call": "009891F8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989230",
+   "name": "UpdateObjectSpaceTextureTransform",
+   "call": "0098945A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009894B0",
+   "name": "UpdateWorldSpaceTextureTransform",
+   "call": "009894FC",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989540",
+   "name": "UpdateObjectSpaceFogTransform",
+   "call": "00989616",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989640",
+   "name": "UpdateWorldSpaceFogTransform",
+   "call": "00989688",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009896D0",
+   "name": "SetUserVertexShaderConstants",
+   "call": "009896F3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989700",
+   "name": "UpdateAmbient",
+   "call": "00989743",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989760",
+   "name": "UpdateAmbient",
+   "call": "009897A3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009897C0",
+   "name": "UpdateFogColour",
+   "call": "0098980D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989910",
+   "name": "SetShadowFadeTransform",
+   "call": "0098994C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989960",
+   "name": "SetShadowFadeFactors",
+   "call": "0098999D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009899B0",
+   "name": "SetShadowSpotLightFallloffParameters",
+   "call": "00989A08",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009899B0",
+   "name": "SetShadowSpotLightFallloffParameters",
+   "call": "00989A47",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989A60",
+   "name": "SetUserVertexShaderConstant",
+   "call": "00989AA1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989AB0",
+   "name": "SetUserVertexShaderConstant",
+   "call": "00989AED",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989B00",
+   "name": "SetUserVertexShaderConstant",
+   "call": "00989B41",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989B50",
+   "name": "SetUserVertexShaderConstant",
+   "call": "00989B8D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989BA0",
+   "name": "SetXBoxUserVertexShaderConstant",
+   "call": "00989BD9",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989BF0",
+   "name": "UpdatePixelShaderConstants",
+   "call": "00989C98",
+   "interface": "IDirect3DDevice9",
+   "method": "SetPixelShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989CB0",
+   "name": "UpdateObjectSpaceLighting",
+   "call": "00989D6D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989CB0",
+   "name": "UpdateObjectSpaceLighting",
+   "call": "0098A05C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989CB0",
+   "name": "UpdateObjectSpaceLighting",
+   "call": "0098A3F8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "00989CB0",
+   "name": "UpdateObjectSpaceLighting",
+   "call": "0098A4FA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098A540",
+   "name": "UpdateWorldSpaceLighting",
+   "call": "0098A5BD",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098A540",
+   "name": "UpdateWorldSpaceLighting",
+   "call": "0098A6E7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098A540",
+   "name": "UpdateWorldSpaceLighting",
+   "call": "0098A737",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098A760",
+   "name": "UpdateLightGlobals",
+   "call": "0098A783",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098A9A0",
+   "name": "CreatePixelShader",
+   "call": "0098A9D2",
+   "interface": "IDirect3DDevice9",
+   "method": "CreatePixelShader",
+   "tier": "B"
+  },
+  {
+   "function": "0098B930",
+   "name": "SetVSConstants",
+   "call": "0098B94C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098C470",
+   "name": "SetXBoxUserVertexShaderConstant",
+   "call": "0098C4A7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098C4C0",
+   "name": "SetXBoxUserVertexShaderConstant",
+   "call": "0098C4F7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "0098C510",
+   "name": "SetXBoxUserVertexShaderConstant",
+   "call": "0098C546",
+   "interface": "IDirect3DDevice9",
+   "method": "SetVertexShaderConstantF",
+   "tier": "B"
+  },
+  {
+   "function": "009A0CF0",
+   "name": "AttachTextureToStage",
+   "call": "009A0D21",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "009A25D0",
+   "name": "?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "009A2763",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "009A25D0",
+   "name": "?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "009A27A1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "009A25D0",
+   "name": "?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "009A33F7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "009A25D0",
+   "name": "?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "009A3433",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "009BE390",
+   "name": "DestroyDevice",
+   "call": "009BE3AD",
+   "interface": "IDirect3DDevice9",
+   "method": "Release",
+   "tier": "B"
+  },
+  {
+   "function": "009BE420",
+   "name": "ClearRenderTarget",
+   "call": "009BE481",
+   "interface": "IDirect3DDevice9",
+   "method": "Clear",
+   "tier": "A"
+  },
+  {
+   "function": "009BE530",
+   "name": "IsTextureBitDepthSupported",
+   "call": "009BE56E",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE590",
+   "name": "GetBestSignedTextureFormat",
+   "call": "009BE5DA",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE610",
+   "name": "GetBestOpaqueTextureFormat",
+   "call": "009BE687",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE6C0",
+   "name": "GetBestAlphaTextureFormat",
+   "call": "009BE71B",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE750",
+   "name": "GetBestBooleanAlphaTextureFormat",
+   "call": "009BE7C3",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE800",
+   "name": "IsSupportingCompressedTextures",
+   "call": "009BE81F",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE830",
+   "name": "GetBestCompressedAlphaTextureFormat",
+   "call": "009BE84F",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE870",
+   "name": "GetBestCompressedAlphaTextureFormat",
+   "call": "009BE88F",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE8B0",
+   "name": "GetBestCompressedAlphaTextureFormat",
+   "call": "009BE8CF",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE8F0",
+   "name": "IsValidTextureFormat",
+   "call": "009BE91B",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BE930",
+   "name": "IsValidRenderTargetFormat",
+   "call": "009BE969",
+   "interface": "IDirect3D9",
+   "method": "CheckDepthStencilMatch",
+   "tier": "A"
+  },
+  {
+   "function": "009BEAA0",
+   "name": "SetGamma",
+   "call": "009BEB8F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetGammaRamp",
+   "tier": "A"
+  },
+  {
+   "function": "009BEBB0",
+   "name": "FUN_009bebb0",
+   "call": "009BEC11",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceFormat",
+   "tier": "A"
+  },
+  {
+   "function": "009BEBB0",
+   "name": "FUN_009bebb0",
+   "call": "009BEC2E",
+   "interface": "IDirect3D9",
+   "method": "CheckDepthStencilMatch",
+   "tier": "A"
+  },
+  {
+   "function": "009BEEB0",
+   "name": "SwapScreens",
+   "call": "009BEECE",
+   "interface": "IDirect3DDevice9",
+   "method": "Present",
+   "tier": "B"
+  },
+  {
+   "function": "009BEF20",
+   "name": "BeginRender",
+   "call": "009BEF29",
+   "interface": "IDirect3DDevice9",
+   "method": "BeginScene",
+   "tier": "A"
+  },
+  {
+   "function": "009BEF50",
+   "name": "EndRender",
+   "call": "009BEF61",
+   "interface": "IDirect3DDevice9",
+   "method": "EndScene",
+   "tier": "A"
+  },
+  {
+   "function": "009BEF80",
+   "name": "SetViewport",
+   "call": "009BF0E3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetViewport",
+   "tier": "B"
+  },
+  {
+   "function": "009BF160",
+   "name": "SetRenderTarget",
+   "call": "009BF1C0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetRenderTarget",
+   "tier": "B"
+  },
+  {
+   "function": "009BF160",
+   "name": "SetRenderTarget",
+   "call": "009BF1D1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetDepthStencilSurface",
+   "tier": "B"
+  },
+  {
+   "function": "009BF220",
+   "name": "SetRenderTargetAsBackScreen",
+   "call": "009BF272",
+   "interface": "IDirect3DDevice9",
+   "method": "SetRenderTarget",
+   "tier": "B"
+  },
+  {
+   "function": "009BF220",
+   "name": "SetRenderTargetAsBackScreen",
+   "call": "009BF286",
+   "interface": "IDirect3DDevice9",
+   "method": "SetDepthStencilSurface",
+   "tier": "B"
+  },
+  {
+   "function": "009BF2D0",
+   "name": "FlipToGDISurface",
+   "call": "009BF30B",
+   "interface": "IDirect3DDevice9",
+   "method": "Present",
+   "tier": "B"
+  },
+  {
+   "function": "009BF350",
+   "name": "BlitRenderTargetSurfaceToTexture",
+   "call": "009BF37A",
+   "interface": "IDirect3DDevice9",
+   "method": "EndScene",
+   "tier": "B"
+  },
+  {
+   "function": "009BF350",
+   "name": "BlitRenderTargetSurfaceToTexture",
+   "call": "009BF3BB",
+   "interface": "IDirect3DDevice9",
+   "method": "StretchRect",
+   "tier": "B"
+  },
+  {
+   "function": "009BF350",
+   "name": "BlitRenderTargetSurfaceToTexture",
+   "call": "009BF452",
+   "interface": "IDirect3DDevice9",
+   "method": "BeginScene",
+   "tier": "B"
+  },
+  {
+   "function": "009BF600",
+   "name": "GetClosestMode",
+   "call": "009BF621",
+   "interface": "IDirect3DDevice9",
+   "method": "GetDisplayMode",
+   "tier": "B"
+  },
+  {
+   "function": "009BFB30",
+   "name": "ResetDevice",
+   "call": "009BFC4D",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceMultiSampleType",
+   "tier": "A"
+  },
+  {
+   "function": "009BFB30",
+   "name": "ResetDevice",
+   "call": "009BFCFC",
+   "interface": "IDirect3DDevice9",
+   "method": "Reset",
+   "tier": "B"
+  },
+  {
+   "function": "009BFB30",
+   "name": "ResetDevice",
+   "call": "009BFD8D",
+   "interface": "IDirect3DDevice9",
+   "method": "GetBackBuffer",
+   "tier": "B"
+  },
+  {
+   "function": "009BFB30",
+   "name": "ResetDevice",
+   "call": "009BFDE1",
+   "interface": "IDirect3DDevice9",
+   "method": "GetDepthStencilSurface",
+   "tier": "B"
+  },
+  {
+   "function": "009C00C0",
+   "name": "ProcessLostDevice",
+   "call": "009C00CC",
+   "interface": "IDirect3DDevice9",
+   "method": "TestCooperativeLevel",
+   "tier": "B"
+  },
+  {
+   "function": "009C01C0",
+   "name": "~CInputManagerDX",
+   "call": "009C0212",
+   "interface": "IDirect3DDevice9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009C02D0",
+   "name": "FUN_009c02d0",
+   "call": "009C0354",
+   "interface": "IDirect3D9",
+   "method": "GetAdapterModeCount",
+   "tier": "A"
+  },
+  {
+   "function": "009C02D0",
+   "name": "FUN_009c02d0",
+   "call": "009C036F",
+   "interface": "IDirect3D9",
+   "method": "EnumAdapterModes",
+   "tier": "A"
+  },
+  {
+   "function": "009C05C0",
+   "name": "FUN_009c05c0",
+   "call": "009C0679",
+   "interface": "IDirect3D9",
+   "method": "CheckDeviceMultiSampleType",
+   "tier": "A"
+  },
+  {
+   "function": "009C1050",
+   "name": "SetClientWindow",
+   "call": "009C1071",
+   "interface": "IDirect3DDevice9",
+   "method": "Release",
+   "tier": "B"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA47F",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA4AC",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA5DD",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA764",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA795",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009D9C80",
+   "name": "DrawBufferedPolys",
+   "call": "009DA8CD",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009DA9F0",
+   "name": "Render2DDrawList",
+   "call": "009DB365",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009DA9F0",
+   "name": "Render2DDrawList",
+   "call": "009DB396",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009DA9F0",
+   "name": "Render2DDrawList",
+   "call": "009DB645",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitiveUP",
+   "tier": "A"
+  },
+  {
+   "function": "009F2E20",
+   "name": "Uninitialise",
+   "call": "009F2E2D",
+   "interface": "IDirect3DSurface9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009F2E70",
+   "name": "operator=",
+   "call": "009F2E7D",
+   "interface": "IDirect3DSurface9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009F2E70",
+   "name": "operator=",
+   "call": "009F2EB3",
+   "interface": "IDirect3DSurface9",
+   "method": "AddRef",
+   "tier": "A"
+  },
+  {
+   "function": "009F2F90",
+   "name": "GetDimensions",
+   "call": "009F2F9D",
+   "interface": "IDirect3DSurface9",
+   "method": "GetDesc",
+   "tier": "A"
+  },
+  {
+   "function": "009F3230",
+   "name": "InitialiseAsImage",
+   "call": "009F3282",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateOffscreenPlainSurface",
+   "tier": "A"
+  },
+  {
+   "function": "009F32A0",
+   "name": "InitialiseAsDepthBuffer",
+   "call": "009F32B1",
+   "interface": "IDirect3DSurface9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009F32A0",
+   "name": "InitialiseAsDepthBuffer",
+   "call": "009F32F7",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateDepthStencilSurface",
+   "tier": "A"
+  },
+  {
+   "function": "009F3310",
+   "name": "InitialiseAsRenderTarget",
+   "call": "009F336D",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateRenderTarget",
+   "tier": "A"
+  },
+  {
+   "function": "009F9DB0",
+   "name": "GetDimensions",
+   "call": "009F9DC1",
+   "interface": "IDirect3DTexture9",
+   "method": "GetLevelDesc",
+   "tier": "A"
+  },
+  {
+   "function": "009F9E00",
+   "name": "GetNoLevels",
+   "call": "009F9E13",
+   "interface": "IDirect3DTexture9",
+   "method": "GetSurfaceLevel",
+   "tier": "A"
+  },
+  {
+   "function": "009F9F70",
+   "name": "Uninitialise",
+   "call": "009F9F7C",
+   "interface": "IDirect3DTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009FA1C0",
+   "name": "operator=",
+   "call": "009FA1CC",
+   "interface": "IDirect3DTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009FA1C0",
+   "name": "operator=",
+   "call": "009FA219",
+   "interface": "IDirect3DTexture9",
+   "method": "AddRef",
+   "tier": "A"
+  },
+  {
+   "function": "009FA280",
+   "name": "Initialise",
+   "call": "009FA28C",
+   "interface": "IDirect3DTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "009FA280",
+   "name": "Initialise",
+   "call": "009FA306",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00A044E0",
+   "name": "ForceResendRenderStatesToHardware",
+   "call": "00A04520",
+   "interface": "IDirect3DDevice9",
+   "method": "SetSamplerState",
+   "tier": "B"
+  },
+  {
+   "function": "00A044E0",
+   "name": "ForceResendRenderStatesToHardware",
+   "call": "00A04538",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTextureStageState",
+   "tier": "B"
+  },
+  {
+   "function": "00A044E0",
+   "name": "ForceResendRenderStatesToHardware",
+   "call": "00A0454B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetRenderState",
+   "tier": "B"
+  },
+  {
+   "function": "00A04630",
+   "name": "SetupRenderStates",
+   "call": "00A04647",
+   "interface": "IDirect3DDevice9",
+   "method": "GetDeviceCaps",
+   "tier": "B"
+  },
+  {
+   "function": "00A058C0",
+   "name": "RealiseRenderState",
+   "call": "00A0590B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetSamplerState",
+   "tier": "B"
+  },
+  {
+   "function": "00A058C0",
+   "name": "RealiseRenderState",
+   "call": "00A05923",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTextureStageState",
+   "tier": "B"
+  },
+  {
+   "function": "00A058C0",
+   "name": "RealiseRenderState",
+   "call": "00A05936",
+   "interface": "IDirect3DDevice9",
+   "method": "SetRenderState",
+   "tier": "B"
+  },
+  {
+   "function": "00A0A940",
+   "name": "Init",
+   "call": "00A0A98C",
+   "interface": "IDirect3DDevice9",
+   "method": "GetDeviceCaps",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AA30",
+   "name": "SetVertexFormat",
+   "call": "00A0AA3E",
+   "interface": "IDirect3DDevice9",
+   "method": "SetFVF",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AB50",
+   "name": "DrawCurrentBuffersAsIndexedTris",
+   "call": "00A0AB88",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AB50",
+   "name": "DrawCurrentBuffersAsIndexedTris",
+   "call": "00A0ABCF",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0ABE0",
+   "name": "DrawCurrentBuffersAsTris",
+   "call": "00A0AC18",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00A0ABE0",
+   "name": "DrawCurrentBuffersAsTris",
+   "call": "00A0AC53",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AC60",
+   "name": "DrawCurrentBuffersAsIndexedTris",
+   "call": "00A0AC89",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0ACA0",
+   "name": "DrawCurrentBuffersIndexed",
+   "call": "00A0ACD8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00A0ACA0",
+   "name": "DrawCurrentBuffersIndexed",
+   "call": "00A0AD27",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AD40",
+   "name": "DrawCurrentBuffersIndexed",
+   "call": "00A0AD72",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AE10",
+   "name": "DrawCurrentBuffersAsTris",
+   "call": "00A0AE2D",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AE40",
+   "name": "DrawCurrentBuffersAsPointList",
+   "call": "00A0AE5A",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AE70",
+   "name": "DrawCurrentBuffersAsPointList",
+   "call": "00A0AE8A",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawPrimitive",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AEA0",
+   "name": "DrawAsIndexedTris",
+   "call": "00A0AED8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AEA0",
+   "name": "DrawAsIndexedTris",
+   "call": "00A0AF26",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitiveUP",
+   "tier": "B"
+  },
+  {
+   "function": "00A0AF40",
+   "name": "DrawAsIndexedTris",
+   "call": "00A0AF70",
+   "interface": "IDirect3DDevice9",
+   "method": "DrawIndexedPrimitiveUP",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B0A0",
+   "name": "SetViewTransform",
+   "call": "00A0B128",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B140",
+   "name": "SetViewTransform",
+   "call": "00A0B1CB",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B1E0",
+   "name": "SetWorldTransform",
+   "call": "00A0B271",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B280",
+   "name": "SetTextureTransform",
+   "call": "00A0B312",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B320",
+   "name": "SetPerspectiveTransform",
+   "call": "00A0B3CE",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B3E0",
+   "name": "SetPerspectiveTransform",
+   "call": "00A0B474",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTransform",
+   "tier": "B"
+  },
+  {
+   "function": "00A0B480",
+   "name": "BeginRender",
+   "call": "00A0B4B4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00A5ED00",
+   "name": "`scalar_deleting_destructor'",
+   "call": "00A5ED13",
+   "interface": "IDirect3DPixelShader9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A63020",
+   "name": "CVertexShader",
+   "call": "00A63055",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateVertexShader",
+   "tier": "A"
+  },
+  {
+   "function": "00A63020",
+   "name": "CVertexShader",
+   "call": "00A63068",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateVertexDeclaration",
+   "tier": "A"
+  },
+  {
+   "function": "00A630D0",
+   "name": "`vector_deleting_destructor'",
+   "call": "00A630E3",
+   "interface": "IDirect3DVertexShader9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A630D0",
+   "name": "`vector_deleting_destructor'",
+   "call": "00A630F0",
+   "interface": "IDirect3DVertexDeclaration9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A63150",
+   "name": "Initialise",
+   "call": "00A63188",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateVertexBuffer",
+   "tier": "A"
+  },
+  {
+   "function": "00A67460",
+   "name": "ReleaseVolume",
+   "call": "00A6746D",
+   "interface": "IDirect3DVolume9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A67F60",
+   "name": "ReleaseTexture",
+   "call": "00A67F6D",
+   "interface": "IDirect3DVolumeTexture9",
+   "method": "AddRef",
+   "tier": "A"
+  },
+  {
+   "function": "00A67F60",
+   "name": "ReleaseTexture",
+   "call": "00A67F76",
+   "interface": "IDirect3DVolumeTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A67F60",
+   "name": "ReleaseTexture",
+   "call": "00A67FD8",
+   "interface": "IDirect3DVolumeTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00A68060",
+   "name": "Uninitialise",
+   "call": "00A6806D",
+   "interface": "IDirect3DVolumeTexture9",
+   "method": "AddRef",
+   "tier": "A"
+  },
+  {
+   "function": "00A68060",
+   "name": "Uninitialise",
+   "call": "00A68076",
+   "interface": "IDirect3DVolumeTexture9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00AB5390",
+   "name": "?SetMouseCursor@CMouseDX@@UAEXABVCSurface@@@Z",
+   "call": "00AB53E2",
+   "interface": "IDirect3DDevice9",
+   "method": "SetCursorProperties",
+   "tier": "A"
+  },
+  {
+   "function": "00AB5390",
+   "name": "?SetMouseCursor@CMouseDX@@UAEXABVCSurface@@@Z",
+   "call": "00AB53F5",
+   "interface": "IDirect3DDevice9",
+   "method": "ShowCursor",
+   "tier": "A"
+  },
+  {
+   "function": "00AB58E0",
+   "name": "?Update@CMouseDX@@UAEXXZ",
+   "call": "00AB5C8A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetCursorPosition",
+   "tier": "A"
+  },
+  {
+   "function": "00AB58E0",
+   "name": "?Update@CMouseDX@@UAEXXZ",
+   "call": "00AB5CCD",
+   "interface": "IDirect3DDevice9",
+   "method": "SetCursorPosition",
+   "tier": "A"
+  },
+  {
+   "function": "00AB5D00",
+   "name": "CMouseDX",
+   "call": "00AB5DA5",
+   "interface": "IDirect3DDevice9",
+   "method": "ShowCursor",
+   "tier": "A"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB8279",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB8296",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB82CC",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB8334",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB8351",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AB7C20",
+   "name": "?Render@CStaticFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z",
+   "call": "00AB8383",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00AC1EE0",
+   "name": "ReleaseVolume",
+   "call": "00AC1EED",
+   "interface": "IDirect3DIndexBuffer9",
+   "method": "Release",
+   "tier": "A"
+  },
+  {
+   "function": "00AC1F70",
+   "name": "Initialise",
+   "call": "00AC1F9C",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateIndexBuffer",
+   "tier": "A"
+  },
+  {
+   "function": "00AC2010",
+   "name": "CIndexBuffer",
+   "call": "00AC204F",
+   "interface": "IDirect3DDevice9",
+   "method": "CreateIndexBuffer",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25DB7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25DD2",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25DF8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25E38",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25E78",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B25D80",
+   "name": "?Uninitialise@CEngine@@UAEXXZ",
+   "call": "00B25EB8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B27D90",
+   "name": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+   "call": "00B27DD6",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B27D90",
+   "name": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+   "call": "00B27DE3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B27D90",
+   "name": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+   "call": "00B27E15",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B3B0C0",
+   "name": "UninitialiseShaders",
+   "call": "00B3B0EA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B3B0C0",
+   "name": "UninitialiseShaders",
+   "call": "00B3B0F7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B3B0C0",
+   "name": "UninitialiseShaders",
+   "call": "00B3B125",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B4FC40",
+   "name": "SetupShadowFuncRenderStates",
+   "call": "00B4FC95",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B4FC40",
+   "name": "SetupShadowFuncRenderStates",
+   "call": "00B4FCF8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B54371",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B543C3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B54414",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B54466",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B544CE",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B54310",
+   "name": "RenderMist",
+   "call": "00B5450D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00B54890",
+   "name": "RenderRain",
+   "call": "00B54947",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54890",
+   "name": "RenderRain",
+   "call": "00B54993",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B54890",
+   "name": "RenderRain",
+   "call": "00B549BD",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B54E30",
+   "name": "RenderSnow",
+   "call": "00B55011",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B54E30",
+   "name": "RenderSnow",
+   "call": "00B5505D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B555A0",
+   "name": "?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B56400",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B555A0",
+   "name": "?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B5641D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B5A3F0",
+   "name": "ApplyColourFilter",
+   "call": "00B5ADDA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5A3F0",
+   "name": "ApplyColourFilter",
+   "call": "00B5AEE0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5AF80",
+   "name": "RenderColorFilteredQuad",
+   "call": "00B5B931",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5AF80",
+   "name": "RenderColorFilteredQuad",
+   "call": "00B5BA37",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5CA70",
+   "name": "CaptureBackBuffer",
+   "call": "00B5CF3D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5CA70",
+   "name": "CaptureBackBuffer",
+   "call": "00B5D049",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5FAB0",
+   "name": "CaptureBackBuffer",
+   "call": "00B6015F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B5FAB0",
+   "name": "CaptureBackBuffer",
+   "call": "00B6026B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B66190",
+   "name": "RenderSky",
+   "call": "00B6624E",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00B66190",
+   "name": "RenderSky",
+   "call": "00B6627B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B66190",
+   "name": "RenderSky",
+   "call": "00B662B8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B66190",
+   "name": "RenderSky",
+   "call": "00B662D8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B67510",
+   "name": "PostRenderClearRenderStates",
+   "call": "00B6752A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B67510",
+   "name": "PostRenderClearRenderStates",
+   "call": "00B67543",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B67510",
+   "name": "PostRenderClearRenderStates",
+   "call": "00B67569",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B67510",
+   "name": "PostRenderClearRenderStates",
+   "call": "00B675A8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B67510",
+   "name": "PostRenderClearRenderStates",
+   "call": "00B675E7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B6E010",
+   "name": "RenderBackgroundPatch",
+   "call": "00B6E175",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00B6E010",
+   "name": "RenderBackgroundPatch",
+   "call": "00B6E19F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B6E010",
+   "name": "RenderBackgroundPatch",
+   "call": "00B6E1F2",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B6E010",
+   "name": "RenderBackgroundPatch",
+   "call": "00B6E21C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B6FA40",
+   "name": "RenderSeaMidground",
+   "call": "00B6FAA8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B6FA40",
+   "name": "RenderSeaMidground",
+   "call": "00B6FAF8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B6FA40",
+   "name": "RenderSeaMidground",
+   "call": "00B6FB48",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B70230",
+   "name": "RenderSeaBackground",
+   "call": "00B70297",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B70230",
+   "name": "RenderSeaBackground",
+   "call": "00B702E8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B70230",
+   "name": "RenderSeaBackground",
+   "call": "00B70338",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B70230",
+   "name": "RenderSeaBackground",
+   "call": "00B706D4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B70230",
+   "name": "RenderSeaBackground",
+   "call": "00B706FE",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B70A90",
+   "name": "RenderEnvironmentMap",
+   "call": "00B70C9A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00B70A90",
+   "name": "RenderEnvironmentMap",
+   "call": "00B70F33",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B70A90",
+   "name": "RenderEnvironmentMap",
+   "call": "00B7161A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B72CE0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B72D09",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B73079",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B730CA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B73279",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B732CA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B73484",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B73610",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B72180",
+   "name": "CreateDynamicTextures",
+   "call": "00B73630",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B751F0",
+   "name": "RenderIceForeground",
+   "call": "00B753F2",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B751F0",
+   "name": "RenderIceForeground",
+   "call": "00B75442",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B751F0",
+   "name": "RenderIceForeground",
+   "call": "00B7548F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B751F0",
+   "name": "RenderIceForeground",
+   "call": "00B75A7C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B75CA0",
+   "name": "RenderIceBackground",
+   "call": "00B75D08",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B75CA0",
+   "name": "RenderIceBackground",
+   "call": "00B75D58",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B761D0",
+   "name": "RenderForeground",
+   "call": "00B763C4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B761D0",
+   "name": "RenderForeground",
+   "call": "00B76414",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B761D0",
+   "name": "RenderForeground",
+   "call": "00B76464",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B761D0",
+   "name": "RenderForeground",
+   "call": "00B764B1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B761D0",
+   "name": "RenderForeground",
+   "call": "00B76AD5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B76BC0",
+   "name": "RenderBackground",
+   "call": "00B76C28",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B76BC0",
+   "name": "RenderBackground",
+   "call": "00B76D52",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B76BC0",
+   "name": "RenderBackground",
+   "call": "00B76E7C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77370",
+   "name": "RenderSeaReflectiveForeground",
+   "call": "00B77747",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77370",
+   "name": "RenderSeaReflectiveForeground",
+   "call": "00B77798",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77370",
+   "name": "RenderSeaReflectiveForeground",
+   "call": "00B777E9",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77370",
+   "name": "RenderSeaReflectiveForeground",
+   "call": "00B77B5A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B77E20",
+   "name": "RenderSeaNonReflectiveForeground",
+   "call": "00B77E88",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77E20",
+   "name": "RenderSeaNonReflectiveForeground",
+   "call": "00B77ED8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B77E20",
+   "name": "RenderSeaNonReflectiveForeground",
+   "call": "00B780F6",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B79154",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B79196",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B791D8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B7921A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B7A7D6",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B783F0",
+   "name": "?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z",
+   "call": "00B7A7F6",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B8B780",
+   "name": "RenderBillboard",
+   "call": "00B8C08C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B8B780",
+   "name": "RenderBillboard",
+   "call": "00B8C099",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B8B780",
+   "name": "RenderBillboard",
+   "call": "00B8C0C4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9AC30",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00B9B5B5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9AC30",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00B9B6A7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9AC30",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00B9BB99",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00B9AC30",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00B9BBA6",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00B9AC30",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerRepeatedStaticMeshes@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00B9BBD3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9D670",
+   "name": "SetupFirstTextures",
+   "call": "00B9D6B0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9D670",
+   "name": "SetupFirstTextures",
+   "call": "00B9D705",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9E5B0",
+   "name": "RenderMeshPrimitiveBlocksIndexBuffer",
+   "call": "00B9E62C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9E5B0",
+   "name": "RenderMeshPrimitiveBlocksIndexBuffer",
+   "call": "00B9E689",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9E750",
+   "name": "RenderMeshPrimitiveBlocksDegenerateTriangles",
+   "call": "00B9E790",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00B9E750",
+   "name": "RenderMeshPrimitiveBlocksDegenerateTriangles",
+   "call": "00B9E7DF",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA1B00",
+   "name": "DisplayMirroredTextures",
+   "call": "00BA1EE2",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BA1B00",
+   "name": "DisplayMirroredTextures",
+   "call": "00BA2252",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BA1B00",
+   "name": "DisplayMirroredTextures",
+   "call": "00BA22D0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BA2350",
+   "name": "SetupRenderModeShadersAndConstants",
+   "call": "00BA29A5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA2350",
+   "name": "SetupRenderModeShadersAndConstants",
+   "call": "00BA2A86",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA2350",
+   "name": "SetupRenderModeShadersAndConstants",
+   "call": "00BA2AED",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA2350",
+   "name": "SetupRenderModeShadersAndConstants",
+   "call": "00BA2BA1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA2350",
+   "name": "SetupRenderModeShadersAndConstants",
+   "call": "00BA2DE4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5CC0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5CCD",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5CF8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5E17",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5E24",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA5E53",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA6139",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA6146",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BA5260",
+   "name": "RenderMeshPrimitive",
+   "call": "00BA6173",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA6240",
+   "name": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerStaticMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z",
+   "call": "00BA6702",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BA7DB0",
+   "name": "FUN_00ba7db0",
+   "call": "00BA7E1E",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BAA870",
+   "name": "RenderFromSortList",
+   "call": "00BAB96E",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BB2540",
+   "name": "RenderPolygons",
+   "call": "00BB301E",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BB30A0",
+   "name": "Render2DClothPrimitive",
+   "call": "00BB3C57",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BB30A0",
+   "name": "Render2DClothPrimitive",
+   "call": "00BB3DD8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB4472",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB447F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB44AA",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB4F19",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB4F26",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BB3E80",
+   "name": "RenderClothPrimitive",
+   "call": "00BB4F53",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BB8EF0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleDecalGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BB9070",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBAC60",
+   "name": "RenderLandscapeDecal",
+   "call": "00BBADCF",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBC460",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BBCB89",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBC460",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BBCBDB",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBCC70",
+   "name": "SetupPixelShader",
+   "call": "00BBCDB4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBE090",
+   "name": "RenderSingleSpriteTrail",
+   "call": "00BBE6F9",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBF4A0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BBF5AB",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BBF4A0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BBFE88",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00BBF4A0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleSpriteGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BBFEB5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BC04F0",
+   "name": "RenderSingleSprite",
+   "call": "00BC05F0",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BC04F0",
+   "name": "RenderSingleSprite",
+   "call": "00BC0EB7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "B"
+  },
+  {
+   "function": "00BC04F0",
+   "name": "RenderSingleSprite",
+   "call": "00BC0EE4",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BC25F0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BC2EA3",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BC25F0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BC2F39",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BC3F3D",
+   "name": "RenderSubPrimitive",
+   "call": "00BC403B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BC3F3D",
+   "name": "RenderSubPrimitive",
+   "call": "00BC4649",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BC3F3D",
+   "name": "RenderSubPrimitive",
+   "call": "00BC4673",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BCA950",
+   "name": "RenderSpriteTrail",
+   "call": "00BCB6AB",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BCA950",
+   "name": "RenderSpriteTrail",
+   "call": "00BCB6B8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BCA950",
+   "name": "RenderSpriteTrail",
+   "call": "00BCB6EB",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BCB800",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManagerSpriteTrails@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BCB9E7",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BCC800",
+   "name": "RenderWeaponTrail",
+   "call": "00BCD24A",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "B"
+  },
+  {
+   "function": "00BCC800",
+   "name": "RenderWeaponTrail",
+   "call": "00BCD2C8",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BCC800",
+   "name": "RenderWeaponTrail",
+   "call": "00BCD2D5",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BCC800",
+   "name": "RenderWeaponTrail",
+   "call": "00BCD30D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BD5C90",
+   "name": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z",
+   "call": "00BD6127",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BD5C90",
+   "name": "?RenderPrimitiveToShadowBuffer@CEnginePrimitiveManagerAnimatedMeshesBase@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@@Z",
+   "call": "00BD6669",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BE0EB0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BE1922",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BE0EB0",
+   "name": "?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z",
+   "call": "00BE1969",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BE6F70",
+   "name": "Render",
+   "call": "00BE77FF",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BE6F70",
+   "name": "Render",
+   "call": "00BE782C",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BE6F70",
+   "name": "Render",
+   "call": "00BE7951",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BE6F70",
+   "name": "Render",
+   "call": "00BE797B",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  },
+  {
+   "function": "00BEACA0",
+   "name": "Render",
+   "call": "00BEAD77",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BF4570",
+   "name": "RenderForeground",
+   "call": "00BF510D",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BF4570",
+   "name": "RenderForeground",
+   "call": "00BF5308",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BF4570",
+   "name": "RenderForeground",
+   "call": "00BF5491",
+   "interface": "IDirect3DDevice9",
+   "method": "SetTexture",
+   "tier": "A"
+  },
+  {
+   "function": "00BF4570",
+   "name": "RenderForeground",
+   "call": "00BF54E1",
+   "interface": "IDirect3DDevice9",
+   "method": "SetStreamSource",
+   "tier": "A"
+  },
+  {
+   "function": "00BF4570",
+   "name": "RenderForeground",
+   "call": "00BF550F",
+   "interface": "IDirect3DDevice9",
+   "method": "SetIndices",
+   "tier": "A"
+  }
+ ]
+}

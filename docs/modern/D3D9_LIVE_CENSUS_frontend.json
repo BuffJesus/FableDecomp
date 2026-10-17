@@ -1,0 +1,361 @@
+{
+ "device": "0F8089A0",
+ "vtable": "0F80B8FC",
+ "budget": 3000,
+ "final": true,
+ "methods": {
+  "QueryInterface": {
+   "hits": 79,
+   "budget_exhausted": false,
+   "call_sites": {
+    "716ABF57": 79
+   }
+  },
+  "AddRef": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "7164267D": 2566,
+    "7164275B": 372,
+    "7165A3AC": 62
+   }
+  },
+  "Release": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "716426BD": 2566,
+    "71642794": 372,
+    "0355153D": 62
+   }
+  },
+  "TestCooperativeLevel": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009C00CF": 2999,
+    "716C0A45": 1
+   }
+  },
+  "GetDeviceCaps": {
+   "hits": 2,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00A0464A": 1,
+    "00A0A98F": 1
+   }
+  },
+  "SetCursorPosition": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00AB5C8D": 3000
+   }
+  },
+  "Reset": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009BFCFF": 1
+   }
+  },
+  "Present": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009BEED1": 3000
+   }
+  },
+  "GetBackBuffer": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009BFD90": 1
+   }
+  },
+  "CreateTexture": {
+   "hits": 282,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009FA309": 282
+   }
+  },
+  "CreateVertexBuffer": {
+   "hits": 4,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00A6318B": 4
+   }
+  },
+  "CreateIndexBuffer": {
+   "hits": 4,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00AC1F9F": 4
+   }
+  },
+  "CreateDepthStencilSurface": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009F32FA": 1
+   }
+  },
+  "CreateOffscreenPlainSurface": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009F3288": 1
+   }
+  },
+  "GetDepthStencilSurface": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009BFDE7": 1
+   }
+  },
+  "BeginScene": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009BEF2F": 3000
+   }
+  },
+  "EndScene": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009BEF67": 3000
+   }
+  },
+  "Clear": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009BE487": 3000
+   }
+  },
+  "SetTransform": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A0B12E": 912,
+    "00A0B3D4": 911,
+    "00A0B1D1": 911,
+    "7162D9E4": 256,
+    "7162D9AB": 1,
+    "7162D9C5": 1,
+    "7162DA07": 1,
+    "7162DA21": 1,
+    "7162DA3B": 1,
+    "7162DA55": 1,
+    "7162DA6F": 1,
+    "7162DA89": 1,
+    "7162DAA3": 1,
+    "7162DABD": 1
+   }
+  },
+  "SetViewport": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "71626520": 1500,
+    "7162666A": 1500
+   }
+  },
+  "GetViewport": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "716264EA": 3000
+   }
+  },
+  "SetRenderState": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A0593C": 2943,
+    "00A04551": 57
+   }
+  },
+  "SetTexture": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A0AEDE": 1262,
+    "009A0D27": 1258,
+    "009A2769": 184,
+    "009A33FD": 183,
+    "00B27E1B": 46,
+    "009A27A7": 46,
+    "7162DB37": 21
+   }
+  },
+  "SetTextureStageState": {
+   "hits": 240,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00A0453E": 96,
+    "7162D1F9": 8,
+    "7162D211": 8,
+    "7162D229": 8,
+    "7162D249": 8,
+    "7162D261": 8,
+    "7162D279": 8,
+    "7162D291": 8,
+    "7162D2A9": 8,
+    "7162D2C1": 8,
+    "7162D2D9": 8,
+    "7162D2F0": 8,
+    "7162D308": 8,
+    "7162D320": 8,
+    "7162D338": 8,
+    "7162D350": 8,
+    "7162D368": 8,
+    "7162D380": 8,
+    "7162D398": 8
+   }
+  },
+  "SetSamplerState": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A05911": 2655,
+    "00A04526": 72,
+    "7162DB4F": 21,
+    "7162DB67": 21,
+    "7162DB7F": 21,
+    "7162DB97": 21,
+    "7162DBAF": 21,
+    "7162DBC7": 21,
+    "7162DBDF": 21,
+    "7162DBF7": 21,
+    "7162DC0F": 21,
+    "7162DC27": 21,
+    "7162DC3F": 21,
+    "7162DC57": 21,
+    "7162DC6F": 21
+   }
+  },
+  "SetScissorRect": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "71626571": 1500,
+    "71626684": 1500
+   }
+  },
+  "GetScissorRect": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "71626543": 3000
+   }
+  },
+  "DrawPrimitiveUP": {
+   "hits": 606,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009DB64B": 606
+   }
+  },
+  "DrawIndexedPrimitiveUP": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A0AF2C": 2424,
+    "00A0AF76": 576
+   }
+  },
+  "CreateVertexDeclaration": {
+   "hits": 198,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00A6306E": 198
+   }
+  },
+  "SetVertexDeclaration": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009DA277": 1322,
+    "00BAE568": 715,
+    "009DB04F": 606,
+    "00BC74EB": 357
+   }
+  },
+  "CreateVertexShader": {
+   "hits": 198,
+   "budget_exhausted": false,
+   "call_sites": {
+    "00A6305B": 198
+   }
+  },
+  "SetVertexShader": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009880AD": 3000
+   }
+  },
+  "SetVertexShaderConstantF": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "009897A9": 1309,
+    "00988E0A": 1249,
+    "00989AF3": 283,
+    "0098B952": 73,
+    "00989B47": 48,
+    "0098A789": 25,
+    "00989813": 13
+   }
+  },
+  "SetStreamSource": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00A0B4BA": 1803,
+    "00B27DDC": 1197
+   }
+  },
+  "SetIndices": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00B27DE9": 3000
+   }
+  },
+  "CreatePixelShader": {
+   "hits": 64,
+   "budget_exhausted": false,
+   "call_sites": {
+    "0098A9D8": 64
+   }
+  },
+  "SetPixelShader": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00988A40": 2250,
+    "009881AE": 750
+   }
+  },
+  "SetPixelShaderConstantF": {
+   "hits": 3000,
+   "budget_exhausted": true,
+   "call_sites": {
+    "00989C9E": 3000
+   }
+  },
+  "CreateQuery": {
+   "hits": 1,
+   "budget_exhausted": false,
+   "call_sites": {
+    "009F755A": 1
+   }
+  }
+ },
+ "shared_bodies": {}
+}
