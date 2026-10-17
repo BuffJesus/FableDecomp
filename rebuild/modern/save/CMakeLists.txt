@@ -77,7 +77,7 @@ target_include_directories(fable_save
     PUBLIC
         "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
-target_link_libraries(fable_save PRIVATE ${FABLE_ZLIB_TARGET})
+target_link_libraries(fable_save PRIVATE ${FABLE_ZLIB_TARGET} fable_codec)
 if(FABLE_SAVE_WITH_LZO)
     target_link_libraries(fable_save PRIVATE fable_lzo)
     target_compile_definitions(fable_save PRIVATE FABLE_SAVE_HAVE_LZO=1)

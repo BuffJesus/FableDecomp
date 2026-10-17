@@ -243,6 +243,19 @@ closed; all 563 saves were restored and verified.
   other sessions' uncommitted edits, so they are not committed (scratch verifier
   `hdrfix_verify.py`, results in `work/hdrfix/result.json`).
 
+## The modern tree's first frame (user: "We getting close to recreating this post?")
+
+The post (2026-10-14, parity lane) showed the first title sprite rendered through
+reconstructed VC7.1 code. It was one 256×128 half of the logo, which reads "FAE / THE LOST". The
+x64 tree now does it whole. `rebuild/modern/codec` (the LZO1X decoder, moved out of `save/`) and
+`rebuild/modern/texture` (GBANK descriptor, mip 0, A8R8G8B8/DXT1/DXT3 to RGBA, PNG) decode both
+`FRONTEND_TITLE_0{1,2}_SPRITE` from `frontend.big`. `fable_title_view` composes them and
+presents them in a 64-bit window through D3D11, and `--capture` reads the presented back buffer
+from the GPU: "FABLE / The Lost Chapters" (`work/title_view/presented.png`). Decoder coverage is
+394/394 frontend and 6,319/6,324 textures.big entries; the 5 misses use the unconfirmed formats
+0x18/0x23. MSVC x64/x86 and GCC builds, tests green, 0 warnings. The viewer is a pixel check,
+not the step-4 RHI.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
