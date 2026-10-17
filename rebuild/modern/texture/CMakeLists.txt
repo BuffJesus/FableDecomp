@@ -26,12 +26,20 @@ add_executable(fable_texture_dump
 target_link_libraries(fable_texture_dump PRIVATE fable_texture fable_bank)
 target_compile_options(fable_texture_dump PRIVATE ${FABLE_TEXTURE_WARNINGS})
 
-# The title viewer presents through D3D11, so it is Windows-only.
-if(WIN32)
+# The title viewer presents through the fork's two planned backends: D3D12 (Windows) and Vulkan
+# (when the SDK is found). It is Windows-only for now (Win32 window).
+if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)   # a 64-bit tool: the Vulkan SDK here ships 64-bit libraries
+    find_package(Vulkan QUIET)
     add_executable(fable_title_view
         tools/fable_title_view.cpp
+        tools/TitleViewD3D12.cpp
     )
-    target_link_libraries(fable_title_view PRIVATE fable_texture fable_bank d3d11)
+    target_link_libraries(fable_title_view PRIVATE fable_texture fable_bank d3d12 dxgi)
+    if(Vulkan_FOUND)
+        target_sources(fable_title_view PRIVATE tools/TitleViewVulkan.cpp)
+        target_link_libraries(fable_title_view PRIVATE Vulkan::Vulkan)
+        target_compile_definitions(fable_title_view PRIVATE FABLE_TITLE_VIEW_VULKAN=1)
+    endif()
     target_compile_options(fable_title_view PRIVATE ${FABLE_TEXTURE_WARNINGS})
 endif()
 

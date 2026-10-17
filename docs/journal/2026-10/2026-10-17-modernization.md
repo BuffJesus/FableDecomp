@@ -250,8 +250,10 @@ reconstructed VC7.1 code. It was one 256×128 half of the logo, which reads "FAE
 x64 tree now does it whole. `rebuild/modern/codec` (the LZO1X decoder, moved out of `save/`) and
 `rebuild/modern/texture` (GBANK descriptor, mip 0, A8R8G8B8/DXT1/DXT3 to RGBA, PNG) decode both
 `FRONTEND_TITLE_0{1,2}_SPRITE` from `frontend.big`. `fable_title_view` composes them and
-presents them in a 64-bit window through D3D11, and `--capture` reads the presented back buffer
-from the GPU: "FABLE / The Lost Chapters" (`work/title_view/presented.png`). Decoder coverage is
+presents them in a 64-bit window, and `--capture` reads the presented swapchain image back:
+"FABLE / The Lost Chapters". The first version used D3D11; the user pointed out that the plan is
+D3D12 + Vulkan, so the viewer now has exactly those two backends (`--api d3d12|vulkan`), and
+their captures are pixel-identical (`work/title_view/presented_{d3d12,vulkan}.png`). Decoder coverage is
 394/394 frontend and 6,319/6,324 textures.big entries; the 5 misses use the unconfirmed formats
 0x18/0x23. MSVC x64/x86 and GCC builds, tests green, 0 warnings. The viewer is a pixel check,
 not the step-4 RHI.
@@ -259,7 +261,7 @@ not the step-4 RHI.
 - **Correction and the real step-1 result.** The user pointed out that the post came from the
   parity session: reconstructed engine code (17 VC7.1-parity renderer functions,
   `gate_native_retail_title_raster.py`) drawing the sprite, not new code. So
-  `work/modern_title_raster/build.py` compiles those same 17 sources, the
+  `tools/modern/modern_title_raster.py` compiles those same 17 sources, the
   `NativeRetailTitleRaster_test.cpp` harness and its decoder, all unmodified, with **VS 2022
   x86** (`/O2 /MT /std:c++17 /permissive /Zc:wchar_t-`), runs them on the GPU, and compares with
   the VC7.1 run's frames: **8/8 byte-identical** (the 288×160 title raster plus 7 controls,
