@@ -157,3 +157,5 @@ test	vc71	modern86	modern64	detail
 00/a6/CMovableResourceMemoryPool_MoveResource_00a62f30_test.cpp	pass	pass	fail	
 00/a6/CMovableResourceMemoryPool_ValidateResource_00a62ec0_test.cpp	pass	pass	fail	
 00/ab/CVertexShaderInput_StreamVectorGrowth_00ab4540_test.cpp	pass	pass	crash	exception 0xC0000374
+00/b2/CIEngine_GetStaticMapUpdatePassCount_00b23470_test.cpp	pass	pass	timeout	
+00/b2/CIEngine_OverrideRain_00b23720_test.cpp	timeout	pass	pass	

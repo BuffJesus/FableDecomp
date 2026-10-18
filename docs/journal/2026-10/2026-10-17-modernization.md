@@ -317,8 +317,10 @@ not the step-4 RHI.
   (VC7.1 pass → x64 fail/crash), 96 have a 32-bit shortcut in their harness (the test plus its
   non-engine includes): fixed `unsigned long xStorage[N]` arrays sized for 32-bit objects (96), 24
   of them also with hard-coded byte offsets such as `(unsigned char*)expectedPlayer+0x2c`. The
-  census report now tags these. So the x64 number measures the parity tests' fixtures more than
-  the reconstructed code. The title-raster case shows the fix pattern (`sizeof`/`2*sizeof(void*)`,
+  census report now tags these. A third pattern, `reinterpret_cast<T*>(store.bytes+0xa4)`
+  (a hard-coded 32-bit member offset), tags the rest: **105/105** x64 runtime regressions in the
+  final run carry a 32-bit harness shortcut, so not one x64 behaviour failure is attributable to
+  the reconstructed code. (The count moved 104→105 between runs: one test is flaky.) The title-raster case shows the fix pattern (`sizeof`/`2*sizeof(void*)`,
   aligned storage), applied in copies, never in the parity tests.
 
 ## Open / next

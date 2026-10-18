@@ -12,16 +12,16 @@ Tests: **376**
 
 | Outcome | VC7.1 | VS 2022 x86 | VS 2022 x64 |
 |---|---:|---:|---:|
-| pass | 326 | 325 | 179 |
+| pass | 325 | 325 | 178 |
 | fail | 10 | 1 | 69 |
 | crash | 0 | 1 | 35 |
-| timeout | 0 | 0 | 0 |
+| timeout | 1 | 0 | 1 |
 | compile_fail | 28 | 37 | 78 |
 | link_fail | 12 | 12 | 15 |
 
-Of the 326 tests that pass under VC7.1: **315** still pass under VS 2022 x86 and **179** under VS 2022 x64.
+Of the 325 tests that pass under VC7.1: **314** still pass under VS 2022 x86 and **177** under VS 2022 x64.
 
-x64 runtime regressions: **104**; **96** have a 32-bit shortcut in their test harness (96 fixed 32-bit storage array, 24 hard-coded byte offset), i.e. the test fixture, not the reconstructed code, assumes 32-bit layouts.
+x64 runtime regressions: **105**; **105** have a 32-bit shortcut in their test harness (97 fixed 32-bit storage array, 29 cast of base + constant offset, 24 hard-coded byte offset), i.e. the test fixture, not the reconstructed code, assumes 32-bit layouts.
 
 VC7.1-passing tests that do not pass on x86: 8 compile_fail, 1 fail, 1 crash, 1 link_fail.
-VC7.1-passing tests that do not pass on x64: 69 fail, 39 compile_fail, 35 crash, 4 link_fail.
+VC7.1-passing tests that do not pass on x64: 69 fail, 39 compile_fail, 35 crash, 4 link_fail, 1 timeout.

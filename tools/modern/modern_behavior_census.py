@@ -42,6 +42,7 @@ CONFIGS = ("vc71", "modern86", "modern64")
 HARNESS_IDIOMS = {
     "fixed 32-bit storage array": re.compile(r"unsigned(?: long| int)?\s+\w+\[\d+\]"),
     "hard-coded byte offset": re.compile(r"\(\s*(?:unsigned )?char\s*\*\s*\)\s*[\w>-]+\s*\+\s*(?:0x)?[0-9a-fA-F]+\b"),
+    "cast of base + constant offset": re.compile(r"reinterpret_cast<[^>]+\*>\(\s*[\w.\[\]>-]+\s*\+\s*(?:0x)?[0-9a-fA-F]+\s*\)"),
     "sizeof/4 storage": re.compile(r"sizeof\([^)]*\)\s*/\s*4"),
 }
 INCLUDE_RE = re.compile(r'#include\s+"([^"]+)"')
