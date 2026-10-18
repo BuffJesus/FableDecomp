@@ -11,6 +11,8 @@
 #include <windows.h>
 #include <xinput.h>
 
+#include <initializer_list>
+
 namespace fable::platform {
 namespace {
 
