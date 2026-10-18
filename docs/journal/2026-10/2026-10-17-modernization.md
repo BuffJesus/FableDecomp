@@ -329,6 +329,14 @@ not the step-4 RHI.
   that overflowed retail's DirectInput buffer were all counted (7,533 reports, busiest tick 459,
   above retail's 256 limit).
 
+- **Step 3: the world clock.** `IsTimeForServerUpdate` 0x41674A was read in full. A world frame
+  is due when `predicted_present × 15 − frame > 1`. `predicted_present` is the next vblank after the
+  queued frames (`CVsyncCallbackTimer`, 0x4166E2), never earlier than now, minus the game start
+  time (+0x60). Each Update runs at most one world frame, and the render fraction is
+  `predicted_present × 15 − frame`. `fable::platform::WorldClock` implements that, and its tests
+  replay the live sample (15 Hz world, 4 renders per world frame at 60 Hz) and hold 15 Hz at
+  144-1000 Hz refresh.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).

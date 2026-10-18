@@ -22,4 +22,11 @@ if(BUILD_TESTING)
     add_test(NAME fable_platform.MouseAccumulator
         COMMAND fable_platform_tests
     )
+    add_executable(fable_worldclock_tests
+        tests/WorldClockTests.cpp
+    )
+    target_link_libraries(fable_worldclock_tests PRIVATE fable_platform)
+    add_test(NAME fable_platform.WorldClock
+        COMMAND fable_worldclock_tests
+    )
 endif()

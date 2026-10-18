@@ -10,15 +10,24 @@ piece: **mouse input**.
   overflow it (docs/modern/FRAME_TIMING.md "Live results").
 - `RawMouseWin32`: Win32 Raw Input (`WM_INPUT`) feeding the accumulator.
 
+- `WorldClock` (portable, header-only): retail's world-tick scheduler. A world frame is due when
+  `predicted_present * 15 - frame > 1` (`IsTimeForServerUpdate` 0x41674A); `predicted_present` is the
+  next vblank after the queued frames, never earlier than now (0x4166E2). Each Update runs at most
+  one world frame, and the renderer draws at `predicted_present * 15 - frame`.
+
 ## Verified (2026-10-17)
 
 - `fable_platform_tests`: 2,000 reports in one tick are all summed; clicks inside one tick are
   kept; held buttons carry over.
+- `fable_worldclock_tests`: replays the retail live sample (60 Hz presents → 15 Hz world, 4 renders
+  per world frame) and keeps the world at 15 Hz at 144/165/240/1000 Hz refresh; a late frame
+  catches up one per Update.
 - `fable_rawmouse_probe --seconds 12` while injecting 5 × 1,500 `SendInput` moves (the bursts
   that made retail return `DI_BUFFEROVERFLOW`): 7,533 reports counted (7,500 injected, the rest
   from the real mouse), busiest 15 Hz tick 459 reports, nothing dropped.
 
 ## Not covered yet
 
-Keyboard, pads (XInput/GameInput), the clock, the window, files and config. See
+Keyboard, pads (XInput/GameInput), the real vblank source for `predicted_present`, the window,
+files and config. See
 MODERNIZATION step 3.
