@@ -323,6 +323,12 @@ not the step-4 RHI.
   the reconstructed code. (The count moved 104→105 between runs: one test is flaky.) The title-raster case shows the fix pattern (`sizeof`/`2*sizeof(void*)`,
   aligned storage), applied in copies, never in the parity tests.
 
+- **Step 3 begins: the fork's mouse input** (`rebuild/modern/platform`). `MouseAccumulator`
+  folds every OS report into running sums and the world tick takes one frame, so there's no
+  buffer to overflow. `RawMouseWin32` feeds it from `WM_INPUT`. Live: the injected 5 × 1,500 bursts
+  that overflowed retail's DirectInput buffer were all counted (7,533 reports, busiest tick 459,
+  above retail's 256 limit).
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).

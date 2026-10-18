@@ -37,6 +37,9 @@ See `docs/ARCHITECTURE.md` for the promotion and modernization policy.
   decodes 394/394 frontend and 6,319/6,324 world textures. `fable_title_view` presents the
   retail title logo in a 64-bit window through D3D12 or Vulkan (pixel-identical captures): the
   modern tree's first frame. See `texture/README.md`.
+- `compat/` — types that keep retail (VC7.1) layouts under current compilers (`retail_bitset`).
+- `platform/` — step-3 platform services; first: mouse input via Raw Input with a per-tick
+  accumulator (no 256-record limit). See `platform/README.md`.
 - `bank/` — the BIGB `.big` bank container (TOCs, payload views, minimal-repack writer). All 17
   bank files in the install round-trip byte-identically, and resize/revert edits hold. See
   `bank/README.md`.
