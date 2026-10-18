@@ -111,6 +111,19 @@ Each step changes one thing, keeps the game playable, and is compared against th
 Compatibility fixes (the AMD fade/audio reports, reported-bug list) land behind switches, default
 off, after step 2.
 
+### Status (2026-10-17)
+
+The fork gate (a runnable reconstruction) is not open yet. Each step's groundwork is measured
+against the reconstructed code that exists:
+
+| # | Where it stands | Evidence |
+|---|---|---|
+| 1 | Reconstructed code survives VS 2022 x86: 99.4% of 20,327 TUs compile; 315/326 behaviour tests that pass under VC7.1 still pass (with `compat::retail_bitset`); the parity lane's reconstructed title raster draws byte-identical frames | [MODERN_COMPILE_CENSUS](MODERN_COMPILE_CENSUS.md), [MODERN_BEHAVIOR_CENSUS](MODERN_BEHAVIOR_CENSUS.md), `tools/modern/modern_title_raster.py` |
+| 2 | 96.5% of TUs compile clean as x64 after two byte-neutral header fixes; the reconstructed title raster runs as x64 with byte-identical frames; every x64 behaviour failure traces to a 32-bit test harness; retail saves (402/402) and `.big` banks (17/17) round-trip through portable codecs | census reports above, `rebuild/modern/save`, `rebuild/modern/bank` |
+| 3 | Started: Raw Input mouse accumulation (no 256-record limit, verified against injected 8 kHz-class bursts) and the world-tick clock (retail's `IsTimeForServerUpdate` semantics) | `rebuild/modern/platform` |
+| 4 | Pixel path proven: retail textures decode and present through D3D12 and Vulkan with pixel-identical captures; no RHI yet | `rebuild/modern/texture` (`fable_title_view`) |
+| 4b, 5 | Not started in the fork tree | - |
+
 ## x64 hazards
 
 The API calls are the easy part. These are where 64-bit breaks things quietly:
