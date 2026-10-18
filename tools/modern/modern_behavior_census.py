@@ -44,6 +44,27 @@ def tests() -> list[Path]:
     return out
 
 
+def retail_bitset_tree() -> Path:
+    """The census header copy with CThing::UsingComponents as fable::compat::retail_bitset<274>
+    (VC7.1's 36-byte storage) instead of the current library's 40-byte std::bitset."""
+    src = ROOT / "work" / "modern_census" / "include_x64"
+    dst = WORK / "include_retail_bitset"
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+    world = dst / "fable_world.h"
+    t = world.read_text(encoding="utf-8", errors="surrogateescape")
+    assert t.count("std::bitset<274> UsingComponents;") == 1
+    t = t.replace("std::bitset<274> UsingComponents;", "fable::compat::retail_bitset<274> UsingComponents;")
+    t = '#include "' + (ROOT / "rebuild/modern/compat/include/fable/compat/retail_bitset.hpp").as_posix() + '"\n' + t
+    world.write_text(t, encoding="utf-8", errors="surrogateescape")
+    for name in ("src", "tests"):   # same sibling junctions as the census copy
+        link = WORK / name
+        if not link.exists():
+            subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(ROOT / "rebuild" / name)], capture_output=True)
+    return dst
+
+
 def link_trees() -> None:
     """Headers in the census copy include "../../src/..." relative to themselves; junction the copy's
     siblings to the real rebuild/src and rebuild/tests so those resolve."""
@@ -53,7 +74,7 @@ def link_trees() -> None:
             subprocess.run(["cmd", "/c", "mklink", "/J", str(link), str(ROOT / "rebuild" / name)], capture_output=True)
 
 
-def toolchain(config: str) -> tuple[list[str], dict]:
+def toolchain(config: str, include_override: Path | None = None) -> tuple[list[str], dict]:
     if config == "vc71":
         env = dict(os.environ)
         env["PATH"] = str(VC71 / "bin") + ";" + env["PATH"]
@@ -64,7 +85,7 @@ def toolchain(config: str) -> tuple[list[str], dict]:
     env = json.load(open(ROOT / "work" / "modern_census" / f"env_{arch}.json"))
     # Both modern configs use the census copy with the PDB size asserts off: the asserts are known
     # layout differences (MODERN_COMPILE_CENSUS), and this census measures behaviour.
-    include = ROOT / "work" / "modern_census" / "include_x64"
+    include = include_override or ROOT / "work" / "modern_census" / "include_x64"
     # The real rebuild/include stays on the path after the copy: tests reach siblings through
     # "../tests/..." and "../src/..." includes that resolve relative to it.
     env["INCLUDE"] = env["INCLUDE"] + ";" + str(include) + ";" + str(ROOT / "rebuild" / "include")
@@ -110,10 +131,13 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 4) - 2))
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--retail-bitset", action="store_true",
+                    help="modern configs use fable::compat::retail_bitset for CThing::UsingComponents")
     args = ap.parse_args()
     all_tests = tests()[: args.limit] if args.limit else tests()
     link_trees()
-    chains = {c: toolchain(c) for c in CONFIGS}
+    override = retail_bitset_tree() if args.retail_bitset else None
+    chains = {c: toolchain(c, override if c != "vc71" else None) for c in CONFIGS}
     results: dict[str, dict[str, tuple[str, str]]] = collections.defaultdict(dict)
     with cf.ThreadPoolExecutor(max_workers=args.jobs) as ex:
         futs = {ex.submit(run_one, t, c, *chains[c]): (t, c) for t in all_tests for c in CONFIGS}
@@ -134,6 +158,10 @@ def main() -> None:
         "VS 2022 x86, and VS 2022 x64 (census header copy: pointer-size check and PDB size asserts off).",
         "A pass is exit code 0. [MODERN_BEHAVIOR_CENSUS.tsv](MODERN_BEHAVIOR_CENSUS.tsv) lists every test whose",
         "outcome differs from VC7.1.",
+        "",
+        "Modern configs' `CThing::UsingComponents`: " + (
+            "`fable::compat::retail_bitset<274>` (VC7.1's 36-byte layout; `--retail-bitset`)." if args.retail_bitset
+            else "the current library's `std::bitset<274>` (40 bytes)."),
         "",
         f"Tests: **{len(results)}**",
         "",

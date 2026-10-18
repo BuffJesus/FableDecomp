@@ -18,7 +18,7 @@ test	vc71	modern86	modern64	detail
 00/48/ByteVector_InsertFill_00485f3a_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\48\../../../src/compiled/00/48/ByteVector_InsertFill_00485f3a.cpp(23): error C2485: 'naked': unrecognized extended attribute
 00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\48\../../../src/compiled/00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2.cpp(14): error C2485: 'naked': unrecognized extended attribute
 00/48/CPlayer_GetPControlledCreature_00487dc0_test.cpp	pass	pass	fail	
-00/48/CPlayer_IsMainPlayer_00487520_test.cpp	pass	fail	fail	
+00/48/CPlayer_IsMainPlayer_00487520_test.cpp	pass	pass	fail	
 00/48/CPlayer_PeekPControlledCreature_00487dd0_test.cpp	pass	pass	fail	
 00/48/CPlayer_ToggleAggressiveMode_00487e90_test.cpp	pass	pass	fail	
 00/48/CPlayer_UnfreezeControls_00487120_test.cpp	pass	pass	fail	
@@ -61,13 +61,13 @@ test	vc71	modern86	modern64	detail
 00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3.cpp(24): error C2485: 'naked': unrecognized extended attribute
 00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp(12): error C2485: 'naked': unrecognized extended attribute
 00/62/CWorld_EAApplyAllScriptedMapBrushes_00629210_test.cpp	pass	pass	fail	
-00/62/CWorld_EACloseHeroInformationScreen_0062b3f0_test.cpp	pass	fail	crash	exception 0xC0000005
+00/62/CWorld_EACloseHeroInformationScreen_0062b3f0_test.cpp	pass	pass	crash	exception 0xC0000005
 00/62/CWorld_EACloseInGameMenu_00629d60_test.cpp	pass	pass	crash	exception 0xC0000005
 00/62/CWorld_EACloseLiveGUI_00629da0_test.cpp	pass	pass	crash	exception 0xC0000005
 00/62/CWorld_EAClosePhotoCapture_0062b4d0_test.cpp	pass	pass	crash	exception 0xC0000005
 00/62/CWorld_EAConsoleToggleState_0062a110_test.cpp	pass	pass	link_fail	CWorld_EAConsoleToggleState_0062a110.obj : error LNK2019: unresolved external symbol "public: __cdecl CConsole::CConsole(void)" (??0CConsole@@QEAA@XZ) referenced in function "public: void __cdecl CWor
-00/62/CWorld_EAControlledCreatureBlockEnd_0062b000_test.cpp	pass	fail	fail	
-00/62/CWorld_EAControlledCreatureDefault_006298f0_test.cpp	pass	fail	fail	
+00/62/CWorld_EAControlledCreatureBlockEnd_0062b000_test.cpp	pass	pass	fail	
+00/62/CWorld_EAControlledCreatureDefault_006298f0_test.cpp	pass	pass	fail	
 00/62/CWorld_EACreatureCheat_006292a0_test.cpp	pass	pass	crash	exception 0xC0000374
 00/62/CWorld_EADeleteMenuComponents_0062c980_test.cpp	pass	pass	fail	
 00/62/CWorld_EADeleteTradeActiveMenu_0062c9d0_test.cpp	pass	pass	fail	
@@ -82,19 +82,19 @@ test	vc71	modern86	modern64	detail
 00/62/CWorld_EAOpenPCSkillsMenu_0062c690_test.cpp	pass	pass	fail	
 00/62/CWorld_EAOpenPCStatusMenu_0062c930_test.cpp	pass	pass	fail	
 00/62/CWorld_EAOpenPCWantedTradingMenu_0062c890_test.cpp	pass	pass	fail	
-00/62/CWorld_EARemoveCurrentMode_0062c4b0_test.cpp	pass	fail	fail	
+00/62/CWorld_EARemoveCurrentMode_0062c4b0_test.cpp	pass	pass	fail	
 00/62/CWorld_EASetFreeCameraMode_00629390_test.cpp	pass	pass	fail	
 00/62/CWorld_EASetPauseMode_006292d0_test.cpp	pass	pass	fail	
 00/62/CWorld_EASetSlowMotion_00629330_test.cpp	pass	pass	fail	
 00/62/CWorld_EAToggleKillEverythingMode_00629570_test.cpp	pass	pass	fail	
 00/62/CWorld_EAUpdateFrame_00629270_test.cpp	pass	pass	fail	
 00/62/CWorld_EAUseFreeCamera_00629420_test.cpp	pass	pass	fail	
-00/63/CPlayer_GetCurrentMode_00633be0_test.cpp	pass	fail	fail	
+00/63/CPlayer_GetCurrentMode_00633be0_test.cpp	pass	pass	fail	
 00/66/CDefinitionManager_GetDefCombatTypeIndex_00669640_test.cpp	pass	pass	fail	
 00/66/CDefinitionManager_GetDefCombatTypeName_00669770_test.cpp	pass	pass	fail	
 00/66/CFrontEndManager_CreateComponent_00661d20_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\66\../../../src/compiled/00/66/CFrontEndManager_CreateComponent_00661d20.cpp(41): error C2485: 'naked': unrecognized extended attribute
 00/66/CThingCreatureBase_GetCombatTypeDef_00666d10_test.cpp	pass	pass	crash	exception 0xC0000005
-00/66/CThingCreatureBase_GetPCombatTypeDef_00664d40_test.cpp	pass	fail	crash	exception 0xC0000005
+00/66/CThingCreatureBase_GetPCombatTypeDef_00664d40_test.cpp	pass	pass	crash	exception 0xC0000005
 00/66/HeroInformationManager_Close_0066e73d_test.cpp	pass	pass	crash	exception 0xC0000005
 00/69/CGameCameraManager_RecentreCamera_006978c0_test.cpp	pass	pass	fail	
 00/73/CTCCombat_IsAbleToBeKnockedDown_007331a0_test.cpp	pass	pass	crash	exception 0xC0000005
@@ -112,8 +112,8 @@ test	vc71	modern86	modern64	detail
 00/9a/CDefinitionManager_GetPDefFromGlobalIndex_009ada10_test.cpp	pass	pass	crash	exception 0xC0000005
 00/9a/CDefinitionManager_GetPDefFromInstantiationNameConst_009ada40_test.cpp	pass	pass	crash	exception 0xC0000005
 00/9a/CDefinitionManager_GetPDefFromInstantiationName_009ada90_test.cpp	pass	pass	crash	exception 0xC0000005
-00/9b/CCountedPointer_CSymbolMap_Reset_009b1f50_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
-00/9b/CDefinitionManager_CDefinitionManager_009b0470_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9b/CCountedPointer_CSymbolMap_Reset_009b1f50_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
+00/9b/CDefinitionManager_CDefinitionManager_009b0470_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
 00/9b/STL_IntrosortLoop_SubDefEntry_009b7dd0_test.cpp	pass	pass	link_fail	STL_IntrosortLoop_SubDefEntry_009b7dd0_test.obj : error LNK2019: unresolved external symbol "void __cdecl _STL::__introsort_loop<struct _STL::pair<unsigned long,class CDefClassBase::CSubDefInfo> *,str
 00/9b/STL_Sort_SubDefEntry_009b84c0_test.cpp	pass	pass	link_fail	STL_Sort_SubDefEntry_009b84c0.obj : error LNK2019: unresolved external symbol "void __cdecl _STL::__introsort_loop<struct _STL::pair<unsigned long,class CDefClassBase::CSubDefInfo> *,struct _STL::pair
 00/9c/CBankFile_EntryExists_009cc190_test.cpp	pass	pass	fail	
@@ -121,13 +121,13 @@ test	vc71	modern86	modern64	detail
 00/9d/CBankFileAsync_ProcessDisposalList_009d6730_test.cpp	pass	pass	crash	exception 0xC0000005
 00/9d/CBankFileAsync_RestartAbortedReads_009d5a90_test.cpp	pass	pass	crash	exception 0xC0000005
 00/9d/CDefStringTable_CDefStringTable_009d4db0_test.cpp	pass	pass	fail	global
-00/9e/CFontManager_CFontManager_009e2e30_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
-00/9e/CSymbolMap_CSymbolMap_009e5200_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
-00/9e/CSymbolMap_Clear_009e5250_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
-00/9e/CSymbolMap_DeletingDestructor_009e7bd0_test.cpp	link_fail	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CFontManager_CFontManager_009e2e30_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
+00/9e/CSymbolMap_CSymbolMap_009e5200_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
+00/9e/CSymbolMap_Clear_009e5250_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
+00/9e/CSymbolMap_DeletingDestructor_009e7bd0_test.cpp	link_fail	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
 00/9e/CSymbolMap_FindSymbol_009e5170_test.cpp	pass	pass	fail	
-00/9e/CSymbolMap_GetSymbolSLONG_009e5120_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
-00/9e/CSymbolMap_SymbolExists_009e51c0_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_GetSymbolSLONG_009e5120_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
+00/9e/CSymbolMap_SymbolExists_009e51c0_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_behavior\include_retail_bitset\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CComp
 00/9e/CVectorMap_SymbolMap_LowerBound_009e6910_test.cpp	pass	pass	fail	
 00/9e/STL_AdjustHeap_SymbolEntry_009e6db0_test.cpp	pass	pass	fail	
 00/9e/STL_LinearInsert_SymbolEntry_009e6fa0_test.cpp	pass	pass	crash	exception 0xC0000005

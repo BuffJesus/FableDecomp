@@ -305,6 +305,14 @@ not the step-4 RHI.
     "install"/"update") means each test gets a neutral `run.exe`. The census header copy gets
     junctions `work/modern_census/{src,tests}` → `rebuild/` so headers' `../../src/...` includes resolve.
 
+- **Retail-layout bitset fixes step 1's layout break.** `rebuild/modern/compat` gains
+  `fable::compat::retail_bitset<N>`: std::bitset's interface over VC7.1's storage of ceil(N/32)
+  32-bit words (274 bits = 36 bytes), with tests against std::bitset. `modern_behavior_census.py
+  --retail-bitset` builds the modern configs with `CThing::UsingComponents` switched to it.
+  **VS 2022 x86: 315/326 VC7.1-passing tests pass (was 308)**, and behaviour failures go 8 → 0.
+  What is left on x86 is 8 compile failures from one source (`CSymbolMap_ContainerLifetime`, C2995),
+  1 failure, 1 crash and 1 STLport link. x64 is unchanged at 179: there the 32-bit layouts dominate.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
