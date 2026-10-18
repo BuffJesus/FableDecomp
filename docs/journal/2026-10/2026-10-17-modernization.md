@@ -342,6 +342,12 @@ not the step-4 RHI.
   plus `RawKeyboardWin32` keep both. Live: 60 injected F24 taps (F24 so nothing else reacts)
   gave 120 events and 60 presses.
 
+- **Step 3: pads.** Retail `CJoystickDX` setup (0xAB6B10): DirectInput range 0..0x10000, dead
+  zone 2000/10000 on X and Y only (left stick), 64-event buffer. UpdateEvents (0xAB6E40) stores
+  `2*raw/65536 - 1` (+y down). `Pad`/`XInputPad` give the same stick values from XInput, with
+  separate triggers (DirectInput folds an Xbox pad's triggers into one axis). Live: the user's Xbox
+  One Wireless Controller is in XInput slot 0 and at rest reads exactly 0.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
