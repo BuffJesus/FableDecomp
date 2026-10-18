@@ -6,6 +6,7 @@
 
 #if defined(_WIN32)
 
+#include <fable/platform/KeyboardAccumulator.hpp>
 #include <fable/platform/MouseAccumulator.hpp>
 
 #ifndef WIN32_LEAN_AND_MEAN
@@ -27,6 +28,13 @@ public:
     // Call from the window procedure for WM_INPUT (lParam = HRAWINPUT). Returns true when the
     // message was a mouse report.
     static bool handle(LPARAM lparam, MouseAccumulator& into) noexcept;
+};
+
+// The keyboard counterpart: registers usage page 1 / usage 6 and feeds KeyboardAccumulator.
+class RawKeyboardWin32 {
+public:
+    [[nodiscard]] static bool register_for(HWND hwnd, bool background = false) noexcept;
+    static bool handle(LPARAM lparam, KeyboardAccumulator& into);
 };
 
 } // namespace fable::platform

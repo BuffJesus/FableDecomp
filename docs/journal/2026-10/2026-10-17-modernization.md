@@ -337,6 +337,11 @@ not the step-4 RHI.
   replay the live sample (15 Hz world, 4 renders per world frame at 60 Hz) and hold 15 Hz at
   144-1000 Hz refresh.
 
+- **Step 3: keyboard.** Retail `CKeyboardDX::Update` reads a 256-key `GetDeviceState`
+  snapshot and the buffered `GetDeviceData` transitions each world tick. `KeyboardAccumulator`
+  plus `RawKeyboardWin32` keep both. Live: 60 injected F24 taps (F24 so nothing else reacts)
+  gave 120 events and 60 presses.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).

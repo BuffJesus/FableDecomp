@@ -29,4 +29,11 @@ if(BUILD_TESTING)
     add_test(NAME fable_platform.WorldClock
         COMMAND fable_worldclock_tests
     )
+    add_executable(fable_keyboard_tests
+        tests/KeyboardAccumulatorTests.cpp
+    )
+    target_link_libraries(fable_keyboard_tests PRIVATE fable_platform)
+    add_test(NAME fable_platform.Keyboard
+        COMMAND fable_keyboard_tests
+    )
 endif()

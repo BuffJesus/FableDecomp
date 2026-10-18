@@ -46,6 +46,32 @@ bool RawMouseWin32::handle(LPARAM lparam, MouseAccumulator& into) noexcept
     return true;
 }
 
+bool RawKeyboardWin32::register_for(HWND hwnd, bool background) noexcept
+{
+    RAWINPUTDEVICE device{};
+    device.usUsagePage = 0x01;   // generic desktop
+    device.usUsage = 0x06;       // keyboard
+    device.dwFlags = background ? RIDEV_INPUTSINK : 0;
+    device.hwndTarget = hwnd;
+    return RegisterRawInputDevices(&device, 1, sizeof(device)) != FALSE;
+}
+
+bool RawKeyboardWin32::handle(LPARAM lparam, KeyboardAccumulator& into)
+{
+    RAWINPUT input{};
+    UINT size = sizeof(input);
+    if (GetRawInputData(reinterpret_cast<HRAWINPUT>(lparam), RID_INPUT, &input, &size, sizeof(RAWINPUTHEADER)) == static_cast<UINT>(-1) ||
+        input.header.dwType != RIM_TYPEKEYBOARD) {
+        return false;
+    }
+    const RAWKEYBOARD& k = input.data.keyboard;
+    if (k.VKey == 0 || k.VKey >= 255) {   // 0xFF: fake keys sent as parts of escaped sequences
+        return true;
+    }
+    into.key(static_cast<std::uint8_t>(k.VKey), (k.Flags & RI_KEY_BREAK) == 0);
+    return true;
+}
+
 } // namespace fable::platform
 
 #endif
