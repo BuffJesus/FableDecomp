@@ -24,6 +24,7 @@ import collections
 import concurrent.futures as cf
 import json
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -34,6 +35,36 @@ VC71 = Path(r"D:\Tools\vc71")
 OUT_MD = ROOT / "docs" / "modern" / "MODERN_BEHAVIOR_CENSUS.md"
 OUT_TSV = ROOT / "docs" / "modern" / "MODERN_BEHAVIOR_CENSUS.tsv"
 CONFIGS = ("vc71", "modern86", "modern64")
+
+
+# 32-bit shortcuts in a test's harness (the test file and the non-engine files it includes):
+# x64 failures with one of these say more about the harness than about the reconstructed code.
+HARNESS_IDIOMS = {
+    "fixed 32-bit storage array": re.compile(r"unsigned(?: long| int)?\s+\w+\[\d+\]"),
+    "hard-coded byte offset": re.compile(r"\(\s*(?:unsigned )?char\s*\*\s*\)\s*[\w>-]+\s*\+\s*(?:0x)?[0-9a-fA-F]+\b"),
+    "sizeof/4 storage": re.compile(r"sizeof\([^)]*\)\s*/\s*4"),
+}
+INCLUDE_RE = re.compile(r'#include\s+"([^"]+)"')
+
+
+def harness_idioms(test: Path) -> list[str]:
+    seen, texts, stack = set(), [], [test]
+    while stack:
+        p = stack.pop().resolve()
+        if p in seen or not p.exists():
+            continue
+        seen.add(p)
+        if "src" in p.parts and "compiled" in p.parts:   # reconstructed code is not harness
+            continue
+        s = p.read_text(encoding="utf-8", errors="replace")
+        texts.append(s)
+        for m in INCLUDE_RE.findall(s):
+            for base in (p.parent, ROOT / "rebuild" / "include"):
+                if (base / m).exists():
+                    stack.append(base / m)
+                    break
+    text = "\n".join(texts)
+    return [name for name, rx in HARNESS_IDIOMS.items() if rx.search(text)]
 
 
 def tests() -> list[Path]:
@@ -173,6 +204,12 @@ def main() -> None:
     lines += ["",
               f"Of the {len(baseline_pass)} tests that pass under VC7.1: **{kept['modern86']}** still pass under VS 2022 x86 "
               f"and **{kept['modern64']}** under VS 2022 x64.", ""]
+    runtime64 = [t for t in regressions["modern64"] if results[t]["modern64"][0] in ("fail", "crash", "timeout")]
+    tagged = {t: harness_idioms(ROOT / "rebuild" / "tests" / t) for t in runtime64}
+    idiom_counts = collections.Counter(k for v in tagged.values() for k in v)
+    lines += [f"x64 runtime regressions: **{len(runtime64)}**; **{sum(1 for v in tagged.values() if v)}** have a 32-bit "
+              "shortcut in their test harness (" + ", ".join(f"{n} {k}" for k, n in idiom_counts.most_common()) +
+              "), i.e. the test fixture, not the reconstructed code, assumes 32-bit layouts.", ""]
     for c, title in (("modern86", "x86"), ("modern64", "x64")):
         kinds = collections.Counter(results[t][c][0] for t in regressions[c])
         lines.append(f"VC7.1-passing tests that do not pass on {title}: " +

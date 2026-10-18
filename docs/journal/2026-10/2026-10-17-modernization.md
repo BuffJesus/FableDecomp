@@ -313,6 +313,14 @@ not the step-4 RHI.
   What is left on x86 is 8 compile failures from one source (`CSymbolMap_ContainerLifetime`, C2995),
   1 failure, 1 crash and 1 STLport link. x64 is unchanged at 179: there the 32-bit layouts dominate.
 
+- **x64 behaviour failures are mostly test harnesses.** Of the 104 x64 runtime regressions
+  (VC7.1 pass → x64 fail/crash), 96 have a 32-bit shortcut in their harness (the test plus its
+  non-engine includes): fixed `unsigned long xStorage[N]` arrays sized for 32-bit objects (96), 24
+  of them also with hard-coded byte offsets such as `(unsigned char*)expectedPlayer+0x2c`. The
+  census report now tags these. So the x64 number measures the parity tests' fixtures more than
+  the reconstructed code. The title-raster case shows the fix pattern (`sizeof`/`2*sizeof(void*)`,
+  aligned storage), applied in copies, never in the parity tests.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
