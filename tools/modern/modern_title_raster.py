@@ -42,19 +42,58 @@ SOURCES = [
 ]
 FLAGS = ["/nologo", "/c", "/O2", "/MT", "/W1", "/permissive", "/Zc:wchar_t-"]
 
+# The two harness files (not reconstructed code) assume 32-bit layouts in three places. For x64 the
+# script compiles patched COPIES; the parity originals are never written. Every patch is listed:
+HARNESS_X64_PATCHES = [
+    # CDisplayManager::PRenderManager sits after the vtable and SystemManager pointers: +8 on x86.
+    ("(unsigned char*)displayStorage+8", "(unsigned char*)displayStorage+2*sizeof(void*)"),
+    # CTexture is {IDirect3DTexture9*, u32}; the fake object needs a pointer-sized first slot.
+    ("unsigned textureStorage[2]={(unsigned)texture,0};", "void* textureStorage[2]={texture,0};"),
+    # Raw storage for objects with pointer members needs pointer alignment.
+    ("unsigned long storage[sizeof(CRenderManagerCore)/4];",
+     "alignas(16) unsigned long storage[(sizeof(CRenderManagerCore)+3)/4];"),
+    ("unsigned long displayStorage[sizeof(CDisplayManager)/4];",
+     "alignas(16) unsigned long displayStorage[(sizeof(CDisplayManager)+3)/4];"),
+]
+
+
+def harness_x64(out):
+    """Patched copies of the two harness files; returns the path to compile instead of the original."""
+    d = out / "harness"
+    d.mkdir(parents=True, exist_ok=True)
+    applied = {}
+    for name in ("NativeIndexedRaster_test.cpp", "NativeRetailTitleRaster_test.cpp"):
+        t = (ROOT / "rebuild/tests/integration" / name).read_text(encoding="utf-8", errors="surrogateescape")
+        for old, new in HARNESS_X64_PATCHES:
+            n = t.count(old)
+            t = t.replace(old, new)
+            applied[(name, old)] = n
+        t = t.replace('"../../integration/', '"' + (ROOT / "rebuild/integration").as_posix() + "/")
+        (d / name).write_text(t, encoding="utf-8", errors="surrogateescape")
+    for (name, old), n in applied.items():
+        if n:
+            print(f"x64 harness patch: {name}: {old!r} x{n}")
+    return d / "NativeRetailTitleRaster_test.cpp"
+
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arch", choices=("x86", "x64"), default="x86")
     args = ap.parse_args()
     env = json.load(open(ROOT / f"work/modern_census/env_{args.arch}.json"))
-    env["INCLUDE"] = env["INCLUDE"] + ";" + str(ROOT / "rebuild/include")
+    # x64: the census's patched copy of rebuild/include (pointer-size check and PDB size asserts
+    # off, everything else unchanged), because the parity headers refuse 8-byte pointers.
+    include = ROOT / "work/modern_census/include_x64" if args.arch == "x64" else ROOT / "rebuild/include"
+    env["INCLUDE"] = env["INCLUDE"] + ";" + str(include)
     cl = shutil.which("cl", path=env["PATH"])
     link = shutil.which("link", path=env["PATH"])
     out = ROOT / "work/modern_title_raster" / args.arch
     out.mkdir(parents=True, exist_ok=True)
     objects, failures = [], []
-    for i, src in enumerate(SOURCES):
+    sources = list(SOURCES)
+    if args.arch == "x64":
+        sources[SOURCES.index("rebuild/tests/integration/NativeRetailTitleRaster_test.cpp")] = str(harness_x64(out))
+    for i, src in enumerate(sources):
         obj = out / f"{i}.obj"
         std = [] if src.endswith(".c") else ["/std:c++17"]
         r = subprocess.run([cl, *FLAGS, *std, f"/Fo{obj}", str(ROOT / src)], env=env, capture_output=True, text=True,

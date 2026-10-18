@@ -276,6 +276,17 @@ not the step-4 RHI.
   form for retail-loadable files, zstd/LZ4/zlib for the fork's own formats, and GPL LZO only as
   an optional byte-exact test. Codec round-trip tests added (5 suites green, MSVC + GCC).
 
+- **Fork step 2 on reconstructed code: the parity lane's title raster runs as x64.**
+  `tools/modern/modern_title_raster.py --arch x64` compiles the same 17 reconstructed renderer
+  sources, unmodified, with VS 2022 x64 against the census's patched header copy (32-bit pointer
+  check and PDB size asserts off). It runs them through the 64-bit `d3d9.dll`: **8/8 frames
+  byte-identical to the VC7.1 32-bit build**, including the 46,080-pixel retail title (`FAE / THE
+  LOST`, the post's frame, now from a 64-bit build). The reconstructed sources needed no change.
+  Only the test harness did, in script-made copies (parity originals untouched): its hard-coded
+  `+8` for `CDisplayManager::PRenderManager` becomes `2*sizeof(void*)`, the fake `CTexture` gets
+  pointer-sized slots, and the raw object storage gets 16-byte alignment. These are exactly the
+  "PDB layouts are 32-bit" hazard, located outside the engine code.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
