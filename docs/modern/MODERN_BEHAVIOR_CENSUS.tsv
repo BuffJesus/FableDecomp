@@ -1,0 +1,159 @@
+test	vc71	modern86	modern64	detail
+00/40/CVectorMapThingComponents_LowerBound_0040f020_test.cpp	pass	pass	fail	
+00/41/CCountedFontPointer_Sharing_004190e2_test.cpp	pass	pass	crash	exception 0xC0000374
+00/41/CDisplayEngineInit_CDisplayEngineInit_00419270_test.cpp	pass	pass	fail	
+00/41/CMainGameComponentInit_CMainGameComponentInit_004131a0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\41\../../../src/compiled/00/41/CMainGameComponentInit_CMainGameComponentInit_004131a0.cpp(13): error C2485: 'naked': unrecognized extended attribute
+00/41/CMainGameComponentInit_CMainGameComponentInit_00415e17_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\41\../../../src/compiled/00/41/CMainGameComponentInit_CMainGameComponentInit_00415e17.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/41/CMainGameComponent_InitEventPackageLoading_00416056_test.cpp	pass	pass	crash	exception 0xC0000005
+00/41/CMainGameComponent_InitEventPackageSaving_004160cc_test.cpp	pass	pass	crash	exception 0xC0000005
+00/41/CMainGameComponent_PostChangeResolution_00416365_test.cpp	pass	pass	crash	exception 0xC0000005
+00/41/CMainGameComponent_ProcessEventPackage_00416670_test.cpp	pass	pass	crash	exception 0xC0000005
+00/41/CMainGameComponent_SetDisplayMode_0041641f_test.cpp	pass	fail	fail	COMPONENT_DISPLAY_MODE_FAIL case=1 seq=7 errors=5
+00/43/CDisplayEngine_ChangeTextureColourDepth_00434dc0_test.cpp	pass	pass	fail	
+00/43/CDisplayEngine_ConfirmFeedbackGameEventPackage_00434a60_test.cpp	pass	pass	fail	
+00/43/CDisplayEngine_PostChangeResolution_00434a20_test.cpp	pass	pass	fail	
+00/43/CDisplayEngine_PreChangeResolution_00434a10_test.cpp	pass	pass	fail	
+00/43/CDisplayEngine_ReceiveFeedbackGameEvent_00434a30_test.cpp	pass	pass	fail	
+00/43/CPlayerGui_GetPHeroInfoScreensManager_00437cd0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/48/ByteVector_InsertFill_00485f3a_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\48\../../../src/compiled/00/48/ByteVector_InsertFill_00485f3a.cpp(23): error C2485: 'naked': unrecognized extended attribute
+00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\48\../../../src/compiled/00/48/CPersistContextReadSection_CPersistContextReadSection_00485cd2.cpp(14): error C2485: 'naked': unrecognized extended attribute
+00/48/CPlayer_GetPControlledCreature_00487dc0_test.cpp	pass	pass	fail	
+00/48/CPlayer_IsMainPlayer_00487520_test.cpp	pass	fail	fail	
+00/48/CPlayer_PeekPControlledCreature_00487dd0_test.cpp	pass	pass	fail	
+00/48/CPlayer_ToggleAggressiveMode_00487e90_test.cpp	pass	pass	fail	
+00/48/CPlayer_UnfreezeControls_00487120_test.cpp	pass	pass	fail	
+00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ChooseProfileNumber_004962c0.cpp(36): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_ChooseSaveNumber_00494800_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ChooseSaveNumber_00494800.cpp(32): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_ChooseWorldNumber_00494710_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ChooseWorldNumber_00494710.cpp(45): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_ClearProfileResources_00495780_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ClearProfileResources_00495780.cpp(20): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_CreateNewProfile_004945b0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_CreateNewProfile_004945b0.cpp(51): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_Destroy_00495620_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_Destroy_00495620.cpp(28): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494520.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494680_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494680.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494770_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_GetMaxVisibleProfileNumber_00494770.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_InitGraphics_00494840_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_InitGraphics_00494840.cpp(120): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_PopulateProfiles_00495890_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_PopulateProfiles_00495890.cpp(39): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_SetActiveInputSlot_00494440_test.cpp	pass	pass	fail	CFrontendGameComponent_SetActiveInputSlot_00494440_test FAIL
+00/49/CFrontendGameComponent_SetMode_00495fe0_test.cpp	pass	pass	fail	CFrontendGameComponent_SetMode_00495fe0_test FAIL
+00/49/CFrontendGameComponent_ShowMoreProfiles_00494560_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ShowMoreProfiles_00494560.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_ShowMoreProfiles_004946c0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ShowMoreProfiles_004946c0.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendGameComponent_ShowMoreProfiles_004947b0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendGameComponent_ShowMoreProfiles_004947b0.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/49/CFrontendProfileList_Refresh_00495830_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CFrontendProfileList_Refresh_00495830.cpp(27): error C2485: 'naked': unrecognized extended attribute
+00/49/CWorld_IsHeroStateFileValid_0049d4e0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\49\../../../src/compiled/00/49/CWorld_IsHeroStateFileValid_0049d4e0.cpp(32): error C2485: 'naked': unrecognized extended attribute
+00/49/CWorld_SetAsPaused_0049d8f0_test.cpp	pass	pass	fail	
+00/4a/CSymbolMap_ContainerLifetime_004ad4a0_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\rebuild\src\compiled\00\4a\CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CSymbolMap::CSymbolInfo>>::~
+00/4a/CWorld_LoadHeroStateInternal_004a2d70_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\4a\../../../src/compiled/00/4a/CWorld_LoadHeroStateInternal_004a2d70.cpp(50): error C2485: 'naked': unrecognized extended attribute
+00/4a/CWorld_PrepareForLoad_004a0220_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\4a\../../../src/compiled/00/4a/CWorld_PrepareForLoad_004a0220.cpp(42): error C2485: 'naked': unrecognized extended attribute
+00/4b/CQuestManager_DeactivateAllQuests_004b4450_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\4b\../../../src/compiled/00/4b/CQuestManager_DeactivateAllQuests_004b4450.cpp(16): error C2485: 'naked': unrecognized extended attribute
+00/4c/CThing_PeekDefinitionManager_004c7990_test.cpp	pass	pass	fail	
+00/4c/CThing_SetCurrentThingManager_004c74f0_test.cpp	pass	pass	fail	
+00/52/CObserver_ObserveEvent_0052da20_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\52\../../../src/compiled/00/52/CObserver_ObserveEvent_0052da20.cpp(31): error C2485: 'naked': unrecognized extended attribute
+00/53/CList_DoRecomputeOffsets_0053c332_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\53\../../../src/compiled/00/53/CList_DoRecomputeOffsets_0053c332.cpp(34): error C2485: 'naked': unrecognized extended attribute
+00/53/CList_InitialiseOffsets_00536b4f_test.cpp	pass	crash	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\53\../../../src/compiled/00/53/CList_InitialiseOffsets_00536b4f.cpp(26): error C2485: 'naked': unrecognized extended attribute
+00/54/CFrontEndList_ScrollDown_0054c810_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\54\../../../src/compiled/00/54/CFrontEndList_ScrollDown_0054c810.cpp(236): error C2485: 'naked': unrecognized extended attribute
+00/55/CTable_Initialise_00550c60_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\55\../../../src/compiled/00/55/CTable_Initialise_00550c60.cpp(15): error C2485: 'naked': unrecognized extended attribute
+00/59/CFrontEndManager_CreateFrontEndButtonComponent_00596a68_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/CFrontEndManager_CreateFrontEndButtonComponent_00596a68.cpp(90): error C2485: 'naked': unrecognized extended attribute
+00/59/CFrontEndManager_GotoSpecificPreviousScreen_0059686d_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/CFrontEndManager_GotoSpecificPreviousScreen_0059686d.cpp(120): error C2485: 'naked': unrecognized extended attribute
+00/59/CFrontEndManager_LaunchVirtualKeyboard_00596917_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/CFrontEndManager_LaunchVirtualKeyboard_00596917.cpp(54): error C2485: 'naked': unrecognized extended attribute
+00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/CFrontEndManager_RefreshAvailableProfilesForDelete_00597006.cpp(85): error C2485: 'naked': unrecognized extended attribute
+00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/CFrontEndManager_RefreshAvailableProfiles_00596cce.cpp(74): error C2485: 'naked': unrecognized extended attribute
+00/59/FrontEndDequeIterator_Distance_0059a8f3_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/FrontEndDequeIterator_Distance_0059a8f3.cpp(20): error C2485: 'naked': unrecognized extended attribute
+00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/FrontEndHistoryDequeIterator_DistanceThunk_0059aae3.cpp(24): error C2485: 'naked': unrecognized extended attribute
+00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\59\../../../src/compiled/00/59/FrontEndHistoryDeque_FreeBlocks_0059aa64.cpp(12): error C2485: 'naked': unrecognized extended attribute
+00/62/CWorld_EAApplyAllScriptedMapBrushes_00629210_test.cpp	pass	pass	fail	
+00/62/CWorld_EACloseHeroInformationScreen_0062b3f0_test.cpp	pass	fail	crash	exception 0xC0000005
+00/62/CWorld_EACloseInGameMenu_00629d60_test.cpp	pass	pass	crash	exception 0xC0000005
+00/62/CWorld_EACloseLiveGUI_00629da0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/62/CWorld_EAClosePhotoCapture_0062b4d0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/62/CWorld_EAConsoleToggleState_0062a110_test.cpp	pass	pass	link_fail	CWorld_EAConsoleToggleState_0062a110.obj : error LNK2019: unresolved external symbol "public: __cdecl CConsole::CConsole(void)" (??0CConsole@@QEAA@XZ) referenced in function "public: void __cdecl CWor
+00/62/CWorld_EAControlledCreatureBlockEnd_0062b000_test.cpp	pass	fail	fail	
+00/62/CWorld_EAControlledCreatureDefault_006298f0_test.cpp	pass	fail	fail	
+00/62/CWorld_EACreatureCheat_006292a0_test.cpp	pass	pass	crash	exception 0xC0000374
+00/62/CWorld_EADeleteMenuComponents_0062c980_test.cpp	pass	pass	fail	
+00/62/CWorld_EADeleteTradeActiveMenu_0062c9d0_test.cpp	pass	pass	fail	
+00/62/CWorld_EAMoveHeroToRegion_00629260_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCBuyTradingMenu_0062c7f0_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCInventoryMenu_0062c700_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCMapMenu_0062c8e0_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCOptionsMenu_0062c750_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCPhotoJournalMenu_0062c7a0_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCScoreboard_0062c640_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCSellTradingMenu_0062c840_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCSkillsMenu_0062c690_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCStatusMenu_0062c930_test.cpp	pass	pass	fail	
+00/62/CWorld_EAOpenPCWantedTradingMenu_0062c890_test.cpp	pass	pass	fail	
+00/62/CWorld_EARemoveCurrentMode_0062c4b0_test.cpp	pass	fail	fail	
+00/62/CWorld_EASetFreeCameraMode_00629390_test.cpp	pass	pass	fail	
+00/62/CWorld_EASetPauseMode_006292d0_test.cpp	pass	pass	fail	
+00/62/CWorld_EASetSlowMotion_00629330_test.cpp	pass	pass	fail	
+00/62/CWorld_EAToggleKillEverythingMode_00629570_test.cpp	pass	pass	fail	
+00/62/CWorld_EAUpdateFrame_00629270_test.cpp	pass	pass	fail	
+00/62/CWorld_EAUseFreeCamera_00629420_test.cpp	pass	pass	fail	
+00/63/CPlayer_GetCurrentMode_00633be0_test.cpp	pass	fail	fail	
+00/66/CDefinitionManager_GetDefCombatTypeIndex_00669640_test.cpp	pass	pass	fail	
+00/66/CDefinitionManager_GetDefCombatTypeName_00669770_test.cpp	pass	pass	fail	
+00/66/CFrontEndManager_CreateComponent_00661d20_test.cpp	fail	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\66\../../../src/compiled/00/66/CFrontEndManager_CreateComponent_00661d20.cpp(41): error C2485: 'naked': unrecognized extended attribute
+00/66/CThingCreatureBase_GetCombatTypeDef_00666d10_test.cpp	pass	pass	crash	exception 0xC0000005
+00/66/CThingCreatureBase_GetPCombatTypeDef_00664d40_test.cpp	pass	fail	crash	exception 0xC0000005
+00/66/HeroInformationManager_Close_0066e73d_test.cpp	pass	pass	crash	exception 0xC0000005
+00/69/CGameCameraManager_RecentreCamera_006978c0_test.cpp	pass	pass	fail	
+00/73/CTCCombat_IsAbleToBeKnockedDown_007331a0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/73/CTCCombat_UnsetBlocking_007338a0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/73/CTCCreatureModeManager_RemoveMode_0073aba0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/85/CWorld_LEASetDisplayMode_0085caf0_test.cpp	pass	pass	fail	
+00/85/CWorld_LEASetEditorMode_0085cb80_test.cpp	pass	pass	fail	
+00/85/CWorld_LEASetExclusiveMode_0085ca80_test.cpp	pass	pass	fail	
+00/98/CShaderRenderManager_UpdateCombinedProjectionTransform_00988a50_test.cpp	pass	pass	crash	exception 0xC0000005
+00/99/CCharString_AllocStringData_0099ea60_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\99\CCharString_AllocStringData_0099ea60_test.cpp(45): error C2821: first formal parameter to 'operator new' must be 'size_t'
+00/99/CDataInputStream_ReadWithSrcChunkOverflow_00993ca0_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\99\../../../src/compiled/00/99/CDataInputStream_ReadWithSrcChunkOverflow_00993ca0.cpp(8): error C2485: 'naked': unrecognized extended attribute
+00/99/CFileDataInputStream_CFileDataInputStream_00994700_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\99\../../../src/compiled/00/99/CFileDataInputStream_CFileDataInputStream_00994700.cpp(19): error C2485: 'naked': unrecognized extended attribute
+00/99/CFileDataInputStream_dtor_00994780_test.cpp	pass	pass	compile_fail	D:\Documents\FableTLC\rebuild\tests\00\99\../../../src/compiled/00/99/CFileDataInputStream_dtor_00994780.cpp(15): error C2485: 'naked': unrecognized extended attribute
+00/9a/CDefinitionManager_GetPDefFromGlobalIndexConst_009ad9e0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9a/CDefinitionManager_GetPDefFromGlobalIndex_009ada10_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9a/CDefinitionManager_GetPDefFromInstantiationNameConst_009ada40_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9a/CDefinitionManager_GetPDefFromInstantiationName_009ada90_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9b/CCountedPointer_CSymbolMap_Reset_009b1f50_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9b/CDefinitionManager_CDefinitionManager_009b0470_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9b/STL_IntrosortLoop_SubDefEntry_009b7dd0_test.cpp	pass	pass	link_fail	STL_IntrosortLoop_SubDefEntry_009b7dd0_test.obj : error LNK2019: unresolved external symbol "void __cdecl _STL::__introsort_loop<struct _STL::pair<unsigned long,class CDefClassBase::CSubDefInfo> *,str
+00/9b/STL_Sort_SubDefEntry_009b84c0_test.cpp	pass	pass	link_fail	STL_Sort_SubDefEntry_009b84c0.obj : error LNK2019: unresolved external symbol "void __cdecl _STL::__introsort_loop<struct _STL::pair<unsigned long,class CDefClassBase::CSubDefInfo> *,struct _STL::pair
+00/9c/CBankFile_EntryExists_009cc190_test.cpp	pass	pass	fail	
+00/9d/CBankFileAsync_Close_009d58a0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9d/CBankFileAsync_ProcessDisposalList_009d6730_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9d/CBankFileAsync_RestartAbortedReads_009d5a90_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9d/CDefStringTable_CDefStringTable_009d4db0_test.cpp	pass	pass	fail	global
+00/9e/CFontManager_CFontManager_009e2e30_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_CSymbolMap_009e5200_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_Clear_009e5250_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_DeletingDestructor_009e7bd0_test.cpp	link_fail	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_FindSymbol_009e5170_test.cpp	pass	pass	fail	
+00/9e/CSymbolMap_GetSymbolSLONG_009e5120_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CSymbolMap_SymbolExists_009e51c0_test.cpp	pass	compile_fail	compile_fail	D:\Documents\FableTLC\work\modern_census\include_x64\../src/compiled/00/4a/CSymbolMap_ContainerLifetime_004ad4a0.cpp(12): error C2995: 'CVectorMap<CCharString,CSymbolMap::CSymbolInfo,CCompareString<CS
+00/9e/CVectorMap_SymbolMap_LowerBound_009e6910_test.cpp	pass	pass	fail	
+00/9e/STL_AdjustHeap_SymbolEntry_009e6db0_test.cpp	pass	pass	fail	
+00/9e/STL_LinearInsert_SymbolEntry_009e6fa0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9e/STL_MakeHeap_SymbolEntry_009e7100_test.cpp	pass	pass	fail	
+00/9e/STL_PartialSort_SymbolEntry_009e7b40_test.cpp	pass	pass	fail	
+00/9e/STL_Partition_SymbolEntry_009e6c80_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9e/STL_PopHeap_SymbolEntry_009e7060_test.cpp	pass	pass	fail	
+00/9e/STL_PushHeap_SymbolEntry_009e67c0_test.cpp	pass	pass	fail	
+00/9e/STL_SortHeap_SymbolEntry_009e7950_test.cpp	pass	pass	fail	
+00/9e/STL_Swap_SymbolEntry_009e6480_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9e/STL_UnguardedInsertionSort_SymbolEntry_009e6d10_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9e/STL_UnguardedLinearInsert_SymbolEntry_009e66f0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/9f/CGameEventDataPackage_GetData_009f18f0_test.cpp	pass	pass	fail	
+00/9f/CMemoryAllocator_ConsolidateFreeAreas_009f2660_test.cpp	pass	pass	fail	FAIL two
+00/9f/CProfileManager_0CProfileManager_009f9160_test.cpp	pass	link_fail	link_fail	CProfileManager_0CProfileManager_009f9160.obj : error LNK2019: unresolved external symbol "public: __cdecl _STL::list<class CProfile *,class _STL::allocator<class CProfile *> >::~list<class CProfile *
+00/9f/CVsyncCallbackTimer_Constructor_009f70e0_test.cpp	pass	pass	fail	
+00/9f/CVsyncCallbackTimer_Destructor_009f7330_test.cpp	pass	pass	fail	
+00/a0/CHandleBasedMemoryPool_CanMoveResource_00a03a40_test.cpp	pass	pass	fail	
+00/a0/CHandleBasedMemoryPool_CombineAreas_00a01e40_test.cpp	pass	pass	crash	exception 0xC0000005
+00/a0/CHandleBasedMemoryPool_Free_00a02b30_test.cpp	pass	pass	crash	exception 0xC0000005
+00/a0/CHandleBasedMemoryPool_InsertFreeArea_00a01da0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/a0/CHandleBasedMemoryPool_InternalSetResource_00a028b0_test.cpp	pass	pass	crash	exception 0xC0000005
+00/a0/CHandleBasedMemoryPool_MoveResource_00a02120_test.cpp	pass	pass	fail	
+00/a0/CHandleBasedMemoryPool_ValidateResource_00a03a50_test.cpp	pass	pass	fail	
+00/a6/CMovableResourceMemoryPool_CanMoveResource_00a62f70_test.cpp	pass	pass	fail	
+00/a6/CMovableResourceMemoryPool_FreeResource_00a62ed0_test.cpp	pass	pass	fail	
+00/a6/CMovableResourceMemoryPool_MoveResource_00a62f30_test.cpp	pass	pass	fail	
+00/a6/CMovableResourceMemoryPool_ValidateResource_00a62ec0_test.cpp	pass	pass	fail	
+00/ab/CVertexShaderInput_StreamVectorGrowth_00ab4540_test.cpp	pass	pass	crash	exception 0xC0000374

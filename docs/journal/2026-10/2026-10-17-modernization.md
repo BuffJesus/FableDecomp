@@ -287,6 +287,24 @@ not the step-4 RHI.
   pointer-sized slots, and the raw object storage gets 16-byte alignment. These are exactly the
   "PDB layouts are 32-bit" hazard, located outside the engine code.
 
+- **Behaviour census** (`tools/modern/modern_behavior_census.py` →
+  [MODERN_BEHAVIOR_CENSUS](../../modern/MODERN_BEHAVIOR_CENSUS.md)). All 376 behaviour tests that
+  `#include` the reconstructed source they check are built (with that source) and run under VC7.1,
+  VS 2022 x86 and VS 2022 x64. The modern builds use the census header copy (PDB size asserts off),
+  `/Zc:forScope-` and `/GS-` to match VC7.1 semantics. **Of 326 VC7.1-passing tests, 308 (94.5%)
+  pass on x86 and 179 (55%) on x64.**
+  - x86 misses: 8 behaviour failures, mostly `CThing`/`CWorld`/`CPlayer` code, where VS 2022's
+    40-byte `std::bitset<274>` (`CThing::UsingComponents`, +0x20) shifts `Components` and every later
+    member, the known step-1 layout break, now seen in behaviour. Also 8 compile failures from one
+    source (`CSymbolMap_ContainerLifetime`, C2995), 1 crash (`CList_InitialiseOffsets`) and 1
+    STLport `list` destructor link failure.
+  - x64 misses: 30 naked asm bakes (C2485, the de-bake backlog), the same 8 C2995, and 104 runtime
+    failures led by `CWorld` (32), STL containers (11), the memory pools (11) and `CPlayer` (6),
+    i.e. 32-bit layouts and pointer-sized members, the step-2 types job.
+  - Mechanics: WinError 740 (installer detection wants elevation for exe names with
+    "install"/"update") means each test gets a neutral `run.exe`. The census header copy gets
+    junctions `work/modern_census/{src,tests}` → `rebuild/` so headers' `../../src/...` includes resolve.
+
 ## Open / next
 
 - Apply the `size_t` fix to the four headers once peer edits land (126 x64 TUs).
