@@ -545,4 +545,3 @@ MODERNIZATION, step 4).
 | Import | Code refs | Functions |
 |---|---:|---:|
 | `DirectInput8Create` | 1 | 1 |
-

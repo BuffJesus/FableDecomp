@@ -484,7 +484,11 @@ def lzo_store(D):
 
 
 def build_lz_text_blob(T):
-    """Inverse of lz_text_blob: [u32 ulen][u16 clen][stream for T[:-3]][last 3 bytes raw]."""
+    """Encode empty, stored-short, or compressed text using lz_text_blob framing."""
+    if not T:
+        return struct.pack('<I', 0)
+    if len(T) <= 3:
+        return struct.pack('<Ih', len(T), 0) + T
     stream = lzo_store(T[:-3])
     # Retail reads clen as a signed i16: above 0x7FFF it must be -1 followed by a u32.
     if len(stream) > 0x7FFF:
