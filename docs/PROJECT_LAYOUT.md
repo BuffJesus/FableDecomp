@@ -3,6 +3,10 @@
 Start with [HANDOFF](HANDOFF.md) for the public checkpoint, [ROADMAP](ROADMAP.md)
 for current priorities, and [INDEX](INDEX.md) for the full documentation catalog.
 
+The September Discord concerns about layout, typed objects, AI maintainability,
+debug symbols, and engine integration are recorded in
+[community feedback](pipeline/COMMUNITY_FEEDBACK.md).
+
 ## Source and evidence locations
 
 | Location | Purpose |
