@@ -73,6 +73,35 @@ void argb_is_bgra_on_disk()
     expect(image && image->rgba == std::vector<std::uint8_t>{30, 20, 10, 40}, "A8R8G8B8 is stored as BGRA");
 }
 
+void partial_dxt_blocks_cover_the_edges()
+{
+    for (const auto format : {fable::texture::dxt1, fable::texture::dxt3}) {
+        const bool dxt1 = format == fable::texture::dxt1;
+        const std::size_t block_bytes = dxt1 ? 8 : 16;
+        std::vector<std::byte> surface(4 * block_bytes, std::byte{0});
+        const std::array<std::uint16_t, 4> colors{0xf800, 0x07e0, 0x001f, 0xffff};
+        for (std::size_t i = 0; i < colors.size(); ++i) {
+            const std::size_t color_at = i * block_bytes + (dxt1 ? 0 : 8);
+            surface[color_at] = static_cast<std::byte>(colors[i] & 0xff);
+            surface[color_at + 1] = static_cast<std::byte>(colors[i] >> 8);
+            if (!dxt1) {
+                for (std::size_t a = 0; a < 8; ++a) {
+                    surface[i * block_bytes + a] = std::byte{0xff};
+                }
+            }
+        }
+        const auto info = TextureInfo::parse(info_bytes(6, 5, format, static_cast<std::uint32_t>(surface.size()), 0));
+        const auto image = fable::texture::to_rgba(*info, surface);
+        expect(image && image->rgba[(0 * 6 + 5) * 4 + 1] == 255, "partial right DXT block is green");
+        expect(image && image->rgba[(4 * 6 + 0) * 4 + 2] == 255, "partial bottom DXT block is blue");
+        expect(image && image->rgba[(4 * 6 + 5) * 4] == 255 && image->rgba[(4 * 6 + 5) * 4 + 3] == 255,
+               "partial corner DXT block is opaque white");
+        const auto truncated = fable::texture::to_rgba(*info, std::span(surface).first(surface.size() - 1));
+        expect(!truncated && truncated.error() == fable::texture::TextureError::bad_payload,
+               "truncated partial DXT block is rejected");
+    }
+}
+
 void mip0_chunks_decode()
 {
     // 8 raw bytes: an LZO1X chunk for the first 5 ("abcde": initial run of 5, end of stream),
@@ -101,6 +130,7 @@ int main()
     info_parses();
     dxt1_block_decodes();
     argb_is_bgra_on_disk();
+    partial_dxt_blocks_cover_the_edges();
     mip0_chunks_decode();
     png_has_signature();
     if (failures == 0) {

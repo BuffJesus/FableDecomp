@@ -3,6 +3,7 @@
 #include <fable/codec/Lzo1x.hpp>
 
 #include <algorithm>
+#include <limits>
 #include <string_view>
 
 namespace fable::texture {
@@ -175,10 +176,13 @@ std::expected<Image, TextureError> to_rgba(const TextureInfo& info, std::span<co
 {
     const std::size_t aw = info.alloc_width;
     const std::size_t ah = info.alloc_height;
+    if (info.frame_width > aw || info.frame_height > ah
+        || aw * ah > std::numeric_limits<std::size_t>::max() / 4) {
+        return std::unexpected(TextureError::bad_info);
+    }
     Image img;
     img.width = info.frame_width;
     img.height = info.frame_height;
-    img.rgba.assign(static_cast<std::size_t>(img.width) * img.height * 4, 0);
     auto put = [&](std::size_t x, std::size_t y, const std::array<std::uint8_t, 4>& px) {
         if (x < img.width && y < img.height) {
             std::copy(px.begin(), px.end(), img.rgba.begin() + static_cast<std::ptrdiff_t>((y * img.width + x) * 4));
@@ -189,6 +193,7 @@ std::expected<Image, TextureError> to_rgba(const TextureInfo& info, std::span<co
         if (surface.size() < aw * ah * 4) {
             return std::unexpected(TextureError::bad_payload);
         }
+        img.rgba.assign(static_cast<std::size_t>(img.width) * img.height * 4, 0);
         for (std::size_t y = 0; y < ah; ++y) {
             for (std::size_t x = 0; x < aw; ++x) {
                 const std::size_t i = (y * aw + x) * 4;   // stored B, G, R, A
@@ -202,11 +207,12 @@ std::expected<Image, TextureError> to_rgba(const TextureInfo& info, std::span<co
     case dxt3: {
         const bool dxt1_format = info.pixel_format == dxt1;
         const std::size_t block_bytes = dxt1_format ? 8 : 16;
-        const std::size_t bw = std::max<std::size_t>(1, aw / 4);
-        const std::size_t bh = std::max<std::size_t>(1, ah / 4);
+        const std::size_t bw = std::max<std::size_t>(1, (aw + 3) / 4);
+        const std::size_t bh = std::max<std::size_t>(1, (ah + 3) / 4);
         if (surface.size() < bw * bh * block_bytes) {
             return std::unexpected(TextureError::bad_payload);
         }
+        img.rgba.assign(static_cast<std::size_t>(img.width) * img.height * 4, 0);
         std::array<std::array<std::uint8_t, 4>, 16> texels{};
         for (std::size_t by = 0; by < bh; ++by) {
             for (std::size_t bx = 0; bx < bw; ++bx) {

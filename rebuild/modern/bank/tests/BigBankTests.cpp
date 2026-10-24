@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <exception>
 #include <iostream>
 #include <memory>
 #include <string_view>
@@ -135,6 +136,37 @@ void gates_are_enforced()
     expect(BigBank::decode(footer).error() == fable::bank::BigError::footer_out_of_range, "a footer past the end is rejected");
 }
 
+void entry_counts_are_bounded_before_reserving()
+{
+    auto malformed = std::make_shared<std::vector<std::byte>>(*sample().encode());
+    const std::size_t footer = u32_at(*malformed, 8);
+    const std::size_t count_at = footer + 4 + sample().banks[0].name.size() + 1 + 4;
+    for (std::size_t i = 0; i < 4; ++i) {
+        (*malformed)[count_at + i] = std::byte{0xff};
+    }
+    try {
+        const auto decoded = BigBank::decode(malformed);
+        expect(!decoded && decoded.error() == fable::bank::BigError::bad_toc,
+               "an impossible entry count is rejected before allocation");
+    } catch (const std::exception&) {
+        expect(false, "an impossible entry count must return bad_toc, not throw");
+    }
+
+    BigBank smallest;
+    SubBank sub;
+    sub.name = "EMPTY_FIELDS";
+    sub.stats.emplace();
+    sub.entries.emplace_back();
+    smallest.banks.push_back(sub);
+    const auto encoded = smallest.encode();
+    const auto decoded = BigBank::decode(std::make_shared<const std::vector<std::byte>>(*encoded));
+    expect(decoded && decoded->banks[0].entries.size() == 1,
+           "a minimum-size forty-byte entry is still accepted");
+    const auto null_file = BigBank::decode(nullptr);
+    expect(!null_file && null_file.error() == fable::bank::BigError::truncated,
+           "a null file is rejected as empty input");
+}
+
 } // namespace
 
 int main()
@@ -142,6 +174,7 @@ int main()
     round_trip_is_exact();
     resize_ripples_and_reverts();
     gates_are_enforced();
+    entry_counts_are_bounded_before_reserving();
     if (failures == 0) {
         std::cout << "fable_bank: all tests passed\n";
     }

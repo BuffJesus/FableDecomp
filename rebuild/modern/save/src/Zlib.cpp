@@ -2,6 +2,7 @@
 
 #include <zlib.h>
 
+#include <array>
 #include <limits>
 
 namespace fable::save::detail {
@@ -12,26 +13,33 @@ std::expected<std::vector<std::byte>, ZlibError> inflate_exact(
     if (compressed.size() > std::numeric_limits<uInt>::max()) {
         return std::unexpected(ZlibError::too_large);
     }
-    std::vector<std::byte> out(expected_size);
     z_stream stream{};
     if (inflateInit(&stream) != Z_OK) {
         return std::unexpected(ZlibError::inflate_failed);
     }
+    struct Cleanup {
+        z_stream* state;
+        ~Cleanup() { inflateEnd(state); }
+    } cleanup{&stream};
     stream.next_in = reinterpret_cast<Bytef*>(const_cast<std::byte*>(compressed.data()));
     stream.avail_in = static_cast<uInt>(compressed.size());
-    stream.next_out = reinterpret_cast<Bytef*>(out.data());
-    stream.avail_out = static_cast<uInt>(out.size());
-    const int result = inflate(&stream, Z_FINISH);
-    const auto produced = stream.total_out;
-    const auto space_left = stream.avail_out;
-    inflateEnd(&stream);
-    if (result == Z_BUF_ERROR && space_left == 0) {
-        return std::unexpected(ZlibError::size_mismatch);   // more output than promised
+    std::vector<std::byte> out;
+    std::array<std::byte, 16384> chunk;
+    int result = Z_OK;
+    while (result == Z_OK) {
+        stream.next_out = reinterpret_cast<Bytef*>(chunk.data());
+        stream.avail_out = static_cast<uInt>(chunk.size());
+        result = inflate(&stream, Z_NO_FLUSH);
+        const auto produced = chunk.size() - stream.avail_out;
+        if (produced > expected_size - out.size()) {
+            return std::unexpected(ZlibError::size_mismatch);
+        }
+        out.insert(out.end(), chunk.begin(), chunk.begin() + static_cast<std::ptrdiff_t>(produced));
     }
-    if (result != Z_STREAM_END) {
+    if (result != Z_STREAM_END || stream.avail_in != 0) {
         return std::unexpected(ZlibError::inflate_failed);
     }
-    if (produced != expected_size) {
+    if (out.size() != expected_size) {
         return std::unexpected(ZlibError::size_mismatch);
     }
     return out;

@@ -9,6 +9,7 @@ namespace {
 
 constexpr std::size_t header_size = 16;
 constexpr std::uint32_t max_stats_count = 1000;   // EgoCore's rewind rule (BIG.md §2)
+constexpr std::size_t min_entry_size = 40;        // ten u32 fields, excluding counted bytes/dependencies
 
 class Reader final {
 public:
@@ -152,6 +153,9 @@ std::string_view BankEntry::name_text() const noexcept
 
 std::expected<BigBank, BigError> BigBank::decode(std::shared_ptr<const std::vector<std::byte>> file)
 {
+    if (!file) {
+        return std::unexpected(BigError::truncated);
+    }
     const std::span<const std::byte> bytes(*file);
     if (bytes.size() < header_size) {
         return std::unexpected(BigError::truncated);
@@ -219,6 +223,9 @@ std::expected<BigBank, BigError> BigBank::decode(std::shared_ptr<const std::vect
             toc.seek(r.toc_offset);
         }
 
+        if (r.entry_count > (toc_end - toc.position()) / min_entry_size) {
+            return std::unexpected(BigError::bad_toc);
+        }
         bank.entries.reserve(r.entry_count);
         for (std::uint32_t i = 0; i < r.entry_count; ++i) {
             BankEntry entry;

@@ -63,6 +63,39 @@ std::uint32_t u32_at(std::span<const std::byte> file, std::size_t offset)
         | static_cast<std::uint32_t>(file[offset + 2]) << 16 | static_cast<std::uint32_t>(file[offset + 3]) << 24;
 }
 
+void set_u32(std::vector<std::byte>& file, std::size_t offset, std::uint32_t value)
+{
+    for (int i = 0; i < 4; ++i) {
+        file[offset + static_cast<std::size_t>(i)] = static_cast<std::byte>((value >> (8 * i)) & 0xffU);
+    }
+}
+
+void empty_chunks_round_trip()
+{
+    const SaveContainer empty{{}, {}};
+    const auto file = SaveContainerCodec::encode(empty);
+    expect(file.has_value(), "empty chunks encode");
+    if (file) {
+        const auto decoded = SaveContainerCodec::decode(*file);
+        expect(decoded && *decoded == empty, "empty zlib chunks round-trip");
+    }
+}
+
+void extra_compressed_bytes_are_rejected()
+{
+    auto file = *SaveContainerCodec::encode(sample());
+    const auto header_size = u32_at(file, 0x18);
+    const auto total = u32_at(file, 0x0c);
+    const auto insert_at = SaveContainerCodec::header_size + header_size;
+    file.insert(file.begin() + static_cast<std::ptrdiff_t>(insert_at), std::byte{0x7f});
+    file.resize(SaveContainerCodec::slab_size);
+    set_u32(file, 0x18, header_size + 1);
+    set_u32(file, 0x0c, total + 1);
+    set_u32(file, total + 1, ccrc(std::span<const std::byte>(file).first(total + 1)));
+    expect_error(SaveContainerCodec::decode(file), SaveContainerError::inflate_failed,
+                 "a chunk must consume all of its declared compressed bytes");
+}
+
 void crc_matches_retail_ccrc()
 {
     // Seed 0, no inversion: "123456789" is the classic check input; zlib's crc32 gives
@@ -144,6 +177,19 @@ void inflated_sizes_are_checked()
     }
     expect_error(SaveContainerCodec::decode(file), SaveContainerError::inflated_size_mismatch,
                  "header size fields must match the streams");
+
+    // A tiny valid stream cannot justify allocating a header's maximum u32 size.
+    file = *SaveContainerCodec::encode(sample());
+    set_u32(file, 0x14, 0xffffffffU);
+    set_u32(file, total, ccrc(std::span<const std::byte>(file).first(total)));
+    expect_error(SaveContainerCodec::decode(file), SaveContainerError::inflated_size_mismatch,
+                 "oversized output claims fail without upfront allocation");
+
+    file = *SaveContainerCodec::encode(sample());
+    set_u32(file, 0x14, 0);
+    set_u32(file, total, ccrc(std::span<const std::byte>(file).first(total)));
+    expect_error(SaveContainerCodec::decode(file), SaveContainerError::inflated_size_mismatch,
+                 "nonempty streams cannot overflow a zero-byte output declaration");
 }
 
 void oversized_saves_are_refused()
@@ -374,6 +420,8 @@ void profile_round_trips()
 
 int main()
 {
+    empty_chunks_round_trip();
+    extra_compressed_bytes_are_rejected();
     profile_round_trips();
     header_round_trips();
     body_round_trips();

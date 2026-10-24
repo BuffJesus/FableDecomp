@@ -1,5 +1,6 @@
 #include <fable/codec/Lzo1x.hpp>
 
+#include <algorithm>
 #include <cstdint>
 
 namespace fable::codec {
@@ -18,7 +19,12 @@ namespace {
 // literals to copy; a nonzero count is followed directly by the next match token.
 class Decoder final {
 public:
-    Decoder(std::span<const std::byte> in, std::size_t expected) : in_(in) { out_.reserve(expected); }
+    Decoder(std::span<const std::byte> in, std::size_t expected) : in_(in), expected_(expected)
+    {
+        out_.reserve(std::min(expected, in.size()));
+    }
+
+    [[nodiscard]] bool size_exceeded() const noexcept { return size_exceeded_; }
 
     std::expected<std::vector<std::byte>, Lzo1xError> run()
     {
@@ -177,6 +183,10 @@ private:
         if (count > in_.size() - ip_) {
             return false;
         }
+        if (count > expected_ - out_.size()) {
+            size_exceeded_ = true;
+            return false;
+        }
         out_.insert(out_.end(), in_.begin() + static_cast<std::ptrdiff_t>(ip_),
                     in_.begin() + static_cast<std::ptrdiff_t>(ip_ + count));
         ip_ += count;
@@ -186,6 +196,10 @@ private:
     bool copy_match(std::size_t distance, std::size_t length)
     {
         if (distance > out_.size()) {
+            return false;
+        }
+        if (length > expected_ - out_.size()) {
+            size_exceeded_ = true;
             return false;
         }
         std::size_t from = out_.size() - distance;
@@ -204,6 +218,8 @@ private:
     }
 
     std::span<const std::byte> in_;
+    std::size_t expected_ = 0;
+    bool size_exceeded_ = false;
     std::size_t ip_ = 0;
     std::vector<std::byte> out_;
 };
@@ -213,8 +229,9 @@ private:
 std::expected<std::vector<std::byte>, Lzo1xError> lzo1x_decompress(std::span<const std::byte> stream,
                                                                   std::size_t expected_size)
 {
-    auto out = Decoder(stream, expected_size).run();
-    if (out && out->size() != expected_size) {
+    Decoder decoder(stream, expected_size);
+    auto out = decoder.run();
+    if (decoder.size_exceeded() || (out && out->size() != expected_size)) {
         return std::unexpected(Lzo1xError::size_mismatch);
     }
     return out;

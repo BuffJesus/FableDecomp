@@ -2,7 +2,9 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <exception>
 #include <iostream>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -33,6 +35,27 @@ void round_trip(const std::vector<std::byte>& data, const char* what)
 
 int main()
 {
+    // A missing end marker must not hide that a literal/match already exceeds
+    // the declared output. Reject before expanding the offending token.
+    for (const auto& stream : {
+             std::vector<std::byte>{std::byte{0x13}, std::byte{'a'}, std::byte{'b'}},
+             std::vector<std::byte>{std::byte{0x12}, std::byte{'a'}, std::byte{0x21}, std::byte{0}, std::byte{0}}}) {
+        const auto result = fable::codec::lzo1x_decompress(stream, 1);
+        if (result || result.error() != fable::codec::Lzo1xError::size_mismatch) {
+            std::cerr << "FAIL: output limit is enforced before the next token\n";
+            ++failures;
+        }
+    }
+    try {
+        const auto result = fable::codec::lzo1x_decompress({}, std::numeric_limits<std::size_t>::max());
+        if (result || result.error() != fable::codec::Lzo1xError::truncated) {
+            std::cerr << "FAIL: empty stream is truncated regardless of declared size\n";
+            ++failures;
+        }
+    } catch (const std::exception&) {
+        std::cerr << "FAIL: declared size alone must not allocate the output\n";
+        ++failures;
+    }
     round_trip({}, "empty input");
     round_trip(bytes("ab"), "two bytes");
     round_trip(bytes("START_QUEST_CARDS\nEND_QUEST_CARDS\nSTART_ACTIVE_QUESTS\nEND_ACTIVE_QUESTS\n"), "quest text");
