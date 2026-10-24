@@ -23,5 +23,5 @@ jobs:
         run: python tools/docs_reorg.py --check-links --check-findings --check-root
       - name: Pure-Python pipeline tests
         run: |
-          python -m pip install pytest
+          python -m pip install pytest numpy Pillow lupa
           python -m pytest tools/decomp_pipeline/tests tools/script_recovery -q -k "not vc71 and not retail"
