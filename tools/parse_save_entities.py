@@ -363,21 +363,34 @@ def lz_text_blob(d, o):
     Framing (retail writer 0x996610 / reader 0x995FE0):
     [u32 ulen]; ulen 0 ends it; else [i16 clen] (-1 => a u32 clen follows);
     clen <= 0 => ulen raw bytes (stored); else [clen bytes LZO1X][last 3 bytes raw].
-    clen is SIGNED: a 16-bit value above 0x7FFF reads as negative, i.e. stored."""
+    clen is SIGNED: a 16-bit value above 0x7FFF reads as negative, i.e. stored.
+    Invalid offsets and truncated framing or payloads raise ValueError."""
+    if o < 0 or o + 4 > len(d):
+        raise ValueError("lz_text_blob: missing text length at %d" % o)
     ulen = struct.unpack_from('<I', d, o)[0]
     if ulen == 0:
         return b'', o + 4
+    if o + 6 > len(d):
+        raise ValueError("lz_text_blob: missing compressed length at %d" % o)
     clen = struct.unpack_from('<h', d, o + 4)[0]
     h = o + 6
     if clen == -1:
+        if h + 4 > len(d):
+            raise ValueError("lz_text_blob: missing extended length at %d" % o)
         clen = struct.unpack_from('<I', d, h)[0]
         h += 4
     if clen <= 0:
+        if h + ulen > len(d):
+            raise ValueError("lz_text_blob: truncated stored text at %d" % o)
         return d[h:h + ulen], h + ulen
+    if h + clen > len(d):
+        raise ValueError("lz_text_blob: truncated compressed text at %d" % o)
     out = lionhead_lz.decompress(d[h:h + clen], None)
     tail = ulen - len(out)
     if tail < 0 or tail > 16:
         raise ValueError("lz_text_blob: bad tail %d at %d" % (tail, o))
+    if h + clen + tail > len(d):
+        raise ValueError("lz_text_blob: truncated raw tail at %d" % o)
     txt = out + d[h + clen:h + clen + tail]
     return txt, h + clen + tail
 

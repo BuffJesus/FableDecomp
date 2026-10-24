@@ -56,3 +56,41 @@ class SaveTextBlobTests(unittest.TestCase):
             decoded, offset = lz_text_blob(data, offset)
             self.assertEqual(decoded, text)
         self.assertEqual(data[offset:], b"suffix")
+
+    def test_stored_text_rejects_missing_bytes(self):
+        encoded = struct.pack("<Ih", 4, 0) + b"ab"
+        with self.assertRaises(ValueError):
+            lz_text_blob(encoded, 0)
+
+    def test_compressed_text_rejects_missing_raw_tail(self):
+        encoded = build_lz_text_blob(b"example text")
+        with self.assertRaises(ValueError):
+            lz_text_blob(encoded[:-1], 0)
+
+    def test_invalid_start_offsets_are_rejected(self):
+        for offset in (-4, -1, 1, 4, 5):
+            with self.subTest(offset=offset), self.assertRaises(ValueError):
+                lz_text_blob(struct.pack("<I", 0), offset)
+
+    def test_every_truncated_frame_prefix_is_rejected(self):
+        stream = b"\x14abc\xe8\x00\x11\x00\x00"
+        frames = (
+            struct.pack("<I", 0),
+            struct.pack("<Ih", 4, 0) + b"data",
+            struct.pack("<Ih", 4, -32768) + b"data",
+            struct.pack("<IhI", 4, -1, 0) + b"data",
+            struct.pack("<Ih", 14, len(stream)) + stream + b"XYZ",
+            struct.pack("<IhI", 14, -1, len(stream)) + stream + b"XYZ",
+        )
+        for frame in frames:
+            for cut in range(len(frame)):
+                with self.subTest(frame=frame, cut=cut), self.assertRaises(ValueError):
+                    lz_text_blob(frame[:cut], 0)
+
+    def test_oversized_declared_lengths_fail_without_allocating_payloads(self):
+        for frame in (
+            struct.pack("<Ih", 0xffffffff, 0),
+            struct.pack("<IhI", 4, -1, 0xffffffff),
+        ):
+            with self.subTest(frame=frame), self.assertRaises(ValueError):
+                lz_text_blob(frame, 0)
