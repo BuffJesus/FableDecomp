@@ -4,7 +4,7 @@ An evidence-gated reconstruction of the native 32-bit Windows
 `Fable.exe`, targeting readable, buildable C/C++ source and a durable native
 modding platform.
 
-> **Actively developed — October 10, 2026.** Native C/C++ reconstruction is
+> **Actively developed — October 24, 2026.** Native C/C++ reconstruction is
 > continuing. Recent local tests render a retail title sprite through recovered
 > drawing routines and validate connected texture-loading and lifetime paths.
 > The existing interactive frontend is an authored integration checkpoint,
@@ -14,7 +14,8 @@ modding platform.
 [Run the checkpoint](#run-the-checkpoint) ·
 [See current progress](#current-progress) ·
 [Read the roadmap](#roadmap) ·
-[Browse the documentation](#documentation)
+[Browse the documentation](#documentation) ·
+[Project layout and workspace care](docs/PROJECT_LAYOUT.md)
 
 <a id="contents"></a>
 ## Contents
