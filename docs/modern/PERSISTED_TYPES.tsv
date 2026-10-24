@@ -1,0 +1,584 @@
+kind	type	persist_entry	hazard	pdb_size	pointer_members	long_members	wchar_members
+leaf	C2DVector	CPersistContext::Transfer,CPersistContext::TransferVector,CPersistTraits::TransferIn,CPersistTraits::TransferOut		8			
+leaf	C3DAngles	CPersistTraits::TransferIn,CPersistTraits::TransferOut		12			
+leaf	C3DVector	CPersistContext::Transfer,CPersistTraits::TransferIn,CPersistTraits::TransferOut		12			
+leaf	CAbilityButtonGuiDef	CPersistContext::TransferVectorOfSubComponents		96			
+leaf	CAbilityTrackDef	CPersistContext::TransferVectorOfSubComponents		88			
+leaf	CAbilityTrackLevelDef	CPersistContext::TransferVectorOfSubComponents		76			
+leaf	CActionInputControl	CPersistContext::TransferVector,CPersistTraits::TransferIn,CPersistTraits::TransferOut		28			
+leaf	CAnimationSet	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		36			
+leaf	CAppearanceModifierGraphics	CPersistContext::Transfer,CPersistTraits::TransferIn		16			
+leaf	CAppearanceModifierScalingDef	CPersistContext::TransferVectorOfSubComponents		76			
+leaf	CArenaCreatureDef	CPersistContext::TransferVectorOfSubComponents		56			
+leaf	CArenaRoundDef	CPersistContext::TransferVectorOfSubComponents		60			
+leaf	CArenaWaveDef	CPersistContext::TransferVectorOfSubComponents		64			
+leaf	CAtmosBankEntry	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		8			
+leaf	CAttackHistoryCombo	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		20			
+leaf	CBlendedParticleEffectSet	CPersistContext::TransferMap,CPersistTraits::TransferIn		16			
+leaf	CBlurredAttitudesDef	CPersistContext::TransferVectorOfSubComponents		80			
+leaf	CBrainBehaviour	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		12			
+leaf	CBrainUpdateZone	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		12			
+leaf	CCardDef	CPersistContext::TransferVectorOfSubComponents		72			
+leaf	CCardPositionsDef	CPersistContext::TransferVectorOfSubComponents		80			
+leaf	CCharString	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut		4			
+leaf	CCombatAbilityData	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		24			
+leaf	CComboMultiplierData	CPersistContext::GetDefaultVal,CPersistContext::TransferMap,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		24			
+leaf	CConversation	CPersistContext::TransferVectorOfSubComponents		108			
+leaf	CCreatureStatsDef	CPersistContext::TransferSubComponent		72			
+leaf	CCrimeWaitingForBribe	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut		8			
+leaf	CDefIndex	CPersistContext::Transfer,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut		4			
+leaf	CDefString	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector,CPersistTraits::TransferIn,CPersistTraits::TransferOut		4			
+leaf	CDegradableInfo	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		28			
+leaf	CEngineGraphic	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut		14			
+leaf	CEngineLocalDetailLayerDef	CPersistContext::TransferVectorOfSubComponents		96			
+leaf	CEngineLocalDetailObjectDef	CPersistContext::TransferVectorOfSubComponents		140			
+leaf	CEnvironmentThemeDef	CPersistContext::TransferVectorOfSubComponents		200			
+leaf	CExplosionRing	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		16			
+leaf	CExpressionSet	CPersistContext::Transfer,CPersistTraits::TransferIn		20			
+leaf	CFaction	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut		36			
+leaf	CFeatDef	CPersistContext::TransferVectorOfSubComponents		100			
+leaf	CFireEffectCreationSet	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		24			
+leaf	CFireHeartPatternDef	CPersistContext::TransferVectorOfSubComponents		60			
+leaf	CFloatRange	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		8			
+leaf	CHeroLogBook::CHeroLogBookEntry::ECategory	CPersistContext::TransferVector					
+leaf	CHeroMarriageInfo	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut		24			
+leaf	CHeroSoulsCreatureDef	CPersistContext::TransferVectorOfSubComponents		52			
+leaf	CHeroSoulsRoundDef	CPersistContext::TransferVectorOfSubComponents		60			
+leaf	CHeroSoulsWaveDef	CPersistContext::TransferVectorOfSubComponents		60			
+leaf	CHeroStatIncreaseData	CPersistContext::GetDefaultVal,CPersistContext::TransferMap,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		16			
+leaf	CIntelligentPointer<CThing>	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn					
+leaf	CLensFlareElementDef	CPersistContext::TransferVectorOfSubComponents		80			
+leaf	CMultiStaticMeshEntryDef	CPersistContext::TransferVectorOfSubComponents		56			
+leaf	CMusicEntry	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		16			
+leaf	CMusicSetEntry	CPersistContext::TransferVector,CPersistTraits::TransferIn		12			
+leaf	CObjectAugmentationParticleSet	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistContext::TransferMap,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		52			
+leaf	CObjectFamilyEntry	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		8			
+leaf	COpinionDeed *	CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut	pointer				
+leaf	COpinionDeedReactionDef	CPersistContext::TransferVectorOfSubComponents		88			
+leaf	COpinionPersonalityTraits *	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn	pointer				
+leaf	COpinionTransientOffset	CPersistContext::Transfer,CPersistTraits::TransferIn,CPersistTraits::TransferOut		24			
+leaf	CParticleMorphs	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		20			
+leaf	CPhysicalPrimitiveInit	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		8			
+leaf	CPrizeScoreDef	CPersistContext::TransferVectorOfSubComponents		48			
+leaf	CQuickAccessItemButtonGuiDef	CPersistContext::TransferVectorOfSubComponents		84			
+leaf	CRGBColour	CPersistContext::Transfer,CPersistContext::TransferVector,CPersistTraits::TransferIn,CPersistTraits::TransferOut		4			
+leaf	CRandomAppearanceMorph	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		76			
+leaf	CReactionFrequencyTraitsArray	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		632			
+leaf	CReverbEnvironmentEntry	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		84			
+leaf	CShopItemDef	CPersistContext::TransferVectorOfSubComponents		72			
+leaf	CShoveHaPennyRegionDef	CPersistContext::TransferVectorOfSubComponents		48			
+leaf	CSimVoice	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		28			
+leaf	CSkeletalMorphs	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		20			
+leaf	CSoundBankEntry	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn		20			
+leaf	CSoundMap	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		40			
+leaf	CSpecialEffectsStringMap	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		16			
+leaf	CTCInventoryMap::CUIMiniMapMarker	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut					
+leaf	CTCInventoryMap::CUIRegionInfo	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut					
+leaf	CTCNoiseDef	CPersistContext::TransferSubComponent		52			
+leaf	CTextureMorphs	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferIn		20			
+leaf	CTextureReplacementDef::CEntry	CPersistContext::TransferVector,CPersistTraits::TransferIn					
+leaf	CThingComponentSet	CPersistContext::Transfer,CPersistTraits::TransferIn		8			
+leaf	CWeaponTrailGraphicSet	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn		8			
+leaf	CWideString	CPersistContext::Transfer,CPersistTraits::TransferIn,CPersistTraits::TransferOut	wchar_t	4			
+leaf	CWorld::ESaveType	CPersistContext::Transfer					
+leaf	CWoundMorphs	CPersistContext::Transfer,CPersistTraits::TransferIn		20			
+leaf	EActionRegisteredType	CPersistContext::Transfer,CPersistContext::TransferVector					
+leaf	EClockHandType	CPersistContext::Transfer					
+leaf	EClothingSuitPart	CPersistContext::Transfer					
+leaf	ECombatCreatureType	CPersistContext::Transfer					
+leaf	ECombatSequenceInterruptionType	CPersistContext::Transfer					
+leaf	ECombatSequenceIsValidType	CPersistContext::Transfer					
+leaf	ECombatSequenceOnStartModuleType	CPersistContext::Transfer					
+leaf	ECombatSequenceOnStopModuleType	CPersistContext::Transfer					
+leaf	ECombatSequenceType	CPersistContext::Transfer					
+leaf	ECombatStrikeRecoilStyle	CPersistContext::Transfer					
+leaf	ECompositeBlendType	CPersistContext::Transfer					
+leaf	EContextSensitiveType	CPersistContext::Transfer					
+leaf	EControlledMovementType	CPersistContext::Transfer					
+leaf	EControllerType	CPersistContext::Transfer					
+leaf	ECreatureAbility	CPersistContext::Transfer					
+leaf	ECreatureGeneratorGenerateType	CPersistContext::TransferVector					
+leaf	ECreatureInteractionType	CPersistContext::Transfer					
+leaf	ECreatureType	CPersistContext::Transfer					
+leaf	ECrimeSeverity	CPersistContext::Transfer					
+leaf	EDamageAttribute	CPersistContext::Transfer					
+leaf	EDoorTriggerType	CPersistContext::Transfer					
+leaf	EEngineGraphicType	CPersistContext::Transfer					
+leaf	EEngineSprite2DFlag	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn					
+leaf	EExpressionInventoryType	CPersistContext::Transfer					
+leaf	EFeatAttackType	CPersistContext::Transfer					
+leaf	EGameAction	CPersistContext::TransferMap					
+leaf	EGameEventType	CPersistContext::Transfer					
+leaf	EGameflowPosition	CPersistContext::Transfer					
+leaf	EGiftType	CPersistContext::Transfer					
+leaf	EHeroAbility	CPersistContext::Transfer					
+leaf	EHeroAttachableAppearanceModifierType	CPersistContext::Transfer					
+leaf	EHeroCentreDoorType	CPersistContext::Transfer					
+leaf	EHeroExperienceStatCategory	CPersistContext::Transfer					
+leaf	EHeroTitle	CPersistContext::Transfer					
+leaf	EHeroTrainingStatus	CPersistContext::Transfer					
+leaf	EHitLocationCodelet	CPersistContext::Transfer					
+leaf	EInputKey	CPersistTraits::TransferIn					
+leaf	EInventoryActionType	CPersistContext::Transfer					
+leaf	EInventoryObjectOrientation	CPersistContext::Transfer					
+leaf	ELightingChannel	CPersistContext::Transfer					
+leaf	EMessageEventType	CPersistContext::Transfer					
+leaf	EMinimapThemeType	CPersistContext::Transfer					
+leaf	EMouseButtonControl	CPersistContext::Transfer					
+leaf	EMusicSetType	CPersistContext::Transfer					
+leaf	ENavigatorType	CPersistContext::TransferVector					
+leaf	ENoiseType	CPersistContext::Transfer					
+leaf	EObjectAugmentationType	CPersistContext::Transfer					
+leaf	EOpinionAttitudeType	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector					
+leaf	EOpinionDeedType	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn					
+leaf	EPSwitchTriggerType	CPersistContext::Transfer					
+leaf	EPerceivedThingType	CPersistContext::Transfer					
+leaf	EPlaceInHeroSouls	CPersistContext::Transfer					
+leaf	EPointLightChannelEffect	CPersistContext::Transfer					
+leaf	EQuakeLength	CPersistContext::Transfer					
+leaf	EQuakeStrength	CPersistContext::Transfer					
+leaf	EReactionSpeechType	CPersistContext::Transfer					
+leaf	EReverbEnvironmentType	CPersistContext::Transfer					
+leaf	EScriptingStateGroups	CPersistContext::Transfer					
+leaf	ESex	CPersistContext::Transfer					
+leaf	ESwitchTriggerType	CPersistContext::Transfer					
+leaf	ETCInterfaceType	CPersistContext::Transfer					
+leaf	ETavernGameControlType	CPersistContext::Transfer					
+leaf	EThingCreatureProperty	CPersistContext::Transfer					
+leaf	ETrapTriggerType	CPersistContext::Transfer					
+leaf	ETrapType	CPersistContext::Transfer					
+leaf	ETutorialCategory	CPersistContext::Transfer,CPersistContext::TransferVector					
+leaf	EUIInventoryCategory	CPersistContext::Transfer					
+leaf	EVillageStanceToHero	CPersistContext::Transfer					
+leaf	EVillageTaskType	CPersistContext::TransferVector					
+leaf	EWallMountEffects	CPersistContext::Transfer					
+leaf	EWaterType	CPersistContext::Transfer					
+leaf	EWeaponClass	CPersistContext::Transfer,CPersistContext::TransferVector					
+leaf	EWeaponType	CPersistContext::Transfer					
+leaf	EWorldMapNameGraphic	CPersistContext::Transfer					
+leaf	EXboxControllerButton	CPersistContext::Transfer					
+leaf	NGraphicAppearance::CReplaceableMeshes	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn					
+leaf	NInventory::CItem	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn,CPersistTraits::TransferOut					
+leaf	NInventory::EInventoryCategoryIdentifier	CPersistContext::Transfer					
+leaf	NInventory::EInventoryIdentifier	CPersistContext::Transfer					
+leaf	NParticleAttachment::CParticleAttachmentInfo	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn					
+leaf	NScript::CQR_EscortTraderScript::EscortTraderQuestStage	CPersistContext::Transfer					
+leaf	NScript::CQR_EscortTrader_ManagerScript::EscortTraderManagerPhase	CPersistContext::Transfer					
+leaf	NScript::CQ_SunnyvaleMasterData::ArcheryOpenState	CPersistContext::Transfer					
+leaf	NScript::CV_AssassinAttacksScript::AA_LocationIdentifier	CPersistContext::Transfer					
+leaf	NScript::CV_ExposeMayorScript::PATH_ID	CPersistContext::Transfer					
+leaf	NScript::CV_ExposeMayorScript::STAGE_IN_PATH	CPersistContext::Transfer					
+leaf	NScript::CV_IntroductionToTrophiesScript::BriarRoseOpinion	CPersistContext::Transfer					
+leaf	NScript::CV_MurderTwistFinalScript::EAssassinState	CPersistContext::Transfer					
+leaf	NScript::CV_MurderTwistFinalScript::ESheriffState	CPersistContext::Transfer					
+leaf	NSpeechGainManager::CDialogueLayerDef	CPersistContext::TransferVectorOfSubComponents					
+leaf	NSpeechGainManager::EDialogueLayer	CPersistContext::Transfer					
+leaf	NUISystem::CUIStateDef	CPersistContext::TransferVectorOfSubComponents					
+leaf	NUISystem::EActionType	CPersistContext::Transfer					
+leaf	NUISystem::EStateChangeType	CPersistContext::Transfer					
+leaf	NUISystem::ETableExpansionTypes	CPersistContext::Transfer					
+leaf	NUISystem::ETextAlignement	CPersistContext::Transfer					
+leaf	NUISystem::EType	CPersistContext::Transfer					
+leaf	bool	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut					
+leaf	double	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn					
+leaf	float	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut					
+leaf	int	CPersistContext::Transfer,CPersistContext::TransferVector					
+leaf	long	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferMultiMap,CPersistContext::TransferVector,CPersistTraits::TransferOut	long				
+leaf	short	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn					
+leaf	signed char	CPersistContext::Transfer					
+leaf	std::list<COpinionTransientOffset,std::allocator<COpinionTransientOffset> >	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn	container-count				
+leaf	std::list<CReactionMatch *,std::allocator<CReactionMatch *> >	CPersistContext::GetDefaultVal,CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferBinaryOut,CPersistTraits::TransferIn	pointer+container-count				
+leaf	std::pair<CCharString,long>	CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn,CPersistTraits::TransferOut	long				
+leaf	std::pair<long,COpinionDeed *>	CPersistContext::TransferVector,CPersistTraits::TransferIn	pointer+long				
+leaf	std::pair<long,long>	CPersistContext::TransferMap,CPersistTraits::TransferOut	long				
+leaf	unsigned __int64	CPersistContext::Transfer,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferOut					
+leaf	unsigned char	CPersistContext::Transfer,CPersistTraits::TransferBinaryIn,CPersistTraits::TransferIn					
+leaf	unsigned long	CPersistContext::Transfer,CPersistContext::TransferMap,CPersistContext::TransferVector,CPersistTraits::TransferBinaryIn	long				
+class	CAICreatureWillPowerIndicatorDef	Transfer		44	0	0	0
+class	CAIScratchpadDef	Transfer		156	0	8	0
+class	CANavQuadTreeNode	SaveToFile		16	0	0	0
+class	CAbilityButtonGuiDef	Transfer		96	0	1	0
+class	CAbilityDef	Transfer		44	0	0	0
+class	CAbilityTrackDef	Transfer		88	0	1	0
+class	CAbilityTrackLevelDef	Transfer		76	0	2	0
+class	CActionInputControl	TransferBinaryIn		28	0	0	0
+class	CActionUseDef	Transfer		52	0	0	0
+class	CActivateQuestDef	Transfer		48	0	0	0
+class	CAnimComponentCombatComboChain	TransferBinaryIn,TransferBinaryOut		16	0	2	0
+class	CAnimComponentCombatFlourishTargetOffset	TransferBinaryIn,TransferBinaryOut		17	0	0	0
+class	CAnimComponentCombatHandedness	TransferBinaryIn,TransferBinaryOut		16	0	0	0
+class	CAnimComponentCombatMisc	TransferBinaryIn,TransferBinaryOut		10	0	0	0
+class	CAnimComponentCombatRecoil	TransferBinaryIn,TransferBinaryOut		12	0	1	0
+class	CAnimComponentDelayTime	TransferBinaryIn,TransferBinaryOut		12	0	1	0
+class	CAnimComponentFlags	TransferBinaryIn,TransferBinaryOut		12	0	1	0
+class	CAnimComponentFollowingOnAnim	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CAnimComponentFollowingOnAnimFilter	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CAnimComponentSetCreatureMode	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CAnimComponentStrikeResponseAnim	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CAnimComponentStrikeSpeedMultiplier	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CAnimComponentTransitionInTime	TransferBinaryIn,TransferBinaryOut		12	0	1	0
+class	CAnimatingObjectDef	Transfer		76	0	0	0
+class	CAnimationEntry	TransferBinaryIn,TransferBinaryOut		16	0	1	0
+class	CAnimationSet	TransferBinaryIn,TransferBinaryOut		36	0	3	0
+class	CAppearanceDef	Transfer		124	0	0	0
+class	CAppearanceModifierDef	Transfer		120	0	3	0
+class	CAppearanceModifierGraphics	TransferBinaryIn,TransferBinaryOut		16	0	0	0
+class	CAppearanceModifierScalingDef	Transfer		76	0	0	0
+class	CAreaOfEffectAttackDef	Transfer		80	0	2	0
+class	CArenaCreatureDef	Transfer		56	0	2	0
+class	CArenaRoundDef	Transfer		60	0	1	0
+class	CArenaWaveDef	Transfer		64	0	1	0
+class	CArmourDef	Transfer		124	0	2	0
+class	CAttackPatternDef	Transfer		80	0	0	0
+class	CAugmentationDef	Transfer		76	0	4	0
+class	CBalverineBattleDef	Transfer		76	0	0	0
+class	CBase	TransferPersistantBaseData,TransferSubComponentsFrom		200	1	0	0
+class	CBedDef	Transfer		60	0	0	0
+class	CBettingDef	Transfer		88	0	8	0
+class	CBlendedParticleEffectSet	TransferBinaryIn,TransferBinaryOut		16	0	2	0
+class	CBlurredAttitudesDef	Transfer		80	0	0	0
+class	CBoastingPodiumDef	Transfer		44	0	0	0
+class	CBonusItemDef	Transfer		116	0	7	0
+class	CBossDef	Transfer		96	0	1	0
+class	CBrainDef	Transfer		112	0	0	0
+class	CBriarRoseDef	Transfer		84	0	3	0
+class	CBuyHouseDef	Transfer		38	0	0	0
+class	CBuyableHouseDef	Transfer		84	0	2	0
+class	CCRCSymbolMap	LoadFromFile		44	0	0	0
+class	CCameraCollisionDef	Transfer		44	0	1	0
+class	CCameraManagerDef	Transfer		128	0	3	0
+class	CCameraManagerSetDef	Transfer		80	0	4	0
+class	CCameraModeDef	Transfer		220	0	3	0
+class	CCardDef	Transfer		72	0	2	0
+class	CCardPositionsDef	Transfer		80	0	0	0
+class	CCarriedReadableDef	Transfer		48	0	0	0
+class	CCarrySlotDef	Transfer		56	0	1	0
+class	CCarryableDef	Transfer		80	0	4	0
+class	CCarryingDef	Transfer		60	0	0	0
+class	CCharString	LoadFromFile,SaveToFile		4	1	0	0
+class	CChecksumCacheFile	Save		28	0	1	2
+class	CChestDef	Transfer		60	0	3	0
+class	CClockDef	Transfer		60	0	0	0
+class	CCoinGameObstacleDef	Transfer		44	0	0	0
+class	CCombatAbilityAttackBase	Transfer		72	0	0	0
+class	CCombatAbilityBlockDefBase	Transfer		92	0	0	0
+class	CCombatAbilityData	TransferBinaryIn,TransferBinaryOut		24	0	1	0
+class	CCombatAbilityStrafeDef	Transfer		68	0	0	0
+class	CCombatAbilityUseProjectileWeaponDef	Transfer		72	0	0	0
+class	CCombatDialogueDef	Transfer		144	0	17	0
+class	CCombatSequenceDef	Transfer		112	0	1	0
+class	CCombatTypeDef	Transfer		192	0	1	0
+class	CConfigOptionsDefaultsDef	Transfer		120	0	6	0
+class	CContainerRewardHeroDef	Transfer		56	0	0	0
+class	CContextSensitiveItemDef	Transfer		60	0	4	0
+class	CControlsDef	Transfer		88	0	0	0
+class	CConversation	Transfer		108	0	1	0
+class	CCoopSpiritDef	Transfer		60	0	0	0
+class	CCrateStackDef	Transfer		48	0	2	0
+class	CCreatureAbilityDef	Transfer		68	0	0	0
+class	CCreatureDef	Transfer		252	0	19	0
+class	CCreatureGenerationFamilyDef	Transfer		104	0	2	0
+class	CCreatureGeneratorDef	Transfer		68	0	2	0
+class	CCreatureModeDef	Transfer		68	0	3	0
+class	CCreatureNavigationDef	Transfer		56	0	0	0
+class	CCreatureStatsDef	Transfer		72	0	5	0
+class	CCutsceneDef	Transfer		192	0	0	0
+class	CDecapitationDef	Transfer		48	0	2	0
+class	CDefString	TransferBinaryIn		4	0	1	0
+class	CDegradableDef	Transfer		64	0	0	0
+class	CDialogueLayerDef	Transfer		64	0	0	0
+class	CDoorDef	Transfer		60	0	2	0
+class	CDragonActionHoverDef	Transfer		44	0	0	0
+class	CDragonActionNapalmDef	Transfer		56	0	0	0
+class	CDragonActionSwoopDef	Transfer		100	0	1	0
+class	CDrunkennessDef	Transfer		44	0	0	0
+class	CEditMapBrush	LoadFromFile,SaveToFile		64	0	0	0
+class	CEditWorldMap	LoadFromFile,SaveToFile		332	1	2	0
+class	CEnemyDef	Transfer		44	0	1	0
+class	CEngineDef	Transfer		132	0	8	0
+class	CEngineLandscapePatch	Save		72	4	2	0
+class	CEngineLocalDetailGeneratorDef	Transfer		80	0	0	0
+class	CEngineLocalDetailLayerDef	Transfer		96	0	0	0
+class	CEngineLocalDetailObjectDef	Transfer		140	0	4	0
+class	CEngineMapDependencyChecker	Load,Save		20	0	1	0
+class	CEngineProfileLog	Save		1592	1	4	1
+class	CEngineStaticMapEdgeHeights	Load,Save		232	0	2	0
+class	CEngineTexturePalette	Load,Save		28	1	1	0
+class	CEngineThemeDef	Transfer		168	0	16	0
+class	CEngineThemeGroupDef	Transfer		62	0	0	0
+class	CEngineVideoOptionsDef	Transfer		124	0	2	0
+class	CEngineWaterBackgroundSubPatch	Load,Save		96	5	3	0
+class	CEntitySoundDef	Transfer		92	0	1	0
+class	CEnvironmentDef	Transfer		312	0	45	0
+class	CEnvironmentThemeDaySetDef	Transfer		116	0	1	0
+class	CEnvironmentThemeDef	Transfer		200	0	6	0
+class	CExperienceDef	Transfer		92	0	1	0
+class	CExplodingObjectDef	Transfer		52	0	2	0
+class	CExplosionDef	Transfer		116	0	5	0
+class	CExplosionRing	TransferBinaryIn,TransferBinaryOut		16	0	1	0
+class	CExplosiveTrailDef	Transfer		76	0	1	0
+class	CExpressionDef	Transfer		148	0	2	0
+class	CExpressionSet	TransferBinaryIn,TransferBinaryOut		20	0	0	0
+class	CExpressionSubDef	Transfer		44	0	1	0
+class	CFactionDef	Transfer		96	0	0	0
+class	CFeatDef	Transfer		100	0	4	0
+class	CFireHeartPatternDef	Transfer		60	0	0	0
+class	CFireballSpellLevelDef	Transfer		44	0	1	0
+class	CFireheartMinigameDef	Transfer		60	0	3	0
+class	CFishDef	Transfer		88	0	2	0
+class	CFishingDef	Transfer		128	0	3	0
+class	CFishingRodDef	Transfer		60	0	0	0
+class	CFlammableDef	Transfer		80	0	1	0
+class	CFrontEndDef	Transfer		92	0	3	0
+class	CGameTimeManager	Load,Save		64	2	2	0
+class	CGiftDef	Transfer		48	0	0	0
+class	CGlobalDef	Transfer		352	0	38	0
+class	CGoldDef	Transfer		44	0	1	0
+class	CGraphicHeader	Load,Save		28	0	2	0
+class	CGuardDef	Transfer		80	0	10	0
+class	CGuiVarTransferBool	TransferFromGui,TransferToGui		20	1	0	0
+class	CGuiVarTransferDefIndex	TransferFromGui,TransferToGui		28	2	1	0
+class	CGuiVarTransferDefIndexList	TransferFromGui,TransferToGui		36	1	0	0
+class	CGuiVarTransferExclusiveOptions	TransferFromGui,TransferToGui		52	0	2	0
+class	CGuiVarTransferFloat	TransferFromGui,TransferToGui		32	1	0	0
+class	CGuiVarTransferSLONG	TransferFromGui,TransferToGui		32	1	4	0
+class	CGuiVarTransferString	TransferFromGui,TransferToGui		20	1	0	0
+class	CGuiVarTransferStringList	TransferFromGui,TransferToGui		36	1	0	0
+class	CGuiVarTransferSymbolVal	TransferFromGui,TransferToGui		28	2	1	0
+class	CGuiVarTransferULONG	TransferFromGui,TransferToGui		32	1	4	0
+class	CGuiWindowManager	Load,Save		136	6	1	0
+class	CGuildMasterDef	Transfer		48	0	0	0
+class	CHairCardDef	Transfer		44	0	1	0
+class	CHasNameDef	Transfer		52	0	3	0
+class	CHeroAbilityDef	Transfer		172	0	8	0
+class	CHeroCentreDef	Transfer			0	0	0
+class	CHeroCombatDef	Transfer		372	0	2	0
+class	CHeroDef	Transfer		48	0	1	0
+class	CHeroExperienceDef	Transfer		224	0	0	0
+class	CHeroMarriageDef	Transfer		200	0	9	0
+class	CHeroMorphDef	Transfer		120	0	0	0
+class	CHeroPostcardGeneratorDef	Transfer		96	0	0	0
+class	CHeroSoulsCreatureDef	Transfer		52	0	1	0
+class	CHeroSoulsRoundDef	Transfer		60	0	1	0
+class	CHeroSoulsWaveDef	Transfer		60	0	1	0
+class	CHeroSpecialMovementDef	Transfer		56	0	0	0
+class	CHeroStatsDef	Transfer		356	0	19	0
+class	CHeroSuitDef	Transfer		56	0	0	0
+class	CHeroTitleDef	Transfer		80	0	8	0
+class	CHighlightItemDef	Transfer		72	0	2	0
+class	CHitLocationDef	Transfer		128	0	5	0
+class	CHitLocationsDef	Transfer		56	0	0	0
+class	CIdleSchedulerDef	Transfer		80	0	0	0
+class	CInputEventPackage	Save		52	0	1	0
+class	CInterestingToVillagersDef	Transfer		44	0	0	0
+class	CInventoryCategoryDef	Transfer		92	0	3	0
+class	CInventoryDef	Transfer		2656	0	142	0
+class	CInventoryItemDef	Transfer		112	0	7	0
+class	CJackDragonDef	Transfer		120	0	4	0
+class	CJackOfBladesBattleDef	Transfer		132	0	1	0
+class	CKickableDef	Transfer		84	0	2	0
+class	CKrakenDef	Transfer		128	0	6	0
+class	CKrakenTentacleDef	Transfer		96	0	0	0
+class	CLandscapeBackgroundPatch	Load,Save		284	9	1	0
+class	CLandscapeBackgroundSubNodeSplitBranch	Load		484	0	0	0
+class	CLandscapeLayerMesh	Save		84	9	7	0
+class	CLensFlareElementDef	Transfer		80	0	1	0
+class	CLightDef	Transfer		92	0	1	0
+class	CLightningDef	Transfer		92	0	2	0
+class	CLightningOrbDef	Transfer		60	0	2	0
+class	CLocalDetailObjectCollectionType	Load,Save		84	3	4	0
+class	CLocalDetailPrimitiveMesh	Load,Save		116	0	0	0
+class	CLocalDetailPrimitiveMeshZSpriteBatch	Load,Save		80	2	1	0
+class	CLocalDetailPrimitiveRepeatedMesh	Load,Save		96	5	2	0
+class	CLookDef	Transfer		88	0	0	0
+class	CManager	Load,Save		256	17	5	1
+class	CMap	LoadFromFile,SaveToFile		7504	3	9	0
+class	CMaterialDef	Transfer		180	0	2	0
+class	CMazeBattleDef	Transfer		100	0	2	0
+class	CMeleeCombatAbilityDef	Transfer		136	0	4	0
+class	CMeleeCombatKnockdownEffects	Transfer		96	0	5	0
+class	CMessageEventDef	Transfer		84	0	3	0
+class	CMultiStaticMeshDef	Transfer		56	0	0	0
+class	CMultiStaticMeshEntryDef	Transfer		56	0	1	0
+class	CNavBlockedQuadTreeNode	SaveToFile			0	0	0
+class	CNavNavigableLeafNode	SaveToFile		32	1	0	0
+class	CNavQuadTree	LoadFromFile,SaveToFile		176	0	1	0
+class	CNavQuadTreeNode	SaveToFile		32	4	0	0
+class	CNavSwitchableLeafNode	SaveToFile		52	0	0	0
+class	CNymphDef	Transfer		80	0	3	0
+class	CObject	Load		40	2	1	0
+class	CObjectAugmentationsDef	Transfer		160	0	9	0
+class	CObjectFamilyDef	Transfer		80	0	0	0
+class	CObjectTypeCollection	Load,Save		28	5	0	0
+class	CObjectTypeCollectionPalette	Load,Save		16	0	0	0
+class	COccupiableDef	Transfer		44	0	1	0
+class	COpinionDeedEffectsDef	Transfer		148	0	5	0
+class	COpinionDeedMaskDef	Transfer		80	0	0	0
+class	COpinionDeedReactionDef	Transfer		88	0	1	0
+class	COpinionOfHeroDef	Transfer		60	0	3	0
+class	COpinionPersonalityDef	Transfer		92	1	0	0
+class	COpinionPersonalityTraits	TransferBinaryIn,TransferBinaryOut		36	0	0	0
+class	COpinionReactionManagerDef	Transfer		860	2	0	0
+class	COpinionReactionMaskDef	Transfer		80	0	0	0
+class	COpinionSet	TransferBinaryIn		16	0	0	0
+class	COpinionSourceDef	Transfer		216	0	1	0
+class	COpinionTransientOffset	TransferBinaryIn		24	0	3	0
+class	COracleMinigameDef	Transfer		92	0	10	0
+class	COverheadDisplayDef	Transfer		40	0	0	0
+class	CParticleAttacherDef	Transfer		56	0	0	0
+class	CParticleEmitterDatabase	Load,Save,Serialise		88	0	1	0
+class	CParticleMorphs	TransferBinaryIn,TransferBinaryOut		20	0	0	0
+class	CPatchTesselationEdgeStrip	Load,Save		44	0	0	0
+class	CPerceivedThingDef	Transfer		80	0	0	0
+class	CPersistContext	PersistError,TransferObjectLoadText,TransferObjectSaveText,TransferSubComponentLoadText,TransferSubComponentSaveText,TransferVectorLoadText,TransferVectorOfSubComponentsLoadText,TransferVectorSaveText		44	8	0	0
+class	CPersistTraitsSLONG	TransferIn,TransferOut			0	0	0
+class	CPhysicalPrimitiveCylinder	TransferBinaryIn,TransferBinaryOut		16	0	0	0
+class	CPhysicalPrimitiveMesh	TransferBinaryIn,TransferBinaryOut			0	0	0
+class	CPhysicalPrimitiveSphere	TransferBinaryIn,TransferBinaryOut		12	0	0	0
+class	CPhysicsDef	Transfer		68	0	1	0
+class	CPlayerDef	Transfer		72	0	1	0
+class	CPlayerGuiDef	Transfer		2896	0	219	0
+class	CPlayerInventoryDef	Transfer		136	0	1	0
+class	CPlayerMovementDef	Transfer		128	0	3	0
+class	CPrizeScoreDef	Transfer		48	0	1	0
+class	CQuestCardDef	Transfer		124	0	9	0
+class	CQuestManager	TransferBoasts		276	4	5	0
+class	CQuickAccessItemButtonGuiDef	Transfer		84	0	1	0
+class	CRandomAppearanceMorph	TransferBinaryIn,TransferBinaryOut		76	0	1	0
+class	CReactionFrequencyTraits_ControlledCount	TransferBinaryIn,TransferBinaryOut		44	1	3	0
+class	CReactionFrequencyTraits_LinearTime	TransferBinaryIn,TransferBinaryOut		16	0	1	0
+class	CReactionFrequencyTraits_PeriodicFrequency	TransferBinaryIn,TransferBinaryOut		32	0	5	0
+class	CReactionMatch	TransferBinaryIn,TransferBinaryOut		8	0	0	0
+class	CReactionMatch_AsymmetricPyramid	TransferBinaryIn,TransferBinaryOut		40	0	0	0
+class	CReactionMatch_MRPyramid	TransferBinaryIn,TransferBinaryOut		52	0	0	0
+class	CReactionMatch_SecondaryAxisCentredMRShifted	TransferBinaryIn,TransferBinaryOut		36	0	0	0
+class	CReactionMatch_SecondaryAxisMRShifted	TransferBinaryIn,TransferBinaryOut		36	0	0	0
+class	CReactionMatch_Sphere	TransferBinaryIn,TransferBinaryOut		28	0	0	0
+class	CReadableDef	Transfer		38	0	0	0
+class	CRegion	TransferGameState		100	0	0	0
+class	CRegionDef	Transfer		208	0	11	0
+class	CRegionScriptDef	Transfer		80	0	4	0
+class	CReplaceableMeshDef	Transfer		56	0	0	0
+class	CResurrectionItemDef	Transfer		44	0	1	0
+class	CRumbleDef	Transfer		72	0	0	0
+class	CScorpionKingBattleDef	Transfer		100	0	1	0
+class	CScriptDef	Transfer		4436	0	548	0
+class	CShipDef	Transfer		68	0	3	0
+class	CShopDef	Transfer		224	0	10	0
+class	CShopItemDef	Transfer		72	0	1	0
+class	CShoveHaPennyRegionDef	Transfer		48	0	0	0
+class	CSimBuildingDef	Transfer		76	0	3	0
+class	CSimVoice	TransferBinaryIn,TransferBinaryOut		28	0	0	0
+class	CSimVoicesDef	Transfer		92	0	0	0
+class	CSkeletalMorphDef	Transfer		56	0	0	0
+class	CSkeletalMorphs	TransferBinaryIn,TransferBinaryOut		20	0	0	0
+class	CSkyDef	Transfer		136	0	10	0
+class	CSmashableDef	Transfer		48	0	1	0
+class	CSmokeGeneratorDef	Transfer		48	0	1	0
+class	CSnowTrollDef	Transfer		96	0	3	0
+class	CSoundAtmospheresDef	Transfer		56	0	0	0
+class	CSoundDef	Transfer		156	0	0	0
+class	CSoundMap	TransferBinaryIn,TransferBinaryOut		40	0	0	0
+class	CSoundThemeDef	Transfer		108	0	2	0
+class	CSpecialAbilitiesAssassinRushDef	Transfer		148	0	2	0
+class	CSpecialAbilitiesBattleChargeDef	Transfer		184	0	0	0
+class	CSpecialAbilitiesBerserkDef	Transfer		468	0	3	0
+class	CSpecialAbilitiesBulletTimeDef	Transfer		428	0	1	0
+class	CSpecialAbilitiesBurntEffectDef	Transfer		92	0	0	0
+class	CSpecialAbilitiesCreatureTintDef	Transfer		88	0	0	0
+class	CSpecialAbilitiesDrainLifeDef	Transfer		132	0	0	0
+class	CSpecialAbilitiesDrunkennessDef	Transfer		84	0	2	0
+class	CSpecialAbilitiesElectrocutedEffectDef	Transfer		120	0	0	0
+class	CSpecialAbilitiesEnflameDef	Transfer		176	0	0	0
+class	CSpecialAbilitiesFireballSpellDef	Transfer		92	0	0	0
+class	CSpecialAbilitiesForcePushDataDef	Transfer		44	0	0	0
+class	CSpecialAbilitiesForcePushDef	Transfer		180	0	2	0
+class	CSpecialAbilitiesGhostSwordDef	Transfer		92	0	0	0
+class	CSpecialAbilitiesHealLifeDef	Transfer		112	0	0	0
+class	CSpecialAbilitiesLightningSpellDef	Transfer		364	0	0	0
+class	CSpecialAbilitiesMultiArrowDef	Transfer		140	0	2	0
+class	CSpecialAbilitiesMultiStrikeDef	Transfer		180	0	0	0
+class	CSpecialAbilitiesPhysicalShieldDef	Transfer		364	0	0	0
+class	CSpecialAbilitiesSummonSpellDef	Transfer		120	0	1	0
+class	CSpecialAbilitiesThunderLightningStormDef	Transfer		108	0	1	0
+class	CSpecialAbilitiesTurncoatSpellDef	Transfer		144	0	0	0
+class	CSpecialAbilitiesUnholyPowerDef	Transfer		312	0	0	0
+class	CSpecialEffectsDef	Transfer		56	0	0	0
+class	CSpotLightDef	Transfer		68	0	0	0
+class	CStealthDef	Transfer		72	0	0	0
+class	CStockItemDef	Transfer		64	0	3	0
+class	CSummonDef	Transfer		76	0	7	0
+class	CSummonableCreatureDef	Transfer		48	0	0	0
+class	CSummonerDef	Transfer		92	0	3	0
+class	CSymbolMap	LoadFromFile		44	0	0	0
+class	CTCBase	Serialise		12	1	0	0
+class	CTCNoiseDef	Transfer		52	0	0	0
+class	CTCVolumeContainmentTrackerDef	Transfer		48	0	0	0
+class	CTGAFile	Load		12	0	1	0
+class	CTargetingDef	Transfer		148	0	1	0
+class	CTattooDef	Transfer		96	0	5	0
+class	CTavernDef	Transfer		44	0	1	0
+class	CTavernGameCardBaseDef	Transfer		140	0	2	0
+class	CTavernGameCoinBaseDef	Transfer		68	0	2	0
+class	CTavernGameCoinGolfDef	Transfer		92	0	2	0
+class	CTavernGameDef	Transfer		424	0	62	0
+class	CTavernGameShoveHaPennyDef	Transfer		520	0	3	0
+class	CTavernGameSpotTheAdditionDef	Transfer		152	0	3	0
+class	CTavernTableDef	Transfer		39	0	0	0
+class	CTeleporterDef	Transfer		52	0	1	0
+class	CTexture	LoadFromFile,SaveToFile		8	1	0	0
+class	CTextureMorphs	TransferBinaryIn,TransferBinaryOut		20	0	0	0
+class	CTextureReplacementDef	Transfer		56	0	0	0
+class	CThing	Save		168	7	2	0
+class	CThingAICreature	Save		528	1	2	0
+class	CThingBaseDef	Transfer		116	0	2	0
+class	CThingBuildingDef	Transfer		168	0	5	0
+class	CThingComponentSet	TransferBinaryIn,TransferBinaryOut		8	0	0	0
+class	CThingCreatureBase	Save		392	2	5	0
+class	CThingCreatureDef	Transfer		340	0	15	0
+class	CThingDrainLifeShotDef	Transfer		60	0	0	0
+class	CThingHolySiteDef	Transfer		132	0	0	0
+class	CThingManager	LoadFromFile		272	8	3	1
+class	CThingMarkerDef	Transfer		140	0	1	0
+class	CThingMultiArrowShotDef	Transfer		84	0	3	0
+class	CThingNoiseDef	Transfer		168	0	0	0
+class	CThingObjectDef	Transfer		160	0	5	0
+class	CThingPhysical	Save		216	0	1	0
+class	CThingPhysicalSwitch	Save		240	0	0	0
+class	CThingPhysicalSwitchDef	Transfer		152	0	1	0
+class	CThingShotDef	Transfer		176	0	9	0
+class	CThingSwitch	Save		256	0	1	0
+class	CThingSwitchDef	Transfer		120	0	0	0
+class	CThingTrackNode	Save		264	0	0	0
+class	CThingVillageDef	Transfer		132	0	0	0
+class	CThunderBattleDef	Transfer		80	0	3	0
+class	CTimeAppearanceFadeDef	Transfer		56	0	0	0
+class	CTrapDef	Transfer		104	0	5	0
+class	CTrollBattleDef	Transfer		100	0	3	0
+class	CTrophyDef	Transfer		100	0	2	0
+class	CTurncoatDef	Transfer		88	0	3	0
+class	CUIDef	Transfer		604	0	18	2
+class	CUIIconsDef	Transfer		192	0	32	0
+class	CUILocaleGraphicsDef	Transfer		100	0	1	0
+class	CUIMiscThingsDef	Transfer		620	0	10	70
+class	CUIStateDef	Transfer		132	0	2	0
+class	CUserProfileManager	Load,Save		324	1	10	5
+class	CVillageDef	Transfer		300	0	26	0
+class	CVillageMemberDef	Transfer		38	0	0	0
+class	CVillagePeopleDef	Transfer		204	0	29	0
+class	CVillagerInteractionsDef	Transfer		76	0	0	0
+class	CVolumeTexture	LoadFromFile,SaveToFile		16	2	1	0
+class	CWallMountEffectsDef	Transfer		52	0	1	0
+class	CWaspQueenBattleDef	Transfer		68	0	1	0
+class	CWaterPatchMesh	Load,Save		32	3	0	0
+class	CWaterSeaStaticMapInfoBlock	Load,Save		12	0	3	0
+class	CWaterStaticMapInfoBlock	Load,Save		8	0	2	0
+class	CWeaponDef	Transfer		244	0	8	0
+class	CWhisperBattleDef	Transfer		72	0	2	0
+class	CWideString	LoadFromFile,SaveToFile		4	1	0	0
+class	CWifeDef	Transfer		44	0	1	0
+class	CWillResponseDef	Transfer		45	0	0	0
+class	CWorld	Load		440	5	8	2
+class	CWorldMap	LoadFromFile,SaveToFile		252	2	5	0
+class	CWound	TransferBinaryIn,TransferBinaryOut		68	0	6	0
+class	CWoundMorphs	TransferBinaryIn,TransferBinaryOut		20	0	0	0
