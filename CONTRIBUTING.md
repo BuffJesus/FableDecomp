@@ -57,3 +57,9 @@ comparison. Root-level scratch (`*.obj`, `*.bin`) is ignored; keep working files
 
 Open an issue with the function address, the verifier output, and the compiler flags used.
 For readability complaints about landed code, name the file; a retype pass exists exactly for that.
+
+## Working alongside other sessions
+
+See [project layout and workspace care](docs/PROJECT_LAYOUT.md) for source and
+local-output locations, exact path ownership, and isolated publication. Preserve
+active builds and evidence even when ignored by Git.

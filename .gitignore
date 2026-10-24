@@ -4,6 +4,9 @@
 imgui.ini
 *.user
 *.suo
+.junie/
+/.claude/worktrees/
+/.agents/CLEANUP_COORDINATION.md
 
 # Proprietary/local binary inputs and analysis databases
 /debug_build/
@@ -14,6 +17,10 @@ imgui.ini
 /work/
 /dist/
 /tmp/
+/build/
+/.scratch_tmp/
+/scratchpad/
+/runtime_dumps/
 /snapshots/
 /FSE/
 /FableTLC_RE_docs.zip
@@ -87,4 +94,9 @@ imgui.ini
 /CON
 /imgui.ini
 /out_dat.txt
+/tmp_*
+/work_*.txt
+/*_native.txt
+/*.log
+/0x*
 /[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*

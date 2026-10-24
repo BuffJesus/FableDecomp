@@ -412,6 +412,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             bounds[3],
             SAVE_LIST_ORIGIN[1] + 3 * SAVE_ROW_STEP_Y + 64)
 
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
     def test_save_names_are_centered_on_selection_highlight(self):
         # Retail centres each save-slot label on its highlight button, exactly
         # like the main-menu and Options rows. Regression guard for the bug where
@@ -541,6 +544,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
             component.crop((0, 35, 240, 80)))
         self.assertIsNotNone(diff.getbbox())
 
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
     def test_save_browser_renders_preview_viewport_ring(self):
         # UI_VIEW_RING_SMALL (serialized at 314,37) frames a region minimap in
         # the save-preview viewport on the right. Guard that the 256x256 region
@@ -553,6 +559,9 @@ class FrontendSubscreenRenderTests(unittest.TestCase):
         # The ring ornament fills essentially the whole 256x256 tile.
         self.assertEqual((0, 0, 256, 256), bounds)
 
+    @unittest.skipUnless(
+        os.path.isfile(FRONTEND_BANK) and os.path.isfile(FONT_BANK),
+        "retail frontend/font banks are not installed")
     def test_save_browser_renders_file_information_backdrop(self):
         # UI_TEXT_AREA (0,254) frames File Information with a UI_TEXTBOX_MIDDLE
         # rule (UI_TABLE_TEXT_LEFT width 287 + UI_TABLE_TEXT_RIGHT 463,width 40).

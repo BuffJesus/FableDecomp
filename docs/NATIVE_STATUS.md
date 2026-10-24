@@ -1,4 +1,32 @@
-# Native development update — October 10, 2026
+# Native development update - October 24, 2026
+
+Native reconstruction continues locally. The concrete text-bank composition
+checkpoint passed 108 bounded processes covering text, group, and narrator
+metadata, with 18 native fault controls. These are composition-test results,
+not an increase in whole-executable coverage. Decoded payloads and nonempty
+resource ownership remain under investigation; no full `gate_all` run or
+playable engine is claimed.
+
+Separate C++23/x64 subsystem libraries and offline replay tests also exist
+locally. This does not certify a playable modern engine or a complete headless
+gameplay session. Scheduling and ownership joins continue through their own
+qualification and promotion gates.
+
+This publication updates organization and status only. Newer native and modern
+source, fixtures, generated reports, local receipts, and retail-derived inputs
+remain outside this change pending dependency-complete review. The published
+coverage dashboard keeps its existing snapshot.
+
+See [the handoff](HANDOFF.md), [current priorities](ROADMAP.md), and
+[workspace organization](PROJECT_LAYOUT.md) for navigation and safe continuation.
+
+## Historical October 10 checkpoint
+
+The following results and unresolved boundaries describe October 10. Later
+bounded composition work above does not establish that all of these earlier
+boundaries have been closed.
+
+### Native development update — October 10, 2026
 
 The project is active. Work has continued locally on faithful native PC
 C/C++ reconstruction, rather than Lua recovery. The gap in public commits
