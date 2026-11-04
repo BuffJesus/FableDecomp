@@ -1,0 +1,51 @@
+# Resource memory accounting
+
+`fable_assets::ResourceMemoryAccounting` owns prepared size and membership
+values. Snapshot labels are 64-bit values local to one owner, not pointers,
+leases or persistent resource identities. The class owns neither resources nor
+decoded data and makes no allocation-budget or eviction decisions.
+
+The native `CResource::SetResourceSize` body at `009fbf20` updates a resource's
+size on every call. When a resource belongs to a list, it subtracts the previous
+size and adds the replacement to the manager's allocated word. An unlisted
+resource's size changes without contributing to that word. The original body
+uses 32-bit arithmetic; the observed counter is treated as a raw word rather
+than evidence of signed budget semantics.
+
+The portable owner deliberately stores both sizes and the listed total as
+`uint64_t`. Replacement subtracts the old contribution before checking the new
+one, so a same-size replacement at the maximum total succeeds. A total above
+`UINT64_MAX` fails before changing either the record or the total. Unlisted
+records may hold any `uint64_t` size without contributing. Unknown labels also
+fail before mutation.
+
+`load_snapshot` consumes a vector of entries, builds an index, checks unique
+labels and sums listed sizes with overflow checks before swapping in the new
+state. Rejection and allocation exceptions preserve the previous state. Returned
+snapshots are value copies. Owners cannot be copied or moved; use is confined to
+one thread. `set_size` and `listed_bytes` allocate nothing and call no backend.
+Membership replacement is explicit; there is no claim of live resource-list
+registration or integration with `ResourceRecency` yet.
+
+Evidence is preserved under `work/modern_resource_size_accounting_20261019`:
+
+- The original 46-byte body runs without backend shims for 4,096 cases and
+  12,288 calls, with an identical repeat and seven rejected controls. Each call
+  checks the complete 4 KiB prepared region and saved registers.
+- A separate delta/sum audit verifies 6,145 listed and 6,143 unlisted updates,
+  every record size and the native low 32 bits. There are 1,186 exact totals
+  above `UINT32_MAX`. Those exact totals are mathematical projections, not
+  native 64-bit outputs.
+- `work/modern_owned_resource_memory_20261019/staged_x64_final/summary.json`
+  records x64 `/WX` validation against every call, with reversed record storage
+  and labels above 32 bits, plus the earlier age and recency replays. Goldens
+  separately cover sizes above 4 GiB, 8/9 GiB totals, `UINT64_MAX`, copied values,
+  unknown labels, atomic duplicate/overflow rejection and owner isolation.
+
+Four selected files are promoted after the previous 1,429-input matrix and
+native/staged hashes are checked. The successor five-build receipt is
+`work/modern_owned_resource_memory_20261019/validation/summary.json`: all
+75/75/75/58/55 tests and all 43 steps per build pass, with 1,456 frozen inputs
+unchanged. No game run, cold-load
+backend, physical allocation, decoded resource ownership or signed budget
+policy is established by this packet.

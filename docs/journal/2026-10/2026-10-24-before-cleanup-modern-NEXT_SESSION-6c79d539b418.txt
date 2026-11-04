@@ -1,0 +1,784 @@
+> **Modernization ACTIVE ? baseline136 COMPLETE/PASSED, 2026-10-24.**172/172/172/155/152CTest,all136replay checks/build,5,816inputs/external headers unchanged. ForcedTickSleep is promoted/validated. Next `work/modern_owned_forced_tick_timing_20261024`: immutable slice/step/interpolation/prediction/render accounting math is staged, not promoted;192native frames/267renders and40,960independent arithmetic/error cases pass strictMSVCx86/x64/GCC in four modes. Final23compiled controls running,session20931. Fresh native timing observer retains all3,072prior paths exactly and independently checks36,288extra original stack values. Full forced callback controller remains open; no playable/headless gameplay claim. Preserve all evidence and other lanes; no game/Git/installed-file changes.
+
+> **Modernization ACTIVE ? matrix134 COMPLETE/PASSED, 2026-10-24.**170/170/170/153/150 CTest across MSVC x86/x64,Clang,GCC,headless; all134 replay checks/build;5,729 inputs and external headers unchanged. Complete enclosing regular Run composition is promoted and validated. Receipt: `work/modern_owned_complete_run_iteration_20261024/validation_matrix/summary.json`. Continue `work/modern_forced_tick_20261024`: parameter and zero-world evidence qualified; full forced render-loop final2 native capture is running after the independent audit found missing zero-interval rough coverage in final1. No forced-tick portable API or production promotion yet. Preserve original failures and all other lanes; no game/installed-file/Git changes.
+
+> **Modernization ACTIVE, 2026-10-24.** Complete enclosing Run composition PROMOTED after512 native cases/6,144 operations/repeat/123 controls,3,062,492 independent observations, strict MSVC x86/x64/GCC replay in four modes and47 compiled controls plus positive fixture. Matrix134 ACTIVE,5,729-input preflight passed; baseline133 remains the latest complete matrix. Production source is frozen during validation. Evidence: `work/modern_owned_complete_run_iteration_20261024`. Next forced-tick parameter evidence is native-only:4,096 cases/49,152 observations/seven controls, independent exact-fraction audit pass; no port or promotion. Native recreation/Lua remain outside this modernization authorization.
+
+> **Modernization ACTIVE, 2026-10-24.** User resumed 64-bit/modernization until asked to stop. Baseline133 remains complete:169/169/169/152/149 CTest,133 checks/build,5,658 unchanged inputs/external headers. Complete enclosing Run integration now passes512 native cases/6,144 operations/repeat/123 controls and3,062,492 independent observations. Strict MSVC x86/x64/GCC four-mode replay and typed failure/reentry/exception/recovery checks pass.47 compiled controls are running; no production promotion yet. Work: `work/modern_owned_complete_run_iteration_20261024`; native evidence: `work/modern_complete_run_iteration_20261023`. Native recreation and Lua remain outside this authorization.
+
+> PAUSED at user request, October23,2026. Do not resume modernization until the user asks.
+> Baseline133 COMPLETE/PASSED:169/169/169/152/149CTest (x86/x64/Clang/GCC/headless),133checks/build,5,658frozen inputs and external headers unchanged. Focus and optional-progress compositions are promoted and validated.
+> Next: work/modern_complete_run_iteration_20261023. Unqualified enclosing Run integration;6,144-operation model preflight and earlier512case native probe passed. The prediction-count mutation survived the first control run. New threshold-witness attempt was stopped on pause; partial output preserved as validation_user_paused. No accepted native/audit receipt or production promotion for this join.
+
+October23 pause checkpoint (latest user instruction takes precedence over older active-work notes):
+
+- Validated production baseline: matrix133 at work/modern_owned_progress_regular_update_frame_20261023/validation_matrix/summary.json. All five configurations passed;169/169/169/152/149CTest,133replay checks per configuration,5,658inputs and external headers unchanged. No pending production matrix or compiler jobs.
+- Focus integration: work/modern_focused_regular_update_frame_20261023 (512cases/3,072ops/105controls;1,951,631independent observations), owned regression promoted in matrix132 after strict3/four modes and35compiled controls.
+- Optional progress integration: work/modern_progress_regular_update_frame_20261023 (512cases/3,072ops/109controls;1,948,556independent observations,234absent/554present queries), owned regression promoted in matrix133 after strict3/four modes and35compiled controls. Production changes are app regression tests/CMake; prior ApplicationActivity platform service is also validated.
+- Unfinished next join: work/modern_complete_run_iteration_20261023.22original spans/565instructions/66direct edges. Persistent outer Run, rough FPS, smoothing, complete frame/Update, focus and optional progress. Forced update and world/UI/render internals remain controlled. Existing prepared positive-capacity smoothing history; no Run setup/shutdown/allocation credit.
+- Earlier bounded native probe passed512cases before prediction calibration, including immutable memory guards and outer loop/rough/history snapshots at inner callbacks. Initial callback-table name and missing constants-page errors preserved; delta reset and list aliasing mismatches preserved in probe_mismatch_before_* reports. This probe is not a qualified packet.
+- First full control attempt failed on surviving predict_count_increment. Preserved validation_before_prediction_witness plus model/scope/preflight_before_prediction_witness files. Added model calibration that seeks a timed due threshold witness using the original count versus count-2. Latest6,144-operation model preflight passes (460regular entries,184active,121renders,97processed,470forced callbacks,1,868duration records); calibration/control effectiveness is not yet established.
+- Latest native capture was stopped at user pause. Exact lane processes8776/12936 stopped; session26486 reaped. Partial output renamed validation_user_paused, never treated as a receipt. Earlier capture_initial.py/validation_initial preserve the AST extraction error; extraction fixed and static manifest verifies123mutation preimages.
+- capture_probe.py holds native execution and memory guards; capture.py freezes fresh case JSON, checks repeatability and123controls. qualify.py and audit_inner.py are prepared independent audit code and have only syntax validation; they have not run successfully and may need fixes. No complete-Run native summary, qualification summary, export, owned fixture or promotion exists.
+- Resume only after explicit user authorization. Keep all failure/partial directories. Check runtime lease and stable five-second absent window before launching wait_capture.py. Its validation output directory is currently absent, so a fresh launch is possible. Require repeat/native controls and independent audit before any portable fixture/promotion. If a control survives, strengthen witnesses and preserve the failed attempt; do not delete or exempt it merely to pass.
+- When the complete packet qualifies, compose existing owners in the portable regression, preserving typed failures and nested owner admission. Native full iteration uses live outer Running for server-due decisions; callbacks may change loop frame start before its post-regular snapshot. Distinguish rough timeGetTime return0x9f8baa from system-clock fallback. Rebuild the generated matrix candidate before promotion only; retain ordered promotion hash lineage.
+
+
+> Current:118COMPLETE/PASSED154/154/154/137/134CTest,118checks/build,4,990inputs/external headers unchanged.
+> Joined Update timing/route/catch-up helper PROMOTED;119preflight5,024inputs PASS, full119ACTIVE session90394.
+> Next: native persistent-clock/cache/epoch/component-start join for this scheduling pipeline; raw-clock packet is qualified.
+
+> Current:116COMPLETE/PASSED152/152/152/135/132CTest,116checks/build,4,914inputs/external headers unchanged.
+> Local frame catch-up native8,192cases/repeat/11controls and98,304independent observations PASS.
+> Staged helper strictx86/x64/GCC four-mode replay PASS;12compiled controls session8678running. No117promotion yet.
+> Evidence: work/modern_local_frame_catchup_20261023 and work/modern_owned_local_frame_catchup_20261023.
+
+> Current:115COMPLETE/PASSED151/151/151/134/131CTest,115checks/build,4,881inputs/external headers unchanged.
+> Frame-finish projection and owned-history overload PROMOTED/validated. Time-to-frames PROMOTED after native/strict/control qualification.
+> 116preflight4,914inputs passed; full116ACTIVE under work/modern_owned_game_time_to_frames_20261023.
+> Next static investigation: original Update local frame catch-up gates, original frame-difference join and signed frame addition.
+
+> Current:112COMPLETE/PASSED148/148/148/131/128CTest,112checks/build,4,789inputs unchanged.
+> Joined clock/frame-difference regression PROMOTED;113preflight4,819inputs passed; full113ACTIVE, x86/x64passed.
+> Next render-elapsed helper is STAGED/qualified under work/modern_owned_render_elapsed_20261023; no promotion before113completes.
+
+> Current: server frame-difference policy/owner PROMOTED after strict three-compiler/four-mode replay and eight controls.
+> Matrix112 preflight running under `work/modern_owned_server_frame_difference_20261023`;111remains last complete matrix.
+> Next native joined clock/epoch/capture/frame-difference packet is static only at `work/modern_clocked_frame_difference_20261023`.
+
+> Modernization RESUMED by the user after the October23 stop. Matrix111 remains the complete baseline.
+> Server frame-difference policy/owner work is staged at `work/modern_owned_server_frame_difference_20261023`; qualification/promotion pending.
+> Compiler/emulator/matrix launches remain gated by runtime lease absence.
+
+> October23 modernization STOPPED at the user's request. No modernization jobs remain running.
+> Latest complete baseline: matrix111 PASSED, all111checks/build,
+> 147/147/147/130/127CTest;4,753inputs and external headers unchanged.
+> Evidence: `work/modern_profiled_iteration_owner_20261023/validation_matrix/summary.json`.
+> Matrices105-108 promoted regular-frame timing, smoother, rough FPS and Run iteration owners;
+> matrices109-111 promoted persistent-clock, measured and profiled composition regressions.
+> See [Run iteration timing](RUN_ITERATION_TIMING.md) for accepted evidence and boundaries.
+> Next: [server frame difference](SERVER_FRAME_DIFFERENCE.md), native evidence ONLY:
+> 16,384cases/repeat/sixcontrols and independent range/wrap audit pass.
+> 14,984valid conversions;1,400signed64 overflows. No C++ port, tests or promotion yet.
+> Accepted capture: `work/modern_server_frame_difference_20261023/validation_final2`;
+> independent audit: `work/modern_server_frame_difference_20261023/qualification`.
+> Exception-status equivalence is NOT qualified; first FPSW assertion failure is preserved.
+> On resume, port policy/guarded owner, qualify typed overflow behavior and strict replay,
+> then compiled controls, exact promotion ledger against111 and full matrix112.
+> Runtime leases still gate compiler/emulator/matrix launches, even for another lane.
+> Preserve failed attempts; no deletion, staging, commit, live game or installed-file changes.
+
+The entries below are historical checkpoints; the stopped checkpoint above supersedes their pending-work statuses.
+
+
+
+
+
+
+
+
+
+
+> NIGHT STOP â€” user requested stop and documentation cleanup. No active modernization runs.
+> Completed baseline: matrix96 PASSED132/132/132/115/112CTest, all96checks/build,
+> 4,161inputs/external headers unchanged. Known matrix sessions reaped successfully.
+> Next: GameTimeOffset remains STAGED, NOT PROMOTED. Strict x86/x64/GCC joined replay
+> and32,768exact finite arithmetic cases pass in four host rounding modes; seven compiled
+> controls reject/exit1. Native2,048joined game-time reads/repeat/15controls and independent
+> 64,000observations pass. Resume by reviewing its qualification receipts, preparing the
+> three-file platform/CMake promotion against baseline96, then deriving/running matrix97.
+> Work: `work/modern_owned_game_time_20261022`, native: `work/modern_game_time_20261022`.
+> No commit/staging/cleanup deletion; all failed attempts and qualified evidence preserved.
+>
+> October22: SystemTimeClock and Win32 source PROMOTED after native3,072operations/repeat/
+> 12controls/64,000audited observations; strict x86/x64/GCC four-mode owner replay,
+> deterministic backend policy and real-source smoke pass. Seven compiled controls reject/exit1.
+> Two native source-switch diagnostics motivate epoch-unit rejection; GetTickCount64 extends fallback.
+> Matrix96 COMPLETE/PASSED4,161inputs, all96checks/build:
+> `work/modern_owned_system_time_state_20261022/validation_matrix`.
+> Matrix95 final3 COMPLETE129/129/129/112/109CTest,all95checks/build,
+> 4,108inputs/external headers unchanged. See [system time clock](SYSTEM_TIME_CLOCK.md).
+> Next staged game-time packet joins13-byte component caller with actual system-time functions:
+> native2,048reads/repeat/15controls and independent64,000observations/47subtraction halfways pass.
+> GameTimeOffset strict x86/x64/GCC joined and32,768finite arithmetic cases pass in four modes;
+> seven compiled controls reject; promotion/matrix97 pending. See [game time offset](GAME_TIME_OFFSET.md).
+>
+> October22: SystemTimeScale PROMOTED after mixed-bit4,096native timestamps/repeat/14controls,
+> independent34,864observations and strict x86/x64/GCC four-mode/public-header/epoch replay.
+> Seven compiled conversion/width/rounding/carry/extension controls reject/exit1.
+> Initial95preflight rigid step87 CMake hash failure held; final2 uses exact promotion ledger.
+> Final2 preflight PASSED4,105inputs; matrix95 FAILED during GCC CMake snapshot preparation:
+> `work/modern_owned_system_time_20261022/validation_matrix_final2`.
+> Snapshot detected changing inputs; GCC never compiled. Other builds passed129/129/129/109CTest;
+> matrix inputs/external headers unchanged. Final3 rerun subsequently PASSED all95checks/build;
+> 129/129/129/112/109CTest,4,108inputs unchanged. See [system time scale](SYSTEM_TIME_SCALE.md).
+> Lazy initialization/epoch/Win32 source subsequently qualified and promoted at step96 above.
+>
+> October22: joined clock construction/startup-to-frame regression PROMOTED.
+> Native6,144frames/repeat/110controls pass; independent clock326,722/scan373,785/
+> observer374,156observations;625movies, three per-clock frequencies, two startup samples.
+> Strict x86/x64/GCC pass four host modes; three compiled owner controls reject/exit1.
+> Matrix94 COMPLETE/PASSED128/128/128/111/108CTest; all94checks/build,
+> 4,064inputs/external headers unchanged:
+> `work/modern_owned_frontend_initialized_frame_20261022/validation_matrix`.
+> Baseline93 COMPLETE127/127/127/110/107CTest/4,000inputs. See [joined startup/frame](FRONTEND_INITIALIZED_FRAME.md).
+> Full constructor/Run/backend/live FP inheritance remain outside scope; caller stack is prepared per frame.
+>
+> October22: integration-owned FrontEndClocks PROMOTED after native512cases/repeat/10controls,
+> independent19,968observations (1,536frequency/1,024counter queries), strict x86/x64/GCC
+> four-mode replay/public-header/typed errors and five compiled controls rejected/exit1.
+> Native construction/startup scope only; raw partial-construction callbacks excluded from C++.
+> Existing platform dependency made PUBLIC for the integration header; architecture policy unchanged.
+> Matrix93 COMPLETE/PASSED127/127/127/110/107CTest; all93checks/build,
+> 4,000inputs/external headers unchanged:
+> `work/modern_owned_frontend_clocks_20261022/validation_matrix`.
+> Next joined constructor/startup-to-frame packet is staged in
+> `work/modern_frontend_initialized_frame_20261022` (not executed; runtime lease present).
+> Owned replay staged in `work/modern_owned_frontend_initialized_frame_20261022`.
+> See [owned clocks](FRONTEND_CLOCKS.md).
+>
+> October 22: full clocked prepared-frame92 COMPLETE/PASSED126/126/126/109/106 CTest;
+> all92checks/build,3,968frozen inputs/external headers unchanged.
+> Native 6,144 frames/repeat/100 controls pass. Clock audit340,995; scan398,957;
+> observer468,101 observations pass. 331 movies/11,729 QPC/2,342 failures/169 expiries.
+> Strict x86/x64/GCC pass four host modes; five compiled bypasses reject/exit1.
+> Empty scans preserve raw entry index; semantic undefined index omitted (nine stack-reuse cases).
+> Matrix92 preflight PASSED with3,968 inputs; no build/runtime launch.
+> Matrix92 is COMPLETE at `work/modern_owned_frontend_clocked_frame_20261022/validation_matrix`.
+> Static next packet: `work/modern_frontend_timer_lifetime_20261022/README.md`;
+> three frequency queries and attract StartZero then Reset. Prepared, NOT executed.
+> Active driver is `capture_final3.py`; an uncompiled integration/frontend owner is staged
+> in `work/modern_owned_frontend_clocks_20261022` (platform link must become PUBLIC).
+> See [clocked prepared frame](FRONTEND_CLOCKED_FRAME.md). No full Run/backend/live-game claim.
+>
+> October 22: full clocked Input91 COMPLETE/PASSED125/125/125/108/105 CTest;
+> all91checks/build,3,897 frozen inputs/external headers unchanged.
+> Native full Input + scans/observers + actual timers passes 6,144 calls/repeat/53 controls.
+> Independent audits: 309,866 Input + 278,988 scan + 466,554 observer observations;
+> 7,224 QPC callbacks/1,434 failures/10 stored-float decision differences.
+> Strict x86/x64/GCC replay passes four host modes; two compiled precision bypasses reject.
+> Stick decoding retains nearest calibration profile; upstream delay flag remains prepared.
+> Matrix also freezes the 1,036-observation bounded FP context packet.
+> Next: actual timers through the complete prepared frame. See [full clocked Input](FRONTEND_CLOCKED_INPUT.md).
+>
+> October 22 latest: precise attract90 COMPLETE/PASSED124/124/124/107/104
+> CTest/all90checks/build,3,828 frozen inputs/external headers unchanged.
+> FPcontext final3 anchors PASS1,036obs/repeat/7controls +independentaudit:
+> PEentry directprecisioncall, bothdeviceflag pathsFPU_PRESERVE, Draw clearsRC
+> only/preservesPC across768CWs. Firstabsolute-pointeraudit assumption andrecipe
+> failure held. NotliveFPCW/fullstartup/GPUproof. Nextactualtimers throughfullInput,
+> thencompletepreparedframe at explicitPC53nearest. See [FP anchors](FRONTEND_FP_CONTEXT.md).
+>
+> October 22 latest: precise delay89 COMPLETE/PASSED123/123/123/106/103
+> CTest/all89checks/build,3,729 frozen inputs/external headers unchanged.
+> Precise attract gate/coreboolentry PROMOTED after x86/x64/GCC4hostmode replay:
+> 4,096coretails +2,056each Frame/Session compatibilitysubset. Nativeactualtimers
+> 4,096calls/repeat/29controls;111,497independentobs/723movies/3,313QPC/32eq/
+> 22storedfloatdifferences pass. Sixmutantsreject/exit1. Exportboolean draft
+> held; final2 integers qualified.90matrix PASSED under
+> `work/modern_owned_frontend_clocked_attract_20261022/validation_matrix`.
+> Next inheritedfrontend FP context, actualtimers throughfullInput/fullframe.
+> Scope excludesearliernativephases/fullRun/game. See [attract clock](FRONTEND_CLOCKED_ATTRACT.md).
+>
+> October 22 latest: precise repeat88 COMPLETE/PASSED122/122/122/105/102
+> CTest/all88checks/build,3,633 frozen inputs/external headers unchanged.
+> Actual input-delay prefix final3 passes6,144calls/repeat/19controls; independent
+> 104,192obs/2,945queries/32equalities/96storedfloat differences. Initial weak
+> arithmetic observation held; final2 tick-word capture/final3 equality qualify.
+> Precise input_delay_elapsed_at_least host/service/session forwarding PROMOTED
+> afterx86/x64/GCC directframe+Session replay4hostmodes. Fourcompiled capability/
+> forwarding/default-equality mutants reject/exit1.89matrix PASSED in
+> `work/modern_owned_frontend_clocked_delay_20261022/validation_matrix`.
+> Owned fixture stops atInputentry; fullInput/laterphases/attract remain excluded.
+> Next actualtimer post-draw attract branch and precise idle eligibility.
+> See [input-delay gate](FRONTEND_CLOCKED_DELAY.md).
+>
+> October 22 latest: clocked stopwatch87 COMPLETE/PASSED121/121/121/104/101
+> CTest/all87checks/build,3,551 frozen inputs/external headers unchanged.
+> Precise frontend repeat PROMOTED after initial/final2 x86/x64/GCC replay of
+> 32,768native dispatches/48,822clock callbacks in4hostmodes. Nativeactualtimers
+> repeat/33controls plus870,087independentauditobs pass;21storedfloat decisions
+> differ. Legacyhelperdefault/Deliveryforwarding/exception/reentry tested;3mutants
+> reject/exit1.88matrix final2 PASSED under
+> `work/modern_owned_frontend_clocked_repeat_20261022/validation_matrix_final2`.
+> Initialpreflight failure held; resolver now validates contiguous promotion
+> history and exact known hashes with normalized paths. Next original input-delay
+> prefix withactualstopwatch, then precisegate capability; attract/fullframe
+> actualtimer integration still open. See [precise repeat](FRONTEND_CLOCKED_REPEAT.md).
+>
+> October 22 latest: Win32 provider86 COMPLETE/PASSED119/119/119/102/99
+> CTest/all86checks/build,3,515 frozen inputs/external headers unchanged.
+> ClockedStopwatch PROMOTED after final2 x86/x64/GCC native callback-state/
+> query-gating/reentry replay in4host modes plus actualWin32wrapper checks.
+> Six compiled missing-publication/guard/gating/fallback/precision mutants all
+> reject cleanly/exit1.87matrix PASSED in
+> `work/modern_clocked_stopwatch_20261022/validation_matrix`.
+> Next frontend repeat-clock comparison capability: existing float-return host
+> collapses native extended comparison. Qualify original Input tail with actual
+> timers before integrating precise owned timer. See [clocked timer](CLOCKED_STOPWATCH.md).
+>
+> October 22 latest: owned stopwatch86 COMPLETE/PASSED117/117/117/100/97
+> CTest/all86checks/build,3,478 frozen inputs/external headers unchanged.
+> Win32 PerformanceCounter provider PROMOTED after final2 x86/x64/GCC actual
+> OS sampling, deterministic failure/64bit/stopwatch checks and header compile.
+> First stub link collision held; final2 private fake-import names avoid CRT.
+> Six files promoted; initial provider matrix architecture failures held. One-file
+> CMake fix uses defaultkernel32 and declares policy-test backend header owner;
+> architecture rules/source/tests unchanged.86-step provider matrix final2 PASSED
+> in `work/modern_performance_counter_20261022/validation_matrix_final2`.
+> Next portable clocked stopwatch owns source sampling/gating and matches the
+> qualified callback-state snapshots. Fullfrontendtimer integration remains open.
+> See [counter provider](PERFORMANCE_COUNTER_WIN32.md).
+>
+> October 22 latest: direct comparison85 COMPLETE/PASSED116/116/116/99/96
+> CTest/all85checks/build,3,442 frozen inputs/external headers unchanged.
+> Owned Stopwatch PROMOTED after strict x86/x64/GCC composed replay in4host
+> rounding modes. Native1,024sequences/26,624primaryops plusstored/direct query
+> aftereach=79,872preparedcalls/repeat/24controls,585,728independentobs pass.
+> Initial recipe/EXIT-sentinel failures held; final2 uses distinct caller slot.
+> 86matrix PASSED in `work/modern_stopwatch_value_20261022/validation_matrix`.
+> Samples remain app-owned; no OS or fullfrontendtimer integration. Next narrow
+> Win32 performance-counter provider can supply actual samples without engine
+> dependencies. See [owned stopwatch](STOPWATCH.md).
+>
+> October 22 latest: stored seconds84 COMPLETE/PASSED115/115/115/98/95 CTest,
+> all84checks/build,3,415 frozen inputs/external headers unchanged.
+> Direct compare_seconds PROMOTED after strict x86/x64/GCC six-step replay of
+> both65,536comparisons and16,384stored results in4host rounding modes. Native
+> actualelapsed+17BInputcomparison/branch/repeat/15controls passes; independent
+> 589,824obs finds7,600stored-float suppression differences. Full Input/frame
+> with actual timers remains excluded.85matrix PASSED under
+> `work/modern_stopwatch_comparison_20261022/validation_matrix`.
+> Next own tick+scale composition with explicit samples/gating; no OS/game launch.
+> See [direct comparison](STOPWATCH_COMPARISON.md).
+>
+> October 22 latest: stopwatch tick83 COMPLETE/PASSED114/114/114/97/94 CTest,
+> all83checks/build,3,380 frozen inputs/external headers unchanged.
+> StopwatchTimeScale PROMOTED after strict x86/x64/GCC replay in4host rounding
+> modes. Native4,096cases/16,384calls/repeat/12controls; independent114,688obs
+> includes16double-rounding and16premature-cast witnesses. First weak PC24
+> corpus failure held; final3 qualifies both distinctions. Binary32 caller-store
+> result only; unrounded native comparisons/OS/frontend timer integration open.
+> 84matrix PASSED in `work/modern_stopwatch_seconds_20261022/validation_matrix`.
+> See [stored seconds](STOPWATCH_TIME_SCALE.md).
+>
+> October 22 latest: session82 COMPLETE/PASSED113/113/113/96/93 CTest,
+> all82checks/build,3,344 frozen inputs/external headers unchanged. Portable
+> StopwatchTicks PROMOTED after strict x86/x64/GCC/native replay. Native1,024
+> sequences/26,624calls/repeat/17controls plus321,536 independent observations
+> pass; signed wrap/restart/failure/reset covered, float-seconds excluded.
+> 83matrix PASSED in `work/modern_stopwatch_ticks_20261022/validation_matrix_final2`.
+> Initial matrix preflight failure held; corrected production CMake hash check
+> requires the exact promotion before/after pair. See [tick state](STOPWATCH_TICKS.md).
+>
+> October 22 latest: complete prepared-frame81 COMPLETE/PASSED112/112/112/95/92
+> CTest/all81checks/build,3,300 frozen inputs/external headers unchanged. Native
+> final2 passes6,144calls/repeat/88controls/six audits,247 movies/4,150 activity-
+> suppressed idle queries/232 movies with retained scans. Owned x86/x64/GCC normal
+> results, full movie exceptions/allocation recovery/lifetimes pass. Contract:
+> [complete prepared frame](FRONTEND_COMPLETE_FRAME.md).
+> New `FrontEndSession` facade PROMOTED in `work/modern_frontend_session_20261022`:
+> retains batch before prefix, owns controllers/UI/results, guards frame/replace
+> reentry. Final2 x86/x64/GCC native/golden/header checks all pass. Final2 adds
+> destructor guards and safe member order to observable/delivery/session; explicit
+> final-release state/reentry/noalloc tests; three missing-guard mutants reject
+> by expected assertion/exit1. Eight files promoted;82matrix PASSED. No
+> renderer/backend/Run-loop/game claim. Next separate staging qualifies original
+> stopwatch integer state, excluding elapsed-seconds/x87 conversion. See
+> [session ownership](FRONTEND_SESSION.md).
+>
+> October 22 latest: Input/Draw80 COMPLETE/PASSED111/111/111/94/91 CTest,
+> all80checks/build,3,240 frozen inputs/external headers unchanged. Receipt:
+> `work/modern_owned_frontend_input_draw_20261022/validation`. No active compiler.
+> Native140B prefix through actual Input/Update/interpolation plus controlled Draw
+> passes6,144calls/repeat/70controls/five audits (442,368 interpolation obs).
+> Owned x86/x64/GCC replay580,716values/128,787callback scan counts passes every
+> combined callback failure/history/UI/scan/reentry/noalloc check. Next: separately
+> stage the remaining original attract/movie branch to finish one prepared frame;
+> propagate Input reset into its idle boundary. Rendering/movie/device backends,
+> actual full Run/loop/game remain excluded. Contract:
+> [Input-to-Draw](FRONTEND_INPUT_DRAW_COMPOSITION.md).
+>
+> October 22 latest: owned Input/Update strict x86/x64/GCC passes6,144calls/
+> 359,532values/116,499callback scan counts and combined no-error/show/clear
+> exceptions/reentry/guard recovery. Two test/CMake files promoted after3,136
+> predecessor input/external hashes.79matrix ACTIVE after lease-free launch,
+> below-normal parent/two workers/j2; collected inputs frozen. Root:
+> `work/modern_owned_frontend_input_update_20261022/validation`.
+> Next separately stage original interpolation/history/Draw-call extension;
+> rendering remains a capability. No full-frame/Run/game claim.
+>
+> October 22 Input/Update native proof COMPLETE:6,144calls/repeat/58controls,
+> four independent audits pass288,627input/284,871scan/524,787observer/
+> 114,697prefix/150,070Update observations. Native preserves shared key/mouse,
+> error transitions and completion stamp after frontend Update. Separate frontend
+> manager, clocks/device/UI services bounded; interpolation/Draw/attract excluded.
+> Owned actual frame/input/Update regression STAGED in
+> `work/modern_owned_frontend_input_update_20261022`, projected6,144calls/
+> 359,532values/116,499callback scan counts. No-error/show/clear exception matrix
+> prepared; compile awaits runtime-lease release. No new production promotion.
+> See [Input-to-Update](FRONTEND_INPUT_UPDATE_COMPOSITION.md).
+>
+> October 22 latest: owned frame/input78 COMPLETE/PASSED109/109/109/92/89
+> CTest/all78checks/build,3,136 frozen inputs/external headers unchanged. Receipt:
+> `work/modern_owned_frontend_frame_input_20261022/validation`. No active compiler.
+> Next native Input-to-Update proof ACTIVE below normal under
+> `work/modern_frontend_input_update_20261022/validation`: genuine Run prologue,
+> 110B force/delay/Input/Update prefix, full Input/scans/remap/observable/filter,
+> original Update/disconnect with genuine selected-device getters. Corrected
+> 8case/24call trial repeats; first missing-clamp-page trial and initial recipe
+> held. Four independent audits prepared: input/observer/prefix/update. Update
+> preserves one shared NUI singleton's key/mouse/error fields; frontend manager
+> remains distinct. Interpolation/Draw/attract/full Run/game excluded.
+>
+> October 22 latest: native prefix final2 passes6,144calls/repeat/47controls;
+> independent input288,627/scan284,871/observer524,787/prefix114,697 observations
+> pass.207 delay stops before Input/69 exact-threshold stops/69 NaN preservations,
+> 3,070 consumed force requests/87 empty routes/39,406 balanced temporary pairs.
+> Actual owned frame->delivery regression passes strict final2 x86/x64/GCC:
+> 6,144native projections/264,546values/78,222callback scan counts, every combined
+> callback throw/reentry/force/UI/scan/noalloc recovery. Two test/CMake files are
+> promoted after3,083 predecessor hashes;78-step matrix ACTIVE below normal,
+> two workers/j2, inputs frozen after lease-free launch. Root:
+> `work/modern_owned_frontend_frame_input_20261022/validation`.
+> It stops before Update; no full Run/frame/game claim. See
+> [prefix integration](FRONTEND_FRAME_INPUT_COMPOSITION.md).
+>
+> October 22 native prefix update: both limited8case/24call trials repeat
+> identically with genuine nested stack. Full original and separate final2
+> proofs ACTIVE below normal after lease-free launches, in
+> `work/modern_frontend_frame_input_20261022/validation` and `validation_final2`.
+> Final2 exports caller/delay/scan/force-consumption state for independent audit.
+> Three audits prepared (`qualify_input.py`, `qualify_observers.py`,
+> `qualify_prefix.py`); all must pass before portable frame promotion.
+> Contract: [native prefix](FRONTEND_FRAME_INPUT_COMPOSITION.md).
+>
+> October 22 latest: owned input delivery77 COMPLETE/PASSED108/108/108/91/88
+> CTest,77checks/build,3,083 frozen inputs/external headers unchanged. Receipt:
+> `work/modern_owned_frontend_input_delivery_20261022/validation`. No active
+> matrix/compiler. Next native prefix probe is staged in
+> `work/modern_frontend_frame_input_20261022/prefix_probe.py`: genuine Run
+> prologue +103-byte force/delay/Input prefix, actual full Input/scans/remap/
+> observable/filter. Separate effective-delay model propagates original stop
+> before Input and checks nested temporaries. No execution yet; awaiting runtime
+> lease release for limited trial. Full Run/Update/Draw/attract excluded.
+> Final2 survey keeps NUI CManager singleton distinct from CFrontEndManager.
+>
+> October 22 latest: observed-input76 COMPLETE/PASSED107/107/107/90/87 CTest,
+> all76checks/build,3,031 frozen inputs/external headers unchanged. Receipt:
+> `work/modern_owned_frontend_observed_input_20261022/validation_final2`.
+> Owned `FrontEndInputDelivery` four files promoted after strict final4
+> x86/x64/GCC6,144native calls/228,204projections/60,118external callback scan
+> counts, every callback exception/rawUI/ownership/reentry/finalrelease/header
+> checks. Its77-step matrix is prepared, awaiting a lease-free launch.
+> See [owned delivery](FRONTEND_INPUT_DELIVERY.md). Next read-only combined
+> frame/input survey pins33original spans with no code-range overlap, replacing
+> three old frame capabilities. Shared delay flag/attract timer and nested Input
+> stack must be coherent; fixture auxiliary objects need rebasing. No combined
+> frame/input execution yet. Survey: `work/modern_frontend_frame_input_20261022`.
+>
+> October 22 continuation: native observed-input final2 and both independent
+> audits pass, including empty delivery routes. Two test/CMake files promoted
+> after 2,968 predecessor inputs and external headers verified unchanged and
+> strict x86/x64/GCC replay of 6,144 calls, 247,762 projected values and 69,897
+> callback scan counts. Combined callback exceptions/reentry/scan cleanup and
+> no-allocation recovery pass. The successor 76-step five-build matrix is active
+> under `work/modern_owned_frontend_observed_input_20261022/validation`; all
+> collected inputs stay frozen. Next owned input-delivery adapter may be staged
+> separately. See [observed input](FRONTEND_OBSERVED_INPUT.md).
+>
+> Active continuation, 2026-10-19: modernization remains authorized until asked
+> to stop. The October 18 pause below is historical.
+>
+> Latest completed matrix: guarded registration, 106/106/106/89/86 tests,
+> all 75 steps/build, all 2,968 frozen source inputs and external headers unchanged.
+> Receipt: `work/modern_owned_frontend_observer_registry_20261019/validation/summary.json`.
+> Immutable copied values, distinct null markers, retained move-only cursors and
+> noalloc scan operations are promoted after strict final2 x86/x64/GCC47,062
+> native scan projections/376,496 observations, lifetime/move/alloc-failure/
+> unwind checks. See [input batches](FRONTEND_INPUT_BATCH.md).
+> Batch consumption is promoted after strict x86/x64/GCC3-step6,144call/177,396
+> observation/34,714 callback-count replay and separate2-step original span
+> regressions in all3 architectures. The70-step five-build matrix passes; no
+> matrix/compiler active. Next observer dispatch proof qualifies10,240 calls/
+> 16controls,501,760 root and291,826 capability observations/75,649 live images.
+> Prepared unique/non-null registrations; malloc/free and receiver callbacks
+> controlled, no callback registry mutation or exceptions in native domain.
+> Immutable retained observer set/dispatcher4 files are promoted after strict
+> final2 x86/x64/GCC10,240 route/query projections/563,940 observations, factory
+> alloc-failure/lifetime/reentry/throw/release-order/noalloc/semantic-map/header
+> checks. Initial GCC fixture indentation warning retained/fixed. The71-step
+> matrix passes. Event membership now has45,056 native calls/13controls and an
+> independent270,336-observation audit. Owned immutable membership4 files are
+> promoted after strict x86/x64/GCC45,056 projections and allocation/lifetime/
+> observable-composition/header checks. The72-step matrix passes. Coherent
+> native dispatch plus genuine membership now qualifies10,240 calls/29controls,
+> 501,760 root +257,170 boundary observations. Test-only composition2files are
+> promoted after strict x86/x64/GCC529,284 projections/16,609callback records.
+> The73-step matrix passes. Full native receiver lifecycle qualifies77,759
+> transitions/repeat10controls, independent2,448,037membership observations,
+> 39,503matched alloc/free pairs/1,536initial events (512whileprevented), from
+> a complete empty set prefix (count+8/comparator+c), no constructor. Original
+> mutation-preimage failure preserved/final2 corrects it. Persistent with_event/
+> without_event and owned optional initial_event4files promoted after strict
+> x86/x64/GCC2,468,492projections/1,536initial events, lifetime/noop/alloc-failure/
+> publish-before-delivery/header checks. The74-step matrix passes; no matrix/compiler
+> active. Native registry36,808transitions/repeat12controls now independently
+> qualifies948,873state observations/24,343matched alloc-free pairs, including
+> receiver-clear-before-unlink and unconditional exclusive removal. Protect
+> work/modern_frontend_observer_registry_20261019; failed arity and small-sample
+> mutation-witness trials retained, final2/full pass. Guarded registration4files
+> are promoted after strict final2 x86/x64/GCC1,047,640projections/19,962callbacks,
+> alloc-failure/ownership/noop/allreentry/clearthrow/release/header checks. Initial
+> GCC fixture indentation failures preserved/fixed.75-step matrix passes; no
+> matrix/compiler active. Coherent full Input/scans/calibration plus actual UI
+> dispatch/filter6144calls/repeat41controls and independent input audit pass in
+> work/modern_frontend_observed_input_20261019. Observer audit caught fixture
+> correlation excluding empty routes; first packet/audit failure held. Separate
+> final2 full proof ACTIVE with empty routes; two final2 independent audits ready.
+> No new pipeline production change yet. See [input delivery](FRONTEND_OBSERVED_INPUT.md),
+> [registration](FRONTEND_OBSERVER_REGISTRY.md), [event updates](FRONTEND_OBSERVER_LIFECYCLE.md),
+> [composed dispatch](FRONTEND_FILTERED_DISPATCH.md) and
+> [observed-event membership](FRONTEND_OBSERVER_FILTER.md).
+> Mutable registry/widgets/backend remain open. See
+> [prepared observers](FRONTEND_OBSERVER.md).
+> Protect work/modern_frontend_observer_20261019 and
+> work/modern_owned_frontend_observer_20261019. See
+> [batch consumption](FRONTEND_BATCH_DISPATCH.md). It uses the newly qualified
+> full Input+genuine scans+calibration packet:6,144 calls/32 controls,285,897
+> input observations and273,451 scan/count observations, including70,857 callback
+> counts. Manager construction/device update/clear/console/observer/timers/acos
+> remain capabilities. Protect work/modern_frontend_stored_input_20261019.
+> The bounded 52-byte retail input adapter is promoted after strict x86/x64/GCC
+> 6,144 coherent dispatches / 136,538 observations, error/ownership/noalloc/header
+> checks and 36 architecture tests. It has a separate portable integration root,
+> public presentation and private platform edges; no real device/queue wiring.
+> Its successor68 matrix passes99/99/99/82/79 tests with2,554 inputs unchanged.
+> See [input adapter](FRONTEND_INPUT_BRIDGE.md).
+> Successor: checked frontend stick calibration is promoted after strict
+> x86/x64/GCC replay of 4,096 native cases, exact tiny copies and checked-domain/
+> no-allocation goldens. Original remap/wrapper execute in the bounded probe;
+> double acos is controlled, with no original CRT parity claim. The 66-step
+> matrix passed after a later fresh lease-absent preflight, with two
+> workers/j2 below normal priority and 2,464 inputs frozen. Its initial launch
+> caught a renewed Texture Archive4GB lease and started no build. Preserve all
+> inputs. See [stick calibration](FRONTEND_STICK_CALIBRATION.md).
+> The presentation library retains real FRONT_END asset leases, projects 4,096
+> qualified native attract requests and checks pins/lifetime/reentry/exceptions/
+> allocation recovery. See [attract policy](FRONTEND_ATTRACT.md). No app/frame loop
+> or movie backend is integrated. Adjacent Update/disconnect qualifies 4,096
+> native calls and 54,144 independent observations; the portable float-step/UI
+> boundary is promoted and validated, with clock subtraction kept in the app.
+> See [update policy](FRONTEND_UPDATE.md). Interpolation constructor/history
+> qualifies 8,192 calls and 260,096 observations; owned float-weight/history/frame
+> values are promoted and the 62-step matrix passes. See
+> [interpolation values](FRONTEND_INTERPOLATION.md). Coherent one-frame caller
+> composition qualifies 4,096 frames, 26 controls and 266,788 independent
+> observations with actual Update/disconnect/constructor/interpolation/attract
+> instructions; Input/Draw/backend services remain controlled. Portable frame
+> coordinator is promoted after strict x86/x64/GCC 4,096-frame/588-movie replay,
+> real definition leases/pins/lifetime, owned results, every callback-position
+> exception in show/clear modes, reentry and allocation recovery. The 63-step
+> matrix passes; see [prepared frames](FRONTEND_FRAME.md). Full Run, app loop,
+> event/device input, rendering and media backends remain open. Native Input's
+> 373-byte repeat/action tail is pinned with explicit mask/held live-ins and
+> original saves/empty destructor qualifies 8,192 cases/32,768 calls, CPU-observed
+> masks/suppression, 24 controls and 460,513 independent observations. The owned
+> repeat/action controller is promoted after strict x86/x64/GCC 399,448-observation
+> replay and noalloc/IEEE/ownership/callback/reentry/partial-timer recovery checks;
+> 64-step matrix passes. See [input actions](FRONTEND_INPUT_ACTIONS.md).
+> Event scanning/conversion/full Input excluded. Read-only full Input/helper
+> survey found a 382-byte nested joystick trigonometric remap with three returns;
+> first-ret/256-byte surveys were incomplete and preserved. Next event-policy
+> proof must keep calibration explicit instead of treating the getter as raw XY.
+> Full Input body/scalar helper composition qualifies 2,048 cases/6,144 calls,
+> 24 controls and 273,543 independent observations. Decoded event processing is
+> promoted after strict x86/x64/GCC 6,144 semantic projections, noalloc/lifetime/
+> ownership/device/UTF16/reentry/all-callback recovery checks; 65-step matrix passes.
+> See [decoded events](FRONTEND_INPUT_EVENTS.md). Queue/console/observers/timers
+> and calibrated position return remain capabilities. Next read-only calibration
+> survey pins remap382/wrapper35 and MSVCR71 `_CIacos` import; any execution must
+> make that math boundary explicit. Constants are inverse-tau float, float-rounded
+> tau stored as double, offset0.5, epsilon0.0001f and sqrt2 scale. The checked
+> calibration value transform is now promoted; its 66-step matrix passes.
+> Coherent Input+wrapper+remap qualifies 6,144 calls/28 controls/273,911
+> observations, with 467 actual getters and 462 controlled acos calls. A combined
+> portable replay passes strict final2 x86/x64/GCC; its two test/CMake additions
+> are promoted after 2,464 predecessor hashes. The successor67 matrix passes
+> 98/98/98/81/78 tests with 2,510 inputs unchanged. See
+> [calibrated input](FRONTEND_CALIBRATED_INPUT.md). Separately, stored scan
+> cursors qualify 47,062 calls/489,499 field observations, with no capability
+> stubs; no owned mutable queue is promoted. See
+> [scan evidence](INPUT_EVENT_SCAN_CURSOR.md). Real device integration stays open.
+> Four owned definition-catalog files are promoted after strict final3
+> x86/x64/GCC replay of 2,452 coherent native descriptors/records and lifetime,
+> identity, coverage, lazy-failure and allocation goldens. The successor 55-step
+> five-build matrix passed at
+> `work/modern_owned_definition_catalog_20261019/validation`.
+> See [the catalog contract](DEFINITION_CATALOG.md). Class registration and
+> Transfer remain open; the native composition uses unregistered classes.
+> Prepared-class routing now qualifies 2,048 cases / 20 controls and an independent
+> 34,401-observation audit. Four owned routing files are promoted after strict
+> x86/x64/GCC checks, all native lists/name groups and previous catalog replay.
+> Duplicate instance CRCs return ambiguity; no class allocator is registered.
+> The 56-step matrix passed at
+> `work/modern_owned_definition_class_routing_20261019/validation_final2`.
+> See [class routing](DEFINITION_CLASS_ROUTING.md).
+> Base/parent prefix readers qualify 2,048 native cases / 4,096 calls / 13 controls
+> and an independent byte/low-bit/order audit. Four portable codec files are
+> promoted after strict x86/x64/GCC roundtrip, extent, ownership and allocation
+> checks. The 57-step matrix passed at
+> `work/modern_owned_definition_record_prefix_20261019/validation_final2`.
+> See [record prefixes](DEFINITION_RECORD_PREFIX.md); class Transfer remains open.
+> FRONT_END binary Transfer qualifies 2,048 cases / 4,096 calls / 14 controls and
+> 47,356 independent observations. Four owned wire-codec files are promoted after
+> strict x86/x64/GCC checks of 13,438 movie strings, raw tags/i32 fields, exact
+> round trips, failure recovery and the full catalog/prefix pipeline. The 58-step
+> matrix passed at `work/modern_owned_frontend_definition_transfer_20261019/validation`.
+> See [FRONT_END Transfer](FRONTEND_DEFINITION_TRANSFER.md); generic runtime class
+> allocation/attachment and other schemas remain open.
+> Coherent native cold/warm loading qualifies 2,048 cases / 6,144 calls / 54
+> controls and 70,392 independent observations. Four owned FRONT_END cache files
+> are promoted after strict x86/x64/GCC: 582 budget-fitting native projections,
+> 391 deliberate over-budget rejections and real ownership/pinning/eviction/
+> rollback/allocation goldens. The 59-step matrix passed at
+> `work/modern_frontend_definition_asset_cache_20261019/validation`.
+> See [owned definitions](FRONTEND_DEFINITION_CACHE.md); generic registration,
+> other classes and app/session integration remain open.
+> The caller computes criteria from owned name/map snapshots; see
+> [the criteria contract](PARTICLE_CRITERIA_ATTACHMENT.md).
+>
+> Genuine sound-definition accessor composition also qualifies: 8,192 cases /
+> 16,384 calls / 567,210 observations, identical repeat and 51 controls, with an
+> independent accessor/criteria/policy/final-state audit. All five unchanged
+> binaries pass its 293,208-observation replay. See
+> [the accessor contract](PARTICLE_SOUND_DEFINITION_ACCESS.md).
+>
+> Five index files are promoted after final x64 /WX validation of
+> 3,210 native values/CRCs and ownership/replacement goldens. Native repeat,
+> seven controls and independent zlib/bisect audit pass. See
+> [the sub-definition index contract](SUB_DEFINITION_INDEX.md).
+> Genuine sub-definition caller composition qualifies 8,192 cases / 16,384 calls /
+> 591,786 observations, repeat and 58 controls, plus independent map/CRC/order audit.
+> Owned replay matches 317,784 observations. Corrected exporter and final2 receipt
+> preserve the failed first export. See [the integration contract](PARTICLE_SUBDEFINITION_ATTACHMENT.md).
+>
+> Seven files promote the portable assets recency library and
+> explicit architecture policy/test. Final3 x64 /WX, native 4,932 cases / 14,796
+> calls, rank/frame audit and architecture checks pass. See
+> [the resource recency contract](RESOURCE_RECENCY.md). The full matrix passes.
+> Genuine cached-definition caller composition now qualifies 8,192 cases /
+> 16,384 calls / 591,786 observations, repeat and 64 controls. Its independent
+> audit checks cache state at every boundary and 4,096 interleaved accesses.
+> Owned x64 /WX matches 317,784 observations. Three files are promoted; matrix
+> passes under `work/modern_owned_cached_definition_attachment_20261019/validation`
+> (41 steps/build). See [the cached caller contract](PARTICLE_CACHED_DEFINITION_ATTACHMENT.md).
+> Read-only resource-age proof also qualifies 8,290 values, repeat and five
+> controls plus independent modular audit. Three verified owned API files are
+> promoted after x64 /WX and the caller matrix. Completed matrix:
+> `work/modern_owned_resource_age_20261019/validation` (42 steps/build).
+> See [resource age](RESOURCE_UNUSED_FRAMES.md). Cold loading and decoded-resource
+> ownership stay separate.
+> Resource-size accounting native proof and independent audit now pass 4,096
+> cases / 12,288 calls, repeat and seven controls. Four owned files are promoted
+> after x64 /WX replay and wide/overflow goldens. The 43-step matrix passed at
+> `work/modern_owned_resource_memory_20261019/validation`; see
+> [64-bit accounting](RESOURCE_MEMORY_ACCOUNTING.md). Mathematical totals above
+> 4 GiB are retained deliberately rather than wrapped like the native counter.
+> Explicit recency controls qualify 4,096 native cases / 24,576 calls, repeat,
+> ten controls and independent rank/modular audit. Four files are promoted after
+> x64 /WX and previous-corpus replays. The 44-step matrix passed at
+> `work/modern_owned_resource_controls_20261019/validation`; see
+> [recency controls](RESOURCE_RECENCY_CONTROLS.md).
+> Prepared membership transitions qualify 4,096 cases / 36,864 calls, repeat,
+> ten controls and independent membership/rank/sum audit. Six selected files
+> promote separate recency/accounting controls after x64 /WX and GCC /Werror
+> checks, including allocation failure and overflow. The 45-step matrix passed
+> at `work/modern_owned_resource_membership_20261019/validation`; see
+> [membership](RESOURCE_MEMBERSHIP.md). Joint lifetime coordination remains open.
+> Unload selection now qualifies 8,192 native cases / 32,768 calls, repeat,
+> thirteen controls and independent gate/reference/callback/progress audit under
+> `work/modern_resource_unload_selection_20261019`. Unload/delete callbacks are
+> controlled fixtures; no owned selector or real backend is promoted yet.
+> Joint metadata now passes staged x64 /WX eleven steps and GCC -Werror two
+> steps, including rollback after node allocation failure and every allocation
+> point in replacement. Six files are promoted; the 46-step matrix passed at
+> `work/modern_owned_resource_cache_metadata_20261019/validation`. Corrected x64
+> receipt is final2; failed driver setup is preserved. See
+> [joint metadata](RESOURCE_CACHE_METADATA.md).
+> Retained callback lease/scoped selector passes x64 /WX thirteen steps and
+> GCC -Werror two steps: 8,192 cases / 32,768 calls / 39,642 observations plus
+> guard, failure, wide-value and lifetime goldens. Eight files are promoted;
+> 47-step matrix passed under `work/modern_owned_resource_unload_controller_20261019`.
+> See [unload evidence](RESOURCE_UNLOAD_SELECTION.md) and
+> [controller contract](RESOURCE_UNLOAD_CONTROLLER.md). Real backend ownership
+> and shrink/free-space budget composition remain open.
+> Genuine budget composition now qualifies 8,192 cases / 32,768 roots / 14,411
+> nested attempts, repeat and eleven controls plus independent dynamic-bound,
+> reference/callback and arithmetic audit. Direct replay subset: 5,551 cases;
+> 2,641 legacy addition-wrap cases remain evidence and are excluded from direct
+> uint64 parity. See `work/modern_resource_budget_20261019/qualification`.
+> Checked budget extension matches 5,551 cases / 22,204 roots / 28,460 observations,
+> plus wide/overflow/dynamic-bound/failure goldens under x64 /WX and GCC -Werror.
+> Four files are promoted; 48-step matrix passed at
+> `work/modern_owned_resource_budget_20261019/validation`. See
+> [checked budgets](RESOURCE_BUDGET.md).
+> Four texture width-guard files are promoted after final2 x86/x64 /WX and GCC
+> -Werror checks, including a safe original-body counterexample. The 49-step
+> matrix passed at `work/modern_texture_width_guards_20261019/validation`.
+> See [texture bounds](TEXTURE_WIDTH_GUARDS.md).
+> Six CPU texture-cache files are promoted after final3 strict x86/x64/GCC
+> tests for owned decode, pinned eviction, allocation rollback and surviving
+> leases. Uses synthetic banks only. The 50-step matrix passed at
+> `work/modern_texture_asset_cache_20261019/validation`.
+> See [CPU texture ownership](TEXTURE_ASSET_CACHE.md).
+> Native loading queue qualifies 4,096 cases / 16,384 calls, repeat, twelve
+> controls and independent deadline/abort/detach/restart audit. Eight queue files
+> are promoted after final2 strict x86/x64/GCC replay of all 40,068 observations
+> and lifetime/failure/wide-accounting goldens. The 51-step matrix passed at
+> `work/modern_owned_resource_loading_queue_20261019/validation`.
+> See [loading queue](RESOURCE_LOADING_QUEUE.md).
+> Definition block-cache evidence qualifies 2,048 cases / 18,432 calls, repeat,
+> twelve controls and independent shared-buffer/record audit. Ten files now
+> provide bounded real zlib decoding and retained immutable definition-data
+> leases after final2 strict x86/x64/GCC checks. The 52-step matrix passed at
+> `work/modern_owned_definition_block_cache_20261019/validation`.
+> See [definition data](DEFINITION_BLOCK_CACHE.md).
+> Binary definition-file envelope evidence qualifies 2,048 calls, repeat,
+> twelve controls and independent wire/identity/consumption audit. Four codec
+> files are promoted after strict x86/x64/GCC replay and roundtrip/extent/failure
+> goldens, including real-zlib cache integration. The 53-step matrix passed
+> at `work/modern_owned_binary_definition_file_20261019/validation`.
+> See [definition files](BINARY_DEFINITION_FILE.md).
+> Name-table evidence qualifies 2,048 cases / 40,894 calls, repeat, twelve controls
+> and independent wire/writer/reference audit. Four owned file/validated-lookup
+> files are promoted after strict x86/x64/GCC replay of 16,351 references and
+> lifetime/failure/identity integration goldens. The 54-step matrix passed at
+> `work/modern_owned_definition_name_table_20261019/validation`.
+> See [definition names](DEFINITION_NAME_TABLE.md).
+> Sub-definition decoding/loading, host integration and real backends remain open.
+>
+> Current x64 build: `work/modern_owned_particle_clear_20261019/build_x64`,
+> Ninja/MSVC19.38/local zlib. Other roots: `work/modern_build_x86`,
+> `work/modern_build_clang`, `work/modern_build_gcc`, and
+> `work/modern_architecture_gates_20261018/headless_build`. Preserve the old x64 cache.
+> Shared branch: `feat/novi-script-recovery`, HEAD observed
+> `366c08e64a4323a6147fe4d5caa675e31799d51e`. All work/build/evidence artifacts and
+> uncommitted changes stay protected; cleanup coordination response is in
+> `D:/Documents/FableTLC-maintenance/coordination/modernization-64bit.txt`.
+> No artifact releases. Do not reset/stage other lanes' changes or bypass public
+> recursion rejection. No game launch, installed-game write, Lua edit/regeneration,
+> canonical promotion, commit or push. No complete gameplay/headless-session claim.
+> Detailed chronology: [current status](CURRENT_MODERNIZATION_STATUS.md).
+
+# Modernization handoff â€” 2026-10-18 evening
+
+**Paused at the user's bedtime request. Resume only when requested.**
+The long-running objective remains 64-bit modernization, not merely these bounded
+particle changes. There is no complete modern game or representative full headless
+gameplay session yet.
+
+## Current checkpoint
+
+The shared checkout is `D:/Documents/FableTLC`, branch
+`feat/novi-script-recovery`, observed HEAD
+`366c08e64a4323a6147fe4d5caa675e31799d51e`. Work is dirty/uncommitted and shared
+with other lanes. Do not reset, stage unrelated files, or assume every change is
+ours. No commit, push, game launch, installed-game write, Lua regeneration or
+canonical promotion was performed in this lane.
+
+The latest full matrix completed successfully:
+
+| Configuration | Tests |
+|---|---:|
+| MSVC x86 | 61 |
+| MSVC x64 | 61 |
+| clang-cl | 61 |
+| GCC | 44 |
+| Headless | 41 |
+
+Every configuration also passed all native replay checks: 26 commands per build.
+The latest receipt and frozen sources are under
+`work/modern_component_relations_20261018/validation/`.
+Its parent `summary.json` records the sole post-freeze simulation-tree change:
+the README documentation update. Code and selected canonical inputs remained
+unchanged. No build/probe process from this lane remains running.
+
+## Implemented and verified
+
+- [Particle AlwaysUpdate](PARTICLE_ALWAYS_UPDATE.md): owned pending state,
+  separate emitter resource capability and guarded final-write ordering.
+- [Owned tracker state](THING_PARTICLE_TRACKER_STATE.md): ordered entity
+  references, atomic snapshot replacement, duplicate removal, survivor order,
+  lazy expiration and stale/foreign handle rejection. The semantic replay matches
+  1,059 cases and 2,118 result lists; it excludes native allocator internals.
+- [Related-component commands](THING_COMPONENT_RELATIONS.md): primary stays
+  guarded through selection; the related identity is validated and its owner/type
+  guarded before execution. Same-owner and exact self-selection work. Read
+  delegation and public recursion cannot authorize mutation. Exceptions and
+  acquisition failures restore the guards without undoing prior selection effects.
+
+Native detachment evidence is also complete for the prepared comparison scope:
+
+- `work/modern_particle_clear_20261018/final_validation/`: actual root and weak/map
+  helpers, with tracker/string/allocation boundaries controlled.
+- `work/modern_particle_tracker_20261018/final_validation/`: actual tracker/list/
+  weak-lifetime code; only allocation/deallocation controlled.
+- `work/modern_particle_detach_composition_20261018/final_validation/`: actual
+  root and tracker together, including self-attachment. **8,297 cases, 16,594
+  calls, 217,781 observations, identical repeat, 15 rejected mutations.** Only
+  allocation/deallocation and string storage remain controlled.
+
+Read [the composed contract](PARTICLE_DETACH_COMPOSITION.md) before implementing
+the port. Retail `0071A8F0` is `CTCParticleAttachmentTracker::SetParticleAsDetached`
+in this caller; its BSim `AddDependentThing` label is misleading. Type216 is the
+tracker. It removes all matching entries immediately, not via a deferred queue.
+
+## Next implementation
+
+Implement the owned particle ClearAttachments command using `execute_related`
+and `ThingParticleTrackerState`. The detailed checklist is
+`work/modern_component_relations_20261018/detach_next.txt`.
+
+1. Add owned attachment fields: attachment flags, position name/index, reset
+   position/orientation, moving, creation-disabled, camera-attached and
+   Thing-attached flags. Reuse the existing attached `ThingReference` and
+   AlwaysUpdate state. Snapshot initialization is not AttachToThing gameplay.
+2. In selection, preserve the measured repeated weak resolutions, Dead test,
+   membership test and tracker lookup. Validate state/session bindings and report
+   inconsistent relationships explicitly. Acquire tracker guards through the
+   access API before exposing mutable tracker state.
+3. In execution, remove the particle owner from the tracker before updating reset
+   flags; clear the attached reference; clear the position name; then set index -1
+   and final attachment flags. Preserve AlwaysUpdate and unrelated state.
+4. Replay the composed native corpus against real owned component state, including
+   alive/Dead self-attachment and expired references obtained through Store
+   destruction. Document the semantic projection and excluded allocator internals.
+5. Exercise wrong-role sources, stale/foreign handles, pending removals and source
+   accessors that attempt forbidden lifecycle operations. Run the five-build
+   matrix with frozen source hashes and all prior replays.
+
+The scope extension is ready; the full owned detach command is **not implemented**.
+Attachment creation, real emitter backends, renderer/resource effects, tick-time
+command callers and representative gameplay remain open. Keep the overall
+architecture and completion gates in [ENGINE_ARCHITECTURE](ENGINE_ARCHITECTURE.md).
+
+## Working and coordination notes
+
+Use the existing five build directories: `work/modern_build_x86`,
+`work/modern_build_x64`, `work/modern_build_clang`, `work/modern_build_gcc`, and
+`work/modern_architecture_gates_20261018/headless_build`. The latest validation
+recipe is `work/modern_component_relations_20261018/validate.py`; derive the next
+receipt in a new output directory. Preserve older corpora and compiler-environment
+caches: current drivers still consume them. Use two matrix workers and `-j 2`.
+Do not modify frozen simulation inputs while a matrix runs. Poll an existing
+process handle after a timeout rather than starting the work again.
+
+Continue headlessly and coordinate any future runtime launches around Lua work.
+This lane has not authorized editing/regenerating Lua. No additional agents were
+spawned. Other sessions may still be active; this pause describes only this lane.
+
+Cleanup coordination:
+`D:/Documents/FableTLC-maintenance/coordination/modernization-64bit.txt`.
+All active source, dirty files, work/evidence, five build trees, pinned inputs,
+leases and game installs remain protected. **Nothing is released for deletion.**

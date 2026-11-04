@@ -1,0 +1,32 @@
+# Frontend fog-colour preparation and first native result
+
+Existing UpdateFogColour009897C0 compiled99B30instructions exact rawbody. Graph
+50roots436sites136internal46external. No oldgate/closedfixture reran.
+
+Under work/native-recreation/frontend/0042df9e/20261014:
+
+- Unionf68dc46edee830516cf796501a864ea780ce9be332e433db33ad1819e3d26947.
+- Independentreadonly32f173ddb52997fb00f22b8c6b60f4cce3ac3efd16dd571be3c8f972b4e34f41;
+  actual8e519268d084e5f2ff189090da1b9a7a20d364ae8bd11d42a8551cb98cd9f709.
+- Source242c68324829a3af620457ea07a2ab8ef2db3883ce599198ef99d61422d7c5bc.
+- Compilecb879b54dc4f913c3eb7d3fa5a2b1dd25610c70324ac86084f9eb92855697161 passed.
+- Linkb44306eef456f7da3d80b85b74585bcb0fa3546b05b41289123ad1e36c24fbf9 passed46objects.
+- Selected66(50engine3CRT13data)ccebd0f49dbac4e1c075d7e1b4d408f3a02c01cdc2d9bc8616b2a6c83b51bf01.
+- Caller/provider61unique63comparisons8data6f4f138ac0e225dda9ca3d0a85460b55b78a334b4690cd6ed02f2ad898aa40a9.
+- Frozen fog-colour-frozen-review-first/behavior_source_manifest.json:
+  d7f92eed187ddf61639fb0c30d7ee7de6fb15db45369bf046e6b632557db5ff1.
+- SourcePASS44checks82d0f94c54cd68ba854285b2c4aa6d99853e130ac6dcc3cf0e845195b3a7ab5c;
+  actual68920b5d5e1a878d4eab4a34bdd41700f06945589f79f7574590bf0e629322dd.
+- First andONLY nativePASS98,304cases196,608snapshots12FP:
+  4a5378394e32267dd3854cf9f405df1ed93a9e545ff2acb6318bfaa035b95d78;
+  outerf21d50f4d97b98fb44817afee4a189dde7aed8cda9b3fbe0779ffc9580b12c0f.
+
+Session67193 is terminal; never poll/relaunch. Saved-result review pending.
+Fog Count0/1 couples preset0/2, Offset32; zero skips colour/Offset/device andphysical
+call butclears20000, positive94CALL RET16/memberRET0 transports exactRGBA16 including
+alpha. Input16guard/rawfinite/negativezero/qNaN/+inf/-inf patterns checked. Event34
+omits transientstackpointer explicitly; no stackidentity/bounds/canary/lifetime.
+ExactsourcepositiveFog countAmbientExpected/zero0, sourcebound1744, no savedlivecounts.
+All prior ambientnear/rawborrowed/Releaseavoidance/CRT/FP/COMDAT/profile/specular4/
+stackcolour/below-near integer/floatmock/noAFTER/normalizedstdout limits persist.
+No canonical/coverage/game/GPU/save/playthrough/x64 acceptance.

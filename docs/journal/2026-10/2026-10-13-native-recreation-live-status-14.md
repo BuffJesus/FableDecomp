@@ -1,0 +1,11 @@
+# Native recreation live status 14 ? existing 3D text evidence and graphic metadata
+
+Alreadycanonical `Draw3DScaledText009DBFF0` now has work-only exact49B/17instruction/2call proof andnative98,304cases/196,608snapshots12x87modes. Candidatebody equalscanonicalsource afterwhitespace removal. Originalpointreference/rawscalebits forwarded,owned4B byvalue stringparameter reassigned throughactual stringassignment beforeAddText anddestroyed bycallee. Latepoint mutations,empty/owned strings,zero/subnormal/NaN coordinate/Z/scale bits,offscreen0/1/128/255 andqueuegrowth checked throughreusedgenuineAddText/string/coordinate/getter/ownership bodies. Textrecorddefinedfields compared; onlyundefinedhighflags/paddingmasked. Nineomissions fail. Firstworkheader duplicateexistingpublicmethodcompilefailure preserved; separateexisting_decl_amended2 retainsexistingdeclaration. Thisis evidence for anexistingprovider,notnewrecovery/coverage.
+
+Packet `work/parity_addtext/native_draw3dscaledtext_EXISTING_PROVIDER_WORK_ONLY_validated_20261013.json`,SHA256 `77b73c75a748de3dc23e59ea1b809d057b75e4e2d351312fb941735c791dfdcc`,1746pins.
+
+Currentinvestigation: full971-byte `Draw2DGraphic009DCA80` body andmatching PDBsignature inspected. It caches actualXY beforetwo virtualbankwidthcalls/twoheightcalls,usesunsigneddimensions,parametercolour,GetFrame flags1 (not scaledcaller17),existingUV/table/queue/ownership. Frame lookup staysexplicitfixtureboundary; cappedloader notresumed.
+
+BankRTTI traced directlyfromretail type descriptor01396D5C toprimaryvtable0129C8CC. Slots20/21/22 are00A013E0/00A01430/00A01480, originalnames GetNoFramesInGraphic/GetGraphicFrameWidth/GetGraphicFrameHeight, corroboratedbytwo donorPDBs. Eachcompletebody is68B andhas tworeturnpaths. Outofrange PeekGraphic yieldsnull and**dereferences**field+0A/+06/+08; itdoesnotreturnzero. A partial64B readwas insufficient; fulltails nowinspected. Frameargument ignoredinwidth/height. Nextrecoverthese puremetadata leaves inwork-onlyheader andtestvalidreads/plannednativeSEH faults beforecomposinggraphicparent.
+
+NoLua,canonicalpromotion/header/index/grade/dashboard/coveragechange,noGPU/game/assetloading. Workactive; shared-findacceptancestill980, cappedfont/load exclusions unchanged.

@@ -1,0 +1,9 @@
+# Native recreation live status 24 ? existing core frame coordinators
+
+Existing canonical CRenderManagerCore::BeginRender00A0B480 and EndRender00A0B520 gained work-only native evidence, with no source changes or new coverage. First compile emits146B/90% normalized near and63B exact after typed clock/CRT relocations, respectively. Full original Begin includes both returns; full original End includes its inactive return. No fitting after the passing gate.
+
+Native fixture passes129,024 comparisons/258,048 full64KiB snapshots across12 x87 modes. Both active bool0/1 paths, signed extreme counters, ?zero, finite neighbor values, ?Inf/qNaN clock and previous float bits, time/device/counter/Rendering callback mutations and both COM HRESULTs are covered. Vertex/index fields clear before SetStreamSource; callback writes afterward remain. Last-frame counters use values after the callback; early Rendering check is not repeated. End uses clock callback changes to previous time/triangle count, elapsed division and the same actual compiler CRT_ftol2 boundary as original. X87 status and Begin return match.
+
+Packet `work/parity_addtext/native_existing_core_frame_WORK_ONLY_validated_NO_NEW_COVERAGE_20261013.json`. Passing object retained; stage `native_existing_core_frame_FIRST_20261013`. GFGetTime and COM remain explicit fixture boundaries; no clock implementation, CRT recovery, device ownership, integrated frame or GPU/game launch claim. No native fixture/helper is running.
+
+Work-only shared-find acceptance/post-review/root closure remains through1030; final78 affected contexts and1078/61-context qualifications remain. Canonical header/index/grade/dashboard and historical evidence remain frozen. Continue native timer/actual-child evidence or final audit source preparation. No Lua, commit or push.

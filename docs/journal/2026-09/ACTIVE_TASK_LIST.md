@@ -1,4 +1,6 @@
-# Active task list — decomp, frontend parity, and downstream tools
+# Historical task list — decomp, frontend parity, and downstream tools
+
+This is an archived task list. Use [the current handoff](../../HANDOFF.md) and [roadmap](../../ROADMAP.md) for current assignments.
 
 ## ACTIVE — curated decomp promotion pass (2026-08-26)
 

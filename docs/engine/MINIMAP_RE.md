@@ -45,7 +45,7 @@ branch (the shared-false-zero idiom). Same class the parity crawl defers.
   ```
   Retail bases the +0x100 accesses off `lea eax,[ecx+0x100]` (subobject pointer).
 
-## Remaining small minimap targets (un-landed, complete-proto)
+## Historical small-target list (includes functions landed above)
 CDrawMiniMap: IsFinishedClosing 0x6441be, IsFinishedOpening 0x644179, SetRegion
 0x64dfde, GetRingAlpha 0x643e52, ToggleCentering 0x64e019.
 CRegionMinimap: InitialiseSurface 0x66c750, LoadRegionMinimapTGAFile 0x66ca80,

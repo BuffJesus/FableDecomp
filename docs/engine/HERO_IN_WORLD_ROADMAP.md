@@ -4,6 +4,11 @@ Resume/authoritative plan for the "controllable hero in Oakvale" north star. -->
 
 # FableTLC — Roadmap to a Controllable Hero in the Oakvale Prologue
 
+> Historical planning snapshot from 2026-08-16, with later corrections below.
+> Its percentages, estimates, source-line numbers and first-increment plan are
+> not current progress or execution instructions. Use [ROADMAP](../ROADMAP.md)
+> and [native status](../NATIVE_STATUS.md) for the current reconstruction boundary.
+
 *Decision-grade. Byte-purity and retail-parity are the hard constraints. No softening.*
 
 ## 1. Reality check
@@ -123,7 +128,12 @@ The governing pattern is the **OpenRetailBank runtime-module anchor** (memory: *
 Two corrections to §6 "FIRST INCREMENT" after inspecting the actual files (the
 synthesis over-optimistically framed it as a one-session "just call Play"):
 
-1. **`CGame::Play` @ 0x412f90 is a `__declspec(naked)` asm bake, not genuine C++.**
+1. **`CGame::Play` @ 0x412f90 was a `__declspec(naked)` asm bake, not genuine C++.**
+   *Resolved 2026-09-25:* it is now genuine C++ (RELOCATION_MATCH over the full 394-byte
+   body, 23 relocations; fixture rewritten against the real constructor/string symbols),
+   so point 2's adapter ring no longer exists in the source. What remains of Phase A is
+   the live capture and a real `CGame` object to call it on.
+   *Original note:*
    `rebuild/src/compiled/00/41/CGame_Play_00412f90.cpp` is hand-written `__asm` with
    `_emit` bytes (e.g. the `8D 9B 00 00 00 00` lea at run_component). It is byte-exact
    but it is a **purity debt** — it belongs to the de-bake lane ([[debake-lane]],

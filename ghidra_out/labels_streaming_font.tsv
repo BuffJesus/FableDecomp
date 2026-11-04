@@ -1,0 +1,22 @@
+009a0ec0	?SetAlphaMaskUVs@CStreamingFontBank@@SIXABVC2DVector@@0@Z	Ego_r.pdb name by module order + size (33 B both builds).
+009a0ef0	?SetUseFixedFunction@CStreamingFontBank@@SIX_N@Z	Ego_r.pdb name by module order + size (7 B both builds); the older stand-in file names it CXMVPlayer::SetLeftAlignText (folded body).
+009a0f00	InitializeStreamingFontCacheEntries	Ego_r ?InitializeStreamingFontCacheEntries@?A0xfe46a155@@YIXAAUStreamingFontCacheBufferData@1@@Z (anonymous namespace, fastcall). Body: guarded by newestEntry==oldestEntry, links entries into the LRU chain, stamps the frame counter.
+009a0f90	UpdateUseStreamingFontCacheEntry	Ego_r ?UpdateUseStreamingFontCacheEntry@?A0xfe46a155@@YIXAAUStreamingFontCacheBufferData@1@G@Z (anonymous namespace, fastcall data/ushort index): move entry to the newest end.
+009a1020	InsertNewStreamingFontCacheEntry	Ego_r ?InsertNewStreamingFontCacheEntry@?A0xfe46a155@@YIGAAUStreamingFontCacheBufferData@1@@Z (anonymous namespace, fastcall).
+009a1090	??1CStreamingFontBank@@UAE@XZ	Ego_r.pdb name by module order (retail 170 B, Ego_r 478 B: different inlining). Ghidra autoname CTextureScreen_dtor was wrong.
+009a1140	?GlyphLookup@CStreamingFontBank@@IBEPAUCStreamingGlyphLookup@@G@Z	Ego_r.pdb name by module order + shape (918 / 877 B): 256x8 glyph lookup cache, 0x25A1 fallback char.
+009a1660	?UninitializeStreamingFontTextureCache@@YIXXZ	Ego_r.pdb name by module order + size (188 / 187 B).
+009a23e0	GFUpdateFontTextureCache	Ego_r ?GFUpdateFontTextureCache@?A0xfe46a155@@YIXXZ (anonymous namespace), between Preload and Render in both builds.
+009a3460	ReadTextFileIntoArray	Ego_r ?ReadTextFileIntoArray@?A0xfe46a155@@YIKABVCWideString@@AAV?$CArray@G@@@Z (anonymous namespace).
+009a3610	ReadTextFileIntoArray_CCharString	Ego_r ?ReadTextFileIntoArray@?A0xfe46a155@@YIKABVCCharString@@AAV?$CArray@G@@@Z (anonymous namespace; 39 B wrapper).
+009a3640	InitializeStreamingFontTextureCache	Ego_r ?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z (anonymous namespace; 1490 / 1361 B).
+009a3c20	??0CStreamingFontBank@@QAE@PAVCStreamingFontDataBank@@K@Z	Ego_r.pdb name; called from CStreamingFontDataBankEntry::AcquireFont 0x00A5F1C0, installs vtable 0x0129AB54.
+009a4e40	??_GCStreamingFontBank@@UAEPAXI@Z	vtable 0x0129AB54 slot 0 (the older stand-in file names it CLandscapeBackgroundPatch vector deleting destructor).
+009a14e0	?GetStringExtents@CStreamingFontBank@@UBE?AVC2DExtentsF@@PBG_N@Z	vtable 0x0129AB54 slot 1; Ego_r.pdb name by module order.
+009a1720	?PrepareToRender@CStreamingFontBank@@UBEX_N@Z	vtable 0x0129AB54 slot 3; Ego_r.pdb name by module order; render states only.
+009a2000	?Preload@CStreamingFontBank@@UBE_NABVCWideString@@_N@Z	vtable 0x0129AB54 slot 4; Ego_r.pdb name by module order.
+009a25d0	?Render@CStreamingFontBank@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z	vtable 0x0129AB54 slot 5; Ego_r.pdb name by module order; Ego_r static locals indices (ushort[384]) and CFontVertex/CFontVertexMask vertex types.
+00a635d0	?GetFontInfo@CFontDataBank@@QBEPAVCFontDataBankEntry@@K@Z	Ego_r.pdb name by module order (GetFontInfo before PeekFontInfo); sole caller CFontManager::ReleaseFont 0x9E2B62.
+00a635e0	?PeekFontInfo@CFontDataBank@@QBEPBVCFontDataBankEntry@@K@Z	Ego_r.pdb name by module order; sole caller CFontManager::GetStaticFont. Byte-identical twin of 0xA635D0.
+00a5f090	?PeekFontInfo@CStreamingFontDataBank@@QBEPBVCStreamingFontDataBankEntry@@K@Z	Ego_r.pdb name by module order (PeekFontInfo before GetFontInfo); sole caller CFontManager::GetStreamingFont.
+00a5f0a0	?GetFontInfo@CStreamingFontDataBank@@QBEPAVCStreamingFontDataBankEntry@@K@Z	Ego_r.pdb name by module order; sole caller CFontManager::ReleaseFont. Byte-identical twin of 0xA5F090.

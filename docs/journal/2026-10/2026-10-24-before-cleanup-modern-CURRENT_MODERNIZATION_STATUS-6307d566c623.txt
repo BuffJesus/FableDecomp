@@ -1,0 +1,724 @@
+> PAUSED at user request, October23,2026. Do not resume modernization until the user asks.
+> Baseline133 COMPLETE/PASSED:169/169/169/152/149CTest (x86/x64/Clang/GCC/headless),133checks/build,5,658frozen inputs and external headers unchanged. Focus and optional-progress compositions are promoted and validated.
+> Next: work/modern_complete_run_iteration_20261023. Unqualified enclosing Run integration;6,144-operation model preflight and earlier512case native probe passed. The prediction-count mutation survived the first control run. New threshold-witness attempt was stopped on pause; partial output preserved as validation_user_paused. No accepted native/audit receipt or production promotion for this join.
+
+# Modernization prerequisite status ? October14,2026
+
+This page records the October 14 native reconstruction checkpoint below. For current
+C++23/x64 library progress, see [MODERNIZATION status](MODERNIZATION.md#status-2026-10-18)
+and the [runtime architecture contract](ENGINE_ARCHITECTURE.md). The modern tree
+now contains bounded libraries and replay fixtures; it is not a complete game.
+
+Work continues under the user's authorization until asked to stop. This is native
+engine behavior/composition work toward the agreed64-bit fork prerequisites. No
+playable64-bit build, game/save/playthrough or source-complete claim is made.
+
+| Scope | Native cases | State |
+|---|---:|---|
+| Integer viewport standalone |147,456|Qualified finite closure; below near threshold|
+| Clear with genuine integer viewport |12,288|Qualified finite closure|
+| Frontend/menu/queues with integer viewport |24,576|Qualified finite closure|
+| World reset inside frontend |49,152|Qualified finite closure|
+| Vertex binding inside frontend |49,152|Qualified finite closure|
+| Vertex constant uploads inside frontend |98,304|Qualified finite closure|
+| Pixel update inside frontend |98,304|Qualified finite closure|
+| Ambient upload inside frontend |98,304|Qualified finite closure;91.6667%near|
+| Light-global upload inside frontend |98,304|Qualified finite closure|
+| Fog-colour upload inside frontend |98,304|Qualified finite closure|
+| Pixel constant uploads inside frontend |589,824|Qualified finite closure|
+
+These overlap and are not additive game coverage. Each native comparison selected
+12floating-point modes. Closed scopes passed independent source and saved-result
+reviews; never rerun them. No canonical source, coverage/index/grade/dashboard or
+modern CMake fork promotion has occurred.
+
+Current artifacts are under:
+`work/native-recreation/frontend/0042df9e/20261014/`.
+Start with `pixel-constants-caller-source-first/FrontendPixelConstants_SOURCE_ONLY.cpp`
+and `pixel-constants-caller-link-first/pixel_private_link_readonly.json`.
+Existing genuine C++ providers live under `rebuild/src/compiled/00/98/`.
+New fixtures, builds and reviews remain isolated in work.
+
+Fog-colour closure is complete: 98,304 cases / 196,608 snapshots / 12 FP modes.
+Pixel constants source has now compiled and linked once, with 53 original code
+roots and 444 operand sites. The selected 186-byte provider, 3-byte constructor
+and 48-byte initialization iterator pass the new read-only linked-byte check.
+The private 128-byte array and 4-byte guard have repeated-operand and writable
+PE-extent checks. Helper map basenames do not identify a unique equivalent
+COMDAT object; all candidates are recorded.
+
+All 69 selected code/data body checks now pass. Complete caller/provider checks
+cover 68 unique code spans, 81 code comparisons and 8 initialized-data sections.
+Independent private-storage and all 55 frozen source review checks passed.
+The first and only native comparison passed: 589,824 cases / 1,179,648 sides /
+12 FP modes. Independent saved-result review passed and qualified closure is
+recorded. Never rerun this native fixture.
+See FRONTEND_PIXEL_CONSTANTS_FIRST_LINK_CHECKPOINT.md for current details; the
+original composition plan remains unchanged because it is a pinned build input.
+
+The float viewport boundary and remaining shader/UI/engine/backend services are
+explicit mocks. Borrowed raw objects and resources have no general lifetime,
+allocator, destructor or release credit. Ambient/fog payload events omit transient
+stack addresses; exact bytes compare. Integer viewport remains below near threshold.
+CRT/DLL/profile/COMDAT/private-base, maskedFP/store-order, four indexed specular words,
+stack-colour alias, normalizedstdout and absent outer AFTER qualifications persist.
+
+Detailed append-only evidence trail:
+`docs/journal/2026-10/2026-10-14-modernization-continuation.md`.
+Behavior/pointer-width contracts: `SHADER_BINDING_PORTABILITY_CONTRACT.md` and
+`INTEGER_VIEWPORT_PORTABILITY_CONTRACT.md`. Overall fork gate: `MODERNIZATION.md`.
+
+Pixel constants ABI and storage notes: `PIXEL_CONSTANTS_PORTABILITY_CONTRACT.md`.
+
+Next: genuine shader layout selection and light/pool/vector dependencies; see
+`FRONTEND_SHADER_LAYOUT_SELECTION_NEXT.md`. Existing profiles are preparation,
+not new behavior acceptance. The clear-vector definition remains unavailable.
+
+Existing modern code: [C++23 module project](../../rebuild/modern/README.md).
+The October 14 continuation described here covered native x86 reconstruction
+and validation. The linked modern tree has subsequently expanded; consult its
+README and the current modernization status before choosing follow-up work. The separate full modernization fork remains gated by MODERNIZATION.md.
+
+
+## Owned particle detachment (2026-10-19)
+
+ClearAttachments now owns attachment fields/string and uses execute_related to
+mutate the particle and component216 tracker under both lifetime guards. It
+matches 8,297 native cases and 16,594 post-call particle/tracker states. Wrong
+roles, session bindings and inconsistent attachment selection fail explicitly;
+AlwaysUpdate and pending creation state survive. Semantic projection excludes
+native allocation/count/storage and intermediate observations.
+
+All five builds pass: 62 MSVC x86/x64 and clang-cl tests, 45 GCC, 42 headless;
+27 commands per configuration and all earlier replays. All 198 frozen inputs
+stayed unchanged. Receipt: work/modern_owned_particle_clear_20261019/validation.
+The isolated x64 Ninja/MSVC19.38 tree is under that parent; a diagnostic
+reconfigure invalidated the former x64 cache, whose files remain preserved.
+Contract: THING_PARTICLE_CLEAR_ATTACHMENTS.md.
+
+Native tracker insertion also passes 3,177 cases / 6,354 calls / 32,133 observations,
+identical repeat and five rejected mutations. Owned insertion is now promoted
+from a passing isolated x64 replay and entering the five-build matrix. It appends
+duplicates; the full AttachToThing command and resource/sound effects remain open.
+No game launch, Lua edit, installed-game write or canonical promotion occurred.
+
+
+## Owned tracker insertion (2026-10-19)
+
+ThingParticleTrackerState::attach appends validated entity references, retaining
+duplicates and order without scanning earlier entries. Dead is valid; stale and
+foreign identities fail before mutation. Append/removal and slot reuse are tested.
+All 3,177 native cases / 6,354 ordered result lists match across five builds, plus
+all earlier replays: 62/62/62/45/42 tests, 28 commands per build. All 211 frozen
+inputs remained unchanged. Native allocator/count/storage effects remain excluded
+from the semantic projection. Receipt:
+work/modern_owned_particle_tracker_insert_20261019/validation/summary.json.
+Full AttachToThing, emitter attachment update and sound effects remain open.
+
+
+## Prepared attachment caller (2026-10-19)
+
+The actual AttachToThing root with actual clear/tracker/weak helpers passes
+4,096 cases / 8,192 calls / 125,552 observations, identical repeat and eight
+rejected mutations. Emitter update, sound, definition, strings and bullet policy
+remain controlled. Initial-null and repeated same-target attachment are covered;
+different old/new targets and the full owned command remain open. All 211 modern
+checkpoint inputs still match. See PARTICLE_ATTACH_CALLER.md. Next: genuine
+633-byte emitter attachment update, including numeric/physics/resource behavior.
+
+
+## Emitter attachment update continuation (2026-10-19)
+
+The genuine 633-byte update and helpers pass 2,756 cases / 33,072 calls /
+480,816 observations in 12 modes under emulation, repeat and 16 rejected controls.
+Original numeric/getter spans separately pass private native x86 checks; extended
+arithmetic includes 54,960 finite/overflow records. Execution/controlled-boundary
+qualifications are explicit in PARTICLE_EMITTER_ATTACHMENT_UPDATE.md.
+
+The owned guarded command, pending orientation, offset and typed capabilities
+passed staged x64 replay plus older clear/AlwaysUpdate corpora. Eleven files
+are promoted; the full five-build matrix is running under
+work/modern_owned_emitter_attachment_20261019/validation. No complete gameplay,
+physics/resource backend or full attachment caller claim is made.
+
+
+## Owned emitter-update matrix complete (2026-10-19)
+
+The promoted command passes 63/63/63/46/43 tests and all 29 matrix commands on
+MSVC x86/x64, clang-cl, GCC and headless. All 322 frozen inputs stayed unchanged.
+All earlier corpora, 33,072 emitter calls / 359,664 projected observations and
+54,960 native arithmetic records in four host modes pass. The receipt is
+work/modern_owned_emitter_attachment_20261019/validation/summary.json.
+Next: primary retention across sequential tracker scopes and fuller attachment
+composition. Physics/geometry/resource/sound backends and full gameplay remain open.
+
+
+## Sequential guarded component scopes complete (2026-10-19)
+
+Four staged and tested files add execute_scoped and a borrowed, noncopyable
+command scope. Primary owner/type protection remains held across sequential
+related operations; each related guard ends after its own callback. Null/self,
+same-owner, different-owner, stale/foreign, replacement and pending removal
+cases pass. Nested related calls, public recursion and delegated-read mutation
+remain rejected. Failures retain prior effects and restore acquired guards.
+Injected exception recovery is checked both inside and outside the scope.
+
+Five-build validation passed: 63/63/63/46/43 tests and 29 commands per build,
+including all earlier semantic and numeric replays. All 331 frozen inputs stayed
+unchanged. Receipt: work/modern_component_scopes_20261019/validation/summary.json.
+See THING_COMPONENT_SCOPES.md. No complete attachment caller or gameplay claim.
+Next work qualifies self-attachment with genuinely shared physics storage.
+
+
+## Self-attachment emitter alias proof complete (2026-10-19)
+
+The actual emitter update and helpers pass 2,756 self-alias cases / 33,072 calls /
+480,816 observations, repeat and ten rejected byte mutants. Owner/target physics
+pointers truly alias one object; full prepared memory matches. The projected
+359,664 observations pass all five scope-matrix binaries with their qualified
+hashes, no source changes/rebuild, and frozen inputs unchanged. Receipts under
+work/modern_particle_self_attachment_20261019/{validation,owned_validation}.
+New work in modern_particle_attachment_composition_20261019 replaces the old
+caller's controlled update callback with genuine update execution; trials only
+so far. Geometry/resource/physics/sound/bullet capability boundaries remain.
+
+
+## Genuine emitter update inside the attachment caller (2026-10-19)
+
+The new composed packet executes the original attachment root, clear/removal,
+insertion, weak helpers, emitter-update body and its value helpers together.
+It passes 4,096 cases / 8,192 calls / 247,684 observations, an identical repeat,
+and eleven rejected byte mutants. Half the cases attach to self with genuinely
+aliased physics. All twelve x87 profiles are sampled across the cases, rather
+than exhaustively crossed with every case. Full 12KiB prepared memory is compared.
+
+An independent audit also checks final list order, reference counts, flags,
+attachment/resource pointers, definition balance and caller phase order. Earlier
+qualified inputs and selected canonical sources remain unchanged. Receipts:
+`work/modern_particle_attachment_composition_20261019/validation/summary.json`
+and `work/modern_particle_attachment_audit_20261019/composition/summary.json`.
+
+This replaces the controlled emitter-update boundary in the new packet. Physics
+and geometry callbacks, water lookup, resource setters, allocation, strings,
+definition, sound and the affected predicate remain controlled. Native numeric
+receipts are referenced unchanged. The full bodies execute under Unicorn; no
+full-body hardware, backend or complete gameplay claim is made. The new packet
+uses finite inputs. The older controlled-caller packet's raw infinity/NaN offset
+storage coverage is separate. Different-target transitions are currently under
+qualification in `work/modern_particle_target_switch_20261019/`; no full pass is
+claimed yet. The owned complete caller and guarded bullet-policy reads remain open.
+
+
+## Different-target attachment composition qualified (2026-10-19)
+
+The extended native packet uses two targets, independent component maps and
+tracker lists, genuine owner/target physics aliasing, and independent Dead and
+membership states. It passes 8,192 cases / 16,384 calls / 495,112 observations,
+repeat and thirteen rejected controls. Half the cases switch targets; half
+reattach to the same target. Twelve x87 modes are sampled across finite cases.
+Full 16KiB prepared data is compared. The independent final-state/order audit
+also passes, checking each list's order, duplicate/removal behavior and reference
+counts without reusing the instruction reference's transition implementation.
+
+Receipts: work/modern_particle_target_switch_20261019/validation/summary.json and
+work/modern_particle_attachment_audit_20261019/switch/summary.json. Previously
+qualified inputs, including selected canonical sources, stayed unchanged.
+The complete bodies run under Unicorn; numeric hardware receipts are reused
+unchanged. Geometry/physics callbacks, water lookup, resource setters, allocation,
+strings, definition/sound and the affected predicate remain controlled boundaries.
+No complete gameplay or full-body hardware claim is made.
+
+Owned caller work is isolated in work/modern_owned_particle_attach_20261019/staged.
+Private scoped clear/update cores pass the existing emitter/clear/AlwaysUpdate
+and numeric corpora. The new caller and its 288,376-observation projection are
+under staged validation; no promotion or owned-caller pass is claimed yet.
+
+
+## Owned prepared AttachToThing promoted; matrix active (2026-10-19)
+
+Ten files were promoted after final staged x64 validation and all original/staged
+hash checks. The caller matches 8,192 cases / 16,384 calls / 288,376 projected
+observations, plus source/target expiration, stable request ownership, tracker
+roles/binding, leases/exceptions and public recursion checks. Refactored private
+scoped cores preserve the earlier clear/update/AlwaysUpdate and native numeric
+replays. The full matrix is running under
+work/modern_owned_particle_attach_20261019/validation, 31 commands per build,
+including the genuine self-alias corpus. No full-matrix pass is claimed yet.
+
+Sound/string and bullet-policy services are explicit controlled capabilities.
+The public affected query remains rejected inside commands; genuine policy-read
+composition and real world/resource/sound backends remain open. Contract:
+THING_PARTICLE_ATTACHMENTS.md. No canonical/Lua/game/commit/push actions occurred.
+
+
+## Owned prepared attachment caller matrix complete (2026-10-19)
+
+All five builds pass: 64/64/64/47/44 tests and 31 commands per configuration.
+All 448 frozen inputs stayed unchanged. This includes 16,384 prepared caller
+invocations / 288,376 projected observations, the genuine self-alias helper
+corpus through the refactored cores, all earlier replays and native arithmetic.
+Receipt: work/modern_owned_particle_attach_20261019/validation/summary.json.
+No matrix from this lane remains active. Sound/string and bullet-policy services
+remain declared controlled capabilities. Current new native work composes the
+genuine affected predicate with the caller in
+work/modern_particle_affected_attachment_20261019; limited trials only so far.
+No full-body hardware, backend-completeness or gameplay claim is made.
+
+
+## Genuine affected predicate in attachment composition (2026-10-19)
+
+The new packet executes the actual affected predicate, component search, player
+lookup and fading helper with the attachment/clear/tracker/emitter bodies.
+It passes 8,192 cases / 16,384 calls / 552,742 observations, identical repeat,
+and 31 rejected controls. Half the cases switch targets. Full 16KiB prepared
+memory is compared and twelve x87 modes are sampled across finite cases.
+Script-control responses remain controlled; the prepared main-player weak
+reference is null. Geometry/physics/resource/string/sound services keep their
+previous explicit boundaries. No full-body hardware or gameplay claim.
+
+An independent audit uses the preserved standalone policy reference to match
+62,386 policy observations, exact query order, results and script-call counts,
+then checks final tracker order, references, flags and caller state. Earlier
+modern and selected canonical inputs stayed unchanged. Receipts:
+work/modern_particle_affected_attachment_20261019/validation/summary.json and
+work/modern_particle_affected_attachment_20261019/qualification/summary.json.
+
+Scoped owned policy permission and caller integration are staged under
+work/modern_scoped_particle_policy_20261019. The integrated trial matches
+291,798 projected observations and passes focused retained-guard/script/read
+permission tests plus earlier corpora. Final staging is active; no promotion
+or full-matrix pass is claimed. See THING_COMPONENT_POLICY_SCOPES.md.
+
+
+## Scoped affected-policy integration promoted; matrix active (2026-10-19)
+
+Twelve files were promoted after final staged x64 validation (all sixteen steps,
+new code/tests under /WX), original/staged hash checks and the unchanged native
+audit baseline. Genuine owned affected queries retain the primary command guard
+and allow only exact component observations, including script-query delegation.
+Nested/public policies, related mutation during policy and recursive observations
+remain refused. Foreign sessions, redirects, active factories and exceptions
+retain their earlier checks and restore permissions. The caller's 291,798-event
+projection and earlier corpora pass staging. The full five-build matrix is active
+under work/modern_scoped_particle_policy_20261019/validation (33 commands/build).
+No full-matrix pass is claimed yet; script responses/backends remain controlled.
+
+
+## Scoped affected-policy caller matrix complete (2026-10-19)
+
+All five builds pass: 66/66/66/49/46 tests and 33 commands per configuration.
+All 556 frozen inputs stayed unchanged. Genuine scoped policy/caller integration
+matches 16,384 calls / 291,798 projected observations, while all prior caller,
+access, relation, script, physics/numeric and other replays still pass. Receipt:
+work/modern_scoped_particle_policy_20261019/validation/summary.json.
+No modern matrix remains active. Current native continuation in
+work/modern_particle_script_attachment_20261019 adds the genuine 81-byte script
+control query and list helper, reading fixed prepared membership/lock/list state.
+Only limited trials so far; no Lua/actions/scheduling run and no full pass claim.
+
+
+## Genuine script-control query composition qualified; replay promoted (2026-10-19)
+
+The native caller/clear/tracker/emitter/affected path now includes the actual
+81-byte script-control query and list helper over fixed prepared membership,
+lock bytes and list heads. It passes 8,192 cases / 16,384 calls / 559,082
+observations, repeat and 35 controls. Full 20KiB prepared memory is compared.
+Independent nested script/policy audit matches 68,174 observations and final
+state/order, with earlier inputs unchanged. No Lua/actions/scheduling run.
+
+The owned replay uses the existing scoped affected and script-control facades
+with guarded component31 lock/list observations. It passes 298,144 observations
+and membership, lock/list-skip, repeated-query and exception goldens under /WX.
+Three verified files (new test, CMake, README) are promoted; facade code remains
+unchanged. Full matrix is active at
+work/modern_script_query_attachment_20261019/validation (34 commands/build).
+No full-matrix pass is claimed yet. Contract: PARTICLE_SCRIPT_CONTROL_COMPOSITION.md.
+Real script/action/resource/world/sound backends and full gameplay remain open.
+
+
+## Script-query composition matrix complete (2026-10-19)
+
+All five builds pass: 67/67/67/50/47 tests and 34 commands per configuration.
+All 664 frozen inputs stayed unchanged. The new 298,144-observation script-query
+caller replay and all earlier corpora pass. Receipt:
+work/modern_script_query_attachment_20261019/validation/summary.json.
+No modern matrix remains active. Native script query decisions do not execute
+Lua/actions; real backends and full gameplay remain separate work.
+
+Next bounded work inspects the sound-name string gate and criteria construction.
+Canonical CCharString storage is packed and will remain untouched. Native bytes
+show that its empty-literal comparison reads C-string contents rather than the
+stored length; embedded leading NUL needs explicit qualification before changing
+an owned name interface. No string-port or new string-execution pass is claimed.
+
+
+## Sound-name gate qualification and staged value interface (2026-10-19)
+
+The original empty-literal CCharString inequality/basic equality pass 6,149
+states / 12,298 calls, repeat and five controls under emulation. A private native
+x86 check independently matches all calls, repeat and five controls with exactly
+two declared address relocations. Original code/literal/object data stay unchanged.
+Null or leading-NUL names are empty regardless of logical length; all other first
+bytes are nonempty. Receipts: modern_sound_name_gate_20261019/{validation,hardware_relocated2}.
+The initial fixed-address hardware attempt exited before native execution and is
+preserved, as is the subsequent harness compile failure; neither is a passed proof.
+
+The new full-caller name comparison trial (2,048 cases) and independent phase/
+policy audit pass; full qualification is running in modern_particle_sound_name_20261019.
+An isolated owned prototype reads name bytes from a held definition lease instead
+of a host nonempty boolean. All earlier caller corpora and leading-byte/NUL/lease/
+exception goldens pass /WX. No production promotion yet. Canonical packed strings,
+Lua, game installation, commits and pushes remain untouched. Contract:
+PARTICLE_SOUND_NAME_GATE.md. No modern matrix is active.
+
+
+## Owned sound-name bytes promoted; full matrix active (2026-10-19)
+
+The composed native packet passes 8,192 cases / 16,384 calls / 567,210
+observations, repeat and 41 controls. Independent name/phase/script/policy audit
+passes with earlier modern/canonical inputs unchanged. The isolated gate also
+has a private native x86 crosscheck of all 12,298 calls and five controls.
+
+The definition lease now exposes stable borrowed name bytes. The caller applies
+the measured empty/leading-NUL decision, replacing the host boolean. Final staged
+x64 replay matches 298,080 observations, earlier caller corpora and byte/lease/
+exception goldens, all eight steps under /WX. Eight files were promoted after
+original/staged/native-audit hash checks. Full matrix is running under
+work/modern_owned_sound_name_20261019/validation (35 commands/build). No full-matrix
+pass yet. Canonical packed strings remain untouched. Other string construction,
+sound/resource/world backends and complete gameplay remain open.
+
+
+## Owned sound-name bytes matrix complete (2026-10-19)
+
+All five builds pass: 68/68/68/51/48 tests and 35 commands per configuration.
+All 781 frozen inputs stayed unchanged. The owned name-byte gate matches all
+298,080 projected observations and all earlier caller/query/geometry/numeric
+and other corpora still pass. Receipt:
+work/modern_owned_sound_name_20261019/validation/summary.json.
+No modern matrix remains active. Canonical packed strings stay unchanged.
+
+Next bounded work inspects GetAsUpperCase and literal-plus-string criteria
+construction. Static inspection resolves its character conversion to the retail
+MSVCR71.dll toupper import; locale behavior and copy-on-write/C-string boundaries
+must be qualified before an owned criteria builder. No criteria execution or
+port claim yet. Real backends and complete gameplay remain open.
+
+
+## Criteria value helper promoted; matrix active (2026-10-19)
+
+The complete retail uppercase/concatenation/string-lifetime functions pass 3,201
+states / 12,804 calls, repeat and six controls under emulation. Source/guard memory,
+output values, references and instance counts are checked; allocation growth is
+not a portable API claim. A private native x86 process checks the exact retail
+MSVCR71 toupper C-locale map (128 inputs twice, identical repeat). Qualification
+preserves the earlier 781-input modernization baseline.
+
+The portable final-value helper takes name bytes and explicit case-map data,
+preserves high bytes and both C-string boundaries, and matches all 3,201 values
+in staged x64 /WX validation. Five files are promoted; full matrix is active at
+work/modern_owned_criteria_value_20261019/validation (36 commands/build). No full
+matrix pass yet. Caller criteria wiring remains separate work. Contract:
+PARTICLE_SOUND_CRITERIA_VALUE.md. Canonical strings/Lua/game/commits remain untouched.
+
+## Criteria value matrix passed; caller composition active (2026-10-19)
+
+The criteria-value helper passes all five builds: 69/69/69/52/49 tests,
+36 commands per build and 897 frozen inputs unchanged. Receipt:
+work/modern_owned_criteria_value_20261019/validation/summary.json.
+
+The genuine criteria-string caller trial passes 2,048 cases / 4,096 calls and
+145,518 observations, including an independent byte/phase/policy/final-state
+audit. Full repeat/control validation is active under
+work/modern_particle_criteria_composition_20261019. The owned caller integration
+is staged separately; its prototype passes new failure/lifetime goldens and all
+four earlier caller corpora under x64 /WX. No caller integration promotion yet.
+The cleanup coordination reply records all protected work/build paths and branch,
+runtime/disk constraints, and no artifact releases. All earlier holds remain.
+
+## Owned caller criteria promoted; matrix active (2026-10-19)
+
+Genuine criteria string bodies inside the caller pass 8,192 cases / 16,384 calls /
+567,210 observations, identical repeat and 46 rejected mutations. Independent
+qualification checks 1,624 criteria constructions, 68,174 policy observations,
+phase order and final state; the earlier 897 matrix inputs remain unchanged.
+Native receipts: work/modern_particle_criteria_composition_20261019.
+
+The caller now reads owned emitter-name/map snapshots, computes criteria bytes
+through the portable helper and transfers the value into a backend lease. Final
+x64 /WX staging matches 293,208 observations plus all four earlier caller corpora,
+with snapshot rejection, exceptions, input mutation and lease/guard checks. Nine
+verified files are promoted; five-build matrix is active under
+work/modern_owned_criteria_attachment_20261019/validation (37 commands/build).
+Contract: PARTICLE_CRITERIA_ATTACHMENT.md. No complete backend/gameplay claim.
+
+## Caller criteria matrix passed; definition accessor qualified (2026-10-19)
+
+The caller criteria integration passes all five builds: 70/70/70/53/50 tests,
+all 37 steps per build and all 1,010 frozen inputs unchanged. Receipt:
+work/modern_owned_criteria_attachment_20261019/validation/summary.json.
+
+The next isolated packet executes the original sound-definition accessor,
+index lookup and property-name string lifetime. 2,304 cases / 4,608 calls,
+identical repeat and eight rejected controls pass, including whole prepared
+actor memory after each call. Independent conservation/order audit checks
+216 last-reference destructions, 768 property-found/null-definition outcomes,
+1,680 missing-property cases preserving an existing output and 416 aliases.
+All 1,010 baseline matrix inputs stay unchanged. Property virtual lookup,
+LoadDef and final definition destruction remain controlled dependencies.
+Receipts: work/modern_particle_sound_definition_20261019/{validation2,qualification}.
+The original property literal is CEntitySoundDef; a rejected preflight literal
+assumption is preserved in trial32. No decoded asset/loader or hardware claim.
+Composing the accessor into the caller is next; no additional owned promotion.
+
+## Definition accessor composition in expanded trials (2026-10-19)
+
+Independent definition reference/event audit passes against validation2. The
+caller composition now executes genuine accessor/index/property-string bodies;
+its first 128-case trial passes. A 2,048-case repeat trial is active under
+work/modern_particle_definition_composition_20261019. Property hits require a
+nonnull loaded definition because the retail caller dereferences successful
+outputs; isolated true/null cache outcomes remain outside this caller scope.
+No modern matrix active or new owned promotion. Contract:
+PARTICLE_SOUND_DEFINITION_ACCESS.md. All earlier artifacts/protections remain.
+
+## Definition composition replay passed; owned sub-definition index promoted (2026-10-19)
+
+Genuine accessor caller composition qualifies 8,192 cases / 16,384 calls /
+567,210 observations, repeat and 51 controls, plus independent definition,
+criteria, phase, policy and final-state audit. All five unchanged matrix binaries
+pass its identical 293,208-observation numeric projection. Receipts:
+work/modern_particle_definition_composition_20261019/{validation,qualification}
+and work/modern_definition_attachment_replay_20261019/validation.
+
+The const sub-definition lookup/CRC/search packet qualifies 3,210 native values,
+repeat and seven controls. Independent zlib/bisect audit confirms exact CRCs,
+unsigned ordering, first duplicate values and stored-length embedded NULs.
+The owned index copies snapshots and returns signed fixed-width value fields;
+unordered replacement retains old data. Final x64 /WX staging passes all native
+values and ownership/replacement goldens. Five verified files are promoted; the
+five-build matrix is active under
+work/modern_owned_subdefinition_index_20261019/validation (38 steps/build).
+Contract: SUB_DEFINITION_INDEX.md. No decoded-definition/loader or gameplay claim.
+
+## Owned sub-definition index matrix passed (2026-10-19)
+
+All five configurations pass: 71/71/71/54/51 tests, 38 steps per build, and
+all 1,140 frozen inputs unchanged. Receipt:
+work/modern_owned_subdefinition_index_20261019/validation/summary.json.
+
+The caller composition now executes genuine const sub-definition lookup,
+unsigned vector search and CRC over the CEntitySoundDef name. Its 128-case trial
+passes; expanded 2,048-case repeat is active under
+work/modern_particle_subdefinition_composition_20261019. Definition loading
+remains controlled. No modern matrix active and no additional promotion.
+
+## Genuine sub-definition caller trial; owned metadata replay staged (2026-10-19)
+
+The expanded genuine CRC/map caller trial passes 2,048 cases / 4,096 calls /
+151,662 observations. A subsequent 128-case capture explicitly records sorted
+map entries and passes independent CRC/bisect, accessor/lifetime, criteria,
+policy and final-state audit. Full native repeat/58-control validation is active
+under work/modern_particle_subdefinition_composition_20261019/validation.
+
+The staged owned replay uses production SubDefinitionIndex to drive its host's
+selected definition and loader index. Initial x64 /WX goldens pass. The exact
+native replay and promotion remain pending; no production host/backend or
+facade changes. Stage: work/modern_owned_subdefinition_attachment_20261019.
+Contract: PARTICLE_SUBDEFINITION_ATTACHMENT.md. All earlier proofs remain protected.
+
+## Sub-definition caller matrix passed; portable assets recency promoted (2026-10-19)
+
+The sub-definition caller integration passes 72/72/72/55/52 tests, all 39 steps
+per build and 1,257 unchanged frozen inputs. Native basis: 8,192 cases / 16,384
+calls / 591,786 observations, repeat, 58 controls and independent map/CRC/order/
+policy/state audit. Final2 owned replay matches 317,784 observations. The failed
+first export omitted metadata codes; its artifacts are preserved and the corrected
+export checks all 24,576 metadata events before replay.
+
+The next packet qualifies cached LoadDef resource touches: 4,932 cases / 14,796
+calls, repeat and six controls, no backend shims or cold loading. Independent
+rank/frame audit matches 6,141 touches and the same-frame/unregistered/wrap cases.
+The portable assets recency owner uses validated value snapshots, 64-bit labels,
+32-bit frame tags, an index and owned list nodes. Final3 x64 /WX matches every
+native call and passes ownership/invalid-input goldens, architecture rejection
+suite and staged real-source boundary validation. Initial missing staging-support
+failure and earlier validated vector prototype remain preserved.
+
+Seven verified files are promoted, including an explicit fable_assets policy with
+no engine dependencies. Matrix active:
+work/modern_owned_resource_recency_20261019/validation (40 steps/build).
+Contract: RESOURCE_RECENCY.md. No decoded data, resource leases, loading/eviction,
+full hardware or gameplay claim. Branch/HEAD unchanged; no game/Lua/canonical/
+commit/push or cleanup actions.
+
+## Portable assets recency matrix passed (2026-10-19)
+
+All five builds pass: 73/73/73/56/53 tests, all 40 steps/build and all 1,290
+frozen inputs unchanged. Receipt:
+work/modern_owned_resource_recency_20261019/validation/summary.json.
+No matrix is active. The next bounded native composition connects the attachment
+caller to genuine preloaded LoadDef/resource-list touches, with an interleaved
+resource access and explicit frame inputs. Cold loading, decoded-data ownership,
+eviction and complete gameplay remain separate. All artifacts stay protected.
+
+## Genuine cached-definition caller qualified; matrix active (2026-10-19)
+
+Native caller composition passes 8,192 cases / 16,384 attachment calls / 591,786
+observations, repeat and 64 controls. Independent cache rank/frame audit matches
+6,552 touches, 4,096 same-frame skips, 1,640 unregistered skips and 1,364 coarse
+second-use outcomes, including 4,096 genuine interleaved cached loads. No cold
+loading executes. Final x64 /WX owned replay matches 317,784 observations and
+all existing caller/guard/lease goldens plus cache retention after later failure.
+Three verified test/build/README files are promoted; 41-step matrix active under
+work/modern_owned_cached_definition_attachment_20261019/validation.
+Contract: PARTICLE_CACHED_DEFINITION_ATTACHMENT.md.
+
+Independent resource age packet also qualifies 8,290 read-only values, repeat,
+five controls and modular-group audit. Owned const API is staged only under
+work/modern_owned_resource_age_20261019; x64 /WX passes age values plus all 14,796
+prior recency calls. No production age change while the cache/caller matrix runs.
+Contract: RESOURCE_UNUSED_FRAMES.md. All work/build/evidence remain protected;
+no game/Lua/canonical/commit/push or cleanup actions.
+
+## Cached-definition caller matrix passed; read-only age API promoted (2026-10-19)
+
+The complete cache/caller integration passes 74/74/74/57/54 tests, all 41 steps
+per build and all 1,411 frozen inputs unchanged. Receipt:
+work/modern_owned_cached_definition_attachment_20261019/validation/summary.json.
+
+Three verified asset age header/source/test files are promoted only after that
+matrix completed. Staged x64 /WX matches all 8,290 native ages and all 14,796
+recency calls; native repeat/five controls and independent modular audit pass.
+The 42-step five-build matrix is active under
+work/modern_owned_resource_age_20261019/validation. The query is const, preserves
+unlisted FFFFFFFF and listed modular values, validates unknown labels and does
+not touch recency. No loading/eviction, decoded data or gameplay claim.
+All earlier artifacts and cleanup holds remain protected; no release.
+
+2026-10-19: Resource-age matrix COMPLETE/PASSED: 74/74/74/57/54 tests, 42 steps/build, 1429 frozen inputs unchanged. Receipt work/modern_owned_resource_age_20261019/validation/summary.json. Resource-size accounting native proof and independent delta audit qualify 4096 cases/12288 calls, repeat and seven controls; 1186 mathematical totals exceed UINT32_MAX. Native total is a raw modulo-32 word; proposed portable accounting will retain exact uint64 totals with checked overflow. No owned accounting promotion yet. Four-file external FQT obj compression receives batch-only no-objection in the coordination note; all other holds remain.
+
+
+2026-10-19: Portable resource memory accounting native proof/independent audit qualifies 4096 cases/12288 calls, repeat/seven controls; staged x64 /WX matches all calls, 1186 mathematical totals above UINT32_MAX and wide/overflow/ownership goldens. Four selected files promoted after previous1429 frozen-input and native/staged hash checks. 43-step five-build matrix ACTIVE work/modern_owned_resource_memory_20261019/validation. Sizes/totals deliberately uint64; no resource ownership/backend/eviction claim. See RESOURCE_MEMORY_ACCOUNTING.md.
+
+
+2026-10-19: Resource memory accounting matrix COMPLETE/PASSED75/75/75/58/55 tests,43 steps/build,1456 frozen inputs unchanged. Explicit recency controls native proof qualifies4096 cases/24576 calls/repeat/ten controls and independent rank/modular audit. Final x64 /WX seven compile/replay steps pass; four selected files promoted after baseline/native/staged hashes.44-step matrix ACTIVE work/modern_owned_resource_controls_20261019/validation. No resource backend or eviction claim. See RESOURCE_MEMORY_ACCOUNTING.md and RESOURCE_RECENCY_CONTROLS.md.
+
+
+2026-10-19: Explicit controls matrix COMPLETE/PASSED76/76/76/59/56 tests,44 steps/build,1485 frozen inputs unchanged. Prepared membership native proof qualifies4096 cases/36864 calls/repeat/ten controls and independent rank/membership/sum audit. x64 /WX nine compile/replay steps and GCC -Werror two steps pass, including failed node allocation/recovery and accounting overflow guards. Six files promoted;45-step matrix ACTIVE work/modern_owned_resource_membership_20261019/validation. Separate metadata owners; no joint lifetime transaction/backend claim. See RESOURCE_MEMBERSHIP.md.
+
+
+2026-10-19: Prepared membership matrix COMPLETE/PASSED77/77/77/60/57 tests,45 steps/build,1516 frozen inputs unchanged. No modern matrix active. Original unload selector/list removal/frame reset qualifies8192 cases/32768 calls/repeat/13 controls and independent gate/reference/callback/progress audit. Unload/delete callbacks explicitly controlled; no owned selector or real backend promoted. See RESOURCE_UNLOAD_SELECTION.md. Next design must provide joint metadata transactions and retained callback lifetime before porting selection.
+
+
+2026-10-19: Joint ResourceCacheMetadata passes x64 /WX11 compile/replay steps and GCC -Werror2 steps, native4096 cases/36864 calls and whole-owner allocation/overflow/invalid-input rollback goldens. Failed initial x64 driver setup preserved; corrected final2 receipt passes. Six files promoted after prior1516 frozen-input/native/staged hashes;46-step matrix ACTIVE work/modern_owned_resource_cache_metadata_20261019/validation. Metadata transactions established; retained unload-callback lease/scope and real backend ownership remain open. See RESOURCE_CACHE_METADATA.md.
+
+
+2026-10-19: Joint cache metadata matrix COMPLETE/PASSED78/78/78/61/58 tests,46 steps/build,1543 frozen inputs unchanged. No modern matrix active. Scoped unload-controller contract written; staging next under work/modern_owned_resource_unload_controller_20261019. Native unload proof remains qualified with controlled callbacks; no controller/backend promotion yet. Protect all work/source/evidence/branches; no inactive artifact releases.
+
+
+2026-10-19: Scoped retained unload controller passes x64 /WX13 compile/replay steps, GCC -Werror2 steps,8192 native cases/32768 calls/39642 observations including6874 callback states. Goldens cover all public reentry guards, retain-time inactive scope, unavailable/throwing retention, lease allocation failure, callback exception effects/terminal release/recovery, wide requests/budgets and joint rollback. Eight files promoted after prior1543 frozen/native/staged hash checks;47-step matrix ACTIVE work/modern_owned_resource_unload_controller_20261019/validation. No real backend or physical unload claim. See RESOURCE_UNLOAD_CONTROLLER.md.
+
+
+2026-10-19: Scoped unload matrix COMPLETE/PASSED79/79/79/62/59 tests,47 steps/build,1582 frozen inputs unchanged. Native budget composition qualifies8192 cases/32768 roots/14411 nested attempts/repeat/eleven controls and independent dynamic-bound/reference/callback/arithmetic audit.5551 cases have no native addition wrap and qualify for direct uint64 replay;2641 legacy-wrap cases remain evidence, deliberately excluded from checked64bit parity. No budget port promoted yet. See RESOURCE_BUDGET.md.
+
+
+2026-10-19: Checked64bit budget extension passes x64 /WX15 compile/replay steps and GCC -Werror2 steps;5551 native no-wrap cases/22204 roots/28460 observations plus wide/overflow/dynamic-count/reentry/failure goldens.2641 qualified legacy-wrap cases deliberately excluded from direct parity; all native evidence retained. Four files promoted after prior1582 frozen/native/staged checks;48-step matrix ACTIVE work/modern_owned_resource_budget_20261019/validation. No real resource backend/physical reclamation claim. See RESOURCE_BUDGET.md.
+
+
+2026-10-19: Checked budgets complete80/80/80/63/60 tests,48 steps/build,1625 unchanged inputs. Four texture width-guard files now promoted after strict staged x86/x64/GCC checks and bounded original-body counterexamples; successor49-step matrix active. See TEXTURE_WIDTH_GUARDS.md. Real decoded-resource ownership remains open.
+
+
+2026-10-19: Texture width guards COMPLETE80/80/80/63/60 tests,49 steps/build,1670 unchanged inputs. Six CPU texture-cache files promoted after final3 strict x86/x64/GCC checks; real immutable decoded RGBA ownership and scoped pinned eviction now exercised with synthetic banks.50-step matrix active; native cold loading, app integration and GPU ownership remain open. See TEXTURE_ASSET_CACHE.md.
+
+
+2026-10-19: CPU texture cache COMPLETE81/81/81/64/61 tests,50 steps/build,1704 frozen inputs unchanged. Native queue static survey final3 pins260-byte root009fc250 and26-byte bank forwarder009fc410; queue execution qualification/port not yet done. See RESOURCE_LOADING_QUEUE.md.
+
+
+2026-10-19: Native loading queue qualifies4096 cases/16384 calls/40068 observations, repeat/twelve controls/independent audit. Eight owned queue files promoted after strict final2 x86/x64/GCC checks and predecessor1704 hashes. Retained callback leases/removal-only scopes/nonallocating successor queries plus terminal/allocation/reentry/wide-accounting goldens pass.51-step matrix active; actual async backend/cold loading still open. See RESOURCE_LOADING_QUEUE.md.
+
+
+2026-10-19: Owned resource loading queue COMPLETE82/82/82/65/62 tests,51 steps/build,1746 unchanged inputs. Definition-block cache native probe active with explicit decompression/clock/lifetime shims, no cold-load backend promoted.
+
+
+2026-10-19: Ten definition-block format/cache/boundary files promoted after final2 strict x86/x64/GCC validation and1746 predecessor hash checks. Real bounded zlib, validated offset tables, immutable retained record leases, no global cache, and all18432 native requested records compare.52-step matrix active; full definition-file parsing/class transfer/session remains open. See DEFINITION_BLOCK_CACHE.md.
+
+
+2026-10-19: Definition data cache COMPLETE83/83/83/66/63 tests,52 steps/build,1786 unchanged inputs. No matrix active. Binary-definition file loader/writer surveyed (1344-byte root) with empty-catalog/single-sentinel edge noted; no file parser or class registration promoted yet.
+
+
+2026-10-19: Four binary-definition envelope codec files promoted after strict x86/x64/GCC checks and1786 predecessor hashes.2048 native protocol cases plus roundtrip/truncation/count/identity/ownership/allocation and actual-zlib-cache integration goldens pass.53-step matrix active. Raw name references remain unresolved; class registration/transfer/session remains open. See BINARY_DEFINITION_FILE.md.
+
+
+2026-10-19: Binary definition envelope COMPLETE84/84/84/67/64 tests,53 steps/build,1815 unchanged inputs. Name table reader/writer/CRC/text getter source+bytes surveyed; bounded proof preparation next. Name resolution/class registration/transfer/session still open.
+
+
+2026-10-19: Four name-table codec/validated lookup files promoted after strict x86/x64/GCC checks and1815 predecessor hashes.4096 native tables/16351 CRC-text references and lifetime/identity/failure/roundtrip goldens pass.54-step matrix active, external-header final checks included. Class registration/transfer/session remains open. See DEFINITION_NAME_TABLE.md.
+
+
+2026-10-19: Definition names COMPLETE85/85/85/68/65 tests,54 steps/build,1851 source inputs and external headers unchanged. Coherent definition-catalog composition next; class registration/transfer/session still open.
+
+
+2026-10-19: Native coherent names/file/record composition qualifies2048 cases/16356 calls/2452 descriptors, identical repeat/twelve controls and independent32936-observation audit. Real stored CRC getter executes within original file loader; classes unregistered. Four owned DefinitionCatalog files promoted after strict final3 x86/x64 /WX and GCC -Werror, all1851 predecessor inputs/external headers checked. Catalog owns validated names, raw metadata and lazy block cache, checks table/reference/full-directory coverage, returns copied descriptors/retained leases. Empty single-sentinel catalogs, owner isolation, lazy corruption/table errors and all ownership/copy/decode allocation recovery pass.55-step five-build matrix active; first x86/x64/clang/GCC all55 checks pass, headless pending. Class registration/Transfer remains open. See DEFINITION_CATALOG.md.
+
+2026-10-19: Owned definition catalog COMPLETE/PASSED86/86/86/69/66 tests,55 steps/build,1901 frozen source inputs and external zlib headers unchanged. No compiler/matrix active. Next bounded native routing proof uses prepared class entries to qualify filtering/global-index lists/name-map sorting; actual AddDefClass, allocation/Transfer/session still separate.
+
+2026-10-19: Four prepared-class routing files promoted after strict x86/x64 /WX and GCC -Werror four checks each:2048 native cases/3097 class groups/1229 instance-name entries, new copied-set/ordinal/ambiguity/nonallocating-query/owner-isolation/allocation goldens, plus previous2452 descriptor/raw-record corpus. Default create retains empty class set. No actual registry/allocator/Transfer. All1901 predecessor/native/staged hashes checked. Initial stale export path preflight rejected before mutation and empty first matrix output preserved;56-step five-build matrix ACTIVE work/modern_owned_definition_class_routing_20261019/validation_final2. See DEFINITION_CLASS_ROUTING.md.
+
+2026-10-19: Prepared class routing COMPLETE/PASSED87/87/87/70/67 tests,56 steps/build,1975 frozen inputs/external headers unchanged. Native base/parent record prefix readers qualify2048 cases/4096 calls/repeat/13 controls; independent6144-observation audit includes all256 values/flag and31793 entries. Runtime flags use low bit, parent preserves order/duplicates and appends existing lists. Portable wire codec staged next, no Transfer/class implementation.
+
+2026-10-19: Four DefinitionRecordPrefix codec files promoted after strict x86/x64 /WX/GCC -Werror match4096 native reader projections/31793 entries plus raw byte/low-bit/roundtrip/every-prefix/count-limit/ownership/allocation and real-zlib catalog-record goldens. All1975 predecessor/native/staged/external hashes checked. Explicit parent/base layout; preserves raw flag bytes, unordered duplicate entries and opaque Transfer body. First matrix preflight rejected old staged CMake hash after explicit promotion; failed recipes/empty validation retained, historical staged hashes now resolve explicit successor promotion only.57-step matrix ACTIVE work/modern_owned_definition_record_prefix_20261019/validation_final2. No class Transfer/instantiation/session claim.
+
+2026-10-19: Definition prefixes COMPLETE/PASSED88/88/88/71/68 tests,57 steps/build,2013 frozen source inputs/external headers unchanged. FRONT_END native Transfer composition qualifies2048 cases/4096 roots/repeat/14 controls and independent47356 observations including13438 movies/7035 ignored nonzero tags. Real context/member/vector count/tag skip/long paths; string materialization/lifetime/vector capacity controlled. No actual class allocator/renderer/game I/O. Portable raw-tag/body schema design next; existing named-tag save validator retains its policy.
+
+2026-10-19: Four FrontEndDefinitionTransfer wire-codec files promoted after strict x86/x64 /WX/GCC -Werror:2048 native cases/13438 movies, raw tag+i32+byte consumption, exact roundtrips/every truncated prefix/negative-huge counts/NUL rejection/ownership/allocation recovery and names+class-route+actual-zlib+parent-prefix+Transfer pipeline. All2013 predecessor/native/staged/external hashes checked. Existing named-tag save validator unchanged; this native format preserves unchecked tag words.58-step matrix ACTIVE work/modern_owned_frontend_definition_transfer_20261019/validation. Generic class allocator/resource attachment/other schemas/session still open.
+
+2026-10-19: FRONT_END Transfer COMPLETE/PASSED89/89/89/72/69 tests,58 steps/build,2064 source inputs/external headers unchanged. Cold LoadDef read-only survey pins526-byte body,98-byte class lookup,10-byte parent name setter and68-byte unload body. Budget request result is ignored by native LoadDef; later checked owned admission must distinguish that behavior. Preparing coherent cold-construction/order evidence; no new owner/factory promoted.
+
+2026-10-19: Four FrontEndDefinitionCache files promoted after strict x86/x64 /WX/GCC -Werror,582 budget-fitting native cold/warm cases and391 stronger over-budget rejections. Real decoded immutable leases/pins/delay/eviction/reload, class/ordinal/corruption rejection, wide maxima/frame wrap and every C++ owner/admission allocation recovery pass, including post-eviction node rollback/nonpublication. Native cold composition qualified6144 calls/54 controls/70392 observations, actual factory/constructor/prefix/Transfer/resource helpers with explicit primitive capabilities. All2064 predecessor/native/staged/external hashes checked.59-step matrix ACTIVE work/modern_frontend_definition_asset_cache_20261019/validation. No generic registry/other classes/full session claim.
+
+2026-10-19: Owned FRONT_END cache COMPLETE/PASSED90/90/90/73/70 tests,59 steps/build,2131 source inputs/external zlib headers unchanged. No compiler/matrix active. Read-only frontend Run2191-byte caller survey identifies idle120-second gate, native modulo movie selection, language suffixes, video callback/global-playing state and timer/input/music follow-up. Preparing a bounded attract-branch reference; no full menu, renderer/movie backend or gameplay session claim.
+
+2026-10-19: Owned frontend attract COMPLETE/PASSED91/91/91/74/71 tests,60 checks/build,2172 frozen inputs/external headers unchanged. Seven files add concrete presentation library with public asset lease dependency, native4096-case float threshold/language/movie-request/post-callback projection plus ownership/pins/lifetime/reentry/all callback exceptions/allocation recovery. Native partial caller313-byte branch +16-byte prologue,18 controls/49090 observations; full frontend Run excluded. Initial architecture staging harness failures retained; final2 strict all3 pass. Adjacent Update148/disconnect49 qualifies2048cases/4096calls/11controls/54144 observations; float-step/UI policy staged next, arbitrary x87 clock subtraction excluded. See FRONTEND_ATTRACT.md and FRONTEND_UPDATE.md.
+
+2026-10-19: Frontend update4 files promoted after strict final2 x86/x64 /WX/GCC -Werror three steps each:4096 native float-step/device/UI/state projections, standalone public header isolation, IEEE/negative/NaN/clamp/noallocation and all host exceptions/reentry/recovery goldens. Clock subtraction stays app boundary; host owns completion timestamp. Initial x86 standalone launch740 retained, default embedded application manifest resolves without elevation; behavior unchanged. All2172 predecessor inputs/external headers checked;61-step matrix ACTIVE work/modern_owned_frontend_update_20261019/validation. No app/session/game/backend claim. See FRONTEND_UPDATE.md.
+
+2026-10-19: Frontend update COMPLETE/PASSED92/92/92/75/72 CTest,61 checks/build,2207 inputs/external headers unchanged. No compiler/matrix active. Native interpolation constructor158/update98 qualifies2048 cases/8192 calls/repeat/9 controls/260096 independent observations. Staged owned float-weight/history/frame values pass strict x86/x64/GCC3 steps including6144 projections/public header/noalloc/copy/reset/lifetime/nonfinite goldens; promotion pending. The453-byte frame caller is surveyed only, not executed; no renderer/whole-frame/clock arithmetic claim. See FRONTEND_INTERPOLATION.md.
+
+2026-10-19: Frontend interpolation4 files promoted after2207 predecessor hashes and strict final2 x86/x64/GCC3 steps each:6144 native frame/history projections, all28 output words, zero list/bullet/server fields, negative/nonfinite weights, noalloc/public header/copy/reset/lifetime. Clock-weight arithmetic app boundary.62-step matrix ACTIVE work/modern_owned_frontend_interpolation_20261019/validation. Read-only453-byte frame caller survey only; no wholeframe/Draw/backend claim. See FRONTEND_INTERPOLATION.md.
+
+2026-10-19: Frontend interpolation COMPLETE/PASSED93/93/93/76/73 CTest,62 checks/build,2244 source inputs/external headers unchanged. No matrix/compiler active. Coherent native453-byte frame body plus prologue, genuine Update148/disconnect49/constructor158/interpolation98/attract qualifies4096 prepared frames,repeat/26controls/266788 independent observations. Force-music clear/order,0.2sec delay-stop/NaN,Input then actualUI update/interpolation then controlledDraw then attract;588 movies,152 delay restarts after stop,308 dualmusic,174 differing update/attract answers. Input/Draw/services controlled, no completeRun/systempoll/loop/backend. Frame coordinator design next.
+
+2026-10-19: Frontend frame coordinator4 files promoted after2244 predecessor inputs/external headers and strict first-pass x86/x64/GCC3 steps each:4096 coherent nativeframes/588 movie requests/231615 portable observations, real owned-definition pipeline/pins/lifetime, ownedframe+movie results, noalloc nonmovie path, typedempty/RNGerrors, everycallbackpositionthrow show/clear modes, allreentry/allocation/recovery. Owns update/interpolation/attract policies; host clock computation/Input/Draw/backends app supplied, no fullRun/loop/game claim.63-step matrix ACTIVE work/modern_owned_frontend_frame_20261019/validation. See FRONTEND_FRAME.md.
+
+2026-10-19: Prepared frontend frame COMPLETE/PASSED94/94/94/77/74 CTest,63 checks/build,2287 source inputs/external headers unchanged. No compiler/matrix active. Native Input1441-byte read-only survey pins373-byte repeat/action tail,12-byte original prologue/2-byte register saves/genuine empty destructor. Explicit preparedmask/held bits; event scanning/fullInput excluded. Initial limitedtrial lackedX-control witness and preserved; corrected limitedtrial64cases/256calls/24controls passes; full8192-case run ACTIVE. No new Input policy promoted.
+
+2026-10-19: Frontend repeat/action policy4 files promoted after2287 predecessor inputs/external hashes and strict first-pass x86/x64/GCC3 steps each:32768 native CPU-observed mask/suppression/priority/timer projections399448 observations, public header/noalloc/IEEE/unknownheld/ownedresults and everycallback throw/reentry/partialtimer/recovery. Native8192 cases/32768 calls/repeat/24 controls/460513 independent observations. Initial limitedX witness miss preserved; corrected limitedpasses, fullfinal2directCPU labels qualified.64-step matrix ACTIVE work/modern_owned_frontend_input_actions_20261019/validation. Event scanning, keyboard/mouse/device conversion, fullInput/observers remain open. See FRONTEND_INPUT_ACTIONS.md.
+
+2026-10-19: Frontend repeat/actions COMPLETE/PASSED95/95/95/78/75 CTest,64 checks/build,2334 source inputs/external headers unchanged. No matrix/compiler active. FullInput/helper read-only survey locates actual getter constructor/query/key spans; nested joystick helper first-return65-byte slice incomplete, initial256-byte CFG bound exceeded and retained; final3 boundedCFG reaches382bytes/120instructions/3returns plus trigonometric intrinsic call. Not a raw XY copy. Canonical helper/get_position/set_ui_key definitions unlocated; native bytes/header evidence only, no canonical changes. Next event-policy proof keeps joystick transform controlled/explicit; no Input/event/device/console/observer backend promoted.
+
+2026-10-19: Decoded frontend input events4 files promoted after2334 predecessor hashes/headers and strict first-pass x86/x64/GCC3 steps each:6144 native semantic dispatches136112 portable observations,19968 values/18279 processed events, real reuse of repeat/actions, noalloc/public header/ownedresults/consolecopies/devicegate/foreignrelease/UTF16/liveallow and everycallbackthrow/reentry/partialsetter/recovery. NativeFullInput root/scalar getters2048cases/6144calls/24controls/273543 observations with joystick calibrated return, queue/console/observer/timers controlled.35-byte position wrapper/382-byte remap excluded; no calibration/backend/game claim.65-step matrix ACTIVE work/modern_owned_frontend_input_events_20261019/validation. See FRONTEND_INPUT_EVENTS.md.
+
+2026-10-19: Decoded frontend events COMPLETE/PASSED96/96/96/79/76 CTest,65 checks/build,2394 source inputs/external headers unchanged. No active compiler/matrix. Calibration read-only remap382/wrapper35/import survey identifies MSVCR71 _CIacos, epsilon0.0001f, offset0.5, inverseTauFloat0.15915493667125702 and float-roundedTauDouble6.2831854820251465, sqrt2 scale. Planned probe must retain explicit checked double-acos capability; actual CRT not executed. No calibration/platform/backend implementation promoted yet.
+2026-10-19: Checked frontend stick calibration3 platform files promoted after2394 predecessor inputs and native/staged hashes. Native4096cases8192calls/repeat12controls, independent16384axis observations/all3returns/9direction masks,76tinycopies8116acos calls2726clampedvalues42quarterequalities. Original x87 sqrt/sin/cos/arithmetic executes, double-acos controlled, original CRT excluded. Strict x86/x64/GCC3checks each pass all4096native projections plus invalidaxis/tinycopy/ownedvalue/noalloc/header goldens.66-step matrix PREPARED NOT STARTED: final launch preflight caught renewed Texture Archive4GB lease. Checkpoint65 remains latest completed full matrix; no new compiler/matrix active. Review next scan cursor boundary read-only; no game/runtime/lease/STOP/cleanup mutation. See FRONTEND_STICK_CALIBRATION.md.
+2026-10-19: Calibration66 matrix ACTIVE after fresh lease-absent preflight; initial lease-race guard launched no build, read-only preflight2464 inputs passes. Two workers/j2 below normal, production/stage/native/recipe/deps/build inputs frozen. New separate stored-scan native packet2048cases47062calls/repeat12controls independently checks489499field observations and whole8192byte images, no capability stubs. No owned queue promoted. Coherent fullInput+genuinewrapper/remap2048cases6144calls/repeat28controls independently qualifies273911observations,467getters462controlledacos5tinycopies. Controlled queue/device/console/observer/timers remain; original CRT excluded. Additional pipeline regression staged after strict final2 x86/x64/GCC6144dispatches136538projections and public header checks; initial local-lambda-capture fixture failure preserved/fixed. No further production promotion during active66 matrix, no game/lease/STOP/cleanup changes. See FRONTEND_CALIBRATED_INPUT.md and INPUT_EVENT_SCAN_CURSOR.md.
+2026-10-19: Checked calibration66 COMPLETE/PASSED97/97/97/80/77 CTest,66checks/build,2464 source inputs/external headers unchanged. Coherent calibrated-input replay2 reviewed test/CMake files promoted after2464 predecessor/native/staged hashes and strict final2 x86/x64/GCC6144dispatches136538portable observations.67-step five-build matrix ACTIVE after fresh lease-absent preflight, two workers/j2/below normal; all production/staged/native/recipe/deps/build inputs frozen. Next work may stage a bounded52byte input-record adapter at integration boundary without modifying frozen inputs; no game/OS/device/runtime/lease/STOP/cleanup mutation.
+2026-10-19: Coherent calibrated-input67 COMPLETE/PASSED98/98/98/81/78 CTest,67checks/build,2510 inputs/external headers unchanged. Portable fable_frontend_input_bridge6 reviewed files promoted after2510 predecessor/native/staged hashes, strict x86/x64/GCC6144 native dispatches136538 observations/error/ownership/noalloc/public-header checks and36 architecture tests. Own integration/frontend/include root, publicpresentation/privateplatform, checked52byte extent/joystickdomain, typedownedvalues no native/OS/device headers. First layout preserved; direct staged-boundary fixture root setup failure retained and corrected in proper isolated repository.68-step five-build matrix ACTIVE below normal two workers/j2 after fresh lease-absent preflight; no further frozen-input edits. No game/runtime/lease/STOP/cleanup changes. See FRONTEND_INPUT_BRIDGE.md.
+2026-10-19: Input bridge68 COMPLETE99/99/99/82/79 CTest,68checks/build,2554 frozen inputs/external headers unchanged. Immutable input batch69 COMPLETE100/100/100/83/80 CTest,69checks/build,2606 inputs/external headers unchanged. Four owned batch/cursor files promoted after native47062 scans376496 portable observations, strict final2 x86/x64/GCC, lifetime/source mutation/move/noalloc/allocation-failure/unwind checks. Initial test signed-index warnings preserved/corrected. No active matrix/compiler. Coherent native fullInput+actualstoredscans+calibratedgetter6144calls/repeat32controls now independently qualifies285897 input +273451 scan/count observations,29425 scan calls13022 stored getters302 null skips70857 callback counts. First limitedrelease control witness miss preserved; first full passed, separate final2 driver adds callback-count observations without changing prior driver. Next stage process_batch consumer; no game/runtime/lease/STOP/cleanup changes.
+2026-10-19: Retained batch consumption4 files promoted after2606 predecessor/native/staged hashes. Shared collector/finish preserves span entry; named process_batch holds cursor duringevents, closes beforeactions/onthrow, invalidbatch beforeeffects, cross-entry guards and producer-reset lifetime. Strict x86/x64/GCC3 steps each6144batch dispatches177396projections34714callback counts plus separate2-step original6144-span/nonfinite/ownership/allcallback regressions pass first attempt.70-step matrix ACTIVE two workers/j2/below normal after fresh lease-absent preflight; all production/staged/native/recipe/deps/build frozen. New read-only actual NUI observable vtable/method survey identifies exclusive/concurrent/normal routing and snapshot-copy lists; owned dispatch snapshots normal registrations. Canonical definitions unlocated; no observer execution/port yet. No game/runtime/lease/STOP/cleanup change.
+2026-10-19: Batch consumption70 COMPLETE/PASSED101/101/101/84/81 CTest,70checks/build,2663 source inputs/external headers unchanged. No active compiler/matrix. NUI observer packet independently qualifies2048cases10240calls/repeat16controls501760root+291826capability observations75649live images; actual routing/query/list-copy/clear/destruction, MSVCR71 malloc/free and receiver predicate/delivery controlled. Immutable unique nonnull source registrations only; no callback mutation/exception/nativeCRT/observerCtor/UI initialization/game. Next stage immutable retained observer set/dispatcher, no canonical promotion. Branch feat/novi-script-recovery HEAD366c08e64a4323a6147fe4d5caa675e31799d51e unchanged; last D free566948556800. All source/work/build/native/evidence/refs held, inactive releases NONE; no game/lease/STOP/cleanup change.
+2026-10-19: Prepared observer71 four files promoted after2663 predecessor/native/staged hashes. Immutable shared receiver sets validate null/empty-owner aliases/duplicates, preserve cross-list overlap/outside exclusive, source-independent lifetime. Dispatcher routes exclusive/concurrent/normal and owned-normal, noalloc; typed reentry, stable queried leases, publish-new-before-old-release with guarded destructor reentry, callback exception prefix/recovery and action/notification maps. Strict final2 x86/x64/GCC10240 native routes/563940projections/25273callbacks plus all allocation/lifetime/reentry/failure/header goldens pass; initial GCC fixture indentation warning preserved/fixed.71-step matrix ACTIVE two workers/j2/below normal after lease-absent preflight; inputs frozen. Next original receiver filter read-only survey; no mutable registry/widget/backend/game/lease/STOP/cleanup changes.
+
+2026-10-19: Observer71 COMPLETE/PASSED102/102/102/85/82 CTest,71steps/build,2722 frozen inputs/external headers unchanged. Observed-event membership native45056calls/repeat13controls independently qualifies270336observations, full source images/traversal/iterator. Immutable owned value4files promoted after strict x86/x64/GCC source-lifetime/duplicate/prevent/alloc-failure leak/recovery/composed observable/header checks.72-step matrix ACTIVE below normal/two workers/j2 after lease-absent preflight; collected inputs frozen. No native constructor/mutable registry/backend/game/lease/STOP/cleanup changes; all artifacts held. See FRONTEND_OBSERVER_FILTER.md.
+
+2026-10-19: Membership72 COMPLETE/PASSED103/103/103/86/83 CTest,72steps/build,2781 inputs/external headers unchanged. Coherent dispatch+genuine receiver membership10240calls/repeat29controls independently qualifies501760root+257170boundary observations/66985images. Only malloc/free/delivery controlled; predicate counters observation instrumentation. Strict x86/x64/GCC529284projection/16609callback composition and nofallback/prevention/throw-recovery/header goldens pass. Two-file test-only change promoted;73-step matrix ACTIVE below normal/two workers/j2, collected inputs frozen. All artifacts held; no canonical/game/lease/STOP/cleanup/Git changes. See FRONTEND_FILTERED_DISPATCH.md.
+
+2026-10-19: Coherent filtered dispatch73 COMPLETE/PASSED104/104/104/87/84 CTest,73steps/build,2839 inputs/external headers unchanged. No compiler/matrix active. Read-only receiver lifecycle/helper surveys identify immediate code25 notification only on first observation, removal/clear and default subscription list0..33,36,37. New native lifecycle proof ACTIVE with complete prepared count+8/comparator+c prefix, actual balance helpers, controlled malloc/free/delivery; first4case603call final2 repeat/10controls passes. First trial mutation preimage typo preserved; no lifecycle API changes yet. All artifacts held; no game/lease/STOP/Git/cleanup change.
+
+2026-10-19: Native observer lifecycle COMPLETE77759ops/repeat10controls, independent2448037membership observations39503matched alloc/free1536initial events512whileprevented. Complete preparedemptyset count+8/comparator+c; genuine treebalance/clear/filter, controlled successfulCRT/delivery only, no ctor/UI/game. Persistent with_event/without_event plus owned optional initial_event4files promoted after2839 predecessor/native/staged hashes; strict x86/x64/GCC2468492projections1536initial events, persistent lease/noop/alloc-failure leak/recovery/publish-before-delivery/header checks pass first attempt.74-step matrix ACTIVE below normal/two workers/j2/frozen inputs; all artifacts held, no game/lease/STOP/Git/cleanup changes. See FRONTEND_OBSERVER_LIFECYCLE.md.
+
+2026-10-19: Persistent event updates74 COMPLETE/PASSED105/105/105/88/85 CTest,74steps/build,2908inputs/external headers unchanged. No compiler/matrix active. Native registry512cases36808transitions/repeat12controls, independent948873state observations24343alloc/free pairs pass: actual add/dedup/remove/clear/filter/snapshotdispatch and actual receiverclear; remove-exclusive ignorespointer, remove-normal/concurrent clearsinterestbeforeunlink, clear-all preservesinterest. Failed rootarity/small-sample witness trials retained/final2correct/fullpasses. Modern guarded registration next, no productionregistry change yet. All artifacts held; no game/lease/STOP/Git/cleanup changes.
+
+2026-10-19: Guarded registry4files promoted after2908 predecessor/native/staged hashes; strict final2 x86/x64/GCC36808native transitions1047640portable projections19962callback effects pass. Retained immutable configuration changes validate ownership/dedup, allocate before clearhook, clear-before-unlink with partialthrow preservation, preserve crosslist receiver effects, guard all mutation/release/reentry, noalloc identity noops. Original GCC fixture indentation failures retained/fixed.75-step matrix ACTIVE below normal/two workers/j2/collected inputs frozen. All artifacts held; no game/lease/STOP/Git/cleanup changes. See FRONTEND_OBSERVER_REGISTRY.md.
+
+2026-10-19: Registry75 COMPLETE/PASSED106/106/106/89/86 CTest,75steps/build,2968 frozen inputs/external headers unchanged. No compiler/matrix active. Native original Input->genuine stored scans/calibration/UI stores/observable dispatch/filter6144calls/repeat41controls and independent285897input273451scan/count observations pass. Observer audit detects correlated empty-route coverage gap; prior native/input receipts and failed audit retained. Separate final2 fullproof ACTIVE with empty modes; independent final2 audits prepared; no pipeline production change yet. All artifacts held/no game/lease/STOP/Git/cleanup change.

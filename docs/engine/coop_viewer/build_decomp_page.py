@@ -6,9 +6,10 @@ here (a readability pass); the 'raw' text is read verbatim from the recovered
 .cpp files so it can't drift from the real decompiler output.
 """
 import json, os, sys
+from pathlib import Path
 
-ROOT = r"D:\Documents\FableTLC"
-OUT  = os.path.join(ROOT, "docs", "cut-coop-decompilations.html")
+ROOT = str(Path(__file__).resolve().parents[3])
+OUT = str(Path(__file__).resolve().with_name("cut-coop-decompilations.html"))
 
 def rel(*p): return os.path.join(ROOT, *p)
 

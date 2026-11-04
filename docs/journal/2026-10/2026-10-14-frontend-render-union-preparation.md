@@ -1,0 +1,17 @@
+# Frontend and renderer composition preparation
+
+Read-only preparation found 40 distinct original code bodies for a combined frontend, menu, clear, buffered drawing, draw-list, state, texture and pixel-format graph. Shared bodies agree byte for byte. Fresh disassembly found 104 direct edges within the union, 76 external direct edges, and 432 declared relocation operands. The frontend contains one clear call, two buffered drawing calls and two draw-list calls. No combined caller has been compiled or executed.
+
+The code inventory is `work/native-recreation/frontend/0042df9e/20261014/render-union-readonly-amended1/original_graph_union_readonly.json`, SHA256 `aed816550a1c4d5d7608b19da78c57fe2006f1221e335555312ad70ebfcc70db`. The operand inventory is `render-union-operands-amended3/original_union_operand_inventory.json` beneath the same frontend directory, SHA256 `056e96100eb4b7f8e1d1bbdd99b52ba12676d3065e2a3b5abe8beacc8c44f63e`.
+
+First diagnostics are preserved: earlier inventories include extra instruction diagnostic fields, so duplicate bindings must compare their six typed fields; the frontend mip table load needs the explicit table+4 label; and the float window tail jump needs the declared physical viewport boundary. These were inventory preparation failures before output, with no compiler, linker or native invocation.
+
+Amended3 also marks both absolute comparator function pointers as copied-root references. Their raw operand sites were already correct; the earlier classification only marked relative edges. No source header or caller consumed that earlier classification.
+
+Source-only oracle declarations now cover all 40 bodies and 432 operands, with 28 explicit common code boundaries. Preparation receipt: `render-union-headers-first/source_preparation.json`, SHA256 `691e7611115bda5709be5f15cb8c86d4f2e02103efa0fa65d520d92b33b80e67`. Separate relocation roles distinguish copied code pointers, original state-block library storage, genuine format data, current CRT cookie, owned fixed globals and the exact float scalar. No current provider selector or executable caller exists yet.
+
+The current code plan assigns 40 engine roots and three CRT roots to 32 actual COFF objects, using prior linked proofs and rechecked definitions. Receipt: `render-union-provider-plan-amended1/current_code_provider_plan.json`, SHA256 `10527f3c54ed8f64d9ebfb2e3c2bf7412d5d41c5f50c43506bc05f57c514aa6f`. The first parser rejected a linker `f` flag in an owner string; that diagnostic is preserved. Whole-object duplicates, all data providers and the new combined linkage remain outstanding.
+
+The next caller must assign actual shared providers and data aliases, preserve original state-block dispatch, bind the original qsort and current cookie services explicitly, and own/reset all renderer and frontend storage. A smaller initial frame corpus can use empty menu and drawing queues, followed by queue production in typed menu/engine/IME callbacks. Each scope needs its own review before execution. Existing separate fixture results do not establish frame composition behavior.
+
+The original frontend virtual Draw versus retained direct-call ABI remains qualified. Raw borrowed object storage does not establish constructors or lifetimes. Physical display, device, shader and UI services remain explicit fixture boundaries. No legacy naked engine assembly is a C++ provider. No canonical promotion, coverage change, game/GPU run or x64 acceptance was performed.

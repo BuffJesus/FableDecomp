@@ -203,3 +203,11 @@ minimums, per-level acquisition, filter forwarding, temporary surface
 ownership, and cleanup order. Together with its exact `CSurface` helpers, this
 closes the texture-copy coordinator immediately below the remaining
 `CMovie::Draw` sprite submission tail.
+
+## Modernization fork
+
+The proposed modernization media backend uses ffmpeg (libavformat/libavcodec) to replace
+DirectShow and decode the retail `.wmv` files into the texture handoff described above.
+This is a design direction; the current local modern source does not yet implement
+that decoder. See
+[MODERNIZATION](../modern/MODERNIZATION.md#audio-video-input-platform).

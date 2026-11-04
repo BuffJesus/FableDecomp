@@ -1,8 +1,8 @@
 # Scripting redesign — a first-class script runtime for the modernized engine
 
 Design doc, 2026-09-26. Status: **proposal**, nothing built. Scope: the post-recreation
-modernization fork (see [ARCHITECTURE](../ARCHITECTURE.md) and the "x64 / broad modernization" row in
-[ROADMAP](../ROADMAP.md#parked--shelved)). The byte-exact rebuild is untouched: it keeps the retail
+modernization fork (see [MODERNIZATION](../modern/MODERNIZATION.md), [ARCHITECTURE](../ARCHITECTURE.md)
+and [ROADMAP](../ROADMAP.md) section (h)). The byte-exact rebuild is untouched: it keeps the retail
 compiled quest classes, because that is what the retail bytes are.
 
 Companion: [IN_ENGINE_MODDING_ENVIRONMENT](IN_ENGINE_MODDING_ENVIRONMENT.md) (the in-engine editor /

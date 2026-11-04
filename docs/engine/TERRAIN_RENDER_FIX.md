@@ -1,5 +1,10 @@
 # ForgeTest Terrain Render Fix — Honest Status & Action Plan
 
+> Historical investigation and action plan (2026-07-20). The later
+> [white-out analysis](TERRAIN_WHITEOUT_FIX.md) rejects the reference/alias
+> theory discussed here. The deployment and editor-bake steps below are retained
+> as historical instructions, not a current verified procedure.
+
 **Date:** 2026-07-20
 **Goal:** Make custom region `ForgeTest` (map slot 399, region 95, donor `Darkwood9_Leadout_01`) render its terrain instead of whiting out.
 **Bottom line up front:** Nothing is *proven* to render yet. The **editor bake (user-run)** is the only route that can render the *authored hill*, and it is fully staged as a turnkey bundle. The FSE name-alias is built and worth running, but it is a **diagnostic probe** (best case renders the *donor's* terrain, not the hill), not a durable fix. No headless bake was possible.

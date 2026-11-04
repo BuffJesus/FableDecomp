@@ -54,6 +54,7 @@ def verified_public_counts(
         candidate_matches
         + int(status["lift_matching"])
         + int(status["lift_functional"])
+        + int(coverage.get("candidate_near_matches", 0))
     )
     byte_identical = (
         int(parity["matching"]) + int(status["lift_matching"])

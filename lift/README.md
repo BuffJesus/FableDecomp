@@ -1,5 +1,7 @@
 # Lift harness — bar #2 (buildable, matching-decomp source)
 
+> Historical lift-harness reference, established July 2026. The byte-comparison results below describe those recorded experiments; they do not by themselves establish behavior or current promotion eligibility. Follow [CONTRIBUTING](../CONTRIBUTING.md) and the current pipeline requirements for shared types, behavior checks and promotion.
+
 *Stood up 2026-07-21. This is the FULL_DECOMP bar-#2 oracle: it proves a lifted
 `.cpp` recompiles to the ORIGINAL retail machine code, byte-for-byte.*
 
@@ -42,7 +44,7 @@ with a padded `unsigned char m_[...]` at offset 0 (non-virtual members → no vp
 
 ## Toolchain
 - **VC7.1 / MSVC 2003** portable at `D:\Tools\vc71` (`cl 13.10.3077` — Fable's exact
-  compiler). Flags: `/O2 /Oy` (era-typical; no `/GS` — VC7.1 has no security cookie).
+  compiler). The historical harness invokes `/O2 /Oy`; consult the scripts for current compiler options.
 - **Win32/Direct3D SDK gate is proven:** Windows SDK `10.0.22621.0` x86 headers and
   import libraries compile, link, and run under VC7.1. Reproduce with
   `tools/ProbeVc71Sdk.ps1`; activate via `rebuild/vc71_sdk_env.ps1`.

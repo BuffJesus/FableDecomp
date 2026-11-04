@@ -26,11 +26,25 @@
 
 - [ ] **Frame-dependent mouse camera response** — `Reported`
   - Mouse movement may feel different depending on frame rate.
+  - 2026-10-17 static (retail): in-game the mouse is read once per world frame (15 Hz, via
+    `CMainGameComponent::GetInputs`), and each read sums all motion since the last world frame, so
+    render frame rate does not change sensitivity. Any difference would be perceived smoothness:
+    the camera is world-stepped and interpolated. See `docs/modern/FRAME_TIMING.md`.
 
 - [ ] **Mouse camera acceleration or angular-speed cap** — `Reported`
   - Fast mouse movement does not always produce proportional camera rotation.
 
 - [ ] **Camera micro-stutter at high mouse polling rates** — `Reported`
+  - 2026-10-17 static (retail): `CMouseDX::SetExclusiveMode` 0xAB5710 sets
+    `DIPROP_BUFFERSIZE` = 256 records, drained once per world frame (66.7 ms). Records from
+    4000/8000 Hz mice (about 530/1,070 per frame) overflow it and the excess motion is dropped,
+    which also fits "fast mouse movement does not produce proportional rotation". 1000 Hz fits.
+    **Live 2026-10-17:** injected 1,500-record bursts return `DI_BUFFEROVERFLOW` on retail's 256
+    buffer and drain cleanly at 8,192 (FRAME_TIMING "Live results"). Not yet felt with a physical
+    4-8 kHz mouse. Candidate patch: raise both `DIPROP_BUFFERSIZE` immediates (VA 0xAB57BA and
+    0xAB5871, 256 -> 8192). The read loop already drains any buffer size; see
+    `docs/modern/FRAME_TIMING.md`. Patcher (writes a copy, 2 bytes):
+    `tools/modern/mouse_buffer_patch.py --exe <Fable.exe> --out <copy.exe>`.
 
 - [ ] **Player lean affects the camera too strongly** — `Design Ambiguity`
 
@@ -45,6 +59,12 @@
 - [ ] **Hero movement changes direction abruptly when lock-on ends** — `Investigate`
 
 - [ ] **Movement behaviour changes at high frame rates** — `Investigate`
+  - 2026-10-17 static: nothing in the render path changes game state. Thing/creature/player
+    `RenderUpdate` hooks are empty; the camera and environment interpolate between world
+    frames; GUI widgets integrate real dt. Movement, physics, animation and AI run on the fixed
+    15 Hz world tick. Remaining suspects: interpolation jitter from the predicted present time,
+    and world-tick scheduling under uncapped/VRR output (needs a live sample).
+    `docs/modern/FRAME_TIMING.md`.
 
 - [ ] **Rolling can intersect doors, props, or uneven geometry** — `Reported`
 
@@ -262,6 +282,13 @@
 - [ ] **Incorrect button prompt is shown for the active input device** — `Investigate`
 
 - [ ] **Menu input repeats too rapidly at high frame rates** — `Investigate`
+  - 2026-10-17 static: the main-menu (frontend) repeat is not frame-rate dependent.
+    `CNewFrontendGameComponent::Input` 0x42E3EE runs once per render frame and repeats a held
+    key or stick direction on the real-time `CStopWatch` at `+0xD8`: 0.333 s initial delay, then
+    every 0.085 s. In-game, input is sampled once per world frame (15 Hz), and the inventory repeat
+    delays are seconds (`CInventoryDef::Initial/Continued*MovementRepeatDelay`). If the report is
+    real, it is in another menu path (the NUISystem update under 0x599E3F takes a variable dt).
+    See `docs/modern/FRAME_TIMING.md`.
 
 - [ ] **Resolution change breaks UI scaling or mouse mapping** — `Reported`
 
@@ -326,10 +353,22 @@
 - [ ] **Crash or rendering failure after Alt-Tab** — `Reported`
 
 - [ ] **Incorrect behaviour at very high frame rates** — `Investigate`
+  - 2026-10-17 static: nothing in the render path changes game state. Thing/creature/player
+    `RenderUpdate` hooks are empty; the camera and environment interpolate between world
+    frames; GUI widgets integrate real dt. Movement, physics, animation and AI run on the fixed
+    15 Hz world tick. Remaining suspects: interpolation jitter from the predicted present time,
+    and world-tick scheduling under uncapped/VRR output (needs a live sample).
+    `docs/modern/FRAME_TIMING.md`.
 
 - [ ] **Timing-dependent scripts complete too quickly or too slowly** — `Investigate`
 
 - [ ] **Physics or animation behaviour changes with frame rate** — `Investigate`
+  - 2026-10-17 static: nothing in the render path changes game state. Thing/creature/player
+    `RenderUpdate` hooks are empty; the camera and environment interpolate between world
+    frames; GUI widgets integrate real dt. Movement, physics, animation and AI run on the fixed
+    15 Hz world tick. Remaining suspects: interpolation jitter from the predicted present time,
+    and world-tick scheduling under uncapped/VRR output (needs a live sample).
+    `docs/modern/FRAME_TIMING.md`.
 
 - [ ] **Game fails to restore display mode after a crash** — `Reported`
 

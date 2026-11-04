@@ -61,6 +61,12 @@ def warn_if_oracle_ledger_pruned(root: Path, rows: list) -> None:
     )
 
 
+OPERATOR_CODES = {
+    "=": "??4", "==": "??8", "!=": "??9", "[]": "??A", "->": "??C", "*": "??D",
+    "-": "??G", "+": "??H", "<": "??M", "()": "??R", "+=": "??Y", "-=": "??Z",
+}
+
+
 def symbol_leaf(expected_name: str) -> str:
     """The identifier to look for inside the built object's symbols.
 
@@ -79,6 +85,12 @@ def symbol_leaf(expected_name: str) -> str:
     name = (expected_name or "").strip()
     if name.startswith("?"):
         return name[1:].split("@", 1)[0]
+    # Operator names (`operator+(CWideString const&,CWideString const&)`) never appear
+    # in a mangled symbol; match on the operator's mangling code instead. Without this
+    # the "longest function" fallback picks whichever inline COMDAT is longest.
+    operator = re.match(r"^(?:[\w:]*::)?operator\s*([^\w\s(]+)\s*\(", name)
+    if operator and operator.group(1) in OPERATOR_CODES:
+        return OPERATOR_CODES[operator.group(1)]
     leaf = name.rsplit("::", 1)[-1].lstrip("~")
     if "<" in name:
         head = name.split("<", 1)[0]
@@ -92,7 +104,7 @@ def object_text(
     expected_name: str,
     expected_size: int | None = None,
 ) -> tuple[bytes, int, str]:
-    process = subprocess.run([objdump, "-d", str(path)], capture_output=True, text=True, check=True)
+    process = subprocess.run([objdump, "-d", "-z", str(path)], capture_output=True, text=True, check=True)
     functions: list[dict[str, object]] = []
     section_bytes: list[dict[int, int]] = []
     section_index = -1

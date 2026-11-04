@@ -80,7 +80,12 @@ The engine routine's `LAB_00c06c3a` (R1) and `LAB_00c06d9e` (M1) are the two
 distinct short-match sites, and `code_r0x00c06bdc` is the literal-run handler — all
 reproduced in the port.
 
-## 3. Framing (unchanged, from BIG_TEXTURE_FORMAT.md §4.1)
+## 3. Framing (historical 2026-07-19 interpretation)
+
+> Correction: this early per-mip description is superseded by
+> [TEXTURE §4](TEXTURE.md#4-payload-recipe-confirmed-2026-07-20--only-mip-0-is-compressed).
+> Only mip 0 uses the chunked compressed region; later mips are raw. The
+> compressed region ends with three literal source bytes outside the LZO stream.
 
 Each texture entry's payload is a sequence of per-mip LZO1X blocks:
 
@@ -94,7 +99,11 @@ block := u16 clen                 ; header 2 bytes, when clen < 0xffff
 On every tested block the LZO **EOS marker lands exactly at `clen`** (all input
 consumed), confirming both the framing and the codec.
 
-**Uncompressed-tail note:** decompressed base mips come out **3 bytes short** of the
+> Correction: the three bytes are stored literally after the compressed chunk;
+> preserve them from the input rather than replacing them with zeros. The
+> original early interpretation below is retained as superseded history.
+
+**Uncompressed-tail note (superseded):** decompressed base mips come out **3 bytes short** of the
 full surface size (e.g. `262141` vs `262144` for 1024×512 DXT1) with a clean EOS
 consuming all input. This is the engine's actual encoder output (the final few
 surface bytes are not stored); pad with zero. It is *not* a decoder bug — proven by
@@ -135,6 +144,12 @@ Corpus check: **300/300** DXT1/DXT3 base mips sampled across `textures.big`
   MBANK entry desyncs immediately. So mesh authoring is **not** blocked on this codec.
 
 ## 6. Impact on retexturing
+
+> Historical July19 status: the encoder is now implemented in
+> `tools/lionhead_lz_compress.py` and used by `tools/texture_build.py`; see
+> [TEXTURE §6](TEXTURE.md#6-the-encoder--toolstexture_buildpy). The encoder-not-written
+> statements below describe the earlier checkpoint. Licensing assertions in
+> that historical paragraph are not an independent license review.
 
 This closes `BIG_TEXTURE_FORMAT.md` §4.2 and §6. With a decoder in hand:
 

@@ -1,0 +1,48 @@
+# Calibrated frontend input composition
+
+The packet `work/modern_frontend_calibrated_input_20261019` composes the original
+1,441-byte frontend Input root and its actual scalar helpers with the genuine
+35-byte position wrapper and 382-byte stick remap. It replaces the earlier
+controlled position-return service with genuine nested execution. MSVCR71 acos
+remains a checked double-math capability; queue/device update, console, observer
+and timers remain explicit capabilities. No game process or OS/device code runs.
+
+The full packet passes 2,048 cases, 6,144 calls, identical repeat and 28 rejected
+mutations. Immutable event inputs, full persistent data, constructor/current-event
+stack images, globals, stack adjustment and nonvolatile registers remain checked.
+The independent audit imports neither probe nor model and checks raw-field order,
+selection/allow gates, UI values, held/last-device state, repeat/action behavior,
+an independent calibration reference and exact acos argument/result records.
+It passes 273,911 observations with 467 genuine position returns (462 acos calls
+and five tiny copies). Of those returns, 458 differ from raw axes; three land
+exactly on a quarter threshold. The saved corpus has 702 finite raw joystick
+inputs; unused, delayed or disallowed values need not call the native getter.
+
+The initial 64-case sample did not reject the release-up-mask control. Its failed
+receipt and source snapshots remain. The full corpus rejects that control and all
+27 others; the small sample is not a qualification receipt.
+
+The staged C++ replay at `work/modern_owned_frontend_calibrated_input_20261019`
+calibrates raw unit-square axes with `fable_platform::calibrate_frontend_stick`,
+then feeds owned decoded values through `FrontEndInputEvents` and its existing
+repeat/action controller. It compares native calibrated outputs within the
+declared numeric budget, exact resulting masks/actions and all 136,538 portable
+observations across 6,144 dispatches. Values are prepared before dispatch, so this
+does not claim native getter call-count or event-production timing parity for
+unused values. Native queue/singleton/service operations remain outside the
+portable observation projection.
+
+Strict final2 x86/x64 MSVC `/WX` and GCC `-Werror` pass compile, complete replay
+and isolated two-public-header checks. A small default CTest golden connects a
+calibrated diagonal to the expected right/slider action pair without allocation.
+The initial x86 test fixture lacked an explicit capture for a local numeric
+lambda; that failure is preserved and `fix_numeric_capture.py` records the fix.
+
+Two reviewed files (composition test and CMake registration) are promoted after
+checkpoint66 passed 97/97/97/80/77 CTest tests, all 66 checks/build and 2,464
+unchanged inputs/external headers. The successor 67-step five-build matrix passed
+at `work/modern_owned_frontend_calibrated_input_20261019/validation`:
+98/98/98/81/78 CTest tests, all 67 checks/build, all 2,510 inputs and external
+headers unchanged. The [retail input adapter](FRONTEND_INPUT_BRIDGE.md) now uses
+this coherent replay; its successor matrix is active.
+No new public API, real input backend or owned mutable event queue is claimed.

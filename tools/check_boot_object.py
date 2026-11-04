@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import shutil
+import sys
 from pathlib import Path
 
 from compare_candidate_objects import (
@@ -13,6 +14,8 @@ from compare_candidate_objects import (
     object_relocations,
     object_text,
 )
+sys.path.insert(0, str(Path(__file__).resolve().parent / "decomp_pipeline"))
+from gate_game_component_abi import Coff
 
 
 def main() -> int:
@@ -104,9 +107,36 @@ def main() -> int:
             "reason=non-relocation-bytes-differ"
         )
 
+    # Masking an absolute switch-table entry also hides its destination. Two
+    # language cases previously passed this gate with their targets swapped.
+    # Same-section relocations have a known retail destination: this function's
+    # address plus the target's offset from its entry point. External symbols
+    # still need their own independently established address map.
+    coff = Coff(args.object.resolve())
+    coff_section, entry_offset = coff.symbols[symbol]
+    section_data, section_relocations = coff.sections[coff_section]
+    internal_targets = 0
+    for offset, (target, kind) in section_relocations.items():
+        relative = offset - entry_offset
+        if kind != 6 or not 0 <= relative <= len(retail) - 4:
+            continue
+        location = coff.symbols.get(target)
+        if location is None or location[0] != coff_section:
+            continue
+        addend = int.from_bytes(section_data[offset:offset + 4], "little")
+        expected = int(address, 16) + location[1] - entry_offset + addend
+        actual = int.from_bytes(retail[relative:relative + 4], "little")
+        if actual != expected:
+            raise SystemExit(
+                f"BOOT_OBJECT FAIL address={address} reason=internal-relocation-target "
+                f"offset={relative:x} retail={actual:08x} built={expected:08x}"
+            )
+        internal_targets += 1
+
     print(
         f"BOOT_OBJECT RELOCATION_MATCH address={address} symbol={symbol} "
-        f"bytes={len(built)} relocations={len(relocations)}"
+        f"bytes={len(built)} relocations={len(relocations)} "
+        f"internal_targets={internal_targets}"
     )
     return 0
 

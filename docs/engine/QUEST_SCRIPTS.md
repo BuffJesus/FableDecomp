@@ -421,6 +421,11 @@ DoScriptFrame, Create, WaitActiveDialog, RegisterActor, RemoveAllThings, SetDoor
 
 ### The "opcode" table — the verb set (CONFIRMED)
 
+> Census note: this early map uses 185 entries; the later dedicated
+> [CUTSCENES reference](CUTSCENES.md) records an exact 184-verb census.
+> Keep the earlier counts as dated analysis; do not combine them as a new
+> independently verified vocabulary count.
+
 The full recovered verb list (185 entries) is in `ghidra_out/cutscene_native_verbs.txt`; per-verb
 argument signatures in `ghidra_out/cutscene_verb_args.tsv`; native-present / actually-used-in-shipped-
 data status in `ghidra_out/cutscene_verb_census.tsv`.

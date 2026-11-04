@@ -366,6 +366,27 @@ def build_index(root: Path) -> list[dict[str, str]]:
                     continue
                 row(address)["build_directory"] = relative_or_blank(directory, root)
 
+    # Dedicated native proofs supersede historical facade/test scans. Retain
+    # historical files on disk without letting iteration order reactivate them.
+    for address, module, source, test, gate in (
+        ("009bdc00", "CThreadedFileCallback", "CThreadedFileCallback_OnFileReadBegin_009bdc00.cpp", "NativeThreadedBaseCallbacks_test.py", "gate_native_threaded_base_callbacks.py"),
+        ("009bdc10", "CThreadedFileCallback", "CThreadedFileCallback_OnFileReadCompletion_009bdc10.cpp", "NativeThreadedBaseCallbacks_test.py", "gate_native_threaded_base_callbacks.py"),
+        ("0098e1b0", "CThreadedFileManager", "CThreadedFileManager_ProcessDirtyDiscError_0098e1b0.cpp", "NativeDirtyDisc_test.py", "gate_native_dirty_disc.py"),
+        ("0098ec40", "CThreadedFile", "CThreadedFile_Close_0098ec40.cpp", "NativeThreadedClose_test.py", "gate_native_threaded_file_close.py"),
+        ("0098ec70", "CThreadedFile", "CThreadedFile_FinishAndGetFileHandle_0098ec70.cpp", "NativeThreadedFileFinishHandle_test.py", "gate_native_threaded_file_finish_handle.py"),
+        ("0098f350", "CThreadedFile", "CThreadedFile_AddObject_0098f350.cpp", "NativeThreadedFileAddObject_test.py", "gate_native_threaded_file_add_object.py"),
+        ("0098f370", "CThreadedFile", "CThreadedFile_WaitForObjectToFinish_0098f370.cpp", "NativeThreadedFileWait_test.py", "gate_native_threaded_file_wait.py"),
+        ("0098f0e0", "CThreadedFile", "CThreadedFile_SetObjectPriority_0098f0e0.cpp", "NativeThreadedFilePriority_test.py", "gate_native_threaded_file_priority.py"),
+    ):
+        source_path = root / "rebuild/src/compiled" / address[:2] / address[2:4] / source
+        test_path = root / "rebuild/tests/integration" / test
+        gate_path = root / "tools/decomp_pipeline" / gate
+        if all(path.is_file() for path in (source_path, test_path, gate_path)):
+            current = row(address)
+            current.update(module=module, compiled_source=relative_or_blank(source_path, root),
+                           test_source=relative_or_blank(test_path, root),
+                           build_directory="rebuild/compile-gate")
+
     result: list[dict[str, str]] = []
     for address in sorted(by_address):
         current = by_address[address]

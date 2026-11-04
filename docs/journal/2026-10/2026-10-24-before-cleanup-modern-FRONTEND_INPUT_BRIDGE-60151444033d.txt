@@ -1,0 +1,55 @@
+# Retail frontend input value adapter
+
+`fable_frontend_input_bridge` decodes one explicit 52-byte little-endian retail
+event snapshot into an owned `presentation::FrontEndInputEvent`. It is available
+in every modern configuration, before the existing reconstructed-prefix adapter
+guard. It does not access native objects, poll devices or construct an input
+manager. A caller supplies a valid byte span; no span or pointer is retained.
+
+The adapter has its own public root, `integration/frontend/include`. Its public
+interface links presentation; platform calibration is a private implementation
+dependency. An explicit portable architecture policy rejects native/backend
+includes and undeclared links. The existing integration adapter include root
+remains separate, and presentation gains no dependency on platform/integration.
+
+The complete record extent is checked before any field access. Wrong extents
+return `bad_extent`; invalid raw joystick-position axes return
+`invalid_stick_axes` before producing an event. Finite axes individually in
+[-1,1] use the independently qualified checked platform transform. Rejecting
+other joystick values deliberately strengthens behavior outside the native
+comparison domain. Other event kinds do not interpret unused raw axis words.
+
+Key identifiers remain raw frontend IDs with copied device/time metadata.
+Characters keep the low UTF-16 code unit, including surrogates. Mouse movement,
+wheel floats, all basic/extra button phases and unsigned joystick device/button
+values become typed owned values. Unsupported/frontend-ignored event kinds
+become `FrontEndIgnoredInput`; null and unknown nonzero types are intentionally
+not distinguishable in this consumer value. A future queue must retain a
+separate null marker if it needs the native scan-next semantics.
+
+Decoding is stateless, nonallocating and noexcept. Sources/results can have
+independent lifetimes; source mutation/destruction and subsequent calls do not
+change retained results. The adapter adds no key translation, dead zone,
+axis inversion, event-production timing, host callbacks or backend behavior.
+
+Six files are promoted after checkpoint67's 98/98/98/81/78 CTest tests, all 67
+checks/build and 2,510 unchanged inputs/external headers. Strict x86/x64 `/WX`
+and GCC `-Werror` pass three checks each: compilation, all 6,144 coherent native
+dispatch projections / 136,538 portable observations plus owned/error/noalloc
+goldens, and public-header compilation without the private platform include root.
+The corpus uses the qualified full native Input/wrapper/remap composition with
+the explicit double-acos boundary; original CRT/game/device execution is excluded.
+
+All 36 staged architecture tests pass, including public presentation/private
+platform isolation and native/backend rejection. The initial direct staged-tool
+run used the wrong repository-relative fixture location and failed three CMake
+setups. Its receipt is preserved; the unchanged tests pass in the correctly
+shaped `boundary_fixture` snapshot. The first staging layout is also retained;
+the promoted layout is `staged_final2` with a distinct public root.
+
+The successor 68-step five-build matrix passed at
+`work/modern_owned_frontend_input_bridge_20261019/validation`: 99/99/99/82/79
+CTest tests, all 68 checks/build, all 2,554 inputs and external headers unchanged.
+The immutable batch/cursor successor69 also passes. No real
+device/frontend wiring, mutable queue, console/observer or application loop is
+claimed by this adapter.

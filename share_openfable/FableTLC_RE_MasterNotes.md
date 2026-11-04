@@ -1,5 +1,7 @@
 # Fable: The Lost Chapters — Master Reverse-Engineering Notes
 
+> Historical handoff compilation. Preserve the dated findings and attribution below; the later 2026-08-12 ForgeFSE handoff correction qualifies earlier custom-region success claims. This document is not a current runtime acceptance report, and historical proofs were not rerun for the documentation audit.
+
 A consolidated dump of what we've reversed about TLC's on-disk formats and engine
 pipeline, from a parallel project (**FableForge** — native mod/authoring tools for
 the *retail* engine). Compiled from ~72 internal RE docs, decompiles of retail

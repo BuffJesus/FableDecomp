@@ -1,0 +1,26 @@
+006b32a0	?UpdateInterpolation@CEnvironment@@QAEXXZ	2026-11-03 modern 187 lane: UpdateFrame call 004a5cb5 on [CWorld+18]; body tail-jumps to 00885010 CEnvironmentSpellEffectInterface::FrameUpdate. Was a propagated STL _Cons_val name. Verified by native (fabletlc-b9) via call ordinals vs Ego_r 0x4AF3D0.
+00885010	?FrameUpdate@CEnvironmentSpellEffectInterface@@QAEXXZ	2026-11-03 modern 187 lane: copies this frame's radial/position/displacement/filter params to the PrevFrame slots.
+00a17600	?ResetStartInformationCount@CPhysicsMesh@@SIXXZ	2026-11-03 modern 187 lane: zeroes the 12 dwords of PhysicsInformation (013d2780). Was $E1.
+00a14e20	?FrameUpdate@CNavigatorManager@@QAEXXZ	2026-11-03 modern 187 lane: stores 800 to NumberOfNodeExaminationsLeftThisFrame (+20). engine_api/fable_engine.h said CGameEventPackage::Clear.
+004c5e90	?FrameUpdate@CBulletTimeManager@@QAEXXZ	2026-11-03 modern 187 lane: empty ret in retail and Ego_r. Was $E2.
+00449970	?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ	2026-11-03 modern 186 lane: first player whose Number==MainPlayer else Players[PlayerNeutral] via GetPlayer 004498c0. Was Catch@0040d959.
+00437cd0	?GetPHeroInfoScreensManager@CPlayerGui@@QAEPAVCManager@NHeroInformationScreens@@XZ	2026-11-03 modern 186 lane: returns [this+32c]. Was DrawGetEnvironment.
+00991620	CSoundManagerLH_SetSoundsEnabled	2026-11-03 modern 184 lane: stores +26 and notifies vslot+8 when changed; role inferred from CGameScriptInterface::EnableSounds 0088f620 (CSoundManagerLH is in neither PDB). Was CTCDParticleEmitter::EditFrameUpdate.
+00a3e3e0	CSoundManagerLH_OnSoundsEnabledChanged	2026-11-03 modern 184 lane: CSoundManagerLH vslot+8 (inferred). Was CThingPhysical::GetNoNavCollisionLineLists.
+004fb150	?GetLoadedRegion@CWorldMap@@QBEJXZ	2026-10-29 modern 181 lane: mov eax,[ecx+0x9c]. Was DrawGetEnvironment (CWorld).
+004fc180	?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z	2026-10-29 modern 181 lane: [ecx+0x2c]+i*0x58. Was CTCInventoryBase::GetCategoryWithIndex.
+00487510	?GetJoystickDeviceNumber@CPlayer@@QBEJXZ	2026-11-03 modern 188 lane: mov eax,[ecx+228] (Ego_r +230). Was DrawGetEnvironment.
+00446b10	?IsGameActionEventInQueue@CGamePlayerInterface@@QAE_NW4EGameAction@@W4EInputButtonEventType@@J@Z	2026-11-03 modern 188 lane: forwards to the float& overload 00445cb0. Native 00/44 source is an _emit bake.
+0069a2a0	?UpdateTransitions@CGameCameraManager@@AAEXXZ	2026-11-03 modern 189 lane (Ego_r call order). Was CGameCameraManager_UpdateMode.
+00697c60	?UpdateCleanupFlags@CGameCameraManager@@AAEXXZ	2026-11-03 modern 189 lane. Was CMapInfo::Clear.
+00698540	?UpdateEarthquake@CGameCameraManager@@AAEXXZ	2026-11-03 modern 189 lane. Was UpdatePointLightAccumulation.
+004fb260	?CThingPhysical_SetAsMoving@?A0x37019565@@YI_NAAVCThingPhysical@@@Z	2026-11-03 modern 189 lane: ForEachInRoughArea callback from CWorldMap::Update (previously unlabelled). File-static anonymous-namespace fastcall free function returning bool (Ego_r/FableWin name, per native fabletlc-b9).
+009e4bc0	?DeleteFileW@CDriveManager@@QAE?AW4EDriveResult@@ABVCWideString@@@Z	2026-11-03 modern 192 lane: KERNEL32 DeleteFileW; 1 on success else GetLastError, 0. Was DeleteDirectory. (native relabelled functions.tsv)
+00999230	?PathExists@CAFile@@SI_NABVCWideString@@@Z	2026-11-03 modern 192 lane: GetFileAttributesW(ExpandPath(path,GetCurrentPath()))!=-1.
+00997f80	?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ	2026-11-03 modern 192 lane (native caller vote over 17 callers). Was CInputProcessMain_GetCameraPath in labels_forge_autoname.
+0099b6b0	??0CWideString@@QAE@PB_W@Z	2026-11-03 modern 192 lane: engine_api says CCharString.
+0099b510	??1CWideString@@QAE@XZ	2026-11-03 modern 192 lane: engine_api says CCharString.
+0099aed0	??0CWideString@@QAE@XZ	2026-11-03 modern 192 lane: default ctor; engine_api says CCharString.
+0099af00	??BCWideString@@QBEPB_WXZ	2026-11-03 modern 192 lane: operator const wchar_t*; engine_api says CCharString.
+0099b4d0	CWideString_UnassignString	2026-11-03 modern 192 lane: engine_api says CCharString (exact mangled name per capture NOTES).
+0099b3c0	CWideString_operator_assign	2026-11-03 modern 192 lane: engine_api says CCharString (exact mangled name per capture NOTES).

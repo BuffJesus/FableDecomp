@@ -42,9 +42,12 @@ flat fallback:
   render mesh.
 
 So if you ever want **retail-faithful** LOD tiles (instead of your own pyramid),
-the format below is what to load. `CEngineLandscapeRenderer::BuildThemes
-@0x00b687d0` is a red herring — it builds **audio** themes (`CSoundThemeDef`,
-symbol `"ENGINE_THEME"`), not terrain.
+the format below is what to load. The earlier audio-only interpretation of
+`CEngineLandscapeRenderer::BuildThemes @0x00b687d0` is superseded: the current
+reconstruction copies terrain texture and material IDs into global theme entries.
+That theme setup is distinct from baking the per-map landscape geometry. See
+`rebuild/src/compiled/00/b6/CEngineLandscapeRenderer_BuildThemes_00b687d0.cpp`
+and the current [terrain reference](../docs/engine/TERRAIN_WHITEOUT_FIX.md).
 
 ### The STB container itself
 Pristine `FinalAlbion_RT.stb` = 424 entries: **25** `__ENGINE_SEA_STATIC_MAP_BANK_FILE__`

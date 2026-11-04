@@ -865,6 +865,9 @@ menu/gamepad integration from git. Open blockers unchanged: #811 renders black (
 - `usePassive` polarity in `GetAssignedInputForAction` 0x408C90 — two contradictory readings on
   record (see the binding-store section).
 - Gamepad patch blockers #1 (#811 black) and #2 (row-value read site) — shelved.
+- **Modernization fork:** full controller support and rebinding move to the fork's own input service
+  (XInput/GameInput, evdev later), where the stripped name table and the retail patch blockers stop
+  mattering. See `docs/modern/MODERNIZATION.md#player-facing-features`.
 
 ## Superseded
 

@@ -1,5 +1,10 @@
 # Systems Analysis
 
+> Historical subsystem analysis beginning 2026-07-18. The controller-enum
+> blocker below is superseded by the PDB recovery recorded in
+> [INPUT](INPUT.md#controller-enum-tables). Dated findings and earlier questions
+> remain here as evidence history, not a current task queue.
+
 *Started 2026-07-18 after FableWin donor pipeline and installed-game indexing.*
 
 ## Chest / Key / Reward System

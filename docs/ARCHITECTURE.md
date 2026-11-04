@@ -1,13 +1,25 @@
 # Source architecture and modernization
 
-The reconstruction has three deliberately separate layers. They serve different
+> The layer table states the intended acceptance contract. Historical catalog PASS records do not establish candidate-bound behavioral coverage, and some assembly sources remain in the compiled tree. Treat subsystem fixtures as bounded evidence, not whole-engine certification. See `../CONTRIBUTING.md` for the known enforcement and aggregate-metric limitations.
+
+The reconstruction has four deliberately separate layers. They serve different
 purposes and must not be collapsed into one directory.
 
 | Layer | Location | Contract |
 |---|---|---|
 | Agent intake | `lift/reports/<wave>/code/<aa>/<bb>/` | Generated evidence; never counted as reconstructed merely because its structural checker passed |
-| Retail-parity source | `rebuild/src/compiled/<aa>/<bb>/` and `rebuild/tests/<aa>/<bb>/` | One function per translation unit, compiled with VC7.1, behavior-gated, and compared with retail `.text` |
-| Modern source | `rebuild/modern/<subsystem>/` | Human-facing C++23 modules built from proven behavior and layouts; not used to claim retail byte parity |
+| Retail-parity source | `rebuild/src/compiled/<aa>/<bb>/` and `rebuild/tests/<aa>/<bb>/` | One function per translation unit, compiled with VC7.1, behavior-gated, and compared with retail `.text`; counts as reconstructed at `near_match` or better |
+| Modern modules | `rebuild/modern/<subsystem>/` | Human-facing C++23 modules built from proven behavior and layouts; not used to claim retail byte parity |
+| Modernization fork | `rebuild/modern/` (existing CMake groundwork; full game not playable) | x64 libraries and probes now; complete RHI, ffmpeg and runtime remain open; full-game migration starts at the fork gate and is compared against the parity build by replay — see [modern/MODERNIZATION](modern/MODERNIZATION.md) |
+
+Modern runtime ownership and module boundaries are specified in
+[ENGINE_ARCHITECTURE](modern/ENGINE_ARCHITECTURE.md), including the distinction between
+bounded reconstruction fixtures and a real owned headless session.
+
+**Seam rule (applies now):** gameplay-facing headers in the parity tree must not
+expose D3D9, DirectInput, OpenAL, or DirectShow types. Platform calls sit behind
+named services so the fork can replace them without touching gameplay code. The
+retail platform surface is listed in [modern/PLATFORM_SURFACE](modern/PLATFORM_SURFACE.md).
 
 `<aa>/<bb>` are the first two byte pairs of the eight-digit retail address. For
 example, `0x0089E710` lives under `00/89/`. Generated build and verification

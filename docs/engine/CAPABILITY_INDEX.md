@@ -1,5 +1,10 @@
 # FableTLC — Capability Index
 
+> Historical capability snapshot (2026-07-19). Later reader/writer work is
+> documented in [TEXTURE](../formats/TEXTURE.md), [MESH](../formats/MESH.md),
+> [TEXT](../formats/TEXT.md) and [ANIM](../formats/ANIM.md). The blockers and
+> "today" labels below belong to this dated snapshot, not the current project.
+
 **Status: 2026-07-19.** One-page map of every reversed subsystem: what parses, what
 round-trips, what a modder can do today, and the remaining blockers. Per-subsystem
 detail lives in the cited docs; this is the index. Canonical hash facts are in

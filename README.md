@@ -4,10 +4,11 @@ An evidence-gated reconstruction of the native 32-bit Windows
 `Fable.exe`, targeting readable, buildable C/C++ source and a durable native
 modding platform.
 
-> **Current state:** the reconstructed executable boots through the recovered
-> startup path, plays the retail intro sequence, and presents an interactive
-> frontend checkpoint. The complete engine, renderer, and game loop are not yet
-> reconstructed.
+> **Current state:** the game does not yet boot from reconstructed code. Native
+> startup functions, including `WinMain` and `GFMain`, are recovered and verified
+> in isolation. The intro-movie/frontend executable is an authored integration
+> checkpoint, not a native launch. The complete engine, renderer, and game loop are
+> not yet reconstructed.
 
 [Run the checkpoint](#run-the-checkpoint) ·
 [See current progress](#current-progress) ·
@@ -67,13 +68,15 @@ a worklist, not the intended end state.
 <a id="current-progress"></a>
 ## 2. Current progress
 
+Aggregate counts below are generated status data, not a certified count of genuine C++ or tested behavior. Known purity, deduplication and fixture-enforcement gaps are recorded in the [verification contract](docs/pipeline/VERIFICATION_CONTRACT.md).
+
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,844 · 38.02%** |
+| Verified functional or matching reconstruction | **18,847 · 38.02%** |
 | Byte-identical reconstruction | **8,161 · 16.46%** |
 | Accepted analysis naming quality | **99.211%** |
-| Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
+| Runnable milestone | **None yet: the game does not boot from reconstructed code** (the boot-movie/frontend executable is an authored integration checkpoint, not a native launch) |
 
 Current functional-or-matching coverage is **38.02%** of the 49,568-function catalog.
 Of that verified set, **16.46%** is byte-identical C++.
@@ -94,7 +97,7 @@ parity, coverage, and naming reports:
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
 | Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,870** |
-| Reconstruction | Verified functional or matching C++ | **18,844** (38.02%) |
+| Reconstruction | Verified functional or matching C++ | **18,847** (38.02%) |
 | Reconstruction | — of which byte-**identical** C++ | 8,161 (16.46%) |
 | Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
 | Readability | Landed sources typed onto shared PDB-named engine headers | 689 |
@@ -107,7 +110,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-09-08 canonical refresh:
+Counts above are from the 2026-11-04 canonical refresh:
 `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
 `rebuild/COVERAGE.md`, and the naming-quality reports.
 
@@ -129,6 +132,13 @@ numbers.
 
 <a id="run-the-checkpoint"></a>
 ## 3. Run the checkpoint
+
+**This is not the game booting from reconstructed code.** It is an authored
+integration checkpoint: the executable runs an authored GFMain coordinator, not the
+recovered native one, and its visible frontend combines recovered C++ with authored
+integration adapters. Use it as a test harness, not as a launch milestone.
+Its retail-derived artwork and glyphs currently use extracted files and embedded
+fallbacks; full native runtime asset loading and frontend equivalence remain unfinished.
 
 From the repository root:
 
@@ -168,10 +178,10 @@ runtime boundary, see [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md).
 |---|---|---|
 | Analysis database | Nearly complete navigation-quality names with recovered prototypes and calling conventions | Resolve the remaining ambiguous types, function starts, and hard naming stragglers |
 | Function reconstruction | See the generated metrics above (byte-identical genuine C++, functional-or-matching, asm bakes reported separately) | Continue strict promotion; retype landed code onto the shared PDB-named headers; de-bake the `asm_bake` grade |
-| Startup | Retail-matched `WinMain`, all ten authored GFMain phases callable, connected exact `GFInitialise`, progress-display ownership | Replace the remaining GFMain dependency boundaries and pursue whole-coordinator retail parity |
-| Frontend | Boot movies, retail-data-driven interactive menus, CUIState-driven main-menu/Save/Options rows, keyboard/mouse/controller navigation, Credits routing, profile/delete/new-profile branches, Continue-to-Saved-Games routing, and retail list/transition sounds | Visual sign-off is still open: compare identical retail/reconstruction captures; link native profile persistence and validated save action `0x11` only at their recovered manager/game boundaries |
-| Controls | Interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions, and recovered wheel/arrow ingress for authored scrolling lists | Full 31-action Redefine materialization/filtering/coexistence, profile persistence, and remaining controller/action ownership |
-| Video | Retail movie order, end-of-stream advancement, Escape skip, and D3D9 texture publication | Replace the compatibility presentation seam with reconstructed `CTexture`/`CMovie::Draw` submission |
+| Startup | Retail-matched `WinMain`, native `GFMain` recovered as a near match (not yet linked into a running executable), connected exact `GFInitialise`, progress-display ownership; the checkpoint executable still runs ten authored GFMain phases | Close native GFMain's dependency boundaries and integrate it; the game does not yet boot from reconstructed code |
+| Frontend | In the authored integration checkpoint only: boot movies, retail-data-driven interactive menus, CUIState-driven main-menu/Save/Options rows, keyboard/mouse/controller navigation, Credits routing, profile/delete/new-profile branches, Continue-to-Saved-Games routing, and retail list/transition sounds | Native launch into the frontend is open. Visual sign-off is also open: compare identical retail/reconstruction captures; link native profile persistence and validated save action `0x11` only at their recovered manager/game boundaries |
+| Controls | In the authored checkpoint: interactive capture/cancel/apply, duplicate clearing, W/S/A/D movement expansion, arrow/WASD reset actions, and recovered wheel/arrow ingress for authored scrolling lists | Full 31-action Redefine materialization/filtering/coexistence, profile persistence, and remaining controller/action ownership |
+| Video | In the authored checkpoint: retail movie order, end-of-stream advancement, Escape skip, and D3D9 texture publication | Replace the compatibility presentation seam with reconstructed `CTexture`/`CMovie::Draw` submission |
 | Particles and lighting | Asset reports, billboard/crossed-sprite contracts, blend state, shader assembly, environment/RSA lookup, sky inputs | Recover constant semantics, signed/special passes, shadows, and golden viewer captures |
 | Modding research | Broad readers/writers for definitions, levels, terrain, meshes, animation, audio, text, quests, and saves | Consolidate them behind safe product workflows and runtime validation |
 | Cut multiplayer | Player slots, event/package codecs, local initialization, and a grounded revival plan are documented | Reconstruct synchronization, seating, lifecycle, and transport before enabling anything |
@@ -196,7 +206,7 @@ Superseded plans are archived under `docs/journal/`.
 <a id="verification-pipeline"></a>
 ## 6. Verification pipeline
 
-Every promoted function passes an evidence chain:
+The intended promotion contract follows this evidence chain; known implementation and historical-record exceptions are documented in the [verification contract](docs/pipeline/VERIFICATION_CONTRACT.md):
 
 1. **Recover** — Ghidra, donor PDB/BSim evidence, runtime traces, and retail
    bytes establish identity, boundaries, ABI, and behavior.
@@ -237,8 +247,8 @@ technical material lives in focused documents.
 
 | Document | Purpose |
 |---|---|
-| [HANDOFF.md](docs/journal/HANDOFF_ARCHIVE.md) | Authoritative latest checkpoint and exact resume state |
-| [ACTIVE_TASK_LIST.md](docs/journal/2026-09/ACTIVE_TASK_LIST.md) | Ranked work with acceptance gates |
+| [HANDOFF.md](docs/HANDOFF.md) | Current checkpoint and resume state |
+| [ROADMAP.md](docs/ROADMAP.md) | Current ranked work and acceptance gates |
 | [rebuild/RUNNABLE.md](rebuild/RUNNABLE.md) | Build, launch, smoke, and runtime-boundary instructions |
 | [TOOLCHAIN.md](docs/BUILDING.md) | Ghidra, BSim, FSE, VC7.1, and local prerequisites |
 | [CAPABILITY_INDEX.md](docs/engine/CAPABILITY_INDEX.md) | Index of recovered tooling and format capabilities |
@@ -248,7 +258,7 @@ technical material lives in focused documents.
 | Document | Purpose |
 |---|---|
 | [FULL_DECOMP.md](docs/pipeline/FULL_DECOMP.md) | Full-decomp strategy and promotion model |
-| [TECHNICAL_BRIEF.md](docs/journal/2026-07/TECHNICAL_BRIEF.md) | Current architecture, evidence grades, boot status, and modernization boundaries |
+| [TECHNICAL_BRIEF.md](docs/journal/2026-07/TECHNICAL_BRIEF.md) | Historical July architecture and reconstruction checkpoint; see current architecture and handoff above |
 | [SOURCE_ARCHITECTURE.md](docs/ARCHITECTURE.md) | Generated, parity, and modern-source boundaries |
 | [BSIM_PORT.md](docs/pipeline/SYMBOLS.md) | Donor-symbol porting runbook |
 | [DECOMP_ACCELERATORS.md](docs/pipeline/DECOMP_ACCELERATORS.md) | Automation and throughput options |
@@ -286,7 +296,7 @@ scripts, saves, and editor integration.
 | Path | Contents |
 |---|---|
 | `rebuild/` | Buildable reconstruction, tests, manifests, oracles, integration, and parity reports |
-| `lift/` | Auto-RE candidate reports, configuration, and durable worker state |
+| `lift/` | Original-compiler lift harness, matching experiments, and historical proof references |
 | `ghidra_out/` | Reproducible labels, APIs, decompilation exports, and naming audits |
 | `tools/` | Ghidra scripts, promotion pipeline, reports, asset/format tools, and smokes |
 | `docs/` | Technical references, plans, runbooks, and handoffs |

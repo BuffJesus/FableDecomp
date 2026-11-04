@@ -1,7 +1,6 @@
 # Toolchain & exact commands
 
-*Everything needed to reproduce the RE environment. Adapted from Fable2RE's TOOLCHAIN.md, minus
-the Xbox/recomp parts (not applicable to a native x86 exe).*
+*Historical local RE-environment setup, first recorded in July 2026. Adapt paths and verify installed tool versions; this is not a complete clean-machine native-build recipe. Native reconstruction commands are in `../rebuild/README.md`.*
 
 ## Target binary
 - `C:\Programs\Steam\steamapps\common\Fable The Lost Chapters\Fable.exe`
@@ -29,7 +28,7 @@ the Xbox/recomp parts (not applicable to a native x86 exe).*
 - **Enable the RTTI analyzer** (MSVC RTTI is intact → recovers many C++ class names/vtables).
 - **Seed real names/types:** `python tools\fse_import\fse_manifest_to_ghidra.py` → in the GUI,
   `File > Parse C Source` on `tools\fse_import\fse_api.h`, then *Analysis > Apply Function Datatypes*.
-- **Verify GhidraMCP:** `curl http://127.0.0.1:8089/check_connection` (expect ghidra_version 12.1.2).
+- **Verify GhidraMCP:** `curl http://127.0.0.1:8089/check_connection` (verify the response agrees with the installed Ghidra version).
 
 ## Ghidra scripting suite (`tools/ghidra_scripts/`, copied from Fable2RE)
 Point Ghidra's Script Manager at this dir (Script Directories → add). Key scripts:
@@ -69,15 +68,14 @@ Point Ghidra's Script Manager at this dir (Script Directories → add). Key scri
 
 ## Background automation (know it exists)
 
-Two hidden Windows Scheduled Tasks rewrite files in this tree without you asking:
+The following installers can register hidden Windows Scheduled Tasks that rewrite files in this tree. Installer presence does not establish that a task is currently registered or enabled:
 
 | Task | Installed by | Cadence | Touches |
 |---|---|---|---|
 | `FableTLC Rebuild Refresh` | `tools/InstallRebuildRefreshTask.ps1` | every 15 min | `rebuild/manifest/*`, `rebuild/COVERAGE.*`, `README.md` metrics block, `ghidra_out/fable_engine.h`, root scratch sweep |
 | `FableTLC Local Parity Queue` | `tools/InstallLocalParityTask.ps1` | queue-driven | `rebuild/build_candidates.ps1`, landed sources (auto-landing) |
 
-If a file changed under you, check `rebuild/refresh.log` first. Disable while doing manual
-catalog/manifest surgery:
+If a file changed under you, inspect the current task/process state and `rebuild/refresh.log`. Coordinate with active lane owners before disabling shared tasks or doing manual catalog/manifest changes. The task controls are:
 
     schtasks /Change /TN "FableTLC Rebuild Refresh" /DISABLE
     schtasks /Change /TN "FableTLC Local Parity Queue" /DISABLE

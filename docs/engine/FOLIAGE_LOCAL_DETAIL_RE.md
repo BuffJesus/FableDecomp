@@ -1,5 +1,10 @@
 # Foliage / local-detail scenery — recovered save grammar (2026-08-22)
 
+> Historical stage chronology beginning 2026-08-22. The stage34/type-0 and
+> empty-foliage status near the top is superseded by the stage44–49/type-1
+> corrections later in this document. Retain failed stages for context; they
+> do not describe current Forge source or deployment status.
+
 ## 2026-08-22 stage34 writer checkpoint
 
 The first donor-free writer is now implemented in FableForge. It deliberately

@@ -1,0 +1,1373 @@
+# Modern engine architecture and ownership
+
+Design contract, 2026-10-18. Applies to new runtime work in `rebuild/modern/`.
+This is a target architecture; the status table below distinguishes existing
+libraries from interfaces and ownership machinery still to be implemented.
+The [modernization plan](MODERNIZATION.md) retains the full-game completion gate.
+Bounded libraries can mature before that gate opens.
+
+## Responsibilities and dependencies
+
+Modules mean ordinary CMake libraries with headers and sources. C++ named modules
+are a separate tooling choice. Keep existing directories until a move serves an
+implemented boundary; do not create empty libraries for this diagram.
+
+| Module | Responsibility | Allowed engine dependencies |
+|---|---|---|
+| formats | Retail formats, explicit codecs, unknown-byte preservation | Small value types and codec libraries; no running game |
+| assets | Asset lookup, CPU decoding, cache and decoded-data lifetimes | formats; file capability supplied by app |
+| simulation | Live entities, combat, AI, navigation, gameplay rules | Small value types, immutable gameplay data; no OS, GPU, Lua or disk layouts |
+| quests | Script runtime, quest state and scheduling | Narrow quest-facing capability interfaces; no concrete world/managers |
+| presentation | Extract transforms, lights, effects, HUD, draw and frontend requests | Read-only simulation views, asset IDs/leases; no simulation mutation |
+| render | Drawing, GPU resources and backend implementation | Prepared presentation data and platform capabilities; no gameplay traversal |
+| platform | Files, devices, OS clocks, audio/video backends | Small value types; no gameplay rules |
+| integration | Save-to-world conversion, script bindings, presentation extraction | The specific modules each adapter connects |
+| app | Startup, shutdown, session transitions, scheduling, implementation selection | Composition of the above; no accumulating gameplay rules |
+
+An interface dependency is explicit, including callbacks and injected capabilities.
+An assets file reader or render surface interface must not introduce a dependency
+on the concrete Windows backend. Shared interface/value headers must stay small
+and independently usable. Do not collect managers and game types into `core/`.
+
+Each target declares public include roots and links. Private headers stay in its
+source/private tree. Reusable libraries cannot depend on app or editor targets.
+No cycles are allowed, including cycles hidden behind broad service contexts.
+Public modern runtime APIs cannot expose retail layout headers or compatibility
+snapshot classes. Reconstruction adapters are an explicit exception at the
+integration boundary, never a dependency of the format libraries.
+
+## Ownership and lifetime contract
+
+Every new public service documents creation, destruction, permitted mutation,
+borrow duration, thread confinement, and failure behavior before callers store it.
+
+| Owner | Creates and destroys | Other systems receive | Mutation rule |
+|---|---|---|---|
+| Session/application | Simulation, quest runtime, adapters and backend instances | Narrow service references valid for the session | App coordinates startup, transitions and shutdown |
+| Simulation | Live entities and their gameplay state | Validated runtime handles and bounded read-only views | Simulation operations perform state changes |
+| Asset store | Decoded CPU data and cache entries | Asset identifiers or documented retained leases | Store controls replacement and eviction |
+| Renderer | GPU objects and pending retirements | Resource/asset identifiers and prepared draw data | Renderer retires resources after GPU completion |
+| Quest runtime | Script instances, quest state and scheduled work | Explicit quest operations and entity handles | Script bindings validate handles on each use |
+| Presentation adapter | Reusable extraction buffers | A prepared frame view | View expires at documented consumption/reset point |
+
+Persistent IDs and runtime handles are different types. Retail UIDs retain their
+format semantics; handles use a slot and generation with validation on access.
+The bounded `ThingStore` now validates slot/generation/owner handles, retires
+slots rather than wrapping generations, and preserves identity across clear/reuse.
+Save/load remapping and complete gameplay/component ownership remain open. See
+[THING_STORE](THING_STORE.md). Long-lived entity pointers and indiscriminate shared ownership are not the
+default. Useful recovered classes and algorithms can remain; ECS is not required.
+
+Borrowed views cannot silently become retained references. Initially, simulation,
+scripts and extraction run on one thread. Reusable buffers have explicit size
+limits, overflow behavior and consumption lifetimes; parallelism is a later change.
+Shutdown stops script work and extraction before destroying their simulation;
+GPU retirement completes before renderer/device teardown.
+
+## Capabilities, ordering and time
+
+Quest bindings provide only evidenced operations such as finding a persistent ID,
+reading position/health, spawning, awarding an item and starting dialogue. Split
+interfaces by actual consumer needs. Do not pass an unrestricted world or an
+EngineContext containing all managers. Lua types stay inside quest/binding code.
+The [scripting design](../engine/SCRIPTING_REDESIGN.md) supplies the runtime plan;
+these ownership constraints apply when connecting it to modern gameplay.
+
+Immediate results use typed calls. Completed facts such as entity death or region
+entry may use explicit events with documented delivery and subscriber lifetimes.
+Preserve retail call order, reentrancy and visibility of state changes. Do not
+introduce a universal event bus or blanket end-of-frame deferral.
+
+[FRAME_TIMING](FRAME_TIMING.md) establishes a 15 Hz world update and interpolated
+rendering. Platform clocks report elapsed real time. Application scheduling uses
+that time and initially preserves retail present-completion prediction, the strict
+PC53-rounded reciprocal conversion and strict `frames_ahead > 1` test, and at most one tick per update call.
+The exact arithmetic and eleven counterexamples to direct multiplication are qualified in
+[SERVER_UPDATE_POLICY](SERVER_UPDATE_POLICY.md).
+Simulation advances one explicit world tick; presentation interpolates states.
+`WorldClock` currently lives in platform for historical reasons but is scheduling
+policy, with no OS calls. Its relocation is separate from changing its behavior.
+Preserve RNG state, stream selection and consumption order. New per-subsystem
+generators require evidence of equivalent behavior, not just matching seeds.
+
+## Formats and rendering
+
+Keep retail data, live runtime structures, and validating conversion code separate.
+Opaque saved entity streams can round-trip without being executable entity state.
+Loading live entities needs relationship validation, persistent-ID remapping and
+owned lifetimes before it earns a session-load claim.
+
+Use one authoritative headless implementation per format shared with FableForge.
+Choose a pinned source/package arrangement before importing it. Neither project
+may depend on the other's application; format ownership is settled per library.
+
+Presentation prepares transforms, mesh/material identifiers, lights, effects and
+UI data. Render backends consume that view without traversing CWorld or asking
+creatures about quests. Design the interface from measured D3D9 usage. The title
+viewer remains a texture-upload/presentation probe; it does not define the game loop.
+
+## Current boundary inventory
+
+| Existing target/path | Architectural role | Remaining qualification |
+|---|---|---|
+| fable_codec, fable_bank, fable_save, fable_texture | formats and CPU decoding | Do not add GPU/entity ownership to their public APIs |
+| fable_definitions | Prepared block directory, bounded zlib decoding, binary-definition/name-file codecs, copied name values, raw base/parent prefixes and FRONT_END Transfer-body values | Format matrices pass; the owned catalog consumes these behind the assets boundary. Generic runtime class allocation/registration/attachment and other schemas remain open |
+| fable_multiplayer | Event/package/recording formats | Transport is not a running multiplayer game |
+| fable_platform, fable_input_recording | Portable input values, checked frontend stick calibration and recording | Calibration passes the five-build 66-step matrix, with coherent Input composition in checkpoint67. Standard double math is explicit. WorldClock is scheduling policy; device/frontend integration and game bindings remain open. See [calibration](FRONTEND_STICK_CALIBRATION.md) |
+| fable_platform_win32 | Concrete input backend | Its include root owns RawMouseWin32 and XInputPad |
+| fable_reconstructed_* | Evidence and bounded behavior extraction | Compatibility layouts and borrowed fixtures are not live ownership |
+| fable_engine_event_bridge | Deliberate integration adapter | Presently exposes reconstructed types; keep out of portable libraries |
+| fable_title_view and input probes | Desktop tools | Optional with FABLE_BUILD_DESKTOP_TOOLS=OFF; no session claim |
+| fable_simulation | Owned entity lifecycle/ticks, UID state, references, typed component/policy commands, particle attachments and definition values | Real gameplay components/backends and the representative session remain open |
+| fable_assets | Owned joint recency/accounting, scoped unload/budget/loading-queue policies, retained CPU texture/raw-definition caches, immutable catalogs and typed FRONT_END values | Five-build matrices pass, including real FRONT_END decoding/pins/eviction. Generic class registration, other typed definitions, app/session integration and GPU ownership remain open. See [budgets](RESOURCE_BUDGET.md), [CPU texture ownership](TEXTURE_ASSET_CACHE.md), [loading queue](RESOURCE_LOADING_QUEUE.md), [definition data](DEFINITION_BLOCK_CACHE.md), [catalog](DEFINITION_CATALOG.md) and [owned FRONT_END definitions](FRONTEND_DEFINITION_CACHE.md) |
+| fable_presentation | Retained frontend definitions, prepared frames, immutable input batches/cursors, observer sets and event membership, decoded event/repeat/action policy, synchronous movie/input/music requests and interpolation/history | Five-build73 matrix passes, including composed native dispatch/membership, callback failure/reentry guards and ownership checks. Public dependency remains assets. App/device/queue/console/media/render integration and mutable registration stay open. See [composed observers](FRONTEND_FILTERED_DISPATCH.md), [membership](FRONTEND_OBSERVER_FILTER.md), [batch consumption](FRONTEND_BATCH_DISPATCH.md), [input batches](FRONTEND_INPUT_BATCH.md), [decoded events](FRONTEND_INPUT_EVENTS.md), [prepared frames](FRONTEND_FRAME.md) and [attract](FRONTEND_ATTRACT.md) |
+| fable_thing_checksum_bridge | Explicit typed reconstructed-object adapter | Borrowed prefixes; no factory/entity/physics lifetime credit |
+| fable_frontend_input_bridge | Bounded 52-byte retail event value adapter | Own public root and typed output; public presentation/private platform only, portable policy. Five-build68 matrix and 36 policy tests pass. Real device/queue/console integration remains open. See [input adapter](FRONTEND_INPUT_BRIDGE.md) |
+| quests/presentation/render/app | Planned runtime responsibilities | No complete runtime modules or headless session yet |
+
+Separate include roots enforce the portable/Win32 input boundary. The modern
+CMake entry point now exports its configured targets to `architecture-targets.tsv`
+and runs `tools/modern/check_modern_boundaries.py` during configuration and normal
+builds (`fable_architecture_check`). It also runs through CTest and the existing
+Windows/Linux workflow. Python 3.10 or newer is required for all modern configurations.
+
+The gate rejects target cycles, unregistered modern libraries, dependencies outside
+each library's policy, dependencies from reusable libraries back into applications,
+and unexpected public include roots. Alias names, link-only dependencies, interface
+sources and direct-interface dependency injection are checked. A new library must
+have a reviewed policy before the tree configures; creating a runtime target cannot
+silently bypass these rules.
+
+For modern portable sources and public headers, direct literal includes must resolve
+to the standard library, approved implementation dependencies, or declared modern
+public headers. Private includes cannot cross module boundaries or enter public APIs.
+Win32 backend headers require the backend target. Retail layout includes stay confined
+to reconstruction/integration. Third-party implementation headers such as zlib do not
+enter format public interfaces. Conditional includes are checked even in inactive
+branches; macro includes and unsupported CMake generator expressions fail for review.
+
+The source check is conservative, not a compiler dependency scanner. It does not
+prove semantic ownership, absence of hand-declared foreign types, or dependencies
+hidden inside third-party headers. Generated/canonical reconstruction internals remain
+explicit exceptions. Public API design and runtime lifetime/ordering tests still need
+review. The initial `fable_simulation` target declares no engine dependencies or external
+implementation headers. It exposes owned value snapshots and validated handles;
+gameplay code must extend that boundary deliberately.
+
+## Delivery gates
+
+| Stage | Deliverable | Evidence to advance |
+|---|---|---|
+| 1 | Reconciled status, dependency map and ownership contract | Plan agrees with current sources and timing evidence |
+| 2 | Implement boundaries needed by the next extracted behavior | Explicit public/private dependencies; portable libraries build/test without desktop tools or graphics SDK; boundary checks cover new runtime targets |
+| 3 | Comparison tools and representative fixtures | Input provenance, state observations, ordering and comparison rules documented |
+| 4 | One bounded recovered subsystem | Modern behavior agrees with reference fixtures, including numeric edge cases |
+| 5 | Representative headless game session | Same simulation library intended for graphical app; real owned objects, explicit ticks and expected state transitions |
+| 6 | Presentation and platform/render/audio backends | Session behavior remains stable; measured visual/audio checks pass |
+
+Stages can overlap for independent mature libraries. A borrowed-object replay
+fixture does not satisfy stage 5. Select its representative gameplay scenario
+after required entity creation, destruction, dispatch and RNG behavior are recovered;
+document any remaining substitutes rather than claiming a complete game session.
+
+Replay observations use stable IDs and explicitly serialized fields, never raw
+modern object memory. Report the first differing tick, entity, field, expected and
+actual value. Use verified retail package/checksum semantics as additional evidence;
+an aggregate checksum is insufficient to locate a mismatch. Specify float tolerances
+per observed behavior; checksum-sensitive x87 behavior may require exact semantics.
+
+## Boundary validation, 2026-10-18
+
+The existing 50-provider matrix passed 33 tests on MSVC x86, MSVC x64 and
+clang-cl x64, and 17 on Windows GCC. Canonical provider and registration inputs
+were unchanged. A separate MSVC x64 build with desktop tools and reconstructed
+compatibility targets disabled passed 14 tests; its generated build graph contains
+no title viewer or input probes. Actual compiler include lookup rejected both
+backend headers with only the portable root and accepted them with the backend root.
+Proof: `work/modern_architecture_20261018/validation/summary.json`,
+`headless_summary.json`, logs and copied LastTest logs in the same proof directory.
+These checks do not establish a Linux run, live session or full dependency-policy
+enforcement. No game or desktop probe was launched.
+
+## Automated gate validation, 2026-10-18
+
+Thirty rejection/acceptance tests cover real CMake configuration and build failures
+as well as source-policy cases. In isolated projects, a target cycle and an aliased
+forbidden edge reject configuration; adding a forbidden include after configuration
+fails the next build. No retail assets, game launch or compiler is required by those
+isolated interface-library projects.
+
+The full matrix passed 35 tests on MSVC x86, MSVC x64 and clang-cl x64, and 19 on
+Windows GCC. The desktop-free, reconstruction-free MSVC x64 build passed 16. Final
+architecture-only reruns passed on all five configurations after the gate sources
+were frozen, with source hashes checked before/after. Canonical 50-provider inputs
+remained unchanged. Proof: `work/modern_architecture_gates_20261018/validation/summary.json`,
+`headless_summary.json` and `final_gates/summary.json`, with configured target graphs
+and full/targeted CTest logs. Local Linux execution remains unverified.
+
+## First simulation behavior, 2026-10-18
+
+`rebuild/modern/simulation` now contains the generic thing-checksum result function
+on caller-owned values. It retains no references, allocates no objects and uses
+explicit numeric modes independent of host FP state. All 109,608 retail records
+match on four compiler configurations and a desktop-free build, each under four
+host rounding modes. This is a bounded stage-4 behavior extraction. The subsequent typed adapter
+connects it to the aggregate replay; live object ownership remains open. It does not
+satisfy the entity-ownership or representative headless-session gate. See
+[THING_CHECKSUM_NUMERICS](THING_CHECKSUM_NUMERICS.md#modern-result-implementation-2026-10-18).
+
+## Typed checksum integration, 2026-10-18
+
+`integration/` now connects the reconstructed class metadata/physics prefixes to
+the portable generic checksum function through an explicit manager reference.
+Only the integration boundary sees legacy types. The aggregate recording/replay
+fixture uses the adapter and real numeric calculation through its original
+slot-23 traversal; it no longer injects checksum results. It still supplies
+controlled world/kinematic input and uses borrowed storage/test vtables. This
+adds composition evidence without satisfying the owned headless-session gate.
+All 109,608 native records match through the adapter on MSVC x86/x64 and clang-cl;
+12,800 replay scenarios pass with 19,180 adapter queries each.
+
+## Registration ownership evidence, 2026-10-18
+
+The bounded retail registration probe establishes insertion/removal/reordering
+and delete-notification order before an owned entity implementation is introduced.
+All 17 manifest-listed CThing-derived vtables share the generic checksum method.
+The manifest's apparent unregister at `00A37300` actually reinserts the object;
+the actual unregister at `00A37160` notifies before unlinking and does not free
+the entity. These distinctions constrain ownership and replay ordering. See
+[THING_REGISTRATION](THING_REGISTRATION.md) for measured ABIs, reproduction and
+remaining lifetime gates. No entity store or constructed headless session is
+claimed by the probe.
+
+The subsequent [native lifetime probe](THING_LIFETIME.md) executes factory
+initialization/teardown and empty-component CThing construction/destruction.
+It validates 17,626 complete empty lifecycles and releases all 70,852 tracked
+allocations. Definition/player initialization, real UID-index notification,
+component cleanup, derived deleting wrappers and real allocation remain requirements before an
+owned session can replace the borrowed replay fixtures.
+
+## Persistent-ID index implementation, 2026-10-18
+
+The simulation library now owns only the UID-to-handle index records through
+`ThingIdIndex`. Persistent IDs and slot/generation handles are separate types;
+lookup returns an optional value copy. Duplicate insertion retains the original
+handle and deletion is by UID, matching the recovered manager notification/tree
+behavior. Entity storage, handle issuance/liveness validation, UID assignment and
+component cleanup remain outstanding ownership work. Full native observations
+match across all five configurations; see [THING_UID_INDEX](THING_UID_INDEX.md).
+This is an extracted simulation component, not the owned-session completion gate.
+
+## Owned value-state implementation, 2026-10-18
+
+`ThingStore` now owns initialized thing records, both registration lists and its
+UID index. Handles have a validated owner tag, slot and generation; clear/reuse
+preserves invalidation, and exhaustion retires slots instead of wrapping. Reads
+and order extraction return copies. Failed UID-index allocation rolls back the
+prepared slot/lists. Native order and numeric corpora match on all five builds;
+see [THING_STORE](THING_STORE.md). It owns only the recovered value state so far;
+full initialization, component cleanup, UID assignment/remapping, explicit world
+ticks and representative gameplay remain gates before the owned session is complete.
+
+## UID allocation capabilities, 2026-10-18
+
+`ThingUid` now implements recovered UID allocation and map-relative remapping on
+caller-owned counters and narrow map lookup/sequence interfaces. The native call
+order and partial counter consumption are preserved; no CWorld or manager enters
+the public simulation API. Ownership tests compose the generated IDs with
+`ThingStore`. Collision repair, loaded-counter advancement and full initialization
+remain open. See [THING_UID_ALLOCATION](THING_UID_ALLOCATION.md) for native flag
+identity, wrapping/filter precedence and all-five-build comparison evidence.
+
+## UID repair and map identity ownership, 2026-10-18
+
+Loaded-ID counter advancement and single-pass collision repair now use narrow
+map/index capabilities. `ThingUidMapTable` owns copied map UID metadata and
+optional sequence counters; it exposes no live map objects or borrowed views.
+The corpus compares the concrete provider against native call/counter order.
+A composition test repairs an incoming ID before registration while preserving
+an existing indexed dead entity. Full initialization, map/session assembly,
+component cleanup and explicit world ticks remain open. See
+[THING_UID_REPAIR](THING_UID_REPAIR.md).
+
+
+## Native initialization reference, 2026-10-18
+
+[THING_INITIALIZATION](THING_INITIALIZATION.md) now records executed native
+ConstructFromParams ordering and non-replacement component attachment, with
+controlled external services. The 3,080-case reference checks successful/duplicate
+attachment, stage dispatch, update-list insertion and ownership-related reference
+balances. This supplies evidence for owned components and complete creation/
+teardown; it does not turn value-record insertion into a recovered spawn or
+satisfy the representative headless gameplay-session gate.
+
+
+## Component ownership reference, 2026-10-18
+
+[THING_COMPONENTS](THING_COMPONENTS.md) extends native initialization evidence
+through replacement, weak-owner pending records and prepared owner teardown.
+Its 9,394 operations and 9,177 callback snapshots establish cleanup/visibility
+order for the owned C++ component path. CTCBase ToBeRemoved is separate from the
+entity Dead flag. The session must own a weak pending queue and each entity's
+components, with validated handles, typed parameters and deterministic teardown
+before UID/list removal. This comparison reference does not itself implement
+modern components, real derived behavior or the owned gameplay-session gate.
+
+
+## Owned component implementation, 2026-10-18
+
+ThingStore now lazily owns unique component collections and their ordered state;
+a session queue holds weak component handles. Every handle includes parent,
+interface type, generation and collection identity. Copy-returning snapshots
+preserve callback visibility without exposing object pointers. The queue outlives
+collections; component destruction precedes UID/list removal, and container cleanup
+follows it. Factories receive parent handles and transfer unique ownership, with
+typed portable parameters and no engine context. The complete component replay
+and registration/numeric/UID regressions match across all five builds; see
+[THING_COMPONENT_STORE](THING_COMPONENT_STORE.md). Full creation, real derived
+behavior, reentrant mutation and the representative session remain open gates.
+
+
+## Creation visibility and callback snapshots, 2026-10-18
+
+[THING_CREATION](THING_CREATION.md) establishes separate constructor registration,
+parameter readiness and UID publication. Original OnCreate advances stage before
+its entry-only Dead check, snapshots component identities, reads removal flags
+live and publishes after callbacks. Reentrant attachments catch up immediately
+and are absent from the old snapshot. A callback marking its owner Dead does not
+cancel publication. The owned path must support these rules with validated handles
+and typed data; its current no-reentry guard and immediate create_initialized
+publication are not a recovered spawn API. The new native reference passes 1,277
+cases/13,906 observations with controlled external services; C++ creation parity
+and the representative gameplay-session gate remain open.
+
+
+## Owned staged generic creation, 2026-10-18
+
+`ThingInitialization` now connects owned registration, typed definition/string
+snapshots, explicit world-frame input, UID allocation and delayed OnCreate
+publication. Constructor registration and parameter readiness are distinct from
+UID lookup. `create_initialized` retains its complete-value/immediate-publication
+contract. No raw runtime views, retail layouts, Lua or platform dependencies escape.
+
+Component callbacks can attach other types with immediate catch-up. Owner-phase
+iteration copies identities and reads current ToBeRemoved flags per entry. The
+owner Dead check remains entry-only; callback death does not cancel publication.
+Executing-type replacement and active-owner destruction are refused. A disposal
+guard spans component destructors and metadata/container cleanup; recursive owner
+destruction returns false and attachment returns refusal without invoking a factory.
+Exceptions clean up partial creation without rolling back consumed UID counters;
+OnCreate exceptions retain owned state. Key-only deletion also applies to an
+unpublished duplicate.
+
+All 1,277 native creation cases/8,800 comparable boundary states match across
+MSVC x86/x64, clang-cl, Windows GCC and desktop-free/reconstruction-free x64.
+Full suites pass 43/43 MSVC/clang, 26/26 GCC and 23/23 desktop-free. Each build
+also passes 9,394 component operations/9,177 snapshots, 16,384 registration
+transitions, 109,608 checksum records in four host rounding modes, 4,200 UID
+repair and 5,160 allocation/remap requests. Exact sources, binaries, full logs,
+CTest logs and target metadata: `work/modern_staged_creation_20261018/final_validation/`.
+Aggregate: `work/modern_staged_creation_20261018/summary.json`. The older
+`validation/` predates the full-disposal guard. Only the simulation README changed
+after the final test freeze, as documented in the aggregate. Fifty canonical
+provider inputs and their registration table are unchanged; no coverage promotion.
+
+Next: recover nonempty native definition construction at 004CA930, then introduce
+its typed component-set data and real construction path. The creation host's
+construct_definition hook is still controlled, not a production implementation.
+The static +39/+3D/9-byte-entry review is not native execution proof. Real derived
+behavior, physics, later activation, removal scheduling, maps/session and explicit
+world ticks remain. This is not a representative headless gameplay scenario.
+
+No game launches, installed-game writes, Lua changes, commits or pushes occurred.
+
+
+## Owned definition component construction, 2026-10-18
+
+`ThingDefinitionConstruction` now connects typed component sets to actual Store
+ownership. It captures conditional forced replacement once, resolves owned names,
+requests each attachment with null parameters, tolerates ordinary refusal and
+assigns StartKillLocked only after traversal. `ThingDefinition` owns the component
+sequence; ThingState has a separate lock flag. The service guard spans policy and
+name lookup as well as component calls, refusing recursive owner destruction,
+reconfiguration and definition traversal. Exceptions retain accepted components
+and the old lock value; generic creation supplies its existing full cleanup.
+An assembled test wires the real service into the generic creation host and
+checks components -> script strings -> Mapwho -> delayed OnCreate publication.
+Definitions remain immutable through the call; 0..127 entries are the recovered
+domain. Type flags are the captured per-entity value supplied by the caller.
+
+Final five-build validation passes 44 MSVC x86/x64/clang tests, 27 GCC and 24
+desktop-free. Each also passes 1,592 definition cases/26,810 requests, 1,277
+creation cases/8,800 states and every previous component/registration/numeric/UID
+corpus. Canonical 50 provider inputs + registration table remain unchanged.
+Authoritative proof: `work/modern_owned_definition_20261018/final_validation/`;
+aggregate `work/modern_owned_definition_20261018/summary.json`. The earlier
+`validation/` predates the final regression returning typed active_lifecycle
+from OnCreate during an independent component catch-up callback. Only the
+simulation README changed after final source freeze, recorded in the aggregate.
+
+The definition comparison composes observed native orchestration requests with
+separately validated AddTC ownership rules. It does not claim a new native
+CreateFromDef-to-AddTC execution. Real decoded assets/derived components remain
+fixtures. Details: `docs/modern/THING_DEFINITION_STORE.md`.
+
+Next behavior gate: InitialActivate (manifest entry 004C9690, generic vtable slot9)
+and OnInitialActivate (004C97B0, slot10). These names/slots are confirmed by the
+manifest and pinned vtable bytes; behavior has not yet been executed or ported.
+Recover callback ordering/flag changes and component stage2 before implementing;
+retain stage catch-up versus owner dispatch and original timing. Later activation,
+physics, removal scheduling, maps/session and explicit world ticks remain. There
+is still no representative gameplay session. No launches, installation writes,
+Lua changes, commits, pushes or canonical promotion occurred.
+
+
+## Native initial activation reference, 2026-10-18
+
+Original InitialActivate 004C9690 and OnInitialActivate 004C97B0 now execute in
+private x86 emulation with actual AddTC, snapshot/growth, update/render insertion
+and generic drawable query/set. All 1,608 cases/5,660 phases/31,648 observations
+match, including 1,070 attached children, 632 physics notifications and 326 render
+requests. Full independent repeat is byte-identical; eighteen instruction controls
+reject. Authoritative native proof/exact sources:
+`work/modern_thing_activation_20261018/validation/`; aggregate parent summary.json.
+Numeric export for the next C++ comparison:
+`work/modern_owned_activation_20261018/{export.py,export.json,activation.txt}`.
+
+Phase2 increments low3 stage, sets owner+91 bit3, adds to per-type updates (physics
+vslot46 before first insertion), copies components and dispatches component phase2
+with live ToBeRemoved checks. Editor query follows callbacks; outside editor, a
+present definition with IsDrawable false requests SetAsDrawable(false). IsDrawable
+true/absent definition/editor do not restore a flag cleared by callbacks.
+Phase3 calls quest OnActivateEntity BEFORE stage advance, then snapshots/dispatches
+phase3 and adds to render list if virtual DrawIsDrawable returns true. Generic
+query requires +92 bit1, +91 bit3, !Dead. Neither phase has an entry Dead guard.
+Both insertion helpers are idempotent, including single-member heads, and preserve
+peer order. These phases do not remove existing membership if later nondrawable/dead.
+
+Child attachment from quest notification catches up at the OLD counter and then
+participates in the next owner snapshot; a child can receive phase3 twice at that
+boundary. Child attachment during a phase callback instead stays outside that old
+snapshot. Do not deduplicate or defer those calls. Counter and explicit callback
+phase remain separate, including wrap/repeated/reversed inputs.
+
+Definition +41 bit4 is statically correlated to Transfer IsDrawable. The graphics
+boundary is CTCGraphicAppearance::SetAsChanged(15) at 004BF9E0, controlled in this
+probe; it is not a universal message bus. SetAsDrawable's special component
+notifications for types 33/69/70/75/216 are outside this corpus (types2/7/91).
+Quest/editor/derived methods, graphics dirty handling and allocation are controlled.
+The fixture explicitly detaches update/render lists before native destruction;
+this is NOT native active-entity destruction/Kill parity. Details:
+`docs/modern/THING_ACTIVATION.md`.
+
+A long-lived Windows Unicorn instance failed at host level after 1,573 complete
+cases; the neighboring ten cases pass alone. The whole unchanged 1,608-case corpus
+now runs with fresh 128-case instances and explicit hook cleanup, and all 1,573
+historical complete cases match byte for byte. The failed retail_probe directory
+is diagnostic, not authoritative; batched_native and validation are authoritative.
+No C++ compiled sources or the 50 canonical providers+registration input changed;
+the prior 44/27/24 build proof stands without claiming new builds this checkpoint.
+No launches, install writes, Lua changes, commits, pushes or coverage promotion.
+
+Next concrete implementation: owned per-type update and global render membership
+in ThingStore (fixed slot links, copied validated handle extraction), a guarded
+physics registration callback before insertion, semantic initial-activation and
+drawable fields, definition IsDrawable, and a portable ThingActivation facade.
+Expose narrow immediate quest/editor/drawable capabilities. Preserve original
+callback/snapshot timing and duplicate registration rules. Keep SetAsDrawable's
+unrecovered special-derived behavior explicit, not a silent flag-only stub.
+Owned disposal must unlink memberships safely without claiming native Kill timing.
+Compare the complete numeric corpus across five builds plus all prior corpora.
+World 15 Hz scheduling, RNG order, physics, active removal, real decoded definitions,
+derived behavior and the representative headless gameplay session remain open.
+
+
+## Owned initial activation and membership, 2026-10-18
+
+ThingActivation now executes InitialActivate/OnInitialActivate through real Store
+update/render membership. Store uses distinct fixed-slot links for per-type
+updates and global render order, copied validated handles, idempotent insertion
+and no container growth for list operations. Generic state has initially_activated
+and drawable flags; typed definitions have IsDrawable. Physics callback slot46
+occurs before first insertion, including ToBeRemoved physics. Owner phase2 follows
+the snapshot; quest notification precedes phase3 counter advance/snapshot. Callback
+catch-up, absence of an entry Dead guard, repeated calls and 3-bit wrap remain intact.
+Required narrow quest/editor/drawable host operations retain the controlled/native
+integration boundaries; SetAsDrawable special-derived effects are not silently
+replaced by raw flag setters. All owner lifetime/configuration reentry is guarded.
+
+Direct update registration guards physics callbacks too. Exceptions preserve
+prior state/components and release guards. Owned disposal keeps existing
+memberships visible through component destruction, then unlinks them before
+UID/registration removal and slot reuse. This is modern ownership cleanup, not
+native Kill timing. Dead/drawable setters do not remove old membership.
+
+Final five-build proof passes 45 MSVC x86/x64/clang tests, 28 GCC and 25 desktop-
+free. Each matches all 1,608 activation cases/5,660 phases/28,206 observable
+snapshots plus every earlier definition/creation/component/registration/numeric/
+UID corpus. Native trace retains 31,648 events; internal method-entry markers
+(3,116 update, 326 render) have no modern external callback and are excluded
+explicitly in comparison.json. Actual list effects/physics-before-insertion are
+checked by observable snapshots and direct public Store goldens.
+An assembled golden runs actual creation -> OnCreate publication -> both
+activation phases -> owned disposal, with controlled assets/derived/quest behavior.
+This is still not the representative recovered gameplay-session gate.
+
+Authoritative proof: `work/modern_owned_activation_20261018/final_validation/`;
+aggregate parent summary.json. Earlier validation/ predates the assembled golden.
+Only the simulation README changed after final test freeze, recorded in aggregate.
+Fifty canonical provider inputs + registration table remain unchanged, with no
+canonical coverage promotion. Details: `docs/modern/THING_ACTIVATION_STORE.md`.
+No launches, install writes, Lua changes, commits or pushes occurred.
+
+Next native gate: CThing::Kill(bool) at 004C9B80. Static starting evidence is
+`work/modern_thing_kill_20261018/initial_disassembly.json`, NOT execution proof.
+It checks Dead (+91 bit0), an in-progress +92 bit2 and StartKillLocked (+91 bit6)
+BEFORE reading its bool argument. Do not interpret the bool as overriding lock.
+It conditionally calls entity vslot13, sets +92 bit2, conditionally sets +93 bit1
+and calls vslot11, then calls vslot12, sets Dead, calls UpdateThingScanInclusion,
+queues through 005202B0 and removes render membership via 0051E000.
+005202B0 starts with manager+48 vector append; it is NOT direct update unlink.
+Its manifest camera label is misleading; generic vslot11 target 004C7D50 also has
+a particle-class manifest label. Recover bodies/ABI from pinned bytes and verify
+queue growth, recursive Kill suppression, callback timing and later manager sweep
+before porting. Active update unlink/deallocation may be deferred beyond Kill.
+Real decoded definitions/derived behavior, physics, scheduler/maps and explicit
+15 Hz world ticks/RNG order remain open; keep this separate from ordinary destroy.
+
+
+## Native Kill and queue request reference, 2026-10-18
+
+Original CThing::Kill(bool) now executes with actual generic entity slots11/12,
+component slots13/14, AddTC, native pending-vector append/growth and render removal.
+All 1,524 cases/2,477 outer requests/11,000 observations match. There are 563 new
+queue entries, 151 nested requests and 5 cases with two new queue entries.
+Full independent repeat is byte-identical; 26 instruction controls are rejected.
+Authoritative proof/exact sources: `work/modern_thing_kill_20261018/final_validation/`
+and final_native/; aggregate parent summary.json. Numeric comparison data:
+`work/modern_owned_kill_20261018/{export.py,export.json,kill.txt}`.
+
+Kill guards Dead (+91 bit0), in-progress (+92 bit2) and StartKillLocked (+91 bit6) BEFORE
+reading the bool. False skips the virtual predicate and killed pass, not the lock.
+The true-path predicate executes before in-progress is set; no guard is repeated
+on return. Predicate side effects setting Dead/lock do not veto a true return.
+Bounded predicate recursion can complete an inner Kill and then the outer call
+can issue callbacks/queue append again. Preserve observed queue duplicates and
+callback order; do not add an early semantic guard or collapse those effects.
+This does not prove such overrides are safe inputs to native UpdateDeaths.
+
+A true request sets +93 bit1, calls entity vslot11 (generic 004C7D50), disables
+attachment, invokes every sorted component slot13 regardless ToBeRemoved and
+unconditionally enables attachment. Entity vslot12 (004C7CF0, OnKill) always
+notifies CQuestManager::OnDeactivateEntity 004AFB00 with current +93 bit4, then
+disables attachment and invokes every component slot14 without removal filtering,
+re-enables attachment and calls manager OnThingKill 00520C80. The quest bool's
+semantic field name is still unknown; do not invent one from its bit position.
+Quest attachment can join the following pass; component-pass attachment is
+refused before factory invocation. Recursion in those callbacks is suppressed
+by the already-set in-progress bit, unlike predicate recursion.
+Only afterward does Kill set Dead, call UpdateThingScanInclusion, queue through
+005202B0 and RemoveFromRenderList 0051E000. Update membership, components and
+ordinary registration remain intact in this function; no entity is destroyed.
+
+The quest boundary was verified as OnDeactivateEntity, correcting historical
+quest_death trace labels to quest_deactivate. Final proof uses corrected names;
+label_reconciliation.json proves all other observations are identical. Earlier
+retail_probe/validation/ are historical, not the current authoritative sources.
+Predicate/quest/history/derived callbacks and allocator/memcpy are controlled.
+Type58 scan behavior is absent. Fixture queue discard/list detach before native
+destruction is explicit and is NOT execution of UpdateDeaths or active disposal.
+Details: `docs/modern/THING_KILL.md`. The 50 canonical provider inputs+registration
+table and all modern compiled inputs remain unchanged (documented README-only
+post-freeze delta from previous proof). No new C++ build result is claimed.
+No launches, installed writes, Lua changes, commits, pushes or coverage promotion.
+
+Next: execute manager UpdateDeaths 0051F070 and RemoveFromUpdateList 0051ECC0 with
+original deleting wrappers/disposal. Static candidate evidence is sweep_static.json,
+not execution proof. The apparent sweep removes update membership BEFORE deletion,
+reloads vector length after each deletion (possibly consuming newly appended work),
+then resets logical end while keeping capacity. It does not visibly deduplicate.
+Confirm actual extents and native valid-domain disposal, queue growth during
+callbacks, order and handling of duplicated/expired pointers. Then connect the
+owned Kill/pending queue and sweep using validated handles, preserving valid
+callback timing without copying native dangling-pointer behavior. A Kill request
+may be valid during activation/component callbacks; do not reuse a blanket
+owner-lifecycle exclusion that silently rejects those requests. Owned disposal
+must remain guarded during an executing request. Real quest/history, scan/derived
+behavior, physics, maps, world 15 Hz scheduling and the representative scenario remain.
+
+
+## Native queued-death disposal reference, 2026-10-18
+
+Original Kill -> UpdateDeaths 0051F070 -> RemoveFromUpdateList 0051ECC0 -> deleting
+wrappers now execute through actual component/weak/UID/class/container cleanup and
+entity release. All 1,108 cases/4,220 sweeps/1,936 recorded deletions/30,481 snapshots
+match. There are 294 callback-triggered enqueues, 597 physics-removal notifications
+and 2,216 component destructors. Full independent repeat is byte-identical; 24
+instruction controls reject. Authoritative proof/exact sources:
+`work/modern_thing_sweep_20261018/validation/`; aggregate parent summary.json.
+Numeric data beside Kill corpus:
+`work/modern_owned_kill_20261018/{export_sweep.py,sweep_export.json,sweep.txt}`.
+
+Native update removal calls cached physics vslot45 BEFORE unlinking, including
+ToBeRemoved physics; absent membership does not notify again. The sweep then calls
+the real entity deleting wrapper with flag1. CThing destructor decrements its thing
+counter and disables attachment, purges owner weak pending records, clears each
+component type bit before destruction, then notifies UID deletion. At component
+destructor entry update membership is gone, ordinary registration/UIDs remain.
+Actual key-only UID erase precedes class registration unlink. Strings, weak-control
+storage and containers release afterward; object release is last. Global thing
+count and registration count differ transiently during destruction.
+
+The sweep rereads vector storage/length after EACH deletion. A physics-removal
+or controlled derived component destructor can Kill another live owner; append
+may grow/reallocate storage, and the SAME sweep consumes it. Queue end resets to
+beginning only at completion; capacity remains and later batches reuse storage.
+Never capture an initial work count or retain a reference into the growing queue.
+The valid-lifetime corpus uses unique owner pointers, mixed types/order, missing/
+removed components, duplicate UIDs, weak-queue duplicates, multiple and empty
+batches, and bounded acyclic callback workloads. All surviving fixture owners are
+also cleaned up through original Kill/UpdateDeaths; no manual active unlink or
+raw object cleanup substitutes for that path. Only the prepared queue container
+and class-factory teardown follow, with every allocation and string accounted.
+
+A separate duplicate_dispatch probe runs only the original OUTER sweep with
+controlled unlink/deleting calls that retain their records: 4 cases/11 deleting
+dispatches show duplicate pointer values are NOT deduplicated. It does not execute
+native destructors on stale/freed pointers or claim duplicate lifetime safety.
+Keep prior Kill callback/queue effects, then use modern generation validation for
+expired entries rather than copying native dangling-pointer behavior.
+Details: `docs/modern/THING_SWEEP.md`. Predicate's true leaf executes natively;
+quest/history and derived callbacks, allocator/memcpy remain controlled. Type58
+scan behavior remains absent. Initial failed development captures corrected the
+16-type factory string baseline and callback-runner closure; they are historical.
+All modern compiled inputs and 50 canonical provider+registration inputs remain
+unchanged, aside from the previously documented README-only post-freeze delta.
+No new C++ builds, canonical promotion, launches, install writes, Lua changes,
+commits or pushes are claimed.
+
+Next: IMPLEMENT owned Kill and queued sweep together using both frozen corpora.
+Add semantic kill-started/notified/quest-deactivation-argument state, component
+slots13/14 with attachment disabled and no removal filtering, and preserve
+predicate-before-started behavior (bounded predicate recursion can queue twice).
+The quest operation is OnDeactivateEntity 004AFB00, not a death-only event.
+Do not use broad activation/component lifecycle exclusion to reject valid Kill
+requests; use request execution depth to protect ownership while preserving
+native guards/timing. Add physics vslot45 before actual update unlink, preserve
+live queue growth, then dispose through real Store ownership/UID cleanup.
+Current ThingComponents owner_phase_active_/per-type bool guards may need saved
+state/depth for valid nested Kill dispatch; do not accidentally release an outer
+executing-type guard. Queue values must be copied validated handles; skip expired
+records safely, retain duplicate request effects and clear reusable storage after
+draining. Whole sweep must not recursively destroy an executing owner. Match
+both complete corpora plus all earlier five-build suites, then assemble full
+creation/activation/Kill/sweep. Real quest/history/scan, derived physics, maps and
+explicit 15 Hz scheduling/RNG order and a representative gameplay scenario remain.
+
+
+## Owned Kill and queued disposal checkpoint (2026-10-18)
+
+`ThingKill` now executes the recovered generic Kill sequence through required
+quest/predicate/history/scan capabilities and actual owned component dispatch.
+`ThingStore` owns a shared weak-handle death queue. Sweep removes update membership
+after the cached physics callback, then destroys through owned component/weak/UID
+cleanup. Callback appends are consumed in the same sweep; expired generations and
+duplicate entries are safely skipped. Saved callback guards preserve valid nested
+Kill behavior without releasing an outer executing-type guard. Exceptions retain
+prior effects; retry also handles an already-disposed prefix.
+
+All 1,524 native Kill cases/2,477 requests match 9,064 observable snapshots;
+all 1,108 sweep cases/4,220 sweeps/1,936 deletions match 11,841 snapshots.
+Full native traces retain 11,000/30,481 events respectively; internal instrumentation
+is explicitly excluded from the modern comparison. All earlier numeric corpora
+also pass in five configurations: 47 tests each MSVC x86/x64 and clang-cl,
+30 GCC, 27 with desktop tools/reconstructed objects disabled. Architecture gates
+pass in each configuration. Frozen sources, exact result markers, executable
+hashes and full logs: `work/modern_owned_kill_20261018/validation/`.
+The 50 selected canonical provider inputs, registration table and four selected
+layout headers remain unchanged. The simulation README alone is updated after
+the source freeze; the proof records that documentation-only hash delta.
+
+An assembled golden connects actual owned definition construction, creation,
+OnCreate, both activation phases, Kill and sweep in the same simulation library.
+Assets, quests/history/scan and derived components remain controlled fixtures;
+this does not satisfy the representative recovered gameplay-session gate.
+Details: `docs/modern/THING_KILL_STORE.md`.
+
+Next: recover native world-update traversal and entity/component tick behavior
+before implementing explicit world ticks. Preserve callback/list mutation order,
+15 Hz scheduling and RNG consumption. Real assets, derived gameplay/physics,
+quests/history/scan, maps and representative headless gameplay remain open.
+Work remains offline: no launches, installed-game writes, Lua edits, canonical
+promotion/recount, commits or pushes.
+
+
+## Native world-update traversal checkpoint (2026-10-18)
+
+Offline `WorldUpdateThings`/`FrameUpdate` now has a reference: 1,241 cases,
+2,448 calls, 2,613 encountered records, 1,619 frame dispatches, 170 bullet-time
+dispatches, 392 callback actions and 14,355 explicit observations. Full repeat
+is byte-identical; all 24 instruction mutations reject. Actual native list
+insertion/removal execute; bullet predicates, entity vslots19/20/44 and the final
+sweep are controlled. Proof: `work/modern_world_update_20261018/final_validation/`.
+Details and limits: `docs/modern/THING_WORLD_UPDATE.md`.
+
+Important: traverse types1..15, sample type controls at type entry, increment
+visit count even for skipped entities, cache each successor before callbacks,
+and always tail-call sweep even when global updates are disabled. A complete
+frame-start snapshot changes append behavior. A cached removed successor can
+still be visited while alive; its cleared next link then ends the type traversal.
+Three-actor fixtures distinguish those cases without executing stale storage.
+
+Next: recover generic WorldUpdate 004C8050, WorldUpdateBulletTime 004C8BA0 and
+IsFrameUpdated 004C7BF0. Primary CThing vtable01239ABC establishes slots19/20/44.
+Normal generic update uses its insertion-ordered component update list, component
+slot9 with ToBeRemoved filtering and Dead checks, then shared pending component
+removal. Bullet-time uses slot10 and a type70 operation. These bodies are static
+leads only; do not substitute activation snapshots or Kill's sorted vector.
+Keep full/affected bullet-time policy explicit until separately recovered.
+Only then implement owned tick traversal, preserving these timings with validated
+handles/lifetime guards, and connect real disposal after traversal.
+
+No modern compiled or selected canonical inputs changed during this research;
+the prior 47/30/27 five-build proof remains current. The only earlier post-freeze
+delta is its recorded simulation README. No launches, install writes, Lua edits,
+canonical promotion/recount, commits or pushes. Scheduling/RNG and representative
+recovered gameplay remain open gates.
+
+
+## Native generic tick checkpoint (2026-10-18)
+
+Generic WorldUpdate 004C8050, WorldUpdateBulletTime 004C8BA0 and IsFrameUpdated
+004C7BF0 now execute in a private native reference with actual constructors,
+AddTC, replacement, container/weak removal, component deletion and full teardown.
+2,448 cases cover 2,832 normal calls, 1,324 bullet calls, 4,156 retention queries,
+3,968 component callbacks, 1,878 deletions, 287 actions and 30,245 observations.
+All explicit state agrees with the independent model; full repeat is byte-identical
+and all 33 instruction mutations reject. Proof:
+`work/modern_thing_tick_20261018/validation/`. Details: `docs/modern/THING_TICK.md`.
+Numeric corpus `work/modern_thing_tick_20261018/tick.txt` retains every event;
+only ToBeRemoved snapshots normalize nonzero bytes to true. Native JSON keeps
+raw bytes. Modern comparison must explicitly declare any internal marker filter.
+
+Normal updates use insertion-ordered component update membership, checking Dead
+before each component and afterward; ToBeRemoved suppresses slot9. Successors
+are loaded AFTER callbacks, allowing tail appends and replacement catch-up during
+the same pass. The global pending-removal drain purges expired/dead foreign owner
+records, leaves other live owners' records, and for this owner clears a true
+driver cache, unlinks updates, erases the sorted component entry and deletes
+before weak/node release. Native membership bits and physics/appearance cached
+identities can remain stale. Preserve observed values with validated handles,
+never unsafe dereferences. Valid fixtures exclude deletion through duplicate
+component pointers and replacement of the executing component.
+
+Bullet updates first call controlled type70 operation006A1D60 (manifest labels
+UpdateCarriedObjects), then slot10 without owner Dead checks or pending drain.
+Retention returns true for null definition or definition+41 bit1. Otherwise
+actual IsDrawable executes via slot27; drawable + cached appearance byte58 or
+byte59 bit2 retains, with ForceFrameUpdate (+92 bit3) as the remaining fallback.
+Derived meanings of appearance fields, carrying logic and bullet policy remain.
+
+Next: port owned generic tick/component removal and retention, then connect manager
+traversal and real Kill sweep. Use both frozen native corpora; keep the manager's
+BEFORE-callback successor semantics distinct from component AFTER-callback reads.
+Use explicit world tick data, guard active ownership, preserve callback replacement
+and queue growth, and compare state field-by-field in every build configuration.
+Add a creation/activation/tick/Kill/sweep assembly in the same headless library.
+Prepared definitions/components and diagnostic pending records do not satisfy
+the representative recovered gameplay gate. Actual assets, derived gameplay,
+global component updates, bullet policy, scheduling and RNG remain open.
+
+All modern compiled sources and 50 selected canonical providers plus registration
+and four selected headers remain unchanged during this research. The 47 MSVC/
+clang, 30 GCC, 27 desktop-free five-build proof remains current; its sole recorded
+post-freeze delta is the earlier simulation README. No new C++ builds, launches,
+install writes, Lua edits, canonical promotions/recounts, commits or pushes.
+
+
+## Owned generic tick checkpoint (2026-10-18)
+
+`ThingTick` now ports generic normal/bullet-time update and retention against
+actual owned components. Callbacks receive an explicit u32 WorldTick frame; no
+clock, scheduler, renderer or RNG enters the module. Normal update preserves
+post-callback successor reads, ToBeRemoved/Dead timing, same-pass appends and
+replacement of other types. The shared weak removal queue uses stable nodes,
+allowing destructor appends and foreign-owner cleanup during the drain. It erases
+updates/vector entries before actual component destruction, retains native stale
+membership/non-driver cache identities, and validates every later cached use.
+Kill may run inside update/driver callbacks; sweep waits for the tick to return.
+
+All 2,448 native cases, 2,832 normal calls, 1,324 bullet calls and 4,156 queries
+match 27,437 observable snapshots plus final state. Native JSON retains all 30,245
+events. Only internal removal-type query and drawable helper entry markers
+(codes13/17) are excluded; their resulting state/decisions remain compared.
+ToBeRemoved snapshots normalize nonzero bytes to true. Every external factory,
+component, driver, carrying, destructor and caller boundary remains compared.
+Details: `docs/modern/THING_TICK_STORE.md`.
+
+Five configurations pass all earlier corpora plus the new tick corpus: 48 tests
+each MSVC x86/x64 and clang-cl, 31 GCC, 28 desktop-free. Architecture gates pass.
+Frozen source/log/target/binary evidence:
+`work/modern_owned_tick_20261018/validation/`. The 50 selected canonical provider
+inputs, registration table and four selected headers are unchanged. The simulation
+README alone is updated after the freeze, with its hash delta recorded.
+
+Goldens cover execution/lifetime guards, throwing callbacks/retry, duplicate and
+stale component records, reused owner slots, destructor queue append/foreign purge,
+and Kill during update and pending driver callbacks. The assembled lifecycle now
+connects definition construction, creation, OnCreate, both activation phases,
+normal and bullet ticks, actual live physics-component removal, then Kill/sweep.
+The owner retains UID and update membership during component removal. CPU assets,
+quests/history/scan and derived components remain fixtures; this is not a
+representative recovered gameplay scenario.
+
+Next: implement manager traversal using its frozen native corpus, connecting
+normal/bullet dispatch, retention-driven update unlink and actual final death sweep.
+Keep manager BEFORE-callback successors distinct from component AFTER-callback
+reads. Manager traversal must handle cached removed successors through validated
+handles and preserve type/global control sampling. Resolve tick callbacks that
+need same-owner update membership operations against explicit native composition;
+existing active-phase registration guards remain until that boundary is proven.
+Do not route every derived entity through an assumed generic implementation.
+Keep bullet full/affected policy explicit until separately recovered. Actual
+global component updates, assets/derived gameplay, scheduling, RNG and a
+representative headless session remain open. No launches, install writes, Lua
+edits, canonical promotion/recount, commits or pushes.
+
+
+## Tick membership composition checkpoint (2026-10-18)
+
+The active-phase membership gap is closed. A new native composition reference
+executes generic normal/bullet bodies, SetAsFrameUpdated 004C7C40,
+SetForceFrameUpdate 004C7C60, actual manager add/remove, and controlled physics
+notifications inside component callbacks. All 1,204 cases, 1,185 normal calls,
+1,124 bullet calls and 10,367 observations agree with the independent model.
+Full repeat is byte-identical; all 22 instruction mutations reject. Native proof:
+`work/modern_tick_membership_20261018/validation/`. Entity/component prefixes and
+nodes are prepared; native construction/teardown remains separate evidence.
+
+The owned C++ path matches EVERY snapshot and final state, with no event filter.
+Tick methods now expose the recovered entity operations. SetForce stores before
+registration and false does not unlink; both entity wrappers guard Dead, while
+raw manager add/remove do not. Cached physics is notified before membership
+changes, including ToBeRemoved physics. A private tick-aware notification path
+preserves saved outer component/phase guards; other lifecycle restrictions remain.
+Repeated unfinished transitions are refused, and throwing callbacks retain prior
+effects/pre-link state while guards unwind for retry. Details:
+`docs/modern/THING_TICK_MEMBERSHIP.md`.
+
+All earlier corpora plus this composition pass five configurations: 49 tests each
+MSVC x86/x64 and clang-cl, 32 GCC, 29 desktop-free. Architecture gates pass.
+Proof: `work/modern_owned_tick_membership_20261018/validation/`. The 50 selected
+canonical providers, registration table and four selected headers are unchanged.
+Only the simulation README changes after source freeze; its hash delta is recorded.
+
+Next: IMPLEMENT manager traversal now. Its numeric `world.txt` and export recipe
+are under `work/modern_world_update_20261018/`, retaining all 14,355 native events
+across 1,241 cases/2,448 calls. Normalize flags91 with predicate mask0x29 and bool
+controls; raw native JSON retains all bits. Explicit internal event exclusions
+2(frame wrapper),8(manager remove),11(empty controlled sweep) leave 9,926 observable
+snapshots. Verify real final sweep separately through actual Kill/disposal goldens.
+Implementation notes: `work/modern_world_update_20261018/owned_port_design.md`.
+Preserve manager BEFORE-callback cached successors, removed-but-live visitation,
+types1..15, global/type sampling, skipped-entity visit count and normal/bullet/
+retention ordering. Require narrow entity dispatch/bullet policy capabilities;
+do not silently run every derived entity through generic ThingTick. Protect
+executing owners and manager reentry across both traversal and final sweep, and
+use actual same-Store death disposal. Scheduling/RNG, real assets/derived gameplay,
+global component updates and representative headless gameplay remain open.
+No launches, install writes, Lua edits, canonical promotion/recount, commits/pushes.
+
+
+## Owned manager traversal checkpoint (2026-10-18)
+
+`ThingWorldUpdate` now connects per-type traversal to owned entities, explicit
+normal/bullet dispatch, retention and actual deferred death disposal. All 1,241
+native cases/2,448 calls match 9,926 observable events plus final states; the
+numeric corpus retains all 14,355 native events. Native internal entry events
+are excluded explicitly from the owned comparison. Global/type controls,
+cached-successor timing, counter/marker state and callback list mutations agree.
+Generation validation stops traversal through a destroyed successor rather than
+visiting a reused slot; this safety behavior is outside native live-storage proof.
+
+The assembled fixture now runs actual creation, initialization, activation,
+manager traversal, generic normal/bullet ticks, pending component removal, Kill
+and final manager-driven sweep. Assets, quests, scan services, bullet policy and
+derived component behavior remain controlled; this is not a gameplay scenario.
+
+All earlier corpora and the new traversal pass five builds: 50 tests each on
+MSVC x86/x64 and clang-cl, 33 on GCC, 30 desktop-free. Proof and frozen source,
+binary, target and log hashes: `work/modern_owned_world_update_20261018/validation/`.
+The 50 selected canonical provider sources, registration source and four selected
+headers are unchanged. No game launch, Lua change, commit or push occurred.
+
+Next: execute the bullet-policy dependencies against the pinned native image,
+then connect recovered capabilities. Static preparation is in
+`work/modern_bullet_policy_20261018/next_scope.md`; it is not execution evidence.
+Scheduler/RNG, real definitions/assets, derived gameplay and a representative
+headless session remain open. Details: `docs/modern/THING_WORLD_UPDATE_STORE.md`.
+
+
+## Bullet full-update native reference (2026-10-18)
+
+Actual multiplier traversal, _ftol2 conversion and signed frame remainder now
+match an independent exact model across 2,570 inputs / 30,840 records and all
+12 x87 precision/rounding profiles. Full repeat is identical; seven instruction
+mutations reject. Observations include 20,464 returns and 10,376 deliberate
+fault cases (zero divisor or signed overflow); 230 inputs are mode-sensitive.
+The private oracle builds with warnings as errors and verifies all relocated
+code outside six declared address operands. Prepared trees and controlled globals
+are not gameplay ownership or scheduler evidence. No game or Lua launch occurred.
+
+Proof: `work/modern_bullet_policy_20261018/final_validation/`.
+Contract: `docs/modern/BULLET_FULL_UPDATE.md`. The previous five-build modern
+checkpoint and selected canonical inputs are unchanged. Next is an owned exact
+numeric policy with explicit division errors, preserving multiplier order and
+validating collection arithmetic bounds; affected-entity policy remains separate.
+
+
+## Owned bullet full-update policy checkpoint (2026-10-18)
+
+Portable `bullet_update_divisor` and `bullet_time_for_full_update` now match all
+2,570 native inputs / 30,840 records in four host rounding modes. Divisor,
+boolean results and explicit zero-divisor/signed-overflow errors compare. Host
+floating controls/flags remain untouched. The ordered sum uses integer arithmetic;
+the 18-limb bound covers the unsigned-32 collection domain, beyond the native
+fixture's eight entries. The checksum shares the private arithmetic kernel while
+retaining its own five-limb bound and operation order; its full corpus passes.
+
+The assembled lifecycle now uses the actual full-update decision for normal
+frame 8 and bullet frame 9 through the manager, generic ticks and death sweep.
+Active-bullet and affected-entity policies are still controlled. Registration of
+real multipliers, affected-entity behavior, scheduler/RNG and a representative
+headless gameplay session remain open.
+
+Five builds pass: 51 tests each on MSVC x86/x64 and clang-cl, 34 GCC, 31
+desktop-free, with all earlier corpora replayed. Frozen proof:
+`work/modern_owned_bullet_policy_20261018/validation/`. The 50 selected canonical
+providers, registration source and four selected headers remain unchanged.
+Contract: `docs/modern/BULLET_FULL_UPDATE_STORE.md`. No game launch, Lua edit,
+commit or push occurred. Next: execute the full affected-entity predicate and
+its ordered linked-entity/capability observations before replacing that boundary.
+
+
+## Affected-entity native composition checkpoint (2026-10-18)
+
+The full 598-byte IsAffectedByBulletTime root now executes with actual weak
+resolution/cleanup, component71 getter, fading, component lower-bound and player
+lookup bodies. A separate explicit model matches 3,597 cases / 8,810 calls /
+44,681 ordered events, including 486 redirect visits and 561 release requests.
+Full repeat is identical; 26 instruction mutations reject (25 assertion
+failures, one invalid-read control). Script-control responses and final record
+deallocation remain controlled. Prepared valid storage and acyclic chains are
+not evidence for arbitrary missing components or native cycle safety.
+
+Raw entity tests at +24/+28/+2C/+30/+3C are component membership bits for
+38/71/75/100/146/242/249. The owned port must preserve those bits independently
+of live component storage. GetPItem can clear an expired reference after decrement
+and release; component75 resolution occurs up to three times before a redirect.
+Script responses also cannot be cached across multiple observed queries.
+
+Proof: `work/modern_bullet_affected_20261018/composed_validation/`.
+Contract: `docs/modern/BULLET_AFFECTED.md`. This supersedes earlier controlled
+lookup receipts. Modern and selected canonical inputs remain unchanged from the
+prior five-build checkpoint. No game launch, Lua edit, commit or push occurred.
+Next: owned affected-entity policy with explicit capabilities and lifecycle,
+stale-handle and cycle policies; real script control and gameplay remain open.
+
+
+## Owned affected-entity policy checkpoint (2026-10-18)
+
+`ThingBulletAffected` now uses actual Store membership, component identities,
+entity state and validated target handles. Required host capabilities preserve
+repeated weak/script queries; weak-record cleanup is modeled by the corpus host,
+not claimed as a newly implemented weak allocator. The owned policy matches
+3,597 cases / 8,810 calls / 32,040 comparable events plus final states. Numeric
+export retains all 44,681 native events; internal visit/search entries are omitted
+explicitly from the owned comparison.
+
+Goldens cover owner/type guards, cross-facade reentry, nested tick refusal,
+exception retry, cycles, reused-slot stale targets and actual pending-removal
+membership behavior. Missing required storage and unsafe redirects return typed
+errors. Manager delegation is supported before the actual generic tick. The
+assembled lifecycle now uses both recovered bullet full-update and affected
+policies; main-player/script/component gameplay capabilities remain fixtures.
+
+All five builds pass: 52 tests each on MSVC x86/x64 and clang-cl, 35 GCC, 32
+desktop-free, with all previous corpora rerun. Frozen proof:
+`work/modern_owned_bullet_affected_20261018/validation/`.
+Contract: `docs/modern/BULLET_AFFECTED_STORE.md`. Selected canonical inputs remain
+unchanged. No game launch, Lua edit, commit or push occurred. Next: actual script-
+control and component/player reference capabilities, followed by measured full
+bullet-selection composition. Real assets, scheduling/RNG and representative
+headless gameplay remain open.
+
+
+## Native script-control predicate checkpoint (2026-10-18)
+
+Actual IsUnderScriptControl 004C8C90 (81 bytes), LowerBound 004365B0 (60) and
+list-empty helper007122C0 (15) match 1,288 cases / 2,574 calls / 6,975 ordered
+observations. All prepared input data stays unchanged. Full repeat is identical;
+11 instruction mutations reject (six comparison failures, five invalid-read
+controls). Poisoned skipped storage proves absent membership bypasses map lookup
+and nonzero lock bypasses the list query. No Lua, actions or game run.
+
+Proof: `work/modern_script_control_20261018/final_validation/`.
+Contract: `docs/modern/THING_SCRIPT_CONTROL.md`. Modern and selected canonical
+inputs still match the previous five-build checkpoint. Next is the owned query
+with actual Store membership/component validation and narrow lock/action-state
+capabilities, supporting delegation from ThingBulletAffected. This does not
+implement scheduling or action ownership; full gameplay remains open.
+
+
+## Owned script-control checkpoint (2026-10-18)
+
+The owned predicate matches 1,288 native cases / 2,574 results, with 1,267 lock
+and 560 list observations in the measured order. It uses actual Store membership
+and validated component31 identities, protects the owner/component through host
+calls, and permits protected delegation from ThingBulletAffected. The headless
+lifecycle fixture now invokes this leaf through the world/affected path. Lock and
+list observations remain explicit capabilities; action execution is not supplied.
+
+All five builds pass: 53 tests each on MSVC x86/x64 and clang-cl, 36 GCC, 33
+desktop-free. All earlier corpora pass and frozen inputs stayed unchanged.
+Proof: `work/modern_owned_script_control_20261018/validation/`.
+Contract: `docs/modern/THING_SCRIPT_CONTROL_STORE.md`. The selected 50 canonical
+providers, registration source and four headers remain unchanged. Next: actual
+native affected/script composition and component/player reference capabilities.
+Real actions, assets, scheduler/RNG and representative gameplay remain open.
+No game launch, Lua editing, canonical promotion, commit or push occurred.
+
+
+## Owned affected/script composition checkpoint (2026-10-18)
+
+The actual native affected predicate now calls the actual script-control predicate
+and shared lower-bound/list helpers. Its 4,109 cases / 9,834 calls / 58,143 events
+repeat identically; all 36 distinct instruction mutations reject. Prepared data
+changes only at predicted weak-reference fields. Frozen reference:
+`work/modern_bullet_script_composition_20261018/final_validation/`.
+
+The composed owned C++ path matches 42,573 comparable observations and all final
+states, including 4,557 script queries. Internal native visits/map searches remain
+in the export but are excluded from the owned-storage comparison. The original
+affected fixture remains covered; its setup is shared with the composition test.
+Five-build regression passes: 54 tests each MSVC x86/x64 and clang-cl, 37 GCC,
+34 desktop-free, plus every earlier corpus. Frozen inputs and the selected
+50 canonical providers, registration source and four headers stayed unchanged.
+Proof: `work/modern_owned_bullet_script_20261018/validation/`.
+Contract: `docs/modern/BULLET_SCRIPT_COMPOSITION.md`.
+
+Next is component/player reference ownership. Existing evidence is available in
+`rebuild/compile-gate/intelligent-pointer.json` and `intelligent-lifetime.json`,
+with source `rebuild/src/compiled/00/a0/CBaseIntelligentPointer_Operations_00a01b20.cpp`
+and gates `tools/decomp_pipeline/gate_intelligent_pointer.py` / `gate_intelligent_lifetime.py`.
+These were read, not rerun or promoted. Resolve lifetime semantics before choosing
+an owned adapter; do not recreate retail pointer graphs without need. Current
+weak-reference behavior is still fixture-provided. Actions, assets, multiplier
+registration, scheduling/RNG and representative gameplay remain open. No game
+launch, Lua edit, installed-game write, canonical promotion, commit or push.
+
+
+## Reference expiration evidence checkpoint (2026-10-18)
+
+Existing intelligent-pointer operation/lifetime provider, header and test hashes
+match their saved receipts. The new bounded native base-destruction/GetPItem
+composition passes 16 prepared cases, identical repeat and three mutation
+controls; full data snapshots and release counts compare. CThing tails into base
+expiration after component/container teardown. This supports generation-validated,
+non-owning modern handles, with Dead distinct from destroyed. No reference adapter
+has been implemented yet; component/player ownership remains the next code step.
+Contract: `docs/modern/THING_REFERENCE_OWNERSHIP.md`.
+Evidence: `work/modern_reference_ownership_20261018/`.
+The previous five-build C++ checkpoint is unchanged; no game/Lua work occurred.
+
+
+## Owned entity-reference value checkpoint (2026-10-18)
+
+`ThingReference` now stores an optional validated handle and borrows one Store.
+Invalid/foreign assignment retains the old target; copies clear independently;
+resolution clears expired identities. Dead remains resolvable, component teardown
+retains owner resolution, and slot reuse cannot revive a stale reference. Store
+must outlive references and copies; copy assignment cannot rebind sessions.
+
+Focused lifetime/isolation/teardown tests and the full five-build regression pass:
+55 tests each on MSVC x86/x64 and clang-cl, 38 GCC, 35 desktop-free. Every prior
+native corpus passes. Frozen inputs and the selected 50 canonical providers,
+registration source and four headers stayed unchanged. Receipt:
+`work/modern_owned_reference_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_REFERENCE_OWNERSHIP.md`.
+
+This implements the reference value, not component/player target adapters. Next
+is guarded access to exact owned component identities, then separate adapters
+for component71's linked getter and component75/player weak references. Do not
+cache raw component pointers or assume those native representations are identical.
+Action execution, assets, scheduling/RNG and representative gameplay remain open.
+No game launch, Lua edit, canonical promotion, commit or push occurred.
+
+
+## Guarded component access checkpoint (2026-10-18)
+
+`ThingComponentAccess` validates exact owner/collection/type/generation and lends
+const component access only for an observer callback. The callback copies its
+result; references/views must not escape. Private per-owner observation markers
+permit only the exact component selected by an affected/script host call. Saved
+guards preserve outer protection; nested observers, tick/world updates, kill/sweep
+and policy recursion are refused. Exceptions restore all prior guards.
+
+Focused tests cover stale replacement/removal, identity mismatch, pending removal,
+owner/type protection, cross-facade recursion, cross-owner tick/kill exclusion,
+exceptions and exact delegated reads. A real component-owned ThingReference is
+resolved through the access path; this is fixture integration, not production
+component71/75 behavior. Full five-build regression passes: 56 tests each on
+MSVC x86/x64 and clang-cl, 39 GCC, 36 desktop-free, plus all prior native corpora.
+Frozen inputs and selected 50 canonical providers, registration source and four
+headers stayed unchanged. Receipt:
+`work/modern_component_access_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_COMPONENT_ACCESS.md`.
+
+Next: production component/player reference adapters. Constraints are recorded in
+`work/modern_component_access_20261018/adapter_next.md`: component71 linked getter
+is distinct from component75/player weak resolution; preserve repeated calls and
+expire after component teardown. Do not cache raw pointers. Script actions, assets,
+scheduling/RNG and representative gameplay remain open. No game launch, Lua edit,
+installed-game write, canonical promotion, commit or push occurred.
+
+
+## Owned player target table checkpoint (2026-10-18)
+
+`ThingPlayerTargets` owns ordered player-number entries and validated weak entity
+references. It preserves first-match duplicates, neutral entry-index fallback and
+signed 32-bit main selection. Invalid assignment retains the prior target; expired
+references never resolve reused slots or fall through to another duplicate player.
+This is selection/target state, not full CPlayer ownership or CreatePlayers.
+
+The new offline native reference executes actual main selection/GetPlayer, then
+GetPItem in the driver. All 6,912 cases / 13,824 selection-and-target pairs match,
+repeat identically, and reject three selection mutations. Native data snapshots
+and release timing compare; allocator-specific observations stay in JSON and are
+excluded from the handle-based numeric export. Existing player lookup receipts
+still match their provider/header/test hashes and were not rerun.
+Reference: `work/modern_player_targets_20261018/final_native/`.
+
+Owned C++ matches every selection and target. Bullet-policy goldens use the real
+table for live/Dead target behavior. All five builds pass: 57 tests each on MSVC
+x86/x64 and clang-cl, 40 GCC, 37 desktop-free, plus all prior native corpora. Frozen
+inputs and selected 50 canonical providers, registration source and four headers
+stayed unchanged. Receipt:
+`work/modern_owned_player_targets_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_PLAYER_TARGETS.md`.
+
+Next: distinct component71/75 target state through guarded access. Do not mistake
+the +34 player target used by this policy for the separately recovered controlled-
+creature field. Full player creation, actions, assets, scheduler/RNG and representative
+gameplay remain open. No game launch, Lua edit, installed-game write, canonical
+promotion, commit or push occurred.
+
+
+## Component target identity checkpoint (2026-10-18)
+
+Donor symbols, resolved FableWin thunks, type getters and PDB layouts identify
+component71 as CTCCarryable and component75 as CTCDParticleEmitter. Carryable +10
+is CTCCarrying* PCarryingTC; its getter returns that component's parent Thing.
+The carrying component has interface type70. The modern link therefore needs a
+component handle (including generation/collection), not only an entity reference.
+Particle attachment uses PAttachedToThing and a separate AlwaysUpdate flag.
+The player +34 reference is PeekPPlayerCharacter, distinct from ControlledCreature.
+
+Setter inspection shows SetAsCarriedBy and SetAlwaysUpdate perform more work than
+field assignment. Do not expose raw snapshot mutation as those gameplay commands.
+Next: bounded owned target-query adapters with correct component/entity lifetimes,
+then full setter/attachment recovery. Existing native query evidence remains the
+behavioral reference. No new modern implementation is claimed by this investigation.
+Contract: `docs/modern/COMPONENT_TARGET_IDENTITIES.md`.
+Hashed evidence: `work/modern_component_targets_20261018/identity_summary.json`.
+Previous five-build input hashes, including the documented README delta, still
+match (57 MSVC/clang, 40 GCC, 37 desktop-free). No game/Lua activity occurred.
+
+
+## Owned component target query checkpoint (2026-10-18)
+
+ThingCarryableTargetState owns a validated carrying-component handle (type70),
+while ThingParticleTargetState owns an entity reference and independent AlwaysUpdate
+flag. ThingComponentTargets reads those states through exact guarded component
+access and rejects missing source interfaces. load_snapshot is state initialization,
+not SetAsCarriedBy/AttachToThing/ClearAttachments/SetAlwaysUpdate gameplay.
+
+The composed affected/script replay now uses actual owned player, carrying and
+particle target state: all 4,109 native cases / 9,834 calls / 41,884 comparable
+observations match. Internal visits/searches and 689 allocator-release events are
+excluded, along with native pointer/refcount bookkeeping; original traces remain
+intact and older fixtures retain those comparisons. Exact projection is recorded
+in `work/modern_owned_component_targets_20261018/comparison_scope.json`.
+Goldens cover component removal while its parent survives, generation replacement,
+pending removal, atomic snapshot rejection, role errors and independent flag lifetime.
+
+Full five-build regression passes: 58 tests each on MSVC x86/x64 and clang-cl,
+41 GCC, 38 desktop-free, plus every earlier native corpus. Frozen inputs and
+selected 50 canonical providers, registration source and four headers stayed
+unchanged. Receipt:
+`work/modern_owned_component_targets_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_COMPONENT_TARGETS.md`.
+
+Next: recover actual carrying/particle transitions and callback ordering. Donor
+roots and misleading existing OnKill filename cautions are recorded in
+`work/modern_owned_component_targets_20261018/next_transition_recovery.md`.
+Modern invalidation tests do not establish native detach/destructor semantics.
+Full component gameplay, player creation, script actions, assets, scheduler/RNG
+and representative gameplay remain open. No game launch, Lua edit, installed-game
+write, canonical promotion, commit or push occurred.
+
+
+## Native particle AlwaysUpdate transition checkpoint (2026-10-18)
+
+Actual SetAlwaysUpdate 006E0590 (85 bytes) plus GetPItem 00A01B50 now pass
+2,048 cases / 6,144 calls / 28,160 observations. Full repeat is identical;
+eight mutations reject (five comparisons, three invalid accesses). Skipped creation
+parameters are poisoned; all prepared data is compared after each case. Mutation
+preimages were verified independently. Proof:
+`work/modern_particle_always_update_20261018/final_validation/`.
+Contract: `docs/modern/PARTICLE_ALWAYS_UPDATE.md`.
+
+Order: resolve particle emitter at component+14; resolve it again if live and
+update emitter+44 bit4; otherwise update creation-parameter byte3 only while waiting;
+then write component+45 bit1. The +14 emitter resource is distinct from the +1C
+attached Thing. Do not use the entity attachment handle as emitter identity.
+The owned gameplay command is not implemented yet: it needs guarded mutable
+component execution, resource capabilities and explicit pending-creation ownership.
+
+Candidate later roots: ClearAttachments 006E0AF0 (225), SetAsCarriedBy 00705D40
+(526); disassembly is in work/modern_target_transitions_20261018, without executed
+transition claims. Prior modern checkpoint input hashes still match (58 MSVC/clang,
+41 GCC, 38 desktop-free). No game launch, Lua editing or canonical promotion.
+
+
+## Owned particle AlwaysUpdate checkpoint (2026-10-18)
+
+`ThingParticleAlwaysUpdate` now preserves the measured resource-resolution and
+write order through a guarded component command. The component owns pending
+creation state; emitter identity uses a separate host-validated resource handle.
+The final component flag is written only after successful resource/pending work.
+Missing parameters and stale resources return explicit errors; prior effects survive
+failure. Read delegation does not authorize mutation. Commands currently require
+an idle lifecycle context; resource loading/rendering and tick-time callers remain open.
+
+All five builds pass: 59 tests each MSVC x86/x64 and clang-cl, 42 GCC, 39 headless,
+plus all prior replays and 2,048 particle cases / 6,144 calls / 28,160 observations.
+Frozen inputs, selected 50 canonical providers, registration source and four headers
+stayed unchanged. Weak-resource callbacks remain controlled; native packed fields
+are compared through documented semantic bool projections in the owned replay.
+Receipt: `work/modern_owned_particle_always_20261018/validation/summary.json`.
+Contract: [Particle AlwaysUpdate](PARTICLE_ALWAYS_UPDATE.md#owned-command).
+No game launch, Lua regeneration, installed-game write, canonical promotion,
+commit or push. Full attachment/carrying transitions and representative gameplay
+remain open.
+
+
+## Native particle ClearAttachments checkpoint (2026-10-18)
+
+Retail ClearAttachments 006E0AF0 now executes with actual weak lifetime helpers
+and map lookup: 5,120 cases, 10,240 calls, 58,880 observations, identical repeat,
+and nine rejected mutations. Tracker detachment, string assignment and allocation
+release remain controlled. Full prepared data is compared after each case.
+Proof: `work/modern_particle_clear_20261018/final_validation/`.
+Contract: `docs/modern/PARTICLE_CLEAR_ATTACHMENTS.md`.
+
+Donor call tracing corrects a misleading BSim label: retail 0071A8F0 is the
+particle tracker's SetParticleAsDetached in this caller, not creature-action
+AddDependentThing. Type216 is CTCParticleAttachmentTracker; its method removes
+matching AttachedParticles list entries immediately. An executed tracker/list
+comparison is still needed before an owned detach port.
+
+The root updates reset flags before clearing the attached weak reference, then
+assigns an empty position name, then clears final attachment flags and index.
+Prior modern five-build inputs remain unchanged (59 MSVC/clang, 42 GCC, 39
+headless), with the recorded README-only delta. No game launch or Lua changes.
+
+
+## Native particle tracker removal checkpoint (2026-10-18)
+
+The actual tracker detach callback, list removal, comparator, node erasure and
+weak lifetime helpers now execute together with only allocation/deallocation
+controlled. 1,059 cases / 2,118 calls / 61,451 observations pass, with an identical
+repeat, full prepared-data comparisons and six rejected mutations. Exhaustive
+short lists and seeded lists up to 32 entries cover duplicates, absent pointers,
+shared expired records and owner-record creation.
+
+The scan resolves the owner before each entry, removes every matching node,
+preserves survivor order and lazily clears expired references even in surviving
+nodes. Unlinking precedes weak destruction and node release. The temporary owner
+reference survives the scan. Receipt:
+`work/modern_particle_tracker_20261018/final_validation/`.
+Contract: `docs/modern/PARTICLE_ATTACHMENT_TRACKER.md`.
+
+Next: compose ClearAttachments with this actual tracker body, then establish
+scoped access to both owned components for the modern command. Existing nested
+command rejection must not be bypassed through raw pointers. Prior modern code
+and selected canonical inputs remain unchanged; no game launch or Lua changes.
+
+
+## Composed particle detachment checkpoint (2026-10-18)
+
+ClearAttachments now executes with the actual tracker callback, list scan,
+comparison, erasure and weak-lifetime code. Only allocation/deallocation and
+string storage remain controlled. 8,297 cases / 16,594 calls / 217,781 observations
+pass, with an identical repeat and all fifteen mutation controls rejected.
+Self-attachment cases share the owner's weak record and cover alive/Dead owners;
+tracker temporary ownership ends before the particle clears its own reference.
+Receipt: `work/modern_particle_detach_composition_20261018/final_validation/`.
+Contract: `docs/modern/PARTICLE_DETACH_COMPOSITION.md`.
+
+Next: implement owned tracker/attachment state and guarded mutation of both
+components, including two components on one owner. Existing read delegation
+must not authorize mutation. Replay semantic state against this combined corpus.
+Prior native references and modern five-build code inputs remain unchanged.
+No game launch, Lua regeneration or canonical promotion occurred.
+
+
+## Owned particle tracker state checkpoint (2026-10-18)
+
+`ThingParticleTrackerState` now owns ordered validated entity references. Snapshot
+replacement validates before changing state. Detach removes all matches, preserves
+survivor order and lazily clears expired entries without deleting their null slots.
+Dead owners remain valid; stale/foreign owners fail, and old generations never
+revive. A live component's caller still supplies its lifecycle guard.
+
+The owned replay matches 1,059 native cases and 2,118 ordered survivor lists plus
+removal counts. Allocation/record counts and intermediate native observations are
+explicitly excluded from this semantic projection, and remain in the native proof.
+All five builds pass: 60 tests each MSVC x86/x64 and clang-cl, 43 GCC, 40 headless,
+with every earlier replay. Frozen inputs and selected 50 canonical providers,
+registration source and four headers stayed unchanged.
+Receipt: `work/modern_owned_particle_tracker_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_PARTICLE_TRACKER_STATE.md`.
+
+Next: guarded selection/mutation of two components, owned particle attachment
+fields, and the full detach command against the combined native corpus. The global
+access flag alone does not protect a second owner from destruction; acquire its
+owner/type guards explicitly, with same-owner and exception tests. No game launch,
+Lua edit, canonical promotion, commit or push occurred.
+
+
+## Related-component command checkpoint and session pause (2026-10-18)
+
+`ThingComponentAccess::execute_related` now holds the primary guard during
+selection, validates the related identity and guards both components during
+execution. Same-owner components and exact self-selection are supported. Public
+recursion and read-delegated mutation remain rejected. Selection effects survive
+acquisition failure; all scoped flags restore after failures and exceptions.
+
+All five builds pass: 61 tests each MSVC x86/x64 and clang-cl, 44 GCC, 41 headless,
+plus all previous replays (26 commands per build). Frozen inputs and selected
+50 canonical providers, registration source and four headers stayed unchanged.
+Receipt: `work/modern_component_relations_20261018/validation/summary.json`.
+Contract: `docs/modern/THING_COMPONENT_RELATIONS.md`.
+
+Historical October18 checkpoint: the user requested bedtime handoff and a stop for the next session. This
+modernization lane is paused; its matrix finished and no lane-owned build/probe
+process remains live. Next implementation: owned particle attachment fields and
+ClearAttachments using the related-component command and owned tracker, compared
+against the 8,297-case composed native reference. Full resume details are in
+`docs/modern/NEXT_SESSION.md`. No game launch, Lua regeneration, installed-game
+write, canonical promotion, commit or push occurred.
+
+October23 scheduling implementation: PresentPrediction and ServerUpdatePolicy now live under app/scheduling, with the fable_app_scheduling interface target declaring only a public portable-platform dependency. Platform acquisition/conversion and GameTimeOffset remain in platform. The migration preserves all numeric/replay bodies;38architecture tests include the public app-to-platform edge and reject a platform-to-app edge. Old platform scheduling header paths are explicit migration errors, with historical fixture/evidence retained. The placement matrix passed all101checks/build on five configurations. The guarded ServerTiming application owner is staged; see [SERVER_TIMING_OWNER](SERVER_TIMING_OWNER.md). No application Run loop or playable session claim.

@@ -1,4 +1,8 @@
-# HANDOFF — resume here
+> Historical handoff: instructions and metrics below belong to their recorded checkpoint. Use [the current handoff](../HANDOFF.md) before acting on them.
+
+# Historical handoff archive
+
+Use [the current handoff](../HANDOFF.md) for current ownership and instructions. The dated instructions below are retained as historical records.
 
 ## 2026-08-29 — dual-lane continuation: StatueMaster state + UpdateLines gate
 
@@ -13460,13 +13464,13 @@ tester path verified live. The older `NewOakValeIntro-readable-discord-playtest.
 Rebuild chain: `build_readable_new_oakvale.py` -> stage readable + `retail_override.lua` (enabled=true) ->
 `build_novi_compat_bundle.py --skip-build --readable <stage> --bundle <vN>` -> `build_discord_playtest_zip.py`.
 Known failing (pre-existing): `test_watch_barrels_loop.py` expects a `RewardRemainingBarrel` binding.
-Details: [journal](journal/2026-09/PARTY_MODE_REMOVED_SIDECAR_V4_2026-09-16.md). Work is uncommitted.
+Details: [journal](2026-09/PARTY_MODE_REMOVED_SIDECAR_V4_2026-09-16.md). Work is uncommitted.
 Everything below is historical.
 
 # STOPPED FOR SLEEP: Party Mode upgrade ready for tomorrow's playtest — 2026-09-14
 
 User requested stopping tonight and updating docs. **Do not launch or test further tonight.**
-Next-session details: [Party Mode handoff](journal/2026-09/PARTY_MODE_UPGRADE_2026-09-14.md).
+Next-session details: [Party Mode handoff](2026-09/PARTY_MODE_UPGRADE_2026-09-14.md).
 
 User confirmed a full successful childhood playthrough of the prior stock-FSE-plus-sidecar
 v3 bundle. New Party Mode is staged separately in `work/party-mode-v2/sidecar` and
@@ -13493,7 +13497,7 @@ Still user-verified only: child start after New Game, Father scene, Escape, audi
 
 User requested Guild training work while New Oakvale waits for live verification.
 Continue offline; do not install, activate, touch profiles/saves, or ask for live testing.
-See [Guild recovery](scripts/GUILD_TRAINING_RECOVERY.md) for commands and remaining work.
+See [Guild recovery](../scripts/GUILD_TRAINING_RECOVERY.md) for commands and remaining work.
 
 Guild: nine quests, 28 native entity bindings, 16 threads, 277 exported bodies.
 All entity lifecycle slot bodies exported. Readable RaceMarker matches original
@@ -13509,7 +13513,7 @@ for its frozen bytes, not the newly regenerated readable package. DLL unchanged.
 
 # Current offline marathon checkpoint - 2026-09-14
 
-See [the marathon checkpoint](journal/2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md).
+See [the marathon checkpoint](2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md).
 User selected offline-only and is at work. No installation, activation, profile or
 save changes; do not request live verification. Both full suites pass (1,511/1,528),
 with six later native tests and expanded complete-host checks separately green.
@@ -13529,7 +13533,7 @@ The September 13 stop notice and older status below are historical.
 
 ## STOPPED FOR THE NIGHT — 2026-09-13
 
-User requested sleep; resume only when asked. Read the [night checkpoint](journal/2026-09/NEW_OAKVALE_CONVERTER_NIGHT_HANDOFF_2026-09-13.md) first.
+User requested sleep; resume only when asked. Read the [night checkpoint](2026-09/NEW_OAKVALE_CONVERTER_NIGHT_HANDOFF_2026-09-13.md) first.
 It supersedes running-process claims and earlier metrics below. Suite16 is terminal:
 1,488 tests, one failure and two import errors, all identified in that checkpoint.
 No root or worker processes remain running. Readable package has51 functions,
@@ -15099,7 +15103,7 @@ and complete other New Oakvale bodies/ownership. Full DLL/gameplay validation re
 
 User requested a completion plan and sustained work through New Oakvale Intro, including
 human-readable output. Goal remains ACTIVE; do not stop at syntax/readability milestones.
-Plan: [NEW_OAKVALE_CONVERTER_PLAN.md](scripts/NEW_OAKVALE_CONVERTER_PLAN.md).
+Plan: [NEW_OAKVALE_CONVERTER_PLAN.md](../scripts/NEW_OAKVALE_CONVERTER_PLAN.md).
 Readable package: `refs/script_recovery/lifted/NewOakValeIntro/readable/` (disabled), built by
 `python tools/script_recovery/build_readable_new_oakvale.py`; includes a per-function ledger
 and reversible name maps. Latest generation: **51/51 functions and 18/18 files compile**;
@@ -15133,7 +15137,7 @@ branches across the package, then behavior and runtime integration. Latest full 
 `work/converter_marathon_suite_20260913_07.log` (343.792 seconds; before the newer mission operand pass).
 Experimental `--flat-control` handles
 switches and nested jumps, but must not be promoted before operand/ownership validation.
-Detailed chronology: [09-13 handoff](journal/2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md).
+Detailed chronology: [09-13 handoff](2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md).
 BookTrader home/health and BarrelMan Init now have checked operand/value recovery.
 BookTrader also has a complete native 54-event resource/8-temporary-Thing lifetime map.
 Its separate ownership-aware Lua candidate is now included in the disabled readable
@@ -15152,7 +15156,7 @@ counted clones and the actual Lua binding pass x86 checks; the unapplied patch i
 `work/new_oakvale_conditions/condition-integration.patch`. Guard is separately
 audited: its Main has no condition registration, so none is synthesized.
 Original PDB locals/scopes are retained and linked in the readability report; see
-[PDB evidence](scripts/NEW_OAKVALE_PDB_EVIDENCE.md). One user-requested background agent
+[PDB evidence](../scripts/NEW_OAKVALE_PDB_EVIDENCE.md). One user-requested background agent
 is progressing ScytheInfo independently. Full suite `_07.log` passed966 tests.
 
 ## Converter continuation (2026-09-13)
@@ -15171,7 +15175,7 @@ Gates: candidate tests 15/15; resource/movie focused set recorded in the linked 
 878 tests, known Bully two failures/two errors (`work/converter_resource_candidate_tests.log`); not rerun for this follow-up.
 The external critic never ran (spend limit); completed verifier findings were recovered.
 Movie/pause calls now use the resource scope; error tests verify unpause, temporary/movie destruction and resource release.
-Read [the 2026-09-13 handoff](journal/2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md) first.
+Read [the 2026-09-13 handoff](2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-13.md) first.
 Next: cached woman/wife + hit-wrapper ownership, scope storage growth, a reviewed runtime read of
 0x01375748, then runtime-owner coordination on the five-method patch.
 
@@ -15183,8 +15187,8 @@ Latest full suite: 870 tests, with only the known Bully two failures/two errors 
 reconstructed port. Later temporary-Thing work passed its focused tests. Draft registration is
 still disabled; no runtime patch or DLL was applied. No converter processes are pending.
 
-Start with [the current handoff](journal/2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-12.md)
-and [the resume checklist](scripts/SCRIPT_CONVERTER_RESUME_CHECKLIST.md). Next: connect the
+Start with [the current handoff](2026-09/SCRIPT_CONVERTER_HANDOFF_2026-09-12.md)
+and [the resume checklist](../scripts/SCRIPT_CONVERTER_RESUME_CHECKLIST.md). Next: connect the
 husband's verified resource/temporary-Thing lifetimes to a separate disabled Lua candidate.
 The current runtime's blocking Speak is not equivalent to retail's nonblocking speech.
 The four-operation resource extension is prepared and tested under
@@ -16015,3 +16019,8 @@ Recovery tests pass 293/293.
 Offline-only direction: user selected "Keep working offline only" and is at work,
 unavailable for live verification. No activation, installation or save/profile changes.
 Continue native/compiled offline integration; do not ask again about live testing.
+
+
+## 2026-10-05 night wrap
+
+The complete accumulated handoff before consolidation is preserved in [HANDOFF_BEFORE_NIGHT_WRAP_2026-10-05.md](2026-10/HANDOFF_BEFORE_NIGHT_WRAP_2026-10-05.md). Its older next-step and running-job statements are historical. See [the current handoff](../HANDOFF.md) for the native recreation resume point.

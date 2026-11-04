@@ -1,7 +1,7 @@
 # Baked STB Landscape Bank Chunk — On-Disk Byte-Layout Spec
 
-**Target:** the extracted payload of ONE `__ENGINE_SEA_STATIC_MAP_BANK_FILE__`
-STB file-entry — a per-map *baked landscape MESH chunk* consumed by the retail
+**Target:** the extracted payload of a per-map `Data\Levels\FinalAlbion\<map>.lev`
+STB file-entry — a *baked landscape MESH chunk* consumed by the retail
 render path. Producing an engine-accepted one of these is the whole job of
 `forge::stbbake`.
 

@@ -1,5 +1,10 @@
 # Xbox TLC disc — assessment for the PC RE project (2026-08-09)
 
+> Historical initial assessment (2026-08-09). [XBOX_PC_DIFF.md](XBOX_PC_DIFF.md)
+> corrects the matching recommendation below: RTTI-off, overlays and platform
+> differences prevent treating the Xbox build as a PC byte-parity oracle.
+> Keep the original assessment as chronology, rather than a current work queue.
+
 Source: `D:\Downloads\Fable - The Lost Chapters (USA) (En,Es).7z` → `.iso` (3.51 GB, redump-style
 XGD1 image, XDVDFS partition base `0x0`). Extracted to `D:\tmp\fable_xbox\` (not git-tracked).
 

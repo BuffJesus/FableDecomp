@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -10,6 +12,33 @@ from pathlib import Path
 
 def pct(value: int, total: int) -> str:
     return f"{(100.0 * value / total):.3f}%" if total else "n/a"
+
+
+def verified_near_matches(root: Path, only_previous_differ=False) -> int:
+    """Count independently recompiled, fixture-tested DIFFER promotions only.
+
+    Reject stale source/test snapshots and exclude addresses since promoted to
+    exact parity in the canonical report, so grades never double-count.
+    """
+    gate = root / 'rebuild' / 'compile-gate'
+    report = gate / 'near-match.json'
+    if not report.exists():
+        return 0
+    with (gate / 'retail-parity.tsv').open(encoding='utf-8-sig') as stream:
+        exact = {r['address'].lower() for r in csv.DictReader(stream, delimiter='\t')
+                 if r['status'] in ('MATCH', 'RELOCATION_MATCH')}
+    addresses = set()
+    for row in json.loads(report.read_text(encoding='utf-8'))['rows']:
+        if only_previous_differ and row.get('previous_status') != 'DIFFER':
+            continue
+        if row['status'] != 'NEAR_MATCH' or row.get('behavior') != 'PASS' or row['address'] in exact:
+            continue
+        if not all((root / row.get(field, '')).is_file() and
+                   hashlib.sha256((root / row[field]).read_text(encoding='utf-8').encode('utf-8')).hexdigest() == row.get(field+'_sha256')
+                   for field in ('source', 'test')):
+            continue
+        addresses.add(row['address'])
+    return len(addresses)
 
 
 def main() -> int:
@@ -30,11 +59,13 @@ def main() -> int:
     hm = json.loads(header_metrics_path.read_text(encoding="utf-8")) if header_metrics_path.exists() else {}
     total = status["catalog_functions"]
     accepted_names = total - status["naming_quality_review"]
+    near_matches = verified_near_matches(root)
     verified = (
         status["lift_matching"]
         + status["lift_functional"]
         + status.get("candidate_retail_matches", 0)
         + status.get("candidate_relocation_matches", 0)
+        + near_matches
     )
     byte_identical = status["lift_matching"] + status.get("candidate_retail_matches", 0)
     # Hand-written __asm / _emit bodies are byte-exact oracles, not reconstruction. Report them
@@ -45,11 +76,13 @@ def main() -> int:
         status.get("behavior_tested_candidates", 0)
         - status.get("candidate_retail_matches", 0)
         - status.get("candidate_relocation_matches", 0)
+        - verified_near_matches(root, only_previous_differ=True)
     )
     timestamp = datetime.now().astimezone().isoformat(timespec="seconds")
     dashboard = {
         "generated_at": timestamp,
         **status,
+        "candidate_near_matches": near_matches,
         "mechanically_named": total,
         "accepted_name_quality": accepted_names,
         "usable_navigation_names": naming_triage.get(
@@ -93,6 +126,7 @@ def main() -> int:
         f"| Behavior-tested candidate | {status.get('behavior_tested_candidates', 0):,} | {total:,} | {pct(status.get('behavior_tested_candidates', 0), total)} | Local branch/layout oracle passes; retail parity not yet claimed |",
         f"| Candidate retail `.text` match | {status.get('candidate_retail_matches', 0):,} | {total:,} | {pct(status.get('candidate_retail_matches', 0), total)} | Generated-candidate track exact matches awaiting promotion |",
         f"| Candidate relocation-masked `.text` match | {status.get('candidate_relocation_matches', 0):,} | {total:,} | {pct(status.get('candidate_relocation_matches', 0), total)} | Exact instruction bytes/layout after masking expected COFF linker fields |",
+        f"| Genuine C++ near_match | {near_matches:,} | {total:,} | {pct(near_matches, total)} | Candidate-required fixture passes; instruction count within 10%, normalized similarity at least 90%; not exact byte totals |",
         f"| Verified functional or matching C++ | {verified:,} | {total:,} | {pct(verified, total)} | Compiled under VC7.1 and checked against retail |",
         f"| Byte-identical C++ | {byte_identical:,} | {total:,} | {pct(byte_identical, total)} | Exact `.text` match (includes asm bakes below) |",
         f"| Byte-identical **genuine** C++ | {byte_identical_genuine:,} | {total:,} | {pct(byte_identical_genuine, total)} | Exact match from real compiler input; no `__asm`, `naked`, `_emit` |",

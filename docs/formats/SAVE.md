@@ -272,7 +272,16 @@ The loader recomputes exactly this ([Signature enforcement](#signature-enforceme
 
 ### 2.4 zlib reproduction note (does our deflate reproduce original compressed bytes?)
 
-**No — and it does not need to.** Python's `zlib.compress(data, 9)` emits a valid `78 DA` stream that
+**2026-10-17 correction: yes, with classic zlib.** Retail links zlib **1.2.1**. Upstream 1.2.1 and
+classic zlib 1.3.1, at level 9 / windowBits 15 / memLevel 8 / default strategy, reproduce both
+retail chunks byte for byte. A whole-file rebuild (header, chunks, trailer, padding) is identical
+for 404 of 409 local saves. The other five were written by our Python tools. The earlier "no" below
+was measured with Python's `zlib`, which on this machine is **zlib-ng** (`1.3.1.zlib-ng`) and makes
+different match choices. Codec and corpus check: `rebuild/modern/save/` (`fable_save_check`).
+Python tools that need byte-identical output must use classic zlib, not the interpreter's
+built-in module. The rest of this section is the original 2026-07 analysis.
+
+Original answer: **No — and it does not need to.** Python's `zlib.compress(data, 9)` emits a valid `78 DA` stream that
 inflates to the identical payload, but its Huffman/match choices differ slightly from the compressor
 the game shipped (`CCompressorZlib`), so the compressed bytes — and therefore whole-file bytes —
 differ:
@@ -567,6 +576,47 @@ fields confirmed present in all 3 parsed body streams.
 
 ### 3.6 SAVED_ENTITIES section — body and the 36-byte cell descriptor
 
+**2026-10-17 exact grammar (supersedes the record framing below).** This is validated on all 403
+non-backup saves. The C++ codec in `rebuild/modern/save/` (`Entities.hpp`) re-encodes every one
+byte-identically:
+
+```
+ENTITIES   = [prefix: 20 bytes in full saves, none in .qs.hs] SAVED_ENTITIES SAVED_NPC_NAMES
+SAVED_NPC_NAMES body (CThingManager::NPCNameMap, map<UID, pair<CCharString, CWideString>>,
+                      writer 0x524440, in ascending UID order; all 403 game-written saves):
+  empty                         (context flag +0x102 set: exactly the 113 minimal no-clock .qs.hs saves)
+  | u32 count, count × { u64 uid, u32 len + group bytes, UTF-16LE name + u16 0 }
+  group "" is written as "UNATTACHED" and the loader (0x525A62) maps it back to "".
+  Seen: Brom, Whisper, Maze, Guildmaster, Theresa, … all group UNATTACHED.
+SAVED_ENTITIES body:
+  u32 0, u32 slot_count, u32 0
+  slot_count × slot:  u64 0                                         (empty slot)
+                    | u64 29+clen, u64 cell_id, u64 clen, u32 ulen,
+                      clen bytes zlib (level 1, memLevel 8), 9 trailer bytes (all zero seen)
+  u32 index_count, index_count × 20-byte entries
+```
+
+**Named (2026-10-17, writers 0x524390 / 0x521620, PDB CThingManager):**
+- The 20-byte ENTITIES prefix is `[tag 0][u32 2]` (format version) then `[tag 0][u64
+  CurrentUniqueID]`, the next free global UID. It is above the hero's `0xffffff…` UID in all
+  290 full saves.
+- The 20-byte "index" entries are `CEntityRuntimePersistence::PersistedDeadEntities`, filtered
+  to `GamePersistent`: `[tag 0][u64 UID][tag 0][u32 SectionNameCRC]`. The CRC is seed 0 over
+  the owning quest script's name. 7 of the 8 values in the corpus are recovered (Q_GuildTraining,
+  Q_WaspBoss, Q_BowerstoneTownLifeIntro, Q_WhiteBalverineKnotholeGlade, Q_BanditCampBossBattle,
+  V_SickChild_Activate, V_TrophyDealer). The most common, 0x321ACEE7, is `"NULL"`, meaning no
+  owning section. All 8 corpus values are named. Entity UIDs carry the cell id in their high 24 bits (`0x027A89…045C` is in
+  cell 0x27A89).
+
+- There is **no per-record `u64 0` marker**. The "marker" in the older description below is the
+  previous record's zero trailer, or for the first record the end of the head. Empty slots
+  are a single `u64 0`. The "all-zero runs between records" are runs of those.
+- `slot_count` is exact: Cornelio/Manual-Save1 has 340 slots, 32 of them filled. The anchor walk
+  below found 25, so it misses records.
+- `clen == 0` records exist (685 in the corpus): a filled slot with no stream and `ulen == 0`.
+- Cells are deflated at **zlib level 1** (`78 01`). Classic zlib reproduces all 1,921 non-empty
+  cells exactly. The container chunks use level 9.
+
 Inside the inflated chunk1 stream:
 ```
 "SAVED_ENTITIES\0"
@@ -840,6 +890,29 @@ Component-tail tags after the tables (`a7d70546`, `a10e3cad`, `c93f54bc`,
 
 ### 7. QUESTS / FACTIONS / REGIONS body sections (chunk1, outside SAVED_ENTITIES)
 
+**2026-10-17 corrections (writer 0x996610, reader 0x995FE0; C++ codec `TextSections.hpp`).**
+
+- The compressor is upstream **`lzo1x_999_compress`** (0xC08130, level-8 parameters, 0x70000
+  bytes of work memory), applied to all but the last 3 bytes. That is the "raw literal tail"; it
+  is always exactly 3. Upstream LZO 2.10 reproduces 8,698 of the 8,700 blobs in the local corpus
+  (all 8,410 FACTIONS records, 288 of 290 QUESTS) byte for byte. The two misses are store-mode
+  streams written by `flipquest`. So byte-exact re-encoding needs only stock LZO (GPL-2.0+,
+  optional in the fork; see `rebuild/modern/save/README.md` "Licensing").
+- Full framing: `[u32 ulen]`; `ulen == 0` ends the blob. Otherwise `[i16 clen]`, where
+  `clen == -1` means a `u32 clen` follows. `clen <= 0` means **stored**: `ulen` raw bytes. Retail
+  writes that form for `ulen <= 3` and when the stream would not be shorter than `ulen - 3`.
+  Otherwise there are `clen` LZO1X bytes, then the last 3 bytes raw. clen is **signed**: a
+  16-bit value of 0x8000 or more reads as stored. `build_lz_text_blob` used to emit those
+  (fixed: it now writes `-1` and a u32 above 0x7FFF).
+- **Tags named** (2026-10-17: the seed-0 CRC of every string literal in Fable.exe, with index
+  suffixes). The QUESTS trailer is `NumAcceptedBoasts` (u32), then per boast i
+  `BoastScriptName<i>` (string), `BoastId<i>` (u32), `BoastFailed<i>` (bool) and
+  `BoastCompleted<i>` (bool). All 290 trailers parse; 279 have 0 boasts, 4 have 1, 7 have 3.
+  FACTIONS' head tag 0x4F0E45C3 is `NumberOfFactions`, and record tag i is `Faction<i>`. This
+  supersedes "Trailer tag names are UNRECOVERED" and "recTag names unrecovered" below.
+- The stored form is retail's own answer to "write this text without a compressor". It is
+  safer than the store-mode LZO stream of §8.1, which retail never writes.
+
 All three parse byte-exact on Cornelio/Manual-Save1 (`report`):
 
 - **QUESTS** — one Lionhead-LZO1X text blob (**17,457 bytes** of persist-script text after
@@ -890,6 +963,13 @@ tracked/boast quest) with small ints (3/1/3/9) and bools.
   `getcrc(factionName, 0)` — names unrecovered.
 - **REGIONS** — `[u32 a][u32 b][u32 c]` head then run of `[region-name \0][19 bytes flags]`.
   **141 records** on Cornelio/Manual-Save1.
+  **2026-10-17 exact reading** (writer 0x4FDE80 / per region 0x6BC290; `Regions.hpp`): every
+  field is `Transfer("")`, so every tag is CRC("") = 0. The section is `[tag][u32 table size]`,
+  then for elements 1..size-1 `[tag][CRegion::Name\0]`, then 3 × `[tag][bool]` holding
+  `AppearOnWorldMap`, `CreatureGenerationEnabled` and `SoundThemesEnabled` (PDB CRegion;
+  retail +0x54..+0x56 of a 0x58-byte element). The "3 u32 head" is tag, size, and the first
+  record's tag, and the "19 flag bytes" are 3 × (tag, bool) plus the next record's tag. Table
+  sizes 142, 143 and 146 appear. All 290 sections in the corpus re-encode exactly.
 
 ### 8. Reproduce
 
@@ -1648,7 +1728,7 @@ DON'T prove.
 | `tools/save_tools/savecrc.py inflate <save> <outdir>` | → `*.header.bin`, `*.body.bin` |
 | `tools/save_tools/savecrc.py crc <name> ...` | prints `Calc(0xFFFFFFFF)` — for SAVE tags use seed 0: `savecrc.getcrc(name, 0)` |
 | `tools/save_tools/decode_header.py` | aligned typed HEADER table (23 fields) |
-| `tools/lionhead_lz.py` | Lionhead LZO1X decoder (1:1 engine port) + `lzo_store()` |
+| `tools/lionhead_lz.py` | Lionhead LZO1X decoder (1:1 engine port); `lzo_store()` is in `tools/parse_save_entities.py` |
 | `tools/save_install.py inspect\|install` | Profile.bin registry install ([Profile index](#profile-index) §4) |
 | `tools/save_metadata.py <profileDir> [--json]` | frontend LOAD-list join: autosave-first rows + registered saves, trailer-checked, HEADER decoded; action `0x11` valid / `0xDC` diagnostic ([Profile index](#profile-index) §4.1) |
 

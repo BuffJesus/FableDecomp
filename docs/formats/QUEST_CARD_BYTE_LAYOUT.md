@@ -74,12 +74,13 @@ Confirmed absolute-index back-refs that MUST be retargeted on append:
 
 The remaining 458 B (offsets 0–76, 89–457) are engine-internal object state
 (graphics/physics/interaction defaults) not yet fully reversed. For from-scratch authoring
-these bytes are **card-content-invariant** across shipped cards (to be confirmed by a
-cross-card diff — see `authorFromScratch` design): all `OBJECT_QUEST_CARD_*` share the same
-generic object plumbing and differ only in name + offsets 81/85 + the embedded card def.
-A single **canonical OBJECT skeleton** therefore serves any from-scratch card without
-inheriting a specific quest's content. This is distinct from cloning a donor's *quest*
-data — the skeleton carries no quest identity.
+whether these bytes are **card-content-invariant** across shipped cards remains a
+hypothesis requiring a cross-card diff (see `authorFromScratch` design). The proposed
+model is that `OBJECT_QUEST_CARD_*` share generic object plumbing and differ only in
+name + offsets 81/85 + the embedded card def. A **canonical OBJECT skeleton** is therefore
+a proposed authoring strategy, not established safe reuse until that comparison is
+complete. The intended distinction is between reusable object plumbing and a donor
+quest's identity/content.
 
 ## Consumers
 - FableForge `libs/forgecore/src/questcard.cpp` — `author()` (clone) / `overwriteDonor()`

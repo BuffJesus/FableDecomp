@@ -1,0 +1,349 @@
+index	field	retail_address	donor_name	donor_prototype
+0	ActionFunction	00000000		
+0	LocalActionFunction	00000000		
+0	FeedbackFunction	00000000		
+0	ConfirmFunction	00000000		
+1	ActionFunction	00629270	CWorld::EAUpdateFrame	public: void __thiscall CWorld::EAUpdateFrame(class CGameEvent const *)
+1	LocalActionFunction	00000000		
+1	FeedbackFunction	00000000		
+1	ConfirmFunction	00000000		
+2	ActionFunction	00000000		
+2	LocalActionFunction	00000000		
+2	FeedbackFunction	00000000		
+2	ConfirmFunction	00000000		
+3	ActionFunction	00000000		
+3	LocalActionFunction	0085ca80	CWorld::LEASetExclusiveMode	public: void __thiscall CWorld::LEASetExclusiveMode(class CGameEvent const *)
+3	FeedbackFunction	00000000		
+3	ConfirmFunction	00000000		
+4	ActionFunction	00000000		
+4	LocalActionFunction	0085caf0	CWorld::LEASetDisplayMode	public: void __thiscall CWorld::LEASetDisplayMode(class CGameEvent const *)
+4	FeedbackFunction	00000000		
+4	ConfirmFunction	00000000		
+5	ActionFunction	00000000		
+5	LocalActionFunction	0085cb80	CWorld::LEASetEditorMode	public: void __thiscall CWorld::LEASetEditorMode(class CGameEvent const *)
+5	FeedbackFunction	00000000		
+5	ConfirmFunction	00000000		
+6	ActionFunction	00629280	CWorld::EAFirstPersonViewStart	public: void __thiscall CWorld::EAFirstPersonViewStart(class CGameEvent const *)
+6	LocalActionFunction	00000000		
+6	FeedbackFunction	00000000		
+6	ConfirmFunction	00000000		
+7	ActionFunction	006292a0	CWorld::EACreatureCheat	public: void __thiscall CWorld::EACreatureCheat(class CGameEvent const *)
+7	LocalActionFunction	00000000		
+7	FeedbackFunction	00000000		
+7	ConfirmFunction	00000000		
+8	ActionFunction	006294a0	CWorld::EAPlayerRespawn	public: void __thiscall CWorld::EAPlayerRespawn(class CGameEvent const *)
+8	LocalActionFunction	00000000		
+8	FeedbackFunction	00000000		
+8	ConfirmFunction	00000000		
+9	ActionFunction	006292d0	CWorld::EASetPauseMode	public: void __thiscall CWorld::EASetPauseMode(class CGameEvent const *)
+9	LocalActionFunction	00000000		
+9	FeedbackFunction	00000000		
+9	ConfirmFunction	00000000		
+10	ActionFunction	00629330	CWorld::EASetSlowMotion	public: void __thiscall CWorld::EASetSlowMotion(class CGameEvent const *)
+10	LocalActionFunction	00000000		
+10	FeedbackFunction	00000000		
+10	ConfirmFunction	00000000		
+11	ActionFunction	00629390	CWorld::EASetFreeCameraMode	public: void __thiscall CWorld::EASetFreeCameraMode(class CGameEvent const *)
+11	LocalActionFunction	00000000		
+11	FeedbackFunction	00000000		
+11	ConfirmFunction	00000000		
+12	ActionFunction	00629420	CWorld::EAUseFreeCamera	public: void __thiscall CWorld::EAUseFreeCamera(class CGameEvent const *)
+12	LocalActionFunction	00000000		
+12	FeedbackFunction	00000000		
+12	ConfirmFunction	00000000		
+13	ActionFunction	0062cf90	CWorld::EACreatureBlock	public: void __thiscall CWorld::EACreatureBlock(class CGameEvent const *)
+13	LocalActionFunction	00000000		
+13	FeedbackFunction	00000000		
+13	ConfirmFunction	00000000		
+14	ActionFunction	0062cbb0	CWorld::EATempWorldEventForWhateverYouWant	public: void __thiscall CWorld::EATempWorldEventForWhateverYouWant(class CGameEvent const *)
+14	LocalActionFunction	00000000		
+14	FeedbackFunction	00000000		
+14	ConfirmFunction	00000000		
+15	ActionFunction	00629210	CWorld::EAApplyAllScriptedMapBrushes	public: void __thiscall CWorld::EAApplyAllScriptedMapBrushes(class CGameEvent const *)
+15	LocalActionFunction	00000000		
+15	FeedbackFunction	00000000		
+15	ConfirmFunction	00000000		
+16	ActionFunction	006295c0	CWorld::EAMoveCreature	public: void __thiscall CWorld::EAMoveCreature(class CGameEvent const *)
+16	LocalActionFunction	00000000		
+16	FeedbackFunction	00000000		
+16	ConfirmFunction	00000000		
+17	ActionFunction	0062b5b0	CWorld::EACreatureUseObject	public: void __thiscall CWorld::EACreatureUseObject(class CGameEvent const *)
+17	LocalActionFunction	00000000		
+17	FeedbackFunction	00000000		
+17	ConfirmFunction	00000000		
+18	ActionFunction	0062a920	CWorld::EAControlledCreatureTalk	public: void __thiscall CWorld::EAControlledCreatureTalk(class CGameEvent const *)
+18	LocalActionFunction	00000000		
+18	FeedbackFunction	00000000		
+18	ConfirmFunction	00000000		
+19	ActionFunction	0062a9c0	CWorld::EAControlledCreatureLearnExpression	public: void __thiscall CWorld::EAControlledCreatureLearnExpression(class CGameEvent const *)
+19	LocalActionFunction	00000000		
+19	FeedbackFunction	00000000		
+19	ConfirmFunction	00000000		
+20	ActionFunction	006296b0	CWorld::EAControlledCreatureDropObject	public: void __thiscall CWorld::EAControlledCreatureDropObject(class CGameEvent const *)
+20	LocalActionFunction	00000000		
+20	FeedbackFunction	00000000		
+20	ConfirmFunction	00000000		
+21	ActionFunction	0062ae50	CWorld::EAControlledCreatureZTarget	public: void __thiscall CWorld::EAControlledCreatureZTarget(class CGameEvent const *)
+21	LocalActionFunction	00000000		
+21	FeedbackFunction	00000000		
+21	ConfirmFunction	00000000		
+22	ActionFunction	00629c40	CWorld::EAControlledCreatureUseAbility	public: void __thiscall CWorld::EAControlledCreatureUseAbility(class CGameEvent const *)
+22	LocalActionFunction	00000000		
+22	FeedbackFunction	00000000		
+22	ConfirmFunction	00000000		
+23	ActionFunction	0062ab00	CWorld::EAControlledCreatureStartSneaking	public: void __thiscall CWorld::EAControlledCreatureStartSneaking(class CGameEvent const *)
+23	LocalActionFunction	00000000		
+23	FeedbackFunction	00000000		
+23	ConfirmFunction	00000000		
+24	ActionFunction	0062aa70	CWorld::EAControlledCreatureStopSneaking	public: void __thiscall CWorld::EAControlledCreatureStopSneaking(class CGameEvent const *)
+24	LocalActionFunction	00000000		
+24	FeedbackFunction	00000000		
+24	ConfirmFunction	00000000		
+25	ActionFunction	00629f30	CWorld::EAClickPastText	public: void __thiscall CWorld::EAClickPastText(class CGameEvent const *)
+25	LocalActionFunction	00000000		
+25	FeedbackFunction	00000000		
+25	ConfirmFunction	00000000		
+26	ActionFunction	0062b070	CWorld::EAOpenHeroInformationScreen	public: void __thiscall CWorld::EAOpenHeroInformationScreen(class CGameEvent const *)
+26	LocalActionFunction	00000000		
+26	FeedbackFunction	00000000		
+26	ConfirmFunction	00000000		
+27	ActionFunction	0062b3f0	CWorld::EACloseHeroInformationScreen	public: void __thiscall CWorld::EACloseHeroInformationScreen(class CGameEvent const *)
+27	LocalActionFunction	00000000		
+27	FeedbackFunction	00000000		
+27	ConfirmFunction	00000000		
+28	ActionFunction	00629d60	CWorld::EACloseInGameMenu	public: void __thiscall CWorld::EACloseInGameMenu(class CGameEvent const *)
+28	LocalActionFunction	00000000		
+28	FeedbackFunction	00000000		
+28	ConfirmFunction	00000000		
+29	ActionFunction	00629de0	CWorld::EAAnswerQuestion	public: void __thiscall CWorld::EAAnswerQuestion(class CGameEvent const *)
+29	LocalActionFunction	00000000		
+29	FeedbackFunction	00000000		
+29	ConfirmFunction	00000000		
+30	ActionFunction	00629220	CWorld::EAControlledCreatureStartThrowObject	public: void __thiscall CWorld::EAControlledCreatureStartThrowObject(class CGameEvent const *)
+30	LocalActionFunction	00000000		
+30	FeedbackFunction	00000000		
+30	ConfirmFunction	00000000		
+31	ActionFunction	006297b0	CWorld::EAControlledCreatureEndThrowObject	public: void __thiscall CWorld::EAControlledCreatureEndThrowObject(class CGameEvent const *)
+31	LocalActionFunction	00000000		
+31	FeedbackFunction	00000000		
+31	ConfirmFunction	00000000		
+32	ActionFunction	0062b7c0	CWorld::EAControlledCreatureSheatheWeapon	public: void __thiscall CWorld::EAControlledCreatureSheatheWeapon(class CGameEvent const *)
+32	LocalActionFunction	00000000		
+32	FeedbackFunction	00000000		
+32	ConfirmFunction	00000000		
+33	ActionFunction	0062b8e0	CWorld::EAControlledCreatureUnsheatheMeleeWeapon	public: void __thiscall CWorld::EAControlledCreatureUnsheatheMeleeWeapon(class CGameEvent const *)
+33	LocalActionFunction	00000000		
+33	FeedbackFunction	00000000		
+33	ConfirmFunction	00000000		
+34	ActionFunction	0062bb70	CWorld::EAControlledCreatureUnsheatheRangedWeapon	public: void __thiscall CWorld::EAControlledCreatureUnsheatheRangedWeapon(class CGameEvent const *)
+34	LocalActionFunction	00000000		
+34	FeedbackFunction	00000000		
+34	ConfirmFunction	00000000		
+35	ActionFunction	0062a180	CWorld::EAControlledCreaturePlayerInteraction	public: void __thiscall CWorld::EAControlledCreaturePlayerInteraction(class CGameEvent const *)
+35	LocalActionFunction	00000000		
+35	FeedbackFunction	00000000		
+35	ConfirmFunction	00000000		
+36	ActionFunction	0062a7f0	CWorld::EAControlledCreatureGiveItemToTarget	public: void __thiscall CWorld::EAControlledCreatureGiveItemToTarget(class CGameEvent const *)
+36	LocalActionFunction	00000000		
+36	FeedbackFunction	00000000		
+36	ConfirmFunction	00000000		
+37	ActionFunction	006291f0	CWorld::EAControlledCreatureUnfreezeControls	public: void __thiscall CWorld::EAControlledCreatureUnfreezeControls(class CGameEvent const *)
+37	LocalActionFunction	00000000		
+37	FeedbackFunction	00000000		
+37	ConfirmFunction	00000000		
+38	ActionFunction	0062d3d0	CWorld::EAControlledCreatureRoll	public: void __thiscall CWorld::EAControlledCreatureRoll(class CGameEvent const *)
+38	LocalActionFunction	00000000		
+38	FeedbackFunction	00000000		
+38	ConfirmFunction	00000000		
+39	ActionFunction	0062aba0	CWorld::EAUseQuickAccessItem	public: void __thiscall CWorld::EAUseQuickAccessItem(class CGameEvent const *)
+39	LocalActionFunction	00000000		
+39	FeedbackFunction	00000000		
+39	ConfirmFunction	00000000		
+40	ActionFunction	0062ad90	CWorld::EAUseQuickAccessItemInCutscene	public: void __thiscall CWorld::EAUseQuickAccessItemInCutscene(class CGameEvent const *)
+40	LocalActionFunction	00000000		
+40	FeedbackFunction	00000000		
+40	ConfirmFunction	00000000		
+41	ActionFunction	00629b10	CWorld::EAChargeQuickAccessItem	public: void __thiscall CWorld::EAChargeQuickAccessItem(class CGameEvent const *)
+41	LocalActionFunction	00000000		
+41	FeedbackFunction	00000000		
+41	ConfirmFunction	00000000		
+42	ActionFunction	0062a760	CWorld::EAPutAway	public: void __thiscall CWorld::EAPutAway(class CGameEvent const *)
+42	LocalActionFunction	00000000		
+42	FeedbackFunction	00000000		
+42	ConfirmFunction	00000000		
+43	ActionFunction	0062bd80	CWorld::EAControlledCreatureStrafe	public: void __thiscall CWorld::EAControlledCreatureStrafe(class CGameEvent const *)
+43	LocalActionFunction	00000000		
+43	FeedbackFunction	00000000		
+43	ConfirmFunction	00000000		
+44	ActionFunction	00629260	CWorld::EAMoveHeroToRegion	public: void __thiscall CWorld::EAMoveHeroToRegion(class CGameEvent const *)
+44	LocalActionFunction	00000000		
+44	FeedbackFunction	00000000		
+44	ConfirmFunction	00000000		
+45	ActionFunction	00629510	CWorld::EAFirstPersonTargeting	public: void __thiscall CWorld::EAFirstPersonTargeting(class CGameEvent const *)
+45	LocalActionFunction	00000000		
+45	FeedbackFunction	00000000		
+45	ConfirmFunction	00000000		
+46	ActionFunction	006298f0	CWorld::EAControlledCreatureDefault	public: void __thiscall CWorld::EAControlledCreatureDefault(class CGameEvent const *)
+46	LocalActionFunction	00000000		
+46	FeedbackFunction	00000000		
+46	ConfirmFunction	00000000		
+47	ActionFunction	00629930	CWorld::EAExpressionFollow	public: void __thiscall CWorld::EAExpressionFollow(class CGameEvent const *)
+47	LocalActionFunction	00000000		
+47	FeedbackFunction	00000000		
+47	ConfirmFunction	00000000		
+48	ActionFunction	006299c0	CWorld::EAExpressionWait	public: void __thiscall CWorld::EAExpressionWait(class CGameEvent const *)
+48	LocalActionFunction	00000000		
+48	FeedbackFunction	00000000		
+48	ConfirmFunction	00000000		
+49	ActionFunction	0062bef0	CWorld::EAUseProjectileWeapon	public: void __thiscall CWorld::EAUseProjectileWeapon(class CGameEvent const *)
+49	LocalActionFunction	00000000		
+49	FeedbackFunction	00000000		
+49	ConfirmFunction	00000000		
+50	ActionFunction	0062d380	CWorld::EAControlledCreatureJump	public: void __thiscall CWorld::EAControlledCreatureJump(class CGameEvent const *)
+50	LocalActionFunction	00000000		
+50	FeedbackFunction	00000000		
+50	ConfirmFunction	00000000		
+51	ActionFunction	0062c0e0	CWorld::EAMoveSpirit	public: void __thiscall CWorld::EAMoveSpirit(class CGameEvent const *)
+51	LocalActionFunction	00000000		
+51	FeedbackFunction	00000000		
+51	ConfirmFunction	00000000		
+52	ActionFunction	0062c1c0	CWorld::EAOpenHeroCentreDoor	public: void __thiscall CWorld::EAOpenHeroCentreDoor(class CGameEvent const *)
+52	LocalActionFunction	00000000		
+52	FeedbackFunction	00000000		
+52	ConfirmFunction	00000000		
+53	ActionFunction	0062c300	CWorld::EACloseHeroCentreDoor	public: void __thiscall CWorld::EACloseHeroCentreDoor(class CGameEvent const *)
+53	LocalActionFunction	00000000		
+53	FeedbackFunction	00000000		
+53	ConfirmFunction	00000000		
+54	ActionFunction	00629a50	CWorld::EASpiritAttack	public: void __thiscall CWorld::EASpiritAttack(class CGameEvent const *)
+54	LocalActionFunction	00000000		
+54	FeedbackFunction	00000000		
+54	ConfirmFunction	00000000		
+55	ActionFunction	0062c3e0	CWorld::EACreatureSprint	public: void __thiscall CWorld::EACreatureSprint(class CGameEvent const *)
+55	LocalActionFunction	00000000		
+55	FeedbackFunction	00000000		
+55	ConfirmFunction	00000000		
+56	ActionFunction	00629ac0	CWorld::EASpiritReturnToHero	public: void __thiscall CWorld::EASpiritReturnToHero(class CGameEvent const *)
+56	LocalActionFunction	00000000		
+56	FeedbackFunction	00000000		
+56	ConfirmFunction	00000000		
+57	ActionFunction	00629f50	CWorld::EASkipCutScene	public: void __thiscall CWorld::EASkipCutScene(class CGameEvent const *)
+57	LocalActionFunction	00000000		
+57	FeedbackFunction	00000000		
+57	ConfirmFunction	00000000		
+58	ActionFunction	0062d190	CWorld::EAUseProjectileWeaponThirdPerson	public: void __thiscall CWorld::EAUseProjectileWeaponThirdPerson(class CGameEvent const *)
+58	LocalActionFunction	00000000		
+58	FeedbackFunction	00000000		
+58	ConfirmFunction	00000000		
+59	ActionFunction	0062a050	CWorld::EAChargeUpWillSpell	public: void __thiscall CWorld::EAChargeUpWillSpell(class CGameEvent const *)
+59	LocalActionFunction	00000000		
+59	FeedbackFunction	00000000		
+59	ConfirmFunction	00000000		
+60	ActionFunction	0062ce60	CWorld::EALoadGameFromInGameMenu	public: void __thiscall CWorld::EALoadGameFromInGameMenu(class CGameEvent const *)
+60	LocalActionFunction	00000000		
+60	FeedbackFunction	00000000		
+60	ConfirmFunction	00000000		
+61	ActionFunction	0062b000	CWorld::EAControlledCreatureBlockEnd	public: void __thiscall CWorld::EAControlledCreatureBlockEnd(class CGameEvent const *)
+61	LocalActionFunction	00000000		
+61	FeedbackFunction	00000000		
+61	ConfirmFunction	00000000		
+62	ActionFunction	00629240	CWorld::EAControlledCreatureDeactivateZTarget	public: void __thiscall CWorld::EAControlledCreatureDeactivateZTarget(class CGameEvent const *)
+62	LocalActionFunction	00000000		
+62	FeedbackFunction	00000000		
+62	ConfirmFunction	00000000		
+63	ActionFunction	0062c4b0	CWorld::EARemoveCurrentMode	public: void __thiscall CWorld::EARemoveCurrentMode(class CGameEvent const *)
+63	LocalActionFunction	00000000		
+63	FeedbackFunction	00000000		
+63	ConfirmFunction	00000000		
+64	ActionFunction	0062c570	CWorld::EAControlledCreatureLightning	public: void __thiscall CWorld::EAControlledCreatureLightning(class CGameEvent const *)
+64	LocalActionFunction	00000000		
+64	FeedbackFunction	00000000		
+64	ConfirmFunction	00000000		
+65	ActionFunction	00629530	CWorld::EAControlledCreatureDeactivateLightning	public: void __thiscall CWorld::EAControlledCreatureDeactivateLightning(class CGameEvent const *)
+65	LocalActionFunction	00000000		
+65	FeedbackFunction	00000000		
+65	ConfirmFunction	00000000		
+66	ActionFunction	00629da0	CWorld::EACloseLiveGUI	public: void __thiscall CWorld::EACloseLiveGUI(class CGameEvent const *)
+66	LocalActionFunction	00000000		
+66	FeedbackFunction	00000000		
+66	ConfirmFunction	00000000		
+67	ActionFunction	0062b4d0	CWorld::EAClosePhotoCapture	public: void __thiscall CWorld::EAClosePhotoCapture(class CGameEvent const *)
+67	LocalActionFunction	00000000		
+67	FeedbackFunction	00000000		
+67	ConfirmFunction	00000000		
+68	ActionFunction	0062b550	CWorld::EATakeTheBloodyScreenshot	public: void __thiscall CWorld::EATakeTheBloodyScreenshot(class CGameEvent const *)
+68	LocalActionFunction	00000000		
+68	FeedbackFunction	00000000		
+68	ConfirmFunction	00000000		
+69	ActionFunction	0062a110	CWorld::EAConsoleToggleState	public: void __thiscall CWorld::EAConsoleToggleState(class CGameEvent const *)
+69	LocalActionFunction	00000000		
+69	FeedbackFunction	00000000		
+69	ConfirmFunction	00000000		
+70	ActionFunction	0062c690	CWorld::EAOpenPCSkillsMenu	public: void __thiscall CWorld::EAOpenPCSkillsMenu(class CGameEvent const *)
+70	LocalActionFunction	00000000		
+70	FeedbackFunction	00000000		
+70	ConfirmFunction	00000000		
+71	ActionFunction	0062c6e0	CWorld::EAOpenPCMSNChatMenu	public: void __thiscall CWorld::EAOpenPCMSNChatMenu(class CGameEvent const *)
+71	LocalActionFunction	00000000		
+71	FeedbackFunction	00000000		
+71	ConfirmFunction	00000000		
+72	ActionFunction	0062c700	CWorld::EAOpenPCInventoryMenu	public: void __thiscall CWorld::EAOpenPCInventoryMenu(class CGameEvent const *)
+72	LocalActionFunction	00000000		
+72	FeedbackFunction	00000000		
+72	ConfirmFunction	00000000		
+73	ActionFunction	0062c750	CWorld::EAOpenPCOptionsMenu	public: void __thiscall CWorld::EAOpenPCOptionsMenu(class CGameEvent const *)
+73	LocalActionFunction	00000000		
+73	FeedbackFunction	00000000		
+73	ConfirmFunction	00000000		
+74	ActionFunction	0062c7a0	CWorld::EAOpenPCPhotoJournalMenu	public: void __thiscall CWorld::EAOpenPCPhotoJournalMenu(class CGameEvent const *)
+74	LocalActionFunction	00000000		
+74	FeedbackFunction	00000000		
+74	ConfirmFunction	00000000		
+75	ActionFunction	0062c8e0	CWorld::EAOpenPCMapMenu	public: void __thiscall CWorld::EAOpenPCMapMenu(class CGameEvent const *)
+75	LocalActionFunction	00000000		
+75	FeedbackFunction	00000000		
+75	ConfirmFunction	00000000		
+76	ActionFunction	0062c7f0	CWorld::EAOpenPCBuyTradingMenu	public: void __thiscall CWorld::EAOpenPCBuyTradingMenu(class CGameEvent const *)
+76	LocalActionFunction	00000000		
+76	FeedbackFunction	00000000		
+76	ConfirmFunction	00000000		
+77	ActionFunction	0062c840	CWorld::EAOpenPCSellTradingMenu	public: void __thiscall CWorld::EAOpenPCSellTradingMenu(class CGameEvent const *)
+77	LocalActionFunction	00000000		
+77	FeedbackFunction	00000000		
+77	ConfirmFunction	00000000		
+78	ActionFunction	0062c890	CWorld::EAOpenPCWantedTradingMenu	public: void __thiscall CWorld::EAOpenPCWantedTradingMenu(class CGameEvent const *)
+78	LocalActionFunction	00000000		
+78	FeedbackFunction	00000000		
+78	ConfirmFunction	00000000		
+79	ActionFunction	0062c930	CWorld::EAOpenPCStatusMenu	public: void __thiscall CWorld::EAOpenPCStatusMenu(class CGameEvent const *)
+79	LocalActionFunction	00000000		
+79	FeedbackFunction	00000000		
+79	ConfirmFunction	00000000		
+80	ActionFunction	0062c640	CWorld::EAOpenPCScoreboard	public: void __thiscall CWorld::EAOpenPCScoreboard(class CGameEvent const *)
+80	LocalActionFunction	00000000		
+80	FeedbackFunction	00000000		
+80	ConfirmFunction	00000000		
+81	ActionFunction	0062c980	CWorld::EADeleteMenuComponents	public: void __thiscall CWorld::EADeleteMenuComponents(class CGameEvent const *)
+81	LocalActionFunction	00000000		
+81	FeedbackFunction	00000000		
+81	ConfirmFunction	00000000		
+82	ActionFunction	00629550	CWorld::EATogglePassiveAggressiveMode	public: void __thiscall CWorld::EATogglePassiveAggressiveMode(class CGameEvent const *)
+82	LocalActionFunction	00000000		
+82	FeedbackFunction	00000000		
+82	ConfirmFunction	00000000		
+83	ActionFunction	0062c9d0	CWorld::EADeleteTradeActiveMenu	public: void __thiscall CWorld::EADeleteTradeActiveMenu(class CGameEvent const *)
+83	LocalActionFunction	00000000		
+83	FeedbackFunction	00000000		
+83	ConfirmFunction	00000000		
+84	ActionFunction	00629570	CWorld::EAToggleKillEverythingMode	public: void __thiscall CWorld::EAToggleKillEverythingMode(class CGameEvent const *)
+84	LocalActionFunction	00000000		
+84	FeedbackFunction	00000000		
+84	ConfirmFunction	00000000		
+85	ActionFunction	0062ca20	CWorld::EAToggleViewHeroMode	public: void __thiscall CWorld::EAToggleViewHeroMode(class CGameEvent const *)
+85	LocalActionFunction	00000000		
+85	FeedbackFunction	00000000		
+85	ConfirmFunction	00000000		
+86	ActionFunction	006295a0	CWorld::EACentreCamera	public: void __thiscall CWorld::EACentreCamera(class CGameEvent const *)
+86	LocalActionFunction	00000000		
+86	FeedbackFunction	00000000		
+86	ConfirmFunction	00000000		

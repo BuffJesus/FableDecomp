@@ -1,0 +1,13 @@
+# Native recreation live status 33 — first1031 native evidence running
+
+Active native recreation, no Lua. Canonical promotion frozen; work-only acceptance still1030.
+
+First amended6 compiler-free preflight passed once. Actual wrapper result SHA256 `6dfb74b9838c193d9f875a8b7b568d13366817d0b8a33688f27e5087308f8a29`; root actual scope invocation result SHA256 `b3f95e6689ad3f2a4fd752973f25e0264d48fa10a2c611918caf176ec4e9a927`; root scope SHA256 `8124742c66cf4d91bff044b6aa5702cf49fb46c4d0a670eaa9c8ad527ac1ce9d`. Exact collector stdout `EVIDENCE_COLLECTOR_PREFLIGHT_ONLY_PASS chain=1031 prior=32 contexts=50 pins=33341`, exit0, empty stderr/drift, no native output/compiler.
+
+Independent saved preflight review `collector1031_amended6_FIRST_PREFLIGHT_independent_FACTUAL_review_20261013.json`, SHA256 `552f3aaf9b4cba3044bf6c1c5c39126b0fb394ce1481da94ba62bcafacd536a8`,33,367pins, status `INDEPENDENT_COLLECTOR1031_FIRST_PREFLIGHT_REVIEW_PASS`. Exact4actualpreflight controls and command checked. Wrapperbefore records inherited/transported/frozen PATH and satisfies unchanged original literal scope equality; separately independent root launch-time PATH was not captured, and this limitation remains disclosed. All original source/binding/1078selected36/STOP/no-retry qualifications retained.
+
+Root inspected real independent pass and independently checked actual controls/marker/environment/pins through `invoke1031_amended6_FIRST_native_ROOT_20261013.py`. Issued fresh `collector1031_amended6_ROOT_FIRST_native_execution_signoff_20261013.json`, expected status `ROOT_COLLECTOR1031_FIRST_NATIVE_EXECUTION_SIGNOFF`. First unaccepted native evidence collection running PTY79398. Wrappercapture `bound_regression_stage_20261013/collector1031_FIRST_native_invocation_literal_frozen_PATH_amended6_20261013`; shared collector output `find_evidence_collector_first_1031_1081`. Plan50contexts/51fresh/49reuse/100objects/151guards. No rerun; inspect terminal capture before any further action.
+
+Same authorized helper preparing independent whole-original terminal factual/COFF review. Only original5comparison mapping; no new local-name/type/storage/order/metadata normalization. Any leaf differences must remain explicit unaccepted facts for separate review/adjudication. Preserve exact1078 physical attribution qualification, raw/literal/resolved arrays, selected36paths/12headertriples/twoobjects and allguards. Original amended5 STOP/no-retry and amended4 blocker/root miss unchanged.
+
+No batch acceptance, canonical changes, game/GPU launch, commit or push. Final28 affected1081–1108 and separate61 unchanged-context qualification still pending after this partition.

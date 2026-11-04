@@ -1,155 +1,42 @@
-# FableTLC roadmap (single source of truth for "what's done / in flight / next")
+# FableDecomp roadmap
 
-Updated 2026-09-23. Checklists only. `[x]` = done with evidence, `[ ]` = open, "(verify)" = status
-unconfirmed. Numbers come from `rebuild/COVERAGE.md` (dashboard generated 2026-09-08). Resume
-instructions live in `docs/HANDOFF.md`; long history in `docs/journal/HANDOFF_ARCHIVE.md`.
-Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,ACTIVE_TASK_LIST}.md`.
+Updated October 24, 2026. This is the cross-project priority summary; each active
+lane owns its current task and acceptance record. Start at [HANDOFF](HANDOFF.md).
 
-## Current focus (2026-09)
+## Ongoing work
 
-- [ ] 2026-09-28 Lua corpus smoke 21 -> 15 failing functions (0 new): ChickenSign literal TextKeys, four quest helpers reclassified from entity code (BeardyBaldy wander, TourGuide MoveToNextWaypoint, GuildMaster speech, Dragon phase), TourGuide waypoint arrays, resource parameters, KickedChicken/ChickenMaster vector slots, IsDistanceFromPositionUnder (+ sidecar patch, candidate builds, not installed). Five units promoted; v35 not staged. Evidence: `docs/journal/2026-09/LUA_RECOVERY_2026-09-28.md`.
-- [x] 2026-09-23 Orchard native combat crash: debugger fault 0x008A54EC traced to pointer/value ABI mismatch; four crate-AI APIs corrected with retained CScriptThing copies. v12 builds, 18 harness tests pass, 98 Lua files unchanged. Correct card UI acceptance and guard-side arrival verified; v12 defeated two bandit groups with 3/3 crates. Evidence: `docs/journal/2026-09/ORCHARD_COMBAT_ENTRY_2026-09-23.md`.
-- [x] 2026-09-23 Orchard Good completion: unchanged v12 defeats three bandit groups with all crates intact, passes Whisper's real flourish gate and completes the native reward flow. Entry 5/5, handoff 3/3, fresh reload 4/4; zero Lua runtime errors, 20 harness tests pass. Assisted movement/hero health; separate `adult_orchard_completed_2026-09-23` checkpoint, original saves restored. Evidence: `docs/journal/2026-09/ORCHARD_GUARDED_REPLAY_2026-09-23.md`.
-- [x] 2026-09-23 Trader Escort conversion bootstrap: native range, 98 bodies, 14 entity bindings, PDB locals, typed export and draft/readable packages recovered. ParentClass thread names, unnamed-worker collisions, and cleanup-return syntax fixed; 13 focused tests pass. Evidence: `docs/journal/2026-09/TRADER_ESCORT_CONVERSION_2026-09-23.md`.
-- [x] 2026-09-25 Trader Escort COMPLETED in-game on v15, hands-free (runner te7): Darkwood1 -> 6 -> Barrow Fields with all three traders, camp greeting, rock troll, end trader scene, `SetQuestAsCompleted`, next story quest started; 0 Lua errors, no quest state set by hand. Three converter fixes (exporter PUSH/NOP tag loss, comparison flags typed as numbers, merged vector begin/end), each A/B-checked against every other unit (no other changes). Checkpoint `adult_trader_escort_completed_v15_2026-09-25`. Open: a won boast's payout line (boast 9 taken, none logged). Evidence: `docs/journal/2026-09/TRADER_ESCORT_PLAYTEST_2026-09-25.md`.
-- [ ] 2026-09-25 Bandit Camp conversion: 85/85 functions and 19/19 files parse, readable smoke 19/0, 85 TODOs. Kill counting (bandit bit, area massacres) lowered onto a new sidecar binding `MsgGetThingsKilledGroups` (patch saved, compiles; NOT deployed); gates, Twinblade bar, King thresholds, tavern loop fixed; Trader Escort troll roar fixed as a side effect. Open: v17 sidecar build + Bandit Camp bundle entry + in-game run (needs the install). Journal `docs/journal/2026-09/BANDIT_CAMP_CONVERSION_2026-09-25.md`.
-- [ ] Orchard follow-up: earlier unbounded replay reset cause, corrupt Quest Start artwork, Evil path and unassisted combat remain open.
-- [x] 2026-09-23 Maze conversation and Orchard handoff: unchanged v11 completes Guardian Sister Info through real dialogue; persistent completion, stage 400, CoreQuestWaiting verified. Entry 5/5, handoff 3/3, fresh reload 4/4, zero Lua runtime errors; separate `adult_maze_completed_2026-09-23` checkpoint preserved, original save restored. Seventeen harness tests pass. Assisted travel/manual interaction; revised combined replay and real Orchard combat remain unverified. Evidence: `docs/journal/2026-09/MAZE_HANDOFF_2026-09-23.md`.
-- [x] 2026-09-23 Wasp live completion and handoff: v11's accepted-card replay defeats the queen with real sword/lightning input (teleport/hero-health assistance), shows the completion/reward screen, persists Wasp completion, reaches stage 300 and starts Guardian Sister Info; handoff 3/3 and checkpoint reload 4/4, zero Lua runtime errors. The old direct-activation harness skipped card bookkeeping. Resume from `adult_wasp_completed_2026-09-23`. Generic converter TODOs 23 -> 5; remaining untested paths and the helper-dialogue input heuristic remain open. Evidence: `docs/journal/2026-09/WASP_CARD_HANDOFF_2026-09-23.md`.
-- [ ] Converter readable style: make `build_readable_unit.py` output read like a quest script (plan `docs/scripts/READABLE_STYLE_PLAN.md`; first increment steps 1/2/6 on Orchard Farm); GuildTraining typed conversion at 856 todos / 26 of 37 files.
-- [x] 2026-09-21 Hero's Guild training recovery: all nine quests / 37 scripts converted through the typed pipeline and PLAYED THROUGH in-game on v6 by the autopilot -- childhood, woods, Melee, Skill, Will, adulthood, the final Maze test, ceremony, graduation (`SetQuestAsCompleted Q_GuildTraining`), zero Lua runtime errors on the path; Guild draft todo 268 (14 non-structural, none live). Journal `docs/journal/2026-09/ARCHERY_SCORING_2026-09-21.md`; checklists `tools/script_recovery/checklists/guild_*.json`. Open: one-launch end-to-end proof (run 12), v7 compare, the ArtifactThief lamp side-talk, friendly-fire punishment (hand test only).
-- [ ] 2026-09-22 v6/v7 A/B: **v7 cannot load a v6-born save** -- Aeon's LUAGameflow persists `CoreQuestWaiting` as a bool where retail (and the converter) uses a ulong (retail 0x00CEF8E0 -> 0x004106F0 `Transfer_uint`; PDB `CGameflowScript::CoreQuestWaiting`), and the ulong read off a one-byte record kills the process inside OnPersist. Proven both ways: a bool-patched v7 (`local-candidate-v7probe`) plays the woods checklist 18/18 with the converter's Gameflow live, and unmodified v7 loads a retail-born save cleanly. Open: the chain on v7probe against run 13, then a v7-born save for the true A/B. Journal `docs/journal/2026-09/GAMEFLOW_PERSIST_AND_TRADER_RECEIVERS_2026-09-22.md`.
-- [ ] 2026-09-22 TraderConflict lane: TraderToRescue `Main` 0x00DFE0F0 draft TODO 9 -> 5 (the hostage keeper's two `IsAlive()` tests and `GetHeroTargetedThing():IsEqualTo(me)` now lift) via generic receiver restoration from the export's `ecxStack`, manifest-named thing-returning slots, and a nil guard on every const bool thing query. Unit todo 34 -> 30; `test_trader_receivers_and_nil_guards.py` pins it. Left: the `(int)CVar13 + 0xa` store into a string temp declared four ways, and one operand-less helper call.
-- [ ] New Oakvale readable converter: both full suites pass (1,511 / 1,528 tests), 51-function readable package and full isolated Win32 runtime built. Main/thread, entity ownership, persistence, Windows-fiber and native process-drain checks pass. Restore callback ordering and live gameplay remain open ? `docs/journal/2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md`
-- [x] 2026-09-16: Party Mode overlay/instrumentation REMOVED (broke music/level loading in-game; user decision). Clean stock-FSE+NoviCompatibility sidecar **v4** played through the whole childhood with zero Lua errors. Discord package `work/NewOakValeIntro-sidecar-playtest-20260916.zip` built by `tools/script_recovery/build_discord_playtest_zip.py`, tester launch path verified. Open: save/reload + adult transition on v4; pre-existing `test_watch_barrels_loop.py` failure (missing `RewardRemainingBarrel` binding) — `docs/journal/2026-09/PARTY_MODE_REMOVED_SIDECAR_V4_2026-09-16.md`
-- [ ] Typed shared headers: 2026-09-08 `--all-trusted --compile-check` = 1,011 compiling generated headers (267 layout-quarantined plus the known `CGameDefinitionManager` compile quarantine); the dashboard counts 1,019 generated headers / 268 quarantined including hand-maintained/generated-adjacent files. Automatic passes plus the parity-gated manual tail have retyped 689 landed TUs onto PDB-named headers. `VTABLE_TYPED` (37→0), `VIRTUAL_THIS` (54→0), non-source-failure `PARITY_CHANGED` (7→0), `BEHAV_FAIL` (8→0), source-failure `PARITY_CHANGED` (43→0), and `AMBIG_ALIGN` (10→0) are closed. — `tools/decomp_pipeline/`
-- [x] 2026-09-08 Aeon Lua corpus extended to 22 packages / 74 executable scripts with `GuildMaster` and `LUAGameflowAssistance`; both are disabled `reconstructed-source` shadows and correlate to `V_GuildMaster` / `GameflowAssistance` — `docs/scripts/AEON_LUA_PORTS.md`
-- [ ] Close the ForgeFSE runtime tail used by the recovered corpus (215/230 unique calls callable; 15 missing). Today's new-package blockers are `Entity:Speak` and `Quest:IsHeroControlledByPlayer` — `docs/scripts/FORGEFSE_RUNTIME_SCRIPT_AUDIT.md`
-- [ ] Resume the parity crawl with batch 378; batches through 377 are reviewed (18,870 compiled/behavior-tested; 8,145 exact and 10,681 relocation matches; 394,217 genuine retail bytes matched) — `docs/journal/2026-09/PARITY_CRAWL_2026-09-08.md`
-- [ ] Live-test ForgeFSE-retail-shadow branch `feat/upstream-fse-2026-09-02` (commit `3f417ee`) in-game: CreateThread script + region unload — user-driven, needs Fable open
-- [ ] Merge `feat/script-recovery-marathon` into `main` once CI (`docs-consistency`) is green on the branch
+- Native C++ resource/font ownership: follow the [native continuation](journal/2026-10/2026-10-24-native-recreation-continuation.md). Streaming font module complete 2026-10-27 (every function reconstructed and gated); static font, bank-loaded UI frame and game-text frame accepted. Range crawl 2026-10-27: 0x9D8000..0xA20000 landed as exact-root gates (font manager, system utilities, engine services/support, navigation; ~290 roots); next range 0xA20000.
+- C++23/x64 scheduling and subsystem ownership: follow [modern resume](modern/NEXT_SESSION.md).
+- Lua recovery stopped for tonight at user request; W507 accepted/W509 bundle verified, W511 scratch-only next, W499 ABI gate retained: follow the [Lua checkpoint](scripts/LUA_RECOVERY_HANDOFF.md) and [owning journal](journal/2026-10/LUA_RECOVERY_2026-10-24.md).
+- Forge work remains in its own checkout and handoff.
 
-## (a) Repo health & public presentation — `CONTRIBUTING.md`, `docs/ARCHITECTURE.md`
+## Engineering follow-up
 
-- [x] 2026-09-07 `main` fast-forwarded to include 519 commits and pushed to `BuffJesus/FableDecomp`
-- [x] 2026-09-07 22 agent branches archived as `archive/*` tags (24 tags total)
-- [x] 2026-09-07 root scratch files + the `CON` file removed; `LICENSE`, `CONTRIBUTING.md`, CI (`docs-consistency`) added
-- [x] 2026-09-07 docs restructured into `ARCHITECTURE.md`, `BUILDING.md`, `engine/`, `formats/`, `pipeline/`, `scripts/`, `journal/`, `modding/`
-- [x] 2026-09-07 `docs/ROADMAP.md` + one-page `docs/HANDOFF.md` written (this file)
-- [x] 2026-09-07 `docs_reorg.py --check-links --check-root` clean; `update_readme_progress.py --check` clean; both run in CI (`.github/workflows/docs-consistency.yml`)
-- [x] 2026-09-07 `rebuild/COVERAGE.md` regenerated with genuine-C++ / asm-bake / readability rows; README rows generated from it
-- [x] 2026-09-07 all 56 FINDINGS_LOG entries re-homed into reference docs (Verified facts sections; new `engine/CUTSCENES.md`); `--check-findings` now runs in CI
-- [x] 2026-09-07 doc families merged: `formats/SAVE.md` (8→1), `formats/BIG.md` (3→1), `formats/MESH.md` (4→1), `engine/QUEST_CARDS.md` (5→1), `engine/NAVIGATION.md` (2→1); sources left as 3-line stubs
-- [x] 2026-09-07 remaining families merged: `formats/{ANIM,TEXTURE,TEXT,AUDIO,DEFS}.md`, `engine/{HERO_APPEARANCE,INPUT,GAME_ENTRY_PATHS,QUEST_SCRIPTS}.md` (sources are 3-line stubs; INDEX lists both)
-- [ ] Turn `rebuild/build_candidates.ps1` (130k lines of PowerShell objects) into a TSV + small driver
-- [ ] Prune superseded intake drafts: 600/1,066 `rebuild/candidates/snapshots` and 604/1,079 `lift/reports/*/code` files have a landed reconstruction at their address (counted 2026-09-07). Needs the manifest/status generators to stop counting them first (`agent_candidates`, `agent_source_path`)
-- [x] 2026-09-07 FQT + Fable-2 scene-import one-offs (21 scripts) moved to `tools/archive/` with a README
-- [x] 2026-09-07 hidden scheduled tasks documented in `docs/BUILDING.md` (Background automation) with the disable command
+- [ ] Require production-bound behavior assertions and negative controls across admission paths; distinguish parity-only tests.
+- [ ] Reconcile unique-address coverage, assembly exclusion, population membership, and proof freshness before claiming new completion percentages.
+- [ ] Fail closed on absent evidence and missing tests; give unresolved pinned type conflicts an explicit assurance state.
+- [ ] Prove one dependency-complete loading, retained-resource, update/render, and teardown milestone with genuine services.
+- [ ] Improve readable ownership, fields, callees, and interfaces along complete call chains.
+- [ ] Publish reviewed source slices with complete build/test dependencies and distributable controls.
 
-## (b) Symbols & types — `docs/pipeline/SYMBOLS.md`, `docs/pipeline/NAMING_STRAGGLERS.md`
+These are audit follow-ups, not instructions to interrupt current owners or to
+promote their scratch work. The [verification contract](pipeline/VERIFICATION_CONTRACT.md)
+distinguishes intended standards from gaps in their current enforcement.
 
-- [x] Ghidra 12.1 import + RTTI pass; PDB two-binary symbol port (FableWin.pdb / Ego_r.pdb donors)
-- [x] BSim names applied; RTTI vtable-slot force port (`ghidra_out/labels_rtti_port.tsv`)
-- [x] 100% mechanically named (49,568/49,568); 99.2% accepted naming quality; 40 names in review tail
-- [x] FSE manifest corrected to 933 functions and propagated to FableForge
-- [x] FSE address map (`refs/script_recovery/fse_address_name_map.json`, 80 addrs, 63 manifest clashes) wired into readiness analyzer
-- [x] 2026-09-07 typed shared headers `rebuild/include/engine/`: 957 compiling headers from the PDB layouts, per-header compile check, quarantine on donor/retail conflict
-- [x] 2026-09-07 automatic and manual parity-gated retyping applied to 638 landed TUs; `VTABLE_TYPED`, `VIRTUAL_THIS`, non-source-failure `PARITY_CHANGED`, and `BEHAV_FAIL` tails closed (see Current focus for the active source-failure parity lane)
-- [ ] Bulk `.gdt` import of donor struct layouts into the Ghidra DB (open)
-- [ ] Calling convention known 77.7% -> close the 11,031 unknown-CC functions
-- [ ] Complete prototypes 69.2% -> close the 15,280 incomplete ones
-- [ ] Apply the 63 FSE-vs-BSim name clashes as manifest corrections (FSE ASLR address wins in `0x00CBxxxx`)
+## Documentation
 
-## (c) Byte-parity reconstruction — `docs/pipeline/FULL_DECOMP.md`, `docs/pipeline/DEBAKE_WORKLIST.md`
+Current instructions belong in short lane handoffs; reference facts belong under
+their topic; dated measurements and failed attempts belong in the journal.
+Keep generated metrics generated. Preserve historical evidence rather than
+copying its old statuses into current pages. See [project layout](PROJECT_LAYOUT.md).
 
-- [x] VC7.1 RTM 13.10.3077 harness; `verify_and_land.py` oracle->author->verify->land loop
-- [x] Byte-identical 8,082 (16.3%); functional-or-matching 18,579 (37.5%) as of 2026-08-28
-- [x] Manifest gap recovery: 7,529 xref-confirmed starts merged (functions.tsv 49,568 -> 57,097) — `docs/pipeline/MANIFEST_GAP_RECOVERY.md`
-- [x] Over-capture trimming (`trim_overcapture.py`, `trim_tailjmp.py`) repo-wide
-- [x] Jump-table lander `verify_land_jumptable.py` (raw-COFF extraction) proven on 0x557CA0 / 0x5578A0
-- [x] Skeleton clone harvester + de-bake family tooling (`debake_family.py`, `harvest_all`, `crossfam`, `shape_author`)
-- [x] Parity crawl batches 153 (8/8) and 154 (7/8) landed 2026-09-02; `probe.py` + `disasm.py` + `iat_lookup.py` helpers in `work/crawl_batch153-154`
-- [ ] De-bake: 614 `__declspec(naked)`/`__asm` + 218 `_emit` non-genuine sources remain — regenerate with `crawl/bake_families.py` (verify counts)
-- [ ] Mislabelled dtor families (`_Dest_val`/`_Cons_val` BSim labels on non-dtor bodies) re-attributed on landing; sweep the rest
-- [ ] `00995e70 PeekData` honest DIFFER(16v15) — attack load-through-lea, not the compare
-- [ ] `LinkToNeighbouringMaps 0x00A7A650` 9 bytes long; `CNavQuadTree::UpdateLines 0x00A781A0` fixture-first
-- [ ] GFMain `0x00402510` dependency closure; CRT `entry 0x00401067` parity (deferred until GFMain boundary useful)
-- [ ] Wave-3 review tails (CGSI wrappers with end-sentinel derefs, co-op spirit tail) rebuilt from bytes before promotion
-- [ ] 84 deferred over-captures worklist `rebuild/backlog/overcapture-recovery-worklist.tsv` (~11 recovered)
-- [ ] Lifted modules 3/3,433 -> next module-level link proof after OpenRetailBank ring (`LINK_WORKLIST.md`)
-
-## (d) Running frontend / renderer parity — `docs/pipeline/VISUAL_PARITY_STATUS.md`, `docs/engine/GAME_ENTRY_PATHS.md#continue-and-load-game-path`
-
-- [x] Stage-0/1 executable integration: VC7.1 links byte-identical fns into an owned Win32 process; `WinMain 0x403480` promoted
-- [x] `FableTLC-Reconstruction-VisualCheckpoint.exe` renders the D3D9 frontend headlessly (synth-click + screenshot QA recipe)
-- [x] Profile-name font doubling fixed 2026-08-10 (half-texel UV inset in `AppendProfileNameText`)
-- [x] Save-enumeration seam opened 2026-08-10; 6 display-name-tier fns landed; find-loop blocker solved 2026-08-16
-- [x] `CGame::Play 0x412f90` landed byte-exact; `CMainGameComponent::InitWorld 0x41735a` RELOC_MATCH
-- [x] 2026-09-25 `CGame::Play 0x412f90` de-baked: genuine C++ RELOCATION_MATCH (394 B), calls the real component constructors (no adapter ring); `gate_boot_leaves.py` added
-- [ ] De-bake the remaining boot-path leaves: 2026-09-25 took them from 40 to 25 of 118 asm (16 de-baked incl. `CGame::Play`; the 4 leaves that failed their own gate at HEAD now pass; full bootstrap green except the WinMain fixture, which needs Fable closed). Next: `CWideString` operator+ 0099bf30/0099bff0 (match in scratch, blocked by duplicate `CWideString` stand-ins in `stage2_engine_boundary.cpp`), `CNewFrontendGameComponent` ctor 0x42ea8f near-miss (two swapped instruction pairs), `CMainGameComponent` ctor 0x418dca. Journal `docs/journal/2026-09/BOOT_DEBAKE_2026-09-25.md`
-- [ ] Continue Game screen flash on press (D3D9 present/clear path) — known, unfixed
-- [ ] `CWorld::LoadGameState` -> subsystem deserializers -> level stream (Continue Game core still unreconstructed)
-- [ ] `lzo1x_decompress` for minimap decode is a hard defer (regalloc); keep as functional oracle
-- [ ] Hero-in-world Phase A: wire `FableGFMainPhase10PlayBoundary` to real `CGame::Play` behind `FABLETLC_EXECUTE_EXACT_PLAY` after debugger live-oracle capture at `0x412f90` (verify: adapter ring still UNWIRED) — `docs/engine/HERO_IN_WORLD_ROADMAP.md`
-- [ ] Phase B: streaming crash `0x7dd1d3` (`CEngineLandscapeMap::OpenStaticMap 0xBDD0E0` NULL malloc; BP `0xBDD1B2` reads `field_04`)
-- [ ] Phases C-F (CWorld::PostInit ctors, tick orchestration, hero spawn, RenderCell/D3D9 device layer) — months; renderer is the cost driver
-
-## (e) Engine subsystem RE — `docs/engine/SYSTEMS_ANALYSIS.md`, `docs/engine/CAPABILITY_INDEX.md`
-
-- [x] Nav: quadtree line init/update, multilayer nav, navmesh RE — `engine/NAVIGATION.md` (merged from `NAVMESH_RE.md`, `MULTILAYER_NAV.md`)
-- [x] Quest logic is compiled C++ (161-entry allocator table @ `0x00CD52D0`, no VM) — `QUEST_SCRIPTS.md#quest-binding-compiled-c-classes`, `QUEST_SCRIPTS.md#cutscene-and-region-script-interpreter`
-- [x] Quest cards: display map, body art (3D mesh via `Graphic.modelId`), CUIDefs 8487-8489, empty-card fix — `engine/QUEST_CARDS.md` (merged from `QUEST_CARD_*.md`)
-- [x] Input: Redefine Keys system, controller enums from FableWin.pdb — `INPUT.md#binding-store-and-redefine-subsystem`, `INPUT.md#controller-enum-tables`
-- [x] Video system, minimap, hero morph, appearance strip, console commands, demon door face — per-doc
-- [x] Terrain: whiteout + render fixes; ForgeTest64 terrain renders in-game (stage33); foliage group-sphere contract recovered (stage46)
-- [x] Cut co-op multiplayer + EgoMP donor audits — `CUT_COOP_MULTIPLAYER.md`, `EGOMP_*.md`
-- [ ] Nav: `CWorldMap::GetMapNavigationAreaInit` -> collision-hull -> blocking-line extraction
-- [ ] Foliage stage46 runtime gate (custom collection-load probe + visible grass) — needs Fable closed then relaunched
-- [ ] stage45 near-black terrain faces: compare authored foreground packed normals vs retail patch
-- [ ] Save graph: `CTCInventory::Transfer`, `CQuestManager`/`CFactionManager` field/tag names
-- [ ] Statue Master restoration `mods/StatueMasterRestoration/RUNTIME_PROBE.md` ten-case live probe (user-driven)
-- [ ] Recover full 31-action `EGameAction` int->name table (3 sourcing passes failed; do not re-scan binary/web) — `docs/engine/INPUT.md#open-gaps`
-
-## (f) Quest-script recovery / Lua — `docs/scripts/SCRIPT_RECOVERY_PIPELINE.md`, `docs/scripts/AEON_LUA_PORTS.md`
-
-- [x] 161/161 retail scripts with complete 5-method lifecycle IR; 615/615 entity bindings; 1,708 interface calls resolved
-- [x] Aeon's 8 hand-ports ingested (`work/aeon_lua_ports/`: DragonBossFight, GuardianSisterInfo(2), GuardianTrophyDealerInfo, HerosOldHouse, MazeResearch, MeetSister, StatueMaster) as `reconstructed-source` oracles
-- [x] 2026-09-02 upstream FSE 14 bindings + `lua_newthread` threading ported onto canonical `D:\Code\ForgeFSE-retail-shadow` (1000-row table, corpus 111/111 callable); two ABI defects fixed (`FadeOutAndKillEntity`, cutscene arg order)
-- [x] `map-native-helpers` stage shown to be 73% non-semantic (CRT/STL/lifetime) — not a real gate
-- [x] `tools/script_recovery` tests 94/94; foundation audit baseline recorded (remaining checks are evidence/runtime gates, not hidden as passes)
-- [x] 2026-09-08 corpus intake contains 22 packages / 74 executable scripts. `GuildMaster` required a documented registry-only staging archive because Aeon's ZIP omitted `FSE/quests.lua`; original member bytes and both archive hashes are retained in `AEON_LUA_PORTS.md`.
-- [x] Curated native aliases now correlate 10 reconstructed registrations, including `GuildMaster` -> `V_GuildMaster` and `LUAGameflowAssistance` -> `GameflowAssistance`.
-- [ ] New Oakvale end-to-end runtime parity: Teddy-return crash root-caused and corrected; beetle spawning restored. Retail evidence confirms the warehouse timer is 45 total and recalls Barrel Man at 15 remaining (30-second player window). Timer registration was fixed after runtime proved Lua's truthy zero left both handles unregistered. A second instruction-level audit corrected the bar creation from reversed `(0,45)` to retail `AddQuestInfoBar(45,0,...)`, which explains the previously permanent empty fill; the per-frame update remains the exact 45-to-0 retail sequence. Quest completion is normalized to retail identity `Q_NewOakValeIntro`. Father cutscene skip/audio-subtitle parity, visible Bully run-off, victim release, deed lecture accounting, Barrel Man return/judgment, and childhood-to-Guild handoff remain runtime gates. Aeon's downloaded Lua gameflow package now validates with zero API gaps after evidence-backed retail bindings for no-load quest activation (single/batch), final-quest preparation, `IsXbox`, and tutorial-log entries.
-- [ ] Confirm the staged New Oakvale single-authority profile in game (2026-09-11: v10 live run proved Forge cannot nest a second scheduler resource for its own actor (Affair Wife transition hang, Affair Man handle loss); v11 live run under true single authority (`legacy=false`, qst line deleted) had zero errors, Wife dialogue, one Guard lecture, all cutscenes; v11 depth counting inflated on per-frame Main-loop re-acquires, so v13 saturates same-priority re-acquire at depth 1 (v12's plain idempotence would re-break Affair Man) and is installed with the Bully bar colour fix (retail empty colour is BGRA red, not blue); user completed the childhood on v11 with no errors; open: in-cutscene `BULLY.RunTo` stalls at 2.3 m so the compatibility completion shows as a jump; gates 317/317, 119/119, SDK PASS). The 2026-09-09 log proves one Lua guard lecture while the player observed two; startup simultaneously proves the native `Q_NewOakValeIntro` and additive Lua `NewOakValeIntro` authorities coexisted. The identity-preserving override profile, empty custom registry, runtime authority probe, and validator are ready but were deliberately not deployed at bedtime.
-- [ ] Resolve the 15-call ForgeFSE runtime tail; specifically add/verify `Entity:Speak` and `Quest:IsHeroControlledByPlayer` before enabling either 2026-09-08 package.
-- [ ] Ghidra anchor-discovery run for `V_StatueMaster` + `Q_DragonBossFight` (`decompile_native_script.py`) — the 18th audit check
-- [ ] Runtime-confirm Aeon's addresses `0x00CBE716`, `0x00CBE87F`, `0x00CBE960` with a live probe
-- [ ] First OUR end-to-end hand reconstruction of one `manual-lua-reconstruction` script against its trace fixtures (0 of 161 converted by us so far)
-- [ ] 2026-09-11 native-to-Lua lifter started: `tools/script_recovery/lift_native_lua.py` (quest mode from native clusters, entity mode from a translation unit) + `benchmark_lifter.py` scoring against 12 Aeon ports and 4 New Oakvale entities (`refs/script_recovery/lifted/LIFT_BENCHMARK.md`). Small quest scripts lift at recall 0.8-1.0 with zero TODOs (MazeResearch, MeetSister); the Beetle entity lifts to a faithful draft. Next levers: thread bodies (recorded, not lifted), a `CScriptThing` message-slot table for entity scripts, field naming without `OnPersist` — `docs/scripts/LIFTER.md`
-- [ ] Recompute the 69/92 stage split with non-semantic helper categories excluded
-- [ ] Live world-entry smoke of the shadow package (previous menu-only smoke proved 0/16 script loads)
-- [ ] `MsgOnLevelLoaded` ABI-blocked (retail writes `std::list<CCharString>`)
-- [ ] **Hands-free script testing** (user ask 2026-09-20; not ML — deterministic; design `docs/scripts/AUTOPILOT_DESIGN.md`: sidecar exec channel + step runner over the FableForge frontend driver + checklist grader): (1) offline scenario replays on the lupa smoke harness (per quest: a scripted sequence of state flips / messages / level reloads, asserting the emitted call sequence — `test_check_friendly_attacks_converter.py` is the shape); (2) an in-bundle autopilot Lua package that drives the hero through a checklist with the sidecar's own bindings (teleport to markers, `SetThingAsKilled`, answer YES/NO, quit at a checkpoint) under the unattended launcher, graded from the FSE log (`grade_run.py` shape); (3) the ultracode residue/operand audit (agents verifying generated Lua against the typed C) as a standing gate after every regen — it found the silent spawner-literal rotation two in-game runs and the smoke gate had passed (`docs/journal/2026-09/V6_RETURN_CRASH_2026-09-20.md` §3).
-
-## (g) Modding toolchain
-
-- [x] Lives in FableForge (`D:\Code\FableForge`) and ForgeFSE-retail-shadow now; moved docs indexed at `docs/modding/README.md` (`docs/from_fabletlc/` in each repo)
-
+<a id="parked--shelved"></a>
 ## Parked / shelved
 
-- Gamepad redefine patch — shelved 2026-08-10; install reverted to clean retail; #811 clone renders black, row-value read path unknown — `docs/engine/INPUT.md#open-gaps`
-- Mario rig (`work/mario_hero/stage_bindaxis4`) — body segments stretch apart; needs animation translation retargeting, not more bind-axis placement
-- Unicorn emulation — assessed 2026-07-27 as optional local pilot; not implemented; not on parity totals — `docs/pipeline/UNICORN_EMULATION_PLAN.md`
-- Co-op revival — RE audits done (`CUT_COOP_MULTIPLAYER.md`); implementation moved to FableForge docs; no active work
-- Installer / settings UI / x64 / broad C++23 modernization — deferred until the reconstructed process reaches the game loop
-  - Scripting redesign (engine-native Lua, generated bindings, explicit async, headless tests) — proposal 2026-09-26, `docs/engine/SCRIPTING_REDESIGN.md`; its "Now" steps (binding table + LuaLS annotations, lint, fake-world test host) can run on ForgeFSE today
-  - In-engine modding environment (Source-style tools mode, mod folders over a read-only install, entity I/O, background bakes; s&box notes) — proposal 2026-09-26, `docs/engine/IN_ENGINE_MODDING_ENVIRONMENT.md`
+Design documents, including the [in-engine modding environment](engine/IN_ENGINE_MODDING_ENVIRONMENT.md),
+do not authorize implementation or restart deferred work. Follow each design's
+scope and the current user's instructions.
 
-## Definitions (grade ladder, lowest to highest)
-
-- `candidate` — generated/reviewed source exists; not compile-verified (1,066 rows)
-- `checker-pass` — passes the structural checker only; no compiler involved
-- `compiled` — builds to a VC7.1 object; no parity claimed (18,737)
-- `functional` — behavior fixture passes vs local oracle; bytes differ (`DIFFER`) — never counted in byte totals
-- `matching` — `MATCH` (exact `.text`) or `RELOCATION_MATCH` (exact after masking COFF reloc slots) — the only "landed byte-exact" grades
-- `asm_bake` — `__declspec(naked)` / `_emit` byte-bake; byte-exact but NOT genuine C++; purity debt tracked by `crawl/purity.py`
+The full earlier checklist and its dated results remain in the
+[verbatim pre-cleanup roadmap](journal/2026-10/2026-10-24-before-cleanup-ROADMAP-dc512bdd1e23.txt). Old branch/merge/resume commands
+there are historical, not current instructions.

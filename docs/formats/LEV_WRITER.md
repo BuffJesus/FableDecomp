@@ -41,7 +41,8 @@ u32 extra                                                          (sub-version 
 cells: (height+1) × (width+1) cells, row-major, stride (width+1), each 21 B:
         +0 .. +4   (5 B, unclassified — preserved)
         +5         float32 heightRaw   (world height = heightRaw * 2048)
-        +6 .. +9   (rest of the float)
+        +6 .. +8   (remaining 3 bytes of the float)
+        +9          (1 B, unclassified — preserved)
         +10,+11,+12  u8 theme index, blend layers 0/1/2
         +13,+14      u8 blend strength, slots 0/1 (slot-2 is implicit
                      max(0, 255-strength0-strength1))
@@ -123,7 +124,7 @@ python tools/lev_rw.py edittest  work/level_samples/BarrowFields/BarrowFields.le
   **preferred-path flag** — navmesh TopologyWeights = 0xFF if `+15`==0, else 0x00 if `+20`==1
   (preferred, A* cost 0), else 0x80 (normal). Corpus-validated with 0 exceptions over all 149
   nav-bearing retail LEVs (201,951 cells). See `docs/engine/NAVIGATION.md`.
-- **Cell bytes +0..+4 and +16..+19 remain unclassified** (9 of 21 bytes). They are
+- **Cell bytes +0..+4, +9, and +16..+19 remain unclassified** (10 of 21 bytes). They are
   preserved verbatim and untouched by the edit API, so byte-exactness holds, but their
   meaning is not yet reversed. FableForge doesn't read them either. Classifying them is a
   future read-side task, not a blocker for height/theme/walkable editing.

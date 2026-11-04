@@ -254,7 +254,7 @@ def-tree child counts, three independent angles).
 
 #### How to reskin each layer
 - **LEFT hero:** replace the hero tile in-place:
-  `python tools/texture_build.py replace <textures.big> <out.big> 4722 hero.png` (PC build). Mirror to
+  `python tools/texture_build.py replace <textures.big> <out.big> PC_UI_QUEST_START_FRAME_1_SPRITE hero.png` (PC build). Mirror to
   **4783** for the console/base variant if targeting both. The hero occupies the top-left tile; to
   repaint the *whole* left panel you may also need tiles 4725 (PC) / 4786 (lower body). 256×256 DXT3
   (PC) / DXT1 (console).
@@ -426,7 +426,7 @@ count, then find `crc0("GraphicIndex")` and overwrite the following `u32`.
 
 ### Works TODAY without the detour (data-only)
 - **Shared re-skin** of any card class: overwrite texture id 5892 (core) / 5894 (optional) / 5896
-  (vignette) in `textures.big` GBANK_MAIN_PC via `tools/texture_build.py` (numeric-id target; match the
+  (vignette) in `textures.big` GBANK_MAIN_PC via `tools/texture_build.py` (entry-name target; resolve the numeric ID to its bank entry name first and match the
   existing DXT format/dims — TODO confirm). Every card of that class then shows the new art. This is the
   cleanest path because it swaps the texture the `GraphicIndex` already points at — it needs NO CUIDef
   edit.

@@ -36,6 +36,14 @@ Fields whose *purpose* is inferred, not proven, are labeled **[hypothesis]**.
 
 ---
 
+**Fork codec (2026-10-17):** `rebuild/modern/bank/` (C++23, `fable_bank_check`) implements this
+container and the §9.1 repack rule with portable types. It round-trips all 17 bank files in the
+install byte-identically (the 8 retail files plus tool-written copies), on MSVC x64 and GCC. The
+live `textures.big`, rewritten by the texture-upscale tool, stores 6,321 of 6,325 payloads off
+their 2048 boundary. If the game loads that file (not confirmed in this session), sub-bank
+`Align` is a writer convention rather than a load gate. Also, edit-then-revert stops being byte-exact on such packed files
+(§9.1's invertibility needs the aligned original boundaries).
+
 ## 1. File inventory (all located, all sized)
 
 | File | Path (under Steam install) | Size (bytes) | subBanks | Verdict |
